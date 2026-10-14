@@ -172,7 +172,7 @@ def main() -> int:
         "jt_unverified": [{"index": i, "target": f"{m68k.jt_target(rom, i):06X}"} for i in jt_unverified],
     }
     (ROOT / "build").mkdir(exist_ok=True)
-    (ROOT / "build" / "explore.json").write_text(json.dumps(out, indent=1))
+    (ROOT / "build" / "explore.json").write_text(json.dumps(out, indent=1), newline="\n")
     print(f"instructions {len(code)}, code bytes {code_bytes} ({100 * code_bytes / size:.1f}% of ROM), "
           f"functions {len(out['functions'])}, ranges {len(ranges)}, indirect {len(indirect)}, "
           f"rejected seeds {len(rejected)}, unverified jt entries {len(jt_unverified)}")

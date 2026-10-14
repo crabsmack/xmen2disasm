@@ -120,18 +120,18 @@ def main() -> int:
                 repl.append(f"\tincrom\t${ss:06X},${s - ss:X}\n")
             for fs, fe in zip(starts, starts[1:] + [e]):
                 path = ROOT / "src" / "f" / f"{fs:06X}.asm"
-                path.write_text(split.emit_function(rom, fs, fe, labels, bad, reasons))
+                path.write_text(split.emit_function(rom, fs, fe, labels, bad, reasons), newline="\n")
                 written.append(path)
                 repl.append(f'\tinclude "src/f/{fs:06X}.asm"\n')
             if se > e:
                 repl.append(f"\tincrom\t${e:06X},${se - e:X}\n")
             lines[li:li + 1] = repl
-        MAIN.write_text("".join(lines))
+        MAIN.write_text("".join(lines), newline="\n")
         jt = JT.read_text()
         for a in addrs:
             if a in labels:
                 jt = jt.replace(f"\tjtentry\t${a:06X}\t", f"\tjtentry\t{labels[a]}\t")
-        JT.write_text(jt)
+        JT.write_text(jt, newline="\n")
         sys.argv = [sys.argv[0], "--quiet"]
         rc = build.main()
     except Exception:
@@ -140,14 +140,14 @@ def main() -> int:
         traceback.print_exc()
     if rc != 0:
         for p, text in backups.items():
-            p.write_text(text)
+            p.write_text(text, newline="\n")
         for p in written:
             p.unlink(missing_ok=True)
         print("convert: rolled back (build was not byte-identical)")
         return 1
     seeds = ROOT / "config" / "seeds.txt"
     seeds.parent.mkdir(exist_ok=True)
-    with seeds.open("a") as f:
+    with seeds.open("a", newline="\n") as f:
         for e in args.entries:
             f.write(f"{e:06X}\t; {labels.get(e, '')} - {args.evidence or 'convert.py'}\n")
     print(f"convert: OK, {len(written)} file(s): " + ", ".join(p.name for p in written))

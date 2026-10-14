@@ -25,6 +25,8 @@ _md = capstone.Cs(capstone.CS_ARCH_M68K, capstone.CS_MODE_BIG_ENDIAN | capstone.
 
 
 def load_rom() -> bytes:
+    from build import ensure_rom
+    ensure_rom()
     return ROM_PATH.read_bytes()
 
 

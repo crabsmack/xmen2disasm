@@ -82,11 +82,11 @@ def main() -> int:
 
     for p, text in new.items():
         if text != files[p]:
-            p.write_text(text)
+            p.write_text(text, newline="\n")
     sys.argv = [sys.argv[0], "--quiet"]
     if build.main() != 0:
         for p, text in files.items():
-            p.write_text(text)
+            p.write_text(text, newline="\n")
         print("rename: rolled back (build was not byte-identical)")
         return 1
     return 0

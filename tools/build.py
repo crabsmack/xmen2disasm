@@ -29,6 +29,32 @@ LABEL = re.compile(r"^(?:\(\d+\))?\s*\d+/\s*([0-9A-F]+) : \s+([A-Za-z_][\w.]*):"
 DATA_RE = re.compile(r"^(?:dc\.[bwl]|dcb\.[bwl]|ds\.[bwl]|binclude|incbin|even|align|cnop|org)\b", re.I)
 
 
+def ensure_rom() -> bool:
+    """Make sure xmen2.bin exists in this checkout.
+
+    Git worktrees don't carry the (gitignored) ROM, so copy it from $XMEN2_ROM or
+    from the main worktree. Returns False if no copy can be found.
+    """
+    if ROM.exists():
+        return True
+    import os
+    import shutil
+    candidates = []
+    if os.environ.get("XMEN2_ROM"):
+        candidates.append(Path(os.environ["XMEN2_ROM"]))
+    try:
+        common = subprocess.run(["git", "rev-parse", "--path-format=absolute", "--git-common-dir"],
+                                cwd=ROOT, capture_output=True, text=True, check=True).stdout.strip()
+        candidates.append(Path(common).parent / "xmen2.bin")
+    except (OSError, subprocess.CalledProcessError):
+        pass
+    for c in candidates:
+        if c.exists():
+            shutil.copyfile(c, ROM)
+            return True
+    return False
+
+
 def assemble(main: str = "xmen2.asm") -> tuple[bool, str]:
     (ROOT / "build").mkdir(exist_ok=True)
     stem = Path(main).stem
@@ -69,13 +95,13 @@ def export_oracles(lst: Path) -> int:
         if mnem and not DATA_RE.match(mnem) and addr < 0x200000:
             code.append(addr)
     code = sorted(set(code))
-    (ROOT / "build" / "xmen2.code_addrs.txt").write_text("".join(f"{a:06X}\n" for a in code))
+    (ROOT / "build" / "xmen2.code_addrs.txt").write_text("".join(f"{a:06X}\n" for a in code), newline="\n")
     syms = []
     for line in lst.read_text(encoding="latin-1").splitlines():
         m = LABEL.match(line)
         if m:
             syms.append((int(m.group(1), 16), m.group(2)))
-    (ROOT / "build" / "symbols.txt").write_text("".join(f"{n}=${a:06X}\n" for a, n in sorted(syms)))
+    (ROOT / "build" / "symbols.txt").write_text("".join(f"{n}=${a:06X}\n" for a, n in sorted(syms)), newline="\n")
     return len(code)
 
 
@@ -101,6 +127,7 @@ def main() -> int:
     ap = argparse.ArgumentParser()
     ap.add_argument("--quiet", action="store_true")
     args = ap.parse_args()
+    ensure_rom()
     if not ROM.exists():
         print(f"FAIL: original ROM missing at {ROM} (supply your own dump; see README)")
         return 2

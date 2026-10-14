@@ -140,7 +140,7 @@ def validate(rom: bytes, addrs: list[int]) -> set[int]:
     for a in addrs:
         ins = m68k.decode(rom, a)
         lines.append(f"\torg ${a:X}\n\t{m68k.format_ins(ins, {})}\n")
-    (ROOT / "build" / "validate.asm").write_text("".join(lines))
+    (ROOT / "build" / "validate.asm").write_text("".join(lines), newline="\n")
     ok, msg = build.assemble("build/validate.asm")
     rows = {a: d for a, d, _s in build.parse_listing(ROOT / "build" / "validate.lst")}
     bad = set()
@@ -176,7 +176,7 @@ def main() -> int:
             a += m68k.decode(rom, a).size
 
     (ROOT / "src").mkdir(exist_ok=True)
-    (ROOT / "src" / "macros.asm").write_text(MACROS)
+    (ROOT / "src" / "macros.asm").write_text(MACROS, newline="\n")
     bad = validate(rom, addrs)
     print(f"pass 1: {len(addrs)} instructions, {len(bad)} need dc.w fallback")
 
@@ -185,10 +185,10 @@ def main() -> int:
     if fdir.exists():
         shutil.rmtree(fdir)
     fdir.mkdir(parents=True)
-    (ROOT / "src" / "header.asm").write_text(header_asm(rom, labels))
-    (ROOT / "src" / "jumptable.asm").write_text(jumptable_asm(rom, labels))
+    (ROOT / "src" / "header.asm").write_text(header_asm(rom, labels), newline="\n")
+    (ROOT / "src" / "jumptable.asm").write_text(jumptable_asm(rom, labels), newline="\n")
     if not (ROOT / "src" / "ram.asm").exists():
-        (ROOT / "src" / "ram.asm").write_text(RAM)
+        (ROOT / "src" / "ram.asm").write_text(RAM, newline="\n")
 
     main_lines = [PREAMBLE, '\tinclude "src/header.asm"\n', '\tinclude "src/jumptable.asm"\n']
     cursor = m68k.JT_END
@@ -207,11 +207,11 @@ def main() -> int:
             starts.insert(0, s)
         bounds = starts + [e]
         for fs, fe in zip(bounds, bounds[1:]):
-            (fdir / f"{fs:06X}.asm").write_text(emit_function(rom, fs, fe, labels, bad, reasons))
+            (fdir / f"{fs:06X}.asm").write_text(emit_function(rom, fs, fe, labels, bad, reasons), newline="\n")
             main_lines.append(f'\tinclude "src/f/{fs:06X}.asm"\n')
         cursor = e
     gap(len(rom))
-    (ROOT / "xmen2.asm").write_text("".join(main_lines))
+    (ROOT / "xmen2.asm").write_text("".join(main_lines), newline="\n")
     print(f"pass 2: wrote {len(list(fdir.glob('*.asm')))} function files")
     sys.argv = [sys.argv[0]]
     return build.main()

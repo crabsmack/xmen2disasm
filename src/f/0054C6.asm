@@ -4,15 +4,15 @@
 sub_0054C6:
 	link.w	a6,#$0
 	pea.l	$298A(a5)
-	pea.l	$5C68(pc)
+	pea.l	Str_SiberiaB1Blizzard(pc)
 	jsr	$4F9A(a5)	; -> sub_1F9464
 	move.b	d0,-$3B70(a5)
 	pea.l	$E92(a5)
-	pea.l	$5C50(pc)
+	pea.l	Str_CerebroScreenSentinels(pc)
 	jsr	$4F9A(a5)	; -> sub_1F9464
 	move.b	d0,-$3B7A(a5)
 	pea.l	$2412(a5)
-	pea.l	$5C38(pc)
+	pea.l	Str_SentinelsD1Exterior1(pc)
 	jsr	$4F9A(a5)	; -> sub_1F9464
 	move.b	d0,-$3B72(a5)
 	pea.l	$EC2(a5)
