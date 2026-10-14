@@ -1,0 +1,45 @@
+; ---------------------------------------------------------------------------
+; sub_1F7C0A	[jt 2526]
+; ---------------------------------------------------------------------------
+sub_1F7C0A:
+	link.w	a6,#$0
+	movem.l	d3/d7/a4,-(a7)
+	move.w	-$3470(a5),d0
+	ext.l	d0
+	lsl.l	#$2,d0
+	move.l	d0,d1
+	lsl.l	#$2,d0
+	add.l	d1,d0
+	lea.l	-$33D2(a5),a0
+	lea.l	(a0,d0.w),a4
+	move.w	-$3470(a5),d7
+	move.w	#$FF,d3
+	bra.s	loc_1F7C5A
+loc_1F7C32:
+	move.b	(a4),d0
+	ext.w	d0
+	move.w	#$80,d1
+	and.b	d0,d1
+	moveq	#$0,d0
+	move.b	d1,d0
+	tst.l	d0
+	bne.s	loc_1F7C52
+	cmp.w	-$3474(a5),d7
+	ble.s	loc_1F7C4E
+	move.w	d7,-$3474(a5)
+loc_1F7C4E:
+	move.w	d7,d0
+	bra.s	loc_1F7C60
+loc_1F7C52:
+	lea.l	$14(a4),a4
+	move.w	d7,d0
+	addq.w	#$1,d7
+loc_1F7C5A:
+	cmp.w	d7,d3
+	bgt.s	loc_1F7C32
+loc_1F7C5E:
+	bra.s	loc_1F7C5E
+loc_1F7C60:
+	movem.l	-$C(a6),d3/d7/a4
+	unlk	a6
+	rts

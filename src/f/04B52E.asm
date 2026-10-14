@@ -1,0 +1,36 @@
+; ---------------------------------------------------------------------------
+; sub_04B52E	[jt 330]
+; ---------------------------------------------------------------------------
+sub_04B52E:
+	link.w	a6,#$0
+	move.l	a4,-(a7)
+	movea.l	$8(a6),a4
+	move.l	#$F600,$8(a4)
+	move.l	#$FFFFEC00,$C(a4)
+	ori.b	#$10,$2E(a4)
+	pea.l	($82).w
+	move.l	a4,-(a7)
+	movea.l	(a4),a0
+	movea.l	$56(a0),a1
+	jsr	(a1)
+	moveq	#$79,d0
+	move.l	d0,-(a7)
+	jsr	$5222(a5)	; -> sub_1FE5A2
+	moveq	#$79,d0
+	move.l	d0,-(a7)
+	jsr	$521A(a5)	; -> sub_1FE584
+	moveq	#$5,d0
+	move.l	d0,-(a7)
+	pea.l	($6000).w
+	move.l	#$10000,-(a7)
+	move.l	a4,-(a7)
+	jsr	sub_04B3CE(pc)
+	lea.l	$20(a7),a7
+	clr.w	$6C(a4)
+	lea.l	sub_04B59E(pc),a0
+	move.l	a0,$5C(a4)
+	moveq	#$8,d0
+	and.w	$4(a4),d0
+	movea.l	-$4(a6),a4
+	unlk	a6
+	rts

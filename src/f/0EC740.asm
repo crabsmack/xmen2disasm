@@ -1,0 +1,47 @@
+; ---------------------------------------------------------------------------
+; sub_0EC740	[jt 1300]
+; ---------------------------------------------------------------------------
+sub_0EC740:
+	link.w	a6,#$0
+	move.l	a4,-(a7)
+	movea.l	$8(a6),a0
+	moveq	#$0,d0
+	move.b	$7A(a0),d0
+	ext.l	d0
+	lsl.l	#$2,d0
+	move.l	d0,d1
+	lsl.l	#$2,d0
+	add.l	d1,d0
+	lea.l	-$33D2(a5),a0
+	lea.l	(a0,d0.w),a4
+	move.w	-$1754(a5),d0
+	ext.l	d0
+	move.w	#$C000,d1
+	and.w	d0,d1
+	moveq	#$0,d0
+	move.w	d1,d0
+	cmpi.l	#$8000,d0
+	bne.s	loc_0EC784
+	cmpa.l	-$16E2(a5),a4
+	beq.s	loc_0EC784
+	moveq	#$0,d0
+	bra.s	loc_0EC7A8
+loc_0EC784:
+	move.w	-$1844(a5),d0
+	ext.l	d0
+	move.w	#$C000,d1
+	and.w	d0,d1
+	moveq	#$0,d0
+	move.w	d1,d0
+	cmpi.l	#$8000,d0
+	bne.s	loc_0EC7A6
+	cmpa.l	-$17D2(a5),a4
+	beq.s	loc_0EC7A6
+	moveq	#$0,d0
+	bra.s	loc_0EC7A8
+loc_0EC7A6:
+	moveq	#$1,d0
+loc_0EC7A8:
+	movea.l	-$4(a6),a4
+	unlk	a6
+	rts

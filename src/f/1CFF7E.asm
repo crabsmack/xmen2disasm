@@ -1,0 +1,39 @@
+; ---------------------------------------------------------------------------
+; sub_1CFF7E	[link-after-rts]
+; ---------------------------------------------------------------------------
+sub_1CFF7E:
+	link.w	a6,#$0
+	movem.l	d7/a4,-(a7)
+	movea.l	$8(a6),a4
+	move.w	$18(a4),d7
+	move.w	#$1000,d0
+	and.w	$4(a4),d0
+	bne.s	loc_1CFFAA
+	lea.l	sub_1D011E(pc),a0
+	move.l	a0,$5C(a4)
+	move.l	a4,-(a7)
+	jsr	sub_1D011E(pc)
+	addq.w	#$4,a7
+	bra.s	loc_1CFFE0
+loc_1CFFAA:
+	cmpi.w	#$FD00,d7
+	bge.s	loc_1CFFB8
+	addi.w	#$100,$18(a4)
+	bra.s	loc_1CFFE0
+loc_1CFFB8:
+	cmpi.w	#$100,d7
+	ble.s	loc_1CFFC6
+	subi.w	#$100,$18(a4)
+	bra.s	loc_1CFFE0
+loc_1CFFC6:
+	movea.l	$8C(a4),a0
+	move.w	$E(a0),$20(a4)
+	lea.l	sub_1CFE26(pc),a0
+	move.l	a0,$5C(a4)
+	move.l	a4,-(a7)
+	jsr	sub_1CFE26(pc)
+	addq.w	#$4,a7
+loc_1CFFE0:
+	movem.l	-$8(a6),d7/a4
+	unlk	a6
+	rts

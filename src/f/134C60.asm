@@ -1,0 +1,95 @@
+; ---------------------------------------------------------------------------
+; sub_134C60	[jt 1769]
+; ---------------------------------------------------------------------------
+sub_134C60:
+	link.w	a6,#$FFFE
+	movem.l	d3-d7/a3-a4,-(a7)
+	movea.l	$8(a6),a4
+	moveq	#$0,d0
+	move.b	-$3B5C(a5),d0
+	cmp.w	-$359C(a5),d0
+	beq.w	loc_134D44
+	move.w	-$1A84(a5),d0
+	ext.l	d0
+	lsl.l	#$2,d0
+	move.l	d0,d1
+	lsl.l	#$2,d0
+	add.l	d1,d0
+	lea.l	-$3886(a5),a0
+	move.w	#$2000,d6
+	or.w	$6(a0,d0.w),d6
+	move.l	$8(a4),d0
+	asr.l	#$8,d0
+	moveq	#$10,d1
+	sub.l	d1,d0
+	move.w	-$348E(a5),d2
+	ext.l	d2
+	sub.l	d2,d0
+	move.w	d0,-$2(a6)
+	move.l	$C(a4),d0
+	asr.l	#$8,d0
+	moveq	#$18,d2
+	sub.l	d2,d0
+	move.w	-$3490(a5),d3
+	ext.l	d3
+	move.l	d0,d4
+	sub.l	d3,d4
+	lea.l	$2E(a4),a3
+	moveq	#$0,d5
+	move.b	$1(a3),d5
+	tst.l	d5
+	cmpi.w	#$FF,d5
+	beq.w	loc_134D5A
+	move.b	(a3),d7
+	moveq	#$10,d0
+	and.b	d7,d0
+	beq.s	loc_134CDE
+	ori.w	#$800,d6
+loc_134CDE:
+	moveq	#$4,d0
+	and.b	d7,d0
+	beq.s	loc_134CE8
+	ori.w	#$8000,d6
+loc_134CE8:
+	ext.l	d5
+	move.l	d5,d7
+	move.l	d7,d0
+	lsl.l	#$3,d0
+	move.l	d7,d1
+	lsl.l	#$2,d1
+	add.w	d0,d1
+	add.w	d1,d6
+	lea.l	-$1FDA(a5),a0
+	movea.l	-$1FE6(a5),a1
+	move.b	$3(a1),d0
+	ext.w	d0
+	move.w	d0,-$1FE2(a5)
+	ext.l	d0
+	asl.l	#$3,d0
+	add.l	a0,d0
+	move.l	d0,-$1FE6(a5)
+	move.w	d4,d0
+	add.w	#$80,d0
+	movea.l	-$1FE6(a5),a0
+	move.w	d0,(a0)
+	movea.l	-$1FE6(a5),a0
+	move.b	#$E,$2(a0)
+	movea.l	-$1FE6(a5),a0
+	move.w	d6,$4(a0)
+	move.w	-$2(a6),d0
+	add.w	#$80,d0
+	movea.l	-$1FE6(a5),a0
+	move.w	d0,$6(a0)
+	bra.s	loc_134D5A
+loc_134D44:
+	move.l	a4,-(a7)
+	lea.l	$3732(a5),a0
+	movea.l	$2(a0),a0
+	movea.l	$2(a0),a0
+	movea.l	$1A(a0),a1
+	jsr	(a1)
+	addq.w	#$4,a7
+loc_134D5A:
+	movem.l	-$1E(a6),d3-d7/a3-a4
+	unlk	a6
+	rts

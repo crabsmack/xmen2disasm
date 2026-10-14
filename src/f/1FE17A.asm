@@ -1,0 +1,99 @@
+; ---------------------------------------------------------------------------
+; sub_1FE17A
+; ---------------------------------------------------------------------------
+sub_1FE17A:
+	btst	#$6,-$1D47(a5)
+	bne.s	loc_1FE186
+	jmp	sub_1FE0EC(pc)
+loc_1FE186:
+	ori.w	#$700,sr
+	lea.l	-$7A4(a5),a0
+	move.w	-$7B4(a5),d0
+	beq.s	loc_1FE1C6
+	asl.w	#$3,d0
+	adda.w	d0,a0
+	add.w	d0,d0
+	adda.w	d0,a0
+	movea.l	a0,a1
+	suba.w	#$18,a1
+	moveq	#$0,d0
+	move.w	$6(a1),d1
+	move.w	d1,d0
+	add.l	(a1),d0
+	cmp.l	$4(a7),d0
+	bne.s	loc_1FE1C6
+	move.w	d1,d0
+	add.w	$4(a1),d0
+	cmp.w	$A(a7),d0
+	bne.s	loc_1FE1C6
+	add.w	$E(a7),d1
+	movea.l	a1,a0
+	bra.s	loc_1FE21A
+loc_1FE1C6:
+	addq.w	#$1,-$7B4(a5)
+	clr.l	(a0)
+	move.w	#$8174,$8(a0)
+	move.l	$4(a7),d1
+	move.l	d1,(a0)
+	lsr.l	#$1,d1
+	move.w	#$9500,d0
+	move.b	d1,d0
+	move.w	d0,$E(a0)
+	move.b	#$96,d1
+	rol.w	#$8,d1
+	move.w	d1,$10(a0)
+	swap	d1
+	andi.w	#$7F,d1
+	ori.w	#$9700,d1
+	move.w	d1,$12(a0)
+	moveq	#$0,d0
+	move.w	$A(a7),d0
+	move.w	d0,$4(a0)
+	lsl.l	#$2,d0
+	lsr.w	#$2,d0
+	ori.l	#$804000,d0
+	swap	d0
+	move.l	d0,$14(a0)
+	move.w	$E(a7),d1
+loc_1FE21A:
+	move.l	(a0),d2
+	move.l	d2,d0
+	ext.l	d1
+	add.l	d1,d2
+	swap	d2
+	swap	d0
+	cmp.w	d2,d0
+	beq.s	loc_1FE26C
+	moveq	#$0,d0
+	move.w	d2,d0
+	swap	d2
+	tst.w	d2
+	beq.s	loc_1FE26C
+	sub.w	d2,d1
+	move.w	d2,$E(a7)
+	swap	d0
+	move.l	d0,$4(a7)
+	move.w	$4(a0),d0
+	add.w	d1,d0
+	move.w	d0,$A(a7)
+	move.w	d1,$6(a0)
+	lsr.w	#$1,d1
+	move.w	#$9300,d0
+	move.b	d1,d0
+	move.w	d0,$A(a0)
+	move.b	#$94,d1
+	rol.w	#$8,d1
+	move.w	d1,$C(a0)
+	lea.l	$18(a0),a0
+	bra.w	loc_1FE1C6
+loc_1FE26C:
+	move.w	d1,$6(a0)
+	lsr.w	#$1,d1
+	move.w	#$9300,d0
+	move.b	d1,d0
+	move.w	d0,$A(a0)
+	move.b	#$94,d1
+	rol.w	#$8,d1
+	move.w	d1,$C(a0)
+	andi.w	#$F8FF,sr
+	rts

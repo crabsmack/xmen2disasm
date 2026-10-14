@@ -1,0 +1,101 @@
+; ---------------------------------------------------------------------------
+; sub_1CDA48	[link-after-rts]
+; ---------------------------------------------------------------------------
+sub_1CDA48:
+	link.w	a6,#$0
+	movem.l	d3/d6-d7/a4,-(a7)
+	movea.l	$8(a6),a4
+	move.w	$16(a4),d6
+	move.w	$18(a4),d7
+	tst.w	d6
+	sge.b	d3
+	neg.b	d3
+	beq.s	loc_1CDA6A
+	ext.l	d6
+	move.l	d6,d0
+	bra.s	loc_1CDA70
+loc_1CDA6A:
+	ext.l	d6
+	move.l	d6,d0
+	neg.l	d0
+loc_1CDA70:
+	moveq	#$40,d1
+	cmp.l	d0,d1
+	ble.s	loc_1CDA86
+	tst.b	$F(a6)
+	beq.s	loc_1CDA94
+	clr.w	$1E(a4)
+	clr.w	$16(a4)
+	bra.s	loc_1CDA94
+loc_1CDA86:
+	move.w	$16(a4),d0
+	asr.w	#$3,d0
+	ext.l	d0
+	neg.l	d0
+	move.w	d0,$1E(a4)
+loc_1CDA94:
+	tst.w	d7
+	sge.b	d3
+	neg.b	d3
+	beq.s	loc_1CDAA2
+	ext.l	d7
+	move.l	d7,d0
+	bra.s	loc_1CDAA8
+loc_1CDAA2:
+	ext.l	d7
+	move.l	d7,d0
+	neg.l	d0
+loc_1CDAA8:
+	moveq	#$40,d1
+	cmp.l	d0,d1
+	ble.s	loc_1CDACA
+	cmpi.w	#$FFD0,d7
+	bge.s	loc_1CDABC
+	move.w	#$1,$20(a4)
+	bra.s	loc_1CDAD8
+loc_1CDABC:
+	cmpi.w	#$30,d7
+	ble.s	loc_1CDAD8
+	move.w	#$FFFF,$20(a4)
+	bra.s	loc_1CDAD8
+loc_1CDACA:
+	move.w	$18(a4),d0
+	asr.w	#$3,d0
+	ext.l	d0
+	neg.l	d0
+	move.w	d0,$20(a4)
+loc_1CDAD8:
+	tst.b	$13(a6)
+	beq.s	loc_1CDB28
+	tst.b	$9D(a4)
+	seq.b	d3
+	neg.b	d3
+	beq.s	loc_1CDAF2
+	move.w	-$3B98(a5),d0
+	and.w	-$3A36(a5),d0
+	bra.s	loc_1CDAFA
+loc_1CDAF2:
+	move.w	-$3B98(a5),d0
+	and.w	-$3A38(a5),d0
+loc_1CDAFA:
+	beq.s	loc_1CDB04
+	ori.b	#$10,$2E(a4)
+	bra.s	loc_1CDB28
+loc_1CDB04:
+	tst.b	$9D(a4)
+	seq.b	d3
+	neg.b	d3
+	beq.s	loc_1CDB18
+	move.w	-$3B9A(a5),d0
+	and.w	-$3A36(a5),d0
+	bra.s	loc_1CDB20
+loc_1CDB18:
+	move.w	-$3B9A(a5),d0
+	and.w	-$3A38(a5),d0
+loc_1CDB20:
+	beq.s	loc_1CDB28
+	andi.b	#$EF,$2E(a4)
+loc_1CDB28:
+	movem.l	-$10(a6),d3/d6-d7/a4
+	unlk	a6
+	rts

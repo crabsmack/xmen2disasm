@@ -1,0 +1,49 @@
+; ---------------------------------------------------------------------------
+; sub_11F1A6	[jt 1644]
+; ---------------------------------------------------------------------------
+sub_11F1A6:
+	link.w	a6,#$0
+	movem.l	d3/d6-d7/a4,-(a7)
+	move.w	$A(a6),d6
+	jsr	sub_1203A4(pc)
+	move.w	d6,d1
+	ext.l	d1
+	add.l	d1,d1
+	move.l	d1,d0
+	add.l	d0,d0
+	add.l	d0,d1
+	move.w	d1,d7
+	addq.w	#$2,d7
+	pea.l	$11F22A(pc)
+	ext.l	d7
+	move.l	d7,-(a7)
+	jsr	$5032(a5)	; -> sub_1FA8DC
+	move.l	d0,-$1A98(a5)
+	ext.l	d7
+	move.l	d7,-(a7)
+	pea.l	($FF).w
+	move.l	-$1A98(a5),-(a7)
+	jsr	$4DB2(a5)	; -> sub_1F4900
+	movea.l	-$1A98(a5),a0
+	move.w	d6,(a0)
+	lea.l	-$1C9C(a5),a4
+	clr.w	d7
+	lea.l	$14(a7),a7
+loc_11F1F6:
+	move.w	#$B4,d0
+	muls.w	d7,d0
+	move.l	#$80,d1
+	jsr	$3FA2(a5)	; -> sub_15C222
+	move.l	d0,-(a7)
+	jsr	$517A(a5)	; -> sub_1FDEF8
+	move.l	d0,(a4)
+	addq.w	#$4,a7
+	move.w	d7,d0
+	addq.w	#$1,d7
+	addq.w	#$4,a4
+	cmpi.w	#$80,d7
+	blt.s	loc_11F1F6
+	move.l	-$1A98(a5),d0
+	movem.l	-$10(a6),d3/d6-d7/a4
+	unlk	a6
+	rts

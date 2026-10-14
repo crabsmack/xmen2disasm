@@ -1,0 +1,50 @@
+; ---------------------------------------------------------------------------
+; sub_13D1CE	[jt 1856]
+; ---------------------------------------------------------------------------
+sub_13D1CE:
+	link.w	a6,#$0
+	movem.l	d6-d7/a4,-(a7)
+	movea.l	$8(a6),a4
+	move.l	$8(a4),d6
+	asr.l	#$8,d6
+	move.l	$C(a4),d7
+	asr.l	#$8,d7
+	move.w	$16(a4),d0
+	ext.l	d0
+	add.l	d0,$8(a4)
+	move.w	$18(a4),d0
+	ext.l	d0
+	add.l	d0,$C(a4)
+	move.w	$1E(a4),d0
+	add.w	d0,$16(a4)
+	move.w	$20(a4),d0
+	add.w	d0,$18(a4)
+	moveq	#$1,d0
+	cmp.w	$E(a6),d0
+	bge.s	loc_13D236
+	move.w	$16(a4),d0
+	ext.l	d0
+	add.l	d0,$8(a4)
+	move.w	$18(a4),d0
+	ext.l	d0
+	add.l	d0,$C(a4)
+	move.w	$1E(a4),d0
+	add.w	d0,$16(a4)
+	move.w	$20(a4),d0
+	add.w	d0,$18(a4)
+loc_13D236:
+	lea.l	$3A92(a5),a0
+	move.l	$44(a4),d0
+	cmp.l	$2(a0),d0
+	bne.s	loc_13D256
+	ext.l	d7
+	move.l	d7,-(a7)
+	ext.l	d6
+	move.l	d6,-(a7)
+	move.l	a4,-(a7)
+	jsr	sub_13CF6A(pc)
+	lea.l	$C(a7),a7
+loc_13D256:
+	movem.l	-$C(a6),d6-d7/a4
+	unlk	a6
+	rts

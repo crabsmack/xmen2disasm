@@ -1,0 +1,172 @@
+; ---------------------------------------------------------------------------
+; sub_017706	[jt 94]
+; ---------------------------------------------------------------------------
+sub_017706:
+	link.w	a6,#$FFF6
+	movem.l	d3-d7/a3-a4,-(a7)
+	move.w	$E(a6),d5
+	movea.l	$8(a6),a4
+	move.l	$B8(a4),-$8(a6)
+	move.l	$BC(a4),-$4(a6)
+	lea.l	$94(a4),a3
+	move.w	$92(a4),d0
+	btst	#$0,d0
+	beq.s	loc_01779A
+	moveq	#$10,d0
+	and.b	$2E(a4),d0
+	seq.b	d3
+	neg.b	d3
+	beq.s	loc_017740
+	moveq	#$3,d0
+	bra.s	loc_017742
+loc_017740:
+	moveq	#-$3,d0
+loc_017742:
+	lsl.l	#$8,d0
+	move.w	d0,-$A(a6)
+	move.w	#$E000,d4
+	move.w	$10(a4),d0
+	ext.l	d0
+	lsl.l	#$8,d0
+	move.w	-$A(a6),d1
+	ext.l	d1
+	move.l	(a3),d2
+	sub.l	d1,d2
+	sub.l	d2,d0
+	move.l	d0,d6
+	asr.l	#$1,d6
+	move.w	$12(a4),d0
+	ext.l	d0
+	lsl.l	#$8,d0
+	ext.l	d4
+	move.l	$4(a3),d1
+	sub.l	d4,d1
+	sub.l	d1,d0
+	move.l	d0,d7
+	asr.l	#$1,d7
+	move.w	$10(a4),d0
+	ext.l	d0
+	lsl.l	#$8,d0
+	add.l	d6,d0
+	move.l	d0,$B8(a4)
+	move.w	$12(a4),d0
+	ext.l	d0
+	lsl.l	#$8,d0
+	add.l	d7,d0
+	move.l	d0,$BC(a4)
+	bra.w	loc_017850
+loc_01779A:
+	move.w	$10(a4),d0
+	ext.l	d0
+	lsl.l	#$8,d0
+	move.l	$B8(a4),d1
+	sub.l	d0,d1
+	sge.b	d3
+	neg.b	d3
+	beq.s	loc_0177BE
+	move.w	$10(a4),d0
+	ext.l	d0
+	lsl.l	#$8,d0
+	move.l	$B8(a4),d1
+	sub.l	d0,d1
+	bra.s	loc_0177CE
+loc_0177BE:
+	move.w	$10(a4),d0
+	ext.l	d0
+	lsl.l	#$8,d0
+	move.l	$B8(a4),d1
+	sub.l	d0,d1
+	neg.l	d1
+loc_0177CE:
+	moveq	#$3,d0
+	cmp.l	d1,d0
+	blt.s	loc_01780E
+	move.w	$12(a4),d0
+	ext.l	d0
+	lsl.l	#$8,d0
+	move.l	$BC(a4),d1
+	sub.l	d0,d1
+	sge.b	d3
+	neg.b	d3
+	beq.s	loc_0177F8
+	move.w	$12(a4),d0
+	ext.l	d0
+	lsl.l	#$8,d0
+	move.l	$BC(a4),d1
+	sub.l	d0,d1
+	bra.s	loc_017808
+loc_0177F8:
+	move.w	$12(a4),d0
+	ext.l	d0
+	lsl.l	#$8,d0
+	move.l	$BC(a4),d1
+	sub.l	d0,d1
+	neg.l	d1
+loc_017808:
+	moveq	#$3,d0
+	cmp.l	d1,d0
+	bge.s	loc_017838
+loc_01780E:
+	move.w	$10(a4),d0
+	ext.l	d0
+	lsl.l	#$8,d0
+	sub.l	$B8(a4),d0
+	move.l	d0,d6
+	asr.l	#$4,d6
+	move.w	$12(a4),d0
+	ext.l	d0
+	lsl.l	#$8,d0
+	sub.l	$BC(a4),d0
+	move.l	d0,d7
+	asr.l	#$4,d7
+	add.l	d6,$B8(a4)
+	add.l	d7,$BC(a4)
+	bra.s	loc_017850
+loc_017838:
+	move.w	$10(a4),d0
+	ext.l	d0
+	lsl.l	#$8,d0
+	move.l	d0,$B8(a4)
+	move.w	$12(a4),d0
+	ext.l	d0
+	lsl.l	#$8,d0
+	move.l	d0,$BC(a4)
+loc_017850:
+	move.l	$B8(a4),$8(a4)
+	move.l	$BC(a4),$C(a4)
+	move.w	$10(a4),d0
+	ext.l	d0
+	lsl.l	#$8,d0
+	cmp.l	$B8(a4),d0
+	ble.s	loc_017872
+	andi.b	#$EF,$2E(a4)
+	bra.s	loc_017886
+loc_017872:
+	move.w	$10(a4),d0
+	ext.l	d0
+	lsl.l	#$8,d0
+	cmp.l	$B8(a4),d0
+	bge.s	loc_017886
+	ori.b	#$10,$2E(a4)
+loc_017886:
+	movea.l	$B4(a4),a0
+	cmpi.w	#$6400,(a0)
+	blt.s	loc_01789A
+	lea.l	$342(a5),a0
+	move.l	$2(a0),$B4(a4)
+loc_01789A:
+	movea.l	$B4(a4),a0
+	move.w	(a0),d0
+	ext.l	d0
+	add.l	d0,$8(a4)
+	move.w	$2(a0),d0
+	ext.l	d0
+	add.l	d0,$C(a4)
+	addq.l	#$4,$B4(a4)
+	move.w	d5,d0
+	subq.w	#$1,d5
+	tst.w	d5
+	bgt.s	loc_017886
+	movem.l	-$26(a6),d3-d7/a3-a4
+	unlk	a6
+	rts

@@ -1,0 +1,63 @@
+; ---------------------------------------------------------------------------
+; sub_037E82	[link-after-rts]
+; ---------------------------------------------------------------------------
+sub_037E82:
+	link.w	a6,#$FFFC
+	movem.l	d4-d7/a3-a4,-(a7)
+	movea.l	$8(a6),a4
+	movea.l	$8C(a4),a3
+	move.l	a3,d0
+	beq.w	loc_037F1C
+	move.w	$52(a3),d0
+	ext.l	d0
+	move.w	$4E(a3),d1
+	ext.l	d1
+	add.l	d0,d1
+	lsl.l	#$7,d1
+	move.l	d1,d6
+	asr.l	#$8,d6
+	move.w	$4C(a3),d0
+	ext.l	d0
+	move.w	$50(a3),d1
+	ext.l	d1
+	add.l	d0,d1
+	lsl.l	#$7,d1
+	move.l	d1,d7
+	asr.l	#$8,d7
+	move.l	$8(a4),d0
+	asr.l	#$8,d0
+	moveq	#$30,d1
+	sub.l	d1,d0
+	move.w	d0,-$4(a6)
+	move.l	$C(a4),d0
+	asr.l	#$8,d0
+	move.w	$94(a4),d2
+	ext.l	d2
+	sub.l	d2,d0
+	move.w	d0,-$2(a6)
+	move.l	$8(a4),d0
+	asr.l	#$8,d0
+	move.l	d0,d4
+	add.l	d1,d4
+	move.l	$C(a4),d0
+	asr.l	#$8,d0
+	move.l	d0,d5
+	moveq	#$10,d0
+	add.l	d0,d5
+	cmp.w	-$4(a6),d6
+	blt.s	loc_037F1C
+	cmp.w	d6,d4
+	blt.s	loc_037F1C
+	cmp.w	-$2(a6),d7
+	blt.s	loc_037F1C
+	cmp.w	d7,d5
+	blt.s	loc_037F1C
+	clr.w	$6C(a4)
+	lea.l	sub_037F26(pc),a0
+	move.l	a0,$5C(a4)
+	moveq	#$8,d0
+	and.w	$4(a4),d0
+loc_037F1C:
+	movem.l	-$1C(a6),d4-d7/a3-a4
+	unlk	a6
+	rts

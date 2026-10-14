@@ -1,0 +1,81 @@
+; ---------------------------------------------------------------------------
+; sub_00F942	[link-after-rts]
+; ---------------------------------------------------------------------------
+sub_00F942:
+	link.w	a6,#$0
+	movem.l	d6-d7/a4,-(a7)
+	clr.w	-$3A26(a5)
+	clr.w	-$3A28(a5)
+	clr.w	-$3A2E(a5)
+	clr.w	-$3A30(a5)
+	moveq	#$6,d0
+	cmp.w	-$3B32(a5),d0
+	bgt.s	loc_00F9AC
+	clr.w	-$3B32(a5)
+	lea.l	$CA(a5),a0
+	movea.l	$2(a0),a4
+	move.w	-$3B3A(a5),d0
+	ext.l	d0
+	lsl.l	#$3,d0
+	tst.b	(a4,d0.l)
+	blt.s	loc_00F996
+	move.l	a4,-(a7)
+	move.w	-$3B3A(a5),d0
+	ext.l	d0
+	move.l	d0,-(a7)
+	jsr	sub_00F648(pc)
+	move.w	-$3B3A(a5),d0
+	addq.w	#$1,-$3B3A(a5)
+	addq.w	#$8,a7
+	bra.s	loc_00F9AC
+loc_00F996:
+	clr.w	-$3B32(a5)
+	lea.l	sub_00FA24(pc),a0
+	movea.l	-$35B6(a5),a1
+	move.l	a0,$4(a1)
+	move.b	#$1,-$38B4(a5)
+loc_00F9AC:
+	move.w	-$1754(a5),d0
+	ext.l	d0
+	move.w	#$C000,d1
+	and.w	d0,d1
+	moveq	#$0,d0
+	move.w	d1,d0
+	cmpi.l	#$8000,d0
+	bne.s	loc_00F9D0
+	clr.w	-$173A(a5)
+	clr.l	-$1742(a5)
+	clr.w	-$1738(a5)
+loc_00F9D0:
+	move.w	-$1844(a5),d0
+	ext.l	d0
+	move.w	#$C000,d1
+	and.w	d0,d1
+	moveq	#$0,d0
+	move.w	d1,d0
+	cmpi.l	#$8000,d0
+	bne.s	loc_00F9F4
+	clr.w	-$182A(a5)
+	clr.l	-$1832(a5)
+	clr.w	-$1828(a5)
+loc_00F9F4:
+	move.w	-$348E(a5),d6
+	tst.b	-$38DE(a5)
+	beq.s	loc_00FA02
+	moveq	#$4,d0
+	bra.s	loc_00FA04
+loc_00FA02:
+	moveq	#$2,d0
+loc_00FA04:
+	ext.w	d0
+	move.w	-$3490(a5),d7
+	sub.w	d0,d7
+	ext.l	d7
+	move.l	d7,-(a7)
+	ext.l	d6
+	move.l	d6,-(a7)
+	jsr	sub_00FC12(pc)
+	addq.w	#$8,a7
+	movem.l	-$C(a6),d6-d7/a4
+	unlk	a6
+	rts

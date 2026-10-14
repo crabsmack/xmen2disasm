@@ -1,0 +1,53 @@
+; ---------------------------------------------------------------------------
+; loc_1114FC
+; ---------------------------------------------------------------------------
+loc_1114FC:
+	move.l	d6,d0
+	lsl.l	#$4,d0
+	movea.l	$28(a6),a0
+	move.w	d0,(a0)
+	move.l	d7,d0
+	lsl.l	#$4,d0
+	movea.l	$2C(a6),a0
+	move.w	d0,(a0)
+	movea.l	$8(a6),a0
+	move.w	#$80,d0
+	and.w	(a0),d0
+	beq.s	loc_111530
+	movea.l	$28(a6),a0
+	move.l	d6,d0
+	asr.l	#$1,d0
+	add.w	d0,(a0)
+	movea.l	$2C(a6),a0
+	move.l	d7,d0
+	asr.l	#$1,d0
+	add.w	d0,(a0)
+loc_111530:
+	movea.l	$8(a6),a0
+	moveq	#$40,d0
+	and.w	(a0),d0
+	beq.s	loc_11154E
+	movea.l	$28(a6),a0
+	move.l	d6,d0
+	asr.l	#$2,d0
+	add.w	d0,(a0)
+	movea.l	$2C(a6),a0
+	move.l	d7,d0
+	asr.l	#$2,d0
+	add.w	d0,(a0)
+loc_11154E:
+	movea.l	$20(a6),a0
+	movea.l	$28(a6),a1
+	move.w	(a1),d0
+	ext.l	d0
+	add.l	d0,(a0)
+	movea.l	$24(a6),a0
+	movea.l	$2C(a6),a1
+	move.w	(a1),d0
+	ext.l	d0
+	add.l	d0,(a0)
+	subq.w	#$1,d5
+	bgt.w	loc_1111FE
+	movem.l	-$14(a6),d5-d7/a3-a4
+	unlk	a6
+	rts

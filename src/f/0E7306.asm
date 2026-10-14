@@ -1,0 +1,187 @@
+; ---------------------------------------------------------------------------
+; sub_0E7306	[link-after-rts]
+; ---------------------------------------------------------------------------
+sub_0E7306:
+	link.w	a6,#$0
+	moveq	#$1,d0
+	move.l	d0,-(a7)
+	lea.l	$2642(a5),a0
+	move.l	$2(a0),-(a7)
+	pea.l	-$3B3A(a5)
+	pea.l	-$3B42(a5)
+	pea.l	-$3B32(a5)
+	jsr	$3EB2(a5)	; -> sub_159FD6
+	moveq	#$1,d0
+	move.l	d0,-(a7)
+	lea.l	$264A(a5),a0
+	move.l	$2(a0),-(a7)
+	pea.l	-$3B3C(a5)
+	pea.l	-$3B44(a5)
+	pea.l	-$3B34(a5)
+	jsr	$3EB2(a5)	; -> sub_159FD6
+	moveq	#$0,d0
+	move.l	d0,-(a7)
+	lea.l	$2652(a5),a0
+	move.l	$2(a0),-(a7)
+	pea.l	-$3B3E(a5)
+	pea.l	-$3B46(a5)
+	pea.l	-$3B36(a5)
+	jsr	$3EB2(a5)	; -> sub_159FD6
+	moveq	#$1,d0
+	move.l	d0,-(a7)
+	lea.l	$2662(a5),a0
+	move.l	$2(a0),-(a7)
+	pea.l	-$3B3E(a5)
+	pea.l	-$3B46(a5)
+	pea.l	-$3B36(a5)
+	jsr	$3EB2(a5)	; -> sub_159FD6
+	moveq	#$1,d0
+	move.l	d0,-(a7)
+	lea.l	$265A(a5),a0
+	move.l	$2(a0),-(a7)
+	pea.l	-$3B40(a5)
+	pea.l	-$3B48(a5)
+	pea.l	-$3B38(a5)
+	jsr	$3EB2(a5)	; -> sub_159FD6
+	moveq	#$1,d0
+	move.l	d0,-(a7)
+	lea.l	$266A(a5),a0
+	move.l	$2(a0),-(a7)
+	pea.l	-$3BEC(a5)
+	pea.l	-$3BEA(a5)
+	pea.l	-$3BE8(a5)
+	jsr	$3EB2(a5)	; -> sub_159FD6
+	tst.b	-$3BE6(a5)
+	lea.l	$78(a7),a7
+	beq.w	loc_0E757E
+	moveq	#$0,d0
+	move.l	d0,-(a7)
+	lea.l	$2672(a5),a0
+	move.l	$2(a0),-(a7)
+	pea.l	-$3BF2(a5)
+	pea.l	-$3BF0(a5)
+	pea.l	-$3BEE(a5)
+	jsr	$3EB2(a5)	; -> sub_159FD6
+	moveq	#$0,d0
+	move.l	d0,-(a7)
+	lea.l	$267A(a5),a0
+	move.l	$2(a0),-(a7)
+	pea.l	-$3BF2(a5)
+	pea.l	-$3BF0(a5)
+	pea.l	-$3BEE(a5)
+	jsr	$3EB2(a5)	; -> sub_159FD6
+	moveq	#$0,d0
+	move.l	d0,-(a7)
+	lea.l	$2682(a5),a0
+	move.l	$2(a0),-(a7)
+	pea.l	-$3BF2(a5)
+	pea.l	-$3BF0(a5)
+	pea.l	-$3BEE(a5)
+	jsr	$3EB2(a5)	; -> sub_159FD6
+	moveq	#$0,d0
+	move.l	d0,-(a7)
+	lea.l	$268A(a5),a0
+	move.l	$2(a0),-(a7)
+	pea.l	-$3BF2(a5)
+	pea.l	-$3BF0(a5)
+	pea.l	-$3BEE(a5)
+	jsr	$3EB2(a5)	; -> sub_159FD6
+	moveq	#$0,d0
+	move.l	d0,-(a7)
+	lea.l	$2692(a5),a0
+	move.l	$2(a0),-(a7)
+	pea.l	-$3BF2(a5)
+	pea.l	-$3BF0(a5)
+	pea.l	-$3BEE(a5)
+	jsr	$3EB2(a5)	; -> sub_159FD6
+	moveq	#$0,d0
+	move.l	d0,-(a7)
+	lea.l	$269A(a5),a0
+	move.l	$2(a0),-(a7)
+	pea.l	-$3BF2(a5)
+	pea.l	-$3BF0(a5)
+	pea.l	-$3BEE(a5)
+	jsr	$3EB2(a5)	; -> sub_159FD6
+	moveq	#$0,d0
+	move.l	d0,-(a7)
+	lea.l	$26A2(a5),a0
+	move.l	$2(a0),-(a7)
+	pea.l	-$3BF2(a5)
+	pea.l	-$3BF0(a5)
+	pea.l	-$3BEE(a5)
+	jsr	$3EB2(a5)	; -> sub_159FD6
+	moveq	#$0,d0
+	move.l	d0,-(a7)
+	lea.l	$26AA(a5),a0
+	move.l	$2(a0),-(a7)
+	pea.l	-$3BF2(a5)
+	pea.l	-$3BF0(a5)
+	pea.l	-$3BEE(a5)
+	jsr	$3EB2(a5)	; -> sub_159FD6
+	moveq	#$0,d0
+	move.l	d0,-(a7)
+	lea.l	$26B2(a5),a0
+	move.l	$2(a0),-(a7)
+	pea.l	-$3BF2(a5)
+	pea.l	-$3BF0(a5)
+	pea.l	-$3BEE(a5)
+	jsr	$3EB2(a5)	; -> sub_159FD6
+	moveq	#$0,d0
+	move.l	d0,-(a7)
+	lea.l	$26BA(a5),a0
+	move.l	$2(a0),-(a7)
+	pea.l	-$3BF2(a5)
+	pea.l	-$3BF0(a5)
+	pea.l	-$3BEE(a5)
+	jsr	$3EB2(a5)	; -> sub_159FD6
+	moveq	#$0,d0
+	move.l	d0,-(a7)
+	lea.l	$26C2(a5),a0
+	move.l	$2(a0),-(a7)
+	pea.l	-$3BF2(a5)
+	pea.l	-$3BF0(a5)
+	pea.l	-$3BEE(a5)
+	jsr	$3EB2(a5)	; -> sub_159FD6
+	moveq	#$0,d0
+	move.l	d0,-(a7)
+	lea.l	$26CA(a5),a0
+	move.l	$2(a0),-(a7)
+	pea.l	-$3BF2(a5)
+	pea.l	-$3BF0(a5)
+	pea.l	-$3BEE(a5)
+	jsr	$3EB2(a5)	; -> sub_159FD6
+	moveq	#$0,d0
+	move.l	d0,-(a7)
+	lea.l	$26D2(a5),a0
+	move.l	$2(a0),-(a7)
+	pea.l	-$3BF2(a5)
+	pea.l	-$3BF0(a5)
+	pea.l	-$3BEE(a5)
+	jsr	$3EB2(a5)	; -> sub_159FD6
+	moveq	#$0,d0
+	move.l	d0,-(a7)
+	lea.l	$26DA(a5),a0
+	move.l	$2(a0),-(a7)
+	pea.l	-$3BF2(a5)
+	pea.l	-$3BF0(a5)
+	pea.l	-$3BEE(a5)
+	jsr	$3EB2(a5)	; -> sub_159FD6
+	moveq	#$0,d0
+	move.l	d0,-(a7)
+	lea.l	$26E2(a5),a0
+	move.l	$2(a0),-(a7)
+	pea.l	-$3BF2(a5)
+	pea.l	-$3BF0(a5)
+	pea.l	-$3BEE(a5)
+	jsr	$3EB2(a5)	; -> sub_159FD6
+	moveq	#$1,d0
+	move.l	d0,-(a7)
+	lea.l	$26EA(a5),a0
+	move.l	$2(a0),-(a7)
+	pea.l	-$3BF2(a5)
+	pea.l	-$3BF0(a5)
+	pea.l	-$3BEE(a5)
+	jsr	$3EB2(a5)	; -> sub_159FD6
+loc_0E757E:
+	unlk	a6
+	rts

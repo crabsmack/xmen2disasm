@@ -1,0 +1,49 @@
+; ---------------------------------------------------------------------------
+; sub_1F6D76	[jt 2519]
+; ---------------------------------------------------------------------------
+sub_1F6D76:
+	link.w	a6,#$0
+	movem.l	d4-d7/a3-a4,-(a7)
+	movea.l	$8(a6),a3
+	movea.l	$76(a3),a4
+	move.l	a4,d0
+	beq.w	loc_1F6EBA
+	move.b	$1(a4),d0
+	ext.w	d0
+	asl.w	#$2,d0
+	lea.l	-$346A(a5),a0
+	move.l	(a0,d0.w),-$346E(a5)
+	beq.s	loc_1F6DBA
+	moveq	#$0,d0
+	move.l	d0,-(a7)
+	move.l	a3,-(a7)
+	move.l	a4,-(a7)
+	moveq	#$6,d1
+	move.l	d1,-(a7)
+	movea.l	-$346E(a5),a0
+	jsr	(a0)
+	tst.w	d0
+	lea.l	$10(a7),a7
+	bra.s	loc_1F6DBC
+loc_1F6DBA:
+	moveq	#$0,d0
+loc_1F6DBC:
+	bne.w	loc_1F6EBA
+	move.w	$8(a4),d5
+	move.w	$A(a4),d6
+	move.l	$72(a3),d7
+	asr.l	#$8,d7
+	move.w	$4(a4),d0
+	muls.w	d7,d0
+	move.l	d0,d4
+	asr.l	#$8,d4
+	move.b	$1(a4),d0
+	subq.b	#$1,d0
+	bmi.w	loc_1F6EA6
+	cmpi.b	#$23,d0
+	bgt.w	loc_1F6EA6
+	moveq	#$0,d1
+	move.b	d0,d1
+	add.w	d1,d1
+	move.w	$1F6DF8(pc,d1.w),d1
+	jmp	$1F6DF6(pc,d1.w)

@@ -1,0 +1,46 @@
+; ---------------------------------------------------------------------------
+; sub_035782	[link-after-rts]
+; ---------------------------------------------------------------------------
+sub_035782:
+	link.w	a6,#$0
+	lea.l	$712(a5),a0
+	move.l	$2(a0),-(a7)
+	moveq	#$0,d0
+	move.l	d0,-(a7)
+	moveq	#$8,d1
+	move.l	d1,-(a7)
+	move.l	d1,-(a7)
+	moveq	#$30,d0
+	move.l	d0,-(a7)
+	moveq	#$F,d0
+	move.l	d0,-(a7)
+	moveq	#$1,d0
+	move.l	d0,-(a7)
+	move.l	d0,-(a7)
+	moveq	#$0,d0
+	move.l	d0,-(a7)
+	move.l	d0,-(a7)
+	move.l	d0,-(a7)
+	lea.l	$702(a5),a0
+	move.l	$2(a0),-(a7)
+	lea.l	$6FA(a5),a0
+	move.l	$2(a0),-(a7)
+	lea.l	$6FA(a5),a0
+	move.l	$2(a0),-(a7)
+	lea.l	$70A(a5),a0
+	move.l	$2(a0),-(a7)
+	lea.l	$70A(a5),a0
+	move.l	$2(a0),-(a7)
+	jsr	$4FCA(a5)	; -> sub_1F98A8
+	moveq	#$7,d0
+	move.l	d0,-(a7)
+	jsr	$5222(a5)	; -> sub_1FE5A2
+	moveq	#$7,d0
+	move.l	d0,-(a7)
+	jsr	$521A(a5)	; -> sub_1FE584
+	clr.w	-$3980(a5)
+	clr.b	-$38DE(a5)
+	move.w	#$7F,-$3498(a5)
+	move.w	#$A0,-$3496(a5)
+	unlk	a6
+	rts

@@ -1,0 +1,66 @@
+; ---------------------------------------------------------------------------
+; sub_1B90E0	[link-after-rts]
+; ---------------------------------------------------------------------------
+sub_1B90E0:
+	link.w	a6,#$0
+	movem.l	d3/a4,-(a7)
+	movea.l	$8(a6),a4
+	pea.l	($92).w
+	jsr	$5222(a5)	; -> sub_1FE5A2
+	pea.l	($92).w
+	jsr	$521A(a5)	; -> sub_1FE584
+	clr.w	$6E(a4)
+	tst.b	$9D(a4)
+	seq.b	d3
+	neg.b	d3
+	beq.s	loc_1B9114
+	move.w	-$3B98(a5),d0
+	and.w	-$3A36(a5),d0
+	bra.s	loc_1B911C
+loc_1B9114:
+	move.w	-$3B98(a5),d0
+	and.w	-$3A38(a5),d0
+loc_1B911C:
+	addq.w	#$8,a7
+	beq.s	loc_1B9128
+	ori.b	#$10,$2E(a4)
+	bra.s	loc_1B914C
+loc_1B9128:
+	tst.b	$9D(a4)
+	seq.b	d3
+	neg.b	d3
+	beq.s	loc_1B913C
+	move.w	-$3B9A(a5),d0
+	and.w	-$3A36(a5),d0
+	bra.s	loc_1B9144
+loc_1B913C:
+	move.w	-$3B9A(a5),d0
+	and.w	-$3A38(a5),d0
+loc_1B9144:
+	beq.s	loc_1B914C
+	andi.b	#$EF,$2E(a4)
+loc_1B914C:
+	tst.b	$9D(a4)
+	bne.s	loc_1B9162
+	move.w	-$3BA6(a5),d0
+	not.w	d0
+	and.w	-$3A2E(a5),d0
+	move.w	d0,-$3A2E(a5)
+	bra.s	loc_1B9170
+loc_1B9162:
+	move.w	-$3BA6(a5),d0
+	not.w	d0
+	and.w	-$3A30(a5),d0
+	move.w	d0,-$3A30(a5)
+loc_1B9170:
+	lea.l	$4582(a5),a0
+	move.l	$2(a0),-(a7)
+	move.l	a4,-(a7)
+	jsr	$4E42(a5)	; -> sub_1F626A
+	lea.l	$4CD2(a5),a0
+	move.l	a0,$5C(a4)
+	move.w	#$FF,$6C(a4)
+	addq.w	#$8,a7
+	movem.l	-$8(a6),d3/a4
+	unlk	a6
+	rts

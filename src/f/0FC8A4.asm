@@ -1,0 +1,48 @@
+; ---------------------------------------------------------------------------
+; sub_0FC8A4	[link-after-rts]
+; ---------------------------------------------------------------------------
+sub_0FC8A4:
+	link.w	a6,#$0
+	movem.l	d7/a4,-(a7)
+	move.b	#$1,-$3AB8(a5)
+	clr.w	-$3B48(a5)
+	clr.w	-$3B40(a5)
+	move.w	#$600,-$3B06(a5)
+	move.w	#$1E,-$3B04(a5)
+	lea.l	$2992(a5),a0
+	move.l	$2(a0),-$3B14(a5)
+	clr.w	-$3B08(a5)
+	clr.w	-$3B32(a5)
+	pea.l	sub_0FC890(pc)
+	lea.l	$4DBA(a5),a0
+	move.l	$2(a0),-(a7)
+	lea.l	$4DBA(a5),a0
+	movea.l	$2(a0),a0
+	movea.l	$A(a0),a1
+	jsr	(a1)
+	move.l	d0,-$35B6(a5)
+	lea.l	$296A(a5),a0
+	movea.l	$2(a0),a4
+	move.l	a4,d7
+	movea.l	d7,a0
+	move.w	$2(a0),d0
+	ext.l	d0
+	lsl.l	#$3,d0
+	sub.w	#$140,d0
+	move.w	d0,-$3A96(a5)
+	move.w	d0,-$3A8E(a5)
+	movea.l	d7,a0
+	move.w	$4(a0),d0
+	ext.l	d0
+	lsl.l	#$3,d0
+	sub.w	#$E0,d0
+	move.w	d0,-$3A9A(a5)
+	move.w	d0,-$3A92(a5)
+	move.w	#$A8A,-$392E(a5)
+	move.w	#$EEE,-$392C(a5)
+	move.w	#$CCC,-$392A(a5)
+	move.w	#$868,-$3928(a5)
+	move.b	#$1,-$3A06(a5)
+	movem.l	-$8(a6),d7/a4
+	unlk	a6
+	rts

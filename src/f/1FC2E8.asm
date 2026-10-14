@@ -1,0 +1,33 @@
+; ---------------------------------------------------------------------------
+; sub_1FC2E8
+; ---------------------------------------------------------------------------
+sub_1FC2E8:
+	moveq	#$0,d0
+	move.w	d0,-$C96(a5)
+	move.w	d0,-$C94(a5)
+	move.w	d0,-$C92(a5)
+	move.w	d0,-$C90(a5)
+	move.w	d0,-$C8E(a5)
+	move.w	d0,-$C8C(a5)
+	move.w	d0,-$C8A(a5)
+	move.w	d0,-$C88(a5)
+	move.w	d0,-$C86(a5)
+	move.w	d0,-$C84(a5)
+	move.b	#$1,-$C82(a5)
+	move.b	#$1,-$C81(a5)
+	move.b	d0,-$C80(a5)
+	move.b	d0,-$C7F(a5)
+	move.b	d0,-$C7E(a5)
+	move.b	#$1,-$C7D(a5)
+	move.b	d0,-$C7C(a5)
+	move.w	d0,-$C7A(a5)
+	st.b	-$BFB(a5)
+	pea.l	($A).w
+	move.l	-$C9E(a5),-(a7)
+	pea.l	($A).w
+	clr.l	-(a7)
+	pea.l	-$C96(a5)
+	jsr	sub_1FC5FE(pc)
+	lea.l	$14(a7),a7
+	move.l	d0,-$CA2(a5)
+	rts

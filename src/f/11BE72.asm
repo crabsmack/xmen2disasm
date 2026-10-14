@@ -1,0 +1,298 @@
+; ---------------------------------------------------------------------------
+; sub_11BE72	[jt 1560]
+; ---------------------------------------------------------------------------
+sub_11BE72:
+	link.w	a6,#$FFFE
+	movem.l	d3-d7/a4,-(a7)
+	movea.l	$8(a6),a4
+	move.l	$8(a4),d0
+	asr.l	#$8,d0
+	move.w	-$348E(a5),d1
+	ext.l	d1
+	move.l	d0,d7
+	sub.l	d1,d7
+	move.l	$C(a4),d0
+	asr.l	#$8,d0
+	move.w	-$3490(a5),d1
+	ext.l	d1
+	move.l	d0,d6
+	sub.l	d1,d6
+	subq.w	#$4,d7
+	subq.w	#$8,d6
+	move.w	d7,-$2(a6)
+	move.w	$34(a4),d0
+	ext.l	d0
+	moveq	#$0,d1
+	move.b	$2F(a4),d1
+	add.l	d0,d1
+	moveq	#$3,d0
+	and.b	$2E(a4),d0
+	moveq	#$0,d2
+	move.b	d0,d2
+	moveq	#$D,d0
+	lsl.l	d0,d2
+	move.l	d2,d4
+	or.l	d1,d4
+	moveq	#$4,d0
+	and.b	$2E(a4),d0
+	beq.s	loc_11BED2
+	ori.w	#$8000,d4
+loc_11BED2:
+	move.w	$94(a4),d7
+	add.w	-$2(a6),d7
+	tst.w	$94(a4)
+	sge.b	d3
+	neg.b	d3
+	beq.s	loc_11BEEC
+	move.w	$94(a4),d0
+	ext.l	d0
+	bra.s	loc_11BEF4
+loc_11BEEC:
+	move.w	$94(a4),d0
+	ext.l	d0
+	neg.l	d0
+loc_11BEF4:
+	moveq	#$57,d1
+	cmp.l	d0,d1
+	bge.s	loc_11BEFE
+	moveq	#$2,d5
+	bra.s	loc_11BF24
+loc_11BEFE:
+	tst.w	$94(a4)
+	sge.b	d3
+	neg.b	d3
+	beq.s	loc_11BF10
+	move.w	$94(a4),d0
+	ext.l	d0
+	bra.s	loc_11BF18
+loc_11BF10:
+	move.w	$94(a4),d0
+	ext.l	d0
+	neg.l	d0
+loc_11BF18:
+	moveq	#$48,d1
+	cmp.l	d0,d1
+	bge.s	loc_11BF22
+	moveq	#$1,d5
+	bra.s	loc_11BF24
+loc_11BF22:
+	clr.w	d5
+loc_11BF24:
+	cmpi.w	#$FFE0,d7
+	ble.s	loc_11BFA0
+	cmpi.w	#$140,d7
+	bge.s	loc_11BFA0
+	ext.l	d6
+	move.w	d5,d0
+	asr.w	#$1,d0
+	ext.l	d0
+	add.l	d6,d0
+	moveq	#-$20,d1
+	cmp.l	d0,d1
+	bge.s	loc_11BFA0
+	ext.l	d6
+	move.w	d5,d0
+	asr.w	#$1,d0
+	ext.l	d0
+	add.l	d6,d0
+	cmpi.l	#$E0,d0
+	bge.s	loc_11BFA0
+	lea.l	-$1FDA(a5),a0
+	movea.l	-$1FE6(a5),a1
+	move.b	$3(a1),d0
+	ext.w	d0
+	move.w	d0,-$1FE2(a5)
+	ext.l	d0
+	asl.l	#$3,d0
+	add.l	a0,d0
+	move.l	d0,-$1FE6(a5)
+	move.w	d5,d0
+	asr.w	#$1,d0
+	add.w	d6,d0
+	add.w	#$80,d0
+	movea.l	-$1FE6(a5),a0
+	move.w	d0,(a0)
+	movea.l	-$1FE6(a5),a0
+	clr.b	$2(a0)
+	move.w	d4,d0
+	add.w	d5,d0
+	movea.l	-$1FE6(a5),a0
+	move.w	d0,$4(a0)
+	move.w	d7,d0
+	add.w	#$80,d0
+	movea.l	-$1FE6(a5),a0
+	move.w	d0,$6(a0)
+loc_11BFA0:
+	move.w	$96(a4),d7
+	add.w	-$2(a6),d7
+	tst.w	$96(a4)
+	sge.b	d3
+	neg.b	d3
+	beq.s	loc_11BFBA
+	move.w	$96(a4),d0
+	ext.l	d0
+	bra.s	loc_11BFC2
+loc_11BFBA:
+	move.w	$96(a4),d0
+	ext.l	d0
+	neg.l	d0
+loc_11BFC2:
+	moveq	#$57,d1
+	cmp.l	d0,d1
+	bge.s	loc_11BFCC
+	moveq	#$2,d5
+	bra.s	loc_11BFF2
+loc_11BFCC:
+	tst.w	$96(a4)
+	sge.b	d3
+	neg.b	d3
+	beq.s	loc_11BFDE
+	move.w	$96(a4),d0
+	ext.l	d0
+	bra.s	loc_11BFE6
+loc_11BFDE:
+	move.w	$96(a4),d0
+	ext.l	d0
+	neg.l	d0
+loc_11BFE6:
+	moveq	#$48,d1
+	cmp.l	d0,d1
+	bge.s	loc_11BFF0
+	moveq	#$1,d5
+	bra.s	loc_11BFF2
+loc_11BFF0:
+	clr.w	d5
+loc_11BFF2:
+	cmpi.w	#$FFE0,d7
+	ble.s	loc_11C06E
+	cmpi.w	#$140,d7
+	bge.s	loc_11C06E
+	ext.l	d6
+	move.w	d5,d0
+	asr.w	#$1,d0
+	ext.l	d0
+	add.l	d6,d0
+	moveq	#-$20,d1
+	cmp.l	d0,d1
+	bge.s	loc_11C06E
+	ext.l	d6
+	move.w	d5,d0
+	asr.w	#$1,d0
+	ext.l	d0
+	add.l	d6,d0
+	cmpi.l	#$E0,d0
+	bge.s	loc_11C06E
+	lea.l	-$1FDA(a5),a0
+	movea.l	-$1FE6(a5),a1
+	move.b	$3(a1),d0
+	ext.w	d0
+	move.w	d0,-$1FE2(a5)
+	ext.l	d0
+	asl.l	#$3,d0
+	add.l	a0,d0
+	move.l	d0,-$1FE6(a5)
+	move.w	d5,d0
+	asr.w	#$1,d0
+	add.w	d6,d0
+	add.w	#$80,d0
+	movea.l	-$1FE6(a5),a0
+	move.w	d0,(a0)
+	movea.l	-$1FE6(a5),a0
+	clr.b	$2(a0)
+	move.w	d4,d0
+	add.w	d5,d0
+	movea.l	-$1FE6(a5),a0
+	move.w	d0,$4(a0)
+	move.w	d7,d0
+	add.w	#$80,d0
+	movea.l	-$1FE6(a5),a0
+	move.w	d0,$6(a0)
+loc_11C06E:
+	move.w	$98(a4),d7
+	add.w	-$2(a6),d7
+	tst.w	$98(a4)
+	sge.b	d3
+	neg.b	d3
+	beq.s	loc_11C088
+	move.w	$98(a4),d0
+	ext.l	d0
+	bra.s	loc_11C090
+loc_11C088:
+	move.w	$98(a4),d0
+	ext.l	d0
+	neg.l	d0
+loc_11C090:
+	moveq	#$57,d1
+	cmp.l	d0,d1
+	bge.s	loc_11C09A
+	moveq	#$2,d5
+	bra.s	loc_11C0C0
+loc_11C09A:
+	tst.w	$98(a4)
+	sge.b	d3
+	neg.b	d3
+	beq.s	loc_11C0AC
+	move.w	$98(a4),d0
+	ext.l	d0
+	bra.s	loc_11C0B4
+loc_11C0AC:
+	move.w	$98(a4),d0
+	ext.l	d0
+	neg.l	d0
+loc_11C0B4:
+	moveq	#$48,d1
+	cmp.l	d0,d1
+	bge.s	loc_11C0BE
+	moveq	#$1,d5
+	bra.s	loc_11C0C0
+loc_11C0BE:
+	clr.w	d5
+loc_11C0C0:
+	cmpi.w	#$FFE0,d7
+	ble.s	loc_11C13C
+	cmpi.w	#$140,d7
+	bge.s	loc_11C13C
+	ext.l	d6
+	move.w	d5,d0
+	asr.w	#$1,d0
+	ext.l	d0
+	add.l	d6,d0
+	moveq	#-$20,d1
+	cmp.l	d0,d1
+	bge.s	loc_11C13C
+	ext.l	d6
+	move.w	d5,d0
+	asr.w	#$1,d0
+	ext.l	d0
+	add.l	d6,d0
+	cmpi.l	#$E0,d0
+	bge.s	loc_11C13C
+	lea.l	-$1FDA(a5),a0
+	movea.l	-$1FE6(a5),a1
+	move.b	$3(a1),d0
+	ext.w	d0
+	move.w	d0,-$1FE2(a5)
+	ext.l	d0
+	asl.l	#$3,d0
+	add.l	a0,d0
+	move.l	d0,-$1FE6(a5)
+	move.w	d5,d0
+	asr.w	#$1,d0
+	add.w	d6,d0
+	add.w	#$80,d0
+	movea.l	-$1FE6(a5),a0
+	move.w	d0,(a0)
+	movea.l	-$1FE6(a5),a0
+	clr.b	$2(a0)
+	move.w	d4,d0
+	add.w	d5,d0
+	movea.l	-$1FE6(a5),a0
+	move.w	d0,$4(a0)
+	move.w	d7,d0
+	add.w	#$80,d0
+	movea.l	-$1FE6(a5),a0
+	move.w	d0,$6(a0)
+loc_11C13C:
+	movem.l	-$1A(a6),d3-d7/a4
+	unlk	a6
+	rts

@@ -1,0 +1,42 @@
+; ---------------------------------------------------------------------------
+; sub_13F070	[jt 1887]
+; ---------------------------------------------------------------------------
+sub_13F070:
+	link.w	a6,#$0
+	movem.l	a3-a4,-(a7)
+	movea.l	$14(a6),a3
+	movea.l	$8(a6),a4
+	move.l	a3,-(a7)
+	move.l	$10(a6),-(a7)
+	move.l	$C(a6),-(a7)
+	move.l	a4,-(a7)
+	lea.l	$3B22(a5),a0
+	movea.l	$2(a0),a0
+	movea.l	$2(a0),a0
+	movea.l	$12(a0),a1
+	jsr	(a1)
+	lea.l	sub_13F0F0(pc),a0
+	move.l	a0,$64(a4)
+	move.l	a0,$5C(a4)
+	ori.w	#$80,$6(a4)
+	clr.w	$1E(a4)
+	clr.l	$16(a4)
+	clr.w	$20(a4)
+	move.w	$6(a3),$8C(a4)
+	tst.w	$8(a3)
+	beq.s	loc_13F0CE
+	move.w	$8(a3),d0
+	bra.s	loc_13F0D0
+loc_13F0CE:
+	moveq	#$3C,d0
+loc_13F0D0:
+	move.w	d0,$6E(a4)
+	pea.l	($FF).w
+	move.l	a4,-(a7)
+	movea.l	(a4),a0
+	movea.l	$56(a0),a1
+	jsr	(a1)
+	lea.l	$18(a7),a7
+	movem.l	-$8(a6),a3-a4
+	unlk	a6
+	rts

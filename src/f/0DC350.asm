@@ -1,0 +1,23 @@
+; ---------------------------------------------------------------------------
+; sub_0DC350	[link-after-rts]
+; ---------------------------------------------------------------------------
+sub_0DC350:
+	link.w	a6,#$0
+	movea.l	-$35B6(a5),a0
+	move.w	#$C8,$42(a0)
+	move.l	-$35A2(a5),d0
+	addq.l	#$1,-$35A2(a5)
+	tst.b	-$3A02(a5)
+	bne.s	loc_0DC370
+	jsr	sub_0DC2CE(pc)
+loc_0DC370:
+	tst.b	-$38DE(a5)
+	beq.s	loc_0DC388
+	move.l	-$35A2(a5),d0
+	addq.l	#$1,-$35A2(a5)
+	tst.b	-$3A02(a5)
+	bne.s	loc_0DC388
+	jsr	sub_0DC2CE(pc)
+loc_0DC388:
+	unlk	a6
+	rts

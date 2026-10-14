@@ -1,0 +1,54 @@
+; ---------------------------------------------------------------------------
+; sub_1B976C	[jt 2233]
+; ---------------------------------------------------------------------------
+sub_1B976C:
+	link.w	a6,#$0
+	movem.l	d3/a4,-(a7)
+	movea.l	$8(a6),a4
+	clr.w	$1E(a4)
+	clr.w	$16(a4)
+	movea.l	$8C(a4),a0
+	movea.l	a0,a1
+	adda.w	$46(a1),a0
+	move.l	a0,-(a7)
+	move.l	a4,-(a7)
+	jsr	$4E4A(a5)	; -> sub_1F6296
+	tst.b	$9D(a4)
+	seq.b	d3
+	neg.b	d3
+	beq.s	loc_1B97A6
+	move.w	-$3B9A(a5),d0
+	and.w	-$3A36(a5),d0
+	bra.s	loc_1B97AE
+loc_1B97A6:
+	move.w	-$3B9A(a5),d0
+	and.w	-$3A38(a5),d0
+loc_1B97AE:
+	addq.w	#$8,a7
+	beq.s	loc_1B97BA
+	andi.b	#$EF,$2E(a4)
+	bra.s	loc_1B97DE
+loc_1B97BA:
+	tst.b	$9D(a4)
+	seq.b	d3
+	neg.b	d3
+	beq.s	loc_1B97CE
+	move.w	-$3B98(a5),d0
+	and.w	-$3A36(a5),d0
+	bra.s	loc_1B97D6
+loc_1B97CE:
+	move.w	-$3B98(a5),d0
+	and.w	-$3A38(a5),d0
+loc_1B97D6:
+	beq.s	loc_1B97DE
+	ori.b	#$10,$2E(a4)
+loc_1B97DE:
+	move.w	#$3C,$A6(a4)
+	clr.w	$6C(a4)
+	lea.l	sub_1B947C(pc),a0
+	move.l	a0,$5C(a4)
+	moveq	#$8,d0
+	and.w	$4(a4),d0
+	movem.l	-$8(a6),d3/a4
+	unlk	a6
+	rts

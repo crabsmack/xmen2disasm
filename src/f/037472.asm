@@ -1,0 +1,54 @@
+; ---------------------------------------------------------------------------
+; sub_037472	[link-after-rts]
+; ---------------------------------------------------------------------------
+sub_037472:
+	link.w	a6,#$0
+	move.l	a4,-(a7)
+	movea.l	$8(a6),a4
+	cmpi.w	#$600,-$348E(a5)
+	blt.s	loc_0374B2
+	moveq	#$8,d0
+	move.l	d0,-(a7)
+	move.l	d0,-(a7)
+	pea.l	($B0).w
+	pea.l	($600).w
+	moveq	#$4,d1
+	move.l	d1,-(a7)
+	jsr	$72A(a5)	; -> sub_0358D8
+	lea.l	$14(a7),a7
+	clr.w	$6C(a4)
+	lea.l	sub_03755A(pc),a0
+	move.l	a0,$5C(a4)
+	moveq	#$8,d0
+	and.w	$4(a4),d0
+	bra.s	loc_037502
+loc_0374B2:
+	tst.l	$8C(a4)
+	beq.s	loc_037502
+	tst.w	$AC(a4)
+	bne.s	loc_037502
+	lea.l	sub_03750A(pc),a0
+	move.l	a0,$90(a4)
+	move.w	$AA(a4),$AC(a4)
+	moveq	#$0,d0
+	move.b	$9D(a4),d0
+	cmpi.w	#$FFFF,d0
+	bne.s	loc_0374EA
+	lea.l	sub_037924(pc),a0
+	move.l	a0,$5C(a4)
+	move.l	a4,-(a7)
+	jsr	sub_037924(pc)
+	addq.w	#$4,a7
+	bra.s	loc_037502
+loc_0374EA:
+	moveq	#$0,d0
+	move.b	$9D(a4),d0
+	move.w	d0,$6C(a4)
+	lea.l	sub_037924(pc),a0
+	move.l	a0,$5C(a4)
+	moveq	#$8,d0
+	and.w	$4(a4),d0
+loc_037502:
+	movea.l	-$4(a6),a4
+	unlk	a6
+	rts

@@ -1,0 +1,65 @@
+; ---------------------------------------------------------------------------
+; sub_05CF68	[jt 426]
+; ---------------------------------------------------------------------------
+sub_05CF68:
+	link.w	a6,#$0
+	movem.l	d6-d7/a3-a4,-(a7)
+	movea.l	$14(a6),a3
+	movea.l	$8(a6),a4
+	move.l	a3,-(a7)
+	move.l	$10(a6),-(a7)
+	move.l	$C(a6),-(a7)
+	move.l	a4,-(a7)
+	lea.l	$D7A(a5),a0
+	movea.l	$2(a0),a0
+	movea.l	$2(a0),a0
+	movea.l	$12(a0),a1
+	jsr	(a1)
+	ori.w	#$1182,$6(a4)
+	move.b	#$1,$70(a4)
+	move.w	#$1E,$68(a4)
+	clr.w	$1E(a4)
+	clr.l	$16(a4)
+	clr.w	$20(a4)
+	lea.l	sub_05C286(pc),a0
+	move.l	a0,$5C(a4)
+	lea.l	$10(a7),a7
+	lea.l	$C2A(a5),a0
+	move.l	$2(a0),$30(a4)
+	moveq	#-$4,d0
+	and.b	$2E(a4),d0
+	moveq	#$3,d1
+	or.b	d0,d1
+	move.b	d1,$2E(a4)
+	lea.l	$C2A(a5),a0
+	move.l	$2(a0),$30(a4)
+	moveq	#-$4,d0
+	and.b	$2E(a4),d0
+	moveq	#$3,d1
+	or.b	d0,d1
+	move.b	d1,$2E(a4)
+	move.w	$2(a3),d6
+	move.w	$4(a3),d0
+	ext.l	d0
+	move.l	d0,d7
+	moveq	#$20,d0
+	add.l	d0,d7
+	pea.l	($3E8).w
+	ext.l	d7
+	move.l	d7,-(a7)
+	ext.l	d6
+	move.l	d6,-(a7)
+	jsr	$3F02(a5)	; -> sub_15AA20
+	move.l	d0,$90(a4)
+	pea.l	($3E8).w
+	ext.l	d7
+	move.l	d7,-(a7)
+	ext.l	d6
+	move.l	d6,-(a7)
+	jsr	$3EFA(a5)	; -> sub_15A8FE
+	move.l	d0,$94(a4)
+	lea.l	$18(a7),a7
+	clr.w	$9A(a4)
+	movem.l	-$10(a6),d6-d7/a3-a4
+	unlk	a6
+	rts

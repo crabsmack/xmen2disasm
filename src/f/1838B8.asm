@@ -1,0 +1,48 @@
+; ---------------------------------------------------------------------------
+; sub_1838B8	[link-after-rts]
+; ---------------------------------------------------------------------------
+sub_1838B8:
+	link.w	a6,#$0
+	move.l	a4,-(a7)
+	movea.l	$8(a6),a4
+	pea.l	($92).w
+	jsr	$5222(a5)	; -> sub_1FE5A2
+	move.w	#$1000,d0
+	and.w	$4(a4),d0
+	addq.w	#$4,a7
+	beq.s	loc_183916
+	tst.l	$44(a4)
+	bne.s	loc_183902
+	moveq	#$D,d0
+	move.l	d0,-(a7)
+	move.l	a4,-(a7)
+	jsr	sub_183724(pc)
+	move.w	#$6,$6E(a4)
+	addq.w	#$8,a7
+	clr.w	$6C(a4)
+	lea.l	sub_183870(pc),a0
+	move.l	a0,$5C(a4)
+	moveq	#$8,d0
+	and.w	$4(a4),d0
+	bra.s	loc_183934
+loc_183902:
+	clr.w	$6C(a4)
+	lea.l	sub_1838B8(pc),a0
+	move.l	a0,$5C(a4)
+	moveq	#$8,d0
+	and.w	$4(a4),d0
+	bra.s	loc_183934
+loc_183916:
+	pea.l	($83).w
+	move.l	a4,-(a7)
+	jsr	sub_1837B0(pc)
+	movea.l	(a4),a0
+	move.l	$A6(a0),$5C(a4)
+	move.l	a4,-(a7)
+	movea.l	$A6(a0),a1
+	jsr	(a1)
+	lea.l	$C(a7),a7
+loc_183934:
+	movea.l	-$4(a6),a4
+	unlk	a6
+	rts

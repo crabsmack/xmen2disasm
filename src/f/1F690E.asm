@@ -1,0 +1,25 @@
+; ---------------------------------------------------------------------------
+; sub_1F690E	[jt 2512]
+; ---------------------------------------------------------------------------
+sub_1F690E:
+	link.w	a6,#$0
+	clr.b	-$3A06(a5)
+	jsr	sub_1F684E(pc)
+	lea.l	$5142(a5),a0
+	move.l	$2(a0),-(a7)
+	moveq	#-$1,d0
+	move.l	d0,-(a7)
+	move.l	$8(a6),-(a7)
+	moveq	#$0,d1
+	move.l	d1,-(a7)
+	jsr	sub_1F67C8(pc)
+	lea.l	$10(a7),a7
+	bra.s	loc_1F693C
+loc_1F6938:
+	jsr	$5112(a5)	; -> sub_1FDC5C
+loc_1F693C:
+	tst.b	-$3A02(a5)
+	bne.s	loc_1F6938
+	jsr	sub_1F68C0(pc)
+	unlk	a6
+	rts

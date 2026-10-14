@@ -1,0 +1,7 @@
+# Extra code entry points beyond what tools/explore.py finds on its own.
+# One hex address per line; `; note` records the evidence. convert.py appends here.
+077256	; sub_077256 - jt[529]: A5-global load, single rts, clean trace
+0EAE8E	; sub_0EAE8E - jt entries: movem/tst prologue, ends in rts, clean trace
+15EE48	; sub_15EE48 - jt entries: movem/tst prologue, ends in rts, clean trace
+15F1F8	; sub_15F1F8 - jt entries: movem/tst prologue, ends in rts, clean trace
+1F4C56	; sub_1F4C56 - jt entries: movem/tst prologue, ends in rts, clean trace

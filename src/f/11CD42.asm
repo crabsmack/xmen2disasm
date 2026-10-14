@@ -1,0 +1,39 @@
+; ---------------------------------------------------------------------------
+; sub_11CD42	[link-after-rts]
+; ---------------------------------------------------------------------------
+sub_11CD42:
+	link.w	a6,#$0
+	movem.l	d7/a4,-(a7)
+	movea.l	$8(a6),a4
+	move.l	$A0(a4),d7
+	asr.l	#$8,d7
+	cmp.w	$B0(a4),d7
+	beq.s	loc_11CD60
+	cmp.w	$B2(a4),d7
+	bne.s	loc_11CD9E
+loc_11CD60:
+	tst.l	$98(a4)
+	bne.s	loc_11CD72
+	move.l	$64(a4),$5C(a4)
+	clr.w	$6C(a4)
+	bra.s	loc_11CD9E
+loc_11CD72:
+	addq.w	#$1,$96(a4)
+	movea.l	$98(a4),a0
+	move.w	$96(a4),d0
+	cmp.w	(a0),d0
+	blt.s	loc_11CD86
+	clr.w	$96(a4)
+loc_11CD86:
+	movea.l	$98(a4),a0
+	addq.l	#$2,a0
+	move.w	$96(a4),d0
+	ext.l	d0
+	asl.l	#$2,d0
+	add.l	a0,d0
+	move.l	d0,$5C(a4)
+	clr.w	$6C(a4)
+loc_11CD9E:
+	movem.l	-$8(a6),d7/a4
+	unlk	a6
+	rts

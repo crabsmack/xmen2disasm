@@ -1,0 +1,131 @@
+; ---------------------------------------------------------------------------
+; sub_15CECC	[jt 2036]
+; ---------------------------------------------------------------------------
+sub_15CECC:
+	link.w	a6,#$FFFA
+	movem.l	d4-d7/a3-a4,-(a7)
+	move.b	$17(a6),d6
+	beq.s	loc_15CEE0
+	move.w	-$3A6E(a5),d0
+	bra.s	loc_15CEE4
+loc_15CEE0:
+	move.w	-$3A7A(a5),d0
+loc_15CEE4:
+	move.w	d0,-$4(a6)
+	tst.b	d6
+	beq.s	loc_15CEF2
+	move.w	-$3A78(a5),d0
+	bra.s	loc_15CEF6
+loc_15CEF2:
+	move.w	-$3A7C(a5),d0
+loc_15CEF6:
+	move.w	d0,d7
+	move.w	$E(a6),d0
+	asr.w	#$5,d0
+	move.w	d0,-$2(a6)
+	move.w	$12(a6),d4
+	asr.w	#$5,d4
+	moveq	#$1,d5
+	tst.w	-$2(a6)
+	blt.w	loc_15D002
+	move.w	-$2(a6),d0
+	cmp.w	-$4(a6),d0
+	bge.w	loc_15D002
+	tst.w	d4
+	blt.w	loc_15D002
+	cmp.w	d4,d7
+	ble.w	loc_15D002
+	tst.b	d6
+	beq.s	loc_15CF52
+	ext.l	d4
+	movea.l	-$3A72(a5),a0
+	move.l	d4,d0
+	add.l	d0,d0
+	move.w	(a0,d0.l),d0
+	ext.l	d0
+	move.w	-$2(a6),d1
+	ext.l	d1
+	add.l	d0,d1
+	movea.l	-$3A84(a5),a0
+	add.l	d1,d1
+	adda.l	d1,a0
+	move.l	a0,d0
+	bra.s	loc_15CF74
+loc_15CF52:
+	ext.l	d4
+	movea.l	-$3A76(a5),a0
+	move.l	d4,d0
+	add.l	d0,d0
+	move.w	(a0,d0.l),d0
+	ext.l	d0
+	move.w	-$2(a6),d1
+	ext.l	d1
+	add.l	d0,d1
+	movea.l	-$3A88(a5),a0
+	add.l	d1,d1
+	adda.l	d1,a0
+	move.l	a0,d0
+loc_15CF74:
+	movea.l	d0,a3
+	move.w	#$3800,d0
+	and.w	$1A(a6),d0
+	moveq	#$B,d1
+	lsr.w	d1,d0
+	move.w	d0,-$6(a6)
+	clr.b	d5
+	tst.w	-$6(a6)
+	beq.s	loc_15CFE4
+	move.w	#$3800,d0
+	and.w	(a3),d0
+	moveq	#$B,d1
+	move.w	d0,d6
+	lsr.w	d1,d6
+	move.w	-$6(a6),d7
+	and.w	d6,d7
+	move.w	-$6(a6),d7
+	and.w	d6,d7
+	tst.w	d7
+	beq.s	loc_15CFE4
+	cmp.w	d7,d6
+	bne.s	loc_15CFE4
+	move.l	d7,d0
+	asl.w	#$2,d0
+	lea.l	-$3AF8(a5),a0
+	movea.l	(a0,d0.w),a4
+	move.l	a4,d0
+	beq.s	loc_15CFE4
+	moveq	#$1,d5
+	tst.b	$1F(a6)
+	beq.s	loc_15CFE4
+	moveq	#-$1,d0
+	move.l	d0,-(a7)
+	move.l	d0,-(a7)
+	move.l	$8(a6),-(a7)
+	ext.l	d4
+	move.l	d4,-(a7)
+	move.w	-$2(a6),d1
+	ext.l	d1
+	move.l	d1,-(a7)
+	movea.l	a4,a0
+	jsr	(a0)
+	lea.l	$14(a7),a7
+loc_15CFE4:
+	tst.b	d5
+	bne.s	loc_15D002
+	move.w	#$4000,d0
+	and.w	$1A(a6),d0
+	beq.s	loc_15D002
+	move.w	#$4000,d0
+	and.w	(a3),d0
+	beq.s	loc_15CFFE
+	moveq	#$1,d0
+	bra.s	loc_15D000
+loc_15CFFE:
+	moveq	#$0,d0
+loc_15D000:
+	move.b	d0,d5
+loc_15D002:
+	move.b	d5,d0
+	movem.l	-$1E(a6),d4-d7/a3-a4
+	unlk	a6
+	rts

@@ -1,0 +1,47 @@
+; ---------------------------------------------------------------------------
+; sub_138AD4	[jt 1826]
+; ---------------------------------------------------------------------------
+sub_138AD4:
+	link.w	a6,#$0
+	movem.l	d5-d7/a4,-(a7)
+	movea.l	$8(a6),a4
+	tst.b	-$38DE(a5)
+	beq.s	loc_138AEA
+	moveq	#$2,d7
+	bra.s	loc_138AEC
+loc_138AEA:
+	moveq	#$1,d7
+loc_138AEC:
+	move.l	$8(a4),d5
+	move.l	$C(a4),d6
+	move.l	$C(a4),d0
+	sub.l	d6,d0
+	move.l	d0,-(a7)
+	move.l	$8(a4),d0
+	sub.l	d5,d0
+	move.l	d0,-(a7)
+	ext.l	d7
+	move.l	d7,-(a7)
+	move.l	a4,-(a7)
+	jsr	$412A(a5)	; -> sub_15F8B6
+	tst.b	d0
+	lea.l	$10(a7),a7
+	beq.s	loc_138B1C
+	ori.w	#$8,$4(a4)
+loc_138B1C:
+	tst.l	$44(a4)
+	bne.s	loc_138B30
+	move.l	a4,-(a7)
+	movea.l	(a4),a0
+	movea.l	$52(a0),a1
+	jsr	(a1)
+	addq.w	#$4,a7
+	bra.s	loc_138B38
+loc_138B30:
+	move.l	a4,-(a7)
+	jsr	$4DD2(a5)	; -> sub_1F4A40
+	addq.w	#$4,a7
+loc_138B38:
+	movem.l	-$10(a6),d5-d7/a4
+	unlk	a6
+	rts

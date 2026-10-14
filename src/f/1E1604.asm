@@ -1,0 +1,62 @@
+; ---------------------------------------------------------------------------
+; sub_1E1604	[jt 2358]
+; ---------------------------------------------------------------------------
+sub_1E1604:
+	link.w	a6,#$FFE4
+	movem.l	d2-d7/a2-a4,-(a7)
+	movea.l	$C(a6),a1
+	tst.b	$24(a1)
+	beq.w	loc_1E1916
+	tst.l	$2(a1)
+	beq.w	loc_1E1916
+	tst.l	$14(a1)
+	beq.w	loc_1E1916
+	movea.l	$8(a6),a3
+	movea.l	$14(a1),a4
+	moveq	#$10,d0
+	and.b	$2E(a3),d0
+	move.b	d0,-$19(a6)
+	move.w	$8(a1),-$A(a6)
+	tst.b	-$19(a6)
+	bne.s	loc_1E166A
+	move.l	$8(a3),d0
+	asr.l	#$8,d0
+	move.b	(a4),d1
+	ext.w	d1
+	add.w	d0,d1
+	move.w	d1,-$6(a6)
+	move.l	$C(a3),d0
+	asr.l	#$8,d0
+	move.b	$1(a4),d1
+	ext.w	d1
+	add.w	d0,d1
+	move.w	d1,-$8(a6)
+	bra.s	loc_1E168C
+loc_1E166A:
+	move.l	$8(a3),d0
+	asr.l	#$8,d0
+	move.b	(a4),d1
+	ext.w	d1
+	sub.w	d1,d0
+	move.w	d0,-$6(a6)
+	move.l	$C(a3),d0
+	asr.l	#$8,d0
+	move.b	$1(a4),d1
+	ext.w	d1
+	add.w	d1,d0
+	move.w	d0,-$8(a6)
+loc_1E168C:
+	move.w	-$348E(a5),d0
+	sub.w	d0,-$6(a6)
+	move.w	-$3490(a5),d0
+	sub.w	d0,-$8(a6)
+	move.w	$1E(a1),d6
+	move.w	$1C(a1),d7
+	bne.w	loc_1E177A
+	movea.l	a1,a2
+	moveq	#$0,d0
+	move.b	$C(a4),d0
+	add.w	d0,d0
+	lea.l	$1E1902(pc),a0
+	adda.w	(a0,d0.w),a0
+	jmp	(a0)

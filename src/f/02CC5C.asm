@@ -1,0 +1,80 @@
+; ---------------------------------------------------------------------------
+; sub_02CC5C	[link-after-rts]
+; ---------------------------------------------------------------------------
+sub_02CC5C:
+	link.w	a6,#$0
+	move.l	d7,-(a7)
+	clr.w	d7
+	moveq	#$1,d0
+	move.l	d0,-(a7)
+	move.w	-$3AAE(a5),d1
+	ext.l	d1
+	move.l	d1,-(a7)
+	ext.l	d7
+	move.l	d7,-(a7)
+	moveq	#$0,d1
+	move.l	d1,-(a7)
+	lea.l	$602(a5),a0
+	move.l	$2(a0),-(a7)
+	move.l	d0,-(a7)
+	pea.l	-$3582(a5)
+	jsr	$506A(a5)	; -> sub_1FB026
+	moveq	#$1,d0
+	move.l	d0,-(a7)
+	move.w	-$3AAE(a5),d1
+	ext.l	d1
+	moveq	#$10,d2
+	add.l	d2,d1
+	move.l	d1,-(a7)
+	ext.l	d7
+	move.l	d7,-(a7)
+	moveq	#$0,d0
+	move.l	d0,-(a7)
+	lea.l	$602(a5),a0
+	move.l	$2(a0),-(a7)
+	moveq	#$1,d0
+	move.l	d0,-(a7)
+	pea.l	-$356E(a5)
+	jsr	$506A(a5)	; -> sub_1FB026
+	moveq	#$1,d0
+	move.l	d0,-(a7)
+	move.w	-$3AAE(a5),d1
+	ext.l	d1
+	moveq	#$20,d2
+	add.l	d2,d1
+	move.l	d1,-(a7)
+	ext.l	d7
+	move.l	d7,-(a7)
+	moveq	#$0,d0
+	move.l	d0,-(a7)
+	lea.l	$602(a5),a0
+	move.l	$2(a0),-(a7)
+	moveq	#$1,d0
+	move.l	d0,-(a7)
+	pea.l	-$355A(a5)
+	jsr	$506A(a5)	; -> sub_1FB026
+	moveq	#$1,d0
+	move.l	d0,-(a7)
+	move.w	-$3AAE(a5),d1
+	ext.l	d1
+	moveq	#$30,d2
+	add.l	d2,d1
+	move.l	d1,-(a7)
+	ext.l	d7
+	move.l	d7,-(a7)
+	moveq	#$0,d0
+	move.l	d0,-(a7)
+	lea.l	$602(a5),a0
+	move.l	$2(a0),-(a7)
+	moveq	#$1,d0
+	move.l	d0,-(a7)
+	pea.l	-$3546(a5)
+	jsr	$506A(a5)	; -> sub_1FB026
+	clr.w	-$3CBC(a5)
+	move.w	#$1,-$3CC0(a5)
+	move.w	#$2,-$3CC4(a5)
+	move.w	#$3,-$3CC8(a5)
+	lea.l	$70(a7),a7
+	move.l	-$4(a6),d7
+	unlk	a6
+	rts

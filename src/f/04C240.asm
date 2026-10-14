@@ -1,0 +1,35 @@
+; ---------------------------------------------------------------------------
+; sub_04C240	[link-after-rts]
+; ---------------------------------------------------------------------------
+sub_04C240:
+	link.w	a6,#$0
+	move.l	a4,-(a7)
+	movea.l	$8(a6),a4
+	ori.w	#$2,$6(a4)
+	pea.l	-$1652(a5)
+	move.l	$84(a4),-(a7)
+	jsr	$406A(a5)	; -> sub_15DF66
+	moveq	#$0,d0
+	move.l	d0,$84(a4)
+	clr.w	$1E(a4)
+	clr.l	$16(a4)
+	clr.w	$20(a4)
+	moveq	#$5,d0
+	move.l	d0,-(a7)
+	pea.l	($6000).w
+	move.l	#$10000,-(a7)
+	move.l	a4,-(a7)
+	jsr	sub_04B3CE(pc)
+	lea.l	$9CA(a5),a0
+	move.l	$2(a0),-(a7)
+	move.l	a4,-(a7)
+	jsr	$4E42(a5)	; -> sub_1F626A
+	lea.l	$20(a7),a7
+	clr.w	$6C(a4)
+	lea.l	sub_04C2AE(pc),a0
+	move.l	a0,$5C(a4)
+	moveq	#$8,d0
+	and.w	$4(a4),d0
+	movea.l	-$4(a6),a4
+	unlk	a6
+	rts

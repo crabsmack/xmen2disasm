@@ -1,0 +1,39 @@
+; ---------------------------------------------------------------------------
+; sub_05BB0E	[jt 407]
+; ---------------------------------------------------------------------------
+sub_05BB0E:
+	link.w	a6,#$0
+	move.l	d7,-(a7)
+	move.l	$8(a6),-(a7)
+	jsr	sub_05BB06(pc)
+	moveq	#$2,d0
+	move.l	d0,-(a7)
+	lea.l	$C12(a5),a0
+	move.l	$2(a0),-(a7)
+	jsr	$4E52(a5)	; -> sub_1F62C0
+	move.w	d0,-$3C6A(a5)
+	moveq	#$2,d0
+	move.l	d0,-(a7)
+	lea.l	$C1A(a5),a0
+	move.l	$2(a0),-(a7)
+	jsr	$4E52(a5)	; -> sub_1F62C0
+	move.w	d0,-$3C6C(a5)
+	moveq	#$2,d0
+	move.l	d0,-(a7)
+	lea.l	$C22(a5),a0
+	move.l	$2(a0),-(a7)
+	jsr	$4E52(a5)	; -> sub_1F62C0
+	move.w	d0,-$3C62(a5)
+	move.l	#$258,d7
+	pea.l	$5BB84(pc)
+	move.l	d7,-(a7)
+	jsr	$5032(a5)	; -> sub_1FA8DC
+	addq.l	#$8,a7
+	move.l	d0,-(a7)
+	jsr	sub_05B016(pc)
+	lea.l	$20(a7),a7
+	clr.w	-$3B32(a5)
+	clr.w	-$3B04(a5)
+	move.l	-$4(a6),d7
+	unlk	a6
+	rts

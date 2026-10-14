@@ -1,0 +1,35 @@
+; ---------------------------------------------------------------------------
+; sub_04791A	[jt 306]
+; ---------------------------------------------------------------------------
+sub_04791A:
+	link.w	a6,#$FDE8
+	movem.l	a3-a4,-(a7)
+	lea.l	-$218(a6),a3
+	jsr	sub_047886(pc)
+	jsr	sub_047892(pc)
+	jsr	sub_047712(pc)
+	jsr	sub_047858(pc)
+	jsr	sub_04740A(pc)
+	jsr	sub_0475B4(pc)
+	move.l	a3,-(a7)
+	jsr	sub_0472CC(pc)
+	addq.w	#$4,a7
+	moveq	#$1,d0
+	move.l	d0,-(a7)
+	pea.l	sub_0475E0(pc)
+	moveq	#$A,d1
+	move.l	d1,-(a7)
+	pea.l	$3F32(a5)
+	jsr	$4FD2(a5)	; -> sub_1F9C92
+	movea.l	d0,a4
+	move.l	a4,d0
+	lea.l	$10(a7),a7
+	beq.s	loc_04796C
+	move.l	a4,-(a7)
+	jsr	$4FDA(a5)	; -> sub_1F9D04
+	addq.w	#$4,a7
+loc_04796C:
+	jsr	$5002(a5)	; -> sub_1FA6FE
+	movem.l	-$220(a6),a3-a4
+	unlk	a6
+	rts

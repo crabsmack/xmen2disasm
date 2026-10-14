@@ -1,0 +1,32 @@
+; ---------------------------------------------------------------------------
+; sub_04B73A	[jt 333]
+; ---------------------------------------------------------------------------
+sub_04B73A:
+	link.w	a6,#$0
+	move.l	a4,-(a7)
+	movea.l	$8(a6),a4
+	cmpi.w	#$180,$AC(a4)
+	bge.s	loc_04B750
+	addq.w	#$2,$AC(a4)
+loc_04B750:
+	moveq	#$0,d0
+	move.b	$AF(a4),d0
+	move.l	d0,-(a7)
+	move.w	$AC(a4),d0
+	ext.l	d0
+	move.l	d0,-(a7)
+	moveq	#$0,d0
+	move.b	$B0(a4),d0
+	move.l	d0,-(a7)
+	jsr	$B8A(a5)	; -> sub_04DF52
+	move.l	a4,-(a7)
+	jsr	sub_04B344(pc)
+	lea.l	$10(a7),a7
+	clr.w	$6C(a4)
+	lea.l	sub_04B790(pc),a0
+	move.l	a0,$5C(a4)
+	moveq	#$8,d0
+	and.w	$4(a4),d0
+	movea.l	-$4(a6),a4
+	unlk	a6
+	rts

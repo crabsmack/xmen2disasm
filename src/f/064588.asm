@@ -1,0 +1,55 @@
+; ---------------------------------------------------------------------------
+; sub_064588	[link-after-rts]
+; ---------------------------------------------------------------------------
+sub_064588:
+	link.w	a6,#$0
+	movem.l	a3-a4,-(a7)
+	movea.l	$C(a6),a3
+	movea.l	$8(a6),a0
+	movea.l	(a0),a4
+	moveq	#$0,d0
+	move.b	$4(a3),d0
+	moveq	#$0,d1
+	move.b	$2(a3),d1
+	sub.w	d1,d0
+	move.w	d0,(a4)
+	moveq	#$1,d0
+	and.w	(a4),d0
+	add.w	d0,(a4)
+	moveq	#$0,d0
+	move.b	$5(a3),d0
+	moveq	#$0,d1
+	move.b	$3(a3),d1
+	sub.w	d1,d0
+	move.w	d0,$2(a4)
+	clr.l	$4(a4)
+	move.w	(a4),$8(a4)
+	move.w	$2(a4),$A(a4)
+	move.w	(a4),d0
+	ext.l	d0
+	addq.l	#$7,d0
+	asr.l	#$3,d0
+	move.w	d0,$C(a4)
+	move.w	$2(a4),d0
+	ext.l	d0
+	addq.l	#$7,d0
+	asr.l	#$3,d0
+	move.w	d0,$E(a4)
+	move.w	(a4),$10(a4)
+	move.w	$2(a4),$12(a4)
+	move.b	#$1,$14(a4)
+	move.b	#$1,$15(a4)
+	clr.w	$16(a4)
+	clr.b	$18(a4)
+	move.b	#$1,$19(a4)
+	clr.b	$1A(a4)
+	clr.l	$1C(a4)
+	clr.l	$20(a4)
+	clr.w	$24(a4)
+	movea.l	$8(a6),a0
+	move.l	a3,$4(a0)
+	movea.l	$8(a6),a0
+	clr.b	$30(a0)
+	movem.l	-$8(a6),a3-a4
+	unlk	a6
+	rts

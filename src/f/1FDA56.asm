@@ -1,0 +1,53 @@
+; ---------------------------------------------------------------------------
+; sub_1FDA56	[jt 2587]
+; ---------------------------------------------------------------------------
+sub_1FDA56:
+	link.w	a6,#$0
+	movem.l	d6-d7,-(a7)
+	moveq	#$1,d0
+	move.l	d0,-(a7)
+	jsr	sub_1FD9E8(pc)
+	move.w	d0,d7
+	move.w	-$3A36(a5),d0
+	not.w	d0
+	and.w	d7,d0
+	move.w	d0,-$3A26(a5)
+	move.w	d7,d0
+	not.w	d0
+	and.w	-$3A36(a5),d0
+	move.w	d0,-$3A2A(a5)
+	move.w	d7,d6
+	move.w	d6,-$3A36(a5)
+	move.w	-$3A26(a5),d0
+	or.w	-$3A2E(a5),d0
+	move.w	d6,d1
+	and.w	d0,d1
+	move.w	d1,-$3A2E(a5)
+	move.w	d6,d0
+	or.w	-$3A32(a5),d0
+	move.w	d0,-$3A32(a5)
+	moveq	#$0,d0
+	move.l	d0,-(a7)
+	jsr	sub_1FD9E8(pc)
+	move.w	d0,d7
+	move.w	-$3A38(a5),d0
+	not.w	d0
+	and.w	d7,d0
+	move.w	d0,-$3A28(a5)
+	move.w	d7,d0
+	not.w	d0
+	and.w	-$3A38(a5),d0
+	move.w	d0,-$3A2C(a5)
+	move.w	d7,d6
+	move.w	d6,-$3A38(a5)
+	move.w	-$3A28(a5),d0
+	or.w	-$3A30(a5),d0
+	move.w	d6,d1
+	and.w	d0,d1
+	move.w	d1,-$3A30(a5)
+	move.w	d6,d0
+	or.w	-$3A34(a5),d0
+	move.w	d0,-$3A34(a5)
+	movem.l	-$8(a6),d6-d7
+	unlk	a6
+	rts

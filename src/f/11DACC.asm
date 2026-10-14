@@ -1,0 +1,39 @@
+; ---------------------------------------------------------------------------
+; sub_11DACC	[jt 1608]
+; ---------------------------------------------------------------------------
+sub_11DACC:
+	link.w	a6,#$0
+	movem.l	d3/d7/a3-a4,-(a7)
+	movea.l	$14(a6),a3
+	movea.l	$8(a6),a4
+	move.l	a3,-(a7)
+	move.l	$10(a6),-(a7)
+	move.l	$C(a6),-(a7)
+	move.l	a4,-(a7)
+	lea.l	$30B2(a5),a0
+	movea.l	$2(a0),a0
+	movea.l	$2(a0),a0
+	movea.l	$12(a0),a1
+	jsr	(a1)
+	lea.l	$3072(a5),a0
+	movea.l	$2(a0),a0
+	move.l	a0,$8C(a4)
+	moveq	#$0,d0
+	move.b	$2(a0),d0
+	move.w	d0,$68(a4)
+	move.w	#$100,$B4(a4)
+	moveq	#$0,d0
+	move.b	$BB(a4),d0
+	moveq	#$3,d1
+	and.b	d0,d1
+	move.b	d1,$BE(a4)
+	move.w	#$3C,$BC(a4)
+	move.b	$BE(a4),d0
+	cmpi.b	#$3,d0
+	lea.l	$10(a7),a7
+	bhi.s	loc_11DB4E
+	moveq	#$0,d1
+	move.b	d0,d1
+	add.w	d1,d1
+	move.w	$11DB46(pc,d1.w),d1
+	jmp	$11DB44(pc,d1.w)

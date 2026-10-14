@@ -1,0 +1,35 @@
+; ---------------------------------------------------------------------------
+; sub_19767C	[link-after-rts]
+; ---------------------------------------------------------------------------
+sub_19767C:
+	link.w	a6,#$0
+	move.l	a4,-(a7)
+	movea.l	$8(a6),a4
+	tst.b	$9D(a4)
+	bne.s	loc_19769C
+	move.w	-$3BA8(a5),d0
+	not.w	d0
+	and.w	-$3A2E(a5),d0
+	move.w	d0,-$3A2E(a5)
+	bra.s	loc_1976AA
+loc_19769C:
+	move.w	-$3BA8(a5),d0
+	not.w	d0
+	and.w	-$3A30(a5),d0
+	move.w	d0,-$3A30(a5)
+loc_1976AA:
+	lea.l	$4CCA(a5),a0
+	move.l	a0,$5C(a4)
+	tst.l	$44(a4)
+	beq.s	loc_1976C0
+	move.l	#$FF,d0
+	bra.s	loc_1976C2
+loc_1976C0:
+	moveq	#$0,d0
+loc_1976C2:
+	moveq	#$0,d1
+	move.b	d0,d1
+	move.w	d1,$6C(a4)
+	movea.l	-$4(a6),a4
+	unlk	a6
+	rts

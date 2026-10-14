@@ -1,0 +1,125 @@
+; ---------------------------------------------------------------------------
+; sub_1182D4	[link-after-rts]
+; ---------------------------------------------------------------------------
+sub_1182D4:
+	link.w	a6,#$0
+	movem.l	d6-d7/a4,-(a7)
+	movea.l	$8(a6),a4
+	tst.b	$5(a4)
+	bgt.s	loc_11831E
+	move.b	#$4,$5(a4)
+	addq.b	#$1,$4(a4)
+	moveq	#$0,d0
+	move.b	$4(a4),d0
+	cmpi.b	#$4,d0
+	bls.s	loc_118308
+	move.l	a4,-(a7)
+	jsr	sub_1181F6(pc)
+	addq.w	#$4,a7
+	bra.w	loc_11841C
+loc_118308:
+	andi.w	#$F800,$A(a4)
+	moveq	#$0,d0
+	move.b	$4(a4),d0
+	lsl.l	#$4,d0
+	add.w	-$3BB8(a5),d0
+	or.w	d0,$A(a4)
+loc_11831E:
+	move.w	(a4),d0
+	ext.l	d0
+	move.w	-$348E(a5),d1
+	ext.l	d1
+	move.l	d0,d6
+	sub.l	d1,d6
+	move.w	$2(a4),d0
+	ext.l	d0
+	move.w	-$3490(a5),d1
+	ext.l	d1
+	move.l	d0,d7
+	sub.l	d1,d7
+	cmpi.w	#$FFE0,d6
+	ble.s	loc_11839E
+	cmpi.w	#$140,d6
+	bge.s	loc_11839E
+	cmpi.w	#$FFE0,d7
+	ble.s	loc_11839E
+	cmpi.w	#$E0,d7
+	bge.s	loc_11839E
+	lea.l	-$1FDA(a5),a0
+	movea.l	-$1FE6(a5),a1
+	move.b	$3(a1),d0
+	ext.w	d0
+	move.w	d0,-$1FE2(a5)
+	ext.l	d0
+	asl.l	#$3,d0
+	add.l	a0,d0
+	move.l	d0,-$1FE6(a5)
+	move.w	d7,d0
+	add.w	#$80,d0
+	movea.l	-$1FE6(a5),a0
+	move.w	d0,(a0)
+	movea.l	-$1FE6(a5),a0
+	move.b	#$F,$2(a0)
+	movea.l	-$1FE6(a5),a0
+	move.w	$A(a4),$4(a0)
+	move.w	d6,d0
+	add.w	#$80,d0
+	movea.l	-$1FE6(a5),a0
+	move.w	d0,$6(a0)
+loc_11839E:
+	tst.w	$C(a4)
+	beq.s	loc_11840C
+	moveq	#$0,d0
+	move.l	d0,-(a7)
+	pea.l	sub_11821E(pc)
+	move.l	-$1652(a5),-(a7)
+	move.w	$2(a4),d1
+	ext.l	d1
+	moveq	#$20,d2
+	add.l	d2,d1
+	move.l	d1,-(a7)
+	move.w	(a4),d1
+	ext.l	d1
+	add.l	d2,d1
+	move.l	d1,-(a7)
+	move.w	$2(a4),d1
+	ext.l	d1
+	move.l	d1,-(a7)
+	move.w	(a4),d1
+	ext.l	d1
+	move.l	d1,-(a7)
+	jsr	sub_118254(pc)
+	moveq	#$0,d0
+	move.l	d0,-(a7)
+	pea.l	sub_11821E(pc)
+	move.l	-$165A(a5),-(a7)
+	move.w	$2(a4),d1
+	ext.l	d1
+	moveq	#$20,d2
+	add.l	d2,d1
+	move.l	d1,-(a7)
+	move.w	(a4),d1
+	ext.l	d1
+	add.l	d2,d1
+	move.l	d1,-(a7)
+	move.w	$2(a4),d1
+	ext.l	d1
+	move.l	d1,-(a7)
+	move.w	(a4),d1
+	ext.l	d1
+	move.l	d1,-(a7)
+	jsr	sub_118254(pc)
+	lea.l	$38(a7),a7
+loc_11840C:
+	tst.b	-$38DE(a5)
+	beq.s	loc_118416
+	moveq	#$2,d0
+	bra.s	loc_118418
+loc_118416:
+	moveq	#$1,d0
+loc_118418:
+	sub.b	d0,$5(a4)
+loc_11841C:
+	movem.l	-$C(a6),d6-d7/a4
+	unlk	a6
+	rts

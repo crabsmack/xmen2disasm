@@ -1,0 +1,84 @@
+; ---------------------------------------------------------------------------
+; sub_0ABF3A	[jt 873]
+; ---------------------------------------------------------------------------
+sub_0ABF3A:
+	link.w	a6,#$0
+	movem.l	d3-d7/a4,-(a7)
+	movea.l	$8(a6),a4
+	moveq	#$0,d7
+	move.b	$2F(a4),d7
+	tst.l	d7
+	moveq	#$6,d0
+	cmp.l	d7,d0
+	bgt.w	loc_0ABFFE
+	moveq	#$E,d0
+	cmp.l	d7,d0
+	blt.w	loc_0ABFFE
+	move.l	$8(a4),d0
+	asr.l	#$8,d0
+	move.w	-$348E(a5),d1
+	ext.l	d1
+	sub.l	d1,d0
+	move.l	d0,d5
+	subq.l	#$8,d5
+	move.l	$C(a4),d0
+	asr.l	#$8,d0
+	move.w	-$3490(a5),d1
+	ext.l	d1
+	sub.l	d1,d0
+	move.l	d0,d6
+	moveq	#$10,d0
+	sub.l	d0,d6
+	move.w	$A8(a4),d1
+	ext.l	d1
+	moveq	#$24,d2
+	add.l	d2,d1
+	move.l	d7,d3
+	subq.l	#$6,d3
+	asl.l	#$2,d3
+	move.l	d3,d4
+	add.l	d1,d4
+	moveq	#-$20,d1
+	cmp.l	d5,d1
+	bge.s	loc_0AC014
+	cmpi.l	#$140,d5
+	bge.s	loc_0AC014
+	moveq	#-$20,d0
+	cmp.l	d6,d0
+	bge.s	loc_0AC014
+	cmpi.l	#$E0,d6
+	bge.s	loc_0AC014
+	lea.l	-$1FDA(a5),a0
+	movea.l	-$1FE6(a5),a1
+	move.b	$3(a1),d0
+	ext.w	d0
+	move.w	d0,-$1FE2(a5)
+	ext.l	d0
+	asl.l	#$3,d0
+	add.l	a0,d0
+	move.l	d0,-$1FE6(a5)
+	move.w	d6,d0
+	add.w	#$80,d0
+	movea.l	-$1FE6(a5),a0
+	move.w	d0,(a0)
+	movea.l	-$1FE6(a5),a0
+	move.b	#$5,$2(a0)
+	movea.l	-$1FE6(a5),a0
+	move.w	d4,$4(a0)
+	move.w	d5,d0
+	add.w	#$80,d0
+	movea.l	-$1FE6(a5),a0
+	move.w	d0,$6(a0)
+	bra.s	loc_0AC014
+loc_0ABFFE:
+	move.l	a4,-(a7)
+	lea.l	$1B12(a5),a0
+	movea.l	$2(a0),a0
+	movea.l	$2(a0),a0
+	movea.l	$1A(a0),a1
+	jsr	(a1)
+	addq.w	#$4,a7
+loc_0AC014:
+	movem.l	-$18(a6),d3-d7/a4
+	unlk	a6
+	rts

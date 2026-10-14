@@ -1,0 +1,118 @@
+; ---------------------------------------------------------------------------
+; sub_05AED2	[jt 403]
+; ---------------------------------------------------------------------------
+sub_05AED2:
+	link.w	a6,#$FFEE
+	movem.l	d3-d7,-(a7)
+	tst.w	-$3B32(a5)
+	bgt.w	loc_05AFF6
+	move.w	-$3490(a5),d0
+	ext.l	d0
+	moveq	#$50,d1
+	sub.l	d1,d0
+	move.w	d0,-$12(a6)
+	move.l	$8(a6),d6
+	add.l	#$1C000,d6
+	move.w	-$1754(a5),d0
+	ext.l	d0
+	move.w	#$C000,d2
+	and.w	d0,d2
+	moveq	#$0,d0
+	move.w	d2,d0
+	cmpi.l	#$8000,d0
+	seq.b	d3
+	neg.b	d3
+	move.b	d3,d4
+	move.w	-$1844(a5),d0
+	ext.l	d0
+	move.w	#$C000,d2
+	and.w	d0,d2
+	moveq	#$0,d0
+	move.w	d2,d0
+	cmpi.l	#$8000,d0
+	seq.b	d3
+	neg.b	d3
+	move.b	d3,d5
+	tst.b	d4
+	beq.s	loc_05AF7E
+	tst.b	d5
+	beq.s	loc_05AF7E
+	move.l	-$174C(a5),d0
+	cmp.l	-$183C(a5),d0
+	slt.b	d3
+	neg.b	d3
+	beq.s	loc_05AF4E
+	move.l	-$174C(a5),d0
+	bra.s	loc_05AF52
+loc_05AF4E:
+	move.l	-$183C(a5),d0
+loc_05AF52:
+	cmp.l	d0,d6
+	bgt.w	loc_05B00C
+	move.w	-$3B04(a5),d0
+	btst	#$0,d0
+	beq.s	loc_05AF70
+	moveq	#$F,d0
+	muls.w	-$1742(a5),d0
+	move.l	d0,d7
+	add.l	-$1750(a5),d7
+	bra.s	loc_05AFAE
+loc_05AF70:
+	moveq	#$F,d0
+	muls.w	-$1832(a5),d0
+	move.l	d0,d7
+	add.l	-$1840(a5),d7
+	bra.s	loc_05AFAE
+loc_05AF7E:
+	tst.b	d4
+	beq.s	loc_05AF98
+	cmp.l	-$174C(a5),d6
+	bgt.w	loc_05B00C
+	moveq	#$F,d0
+	muls.w	-$1742(a5),d0
+	move.l	d0,d7
+	add.l	-$1750(a5),d7
+	bra.s	loc_05AFAE
+loc_05AF98:
+	tst.b	d5
+	beq.s	loc_05AFAE
+	cmp.l	-$183C(a5),d6
+	bgt.s	loc_05B00C
+	moveq	#$F,d0
+	muls.w	-$1832(a5),d0
+	move.l	d0,d7
+	add.l	-$1840(a5),d7
+loc_05AFAE:
+	clr.w	-$A(a6)
+	pea.l	-$10(a6)
+	move.w	-$12(a6),d0
+	ext.l	d0
+	lsl.l	#$8,d0
+	move.l	d0,-(a7)
+	move.l	d7,-(a7)
+	lea.l	$D22(a5),a0
+	move.l	$2(a0),-(a7)
+	moveq	#$0,d0
+	move.l	d0,-(a7)
+	lea.l	$D22(a5),a0
+	movea.l	$2(a0),a0
+	movea.l	$E(a0),a1
+	jsr	(a1)
+	pea.l	-$3B32(a5)
+	pea.l	-$3B04(a5)
+	lea.l	$C92(a5),a0
+	move.l	$2(a0),-(a7)
+	jsr	$CA2(a5)	; -> sub_05A8F8
+	lea.l	$20(a7),a7
+	bra.s	loc_05B00C
+loc_05AFF6:
+	move.w	-$3B32(a5),d0
+	subq.w	#$1,-$3B32(a5)
+	tst.b	-$38DE(a5)
+	beq.s	loc_05B00C
+	move.w	-$3B32(a5),d0
+	subq.w	#$1,-$3B32(a5)
+loc_05B00C:
+	movem.l	-$26(a6),d3-d7
+	unlk	a6
+	rts

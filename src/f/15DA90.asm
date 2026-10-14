@@ -1,0 +1,25 @@
+; ---------------------------------------------------------------------------
+; sub_15DA90	[link-after-rts]
+; ---------------------------------------------------------------------------
+sub_15DA90:
+	link.w	a6,#$0
+	move.l	a4,-(a7)
+	movea.l	$8(a6),a4
+	move.w	$16(a4),d0
+	ext.l	d0
+	add.l	d0,$8(a4)
+	move.w	$18(a4),d0
+	ext.l	d0
+	add.l	d0,$C(a4)
+	move.w	$1E(a4),d0
+	add.w	d0,$16(a4)
+	move.w	$20(a4),d0
+	add.w	d0,$18(a4)
+	clr.w	$6C(a4)
+	lea.l	sub_15DA90(pc),a0
+	move.l	a0,$5C(a4)
+	moveq	#$8,d0
+	and.w	$4(a4),d0
+	movea.l	-$4(a6),a4
+	unlk	a6
+	rts

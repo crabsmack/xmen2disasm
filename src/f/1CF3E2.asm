@@ -1,0 +1,39 @@
+; ---------------------------------------------------------------------------
+; loc_1CF3E2
+; ---------------------------------------------------------------------------
+loc_1CF3E2:
+	moveq	#$0,d3
+	ext.l	d5
+	move.w	$4E(a4),d0
+	ext.l	d0
+	ext.l	d7
+	sub.l	d7,d0
+	cmp.l	d5,d0
+	bgt.s	loc_1CF426
+	ext.l	d5
+	move.w	$52(a4),d0
+	ext.l	d0
+	ext.l	d7
+	add.l	d7,d0
+	cmp.l	d5,d0
+	blt.s	loc_1CF426
+	ext.l	d4
+	move.w	$4C(a4),d0
+	ext.l	d0
+	ext.l	d6
+	sub.l	d6,d0
+	cmp.l	d4,d0
+	bgt.s	loc_1CF426
+	ext.l	d4
+	move.w	$50(a4),d0
+	ext.l	d0
+	ext.l	d6
+	add.l	d6,d0
+	cmp.l	d4,d0
+	blt.s	loc_1CF426
+	moveq	#$1,d3
+loc_1CF426:
+	move.b	d3,d0
+	movem.l	-$1C(a6),d3-d7/a3-a4
+	unlk	a6
+	rts

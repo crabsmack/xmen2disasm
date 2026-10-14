@@ -1,0 +1,46 @@
+; ---------------------------------------------------------------------------
+; sub_15D858	[jt 2040]
+; ---------------------------------------------------------------------------
+sub_15D858:
+	link.w	a6,#$0
+	movem.l	d5-d7/a4,-(a7)
+	move.w	$E(a6),d5
+	move.w	$A(a6),d6
+	ext.l	d5
+	movea.l	-$3A72(a5),a0
+	move.l	d5,d0
+	add.l	d0,d0
+	move.w	(a0,d0.l),d0
+	ext.l	d0
+	ext.l	d6
+	add.l	d6,d0
+	movea.l	-$3A84(a5),a0
+	add.l	d0,d0
+	lea.l	(a0,d0.l),a4
+	move.w	#$F800,d0
+	and.w	(a4),d0
+	move.w	$12(a6),d7
+	or.w	d0,d7
+	tst.b	$17(a6)
+	bne.s	loc_15D89C
+	andi.w	#$C7FF,d7
+loc_15D89C:
+	tst.b	$1B(a6)
+	beq.s	loc_15D8A6
+	ori.w	#$200,d7
+loc_15D8A6:
+	tst.b	$1F(a6)
+	beq.s	loc_15D8B0
+	ori.w	#$400,d7
+loc_15D8B0:
+	move.w	d7,(a4)
+	moveq	#$0,d0
+	move.l	d0,-(a7)
+	ext.l	d5
+	move.l	d5,-(a7)
+	ext.l	d6
+	move.l	d6,-(a7)
+	jsr	sub_15D00E(pc)
+	movem.l	-$10(a6),d5-d7/a4
+	unlk	a6
+	rts

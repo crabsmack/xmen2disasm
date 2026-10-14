@@ -1,0 +1,138 @@
+; ---------------------------------------------------------------------------
+; sub_005CC6	[link-after-rts]
+; ---------------------------------------------------------------------------
+sub_005CC6:
+	link.w	a6,#$0
+	movem.l	d3/d5-d7/a3-a4,-(a7)
+	moveq	#$0,d0
+	move.l	d0,-$38B0(a5)
+	clr.b	-$3A1A(a5)
+	clr.b	-$38B6(a5)
+	clr.b	-$38C4(a5)
+	move.w	#$3,-$38AC(a5)
+	clr.w	-$3B00(a5)
+	jsr	sub_0054C6(pc)
+	move.w	#$FFFF,-$3B92(a5)
+	jsr	sub_005C7C(pc)
+loc_005CF8:
+	move.w	-$359C(a5),d0
+	asl.w	#$3,d0
+	lea.l	-$E52(a5),a0
+	tst.l	$4(a0,d0.w)
+	beq.s	loc_005D2C
+	lea.l	sub_006B2C(pc),a0
+	move.l	a0,-$38E8(a5)
+	lea.l	sub_006B64(pc),a0
+	move.l	a0,-$38EC(a5)
+	move.w	-$359C(a5),d0
+	asl.w	#$3,d0
+	lea.l	-$E52(a5),a0
+	movea.l	$4(a0,d0.w),a1
+	jsr	(a1)
+	jsr	$4ACA(a5)	; -> sub_1E2C3E
+loc_005D2C:
+	moveq	#-$1,d0
+	cmp.b	-$3BBC(a5),d0
+	beq.s	loc_005D3A
+	move.w	-$16F0(a5),-$3B94(a5)
+loc_005D3A:
+	moveq	#-$1,d0
+	cmp.b	-$3BBB(a5),d0
+	beq.s	loc_005D48
+	move.w	-$17E0(a5),-$3B96(a5)
+loc_005D48:
+	tst.w	-$3B94(a5)
+	sgt.b	d3
+	neg.b	d3
+	beq.s	loc_005D56
+	moveq	#$0,d0
+	bra.s	loc_005D58
+loc_005D56:
+	moveq	#$1,d0
+loc_005D58:
+	move.b	d0,d5
+	tst.w	-$3B96(a5)
+	sgt.b	d3
+	neg.b	d3
+	beq.s	loc_005D68
+	moveq	#$0,d0
+	bra.s	loc_005D6A
+loc_005D68:
+	moveq	#$1,d0
+loc_005D6A:
+	move.b	d0,d6
+	tst.b	d5
+	beq.s	loc_005D9E
+	moveq	#-$1,d0
+	cmp.b	-$3BBC(a5),d0
+	beq.s	loc_005D9E
+	tst.w	-$38A8(a5)
+	beq.s	loc_005D8A
+	subq.w	#$1,-$38A8(a5)
+	move.w	#$700,-$3B94(a5)
+	bra.s	loc_005D9E
+loc_005D8A:
+	clr.w	-$3B94(a5)
+	dc.w	$1B7C,$FFFF,$C444	; move.b #$ff, -$3bbc(a5)
+	moveq	#$0,d0
+	move.l	d0,-$1758(a5)
+	clr.w	-$1754(a5)
+loc_005D9E:
+	tst.b	d6
+	beq.s	loc_005DD0
+	moveq	#-$1,d0
+	cmp.b	-$3BBB(a5),d0
+	beq.s	loc_005DD0
+	tst.w	-$38AA(a5)
+	beq.s	loc_005DBC
+	subq.w	#$1,-$38AA(a5)
+	move.w	#$700,-$3B96(a5)
+	bra.s	loc_005DD0
+loc_005DBC:
+	clr.w	-$3B96(a5)
+	dc.w	$1B7C,$FFFF,$C445	; move.b #$ff, -$3bbb(a5)
+	moveq	#$0,d0
+	move.l	d0,-$1848(a5)
+	clr.w	-$1844(a5)
+loc_005DD0:
+	tst.b	-$38C2(a5)
+	bne.s	loc_005E26
+	tst.b	d5
+	beq.s	loc_005DDE
+	tst.b	d6
+	bne.s	loc_005DF8
+loc_005DDE:
+	addq.w	#$1,-$359C(a5)
+	moveq	#$0,d0
+	move.b	-$3B86(a5),d0
+	cmp.w	-$359C(a5),d0
+	bge.w	loc_005F10
+	jsr	sub_005C7C(pc)
+	bra.w	loc_005F10
+loc_005DF8:
+	tst.w	-$3B94(a5)
+	bne.s	loc_005E04
+	tst.w	-$3B96(a5)
+	beq.s	loc_005E18
+loc_005E04:
+	move.w	-$359C(a5),-$3B92(a5)
+	moveq	#$0,d0
+	move.b	-$3B88(a5),d0
+	move.w	d0,-$359C(a5)
+	bra.w	loc_005F10
+loc_005E18:
+	moveq	#$0,d0
+	move.b	-$3B8C(a5),d0
+	move.w	d0,-$359C(a5)
+	bra.w	loc_005F10
+loc_005E26:
+	moveq	#-$1,d0
+	cmp.w	-$359C(a5),d0
+	bne.w	loc_005F10
+	move.w	-$3B90(a5),d0
+	bmi.s	loc_005E4E
+	cmpi.w	#$3,d0
+	bgt.s	loc_005E4E
+	add.w	d0,d0
+	move.w	$5E46(pc,d0.w),d0
+	jmp	$5E44(pc,d0.w)

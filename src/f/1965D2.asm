@@ -1,0 +1,69 @@
+; ---------------------------------------------------------------------------
+; sub_1965D2	[link-after-rts]
+; ---------------------------------------------------------------------------
+sub_1965D2:
+	link.w	a6,#$0
+	movem.l	d6-d7/a3-a4,-(a7)
+	movea.l	$8(a6),a4
+	move.l	$8(a4),d7
+	asr.l	#$8,d7
+	move.w	d7,d6
+	movea.l	$BC(a4),a3
+	moveq	#$0,d0
+	move.b	$7B(a4),d0
+	ext.l	d0
+	lsl.l	#$2,d0
+	move.l	d0,d1
+	lsl.l	#$2,d0
+	add.l	d1,d0
+	lea.l	-$33D2(a5),a0
+	lea.l	(a0,d0.w),a3
+	move.l	a3,-(a7)
+	move.l	a4,-(a7)
+	movea.l	(a4),a0
+	movea.l	$F2(a0),a1
+	jsr	(a1)
+	move.w	d0,d7
+	move.l	a3,$BC(a4)
+	moveq	#$0,d0
+	move.w	$C0(a4),d0
+	moveq	#-$4,d1
+	and.w	d0,d1
+	moveq	#$0,d0
+	move.w	d1,d0
+	ext.l	d7
+	move.l	d7,d1
+	or.l	d0,d1
+	move.w	d1,$C0(a4)
+	move.b	#$1,-$3892(a5)
+	tst.b	$C2(a4)
+	addq.w	#$8,a7
+	bne.s	loc_19664C
+	moveq	#$23,d0
+	move.l	d0,-(a7)
+	move.l	a4,-(a7)
+	movea.l	(a4),a0
+	movea.l	$56(a0),a1
+	jsr	(a1)
+	addq.w	#$8,a7
+	bra.s	loc_19665C
+loc_19664C:
+	moveq	#$1E,d0
+	move.l	d0,-(a7)
+	move.l	a4,-(a7)
+	movea.l	(a4),a0
+	movea.l	$56(a0),a1
+	jsr	(a1)
+	addq.w	#$8,a7
+loc_19665C:
+	clr.w	$1E(a4)
+	clr.l	$16(a4)
+	clr.w	$20(a4)
+	move.w	#$6,$6C(a4)
+	lea.l	sub_1968D2(pc),a0
+	move.l	a0,$5C(a4)
+	moveq	#$8,d0
+	and.w	$4(a4),d0
+	movem.l	-$10(a6),d6-d7/a3-a4
+	unlk	a6
+	rts

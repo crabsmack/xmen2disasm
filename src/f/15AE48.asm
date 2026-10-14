@@ -1,0 +1,244 @@
+; ---------------------------------------------------------------------------
+; sub_15AE48	[jt 2017]
+; ---------------------------------------------------------------------------
+sub_15AE48:
+	link.w	a6,#$FFE4
+	movem.l	d3-d7/a3-a4,-(a7)
+	movea.l	$8(a6),a3
+	lea.l	$2E(a3),a4
+	moveq	#$0,d4
+	move.b	$1(a4),d4
+	cmpi.w	#$FF,d4
+	beq.w	loc_15B0C6
+	tst.l	$2(a4)
+	beq.w	loc_15B0C6
+	move.l	$2(a4),d0
+	move.l	d0,-$A(a6)
+	moveq	#$24,d1
+	add.l	d1,d0
+	ext.l	d4
+	move.l	d4,d2
+	lsl.l	#$4,d2
+	add.l	d0,d2
+	ext.l	d4
+	move.l	d4,d0
+	lsl.l	#$2,d0
+	add.l	d2,d0
+	move.l	d0,-$6(a6)
+	movea.l	d0,a0
+	move.w	$12(a0),d5
+	move.w	-$1FE2(a5),d0
+	ext.l	d0
+	moveq	#$50,d4
+	sub.l	d0,d4
+	movea.l	-$6(a6),a0
+	move.b	$10(a0),d0
+	ext.w	d0
+	move.w	d0,-$2(a6)
+	cmp.w	-$2(a6),d4
+	bge.s	loc_15AEB6
+	move.w	d4,-$2(a6)
+loc_15AEB6:
+	tst.w	-$2(a6)
+	ble.w	loc_15B0C6
+	movea.l	-$A(a6),a4
+	adda.w	d5,a4
+	moveq	#$0,d3
+	tst.l	$44(a3)
+	beq.s	loc_15AEE4
+	movea.l	$44(a3),a0
+	moveq	#$0,d0
+	move.b	(a0),d0
+	moveq	#$30,d1
+	and.b	d0,d1
+	moveq	#$0,d0
+	move.b	d1,d0
+	cmpi.w	#$20,d0
+	bne.s	loc_15AEE4
+	moveq	#$1,d3
+loc_15AEE4:
+	tst.b	d3
+	beq.s	loc_15AF00
+	move.w	$4A(a3),d0
+	ext.l	d0
+	move.l	$8(a3),d1
+	sub.l	d0,d1
+	asr.l	#$8,d1
+	move.w	-$348E(a5),d0
+	ext.l	d0
+	sub.l	d0,d1
+	bra.s	loc_15AF10
+loc_15AF00:
+	move.l	$8(a3),d0
+	asr.l	#$8,d0
+	move.w	-$348E(a5),d1
+	ext.l	d1
+	sub.l	d1,d0
+	move.l	d0,d1
+loc_15AF10:
+	move.w	d1,-$1C(a6)
+	moveq	#$0,d3
+	tst.l	$44(a3)
+	beq.s	loc_15AF34
+	movea.l	$44(a3),a0
+	moveq	#$0,d0
+	move.b	(a0),d0
+	moveq	#$30,d1
+	and.b	d0,d1
+	moveq	#$0,d0
+	move.b	d1,d0
+	cmpi.w	#$30,d0
+	bne.s	loc_15AF34
+	moveq	#$1,d3
+loc_15AF34:
+	tst.b	d3
+	beq.s	loc_15AF50
+	move.w	$4A(a3),d0
+	ext.l	d0
+	move.l	$C(a3),d1
+	sub.l	d0,d1
+	asr.l	#$8,d1
+	move.w	-$3490(a5),d0
+	ext.l	d0
+	sub.l	d0,d1
+	bra.s	loc_15AF60
+loc_15AF50:
+	move.l	$C(a3),d0
+	asr.l	#$8,d0
+	move.w	-$3490(a5),d1
+	ext.l	d1
+	sub.l	d1,d0
+	move.l	d0,d1
+loc_15AF60:
+	move.w	d1,-$1A(a6)
+	movea.l	$10(a6),a0
+	move.w	$6(a0),d0
+	ext.l	d0
+	move.l	#$8000,d1
+	or.l	d0,d1
+	move.w	d1,-$18(a6)
+	lea.l	$5162(a5),a0
+	move.l	$2(a0),-$16(a6)
+	lea.l	$516A(a5),a0
+	move.l	$2(a0),-$12(a6)
+	move.w	-$2(a6),d0
+	ext.l	d0
+	move.l	d0,d5
+	bra.w	loc_15B0C0
+loc_15AF9A:
+	tst.b	$17(a6)
+	beq.s	loc_15AFB4
+	move.l	d5,d0
+	add.l	-$3A10(a5),d0
+	moveq	#$0,d1
+	move.b	$1B(a6),d1
+	tst.l	d1
+	and.l	d0,d1
+	bne.w	loc_15B0BA
+loc_15AFB4:
+	moveq	#$F,d0
+	and.b	$5(a4),d0
+	moveq	#$0,d6
+	move.b	d0,d6
+	move.w	-$18(a6),d0
+	ext.l	d0
+	movea.l	$C(a6),a0
+	moveq	#$0,d1
+	move.b	(a0,d6.l),d1
+	move.l	d1,d7
+	add.l	d0,d7
+	moveq	#$0,d0
+	move.b	$1F(a6),d0
+	moveq	#$D,d1
+	lsl.l	d1,d0
+	or.l	d0,d7
+	moveq	#$10,d0
+	and.b	$2E(a3),d0
+	beq.s	loc_15B004
+	move.w	-$1C(a6),d0
+	ext.l	d0
+	move.w	(a4),d1
+	ext.l	d1
+	sub.l	d1,d0
+	movea.l	-$16(a6),a0
+	moveq	#$0,d1
+	move.b	(a0,d6.l),d1
+	sub.l	d1,d0
+	move.l	d0,-$E(a6)
+	bra.s	loc_15B014
+loc_15B004:
+	move.w	-$1C(a6),d0
+	ext.l	d0
+	move.w	(a4),d1
+	ext.l	d1
+	add.l	d0,d1
+	move.l	d1,-$E(a6)
+loc_15B014:
+	moveq	#$8,d0
+	and.b	$2E(a3),d0
+	beq.s	loc_15B03A
+	move.w	-$1A(a6),d0
+	ext.l	d0
+	move.w	$2(a4),d1
+	ext.l	d1
+	sub.l	d1,d0
+	movea.l	-$12(a6),a0
+	moveq	#$0,d1
+	move.b	(a0,d6.l),d1
+	move.l	d0,d4
+	sub.l	d1,d4
+	bra.s	loc_15B04A
+loc_15B03A:
+	move.w	-$1A(a6),d0
+	ext.l	d0
+	move.w	$2(a4),d1
+	ext.l	d1
+	move.l	d1,d4
+	add.l	d0,d4
+loc_15B04A:
+	moveq	#$0,d0
+	move.b	$23(a6),d0
+	tst.l	d0
+	and.l	-$3A10(a5),d0
+	beq.s	loc_15B05E
+	ori.l	#$800,d7
+loc_15B05E:
+	moveq	#$0,d0
+	move.b	$27(a6),d0
+	tst.l	d0
+	and.l	-$3A10(a5),d0
+	beq.s	loc_15B072
+	ori.l	#$1000,d7
+loc_15B072:
+	lea.l	-$1FDA(a5),a0
+	movea.l	-$1FE6(a5),a1
+	move.b	$3(a1),d0
+	ext.w	d0
+	move.w	d0,-$1FE2(a5)
+	ext.l	d0
+	asl.l	#$3,d0
+	add.l	a0,d0
+	move.l	d0,-$1FE6(a5)
+	move.w	d4,d0
+	add.w	#$80,d0
+	movea.l	-$1FE6(a5),a0
+	move.w	d0,(a0)
+	movea.l	-$1FE6(a5),a0
+	move.b	d6,$2(a0)
+	movea.l	-$1FE6(a5),a0
+	move.w	d7,$4(a0)
+	move.w	-$C(a6),d0
+	add.w	#$80,d0
+	movea.l	-$1FE6(a5),a0
+	move.w	d0,$6(a0)
+loc_15B0BA:
+	addq.w	#$8,a4
+	move.l	d5,d0
+	subq.l	#$1,d5
+loc_15B0C0:
+	tst.l	d5
+	bne.w	loc_15AF9A
+loc_15B0C6:
+	movem.l	-$38(a6),d3-d7/a3-a4
+	unlk	a6
+	rts

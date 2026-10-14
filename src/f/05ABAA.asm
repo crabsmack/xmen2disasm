@@ -1,0 +1,42 @@
+; ---------------------------------------------------------------------------
+; sub_05ABAA	[link-after-rts]
+; ---------------------------------------------------------------------------
+sub_05ABAA:
+	link.w	a6,#$0
+	lea.l	$C4A(a5),a0
+	move.l	$2(a0),-(a7)
+	moveq	#$0,d0
+	move.l	d0,-(a7)
+	moveq	#$8,d1
+	move.l	d1,-(a7)
+	move.l	d1,-(a7)
+	moveq	#-$1,d0
+	move.l	d0,-(a7)
+	moveq	#$14,d0
+	move.l	d0,-(a7)
+	moveq	#$1,d0
+	move.l	d0,-(a7)
+	move.l	d0,-(a7)
+	moveq	#$0,d0
+	move.l	d0,-(a7)
+	move.l	d0,-(a7)
+	move.l	d0,-(a7)
+	lea.l	$C3A(a5),a0
+	move.l	$2(a0),-(a7)
+	lea.l	$C52(a5),a0
+	move.l	$2(a0),-(a7)
+	lea.l	$C52(a5),a0
+	move.l	$2(a0),-(a7)
+	lea.l	$C42(a5),a0
+	move.l	$2(a0),-(a7)
+	lea.l	$C42(a5),a0
+	move.l	$2(a0),-(a7)
+	jsr	$4FCA(a5)	; -> sub_1F98A8
+	clr.w	-$3498(a5)
+	clr.w	-$3496(a5)
+	move.w	#$B8,-$3898(a5)
+	move.w	#$C0,-$389A(a5)
+	move.b	#$1,-$38B4(a5)
+	clr.b	-$38DE(a5)
+	unlk	a6
+	rts
