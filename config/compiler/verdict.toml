@@ -1,0 +1,18 @@
+# Phase 3 verdict (criteria C4/C5; docs/COMPILER.md has the evidence).
+
+verdict = "identified"
+candidate = "mpw-c-3.3.3"
+flags = "-mbg off -b"
+equivalent = ["mpw-c-3.3.2", "mpw-c-3.4d1"]
+summary = """Apple MPW C 3.3 (68000, MPW 3.3-era 1993-94 libraries). Every match file compiles
+byte-identical with MPW C 3.3.2, 3.3.3 and 3.4d1 (prerelease), which generate the same code for
+every construct tried; MPW C 3.2.4 and earlier, Symantec SC 6-8 and the THINK/CodeWarrior
+toolchains are ruled out. Flags: -mbg off (no MacsBug names in the game code; the MPW library
+modules keep theirs), -b (PC-relative function addresses and string literals in code)."""
+
+decomp_policy = "matching-for-unexecuted"
+reason = """The compiler is identified and C compiles to the ROM's exact bytes with ordinary,
+readable source (tools/cc.py --match), so functions the corpus never executes (~22% of
+instructions, which frame comparison cannot check) are verified by a matching compile.
+Executed functions only need frame-identical behaviour (phase 2's trace comparison), which
+leaves them free to be written for readability."""

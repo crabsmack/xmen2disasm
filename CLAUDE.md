@@ -8,9 +8,11 @@ work lives, and the decisions on record. Every phase has a measured definition o
 and a checker: phase 1 `uv run tools/progress.py` ([docs/DONE.md](docs/DONE.md)),
 phases 2-5 `uv run tools/phase.py N` ([docs/phases/](docs/phases/)).
 
-**Status (2026-10-15): phase 1 complete, 16/16 criteria pass.** Phases 2 (recomp, in
-`..\XMen2Recomp`) and 3 (compiler identification, here) are next and independent of
-each other; 4 and 5 are drafts. `uv run tools/phase.py status` shows every phase.
+**Status (2026-10-15): phase 1 complete, 16/16 criteria pass. Phase 3 complete (5/5): the
+compiler is Apple MPW C 3.3, `-mbg off -b` ([docs/COMPILER.md](docs/COMPILER.md);
+`uv run tools/cc.py --match FILE.c` checks C against the ROM).** Phase 2 (recomp, in
+`..\XMen2Recomp`) is in progress; 4 and 5 are drafts. `uv run tools/phase.py status`
+shows every phase.
 
 **Start of every session:** `uv run tools/setup.py` (idempotent: ROM, emulator,
 build, runs, Ghidra), then read `docs/ROADMAP.md`, the current phase's criteria doc and
@@ -70,6 +72,8 @@ labelled data.
 | `convert.py ADDR... --evidence "..."` | Raw bytes -> verified code from evidence (also batch: `--entries-file`) |
 | `candidates.py` | Unverified jump-table entries that trace cleanly as code |
 | `handoff.py` | Export build/recomp/ for phase 2 |
+| `cc.py FILE.c` / `cc.py --match config/compiler/match/ADDR.c` | Compile C with MPW C 3.3 (headless, under mps) / prove it byte-identical to the ROM function |
+| `cc_libmatch.py [--scan ID]` / `mpwobj.py FILE.o` | Library fingerprint per candidate toolchain / dump an MPW object file |
 | `explore.py` / `split.py --force` | Initial discovery/split. **Never re-split** a tree with hand edits (hook-blocked) |
 
 Mutating tools rebuild and roll back on failure. A refusal or rollback means the

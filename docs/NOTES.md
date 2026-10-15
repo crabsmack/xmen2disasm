@@ -13,8 +13,8 @@ progress.py also reads this file:
 
 ## Binary facts
 
-- **Compiler**: C/C++ from a classic Macintosh toolchain (MPW C/C++ or Symantec;
-  exact version TBD). ~3,000 `link.w a6,#N` frames; args at `8(a6)`...; result in d0;
+- **Compiler**: Apple MPW C 3.3 (`-mbg off -b`) with 1993-94 MPW libraries, proven by
+  byte-identical compiles (phase 3, [COMPILER.md](COMPILER.md)). ~3,000 `link.w a6,#N` frames; args at `8(a6)`...; result in d0;
   d3-d7/a2-a4 callee-saved. Objects have vtables at offset 0.
 - **A5 = $000200, constant** (emulator, frames 3000 and 40000). So:
   - `-d(a5)` = RAM global at `($200 - d) & $FFFFFF`, e.g. `-$38A6(a5)` = `$FFC95A`.
@@ -768,7 +768,8 @@ None of these was read or DMA'd anywhere in the 75-run corpus, and no jump-table
 
 ## Open questions
 
-- Exact compiler/version (matters for an optional C decomp phase).
+- ~~Exact compiler/version (matters for an optional C decomp phase).~~ MPW C 3.3, see
+  [COMPILER.md](COMPILER.md) (phase 3, 2026-10-15).
 - ~~Playable character list for scenario R4 (assumed: Cyclops, Wolverine, Gambit,
   Psylocke, Nightcrawler, Beast, Magneto). Verify and fix `REQUIRED_SCENARIOS`.~~
   Verified on the select screen: exactly those seven. `options-menu` and `continue` name

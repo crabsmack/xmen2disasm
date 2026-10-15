@@ -25,6 +25,8 @@ blindly: each reference must resolve, in the ROM, to the same name the C used:
   - the MPW linker turns PC-relative calls to another segment into jump-table calls
     (`jsr x(pc)` -> `jsr d(a5)`, also pea/lea): accepted when that entry targets <name>
   - 32-bit absolute: the ROM's long is <name>'s address (build/symbols.txt)
+The patched field in the object holds the reference's addend (g_Table+$50) and is added in;
+MPW library entry points (memset, LDIVT, ...) resolve to the disassembly's names (LIB_NAMES).
 Exit 0 only when every other byte is equal and every reference resolves.
 """
 from __future__ import annotations
