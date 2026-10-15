@@ -198,7 +198,10 @@ def check_ref(rom: bytes, names: Names, base: int, obj: bytes, ref: mpwobj.Ref, 
             ok = names.globals[want] == d
             return ok, f"A5 {d:+#x}{add:+#x} = global {want}" if ok else f"A5 {d:+#x}, {want} is {names.globals[want]:+#x}", cover
         got = names.jt.get(d)
-        return got == want and add == 0, f"A5 {d:+#x} -> jt {got}", cover
+        # +2: a code symbol the C declared as extern data; MPW Link resolves the A5 data
+        # reference to its jump-table entry's jmp target field (Deathbird_StateSendHornets'
+        # move.l Tbl_Hornet_vtable+2(a5)). The ROM's displacement is entry + 2 just the same.
+        return got == want and add in (0, 2), f"A5 {d:+#x}{add:+#x} -> jt {got}", cover
     # PC-relative from code: same segment, or rewritten by the linker to a jump-table access
     op_obj = int.from_bytes(obj[off - 2:off], "big") if off >= 2 else 0
     op_rom = int.from_bytes(rom[a - 2:a], "big")
