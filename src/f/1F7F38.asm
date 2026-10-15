@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_1F7F38	[jt 2531]
+; Obj_SnapToNearestFloor - stand an object on the nearest flat floor (types $13-$1C or a level segment) of a type, at a position along it (negative = from the far end)
+; In:  8(a6) = object  $E(a6) = word type  $12(a6) = word position (-1 = from x/y)
+; Out: none
+; Evidence: distance = |y - y1| + horizontal distance outside x1..x2; then like Obj_SnapToNearestSeg; caller Blast_Init
 ; ---------------------------------------------------------------------------
-sub_1F7F38:
+Obj_SnapToNearestFloor:
 	link.w	a6,#$FFFC
 	movem.l	d3-d7/a3-a4,-(a7)
 	move.w	#$4E20,-$2(a6)

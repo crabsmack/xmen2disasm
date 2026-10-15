@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; loc_1FDBC4	[runtime: executed in tas]
+; Scroll_SetParallax_Band2 - Scroll_SetParallax band type 2: no per-line step
+; In:  a3, d7
+; Out: none
+; Evidence: target of Sw_1FDAEC entry 2: step = 0
 ; ---------------------------------------------------------------------------
-loc_1FDBC4:
+Scroll_SetParallax_Band2:
 	move.l	d7,d0
 	asl.w	#$2,d0
 	moveq	#$0,d1

@@ -31,7 +31,7 @@ loc_183A70:
 	move.l	a4,-(a7)
 	jsr	$4DDA(a5)	; -> Obj_UpdateBox
 	move.l	a4,-(a7)
-	jsr	$4F5A(a5)	; -> sub_1F8B42
+	jsr	$4F5A(a5)	; -> Obj_CollideSegs
 	move.l	a3,g_SegResolveHook(a5)
 	tst.b	$7B(a4)
 	lea.l	$10(a7),a7

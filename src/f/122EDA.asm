@@ -35,7 +35,7 @@ BigBio_StateStart:
 	lea.l	$C(a7),a7
 	move.l	d0,-(a7)
 	move.l	a4,-(a7)
-	jsr	$4EBA(a5)	; -> sub_1F6B56
+	jsr	$4EBA(a5)	; -> Obj_StandOnSeg
 	move.w	#$7000,$22(a4)
 	move.w	#$7000,$24(a4)
 	lea.l	$10(a7),a7

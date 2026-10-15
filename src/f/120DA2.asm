@@ -27,7 +27,7 @@ BioSentinel_StateFalling:
 	jsr	(a1)
 	move.l	$9A(a4),-(a7)
 	move.l	a4,-(a7)
-	jsr	$4EBA(a5)	; -> sub_1F6B56
+	jsr	$4EBA(a5)	; -> Obj_StandOnSeg
 	move.b	#$1,$A6(a4)
 	andi.w	#$EFFF,$6(a4)
 	move.w	$A4(a4),$22(a4)

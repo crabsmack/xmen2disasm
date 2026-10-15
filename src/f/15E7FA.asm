@@ -98,7 +98,7 @@ loc_15E8E0:
 loc_15E8E8:
 	move.b	$42(a4),d4
 	move.l	a4,-(a7)
-	jsr	$4F5A(a5)	; -> sub_1F8B42
+	jsr	$4F5A(a5)	; -> Obj_CollideSegs
 	cmp.b	$42(a4),d4
 	addq.w	#$4,a7
 	beq.s	loc_15E92A

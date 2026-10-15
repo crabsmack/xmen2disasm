@@ -2,7 +2,7 @@
 ; BioSentinel_StateStart - BIOSENTINEL first state: variant 1 hangs on the ceiling (segment type $22) and crawls; others stand on the floor and think
 ; In:  8(a6) = this
 ; Out: none
-; Evidence: byte +$96 variant; Seg_FindNearestOfType/sub_1F6B56 attach to a segment; next StateCeilingCrawl or StateThink; TAS 35044-48732
+; Evidence: byte +$96 variant; Seg_FindNearestOfType/Obj_StandOnSeg attach to a segment; next StateCeilingCrawl or StateThink; TAS 35044-48732
 ; ---------------------------------------------------------------------------
 BioSentinel_StateStart:
 	link.w	a6,#$0
@@ -25,7 +25,7 @@ BioSentinel_StateStart:
 	lea.l	$C(a7),a7
 	move.l	d0,-(a7)
 	move.l	a4,-(a7)
-	jsr	$4EBA(a5)	; -> sub_1F6B56
+	jsr	$4EBA(a5)	; -> Obj_StandOnSeg
 	move.w	#$50,$22(a4)
 	move.w	#$5,$1E(a4)
 	andi.b	#$EF,$2E(a4)
@@ -52,7 +52,7 @@ loc_120BC4:
 	lea.l	$C(a7),a7
 	move.l	d0,-(a7)
 	move.l	a4,-(a7)
-	jsr	$4EBA(a5)	; -> sub_1F6B56
+	jsr	$4EBA(a5)	; -> Obj_StandOnSeg
 	lea.l	BioSentinel_StateThink(pc),a0
 	move.l	a0,$5C(a4)
 	move.l	a4,-(a7)

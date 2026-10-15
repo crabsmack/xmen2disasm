@@ -96,7 +96,7 @@ loc_1F5884:
 	bge.s	loc_1F5894
 	move.w	g_CamMinY(a5),g_CameraY(a5)
 loc_1F5894:
-	lea.l	sub_1F60E4(pc),a0
+	lea.l	Cam_SetPosScaled(pc),a0
 	cmpa.l	-$38F8(a5),a0
 	bne.s	loc_1F58C2
 	move.w	g_FgScrollFactorX(a5),d0
@@ -140,7 +140,7 @@ loc_1F5902:
 	move.l	d0,-(a7)
 	jsr	Math_MulFix8(pc)
 	move.w	d0,g_BgScrollX(a5)
-	lea.l	sub_1F60E4(pc),a0
+	lea.l	Cam_SetPosScaled(pc),a0
 	cmpa.l	-$38F8(a5),a0
 	addq.w	#$8,a7
 	bne.s	loc_1F593A

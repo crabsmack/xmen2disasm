@@ -178,9 +178,9 @@ g_SpawnScanPtr = -$BD2	; ptr: spawn record being examined; walks backwards 14 by
 g_SpawnRecEnd = -$BD6	; ptr: end of the spawn records = g_SpawnRecs + count*14, where each scan round restarts (Spawn_InitRecords, Level_FrameLoop)
 g_SpawnScanPerFrame = -$BD8	; word: spawn records examined per frame (Spawn_InitRecords sets 5, CloneA1_RunScene 10; Level_FrameLoop)
 g_DrawListZero = -$135A	; byte: cleared by DrawList_Init and never set; DrawList_Remove/DrawList_SetPriority return it as their failure result (a C 'false' global)
-g_SegBlockedHook = -$135E	; ptr: called by the object-vs-floor-segment pass sub_1F8B42 as (obj, contact list, contact) when a contact is blocked and the object is not in hit cooldown (segment +0 |= $40, +3 = 30); Level_Load sets Sys_Nop1F949E
-g_SegResolveHook = -$3488	; ptr: called by sub_1F8B42 as (segment, obj, contact) to resolve the chosen floor contact when the segment type hook returns 0; Level_Load sets jt[$4EFA], Beast_RollPathClear swaps in Beast_RollProbeCb around its own sub_1F8B42 call
-g_PalSave = -$13E8	; 64 words: copy of g_PalBase saved by Pal_SaveBase and restored by Pal_RestoreBase (around palette fades, sub_1F690E)
+g_SegBlockedHook = -$135E	; ptr: called by the object-vs-floor-segment pass Obj_CollideSegs as (obj, contact list, contact) when a contact is blocked and the object is not in hit cooldown (segment +0 |= $40, +3 = 30); Level_Load sets Sys_Nop1F949E
+g_SegResolveHook = -$3488	; ptr: called by Obj_CollideSegs as (segment, obj, contact) to resolve the chosen floor contact when the segment type hook returns 0; Level_Load sets jt[$4EFA], Beast_RollPathClear swaps in Beast_RollProbeCb around its own Obj_CollideSegs call
+g_PalSave = -$13E8	; 64 words: copy of g_PalBase saved by Pal_SaveBase and restored by Pal_RestoreBase (around palette fades, Pal_FadeInWait)
 g_PalCycleSave = -$13EC	; ptr: saved g_PalCycleScript (Pal_SaveCycle saves, Pal_RestoreCycle restores after a fade)
 g_PalCycleScript = -$38CA	; ptr: palette-cycle script run by Pal_RunCycleScript each level frame {byte ?, byte delay, byte first colour, byte last colour; then colour words, -1 = loop, -2 = end, >= $1000 = delay & $3FF}; 0 = none (Level_Load clears)
 g_PalCycleCursor = -$38CE	; ptr: next word of g_PalCycleScript (Pal_RunCycleScript; Level_Load clears)
@@ -268,8 +268,8 @@ g_RetractFloorSprDef = -$3CCE	; word: sprite-definition slot of Art_RetractFloor
 g_YoyoAcolyteSprDef2 = -$3CD2	; word: sprite-definition slot of the data at jt[149] (labelled Lvl_YoyoAcolyteSegs) (YoyoAcolyte_ClassInit via SprDef_Add; YoyoAcolyte_Draw)
 g_FarAcolyteSprDef2 = -$3CD4	; word: sprite-definition slot of Art_FarAcolyteSpr2 (FarAcolyte_ClassInit via SprDef_Add; FarAcolyte_Draw)
 g_FarAcolyteSprDef3 = -$3CD6	; word: sprite-definition slot of Art_FarAcolyteSpr3 (FarAcolyte_ClassInit via SprDef_Add; FarAcolyte_Draw)
-g_MapRowHook = -$3A50	; ptr: map row streaming routine, sub_15EE48 by default (Level_LoadMaps); called by Cam_SetPos/sub_1F60E4 after a camera move and once by Level_LoadMaps to draw the first screen; scenes' CamApply hooks call it too
-g_MapColHook = -$3A54	; ptr: map column streaming routine, sub_15F1F8 by default (Level_LoadMaps); called by Cam_SetPos/sub_1F60E4 before g_MapRowHook
+g_MapRowHook = -$3A50	; ptr: map row streaming routine, sub_15EE48 by default (Level_LoadMaps); called by Cam_SetPos/Cam_SetPosScaled after a camera move and once by Level_LoadMaps to draw the first screen; scenes' CamApply hooks call it too
+g_MapColHook = -$3A54	; ptr: map column streaming routine, sub_15F1F8 by default (Level_LoadMaps); called by Cam_SetPos/Cam_SetPosScaled before g_MapRowHook
 g_FgScrollDirty = -$3A56	; byte: upload plane A H/V scroll at the next V-blank (set by Cam_SetPos and scene CamApply hooks; VDP_UpdateScroll clears)
 g_BgScrollDirty = -$3A58	; byte: upload plane B H/V scroll at the next V-blank (Cam_SetPos copies g_BgMapPresent; VDP_UpdateScroll clears)
 g_ColumnVsReq = -$3A5A	; byte: request a full H-scroll + 40-column VSRAM upload (Scroll_RequestColumnVs sets, VDP_UpdateScroll clears)
@@ -299,7 +299,7 @@ g_MapTilesEnd = -$3A9E	; word: first free VRAM tile after all map tiles (Level_L
 g_MapDrawOff = -$3AB2	; byte: when set the streaming routines skip writing map columns/rows (sub_15EE48, sub_15F1F8); only Scroll_Init writes it (clear)
 g_BgWrapX = -$3AB4	; byte: wrap the plane B x scroll to 512 px (Level_LoadMaps arg; BaniMazaA1/SavageC1/SavageB1_LoadLevel set 1, SpaceA1 clears; Cam_SetPos, streaming)
 g_BgWrapY = -$3AB6	; byte: wrap the plane B y scroll to 256 px (Level_LoadMaps arg; stages clear it; Cam_SetPos, streaming)
-g_BgOffsetOn = -$3AB8	; byte: add g_BgOffsetX/Y to the computed plane B position (SiberiaB1_InitWind sets; Cam_SetPos, sub_1F60E4)
+g_BgOffsetOn = -$3AB8	; byte: add g_BgOffsetX/Y to the computed plane B position (SiberiaB1_InitWind sets; Cam_SetPos, Cam_SetPosScaled)
 g_BgLockToObj = -$3ABA	; byte: plane B follows the object g_BgLockObj (BG pos = g_BgOffset - (object - camera)) instead of the parallax factors (SiberiaB1_RunScene sets; Cam_SetPos, VDP_UpdateScroll)
 g_BgLockObj = -$3AFE	; ptr: object plane B is locked to when g_BgLockToObj is set; MagnetoBoss_Init stores itself (ThronePhone_StateInit reads it as the boss)
 g_BgOffsetX = -$3ABC	; word: plane B x offset for g_BgLockToObj / g_BgOffsetOn (SiberiaB1_StepWind writes the wind drift; Cam_SetPos)
@@ -317,7 +317,7 @@ g_FgScrollAdjX = -$3AD2	; word: added to g_FgScrollX when uploaded (VDP_UpdateSc
 g_FgScrollAdjY = -$3AD4	; word: added to g_FgScrollY when uploaded (VDP_UpdateScroll; Scroll_ComputeParallax)
 g_BgScrollAdjX = -$3AD6	; word: added to g_BgScrollX when uploaded (VDP_UpdateScroll)
 g_BgScrollAdjY = -$3AD8	; word: added to g_BgScrollY when uploaded (VDP_UpdateScroll)
-g_FgScrollFactorX = -$3492	; word: plane A x scroll factor, 8.8 ($100 = 1:1) (Scroll_Init; CloneA5_RunScene clears; Level_LoadMaps, sub_1F60E4)
+g_FgScrollFactorX = -$3492	; word: plane A x scroll factor, 8.8 ($100 = 1:1) (Scroll_Init; CloneA5_RunScene clears; Level_LoadMaps, Cam_SetPosScaled)
 g_FgScrollFactorY = -$3494	; word: plane A y scroll factor, 8.8 (Scroll_Init $100)
 g_BgScrollFactorX = -$3496	; word: plane B x parallax factor, 8.8 (each stage's LoadLevel: $80 Sentinels, $100 Siberia, $140 SavageA2...; Cam_SetPos)
 g_BgScrollFactorY = -$3498	; word: plane B y parallax factor, 8.8 (each stage's LoadLevel; Cam_SetPos)
@@ -376,13 +376,13 @@ g_BigBioSpitCount = -$1A92	; word: spit projectiles in use (BigBio_ClassInit cle
 g_BioBallsList = -$1A98	; ptr: ball list shared by BIOBALLS objects {word count; records}, allocated by BioBalls_AllocBallList and copied to each object's +$92 (BioBalls_Init, UpdateBox, SetFormation)
 g_BioBallsSine = -$1C9C	; 128 longs: sine table built by BioBalls_AllocBallList, read by BioBalls_MotionOrbit/Ring/Helix
 g_SegHookTmp = -$346E	; ptr: the g_SegTypeHooks entry fetched before calling it (sub_1F6D76, sub_1F6EC4, Seg_ComputeObjPos, sub_1F71F2, Seg_ComputeLength)
-g_SegLevelCount = -$3472	; word: segments created from the level's FG list (Seg_LoadList; sub_1F6BD2 clears); sub_1F85B6 skips them when indexing the grid
-g_SegGridPool = -$3478	; ptr: pool of $FF-terminated segment-index lists, one per grid cell (sub_1F84BE builds it on the heap; Seg_FindAt/Below/Above/Left/Right, Boulder_FindFloorBelow, Ninja_FindSegInBox)
-g_SegGrid = -$347C	; ptr: word grid, per cell the offset of its list in g_SegGridPool (sub_1F84BE; Seg_GridCell, sub_1F85B6)
+g_SegLevelCount = -$3472	; word: segments created from the level's FG list (Seg_LoadList; sub_1F6BD2 clears); Seg_GatherNearObj skips them when indexing the grid
+g_SegGridPool = -$3478	; ptr: pool of $FF-terminated segment-index lists, one per grid cell (Seg_BuildGrid builds it on the heap; Seg_FindAt/Below/Above/Left/Right, Boulder_FindFloorBelow, Ninja_FindSegInBox)
+g_SegGrid = -$347C	; ptr: word grid, per cell the offset of its list in g_SegGridPool (Seg_BuildGrid; Seg_GridCell, Seg_GatherNearObj)
 g_SegGridShiftX = -$347E	; word: log2 of the segment grid cell width (Level_Load arg $3A; Seg_GridCell, Seg_FindLeft/Right)
 g_SegGridShiftY = -$3480	; word: log2 of the segment grid cell height (Level_Load arg $3E; Seg_GridCell, Seg_FindBelow/Above)
-g_SegGridW = -$3482	; word: segment grid width in cells (Level_Load; Seg_GridCell, sub_1F84BE, sub_1F85B6)
-g_SegGridH = -$3484	; word: segment grid height in cells (Level_Load; Seg_GridCell, sub_1F84BE, sub_1F85B6)
+g_SegGridW = -$3482	; word: segment grid width in cells (Level_Load; Seg_GridCell, Seg_BuildGrid, Seg_GatherNearObj)
+g_SegGridH = -$3484	; word: segment grid height in cells (Level_Load; Seg_GridCell, Seg_BuildGrid, Seg_GatherNearObj)
 g_SceneSprites = -$3596	; 12 x $14-byte sprite instances (object +$2E layout) for scene effects (lights, shock sprites, animated blocks), Spr_Init/Spr_Draw by the scenes' InitSprite(s)/Anim* functions
 g_LevelVramStart = -$3888	; word: g_VramTileCursor saved when a level starts running (Level_Run, Cerebro_Run)
 g_CamActive = -$3890	; byte: Level_FrameLoop calls the camera's update (vtable +$12) only while set; 1 at Level_Load, Cam_DefaultUpdate/SpaceA1_CamUpdate clear it when no player is present and alive and plane B is not locked

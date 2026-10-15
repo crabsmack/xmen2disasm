@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; loc_1FDBDC
+; Scroll_SetParallax_Next - Scroll_SetParallax band loop: clear the step for unknown types, advance to the next 8-byte band, then clear the H-scroll buffer
+; In:  a3/a4/d7 of Scroll_SetParallax
+; Out: none
+; Evidence: default case (type < 0 or > 3); loop end and the $1C0-word g_HScrollBuf clear
 ; ---------------------------------------------------------------------------
-loc_1FDBDC:
+Scroll_SetParallax_Next:
 	move.l	d7,d0
 	asl.w	#$2,d0
 	moveq	#$0,d1

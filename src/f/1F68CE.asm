@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_1F68CE	[jt 2511]
+; Pal_FadeOutWait - save the base palette and cycle script, fade to black waiting until done, then clear the base palette
+; In:  8(a6) = fade delay
+; Out: none
+; Evidence: Pal_SaveBase, Pal_SaveCycle, Pal_StartFadeDelay(7, delay, -1, Tbl_FadeBlack), wait, Pal_ClearBase; caller Teleporter_StateTeleport
 ; ---------------------------------------------------------------------------
-sub_1F68CE:
+Pal_FadeOutWait:
 	link.w	a6,#$0
 	clr.b	g_PalBaseDirty(a5)
 	jsr	Pal_SaveBase(pc)

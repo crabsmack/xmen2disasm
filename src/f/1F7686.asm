@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; loc_1F7686	[runtime: executed in tas]
+; Seg_ApplyPushOut_Block - Seg_ApplyPushOut case for solid blocks (types $13-$1C): cancel velocity toward the push direction on each axis
+; In:  a3 = contact, a4 = object
+; Out: none
+; Evidence: target of Sw_1F7628 entries 5-14
 ; ---------------------------------------------------------------------------
-loc_1F7686:
+Seg_ApplyPushOut_Block:
 	tst.w	$16(a4)
 	ble.s	loc_1F7696
 	movea.l	$10(a6),a0
@@ -23,10 +26,10 @@ loc_1F76AA:
 	blt.s	loc_1F76CE
 loc_1F76BA:
 	tst.w	$18(a4)
-	bge.w	loc_1F78CA
+	bge.w	Seg_ApplyPushOut_Move
 	movea.l	$10(a6),a0
 	tst.b	$4(a0)
-	ble.w	loc_1F78CA
+	ble.w	Seg_ApplyPushOut_Move
 loc_1F76CE:
 	clr.w	$18(a4)
-	bra.w	loc_1F78CA
+	bra.w	Seg_ApplyPushOut_Move

@@ -2,7 +2,7 @@
 ; Pal_ClearBase - zero the 64-colour base palette
 ; In:  none
 ; Out: none
-; Evidence: 64 words of g_PalBase ($FFC880) cleared; caller sub_1F68CE
+; Evidence: 64 words of g_PalBase ($FFC880) cleared; caller Pal_FadeOutWait
 ; ---------------------------------------------------------------------------
 Pal_ClearBase:
 	link.w	a6,#$0

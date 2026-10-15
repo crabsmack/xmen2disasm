@@ -1,5 +1,5 @@
 ; ---------------------------------------------------------------------------
-; Tuskette_Init - parent Init, then flags |= $80, no motion, stand on the floor segment below (Seg_FindBelow, sub_1F6B56), damage 1, health 1, sprite set g_TusketteSprDef (palette 3, priority bit except in BaniMazaA1), kind +$96 = placement byte +7, +$98 = +8 ($80), +$9A = (+$A or 2) << 8, range +$9C..+$9E = x -/+ +$C or the segment's ends; then the start state by kind 0-7 (Sw_05DDBE) (TUSKETTE override of slot +$12 Init)
+; Tuskette_Init - parent Init, then flags |= $80, no motion, stand on the floor segment below (Seg_FindBelow, Obj_StandOnSeg), damage 1, health 1, sprite set g_TusketteSprDef (palette 3, priority bit except in BaniMazaA1), kind +$96 = placement byte +7, +$98 = +8 ($80), +$9A = (+$A or 2) << 8, range +$9C..+$9E = x -/+ +$C or the segment's ends; then the start state by kind 0-7 (Sw_05DDBE) (TUSKETTE override of slot +$12 Init)
 ; In:  8(a6) = this (TUSKETTE object), $C(a6)/$10(a6) = x/y (8.8 fixed), $14(a6) = placement entry
 ; Out: none
 ; Evidence: class descriptor TUSKETTE slot +$12 (tools/classes.py); TAS frames 20384-23795 (39 active)
@@ -38,7 +38,7 @@ Tuskette_Init:
 	lea.l	$C(a7),a7
 	move.l	d0,-(a7)
 	move.l	a4,-(a7)
-	jsr	$4EBA(a5)	; -> sub_1F6B56
+	jsr	$4EBA(a5)	; -> Obj_StandOnSeg
 	move.b	#$1,$70(a4)
 	move.w	#$1,$68(a4)
 	move.w	g_TusketteSprDef(a5),d0

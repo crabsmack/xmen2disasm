@@ -2,7 +2,7 @@
 ; Level_CompactUsedItems - number the used entries of a list compactly (optionally moving their data down) and return how many are used
 ; In:  8(a6) = used-bitmap  $C(a6) = count  $10(a6) = word remap table out  $17(a6) = byte: move data  $18(a6) = data  $1E(a6) = word log2(words per entry)
 ; Out: d0 = used count
-; Evidence: sub_15FC84(bitmap, i) tests entry i; remap[i] = running index; data entries of 1 << shift words copied down; caller Level_LoadUsedTiles (blocks and tiles)
+; Evidence: Bitmap_Test(bitmap, i) tests entry i; remap[i] = running index; data entries of 1 << shift words copied down; caller Level_LoadUsedTiles (blocks and tiles)
 ; ---------------------------------------------------------------------------
 Level_CompactUsedItems:
 	link.w	a6,#$FFFC

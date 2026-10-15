@@ -1,13 +1,16 @@
 ; ---------------------------------------------------------------------------
-; sub_1F8B42	[jt 2535]
+; Obj_CollideSegs - resolve an object against the floor segments: repeatedly pick the best contact and push out (up to 30 passes), land on floors, raise contact events
+; In:  8(a6) = object
+; Out: d0
+; Evidence: Seg_GatherNearObj, Seg_CollideObj per contact, smallest push wins (same layer +$42 or layer-0 static segments); type hook message 0 then g_SegResolveHook; landing (flag 8): Obj_Detach, Obj_AttachChild to the segment's owner, +$76 = segment, layer, Seg_ComputeObjPos, Seg_ApplyObjPos; blocked contacts call g_SegBlockedHook; stuck after 30 passes: players go back to $FFEE9C/$FFEE98; callers Actor_Update, XPlayer_Move, Beast_RollPathClear
 ; ---------------------------------------------------------------------------
-sub_1F8B42:
+Obj_CollideSegs:
 	link.w	a6,#$FF08
 	movem.l	d3-d7/a2-a4,-(a7)
 	movea.l	$8(a6),a4
 	pea.l	-$F0(a6)
 	move.l	a4,-(a7)
-	jsr	sub_1F85B6(pc)
+	jsr	Seg_GatherNearObj(pc)
 	addq.w	#$8,a7
 	clr.w	-$F8(a6)
 	clr.b	-$1360(a5)
@@ -38,7 +41,7 @@ loc_1F8B82:
 	move.l	a2,-(a7)
 	move.l	a4,-(a7)
 	move.l	a3,-(a7)
-	jsr	sub_1F87B2(pc)
+	jsr	Seg_CollideObj(pc)
 	lea.l	$C(a7),a7
 	cmpi.w	#$2,d0
 	blt.w	loc_1F8CA4

@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_1F7DAE	[jt 2530]
+; Obj_SnapToNearestSeg - stand an object on the segment of a type whose midpoint is nearest (Manhattan) to it, at a given position along it
+; In:  8(a6) = object  $E(a6) = word type (1001 any, 1000 types $21-$24)  $12(a6) = word position (-1 = from the object's x/y)
+; Out: d0
+; Evidence: scans g_Segs up to g_SegHighWater; +$76 = segment, airborne cleared, Seg_ComputeObjPos or +$72 = pos << 8, Seg_ApplyObjPos, Obj_UpdateBoxes; caller Spark_StateStart
 ; ---------------------------------------------------------------------------
-sub_1F7DAE:
+Obj_SnapToNearestSeg:
 	link.w	a6,#$FFFA
 	movem.l	d3-d7/a3-a4,-(a7)
 	move.w	$E(a6),d4

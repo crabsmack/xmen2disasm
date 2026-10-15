@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; loc_1FDB76	[static: switch-table case target (tools/switches.py: table after `move.w T(pc,dN.w),dN / jmp T-2(pc,dN.w)`, size from the cmpi bound)]
+; Scroll_SetParallax_Gradient - Scroll_SetParallax band type 1: per-line speed step interpolating from the band's start to end factor
+; In:  a4 = band record {byte type, byte, word lines, word start, word end}, d7 = band index
+; Out: none
+; Evidence: target of Sw_1FDAEC entry 1: (end*$1000 - start*$1000) >> 8 / (lines - 1) via Math_MulFix8 / Math_LDivS
 ; ---------------------------------------------------------------------------
-loc_1FDB76:
+Scroll_SetParallax_Gradient:
 	move.w	$4(a4),d5
 	move.l	a4,-$6(a6)
 	movea.l	a4,a0

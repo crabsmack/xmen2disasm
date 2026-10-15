@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; loc_1F78CA
+; Seg_ApplyPushOut_Move - Seg_ApplyPushOut tail: add the push-out to the position, recompute the segment position if grounded, set hit-axis flags
+; In:  a3 = contact, a4 = object, d6/d7 = old vy/vx
+; Out: none
+; Evidence: +8/+$C += push << 8; Seg_ComputeObjPos unless +4 $1000; +4 |= $100 / $80 when vx / vy changed, +$7B = contact +2
 ; ---------------------------------------------------------------------------
-loc_1F78CA:
+Seg_ApplyPushOut_Move:
 	movea.l	$10(a6),a0
 	move.b	$3(a0),d0
 	ext.w	d0

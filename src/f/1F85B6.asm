@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_1F85B6	[link-after-rts]
+; Seg_GatherNearObj - build the contact list for an object: segments from its grid cell and all object-owned segments within 64 px of its box
+; In:  8(a6) = object  $C(a6) = list of 8-byte contacts (byte +2 = segment index; flag 4 = skip)
+; Out: none
+; Evidence: grid cell from the box centre (Seg_BuildGrid lists), skipping the segment stood on and flagged ones; owned segments from index $FFCD8E to g_SegHighWater, flag 4 when owned by the object or its parents (+$12 owner, +$3A parent chain), or by any object for players with +3 > 0; ends with flag 1; caller Obj_CollideSegs
 ; ---------------------------------------------------------------------------
-sub_1F85B6:
+Seg_GatherNearObj:
 	link.w	a6,#$0
 	movem.l	d4-d7/a2-a4,-(a7)
 	movea.l	$8(a6),a4

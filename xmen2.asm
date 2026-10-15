@@ -6208,22 +6208,22 @@ Sw_1F71F2:	; switch table of sub at $1F71F2: 36 word offsets from Sw_1F71F2-2
 	include "src/f/1F7300.asm"
 	include "src/f/1F7628.asm"
 Sw_1F7628:	; switch table of sub at $1F7628: 16 word offsets from Sw_1F7628-2
-	dc.w	loc_1F7936-(Sw_1F7628-2), loc_1F76D6-(Sw_1F7628-2), loc_1F76D6-(Sw_1F7628-2), loc_1F76D6-(Sw_1F7628-2)
-	dc.w	loc_1F76D6-(Sw_1F7628-2), loc_1F7686-(Sw_1F7628-2), loc_1F7686-(Sw_1F7628-2), loc_1F7686-(Sw_1F7628-2)
-	dc.w	loc_1F7686-(Sw_1F7628-2), loc_1F7686-(Sw_1F7628-2), loc_1F7686-(Sw_1F7628-2), loc_1F7686-(Sw_1F7628-2)
-	dc.w	loc_1F7686-(Sw_1F7628-2), loc_1F7686-(Sw_1F7628-2), loc_1F7686-(Sw_1F7628-2), loc_1F7936-(Sw_1F7628-2)
+	dc.w	loc_1F7936-(Sw_1F7628-2), Seg_ApplyPushOut_Default-(Sw_1F7628-2), Seg_ApplyPushOut_Default-(Sw_1F7628-2), Seg_ApplyPushOut_Default-(Sw_1F7628-2)
+	dc.w	Seg_ApplyPushOut_Default-(Sw_1F7628-2), Seg_ApplyPushOut_Block-(Sw_1F7628-2), Seg_ApplyPushOut_Block-(Sw_1F7628-2), Seg_ApplyPushOut_Block-(Sw_1F7628-2)
+	dc.w	Seg_ApplyPushOut_Block-(Sw_1F7628-2), Seg_ApplyPushOut_Block-(Sw_1F7628-2), Seg_ApplyPushOut_Block-(Sw_1F7628-2), Seg_ApplyPushOut_Block-(Sw_1F7628-2)
+	dc.w	Seg_ApplyPushOut_Block-(Sw_1F7628-2), Seg_ApplyPushOut_Block-(Sw_1F7628-2), Seg_ApplyPushOut_Block-(Sw_1F7628-2), loc_1F7936-(Sw_1F7628-2)
 	incrom	$1F7682,$4
 	include "src/f/1F7686.asm"
 	include "src/f/1F76D6.asm"
 Sw_1F76D6:	; switch table of sub at $1F76D6: 32 word offsets from Sw_1F76D6-2
-	dc.w	loc_1F7874-(Sw_1F76D6-2), loc_1F78A0-(Sw_1F76D6-2), loc_1F78CA-(Sw_1F76D6-2), loc_1F7848-(Sw_1F76D6-2)
-	dc.w	loc_1F78CA-(Sw_1F76D6-2), loc_1F78CA-(Sw_1F76D6-2), loc_1F78CA-(Sw_1F76D6-2), loc_1F78CA-(Sw_1F76D6-2)
-	dc.w	loc_1F78CA-(Sw_1F76D6-2), loc_1F78CA-(Sw_1F76D6-2), loc_1F78CA-(Sw_1F76D6-2), loc_1F78CA-(Sw_1F76D6-2)
-	dc.w	loc_1F78CA-(Sw_1F76D6-2), loc_1F78CA-(Sw_1F76D6-2), loc_1F78CA-(Sw_1F76D6-2), loc_1F78CA-(Sw_1F76D6-2)
-	dc.w	loc_1F78CA-(Sw_1F76D6-2), loc_1F78CA-(Sw_1F76D6-2), loc_1F78CA-(Sw_1F76D6-2), loc_1F78CA-(Sw_1F76D6-2)
-	dc.w	loc_1F78CA-(Sw_1F76D6-2), loc_1F78CA-(Sw_1F76D6-2), loc_1F78CA-(Sw_1F76D6-2), loc_1F78CA-(Sw_1F76D6-2)
-	dc.w	loc_1F78CA-(Sw_1F76D6-2), loc_1F78CA-(Sw_1F76D6-2), loc_1F78CA-(Sw_1F76D6-2), loc_1F78CA-(Sw_1F76D6-2)
-	dc.w	loc_1F78CA-(Sw_1F76D6-2), loc_1F78CA-(Sw_1F76D6-2), loc_1F78A0-(Sw_1F76D6-2), loc_1F7874-(Sw_1F76D6-2)
+	dc.w	loc_1F7874-(Sw_1F76D6-2), loc_1F78A0-(Sw_1F76D6-2), Seg_ApplyPushOut_Move-(Sw_1F76D6-2), Seg_ApplyPushOut_Walls-(Sw_1F76D6-2)
+	dc.w	Seg_ApplyPushOut_Move-(Sw_1F76D6-2), Seg_ApplyPushOut_Move-(Sw_1F76D6-2), Seg_ApplyPushOut_Move-(Sw_1F76D6-2), Seg_ApplyPushOut_Move-(Sw_1F76D6-2)
+	dc.w	Seg_ApplyPushOut_Move-(Sw_1F76D6-2), Seg_ApplyPushOut_Move-(Sw_1F76D6-2), Seg_ApplyPushOut_Move-(Sw_1F76D6-2), Seg_ApplyPushOut_Move-(Sw_1F76D6-2)
+	dc.w	Seg_ApplyPushOut_Move-(Sw_1F76D6-2), Seg_ApplyPushOut_Move-(Sw_1F76D6-2), Seg_ApplyPushOut_Move-(Sw_1F76D6-2), Seg_ApplyPushOut_Move-(Sw_1F76D6-2)
+	dc.w	Seg_ApplyPushOut_Move-(Sw_1F76D6-2), Seg_ApplyPushOut_Move-(Sw_1F76D6-2), Seg_ApplyPushOut_Move-(Sw_1F76D6-2), Seg_ApplyPushOut_Move-(Sw_1F76D6-2)
+	dc.w	Seg_ApplyPushOut_Move-(Sw_1F76D6-2), Seg_ApplyPushOut_Move-(Sw_1F76D6-2), Seg_ApplyPushOut_Move-(Sw_1F76D6-2), Seg_ApplyPushOut_Move-(Sw_1F76D6-2)
+	dc.w	Seg_ApplyPushOut_Move-(Sw_1F76D6-2), Seg_ApplyPushOut_Move-(Sw_1F76D6-2), Seg_ApplyPushOut_Move-(Sw_1F76D6-2), Seg_ApplyPushOut_Move-(Sw_1F76D6-2)
+	dc.w	Seg_ApplyPushOut_Move-(Sw_1F76D6-2), Seg_ApplyPushOut_Move-(Sw_1F76D6-2), loc_1F78A0-(Sw_1F76D6-2), loc_1F7874-(Sw_1F76D6-2)
 	incrom	$1F7844,$4
 	include "src/f/1F7848.asm"
 	include "src/f/1F78CA.asm"
@@ -6259,11 +6259,12 @@ Sw_1F7AF8:	; switch table of sub at $1F7AF8: 10 word offsets from Sw_1F7AF8-2
 	include "src/f/1F85B6.asm"
 	include "src/f/1F87B2.asm"
 	include "src/f/1F883A.asm"
-	incrom	$1F895C,$48
+	include "src/f/1F895C.asm"
 	include "src/f/1F89A4.asm"
 	include "src/f/1F8ACA.asm"
 	include "src/f/1F8AD6.asm"
 	include "src/f/1F8AEE.asm"
+Tbl_SegCollideCases:	; jump table: 37 word offsets from this table, one per floor-segment type 0-$24, to the Seg_CollideObj case (1/$20 wall on the left, 2/$12/$1F wall on the right, 3/$E/$F floors, 4 ceiling, $13 and $14-$1C solid blocks, $1D player trigger box, others none)
 	incrom	$1F8AF8,$4A
 	include "src/f/1F8B42.asm"
 	include "src/f/1F8EF6.asm"
@@ -6400,7 +6401,7 @@ Tbl_SprSizeTilesGrid:	; 16 bytes: tiles per sprite size code (w*h/64), tile adva
 	include "src/f/1FDA56.asm"
 	include "src/f/1FDAEC.asm"
 Sw_1FDAEC:	; switch table of sub at $1FDAEC: 4 word offsets from Sw_1FDAEC-2
-	dc.w	loc_1FDB6A-(Sw_1FDAEC-2), loc_1FDB76-(Sw_1FDAEC-2), loc_1FDBC4-(Sw_1FDAEC-2), loc_1FDBD0-(Sw_1FDAEC-2)
+	dc.w	Scroll_SetParallax_Band0-(Sw_1FDAEC-2), Scroll_SetParallax_Gradient-(Sw_1FDAEC-2), Scroll_SetParallax_Band2-(Sw_1FDAEC-2), Scroll_SetParallax_Band3-(Sw_1FDAEC-2)
 	include "src/f/1FDB6A.asm"
 	include "src/f/1FDB76.asm"
 	include "src/f/1FDBC4.asm"

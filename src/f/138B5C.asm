@@ -131,7 +131,7 @@ loc_138CB4:
 	ori.b	#$4,$2E(a4)
 loc_138CC4:
 	move.l	a4,-(a7)
-	jsr	$4EC2(a5)	; -> sub_1F6B9C
+	jsr	$4EC2(a5)	; -> Obj_StandOnSegHere
 	addq.w	#$4,a7
 	movem.l	-$C(a6),d3/a3-a4
 	unlk	a6

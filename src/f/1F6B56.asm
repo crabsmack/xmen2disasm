@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_1F6B56	[jt 2515]
+; Obj_StandOnSeg - put an object on a floor segment: remember it, clear airborne, take its layer, compute the position along it and place the object
+; In:  8(a6) = object  $C(a6) = segment (0 = do nothing)
+; Out: d0 = Obj_UpdateBoxes result or 0
+; Evidence: +$76 = segment, +4 &= ~$1000, +$42 = segment +2, Seg_ComputeObjPos, Seg_ApplyObjPos, Obj_UpdateBoxes; 8 callers (XPlayer_PlaceAtSafePos, Ninja_Init, Tusk_StateIntro, ...)
 ; ---------------------------------------------------------------------------
-sub_1F6B56:
+Obj_StandOnSeg:
 	link.w	a6,#$0
 	movem.l	a3-a4,-(a7)
 	movea.l	$C(a6),a3

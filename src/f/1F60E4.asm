@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_1F60E4	[link-after-rts]
+; Cam_SetPosScaled - like Cam_SetPos, but the foreground plane scroll is the camera scaled and offset by the level's FG parallax factors
+; In:  $A(a6)/$E(a6) = word camera x / y
+; Out: none
+; Evidence: clamps to g_CamMinX/MaxX/MinY/MaxY; FG scroll $FFC73E/$FFC73C = base + camera * factor >> 8 (words $FFCD66/$FFCD6E, $FFCD62/$FFCD6C) where Cam_SetPos uses the camera directly; BG as in Cam_SetPos; runs the scroll hooks $FFC7AC/$FFC7B0 with interrupts off; caller Level_LoadMaps
 ; ---------------------------------------------------------------------------
-sub_1F60E4:
+Cam_SetPosScaled:
 	link.w	a6,#$0
 	movem.l	d6-d7,-(a7)
 	move.w	g_CameraX(a5),d6

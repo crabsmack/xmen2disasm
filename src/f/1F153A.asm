@@ -42,7 +42,7 @@ loc_1F157A:
 	addq.w	#$8,a7
 	bne.s	loc_1F15B2
 	move.l	a4,-(a7)
-	jsr	$4F5A(a5)	; -> sub_1F8B42
+	jsr	$4F5A(a5)	; -> Obj_CollideSegs
 	addq.w	#$4,a7
 loc_1F15B2:
 	moveq	#$0,d0

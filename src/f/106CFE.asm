@@ -17,7 +17,7 @@ Platform1_Init_Common:
 	ori.w	#$2,$6(a4)
 	ori.w	#$200,$6(a4)
 	move.l	a4,-(a7)
-	jsr	$4EC2(a5)	; -> sub_1F6B9C
+	jsr	$4EC2(a5)	; -> Obj_StandOnSegHere
 	clr.w	$90(a4)
 	tst.w	$C(a3)
 	beq.s	loc_106D40

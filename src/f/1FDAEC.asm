@@ -34,9 +34,9 @@ loc_1FDB28:
 	bra.w	loc_1FDBEC
 loc_1FDB46:
 	move.b	(a4),d0
-	bmi.w	loc_1FDBDC
+	bmi.w	Scroll_SetParallax_Next
 	cmpi.b	#$3,d0
-	bgt.w	loc_1FDBDC
+	bgt.w	Scroll_SetParallax_Next
 	moveq	#$0,d1
 	move.b	d0,d1
 	add.w	d1,d1

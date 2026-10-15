@@ -400,6 +400,19 @@ _(module → functions, globals, data; add as you learn them)_
   sprite pieces. The beam has two piece lists; `Cyclops_BeamVBlankFlicker` (called by `VDP_FrameUpdate`) relinks one
   sprite in VRAM each V-blank so they alternate (state bytes `$FFE98E-$FFE99B`). Scene end: `Cyclops_ResetBeams`.
   Gambit and Cyclops Init set byte `$FFE958` (P1) / `$FFE956` (P2) = 1 (meaning unknown).
+- **Object vs floor-segment collision (w1C0)**: `Obj_CollideSegs(obj)` (from `Actor_Update`, `XPlayer_Move`) gathers
+  contacts (`Seg_GatherNearObj`: grid-cell lists from `Seg_BuildGrid` + all object-owned segments), tests each with
+  `Seg_CollideObj` (`Tbl_SegCollideCases` by type: 1/$20 left wall, 2/$12/$1F right wall ($12 = scene exit), 3/$E/$F
+  floors, 4 ceiling, $13-$1C solid blocks `Seg_CollideBlock`, $1D player trigger box), resolves the best one through
+  `g_SegResolveHook` (default `Seg_ApplyPushOut`), and a floor contact lands the object (`Obj_AttachChild` to the
+  segment's owner, so it rides moving platforms). Contact record: 8 bytes `{word flags (1 end, 2/$40 x/y pushed, 4
+  skip, 8 landing, $8000 event), byte segment, byte push x, byte push y, ..., byte +7 event}`. Segment geometry:
+  `Seg_Setup` = `Seg_InitDefaults` + `Seg_SetEndpoints` (+ `Seg_ComputeLength`) + `Seg_ComputeSlope` (+4 = 8.8 slope,
+  +0 bit 3 = steep, stored as dx/dy); walkers use `Seg_ApplyObjPos` / `Seg_AlignObjVelocity` / `Seg_ComputeObjPos`.
+- **Scaler code (w1C0)**: `Scaler_Start` -> `Scaler_Step` per frame (`Scaler_BeginPass` first, then `Scaler_Resume`
+  after each yield) -> `Scaler_EmitSprites` shows the result as a sprite grid. The row loop is 160 unrolled 18-byte
+  blocks (`Scaler_RowBlocks` `$1FC8FE` + `Scaler_RowBlocksLast80` `$1FCE9E`) entered at (160 - width/2)*18; the
+  first 80 (formerly `Tbl_1FC8FE`) only run for rows wider than 160 px, which the corpus never does.
 
 ## Data formats
 

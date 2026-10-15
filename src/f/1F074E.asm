@@ -34,7 +34,7 @@ loc_1F078C:
 loc_1F0794:
 	move.l	a3,-(a7)
 	move.l	a4,-(a7)
-	jsr	$4EBA(a5)	; -> sub_1F6B56
+	jsr	$4EBA(a5)	; -> Obj_StandOnSeg
 	movea.l	$8C(a4),a0
 	move.w	$E(a0),$20(a4)
 	move.w	#$3C,$6A(a4)

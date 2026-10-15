@@ -109,7 +109,7 @@ loc_13CDB6:
 	lea.l	$C(a7),a7
 	move.l	d0,-(a7)
 	move.l	a4,-(a7)
-	jsr	$4EBA(a5)	; -> sub_1F6B56
+	jsr	$4EBA(a5)	; -> Obj_StandOnSeg
 	move.l	a4,-(a7)
 	jsr	$4E7A(a5)	; -> Obj_Detach
 	clr.w	$1E(a4)

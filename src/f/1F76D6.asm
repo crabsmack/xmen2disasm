@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; loc_1F76D6
+; Seg_ApplyPushOut_Default - Seg_ApplyPushOut path for the other types: steep-slope redirection, then the wall/ceiling switch
+; In:  a2 = segment, a3 = contact, a4 = object
+; Out: none
+; Evidence: target of Sw_1F7628 entries 1-4 and of the range check; holds Sw_1F76D6 by segment type
 ; ---------------------------------------------------------------------------
-loc_1F76D6:
+Seg_ApplyPushOut_Default:
 	tst.w	$4(a3)
 	sge.b	d3
 	neg.b	d3
@@ -32,39 +35,39 @@ loc_1F76F0:
 	beq.s	loc_1F7774
 	subq.b	#$1,d0
 	beq.s	loc_1F7758
-	bra.w	loc_1F78CA
+	bra.w	Seg_ApplyPushOut_Move
 loc_1F7720:
 	tst.w	$18(a4)
-	bge.w	loc_1F78CA
+	bge.w	Seg_ApplyPushOut_Move
 	movea.l	$10(a6),a0
 	tst.b	$4(a0)
-	ble.w	loc_1F78CA
+	ble.w	Seg_ApplyPushOut_Move
 	clr.w	$18(a4)
-	bra.w	loc_1F78CA
+	bra.w	Seg_ApplyPushOut_Move
 loc_1F773C:
 	tst.w	$18(a4)
-	ble.w	loc_1F78CA
+	ble.w	Seg_ApplyPushOut_Move
 	movea.l	$10(a6),a0
 	tst.b	$4(a0)
-	bge.w	loc_1F78CA
+	bge.w	Seg_ApplyPushOut_Move
 	clr.w	$18(a4)
-	bra.w	loc_1F78CA
+	bra.w	Seg_ApplyPushOut_Move
 loc_1F7758:
 	tst.w	$16(a4)
-	bge.w	loc_1F78CA
+	bge.w	Seg_ApplyPushOut_Move
 	movea.l	$10(a6),a0
 	tst.b	$3(a0)
-	ble.w	loc_1F78CA
+	ble.w	Seg_ApplyPushOut_Move
 	clr.w	$16(a4)
-	bra.w	loc_1F78CA
+	bra.w	Seg_ApplyPushOut_Move
 loc_1F7774:
 	tst.w	$16(a4)
-	ble.w	loc_1F78CA
+	ble.w	Seg_ApplyPushOut_Move
 	movea.l	$10(a6),a0
 	tst.b	$3(a0)
-	bge.w	loc_1F78CA
+	bge.w	Seg_ApplyPushOut_Move
 	clr.w	$16(a4)
-	bra.w	loc_1F78CA
+	bra.w	Seg_ApplyPushOut_Move
 loc_1F7790:
 	tst.w	$16(a4)
 	bne.s	loc_1F77BA
@@ -73,12 +76,12 @@ loc_1F7790:
 	move.w	$18(a4),$16(a4)
 loc_1F77A2:
 	tst.w	$4(a3)
-	bge.w	loc_1F78CA
+	bge.w	Seg_ApplyPushOut_Move
 	move.w	$18(a4),d0
 	ext.l	d0
 	neg.l	d0
 	move.w	d0,$16(a4)
-	bra.w	loc_1F78CA
+	bra.w	Seg_ApplyPushOut_Move
 loc_1F77BA:
 	tst.w	$18(a4)
 	bne.s	loc_1F77E4
@@ -87,18 +90,18 @@ loc_1F77BA:
 	move.w	$16(a4),$18(a4)
 loc_1F77CC:
 	tst.w	$4(a3)
-	bge.w	loc_1F78CA
+	bge.w	Seg_ApplyPushOut_Move
 	move.w	$16(a4),d0
 	ext.l	d0
 	neg.l	d0
 	move.w	d0,$18(a4)
-	bra.w	loc_1F78CA
+	bra.w	Seg_ApplyPushOut_Move
 loc_1F77E4:
 	move.b	$1(a3),d0
 	subq.b	#$1,d0
-	bmi.w	loc_1F78CA
+	bmi.w	Seg_ApplyPushOut_Move
 	cmpi.b	#$1F,d0
-	bgt.w	loc_1F78CA
+	bgt.w	Seg_ApplyPushOut_Move
 	moveq	#$0,d1
 	move.b	d0,d1
 	add.w	d1,d1

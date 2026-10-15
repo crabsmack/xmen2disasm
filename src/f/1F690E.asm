@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_1F690E	[jt 2512]
+; Pal_FadeInWait - restore the saved base palette and fade in from black, waiting until done, then restore the palette-cycle script
+; In:  8(a6) = fade delay
+; Out: none
+; Evidence: g_PalBaseDirty = 0, Pal_RestoreBase, Pal_StartFadeDelay(0, delay, -1, Tbl_FadeBlack), VDP_WaitVBlank until g_PalFadeActive = 0, Pal_RestoreCycle; caller Teleporter_StateArrive
 ; ---------------------------------------------------------------------------
-sub_1F690E:
+Pal_FadeInWait:
 	link.w	a6,#$0
 	clr.b	g_PalBaseDirty(a5)
 	jsr	Pal_RestoreBase(pc)

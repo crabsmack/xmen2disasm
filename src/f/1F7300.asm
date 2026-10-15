@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_1F7300	[link-after-rts]
+; Seg_CollideBlock - collide an object's box with a solid block segment (types $13-$1C): choose the smaller push-out, out of the top/bottom or the sides
+; In:  8(a6) = object  $C(a6) = segment  $10(a6) = contact record
+; Out: d0 = 1 no contact, 2 contact, 3 below
+; Evidence: vertical push (flag 8 = landing on top) or horizontal push, each clipped to +-127; a block carried by an object (+$12) moving up is skipped; neighbour segments of the one stood on don't push sideways
 ; ---------------------------------------------------------------------------
-sub_1F7300:
+Seg_CollideBlock:
 	link.w	a6,#$0
 	movem.l	d3-d7/a3-a4,-(a7)
 	movea.l	$C(a6),a3

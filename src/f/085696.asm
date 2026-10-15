@@ -2,7 +2,7 @@
 ; Teleporter_StateTeleport - TELEPORTER state: move both players to the paired TELEPORTRECEIVER, jump the camera there and fade out
 ; In:  8(a6) = this
 ; Out: d0
-; Evidence: receiver placement +$8E: x/y +2/+4, offsets +8/+A, flag +$E; players: Obj_Detach, position = receiver + offset (P2 another +-$10 px), velocity 0, +$6A = $3C; CloneA2_SetCameraLimitsToMap; g_Camera slot +$36(x, y, 1000, 1000, +$E != 0, 0); -$3B04 := 1 (stops the CloneA2 palette code); g_PauseHandler := Teleporter_NoPause; sub_1F68CE(1) (blocking fade to black); +$6E = $1E; TAS 48336
+; Evidence: receiver placement +$8E: x/y +2/+4, offsets +8/+A, flag +$E; players: Obj_Detach, position = receiver + offset (P2 another +-$10 px), velocity 0, +$6A = $3C; CloneA2_SetCameraLimitsToMap; g_Camera slot +$36(x, y, 1000, 1000, +$E != 0, 0); -$3B04 := 1 (stops the CloneA2 palette code); g_PauseHandler := Teleporter_NoPause; Pal_FadeOutWait(1) (blocking fade to black); +$6E = $1E; TAS 48336
 ; Found: link-after-rts
 ; ---------------------------------------------------------------------------
 Teleporter_StateTeleport:
@@ -108,7 +108,7 @@ loc_08575E:
 	move.l	a0,g_PauseHandler(a5)
 	moveq	#$1,d0
 	move.l	d0,-(a7)
-	jsr	$4E9A(a5)	; -> sub_1F68CE
+	jsr	$4E9A(a5)	; -> Pal_FadeOutWait
 	move.w	#$1E,$6E(a3)
 	lea.l	$20(a7),a7
 	clr.w	$6C(a3)
