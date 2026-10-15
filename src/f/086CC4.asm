@@ -1,7 +1,7 @@
 ; ---------------------------------------------------------------------------
-; sub_086CC4	[link-after-rts]
+; BroodBoss_StateWaitArrive	[link-after-rts]
 ; ---------------------------------------------------------------------------
-sub_086CC4:
+BroodBoss_StateWaitArrive:
 	link.w	a6,#$0
 	movem.l	d3/a4,-(a7)
 	movea.l	$8(a6),a4
@@ -45,7 +45,7 @@ loc_086D24:
 	bra.s	loc_086D54
 loc_086D42:
 	clr.w	$6C(a4)
-	lea.l	sub_086CC4(pc),a0
+	lea.l	BroodBoss_StateWaitArrive(pc),a0
 	move.l	a0,$5C(a4)
 	moveq	#$8,d0
 	and.w	$4(a4),d0

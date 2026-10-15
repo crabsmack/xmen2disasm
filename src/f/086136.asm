@@ -1,7 +1,11 @@
 ; ---------------------------------------------------------------------------
-; sub_086136	[jt 619]
+; BroodBossWall_Draw - BROODBOSSWALL Draw (ICANDY slot +$16): write +$42 stacked 32-px sprites straight into the sprite table
+; In:  8(a6) = this
+; Out: none
+; Evidence: links entries in g_SpriteTable ($FFE226, link cursor $FFE21A), size byte $0F, tile from +$22 + frame*16, from y-$C0 down
+; Found: jt 619
 ; ---------------------------------------------------------------------------
-sub_086136:
+BroodBossWall_Draw:
 	link.w	a6,#$0
 	movem.l	d3-d7/a4,-(a7)
 	movea.l	$8(a6),a4

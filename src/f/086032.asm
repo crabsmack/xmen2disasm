@@ -1,7 +1,11 @@
 ; ---------------------------------------------------------------------------
-; sub_086032	[jt 618]
+; BroodBossWall_Update - BROODBOSSWALL Update (ICANDY slot +$12): keep a $C0-tall solid box and move with +$14; when destroyed, explode up the wall and remove itself
+; In:  8(a6) = this
+; Out: none
+; Evidence: +$43 = 0: creates the solid rectangle sub_1F7C6A($14, 0, x-8, y-$C0, x+$10, y) -> +$44, x += +$14 and shifts the box; else frees the box (sub_1F7CFE), 6 x sub_13F58A explosions every $20 px upward, sound $35, ICANDY +$1A; TAS 50319-50484
+; Found: jt 618
 ; ---------------------------------------------------------------------------
-sub_086032:
+BroodBossWall_Update:
 	link.w	a6,#$0
 	movem.l	d3/d5-d7/a4,-(a7)
 	movea.l	$8(a6),a4

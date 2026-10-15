@@ -1,7 +1,6 @@
 ; ---------------------------------------------------------------------------
-; BroodBossArm_Init - vtable +$12 constructor: run the parent's Init, then set up a BROODBOSSARM
-; In:  8(a6) = this, $C(a6) = long x, $10(a6) = long y (8 fraction bits), $14(a6) = spawn parameter
-; Evidence: slot +$12 of the BROODBOSSARM descriptor $088C74; TAS frames 49291-49291 (1 frames active); calls parent BROODBOSSPARTS slot +$12
+; BroodBossArm_Init - vtable +$12 constructor: BROODBOSSARM sprite set $091D22, flags $5083, frame $FF
+; Evidence: calls BROODBOSSPARTS Init; created by BroodBoss_StateSetup at (x+$31, y-$C)
 ; ---------------------------------------------------------------------------
 BroodBossArm_Init:
 	link.w	a6,#$0

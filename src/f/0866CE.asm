@@ -20,7 +20,7 @@ BroodBoss_Init:
 	clr.l	$16(a4)
 	clr.w	$20(a4)
 	move.b	#$1,$70(a4)
-	lea.l	sub_086ABC(pc),a0
+	lea.l	BroodBoss_StateSetup(pc),a0
 	move.l	a0,$64(a4)
 	move.l	a0,$5C(a4)
 	lea.l	sub_0879FE(pc),a0

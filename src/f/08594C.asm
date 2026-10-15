@@ -1,7 +1,6 @@
 ; ---------------------------------------------------------------------------
-; BroodBossParts_Init - vtable +$12 constructor: run the parent's Init, then set up a BROODBOSSPARTS
-; In:  8(a6) = this, $C(a6) = long x, $10(a6) = long y (8 fraction bits), $14(a6) = spawn parameter
-; Evidence: slot +$12 of the BROODBOSSPARTS descriptor $088B9E; TAS frames 49283-49416 (3 frames active); calls parent ACTOR slot +$12
+; BroodBossParts_Init - vtable +$12 constructor: run the parent's Init, then keep the placement pixel position (+$10/+$12) and clear the part offset +$8C
+; In:  8(a6) = this, $C(a6) = long x, $10(a6) = long y, $14(a6) = spawn record (built from x/y when null)
 ; ---------------------------------------------------------------------------
 BroodBossParts_Init:
 	link.w	a6,#$FFF0

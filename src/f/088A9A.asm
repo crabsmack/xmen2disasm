@@ -4,27 +4,27 @@
 loc_088A9A:
 	jmp	$142A(a5)	; -> sub_08789C
 loc_088A9E:
-	jmp	$13E2(a5)	; -> sub_086DB2
+	jmp	$13E2(a5)	; -> BroodBoss_ActWait30
 loc_088AA2:
-	jmp	$13EA(a5)	; -> sub_086E06
+	jmp	$13EA(a5)	; -> BroodBoss_ActClaw
 loc_088AA6:
-	jmp	$13DA(a5)	; -> sub_086D5E
+	jmp	$13DA(a5)	; -> BroodBoss_ActWait60
 loc_088AAA:
-	jmp	$13DA(a5)	; -> sub_086D5E
+	jmp	$13DA(a5)	; -> BroodBoss_ActWait60
 loc_088AAE:
 	jmp	$1402(a5)	; -> sub_08702A
 loc_088AB2:
-	jmp	$13E2(a5)	; -> sub_086DB2
+	jmp	$13E2(a5)	; -> BroodBoss_ActWait30
 loc_088AB6:
 	jmp	$1402(a5)	; -> sub_08702A
 loc_088ABA:
-	jmp	$13DA(a5)	; -> sub_086D5E
+	jmp	$13DA(a5)	; -> BroodBoss_ActWait60
 loc_088ABE:
 	jmp	$140A(a5)	; -> sub_08718A
 loc_088AC2:
-	jmp	$13F2(a5)	; -> sub_086E86
+	jmp	$13F2(a5)	; -> BroodBoss_ActDropBomb
 loc_088AC6:
-	jmp	$13E2(a5)	; -> sub_086DB2
+	jmp	$13E2(a5)	; -> BroodBoss_ActWait30
 loc_088ACA:
 	jmp	$13FA(a5)	; -> sub_086F28
 loc_088ACE:
@@ -32,8 +32,8 @@ loc_088ACE:
 loc_088AD2:
 	jmp	$1402(a5)	; -> sub_08702A
 loc_088AD6:
-	jmp	$13DA(a5)	; -> sub_086D5E
+	jmp	$13DA(a5)	; -> BroodBoss_ActWait60
 loc_088ADA:
-	jmp	$13EA(a5)	; -> sub_086E06
+	jmp	$13EA(a5)	; -> BroodBoss_ActClaw
 loc_088ADE:
-	jmp	$13DA(a5)	; -> sub_086D5E
+	jmp	$13DA(a5)	; -> BroodBoss_ActWait60

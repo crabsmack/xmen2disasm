@@ -1386,7 +1386,7 @@ Tbl_Teleporter_vtable:	; class descriptor of TELEPORTER: word name offset $6E, p
 	include "src/f/085BDE.asm"
 	include "src/f/085BE8.asm"
 	include "src/f/085C5E.asm"
-Str_Empty_085D4A:	; C string "" (used by sub_085C5E)
+Str_Empty_085D4A:	; C string "" (used by LittleLeg_New)
 	incrom	$085D4A,$2
 	include "src/f/085D4C.asm"
 	include "src/f/085F0A.asm"

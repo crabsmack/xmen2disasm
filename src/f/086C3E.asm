@@ -1,7 +1,7 @@
 ; ---------------------------------------------------------------------------
-; sub_086C3E	[link-after-rts]
+; BroodBoss_StateEnter	[link-after-rts]
 ; ---------------------------------------------------------------------------
-sub_086C3E:
+BroodBoss_StateEnter:
 	link.w	a6,#$0
 	move.l	a4,-(a7)
 	movea.l	$8(a6),a4
@@ -37,7 +37,7 @@ sub_086C3E:
 	jsr	(a1)
 	lea.l	$1C(a7),a7
 	clr.w	$6C(a4)
-	lea.l	sub_086CC4(pc),a0
+	lea.l	BroodBoss_StateWaitArrive(pc),a0
 	move.l	a0,$5C(a4)
 	moveq	#$8,d0
 	and.w	$4(a4),d0

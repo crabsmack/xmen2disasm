@@ -1,7 +1,7 @@
 ; ---------------------------------------------------------------------------
-; sub_086ABC	[link-after-rts]
+; BroodBoss_StateSetup	[link-after-rts]
 ; ---------------------------------------------------------------------------
-sub_086ABC:
+BroodBoss_StateSetup:
 	link.w	a6,#$FFF0
 	movem.l	d5-d7/a4,-(a7)
 	movea.l	$8(a6),a4
@@ -96,7 +96,7 @@ loc_086B42:
 	move.l	d0,$9E(a4)
 	lea.l	$2C(a7),a7
 	clr.w	$6C(a4)
-	lea.l	sub_086C02(pc),a0
+	lea.l	BroodBoss_StateRoar(pc),a0
 	move.l	a0,$5C(a4)
 	moveq	#$8,d0
 	and.w	$4(a4),d0

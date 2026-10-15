@@ -1,7 +1,8 @@
 ; ---------------------------------------------------------------------------
-; BroodBossDamage_Update - vtable +$4A: per-frame update of a BROODBOSSDAMAGE
+; BroodBossDamage_Update - BROODBOSSDAMAGE Update: hurt each player who touches one of its rectangles
 ; In:  8(a6) = this
-; Evidence: slot +$4A of the BROODBOSSDAMAGE descriptor $088CF0; TAS frames 49417-50571 (580 frames active); calls parent BROODBOSSPARTS slot +$4A
+; Out: d0
+; Evidence: parent Update, then for P1 ($FFEAA8) and P2 ($FFE9B8) alive with +$6A = 0: box overlap with a rect (+$92, offset by the object position) -> player slot +$26 TakeDamage(0, 5, 1, 0, 0); TAS 49417-50571 every frame
 ; ---------------------------------------------------------------------------
 BroodBossDamage_Update:
 	link.w	a6,#$0

@@ -1,7 +1,6 @@
 ; ---------------------------------------------------------------------------
-; BroodBossArm_Draw - vtable +$1A: draw a BROODBOSSARM
-; In:  8(a6) = this
-; Evidence: slot +$1A of the BROODBOSSARM descriptor $088C74; TAS frames 49292-51071 (1131 frames active); calls parent BROODBOSSPARTS slot +$1A
+; BroodBossArm_Draw - vtable +$1A: take the arm frame from the shared byte -$3B10/-$3B0F, then draw
+; Evidence: frame := -$3B0F when +$2F != -$3B10; parent Draw unless frame $FF; TAS 49292-51071
 ; ---------------------------------------------------------------------------
 BroodBossArm_Draw:
 	link.w	a6,#$0

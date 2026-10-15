@@ -1,7 +1,7 @@
 ; ---------------------------------------------------------------------------
-; sub_086E86	[jt 634]
+; BroodBoss_ActDropBomb	[jt 634]
 ; ---------------------------------------------------------------------------
-sub_086E86:
+BroodBoss_ActDropBomb:
 	link.w	a6,#$0
 	move.l	a4,-(a7)
 	movea.l	$8(a6),a4
@@ -15,7 +15,7 @@ sub_086E86:
 	jsr	$521A(a5)	; -> Snd_Play
 	lea.l	$10(a7),a7
 	move.w	#$FF,$6C(a4)
-	lea.l	sub_086ECE(pc),a0
+	lea.l	BroodBoss_StateDropBomb(pc),a0
 	move.l	a0,$5C(a4)
 	moveq	#$8,d0
 	and.w	$4(a4),d0

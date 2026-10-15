@@ -1,7 +1,8 @@
 ; ---------------------------------------------------------------------------
-; BroodBossDamage_Init - vtable +$12 constructor: run the parent's Init, then set up a BROODBOSSDAMAGE
-; In:  8(a6) = this, $C(a6) = long x, $10(a6) = long y (8 fraction bits), $14(a6) = spawn parameter
-; Evidence: slot +$12 of the BROODBOSSDAMAGE descriptor $088CF0; TAS frames 49416-49416 (1 frames active); calls parent BROODBOSSPARTS slot +$12
+; BroodBossDamage_Init - BROODBOSSDAMAGE Init: take over every type-$16 floor segment as a hurt rectangle (relative to the boss) and disable it
+; In:  8(a6) = this, $C(a6) = long x, $10(a6) = long y, $14(a6) = spawn record or 0
+; Out: none
+; Evidence: counts active $14-byte segments at $FFCE2E (count -$3274) with type byte 1 = $16, Mem_StackAlloc(8 per rect) -> +$92 (count +$90), stores rects minus the boss offset, clears the segments and their links; created by BroodBoss_StateEnter; TAS 49416
 ; ---------------------------------------------------------------------------
 BroodBossDamage_Init:
 	link.w	a6,#$FFF0
@@ -38,7 +39,7 @@ loc_086304:
 	clr.w	$20(a0)
 	movea.l	$8(a6),a0
 	move.b	#$1,$70(a0)
-	lea.l	sub_08669C(pc),a0
+	lea.l	BroodBossDamage_StateIdle(pc),a0
 	movea.l	$8(a6),a1
 	move.l	a0,$64(a1)
 	movea.l	$8(a6),a1

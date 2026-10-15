@@ -1,7 +1,11 @@
 ; ---------------------------------------------------------------------------
-; sub_085F82	[jt 615]
+; LittleLeg_Destroy - LITTLELEG slot +$16: destroy - free the update timer and the draw-list entry
+; In:  8(a6) = this
+; Out: none
+; Evidence: Timer_Stop/Timer_Free(+$62), DrawList_Remove(+$66); TAS 51072
+; Found: jt 615
 ; ---------------------------------------------------------------------------
-sub_085F82:
+LittleLeg_Destroy:
 	link.w	a6,#$0
 	move.l	a4,-(a7)
 	movea.l	$8(a6),a4

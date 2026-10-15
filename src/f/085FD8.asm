@@ -1,7 +1,11 @@
 ; ---------------------------------------------------------------------------
-; sub_085FD8	[jt 617]
+; BroodBossWall_Init - BROODBOSSWALL Init (ICANDY slot +$0E): parent Init, wall animation, 6 segments
+; In:  8(a6) = this, $C(a6) = x, $10(a6) = y
+; Out: none
+; Evidence: calls ICANDY's +$0E, sub_118826(this, -$3B08), sub_118874(this, $08894C), +$42 = 6 (segment count), +$43 = 0 (alive), +$44 = 0 (no solid box yet); TAS 50318
+; Found: jt 617
 ; ---------------------------------------------------------------------------
-sub_085FD8:
+BroodBossWall_Init:
 	link.w	a6,#$0
 	move.l	a4,-(a7)
 	movea.l	$8(a6),a4

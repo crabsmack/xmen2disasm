@@ -26,7 +26,7 @@ sub_087516:
 	moveq	#$1,d0
 	move.l	d0,-(a7)
 	move.l	$9E(a4),-(a7)
-	jsr	sub_085BE8(pc)
+	jsr	LittleLeg_SetWalking(pc)
 	addq.w	#$8,a7
 loc_087568:
 	clr.w	$6C(a4)

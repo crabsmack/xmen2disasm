@@ -1,7 +1,11 @@
 ; ---------------------------------------------------------------------------
-; sub_085BE8	[link-after-rts]
+; LittleLeg_SetWalking - LITTLELEG: switch the walking animation on/off (three leg sprites)
+; In:  8(a6) = this, $C(a6) = byte: 1 = walking
+; Out: none
+; Evidence: on a change to non-zero sets the animation pointers of the three sprite instances (+$E/+$2A/+$46) to jt[$165A]/[$1662]/[$166A] and resets their counters; +$C holds the flag; 8 callers in the BROODBOSS code
+; Found: link-after-rts
 ; ---------------------------------------------------------------------------
-sub_085BE8:
+LittleLeg_SetWalking:
 	link.w	a6,#$0
 	movem.l	d7/a4,-(a7)
 	move.b	$F(a6),d7

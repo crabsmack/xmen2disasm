@@ -1,7 +1,6 @@
 ; ---------------------------------------------------------------------------
-; BroodBossParts_Draw - vtable +$1A: draw a BROODBOSSPARTS
-; In:  8(a6) = this
-; Evidence: slot +$1A of the BROODBOSSPARTS descriptor $088B9E; TAS frames 49290-51132 (1280 frames active)
+; BroodBossParts_Draw - vtable +$1A: draw a boss part when within -$40..$180 px of the camera
+; Evidence: same as ACTOR Draw ($15E55A) with a wider horizontal window; TAS 49290-51132
 ; ---------------------------------------------------------------------------
 BroodBossParts_Draw:
 	link.w	a6,#$0

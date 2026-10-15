@@ -28,7 +28,7 @@ loc_0875AE:
 	moveq	#$0,d0
 	move.l	d0,-(a7)
 	move.l	$9E(a4),-(a7)
-	jsr	sub_085BE8(pc)
+	jsr	LittleLeg_SetWalking(pc)
 	addq.w	#$8,a7
 loc_0875DC:
 	lea.l	$14CA(a5),a0

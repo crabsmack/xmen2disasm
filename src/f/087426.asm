@@ -33,7 +33,7 @@ loc_087454:
 	moveq	#$0,d0
 	move.l	d0,-(a7)
 	move.l	$9E(a4),-(a7)
-	jsr	sub_085BE8(pc)
+	jsr	LittleLeg_SetWalking(pc)
 	addq.w	#$8,a7
 loc_087492:
 	tst.l	$92(a4)

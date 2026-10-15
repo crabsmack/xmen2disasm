@@ -1,7 +1,7 @@
 ; ---------------------------------------------------------------------------
-; sub_086ECE	[link-after-rts]
+; BroodBoss_StateDropBomb	[link-after-rts]
 ; ---------------------------------------------------------------------------
-sub_086ECE:
+BroodBoss_StateDropBomb:
 	link.w	a6,#$0
 	move.l	a4,-(a7)
 	movea.l	$8(a6),a4
