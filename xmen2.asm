@@ -4886,7 +4886,7 @@ Sw_143082:	; switch table of sub at $143082: 9 word offsets from Sw_143082-2
 	include "src/f/1431D0.asm"
 	include "src/f/1431D6.asm"
 	include "src/f/14321A.asm"
-Lvl_Data_143224:	; level data read by Level_FrameLoop; 54 of 7E bytes used at runtime; read by Level_FrameLoop, TechWallGun_Init, Actor_New; jt[1939] used by TechWallGun_Init
+Tbl_TechWallGun_vtable:	; level data read by Level_FrameLoop; 54 of 7E bytes used at runtime; read by Level_FrameLoop, TechWallGun_Init, Actor_New; jt[1939] used by TechWallGun_Init
 	incrom	$143224,$7E
 Tbl_Anim_1432A2:	; animation script (byte flags, byte steps, ..., 2-byte steps from +6); 8 of A bytes used at runtime; read by Anim_AdvanceByDistance, Anim_ApplyStep, Anim_Advance; jt[1940] used by TechWallGun_BurstDiagUp
 	incrom	$1432A2,$A
