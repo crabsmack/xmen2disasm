@@ -1,0 +1,102 @@
+# Review 003 (2026-10-14, reviewer: N4 reviewer agent 3, sample seed 9903)
+reviewed: 94
+agree: 92
+open disputes: 0
+## Fixed
+- LineSegKiller_Draw (header): templated "position/draw the object's sprite relative to the camera"; body is link/unlk/rts. Fixed concurrently upstream by 1b1bcb4 ("empty: returns at once"), which was kept. Name kept (slot +$1A convention).
+- BoxInputActor_OutsideActiveWindow (header): "a BOXINPUTACTOR is outside the active window", Out: none; the override is `moveq #0,d0`, i.e. never outside (ACTOR's version returns 1 off-window). Same templated-slot problem as ScalingActor in review 001. Header corrected.
+## Disputes
+(none)
+## Agreed
+- BrainRocket_Update (super Update via parent vtable +$4A, then on a sub_15CECC hit: cam shake, Explosion_Spawn, kill, sound $38; header describes the inherited part only)
+- BroodBoss_ScrStepScream (step 18 of the script that starts at BroodBoss_ScrStepClaw; no count word in between, so a step label, not a script start)
+- SavageA2_LoadResources
+- BBoard_Init
+- FloatBubble_StateBurst
+- SavageMediumBio_StateWalk
+- XClone_Script9
+- Zapper_ClassInit
+- ThronePhone_StateDone
+- FloatBubble_TakeDamage
+- Apocalypse_Move
+- Exodus_StateDescend (evidence line says Obj_ChangeAnim; the call is Obj_SetAnim(Tbl_ExodusBlastAnim). Behaviour line correct)
+- BigBio_StateSpinUp
+- PlayerSelect_CharFrameNum_Psylocke
+- CloneA5_RunScene
+- ControlPanel_StateDamaged2
+- Blast_StateFly
+- ShootAcolyte_ActRestartScript
+- MagnetoBoss_StateFlyToSmash1
+- PlayerSelect_CharSpriteDef_Magneto
+- BioSentinel_StateAimDown
+- Nem_BuildCodeTable
+- SpaceA1_RunScene
+- SavageBio_StateRetract
+- YoyoAcolyte_ScriptHigh
+- SpaceA1_FrameHook
+- Tusk_UnlockArena
+- AvalonB1_CyclePalettes
+- XClone_StateEmerge
+- Apocalypse_ActFlyOff
+- LineSegKiller_Kill (header omits that it first removes the line segments in its box via LineSegKiller_RemoveSegsInBox before the parent Kill; incomplete, not wrong)
+- XPowerMinusPowerUp_Init
+- PlayerSelect_AllocCharBuffers
+- Cerebro_TextOpSetCursor
+- CloneA1_EmptyStub
+- CloneA5_FrameHook
+- Scene_ClearActivateHook
+- Hologram_WaitLowerLiftUp
+- Scroll_Init (VDP reg $10 = $01 is H64 x V32, as stated)
+- BioBalls_ActCollapse
+- TrapDoor_StateWaitPlayer
+- Cam_IsPanning
+- BroodClaw_Kill
+- SmallBrood_StateLanded
+- BaniMazaA1_InitTablePtrs
+- Actor_FreeSegCb
+- WallCrawlBio_WaitReachVLimit (compares +$A0, the y half of the +$9C/+$A0 crawl position pair; the HLimit twin uses +$9C)
+- PlayerSelect_PlaceCursor
+- Boulder_UpdateDebris
+- EvilBeast_StateThrow
+- CapedAcolyte_MainScriptEnd
+- BigBio_ClassInit
+- Irq_HBlank
+- Barbarian_StateGiveUp
+- VDP_SetShadowHighlight ($8C81 = H40, $8C89 = H40 + shadow/highlight; correct)
+- XClone_ActBecomeBalls
+- CapedAcolyte_IntroScript
+- FloatBubbleExplode_Nop6A
+- BroodClaw_StateMoveToDrop
+- SpaceB1_CyclePalettes
+- SwampFly_Init
+- BaniMazaA1_FrameHook
+- RollingDiscs_GetSize
+- MagnetoBoss_StateIntroWait2
+- Actor_OutsideActiveWindow
+- BroodBoss_ActStomp
+- Deathbird_SetMoveMode_Case2
+- Exodus_TakeDamage_part4
+- BubbleManager_StatePause
+- BroodClaw_Move
+- Blast_SetFlags
+- Player2_SetBeast (evidence cites a TAS frame, but xref has no run executing it; name/purpose fine)
+- Cam_TrackBoth
+- BaniMazaA1_CamHook
+- BrainRocket_Init
+- BioNpc_Init
+- Game_Main
+- WallCrawlBio_WaitReachHLimit
+- Spr_EmitStreamClip
+- FlyBrood_ScriptC
+- XPlayer_StateFrozen
+- Teleporter_StateWaitFade
+- Apocalypse_ActNextScriptChoice
+- Spr_SetFrame
+- BioSentinel_ClassInit
+- Wolverine_StateGrab
+- Spr_PreloadToHeap
+- BioBullet_GetSize
+- BeamScooter_Init
+- Beast_GroundSpecial
+- BigBio_EmptyStub
+- BaniMazaB2_InstallFrameHook
