@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_01C64C	[link-after-rts]
+; YoyoAcolyte_StateIdleRestart - YOYOACOLYTE: face the nearest target; when the timer ends restart the AI script at entry 0
+; In:  8(a6) = this
+; Out: d0
+; Evidence: sub_1F6A32 nearest target -> +$96; script +$9C / index +$9A
 ; ---------------------------------------------------------------------------
-sub_01C64C:
+YoyoAcolyte_StateIdleRestart:
 	link.w	a6,#$0
 	movem.l	a3-a4,-(a7)
 	movea.l	$8(a6),a4

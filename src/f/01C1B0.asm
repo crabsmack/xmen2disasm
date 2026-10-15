@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; loc_01C1B0
+; YoyoAcolyte_Init_SetScript - tail of YoyoAcolyte_Init: install the chosen AI script and the idle time (spawn word +$C, default $50)
+; In:  a4 = this, -$14(a6) = script
+; Out: none
+; Evidence: AiScript_Set(+$9A, script); +$B6 = idle frames
 ; ---------------------------------------------------------------------------
-loc_01C1B0:
+YoyoAcolyte_Init_SetScript:
 	move.l	-$14(a6),-(a7)
 	pea.l	$9A(a4)
 	jsr	$3ED2(a5)	; -> AiScript_Set

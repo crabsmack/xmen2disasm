@@ -1,18 +1,21 @@
 ; ---------------------------------------------------------------------------
-; loc_01C182	[runtime: executed in tas]
+; YoyoAcolyte_Init_Script1to4 - YoyoAcolyte_Init switch cases 1-4: AI scripts jt $49A/$4A2/$4AA/$4B2
+; In:  a4 = this
+; Out: none
+; Evidence: switch on the spawn parameter in YoyoAcolyte_Init
 ; ---------------------------------------------------------------------------
-loc_01C182:
+YoyoAcolyte_Init_Script1to4:
 	lea.l	$49A(a5),a0
 	move.l	$2(a0),-$14(a6)
-	bra.s	loc_01C1B0
+	bra.s	YoyoAcolyte_Init_SetScript
 loc_01C18E:
 	lea.l	$4A2(a5),a0
 	move.l	$2(a0),-$14(a6)
-	bra.s	loc_01C1B0
+	bra.s	YoyoAcolyte_Init_SetScript
 loc_01C19A:
 	lea.l	$4AA(a5),a0
 	move.l	$2(a0),-$14(a6)
-	bra.s	loc_01C1B0
+	bra.s	YoyoAcolyte_Init_SetScript
 loc_01C1A6:
 	lea.l	$4B2(a5),a0
 	move.l	$2(a0),-$14(a6)

@@ -30,11 +30,11 @@ YoyoAcolyte_Init:
 	move.w	d0,$68(a4)
 	move.w	$2(a3),$10(a4)
 	move.w	$4(a3),$12(a4)
-	lea.l	sub_01C612(pc),a0
+	lea.l	YoyoAcolyte_ActIdle100(pc),a0
 	move.l	a0,$5C(a4)
-	lea.l	sub_01C612(pc),a0
+	lea.l	YoyoAcolyte_ActIdle100(pc),a0
 	move.l	a0,$64(a4)
-	lea.l	sub_01C94A(pc),a0
+	lea.l	YoyoAcolyte_StateDie(pc),a0
 	move.l	a0,$60(a4)
 	ori.w	#$4082,$6(a4)
 	lea.l	$4C2(a5),a0
@@ -82,9 +82,9 @@ loc_01C14E:
 	move.w	$A(a3),$B8(a4)
 	move.w	$A(a3),d7
 	move.w	d7,d0
-	bmi.s	loc_01C176
+	bmi.s	YoyoAcolyte_Init_Script0
 	cmpi.w	#$4,d0
-	bgt.s	loc_01C176
+	bgt.s	YoyoAcolyte_Init_Script0
 	add.w	d0,d0
 	move.w	Sw_01C042(pc,d0.w),d0
 	jmp	Sw_01C042-2(pc,d0.w)

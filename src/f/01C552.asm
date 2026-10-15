@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_01C552	[jt 134]
+; YoyoAcolyte_ThrowYoyo - YOYOACOLYTE slot +$82 (own virtual): throw the yoyo - frame 9, become hittable, set the yoyo's start offset and velocity for throw kind 0 level, 1 high arc, 2 low arc
+; In:  8(a6) = this, $C(a6) = word kind
+; Out: d0
+; Evidence: tools/classes.py YOYOACOLYTE +$82; list $FFEBAE node +$84; yoyo offset +$A0/+$A4 (+/-$28 px, -$40 px), vx +$A8 = +/-$800 with decel +$AC; kind 1: vy -$300, ay $1A; kind 2: vy $200, ay -$11
 ; ---------------------------------------------------------------------------
-sub_01C552:
+YoyoAcolyte_ThrowYoyo:
 	link.w	a6,#$0
 	movem.l	d7/a3-a4,-(a7)
 	movea.l	$8(a6),a3

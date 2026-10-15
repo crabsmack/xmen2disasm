@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_01C94A	[link-after-rts]
+; YoyoAcolyte_StateDie - YOYOACOLYTE death: sound $DB, effect at its box centre, clear the yoyo flags, standard death
+; In:  8(a6) = this
+; Out: none
+; Evidence: sub_118136(centre x, centre y, 0); sub_13DE36
 ; ---------------------------------------------------------------------------
-sub_01C94A:
+YoyoAcolyte_StateDie:
 	link.w	a6,#$0
 	movem.l	d6-d7/a4,-(a7)
 	movea.l	$8(a6),a4

@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_01C850	[jt 138]
+; YoyoAcolyte_ActThrowLow - YOYOACOLYTE script action: low wind-up animation (jt $48A), then throw the yoyo low
+; In:  8(a6) = this
+; Out: d0 = +4 & 8
+; Evidence: next YoyoAcolyte_StateThrowLow
 ; ---------------------------------------------------------------------------
-sub_01C850:
+YoyoAcolyte_ActThrowLow:
 	link.w	a6,#$0
 	move.l	a4,-(a7)
 	movea.l	$8(a6),a4
@@ -11,7 +14,7 @@ sub_01C850:
 	jsr	$4E4A(a5)	; -> Obj_ChangeAnim
 	addq.w	#$8,a7
 	move.w	#$FF,$6C(a4)
-	lea.l	sub_01C886(pc),a0
+	lea.l	YoyoAcolyte_StateThrowLow(pc),a0
 	move.l	a0,$5C(a4)
 	moveq	#$8,d0
 	and.w	$4(a4),d0

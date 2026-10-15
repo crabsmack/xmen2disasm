@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_01C8BA	[link-after-rts]
+; YoyoAcolyte_StateYoyoOut - YOYOACOLYTE: wait until the yoyo is back (flag bit 1 of +$B4), then frame 8, sound $DB, stop being hittable, next script step
+; In:  8(a6) = this
+; Out: d0
+; Evidence: List_Unlink(+$84, $FFEBAE); +6 |= 2
 ; ---------------------------------------------------------------------------
-sub_01C8BA:
+YoyoAcolyte_StateYoyoOut:
 	link.w	a6,#$0
 	move.l	a4,-(a7)
 	movea.l	$8(a6),a4

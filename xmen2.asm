@@ -336,7 +336,7 @@ Tbl_Tower_vtable:	; class descriptor of TOWER: word name offset $6E, parent ACTO
 	include "src/f/01C024.asm"
 	include "src/f/01C042.asm"
 Sw_01C042:	; switch table of sub at $01C042: 5 word offsets from Sw_01C042-2
-	dc.w	loc_01C176-(Sw_01C042-2), loc_01C182-(Sw_01C042-2), loc_01C18E-(Sw_01C042-2), loc_01C19A-(Sw_01C042-2)
+	dc.w	YoyoAcolyte_Init_Script0-(Sw_01C042-2), YoyoAcolyte_Init_Script1to4-(Sw_01C042-2), loc_01C18E-(Sw_01C042-2), loc_01C19A-(Sw_01C042-2)
 	dc.w	loc_01C1A6-(Sw_01C042-2)
 	include "src/f/01C176.asm"
 	include "src/f/01C182.asm"
@@ -359,17 +359,19 @@ Sw_01C042:	; switch table of sub at $01C042: 5 word offsets from Sw_01C042-2
 	include "src/f/01C94A.asm"
 Tbl_YoyoAcolyte_vtable:	; class descriptor of YOYOACOLYTE: word name offset $86, parent BIONPC, 32 method slots from +6, then the name (tools/classes.py)
 	incrom	$01C9A2,$92
-	incrom	$01CA34,$1C
+	incrom	$01CA34,$1A
+Tbl_YoyoAcolyteScriptLevelLen:	; word 2: entry count of a YOYOACOLYTE AI script (jt[142]): ThrowLevel, Idle (YoyoAcolyte_ScriptLevel)
+	incrom	$01CA4E,$2
 	include "src/f/01CA50.asm"
-Str_Empty_01CA58:	; C string "" (used by jt[143])
+Tbl_YoyoAcolyteScriptHighLen:	; word 2: entry count of a YOYOACOLYTE AI script (jt[143]): ThrowHigh, Idle (YoyoAcolyte_ScriptHigh)
 	incrom	$01CA58,$1
 	incrom	$01CA59,$1
 	include "src/f/01CA5A.asm"
-Str_Empty_01CA62:	; C string "" (used by jt[144])
+Tbl_YoyoAcolyteScriptLowLen:	; word 2: entry count of a YOYOACOLYTE AI script (jt[144]): ThrowLow, Idle (YoyoAcolyte_ScriptLow)
 	incrom	$01CA62,$1
 	incrom	$01CA63,$1
 	include "src/f/01CA64.asm"
-Str_Empty_01CA6C:	; C string "" (used by jt[145])
+Tbl_YoyoAcolyteScriptMixALen:	; word 6: entry count of a YOYOACOLYTE AI script (jt[145]): Level, Idle, High, Idle, Low, Idle (YoyoAcolyte_ScriptMixA)
 	incrom	$01CA6C,$1
 	incrom	$01CA6D,$1
 	include "src/f/01CA6E.asm"

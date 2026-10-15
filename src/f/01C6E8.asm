@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_01C6E8	[link-after-rts]
+; YoyoAcolyte_StateIdleNext - YOYOACOLYTE: idle animation facing the nearest target; when the timer ends run the next script step
+; In:  8(a6) = this
+; Out: d0
+; Evidence: sub_1F6A32; Obj_ChangeAnim jt $1CA34
 ; ---------------------------------------------------------------------------
-sub_01C6E8:
+YoyoAcolyte_StateIdleNext:
 	link.w	a6,#$0
 	movem.l	a3-a4,-(a7)
 	movea.l	$8(a6),a4

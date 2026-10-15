@@ -1,15 +1,18 @@
 ; ---------------------------------------------------------------------------
-; loc_01CA88	[runtime: executed in fuzz-01800-s1+fuzz-01800-s2+fuzz-03600-s1+fuzz-03600-s2+fuzz-05400-s1+fuzz-05400-s2+fuzz-07200-s1+fuzz-07200-s2+fuzz-09000-s1+fuzz-09000-s2+fuzz-10800-s1+fuzz-10800-s2+fuzz-12600-s1+fuzz-12600-s2+fuzz-14400-s1+fuzz-14400-s2+fuzz-16200-s1+fuzz-16200-s2+fuzz-18000-s1+fuzz-18000-s2+fuzz-19800-s1+fuzz-19800-s2+fuzz-21600-s1+fuzz-21600-s2+fuzz-23400-s1+fuzz-23400-s2+fuzz-25200-s1+fuzz-25200-s2+fuzz-27000-s1+fuzz-27000-s2+fuzz-28800-s1+fuzz-28800-s2+fuzz-30600-s1+fuzz-30600-s2+fuzz-32400-s1+fuzz-32400-s2+fuzz-34200-s1+fuzz-34200-s2+fuzz-36000-s1+fuzz-36000-s2+fuzz-37800-s1+fuzz-37800-s2+fuzz-39600-s1+fuzz-39600-s2+fuzz-41400-s1+fuzz-41400-s2+fuzz-43200-s1+fuzz-43200-s2+fuzz-45000-s1+fuzz-45000-s2+fuzz-46800-s1+fuzz-46800-s2+fuzz-48600-s1+fuzz-48600-s2+fuzz-50400-s1+fuzz-50400-s2+fuzz-52200-s1+fuzz-52200-s2+fuzz-54000-s1+fuzz-54000-s2+fuzz-55800-s1+fuzz-55800-s2+idle+tas]
+; YoyoAcolyte_ScriptMixB - YOYOACOLYTE AI script (jt[146]): Low, Idle, High, Idle, Level, Idle
+; In:  a4 = this
+; Out: none
+; Evidence: preceded by word count 6 at $01CA86
 ; ---------------------------------------------------------------------------
-loc_01CA88:
-	jmp	$472(a5)	; -> sub_01C850
+YoyoAcolyte_ScriptMixB:
+	jmp	$472(a5)	; -> YoyoAcolyte_ActThrowLow
 loc_01CA8C:
-	jmp	$45A(a5)	; -> sub_01C6BE
+	jmp	$45A(a5)	; -> YoyoAcolyte_ActIdle
 loc_01CA90:
-	jmp	$46A(a5)	; -> sub_01C7E6
+	jmp	$46A(a5)	; -> YoyoAcolyte_ActThrowHigh
 loc_01CA94:
-	jmp	$45A(a5)	; -> sub_01C6BE
+	jmp	$45A(a5)	; -> YoyoAcolyte_ActIdle
 loc_01CA98:
-	jmp	$462(a5)	; -> sub_01C77C
+	jmp	$462(a5)	; -> YoyoAcolyte_ActThrowLevel
 loc_01CA9C:
-	jmp	$45A(a5)	; -> sub_01C6BE
+	jmp	$45A(a5)	; -> YoyoAcolyte_ActIdle

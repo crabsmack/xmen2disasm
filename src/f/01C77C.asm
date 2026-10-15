@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_01C77C	[jt 136]
+; YoyoAcolyte_ActThrowLevel - YOYOACOLYTE script action: wind-up animation (jt $68A), then throw the yoyo level
+; In:  8(a6) = this
+; Out: d0 = +4 & 8
+; Evidence: next YoyoAcolyte_StateThrowLevel
 ; ---------------------------------------------------------------------------
-sub_01C77C:
+YoyoAcolyte_ActThrowLevel:
 	link.w	a6,#$0
 	move.l	a4,-(a7)
 	movea.l	$8(a6),a4
@@ -11,7 +14,7 @@ sub_01C77C:
 	jsr	$4E4A(a5)	; -> Obj_ChangeAnim
 	addq.w	#$8,a7
 	move.w	#$FF,$6C(a4)
-	lea.l	sub_01C7B2(pc),a0
+	lea.l	YoyoAcolyte_StateThrowLevel(pc),a0
 	move.l	a0,$5C(a4)
 	moveq	#$8,d0
 	and.w	$4(a4),d0
