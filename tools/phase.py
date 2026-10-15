@@ -156,8 +156,8 @@ class Traces:
     The reference is the gpgx run's frames.csv (by frame), or with ref_sync a D1 sync.csv
     (by sync point; phase 4). timed_key=True caches by the last game-repo commit outside the
     hand-C tree (game/c, game/include, docs, and the bridge and runtime only the hand-C runners
-    link: tools/bridge.py, game/runtime/handc_rt.cpp, asm_conv.cpp, verify.cpp), for traces
-    that don't build hand C."""
+    link: tools/bridge.py, game/runtime/handc_rt.cpp, asm_conv.cpp, verify.cpp; game/verify, the
+    shadow tests' synthetic cases), for traces that don't build hand C."""
 
     def __init__(self, fresh: bool):
         self.cache_path = ROOT / "build" / "phase_cache.json"
@@ -168,11 +168,11 @@ class Traces:
         dirty = bool(porcelain)
         self.rev = None if dirty or not head else f"{head}:{engine}"
         hand_c = ("game/c", "game/include", "docs", "tools/bridge.py", "game/runtime/handc_rt.cpp",
-                  "game/runtime/asm_conv.cpp", "game/runtime/verify.cpp")
+                  "game/runtime/asm_conv.cpp", "game/runtime/verify.cpp", "game/verify")
         timed = git(root, "log", "-1", "--format=%H", "--", ".", *(f":(exclude){p}" for p in hand_c))
         # traces that don't build hand C only need the rest of the tree clean (C being written
         # in game/c meanwhile doesn't change them)
-        dirty_timed = any(not re.match(r"..\s*\"?(game/c/|game/include/|docs/|tools/bridge\.py|"
+        dirty_timed = any(not re.match(r"..\s*\"?(game/c/|game/include/|game/verify/|docs/|tools/bridge\.py|"
                                        r"game/runtime/(handc_rt|asm_conv|verify)\.cpp)", l) for l in porcelain)
         self.rev_timed = None if dirty_timed or not timed else f"{timed}:{engine}"
         self.out_dir = ROOT / "build" / "phase_traces"

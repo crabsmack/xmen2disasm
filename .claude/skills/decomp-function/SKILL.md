@@ -229,6 +229,18 @@ MPW C 3.3 matching, what reproduces the ROM (also COMPILER.md):
   function: `(XPlayer *)self` (MPW Error 229 otherwise).
 - Switch: comparisons sorted by value, bodies in source order; when the last case tested is
   the first body, the final compare is inverted to `bne default`.
+- (round 6: BabyBio, FlyBrood, Beast, Wolverine, Gambit, Exodus, Nightcrawler, Cyclops) A loop
+  testing at the top (`L: test; bcc out; body; bra L`) is `for (;;) { if (!(c)) break; ... }`;
+  `while (c)` tests at the bottom. `x -= c` on a register short = `subi.w`, `x = x - c` goes
+  through d0. `x = e; y = x - c;` reuses d0; `y = e - c` reloads e. `f &= ~1` on a long field
+  = `bclr #0` on its low byte. A table switch starting at 0 whose entry 0 goes to the end:
+  `default: case 0: break;`. A class calling its own method through its descriptor:
+  `(*CLASS(Tbl_X_vtable)->method[n])(self)`. Callbacks passed as data (ObjList_ForEachAtPoint,
+  `PTR(void)` hooks): `FN_DATA(f)`. To load a later parameter first in the prologue, make only
+  it `register` and copy the earlier one into a register local.
+- A function that differs only by an A5 reference cc.py reports as `A5 -0x... -> jt None` uses
+  a global the disassembly hasn't named: report the offset and what it holds; the
+  orchestrator names it (`rename.py --global`) and it will match.
 - **PC traps**: a discarded hardware read must be assigned (`r = IO_DATA(1);`): `(void)VDP_CTRL;`
   reads nothing on PC. A null pointer the 68000 dereferences (reading ROM at low addresses)
   crashes the host: add an `#ifndef XMEN2_MPW` branch reading what the 68000 read (e.g.
