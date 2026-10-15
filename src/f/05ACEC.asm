@@ -2,7 +2,7 @@
 ; BaniMazaB2_RunScene - scene function for 'BaniMazaB2 Exterior': set up the stage, start music $25, run the level loop, stop the music
 ; In:  none
 ; Out: none
-; Evidence: Scene_RegisterAll entry; sub_0C1478($25) before and sub_0C14B4 after the level loop sub_1FA6FE (same pattern as CloneA2_RunScene)
+; Evidence: Scene_RegisterAll entry; sub_0C1478($25) before and sub_0C14B4 after the level loop Level_Run (same pattern as CloneA2_RunScene)
 ; ---------------------------------------------------------------------------
 BaniMazaB2_RunScene:
 	link.w	a6,#$0

@@ -2,7 +2,7 @@
 ; CapedAcolyte_ActStartMainScript - CAPEDACOLYTE intro script step 3: switch to the main AI script (jt $4AA) and run its first step
 ; In:  8(a6) = this
 ; Out: none
-; Evidence: sub_15A6DE(+$96, jt $4AA); script +$98, index +$96 = 0
+; Evidence: AiScript_Set(+$96, jt $4AA); script +$98, index +$96 = 0
 ; ---------------------------------------------------------------------------
 CapedAcolyte_ActStartMainScript:
 	link.w	a6,#$0

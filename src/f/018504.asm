@@ -2,7 +2,7 @@
 ; ShootAcolyte_StateFire - SHOOTACOLYTE: fire one shot from (+/-33, -49) with sound $B0 and the recoil animation
 ; In:  8(a6) = this
 ; Out: d0 = +4 & 8
-; Evidence: sub_119190(x, y, this, dx, -$31, flags | 10); animation jt $5B2; +$A2 -= 1; next ShootAcolyte_StateNextShot
+; Evidence: GaussBullet_Fire(x, y, this, dx, -$31, flags | 10); animation jt $5B2; +$A2 -= 1; next ShootAcolyte_StateNextShot
 ; ---------------------------------------------------------------------------
 ShootAcolyte_StateFire:
 	link.w	a6,#$FFFC

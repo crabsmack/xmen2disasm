@@ -8,7 +8,7 @@ Cerebro_TextOpPlaySound:
 	move.w	(a4),d0
 	ext.l	d0
 	move.l	d0,-(a7)
-	jsr	$521A(a5)	; -> sub_1FE584
+	jsr	$521A(a5)	; -> Snd_Play
 	addq.l	#$2,a4
 	addq.w	#$4,a7
 	bra.s	loc_06569A
@@ -16,7 +16,7 @@ Cerebro_TextOpStopSound:
 	move.w	(a4),d0
 	ext.l	d0
 	move.l	d0,-(a7)
-	jsr	$5222(a5)	; -> sub_1FE5A2
+	jsr	$5222(a5)	; -> Snd_Stop
 	addq.l	#$2,a4
 	addq.w	#$4,a7
 	bra.s	loc_06569A

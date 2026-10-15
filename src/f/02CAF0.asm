@@ -2,7 +2,7 @@
 ; AvalonA3_LoadLevel - load the AvalonA3 (Exodus) level, start music 7, set the palette and raise the camera's lower limit 32 px
 ; In:  none
 ; Out: none
-; Evidence: sub_1F98A8 level load; Snd calls with 7; 16 colours from jt $22BCA into $FFC8C0; -$3A9A -= $20
+; Evidence: Level_Load level load; Snd calls with 7; 16 colours from jt $22BCA into $FFC8C0; -$3A9A -= $20
 ; ---------------------------------------------------------------------------
 AvalonA3_LoadLevel:
 	link.w	a6,#$0

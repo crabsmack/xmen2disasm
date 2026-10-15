@@ -1,8 +1,8 @@
 ; ---------------------------------------------------------------------------
-; AvalonA2_LoadLevel - load the AvalonA2 level with sub_1F98A8 and set its initial palette line 2
+; AvalonA2_LoadLevel - load the AvalonA2 level with Level_Load and set its initial palette line 2
 ; In:  none
 ; Out: none
-; Evidence: sub_1F98A8(... jt $267A0 class list ...); copies 16 colours from jt $22BCA to $FFC8C0; g_PalBase[0] = 0
+; Evidence: Level_Load(... jt $267A0 class list ...); copies 16 colours from jt $22BCA to $FFC8C0; g_PalBase[0] = 0
 ; ---------------------------------------------------------------------------
 AvalonA2_LoadLevel:
 	link.w	a6,#$0

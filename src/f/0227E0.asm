@@ -2,7 +2,7 @@
 ; AvalonB2_RunScene - scene function for 'AvalonB2 InnerShell': load the level, place the players, hooks, camera, sprite timer, run the level loop
 ; In:  none
 ; Out: none
-; Evidence: Scene_RegisterAll entry for 'AvalonB2 InnerShell' (also attract demo 2); Snd_StopAll, sub_1F98A8 load, Players_PlaceAtStart, CAMERA New with AvalonB2_CamHook, Timer_Create/Timer_Start, level loop sub_1FA6FE
+; Evidence: Scene_RegisterAll entry for 'AvalonB2 InnerShell' (also attract demo 2); Snd_StopAll, Level_Load load, Players_PlaceAtStart, CAMERA New with AvalonB2_CamHook, Timer_Create/Timer_Start, level loop Level_Run
 ; ---------------------------------------------------------------------------
 AvalonB2_RunScene:
 	link.w	a6,#$0

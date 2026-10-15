@@ -2,7 +2,7 @@
 ; FarAcolyte_StateBoltFly - FARACOLYTE: move the bolt; when it reaches the orb clear the effects, explode at the orb, wait again
 ; In:  8(a6) = this
 ; Out: d0
-; Evidence: slot $7A FarAcolyte_MoveBolt; sub_1181AC(orb x, orb y, 1, 0, 4) explosion; flags +$92 &= ~7
+; Evidence: slot $7A FarAcolyte_MoveBolt; Explosion_SpawnHurtingSetTimerWord(orb x, orb y, 1, 0, 4) explosion; flags +$92 &= ~7
 ; ---------------------------------------------------------------------------
 FarAcolyte_StateBoltFly:
 	link.w	a6,#$0

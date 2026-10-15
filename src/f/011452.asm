@@ -2,7 +2,7 @@
 ; BigAcolyte_StateShootAnim - BIGACOLYTE: play the shooting animation (jt $3DA), then BigAcolyte_StateShoot
 ; In:  8(a6) = this
 ; Out: d0 = +4 & 8
-; Evidence: sub_1F626A animation; delay +$6C = $FF (until the animation ends)
+; Evidence: Obj_SetAnim animation; delay +$6C = $FF (until the animation ends)
 ; ---------------------------------------------------------------------------
 BigAcolyte_StateShootAnim:
 	link.w	a6,#$0

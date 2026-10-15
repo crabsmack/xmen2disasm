@@ -2,7 +2,7 @@
 ; HUD_Redraw - redraw both HUD panels (full panel if the player is present, a short placeholder otherwise), then the health bars
 ; In:  none
 ; Out: none
-; Evidence: DMAs $200 or $140 bytes to VRAM $FD00 / $FA00 (sub_1FE17A) by player +4 alive bits, calls HUD_UpdateHealthBars and VDP_WaitVBlank
+; Evidence: DMAs $200 or $140 bytes to VRAM $FD00 / $FA00 (VDP_QueueDma) by player +4 alive bits, calls HUD_UpdateHealthBars and VDP_WaitVBlank
 ; ---------------------------------------------------------------------------
 HUD_Redraw:
 	link.w	a6,#$0

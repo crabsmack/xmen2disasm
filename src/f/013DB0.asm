@@ -2,7 +2,7 @@
 ; CapedAcolyte_ActAnimLow - CAPEDACOLYTE script action: set animation jt $49A (shots leave from 18,-34), next step
 ; In:  8(a6) = this
 ; Out: none
-; Evidence: sub_1F6296(this, jt $49A)
+; Evidence: Obj_ChangeAnim(this, jt $49A)
 ; ---------------------------------------------------------------------------
 CapedAcolyte_ActAnimLow:
 	link.w	a6,#$0

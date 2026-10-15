@@ -2,7 +2,7 @@
 ; CapedAcolyte_StateShoot - CAPEDACOLYTE: fire one shot from the muzzle of the current pose, every +$AC frames until the burst count +$AE runs out; then next step after 26
 ; In:  8(a6) = this
 ; Out: d0
-; Evidence: sub_119190(x+dx, y+dy, this, dx, dy, flags); pose anim jt $492 -> (30,-50), jt $49A -> (18,-34) +flag 1; mirrored when h-flipped
+; Evidence: GaussBullet_Fire(x+dx, y+dy, this, dx, dy, flags); pose anim jt $492 -> (30,-50), jt $49A -> (18,-34) +flag 1; mirrored when h-flipped
 ; ---------------------------------------------------------------------------
 CapedAcolyte_StateShoot:
 	link.w	a6,#$FFFC

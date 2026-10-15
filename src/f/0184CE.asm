@@ -2,7 +2,7 @@
 ; ShootAcolyte_StateAim - SHOOTACOLYTE: play the aiming animation (jt $186E6), then fire
 ; In:  8(a6) = this
 ; Out: d0 = +4 & 8
-; Evidence: sub_1F626A; delay $FF = until the animation ends; next ShootAcolyte_StateFire
+; Evidence: Obj_SetAnim; delay $FF = until the animation ends; next ShootAcolyte_StateFire
 ; ---------------------------------------------------------------------------
 ShootAcolyte_StateAim:
 	link.w	a6,#$0

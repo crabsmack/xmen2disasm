@@ -2,7 +2,7 @@
 ; CloneA1_LoadLevel - load the CloneA1 (Factory Floor 1) level
 ; In:  none
 ; Out: none
-; Evidence: sub_1F98A8 level load (class list jt $74994); byte -$3AB6 = 0; -$3298 = $100
+; Evidence: Level_Load level load (class list jt $74994); byte -$3AB6 = 0; -$3298 = $100
 ; ---------------------------------------------------------------------------
 CloneA1_LoadLevel:
 	link.w	a6,#$0

@@ -2,7 +2,7 @@
 ; Cerebro_FrameHook - per-frame hook of Cerebro screens: frame counter, a button ends a text wait, palette animation
 ; In:  none
 ; Out: none
-; Evidence: installed in -$388E by Cerebro_Run; g_FrameCounter += 1/2; sub_1FDA56; -$3902 == 2 and pad bits $F0 -> 0; Cerebro_AnimatePalettes
+; Evidence: installed in -$388E by Cerebro_Run; g_FrameCounter += 1/2; Pad_Update; -$3902 == 2 and pad bits $F0 -> 0; Cerebro_AnimatePalettes
 ; ---------------------------------------------------------------------------
 Cerebro_FrameHook:
 	link.w	a6,#$0

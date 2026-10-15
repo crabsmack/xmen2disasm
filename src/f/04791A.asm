@@ -2,7 +2,7 @@
 ; BaniMazaA2_RunScene - scene function for 'BaniMazaA2 ApocalypseBoss': set up the stage, start the sprite timer, run the level loop
 ; In:  none
 ; Out: none
-; Evidence: Scene_RegisterAll entry; Timer_Create/Timer_Start(BaniMazaA2_AnimSprite); level loop sub_1FA6FE
+; Evidence: Scene_RegisterAll entry; Timer_Create/Timer_Start(BaniMazaA2_AnimSprite); level loop Level_Run
 ; ---------------------------------------------------------------------------
 BaniMazaA2_RunScene:
 	link.w	a6,#$FDE8

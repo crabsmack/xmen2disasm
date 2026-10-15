@@ -2,7 +2,7 @@
 ; BigAcBullet_StateLaunch - BIGACBULLET first state: shot sound $EE, face and fly left or right at speed $1000, then BigAcBullet_StateFly
 ; In:  8(a6) = this
 ; Out: d0 = +4 & 8
-; Evidence: direction > $5A sets the h-flip; velocity +$16 = +/-$1000; sub_1F626A animation jt $3E2
+; Evidence: direction > $5A sets the h-flip; velocity +$16 = +/-$1000; Obj_SetAnim animation jt $3E2
 ; ---------------------------------------------------------------------------
 BigAcBullet_StateLaunch:
 	link.w	a6,#$0

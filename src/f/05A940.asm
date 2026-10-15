@@ -2,7 +2,7 @@
 ; BaniMazaB2_CrackFloorHook - map tile hook: a cracking floor tile (8 -> 9 -> 10 -> 11) advances one stage across its floor segment; at the last stage the segment breaks
 ; In:  8(a6) = word column, $C(a6) = word row
 ; Out: d0 = 0
-; Evidence: finds the floor segment of type $14/$13 at the cell (sub_1F8454); sub_15D7F8 sets the tiles; stage 11: tile $67 below, objects on the segment (+$76) get sub_1F6530, Seg_Free, debris sub_05B322, sound $E3; installed in -$3AF0 by BaniMazaB2_InstallTileHooks
+; Evidence: finds the floor segment of type $14/$13 at the cell (sub_1F8454); sub_15D7F8 sets the tiles; stage 11: tile $67 below, objects on the segment (+$76) get Obj_Detach, Seg_Free, debris sub_05B322, sound $E3; installed in -$3AF0 by BaniMazaB2_InstallTileHooks
 ; ---------------------------------------------------------------------------
 BaniMazaB2_CrackFloorHook:
 	link.w	a6,#$FFFA

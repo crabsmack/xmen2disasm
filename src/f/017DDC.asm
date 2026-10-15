@@ -2,7 +2,7 @@
 ; FarAcolyte_StateDie - FARACOLYTE death state: effect at its box centre, then the standard death
 ; In:  8(a6) = this
 ; Out: none
-; Evidence: installed as +$60 (hurt/death handler) by FarAcolyte_Init; sub_118136(centre x, centre y, 0); sub_13DE36
+; Evidence: installed as +$60 (hurt/death handler) by FarAcolyte_Init; Explosion_Spawn(centre x, centre y, 0); sub_13DE36
 ; ---------------------------------------------------------------------------
 FarAcolyte_StateDie:
 	link.w	a6,#$0
