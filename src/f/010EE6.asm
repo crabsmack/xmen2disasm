@@ -10,9 +10,9 @@ BigAcolyte_StateBurstWall:
 	movea.l	$8(a6),a4
 	subi.l	#$100,$8(a4)
 	subi.l	#$180,$C(a4)
-	movea.l	-$CA2(a5),a0
+	movea.l	g_ScaleParamsPtr(a5),a0
 	addq.w	#$2,$10(a0)
-	movea.l	-$CA2(a5),a0
+	movea.l	g_ScaleParamsPtr(a5),a0
 	addq.w	#$3,$12(a0)
 	moveq	#$2,d4
 loc_010F14:
@@ -301,8 +301,8 @@ loc_010F16:
 	ext.l	d1
 	lsl.l	#$5,d1
 	move.l	d1,-(a7)
-	move.l	-$CA2(a5),-(a7)
-	move.l	-$C9A(a5),-(a7)
+	move.l	g_ScaleParamsPtr(a5),-(a7)
+	move.l	g_ScaleSrcBitmap(a5),-(a7)
 	jsr	BigAcolyte_RenderScaled(pc)
 	lea.l	$13C(a7),a7
 	clr.w	$6C(a4)

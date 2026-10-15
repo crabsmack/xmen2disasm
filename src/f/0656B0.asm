@@ -76,12 +76,12 @@ loc_06572E:
 	jsr	PlayerSelect_AllocCharBuffers(pc)
 	move.w	d0,d4
 	jsr	$50A2(a5)	; -> sub_1FC2E8
-	move.l	-$CA2(a5),-$84(a6)
+	move.l	g_ScaleParamsPtr(a5),-$84(a6)
 	move.w	d4,-$7C(a6)
 	move.w	g_VramTileCursor(a5),-$7A(a6)
 	move.w	#$1,-$78(a6)
 	add.w	d4,g_VramTileCursor(a5)
-	move.l	-$CA2(a5),-$42(a6)
+	move.l	g_ScaleParamsPtr(a5),-$42(a6)
 	move.w	d4,-$3A(a6)
 	move.w	g_VramTileCursor(a5),-$38(a6)
 	move.w	#$1,-$36(a6)

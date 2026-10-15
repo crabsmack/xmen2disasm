@@ -17,11 +17,11 @@ Cerebro_PlayIntro:
 	pea.l	Tbl_Cerebro11(pc)
 	pea.l	($2A56).w
 	jsr	$5032(a5)	; -> Mem_StackAlloc
-	move.l	d0,-$C9A(a5)
+	move.l	d0,g_ScaleSrcBitmap(a5)
 	pea.l	Tbl_Cerebro10(pc)
 	pea.l	($1560).w
 	jsr	$5032(a5)	; -> Mem_StackAlloc
-	move.l	d0,-$C9E(a5)
+	move.l	d0,g_ScaleTileBuf(a5)
 	clr.w	d7
 	lea.l	g_PalBase+$20(a5),a4
 	lea.l	$10(a7),a7
@@ -306,7 +306,7 @@ loc_0661AC:
 	pea.l	($1AC).w
 	jsr	$413A(a5)	; -> VDP_WriteTileRect
 	addi.w	#$C0,g_VramTileCursor(a5)
-	move.l	-$CA2(a5),-$1E8(a6)
+	move.l	g_ScaleParamsPtr(a5),-$1E8(a6)
 	move.w	#$AB,-$1E0(a6)
 	move.w	g_VramTileCursor(a5),-$1DE(a6)
 	move.w	#$1,-$1DC(a6)
@@ -333,13 +333,13 @@ loc_0661FC:
 	move.w	#$8,g_PalBase+$70(a5)
 	clr.w	g_PalBase+$62(a5)
 	move.b	#$1,g_PalBaseDirty(a5)
-	move.l	-$C9A(a5),-(a7)
+	move.l	g_ScaleSrcBitmap(a5),-(a7)
 	moveq	#$0,d0
 	move.l	d0,-(a7)
 	lea.l	$DE2(a5),a0
 	move.l	$2(a0),-(a7)
 	jsr	$50AA(a5)	; -> Spr_RenderToBitmap
-	move.l	-$C9A(a5),-(a7)
+	move.l	g_ScaleSrcBitmap(a5),-(a7)
 	pea.l	-$1E8(a6)
 	jsr	Cerebro_BigSpriteInit(pc)
 	move.w	#$3C,-$20(a6)
@@ -523,7 +523,7 @@ loc_06644C:
 	ext.w	d0
 	neg.w	d0
 	move.w	d0,d5
-	move.l	-$CA2(a5),-$1E8(a6)
+	move.l	g_ScaleParamsPtr(a5),-$1E8(a6)
 	move.w	#$2C,-$1E0(a6)
 	move.w	g_VramTileCursor(a5),-$1DE(a6)
 	move.w	#$2,-$1DC(a6)
@@ -538,13 +538,13 @@ loc_0664C0:
 loc_0664CA:
 	tst.w	d6
 	bne.s	loc_0664C0
-	move.l	-$C9A(a5),-(a7)
+	move.l	g_ScaleSrcBitmap(a5),-(a7)
 	moveq	#$1,d0
 	move.l	d0,-(a7)
 	lea.l	$DE2(a5),a0
 	move.l	$2(a0),-(a7)
 	jsr	$50AA(a5)	; -> Spr_RenderToBitmap
-	move.l	-$C9A(a5),-(a7)
+	move.l	g_ScaleSrcBitmap(a5),-(a7)
 	pea.l	-$1E8(a6)
 	jsr	Cerebro_BigSpriteInit(pc)
 	move.w	#$48,-$20(a6)
@@ -1032,9 +1032,9 @@ loc_066A78:
 	move.w	-$16(a6),g_VramTileCursor(a5)
 	moveq	#$0,d0
 	move.l	d0,g_VBlankGameHook(a5)
-	move.l	-$C9E(a5),-(a7)
+	move.l	g_ScaleTileBuf(a5),-(a7)
 	jsr	$503A(a5)	; -> Mem_StackFree
-	move.l	-$C9A(a5),-(a7)
+	move.l	g_ScaleSrcBitmap(a5),-(a7)
 	jsr	$503A(a5)	; -> Mem_StackFree
 	clr.w	g_Pad1Pressed(a5)
 	clr.w	g_Pad2Pressed(a5)

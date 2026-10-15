@@ -10,12 +10,12 @@ PlayerSelect_LoadCharFrame_part1:
 	move.w	#$FF,d7
 	move.l	a4,d0
 	beq.s	loc_064890
-	move.l	-$C9A(a5),-(a7)
+	move.l	g_ScaleSrcBitmap(a5),-(a7)
 	ext.l	d7
 	move.l	d7,-(a7)
 	move.l	a4,-(a7)
 	jsr	$50AA(a5)	; -> Spr_RenderToBitmap
-	move.l	-$C9A(a5),-(a7)
+	move.l	g_ScaleSrcBitmap(a5),-(a7)
 	move.l	a3,-(a7)
 	jsr	Cerebro_BigSpriteInit(pc)
 	lea.l	$14(a7),a7

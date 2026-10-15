@@ -44,7 +44,7 @@ BigAcolyte_ActAppear:
 	add.l	d1,d0
 	lea.l	$1FA(a5),a0
 	movea.l	$2(a0),a3
-	move.l	a3,-$C9A(a5)
+	move.l	a3,g_ScaleSrcBitmap(a5)
 	moveq	#$0,d0
 	move.b	$4(a3),d0
 	moveq	#$0,d2

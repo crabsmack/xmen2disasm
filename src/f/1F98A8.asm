@@ -300,7 +300,7 @@ loc_1F9B58:
 	move.w	#$130,-$35BE(a5)
 	clr.b	-$38BA(a5)
 	moveq	#$0,d0
-	move.l	d0,-$CA6(a5)
+	move.l	d0,g_ScalerWork(a5)
 	lea.l	$3FB2(a5),a0
 	move.l	a0,g_PauseHandler(a5)
 	clr.b	g_PauseExit(a5)

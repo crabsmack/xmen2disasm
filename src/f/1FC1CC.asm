@@ -3,13 +3,13 @@
 ; ---------------------------------------------------------------------------
 sub_1FC1CC:
 	move.l	a2,-(a7)
-	move.w	-$C96(a5),d0
+	move.w	g_ScalerParams(a5),d0
 	addq.w	#$1,d0
 	lsr.w	#$1,d0
-	mulu.w	-$C94(a5),d0
+	mulu.w	g_ScalerParams+$2(a5),d0
 	subq.w	#$1,d0
-	movea.l	-$C70(a5),a0
-	movea.l	-$C6C(a5),a1
+	movea.l	g_ScalerSrcA(a5),a0
+	movea.l	g_ScalerSrcB(a5),a1
 	lea.l	Tbl_PixelPairExpand(pc),a2
 loc_1FC1E8:
 	moveq	#$0,d1

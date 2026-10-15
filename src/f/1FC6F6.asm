@@ -2,7 +2,7 @@
 ; sub_1FC6F6
 ; ---------------------------------------------------------------------------
 sub_1FC6F6:
-	movem.l	-$C60(a5),d0-d7/a0-a4
-	move.w	-$C7A(a5),-$C28(a5)
-	move.l	-$C2C(a5),-(a7)
+	movem.l	g_ScalerRegSave(a5),d0-d7/a0-a4
+	move.w	g_ScalerParams+$1C(a5),g_ScalerBudget(a5)
+	move.l	g_ScalerResumePC(a5),-(a7)
 	rts

@@ -28,28 +28,28 @@ loc_00FF2A:
 	ext.l	d6
 	move.l	d6,-(a7)
 	jsr	$5032(a5)	; -> Mem_StackAlloc
-	move.l	d0,-$C9E(a5)
+	move.l	d0,g_ScaleTileBuf(a5)
 	jsr	$50A2(a5)	; -> sub_1FC2E8
 	ext.l	d7
 	move.l	d7,-(a7)
-	move.l	-$C9E(a5),-(a7)
+	move.l	g_ScaleTileBuf(a5),-(a7)
 	pea.l	$26(a3)
 	moveq	#$0,d0
 	move.l	d0,-(a7)
 	move.l	a4,-(a7)
 	jsr	$50B2(a5)	; -> sub_1FC5FE
-	move.l	d0,-$CA2(a5)
+	move.l	d0,g_ScaleParamsPtr(a5)
 	lea.l	$1C(a7),a7
 loc_00FF5E:
 	ext.l	d7
 	move.l	d7,-(a7)
-	move.l	-$C9E(a5),-(a7)
+	move.l	g_ScaleTileBuf(a5),-(a7)
 	pea.l	$26(a3)
 	moveq	#$0,d0
 	move.l	d0,-(a7)
 	move.l	a4,-(a7)
 	jsr	$50B2(a5)	; -> sub_1FC5FE
-	move.l	d0,-$CA2(a5)
+	move.l	d0,g_ScaleParamsPtr(a5)
 	jsr	$50BA(a5)	; -> sub_1FC6CA
 	tst.b	$1A(a4)
 	lea.l	$14(a7),a7
@@ -60,7 +60,7 @@ loc_00FF5E:
 	move.l	d0,-(a7)
 	ext.l	d7
 	move.l	d7,-(a7)
-	move.l	-$C9E(a5),-(a7)
+	move.l	g_ScaleTileBuf(a5),-(a7)
 	jsr	$51DA(a5)	; -> VDP_QueueDma
 	lea.l	$C(a7),a7
 loc_00FFA2:

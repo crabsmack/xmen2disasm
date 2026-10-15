@@ -12,7 +12,7 @@ Cerebro_BigSpriteDecode:
 	ext.l	d0
 	lsl.l	#$5,d0
 	move.l	d0,-(a7)
-	move.l	-$C9E(a5),-(a7)
+	move.l	g_ScaleTileBuf(a5),-(a7)
 	movea.l	$4(a4),a0
 	pea.l	$26(a0)
 	moveq	#$0,d0
