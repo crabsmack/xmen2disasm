@@ -505,3 +505,4 @@ g_BeamFlickerSpr = -$1868	; 4 bytes: the two sprite link words Cyclops_BeamVBlan
 g_ScalerSrcStride = -$C26	; word: bytes per source row of the scaler job (Scaler_BeginPass computes it and steps rows by it)
 g_ScalerUnusedFlag = -$BFC	; byte: cleared by Scaler_BeginPass; nothing in the code reads it
 g_ScalerFullRows = -$BFA	; word: output row count of a full pass (Scaler_BuildStepTables sets it, \ at first, and copies it to g_ScalerRowCount)
+g_SegHeapEnd = -$33D6	; long: g_HeapTop after the level's segment grid (Seg_LoadList sets it; nothing reads it by name)

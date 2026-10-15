@@ -147,7 +147,7 @@ loc_1F6D3E:
 	jsr	$5032(a5)	; -> Mem_StackAlloc
 	jsr	Seg_BuildGrid(pc)
 	move.l	g_HeapTop(a5),(a3)
-	move.l	g_HeapTop(a5),-$33D6(a5)
+	move.l	g_HeapTop(a5),g_SegHeapEnd(a5)
 	addq.w	#$8,a7
 	movem.l	-$18(a6),d3/d5-d7/a3-a4
 	unlk	a6
