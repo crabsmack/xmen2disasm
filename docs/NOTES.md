@@ -276,6 +276,12 @@ _(module → functions, globals, data; add as you learn them)_
 - **Non-actor classes**: ICANDY (`$1188AC`, size $42, light sprite: 0 SizeOf, 1 New, 2 Init, 3 Update,
   4 Draw, 5 Destroy), BBOARD (`$1197CA`: word array, one entry per switch/synchronizer; created with 100
   entries by `Switch_LevelInit` into `$FFE55A`), SYNCHRONIZER (`$119CFE`, pool of 4), ELEVATOR (`$10B532`).
+- **Hit lists (w140b)**: 50 nodes x $C `{next, prev, owner}` at `$FFEBB2` (`HitList_Init`/`HitList_Add`), four
+  heads: `$FFEBA2` player attackers, `$FFEBA6` player bodies, `$FFEBAA` enemy attackers, `$FFEBAE` enemy
+  bodies. `Actor_Activate` adds an object's attacker node (+$80, unless +6 flag 1) and body node (+$84,
+  unless +6 flag 2); +6 flag $10 = player side. `Collide_RunAll` tests EBA2 vs EBAE and EBAA vs EBA6
+  (`Collide_ObjVsList` -> attacker's +$22 Attack). Projectiles hit-test the opposing body list with
+  `ObjList_ForEachAtPoint`. `unk_Player_005F18` moves P2 onto the enemy lists (players can hit each other?).
 
 ## Data formats
 

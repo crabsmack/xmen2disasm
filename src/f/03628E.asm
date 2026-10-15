@@ -56,14 +56,14 @@ loc_03630E:
 	beq.s	loc_036330
 	pea.l	-$165E(a5)
 	move.l	a4,-(a7)
-	jsr	$4062(a5)	; -> sub_15DF2A
+	jsr	$4062(a5)	; -> HitList_Add
 	move.l	d0,$80(a4)
 	addq.w	#$8,a7
 	bra.s	loc_036340
 loc_036330:
 	pea.l	-$1656(a5)
 	move.l	a4,-(a7)
-	jsr	$4062(a5)	; -> sub_15DF2A
+	jsr	$4062(a5)	; -> HitList_Add
 	move.l	d0,$80(a4)
 	addq.w	#$8,a7
 loc_036340:
@@ -75,7 +75,7 @@ loc_036340:
 	bne.s	loc_036360
 	pea.l	-$1652(a5)
 	move.l	a4,-(a7)
-	jsr	$4062(a5)	; -> sub_15DF2A
+	jsr	$4062(a5)	; -> HitList_Add
 	move.l	d0,$84(a4)
 	addq.w	#$8,a7
 loc_036360:

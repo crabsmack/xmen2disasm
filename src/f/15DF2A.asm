@@ -1,11 +1,14 @@
 ; ---------------------------------------------------------------------------
-; sub_15DF2A	[jt 2056]
+; HitList_Add - push an object onto a hit list (allocates a node {next, prev, owner})
+; In:  8(a6) = object, $C(a6) = list head pointer
+; Out: d0 = node (stored by Actor_Activate in obj+$80 / +$84)
+; Evidence: HitList_AllocNode, links at the head, node+8 = object; List_Unlink removes; Collide_RunAll walks the lists
 ; ---------------------------------------------------------------------------
-sub_15DF2A:
+HitList_Add:
 	link.w	a6,#$0
 	movem.l	a3-a4,-(a7)
 	movea.l	$C(a6),a3
-	jsr	sub_15DEEE(pc)
+	jsr	HitList_AllocNode(pc)
 	movea.l	d0,a4
 	move.l	a4,d0
 	beq.s	loc_15DF5A

@@ -2,7 +2,7 @@
 ; XClone_StateEmerge - XCLONE entrance: when the pod is done, remove it, make the clone hittable and start its script
 ; In:  8(a6) = this
 ; Out: d0
-; Evidence: pod slot +$52 Kill; +6 &= ~2, sub_15DF2A(this, $FFEBAE) -> +$84; animation record + word 4; script step 0; 2 callers
+; Evidence: pod slot +$52 Kill; +6 &= ~2, HitList_Add(this, $FFEBAE) -> +$84; animation record + word 4; script step 0; 2 callers
 ; Found: link-after-rts
 ; ---------------------------------------------------------------------------
 XClone_StateEmerge:
@@ -35,7 +35,7 @@ loc_0962B8:
 	andi.w	#$FFFD,$6(a4)
 	pea.l	-$1652(a5)
 	move.l	a4,-(a7)
-	jsr	$4062(a5)	; -> sub_15DF2A
+	jsr	$4062(a5)	; -> HitList_Add
 	move.l	d0,$84(a4)
 	movea.l	$A8(a4),a0
 	movea.l	a0,a1

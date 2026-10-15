@@ -7,7 +7,7 @@ sub_02D658:
 	movea.l	$8(a6),a4
 	pea.l	-$1652(a5)
 	move.l	a4,-(a7)
-	jsr	$4062(a5)	; -> sub_15DF2A
+	jsr	$4062(a5)	; -> HitList_Add
 	move.l	d0,$84(a4)
 	move.b	#$5A,$AB(a4)
 	ori.b	#$C,$AC(a4)

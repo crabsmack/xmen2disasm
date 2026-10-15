@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_15DEEE	[link-after-rts]
+; HitList_AllocNode - find a free hit-list node (owner field +8 == 0) and clear its links
+; In:  none
+; Out: d0 = node or 0
+; Evidence: scans 50 x $C-byte nodes from $FFEBB2
 ; ---------------------------------------------------------------------------
-sub_15DEEE:
+HitList_AllocNode:
 	link.w	a6,#$0
 	movem.l	d3/d7/a3-a4,-(a7)
 	lea.l	-$164E(a5),a3

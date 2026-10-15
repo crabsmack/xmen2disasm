@@ -2,7 +2,7 @@
 ; unk_Player_005F18 - when both players are alive, move P2's two list nodes from lists $FFEBA2/$FFEBA6 to $FFEBAA/$FFEBAE and set P2 +$2E bits 0-1 = 3
 ; In:  none
 ; Out: none
-; Evidence: jt 3; callers loc_15C5D6 and Players_PlaceAtStart; List_Unlink + sub_15DF2A (allocate node, push obj on list head). What the lists mean (draw order? palette?) is not known; never ran in the corpus
+; Evidence: jt 3; callers loc_15C5D6 and Players_PlaceAtStart; List_Unlink + HitList_Add (allocate node, push obj on list head). What the lists mean (draw order? palette?) is not known; never ran in the corpus
 ; ---------------------------------------------------------------------------
 unk_Player_005F18:
 	link.w	a6,#$0
@@ -34,11 +34,11 @@ unk_Player_005F18:
 	move.l	d0,-$17C4(a5)
 	pea.l	-$1656(a5)
 	pea.l	g_Player2(a5)
-	jsr	$4062(a5)	; -> sub_15DF2A
+	jsr	$4062(a5)	; -> HitList_Add
 	move.l	d0,-$17C8(a5)
 	pea.l	-$1652(a5)
 	pea.l	g_Player2(a5)
-	jsr	$4062(a5)	; -> sub_15DF2A
+	jsr	$4062(a5)	; -> HitList_Add
 	move.l	d0,-$17C4(a5)
 	moveq	#-$4,d0
 	and.b	-$181A(a5),d0

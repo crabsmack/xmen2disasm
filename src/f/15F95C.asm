@@ -71,7 +71,7 @@ loc_15F9C8:
 	move.l	d0,-$BCC(a5)
 	bra.s	loc_15FA20
 loc_15FA18:
-	lea.l	sub_15F954(pc),a0
+	lea.l	Spawn_Nop(pc),a0
 	move.l	a0,-$BCC(a5)
 loc_15FA20:
 	movem.l	-$C(a6),d7/a3-a4

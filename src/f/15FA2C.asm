@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_15FA2C	[jt 2083]
+; VDP_WriteTileRect - write a rectangle of tilemap words to VRAM row by row
+; In:  8(a6) = VRAM address, $C(a6) = source words, $10(a6) = word width, $14(a6) = word height, $18(a6) = row stride in words
+; Out: none
+; Evidence: sets a VRAM write command on $C00004 per row, copies width words to $C00000, address += stride*2
 ; ---------------------------------------------------------------------------
-sub_15FA2C:
+VDP_WriteTileRect:
 	link.w	a6,#$0
 	move.l	d2,-(a7)
 	movea.l	$8(a6),a1

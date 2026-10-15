@@ -417,7 +417,7 @@ loc_1FA616:
 	bne.s	loc_1FA5D8
 loc_1FA61A:
 	jsr	Timer_RunAll(pc)
-	jsr	sub_1FA05A(pc)
+	jsr	Collide_RunAll(pc)
 	tst.b	-$3890(a5)
 	beq.s	loc_1FA638
 	movea.l	g_Camera(a5),a0

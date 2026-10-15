@@ -2,7 +2,7 @@
 ; BigAcolyte_StateJoinList - BIGACOLYTE: make itself solid/targetable (link into list $FFEBAE, node +$84), then the next script step
 ; In:  8(a6) = this
 ; Out: none
-; Evidence: +6 &= ~2; sub_15DF2A(this, $FFEBAE) (same list as other hittable enemies)
+; Evidence: +6 &= ~2; HitList_Add(this, $FFEBAE) (same list as other hittable enemies)
 ; ---------------------------------------------------------------------------
 BigAcolyte_StateJoinList:
 	link.w	a6,#$0
@@ -11,7 +11,7 @@ BigAcolyte_StateJoinList:
 	andi.w	#$FFFD,$6(a4)
 	pea.l	-$1652(a5)
 	move.l	a4,-(a7)
-	jsr	$4062(a5)	; -> sub_15DF2A
+	jsr	$4062(a5)	; -> HitList_Add
 	move.l	d0,$84(a4)
 	tst.l	$98(a4)
 	addq.w	#$8,a7

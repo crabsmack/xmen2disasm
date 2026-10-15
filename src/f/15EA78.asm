@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_15EA78	[jt 2071]
+; Obj_CountOfClass - count live objects (+4 bit 15) whose descriptor is the given class
+; In:  8(a6) = class descriptor
+; Out: d0 = word count
+; Evidence: walks g_ObjTable up to g_ObjCount comparing obj+0
 ; ---------------------------------------------------------------------------
-sub_15EA78:
+Obj_CountOfClass:
 	link.w	a6,#$0
 	movem.l	d6-d7/a3-a4,-(a7)
 	movea.l	$8(a6),a3

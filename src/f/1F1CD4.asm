@@ -14,22 +14,22 @@ sub_1F1CD4:
 	beq.s	loc_1F1D1C
 	pea.l	-$1656(a5)
 	move.l	a4,-(a7)
-	jsr	$4062(a5)	; -> sub_15DF2A
+	jsr	$4062(a5)	; -> HitList_Add
 	move.l	d0,$80(a4)
 	pea.l	-$1652(a5)
 	move.l	a4,-(a7)
-	jsr	$4062(a5)	; -> sub_15DF2A
+	jsr	$4062(a5)	; -> HitList_Add
 	move.l	d0,$84(a4)
 	lea.l	$10(a7),a7
 	bra.s	loc_1F1D3C
 loc_1F1D1C:
 	pea.l	-$165E(a5)
 	move.l	a4,-(a7)
-	jsr	$4062(a5)	; -> sub_15DF2A
+	jsr	$4062(a5)	; -> HitList_Add
 	move.l	d0,$80(a4)
 	pea.l	-$165A(a5)
 	move.l	a4,-(a7)
-	jsr	$4062(a5)	; -> sub_15DF2A
+	jsr	$4062(a5)	; -> HitList_Add
 	move.l	d0,$84(a4)
 	lea.l	$10(a7),a7
 loc_1F1D3C:

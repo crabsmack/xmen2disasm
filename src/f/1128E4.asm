@@ -2,7 +2,7 @@
 ; Deathbird_StateSendHornets - Deathbird while the elevator is low: spawn HORNETs from a schedule (at most 2 alive); when the elevator passes $10000 start attacking
 ; In:  8(a6) = this
 ; Out: d0 = flags & 8
-; Evidence: g_Elevator +4; sub_15EA78(Tbl_Hornet_vtable) count; sub_137142 spawn; schedule $FFC6E4 (jt $2D12); sounds $3C-$3E; TAS 37301-44602
+; Evidence: g_Elevator +4; Obj_CountOfClass(Tbl_Hornet_vtable) count; sub_137142 spawn; schedule $FFC6E4 (jt $2D12); sounds $3C-$3E; TAS 37301-44602
 ; ---------------------------------------------------------------------------
 Deathbird_StateSendHornets:
 	link.w	a6,#$FFEA
@@ -15,7 +15,7 @@ Deathbird_StateSendHornets:
 	tst.w	-$3BBE(a5)
 	bgt.w	loc_1129D4
 	move.l	$383C(a5),-(a7)
-	jsr	$40DA(a5)	; -> sub_15EA78
+	jsr	$40DA(a5)	; -> Obj_CountOfClass
 	moveq	#$2,d1
 	cmp.l	d0,d1
 	addq.w	#$4,a7

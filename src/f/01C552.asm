@@ -18,7 +18,7 @@ sub_01C552:
 	jsr	(a1)
 	pea.l	-$1652(a5)
 	move.l	a3,-(a7)
-	jsr	$4062(a5)	; -> sub_15DF2A
+	jsr	$4062(a5)	; -> HitList_Add
 	move.l	d0,$84(a3)
 	andi.w	#$FFFD,$6(a3)
 	move.w	#$1,$B4(a3)

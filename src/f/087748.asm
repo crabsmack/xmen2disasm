@@ -2,7 +2,7 @@
 ; BroodBoss_ActAdvance - BROODBOSS script action: advance (make the boss hittable again, claw speed $200, legs mode 2)
 ; In:  8(a6) = this
 ; Out: d0
-; Evidence: if +6 bit 2: clear it, re-link into the hit list $FFEBAE (sub_15DF2A) -> +$84, frame $10; next BroodBoss_StateAdvance; jt 640
+; Evidence: if +6 bit 2: clear it, re-link into the hit list $FFEBAE (HitList_Add) -> +$84, frame $10; next BroodBoss_StateAdvance; jt 640
 ; Found: jt 640
 ; ---------------------------------------------------------------------------
 BroodBoss_ActAdvance:
@@ -15,7 +15,7 @@ BroodBoss_ActAdvance:
 	andi.w	#$FFFD,$6(a4)
 	pea.l	-$1652(a5)
 	move.l	a4,-(a7)
-	jsr	$4062(a5)	; -> sub_15DF2A
+	jsr	$4062(a5)	; -> HitList_Add
 	move.l	d0,$84(a4)
 	moveq	#$0,d0
 	move.l	d0,$44(a4)

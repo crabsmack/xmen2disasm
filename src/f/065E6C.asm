@@ -73,7 +73,7 @@ loc_065F1E:
 	move.l	d0,-(a7)
 	move.l	a3,-(a7)
 	pea.l	($51C).w
-	jsr	$413A(a5)	; -> sub_15FA2C
+	jsr	$413A(a5)	; -> VDP_WriteTileRect
 	moveq	#$2,d0
 	move.l	d0,-(a7)
 	moveq	#$0,d1
@@ -131,7 +131,7 @@ loc_065FB4:
 	move.l	d0,-(a7)
 	move.l	a3,-(a7)
 	pea.l	($318).w
-	jsr	$413A(a5)	; -> sub_15FA2C
+	jsr	$413A(a5)	; -> VDP_WriteTileRect
 	move.w	#$B4,d6
 	lea.l	$F7A(a5),a0
 	movea.l	$2(a0),a4
@@ -304,7 +304,7 @@ loc_0661AC:
 	move.l	d0,-(a7)
 	move.l	a3,-(a7)
 	pea.l	($1AC).w
-	jsr	$413A(a5)	; -> sub_15FA2C
+	jsr	$413A(a5)	; -> VDP_WriteTileRect
 	addi.w	#$C0,g_VramTileCursor(a5)
 	move.l	-$CA2(a5),-$1E8(a6)
 	move.w	#$AB,-$1E0(a6)

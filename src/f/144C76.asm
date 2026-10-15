@@ -13,7 +13,7 @@ sub_144C76:
 	jsr	(a1)
 	pea.l	-$165A(a5)
 	move.l	a4,-(a7)
-	jsr	$4062(a5)	; -> sub_15DF2A
+	jsr	$4062(a5)	; -> HitList_Add
 	move.l	d0,$8C(a4)
 	movea.l	-$4(a6),a4
 	unlk	a6

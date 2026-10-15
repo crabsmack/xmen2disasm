@@ -306,7 +306,7 @@ loc_1F9B58:
 	clr.b	-$1662(a5)
 	move.b	#$1,-$1660(a5)
 	jsr	Timer_InitAll(pc)
-	jsr	$405A(a5)	; -> sub_15DEAE
+	jsr	$405A(a5)	; -> HitList_Init
 	movea.l	-$38EC(a5),a0
 	jsr	(a0)
 	movem.l	-$18(a6),d3/d5-d7/a3-a4

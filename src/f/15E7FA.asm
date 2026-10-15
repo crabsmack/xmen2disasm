@@ -202,7 +202,7 @@ loc_15E9E2:
 	sub.l	d7,d0
 	asr.l	#$8,d0
 	move.w	d0,g_ShiftDY(a5)
-	pea.l	sub_15E76C(pc)
+	pea.l	Obj_CarryChild(pc)
 	move.l	a4,-(a7)
 	jsr	$4E82(a5)	; -> Obj_ForEachChild
 	addq.w	#$8,a7

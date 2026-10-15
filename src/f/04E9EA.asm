@@ -16,7 +16,7 @@ loc_04E9FE:
 	andi.w	#$FFFD,$6(a4)
 	pea.l	-$1652(a5)
 	move.l	a4,-(a7)
-	jsr	$4062(a5)	; -> sub_15DF2A
+	jsr	$4062(a5)	; -> HitList_Add
 	move.l	d0,$84(a4)
 	moveq	#-$4,d0
 	and.b	$2E(a4),d0

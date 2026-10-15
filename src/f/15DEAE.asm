@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_15DEAE	[jt 2055]
+; HitList_Init - clear the four hit-list heads and the 50-node pool
+; In:  none
+; Out: none
+; Evidence: heads $FFEBA2 (player attackers), $FFEBA6 (player bodies), $FFEBAA (enemy attackers), $FFEBAE (enemy bodies); 50 nodes x $C at $FFEBB2 with +8 owner = 0
 ; ---------------------------------------------------------------------------
-sub_15DEAE:
+HitList_Init:
 	link.w	a6,#$0
 	movem.l	d3/d7/a3-a4,-(a7)
 	lea.l	-$164E(a5),a3

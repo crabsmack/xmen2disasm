@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_1F9F0E	[link-after-rts]
+; Collide_ObjVsList - test one attacker against every body in a hit list and call its Attack on overlap
+; In:  8(a6) = attacker object, $C(a6) = first node of a body list
+; Out: none
+; Evidence: calls vtable +$22 Attack; called twice per frame by Collide_RunAll
 ; ---------------------------------------------------------------------------
-sub_1F9F0E:
+Collide_ObjVsList:
 	link.w	a6,#$FFF8
 	movem.l	d6-d7/a3-a4,-(a7)
 	movea.l	$8(a6),a4

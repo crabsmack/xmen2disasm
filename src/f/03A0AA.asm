@@ -12,7 +12,7 @@ sub_03A0AA:
 	andi.w	#$BFFF,$6(a4)
 	pea.l	-$1652(a5)
 	move.l	a4,-(a7)
-	jsr	$4062(a5)	; -> sub_15DF2A
+	jsr	$4062(a5)	; -> HitList_Add
 	move.l	d0,$84(a4)
 	moveq	#$0,d0
 	move.b	$7A(a4),d0

@@ -2,7 +2,7 @@
 ; Deathbird_StateHurtFlash - Deathbird: flash four palette colours for 12 steps; then fall if dead, else rejoin the hit lists and fly off
 ; In:  8(a6) = this
 ; Out: d0 = flags & 8
-; Evidence: colours $FFC8C2-$FFC8C8, g_PalBaseDirty; sub_15DF2A re-links; next StateFalling or StateFlyOff
+; Evidence: colours $FFC8C2-$FFC8C8, g_PalBaseDirty; HitList_Add re-links; next StateFalling or StateFlyOff
 ; ---------------------------------------------------------------------------
 Deathbird_StateHurtFlash:
 	link.w	a6,#$0
@@ -38,11 +38,11 @@ loc_1126C6:
 	andi.w	#$FFFD,$6(a4)
 	pea.l	-$1652(a5)
 	move.l	a4,-(a7)
-	jsr	$4062(a5)	; -> sub_15DF2A
+	jsr	$4062(a5)	; -> HitList_Add
 	move.l	d0,$84(a4)
 	pea.l	-$1656(a5)
 	move.l	a4,-(a7)
-	jsr	$4062(a5)	; -> sub_15DF2A
+	jsr	$4062(a5)	; -> HitList_Add
 	move.l	d0,$80(a4)
 	lea.l	$10(a7),a7
 	clr.w	$6C(a4)

@@ -86,7 +86,7 @@ loc_0670F4:
 	move.l	d0,-(a7)
 	move.l	a3,-(a7)
 	pea.l	($59A).w
-	jsr	$413A(a5)	; -> sub_15FA2C
+	jsr	$413A(a5)	; -> VDP_WriteTileRect
 	lea.l	$5142(a5),a0
 	move.l	$2(a0),-(a7)
 	moveq	#-$1,d0

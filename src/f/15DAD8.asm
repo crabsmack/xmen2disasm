@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_15DAD8	[link-after-rts]
+; Actor_StateHurt - default hurt state (+$60): when health is gone start falling dead, else return to the default state
+; In:  8(a6) = this
+; Out: none
+; Evidence: health +$68 <= 0: health 0, Obj_Detach, accel 0/100, +6 |= $80 (no collision), state Actor_StateFallDead; else +$5C = +$64; installed by Actor_Init
 ; ---------------------------------------------------------------------------
-sub_15DAD8:
+Actor_StateHurt:
 	link.w	a6,#$0
 	move.l	a4,-(a7)
 	movea.l	$8(a6),a4
@@ -15,7 +18,7 @@ sub_15DAD8:
 	ori.w	#$80,$6(a4)
 	addq.w	#$4,a7
 	clr.w	$6C(a4)
-	lea.l	sub_15DA90(pc),a0
+	lea.l	Actor_StateFallDead(pc),a0
 	move.l	a0,$5C(a4)
 	moveq	#$8,d0
 	and.w	$4(a4),d0

@@ -64,7 +64,7 @@ Actor_Init:
 	move.b	#$FF,$14(a4)
 	move.l	d0,$64(a4)
 	move.l	d0,$5C(a4)
-	lea.l	sub_15DAD8(pc),a0
+	lea.l	Actor_StateHurt(pc),a0
 	move.l	a0,$60(a4)
 	moveq	#$1,d0
 	move.l	d0,-(a7)

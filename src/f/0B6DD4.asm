@@ -2,7 +2,7 @@
 ; BrainChild_StateLand - BRAINCHILD state: landed - frame 2, stop, join the hit and collision lists, palette line 3 from $119F5E, start the script
 ; In:  8(a6) = this
 ; Out: d0
-; Evidence: sub_15DF2A into $FFEBAE and $FFEBAA; 16 words -> g_PalBase+$60; script +$A0/+$9E; TAS 33537
+; Evidence: HitList_Add into $FFEBAE and $FFEBAA; 16 words -> g_PalBase+$60; script +$A0/+$9E; TAS 33537
 ; Found: link-after-rts
 ; ---------------------------------------------------------------------------
 BrainChild_StateLand:
@@ -25,12 +25,12 @@ BrainChild_StateLand:
 	andi.w	#$FFFD,$6(a4)
 	pea.l	-$1652(a5)
 	move.l	a4,-(a7)
-	jsr	$4062(a5)	; -> sub_15DF2A
+	jsr	$4062(a5)	; -> HitList_Add
 	move.l	d0,$84(a4)
 	andi.w	#$FFFE,$6(a4)
 	pea.l	-$1656(a5)
 	move.l	a4,-(a7)
-	jsr	$4062(a5)	; -> sub_15DF2A
+	jsr	$4062(a5)	; -> HitList_Add
 	move.l	d0,$80(a4)
 	lea.l	$2F7A(a5),a0
 	move.l	$2(a0),d0

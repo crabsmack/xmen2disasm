@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_1FA05A	[link-after-rts]
+; Collide_RunAll - per-frame hit detection: player attackers vs enemy bodies, enemy attackers vs player bodies
+; In:  none
+; Out: none
+; Evidence: skipped while g_SceneExitTimer runs; walks list $FFEBA2 against $FFEBAE and $FFEBAA against $FFEBA6 with Collide_ObjVsList
 ; ---------------------------------------------------------------------------
-sub_1FA05A:
+Collide_RunAll:
 	link.w	a6,#$0
 	move.l	a4,-(a7)
 	tst.w	g_SceneExitTimer(a5)
@@ -13,7 +16,7 @@ sub_1FA05A:
 loc_1FA072:
 	move.l	-$1652(a5),-(a7)
 	move.l	$8(a4),-(a7)
-	jsr	sub_1F9F0E(pc)
+	jsr	Collide_ObjVsList(pc)
 	movea.l	(a4),a4
 	addq.w	#$8,a7
 loc_1FA082:
@@ -27,7 +30,7 @@ loc_1FA086:
 loc_1FA092:
 	move.l	-$165A(a5),-(a7)
 	move.l	$8(a4),-(a7)
-	jsr	sub_1F9F0E(pc)
+	jsr	Collide_ObjVsList(pc)
 	movea.l	(a4),a4
 	addq.w	#$8,a7
 loc_1FA0A2:

@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_15E76C	[jt 2068]
+; Obj_CarryChild - Obj_ForEachChild callback from Actor_Update: move a carried child (+4 flags $1800) by the parent's shift and copy its velocity and acceleration, recursively
+; In:  8(a6) = parent, $C(a6) = child
+; Out: none
+; Evidence: adds g_ShiftDX/g_ShiftDY << 8 to x/y, copies parent +$16..+$20, Obj_UpdateBoxes, then Obj_ForEachChild(child, itself); Actor_Update sets the deltas from its own movement
 ; ---------------------------------------------------------------------------
-sub_15E76C:
+Obj_CarryChild:
 	link.w	a6,#$0
 	movem.l	a3-a4,-(a7)
 	movea.l	$8(a6),a3
@@ -32,7 +35,7 @@ loc_15E7C8:
 	move.b	$3B(a4),d0
 	cmpi.w	#$FF,d0
 	beq.s	loc_15E7E0
-	pea.l	sub_15E76C(pc)
+	pea.l	Obj_CarryChild(pc)
 	move.l	a4,-(a7)
 	jsr	$4E82(a5)	; -> Obj_ForEachChild
 	addq.w	#$8,a7
