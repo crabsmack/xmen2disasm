@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_1976D2	[jt 2172]
+; Wolverine_GroundSpecial - WOLVERINE slot +$DE: ground special: leaping forward slash
+; In:  8(a6) = player
+; Out: d0 = +4 flag 8
+; Evidence: Obj_Detach, vy -$300, gravity $3F, vx +/-$396; health <= $700 -> sound $88 + animation jt $45A2 data, else $8A + $45AA; delay 20, next Wolverine_LeapSlashEnd
 ; ---------------------------------------------------------------------------
-sub_1976D2:
+Wolverine_GroundSpecial:
 	link.w	a6,#$0
 	move.l	a4,-(a7)
 	movea.l	$8(a6),a4
@@ -45,7 +48,7 @@ loc_197740:
 	lea.l	$10(a7),a7
 loc_197762:
 	move.w	#$14,$6C(a4)
-	lea.l	sub_19767C(pc),a0
+	lea.l	Wolverine_LeapSlashEnd(pc),a0
 	move.l	a0,$5C(a4)
 	moveq	#$8,d0
 	and.w	$4(a4),d0

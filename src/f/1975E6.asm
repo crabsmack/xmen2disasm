@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_1975E6	[jt 2171]
+; Wolverine_AirSpecial - WOLVERINE slot +$C6: mid-air special: lunge forward at speed $644
+; In:  8(a6) = player
+; Out: d0 = +4 flag 8
+; Evidence: vx +/-$644, max $644; health <= $700 -> sound $88 + animation (jt $64AC thunk), else sound $8A + stronger animation; state Wolverine_StateLunge
 ; ---------------------------------------------------------------------------
-sub_1975E6:
+Wolverine_AirSpecial:
 	link.w	a6,#$0
 	move.l	a4,-(a7)
 	movea.l	$8(a6),a4
@@ -40,7 +43,7 @@ loc_197640:
 	lea.l	$10(a7),a7
 loc_197662:
 	clr.w	$6C(a4)
-	lea.l	sub_1974EE(pc),a0
+	lea.l	Wolverine_StateLunge(pc),a0
 	move.l	a0,$5C(a4)
 	moveq	#$8,d0
 	and.w	$4(a4),d0

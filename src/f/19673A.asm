@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_19673A	[link-after-rts]
+; Wolverine_StateWallClimb - one climbing step on a wall; at the top/bottom either cling or move onto a ceiling
+; In:  8(a6) = player
+; Out: d0
+; Evidence: anim done -> stop, frame $1B/$20, sound 99, delay 14, Wolverine_StateWallCling; blocked (+$90 $3C000) -> flip claw phase, cling; touched a segment classified 1 (ceiling) -> Wolverine_WallToCeiling
 ; ---------------------------------------------------------------------------
-sub_19673A:
+Wolverine_StateWallClimb:
 	link.w	a6,#$0
 	movem.l	d3/d7/a3-a4,-(a7)
 	movea.l	$8(a6),a4
@@ -34,7 +37,7 @@ loc_19678A:
 loc_19678C:
 	move.b	d1,$C2(a4)
 	clr.w	$6C(a4)
-	lea.l	sub_1969C2(pc),a0
+	lea.l	Wolverine_StateWallCling(pc),a0
 	move.l	a0,$5C(a4)
 	moveq	#$8,d0
 	and.w	$4(a4),d0
@@ -88,24 +91,24 @@ loc_196818:
 	move.b	d1,$C2(a4)
 	cmpi.w	#$1,d7
 	bne.s	loc_196836
-	lea.l	sub_1965D2(pc),a0
+	lea.l	Wolverine_WallToCeiling(pc),a0
 	move.l	a0,$5C(a4)
 	move.l	a4,-(a7)
-	jsr	sub_1965D2(pc)
+	jsr	Wolverine_WallToCeiling(pc)
 	addq.w	#$4,a7
 	bra.w	loc_1968C8
 loc_196836:
 	clr.w	$18(a4)
 	clr.w	$20(a4)
 	clr.w	$6C(a4)
-	lea.l	sub_1969C2(pc),a0
+	lea.l	Wolverine_StateWallCling(pc),a0
 	move.l	a0,$5C(a4)
 	moveq	#$8,d0
 	and.w	$4(a4),d0
 	bra.s	loc_1968C8
 loc_196852:
 	clr.w	$6C(a4)
-	lea.l	sub_19673A(pc),a0
+	lea.l	Wolverine_StateWallClimb(pc),a0
 	move.l	a0,$5C(a4)
 	moveq	#$8,d0
 	and.w	$4(a4),d0
@@ -142,7 +145,7 @@ loc_19689A:
 	jsr	$521A(a5)	; -> Snd_Play
 	addq.w	#$8,a7
 	move.w	#$E,$6C(a4)
-	lea.l	sub_1969C2(pc),a0
+	lea.l	Wolverine_StateWallCling(pc),a0
 	move.l	a0,$5C(a4)
 	moveq	#$8,d0
 	and.w	$4(a4),d0

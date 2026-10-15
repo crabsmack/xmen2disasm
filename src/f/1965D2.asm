@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_1965D2	[link-after-rts]
+; Wolverine_WallToCeiling - climbing over the top of a wall onto a ceiling: switch to the ceiling hang
+; In:  8(a6) = player
+; Out: d0 = +4 flag 8
+; Evidence: classifies the touched segment (+$F2) into +$C0 bits 0-1, +$BC = it; frame $23/$1E by claw phase +$C2; stop; delay 6 then Wolverine_StartCeilingCrawl
 ; ---------------------------------------------------------------------------
-sub_1965D2:
+Wolverine_WallToCeiling:
 	link.w	a6,#$0
 	movem.l	d6-d7/a3-a4,-(a7)
 	movea.l	$8(a6),a4
@@ -60,7 +63,7 @@ loc_19665C:
 	clr.l	$16(a4)
 	clr.w	$20(a4)
 	move.w	#$6,$6C(a4)
-	lea.l	sub_1968D2(pc),a0
+	lea.l	Wolverine_StartCeilingCrawl(pc),a0
 	move.l	a0,$5C(a4)
 	moveq	#$8,d0
 	and.w	$4(a4),d0

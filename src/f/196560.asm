@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_196560	[jt 2168]
+; Wolverine_SetAirFrame - WOLVERINE slot +$7E: pick the jump frame from the vertical speed
+; In:  8(a6) = player
+; Out: none
+; Evidence: vy bands -$280/$280/$300 -> SetFrame $31/$32/$33/$34
 ; ---------------------------------------------------------------------------
-sub_196560:
+Wolverine_SetAirFrame:
 	link.w	a6,#$0
 	movem.l	d7/a4,-(a7)
 	movea.l	$8(a6),a4

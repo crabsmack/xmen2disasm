@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_197C3C	[jt 2179]
+; Wolverine_Reset - WOLVERINE slot +$6A: empty Reset
+; In:  none
+; Out: none
+; Evidence: bare link/unlk/rts; called by Wolverine_Init
 ; ---------------------------------------------------------------------------
-sub_197C3C:
+Wolverine_Reset:
 	link.w	a6,#$0
 	unlk	a6
 	rts

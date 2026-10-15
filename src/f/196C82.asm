@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_196C82	[link-after-rts]
+; Wolverine_StateCeilingCrawl - one crawl step along a ceiling; at its end go round onto a wall or stop
+; In:  8(a6) = player
+; Out: none
+; Evidence: anim done -> frame $2D/$30, sound 99, delay 10, Wolverine_StateCeilingHang; blocked -> hang; past the segment end: next segment classified 0 -> stop with +$90 $100000/$80000 (end right/left) else Wolverine_CeilingToWall
 ; ---------------------------------------------------------------------------
-sub_196C82:
+Wolverine_StateCeilingCrawl:
 	link.w	a6,#$0
 	movem.l	d3-d7/a3-a4,-(a7)
 	movea.l	$8(a6),a4
@@ -23,7 +26,7 @@ loc_196CB6:
 loc_196CB8:
 	move.b	d1,$C2(a4)
 	clr.w	$6C(a4)
-	lea.l	sub_196F70(pc),a0
+	lea.l	Wolverine_StateCeilingHang(pc),a0
 	move.l	a0,$5C(a4)
 	moveq	#$8,d0
 	and.w	$4(a4),d0
@@ -84,10 +87,10 @@ loc_196D4E:
 loc_196D56:
 	tst.w	d6
 	beq.s	loc_196D6E
-	lea.l	sub_196686(pc),a0
+	lea.l	Wolverine_CeilingToWall(pc),a0
 	move.l	a0,$5C(a4)
 	move.l	a4,-(a7)
-	jsr	sub_196686(pc)
+	jsr	Wolverine_CeilingToWall(pc)
 	addq.w	#$4,a7
 	bra.w	loc_196E5A
 loc_196D6E:
@@ -127,14 +130,14 @@ loc_196DBA:
 	addq.w	#$8,a7
 loc_196DCE:
 	clr.w	$6C(a4)
-	lea.l	sub_196F70(pc),a0
+	lea.l	Wolverine_StateCeilingHang(pc),a0
 	move.l	a0,$5C(a4)
 	moveq	#$8,d0
 	and.w	$4(a4),d0
 	bra.s	loc_196E5A
 loc_196DE2:
 	clr.w	$6C(a4)
-	lea.l	sub_196C82(pc),a0
+	lea.l	Wolverine_StateCeilingCrawl(pc),a0
 	move.l	a0,$5C(a4)
 	moveq	#$8,d0
 	and.w	$4(a4),d0
@@ -172,7 +175,7 @@ loc_196E2C:
 	andi.l	#$FFFFFFDF,$90(a4)
 	addq.w	#$8,a7
 	move.w	#$A,$6C(a4)
-	lea.l	sub_196F70(pc),a0
+	lea.l	Wolverine_StateCeilingHang(pc),a0
 	move.l	a0,$5C(a4)
 	moveq	#$8,d0
 	and.w	$4(a4),d0

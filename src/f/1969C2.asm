@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_1969C2	[link-after-rts]
+; Wolverine_StateWallCling - clinging to a wall: Up/Down climb, B slashes, jump leaps off
+; In:  8(a6) = player
+; Out: d0
+; Evidence: C -> frame $31, step off the wall, vy -$834 (0 if +$90 $10000), control; Up (not past the top, Player_TopAboveSeg) -> climb up vy -$226; Down (Player_BottomBelowSeg) -> climb down vy $2DA; B -> wall slash animation (jt $6482 thunk), sound char +$2C
 ; ---------------------------------------------------------------------------
-sub_1969C2:
+Wolverine_StateWallCling:
 	link.w	a6,#$0
 	movem.l	d3/a3-a4,-(a7)
 	movea.l	$8(a6),a4
@@ -129,7 +132,7 @@ loc_196B1E:
 loc_196B32:
 	move.w	#$FDDA,$18(a4)
 	clr.w	$6C(a4)
-	lea.l	sub_19673A(pc),a0
+	lea.l	Wolverine_StateWallClimb(pc),a0
 	move.l	a0,$5C(a4)
 	moveq	#$8,d0
 	and.w	$4(a4),d0
@@ -174,7 +177,7 @@ loc_196B9E:
 loc_196BB2:
 	move.w	#$2DA,$18(a4)
 	clr.w	$6C(a4)
-	lea.l	sub_19673A(pc),a0
+	lea.l	Wolverine_StateWallClimb(pc),a0
 	move.l	a0,$5C(a4)
 	moveq	#$8,d0
 	and.w	$4(a4),d0
@@ -222,7 +225,7 @@ loc_196C10:
 	jsr	$4E42(a5)	; -> Obj_SetAnim
 	lea.l	$10(a7),a7
 	move.w	#$FF,$6C(a4)
-	lea.l	sub_1969C2(pc),a0
+	lea.l	Wolverine_StateWallCling(pc),a0
 	move.l	a0,$5C(a4)
 	moveq	#$8,d0
 	and.w	$4(a4),d0
@@ -231,7 +234,7 @@ loc_196C5E:
 	clr.w	$1E(a4)
 	clr.w	$16(a4)
 	clr.w	$6C(a4)
-	lea.l	sub_1969C2(pc),a0
+	lea.l	Wolverine_StateWallCling(pc),a0
 	move.l	a0,$5C(a4)
 	moveq	#$8,d0
 	and.w	$4(a4),d0

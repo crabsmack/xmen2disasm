@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_196E64	[link-after-rts]
+; Wolverine_StartWallClimb - start climbing a wall (after coming off a ceiling corner)
+; In:  8(a6) = player
+; Out: d0 = +4 flag 8
+; Evidence: +6 |= $2000, climb animation by claw phase, face the wall (+$C0 2/3), x aligned to the wall segment +$BC, y + 10, vy $2DA, state Wolverine_StateWallClimb
 ; ---------------------------------------------------------------------------
-sub_196E64:
+Wolverine_StartWallClimb:
 	link.w	a6,#$0
 	movem.l	d7/a4,-(a7)
 	movea.l	$8(a6),a4
@@ -86,7 +89,7 @@ loc_196F0C:
 loc_196F4E:
 	move.w	#$2DA,$18(a4)
 	clr.w	$6C(a4)
-	lea.l	sub_19673A(pc),a0
+	lea.l	Wolverine_StateWallClimb(pc),a0
 	move.l	a0,$5C(a4)
 	moveq	#$8,d0
 	and.w	$4(a4),d0

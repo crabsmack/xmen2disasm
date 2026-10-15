@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_197498	[link-after-rts]
+; Wolverine_StateLungeEnd - end of the lunge combo once its animation finishes (or passes step $8C)
+; In:  8(a6) = player
+; Out: none
+; Evidence: anim +$44 == 0 or step +$48 > $8C -> clear A latch, control
 ; ---------------------------------------------------------------------------
-sub_197498:
+Wolverine_StateLungeEnd:
 	link.w	a6,#$0
 	move.l	a4,-(a7)
 	movea.l	$8(a6),a4

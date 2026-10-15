@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_197ACA	[jt 2175]
+; Wolverine_Init - WOLVERINE slot +$12: XCLIMBER Init plus Wolverine's record, states, heal timer and sprite
+; In:  8(a6) = player, $C/$10/$14(a6) = Init args
+; Out: none
+; Evidence: parent +$12, own +$6A Reset; +$8C = char record (jt $64F4 thunk data); +$5C/+$64 = +$A6, +$60 = XPlayer_StateHurt; +$C0 |= $80 (can hang from ceilings); +$C4 = 900; Spr_Init at +$2E with the per-player VRAM base
 ; ---------------------------------------------------------------------------
-sub_197ACA:
+Wolverine_Init:
 	link.w	a6,#$0
 	movem.l	d3/a4,-(a7)
 	movea.l	$8(a6),a4

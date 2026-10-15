@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_197116	[jt 2169]
+; Wolverine_StateGrab - WOLVERINE slot +$AA: grab what XClimber_CheckGrab found: hang from a ceiling or cling to a wall
+; In:  8(a6) = player
+; Out: d0
+; Evidence: +$C0 & 3: 1 -> frame $30, y under the ceiling, Wolverine_StateCeilingHang; 2/3 -> face the wall, frame $1B, x aligned, Wolverine_StateWallCling; sound 99, stop, +6 |= $2000
 ; ---------------------------------------------------------------------------
-sub_197116:
+Wolverine_StateGrab:
 	link.w	a6,#$0
 	movem.l	a3-a4,-(a7)
 	movea.l	$8(a6),a4
@@ -74,7 +77,7 @@ loc_1971C4:
 	add.l	d0,$C(a4)
 	lea.l	$C(a7),a7
 	clr.w	$6C(a4)
-	lea.l	sub_196F70(pc),a0
+	lea.l	Wolverine_StateCeilingHang(pc),a0
 	move.l	a0,$5C(a4)
 	moveq	#$8,d0
 	and.w	$4(a4),d0
@@ -99,7 +102,7 @@ loc_19721C:
 	add.l	d0,$8(a4)
 	lea.l	$C(a7),a7
 	clr.w	$6C(a4)
-	lea.l	sub_1969C2(pc),a0
+	lea.l	Wolverine_StateWallCling(pc),a0
 	move.l	a0,$5C(a4)
 	moveq	#$8,d0
 	and.w	$4(a4),d0
@@ -124,7 +127,7 @@ loc_197266:
 	add.l	d0,$8(a4)
 	lea.l	$C(a7),a7
 	clr.w	$6C(a4)
-	lea.l	sub_1969C2(pc),a0
+	lea.l	Wolverine_StateWallCling(pc),a0
 	move.l	a0,$5C(a4)
 	moveq	#$8,d0
 	and.w	$4(a4),d0

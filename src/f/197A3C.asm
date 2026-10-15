@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_197A3C	[jt 2174]
+; Wolverine_Update - WOLVERINE slot +$4A: XPLAYER Update plus the healing factor (every 900 frames regain health below 3 units)
+; In:  8(a6) = player
+; Out: none
+; Evidence: parent +$4A; timer +$C4 counts down by 1 (2 in two-player); at 0 reset to 900 and if 0 < health < $300: sound $39, health = (units + 2) << 8, g_HudDirty
 ; ---------------------------------------------------------------------------
-sub_197A3C:
+Wolverine_Update:
 	link.w	a6,#$0
 	movem.l	d7/a4,-(a7)
 	movea.l	$8(a6),a4

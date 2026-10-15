@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_1974EE	[link-after-rts]
+; Wolverine_StateLunge - air lunge in progress: on landing chain a hopping slash (up to 2 more), else slow the climb
+; In:  8(a6) = player
+; Out: d0
+; Evidence: grounded: slash animation (strong above 7 health), step +$48 += 2; < 5 -> hop vy -$300, vx +/-$396, gravity $3F, Wolverine_LeapSlashEnd; else Wolverine_StateLungeEnd; airborne vy < -$300 is damped by $100
 ; ---------------------------------------------------------------------------
-sub_1974EE:
+Wolverine_StateLunge:
 	link.w	a6,#$0
 	move.l	a4,-(a7)
 	movea.l	$8(a6),a4
@@ -61,14 +64,14 @@ loc_1975A0:
 	move.w	d0,$16(a4)
 	addq.w	#$4,a7
 	move.w	#$14,$6C(a4)
-	lea.l	sub_19767C(pc),a0
+	lea.l	Wolverine_LeapSlashEnd(pc),a0
 	move.l	a0,$5C(a4)
 	moveq	#$8,d0
 	and.w	$4(a4),d0
 	bra.s	loc_1975DE
 loc_1975BC:
 	clr.w	$6C(a4)
-	lea.l	sub_197498(pc),a0
+	lea.l	Wolverine_StateLungeEnd(pc),a0
 	move.l	a0,$5C(a4)
 	moveq	#$8,d0
 	and.w	$4(a4),d0

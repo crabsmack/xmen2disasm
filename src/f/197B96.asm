@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_197B96	[jt 2176]
+; Wolverine_SetFrame - WOLVERINE slot +$56: set a frame; frames $80+ come from the second sprite bank
+; In:  8(a6) = player, $C(a6) = frame
+; Out: none
+; Evidence: < $80 -> def jt $4642 data, else frame - $80 from the def at jt $3654 thunk; bank change invalidates +$38; then like Actor_SetFrame
 ; ---------------------------------------------------------------------------
-sub_197B96:
+Wolverine_SetFrame:
 	link.w	a6,#$FFFC
 	movem.l	d7/a3-a4,-(a7)
 	movea.l	$8(a6),a3

@@ -40,6 +40,6 @@ loc_067352:
 	ext.l	d7
 	move.l	d7,-(a7)
 	move.l	a4,-(a7)
-	jsr	$4422(a5)	; -> sub_197B96
+	jsr	$4422(a5)	; -> Wolverine_SetFrame
 	addq.w	#$8,a7
 	bra.s	loc_06736C

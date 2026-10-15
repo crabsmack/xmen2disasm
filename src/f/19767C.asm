@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_19767C	[link-after-rts]
+; Wolverine_LeapSlashEnd - after a leaping slash: recover when its animation ends
+; In:  8(a6) = player
+; Out: none
+; Evidence: clears A latch; state XPlayer_AttackRecover, delay 0 if the anim ended else $FF
 ; ---------------------------------------------------------------------------
-sub_19767C:
+Wolverine_LeapSlashEnd:
 	link.w	a6,#$0
 	move.l	a4,-(a7)
 	movea.l	$8(a6),a4

@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_19777E	[link-after-rts]
+; Wolverine_StateCrouch - Wolverine's crouch: look down after a while, turn with Left/Right, Down+jump drops through thin floors
+; In:  8(a6) = player
+; Out: d0
+; Evidence: camera +$2A after the +$A6 delay; C without direction on a floor with byte 2 > 0 -> vtable +$86 DropThrough; anything else -> control
 ; ---------------------------------------------------------------------------
-sub_19777E:
+Wolverine_StateCrouch:
 	link.w	a6,#$0
 	movem.l	d3/a4,-(a7)
 	movea.l	$8(a6),a4
@@ -191,7 +194,7 @@ loc_197974:
 	jsr	$4E4A(a5)	; -> Obj_ChangeAnim
 	addq.w	#$8,a7
 	clr.w	$6C(a4)
-	lea.l	sub_19777E(pc),a0
+	lea.l	Wolverine_StateCrouch(pc),a0
 	move.l	a0,$5C(a4)
 	moveq	#$8,d0
 	and.w	$4(a4),d0

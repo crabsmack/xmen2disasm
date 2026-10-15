@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_196686	[link-after-rts]
+; Wolverine_CeilingToWall - crawling off the end of a ceiling onto a wall: switch to wall climbing
+; In:  8(a6) = player
+; Out: d0 = +4 flag 8
+; Evidence: classifies the touched segment into +$C0, +$BC = it; frame $2B/$2E by claw phase; stop; state Wolverine_StartWallClimb
 ; ---------------------------------------------------------------------------
-sub_196686:
+Wolverine_CeilingToWall:
 	link.w	a6,#$0
 	movem.l	d6-d7/a3-a4,-(a7)
 	movea.l	$8(a6),a4
@@ -61,7 +64,7 @@ loc_196712:
 	clr.l	$16(a4)
 	clr.w	$20(a4)
 	clr.w	$6C(a4)
-	lea.l	sub_196E64(pc),a0
+	lea.l	Wolverine_StartWallClimb(pc),a0
 	move.l	a0,$5C(a4)
 	moveq	#$8,d0
 	and.w	$4(a4),d0

@@ -5353,35 +5353,35 @@ Art_PlayerSpr2:	; sprite definition (type $18, raw 4bpp tiles): $24-byte header,
 	incrom	$18DF2C,$8476
 Tbl_BeastAnim:	; animation script (byte flags, byte steps, ..., 2-byte steps from +6); 1D of 22 bytes used at runtime; read by Anim_ApplyStep, Anim_AdvanceByDistance; jt[2150] used by loc_0675D6
 	incrom	$1963A2,$22
-Tbl_BeastAnim2:	; animation script (byte flags, byte steps, ..., 2-byte steps from +6); 8 of A bytes used at runtime; read by Anim_ApplyStep, Anim_AdvanceByDistance, Anim_Advance; jt[2151] used by sub_1969C2
+Tbl_BeastAnim2:	; animation script (byte flags, byte steps, ..., 2-byte steps from +6); 8 of A bytes used at runtime; read by Anim_ApplyStep, Anim_AdvanceByDistance, Anim_Advance; jt[2151] used by Wolverine_StateWallCling
 	incrom	$1963C4,$A
-Tbl_BeastAnim3:	; animation script (byte flags, byte steps, ..., 2-byte steps from +6); 8 of A bytes used at runtime; read by Anim_ApplyStep, Anim_AdvanceByDistance, Anim_Advance; jt[2152] used by sub_1969C2
+Tbl_BeastAnim3:	; animation script (byte flags, byte steps, ..., 2-byte steps from +6); 8 of A bytes used at runtime; read by Anim_ApplyStep, Anim_AdvanceByDistance, Anim_Advance; jt[2152] used by Wolverine_StateWallCling
 	incrom	$1963CE,$A
-Tbl_BeastAnim4:	; animation script (byte flags, byte steps, ..., 2-byte steps from +6); 8 of A bytes used at runtime; read by Anim_ApplyStep, Anim_AdvanceByDistance, Anim_Advance; jt[2153] used by sub_1969C2
+Tbl_BeastAnim4:	; animation script (byte flags, byte steps, ..., 2-byte steps from +6); 8 of A bytes used at runtime; read by Anim_ApplyStep, Anim_AdvanceByDistance, Anim_Advance; jt[2153] used by Wolverine_StateWallCling
 	incrom	$1963D8,$A
-Tbl_BeastAnim5:	; animation script (byte flags, byte steps, ..., 2-byte steps from +6); 8 of A bytes used at runtime; read by Anim_ApplyStep, Anim_AdvanceByDistance, Anim_Advance; jt[2154] used by sub_1969C2
+Tbl_BeastAnim5:	; animation script (byte flags, byte steps, ..., 2-byte steps from +6); 8 of A bytes used at runtime; read by Anim_ApplyStep, Anim_AdvanceByDistance, Anim_Advance; jt[2154] used by Wolverine_StateWallCling
 	incrom	$1963E2,$A
-Tbl_BeastAnim12:	; animation script (NOTES: Animation scripts); never read in the corpus; jt[2155] used by sub_196E64 -> Obj_SetAnim
+Tbl_BeastAnim12:	; animation script (NOTES: Animation scripts); never read in the corpus; jt[2155] used by Wolverine_StartWallClimb -> Obj_SetAnim
 	incrom	$1963EC,$8
-Tbl_BeastAnim13:	; animation script (NOTES: Animation scripts); never read in the corpus; jt[2156] used by sub_196E64 -> Obj_SetAnim
+Tbl_BeastAnim13:	; animation script (NOTES: Animation scripts); never read in the corpus; jt[2156] used by Wolverine_StartWallClimb -> Obj_SetAnim
 	incrom	$1963F4,$8
-Tbl_BeastAnim14:	; animation script (NOTES: Animation scripts); never read in the corpus; jt[2157] used by sub_1968D2 -> Obj_SetAnim, sub_196F70 -> Obj_SetAnim
+Tbl_BeastAnim14:	; animation script (NOTES: Animation scripts); never read in the corpus; jt[2157] used by Wolverine_StartCeilingCrawl -> Obj_SetAnim, Wolverine_StateCeilingHang -> Obj_SetAnim
 	incrom	$1963FC,$A
-Tbl_BeastAnim15:	; animation script (NOTES: Animation scripts); never read in the corpus; jt[2158] used by sub_1968D2 -> Obj_SetAnim, sub_196F70 -> Obj_SetAnim
+Tbl_BeastAnim15:	; animation script (NOTES: Animation scripts); never read in the corpus; jt[2158] used by Wolverine_StartCeilingCrawl -> Obj_SetAnim, Wolverine_StateCeilingHang -> Obj_SetAnim
 	incrom	$196406,$A
 Tbl_BeastAnim6:	; animation script (byte flags, byte steps, ..., 2-byte steps from +6); 36 of 3E bytes used at runtime; read by Anim_ApplyStep, Anim_AdvanceByDistance, Anim_Advance; jt[2159] used by loc_067478
 	incrom	$196410,$3E
-Tbl_EvilWolverineAnim:	; animation script (byte flags, byte steps, ..., 2-byte steps from +6); 18 of 1A bytes used at runtime; read by Anim_ApplyStep, Anim_AdvanceByDistance, Anim_Advance; jt[2160] used by EvilWolverine_ActLeap, sub_1974EE, sub_1976D2
+Tbl_EvilWolverineAnim:	; animation script (byte flags, byte steps, ..., 2-byte steps from +6); 18 of 1A bytes used at runtime; read by Anim_ApplyStep, Anim_AdvanceByDistance, Anim_Advance; jt[2160] used by EvilWolverine_ActLeap, Wolverine_StateLunge, Wolverine_GroundSpecial
 	incrom	$19644E,$1A
-Tbl_BeastAnim7:	; animation script (byte flags, byte steps, ..., 2-byte steps from +6); 18 of 1A bytes used at runtime; read by Anim_ApplyStep; jt[2161] used by sub_1974EE, sub_1976D2
+Tbl_BeastAnim7:	; animation script (byte flags, byte steps, ..., 2-byte steps from +6); 18 of 1A bytes used at runtime; read by Anim_ApplyStep; jt[2161] used by Wolverine_StateLunge, Wolverine_GroundSpecial
 	incrom	$196468,$1A
-Tbl_BeastAnim8:	; animation script (byte flags, byte steps, ..., 2-byte steps from +6); 12 of 14 bytes used at runtime; read by Anim_ApplyStep, Anim_AdvanceByDistance, Anim_Advance; jt[2162] used by sub_1969C2
+Tbl_BeastAnim8:	; animation script (byte flags, byte steps, ..., 2-byte steps from +6); 12 of 14 bytes used at runtime; read by Anim_ApplyStep, Anim_AdvanceByDistance, Anim_Advance; jt[2162] used by Wolverine_StateWallCling
 	incrom	$196482,$14
-Tbl_BeastAnim9:	; animation script (byte flags, byte steps, ..., 2-byte steps from +6); 12 of 16 bytes used at runtime; read by Anim_ApplyStep, Anim_AdvanceByDistance, Anim_Advance; jt[2163] used by sub_197412
+Tbl_BeastAnim9:	; animation script (byte flags, byte steps, ..., 2-byte steps from +6); 12 of 16 bytes used at runtime; read by Anim_ApplyStep, Anim_AdvanceByDistance, Anim_Advance; jt[2163] used by Wolverine_AirAttackDown
 	incrom	$196496,$16
-Tbl_BeastAnim10:	; animation script (byte flags, byte steps, ..., 2-byte steps from +6); 12 of 14 bytes used at runtime; read by Anim_ApplyStep, Anim_AdvanceByDistance, Anim_Advance; jt[2164] used by sub_1975E6
+Tbl_BeastAnim10:	; animation script (byte flags, byte steps, ..., 2-byte steps from +6); 12 of 14 bytes used at runtime; read by Anim_ApplyStep, Anim_AdvanceByDistance, Anim_Advance; jt[2164] used by Wolverine_AirSpecial
 	incrom	$1964AC,$14
-Tbl_BeastAnim11:	; animation script (byte flags, byte steps, ..., 2-byte steps from +6); 1E of 34 bytes used at runtime; read by Anim_ApplyStep, Anim_AdvanceByDistance; jt[2165] used by sub_1975E6
+Tbl_BeastAnim11:	; animation script (byte flags, byte steps, ..., 2-byte steps from +6); 1E of 34 bytes used at runtime; read by Anim_ApplyStep, Anim_AdvanceByDistance; jt[2165] used by Wolverine_AirSpecial
 	incrom	$1964C0,$34
 	incrom	$1964F4,$5E
 	include "src/f/196552.asm"
@@ -5413,7 +5413,7 @@ Tbl_BeastAnim11:	; animation script (byte flags, byte steps, ..., 2-byte steps f
 	include "src/f/197C3C.asm"
 Art_EvilWolverineSpr:	; sprite definition (type $18, raw 4bpp tiles): $24-byte header, $14-byte frame records, pieces, tiles; 82C0 of BA10 bytes used at runtime; read by VDP_FlushDmaQueue; DMA to VRAM $66A0-9F00; jt[2180] used by EvilWolverine_Init, Player_CalcMaxTiles, Wolverine_SelectSpriteDef
 	incrom	$197C44,$BA10
-Art_PlayerSpr3:	; sprite definition (type $18, raw 4bpp tiles): $24-byte header, $14-byte frame records, pieces, tiles; 2060 of 28F2 bytes used at runtime; read by VDP_FlushDmaQueue, Spr_EmitStream; DMA to VRAM $66A0-9FE0; jt[2181] used by Player_CalcMaxTiles, sub_197B96
+Art_PlayerSpr3:	; sprite definition (type $18, raw 4bpp tiles): $24-byte header, $14-byte frame records, pieces, tiles; 2060 of 28F2 bytes used at runtime; read by VDP_FlushDmaQueue, Spr_EmitStream; DMA to VRAM $66A0-9FE0; jt[2181] used by Player_CalcMaxTiles, Wolverine_SetFrame
 	incrom	$1A3654,$28F2
 Tbl_Anim_1A5F46:	; animation script (byte flags, byte steps, ..., 2-byte steps from +6); 41 of 78 bytes used at runtime; read by Anim_ApplyStep, Anim_AdvanceByDistance, Anim_Advance; jt[2182] used by loc_0675B2
 	incrom	$1A5F46,$78

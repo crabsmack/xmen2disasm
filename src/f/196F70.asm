@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_196F70	[link-after-rts]
+; Wolverine_StateCeilingHang - hanging from a ceiling: Left/Right crawl (not past an end), jump drops off
+; In:  8(a6) = player
+; Out: d0
+; Evidence: C -> normal gravity, climb state cleared, control; Left/Right -> vx -/+$208 unless that end flag is set or Player_FrontPastSeg -> crawl animation and Wolverine_StateCeilingCrawl
 ; ---------------------------------------------------------------------------
-sub_196F70:
+Wolverine_StateCeilingHang:
 	link.w	a6,#$0
 	movem.l	d3/a3-a4,-(a7)
 	movea.l	$8(a6),a4
@@ -120,7 +123,7 @@ loc_1970CA:
 	addq.w	#$8,a7
 loc_1970DE:
 	clr.w	$6C(a4)
-	lea.l	sub_196C82(pc),a0
+	lea.l	Wolverine_StateCeilingCrawl(pc),a0
 	move.l	a0,$5C(a4)
 	moveq	#$8,d0
 	and.w	$4(a4),d0
@@ -129,7 +132,7 @@ loc_1970F2:
 	clr.w	$1E(a4)
 	clr.w	$16(a4)
 	clr.w	$6C(a4)
-	lea.l	sub_196F70(pc),a0
+	lea.l	Wolverine_StateCeilingHang(pc),a0
 	move.l	a0,$5C(a4)
 	moveq	#$8,d0
 	and.w	$4(a4),d0
