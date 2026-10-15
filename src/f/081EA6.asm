@@ -9,7 +9,7 @@ CloneA2_InstallHooks:
 	lea.l	$3F22(a5),a0
 	move.l	a0,-$3402(a5)
 	lea.l	CloneA2_FrameHook(pc),a0
-	move.l	a0,-$388E(a5)
+	move.l	a0,g_SceneFrameHook(a5)
 	jsr	CloneA2_LoadResources(pc)
 	jsr	CloneA2_FlickerInit(pc)
 	moveq	#$0,d0

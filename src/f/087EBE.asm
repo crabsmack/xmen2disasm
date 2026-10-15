@@ -1,7 +1,11 @@
 ; ---------------------------------------------------------------------------
-; sub_087EBE	[link-after-rts]
+; BroodBoss_StateVanish - BROODBOSS death: hide the body (frame $FF) for $1E frames
+; In:  8(a6) = this
+; Out: d0
+; Evidence: clears +$44, SetFrame($FF); next BroodBoss_StateClawOut; TAS 50715
+; Found: link-after-rts
 ; ---------------------------------------------------------------------------
-sub_087EBE:
+BroodBoss_StateVanish:
 	link.w	a6,#$0
 	move.l	a4,-(a7)
 	movea.l	$8(a6),a4
@@ -14,7 +18,7 @@ sub_087EBE:
 	jsr	(a1)
 	addq.w	#$8,a7
 	move.w	#$1E,$6C(a4)
-	lea.l	sub_087EFA(pc),a0
+	lea.l	BroodBoss_StateClawOut(pc),a0
 	move.l	a0,$5C(a4)
 	moveq	#$8,d0
 	and.w	$4(a4),d0

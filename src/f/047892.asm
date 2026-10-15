@@ -40,7 +40,7 @@ sub_047892:
 	move.b	#$1,-$38B4(a5)
 	clr.b	-$38DE(a5)
 	lea.l	sub_0477B4(pc),a0
-	move.l	a0,-$388E(a5)
+	move.l	a0,g_SceneFrameHook(a5)
 	lea.l	sub_0477E4(pc),a0
 	move.l	a0,-$38F4(a5)
 	unlk	a6

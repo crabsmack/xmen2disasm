@@ -275,7 +275,7 @@ loc_1FA480:
 	movea.l	-$1FE6(a5),a0
 	move.w	#$1C,$6(a0)
 loc_1FA4BC:
-	movea.l	-$388E(a5),a0
+	movea.l	g_SceneFrameHook(a5),a0
 	jsr	(a0)
 	move.w	-$3A24(a5),d0
 	addq.w	#$1,-$3A24(a5)

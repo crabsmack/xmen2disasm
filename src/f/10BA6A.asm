@@ -7,7 +7,7 @@
 SpaceA1_InstallHooks:
 	link.w	a6,#$0
 	lea.l	SpaceA1_FrameHook(pc),a0
-	move.l	a0,-$388E(a5)
+	move.l	a0,g_SceneFrameHook(a5)
 	jsr	SpaceA1_EmptyStub2(pc)
 	jsr	SpaceA1_InstallTileHooks(pc)
 	moveq	#$0,d0

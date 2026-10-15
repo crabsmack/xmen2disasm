@@ -4,7 +4,7 @@
 sub_0F43F6:
 	link.w	a6,#$0
 	lea.l	sub_0F4314(pc),a0
-	move.l	a0,-$388E(a5)
+	move.l	a0,g_SceneFrameHook(a5)
 	jsr	sub_0F4350(pc)
 	jsr	$240A(a5)	; -> sub_0DC394
 	jsr	$23FA(a5)	; -> sub_0DC316

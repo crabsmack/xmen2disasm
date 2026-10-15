@@ -1,7 +1,11 @@
 ; ---------------------------------------------------------------------------
-; sub_088600	[link-after-rts]
+; CloneA5_SpawnBoss - CloneA5: create the BROODBOSS from its placement entry
+; In:  none
+; Out: none
+; Evidence: walks the 16-byte placements ($FFC92A, count $FFC928); class index word 0 into the class list -$3900; Tbl_BroodBoss_vtable +$0E New at placement x/y; TAS 49283
+; Found: link-after-rts
 ; ---------------------------------------------------------------------------
-sub_088600:
+CloneA5_SpawnBoss:
 	link.w	a6,#$0
 	movem.l	d7/a4,-(a7)
 	movea.l	g_PlacementList(a5),a4

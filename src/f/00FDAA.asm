@@ -52,7 +52,7 @@ AvalonB1_RunScene:
 	jsr	$8A(a5)	; -> Players_PlaceAtStart
 	jsr	AvalonB1_InstallTileHooks(pc)
 	lea.l	AvalonB1_FrameHook(pc),a0
-	move.l	a0,-$388E(a5)
+	move.l	a0,g_SceneFrameHook(a5)
 	clr.b	-$38DE(a5)
 	clr.w	-$3CDC(a5)
 	clr.w	-$3CE0(a5)

@@ -4,7 +4,7 @@
 sub_0B62F2:
 	link.w	a6,#$0
 	lea.l	sub_0B611E(pc),a0
-	move.l	a0,-$388E(a5)
+	move.l	a0,g_SceneFrameHook(a5)
 	jsr	sub_0B6252(pc)
 	jsr	sub_0B6086(pc)
 	jsr	sub_0B600A(pc)

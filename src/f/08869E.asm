@@ -1,10 +1,14 @@
 ; ---------------------------------------------------------------------------
-; sub_08869E	[link-after-rts]
+; CloneA5_InitCamera - CloneA5: create the camera; with both players present start it at ($7F0, $598)
+; In:  none
+; Out: none
+; Evidence: CAMERA +$0A(desc, CloneA5_CamSetHooks) -> g_Camera; -$3AC2 := $7D8; -$3C4E bit 0 set; TAS 49258
+; Found: link-after-rts
 ; ---------------------------------------------------------------------------
-sub_08869E:
+CloneA5_InitCamera:
 	link.w	a6,#$0
 	move.l	a4,-(a7)
-	pea.l	sub_08867C(pc)
+	pea.l	CloneA5_CamSetHooks(pc)
 	lea.l	$4DBA(a5),a0
 	move.l	$2(a0),-(a7)
 	lea.l	$4DBA(a5),a0

@@ -4,6 +4,6 @@
 sub_0B0528:
 	link.w	a6,#$0
 	lea.l	sub_0B042E(pc),a0
-	move.l	a0,-$388E(a5)
+	move.l	a0,g_SceneFrameHook(a5)
 	unlk	a6
 	rts

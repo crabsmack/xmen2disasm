@@ -4,7 +4,7 @@
 sub_077624:
 	link.w	a6,#$0
 	lea.l	sub_07754A(pc),a0
-	move.l	a0,-$388E(a5)
+	move.l	a0,g_SceneFrameHook(a5)
 	jsr	sub_07757C(pc)
 	jsr	sub_07746A(pc)
 	jsr	sub_077402(pc)

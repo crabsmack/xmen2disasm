@@ -1,7 +1,11 @@
 ; ---------------------------------------------------------------------------
-; sub_088730	[jt 644]
+; CloneA5_RunScene - scene function for 'CloneA5 BroodBoss': load the boss arena and run it
+; In:  none
+; Out: none
+; Evidence: registered under that name (sub_0054C6, jt 644); sub_1F98A8 with Tbl_BroodBossHall class list $08CD28; music $13; boss offsets -$3C44 = 0, -$3C48 = $3300; palette-cycle table from $088B1E; segment hooks CloneA5_SegHook16/15; Players_PlaceAtStart; effect pools via sub_13F4D4; palette line 0 = Pal_CloneA2Line0; scene hook CloneA5_FrameHook; sub_1FA6FE; TAS 49125
+; Found: jt 644
 ; ---------------------------------------------------------------------------
-sub_088730:
+CloneA5_RunScene:
 	link.w	a6,#$FCFC
 	movem.l	d3/d7/a3-a4,-(a7)
 	lea.l	$1532(a5),a0
@@ -56,7 +60,7 @@ sub_088730:
 	move.l	d0,-$3C44(a5)
 	move.l	#$3300,-$3C48(a5)
 	clr.w	-$34A0(a5)
-	jsr	sub_0884D2(pc)
+	jsr	CloneA5_ResetPalCycle(pc)
 	lea.l	-$304(a6),a0
 	move.l	a0,-$3B18(a5)
 	move.b	#$5,-$3C4A(a5)
@@ -76,9 +80,9 @@ loc_08880A:
 	bge.s	loc_088800
 	lea.l	-$304(a6),a0
 	move.l	a0,-$3B18(a5)
-	lea.l	sub_08803A(pc),a0
+	lea.l	CloneA5_SegHook16(pc),a0
 	move.l	a0,-$3412(a5)
-	lea.l	sub_088044(pc),a0
+	lea.l	CloneA5_SegHook15(pc),a0
 	move.l	a0,-$3416(a5)
 	moveq	#$0,d0
 	move.l	d0,-(a7)
@@ -152,7 +156,7 @@ loc_0888AA:
 	jsr	$4F7A(a5)	; -> DrawList_SetPriority
 	lea.l	$10(a7),a7
 loc_0888F0:
-	jsr	sub_0883C2(pc)
+	jsr	CloneA5_InitShockSprites(pc)
 	moveq	#$10,d0
 	move.l	d0,-(a7)
 	jsr	$3382(a5)	; -> sub_11F1A6
@@ -171,11 +175,11 @@ loc_088914:
 	bgt.s	loc_088914
 	clr.w	-$3B0C(a5)
 	clr.w	-$3B0E(a5)
-	jsr	sub_0883AE(pc)
+	jsr	CloneA5_CallSetup09980C(pc)
 	move.b	d0,-$35C8(a5)
-	jsr	sub_08869E(pc)
-	lea.l	sub_0884E6(pc),a0
-	move.l	a0,-$388E(a5)
+	jsr	CloneA5_InitCamera(pc)
+	lea.l	CloneA5_FrameHook(pc),a0
+	move.l	a0,g_SceneFrameHook(a5)
 	clr.b	-$38DE(a5)
 	jsr	$5002(a5)	; -> sub_1FA6FE
 	movem.l	-$314(a6),d3/d7/a3-a4

@@ -1258,7 +1258,7 @@ Pal_CloneA2Bg0:	; 16 CRAM words: background palette for (g_CameraY>>4)&3 = 0 (Cl
 	incrom	$081930,$20
 Tbl_CloneA2CameraZones:	; 12 records of 6 words {min x, min y, max x + 320, max y + 224, quake trigger x, trigger y} (CloneA2_SetCameraZone, CloneA2_FrameHook)
 	incrom	$081950,$90
-Tbl_CloneA2QuakeScript:	; camera shake script: byte pairs (dx, dy) added to the camera, $64 = end (g_CamShake; started by CloneA2_StartQuake, run by sub_088112)
+Tbl_CloneA2QuakeScript:	; camera shake script: byte pairs (dx, dy) added to the camera, $64 = end (g_CamShake; started by CloneA2_StartQuake, run by CloneA5_CamApply)
 	incrom	$0819E0,$1D9
 	incrom	$081BB9,$1
 	include "src/f/081BBA.asm"

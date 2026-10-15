@@ -185,7 +185,7 @@ loc_0658C6:
 	clr.w	$4(a0)
 	movea.l	-$1FE6(a5),a0
 	move.w	#$1C,$6(a0)
-	movea.l	-$388E(a5),a0
+	movea.l	g_SceneFrameHook(a5),a0
 	jsr	(a0)
 	move.w	-$3A24(a5),d0
 	addq.w	#$1,-$3A24(a5)

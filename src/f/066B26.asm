@@ -52,7 +52,7 @@ loc_066B48:
 	clr.w	-$3498(a5)
 	jsr	Cerebro_LoadSpriteTiles(pc)
 	lea.l	Cerebro_FrameHook(pc),a0
-	move.l	a0,-$388E(a5)
+	move.l	a0,g_SceneFrameHook(a5)
 	clr.b	-$38DE(a5)
 	jsr	Cerebro_SetupPalCycles(pc)
 	move.w	#$2,-$3B34(a5)

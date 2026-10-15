@@ -4,7 +4,7 @@
 sub_035A86:
 	link.w	a6,#$0
 	lea.l	sub_035750(pc),a0
-	move.l	a0,-$388E(a5)
+	move.l	a0,g_SceneFrameHook(a5)
 	jsr	sub_035710(pc)
 	jsr	sub_035A3A(pc)
 	unlk	a6

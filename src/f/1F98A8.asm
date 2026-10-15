@@ -129,7 +129,7 @@ loc_1F99B6:
 loc_1F9A08:
 	move.l	d7,d0
 	asl.w	#$2,d0
-	lea.l	-$346A(a5),a0
+	lea.l	g_SegTypeHooks(a5),a0
 	moveq	#$0,d1
 	move.l	d1,(a0,d0.w)
 	move.l	d7,d0
@@ -274,7 +274,7 @@ loc_1F9B58:
 	lea.l	$4EFA(a5),a0
 	move.l	a0,-$3488(a5)
 	lea.l	$4FAA(a5),a0
-	move.l	a0,-$388E(a5)
+	move.l	a0,g_SceneFrameHook(a5)
 	lea.l	$4F82(a5),a0
 	move.l	a0,-$38F4(a5)
 	jsr	$4F62(a5)	; -> DrawList_Init

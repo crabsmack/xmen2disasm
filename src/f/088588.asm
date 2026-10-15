@@ -1,7 +1,11 @@
 ; ---------------------------------------------------------------------------
-; sub_088588	[link-after-rts]
+; CloneA5_LoadResources - CloneA5: load the scene's four resource sets
+; In:  none
+; Out: none
+; Evidence: sub_1F62C0 for jt[$2E0A]/[$3648]/[$2A92]/[$15AE] -> -$3B04, -$3B08, -$3C4C; two passed to sub_13F486 for the effect pools -$3B1C/-$3B14; called via sub_15B0E6 by CloneA5_FrameHook; TAS 49271
+; Found: link-after-rts
 ; ---------------------------------------------------------------------------
-sub_088588:
+CloneA5_LoadResources:
 	link.w	a6,#$0
 	move.l	d7,-(a7)
 	moveq	#$2,d0

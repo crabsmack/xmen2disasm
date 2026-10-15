@@ -1,7 +1,11 @@
 ; ---------------------------------------------------------------------------
-; sub_087CEA	[link-after-rts]
+; BroodBoss_StateDeathFx - BROODBOSS death: (once the boss offset is >= $8C) spawn the death effect actor, sound $73
+; In:  8(a6) = this
+; Out: d0
+; Evidence: plain ACTOR New + sub_13EFA0(jt[$16DA]); Snd_Stop $30, Snd $73; below $8C it first raises -$3C44 by $A0/frame; next BroodBoss_StateDeathSink; TAS 50692
+; Found: link-after-rts
 ; ---------------------------------------------------------------------------
-sub_087CEA:
+BroodBoss_StateDeathFx:
 	link.w	a6,#$0
 	movem.l	d7/a3-a4,-(a7)
 	movea.l	$8(a6),a4
@@ -17,7 +21,7 @@ loc_087D02:
 	ext.l	d7
 	add.l	d7,-$3C44(a5)
 	clr.w	$6C(a4)
-	lea.l	sub_087CEA(pc),a0
+	lea.l	BroodBoss_StateDeathFx(pc),a0
 	move.l	a0,$5C(a4)
 	moveq	#$8,d0
 	and.w	$4(a4),d0
@@ -61,7 +65,7 @@ loc_087D2A:
 	lea.l	$24(a7),a7
 loc_087D94:
 	clr.w	$6C(a4)
-	lea.l	sub_087DB0(pc),a0
+	lea.l	BroodBoss_StateDeathSink(pc),a0
 	move.l	a0,$5C(a4)
 	moveq	#$8,d0
 	and.w	$4(a4),d0

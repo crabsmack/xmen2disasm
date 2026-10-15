@@ -1,7 +1,11 @@
 ; ---------------------------------------------------------------------------
-; sub_087F3C	[link-after-rts]
+; BroodBoss_StateRemoveParts - BROODBOSS death: when the boss offset drops below $69, kill the claw and arm and destroy the little leg
+; In:  8(a6) = this
+; Out: d0
+; Evidence: claw/arm slot +$52 Kill, LITTLELEG slot +$16; +$6C = $3C; next BroodBoss_StateFinish; TAS 50752-51072
+; Found: link-after-rts
 ; ---------------------------------------------------------------------------
-sub_087F3C:
+BroodBoss_StateRemoveParts:
 	link.w	a6,#$0
 	move.l	a4,-(a7)
 	movea.l	$8(a6),a4
@@ -11,7 +15,7 @@ sub_087F3C:
 	cmp.l	d0,d1
 	bge.s	loc_087F66
 	clr.w	$6C(a4)
-	lea.l	sub_087F3C(pc),a0
+	lea.l	BroodBoss_StateRemoveParts(pc),a0
 	move.l	a0,$5C(a4)
 	moveq	#$8,d0
 	and.w	$4(a4),d0
@@ -55,7 +59,7 @@ loc_087FB2:
 	addq.w	#$4,a7
 loc_087FCE:
 	move.w	#$3C,$6C(a4)
-	lea.l	sub_087FEA(pc),a0
+	lea.l	BroodBoss_StateFinish(pc),a0
 	move.l	a0,$5C(a4)
 	moveq	#$8,d0
 	and.w	$4(a4),d0

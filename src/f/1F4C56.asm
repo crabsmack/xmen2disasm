@@ -28,7 +28,7 @@ loc_1F4C86:
 	move.l	$72(a3),d5
 	movea.l	$76(a3),a4
 	clr.w	d7
-	lea.l	-$346A(a5),a0
+	lea.l	g_SegTypeHooks(a5),a0
 	moveq	#$0,d0
 	move.b	$1(a4),d0
 	add.w	d0,d0

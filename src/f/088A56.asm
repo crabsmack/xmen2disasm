@@ -1,7 +1,9 @@
 ; ---------------------------------------------------------------------------
-; loc_088A56	[runtime: executed in tas]
+; BroodBoss_ScrStepClaw - BROODBOSS AI-script step: jmp BroodBoss_ActClaw
+; Evidence: 4-byte jmp thunk in a BROODBOSS script {word count; jmp d(a5)...} (BroodBoss_Init picks jt[$16BA])
+; Found: runtime: executed in 1 run(s) (tas)
 ; ---------------------------------------------------------------------------
-loc_088A56:
+BroodBoss_ScrStepClaw:
 	jmp	$13EA(a5)	; -> BroodBoss_ActClaw
 loc_088A5A:
 	jmp	$13DA(a5)	; -> BroodBoss_ActWait60

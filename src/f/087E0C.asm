@@ -1,7 +1,11 @@
 ; ---------------------------------------------------------------------------
-; sub_087E0C	[link-after-rts]
+; BroodBoss_StateExplode - BROODBOSS death: three debris explosions around the boss, sounds $34 and $CF
+; In:  8(a6) = this
+; Out: d0
+; Evidence: sub_13F58A x3 (type 6) at (x, y), (x-$14, y-$18), (x+$14, y-$12); +$6C = 2; next BroodBoss_StateVanish; TAS 50709
+; Found: link-after-rts
 ; ---------------------------------------------------------------------------
-sub_087E0C:
+BroodBoss_StateExplode:
 	link.w	a6,#$0
 	movem.l	d6-d7/a4,-(a7)
 	movea.l	$8(a6),a4
@@ -59,7 +63,7 @@ sub_087E0C:
 	jsr	$521A(a5)	; -> Snd_Play
 	lea.l	$40(a7),a7
 	move.w	#$2,$6C(a4)
-	lea.l	sub_087EBE(pc),a0
+	lea.l	BroodBoss_StateVanish(pc),a0
 	move.l	a0,$5C(a4)
 	moveq	#$8,d0
 	and.w	$4(a4),d0

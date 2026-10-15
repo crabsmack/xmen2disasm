@@ -22,7 +22,7 @@ sub_099016:
 	move.l	a0,-$3402(a5)
 	jsr	$1312(a5)	; -> unk_CloneA5_085932
 	lea.l	sub_09984A(pc),a0
-	move.l	a0,-$388E(a5)
+	move.l	a0,g_SceneFrameHook(a5)
 	jsr	$1162(a5)	; -> CloneA2_FlickerInit
 	moveq	#$1,d0
 	move.l	d0,-(a7)

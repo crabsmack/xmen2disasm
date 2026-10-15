@@ -11,7 +11,7 @@ sub_1F87B2:
 	move.b	$1(a3),d0
 	add.w	d0,d0
 	add.w	d0,d0
-	lea.l	-$346A(a5),a0
+	lea.l	g_SegTypeHooks(a5),a0
 	move.l	(a0,d0.w),d0
 	beq.s	loc_1F87EC
 	movea.l	d0,a0

@@ -5,7 +5,7 @@ sub_0993C0:
 	link.w	a6,#$0
 	clr.b	-$3894(a5)
 	lea.l	sub_09921E(pc),a0
-	move.l	a0,-$388E(a5)
+	move.l	a0,g_SceneFrameHook(a5)
 	pea.l	($258).w
 	jsr	$4F8A(a5)	; -> Scene_EndAfter
 	unlk	a6

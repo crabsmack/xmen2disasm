@@ -7,7 +7,7 @@
 SentinelsA1_InstallHooks:
 	link.w	a6,#$0
 	lea.l	SentinelsA1_FrameHook(pc),a0
-	move.l	a0,-$388E(a5)
+	move.l	a0,g_SceneFrameHook(a5)
 	jsr	SentinelsA1_LoadResources(pc)
 	jsr	SentinelsA1_InitZapLights(pc)
 	jsr	SentinelsA1_ResetPalCycles(pc)

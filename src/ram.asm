@@ -71,7 +71,7 @@ g_SceneExitTimer = -$359A	; word: frames until the current scene ends, 0 = not e
 g_ActivateHook = -$38F0	; ptr: replaces the scene loop's object-activation pass when set (sub_1FA124, Scene_ClearActivateHook)
 g_SpriteDefs = -$3886	; array of $14-byte sprite-definition records {+0 flag bits, +2 def ptr, +6 word, +8 word} (Obj_SetSpriteDef)
 g_ClassList = -$3900	; ptr: current level class list {word bytes; desc*[]} (ClassList_CallSlot5A/62, sub_1FA7E8)
-g_CamShake = -$38A4	; ptr: camera shake script being played, 0 = none: byte pairs (dx, dy) added to g_CameraX/Y per frame; $64 end, $65 n = back n bytes, $66 x = sub_1F945C(x) (sub_088112); e.g. Tbl_CloneA2QuakeScript
+g_CamShake = -$38A4	; ptr: camera shake script being played, 0 = none: byte pairs (dx, dy) added to g_CameraX/Y per frame; $64 end, $65 n = back n bytes, $66 x = sub_1F945C(x) (CloneA5_CamApply); e.g. Tbl_CloneA2QuakeScript
 g_ScnSiberiaB1 = -$3B70	; byte: scene id of "SiberiaB1 Blizzard" (Scene_RegisterAll); first stage of a new game (Game_ResetPlayers)
 g_ScnCerebroSentinels = -$3B7A	; byte: scene id of "CerebroScreen Sentinels" (Scene_RegisterAll)
 g_ScnSentinelsD1 = -$3B72	; byte: scene id of "SentinelsD1 Exterior1" (Scene_RegisterAll); also attract demo 3 (Beast)
@@ -117,3 +117,5 @@ g_SpawnRecs = -$38DC	; ptr: spawn records, 14 bytes each (sub_15F95C fills them 
 g_SpawnRecCount = -$38D8	; word: number of spawn records / placement entries (sub_1F98A8, sub_15F95C)
 g_PlacementList = -$38D6	; ptr: level placement entries, 16 bytes, word 0 = class index into g_ClassList (sub_1F98A8, sub_15F95C)
 g_PauseHandler = -$38FC	; ptr: called by the scene loop (sub_1FA124) when a player presses Start; sub_1F98A8 sets jt[$3FB2] = sub_15CAA4 (pause); Teleporter_StateTeleport swaps in Teleporter_NoPause
+g_SegTypeHooks = -$346A	; array of long: per floor-segment-type callback (mode, segment, object, 0), indexed by the segment's type byte +1; ACTOR Move (sub_1F4C56) and the floor code call it when non-zero; scenes install their own (CloneA5_SegHook15/16/17 at -$3416/-$3412/-$340E)
+g_SceneFrameHook = -$388E	; ptr: per-frame scene hook installed by each scene's setup (CloneA2_FrameHook, CloneA5_FrameHook)

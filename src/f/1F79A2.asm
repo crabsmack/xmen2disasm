@@ -8,7 +8,7 @@ sub_1F79A2:
 	move.b	$1(a4),d0
 	ext.w	d0
 	asl.w	#$2,d0
-	lea.l	-$346A(a5),a0
+	lea.l	g_SegTypeHooks(a5),a0
 	move.l	(a0,d0.w),-$346E(a5)
 	beq.s	loc_1F79DC
 	moveq	#$0,d0

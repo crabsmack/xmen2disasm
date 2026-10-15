@@ -1,7 +1,11 @@
 ; ---------------------------------------------------------------------------
-; sub_08827A	[link-after-rts]
+; CloneA5_CamUpdate - CloneA5 camera update hook: push the players by the scroll step -$3B02, then run the camera's own +8 / +$10 / +$C functions
+; In:  8(a6) = camera
+; Out: none
+; Evidence: installed at camera +4 by CloneA5_CamSetHooks; for each live player in view: x -= step << 8 and sub_1F4A40; TAS 49283-52125
+; Found: link-after-rts
 ; ---------------------------------------------------------------------------
-sub_08827A:
+CloneA5_CamUpdate:
 	link.w	a6,#$0
 	movem.l	d7/a3-a4,-(a7)
 	movea.l	$8(a6),a4

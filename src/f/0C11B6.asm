@@ -6,6 +6,6 @@ sub_0C11B6:
 	lea.l	sub_0C0FD2(pc),a0
 	move.l	a0,-$38F4(a5)
 	lea.l	sub_0C0E2A(pc),a0
-	move.l	a0,-$388E(a5)
+	move.l	a0,g_SceneFrameHook(a5)
 	unlk	a6
 	rts
