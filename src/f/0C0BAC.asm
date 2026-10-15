@@ -20,12 +20,12 @@ SwampFly_Draw:
 	move.l	d1,-(a7)
 	pea.l	$2E(a4)
 	jsr	$507A(a5)	; -> sub_1FB142
-	move.w	-$3490(a5),d0
+	move.w	g_CameraY(a5),d0
 	ext.l	d0
 	move.l	d7,d1
 	sub.l	d0,d1
 	move.l	d1,-(a7)
-	move.w	-$348E(a5),d0
+	move.w	g_CameraX(a5),d0
 	ext.l	d0
 	move.l	d6,d1
 	sub.l	d0,d1

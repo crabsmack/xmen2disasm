@@ -12,7 +12,7 @@ sub_1A775E:
 	move.l	d0,d7
 	sub.l	d1,d7
 	move.w	#$3C,$6A(a4)
-	move.l	-$35B6(a5),-(a7)
+	move.l	g_Camera(a5),-(a7)
 	jsr	$3EA2(a5)	; -> sub_159ECC
 	tst.b	-$38DE(a5)
 	beq.s	loc_1A7792

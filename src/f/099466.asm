@@ -34,13 +34,13 @@ loc_0994A4:
 	moveq	#$1,d7
 	moveq	#$0,d0
 	move.l	d0,-(a7)
-	move.w	-$3490(a5),d1
+	move.w	g_CameraY(a5),d1
 	ext.l	d1
 	moveq	#$70,d2
 	add.l	d2,d1
 	lsl.l	#$8,d1
 	move.l	d1,-(a7)
-	move.w	-$348E(a5),d1
+	move.w	g_CameraX(a5),d1
 	ext.l	d1
 	add.l	#$A0,d1
 	lsl.l	#$8,d1

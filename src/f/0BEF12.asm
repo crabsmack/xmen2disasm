@@ -27,9 +27,9 @@ loc_0BEF32:
 	bra.w	loc_0BF02E
 loc_0BEF4C:
 	move.w	$4(a4),d4
-	sub.w	-$348E(a5),d4
+	sub.w	g_CameraX(a5),d4
 	move.w	$6(a4),d5
-	sub.w	-$3490(a5),d5
+	sub.w	g_CameraY(a5),d5
 	cmp.w	-$35C0(a5),d4
 	blt.s	loc_0BEF88
 	ext.l	d4

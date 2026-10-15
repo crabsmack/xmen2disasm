@@ -7,7 +7,7 @@ BroodClaw_Draw:
 	link.w	a6,#$FFFC
 	movem.l	d5-d7/a3-a4,-(a7)
 	movea.l	$8(a6),a3
-	move.w	-$348E(a5),d0
+	move.w	g_CameraX(a5),d0
 	ext.l	d0
 	moveq	#$40,d1
 	sub.l	d1,d0
@@ -15,7 +15,7 @@ BroodClaw_Draw:
 	ext.l	d2
 	cmp.l	d2,d0
 	bge.w	loc_09B15E
-	move.w	-$348E(a5),d0
+	move.w	g_CameraX(a5),d0
 	ext.l	d0
 	add.l	#$180,d0
 	move.w	$4E(a3),d1
@@ -35,11 +35,11 @@ loc_09AF90:
 	move.l	$8(a3),d0
 	asr.l	#$8,d0
 	move.w	d0,d5
-	sub.w	-$348E(a5),d5
+	sub.w	g_CameraX(a5),d5
 	move.l	$C(a3),d0
 	asr.l	#$8,d0
 	move.w	d0,d6
-	sub.w	-$3490(a5),d6
+	sub.w	g_CameraY(a5),d6
 	lea.l	$1552(a5),a0
 	movea.l	$2(a0),a4
 	move.l	a4,d0

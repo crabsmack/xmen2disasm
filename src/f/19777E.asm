@@ -7,7 +7,7 @@ sub_19777E:
 	movea.l	$8(a6),a4
 	tst.w	$A6(a4)
 	bgt.s	loc_1977CC
-	movea.l	-$35B6(a5),a0
+	movea.l	g_Camera(a5),a0
 	moveq	#$8,d0
 	and.w	$4A(a0),d0
 	bne.s	loc_1977CC
@@ -19,7 +19,7 @@ sub_19777E:
 	and.l	$90(a4),d0
 	bne.s	loc_1977CC
 	ori.l	#$40000,$90(a4)
-	movea.l	-$35B6(a5),a0
+	movea.l	g_Camera(a5),a0
 	move.l	a0,-(a7)
 	movea.l	(a0),a0
 	movea.l	$2A(a0),a1

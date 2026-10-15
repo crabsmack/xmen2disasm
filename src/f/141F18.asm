@@ -9,7 +9,7 @@ sub_141F18:
 	bgt.w	loc_141FEE
 	move.l	$8(a4),d0
 	asr.l	#$8,d0
-	move.w	-$348E(a5),d1
+	move.w	g_CameraX(a5),d1
 	ext.l	d1
 	add.l	#$A0,d1
 	cmp.l	d0,d1

@@ -76,7 +76,7 @@ loc_03A924:
 loc_03A93E:
 	move.w	$2(a3),d0
 	ext.l	d0
-	move.w	-$3490(a5),d1
+	move.w	g_CameraY(a5),d1
 	ext.l	d1
 	move.l	d0,d5
 	sub.l	d1,d5
@@ -191,7 +191,7 @@ loc_03AA48:
 	subq.w	#$1,-$3C80(a5)
 	bra.w	loc_03AB96
 loc_03AA56:
-	move.w	-$348E(a5),d0
+	move.w	g_CameraX(a5),d0
 	ext.l	d0
 	move.w	(a3),d1
 	ext.l	d1
@@ -206,7 +206,7 @@ loc_03AA56:
 	ext.l	d0
 	add.l	#$80,d0
 	move.w	d0,-$14(a6)
-	move.w	-$3490(a5),d0
+	move.w	g_CameraY(a5),d0
 	ext.l	d0
 	add.l	d5,d0
 	move.w	d0,-$12(a6)

@@ -11,7 +11,7 @@ sub_13518A:
 	beq.s	loc_1351B8
 	move.l	$8(a4),d0
 	asr.l	#$8,d0
-	move.w	-$348E(a5),d1
+	move.w	g_CameraX(a5),d1
 	ext.l	d1
 	moveq	#$1E,d2
 	sub.l	d2,d1
@@ -22,7 +22,7 @@ sub_13518A:
 loc_1351B8:
 	move.l	$8(a4),d0
 	asr.l	#$8,d0
-	move.w	-$348E(a5),d1
+	move.w	g_CameraX(a5),d1
 	ext.l	d1
 	add.l	#$15E,d1
 	cmp.l	d0,d1

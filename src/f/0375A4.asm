@@ -69,7 +69,7 @@ loc_037666:
 	cmpi.w	#$2,d0
 	bne.s	loc_037690
 	ext.l	d6
-	move.w	-$348E(a5),d0
+	move.w	g_CameraX(a5),d0
 	ext.l	d0
 	add.l	#$C0,d0
 	cmp.l	d6,d0
@@ -83,7 +83,7 @@ loc_037690:
 	cmpi.w	#$3,d0
 	bne.s	loc_0376B8
 	ext.l	d6
-	move.w	-$348E(a5),d0
+	move.w	g_CameraX(a5),d0
 	ext.l	d0
 	add.l	#$80,d0
 	cmp.l	d6,d0

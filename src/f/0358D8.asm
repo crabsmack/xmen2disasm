@@ -34,7 +34,7 @@ loc_0358F4:
 	move.w	$E(a6),d0
 	ext.l	d0
 	move.l	d0,-(a7)
-	movea.l	-$35B6(a5),a0
+	movea.l	g_Camera(a5),a0
 	move.l	a0,-(a7)
 	movea.l	(a0),a0
 	movea.l	$36(a0),a1

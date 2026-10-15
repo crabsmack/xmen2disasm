@@ -20,9 +20,9 @@ sub_158610:
 	ext.l	d0
 	addq.l	#$1,d0
 	move.w	d0,-$12(a6)
-	move.w	-$348E(a5),d5
+	move.w	g_CameraX(a5),d5
 	asr.w	#$5,d5
-	move.w	-$3490(a5),d4
+	move.w	g_CameraY(a5),d4
 	asr.w	#$5,d4
 	ext.l	d5
 	move.l	d5,d0

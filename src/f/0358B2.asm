@@ -7,7 +7,7 @@ loc_0358B2:
 	neg.b	d3
 	ext.w	d3
 	and.w	d3,-$3B02(a5)
-	movea.l	-$35B6(a5),a0
+	movea.l	g_Camera(a5),a0
 	move.l	a0,-(a7)
 	movea.l	(a0),a0
 	movea.l	$3A(a0),a1

@@ -7,7 +7,7 @@ sub_157CFE:
 	movea.l	$8(a6),a4
 	move.l	$8(a4),d0
 	asr.l	#$8,d0
-	move.w	-$348E(a5),d1
+	move.w	g_CameraX(a5),d1
 	ext.l	d1
 	move.l	d0,d7
 	sub.l	d1,d7
@@ -24,7 +24,7 @@ loc_157D2E:
 	move.l	$C(a4),d0
 	asr.l	#$8,d0
 	move.w	d0,d7
-	sub.w	-$3490(a5),d7
+	sub.w	g_CameraY(a5),d7
 	cmpi.w	#$112,d7
 	ble.s	loc_157D44
 	moveq	#$1,d0

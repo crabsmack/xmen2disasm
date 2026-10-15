@@ -179,9 +179,9 @@ loc_1E2EE0:
 	add.w	d0,d1
 	move.w	d1,$D6(a4)
 loc_1E2F0A:
-	move.w	-$348E(a5),d0
+	move.w	g_CameraX(a5),d0
 	sub.w	d0,$D4(a4)
-	move.w	-$3490(a5),d0
+	move.w	g_CameraY(a5),d0
 	sub.w	d0,$D6(a4)
 	movem.l	-$10(a6),d6-d7/a3-a4
 	unlk	a6

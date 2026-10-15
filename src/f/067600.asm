@@ -64,12 +64,12 @@ loc_0676A8:
 loc_0676AE:
 	move.w	$A2(a4),d0
 	ext.l	d0
-	move.w	-$348E(a5),d1
+	move.w	g_CameraX(a5),d1
 	ext.l	d1
 	add.l	d0,d1
 	lsl.l	#$8,d1
 	move.l	d1,$8(a4)
-	move.w	-$3490(a5),d0
+	move.w	g_CameraY(a5),d0
 	ext.l	d0
 	add.l	#$AE,d0
 	lsl.l	#$8,d0

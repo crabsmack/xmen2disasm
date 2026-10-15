@@ -27,13 +27,13 @@ loc_118308:
 loc_11831E:
 	move.w	(a4),d0
 	ext.l	d0
-	move.w	-$348E(a5),d1
+	move.w	g_CameraX(a5),d1
 	ext.l	d1
 	move.l	d0,d6
 	sub.l	d1,d6
 	move.w	$2(a4),d0
 	ext.l	d0
-	move.w	-$3490(a5),d1
+	move.w	g_CameraY(a5),d1
 	ext.l	d1
 	move.l	d0,d7
 	sub.l	d1,d7

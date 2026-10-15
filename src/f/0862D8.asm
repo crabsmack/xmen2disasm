@@ -99,8 +99,8 @@ loc_0863B4:
 	move.l	-$3C44(a5),d0
 	asr.l	#$8,d0
 	sub.w	d0,d6
-	sub.w	-$348E(a5),d6
-	sub.w	-$3490(a5),d5
+	sub.w	g_CameraX(a5),d6
+	sub.w	g_CameraY(a5),d5
 	movea.l	$8(a6),a0
 	movea.l	$92(a0),a3
 	lea.l	-$33D2(a5),a4

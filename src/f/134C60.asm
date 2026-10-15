@@ -25,7 +25,7 @@ FlyBrood_Draw:
 	asr.l	#$8,d0
 	moveq	#$10,d1
 	sub.l	d1,d0
-	move.w	-$348E(a5),d2
+	move.w	g_CameraX(a5),d2
 	ext.l	d2
 	sub.l	d2,d0
 	move.w	d0,-$2(a6)
@@ -33,7 +33,7 @@ FlyBrood_Draw:
 	asr.l	#$8,d0
 	moveq	#$18,d2
 	sub.l	d2,d0
-	move.w	-$3490(a5),d3
+	move.w	g_CameraY(a5),d3
 	ext.l	d3
 	move.l	d0,d4
 	sub.l	d3,d4

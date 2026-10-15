@@ -39,14 +39,14 @@ loc_1A74E2:
 	move.l	d7,d0
 	neg.l	d0
 	move.w	d0,$16(a4)
-	move.l	-$35B6(a5),-(a7)
+	move.l	g_Camera(a5),-(a7)
 	jsr	$420A(a5)	; -> sub_160FDE
 	tst.b	d0
 	addq.w	#$4,a7
 	bne.s	loc_1A7554
-	movea.l	-$35B6(a5),a0
+	movea.l	g_Camera(a5),a0
 	move.w	$16(a4),$54(a0)
-	movea.l	-$35B6(a5),a0
+	movea.l	g_Camera(a5),a0
 	move.w	$58(a0),d0
 	ext.l	d0
 	neg.l	d0
@@ -57,14 +57,14 @@ loc_1A7524:
 	and.w	$C2(a4),d0
 	beq.s	loc_1A7554
 	move.w	d7,$16(a4)
-	move.l	-$35B6(a5),-(a7)
+	move.l	g_Camera(a5),-(a7)
 	jsr	$420A(a5)	; -> sub_160FDE
 	tst.b	d0
 	addq.w	#$4,a7
 	bne.s	loc_1A7554
-	movea.l	-$35B6(a5),a0
+	movea.l	g_Camera(a5),a0
 	move.w	$16(a4),$54(a0)
-	movea.l	-$35B6(a5),a0
+	movea.l	g_Camera(a5),a0
 	movea.l	a0,a1
 	move.w	$58(a0),$4C(a1)
 loc_1A7554:

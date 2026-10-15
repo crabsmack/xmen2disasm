@@ -5,7 +5,7 @@ sub_1F2376:
 	link.w	a6,#$0
 	move.l	a4,-(a7)
 	movea.l	$8(a6),a4
-	move.l	-$35B6(a5),-(a7)
+	move.l	g_Camera(a5),-(a7)
 	jsr	$3EAA(a5)	; -> sub_159FB8
 	move.l	a4,-(a7)
 	jsr	$4E7A(a5)	; -> sub_1F6530

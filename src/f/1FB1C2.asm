@@ -71,12 +71,12 @@ loc_1FB25E:
 	move.l	$8(a4),d1
 	sub.l	d0,d1
 	asr.l	#$8,d1
-	sub.w	-$348E(a5),d1
+	sub.w	g_CameraX(a5),d1
 	bra.s	loc_1FB282
 loc_1FB276:
 	move.l	$8(a4),d0
 	asr.l	#$8,d0
-	sub.w	-$348E(a5),d0
+	sub.w	g_CameraX(a5),d0
 	move.l	d0,d1
 loc_1FB282:
 	move.w	d1,d4
@@ -101,12 +101,12 @@ loc_1FB2A4:
 	move.l	$C(a4),d1
 	sub.l	d0,d1
 	asr.l	#$8,d1
-	sub.w	-$3490(a5),d1
+	sub.w	g_CameraY(a5),d1
 	bra.s	loc_1FB2C8
 loc_1FB2BC:
 	move.l	$C(a4),d0
 	asr.l	#$8,d0
-	sub.w	-$3490(a5),d0
+	sub.w	g_CameraY(a5),d0
 	move.l	d0,d1
 loc_1FB2C8:
 	move.w	d1,d5

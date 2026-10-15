@@ -26,8 +26,8 @@ Scroll_Init:
 	clr.w	-$349E(a5)
 	clr.w	-$349C(a5)
 	clr.w	-$34A0(a5)
-	clr.w	-$348E(a5)
-	clr.w	-$3490(a5)
+	clr.w	g_CameraX(a5)
+	clr.w	g_CameraY(a5)
 	clr.w	-$3A5E(a5)
 	clr.w	-$3A60(a5)
 	clr.w	-$3A8E(a5)
@@ -38,9 +38,9 @@ Scroll_Init:
 	clr.w	-$3A9A(a5)
 	clr.w	-$3A94(a5)
 	clr.w	-$3A9C(a5)
-	move.w	-$348E(a5),d6
+	move.w	g_CameraX(a5),d6
 	move.w	d6,-$3AC2(a5)
-	move.w	-$3490(a5),d7
+	move.w	g_CameraY(a5),d7
 	move.w	d7,-$3AC4(a5)
 	move.w	d6,-$3AC6(a5)
 	move.w	d7,-$3AC8(a5)

@@ -7,11 +7,11 @@ sub_05B98C:
 	movea.l	$8(a6),a0
 	lea.l	$8C(a0),a4
 	moveq	#$1,d6
-	move.w	-$348E(a5),d0
+	move.w	g_CameraX(a5),d0
 	ext.l	d0
 	move.l	d0,d4
 	add.l	#$140,d4
-	move.w	-$3490(a5),d0
+	move.w	g_CameraY(a5),d0
 	ext.l	d0
 	move.l	d0,d5
 	add.l	#$E0,d5
@@ -19,7 +19,7 @@ sub_05B98C:
 loc_05B9BC:
 	move.w	(a4),d0
 	asr.w	#$2,d0
-	cmp.w	-$348E(a5),d0
+	cmp.w	g_CameraX(a5),d0
 	blt.w	loc_05BA60
 	move.w	(a4),d0
 	asr.w	#$2,d0
@@ -27,7 +27,7 @@ loc_05B9BC:
 	blt.w	loc_05BA60
 	move.w	$2(a4),d0
 	asr.w	#$2,d0
-	cmp.w	-$3490(a5),d0
+	cmp.w	g_CameraY(a5),d0
 	blt.w	loc_05BA60
 	move.w	$2(a4),d0
 	asr.w	#$2,d0

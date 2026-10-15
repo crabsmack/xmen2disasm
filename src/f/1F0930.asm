@@ -8,7 +8,7 @@ sub_1F0930:
 	move.w	#$3C,$6A(a4)
 	move.w	$4C(a4),d0
 	ext.l	d0
-	move.w	-$3490(a5),d1
+	move.w	g_CameraY(a5),d1
 	ext.l	d1
 	sub.l	d1,d0
 	cmpi.l	#$E0,d0
@@ -21,7 +21,7 @@ sub_1F0930:
 	movea.l	(a4),a0
 	movea.l	$56(a0),a1
 	jsr	(a1)
-	movea.l	-$35B6(a5),a0
+	movea.l	g_Camera(a5),a0
 	andi.w	#$FFFD,$4A(a0)
 	addq.w	#$8,a7
 	move.w	#$1E,$6C(a4)

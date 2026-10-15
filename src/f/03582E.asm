@@ -3,7 +3,7 @@
 ; ---------------------------------------------------------------------------
 sub_03582E:
 	link.w	a6,#$0
-	tst.l	-$35B6(a5)
+	tst.l	g_Camera(a5)
 	bne.s	loc_035858
 	pea.l	sub_035802(pc)
 	lea.l	$4DBA(a5),a0
@@ -12,7 +12,7 @@ sub_03582E:
 	movea.l	$2(a0),a0
 	movea.l	$A(a0),a1
 	jsr	(a1)
-	move.l	d0,-$35B6(a5)
+	move.l	d0,g_Camera(a5)
 	addq.w	#$8,a7
 loc_035858:
 	unlk	a6

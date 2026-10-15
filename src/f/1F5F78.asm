@@ -4,43 +4,43 @@
 sub_1F5F78:
 	link.w	a6,#$0
 	movem.l	d6-d7,-(a7)
-	move.w	-$348E(a5),d6
-	move.w	-$3490(a5),d7
-	move.w	$A(a6),-$348E(a5)
-	move.w	$E(a6),-$3490(a5)
-	move.w	-$348E(a5),d0
+	move.w	g_CameraX(a5),d6
+	move.w	g_CameraY(a5),d7
+	move.w	$A(a6),g_CameraX(a5)
+	move.w	$E(a6),g_CameraY(a5)
+	move.w	g_CameraX(a5),d0
 	cmp.w	-$3A8E(a5),d0
 	ble.s	loc_1F5FA4
-	move.w	-$3A8E(a5),-$348E(a5)
+	move.w	-$3A8E(a5),g_CameraX(a5)
 loc_1F5FA4:
-	move.w	-$348E(a5),d0
+	move.w	g_CameraX(a5),d0
 	cmp.w	-$3A90(a5),d0
 	bge.s	loc_1F5FB4
-	move.w	-$3A90(a5),-$348E(a5)
+	move.w	-$3A90(a5),g_CameraX(a5)
 loc_1F5FB4:
-	move.w	-$3490(a5),d0
+	move.w	g_CameraY(a5),d0
 	cmp.w	-$3A92(a5),d0
 	ble.s	loc_1F5FC4
-	move.w	-$3A92(a5),-$3490(a5)
+	move.w	-$3A92(a5),g_CameraY(a5)
 loc_1F5FC4:
-	move.w	-$3490(a5),d0
+	move.w	g_CameraY(a5),d0
 	cmp.w	-$3A94(a5),d0
 	bge.s	loc_1F5FD4
-	move.w	-$3A94(a5),-$3490(a5)
+	move.w	-$3A94(a5),g_CameraY(a5)
 loc_1F5FD4:
 	tst.b	-$3AB8(a5)
 	bne.s	loc_1F5FF4
 	tst.b	-$3ABA(a5)
 	bne.s	loc_1F5FF4
-	cmp.w	-$348E(a5),d6
+	cmp.w	g_CameraX(a5),d6
 	bne.s	loc_1F5FF4
-	cmp.w	-$3490(a5),d7
+	cmp.w	g_CameraY(a5),d7
 	bne.s	loc_1F5FF4
 	tst.b	-$3AC0(a5)
 	beq.w	loc_1F60DA
 loc_1F5FF4:
-	move.w	-$348E(a5),-$3AC2(a5)
-	move.w	-$3490(a5),-$3AC4(a5)
+	move.w	g_CameraX(a5),-$3AC2(a5)
+	move.w	g_CameraY(a5),-$3AC4(a5)
 	tst.b	-$3AC0(a5)
 	beq.s	loc_1F600C
 	addi.w	#$100,-$3ACC(a5)
@@ -51,7 +51,7 @@ loc_1F600C:
 	movea.l	-$3AFE(a5),a0
 	move.l	$8(a0),d0
 	asr.l	#$8,d0
-	move.w	-$348E(a5),d1
+	move.w	g_CameraX(a5),d1
 	ext.l	d1
 	sub.l	d1,d0
 	move.w	-$3ABC(a5),d1
@@ -60,7 +60,7 @@ loc_1F600C:
 	movea.l	-$3AFE(a5),a0
 	move.l	$C(a0),d0
 	asr.l	#$8,d0
-	move.w	-$3490(a5),d1
+	move.w	g_CameraY(a5),d1
 	ext.l	d1
 	sub.l	d1,d0
 	move.w	-$3ABE(a5),d1
@@ -71,12 +71,12 @@ loc_1F6050:
 	move.w	-$3496(a5),d0
 	ext.l	d0
 	move.l	d0,-(a7)
-	move.w	-$348E(a5),d0
+	move.w	g_CameraX(a5),d0
 	ext.l	d0
 	move.l	d0,-(a7)
 	jsr	sub_1F6258(pc)
 	move.w	d0,-$3AC6(a5)
-	move.w	-$3490(a5),d0
+	move.w	g_CameraY(a5),d0
 	ext.l	d0
 	move.w	-$349E(a5),d1
 	ext.l	d1

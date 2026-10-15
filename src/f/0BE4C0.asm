@@ -6,11 +6,11 @@ sub_0BE4C0:
 	movem.l	d4-d7/a3-a4,-(a7)
 	movea.l	$8(a6),a3
 	moveq	#$8,d4
-	move.w	-$3490(a5),d5
+	move.w	g_CameraY(a5),d5
 	asr.w	#$5,d5
 	bra.s	loc_0BE53A
 loc_0BE4D6:
-	move.w	-$348E(a5),d6
+	move.w	g_CameraX(a5),d6
 	asr.w	#$5,d6
 	ext.l	d5
 	movea.l	-$3A72(a5),a0

@@ -26,7 +26,7 @@ ControlPanel_Draw:
 	lea.l	$2(a0,d0.l),a4
 	move.l	$8(a3),d0
 	asr.l	#$8,d0
-	move.w	-$348E(a5),d1
+	move.w	g_CameraX(a5),d1
 	ext.l	d1
 	sub.l	d1,d0
 	move.b	(a4),d1
@@ -36,7 +36,7 @@ ControlPanel_Draw:
 	add.l	d0,d6
 	move.l	$C(a3),d0
 	asr.l	#$8,d0
-	move.w	-$3490(a5),d1
+	move.w	g_CameraY(a5),d1
 	ext.l	d1
 	sub.l	d1,d0
 	move.b	$1(a4),d1

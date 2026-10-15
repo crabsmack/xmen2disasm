@@ -35,7 +35,7 @@ loc_1367E6:
 	move.l	$C(a4),d7
 	asr.l	#$8,d7
 	ext.l	d7
-	move.w	-$348E(a5),d0
+	move.w	g_CameraX(a5),d0
 	ext.l	d0
 	moveq	#$28,d1
 	sub.l	d1,d0

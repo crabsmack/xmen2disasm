@@ -109,14 +109,14 @@ loc_16090C:
 	move.w	d0,$32(a4)
 	bra.s	loc_160968
 loc_160944:
-	move.w	-$348E(a5),d0
+	move.w	g_CameraX(a5),d0
 	add.w	#$A0,d0
 	move.w	d0,$28(a4)
-	move.w	-$3490(a5),d0
+	move.w	g_CameraY(a5),d0
 	add.w	#$70,d0
 	move.w	d0,$2A(a4)
-	move.w	-$348E(a5),$30(a4)
-	move.w	-$3490(a5),$32(a4)
+	move.w	g_CameraX(a5),$30(a4)
+	move.w	g_CameraY(a5),$32(a4)
 loc_160968:
 	move.l	a4,-(a7)
 	movea.l	$C(a4),a0

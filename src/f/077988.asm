@@ -34,7 +34,7 @@ LightBeam_Draw:
 	moveq	#$0,d5
 	move.w	$98(a4),d0
 	ext.l	d0
-	move.w	-$3490(a5),d2
+	move.w	g_CameraY(a5),d2
 	ext.l	d2
 	move.l	d0,d6
 	sub.l	d2,d6

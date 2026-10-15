@@ -10,9 +10,9 @@ sub_017AF4:
 	movea.l	(a4),a0
 	movea.l	$56(a0),a1
 	jsr	(a1)
-	move.w	-$348E(a5),d6
+	move.w	g_CameraX(a5),d6
 	add.w	#$A0,d6
-	move.w	-$3490(a5),d7
+	move.w	g_CameraY(a5),d7
 	add.w	#$70,d7
 	ext.l	d6
 	move.w	$10(a4),d0
@@ -65,7 +65,7 @@ loc_017B82:
 	moveq	#$64,d0
 	cmp.l	d1,d0
 	ble.s	loc_017BAC
-	move.w	-$348E(a5),d0
+	move.w	g_CameraX(a5),d0
 	ext.l	d0
 	lsl.l	#$8,d0
 	move.l	d0,$B8(a4)

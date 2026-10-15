@@ -29,12 +29,12 @@ loc_00FB60:
 	movea.l	$2(a0),a0
 	movea.l	$A(a0),a1
 	jsr	(a1)
-	move.l	d0,-$35B6(a5)
+	move.l	d0,g_Camera(a5)
 	lea.l	sub_00F778(pc),a0
-	movea.l	-$35B6(a5),a1
+	movea.l	g_Camera(a5),a1
 	move.l	a0,$4(a1)
-	move.w	#$430,-$3490(a5)
-	move.w	-$3490(a5),-$3AC4(a5)
+	move.w	#$430,g_CameraY(a5)
+	move.w	g_CameraY(a5),-$3AC4(a5)
 	move.w	#$E0,-$3AC8(a5)
 	lea.l	g_PalBase(a5),a4
 	clr.w	d7

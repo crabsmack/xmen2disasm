@@ -56,3 +56,6 @@ g_FrameUpdated = -$3A0C	; byte: VDP_FrameUpdate ran this frame (VDP_WaitVBlank c
 g_HBlankCount = -$BC8	; word: H-interrupt counter (Irq_HBlank)
 g_ParallaxDesc = -$3A44	; ptr: current parallax descriptor (Scroll_SetParallax, Scroll_UpdateParallax)
 g_HScrollBuf = -$BC6	; array: per-line H-scroll longs ($FFF63A), $380 bytes DMAed to VRAM $F400 (Scroll_UpdateParallax)
+g_Camera = -$35B6	; ptr: the CAMERA object (class $1F4960), created by a scene via CAMERA +$0A New(desc, per-frame hook); scenes call its +$36/+$3A (CloneA2_InitCamera)
+g_CameraX = -$348E	; word: camera left edge in world pixels (ACTOR Draw: screen x = (x >> 8) - g_CameraX; CAMERA centre = g_CameraX + $A0)
+g_CameraY = -$3490	; word: camera top edge in world pixels (ACTOR Draw: screen y = (y >> 8) - g_CameraY; CAMERA centre = g_CameraY + $70)

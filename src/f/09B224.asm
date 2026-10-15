@@ -155,28 +155,28 @@ loc_09B3BC:
 	beq.s	loc_09B454
 	clr.b	$90(a4)
 	lea.l	$4212(a5),a0
-	movea.l	-$35B6(a5),a1
+	movea.l	g_Camera(a5),a1
 	move.l	a0,$4(a1)
 	lea.l	sub_09B8A0(pc),a0
-	movea.l	-$35B6(a5),a1
+	movea.l	g_Camera(a5),a1
 	move.l	a0,$C(a1)
-	movea.l	-$35B6(a5),a0
+	movea.l	g_Camera(a5),a0
 	moveq	#$0,d0
 	move.l	d0,$14(a0)
-	movea.l	-$35B6(a5),a0
+	movea.l	g_Camera(a5),a0
 	move.l	d0,$1C(a0)
-	movea.l	-$35B6(a5),a0
-	move.w	-$348E(a5),$30(a0)
-	movea.l	-$35B6(a5),a0
-	move.w	-$3490(a5),$32(a0)
+	movea.l	g_Camera(a5),a0
+	move.w	g_CameraX(a5),$30(a0)
+	movea.l	g_Camera(a5),a0
+	move.w	g_CameraY(a5),$32(a0)
 	move.b	#$1,-$3892(a5)
-	movea.l	-$35B6(a5),a0
+	movea.l	g_Camera(a5),a0
 	clr.w	$2C(a0)
-	movea.l	-$35B6(a5),a0
+	movea.l	g_Camera(a5),a0
 	clr.w	$2E(a0)
-	movea.l	-$35B6(a5),a0
+	movea.l	g_Camera(a5),a0
 	clr.w	$5C(a0)
-	move.l	-$35B6(a5),-(a7)
+	move.l	g_Camera(a5),-(a7)
 	jsr	$18FA(a5)	; -> sub_099BF0
 	ori.w	#$80,-$3B0C(a5)
 	jsr	$3912(a5)	; -> sub_138968

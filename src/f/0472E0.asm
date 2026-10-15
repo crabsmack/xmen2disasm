@@ -34,7 +34,7 @@ loc_04730C:
 	move.l	d0,-$1FE6(a5)
 	move.w	$2(a4),d0
 	ext.l	d0
-	move.w	-$3490(a5),d1
+	move.w	g_CameraY(a5),d1
 	ext.l	d1
 	sub.l	d1,d0
 	add.w	#$80,d0
@@ -46,7 +46,7 @@ loc_04730C:
 	move.w	$4(a4),$4(a0)
 	move.w	(a4),d0
 	ext.l	d0
-	move.w	-$348E(a5),d1
+	move.w	g_CameraX(a5),d1
 	ext.l	d1
 	sub.l	d1,d0
 	add.w	#$80,d0

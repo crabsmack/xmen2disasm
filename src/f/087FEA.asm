@@ -11,7 +11,7 @@ sub_087FEA:
 	move.l	d1,-(a7)
 	pea.l	-$10(a6)
 	jsr	$4DB2(a5)	; -> Mem_Set
-	move.w	-$348E(a5),d0
+	move.w	g_CameraX(a5),d0
 	add.w	#$1E0,d0
 	move.w	d0,-$E(a6)
 	move.w	#$660,-$C(a6)

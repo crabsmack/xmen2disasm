@@ -30,7 +30,7 @@ loc_0882B8:
 	cmp.l	$2(a0),d0
 	bne.s	loc_08830C
 loc_0882D4:
-	move.w	-$348E(a5),d0
+	move.w	g_CameraX(a5),d0
 	ext.l	d0
 	add.l	#$140,d0
 	move.w	-$1706(a5),d1
@@ -70,7 +70,7 @@ loc_08832E:
 	cmp.l	$2(a0),d0
 	bne.s	loc_088382
 loc_08834A:
-	move.w	-$348E(a5),d0
+	move.w	g_CameraX(a5),d0
 	ext.l	d0
 	add.l	#$140,d0
 	move.w	-$17F6(a5),d1

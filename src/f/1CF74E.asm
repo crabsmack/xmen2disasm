@@ -14,12 +14,12 @@ loc_1CF75C:
 	move.w	#$1800,d4
 loc_1CF760:
 	ext.l	d6
-	move.w	-$3490(a5),d0
+	move.w	g_CameraY(a5),d0
 	ext.l	d0
 	add.l	d6,d0
 	move.l	d0,-(a7)
 	ext.l	d5
-	move.w	-$348E(a5),d0
+	move.w	g_CameraX(a5),d0
 	ext.l	d0
 	add.l	d5,d0
 	move.l	d0,-(a7)

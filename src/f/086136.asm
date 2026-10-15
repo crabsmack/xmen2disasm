@@ -7,7 +7,7 @@ sub_086136:
 	movea.l	$8(a6),a4
 	move.l	$8(a4),d0
 	asr.l	#$8,d0
-	move.w	-$348E(a5),d1
+	move.w	g_CameraX(a5),d1
 	ext.l	d1
 	sub.l	d1,d0
 	move.l	d0,d4
@@ -15,7 +15,7 @@ sub_086136:
 	sub.l	d0,d4
 	move.l	$C(a4),d1
 	asr.l	#$8,d1
-	move.w	-$3490(a5),d2
+	move.w	g_CameraY(a5),d2
 	ext.l	d2
 	sub.l	d2,d1
 	move.l	d1,d6

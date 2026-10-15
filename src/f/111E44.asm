@@ -58,13 +58,13 @@ Deathbird_Init:
 	or.b	d0,d1
 	move.b	d1,$2E(a4)
 	ori.b	#$4,$2E(a4)
-	move.w	-$348E(a5),d0
+	move.w	g_CameraX(a5),d0
 	ext.l	d0
 	moveq	#$64,d1
 	sub.l	d1,d0
 	lsl.l	#$8,d0
 	move.l	d0,$8(a4)
-	move.w	-$3490(a5),d0
+	move.w	g_CameraY(a5),d0
 	ext.l	d0
 	sub.l	d1,d0
 	lsl.l	#$8,d0

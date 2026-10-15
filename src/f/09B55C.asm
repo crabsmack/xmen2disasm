@@ -9,23 +9,23 @@ sub_09B55C:
 	asr.l	#$8,d7
 	clr.b	$90(a4)
 	ext.l	d7
-	move.w	-$348E(a5),d0
+	move.w	g_CameraX(a5),d0
 	ext.l	d0
 	moveq	#$30,d1
 	add.l	d1,d0
 	cmp.l	d7,d0
 	ble.s	loc_09B58C
-	move.w	-$348E(a5),d6
+	move.w	g_CameraX(a5),d6
 	add.w	#$30,d6
 	bra.s	loc_09B5D4
 loc_09B58C:
 	ext.l	d7
-	move.w	-$348E(a5),d0
+	move.w	g_CameraX(a5),d0
 	ext.l	d0
 	add.l	#$144,d0
 	cmp.l	d7,d0
 	bge.s	loc_09B5A8
-	move.w	-$348E(a5),d6
+	move.w	g_CameraX(a5),d6
 	add.w	#$144,d6
 	bra.s	loc_09B5D4
 loc_09B5A8:

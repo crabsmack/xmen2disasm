@@ -29,10 +29,10 @@ loc_099410:
 	andi.l	#$FFDFFFFF,-$17B8(a5)
 loc_099430:
 	move.b	#$1,-$3894(a5)
-	movea.l	-$35B6(a5),a0
+	movea.l	g_Camera(a5),a0
 	moveq	#$0,d0
 	move.l	d0,$1C(a0)
-	move.l	-$35B6(a5),-(a7)
+	move.l	g_Camera(a5),-(a7)
 	jsr	sub_099BF0(pc)
 	andi.w	#$FFFE,-$3B08(a5)
 	moveq	#$0,d0

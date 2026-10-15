@@ -27,11 +27,11 @@ loc_13DF9A:
 	move.l	(a4),d0
 	asr.l	#$8,d0
 	move.w	d0,d6
-	sub.w	-$348E(a5),d6
+	sub.w	g_CameraX(a5),d6
 	move.l	$4(a4),d0
 	asr.l	#$8,d0
 	move.w	d0,d7
-	sub.w	-$3490(a5),d7
+	sub.w	g_CameraY(a5),d7
 	cmp.w	-$35C2(a5),d6
 	ble.s	loc_13DFD8
 	moveq	#$1,d5

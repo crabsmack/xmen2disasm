@@ -4,7 +4,7 @@
 sub_081F28:
 	link.w	a6,#$0
 	jsr	sub_081ED4(pc)
-	tst.l	-$35B6(a5)
+	tst.l	g_Camera(a5)
 	bne.s	loc_081F56
 	pea.l	sub_081EDC(pc)
 	lea.l	$4DBA(a5),a0
@@ -13,7 +13,7 @@ sub_081F28:
 	movea.l	$2(a0),a0
 	movea.l	$A(a0),a1
 	jsr	(a1)
-	move.l	d0,-$35B6(a5)
+	move.l	d0,g_Camera(a5)
 	addq.w	#$8,a7
 loc_081F56:
 	unlk	a6

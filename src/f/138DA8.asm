@@ -24,7 +24,7 @@ sub_138DA8:
 	move.l	d1,d5
 	add.l	#$C0,d5
 	ext.l	d7
-	move.w	-$3490(a5),d1
+	move.w	g_CameraY(a5),d1
 	ext.l	d1
 	move.l	d7,d2
 	sub.l	d1,d2
@@ -35,7 +35,7 @@ sub_138DA8:
 	bra.w	loc_138E98
 loc_138E04:
 	ext.l	d7
-	move.w	-$3490(a5),d0
+	move.w	g_CameraY(a5),d0
 	ext.l	d0
 	move.l	d7,d1
 	sub.l	d0,d1

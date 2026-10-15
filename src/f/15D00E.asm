@@ -16,7 +16,7 @@ sub_15D00E:
 	move.w	d0,-$22(a6)
 	tst.b	$13(a6)
 	beq.w	loc_15D192
-	move.w	-$348E(a5),-$2C(a6)
+	move.w	g_CameraX(a5),-$2C(a6)
 	tst.b	-$13EE(a5)
 	beq.s	loc_15D04A
 	moveq	#$20,d0
@@ -151,7 +151,7 @@ loc_15D154:
 	adda.l	-$3A8C(a5),a4
 	bra.w	loc_15D2E8
 loc_15D192:
-	move.w	-$348E(a5),-$2C(a6)
+	move.w	g_CameraX(a5),-$2C(a6)
 	tst.b	-$13F0(a5)
 	beq.s	loc_15D1A2
 	moveq	#$20,d0
@@ -301,7 +301,7 @@ loc_15D2E8:
 	ext.l	d6
 	move.l	d6,d0
 	lsl.l	#$5,d0
-	move.w	-$3490(a5),d1
+	move.w	g_CameraY(a5),d1
 	ext.l	d1
 	moveq	#$20,d2
 	sub.l	d2,d1
@@ -310,7 +310,7 @@ loc_15D2E8:
 	ext.l	d6
 	move.l	d6,d0
 	lsl.l	#$5,d0
-	move.w	-$3490(a5),d1
+	move.w	g_CameraY(a5),d1
 	ext.l	d1
 	add.l	#$100,d1
 	cmp.l	d0,d1

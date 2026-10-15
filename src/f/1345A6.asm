@@ -8,13 +8,13 @@ sub_1345A6:
 	movea.l	$8(a6),a4
 	move.b	d7,$A6(a4)
 	beq.s	loc_1345E6
-	move.w	-$348E(a5),d0
+	move.w	g_CameraX(a5),d0
 	ext.l	d0
 	moveq	#$20,d1
 	sub.l	d1,d0
 	lsl.l	#$8,d0
 	move.l	d0,$8(a4)
-	move.w	-$3490(a5),d0
+	move.w	g_CameraY(a5),d0
 	ext.l	d0
 	add.l	#$82,d0
 	lsl.l	#$8,d0
@@ -22,12 +22,12 @@ sub_1345A6:
 	andi.b	#$EF,$2E(a4)
 	bra.s	loc_134614
 loc_1345E6:
-	move.w	-$348E(a5),d0
+	move.w	g_CameraX(a5),d0
 	ext.l	d0
 	add.l	#$160,d0
 	lsl.l	#$8,d0
 	move.l	d0,$8(a4)
-	move.w	-$3490(a5),d0
+	move.w	g_CameraY(a5),d0
 	ext.l	d0
 	add.l	#$82,d0
 	lsl.l	#$8,d0

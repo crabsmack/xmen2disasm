@@ -3,7 +3,7 @@
 ; ---------------------------------------------------------------------------
 sub_0F4314:
 	link.w	a6,#$0
-	movea.l	-$35B6(a5),a0
+	movea.l	g_Camera(a5),a0
 	move.w	#$C8,$42(a0)
 	move.l	g_FrameCounter(a5),d0
 	addq.l	#$1,g_FrameCounter(a5)

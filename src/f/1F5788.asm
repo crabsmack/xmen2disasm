@@ -31,10 +31,10 @@ loc_1F57CE:
 loc_1F57D4:
 	move.w	$1A(a6),d0
 	sub.w	-$389C(a5),d0
-	move.w	d0,-$348E(a5)
+	move.w	d0,g_CameraX(a5)
 	move.w	$1E(a6),d0
 	sub.w	-$389A(a5),d0
-	move.w	d0,-$3490(a5)
+	move.w	d0,g_CameraY(a5)
 	tst.b	-$3A62(a5)
 	beq.s	loc_1F5854
 	move.l	a4,d6
@@ -73,36 +73,36 @@ loc_1F57D4:
 	move.w	-$3A92(a5),-$3A9A(a5)
 	clr.w	-$3A9C(a5)
 loc_1F5854:
-	move.w	-$348E(a5),d0
+	move.w	g_CameraX(a5),d0
 	cmp.w	-$3A8E(a5),d0
 	ble.s	loc_1F5864
-	move.w	-$3A8E(a5),-$348E(a5)
+	move.w	-$3A8E(a5),g_CameraX(a5)
 loc_1F5864:
-	move.w	-$348E(a5),d0
+	move.w	g_CameraX(a5),d0
 	cmp.w	-$3A90(a5),d0
 	bge.s	loc_1F5874
-	move.w	-$3A90(a5),-$348E(a5)
+	move.w	-$3A90(a5),g_CameraX(a5)
 loc_1F5874:
-	move.w	-$3490(a5),d0
+	move.w	g_CameraY(a5),d0
 	cmp.w	-$3A92(a5),d0
 	ble.s	loc_1F5884
-	move.w	-$3A92(a5),-$3490(a5)
+	move.w	-$3A92(a5),g_CameraY(a5)
 loc_1F5884:
-	move.w	-$3490(a5),d0
+	move.w	g_CameraY(a5),d0
 	cmp.w	-$3A94(a5),d0
 	bge.s	loc_1F5894
-	move.w	-$3A94(a5),-$3490(a5)
+	move.w	-$3A94(a5),g_CameraY(a5)
 loc_1F5894:
 	lea.l	sub_1F60E4(pc),a0
 	cmpa.l	-$38F8(a5),a0
 	bne.s	loc_1F58C2
 	move.w	-$3492(a5),d0
-	muls.w	-$348E(a5),d0
+	muls.w	g_CameraX(a5),d0
 	asr.l	#$8,d0
 	add.w	-$349A(a5),d0
 	move.w	d0,-$3AC2(a5)
 	move.w	-$3494(a5),d0
-	muls.w	-$3490(a5),d0
+	muls.w	g_CameraY(a5),d0
 	asr.l	#$8,d0
 	add.w	-$349E(a5),d0
 	move.w	d0,-$3AC4(a5)
@@ -112,7 +112,7 @@ loc_1F58C2:
 	movea.l	-$3AFE(a5),a0
 	move.l	$8(a0),d0
 	asr.l	#$8,d0
-	move.w	-$348E(a5),d1
+	move.w	g_CameraX(a5),d1
 	ext.l	d1
 	sub.l	d1,d0
 	move.w	-$3ABC(a5),d1
@@ -121,7 +121,7 @@ loc_1F58C2:
 	movea.l	-$3AFE(a5),a0
 	move.l	$C(a0),d0
 	asr.l	#$8,d0
-	move.w	-$3490(a5),d1
+	move.w	g_CameraY(a5),d1
 	ext.l	d1
 	sub.l	d1,d0
 	move.w	-$3ABE(a5),d1
@@ -132,7 +132,7 @@ loc_1F5902:
 	move.w	-$3496(a5),d0
 	ext.l	d0
 	move.l	d0,-(a7)
-	move.w	-$348E(a5),d0
+	move.w	g_CameraX(a5),d0
 	ext.l	d0
 	move.l	d0,-(a7)
 	jsr	sub_1F6258(pc)
@@ -142,13 +142,13 @@ loc_1F5902:
 	addq.w	#$8,a7
 	bne.s	loc_1F593A
 	move.w	-$3498(a5),d0
-	muls.w	-$3490(a5),d0
+	muls.w	g_CameraY(a5),d0
 	asr.l	#$8,d0
 	add.w	-$34A0(a5),d0
 	move.w	d0,-$3AC8(a5)
 	bra.s	loc_1F595C
 loc_1F593A:
-	move.w	-$3490(a5),d0
+	move.w	g_CameraY(a5),d0
 	ext.l	d0
 	move.w	-$349E(a5),d1
 	ext.l	d1

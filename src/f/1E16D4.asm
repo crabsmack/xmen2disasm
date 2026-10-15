@@ -19,8 +19,8 @@ loc_1E16EA:
 	move.w	d1,-$14(a6)
 	move.w	-$6(a6),d7
 	move.w	-$8(a6),d6
-	add.w	-$348E(a5),d7
-	add.w	-$3490(a5),d6
+	add.w	g_CameraX(a5),d7
+	add.w	g_CameraY(a5),d6
 	moveq	#$0,d3
 	move.b	-$35CA(a5),d3
 	seq.b	d3

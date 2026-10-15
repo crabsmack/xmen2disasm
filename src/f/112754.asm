@@ -9,7 +9,7 @@ sub_112754:
 	asr.l	#$8,d0
 	moveq	#$50,d1
 	sub.l	d1,d0
-	move.w	-$3490(a5),d2
+	move.w	g_CameraY(a5),d2
 	ext.l	d2
 	add.l	#$E0,d2
 	cmp.l	d0,d2

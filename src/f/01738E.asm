@@ -136,11 +136,11 @@ loc_0174C2:
 	move.w	d7,d0
 loc_0174C4:
 	move.w	d0,d6
-	sub.w	-$348E(a5),d4
-	sub.w	-$348E(a5),d5
-	move.w	-$3490(a5),d0
+	sub.w	g_CameraX(a5),d4
+	sub.w	g_CameraX(a5),d5
+	move.w	g_CameraY(a5),d0
 	sub.w	d0,-$2(a6)
-	sub.w	-$3490(a5),d6
+	sub.w	g_CameraY(a5),d6
 	cmp.w	-$35C2(a5),d4
 	bgt.s	loc_0174FA
 	cmp.w	-$35C0(a5),d5

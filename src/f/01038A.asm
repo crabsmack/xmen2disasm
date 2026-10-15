@@ -12,7 +12,7 @@ BigAcolyte_Deactivate:
 	movea.l	$2(a0),a0
 	movea.l	$46(a0),a1
 	jsr	(a1)
-	movea.l	-$35B6(a5),a0
+	movea.l	g_Camera(a5),a0
 	move.l	a0,-(a7)
 	movea.l	(a0),a0
 	movea.l	$3A(a0),a1

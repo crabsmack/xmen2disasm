@@ -26,7 +26,7 @@ sub_0821E8:
 	move.l	d6,-(a7)
 	ext.l	d7
 	move.l	d7,-(a7)
-	movea.l	-$35B6(a5),a0
+	movea.l	g_Camera(a5),a0
 	move.l	a0,-(a7)
 	movea.l	(a0),a0
 	movea.l	$36(a0),a1

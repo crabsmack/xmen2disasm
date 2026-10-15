@@ -166,11 +166,11 @@ loc_010CAA:
 	moveq	#$2,d0
 	move.l	d0,-(a7)
 	move.l	d0,-(a7)
-	move.w	-$3490(a5),d2
+	move.w	g_CameraY(a5),d2
 	ext.l	d2
 	move.l	d2,-(a7)
 	pea.l	($1A3C).w
-	movea.l	-$35B6(a5),a0
+	movea.l	g_Camera(a5),a0
 	move.l	a0,-(a7)
 	movea.l	(a0),a0
 	movea.l	$36(a0),a1

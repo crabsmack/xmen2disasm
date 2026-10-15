@@ -20,51 +20,51 @@ sub_0AD674:
 	ext.l	d0
 	move.l	d0,d7
 	add.l	d1,d7
-	move.w	-$348E(a5),d5
-	move.w	-$3490(a5),d5
-	move.w	d6,-$348E(a5)
-	move.w	d7,-$3490(a5)
-	move.w	-$348E(a5),d0
+	move.w	g_CameraX(a5),d5
+	move.w	g_CameraY(a5),d5
+	move.w	d6,g_CameraX(a5)
+	move.w	d7,g_CameraY(a5)
+	move.w	g_CameraX(a5),d0
 	cmp.w	-$3A8E(a5),d0
 	ble.s	loc_0AD6C8
-	move.w	-$3A8E(a5),-$348E(a5)
+	move.w	-$3A8E(a5),g_CameraX(a5)
 loc_0AD6C8:
-	move.w	-$348E(a5),d0
+	move.w	g_CameraX(a5),d0
 	cmp.w	-$3A90(a5),d0
 	bge.s	loc_0AD6D8
-	move.w	-$3A90(a5),-$348E(a5)
+	move.w	-$3A90(a5),g_CameraX(a5)
 loc_0AD6D8:
-	move.w	-$3490(a5),d0
+	move.w	g_CameraY(a5),d0
 	cmp.w	-$3A92(a5),d0
 	ble.s	loc_0AD6E8
-	move.w	-$3A92(a5),-$3490(a5)
+	move.w	-$3A92(a5),g_CameraY(a5)
 loc_0AD6E8:
-	move.w	-$3490(a5),d0
+	move.w	g_CameraY(a5),d0
 	cmp.w	-$3A94(a5),d0
 	bge.s	loc_0AD6F8
-	move.w	-$3A94(a5),-$3490(a5)
+	move.w	-$3A94(a5),g_CameraY(a5)
 loc_0AD6F8:
 	move.w	-$3492(a5),d0
-	muls.w	-$348E(a5),d0
+	muls.w	g_CameraX(a5),d0
 	asr.l	#$8,d0
 	add.w	-$349A(a5),d0
 	move.w	d0,-$3AC2(a5)
 	move.w	-$3494(a5),d0
-	muls.w	-$3490(a5),d0
+	muls.w	g_CameraY(a5),d0
 	asr.l	#$8,d0
 	add.w	-$349E(a5),d0
 	move.w	d0,-$3AC4(a5)
 	move.w	-$3496(a5),d0
 	ext.l	d0
 	move.l	d0,-(a7)
-	move.w	-$348E(a5),d0
+	move.w	g_CameraX(a5),d0
 	ext.l	d0
 	move.l	d0,-(a7)
 	jsr	$4E3A(a5)	; -> sub_1F6258
 	move.w	d0,-$3AC6(a5)
 	move.w	-$38BC(a5),d0
 	ext.l	d0
-	move.w	-$3490(a5),d1
+	move.w	g_CameraY(a5),d1
 	ext.l	d1
 	sub.l	d1,d0
 	move.w	#$100,d1

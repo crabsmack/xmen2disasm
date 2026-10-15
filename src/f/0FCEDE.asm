@@ -106,9 +106,9 @@ loc_0FCFDA:
 	move.b	d0,$12(a4)
 loc_0FCFEC:
 	addq.b	#$1,$13(a4)
-	move.w	-$348E(a5),d0
+	move.w	g_CameraX(a5),d0
 	sub.w	d0,d6
-	move.w	-$3490(a5),d0
+	move.w	g_CameraY(a5),d0
 	ext.l	d0
 	moveq	#-$9,d1
 	sub.l	d1,d0

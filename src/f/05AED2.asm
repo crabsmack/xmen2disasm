@@ -6,7 +6,7 @@ sub_05AED2:
 	movem.l	d3-d7,-(a7)
 	tst.w	-$3B32(a5)
 	bgt.w	loc_05AFF6
-	move.w	-$3490(a5),d0
+	move.w	g_CameraY(a5),d0
 	ext.l	d0
 	moveq	#$50,d1
 	sub.l	d1,d0

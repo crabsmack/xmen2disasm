@@ -52,12 +52,12 @@ loc_005FFC:
 	move.l	$C(a3),d7
 	bra.s	loc_006040
 loc_006022:
-	move.w	-$348E(a5),d0
+	move.w	g_CameraX(a5),d0
 	ext.l	d0
 	add.l	#$A0,d0
 	move.l	d0,d6
 	lsl.l	#$8,d6
-	move.w	-$3490(a5),d0
+	move.w	g_CameraY(a5),d0
 	ext.l	d0
 	moveq	#$6E,d1
 	add.l	d1,d0

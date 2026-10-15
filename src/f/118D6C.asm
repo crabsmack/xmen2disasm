@@ -180,8 +180,8 @@ loc_118F34:
 	moveq	#$2,d0
 	cmp.l	d7,d0
 	bgt.w	loc_118E7E
-	sub.w	-$348E(a5),d5
-	sub.w	-$3490(a5),d6
+	sub.w	g_CameraX(a5),d5
+	sub.w	g_CameraY(a5),d6
 	move.w	#$FFEC,-$6(a6)
 	move.w	#$FFEC,-$4(a6)
 	move.w	#$154,-$2(a6)

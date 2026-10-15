@@ -10,7 +10,7 @@ sub_1F1A2E:
 	ext.l	d0
 	moveq	#$28,d1
 	sub.l	d1,d0
-	move.w	-$348E(a5),d2
+	move.w	g_CameraX(a5),d2
 	ext.l	d2
 	sub.l	d2,d0
 	cmpi.l	#$140,d0
@@ -19,7 +19,7 @@ sub_1F1A2E:
 	ext.l	d0
 	moveq	#$28,d1
 	add.l	d1,d0
-	move.w	-$348E(a5),d2
+	move.w	g_CameraX(a5),d2
 	ext.l	d2
 	sub.l	d2,d0
 	blt.w	loc_1F1BFC
@@ -27,7 +27,7 @@ sub_1F1A2E:
 	ext.l	d0
 	moveq	#$28,d1
 	sub.l	d1,d0
-	move.w	-$3490(a5),d2
+	move.w	g_CameraY(a5),d2
 	ext.l	d2
 	sub.l	d2,d0
 	cmpi.l	#$E0,d0
@@ -36,7 +36,7 @@ sub_1F1A2E:
 	ext.l	d0
 	moveq	#$28,d1
 	add.l	d1,d0
-	move.w	-$3490(a5),d2
+	move.w	g_CameraY(a5),d2
 	ext.l	d2
 	sub.l	d2,d0
 	blt.w	loc_1F1BFC
@@ -48,13 +48,13 @@ sub_1F1A2E:
 	sub.w	d0,$A4(a4)
 	move.w	$A2(a4),d0
 	ext.l	d0
-	move.w	-$3490(a5),d1
+	move.w	g_CameraY(a5),d1
 	ext.l	d1
 	sub.l	d1,d0
 	move.l	d0,-(a7)
 	move.w	$A0(a4),d0
 	ext.l	d0
-	move.w	-$348E(a5),d1
+	move.w	g_CameraX(a5),d1
 	ext.l	d1
 	sub.l	d1,d0
 	move.l	d0,-(a7)
@@ -119,14 +119,14 @@ loc_1F1B56:
 	move.l	$8(a4),d1
 	sub.l	d0,d1
 	asr.l	#$8,d1
-	move.w	-$348E(a5),d0
+	move.w	g_CameraX(a5),d0
 	ext.l	d0
 	sub.l	d0,d1
 	bra.s	loc_1F1B82
 loc_1F1B72:
 	move.l	$8(a4),d0
 	asr.l	#$8,d0
-	move.w	-$348E(a5),d1
+	move.w	g_CameraX(a5),d1
 	ext.l	d1
 	sub.l	d1,d0
 	move.l	d0,d1
@@ -153,14 +153,14 @@ loc_1F1BA4:
 	move.l	$C(a4),d1
 	sub.l	d0,d1
 	asr.l	#$8,d1
-	move.w	-$3490(a5),d0
+	move.w	g_CameraY(a5),d0
 	ext.l	d0
 	sub.l	d0,d1
 	bra.s	loc_1F1BD0
 loc_1F1BC0:
 	move.l	$C(a4),d0
 	asr.l	#$8,d0
-	move.w	-$3490(a5),d1
+	move.w	g_CameraY(a5),d1
 	ext.l	d1
 	sub.l	d1,d0
 	move.l	d0,d1

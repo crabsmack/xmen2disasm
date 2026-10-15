@@ -11,7 +11,7 @@ sub_00FA24:
 	clr.w	g_Pad1Latch(a5)
 	clr.w	g_Pad2Latch(a5)
 	moveq	#$60,d0
-	cmp.w	-$3490(a5),d0
+	cmp.w	g_CameraY(a5),d0
 	blt.w	loc_00FAD0
 	move.w	-$1754(a5),d0
 	ext.l	d0
@@ -53,7 +53,7 @@ loc_00FA94:
 	jsr	$5102(a5)	; -> Scroll_SetParallax
 	jsr	sub_00F60E(pc)
 	lea.l	$4212(a5),a0
-	movea.l	-$35B6(a5),a1
+	movea.l	g_Camera(a5),a1
 	move.l	a0,$4(a1)
 	lea.l	$C(a7),a7
 	bra.s	loc_00FB4A
@@ -82,8 +82,8 @@ loc_00FAF4:
 	clr.l	-$1832(a5)
 	clr.w	-$1828(a5)
 loc_00FB18:
-	move.w	-$348E(a5),$30(a4)
-	move.w	-$348E(a5),d6
+	move.w	g_CameraX(a5),$30(a4)
+	move.w	g_CameraX(a5),d6
 	tst.b	-$38DE(a5)
 	beq.s	loc_00FB2C
 	moveq	#$4,d0
@@ -92,7 +92,7 @@ loc_00FB2C:
 	moveq	#$2,d0
 loc_00FB2E:
 	ext.w	d0
-	move.w	-$3490(a5),d1
+	move.w	g_CameraY(a5),d1
 	sub.w	d0,d1
 	move.w	d1,$32(a4)
 	move.w	d1,d7

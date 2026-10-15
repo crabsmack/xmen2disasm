@@ -11,7 +11,7 @@ sub_08869E:
 	movea.l	$2(a0),a0
 	movea.l	$A(a0),a1
 	jsr	(a1)
-	move.l	d0,-$35B6(a5)
+	move.l	d0,g_Camera(a5)
 	movea.l	d0,a4
 	move.w	-$1754(a5),d0
 	ext.l	d0

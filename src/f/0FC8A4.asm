@@ -20,7 +20,7 @@ sub_0FC8A4:
 	movea.l	$2(a0),a0
 	movea.l	$A(a0),a1
 	jsr	(a1)
-	move.l	d0,-$35B6(a5)
+	move.l	d0,g_Camera(a5)
 	lea.l	$296A(a5),a0
 	movea.l	$2(a0),a4
 	move.l	a4,d7

@@ -7,7 +7,7 @@ sub_159ECC:
 	movea.l	$8(a6),a4
 	move.l	#$98967F,d4
 	move.l	#$FF676981,d5
-	movea.l	-$35B6(a5),a0
+	movea.l	g_Camera(a5),a0
 	move.w	$32(a0),d7
 	move.w	$5C(a0),d6
 	beq.w	loc_159FAE
@@ -79,9 +79,9 @@ loc_159F92:
 	sub.w	d5,d6
 	move.w	d5,d7
 loc_159F9E:
-	movea.l	-$35B6(a5),a0
+	movea.l	g_Camera(a5),a0
 	move.w	d7,$32(a0)
-	movea.l	-$35B6(a5),a0
+	movea.l	g_Camera(a5),a0
 	move.w	d6,$5C(a0)
 loc_159FAE:
 	movem.l	-$1E(a6),d3-d7/a4

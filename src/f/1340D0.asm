@@ -7,10 +7,10 @@ sub_1340D0:
 	movea.l	$8(a6),a4
 	move.l	$8(a4),d7
 	asr.l	#$8,d7
-	cmp.w	-$348E(a5),d7
+	cmp.w	g_CameraX(a5),d7
 	blt.s	loc_13410E
 	ext.l	d7
-	move.w	-$348E(a5),d0
+	move.w	g_CameraX(a5),d0
 	ext.l	d0
 	add.l	#$140,d0
 	cmp.l	d7,d0

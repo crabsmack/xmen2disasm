@@ -7,7 +7,7 @@ sub_0B77FC:
 	movea.l	$8(a6),a4
 	move.l	$8(a4),d6
 	asr.l	#$8,d6
-	move.w	-$348E(a5),d0
+	move.w	g_CameraX(a5),d0
 	ext.l	d0
 	move.l	d0,d7
 	add.l	#$A0,d7

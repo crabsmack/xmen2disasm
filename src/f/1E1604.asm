@@ -46,9 +46,9 @@ loc_1E166A:
 	add.w	d1,d0
 	move.w	d0,-$8(a6)
 loc_1E168C:
-	move.w	-$348E(a5),d0
+	move.w	g_CameraX(a5),d0
 	sub.w	d0,-$6(a6)
-	move.w	-$3490(a5),d0
+	move.w	g_CameraY(a5),d0
 	sub.w	d0,-$8(a6)
 	move.w	$1E(a1),d6
 	move.w	$1C(a1),d7

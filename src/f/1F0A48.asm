@@ -10,7 +10,7 @@ sub_1F0A48:
 	clr.l	$16(a4)
 	clr.w	$20(a4)
 	ori.l	#$40000,$90(a4)
-	movea.l	-$35B6(a5),a0
+	movea.l	g_Camera(a5),a0
 	move.l	a0,-(a7)
 	movea.l	(a0),a0
 	movea.l	$26(a0),a1

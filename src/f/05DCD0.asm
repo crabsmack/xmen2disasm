@@ -5,7 +5,7 @@ sub_05DCD0:
 	link.w	a6,#$0
 	movem.l	d7/a4,-(a7)
 	movea.l	$8(a6),a4
-	move.w	-$3490(a5),d0
+	move.w	g_CameraY(a5),d0
 	ext.l	d0
 	lsl.l	#$8,d0
 	move.l	$C(a4),d7

@@ -18,13 +18,13 @@ loc_0EBDD4:
 	move.w	d0,d7
 	move.l	$8(a4),d0
 	asr.l	#$8,d0
-	move.w	-$348E(a5),d1
+	move.w	g_CameraX(a5),d1
 	ext.l	d1
 	move.l	d0,d5
 	sub.l	d1,d5
 	move.l	$C(a4),d0
 	asr.l	#$8,d0
-	move.w	-$3490(a5),d1
+	move.w	g_CameraY(a5),d1
 	ext.l	d1
 	move.l	d0,d6
 	sub.l	d1,d6

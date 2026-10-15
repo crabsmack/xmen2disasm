@@ -13,7 +13,7 @@ loc_0991DC:
 	moveq	#$74,d0
 	move.l	d0,-(a7)
 	jsr	$521A(a5)	; -> Snd_Play
-	move.l	-$35B6(a5),-(a7)
+	move.l	g_Camera(a5),-(a7)
 	jsr	sub_099BBE(pc)
 	ori.w	#$1,-$3B08(a5)
 	clr.b	-$3894(a5)

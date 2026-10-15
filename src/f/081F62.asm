@@ -11,7 +11,7 @@ sub_081F62:
 	tst.b	g_PalFadeActive(a5)
 	bne.s	loc_081FF4
 	move.w	-$3B02(a5),d7
-	move.w	-$3490(a5),d0
+	move.w	g_CameraY(a5),d0
 	asr.w	#$4,d0
 	moveq	#$3,d1
 	and.w	d0,d1

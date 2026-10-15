@@ -8,7 +8,7 @@ sub_0946BA:
 	moveq	#$2,d0
 	cmp.w	-$3C3C(a5),d0
 	bgt.s	loc_094714
-	move.l	-$35B6(a5),-(a7)
+	move.l	g_Camera(a5),-(a7)
 	lea.l	$4DBA(a5),a0
 	movea.l	$2(a0),a0
 	movea.l	$3A(a0),a1

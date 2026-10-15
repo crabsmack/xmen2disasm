@@ -7,14 +7,14 @@ sub_082472:
 	movea.l	$8(a6),a4
 	move.w	$4E(a4),d0
 	ext.l	d0
-	move.w	-$348E(a5),d1
+	move.w	g_CameraX(a5),d1
 	ext.l	d1
 	sub.l	d1,d0
 	cmpi.l	#$110,d0
 	bgt.s	loc_082500
 	move.w	$52(a4),d0
 	ext.l	d0
-	move.w	-$348E(a5),d1
+	move.w	g_CameraX(a5),d1
 	ext.l	d1
 	sub.l	d1,d0
 	moveq	#$30,d1
@@ -22,14 +22,14 @@ sub_082472:
 	bgt.s	loc_082500
 	move.w	$4C(a4),d0
 	ext.l	d0
-	move.w	-$3490(a5),d1
+	move.w	g_CameraY(a5),d1
 	ext.l	d1
 	sub.l	d1,d0
 	cmpi.l	#$E0,d0
 	bgt.s	loc_082500
 	move.w	$50(a4),d0
 	ext.l	d0
-	move.w	-$3490(a5),d1
+	move.w	g_CameraY(a5),d1
 	ext.l	d1
 	sub.l	d1,d0
 	blt.s	loc_082500

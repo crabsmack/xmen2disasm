@@ -36,7 +36,7 @@ loc_1F369C:
 loc_1F36A4:
 	tst.w	$A6(a4)
 	bgt.s	loc_1F36FC
-	movea.l	-$35B6(a5),a0
+	movea.l	g_Camera(a5),a0
 	moveq	#$8,d0
 	and.w	$4A(a0),d0
 	bne.s	loc_1F36FC
@@ -48,7 +48,7 @@ loc_1F36A4:
 	and.l	$90(a4),d0
 	bne.s	loc_1F36FC
 	ori.l	#$40000,$90(a4)
-	movea.l	-$35B6(a5),a0
+	movea.l	g_Camera(a5),a0
 	move.l	a0,-(a7)
 	movea.l	(a0),a0
 	movea.l	$2A(a0),a1

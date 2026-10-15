@@ -16,9 +16,9 @@ SwampFly_SpawnRecInView:
 	cmp.w	-$3C1C(a5),d0
 	bge.s	loc_0BFA64
 	move.w	$6(a4),d0
-	cmp.w	-$348E(a5),d0
+	cmp.w	g_CameraX(a5),d0
 	blt.s	loc_0BFA50
-	move.w	-$348E(a5),d0
+	move.w	g_CameraX(a5),d0
 	ext.l	d0
 	add.l	#$140,d0
 	move.w	$6(a4),d1
@@ -26,9 +26,9 @@ SwampFly_SpawnRecInView:
 	cmp.l	d1,d0
 	blt.s	loc_0BFA50
 	move.w	$8(a4),d0
-	cmp.w	-$3490(a5),d0
+	cmp.w	g_CameraY(a5),d0
 	blt.s	loc_0BFA50
-	move.w	-$3490(a5),d0
+	move.w	g_CameraY(a5),d0
 	ext.l	d0
 	add.l	#$C8,d0
 	move.w	$8(a4),d1

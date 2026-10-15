@@ -33,13 +33,13 @@ loc_0106E8:
 	move.l	d2,-(a7)
 	move.w	$4C(a4),d1
 	ext.l	d1
-	move.w	-$3490(a5),d2
+	move.w	g_CameraY(a5),d2
 	ext.l	d2
 	sub.l	d2,d1
 	move.l	d1,-(a7)
 	move.w	$4E(a4),d1
 	ext.l	d1
-	move.w	-$348E(a5),d2
+	move.w	g_CameraX(a5),d2
 	ext.l	d2
 	sub.l	d2,d1
 	move.l	d1,-(a7)
@@ -72,14 +72,14 @@ loc_010758:
 	move.l	$C(a4),d1
 	sub.l	d0,d1
 	asr.l	#$8,d1
-	move.w	-$3490(a5),d0
+	move.w	g_CameraY(a5),d0
 	ext.l	d0
 	sub.l	d0,d1
 	bra.s	loc_010784
 loc_010774:
 	move.l	$C(a4),d0
 	asr.l	#$8,d0
-	move.w	-$3490(a5),d1
+	move.w	g_CameraY(a5),d1
 	ext.l	d1
 	sub.l	d1,d0
 	move.l	d0,d1
@@ -106,14 +106,14 @@ loc_0107A6:
 	move.l	$8(a4),d1
 	sub.l	d0,d1
 	asr.l	#$8,d1
-	move.w	-$348E(a5),d0
+	move.w	g_CameraX(a5),d0
 	ext.l	d0
 	sub.l	d0,d1
 	bra.s	loc_0107D2
 loc_0107C2:
 	move.l	$8(a4),d0
 	asr.l	#$8,d0
-	move.w	-$348E(a5),d1
+	move.w	g_CameraX(a5),d1
 	ext.l	d1
 	sub.l	d1,d0
 	move.l	d0,d1

@@ -11,7 +11,7 @@ sub_0E9BCE:
 	move.l	d1,-(a7)
 	pea.l	($240).w
 	pea.l	($140).w
-	movea.l	-$35B6(a5),a0
+	movea.l	g_Camera(a5),a0
 	move.l	a0,-(a7)
 	movea.l	(a0),a0
 	movea.l	$36(a0),a1

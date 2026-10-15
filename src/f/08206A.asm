@@ -19,7 +19,7 @@ sub_08206A:
 	move.l	a4,$10(a4)
 	move.l	a4,-(a7)
 	jsr	$4FDA(a5)	; -> sub_1F9D04
-	move.l	-$35B6(a5),-(a7)
+	move.l	g_Camera(a5),-(a7)
 	jsr	sub_081F02(pc)
 	addq.w	#$8,a7
 loc_0820A6:

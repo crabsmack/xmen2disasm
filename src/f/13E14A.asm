@@ -29,8 +29,8 @@ loc_13E16A:
 	moveq	#$0,d1
 	move.b	d0,d1
 	move.w	d1,-$2(a6)
-	sub.w	-$348E(a5),d6
-	sub.w	-$3490(a5),d7
+	sub.w	g_CameraX(a5),d6
+	sub.w	g_CameraY(a5),d7
 	move.w	-$2(a6),d0
 	ext.l	d0
 	lsl.l	#$4,d0

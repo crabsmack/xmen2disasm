@@ -35,8 +35,8 @@ loc_160F76:
 	move.w	d0,$56(a4)
 	move.w	$E(a6),$38(a4)
 	move.w	$12(a6),$3A(a4)
-	move.w	-$348E(a5),$30(a4)
-	move.w	-$3490(a5),$32(a4)
+	move.w	g_CameraX(a5),$30(a4)
+	move.w	g_CameraY(a5),$32(a4)
 	moveq	#$0,d0
 	move.l	d0,$10(a4)
 	move.l	d0,$18(a4)

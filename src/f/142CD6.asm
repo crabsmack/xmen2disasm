@@ -151,8 +151,8 @@ loc_142E32:
 	addq.w	#$1,d7
 	cmpi.w	#$2,d7
 	blt.w	loc_142D92
-	sub.w	-$348E(a5),d4
-	sub.w	-$3490(a5),d5
+	sub.w	g_CameraX(a5),d4
+	sub.w	g_CameraY(a5),d5
 	ext.l	d4
 	move.l	d4,d0
 	moveq	#$40,d1

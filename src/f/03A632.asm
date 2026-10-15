@@ -10,7 +10,7 @@ BanimazaDoor_InActivateWindow:
 	movea.l	$8(a6),a4
 	move.w	$10(a4),d0
 	ext.l	d0
-	move.w	-$348E(a5),d1
+	move.w	g_CameraX(a5),d1
 	ext.l	d1
 	move.l	d0,d7
 	sub.l	d1,d7
@@ -27,7 +27,7 @@ loc_03A658:
 loc_03A664:
 	move.w	$12(a4),d0
 	ext.l	d0
-	move.w	-$3490(a5),d1
+	move.w	g_CameraY(a5),d1
 	ext.l	d1
 	sub.l	d1,d0
 	move.l	d0,d7

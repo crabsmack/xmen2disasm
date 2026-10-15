@@ -84,7 +84,7 @@ loc_1F390E:
 	ble.s	loc_1F3950
 	tst.w	$A6(a4)
 	ble.s	loc_1F394A
-	movea.l	-$35B6(a5),a0
+	movea.l	g_Camera(a5),a0
 	moveq	#$4,d0
 	and.w	$4A(a0),d0
 	bne.s	loc_1F394A

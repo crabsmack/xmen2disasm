@@ -138,9 +138,9 @@ loc_13F872:
 	move.b	d1,$12(a4)
 loc_13F884:
 	addq.b	#$1,$13(a4)
-	move.w	-$348E(a5),d0
+	move.w	g_CameraX(a5),d0
 	sub.w	d0,d6
-	move.w	-$3490(a5),d0
+	move.w	g_CameraY(a5),d0
 	sub.w	#$FFF4,d0
 	sub.w	d0,d7
 	cmpi.w	#$FFEC,d6

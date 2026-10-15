@@ -10,14 +10,14 @@ YoyoAcolyte_Draw:
 	movea.l	$8(a6),a0
 	move.l	$8(a0),d0
 	asr.l	#$8,d0
-	move.w	-$348E(a5),d1
+	move.w	g_CameraX(a5),d1
 	ext.l	d1
 	move.l	d0,d7
 	sub.l	d1,d7
 	movea.l	$8(a6),a0
 	move.l	$C(a0),d0
 	asr.l	#$8,d0
-	move.w	-$3490(a5),d1
+	move.w	g_CameraY(a5),d1
 	ext.l	d1
 	move.l	d0,d5
 	sub.l	d1,d5
@@ -111,13 +111,13 @@ loc_01C362:
 	movea.l	-$1FE6(a5),a0
 	move.w	d0,$6(a0)
 loc_01C3C2:
-	move.w	-$348E(a5),d0
+	move.w	g_CameraX(a5),d0
 	ext.l	d0
 	ext.l	d6
 	add.l	d6,d0
 	move.l	d0,d5
 	addq.l	#$3,d5
-	move.w	-$3490(a5),d0
+	move.w	g_CameraY(a5),d0
 	ext.l	d0
 	ext.l	d7
 	add.l	d7,d0

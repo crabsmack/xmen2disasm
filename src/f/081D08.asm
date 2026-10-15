@@ -34,18 +34,18 @@ sub_081D08:
 	beq.s	loc_081D9A
 	tst.w	d7
 	beq.s	loc_081D9A
-	cmp.w	-$348E(a5),d6
+	cmp.w	g_CameraX(a5),d6
 	ble.s	loc_081D9A
 	ext.l	d6
-	move.w	-$348E(a5),d0
+	move.w	g_CameraX(a5),d0
 	ext.l	d0
 	add.l	#$140,d0
 	cmp.l	d6,d0
 	ble.s	loc_081D9A
-	cmp.w	-$3490(a5),d7
+	cmp.w	g_CameraY(a5),d7
 	ble.s	loc_081D9A
 	ext.l	d7
-	move.w	-$3490(a5),d0
+	move.w	g_CameraY(a5),d0
 	ext.l	d0
 	add.l	#$E0,d0
 	cmp.l	d7,d0

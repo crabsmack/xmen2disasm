@@ -34,11 +34,11 @@ loc_1CF484:
 	moveq	#$2,d0
 loc_1CF486:
 	move.w	d0,-$C(a6)
-	move.w	-$348E(a5),d0
+	move.w	g_CameraX(a5),d0
 	ext.l	d0
 	add.l	#$140,d0
 	move.w	d0,-$A(a6)
-	move.w	-$3490(a5),d0
+	move.w	g_CameraY(a5),d0
 	ext.l	d0
 	move.l	d0,d7
 	add.l	#$E0,d7
@@ -68,11 +68,11 @@ loc_1CF4E0:
 	asr.l	#$8,d5
 	move.l	$4(a4),d4
 	asr.l	#$8,d4
-	cmp.w	-$348E(a5),d5
+	cmp.w	g_CameraX(a5),d5
 	blt.w	loc_1CF63A
 	cmp.w	-$A(a6),d5
 	bgt.w	loc_1CF63A
-	cmp.w	-$3490(a5),d4
+	cmp.w	g_CameraY(a5),d4
 	blt.w	loc_1CF63A
 	cmp.w	d4,d7
 	blt.w	loc_1CF63A
@@ -124,7 +124,7 @@ loc_1CF568:
 	move.w	-$14(a6),d1
 	ext.l	d1
 	sub.l	d1,d0
-	move.w	-$3490(a5),d1
+	move.w	g_CameraY(a5),d1
 	ext.l	d1
 	sub.l	d1,d0
 	add.w	#$80,d0
@@ -150,7 +150,7 @@ loc_1CF568:
 	move.w	-$16(a6),d1
 	ext.l	d1
 	sub.l	d1,d0
-	move.w	-$348E(a5),d1
+	move.w	g_CameraX(a5),d1
 	ext.l	d1
 	sub.l	d1,d0
 	add.w	#$80,d0
@@ -180,7 +180,7 @@ loc_1CF622:
 	bra.w	loc_1CF7F0
 loc_1CF63A:
 	ext.l	d5
-	move.w	-$348E(a5),d0
+	move.w	g_CameraX(a5),d0
 	ext.l	d0
 	moveq	#$32,d1
 	sub.l	d1,d0
@@ -194,7 +194,7 @@ loc_1CF63A:
 	cmp.l	d5,d0
 	blt.s	loc_1CF6B8
 	ext.l	d4
-	move.w	-$3490(a5),d0
+	move.w	g_CameraY(a5),d0
 	ext.l	d0
 	moveq	#$32,d1
 	sub.l	d1,d0
@@ -234,14 +234,14 @@ loc_1CF6B8:
 	bra.w	loc_1CF7F0
 loc_1CF6C2:
 	ext.l	d5
-	move.w	-$348E(a5),d0
+	move.w	g_CameraX(a5),d0
 	ext.l	d0
 	move.l	d5,d1
 	sub.l	d0,d1
 	lsl.l	#$8,d1
 	move.l	d1,-$18(a6)
 	ext.l	d4
-	move.w	-$3490(a5),d0
+	move.w	g_CameraY(a5),d0
 	ext.l	d0
 	move.l	d4,d1
 	sub.l	d0,d1

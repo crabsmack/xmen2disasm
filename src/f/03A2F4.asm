@@ -17,13 +17,13 @@ sub_03A2F4:
 	move.l	d0,d4
 	move.l	d7,d5
 	sub.l	d4,d5
-	move.w	-$348E(a5),d0
+	move.w	g_CameraX(a5),d0
 	ext.l	d0
 	sub.l	d0,d6
-	move.w	-$3490(a5),d0
+	move.w	g_CameraY(a5),d0
 	ext.l	d0
 	sub.l	d0,d7
-	move.w	-$3490(a5),d0
+	move.w	g_CameraY(a5),d0
 	ext.l	d0
 	sub.l	d0,d4
 	moveq	#$0,d0

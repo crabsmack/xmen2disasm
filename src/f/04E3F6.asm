@@ -29,7 +29,7 @@ ApocBomb_Draw:
 	move.b	$2(a0),d7
 	move.l	$8(a4),d0
 	asr.l	#$8,d0
-	move.w	-$348E(a5),d1
+	move.w	g_CameraX(a5),d1
 	ext.l	d1
 	sub.l	d1,d0
 	ext.l	d6
@@ -37,7 +37,7 @@ ApocBomb_Draw:
 	sub.l	d6,d4
 	move.l	$C(a4),d0
 	asr.l	#$8,d0
-	move.w	-$3490(a5),d1
+	move.w	g_CameraY(a5),d1
 	ext.l	d1
 	sub.l	d1,d0
 	ext.l	d7
@@ -136,7 +136,7 @@ loc_04E4E6:
 	move.b	$2(a0),d5
 	move.l	$8(a4),d0
 	asr.l	#$8,d0
-	move.w	-$348E(a5),d1
+	move.w	g_CameraX(a5),d1
 	ext.l	d1
 	sub.l	d1,d0
 	ext.l	d6
@@ -144,7 +144,7 @@ loc_04E4E6:
 	sub.l	d6,d7
 	move.w	$A6(a4),d0
 	ext.l	d0
-	move.w	-$3490(a5),d1
+	move.w	g_CameraY(a5),d1
 	ext.l	d1
 	sub.l	d1,d0
 	ext.l	d5

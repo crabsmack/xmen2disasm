@@ -65,10 +65,10 @@ loc_086988:
 	bne.s	loc_086A22
 	tst.w	-$16EE(a5)
 	bne.s	loc_086A22
-	move.w	-$348E(a5),d0
+	move.w	g_CameraX(a5),d0
 	cmp.w	-$16FE(a5),d0
 	bgt.s	loc_086A22
-	move.w	-$348E(a5),d0
+	move.w	g_CameraX(a5),d0
 	ext.l	d0
 	add.l	#$140,d0
 	move.w	-$1702(a5),d1
@@ -115,10 +115,10 @@ loc_086A22:
 	bne.s	loc_086AB2
 	tst.w	-$17DE(a5)
 	bne.s	loc_086AB2
-	move.w	-$348E(a5),d0
+	move.w	g_CameraX(a5),d0
 	cmp.w	-$17EE(a5),d0
 	bgt.s	loc_086AB2
-	move.w	-$348E(a5),d0
+	move.w	g_CameraX(a5),d0
 	ext.l	d0
 	add.l	#$140,d0
 	move.w	-$17F2(a5),d1

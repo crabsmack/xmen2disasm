@@ -13,13 +13,13 @@ sub_086ECE:
 	jsr	(a1)
 	moveq	#$0,d0
 	move.l	d0,-(a7)
-	move.w	-$3490(a5),d1
+	move.w	g_CameraY(a5),d1
 	ext.l	d1
 	moveq	#$B,d2
 	add.l	d2,d1
 	lsl.l	#$8,d1
 	move.l	d1,-(a7)
-	move.w	-$348E(a5),d1
+	move.w	g_CameraX(a5),d1
 	ext.l	d1
 	moveq	#$2D,d0
 	add.l	d0,d1

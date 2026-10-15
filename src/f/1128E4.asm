@@ -25,7 +25,7 @@ sub_1128E4:
 	move.b	$2(a3),d5
 	move.b	$3(a3),d7
 	move.l	#$F000,d7
-	move.w	-$3490(a5),d0
+	move.w	g_CameraY(a5),d0
 	ext.l	d0
 	moveq	#$14,d1
 	sub.l	d1,d0

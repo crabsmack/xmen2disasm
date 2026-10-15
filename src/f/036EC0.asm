@@ -5,7 +5,7 @@ sub_036EC0:
 	link.w	a6,#$0
 	move.l	a4,-(a7)
 	movea.l	$8(a6),a4
-	cmpi.w	#$1A4,-$348E(a5)
+	cmpi.w	#$1A4,g_CameraX(a5)
 	blt.s	loc_036F00
 	moveq	#$4,d0
 	move.l	d0,-(a7)

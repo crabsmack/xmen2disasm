@@ -8,9 +8,9 @@ sub_0AB2CC:
 	tst.w	$6E(a4)
 	bne.s	loc_0AB304
 	move.w	-$38BC(a5),d0
-	cmp.w	-$3490(a5),d0
+	cmp.w	g_CameraY(a5),d0
 	ble.s	loc_0AB304
-	move.w	-$3490(a5),d0
+	move.w	g_CameraY(a5),d0
 	ext.l	d0
 	add.l	#$E0,d0
 	move.w	-$38BC(a5),d1

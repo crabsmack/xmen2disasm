@@ -22,7 +22,7 @@ sub_0B65C6:
 	movea.l	$2(a0),a0
 	movea.l	$A(a0),a1
 	jsr	(a1)
-	move.l	d0,-$35B6(a5)
+	move.l	d0,g_Camera(a5)
 	jsr	$2E8A(a5)	; -> sub_1190D6
 	moveq	#$10,d0
 	move.l	d0,-(a7)

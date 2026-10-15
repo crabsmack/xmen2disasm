@@ -6,7 +6,7 @@ sub_0AB1EE:
 	movem.l	d5-d7/a3-a4,-(a7)
 	movea.l	$8(a6),a4
 	moveq	#$7,d5
-	move.w	-$348E(a5),d0
+	move.w	g_CameraX(a5),d0
 	ext.l	d0
 	moveq	#$20,d1
 	add.l	d1,d0

@@ -70,7 +70,7 @@ loc_09B726:
 	move.l	d1,-(a7)
 	pea.l	($5A0).w
 	pea.l	($5EA).w
-	move.l	-$35B6(a5),-(a7)
+	move.l	g_Camera(a5),-(a7)
 	lea.l	$4DBA(a5),a0
 	movea.l	$2(a0),a0
 	movea.l	$36(a0),a1

@@ -100,7 +100,7 @@ loc_05A9D2:
 loc_05AA32:
 	move.w	$E(a4),d0
 loc_05AA36:
-	sub.w	-$3490(a5),d0
+	sub.w	g_CameraY(a5),d0
 	move.w	d0,-$2(a6)
 loc_05AA3E:
 	move.w	-$6(a6),d0

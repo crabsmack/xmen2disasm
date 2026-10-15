@@ -5,14 +5,14 @@ sub_09B45E:
 	link.w	a6,#$0
 	move.l	a4,-(a7)
 	movea.l	$8(a6),a4
-	move.w	-$348E(a5),d0
+	move.w	g_CameraX(a5),d0
 	ext.l	d0
 	add.l	#$1A2,d0
 	lsl.l	#$8,d0
 	move.l	d0,$8(a4)
 	tst.l	$96(a4)
 	beq.s	loc_09B494
-	move.w	-$348E(a5),d0
+	move.w	g_CameraX(a5),d0
 	ext.l	d0
 	moveq	#$62,d1
 	add.l	d1,d0

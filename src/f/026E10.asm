@@ -45,11 +45,11 @@ loc_026E80:
 	move.l	d0,$90(a4)
 	addq.w	#$4,a7
 loc_026E90:
-	tst.l	-$35B6(a5)
+	tst.l	g_Camera(a5)
 	beq.s	loc_026EAA
-	movea.l	-$35B6(a5),a0
+	movea.l	g_Camera(a5),a0
 	move.w	#$5A,$40(a0)
-	movea.l	-$35B6(a5),a0
+	movea.l	g_Camera(a5),a0
 	move.w	#$5F,$42(a0)
 loc_026EAA:
 	pea.l	($DD).w

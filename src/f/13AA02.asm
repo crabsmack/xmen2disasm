@@ -29,9 +29,9 @@ sub_13AA02:
 	bra.w	loc_13AAF8
 loc_13AA4C:
 	move.w	$4(a4),d5
-	sub.w	-$348E(a5),d5
+	sub.w	g_CameraX(a5),d5
 	move.w	$6(a4),d6
-	sub.w	-$3490(a5),d6
+	sub.w	g_CameraY(a5),d6
 	lea.l	g_SpriteTable(a5),a0
 	movea.l	-$1FE6(a5),a1
 	move.b	$3(a1),d0

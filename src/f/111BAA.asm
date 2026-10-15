@@ -116,10 +116,10 @@ loc_111CB4:
 	move.l	$4(a0),d6
 	asr.l	#$8,d6
 	move.w	d5,d0
-	sub.w	-$348E(a5),d0
+	sub.w	g_CameraX(a5),d0
 	move.w	d0,-$12(a6)
 	move.w	d6,d0
-	sub.w	-$3490(a5),d0
+	sub.w	g_CameraY(a5),d0
 	move.w	d0,-$10(a6)
 	moveq	#-$20,d0
 	cmp.w	-$12(a6),d0

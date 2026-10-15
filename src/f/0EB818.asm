@@ -11,13 +11,13 @@ CoreShields_Draw:
 	move.b	$90(a3),d5
 	move.l	$8(a3),d0
 	asr.l	#$8,d0
-	move.w	-$348E(a5),d1
+	move.w	g_CameraX(a5),d1
 	ext.l	d1
 	sub.l	d1,d0
 	move.w	d0,-$E(a6)
 	move.l	$C(a3),d0
 	asr.l	#$8,d0
-	move.w	-$3490(a5),d1
+	move.w	g_CameraY(a5),d1
 	ext.l	d1
 	sub.l	d1,d0
 	move.w	d0,-$C(a6)

@@ -154,8 +154,8 @@ loc_0BEBBE:
 	lea.l	$C(a7),a7
 	bra.s	loc_0BEC52
 loc_0BEBD8:
-	sub.w	-$348E(a5),d7
-	sub.w	-$3490(a5),d6
+	sub.w	g_CameraX(a5),d7
+	sub.w	g_CameraY(a5),d6
 	cmpi.w	#$FF80,d7
 	blt.s	loc_0BEBEC
 	cmpi.w	#$1C0,d7

@@ -7,9 +7,9 @@ sub_026DB2:
 	movea.l	$8(a6),a4
 	tst.w	-$3AFA(a5)
 	bne.s	loc_026DD6
-	movea.l	-$35B6(a5),a0
+	movea.l	g_Camera(a5),a0
 	move.w	#$64,$40(a0)
-	movea.l	-$35B6(a5),a0
+	movea.l	g_Camera(a5),a0
 	move.w	#$91,$42(a0)
 loc_026DD6:
 	move.w	$8C(a4),d0

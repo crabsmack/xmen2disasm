@@ -62,7 +62,7 @@ loc_11EA6A:
 	beq.w	loc_11EB28
 	move.w	(a4),d0
 	ext.l	d0
-	move.w	-$348E(a5),d1
+	move.w	g_CameraX(a5),d1
 	ext.l	d1
 	sub.l	d1,d0
 	moveq	#-$20,d1
@@ -70,14 +70,14 @@ loc_11EA6A:
 	bge.w	loc_11EB28
 	move.w	(a4),d0
 	ext.l	d0
-	move.w	-$348E(a5),d1
+	move.w	g_CameraX(a5),d1
 	ext.l	d1
 	sub.l	d1,d0
 	cmpi.l	#$140,d0
 	bge.w	loc_11EB28
 	move.w	$2(a4),d0
 	ext.l	d0
-	move.w	-$3490(a5),d1
+	move.w	g_CameraY(a5),d1
 	ext.l	d1
 	sub.l	d1,d0
 	moveq	#-$20,d1
@@ -85,7 +85,7 @@ loc_11EA6A:
 	bge.s	loc_11EB28
 	move.w	$2(a4),d0
 	ext.l	d0
-	move.w	-$3490(a5),d1
+	move.w	g_CameraY(a5),d1
 	ext.l	d1
 	sub.l	d1,d0
 	cmpi.l	#$E0,d0
@@ -101,7 +101,7 @@ loc_11EA6A:
 	move.l	d0,-$1FE6(a5)
 	move.w	$2(a4),d0
 	ext.l	d0
-	move.w	-$3490(a5),d1
+	move.w	g_CameraY(a5),d1
 	ext.l	d1
 	sub.l	d1,d0
 	add.w	#$80,d0
@@ -113,7 +113,7 @@ loc_11EA6A:
 	move.w	d6,$4(a0)
 	move.w	(a4),d0
 	ext.l	d0
-	move.w	-$348E(a5),d1
+	move.w	g_CameraX(a5),d1
 	ext.l	d1
 	sub.l	d1,d0
 	add.w	#$80,d0
@@ -145,7 +145,7 @@ loc_11EB52:
 	bne.w	loc_11EC0E
 	move.w	(a4),d0
 	ext.l	d0
-	move.w	-$348E(a5),d1
+	move.w	g_CameraX(a5),d1
 	ext.l	d1
 	sub.l	d1,d0
 	moveq	#-$20,d1
@@ -153,14 +153,14 @@ loc_11EB52:
 	bge.w	loc_11EC0E
 	move.w	(a4),d0
 	ext.l	d0
-	move.w	-$348E(a5),d1
+	move.w	g_CameraX(a5),d1
 	ext.l	d1
 	sub.l	d1,d0
 	cmpi.l	#$140,d0
 	bge.w	loc_11EC0E
 	move.w	$2(a4),d0
 	ext.l	d0
-	move.w	-$3490(a5),d1
+	move.w	g_CameraY(a5),d1
 	ext.l	d1
 	sub.l	d1,d0
 	moveq	#-$20,d1
@@ -168,7 +168,7 @@ loc_11EB52:
 	bge.s	loc_11EC0E
 	move.w	$2(a4),d0
 	ext.l	d0
-	move.w	-$3490(a5),d1
+	move.w	g_CameraY(a5),d1
 	ext.l	d1
 	sub.l	d1,d0
 	cmpi.l	#$E0,d0
@@ -184,7 +184,7 @@ loc_11EB52:
 	move.l	d0,-$1FE6(a5)
 	move.w	$2(a4),d0
 	ext.l	d0
-	move.w	-$3490(a5),d1
+	move.w	g_CameraY(a5),d1
 	ext.l	d1
 	sub.l	d1,d0
 	add.w	#$80,d0
@@ -196,7 +196,7 @@ loc_11EB52:
 	move.w	d6,$4(a0)
 	move.w	(a4),d0
 	ext.l	d0
-	move.w	-$348E(a5),d1
+	move.w	g_CameraX(a5),d1
 	ext.l	d1
 	sub.l	d1,d0
 	add.w	#$80,d0
@@ -224,7 +224,7 @@ loc_11EC2A:
 loc_11EC36:
 	move.w	(a4),d0
 	ext.l	d0
-	move.w	-$348E(a5),d1
+	move.w	g_CameraX(a5),d1
 	ext.l	d1
 	sub.l	d1,d0
 	moveq	#-$20,d1
@@ -232,14 +232,14 @@ loc_11EC36:
 	bge.w	loc_11ECE8
 	move.w	(a4),d0
 	ext.l	d0
-	move.w	-$348E(a5),d1
+	move.w	g_CameraX(a5),d1
 	ext.l	d1
 	sub.l	d1,d0
 	cmpi.l	#$140,d0
 	bge.w	loc_11ECE8
 	move.w	$2(a4),d0
 	ext.l	d0
-	move.w	-$3490(a5),d1
+	move.w	g_CameraY(a5),d1
 	ext.l	d1
 	sub.l	d1,d0
 	moveq	#-$20,d1
@@ -247,7 +247,7 @@ loc_11EC36:
 	bge.s	loc_11ECE8
 	move.w	$2(a4),d0
 	ext.l	d0
-	move.w	-$3490(a5),d1
+	move.w	g_CameraY(a5),d1
 	ext.l	d1
 	sub.l	d1,d0
 	cmpi.l	#$E0,d0
@@ -263,7 +263,7 @@ loc_11EC36:
 	move.l	d0,-$1FE6(a5)
 	move.w	$2(a4),d0
 	ext.l	d0
-	move.w	-$3490(a5),d1
+	move.w	g_CameraY(a5),d1
 	ext.l	d1
 	sub.l	d1,d0
 	add.w	#$80,d0
@@ -275,7 +275,7 @@ loc_11EC36:
 	move.w	d6,$4(a0)
 	move.w	(a4),d0
 	ext.l	d0
-	move.w	-$348E(a5),d1
+	move.w	g_CameraX(a5),d1
 	ext.l	d1
 	sub.l	d1,d0
 	add.w	#$80,d0

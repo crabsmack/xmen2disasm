@@ -125,7 +125,7 @@ loc_1F1786:
 	move.l	#$200000,d0
 	and.l	$90(a4),d0
 	bne.w	loc_1F1890
-	movea.l	-$35B6(a5),a0
+	movea.l	g_Camera(a5),a0
 	moveq	#$8,d0
 	and.w	$4A(a0),d0
 	beq.s	loc_1F181A
@@ -161,7 +161,7 @@ loc_1F17FA:
 	and.w	g_Pad2Latch(a5),d0
 	move.w	d0,g_Pad2Latch(a5)
 loc_1F1808:
-	movea.l	-$35B6(a5),a0
+	movea.l	g_Camera(a5),a0
 	move.l	a0,-(a7)
 	movea.l	(a0),a0
 	movea.l	$32(a0),a1
@@ -169,7 +169,7 @@ loc_1F1808:
 	addq.w	#$4,a7
 	bra.s	loc_1F1890
 loc_1F181A:
-	movea.l	-$35B6(a5),a0
+	movea.l	g_Camera(a5),a0
 	moveq	#$4,d0
 	and.w	$4A(a0),d0
 	beq.s	loc_1F1890
@@ -205,7 +205,7 @@ loc_1F186A:
 	move.w	d0,g_Pad2Latch(a5)
 loc_1F1878:
 	andi.l	#$FFFBFFFF,$90(a4)
-	movea.l	-$35B6(a5),a0
+	movea.l	g_Camera(a5),a0
 	move.l	a0,-(a7)
 	movea.l	(a0),a0
 	movea.l	$2E(a0),a1

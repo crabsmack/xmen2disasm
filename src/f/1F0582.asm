@@ -130,7 +130,7 @@ loc_1F06CA:
 	clr.w	$6C(a4)
 	move.w	#$3C,$6A(a4)
 	ori.w	#$80,$6(a4)
-	movea.l	-$35B6(a5),a0
+	movea.l	g_Camera(a5),a0
 	ori.w	#$2,$4A(a0)
 	lea.l	sub_1F0998(pc),a0
 	move.l	a0,$5C(a4)

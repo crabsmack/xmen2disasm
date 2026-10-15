@@ -10,13 +10,13 @@ loc_111A00:
 	cmpi.w	#$1,d0
 	bne.s	loc_111A46
 	andi.b	#$EF,$2E(a4)
-	move.w	-$348E(a5),d0
+	move.w	g_CameraX(a5),d0
 	ext.l	d0
 	moveq	#$64,d1
 	sub.l	d1,d0
 	lsl.l	#$8,d0
 	move.l	d0,$8(a4)
-	move.w	-$3490(a5),d0
+	move.w	g_CameraY(a5),d0
 	ext.l	d0
 	moveq	#$32,d2
 	add.l	d2,d0
@@ -26,12 +26,12 @@ loc_111A00:
 	bra.s	loc_111A74
 loc_111A46:
 	ori.b	#$10,$2E(a4)
-	move.w	-$348E(a5),d0
+	move.w	g_CameraX(a5),d0
 	ext.l	d0
 	add.l	#$1A4,d0
 	lsl.l	#$8,d0
 	move.l	d0,$8(a4)
-	move.w	-$3490(a5),d0
+	move.w	g_CameraY(a5),d0
 	ext.l	d0
 	moveq	#$32,d1
 	add.l	d1,d0

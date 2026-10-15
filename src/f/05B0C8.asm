@@ -34,16 +34,16 @@ loc_05B124:
 	move.l	(a4),d0
 	asr.l	#$8,d0
 	move.w	d0,d5
-	sub.w	-$348E(a5),d5
+	sub.w	g_CameraX(a5),d5
 	move.l	$4(a4),d0
 	asr.l	#$8,d0
 	move.w	d0,d6
-	sub.w	-$3490(a5),d6
+	sub.w	g_CameraY(a5),d6
 	cmp.w	$12(a4),d6
 	ble.w	loc_05B1C8
 	move.w	$12(a4),d0
 	ext.l	d0
-	move.w	-$3490(a5),d1
+	move.w	g_CameraY(a5),d1
 	ext.l	d1
 	add.l	d0,d1
 	lsl.l	#$8,d1

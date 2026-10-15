@@ -10,13 +10,13 @@ FarAcolyte_Draw:
 	movea.l	$8(a6),a4
 	move.l	$8(a4),d0
 	asr.l	#$8,d0
-	move.w	-$348E(a5),d1
+	move.w	g_CameraX(a5),d1
 	ext.l	d1
 	move.l	d0,d6
 	sub.l	d1,d6
 	move.l	$C(a4),d0
 	asr.l	#$8,d0
-	move.w	-$3490(a5),d1
+	move.w	g_CameraY(a5),d1
 	ext.l	d1
 	move.l	d0,d6
 	sub.l	d1,d6
@@ -26,7 +26,7 @@ FarAcolyte_Draw:
 	lea.l	$94(a4),a3
 	move.l	(a3),d0
 	asr.l	#$8,d0
-	move.w	-$348E(a5),d1
+	move.w	g_CameraX(a5),d1
 	ext.l	d1
 	sub.l	d1,d0
 	move.l	d0,d6
@@ -34,7 +34,7 @@ FarAcolyte_Draw:
 	sub.l	d0,d6
 	move.l	$4(a3),d1
 	asr.l	#$8,d1
-	move.w	-$3490(a5),d2
+	move.w	g_CameraY(a5),d2
 	ext.l	d2
 	sub.l	d2,d1
 	move.l	d1,d7
@@ -150,13 +150,13 @@ loc_017680:
 	move.l	a0,-$4(a6)
 	move.l	(a3),d0
 	asr.l	#$8,d0
-	move.w	-$348E(a5),d1
+	move.w	g_CameraX(a5),d1
 	ext.l	d1
 	move.l	d0,d5
 	sub.l	d1,d5
 	move.l	$4(a3),d0
 	asr.l	#$8,d0
-	move.w	-$3490(a5),d1
+	move.w	g_CameraY(a5),d1
 	ext.l	d1
 	move.l	d0,d6
 	sub.l	d1,d6

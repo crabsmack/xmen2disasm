@@ -67,7 +67,7 @@ loc_05BC6A:
 loc_05BC6E:
 	move.l	$C(a4),d0
 	asr.l	#$8,d0
-	move.w	-$3490(a5),d1
+	move.w	g_CameraY(a5),d1
 	ext.l	d1
 	move.l	d0,d7
 	sub.l	d1,d7

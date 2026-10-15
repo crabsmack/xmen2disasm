@@ -75,7 +75,7 @@ loc_107750:
 	movea.l	$2(a0),a0
 	movea.l	$A(a0),a1
 	jsr	(a1)
-	move.l	d0,-$35B6(a5)
+	move.l	d0,g_Camera(a5)
 	addq.w	#$8,a7
 	unlk	a6
 	rts

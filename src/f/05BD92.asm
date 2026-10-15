@@ -17,14 +17,14 @@ loc_05BDAC:
 	move.w	(a4),d0
 	asr.w	#$2,d0
 	ext.l	d0
-	move.w	-$348E(a5),d1
+	move.w	g_CameraX(a5),d1
 	ext.l	d1
 	move.l	d0,d5
 	sub.l	d1,d5
 	move.w	$2(a4),d0
 	asr.w	#$2,d0
 	ext.l	d0
-	move.w	-$3490(a5),d1
+	move.w	g_CameraY(a5),d1
 	ext.l	d1
 	move.l	d0,d6
 	sub.l	d1,d6
@@ -53,7 +53,7 @@ loc_05BE02:
 	ext.l	d0
 	moveq	#$28,d1
 	sub.l	d1,d0
-	move.w	-$348E(a5),d2
+	move.w	g_CameraX(a5),d2
 	ext.l	d2
 	sub.l	d2,d0
 	cmpi.l	#$140,d0
@@ -62,7 +62,7 @@ loc_05BE02:
 	ext.l	d0
 	moveq	#$28,d1
 	add.l	d1,d0
-	move.w	-$348E(a5),d2
+	move.w	g_CameraX(a5),d2
 	ext.l	d2
 	sub.l	d2,d0
 	blt.w	loc_05BF40
@@ -70,7 +70,7 @@ loc_05BE02:
 	ext.l	d0
 	moveq	#$28,d1
 	sub.l	d1,d0
-	move.w	-$3490(a5),d2
+	move.w	g_CameraY(a5),d2
 	ext.l	d2
 	sub.l	d2,d0
 	cmpi.l	#$E0,d0
@@ -79,7 +79,7 @@ loc_05BE02:
 	ext.l	d0
 	moveq	#$28,d1
 	add.l	d1,d0
-	move.w	-$3490(a5),d2
+	move.w	g_CameraY(a5),d2
 	ext.l	d2
 	sub.l	d2,d0
 	blt.w	loc_05BF40
@@ -87,13 +87,13 @@ loc_05BE02:
 	beq.s	loc_05BE98
 	move.w	$24(a3),d0
 	ext.l	d0
-	move.w	-$3490(a5),d1
+	move.w	g_CameraY(a5),d1
 	ext.l	d1
 	sub.l	d1,d0
 	move.l	d0,-(a7)
 	move.w	$22(a3),d0
 	ext.l	d0
-	move.w	-$348E(a5),d1
+	move.w	g_CameraX(a5),d1
 	ext.l	d1
 	sub.l	d1,d0
 	move.l	d0,-(a7)
@@ -122,14 +122,14 @@ loc_05BEB8:
 	move.l	$C(a3),d1
 	sub.l	d0,d1
 	asr.l	#$8,d1
-	move.w	-$3490(a5),d0
+	move.w	g_CameraY(a5),d0
 	ext.l	d0
 	sub.l	d0,d1
 	bra.s	loc_05BEE4
 loc_05BED4:
 	move.l	$C(a3),d0
 	asr.l	#$8,d0
-	move.w	-$3490(a5),d1
+	move.w	g_CameraY(a5),d1
 	ext.l	d1
 	sub.l	d1,d0
 	move.l	d0,d1
@@ -156,14 +156,14 @@ loc_05BF06:
 	move.l	$8(a3),d1
 	sub.l	d0,d1
 	asr.l	#$8,d1
-	move.w	-$348E(a5),d0
+	move.w	g_CameraX(a5),d0
 	ext.l	d0
 	sub.l	d0,d1
 	bra.s	loc_05BF32
 loc_05BF22:
 	move.l	$8(a3),d0
 	asr.l	#$8,d0
-	move.w	-$348E(a5),d1
+	move.w	g_CameraX(a5),d1
 	ext.l	d1
 	sub.l	d1,d0
 	move.l	d0,d1

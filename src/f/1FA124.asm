@@ -417,7 +417,7 @@ loc_1FA61A:
 	jsr	sub_1FA05A(pc)
 	tst.b	-$3890(a5)
 	beq.s	loc_1FA638
-	movea.l	-$35B6(a5),a0
+	movea.l	g_Camera(a5),a0
 	move.l	a0,-(a7)
 	movea.l	(a0),a0
 	movea.l	$12(a0),a1

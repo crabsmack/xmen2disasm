@@ -14,12 +14,12 @@ sub_087208:
 	and.w	$4(a4),d0
 	bra.s	loc_08728C
 loc_08722C:
-	move.w	-$3490(a5),d0
+	move.w	g_CameraY(a5),d0
 	ext.l	d0
 	add.l	#$C9,d0
 	lsl.l	#$8,d0
 	move.l	d0,-(a7)
-	move.w	-$348E(a5),d0
+	move.w	g_CameraX(a5),d0
 	ext.l	d0
 	moveq	#-$A,d1
 	add.l	d1,d0

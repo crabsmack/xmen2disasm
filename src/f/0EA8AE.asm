@@ -22,13 +22,13 @@ Hologram_Draw:
 	moveq	#$18,d1
 	sub.l	d1,d0
 	move.w	d0,d4
-	sub.w	-$348E(a5),d4
+	sub.w	g_CameraX(a5),d4
 	move.l	$C(a4),d0
 	asr.l	#$8,d0
 	moveq	#$60,d2
 	sub.l	d2,d0
 	move.w	d0,d5
-	sub.w	-$3490(a5),d5
+	sub.w	g_CameraY(a5),d5
 	cmpi.w	#$FFE0,d4
 	blt.s	loc_0EA90E
 	cmpi.w	#$160,d4

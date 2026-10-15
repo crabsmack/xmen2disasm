@@ -20,7 +20,7 @@ sub_1F1DEC:
 	move.w	#$1000,d0
 	and.w	$4(a4),d0
 	bne.s	loc_1F1E3C
-	movea.l	-$35B6(a5),a0
+	movea.l	g_Camera(a5),a0
 	moveq	#$8,d0
 	and.w	$4A(a0),d0
 	bne.s	loc_1F1E3A

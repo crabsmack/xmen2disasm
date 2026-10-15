@@ -55,13 +55,13 @@ loc_099262:
 	move.l	-$8(a6),d1
 	add.w	d1,d0
 	move.w	d0,-$3B38(a5)
-	move.w	-$348E(a5),d6
+	move.w	g_CameraX(a5),d6
 	add.w	#$A0,d6
-	move.w	-$3490(a5),d5
+	move.w	g_CameraY(a5),d5
 	add.w	#$C0,d5
 	cmpi.w	#$61E,d6
 	bge.s	loc_0992E2
-	move.w	-$348E(a5),d0
+	move.w	g_CameraX(a5),d0
 	add.w	#$20,d0
 	move.l	d0,-$C(a6)
 	jsr	$417A(a5)	; -> sub_1600AA
@@ -76,7 +76,7 @@ loc_099262:
 loc_0992E2:
 	cmpi.w	#$1,d6
 	ble.s	loc_09930C
-	move.w	-$348E(a5),d0
+	move.w	g_CameraX(a5),d0
 	ext.l	d0
 	add.l	#$120,d0
 	move.l	d0,-$10(a6)
@@ -142,8 +142,8 @@ loc_09936E:
 	moveq	#$7F,d0
 	and.w	d1,d0
 	move.w	d0,d6
-	add.w	-$348E(a5),d6
-	move.w	-$3490(a5),d7
+	add.w	g_CameraX(a5),d6
+	move.w	g_CameraY(a5),d7
 	moveq	#$A,d0
 	move.l	d0,-(a7)
 	move.l	-$3B1C(a5),-(a7)

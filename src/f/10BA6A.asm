@@ -81,7 +81,7 @@ loc_10BB1C:
 	movea.l	$2(a0),a0
 	movea.l	$A(a0),a1
 	jsr	(a1)
-	move.l	d0,-$35B6(a5)
+	move.l	d0,g_Camera(a5)
 	subi.w	#$10,-$3A92(a5)
 	move.w	-$3A92(a5),-$3A9A(a5)
 	unlk	a6

@@ -13,8 +13,8 @@ sub_0C0F88:
 	move.l	d4,-(a7)
 	move.l	-$3C0E(a5),-(a7)
 	jsr	$507A(a5)	; -> sub_1FB142
-	sub.w	-$348E(a5),d7
-	sub.w	-$3490(a5),d6
+	sub.w	g_CameraX(a5),d7
+	sub.w	g_CameraY(a5),d6
 	ext.l	d6
 	move.l	d6,-(a7)
 	ext.l	d7

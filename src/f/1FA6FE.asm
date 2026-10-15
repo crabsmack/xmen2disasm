@@ -10,7 +10,7 @@ sub_1FA6FE:
 	clr.w	-$3A24(a5)
 	clr.b	-$38C2(a5)
 	move.w	-$3598(a5),-$3888(a5)
-	tst.l	-$35B6(a5)
+	tst.l	g_Camera(a5)
 	bne.s	loc_1FA744
 	moveq	#$0,d0
 	move.l	d0,-(a7)
@@ -20,7 +20,7 @@ sub_1FA6FE:
 	movea.l	$2(a0),a0
 	movea.l	$A(a0),a1
 	jsr	(a1)
-	move.l	d0,-$35B6(a5)
+	move.l	d0,g_Camera(a5)
 	addq.w	#$8,a7
 loc_1FA744:
 	jsr	$5042(a5)	; -> sub_1FA956

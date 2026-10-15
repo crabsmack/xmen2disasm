@@ -55,7 +55,7 @@ loc_1216EA:
 	tst.w	$A(a3)
 	bge.s	loc_121712
 	ext.l	d5
-	move.w	-$348E(a5),d0
+	move.w	g_CameraX(a5),d0
 	ext.l	d0
 	moveq	#$14,d1
 	sub.l	d1,d0
@@ -65,7 +65,7 @@ loc_1216EA:
 	bra.s	loc_12172A
 loc_121712:
 	ext.l	d5
-	move.w	-$348E(a5),d0
+	move.w	g_CameraX(a5),d0
 	ext.l	d0
 	add.l	#$154,d0
 	cmp.l	d5,d0
@@ -197,7 +197,7 @@ loc_121842:
 	add.l	a0,d0
 	move.l	d0,-$1FE6(a5)
 	ext.l	d6
-	move.w	-$3490(a5),d0
+	move.w	g_CameraY(a5),d0
 	ext.l	d0
 	move.l	d6,d1
 	sub.l	d0,d1
@@ -213,7 +213,7 @@ loc_121842:
 	movea.l	-$1FE6(a5),a0
 	move.w	d1,$4(a0)
 	ext.l	d5
-	move.w	-$348E(a5),d0
+	move.w	g_CameraX(a5),d0
 	ext.l	d0
 	move.l	d5,d1
 	sub.l	d0,d1

@@ -40,9 +40,9 @@ loc_13EC76:
 	beq.w	loc_13EDB8
 	clr.b	d4
 	move.w	(a4),d6
-	sub.w	-$348E(a5),d6
+	sub.w	g_CameraX(a5),d6
 	move.w	$2(a4),d7
-	sub.w	-$3490(a5),d7
+	sub.w	g_CameraY(a5),d7
 	cmp.w	-$35C2(a5),d6
 	ble.s	loc_13ECA2
 	moveq	#$1,d4
@@ -169,9 +169,9 @@ loc_13EDC6:
 	bne.s	loc_13EE16
 	clr.b	d5
 	move.w	$E(a3),d6
-	sub.w	-$348E(a5),d6
+	sub.w	g_CameraX(a5),d6
 	move.w	$10(a3),d7
-	sub.w	-$3490(a5),d7
+	sub.w	g_CameraY(a5),d7
 	cmp.w	-$35C2(a5),d6
 	ble.s	loc_13EDE8
 	moveq	#$1,d5

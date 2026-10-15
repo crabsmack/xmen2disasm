@@ -12,7 +12,7 @@ sub_00F778:
 	bgt.s	loc_00F7A8
 	clr.w	-$3B32(a5)
 	lea.l	sub_00F80A(pc),a0
-	movea.l	-$35B6(a5),a1
+	movea.l	g_Camera(a5),a1
 	move.l	a0,$4(a1)
 	jsr	sub_00F59A(pc)
 loc_00F7A8:
@@ -40,10 +40,10 @@ loc_00F7CC:
 	clr.l	-$1832(a5)
 	clr.w	-$1828(a5)
 loc_00F7F0:
-	move.w	-$3490(a5),d0
+	move.w	g_CameraY(a5),d0
 	ext.l	d0
 	move.l	d0,-(a7)
-	move.w	-$348E(a5),d0
+	move.w	g_CameraX(a5),d0
 	ext.l	d0
 	move.l	d0,-(a7)
 	jsr	sub_00FC12(pc)

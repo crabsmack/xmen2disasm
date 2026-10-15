@@ -13,13 +13,13 @@ PowerUp_Update:
 	move.l	$C(a3),d6
 	asr.l	#$8,d6
 	ext.l	d5
-	move.w	-$348E(a5),d0
+	move.w	g_CameraX(a5),d0
 	ext.l	d0
 	move.l	d5,d1
 	sub.l	d0,d1
 	move.w	d1,-$2(a6)
 	ext.l	d6
-	move.w	-$3490(a5),d0
+	move.w	g_CameraY(a5),d0
 	ext.l	d0
 	move.l	d6,d7
 	sub.l	d0,d7

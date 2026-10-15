@@ -34,14 +34,14 @@ loc_13E538:
 	move.l	(a4,d0.l),d0
 	asr.l	#$3,d0
 	move.w	d0,d6
-	sub.w	-$348E(a5),d6
+	sub.w	g_CameraX(a5),d6
 	ext.l	d5
 	move.l	d5,d0
 	asl.l	#$2,d0
 	move.l	$C(a4,d0.l),d0
 	asr.l	#$3,d0
 	move.w	d0,d7
-	sub.w	-$3490(a5),d7
+	sub.w	g_CameraY(a5),d7
 	cmpi.w	#$120,d6
 	bgt.s	loc_13E56A
 	tst.w	d6

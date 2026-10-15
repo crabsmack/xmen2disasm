@@ -45,7 +45,7 @@ loc_04E6A2:
 loc_04E6B2:
 	move.w	d0,-$2(a6)
 	ext.l	d7
-	move.w	-$348E(a5),d0
+	move.w	g_CameraX(a5),d0
 	ext.l	d0
 	move.l	d7,d1
 	sub.l	d0,d1
@@ -54,7 +54,7 @@ loc_04E6B2:
 	sub.l	d4,d6
 	move.w	-$2(a6),d0
 	ext.l	d0
-	move.w	-$3490(a5),d1
+	move.w	g_CameraY(a5),d1
 	ext.l	d1
 	sub.l	d1,d0
 	ext.l	d5

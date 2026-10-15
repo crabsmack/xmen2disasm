@@ -98,7 +98,7 @@ loc_099170:
 	move.w	d6,-$3B0E(a5)
 	move.w	d7,-$3B10(a5)
 	lea.l	sub_099BBE(pc),a0
-	movea.l	-$35B6(a5),a1
+	movea.l	g_Camera(a5),a1
 	move.l	a0,$1C(a1)
 	move.b	#$1,-$3892(a5)
 	jsr	$5242(a5)	; -> Snd_StopAll

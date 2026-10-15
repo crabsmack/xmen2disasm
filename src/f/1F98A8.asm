@@ -258,7 +258,7 @@ loc_1F9B58:
 	bgt.s	loc_1F9B58
 	move.w	#$A0,-$389C(a5)
 	moveq	#$0,d0
-	move.l	d0,-$35B6(a5)
+	move.l	d0,g_Camera(a5)
 	clr.b	-$3892(a5)
 	move.l	d0,g_ParallaxDesc(a5)
 	lea.l	$510A(a5),a0

@@ -57,7 +57,7 @@ loc_112E26:
 	asr.l	#$8,d0
 	moveq	#$3C,d1
 	sub.l	d1,d0
-	move.w	-$348E(a5),d2
+	move.w	g_CameraX(a5),d2
 	ext.l	d2
 	add.l	#$140,d2
 	cmp.l	d0,d2
@@ -70,7 +70,7 @@ loc_112E48:
 	asr.l	#$8,d0
 	moveq	#$3C,d1
 	add.l	d1,d0
-	move.w	-$348E(a5),d2
+	move.w	g_CameraX(a5),d2
 	ext.l	d2
 	cmp.l	d0,d2
 	ble.s	loc_112E88

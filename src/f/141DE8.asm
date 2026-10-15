@@ -7,14 +7,14 @@ sub_141DE8:
 	movea.l	$8(a6),a4
 	tst.w	$6E(a4)
 	bgt.w	loc_141ED4
-	move.w	-$348E(a5),d0
+	move.w	g_CameraX(a5),d0
 	ext.l	d0
 	add.l	#$180,d0
 	move.w	$4E(a4),d1
 	ext.l	d1
 	cmp.l	d1,d0
 	blt.w	loc_141E94
-	move.w	-$348E(a5),d0
+	move.w	g_CameraX(a5),d0
 	ext.l	d0
 	moveq	#$40,d1
 	sub.l	d1,d0

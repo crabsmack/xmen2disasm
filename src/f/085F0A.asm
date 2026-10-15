@@ -6,11 +6,11 @@ sub_085F0A:
 	movem.l	d6-d7/a4,-(a7)
 	movea.l	$8(a6),a4
 	move.w	$4(a4),d7
-	sub.w	-$348E(a5),d7
+	sub.w	g_CameraX(a5),d7
 	cmpi.w	#$160,d7
 	bgt.s	loc_085F78
 	move.w	$6(a4),d6
-	sub.w	-$3490(a5),d6
+	sub.w	g_CameraY(a5),d6
 	ext.l	d6
 	move.l	d6,-(a7)
 	ext.l	d7

@@ -14,7 +14,7 @@ sub_1A77F0:
 	andi.l	#$FF7FFFFF,$90(a4)
 loc_1A781C:
 	andi.l	#$FFDFFFFF,$90(a4)
-	movea.l	-$35B6(a5),a0
+	movea.l	g_Camera(a5),a0
 	andi.w	#$FFEF,$4A(a0)
 	movea.l	(a4),a0
 	move.l	$A6(a0),$5C(a4)

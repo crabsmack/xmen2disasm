@@ -20,8 +20,8 @@ sub_144774:
 	lea.l	-$3886(a5),a0
 	adda.w	d0,a0
 	move.l	a0,-$4(a6)
-	sub.w	-$348E(a5),d6
-	sub.w	-$3490(a5),d5
+	sub.w	g_CameraX(a5),d6
+	sub.w	g_CameraY(a5),d5
 	tst.b	-$38DE(a5)
 	beq.s	loc_1447CC
 	movea.l	$10(a6),a0
