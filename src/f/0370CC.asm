@@ -1,15 +1,18 @@
 ; ---------------------------------------------------------------------------
-; sub_0370CC	[link-after-rts]
+; MagnetoBoss_Zone1Exit - MAGNETOBOSS leaves zone 1 (mode 2)
+; In:  8(a6) = this
+; Out: d0 = +4 & 8
+; Evidence: next MagnetoBoss_StateFlyToSmash1
 ; ---------------------------------------------------------------------------
-sub_0370CC:
+MagnetoBoss_Zone1Exit:
 	link.w	a6,#$0
 	move.l	a4,-(a7)
 	movea.l	$8(a6),a4
-	lea.l	sub_0370FE(pc),a0
+	lea.l	MagnetoBoss_StateFlyToSmash1(pc),a0
 	move.l	a0,$90(a4)
 	move.b	#$2,$B2(a4)
 	clr.w	$6C(a4)
-	lea.l	sub_0370FE(pc),a0
+	lea.l	MagnetoBoss_StateFlyToSmash1(pc),a0
 	move.l	a0,$5C(a4)
 	moveq	#$8,d0
 	and.w	$4(a4),d0

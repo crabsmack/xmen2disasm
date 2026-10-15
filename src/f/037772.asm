@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_037772	[link-after-rts]
+; MagnetoBoss_StateFlyToFinal - MAGNETOBOSS: when it reaches the final spot hover between x $7A0 and $864
+; In:  8(a6) = this
+; Out: d0
+; Evidence: next MagnetoBoss_StateWaitCamera
 ; ---------------------------------------------------------------------------
-sub_037772:
+MagnetoBoss_StateFlyToFinal:
 	link.w	a6,#$0
 	move.l	a4,-(a7)
 	movea.l	$8(a6),a4
@@ -19,10 +22,10 @@ sub_037772:
 	ori.b	#$2,$9B(a4)
 	move.w	#$7A0,$A6(a4)
 	move.w	#$864,$A8(a4)
-	lea.l	sub_0377D6(pc),a0
+	lea.l	MagnetoBoss_StateWaitCamera(pc),a0
 	move.l	a0,$90(a4)
 	clr.w	$6C(a4)
-	lea.l	sub_0377D6(pc),a0
+	lea.l	MagnetoBoss_StateWaitCamera(pc),a0
 	move.l	a0,$5C(a4)
 	moveq	#$8,d0
 	and.w	$4(a4),d0

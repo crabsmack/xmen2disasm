@@ -64,16 +64,16 @@ loc_036498:
 	bne.s	loc_036498
 loc_036500:
 	tst.b	$B2(a4)
-	beq.w	loc_0366E6
+	beq.w	MagnetoBoss_Move_part2
 	move.w	$9E(a4),d0
 	ext.l	d0
 	move.l	d0,d7
 	lsl.l	#$8,d7
 	move.b	$B2(a4),d0
 	subq.b	#$1,d0
-	bcs.w	loc_0366E6
+	bcs.w	MagnetoBoss_Move_part2
 	cmpi.b	#$3,d0
-	bhi.w	loc_0366E6
+	bhi.w	MagnetoBoss_Move_part2
 	moveq	#$0,d1
 	move.b	d0,d1
 	add.w	d1,d1

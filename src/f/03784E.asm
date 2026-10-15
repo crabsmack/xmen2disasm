@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_03784E	[link-after-rts]
+; MagnetoBoss_StateFinalFight - MAGNETOBOSS final fight: shoot at the target whenever the cooldown ends
+; In:  8(a6) = this
+; Out: none
+; Evidence: +$AC cooldown, +$9D shot delay; MagnetoBoss_StateAimShoot
 ; ---------------------------------------------------------------------------
-sub_03784E:
+MagnetoBoss_StateFinalFight:
 	link.w	a6,#$0
 	move.l	a4,-(a7)
 	movea.l	$8(a6),a4
@@ -14,17 +17,17 @@ sub_03784E:
 	move.b	$9D(a4),d0
 	cmpi.w	#$FFFF,d0
 	bne.s	loc_037888
-	lea.l	sub_037924(pc),a0
+	lea.l	MagnetoBoss_StateAimShoot(pc),a0
 	move.l	a0,$5C(a4)
 	move.l	a4,-(a7)
-	jsr	sub_037924(pc)
+	jsr	MagnetoBoss_StateAimShoot(pc)
 	addq.w	#$4,a7
 	bra.s	loc_0378A0
 loc_037888:
 	moveq	#$0,d0
 	move.b	$9D(a4),d0
 	move.w	d0,$6C(a4)
-	lea.l	sub_037924(pc),a0
+	lea.l	MagnetoBoss_StateAimShoot(pc),a0
 	move.l	a0,$5C(a4)
 	moveq	#$8,d0
 	and.w	$4(a4),d0

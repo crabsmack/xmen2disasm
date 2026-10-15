@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_0375A4	[link-after-rts]
+; MagnetoBoss_StateZone4 - MAGNETOBOSS zone 4: shoot and switch sides until the wall at column $39 is broken, then release the zone
+; In:  8(a6) = this
+; Out: d0
+; Evidence: AvalonA4_ClearCameraZone(4); next MagnetoBoss_Zone4Exit
 ; ---------------------------------------------------------------------------
-sub_0375A4:
+MagnetoBoss_StateZone4:
 	link.w	a6,#$0
 	movem.l	d5-d7/a3-a4,-(a7)
 	movea.l	$8(a6),a4
@@ -33,7 +36,7 @@ sub_0375A4:
 	move.w	#$1F40,$A8(a4)
 	addq.w	#$4,a7
 	clr.w	$6C(a4)
-	lea.l	sub_0376C2(pc),a0
+	lea.l	MagnetoBoss_Zone4Exit(pc),a0
 	move.l	a0,$5C(a4)
 	moveq	#$8,d0
 	and.w	$4(a4),d0
@@ -48,17 +51,17 @@ loc_03761C:
 	move.b	$9D(a4),d0
 	cmpi.w	#$FFFF,d0
 	bne.s	loc_03764C
-	lea.l	sub_037924(pc),a0
+	lea.l	MagnetoBoss_StateAimShoot(pc),a0
 	move.l	a0,$5C(a4)
 	move.l	a4,-(a7)
-	jsr	sub_037924(pc)
+	jsr	MagnetoBoss_StateAimShoot(pc)
 	addq.w	#$4,a7
 	bra.s	loc_0376B8
 loc_03764C:
 	moveq	#$0,d0
 	move.b	$9D(a4),d0
 	move.w	d0,$6C(a4)
-	lea.l	sub_037924(pc),a0
+	lea.l	MagnetoBoss_StateAimShoot(pc),a0
 	move.l	a0,$5C(a4)
 	moveq	#$8,d0
 	and.w	$4(a4),d0

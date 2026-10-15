@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_0369F0	[link-after-rts]
+; MagnetoBoss_CrackWall - crack the wall tiles of a column one stage ($8C -> $A9 -> $AA -> $AB -> $AC), or straight to $AC; sound 99
+; In:  8(a6) = word column, $C(a6) = word first row, $10(a6) = word last row, $14(a6) = byte instant
+; Out: d0 = 1 when the wall is fully cracked
+; Evidence: sub_15D7F8 per row; callers the intro states and MagnetoBoss_StateBreakWall
 ; ---------------------------------------------------------------------------
-sub_0369F0:
+MagnetoBoss_CrackWall:
 	link.w	a6,#$0
 	movem.l	d4-d7,-(a7)
 	clr.b	d4

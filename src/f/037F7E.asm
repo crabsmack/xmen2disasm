@@ -48,7 +48,7 @@ sub_037F7E:
 	move.l	$8(a4),$8(a3)
 	move.l	$C(a4),$C(a3)
 	move.l	a3,-(a7)
-	jsr	$7D2(a5)	; -> sub_036B10
+	jsr	$7D2(a5)	; -> MagnetoBoss_EnterOutroState
 	pea.l	($F0).w
 	jsr	$4F8A(a5)	; -> Scene_EndAfter
 	addq.w	#$8,a7

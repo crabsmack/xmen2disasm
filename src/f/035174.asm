@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; loc_035174
+; AvalonA4_AnimatePalettes_part6 - part 6 of AvalonA4_AnimatePalettes: code block split off by the code-flow tools (not a separate function)
+; In:  registers/frame of AvalonA4_AnimatePalettes
+; Out: continues in AvalonA4_AnimatePalettes
+; Evidence: only reached by branches from AvalonA4_AnimatePalettes; ends with rts
 ; ---------------------------------------------------------------------------
-loc_035174:
+AvalonA4_AnimatePalettes_part6:
 	addq.w	#$1,-$3B3C(a5)
 	moveq	#$F,d0
 	cmp.w	-$3B3C(a5),d0

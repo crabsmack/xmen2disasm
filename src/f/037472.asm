@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_037472	[link-after-rts]
+; MagnetoBoss_StateZone4Approach - MAGNETOBOSS: shoot until the camera reaches x $600, then lock camera zone 4
+; In:  8(a6) = this
+; Out: none
+; Evidence: AvalonA4_SetCameraZone(4, $600, $B0, 8, 8); resume state MagnetoBoss_StateResumeShoot; next MagnetoBoss_Zone4Hover
 ; ---------------------------------------------------------------------------
-sub_037472:
+MagnetoBoss_StateZone4Approach:
 	link.w	a6,#$0
 	move.l	a4,-(a7)
 	movea.l	$8(a6),a4
@@ -17,7 +20,7 @@ sub_037472:
 	jsr	$72A(a5)	; -> AvalonA4_SetCameraZone
 	lea.l	$14(a7),a7
 	clr.w	$6C(a4)
-	lea.l	sub_03755A(pc),a0
+	lea.l	MagnetoBoss_Zone4Hover(pc),a0
 	move.l	a0,$5C(a4)
 	moveq	#$8,d0
 	and.w	$4(a4),d0
@@ -27,24 +30,24 @@ loc_0374B2:
 	beq.s	loc_037502
 	tst.w	$AC(a4)
 	bne.s	loc_037502
-	lea.l	sub_03750A(pc),a0
+	lea.l	MagnetoBoss_StateResumeShoot(pc),a0
 	move.l	a0,$90(a4)
 	move.w	$AA(a4),$AC(a4)
 	moveq	#$0,d0
 	move.b	$9D(a4),d0
 	cmpi.w	#$FFFF,d0
 	bne.s	loc_0374EA
-	lea.l	sub_037924(pc),a0
+	lea.l	MagnetoBoss_StateAimShoot(pc),a0
 	move.l	a0,$5C(a4)
 	move.l	a4,-(a7)
-	jsr	sub_037924(pc)
+	jsr	MagnetoBoss_StateAimShoot(pc)
 	addq.w	#$4,a7
 	bra.s	loc_037502
 loc_0374EA:
 	moveq	#$0,d0
 	move.b	$9D(a4),d0
 	move.w	d0,$6C(a4)
-	lea.l	sub_037924(pc),a0
+	lea.l	MagnetoBoss_StateAimShoot(pc),a0
 	move.l	a0,$5C(a4)
 	moveq	#$8,d0
 	and.w	$4(a4),d0

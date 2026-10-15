@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_03518C	[link-after-rts]
+; AvalonA4_SwitchTileHook - map tile hook: tile $84 at (x,y) becomes $89 with sound $1A
+; In:  8(a6) = word column, $C(a6) = word row
+; Out: d0 = 1
+; Evidence: installed in -$3AF4 by AvalonA4_InstallTileHooks; sub_15D7F8 set tile
 ; ---------------------------------------------------------------------------
-sub_03518C:
+AvalonA4_SwitchTileHook:
 	link.w	a6,#$0
 	movem.l	d5-d7,-(a7)
 	move.w	$E(a6),d6

@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_0367C0	[link-after-rts]
+; MagnetoBoss_SmashSegment - MAGNETOBOSS smashes the floor segment in map column C: broken tiles $85, debris, Seg_Free, rubble thrown away from the target player
+; In:  8(a6) = this, $C(a6) = word column
+; Out: d0
+; Evidence: sub_1F8454 finds the type-$14 segment at its height; sub_118166 debris; MagnetoBoss_SpawnRubble(.., 8, target x < own x, $180, $85)
 ; ---------------------------------------------------------------------------
-sub_0367C0:
+MagnetoBoss_SmashSegment:
 	link.w	a6,#$FFF8
 	movem.l	d4-d7/a3-a4,-(a7)
 	movea.l	$8(a6),a3
@@ -100,7 +103,7 @@ loc_03689A:
 	move.l	d4,-(a7)
 	ext.l	d5
 	move.l	d5,-(a7)
-	jsr	sub_035DC2(pc)
+	jsr	MagnetoBoss_SpawnRubble(pc)
 	lea.l	$1C(a7),a7
 loc_0368C6:
 	movem.l	-$20(a6),d4-d7/a3-a4

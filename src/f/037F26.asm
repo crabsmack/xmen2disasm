@@ -21,7 +21,7 @@ sub_037F26:
 	movea.l	$6E(a0),a1
 	jsr	(a1)
 	move.l	a3,-(a7)
-	jsr	$7CA(a5)	; -> sub_036AC6
+	jsr	$7CA(a5)	; -> MagnetoBoss_EnterSpinState
 	lea.l	$C(a7),a7
 	clr.w	$6C(a4)
 	lea.l	sub_037F7E(pc),a0

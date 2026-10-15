@@ -159,9 +159,9 @@ loc_036244:
 	movea.l	$56(a0),a1
 	jsr	(a1)
 	move.l	a4,-$3AFE(a5)
-	lea.l	sub_036C0A(pc),a0
+	lea.l	MagnetoBoss_StateIntroStart(pc),a0
 	move.l	a0,$5C(a4)
-	lea.l	sub_036C0A(pc),a0
+	lea.l	MagnetoBoss_StateIntroStart(pc),a0
 	move.l	a0,$64(a4)
 	clr.b	$B2(a4)
 	andi.b	#$F1,$9B(a4)

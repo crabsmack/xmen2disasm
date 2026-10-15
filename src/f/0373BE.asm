@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_0373BE	[link-after-rts]
+; MagnetoBoss_StateFlyToSmash2 - MAGNETOBOSS: once past x $490 smash the floor at column $25
+; In:  8(a6) = this
+; Out: d0
+; Evidence: MagnetoBoss_SmashSegmentStaggered(this, $25); next MagnetoBoss_StateSmash2b after 5 frames
 ; ---------------------------------------------------------------------------
-sub_0373BE:
+MagnetoBoss_StateFlyToSmash2:
 	link.w	a6,#$0
 	move.l	a4,-(a7)
 	movea.l	$8(a6),a4
@@ -12,10 +15,10 @@ sub_0373BE:
 	moveq	#$25,d0
 	move.l	d0,-(a7)
 	move.l	a4,-(a7)
-	jsr	sub_0368D0(pc)
+	jsr	MagnetoBoss_SmashSegmentStaggered(pc)
 	addq.w	#$8,a7
 	move.w	#$5,$6C(a4)
-	lea.l	sub_0373FE(pc),a0
+	lea.l	MagnetoBoss_StateSmash2b(pc),a0
 	move.l	a0,$5C(a4)
 	moveq	#$8,d0
 	and.w	$4(a4),d0

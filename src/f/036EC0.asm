@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_036EC0	[link-after-rts]
+; MagnetoBoss_StateZone0 - MAGNETOBOSS: shoot at the target whenever the cooldown ends until the camera reaches x $1A4, then lock camera zone 1
+; In:  8(a6) = this
+; Out: none
+; Evidence: cooldown +$AC reloaded from +$AA, shot delay +$9D; AvalonA4_SetCameraZone(1, $1A4, $B0, 4, 4); next MagnetoBoss_Zone1Setup
 ; ---------------------------------------------------------------------------
-sub_036EC0:
+MagnetoBoss_StateZone0:
 	link.w	a6,#$0
 	move.l	a4,-(a7)
 	movea.l	$8(a6),a4
@@ -17,7 +20,7 @@ sub_036EC0:
 	jsr	$72A(a5)	; -> AvalonA4_SetCameraZone
 	lea.l	$14(a7),a7
 	clr.w	$6C(a4)
-	lea.l	sub_036F50(pc),a0
+	lea.l	MagnetoBoss_Zone1Setup(pc),a0
 	move.l	a0,$5C(a4)
 	moveq	#$8,d0
 	and.w	$4(a4),d0
@@ -32,17 +35,17 @@ loc_036F00:
 	move.b	$9D(a4),d0
 	cmpi.w	#$FFFF,d0
 	bne.s	loc_036F30
-	lea.l	sub_037924(pc),a0
+	lea.l	MagnetoBoss_StateAimShoot(pc),a0
 	move.l	a0,$5C(a4)
 	move.l	a4,-(a7)
-	jsr	sub_037924(pc)
+	jsr	MagnetoBoss_StateAimShoot(pc)
 	addq.w	#$4,a7
 	bra.s	loc_036F48
 loc_036F30:
 	moveq	#$0,d0
 	move.b	$9D(a4),d0
 	move.w	d0,$6C(a4)
-	lea.l	sub_037924(pc),a0
+	lea.l	MagnetoBoss_StateAimShoot(pc),a0
 	move.l	a0,$5C(a4)
 	moveq	#$8,d0
 	and.w	$4(a4),d0

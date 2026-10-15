@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_036F9A	[link-after-rts]
+; MagnetoBoss_StateZone1 - MAGNETOBOSS zone 1: shoot and switch hover side by the target's screen position until the wall at column $16 is broken, then release the zone
+; In:  8(a6) = this
+; Out: d0
+; Evidence: tests map tile bits $3800 at column $16 rows 8/9; AvalonA4_ClearCameraZone(1); next MagnetoBoss_Zone1Exit
 ; ---------------------------------------------------------------------------
-sub_036F9A:
+MagnetoBoss_StateZone1:
 	link.w	a6,#$0
 	movem.l	d4-d7/a3-a4,-(a7)
 	movea.l	$8(a6),a4
@@ -47,7 +50,7 @@ loc_037004:
 	move.w	#$1F40,$A8(a4)
 	addq.w	#$4,a7
 	clr.w	$6C(a4)
-	lea.l	sub_0370CC(pc),a0
+	lea.l	MagnetoBoss_Zone1Exit(pc),a0
 	move.l	a0,$5C(a4)
 	moveq	#$8,d0
 	and.w	$4(a4),d0
@@ -60,17 +63,17 @@ loc_037036:
 	move.b	$9D(a4),d0
 	cmpi.w	#$FFFF,d0
 	bne.s	loc_037060
-	lea.l	sub_037924(pc),a0
+	lea.l	MagnetoBoss_StateAimShoot(pc),a0
 	move.l	a0,$5C(a4)
 	move.l	a4,-(a7)
-	jsr	sub_037924(pc)
+	jsr	MagnetoBoss_StateAimShoot(pc)
 	addq.w	#$4,a7
 	bra.s	loc_0370C2
 loc_037060:
 	moveq	#$0,d0
 	move.b	$9D(a4),d0
 	move.w	d0,$6C(a4)
-	lea.l	sub_037924(pc),a0
+	lea.l	MagnetoBoss_StateAimShoot(pc),a0
 	move.l	a0,$5C(a4)
 	moveq	#$8,d0
 	and.w	$4(a4),d0

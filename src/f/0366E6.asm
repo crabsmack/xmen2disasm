@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; loc_0366E6
+; MagnetoBoss_Move_part2 - part 2 of MagnetoBoss_Move: code block split off by the code-flow tools (not a separate function)
+; In:  registers/frame of MagnetoBoss_Move
+; Out: continues in MagnetoBoss_Move
+; Evidence: only reached by branches from MagnetoBoss_Move; ends with rts
 ; ---------------------------------------------------------------------------
-loc_0366E6:
+MagnetoBoss_Move_part2:
 	moveq	#$0,d0
 	move.b	$9B(a4),d0
 	moveq	#$2,d1

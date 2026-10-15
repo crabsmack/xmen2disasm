@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_0368D0	[link-after-rts]
+; MagnetoBoss_SmashSegmentStaggered - as MagnetoBoss_SmashSegment but the debris pieces start 4 frames apart
+; In:  8(a6) = this, $C(a6) = word column
+; Out: d0
+; Evidence: sub_118166 delay argument += 4 per tile
 ; ---------------------------------------------------------------------------
-sub_0368D0:
+MagnetoBoss_SmashSegmentStaggered:
 	link.w	a6,#$FFF6
 	movem.l	d4-d7/a3-a4,-(a7)
 	movea.l	$8(a6),a3
@@ -104,7 +107,7 @@ loc_0369B6:
 	move.l	d1,-(a7)
 	ext.l	d4
 	move.l	d4,-(a7)
-	jsr	sub_035DC2(pc)
+	jsr	MagnetoBoss_SpawnRubble(pc)
 	lea.l	$1C(a7),a7
 loc_0369E6:
 	movem.l	-$22(a6),d4-d7/a3-a4

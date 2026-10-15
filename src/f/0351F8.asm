@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_0351F8	[link-after-rts]
+; AvalonA4_GlobCrackBlockHook - map tile hook: a block hit by a MAGNETICGLOB cracks one stage ($8D -> $AD -> $AE -> $AF -> $B0) and finally explodes into tile $8E
+; In:  8(a6) = word column, $C(a6) = word row, $10(a6) = hitting object
+; Out: d0 = 0
+; Evidence: object class jt[1993] = $159B2C (MAGNETICGLOB, Magneto's globe); sub_118136 explosion; sound $1A; installed in -$3AF0
 ; ---------------------------------------------------------------------------
-sub_0351F8:
+AvalonA4_GlobCrackBlockHook:
 	link.w	a6,#$0
 	movem.l	d4-d7,-(a7)
 	move.w	$E(a6),d6

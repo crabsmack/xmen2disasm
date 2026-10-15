@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_0377D6	[link-after-rts]
+; MagnetoBoss_StateWaitCamera - MAGNETOBOSS: wait for the camera to reach x $750, then lock camera zone 5
+; In:  8(a6) = this
+; Out: none
+; Evidence: AvalonA4_SetCameraZone(5, $750, $B0, 8, 8); next MagnetoBoss_FinalSetup
 ; ---------------------------------------------------------------------------
-sub_0377D6:
+MagnetoBoss_StateWaitCamera:
 	link.w	a6,#$0
 	move.l	a4,-(a7)
 	movea.l	$8(a6),a4
@@ -17,7 +20,7 @@ sub_0377D6:
 	jsr	$72A(a5)	; -> AvalonA4_SetCameraZone
 	lea.l	$14(a7),a7
 	clr.w	$6C(a4)
-	lea.l	sub_03781C(pc),a0
+	lea.l	MagnetoBoss_FinalSetup(pc),a0
 	move.l	a0,$5C(a4)
 	moveq	#$8,d0
 	and.w	$4(a4),d0

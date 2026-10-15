@@ -1,14 +1,17 @@
 ; ---------------------------------------------------------------------------
-; loc_03653E	[runtime: executed in tas]
+; MagnetoBoss_Move_part1 - part 1 of MagnetoBoss_Move: code block split off by the code-flow tools (not a separate function)
+; In:  registers/frame of MagnetoBoss_Move
+; Out: continues in MagnetoBoss_Move
+; Evidence: only reached by branches from MagnetoBoss_Move
 ; ---------------------------------------------------------------------------
-loc_03653E:
+MagnetoBoss_Move_part1:
 	move.l	d7,d0
 	neg.l	d0
 	move.l	d0,d7
 loc_036544:
 	movea.l	$8C(a4),a3
 	move.l	a3,d0
-	beq.w	loc_0366E6
+	beq.w	MagnetoBoss_Move_part2
 	move.w	$A6(a4),d0
 	ext.l	d0
 	move.l	d0,d4
@@ -75,7 +78,7 @@ loc_0365B6:
 	moveq	#$37,d1
 	jsr	$3FA2(a5)	; -> Math_LDivS
 	move.w	d0,$18(a4)
-	bra.w	loc_0366E6
+	bra.w	MagnetoBoss_Move_part2
 loc_0365FA:
 	move.w	$A2(a4),d0
 	ext.l	d0
@@ -116,7 +119,7 @@ loc_036636:
 	clr.l	$16(a4)
 	clr.w	$20(a4)
 	clr.b	$B2(a4)
-	bra.w	loc_0366E6
+	bra.w	MagnetoBoss_Move_part2
 loc_036654:
 	move.l	d6,d0
 	moveq	#$A,d1
@@ -156,7 +159,7 @@ loc_036678:
 loc_0366A8:
 	move.w	d4,$16(a4)
 	move.w	d6,$18(a4)
-	bra.s	loc_0366E6
+	bra.s	MagnetoBoss_Move_part2
 loc_0366B2:
 	move.w	$A2(a4),d0
 	ext.l	d0

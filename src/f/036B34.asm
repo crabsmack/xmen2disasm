@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_036B34	[link-after-rts]
+; MagnetoBoss_DirFromTo - direction code from object B's box centre to object A's (0-9: compass sectors with the 2:1 rule)
+; In:  8(a6) = object A, $C(a6) = object B
+; Out: d0.w = direction (2 right / 7 left when mostly horizontal, 0/9 up, 4/5 down, 1/8 and 3/6 diagonals)
+; Evidence: box centres +$4C..+$52; used by MagnetoBoss_StateAimShoot to pick the globe direction
 ; ---------------------------------------------------------------------------
-sub_036B34:
+MagnetoBoss_DirFromTo:
 	link.w	a6,#$FFFC
 	movem.l	d4-d7/a3-a4,-(a7)
 	movea.l	$C(a6),a3

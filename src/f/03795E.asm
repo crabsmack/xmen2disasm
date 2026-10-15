@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_03795E	[link-after-rts]
+; MagnetoBoss_StateShootRecover - MAGNETOBOSS: recover pose for the shot direction, then return to the resume state +$90
+; In:  8(a6) = this
+; Out: none
+; Evidence: sub_159138(dir) animation
 ; ---------------------------------------------------------------------------
-sub_03795E:
+MagnetoBoss_StateShootRecover:
 	link.w	a6,#$0
 	movem.l	a3-a4,-(a7)
 	movea.l	$8(a6),a4

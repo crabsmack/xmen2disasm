@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_0379CA	[link-after-rts]
+; MagnetoBoss_StateOutro - MAGNETOBOSS outro: play animation jt $494A, then loop jt $4952
+; In:  8(a6) = this
+; Out: d0 = +4 & 8
+; Evidence: next MagnetoBoss_StateOutroLoop
 ; ---------------------------------------------------------------------------
-sub_0379CA:
+MagnetoBoss_StateOutro:
 	link.w	a6,#$0
 	move.l	a4,-(a7)
 	movea.l	$8(a6),a4
@@ -11,7 +14,7 @@ sub_0379CA:
 	jsr	$4E4A(a5)	; -> Obj_ChangeAnim
 	addq.w	#$8,a7
 	move.w	#$FF,$6C(a4)
-	lea.l	sub_037A00(pc),a0
+	lea.l	MagnetoBoss_StateOutroLoop(pc),a0
 	move.l	a0,$5C(a4)
 	moveq	#$8,d0
 	and.w	$4(a4),d0

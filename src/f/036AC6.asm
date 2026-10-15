@@ -1,11 +1,14 @@
 ; ---------------------------------------------------------------------------
-; sub_036AC6	[jt 245]
+; MagnetoBoss_EnterSpinState - MAGNETOBOSS: stop being hittable and start the looping spin animation (jt $942)
+; In:  8(a6) = this
+; Out: none
+; Evidence: jt 245, caller sub_037F26 (THRONEPHONE code); +6 |= $4002; List_Unlink(+$84, $FFEBAE); state MagnetoBoss_StateSpin
 ; ---------------------------------------------------------------------------
-sub_036AC6:
+MagnetoBoss_EnterSpinState:
 	link.w	a6,#$0
 	move.l	a4,-(a7)
 	movea.l	$8(a6),a4
-	lea.l	sub_03799C(pc),a0
+	lea.l	MagnetoBoss_StateSpin(pc),a0
 	move.l	a0,$5C(a4)
 	clr.w	$6C(a4)
 	ori.w	#$4002,$6(a4)

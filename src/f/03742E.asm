@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_03742E	[link-after-rts]
+; MagnetoBoss_Zone4Setup - MAGNETOBOSS chase part 4: offset ($73, -$5A), shot cooldown 80
+; In:  8(a6) = this
+; Out: d0 = +4 & 8
+; Evidence: next MagnetoBoss_StateZone4Approach
 ; ---------------------------------------------------------------------------
-sub_03742E:
+MagnetoBoss_Zone4Setup:
 	link.w	a6,#$0
 	move.l	a4,-(a7)
 	movea.l	$8(a6),a4
@@ -9,10 +12,10 @@ sub_03742E:
 	move.w	#$73,$9E(a4)
 	move.w	#$FFA6,$A0(a4)
 	move.w	#$50,$AA(a4)
-	lea.l	sub_037472(pc),a0
+	lea.l	MagnetoBoss_StateZone4Approach(pc),a0
 	move.l	a0,$90(a4)
 	clr.w	$6C(a4)
-	lea.l	sub_037472(pc),a0
+	lea.l	MagnetoBoss_StateZone4Approach(pc),a0
 	move.l	a0,$5C(a4)
 	moveq	#$8,d0
 	and.w	$4(a4),d0
