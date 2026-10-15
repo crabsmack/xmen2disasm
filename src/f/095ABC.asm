@@ -1,7 +1,11 @@
 ; ---------------------------------------------------------------------------
-; sub_095ABC	[jt 724]
+; XClone_ActSoundFA - XCLONE script action: play sound $FA, next step
+; In:  8(a6) = this
+; Out: none
+; Evidence: jt 724
+; Found: jt 724
 ; ---------------------------------------------------------------------------
-sub_095ABC:
+XClone_ActSoundFA:
 	link.w	a6,#$0
 	move.l	a4,-(a7)
 	movea.l	$8(a6),a4

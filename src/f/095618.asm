@@ -1,7 +1,6 @@
 ; ---------------------------------------------------------------------------
-; XClone_Move - vtable +$4E: per-frame movement of a XCLONE
-; In:  8(a6) = this
-; Evidence: slot +$4E of the XCLONE descriptor $099C90; TAS frames 52266-57465 (2602 frames active)
+; XClone_Move - vtable +$4E: integrate velocity n times and clamp x to [+$A0, +$A2] and y to [+$A4, +$A6] (the arena)
+; Evidence: TAS 52266-57465
 ; ---------------------------------------------------------------------------
 XClone_Move:
 	link.w	a6,#$0

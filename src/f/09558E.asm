@@ -1,7 +1,6 @@
 ; ---------------------------------------------------------------------------
-; XClone_Update - vtable +$4A: per-frame update of a XCLONE
-; In:  8(a6) = this
-; Evidence: slot +$4A of the XCLONE descriptor $099C90; TAS frames 52266-57465 (2722 frames active); calls parent BIONPC slot +$4A
+; XClone_Update - vtable +$4A: parent update, count down the flash (+$B6), +$B7 and +$B8 timers, then slot +$82
+; Evidence: +$B6 reaching 0 clears +6 bit $40; steps of 2 at half rate (-$38DE); TAS 52266-57465
 ; ---------------------------------------------------------------------------
 XClone_Update:
 	link.w	a6,#$0

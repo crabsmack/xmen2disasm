@@ -1,7 +1,11 @@
 ; ---------------------------------------------------------------------------
-; sub_0961F0	[link-after-rts]
+; XClone_StatePodWaitOpen - XCLONE entrance: when the pod has opened, play its closing animation (sound $F2)
+; In:  8(a6) = this
+; Out: d0
+; Evidence: sub_11F188(pod) -> sub_1F626A(pod, jt[$34F2]), pod state sub_11F0C6; next XClone_StateEmerge
+; Found: link-after-rts
 ; ---------------------------------------------------------------------------
-sub_0961F0:
+XClone_StatePodWaitOpen:
 	link.w	a6,#$0
 	movem.l	a3-a4,-(a7)
 	movea.l	$8(a6),a4
@@ -12,7 +16,7 @@ sub_0961F0:
 	addq.w	#$4,a7
 	bne.s	loc_096220
 	clr.w	$6C(a4)
-	lea.l	sub_0961F0(pc),a0
+	lea.l	XClone_StatePodWaitOpen(pc),a0
 	move.l	a0,$5C(a4)
 	moveq	#$8,d0
 	and.w	$4(a4),d0
@@ -32,7 +36,7 @@ loc_096220:
 	move.w	#$FF,$6C(a3)
 	lea.l	$10(a7),a7
 	clr.w	$6C(a4)
-	lea.l	sub_096270(pc),a0
+	lea.l	XClone_StateEmerge(pc),a0
 	move.l	a0,$5C(a4)
 	moveq	#$8,d0
 	and.w	$4(a4),d0

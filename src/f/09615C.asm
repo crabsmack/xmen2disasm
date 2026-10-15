@@ -1,7 +1,11 @@
 ; ---------------------------------------------------------------------------
-; sub_09615C	[link-after-rts]
+; XClone_StatePodOpen - XCLONE entrance: open the pod at the clone's position (sound $EF, the clone record's opening animation)
+; In:  8(a6) = this
+; Out: d0
+; Evidence: pod script jt[$1B62], sub_11F42C(pod, record + word 6), pod state sub_11EFF2; next XClone_StatePodWaitOpen
+; Found: link-after-rts
 ; ---------------------------------------------------------------------------
-sub_09615C:
+XClone_StatePodOpen:
 	link.w	a6,#$0
 	movem.l	a3-a4,-(a7)
 	movea.l	$8(a6),a4
@@ -36,7 +40,7 @@ loc_096182:
 	clr.w	$6C(a3)
 	lea.l	$18(a7),a7
 	clr.w	$6C(a4)
-	lea.l	sub_0961F0(pc),a0
+	lea.l	XClone_StatePodWaitOpen(pc),a0
 	move.l	a0,$5C(a4)
 	moveq	#$8,d0
 	and.w	$4(a4),d0

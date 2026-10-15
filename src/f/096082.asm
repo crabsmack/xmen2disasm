@@ -1,7 +1,11 @@
 ; ---------------------------------------------------------------------------
-; sub_096082	[link-after-rts]
+; XClone_StatePodBounce2 - XCLONE entrance: pod settles on the floor
+; In:  8(a6) = this
+; Out: d0
+; Evidence: clears the pod's speed; next XClone_StatePodOpen
+; Found: link-after-rts
 ; ---------------------------------------------------------------------------
-sub_096082:
+XClone_StatePodBounce2:
 	link.w	a6,#$FFFC
 	movem.l	a3-a4,-(a7)
 	movea.l	$8(a6),a3
@@ -19,7 +23,7 @@ sub_096082:
 	clr.l	$16(a4)
 	clr.w	$20(a4)
 	clr.w	$6C(a3)
-	lea.l	sub_09615C(pc),a0
+	lea.l	XClone_StatePodOpen(pc),a0
 	move.l	a0,$5C(a3)
 	moveq	#$8,d0
 	and.w	$4(a3),d0
@@ -60,7 +64,7 @@ loc_09611C:
 	movea.l	-$4(a6),a0
 	move.w	d0,$2(a0)
 	clr.w	$6C(a3)
-	lea.l	sub_096082(pc),a0
+	lea.l	XClone_StatePodBounce2(pc),a0
 	move.l	a0,$5C(a3)
 	moveq	#$8,d0
 	and.w	$4(a3),d0

@@ -1,7 +1,11 @@
 ; ---------------------------------------------------------------------------
-; sub_095ECA	[link-after-rts]
+; XClone_StatePodFall - XCLONE entrance: move the pod until it hits the floor (+$A6), bounce at half speed
+; In:  8(a6) = this
+; Out: d0
+; Evidence: integrates the pod's velocity (twice at half rate) and its record +$92; next XClone_StatePodBounce1; TAS 53061-57292
+; Found: link-after-rts
 ; ---------------------------------------------------------------------------
-sub_095ECA:
+XClone_StatePodFall:
 	link.w	a6,#$FFFC
 	movem.l	a3-a4,-(a7)
 	movea.l	$8(a6),a3
@@ -21,7 +25,7 @@ sub_095ECA:
 	neg.l	d0
 	move.w	d0,$18(a4)
 	clr.w	$6C(a3)
-	lea.l	sub_095FA6(pc),a0
+	lea.l	XClone_StatePodBounce1(pc),a0
 	move.l	a0,$5C(a3)
 	moveq	#$8,d0
 	and.w	$4(a3),d0
@@ -62,7 +66,7 @@ loc_095F66:
 	movea.l	-$4(a6),a0
 	move.w	d0,$2(a0)
 	clr.w	$6C(a3)
-	lea.l	sub_095ECA(pc),a0
+	lea.l	XClone_StatePodFall(pc),a0
 	move.l	a0,$5C(a3)
 	moveq	#$8,d0
 	and.w	$4(a3),d0

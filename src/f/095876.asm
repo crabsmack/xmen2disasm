@@ -1,7 +1,11 @@
 ; ---------------------------------------------------------------------------
-; sub_095876	[link-after-rts]
+; XClone_StateLand - XCLONE state: fall (gravity $C0) until standing on the arena floor +$A6, then clear the hurt flag and start the current script
+; In:  8(a6) = this
+; Out: d0
+; Evidence: set by XClone_OnHurt after 10 frames; TAS 53187-57398
+; Found: link-after-rts
 ; ---------------------------------------------------------------------------
-sub_095876:
+XClone_StateLand:
 	link.w	a6,#$0
 	move.l	a4,-(a7)
 	movea.l	$8(a6),a4
@@ -15,7 +19,7 @@ sub_095876:
 	move.w	#$C0,$20(a4)
 loc_09589A:
 	clr.w	$6C(a4)
-	lea.l	sub_095876(pc),a0
+	lea.l	XClone_StateLand(pc),a0
 	move.l	a0,$5C(a4)
 	moveq	#$8,d0
 	and.w	$4(a4),d0

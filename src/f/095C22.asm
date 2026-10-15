@@ -1,7 +1,11 @@
 ; ---------------------------------------------------------------------------
-; sub_095C22	[jt 726]
+; XClone_ActCloseBioBalls - XCLONE script action: remove the BIOBALLS child (sound $F2) and restore the clone's animation
+; In:  8(a6) = this
+; Out: none
+; Evidence: child slot +$52 Kill; sub_1F6296(this, record + word 4); next step; jt 726
+; Found: jt 726
 ; ---------------------------------------------------------------------------
-sub_095C22:
+XClone_ActCloseBioBalls:
 	link.w	a6,#$0
 	move.l	a4,-(a7)
 	movea.l	$8(a6),a4

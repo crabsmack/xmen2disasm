@@ -1,7 +1,11 @@
 ; ---------------------------------------------------------------------------
-; sub_095B1E	[jt 725]
+; XClone_ActOpenBioBalls - XCLONE script action: hide the clone and open a BIOBALLS effect object on it (sound $F2), then wait for it
+; In:  8(a6) = this
+; Out: d0
+; Evidence: frame $FF; reuses +$9C or creates one via BIOBALLS ($1203AC) +$0E; copies the h-flip, sets its animations/script (sub_11F2F2, jt[$1B62]), state sub_11F0C6; next XClone_StateWaitChild; jt 725
+; Found: jt 725
 ; ---------------------------------------------------------------------------
-sub_095B1E:
+XClone_ActOpenBioBalls:
 	link.w	a6,#$0
 	movem.l	a3-a4,-(a7)
 	movea.l	$8(a6),a4
@@ -72,7 +76,7 @@ loc_095BA4:
 	lea.l	$18(a7),a7
 loc_095C06:
 	clr.w	$6C(a4)
-	lea.l	sub_095968(pc),a0
+	lea.l	XClone_StateWaitChild(pc),a0
 	move.l	a0,$5C(a4)
 	moveq	#$8,d0
 	and.w	$4(a4),d0

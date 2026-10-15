@@ -1,7 +1,6 @@
 ; ---------------------------------------------------------------------------
-; XClone_TakeDamage - vtable +$26: a XCLONE is hit (attacker, damage)
-; In:  8(a6) = this, $C(a6) = attacker, then hit parameters (see ACTOR +$26 $15E680)
-; Evidence: slot +$26 of the XCLONE descriptor $099C90; TAS frames 53176-57449 (23 frames active); calls parent BIONPC slot +$26
+; XClone_TakeDamage - vtable +$26: +$B8 += 60, parent TakeDamage; if the hit kills it and the attacker is the same character, set bit (8+type) in -$3B08; spark effect and sound $D8 at the hit point; hurt frame from the clone record
+; Evidence: sub_098CC8 on both; sub_13F58A(x, y, -$3B1C, size 6..16) + Snd $D8; SetFrame(record +$AC byte $28); TAS 53176-57449
 ; ---------------------------------------------------------------------------
 XClone_TakeDamage:
 	link.w	a6,#$FFFE

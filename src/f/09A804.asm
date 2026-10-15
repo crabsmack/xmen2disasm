@@ -2,7 +2,7 @@
 ; loc_09A804	[runtime: executed in tas]
 ; ---------------------------------------------------------------------------
 loc_09A804:
-	jmp	$16EA(a5)	; -> sub_096396
+	jmp	$16EA(a5)	; -> XClone_ActCheckLowHealth
 loc_09A808:
 	jmp	$17BA(a5)	; -> sub_097698
 loc_09A80C:

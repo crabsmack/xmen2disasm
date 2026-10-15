@@ -1,7 +1,11 @@
 ; ---------------------------------------------------------------------------
-; sub_095968	[link-after-rts]
+; XClone_StateWaitChild - XCLONE state: wait until the child object (+$9C) reports done (sub_11F188), then the next script step
+; In:  8(a6) = this
+; Out: none
+; Evidence: 5 callers (actions that start a child effect); TAS 52268-56717
+; Found: link-after-rts
 ; ---------------------------------------------------------------------------
-sub_095968:
+XClone_StateWaitChild:
 	link.w	a6,#$0
 	move.l	a4,-(a7)
 	movea.l	$8(a6),a4
@@ -13,7 +17,7 @@ sub_095968:
 	addq.w	#$4,a7
 	bne.s	loc_09599A
 	clr.w	$6C(a4)
-	lea.l	sub_095968(pc),a0
+	lea.l	XClone_StateWaitChild(pc),a0
 	move.l	a0,$5C(a4)
 	moveq	#$8,d0
 	and.w	$4(a4),d0

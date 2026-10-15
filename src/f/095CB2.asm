@@ -1,7 +1,11 @@
 ; ---------------------------------------------------------------------------
-; sub_095CB2	[link-after-rts]
+; XClone_StateWaitPlayers - XCLONE first state: wait until every live player is inside the clone's arena, then start the entrance
+; In:  8(a6) = this
+; Out: d0
+; Evidence: player box centres within [+$A0+$40, +$A2-$40] x [+$A4+$18, +$A6-$18]; then sub_09907A(this) and XClone_StateDropPod; +$5C/+$64 from XClone_Init; TAS 53043-57262
+; Found: link-after-rts
 ; ---------------------------------------------------------------------------
-sub_095CB2:
+XClone_StateWaitPlayers:
 	link.w	a6,#$FFFA
 	movem.l	d4-d7/a3-a4,-(a7)
 	movea.l	$8(a6),a4
@@ -93,14 +97,14 @@ loc_095DA0:
 	jsr	sub_09907A(pc)
 	addq.w	#$4,a7
 	clr.w	$6C(a4)
-	lea.l	sub_095DDC(pc),a0
+	lea.l	XClone_StateDropPod(pc),a0
 	move.l	a0,$5C(a4)
 	moveq	#$8,d0
 	and.w	$4(a4),d0
 	bra.s	loc_095DD2
 loc_095DC0:
 	clr.w	$6C(a4)
-	lea.l	sub_095CB2(pc),a0
+	lea.l	XClone_StateWaitPlayers(pc),a0
 	move.l	a0,$5C(a4)
 	moveq	#$8,d0
 	and.w	$4(a4),d0

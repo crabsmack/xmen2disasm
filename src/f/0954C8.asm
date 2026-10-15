@@ -1,7 +1,5 @@
 ; ---------------------------------------------------------------------------
-; XClone_Deactivate - Deactivate
-; In:  8(a6) = this
-; Evidence: slot +$46 of the XCLONE descriptor $099C90; TAS frames 52535-56844 (7 frames active); calls parent BIONPC slot +$46
+; XClone_Deactivate - vtable +$46: kill the attached child object (+$9C), then the parent Deactivate
 ; ---------------------------------------------------------------------------
 XClone_Deactivate:
 	link.w	a6,#$0

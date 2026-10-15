@@ -1,7 +1,11 @@
 ; ---------------------------------------------------------------------------
-; sub_096270	[link-after-rts]
+; XClone_StateEmerge - XCLONE entrance: when the pod is done, remove it, make the clone hittable and start its script
+; In:  8(a6) = this
+; Out: d0
+; Evidence: pod slot +$52 Kill; +6 &= ~2, sub_15DF2A(this, $FFEBAE) -> +$84; animation record + word 4; script step 0; 2 callers
+; Found: link-after-rts
 ; ---------------------------------------------------------------------------
-sub_096270:
+XClone_StateEmerge:
 	link.w	a6,#$0
 	move.l	a4,-(a7)
 	movea.l	$8(a6),a4
@@ -13,7 +17,7 @@ sub_096270:
 	addq.w	#$4,a7
 	bne.s	loc_0962A2
 	clr.w	$6C(a4)
-	lea.l	sub_096270(pc),a0
+	lea.l	XClone_StateEmerge(pc),a0
 	move.l	a0,$5C(a4)
 	moveq	#$8,d0
 	and.w	$4(a4),d0

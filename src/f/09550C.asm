@@ -1,7 +1,6 @@
 ; ---------------------------------------------------------------------------
-; XClone_Kill - vtable +$52: remove a XCLONE from play
-; In:  8(a6) = this
-; Evidence: slot +$52 of the XCLONE descriptor $099C90; TAS frames 52535-56844 (7 frames active); calls parent BIONPC slot +$52
+; XClone_Kill - vtable +$52: kill the child, count the clone (-$3C40, not for type 4 Magneto), end the clone wave after 6
+; Evidence: sub_098CC8(this) != 4 -> -$3C40 += 1; +$B0 set -> sub_0993DC; -$3C40 > 5 -> sub_0993C0; then BIONPC Kill; TAS 52535-56844
 ; ---------------------------------------------------------------------------
 XClone_Kill:
 	link.w	a6,#$0

@@ -30,7 +30,7 @@ sub_0973B4:
 	addq.w	#$4,a7
 loc_09740A:
 	clr.w	$6C(a3)
-	lea.l	sub_095968(pc),a0
+	lea.l	XClone_StateWaitChild(pc),a0
 	move.l	a0,$5C(a3)
 	moveq	#$8,d0
 	and.w	$4(a3),d0

@@ -155,7 +155,7 @@ loc_09B84C:
 	andi.b	#$EF,$2E(a0)
 loc_09B856:
 	move.l	-$14(a6),-(a7)
-	jsr	$16B2(a5)	; -> sub_0959E0
+	jsr	$16B2(a5)	; -> XClone_ActUnhittableScript
 	addq.w	#$4,a7
 	bra.s	loc_09B86A
 loc_09B862:

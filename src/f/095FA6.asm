@@ -1,7 +1,11 @@
 ; ---------------------------------------------------------------------------
-; sub_095FA6	[link-after-rts]
+; XClone_StatePodBounce1 - XCLONE entrance: second pod bounce at a quarter speed
+; In:  8(a6) = this
+; Out: d0
+; Evidence: next XClone_StatePodBounce2
+; Found: link-after-rts
 ; ---------------------------------------------------------------------------
-sub_095FA6:
+XClone_StatePodBounce1:
 	link.w	a6,#$FFFC
 	movem.l	a3-a4,-(a7)
 	movea.l	$8(a6),a3
@@ -21,7 +25,7 @@ sub_095FA6:
 	neg.l	d0
 	move.w	d0,$18(a4)
 	clr.w	$6C(a3)
-	lea.l	sub_096082(pc),a0
+	lea.l	XClone_StatePodBounce2(pc),a0
 	move.l	a0,$5C(a3)
 	moveq	#$8,d0
 	and.w	$4(a3),d0
@@ -62,7 +66,7 @@ loc_096042:
 	movea.l	-$4(a6),a0
 	move.w	d0,$2(a0)
 	clr.w	$6C(a3)
-	lea.l	sub_095FA6(pc),a0
+	lea.l	XClone_StatePodBounce1(pc),a0
 	move.l	a0,$5C(a3)
 	moveq	#$8,d0
 	and.w	$4(a3),d0

@@ -1,7 +1,11 @@
 ; ---------------------------------------------------------------------------
-; sub_0958F6	[jt 721]
+; XClone_OnHurt - XCLONE slot +$6E OnHurt: start flashing (+$B6 = $1E) and switch to the clone record's hurt script (+$A8 record +$A)
+; In:  8(a6) = this
+; Out: none
+; Evidence: XNPC slot +$6E (called by XNpc_TakeDamage); +6 |= $40; if the script changes: stop moving, +$6C = 10, state XClone_StateLand; TAS 53176-57449
+; Found: jt 721
 ; ---------------------------------------------------------------------------
-sub_0958F6:
+XClone_OnHurt:
 	link.w	a6,#$0
 	movem.l	a3-a4,-(a7)
 	movea.l	$8(a6),a4
@@ -27,7 +31,7 @@ loc_095930:
 	clr.w	$1E(a4)
 	clr.w	$16(a4)
 	move.w	#$A,$6C(a4)
-	lea.l	sub_095876(pc),a0
+	lea.l	XClone_StateLand(pc),a0
 	move.l	a0,$5C(a4)
 	addq.w	#$8,a7
 loc_09595E:

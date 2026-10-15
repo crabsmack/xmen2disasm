@@ -1,7 +1,11 @@
 ; ---------------------------------------------------------------------------
-; sub_096396	[jt 729]
+; XClone_ActCheckLowHealth - XCLONE script action: below $E health switch to the clone record's low-health script (record +$C), else the next step
+; In:  8(a6) = this
+; Out: none
+; Evidence: +$68 < $E -> sub_15A6DE(+$96, record + word $C); jt 729; 3 callers
+; Found: jt 729
 ; ---------------------------------------------------------------------------
-sub_096396:
+XClone_ActCheckLowHealth:
 	link.w	a6,#$0
 	move.l	a4,-(a7)
 	movea.l	$8(a6),a4

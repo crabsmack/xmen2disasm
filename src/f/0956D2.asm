@@ -1,7 +1,11 @@
 ; ---------------------------------------------------------------------------
-; sub_0956D2	[jt 719]
+; XClone_Explode - XCLONE slot +$7E Explode: leave the hit list, clear the hurt flags and run the death script jt[$1B8A]
+; In:  8(a6) = this
+; Out: none
+; Evidence: XNPC slot +$7E (death effect); List_Unlink(+$84, $FFEBAE) when hittable; sub_15A6DE(+$96, jt[$1B8A]); TAS 53285-56667
+; Found: jt 719
 ; ---------------------------------------------------------------------------
-sub_0956D2:
+XClone_Explode:
 	link.w	a6,#$0
 	move.l	a4,-(a7)
 	movea.l	$8(a6),a4
