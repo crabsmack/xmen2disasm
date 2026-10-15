@@ -71,8 +71,10 @@ dirty game repo is never cached. `uv run tools/phase.py 2 --fresh` ignores the c
    minimal `puyo/puyo_spec.c` GameSpec. There is no scaffold in the engine. Write
    `CLAUDE.md` (ROM rules, engine PRINCIPLES pointers, these criteria) and `docs/NOTES.md`.
 2. **K2** (in this repo): extend `emu/` to record VRAM/CRAM/VSRAM/Z80 CRCs per frame
-   (BizHawk memory domains), re-run the corpus (`uv run emu/corpus.py`; committed
-   `emu/coverage/*.gz` must not change), and write `emu/export_input.py` (TAS `.bk2` and
+   (BizHawk memory domains), re-run the corpus (`uv run emu/corpus.py --force`; committed
+   `emu/coverage/*.gz` must not change) **in the main checkout** after the change is on
+   `main` (`emu/runs/` is gitignored and every worktree's `setup.py`/`phase.py` reads the
+   main checkout's runs; a worktree's own runs would shadow them), and write `emu/export_input.py` (TAS `.bk2` and
    scenario files, including `@tas N` prefixes and resets, to one `.input` script).
    The runner has **no .bk2 support**; `.input` (`runner/input_script.h`) is its format. If
    a per-frame stream is impractical in that format, add one to the engine fork.
