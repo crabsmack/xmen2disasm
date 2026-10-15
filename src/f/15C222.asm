@@ -4,4 +4,4 @@
 sub_15C222:
 	lea.l	$15C22E(pc),a0
 	movea.w	#$2,a1
-	dc.w	$4EF0,$92FE	; jmp -$2(a0, a1.w)
+	dc.w	$4EF0,$92FE	; insn: jmp -$2(a0, a1.w)

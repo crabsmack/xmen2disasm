@@ -1,0 +1,14 @@
+{
+ "kind": "fuzz",
+ "from_frame": 18000,
+ "seed": 2,
+ "core": "BizEmu",
+ "start_frame": 18000,
+ "end_frame": 21600,
+ "executed_rom_instruction_starts": 47410,
+ "rom_bytes_read_as_data": 329776,
+ "rom_bytes_dma_source": 167168,
+ "ram_exec_words": 0,
+ "instructions": 314382706,
+ "functions_hit": 445
+}

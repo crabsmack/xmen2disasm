@@ -73,7 +73,7 @@ loc_005D6A:
 	bra.s	loc_005D9E
 loc_005D8A:
 	clr.w	-$3B94(a5)
-	dc.w	$1B7C,$FFFF,$C444	; move.b #$ff, -$3bbc(a5)
+	dc.w	$1B7C,$FFFF,$C444	; insn: move.b #$ff, -$3bbc(a5)
 	moveq	#$0,d0
 	move.l	d0,-$1758(a5)
 	clr.w	-$1754(a5)
@@ -90,7 +90,7 @@ loc_005D9E:
 	bra.s	loc_005DD0
 loc_005DBC:
 	clr.w	-$3B96(a5)
-	dc.w	$1B7C,$FFFF,$C445	; move.b #$ff, -$3bbb(a5)
+	dc.w	$1B7C,$FFFF,$C445	; insn: move.b #$ff, -$3bbb(a5)
 	moveq	#$0,d0
 	move.l	d0,-$1848(a5)
 	clr.w	-$1844(a5)

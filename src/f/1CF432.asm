@@ -176,7 +176,7 @@ loc_1CF622:
 	tst.b	d0
 	addq.w	#$4,a7
 	beq.w	loc_1CF6C2
-	dc.w	$197C,$FFFF,$000E	; move.b #$ff, $e(a4)
+	dc.w	$197C,$FFFF,$000E	; insn: move.b #$ff, $e(a4)
 	bra.w	loc_1CF7F0
 loc_1CF63A:
 	ext.l	d5
@@ -227,10 +227,10 @@ loc_1CF6A2:
 	tst.b	d0
 	addq.w	#$4,a7
 	beq.s	loc_1CF6C2
-	dc.w	$197C,$FFFF,$000E	; move.b #$ff, $e(a4)
+	dc.w	$197C,$FFFF,$000E	; insn: move.b #$ff, $e(a4)
 	bra.w	loc_1CF7F0
 loc_1CF6B8:
-	dc.w	$197C,$FFFF,$000E	; move.b #$ff, $e(a4)
+	dc.w	$197C,$FFFF,$000E	; insn: move.b #$ff, $e(a4)
 	bra.w	loc_1CF7F0
 loc_1CF6C2:
 	ext.l	d5

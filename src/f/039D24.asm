@@ -33,8 +33,8 @@ sub_039D24:
 	asr.l	#$1,d7
 	cmp.w	d6,d7
 	ble.s	loc_039D92
-	dc.w	$177C,$FFFE,$0003	; move.b #$fe, $3(a3)
-	dc.w	$177C,$FFFE,$0005	; move.b #$fe, $5(a3)
+	dc.w	$177C,$FFFE,$0003	; insn: move.b #$fe, $3(a3)
+	dc.w	$177C,$FFFE,$0005	; insn: move.b #$fe, $5(a3)
 	bra.s	loc_039D9E
 loc_039D92:
 	move.b	#$2,$3(a3)

@@ -29,6 +29,25 @@ LABEL = re.compile(r"^(?:\(\d+\))?\s*\d+/\s*([0-9A-F]+) : \s+([A-Za-z_][\w.]*):"
 DATA_RE = re.compile(r"^(?:dc\.[bwl]|dcb\.[bwl]|ds\.[bwl]|binclude|incbin|even|align|cnop|org)\b", re.I)
 
 
+def main_checkout() -> Path | None:
+    """The primary worktree (where the ROM, emulator builds and runs usually live)."""
+    try:
+        common = subprocess.run(["git", "rev-parse", "--path-format=absolute", "--git-common-dir"],
+                                cwd=ROOT, capture_output=True, text=True, check=True).stdout.strip()
+        return Path(common).parent
+    except (OSError, subprocess.CalledProcessError):
+        return None
+
+
+def runs_dir() -> Path:
+    """emu/runs of this checkout, else the main checkout's (worktrees share the big run outputs)."""
+    local = ROOT / "emu" / "runs"
+    if (local / "tas").exists():
+        return local
+    main = main_checkout()
+    return main / "emu" / "runs" if main and (main / "emu" / "runs" / "tas").exists() else local
+
+
 def ensure_rom() -> bool:
     """Make sure xmen2.bin exists in this checkout.
 
@@ -85,14 +104,20 @@ def parse_listing(path: Path):
         yield cur
 
 
+def is_code_row(src: str) -> bool:
+    """True if a listing row's source is an instruction (incl. `dc.w ...; insn:` fallbacks)."""
+    parts = src.split()
+    if parts and parts[0].endswith(":"):  # label on same line
+        parts = parts[1:]
+    if not parts:
+        return False
+    return "; insn:" in src or not DATA_RE.match(parts[0])
+
+
 def export_oracles(lst: Path) -> int:
     code = []
     for addr, _data, src in parse_listing(lst):
-        mnem = src.split()[0] if src.split() else ""
-        if mnem.endswith(":"):  # label on same line
-            parts = src.split()
-            mnem = parts[1] if len(parts) > 1 else ""
-        if mnem and not DATA_RE.match(mnem) and addr < 0x200000:
+        if is_code_row(src) and addr < 0x200000:
             code.append(addr)
     code = sorted(set(code))
     (ROOT / "build" / "xmen2.code_addrs.txt").write_text("".join(f"{a:06X}\n" for a in code), newline="\n")

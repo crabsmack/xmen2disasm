@@ -1,0 +1,13 @@
+{
+ "kind": "idle",
+ "from_frame": 0,
+ "core": "BizEmu",
+ "start_frame": 0,
+ "end_frame": 36000,
+ "executed_rom_instruction_starts": 33688,
+ "rom_bytes_read_as_data": 251655,
+ "rom_bytes_dma_source": 154880,
+ "ram_exec_words": 0,
+ "instructions": 564631554,
+ "functions_hit": 795
+}

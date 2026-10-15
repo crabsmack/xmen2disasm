@@ -15,3 +15,14 @@ build/
 .venv/
 __pycache__/
 *.pyc
+
+# Claude Code worktrees live inside the repo
+.claude/worktrees/
+
+# Emulator build outputs and big run artifacts (emu/coverage/ IS committed)
+emu/bin/
+emu/_src/
+emu/core/_build/
+emu/bizcore/_build/
+emu/runs/
+*.log

@@ -5,7 +5,7 @@ loc_065CBC:
 	moveq	#$0,d0
 	move.l	d0,-$1758(a5)
 	clr.w	-$1754(a5)
-	dc.w	$1B7C,$FFFF,$C444	; move.b #$ff, -$3bbc(a5)
+	dc.w	$1B7C,$FFFF,$C444	; insn: move.b #$ff, -$3bbc(a5)
 	movea.l	-$3B2C(a5),a0
 	move.b	-$3BBB(a5),d0
 	cmp.b	$3C(a0),d0

@@ -1,49 +1,48 @@
 ---
 name: find-code
-description: Discover code still hidden in raw incrom spans of the X-Men 2 disassembly (unverified jump-table entries, vtable methods, switch tables, indirect-call targets) and convert it with convert.py under evidence. Use when asked to increase code coverage or find missing functions in xmen2disasm.
+description: Close code-coverage gaps in the X-Men 2 disassembly - convert runtime-proven code from emulator traces, resolve jump-table entries and numeric ROM operands, find vtable methods and switch targets, and label code pointers in data. Use for definition-of-done criteria R2, R3, S2, S3 or any "find missing code" task in xmen2disasm.
 ---
 
 # Find more code
 
-About 1,000 jump-table entries point at data, and vtable methods/switch targets
-are invisible to plain recursive descent. Code we miss stays as `incrom`, so the
-recompiler won't see it later. The bar: **evidence first, then convert.** Data
-that happens to decode cleanly as 68000 code is the classic false positive (it
-silently breaks the recomp later), so clean decoding alone is never enough.
+Code we miss stays `incrom` and the recompiler won't see it. Data we wrongly call
+code corrupts it. The bar: **evidence first, then convert.**
 
-## Sources of evidence (strongest first)
-
-1. **A call or jump from verified code** whose target is still raw: a
-   `jsr ($XXXXXX).l`/`bsr`, or a `pea Func(pc)` / `lea Func(pc),aN` handed to a
-   registration routine.
-2. **Vtables**: an object's vtable pointer is stored with
-   `lea Tbl(pc),a0 / move.l a0,(aN)` or `move.l #Tbl,(aN)`; the table is a run of
-   longs pointing into ROM. Each slot used by `movea.l $XX(a0),a1 / jsr (a1)` is
-   a method entry.
-3. **Switch tables**: `jmp $XX(pc,dN.w)` / `move.w Tbl(pc,dN.w),dN` followed by
-   word offsets. Targets are code inside the same function.
-4. **Unverified jump-table entries**: `uv run tools/candidates.py` lists the ones
-   that trace cleanly AND reach an `rts`. Still inspect each one: plausible
-   prologue (`link`, `movem.l ...,-(a7)`, register/A5 setup), sensible
-   instruction mix, no runs of `ori.b #$xx` (that's data, `$00xx` words).
-
-## Convert
+## 1. Runtime-proven code (strongest; do this first)
 
 ```
-uv run tools/convert.py 0x0DD0A0 --dry-run          # see what would be pulled in
-uv run tools/convert.py 0x0DD0A0 --evidence "vtable Tbl_Wolverine slot $52, called from sub_0DCFF0"
+uv run emu/corpus.py                 # make sure every corpus run exists
+uv run tools/coverage.py --list 20   # missed_code / mid_insn / code_as_data
+uv run tools/coverage.py --convert   # convert every executed-but-missing instruction
 ```
-- Refused = the trace hit undecodable bytes, known data or existing code
-  boundaries. Treat that as information, not an obstacle. Don't force it.
-- On success the address is appended to `config/seeds.txt` with your evidence.
-  Then name what you found (`/disasm-function`) or at least comment the header.
+Execution in the emulator is proof. `--convert` batch-converts with evidence
+`runtime: executed in ...`. Anything it still refuses (the trace from that address
+reaches data or straddles a labelled span) needs a look with `peek.py`.
+- `mid_insn` > 0 means an existing disassembled instruction is wrong at that spot:
+  investigate with `peek.py` before touching anything, and record the finding in NOTES.
+- New paths: add a scenario (see CLAUDE.md "Emulator"), re-run the corpus, convert.
 
-## Data you identify along the way
+## 2. Static evidence (for code the corpus never reaches)
 
-`uv run tools/label_data.py START LEN Name "format + evidence"`. Name vtables
-(`Tbl_<Class>_vtable`), switch tables, strings and lookup tables, so references
-become symbolic and the remaining raw spans shrink honestly.
+1. **Calls/jumps from verified code** to raw targets, or `pea Func(pc)` /
+   `lea Func(pc),aN` handed to registration routines (S3 lists numeric operands).
+2. **Vtables**: `lea Tbl(pc),a0 / move.l a0,(aN)` or `move.l #Tbl,(aN)`; a run of
+   longs pointing into ROM code. Each slot used by `movea.l $XX(a0),a1 / jsr (a1)`
+   is a method. Label the table `Tbl_<Class>_vtable` (`label_data.py`); it becomes
+   a recomp seed list.
+3. **Switch tables**: `jmp $XX(pc,dN.w)` / `move.w Tbl(pc,dN.w),dN` plus word offsets.
+4. **Unverified jump-table entries** (S2): `uv run tools/candidates.py`, then
+   inspect each (`peek.py`). Code → `convert.py`. Data → `label_data.py` with a real
+   name; that also resolves the `jtentry`.
+
+```
+uv run tools/peek.py 0x0DD0A0 --count 20 --hex 32
+uv run tools/convert.py 0x0DD0A0 --dry-run
+uv run tools/convert.py 0x0DD0A0 --evidence "vtable Tbl_Wolverine_vtable slot $52"
+```
+Clean decoding alone is never evidence: data often decodes as plausible 68000 code
+(watch for runs of `ori.b #$xx`, i.e. `$00xx` words). A refusal is information.
 
 ## Commit
-
-Small batches, build must be byte-identical (the hook checks), push after each.
+Small batches, byte-identical build (the hook checks), commit the new
+`emu/coverage/*.gz` if you added scenarios, push after each batch.

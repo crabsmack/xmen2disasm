@@ -9,7 +9,7 @@ sub_1D0270:
 	movea.l	$BC(a3),a4
 	bra.s	loc_1D0290
 loc_1D0284:
-	dc.w	$197C,$FFFF,$000E	; move.b #$ff, $e(a4)
+	dc.w	$197C,$FFFF,$000E	; insn: move.b #$ff, $e(a4)
 	subq.w	#$1,d7
 	lea.l	$10(a4),a4
 loc_1D0290:

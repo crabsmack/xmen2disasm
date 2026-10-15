@@ -66,7 +66,7 @@ loc_05BA32:
 	bne.s	loc_05BA3C
 	clr.b	$6(a4)
 loc_05BA3C:
-	dc.w	$197C,$FFEC,$0005	; move.b #$ec, $5(a4)
+	dc.w	$197C,$FFEC,$0005	; insn: move.b #$ec, $5(a4)
 	jsr	$417A(a5)	; -> sub_1600AA
 	moveq	#$0,d1
 	move.w	d0,d1
@@ -76,7 +76,7 @@ loc_05BA3C:
 	move.b	#$5,$4(a4)
 	bra.s	loc_05BA60
 loc_05BA5A:
-	dc.w	$197C,$FFFB,$0004	; move.b #$fb, $4(a4)
+	dc.w	$197C,$FFFB,$0004	; insn: move.b #$fb, $4(a4)
 loc_05BA60:
 	move.w	d7,d0
 	addq.w	#$1,d7

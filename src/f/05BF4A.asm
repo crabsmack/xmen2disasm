@@ -34,7 +34,7 @@ sub_05BF4A:
 	move.b	#$FF,$B2(a3)
 	move.b	#$FF,$B3(a3)
 	move.l	d0,$B4(a3)
-	dc.w	$177C,$FF80,$00A4	; move.b #$80, $a4(a3)
+	dc.w	$177C,$FF80,$00A4	; insn: move.b #$80, $a4(a3)
 	clr.b	$A5(a3)
 	moveq	#-$4,d1
 	and.b	$A4(a3),d1

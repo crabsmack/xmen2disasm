@@ -1,0 +1,14 @@
+{
+ "kind": "movie",
+ "source": "tas-4473M.bk2",
+ "movie_frames": 57465,
+ "core": "BizEmu",
+ "start_frame": 0,
+ "end_frame": 57465,
+ "executed_rom_instruction_starts": 95800,
+ "rom_bytes_read_as_data": 758718,
+ "rom_bytes_dma_source": 422880,
+ "ram_exec_words": 0,
+ "instructions": 815897113,
+ "functions_hit": 2341
+}

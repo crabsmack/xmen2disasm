@@ -2,18 +2,21 @@
 
 Byte-matching disassembly of **X-Men 2: Clone Wars** (Sega Genesis, USA/Europe,
 SHA-1 `61409e6cf6065ab67d8952b891d8edcf47777193`), built with The Macro Assembler
-AS — the same toolchain as Sonic Retro's s1disasm/s2disasm. Phase 1 of a
-two-phase plan: this disassembly is the ground truth for a later static
-recompilation on [segagenesisrecomp](https://github.com/mstan/segagenesisrecomp)
-(`build/xmen2.code_addrs.txt` is its `code_addrs_file` oracle), and for an
-optional later C matching decomp.
+AS (Sonic Retro's toolchain). Phase 1 of 2: when every criterion in
+[docs/DONE.md](docs/DONE.md) passes, phase 2 (static recompilation on
+[segagenesisrecomp](https://github.com/mstan/segagenesisrecomp)) starts from
+`build/recomp/` (see [docs/RECOMP_HANDOFF.md](docs/RECOMP_HANDOFF.md)).
+
+**Start of every session:** `uv run tools/setup.py` (idempotent: ROM, emulator,
+build, runs, Ghidra), then read `docs/PROGRESS.md` and the relevant parts of
+`docs/NOTES.md`.
 
 ## The one rule
 
 **The tree must always rebuild byte-identical.** `uv run tools/build.py` is the
 ONLY build path; exit 0 means SHA-1 match. Never run `asw`/`p2bin` directly,
 never edit `xmen2.bin`, never change the expected hash. A change that doesn't
-build byte-identical is not done — fix it or revert it. Hooks enforce this,
+build byte-identical is not done: fix it or revert it. Hooks enforce this,
 including a build gate on `git commit`.
 
 The ROM is copyrighted: `xmen2.bin` is gitignored and must never be committed,
@@ -24,85 +27,112 @@ pasted, or uploaded. The user supplies their own dump.
 | Path | What |
 |---|---|
 | `xmen2.asm` | Main file: preamble, then address-ordered `include`s and `incrom` spans |
-| `src/header.asm` | Vector table, ROM header, `$200` A5 params / IRQ hook pointers |
-| `src/jumptable.asm` | 2,631-entry A5 jump table (`jtentry target`) |
+| `src/header.asm` / `src/jumptable.asm` | Vectors + ROM header + `$200` params / the 2,631-entry A5 jump table |
 | `src/f/XXXXXX.asm` | One file per function, named by START ADDRESS (stable across renames) |
-| `src/ram.asm` | A5-world global names (`g_Name = -$XXXX`) |
-| `src/macros.asm` | `incrom` (raw ROM bytes not yet understood), `jtentry` |
-| `config/seeds.txt` | Extra verified code entry points + evidence (convert.py appends) |
-| `tools/` | See below. Run everything with `uv run tools/<x>.py` |
+| `src/ram.asm` | A5-world global names (`g_Name = -$XXXX ; $FFxxxx: what`) |
+| `config/seeds.txt` | Extra verified code entry points + evidence |
+| `emu/` | Emulator harness: cores, `xmen2emu.py`, `corpus.py`, TAS + scenarios, committed coverage |
+| `docs/` | DONE (criteria), PROGRESS (generated), NOTES (shared findings), reviews/, RECOMP_HANDOFF |
 
-`incrom $START,$LEN` = bytes copied straight from the original ROM: the honest
-marker for "not yet understood". ~79% of the ROM is still incrom; most of that is
-graphics, level and sound data, not code.
+`incrom $START,$LEN` = bytes copied straight from the original ROM, the honest
+marker for "not yet understood". A `Name:` line right before an `incrom` makes it
+labelled data.
 
-## Tools
+## Tools (all `uv run tools/<x>.py`)
 
 | Command | Use |
 |---|---|
-| `uv run tools/build.py` | Build + verify + progress summary |
-| `uv run tools/rename.py OLD NEW [OLD NEW...]` | Rename labels everywhere (rolls back on mismatch) |
-| `uv run tools/rename.py --global -0x38A6 g_Name "comment"` | Name an A5 global; rewrites `-$38A6(a5)` operands |
-| `uv run tools/label_data.py START LEN Name "comment"` | Name a raw data span; swaps numeric refs for the label |
-| `uv run tools/candidates.py` | Unverified jump-table entries that trace cleanly as code |
-| `uv run tools/convert.py ADDR... --evidence "..."` | Raw bytes -> verified code from evidence |
-| `uv run tools/explore.py` / `split.py --force` | Initial discovery/split. **Never re-split** a tree with hand edits |
+| `build.py` | Build + verify + progress summary |
+| `progress.py` | Every definition-of-done criterion, PASS/FAIL; writes docs/PROGRESS.md |
+| `xref.py NAME` / `xref.py --todo` | Callers, callees, globals, data, **runtime info + screenshot**; naming queue |
+| `decomp.py decomp NAME...` | Ghidra pseudo-C (A5 globals resolved to RAM, jump-table calls named). `decomp.py sync` after renames |
+| `peek.py ADDR` | Raw capstone disassembly at any address + which file holds it |
+| `rename.py OLD NEW ...` / `rename.py --global -0x38A6 g_Name "comment"` | Rename labels / name an A5 global everywhere |
+| `label_data.py START LEN Name "format + evidence"` | Name a raw data span; numeric refs become the label |
+| `coverage.py [--list N] [--convert]` | Runtime truth vs. disassembly; `--convert` turns runtime-proven code into source |
+| `convert.py ADDR... --evidence "..."` | Raw bytes -> verified code from evidence (also batch: `--entries-file`) |
+| `candidates.py` | Unverified jump-table entries that trace cleanly as code |
+| `handoff.py` | Export build/recomp/ for phase 2 |
+| `explore.py` / `split.py --force` | Initial discovery/split. **Never re-split** a tree with hand edits (hook-blocked) |
 
-Every mutating tool runs the build and rolls back on failure, so a refused or
-rolled-back command means your hypothesis was wrong, not that the tool is broken.
+Mutating tools rebuild and roll back on failure. A refusal or rollback means the
+hypothesis was wrong, not that the tool is broken.
 
-## What we know about the binary (verify, extend, correct)
+## Emulator (runtime evidence)
 
-- **Written in C/C++ with a classic Macintosh compiler** (MPW C/C++ or Symantec;
-  exact compiler TBD). ~3,000 functions use `link.w a6,#N ... unlk a6 / rts`.
-  Arguments at `8(a6)`, `$C(a6)`, ... (pushed right-to-left, caller pops with
-  `addq`/`lea`). Return value in `d0`. Scratch: d0-d2/a0-a1; d3-d7/a2-a4 are
-  callee-saved (`movem.l ...,-(a7)` / restored via `-N(a6)`).
-- **A5 world** (Mac application model): A5 points into RAM.
-  - Negative offsets `-$XXXX(a5)` = **globals** -> name them with `rename.py --global`.
-  - Positive offsets `$22 + 8*i` = **jump table** entry i. `jsr d(a5)` calls
-    entry `(d-$22)/8`; the generated comment shows `; -> target`.
-    `pea d(a5)` with such an offset passes a **function pointer**.
-  - The ROM copy of the table is at `$220` (`src/jumptable.asm`). ~1,000 entries
-    point at DATA, not code — never assume a jt target is a function.
-- **Objects with vtables**: `movea.l (a4),a0 / movea.l $72(a0),a1 / jsr (a1)` =
-  virtual call, vtable pointer at object offset 0. Methods reached only this way
-  were found by the LINK-after-RTS heuristic; more may exist in incrom spans.
-- **String literals live inline after functions** (e.g. `Str_SiberiaB1Blizzard`),
-  and `sub_1F9464(name, callback)` appears to register named resources/handlers.
-- Boot code (`EntryPoint`, `$1F43AE`) is Sega's standard ICD_BLK4 init. IRQ
-  vectors are stubs that call through the pointers at `$210/$214/$218`.
-- 25 instructions are kept as `dc.w` because AS can't reproduce their encoding
-  (e.g. `move.b #$FF` stored with a `$FFFF` immediate word). Leave them.
+`emu/xmen2emu.py` runs BizHawk 2.4's Genesis Plus GX (the core the TASVideos movie
+was recorded on, so the TAS syncs to the final boss) headless at ~1,200 fps, logging
+every executed instruction, every ROM byte read as data, and DMA sources.
 
-Hardware reference: VDP data/control `$C00000/$C00004`, Z80 bus `$A11100`,
-reset `$A11200`, I/O `$A10000-$A1001F`, TMSS `$A14000`, work RAM `$FF0000-$FFFFFF`.
+```
+uv run emu/xmen2emu.py shot --from-frame 12000 --out x.png     # what's on screen at a frame (+ registers)
+uv run emu/xmen2emu.py script emu/corpus/scenarios/foo.txt --name scenario-foo
+uv run emu/corpus.py                                            # (re)run the standard corpus
+```
+- Screenshots are evidence: `xref.py` shows the TAS frame where a function first runs
+  and the nearest PNG. Read it to see what the game is doing then.
+- RAM snapshots every 60 TAS frames: `emu/runs/tas/ram/` (68000 byte order).
+- New input paths (menus, a character, 2-player, game over) = a scenario file in
+  `emu/corpus/scenarios/` (format in `emu/corpus.py`), then `uv run emu/corpus.py`
+  and `uv run tools/coverage.py --convert`. Commit the scenario and the new
+  `emu/coverage/*.gz`.
 
-## Workflows (see .claude/skills/)
+## What we know about the binary
 
-1. **Name a function** (`/disasm-function`): the main loop. Read the code and its
-   callers, work out what it does, rename it plus its locals/globals, and write a
-   header comment with the evidence. Prefer leaf functions and the most-called
-   helpers first: names propagate understanding to every caller.
-2. **Find more code** (`/find-code`): unverified jt entries, vtable slots and
-   switch tables -> `convert.py` with evidence.
-3. **Identify data**: strings, tables, graphics. Name them with `label_data.py`
-   and record the format in the comment.
+Full, current list: `docs/NOTES.md`. The essentials:
+- **C/C++ from a classic Macintosh compiler.** `link.w a6,#N ... unlk a6 / rts` frames,
+  args at `8(a6)`, `$C(a6)`... (pushed right-to-left, caller pops), result in d0,
+  d3-d7/a2-a4 callee-saved.
+- **A5 = $000200, constant.** `-d(a5)` is a RAM global at `($200-d) & $FFFFFF`
+  (`-$38A6(a5)` = `$FFC95A`). `+d(a5)` with `d = $22+8i` is jump-table entry i;
+  `jsr d(a5)` comments show the target, and `pea d(a5)` passes a function pointer.
+- ~1,000 jump-table entries point at DATA (or `jmp` thunk tables). Never assume a
+  jt target is a function.
+- Virtual calls: `movea.l (a4),a0 / movea.l $72(a0),a1 / jsr (a1)` (vtable at object offset 0).
+- 25 instructions are `dc.w ... ; insn: <text>` because AS can't encode them identically.
+  They count as code. Leave them.
 
-### Naming conventions
-- Functions `Module_Verb` (`Title_Init`, `VDP_SetReg`); globals `g_Name`;
-  data `Str_`/`Tbl_`/`Art_`/`Pal_`/`Map_` prefixes.
-- Keep auto names (`sub_/loc_XXXXXX`) when unsure. A wrong name is worse than
-  none. If a name is a guess, put `confidence: low` in the header comment.
-- Every renamed function gets a header comment: what it does, args, return,
-  evidence (callers, constants, hardware ports touched).
+Hardware: VDP data/control `$C00000/$C00004`, Z80 bus `$A11100`, reset `$A11200`,
+I/O `$A10000-$A1001F`, TMSS `$A14000`, work RAM `$FF0000-$FFFFFF`.
 
-## Working style
+## Naming conventions
 
-- Small, verified steps; commit after each green batch (the hook runs the build
-  first). Push after each batch so progress survives session limits.
-- Parallel agents: one git worktree each, claim disjoint address ranges
-  (e.g. by 64 KB bank), rebase before committing. Global renames touch many
-  files: keep them in their own small commits.
-- Don't re-litigate the toolchain: AS + per-function files is deliberate (it
-  matches Sonic Retro's projects and feeds segagenesisrecomp's tooling).
+- Functions `Module_Verb` (`Title_Init`, `VDP_SetReg`); globals `g_Name`; data
+  `Str_`/`Tbl_`/`Art_`/`Pal_`/`Map_`/`Snd_`/`Lvl_` prefixes; vtables `Tbl_<Class>_vtable`.
+- Header for every function: `; Name - one-line purpose`, then In/Out/Evidence lines.
+- Unsure after real effort: `unk_<Module>_XXXXXX` plus a header saying what is
+  known (≤5% allowed). Never a confident-sounding guess: wrong names spread.
+
+## Autonomous mode ("work until the phase is done")
+
+Loop until `uv run tools/progress.py` exits 0:
+1. `uv run tools/progress.py` and take the **first failing criterion**, in table
+   order. Work it in batches of ~5 items (functions, spans, scenarios).
+2. Use the matching skill: R2/S2/S3 → `/find-code`; N1/N2/N3 → `/disasm-function`;
+   S4/S5 → `label_data.py` with the coverage report's spans; R4 → write scenario
+   files (screenshots tell you if the inputs did what you meant); R5 → explain in
+   NOTES; N4 → `/review-names`.
+3. After each green batch: append findings to `docs/NOTES.md`, run `progress.py`
+   (refreshes PROGRESS.md), commit, push. Done means pushed.
+4. Stuck on an item after a real attempt: record what was tried in NOTES "Open
+   questions", move to the next item, come back with more context later.
+5. When progress.py is all PASS, run one more full review sample (`/review-names`)
+   and stop. Report phase 1 complete and that phase 2 can start.
+
+Never weaken a check in `progress.py`/`coverage.py`/`build.py` to make it pass.
+Changing a criterion needs the user's approval.
+
+## Parallel mode (orchestrator + workers)
+
+- Up to 3-4 workers, each in its own git worktree (`uv run tools/setup.py` there),
+  each owning a disjoint **address range** (e.g. 512 KB quarter of the ROM) for
+  naming/labelling. One worker can own a criterion instead (e.g. R4 scenarios).
+- Workers rebase on `origin/main` before every commit, push after each batch, and
+  keep **global renames in their own small commits** (they touch callers in other
+  ranges). If a rebase conflicts in a file outside your range, take theirs, re-run
+  your tool command, and rebuild.
+- Shared files (`xmen2.asm`, `src/jumptable.asm`, `src/ram.asm`, `docs/NOTES.md`)
+  change line-by-line through the tools. Keep edits to them minimal and rebase often.
+- Every worker appends to `docs/NOTES.md`. That's how they share understanding.
+- The orchestrator runs `progress.py` between rounds, reassigns ranges and
+  criteria, and launches the review agent (N4), which must not review its own names.

@@ -16,7 +16,7 @@ sub_0054C6:
 	jsr	$4F9A(a5)	; -> sub_1F9464
 	move.b	d0,-$3B72(a5)
 	pea.l	$EC2(a5)
-	pea.l	$5C1C(pc)
+	pea.l	Str_CerebroScreenPlayerSelect(pc)
 	jsr	$4F9A(a5)	; -> sub_1F9464
 	move.b	d0,-$3B88(a5)
 	pea.l	$2932(a5)

@@ -162,6 +162,9 @@ def format_ins(ins, labels: dict[int, str]) -> str:
     return f"{mnem}\t{','.join(out)}" if out else mnem
 
 
+INSN_MARK = "; insn:"  # marks a dc.w that is really one instruction AS can't encode identically
+
+
 def dcw_line(rom: bytes, addr: int, size: int, comment: str) -> str:
     words = ",".join(f"${u16(rom, a):04X}" for a in range(addr, addr + size, 2))
-    return f"dc.w\t{words}\t; {comment}"
+    return f"dc.w\t{words}\t{INSN_MARK} {comment}"

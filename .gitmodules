@@ -1,0 +1,3 @@
+[submodule "emu/gpgx"]
+	path = emu/gpgx
+	url = https://github.com/libretro/Genesis-Plus-GX.git

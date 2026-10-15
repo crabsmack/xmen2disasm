@@ -15,7 +15,7 @@ sub_064AEC:
 loc_064B0E:
 	move.w	#$FF38,$36(a4)
 	move.w	#$FF38,$38(a4)
-	dc.w	$197C,$FFFF,$003C	; move.b #$ff, $3c(a4)
+	dc.w	$197C,$FFFF,$003C	; insn: move.b #$ff, $3c(a4)
 	bra.s	loc_064B4A
 loc_064B22:
 	move.b	$3C(a4),d0

@@ -17,7 +17,9 @@
 	include "src/f/005458.asm"
 	include "src/f/005466.asm"
 	include "src/f/0054C6.asm"
-	incrom	$0057DE,$45A
+	incrom	$0057DE,$43E
+Str_CerebroScreenPlayerSelect:	; C string, resource name looked up by sub_0054C6
+	incrom	$005C1C,$1C
 Str_SentinelsD1Exterior1:	; C string, resource name looked up by sub_0054C6
 	incrom	$005C38,$18
 Str_CerebroScreenSentinels:	; C string, resource name looked up by sub_0054C6
@@ -46,7 +48,9 @@ Str_SiberiaB1Blizzard:	; C string, resource name looked up by sub_0054C6
 	include "src/f/0061B8.asm"
 	include "src/f/0061D0.asm"
 	include "src/f/006242.asm"
-	incrom	$0062A2,$2A
+	incrom	$0062A2,$1E
+	include "src/f/0062C0.asm"
+	incrom	$0062C6,$6
 	include "src/f/0062CC.asm"
 	include "src/f/0062E4.asm"
 	incrom	$006344,$2A
@@ -124,7 +128,11 @@ Str_SiberiaB1Blizzard:	; C string, resource name looked up by sub_0054C6
 	include "src/f/01180E.asm"
 	include "src/f/011862.asm"
 	include "src/f/0118B6.asm"
-	incrom	$0118BE,$1A84
+	incrom	$0118BE,$128
+	include "src/f/0119E6.asm"
+	incrom	$0119FE,$2
+	include "src/f/011A00.asm"
+	incrom	$011A04,$193E
 	include "src/f/013342.asm"
 	include "src/f/013350.asm"
 	include "src/f/013358.asm"
@@ -133,7 +141,8 @@ Str_SiberiaB1Blizzard:	; C string, resource name looked up by sub_0054C6
 	include "src/f/013698.asm"
 	include "src/f/0136F0.asm"
 	include "src/f/013722.asm"
-	incrom	$013762,$26
+	incrom	$013762,$20
+	include "src/f/013782.asm"
 	include "src/f/013788.asm"
 	include "src/f/0137C4.asm"
 	include "src/f/0137EE.asm"
@@ -146,7 +155,11 @@ Str_SiberiaB1Blizzard:	; C string, resource name looked up by sub_0054C6
 	include "src/f/013D26.asm"
 	include "src/f/013D50.asm"
 	include "src/f/013DB0.asm"
-	incrom	$013E10,$3408
+	incrom	$013E10,$B6
+	include "src/f/013EC6.asm"
+	incrom	$013ED2,$2
+	include "src/f/013ED4.asm"
+	incrom	$013EE4,$3334
 	include "src/f/017218.asm"
 	include "src/f/017226.asm"
 	include "src/f/01723C.asm"
@@ -183,7 +196,9 @@ Str_SiberiaB1Blizzard:	; C string, resource name looked up by sub_0054C6
 	include "src/f/0184CE.asm"
 	include "src/f/018504.asm"
 	include "src/f/0185BE.asm"
-	incrom	$018644,$245E
+	incrom	$018644,$B6
+	include "src/f/0186FA.asm"
+	incrom	$018706,$239C
 	include "src/f/01AAA2.asm"
 	include "src/f/01AAB0.asm"
 	include "src/f/01AABC.asm"
@@ -197,7 +212,7 @@ Str_SiberiaB1Blizzard:	; C string, resource name looked up by sub_0054C6
 	include "src/f/01C042.asm"
 	incrom	$01C16C,$A
 	include "src/f/01C176.asm"
-	incrom	$01C182,$2E
+	include "src/f/01C182.asm"
 	include "src/f/01C1B0.asm"
 	include "src/f/01C1DA.asm"
 	include "src/f/01C24C.asm"
@@ -215,7 +230,10 @@ Str_SiberiaB1Blizzard:	; C string, resource name looked up by sub_0054C6
 	include "src/f/01C886.asm"
 	include "src/f/01C8BA.asm"
 	include "src/f/01C94A.asm"
-	incrom	$01C9A2,$5D2E
+	incrom	$01C9A2,$B8
+	include "src/f/01CA5A.asm"
+	incrom	$01CA62,$5C50
+	include "src/f/0226B2.asm"
 	include "src/f/0226D0.asm"
 	include "src/f/0226F4.asm"
 	include "src/f/022716.asm"
@@ -284,10 +302,14 @@ Str_SiberiaB1Blizzard:	; C string, resource name looked up by sub_0054C6
 	include "src/f/02CDCA.asm"
 	include "src/f/02CE1A.asm"
 	include "src/f/02CE52.asm"
-	incrom	$02CE86,$70
+	incrom	$02CE86,$E
+	include "src/f/02CE94.asm"
+	incrom	$02CEBC,$3A
 	include "src/f/02CEF6.asm"
 	include "src/f/02CF04.asm"
-	incrom	$02CF28,$216
+	incrom	$02CF28,$CC
+	include "src/f/02CFF4.asm"
+	incrom	$02D0B8,$86
 	include "src/f/02D13E.asm"
 	include "src/f/02D146.asm"
 	include "src/f/02D1A6.asm"
@@ -317,7 +339,9 @@ Str_SiberiaB1Blizzard:	; C string, resource name looked up by sub_0054C6
 	include "src/f/02DADE.asm"
 	incrom	$02DB58,$A
 	include "src/f/02DB62.asm"
-	incrom	$02DB70,$28
+	incrom	$02DB70,$14
+	include "src/f/02DB84.asm"
+	incrom	$02DB8E,$A
 	include "src/f/02DB98.asm"
 	include "src/f/02DBCE.asm"
 	include "src/f/02DC80.asm"
@@ -328,7 +352,10 @@ Str_SiberiaB1Blizzard:	; C string, resource name looked up by sub_0054C6
 	include "src/f/02DF96.asm"
 	include "src/f/02DFA4.asm"
 	include "src/f/02DFD8.asm"
-	incrom	$02E018,$98
+	incrom	$02E018,$E
+	include "src/f/02E026.asm"
+	incrom	$02E04E,$14
+	include "src/f/02E062.asm"
 	include "src/f/02E0B0.asm"
 	include "src/f/02E0B8.asm"
 	include "src/f/02E0F0.asm"
@@ -351,11 +378,14 @@ Str_SiberiaB1Blizzard:	; C string, resource name looked up by sub_0054C6
 	include "src/f/034D4E.asm"
 	include "src/f/034D56.asm"
 	include "src/f/034D7A.asm"
-	incrom	$034DEC,$B4
+	incrom	$034DEC,$C
+	include "src/f/034DF8.asm"
 	include "src/f/034EA0.asm"
-	incrom	$034EBA,$A8
+	incrom	$034EBA,$C
+	include "src/f/034EC6.asm"
 	include "src/f/034F62.asm"
-	incrom	$034FBE,$1B6
+	incrom	$034FBE,$1E
+	include "src/f/034FDC.asm"
 	include "src/f/035174.asm"
 	include "src/f/03518C.asm"
 	include "src/f/0351F8.asm"
@@ -368,10 +398,17 @@ Str_SiberiaB1Blizzard:	; C string, resource name looked up by sub_0054C6
 	include "src/f/03582E.asm"
 	include "src/f/03585C.asm"
 	include "src/f/035872.asm"
-	incrom	$035890,$22
+	incrom	$035890,$C
+	include "src/f/03589C.asm"
+	incrom	$0358A8,$4
+	include "src/f/0358AC.asm"
+	incrom	$0358B0,$2
 	include "src/f/0358B2.asm"
 	include "src/f/0358D8.asm"
-	incrom	$03594A,$22
+	incrom	$03594A,$C
+	include "src/f/035956.asm"
+	incrom	$035962,$4
+	include "src/f/035966.asm"
 	include "src/f/03596C.asm"
 	include "src/f/03597A.asm"
 	include "src/f/03599A.asm"
@@ -396,7 +433,8 @@ Str_SiberiaB1Blizzard:	; C string, resource name looked up by sub_0054C6
 	include "src/f/03628E.asm"
 	include "src/f/0363A2.asm"
 	include "src/f/03645C.asm"
-	incrom	$036532,$1B4
+	incrom	$036532,$C
+	include "src/f/03653E.asm"
 	include "src/f/0366E6.asm"
 	include "src/f/036730.asm"
 	include "src/f/0367B6.asm"
@@ -467,7 +505,8 @@ Str_SiberiaB1Blizzard:	; C string, resource name looked up by sub_0054C6
 	include "src/f/038838.asm"
 	include "src/f/0388D4.asm"
 	include "src/f/0389B6.asm"
-	incrom	$0389FE,$5A
+	incrom	$0389FE,$10
+	include "src/f/038A0E.asm"
 	include "src/f/038A58.asm"
 	include "src/f/038A6C.asm"
 	include "src/f/038A7E.asm"
@@ -521,7 +560,9 @@ Str_SiberiaB1Blizzard:	; C string, resource name looked up by sub_0054C6
 	include "src/f/047402.asm"
 	include "src/f/04740A.asm"
 	include "src/f/04744E.asm"
-	incrom	$047554,$32
+	incrom	$047554,$A
+	include "src/f/04755E.asm"
+	incrom	$047572,$14
 	include "src/f/047586.asm"
 	include "src/f/0475B4.asm"
 	include "src/f/0475E0.asm"
@@ -535,10 +576,18 @@ Str_SiberiaB1Blizzard:	; C string, resource name looked up by sub_0054C6
 	include "src/f/047886.asm"
 	include "src/f/047892.asm"
 	include "src/f/04791A.asm"
-	incrom	$04797A,$39BC
+	incrom	$04797A,$380C
+	include "src/f/04B186.asm"
+	incrom	$04B19E,$2
+	include "src/f/04B1A0.asm"
+	incrom	$04B1A4,$2
+	include "src/f/04B1A6.asm"
+	incrom	$04B1C2,$174
 	include "src/f/04B336.asm"
 	include "src/f/04B344.asm"
-	incrom	$04B368,$48
+	incrom	$04B368,$C
+	include "src/f/04B374.asm"
+	incrom	$04B3A6,$A
 	include "src/f/04B3B0.asm"
 	include "src/f/04B3C6.asm"
 	include "src/f/04B3CE.asm"
@@ -617,7 +666,8 @@ Str_SiberiaB1Blizzard:	; C string, resource name looked up by sub_0054C6
 	include "src/f/04E94A.asm"
 	incrom	$04E9BA,$8
 	include "src/f/04E9C2.asm"
-	incrom	$04E9C8,$22
+	include "src/f/04E9C8.asm"
+	incrom	$04E9D0,$1A
 	include "src/f/04E9EA.asm"
 	incrom	$04EA42,$78
 	include "src/f/04EABA.asm"
@@ -708,7 +758,9 @@ Str_SiberiaB1Blizzard:	; C string, resource name looked up by sub_0054C6
 	include "src/f/05CCDA.asm"
 	incrom	$05CD00,$A
 	include "src/f/05CD0A.asm"
-	incrom	$05CD18,$26
+	incrom	$05CD18,$14
+	include "src/f/05CD2C.asm"
+	incrom	$05CD36,$8
 	include "src/f/05CD3E.asm"
 	include "src/f/05CD46.asm"
 	include "src/f/05CD4E.asm"
@@ -766,24 +818,47 @@ Str_SiberiaB1Blizzard:	; C string, resource name looked up by sub_0054C6
 	include "src/f/05DD66.asm"
 	include "src/f/05DD7C.asm"
 	include "src/f/05DDBE.asm"
-	incrom	$05DEF6,$142
+	incrom	$05DEF6,$20
+	include "src/f/05DF16.asm"
+	incrom	$05DF26,$48
+	include "src/f/05DF6E.asm"
+	incrom	$05DF84,$B4
 	include "src/f/05E038.asm"
 	incrom	$05E04E,$6486
 	include "src/f/0644D4.asm"
 	include "src/f/06451E.asm"
 	include "src/f/064588.asm"
 	include "src/f/064638.asm"
-	incrom	$064666,$70
+	incrom	$064666,$E
+	include "src/f/064674.asm"
 	include "src/f/0646D6.asm"
 	incrom	$0647CC,$4
 	include "src/f/0647D0.asm"
-	incrom	$0647F8,$70
+	incrom	$0647F8,$E
+	include "src/f/064806.asm"
+	incrom	$064814,$1C
+	include "src/f/064830.asm"
+	incrom	$06483E,$E
+	include "src/f/06484C.asm"
+	incrom	$06485A,$E
 	include "src/f/064868.asm"
 	include "src/f/06489A.asm"
-	incrom	$0648BE,$46
+	incrom	$0648BE,$E
+	include "src/f/0648CC.asm"
+	incrom	$0648D4,$10
+	include "src/f/0648E4.asm"
+	incrom	$0648EC,$8
+	include "src/f/0648F4.asm"
+	incrom	$0648FC,$8
 	include "src/f/064904.asm"
 	include "src/f/064912.asm"
-	incrom	$064936,$46
+	incrom	$064936,$E
+	include "src/f/064944.asm"
+	incrom	$06494C,$10
+	include "src/f/06495C.asm"
+	incrom	$064964,$8
+	include "src/f/06496C.asm"
+	incrom	$064974,$8
 	include "src/f/06497C.asm"
 	include "src/f/06498A.asm"
 	include "src/f/064AA2.asm"
@@ -793,28 +868,42 @@ Str_SiberiaB1Blizzard:	; C string, resource name looked up by sub_0054C6
 	include "src/f/064BF0.asm"
 	include "src/f/064C66.asm"
 	include "src/f/064CA2.asm"
-	incrom	$064CE2,$F0
+	incrom	$064CE2,$10
+	include "src/f/064CF2.asm"
 	include "src/f/064DD2.asm"
-	incrom	$064E04,$7E
+	incrom	$064E04,$10
+	include "src/f/064E14.asm"
 	include "src/f/064E82.asm"
 	include "src/f/064E9C.asm"
 	include "src/f/064EDE.asm"
 	include "src/f/064F70.asm"
-	incrom	$06531E,$56
+	incrom	$06531E,$8
+	include "src/f/065326.asm"
 	include "src/f/065374.asm"
 	include "src/f/06539C.asm"
 	include "src/f/065400.asm"
 	include "src/f/065494.asm"
 	include "src/f/0654F4.asm"
 	include "src/f/065532.asm"
-	incrom	$0655B8,$CA
+	incrom	$0655B8,$C
+	include "src/f/0655C4.asm"
+	incrom	$06563A,$48
 	include "src/f/065682.asm"
 	include "src/f/0656B0.asm"
-	incrom	$065C5A,$62
+	incrom	$065C5A,$E
+	include "src/f/065C68.asm"
+	incrom	$065C74,$18
+	include "src/f/065C8C.asm"
+	incrom	$065C98,$C
+	include "src/f/065CA4.asm"
+	incrom	$065CB0,$C
 	include "src/f/065CBC.asm"
-	incrom	$065D12,$62
+	incrom	$065D12,$E
+	include "src/f/065D20.asm"
+	incrom	$065D2C,$48
 	include "src/f/065D74.asm"
-	incrom	$065D8E,$DE
+	incrom	$065D8E,$28
+	include "src/f/065DB6.asm"
 	include "src/f/065E6C.asm"
 	incrom	$066AF8,$2E
 	include "src/f/066B26.asm"
@@ -836,14 +925,24 @@ Str_SiberiaB1Blizzard:	; C string, resource name looked up by sub_0054C6
 	include "src/f/06724E.asm"
 	include "src/f/06726C.asm"
 	include "src/f/0672CE.asm"
-	incrom	$0672FE,$6E
+	incrom	$0672FE,$E
+	include "src/f/06730C.asm"
+	incrom	$067360,$C
 	include "src/f/06736C.asm"
 	include "src/f/067376.asm"
 	include "src/f/067420.asm"
-	incrom	$06744E,$C0
+	incrom	$06744E,$E
+	include "src/f/06745C.asm"
+	incrom	$067478,$96
 	include "src/f/06750E.asm"
 	include "src/f/067542.asm"
-	incrom	$06756E,$8A
+	incrom	$06756E,$E
+	include "src/f/06757C.asm"
+	incrom	$06758E,$24
+	include "src/f/0675B2.asm"
+	incrom	$0675C4,$12
+	include "src/f/0675D6.asm"
+	incrom	$0675E8,$10
 	include "src/f/0675F8.asm"
 	include "src/f/067600.asm"
 	include "src/f/0676F0.asm"
@@ -864,7 +963,9 @@ Str_SiberiaB1Blizzard:	; C string, resource name looked up by sub_0054C6
 	include "src/f/067FCA.asm"
 	include "src/f/068078.asm"
 	include "src/f/068126.asm"
-	incrom	$068242,$4F80
+	incrom	$068242,$4EE4
+	include "src/f/06D126.asm"
+	incrom	$06D12E,$94
 	include "src/f/06D1C2.asm"
 	include "src/f/06D1D0.asm"
 	include "src/f/06D1E6.asm"
@@ -914,7 +1015,8 @@ Str_SiberiaB1Blizzard:	; C string, resource name looked up by sub_0054C6
 	include "src/f/081BBA.asm"
 	include "src/f/081BC2.asm"
 	include "src/f/081BE6.asm"
-	incrom	$081C72,$3A
+	incrom	$081C72,$C
+	include "src/f/081C7E.asm"
 	include "src/f/081CAC.asm"
 	incrom	$081CC4,$1C
 	include "src/f/081CE0.asm"
@@ -928,7 +1030,8 @@ Str_SiberiaB1Blizzard:	; C string, resource name looked up by sub_0054C6
 	include "src/f/081F28.asm"
 	include "src/f/081F5A.asm"
 	include "src/f/081F62.asm"
-	incrom	$081FAC,$2E
+	incrom	$081FAC,$8
+	include "src/f/081FB4.asm"
 	include "src/f/081FDA.asm"
 	include "src/f/081FFE.asm"
 	include "src/f/082038.asm"
@@ -950,7 +1053,13 @@ Str_SiberiaB1Blizzard:	; C string, resource name looked up by sub_0054C6
 	include "src/f/082542.asm"
 	include "src/f/0825CC.asm"
 	include "src/f/08270E.asm"
-	incrom	$082746,$1A4A
+	incrom	$082746,$1988
+	include "src/f/0840CE.asm"
+	incrom	$0840D2,$6
+	include "src/f/0840D8.asm"
+	incrom	$0840E0,$6
+	include "src/f/0840E6.asm"
+	incrom	$0840EE,$A2
 	include "src/f/084190.asm"
 	include "src/f/08419E.asm"
 	include "src/f/0841B4.asm"
@@ -958,7 +1067,7 @@ Str_SiberiaB1Blizzard:	; C string, resource name looked up by sub_0054C6
 	include "src/f/0841C4.asm"
 	incrom	$0843B0,$8
 	include "src/f/0843B8.asm"
-	incrom	$0843CC,$54
+	include "src/f/0843CC.asm"
 	include "src/f/084420.asm"
 	include "src/f/084500.asm"
 	include "src/f/084544.asm"
@@ -1089,7 +1198,9 @@ Str_SiberiaB1Blizzard:	; C string, resource name looked up by sub_0054C6
 	include "src/f/08867C.asm"
 	include "src/f/08869E.asm"
 	include "src/f/088730.asm"
-	incrom	$08894C,$BC7A
+	incrom	$08894C,$10A
+	include "src/f/088A56.asm"
+	incrom	$088A9A,$BB2C
 	include "src/f/0945C6.asm"
 	include "src/f/0945D4.asm"
 	include "src/f/0945E0.asm"
@@ -1105,7 +1216,9 @@ Str_SiberiaB1Blizzard:	; C string, resource name looked up by sub_0054C6
 	include "src/f/094A88.asm"
 	include "src/f/094B16.asm"
 	include "src/f/094BA4.asm"
-	incrom	$094BAC,$D6
+	incrom	$094BAC,$7A
+	include "src/f/094C26.asm"
+	incrom	$094C2A,$58
 	include "src/f/094C82.asm"
 	include "src/f/094C90.asm"
 	include "src/f/094CDA.asm"
@@ -1235,14 +1348,18 @@ Str_SiberiaB1Blizzard:	; C string, resource name looked up by sub_0054C6
 	include "src/f/098C4E.asm"
 	include "src/f/098CC8.asm"
 	include "src/f/098DA8.asm"
-	incrom	$098DEA,$19C
+	incrom	$098DEA,$166
+	include "src/f/098F50.asm"
 	include "src/f/098F86.asm"
 	include "src/f/098F92.asm"
 	include "src/f/098FB6.asm"
 	include "src/f/099016.asm"
 	incrom	$099078,$2
 	include "src/f/09907A.asm"
-	incrom	$0991B4,$28
+	incrom	$0991B4,$E
+	include "src/f/0991C2.asm"
+	incrom	$0991CA,$4
+	include "src/f/0991CE.asm"
 	include "src/f/0991DC.asm"
 	include "src/f/09921E.asm"
 	include "src/f/0993C0.asm"
@@ -1258,7 +1375,31 @@ Str_SiberiaB1Blizzard:	; C string, resource name looked up by sub_0054C6
 	include "src/f/099C22.asm"
 	include "src/f/099C36.asm"
 	include "src/f/099C88.asm"
-	incrom	$099C90,$103E
+	incrom	$099C90,$51A
+	include "src/f/09A1AA.asm"
+	incrom	$09A1AE,$2
+	include "src/f/09A1B0.asm"
+	incrom	$09A1E0,$136
+	include "src/f/09A316.asm"
+	incrom	$09A33A,$2
+	include "src/f/09A33C.asm"
+	incrom	$09A344,$16
+	include "src/f/09A35A.asm"
+	incrom	$09A36A,$116
+	include "src/f/09A480.asm"
+	incrom	$09A49C,$D4
+	include "src/f/09A570.asm"
+	incrom	$09A584,$280
+	include "src/f/09A804.asm"
+	incrom	$09A810,$12
+	include "src/f/09A822.asm"
+	incrom	$09A836,$90
+	include "src/f/09A8C6.asm"
+	incrom	$09A8D2,$26
+	include "src/f/09A8F8.asm"
+	incrom	$09A908,$182
+	include "src/f/09AA8A.asm"
+	incrom	$09AA9E,$230
 	include "src/f/09ACCE.asm"
 	include "src/f/09ACDC.asm"
 	include "src/f/09AD96.asm"
@@ -1291,7 +1432,9 @@ Str_SiberiaB1Blizzard:	; C string, resource name looked up by sub_0054C6
 	include "src/f/0AB30C.asm"
 	include "src/f/0AB350.asm"
 	include "src/f/0AB370.asm"
-	incrom	$0AB396,$80
+	incrom	$0AB396,$E
+	include "src/f/0AB3A4.asm"
+	incrom	$0AB3B6,$60
 	include "src/f/0AB416.asm"
 	include "src/f/0AB41E.asm"
 	include "src/f/0AB46C.asm"
@@ -1299,7 +1442,13 @@ Str_SiberiaB1Blizzard:	; C string, resource name looked up by sub_0054C6
 	include "src/f/0AB510.asm"
 	include "src/f/0AB51E.asm"
 	include "src/f/0AB526.asm"
-	incrom	$0AB54C,$204
+	incrom	$0AB54C,$10
+	include "src/f/0AB55C.asm"
+	incrom	$0AB5DE,$80
+	include "src/f/0AB65E.asm"
+	incrom	$0AB68E,$4A
+	include "src/f/0AB6D8.asm"
+	incrom	$0AB706,$4A
 	include "src/f/0AB750.asm"
 	include "src/f/0AB75A.asm"
 	include "src/f/0AB7A8.asm"
@@ -1331,7 +1480,8 @@ Str_SiberiaB1Blizzard:	; C string, resource name looked up by sub_0054C6
 	include "src/f/0AC01E.asm"
 	incrom	$0AC128,$A
 	include "src/f/0AC132.asm"
-	incrom	$0AC138,$16
+	include "src/f/0AC138.asm"
+	incrom	$0AC14A,$4
 	include "src/f/0AC14E.asm"
 	incrom	$0AC1B8,$82
 	include "src/f/0AC23A.asm"
@@ -1449,7 +1599,9 @@ Str_SiberiaB1Blizzard:	; C string, resource name looked up by sub_0054C6
 	include "src/f/0B7298.asm"
 	include "src/f/0B7394.asm"
 	include "src/f/0B7436.asm"
-	incrom	$0B746A,$26
+	incrom	$0B746A,$18
+	include "src/f/0B7482.asm"
+	incrom	$0B748A,$6
 	include "src/f/0B7490.asm"
 	include "src/f/0B74CC.asm"
 	include "src/f/0B74F6.asm"
@@ -1466,7 +1618,21 @@ Str_SiberiaB1Blizzard:	; C string, resource name looked up by sub_0054C6
 	include "src/f/0B79DA.asm"
 	include "src/f/0B7A2E.asm"
 	include "src/f/0B7B14.asm"
-	incrom	$0B7B1C,$2682
+	incrom	$0B7B1C,$1BE
+	include "src/f/0B7CDA.asm"
+	incrom	$0B7CE6,$A
+	include "src/f/0B7CF0.asm"
+	incrom	$0B7CF4,$13A
+	include "src/f/0B7E2E.asm"
+	incrom	$0B7E46,$2
+	include "src/f/0B7E48.asm"
+	incrom	$0B7E54,$2
+	include "src/f/0B7E56.asm"
+	incrom	$0B7E82,$2CA
+	include "src/f/0B814C.asm"
+	incrom	$0B815C,$1C
+	include "src/f/0B8178.asm"
+	incrom	$0B818C,$2012
 	include "src/f/0BA19E.asm"
 	include "src/f/0BA1AC.asm"
 	include "src/f/0BA1B8.asm"
@@ -1592,7 +1758,8 @@ Str_SiberiaB1Blizzard:	; C string, resource name looked up by sub_0054C6
 	include "src/f/0BE2CE.asm"
 	incrom	$0BE306,$A
 	include "src/f/0BE310.asm"
-	incrom	$0BE328,$4E
+	include "src/f/0BE328.asm"
+	incrom	$0BE364,$12
 	include "src/f/0BE376.asm"
 	include "src/f/0BE37E.asm"
 	include "src/f/0BE3B4.asm"
@@ -1655,7 +1822,9 @@ Str_SiberiaB1Blizzard:	; C string, resource name looked up by sub_0054C6
 	incrom	$0BF820,$78
 	include "src/f/0BF898.asm"
 	include "src/f/0BF8DC.asm"
-	incrom	$0BF90A,$BE
+	incrom	$0BF90A,$A
+	include "src/f/0BF914.asm"
+	incrom	$0BF93A,$8E
 	include "src/f/0BF9C8.asm"
 	include "src/f/0BF9EA.asm"
 	include "src/f/0BFA7C.asm"
@@ -1683,7 +1852,8 @@ Str_SiberiaB1Blizzard:	; C string, resource name looked up by sub_0054C6
 	include "src/f/0C099C.asm"
 	incrom	$0C09CA,$C
 	include "src/f/0C09D6.asm"
-	incrom	$0C09E2,$3A
+	include "src/f/0C09E2.asm"
+	incrom	$0C0A12,$A
 	include "src/f/0C0A1C.asm"
 	include "src/f/0C0A52.asm"
 	include "src/f/0C0B7C.asm"
@@ -1900,7 +2070,13 @@ Str_SiberiaB1Blizzard:	; C string, resource name looked up by sub_0054C6
 	include "src/f/0EAD14.asm"
 	incrom	$0EAE16,$78
 	include "src/f/0EAE8E.asm"
-	incrom	$0EAEFC,$75E
+	incrom	$0EAEFC,$2
+	include "src/f/0EAEFE.asm"
+	incrom	$0EAF02,$2
+	include "src/f/0EAF04.asm"
+	incrom	$0EAF10,$2
+	include "src/f/0EAF12.asm"
+	incrom	$0EAF7A,$6E0
 	include "src/f/0EB65A.asm"
 	include "src/f/0EB662.asm"
 	include "src/f/0EB670.asm"
@@ -1991,7 +2167,8 @@ Str_SiberiaB1Blizzard:	; C string, resource name looked up by sub_0054C6
 	include "src/f/106B8C.asm"
 	include "src/f/106BCE.asm"
 	include "src/f/106BF0.asm"
-	incrom	$106CC0,$3E
+	incrom	$106CC0,$2C
+	include "src/f/106CEC.asm"
 	include "src/f/106CFE.asm"
 	include "src/f/106DC0.asm"
 	include "src/f/106E14.asm"
@@ -2007,9 +2184,11 @@ Str_SiberiaB1Blizzard:	; C string, resource name looked up by sub_0054C6
 	include "src/f/107370.asm"
 	include "src/f/107378.asm"
 	include "src/f/1073A8.asm"
-	incrom	$1073E4,$88
+	incrom	$1073E4,$1C
+	include "src/f/107400.asm"
 	include "src/f/10746C.asm"
-	incrom	$1074A8,$4C
+	incrom	$1074A8,$10
+	include "src/f/1074B8.asm"
 	include "src/f/1074F4.asm"
 	include "src/f/10750C.asm"
 	include "src/f/107540.asm"
@@ -2057,7 +2236,14 @@ Str_SiberiaB1Blizzard:	; C string, resource name looked up by sub_0054C6
 	include "src/f/111790.asm"
 	include "src/f/111798.asm"
 	include "src/f/1117A0.asm"
-	incrom	$1117C6,$3D4
+	incrom	$1117C6,$2A
+	include "src/f/1117F0.asm"
+	incrom	$111842,$96
+	include "src/f/1118D8.asm"
+	incrom	$111920,$E0
+	include "src/f/111A00.asm"
+	incrom	$111ABA,$96
+	include "src/f/111B50.asm"
 	include "src/f/111B9A.asm"
 	include "src/f/111BAA.asm"
 	include "src/f/111DEA.asm"
@@ -2065,7 +2251,8 @@ Str_SiberiaB1Blizzard:	; C string, resource name looked up by sub_0054C6
 	include "src/f/111E44.asm"
 	include "src/f/112016.asm"
 	include "src/f/11214E.asm"
-	incrom	$112178,$1B8
+	incrom	$112178,$4E
+	include "src/f/1121C6.asm"
 	include "src/f/112330.asm"
 	include "src/f/11233A.asm"
 	include "src/f/1123FA.asm"
@@ -2099,17 +2286,19 @@ Str_SiberiaB1Blizzard:	; C string, resource name looked up by sub_0054C6
 	include "src/f/113D20.asm"
 	incrom	$113D4E,$16
 	include "src/f/113D64.asm"
-	incrom	$113DA0,$D6
+	include "src/f/113DA0.asm"
 	include "src/f/113E76.asm"
 	include "src/f/113E80.asm"
 	include "src/f/113EDA.asm"
 	include "src/f/113EFE.asm"
 	include "src/f/113F38.asm"
 	include "src/f/113F5C.asm"
-	incrom	$113FF4,$10C
+	incrom	$113FF4,$8
+	include "src/f/113FFC.asm"
 	include "src/f/114100.asm"
 	include "src/f/11410E.asm"
-	incrom	$1141BE,$114
+	incrom	$1141BE,$8
+	include "src/f/1141C6.asm"
 	include "src/f/1142D2.asm"
 	include "src/f/1142E0.asm"
 	include "src/f/1142E8.asm"
@@ -2190,7 +2379,8 @@ Str_SiberiaB1Blizzard:	; C string, resource name looked up by sub_0054C6
 	include "src/f/1188DA.asm"
 	include "src/f/1188E8.asm"
 	include "src/f/11893C.asm"
-	incrom	$118A52,$1DC
+	incrom	$118A52,$62
+	include "src/f/118AB4.asm"
 	include "src/f/118C2E.asm"
 	incrom	$118C8E,$BE
 	include "src/f/118D4C.asm"
@@ -2235,7 +2425,29 @@ Str_SiberiaB1Blizzard:	; C string, resource name looked up by sub_0054C6
 	include "src/f/119E70.asm"
 	include "src/f/119E92.asm"
 	include "src/f/119EB4.asm"
-	incrom	$119ECA,$1C66
+	incrom	$119ECA,$161C
+	include "src/f/11B4E6.asm"
+	incrom	$11B4EA,$1E
+	include "src/f/11B508.asm"
+	incrom	$11B524,$1A
+	include "src/f/11B53E.asm"
+	incrom	$11B552,$E
+	include "src/f/11B560.asm"
+	incrom	$11B574,$4C
+	include "src/f/11B5C0.asm"
+	incrom	$11B5D0,$2C
+	include "src/f/11B5FC.asm"
+	incrom	$11B60C,$50
+	include "src/f/11B65C.asm"
+	incrom	$11B66C,$2
+	include "src/f/11B66E.asm"
+	incrom	$11B67E,$A
+	include "src/f/11B688.asm"
+	incrom	$11B698,$A
+	include "src/f/11B6A2.asm"
+	incrom	$11B6AA,$2
+	include "src/f/11B6AC.asm"
+	incrom	$11B6B4,$47C
 	include "src/f/11BB30.asm"
 	include "src/f/11BB3E.asm"
 	include "src/f/11BB54.asm"
@@ -2252,7 +2464,9 @@ Str_SiberiaB1Blizzard:	; C string, resource name looked up by sub_0054C6
 	include "src/f/11C5BA.asm"
 	include "src/f/11C630.asm"
 	include "src/f/11C662.asm"
-	incrom	$11C68C,$38
+	incrom	$11C68C,$8
+	include "src/f/11C694.asm"
+	incrom	$11C6BC,$8
 	include "src/f/11C6C4.asm"
 	include "src/f/11C6CE.asm"
 	include "src/f/11C71C.asm"
@@ -2295,7 +2509,9 @@ Str_SiberiaB1Blizzard:	; C string, resource name looked up by sub_0054C6
 	include "src/f/11D922.asm"
 	include "src/f/11D930.asm"
 	include "src/f/11D946.asm"
-	incrom	$11D9B4,$58
+	incrom	$11D9B4,$1C
+	include "src/f/11D9D0.asm"
+	incrom	$11D9E4,$28
 	include "src/f/11DA0C.asm"
 	include "src/f/11DA54.asm"
 	include "src/f/11DA62.asm"
@@ -2303,7 +2519,7 @@ Str_SiberiaB1Blizzard:	; C string, resource name looked up by sub_0054C6
 	include "src/f/11DACC.asm"
 	incrom	$11DB46,$8
 	include "src/f/11DB4E.asm"
-	incrom	$11DB64,$96
+	include "src/f/11DB64.asm"
 	include "src/f/11DBFA.asm"
 	include "src/f/11DC32.asm"
 	include "src/f/11DC40.asm"
@@ -2323,7 +2539,9 @@ Str_SiberiaB1Blizzard:	; C string, resource name looked up by sub_0054C6
 	include "src/f/11E480.asm"
 	include "src/f/11E5E6.asm"
 	include "src/f/11E618.asm"
-	incrom	$11E6EC,$BE
+	incrom	$11E6EC,$92
+	include "src/f/11E77E.asm"
+	incrom	$11E782,$28
 	include "src/f/11E7AA.asm"
 	include "src/f/11E7B8.asm"
 	include "src/f/11E7C4.asm"
@@ -2356,7 +2574,9 @@ Str_SiberiaB1Blizzard:	; C string, resource name looked up by sub_0054C6
 	include "src/f/1200AE.asm"
 	include "src/f/120124.asm"
 	include "src/f/1203A4.asm"
-	incrom	$1203AC,$4BC
+	incrom	$1203AC,$47C
+	include "src/f/120828.asm"
+	incrom	$120830,$38
 	include "src/f/120868.asm"
 	include "src/f/120876.asm"
 	include "src/f/120936.asm"
@@ -2458,7 +2678,15 @@ Str_SiberiaB1Blizzard:	; C string, resource name looked up by sub_0054C6
 	include "src/f/1340D0.asm"
 	include "src/f/13412A.asm"
 	include "src/f/13420C.asm"
-	incrom	$134214,$37C
+	incrom	$134214,$2C6
+	include "src/f/1344DA.asm"
+	incrom	$1344DE,$2
+	include "src/f/1344E0.asm"
+	incrom	$1344E8,$2
+	include "src/f/1344EA.asm"
+	incrom	$1344F2,$2
+	include "src/f/1344F4.asm"
+	incrom	$1344FC,$94
 	include "src/f/134590.asm"
 	include "src/f/13459E.asm"
 	include "src/f/1345A6.asm"
@@ -2472,7 +2700,8 @@ Str_SiberiaB1Blizzard:	; C string, resource name looked up by sub_0054C6
 	include "src/f/134934.asm"
 	incrom	$134AD4,$10
 	include "src/f/134AE4.asm"
-	incrom	$134AFA,$EC
+	include "src/f/134AFA.asm"
+	incrom	$134B42,$A4
 	include "src/f/134BE6.asm"
 	include "src/f/134C3A.asm"
 	include "src/f/134C60.asm"
@@ -2523,7 +2752,7 @@ Str_SiberiaB1Blizzard:	; C string, resource name looked up by sub_0054C6
 	include "src/f/136D86.asm"
 	incrom	$136DA6,$8
 	include "src/f/136DAE.asm"
-	incrom	$136DC4,$40
+	include "src/f/136DC4.asm"
 	include "src/f/136E04.asm"
 	include "src/f/136E3A.asm"
 	include "src/f/136E50.asm"
@@ -2535,7 +2764,7 @@ Str_SiberiaB1Blizzard:	; C string, resource name looked up by sub_0054C6
 	include "src/f/137142.asm"
 	incrom	$1371C0,$8
 	include "src/f/1371C8.asm"
-	incrom	$1371D8,$54
+	include "src/f/1371D8.asm"
 	include "src/f/13722C.asm"
 	incrom	$137252,$EE
 	include "src/f/137340.asm"
@@ -2586,7 +2815,10 @@ Str_SiberiaB1Blizzard:	; C string, resource name looked up by sub_0054C6
 	include "src/f/138EA2.asm"
 	include "src/f/138EDC.asm"
 	include "src/f/138F1E.asm"
-	incrom	$138FB4,$FC
+	incrom	$138FB4,$8
+	include "src/f/138FBC.asm"
+	incrom	$139038,$32
+	include "src/f/13906A.asm"
 	include "src/f/1390B0.asm"
 	include "src/f/1390BA.asm"
 	include "src/f/139108.asm"
@@ -2635,7 +2867,11 @@ Str_SiberiaB1Blizzard:	; C string, resource name looked up by sub_0054C6
 	include "src/f/13D716.asm"
 	include "src/f/13D786.asm"
 	include "src/f/13D7F6.asm"
-	incrom	$13D7FE,$F8
+	incrom	$13D7FE,$C4
+	include "src/f/13D8C2.asm"
+	incrom	$13D8C6,$2
+	include "src/f/13D8C8.asm"
+	incrom	$13D8D0,$26
 	include "src/f/13D8F6.asm"
 	include "src/f/13D954.asm"
 	include "src/f/13DA0C.asm"
@@ -2722,7 +2958,9 @@ Str_SiberiaB1Blizzard:	; C string, resource name looked up by sub_0054C6
 	include "src/f/141F18.asm"
 	include "src/f/142008.asm"
 	include "src/f/14205E.asm"
-	incrom	$1420DE,$170
+	incrom	$1420DE,$140
+	include "src/f/14221E.asm"
+	incrom	$14222A,$24
 	include "src/f/14224E.asm"
 	include "src/f/14225C.asm"
 	include "src/f/1422A0.asm"
@@ -2752,13 +2990,23 @@ Str_SiberiaB1Blizzard:	; C string, resource name looked up by sub_0054C6
 	incrom	$142B52,$2
 	include "src/f/142B54.asm"
 	include "src/f/142CD6.asm"
-	incrom	$142EFA,$76
+	incrom	$142EFA,$12
+	include "src/f/142F0C.asm"
+	incrom	$142F2A,$E
+	include "src/f/142F38.asm"
+	incrom	$142F5C,$8
+	include "src/f/142F64.asm"
 	include "src/f/142F70.asm"
 	include "src/f/14304E.asm"
 	include "src/f/143082.asm"
-	incrom	$1430D2,$FE
+	incrom	$1430D2,$12
+	include "src/f/1430E4.asm"
+	incrom	$143136,$1C
+	include "src/f/143152.asm"
+	incrom	$14319E,$18
+	include "src/f/1431B6.asm"
 	include "src/f/1431D0.asm"
-	incrom	$1431D6,$44
+	include "src/f/1431D6.asm"
 	include "src/f/14321A.asm"
 	incrom	$143224,$1550
 	include "src/f/144774.asm"
@@ -2808,14 +3056,18 @@ Str_SiberiaB1Blizzard:	; C string, resource name looked up by sub_0054C6
 	include "src/f/158FE4.asm"
 	include "src/f/159030.asm"
 	include "src/f/159092.asm"
-	incrom	$1590B2,$78
+	incrom	$1590B2,$5A
+	include "src/f/15910C.asm"
+	incrom	$159120,$A
 	include "src/f/15912A.asm"
-	incrom	$15912E,$2
+	include "src/f/15912E.asm"
 	include "src/f/159130.asm"
 	include "src/f/159138.asm"
-	incrom	$159158,$78
+	incrom	$159158,$5A
+	include "src/f/1591B2.asm"
+	incrom	$1591C6,$A
 	include "src/f/1591D0.asm"
-	incrom	$1591D4,$2
+	include "src/f/1591D4.asm"
 	include "src/f/1591D6.asm"
 	include "src/f/1591DE.asm"
 	incrom	$1591FC,$60
@@ -2829,7 +3081,8 @@ Str_SiberiaB1Blizzard:	; C string, resource name looked up by sub_0054C6
 	include "src/f/1592EE.asm"
 	include "src/f/1592F6.asm"
 	include "src/f/159354.asm"
-	incrom	$159384,$132
+	incrom	$159384,$FE
+	include "src/f/159482.asm"
 	include "src/f/1594B6.asm"
 	include "src/f/1594C0.asm"
 	incrom	$1594F2,$F2
@@ -2869,9 +3122,16 @@ Str_SiberiaB1Blizzard:	; C string, resource name looked up by sub_0054C6
 	include "src/f/15C1FC.asm"
 	incrom	$15C21A,$8
 	include "src/f/15C222.asm"
-	incrom	$15C22E,$18
+	include "src/f/15C22E.asm"
+	incrom	$15C230,$6
+	include "src/f/15C236.asm"
+	incrom	$15C23E,$8
 	include "src/f/15C246.asm"
-	incrom	$15C252,$B4
+	include "src/f/15C252.asm"
+	incrom	$15C254,$8
+	include "src/f/15C25C.asm"
+	incrom	$15C28E,$1E
+	include "src/f/15C2AC.asm"
 	include "src/f/15C306.asm"
 	include "src/f/15C32E.asm"
 	include "src/f/15C39A.asm"
@@ -2943,10 +3203,14 @@ Str_SiberiaB1Blizzard:	; C string, resource name looked up by sub_0054C6
 	include "src/f/15F4BA.asm"
 	incrom	$15F51C,$24
 	include "src/f/15F540.asm"
-	incrom	$15F566,$64
+	include "src/f/15F566.asm"
+	incrom	$15F572,$C
+	include "src/f/15F57E.asm"
 	include "src/f/15F5CA.asm"
 	include "src/f/15F5FC.asm"
-	incrom	$15F65C,$E4
+	include "src/f/15F65C.asm"
+	include "src/f/15F6F0.asm"
+	incrom	$15F720,$20
 	include "src/f/15F740.asm"
 	include "src/f/15F78E.asm"
 	include "src/f/15F8B6.asm"
@@ -3342,7 +3606,8 @@ Str_SiberiaB1Blizzard:	; C string, resource name looked up by sub_0054C6
 	include "src/f/1F3D36.asm"
 	include "src/f/1F3DB4.asm"
 	include "src/f/1F3EC0.asm"
-	incrom	$1F3FC4,$58
+	incrom	$1F3FC4,$8
+	include "src/f/1F3FCC.asm"
 	include "src/f/1F401C.asm"
 	include "src/f/1F4136.asm"
 	include "src/f/1F413E.asm"
@@ -3419,31 +3684,41 @@ Str_SiberiaB1Blizzard:	; C string, resource name looked up by sub_0054C6
 	include "src/f/1F6C04.asm"
 	incrom	$1F6D74,$2
 	include "src/f/1F6D76.asm"
-	incrom	$1F6DF8,$AE
+	incrom	$1F6DF8,$4A
+	include "src/f/1F6E42.asm"
 	include "src/f/1F6EA6.asm"
 	include "src/f/1F6EC4.asm"
-	incrom	$1F6F3C,$9E
+	incrom	$1F6F3C,$44
+	include "src/f/1F6F80.asm"
+	incrom	$1F6F92,$44
+	include "src/f/1F6FD6.asm"
 	include "src/f/1F6FDA.asm"
 	include "src/f/1F6FF4.asm"
-	incrom	$1F7058,$190
+	incrom	$1F7058,$4C
+	include "src/f/1F70A4.asm"
 	include "src/f/1F71E8.asm"
 	include "src/f/1F71F2.asm"
-	incrom	$1F7256,$A0
+	incrom	$1F7256,$4A
+	include "src/f/1F72A0.asm"
+	incrom	$1F72B6,$40
 	include "src/f/1F72F6.asm"
 	include "src/f/1F7300.asm"
 	include "src/f/1F7628.asm"
-	incrom	$1F7662,$74
+	incrom	$1F7662,$24
+	include "src/f/1F7686.asm"
 	include "src/f/1F76D6.asm"
 	incrom	$1F7804,$C6
 	include "src/f/1F78CA.asm"
 	include "src/f/1F7940.asm"
 	include "src/f/1F7956.asm"
 	include "src/f/1F79A2.asm"
-	incrom	$1F7A68,$1A
+	incrom	$1F7A68,$14
+	include "src/f/1F7A7C.asm"
 	include "src/f/1F7A82.asm"
 	include "src/f/1F7A9E.asm"
 	include "src/f/1F7AF8.asm"
-	incrom	$1F7B22,$1A
+	incrom	$1F7B22,$14
+	include "src/f/1F7B36.asm"
 	include "src/f/1F7B3C.asm"
 	include "src/f/1F7BB6.asm"
 	include "src/f/1F7C0A.asm"
@@ -3459,9 +3734,11 @@ Str_SiberiaB1Blizzard:	; C string, resource name looked up by sub_0054C6
 	include "src/f/1F84BE.asm"
 	include "src/f/1F85B6.asm"
 	include "src/f/1F87B2.asm"
-	incrom	$1F883A,$290
+	include "src/f/1F883A.asm"
+	incrom	$1F895C,$48
+	include "src/f/1F89A4.asm"
 	include "src/f/1F8ACA.asm"
-	incrom	$1F8AD6,$18
+	include "src/f/1F8AD6.asm"
 	include "src/f/1F8AEE.asm"
 	incrom	$1F8AF8,$4A
 	include "src/f/1F8B42.asm"
@@ -3550,7 +3827,8 @@ Str_SiberiaB1Blizzard:	; C string, resource name looked up by sub_0054C6
 	include "src/f/1FC6CA.asm"
 	include "src/f/1FC6F6.asm"
 	include "src/f/1FC708.asm"
-	incrom	$1FC8FE,$B40
+	incrom	$1FC8FE,$5A0
+	include "src/f/1FCE9E.asm"
 	include "src/f/1FD43E.asm"
 	include "src/f/1FD520.asm"
 	incrom	$1FD58C,$14
@@ -3564,7 +3842,11 @@ Str_SiberiaB1Blizzard:	; C string, resource name looked up by sub_0054C6
 	include "src/f/1FD9E8.asm"
 	include "src/f/1FDA56.asm"
 	include "src/f/1FDAEC.asm"
-	incrom	$1FDB62,$7A
+	incrom	$1FDB62,$8
+	include "src/f/1FDB6A.asm"
+	incrom	$1FDB76,$4E
+	include "src/f/1FDBC4.asm"
+	incrom	$1FDBD0,$C
 	include "src/f/1FDBDC.asm"
 	include "src/f/1FDC18.asm"
 	include "src/f/1FDC5C.asm"

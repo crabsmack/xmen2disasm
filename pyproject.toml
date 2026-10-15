@@ -4,4 +4,12 @@ version = "0.1.0"
 requires-python = ">=3.13"
 dependencies = [
     "capstone>=5.0.9",
+    "numpy>=2.5.4",
+    "pillow>=12.3.0",
+    "pyghidra==3.1.0",
+]
+
+[dependency-groups]
+dev = [
+    "cmake>=4.4.4",
 ]

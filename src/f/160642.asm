@@ -31,7 +31,7 @@ loc_160696:
 	jsr	sub_160594(pc)
 	tst.b	-$202(a5)
 	beq.s	loc_1606A8
-	dc.w	$13FC,$FF80,$00A1,$000D	; move.b #$80, $a1000d.l
+	dc.w	$13FC,$FF80,$00A1,$000D	; insn: move.b #$80, $a1000d.l
 loc_1606A8:
 	jsr	$50D2(a5)	; -> sub_1FD720
 	moveq	#$0,d0

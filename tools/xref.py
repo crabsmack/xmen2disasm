@@ -49,8 +49,16 @@ def main() -> int:
     ap = argparse.ArgumentParser()
     ap.add_argument("name", nargs="?")
     ap.add_argument("--todo", nargs="?", const=25, type=int)
+    ap.add_argument("--sample", type=int, help="print N random human-named functions (for /review-names)")
+    ap.add_argument("--seed", type=int, default=0)
     args = ap.parse_args()
     funcs = load()
+    if args.sample:
+        import random
+        named = sorted(n for n in funcs if not AUTO.match(n) and not n.startswith("unk_"))
+        for n in random.Random(args.seed).sample(named, min(args.sample, len(named))):
+            print(n)
+        return 0
     callees, callers = graph(funcs)
 
     if args.todo:
@@ -84,7 +92,32 @@ def main() -> int:
     data = sorted({w for w in WORD.findall(text) if re.match(r"(Str|Tbl|Art|Pal|Map)_", w)})
     if data:
         print("data: " + ", ".join(data))
+    print(runtime_info(f.stem))
     return 0
+
+
+def runtime_info(addr_hex: str) -> str:
+    """When this function runs in the emulator corpus (needs emu/runs/*/func_frames.json)."""
+    import build
+    runs = build.runs_dir()
+    hits = []
+    for ff in sorted(runs.glob("*/func_frames.json")) if runs.exists() else []:
+        info = __import__("json").loads(ff.read_text()).get(addr_hex)
+        if info:
+            hits.append((ff.parent.name, info))
+    if not hits:
+        return ("runtime: never executed in the corpus runs present locally "
+                "(run `uv run emu/corpus.py`; if still absent it may be dead or rare code)")
+    tas = next((h for h in hits if h[0] == "tas"), None)
+    out = [f"runtime: executed in {len(hits)} run(s)"]
+    if tas:
+        first = tas[1]["first"]
+        png = runs / "tas" / "png" / f"f{(first // 600) * 600:06d}.png"
+        out.append(f"TAS: first frame {first}, last {tas[1]['last']}, active in {tas[1]['frames']} frames"
+                   + (f"; screen near first call: {png}" if png.exists() else ""))
+    else:
+        out.append(f"first seen in {hits[0][0]} (frame {hits[0][1]['first']})")
+    return "\n".join(out)
 
 
 if __name__ == "__main__":
