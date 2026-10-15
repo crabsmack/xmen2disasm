@@ -1,7 +1,7 @@
 ; ---------------------------------------------------------------------------
-; XNpc_GetSize - XNpc: return the object size in bytes (class slot 0, +$06)
+; XNpc_GetSize - return sizeof(XNPC object) = $94 bytes (class slot 0, +$06)
 ; In:  none
-; Out: d0 = object size in bytes
+; Out: d0 = $94
 ; Evidence: method 0 of class descriptor $113A88 (name string "XNPC", parent ACTOR)
 ; ---------------------------------------------------------------------------
 XNpc_GetSize:

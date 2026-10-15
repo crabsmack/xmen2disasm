@@ -1,6 +1,6 @@
 ; ---------------------------------------------------------------------------
-; PowerUp_Init - PowerUp: constructor: chain to the parent Init, then set this class's fields (class slot 3, +$12)
-; In:  8(a6) = this  $C/$10(a6) = x, y (16.16)  $14(a6) = spawn record or 0
+; PowerUp_Init - POWERUP constructor: parent Init, no motion, flags |= 3, sprite Art_PowerUpSpr (palette 1), facing from the live player, lifetime +$8C = placement param +6 (0 = forever), frame $FF (class slot 3, +$12)
+; In:  8(a6) = this  $C/$10(a6) = x, y (16.16)  $14(a6) = placement entry or 0
 ; Out: none
 ; Evidence: method 3 of class descriptor $117C28 (name string "POWERUP", parent ACTOR)
 ; ---------------------------------------------------------------------------

@@ -1,7 +1,7 @@
 ; ---------------------------------------------------------------------------
-; BasicBioSentinel_GetSize - BasicBioSentinel: return the object size in bytes (class slot 0, +$06)
+; BasicBioSentinel_GetSize - return sizeof(BASICBIOSENTINEL object) = $96 bytes (class slot 0, +$06)
 ; In:  none
-; Out: d0 = object size in bytes
+; Out: d0 = $96
 ; Evidence: method 0 of class descriptor $123562 (name string "BASICBIOSENTINEL", parent BIONPC)
 ; ---------------------------------------------------------------------------
 BasicBioSentinel_GetSize:

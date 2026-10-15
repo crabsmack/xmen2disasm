@@ -1,7 +1,7 @@
 ; ---------------------------------------------------------------------------
-; RThetaObject_GetSize - RThetaObject: return the object size in bytes (class slot 0, +$06)
+; RThetaObject_GetSize - return sizeof(RTHETAOBJECT object) = $9E bytes (class slot 0, +$06)
 ; In:  none
-; Out: d0 = object size in bytes
+; Out: d0 = $9E
 ; Evidence: method 0 of class descriptor $118C8E (name string "RTHETAOBJECT", parent ACTOR)
 ; ---------------------------------------------------------------------------
 RThetaObject_GetSize:

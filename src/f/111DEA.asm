@@ -1,8 +1,8 @@
 ; ---------------------------------------------------------------------------
-; Deathbird_ClassInit - Deathbird: per-class hook run at level start before the spawn pass (static, class slot 22, +$5E; ClassList_InitAll)
+; Deathbird_ClassInit - allocate and clear the 20-byte Deathbird work record ($FFC6E8) and register its two sprite defs (Art_DeathbirdSpr -> g_DeathbirdSprDef, Art_DeathbirdSpr3 -> $FFC6FC) (static, class slot 22, +$5E; does not call the parent)
 ; In:  8(a6) = 0  $C(a6) = class index in the level class list
 ; Out: none
-; Evidence: method 22 of class descriptor $111162 (name string "DEATHBIRD", parent ACTOR)
+; Evidence: Mem_StackAlloc($14), Mem_Set, SprDef_Add x2; method 22 of class descriptor $111162 (name string "DEATHBIRD", parent ACTOR)
 ; ---------------------------------------------------------------------------
 Deathbird_ClassInit:
 	link.w	a6,#$0

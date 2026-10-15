@@ -1,7 +1,7 @@
 ; ---------------------------------------------------------------------------
-; Deathbird_GetSize - Deathbird: return the object size in bytes (class slot 0, +$06)
+; Deathbird_GetSize - return sizeof(DEATHBIRD object) = $B6 bytes (class slot 0, +$06)
 ; In:  none
-; Out: d0 = object size in bytes
+; Out: d0 = $B6
 ; Evidence: method 0 of class descriptor $111162 (name string "DEATHBIRD", parent ACTOR)
 ; ---------------------------------------------------------------------------
 Deathbird_GetSize:

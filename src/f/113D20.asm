@@ -1,8 +1,8 @@
 ; ---------------------------------------------------------------------------
-; XNpc_TakeDamage - XNpc: receive a hit from an attacker: damage, hurt state, invulnerability timer (class slot 8, +$26)
+; XNpc_TakeDamage - hit types 9-12 (type 4 counts as 12): health -= damage, hurt flag, hurt frame (stats byte 7) and hurt sound (stats byte 1, default 99); dead -> cooldown 10000 and OnDeath (+$72), else cooldown 30 and OnHurt (+$6E); other hit types go to ACTOR TakeDamage (XNPC override of slot 8, +$26)
 ; In:  8(a6) = this  $C(a6) = attacker  $13(a6) = byte hit type  $17(a6) = byte damage  $1A/$1E(a6) = words
 ; Out: none
-; Evidence: method 8 of class descriptor $113A88 (name string "XNPC", parent ACTOR)
+; Evidence: switch cases XNpc_TakeDamage_Type4/_Hurt/_Default; stats record +$8C; method 8 of class descriptor $113A88 (name string "XNPC", parent ACTOR)
 ; ---------------------------------------------------------------------------
 XNpc_TakeDamage:
 	link.w	a6,#$0

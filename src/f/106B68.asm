@@ -1,7 +1,7 @@
 ; ---------------------------------------------------------------------------
-; Platform1_GetSize - Platform1: return the object size in bytes (class slot 0, +$06)
+; Platform1_GetSize - return sizeof(PLATFORM1 object) = $96 bytes (class slot 0, +$06)
 ; In:  none
-; Out: d0 = object size in bytes
+; Out: d0 = $96
 ; Evidence: method 0 of class descriptor $1072E8 (name string "PLATFORM1", parent SYNCHRONIZEDACTOR)
 ; ---------------------------------------------------------------------------
 Platform1_GetSize:

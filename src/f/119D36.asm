@@ -1,7 +1,7 @@
 ; ---------------------------------------------------------------------------
-; SyncActor_GetSize - SyncActor: return the object size in bytes (class slot 0, +$06)
+; SyncActor_GetSize - return sizeof(SYNCHRONIZEDACTOR object) = $8C bytes (class slot 0, +$06)
 ; In:  none
-; Out: d0 = object size in bytes
+; Out: d0 = $8C
 ; Evidence: method 0 of class descriptor $119ECA (name string "SYNCHRONIZEDACTOR", parent ACTOR)
 ; ---------------------------------------------------------------------------
 SyncActor_GetSize:

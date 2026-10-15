@@ -1,8 +1,8 @@
 ; ---------------------------------------------------------------------------
-; Hologram_ClassInit - Hologram: per-class hook run at level start before the spawn pass (static, class slot 22, +$5E; ClassList_InitAll)
+; Hologram_ClassInit - does nothing: only calls the empty Hologram_Reset (static, class slot 22, +$5E ClassInit)
 ; In:  8(a6) = 0  $C(a6) = class index in the level class list
 ; Out: none
-; Evidence: method 22 of class descriptor $0EAE16 (name string "HOLOGRAM", parent ACTOR)
+; Evidence: body = jsr Hologram_Reset, which only calls Hologram_EmptyStub; method 22 of class descriptor $0EAE16 (name string "HOLOGRAM", parent ACTOR)
 ; ---------------------------------------------------------------------------
 Hologram_ClassInit:
 	link.w	a6,#$0

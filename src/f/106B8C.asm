@@ -1,8 +1,8 @@
 ; ---------------------------------------------------------------------------
-; Platform1_ClassInit - Platform1: per-class hook run at level start before the spawn pass (static, class slot 22, +$5E; ClassList_InitAll)
+; Platform1_ClassInit - register the Platform1 sprite def from Art_Platform1Spr (unless g_Platform1SprDef is -1), then the parent (SYNCHRONIZEDACTOR) ClassInit (static, class slot 22, +$5E)
 ; In:  8(a6) = 0  $C(a6) = class index in the level class list
 ; Out: none
-; Evidence: method 22 of class descriptor $1072E8 (name string "PLATFORM1", parent SYNCHRONIZEDACTOR)
+; Evidence: SprDef_Add(Art_Platform1Spr, 0) -> g_Platform1SprDef; parent +$5E; then Platform1_EmptyStub; method 22 of class descriptor $1072E8 (name string "PLATFORM1", parent SYNCHRONIZEDACTOR)
 ; ---------------------------------------------------------------------------
 Platform1_ClassInit:
 	link.w	a6,#$0

@@ -1,7 +1,7 @@
 ; ---------------------------------------------------------------------------
-; FireWall_GetSize - FireWall: return the object size in bytes (class slot 0, +$06)
+; FireWall_GetSize - return sizeof(FIREWALL object) = $96 bytes (class slot 0, +$06)
 ; In:  none
-; Out: d0 = object size in bytes
+; Out: d0 = $96
 ; Evidence: method 0 of class descriptor $134214 (name string "FIREWALL", parent ACTOR)
 ; ---------------------------------------------------------------------------
 FireWall_GetSize:

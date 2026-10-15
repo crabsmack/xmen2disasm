@@ -1,8 +1,8 @@
 ; ---------------------------------------------------------------------------
-; BioFlame_Draw - BioFlame: position/draw the object's sprite relative to the camera (class slot 5, +$1A)
+; BioFlame_Draw - draw the three flame sprites at offsets +$94/+$96/+$98 from the nozzle, each a bigger tile (0/1/2) the further out it is ($49+ / $58+ px), skipping off-screen ones (class slot 5, +$1A; does not call the parent)
 ; In:  8(a6) = this
 ; Out: none
-; Evidence: method 5 of class descriptor $11B6D4 (name string "BIOFLAME", parent ACTOR)
+; Evidence: writes g_SpriteTable entries directly; tile = +$34 base + frame +$2F + size; method 5 of class descriptor $11B6D4 (name string "BIOFLAME", parent ACTOR)
 ; ---------------------------------------------------------------------------
 BioFlame_Draw:
 	link.w	a6,#$FFFE

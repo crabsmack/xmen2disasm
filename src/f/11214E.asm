@@ -1,8 +1,8 @@
 ; ---------------------------------------------------------------------------
-; Deathbird_Move - Deathbird: apply velocity (+$16/+$18), acceleration (+$1E/+$20) and speed limits (class slot 18, +$4E)
+; Deathbird_Move - move by flight kind +$AE: 3 = velocity + acceleration plus a wobble offset (+$A2/+$A4, clamped to +-100, pushed back when more than $60 px from the anchor +$92/+$96); 4 = Deathbird_MovePolar circling; any other kind does not move (Deathbird override of slot 18 Move; does not call the parent)
 ; In:  8(a6) = this  $C(a6) = word frame step (1, or 2 when the game runs at half rate)
 ; Out: none
-; Evidence: method 18 of class descriptor $111162 (name string "DEATHBIRD", parent ACTOR)
+; Evidence: kind set by Deathbird_SetMoveMode; previous velocity kept in +$1A/+$1C; method 18 of class descriptor $111162 (name string "DEATHBIRD", parent ACTOR)
 ; ---------------------------------------------------------------------------
 Deathbird_Move:
 	link.w	a6,#$0

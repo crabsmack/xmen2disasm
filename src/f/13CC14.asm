@@ -1,7 +1,7 @@
 ; ---------------------------------------------------------------------------
-; Ninja_GetSize - Ninja: return the object size in bytes (class slot 0, +$06)
+; Ninja_GetSize - return sizeof(NINJA object) = $A4 bytes (class slot 0, +$06)
 ; In:  none
-; Out: d0 = object size in bytes
+; Out: d0 = $A4
 ; Evidence: method 0 of class descriptor $13D7FE (name string "NINJA", parent BIONPC)
 ; ---------------------------------------------------------------------------
 Ninja_GetSize:

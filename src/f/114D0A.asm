@@ -1,8 +1,8 @@
 ; ---------------------------------------------------------------------------
-; BioNpc_TakeDamage - BioNpc: receive a hit from an attacker: damage, hurt state, invulnerability timer (class slot 8, +$26)
+; BioNpc_TakeDamage - start the 30-frame hit cooldown; psychic hits (types $D-$F) stun: stun counter +$94 = 30 (top bits = flip), timer -> BioNpc_UpdateStunned, draw entry -> BioNpc_DrawStunned, health -= damage, sound $36, hurt frame; other hits are ignored while stunned, else go to XNPC TakeDamage (BIONPC override of slot 8, +$26)
 ; In:  8(a6) = this  $C(a6) = attacker  $13(a6) = byte hit type  $17(a6) = byte damage  $1A/$1E(a6) = words
 ; Out: none
-; Evidence: method 8 of class descriptor $113B10 (name string "BIONPC", parent XNPC)
+; Evidence: timer = +$7C (+$C = function); draw-list entry $FFEEBC + (+$88)*$14; method 8 of class descriptor $113B10 (name string "BIONPC", parent XNPC)
 ; ---------------------------------------------------------------------------
 BioNpc_TakeDamage:
 	link.w	a6,#$0

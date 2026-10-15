@@ -1,8 +1,8 @@
 ; ---------------------------------------------------------------------------
-; Hologram_Init - Hologram: constructor: chain to the parent Init, then set this class's fields (class slot 3, +$12)
-; In:  8(a6) = this  $C/$10(a6) = x, y (16.16)  $14(a6) = spawn record or 0
+; Hologram_Init - Hologram constructor: parent Init, sprite def, AI script at +$8C, state Hologram_StateStart, flags |= $5083, +$92/+$94 = placement params +6/+8 (defaults 40/180), a type-$14 segment 60x200 around it in +$A2, and a 60-tick timer running Hologram_VBlankFlicker (class slot 3, +$12)
+; In:  8(a6) = this  $C/$10(a6) = x, y (16.16)  $14(a6) = placement entry (not null-checked)
 ; Out: none
-; Evidence: method 3 of class descriptor $0EAE16 (name string "HOLOGRAM", parent ACTOR)
+; Evidence: AiScript_Set(this+$8C, jt $2A02); Seg_Create($14, 0, x-30, y-100, x+30, y+100); Timer_Create + Timer_Start; method 3 of class descriptor $0EAE16 (name string "HOLOGRAM", parent ACTOR)
 ; ---------------------------------------------------------------------------
 Hologram_Init:
 	link.w	a6,#$0

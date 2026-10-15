@@ -1,7 +1,7 @@
 ; ---------------------------------------------------------------------------
-; Pop_GetSize - Pop: return the object size in bytes (class slot 0, +$06)
+; Pop_GetSize - return sizeof(POP object) = $8E bytes (class slot 0, +$06)
 ; In:  none
-; Out: d0 = object size in bytes
+; Out: d0 = $8E
 ; Evidence: method 0 of class descriptor $13F28A (name string "POP", parent ACTOR)
 ; ---------------------------------------------------------------------------
 Pop_GetSize:

@@ -1,6 +1,6 @@
 ; ---------------------------------------------------------------------------
-; BabyBio_Init - BabyBio: constructor: chain to the parent Init, then set this class's fields (class slot 3, +$12)
-; In:  8(a6) = this  $C/$10(a6) = x, y (16.16)  $14(a6) = spawn record or 0
+; BabyBio_Init - BABYBIO constructor: build a placement entry from x/y when there is none, parent (BIONPC) Init, no motion, home +$9C/+$A0, sprite Art_BabyBioSpr, facing from the live player, empty AI script +$96, state BabyBio_StateStart, move table Tbl_BabyBioMove2; patrol limits from the entry: left +$AC = x-|p6| and right +$AE = x+|p8| (default 48 px; the sign sets the wall flags +$B7/+$B8), y +$B0/+$B2 = y/y-64, +$B9/+$BA = p$A (default 1), +$B6 = p$C (default 120), +$BB = entry byte $F (class slot 3, +$12)
+; In:  8(a6) = this  $C/$10(a6) = x, y (16.16)  $14(a6) = placement entry or 0
 ; Out: none
 ; Evidence: method 3 of class descriptor $11B74C (name string "BABYBIO", parent BIONPC)
 ; ---------------------------------------------------------------------------

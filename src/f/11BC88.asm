@@ -1,8 +1,8 @@
 ; ---------------------------------------------------------------------------
-; BioFlame_Update - BioFlame: per-frame update: range checks, Move, run the state function at +$5C after the +$6C delay (class slot 17, +$4A)
+; BioFlame_Update - flame jet per-frame update, a full replacement of ACTOR Update: push the three flame offsets 19 px further each frame (forward by the flip bit, wrapping after $60), follow the owner +$8C (+$90/+$92 offsets), and Attack (+$22) any live, vulnerable player whose box overlaps the $60-px flame span (class slot 17, +$4A; does not call the parent)
 ; In:  8(a6) = this
 ; Out: none
-; Evidence: method 17 of class descriptor $11B6D4 (name string "BIOFLAME", parent ACTOR)
+; Evidence: player box +$4C..+$52, +$6A cooldown test; damage/type bytes +$70/+$71; method 17 of class descriptor $11B6D4 (name string "BIOFLAME", parent ACTOR)
 ; ---------------------------------------------------------------------------
 BioFlame_Update:
 	link.w	a6,#$0

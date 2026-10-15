@@ -1,8 +1,8 @@
 ; ---------------------------------------------------------------------------
-; Platform1_Move - Platform1: apply velocity (+$16/+$18), acceleration (+$1E/+$20) and speed limits (class slot 18, +$4E)
+; Platform1_Move - move the platform along its floor-segment path: Seg_MoveAlong(this, x speed) once per frame step; at the end of the path (+4 bit $100) save the speed in +$92, stop and pause 10 frames (+$6E) (Platform1 override of slot 18 Move; no velocity/acceleration integration)
 ; In:  8(a6) = this  $C(a6) = word frame step (1, or 2 when the game runs at half rate)
 ; Out: none
-; Evidence: method 18 of class descriptor $1072E8 (name string "PLATFORM1", parent SYNCHRONIZEDACTOR)
+; Evidence: Seg_MoveAlong marks the chain end in +4 bit $100; method 18 of class descriptor $1072E8 (name string "PLATFORM1", parent SYNCHRONIZEDACTOR)
 ; ---------------------------------------------------------------------------
 Platform1_Move:
 	link.w	a6,#$0

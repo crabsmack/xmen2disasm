@@ -1,8 +1,8 @@
 ; ---------------------------------------------------------------------------
-; Switch_ClassInit - Switch: per-class hook run at level start before the spawn pass (static, class slot 22, +$5E; ClassList_InitAll)
+; Switch_ClassInit - create the BBOARD switch board g_BBoard (100 entries) if there is none yet, allocate a 16-byte work block into $FFC632 and clear byte $FFC636 (static, class slot 22, +$5E; does not call the parent)
 ; In:  8(a6) = 0  $C(a6) = class index in the level class list
 ; Out: none
-; Evidence: method 22 of class descriptor $107A3E (name string "SWITCH", parent ACTOR)
+; Evidence: BBOARD descriptor slot +$0A New(desc, 100); Mem_StackAlloc($10); method 22 of class descriptor $107A3E (name string "SWITCH", parent ACTOR)
 ; ---------------------------------------------------------------------------
 Switch_ClassInit:
 	link.w	a6,#$0

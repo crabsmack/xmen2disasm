@@ -1,8 +1,8 @@
 ; ---------------------------------------------------------------------------
-; Deathbird_Reset - Deathbird: per-class reset hook (class slot 25, +$6A); some Inits call it on this, some LevelInit hooks share its body
-; In:  8(a6) = this (0 when reached from ClassInit)
+; Deathbird_Reset - does nothing: calls the four empty Deathbird_EmptyStub1-4 (class slot 25, +$6A Reset; Deathbird_Init calls it on this)
+; In:  8(a6) = this
 ; Out: none
-; Evidence: method 25 of class descriptor $111162 (name string "DEATHBIRD", parent ACTOR)
+; Evidence: all four stubs are link/unlk/rts; method 25 of class descriptor $111162 (name string "DEATHBIRD", parent ACTOR)
 ; ---------------------------------------------------------------------------
 Deathbird_Reset:
 	link.w	a6,#$0

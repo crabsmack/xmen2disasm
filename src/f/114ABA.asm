@@ -1,7 +1,7 @@
 ; ---------------------------------------------------------------------------
-; BioNpc_GetSize - BioNpc: return the object size in bytes (class slot 0, +$06)
+; BioNpc_GetSize - return sizeof(BIONPC object) = $96 bytes (class slot 0, +$06)
 ; In:  none
-; Out: d0 = object size in bytes
+; Out: d0 = $96
 ; Evidence: method 0 of class descriptor $113B10 (name string "BIONPC", parent XNPC)
 ; ---------------------------------------------------------------------------
 BioNpc_GetSize:

@@ -1,8 +1,8 @@
 ; ---------------------------------------------------------------------------
-; HoloBolt_Update - HoloBolt: per-frame update: range checks, Move, run the state function at +$5C after the +$6C delay (class slot 17, +$4A)
+; HoloBolt_Update - HoloBolt per-frame update, a full replacement of ACTOR Update: Kill when outside the camera bounds ($FFCC3A-$FFCC40), else x/y += velocity (no acceleration, skipped while flag $4000), advance the animation by distance, run the state at +$5C when the +$6C delay is out, refresh the boxes if it moved (class slot 17, +$4A; does not call the parent)
 ; In:  8(a6) = this
-; Out: none
-; Evidence: method 17 of class descriptor $0E83AC (name string "HOLOBOLT", parent ACTOR)
+; Out: d0 = flags/garbage (unused)
+; Evidence: no parent call; Anim_AdvanceByDistance, Obj_UpdateBoxes, vtable +$52 Kill when off-camera; method 17 of class descriptor $0E83AC (name string "HOLOBOLT", parent ACTOR)
 ; ---------------------------------------------------------------------------
 HoloBolt_Update:
 	link.w	a6,#$0

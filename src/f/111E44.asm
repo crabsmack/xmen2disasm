@@ -1,8 +1,8 @@
 ; ---------------------------------------------------------------------------
-; Deathbird_Init - Deathbird: constructor: chain to the parent Init, then set this class's fields (class slot 3, +$12)
-; In:  8(a6) = this  $C/$10(a6) = x, y (16.16)  $14(a6) = spawn record or 0
+; Deathbird_Init - Deathbird constructor: clear the whole object (keeping the index byte +$15), parent Init, Reset, states Deathbird_StateStart / hurt Deathbird_StateHurt, flags |= $1180, sprite, start at camera -100,-100, health 12, move kind +$AE = 1, anchor +$92/+$96 = x/y, burst timer (Deathbird_UpdateBurst) in +$9E, second sprite record +$B0 (Art_DeathbirdSpr2, 61 VRAM tiles), frame $FF (class slot 3, +$12)
+; In:  8(a6) = this  $C/$10(a6) = x, y (16.16)  $14(a6) = placement entry or 0
 ; Out: none
-; Evidence: method 3 of class descriptor $111162 (name string "DEATHBIRD", parent ACTOR)
+; Evidence: GetSize then Mem_Set(this+4, 0, size-4); vtable +$6A Reset; Timer_Create(Deathbird_UpdateBurst, 1, this, 1); g_VramTileCursor += $3D; method 3 of class descriptor $111162 (name string "DEATHBIRD", parent ACTOR)
 ; ---------------------------------------------------------------------------
 Deathbird_Init:
 	link.w	a6,#$0

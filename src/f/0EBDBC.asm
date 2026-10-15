@@ -1,8 +1,8 @@
 ; ---------------------------------------------------------------------------
-; CoreZap_Update - CoreZap: per-frame update: range checks, Move, run the state function at +$5C after the +$6C delay (class slot 17, +$4A)
+; CoreZap_Update - CoreZap per-frame update, a full replacement of ACTOR Update: Kill when outside the camera bounds, else x += velocity, set a 32x15 hit box around it and test both players with CoreZap_HitActor (class slot 17, +$4A; does not call the parent)
 ; In:  8(a6) = this
 ; Out: none
-; Evidence: method 17 of class descriptor $0ECA12 (name string "COREZAP", parent ACTOR)
+; Evidence: box x-16..x+16, y-5..y+10; CoreZap_HitActor(this, g_Player1/2); method 17 of class descriptor $0ECA12 (name string "COREZAP", parent ACTOR)
 ; ---------------------------------------------------------------------------
 CoreZap_Update:
 	link.w	a6,#$0

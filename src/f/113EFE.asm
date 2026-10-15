@@ -1,5 +1,5 @@
 ; ---------------------------------------------------------------------------
-; XNpc_EndHurt - XNpc: XNPC hook: leave the hurt state and resume the saved state (class slot 28, +$76)
+; XNpc_EndHurt - leave the hurt state: clear flags $1000/$4000 (+6) and the hurt bit (+4 bit 2), restore the state saved in +$60 into +$5C, zero the +$6C delay (XNPC base of slot 28, +$76)
 ; In:  8(a6) = this
 ; Out: none
 ; Evidence: method 28 of class descriptor $113A88 (name string "XNPC", parent ACTOR)

@@ -1,8 +1,8 @@
 ; ---------------------------------------------------------------------------
-; CoreShields_Update - CoreShields: per-frame update: range checks, Move, run the state function at +$5C after the +$6C delay (class slot 17, +$4A)
+; CoreShields_Update - ACTOR Update, then count down the CoreZap fire cooldown +$9A by the frame step (CoreShields override of slot 17 Update)
 ; In:  8(a6) = this
 ; Out: none
-; Evidence: method 17 of class descriptor $0EBE7E (name string "CORESHIELDS", parent ACTOR)
+; Evidence: calls the parent +$4A first; +$9A is the cooldown CoreShields_StateActive checks; method 17 of class descriptor $0EBE7E (name string "CORESHIELDS", parent ACTOR)
 ; ---------------------------------------------------------------------------
 CoreShields_Update:
 	link.w	a6,#$0

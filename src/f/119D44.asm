@@ -1,8 +1,8 @@
 ; ---------------------------------------------------------------------------
-; SyncActor_ClassInit - SyncActor: per-class hook run at level start before the spawn pass (static, class slot 22, +$5E; ClassList_InitAll)
+; SyncActor_ClassInit - create the BBOARD switch board g_BBoard (100 entries) if there is none yet (static, class slot 22, +$5E; does not call the parent)
 ; In:  8(a6) = 0  $C(a6) = class index in the level class list
 ; Out: none
-; Evidence: method 22 of class descriptor $119ECA (name string "SYNCHRONIZEDACTOR", parent ACTOR)
+; Evidence: BBOARD descriptor slot +$0A New(desc, 100); method 22 of class descriptor $119ECA (name string "SYNCHRONIZEDACTOR", parent ACTOR)
 ; ---------------------------------------------------------------------------
 SyncActor_ClassInit:
 	link.w	a6,#$0

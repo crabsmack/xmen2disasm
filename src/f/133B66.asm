@@ -1,7 +1,7 @@
 ; ---------------------------------------------------------------------------
-; DropRocket_GetSize - DropRocket: return the object size in bytes (class slot 0, +$06)
+; DropRocket_GetSize - return sizeof(DROPROCKET object) = $96 bytes (class slot 0, +$06)
 ; In:  none
-; Out: d0 = object size in bytes
+; Out: d0 = $96
 ; Evidence: method 0 of class descriptor $133D76 (name string "DROPROCKET", parent BRAINROCKET)
 ; ---------------------------------------------------------------------------
 DropRocket_GetSize:

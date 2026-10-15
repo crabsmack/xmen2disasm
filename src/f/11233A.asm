@@ -1,7 +1,7 @@
 ; ---------------------------------------------------------------------------
-; Deathbird_SetFrame - Deathbird: set the animation frame byte +$2F (class slot 20, +$56)
-; In:  8(a6) = this  $F(a6) = byte frame index ($FF = none)
-; Out: none
+; Deathbird_SetFrame - set the Deathbird frame: $FF hides both sprites; < $80 = frame of the body sprite (+$2F); $80+ = frame n-$80 of the second sprite record +$B0 (copies the flip bits, sets +$B4, flags a redraw when the frame changes) (class slot 20, +$56; does not call the parent)
+; In:  8(a6) = this  $E(a6) = word frame
+; Out: d0 = garbage
 ; Evidence: method 20 of class descriptor $111162 (name string "DEATHBIRD", parent ACTOR)
 ; ---------------------------------------------------------------------------
 Deathbird_SetFrame:

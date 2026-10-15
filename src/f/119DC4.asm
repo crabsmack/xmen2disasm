@@ -1,8 +1,8 @@
 ; ---------------------------------------------------------------------------
-; SyncActor_InActivateWindow - SyncActor: may this inactive object activate now (camera range test) (class slot 13, +$3A)
+; SyncActor_InActivateWindow - never activates on its own (returns 0): when the member is in the window (+$6E) and its BBoard entry is not triggered (+$7A), it starts a Synchronizer for this class and BBoard index (class slot 13, +$3A)
 ; In:  8(a6) = this
-; Out: d0.b = 1 to activate
-; Evidence: method 13 of class descriptor $119ECA (name string "SYNCHRONIZEDACTOR", parent ACTOR)
+; Out: d0.b = 0
+; Evidence: SYNCHRONIZER descriptor slot +$0A New(desc, class, +$8B); method 13 of class descriptor $119ECA (name string "SYNCHRONIZEDACTOR", parent ACTOR)
 ; ---------------------------------------------------------------------------
 SyncActor_InActivateWindow:
 	link.w	a6,#$0

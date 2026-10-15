@@ -1,8 +1,8 @@
 ; ---------------------------------------------------------------------------
-; SyncActor_Init - SyncActor: constructor: chain to the parent Init, then set this class's fields (class slot 3, +$12)
-; In:  8(a6) = this  $C/$10(a6) = x, y (16.16)  $14(a6) = spawn record or 0
+; SyncActor_Init - SYNCHRONIZEDACTOR constructor: parent Init, BBoard index +$8B = placement byte +7, then free the per-object timer (+$7C = 0): the Synchronizer drives these objects instead (class slot 3, +$12)
+; In:  8(a6) = this  $C/$10(a6) = x, y (16.16)  $14(a6) = placement entry (not null-checked)
 ; Out: none
-; Evidence: method 3 of class descriptor $119ECA (name string "SYNCHRONIZEDACTOR", parent ACTOR)
+; Evidence: Timer_Free(+$7C); method 3 of class descriptor $119ECA (name string "SYNCHRONIZEDACTOR", parent ACTOR)
 ; ---------------------------------------------------------------------------
 SyncActor_Init:
 	link.w	a6,#$0

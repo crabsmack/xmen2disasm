@@ -1,8 +1,8 @@
 ; ---------------------------------------------------------------------------
-; XNpc_Explode - XNpc: XNPC hook: death explosion/effect chosen by the stats record (class slot 30, +$7E)
+; XNpc_Explode - death effect by stats byte 2: sound $38, then 2 ExplodeFx_BurstMedium, 4 ExplodeFx_TrailArc, 8 ExplodeFx_Bounce, anything else ExplodeFx_BurstSmall (XNPC base of slot 30, +$7E)
 ; In:  8(a6) = this
 ; Out: none
-; Evidence: method 30 of class descriptor $113A88 (name string "XNPC", parent ACTOR)
+; Evidence: stats record = +$8C; method 30 of class descriptor $113A88 (name string "XNPC", parent ACTOR)
 ; ---------------------------------------------------------------------------
 XNpc_Explode:
 	link.w	a6,#$0

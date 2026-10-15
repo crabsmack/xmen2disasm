@@ -1,7 +1,7 @@
 ; ---------------------------------------------------------------------------
-; FlyBrood_GetSize - FlyBrood: return the object size in bytes (class slot 0, +$06)
+; FlyBrood_GetSize - return sizeof(FLYBROOD object) = $B2 bytes (class slot 0, +$06)
 ; In:  none
-; Out: d0 = object size in bytes
+; Out: d0 = $B2
 ; Evidence: method 0 of class descriptor $134518 (name string "FLYBROOD", parent ACTOR)
 ; ---------------------------------------------------------------------------
 FlyBrood_GetSize:

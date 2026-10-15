@@ -1,8 +1,8 @@
 ; ---------------------------------------------------------------------------
-; PowerUp_Update - PowerUp: per-frame update: range checks, Move, run the state function at +$5C after the +$6C delay (class slot 17, +$4A)
+; PowerUp_Update - power-up per-frame update, a full replacement of ACTOR Update: count down the lifetime +$8C (Kill at 0), Deactivate when outside the camera bounds, give it to a live player whose box contains it and whose health is below $900 (Collect +$6E, Kill, sound $39), else step the animation script +$44 (class slot 17, +$4A; does not call the parent)
 ; In:  8(a6) = this
 ; Out: none
-; Evidence: method 17 of class descriptor $117C28 (name string "POWERUP", parent ACTOR)
+; Evidence: player box +$4C..+$52, health +$68; animation record {flags, count, delay word, frames at +7}; method 17 of class descriptor $117C28 (name string "POWERUP", parent ACTOR)
 ; ---------------------------------------------------------------------------
 PowerUp_Update:
 	link.w	a6,#$FFFE

@@ -1,8 +1,8 @@
 ; ---------------------------------------------------------------------------
-; Deathbird_Update - Deathbird: per-frame update: range checks, Move, run the state function at +$5C after the +$6C delay (class slot 17, +$4A)
+; Deathbird_Update - ACTOR Update, then while active: take the body box from the current frame of the second sprite record (+$B0, when +$B4 is set) and replay the wing sound $A9 every 13 frames while frame byte +$2F is 1 (Deathbird override of slot 17 Update)
 ; In:  8(a6) = this
-; Out: none
-; Evidence: method 17 of class descriptor $111162 (name string "DEATHBIRD", parent ACTOR)
+; Out: d0 = garbage
+; Evidence: parent +$4A first; frame record = sprdef +$24 + frame*$14, box bytes +8..+$B mirrored by the flip bits; Snd_Stop/Snd_Play($A9); method 17 of class descriptor $111162 (name string "DEATHBIRD", parent ACTOR)
 ; ---------------------------------------------------------------------------
 Deathbird_Update:
 	link.w	a6,#$0

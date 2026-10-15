@@ -1,7 +1,7 @@
 ; ---------------------------------------------------------------------------
-; LineSegKiller_GetSize - LineSegKiller: return the object size in bytes (class slot 0, +$06)
+; LineSegKiller_GetSize - return sizeof(LINESEGKILLER object) = $92 bytes (class slot 0, +$06)
 ; In:  none
-; Out: d0 = object size in bytes
+; Out: d0 = $92
 ; Evidence: method 0 of class descriptor $1389CA (name string "LINESEGKILLER", parent ACTOR)
 ; ---------------------------------------------------------------------------
 LineSegKiller_GetSize:

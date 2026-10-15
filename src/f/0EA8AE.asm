@@ -1,8 +1,8 @@
 ; ---------------------------------------------------------------------------
-; Hologram_Draw - Hologram: position/draw the object's sprite relative to the camera (class slot 5, +$1A)
+; Hologram_Draw - draw the Hologram as 6 hardware sprites (two columns of three, the right one mirrored, or pose-specific right tiles for poses 5+) chosen by the pose word $FFC6EC; nothing for pose $1B or when off screen; ends the sprite list with a terminator entry (class slot 5, +$1A; does not call the parent)
 ; In:  8(a6) = this
 ; Out: none
-; Evidence: method 5 of class descriptor $0EAE16 (name string "HOLOGRAM", parent ACTOR)
+; Evidence: writes g_SpriteTable entries directly through g_SprWritePtr; tile = +$34 base + pose*12; screen window -$20..$160 x 0..200; $FFC620/$FFC623 = sprite-list bookkeeping; method 5 of class descriptor $0EAE16 (name string "HOLOGRAM", parent ACTOR)
 ; ---------------------------------------------------------------------------
 Hologram_Draw:
 	link.w	a6,#$FFE8

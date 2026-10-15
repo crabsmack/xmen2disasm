@@ -1,7 +1,7 @@
 ; ---------------------------------------------------------------------------
-; LaserCannon_GetSize - LaserCannon: return the object size in bytes (class slot 0, +$06)
+; LaserCannon_GetSize - return sizeof(LASERCANNON object) = $A4 bytes (class slot 0, +$06)
 ; In:  none
-; Out: d0 = object size in bytes
+; Out: d0 = $A4
 ; Evidence: method 0 of class descriptor $1386B4 (name string "LASERCANNON", parent XNPC)
 ; ---------------------------------------------------------------------------
 LaserCannon_GetSize:

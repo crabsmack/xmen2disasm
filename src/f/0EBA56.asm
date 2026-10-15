@@ -1,8 +1,8 @@
 ; ---------------------------------------------------------------------------
-; CoreShields_Move - CoreShields: apply velocity (+$16/+$18), acceleration (+$1E/+$20) and speed limits (class slot 18, +$4E)
-; In:  8(a6) = this  $C(a6) = word frame step (1, or 2 when the game runs at half rate)
+; CoreShields_Move - rotate the shield ring instead of moving: each time the +$6E move timer runs out, reset it to 20 and step the phase +$91 (0-2), carrying into the rotation index +$90 (0-7) (CoreShields override of slot 18 Move; no velocity)
+; In:  8(a6) = this  $C(a6) = word frame step (unused)
 ; Out: none
-; Evidence: method 18 of class descriptor $0EBE7E (name string "CORESHIELDS", parent ACTOR)
+; Evidence: Actor_Update counts +$6E down; +$90/+$91 are read by CoreShields_Draw and CoreShields_TakeDamage; method 18 of class descriptor $0EBE7E (name string "CORESHIELDS", parent ACTOR)
 ; ---------------------------------------------------------------------------
 CoreShields_Move:
 	link.w	a6,#$0

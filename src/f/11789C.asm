@@ -1,7 +1,7 @@
 ; ---------------------------------------------------------------------------
-; SegmentMinusPowerUp_GetSize - SegmentMinusPowerUp: return the object size in bytes (class slot 0, +$06)
+; SegmentMinusPowerUp_GetSize - return sizeof(SEGMENTMINUSPOWERUP object) = $8E bytes (class slot 0, +$06)
 ; In:  none
-; Out: d0 = object size in bytes
+; Out: d0 = $8E
 ; Evidence: method 0 of class descriptor $117D28 (name string "SEGMENTMINUSPOWERUP", parent POWERUP)
 ; ---------------------------------------------------------------------------
 SegmentMinusPowerUp_GetSize:

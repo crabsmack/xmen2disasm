@@ -1,6 +1,6 @@
 ; ---------------------------------------------------------------------------
-; RThetaObject_Init - RThetaObject: constructor: chain to the parent Init, then set this class's fields (class slot 3, +$12)
-; In:  8(a6) = this  $C/$10(a6) = x, y (16.16)  $14(a6) = spawn record or 0
+; RThetaObject_Init - RTHETAOBJECT constructor: parent Init, then polar-motion fields: speed +$8C = 0, max speed +$90 = $1000, heading +$92, turn rate +$96 and turn acceleration +$9A = 0, y acceleration 0, clear +4 bit $4000 (class slot 3, +$12)
+; In:  8(a6) = this  $C/$10(a6) = x, y (16.16)  $14(a6) = placement entry or 0
 ; Out: none
 ; Evidence: method 3 of class descriptor $118C8E (name string "RTHETAOBJECT", parent ACTOR)
 ; ---------------------------------------------------------------------------

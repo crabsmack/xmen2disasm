@@ -1,7 +1,7 @@
 ; ---------------------------------------------------------------------------
-; Hologram_GetSize - Hologram: return the object size in bytes (class slot 0, +$06)
+; Hologram_GetSize - return sizeof(HOLOGRAM object) = $A6 bytes (class slot 0, +$06)
 ; In:  none
-; Out: d0 = object size in bytes
+; Out: d0 = $A6
 ; Evidence: method 0 of class descriptor $0EAE16 (name string "HOLOGRAM", parent ACTOR)
 ; ---------------------------------------------------------------------------
 Hologram_GetSize:

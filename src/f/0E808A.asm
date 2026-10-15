@@ -1,7 +1,7 @@
 ; ---------------------------------------------------------------------------
-; HoloBolt_GetSize - HoloBolt: return the object size in bytes (class slot 0, +$06)
+; HoloBolt_GetSize - return sizeof(HOLOBOLT object) = $8C bytes (class slot 0, +$06)
 ; In:  none
-; Out: d0 = object size in bytes
+; Out: d0 = $8C
 ; Evidence: method 0 of class descriptor $0E83AC (name string "HOLOBOLT", parent ACTOR)
 ; ---------------------------------------------------------------------------
 HoloBolt_GetSize:

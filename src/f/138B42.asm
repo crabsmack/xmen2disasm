@@ -1,7 +1,7 @@
 ; ---------------------------------------------------------------------------
-; MaintRobot_GetSize - MaintRobot: return the object size in bytes (class slot 0, +$06)
+; MaintRobot_GetSize - return sizeof(MAINTROBOT object) = $A8 bytes (class slot 0, +$06)
 ; In:  none
-; Out: d0 = object size in bytes
+; Out: d0 = $A8
 ; Evidence: method 0 of class descriptor $1391FE (name string "MAINTROBOT", parent XNPC)
 ; ---------------------------------------------------------------------------
 MaintRobot_GetSize:

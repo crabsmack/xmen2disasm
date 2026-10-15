@@ -1,7 +1,7 @@
 ; ---------------------------------------------------------------------------
-; BioBalls_GetSize - BioBalls: return the object size in bytes (class slot 0, +$06)
+; BioBalls_GetSize - return sizeof(BIOBALLS object) = $AC bytes (class slot 0, +$06)
 ; In:  none
-; Out: d0 = object size in bytes
+; Out: d0 = $AC
 ; Evidence: method 0 of class descriptor $1203AC (name string "BIOBALLS", parent ACTOR)
 ; ---------------------------------------------------------------------------
 BioBalls_GetSize:

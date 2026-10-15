@@ -1,8 +1,8 @@
 ; ---------------------------------------------------------------------------
-; XNpc_Attack - XNpc: hit another actor: call its TakeHit and start this object's hit cooldown (class slot 7, +$22)
-; In:  8(a6) = this  $C(a6) = target actor  then hit type, damage, extra words
+; XNpc_Attack - hit a target: call its TakeDamage (+$26) with the damage (-1 = stats byte 0), then start this object's 30-frame hit cooldown +$6A (XNPC override of slot 7, +$22)
+; In:  8(a6) = this  $C(a6) = target actor  $13(a6) = byte hit type  $17(a6) = byte damage (-1 = from stats +$8C byte 0)  $1A/$1E(a6) = words passed on
 ; Out: none
-; Evidence: method 7 of class descriptor $113A88 (name string "XNPC", parent ACTOR)
+; Evidence: ACTOR Attack uses 10 frames, XNPC 30; method 7 of class descriptor $113A88 (name string "XNPC", parent ACTOR)
 ; ---------------------------------------------------------------------------
 XNpc_Attack:
 	link.w	a6,#$0

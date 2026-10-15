@@ -1,7 +1,7 @@
 ; ---------------------------------------------------------------------------
-; MaintRobotFire_GetSize - MaintRobotFire: return the object size in bytes (class slot 0, +$06)
+; MaintRobotFire_GetSize - return sizeof(MAINTROBOTFIRE object) = $8C bytes (class slot 0, +$06)
 ; In:  none
-; Out: d0 = object size in bytes
+; Out: d0 = $8C
 ; Evidence: method 0 of class descriptor $139180 (name string "MAINTROBOTFIRE", parent ACTOR)
 ; ---------------------------------------------------------------------------
 MaintRobotFire_GetSize:

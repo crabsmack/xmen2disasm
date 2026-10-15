@@ -1,8 +1,8 @@
 ; ---------------------------------------------------------------------------
-; Deathbird_Draw - Deathbird: position/draw the object's sprite relative to the camera (class slot 5, +$1A)
+; Deathbird_Draw - like ACTOR Draw (blink while flag $40, attach offsets from +$44/+$4A) but draws the second sprite record +$B0 instead of the body sprite while +$B4 is set and it has a frame (class slot 5, +$1A)
 ; In:  8(a6) = this
 ; Out: none
-; Evidence: method 5 of class descriptor $111162 (name string "DEATHBIRD", parent ACTOR)
+; Evidence: Spr_Draw(this+$2E or +$B0, screen x, screen y); method 5 of class descriptor $111162 (name string "DEATHBIRD", parent ACTOR)
 ; ---------------------------------------------------------------------------
 Deathbird_Draw:
 	link.w	a6,#$0

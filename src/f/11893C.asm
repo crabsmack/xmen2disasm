@@ -1,8 +1,8 @@
 ; ---------------------------------------------------------------------------
-; RThetaObject_Move - RThetaObject: apply velocity (+$16/+$18), acceleration (+$1E/+$20) and speed limits (class slot 18, +$4E)
+; RThetaObject_Move - polar movement: speed +$8C += acceleration +$8E (clamped to +-max +$90), turn rate +$96 += +$9A, heading +$92 += turn rate (degrees 8.8, wrapped to 0-360), velocity = speed x (cos, -sin) of the heading, position += velocity; each step doubled at half rate (RTHETAOBJECT override of slot 18 Move; does not call the parent)
 ; In:  8(a6) = this  $C(a6) = word frame step (1, or 2 when the game runs at half rate)
 ; Out: none
-; Evidence: method 18 of class descriptor $118C8E (name string "RTHETAOBJECT", parent ACTOR)
+; Evidence: Math_CosDeg/Math_SinDeg; speed integer part selects a 1x-16x multiplier switch, bits $80/$40 add halves/quarters; previous velocity kept in +$1A/+$1C; method 18 of class descriptor $118C8E (name string "RTHETAOBJECT", parent ACTOR)
 ; ---------------------------------------------------------------------------
 RThetaObject_Move:
 	link.w	a6,#$0
