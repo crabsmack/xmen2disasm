@@ -53,7 +53,12 @@ labelled data.
 | `datamap.py [--at ADDR \| --reader Func]` | Who reads each unlabelled data span at runtime (reader logs), plus jt/code refs |
 | `label_strings.py --refs [--read]` | Label C strings (`Str_`) at referenced / runtime-read raw addresses |
 | `switches.py [--convert-cases]` | MPW switch tables -> symbolic `Sw_` `dc.w` tables; converts unreached case code |
-| `symbolize.py` | Numeric operands that point at instruction starts -> labels (S3) |
+| `symbolize.py` | Numeric operands into code or labelled data -> labels (S3; also repairs merges) |
+| `dataitems.py [--at ADDR]` | Unlabelled raw ROM split into data items (at jt/operand targets) with readers, DMA destinations, jt users |
+| `autolabel.py [--static] [--dry-run]` | Label data items from that evidence (read items; `--static`: never-read items from how code uses their jt slot) |
+| `sublabel.py ADDR Name "comment"` | Label a piece inside an already-labelled blob (code then refers to it by name, not Parent+$off) |
+| `extend_thunks.py [--labelled]` | Append the still-raw `jmp d(a5)` steps of AI scripts (count word + thunk table) |
+| `unknowns.py` | Regenerate the NOTES "Unknown (S5)" list from the coverage report |
 | `coverage.py [--list N] [--convert]` | Runtime truth vs. disassembly; `--convert` turns runtime-proven code into source |
 | `convert.py ADDR... --evidence "..."` | Raw bytes -> verified code from evidence (also batch: `--entries-file`) |
 | `candidates.py` | Unverified jump-table entries that trace cleanly as code |
