@@ -162,11 +162,15 @@ class Traces:
         self.cache = {} if fresh or not self.cache_path.exists() else json.loads(self.cache_path.read_text(encoding="utf-8"))
         root = recomp_root()
         head, engine = git(root, "rev-parse", "HEAD"), git(root / "segagenesisrecomp", "rev-parse", "HEAD")
-        dirty = bool(git(root, "status", "--porcelain"))
+        porcelain = git(root, "status", "--porcelain").splitlines()
+        dirty = bool(porcelain)
         self.rev = None if dirty or not head else f"{head}:{engine}"
         timed = git(root, "log", "-1", "--format=%H", "--", ".", ":(exclude)game/c",
                     ":(exclude)game/include", ":(exclude)docs")
-        self.rev_timed = None if dirty or not timed else f"{timed}:{engine}"
+        # traces that don't build hand C only need the rest of the tree clean (C being written
+        # in game/c meanwhile doesn't change them)
+        dirty_timed = any(not re.match(r"..\s*\"?(game/c/|game/include/|docs/)", l) for l in porcelain)
+        self.rev_timed = None if dirty_timed or not timed else f"{timed}:{engine}"
         self.out_dir = ROOT / "build" / "phase_traces"
 
     def save(self) -> None:

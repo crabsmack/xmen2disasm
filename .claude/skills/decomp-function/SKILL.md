@@ -105,6 +105,21 @@ MPW C 3.3 matching, what reproduces the ROM (also COMPILER.md):
   `e >= field`. `t = f(); g(t);` with `register t` = the ROM's "saved, unused register" (the
   nested `g(f())` pops first). `x + -0x700` = `add.l #-$700`. `(short)` constants in `?:` =
   `move.w` + `ext.l`. Two adjacent word clears merge into one `clr.l`.
+- (round 2) A call followed only by `unlk` keeps its argument pop when the statement is in a
+  `do { } while (0)` or a label follows (half the ClassInits). `if (t) { }` = a bare test.
+  Prototyped arguments are not narrowed: `ext.l` at a push means the variable itself is short;
+  a `long` passed to a `short` parameter is pushed as is. `pa->x + pb->y` (two memory words)
+  loads the right operand first; `-` keeps source order. `x = y = F` stores the right-hand
+  field first. Two pointer fields set to 0 = `moveq #0,d0` + two `move.l d0`.
+- `if (c) return 1; return 0;` at a function's end = the ROM's `sCC/neg/subq/subx/addq/move.b`
+  (`return c`, `!!c` don't match). Switch cases are emitted in source order; `lea x(a7)` right
+  after a jump table means `default: break;` came first. `x & 0x8000` is unsigned short
+  (constants are typed by range). A dead `tst.l reg` = an empty `if (x) { }`. An `s32 = 0`
+  is `moveq/move.l`; `clr.l` means two adjacent word fields.
+- `(x & 1) == 0` (and.w, zero-extend, tst.l) vs `!(x & 1)` (word test). In `cmp src,dst` the
+  C left operand is the source. `register long dx, dy;` = dy d7, dx d6. A value computed and
+  dropped = `(void)(expr);`. Dead locals kept spilled: mention them in a trailing `if (0) {}`.
+  `for (i = 2; i >= 0; i--)` = `dbra`. `moveq #0; move.w` reads mean a u16 field.
 - Keep original bugs; where C++ disagrees (shift by 32, ...) use `#ifdef XMEN2_MPW` with the
   PC branch computing what the 68000 did.
 - Passing `&local` to a function that is still generated works (the bridge copies the local
