@@ -24,7 +24,7 @@ loc_106BAE:
 	movea.l	$2(a0),a0
 	movea.l	$5E(a0),a1
 	jsr	(a1)
-	jsr	sub_106B60(pc)
+	jsr	Platform1_EmptyStub(pc)
 	addq.w	#$4,a7
 	unlk	a6
 	rts

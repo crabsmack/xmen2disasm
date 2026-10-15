@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_1071DE	[link-after-rts]
+; Platform1_StateSwitched - Platform1 mode 2: move only while its switch flag is set (reverse when blocked), stop and remember the speed when it is cleared
+; In:  8(a6) = this
+; Out: d0
+; Evidence: g_BBoard entry +$8B bit $200; TAS 35649-36489
 ; ---------------------------------------------------------------------------
-sub_1071DE:
+Platform1_StateSwitched:
 	link.w	a6,#$0
 	movem.l	d7/a4,-(a7)
 	movea.l	$8(a6),a4

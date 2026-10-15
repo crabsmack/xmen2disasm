@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; loc_1074F4
+; SpaceB1_CyclePalettes_NextB - SpaceB1_CyclePalettes: advance the second cycle (wrap after 8)
+; In:  -
+; Out: -
+; Evidence: shared tail of the Sw_10746C cases
 ; ---------------------------------------------------------------------------
-loc_1074F4:
+SpaceB1_CyclePalettes_NextB:
 	addq.w	#$1,-$3B3E(a5)
 	moveq	#$7,d0
 	cmp.w	-$3B3E(a5),d0

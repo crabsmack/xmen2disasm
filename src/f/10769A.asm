@@ -1,13 +1,16 @@
 ; ---------------------------------------------------------------------------
-; sub_10769A	[link-after-rts]
+; SpaceB1_InstallHooks - SpaceB1: frame hook, resources, switch tiles, palette cycles, place players, segment handler 27, create the camera
+; In:  none
+; Out: none
+; Evidence: g_SceneFrameHook = SpaceB1_FrameHook; $FFCE02 = sub_15AD8A; CAMERA New (jt $4FBA) with SpaceB1_InitCamera
 ; ---------------------------------------------------------------------------
-sub_10769A:
+SpaceB1_InstallHooks:
 	link.w	a6,#$0
-	lea.l	sub_107560(pc),a0
+	lea.l	SpaceB1_FrameHook(pc),a0
 	move.l	a0,g_SceneFrameHook(a5)
-	jsr	sub_107592(pc)
-	jsr	sub_10750C(pc)
-	jsr	sub_107378(pc)
+	jsr	SpaceB1_LoadResources(pc)
+	jsr	SpaceB1_InstallTileHooks(pc)
+	jsr	SpaceB1_ResetPalCycles(pc)
 	moveq	#$0,d0
 	move.l	d0,-(a7)
 	move.l	d0,-(a7)
@@ -68,7 +71,7 @@ loc_107750:
 	lea.l	$3F1A(a5),a0
 	move.l	a0,-$33FE(a5)
 	clr.b	-$38DE(a5)
-	pea.l	sub_107658(pc)
+	pea.l	SpaceB1_InitCamera(pc)
 	lea.l	$4DBA(a5),a0
 	move.l	$2(a0),-(a7)
 	lea.l	$4DBA(a5),a0

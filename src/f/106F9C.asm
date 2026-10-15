@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; loc_106F9C	[static: switch-table case target (tools/switches.py: table after `move.w T(pc,dN.w),dN / jmp T-2(pc,dN.w)`, size from the cmpi bound)]
+; Platform1_SteerByPad_LeftRight - case of Platform1_SteerByPad: Left gives -speed, Right gives +speed
+; In:  a3 = player, a4 = this, d7 = speed
+; Out: -
+; Evidence: switch target inside Platform1_SteerByPad
 ; ---------------------------------------------------------------------------
-loc_106F9C:
+Platform1_SteerByPad_LeftRight:
 	tst.b	$9D(a3)
 	seq.b	d3
 	neg.b	d3

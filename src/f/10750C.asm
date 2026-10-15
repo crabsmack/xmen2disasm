@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_10750C	[link-after-rts]
+; SpaceB1_InstallTileHooks - SpaceB1: clear the tile-trigger hooks and set Switch_TileHit as the switch-tile handler
+; In:  none
+; Out: none
+; Evidence: $FFC710 = Switch_TileHit, byte $FFCC38 = 1
 ; ---------------------------------------------------------------------------
-sub_10750C:
+SpaceB1_InstallTileHooks:
 	link.w	a6,#$0
 	move.b	#$1,-$35C8(a5)
 	moveq	#$0,d0

@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_107592	[link-after-rts]
+; SpaceB1_LoadResources - SpaceB1: register a sprite-definition resource
+; In:  none
+; Out: none
+; Evidence: SprDef_Add(thunk $13F946, 3) -> $FFE78E; $FFE782 = -1
 ; ---------------------------------------------------------------------------
-sub_107592:
+SpaceB1_LoadResources:
 	link.w	a6,#$0
 	moveq	#$3,d0
 	move.l	d0,-(a7)

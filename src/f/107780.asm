@@ -1,8 +1,11 @@
 ; ---------------------------------------------------------------------------
-; sub_107780	[link-after-rts]
+; SpaceB1_CallEmptyStub - SpaceB1: call the empty stub
+; In:  none
+; Out: none
+; Evidence: called twice by SpaceB1_RunScene
 ; ---------------------------------------------------------------------------
-sub_107780:
+SpaceB1_CallEmptyStub:
 	link.w	a6,#$0
-	jsr	sub_107370(pc)
+	jsr	SpaceB1_EmptyStub(pc)
 	unlk	a6
 	rts

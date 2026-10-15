@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_1071AA	[link-after-rts]
+; Platform1_StateShuttle - Platform1 mode 0: when blocked (+4 bit $100) and the cooldown is over, reverse direction
+; In:  8(a6) = this
+; Out: d0
+; Evidence: +$16 = -(+$92); TAS 35152-36560
 ; ---------------------------------------------------------------------------
-sub_1071AA:
+Platform1_StateShuttle:
 	link.w	a6,#$0
 	move.l	a4,-(a7)
 	movea.l	$8(a6),a4

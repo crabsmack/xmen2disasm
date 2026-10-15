@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; loc_106CC8	[static: switch-table case target (tools/switches.py: table after `move.w T(pc,dN.w),dN / jmp T-2(pc,dN.w)`, size from the cmpi bound)]
+; Platform1_Init_SetFrame2 - case of the Platform1_Init switch on the spawn record type: animation frame 2
+; In:  a4 = this, a3 = spawn record (inside Platform1_Init)
+; Out: -
+; Evidence: target of Sw_106BF0; vtable +$56 SetFrame(2), then the common tail
 ; ---------------------------------------------------------------------------
-loc_106CC8:
+Platform1_Init_SetFrame2:
 	moveq	#$2,d0
 	move.l	d0,-(a7)
 	move.l	a4,-(a7)

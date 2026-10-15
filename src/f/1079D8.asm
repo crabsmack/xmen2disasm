@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_1079D8	[jt 1348]
+; Switch_TileHit - switch tile handler: if no search is running, start a timer that looks for the SWITCH placement at this tile
+; In:  $A(a6) = word tile x  $E(a6) = word tile y
+; Out: d0 = 0
+; Evidence: search state at $FFC632 (from Switch_ClassInit), busy byte $FFC636; scans g_PlacementList .. + g_SpawnRecCount*16; Timer_Create(Switch_FindAndToggle)
 ; ---------------------------------------------------------------------------
-sub_1079D8:
+Switch_TileHit:
 	link.w	a6,#$0
 	movem.l	a3-a4,-(a7)
 	movea.l	-$3BCE(a5),a4
@@ -24,7 +27,7 @@ loc_1079EE:
 	move.l	d0,-(a7)
 	move.l	a4,-(a7)
 	move.l	d0,-(a7)
-	pea.l	sub_107860(pc)
+	pea.l	Switch_FindAndToggle(pc)
 	jsr	$4FD2(a5)	; -> Timer_Create
 	movea.l	d0,a3
 	move.l	a3,-(a7)

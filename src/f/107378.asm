@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_107378	[link-after-rts]
+; SpaceB1_ResetPalCycles - SpaceB1: initialise the two palette-cycle counters and delays
+; In:  none
+; Out: none
+; Evidence: $FFC6CC/$FFC6C4 and $FFC6CA/$FFC6C2
 ; ---------------------------------------------------------------------------
-sub_107378:
+SpaceB1_ResetPalCycles:
 	link.w	a6,#$0
 	move.w	#$3,-$3B34(a5)
 	clr.w	-$3B3C(a5)

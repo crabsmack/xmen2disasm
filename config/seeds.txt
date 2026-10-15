@@ -354,8 +354,8 @@
 0EAF6E	; loc_0EAF6E - runtime: executed in tas
 0EAF72	; loc_0EAF72 - runtime: executed in tas
 0EAF76	; loc_0EAF76 - runtime: executed in tas
-106CEC	; loc_106CEC - runtime: executed in tas
-107400	; loc_107400 - runtime: executed in tas
+106CEC	; Platform1_Init_SetFrame1 - runtime: executed in tas
+107400	; SpaceB1_CyclePalettes_SetA - runtime: executed in tas
 107408	; loc_107408 - runtime: executed in tas
 107410	; loc_107410 - runtime: executed in tas
 107418	; loc_107418 - runtime: executed in tas
@@ -369,7 +369,7 @@
 107456	; loc_107456 - runtime: executed in tas
 10745E	; loc_10745E - runtime: executed in tas
 107466	; loc_107466 - runtime: executed in tas
-1074B8	; loc_1074B8 - runtime: executed in tas
+1074B8	; SpaceB1_CyclePalettes_SetB - runtime: executed in tas
 1074C0	; loc_1074C0 - runtime: executed in tas
 1074C8	; loc_1074C8 - runtime: executed in tas
 1074D0	; loc_1074D0 - runtime: executed in tas
@@ -790,9 +790,9 @@
 0BFC12	; loc_0BFC12 - static: switch-table case target (tools/switches.py: table after `move.w T(pc,dN.w),dN / jmp T-2(pc,dN.w)`, size from the cmpi bound)
 0BFC60	; loc_0BFC60 - static: switch-table case target (tools/switches.py: table after `move.w T(pc,dN.w),dN / jmp T-2(pc,dN.w)`, size from the cmpi bound)
 0C0A12	; loc_0C0A12 - static: switch-table case target (tools/switches.py: table after `move.w T(pc,dN.w),dN / jmp T-2(pc,dN.w)`, size from the cmpi bound)
-106CC8	; loc_106CC8 - static: switch-table case target (tools/switches.py: table after `move.w T(pc,dN.w),dN / jmp T-2(pc,dN.w)`, size from the cmpi bound)
+106CC8	; Platform1_Init_SetFrame2 - static: switch-table case target (tools/switches.py: table after `move.w T(pc,dN.w),dN / jmp T-2(pc,dN.w)`, size from the cmpi bound)
 106CDA	; loc_106CDA - static: switch-table case target (tools/switches.py: table after `move.w T(pc,dN.w),dN / jmp T-2(pc,dN.w)`, size from the cmpi bound)
-106F9C	; loc_106F9C - static: switch-table case target (tools/switches.py: table after `move.w T(pc,dN.w),dN / jmp T-2(pc,dN.w)`, size from the cmpi bound)
+106F9C	; Platform1_SteerByPad_LeftRight - static: switch-table case target (tools/switches.py: table after `move.w T(pc,dN.w),dN / jmp T-2(pc,dN.w)`, size from the cmpi bound)
 106FF0	; loc_106FF0 - static: switch-table case target (tools/switches.py: table after `move.w T(pc,dN.w),dN / jmp T-2(pc,dN.w)`, size from the cmpi bound)
 107044	; loc_107044 - static: switch-table case target (tools/switches.py: table after `move.w T(pc,dN.w),dN / jmp T-2(pc,dN.w)`, size from the cmpi bound)
 1112FE	; loc_1112FE - static: switch-table case target (tools/switches.py: table after `move.w T(pc,dN.w),dN / jmp T-2(pc,dN.w)`, size from the cmpi bound)

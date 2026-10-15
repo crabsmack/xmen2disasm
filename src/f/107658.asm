@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_107658	[link-after-rts]
+; SpaceB1_InitCamera - SpaceB1 camera init callback: camera field +$42 = $C0 unless both players are present
+; In:  8(a6) = camera
+; Out: none
+; Evidence: player flags $FFEAAC/$FFE9BC
 ; ---------------------------------------------------------------------------
-sub_107658:
+SpaceB1_InitCamera:
 	link.w	a6,#$0
 	move.w	-$1754(a5),d0
 	ext.l	d0

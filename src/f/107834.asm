@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_107834	[link-after-rts]
+; Switch_DebounceWait - switch search timer: after 10 frames free the timer and allow the next switch press
+; In:  8(a6) = search state
+; Out: none
+; Evidence: g_FrameCounter - saved frame > 10; Timer_Free(g_TimerCurrent); $FFC636 = 0
 ; ---------------------------------------------------------------------------
-sub_107834:
+Switch_DebounceWait:
 	link.w	a6,#$0
 	movea.l	$8(a6),a0
 	move.w	$C(a0),d0

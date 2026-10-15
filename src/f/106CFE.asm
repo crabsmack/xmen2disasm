@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; loc_106CFE
+; Platform1_Init_Common - Platform1_Init default case and common tail: frame 2, actor flags, speed from spawn +$C (default $200), ride mode from spawn +$E
+; In:  a4 = this, a3 = spawn record (inside Platform1_Init)
+; Out: -
+; Evidence: +$94 speed, +$90 mode bits 0-1, +$92 saved speed, +$6E cooldown 10; reached also by Sw_106BF0 out-of-range types
 ; ---------------------------------------------------------------------------
-loc_106CFE:
+Platform1_Init_Common:
 	moveq	#$2,d0
 	move.l	d0,-(a7)
 	move.l	a4,-(a7)

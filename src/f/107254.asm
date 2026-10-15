@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_107254	[link-after-rts]
+; Platform1_StateStart - Platform1 first state: bind its floor segment (+$8C) and enter the mode's state (Shuttle, Ride or Switched)
+; In:  8(a6) = this
+; Out: d0
+; Evidence: segment record $FFCE2E + (+$7A)*$14; set as +$5C/+$64 by Platform1_Init
 ; ---------------------------------------------------------------------------
-sub_107254:
+Platform1_StateStart:
 	link.w	a6,#$0
 	movem.l	a3-a4,-(a7)
 	movea.l	$8(a6),a4
@@ -30,14 +33,14 @@ loc_107286:
 loc_107298:
 	move.w	$94(a4),$16(a4)
 	clr.w	$6C(a4)
-	lea.l	sub_1071AA(pc),a0
+	lea.l	Platform1_StateShuttle(pc),a0
 	move.l	a0,$5C(a4)
 	moveq	#$8,d0
 	and.w	$4(a4),d0
 	bra.s	loc_1072DE
 loc_1072B2:
 	clr.w	$6C(a4)
-	lea.l	sub_1070E8(pc),a0
+	lea.l	Platform1_StateRide(pc),a0
 	move.l	a0,$5C(a4)
 	moveq	#$8,d0
 	and.w	$4(a4),d0
@@ -45,7 +48,7 @@ loc_1072B2:
 loc_1072C6:
 	move.w	$94(a4),$92(a4)
 	clr.w	$6C(a4)
-	lea.l	sub_1071DE(pc),a0
+	lea.l	Platform1_StateSwitched(pc),a0
 	move.l	a0,$5C(a4)
 	moveq	#$8,d0
 	and.w	$4(a4),d0

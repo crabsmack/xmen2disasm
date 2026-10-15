@@ -2595,7 +2595,7 @@ Tbl_SiberiaB1PalCycle3:	; palette cycle for palette index $2E, same format (Sibe
 	include "src/f/106BCE.asm"
 	include "src/f/106BF0.asm"
 Sw_106BF0:	; switch table of sub at $106BF0: 4 word offsets from Sw_106BF0-2
-	dc.w	loc_106CC8-(Sw_106BF0-2), loc_106CDA-(Sw_106BF0-2), loc_106CEC-(Sw_106BF0-2), loc_106CFE-(Sw_106BF0-2)
+	dc.w	Platform1_Init_SetFrame2-(Sw_106BF0-2), loc_106CDA-(Sw_106BF0-2), Platform1_Init_SetFrame1-(Sw_106BF0-2), Platform1_Init_Common-(Sw_106BF0-2)
 	include "src/f/106CC8.asm"
 	include "src/f/106CEC.asm"
 	include "src/f/106CFE.asm"
@@ -2604,7 +2604,7 @@ Sw_106BF0:	; switch table of sub at $106BF0: 4 word offsets from Sw_106BF0-2
 	include "src/f/106EA8.asm"
 	include "src/f/106F42.asm"
 Sw_106F42:	; switch table of sub at $106F42: 4 word offsets from Sw_106F42-2
-	dc.w	loc_106F9C-(Sw_106F42-2), loc_107044-(Sw_106F42-2), loc_106FF0-(Sw_106F42-2), loc_107092-(Sw_106F42-2)
+	dc.w	Platform1_SteerByPad_LeftRight-(Sw_106F42-2), loc_107044-(Sw_106F42-2), loc_106FF0-(Sw_106F42-2), Platform1_SteerByPad_UpDown-(Sw_106F42-2)
 	include "src/f/106F9C.asm"
 	include "src/f/107092.asm"
 	include "src/f/1070E8.asm"
@@ -2617,14 +2617,14 @@ Tbl_Platform1_vtable:	; class descriptor "PLATFORM1": word $7E = name offset, lo
 	include "src/f/107378.asm"
 	include "src/f/1073A8.asm"
 Sw_1073A8:	; switch table of sub at $1073A8: 14 word offsets from Sw_1073A8-2
-	dc.w	loc_107400-(Sw_1073A8-2), loc_107408-(Sw_1073A8-2), loc_107410-(Sw_1073A8-2), loc_107418-(Sw_1073A8-2)
+	dc.w	SpaceB1_CyclePalettes_SetA-(Sw_1073A8-2), loc_107408-(Sw_1073A8-2), loc_107410-(Sw_1073A8-2), loc_107418-(Sw_1073A8-2)
 	dc.w	loc_107420-(Sw_1073A8-2), loc_107428-(Sw_1073A8-2), loc_107430-(Sw_1073A8-2), loc_107438-(Sw_1073A8-2)
 	dc.w	loc_10743E-(Sw_1073A8-2), loc_107446-(Sw_1073A8-2), loc_10744E-(Sw_1073A8-2), loc_107456-(Sw_1073A8-2)
 	dc.w	loc_10745E-(Sw_1073A8-2), loc_107466-(Sw_1073A8-2)
 	include "src/f/107400.asm"
 	include "src/f/10746C.asm"
 Sw_10746C:	; switch table of sub at $10746C: 8 word offsets from Sw_10746C-2
-	dc.w	loc_1074B8-(Sw_10746C-2), loc_1074C0-(Sw_10746C-2), loc_1074C8-(Sw_10746C-2), loc_1074D0-(Sw_10746C-2)
+	dc.w	SpaceB1_CyclePalettes_SetB-(Sw_10746C-2), loc_1074C0-(Sw_10746C-2), loc_1074C8-(Sw_10746C-2), loc_1074D0-(Sw_10746C-2)
 	dc.w	loc_1074D8-(Sw_10746C-2), loc_1074DE-(Sw_10746C-2), loc_1074E6-(Sw_10746C-2), loc_1074EE-(Sw_10746C-2)
 	include "src/f/1074B8.asm"
 	include "src/f/1074F4.asm"

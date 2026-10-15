@@ -21,9 +21,9 @@ Platform1_Init:
 	clr.w	$1E(a4)
 	clr.l	$16(a4)
 	clr.w	$20(a4)
-	lea.l	sub_107254(pc),a0
+	lea.l	Platform1_StateStart(pc),a0
 	move.l	a0,$5C(a4)
-	lea.l	sub_107254(pc),a0
+	lea.l	Platform1_StateStart(pc),a0
 	move.l	a0,$64(a4)
 	moveq	#-$1,d0
 	cmp.w	-$3BD4(a5),d0
@@ -69,9 +69,9 @@ loc_106C9A:
 	ori.b	#$4,$2E(a4)
 loc_106CAA:
 	move.w	$8(a3),d0
-	bmi.s	loc_106CFE
+	bmi.s	Platform1_Init_Common
 	cmpi.w	#$3,d0
-	bgt.s	loc_106CFE
+	bgt.s	Platform1_Init_Common
 	add.w	d0,d0
 	move.w	Sw_106BF0(pc,d0.w),d0
 	jmp	Sw_106BF0-2(pc,d0.w)

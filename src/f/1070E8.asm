@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_1070E8	[link-after-rts]
+; Platform1_StateRide - Platform1 mode 1: while its switch flag ($200 in g_BBoard) is set, a player standing on it steers it; otherwise it stops
+; In:  8(a6) = this
+; Out: none
+; Evidence: rider = player whose segment (+$76: $FFEB1E/$FFEA2E) is the platform segment +$8C; Platform1_SteerByPad
 ; ---------------------------------------------------------------------------
-sub_1070E8:
+Platform1_StateRide:
 	link.w	a6,#$0
 	movem.l	d3/d6-d7/a4,-(a7)
 	movea.l	$8(a6),a4
@@ -54,7 +57,7 @@ loc_107174:
 	beq.s	loc_107188
 	pea.l	g_Player1(a5)
 	move.l	a4,-(a7)
-	jsr	sub_106F42(pc)
+	jsr	Platform1_SteerByPad(pc)
 	addq.w	#$8,a7
 	bra.s	loc_1071A0
 loc_107188:
@@ -62,7 +65,7 @@ loc_107188:
 	beq.s	loc_10719A
 	pea.l	g_Player2(a5)
 	move.l	a4,-(a7)
-	jsr	sub_106F42(pc)
+	jsr	Platform1_SteerByPad(pc)
 	addq.w	#$8,a7
 	bra.s	loc_1071A0
 loc_10719A:
