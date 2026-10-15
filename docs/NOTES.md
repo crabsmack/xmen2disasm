@@ -24,11 +24,11 @@ progress.py also reads this file:
   `jmp d(a5)` thunk tables entered at computed offsets (e.g. `$0119E6`, found at runtime).
 - **Boot**: `EntryPoint` ($1F43AE) is Sega's ICD_BLK4 init. Vectors 28/30 (H-int,
   V-int) are stubs calling through the pointers at `$210/$214/$218`.
-- **Main loop**: `sub_005466` (jt[0]) inits, waits on VDP status, then loops forever
-  calling `sub_005CC6`.
-- **Resources by name**: `sub_1F9464(name, callback)` is called with C strings such as
+- **Main loop**: `Game_Main` (jt[0]) inits, waits on VDP status, then loops forever
+  calling `Game_SceneLoop`.
+- **Resources by name**: `Scene_Register(name, callback)` is called with C strings such as
   `Str_SiberiaB1Blizzard` and jump-table function pointers, and its results are stored
-  in byte globals (`sub_0054C6`). Probably registers named resources/handlers.
+  in byte globals (`Scene_RegisterAll`). Probably registers named resources/handlers.
 - **No title screen first**: power-on drops straight into the snowy first stage.
 
 ## Game flow (from emulator screenshots, R4 scenarios)
@@ -81,7 +81,7 @@ _(module → functions, globals, data; add as you learn them)_
   `$0C`/`$0D` `Snd_Pause`/`Snd_Resume` (Start-button pause, `sub_15CAA4`), `$16` `Snd_StopAll`,
   `$1B` `Snd_SetParam(slot, value)`, `$20` unknown (`Music_Play` sends `$0A`), `$0B` + four
   24-bit ROM pointers at boot (`Snd_Init`). `-$18AC(a5)` = mute flag, set while demos play
-  (`loc_005EB8`) and around some init calls. `Music_Play(track)` keeps the track in `-$38D2`.
+  (`Game_PlayAttractDemo`) and around some init calls. `Music_Play(track)` keeps the track in `-$38D2`.
   Driver image `$1FE66C-$1FFED2` (`Z80_LoadDriver`). Around V-blank DMA the 68k sets Z80
   `$1B20` = 1 and waits for `$1B21` = 0 (`Z80_DriverPause`/`Z80_DriverResume`).
 - **Video/frame (w140)**: V-int `Irq_VBlank` (hook `$210`): `Pad_ReadBoth`, frame counter long
@@ -103,7 +103,7 @@ _(module → functions, globals, data; add as you learn them)_
   +4 next, +8 prev, +$C func(arg, timer), +$10 arg, +$14 byte}`. State: >0 counting, 0 fire
   (then reload period), -2 stopped, -4 start pending, -1 free pending, -3 free.
   `Timer_Create` (returns stopped) / `Timer_Start` / `Timer_Stop` / `Timer_Free`; `Timer_RunAll`
-  each frame from the scene loop `sub_1FA124`. Objects keep timer pointers in fields (+$24, +$62).
+  each frame from the scene loop `Level_FrameLoop`. Objects keep timer pointers in fields (+$24, +$62).
 - **Draw list (w140)**: 30 nodes x $14 at `-$134C` `{next, prev, func, object, word key, word
   flags}` sorted by key (`$400` = behind, layer << 2, low bits 1 = P1, 2 = P2, 3 = other).
   `DrawList_Add(func, obj, ...)` returns a node index that actors store (e.g. +$88) for
@@ -149,7 +149,7 @@ _(module → functions, globals, data; add as you learn them)_
   reaches a class's own descriptor as `lea jt(a5),a0 / movea.l 2(a0),a0` (a jt entry that
   points at DATA), so `movea.l 2(a0),a0 / movea.l $12(a0),a1 / jsr (a1)` = call the
   PARENT's Init. Slots, from ACTOR's own methods (`$15D92C`...): +$06 GetSize (returns
-  sizeof; called on the descriptor by the spawner `sub_1197F2`), +$0A InitSpawnRec, +$0E New
+  sizeof; called on the descriptor by the spawner `Synchronizer_New`), +$0A InitSpawnRec, +$0E New
   (alloc, Init, Activate if in window), +$12 Init(this, x, y, spawn param) (x/y longs with 8
   fraction bits; calls parent Init first), +$16 ContainsPoint, +$1A Draw (sprite to screen
   coords), +$22 Attack(target,...) -> target's +$26 TakeDamage (+$68 health -= dmg, +$6A
@@ -157,7 +157,7 @@ _(module → functions, globals, data; add as you learn them)_
   spawn / out of view / despawn, +$3A/+$3E/+$42/+$46 in-window / Activate / out-of-window /
   Deactivate, +$4A Update (per frame; calls handler +$5C when timer +$6C < 1, Move...),
   +$4E Move (velocity +$16/+$18, accel +$1E/+$20, max +$22/+$24), +$52 Kill, +$56
-  SetFrame(frame), +$5E ClassInit(0, class index) (per level: `sub_1FA7E8` calls it for
+  SetFrame(frame), +$5E ClassInit(0, class index) (per level: `ClassList_InitAll` calls it for
   every class in the class list `-$3900(a5)`; loads the class's resources). +$5A/+$62/+$6A
   are empty in ACTOR; +$66 is the same 6-instruction no-op (`this` in a4) in every class.
   Level class lists: `{word bytes; desc*[]}` then a Pascal-string name such as
@@ -168,12 +168,12 @@ _(module → functions, globals, data; add as you learn them)_
   `g_Camera`; +$0A New(desc, hook): the hook is called after every camera update with the
   camera, +$1C), `LITTLELEG`, `EVILBEAM`, `ELEVATOR`, `ICANDY`, `GAUSSBULLET`, `BBOARD`,
   `SYNCHRONIZER`.
-- **Scene functions** (registered by name in `sub_0054C6`; prefix = scene id): `CloneA2_RunScene`
+- **Scene functions** (registered by name in `Scene_RegisterAll`; prefix = scene id): `CloneA2_RunScene`
   ('CloneA2 Vertical_Corridor_1') shows the usual shape: empty stubs, `_LoadLevel`
-  (`sub_1F98A8` with map data + `Tbl_<Scene>ClassList`, initial palettes into g_PalBase),
-  `_InstallHooks` (per-frame scene hook into `-$388E(a5)`, resources via `sub_1F62C0`,
-  `Players_PlaceAtStart`), camera creation, timers, then `sub_0C1478(track)` (music; writes
-  g_MusicTrack), `sub_1FA6FE` (scene loop), `sub_0C14B4`. Scene-local globals in
+  (`Level_Load` with map data + `Tbl_<Scene>ClassList`, initial palettes into g_PalBase),
+  `_InstallHooks` (per-frame scene hook into `-$388E(a5)`, resources via `SprDef_Add`,
+  `Players_PlaceAtStart`), camera creation, timers, then `Music_PlayStage(track)` (music; writes
+  g_MusicTrack), `Level_Run` (scene loop), `Music_StopStage`. Scene-local globals in
   `$FFC6C4-$FFC706` (`-$3B3C..-$3AFA`) are reused with different meanings by each scene:
   ~~don't give them global names~~ (N3 still needs a name for each; the globals worker owns them:
   use a neutral scene-scratch name and list the per-scene uses in the ram.asm comment). Per-frame helpers are `Timer_Create(fn, 1, arg, 0)` + `Timer_Start`,
@@ -181,9 +181,9 @@ _(module → functions, globals, data; add as you learn them)_
   `-$3A98/-$3A9C` min x/y, `-$3A96/-$3A9A` max x/y (`CloneA2_SetCameraZone`). Screen shake:
   `g_CamShake` script.
 - **Scene ids in $080000-$0E0000**: CloneA2 ($081BBA-$082244), CloneA5 BroodBoss
-  (`sub_088730`), SavageA2 Perimeter_1 (`sub_0AD91A`), SavageA3 Perimeter_2 (`sub_0B0538`),
-  SavageA4 Chamber (`sub_0B65C6`), SavageC1 Jungle_1 (`sub_0C11CE`), SavageB1 Jungle_2
-  (`sub_0C130A`), SentinelsD1 Exterior_1 (`sub_0DC4AA`).
+  (`CloneA5_RunScene`), SavageA2 Perimeter_1 (`SavageA2_RunScene`), SavageA3 Perimeter_2 (`SavageA3_RunScene`),
+  SavageA4 Chamber (`SavageA4_RunScene`), SavageC1 Jungle_1 (`SavageC1_RunScene`), SavageB1 Jungle_2
+  (`SavageB1_RunScene`), SentinelsD1 Exterior_1 (`SentinelsD1_RunScene`).
 - **Hazard water / flood (w080)**: `Water_Init(variant, surface y, splash y)` + `Water_DrawHook` in
   `g_SceneDrawHook`: players below the surface (`-$3C10`) splash and take damage every 5 frames while
   `-$3C14` is set (Savage jungle swamp; SavageA2/A3 rising flood: `SavageA2_CamUpdateFlood` raises it).
@@ -204,7 +204,7 @@ _(module → functions, globals, data; add as you learn them)_
   (word offsets to animations). Killing a clone with the same character sets bit (8+type) of
   `-$3B08`; `XClone_TileHookReward`/`XClone_TileHookOpenWall` then flash and blast open a wall
   (map columns $5A-$5B) unless a player is Magneto. 6 kills (`-$3C40`) end the wave
-  (`XClone_EndWave`: collapse effects, `sub_1F944E(600)`).
+  (`XClone_EndWave`: collapse effects, `Scene_EndAfter(600)`).
 - **Players are confirmed** (w000): `g_Player1` = `$FFEAA8` (+$9D = 0), `g_Player2` = `$FFE9B8`
   (+$9D = 1; vtable 0 until P2 joins at TAS frame 49140). Objects are $F0 bytes. Player
   vtable = character class: jt `$2B9A` Beast, `$2BA2` Nightcrawler, `$2BAA` Psylocke, `$2BB2`
@@ -215,14 +215,14 @@ _(module → functions, globals, data; add as you learn them)_
   HUD bars = (h-1)>>8 + 1, max 9), +$9E word second HUD meter. Player code uses the ACTOR
   slots above: +$12 Init(x<<8, y<<8, 0) to place, +$3E Activate, +$52 Kill.
 - **Game flow code** (w000): `Game_Main` -> `Game_SceneLoop` runs `g_SceneTable[g_SceneIndex]`
-  (8-byte {name, fn}, filled by `Scene_RegisterAll` via `sub_1F9464`). Scene load
-  (`sub_1F98A8`, called by every stage init) calls hook `-$38E8` first and `-$38EC` last
+  (8-byte {name, fn}, filled by `Scene_RegisterAll` via `Scene_Register`). Scene load
+  (`Level_Load`, called by every stage init) calls hook `-$38E8` first and `-$38EC` last
   (`Scene_PreLoadReset`, `Scene_PostLoadVram`). After a scene: health -> `g_P1Health`,
   0 = spend a life (`g_P1Lives`) or drop out. `g_SceneIndex = -1` -> attract demos
   (`Game_AttractDemo*`, demo input at `-$3A1E` read as (duration, buttons) pairs by
   `sub_1F9DE8`; `-$3A1A` = demo active; `-$18AC` = 1 mutes sound during demos).
-- **VRAM**: word `-$3598` ($FFCC68) = next free VRAM tile; `sub_1FB026` sets up a sprite slot
-  and returns base + tiles needed; `sub_1FE17A(src, vram addr, bytes)` = DMA to VRAM (immediate
+- **VRAM**: word `-$3598` ($FFCC68) = next free VRAM tile; `Spr_Init` sets up a sprite slot
+  and returns base + tiles needed; `VDP_QueueDma(src, vram addr, bytes)` = DMA to VRAM (immediate
   while word `-$1D48` = VDP reg 1 mirror has bit 6 (display) clear, else queued at `$FFFA5C`). Joypad bits: Up 1, Down 2, Left 4, Right 8, B $10, C $20, A $40,
   Start $80, Z $100, Y $200, X $400, Mode $800 (`Game_InitButtonMasks`).
 - **Scene list** (w000, `Scene_RegisterAll` + `g_Scn*` byte globals = scene ids): Siberia B1,
@@ -239,19 +239,19 @@ _(module → functions, globals, data; add as you learn them)_
   -$3C56..-$3C5A, cursor -$3B04/-$3B06, plane at VRAM $E000. -$3C5E = progress flags (bit 1
   START pressed on the logo, bit $4000 game finished). PlayerSelect cursors are objects at
   -$3B28 (P1) / -$3B2C (P2): +$3C character index, +$3D saved index, +$40 confirmed.
-  Per-character select-screen sprite getters (index order): Beast `sub_1841E4`, Cyclops
-  `sub_1E3C5A`, Gambit `sub_1D0744`, Nightcrawler `sub_1A7CAC`, Psylocke `sub_1BA006`,
-  Wolverine `sub_197C22`, Magneto `sub_1CEC28` (each +$10 = frame getter).
+  Per-character select-screen sprite getters (index order): Beast `Beast_SelectSpriteDef`, Cyclops
+  `Cyclops_SelectSpriteDef`, Gambit `Gambit_SelectSpriteDef`, Nightcrawler `Nightcrawler_SelectSpriteDef`, Psylocke `Psylocke_SelectSpriteDef`,
+  Wolverine `Wolverine_SelectSpriteDef`, Magneto `Magneto_SelectSpriteDef` (each +$10 = frame getter).
 - **Scene hooks** (w000): `-$388E` = per-frame scene hook (e.g. `AvalonB1_FrameHook`), the
   CAMERA object's +4 = per-frame camera hook (AvalonB1 chains five `AvalonB1_CamHook*` for its
   intro), `-$3AF8..-$3ADC` = 8 map-tile hook pointers (`AvalonB1_InstallTileHooks`),
-  `sub_15D7F8(x, y, tile, keep)` sets a map tile, `sub_159FD6` steps a palette cycle into
+  `sub_15D7F8(x, y, tile, keep)` sets a map tile, `Pal_CycleStep` steps a palette cycle into
   `g_PalBase`. **Offset tip**: Ghidra shows RAM addresses; A5 offset = address - $10200
   (`$FFC6CE` -> `-$3B32`), not address - $10000.
 - **Stage code layout** (w000, `$000000-$080000`): every stage has `<Stage>_RunScene` calling
-  small setup functions (`_LoadLevel` = `sub_1F98A8`, `_PlacePlayers` = `Players_PlaceAtStart`,
+  small setup functions (`_LoadLevel` = `Level_Load`, `_PlacePlayers` = `Players_PlaceAtStart`,
   `_InitCamera` with a `_CamHook`, `_InstallHooks`/`_InstallTileHooks`/`_InstallEventHooks`,
-  `_EmptyStub*`) then the level loop `sub_1FA6FE`. Tile hooks crack/toggle map tiles through
+  `_EmptyStub*`) then the level loop `Level_Run`. Tile hooks crack/toggle map tiles through
   stages (`AvalonA4_GlobCrack*` only react to MAGNETICGLOB, `BaniMazaB2_CrackFloorHook`,
   `BaniMazaA1_SwitchTileHook` reverses the rolling-disc bands). Event hooks at `-$321A..`
   answer event 3 (used by camera zones: `AvalonA4_EventZoneFree*`).
@@ -268,16 +268,16 @@ _(module → functions, globals, data; add as you learn them)_
 
 - **Class slots, additions (w0E0)** to the `tools/classes.py` names above (`$0E0000-$140000` follows
   them; descriptors there are labelled `Tbl_<Class>_vtable`, 60 of them): +$1E `DrawIfActive` (ACTOR
-  `$15E452`: Draw unless flag $4000) · +$5A `LevelLoad` (static, run by the scene loader `sub_1F98A8` ->
-  `sub_1F9804` for each class in `-$3900(a5)`) · +$62 `LevelStart` (static, `sub_1FA878`, after the first
-  spawn pass of `sub_1FA124`, the level main loop) · +$6A `Reset` when non-empty (DEATHBIRD Init calls
+  `$15E452`: Draw unless flag $4000) · +$5A `LevelLoad` (static, run by the scene loader `Level_Load` ->
+  `ClassList_CallSlot5A` for each class in `-$3900(a5)`) · +$62 `LevelStart` (static, `ClassList_CallSlot62`, after the first
+  spawn pass of `Level_FrameLoop`, the level main loop) · +$6A `Reset` when non-empty (DEATHBIRD Init calls
   it on `this`; HOLOGRAM/POP/FIREWALL ClassInit share its body), else `Nop6A`. XNPC slots: +$6E
   `OnHurt(this, dmg, type)` and +$72 `OnDeath` (both from `XNpc_TakeDamage`), +$76 `EndHurt` (restore
   the state saved in +$60), +$7A ~~`Query7A`~~ `GetMoveLimit(this, dir, *kind)` (limit coordinate toward dir 0 left/1 right/2-3 vertical; kind 0 wall, 1 open edge, 2 none = XNPC base; see `BabyBio_GetMoveLimit`; used to stop knockback), +$7E `Explode`
   (death effect by stats byte 2). Spawn records: 14 bytes each at `$FFC924` (count `$FFC928`), built
-  from 16-byte placement entries (`$FFC92A`, word 0 = class index into `-$3900`) by `sub_15F95C`
+  from 16-byte placement entries (`$FFC92A`, word 0 = class index into `-$3900`) by `Spawn_InitRecords`
   calling each class's InitSpawnRec.
-- **ACTOR object fields** (ACTOR Init `sub_15DCC4`, Move `sub_1F4C56`, Update `sub_15E7FA`): +$10/+$12
+- **ACTOR object fields** (ACTOR Init `Actor_Init`, Move `Actor_Move`, Update `Actor_Update`): +$10/+$12
   word x/y pixels, +$16/+$18 word velocity x/y, +$1E/+$20 word acceleration (gravity default 100),
   +$22/+$24 word max speed, +$26/+$28 word min speed to move, +$5C state function (run by Update when
   the +$6C word delay reaches 0), +$60 hurt state, +$64 default state, +$68 word health, +$6A word hit
@@ -285,18 +285,18 @@ _(module → functions, globals, data; add as you learn them)_
   Update, 1, this, 1)` in ACTOR Init). XNPC (size $94): +$8C pointer to a stats record
   (byte 0 attack damage, 1 hurt sound, 2 health/death type, 7 hurt frame).
 - **AI scripts**: many enemies keep a script `{word index; long table}` (HOLOGRAM `+$8C/+$8E`, BABYBIO
-  `+$96/+$98`), set by `sub_15A6DE(&script, table)`. Table = word count, then 4-byte `jmp d(a5)`
-  thunks (`Hologram_ScriptAttack`, `loc_11B508`...); the jump table exports the table start. An action
+  `+$96/+$98`), set by `AiScript_Set(&script, table)`. Table = word count, then 4-byte `jmp d(a5)`
+  thunks (`Hologram_ScriptAttack`, `BabySentinelB_Script2`...); the jump table exports the table start. An action
   function sets `+$5C` to the next thunk and `+$6C` to a delay; when the script is null it falls back to
   `+$64`. Caution: the count word's high byte is $00, so several tables are mislabelled
   `Str_Empty_XXXXXX` ("C string") right before such thunk files (e.g. `$0EAEFC`, `$0EAF02`, `$0EAF10`).
-- **Scene entry functions** (from `Scene_RegisterAll`): SiberiaB1 `sub_0FD6A8`, SentinelsD1 `sub_0DC4AA`,
-  SentinelsB1 `sub_0F4428`, SentinelsA1 CoolantCore `SentinelsA1_RunScene`, SentinelsB2 `sub_0F4CD8`,
-  AvalonB1 `sub_00FDAA`, AvalonB2 `sub_0227E0`, AvalonA2 `sub_022BA2`, AvalonA3 `sub_02CD50`, AvalonA4
-  `sub_035A9E`, BaniMazaB2 `sub_05ACEC`, BaniMazaA1 `sub_038BFA`, BaniMazaA2 `sub_04791A`, SavageC1
-  `sub_0C11CE`, SavageB1 `sub_0C130A`, SavageA2 `sub_0AD91A`, SavageA3 `sub_0B0538`, SavageA4 `sub_0B65C6`,
-  SpaceB1 `sub_10778C`, SpaceA1 `SpaceA1_RunScene`, CloneA1 `sub_0776E2`, CloneA2 `CloneA2_RunScene`,
-  CloneA5 `sub_088730`; Cerebro screens `$066E80-$067020`. TAS order: SentinelsA1 at ~7450-9575,
+- **Scene entry functions** (from `Scene_RegisterAll`): SiberiaB1 `SiberiaB1_RunScene`, SentinelsD1 `SentinelsD1_RunScene`,
+  SentinelsB1 `SentinelsB1_RunScene`, SentinelsA1 CoolantCore `SentinelsA1_RunScene`, SentinelsB2 `SentinelsB2_RunScene`,
+  AvalonB1 `AvalonB1_RunScene`, AvalonB2 `AvalonB2_RunScene`, AvalonA2 `AvalonA2_RunScene`, AvalonA3 `AvalonA3_RunScene`, AvalonA4
+  `AvalonA4_RunScene`, BaniMazaB2 `BaniMazaB2_RunScene`, BaniMazaA1 `BaniMazaA1_RunScene`, BaniMazaA2 `BaniMazaA2_RunScene`, SavageC1
+  `SavageC1_RunScene`, SavageB1 `SavageB1_RunScene`, SavageA2 `SavageA2_RunScene`, SavageA3 `SavageA3_RunScene`, SavageA4 `SavageA4_RunScene`,
+  SpaceB1 `SpaceB1_RunScene`, SpaceA1 `SpaceA1_RunScene`, CloneA1 `CloneA1_RunScene`, CloneA2 `CloneA2_RunScene`,
+  CloneA5 `CloneA5_RunScene`; Cerebro screens `$066E80-$067020`. TAS order: SentinelsA1 at ~7450-9575,
   SpaceA1 (elevator shaft) 37205-45095. Stage helpers follow the CloneA2 pattern (`<Scene>_LoadLevel`,
   `_InstallHooks`, `_FrameHook` in `$FFC972`, ...).
 - **Non-actor classes**: ICANDY (`$1188AC`, size $42, light sprite: 0 SizeOf, 1 New, 2 Init, 3 Update,
@@ -304,7 +304,7 @@ _(module → functions, globals, data; add as you learn them)_
   entries by `Switch_LevelInit` into `$FFE55A`), SYNCHRONIZER (`$119CFE`, pool of 4), ELEVATOR (`$10B532`).
 - **Shared effects/projectiles (w0E0)**: `Explosion_Spawn(x, y, flip)` (27 callers; 10 slots `g_Explosions`,
   optional damage via `ObjList_ForEachInBox`), GAUSSBULLET pool (`GaussBullet_InitPool` per scene,
-  `GaussBullet_Fire`, 6 records in `g_GaussPool`), power-up `*_Collect` = player vtable +$6E (`sub_1F1D88`
+  `GaussBullet_Fire`, 6 records in `g_GaussPool`), power-up `*_Collect` = player vtable +$6E (`XPlayer_AddHealth`
   AddHealth: health += n*$100, clamp 1..$900; segment +1, XPower +3, Mondo = full). BIOBALLS (`$1203AC`) is
   a chain of balls (list +$92, {x, y, flags}) driven by a motion function in +$A2 (`BioBalls_Motion*`:
   Orbit, Ring, Helix, Path, Roll, Gather) that XCLONE/EVIL* actions plug in. XNPC hurt/death reactions:
@@ -457,17 +457,17 @@ None of these was read or DMA'd anywhere in the 75-run corpus, and no jump-table
 - `$0228E2-$022958` (118 B) after AvalonA2_DisabledFrameEffect, before AvalonA2_DisabledFrameEffect_exit: `3b 7c 06 64 c6 98 3b 7c`; decodes as code (`move.w #$664, -$3968(a5)` ...) but nothing references it: dead code?
 - `$02CE92-$02CE94` (2 B) after Exodus_NextPattern, before Exodus_NextPattern_part1: `60 62`
 - `$035AFF-$035B00` (1 B) after AvalonA4_RunScene, before MagnetoBoss_GetSize: `0c`
-- `$03653A-$03653E` (4 B) after MagnetoBoss_Move, before loc_03653E: `60 00 01 aa`; decodes as code (`bra.w $366e6` ...) but nothing references it: dead code?
-- `$03A582-$03A584` (2 B) after BanimazaDoor_Draw, before loc_03A584: `60 30`
-- `$04B2CC-$04B2CE` (2 B) after loc_04B1C2, before Apocalypse_GetSize: `ff ff` all $FF
-- `$04B2DC-$04B2DE` (2 B) after loc_04B1C2, before Apocalypse_GetSize: `ff ff` all $FF
-- `$04B2F0-$04B2F2` (2 B) after loc_04B1C2, before Apocalypse_GetSize: `ff ff` all $FF
-- `$04B304-$04B306` (2 B) after loc_04B1C2, before Apocalypse_GetSize: `ff ff` all $FF
-- `$04B318-$04B31A` (2 B) after loc_04B1C2, before Apocalypse_GetSize: `ff ff` all $FF
-- `$04B334-$04B336` (2 B) after loc_04B1C2, before Apocalypse_GetSize: `ff ff` all $FF
-- `$063BFF-$063C06` (7 B) after loc_05E038, before Cerebro_BigSpriteDecode: `01 04 02 02 08 20 ff`
-- `$063C11-$063C22` (17 B) after loc_05E038, before Cerebro_BigSpriteDecode: `04 01 01 08 08 10 ff 01`
-- `$081BB9-$081BBA` (1 B) after sub_077CBC, before CloneA2_EmptyStub1: `64`
+- `$03653A-$03653E` (4 B) after MagnetoBoss_Move, before MagnetoBoss_Move_part1: `60 00 01 aa`; decodes as code (`bra.w $366e6` ...) but nothing references it: dead code?
+- `$03A582-$03A584` (2 B) after BanimazaDoor_Draw, before BanimazaDoor_Draw_part1: `60 30`
+- `$04B2CC-$04B2CE` (2 B) after Apocalypse_ScriptC, before Apocalypse_GetSize: `ff ff` all $FF
+- `$04B2DC-$04B2DE` (2 B) after Apocalypse_ScriptC, before Apocalypse_GetSize: `ff ff` all $FF
+- `$04B2F0-$04B2F2` (2 B) after Apocalypse_ScriptC, before Apocalypse_GetSize: `ff ff` all $FF
+- `$04B304-$04B306` (2 B) after Apocalypse_ScriptC, before Apocalypse_GetSize: `ff ff` all $FF
+- `$04B318-$04B31A` (2 B) after Apocalypse_ScriptC, before Apocalypse_GetSize: `ff ff` all $FF
+- `$04B334-$04B336` (2 B) after Apocalypse_ScriptC, before Apocalypse_GetSize: `ff ff` all $FF
+- `$063BFF-$063C06` (7 B) after Tuskette_Init_part6, before Cerebro_BigSpriteDecode: `01 04 02 02 08 20 ff`
+- `$063C11-$063C22` (17 B) after Tuskette_Init_part6, before Cerebro_BigSpriteDecode: `04 01 01 08 08 10 ff 01`
+- `$081BB9-$081BBA` (1 B) after LightBeam_StateIdle, before CloneA2_EmptyStub1: `64`
 - `$088B96-$088B9A` (4 B) after BroodBoss_ScrStepScream, before EvilMaker_GetSize: `00 00 00 00` all $00
 - `$096D30-$096D36` (6 B) after XClone_StateChildHome, before XClone_StateChildHome_Step: `02 6b fb ff 00 98`
 - `$0AB3A2-$0AB3A4` (2 B) after BubbleManager_SetWaveParams, before BubbleManager_SetWaveParams_Case1: `60 72`
@@ -480,112 +480,112 @@ None of these was read or DMA'd anywhere in the 75-run corpus, and no jump-table
 - `$1342FC-$134300` (4 B) after FireWall_EmptyStub, before FlyBrood_ScriptA: `00 00 00 00` all $00
 - `$13435C-$134360` (4 B) after FireWall_EmptyStub, before FlyBrood_ScriptA: `00 00 00 00` all $00
 - `$1364AA-$1364AC` (2 B) after FlyBrood_StateHit, before Hornet_GetSize: `00 7f`
-- `$13AF92-$13AFA1` (15 B) after sub_13ADA6, before Ninja_GetSize: `00 00 00 00 00 01 00 02`
-- `$13AFA4-$13AFB3` (15 B) after sub_13ADA6, before Ninja_GetSize: `00 00 00 00 00 01 00 02`
-- `$13AFB6-$13AFC5` (15 B) after sub_13ADA6, before Ninja_GetSize: `00 00 00 00 00 01 00 02`
-- `$13AFC8-$13AFD6` (14 B) after sub_13ADA6, before Ninja_GetSize: `00 00 00 00 00 01 00 02`
-- `$13D8BE-$13D8C2` (4 B) after sub_13D7F6, before loc_13D8C2: `4e ed 3a 62`; decodes as code (`jmp $3a62(a5)` ...) but nothing references it: dead code?
-- `$13F300-$13F304` (4 B) after sub_13F282, before sub_13F474: `00 ff 00 00`
-- `$13F308-$13F30C` (4 B) after sub_13F282, before sub_13F474: `00 ff 00 00`
-- `$13F310-$13F314` (4 B) after sub_13F282, before sub_13F474: `00 ff 00 00`
-- `$13F318-$13F31C` (4 B) after sub_13F282, before sub_13F474: `00 ff 00 00`
-- `$13F320-$13F324` (4 B) after sub_13F282, before sub_13F474: `00 ff 00 00`
-- `$13F326-$13F32C` (6 B) after sub_13F282, before sub_13F474: `0f ff 0f ff 0f ff`
-- `$13F330-$13F334` (4 B) after sub_13F282, before sub_13F474: `00 ff 00 00`
-- `$13F338-$13F33C` (4 B) after sub_13F282, before sub_13F474: `00 ff 00 00`
-- `$13F340-$13F344` (4 B) after sub_13F282, before sub_13F474: `00 ff 00 00`
-- `$13F348-$13F34C` (4 B) after sub_13F282, before sub_13F474: `00 ff 00 00`
-- `$13F350-$13F354` (4 B) after sub_13F282, before sub_13F474: `00 ff 00 00`
-- `$13F358-$13F35C` (4 B) after sub_13F282, before sub_13F474: `00 ff 00 00`
-- `$13F360-$13F364` (4 B) after sub_13F282, before sub_13F474: `00 ff 00 00`
-- `$13F366-$13F368` (2 B) after sub_13F282, before sub_13F474: `0f ff`
-- `$13F46C-$13F470` (4 B) after sub_13F282, before sub_13F474: `00 00 00 00` all $00
+- `$13AF92-$13AFA1` (15 B) after Mine_Explode, before Ninja_GetSize: `00 00 00 00 00 01 00 02`
+- `$13AFA4-$13AFB3` (15 B) after Mine_Explode, before Ninja_GetSize: `00 00 00 00 00 01 00 02`
+- `$13AFB6-$13AFC5` (15 B) after Mine_Explode, before Ninja_GetSize: `00 00 00 00 00 01 00 02`
+- `$13AFC8-$13AFD6` (14 B) after Mine_Explode, before Ninja_GetSize: `00 00 00 00 00 01 00 02`
+- `$13D8BE-$13D8C2` (4 B) after Ninja_NopStatic, before Ninja_ScrStepStartCombat: `4e ed 3a 62`; decodes as code (`jmp $3a62(a5)` ...) but nothing references it: dead code?
+- `$13F300-$13F304` (4 B) after Pop_NopStatic, before Debris_SetFloorY: `00 ff 00 00`
+- `$13F308-$13F30C` (4 B) after Pop_NopStatic, before Debris_SetFloorY: `00 ff 00 00`
+- `$13F310-$13F314` (4 B) after Pop_NopStatic, before Debris_SetFloorY: `00 ff 00 00`
+- `$13F318-$13F31C` (4 B) after Pop_NopStatic, before Debris_SetFloorY: `00 ff 00 00`
+- `$13F320-$13F324` (4 B) after Pop_NopStatic, before Debris_SetFloorY: `00 ff 00 00`
+- `$13F326-$13F32C` (6 B) after Pop_NopStatic, before Debris_SetFloorY: `0f ff 0f ff 0f ff`
+- `$13F330-$13F334` (4 B) after Pop_NopStatic, before Debris_SetFloorY: `00 ff 00 00`
+- `$13F338-$13F33C` (4 B) after Pop_NopStatic, before Debris_SetFloorY: `00 ff 00 00`
+- `$13F340-$13F344` (4 B) after Pop_NopStatic, before Debris_SetFloorY: `00 ff 00 00`
+- `$13F348-$13F34C` (4 B) after Pop_NopStatic, before Debris_SetFloorY: `00 ff 00 00`
+- `$13F350-$13F354` (4 B) after Pop_NopStatic, before Debris_SetFloorY: `00 ff 00 00`
+- `$13F358-$13F35C` (4 B) after Pop_NopStatic, before Debris_SetFloorY: `00 ff 00 00`
+- `$13F360-$13F364` (4 B) after Pop_NopStatic, before Debris_SetFloorY: `00 ff 00 00`
+- `$13F366-$13F368` (2 B) after Pop_NopStatic, before Debris_SetFloorY: `0f ff`
+- `$13F46C-$13F470` (4 B) after Pop_NopStatic, before Debris_SetFloorY: `00 00 00 00` all $00
 - `$1420DE-$1420E0` (2 B) after sub_14205E, before loc_14221E: `00 82`
 - `$1420E4-$1420F0` (12 B) after sub_14205E, before loc_14221E: `00 14 16 c0 00 15 d9 3a`
 - `$1420F4-$142124` (48 B) after sub_14205E, before loc_14221E: `00 15 e3 d4 00 15 e5 5a`
 - `$142128-$142166` (62 B) after sub_14205E, before loc_14221E: `00 15 e7 fa 00 14 18 fa`
-- `$144FEE-$144FF2` (4 B) after sub_144D88, before sub_157BA6: `00 00 00 00` all $00
-- `$159AB4-$159AB6` (2 B) after sub_159A46, before sub_159ECC: `00 6e`
-- `$159ABA-$159AC2` (8 B) after sub_159A46, before sub_159ECC: `00 15 7b a6 00 15 d9 3a`
-- `$159ACA-$159ACE` (4 B) after sub_159A46, before sub_159ECC: `00 15 e3 d4`
-- `$159AD2-$159AD6` (4 B) after sub_159A46, before sub_159ECC: `00 15 e4 52`
-- `$159ADA-$159AF2` (24 B) after sub_159A46, before sub_159ECC: `00 15 e6 80 00 15 db 26`
-- `$159B0E-$159B2E` (32 B) after sub_159A46, before sub_159ECC: `00 15 d9 70 00 15 d9 78`
-- `$159B32-$159B3A` (8 B) after sub_159A46, before sub_159ECC: `00 15 7b b4 00 15 d9 3a`
-- `$159B42-$159B46` (4 B) after sub_159A46, before sub_159ECC: `00 15 e3 d4`
-- `$159B4A-$159B6A` (32 B) after sub_159A46, before sub_159ECC: `00 15 e4 52 00 15 e6 30`
-- `$159B86-$159BA8` (34 B) after sub_159A46, before sub_159ECC: `00 15 d9 70 00 15 d9 78`
-- `$159C85-$159C86` (1 B) after sub_159A46, before sub_159ECC: `ff` all $FF
-- `$159CFB-$159CFC` (1 B) after sub_159A46, before sub_159ECC: `ff` all $FF
-- `$159D83-$159D84` (1 B) after sub_159A46, before sub_159ECC: `ff` all $FF
-- `$159EA5-$159ECC` (39 B) after sub_159A46, before sub_159ECC: `ff 0a 06 05 16 0b 06 08`
+- `$144FEE-$144FF2` (4 B) after sub_144D88, before FluxBomb_GetSize: `00 00 00 00` all $00
+- `$159AB4-$159AB6` (2 B) after Magneto_SetFrame, before Cam_ClampLookToPlayers: `00 6e`
+- `$159ABA-$159AC2` (8 B) after Magneto_SetFrame, before Cam_ClampLookToPlayers: `00 15 7b a6 00 15 d9 3a`
+- `$159ACA-$159ACE` (4 B) after Magneto_SetFrame, before Cam_ClampLookToPlayers: `00 15 e3 d4`
+- `$159AD2-$159AD6` (4 B) after Magneto_SetFrame, before Cam_ClampLookToPlayers: `00 15 e4 52`
+- `$159ADA-$159AF2` (24 B) after Magneto_SetFrame, before Cam_ClampLookToPlayers: `00 15 e6 80 00 15 db 26`
+- `$159B0E-$159B2E` (32 B) after Magneto_SetFrame, before Cam_ClampLookToPlayers: `00 15 d9 70 00 15 d9 78`
+- `$159B32-$159B3A` (8 B) after Magneto_SetFrame, before Cam_ClampLookToPlayers: `00 15 7b b4 00 15 d9 3a`
+- `$159B42-$159B46` (4 B) after Magneto_SetFrame, before Cam_ClampLookToPlayers: `00 15 e3 d4`
+- `$159B4A-$159B6A` (32 B) after Magneto_SetFrame, before Cam_ClampLookToPlayers: `00 15 e4 52 00 15 e6 30`
+- `$159B86-$159BA8` (34 B) after Magneto_SetFrame, before Cam_ClampLookToPlayers: `00 15 d9 70 00 15 d9 78`
+- `$159C85-$159C86` (1 B) after Magneto_SetFrame, before Cam_ClampLookToPlayers: `ff` all $FF
+- `$159CFB-$159CFC` (1 B) after Magneto_SetFrame, before Cam_ClampLookToPlayers: `ff` all $FF
+- `$159D83-$159D84` (1 B) after Magneto_SetFrame, before Cam_ClampLookToPlayers: `ff` all $FF
+- `$159EA5-$159ECC` (39 B) after Magneto_SetFrame, before Cam_ClampLookToPlayers: `ff 0a 06 05 16 0b 06 08`
 - `$15C23E-$15C246` (8 B) after Math_LDivS_68000, before Math_LModS: `22 2f 00 04 20 2f 00 08`
 - `$15C254-$15C25C` (8 B) after Math_LModS_68000, before Math_DivModS: `4c 41 08 01 c3 40 4e 75`; decodes as code (`dc.w $4c41` ...) but nothing references it: dead code?
 - `$15C28E-$15C2AC` (30 B) after Math_DivModS, before Math_DivModU: `22 2f 00 04 20 2f 00 08`; decodes as code (`move.l $4(a7), d1` ...) but nothing references it: dead code?
 - `$15F720-$15F740` (32 B) after Eni_ReadInline, before Anim_Advance: `00 01 00 03 00 07 00 0f`
-- `$182A17-$182A19` (2 B) after Cam_DefaultUpdate, before sub_182AE6: `04 04`
-- `$182A1C-$182A1D` (1 B) after Cam_DefaultUpdate, before sub_182AE6: `08`
-- `$182A20-$182A22` (2 B) after Cam_DefaultUpdate, before sub_182AE6: `00 00` all $00
-- `$182A2C-$182A2E` (2 B) after Cam_DefaultUpdate, before sub_182AE6: `00 00` all $00
-- `$182A3B-$182A3C` (1 B) after Cam_DefaultUpdate, before sub_182AE6: `00` all $00
-- `$182A3F-$182A42` (3 B) after Cam_DefaultUpdate, before sub_182AE6: `0d 83 06`
-- `$182A45-$182A46` (1 B) after Cam_DefaultUpdate, before sub_182AE6: `00` all $00
-- `$182A4A-$182A4C` (2 B) after Cam_DefaultUpdate, before sub_182AE6: `ff 86`
-- `$182A56-$182A58` (2 B) after Cam_DefaultUpdate, before sub_182AE6: `ff 0a`
-- `$182A60-$182A74` (20 B) after Cam_DefaultUpdate, before sub_182AE6: `ff 36 00 00 00 00 00 00`
-- `$1964F6-$1964F7` (1 B) after Beast_SelectFrame, before sub_196552: `02`
-- `$1964FA-$1964FB` (1 B) after Beast_SelectFrame, before sub_196552: `02`
-- `$1964FE-$196500` (2 B) after Beast_SelectFrame, before sub_196552: `00 00` all $00
-- `$196519-$19651A` (1 B) after Beast_SelectFrame, before sub_196552: `00` all $00
-- `$19651F-$196520` (1 B) after Beast_SelectFrame, before sub_196552: `06`
-- `$196523-$196524` (1 B) after Beast_SelectFrame, before sub_196552: `00` all $00
-- `$196528-$19652A` (2 B) after Beast_SelectFrame, before sub_196552: `ff a2`
-- `$196534-$196536` (2 B) after Beast_SelectFrame, before sub_196552: `fe 9c`
-- `$19653E-$196540` (2 B) after Beast_SelectFrame, before sub_196552: `fe c8`
-- `$19654D-$196552` (5 B) after Beast_SelectFrame, before sub_196552: `00 ff ee ff f6`
-- `$1A6182-$1A6183` (1 B) after sub_1A60B6, before sub_1A61DE: `01`
-- `$1A6186-$1A6187` (1 B) after sub_1A60B6, before sub_1A61DE: `01`
-- `$1A618A-$1A618C` (2 B) after sub_1A60B6, before sub_1A61DE: `00 00` all $00
-- `$1A61A5-$1A61A6` (1 B) after sub_1A60B6, before sub_1A61DE: `00` all $00
-- `$1A61AB-$1A61AC` (1 B) after sub_1A60B6, before sub_1A61DE: `06`
-- `$1A61AF-$1A61B0` (1 B) after sub_1A60B6, before sub_1A61DE: `00` all $00
-- `$1A61B4-$1A61B6` (2 B) after sub_1A60B6, before sub_1A61DE: `fe e0`
-- `$1A61C0-$1A61C2` (2 B) after sub_1A60B6, before sub_1A61DE: `fd a2`
-- `$1A61D9-$1A61DA` (1 B) after sub_1A60B6, before sub_1A61DE: `00` all $00
-- `$1A6A40-$1A6A52` (18 B) after sub_1A65EC, before loc_1A6A52: `42 6c 00 6c 41 fa fb a6`
-- `$1B9004-$1B9005` (1 B) after Nightcrawler_SelectFrame, before sub_1B9060: `00` all $00
-- `$1B9008-$1B9009` (1 B) after Nightcrawler_SelectFrame, before sub_1B9060: `00` all $00
-- `$1B900C-$1B900E` (2 B) after Nightcrawler_SelectFrame, before sub_1B9060: `00 00` all $00
-- `$1B9018-$1B901A` (2 B) after Nightcrawler_SelectFrame, before sub_1B9060: `01 00`
-- `$1B9027-$1B9028` (1 B) after Nightcrawler_SelectFrame, before sub_1B9060: `00` all $00
-- `$1B902B-$1B902E` (3 B) after Nightcrawler_SelectFrame, before sub_1B9060: `13 09 00`
-- `$1B9031-$1B9032` (1 B) after Nightcrawler_SelectFrame, before sub_1B9060: `00` all $00
-- `$1B9034-$1B9036` (2 B) after Nightcrawler_SelectFrame, before sub_1B9060: `ff 7e`
-- `$1B9042-$1B9044` (2 B) after Nightcrawler_SelectFrame, before sub_1B9060: `fe 66`
-- `$1B904C-$1B9050` (4 B) after Nightcrawler_SelectFrame, before sub_1B9060: `fe 9e fe b4`
-- `$1B9054-$1B9060` (12 B) after Nightcrawler_SelectFrame, before sub_1B9060: `04 52 02 42 00 80 c1 00`
-- `$1CD99E-$1CD99F` (1 B) after Psylocke_SelectFrame, before sub_1CDA3A: `02`
-- `$1CD9A2-$1CD9A3` (1 B) after Psylocke_SelectFrame, before sub_1CDA3A: `02`
-- `$1CD9A6-$1CD9A8` (2 B) after Psylocke_SelectFrame, before sub_1CDA3A: `00 00` all $00
-- `$1CD9BE-$1CD9BF` (1 B) after Psylocke_SelectFrame, before sub_1CDA3A: `0f`
-- `$1CD9C1-$1CD9C2` (1 B) after Psylocke_SelectFrame, before sub_1CDA3A: `00` all $00
-- `$1CD9C7-$1CD9C9` (2 B) after Psylocke_SelectFrame, before sub_1CDA3A: `00 7f`
-- `$1CD9CB-$1CD9DA` (15 B) after Psylocke_SelectFrame, before sub_1CDA3A: `00 00 00 00 00 00 00 00` all $00
-- `$1CD9DC-$1CD9DE` (2 B) after Psylocke_SelectFrame, before sub_1CDA3A: `fd 34`
-- `$1CD9E4-$1CD9FA` (22 B) after Psylocke_SelectFrame, before sub_1CDA3A: `fe c2 fd 7e 00 00 00 00`
-- `$1CEE66-$1CEE68` (2 B) after sub_1CEC42, before sub_1CEF6E: `02 02`
-- `$1CEE6A-$1CEE6C` (2 B) after sub_1CEC42, before sub_1CEF6E: `02 02`
-- `$1CEE6E-$1CEE70` (2 B) after sub_1CEC42, before sub_1CEF6E: `00 00` all $00
-- `$1CEE7A-$1CEE7C` (2 B) after sub_1CEC42, before sub_1CEF6E: `00 00` all $00
-- `$1CEE89-$1CEE90` (7 B) after sub_1CEC42, before sub_1CEF6E: `00 1b 58 16 1d 17 06`
-- `$1CEE93-$1CEE94` (1 B) after sub_1CEC42, before sub_1CEF6E: `00` all $00
-- `$1CEE98-$1CEE9A` (2 B) after sub_1CEC42, before sub_1CEF6E: `fe b6`
-- `$1CEEA4-$1CEEA6` (2 B) after sub_1CEC42, before sub_1CEF6E: `fd e6`
-- `$1CEEA8-$1CEEAA` (2 B) after sub_1CEC42, before sub_1CEF6E: `fe 0a`
-- `$1CEEAC-$1CEEE2` (54 B) after sub_1CEC42, before sub_1CEF6E: `fe 0a fe 26 00 00 00 00`
-- `$1CEEEE-$1CEF02` (20 B) after sub_1CEC42, before sub_1CEF6E: `00 00 00 00 00 01 00 03`
-- `$1CEF0E-$1CEF32` (36 B) after sub_1CEC42, before sub_1CEF6E: `00 00 00 00 00 00 00 01`
-- `$1CEF3E-$1CEF6E` (48 B) after sub_1CEC42, before sub_1CEF6E: `00 00 00 00 00 01 00 03`
+- `$182A17-$182A19` (2 B) after Cam_DefaultUpdate, before Beast_GetSize: `04 04`
+- `$182A1C-$182A1D` (1 B) after Cam_DefaultUpdate, before Beast_GetSize: `08`
+- `$182A20-$182A22` (2 B) after Cam_DefaultUpdate, before Beast_GetSize: `00 00` all $00
+- `$182A2C-$182A2E` (2 B) after Cam_DefaultUpdate, before Beast_GetSize: `00 00` all $00
+- `$182A3B-$182A3C` (1 B) after Cam_DefaultUpdate, before Beast_GetSize: `00` all $00
+- `$182A3F-$182A42` (3 B) after Cam_DefaultUpdate, before Beast_GetSize: `0d 83 06`
+- `$182A45-$182A46` (1 B) after Cam_DefaultUpdate, before Beast_GetSize: `00` all $00
+- `$182A4A-$182A4C` (2 B) after Cam_DefaultUpdate, before Beast_GetSize: `ff 86`
+- `$182A56-$182A58` (2 B) after Cam_DefaultUpdate, before Beast_GetSize: `ff 0a`
+- `$182A60-$182A74` (20 B) after Cam_DefaultUpdate, before Beast_GetSize: `ff 36 00 00 00 00 00 00`
+- `$1964F6-$1964F7` (1 B) after Beast_SelectFrame, before Wolverine_GetSize: `02`
+- `$1964FA-$1964FB` (1 B) after Beast_SelectFrame, before Wolverine_GetSize: `02`
+- `$1964FE-$196500` (2 B) after Beast_SelectFrame, before Wolverine_GetSize: `00 00` all $00
+- `$196519-$19651A` (1 B) after Beast_SelectFrame, before Wolverine_GetSize: `00` all $00
+- `$19651F-$196520` (1 B) after Beast_SelectFrame, before Wolverine_GetSize: `06`
+- `$196523-$196524` (1 B) after Beast_SelectFrame, before Wolverine_GetSize: `00` all $00
+- `$196528-$19652A` (2 B) after Beast_SelectFrame, before Wolverine_GetSize: `ff a2`
+- `$196534-$196536` (2 B) after Beast_SelectFrame, before Wolverine_GetSize: `fe 9c`
+- `$19653E-$196540` (2 B) after Beast_SelectFrame, before Wolverine_GetSize: `fe c8`
+- `$19654D-$196552` (5 B) after Beast_SelectFrame, before Wolverine_GetSize: `00 ff ee ff f6`
+- `$1A6182-$1A6183` (1 B) after Nightcrawler_FlashPalette, before Nightcrawler_GetSize: `01`
+- `$1A6186-$1A6187` (1 B) after Nightcrawler_FlashPalette, before Nightcrawler_GetSize: `01`
+- `$1A618A-$1A618C` (2 B) after Nightcrawler_FlashPalette, before Nightcrawler_GetSize: `00 00` all $00
+- `$1A61A5-$1A61A6` (1 B) after Nightcrawler_FlashPalette, before Nightcrawler_GetSize: `00` all $00
+- `$1A61AB-$1A61AC` (1 B) after Nightcrawler_FlashPalette, before Nightcrawler_GetSize: `06`
+- `$1A61AF-$1A61B0` (1 B) after Nightcrawler_FlashPalette, before Nightcrawler_GetSize: `00` all $00
+- `$1A61B4-$1A61B6` (2 B) after Nightcrawler_FlashPalette, before Nightcrawler_GetSize: `fe e0`
+- `$1A61C0-$1A61C2` (2 B) after Nightcrawler_FlashPalette, before Nightcrawler_GetSize: `fd a2`
+- `$1A61D9-$1A61DA` (1 B) after Nightcrawler_FlashPalette, before Nightcrawler_GetSize: `00` all $00
+- `$1A6A40-$1A6A52` (18 B) after Nightcrawler_StateWallCling, before Nightcrawler_StateWallCling_Ret: `42 6c 00 6c 41 fa fb a6`
+- `$1B9004-$1B9005` (1 B) after Nightcrawler_SelectFrame, before Psylocke_GetSize: `00` all $00
+- `$1B9008-$1B9009` (1 B) after Nightcrawler_SelectFrame, before Psylocke_GetSize: `00` all $00
+- `$1B900C-$1B900E` (2 B) after Nightcrawler_SelectFrame, before Psylocke_GetSize: `00 00` all $00
+- `$1B9018-$1B901A` (2 B) after Nightcrawler_SelectFrame, before Psylocke_GetSize: `01 00`
+- `$1B9027-$1B9028` (1 B) after Nightcrawler_SelectFrame, before Psylocke_GetSize: `00` all $00
+- `$1B902B-$1B902E` (3 B) after Nightcrawler_SelectFrame, before Psylocke_GetSize: `13 09 00`
+- `$1B9031-$1B9032` (1 B) after Nightcrawler_SelectFrame, before Psylocke_GetSize: `00` all $00
+- `$1B9034-$1B9036` (2 B) after Nightcrawler_SelectFrame, before Psylocke_GetSize: `ff 7e`
+- `$1B9042-$1B9044` (2 B) after Nightcrawler_SelectFrame, before Psylocke_GetSize: `fe 66`
+- `$1B904C-$1B9050` (4 B) after Nightcrawler_SelectFrame, before Psylocke_GetSize: `fe 9e fe b4`
+- `$1B9054-$1B9060` (12 B) after Nightcrawler_SelectFrame, before Psylocke_GetSize: `04 52 02 42 00 80 c1 00`
+- `$1CD99E-$1CD99F` (1 B) after Psylocke_SelectFrame, before Magneto_GetSize: `02`
+- `$1CD9A2-$1CD9A3` (1 B) after Psylocke_SelectFrame, before Magneto_GetSize: `02`
+- `$1CD9A6-$1CD9A8` (2 B) after Psylocke_SelectFrame, before Magneto_GetSize: `00 00` all $00
+- `$1CD9BE-$1CD9BF` (1 B) after Psylocke_SelectFrame, before Magneto_GetSize: `0f`
+- `$1CD9C1-$1CD9C2` (1 B) after Psylocke_SelectFrame, before Magneto_GetSize: `00` all $00
+- `$1CD9C7-$1CD9C9` (2 B) after Psylocke_SelectFrame, before Magneto_GetSize: `00 7f`
+- `$1CD9CB-$1CD9DA` (15 B) after Psylocke_SelectFrame, before Magneto_GetSize: `00 00 00 00 00 00 00 00` all $00
+- `$1CD9DC-$1CD9DE` (2 B) after Psylocke_SelectFrame, before Magneto_GetSize: `fd 34`
+- `$1CD9E4-$1CD9FA` (22 B) after Psylocke_SelectFrame, before Magneto_GetSize: `fe c2 fd 7e 00 00 00 00`
+- `$1CEE66-$1CEE68` (2 B) after Magneto_Reset, before sub_1CEF6E: `02 02`
+- `$1CEE6A-$1CEE6C` (2 B) after Magneto_Reset, before sub_1CEF6E: `02 02`
+- `$1CEE6E-$1CEE70` (2 B) after Magneto_Reset, before sub_1CEF6E: `00 00` all $00
+- `$1CEE7A-$1CEE7C` (2 B) after Magneto_Reset, before sub_1CEF6E: `00 00` all $00
+- `$1CEE89-$1CEE90` (7 B) after Magneto_Reset, before sub_1CEF6E: `00 1b 58 16 1d 17 06`
+- `$1CEE93-$1CEE94` (1 B) after Magneto_Reset, before sub_1CEF6E: `00` all $00
+- `$1CEE98-$1CEE9A` (2 B) after Magneto_Reset, before sub_1CEF6E: `fe b6`
+- `$1CEEA4-$1CEEA6` (2 B) after Magneto_Reset, before sub_1CEF6E: `fd e6`
+- `$1CEEA8-$1CEEAA` (2 B) after Magneto_Reset, before sub_1CEF6E: `fe 0a`
+- `$1CEEAC-$1CEEE2` (54 B) after Magneto_Reset, before sub_1CEF6E: `fe 0a fe 26 00 00 00 00`
+- `$1CEEEE-$1CEF02` (20 B) after Magneto_Reset, before sub_1CEF6E: `00 00 00 00 00 01 00 03`
+- `$1CEF0E-$1CEF32` (36 B) after Magneto_Reset, before sub_1CEF6E: `00 00 00 00 00 00 00 01`
+- `$1CEF3E-$1CEF6E` (48 B) after Magneto_Reset, before sub_1CEF6E: `00 00 00 00 00 01 00 03`
 - `$1E16CC-$1E16D4` (8 B) after loc_1E16BC, before loc_1E16D4: `70 00 72 14 74 14 60 0e`; decodes as code (`moveq #$0, d0` ...) but nothing references it: dead code?
 - `$1E1768-$1E176E` (6 B) after loc_1E16D4, before loc_1E176E: `3c 04 7e ff 60 04`; decodes as code (`move.w d4, d6` ...) but nothing references it: dead code?
 - `$1E1906-$1E1908` (2 B) after loc_1E177A, before loc_1E1916: `fd ca`

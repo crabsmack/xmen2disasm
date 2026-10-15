@@ -684,6 +684,7 @@ Art_AvalonA3Nem:	; Nemesis-style compressed 4bpp tiles (Nem_Decode; code table b
 	incrom	$02FBE8,$5128
 Art_AvalonA4Nem3:	; Nemesis-style compressed 4bpp tiles (Nem_Decode; code table built from pairs by the caller); 1A of 32 bytes used at runtime; read by Nem_DecodeLoop, Eni_ReadInline, Eni_Decode; jt[222] used by AvalonA4_LoadLevel
 	incrom	$034D10,$32
+Tbl_AvalonA4AnimatePalettes:	; table read by AvalonA4_AnimatePalettes; C of C bytes used at runtime; read by AvalonA4_AnimatePalettes; jt[223] used by AvalonA4_AnimatePalettes
 	incrom	$034D42,$C
 	include "src/f/034D4E.asm"
 	include "src/f/034D56.asm"
@@ -747,7 +748,10 @@ Tbl_MagnetoBossAnim:	; animation script (byte flags, byte steps, ..., 2-byte ste
 	incrom	$035AC6,$A
 Tbl_AvalonA4Anim2:	; animation script (byte flags, byte steps, ..., 2-byte steps from +6); E of 10 bytes used at runtime; read by Anim_ApplyStep, MagnetoBoss_RubbleTimer, Cam_ShakeStep; jt[228] used by MagnetoBoss_EnterSpinState, MagnetoBoss_StateSpin
 	incrom	$035AD0,$10
-	incrom	$035AE0,$20
+Tbl_MagnetoBossRubbleTimer:	; table read by MagnetoBoss_RubbleTimer; 12 of 12 bytes used at runtime; read by MagnetoBoss_RubbleTimer, Cam_ShakeStep, Anim_ApplyStep; jt[229] used by MagnetoBoss_RubbleTimer
+	incrom	$035AE0,$12
+Tbl_MagnetoBossRubbleTimer2:	; table read by MagnetoBoss_RubbleTimer; D of E bytes used at runtime; read by MagnetoBoss_RubbleTimer, Cam_ShakeStep, Anim_ApplyStep; jt[230] used by MagnetoBoss_StateIntroShake1
+	incrom	$035AF2,$E
 Tbl_AvalonA4ShakeStep:	; table read by Cam_ShakeStep; D of E bytes used at runtime; read by Cam_ShakeStep; jt[231] used by MagnetoBoss_StateIntroShake2
 	incrom	$035B00,$E
 Tbl_AvalonA4ShakeStep2:	; table read by Cam_ShakeStep; D of E bytes used at runtime; read by Cam_ShakeStep; jt[232] used by MagnetoBoss_StateIntroShake3
@@ -997,14 +1001,17 @@ Tbl_BaniMazaA2Anim4:	; animation script (NOTES: Animation scripts); never read i
 	incrom	$04B13A,$A
 Tbl_ApocalypseInit:	; format not established; never read in the corpus; jt[313] used by Apocalypse_Init
 	incrom	$04B144,$40
+Tbl_ApocalypseStateWaitEntrance:	; table read by Apocalypse_StateWaitEntrance; 2 of 2 bytes used at runtime; read by Apocalypse_StateWaitEntrance; jt[314] used by Apocalypse_Init
 	incrom	$04B184,$2
 	include "src/f/04B186.asm"
 Tbl_AiScript_04B19E:	; word $0000 (2 bytes), not a string: reached only via jt[315] used by Apocalypse_ActStartMainScript -> AiScript_Set (e.g. an empty list/script count)
 	incrom	$04B19E,$1
+Tbl_ApocalypseStateBombsDone:	; table read by Apocalypse_StateBombsDone; 1 of 1 bytes used at runtime; read by Apocalypse_StateBombsDone
 	incrom	$04B19F,$1
 	include "src/f/04B1A0.asm"
 Tbl_AiScript_04B1A4:	; word $0000 (2 bytes), not a string: reached only via jt[316] used by Apocalypse_StateBombsDone -> AiScript_Set (e.g. an empty list/script count)
 	incrom	$04B1A4,$1
+Tbl_ApocalypseStateWaitEntrance2:	; table read by Apocalypse_StateWaitEntrance; 1 of 1 bytes used at runtime; read by Apocalypse_StateWaitEntrance
 	incrom	$04B1A5,$1
 	include "src/f/04B1A6.asm"
 	include "src/f/04B1C2.asm"
@@ -1020,7 +1027,18 @@ Tbl_ApocalypseAiScript5:	; data handed to AiScript_Set (format not established);
 	incrom	$04B25E,$32
 Tbl_ApocalypseAiScript6:	; data handed to AiScript_Set (format not established); never read in the corpus; jt[322] used by Apocalypse_ActPickScript_part2 -> AiScript_Set
 	incrom	$04B290,$32
-	incrom	$04B2C2,$74
+Tbl_ApocalypseStateDropBombs:	; table read by Apocalypse_StateDropBombs; A of C bytes used at runtime; read by Apocalypse_StateDropBombs; jt[323] used by Apocalypse_SelectBombPattern_part1, Apocalypse_SelectBombPattern_part3
+	incrom	$04B2C2,$C
+Tbl_ApocalypseStateDropBombs2:	; table read by Apocalypse_StateDropBombs; E of 10 bytes used at runtime; read by Apocalypse_StateDropBombs; jt[324] used by Apocalypse_SelectBombPattern_part1
+	incrom	$04B2CE,$10
+Tbl_ApocalypseStateDropBombs3:	; table read by Apocalypse_StateDropBombs; 12 of 14 bytes used at runtime; read by Apocalypse_StateDropBombs; jt[325] used by Apocalypse_SelectBombPattern_part1
+	incrom	$04B2DE,$14
+Tbl_ApocalypseStateDropBombs4:	; table read by Apocalypse_StateDropBombs; 12 of 14 bytes used at runtime; read by Apocalypse_StateDropBombs; jt[326] used by Apocalypse_SelectBombPattern_part1
+	incrom	$04B2F2,$14
+Tbl_ApocalypseStateDropBombs5:	; table read by Apocalypse_StateDropBombs; 12 of 14 bytes used at runtime; read by Apocalypse_StateDropBombs; jt[327] used by Apocalypse_SelectBombPattern_part1
+	incrom	$04B306,$14
+Tbl_ApocalypseStateDropBombs6:	; table read by Apocalypse_StateDropBombs; 1A of 1C bytes used at runtime; read by Apocalypse_StateDropBombs; jt[328] used by Apocalypse_SelectBombPattern_part2
+	incrom	$04B31A,$1C
 	include "src/f/04B336.asm"
 	include "src/f/04B344.asm"
 Sw_04B344:	; switch table of sub at $04B344: 6 word offsets from Sw_04B344-2
@@ -1353,13 +1371,13 @@ Tbl_CerebroVdp:	; words copied to the VDP data port by VDP_WriteWords; FFC of FF
 	incrom	$0608E2,$FFC
 Art_CerebroSpr:	; sprite definition (type $18, raw 4bpp tiles): $24-byte header, $14-byte frame records, pieces, tiles; 1460 of 149C bytes used at runtime; read by Spr_RenderToBitmap_Loop, Nem_DecodeLoop, Mem_Copy; DMA to VRAM $A620-B4E0; jt[440] used by Cerebro_PlayIntro
 	incrom	$0618DE,$149C
-Art_CerebroSpr2:	; sprite definition (type $00): $24-byte header, $14-byte frame records, pieces, tiles; 134 of 134 bytes used at runtime; read by Spr_RenderToBitmap_Loop, Nem_DecodeLoop, Mem_Copy; jt[441] used by Cerebro_PlayIntro
+Tbl_CerebroRenderToBitmap_Loop:	; table read by Spr_RenderToBitmap_Loop; 134 of 134 bytes used at runtime; read by Spr_RenderToBitmap_Loop, Nem_DecodeLoop, Mem_Copy; jt[441] used by Cerebro_PlayIntro
 	incrom	$062D7A,$134
-Art_CerebroSpr3:	; sprite definition (type $00): $24-byte header, $14-byte frame records, pieces, tiles; 79C of 79C bytes used at runtime; read by Spr_RenderToBitmap_Loop, Nem_DecodeLoop, Mem_Copy; jt[442] used by Cerebro_PlayIntro
+Tbl_CerebroRenderToBitmap_Loop2:	; table read by Spr_RenderToBitmap_Loop; 79C of 79C bytes used at runtime; read by Spr_RenderToBitmap_Loop, Nem_DecodeLoop, Mem_Copy; jt[442] used by Cerebro_PlayIntro
 	incrom	$062EAE,$79C
-Art_CerebroSpr4:	; sprite definition (type $00): $24-byte header, $14-byte frame records, pieces, tiles; 180 of 180 bytes used at runtime; read by Spr_RenderToBitmap_Loop, Nem_DecodeLoop, Mem_Copy; jt[443] used by Cerebro_PlayIntro
+Tbl_CerebroRenderToBitmap_Loop3:	; table read by Spr_RenderToBitmap_Loop; 180 of 180 bytes used at runtime; read by Spr_RenderToBitmap_Loop, Nem_DecodeLoop, Mem_Copy; jt[443] used by Cerebro_PlayIntro
 	incrom	$06364A,$180
-Art_CerebroSpr5:	; sprite definition (type $00): $24-byte header, $14-byte frame records, pieces, tiles; 40C of 40C bytes used at runtime; read by Spr_RenderToBitmap_Loop, Nem_DecodeLoop, Mem_Copy; jt[444] used by Cerebro_PlayIntro
+Tbl_CerebroRenderToBitmap_Loop4:	; table read by Spr_RenderToBitmap_Loop; 40C of 40C bytes used at runtime; read by Spr_RenderToBitmap_Loop, Nem_DecodeLoop, Mem_Copy; jt[444] used by Cerebro_PlayIntro
 	incrom	$0637CA,$40C
 Tbl_Cerebro:	; format not established; never read in the corpus; jt[445] used by loc_15C5D6
 	incrom	$063BD6,$4
@@ -1633,6 +1651,7 @@ Tbl_Anim_06D10E:	; animation script (byte flags, byte steps, ..., 2-byte steps f
 	incrom	$06D10E,$8
 Tbl_BroodAiScript:	; data handed to AiScript_Set (format not established); never read in the corpus; jt[509] used by Brood_Init -> AiScript_Set
 	incrom	$06D116,$E
+Tbl_BroodStateLand:	; table read by Brood_StateLand; 2 of 2 bytes used at runtime; read by Brood_StateLand; jt[510] used by Brood_Init
 	incrom	$06D124,$2
 	include "src/f/06D126.asm"
 Tbl_BroodTakeDamage_Hurt:	; table read by XNpc_TakeDamage_Hurt; 4 of 8 bytes used at runtime; read by XNpc_TakeDamage_Hurt, Brood_Init, XNpc_KnockbackDist; jt[511] used by Brood_Init
@@ -1780,7 +1799,7 @@ Pad_CloneA22:	; $00 fill; never read in the corpus; between CloneA2_RunScene and
 	include "src/f/08270E.asm"
 Art_SmallBroodSpr:	; sprite definition (type $18, raw 4bpp tiles): $24-byte header, $14-byte frame records, pieces, tiles; 1580 of 192C bytes used at runtime; read by VDP_FlushDmaQueue; DMA to VRAM $C080-C6C0; jt[567] used by SmallBrood_Init
 	incrom	$082746,$192C
-Art_SmallBroodSpr2:	; sprite definition (type $00): $24-byte header, $14-byte frame records, pieces, tiles; 5 of A bytes used at runtime; read by Anim_ApplyStep, Anim_AdvanceByDistance, VDP_FlushDmaQueue; jt[568] used by SmallBrood_StateWaitCooldown, SmallBrood_StateWaitForPlayer
+Tbl_SmallBroodAnim7:	; animation script (byte flags, byte steps, ..., 2-byte steps from +6); 5 of A bytes used at runtime; read by Anim_ApplyStep, Anim_AdvanceByDistance, VDP_FlushDmaQueue; jt[568] used by SmallBrood_StateWaitCooldown, SmallBrood_StateWaitForPlayer
 	incrom	$084072,$A
 Tbl_SmallBroodAnim:	; animation script (byte flags, byte steps, ..., 2-byte steps from +6); C of E bytes used at runtime; read by Anim_ApplyStep, Anim_AdvanceByDistance, Anim_Advance; jt[569] used by SmallBrood_ActApproach, SmallBrood_ActChase, SmallBrood_ActKamikaze
 	incrom	$08407C,$E
@@ -1998,6 +2017,7 @@ Tbl_BroodBossCamApply:	; table read by CloneA5_CamApply; D of E bytes used at ru
 	incrom	$088B10,$E
 Tbl_CloneA5RunScene:	; table read by CloneA5_RunScene; 20 of 20 bytes used at runtime; read by CloneA5_RunScene, ExplodeFx_ChainStep; jt[662] used by CloneA5_RunScene
 	incrom	$088B1E,$20
+Tbl_BroodBossChainStep:	; table read by ExplodeFx_ChainStep; 5C of 60 bytes used at runtime; read by ExplodeFx_ChainStep, CloneA5_RunScene; jt[663] used by BroodBoss_StateDeathFx, BroodBoss_StateDeathSlide
 	incrom	$088B3E,$60
 Tbl_BroodBossParts_vtable:	; class descriptor of BROODBOSSPARTS: word name offset $6E, parent ACTOR, 26 method slots from +6, then the name (tools/classes.py)
 	incrom	$088B9E,$7D
@@ -3117,6 +3137,7 @@ Str_Empty_0DC2C4:	; C string "" (used by SentinelsD1_InitFlagBits)
 	include "src/f/0DC3DE.asm"
 	include "src/f/0DC47C.asm"
 	include "src/f/0DC4AA.asm"
+Tbl_SentinelsB1LoadLevel:	; table read by SentinelsD1_LoadLevel; 20 of 20 bytes used at runtime; read by SentinelsD1_LoadLevel; jt[1151] used by SentinelsB1_LoadLevel, SentinelsD1_LoadLevel
 	incrom	$0DC4BE,$20
 	include "src/f/0DC4DE.asm"
 	include "src/f/0DC4EC.asm"
@@ -3268,49 +3289,49 @@ Tbl_CoreShieldsShakeStep:	; table read by Cam_ShakeStep; 14 of 14 bytes used at 
 	incrom	$0E7A94,$14
 Tbl_HologramShakeStep:	; table read by Cam_ShakeStep; 53 of 54 bytes used at runtime; read by Cam_ShakeStep; jt[1219] used by Hologram_OpenExit
 	incrom	$0E7AA8,$54
-Art_SentinelsA1Spr2:	; sprite definition (type $00): $24-byte header, $14-byte frame records, pieces, tiles; 18 of 18 bytes used at runtime; read by Pal_CycleStep, Spr_PreloadTiles; jt[1220] used by SentinelsA1_CyclePalettes
+Pal_SentinelsA1Cycle:	; palette data read by Pal_CycleStep; 18 of 18 bytes used at runtime; read by Pal_CycleStep, Spr_PreloadTiles; jt[1220] used by SentinelsA1_CyclePalettes
 	incrom	$0E7AFC,$18
-Art_SentinelsA1Spr3:	; sprite definition (type $00): $24-byte header, $14-byte frame records, pieces, tiles; 28 of 28 bytes used at runtime; read by Pal_CycleStep, Spr_PreloadTiles; jt[1221] used by SentinelsA1_CyclePalettes
+Pal_SentinelsA1Cycle2:	; palette data read by Pal_CycleStep; 28 of 28 bytes used at runtime; read by Pal_CycleStep, Spr_PreloadTiles; jt[1221] used by SentinelsA1_CyclePalettes
 	incrom	$0E7B14,$28
-Art_SentinelsA1Spr4:	; sprite definition (type $00): $24-byte header, $14-byte frame records, pieces, tiles; 10 of 10 bytes used at runtime; read by Pal_CycleStep, Spr_PreloadTiles, Nem_BuildCodeTable; jt[1222] used by SentinelsA1_CyclePalettes
+Pal_SentinelsA1Cycle3:	; palette data read by Pal_CycleStep; 10 of 10 bytes used at runtime; read by Pal_CycleStep, Spr_PreloadTiles, Nem_BuildCodeTable; jt[1222] used by SentinelsA1_CyclePalettes
 	incrom	$0E7B3C,$10
-Art_SentinelsA1Spr5:	; sprite definition (type $00): $24-byte header, $14-byte frame records, pieces, tiles; 14 of 14 bytes used at runtime; read by Pal_CycleStep, Spr_PreloadTiles; jt[1223] used by SentinelsA1_CyclePalettes
+Pal_SentinelsA1Cycle4:	; palette data read by Pal_CycleStep; 14 of 14 bytes used at runtime; read by Pal_CycleStep, Spr_PreloadTiles; jt[1223] used by SentinelsA1_CyclePalettes
 	incrom	$0E7B4C,$14
-Art_SentinelsA1Spr6:	; sprite definition (type $00): $24-byte header, $14-byte frame records, pieces, tiles; 10 of 10 bytes used at runtime; read by Pal_CycleStep, Spr_PreloadTiles, Nem_BuildCodeTable; jt[1224] used by SentinelsA1_CyclePalettes
+Pal_SentinelsA1Cycle5:	; palette data read by Pal_CycleStep; 10 of 10 bytes used at runtime; read by Pal_CycleStep, Spr_PreloadTiles, Nem_BuildCodeTable; jt[1224] used by SentinelsA1_CyclePalettes
 	incrom	$0E7B60,$10
-Art_SentinelsA1Spr7:	; sprite definition (type $00): $24-byte header, $14-byte frame records, pieces, tiles; 26 of 26 bytes used at runtime; read by Pal_CycleStep, Spr_PreloadTiles; jt[1225] used by SentinelsA1_CyclePalettes
+Pal_SentinelsA1Cycle6:	; palette data read by Pal_CycleStep; 26 of 26 bytes used at runtime; read by Pal_CycleStep, Spr_PreloadTiles; jt[1225] used by SentinelsA1_CyclePalettes
 	incrom	$0E7B70,$26
-Art_SentinelsA1Spr8:	; sprite definition (type $00): $24-byte header, $14-byte frame records, pieces, tiles; 14 of 14 bytes used at runtime; read by Pal_CycleStep, Spr_PreloadTiles; jt[1226] used by SentinelsA1_CyclePalettes
+Pal_SentinelsA1Cycle7:	; palette data read by Pal_CycleStep; 14 of 14 bytes used at runtime; read by Pal_CycleStep, Spr_PreloadTiles; jt[1226] used by SentinelsA1_CyclePalettes
 	incrom	$0E7B96,$14
-Art_SentinelsA1Spr9:	; sprite definition (type $00): $24-byte header, $14-byte frame records, pieces, tiles; 14 of 14 bytes used at runtime; read by Pal_CycleStep, Spr_PreloadTiles; jt[1227] used by SentinelsA1_CyclePalettes
+Pal_SentinelsA1Cycle8:	; palette data read by Pal_CycleStep; 14 of 14 bytes used at runtime; read by Pal_CycleStep, Spr_PreloadTiles; jt[1227] used by SentinelsA1_CyclePalettes
 	incrom	$0E7BAA,$14
-Art_SentinelsA1Spr10:	; sprite definition (type $00): $24-byte header, $14-byte frame records, pieces, tiles; 14 of 14 bytes used at runtime; read by Pal_CycleStep, Spr_PreloadTiles; jt[1228] used by SentinelsA1_CyclePalettes
+Pal_SentinelsA1Cycle9:	; palette data read by Pal_CycleStep; 14 of 14 bytes used at runtime; read by Pal_CycleStep, Spr_PreloadTiles; jt[1228] used by SentinelsA1_CyclePalettes
 	incrom	$0E7BBE,$14
-Art_SentinelsA1Spr11:	; sprite definition (type $00): $24-byte header, $14-byte frame records, pieces, tiles; 14 of 14 bytes used at runtime; read by Pal_CycleStep, Spr_PreloadTiles; jt[1229] used by SentinelsA1_CyclePalettes
+Pal_SentinelsA1Cycle10:	; palette data read by Pal_CycleStep; 14 of 14 bytes used at runtime; read by Pal_CycleStep, Spr_PreloadTiles; jt[1229] used by SentinelsA1_CyclePalettes
 	incrom	$0E7BD2,$14
-Art_SentinelsA1Spr12:	; sprite definition (type $00): $24-byte header, $14-byte frame records, pieces, tiles; 14 of 14 bytes used at runtime; read by Pal_CycleStep, Spr_PreloadTiles; jt[1230] used by SentinelsA1_CyclePalettes
+Pal_SentinelsA1Cycle11:	; palette data read by Pal_CycleStep; 14 of 14 bytes used at runtime; read by Pal_CycleStep, Spr_PreloadTiles; jt[1230] used by SentinelsA1_CyclePalettes
 	incrom	$0E7BE6,$14
-Art_SentinelsA1Spr13:	; sprite definition (type $00): $24-byte header, $14-byte frame records, pieces, tiles; 14 of 14 bytes used at runtime; read by Pal_CycleStep, Spr_PreloadTiles; jt[1231] used by SentinelsA1_CyclePalettes
+Pal_SentinelsA1Cycle12:	; palette data read by Pal_CycleStep; 14 of 14 bytes used at runtime; read by Pal_CycleStep, Spr_PreloadTiles; jt[1231] used by SentinelsA1_CyclePalettes
 	incrom	$0E7BFA,$14
-Art_SentinelsA1Spr14:	; sprite definition (type $00): $24-byte header, $14-byte frame records, pieces, tiles; 14 of 14 bytes used at runtime; read by Pal_CycleStep, Spr_PreloadTiles; jt[1232] used by SentinelsA1_CyclePalettes
+Pal_SentinelsA1Cycle13:	; palette data read by Pal_CycleStep; 14 of 14 bytes used at runtime; read by Pal_CycleStep, Spr_PreloadTiles; jt[1232] used by SentinelsA1_CyclePalettes
 	incrom	$0E7C0E,$14
-Art_SentinelsA1Spr15:	; sprite definition (type $00): $24-byte header, $14-byte frame records, pieces, tiles; 14 of 14 bytes used at runtime; read by Pal_CycleStep, Spr_PreloadTiles; jt[1233] used by SentinelsA1_CyclePalettes
+Pal_SentinelsA1Cycle14:	; palette data read by Pal_CycleStep; 14 of 14 bytes used at runtime; read by Pal_CycleStep, Spr_PreloadTiles; jt[1233] used by SentinelsA1_CyclePalettes
 	incrom	$0E7C22,$14
-Art_SentinelsA1Spr16:	; sprite definition (type $00): $24-byte header, $14-byte frame records, pieces, tiles; 14 of 14 bytes used at runtime; read by Pal_CycleStep, Spr_PreloadTiles; jt[1234] used by SentinelsA1_CyclePalettes
+Pal_SentinelsA1Cycle15:	; palette data read by Pal_CycleStep; 14 of 14 bytes used at runtime; read by Pal_CycleStep, Spr_PreloadTiles; jt[1234] used by SentinelsA1_CyclePalettes
 	incrom	$0E7C36,$14
-Art_SentinelsA1Spr17:	; sprite definition (type $00): $24-byte header, $14-byte frame records, pieces, tiles; 14 of 14 bytes used at runtime; read by Pal_CycleStep, Spr_PreloadTiles; jt[1235] used by SentinelsA1_CyclePalettes
+Pal_SentinelsA1Cycle16:	; palette data read by Pal_CycleStep; 14 of 14 bytes used at runtime; read by Pal_CycleStep, Spr_PreloadTiles; jt[1235] used by SentinelsA1_CyclePalettes
 	incrom	$0E7C4A,$14
-Art_SentinelsA1Spr18:	; sprite definition (type $00): $24-byte header, $14-byte frame records, pieces, tiles; 14 of 14 bytes used at runtime; read by Pal_CycleStep, Spr_PreloadTiles; jt[1236] used by SentinelsA1_CyclePalettes
+Pal_SentinelsA1Cycle17:	; palette data read by Pal_CycleStep; 14 of 14 bytes used at runtime; read by Pal_CycleStep, Spr_PreloadTiles; jt[1236] used by SentinelsA1_CyclePalettes
 	incrom	$0E7C5E,$14
-Art_SentinelsA1Spr19:	; sprite definition (type $00): $24-byte header, $14-byte frame records, pieces, tiles; 14 of 14 bytes used at runtime; read by Pal_CycleStep, Spr_PreloadTiles; jt[1237] used by SentinelsA1_CyclePalettes
+Pal_SentinelsA1Cycle18:	; palette data read by Pal_CycleStep; 14 of 14 bytes used at runtime; read by Pal_CycleStep, Spr_PreloadTiles; jt[1237] used by SentinelsA1_CyclePalettes
 	incrom	$0E7C72,$14
-Art_SentinelsA1Spr20:	; sprite definition (type $00): $24-byte header, $14-byte frame records, pieces, tiles; 14 of 14 bytes used at runtime; read by Pal_CycleStep, Spr_PreloadTiles; jt[1238] used by SentinelsA1_CyclePalettes
+Pal_SentinelsA1Cycle19:	; palette data read by Pal_CycleStep; 14 of 14 bytes used at runtime; read by Pal_CycleStep, Spr_PreloadTiles; jt[1238] used by SentinelsA1_CyclePalettes
 	incrom	$0E7C86,$14
-Art_SentinelsA1Spr21:	; sprite definition (type $00): $24-byte header, $14-byte frame records, pieces, tiles; 14 of 14 bytes used at runtime; read by Pal_CycleStep, Spr_PreloadTiles; jt[1239] used by SentinelsA1_CyclePalettes
+Pal_SentinelsA1Cycle20:	; palette data read by Pal_CycleStep; 14 of 14 bytes used at runtime; read by Pal_CycleStep, Spr_PreloadTiles; jt[1239] used by SentinelsA1_CyclePalettes
 	incrom	$0E7C9A,$14
-Art_SentinelsA1Spr22:	; sprite definition (type $00): $24-byte header, $14-byte frame records, pieces, tiles; 14 of 14 bytes used at runtime; read by Pal_CycleStep, Spr_PreloadTiles; jt[1240] used by SentinelsA1_CyclePalettes
+Pal_SentinelsA1Cycle21:	; palette data read by Pal_CycleStep; 14 of 14 bytes used at runtime; read by Pal_CycleStep, Spr_PreloadTiles; jt[1240] used by SentinelsA1_CyclePalettes
 	incrom	$0E7CAE,$14
-Art_SentinelsA1Spr23:	; sprite definition (type $00): $24-byte header, $14-byte frame records, pieces, tiles; 14 of 14 bytes used at runtime; read by Pal_CycleStep, Spr_PreloadTiles; jt[1241] used by SentinelsA1_CyclePalettes
+Pal_SentinelsA1Cycle22:	; palette data read by Pal_CycleStep; 14 of 14 bytes used at runtime; read by Pal_CycleStep, Spr_PreloadTiles; jt[1241] used by SentinelsA1_CyclePalettes
 	incrom	$0E7CC2,$14
 Art_SentinelsA1Spr24:	; sprite definition (type $19, Nemesis-compressed tiles): $24-byte header, $14-byte frame records, pieces, tiles; 3B3 of 3B4 bytes used at runtime; read by Nem_DecodeLoop, Pal_CycleStep, Spr_PreloadTiles; jt[1242] used by SentinelsA1_LoadResources
 	incrom	$0E7CD6,$3B4
@@ -3404,6 +3425,7 @@ Tbl_HologramAiScript_0EAF10:	; word $0000 (2 bytes), not a string: reached only 
 Tbl_HologramActPose0:	; table read by Hologram_ActPose0; 1 of 1 bytes used at runtime; read by Hologram_ActPose0
 	incrom	$0EAF11,$1
 	include "src/f/0EAF12.asm"
+Tbl_HologramChainStep:	; table read by ExplodeFx_ChainStep; 94 of 98 bytes used at runtime; read by ExplodeFx_ChainStep; jt[1279] used by Hologram_Explode
 	incrom	$0EAF7A,$98
 Art_SentinelsA1Spr26:	; sprite definition (type $19, Nemesis-compressed tiles): $24-byte header, $14-byte frame records, pieces, tiles; 647 of 648 bytes used at runtime; read by Nem_DecodeLoop, Spr_PreloadTiles; jt[1280] used by SentinelsA1_LoadResources
 	incrom	$0EB012,$648
@@ -3431,7 +3453,10 @@ Tbl_CoreShieldsDraw:	; table read by CoreShields_Draw; 40 of 50 bytes used at ru
 	incrom	$0EBEF8,$50
 Tbl_CoreShieldsDraw2:	; table read by CoreShields_Draw; 40 of 50 bytes used at runtime; read by CoreShields_Draw, ExplodeFx_ChainStep; jt[1295] used by CoreShields_Draw
 	incrom	$0EBF48,$50
-	incrom	$0EBF98,$118
+Tbl_CoreShieldsChainStep:	; table read by ExplodeFx_ChainStep; 40 of 40 bytes used at runtime; read by ExplodeFx_ChainStep, CoreShields_Draw; jt[1296] used by CoreShields_Draw
+	incrom	$0EBF98,$40
+Tbl_CoreShieldsChainStep2:	; table read by ExplodeFx_ChainStep; D4 of D8 bytes used at runtime; read by ExplodeFx_ChainStep, CoreShields_Draw; jt[1297] used by CoreShields_StateAllDown
+	incrom	$0EBFD8,$D8
 Art_SentinelsA1Spr27:	; sprite definition (type $19, Nemesis-compressed tiles): $24-byte header, $14-byte frame records, pieces, tiles; 46D of 46E bytes used at runtime; read by Spr_PreloadTiles, Nem_DecodeLoop, Nem_BuildCodeTable; jt[1298] used by SentinelsA1_LoadResources
 	incrom	$0EC0B0,$46E
 	include "src/f/0EC51E.asm"
@@ -3537,7 +3562,7 @@ Map_SpaceB1Eni:	; Enigma-compressed tilemap (Eni_Decode); 8119 of 835E bytes use
 	incrom	$0FDE9C,$835E
 Map_SpaceB1Eni2:	; Enigma-compressed tilemap (Eni_Decode); 3A of 52 bytes used at runtime; read by Eni_ReadInline, Nem_DecodeLoop, Eni_Decode; jt[1332] used by SpaceB1_LoadLevel
 	incrom	$1061FA,$52
-Art_SpaceB1Spr:	; sprite definition (type $12): $24-byte header, $14-byte frame records, pieces, tiles; 55A of 56C bytes used at runtime; read by Eni_ReadInline, VDP_WriteWords, Eni_Decode; jt[1333] used by SpaceB1_LoadLevel
+Map_SpaceB1Eni3:	; Enigma-compressed tilemap (Eni_Decode); 55A of 56C bytes used at runtime; read by Eni_ReadInline, VDP_WriteWords, Eni_Decode; jt[1333] used by SpaceB1_LoadLevel
 	incrom	$10624C,$56C
 Art_Platform1Spr:	; sprite definition (type $18, raw 4bpp tiles): $24-byte header, $14-byte frame records, pieces, tiles; 3A8 of 3A8 bytes used at runtime; read by Eni_ReadInline, VDP_WriteWords, Eni_Decode; jt[1334] used by Platform1_ClassInit, Platform1_Init
 	incrom	$1067B8,$3A8
@@ -3807,7 +3832,7 @@ Tbl_XNpcTakeDamage_Hurt:	; table read by XNpc_TakeDamage_Hurt; 6 of 8 bytes used
 	incrom	$114E70,$8
 Tbl_MaintRobotTakeDamage_Hurt:	; table read by XNpc_TakeDamage_Hurt; 3 of 8 bytes used at runtime; read by XNpc_TakeDamage_Hurt, MaintRobot_Init; jt[1418] used by MaintRobot_Init, SwampFly_Init
 	incrom	$114E78,$8
-Art_XCloneSpr:	; sprite definition (type $01): $24-byte header, $14-byte frame records, pieces, tiles; 5 of 8 bytes used at runtime; read by XNpc_TakeDamage_Hurt, VDP_WriteWords, XClone_Init; jt[1419] used by XClone_Init
+Tbl_XCloneTakeDamage_Hurt:	; table read by XNpc_TakeDamage_Hurt; 5 of 8 bytes used at runtime; read by XNpc_TakeDamage_Hurt, VDP_WriteWords, XClone_Init; jt[1419] used by XClone_Init
 	incrom	$114E80,$8
 Tbl_BioNpcVdp:	; words copied to the VDP data port by VDP_WriteWords; EE8 of EE8 bytes used at runtime; read by VDP_WriteWords; jt[1420] used by Scene_AllocCommonVram
 	incrom	$114E88,$EE8
@@ -3958,7 +3983,7 @@ Tbl_SyncActor_vtable:	; class descriptor "SYNCHRONIZEDACTOR": word $7E = name of
 	incrom	$119ECA,$90
 Art_BabyBioSpr:	; sprite definition (type $18, raw 4bpp tiles): $24-byte header, $14-byte frame records, pieces, tiles; 1180 of 13E0 bytes used at runtime; read by VDP_FlushDmaQueue; DMA to VRAM $9480-C500; jt[1515] used by BabyBio_Init, BrainChild_StateLand
 	incrom	$119F5A,$13E0
-Art_BabyBioSpr2:	; sprite definition (type $00): $24-byte header, $14-byte frame records, pieces, tiles; C of E bytes used at runtime; read by Anim_ApplyStep, VDP_FlushDmaQueue, Spr_EmitStreamClip; jt[1516] used by BabyBio_ActCrawl, BabyBio_Move
+Tbl_BabyBioAnim5:	; animation script (byte flags, byte steps, ..., 2-byte steps from +6); C of E bytes used at runtime; read by Anim_ApplyStep, VDP_FlushDmaQueue, Spr_EmitStreamClip; jt[1516] used by BabyBio_ActCrawl, BabyBio_Move
 	incrom	$11B33A,$E
 Tbl_WallCrawlBioActCrawlHorizontal:	; format not established; never read in the corpus; jt[1517] used by WallCrawlBio_ActCrawlHorizontal
 	incrom	$11B348,$E
@@ -4168,6 +4193,7 @@ Tbl_BioBallsAnim:	; animation script (byte flags, byte steps, ..., 2-byte steps 
 Tbl_BioBalls_ScriptIdleLen:	; word 1: step count of the AI script BioBalls_ScriptIdle that follows (1 thunks disassembled); jt[1627] used by BioBalls_Init -> AiScript_Set
 	incrom	$11E77C,$2
 	include "src/f/11E77E.asm"
+Tbl_BioBallsChainStep:	; table read by ExplodeFx_ChainStep; 24 of 28 bytes used at runtime; read by ExplodeFx_ChainStep; jt[1628] used by BioBalls_SpawnPuff
 	incrom	$11E782,$28
 	include "src/f/11E7AA.asm"
 	include "src/f/11E7B8.asm"
@@ -4393,12 +4419,15 @@ Art_CloneA1Spr:	; sprite definition (type $19, Nemesis-compressed tiles): $24-by
 	include "src/f/13420C.asm"
 Tbl_FireWall_vtable:	; class descriptor "FIREWALL": word $6E = name offset, long parent (ACTOR), 26 method pointers, then the class name string
 	incrom	$134214,$78
+Tbl_FireWallChainStep:	; table read by ExplodeFx_ChainStep; 34 of 38 bytes used at runtime; read by ExplodeFx_ChainStep; jt[1742] used by FireWall_StateSpawnFlame
 	incrom	$13428C,$38
 Tbl_1342C4:	; format not established; never read in the corpus; jt[1743] used by FireWall_StateSpawnFlame
 	incrom	$1342C4,$28
+Tbl_FireWallChainStep2:	; table read by ExplodeFx_ChainStep; 14 of 18 bytes used at runtime; read by ExplodeFx_ChainStep; jt[1744] used by FireWall_StateSpawnFlame
 	incrom	$1342EC,$18
 Tbl_134304:	; format not established; never read in the corpus; jt[1745] used by FireWall_StateSpawnFlame
 	incrom	$134304,$38
+Tbl_FireWallChainStep3:	; table read by ExplodeFx_ChainStep; 24 of 28 bytes used at runtime; read by ExplodeFx_ChainStep; jt[1746] used by FireWall_StateSpawnFlame
 	incrom	$13433C,$28
 Tbl_134364:	; format not established; never read in the corpus; jt[1747] used by FireWall_StateSpawnFlame
 	incrom	$134364,$18
@@ -4660,7 +4689,7 @@ Tbl_MineAnimArm2:	; animation script, frames 0-5, frame delay 3: second arming s
 	incrom	$13AFB2,$12
 Tbl_MineAnimArm3:	; animation script, frames 0-5, frame delay 2: third arming step, 13 frames (Mine_StateArm3); jt[1849]
 	incrom	$13AFC4,$12
-Tbl_MineAnimArm4:	; sprite definition (type $00): $24-byte header, $14-byte frame records, pieces, tiles; A of 12 bytes used at runtime; read by Mine_PoolUpdate, Mine_StateArm4, VDP_WriteWords; jt[1850] used by Mine_StateArm4
+Tbl_MinePoolUpdate:	; table read by Mine_PoolUpdate; A of 12 bytes used at runtime; read by Mine_PoolUpdate, Mine_StateArm4, VDP_WriteWords; jt[1850] used by Mine_StateArm4
 	incrom	$13AFD6,$12
 Art_NinjaSpr2:	; sprite definition (type $18, raw 4bpp tiles): $24-byte header, $14-byte frame records, pieces, tiles; 1C2C of 1C2C bytes used at runtime; read by VDP_WriteWords, Spr_PreloadTiles; DMA to VRAM $CE60-D4A0; jt[1851] used by Ninja_Init, SiberiaB1_LoadResources
 	incrom	$13AFE8,$1C2C
@@ -4702,6 +4731,7 @@ Tbl_NinjaIntroScript:	; AI script (AiScript_Set in Ninja_Init, jt[1872]): word c
 	include "src/f/13D8C2.asm"
 Tbl_NinjaCombatScript:	; AI script (AiScript_Set): word count 7, then jmp thunks Ninja_ScrStepFacePlayer, leap, face, attack, check-leave, idle anim, wait; set by Ninja_ActStartCombat (jt[1873]); the intro script at $13D8BC (count 2: wait, start combat) is jt[1872]
 	incrom	$13D8C6,$1
+Tbl_NinjaActFacePlayer:	; table read by Ninja_ActFacePlayer; 1 of 1 bytes used at runtime; read by Ninja_ActFacePlayer
 	incrom	$13D8C7,$1
 	include "src/f/13D8C8.asm"
 	include "src/f/13D8D0.asm"
@@ -4789,7 +4819,7 @@ Art_SpaceB1Spr2:	; sprite definition (type $19, Nemesis-compressed tiles): $24-b
 	include "src/f/14004A.asm"
 	include "src/f/1400AA.asm"
 	include "src/f/1400D6.asm"
-Tbl_SparkCallSlot5A:	; table read by ClassList_CallSlot5A; C of 74 bytes used at runtime; read by ClassList_CallSlot5A, ClassList_InitAll, ClassList_CallSlot62; jt[1906] used by Spark_Draw, Spark_Init
+Tbl_Spark_vtable:	; class descriptor "SPARK" (parent ACTOR, tools/classes.py): word name offset, long parent, method pointers, then the class name string; read by the ClassList_* walkers
 	incrom	$1400DE,$74
 Tbl_Anim_140152:	; animation script (NOTES: Animation scripts); never read in the corpus; jt[1907] used by Spark_StateStart -> Obj_SetAnim
 	incrom	$140152,$C
@@ -4932,6 +4962,7 @@ Tbl_144E86:	; format not established; never read in the corpus; jt[1961] used by
 	incrom	$144E86,$6C
 Tbl_144EF2:	; format not established; never read in the corpus; jt[1962] used by sub_144774
 	incrom	$144EF2,$3C
+Tbl_PopChainStep:	; table read by ExplodeFx_ChainStep; C4 of C8 bytes used at runtime; read by ExplodeFx_ChainStep; jt[1963] used by Pop_FxChainPath, sub_141B72, sub_144AE2
 	incrom	$144F2E,$C8
 Art_Spr_144FF6:	; sprite definition (type $18, raw 4bpp tiles): $24-byte header, $14-byte frame records, pieces, tiles; 400 of 86C bytes used at runtime; read by VDP_FlushDmaQueue; DMA to VRAM $D6A0-DAA0; jt[1964] used by sub_1449E6
 	incrom	$144FF6,$86C
@@ -5064,7 +5095,10 @@ Sw_15980C:	; switch table of sub at $15980C: 8 word offsets from Sw_15980C-2
 	include "src/f/1599CC.asm"
 	include "src/f/159A06.asm"
 	include "src/f/159A46.asm"
-	incrom	$159AB4,$F4
+Tbl_FluxBombInit:	; table read by FluxBomb_Init; 30 of 78 bytes used at runtime; read by FluxBomb_Init, FluxBomb_New, Actor_Update; jt[1992] used by FluxBomb_Init, FluxBomb_Update, Magneto_SpawnFluxBomb
+	incrom	$159AB4,$78
+Tbl_AvalonA4Init:	; table read by MagneticGlob_Init; 2C of 7C bytes used at runtime; read by MagneticGlob_Init, Magneto_SpawnShot, MagneticGlob_New; jt[1993] used by AvalonA4_GlobCrackBlockHook, AvalonA4_GlobCrackColumnHook, MagneticGlob_Init
+	incrom	$159B2C,$7C
 Tbl_ApocalypsePostLoadVram:	; table read by Scene_PostLoadVram; 20 of 20 bytes used at runtime; read by Scene_PostLoadVram; jt[1994] used by Apocalypse_ClassInit, Cerebro_Run, Failure_RunScene
 	incrom	$159BA8,$20
 Tbl_PostLoadVram_159BC8:	; table read by Scene_PostLoadVram; 20 of 20 bytes used at runtime; read by Scene_PostLoadVram; jt[1995] used by Scene_PostLoadVram
@@ -5099,7 +5133,6 @@ Tbl_Anim_15B1FA:	; animation script (byte flags, byte steps, ..., 2-byte steps f
 	incrom	$15B1FA,$C
 Tbl_ClosedBarrierAnim:	; animation script (NOTES: Animation scripts); never read in the corpus; jt[2024] used by ClosedBarrier_Init -> Obj_SetAnim, Barrier_Close -> Obj_SetAnim
 	incrom	$15B206,$A
-Art_BioNpcSpr:	; sprite definition (type $0F): $24-byte header, $14-byte frame records, pieces, tiles; 10 of 10 bytes used at runtime; read by sub_15AE48, Spr_PreloadTiles, Nem_BuildCodeTable; jt[2025] used by BioNpc_DrawStunned, Blast_Draw
 	incrom	$15B210,$10
 Art_BlastSpr:	; sprite definition (type $19, Nemesis-compressed tiles): $24-byte header, $14-byte frame records, pieces, tiles; D3 of D4 bytes used at runtime; read by VDP_FlushDmaQueue, Spr_PreloadTiles, Nem_BuildCodeTable; jt[2026] used by Blast_ClassInit, Psylocke_Init
 	incrom	$15B220,$D4
@@ -5311,6 +5344,7 @@ Tbl_EvilBeastAnim2:	; animation script (byte flags, byte steps, ..., 2-byte step
 	incrom	$1829F0,$8
 Tbl_Anim_1829F8:	; animation script (byte flags, byte steps, ..., 2-byte steps from +6); 8 of 1E bytes used at runtime; read by Anim_ApplyStep, Anim_AdvanceByDistance, Anim_Advance; jt[2126] used by Beast_StateRoll
 	incrom	$1829F8,$1E
+Tbl_BeastLand:	; table read by XPlayer_Land; 3B of 5E bytes used at runtime; read by XPlayer_Land, XPlayer_AirSteer, Beast_Init; jt[2127] used by Beast_Init, EvilBeast_Init, PlayerSelect_PlayPickAnim_part1
 	incrom	$182A16,$5E
 Tbl_ShakeStep_182A74:	; table read by Cam_ShakeStep; 1F of 20 bytes used at runtime; read by Cam_ShakeStep; jt[2128] used by Beast_DiveImpact, Beast_ShockwaveInit
 	incrom	$182A74,$20
@@ -5390,6 +5424,7 @@ Tbl_BeastAnim10:	; animation script (byte flags, byte steps, ..., 2-byte steps f
 	incrom	$1964AC,$14
 Tbl_BeastAnim11:	; animation script (byte flags, byte steps, ..., 2-byte steps from +6); 1E of 34 bytes used at runtime; read by Anim_ApplyStep, Anim_AdvanceByDistance; jt[2165] used by Wolverine_AirSpecial
 	incrom	$1964C0,$34
+Tbl_EvilWolverineLand:	; table read by XPlayer_Land; 4C of 5E bytes used at runtime; read by XPlayer_Land, XPlayer_StateControl, XPlayer_DoubleJump; jt[2166] used by EvilWolverine_Init, PlayerSelect_PlayPickAnim_part2, Wolverine_Init
 	incrom	$1964F4,$5E
 	include "src/f/196552.asm"
 	include "src/f/196560.asm"
@@ -5451,6 +5486,7 @@ Tbl_EvilNightcrawlerAnim2:	; animation script (byte flags, byte steps, ..., 2-by
 	include "src/f/1A60B6.asm"
 Tbl_Anim_1A616A:	; animation script (byte flags, byte steps, ..., 2-byte steps from +6); 12 of 16 bytes used at runtime; read by Anim_ApplyStep, Anim_AdvanceByDistance, Anim_Advance
 	incrom	$1A616A,$16
+Tbl_EvilNightcrawlerLand:	; table read by XPlayer_Land; 52 of 5E bytes used at runtime; read by XPlayer_Land, XPlayer_StateDoubleJump, XPlayer_DoubleJump; jt[2196] used by EvilNightcrawler_Init, Nightcrawler_Init, PlayerSelect_PlayPickAnim_part2
 	incrom	$1A6180,$5E
 	include "src/f/1A61DE.asm"
 	include "src/f/1A61EC.asm"
@@ -5522,6 +5558,7 @@ Tbl_NightcrawlerAnim11:	; animation script (byte flags, byte steps, ..., 2-byte 
 	incrom	$1B8FC0,$16
 Tbl_NightcrawlerAnim12:	; animation script (NOTES: Animation scripts); never read in the corpus; jt[2228] used by Psylocke_StateCling -> Obj_SetAnim
 	incrom	$1B8FD6,$2C
+Tbl_EvilPsylockeLand:	; table read by XPlayer_Land; 40 of 5E bytes used at runtime; read by XPlayer_Land, PlayerSelect_PlayPickAnim_part3, Psylocke_Init; jt[2229] used by EvilPsylocke_Init, PlayerSelect_PlayPickAnim_part2, Psylocke_Init
 	incrom	$1B9002,$5E
 	include "src/f/1B9060.asm"
 	include "src/f/1B906E.asm"
@@ -5633,6 +5670,7 @@ Tbl_PsylockeAnim24:	; animation script (byte flags, byte steps, ..., 2-byte step
 	incrom	$1CD928,$2E
 Tbl_PsylockeAnim25:	; animation script (byte flags, byte steps, ..., 2-byte steps from +6); 1A of 46 bytes used at runtime; read by Anim_ApplyStep, FluxBomb_StartImplode, FluxBomb_StartBurst; jt[2289,2290] used by FluxBomb_StepBurst, FluxBomb_StartBurst, FluxBomb_DrawBurst
 	incrom	$1CD956,$46
+Tbl_EvilMagnetoAirSteer:	; table read by Magneto_AirSteer; 2F of 5E bytes used at runtime; read by Magneto_AirSteer, XPlayer_Land, XPlayer_StateControl; jt[2291] used by EvilMagneto_Init, Magneto_Init
 	incrom	$1CD99C,$5E
 Art_PsylockeTiles:	; uncompressed 4bpp tiles DMA'd to VRAM; 20 of 20 bytes used at runtime; read by VDP_FlushDmaQueue; DMA to VRAM $8400-8420; jt[2292] used by FluxBomb_StartImplode, FluxBomb_StartBurst
 	incrom	$1CD9FA,$20
@@ -5710,7 +5748,9 @@ Tbl_Anim_1CEE38:	; animation script (byte flags, byte steps, ..., 2-byte steps f
 	incrom	$1CEE38,$A
 Tbl_Anim_1CEE42:	; animation script (byte flags, byte steps, ..., 2-byte steps from +6); 8 of 22 bytes used at runtime; read by Anim_ApplyStep, Anim_AdvanceByDistance, Anim_Advance; jt[2331] used by sub_1D0148
 	incrom	$1CEE42,$22
-	incrom	$1CEE64,$10A
+Tbl_EvilGambitAirSteer:	; table read by XPlayer_AirSteer; 34 of 5E bytes used at runtime; read by XPlayer_AirSteer, XPlayer_Land, PlayerSelect_PlayPickAnim_part3; jt[2332] used by EvilGambit_Init, PlayerSelect_PlayPickAnim_part2, sub_1D029E
+	incrom	$1CEE64,$5E
+	incrom	$1CEEC2,$AC
 	include "src/f/1CEF6E.asm"
 	include "src/f/1CEF7C.asm"
 	include "src/f/1CF070.asm"
@@ -5819,6 +5859,7 @@ Tbl_1E2908:	; format not established; never read in the corpus; jt[2374] used by
 	incrom	$1E2908,$12C
 Tbl_Anim_1E2A34:	; animation script (byte flags, byte steps, ..., 2-byte steps from +6); A of 1E bytes used at runtime; read by Anim_ApplyStep, Anim_AdvanceByDistance, Anim_Advance; jt[2373] used by sub_1E2CFC, sub_1E3322
 	incrom	$1E2A34,$1E
+Tbl_EvilCyclopsLand:	; table read by XPlayer_Land; 39 of 5E bytes used at runtime; read by XPlayer_Land, sub_1E3ABE, XPlayer_AirSteer; jt[2384] used by EvilCyclops_Init, PlayerSelect_PlayPickAnim_part2, sub_1E3ABE
 	incrom	$1E2A52,$5E
 	include "src/f/1E2AB0.asm"
 	include "src/f/1E2ABE.asm"
@@ -6001,6 +6042,7 @@ Tbl_A5WorldInfo:	; 20 bytes: longs $3CE6 (size of the A5 globals area below $200
 	incrom	$1F4956,$A
 Tbl_AvalonA3New:	; table read by Cam_New; 30 of 46 bytes used at runtime; read by Cam_New, Cam_Init, SiberiaB1_InitWind; jt[2483] used by AvalonA3_InitCamera, AvalonA4_InitCamera, AvalonB1_InitCamera
 	incrom	$1F4960,$46
+Tbl_XCloneInitSpawnRec:	; table read by XPlayer_InitSpawnRec; 3C of 74 bytes used at runtime; read by XPlayer_InitSpawnRec, XPlayer_Init, sub_1F66F0; jt[2484] used by BigBio_StateDefeated, BioBalls_SpawnPuff, BroodBoss_StateDeathFx
 	incrom	$1F49A6,$74
 	include "src/f/1F4A1A.asm"
 	include "src/f/1F4A40.asm"

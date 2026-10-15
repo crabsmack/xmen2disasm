@@ -69,7 +69,9 @@ def kind(it: dict, head0: int) -> tuple[str, str, str] | None:
     top = names[0] if names else ""
     has = lambda *ps: any(n.startswith(p) for n in names for p in ps)  # noqa: E731
     dma = it["dma"] > 0
-    if has(*SPRITE_READERS) or (top == "VDP_FlushDmaQueue" and head0 in SPR_TYPES):
+    # a sprite definition must also look like one: type byte at +0 (a sprite reader touching
+    # a few bytes of a table is not enough; review found anim scripts labelled Art_*Spr)
+    if head0 in SPR_TYPES and (has(*SPRITE_READERS) or top == "VDP_FlushDmaQueue"):
         t = SPR_TYPES.get(head0, f"type ${head0:02X}")
         return "Art", "Spr", f"sprite definition ({t}): $24-byte header, $14-byte frame records, pieces, tiles"
     if top == "VDP_FlushDmaQueue":
