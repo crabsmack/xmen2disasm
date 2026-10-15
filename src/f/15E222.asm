@@ -115,7 +115,7 @@ loc_15E33A:
 	beq.s	loc_15E360
 	pea.l	-$165E(a5)
 	move.l	$80(a3),-(a7)
-	jsr	sub_15DF66(pc)
+	jsr	List_Unlink(pc)
 	moveq	#$0,d0
 	move.l	d0,$80(a3)
 	addq.w	#$8,a7
@@ -123,7 +123,7 @@ loc_15E33A:
 loc_15E360:
 	pea.l	-$1656(a5)
 	move.l	$80(a3),-(a7)
-	jsr	sub_15DF66(pc)
+	jsr	List_Unlink(pc)
 	moveq	#$0,d0
 	move.l	d0,$80(a3)
 	addq.w	#$8,a7
@@ -136,7 +136,7 @@ loc_15E374:
 	beq.s	loc_15E39A
 	pea.l	-$165A(a5)
 	move.l	$84(a3),-(a7)
-	jsr	sub_15DF66(pc)
+	jsr	List_Unlink(pc)
 	moveq	#$0,d0
 	move.l	d0,$84(a3)
 	addq.w	#$8,a7
@@ -144,7 +144,7 @@ loc_15E374:
 loc_15E39A:
 	pea.l	-$1652(a5)
 	move.l	$84(a3),-(a7)
-	jsr	sub_15DF66(pc)
+	jsr	List_Unlink(pc)
 	moveq	#$0,d0
 	move.l	d0,$84(a3)
 	addq.w	#$8,a7

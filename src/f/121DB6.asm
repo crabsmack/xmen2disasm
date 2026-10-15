@@ -104,7 +104,7 @@ loc_121EA6:
 	ext.l	d0
 	add.l	d5,d0
 	move.l	d0,-(a7)
-	jsr	$517A(a5)	; -> sub_1FDEF8
+	jsr	$517A(a5)	; -> Math_SinDeg
 	move.w	-$2(a6),d1
 	ext.l	d1
 	jsr	$3F9A(a5)	; -> sub_15C1FC
@@ -116,7 +116,7 @@ loc_121EA6:
 	ext.l	d0
 	add.l	d5,d0
 	move.l	d0,-(a7)
-	jsr	$5172(a5)	; -> sub_1FDEEA
+	jsr	$5172(a5)	; -> Math_CosDeg
 	move.w	-$2(a6),d1
 	ext.l	d1
 	jsr	$3F9A(a5)	; -> sub_15C1FC
@@ -131,7 +131,7 @@ loc_121EA6:
 	ext.l	d0
 	lsl.l	#$1,d0
 	move.l	d0,-(a7)
-	jsr	$517A(a5)	; -> sub_1FDEF8
+	jsr	$517A(a5)	; -> Math_SinDeg
 	move.l	-$14(a6),d1
 	exg.l	d0,d1
 	jsr	$3F9A(a5)	; -> sub_15C1FC
@@ -148,7 +148,7 @@ loc_121F28:
 	ext.l	d0
 	add.l	d5,d0
 	move.l	d0,-(a7)
-	jsr	$517A(a5)	; -> sub_1FDEF8
+	jsr	$517A(a5)	; -> Math_SinDeg
 	ext.l	d6
 	move.l	d6,d1
 	jsr	$3F9A(a5)	; -> sub_15C1FC
@@ -160,7 +160,7 @@ loc_121F28:
 	ext.l	d0
 	add.l	d5,d0
 	move.l	d0,-(a7)
-	jsr	$5172(a5)	; -> sub_1FDEEA
+	jsr	$5172(a5)	; -> Math_CosDeg
 	ext.l	d6
 	move.l	d6,d1
 	jsr	$3F9A(a5)	; -> sub_15C1FC
@@ -174,7 +174,7 @@ loc_121F28:
 	move.w	$4(a0),d0
 	ext.l	d0
 	move.l	d0,-(a7)
-	jsr	$517A(a5)	; -> sub_1FDEF8
+	jsr	$517A(a5)	; -> Math_SinDeg
 	move.l	-$18(a6),d1
 	exg.l	d0,d1
 	jsr	$3F9A(a5)	; -> sub_15C1FC

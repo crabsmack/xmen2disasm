@@ -31,7 +31,7 @@ loc_05CE7A:
 	bne.s	loc_05CE9A
 	pea.l	-$1652(a5)
 	move.l	$84(a3),-(a7)
-	jsr	$406A(a5)	; -> sub_15DF66
+	jsr	$406A(a5)	; -> List_Unlink
 	moveq	#$0,d0
 	move.l	d0,$84(a3)
 	addq.w	#$8,a7

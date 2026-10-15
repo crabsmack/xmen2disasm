@@ -29,7 +29,7 @@ loc_067070:
 	cmp.w	d7,d3
 	bgt.s	loc_067068
 	move.b	#$1,-$3A06(a5)
-	jsr	$5112(a5)	; -> sub_1FDC5C
+	jsr	$5112(a5)	; -> VDP_WaitVBlank
 	move.w	-$3598(a5),d0
 	ext.l	d0
 	move.l	d0,-(a7)
@@ -62,7 +62,7 @@ loc_0670AA:
 	lea.l	$E6A(a5),a0
 	move.l	$2(a0),-(a7)
 	move.l	a3,-(a7)
-	jsr	$4DAA(a5)	; -> sub_1F48AA
+	jsr	$4DAA(a5)	; -> Mem_Copy
 	clr.w	d7
 	lea.l	(a3),a4
 	lea.l	$C(a7),a7
@@ -103,7 +103,7 @@ loc_06712C:
 	beq.s	loc_067140
 	clr.w	d7
 loc_067140:
-	jsr	$5112(a5)	; -> sub_1FDC5C
+	jsr	$5112(a5)	; -> VDP_WaitVBlank
 loc_067144:
 	tst.w	d7
 	bne.s	loc_06712C
@@ -117,7 +117,7 @@ loc_067144:
 	lea.l	$C(a7),a7
 	bra.s	loc_067166
 loc_067162:
-	jsr	$5112(a5)	; -> sub_1FDC5C
+	jsr	$5112(a5)	; -> VDP_WaitVBlank
 loc_067166:
 	tst.b	-$3A02(a5)
 	bne.s	loc_067162

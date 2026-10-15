@@ -7,7 +7,7 @@ sub_144CAA:
 	movea.l	$8(a6),a4
 	pea.l	-$165A(a5)
 	move.l	$8C(a4),-(a7)
-	jsr	$406A(a5)	; -> sub_15DF66
+	jsr	$406A(a5)	; -> List_Unlink
 	moveq	#$0,d0
 	move.l	d0,$8C(a4)
 	move.l	a4,-(a7)

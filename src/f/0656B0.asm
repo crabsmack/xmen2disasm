@@ -421,7 +421,7 @@ loc_065BD8:
 	tst.b	-$3A08(a5)
 	beq.s	loc_065BD8
 loc_065BDE:
-	jsr	$5112(a5)	; -> sub_1FDC5C
+	jsr	$5112(a5)	; -> VDP_WaitVBlank
 	tst.b	-$38E4(a5)
 	bne.w	loc_0658C6
 	tst.w	-$359A(a5)

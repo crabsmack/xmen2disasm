@@ -34,12 +34,12 @@ loc_10B804:
 	move.w	-$348E(a5),-$3AC2(a5)
 	move.w	-$3490(a5),-$3AC4(a5)
 	move.w	-$3AC2(a5),-$3AC6(a5)
-	jsr	$4D9A(a5)	; -> sub_1F485A
+	jsr	$4D9A(a5)	; -> Irq_Disable
 	movea.l	-$3A54(a5),a0
 	jsr	(a0)
 	movea.l	-$3A50(a5),a0
 	jsr	(a0)
-	jsr	$4DA2(a5)	; -> sub_1F4854
+	jsr	$4DA2(a5)	; -> Irq_Enable
 	move.b	#$1,-$3A56(a5)
 	move.b	-$3A64(a5),-$3A58(a5)
 	movem.l	-$10(a6),d5-d7/a4

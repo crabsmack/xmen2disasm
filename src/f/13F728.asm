@@ -111,7 +111,7 @@ loc_13F820:
 	add.l	d2,d1
 	pea.l	(a0,d1.l)
 	move.l	a4,-(a7)
-	jsr	$4DAA(a5)	; -> sub_1F48AA
+	jsr	$4DAA(a5)	; -> Mem_Copy
 	lea.l	$C(a7),a7
 loc_13F84A:
 	move.w	d5,d0

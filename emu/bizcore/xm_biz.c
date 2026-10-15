@@ -6,6 +6,9 @@
  *   exec_total / exec_frame : 1 bit per ROM word ($000000-$3FFFFF) executed as an instruction start
  *   data_total              : 1 bit per ROM byte read as data by the 68000
  *   dma_total               : 1 bit per ROM byte used as a VDP DMA source
+ *   reader                  : per ROM byte, the first instruction that read it as data
+ *                             (XM_READ | pc) or, for DMA, the instruction executing when the
+ *                             DMA ran (XM_DMA | pc): who uses each data span
  */
 #include <string.h>
 #include "callbacks.h"
@@ -20,10 +23,15 @@ static unsigned char data_total[ROM_SPAN / 8];
 static unsigned char dma_total[ROM_SPAN / 8];
 static unsigned char ram_exec[0x10000 / 16];
 static unsigned long long instr_count;
+static unsigned int reader[ROM_SPAN];
+static unsigned int cur_pc;
+#define XM_READ 0x01000000u
+#define XM_DMA 0x02000000u
 
 static void xm_exec(unsigned addr)
 {
   addr &= 0xFFFFFFu;
+  cur_pc = addr;
   instr_count++;
   if (addr < ROM_SPAN) {
     unsigned bit = addr >> 1;
@@ -39,10 +47,16 @@ static void xm_cdl(int32 addr, int32 addrtype, int32 flags)
 {
   if (addrtype != eCDLog_AddrType_MDCART || (unsigned)addr >= ROM_SPAN)
     return;
-  if (flags & eCDLog_Flags_Data68k)
+  if (flags & eCDLog_Flags_Data68k) {
     data_total[addr >> 3] |= (unsigned char)(1u << (addr & 7));
-  if (flags & eCDLog_Flags_DMASource)
+    if (!(reader[addr] & XM_READ))
+      reader[addr] = XM_READ | cur_pc;
+  }
+  if (flags & eCDLog_Flags_DMASource) {
     dma_total[addr >> 3] |= (unsigned char)(1u << (addr & 7));
+    if (!reader[addr])
+      reader[addr] = XM_DMA | cur_pc;
+  }
 }
 
 XM_EXPORT void xm_trace_enable(int on)
@@ -58,6 +72,7 @@ XM_EXPORT void xm_trace_reset(void)
   memset(data_total, 0, sizeof data_total);
   memset(dma_total, 0, sizeof dma_total);
   memset(ram_exec, 0, sizeof ram_exec);
+  memset(reader, 0, sizeof reader);
   instr_count = 0;
 }
 
@@ -67,6 +82,7 @@ XM_EXPORT unsigned char *xm_rom_frame(void) { return exec_frame; }
 XM_EXPORT unsigned char *xm_ram_total(void) { return ram_exec; }
 XM_EXPORT unsigned char *xm_data_total(void) { return data_total; }
 XM_EXPORT unsigned char *xm_dma_total(void) { return dma_total; }
+XM_EXPORT unsigned int *xm_reader(void) { return reader; }
 XM_EXPORT unsigned int xm_bitmap_bytes(void) { return sizeof exec_total; }
 XM_EXPORT unsigned long long xm_instr_count(void) { return instr_count; }
 XM_EXPORT unsigned char *xm_work_ram(void) { return work_ram; }

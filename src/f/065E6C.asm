@@ -49,7 +49,7 @@ loc_065ECA:
 	lea.l	$E82(a5),a0
 	move.l	$2(a0),-(a7)
 	move.l	a3,-(a7)
-	jsr	$4DAA(a5)	; -> sub_1F48AA
+	jsr	$4DAA(a5)	; -> Mem_Copy
 	clr.w	d7
 	lea.l	(a3),a4
 	lea.l	$14(a7),a7
@@ -90,7 +90,7 @@ loc_065F5C:
 	cmpi.w	#$30,d7
 	blt.s	loc_065F54
 	move.b	#$1,-$3A06(a5)
-	jsr	$5112(a5)	; -> sub_1FDC5C
+	jsr	$5112(a5)	; -> VDP_WaitVBlank
 	move.w	-$3598(a5),d0
 	ext.l	d0
 	move.l	d0,-(a7)
@@ -107,7 +107,7 @@ loc_065F5C:
 	lea.l	$DFA(a5),a0
 	move.l	$2(a0),-(a7)
 	move.l	a3,-(a7)
-	jsr	$4DAA(a5)	; -> sub_1F48AA
+	jsr	$4DAA(a5)	; -> Mem_Copy
 	clr.w	d7
 	lea.l	(a3),a4
 	lea.l	$14(a7),a7
@@ -168,7 +168,7 @@ loc_06600E:
 	move.w	(a4,d0.l),-$3926(a5)
 	move.b	#$1,-$3A06(a5)
 	subq.w	#$1,d6
-	jsr	$5112(a5)	; -> sub_1FDC5C
+	jsr	$5112(a5)	; -> VDP_WaitVBlank
 loc_066034:
 	tst.w	d6
 	bne.s	loc_065FE0
@@ -222,7 +222,7 @@ loc_066034:
 	bra.s	loc_066100
 loc_0660FA:
 	subq.w	#$1,d6
-	jsr	$5112(a5)	; -> sub_1FDC5C
+	jsr	$5112(a5)	; -> VDP_WaitVBlank
 loc_066100:
 	tst.w	d6
 	bne.s	loc_0660FA
@@ -231,7 +231,7 @@ loc_066100:
 loc_06610A:
 	clr.b	-$3A08(a5)
 	subq.w	#$1,d6
-	jsr	$5112(a5)	; -> sub_1FDC5C
+	jsr	$5112(a5)	; -> VDP_WaitVBlank
 	move.w	-$7A6(a5),d0
 	or.w	-$7A8(a5),d0
 	move.w	#$F0,d1
@@ -263,7 +263,7 @@ loc_066154:
 	cmpi.w	#$30,d7
 	blt.s	loc_06614C
 	move.b	#$1,-$3A06(a5)
-	jsr	$5112(a5)	; -> sub_1FDC5C
+	jsr	$5112(a5)	; -> VDP_WaitVBlank
 	move.w	-$3598(a5),d0
 	ext.l	d0
 	move.l	d0,-(a7)
@@ -280,7 +280,7 @@ loc_066154:
 	lea.l	$DEA(a5),a0
 	move.l	$2(a0),-(a7)
 	move.l	a3,-(a7)
-	jsr	$4DAA(a5)	; -> sub_1F48AA
+	jsr	$4DAA(a5)	; -> Mem_Copy
 	clr.w	d7
 	lea.l	(a3),a4
 	lea.l	$14(a7),a7
@@ -484,14 +484,14 @@ loc_066348:
 	move.w	#$145,$6(a0)
 	bra.s	loc_066436
 loc_066432:
-	jsr	$5112(a5)	; -> sub_1FDC5C
+	jsr	$5112(a5)	; -> VDP_WaitVBlank
 loc_066436:
 	moveq	#$3,d0
 	cmp.l	-$3A10(a5),d0
 	bgt.s	loc_066432
 	jsr	$5052(a5)	; -> sub_1FA9D2
 	move.b	#$1,-$1D4A(a5)
-	jsr	$5112(a5)	; -> sub_1FDC5C
+	jsr	$5112(a5)	; -> VDP_WaitVBlank
 loc_06644C:
 	tst.w	d6
 	bne.w	loc_066348
@@ -531,7 +531,7 @@ loc_06644C:
 loc_0664C0:
 	clr.b	-$3A08(a5)
 	subq.w	#$1,d6
-	jsr	$5112(a5)	; -> sub_1FDC5C
+	jsr	$5112(a5)	; -> VDP_WaitVBlank
 loc_0664CA:
 	tst.w	d6
 	bne.s	loc_0664C0
@@ -690,7 +690,7 @@ loc_0665EE:
 	subq.w	#$1,d6
 	jsr	$5052(a5)	; -> sub_1FA9D2
 	move.b	#$1,-$1D4A(a5)
-	jsr	$5112(a5)	; -> sub_1FDC5C
+	jsr	$5112(a5)	; -> VDP_WaitVBlank
 	lea.l	$14(a7),a7
 loc_0666BE:
 	tst.w	d6
@@ -828,7 +828,7 @@ loc_0667A0:
 	subq.w	#$1,d6
 	jsr	$5052(a5)	; -> sub_1FA9D2
 	move.b	#$1,-$1D4A(a5)
-	jsr	$5112(a5)	; -> sub_1FDC5C
+	jsr	$5112(a5)	; -> VDP_WaitVBlank
 	lea.l	$14(a7),a7
 loc_066870:
 	tst.w	d6
@@ -851,7 +851,7 @@ loc_066870:
 	bra.s	loc_0668B4
 loc_0668AE:
 	subq.w	#$1,d6
-	jsr	$5112(a5)	; -> sub_1FDC5C
+	jsr	$5112(a5)	; -> VDP_WaitVBlank
 loc_0668B4:
 	tst.w	d6
 	bne.s	loc_0668AE
@@ -862,7 +862,7 @@ loc_0668B4:
 	bra.s	loc_0668D0
 loc_0668C8:
 	clr.b	-$3A08(a5)
-	jsr	$5112(a5)	; -> sub_1FDC5C
+	jsr	$5112(a5)	; -> VDP_WaitVBlank
 loc_0668D0:
 	moveq	#$40,d0
 	cmp.w	-$390C(a5),d0
@@ -977,7 +977,7 @@ loc_0669EC:
 loc_066A2A:
 	clr.b	-$3A08(a5)
 	subq.w	#$1,d6
-	jsr	$5112(a5)	; -> sub_1FDC5C
+	jsr	$5112(a5)	; -> VDP_WaitVBlank
 	move.w	-$7A6(a5),d0
 	or.w	-$7A8(a5),d0
 	move.w	#$F0,d1
@@ -995,7 +995,7 @@ loc_066A52:
 loc_066A58:
 	clr.b	-$3A08(a5)
 	subq.w	#$1,d6
-	jsr	$5112(a5)	; -> sub_1FDC5C
+	jsr	$5112(a5)	; -> VDP_WaitVBlank
 	move.w	-$7A6(a5),d0
 	or.w	-$7A8(a5),d0
 	move.w	#$F0,d1

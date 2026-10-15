@@ -95,6 +95,9 @@ class BaseEmu:
     def dma_coverage(self) -> np.ndarray | None:
         return None
 
+    def readers(self) -> np.ndarray | None:
+        return None
+
     def regs(self) -> dict:
         out = (C.c_uint * 18)()
         self.lib.xm_get_regs(out)
@@ -143,6 +146,9 @@ class BizEmu(BaseEmu):
         L.xm_work_ram.restype = C.c_void_p
         L.xm_data_total.restype = C.c_void_p
         L.xm_dma_total.restype = C.c_void_p
+        self._has_reader = hasattr(L, "xm_reader")  # cores built before the reader map lack it
+        if self._has_reader:
+            L.xm_reader.restype = C.c_void_p
         self._setup_trace()
 
     def _load(self, filename, buf, maxsize):
@@ -170,6 +176,14 @@ class BizEmu(BaseEmu):
 
     def dma_coverage(self) -> np.ndarray:
         return self._bits("xm_dma_total", 0x400000 // 8)
+
+    def readers(self) -> np.ndarray | None:
+        """Per ROM byte: 0, or READ|pc of the first instruction that read it as data, or
+        DMA|pc of the instruction running when it was DMA'd (READ = 1<<24, DMA = 2<<24)."""
+        if not self._has_reader:
+            print("note: core has no xm_reader; rebuild it (uv run emu/build_core.py biz) for reader lists")
+            return None
+        return np.frombuffer(C.string_at(self.lib.xm_reader(), 0x400000 * 4), dtype=np.uint32)
 
     def _video(self):
         w, h, pitch, buf = C.c_int(), C.c_int(), C.c_int(), C.c_void_p()
@@ -347,6 +361,46 @@ def function_entries() -> np.ndarray:
     return np.array(sorted(entries), dtype=np.int64)
 
 
+def write_readers(path: Path, rd: np.ndarray, entries: np.ndarray) -> None:
+    """Who reads each ROM data span: one line per run of consecutive read/DMA'd bytes,
+    `START LEN K:FUNC:PC:BYTES ...` (hex), readers by byte count, K = R (68000 data read) or
+    D (DMA source, PC = instruction running when the DMA happened), FUNC = start of the src/f
+    function holding PC (000000 if none), PC = that reader's first instruction seen,
+    BYTES = how many of the span's bytes it read first."""
+    nz = np.nonzero(rd)[0]
+    lines = []
+    if len(nz):
+        vals = rd[nz]
+        pcs = (vals & 0xFFFFFF).astype(np.int64)
+        idx = np.searchsorted(entries, pcs, side="right") - 1
+        funcs = np.where(idx >= 0, entries[np.maximum(idx, 0)], 0)
+        brk = np.nonzero(np.diff(nz) != 1)[0] + 1
+        for s, e in zip(np.r_[0, brk], np.r_[brk, len(nz)]):
+            who: dict[tuple[str, int], list[int]] = {}
+            for v, fn in zip(vals[s:e].tolist(), funcs[s:e].tolist()):
+                k = ("R" if v & 0x1000000 else "D", fn)
+                if k in who:
+                    who[k][1] += 1
+                else:
+                    who[k] = [v & 0xFFFFFF, 1]
+            ranked = sorted(who.items(), key=lambda kv: -kv[1][1])
+            lines.append(f"{int(nz[s]):06X} {int(e - s):X} " + " ".join(
+                f"{k}:{fn:06X}:{pc:06X}:{n:X}" for (k, fn), (pc, n) in ranked) + "\n")
+    with gzip.GzipFile(path, "wb", mtime=0) as g:
+        g.write("".join(lines).encode())
+
+
+def read_readers(path: Path) -> list[tuple[int, int, list[tuple[str, int, int, int]]]]:
+    """[(start, length, [(kind 'R'|'D', func, pc, bytes), ...])] from a write_readers file."""
+    out = []
+    with gzip.open(path, "rt") as g:
+        for line in g:
+            s, n, *who = line.split()
+            out.append((int(s, 16), int(n, 16),
+                        [(k, int(fn, 16), int(pc, 16), int(b, 16)) for k, fn, pc, b in (w.split(":") for w in who)]))
+    return out
+
+
 class Recorder:
     def __init__(self, emu: BaseEmu, name: str, png_every: int, ram_every: int):
         self.emu, self.dir = emu, EMU_DIR / "runs" / name
@@ -390,6 +444,9 @@ class Recorder:
                 (self.dir / f"{kind}.bin").write_bytes(arr.tobytes())
                 with gzip.GzipFile(cdir / f"{self.dir.name}.{kind}.bin.gz", "wb", mtime=0) as g:
                     g.write(arr.tobytes())
+        rd = e.readers()
+        if rd is not None:
+            write_readers(cdir / f"{self.dir.name}.readers.txt.gz", rd, self.entries)
         funcs = {f"{a:06X}": {"first": self.first[a], "last": self.last[a], "frames": int(self.count[i])}
                  for i, a in enumerate(map(int, self.entries)) if a in self.first}
         (self.dir / "func_frames.json").write_text(json.dumps(funcs, indent=0), newline="\n")

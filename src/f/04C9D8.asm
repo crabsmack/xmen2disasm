@@ -13,7 +13,7 @@ sub_04C9D8:
 	move.w	$8E(a4),d0
 	ext.l	d0
 	move.l	d0,-(a7)
-	jsr	$517A(a5)	; -> sub_1FDEF8
+	jsr	$517A(a5)	; -> Math_SinDeg
 	move.l	d0,d1
 	mulu.w	#$AF,d0
 	swap	d1
@@ -27,7 +27,7 @@ sub_04C9D8:
 	move.w	$8E(a4),d0
 	ext.l	d0
 	move.l	d0,-(a7)
-	jsr	$5172(a5)	; -> sub_1FDEEA
+	jsr	$5172(a5)	; -> Math_CosDeg
 	add.l	d0,d0
 	move.l	d0,d1
 	lsl.l	#$2,d0

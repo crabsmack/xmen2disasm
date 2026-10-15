@@ -68,7 +68,7 @@ loc_1201C6:
 	move.w	$A8(a0),d0
 	ext.l	d0
 	move.l	d0,-(a7)
-	jsr	$5172(a5)	; -> sub_1FDEEA
+	jsr	$5172(a5)	; -> Math_CosDeg
 	move.l	d0,d1
 	move.l	d4,d0
 	jsr	$3F9A(a5)	; -> sub_15C1FC
@@ -86,7 +86,7 @@ loc_1201C6:
 	move.w	$A8(a0),d0
 	ext.l	d0
 	move.l	d0,-(a7)
-	jsr	$517A(a5)	; -> sub_1FDEF8
+	jsr	$517A(a5)	; -> Math_SinDeg
 	move.l	-$18(a6),d1
 	exg.l	d0,d1
 	jsr	$3F9A(a5)	; -> sub_15C1FC

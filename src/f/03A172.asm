@@ -20,7 +20,7 @@ sub_03A172:
 	ori.w	#$4000,$6(a4)
 	pea.l	-$1652(a5)
 	move.l	$84(a4),-(a7)
-	jsr	$406A(a5)	; -> sub_15DF66
+	jsr	$406A(a5)	; -> List_Unlink
 	moveq	#$0,d0
 	move.l	d0,$84(a4)
 	moveq	#$0,d1

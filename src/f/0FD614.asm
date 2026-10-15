@@ -8,7 +8,7 @@ sub_0FD614:
 	move.l	a0,-$388E(a5)
 	tst.l	-$1758(a5)
 	bne.s	loc_0FD662
-	jsr	$4D9A(a5)	; -> sub_1F485A
+	jsr	$4D9A(a5)	; -> Irq_Disable
 loc_0FD62C:
 	moveq	#$0,d7
 	move.b	($C00008).l,d7
@@ -16,7 +16,7 @@ loc_0FD62C:
 	move.b	($C00008).l,d0
 	cmp.w	d7,d0
 	bne.s	loc_0FD62C
-	jsr	$4DA2(a5)	; -> sub_1F4854
+	jsr	$4DA2(a5)	; -> Irq_Enable
 	ext.l	d7
 	move.w	-$3B90(a5),d0
 	ext.l	d0

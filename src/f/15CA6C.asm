@@ -13,7 +13,7 @@ loc_15CA88:
 	clr.b	-$3A08(a5)
 	move.b	#$1,-$1D4A(a5)
 	jsr	sub_15C42A(pc)
-	jsr	$5112(a5)	; -> sub_1FDC5C
+	jsr	$5112(a5)	; -> VDP_WaitVBlank
 	tst.b	-$1662(a5)
 	beq.s	loc_15CA88
 	unlk	a6

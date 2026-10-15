@@ -6,7 +6,7 @@ sub_097974:
 	movem.l	d3-d7/a3-a4,-(a7)
 	movea.l	$8(a6),a4
 	move.l	a4,-(a7)
-	jsr	$4EAA(a5)	; -> sub_1F694A
+	jsr	$4EAA(a5)	; -> Player_Nearest
 	movea.l	d0,a3
 	move.l	$8(a3),d4
 	asr.l	#$8,d4

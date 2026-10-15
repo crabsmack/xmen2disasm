@@ -12,7 +12,7 @@ loc_01043C:
 	moveq	#$0,d0
 	move.w	$9C(a4),d0
 	move.l	d0,-(a7)
-	jsr	$517A(a5)	; -> sub_1FDEF8
+	jsr	$517A(a5)	; -> Math_SinDeg
 	moveq	#$A,d1
 	asr.l	d1,d0
 	add.l	d0,$C(a4)

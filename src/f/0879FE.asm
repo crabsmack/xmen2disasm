@@ -17,7 +17,7 @@ sub_0879FE:
 	pea.l	-$1652(a5)
 	movea.l	$8(a6),a0
 	move.l	$84(a0),-(a7)
-	jsr	$406A(a5)	; -> sub_15DF66
+	jsr	$406A(a5)	; -> List_Unlink
 	movea.l	$8(a6),a0
 	moveq	#$0,d0
 	move.l	d0,$84(a0)

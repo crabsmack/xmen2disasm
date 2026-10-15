@@ -11,7 +11,7 @@ sub_13DE5E:
 	moveq	#$0,d0
 	move.l	d0,-(a7)
 	pea.l	$4(a4)
-	jsr	$4DB2(a5)	; -> sub_1F4900
+	jsr	$4DB2(a5)	; -> Mem_Set
 	move.b	d6,$C(a4)
 	tst.b	d7
 	beq.s	loc_13DE8E

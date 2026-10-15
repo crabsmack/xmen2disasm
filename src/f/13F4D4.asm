@@ -63,7 +63,7 @@ loc_13F55C:
 	moveq	#$0,d0
 	move.l	d0,-(a7)
 	move.l	a3,-(a7)
-	jsr	$4DB2(a5)	; -> sub_1F4900
+	jsr	$4DB2(a5)	; -> Mem_Set
 	move.l	a4,d0
 	lea.l	$14(a7),a7
 	movem.l	-$10(a6),d6-d7/a3-a4

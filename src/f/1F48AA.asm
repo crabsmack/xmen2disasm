@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_1F48AA
+; Mem_Copy - copy N bytes from src to dst (memcpy, no overlap handling)
+; In:  8(a6) = dst   $C(a6) = src   $10(a6) = long: count
+; Out: none
+; Evidence: over 16 bytes with equal alignment: 16-byte unrolled long moves; byte loop for the rest
 ; ---------------------------------------------------------------------------
-sub_1F48AA:
+Mem_Copy:
 	movem.l	$4(a7),a0-a1
 	move.l	a0,d0
 	move.l	d2,-(a7)

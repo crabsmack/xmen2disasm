@@ -16,7 +16,7 @@ sub_05D1DA:
 	bra.s	loc_05D220
 loc_05D1FE:
 	move.l	a4,-(a7)
-	jsr	$4EAA(a5)	; -> sub_1F694A
+	jsr	$4EAA(a5)	; -> Player_Nearest
 	movea.l	d0,a3
 	move.l	$8(a3),d0
 	cmp.l	$8(a4),d0

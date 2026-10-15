@@ -15,7 +15,7 @@ sub_111DEA:
 	moveq	#$0,d1
 	move.l	d1,-(a7)
 	move.l	-$3B18(a5),-(a7)
-	jsr	$4DB2(a5)	; -> sub_1F4900
+	jsr	$4DB2(a5)	; -> Mem_Set
 	lea.l	$C(a7),a7
 loc_111E16:
 	moveq	#$1,d0

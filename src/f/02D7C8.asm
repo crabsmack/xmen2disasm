@@ -82,7 +82,7 @@ loc_02D8A8:
 	move.w	$98(a4),d0
 	ext.l	d0
 	move.l	d0,-(a7)
-	jsr	$517A(a5)	; -> sub_1FDEF8
+	jsr	$517A(a5)	; -> Math_SinDeg
 	move.b	$9E(a4),d1
 	asr.l	d1,d0
 	add.l	d0,$8(a4)
@@ -106,7 +106,7 @@ loc_02D8EC:
 	move.w	$9A(a4),d0
 	ext.l	d0
 	move.l	d0,-(a7)
-	jsr	$517A(a5)	; -> sub_1FDEF8
+	jsr	$517A(a5)	; -> Math_SinDeg
 	move.b	$9F(a4),d1
 	asr.l	d1,d0
 	add.l	d0,$C(a4)

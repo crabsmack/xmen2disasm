@@ -23,7 +23,7 @@ sub_11F1A6:
 	move.l	d7,-(a7)
 	pea.l	($FF).w
 	move.l	-$1A98(a5),-(a7)
-	jsr	$4DB2(a5)	; -> sub_1F4900
+	jsr	$4DB2(a5)	; -> Mem_Set
 	movea.l	-$1A98(a5),a0
 	move.w	d6,(a0)
 	lea.l	-$1C9C(a5),a4
@@ -35,7 +35,7 @@ loc_11F1F6:
 	move.l	#$80,d1
 	jsr	$3FA2(a5)	; -> sub_15C222
 	move.l	d0,-(a7)
-	jsr	$517A(a5)	; -> sub_1FDEF8
+	jsr	$517A(a5)	; -> Math_SinDeg
 	move.l	d0,(a4)
 	addq.w	#$4,a7
 	move.w	d7,d0

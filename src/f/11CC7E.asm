@@ -11,7 +11,7 @@ sub_11CC7E:
 	clr.l	$16(a4)
 	clr.w	$20(a4)
 	move.l	a4,-(a7)
-	jsr	$4EAA(a5)	; -> sub_1F694A
+	jsr	$4EAA(a5)	; -> Player_Nearest
 	movea.l	d0,a3
 	move.l	$9C(a4),d0
 	sub.l	$8(a3),d0

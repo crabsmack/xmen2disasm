@@ -17,7 +17,7 @@ sub_05B08E:
 	add.l	d2,d1
 	pea.l	(a0,d1.l)
 	move.l	$8(a6),-(a7)
-	jsr	$4DAA(a5)	; -> sub_1F48AA
+	jsr	$4DAA(a5)	; -> Mem_Copy
 	move.w	-$3C64(a5),d0
 	subq.w	#$1,-$3C64(a5)
 loc_05B0C4:

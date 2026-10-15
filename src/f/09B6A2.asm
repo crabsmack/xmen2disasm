@@ -98,7 +98,7 @@ loc_09B7A2:
 	moveq	#$0,d1
 	move.l	d1,-(a7)
 	pea.l	-$10(a6)
-	jsr	$4DB2(a5)	; -> sub_1F4900
+	jsr	$4DB2(a5)	; -> Mem_Set
 	move.l	$8(a4),d0
 	asr.l	#$8,d0
 	add.w	#$FFD8,d0

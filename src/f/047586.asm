@@ -12,7 +12,7 @@ loc_047586:
 	move.l	d0,-(a7)
 	move.l	a4,-(a7)
 	pea.l	-$392C(a5)
-	jsr	$4DAA(a5)	; -> sub_1F48AA
+	jsr	$4DAA(a5)	; -> Mem_Copy
 	lea.l	$C(a7),a7
 loc_0475AA:
 	movem.l	-$8(a6),a3-a4

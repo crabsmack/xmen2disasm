@@ -9,7 +9,7 @@ sub_1227B4:
 	ext.l	d0
 	lsl.l	#$1,d0
 	move.l	d0,-(a7)
-	jsr	$517A(a5)	; -> sub_1FDEF8
+	jsr	$517A(a5)	; -> Math_SinDeg
 	move.l	d0,d6
 	asr.l	#$1,d6
 	move.w	$B2(a4),d0

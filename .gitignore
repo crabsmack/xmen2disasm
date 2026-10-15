@@ -24,5 +24,6 @@ emu/bin/
 emu/_src/
 emu/core/_build/
 emu/bizcore/_build/
+!emu/bizcore/*.h
 emu/runs/
 *.log

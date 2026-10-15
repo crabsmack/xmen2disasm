@@ -107,7 +107,7 @@ loc_1FBF8C:
 	addq.w	#$1,d7
 	cmp.w	d7,d3
 	bgt.s	loc_1FBF30
-	jsr	$4D9A(a5)	; -> sub_1F485A
+	jsr	$4D9A(a5)	; -> Irq_Disable
 	move.w	$E(a6),d0
 	ext.l	d0
 	lsl.l	#$5,d0
@@ -120,7 +120,7 @@ loc_1FBF8C:
 	pea.l	-$202(a6)
 	move.l	a3,-(a7)
 	jsr	$4102(a5)	; -> sub_15F37C
-	jsr	$4DA2(a5)	; -> sub_1F4854
+	jsr	$4DA2(a5)	; -> Irq_Enable
 	lea.l	$14(a7),a7
 loc_1FBFC2:
 	movem.l	-$21E(a6),d3-d7/a3-a4

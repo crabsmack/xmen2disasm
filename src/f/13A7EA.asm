@@ -19,7 +19,7 @@ sub_13A7EA:
 	moveq	#$0,d0
 	move.l	d0,-(a7)
 	move.l	-$1A7C(a5),-(a7)
-	jsr	$4DB2(a5)	; -> sub_1F4900
+	jsr	$4DB2(a5)	; -> Mem_Set
 	moveq	#$1,d0
 	move.l	d0,-(a7)
 	moveq	#$0,d1

@@ -6,7 +6,7 @@ sub_0C099C:
 	move.l	a4,-(a7)
 	movea.l	$8(a6),a4
 	move.l	a4,-(a7)
-	jsr	$4EAA(a5)	; -> sub_1F694A
+	jsr	$4EAA(a5)	; -> Player_Nearest
 	move.l	d0,$96(a4)
 	move.b	$B2(a4),d0
 	cmpi.b	#$5,d0

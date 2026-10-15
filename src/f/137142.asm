@@ -20,7 +20,7 @@ sub_137142:
 	lea.l	$14(a7),a7
 	beq.w	loc_137246
 	move.l	a4,-(a7)
-	jsr	$4EAA(a5)	; -> sub_1F694A
+	jsr	$4EAA(a5)	; -> Player_Nearest
 	movea.l	d0,a3
 	move.l	$8(a3),d0
 	cmp.l	$8(a4),d0

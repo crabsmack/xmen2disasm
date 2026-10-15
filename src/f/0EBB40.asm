@@ -35,7 +35,7 @@ sub_0EBB40:
 	moveq	#$0,d1
 	move.l	d1,-(a7)
 	pea.l	$92(a4)
-	jsr	$4DB2(a5)	; -> sub_1F4900
+	jsr	$4DB2(a5)	; -> Mem_Set
 	move.w	$6(a3),d7
 	beq.s	loc_0EBBC4
 	move.w	d7,$8C(a4)

@@ -64,7 +64,7 @@ loc_1FADDC:
 	move.b	d0,d1
 	move.w	d1,d7
 	addq.w	#$1,d7
-	jsr	$4D9A(a5)	; -> sub_1F485A
+	jsr	$4D9A(a5)	; -> Irq_Disable
 	ext.l	d4
 	move.l	d4,d0
 	lsl.l	#$5,d0
@@ -88,7 +88,7 @@ loc_1FADDC:
 	move.l	d0,-(a7)
 	move.l	a4,-(a7)
 	jsr	$519A(a5)	; -> sub_1FE002
-	jsr	$4DA2(a5)	; -> sub_1F4854
+	jsr	$4DA2(a5)	; -> Irq_Enable
 	add.w	d7,d4
 	addq.w	#$8,a7
 loc_1FAE46:
@@ -133,7 +133,7 @@ loc_1FAE94:
 	move.b	(a0),d0
 	ext.w	d0
 	move.w	d0,d7
-	jsr	$4D9A(a5)	; -> sub_1F485A
+	jsr	$4D9A(a5)	; -> Irq_Disable
 	movea.l	-$208(a6),a0
 	moveq	#$14,d0
 	cmp.b	(a0),d0
@@ -183,7 +183,7 @@ loc_1FAEFE:
 	jsr	$4102(a5)	; -> sub_15F37C
 	lea.l	$14(a7),a7
 loc_1FAF24:
-	jsr	$4DA2(a5)	; -> sub_1F4854
+	jsr	$4DA2(a5)	; -> Irq_Enable
 	add.w	d7,d4
 loc_1FAF2A:
 	addq.l	#$4,a3

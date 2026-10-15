@@ -8,12 +8,12 @@ sub_1125B8:
 	ori.w	#$2,$6(a4)
 	pea.l	-$1652(a5)
 	move.l	$84(a4),-(a7)
-	jsr	$406A(a5)	; -> sub_15DF66
+	jsr	$406A(a5)	; -> List_Unlink
 	moveq	#$0,d0
 	move.l	d0,$84(a4)
 	pea.l	-$1656(a5)
 	move.l	$80(a4),-(a7)
-	jsr	$406A(a5)	; -> sub_15DF66
+	jsr	$406A(a5)	; -> List_Unlink
 	moveq	#$0,d0
 	move.l	d0,$80(a4)
 	move.w	#$C,-$3B06(a5)

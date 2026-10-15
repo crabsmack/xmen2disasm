@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_15DF66	[jt 2057]
+; List_Unlink - unlink a node from a doubly linked list and clear its owner field
+; In:  8(a6) = node {+0 next, +4 prev, +8 owner}   $C(a6) = pointer to the list head
+; Out: d0 = 0
+; Evidence: fixes prev->next and next->prev, advances *head if node was the head, clears node+8; 26 callers
 ; ---------------------------------------------------------------------------
-sub_15DF66:
+List_Unlink:
 	link.w	a6,#$0
 	movem.l	a3-a4,-(a7)
 	movea.l	$C(a6),a3

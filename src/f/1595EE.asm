@@ -113,14 +113,14 @@ loc_159728:
 	move.l	-$14(a6),d0
 	asr.l	#$8,d0
 	move.l	d0,-(a7)
-	jsr	$5172(a5)	; -> sub_1FDEEA
+	jsr	$5172(a5)	; -> Math_CosDeg
 	moveq	#$B,d1
 	move.l	d0,d5
 	asr.l	d1,d5
 	move.l	-$14(a6),d0
 	asr.l	#$8,d0
 	move.l	d0,-(a7)
-	jsr	$517A(a5)	; -> sub_1FDEF8
+	jsr	$517A(a5)	; -> Math_SinDeg
 	neg.l	d0
 	moveq	#$B,d1
 	move.l	d0,d6

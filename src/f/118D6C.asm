@@ -105,7 +105,7 @@ loc_118E4E:
 	asl.l	#$5,d1
 	pea.l	$8(a0,d1.l)
 	move.l	a3,-(a7)
-	jsr	$4DAA(a5)	; -> sub_1F48AA
+	jsr	$4DAA(a5)	; -> Mem_Copy
 	lea.l	$C(a7),a7
 	bra.w	loc_11907C
 loc_118E7C:
@@ -172,7 +172,7 @@ loc_118E94:
 	asl.l	#$5,d1
 	pea.l	$8(a0,d1.l)
 	move.l	a3,-(a7)
-	jsr	$4DAA(a5)	; -> sub_1F48AA
+	jsr	$4DAA(a5)	; -> Mem_Copy
 	lea.l	$C(a7),a7
 	bra.w	loc_11907C
 loc_118F34:
@@ -207,7 +207,7 @@ loc_118F72:
 	asl.l	#$5,d1
 	pea.l	$8(a0,d1.l)
 	move.l	a3,-(a7)
-	jsr	$4DAA(a5)	; -> sub_1F48AA
+	jsr	$4DAA(a5)	; -> Mem_Copy
 	lea.l	$C(a7),a7
 	bra.w	loc_11907C
 loc_118F9E:

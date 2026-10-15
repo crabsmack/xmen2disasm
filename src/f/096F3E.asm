@@ -32,7 +32,7 @@ loc_096F7A:
 	bra.s	loc_09700C
 loc_096F94:
 	move.l	a3,-(a7)
-	jsr	$4EAA(a5)	; -> sub_1F694A
+	jsr	$4EAA(a5)	; -> Player_Nearest
 	move.l	d0,-$4(a6)
 	move.l	$8(a3),d0
 	asr.l	#$8,d0

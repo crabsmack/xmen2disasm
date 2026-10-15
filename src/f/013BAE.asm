@@ -38,7 +38,7 @@ loc_013C00:
 	bra.w	loc_013D1C
 loc_013C1C:
 	move.l	a4,-(a7)
-	jsr	$4EAA(a5)	; -> sub_1F694A
+	jsr	$4EAA(a5)	; -> Player_Nearest
 	movea.l	d0,a3
 	move.l	$8(a3),d5
 	asr.l	#$8,d5

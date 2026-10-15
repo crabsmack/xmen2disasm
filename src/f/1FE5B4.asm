@@ -2,8 +2,8 @@
 ; sub_1FE5B4
 ; ---------------------------------------------------------------------------
 sub_1FE5B4:
-	jsr	sub_1FE4B6(pc)
+	jsr	Z80_BusAcquire(pc)
 	tst.b	-$18AC(a5)
-	bne.w	loc_1FE4EC
+	bne.w	Z80_BusRelease
 	moveq	#$20,d0
 	bra.s	loc_1FE592

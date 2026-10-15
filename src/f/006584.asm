@@ -52,7 +52,7 @@ loc_006610:
 	lea.l	$C(a7),a7
 loc_006624:
 	jsr	sub_006386(pc)
-	jsr	$5112(a5)	; -> sub_1FDC5C
+	jsr	$5112(a5)	; -> VDP_WaitVBlank
 	movem.l	-$8(a6),a3-a4
 	unlk	a6
 	rts

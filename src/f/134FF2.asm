@@ -16,7 +16,7 @@ sub_134FF2:
 	add.l	d2,d1
 	move.w	d1,-$2(a6)
 	move.l	a4,-(a7)
-	jsr	$4EAA(a5)	; -> sub_1F694A
+	jsr	$4EAA(a5)	; -> Player_Nearest
 	movea.l	d0,a3
 	tst.b	$A7(a4)
 	addq.w	#$4,a7

@@ -24,7 +24,7 @@ loc_0655F0:
 	move.w	#$2,-$3B02(a5)
 loc_0655F6:
 	jsr	sub_064E9C(pc)
-	jsr	$5112(a5)	; -> sub_1FDC5C
+	jsr	$5112(a5)	; -> VDP_WaitVBlank
 	subq.w	#$1,d7
 	tst.w	d7
 	beq.w	loc_06569A

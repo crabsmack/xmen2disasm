@@ -8,7 +8,7 @@ sub_135610:
 	move.l	$8(a4),d6
 	asr.l	#$8,d6
 	move.l	a4,-(a7)
-	jsr	$4EAA(a5)	; -> sub_1F694A
+	jsr	$4EAA(a5)	; -> Player_Nearest
 	movea.l	d0,a3
 	move.l	$8(a3),d7
 	asr.l	#$8,d7

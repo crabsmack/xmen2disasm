@@ -617,10 +617,10 @@ loc_1F5E46:
 	clr.w	-$3AC6(a5)
 	clr.w	-$3AC8(a5)
 loc_1F5ED2:
-	jsr	$4D9A(a5)	; -> sub_1F485A
+	jsr	$4D9A(a5)	; -> Irq_Disable
 	movea.l	-$3A50(a5),a0
 	jsr	(a0)
-	jsr	$4DA2(a5)	; -> sub_1F4854
+	jsr	$4DA2(a5)	; -> Irq_Enable
 	move.b	$2F(a6),d5
 	move.b	d5,-$3AB4(a5)
 	move.b	d5,-$3AB6(a5)

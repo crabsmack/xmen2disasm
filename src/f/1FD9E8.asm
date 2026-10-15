@@ -15,7 +15,7 @@ loc_1FDA02:
 	moveq	#$0,d0
 	bra.s	loc_1FDA4E
 loc_1FDA06:
-	jsr	$4D9A(a5)	; -> sub_1F485A
+	jsr	$4D9A(a5)	; -> Irq_Disable
 	jsr	$51F2(a5)	; -> sub_1FE3D8
 	tst.b	d7
 	beq.s	loc_1FDA1A
@@ -27,7 +27,7 @@ loc_1FDA1A:
 	move.w	d0,d7
 loc_1FDA20:
 	jsr	$51FA(a5)	; -> sub_1FE3EC
-	jsr	$4DA2(a5)	; -> sub_1F4854
+	jsr	$4DA2(a5)	; -> Irq_Enable
 	moveq	#$C,d0
 	and.w	d7,d0
 	moveq	#$0,d1

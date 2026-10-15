@@ -24,7 +24,7 @@ sub_121CD6:
 	move.l	d0,-(a7)
 	pea.l	($FF).w
 	move.l	a4,-(a7)
-	jsr	$4DB2(a5)	; -> sub_1F4900
+	jsr	$4DB2(a5)	; -> Mem_Set
 	clr.w	d6
 	moveq	#$10,d3
 	lea.l	$C(a7),a7

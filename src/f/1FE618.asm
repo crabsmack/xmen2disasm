@@ -7,4 +7,4 @@ loc_1FE618:
 	jsr	sub_1FE50A(pc)
 	move.l	$C(a6),d0
 	jsr	sub_1FE50A(pc)
-	jmp	loc_1FE4EC(pc)
+	jmp	Z80_BusRelease(pc)

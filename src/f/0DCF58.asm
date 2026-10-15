@@ -14,7 +14,7 @@ sub_0DCF58:
 	jsr	$4E4A(a5)	; -> sub_1F6296
 	pea.l	-$1656(a5)
 	move.l	$80(a4),-(a7)
-	jsr	$406A(a5)	; -> sub_15DF66
+	jsr	$406A(a5)	; -> List_Unlink
 	moveq	#$0,d0
 	move.l	d0,$80(a4)
 	moveq	#$2,d0

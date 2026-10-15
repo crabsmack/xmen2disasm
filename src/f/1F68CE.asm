@@ -17,7 +17,7 @@ sub_1F68CE:
 	lea.l	$10(a7),a7
 	bra.s	loc_1F6900
 loc_1F68FC:
-	jsr	$5112(a5)	; -> sub_1FDC5C
+	jsr	$5112(a5)	; -> VDP_WaitVBlank
 loc_1F6900:
 	tst.b	-$3A02(a5)
 	bne.s	loc_1F68FC

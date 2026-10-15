@@ -7,7 +7,7 @@ sub_0DC816:
 	movea.l	$8(a6),a4
 	moveq	#$1,d6
 	move.l	a4,-(a7)
-	jsr	$4EAA(a5)	; -> sub_1F694A
+	jsr	$4EAA(a5)	; -> Player_Nearest
 	movea.l	d0,a3
 	move.w	$4E(a3),d0
 	ext.l	d0

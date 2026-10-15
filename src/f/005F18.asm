@@ -21,12 +21,12 @@ sub_005F18:
 	bne.s	loc_005F9E
 	pea.l	-$165E(a5)
 	move.l	-$17C8(a5),-(a7)
-	jsr	$406A(a5)	; -> sub_15DF66
+	jsr	$406A(a5)	; -> List_Unlink
 	moveq	#$0,d0
 	move.l	d0,-$17C8(a5)
 	pea.l	-$165A(a5)
 	move.l	-$17C4(a5),-(a7)
-	jsr	$406A(a5)	; -> sub_15DF66
+	jsr	$406A(a5)	; -> List_Unlink
 	moveq	#$0,d0
 	move.l	d0,-$17C4(a5)
 	pea.l	-$1656(a5)

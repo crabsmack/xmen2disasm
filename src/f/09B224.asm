@@ -41,7 +41,7 @@ loc_09B292:
 	asr.l	#$1,d5
 	ext.l	d5
 	move.l	d5,-(a7)
-	jsr	$517A(a5)	; -> sub_1FDEF8
+	jsr	$517A(a5)	; -> Math_SinDeg
 	asr.l	#$3,d0
 	add.w	d0,d7
 	tst.l	$9C(a4)

@@ -58,7 +58,7 @@ loc_1FA764:
 	lea.l	$18(a7),a7
 	bra.s	loc_1FA7C8
 loc_1FA7C4:
-	jsr	$5112(a5)	; -> sub_1FDC5C
+	jsr	$5112(a5)	; -> VDP_WaitVBlank
 loc_1FA7C8:
 	tst.b	-$3A02(a5)
 	bne.s	loc_1FA7C4

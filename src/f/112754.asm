@@ -48,7 +48,7 @@ loc_1127DA:
 	move.l	d0,-(a7)
 	move.l	-$35A2(a5),-(a7)
 	pea.l	-$3940(a5)
-	jsr	$4DAA(a5)	; -> sub_1F48AA
+	jsr	$4DAA(a5)	; -> Mem_Copy
 	move.b	#$1,-$3A06(a5)
 	moveq	#$2,d0
 	and.l	-$35A2(a5),d0

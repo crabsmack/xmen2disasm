@@ -416,7 +416,7 @@ loc_15D3E6:
 	move.w	-$E(a6),d1
 	eor.l	d1,d0
 	move.w	d0,d5
-	jsr	$4D9A(a5)	; -> sub_1F485A
+	jsr	$4D9A(a5)	; -> Irq_Disable
 	moveq	#$0,d0
 	move.w	d6,d0
 	move.w	#$3FFF,d1
@@ -437,7 +437,7 @@ loc_15D3E6:
 	add.l	d0,d1
 	move.l	d1,($C00004).l
 	move.w	d5,($C00000).l
-	jsr	$4DA2(a5)	; -> sub_1F4854
+	jsr	$4DA2(a5)	; -> Irq_Enable
 	move.w	d7,d0
 	addq.w	#$1,d7
 	subq.w	#$2,-$28(a6)
@@ -509,7 +509,7 @@ loc_15D4F4:
 	move.w	-$E(a6),d0
 	eor.l	d0,d1
 	move.w	d1,d5
-	jsr	$4D9A(a5)	; -> sub_1F485A
+	jsr	$4D9A(a5)	; -> Irq_Disable
 	moveq	#$0,d0
 	move.w	d6,d0
 	move.w	#$3FFF,d1
@@ -530,7 +530,7 @@ loc_15D4F4:
 	add.l	d0,d1
 	move.l	d1,($C00004).l
 	move.w	d5,($C00000).l
-	jsr	$4DA2(a5)	; -> sub_1F4854
+	jsr	$4DA2(a5)	; -> Irq_Enable
 	move.w	d7,d0
 	addq.w	#$1,d7
 	subq.w	#$2,-$28(a6)
@@ -606,7 +606,7 @@ loc_15D606:
 	move.w	-$E(a6),d0
 	eor.l	d0,d1
 	move.w	d1,d5
-	jsr	$4D9A(a5)	; -> sub_1F485A
+	jsr	$4D9A(a5)	; -> Irq_Disable
 	moveq	#$0,d0
 	move.w	d6,d0
 	move.w	#$3FFF,d1
@@ -627,7 +627,7 @@ loc_15D606:
 	add.l	d0,d1
 	move.l	d1,($C00004).l
 	move.w	d5,($C00000).l
-	jsr	$4DA2(a5)	; -> sub_1F4854
+	jsr	$4DA2(a5)	; -> Irq_Enable
 	move.w	d7,d0
 	addq.w	#$1,d7
 loc_15D6B6:
@@ -697,7 +697,7 @@ loc_15D702:
 	move.w	d2,d0
 	eor.l	d0,d1
 	move.w	d1,d5
-	jsr	$4D9A(a5)	; -> sub_1F485A
+	jsr	$4D9A(a5)	; -> Irq_Disable
 	moveq	#$0,d0
 	move.w	d6,d0
 	move.w	#$3FFF,d1
@@ -718,7 +718,7 @@ loc_15D702:
 	add.l	d0,d1
 	move.l	d1,($C00004).l
 	move.w	d5,($C00000).l
-	jsr	$4DA2(a5)	; -> sub_1F4854
+	jsr	$4DA2(a5)	; -> Irq_Enable
 	move.w	d7,d0
 	addq.w	#$1,d7
 loc_15D7B2:

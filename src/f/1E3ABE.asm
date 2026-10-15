@@ -66,7 +66,7 @@ loc_1E3B64:
 	moveq	#$0,d1
 	move.l	d1,-(a7)
 	pea.l	$BC(a4)
-	jsr	$4DB2(a5)	; -> sub_1F4900
+	jsr	$4DB2(a5)	; -> Mem_Set
 	move.b	#$FF,$C6(a4)
 	move.w	#$FFFF,$C2(a4)
 	lea.l	$28(a7),a7

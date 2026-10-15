@@ -88,12 +88,12 @@ loc_037D10:
 	add.l	d0,d1
 	move.w	d1,-$14(a6)
 	move.l	-$8(a6),-(a7)
-	jsr	$517A(a5)	; -> sub_1FDEF8
+	jsr	$517A(a5)	; -> Math_SinDeg
 	move.w	$9C(a4),d1
 	asr.l	d1,d0
 	move.l	d0,-$12(a6)
 	move.l	-$4(a6),-(a7)
-	jsr	$5172(a5)	; -> sub_1FDEEA
+	jsr	$5172(a5)	; -> Math_CosDeg
 	move.w	$A4(a4),d1
 	move.l	d0,d7
 	asr.l	d1,d7

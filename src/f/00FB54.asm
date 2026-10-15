@@ -58,10 +58,10 @@ loc_00FBE0:
 	move.b	#$1,-$3A06(a5)
 	addi.w	#$100,-$3ACC(a5)
 	clr.b	-$13F0(a5)
-	jsr	$4D9A(a5)	; -> sub_1F485A
+	jsr	$4D9A(a5)	; -> Irq_Disable
 	movea.l	-$3A50(a5),a0
 	jsr	(a0)
-	jsr	$4DA2(a5)	; -> sub_1F4854
+	jsr	$4DA2(a5)	; -> Irq_Enable
 	movem.l	-$C(a6),d3/d7/a4
 	unlk	a6
 	rts

@@ -9,7 +9,7 @@ sub_11286E:
 	move.l	d0,-(a7)
 	move.l	-$35A2(a5),-(a7)
 	pea.l	-$3940(a5)
-	jsr	$4DAA(a5)	; -> sub_1F48AA
+	jsr	$4DAA(a5)	; -> Mem_Copy
 	move.b	#$1,-$3A06(a5)
 	lea.l	$C(a7),a7
 	move.w	#$2,$6C(a4)

@@ -10,14 +10,14 @@ sub_10BB6E:
 	moveq	#$0,d1
 	move.l	d1,-(a7)
 	pea.l	-$BC(a6)
-	jsr	$4DB2(a5)	; -> sub_1F4900
+	jsr	$4DB2(a5)	; -> Mem_Set
 	lea.l	-$A8(a6),a0
 	move.l	a0,-$3BC8(a5)
 	pea.l	($A8).w
 	moveq	#$0,d0
 	move.l	d0,-(a7)
 	pea.l	-$A8(a6)
-	jsr	$4DB2(a5)	; -> sub_1F4900
+	jsr	$4DB2(a5)	; -> Mem_Set
 	lea.l	$2A7A(a5),a0
 	movea.l	-$3BC4(a5),a1
 	move.l	$2(a0),(a1)

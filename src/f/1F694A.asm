@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_1F694A	[jt 2513]
+; Player_Nearest - return the player object nearer to a given object (Manhattan distance)
+; In:  8(a6) = object (x at +8, y at +$C, 16.16)
+; Out: d0 = pointer to player object $FFEAA8 or $FFE9B8
+; Evidence: a player counts only if its flags word (+4) has bits $C000 = $8000 (present, not dying); falls back to the other one; 65 callers (enemy AI targeting)
 ; ---------------------------------------------------------------------------
-sub_1F694A:
+Player_Nearest:
 	link.w	a6,#$FFF4
 	movem.l	d3-d7/a4,-(a7)
 	movea.l	$8(a6),a4

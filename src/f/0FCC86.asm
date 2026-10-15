@@ -6,10 +6,10 @@ sub_0FCC86:
 	jsr	sub_0FCB8E(pc)
 	addi.w	#$100,-$3ACC(a5)
 	clr.b	-$13F0(a5)
-	jsr	$4D9A(a5)	; -> sub_1F485A
+	jsr	$4D9A(a5)	; -> Irq_Disable
 	movea.l	-$3A50(a5),a0
 	jsr	(a0)
-	jsr	$4DA2(a5)	; -> sub_1F4854
+	jsr	$4DA2(a5)	; -> Irq_Enable
 	jsr	$82(a5)	; -> sub_006B64
 	unlk	a6
 	rts

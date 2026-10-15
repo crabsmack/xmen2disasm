@@ -105,12 +105,12 @@ loc_1F6222:
 	beq.s	loc_1F622E
 	andi.w	#$FF,-$3AC8(a5)
 loc_1F622E:
-	jsr	$4D9A(a5)	; -> sub_1F485A
+	jsr	$4D9A(a5)	; -> Irq_Disable
 	movea.l	-$3A54(a5),a0
 	jsr	(a0)
 	movea.l	-$3A50(a5),a0
 	jsr	(a0)
-	jsr	$4DA2(a5)	; -> sub_1F4854
+	jsr	$4DA2(a5)	; -> Irq_Enable
 	move.b	#$1,-$3A56(a5)
 	move.b	-$3A64(a5),-$3A58(a5)
 loc_1F624E:

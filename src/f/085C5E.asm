@@ -17,7 +17,7 @@ sub_085C5E:
 	moveq	#$0,d1
 	move.l	d1,-(a7)
 	move.l	a4,-(a7)
-	jsr	$4DB2(a5)	; -> sub_1F4900
+	jsr	$4DB2(a5)	; -> Mem_Set
 	lea.l	$14EA(a5),a0
 	move.l	$2(a0),(a4)
 	move.w	$E(a6),$8(a4)

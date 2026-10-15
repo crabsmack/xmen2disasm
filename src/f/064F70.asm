@@ -173,7 +173,7 @@ loc_065140:
 	move.w	(a0,d0.l),-$3912(a5)
 	move.b	#$1,-$3A06(a5)
 	jsr	sub_064E9C(pc)
-	jsr	$5112(a5)	; -> sub_1FDC5C
+	jsr	$5112(a5)	; -> VDP_WaitVBlank
 	move.w	d7,d0
 	addq.w	#$1,d7
 	cmpi.w	#$6,d7
@@ -221,7 +221,7 @@ loc_0651D2:
 	move.w	d0,($C00000).l
 loc_0651E4:
 	jsr	sub_064E9C(pc)
-	jsr	$5112(a5)	; -> sub_1FDC5C
+	jsr	$5112(a5)	; -> VDP_WaitVBlank
 	addq.w	#$1,d6
 	addq.w	#$1,a4
 loc_0651F0:
@@ -282,9 +282,9 @@ loc_06527E:
 	move.w	(a0,d0.l),-$3912(a5)
 	move.b	#$1,-$3A06(a5)
 	jsr	sub_064E9C(pc)
-	jsr	$5112(a5)	; -> sub_1FDC5C
+	jsr	$5112(a5)	; -> VDP_WaitVBlank
 	jsr	sub_064E9C(pc)
-	jsr	$5112(a5)	; -> sub_1FDC5C
+	jsr	$5112(a5)	; -> VDP_WaitVBlank
 	move.w	d7,d0
 	addq.w	#$1,d7
 	cmpi.w	#$6,d7

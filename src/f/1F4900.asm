@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_1F4900
+; Mem_Set - fill N bytes with a byte value (memset)
+; In:  8(a6) = dst   $C(a6) = long: fill byte   $10(a6) = long: count
+; Out: d0 = dst
+; Evidence: over 18 bytes: aligns dst, then 16-byte unrolled long stores of the replicated byte; byte loop for the rest
 ; ---------------------------------------------------------------------------
-sub_1F4900:
+Mem_Set:
 	movea.l	$4(a7),a0
 	movem.l	$8(a7),d0-d1
 	cmpi.l	#$13,d1

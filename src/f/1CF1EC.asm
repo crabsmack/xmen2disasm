@@ -16,7 +16,7 @@ sub_1CF1EC:
 	ext.l	d6
 	ext.l	d4
 	move.l	d4,-(a7)
-	jsr	$5172(a5)	; -> sub_1FDEEA
+	jsr	$5172(a5)	; -> Math_CosDeg
 	move.l	d0,d1
 	move.l	d6,d0
 	jsr	$3F9A(a5)	; -> sub_15C1FC
@@ -25,7 +25,7 @@ sub_1CF1EC:
 	ext.l	d6
 	ext.l	d4
 	move.l	d4,-(a7)
-	jsr	$517A(a5)	; -> sub_1FDEF8
+	jsr	$517A(a5)	; -> Math_SinDeg
 	move.l	d0,d1
 	move.l	d6,d0
 	jsr	$3F9A(a5)	; -> sub_15C1FC

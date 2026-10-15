@@ -2,6 +2,7 @@
 
     uv run tools/xref.py sub_0054C6        # callers, callees, globals, strings
     uv run tools/xref.py --todo [N]        # next unnamed functions to work on
+    uv run tools/xref.py --todo 40 --range 080000 0E0000   # only functions in [lo, hi) (parallel mode)
 
 --todo ranks unnamed functions so understanding compounds: functions whose
 callees are all already named (or that call nothing) come first, then by how
@@ -51,6 +52,7 @@ def main() -> int:
     ap.add_argument("--todo", nargs="?", const=25, type=int)
     ap.add_argument("--sample", type=int, help="print N random human-named functions (for /review-names)")
     ap.add_argument("--seed", type=int, default=0)
+    ap.add_argument("--range", nargs=2, metavar=("LO", "HI"), help="hex [lo, hi): restrict --todo to a range")
     args = ap.parse_args()
     funcs = load()
     if args.sample:
@@ -66,6 +68,8 @@ def main() -> int:
         for n in funcs:
             if not AUTO.match(n):
                 continue
+            if args.range and not int(args.range[0], 16) <= int(funcs[n][0].stem, 16) < int(args.range[1], 16):
+                continue
             unnamed_callees = [c for c in callees[n] if AUTO.match(c)]
             size = sum(1 for line in funcs[n][1].splitlines() if line.startswith("\t"))
             rows.append((len(unnamed_callees), -len(callers[n]), size, n))
@@ -73,8 +77,10 @@ def main() -> int:
         print(f"{'function':14} {'callers':>7} {'unnamed callees':>15} {'ins':>5}")
         for unn, ncall, size, n in rows[:args.todo]:
             print(f"{n:14} {-ncall:7d} {unn:15d} {size:5d}  {funcs[n][0].name}")
-        named = sum(1 for n in funcs if not AUTO.match(n))
-        print(f"\nnamed {named}/{len(funcs)} functions")
+        scope = [n for n in funcs if not args.range
+                 or int(args.range[0], 16) <= int(funcs[n][0].stem, 16) < int(args.range[1], 16)]
+        named = sum(1 for n in scope if not AUTO.match(n))
+        print(f"\nnamed {named}/{len(scope)} functions" + (" in range" if args.range else ""))
         return 0
 
     if not args.name or args.name not in funcs:

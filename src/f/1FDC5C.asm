@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_1FDC5C	[jt 2590]
+; VDP_WaitVBlank - wait for the start of the next vertical blank (when enabled)
+; In:  none
+; Out: none
+; Evidence: clears byte -$3A0C(a5); if word -$1D48(a5) has bit 6 set, polls VDP status ($C00004) bit 3 (VBLANK) until it falls then rises
 ; ---------------------------------------------------------------------------
-sub_1FDC5C:
+VDP_WaitVBlank:
 	link.w	a6,#$0
 	clr.b	-$3A0C(a5)
 	moveq	#$40,d0

@@ -76,13 +76,13 @@ loc_11129A:
 	move.l	(a4),d0
 	asr.l	#$8,d0
 	move.l	d0,-(a7)
-	jsr	$5172(a5)	; -> sub_1FDEEA
+	jsr	$5172(a5)	; -> Math_CosDeg
 	move.l	d0,d6
 	asr.l	#$8,d6
 	move.l	(a4),d0
 	asr.l	#$8,d0
 	move.l	d0,-(a7)
-	jsr	$517A(a5)	; -> sub_1FDEF8
+	jsr	$517A(a5)	; -> Math_SinDeg
 	asr.l	#$8,d0
 	neg.l	d0
 	move.l	d0,d7

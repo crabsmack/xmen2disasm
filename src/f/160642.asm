@@ -20,7 +20,7 @@ sub_160642:
 	move.l	d0,-$3A14(a5)
 loc_160676:
 	move.l	#$FF0000,-$348C(a5)
-	jsr	$4DA2(a5)	; -> sub_1F4854
+	jsr	$4DA2(a5)	; -> Irq_Enable
 	tst.b	-$202(a5)
 	beq.s	loc_160690
 	move.w	#$8B08,-$204(a5)

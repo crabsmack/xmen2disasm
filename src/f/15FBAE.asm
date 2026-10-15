@@ -2,7 +2,7 @@
 ; sub_15FBAE
 ; ---------------------------------------------------------------------------
 sub_15FBAE:
-	jsr	$5112(a5)	; -> sub_1FDC5C
+	jsr	$5112(a5)	; -> VDP_WaitVBlank
 	move.l	$8(a6),d0
 	beq.s	loc_15FBBC
 	movea.l	d0,a0

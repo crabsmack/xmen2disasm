@@ -1,11 +1,14 @@
 ; ---------------------------------------------------------------------------
-; sub_1FDEF8
+; Math_SinDeg - sine of an angle in whole degrees, 16.16 fixed point
+; In:  8(a6) = word: angle in degrees (any range, wrapped to 0..359)
+; Out: d0 = long: sin(angle) * $10000 (90 -> $10000, 270 -> -$10000)
+; Evidence: wraps by 360, quadrant folding into the 90-word quarter-wave table Tbl_SineQuarter ($1FDE36)
 ; ---------------------------------------------------------------------------
-sub_1FDEF8:
+Math_SinDeg:
 	moveq	#$0,d0
 	move.w	$6(a7),d0
 loc_1FDEFE:
-	lea.l	$1FDE36(pc),a0
+	lea.l	Tbl_SineQuarter(pc),a0
 	move.w	#$168,d1
 	tst.w	d0
 	bpl.s	loc_1FDF0E

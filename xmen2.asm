@@ -3922,7 +3922,9 @@ Str_SiberiaB1Blizzard:	; C string, resource name looked up by sub_0054C6
 	include "src/f/1FDD0C.asm"
 	include "src/f/1FDD26.asm"
 	include "src/f/1FDD4C.asm"
-	incrom	$1FDD56,$194
+	incrom	$1FDD56,$E0
+Tbl_SineQuarter:	; 90 words: sin(0..89 deg) * $10000 (0 and 90 are special-cased in Math_SinDeg/Math_CosDeg)
+	incrom	$1FDE36,$B4
 	include "src/f/1FDEEA.asm"
 	include "src/f/1FDEF8.asm"
 	include "src/f/1FDF6C.asm"

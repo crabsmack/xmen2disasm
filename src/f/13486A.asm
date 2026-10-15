@@ -25,7 +25,7 @@ loc_1348A2:
 loc_1348AA:
 	ext.l	d7
 	move.l	d7,-(a7)
-	jsr	$517A(a5)	; -> sub_1FDEF8
+	jsr	$517A(a5)	; -> Math_SinDeg
 	move.w	-$6(a6),d1
 	move.l	d0,d6
 	asr.l	d1,d6

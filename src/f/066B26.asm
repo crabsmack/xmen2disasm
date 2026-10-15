@@ -115,7 +115,7 @@ loc_066CB2:
 	beq.s	loc_066D24
 	bra.s	loc_066CBE
 loc_066CBA:
-	jsr	$5112(a5)	; -> sub_1FDC5C
+	jsr	$5112(a5)	; -> VDP_WaitVBlank
 loc_066CBE:
 	tst.b	-$3A02(a5)
 	bne.s	loc_066CBA
@@ -140,7 +140,7 @@ loc_066CEA:
 	bgt.s	loc_066CE2
 	move.b	#$1,-$3A06(a5)
 	move.b	#$1,-$1D4A(a5)
-	jsr	$5112(a5)	; -> sub_1FDC5C
+	jsr	$5112(a5)	; -> VDP_WaitVBlank
 	jsr	sub_065494(pc)
 	jsr	sub_065400(pc)
 	lea.l	$3E72(a5),a0
@@ -170,7 +170,7 @@ loc_066D24:
 	addq.w	#$8,a7
 	bra.s	loc_066D4C
 loc_066D48:
-	jsr	$5112(a5)	; -> sub_1FDC5C
+	jsr	$5112(a5)	; -> VDP_WaitVBlank
 loc_066D4C:
 	tst.b	-$3A02(a5)
 	bne.s	loc_066D48
@@ -198,7 +198,7 @@ loc_066D90:
 	addq.w	#$8,a7
 	bra.s	loc_066DB4
 loc_066DB0:
-	jsr	$5112(a5)	; -> sub_1FDC5C
+	jsr	$5112(a5)	; -> VDP_WaitVBlank
 loc_066DB4:
 	tst.b	-$3A02(a5)
 	bne.s	loc_066DB0
@@ -249,11 +249,11 @@ loc_066E38:
 	lea.l	$C(a7),a7
 	bra.s	loc_066E60
 loc_066E5C:
-	jsr	$5112(a5)	; -> sub_1FDC5C
+	jsr	$5112(a5)	; -> VDP_WaitVBlank
 loc_066E60:
 	tst.b	-$3A02(a5)
 	bne.s	loc_066E5C
-	jsr	$5112(a5)	; -> sub_1FDC5C
+	jsr	$5112(a5)	; -> VDP_WaitVBlank
 	move.w	-$3B94(a5),-$16F0(a5)
 	move.w	-$3B96(a5),-$17E0(a5)
 	movem.l	-$14(a6),d3/d6-d7/a3-a4
