@@ -5666,9 +5666,9 @@ Tbl_PsylockeAnim22:	; animation script (byte flags, byte steps, ..., 2-byte step
 	incrom	$1CD8DE,$14
 Tbl_PsylockeAnim23:	; animation script (byte flags, byte steps, ..., 2-byte steps from +6); 34 of 36 bytes used at runtime; read by Anim_ApplyStep, FluxBomb_StartImplode, FluxBomb_StartBurst; jt[2286] used by FluxBomb_Detonate
 	incrom	$1CD8F2,$36
-Tbl_PsylockeAnim24:	; animation script (byte flags, byte steps, ..., 2-byte steps from +6); 2E of 2E bytes used at runtime; read by Anim_ApplyStep, FluxBomb_StartImplode, FluxBomb_StartBurst; jt[2287,2288] used by FluxBomb_StepImplode, FluxBomb_StartImplode
+Tbl_Psylocke_1CD928:	; format not established: read by the animation code but its header is not a well-formed animation script (step count / flags out of range); 2E of 2E bytes used at runtime; read by Anim_ApplyStep, FluxBomb_StartImplode, FluxBomb_StartBurst; jt[2287,2288] used by FluxBomb_StepImplode, FluxBomb_StartImplode
 	incrom	$1CD928,$2E
-Tbl_PsylockeAnim25:	; animation script (byte flags, byte steps, ..., 2-byte steps from +6); 1A of 46 bytes used at runtime; read by Anim_ApplyStep, FluxBomb_StartImplode, FluxBomb_StartBurst; jt[2289,2290] used by FluxBomb_StepBurst, FluxBomb_StartBurst, FluxBomb_DrawBurst
+Tbl_Psylocke_1CD956:	; format not established: read by the animation code but its header is not a well-formed animation script (step count / flags out of range); 1A of 46 bytes used at runtime; read by Anim_ApplyStep, FluxBomb_StartImplode, FluxBomb_StartBurst; jt[2289,2290] used by FluxBomb_StepBurst, FluxBomb_StartBurst, FluxBomb_DrawBurst
 	incrom	$1CD956,$46
 Tbl_EvilMagnetoAirSteer:	; table read by Magneto_AirSteer; 2F of 5E bytes used at runtime; read by Magneto_AirSteer, XPlayer_Land, XPlayer_StateControl; jt[2291] used by EvilMagneto_Init, Magneto_Init
 	incrom	$1CD99C,$5E
@@ -5823,7 +5823,7 @@ Art_GambitSpr2:	; sprite definition (type $18, raw 4bpp tiles): $24-byte header,
 	include "src/f/1E1928.asm"
 Tbl_Anim_1E19B8:	; animation script (byte flags, byte steps, ..., 2-byte steps from +6); 10 of 12 bytes used at runtime; read by Anim_ApplyStep, Anim_AdvanceByDistance, Anim_Advance
 	incrom	$1E19B8,$12
-Tbl_Anim_1E19CA:	; animation script (byte flags, byte steps, ..., 2-byte steps from +6); 19C of 27E bytes used at runtime; read by Anim_ApplyStep; jt[2360] used by PlayerSelect_PlayIdleAnim_part2
+Tbl_Data_1E19CA:	; format not established: read by the animation code but its header is not a well-formed animation script (step count / flags out of range); 19C of 27E bytes used at runtime; read by Anim_ApplyStep; jt[2360] used by PlayerSelect_PlayIdleAnim_part2
 	incrom	$1E19CA,$27E
 Tbl_Anim_1E1C48:	; animation script (byte flags, byte steps, ..., 2-byte steps from +6); 13 of 18 bytes used at runtime; read by Anim_ApplyStep, Anim_AdvanceByDistance, Anim_Advance; jt[2361] used by sub_1E39B8
 	incrom	$1E1C48,$18
@@ -5857,7 +5857,7 @@ Tbl_1E27DC:	; format not established; never read in the corpus; jt[2375] used by
 	incrom	$1E27DC,$12C
 Tbl_1E2908:	; format not established; never read in the corpus; jt[2374] used by sub_1E2CFC, sub_1E3322 -> sub_1E2CFC
 	incrom	$1E2908,$12C
-Tbl_Anim_1E2A34:	; animation script (byte flags, byte steps, ..., 2-byte steps from +6); A of 1E bytes used at runtime; read by Anim_ApplyStep, Anim_AdvanceByDistance, Anim_Advance; jt[2373] used by sub_1E2CFC, sub_1E3322
+Tbl_Data_1E2A34:	; format not established: read by the animation code but its header is not a well-formed animation script (step count / flags out of range); A of 1E bytes used at runtime; read by Anim_ApplyStep, Anim_AdvanceByDistance, Anim_Advance; jt[2373] used by sub_1E2CFC, sub_1E3322
 	incrom	$1E2A34,$1E
 Tbl_EvilCyclopsLand:	; table read by XPlayer_Land; 39 of 5E bytes used at runtime; read by XPlayer_Land, sub_1E3ABE, XPlayer_AirSteer; jt[2384] used by EvilCyclops_Init, PlayerSelect_PlayPickAnim_part2, sub_1E3ABE
 	incrom	$1E2A52,$5E
