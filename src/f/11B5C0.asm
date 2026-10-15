@@ -2,10 +2,10 @@
 ; loc_11B5C0	[runtime: executed in tas]
 ; ---------------------------------------------------------------------------
 loc_11B5C0:
-	jmp	$3182(a5)	; -> sub_11CAFC
+	jmp	$3182(a5)	; -> BabyBio_ActPlayAnimC
 loc_11B5C4:
-	jmp	$319A(a5)	; -> sub_11CC7E
+	jmp	$319A(a5)	; -> BabyBio_ActWaitPlayerNear128
 loc_11B5C8:
 	jmp	$31CA(a5)	; -> sub_11D3F2
 loc_11B5CC:
-	jmp	$3172(a5)	; -> sub_11CA3C
+	jmp	$3172(a5)	; -> BabyBio_ActStopWait30

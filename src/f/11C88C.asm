@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_11C88C	[jt 1574]
+; BabyBio_ActPlayAnimA - BABYBIO script action: drop the attachment, stop, play animation jt $31C2, next entry after 8 frames
+; In:  8(a6) = this
+; Out: none
+; Evidence: Obj_SetAnim
 ; ---------------------------------------------------------------------------
-sub_11C88C:
+BabyBio_ActPlayAnimA:
 	link.w	a6,#$0
 	move.l	a4,-(a7)
 	movea.l	$8(a6),a4

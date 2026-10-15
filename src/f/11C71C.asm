@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_11C71C	[jt 1572]
+; BabyBio_ActNext - BABYBIO script action: clear the animation, no frame, go to the next script entry
+; In:  8(a6) = this
+; Out: none
+; Evidence: +$44 = 0, vtable +$56 SetFrame($FF)
 ; ---------------------------------------------------------------------------
-sub_11C71C:
+BabyBio_ActNext:
 	link.w	a6,#$0
 	move.l	a4,-(a7)
 	movea.l	$8(a6),a4

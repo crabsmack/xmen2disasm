@@ -4,12 +4,12 @@
 loc_11B524:
 	jmp	$31DA(a5)	; -> sub_11D4F0
 loc_11B528:
-	jmp	$3172(a5)	; -> sub_11CA3C
+	jmp	$3172(a5)	; -> BabyBio_ActStopWait30
 loc_11B52C:
-	jmp	$3152(a5)	; -> sub_11C88C
+	jmp	$3152(a5)	; -> BabyBio_ActPlayAnimA
 loc_11B530:
-	jmp	$317A(a5)	; -> sub_11CA9C
+	jmp	$317A(a5)	; -> BabyBio_ActPlayAnimB
 loc_11B534:
-	jmp	$316A(a5)	; -> sub_11C9DC
+	jmp	$316A(a5)	; -> BabyBio_ActStopWait60
 loc_11B538:
-	jmp	$3172(a5)	; -> sub_11CA3C
+	jmp	$3172(a5)	; -> BabyBio_ActStopWait30

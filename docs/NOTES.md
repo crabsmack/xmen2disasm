@@ -247,7 +247,7 @@ _(module → functions, globals, data; add as you learn them)_
   spawn pass of `sub_1FA124`, the level main loop) · +$6A `Reset` when non-empty (DEATHBIRD Init calls
   it on `this`; HOLOGRAM/POP/FIREWALL ClassInit share its body), else `Nop6A`. XNPC slots: +$6E
   `OnHurt(this, dmg, type)` and +$72 `OnDeath` (both from `XNpc_TakeDamage`), +$76 `EndHurt` (restore
-  the state saved in +$60), +$7A `Query7A` (base: `*arg3 = 2`, return 0; unknown), +$7E `Explode`
+  the state saved in +$60), +$7A ~~`Query7A`~~ `GetMoveLimit(this, dir, *kind)` (limit coordinate toward dir 0 left/1 right/2-3 vertical; kind 0 wall, 1 open edge, 2 none = XNPC base; see `BabyBio_GetMoveLimit`; used to stop knockback), +$7E `Explode`
   (death effect by stats byte 2). Spawn records: 14 bytes each at `$FFC924` (count `$FFC928`), built
   from 16-byte placement entries (`$FFC92A`, word 0 = class index into `-$3900`) by `sub_15F95C`
   calling each class's InitSpawnRec.

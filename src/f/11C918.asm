@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_11C918	[jt 1575]
+; BabyBio_ActWaitParam - BABYBIO script action: next entry after the spawn-record delay +$B6 (default 120)
+; In:  8(a6) = this
+; Out: none
+; Evidence: +$B6 set by BabyBio_Init from spawn word +$C
 ; ---------------------------------------------------------------------------
-sub_11C918:
+BabyBio_ActWaitParam:
 	link.w	a6,#$0
 	move.l	a4,-(a7)
 	movea.l	$8(a6),a4

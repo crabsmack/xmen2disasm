@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; loc_11C6BC	[static: switch-table case target (tools/switches.py: table after `move.w T(pc,dN.w),dN / jmp T-2(pc,dN.w)`, size from the cmpi bound)]
+; BabyBio_GetMoveLimit_Vert - BabyBio_GetMoveLimit cases 2/3: current y, kind 0
+; In:  inside BabyBio_GetMoveLimit
+; Out: -
+; Evidence: Sw_11C662 target
 ; ---------------------------------------------------------------------------
-loc_11C6BC:
+BabyBio_GetMoveLimit_Vert:
 	clr.b	(a3)
 	move.l	$A0(a4),d0
 	asr.l	#$8,d0

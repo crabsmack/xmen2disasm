@@ -62,7 +62,7 @@ loc_11C450:
 	clr.w	$16(a4)
 	bra.s	loc_11C4B6
 loc_11C478:
-	lea.l	sub_11C79E(pc),a0
+	lea.l	BabyBio_StateFallOff(pc),a0
 	move.l	a0,$5C(a4)
 	clr.w	$6C(a4)
 	bra.s	loc_11C4F2
@@ -79,7 +79,7 @@ loc_11C486:
 	clr.w	$16(a4)
 	bra.s	loc_11C4B6
 loc_11C4A8:
-	lea.l	sub_11C79E(pc),a0
+	lea.l	BabyBio_StateFallOff(pc),a0
 	move.l	a0,$5C(a4)
 	clr.w	$6C(a4)
 	bra.s	loc_11C4F2

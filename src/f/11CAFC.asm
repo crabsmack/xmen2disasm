@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_11CAFC	[jt 1580]
+; BabyBio_ActPlayAnimC - BABYBIO script action: play animation jt $31CA, next entry
+; In:  8(a6) = this
+; Out: none
+; Evidence: Obj_SetAnim; 7 callers
 ; ---------------------------------------------------------------------------
-sub_11CAFC:
+BabyBio_ActPlayAnimC:
 	link.w	a6,#$0
 	move.l	a4,-(a7)
 	movea.l	$8(a6),a4

@@ -444,7 +444,7 @@
 11B6A6	; loc_11B6A6 - runtime: executed in tas
 11B6AC	; loc_11B6AC - runtime: executed in tas
 11B6B0	; loc_11B6B0 - runtime: executed in tas
-11C694	; loc_11C694 - runtime: executed in tas
+11C694	; BabyBio_GetMoveLimit_Horiz - runtime: executed in tas
 11C6A8	; loc_11C6A8 - runtime: executed in tas
 11D9D0	; loc_11D9D0 - runtime: executed in tas
 11DB64	; loc_11DB64 - runtime: executed in tas
@@ -813,7 +813,7 @@
 113D60	; XNpc_TakeDamage_Type4 - static: switch-table case target (tools/switches.py: table after `move.w T(pc,dN.w),dN / jmp T-2(pc,dN.w)`, size from the cmpi bound)
 118A74	; RThetaObject_Move_Case0 - static: switch-table case target (tools/switches.py: table after `move.w T(pc,dN.w),dN / jmp T-2(pc,dN.w)`, size from the cmpi bound)
 118A7C	; loc_118A7C - static: switch-table case target (tools/switches.py: table after `move.w T(pc,dN.w),dN / jmp T-2(pc,dN.w)`, size from the cmpi bound)
-11C6BC	; loc_11C6BC - static: switch-table case target (tools/switches.py: table after `move.w T(pc,dN.w),dN / jmp T-2(pc,dN.w)`, size from the cmpi bound)
+11C6BC	; BabyBio_GetMoveLimit_Vert - static: switch-table case target (tools/switches.py: table after `move.w T(pc,dN.w),dN / jmp T-2(pc,dN.w)`, size from the cmpi bound)
 11D9BC	; loc_11D9BC - static: switch-table case target (tools/switches.py: table after `move.w T(pc,dN.w),dN / jmp T-2(pc,dN.w)`, size from the cmpi bound)
 11D9E4	; loc_11D9E4 - static: switch-table case target (tools/switches.py: table after `move.w T(pc,dN.w),dN / jmp T-2(pc,dN.w)`, size from the cmpi bound)
 11D9F8	; loc_11D9F8 - static: switch-table case target (tools/switches.py: table after `move.w T(pc,dN.w),dN / jmp T-2(pc,dN.w)`, size from the cmpi bound)

@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_11CD42	[link-after-rts]
+; BabyBio_WaitReachVLimit - BABYBIO: wait until y reaches the top (+$B2) or bottom (+$B0) limit, then next entry
+; In:  8(a6) = this
+; Out: none
+; Evidence: state set by BabyBio_ActMoveVertical
 ; ---------------------------------------------------------------------------
-sub_11CD42:
+BabyBio_WaitReachVLimit:
 	link.w	a6,#$0
 	movem.l	d7/a4,-(a7)
 	movea.l	$8(a6),a4

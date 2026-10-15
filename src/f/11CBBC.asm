@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_11CBBC	[jt 1582]
+; BabyBio_ActWaitPlayerNear192 - BABYBIO script action: frame 0, wait until the nearest player is within 192 px of the home x (+$9C), then next entry
+; In:  8(a6) = this
+; Out: d0
+; Evidence: Player_Nearest; loops on itself; TAS 31430-57060
 ; ---------------------------------------------------------------------------
-sub_11CBBC:
+BabyBio_ActWaitPlayerNear192:
 	link.w	a6,#$0
 	movem.l	d3/d7/a3-a4,-(a7)
 	movea.l	$8(a6),a4
@@ -65,7 +68,7 @@ loc_11CC48:
 	bra.s	loc_11CC74
 loc_11CC62:
 	clr.w	$6C(a4)
-	lea.l	sub_11CBBC(pc),a0
+	lea.l	BabyBio_ActWaitPlayerNear192(pc),a0
 	move.l	a0,$5C(a4)
 	moveq	#$8,d0
 	and.w	$4(a4),d0

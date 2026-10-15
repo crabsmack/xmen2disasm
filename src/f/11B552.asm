@@ -4,6 +4,6 @@
 loc_11B552:
 	jmp	$31DA(a5)	; -> sub_11D4F0
 loc_11B556:
-	jmp	$316A(a5)	; -> sub_11C9DC
+	jmp	$316A(a5)	; -> BabyBio_ActStopWait60
 loc_11B55A:
-	jmp	$316A(a5)	; -> sub_11C9DC
+	jmp	$316A(a5)	; -> BabyBio_ActStopWait60

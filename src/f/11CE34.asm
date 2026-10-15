@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_11CE34	[link-after-rts]
+; BabyBio_WaitReachHLimit - BABYBIO: wait until x reaches the left (+$AC) or right (+$AE) limit, then next entry
+; In:  8(a6) = this
+; Out: none
+; Evidence: state set by BabyBio_ActMoveHorizontal
 ; ---------------------------------------------------------------------------
-sub_11CE34:
+BabyBio_WaitReachHLimit:
 	link.w	a6,#$0
 	movem.l	d7/a4,-(a7)
 	movea.l	$8(a6),a4

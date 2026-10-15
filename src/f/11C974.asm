@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_11C974	[jt 1576]
+; BabyBio_ActStopWaitParam - BABYBIO script action: stop, next entry after the delay +$B6
+; In:  8(a6) = this
+; Out: none
+; Evidence: velocity/accel cleared
 ; ---------------------------------------------------------------------------
-sub_11C974:
+BabyBio_ActStopWaitParam:
 	link.w	a6,#$0
 	move.l	a4,-(a7)
 	movea.l	$8(a6),a4

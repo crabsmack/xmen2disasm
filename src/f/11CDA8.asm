@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_11CDA8	[jt 1584]
+; BabyBio_ActMoveVertical - BABYBIO script action: move toward the other vertical limit at speed +$B4
+; In:  8(a6) = this
+; Out: d0 = flags & 8
+; Evidence: next BabyBio_WaitReachVLimit
 ; ---------------------------------------------------------------------------
-sub_11CDA8:
+BabyBio_ActMoveVertical:
 	link.w	a6,#$0
 	movem.l	d3/d7/a4,-(a7)
 	movea.l	$8(a6),a4
@@ -44,7 +47,7 @@ loc_11CE12:
 	move.w	d0,$18(a4)
 loc_11CE18:
 	clr.w	$6C(a4)
-	lea.l	sub_11CD42(pc),a0
+	lea.l	BabyBio_WaitReachVLimit(pc),a0
 	move.l	a0,$5C(a4)
 	moveq	#$8,d0
 	and.w	$4(a4),d0

@@ -71,7 +71,7 @@ loc_11E208:
 	clr.w	$16(a4)
 	bra.w	loc_11E2E4
 loc_11E23E:
-	lea.l	sub_11C79E(pc),a0
+	lea.l	BabyBio_StateFallOff(pc),a0
 	move.l	a0,$5C(a4)
 	clr.w	$6C(a4)
 	bra.w	loc_11E2E4
@@ -88,7 +88,7 @@ loc_11E24E:
 	clr.w	$16(a4)
 	bra.s	loc_11E2E4
 loc_11E272:
-	lea.l	sub_11C79E(pc),a0
+	lea.l	BabyBio_StateFallOff(pc),a0
 	move.l	a0,$5C(a4)
 	clr.w	$6C(a4)
 	bra.s	loc_11E2E4
@@ -107,7 +107,7 @@ loc_11E280:
 	clr.w	$20(a4)
 	bra.s	loc_11E2E4
 loc_11E2A8:
-	lea.l	sub_11C79E(pc),a0
+	lea.l	BabyBio_StateFallOff(pc),a0
 	move.l	a0,$5C(a4)
 	clr.w	$6C(a4)
 	bra.s	loc_11E2E4
@@ -124,7 +124,7 @@ loc_11E2B6:
 	clr.w	$20(a4)
 	bra.s	loc_11E2E4
 loc_11E2D8:
-	lea.l	sub_11C79E(pc),a0
+	lea.l	BabyBio_StateFallOff(pc),a0
 	move.l	a0,$5C(a4)
 	clr.w	$6C(a4)
 loc_11E2E4:

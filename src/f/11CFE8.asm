@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_11CFE8	[link-after-rts]
+; BabyBio_ActWalkUntilPlayerAhead - BABYBIO script action: keep walking until a limit is reached or the nearest player is ahead within 128 px, then next entry
+; In:  8(a6) = this
+; Out: d0
+; Evidence: Player_Nearest, facing bit +$2E; TAS 45429-57404
 ; ---------------------------------------------------------------------------
-sub_11CFE8:
+BabyBio_ActWalkUntilPlayerAhead:
 	link.w	a6,#$0
 	movem.l	d3/d7/a3-a4,-(a7)
 	movea.l	$8(a6),a4
@@ -84,7 +87,7 @@ loc_11D09E:
 	bra.s	loc_11D0CA
 loc_11D0B8:
 	clr.w	$6C(a4)
-	lea.l	sub_11CFE8(pc),a0
+	lea.l	BabyBio_ActWalkUntilPlayerAhead(pc),a0
 	move.l	a0,$5C(a4)
 	moveq	#$8,d0
 	and.w	$4(a4),d0

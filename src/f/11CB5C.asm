@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_11CB5C	[jt 1581]
+; BabyBio_ActPlayAnimD - BABYBIO script action: play animation jt $31D2, next entry
+; In:  8(a6) = this
+; Out: none
+; Evidence: Obj_SetAnim
 ; ---------------------------------------------------------------------------
-sub_11CB5C:
+BabyBio_ActPlayAnimD:
 	link.w	a6,#$0
 	move.l	a4,-(a7)
 	movea.l	$8(a6),a4

@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_11C9DC	[jt 1577]
+; BabyBio_ActStopWait60 - BABYBIO script action: stop, next entry after 60 frames
+; In:  8(a6) = this
+; Out: none
+; Evidence: 4 callers (script thunks)
 ; ---------------------------------------------------------------------------
-sub_11C9DC:
+BabyBio_ActStopWait60:
 	link.w	a6,#$0
 	move.l	a4,-(a7)
 	movea.l	$8(a6),a4

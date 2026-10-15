@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_11C7E6	[jt 1573]
+; BabyBio_ActFacePlayer - BABYBIO script action: stop, face the nearest player (and the attachment), next entry
+; In:  8(a6) = this
+; Out: d0
+; Evidence: Player_Nearest; +$2E bit 4 = h-flip; 8 callers (script thunks)
 ; ---------------------------------------------------------------------------
-sub_11C7E6:
+BabyBio_ActFacePlayer:
 	link.w	a6,#$0
 	movem.l	a3-a4,-(a7)
 	movea.l	$8(a6),a4

@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_11C782	[link-after-rts]
+; BabyBio_StateExplode - BABYBIO state: Explode
+; In:  8(a6) = this
+; Out: none
+; Evidence: vtable +$7E; reached from BabyBio_StateFallOff
 ; ---------------------------------------------------------------------------
-sub_11C782:
+BabyBio_StateExplode:
 	link.w	a6,#$0
 	move.l	a4,-(a7)
 	movea.l	$8(a6),a4

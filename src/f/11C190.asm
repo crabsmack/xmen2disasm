@@ -102,7 +102,7 @@ loc_11C2B4:
 	move.l	d0,-(a7)
 	pea.l	$96(a4)
 	jsr	$3ED2(a5)	; -> AiScript_Set
-	lea.l	sub_11C6CE(pc),a0
+	lea.l	BabyBio_StateStart(pc),a0
 	move.l	a0,$64(a4)
 	move.l	a0,$5C(a4)
 	ori.w	#$80,$6(a4)

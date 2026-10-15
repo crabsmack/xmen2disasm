@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_11C6CE	[link-after-rts]
+; BabyBio_StateStart - BABYBIO first state: no animation frame, start the AI script at entry 0 (or the default state)
+; In:  8(a6) = this
+; Out: none
+; Evidence: set as +$5C/+$64 by BabyBio_Init; script {+$96 index, +$98 table}
 ; ---------------------------------------------------------------------------
-sub_11C6CE:
+BabyBio_StateStart:
 	link.w	a6,#$0
 	move.l	a4,-(a7)
 	movea.l	$8(a6),a4

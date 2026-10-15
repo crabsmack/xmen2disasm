@@ -54,7 +54,7 @@ loc_11D162:
 	move.w	d0,$16(a4)
 loc_11D168:
 	clr.w	$6C(a4)
-	lea.l	sub_11CFE8(pc),a0
+	lea.l	BabyBio_ActWalkUntilPlayerAhead(pc),a0
 	move.l	a0,$5C(a4)
 	moveq	#$8,d0
 	and.w	$4(a4),d0

@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_11CC7E	[jt 1583]
+; BabyBio_ActWaitPlayerNear128 - BABYBIO script action: face the nearest player and wait until it is within 128 px, then next entry
+; In:  8(a6) = this
+; Out: d0
+; Evidence: Player_Nearest; TAS 30937-54551
 ; ---------------------------------------------------------------------------
-sub_11CC7E:
+BabyBio_ActWaitPlayerNear128:
 	link.w	a6,#$0
 	movem.l	d3/d7/a3-a4,-(a7)
 	movea.l	$8(a6),a4
@@ -65,7 +68,7 @@ loc_11CD0C:
 	bra.s	loc_11CD38
 loc_11CD26:
 	clr.w	$6C(a4)
-	lea.l	sub_11CC7E(pc),a0
+	lea.l	BabyBio_ActWaitPlayerNear128(pc),a0
 	move.l	a0,$5C(a4)
 	moveq	#$8,d0
 	and.w	$4(a4),d0

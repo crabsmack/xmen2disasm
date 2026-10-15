@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_11CE9A	[jt 1585]
+; BabyBio_ActMoveHorizontal - BABYBIO script action: walk toward the other horizontal limit at speed +$B4 (or stop 60 frames if both limits are equal), dropping a mismatched attachment
+; In:  8(a6) = this
+; Out: d0
+; Evidence: next BabyBio_WaitReachHLimit
 ; ---------------------------------------------------------------------------
-sub_11CE9A:
+BabyBio_ActMoveHorizontal:
 	link.w	a6,#$0
 	movem.l	d3/d7/a4,-(a7)
 	movea.l	$8(a6),a4
@@ -109,7 +112,7 @@ loc_11CFA8:
 	addq.w	#$4,a7
 loc_11CFCC:
 	clr.w	$6C(a4)
-	lea.l	sub_11CE34(pc),a0
+	lea.l	BabyBio_WaitReachHLimit(pc),a0
 	move.l	a0,$5C(a4)
 	moveq	#$8,d0
 	and.w	$4(a4),d0

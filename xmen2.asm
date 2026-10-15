@@ -3077,7 +3077,7 @@ Tbl_WallCrawlBio_vtable:	; class descriptor "WALLCRAWLBIO": word $82 = name offs
 	include "src/f/11C630.asm"
 	include "src/f/11C662.asm"
 Sw_11C662:	; switch table of sub at $11C662: 4 word offsets from Sw_11C662-2
-	dc.w	loc_11C694-(Sw_11C662-2), loc_11C6A8-(Sw_11C662-2), loc_11C6BC-(Sw_11C662-2), loc_11C6BC-(Sw_11C662-2)
+	dc.w	BabyBio_GetMoveLimit_Horiz-(Sw_11C662-2), loc_11C6A8-(Sw_11C662-2), BabyBio_GetMoveLimit_Vert-(Sw_11C662-2), BabyBio_GetMoveLimit_Vert-(Sw_11C662-2)
 	include "src/f/11C694.asm"
 	include "src/f/11C6BC.asm"
 	include "src/f/11C6C4.asm"

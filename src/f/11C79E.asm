@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_11C79E	[link-after-rts]
+; BabyBio_StateFallOff - BABYBIO walked past an open patrol edge: drop its attachment, fall (gravity $3C), explode after 20 frames
+; In:  8(a6) = this
+; Out: d0 = flags & 8
+; Evidence: set by BabyBio_Move when x passes +$AC/+$AE with the edge flag clear; attachment +$A8 killed (vtable +$52)
 ; ---------------------------------------------------------------------------
-sub_11C79E:
+BabyBio_StateFallOff:
 	link.w	a6,#$0
 	move.l	a4,-(a7)
 	movea.l	$8(a6),a4
@@ -18,7 +21,7 @@ sub_11C79E:
 loc_11C7C4:
 	move.w	#$3C,$20(a4)
 	move.w	#$14,$6C(a4)
-	lea.l	sub_11C782(pc),a0
+	lea.l	BabyBio_StateExplode(pc),a0
 	move.l	a0,$5C(a4)
 	moveq	#$8,d0
 	and.w	$4(a4),d0
