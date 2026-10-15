@@ -2,7 +2,7 @@
 ; BabySentinelB_Script1 - BABYSENTINELB AI script (table $11B53C, 8 entries), entries 1-5
 ; In:  jmp thunks
 ; Out: -
-; Evidence: jt $2FF2 in BabySentinelB_Init; count word mislabelled Tbl_BabySentinelBAiScript_11B53C
+; Evidence: jt $2FF2 in BabySentinelB_Init; count word mislabelled Tbl_BabySentinelB_Script1Len
 ; ---------------------------------------------------------------------------
 BabySentinelB_Script1:
 	jmp	$318A(a5)	; -> BabyBio_ActPlayAnimD
