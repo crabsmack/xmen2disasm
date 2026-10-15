@@ -1,14 +1,14 @@
 ; ---------------------------------------------------------------------------
-; sub_1E3A58	[jt 2395]
+; Cyclops_AirSpecial	[jt 2395]
 ; ---------------------------------------------------------------------------
-sub_1E3A58:
+Cyclops_AirSpecial:
 	link.w	a6,#$0
 	move.l	a4,-(a7)
 	movea.l	$8(a6),a4
-	lea.l	sub_1E3966(pc),a0
+	lea.l	Cyclops_AirCharge(pc),a0
 	move.l	a0,$5C(a4)
 	move.l	a4,-(a7)
-	jsr	sub_1E3966(pc)
+	jsr	Cyclops_AirCharge(pc)
 	addq.w	#$4,a7
 	movea.l	-$4(a6),a4
 	unlk	a6

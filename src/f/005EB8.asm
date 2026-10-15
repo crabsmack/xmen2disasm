@@ -22,7 +22,7 @@ Game_PlayAttractDemo:
 	movea.l	$4(a0,d0.w),a1
 	jsr	(a1)
 	clr.b	g_SndMute(a5)
-	jsr	$4ACA(a5)	; -> sub_1E2C3E
+	jsr	$4ACA(a5)	; -> Cyclops_ResetBeams
 	tst.b	-$38C6(a5)
 	beq.s	loc_005F0C
 	ori.w	#$2,-$3C5E(a5)

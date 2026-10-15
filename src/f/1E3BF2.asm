@@ -1,7 +1,7 @@
 ; ---------------------------------------------------------------------------
-; sub_1E3BF2	[jt 2400]
+; Cyclops_TakeDamage	[jt 2400]
 ; ---------------------------------------------------------------------------
-sub_1E3BF2:
+Cyclops_TakeDamage:
 	link.w	a6,#$0
 	move.l	a4,-(a7)
 	movea.l	$8(a6),a4
@@ -30,7 +30,7 @@ sub_1E3BF2:
 	lea.l	$18(a7),a7
 	beq.s	loc_1E3C4A
 	move.l	a4,-(a7)
-	jsr	sub_1E2CBC(pc)
+	jsr	Cyclops_EndBeam(pc)
 	addq.w	#$4,a7
 loc_1E3C4A:
 	movea.l	-$4(a6),a4

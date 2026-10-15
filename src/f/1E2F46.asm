@@ -1,7 +1,7 @@
 ; ---------------------------------------------------------------------------
-; sub_1E2F46	[link-after-rts]
+; Cyclops_BeamHitEnemies	[link-after-rts]
 ; ---------------------------------------------------------------------------
-sub_1E2F46:
+Cyclops_BeamHitEnemies:
 	link.w	a6,#$FFEA
 	movem.l	d3-d7/a3-a4,-(a7)
 	movea.l	$8(a6),a0

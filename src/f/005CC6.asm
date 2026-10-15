@@ -32,7 +32,7 @@ loc_005CF8:
 	lea.l	g_SceneTable(a5),a0
 	movea.l	$4(a0,d0.w),a1
 	jsr	(a1)
-	jsr	$4ACA(a5)	; -> sub_1E2C3E
+	jsr	$4ACA(a5)	; -> Cyclops_ResetBeams
 loc_005D2C:
 	moveq	#-$1,d0
 	cmp.b	g_P1CharIndex(a5),d0

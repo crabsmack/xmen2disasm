@@ -1,7 +1,7 @@
 ; ---------------------------------------------------------------------------
-; sub_1E3526	[link-after-rts]
+; Cyclops_StateAirCharge	[link-after-rts]
 ; ---------------------------------------------------------------------------
-sub_1E3526:
+Cyclops_StateAirCharge:
 	link.w	a6,#$0
 	movem.l	d3/a4,-(a7)
 	movea.l	$8(a6),a4
@@ -33,10 +33,10 @@ loc_1E356E:
 loc_1E3576:
 	addq.w	#$4,a7
 	bne.s	loc_1E358A
-	lea.l	sub_1E34BA(pc),a0
+	lea.l	Cyclops_StateAirBeamBrake(pc),a0
 	move.l	a0,$5C(a4)
 	move.l	a4,-(a7)
-	jsr	sub_1E34BA(pc)
+	jsr	Cyclops_StateAirBeamBrake(pc)
 	addq.w	#$4,a7
 loc_1E358A:
 	movem.l	-$8(a6),d3/a4

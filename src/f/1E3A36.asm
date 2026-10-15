@@ -1,14 +1,14 @@
 ; ---------------------------------------------------------------------------
-; sub_1E3A36	[jt 2394]
+; Cyclops_GroundSpecialDown	[jt 2394]
 ; ---------------------------------------------------------------------------
-sub_1E3A36:
+Cyclops_GroundSpecialDown:
 	link.w	a6,#$0
 	move.l	a4,-(a7)
 	movea.l	$8(a6),a4
-	lea.l	sub_1E39B8(pc),a0
+	lea.l	Cyclops_CrouchAim(pc),a0
 	move.l	a0,$5C(a4)
 	move.l	a4,-(a7)
-	jsr	sub_1E39B8(pc)
+	jsr	Cyclops_CrouchAim(pc)
 	addq.w	#$4,a7
 	movea.l	-$4(a6),a4
 	unlk	a6

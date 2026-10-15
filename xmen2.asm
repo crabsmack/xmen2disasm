@@ -5825,53 +5825,56 @@ Art_GambitSpr2:	; sprite definition (type $18, raw 4bpp tiles): $24-byte header,
 	include "src/f/1E15F4.asm"
 	include "src/f/1E1604.asm"
 	include "src/f/1E16BC.asm"
-	incrom	$1E16CC,$8
+	include "src/f/1E16CC.asm"
 	include "src/f/1E16D4.asm"
-	incrom	$1E1768,$6
+	include "src/f/1E1768.asm"
 	include "src/f/1E176E.asm"
 	include "src/f/1E177A.asm"
-	incrom	$1E1902,$14
+Tbl_BeamStepCases:	; jump table: 5 word offsets from this table, one per beam direction (record +$C: 0 level, 1 up, 2 down, 3 up-diagonal, 4 down-diagonal) to the case that sets the wall-probe step (dx, dy, distance) in the Cyclops beam drawer
+	incrom	$1E1902,$A
+Tbl_BeamCutCases:	; jump table: 5 word offsets from this table, one per beam direction, to the case that stores the beam length cut by a wall (x only for level, y only for vertical, both for diagonals)
+	incrom	$1E190C,$A
 	include "src/f/1E1916.asm"
 	include "src/f/1E1928.asm"
 Tbl_Anim_1E19B8:	; animation script (byte flags, byte steps, ..., 2-byte steps from +6); 10 of 12 bytes used at runtime; read by Anim_ApplyStep, Anim_AdvanceByDistance, Anim_Advance
 	incrom	$1E19B8,$12
 Tbl_Data_1E19CA:	; format not established: read by the animation code but its header is not a well-formed animation script (step count / flags out of range); 19C of 27E bytes used at runtime; read by Anim_ApplyStep; jt[2360] used by PlayerSelect_PlayIdleAnim_part2
 	incrom	$1E19CA,$27E
-Tbl_Anim_1E1C48:	; animation script (byte flags, byte steps, ..., 2-byte steps from +6); 13 of 18 bytes used at runtime; read by Anim_ApplyStep, Anim_AdvanceByDistance, Anim_Advance; jt[2361] used by sub_1E39B8
+Tbl_Anim_1E1C48:	; animation script (byte flags, byte steps, ..., 2-byte steps from +6); 13 of 18 bytes used at runtime; read by Anim_ApplyStep, Anim_AdvanceByDistance, Anim_Advance; jt[2361] used by Cyclops_CrouchAim
 	incrom	$1E1C48,$18
 Tbl_Anim_1E1C60:	; animation script (byte flags, byte steps, ..., 2-byte steps from +6); 2A of 30 bytes used at runtime; read by Anim_ApplyStep, Anim_AdvanceByDistance; jt[2362] used by PlayerSelect_PlayPickAnim_part2
 	incrom	$1E1C60,$30
-Tbl_Anim_1E1C90:	; animation script (byte flags, byte steps, ..., 2-byte steps from +6); C of E bytes used at runtime; read by Anim_ApplyStep, Anim_AdvanceByDistance, Anim_Advance; jt[2363] used by sub_1E3594
+Tbl_Anim_1E1C90:	; animation script (byte flags, byte steps, ..., 2-byte steps from +6); C of E bytes used at runtime; read by Anim_ApplyStep, Anim_AdvanceByDistance, Anim_Advance; jt[2363] used by Cyclops_StateGroundAim
 	incrom	$1E1C90,$E
-Tbl_Anim_1E1C9E:	; animation script (byte flags, byte steps, ..., 2-byte steps from +6); C of E bytes used at runtime; read by Anim_ApplyStep, Anim_AdvanceByDistance, Anim_Advance; jt[2364] used by sub_1E3594
+Tbl_Anim_1E1C9E:	; animation script (byte flags, byte steps, ..., 2-byte steps from +6); C of E bytes used at runtime; read by Anim_ApplyStep, Anim_AdvanceByDistance, Anim_Advance; jt[2364] used by Cyclops_StateGroundAim
 	incrom	$1E1C9E,$E
-Tbl_Anim_1E1CAC:	; animation script (byte flags, byte steps, ..., 2-byte steps from +6); C of E bytes used at runtime; read by Anim_ApplyStep, Anim_AdvanceByDistance, Anim_Advance; jt[2365] used by sub_1E3594
+Tbl_Anim_1E1CAC:	; animation script (byte flags, byte steps, ..., 2-byte steps from +6); C of E bytes used at runtime; read by Anim_ApplyStep, Anim_AdvanceByDistance, Anim_Advance; jt[2365] used by Cyclops_StateGroundAim
 	incrom	$1E1CAC,$E
-Tbl_Anim_1E1CBA:	; animation script (byte flags, byte steps, ..., 2-byte steps from +6); C of E bytes used at runtime; read by Anim_ApplyStep, Anim_AdvanceByDistance, Anim_Advance; jt[2366] used by sub_1E3594
+Tbl_Anim_1E1CBA:	; animation script (byte flags, byte steps, ..., 2-byte steps from +6); C of E bytes used at runtime; read by Anim_ApplyStep, Anim_AdvanceByDistance, Anim_Advance; jt[2366] used by Cyclops_StateGroundAim
 	incrom	$1E1CBA,$E
-Tbl_Anim_1E1CC8:	; animation script (NOTES: Animation scripts); never read in the corpus; jt[2367] used by sub_1E3278 -> Obj_SetAnim, sub_1E3892 -> Obj_SetAnim
+Tbl_Anim_1E1CC8:	; animation script (NOTES: Animation scripts); never read in the corpus; jt[2367] used by Cyclops_StateHardLanding -> Obj_SetAnim, Cyclops_StateCrouchAim -> Obj_SetAnim
 	incrom	$1E1CC8,$A
-Tbl_Anim_1E1CD2:	; animation script (byte flags, byte steps, ..., 2-byte steps from +6); 8 of A bytes used at runtime; read by Anim_ApplyStep, Anim_AdvanceByDistance, Anim_Advance; jt[2368] used by sub_1E3322
+Tbl_Anim_1E1CD2:	; animation script (byte flags, byte steps, ..., 2-byte steps from +6); 8 of A bytes used at runtime; read by Anim_ApplyStep, Anim_AdvanceByDistance, Anim_Advance; jt[2368] used by Cyclops_AirBeamAim
 	incrom	$1E1CD2,$A
-Tbl_Anim_1E1CDC:	; animation script (NOTES: Animation scripts); never read in the corpus; jt[2369] used by sub_1E3322 -> Obj_SetAnim
+Tbl_Anim_1E1CDC:	; animation script (NOTES: Animation scripts); never read in the corpus; jt[2369] used by Cyclops_AirBeamAim -> Obj_SetAnim
 	incrom	$1E1CDC,$A
-Tbl_Anim_1E1CE6:	; animation script (NOTES: Animation scripts); never read in the corpus; jt[2370] used by sub_1E3322 -> Obj_SetAnim
+Tbl_Anim_1E1CE6:	; animation script (NOTES: Animation scripts); never read in the corpus; jt[2370] used by Cyclops_AirBeamAim -> Obj_SetAnim
 	incrom	$1E1CE6,$A
-Tbl_Anim_1E1CF0:	; animation script (NOTES: Animation scripts); never read in the corpus; jt[2371] used by sub_1E3322 -> Obj_SetAnim
+Tbl_Anim_1E1CF0:	; animation script (NOTES: Animation scripts); never read in the corpus; jt[2371] used by Cyclops_AirBeamAim -> Obj_SetAnim
 	incrom	$1E1CF0,$A
 	incrom	$1E1CFA,$98A
-Tbl_1E2684:	; format not established; never read in the corpus; jt[2379] used by sub_1E2CFC
+Tbl_1E2684:	; format not established; never read in the corpus; jt[2379] used by Cyclops_StartBeam
 	incrom	$1E2684,$5C
 	incrom	$1E26E0,$A8
-Tbl_1E2788:	; format not established; never read in the corpus; jt[2376] used by sub_1E2CFC, sub_1E3322 -> sub_1E2CFC
+Tbl_1E2788:	; format not established; never read in the corpus; jt[2376] used by Cyclops_StartBeam, Cyclops_AirBeamAim -> Cyclops_StartBeam
 	incrom	$1E2788,$54
-Tbl_1E27DC:	; format not established; never read in the corpus; jt[2375] used by sub_1E2CFC, sub_1E3322 -> sub_1E2CFC
+Tbl_1E27DC:	; format not established; never read in the corpus; jt[2375] used by Cyclops_StartBeam, Cyclops_AirBeamAim -> Cyclops_StartBeam
 	incrom	$1E27DC,$12C
-Tbl_1E2908:	; format not established; never read in the corpus; jt[2374] used by sub_1E2CFC, sub_1E3322 -> sub_1E2CFC
+Tbl_1E2908:	; format not established; never read in the corpus; jt[2374] used by Cyclops_StartBeam, Cyclops_AirBeamAim -> Cyclops_StartBeam
 	incrom	$1E2908,$12C
-Tbl_Data_1E2A34:	; format not established: read by the animation code but its header is not a well-formed animation script (step count / flags out of range); A of 1E bytes used at runtime; read by Anim_ApplyStep, Anim_AdvanceByDistance, Anim_Advance; jt[2373] used by sub_1E2CFC, sub_1E3322
+Tbl_Data_1E2A34:	; format not established: read by the animation code but its header is not a well-formed animation script (step count / flags out of range); A of 1E bytes used at runtime; read by Anim_ApplyStep, Anim_AdvanceByDistance, Anim_Advance; jt[2373] used by Cyclops_StartBeam, Cyclops_AirBeamAim
 	incrom	$1E2A34,$1E
-Tbl_EvilCyclopsLand:	; table read by XPlayer_Land; 39 of 5E bytes used at runtime; read by XPlayer_Land, sub_1E3ABE, XPlayer_AirSteer; jt[2384] used by EvilCyclops_Init, PlayerSelect_PlayPickAnim_part2, sub_1E3ABE
+Tbl_EvilCyclopsLand:	; table read by XPlayer_Land; 39 of 5E bytes used at runtime; read by XPlayer_Land, Cyclops_Init, XPlayer_AirSteer; jt[2384] used by EvilCyclops_Init, PlayerSelect_PlayPickAnim_part2, Cyclops_Init
 	incrom	$1E2A52,$5E
 	include "src/f/1E2AB0.asm"
 	include "src/f/1E2ABE.asm"
@@ -5909,11 +5912,11 @@ Tbl_EvilCyclopsLand:	; table read by XPlayer_Land; 39 of 5E bytes used at runtim
 	include "src/f/1E3C6A.asm"
 Art_CyclopsSpr:	; sprite definition (type $18, raw 4bpp tiles): $24-byte header, $14-byte frame records, pieces, tiles; 8060 of A138 bytes used at runtime; read by VDP_FlushDmaQueue, Spr_RenderToBitmap_Loop; DMA to VRAM $6CA0-C8A0; jt[2404] used by Cyclops_SelectSpriteDef, EvilCyclops_Init, Player_CalcMaxTiles
 	incrom	$1E3C74,$A138
-Tbl_CyclopsVdp:	; words copied to the VDP data port by VDP_WriteWords; CD7 of D70 bytes used at runtime; read by VDP_WriteWords; jt[2405] used by sub_1E2CFC
+Tbl_CyclopsVdp:	; words copied to the VDP data port by VDP_WriteWords; CD7 of D70 bytes used at runtime; read by VDP_WriteWords; jt[2405] used by Cyclops_StartBeam
 	incrom	$1EDDAC,$D70
-Tbl_CyclopsVdp2:	; words copied to the VDP data port by VDP_WriteWords; 58A of C58 bytes used at runtime; read by VDP_WriteWords; jt[2406] used by sub_1E2CFC
+Tbl_CyclopsVdp2:	; words copied to the VDP data port by VDP_WriteWords; 58A of C58 bytes used at runtime; read by VDP_WriteWords; jt[2406] used by Cyclops_StartBeam
 	incrom	$1EEB1C,$C58
-Tbl_CyclopsVdp3:	; words copied to the VDP data port by VDP_WriteWords; 2F4 of 8E8 bytes used at runtime; read by VDP_WriteWords; jt[2407] used by sub_1E2CFC
+Tbl_CyclopsVdp3:	; words copied to the VDP data port by VDP_WriteWords; 2F4 of 8E8 bytes used at runtime; read by VDP_WriteWords; jt[2407] used by Cyclops_StartBeam
 	incrom	$1EF774,$8E8
 	include "src/f/1F005C.asm"
 	include "src/f/1F00E8.asm"

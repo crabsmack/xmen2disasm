@@ -1,16 +1,16 @@
 ; ---------------------------------------------------------------------------
-; sub_1E1604	[jt 2358]
+; Cyclops_DrawBeam	[jt 2358]
 ; ---------------------------------------------------------------------------
-sub_1E1604:
+Cyclops_DrawBeam:
 	link.w	a6,#$FFE4
 	movem.l	d2-d7/a2-a4,-(a7)
 	movea.l	$C(a6),a1
 	tst.b	$24(a1)
-	beq.w	loc_1E1916
+	beq.w	Cyclops_DrawBeam_None
 	tst.l	$2(a1)
-	beq.w	loc_1E1916
+	beq.w	Cyclops_DrawBeam_None
 	tst.l	$14(a1)
-	beq.w	loc_1E1916
+	beq.w	Cyclops_DrawBeam_None
 	movea.l	$8(a6),a3
 	movea.l	$14(a1),a4
 	moveq	#$10,d0
@@ -52,11 +52,11 @@ loc_1E168C:
 	sub.w	d0,-$8(a6)
 	move.w	$1E(a1),d6
 	move.w	$1C(a1),d7
-	bne.w	loc_1E177A
+	bne.w	Cyclops_DrawBeam_Emit
 	movea.l	a1,a2
 	moveq	#$0,d0
 	move.b	$C(a4),d0
 	add.w	d0,d0
-	lea.l	$1E1902(pc),a0
+	lea.l	Tbl_BeamStepCases(pc),a0
 	adda.w	(a0,d0.w),a0
 	jmp	(a0)

@@ -1,7 +1,7 @@
 ; ---------------------------------------------------------------------------
-; sub_1E2CFC	[link-after-rts]
+; Cyclops_StartBeam	[link-after-rts]
 ; ---------------------------------------------------------------------------
-sub_1E2CFC:
+Cyclops_StartBeam:
 	link.w	a6,#$0
 	movem.l	d6-d7/a3-a4,-(a7)
 	movea.l	$C(a6),a3
@@ -10,7 +10,7 @@ sub_1E2CFC:
 	tst.l	$BE(a4)
 	beq.s	loc_1E2D1C
 	move.l	a4,-(a7)
-	jsr	sub_1E2CBC(pc)
+	jsr	Cyclops_EndBeam(pc)
 	addq.w	#$4,a7
 loc_1E2D1C:
 	lea.l	$4A92(a5),a0

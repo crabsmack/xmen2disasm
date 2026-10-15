@@ -1,13 +1,13 @@
 ; ---------------------------------------------------------------------------
-; sub_1E3BB0	[jt 2399]
+; Cyclops_Draw	[jt 2399]
 ; ---------------------------------------------------------------------------
-sub_1E3BB0:
+Cyclops_Draw:
 	link.w	a6,#$0
 	move.l	a4,-(a7)
 	movea.l	$8(a6),a4
 	pea.l	$BC(a4)
 	move.l	a4,-(a7)
-	jsr	$49D2(a5)	; -> sub_1E1604
+	jsr	$49D2(a5)	; -> Cyclops_DrawBeam
 	move.l	a4,-(a7)
 	lea.l	$2BCA(a5),a0
 	movea.l	$2(a0),a0
@@ -18,7 +18,7 @@ sub_1E3BB0:
 	lea.l	$C(a7),a7
 	beq.s	loc_1E3BEA
 	move.l	a4,-(a7)
-	jsr	sub_1E2F46(pc)
+	jsr	Cyclops_BeamHitEnemies(pc)
 	addq.w	#$4,a7
 loc_1E3BEA:
 	movea.l	-$4(a6),a4

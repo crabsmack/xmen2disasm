@@ -1,7 +1,7 @@
 ; ---------------------------------------------------------------------------
-; sub_1E2C3E	[jt 2389]
+; Cyclops_ResetBeams	[jt 2389]
 ; ---------------------------------------------------------------------------
-sub_1E2C3E:
+Cyclops_ResetBeams:
 	link.w	a6,#$0
 	move.l	a4,-(a7)
 	moveq	#$0,d0
@@ -40,8 +40,8 @@ loc_1E2C9E:
 	tst.l	$BE(a4)
 	beq.s	loc_1E2CB4
 	move.l	a4,-(a7)
-	jsr	sub_1E2CBC(pc)
-	jsr	$49CA(a5)	; -> sub_1E15F4
+	jsr	Cyclops_EndBeam(pc)
+	jsr	$49CA(a5)	; -> Cyclops_ResetBeamFlicker
 	addq.w	#$4,a7
 loc_1E2CB4:
 	movea.l	-$4(a6),a4

@@ -1,7 +1,7 @@
 ; ---------------------------------------------------------------------------
-; sub_1E3322	[link-after-rts]
+; Cyclops_AirBeamAim	[link-after-rts]
 ; ---------------------------------------------------------------------------
-sub_1E3322:
+Cyclops_AirBeamAim:
 	link.w	a6,#$0
 	movem.l	d3/a4,-(a7)
 	movea.l	$8(a6),a4
@@ -34,15 +34,15 @@ loc_1E336A:
 	lea.l	$4A52(a5),a0
 	move.l	$2(a0),-(a7)
 	move.l	a4,-(a7)
-	jsr	sub_1E2CFC(pc)
+	jsr	Cyclops_StartBeam(pc)
 	lea.l	$4A42(a5),a0
 	move.l	$2(a0),-(a7)
 	move.l	a4,-(a7)
 	jsr	$4E42(a5)	; -> Obj_SetAnim
-	lea.l	sub_1E31BA(pc),a0
+	lea.l	Cyclops_StateAirBeam(pc),a0
 	move.l	a0,$5C(a4)
 	move.l	a4,-(a7)
-	jsr	sub_1E31BA(pc)
+	jsr	Cyclops_StateAirBeam(pc)
 	lea.l	$18(a7),a7
 	bra.w	loc_1E34B0
 loc_1E33A2:
@@ -51,15 +51,15 @@ loc_1E33A2:
 	lea.l	$4A62(a5),a0
 	move.l	$2(a0),-(a7)
 	move.l	a4,-(a7)
-	jsr	sub_1E2CFC(pc)
+	jsr	Cyclops_StartBeam(pc)
 	lea.l	$4A2A(a5),a0
 	move.l	$2(a0),-(a7)
 	move.l	a4,-(a7)
 	jsr	$4E42(a5)	; -> Obj_SetAnim
-	lea.l	sub_1E31BA(pc),a0
+	lea.l	Cyclops_StateAirBeam(pc),a0
 	move.l	a0,$5C(a4)
 	move.l	a4,-(a7)
-	jsr	sub_1E31BA(pc)
+	jsr	Cyclops_StateAirBeam(pc)
 	lea.l	$18(a7),a7
 	bra.w	loc_1E34B0
 loc_1E33D8:
@@ -92,15 +92,15 @@ loc_1E3414:
 	lea.l	$4A4A(a5),a0
 	move.l	$2(a0),-(a7)
 	move.l	a4,-(a7)
-	jsr	sub_1E2CFC(pc)
+	jsr	Cyclops_StartBeam(pc)
 	lea.l	$4A3A(a5),a0
 	move.l	$2(a0),-(a7)
 	move.l	a4,-(a7)
 	jsr	$4E42(a5)	; -> Obj_SetAnim
-	lea.l	sub_1E31BA(pc),a0
+	lea.l	Cyclops_StateAirBeam(pc),a0
 	move.l	a0,$5C(a4)
 	move.l	a4,-(a7)
-	jsr	sub_1E31BA(pc)
+	jsr	Cyclops_StateAirBeam(pc)
 	lea.l	$18(a7),a7
 	bra.s	loc_1E34B0
 loc_1E344A:
@@ -109,15 +109,15 @@ loc_1E344A:
 	lea.l	$4A5A(a5),a0
 	move.l	$2(a0),-(a7)
 	move.l	a4,-(a7)
-	jsr	sub_1E2CFC(pc)
+	jsr	Cyclops_StartBeam(pc)
 	lea.l	$4A32(a5),a0
 	move.l	$2(a0),-(a7)
 	move.l	a4,-(a7)
 	jsr	$4E42(a5)	; -> Obj_SetAnim
-	lea.l	sub_1E31BA(pc),a0
+	lea.l	Cyclops_StateAirBeam(pc),a0
 	move.l	a0,$5C(a4)
 	move.l	a4,-(a7)
-	jsr	sub_1E31BA(pc)
+	jsr	Cyclops_StateAirBeam(pc)
 	lea.l	$18(a7),a7
 	bra.s	loc_1E34B0
 loc_1E347E:
@@ -126,15 +126,15 @@ loc_1E347E:
 	lea.l	$4A6A(a5),a0
 	move.l	$2(a0),-(a7)
 	move.l	a4,-(a7)
-	jsr	sub_1E2CFC(pc)
+	jsr	Cyclops_StartBeam(pc)
 	lea.l	$4A22(a5),a0
 	move.l	$2(a0),-(a7)
 	move.l	a4,-(a7)
 	jsr	$4E42(a5)	; -> Obj_SetAnim
-	lea.l	sub_1E31BA(pc),a0
+	lea.l	Cyclops_StateAirBeam(pc),a0
 	move.l	a0,$5C(a4)
 	move.l	a4,-(a7)
-	jsr	sub_1E31BA(pc)
+	jsr	Cyclops_StateAirBeam(pc)
 	lea.l	$18(a7),a7
 loc_1E34B0:
 	movem.l	-$8(a6),d3/a4

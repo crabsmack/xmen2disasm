@@ -1,7 +1,7 @@
 ; ---------------------------------------------------------------------------
-; sub_1E32EC	[jt 2391]
+; Cyclops_HardLanding	[jt 2391]
 ; ---------------------------------------------------------------------------
-sub_1E32EC:
+Cyclops_HardLanding:
 	link.w	a6,#$0
 	move.l	a4,-(a7)
 	movea.l	$8(a6),a4
@@ -11,10 +11,10 @@ sub_1E32EC:
 	movea.l	$2(a0),a0
 	movea.l	$EA(a0),a1
 	jsr	(a1)
-	lea.l	sub_1E3278(pc),a0
+	lea.l	Cyclops_StateHardLanding(pc),a0
 	move.l	a0,$5C(a4)
 	move.l	a4,-(a7)
-	jsr	sub_1E3278(pc)
+	jsr	Cyclops_StateHardLanding(pc)
 	addq.w	#$8,a7
 	movea.l	-$4(a6),a4
 	unlk	a6
