@@ -234,6 +234,30 @@ class Traces:
         return {"ok": first is None, "detail": detail, "stats": stats, "frames": len(want),
                 "csv": str(out / "frames.csv")}
 
+    def plain(self, run: str, mode: str, extra: tuple[str, ...] = (), timed_key: bool = False) -> dict:
+        """A contract trace whose sync.csv is itself a reference (phase 4: stepped-gen), not
+        compared with anything. Cached per revision like run()."""
+        key = f"{run}|{mode}|plain|{' '.join(extra)}"
+        rev = self.rev_timed if timed_key else self.rev
+        hit = self.cache.get(key)
+        if hit and rev and hit.get("rev") == rev and Path(hit.get("csv", "")).exists():
+            return hit
+        inp, err = export_input(run, self.out_dir)
+        if inp is None:
+            return {"ok": False, "detail": err}
+        out = self.out_dir / f"{run}-{mode}"
+        if out.exists():
+            shutil.rmtree(out)
+        stats, err = contract("trace", "--run", run, "--input", str(inp), "--out", str(out), "--mode", mode, *extra)
+        csv_path = out / "sync.csv"
+        ok = stats is not None and csv_path.exists()
+        res = {"ok": ok, "detail": err or f"{(stats or {}).get('sync_points')} sync points", "stats": stats,
+               "csv": str(csv_path)}
+        if rev and ok:
+            self.cache[key] = {**res, "rev": rev}
+            self.save()
+        return res
+
     @staticmethod
     def _compare_sync(ref: dict[int, dict[str, str]], got_csv: Path, stats: dict) -> dict:
         """Phase 4: every sync point of the reference, same index, same compared CRCs; no extras."""
@@ -485,13 +509,22 @@ def cached_contract(tr: "Traces", key: str, *args: str, timeout: int = 7200) -> 
 
 
 def sync_traces(tr: "Traces", mode: str, refs: dict[str, Path]) -> list[str]:
-    """Stepped/handc traces of every corpus run against the D1 sync references -> failures."""
+    """Stepped/handc traces of every corpus run against the same frame-synchronous runner with
+    all generated code (`stepped-gen`; P4-decomp.md decision 5) -> failures. REFDIR (the run's D1
+    trace) gives each sync point's reference frame for the input."""
     bad = []
     for run in corpus_runs():
         if run not in refs:
             bad.append(f"{run} (no D1 sync reference)")
             continue
-        r = tr.run(run, mode, None, ("--replay", str(refs[run].parent)), ref_sync=refs[run])
+        extra = ("--replay", str(refs[run].parent))
+        g = tr.plain(run, "stepped-gen", extra, timed_key=True)
+        gs = g.get("stats") or {}
+        if not g["ok"] or any(gs.get(k) != 0 for k in COUNTERS):
+            bad.append(f"{run} (stepped-gen: {g['detail'][:120]}; "
+                       + ", ".join(f"{k} {gs.get(k)}" for k in COUNTERS) + ")")
+            continue
+        r = tr.run(run, mode, None, extra, ref_sync=Path(g["csv"]))
         s = r.get("stats") or {}
         if not r["ok"] or any(s.get(k) != 0 for k in COUNTERS):
             bad.append(f"{run} ({r['detail'][:160]}; " + ", ".join(f"{k} {s.get(k)}" for k in COUNTERS) + ")")
@@ -529,7 +562,7 @@ def phase4(crit, fresh: bool, draft: bool = False) -> None:
     crit("D1", not bad, f"{len(runs) - len(bad)}/{len(runs)} runs equal gpgx with sync.csv + replay.bin"
                         f" (tas stack_low {stack_low})" + (f"; first: {bad[0]}" if bad else ""))
 
-    # D2: the untimed stepped runner (hand C where it exists) equals the sync reference
+    # D2: the frame-synchronous stepped runner with hand C equals it with all generated code
     bad = sync_traces(tr, "stepped", refs)
     crit("D2", not bad, f"{len(runs) - len(bad)}/{len(runs)} corpus runs equal at every sync point"
                         + (f"; first: {bad[0]}" if bad else ""))
@@ -557,6 +590,9 @@ def phase4(crit, fresh: bool, draft: bool = False) -> None:
     h, err = contract("handc")
     errs += [err] if h is None else []
     handc = {str(k).upper().zfill(6): v for k, v in (h or {}).get("functions", {}).items()}
+    # decisions 7, 8: fragments are done with the C that contains them; never-executed asm may verify
+    frags = {str(k).upper().zfill(6): v for k, v in (h or {}).get("fragments", {}).items()}
+    asm = {str(a).upper().zfill(6) for a in (h or {}).get("asm", [])}
     lint, err = contract("lint")
     errs += [err] if lint is None else []
     lint_files = (lint or {}).get("files", {})
@@ -578,15 +614,27 @@ def phase4(crit, fresh: bool, draft: bool = False) -> None:
         matched = {str(a).upper().zfill(6) for a in (mj or {}).get("matched", [])}
     ledger, counts = {}, dict.fromkeys(("in_c", "doc", "lint", "matched", "verified", "done"), 0)
     never_matched = 0
-    for f in funcs:
+    for f in sorted(funcs, key=lambda f: f["addr"] in frags):   # fragments after their parents
         a = f["addr"]
+        if a in frags:
+            fr = frags[a]
+            p = ledger.get(str(fr.get("parent") or "").upper().zfill(6)) or {}
+            done = bool(fr.get("named")) and bool(p.get("done"))
+            ledger[a] = {"name": by_addr[a], "coverage": cov[a], "fragment_of": fr.get("parent"),
+                         "named_in_parent": bool(fr.get("named")), "in_c": done, "doc": done, "lint_clean": done,
+                         "matched": False, "verify": None, "done": done,
+                         "missing": [] if done else ["parent done" if fr.get("named") else "named in its parent's C"],
+                         "needs": "parent"}
+            for k in ("in_c", "doc", "lint", "verified", "done"):
+                counts[k] += done
+            continue
         e = handc.get(a) or {}
         in_c = bool(e) and e.get("name") == by_addr[a]
         doc = in_c and bool(e.get("doc"))
         lv = lint_files.get(f"game/c/{a}.c")
         lint_ok = in_c and lv is not None and all(v == 0 for v in lv.values())
         v = vres.get(a) or {}
-        shadow = (cov[a] != "never" and v.get("calls_checked", 0) >= 1 and v.get("mismatches") == 0
+        shadow = ((cov[a] != "never" or a in asm) and v.get("calls_checked", 0) >= 1 and v.get("mismatches") == 0
                   and v.get("uncovered") == 0)
         verified = in_c and (a in matched or shadow)
         done = in_c and doc and lint_ok and verified

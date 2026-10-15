@@ -5,66 +5,114 @@ description: Write one X-Men 2 function as hand-written, readable C in XMen2Reco
 
 # Decompile a function (the phase-4 loop)
 
-Goal per iteration: one function gets a `XMen2Recomp/game/c/<ADDR>.c` that a newcomer can read,
-that is **verified** equal to the original, and the whole game (D2) still equals the sync
-reference. Criteria and definitions: `docs/phases/P4-decomp.md`. Never edit generated C.
+Goal per function: `../XMen2Recomp/game/c/<ADDR>.c` that a newcomer can read and that
+is **verified** equal to the original. Criteria: `docs/phases/P4-decomp.md`. Design and
+conventions: `XMen2Recomp/docs/NOTES.md` "Phase 4". Never edit generated C.
 
 ## 1. Pick
 
-`uv run tools/decomp_queue.py -n 10` (or `--module Barbarian` to stay in one class). Take
-the top ~5: callees already done come first. The `coverage` column decides verification:
-- `never`: the corpus never runs it, so it **must byte-match** (`cc.py --match-recomp`).
-- `full`: shadow verification (`verify`) is enough. A match is fine too.
-- `partial`: a match, or `verify` plus synthetic cases until `uncovered` is 0. Writing it
-  to match is often faster than building inputs that reach the cold paths.
+`uv run tools/decomp_queue.py -n 10` (or `--module Barbarian`). Coverage decides the proof:
+- `never`: the corpus never runs it: it **must byte-match** MPW C 3.3.
+- `partial` / `full`: a byte match, or the shadow test (`verify`). Try to match first: it is
+  the strongest proof and usually close; fall back to verify for executed functions.
+- **Fragments** (`xmen2_funcs.h` tag `fragment`: switch cases / blocks split off a C
+  function): do not give them files. Write the parent with that code inline and put the
+  fragment's name in a comment where its code is (`/* AvalonA4_ClearCameraZone_case3 */`).
+  How fragments count in the ledger is an open question for the user.
+- **asm** (tag `asm`, no MPW frame): can never match; executed ones go through verify.
 
-## 2. Understand (read, don't guess)
+## 2. Understand
 
 ```
-uv run tools/xref.py NAME               # callers, callees, globals, runtime frames + screenshot
-uv run tools/decomp.py decomp NAME      # Ghidra pseudo-C, globals and jt calls named
+uv run tools/xref.py NAME               # callers, callees, globals, runtime info
+uv run tools/decomp.py decomp NAME      # Ghidra pseudo-C
+uv run tools/peek.py ADDR               # raw disassembly
 ```
-Read `src/f/<ADDR>.asm` (its header is the spec) and `docs/NOTES.md` for the subsystem and
-object layouts. `docs/COMPILER.md` "How the original C was written" has the idioms that
-reproduce MPW C's output: 4-byte argument slots, register ties go to the later declaration,
-`p[i]` vs `*(p + i)`, operand order, `do { } while (0)` state macros, `CLASS()` for parent
-calls, `CODEPTR()` for ROM data.
+Read `src/f/<ADDR>.asm` (its header is the spec; "Out: d0 = ..." can be a side effect of the
+last instruction, not a return value: `List_Unlink`) and NOTES for the subsystem.
 
 ## 3. Write
 
-- One function per file, `game/c/<ADDR>.c`, the disassembly's name, a doc comment (purpose,
-  arguments, result; from the asm header, corrected if you learned better).
-- Only through the headers in `game/include/`: struct fields by name, globals by name,
-  prototypes from `xmen2_funcs.h`. No `g_cpu`, no raw RAM/ROM/hardware addresses, no raw
-  offsets: if a field has no name yet, name it in `xmen2_types.h` (or `unk_XX` until known).
-- C89 that MPW C 3.3 accepts (`/* */` comments, declarations first). The same file builds
-  as C++ on PC through the header's wrapper types.
-- Keep the original behaviour exactly, bugs included, and read hardware in the original
-  order (the replay log is consumed in order).
-- Computed control flow (switch tables, thunk tables entered at k, interior entries): see
-  P4 "How to work it" step 4 and NOTES for the convention already chosen.
+```c
+/* Name - one line: what it does.
+ *
+ * arg:  meaning (from the asm header, corrected if you learned better).
+ * What it returns, and anything surprising (bugs are kept). */
+#include "xmen2.h"
+
+short Name(Actor *self, short n)
+{
+	...
+}
+```
+- One function per file, the disassembly's name, C89 (`/* */`, declarations first).
+- Fix the function's prototype line in `game/include/xmen2_funcs.h` (keep the
+  `/* $ADDR */` comment). Its parameter and return types are what the bridge uses.
+- **Types for game memory** (`xmen2_mem.h`): `s8 u8 s16 u16 s32 u32` for anything stored in
+  RAM/ROM (fields, globals, pointees); `PTR(T)` for a pointer stored in memory; `FNTYPE(Name,
+  ret)` for a stored function pointer (old-style, any args); plain `short`/`long` for locals
+  and value parameters. Pointers to game memory are plain `T *` (e.g. `s16 *p`).
+- Fields by name: add/rename them in `xmen2_types.h` (class FIELDS macros: keep the `+$XX`
+  comment, keep sizes; split an `unk_XX[n]` array around the field you name). Globals: retype
+  in `xmen2_globals.h` (both the MPW `extern` and the PC `XM_G`/`XM_GA` line).
+- ROM data: names from `xmen2_data.h` (code-named, `CODEPTR(x)` / `CLASS(x)` when the original
+  went through the jump table). Strings: `STR(Str_X, "text")`. Hardware: `VDP_CTRL`,
+  `VDP_DATA`, `IO_DATA1`... (`HW8/16/32(addr)` only inside xmen2_mem.h).
+- Idioms (`xmen2_macros.h`): `IS_ALIVE(o)`, `ABS(v)`, `SET_STATE`, `GOTO_STATE`. Add a macro
+  only when the original clearly used one (identical code at many sites).
+- Keep the original behaviour exactly, bugs included, and read hardware in the original order.
+- Never: `g_cpu`, registers, raw addresses, `(char *)p + N` offsets (lint fails them).
 
 ## 4. Verify
 
 ```
-uv run tools/cc.py --match-recomp ../XMen2Recomp --json    # (this repo) which files byte-match
-cd ../XMen2Recomp && uv run tools/xmen2check.py verify --inputs <dir> --functions ADDR,... --json
-uv run tools/xmen2check.py lint --json
+uv run tools/cc.py --match ../XMen2Recomp/game/c/<ADDR>.c     # byte match (this repo)
+cd ../XMen2Recomp && uv run tools/pccheck.py game/c/<ADDR>.c  # compiles as C++ (PC)
 ```
-- No match: `cc.py FILE` lists the compiled code; diff it against `uv run tools/peek.py ADDR`
-  and adjust declaration order, types and expression shape. Don't add casts that change
-  meaning to force it.
-- `verify` mismatch: `first_mismatch` names the call and the differing bytes or registers. Fix
-  the C (the generated version is the truth) and keep the state as a regression case.
-- `uncovered > 0`: add synthetic cases (mutate a captured state to take the other branch) or
-  make it match.
+Both are safe to run beside other work. **Do not** run `xmen2check.py build/trace/verify` when
+other agents are working (one runner at a time; the orchestrator runs them per batch).
 
-## 5. After the batch
+MPW C 3.3 matching, what reproduces the ROM (also COMPILER.md):
+- **`register`** decides register choice: when the ROM's a3/a4 (d7/d6...) assignment is
+  swapped, declare the variable the ROM keeps in the first register `register`.
+- **a2 is never a variable register**: pointers get a4 then a3 only. A pointer parameter
+  read from the stack each time while a3/a4 hold others is still a pointer (a `long` would
+  have taken a free data register): use the register pattern to recover types.
+- d3 is the compiler's scratch (conditions, hoisted loop bounds `moveq #30,d3`).
+- No `return` where the original falls off the end (d0 then holds whatever the last
+  instruction left; callers that read it rely on MPW's side effect, keep it implicit).
+- `short` flags `& 0xC000 == 0x8000` compiles to the ROM's `ext.l / and.w / zero-extend /
+  cmpi.l` exactly; `x & 8` on a short tests the word directly.
+- A `do { } while (0)` macro around a state change explains a branch to the next statement.
+- Stop after ~6 honest attempts on one function: if it is executed, keep the readable
+  version for verify; if never executed, note what differs and move on.
 
-`uv run tools/phase.py 4` (rewrites the ledger, `docs/progress/P4.md`). If D2 broke, the batch
-changed whole-game behaviour: `/first-divergence` at the first differing sync point. Append
-findings (naming, conventions, fields learned) to `XMen2Recomp/docs/NOTES.md`, then commit and
-push both repos (game repo: C + headers; this repo: progress). Done means pushed.
+### Learned in round 1 (BigBio, SavageBio, Brood, SmallBrood: 145 functions, all matched)
 
-Stuck after a real attempt: write what was tried under NOTES "Open questions", take the next
-queue entry, come back with more context.
+- Macros in `xmen2_macros.h`: `AI_NEXT_STEP` / `AI_FIRST_STEP` (AI script steps; read their
+  comments: where a loop sits decides where MPW flushes argument pops), `SET_STATE_WAIT`,
+  `STOP_MOVING(o)` (one `clr.l` for both speeds), `NO_RETURN_VALUE` / `RETURN_NO_VALUE` (a
+  `short` state function that falls off the end on some paths). `FN_AT(type, p)` (mem.h) turns
+  a ROM code address with no C function (an AI-script `jmp` thunk) into a stored pointer.
+  A `void` function stored as a state: `SET_STATE(self, (StateFn)Fn)`.
+- AI-script thunk tables (`<Class>_Script`, `_ScrStep*`, tagged fragment) are ROM data, not
+  C: no file; name them in a comment of the C that uses them.
+- MPW: a declaration initializer converts to the declared type (`.l` work, `move.l`), an
+  assignment narrows (`.w` work, `?:` of constants typed by their range): pick the form the
+  ROM shows. Variables whose lifetimes don't overlap share a register (block-locals and
+  `register` order decide which). `if (!--x)` = `subq / bne` (no `tst`). Operand order shows:
+  `self->x + (dx << 8)` vs `(dx << 8) + self->x`, `x < c` vs `c > x`, `field <= e` vs
+  `e >= field`. `t = f(); g(t);` with `register t` = the ROM's "saved, unused register" (the
+  nested `g(f())` pops first). `x + -0x700` = `add.l #-$700`. `(short)` constants in `?:` =
+  `move.w` + `ext.l`. Two adjacent word clears merge into one `clr.l`.
+- Keep original bugs; where C++ disagrees (shift by 32, ...) use `#ifdef XMEN2_MPW` with the
+  PC branch computing what the 68000 did.
+- Passing `&local` to a function that is still generated works (the bridge copies the local
+  to the 68000 stack and back) for game-memory types only (`SprInst tmp;`, `s16 v;`), not
+  host scalars.
+
+## 5. Report
+
+At the end of a batch list per function: matched / needs verify / not done (why), the fields
+and globals you named, and any convention you had to invent. The orchestrator builds, runs
+`verify` and D2, records findings in `XMen2Recomp/docs/NOTES.md` and commits.

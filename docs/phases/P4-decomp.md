@@ -12,6 +12,29 @@ and 3 learned). The user approved these decisions with them:
    uncovered instructions (synthetic cases allowed). Never-executed functions must match.
 4. D8: the user plays the hand-C build before phase 4 counts as complete.
 
+**Changes approved by the user 2026-10-15, after the D2 attempt** (evidence:
+`XMen2Recomp/docs/NOTES.md` "Phase 4"). Replaying the timed run's interrupts at logical
+positions (function entries, hardware reads) does not reproduce it, even with no hand C: the
+V-int lands a few instructions after `VDP_WaitVBlank` returns, and whether the main program's
+next RAM write comes before or after it changes the handler's path (843 bytes of RAM are shared
+between the handlers and the main program, many reached through pointers). The TAS diverged at
+sync points 1243 and 2042 with all code generated. So:
+5. **D2 and D6 compare the stepped runner with hand C against the same stepped runner with all
+   generated code**, at every sync point of every corpus run. The stepped runner is
+   frame-synchronous and untimed: the V-int is taken at each sync point, the pads come from the
+   run's input (the reference frame of each sync point, from the D1 `sync.csv`), hardware is
+   emulated without timing. Both sides see interrupts at the same logical point, so any
+   difference comes from the C. D1 is unchanged (timed runner == gpgx, `sync.csv`, replay log).
+6. **The sync-point RAM CRC masks the whole 68000 stack area** `[stack_low, $FFC518)` (the reset
+   SSP), not only `[stack_low, A7)`: live frames hold uninitialised locals with stale
+   interrupt-frame bytes, and C functions keep no 68000 frames.
+7. **Fragments** (the 460 functions the disassembly split off a C function: switch cases and
+   blocks with no frame, only branched into; tagged `fragment` in `xmen2_funcs.h`) are done when
+   their parent's C is done: the parent's file names the fragment in a comment where its code
+   is, and the parent is verified.
+8. **The 7 never-executed asm functions** (no MPW frame; MPW C can't produce them) may be
+   verified by `verify` with synthetic cases (0 uncovered instructions) instead of a match.
+
 Goal: every one of the 3,620 functions exists as **hand-written, readable C** in
 `XMen2Recomp`, the game runs with **no generated code** for game functions, and the result is
 provably the same game as the emulator. C here still uses the 68000 memory layout (emulated
@@ -60,11 +83,11 @@ work: `uv run tools/decomp_queue.py`. Per-function procedure: skill `/decomp-fun
 |---|---|---|
 | D0 | Criteria approved | this file has a line `approved: YYYY-MM-DD` (user's word only) and the capitalised draft marker is gone from the title |
 | D1 | Sync reference | `xmen2check.py trace --mode recomp --sync` (the timed runner, all generated code) still equals the gpgx reference on every frame of the TAS and every corpus run (P2's K6/K8, 0 misses, 0 interpreter instructions), and every run also wrote `sync.csv` (≥1 row) and the replay log |
-| D2 | Stepped runner equals it | `xmen2check.py trace --mode stepped --replay REFDIR`: the untimed runner, with hand C wherever it exists and generated code (emitted without exact timing) elsewhere, equals the D1 `sync.csv` at every sync point of the TAS and every corpus run, with 0 misses and 0 interpreter instructions. This passes with zero hand C first (it proves the harness) and stays green as C lands (regression gate) |
+| D2 | Stepped runner equals it | `xmen2check.py trace --mode stepped --replay REFDIR` (the frame-synchronous untimed runner with hand C wherever it exists and generated code, emitted without exact timing, elsewhere) equals `trace --mode stepped-gen --replay REFDIR` (the same runner with all generated code) at every sync point of the TAS and every corpus run, with 0 misses and 0 interpreter instructions on both. REFDIR is the run's D1 output (sync-point frames for the input). Passes with zero hand C (it proves the harness is deterministic) and stays green as C lands (regression gate). (Changed 2026-10-15, decision 5.) |
 | D3 | Types declared | `xmen2check.py types --json`: a struct for every class `tools/classes.py` finds (142), and every global in `build/recomp/ram_globals.csv` declared under its disassembly name |
-| D4 | Every function done | per function (ledger `build/phase4_functions.json`): `game/c/<ADDR>.c` defines it under its disassembly name with a doc comment (`xmen2check.py handc`), the file is lint-clean (`lint`), and it is **verified**: it byte-matches the ROM (`tools/cc.py --match-recomp`), **or** it is executed by the corpus and `xmen2check.py verify` reports 0 mismatches over ≥1 checked call and 0 uncovered instructions. Never-executed functions (705) must match (policy `matching-for-unexecuted`) |
+| D4 | Every function done | per function (ledger `build/phase4_functions.json`): `game/c/<ADDR>.c` defines it under its disassembly name with a doc comment (`xmen2check.py handc`), the file is lint-clean (`lint`), and it is **verified**: it byte-matches the ROM (`tools/cc.py --match-recomp`), **or** it is executed by the corpus and `xmen2check.py verify` reports 0 mismatches over ≥1 checked call and 0 uncovered instructions. Never-executed functions (705) must match (policy `matching-for-unexecuted`), except the 7 never-executed asm functions, which may use `verify` with synthetic cases (decision 8). A **fragment** (`handc` reports `fragments`: address -> parent) is done when its parent is done and the parent's file names it (decision 7) |
 | D5 | Readable | `xmen2check.py lint --json` over `game/c/` and `game/include/`: 0 `registers` (no `g_cpu`, no `XI`), 0 `raw_addresses` (work RAM, ROM or hardware outside the memory/hardware layer), 0 `raw_offsets` (fields by name), 0 `cross_function_goto`; and ≤5% of struct fields named `unk_*` (`types`) |
-| D6 | Whole game, hand C only | `xmen2check.py build --handc --json` links 0 generated game functions; `trace --mode handc --replay REFDIR` equals the D1 `sync.csv` at every sync point of the TAS and every corpus run, with 0 misses and 0 interpreter instructions |
+| D6 | Whole game, hand C only | `xmen2check.py build --handc --json` links 0 generated game functions; `trace --mode handc --replay REFDIR` equals `trace --mode stepped-gen --replay REFDIR` at every sync point of the TAS and every corpus run, with 0 misses and 0 interpreter instructions (changed 2026-10-15, decision 5) |
 | D7 | Independently reviewed | `XMen2Recomp/docs/reviews/*.md` cover ≥5% of functions (random sample) with `reviewed:`, `agree:`, `open disputes:` lines; agreement ≥90% (correct and readable); `open disputes: 0`; reviewers never review their own functions |
 | D8 | User verified | `XMen2Recomp/docs/USER_VERIFIED.md` has `handc-verified: YYYY-MM-DD` for the D6 build, written only on the user's word after they played it live |
 
@@ -74,10 +97,18 @@ work: `uv run tools/decomp_queue.py`. Per-function procedure: skill `/decomp-fun
   (outside interrupt handlers), counted from reset. `sync.csv` has columns
   `sync,frame,ram_crc32,vram_crc32,cram_crc32,vsram_crc32`. `sync` (the index) and the four
   CRCs are compared. `frame` is the reference's hardware frame and is reported only. CRCs are
-  defined as in P2, except that **RAM in `[stack_low, A7)` is zeroed** before the CRC. That
-  range is the dead stack below the stack pointer, whose contents depend on where interrupts
-  landed. `stack_low` is the lowest A7 the timed runner sees over the whole corpus; the D1
-  trace reports it as `stack_low` in its JSON. Nothing else is masked.
+  defined as in P2, except that **RAM in `[stack_low, $FFC518)` is zeroed** before the CRC: the
+  whole 68000 stack area, from the lowest A7 the timed runner sees over the corpus to the reset
+  SSP (changed 2026-10-15, decision 6; it was `[stack_low, A7)`). Its contents depend on where
+  interrupts landed (also above A7: uninitialised locals) and C keeps no 68000 frames. The D1
+  trace reports `stack_low` in its JSON. Nothing else is masked.
+- **Frame-synchronous stepped runner** (D2, D6; decision 5): untimed, one sync interval per
+  runner frame. At each sync point, after its row is written, the V-int is taken (when enabled
+  and unmasked); the pads for the next interval are the run's input at the reference frame of
+  the next sync point (D1 `sync.csv`). Hardware is emulated without timing: DMA completes at
+  once, the VDP status shows VBLANK to a `VDP_WaitVBlank` poll right after it shows it clear,
+  the Z80 runs a fixed slice whenever the 68000 polls it. Every rule is a function of the
+  program's own hardware accesses, so the generated and the C sides see the same machine.
 - **Replay log** (written by D1, read by `--replay`): the only inputs the stepped and handc
   runners may take from the reference are (a) the values the 68000 read from **hardware**
   (`$A00000-$A1FFFF` Z80 area and I/O including pads, `$C00000-$C0001F` VDP status and HV
