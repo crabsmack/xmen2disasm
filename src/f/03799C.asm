@@ -2,7 +2,7 @@
 ; MagnetoBoss_StateSpin - MAGNETOBOSS: each time the spin animation ends flip horizontally and replay it
 ; In:  8(a6) = this
 ; Out: none
-; Evidence: +$44 animation pointer == 0 -> +$2E ^= $10, sub_1F6296(jt $942)
+; Evidence: +$44 animation pointer == 0 -> +$2E ^= $10, Obj_ChangeAnim(jt $942)
 ; ---------------------------------------------------------------------------
 MagnetoBoss_StateSpin:
 	link.w	a6,#$0

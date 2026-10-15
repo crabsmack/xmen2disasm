@@ -2,7 +2,7 @@
 ; Boulder_StateBounce - BOULDER rolling/bouncing: on a solid floor bounce (vy = -vy/4) and roll off in a random direction; on a crumbling floor (types $13/$14) roll towards its nearer edge and crack it; each impact plays sound $97 and shakes the camera (harder when on screen)
 ; In:  8(a6) = this
 ; Out: d0
-; Evidence: sub_15A82A floor hit test with +$42; sub_15CECC impact when vy > $200; g_CamShake = jt $E82 / $E8A
+; Evidence: Seg_FindAt floor hit test with +$42; sub_15CECC impact when vy > $200; g_CamShake = jt $E82 / $E8A
 ; ---------------------------------------------------------------------------
 Boulder_StateBounce:
 	link.w	a6,#$0

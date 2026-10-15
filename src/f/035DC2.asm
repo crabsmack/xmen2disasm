@@ -2,7 +2,7 @@
 ; MagnetoBoss_SpawnRubble - set a map column to tile T over rows r0..r1 and throw N random rubble particles per row from it (mirrored if flagged), with sound $34
 ; In:  8(a6) = word column, $C(a6) = word first row, $10(a6) = word last row, $14(a6) = word particles per row, $18(a6) = byte mirror, $1C(a6) = word floor y px, $20(a6) = word tile
 ; Out: none
-; Evidence: particle pool from the -$10F4 pointer table [-$3CAE]; random velocities from sub_1600AA; Timer_Create/Timer_Start MagnetoBoss_RubbleTimer; sub_15D7F8
+; Evidence: particle pool from the -$10F4 pointer table [-$3CAE]; random velocities from Rand_Next; Timer_Create/Timer_Start MagnetoBoss_RubbleTimer; sub_15D7F8
 ; ---------------------------------------------------------------------------
 MagnetoBoss_SpawnRubble:
 	link.w	a6,#$FFD8

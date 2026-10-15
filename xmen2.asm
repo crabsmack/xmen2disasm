@@ -139,7 +139,7 @@ Sw_005CC6:	; switch table of sub at $005CC6: 4 word offsets from Sw_005CC6-2
 	include "src/f/0061D0.asm"
 	include "src/f/006242.asm"
 Sw_006242:	; switch table of sub at $006242: 6 word offsets from Sw_006242-2
-	dc.w	Player1_StartLife_Beast-(Sw_006242-2), Player1_StartLife_Cyclops-(Sw_006242-2), loc_0062BA-(Sw_006242-2), Player1_StartLife_Nightcrawler-(Sw_006242-2)
+	dc.w	Player1_StartLife_Beast-(Sw_006242-2), Player1_StartLife_Cyclops-(Sw_006242-2), Player1_StartLife_Gambit-(Sw_006242-2), Player1_StartLife_Nightcrawler-(Sw_006242-2)
 	dc.w	Player1_StartLife_Psylocke-(Sw_006242-2), Player1_StartLife_Wolverine-(Sw_006242-2)
 	include "src/f/0062AE.asm"
 	include "src/f/0062BA.asm"
@@ -148,7 +148,7 @@ Sw_006242:	; switch table of sub at $006242: 6 word offsets from Sw_006242-2
 	include "src/f/0062CC.asm"
 	include "src/f/0062E4.asm"
 Sw_0062E4:	; switch table of sub at $0062E4: 6 word offsets from Sw_0062E4-2
-	dc.w	loc_006350-(Sw_0062E4-2), loc_006356-(Sw_0062E4-2), loc_00635C-(Sw_0062E4-2), loc_006362-(Sw_0062E4-2)
+	dc.w	Player2_StartLife_Beast-(Sw_0062E4-2), loc_006356-(Sw_0062E4-2), loc_00635C-(Sw_0062E4-2), loc_006362-(Sw_0062E4-2)
 	dc.w	Player2_StartLife_Psylocke-(Sw_0062E4-2), Player2_StartLife_Wolverine-(Sw_0062E4-2)
 	include "src/f/006350.asm"
 	include "src/f/006368.asm"

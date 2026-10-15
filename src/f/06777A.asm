@@ -2,7 +2,7 @@
 ; PortraitActor_StartFlyOut - portrait: set up an 8-step scaled flight from the portrait back to the cursor's slot
 ; In:  8(a6) = this
 ; Out: d0 = +4 & 8
-; Evidence: big-sprite path fields of the cursor (+$E..+$2A) with random spreads (sub_15C222); next PortraitActor_StateFlyOut
+; Evidence: big-sprite path fields of the cursor (+$E..+$2A) with random spreads (Math_LDivS); next PortraitActor_StateFlyOut
 ; ---------------------------------------------------------------------------
 PortraitActor_StartFlyOut:
 	link.w	a6,#$0

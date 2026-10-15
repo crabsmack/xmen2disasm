@@ -2,7 +2,7 @@
 ; Boulder_SpawnDebris - throw rock debris from (x, y): 2 small and 3 big pieces with random velocities that bounce near floor height h
 ; In:  8(a6) = word x px, $C(a6) = word y px, $10(a6) = word floor y (screen)
 ; Out: d0
-; Evidence: Boulder_AllocDebris; sub_1600AA random; caller BaniMazaB2_CrackFloorHook
+; Evidence: Boulder_AllocDebris; Rand_Next random; caller BaniMazaB2_CrackFloorHook
 ; ---------------------------------------------------------------------------
 Boulder_SpawnDebris:
 	link.w	a6,#$FFD0

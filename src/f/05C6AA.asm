@@ -2,7 +2,7 @@
 ; Tusk_StateThrow - TUSK: release the held boulder with sound $AC and a velocity for the aim column (-6..5), then choose again after 20
 ; In:  8(a6) = this
 ; Out: d0 = 0
-; Evidence: held object index +$3B in the object table -$32A6; sub_1F6530 release; vx/vy/gravity table per column
+; Evidence: held object index +$3B in the object table -$32A6; Obj_Detach release; vx/vy/gravity table per column
 ; ---------------------------------------------------------------------------
 Tusk_StateThrow:
 	link.w	a6,#$0

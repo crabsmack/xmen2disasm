@@ -2,7 +2,7 @@
 ; Brood_ActIdle - BROOD script action: stand still (animation jt $6D0D8), next step after 60 frames
 ; In:  8(a6) = this
 ; Out: none
-; Evidence: sub_1F6296
+; Evidence: Obj_ChangeAnim
 ; ---------------------------------------------------------------------------
 Brood_ActIdle:
 	link.w	a6,#$0

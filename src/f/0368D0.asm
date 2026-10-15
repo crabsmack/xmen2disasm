@@ -2,7 +2,7 @@
 ; MagnetoBoss_SmashSegmentStaggered - as MagnetoBoss_SmashSegment but the debris pieces start 4 frames apart
 ; In:  8(a6) = this, $C(a6) = word column
 ; Out: d0
-; Evidence: sub_118166 delay argument += 4 per tile
+; Evidence: Explosion_SpawnSetTimerWord delay argument += 4 per tile
 ; ---------------------------------------------------------------------------
 MagnetoBoss_SmashSegmentStaggered:
 	link.w	a6,#$FFF6

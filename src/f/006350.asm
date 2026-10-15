@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; loc_006350	[static: switch-table case target (tools/switches.py: table after `move.w T(pc,dN.w),dN / jmp T-2(pc,dN.w)`, size from the cmpi bound)]
+; Player2_StartLife_Beast - switch cases 0-3 (Beast, Cyclops, Gambit, Nightcrawler) of Player2_StartLife
+; In:  d7 = character index
+; Out: none
+; Evidence: jump table $006344 entries 0-3 -> Player2_SetBeast/Cyclops/Gambit/Nightcrawler, then the common tail
 ; ---------------------------------------------------------------------------
-loc_006350:
+Player2_StartLife_Beast:
 	jsr	Player2_SetBeast(pc)
 	bra.s	$6372
 loc_006356:

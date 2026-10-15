@@ -2,7 +2,7 @@
 ; BanimazaDoor_StateStartRise - BANIMAZADOOR: rise (vy $5DC) with sound $BC, become visible, hittable and solid
 ; In:  8(a6) = this
 ; Out: d0 = 0
-; Evidence: sub_15DF2A(this, $FFEBAE); floor segment (-$33D2 + +$7A*$14) flag $40 cleared; next BanimazaDoor_StateRising
+; Evidence: HitList_Add(this, $FFEBAE); floor segment (-$33D2 + +$7A*$14) flag $40 cleared; next BanimazaDoor_StateRising
 ; ---------------------------------------------------------------------------
 BanimazaDoor_StateStartRise:
 	link.w	a6,#$0

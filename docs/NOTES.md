@@ -248,6 +248,23 @@ _(module → functions, globals, data; add as you learn them)_
   `sub_15D7F8(x, y, tile, keep)` sets a map tile, `sub_159FD6` steps a palette cycle into
   `g_PalBase`. **Offset tip**: Ghidra shows RAM addresses; A5 offset = address - $10200
   (`$FFC6CE` -> `-$3B32`), not address - $10000.
+- **Stage code layout** (w000, `$000000-$080000`): every stage has `<Stage>_RunScene` calling
+  small setup functions (`_LoadLevel` = `sub_1F98A8`, `_PlacePlayers` = `Players_PlaceAtStart`,
+  `_InitCamera` with a `_CamHook`, `_InstallHooks`/`_InstallTileHooks`/`_InstallEventHooks`,
+  `_EmptyStub*`) then the level loop `sub_1FA6FE`. Tile hooks crack/toggle map tiles through
+  stages (`AvalonA4_GlobCrack*` only react to MAGNETICGLOB, `BaniMazaB2_CrackFloorHook`,
+  `BaniMazaA1_SwitchTileHook` reverses the rolling-disc bands). Event hooks at `-$321A..`
+  answer event 3 (used by camera zones: `AvalonA4_EventZoneFree*`).
+- **Bosses in this range**: BIGACOLYTE (renders and grows a scaled picture, bursts a wall,
+  20-step fight script), EXODUS (attack patterns, swoops, floor-breaking blasts; horizontal
+  blasts that hit a wall start the screen-wide psychic flash `AvalonA3_PsiFlashStep`, which
+  hurts both players each step), MAGNETOBOSS (wall-crack intro, camera-zone chase with globes,
+  captured by THRONEPHONE which ends the stage), APOCALYPSE (damped `Apocalypse_MoveTo`,
+  bomb patterns; script phase by destroyed-bomb count `-$3B0C` = 3/7/12; defeat spawns the
+  BEAMSCOOTER that lifts the players out), TUSK (boulder rain until the players reach its
+  platform, then throws BOULDERs, charges, spawns TUSKETTEs). Enemy AI scripts: word count
+  + `jmp` thunks (labels `<Class>_Script*`, counts `Tbl_<Class>*ScriptLen`). Many states end
+  with `+$5C = next, +$6C = delay` and return `+4 & 8`.
 
 - **Class slots, additions (w0E0)** to the `tools/classes.py` names above (`$0E0000-$140000` follows
   them; descriptors there are labelled `Tbl_<Class>_vtable`, 60 of them): +$1E `DrawIfActive` (ACTOR

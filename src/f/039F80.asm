@@ -2,7 +2,7 @@
 ; BanimazaDoor_PlayerClear - is a player far enough from the door to let it respawn
 ; In:  8(a6) = door, $C(a6) = player
 ; Out: d0 = 1 if absent/protected or not within 20 px horizontally and 1 px vertically
-; Evidence: sub_1F429E; used by BanimazaDoor_StateWaitRespawn for both players
+; Evidence: Player_ClimbState; used by BanimazaDoor_StateWaitRespawn for both players
 ; ---------------------------------------------------------------------------
 BanimazaDoor_PlayerClear:
 	link.w	a6,#$0

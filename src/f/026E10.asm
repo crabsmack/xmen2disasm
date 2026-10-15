@@ -2,7 +2,7 @@
 ; RetractFloor_StateDrop - RETRACTFLOOR: remove its floor segment so the players fall, set the camera fields to $5A/$5F, sound $DD
 ; In:  8(a6) = this
 ; Out: d0 = +4 & 8
-; Evidence: sub_1F6530 on present players; -$3AFA = -$3CD0; Seg_Free(+$90); next RetractFloor_StateSlide
+; Evidence: Obj_Detach on present players; -$3AFA = -$3CD0; Seg_Free(+$90); next RetractFloor_StateSlide
 ; ---------------------------------------------------------------------------
 RetractFloor_StateDrop:
 	link.w	a6,#$FFFC

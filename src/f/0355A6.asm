@@ -2,7 +2,7 @@
 ; AvalonA4_CrackFloorHook - map tile hook: a player (or no object) cracks a floor segment one stage ($86 -> $87 -> $88 -> broken $85) across its width; the last stage frees the segment
 ; In:  8(a6) = word column, $C(a6) = word row, $10(a6) = hitting object
 ; Out: d0 = 0
-; Evidence: object class XPLAYER ($1131A0) or jt $2D92 class, or none; sub_1F8454 finds the type-$14 segment; Seg_Free; sub_118166 debris; installed in -$3AE8
+; Evidence: object class XPLAYER ($1131A0) or jt $2D92 class, or none; sub_1F8454 finds the type-$14 segment; Seg_Free; Explosion_SpawnSetTimerWord debris; installed in -$3AE8
 ; ---------------------------------------------------------------------------
 AvalonA4_CrackFloorHook:
 	link.w	a6,#$FFF4

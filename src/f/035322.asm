@@ -2,7 +2,7 @@
 ; AvalonA4_GlobCrackColumnHook - map tile hook: a MAGNETICGLOB cracks a 3-tile column one stage (two tile series); when it breaks, free the floor segment there
 ; In:  8(a6) = word column, $C(a6) = word row, $10(a6) = hitting object
 ; Out: d0 = 0
-; Evidence: finds the top of the column (tile bits $3800 == $1800); stages $8C->$A9..$AC->$11 and $9F->$A3..$A6->$A7; sub_118166 debris; Seg_Free of the type-$14 segment; installed in -$3AEC
+; Evidence: finds the top of the column (tile bits $3800 == $1800); stages $8C->$A9..$AC->$11 and $9F->$A3..$A6->$A7; Explosion_SpawnSetTimerWord debris; Seg_Free of the type-$14 segment; installed in -$3AEC
 ; ---------------------------------------------------------------------------
 AvalonA4_GlobCrackColumnHook:
 	link.w	a6,#$FFF4

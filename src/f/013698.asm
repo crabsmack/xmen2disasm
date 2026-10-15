@@ -1,5 +1,8 @@
 ; ---------------------------------------------------------------------------
-; CapedAcolyte_OnDeath	[jt 67]
+; CapedAcolyte_OnDeath - CAPEDACOLYTE slot +$72 (XNPC OnDeath): for hit types 13-15 kill it at once, otherwise treat the hit as OnHurt
+; In:  8(a6) = this, $C(a6) = byte attacker info, $10(a6) = byte hit type
+; Out: none
+; Evidence: tools/classes.py CAPEDACOLYTE +$72; slot $52 Kill or slot $6E CapedAcolyte_OnHurt
 ; ---------------------------------------------------------------------------
 CapedAcolyte_OnDeath:
 	link.w	a6,#$0

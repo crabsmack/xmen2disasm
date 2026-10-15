@@ -2,7 +2,7 @@
 ; Exodus_HurtPlayer - hurt one player with the psychic flash (TakeDamage type 4) unless absent or protected
 ; In:  8(a6) = player object
 ; Out: none
-; Evidence: slot $26 TakeDamage(player, 0, 4, 1, -1, -1); skipped when +4 bit $1000 and sub_1F429E says no; caller AvalonA3_PsiFlashStep
+; Evidence: slot $26 TakeDamage(player, 0, 4, 1, -1, -1); skipped when +4 bit $1000 and Player_ClimbState says no; caller AvalonA3_PsiFlashStep
 ; ---------------------------------------------------------------------------
 Exodus_HurtPlayer:
 	link.w	a6,#$0

@@ -2,7 +2,7 @@
 ; Zapper_StateLoopAnim0 - ZAPPER state for spawn type 0: loop animation jt $2746A forever
 ; In:  8(a6) = this
 ; Out: d0 = +4 & 8
-; Evidence: sub_1F6296(this, jt $2746A); +$6C = $FF, +$5C = itself; chosen by Zapper_Init
+; Evidence: Obj_ChangeAnim(this, jt $2746A); +$6C = $FF, +$5C = itself; chosen by Zapper_Init
 ; ---------------------------------------------------------------------------
 Zapper_StateLoopAnim0:
 	link.w	a6,#$0

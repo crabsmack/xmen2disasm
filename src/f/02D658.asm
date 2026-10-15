@@ -2,7 +2,7 @@
 ; Exodus_StateVulnerable - EXODUS: after an attack become hittable for 90 frames (hit box 5,10,8,8)
 ; In:  8(a6) = this
 ; Out: d0
-; Evidence: sub_15DF2A(this, $FFEBAE) node +$84; +$AB = $5A; flags +$AC |= $C; next Exodus_StateEndVulnerable
+; Evidence: HitList_Add(this, $FFEBAE) node +$84; +$AB = $5A; flags +$AC |= $C; next Exodus_StateEndVulnerable
 ; ---------------------------------------------------------------------------
 Exodus_StateVulnerable:
 	link.w	a6,#$0

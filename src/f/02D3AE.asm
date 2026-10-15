@@ -2,7 +2,7 @@
 ; Exodus_StateSwoopStart - EXODUS: start swooping towards y $2D5 with a random velocity
 ; In:  8(a6) = this
 ; Out: d0 = +4 & 8
-; Evidence: sub_15C222 random; flags +$AC = 3; next Exodus_StateSwoopToY
+; Evidence: Math_LDivS random; flags +$AC = 3; next Exodus_StateSwoopToY
 ; ---------------------------------------------------------------------------
 Exodus_StateSwoopStart:
 	link.w	a6,#$0

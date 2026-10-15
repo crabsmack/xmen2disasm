@@ -2,7 +2,7 @@
 ; Tuskette_StateWalkStart - TUSKETTE walker: face the player (or turn at a ledge) and walk at +$9A for up to 300 frames
 ; In:  8(a6) = this
 ; Out: d0 = +4 & 8
-; Evidence: sub_1F638A(this, 50) = ledge ahead; walk animation jt $E62; next Tuskette_StateWalk
+; Evidence: Seg_WouldLeaveEnd(this, 50) = ledge ahead; walk animation jt $E62; next Tuskette_StateWalk
 ; ---------------------------------------------------------------------------
 Tuskette_StateWalkStart:
 	link.w	a6,#$0

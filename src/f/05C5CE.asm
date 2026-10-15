@@ -2,7 +2,7 @@
 ; Tusk_AtkVulnerable - TUSK attack step: become hittable (+$9A = 45) for 50 frames
 ; In:  8(a6) = this
 ; Out: d0 = 0
-; Evidence: sub_15DF2A(this, $FFEBAE); next Tusk_StateVulnerableWait
+; Evidence: HitList_Add(this, $FFEBAE); next Tusk_StateVulnerableWait
 ; ---------------------------------------------------------------------------
 Tusk_AtkVulnerable:
 	link.w	a6,#$0

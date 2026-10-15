@@ -2,7 +2,7 @@
 ; Exodus_StateRise - EXODUS: fly up (vy -200, ay -10) with a random drift
 ; In:  8(a6) = this
 ; Out: d0 = +4 & 8
-; Evidence: sub_15C222 random vx; next Exodus_StateRiseUntil
+; Evidence: Math_LDivS random vx; next Exodus_StateRiseUntil
 ; ---------------------------------------------------------------------------
 Exodus_StateRise:
 	link.w	a6,#$0
