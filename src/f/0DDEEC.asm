@@ -22,7 +22,7 @@ ControlPanel_Init:
 	clr.w	$18(a3)
 	clr.w	$20(a3)
 	move.w	#$64,$68(a3)
-	lea.l	sub_0DE3E8(pc),a0
+	lea.l	ControlPanel_StateHit(pc),a0
 	move.l	a0,$60(a3)
 	ori.w	#$4081,$6(a3)
 	move.w	-$3BFE(a5),d0
@@ -85,9 +85,9 @@ loc_0DDFCA:
 	move.w	(a4),d7
 	btst	#$0,d7
 	beq.s	loc_0DE018
-	lea.l	sub_0DE33C(pc),a0
+	lea.l	ControlPanel_StateArm(pc),a0
 	move.l	a0,$5C(a3)
-	lea.l	sub_0DE33C(pc),a0
+	lea.l	ControlPanel_StateArm(pc),a0
 	move.l	a0,$64(a3)
 	pea.l	($FF).w
 	move.l	a3,-(a7)
@@ -105,9 +105,9 @@ loc_0DE018:
 	moveq	#$8,d0
 	and.w	d7,d0
 	beq.s	loc_0DE036
-	lea.l	sub_0DE274(pc),a0
+	lea.l	ControlPanel_StateDamaged2(pc),a0
 	move.l	a0,$5C(a3)
-	lea.l	sub_0DE274(pc),a0
+	lea.l	ControlPanel_StateDamaged2(pc),a0
 	move.l	a0,$64(a3)
 	move.w	#$3,$9A(a3)
 	bra.s	loc_0DE06A
@@ -115,16 +115,16 @@ loc_0DE036:
 	moveq	#$4,d0
 	and.w	d7,d0
 	beq.s	loc_0DE054
-	lea.l	sub_0DE240(pc),a0
+	lea.l	ControlPanel_StateDamaged1(pc),a0
 	move.l	a0,$5C(a3)
-	lea.l	sub_0DE240(pc),a0
+	lea.l	ControlPanel_StateDamaged1(pc),a0
 	move.l	a0,$64(a3)
 	move.w	#$2,$9A(a3)
 	bra.s	loc_0DE06A
 loc_0DE054:
-	lea.l	sub_0DE21A(pc),a0
+	lea.l	ControlPanel_StateIntact(pc),a0
 	move.l	a0,$5C(a3)
-	lea.l	sub_0DE21A(pc),a0
+	lea.l	ControlPanel_StateIntact(pc),a0
 	move.l	a0,$64(a3)
 	move.w	#$1,$9A(a3)
 loc_0DE06A:

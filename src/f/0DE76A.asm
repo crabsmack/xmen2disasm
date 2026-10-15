@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_0DE76A	[link-after-rts]
+; SentinelDoor_StateOpen1 - SENTINELDOOR opening: frame 1, sound $D6
+; In:  8(a6) = this
+; Out: d0
+; Found: link-after-rts
 ; ---------------------------------------------------------------------------
-sub_0DE76A:
+SentinelDoor_StateOpen1:
 	link.w	a6,#$0
 	move.l	a4,-(a7)
 	movea.l	$8(a6),a4
@@ -17,7 +20,7 @@ sub_0DE76A:
 	jsr	$521A(a5)	; -> Snd_Play
 	lea.l	$10(a7),a7
 	move.w	#$1,$6C(a4)
-	lea.l	sub_0DE7B2(pc),a0
+	lea.l	SentinelDoor_StateOpen2(pc),a0
 	move.l	a0,$5C(a4)
 	moveq	#$8,d0
 	and.w	$4(a4),d0

@@ -1,7 +1,11 @@
 ; ---------------------------------------------------------------------------
-; sub_0DE3E8	[link-after-rts]
+; ControlPanel_StateHit - CONTROLPANEL hurt state: count the hit (+$9A); hits 2 and 3 damage it (sound $CB), 4 destroys it
+; In:  8(a6) = this
+; Out: d0
+; Evidence: +$6A = 10; TAS 2749-6911
+; Found: link-after-rts
 ; ---------------------------------------------------------------------------
-sub_0DE3E8:
+ControlPanel_StateHit:
 	link.w	a6,#$0
 	move.l	a4,-(a7)
 	movea.l	$8(a6),a4
@@ -24,7 +28,7 @@ loc_0DE414:
 	jsr	$521A(a5)	; -> Snd_Play
 	addq.w	#$8,a7
 	clr.w	$6C(a4)
-	lea.l	sub_0DE240(pc),a0
+	lea.l	ControlPanel_StateDamaged1(pc),a0
 	move.l	a0,$5C(a4)
 	moveq	#$8,d0
 	and.w	$4(a4),d0
@@ -36,21 +40,21 @@ loc_0DE43A:
 	jsr	$521A(a5)	; -> Snd_Play
 	addq.w	#$8,a7
 	clr.w	$6C(a4)
-	lea.l	sub_0DE274(pc),a0
+	lea.l	ControlPanel_StateDamaged2(pc),a0
 	move.l	a0,$5C(a4)
 	moveq	#$8,d0
 	and.w	$4(a4),d0
 	bra.s	loc_0DE486
 loc_0DE460:
 	clr.w	$6C(a4)
-	lea.l	sub_0DE2A8(pc),a0
+	lea.l	ControlPanel_StateDestroyed(pc),a0
 	move.l	a0,$5C(a4)
 	moveq	#$8,d0
 	and.w	$4(a4),d0
 	bra.s	loc_0DE486
 loc_0DE474:
 	clr.w	$6C(a4)
-	lea.l	sub_0DE2A8(pc),a0
+	lea.l	ControlPanel_StateDestroyed(pc),a0
 	move.l	a0,$5C(a4)
 	moveq	#$8,d0
 	and.w	$4(a4),d0

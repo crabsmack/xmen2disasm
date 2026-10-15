@@ -1,7 +1,11 @@
 ; ---------------------------------------------------------------------------
-; sub_0DD804	[jt 1182]
+; ControlBox_StartPattern - CONTROLBOX slot +$6E: (re)start its firing pattern $0DD5B4 (4-byte steps; byte +5 = delay)
+; In:  8(a6) = this
+; Out: none
+; Evidence: +$90 pattern, +$96 = steps, +$94 = 0, +$6E delay, +$9A = 1; TAS 2772-7259
+; Found: jt 1182
 ; ---------------------------------------------------------------------------
-sub_0DD804:
+ControlBox_StartPattern:
 	link.w	a6,#$0
 	movem.l	a3-a4,-(a7)
 	movea.l	$8(a6),a3

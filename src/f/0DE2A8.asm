@@ -1,7 +1,11 @@
 ; ---------------------------------------------------------------------------
-; sub_0DE2A8	[link-after-rts]
+; ControlPanel_StateDestroyed - CONTROLPANEL state: destroyed - debris, hide, leave the hit list, flag bit 0 (activates its CONTROLBOX), start firing
+; In:  8(a6) = this
+; Out: d0
+; Evidence: slot +$6E(1), +$72; next ControlPanel_StateArm
+; Found: link-after-rts
 ; ---------------------------------------------------------------------------
-sub_0DE2A8:
+ControlPanel_StateDestroyed:
 	link.w	a6,#$0
 	movem.l	d6-d7/a4,-(a7)
 	movea.l	$8(a6),a4
@@ -46,7 +50,7 @@ sub_0DE2A8:
 	jsr	(a1)
 	lea.l	$28(a7),a7
 	clr.w	$6C(a4)
-	lea.l	sub_0DE33C(pc),a0
+	lea.l	ControlPanel_StateArm(pc),a0
 	move.l	a0,$5C(a4)
 	moveq	#$8,d0
 	and.w	$4(a4),d0

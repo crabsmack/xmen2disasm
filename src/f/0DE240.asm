@@ -1,7 +1,11 @@
 ; ---------------------------------------------------------------------------
-; sub_0DE240	[link-after-rts]
+; ControlPanel_StateDamaged1 - CONTROLPANEL state: damaged once (frame 2, flag bit 2)
+; In:  8(a6) = this
+; Out: none
+; Evidence: slot +$6E(4)
+; Found: link-after-rts
 ; ---------------------------------------------------------------------------
-sub_0DE240:
+ControlPanel_StateDamaged1:
 	link.w	a6,#$0
 	move.l	a4,-(a7)
 	movea.l	$8(a6),a4

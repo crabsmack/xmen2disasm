@@ -1,7 +1,11 @@
 ; ---------------------------------------------------------------------------
-; sub_0DF38E	[link-after-rts]
+; SentinelElevator_StateStart - SENTINELELEVATOR first state: frame 0, wait for its switch
+; In:  8(a6) = this
+; Out: d0
+; Evidence: TAS 4820-9971
+; Found: link-after-rts
 ; ---------------------------------------------------------------------------
-sub_0DF38E:
+SentinelElevator_StateStart:
 	link.w	a6,#$0
 	move.l	a4,-(a7)
 	movea.l	$8(a6),a4
@@ -13,7 +17,7 @@ sub_0DF38E:
 	jsr	(a1)
 	addq.w	#$8,a7
 	clr.w	$6C(a4)
-	lea.l	sub_0DF3C2(pc),a0
+	lea.l	SentinelElevator_StateWaitSwitch(pc),a0
 	move.l	a0,$5C(a4)
 	moveq	#$8,d0
 	and.w	$4(a4),d0

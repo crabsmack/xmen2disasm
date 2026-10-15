@@ -1,7 +1,11 @@
 ; ---------------------------------------------------------------------------
-; sub_0DE21A	[link-after-rts]
+; ControlPanel_StateIntact - CONTROLPANEL state: intact (frame 1)
+; In:  8(a6) = this
+; Out: none
+; Evidence: TAS 2713-6811
+; Found: link-after-rts
 ; ---------------------------------------------------------------------------
-sub_0DE21A:
+ControlPanel_StateIntact:
 	link.w	a6,#$0
 	move.l	a4,-(a7)
 	movea.l	$8(a6),a4

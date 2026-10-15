@@ -1,7 +1,11 @@
 ; ---------------------------------------------------------------------------
-; sub_0DF34C	[link-after-rts]
+; SentinelElevator_StateAuto - SENTINELELEVATOR state: automatic mode - waits $3C at the top and $78 at the bottom, starts up after $C frames
+; In:  8(a6) = this
+; Out: d0
+; Evidence: +$98/+$99 waits; next SentinelElevator_StateGoUp; TAS 5218
+; Found: link-after-rts
 ; ---------------------------------------------------------------------------
-sub_0DF34C:
+SentinelElevator_StateAuto:
 	link.w	a6,#$0
 	move.l	a4,-(a7)
 	movea.l	$8(a6),a4
@@ -15,7 +19,7 @@ sub_0DF34C:
 	move.b	#$78,$99(a4)
 	addq.w	#$8,a7
 	move.w	#$C,$6C(a4)
-	lea.l	sub_0DF3F6(pc),a0
+	lea.l	SentinelElevator_StateGoUp(pc),a0
 	move.l	a0,$5C(a4)
 	moveq	#$8,d0
 	and.w	$4(a4),d0

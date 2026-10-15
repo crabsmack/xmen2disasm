@@ -75,9 +75,9 @@ loc_0DD6E6:
 	move.w	(a4),d0
 	btst	#$0,d0
 	beq.s	loc_0DD73C
-	lea.l	sub_0DD956(pc),a0
+	lea.l	ControlBox_StateArm(pc),a0
 	move.l	a0,$5C(a3)
-	lea.l	sub_0DD956(pc),a0
+	lea.l	ControlBox_StateArm(pc),a0
 	move.l	a0,$64(a3)
 	pea.l	($FF).w
 	move.l	a3,-(a7)
@@ -91,9 +91,9 @@ loc_0DD6E6:
 	lea.l	$C(a7),a7
 	bra.s	loc_0DD750
 loc_0DD73C:
-	lea.l	sub_0DD8AE(pc),a0
+	lea.l	ControlBox_StateWaitSwitch(pc),a0
 	move.l	a0,$5C(a3)
-	lea.l	sub_0DD8AE(pc),a0
+	lea.l	ControlBox_StateWaitSwitch(pc),a0
 	move.l	a0,$64(a3)
 	clr.w	$9A(a3)
 loc_0DD750:

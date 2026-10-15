@@ -1,7 +1,11 @@
 ; ---------------------------------------------------------------------------
-; sub_0DD980	[link-after-rts]
+; ControlBox_StateFire - CONTROLBOX state: step the firing pattern (restarting it at the end) and fire a blast every +$9E frames
+; In:  8(a6) = this
+; Out: none
+; Evidence: slot +$72 ControlBox_FireBlast(x, y); TAS 2774-7269
+; Found: link-after-rts
 ; ---------------------------------------------------------------------------
-sub_0DD980:
+ControlBox_StateFire:
 	link.w	a6,#$0
 	movem.l	d7/a3-a4,-(a7)
 	movea.l	$8(a6),a3

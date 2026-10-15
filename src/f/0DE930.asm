@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_0DE930	[link-after-rts]
+; SentinelDoor_StateClose4 - SENTINELDOOR closing: frame 2
+; In:  8(a6) = this
+; Out: d0
+; Found: link-after-rts
 ; ---------------------------------------------------------------------------
-sub_0DE930:
+SentinelDoor_StateClose4:
 	link.w	a6,#$0
 	move.l	a4,-(a7)
 	movea.l	$8(a6),a4
@@ -13,7 +16,7 @@ sub_0DE930:
 	jsr	(a1)
 	addq.w	#$8,a7
 	move.w	#$1,$6C(a4)
-	lea.l	sub_0DE966(pc),a0
+	lea.l	SentinelDoor_StateClose5(pc),a0
 	move.l	a0,$5C(a4)
 	moveq	#$8,d0
 	and.w	$4(a4),d0

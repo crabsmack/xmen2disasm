@@ -1,7 +1,11 @@
 ; ---------------------------------------------------------------------------
-; sub_0DE1CC	[jt 1195]
+; ControlPanel_FireBlast - CONTROLPANEL slot +$76: fire a BLAST at (x, y) with its blast parameters
+; In:  8(a6) = this, $C(a6) = long x, $10(a6) = long y
+; Out: none
+; Evidence: Blast_Spawn
+; Found: jt 1195
 ; ---------------------------------------------------------------------------
-sub_0DE1CC:
+ControlPanel_FireBlast:
 	link.w	a6,#$FFF0
 	movem.l	a3-a4,-(a7)
 	movea.l	$8(a6),a3

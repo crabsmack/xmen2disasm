@@ -1,7 +1,11 @@
 ; ---------------------------------------------------------------------------
-; sub_0DD8E2	[link-after-rts]
+; ControlBox_StateActivate - CONTROLBOX state: activate - debris, hide (frame $FF), start the firing pattern
+; In:  8(a6) = this
+; Out: d0
+; Evidence: slot +$6E ControlBox_StartPattern; next ControlBox_StateArm
+; Found: link-after-rts
 ; ---------------------------------------------------------------------------
-sub_0DD8E2:
+ControlBox_StateActivate:
 	link.w	a6,#$0
 	movem.l	d6-d7/a4,-(a7)
 	movea.l	$8(a6),a4
@@ -35,7 +39,7 @@ sub_0DD8E2:
 	jsr	(a1)
 	lea.l	$18(a7),a7
 	clr.w	$6C(a4)
-	lea.l	sub_0DD956(pc),a0
+	lea.l	ControlBox_StateArm(pc),a0
 	move.l	a0,$5C(a4)
 	moveq	#$8,d0
 	and.w	$4(a4),d0

@@ -1,13 +1,17 @@
 ; ---------------------------------------------------------------------------
-; sub_0DD956	[link-after-rts]
+; ControlBox_StateArm - CONTROLBOX state: fire interval +$9C = 10, then fire
+; In:  8(a6) = this
+; Out: d0
+; Evidence: next ControlBox_StateFire
+; Found: link-after-rts
 ; ---------------------------------------------------------------------------
-sub_0DD956:
+ControlBox_StateArm:
 	link.w	a6,#$0
 	move.l	a4,-(a7)
 	movea.l	$8(a6),a4
 	move.w	#$A,$9C(a4)
 	clr.w	$6C(a4)
-	lea.l	sub_0DD980(pc),a0
+	lea.l	ControlBox_StateFire(pc),a0
 	move.l	a0,$5C(a4)
 	moveq	#$8,d0
 	and.w	$4(a4),d0

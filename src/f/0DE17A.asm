@@ -1,7 +1,11 @@
 ; ---------------------------------------------------------------------------
-; sub_0DE17A	[jt 1194]
+; ControlPanel_StartPattern - CONTROLPANEL slot +$72: start its firing pattern $0DDE36 (+$9A = 5)
+; In:  8(a6) = this
+; Out: none
+; Evidence: same layout as ControlBox_StartPattern
+; Found: jt 1194
 ; ---------------------------------------------------------------------------
-sub_0DE17A:
+ControlPanel_StartPattern:
 	link.w	a6,#$0
 	movem.l	a3-a4,-(a7)
 	movea.l	$8(a6),a3

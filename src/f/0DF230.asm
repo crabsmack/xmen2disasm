@@ -1,7 +1,7 @@
 ; ---------------------------------------------------------------------------
 ; SentinelElevator_Init - vtable +$12 constructor: run the parent's Init, then set up a SENTINELELEVATOR
 ; In:  8(a6) = this, $C(a6) = long x, $10(a6) = long y (8 fraction bits), $14(a6) = spawn parameter
-; Evidence: slot +$12 of the SENTINELELEVATOR descriptor $0DF556; TAS frames 4818-9969 (3 frames active); calls parent ACTOR slot +$12; state handler(s) put in +$5C: sub_0DF34C, sub_0DF38E
+; Evidence: slot +$12 of the SENTINELELEVATOR descriptor $0DF556; TAS frames 4818-9969 (3 frames active); calls parent ACTOR slot +$12; state handler(s) put in +$5C: SentinelElevator_StateAuto, SentinelElevator_StateStart
 ; ---------------------------------------------------------------------------
 SentinelElevator_Init:
 	link.w	a6,#$0
@@ -19,9 +19,9 @@ SentinelElevator_Init:
 	jsr	(a1)
 	clr.w	$18(a4)
 	clr.w	$20(a4)
-	lea.l	sub_0DF38E(pc),a0
+	lea.l	SentinelElevator_StateStart(pc),a0
 	move.l	a0,$5C(a4)
-	lea.l	sub_0DF38E(pc),a0
+	lea.l	SentinelElevator_StateStart(pc),a0
 	move.l	a0,$64(a4)
 	ori.w	#$52A3,$6(a4)
 	move.b	#$4,$42(a4)
@@ -75,9 +75,9 @@ loc_0DF310:
 	moveq	#$63,d0
 	cmp.w	$E(a3),d0
 	bne.s	loc_0DF336
-	lea.l	sub_0DF34C(pc),a0
+	lea.l	SentinelElevator_StateAuto(pc),a0
 	move.l	a0,$5C(a4)
-	lea.l	sub_0DF34C(pc),a0
+	lea.l	SentinelElevator_StateAuto(pc),a0
 	move.l	a0,$64(a4)
 	clr.b	$98(a4)
 	clr.b	$42(a4)

@@ -3146,7 +3146,7 @@ Tbl_Blast_vtable:	; class descriptor of BLAST: word name offset $76, parent ACTO
 	incrom	$0DD0E8,$7C
 Art_BarrierSpr:	; sprite definition (type $19, Nemesis-compressed tiles): $24-byte header, $14-byte frame records, pieces, tiles; 44F of 450 bytes used at runtime; read by Spr_PreloadTiles, Nem_DecodeLoop; jt[1174] used by Barrier_ClassInit, Blast_ClassInit
 	incrom	$0DD164,$450
-Art_ControlBoxNem:	; Nemesis-style compressed 4bpp tiles (Nem_Decode; code table built from pairs by the caller); 42 of 42 bytes used at runtime; read by Nem_DecodeLoop, ControlBox_Draw, Nem_Decode; jt[1175] used by sub_0DD804
+Art_ControlBoxNem:	; Nemesis-style compressed 4bpp tiles (Nem_Decode; code table built from pairs by the caller); 42 of 42 bytes used at runtime; read by Nem_DecodeLoop, ControlBox_Draw, Nem_Decode; jt[1175] used by ControlBox_StartPattern
 	incrom	$0DD5B4,$42
 	include "src/f/0DD5F6.asm"
 	include "src/f/0DD604.asm"
@@ -3162,11 +3162,11 @@ Art_ControlBoxNem:	; Nemesis-style compressed 4bpp tiles (Nem_Decode; code table
 	include "src/f/0DD980.asm"
 Tbl_ControlBox_vtable:	; class descriptor of CONTROLBOX: word name offset $76, parent ACTOR, 28 method slots from +6, then the name (tools/classes.py)
 	incrom	$0DDA02,$81
-Pad_ControlPanel:	; $00 fill; never read in the corpus; between sub_0DD980 and ControlPanel_GetSize
+Pad_ControlPanel:	; $00 fill; never read in the corpus; between ControlBox_StateFire and ControlPanel_GetSize
 	incrom	$0DDA83,$1
 Art_ControlPanelSpr:	; sprite definition (type $19, Nemesis-compressed tiles): $24-byte header, $14-byte frame records, pieces, tiles; 3B1 of 3B2 bytes used at runtime; read by Nem_DecodeLoop, Spr_PreloadTiles, Nem_BuildCodeTable; jt[1185] used by SentinelsD1_LoadResources
 	incrom	$0DDA84,$3B2
-Art_ControlPanelNem:	; Nemesis-style compressed 4bpp tiles (Nem_Decode; code table built from pairs by the caller); 82 of 82 bytes used at runtime; read by Nem_DecodeLoop, ControlPanel_Draw; jt[1186] used by sub_0DE17A
+Art_ControlPanelNem:	; Nemesis-style compressed 4bpp tiles (Nem_Decode; code table built from pairs by the caller); 82 of 82 bytes used at runtime; read by Nem_DecodeLoop, ControlPanel_Draw; jt[1186] used by ControlPanel_StartPattern
 	incrom	$0DDE36,$82
 	include "src/f/0DDEB8.asm"
 	include "src/f/0DDEC6.asm"
@@ -3186,7 +3186,7 @@ Art_ControlPanelNem:	; Nemesis-style compressed 4bpp tiles (Nem_Decode; code tab
 	include "src/f/0DE3E8.asm"
 Tbl_ControlPanel_vtable:	; class descriptor of CONTROLPANEL: word name offset $7A, parent ACTOR, 29 method slots from +6, then the name (tools/classes.py)
 	incrom	$0DE48E,$87
-Pad_SentinelDoor:	; $00 fill; never read in the corpus; between sub_0DE3E8 and SentinelDoor_GetSize
+Pad_SentinelDoor:	; $00 fill; never read in the corpus; between ControlPanel_StateHit and SentinelDoor_GetSize
 	incrom	$0DE515,$1
 	include "src/f/0DE516.asm"
 	include "src/f/0DE524.asm"
@@ -3209,7 +3209,7 @@ Pad_SentinelDoor:	; $00 fill; never read in the corpus; between sub_0DE3E8 and S
 	include "src/f/0DE966.asm"
 Tbl_SentinelDoor_vtable:	; class descriptor of SENTINELDOOR: word name offset $6E, parent ACTOR, 26 method slots from +6, then the name (tools/classes.py)
 	incrom	$0DE9A0,$7B
-Pad_SentinelElevator:	; $00 fill; never read in the corpus; between sub_0DE966 and SentinelElevator_GetSize
+Pad_SentinelElevator:	; $00 fill; never read in the corpus; between SentinelDoor_StateClose5 and SentinelElevator_GetSize
 	incrom	$0DEA1B,$1
 Art_SentinelDoorSpr:	; sprite definition (type $18, raw 4bpp tiles): $24-byte header, $14-byte frame records, pieces, tiles; 640 of 7E0 bytes used at runtime; read by VDP_FlushDmaQueue; DMA to VRAM $CE60-D9E0; jt[1204] used by SentinelDoor_Init
 	incrom	$0DEA1C,$7E0
@@ -3227,7 +3227,7 @@ Art_SentinelDoorSpr:	; sprite definition (type $18, raw 4bpp tiles): $24-byte he
 	include "src/f/0DF4D6.asm"
 Tbl_SentinelElevator_vtable:	; class descriptor of SENTINELELEVATOR: word name offset $6E, parent ACTOR, 26 method slots from +6, then the name (tools/classes.py)
 	incrom	$0DF556,$7F
-Pad_SentinelsA1:	; $00 fill; never read in the corpus; between sub_0DF4D6 and SentinelsA1_ResetPalCycles
+Pad_SentinelsA1:	; $00 fill; never read in the corpus; between SentinelElevator_StateSinking and SentinelsA1_ResetPalCycles
 	incrom	$0DF5D5,$1
 Art_SentinelElevatorSpr:	; sprite definition (type $18, raw 4bpp tiles): $24-byte header, $14-byte frame records, pieces, tiles; 400 of 46C bytes used at runtime; read by VDP_FlushDmaQueue, Seg_LoadList; DMA to VRAM $D3A0-D9E0; jt[1211] used by SentinelElevator_Init
 	incrom	$0DF5D6,$46C

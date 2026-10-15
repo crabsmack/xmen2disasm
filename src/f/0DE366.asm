@@ -1,7 +1,11 @@
 ; ---------------------------------------------------------------------------
-; sub_0DE366	[link-after-rts]
+; ControlPanel_StateFire - CONTROLPANEL state: step its firing pattern and fire a blast every +$9E frames
+; In:  8(a6) = this
+; Out: none
+; Evidence: slot +$76; TAS 2772-6947
+; Found: link-after-rts
 ; ---------------------------------------------------------------------------
-sub_0DE366:
+ControlPanel_StateFire:
 	link.w	a6,#$0
 	movem.l	d7/a3-a4,-(a7)
 	movea.l	$8(a6),a3

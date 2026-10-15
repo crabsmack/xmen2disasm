@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_0DF4D6	[link-after-rts]
+; SentinelElevator_StateSinking - SENTINELELEVATOR state: sink to the bottom (+$96), then wait for the switch, go up at once or after +$99 frames
+; In:  8(a6) = this
+; Out: d0
+; Found: link-after-rts
 ; ---------------------------------------------------------------------------
-sub_0DF4D6:
+SentinelElevator_StateSinking:
 	link.w	a6,#$0
 	movem.l	d7/a4,-(a7)
 	movea.l	$8(a6),a4
@@ -19,24 +22,24 @@ sub_0DF4D6:
 	move.b	$99(a4),d0
 	cmpi.w	#$FFFF,d0
 	bne.s	loc_0DF520
-	lea.l	sub_0DF3F6(pc),a0
+	lea.l	SentinelElevator_StateGoUp(pc),a0
 	move.l	a0,$5C(a4)
 	move.l	a4,-(a7)
-	jsr	sub_0DF3F6(pc)
+	jsr	SentinelElevator_StateGoUp(pc)
 	addq.w	#$4,a7
 	bra.s	loc_0DF54C
 loc_0DF520:
 	moveq	#$0,d0
 	move.b	$99(a4),d0
 	move.w	d0,$6C(a4)
-	lea.l	sub_0DF3F6(pc),a0
+	lea.l	SentinelElevator_StateGoUp(pc),a0
 	move.l	a0,$5C(a4)
 	moveq	#$8,d0
 	and.w	$4(a4),d0
 	bra.s	loc_0DF54C
 loc_0DF53A:
 	clr.w	$6C(a4)
-	lea.l	sub_0DF3C2(pc),a0
+	lea.l	SentinelElevator_StateWaitSwitch(pc),a0
 	move.l	a0,$5C(a4)
 	moveq	#$8,d0
 	and.w	$4(a4),d0

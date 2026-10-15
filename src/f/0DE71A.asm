@@ -1,7 +1,11 @@
 ; ---------------------------------------------------------------------------
-; sub_0DE71A	[link-after-rts]
+; SentinelDoor_StateOpen - SENTINELDOOR state: open - segment disabled (bit 6), frame 6; close when the flag bit clears
+; In:  8(a6) = this
+; Out: d0
+; Evidence: next SentinelDoor_StateClose1 (+$92 = 2); TAS 2869-7282
+; Found: link-after-rts
 ; ---------------------------------------------------------------------------
-sub_0DE71A:
+SentinelDoor_StateOpen:
 	link.w	a6,#$0
 	movem.l	a3-a4,-(a7)
 	movea.l	$8(a6),a3
@@ -20,7 +24,7 @@ sub_0DE71A:
 	bne.s	loc_0DE760
 	move.w	#$2,$92(a3)
 	clr.w	$6C(a3)
-	lea.l	sub_0DE88E(pc),a0
+	lea.l	SentinelDoor_StateClose1(pc),a0
 	move.l	a0,$5C(a3)
 	moveq	#$8,d0
 	and.w	$4(a3),d0

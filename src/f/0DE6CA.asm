@@ -1,7 +1,11 @@
 ; ---------------------------------------------------------------------------
-; sub_0DE6CA	[link-after-rts]
+; SentinelDoor_StateClosed - SENTINELDOOR state: closed - its floor segment (+$94) solid, frame 0; open when flag bit 1 of +$8C is set
+; In:  8(a6) = this
+; Out: d0
+; Evidence: next SentinelDoor_StateOpen1 (+$92 = 1); TAS 2718-7239
+; Found: link-after-rts
 ; ---------------------------------------------------------------------------
-sub_0DE6CA:
+SentinelDoor_StateClosed:
 	link.w	a6,#$0
 	movem.l	a3-a4,-(a7)
 	movea.l	$8(a6),a3
@@ -20,7 +24,7 @@ sub_0DE6CA:
 	beq.s	loc_0DE710
 	move.w	#$1,$92(a3)
 	clr.w	$6C(a3)
-	lea.l	sub_0DE76A(pc),a0
+	lea.l	SentinelDoor_StateOpen1(pc),a0
 	move.l	a0,$5C(a3)
 	moveq	#$8,d0
 	and.w	$4(a3),d0

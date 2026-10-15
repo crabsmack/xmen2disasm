@@ -1,7 +1,11 @@
 ; ---------------------------------------------------------------------------
-; sub_0DD856	[jt 1183]
+; ControlBox_FireBlast - CONTROLBOX slot +$72: fire a BLAST at (x, y) with its blast parameters (+$98, +$A0, +$A2, +$A3)
+; In:  8(a6) = this, $C(a6) = long x, $10(a6) = long y
+; Out: none
+; Evidence: builds a spawn record, Blast_Spawn; TAS 2785-7178
+; Found: jt 1183
 ; ---------------------------------------------------------------------------
-sub_0DD856:
+ControlBox_FireBlast:
 	link.w	a6,#$FFF0
 	movem.l	a3-a4,-(a7)
 	movea.l	$8(a6),a3
