@@ -26,7 +26,7 @@ was recorded on, with an execution and data-read logger.
 | R1 | Standard corpus fully run | all runs of `emu/corpus.py --list` present (TAS, idle, 62 fuzz sessions, scenarios) |
 | R2 | No executed code is missing from the disassembly | `coverage.py`: missed_code = 0 |
 | R3 | No disassembled instruction is contradicted at runtime | `coverage.py`: mid_insn = 0 |
-| R4 | Required scenarios exist in `emu/corpus/scenarios/` | files named for each id in `REQUIRED_SCENARIOS` (progress.py): options menu, password/continue, game over, 2-player, and each playable character |
+| R4 | Required scenarios exist in `emu/corpus/scenarios/` | files named for each id in `REQUIRED_SCENARIOS` (progress.py): pause-screen cheat codes, game over, 2-player, and each playable character (the game has no options menu, continue or password) |
 | R5 | Every code byte read as data is explained or fixed | each `code_as_data` start address appears in `docs/NOTES.md` |
 
 ## Static completeness

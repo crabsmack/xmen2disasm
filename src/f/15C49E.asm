@@ -70,7 +70,7 @@ loc_15C51A:
 	move.w	d1,d0
 	cmpi.l	#$8000,d0
 	bne.s	Pause_HandleInput_EndCode
-	jsr	$3A(a5)	; -> unk_Player_005F18
+	jsr	$3A(a5)	; -> Player2_MakeHostile
 	bra.s	Pause_HandleInput_EndCode
 loc_15C564:
 	moveq	#$39,d0

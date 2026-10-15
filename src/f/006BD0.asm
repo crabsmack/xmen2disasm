@@ -122,7 +122,7 @@ loc_006D0A:
 	move.b	#$1,g_HudDirty(a5)
 	tst.b	d5
 	beq.s	loc_006D18
-	jsr	unk_Player_005F18(pc)
+	jsr	Player2_MakeHostile(pc)
 loc_006D18:
 	movem.l	-$16(a6),d3-d7
 	unlk	a6

@@ -142,7 +142,7 @@ loc_15C740:
 	move.w	d1,d0
 	cmpi.l	#$8000,d0
 	bne.w	loc_15CA36
-	jsr	$3A(a5)	; -> unk_Player_005F18
+	jsr	$3A(a5)	; -> Player2_MakeHostile
 	bra.w	loc_15CA36
 loc_15C7A0:
 	move.w	#$5,g_TextWinTop(a5)

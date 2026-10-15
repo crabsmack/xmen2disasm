@@ -1,0 +1,14 @@
+{
+ "kind": "script",
+ "script": "pause-cheats.txt",
+ "from_frame": 2344,
+ "core": "BizEmu",
+ "start_frame": 2344,
+ "end_frame": 6506,
+ "executed_rom_instruction_starts": 28546,
+ "rom_bytes_read_as_data": 169320,
+ "rom_bytes_dma_source": 84928,
+ "ram_exec_words": 0,
+ "instructions": 102263793,
+ "functions_hit": 454
+}

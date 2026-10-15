@@ -8,7 +8,7 @@ JumpTable:
 	jtentry	Game_Main	; [0] jsr $22(a5)
 	jtentry	unk_Boot_005458	; [1] jsr $2A(a5)
 	jtentry	Game_ResetPlayers	; [2] jsr $32(a5)
-	jtentry	unk_Player_005F18	; [3] jsr $3A(a5)
+	jtentry	Player2_MakeHostile	; [3] jsr $3A(a5)
 	jtentry	Player_CharIndexOf	; [4] jsr $42(a5)
 	jtentry	Player1_StartLife	; [5] jsr $4A(a5)
 	jtentry	Player2_StartLife	; [6] jsr $52(a5)

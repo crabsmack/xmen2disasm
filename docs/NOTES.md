@@ -523,6 +523,12 @@ _(module → functions, globals, data; add as you learn them)_
     pairs ended by $6400. Wave tables (`Tbl_MagnetoBossOrbitWave`): 32-word Q15 sine period.
   - Pause cheat codes (`Tbl_CheatCode*`, `g_PauseCheatPtr`): pad-1 press bytes ending $FF; each
     chord has a second code used while pad 2 holds Left+Right (`*Alt`).
+    Verified by scenario `pause-cheats` (2026-10-14): a chord starts the code, each new single
+    press must match, then the same chord applies the cheat (flags in `g_ProgressFlags`). The
+    `*Alt` table needs pad 2's raw word == $000C exactly, i.e. a 3-button pad; the harness
+    emulates 6-button pads (raw $400C), so Alt codes are unreachable in the corpus. "Players hit
+    each other" (B+Down) sets no unlock flag: completing its code calls `Player2_MakeHostile`
+    at once (only with both players alive), so flag $100 is never set by any code path seen.
   - Cerebro text scripts (`Tbl_FinalTextScript`): 4-byte ops {op, 0, args}; 7+ print (word = offset
     of the text from that word, style op-7), 1 cursor, 2 wait, 3 clear, 4 fade, 5/6 sound, 0 end.
   - Attract demos (`Tbl_DemoInput<Char>`): (frame, pad) byte pairs, pad $FF ends.
@@ -768,12 +774,7 @@ None of these was read or DMA'd anywhere in the 75-run corpus, and no jump-table
   Verified on the select screen: exactly those seven. `options-menu` and `continue` name
   features the game does not have; their scenario files cover the nearest real paths
   (title/pause input; game over -> restart) and say so in their headers.
-- **Awaiting the user's decision (criterion changes need approval; proposed 2026-10-14):**
-  1. `REQUIRED_SCENARIOS` in progress.py: replace `options-menu` with `pause-cheats` (a
-     scenario entering every decoded pause cheat code, see "Data formats"; likely new code
-     coverage) and drop `continue` (`game-over` already covers the real post-game-over path).
-  2. progress.py S3 regex `\$([0-9A-F]+)\(pc` also matches symbolic `Label+$N(pc)` operands
-     (false positive). Proposed: a lookbehind `(?<![\w+])` so only bare numbers count.
-     Worked around for now with `tools/sublabel.py`.
-- Leftover worktree `.claude/worktrees/agent-a83ae8f0d3b976e9f`: only a regenerated
-  docs/PROGRESS.md change; safe to `git worktree remove --force` + delete its branch.
+- ~~Awaiting the user's decision: replace `options-menu`/`continue` in REQUIRED_SCENARIOS;
+  fix the S3 regex false positive on `Label+$N(pc)`.~~ Approved and done 2026-10-14:
+  REQUIRED_SCENARIOS now asks for `pause-cheats` (the old options-menu/continue files stay
+  as extra corpus runs); S3 counts only bare numbers (`(?<![\w+])` lookbehind).

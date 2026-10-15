@@ -18,7 +18,9 @@ from datetime import date
 import build
 
 ROOT = build.ROOT
-REQUIRED_SCENARIOS = ["options-menu", "continue", "game-over", "two-player", "char-cyclops",
+# options-menu/continue replaced (user-approved 2026-10-14): the game has neither feature; pause cheats
+# are its only hidden menu, and game-over already covers the post-game-over restart.
+REQUIRED_SCENARIOS = ["pause-cheats", "game-over", "two-player", "char-cyclops",
                       "char-wolverine", "char-gambit", "char-psylocke", "char-nightcrawler",
                       "char-beast", "char-magneto"]
 AUTO = re.compile(r"^(sub|loc)_[0-9A-F]{6}$")
@@ -78,7 +80,8 @@ def main() -> int:
     numeric = 0
     for t in texts.values():
         body = "\n".join(line.split(";")[0] for line in t.splitlines())
-        for m in re.finditer(r"\$([0-9A-F]+)\(pc|\(\$([0-9A-F]+)\)\.l", body):
+        # bare numbers only: `Label+$N(pc)` is symbolic (user-approved fix, 2026-10-14)
+        for m in re.finditer(r"(?<![\w+])\$([0-9A-F]+)\(pc|\(\$([0-9A-F]+)\)\.l", body):
             v = int(m.group(1) or m.group(2), 16)
             numeric += v < 0x200000
     crit("S3", numeric == 0, f"numeric ROM operands in code: {numeric}")

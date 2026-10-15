@@ -7,9 +7,9 @@ AS (Sonic Retro's toolchain). Phase 1 of 2: when every criterion in
 [segagenesisrecomp](https://github.com/mstan/segagenesisrecomp)) starts from
 `build/recomp/` (see [docs/RECOMP_HANDOFF.md](docs/RECOMP_HANDOFF.md)).
 
-**Status (2026-10-14): phase 1 complete, 16/16 criteria pass.** Two proposed criterion
-changes await the user's decision (NOTES "Open questions"); phase 2 starts from
-[docs/RECOMP_HANDOFF.md](docs/RECOMP_HANDOFF.md).
+**Status (2026-10-14): phase 1 complete, 16/16 criteria pass** (R4 now requires
+`pause-cheats` instead of the nonexistent options menu/continue; user-approved). Phase 2
+starts from [docs/RECOMP_HANDOFF.md](docs/RECOMP_HANDOFF.md).
 
 **Start of every session:** `uv run tools/setup.py` (idempotent: ROM, emulator,
 build, runs, Ghidra), then read `docs/PROGRESS.md` and the relevant parts of
