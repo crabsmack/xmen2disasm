@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_037B74	[jt 253]
+; ThronePhone_SetMode - THRONEPHONE slot +$6E (own virtual): set its shape/box fields for mode 0 or 1
+; In:  8(a6) = this, $C(a6) = word mode
+; Out: d0
+; Evidence: tools/classes.py THRONEPHONE +$6E; writes +$93..+$A6 (two value sets); called by ThronePhone_StateCatch with the toggled mode
 ; ---------------------------------------------------------------------------
-sub_037B74:
+ThronePhone_SetMode:
 	link.w	a6,#$0
 	move.l	a4,-(a7)
 	movea.l	$8(a6),a4

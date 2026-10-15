@@ -40,7 +40,7 @@ BanimazaDoor_Draw:
 loc_03A562:
 	move.b	$9A(a4),d0
 	cmpi.b	#$3,d0
-	bhi.s	loc_03A5B4
+	bhi.s	BanimazaDoor_Draw_part2
 	moveq	#$0,d1
 	move.b	d0,d1
 	add.w	d1,d1

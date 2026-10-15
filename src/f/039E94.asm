@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_039E94	[link-after-rts]
+; BanimazaDoor_DrawDebris - draw N debris particles (animated tile from the frame counter) and move them with their acceleration
+; In:  8(a6) = particles, $C(a6) = word count, $10(a6) = word tile base
+; Out: none
+; Evidence: sprite entries into the list at $FFE226 when on screen
 ; ---------------------------------------------------------------------------
-sub_039E94:
+BanimazaDoor_DrawDebris:
 	link.w	a6,#$0
 	movem.l	d4-d7/a4,-(a7)
 	movea.l	$8(a6),a4

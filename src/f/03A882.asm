@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_03A882	[jt 275]
+; RollingDiscs_UpdateScroll - per-frame update of the rolling-disc bands: move each band (sound 3 on a direction change), write the per-line H-scroll for it, hurt players touching a disc, DMA the H-scroll table
+; In:  none
+; Out: none
+; Evidence: jt 275; band records ($14 bytes) at -$3C7E, count -$3C7A; g_HScrollBuf ($FFF63A) -> VRAM $F400 ($380 bytes); TakeDamage(0, 9/10, 3) with cooldown -$3C80 = $DC; direction flags at -$3C98+n (used by BaniMazaA1_AnimateBlocks)
 ; ---------------------------------------------------------------------------
-sub_03A882:
+RollingDiscs_UpdateScroll:
 	link.w	a6,#$FFE0
 	movem.l	d3-d7/a3-a4,-(a7)
 	moveq	#$0,d3

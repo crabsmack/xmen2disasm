@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_03A172	[link-after-rts]
+; BanimazaDoor_Shatter - BANIMAZADOOR destroyed: sound $35, hide, stop being hittable and solid, throw debris away from the attacker
+; In:  8(a6) = this
+; Out: d0 = 0
+; Evidence: called from BanimazaDoor_TakeDamage; List_Unlink(+$84); segment flag $40 set; BanimazaDoor_InitDebris(+$8C, +$90, ...); next BanimazaDoor_StateShattered
 ; ---------------------------------------------------------------------------
-sub_03A172:
+BanimazaDoor_Shatter:
 	link.w	a6,#$0
 	movem.l	d3/d7/a4,-(a7)
 	movea.l	$8(a6),a4
@@ -47,8 +50,8 @@ sub_03A172:
 	ext.l	d0
 	move.l	d0,-(a7)
 	move.l	$8C(a4),-(a7)
-	jsr	sub_039DBA(pc)
-	lea.l	sub_03A210(pc),a0
+	jsr	BanimazaDoor_InitDebris(pc)
+	lea.l	BanimazaDoor_StateShattered(pc),a0
 	move.l	a0,$5C(a4)
 	moveq	#$0,d0
 	movem.l	-$C(a6),d3/d7/a4

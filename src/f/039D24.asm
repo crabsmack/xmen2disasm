@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_039D24	[link-after-rts]
+; BanimazaDoor_PushCallback - collision callback of BANIMAZADOOR: for event 3, an object overlapping the rectangle is pushed 2 px out to the nearer side
+; In:  8(a6) = word event, $C(a6) = rect {+8 left, +$A top, +$C right, +$E bottom}, $10(a6) = object, $14(a6) = push record
+; Out: d0 = 0 other event, 1 no overlap, 2 pushed
+; Evidence: registered by BanimazaDoor_ClassInit; push bytes +3/+5 = -2 or 2
 ; ---------------------------------------------------------------------------
-sub_039D24:
+BanimazaDoor_PushCallback:
 	link.w	a6,#$0
 	movem.l	d6-d7/a3-a4,-(a7)
 	movea.l	$14(a6),a3

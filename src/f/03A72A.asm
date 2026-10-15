@@ -53,7 +53,7 @@ BanimazaDoor_Init:
 	move.w	#$5A,$9E(a4)
 	clr.b	$9A(a4)
 	clr.w	$A0(a4)
-	lea.l	sub_03A01C(pc),a0
+	lea.l	BanimazaDoor_StateReset(pc),a0
 	move.l	a0,$5C(a4)
 	movem.l	-$8(a6),a3-a4
 	unlk	a6

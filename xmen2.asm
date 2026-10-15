@@ -890,7 +890,7 @@ Str_Empty_03A2F2:	; C string "" (used by BanimazaDoor_ClassInit)
 	include "src/f/03A2F4.asm"
 	include "src/f/03A4EE.asm"
 Sw_03A4EE:	; switch table of sub at $03A4EE: 4 word offsets from Sw_03A4EE-2
-	dc.w	loc_03A5B4-(Sw_03A4EE-2), loc_03A584-(Sw_03A4EE-2), loc_03A58E-(Sw_03A4EE-2), loc_03A598-(Sw_03A4EE-2)
+	dc.w	BanimazaDoor_Draw_part2-(Sw_03A4EE-2), BanimazaDoor_Draw_part1-(Sw_03A4EE-2), loc_03A58E-(Sw_03A4EE-2), loc_03A598-(Sw_03A4EE-2)
 	incrom	$03A582,$2
 	include "src/f/03A584.asm"
 	include "src/f/03A5B4.asm"

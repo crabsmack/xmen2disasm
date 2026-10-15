@@ -21,7 +21,7 @@ BanimazaDoor_ClassInit:
 	pea.l	($120).w
 	jsr	$5032(a5)	; -> Mem_StackAlloc
 	move.l	d0,-$3C84(a5)
-	lea.l	sub_039D24(pc),a0
+	lea.l	BanimazaDoor_PushCallback(pc),a0
 	move.l	a0,-$33FA(a5)
 	addq.w	#$8,a7
 	unlk	a6

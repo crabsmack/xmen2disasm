@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_03A11A	[link-after-rts]
+; BanimazaDoor_StateRising - BANIMAZADOOR: rise until its offset from home passes 32000, then stop
+; In:  8(a6) = this
+; Out: d0
+; Evidence: +6 |= $4000; next BanimazaDoor_StateRaised
 ; ---------------------------------------------------------------------------
-sub_03A11A:
+BanimazaDoor_StateRising:
 	link.w	a6,#$0
 	movem.l	d7/a4,-(a7)
 	movea.l	$8(a6),a4
@@ -13,7 +16,7 @@ sub_03A11A:
 	cmpi.l	#$7D00,d7
 	ble.s	loc_03A14C
 	ori.w	#$4000,$6(a4)
-	lea.l	sub_03A156(pc),a0
+	lea.l	BanimazaDoor_StateRaised(pc),a0
 	move.l	a0,$5C(a4)
 	moveq	#$0,d0
 loc_03A14C:

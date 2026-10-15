@@ -32,7 +32,7 @@ loc_03A610:
 	move.w	#$4,$68(a4)
 	move.b	#$3,$9A(a4)
 	move.w	#$C8,$6A(a4)
-	lea.l	sub_03A172(pc),a0
+	lea.l	BanimazaDoor_Shatter(pc),a0
 	move.l	a0,$5C(a4)
 loc_03A62A:
 	movea.l	-$4(a6),a4

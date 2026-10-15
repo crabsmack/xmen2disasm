@@ -2,7 +2,7 @@
 ; MagnetoBoss_EnterOutroState - MAGNETOBOSS: switch to the outro animation state and set +$9B bit 7
 ; In:  8(a6) = this
 ; Out: none
-; Evidence: jt 246, caller sub_037F7E (THRONEPHONE code, which also calls Scene_EndAfter); state MagnetoBoss_StateOutro
+; Evidence: jt 246, caller ThronePhone_StatePullIn (THRONEPHONE code, which also calls Scene_EndAfter); state MagnetoBoss_StateOutro
 ; ---------------------------------------------------------------------------
 MagnetoBoss_EnterOutroState:
 	link.w	a6,#$0

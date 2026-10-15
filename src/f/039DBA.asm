@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_039DBA	[link-after-rts]
+; BanimazaDoor_InitDebris - give N debris particles ($12 bytes) random positions around (x, y) and random velocities, mirrored if flagged
+; In:  8(a6) = particles, $C(a6) = word count, $10(a6) = long x, $14(a6) = long y, $18(a6) = byte mirror
+; Out: none
+; Evidence: sub_1600AA random; caller BanimazaDoor_Shatter
 ; ---------------------------------------------------------------------------
-sub_039DBA:
+BanimazaDoor_InitDebris:
 	link.w	a6,#$0
 	movem.l	d4-d7/a4,-(a7)
 	move.b	$1B(a6),d4

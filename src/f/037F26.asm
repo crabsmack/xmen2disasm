@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_037F26	[link-after-rts]
+; ThronePhone_StateCatch - THRONEPHONE catches Magneto: toggle its mode and put Magneto in its spin state
+; In:  8(a6) = this
+; Out: d0
+; Evidence: +$92 += 1; slot $6E ThronePhone_SetMode(+$92 & 1); MagnetoBoss_EnterSpinState; next ThronePhone_StatePullIn
 ; ---------------------------------------------------------------------------
-sub_037F26:
+ThronePhone_StateCatch:
 	link.w	a6,#$0
 	movem.l	a3-a4,-(a7)
 	movea.l	$8(a6),a4
@@ -24,7 +27,7 @@ sub_037F26:
 	jsr	$7CA(a5)	; -> MagnetoBoss_EnterSpinState
 	lea.l	$C(a7),a7
 	clr.w	$6C(a4)
-	lea.l	sub_037F7E(pc),a0
+	lea.l	ThronePhone_StatePullIn(pc),a0
 	move.l	a0,$5C(a4)
 	moveq	#$8,d0
 	and.w	$4(a4),d0

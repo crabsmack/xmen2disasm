@@ -1,13 +1,16 @@
 ; ---------------------------------------------------------------------------
-; sub_03A210	[link-after-rts]
+; BanimazaDoor_StateShattered - BANIMAZADOOR after shattering: kill itself, or wait +$9E frames to respawn
+; In:  8(a6) = this
+; Out: d0
+; Evidence: +$9E respawn delay; next BanimazaDoor_StateWaitRespawn
 ; ---------------------------------------------------------------------------
-sub_03A210:
+BanimazaDoor_StateShattered:
 	link.w	a6,#$0
 	move.l	a4,-(a7)
 	movea.l	$8(a6),a4
 	tst.w	$9E(a4)
 	beq.s	loc_03A232
-	lea.l	sub_03A246(pc),a0
+	lea.l	BanimazaDoor_StateWaitRespawn(pc),a0
 	move.l	a0,$5C(a4)
 	move.w	$9E(a4),$6C(a4)
 	moveq	#$0,d0

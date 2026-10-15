@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_037F7E	[link-after-rts]
+; ThronePhone_StatePullIn - THRONEPHONE pulls Magneto in (1/128 of the x gap, 1/64 of the y gap per frame); when close snap him in, start his outro and end the scene after 240 frames
+; In:  8(a6) = this
+; Out: d0
+; Evidence: MagnetoBoss_EnterOutroState; Scene_EndAfter($F0); next ThronePhone_StateDone
 ; ---------------------------------------------------------------------------
-sub_037F7E:
+ThronePhone_StatePullIn:
 	link.w	a6,#$FFFC
 	movem.l	d4-d7/a3-a4,-(a7)
 	movea.l	$8(a6),a4
@@ -53,7 +56,7 @@ sub_037F7E:
 	jsr	$4F8A(a5)	; -> Scene_EndAfter
 	addq.w	#$8,a7
 	clr.w	$6C(a4)
-	lea.l	ThronePhone_EmptyHelper(pc),a0
+	lea.l	ThronePhone_StateDone(pc),a0
 	move.l	a0,$5C(a4)
 	moveq	#$8,d0
 	and.w	$4(a4),d0

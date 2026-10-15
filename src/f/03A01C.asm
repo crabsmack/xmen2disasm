@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_03A01C	[link-after-rts]
+; BanimazaDoor_StateReset - BANIMAZADOOR: back to its lowered position, then wait for a player
+; In:  8(a6) = this
+; Out: d0 = 0
+; Evidence: y = home +$12; +6 &= ~$1000; next BanimazaDoor_StateWaitPlayer
 ; ---------------------------------------------------------------------------
-sub_03A01C:
+BanimazaDoor_StateReset:
 	link.w	a6,#$0
 	movem.l	d3/a4,-(a7)
 	movea.l	$8(a6),a4
@@ -15,7 +18,7 @@ sub_03A01C:
 	tst.l	d0
 	seq.b	d3
 	neg.b	d3
-	lea.l	sub_03A05A(pc),a0
+	lea.l	BanimazaDoor_StateWaitPlayer(pc),a0
 	move.l	a0,$5C(a4)
 	moveq	#$0,d0
 	movem.l	-$8(a6),d3/a4

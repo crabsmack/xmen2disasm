@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_03A156	[link-after-rts]
+; BanimazaDoor_StateRaised - BANIMAZADOOR: fully raised, idle
+; In:  8(a6) = this
+; Out: none
+; Evidence: +$A0 = 0; +$6C = $FF
 ; ---------------------------------------------------------------------------
-sub_03A156:
+BanimazaDoor_StateRaised:
 	link.w	a6,#$0
 	move.l	a4,-(a7)
 	movea.l	$8(a6),a4

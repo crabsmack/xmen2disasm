@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_037E82	[link-after-rts]
+; ThronePhone_StateWaitMagneto - THRONEPHONE: wait until Magneto's box centre is within 48 px horizontally and inside its height
+; In:  8(a6) = this
+; Out: d0
+; Evidence: box centre from +$4C..+$52 of the Magneto object; +$94 = height; next ThronePhone_StateCatch
 ; ---------------------------------------------------------------------------
-sub_037E82:
+ThronePhone_StateWaitMagneto:
 	link.w	a6,#$FFFC
 	movem.l	d4-d7/a3-a4,-(a7)
 	movea.l	$8(a6),a4
@@ -53,7 +56,7 @@ sub_037E82:
 	cmp.w	d7,d5
 	blt.s	loc_037F1C
 	clr.w	$6C(a4)
-	lea.l	sub_037F26(pc),a0
+	lea.l	ThronePhone_StateCatch(pc),a0
 	move.l	a0,$5C(a4)
 	moveq	#$8,d0
 	and.w	$4(a4),d0

@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_03ABCE	[jt 276]
+; RollingDiscs_ReverseAtY - reverse the rolling-disc band covering height y (velocity, or acceleration if set)
+; In:  8(a6) = word y px
+; Out: d0
+; Evidence: called by BaniMazaA1_SwitchTileHook with row*32
 ; ---------------------------------------------------------------------------
-sub_03ABCE:
+RollingDiscs_ReverseAtY:
 	link.w	a6,#$0
 	movem.l	d6-d7/a4,-(a7)
 	move.w	$A(a6),d6

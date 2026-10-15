@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_03A05A	[link-after-rts]
+; BanimazaDoor_StateWaitPlayer - BANIMAZADOOR: wait until the nearest player is within $82 px horizontally
+; In:  8(a6) = this
+; Out: d0
+; Evidence: Player_Nearest; +6 |= $1000; next BanimazaDoor_StateStartRise
 ; ---------------------------------------------------------------------------
-sub_03A05A:
+BanimazaDoor_StateWaitPlayer:
 	link.w	a6,#$0
 	movem.l	d3/d7/a4,-(a7)
 	movea.l	$8(a6),a4
@@ -24,7 +27,7 @@ loc_03A086:
 	addq.w	#$4,a7
 	bge.s	loc_03A0A0
 	ori.w	#$1000,$6(a4)
-	lea.l	sub_03A0AA(pc),a0
+	lea.l	BanimazaDoor_StateStartRise(pc),a0
 	move.l	a0,$5C(a4)
 	moveq	#$0,d0
 loc_03A0A0:

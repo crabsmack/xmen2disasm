@@ -1,10 +1,10 @@
 ; ---------------------------------------------------------------------------
-; ThronePhone_EmptyHelper - empty helper called from sub_037F7E (THRONEPHONE code, before Scene_EndAfter)
-; In:  none
+; ThronePhone_StateDone - THRONEPHONE final state: do nothing
+; In:  8(a6) = this
 ; Out: none
-; Evidence: body is link/unlk/rts
+; Evidence: body is link/unlk/rts; installed by ThronePhone_StatePullIn
 ; ---------------------------------------------------------------------------
-ThronePhone_EmptyHelper:
+ThronePhone_StateDone:
 	link.w	a6,#$0
 	unlk	a6
 	rts
