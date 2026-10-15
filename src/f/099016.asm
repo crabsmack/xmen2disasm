@@ -10,7 +10,7 @@ sub_099016:
 	clr.w	-$3B08(a5)
 	jsr	sub_09989E(pc)
 	move.w	d0,-$3B04(a5)
-	pea.l	$99078(pc)
+	pea.l	Str_Empty_099078(pc)
 	move.w	-$3B04(a5),d0
 	ext.l	d0
 	move.l	d0,-(a7)

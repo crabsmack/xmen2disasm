@@ -14,7 +14,7 @@ sub_11F1A6:
 	add.l	d0,d1
 	move.w	d1,d7
 	addq.w	#$2,d7
-	pea.l	$11F22A(pc)
+	pea.l	Str_Empty_11F22A(pc)
 	ext.l	d7
 	move.l	d7,-(a7)
 	jsr	$5032(a5)	; -> Mem_StackAlloc

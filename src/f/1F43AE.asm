@@ -7,7 +7,7 @@ EntryPoint:
 	tst.w	($A1000C).l
 loc_1F43BC:
 	bne.s	loc_1F443A
-	lea.l	$1F443C(pc),a5
+	lea.l	Boot_SetupValues(pc),a5
 	movem.w	(a5)+,d5-d7
 	movem.l	(a5)+,a0-a4
 	move.b	-$10FF(a1),d0

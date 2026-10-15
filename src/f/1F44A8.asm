@@ -10,11 +10,11 @@ Boot_RegionCheck:
 	move.b	($A10001).l,d0
 	lsr.b	#$6,d0
 	andi.b	#$3,d0
-	lea.l	$1F45E4(pc),a0
+	lea.l	RegionCheck_Data(pc),a0
 	move.b	(a0,d0.w),d0
 	tst.b	d0
 	beq.w	loc_1F45AC
-	lea.l	($1F0).l,a0
+	lea.l	(Header_Regions).l,a0
 	move.w	#$F,d1
 loc_1F44D4:
 	cmp.b	(a0),d0
@@ -31,7 +31,7 @@ loc_1F44D4:
 	move.l	#$C0020000,(a5)
 	move.w	#$EEE,(a4)
 	move.l	#$40000000,(a5)
-	lea.l	$1F4666(pc),a0
+	lea.l	RegionCheck_Data+$82(pc),a0
 	move.w	#$3A,d0
 	move.l	#$10000000,d2
 loc_1F451E:
@@ -51,14 +51,14 @@ loc_1F4536:
 	dbra	d6,loc_1F4522
 	dbra	d0,loc_1F451E
 	move.b	#$8,d1
-	lea.l	$1F45FC(pc),a0
+	lea.l	RegionCheck_Data+$18(pc),a0
 	move.b	(a0)+,d0
 	bsr.w	Boot_DrawText
-	lea.l	($1F0).l,a1
+	lea.l	(Header_Regions).l,a1
 loc_1F4558:
 	cmpi.b	#$20,(a1)
 	beq.s	loc_1F45A0
-	lea.l	$1F45E8(pc),a2
+	lea.l	RegionCheck_Data+$4(pc),a2
 loc_1F4562:
 	move.w	(a2)+,d4
 	tst.b	d4
@@ -69,12 +69,12 @@ loc_1F4562:
 	bne.s	loc_1F4588
 	cmpa.l	#$1F0,a1
 	beq.s	loc_1F4588
-	lea.l	$1F4619(pc),a0
+	lea.l	RegionCheck_Data+$35(pc),a0
 	move.b	(a0)+,d0
 	addq.w	#$1,d1
 	bsr.w	Boot_DrawText
 loc_1F4588:
-	lea.l	$1F45E4(pc),a0
+	lea.l	RegionCheck_Data(pc),a0
 	adda.l	(a2)+,a0
 	move.b	(a0)+,d0
 	addq.w	#$1,d1
@@ -87,7 +87,7 @@ loc_1F459C:
 	addq.l	#$1,a1
 	bra.s	loc_1F4558
 loc_1F45A0:
-	lea.l	$1F461C(pc),a0
+	lea.l	RegionCheck_Data+$38(pc),a0
 	move.b	(a0)+,d0
 	addq.w	#$1,d1
 	bsr.w	Boot_DrawText

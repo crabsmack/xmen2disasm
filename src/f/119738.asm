@@ -6,7 +6,7 @@ sub_119738:
 	movem.l	d7/a3-a4,-(a7)
 	move.w	$E(a6),d7
 	movea.l	$8(a6),a3
-	pea.l	$119782(pc)
+	pea.l	Str_Empty_119782(pc)
 	ext.l	d7
 	move.l	d7,-(a7)
 	move.l	$8(a6),-(a7)

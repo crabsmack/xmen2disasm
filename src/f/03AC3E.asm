@@ -18,7 +18,7 @@ RollingDiscs_ClassInit:
 	move.l	$8(a6),-(a7)
 	jsr	sub_03AC36(pc)
 	move.w	(a4),-$3C7A(a5)
-	pea.l	$3AD12(pc)
+	pea.l	Str_Empty_03AD12(pc)
 	move.w	-$3C7A(a5),d1
 	ext.l	d1
 	lsl.l	#$2,d1

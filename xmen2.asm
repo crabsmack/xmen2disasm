@@ -17,7 +17,96 @@
 	include "src/f/005458.asm"
 	include "src/f/005466.asm"
 	include "src/f/0054C6.asm"
-	incrom	$0057DE,$43E
+Str_CerebroScreenLogoAndDemo:	; C string "CerebroScreen LogoAndDemo" (used by Scene_RegisterAll)
+	incrom	$0057DE,$1A
+Str_CerebroScreenPlayerSelect_0057F8:	; C string "CerebroScreen PlayerSelect" (used by Scene_RegisterAll)
+	incrom	$0057F8,$1C
+Str_CerebroScreenFailure:	; C string "CerebroScreen Failure" (used by Scene_RegisterAll)
+	incrom	$005814,$16
+Str_CerebroScreenCredits:	; C string "CerebroScreen Credits" (used by Scene_RegisterAll)
+	incrom	$00582A,$16
+Str_CerebroScreenFinalText:	; C string "CerebroScreen FinalText" (used by Scene_RegisterAll)
+	incrom	$005840,$18
+Str_CloneA5BroodBoss:	; C string "CloneA5 BroodBoss" (used by Scene_RegisterAll)
+	incrom	$005858,$12
+Str_CerebroScreenPlayerSelect_00586A:	; C string "CerebroScreen PlayerSelect" (used by Scene_RegisterAll)
+	incrom	$00586A,$1C
+Str_CloneA2VerticalCorridor1:	; C string "CloneA2 Vertical_Corridor_1" (used by Scene_RegisterAll)
+	incrom	$005886,$1C
+Str_CerebroScreenPlayerSelect_0058A2:	; C string "CerebroScreen PlayerSelect" (used by Scene_RegisterAll)
+	incrom	$0058A2,$1C
+Str_CloneA1FactoryFloor1:	; C string "CloneA1 Factory_Floor_1" (used by Scene_RegisterAll)
+	incrom	$0058BE,$18
+Str_CerebroScreenClone:	; C string "CerebroScreen Clone" (used by Scene_RegisterAll)
+	incrom	$0058D6,$14
+Str_SpaceA1SpaceElevator:	; C string "SpaceA1 Space_Elevator" (used by Scene_RegisterAll)
+	incrom	$0058EA,$18
+Str_CerebroScreenPlayerSelect_005902:	; C string "CerebroScreen PlayerSelect" (used by Scene_RegisterAll)
+	incrom	$005902,$1C
+Str_SpaceB1MaintenanceShaft:	; C string "SpaceB1 Maintenance_Shaft" (used by Scene_RegisterAll)
+	incrom	$00591E,$1A
+Str_CerebroScreenSpace:	; C string "CerebroScreen Space" (used by Scene_RegisterAll)
+	incrom	$005938,$14
+Str_SavageA4Chamber:	; C string "SavageA4 Chamber" (used by Scene_RegisterAll)
+	incrom	$00594C,$12
+Str_CerebroScreenPlayerSelect_00595E:	; C string "CerebroScreen PlayerSelect" (used by Scene_RegisterAll)
+	incrom	$00595E,$1C
+Str_SavageA3Perimeter2:	; C string "SavageA3 Perimeter_2" (used by Scene_RegisterAll)
+	incrom	$00597A,$16
+Str_CerebroScreenPlayerSelect_005990:	; C string "CerebroScreen PlayerSelect" (used by Scene_RegisterAll)
+	incrom	$005990,$1C
+Str_SavageA2Perimeter1:	; C string "SavageA2 Perimeter_1" (used by Scene_RegisterAll)
+	incrom	$0059AC,$16
+Str_CerebroScreenPlayerSelect_0059C2:	; C string "CerebroScreen PlayerSelect" (used by Scene_RegisterAll)
+	incrom	$0059C2,$1C
+Str_SavageB1Jungle2:	; C string "SavageB1 Jungle_2" (used by Scene_RegisterAll)
+	incrom	$0059DE,$12
+Str_CerebroScreenPlayerSelect_0059F0:	; C string "CerebroScreen PlayerSelect" (used by Scene_RegisterAll)
+	incrom	$0059F0,$1C
+Str_SavageC1Jungle1:	; C string "SavageC1 Jungle_1" (used by Scene_RegisterAll)
+	incrom	$005A0C,$12
+Str_CerebroScreenSavage:	; C string "CerebroScreen Savage" (used by Scene_RegisterAll)
+	incrom	$005A1E,$16
+Str_BaniMazaA2ApocalypseBoss:	; C string "BaniMazaA2 ApocalypseBoss" (used by Scene_RegisterAll)
+	incrom	$005A34,$1A
+Str_CerebroScreenPlayerSelect_005A4E:	; C string "CerebroScreen PlayerSelect" (used by Scene_RegisterAll)
+	incrom	$005A4E,$1C
+Str_BaniMazaA1MovingBlocks:	; C string "BaniMazaA1 Moving_Blocks" (used by Scene_RegisterAll)
+	incrom	$005A6A,$1A
+Str_CerebroScreenPlayerSelect_005A84:	; C string "CerebroScreen PlayerSelect" (used by Scene_RegisterAll)
+	incrom	$005A84,$1C
+Str_BaniMazaB2Exterior:	; C string "BaniMazaB2 Exterior" (used by Scene_RegisterAll)
+	incrom	$005AA0,$14
+Str_CerebroScreenBaniMaza:	; C string "CerebroScreen BaniMaza" (used by Scene_RegisterAll)
+	incrom	$005AB4,$18
+Str_AvalonA4ThroneRoom:	; C string "AvalonA4 Throne_Room" (used by Scene_RegisterAll)
+	incrom	$005ACC,$16
+Str_CerebroScreenPlayerSelect_005AE2:	; C string "CerebroScreen PlayerSelect" (used by Scene_RegisterAll)
+	incrom	$005AE2,$1C
+Str_AvalonA3Exodus:	; C string "AvalonA3 Exodus" (used by Scene_RegisterAll)
+	incrom	$005AFE,$10
+Str_CerebroScreenPlayerSelect_005B0E:	; C string "CerebroScreen PlayerSelect" (used by Scene_RegisterAll)
+	incrom	$005B0E,$1C
+Str_AvalonA2FallingRoom:	; C string "AvalonA2 Falling_Room" (used by Scene_RegisterAll)
+	incrom	$005B2A,$16
+Str_CerebroScreenPlayerSelect_005B40:	; C string "CerebroScreen PlayerSelect" (used by Scene_RegisterAll)
+	incrom	$005B40,$1C
+Str_AvalonB2InnerShell:	; C string "AvalonB2 InnerShell" (used by Scene_RegisterAll)
+	incrom	$005B5C,$14
+Str_CerebroScreenPlayerSelect_005B70:	; C string "CerebroScreen PlayerSelect" (used by Scene_RegisterAll)
+	incrom	$005B70,$1C
+Str_AvalonB1Exterior:	; C string "AvalonB1 Exterior" (used by Scene_RegisterAll)
+	incrom	$005B8C,$12
+Str_CerebroScreenAvalon:	; C string "CerebroScreen Avalon" (used by Scene_RegisterAll)
+	incrom	$005B9E,$16
+Str_SentinelsB2ExteriorEscape:	; C string "SentinelsB2 Exterior_Escape" (used by Scene_RegisterAll)
+	incrom	$005BB4,$1C
+Str_SentinelsA1CoolantCore:	; C string "SentinelsA1 CoolantCore" (used by Scene_RegisterAll)
+	incrom	$005BD0,$18
+Str_CerebroScreenPlayerSelect_005BE8:	; C string "CerebroScreen PlayerSelect" (used by Scene_RegisterAll)
+	incrom	$005BE8,$1C
+Str_SentinelsB1Exterior3:	; C string "SentinelsB1 Exterior_3" (used by Scene_RegisterAll)
+	incrom	$005C04,$18
 Str_CerebroScreenPlayerSelect:	; C string, resource name looked up by Scene_RegisterAll
 	incrom	$005C1C,$1C
 Str_SentinelsD1Exterior1:	; C string, resource name looked up by Scene_RegisterAll
@@ -29,7 +118,7 @@ Str_SiberiaB1Blizzard:	; C string, resource name looked up by Scene_RegisterAll
 	include "src/f/005C7C.asm"
 	include "src/f/005CC6.asm"
 Sw_005CC6:	; switch table of sub at $005CC6: 4 word offsets from Sw_005CC6-2
-	dc.w	loc_005E52-(Sw_005CC6-2), loc_005E6C-(Sw_005CC6-2), loc_005E86-(Sw_005CC6-2), loc_005EA0-(Sw_005CC6-2)
+	dc.w	loc_005E52-(Sw_005CC6-2), Game_AttractDemoCyclops-(Sw_005CC6-2), Game_AttractDemoPsylocke-(Sw_005CC6-2), Game_AttractDemoBeast-(Sw_005CC6-2)
 	include "src/f/005E4E.asm"
 	include "src/f/005E6C.asm"
 	include "src/f/005EB8.asm"
@@ -50,8 +139,8 @@ Sw_005CC6:	; switch table of sub at $005CC6: 4 word offsets from Sw_005CC6-2
 	include "src/f/0061D0.asm"
 	include "src/f/006242.asm"
 Sw_006242:	; switch table of sub at $006242: 6 word offsets from Sw_006242-2
-	dc.w	loc_0062AE-(Sw_006242-2), loc_0062B4-(Sw_006242-2), loc_0062BA-(Sw_006242-2), loc_0062C0-(Sw_006242-2)
-	dc.w	loc_0062C6-(Sw_006242-2), loc_0062CC-(Sw_006242-2)
+	dc.w	Player1_StartLife_Beast-(Sw_006242-2), Player1_StartLife_Cyclops-(Sw_006242-2), loc_0062BA-(Sw_006242-2), Player1_StartLife_Nightcrawler-(Sw_006242-2)
+	dc.w	Player1_StartLife_Psylocke-(Sw_006242-2), Player1_StartLife_Wolverine-(Sw_006242-2)
 	include "src/f/0062AE.asm"
 	include "src/f/0062BA.asm"
 	include "src/f/0062C0.asm"
@@ -60,7 +149,7 @@ Sw_006242:	; switch table of sub at $006242: 6 word offsets from Sw_006242-2
 	include "src/f/0062E4.asm"
 Sw_0062E4:	; switch table of sub at $0062E4: 6 word offsets from Sw_0062E4-2
 	dc.w	loc_006350-(Sw_0062E4-2), loc_006356-(Sw_0062E4-2), loc_00635C-(Sw_0062E4-2), loc_006362-(Sw_0062E4-2)
-	dc.w	loc_006368-(Sw_0062E4-2), loc_00636E-(Sw_0062E4-2)
+	dc.w	Player2_StartLife_Psylocke-(Sw_0062E4-2), Player2_StartLife_Wolverine-(Sw_0062E4-2)
 	include "src/f/006350.asm"
 	include "src/f/006368.asm"
 	include "src/f/00636E.asm"
@@ -91,6 +180,7 @@ Sw_0062E4:	; switch table of sub at $0062E4: 6 word offsets from Sw_0062E4-2
 	include "src/f/00FDAA.asm"
 	incrom	$00FE78,$7E
 	include "src/f/00FEF6.asm"
+Str_Empty_00FFAC:	; C string "" (used by sub_00FEF6)
 	incrom	$00FFAC,$2
 	include "src/f/00FFAE.asm"
 	include "src/f/00FFBC.asm"
@@ -139,7 +229,9 @@ Sw_0062E4:	; switch table of sub at $0062E4: 6 word offsets from Sw_0062E4-2
 	include "src/f/0118B6.asm"
 	incrom	$0118BE,$128
 	include "src/f/0119E6.asm"
-	incrom	$0119FE,$2
+Str_Empty_0119FE:	; C string "" (used by jt[58])
+	incrom	$0119FE,$1
+	incrom	$0119FF,$1
 	include "src/f/011A00.asm"
 	incrom	$011A04,$193E
 	include "src/f/013342.asm"
@@ -168,7 +260,9 @@ Sw_013722:	; switch table of sub at $013722: 4 word offsets from Sw_013722-2
 	include "src/f/013DB0.asm"
 	incrom	$013E10,$B6
 	include "src/f/013EC6.asm"
-	incrom	$013ED2,$2
+Str_Empty_013ED2:	; C string "" (used by jt[81])
+	incrom	$013ED2,$1
+	incrom	$013ED3,$1
 	include "src/f/013ED4.asm"
 	include "src/f/013EE4.asm"
 	incrom	$013EE8,$3330
@@ -247,11 +341,17 @@ Sw_01C042:	; switch table of sub at $01C042: 5 word offsets from Sw_01C042-2
 	include "src/f/01C94A.asm"
 	incrom	$01C9A2,$AE
 	include "src/f/01CA50.asm"
-	incrom	$01CA58,$2
+Str_Empty_01CA58:	; C string "" (used by jt[143])
+	incrom	$01CA58,$1
+	incrom	$01CA59,$1
 	include "src/f/01CA5A.asm"
-	incrom	$01CA62,$2
+Str_Empty_01CA62:	; C string "" (used by jt[144])
+	incrom	$01CA62,$1
+	incrom	$01CA63,$1
 	include "src/f/01CA64.asm"
-	incrom	$01CA6C,$2
+Str_Empty_01CA6C:	; C string "" (used by jt[145])
+	incrom	$01CA6C,$1
+	incrom	$01CA6D,$1
 	include "src/f/01CA6E.asm"
 	incrom	$01CA82,$6
 	include "src/f/01CA88.asm"
@@ -478,6 +578,7 @@ Sw_0358D8:	; switch table of sub at $0358D8: 6 word offsets from Sw_0358D8-2
 	include "src/f/03603E.asm"
 	include "src/f/036054.asm"
 	include "src/f/03605C.asm"
+Str_Empty_0360A4:	; C string "" (used by sub_03605C)
 	incrom	$0360A4,$2
 	include "src/f/0360A6.asm"
 	include "src/f/03628E.asm"
@@ -585,6 +686,7 @@ Sw_0389B6:	; switch table of sub at $0389B6: 8 word offsets from Sw_0389B6-2
 	include "src/f/03A246.asm"
 	include "src/f/03A29E.asm"
 	include "src/f/03A2A6.asm"
+Str_Empty_03A2F2:	; C string "" (used by sub_03A2A6)
 	incrom	$03A2F2,$2
 	include "src/f/03A2F4.asm"
 	include "src/f/03A4EE.asm"
@@ -605,6 +707,7 @@ Sw_03A4EE:	; switch table of sub at $03A4EE: 4 word offsets from Sw_03A4EE-2
 	include "src/f/03ABCE.asm"
 	include "src/f/03AC36.asm"
 	include "src/f/03AC3E.asm"
+Str_Empty_03AD12:	; C string "" (used by sub_03AC3E)
 	incrom	$03AD12,$2
 	include "src/f/03AD14.asm"
 	include "src/f/03ADC2.asm"
@@ -639,9 +742,13 @@ Sw_04744E:	; switch table of sub at $04744E: 5 word offsets from Sw_04744E-2
 	include "src/f/04791A.asm"
 	incrom	$04797A,$380C
 	include "src/f/04B186.asm"
-	incrom	$04B19E,$2
+Str_Empty_04B19E:	; C string "" (used by jt[315])
+	incrom	$04B19E,$1
+	incrom	$04B19F,$1
 	include "src/f/04B1A0.asm"
-	incrom	$04B1A4,$2
+Str_Empty_04B1A4:	; C string "" (used by jt[316])
+	incrom	$04B1A4,$1
+	incrom	$04B1A5,$1
 	include "src/f/04B1A6.asm"
 	include "src/f/04B1C2.asm"
 	incrom	$04B1CE,$168
@@ -703,6 +810,7 @@ Sw_04BC74:	; switch table of sub at $04BC74: 4 word offsets from Sw_04BC74-2
 	include "src/f/04C504.asm"
 	include "src/f/04C510.asm"
 	include "src/f/04C526.asm"
+Str_Empty_04C582:	; C string "" (used by sub_04C526)
 	incrom	$04C582,$2
 	include "src/f/04C584.asm"
 	include "src/f/04C76C.asm"
@@ -776,6 +884,7 @@ Sw_04E94A:	; switch table of sub at $04E94A: 4 word offsets from Sw_04E94A-2
 	include "src/f/05BAAC.asm"
 	include "src/f/05BB06.asm"
 	include "src/f/05BB0E.asm"
+Str_Empty_05BB84:	; C string "" (used by sub_05BB0E)
 	incrom	$05BB84,$2
 	include "src/f/05BB86.asm"
 	include "src/f/05BBA4.asm"
@@ -997,10 +1106,23 @@ Sw_065CBC:	; switch table of sub at $065CBC: 7 word offsets from Sw_065CBC-2
 	include "src/f/065D2C.asm"
 	include "src/f/065D38.asm"
 	include "src/f/065D74.asm"
-	incrom	$065D8E,$28
+Str_Lives:	; C string "LIVES " (used by sub_0656B0)
+	incrom	$065D8E,$8
+Str_Lives_065D96:	; C string "LIVES " (used by sub_0656B0)
+	incrom	$065D96,$8
+Str_PressStart:	; C string "PRESS START" (used by sub_0656B0)
+	incrom	$065D9E,$C
+Str_PressStart_065DAA:	; C string "PRESS START" (used by sub_0656B0)
+	incrom	$065DAA,$C
 	include "src/f/065DB6.asm"
 	include "src/f/065E6C.asm"
-	incrom	$066AF8,$2E
+Str_Start:	; C string "START" (used by sub_065E6C)
+	incrom	$066AF8,$6
+Str_Press:	; C string "PRESS" (used by sub_065E6C)
+	incrom	$066AFE,$6
+Str_DevelopedByHeadgamesInc:	; C string "DEVELOPED BY  HEADGAMES, INC." (used by sub_065E6C)
+	incrom	$066B04,$1E
+	incrom	$066B22,$4
 	include "src/f/066B26.asm"
 	include "src/f/066E80.asm"
 	include "src/f/066EA8.asm"
@@ -1064,7 +1186,14 @@ Sw_067542:	; switch table of sub at $067542: 7 word offsets from Sw_067542-2
 	include "src/f/067FCA.asm"
 	include "src/f/068078.asm"
 	include "src/f/068126.asm"
-	incrom	$068242,$4EE4
+Str_Selected:	; C string "   SELECTED" (used by sub_068126)
+	incrom	$068242,$C
+Str_Selected_06824E:	; C string "SELECTED   " (used by sub_068126)
+	incrom	$06824E,$C
+	incrom	$06825A,$160C
+Str_XMenAndAllRelated:	; C string "@@@@X-MEN, AND ALL RELATED@@@@" (used by jt[499])
+	incrom	$069866,$20
+	incrom	$069886,$38A0
 	include "src/f/06D126.asm"
 	incrom	$06D12E,$94
 	include "src/f/06D1C2.asm"
@@ -1242,6 +1371,7 @@ Sw_0841C4:	; switch table of sub at $0841C4: 4 word offsets from Sw_0841C4-2
 	include "src/f/085BDE.asm"
 	include "src/f/085BE8.asm"
 	include "src/f/085C5E.asm"
+Str_Empty_085D4A:	; C string "" (used by sub_085C5E)
 	incrom	$085D4A,$2
 	include "src/f/085D4C.asm"
 	include "src/f/085F0A.asm"
@@ -1255,6 +1385,7 @@ Sw_0841C4:	; switch table of sub at $0841C4: 4 word offsets from Sw_0841C4-2
 	include "src/f/08627E.asm"
 	include "src/f/0862CA.asm"
 	include "src/f/0862D8.asm"
+Str_Empty_0864E0:	; C string "" (used by sub_0862D8)
 	incrom	$0864E0,$2
 	include "src/f/0864E2.asm"
 	include "src/f/0864EA.asm"
@@ -1484,6 +1615,7 @@ Sw_098DA8:	; switch table of sub at $098DA8: 7 word offsets from Sw_098DA8-2
 	include "src/f/098F92.asm"
 	include "src/f/098FB6.asm"
 	include "src/f/099016.asm"
+Str_Empty_099078:	; C string "" (used by sub_099016)
 	incrom	$099078,$2
 	include "src/f/09907A.asm"
 Sw_09907A:	; switch table of sub at $09907A: 7 word offsets from Sw_09907A-2
@@ -1509,7 +1641,9 @@ Sw_09907A:	; switch table of sub at $09907A: 7 word offsets from Sw_09907A-2
 	include "src/f/099C88.asm"
 	incrom	$099C90,$51A
 	include "src/f/09A1AA.asm"
-	incrom	$09A1AE,$2
+Str_Empty_09A1AE:	; C string "" (used by jt[809])
+	incrom	$09A1AE,$1
+	incrom	$09A1AF,$1
 	include "src/f/09A1B0.asm"
 	incrom	$09A1E0,$136
 	include "src/f/09A316.asm"
@@ -1768,9 +1902,13 @@ Sw_0B7436:	; switch table of sub at $0B7436: 4 word offsets from Sw_0B7436-2
 	include "src/f/0B7CF0.asm"
 	incrom	$0B7CF4,$13A
 	include "src/f/0B7E2E.asm"
-	incrom	$0B7E46,$2
+Str_Empty_0B7E46:	; C string "" (used by jt[965])
+	incrom	$0B7E46,$1
+	incrom	$0B7E47,$1
 	include "src/f/0B7E48.asm"
-	incrom	$0B7E54,$2
+Str_Empty_0B7E54:	; C string "" (used by jt[966])
+	incrom	$0B7E54,$1
+	incrom	$0B7E55,$1
 	include "src/f/0B7E56.asm"
 	incrom	$0B7E82,$2CA
 	include "src/f/0B814C.asm"
@@ -1944,6 +2082,7 @@ Sw_0BE2CE:	; switch table of sub at $0BE2CE: 5 word offsets from Sw_0BE2CE-2
 	include "src/f/0BEDB0.asm"
 	include "src/f/0BEDD2.asm"
 	include "src/f/0BEE38.asm"
+Str_Empty_0BEECE:	; C string "" (used by sub_0BEE38)
 	incrom	$0BEECE,$2
 	include "src/f/0BEED0.asm"
 	include "src/f/0BEF12.asm"
@@ -2038,6 +2177,7 @@ Sw_0C099C:	; switch table of sub at $0C099C: 6 word offsets from Sw_0C099C-2
 	include "src/f/0C14B4.asm"
 	incrom	$0C14E4,$1ADB0
 	include "src/f/0DC294.asm"
+Str_Empty_0DC2C4:	; C string "" (used by sub_0DC294)
 	incrom	$0DC2C4,$2
 	include "src/f/0DC2C6.asm"
 	include "src/f/0DC2CE.asm"
@@ -2227,11 +2367,17 @@ Tbl_HoloBolt_vtable:	; class descriptor "HOLOBOLT": word $6E = name offset, long
 Tbl_Hologram_vtable:	; class descriptor "HOLOGRAM": word $6E = name offset, long parent (ACTOR), 26 method pointers, then the class name string
 	incrom	$0EAE16,$78
 	include "src/f/0EAE8E.asm"
-	incrom	$0EAEFC,$2
+Str_Empty_0EAEFC:	; C string "" (used by jt[1276])
+	incrom	$0EAEFC,$1
+	incrom	$0EAEFD,$1
 	include "src/f/0EAEFE.asm"
-	incrom	$0EAF02,$2
+Str_Empty_0EAF02:	; C string "" (used by jt[1277])
+	incrom	$0EAF02,$1
+	incrom	$0EAF03,$1
 	include "src/f/0EAF04.asm"
-	incrom	$0EAF10,$2
+Str_Empty_0EAF10:	; C string "" (used by jt[1278])
+	incrom	$0EAF10,$1
+	incrom	$0EAF11,$1
 	include "src/f/0EAF12.asm"
 	incrom	$0EAF7A,$6E0
 	include "src/f/0EB65A.asm"
@@ -2319,6 +2465,7 @@ Tbl_CoreZap_vtable:	; class descriptor "COREZAP": word $6E = name offset, long p
 	include "src/f/0FD0E0.asm"
 	include "src/f/0FD24C.asm"
 	include "src/f/0FD50A.asm"
+Str_Empty_0FD574:	; C string "" (used by sub_0FD50A)
 	incrom	$0FD574,$2
 	include "src/f/0FD576.asm"
 	include "src/f/0FD614.asm"
@@ -2376,6 +2523,7 @@ Sw_10746C:	; switch table of sub at $10746C: 8 word offsets from Sw_10746C-2
 	include "src/f/10778C.asm"
 	include "src/f/1077AC.asm"
 	include "src/f/1077BA.asm"
+Str_Empty_1077FE:	; C string "" (used by sub_1077BA)
 	incrom	$1077FE,$2
 	include "src/f/107800.asm"
 	include "src/f/107834.asm"
@@ -2440,6 +2588,7 @@ Sw_1117A0:	; switch table of sub at $1117A0: 11 word offsets from Sw_1117A0-2
 	include "src/f/111B9A.asm"
 	include "src/f/111BAA.asm"
 	include "src/f/111DEA.asm"
+Str_Empty_111E42:	; C string "" (used by sub_111DEA)
 	incrom	$111E42,$2
 	include "src/f/111E44.asm"
 	include "src/f/112016.asm"
@@ -2640,11 +2789,13 @@ Tbl_GaussBullet_vtable:	; class descriptor "GAUSSBULLET": word $E = name offset,
 	include "src/f/118D6C.asm"
 	include "src/f/119086.asm"
 	include "src/f/1190D6.asm"
+Str_Empty_11918E:	; C string "" (used by sub_1190D6)
 	incrom	$11918E,$2
 	include "src/f/119190.asm"
 	incrom	$11928A,$4A4
 	include "src/f/11972E.asm"
 	include "src/f/119738.asm"
+Str_Empty_119782:	; C string "" (used by sub_119738)
 	incrom	$119782,$2
 	include "src/f/119784.asm"
 	include "src/f/119796.asm"
@@ -2652,6 +2803,7 @@ Tbl_BBoard_vtable:	; class descriptor "BBOARD": word $16 = name offset, long par
 	incrom	$1197CA,$1E
 	include "src/f/1197E8.asm"
 	include "src/f/1197F2.asm"
+Str_Empty_119892:	; C string "" (used by sub_1197F2)
 	incrom	$119892,$2
 	include "src/f/119894.asm"
 	include "src/f/119914.asm"
@@ -2686,10 +2838,14 @@ Tbl_SyncActor_vtable:	; class descriptor "SYNCHRONIZEDACTOR": word $7E = name of
 	incrom	$11B4EA,$1E
 	include "src/f/11B508.asm"
 	include "src/f/11B524.asm"
-	incrom	$11B53C,$2
+Str_Empty_11B53C:	; C string "" (used by jt[1530])
+	incrom	$11B53C,$1
+	incrom	$11B53D,$1
 	include "src/f/11B53E.asm"
 	include "src/f/11B552.asm"
-	incrom	$11B55E,$2
+Str_Empty_11B55E:	; C string "" (used by jt[1531])
+	incrom	$11B55E,$1
+	incrom	$11B55F,$1
 	include "src/f/11B560.asm"
 	incrom	$11B574,$4C
 	include "src/f/11B5C0.asm"
@@ -2699,14 +2855,20 @@ Tbl_SyncActor_vtable:	; class descriptor "SYNCHRONIZEDACTOR": word $7E = name of
 	include "src/f/11B632.asm"
 	incrom	$11B656,$6
 	include "src/f/11B65C.asm"
-	incrom	$11B66C,$2
+Str_Empty_11B66C:	; C string "" (used by jt[1540])
+	incrom	$11B66C,$1
+	incrom	$11B66D,$1
 	include "src/f/11B66E.asm"
 	include "src/f/11B67E.asm"
-	incrom	$11B686,$2
+Str_Empty_11B686:	; C string "" (used by jt[1541])
+	incrom	$11B686,$1
+	incrom	$11B687,$1
 	include "src/f/11B688.asm"
 	incrom	$11B698,$A
 	include "src/f/11B6A2.asm"
-	incrom	$11B6AA,$2
+Str_Empty_11B6AA:	; C string "" (used by jt[1543])
+	incrom	$11B6AA,$1
+	incrom	$11B6AB,$1
 	include "src/f/11B6AC.asm"
 	incrom	$11B6B4,$20
 Tbl_BioFlame_vtable:	; class descriptor "BIOFLAME": word $6E = name offset, long parent (ACTOR), 26 method pointers, then the class name string
@@ -2842,6 +3004,7 @@ Tbl_BioBullet_vtable:	; class descriptor "BIOBULLET": word $6E = name offset, lo
 	include "src/f/11F152.asm"
 	include "src/f/11F188.asm"
 	include "src/f/11F1A6.asm"
+Str_Empty_11F22A:	; C string "" (used by sub_11F1A6)
 	incrom	$11F22A,$2
 	include "src/f/11F22C.asm"
 	include "src/f/11F2F2.asm"
@@ -2978,11 +3141,17 @@ Tbl_FireWall_vtable:	; class descriptor "FIREWALL": word $6E = name offset, long
 	incrom	$134214,$78
 	incrom	$13428C,$24E
 	include "src/f/1344DA.asm"
-	incrom	$1344DE,$2
+Str_Empty_1344DE:	; C string "" (used by jt[1755])
+	incrom	$1344DE,$1
+	incrom	$1344DF,$1
 	include "src/f/1344E0.asm"
-	incrom	$1344E8,$2
+Str_Empty_1344E8:	; C string "" (used by jt[1756])
+	incrom	$1344E8,$1
+	incrom	$1344E9,$1
 	include "src/f/1344EA.asm"
-	incrom	$1344F2,$2
+Str_Empty_1344F2:	; C string "" (used by jt[1757])
+	incrom	$1344F2,$1
+	incrom	$1344F3,$1
 	include "src/f/1344F4.asm"
 	incrom	$1344FC,$1C
 Tbl_FlyBrood_vtable:	; class descriptor "FLYBROOD": word $6E = name offset, long parent (ACTOR), 26 method pointers, then the class name string
@@ -3147,6 +3316,7 @@ Tbl_MaintRobot_vtable:	; class descriptor "MAINTROBOT": word $82 = name offset, 
 	include "src/f/13A762.asm"
 	include "src/f/13A784.asm"
 	include "src/f/13A7EA.asm"
+Str_Empty_13A880:	; C string "" (used by sub_13A7EA)
 	incrom	$13A880,$2
 	include "src/f/13A882.asm"
 	include "src/f/13A8C4.asm"
@@ -3189,7 +3359,9 @@ Tbl_Ninja_vtable:	; class descriptor "NINJA": word $82 = name offset, long paren
 	incrom	$13D7FE,$88
 	incrom	$13D886,$3C
 	include "src/f/13D8C2.asm"
-	incrom	$13D8C6,$2
+Str_Empty_13D8C6:	; C string "" (used by jt[1873])
+	incrom	$13D8C6,$1
+	incrom	$13D8C7,$1
 	include "src/f/13D8C8.asm"
 	include "src/f/13D8D0.asm"
 	incrom	$13D8E4,$12
@@ -3247,6 +3419,7 @@ Tbl_Pop_vtable:	; class descriptor "POP": word $6E = name offset, long parent (A
 	include "src/f/13F486.asm"
 	include "src/f/13F498.asm"
 	include "src/f/13F4D4.asm"
+Str_Empty_13F588:	; C string "" (used by sub_13F4D4)
 	incrom	$13F588,$2
 	include "src/f/13F58A.asm"
 	include "src/f/13F728.asm"
@@ -3286,9 +3459,13 @@ Tbl_Pop_vtable:	; class descriptor "POP": word $6E = name offset, long parent (A
 	include "src/f/14205E.asm"
 	incrom	$1420DE,$140
 	include "src/f/14221E.asm"
-	incrom	$14222A,$2
+Str_Empty_14222A:	; C string "" (used by jt[1931])
+	incrom	$14222A,$1
+	incrom	$14222B,$1
 	include "src/f/14222C.asm"
-	incrom	$142238,$2
+Str_Empty_142238:	; C string "" (used by jt[1932])
+	incrom	$142238,$1
+	incrom	$142239,$1
 	include "src/f/14223A.asm"
 	incrom	$142246,$8
 	include "src/f/14224E.asm"
@@ -3317,6 +3494,7 @@ Tbl_Pop_vtable:	; class descriptor "POP": word $6E = name offset, long parent (A
 	include "src/f/142AA6.asm"
 	include "src/f/142ACA.asm"
 	include "src/f/142AE0.asm"
+Str_Empty_142B52:	; C string "" (used by sub_142AE0)
 	incrom	$142B52,$2
 	include "src/f/142B54.asm"
 	include "src/f/142CD6.asm"
@@ -3549,6 +3727,7 @@ Sw_15C42A:	; switch table of sub at $15C42A: 9 word offsets from Sw_15C42A-2
 	include "src/f/15DBF2.asm"
 	include "src/f/15DC78.asm"
 	include "src/f/15DCC4.asm"
+Str_Undefined:	; C string "UNDEFINED" (used by sub_15DCC4)
 	incrom	$15DE14,$A
 	include "src/f/15DE1E.asm"
 	include "src/f/15DEAE.asm"
@@ -3585,12 +3764,16 @@ Sw_15C42A:	; switch table of sub at $15C42A: 9 word offsets from Sw_15C42A-2
 	include "src/f/15F1F8.asm"
 	include "src/f/15F37C.asm"
 	include "src/f/15F3F0.asm"
-	incrom	$15F456,$64
+Tbl_NibbleFill:	; 16 longs: colour n (0-15) repeated in all 8 pixels of a 4bpp tile row ($00000000, $11111111 ... $FFFFFFFF); decoder sub_15F3F0 fills runs with it
+	incrom	$15F456,$40
+Tbl_NibbleMaskLow:	; 9 longs: mask of the low k nibbles, k = 0..8 ($0, $F, $FF ... $FFFFFFFF); decoder sub_15F3F0
+	incrom	$15F496,$24
 	include "src/f/15F4BA.asm"
+Tbl_NibbleMaskAt:	; 9 longs: single-nibble mask at nibble position k-1 ($0, $F, $F0 ... $F0000000); decoder loc_15F4BA
 	incrom	$15F51C,$24
 	include "src/f/15F540.asm"
 	include "src/f/15F566.asm"
-	incrom	$15F572,$C
+	include "src/f/15F572.asm"
 	include "src/f/15F57E.asm"
 	include "src/f/15F5CA.asm"
 	include "src/f/15F5FC.asm"
@@ -3602,6 +3785,7 @@ Sw_15C42A:	; switch table of sub at $15C42A: 9 word offsets from Sw_15C42A-2
 	include "src/f/15F8B6.asm"
 	include "src/f/15F954.asm"
 	include "src/f/15F95C.asm"
+Str_Empty_15FA2A:	; C string "" (used by sub_15F95C)
 	incrom	$15FA2A,$2
 	include "src/f/15FA2C.asm"
 	include "src/f/15FA7A.asm"
@@ -3627,6 +3811,7 @@ Sw_15C42A:	; switch table of sub at $15C42A: 9 word offsets from Sw_15C42A-2
 	include "src/f/1606F4.asm"
 	include "src/f/1607A0.asm"
 	include "src/f/1607AA.asm"
+Str_Empty_1607E6:	; C string "" (used by sub_1607AA)
 	incrom	$1607E6,$2
 	include "src/f/1607E8.asm"
 	include "src/f/160996.asm"
@@ -4017,9 +4202,11 @@ Sw_1F3EC0:	; switch table of sub at $1F3EC0: 4 word offsets from Sw_1F3EC0-2
 	include "src/f/1F4302.asm"
 	include "src/f/1F4334.asm"
 	include "src/f/1F43AE.asm"
+Boot_SetupValues:	; Sega ICD_BLK4 boot setup table read by EntryPoint (lea into a5): init words, hardware port addresses, VDP register values, Z80 init program, PSG mute bytes
 	incrom	$1F443C,$6C
 	include "src/f/1F44A8.asm"
 	include "src/f/1F45AE.asm"
+RegionCheck_Data:	; Sega region-lockout data for loc_1F44A8: region code letters (J/U/E/B/S), "DEVELOPED FOR USE ONLY WITH ... SYSTEMS" message strings, then a 1bpp 8x8 font (ASCII $20-$5A) to print them
 	incrom	$1F45E4,$25A
 	include "src/f/1F483E.asm"
 	include "src/f/1F4854.asm"
@@ -4049,7 +4236,15 @@ Tbl_A5WorldInfo:	; 20 bytes: longs $3CE6 (size of the A5 globals area below $200
 	include "src/f/1F5594.asm"
 	include "src/f/1F5612.asm"
 	include "src/f/1F5788.asm"
-	incrom	$1F5EFC,$44
+	incrom	$1F5EFC,$4
+Str_APlaneTilesNoB:	; C string "A PLANE TILES -- NO B" (used by sub_1F5788)
+	incrom	$1F5F00,$16
+	incrom	$1F5F16,$2
+Str_APlaneTiles:	; C string "A PLANE TILES" (used by sub_1F5788)
+	incrom	$1F5F18,$E
+Str_AbTilesSharing:	; C string "AB TILES -- SHARING" (used by sub_1F5788)
+	incrom	$1F5F26,$14
+	incrom	$1F5F3A,$6
 	include "src/f/1F5F40.asm"
 	include "src/f/1F5F5A.asm"
 	include "src/f/1F5F78.asm"
@@ -4080,6 +4275,7 @@ Tbl_A5WorldInfo:	; 20 bytes: longs $3CE6 (size of the A5 globals area below $200
 	include "src/f/1F6B9C.asm"
 	include "src/f/1F6BD2.asm"
 	include "src/f/1F6C04.asm"
+Str_Empty_1F6D74:	; C string "" (used by sub_1F6C04)
 	incrom	$1F6D74,$2
 	include "src/f/1F6D76.asm"
 Sw_1F6D76:	; switch table of sub at $1F6D76: 36 word offsets from Sw_1F6D76-2
@@ -4232,6 +4428,7 @@ Sw_1F7AF8:	; switch table of sub at $1F7AF8: 10 word offsets from Sw_1F7AF8-2
 	include "src/f/1FA124.asm"
 	include "src/f/1FA6FE.asm"
 	include "src/f/1FA7E8.asm"
+Str_Empty_1FA876:	; C string "" (used by sub_1FA7E8)
 	incrom	$1FA876,$2
 	include "src/f/1FA878.asm"
 	include "src/f/1FA8C4.asm"
@@ -4283,6 +4480,7 @@ Str_EmptyTag:	; empty C string: allocation tag used by sub_1FAD08 for its Mem_St
 	incrom	$1FC462,$4
 	include "src/f/1FC466.asm"
 	include "src/f/1FC5FE.asm"
+Str_ScalerData:	; C string "SCALER DATA" (used by sub_1FC5FE)
 	incrom	$1FC6BE,$C
 	include "src/f/1FC6CA.asm"
 	include "src/f/1FC6F6.asm"
@@ -4359,4 +4557,9 @@ Tbl_SineQuarter:	; 90 words: sin(0..89 deg) * $10000 (0 and 90 are special-cased
 	include "src/f/1FE630.asm"
 	incrom	$1FE642,$2
 	include "src/f/1FE644.asm"
-	incrom	$1FE66C,$1994
+Snd_Z80Driver:	; Z80 sound driver image: Z80_LoadDriver copies $1FE66C-$1FFED2 to Z80 RAM $A00000 (end address referenced as Snd_Z80Driver+$1867)
+	incrom	$1FE66C,$1867
+Snd_Z80DriverEnd:	; end marker of Snd_Z80Driver (Z80_LoadDriver copies up to here); one $00 byte
+	incrom	$1FFED3,$1
+Pad_RomEnd:	; $FF fill to the end of the 2 MB ROM (A5Params $204 points here)
+	incrom	$1FFED4,$12C

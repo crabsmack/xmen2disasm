@@ -5,7 +5,7 @@ sub_1607AA:
 	link.w	a6,#$0
 	movem.l	a3-a4,-(a7)
 	movea.l	$8(a6),a3
-	pea.l	$1607E6(pc)
+	pea.l	Str_Empty_1607E6(pc)
 	movea.l	$6(a3),a0
 	jsr	(a0)
 	move.l	d0,-(a7)

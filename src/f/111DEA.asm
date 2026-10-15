@@ -6,7 +6,7 @@
 ; ---------------------------------------------------------------------------
 Deathbird_ClassInit:
 	link.w	a6,#$0
-	pea.l	$111E42(pc)
+	pea.l	Str_Empty_111E42(pc)
 	moveq	#$14,d0
 	move.l	d0,-(a7)
 	jsr	$5032(a5)	; -> Mem_StackAlloc

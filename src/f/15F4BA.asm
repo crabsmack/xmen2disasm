@@ -40,7 +40,7 @@ loc_15F4F6:
 loc_15F500:
 	move.w	d3,d1
 	asl.w	#$2,d1
-	move.l	$15F51C(pc,d1.w),d1
+	move.l	Tbl_NibbleMaskAt(pc,d1.w),d1
 	and.l	d7,d1
 	or.l	d1,d4
 	subq.w	#$1,d3

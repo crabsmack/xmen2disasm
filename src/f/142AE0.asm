@@ -11,7 +11,7 @@ sub_142AE0:
 	move.l	$2(a0),-(a7)
 	jsr	$4E52(a5)	; -> sub_1F62C0
 	move.w	d0,-$1A6E(a5)
-	pea.l	$142B52(pc)
+	pea.l	Str_Empty_142B52(pc)
 	pea.l	($100).w
 	jsr	$5032(a5)	; -> Mem_StackAlloc
 	move.l	d0,-$1A6C(a5)

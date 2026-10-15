@@ -902,3 +902,4 @@
 05CD18	; loc_05CD18 - static: switch-table case target (tools/switches.py: table after `move.w T(pc,dN.w),dN / jmp T-2(pc,dN.w)`, size from the cmpi bound)
 05CD22	; loc_05CD22 - static: switch-table case target (tools/switches.py: table after `move.w T(pc,dN.w),dN / jmp T-2(pc,dN.w)`, size from the cmpi bound)
 05CD36	; loc_05CD36 - static: switch-table case target (tools/switches.py: table after `move.w T(pc,dN.w),dN / jmp T-2(pc,dN.w)`, size from the cmpi bound)
+15F572	; loc_15F572 - static: row-output routine sub_15F37C selects when its mode arg $17(a6)=0 (lea into a3; the decoder calls jsr (a3) per row); writes each row long to RAM via (a4)+; mode 0 never used in the corpus

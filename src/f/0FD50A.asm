@@ -15,7 +15,7 @@ sub_0FD50A:
 	move.l	d0,-$3ADC(a5)
 	move.b	#$1,-$35C8(a5)
 	move.b	#$1,-$35CA(a5)
-	pea.l	$FD574(pc)
+	pea.l	Str_Empty_0FD574(pc)
 	pea.l	($3C0).w
 	jsr	$5032(a5)	; -> Mem_StackAlloc
 	addq.l	#$8,a7

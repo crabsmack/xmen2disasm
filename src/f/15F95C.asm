@@ -4,7 +4,7 @@
 sub_15F95C:
 	link.w	a6,#$0
 	movem.l	d7/a3-a4,-(a7)
-	pea.l	$15FA2A(pc)
+	pea.l	Str_Empty_15FA2A(pc)
 	move.w	-$38D8(a5),d0
 	muls.w	#$E,d0
 	move.l	d0,-(a7)

@@ -13,7 +13,7 @@ sub_13F4D4:
 	lsl.l	#$2,d1
 	add.l	d0,d1
 	move.w	d1,d7
-	pea.l	$13F588(pc)
+	pea.l	Str_Empty_13F588(pc)
 	ext.l	d7
 	move.l	d7,d0
 	moveq	#$C,d1

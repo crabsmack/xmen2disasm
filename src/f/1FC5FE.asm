@@ -5,7 +5,7 @@ sub_1FC5FE:
 	link.w	a6,#$0
 	tst.l	-$CA6(a5)
 	bne.s	loc_1FC64A
-	pea.l	$1FC6BE(pc)
+	pea.l	Str_ScalerData(pc)
 	pea.l	($DC0).w
 	jsr	$5032(a5)	; -> Mem_StackAlloc
 	addq.w	#$8,a7

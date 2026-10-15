@@ -8,7 +8,7 @@ sub_13A7EA:
 	clr.b	d4
 	moveq	#$7F,d5
 	clr.b	d6
-	pea.l	$13A880(pc)
+	pea.l	Str_Empty_13A880(pc)
 	ext.l	d7
 	move.l	d7,-(a7)
 	jsr	$5032(a5)	; -> Mem_StackAlloc

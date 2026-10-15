@@ -56,7 +56,7 @@ sub_15DCC4:
 	move.w	#$1000,$24(a4)
 	move.w	#$380,$22(a4)
 	move.w	#$D000,$4(a4)
-	lea.l	$15DE14(pc),a0
+	lea.l	Str_Undefined(pc),a0
 	move.l	a0,$2A(a4)
 	move.b	#$FF,$14(a4)
 	move.l	d0,$64(a4)

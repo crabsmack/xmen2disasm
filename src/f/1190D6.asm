@@ -10,7 +10,7 @@ sub_1190D6:
 	move.l	$2(a0),-(a7)
 	jsr	$4E52(a5)	; -> sub_1F62C0
 	move.w	d0,-$1CA8(a5)
-	pea.l	$11918E(pc)
+	pea.l	Str_Empty_11918E(pc)
 	pea.l	($C8).w
 	jsr	$5032(a5)	; -> Mem_StackAlloc
 	movea.l	d0,a4

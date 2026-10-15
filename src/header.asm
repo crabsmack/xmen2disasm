@@ -79,6 +79,7 @@ Header:
 	dc.b	"            "	; SRAM info
 	dc.b	"            "	; modem info
 	dc.b	"                                        "	; notes
+Header_Regions:
 	dc.b	"JEU             "	; regions
 
 ; $200: A5-world application parameters; $210-$21C are the interrupt hook

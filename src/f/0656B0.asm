@@ -143,7 +143,7 @@ loc_06587A:
 	move.w	#$16,-$3B06(a5)
 	moveq	#$2,d0
 	move.l	d0,-(a7)
-	pea.l	$65DAA(pc)
+	pea.l	Str_PressStart_065DAA(pc)
 	jsr	sub_064F70(pc)
 	addq.w	#$8,a7
 loc_065894:
@@ -157,7 +157,7 @@ loc_0658A2:
 	move.w	#$16,-$3B06(a5)
 	moveq	#$3,d0
 	move.l	d0,-(a7)
-	pea.l	$65D9E(pc)
+	pea.l	Str_PressStart(pc)
 	jsr	sub_064F70(pc)
 	addq.w	#$8,a7
 loc_0658BC:
@@ -198,7 +198,7 @@ loc_065922:
 	moveq	#-$1,d0
 	cmp.b	$3C(a0),d0
 	beq.w	loc_065A76
-	lea.l	$65D96(pc),a3
+	lea.l	Str_Lives_065D96(pc),a3
 	moveq	#$42,d4
 	move.w	#$C6,-$86(a6)
 	moveq	#$9,d0
@@ -307,7 +307,7 @@ loc_065A76:
 	moveq	#-$1,d0
 	cmp.b	$3C(a0),d0
 	beq.w	loc_065BBE
-	lea.l	$65D8E(pc),a4
+	lea.l	Str_Lives(pc),a4
 	move.w	#$CA,d5
 	move.w	#$C6,-$86(a6)
 	moveq	#$9,d0

@@ -10,8 +10,8 @@ Z80_LoadDriver:
 	ori.w	#$700,sr
 	move.w	#$100,($A11200).l
 	jsr	Z80_BusRequest(pc)
-	lea.l	$1FE66C(pc),a0
-	lea.l	$1FFED3(pc),a1
+	lea.l	Snd_Z80Driver(pc),a0
+	lea.l	Snd_Z80DriverEnd(pc),a1
 	move.l	a1,d0
 	sub.l	a0,d0
 	subq.w	#$1,d0

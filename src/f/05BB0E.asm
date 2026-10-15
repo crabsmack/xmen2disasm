@@ -28,7 +28,7 @@ Boulder_ClassInit:
 	jsr	$4E52(a5)	; -> sub_1F62C0
 	move.w	d0,-$3C62(a5)
 	move.l	#$258,d7
-	pea.l	$5BB84(pc)
+	pea.l	Str_Empty_05BB84(pc)
 	move.l	d7,-(a7)
 	jsr	$5032(a5)	; -> Mem_StackAlloc
 	addq.l	#$8,a7

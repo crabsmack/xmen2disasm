@@ -20,7 +20,7 @@ sub_1FA7E8:
 	move.l	d0,-$10F4(a5)
 	bra.s	loc_1FA86C
 loc_1FA816:
-	pea.l	$1FA876(pc)
+	pea.l	Str_Empty_1FA876(pc)
 	move.l	d6,d0
 	asl.l	#$2,d0
 	move.l	d0,-(a7)

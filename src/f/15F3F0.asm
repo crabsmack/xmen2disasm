@@ -23,7 +23,7 @@ loc_15F41A:
 	andi.w	#$F,d1
 	beq.w	loc_15F4D8
 	asl.w	#$2,d1
-	move.l	$15F456(pc,d1.w),d7
+	move.l	Tbl_NibbleFill(pc,d1.w),d7
 	andi.w	#$F0,d0
 	beq.w	loc_15F500
 	lsr.w	#$4,d0
@@ -31,14 +31,14 @@ loc_15F41A:
 loc_15F436:
 	move.w	d3,d1
 	asl.w	#$2,d1
-	move.l	$15F496(pc,d1.w),d1
+	move.l	Tbl_NibbleMaskLow(pc,d1.w),d1
 	cmp.w	d3,d0
 	beq.s	loc_15F4BA
 	bgt.w	loc_15F4C8
 	sub.w	d0,d3
 	move.w	d3,d0
 	asl.w	#$2,d0
-	sub.l	$15F496(pc,d0.w),d1
+	sub.l	Tbl_NibbleMaskLow(pc,d0.w),d1
 	and.l	d7,d1
 	or.l	d1,d4
 	bra.s	sub_15F3F0

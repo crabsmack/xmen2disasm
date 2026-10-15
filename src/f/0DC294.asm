@@ -4,7 +4,7 @@
 sub_0DC294:
 	link.w	a6,#$0
 	movem.l	d7/a4,-(a7)
-	pea.l	$DC2C4(pc)
+	pea.l	Str_Empty_0DC2C4(pc)
 	moveq	#$1E,d0
 	move.l	d0,-(a7)
 	jsr	$5032(a5)	; -> Mem_StackAlloc

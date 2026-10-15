@@ -21,7 +21,7 @@ loc_00FF20:
 	lsl.l	#$5,d0
 loc_00FF2A:
 	move.w	d0,d6
-	pea.l	$FFAC(pc)
+	pea.l	Str_Empty_00FFAC(pc)
 	ext.l	d6
 	move.l	d6,-(a7)
 	jsr	$5032(a5)	; -> Mem_StackAlloc

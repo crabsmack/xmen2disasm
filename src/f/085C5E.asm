@@ -4,7 +4,7 @@
 sub_085C5E:
 	link.w	a6,#$0
 	move.l	a4,-(a7)
-	pea.l	$85D4A(pc)
+	pea.l	Str_Empty_085D4A(pc)
 	moveq	#$68,d0
 	move.l	d0,-(a7)
 	jsr	$5032(a5)	; -> Mem_StackAlloc

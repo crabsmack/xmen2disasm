@@ -844,7 +844,7 @@ loc_066870:
 	move.w	d0,-$3B06(a5)
 	moveq	#$0,d0
 	move.l	d0,-(a7)
-	pea.l	$66B04(pc)
+	pea.l	Str_DevelopedByHeadgamesInc(pc)
 	jsr	sub_064F70(pc)
 	moveq	#$78,d6
 	addq.w	#$8,a7
@@ -887,7 +887,7 @@ loc_0668D0:
 	move.w	d0,$4(a0)
 	movea.l	-$1FE6(a5),a0
 	move.w	#$145,$6(a0)
-	lea.l	$66AFE(pc),a3
+	lea.l	Str_Press(pc),a3
 	moveq	#$4A,d4
 	move.w	#$C6,-$1EE(a6)
 	bra.s	loc_066984
@@ -921,7 +921,7 @@ loc_066930:
 loc_066984:
 	move.b	(a3),d7
 	bne.s	loc_066930
-	lea.l	$66AF8(pc),a3
+	lea.l	Str_Start(pc),a3
 	move.w	#$D2,d4
 	move.w	#$C6,-$1EE(a6)
 	bra.s	loc_0669EC

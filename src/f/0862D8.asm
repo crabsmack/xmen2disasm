@@ -84,7 +84,7 @@ loc_0863B4:
 	move.w	$90(a0),d6
 	ext.l	d6
 	asl.l	#$3,d6
-	pea.l	$864E0(pc)
+	pea.l	Str_Empty_0864E0(pc)
 	ext.l	d6
 	move.l	d6,-(a7)
 	jsr	$5032(a5)	; -> Mem_StackAlloc

@@ -27,7 +27,7 @@ sub_068126:
 	move.w	#$16,-$3B06(a5)
 	moveq	#$0,d0
 	move.l	d0,-(a7)
-	pea.l	$6824E(pc)
+	pea.l	Str_Selected_06824E(pc)
 	jsr	sub_064F70(pc)
 	addq.w	#$8,a7
 	bra.s	loc_06820A
@@ -52,7 +52,7 @@ loc_0681BC:
 	move.w	#$16,-$3B06(a5)
 	moveq	#$1,d0
 	move.l	d0,-(a7)
-	pea.l	$68242(pc)
+	pea.l	Str_Selected(pc)
 	jsr	sub_064F70(pc)
 	addq.w	#$8,a7
 	bra.s	loc_06820A

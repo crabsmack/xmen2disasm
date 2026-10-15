@@ -12,7 +12,7 @@ sub_1197F2:
 	move.w	d0,d6
 	tst.l	-$1CA2(a5)
 	bne.s	loc_119844
-	pea.l	$119892(pc)
+	pea.l	Str_Empty_119892(pc)
 	move.w	d6,d0
 	ext.l	d0
 	asl.l	#$2,d0
