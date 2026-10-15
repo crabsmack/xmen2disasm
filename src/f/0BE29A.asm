@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_0BE29A	[link-after-rts]
+; Barbarian_StateGiveUp - BARBARIAN state: give up - idle pose and idle
+; In:  8(a6) = this
+; Out: d0
+; Found: link-after-rts
 ; ---------------------------------------------------------------------------
-sub_0BE29A:
+Barbarian_StateGiveUp:
 	link.w	a6,#$0
 	move.l	a4,-(a7)
 	movea.l	$8(a6),a4
@@ -11,7 +14,7 @@ sub_0BE29A:
 	jsr	$4E4A(a5)	; -> Obj_ChangeAnim
 	addq.w	#$8,a7
 	clr.w	$6C(a4)
-	lea.l	sub_0BDAC4(pc),a0
+	lea.l	Barbarian_StateIdle(pc),a0
 	move.l	a0,$5C(a4)
 	moveq	#$8,d0
 	and.w	$4(a4),d0

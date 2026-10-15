@@ -1,7 +1,11 @@
 ; ---------------------------------------------------------------------------
-; sub_0BE656	[jt 1053]
+; Barbarian_EndHurt - BARBARIAN slot +$76 EndHurt: parent EndHurt, restore the saved flags; if it was walking re-engage after 5 frames
+; In:  8(a6) = this
+; Out: none
+; Evidence: XNPC slot +$76; jt 1053; TAS 28028-33033
+; Found: jt 1053
 ; ---------------------------------------------------------------------------
-sub_0BE656:
+Barbarian_EndHurt:
 	link.w	a6,#$0
 	move.l	a4,-(a7)
 	movea.l	$8(a6),a4
@@ -16,7 +20,7 @@ sub_0BE656:
 	or.w	d0,$6(a4)
 	tst.b	$BF(a4)
 	beq.s	loc_0BE69C
-	lea.l	sub_0BDC9A(pc),a0
+	lea.l	Barbarian_StateEngage(pc),a0
 	move.l	a0,$5C(a4)
 	move.w	#$5,$6C(a4)
 	clr.w	$1E(a4)

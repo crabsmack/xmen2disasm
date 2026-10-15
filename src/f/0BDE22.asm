@@ -1,7 +1,11 @@
 ; ---------------------------------------------------------------------------
-; sub_0BDE22	[link-after-rts]
+; Barbarian_StateWalkLeft - BARBARIAN state: walk left until the segment end or past the target
+; In:  8(a6) = this
+; Out: d0
+; Evidence: TAS 31877-32936
+; Found: link-after-rts
 ; ---------------------------------------------------------------------------
-sub_0BDE22:
+Barbarian_StateWalkLeft:
 	link.w	a6,#$0
 	move.l	a4,-(a7)
 	movea.l	$8(a6),a4
@@ -15,7 +19,7 @@ sub_0BDE22:
 	lsl.l	#$8,d0
 	move.l	d0,$8(a4)
 	clr.w	$6C(a4)
-	lea.l	sub_0BDE82(pc),a0
+	lea.l	Barbarian_StateSegmentEnd(pc),a0
 	move.l	a0,$5C(a4)
 	moveq	#$8,d0
 	and.w	$4(a4),d0
@@ -27,7 +31,7 @@ loc_0BDE5A:
 	cmp.l	$8(a4),d0
 	ble.s	loc_0BDE7A
 	clr.w	$6C(a4)
-	lea.l	sub_0BDEF4(pc),a0
+	lea.l	Barbarian_StateReachedTarget(pc),a0
 	move.l	a0,$5C(a4)
 	moveq	#$8,d0
 	and.w	$4(a4),d0

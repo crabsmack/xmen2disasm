@@ -1,7 +1,11 @@
 ; ---------------------------------------------------------------------------
-; sub_0BD9F0	[jt 1046]
+; Barbarian_NotifySegmentGone - tell idle BARBARIANs standing on a segment that it went away (+$C0 := 1)
+; In:  8(a6) = segment
+; Out: none
+; Evidence: walks the active objects for Tbl_Barbarian_vtable with +$76 == segment; jt 1046; caller TrapDoor_StateOpen; TAS 31005-32541
+; Found: jt 1046
 ; ---------------------------------------------------------------------------
-sub_0BD9F0:
+Barbarian_NotifySegmentGone:
 	link.w	a6,#$0
 	movem.l	d7/a3-a4,-(a7)
 	movea.l	$8(a6),a3

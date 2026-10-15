@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_0BE08A	[link-after-rts]
+; Barbarian_StateLeapNear - BARBARIAN leap: wait until within 10 px above the target y
+; In:  8(a6) = this
+; Out: d0
+; Found: link-after-rts
 ; ---------------------------------------------------------------------------
-sub_0BE08A:
+Barbarian_StateLeapNear:
 	link.w	a6,#$0
 	move.l	a4,-(a7)
 	movea.l	$8(a6),a4
@@ -14,7 +17,7 @@ sub_0BE08A:
 	cmp.l	d0,d1
 	ble.s	loc_0BE0BA
 	clr.w	$6C(a4)
-	lea.l	sub_0BE0C2(pc),a0
+	lea.l	Barbarian_StateLeapLand(pc),a0
 	move.l	a0,$5C(a4)
 	moveq	#$8,d0
 	and.w	$4(a4),d0

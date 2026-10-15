@@ -1,7 +1,11 @@
 ; ---------------------------------------------------------------------------
-; sub_0BD894	[link-after-rts]
+; Barbarian_SetupLeap - BARBARIAN: set up a leap to the target point if it is within $96 px on both axes
+; In:  8(a6) = this
+; Out: d0 = 1 when leaping
+; Evidence: velocities from Math_LDivS, facing by direction, gravity / max speed set, +4 bit $1000, frame $12; TAS 28049
+; Found: link-after-rts
 ; ---------------------------------------------------------------------------
-sub_0BD894:
+Barbarian_SetupLeap:
 	link.w	a6,#$0
 	movem.l	d3/d5-d7/a4,-(a7)
 	movea.l	$8(a6),a4

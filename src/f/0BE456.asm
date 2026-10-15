@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_0BE456	[link-after-rts]
+; Barbarian_StateAttack4 - BARBARIAN attack 4: animation $0BD50A to its end
+; In:  8(a6) = this
+; Out: d0
+; Found: link-after-rts
 ; ---------------------------------------------------------------------------
-sub_0BE456:
+Barbarian_StateAttack4:
 	link.w	a6,#$0
 	move.l	a4,-(a7)
 	movea.l	$8(a6),a4
@@ -11,7 +14,7 @@ sub_0BE456:
 	jsr	$4E42(a5)	; -> Obj_SetAnim
 	addq.w	#$8,a7
 	move.w	#$FF,$6C(a4)
-	lea.l	sub_0BE48C(pc),a0
+	lea.l	Barbarian_StateAttackEnd(pc),a0
 	move.l	a0,$5C(a4)
 	moveq	#$8,d0
 	and.w	$4(a4),d0

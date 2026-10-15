@@ -1,12 +1,15 @@
 ; ---------------------------------------------------------------------------
-; sub_0BE206	[link-after-rts]
+; Barbarian_StateToLeapEdge - BARBARIAN state: go to Barbarian_StateLeapEdge
+; In:  8(a6) = this
+; Out: d0
+; Found: link-after-rts
 ; ---------------------------------------------------------------------------
-sub_0BE206:
+Barbarian_StateToLeapEdge:
 	link.w	a6,#$0
 	move.l	a4,-(a7)
 	movea.l	$8(a6),a4
 	clr.w	$6C(a4)
-	lea.l	sub_0BE22A(pc),a0
+	lea.l	Barbarian_StateLeapEdge(pc),a0
 	move.l	a0,$5C(a4)
 	moveq	#$8,d0
 	and.w	$4(a4),d0

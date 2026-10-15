@@ -1,7 +1,11 @@
 ; ---------------------------------------------------------------------------
-; sub_0BD52C	[link-after-rts]
+; Barbarian_SegHook1A - floor-segment hook for type $1A (barbarian platforms): solid only in mode 3
+; In:  8(a6) = word mode
+; Out: d0 = mode == 3
+; Evidence: installed in g_SegTypeHooks[$1A] (-$3402) by Barbarian_ClassInit; TAS 27957-33098
+; Found: link-after-rts
 ; ---------------------------------------------------------------------------
-sub_0BD52C:
+Barbarian_SegHook1A:
 	link.w	a6,#$0
 	move.l	d3,-(a7)
 	moveq	#$3,d1

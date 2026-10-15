@@ -1,7 +1,11 @@
 ; ---------------------------------------------------------------------------
-; sub_0BDD52	[link-after-rts]
+; Barbarian_StateWalkStart - BARBARIAN state: start walking (animation jt[$228A], speed +$98) in the facing direction
+; In:  8(a6) = this
+; Out: d0
+; Evidence: next Barbarian_StateWalkRight / Barbarian_StateWalkLeft; TAS 31876-33058
+; Found: link-after-rts
 ; ---------------------------------------------------------------------------
-sub_0BDD52:
+Barbarian_StateWalkStart:
 	link.w	a6,#$0
 	move.l	a4,-(a7)
 	movea.l	$8(a6),a4
@@ -18,7 +22,7 @@ sub_0BDD52:
 	bne.s	loc_0BDD9C
 	move.w	$98(a4),$16(a4)
 	clr.w	$6C(a4)
-	lea.l	sub_0BDDC2(pc),a0
+	lea.l	Barbarian_StateWalkRight(pc),a0
 	move.l	a0,$5C(a4)
 	moveq	#$8,d0
 	and.w	$4(a4),d0
@@ -29,7 +33,7 @@ loc_0BDD9C:
 	neg.l	d0
 	move.w	d0,$16(a4)
 	clr.w	$6C(a4)
-	lea.l	sub_0BDE22(pc),a0
+	lea.l	Barbarian_StateWalkLeft(pc),a0
 	move.l	a0,$5C(a4)
 	moveq	#$8,d0
 	and.w	$4(a4),d0

@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_0BD79A	[link-after-rts]
+; Barbarian_StepTargetX - BARBARIAN: move the target x (+$9E) by dx in the facing direction, clamped to a segment's x range
+; In:  8(a6) = this, $C(a6) = segment, $12(a6) = word dx
+; Out: none
+; Found: link-after-rts
 ; ---------------------------------------------------------------------------
-sub_0BD79A:
+Barbarian_StepTargetX:
 	link.w	a6,#$0
 	movem.l	d7/a3-a4,-(a7)
 	move.w	$12(a6),d7

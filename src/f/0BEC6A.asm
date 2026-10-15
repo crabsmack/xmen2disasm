@@ -50,7 +50,7 @@ loc_0BECE6:
 loc_0BECEA:
 	move.w	d0,$8E(a4)
 	move.l	a4,-(a7)
-	jsr	sub_0BE7E8(pc)
+	jsr	Launcher_ClearShots(pc)
 	addq.w	#$4,a7
 	lea.l	sub_0BE872(pc),a0
 	move.l	a0,$64(a4)

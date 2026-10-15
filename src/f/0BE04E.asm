@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_0BE04E	[link-after-rts]
+; Barbarian_StateLeapDrop - BARBARIAN leap: frame $15 once vy > $4B0
+; In:  8(a6) = this
+; Out: none
+; Found: link-after-rts
 ; ---------------------------------------------------------------------------
-sub_0BE04E:
+Barbarian_StateLeapDrop:
 	link.w	a6,#$0
 	move.l	a4,-(a7)
 	movea.l	$8(a6),a4
@@ -15,7 +18,7 @@ sub_0BE04E:
 	jsr	(a1)
 	addq.w	#$8,a7
 	clr.w	$6C(a4)
-	lea.l	sub_0BE08A(pc),a0
+	lea.l	Barbarian_StateLeapNear(pc),a0
 	move.l	a0,$5C(a4)
 	moveq	#$8,d0
 	and.w	$4(a4),d0

@@ -1,7 +1,11 @@
 ; ---------------------------------------------------------------------------
-; sub_0BD6E2	[link-after-rts]
+; Barbarian_StandOn - BARBARIAN: stand on a floor segment - +$76 = it, walk limits +$9A/+$9C = its x range inset by 15, priority from the segment
+; In:  8(a6) = this, $C(a6) = segment
+; Out: none
+; Evidence: DrawList_SetPriority re-sorts the draw priority; 2 callers
+; Found: link-after-rts
 ; ---------------------------------------------------------------------------
-sub_0BD6E2:
+Barbarian_StandOn:
 	link.w	a6,#$0
 	movem.l	d5-d7/a3-a4,-(a7)
 	movea.l	$C(a6),a3

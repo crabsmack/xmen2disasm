@@ -8,7 +8,7 @@ Barbarian_ClassInit:
 	move.l	$8(a6),-(a7)
 	jsr	Barbarian_Nop6A(pc)
 	addq.w	#$4,a7
-	lea.l	sub_0BD52C(pc),a0
+	lea.l	Barbarian_SegHook1A(pc),a0
 	move.l	a0,-$3402(a5)
 	unlk	a6
 	rts

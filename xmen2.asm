@@ -2740,7 +2740,7 @@ Tbl_SavageBioAnim10:	; animation script (byte flags, byte steps, ..., 2-byte ste
 	include "src/f/0BDB94.asm"
 	include "src/f/0BDBE2.asm"
 Sw_0BDBE2:	; switch table of sub at $0BDBE2: 4 word offsets from Sw_0BDBE2-2
-	dc.w	loc_0BDC38-(Sw_0BDBE2-2), loc_0BDC4A-(Sw_0BDBE2-2), loc_0BDC5C-(Sw_0BDBE2-2), loc_0BDC6E-(Sw_0BDBE2-2)
+	dc.w	loc_0BDC38-(Sw_0BDBE2-2), Barbarian_StateTaunt_Play-(Sw_0BDBE2-2), loc_0BDC5C-(Sw_0BDBE2-2), loc_0BDC6E-(Sw_0BDBE2-2)
 	include "src/f/0BDC34.asm"
 	include "src/f/0BDC4A.asm"
 	include "src/f/0BDC7E.asm"
@@ -2767,8 +2767,8 @@ Sw_0BDBE2:	; switch table of sub at $0BDBE2: 4 word offsets from Sw_0BDBE2-2
 	include "src/f/0BE29A.asm"
 	include "src/f/0BE2CE.asm"
 Sw_0BE2CE:	; switch table of sub at $0BE2CE: 5 word offsets from Sw_0BE2CE-2
-	dc.w	loc_0BE314-(Sw_0BE2CE-2), loc_0BE328-(Sw_0BE2CE-2), loc_0BE33C-(Sw_0BE2CE-2), loc_0BE350-(Sw_0BE2CE-2)
-	dc.w	loc_0BE364-(Sw_0BE2CE-2)
+	dc.w	loc_0BE314-(Sw_0BE2CE-2), Barbarian_StateAttack_Case1-(Sw_0BE2CE-2), loc_0BE33C-(Sw_0BE2CE-2), loc_0BE350-(Sw_0BE2CE-2)
+	dc.w	Barbarian_StateAttack_Case4-(Sw_0BE2CE-2)
 	include "src/f/0BE310.asm"
 	include "src/f/0BE328.asm"
 	include "src/f/0BE364.asm"

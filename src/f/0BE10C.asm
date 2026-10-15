@@ -1,7 +1,11 @@
 ; ---------------------------------------------------------------------------
-; sub_0BE10C	[link-after-rts]
+; Barbarian_StateLandSlide - BARBARIAN state: landing - frame $12 and slide a quarter of the way to the target x
+; In:  8(a6) = this
+; Out: d0
+; Evidence: TAS 28082
+; Found: link-after-rts
 ; ---------------------------------------------------------------------------
-sub_0BE10C:
+Barbarian_StateLandSlide:
 	link.w	a6,#$0
 	movem.l	d7/a4,-(a7)
 	movea.l	$8(a6),a4
@@ -21,7 +25,7 @@ sub_0BE10C:
 	add.l	d0,$8(a4)
 	addq.w	#$8,a7
 	move.w	#$6,$6C(a4)
-	lea.l	sub_0BE15C(pc),a0
+	lea.l	Barbarian_StateLanded(pc),a0
 	move.l	a0,$5C(a4)
 	moveq	#$8,d0
 	and.w	$4(a4),d0

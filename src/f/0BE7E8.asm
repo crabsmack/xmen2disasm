@@ -1,7 +1,11 @@
 ; ---------------------------------------------------------------------------
-; sub_0BE7E8	[link-after-rts]
+; Launcher_ClearShots - LAUNCHER: clear its four 10-byte shot slots (+$90..+$B8)
+; In:  8(a6) = this
+; Out: none
+; Evidence: TAS 27946-30538
+; Found: link-after-rts
 ; ---------------------------------------------------------------------------
-sub_0BE7E8:
+Launcher_ClearShots:
 	link.w	a6,#$0
 	movem.l	a3-a4,-(a7)
 	movea.l	$8(a6),a3

@@ -1,7 +1,11 @@
 ; ---------------------------------------------------------------------------
-; sub_0BD54A	[link-after-rts]
+; Barbarian_FindPlatforms - BARBARIAN: find its own type-$1A platform segment (+$A6) and list up to 12 neighbouring floor segments it can reach (+$AE..)
+; In:  8(a6) = this, $C(a6) = placement record {+2 x, +4 y}
+; Out: none
+; Evidence: scans the $14-byte segments at $FFCE2E (count -$3274); neighbours overlap the platform rectangle and are flat enough; caller Barbarian_Init; TAS 27991-32925
+; Found: link-after-rts
 ; ---------------------------------------------------------------------------
-sub_0BD54A:
+Barbarian_FindPlatforms:
 	link.w	a6,#$FFFC
 	movem.l	d3-d7/a3-a4,-(a7)
 	movea.l	$C(a6),a3

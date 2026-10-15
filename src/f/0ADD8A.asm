@@ -1,5 +1,5 @@
 ; ---------------------------------------------------------------------------
-; TrapDoor_StateOpen - TRAPDOOR state: open - tiles +$98, drop the players through (Obj_Detach), disable the segment (bit 6, sub_0BD9F0)
+; TrapDoor_StateOpen - TRAPDOOR state: open - tiles +$98, drop the players through (Obj_Detach), disable the segment (bit 6, Barbarian_NotifySegmentGone)
 ; In:  8(a6) = this
 ; Out: d0
 ; Found: link-after-rts
@@ -35,7 +35,7 @@ loc_0ADDC4:
 	addq.w	#$4,a7
 loc_0ADDE0:
 	move.l	$9C(a4),-(a7)
-	jsr	$20D2(a5)	; -> sub_0BD9F0
+	jsr	$20D2(a5)	; -> Barbarian_NotifySegmentGone
 	addq.w	#$4,a7
 	move.w	#$8,$6C(a4)
 	lea.l	TrapDoor_StateOpenWide(pc),a0

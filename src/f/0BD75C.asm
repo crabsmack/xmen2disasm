@@ -1,7 +1,11 @@
 ; ---------------------------------------------------------------------------
-; sub_0BD75C	[link-after-rts]
+; Barbarian_TargetClose - BARBARIAN: is the target (+$A2) within $32 px horizontally
+; In:  8(a6) = this
+; Out: d0.b
+; Evidence: caller Barbarian_StateApproach
+; Found: link-after-rts
 ; ---------------------------------------------------------------------------
-sub_0BD75C:
+Barbarian_TargetClose:
 	link.w	a6,#$0
 	movem.l	d3/d7/a4,-(a7)
 	movea.l	$8(a6),a4

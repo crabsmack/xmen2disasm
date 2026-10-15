@@ -1,7 +1,11 @@
 ; ---------------------------------------------------------------------------
-; sub_0BE4C0	[link-after-rts]
+; Barbarian_StateScrollTiles - BARBARIAN state: every $3C frames shift 8 map rows at the camera one tile left (redrawing them)
+; In:  8(a6) = this
+; Out: d0
+; Evidence: reached only after $65 taunts (Barbarian_StateTaunt); never runs in the corpus
+; Found: link-after-rts
 ; ---------------------------------------------------------------------------
-sub_0BE4C0:
+Barbarian_StateScrollTiles:
 	link.w	a6,#$0
 	movem.l	d4-d7/a3-a4,-(a7)
 	movea.l	$8(a6),a3
@@ -57,7 +61,7 @@ loc_0BE53A:
 	tst.w	d4
 	bne.s	loc_0BE4D6
 	move.w	#$3C,$6C(a3)
-	lea.l	sub_0BE4C0(pc),a0
+	lea.l	Barbarian_StateScrollTiles(pc),a0
 	move.l	a0,$5C(a3)
 	moveq	#$8,d0
 	and.w	$4(a3),d0

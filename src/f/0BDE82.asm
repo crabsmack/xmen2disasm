@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_0BDE82	[link-after-rts]
+; Barbarian_StateSegmentEnd - BARBARIAN state: reached the end of its segment - idle pose, then idle or leap (mode +$BC)
+; In:  8(a6) = this
+; Out: d0
+; Found: link-after-rts
 ; ---------------------------------------------------------------------------
-sub_0BDE82:
+Barbarian_StateSegmentEnd:
 	link.w	a6,#$0
 	move.l	a4,-(a7)
 	movea.l	$8(a6),a4
@@ -19,21 +22,21 @@ sub_0BDE82:
 	bra.s	loc_0BDEDA
 loc_0BDEB2:
 	clr.w	$6C(a4)
-	lea.l	sub_0BDAC4(pc),a0
+	lea.l	Barbarian_StateIdle(pc),a0
 	move.l	a0,$5C(a4)
 	moveq	#$8,d0
 	and.w	$4(a4),d0
 	bra.s	loc_0BDEEC
 loc_0BDEC6:
 	clr.w	$6C(a4)
-	lea.l	sub_0BE1BA(pc),a0
+	lea.l	Barbarian_StateTryLeap2(pc),a0
 	move.l	a0,$5C(a4)
 	moveq	#$8,d0
 	and.w	$4(a4),d0
 	bra.s	loc_0BDEEC
 loc_0BDEDA:
 	clr.w	$6C(a4)
-	lea.l	sub_0BDAC4(pc),a0
+	lea.l	Barbarian_StateIdle(pc),a0
 	move.l	a0,$5C(a4)
 	moveq	#$8,d0
 	and.w	$4(a4),d0

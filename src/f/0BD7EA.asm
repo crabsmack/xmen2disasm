@@ -1,7 +1,11 @@
 ; ---------------------------------------------------------------------------
-; sub_0BD7EA	[link-after-rts]
+; Barbarian_TargetPlayer - BARBARIAN: if a live player stands on one of its neighbour segments, target that player (+$A2, segment +$AA, position +$9E/+$A0)
+; In:  8(a6) = this, $C(a6) = player
+; Out: d0 = 1 when targeted
+; Evidence: callers Barbarian_StateWatchP1/P2; TAS 27995-33090
+; Found: link-after-rts
 ; ---------------------------------------------------------------------------
-sub_0BD7EA:
+Barbarian_TargetPlayer:
 	link.w	a6,#$FFFC
 	movem.l	d3/d6-d7/a3-a4,-(a7)
 	movea.l	$C(a6),a3
@@ -50,7 +54,7 @@ loc_0BD82A:
 	move.l	d0,-(a7)
 	move.l	-$4(a6),-(a7)
 	move.l	a4,-(a7)
-	jsr	sub_0BD79A(pc)
+	jsr	Barbarian_StepTargetX(pc)
 	moveq	#$1,d0
 	lea.l	$C(a7),a7
 	bra.s	loc_0BD88A

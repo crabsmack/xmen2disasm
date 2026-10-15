@@ -1,7 +1,11 @@
 ; ---------------------------------------------------------------------------
-; sub_0BE2CE	[link-after-rts]
+; Barbarian_StateAttack - BARBARIAN state: attack (sound $AC) - cycle through five attack animations (+$BE)
+; In:  8(a6) = this
+; Out: d0
+; Evidence: 5-case switch -> Barbarian_StateAttack0..4; TAS 28451-33093
+; Found: link-after-rts
 ; ---------------------------------------------------------------------------
-sub_0BE2CE:
+Barbarian_StateAttack:
 	link.w	a6,#$0
 	move.l	a4,-(a7)
 	movea.l	$8(a6),a4
@@ -13,7 +17,7 @@ sub_0BE2CE:
 	move.b	$BE(a4),d0
 	cmpi.b	#$4,d0
 	addq.w	#$8,a7
-	bhi.s	loc_0BE310
+	bhi.s	Barbarian_StateAttack_Reset
 	moveq	#$0,d1
 	move.b	d0,d1
 	add.w	d1,d1

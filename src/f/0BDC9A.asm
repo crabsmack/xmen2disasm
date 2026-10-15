@@ -1,7 +1,11 @@
 ; ---------------------------------------------------------------------------
-; sub_0BDC9A	[link-after-rts]
+; Barbarian_StateEngage - BARBARIAN state: face the target; approach on the same segment, else leap across
+; In:  8(a6) = this
+; Out: d0
+; Evidence: +6 |= $1000; next Barbarian_StateApproach or Barbarian_StateTryLeap; TAS 28048-33091
+; Found: link-after-rts
 ; ---------------------------------------------------------------------------
-sub_0BDC9A:
+Barbarian_StateEngage:
 	link.w	a6,#$0
 	move.l	a4,-(a7)
 	movea.l	$8(a6),a4
@@ -19,14 +23,14 @@ loc_0BDCC6:
 	cmp.l	$76(a4),d0
 	bne.s	loc_0BDCE4
 	clr.w	$6C(a4)
-	lea.l	sub_0BDCFE(pc),a0
+	lea.l	Barbarian_StateApproach(pc),a0
 	move.l	a0,$5C(a4)
 	moveq	#$8,d0
 	and.w	$4(a4),d0
 	bra.s	loc_0BDCF6
 loc_0BDCE4:
 	clr.w	$6C(a4)
-	lea.l	sub_0BDF50(pc),a0
+	lea.l	Barbarian_StateTryLeap(pc),a0
 	move.l	a0,$5C(a4)
 	moveq	#$8,d0
 	and.w	$4(a4),d0

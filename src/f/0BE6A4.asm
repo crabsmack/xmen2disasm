@@ -1,7 +1,6 @@
 ; ---------------------------------------------------------------------------
-; Barbarian_Init - vtable +$12 constructor: run the parent's Init, then set up a BARBARIAN
-; In:  8(a6) = this, $C(a6) = long x, $10(a6) = long y (8 fraction bits), $14(a6) = spawn parameter
-; Evidence: slot +$12 of the BARBARIAN descriptor $0BE74E; TAS frames 27990-32925 (39 frames active); calls parent BIONPC slot +$12; state handler(s) put in +$5C: sub_0BDA66
+; Barbarian_Init - vtable +$12 constructor: stats $0BD42E, sprite set $0CC87E, walk speed +$98 (900 or placement +6), find its platforms
+; Evidence: Barbarian_FindPlatforms; first state Barbarian_StateStart; TAS 27990-32925
 ; ---------------------------------------------------------------------------
 Barbarian_Init:
 	link.w	a6,#$0
@@ -43,10 +42,10 @@ Barbarian_Init:
 loc_0BE726:
 	move.l	a3,-(a7)
 	move.l	a4,-(a7)
-	jsr	sub_0BD54A(pc)
+	jsr	Barbarian_FindPlatforms(pc)
 	clr.b	$BF(a4)
 	clr.b	$C0(a4)
-	lea.l	sub_0BDA66(pc),a0
+	lea.l	Barbarian_StateStart(pc),a0
 	move.l	a0,$5C(a4)
 	clr.b	$BB(a4)
 	addq.w	#$8,a7
