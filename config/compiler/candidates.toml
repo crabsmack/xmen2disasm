@@ -1,0 +1,178 @@
+# Phase 3 compiler candidates (criterion C1; docs/phases/P3-compiler.md, docs/COMPILER.md).
+# Toolchains live outside the repo under $XMEN2_TOOLCHAINS (default ..\xmen2-toolchains),
+# one folder per candidate `root`; $XMEN2_TOOLCHAINS/SOURCES.md records where each came from.
+# Never commit them.
+#
+#   status      obtained | unavailable (unavailable says what was searched)
+#   root        folder under $XMEN2_TOOLCHAINS
+#   compiler    MPW tool under root, run headless with mps (tools/cc.py); absent = libraries only
+#                 (THINK C, Symantec C++ and CodeWarrior compilers are GUI IDEs, not MPW tools)
+#   libs        library globs under root (MacBinary .bin as downloaded: data fork read for mpw)
+#   lib_format  mpw (MPW .o, parsed by tools/mpwobj.py) | raw (byte search; formats we don't parse)
+#   cvers       the CVers= string the compiler writes into its objects
+
+# --- MPW C (Apple) -------------------------------------------------------------------------
+
+[[candidate]]
+id = "mpw-c-3.1"
+family = "mpw-c"
+version = "MPW C 3.1 (MPW 3.1, 1990)"
+status = "obtained"
+source = "discmaster.textfiles.com: 'ETO Development Tools 4.iso' /Tools - Objects/Macintosh Programmer’s Workshop/MPW 3.1/MPW"
+root = "mpw-c-3.1"
+compiler = "Tools/C"
+libs = ["raw/Libraries/**/*.o.bin"]
+lib_format = "mpw"
+mismatch = "BanimazaDoor_PushCallback ($039D24) compiles to 0xC2 bytes with 177 differing (sp-relative arguments, other register use): code generator predates the ROM's"
+
+[[candidate]]
+id = "mpw-c-3.2"
+family = "mpw-c"
+version = "MPW C 3.2 (MPW 3.2, tools dated 1991-04-17)"
+cvers = "3.2"
+status = "obtained"
+source = "discmaster.textfiles.com: 'ETO Development Tools 4.iso' /Tools - Objects/Macintosh Programmer’s Workshop/MPW 3.2/MPW"
+root = "mpw-c-3.2"
+compiler = "Tools/C"
+libs = ["raw/Libraries/**/*.o.bin"]
+lib_format = "mpw"
+
+[[candidate]]
+id = "mpw-c-3.2.4"
+family = "mpw-c"
+version = "MPW C 3.2.4 (folder 'MPW 3.2.3', E.T.O. #13 Dec 1993)"
+cvers = "3.2.4"
+status = "obtained"
+source = "archive.org/details/E.T.O.10Feb93.toast: 'E.T.O. #13 Dec 93.toast.sit' /Tools - Objects/MPW/MPW 3.2.3•/MPW"
+root = "mpw-c-3.2.4"
+compiler = "Tools/C"
+libs = ["raw/Libraries/**/*.o.bin"]
+lib_format = "mpw"
+
+[[candidate]]
+id = "mpw-c-3.3.2"
+family = "mpw-c"
+version = "MPW C 3.3.2 (folder 'Latest MPW', E.T.O. #13 Dec 1993)"
+cvers = "3.3.2"
+status = "obtained"
+source = "archive.org/details/E.T.O.10Feb93.toast: 'E.T.O. #13 Dec 93.toast.sit' /Tools - Objects/MPW/Latest MPW/MPW"
+root = "mpw-c-3.3.2"
+compiler = "Tools/C"
+libs = ["raw/Libraries/**/*.o.bin"]
+lib_format = "mpw"
+
+[[candidate]]
+id = "mpw-c-3.3.3"
+family = "mpw-c"
+version = "MPW C 3.3.3 (folder 'Latest MPW', E.T.O. #14 Apr 1994; #15 Jul 1994 has the same version)"
+cvers = "3.3.3"
+status = "obtained"
+source = "archive.org/details/E.T.O.10Feb93.toast: 'E.T.O. #14 Apr 94.toast.sit' /Tools - Objects/MPW/Latest MPW/MPW"
+root = "mpw-c-3.3.3"
+compiler = "Tools/C"
+libs = ["raw/Libraries/**/*.o.bin"]
+lib_format = "mpw"
+
+[[candidate]]
+id = "mpw-c-3.4d1"
+family = "mpw-c"
+version = "MPW C 3.4d1 (prerelease, tool dated 1994-04-19; E.T.O. #14/#15 'Prerelease MPW'), MPW libraries of July 1994"
+cvers = "3.4d1"
+status = "obtained"
+source = "discmaster.textfiles.com: DoomMacSource.iso /DOOM II 1.0 7.14.95/MPW (id Software's Mac DOOM II build tree): Tools/C, Libraries/"
+root = "mpw-c-3.4d1"
+compiler = "Tools/C"
+libs = ["raw/Libraries/**/*.o.bin"]
+lib_format = "mpw"
+
+# --- Symantec C/C++ for MPW (SC) -----------------------------------------------------------
+
+[[candidate]]
+id = "mpw-sc-6.0.1"
+family = "mpw-sc"
+version = "Symantec C/C++ for MPW 6.0.1 (E.T.O. #13 Dec 1993)"
+cvers = "SC6.0.1"
+status = "obtained"
+source = "archive.org/details/E.T.O.10Feb93.toast: 'E.T.O. #13 Dec 93.toast.sit' /Tools - Objects/Symantec Tools/Symantec C/C++ for MPW/SCBin; libraries: the same disc's /Tools - Objects/MPW/Latest MPW/MPW/Libraries (SC links with MPW's)"
+root = "mpw-sc-6.0.1"
+compiler = "Tools/SC"
+libs = ["raw/Libraries/**/*.o.bin"]
+lib_format = "mpw"
+mismatch = "BanimazaDoor_PushCallback ($039D24): 0xAC bytes, 149 differ; SC passes short arguments as 2-byte slots and saves registers with movem.l (a7)+, the ROM uses 4-byte slots (cmp.w $A(a6)) and frame-relative restores"
+
+[[candidate]]
+id = "mpw-sc-7.0.3"
+family = "mpw-sc"
+version = "Symantec C/C++ for MPW 7.0.3 (E.T.O. #15 Jul 1994)"
+cvers = "C Compiler7.0.3"
+status = "obtained"
+source = "archive.org/details/E.T.O.10Feb93.toast: 'E.T.O. #15 Jul 94.toast.sit' /Tools - Objects/Symantec C/C++ for MPW/Symantec C/C++ for MPW 7.0.3/SCBin; libraries: the same disc's /Tools - Objects/MPW/Latest MPW/MPW/Libraries"
+root = "mpw-sc-7.0.3"
+compiler = "Tools/SC"
+libs = ["raw/Libraries/**/*.o.bin"]
+lib_format = "mpw"
+mismatch = "BanimazaDoor_PushCallback ($039D24): 0xAC bytes, 149 differ (same calling convention as SC 6: 2-byte short arguments, movem.l (a7)+ restores)"
+
+[[candidate]]
+id = "mpw-sc-8.0.1"
+family = "mpw-sc"
+version = "Symantec SC 8.0.1 for MPW (tool dated 1995-03-21), MPW libraries of 1995"
+cvers = "C Compiler8.0.1"
+status = "obtained"
+source = "discmaster.textfiles.com: DoomMacSource.iso /MPW (1995 MPW, MPW Shell 1995-05-02): Tools/SC, Libraries/"
+root = "mpw-sc-8.0.1"
+compiler = "Tools/SC"
+libs = ["raw/Libraries/**/*.o.bin"]
+lib_format = "mpw"
+mismatch = "BanimazaDoor_PushCallback ($039D24): 0xAC bytes, 149 differ (2-byte short arguments, movem.l (a7)+ restores); 1995 Runtime.o math modules differ from the ROM's"
+
+[[candidate]]
+id = "mpw-sc-8.8.4"
+family = "mpw-sc"
+version = "SC 8.8.4 (MPW 3.5 Golden Master, 1999)"
+cvers = "C Compiler8.8.4"
+status = "obtained"
+source = "MPW-GM.img.bin from ftp.apple.com mirrors (installed by `mps -install`, SHA-256 checked)"
+root = "mpw-gm/MPW"
+compiler = "Tools/SC"
+libs = ["Libraries/**/*.o"]
+lib_format = "mpw"
+mismatch = "BanimazaDoor_PushCallback ($039D24): 0xB4 bytes, 159 differ; 1999 Runtime.o math modules differ from the ROM's"
+
+# --- THINK C / Symantec C++ (THINK Project Manager IDE) --------------------------------------
+
+[[candidate]]
+id = "think-c-5.0.2"
+family = "think-c"
+version = "THINK C 5.0.2 (1991)"
+status = "obtained"
+source = "macintoshgarden.org/apps/think-c: think_c_5-0-2.zip (4 Disk Copy 4.2 floppies); libraries from 'Headers & Libs.sea'"
+root = "think-c-5"
+libs = ["libs/**/*.rsrc"]
+lib_format = "raw"
+mismatch = "library fingerprint: ANSI memcpy/memset differ from the ROM's, the ROM's MPW Runtime.o math modules are absent (THINK C has its own runtime); compiler is a GUI IDE, the ROM's library is MPW's"
+
+[[candidate]]
+id = "symantec-cpp-7.0.3"
+family = "symantec-cpp"
+version = "Symantec C++ for Macintosh 7.0.3 (THINK Project Manager, E.T.O. #15 Jul 1994)"
+status = "obtained"
+source = "archive.org/details/E.T.O.10Feb93.toast: 'E.T.O. #15 Jul 94.toast.sit' /Tools - Objects/Symantec C++ for Mac 7.0.3"
+root = "symantec-cpp-7.0.3"
+libs = ["raw/Development/Symantec C++ for Macintosh/Standard Libraries/*.bin",
+        "raw/Development/Symantec C++ for Macintosh/Mac Libraries/*.bin"]
+lib_format = "raw"
+mismatch = "library fingerprint: no ROM library routine in its ANSI/MacTraps libraries; its compiler is the same Symantec code generator as SC (see mpw-sc-7.0.3), which does not match the ROM's calling convention"
+
+# --- Metrowerks CodeWarrior 68K -----------------------------------------------------------
+
+[[candidate]]
+id = "codewarrior-7"
+family = "codewarrior-68k"
+version = "Metrowerks CodeWarrior 7 (CodeWarrior IDE 1.3, 1995)"
+status = "obtained"
+source = "discmaster.textfiles.com: DoomMacSource.iso /CW7/Metrowerks CodeWarrior/MacOS Support/Libraries (ANSI 68K, MacOS 68K, Runtime)"
+root = "codewarrior-7"
+libs = ["raw/Libraries/**/*.bin"]
+lib_format = "raw"
+mismatch = "library fingerprint: memcpy and some math found only in CW's 'MPW ANSI' libraries, which are repackaged Apple MPW StdCLib/Runtime code; CW's own MSL/runtime routines differ; CW's 68K compiler is a GUI IDE"
