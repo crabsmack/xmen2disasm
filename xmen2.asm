@@ -1000,11 +1000,11 @@ Tbl_ApocalypseInit:	; format not established; never read in the corpus; jt[313] 
 	incrom	$04B144,$40
 	incrom	$04B184,$2
 	include "src/f/04B186.asm"
-Str_Empty_04B19E:	; C string "" (used by jt[315])
+Tbl_AiScript_04B19E:	; word $0000 (2 bytes), not a string: reached only via jt[315] used by sub_04B6EA -> AiScript_Set (e.g. an empty list/script count)
 	incrom	$04B19E,$1
 	incrom	$04B19F,$1
 	include "src/f/04B1A0.asm"
-Str_Empty_04B1A4:	; C string "" (used by jt[316])
+Tbl_AiScript_04B1A4:	; word $0000 (2 bytes), not a string: reached only via jt[316] used by sub_04B848 -> AiScript_Set (e.g. an empty list/script count)
 	incrom	$04B1A4,$1
 	incrom	$04B1A5,$1
 	include "src/f/04B1A6.asm"
@@ -2272,7 +2272,7 @@ Tbl_XCloneCopy2:	; table read by Mem_Copy; 20 of 20 bytes used at runtime; read 
 Tbl_XCloneActClearAnim:	; table read by BioBalls_ActClearAnim; 2 of 2 bytes used at runtime; read by BioBalls_ActClearAnim, Mem_Copy; jt[808] used by XClone_ActBecomeBalls, XClone_ActOpenBioBalls, XClone_StatePodOpen
 	incrom	$09A1A8,$2
 	include "src/f/09A1AA.asm"
-Str_Empty_09A1AE:	; C string "" (used by jt[809])
+Tbl_XCloneAiScript_09A1AE:	; word $0000 (2 bytes), not a string: reached only via jt[809] used by XClone_ActUnhittableScript -> AiScript_Set (e.g. an empty list/script count)
 	incrom	$09A1AE,$1
 Tbl_XCloneStateWaitChild:	; table read by XClone_StateWaitChild; 1 of 1 bytes used at runtime; read by XClone_StateWaitChild
 	incrom	$09A1AF,$1
@@ -2711,11 +2711,11 @@ Tbl_SavageMediumBioAiScript:	; data handed to AiScript_Set (format not establish
 	incrom	$0B7E12,$1A
 	incrom	$0B7E2C,$2
 	include "src/f/0B7E2E.asm"
-Str_Empty_0B7E46:	; C string "" (used by jt[965])
+Tbl_SavageBigBioAiScript_0B7E46:	; word $0000 (2 bytes), not a string: reached only via jt[965] used by SavageBigBio_Init -> AiScript_Set (e.g. an empty list/script count)
 	incrom	$0B7E46,$1
 	incrom	$0B7E47,$1
 	include "src/f/0B7E48.asm"
-Str_Empty_0B7E54:	; C string "" (used by jt[966])
+Tbl_SavageBioAiScript_0B7E54:	; word $0000 (2 bytes), not a string: reached only via jt[966] used by SavageBio_ActScript2052 -> AiScript_Set (e.g. an empty list/script count)
 	incrom	$0B7E54,$1
 Tbl_SavageBioStateExtend10:	; table read by SavageBio_StateExtend10; 1 of 1 bytes used at runtime; read by SavageBio_StateExtend10
 	incrom	$0B7E55,$1
@@ -3378,16 +3378,16 @@ Art_SentinelsA1Spr25:	; sprite definition (type $19, Nemesis-compressed tiles): 
 Tbl_Hologram_vtable:	; class descriptor "HOLOGRAM": word $6E = name offset, long parent (ACTOR), 26 method pointers, then the class name string
 	incrom	$0EAE16,$78
 	include "src/f/0EAE8E.asm"
-Str_Empty_0EAEFC:	; C string "" (used by jt[1276])
+Tbl_HologramAiScript_0EAEFC:	; word $0000 (2 bytes), not a string: reached only via jt[1276] used by Hologram_Init -> AiScript_Set (e.g. an empty list/script count)
 	incrom	$0EAEFC,$1
 	incrom	$0EAEFD,$1
 	include "src/f/0EAEFE.asm"
-Str_Empty_0EAF02:	; C string "" (used by jt[1277])
+Tbl_HologramAiScript_0EAF02:	; word $0000 (2 bytes), not a string: reached only via jt[1277] used by Hologram_StartDyingScript -> AiScript_Set (e.g. an empty list/script count)
 	incrom	$0EAF02,$1
 Tbl_HologramSeqA_Pose0:	; table read by Hologram_SeqA_Pose0; 1 of 1 bytes used at runtime; read by Hologram_SeqA_Pose0
 	incrom	$0EAF03,$1
 	include "src/f/0EAF04.asm"
-Str_Empty_0EAF10:	; C string "" (used by jt[1278])
+Tbl_HologramAiScript_0EAF10:	; word $0000 (2 bytes), not a string: reached only via jt[1278] used by Hologram_StartAttackScript -> AiScript_Set (e.g. an empty list/script count)
 	incrom	$0EAF10,$1
 Tbl_HologramActPose0:	; table read by Hologram_ActPose0; 1 of 1 bytes used at runtime; read by Hologram_ActPose0
 	incrom	$0EAF11,$1
@@ -3978,13 +3978,13 @@ Tbl_BabySentinelBActWaitPlayerNear192:	; table read by BabyBio_ActWaitPlayerNear
 	incrom	$11B506,$2
 	include "src/f/11B508.asm"
 	include "src/f/11B524.asm"
-Str_Empty_11B53C:	; C string "" (used by jt[1530])
+Tbl_BabySentinelBAiScript_11B53C:	; word $0000 (2 bytes), not a string: reached only via jt[1530] used by BabySentinelB_Init -> AiScript_Set (e.g. an empty list/script count)
 	incrom	$11B53C,$1
 Tbl_BabySentinelBActPlayAnimD:	; table read by BabyBio_ActPlayAnimD; 1 of 1 bytes used at runtime; read by BabyBio_ActPlayAnimD
 	incrom	$11B53D,$1
 	include "src/f/11B53E.asm"
 	include "src/f/11B552.asm"
-Str_Empty_11B55E:	; C string "" (used by jt[1531])
+Tbl_BabySentinelCAiScript_11B55E:	; word $0000 (2 bytes), not a string: reached only via jt[1531] used by BabySentinelC_Init -> AiScript_Set (e.g. an empty list/script count)
 	incrom	$11B55E,$1
 Tbl_BabySentinelBWaitCrawlLimit:	; table read by BabyBio_WaitCrawlLimit; 1 of 1 bytes used at runtime; read by BabyBio_WaitCrawlLimit
 	incrom	$11B55F,$1
@@ -4011,13 +4011,13 @@ Tbl_FloatBioActNext:	; table read by BabyBio_ActNext; 2 of 2 bytes used at runti
 Tbl_FloatBioActFacePlayer:	; table read by BabyBio_ActFacePlayer; 2 of 2 bytes used at runtime; read by BabyBio_ActFacePlayer; jt[1539] used by FloatBio_Init_Case1
 	incrom	$11B65A,$2
 	include "src/f/11B65C.asm"
-Str_Empty_11B66C:	; C string "" (used by jt[1540])
+Tbl_FloatBioAiScript_11B66C:	; word $0000 (2 bytes), not a string: reached only via jt[1540] used by FloatBio_Init_Case1 -> AiScript_Set (e.g. an empty list/script count)
 	incrom	$11B66C,$1
 Tbl_FloatBioActPlayAnimC:	; table read by BabyBio_ActPlayAnimC; 1 of 1 bytes used at runtime; read by BabyBio_ActPlayAnimC
 	incrom	$11B66D,$1
 	include "src/f/11B66E.asm"
 	include "src/f/11B67E.asm"
-Str_Empty_11B686:	; C string "" (used by jt[1541])
+Tbl_FloatBioAiScript_11B686:	; word $0000 (2 bytes), not a string: reached only via jt[1541] used by FloatBio_Init_Case1 -> AiScript_Set (e.g. an empty list/script count)
 	incrom	$11B686,$1
 Tbl_FloatBioActPlayAnimC2:	; table read by BabyBio_ActPlayAnimC; 1 of 1 bytes used at runtime; read by BabyBio_ActPlayAnimC
 	incrom	$11B687,$1
@@ -4026,7 +4026,7 @@ Tbl_FloatBioActPlayAnimC2:	; table read by BabyBio_ActPlayAnimC; 1 of 1 bytes us
 Tbl_WallCrawlBioActStopFrame11:	; table read by WallCrawlBio_ActStopFrame11; 2 of 2 bytes used at runtime; read by WallCrawlBio_ActStopFrame11; jt[1542] used by WallCrawlBio_Init
 	incrom	$11B6A0,$2
 	include "src/f/11B6A2.asm"
-Str_Empty_11B6AA:	; C string "" (used by jt[1543])
+Tbl_WallCrawlBioAiScript_11B6AA:	; word $0000 (2 bytes), not a string: reached only via jt[1543] used by WallCrawlBio_Init -> AiScript_Set (e.g. an empty list/script count)
 	incrom	$11B6AA,$1
 Tbl_WallCrawlBioActStopFrame0:	; table read by WallCrawlBio_ActStopFrame0; 1 of 1 bytes used at runtime; read by WallCrawlBio_ActStopFrame0
 	incrom	$11B6AB,$1
@@ -4409,15 +4409,15 @@ Tbl_1343FC:	; format not established; never read in the corpus; jt[1752] used by
 Tbl_AiScript_1344D8:	; data handed to AiScript_Set (format not established); never read in the corpus; jt[1754] used by loc_134AE4 -> AiScript_Set
 	incrom	$1344D8,$2
 	include "src/f/1344DA.asm"
-Str_Empty_1344DE:	; C string "" (used by jt[1755])
+Tbl_FlyBroodAiScript_1344DE:	; word $0000 (2 bytes), not a string: reached only via jt[1755] used by FlyBrood_Init_Case1 -> AiScript_Set (e.g. an empty list/script count)
 	incrom	$1344DE,$1
 	incrom	$1344DF,$1
 	include "src/f/1344E0.asm"
-Str_Empty_1344E8:	; C string "" (used by jt[1756])
+Tbl_FlyBroodAiScript_1344E8:	; word $0000 (2 bytes), not a string: reached only via jt[1756] used by FlyBrood_Init_Case1 -> AiScript_Set (e.g. an empty list/script count)
 	incrom	$1344E8,$1
 	incrom	$1344E9,$1
 	include "src/f/1344EA.asm"
-Str_Empty_1344F2:	; C string "" (used by jt[1757])
+Tbl_FlyBroodAiScript_1344F2:	; word $0000 (2 bytes), not a string: reached only via jt[1757] used by FlyBrood_Init_Case1 -> AiScript_Set (e.g. an empty list/script count)
 	incrom	$1344F2,$1
 	incrom	$1344F3,$1
 	include "src/f/1344F4.asm"
@@ -4680,7 +4680,7 @@ Tbl_Anim_13D8B2:	; animation script (byte flags, byte steps, ..., 2-byte steps f
 	incrom	$13D8B2,$A
 	incrom	$13D8BC,$6
 	include "src/f/13D8C2.asm"
-Str_Empty_13D8C6:	; C string "" (used by jt[1873])
+Tbl_AiScript_13D8C6:	; word $0000 (2 bytes), not a string: reached only via jt[1873] used by sub_13D2F4 -> AiScript_Set (e.g. an empty list/script count)
 	incrom	$13D8C6,$1
 	incrom	$13D8C7,$1
 	include "src/f/13D8C8.asm"
@@ -4803,11 +4803,11 @@ Tbl_Anim_14220A:	; animation script (byte flags, byte steps, ..., 2-byte steps f
 	incrom	$14220A,$12
 	incrom	$14221C,$2
 	include "src/f/14221E.asm"
-Str_Empty_14222A:	; C string "" (used by jt[1931])
+Tbl_AiScript_14222A:	; word $0000 (2 bytes), not a string: reached only via jt[1931] used by sub_141DE8 -> AiScript_Set (e.g. an empty list/script count)
 	incrom	$14222A,$1
 	incrom	$14222B,$1
 	include "src/f/14222C.asm"
-Str_Empty_142238:	; C string "" (used by jt[1932])
+Tbl_AiScript_142238:	; word $0000 (2 bytes), not a string: reached only via jt[1932] used by sub_141DA8 -> sub_1F66F0, sub_141F18 -> AiScript_Set (e.g. an empty list/script count)
 	incrom	$142238,$1
 	incrom	$142239,$1
 	include "src/f/14223A.asm"

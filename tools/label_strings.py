@@ -94,8 +94,8 @@ def main() -> int:
             continue
         text = rom[t:t + n].rstrip(b"\0").decode("latin-1")
         # "" only as a whole 2-byte NUL span (a function's lone literal); else >= 3 letters-ish chars
-        if not text and sp != (t, t + 2):
-            continue
+        if not text and (sp != (t, t + 2) or not any(not u.startswith("jt[") for u in refs.get(t, ()))):
+            continue  # a jt-only zero word is data (e.g. a count), not a string literal
         if text and (len(text) < 3 or sum(c.isalnum() for c in text) < max(2, len(text) // 2)):
             continue
         name = name_for(text, t, used)
