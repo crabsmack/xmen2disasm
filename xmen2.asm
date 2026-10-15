@@ -1030,14 +1030,35 @@ Str_SiberiaB1Blizzard:	; C string, resource name looked up by Scene_RegisterAll
 	include "src/f/077848.asm"
 	include "src/f/077988.asm"
 	include "src/f/077CBC.asm"
-	incrom	$077CE0,$9EDA
+	incrom	$077CE0,$9B46
+Tbl_CloneA2ClassList:	; {word $52 bytes; 20 actor class descriptor ptrs} then Pascal name "CloneA2NGClassList"; passed to sub_1F98A8 by CloneA2_LoadLevel (classes.py)
+	incrom	$081826,$6A
+Pal_CloneA2Line0:	; 16 CRAM words: initial palette line 0 (CloneA2_LoadLevel -> g_PalBase)
+	incrom	$081890,$20
+Pal_CloneA2Line2:	; 16 CRAM words: initial palette line 2 (CloneA2_LoadLevel -> g_PalBase+$40)
+	incrom	$0818B0,$20
+Pal_CloneA2Bg3:	; 16 CRAM words: background palette for (g_CameraY>>4)&3 = 3 (CloneA2_BgPalTask)
+	incrom	$0818D0,$20
+Pal_CloneA2Bg2:	; 16 CRAM words: background palette for (g_CameraY>>4)&3 = 2 (CloneA2_BgPalTask)
+	incrom	$0818F0,$20
+Pal_CloneA2Bg1:	; 16 CRAM words: background palette for (g_CameraY>>4)&3 = 1 (CloneA2_BgPalTask)
+	incrom	$081910,$20
+Pal_CloneA2Bg0:	; 16 CRAM words: background palette for (g_CameraY>>4)&3 = 0 (CloneA2_BgPalTask)
+	incrom	$081930,$20
+Tbl_CloneA2CameraZones:	; 12 records of 6 words {min x, min y, max x + 320, max y + 224, quake trigger x, trigger y} (CloneA2_SetCameraZone, CloneA2_FrameHook)
+	incrom	$081950,$90
+Tbl_CloneA2QuakeScript:	; camera shake script: byte pairs (dx, dy) added to the camera, $64 = end (g_CamShake; started by CloneA2_StartQuake, run by sub_088112)
+	incrom	$0819E0,$1D9
+	incrom	$081BB9,$1
 	include "src/f/081BBA.asm"
 	include "src/f/081BC2.asm"
 	include "src/f/081BE6.asm"
 	incrom	$081C72,$C
 	include "src/f/081C7E.asm"
 	include "src/f/081CAC.asm"
-	incrom	$081CC4,$1C
+Tbl_CloneA2FlickerPattern:	; 26 bytes, 1 or 2: colour choice per flicker step, read backwards (CloneA2_FlickerUpdate)
+	incrom	$081CC4,$1A
+	incrom	$081CDE,$2
 	include "src/f/081CE0.asm"
 	include "src/f/081D08.asm"
 	include "src/f/081DD2.asm"

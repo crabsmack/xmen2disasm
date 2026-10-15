@@ -1,14 +1,17 @@
 ; ---------------------------------------------------------------------------
-; sub_081EA6	[link-after-rts]
+; CloneA2_InstallHooks - install the CloneA2 per-frame hooks, load resources, init flicker, place players
+; In:  none
+; Out: none
+; Evidence: -$3402 := jt[$3F22] (sub_15ADEC), -$388E := CloneA2_FrameHook; calls CloneA2_LoadResources, CloneA2_FlickerInit, Players_PlaceAtStart(0,0,0,0); TAS frame 47900
 ; ---------------------------------------------------------------------------
-sub_081EA6:
+CloneA2_InstallHooks:
 	link.w	a6,#$0
 	lea.l	$3F22(a5),a0
 	move.l	a0,-$3402(a5)
-	lea.l	sub_081D08(pc),a0
+	lea.l	CloneA2_FrameHook(pc),a0
 	move.l	a0,-$388E(a5)
-	jsr	sub_081DD2(pc)
-	jsr	sub_081BC2(pc)
+	jsr	CloneA2_LoadResources(pc)
+	jsr	CloneA2_FlickerInit(pc)
 	moveq	#$0,d0
 	move.l	d0,-(a7)
 	move.l	d0,-(a7)

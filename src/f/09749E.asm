@@ -12,7 +12,7 @@ sub_09749E:
 	addq.w	#$4,a7
 	beq.s	loc_0974F8
 	lea.l	$42AA(a5),a0
-	move.l	$2(a0),-$38A4(a5)
+	move.l	$2(a0),g_CamShake(a5)
 	lea.l	$33E2(a5),a0
 	move.l	a0,$A2(a3)
 	move.w	$AA(a3),d0

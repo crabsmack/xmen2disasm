@@ -35,11 +35,11 @@ BrainRocket_Attack:
 	bne.s	loc_133904
 loc_1338F8:
 	lea.l	$3652(a5),a0
-	move.l	$2(a0),-$38A4(a5)
+	move.l	$2(a0),g_CamShake(a5)
 	bra.s	loc_13390E
 loc_133904:
 	lea.l	$3642(a5),a0
-	move.l	$2(a0),-$38A4(a5)
+	move.l	$2(a0),g_CamShake(a5)
 loc_13390E:
 	moveq	#$0,d0
 	move.l	d0,-(a7)

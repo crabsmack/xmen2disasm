@@ -148,6 +148,25 @@ _(module → functions, globals, data; add as you learn them)_
   `CloneA2NGClassList` (`$081826`), `BroodBossHallFGClassList`, `Jungle1NGClassList`.
   Naming convention for overrides: `<Class>_<Slot>` in CamelCase (`DropBomb_Init`,
   `XClone_Update`); no-op overrides `<Class>_Nop66` / `_Nop6A`.
+  Other root classes (no parent, own slot meanings): `CAMERA` `$1F4960` (object in
+  `g_Camera`; +$0A New(desc, hook): the hook is called after every camera update with the
+  camera, +$1C), `LITTLELEG`, `EVILBEAM`, `ELEVATOR`, `ICANDY`, `GAUSSBULLET`, `BBOARD`,
+  `SYNCHRONIZER`.
+- **Scene functions** (registered by name in `sub_0054C6`; prefix = scene id): `CloneA2_RunScene`
+  ('CloneA2 Vertical_Corridor_1') shows the usual shape: empty stubs, `_LoadLevel`
+  (`sub_1F98A8` with map data + `Tbl_<Scene>ClassList`, initial palettes into g_PalBase),
+  `_InstallHooks` (per-frame scene hook into `-$388E(a5)`, resources via `sub_1F62C0`,
+  `Players_PlaceAtStart`), camera creation, tasks, then `sub_0C1478(track)` (music; writes
+  g_MusicTrack), `sub_1FA6FE` (scene loop), `sub_0C14B4`. Scene-local globals in
+  `$FFC6C4-$FFC706` (`-$3B3C..-$3AFA`) are reused with different meanings by each scene:
+  don't give them global names. Tasks: `sub_1F9C92(fn, 1, 0, 0)` creates a task (fn gets the
+  task), `sub_1F9D04` starts it, `sub_1F9D38(task)` ends it. Camera limits: words
+  `-$3A98/-$3A9C` min x/y, `-$3A96/-$3A9A` max x/y (`CloneA2_SetCameraZone`). Screen shake:
+  `g_CamShake` script.
+- **Scene ids in $080000-$0E0000**: CloneA2 ($081BBA-$082244), CloneA5 BroodBoss
+  (`sub_088730`), SavageA2 Perimeter_1 (`sub_0AD91A`), SavageA3 Perimeter_2 (`sub_0B0538`),
+  SavageA4 Chamber (`sub_0B65C6`), SavageC1 Jungle_1 (`sub_0C11CE`), SavageB1 Jungle_2
+  (`sub_0C130A`), SentinelsD1 Exterior_1 (`sub_0DC4AA`).
 - **Players are confirmed** (w000): `g_Player1` = `$FFEAA8` (+$9D = 0), `g_Player2` = `$FFE9B8`
   (+$9D = 1; vtable 0 until P2 joins at TAS frame 49140). Objects are $F0 bytes. Player
   vtable = character class: jt `$2B9A` Beast, `$2BA2` Nightcrawler, `$2BAA` Psylocke, `$2BB2`

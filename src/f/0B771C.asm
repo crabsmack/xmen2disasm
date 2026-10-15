@@ -9,7 +9,7 @@ sub_0B771C:
 	blt.s	loc_0B7762
 	move.l	#$14000,$A6(a4)
 	lea.l	$1DBA(a5),a0
-	move.l	$2(a0),-$38A4(a5)
+	move.l	$2(a0),g_CamShake(a5)
 	clr.w	$1E(a4)
 	clr.l	$16(a4)
 	clr.w	$20(a4)

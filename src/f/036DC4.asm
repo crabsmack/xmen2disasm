@@ -5,7 +5,7 @@ sub_036DC4:
 	link.w	a6,#$0
 	move.l	a4,-(a7)
 	movea.l	$8(a6),a4
-	tst.l	-$38A4(a5)
+	tst.l	g_CamShake(a5)
 	bne.s	loc_036DE8
 	move.w	#$28,$6C(a4)
 	lea.l	sub_036D3C(pc),a0

@@ -47,11 +47,11 @@ BrainRocket_Update:
 	bne.s	loc_13375C
 loc_133750:
 	lea.l	$3652(a5),a0
-	move.l	$2(a0),-$38A4(a5)
+	move.l	$2(a0),g_CamShake(a5)
 	bra.s	loc_133766
 loc_13375C:
 	lea.l	$364A(a5),a0
-	move.l	$2(a0),-$38A4(a5)
+	move.l	$2(a0),g_CamShake(a5)
 loc_133766:
 	moveq	#$0,d0
 	move.l	d0,-(a7)

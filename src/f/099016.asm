@@ -23,7 +23,7 @@ sub_099016:
 	jsr	$1312(a5)	; -> sub_085932
 	lea.l	sub_09984A(pc),a0
 	move.l	a0,-$388E(a5)
-	jsr	$1162(a5)	; -> sub_081BC2
+	jsr	$1162(a5)	; -> CloneA2_FlickerInit
 	moveq	#$1,d0
 	move.l	d0,-(a7)
 	pea.l	sub_098FB6(pc)

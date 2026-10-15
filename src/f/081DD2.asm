@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_081DD2	[link-after-rts]
+; CloneA2_LoadResources - load the two CloneA2 graphics/resource sets into -$1A7E and -$1A88
+; In:  none
+; Out: none
+; Evidence: sub_1F62C0(jt $3982 data, 1) -> -$1A7E, sub_1F62C0(jt $3662 data, 3) -> -$1A88 (same call shape as the actor ClassInit resource loads); called from CloneA2_InstallHooks
 ; ---------------------------------------------------------------------------
-sub_081DD2:
+CloneA2_LoadResources:
 	link.w	a6,#$0
 	moveq	#$1,d0
 	move.l	d0,-(a7)

@@ -8,12 +8,12 @@ sub_085850:
 	movea.l	$8E(a3),a4
 	tst.w	$E(a4)
 	beq.s	loc_08586A
-	jsr	$1172(a5)	; -> sub_08206A
+	jsr	$1172(a5)	; -> CloneA2_StartCamAltMode
 loc_08586A:
 	move.w	$8C(a3),d7
 	ext.l	d7
 	move.l	d7,-(a7)
-	jsr	$117A(a5)	; -> sub_0820AE
+	jsr	$117A(a5)	; -> CloneA2_SetCameraZone
 	moveq	#$0,d7
 	addq.w	#$4,a7
 loc_08587A:

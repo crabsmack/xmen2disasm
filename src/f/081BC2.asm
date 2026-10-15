@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_081BC2	[jt 552]
+; CloneA2_FlickerInit - reset the CloneA2 palette flicker counters
+; In:  none
+; Out: none
+; Evidence: sets -$3B32=2 -$3B3A=$1A (Tbl_CloneA2FlickerPattern length) -$3B34=9 -$3B3C=6 -$3B04=0, the counters CloneA2_FlickerUpdate counts down; jt 552; called from CloneA2_InstallHooks
 ; ---------------------------------------------------------------------------
-sub_081BC2:
+CloneA2_FlickerInit:
 	link.w	a6,#$0
 	move.w	#$2,-$3B32(a5)
 	move.w	#$1A,-$3B3A(a5)

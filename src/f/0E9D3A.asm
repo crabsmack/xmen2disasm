@@ -18,7 +18,7 @@ sub_0E9D3A:
 	movea.l	$9E(a0),a0
 	ori.b	#$40,(a0)
 	lea.l	$263A(a5),a0
-	move.l	$2(a0),-$38A4(a5)
+	move.l	$2(a0),g_CamShake(a5)
 	clr.w	-$397E(a5)
 	clr.l	-$393E(a5)
 	unlk	a6

@@ -4,7 +4,7 @@
 sub_0EB6CE:
 	link.w	a6,#$0
 	lea.l	$2632(a5),a0
-	move.l	$2(a0),-$38A4(a5)
+	move.l	$2(a0),g_CamShake(a5)
 	jsr	$274A(a5)	; -> sub_0E9C04
 	moveq	#$4,d0
 	move.l	d0,-(a7)

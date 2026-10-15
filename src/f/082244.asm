@@ -1,14 +1,17 @@
 ; ---------------------------------------------------------------------------
-; sub_082244	[jt 557]
+; CloneA2_RunScene - scene function for 'CloneA2 Vertical_Corridor_1': set up the level, run it, stop the music
+; In:  none
+; Out: none
+; Evidence: registered under that name in the scene table (sub_0054C6, jt 557); calls the CloneA2 setup functions, sub_0C1478($5F) (music $5F, writes g_MusicTrack), sub_1FA6FE (scene loop), sub_0C14B4; TAS frame 47751
 ; ---------------------------------------------------------------------------
-sub_082244:
+CloneA2_RunScene:
 	link.w	a6,#$0
-	jsr	sub_0821D4(pc)
-	jsr	sub_081E02(pc)
-	jsr	sub_081EA6(pc)
-	jsr	sub_081FFE(pc)
-	jsr	sub_081F28(pc)
-	jsr	sub_0821E8(pc)
+	jsr	CloneA2_CallEmptyStubs(pc)
+	jsr	CloneA2_LoadLevel(pc)
+	jsr	CloneA2_InstallHooks(pc)
+	jsr	CloneA2_StartBgPalTask(pc)
+	jsr	CloneA2_InitCamera(pc)
+	jsr	CloneA2_StartCamera(pc)
 	jsr	$2E8A(a5)	; -> sub_1190D6
 	moveq	#$5F,d0
 	move.l	d0,-(a7)

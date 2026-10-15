@@ -71,3 +71,4 @@ g_SceneExitTimer = -$359A	; word: frames until the current scene ends, 0 = not e
 g_ActivateHook = -$38F0	; ptr: replaces the scene loop's object-activation pass when set (sub_1FA124, Scene_ClearActivateHook)
 g_SpriteDefs = -$3886	; array of $14-byte sprite-definition records {+0 flag bits, +2 def ptr, +6 word, +8 word} (Obj_SetSpriteDef)
 g_ClassList = -$3900	; ptr: current level class list {word bytes; desc*[]} (ClassList_CallSlot5A/62, sub_1FA7E8)
+g_CamShake = -$38A4	; ptr: camera shake script being played, 0 = none: byte pairs (dx, dy) added to g_CameraX/Y per frame; $64 end, $65 n = back n bytes, $66 x = sub_1F945C(x) (sub_088112); e.g. Tbl_CloneA2QuakeScript

@@ -34,7 +34,7 @@ loc_08739E:
 	addq.w	#$8,a7
 loc_0873D0:
 	lea.l	$14CA(a5),a0
-	move.l	$2(a0),-$38A4(a5)
+	move.l	$2(a0),g_CamShake(a5)
 	movea.l	$96(a4),a0
 	move.w	#$A00,$16(a0)
 	movea.l	$96(a4),a0

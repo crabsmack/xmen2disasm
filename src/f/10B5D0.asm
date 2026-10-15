@@ -33,17 +33,17 @@ loc_10B626:
 	tst.b	$10(a4)
 	beq.s	loc_10B63E
 	moveq	#$0,d0
-	move.l	d0,-$38A4(a5)
+	move.l	d0,g_CamShake(a5)
 	bra.s	loc_10B656
 loc_10B63E:
-	tst.l	-$38A4(a5)
+	tst.l	g_CamShake(a5)
 	bne.s	loc_10B656
 	lea.l	$2A72(a5),a0
-	move.l	$2(a0),-$38A4(a5)
+	move.l	$2(a0),g_CamShake(a5)
 	bra.s	loc_10B656
 loc_10B650:
 	moveq	#$0,d0
-	move.l	d0,-$38A4(a5)
+	move.l	d0,g_CamShake(a5)
 loc_10B656:
 	tst.w	$12(a4)
 	ble.s	loc_10B66A

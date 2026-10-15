@@ -79,7 +79,7 @@ loc_08575E:
 	moveq	#$2,d0
 	cmp.l	d7,d0
 	bgt.s	loc_0856EE
-	jsr	$1182(a5)	; -> sub_082176
+	jsr	$1182(a5)	; -> CloneA2_SetCameraLimitsToMap
 	moveq	#$0,d0
 	move.b	-$5(a6),d0
 	move.l	d0,-(a7)

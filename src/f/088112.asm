@@ -21,36 +21,36 @@ loc_088146:
 	beq.s	loc_088156
 	move.w	-$3B22(a5),g_CameraY(a5)
 loc_088156:
-	tst.l	-$38A4(a5)
+	tst.l	g_CamShake(a5)
 	beq.s	loc_0881D2
-	movea.l	-$38A4(a5),a0
+	movea.l	g_CamShake(a5),a0
 	moveq	#$64,d0
 	cmp.b	(a0),d0
 	bne.s	loc_08816E
 	moveq	#$0,d0
-	move.l	d0,-$38A4(a5)
+	move.l	d0,g_CamShake(a5)
 	bra.s	loc_0881D2
 loc_08816E:
-	movea.l	-$38A4(a5),a0
+	movea.l	g_CamShake(a5),a0
 	moveq	#$65,d0
 	cmp.b	(a0),d0
 	bne.s	loc_088186
 	move.b	$1(a0),d0
 	ext.w	d0
 	ext.l	d0
-	sub.l	d0,-$38A4(a5)
+	sub.l	d0,g_CamShake(a5)
 	bra.s	loc_0881D2
 loc_088186:
-	movea.l	-$38A4(a5),a0
+	movea.l	g_CamShake(a5),a0
 	moveq	#$66,d0
 	cmp.b	(a0),d0
 	bne.s	loc_0881B2
 	move.l	a0,d0
-	addq.l	#$1,-$38A4(a5)
+	addq.l	#$1,g_CamShake(a5)
 	moveq	#$0,d0
 	move.l	d0,-(a7)
-	movea.l	-$38A4(a5),a0
-	addq.l	#$1,-$38A4(a5)
+	movea.l	g_CamShake(a5),a0
+	addq.l	#$1,g_CamShake(a5)
 	move.b	(a0),d1
 	ext.w	d1
 	ext.l	d1
@@ -59,13 +59,13 @@ loc_088186:
 	addq.w	#$8,a7
 	bra.s	loc_0881D2
 loc_0881B2:
-	movea.l	-$38A4(a5),a0
-	addq.l	#$1,-$38A4(a5)
+	movea.l	g_CamShake(a5),a0
+	addq.l	#$1,g_CamShake(a5)
 	move.b	(a0),d0
 	ext.w	d0
 	add.w	d0,g_CameraX(a5)
-	movea.l	-$38A4(a5),a0
-	addq.l	#$1,-$38A4(a5)
+	movea.l	g_CamShake(a5),a0
+	addq.l	#$1,g_CamShake(a5)
 	move.b	(a0),d0
 	ext.w	d0
 	add.w	d0,g_CameraY(a5)

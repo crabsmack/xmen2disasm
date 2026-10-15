@@ -6,7 +6,7 @@ sub_036CCA:
 	move.l	a4,-(a7)
 	movea.l	$8(a6),a4
 	lea.l	$75A(a5),a0
-	move.l	$2(a0),-$38A4(a5)
+	move.l	$2(a0),g_CamShake(a5)
 	moveq	#$0,d0
 	move.l	d0,-(a7)
 	moveq	#$A,d1

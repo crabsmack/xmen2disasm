@@ -64,7 +64,7 @@ loc_182FCC:
 	pea.l	($9A).w
 	jsr	$521A(a5)	; -> Snd_Play
 	lea.l	$42A2(a5),a0
-	move.l	$2(a0),-$38A4(a5)
+	move.l	$2(a0),g_CamShake(a5)
 	lea.l	$C(a7),a7
 	movea.l	-$4(a6),a4
 	unlk	a6

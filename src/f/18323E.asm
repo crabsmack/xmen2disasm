@@ -12,7 +12,7 @@ sub_18323E:
 	pea.l	($99).w
 	jsr	$521A(a5)	; -> Snd_Play
 	lea.l	$42AA(a5),a0
-	move.l	$2(a0),-$38A4(a5)
+	move.l	$2(a0),g_CamShake(a5)
 	addq.w	#$8,a7
 	bra.s	loc_183288
 loc_18326C:
@@ -21,7 +21,7 @@ loc_18326C:
 	pea.l	($97).w
 	jsr	$521A(a5)	; -> Snd_Play
 	lea.l	$42A2(a5),a0
-	move.l	$2(a0),-$38A4(a5)
+	move.l	$2(a0),g_CamShake(a5)
 	addq.w	#$8,a7
 loc_183288:
 	move.w	d7,d0

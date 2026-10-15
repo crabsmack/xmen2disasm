@@ -1,12 +1,15 @@
 ; ---------------------------------------------------------------------------
-; sub_081F28	[link-after-rts]
+; CloneA2_InitCamera - create the CloneA2 camera (CAMERA +$0A New with CloneA2_CamHookNormal) unless g_Camera exists
+; In:  none
+; Out: none
+; Evidence: class descriptor jt[2483] = CAMERA ($1F4960); result stored in g_Camera; TAS frame 47901
 ; ---------------------------------------------------------------------------
-sub_081F28:
+CloneA2_InitCamera:
 	link.w	a6,#$0
-	jsr	sub_081ED4(pc)
+	jsr	CloneA2_EmptyStub2(pc)
 	tst.l	g_Camera(a5)
 	bne.s	loc_081F56
-	pea.l	sub_081EDC(pc)
+	pea.l	CloneA2_CamHookNormal(pc)
 	lea.l	$4DBA(a5),a0
 	move.l	$2(a0),-(a7)
 	lea.l	$4DBA(a5),a0

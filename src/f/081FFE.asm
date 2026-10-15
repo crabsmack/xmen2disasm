@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_081FFE	[link-after-rts]
+; CloneA2_StartBgPalTask - start the CloneA2_BgPalTask task
+; In:  none
+; Out: none
+; Evidence: sub_1F9C92(CloneA2_BgPalTask, 1, 0, 0) creates the task (stores itself at +$10), sub_1F9D04 starts it, -$3B02 := 0; TAS frame 47901
 ; ---------------------------------------------------------------------------
-sub_081FFE:
+CloneA2_StartBgPalTask:
 	link.w	a6,#$0
 	move.l	a4,-(a7)
 	moveq	#$0,d0
@@ -9,7 +12,7 @@ sub_081FFE:
 	move.l	d0,-(a7)
 	moveq	#$1,d1
 	move.l	d1,-(a7)
-	pea.l	sub_081F62(pc)
+	pea.l	CloneA2_BgPalTask(pc)
 	jsr	$4FD2(a5)	; -> Timer_Create
 	movea.l	d0,a4
 	move.l	a4,d0

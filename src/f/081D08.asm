@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_081D08	[link-after-rts]
+; CloneA2_FrameHook - CloneA2 per-frame scene hook: quake trigger check and palette flicker
+; In:  none
+; Out: none
+; Evidence: installed in -$388E(a5) by CloneA2_InstallHooks; if -$3B08 clear and the trigger point (+8/+A) of zone -$3B06 in Tbl_CloneA2CameraZones lies inside the 320x224 view (g_CameraX/Y) calls CloneA2_StartQuake; calls CloneA2_FlickerUpdate (a second time when -$38DE is set, the flag that also makes g_FrameCounter step by 2); TAS 47905-48904 every frame
 ; ---------------------------------------------------------------------------
-sub_081D08:
+CloneA2_FrameHook:
 	link.w	a6,#$0
 	movem.l	d6-d7/a4,-(a7)
 	move.l	g_FrameCounter(a5),d0
@@ -50,13 +53,13 @@ sub_081D08:
 	add.l	#$E0,d0
 	cmp.l	d7,d0
 	ble.s	loc_081D9A
-	jsr	sub_081CE0(pc)
+	jsr	CloneA2_StartQuake(pc)
 loc_081D9A:
 	tst.b	g_PalFadeActive(a5)
 	bne.s	loc_081DAA
 	tst.w	-$3B04(a5)
 	bne.s	loc_081DAA
-	jsr	sub_081BE6(pc)
+	jsr	CloneA2_FlickerUpdate(pc)
 loc_081DAA:
 	tst.b	-$38DE(a5)
 	beq.s	loc_081DC8
@@ -66,7 +69,7 @@ loc_081DAA:
 	bne.s	loc_081DC8
 	tst.w	-$3B04(a5)
 	bne.s	loc_081DC8
-	jsr	sub_081BE6(pc)
+	jsr	CloneA2_FlickerUpdate(pc)
 loc_081DC8:
 	movem.l	-$C(a6),d6-d7/a4
 	unlk	a6

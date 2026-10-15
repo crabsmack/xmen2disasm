@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_081F62	[link-after-rts]
+; CloneA2_BgPalTask - task: swap palette line 2 among four background palettes as the camera scrolls vertically
+; In:  8(a6) = task
+; Out: none
+; Evidence: index = (g_CameraY >> 4) & 3 (changes every 16 px); on change copies jt[546..549] (16 words) to g_PalBase+$40 and sets g_PalBaseDirty; skipped during fades (-$3A02) and -$3B04; started by CloneA2_StartBgPalTask; TAS 47906-48905 every frame
 ; ---------------------------------------------------------------------------
-sub_081F62:
+CloneA2_BgPalTask:
 	link.w	a6,#$0
 	movem.l	d3/d7/a3-a4,-(a7)
 	tst.w	-$3B04(a5)
@@ -19,9 +22,9 @@ sub_081F62:
 	cmp.w	-$3B02(a5),d7
 	beq.s	loc_081FF4
 	move.w	-$3B02(a5),d0
-	bmi.s	loc_081FDA
+	bmi.s	CloneA2_BgPalTask_Copy
 	cmpi.w	#$3,d0
-	bgt.s	loc_081FDA
+	bgt.s	CloneA2_BgPalTask_Copy
 	add.w	d0,d0
 	move.w	$81FAC(pc,d0.w),d0
 	jmp	$81FAA(pc,d0.w)

@@ -125,7 +125,7 @@ loc_09930C:
 	lea.l	$18(a7),a7
 loc_099364:
 	lea.l	$1A2A(a5),a0
-	move.l	$2(a0),-$38A4(a5)
+	move.l	$2(a0),g_CamShake(a5)
 loc_09936E:
 	tst.w	-$3B36(a5)
 	bgt.s	loc_0993B6

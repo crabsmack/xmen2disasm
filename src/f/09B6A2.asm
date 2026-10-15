@@ -61,7 +61,7 @@ loc_09B726:
 	clr.w	$16(a0)
 	movea.l	$96(a4),a0
 	move.l	d0,$92(a0)
-	move.l	d0,-$38A4(a5)
+	move.l	d0,g_CamShake(a5)
 	moveq	#$1,d0
 	move.l	d0,-(a7)
 	move.l	d0,-(a7)

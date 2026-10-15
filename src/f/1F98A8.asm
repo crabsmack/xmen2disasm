@@ -120,7 +120,7 @@ loc_1F99B6:
 	move.l	$8(a6),-(a7)
 	jsr	$4E1A(a5)	; -> sub_1F5788
 	moveq	#$0,d0
-	move.l	d0,-$38A4(a5)
+	move.l	d0,g_CamShake(a5)
 	move.w	-$3A9E(a5),-$3598(a5)
 	move.w	#$2,-$388A(a5)
 	moveq	#$0,d7

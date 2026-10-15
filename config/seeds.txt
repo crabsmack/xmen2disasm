@@ -171,13 +171,13 @@
 0675D6	; loc_0675D6 - runtime: executed in tas
 06D126	; loc_06D126 - runtime: executed in tas
 06D12A	; loc_06D12A - runtime: executed in tas
-081C7E	; loc_081C7E - runtime: executed in tas
+081C7E	; CloneA2_FlickerUpdate_Color15Case0 - runtime: executed in tas
 081C86	; loc_081C86 - runtime: executed in tas
 081C8E	; loc_081C8E - runtime: executed in tas
 081C96	; loc_081C96 - runtime: executed in tas
 081C9E	; loc_081C9E - runtime: executed in tas
 081CA6	; loc_081CA6 - runtime: executed in tas
-081FB4	; loc_081FB4 - runtime: executed in tas
+081FB4	; CloneA2_BgPalTask_Case0 - runtime: executed in tas
 081FBE	; loc_081FBE - runtime: executed in tas
 081FC8	; loc_081FC8 - runtime: executed in tas
 081FD2	; loc_081FD2 - runtime: executed in tas

@@ -7,7 +7,7 @@ sub_036D3C:
 	movea.l	$8(a6),a4
 	clr.b	d7
 	lea.l	$762(a5),a0
-	move.l	$2(a0),-$38A4(a5)
+	move.l	$2(a0),g_CamShake(a5)
 	moveq	#$0,d0
 	move.l	d0,-(a7)
 	moveq	#$A,d1

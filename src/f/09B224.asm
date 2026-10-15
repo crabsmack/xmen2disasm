@@ -139,7 +139,7 @@ loc_09B388:
 	tst.b	d6
 	beq.s	loc_09B3BC
 	lea.l	$14C2(a5),a0
-	move.l	$2(a0),-$38A4(a5)
+	move.l	$2(a0),g_CamShake(a5)
 loc_09B3BC:
 	tst.b	$91(a4)
 	beq.w	loc_09B454

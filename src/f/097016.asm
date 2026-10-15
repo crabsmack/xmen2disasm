@@ -5,7 +5,7 @@ sub_097016:
 	link.w	a6,#$0
 	move.l	a4,-(a7)
 	lea.l	$1A22(a5),a0
-	move.l	$2(a0),-$38A4(a5)
+	move.l	$2(a0),g_CamShake(a5)
 	moveq	#$0,d0
 	move.l	d0,-(a7)
 	move.w	$E(a6),d1

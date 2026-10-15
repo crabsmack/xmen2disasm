@@ -124,7 +124,7 @@ loc_05B7AE:
 	lea.l	$C8A(a5),a0
 	movea.l	$2(a0),a0
 loc_05B7B6:
-	move.l	a0,-$38A4(a5)
+	move.l	a0,g_CamShake(a5)
 	lea.l	$10(a7),a7
 	bra.w	loc_05B950
 loc_05B7C2:
@@ -274,7 +274,7 @@ loc_05B940:
 	lea.l	$C8A(a5),a0
 	movea.l	$2(a0),a0
 loc_05B948:
-	move.l	a0,-$38A4(a5)
+	move.l	a0,g_CamShake(a5)
 	lea.l	$10(a7),a7
 loc_05B950:
 	moveq	#$0,d0

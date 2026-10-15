@@ -32,7 +32,7 @@ loc_0875AE:
 	addq.w	#$8,a7
 loc_0875DC:
 	lea.l	$14CA(a5),a0
-	move.l	$2(a0),-$38A4(a5)
+	move.l	$2(a0),g_CamShake(a5)
 	clr.w	$6C(a4)
 	lea.l	sub_087600(pc),a0
 	move.l	a0,$5C(a4)

@@ -17,7 +17,7 @@ sub_04E81A:
 	move.l	d6,-(a7)
 	jsr	$2CE2(a5)	; -> sub_117802
 	lea.l	$B6A(a5),a0
-	move.l	$2(a0),-$38A4(a5)
+	move.l	$2(a0),g_CamShake(a5)
 	moveq	#$C,d0
 	cmp.w	-$3B0C(a5),d0
 	lea.l	$18(a7),a7
