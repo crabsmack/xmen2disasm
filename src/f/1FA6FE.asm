@@ -10,9 +10,9 @@ Level_Run:
 	moveq	#$0,d0
 	move.l	d0,g_VBlankCount(a5)
 	clr.w	-$3A22(a5)
-	clr.w	-$3A24(a5)
+	clr.w	g_LevelFrame(a5)
 	clr.b	-$38C2(a5)
-	move.w	-$3598(a5),-$3888(a5)
+	move.w	g_VramTileCursor(a5),-$3888(a5)
 	tst.l	g_Camera(a5)
 	bne.s	loc_1FA744
 	moveq	#$0,d0

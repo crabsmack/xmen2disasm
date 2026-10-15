@@ -1,38 +1,41 @@
 ; ---------------------------------------------------------------------------
-; sub_15D988	[jt 2047]
+; Obj_AllocPool - allocate the object pool for a level: pointer table and $C2-byte object storage, with the two player objects in slots 0 and 1
+; In:  8(a6) = word: number of level objects
+; Out: none
+; Evidence: count = n + 2; Mem_StackAlloc(count*4) -> object pointer table g_ObjTable(a5), Mem_StackAlloc(count*$C2) -> storage g_ObjStorage(a5), count word g_ObjCount(a5); table[0] = g_Player1, table[1] = g_Player2, the rest point into the storage; called by Level_Load with its class-init word
 ; ---------------------------------------------------------------------------
-sub_15D988:
+Obj_AllocPool:
 	link.w	a6,#$0
 	movem.l	d7/a3-a4,-(a7)
 	move.w	$A(a6),d7
 	addq.w	#$2,d7
-	pea.l	$15DA36(pc)
+	pea.l	Str_ObjPoolTags+$2(pc)
 	ext.l	d7
 	move.l	d7,d0
 	lsl.l	#$2,d0
 	move.l	d0,-(a7)
 	jsr	$5032(a5)	; -> Mem_StackAlloc
-	move.l	d0,-$34A6(a5)
-	pea.l	$15DA34(pc)
+	move.l	d0,g_ObjTable(a5)
+	pea.l	Str_ObjPoolTags(pc)
 	move.w	#$C2,d0
 	muls.w	d7,d0
 	move.l	d0,-(a7)
 	jsr	$5032(a5)	; -> Mem_StackAlloc
-	move.l	d0,-$13F6(a5)
-	move.w	d7,-$13F2(a5)
+	move.l	d0,g_ObjStorage(a5)
+	move.w	d7,g_ObjCount(a5)
 	lea.l	g_Player1(a5),a0
-	movea.l	-$34A6(a5),a1
+	movea.l	g_ObjTable(a5),a1
 	move.l	a0,(a1)
 	lea.l	g_Player2(a5),a0
-	movea.l	-$34A6(a5),a1
+	movea.l	g_ObjTable(a5),a1
 	move.l	a0,$4(a1)
-	movea.l	-$13F6(a5),a3
+	movea.l	g_ObjStorage(a5),a3
 	moveq	#$2,d7
 	lea.l	$10(a7),a7
 	bra.s	loc_15D9FA
 loc_15D9E4:
 	ext.l	d7
-	movea.l	-$34A6(a5),a0
+	movea.l	g_ObjTable(a5),a0
 	move.l	d7,d0
 	asl.l	#$2,d0
 	move.l	a3,(a0,d0.l)
@@ -40,10 +43,10 @@ loc_15D9E4:
 	addq.w	#$1,d7
 	adda.w	#$C2,a3
 loc_15D9FA:
-	cmp.w	-$13F2(a5),d7
+	cmp.w	g_ObjCount(a5),d7
 	blt.s	loc_15D9E4
 	moveq	#$2,d7
-	movea.l	-$34A6(a5),a0
+	movea.l	g_ObjTable(a5),a0
 	movea.l	$8(a0),a4
 	bra.s	loc_15DA24
 loc_15DA0C:
@@ -52,11 +55,11 @@ loc_15DA0C:
 	addq.w	#$1,d7
 	move.w	d7,d0
 	ext.l	d0
-	movea.l	-$34A6(a5),a0
+	movea.l	g_ObjTable(a5),a0
 	asl.l	#$2,d0
 	movea.l	(a0,d0.l),a4
 loc_15DA24:
-	cmp.w	-$13F2(a5),d7
+	cmp.w	g_ObjCount(a5),d7
 	blt.s	loc_15DA0C
 	movem.l	-$C(a6),d7/a3-a4
 	unlk	a6

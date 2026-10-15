@@ -12,7 +12,7 @@ sub_02690C:
 	move.l	d1,d6
 	lsl.l	#$5,d6
 	moveq	#$2,d7
-	movea.l	-$34A6(a5),a0
+	movea.l	g_ObjTable(a5),a0
 	movea.l	$8(a0),a4
 	bra.s	loc_026996
 loc_026936:
@@ -51,12 +51,12 @@ loc_02697A:
 	movea.l	a4,a3
 loc_026988:
 	addq.l	#$1,d7
-	movea.l	-$34A6(a5),a0
+	movea.l	g_ObjTable(a5),a0
 	move.l	d7,d0
 	asl.l	#$2,d0
 	movea.l	(a0,d0.l),a4
 loc_026996:
-	move.w	-$13F2(a5),d0
+	move.w	g_ObjCount(a5),d0
 	ext.l	d0
 	cmp.l	d7,d0
 	bgt.s	loc_026936

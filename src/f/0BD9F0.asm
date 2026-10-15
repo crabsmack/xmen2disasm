@@ -6,7 +6,7 @@ sub_0BD9F0:
 	movem.l	d7/a3-a4,-(a7)
 	movea.l	$8(a6),a3
 	clr.w	d7
-	movea.l	-$34A6(a5),a0
+	movea.l	g_ObjTable(a5),a0
 	movea.l	(a0),a4
 	bra.s	loc_0BDA56
 loc_0BDA06:
@@ -34,11 +34,11 @@ loc_0BDA46:
 	addq.w	#$1,d7
 	move.w	d7,d0
 	ext.l	d0
-	movea.l	-$34A6(a5),a0
+	movea.l	g_ObjTable(a5),a0
 	asl.l	#$2,d0
 	movea.l	(a0,d0.l),a4
 loc_0BDA56:
-	cmp.w	-$13F2(a5),d7
+	cmp.w	g_ObjCount(a5),d7
 	blt.s	loc_0BDA06
 	movem.l	-$C(a6),d7/a3-a4
 	unlk	a6

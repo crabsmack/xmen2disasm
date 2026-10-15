@@ -21,7 +21,7 @@ Obj_Detach:
 loc_1F6556:
 	moveq	#$0,d0
 	move.b	$3A(a4),d0
-	movea.l	-$34A6(a5),a0
+	movea.l	g_ObjTable(a5),a0
 	asl.l	#$2,d0
 	move.l	(a0,d0.l),d0
 loc_1F6566:
@@ -89,7 +89,7 @@ loc_1F660C:
 	bra.s	loc_1F6634
 loc_1F6626:
 	ext.l	d7
-	movea.l	-$34A6(a5),a0
+	movea.l	g_ObjTable(a5),a0
 	move.l	d7,d0
 	asl.l	#$2,d0
 	move.l	(a0,d0.l),d0
@@ -109,7 +109,7 @@ loc_1F663C:
 	bra.s	loc_1F6664
 loc_1F6656:
 	ext.l	d7
-	movea.l	-$34A6(a5),a0
+	movea.l	g_ObjTable(a5),a0
 	move.l	d7,d0
 	asl.l	#$2,d0
 	move.l	(a0,d0.l),d0

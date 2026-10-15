@@ -229,7 +229,7 @@ loc_0FD436:
 	lea.l	$C(a7),a7
 	beq.s	loc_0FD4D8
 	moveq	#$0,d7
-	movea.l	-$34A6(a5),a0
+	movea.l	g_ObjTable(a5),a0
 	movea.l	(a0),a4
 	bra.s	loc_0FD4C6
 loc_0FD492:
@@ -248,12 +248,12 @@ loc_0FD492:
 	addq.w	#$4,a7
 loc_0FD4B8:
 	addq.l	#$1,d7
-	movea.l	-$34A6(a5),a0
+	movea.l	g_ObjTable(a5),a0
 	move.l	d7,d0
 	asl.l	#$2,d0
 	movea.l	(a0,d0.l),a4
 loc_0FD4C6:
-	move.w	-$13F2(a5),d0
+	move.w	g_ObjCount(a5),d0
 	ext.l	d0
 	cmp.l	d7,d0
 	bgt.s	loc_0FD492

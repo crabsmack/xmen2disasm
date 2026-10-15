@@ -123,7 +123,7 @@ loc_1F4D78:
 	move.w	d0,d1
 	lsl.w	#$2,d0
 	add.w	d1,d0
-	lea.l	-$33D2(a5),a0
+	lea.l	g_Segs(a5),a0
 	lea.l	(a0,d0.w),a4
 	move.l	a4,$76(a3)
 	move.w	$6(a4),d0
@@ -160,7 +160,7 @@ loc_1F4DCA:
 	move.w	d0,d1
 	lsl.w	#$2,d0
 	add.w	d1,d0
-	lea.l	-$33D2(a5),a0
+	lea.l	g_Segs(a5),a0
 	lea.l	(a0,d0.w),a4
 	move.l	a4,$76(a3)
 	bra.s	loc_1F4E0C

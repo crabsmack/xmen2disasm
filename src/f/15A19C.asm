@@ -52,7 +52,7 @@ loc_15A1FC:
 	ext.l	d0
 	lsl.l	#$8,d0
 	move.l	d0,$C(a3)
-	lea.l	-$33D2(a5),a0
+	lea.l	g_Segs(a5),a0
 	moveq	#$0,d0
 	move.b	$11(a4),d0
 	lsl.l	#$2,d0
@@ -80,7 +80,7 @@ loc_15A260:
 	ext.l	d0
 	lsl.l	#$8,d0
 	move.l	d0,$C(a3)
-	lea.l	-$33D2(a5),a0
+	lea.l	g_Segs(a5),a0
 	moveq	#$0,d0
 	move.b	$10(a4),d0
 	lsl.l	#$2,d0
@@ -114,7 +114,7 @@ loc_15A2BA:
 	ext.l	d0
 	lsl.l	#$8,d0
 	move.l	d0,$C(a3)
-	lea.l	-$33D2(a5),a0
+	lea.l	g_Segs(a5),a0
 	moveq	#$0,d0
 	move.b	$11(a4),d0
 	lsl.l	#$2,d0
@@ -142,7 +142,7 @@ loc_15A312:
 	ext.l	d0
 	lsl.l	#$8,d0
 	move.l	d0,$C(a3)
-	lea.l	-$33D2(a5),a0
+	lea.l	g_Segs(a5),a0
 	moveq	#$0,d0
 	move.b	$10(a4),d0
 	lsl.l	#$2,d0
@@ -195,7 +195,7 @@ loc_15A39E:
 	ext.l	d0
 	lsl.l	#$8,d0
 	move.l	d0,$C(a3)
-	lea.l	-$33D2(a5),a0
+	lea.l	g_Segs(a5),a0
 	moveq	#$0,d0
 	move.b	$11(a4),d0
 	lsl.l	#$2,d0
@@ -223,7 +223,7 @@ loc_15A402:
 	ext.l	d0
 	lsl.l	#$8,d0
 	move.l	d0,$C(a3)
-	lea.l	-$33D2(a5),a0
+	lea.l	g_Segs(a5),a0
 	moveq	#$0,d0
 	move.b	$10(a4),d0
 	lsl.l	#$2,d0
@@ -257,7 +257,7 @@ loc_15A45C:
 	ext.l	d0
 	lsl.l	#$8,d0
 	move.l	d0,$C(a3)
-	lea.l	-$33D2(a5),a0
+	lea.l	g_Segs(a5),a0
 	moveq	#$0,d0
 	move.b	$11(a4),d0
 	lsl.l	#$2,d0
@@ -285,7 +285,7 @@ loc_15A4B4:
 	ext.l	d0
 	lsl.l	#$8,d0
 	move.l	d0,$C(a3)
-	lea.l	-$33D2(a5),a0
+	lea.l	g_Segs(a5),a0
 	moveq	#$0,d0
 	move.b	$10(a4),d0
 	lsl.l	#$2,d0
@@ -335,7 +335,7 @@ loc_15A540:
 	ext.l	d0
 	lsl.l	#$8,d0
 	move.l	d0,$C(a3)
-	lea.l	-$33D2(a5),a0
+	lea.l	g_Segs(a5),a0
 	moveq	#$0,d0
 	move.b	$11(a4),d0
 	lsl.l	#$2,d0
@@ -363,7 +363,7 @@ loc_15A598:
 	ext.l	d0
 	lsl.l	#$8,d0
 	move.l	d0,$C(a3)
-	lea.l	-$33D2(a5),a0
+	lea.l	g_Segs(a5),a0
 	moveq	#$0,d0
 	move.b	$10(a4),d0
 	lsl.l	#$2,d0
@@ -413,7 +413,7 @@ loc_15A624:
 	ext.l	d0
 	lsl.l	#$8,d0
 	move.l	d0,$C(a3)
-	lea.l	-$33D2(a5),a0
+	lea.l	g_Segs(a5),a0
 	moveq	#$0,d0
 	move.b	$11(a4),d0
 	lsl.l	#$2,d0
@@ -441,7 +441,7 @@ loc_15A67A:
 	ext.l	d0
 	lsl.l	#$8,d0
 	move.l	d0,$C(a3)
-	lea.l	-$33D2(a5),a0
+	lea.l	g_Segs(a5),a0
 	moveq	#$0,d0
 	move.b	$10(a4),d0
 	lsl.l	#$2,d0

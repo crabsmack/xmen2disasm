@@ -13,7 +13,7 @@ sub_123346:
 	move.l	d0,d1
 	lsl.l	#$2,d0
 	add.l	d1,d0
-	lea.l	-$33D2(a5),a0
+	lea.l	g_Segs(a5),a0
 	pea.l	(a0,d0.w)
 	jsr	$4F22(a5)	; -> Seg_Free
 	move.w	#$C8,g_SceneExitTimer(a5)

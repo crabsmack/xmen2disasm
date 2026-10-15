@@ -82,11 +82,11 @@ loc_141BC4:
 	move.l	d0,d1
 	lsl.l	#$2,d0
 	add.l	d1,d0
-	lea.l	-$33D2(a5),a0
+	lea.l	g_Segs(a5),a0
 	adda.w	d0,a0
 	move.l	a0,-$8(a6)
 	clr.w	d7
-	movea.l	-$34A6(a5),a0
+	movea.l	g_ObjTable(a5),a0
 	movea.l	(a0),a4
 	addq.w	#$8,a7
 	bra.s	loc_141CA6
@@ -109,11 +109,11 @@ loc_141C96:
 	addq.w	#$1,d7
 	move.w	d7,d0
 	ext.l	d0
-	movea.l	-$34A6(a5),a0
+	movea.l	g_ObjTable(a5),a0
 	asl.l	#$2,d0
 	movea.l	(a0,d0.l),a4
 loc_141CA6:
-	cmp.w	-$13F2(a5),d7
+	cmp.w	g_ObjCount(a5),d7
 	blt.s	loc_141C6C
 	andi.w	#$FDFF,$6(a3)
 loc_141CB2:

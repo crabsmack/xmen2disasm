@@ -55,27 +55,27 @@ loc_03A358:
 	cmpi.l	#$E0,d7
 	bge.s	loc_03A3CE
 	lea.l	g_SpriteTable(a5),a0
-	movea.l	-$1FE6(a5),a1
+	movea.l	g_SprWritePtr(a5),a1
 	move.b	$3(a1),d0
 	ext.w	d0
-	move.w	d0,-$1FE2(a5)
+	move.w	d0,g_SprIndex(a5)
 	ext.l	d0
 	asl.l	#$3,d0
 	add.l	a0,d0
-	move.l	d0,-$1FE6(a5)
+	move.l	d0,g_SprWritePtr(a5)
 	move.w	d7,d0
 	add.w	#$80,d0
-	movea.l	-$1FE6(a5),a0
+	movea.l	g_SprWritePtr(a5),a0
 	move.w	d0,(a0)
-	movea.l	-$1FE6(a5),a0
+	movea.l	g_SprWritePtr(a5),a0
 	move.b	#$F,$2(a0)
 	move.w	d4,d0
 	add.w	-$2(a6),d0
-	movea.l	-$1FE6(a5),a0
+	movea.l	g_SprWritePtr(a5),a0
 	move.w	d0,$4(a0)
 	move.w	d6,d0
 	add.w	#$80,d0
-	movea.l	-$1FE6(a5),a0
+	movea.l	g_SprWritePtr(a5),a0
 	move.w	d0,$6(a0)
 loc_03A3CE:
 	moveq	#$20,d0
@@ -110,27 +110,27 @@ loc_03A3F2:
 	cmpi.l	#$E0,d7
 	bge.s	loc_03A468
 	lea.l	g_SpriteTable(a5),a0
-	movea.l	-$1FE6(a5),a1
+	movea.l	g_SprWritePtr(a5),a1
 	move.b	$3(a1),d0
 	ext.w	d0
-	move.w	d0,-$1FE2(a5)
+	move.w	d0,g_SprIndex(a5)
 	ext.l	d0
 	asl.l	#$3,d0
 	add.l	a0,d0
-	move.l	d0,-$1FE6(a5)
+	move.l	d0,g_SprWritePtr(a5)
 	move.w	d7,d0
 	add.w	#$80,d0
-	movea.l	-$1FE6(a5),a0
+	movea.l	g_SprWritePtr(a5),a0
 	move.w	d0,(a0)
-	movea.l	-$1FE6(a5),a0
+	movea.l	g_SprWritePtr(a5),a0
 	move.b	#$D,$2(a0)
 	move.w	d4,d0
 	add.w	-$2(a6),d0
-	movea.l	-$1FE6(a5),a0
+	movea.l	g_SprWritePtr(a5),a0
 	move.w	d0,$4(a0)
 	move.w	d6,d0
 	add.w	#$80,d0
-	movea.l	-$1FE6(a5),a0
+	movea.l	g_SprWritePtr(a5),a0
 	move.w	d0,$6(a0)
 loc_03A468:
 	moveq	#$10,d0
@@ -149,27 +149,27 @@ loc_03A468:
 	cmpi.l	#$E0,d7
 	bge.s	loc_03A4E4
 	lea.l	g_SpriteTable(a5),a0
-	movea.l	-$1FE6(a5),a1
+	movea.l	g_SprWritePtr(a5),a1
 	move.b	$3(a1),d0
 	ext.w	d0
-	move.w	d0,-$1FE2(a5)
+	move.w	d0,g_SprIndex(a5)
 	ext.l	d0
 	asl.l	#$3,d0
 	add.l	a0,d0
-	move.l	d0,-$1FE6(a5)
+	move.l	d0,g_SprWritePtr(a5)
 	move.w	d7,d0
 	add.w	#$80,d0
-	movea.l	-$1FE6(a5),a0
+	movea.l	g_SprWritePtr(a5),a0
 	move.w	d0,(a0)
-	movea.l	-$1FE6(a5),a0
+	movea.l	g_SprWritePtr(a5),a0
 	move.b	#$D,$2(a0)
 	move.w	d4,d0
 	add.w	-$2(a6),d0
-	movea.l	-$1FE6(a5),a0
+	movea.l	g_SprWritePtr(a5),a0
 	move.w	d0,$4(a0)
 	move.w	d6,d0
 	add.w	#$80,d0
-	movea.l	-$1FE6(a5),a0
+	movea.l	g_SprWritePtr(a5),a0
 	move.w	d0,$6(a0)
 loc_03A4E4:
 	movem.l	-$1C(a6),d3-d7/a4

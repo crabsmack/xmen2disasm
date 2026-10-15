@@ -11,21 +11,21 @@ Cerebro_RunTextScript:
 	move.w	#$2,-$3B02(a5)
 	jsr	$504A(a5)	; -> Spr_BeginFrame
 	lea.l	g_SpriteTable(a5),a0
-	movea.l	-$1FE6(a5),a1
+	movea.l	g_SprWritePtr(a5),a1
 	move.b	$3(a1),d0
 	ext.w	d0
-	move.w	d0,-$1FE2(a5)
+	move.w	d0,g_SprIndex(a5)
 	ext.l	d0
 	asl.l	#$3,d0
 	add.l	a0,d0
-	move.l	d0,-$1FE6(a5)
+	move.l	d0,g_SprWritePtr(a5)
 	movea.l	d0,a0
 	move.w	#$1C,(a0)
-	movea.l	-$1FE6(a5),a0
+	movea.l	g_SprWritePtr(a5),a0
 	clr.b	$2(a0)
-	movea.l	-$1FE6(a5),a0
+	movea.l	g_SprWritePtr(a5),a0
 	clr.w	$4(a0)
-	movea.l	-$1FE6(a5),a0
+	movea.l	g_SprWritePtr(a5),a0
 	move.w	#$1C,$6(a0)
 	jsr	$5052(a5)	; -> Spr_EndFrame
 	move.b	#$1,g_DmaFlushReq(a5)

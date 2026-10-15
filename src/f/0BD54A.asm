@@ -21,7 +21,7 @@ loc_0BD564:
 	movea.l	$8(a6),a0
 	moveq	#$0,d0
 	move.l	d0,$A6(a0)
-	lea.l	-$33D2(a5),a3
+	lea.l	g_Segs(a5),a3
 	moveq	#$0,d7
 	bra.s	loc_0BD5C4
 loc_0BD58C:
@@ -48,7 +48,7 @@ loc_0BD5BC:
 	addq.l	#$1,d7
 	lea.l	$14(a3),a3
 loc_0BD5C4:
-	move.w	-$3474(a5),d0
+	move.w	g_SegHighWater(a5),d0
 	ext.l	d0
 	cmp.l	d7,d0
 	bge.s	loc_0BD58C
@@ -62,7 +62,7 @@ loc_0BD5CE:
 	moveq	#$0,d6
 	movea.l	$8(a6),a0
 	move.l	a3,$A6(a0)
-	lea.l	-$33D2(a5),a4
+	lea.l	g_Segs(a5),a4
 	moveq	#$0,d7
 	bra.w	loc_0BD6CC
 loc_0BD5FC:
@@ -151,7 +151,7 @@ loc_0BD6C4:
 	addq.l	#$1,d7
 	lea.l	$14(a4),a4
 loc_0BD6CC:
-	move.w	-$3474(a5),d0
+	move.w	g_SegHighWater(a5),d0
 	ext.l	d0
 	cmp.l	d7,d0
 	bge.w	loc_0BD5FC

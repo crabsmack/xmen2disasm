@@ -16,7 +16,7 @@ sub_02DDDC:
 	move.l	d0,d1
 	lsl.l	#$2,d0
 	add.l	d1,d0
-	lea.l	-$33D2(a5),a0
+	lea.l	g_Segs(a5),a0
 	lea.l	(a0,d0.w),a3
 	movea.l	-$3CB8(a5),a0
 	moveq	#$0,d0
@@ -26,7 +26,7 @@ sub_02DDDC:
 	move.l	d0,d1
 	lsl.l	#$2,d0
 	add.l	d1,d0
-	lea.l	-$33D2(a5),a0
+	lea.l	g_Segs(a5),a0
 	lea.l	(a0,d0.w),a4
 	movea.l	-$3CB8(a5),a0
 	cmp.b	$A0(a0),d7

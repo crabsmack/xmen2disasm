@@ -19,7 +19,7 @@ loc_1F678E:
 	bra.s	loc_1F67AA
 loc_1F679C:
 	ext.l	d7
-	movea.l	-$34A6(a5),a0
+	movea.l	g_ObjTable(a5),a0
 	move.l	d7,d0
 	asl.l	#$2,d0
 	move.l	(a0,d0.l),d0

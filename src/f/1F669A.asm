@@ -2,7 +2,7 @@
 ; Obj_ForEachChild - call func(parent, child) for each object attached to a parent
 ; In:  8(a6) = parent object   $C(a6) = func(parent, child)
 ; Out: none
-; Evidence: first child index = parent+$3B, next = child+$3C ($FF ends); index into the object pointer table at -$34A6(a5); used recursively by Obj_ShiftTree and Obj_InheritLayer
+; Evidence: first child index = parent+$3B, next = child+$3C ($FF ends); index into the object pointer table at g_ObjTable(a5); used recursively by Obj_ShiftTree and Obj_InheritLayer
 ; ---------------------------------------------------------------------------
 Obj_ForEachChild:
 	link.w	a6,#$0
@@ -21,7 +21,7 @@ loc_1F66B0:
 	bra.s	loc_1F66CC
 loc_1F66BE:
 	ext.l	d7
-	movea.l	-$34A6(a5),a0
+	movea.l	g_ObjTable(a5),a0
 	move.l	d7,d0
 	asl.l	#$2,d0
 	move.l	(a0,d0.l),d0

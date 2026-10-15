@@ -2,17 +2,17 @@
 ; Obj_ShiftTree - move an object and all its attached children by the shift delta (-$CA8, -$CAA) and refresh their boxes
 ; In:  8(a6) = unused (parent, callback form)   $C(a6) = object
 ; Out: none
-; Evidence: x += word -$CA8(a5) << 8, y += word -$CAA(a5) << 8, Obj_UpdateBoxes, then Obj_ForEachChild(obj, Obj_ShiftTree); Spr_PlaceAttached sets the deltas
+; Evidence: x += word g_ShiftDX(a5) << 8, y += word g_ShiftDY(a5) << 8, Obj_UpdateBoxes, then Obj_ForEachChild(obj, Obj_ShiftTree); Spr_PlaceAttached sets the deltas
 ; ---------------------------------------------------------------------------
 Obj_ShiftTree:
 	link.w	a6,#$0
 	move.l	a4,-(a7)
 	movea.l	$C(a6),a4
-	move.w	-$CA8(a5),d0
+	move.w	g_ShiftDX(a5),d0
 	ext.l	d0
 	lsl.l	#$8,d0
 	add.l	d0,$8(a4)
-	move.w	-$CAA(a5),d0
+	move.w	g_ShiftDY(a5),d0
 	ext.l	d0
 	lsl.l	#$8,d0
 	add.l	d0,$C(a4)

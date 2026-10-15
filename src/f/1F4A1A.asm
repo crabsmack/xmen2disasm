@@ -2,9 +2,9 @@
 ; sub_1F4A1A
 ; ---------------------------------------------------------------------------
 sub_1F4A1A:
-	movea.l	-$34A6(a5),a0
+	movea.l	g_ObjTable(a5),a0
 	moveq	#$2,d0
-	move.w	-$13F2(a5),d1
+	move.w	g_ObjCount(a5),d1
 	sub.w	d0,d1
 	add.w	d0,d0
 	add.w	d0,d0

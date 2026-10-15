@@ -53,7 +53,7 @@ loc_086304:
 	movea.l	$8(a6),a0
 	moveq	#$0,d0
 	move.l	d0,$92(a0)
-	lea.l	-$33D2(a5),a4
+	lea.l	g_Segs(a5),a4
 	clr.w	d7
 	lea.l	$10(a7),a7
 	bra.s	loc_0863B4
@@ -75,7 +75,7 @@ loc_0863AC:
 loc_0863B4:
 	moveq	#$0,d0
 	move.w	d7,d0
-	move.w	-$3474(a5),d1
+	move.w	g_SegHighWater(a5),d1
 	ext.l	d1
 	cmp.l	d0,d1
 	bge.s	loc_086390
@@ -104,7 +104,7 @@ loc_0863B4:
 	sub.w	g_CameraY(a5),d5
 	movea.l	$8(a6),a0
 	movea.l	$92(a0),a3
-	lea.l	-$33D2(a5),a4
+	lea.l	g_Segs(a5),a4
 	clr.w	d7
 	addq.w	#$8,a7
 	bra.w	loc_0864C6
@@ -143,7 +143,7 @@ loc_08641E:
 	move.l	d0,d1
 	lsl.l	#$2,d0
 	add.l	d1,d0
-	lea.l	-$33D2(a5),a0
+	lea.l	g_Segs(a5),a0
 	move.b	#$FF,$11(a0,d0.w)
 	move.b	#$FF,$10(a4)
 loc_086492:
@@ -158,7 +158,7 @@ loc_086492:
 	move.l	d0,d1
 	lsl.l	#$2,d0
 	add.l	d1,d0
-	lea.l	-$33D2(a5),a0
+	lea.l	g_Segs(a5),a0
 	move.b	#$FF,$10(a0,d0.w)
 	move.b	#$FF,$11(a4)
 loc_0864BE:
@@ -168,7 +168,7 @@ loc_0864BE:
 loc_0864C6:
 	moveq	#$0,d0
 	move.w	d7,d0
-	move.w	-$3474(a5),d1
+	move.w	g_SegHighWater(a5),d1
 	ext.l	d1
 	cmp.l	d0,d1
 	bge.w	loc_08641E

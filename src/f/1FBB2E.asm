@@ -17,8 +17,8 @@ Spr_EmitStream_Piece:
 loc_1FBB46:
 	cmp.b	d0,d5
 	blt.w	loc_1FBA88
-	move.l	a1,-$1FE6(a5)
-	add.w	d5,-$1FE2(a5)
+	move.l	a1,g_SprWritePtr(a5)
+	add.w	d5,g_SprIndex(a5)
 loc_1FBB54:
 	movem.l	-$28(a6),d2-d7/a2-a4
 	unlk	a6

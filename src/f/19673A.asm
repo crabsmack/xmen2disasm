@@ -54,7 +54,7 @@ loc_1967BE:
 	move.l	d0,d1
 	lsl.l	#$2,d0
 	add.l	d1,d0
-	lea.l	-$33D2(a5),a0
+	lea.l	g_Segs(a5),a0
 	lea.l	(a0,d0.w),a3
 	move.l	a3,-(a7)
 	move.l	a4,-(a7)

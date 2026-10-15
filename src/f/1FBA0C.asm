@@ -14,7 +14,7 @@ Spr_EmitStream:
 	move.b	$A(a0),d2
 	bmi.w	loc_1FBB54
 	moveq	#$50,d0
-	sub.w	-$1FE2(a5),d0
+	sub.w	g_SprIndex(a5),d0
 	ble.w	loc_1FBB54
 	lea.l	$24(a2),a3
 	lsl.w	#$2,d2
@@ -25,7 +25,7 @@ Spr_EmitStream:
 	ble.s	loc_1FBA48
 	move.b	$10(a3),d0
 loc_1FBA48:
-	movea.l	-$1FE6(a5),a1
+	movea.l	g_SprWritePtr(a5),a1
 	moveq	#$0,d5
 	move.w	$16(a6),d7
 	sf.b	-$2(a6)

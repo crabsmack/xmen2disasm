@@ -26,7 +26,7 @@ BroodClaw_Draw:
 	and.w	$6(a3),d0
 	beq.s	loc_09AF90
 	moveq	#$1,d0
-	and.w	-$3A24(a5),d0
+	and.w	g_LevelFrame(a5),d0
 	moveq	#$0,d1
 	move.w	d0,d1
 	tst.l	d1
@@ -62,25 +62,25 @@ loc_09AF90:
 	ori.w	#$8000,d7
 loc_09AFE0:
 	lea.l	g_SpriteTable(a5),a0
-	movea.l	-$1FE6(a5),a1
+	movea.l	g_SprWritePtr(a5),a1
 	move.b	$3(a1),d0
 	ext.w	d0
-	move.w	d0,-$1FE2(a5)
+	move.w	d0,g_SprIndex(a5)
 	ext.l	d0
 	asl.l	#$3,d0
 	add.l	a0,d0
-	move.l	d0,-$1FE6(a5)
+	move.l	d0,g_SprWritePtr(a5)
 	move.w	d6,d0
 	ext.l	d0
 	move.w	$2(a4),d1
 	ext.l	d1
 	add.l	d0,d1
 	add.w	#$80,d1
-	movea.l	-$1FE6(a5),a0
+	movea.l	g_SprWritePtr(a5),a0
 	move.w	d1,(a0)
-	movea.l	-$1FE6(a5),a0
+	movea.l	g_SprWritePtr(a5),a0
 	move.b	#$1,$2(a0)
-	movea.l	-$1FE6(a5),a0
+	movea.l	g_SprWritePtr(a5),a0
 	move.w	d7,$4(a0)
 	move.w	d5,d0
 	ext.l	d0
@@ -88,30 +88,30 @@ loc_09AFE0:
 	ext.l	d1
 	add.l	d0,d1
 	add.w	#$80,d1
-	movea.l	-$1FE6(a5),a0
+	movea.l	g_SprWritePtr(a5),a0
 	move.w	d1,$6(a0)
 	addq.w	#$2,d7
 	addq.w	#$8,a4
 	lea.l	g_SpriteTable(a5),a0
-	movea.l	-$1FE6(a5),a1
+	movea.l	g_SprWritePtr(a5),a1
 	move.b	$3(a1),d0
 	ext.w	d0
-	move.w	d0,-$1FE2(a5)
+	move.w	d0,g_SprIndex(a5)
 	ext.l	d0
 	asl.l	#$3,d0
 	add.l	a0,d0
-	move.l	d0,-$1FE6(a5)
+	move.l	d0,g_SprWritePtr(a5)
 	move.w	d6,d0
 	ext.l	d0
 	move.w	$2(a4),d1
 	ext.l	d1
 	add.l	d0,d1
 	add.w	#$80,d1
-	movea.l	-$1FE6(a5),a0
+	movea.l	g_SprWritePtr(a5),a0
 	move.w	d1,(a0)
-	movea.l	-$1FE6(a5),a0
+	movea.l	g_SprWritePtr(a5),a0
 	move.b	#$F,$2(a0)
-	movea.l	-$1FE6(a5),a0
+	movea.l	g_SprWritePtr(a5),a0
 	move.w	d7,$4(a0)
 	move.w	d5,d0
 	ext.l	d0
@@ -119,30 +119,30 @@ loc_09AFE0:
 	ext.l	d1
 	add.l	d0,d1
 	add.w	#$80,d1
-	movea.l	-$1FE6(a5),a0
+	movea.l	g_SprWritePtr(a5),a0
 	move.w	d1,$6(a0)
 	addi.w	#$10,d7
 	addq.w	#$8,a4
 	lea.l	g_SpriteTable(a5),a0
-	movea.l	-$1FE6(a5),a1
+	movea.l	g_SprWritePtr(a5),a1
 	move.b	$3(a1),d0
 	ext.w	d0
-	move.w	d0,-$1FE2(a5)
+	move.w	d0,g_SprIndex(a5)
 	ext.l	d0
 	asl.l	#$3,d0
 	add.l	a0,d0
-	move.l	d0,-$1FE6(a5)
+	move.l	d0,g_SprWritePtr(a5)
 	move.w	d6,d0
 	ext.l	d0
 	move.w	$2(a4),d1
 	ext.l	d1
 	add.l	d0,d1
 	add.w	#$80,d1
-	movea.l	-$1FE6(a5),a0
+	movea.l	g_SprWritePtr(a5),a0
 	move.w	d1,(a0)
-	movea.l	-$1FE6(a5),a0
+	movea.l	g_SprWritePtr(a5),a0
 	move.b	#$F,$2(a0)
-	movea.l	-$1FE6(a5),a0
+	movea.l	g_SprWritePtr(a5),a0
 	move.w	d7,$4(a0)
 	move.w	d5,d0
 	ext.l	d0
@@ -150,30 +150,30 @@ loc_09AFE0:
 	ext.l	d1
 	add.l	d0,d1
 	add.w	#$80,d1
-	movea.l	-$1FE6(a5),a0
+	movea.l	g_SprWritePtr(a5),a0
 	move.w	d1,$6(a0)
 	addi.w	#$10,d7
 	addq.w	#$8,a4
 	lea.l	g_SpriteTable(a5),a0
-	movea.l	-$1FE6(a5),a1
+	movea.l	g_SprWritePtr(a5),a1
 	move.b	$3(a1),d0
 	ext.w	d0
-	move.w	d0,-$1FE2(a5)
+	move.w	d0,g_SprIndex(a5)
 	ext.l	d0
 	asl.l	#$3,d0
 	add.l	a0,d0
-	move.l	d0,-$1FE6(a5)
+	move.l	d0,g_SprWritePtr(a5)
 	move.w	d6,d0
 	ext.l	d0
 	move.w	$2(a4),d1
 	ext.l	d1
 	add.l	d0,d1
 	add.w	#$80,d1
-	movea.l	-$1FE6(a5),a0
+	movea.l	g_SprWritePtr(a5),a0
 	move.w	d1,(a0)
-	movea.l	-$1FE6(a5),a0
+	movea.l	g_SprWritePtr(a5),a0
 	move.b	#$F,$2(a0)
-	movea.l	-$1FE6(a5),a0
+	movea.l	g_SprWritePtr(a5),a0
 	move.w	d7,$4(a0)
 	move.w	d5,d0
 	ext.l	d0
@@ -181,7 +181,7 @@ loc_09AFE0:
 	ext.l	d1
 	add.l	d0,d1
 	add.w	#$80,d1
-	movea.l	-$1FE6(a5),a0
+	movea.l	g_SprWritePtr(a5),a0
 	move.w	d1,$6(a0)
 	addi.w	#$10,d7
 	addq.w	#$8,a4

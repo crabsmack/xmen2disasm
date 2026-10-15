@@ -12,7 +12,7 @@ Deathbird_Draw:
 	and.w	$6(a4),d0
 	beq.s	loc_11241E
 	moveq	#$1,d0
-	and.w	-$3A24(a5),d0
+	and.w	g_LevelFrame(a5),d0
 	moveq	#$0,d1
 	move.w	d0,d1
 	tst.l	d1

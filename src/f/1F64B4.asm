@@ -30,7 +30,7 @@ loc_1F64E4:
 loc_1F650A:
 	moveq	#$0,d0
 	move.b	$3C(a4),d0
-	movea.l	-$34A6(a5),a0
+	movea.l	g_ObjTable(a5),a0
 	asl.l	#$2,d0
 	move.l	(a0,d0.l),d0
 loc_1F651A:

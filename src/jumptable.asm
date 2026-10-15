@@ -2048,7 +2048,7 @@ JumpTable:
 	jtentry	Actor_Nop5A	; [2044] jsr $4002(a5)
 	jtentry	Actor_ClassInit	; [2045] jsr $400A(a5)
 	jtentry	Actor_Nop62	; [2046] jsr $4012(a5)
-	jtentry	sub_15D988	; [2047] jsr $401A(a5)
+	jtentry	Obj_AllocPool	; [2047] jsr $401A(a5)
 	jtentry	Actor_New	; [2048] jsr $4022(a5)
 	jtentry	Actor_SpawnRecInView	; [2049] jsr $402A(a5)
 	jtentry	Actor_SpawnFromRec	; [2050] jsr $4032(a5)

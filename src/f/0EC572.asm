@@ -15,7 +15,7 @@ CoreElevator_StateIdle:
 	move.l	d0,d1
 	lsl.l	#$2,d0
 	add.l	d1,d0
-	lea.l	-$33D2(a5),a0
+	lea.l	g_Segs(a5),a0
 	clr.b	$2(a0,d0.w)
 	move.w	#$FF,$6C(a4)
 	lea.l	CoreElevator_StateIdle(pc),a0

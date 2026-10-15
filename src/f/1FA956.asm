@@ -23,7 +23,7 @@ loc_1FA962:
 	move.b	#$50,-$1D57(a5)
 	clr.b	-$1D4F(a5)
 	clr.w	-$1FDC(a5)
-	move.w	#$51,-$1FDE(a5)
+	move.w	#$51,g_SprLast(a5)
 	clr.w	-$1FE0(a5)
 	movem.l	-$8(a6),d3/d7
 	unlk	a6

@@ -28,7 +28,7 @@ loc_1F8B82:
 	bne.w	loc_1F8CA4
 	moveq	#$0,d0
 	move.b	$2(a2),d0
-	lea.l	-$33D2(a5),a3
+	lea.l	g_Segs(a5),a3
 	add.w	d0,d0
 	add.w	d0,d0
 	adda.w	d0,a3
@@ -185,7 +185,7 @@ loc_1F8D10:
 	beq.w	loc_1F8E7A
 	moveq	#$0,d0
 	move.b	$2(a2),d0
-	lea.l	-$33D2(a5),a3
+	lea.l	g_Segs(a5),a3
 	add.w	d0,d0
 	add.w	d0,d0
 	adda.w	d0,a3
@@ -249,7 +249,7 @@ loc_1F8D8E:
 	beq.w	loc_1F8DCE
 	add.w	d0,d0
 	add.w	d0,d0
-	movea.l	-$34A6(a5),a0
+	movea.l	g_ObjTable(a5),a0
 	move.l	(a0,d0.w),d0
 	bra.s	loc_1F8DD0
 loc_1F8DCE:
@@ -326,7 +326,7 @@ loc_1F8E84:
 	beq.s	loc_1F8EAE
 	moveq	#$0,d0
 	move.b	$2(a2),d0
-	lea.l	-$33D2(a5),a0
+	lea.l	g_Segs(a5),a0
 	add.w	d0,d0
 	add.w	d0,d0
 	adda.w	d0,a0

@@ -62,7 +62,7 @@ loc_122FE0:
 	move.l	d1,d0
 	lsl.l	#$2,d1
 	add.l	d0,d1
-	lea.l	-$33D2(a5),a0
+	lea.l	g_Segs(a5),a0
 	lea.l	(a0,d1.w),a3
 	move.l	$C(a4),d0
 	asr.l	#$8,d0
@@ -94,7 +94,7 @@ loc_122FE0:
 	move.l	d0,d1
 	lsl.l	#$2,d0
 	add.l	d1,d0
-	lea.l	-$33D2(a5),a0
+	lea.l	g_Segs(a5),a0
 	lea.l	(a0,d0.w),a3
 	move.l	$C(a4),d0
 	asr.l	#$8,d0

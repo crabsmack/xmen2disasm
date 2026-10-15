@@ -3834,6 +3834,7 @@ Sw_15C42A:	; switch table of sub at $15C42A: 9 word offsets from Sw_15C42A-2
 	include "src/f/15D978.asm"
 	include "src/f/15D980.asm"
 	include "src/f/15D988.asm"
+Str_ObjPoolTags:	; two empty C strings: Mem_StackAlloc tags of the object storage ($15DA34) and object pointer table ($15DA36) in Obj_AllocPool
 	incrom	$15DA34,$4
 	include "src/f/15DA38.asm"
 	include "src/f/15DA90.asm"
@@ -3902,6 +3903,7 @@ Tbl_NibbleMaskAt:	; 9 longs: single-nibble mask at nibble position k-1 ($0, $F, 
 	include "src/f/15F954.asm"
 	include "src/f/15F95C.asm"
 Str_Empty_15FA2A:	; C string "" (used by Spawn_InitRecords)
+Str_SpawnRecTag:	; empty C string: Mem_StackAlloc tag of the spawn records (Spawn_InitRecords)
 	incrom	$15FA2A,$2
 	include "src/f/15FA2C.asm"
 	include "src/f/15FA7A.asm"
@@ -4352,14 +4354,17 @@ Tbl_A5WorldInfo:	; 20 bytes: longs $3CE6 (size of the A5 globals area below $200
 	include "src/f/1F5594.asm"
 	include "src/f/1F5612.asm"
 	include "src/f/1F5788.asm"
+Str_RowTableTags:	; two empty C strings: Mem_StackAlloc tags of the BG ($1F5EFC) and FG ($1F5EFE) row-offset tables (Level_LoadMaps)
 	incrom	$1F5EFC,$4
 Str_APlaneTilesNoB:	; C string "A PLANE TILES -- NO B" (used by Level_LoadMaps)
 	incrom	$1F5F00,$16
+Str_BTilesTag:	; empty C string: Mem_StackAlloc tag of the BG block table (Level_LoadMaps)
 	incrom	$1F5F16,$2
 Str_APlaneTiles:	; C string "A PLANE TILES" (used by Level_LoadMaps)
 	incrom	$1F5F18,$E
 Str_AbTilesSharing:	; C string "AB TILES -- SHARING" (used by Level_LoadMaps)
 	incrom	$1F5F26,$14
+Str_MapBufTags:	; three empty C strings: Mem_StackAlloc tags of the FG block table ($1F5F3A), BG layout ($1F5F3C) and FG layout ($1F5F3E) buffers (Level_LoadMaps)
 	incrom	$1F5F3A,$6
 	include "src/f/1F5F40.asm"
 	include "src/f/1F5F5A.asm"
@@ -4392,6 +4397,7 @@ Str_AbTilesSharing:	; C string "AB TILES -- SHARING" (used by Level_LoadMaps)
 	include "src/f/1F6BD2.asm"
 	include "src/f/1F6C04.asm"
 Str_Empty_1F6D74:	; C string "" (used by Seg_LoadList)
+Str_SegGridTag:	; empty C string: Mem_StackAlloc mark tag in Seg_LoadList
 	incrom	$1F6D74,$2
 	include "src/f/1F6D76.asm"
 Sw_1F6D76:	; switch table of sub at $1F6D76: 36 word offsets from Sw_1F6D76-2
@@ -4631,7 +4637,10 @@ Str_ScalerData:	; C string "SCALER DATA" (used by sub_1FC5FE)
 	include "src/f/1FCE9E.asm"
 	include "src/f/1FD43E.asm"
 	include "src/f/1FD520.asm"
-	incrom	$1FD58C,$14
+Tbl_GridWidthBits:	; 4 bytes 0,4,8,12: (columns-1) << 2, or-ed with (rows-1) to form a sprite size code in sub_1FD520
+	incrom	$1FD58C,$4
+Tbl_SprSizeTilesGrid:	; 16 bytes: tiles per sprite size code (w*h/64), tile advance per piece in sub_1FD520
+	incrom	$1FD590,$10
 	include "src/f/1FD5A0.asm"
 	include "src/f/1FD61E.asm"
 	include "src/f/1FD720.asm"

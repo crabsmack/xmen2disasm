@@ -19,7 +19,7 @@ MagnetoBoss_ClassInit:
 	pea.l	($800).w
 	jsr	$5032(a5)	; -> Mem_StackAlloc
 	ext.l	d7
-	movea.l	-$10F4(a5),a0
+	movea.l	g_ClassData(a5),a0
 	move.l	d7,d1
 	asl.l	#$2,d1
 	move.l	d0,(a0,d1.l)

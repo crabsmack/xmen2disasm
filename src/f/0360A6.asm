@@ -11,7 +11,7 @@ MagnetoBoss_Init:
 	movea.l	$14(a6),a3
 	movea.l	$8(a6),a4
 	clr.w	d7
-	move.w	-$3598(a5),d5
+	move.w	g_VramTileCursor(a5),d5
 	move.l	a3,-(a7)
 	move.l	$10(a6),-(a7)
 	move.l	d4,-(a7)
@@ -96,8 +96,8 @@ loc_036188:
 loc_03618A:
 	move.w	d0,d7
 	addq.w	#$7,d0
-	add.w	d0,-$3598(a5)
-	move.w	-$3598(a5),d0
+	add.w	d0,g_VramTileCursor(a5)
+	move.w	g_VramTileCursor(a5),d0
 	subq.w	#$7,d0
 	move.w	d0,$AE(a4)
 	move.w	d5,$B0(a4)

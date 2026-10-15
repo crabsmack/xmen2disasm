@@ -41,7 +41,7 @@ loc_1F860A:
 	move.w	(a0,d4.w),d7
 	movea.l	-$3478(a5),a1
 	adda.w	d7,a1
-	lea.l	-$33D2(a5),a0
+	lea.l	g_Segs(a5),a0
 	move.l	a0,d7
 	bra.s	loc_1F868E
 loc_1F8628:
@@ -98,7 +98,7 @@ loc_1F868E:
 	add.w	d0,d0
 	add.w	d0,d0
 	adda.w	d0,a3
-	move.w	-$3474(a5),d7
+	move.w	g_SegHighWater(a5),d7
 	sub.w	d6,d7
 	bmi.w	loc_1F87A2
 loc_1F86B4:
@@ -148,7 +148,7 @@ loc_1F872C:
 	beq.w	loc_1F8748
 	add.w	d0,d0
 	add.w	d0,d0
-	movea.l	-$34A6(a5),a0
+	movea.l	g_ObjTable(a5),a0
 	move.l	(a0,d0.w),d0
 	bra.s	loc_1F874A
 loc_1F8748:
@@ -166,7 +166,7 @@ loc_1F8752:
 	beq.w	loc_1F8774
 	add.w	d0,d0
 	add.w	d0,d0
-	movea.l	-$34A6(a5),a0
+	movea.l	g_ObjTable(a5),a0
 	move.l	(a0,d0.w),d0
 	bra.s	loc_1F8776
 loc_1F8774:

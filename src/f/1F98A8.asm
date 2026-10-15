@@ -124,7 +124,7 @@ loc_1F99B6:
 	jsr	$4E1A(a5)	; -> Level_LoadMaps
 	moveq	#$0,d0
 	move.l	d0,g_CamShake(a5)
-	move.w	-$3A9E(a5),-$3598(a5)
+	move.w	-$3A9E(a5),g_VramTileCursor(a5)
 	move.w	#$2,-$388A(a5)
 	moveq	#$0,d7
 	moveq	#$25,d3
@@ -141,7 +141,7 @@ loc_1F9A08:
 	bgt.s	loc_1F9A08
 	lea.l	$4FA2(a5),a0
 	move.l	a0,-$135E(a5)
-	clr.w	-$34A2(a5)
+	clr.w	g_SpriteDefCount(a5)
 	lea.l	g_SpriteDefs(a5),a4
 	moveq	#$0,d7
 	moveq	#$23,d3
@@ -219,7 +219,7 @@ loc_1F9AF0:
 	move.w	$32(a6),d0
 	ext.l	d0
 	move.l	d0,-(a7)
-	jsr	$401A(a5)	; -> sub_15D988
+	jsr	$401A(a5)	; -> Obj_AllocPool
 	tst.b	$43(a6)
 	addq.w	#$4,a7
 	beq.s	loc_1F9B0A

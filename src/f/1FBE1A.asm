@@ -17,15 +17,15 @@ Spr_EmitStreamLinked_Piece:
 	cmpi.w	#$160,d6
 	bgt.s	loc_1FBE66
 	moveq	#$0,d0
-	movea.l	-$1FE6(a5),a0
+	movea.l	g_SprWritePtr(a5),a0
 	move.b	$3(a0),d0
 	cmpi.w	#$50,d0
 	beq.s	loc_1FBE8A
-	move.w	d0,-$1FE2(a5)
+	move.w	d0,g_SprIndex(a5)
 	asl.w	#$3,d0
 	lea.l	g_SpriteTable(a5),a0
 	adda.w	d0,a0
-	move.l	a0,-$1FE6(a5)
+	move.l	a0,g_SprWritePtr(a5)
 	swap	d6
 	move.b	$3(a0),d6
 	move.l	d6,(a0)+

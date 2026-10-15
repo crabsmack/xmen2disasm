@@ -30,10 +30,10 @@ loc_1FB9EC:
 	blt.w	loc_1FB926
 loc_1FB9F2:
 	move.l	a4,d1
-	sub.l	-$1FE6(a5),d1
+	sub.l	g_SprWritePtr(a5),d1
 	asr.l	#$3,d1
-	move.l	a4,-$1FE6(a5)
-	add.w	d1,-$1FE2(a5)
+	move.l	a4,g_SprWritePtr(a5)
+	add.w	d1,g_SprIndex(a5)
 loc_1FBA02:
 	movem.l	-$24(a6),d3-d7/a2-a4
 	unlk	a6

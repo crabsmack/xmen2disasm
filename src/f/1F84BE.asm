@@ -45,7 +45,7 @@ loc_1F851C:
 	addi.w	#$80,d3
 	move.w	d2,-$2(a6)
 	move.w	d3,-$4(a6)
-	lea.l	-$33D2(a5),a2
+	lea.l	g_Segs(a5),a2
 	clr.w	d5
 	bra.w	loc_1F858E
 loc_1F8552:
@@ -74,7 +74,7 @@ loc_1F8588:
 	addq.w	#$1,d5
 	lea.l	$14(a2),a2
 loc_1F858E:
-	cmp.w	-$3470(a5),d5
+	cmp.w	g_SegFirstFree(a5),d5
 	blt.s	loc_1F8552
 	moveq	#-$1,d0
 	move.b	d0,(a4)+

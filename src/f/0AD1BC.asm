@@ -46,7 +46,7 @@ loc_0AD1F4:
 	tst.b	d4
 	beq.s	loc_0AD28A
 	moveq	#$0,d7
-	movea.l	-$34A6(a5),a0
+	movea.l	g_ObjTable(a5),a0
 	movea.l	(a0),a3
 	bra.s	loc_0AD270
 loc_0AD23C:
@@ -65,12 +65,12 @@ loc_0AD23C:
 	addq.w	#$4,a7
 loc_0AD262:
 	addq.l	#$1,d7
-	movea.l	-$34A6(a5),a0
+	movea.l	g_ObjTable(a5),a0
 	move.l	d7,d0
 	asl.l	#$2,d0
 	movea.l	(a0,d0.l),a3
 loc_0AD270:
-	move.w	-$13F2(a5),d0
+	move.w	g_ObjCount(a5),d0
 	ext.l	d0
 	cmp.l	d7,d0
 	bgt.s	loc_0AD23C

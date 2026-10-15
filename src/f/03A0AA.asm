@@ -21,7 +21,7 @@ sub_03A0AA:
 	move.l	d0,d1
 	lsl.l	#$2,d0
 	add.l	d1,d0
-	lea.l	-$33D2(a5),a0
+	lea.l	g_Segs(a5),a0
 	andi.b	#$BF,(a0,d0.w)
 	move.b	#$1,$9A(a4)
 	move.w	#$5DC,$18(a4)

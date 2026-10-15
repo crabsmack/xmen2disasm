@@ -114,7 +114,7 @@ loc_1F4B56:
 	move.b	$7A(a3),d0
 	cmpi.w	#$FF,d0
 	beq.s	loc_1F4B9C
-	lea.l	-$33D2(a5),a4
+	lea.l	g_Segs(a5),a4
 	lsl.w	#$2,d0
 	adda.w	d0,a4
 	lsl.w	#$2,d0

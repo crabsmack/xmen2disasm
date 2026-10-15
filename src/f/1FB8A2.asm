@@ -7,7 +7,7 @@
 Spr_EmitPreClip:
 	link.w	a6,#$FFFC
 	movem.l	d3-d7/a2-a4,-(a7)
-	cmpi.w	#$50,-$1FE2(a5)
+	cmpi.w	#$50,g_SprIndex(a5)
 	bge.w	loc_1FBA02
 	moveq	#$0,d2
 	movea.l	$8(a6),a0
@@ -15,7 +15,7 @@ Spr_EmitPreClip:
 	move.b	(a0),d1
 	move.b	$A(a0),d2
 	bmi.w	loc_1FBA02
-	movea.l	-$1FE6(a5),a4
+	movea.l	g_SprWritePtr(a5),a4
 	moveq	#$0,d5
 	move.w	$16(a6),d7
 	lea.l	$24(a1),a2

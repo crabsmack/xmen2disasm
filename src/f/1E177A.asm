@@ -8,7 +8,7 @@ loc_1E177A:
 	beq.s	loc_1E178E
 	ori.w	#$800,-$A(a6)
 loc_1E178E:
-	movea.l	-$1FE6(a5),a2
+	movea.l	g_SprWritePtr(a5),a2
 	move.b	$3(a2),d0
 	move.b	d0,-$186F(a5)
 	subq.b	#$1,d0
@@ -76,9 +76,9 @@ loc_1E1822:
 	ext.w	d0
 	cmpi.w	#$50,d0
 	beq.s	loc_1E188C
-	move.w	d0,-$1FE2(a5)
+	move.w	d0,g_SprIndex(a5)
 	addq.l	#$8,a2
-	move.l	a2,-$1FE6(a5)
+	move.l	a2,g_SprWritePtr(a5)
 	addi.w	#$80,d6
 	move.w	d6,(a2)
 	move.b	d5,$2(a2)
@@ -117,9 +117,9 @@ loc_1E18BA:
 	ext.w	d0
 	cmpi.w	#$50,d0
 	beq.s	loc_1E18EE
-	move.w	d0,-$1FE2(a5)
+	move.w	d0,g_SprIndex(a5)
 	addq.l	#$8,a2
-	move.l	a2,-$1FE6(a5)
+	move.l	a2,g_SprWritePtr(a5)
 	moveq	#-$1,d6
 	moveq	#$0,d5
 	move.w	d6,(a2)

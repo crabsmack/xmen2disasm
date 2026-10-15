@@ -14,7 +14,7 @@ Actor_Activate:
 	beq.s	loc_15DFF6
 	moveq	#$0,d0
 	move.l	d0,-(a7)
-	move.w	-$3598(a5),d1
+	move.w	g_VramTileCursor(a5),d1
 	ext.l	d1
 	move.l	d1,-(a7)
 	moveq	#$3,d1
@@ -33,7 +33,7 @@ Actor_Activate:
 	lea.l	$1C(a7),a7
 	bra.s	loc_15E000
 loc_15DFF6:
-	move.w	-$3598(a5),d6
+	move.w	g_VramTileCursor(a5),d6
 	move.w	#$FFFF,$34(a4)
 loc_15E000:
 	cmp.w	-$1D46(a5),d6
@@ -48,7 +48,7 @@ loc_15E016:
 	move.b	$3B(a4),d7
 	move.b	d4,$2E(a4)
 	move.b	d5,$2F(a4)
-	move.w	d6,-$3598(a5)
+	move.w	d6,g_VramTileCursor(a5)
 	andi.w	#$B7FF,$4(a4)
 	move.w	#$200,d0
 	and.w	$6(a4),d0
@@ -62,7 +62,7 @@ loc_15E016:
 	move.l	d0,d1
 	lsl.l	#$2,d0
 	add.l	d1,d0
-	lea.l	-$33D2(a5),a0
+	lea.l	g_Segs(a5),a0
 	lea.l	(a0,d0.w),a3
 	move.w	$50(a4),d0
 	ext.l	d0
@@ -97,7 +97,7 @@ loc_15E09C:
 	bra.s	loc_15E0B8
 loc_15E0AA:
 	ext.l	d7
-	movea.l	-$34A6(a5),a0
+	movea.l	g_ObjTable(a5),a0
 	move.l	d7,d0
 	asl.l	#$2,d0
 	move.l	(a0,d0.l),d0
@@ -111,7 +111,7 @@ loc_15E0B8:
 	bra.s	loc_15E0D6
 loc_15E0C8:
 	ext.l	d7
-	movea.l	-$34A6(a5),a0
+	movea.l	g_ObjTable(a5),a0
 	move.l	d7,d0
 	asl.l	#$2,d0
 	move.l	(a0,d0.l),d0

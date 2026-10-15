@@ -11,17 +11,17 @@ loc_1FD5A0:
 	cmpi.w	#$160,d5
 	bgt.s	loc_1FD5E8
 	moveq	#$0,d0
-	movea.l	-$1FE6(a5),a0
+	movea.l	g_SprWritePtr(a5),a0
 	move.b	$3(a0),d0
 	cmpi.w	#$50,d0
 	beq.s	loc_1FD610
-	move.w	d0,-$1FE2(a5)
+	move.w	d0,g_SprIndex(a5)
 	move.b	d0,d1
 	addq.w	#$1,d1
 	asl.w	#$3,d0
 	lea.l	g_SpriteTable(a5),a0
 	adda.w	d0,a0
-	move.l	a0,-$1FE6(a5)
+	move.l	a0,g_SprWritePtr(a5)
 	move.w	d5,(a0)+
 	move.w	d1,(a0)+
 	move.w	d7,(a0)+

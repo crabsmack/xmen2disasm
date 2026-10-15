@@ -12,11 +12,11 @@ sub_15E76C:
 	move.w	d0,d1
 	cmpi.l	#$1800,d1
 	bne.s	loc_15E7C8
-	move.w	-$CA8(a5),d0
+	move.w	g_ShiftDX(a5),d0
 	ext.l	d0
 	lsl.l	#$8,d0
 	add.l	d0,$8(a4)
-	move.w	-$CAA(a5),d0
+	move.w	g_ShiftDY(a5),d0
 	ext.l	d0
 	lsl.l	#$8,d0
 	add.l	d0,$C(a4)

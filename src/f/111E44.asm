@@ -117,8 +117,8 @@ Deathbird_Init:
 	moveq	#$0,d0
 	move.l	d0,$10(a0)
 	movea.l	$B0(a4),a0
-	move.w	-$3598(a5),$6(a0)
-	addi.w	#$3D,-$3598(a5)
+	move.w	g_VramTileCursor(a5),$6(a0)
+	addi.w	#$3D,g_VramTileCursor(a5)
 	clr.b	$B4(a4)
 	move.w	#$78,-$3BBE(a5)
 	move.w	#$D,-$3B02(a5)

@@ -20,7 +20,7 @@ ClassList_InitAll:
 	ble.s	loc_1FA816
 	moveq	#$0,d0
 	move.l	d0,g_ClassList(a5)
-	move.l	d0,-$10F4(a5)
+	move.l	d0,g_ClassData(a5)
 	bra.s	loc_1FA86C
 loc_1FA816:
 	pea.l	Str_Empty_1FA876(pc)
@@ -28,12 +28,12 @@ loc_1FA816:
 	asl.l	#$2,d0
 	move.l	d0,-(a7)
 	jsr	Mem_StackAlloc(pc)
-	move.l	d0,-$10F4(a5)
+	move.l	d0,g_ClassData(a5)
 	moveq	#$0,d7
 	addq.w	#$8,a7
 	bra.s	loc_1FA842
 loc_1FA82E:
-	movea.l	-$10F4(a5),a0
+	movea.l	g_ClassData(a5),a0
 	move.l	d7,d0
 	asl.l	#$2,d0
 	moveq	#$0,d1

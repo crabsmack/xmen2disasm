@@ -33,7 +33,7 @@ loc_067070:
 	bgt.s	loc_067068
 	move.b	#$1,g_PalBaseDirty(a5)
 	jsr	$5112(a5)	; -> VDP_WaitVBlank
-	move.w	-$3598(a5),d0
+	move.w	g_VramTileCursor(a5),d0
 	ext.l	d0
 	move.l	d0,-(a7)
 	lea.l	$E72(a5),a0
@@ -57,7 +57,7 @@ loc_0670AA:
 	cmp.l	d6,d3
 	bgt.s	loc_0670AA
 	move.w	#$4000,d5
-	or.w	-$3598(a5),d5
+	or.w	g_VramTileCursor(a5),d5
 	moveq	#$1C,d6
 	move.l	d6,d0
 	lsl.l	#$1,d0

@@ -111,14 +111,14 @@ loc_1CF564:
 loc_1CF568:
 	move.w	d0,-$12(a6)
 	lea.l	g_SpriteTable(a5),a0
-	movea.l	-$1FE6(a5),a1
+	movea.l	g_SprWritePtr(a5),a1
 	move.b	$3(a1),d0
 	ext.w	d0
-	move.w	d0,-$1FE2(a5)
+	move.w	d0,g_SprIndex(a5)
 	ext.l	d0
 	asl.l	#$3,d0
 	add.l	a0,d0
-	move.l	d0,-$1FE6(a5)
+	move.l	d0,g_SprWritePtr(a5)
 	move.w	d4,d0
 	ext.l	d0
 	move.w	-$14(a6),d1
@@ -128,9 +128,9 @@ loc_1CF568:
 	ext.l	d1
 	sub.l	d1,d0
 	add.w	#$80,d0
-	movea.l	-$1FE6(a5),a0
+	movea.l	g_SprWritePtr(a5),a0
 	move.w	d0,(a0)
-	movea.l	-$1FE6(a5),a0
+	movea.l	g_SprWritePtr(a5),a0
 	move.b	d6,$2(a0)
 	move.w	-$12(a6),d0
 	or.w	-$10(a6),d0
@@ -143,7 +143,7 @@ loc_1CF568:
 	move.w	-$2(a6),d1
 	ext.l	d1
 	or.l	d0,d1
-	movea.l	-$1FE6(a5),a0
+	movea.l	g_SprWritePtr(a5),a0
 	move.w	d1,$4(a0)
 	move.w	d5,d0
 	ext.l	d0
@@ -154,7 +154,7 @@ loc_1CF568:
 	ext.l	d1
 	sub.l	d1,d0
 	add.w	#$80,d0
-	movea.l	-$1FE6(a5),a0
+	movea.l	g_SprWritePtr(a5),a0
 	move.w	d0,$6(a0)
 	move.w	$8(a4),d0
 	ext.l	d0

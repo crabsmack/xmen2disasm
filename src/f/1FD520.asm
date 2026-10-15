@@ -39,7 +39,7 @@ loc_1FD570:
 	move.w	$E(a6),d5
 	add.w	a2,d6
 	add.w	a1,d5
-	or.b	$1FD58C(pc,d2.w),d1
-	move.b	$1FD590(pc,d1.w),d2
+	or.b	Tbl_GridWidthBits(pc,d2.w),d1
+	move.b	Tbl_SprSizeTilesGrid(pc,d1.w),d2
 	lsl.w	#$8,d1
 	bra.s	loc_1FD5A0

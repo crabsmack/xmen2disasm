@@ -197,11 +197,11 @@ loc_15E9E2:
 	move.l	$8(a4),d0
 	sub.l	d5,d0
 	asr.l	#$8,d0
-	move.w	d0,-$CA8(a5)
+	move.w	d0,g_ShiftDX(a5)
 	move.l	$C(a4),d0
 	sub.l	d7,d0
 	asr.l	#$8,d0
-	move.w	d0,-$CAA(a5)
+	move.w	d0,g_ShiftDY(a5)
 	pea.l	sub_15E76C(pc)
 	move.l	a4,-(a7)
 	jsr	$4E82(a5)	; -> Obj_ForEachChild
@@ -220,7 +220,7 @@ loc_15EA24:
 	bra.s	loc_15EA40
 loc_15EA32:
 	ext.l	d7
-	movea.l	-$34A6(a5),a0
+	movea.l	g_ObjTable(a5),a0
 	move.l	d7,d0
 	asl.l	#$2,d0
 	move.l	(a0,d0.l),d0

@@ -125,7 +125,7 @@ loc_1F7432:
 	move.b	$12(a3),d0
 	ext.w	d0
 	ext.l	d0
-	movea.l	-$34A6(a5),a0
+	movea.l	g_ObjTable(a5),a0
 	asl.l	#$2,d0
 	move.l	(a0,d0.l),d0
 loc_1F7444:
@@ -251,7 +251,7 @@ loc_1F7538:
 	move.l	d0,d1
 	lsl.l	#$2,d0
 	add.l	d1,d0
-	lea.l	-$33D2(a5),a0
+	lea.l	g_Segs(a5),a0
 	adda.w	d0,a0
 	movea.l	$8(a6),a1
 	cmpa.l	$76(a1),a0
@@ -268,7 +268,7 @@ loc_1F7568:
 	move.l	d0,d1
 	lsl.l	#$2,d0
 	add.l	d1,d0
-	lea.l	-$33D2(a5),a0
+	lea.l	g_Segs(a5),a0
 	adda.w	d0,a0
 	movea.l	$8(a6),a1
 	cmpa.l	$76(a1),a0

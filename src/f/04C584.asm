@@ -70,7 +70,7 @@ Apocalypse_Init:
 	move.l	d0,$10(a0)
 	moveq	#$0,d0
 	move.l	d0,-(a7)
-	move.w	-$3598(a5),d1
+	move.w	g_VramTileCursor(a5),d1
 	ext.l	d1
 	move.l	d1,-(a7)
 	movea.l	$92(a4),a0
@@ -86,7 +86,7 @@ Apocalypse_Init:
 	move.l	d0,-(a7)
 	move.l	a0,-(a7)
 	jsr	$506A(a5)	; -> Spr_Init
-	move.w	d0,-$3598(a5)
+	move.w	d0,g_VramTileCursor(a5)
 	move.l	#$F600,$8(a4)
 	move.l	#$FFFFEC00,$C(a4)
 	moveq	#$0,d0

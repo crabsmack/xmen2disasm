@@ -13,9 +13,9 @@ sub_1F7DAE:
 	asr.l	#$8,d5
 	move.l	$C(a0),d6
 	asr.l	#$8,d6
-	lea.l	-$33D2(a5),a4
+	lea.l	g_Segs(a5),a4
 	clr.w	-$6(a6)
-	lea.l	-$33D2(a5),a4
+	lea.l	g_Segs(a5),a4
 	bra.w	loc_1F7ED8
 loc_1F7DE4:
 	move.b	$1(a4),d0
@@ -122,7 +122,7 @@ loc_1F7ECC:
 	lea.l	$14(a4),a4
 loc_1F7ED8:
 	move.w	-$6(a6),d0
-	cmp.w	-$3474(a5),d0
+	cmp.w	g_SegHighWater(a5),d0
 	ble.w	loc_1F7DE4
 	move.l	a3,d0
 	beq.s	loc_1F7F2E

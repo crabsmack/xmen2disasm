@@ -11,7 +11,7 @@ sub_138766:
 	subq.w	#$5,d4
 	addq.w	#$5,$16(a6)
 	addq.w	#$5,$1A(a6)
-	lea.l	-$33D2(a5),a4
+	lea.l	g_Segs(a5),a4
 	clr.w	d7
 	bra.w	loc_138838
 loc_138790:
@@ -50,7 +50,7 @@ loc_1387B0:
 	move.l	d0,d1
 	lsl.l	#$2,d0
 	add.l	d1,d0
-	lea.l	-$33D2(a5),a0
+	lea.l	g_Segs(a5),a0
 	move.b	#$FF,$11(a0,d0.w)
 	move.b	#$FF,$10(a4)
 loc_138804:
@@ -65,7 +65,7 @@ loc_138804:
 	move.l	d0,d1
 	lsl.l	#$2,d0
 	add.l	d1,d0
-	lea.l	-$33D2(a5),a0
+	lea.l	g_Segs(a5),a0
 	move.b	#$FF,$10(a0,d0.w)
 	move.b	#$FF,$11(a4)
 loc_138830:
@@ -73,7 +73,7 @@ loc_138830:
 	addq.w	#$1,d7
 	lea.l	$14(a4),a4
 loc_138838:
-	cmp.w	-$3474(a5),d7
+	cmp.w	g_SegHighWater(a5),d7
 	ble.w	loc_138790
 	movem.l	-$14(a6),d4-d7/a4
 	unlk	a6

@@ -2,7 +2,7 @@
 ; Seg_ForEachOfObj - call func(obj, segment) for every floor segment an object owns
 ; In:  8(a6) = object   $C(a6) = func(obj, segment)
 ; Out: none
-; Evidence: first index object+$7A, next = segment+$13, $FF ends; records at -$33D2(a5)
+; Evidence: first index object+$7A, next = segment+$13, $FF ends; records at g_Segs(a5)
 ; ---------------------------------------------------------------------------
 Seg_ForEachOfObj:
 	link.w	a6,#$0
@@ -21,7 +21,7 @@ loc_1F7D74:
 	move.l	d0,d1
 	lsl.l	#$2,d0
 	add.l	d1,d0
-	lea.l	-$33D2(a5),a0
+	lea.l	g_Segs(a5),a0
 	lea.l	(a0,d0.w),a4
 	moveq	#$0,d7
 	move.b	$13(a4),d7

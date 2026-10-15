@@ -8,7 +8,7 @@ Cerebro_PlayIntro:
 	link.w	a6,#$FE10
 	movem.l	d3-d7/a3-a4,-(a7)
 	lea.l	-$1A6(a6),a3
-	move.w	-$3598(a5),-$16(a6)
+	move.w	g_VramTileCursor(a5),-$16(a6)
 	move.w	#$1,-$3B02(a5)
 	move.w	#$2710,-$3B0C(a5)
 	lea.l	Cerebro_IntroPalHook(pc),a0
@@ -37,14 +37,14 @@ loc_065ECA:
 	moveq	#$2,d0
 	and.w	-$3C5E(a5),d0
 	bne.w	loc_06612E
-	move.w	-$3598(a5),d0
+	move.w	g_VramTileCursor(a5),d0
 	ext.l	d0
 	move.l	d0,-(a7)
 	lea.l	$E8A(a5),a0
 	move.l	$2(a0),-(a7)
 	jsr	$50DA(a5)	; -> sub_1FD72C
 	move.w	#$4000,d5
-	or.w	-$3598(a5),d5
+	or.w	g_VramTileCursor(a5),d5
 	moveq	#$30,d4
 	move.l	d4,d0
 	lsl.l	#$1,d0
@@ -94,14 +94,14 @@ loc_065F5C:
 	blt.s	loc_065F54
 	move.b	#$1,g_PalBaseDirty(a5)
 	jsr	$5112(a5)	; -> VDP_WaitVBlank
-	move.w	-$3598(a5),d0
+	move.w	g_VramTileCursor(a5),d0
 	ext.l	d0
 	move.l	d0,-(a7)
 	lea.l	$E02(a5),a0
 	move.l	$2(a0),-(a7)
 	jsr	$50DA(a5)	; -> sub_1FD72C
 	move.w	#$4000,d5
-	or.w	-$3598(a5),d5
+	or.w	g_VramTileCursor(a5),d5
 	move.w	#$C0,d4
 	ext.l	d4
 	move.l	d4,d0
@@ -267,14 +267,14 @@ loc_066154:
 	blt.s	loc_06614C
 	move.b	#$1,g_PalBaseDirty(a5)
 	jsr	$5112(a5)	; -> VDP_WaitVBlank
-	move.w	-$3598(a5),d0
+	move.w	g_VramTileCursor(a5),d0
 	ext.l	d0
 	move.l	d0,-(a7)
 	lea.l	$DF2(a5),a0
 	move.l	$2(a0),-(a7)
 	jsr	$50DA(a5)	; -> sub_1FD72C
 	move.w	#$4000,d5
-	or.w	-$3598(a5),d5
+	or.w	g_VramTileCursor(a5),d5
 	move.w	#$9A,d4
 	ext.l	d4
 	move.l	d4,d0
@@ -305,12 +305,12 @@ loc_0661AC:
 	move.l	a3,-(a7)
 	pea.l	($1AC).w
 	jsr	$413A(a5)	; -> sub_15FA2C
-	addi.w	#$C0,-$3598(a5)
+	addi.w	#$C0,g_VramTileCursor(a5)
 	move.l	-$CA2(a5),-$1E8(a6)
 	move.w	#$AB,-$1E0(a6)
-	move.w	-$3598(a5),-$1DE(a6)
+	move.w	g_VramTileCursor(a5),-$1DE(a6)
 	move.w	#$1,-$1DC(a6)
-	addi.w	#$AB,-$3598(a5)
+	addi.w	#$AB,g_VramTileCursor(a5)
 	lea.l	$F72(a5),a0
 	movea.l	$2(a0),a4
 	lea.l	-$3960(a5),a3
@@ -423,21 +423,21 @@ loc_066348:
 	move.l	d0,g_VBlankCount(a5)
 	jsr	$504A(a5)	; -> Spr_BeginFrame
 	lea.l	g_SpriteTable(a5),a0
-	movea.l	-$1FE6(a5),a1
+	movea.l	g_SprWritePtr(a5),a1
 	move.b	$3(a1),d0
 	ext.w	d0
-	move.w	d0,-$1FE2(a5)
+	move.w	d0,g_SprIndex(a5)
 	ext.l	d0
 	asl.l	#$3,d0
 	add.l	a0,d0
-	move.l	d0,-$1FE6(a5)
+	move.l	d0,g_SprWritePtr(a5)
 	movea.l	d0,a0
 	move.w	#$1C,(a0)
-	movea.l	-$1FE6(a5),a0
+	movea.l	g_SprWritePtr(a5),a0
 	clr.b	$2(a0)
-	movea.l	-$1FE6(a5),a0
+	movea.l	g_SprWritePtr(a5),a0
 	clr.w	$4(a0)
-	movea.l	-$1FE6(a5),a0
+	movea.l	g_SprWritePtr(a5),a0
 	move.w	#$1C,$6(a0)
 	clr.b	-$3A08(a5)
 	move.l	-$1CA(a6),d0
@@ -467,23 +467,23 @@ loc_066348:
 	addq.w	#$8,a7
 	bne.s	loc_066436
 	lea.l	g_SpriteTable(a5),a0
-	movea.l	-$1FE6(a5),a1
+	movea.l	g_SprWritePtr(a5),a1
 	move.b	$3(a1),d0
 	ext.w	d0
-	move.w	d0,-$1FE2(a5)
+	move.w	d0,g_SprIndex(a5)
 	ext.l	d0
 	asl.l	#$3,d0
 	add.l	a0,d0
-	move.l	d0,-$1FE6(a5)
+	move.l	d0,g_SprWritePtr(a5)
 	movea.l	d0,a0
 	move.w	#$C0,(a0)
-	movea.l	-$1FE6(a5),a0
+	movea.l	g_SprWritePtr(a5),a0
 	move.b	#$4,$2(a0)
 	move.w	-$3B10(a5),d0
 	add.w	#$2074,d0
-	movea.l	-$1FE6(a5),a0
+	movea.l	g_SprWritePtr(a5),a0
 	move.w	d0,$4(a0)
-	movea.l	-$1FE6(a5),a0
+	movea.l	g_SprWritePtr(a5),a0
 	move.w	#$145,$6(a0)
 	bra.s	loc_066436
 loc_066432:
@@ -525,9 +525,9 @@ loc_06644C:
 	move.w	d0,d5
 	move.l	-$CA2(a5),-$1E8(a6)
 	move.w	#$2C,-$1E0(a6)
-	move.w	-$3598(a5),-$1DE(a6)
+	move.w	g_VramTileCursor(a5),-$1DE(a6)
 	move.w	#$2,-$1DC(a6)
-	addi.w	#$2C,-$3598(a5)
+	addi.w	#$2C,g_VramTileCursor(a5)
 	moveq	#$5A,d6
 	lea.l	$1C(a7),a7
 	bra.s	loc_0664CA
@@ -637,23 +637,23 @@ loc_0665D8:
 loc_0665EE:
 	jsr	$504A(a5)	; -> Spr_BeginFrame
 	lea.l	g_SpriteTable(a5),a0
-	movea.l	-$1FE6(a5),a1
+	movea.l	g_SprWritePtr(a5),a1
 	move.b	$3(a1),d0
 	ext.w	d0
-	move.w	d0,-$1FE2(a5)
+	move.w	d0,g_SprIndex(a5)
 	ext.l	d0
 	asl.l	#$3,d0
 	add.l	a0,d0
-	move.l	d0,-$1FE6(a5)
+	move.l	d0,g_SprWritePtr(a5)
 	movea.l	d0,a0
 	move.w	#$C0,(a0)
-	movea.l	-$1FE6(a5),a0
+	movea.l	g_SprWritePtr(a5),a0
 	move.b	#$4,$2(a0)
 	move.w	-$3B10(a5),d0
 	add.w	#$2074,d0
-	movea.l	-$1FE6(a5),a0
+	movea.l	g_SprWritePtr(a5),a0
 	move.w	d0,$4(a0)
-	movea.l	-$1FE6(a5),a0
+	movea.l	g_SprWritePtr(a5),a0
 	move.w	#$145,$6(a0)
 	clr.b	-$3A08(a5)
 	ext.l	d5
@@ -775,23 +775,23 @@ loc_0666BE:
 loc_0667A0:
 	jsr	$504A(a5)	; -> Spr_BeginFrame
 	lea.l	g_SpriteTable(a5),a0
-	movea.l	-$1FE6(a5),a1
+	movea.l	g_SprWritePtr(a5),a1
 	move.b	$3(a1),d0
 	ext.w	d0
-	move.w	d0,-$1FE2(a5)
+	move.w	d0,g_SprIndex(a5)
 	ext.l	d0
 	asl.l	#$3,d0
 	add.l	a0,d0
-	move.l	d0,-$1FE6(a5)
+	move.l	d0,g_SprWritePtr(a5)
 	movea.l	d0,a0
 	move.w	#$C0,(a0)
-	movea.l	-$1FE6(a5),a0
+	movea.l	g_SprWritePtr(a5),a0
 	move.b	#$4,$2(a0)
 	move.w	-$3B10(a5),d0
 	add.w	#$2074,d0
-	movea.l	-$1FE6(a5),a0
+	movea.l	g_SprWritePtr(a5),a0
 	move.w	d0,$4(a0)
-	movea.l	-$1FE6(a5),a0
+	movea.l	g_SprWritePtr(a5),a0
 	move.w	#$145,$6(a0)
 	clr.b	-$3A08(a5)
 	ext.l	d5
@@ -872,23 +872,23 @@ loc_0668D0:
 	bne.s	loc_0668C8
 	jsr	$504A(a5)	; -> Spr_BeginFrame
 	lea.l	g_SpriteTable(a5),a0
-	movea.l	-$1FE6(a5),a1
+	movea.l	g_SprWritePtr(a5),a1
 	move.b	$3(a1),d0
 	ext.w	d0
-	move.w	d0,-$1FE2(a5)
+	move.w	d0,g_SprIndex(a5)
 	ext.l	d0
 	asl.l	#$3,d0
 	add.l	a0,d0
-	move.l	d0,-$1FE6(a5)
+	move.l	d0,g_SprWritePtr(a5)
 	movea.l	d0,a0
 	move.w	#$C0,(a0)
-	movea.l	-$1FE6(a5),a0
+	movea.l	g_SprWritePtr(a5),a0
 	move.b	#$4,$2(a0)
 	move.w	-$3B10(a5),d0
 	add.w	#$2074,d0
-	movea.l	-$1FE6(a5),a0
+	movea.l	g_SprWritePtr(a5),a0
 	move.w	d0,$4(a0)
-	movea.l	-$1FE6(a5),a0
+	movea.l	g_SprWritePtr(a5),a0
 	move.w	#$145,$6(a0)
 	lea.l	Str_Press(pc),a3
 	moveq	#$4A,d4
@@ -896,28 +896,28 @@ loc_0668D0:
 	bra.s	loc_066984
 loc_066930:
 	lea.l	g_SpriteTable(a5),a0
-	movea.l	-$1FE6(a5),a1
+	movea.l	g_SprWritePtr(a5),a1
 	move.b	$3(a1),d0
 	ext.w	d0
-	move.w	d0,-$1FE2(a5)
+	move.w	d0,g_SprIndex(a5)
 	ext.l	d0
 	asl.l	#$3,d0
 	add.l	a0,d0
-	move.l	d0,-$1FE6(a5)
+	move.l	d0,g_SprWritePtr(a5)
 	move.w	-$1EE(a6),d0
 	add.w	#$80,d0
-	movea.l	-$1FE6(a5),a0
+	movea.l	g_SprWritePtr(a5),a0
 	move.w	d0,(a0)
-	movea.l	-$1FE6(a5),a0
+	movea.l	g_SprWritePtr(a5),a0
 	clr.b	$2(a0)
 	ext.w	d7
 	move.w	d7,d0
 	sub.w	#$99E0,d0
-	movea.l	-$1FE6(a5),a0
+	movea.l	g_SprWritePtr(a5),a0
 	move.w	d0,$4(a0)
 	move.w	d4,d0
 	add.w	#$80,d0
-	movea.l	-$1FE6(a5),a0
+	movea.l	g_SprWritePtr(a5),a0
 	move.w	d0,$6(a0)
 	addq.w	#$1,a3
 	addq.w	#$8,d4
@@ -930,28 +930,28 @@ loc_066984:
 	bra.s	loc_0669EC
 loc_066998:
 	lea.l	g_SpriteTable(a5),a0
-	movea.l	-$1FE6(a5),a1
+	movea.l	g_SprWritePtr(a5),a1
 	move.b	$3(a1),d0
 	ext.w	d0
-	move.w	d0,-$1FE2(a5)
+	move.w	d0,g_SprIndex(a5)
 	ext.l	d0
 	asl.l	#$3,d0
 	add.l	a0,d0
-	move.l	d0,-$1FE6(a5)
+	move.l	d0,g_SprWritePtr(a5)
 	move.w	-$1EE(a6),d0
 	add.w	#$80,d0
-	movea.l	-$1FE6(a5),a0
+	movea.l	g_SprWritePtr(a5),a0
 	move.w	d0,(a0)
-	movea.l	-$1FE6(a5),a0
+	movea.l	g_SprWritePtr(a5),a0
 	clr.b	$2(a0)
 	ext.w	d7
 	move.w	d7,d0
 	sub.w	#$99E0,d0
-	movea.l	-$1FE6(a5),a0
+	movea.l	g_SprWritePtr(a5),a0
 	move.w	d0,$4(a0)
 	move.w	d4,d0
 	add.w	#$80,d0
-	movea.l	-$1FE6(a5),a0
+	movea.l	g_SprWritePtr(a5),a0
 	move.w	d0,$6(a0)
 	addq.w	#$1,a3
 	addq.w	#$8,d4
@@ -1011,25 +1011,25 @@ loc_066A74:
 loc_066A78:
 	jsr	$504A(a5)	; -> Spr_BeginFrame
 	lea.l	g_SpriteTable(a5),a0
-	movea.l	-$1FE6(a5),a1
+	movea.l	g_SprWritePtr(a5),a1
 	move.b	$3(a1),d0
 	ext.w	d0
-	move.w	d0,-$1FE2(a5)
+	move.w	d0,g_SprIndex(a5)
 	ext.l	d0
 	asl.l	#$3,d0
 	add.l	a0,d0
-	move.l	d0,-$1FE6(a5)
+	move.l	d0,g_SprWritePtr(a5)
 	movea.l	d0,a0
 	move.w	#$1C,(a0)
-	movea.l	-$1FE6(a5),a0
+	movea.l	g_SprWritePtr(a5),a0
 	clr.b	$2(a0)
-	movea.l	-$1FE6(a5),a0
+	movea.l	g_SprWritePtr(a5),a0
 	clr.w	$4(a0)
-	movea.l	-$1FE6(a5),a0
+	movea.l	g_SprWritePtr(a5),a0
 	move.w	#$1C,$6(a0)
 	clr.b	-$3A08(a5)
 	jsr	$5052(a5)	; -> Spr_EndFrame
-	move.w	-$16(a6),-$3598(a5)
+	move.w	-$16(a6),g_VramTileCursor(a5)
 	moveq	#$0,d0
 	move.l	d0,g_VBlankGameHook(a5)
 	move.l	-$C9E(a5),-(a7)

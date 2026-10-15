@@ -143,7 +143,7 @@ loc_05AA4A:
 	add.l	d0,d0
 	andi.w	#$C7FF,(a0,d0.l)
 	moveq	#$0,d7
-	movea.l	-$34A6(a5),a0
+	movea.l	g_ObjTable(a5),a0
 	movea.l	(a0),a4
 	lea.l	$10(a7),a7
 	bra.s	loc_05AAF8
@@ -174,12 +174,12 @@ loc_05AAD0:
 	addq.w	#$4,a7
 loc_05AAEA:
 	addq.l	#$1,d7
-	movea.l	-$34A6(a5),a0
+	movea.l	g_ObjTable(a5),a0
 	move.l	d7,d0
 	asl.l	#$2,d0
 	movea.l	(a0,d0.l),a4
 loc_05AAF8:
-	move.w	-$13F2(a5),d0
+	move.w	g_ObjCount(a5),d0
 	ext.l	d0
 	cmp.l	d7,d0
 	bgt.s	loc_05AAAA

@@ -45,7 +45,7 @@ loc_0E9CBA:
 	move.w	$34(a3),d5
 	move.w	$36(a3),d6
 	moveq	#$2,d7
-	movea.l	-$34A6(a5),a0
+	movea.l	g_ObjTable(a5),a0
 	movea.l	$8(a0),a4
 	addq.w	#$4,a7
 	bra.s	loc_0E9D1C
@@ -68,13 +68,13 @@ loc_0E9D0C:
 	addq.w	#$1,d7
 	move.w	d7,d0
 	ext.l	d0
-	movea.l	-$34A6(a5),a0
+	movea.l	g_ObjTable(a5),a0
 	asl.l	#$2,d0
 	movea.l	(a0,d0.l),a4
 loc_0E9D1C:
-	cmp.w	-$13F2(a5),d7
+	cmp.w	g_ObjCount(a5),d7
 	blt.s	loc_0E9CE0
-	sub.w	d6,-$3598(a5)
+	sub.w	d6,g_VramTileCursor(a5)
 	moveq	#$1,d0
 	move.l	d0,-(a7)
 	jsr	Hologram_SetXPowerSpawns(pc)

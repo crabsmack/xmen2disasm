@@ -19,7 +19,7 @@ Spr_PlaceAttached:
 loc_1FB1E2:
 	moveq	#$0,d0
 	move.b	$D(a3),d0
-	movea.l	-$34A6(a5),a0
+	movea.l	g_ObjTable(a5),a0
 	asl.l	#$2,d0
 	move.l	(a0,d0.l),d0
 loc_1FB1F2:
@@ -126,10 +126,10 @@ loc_1FB2C8:
 	beq.s	loc_1FB304
 	move.w	$E(a6),d0
 	sub.w	d4,d0
-	move.w	d0,-$CA8(a5)
+	move.w	d0,g_ShiftDX(a5)
 	move.w	d7,d0
 	sub.w	d5,d0
-	move.w	d0,-$CAA(a5)
+	move.w	d0,g_ShiftDY(a5)
 	move.l	a4,-(a7)
 	moveq	#$0,d0
 	move.l	d0,-(a7)
@@ -150,7 +150,7 @@ loc_1FB304:
 	bra.s	loc_1FB330
 loc_1FB322:
 	ext.l	d7
-	movea.l	-$34A6(a5),a0
+	movea.l	g_ObjTable(a5),a0
 	move.l	d7,d0
 	asl.l	#$2,d0
 	move.l	(a0,d0.l),d0

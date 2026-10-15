@@ -19,7 +19,7 @@ Seg_Free:
 	move.l	d0,d1
 	lsl.l	#$2,d0
 	add.l	d1,d0
-	lea.l	-$33D2(a5),a0
+	lea.l	g_Segs(a5),a0
 	move.b	#$FF,$11(a0,d0.w)
 loc_1F7D2E:
 	moveq	#$0,d0
@@ -33,7 +33,7 @@ loc_1F7D2E:
 	move.l	d0,d1
 	lsl.l	#$2,d0
 	add.l	d1,d0
-	lea.l	-$33D2(a5),a0
+	lea.l	g_Segs(a5),a0
 	move.b	#$FF,$10(a0,d0.w)
 loc_1F7D54:
 	clr.b	(a4)

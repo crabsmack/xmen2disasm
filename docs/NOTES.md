@@ -125,7 +125,7 @@ _(module → functions, globals, data; add as you learn them)_
   `-$34A6`), `Obj_ForEachChild`; +$42 draw layer; +$54..+$5A second box (`Obj_UpdateBoxes`,
   used by `ObjList_ForEachAtPoint` hit tests); +$6A hit-flash timer.
 - **Floor segments (w140)**: $14-byte records at `-$33D2` ($FFCE2E), +0 bit 7 in use, +1 type
-  (handler table at `-$336A`), +2 layer, +8..+$E endpoints x1,y1,x2,y2, +$10/+$11 previous/next
+  (handler table `g_SegTypeHooks` at `-$346A`), +2 layer, +8..+$E endpoints x1,y1,x2,y2, +$10/+$11 previous/next
   neighbour index, +$13 next segment of the same owner. Objects with flags +6 bit $200 own
   segments from +$7A (their box top becomes a walkable line); a walker keeps the segment it
   stands on in +$76 and its position along it in +$72 (`Seg_WouldLeaveEnd`).

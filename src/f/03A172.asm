@@ -30,7 +30,7 @@ sub_03A172:
 	move.l	d1,d2
 	lsl.l	#$2,d1
 	add.l	d2,d1
-	lea.l	-$33D2(a5),a0
+	lea.l	g_Segs(a5),a0
 	ori.b	#$40,(a0,d1.w)
 	moveq	#$0,d0
 	move.b	d7,d0

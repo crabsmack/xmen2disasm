@@ -17,8 +17,8 @@ Spr_EmitPre_Piece:
 loc_1FB88A:
 	cmp.b	d3,d5
 	blt.w	loc_1FB7E2
-	move.l	a4,-$1FE6(a5)
-	add.w	d5,-$1FE2(a5)
+	move.l	a4,g_SprWritePtr(a5)
+	add.w	d5,g_SprIndex(a5)
 loc_1FB898:
 	movem.l	-$24(a6),d3-d7/a2-a4
 	unlk	a6

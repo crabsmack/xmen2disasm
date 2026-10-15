@@ -13,7 +13,7 @@ sub_1F9DE8:
 	move.w	-$3A22(a5),d1
 	ext.l	d1
 	add.l	d0,d1
-	move.w	-$3A24(a5),d0
+	move.w	g_LevelFrame(a5),d0
 	ext.l	d0
 	cmp.l	d0,d1
 	bne.s	loc_1F9E42
@@ -24,7 +24,7 @@ sub_1F9DE8:
 	move.b	(a0),d0
 	ext.w	d0
 	move.w	d0,g_DemoPad(a5)
-	move.w	-$3A24(a5),-$3A22(a5)
+	move.w	g_LevelFrame(a5),-$3A22(a5)
 	moveq	#-$1,d0
 	cmp.w	g_DemoPad(a5),d0
 	bne.s	loc_1F9E42

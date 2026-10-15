@@ -9,7 +9,7 @@ sub_026CFA:
 	asr.l	#$8,d4
 	ori.w	#$1,$8C(a3)
 	moveq	#$2,d7
-	movea.l	-$34A6(a5),a0
+	movea.l	g_ObjTable(a5),a0
 	movea.l	$8(a0),a4
 	bra.s	loc_026D7A
 loc_026D1E:
@@ -49,12 +49,12 @@ loc_026D5C:
 	addq.w	#$4,a7
 loc_026D6C:
 	addq.l	#$1,d7
-	movea.l	-$34A6(a5),a0
+	movea.l	g_ObjTable(a5),a0
 	move.l	d7,d0
 	asl.l	#$2,d0
 	movea.l	(a0,d0.l),a4
 loc_026D7A:
-	move.w	-$13F2(a5),d0
+	move.w	g_ObjCount(a5),d0
 	ext.l	d0
 	cmp.l	d7,d0
 	bgt.s	loc_026D1E

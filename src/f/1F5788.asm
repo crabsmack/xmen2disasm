@@ -250,7 +250,7 @@ loc_1F59D8:
 	addq.w	#$8,a7
 	bra.w	loc_1F5CD2
 loc_1F5A5C:
-	pea.l	$1F5F3E(pc)
+	pea.l	Str_MapBufTags+$4(pc)
 	move.w	-$3A6E(a5),d0
 	ext.l	d0
 	add.l	d0,d0
@@ -290,7 +290,7 @@ loc_1F5AC6:
 	bne.s	loc_1F5AE0
 	move.l	$10(a6),$14(a6)
 loc_1F5AE0:
-	pea.l	$1F5F3C(pc)
+	pea.l	Str_MapBufTags+$2(pc)
 	move.w	-$3A7A(a5),d0
 	ext.l	d0
 	add.l	d0,d0
@@ -326,7 +326,7 @@ loc_1F5B38:
 	move.b	d0,d7
 	move.w	$8(a3),-$3AA8(a5)
 	move.l	g_HeapTop(a5),-$6(a6)
-	pea.l	$1F5F3A(pc)
+	pea.l	Str_MapBufTags(pc)
 	moveq	#$0,d0
 	move.l	d0,-(a7)
 	jsr	$5032(a5)	; -> Mem_StackAlloc
@@ -399,7 +399,7 @@ loc_1F5C06:
 	move.l	a0,$4(a1)
 	movea.l	-$6(a6),a0
 	move.l	(a0),-$6(a6)
-	pea.l	$1F5F16(pc)
+	pea.l	Str_BTilesTag(pc)
 	moveq	#$0,d0
 	move.l	d0,-(a7)
 	jsr	$5032(a5)	; -> Mem_StackAlloc
@@ -468,7 +468,7 @@ loc_1F5CD2:
 loc_1F5CEA:
 	addi.w	#$E0,-$3ACC(a5)
 loc_1F5CF0:
-	pea.l	$1F5EFE(pc)
+	pea.l	Str_RowTableTags+$2(pc)
 	move.w	-$3A78(a5),d0
 	ext.l	d0
 	add.l	d0,d0
@@ -541,7 +541,7 @@ loc_1F5DAE:
 loc_1F5DBE:
 	addi.w	#$E0,-$3AD0(a5)
 loc_1F5DC4:
-	pea.l	$1F5EFC(pc)
+	pea.l	Str_RowTableTags(pc)
 	move.w	-$3A7C(a5),d0
 	ext.l	d0
 	add.l	d0,d0

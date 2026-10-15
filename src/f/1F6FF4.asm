@@ -2,7 +2,7 @@
 ; Seg_ComputeObjPos - set an object's position along a floor segment (+$72) from its x or y, clamped to the segment
 ; In:  8(a6) = segment   $C(a6) = object
 ; Out: none
-; Evidence: segment type handler (table -$336A by type byte +1) gets message 5 first; types 1/$24, 2/$23 use y vs +$A/+$E, the horizontal types use x vs +8/+$C (and halve x velocity +$16); result (pos - start) << 8
+; Evidence: segment type handler (table -$346A (g_SegTypeHooks) by type byte +1) gets message 5 first; types 1/$24, 2/$23 use y vs +$A/+$E, the horizontal types use x vs +8/+$C (and halve x velocity +$16); result (pos - start) << 8
 ; ---------------------------------------------------------------------------
 Seg_ComputeObjPos:
 	link.w	a6,#$0

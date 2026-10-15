@@ -21,7 +21,7 @@ loc_1F077A:
 	move.b	$12(a3),d0
 	ext.w	d0
 	ext.l	d0
-	movea.l	-$34A6(a5),a0
+	movea.l	g_ObjTable(a5),a0
 	asl.l	#$2,d0
 	move.l	(a0,d0.l),d0
 loc_1F078C:

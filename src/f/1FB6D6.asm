@@ -19,17 +19,17 @@ Spr_EmitPreLinked_Piece:
 	tst.b	$10(a0)
 	bne.s	loc_1FB730
 loc_1FB6FE:
-	movea.l	-$1FE6(a5),a0
+	movea.l	g_SprWritePtr(a5),a0
 	moveq	#$0,d1
 	move.b	$3(a0),d1
 	cmpi.w	#$50,d1
 	beq.s	loc_1FB74E
-	move.w	d1,-$1FE2(a5)
+	move.w	d1,g_SprIndex(a5)
 	move.w	d1,d0
 	asl.w	#$3,d0
 	lea.l	g_SpriteTable(a5),a0
 	adda.w	d0,a0
-	move.l	a0,-$1FE6(a5)
+	move.l	a0,g_SprWritePtr(a5)
 	addq.w	#$1,d1
 	swap	d6
 	move.w	d4,d6

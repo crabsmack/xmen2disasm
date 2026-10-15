@@ -32,7 +32,7 @@ loc_0BD82A:
 	move.l	d0,d1
 	lsl.l	#$2,d0
 	add.l	d1,d0
-	lea.l	-$33D2(a5),a0
+	lea.l	g_Segs(a5),a0
 	adda.w	d0,a0
 	move.l	a0,-$4(a6)
 	move.l	a0,d0

@@ -19,7 +19,7 @@ Apocalypse_Deactivate:
 	move.w	$6(a3),d5
 	move.w	$8(a3),d6
 	moveq	#$2,d7
-	movea.l	-$34A6(a5),a0
+	movea.l	g_ObjTable(a5),a0
 	movea.l	$8(a0),a4
 	addq.w	#$4,a7
 	bra.s	loc_04CD1A
@@ -42,13 +42,13 @@ loc_04CD0A:
 	addq.w	#$1,d7
 	move.w	d7,d0
 	ext.l	d0
-	movea.l	-$34A6(a5),a0
+	movea.l	g_ObjTable(a5),a0
 	asl.l	#$2,d0
 	movea.l	(a0,d0.l),a4
 loc_04CD1A:
-	cmp.w	-$13F2(a5),d7
+	cmp.w	g_ObjCount(a5),d7
 	blt.s	loc_04CCDE
-	sub.w	d6,-$3598(a5)
+	sub.w	d6,g_VramTileCursor(a5)
 	move.b	#$FF,$D(a3)
 	move.b	#$FF,$C(a3)
 	movem.l	-$14(a6),d5-d7/a3-a4

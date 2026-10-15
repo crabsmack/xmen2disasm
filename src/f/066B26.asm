@@ -74,9 +74,9 @@ loc_066B48:
 	moveq	#$0,d0
 	move.l	d0,g_VBlankCount(a5)
 	clr.w	-$3A22(a5)
-	clr.w	-$3A24(a5)
+	clr.w	g_LevelFrame(a5)
 	clr.b	-$38C2(a5)
-	move.w	-$3598(a5),-$3888(a5)
+	move.w	g_VramTileCursor(a5),-$3888(a5)
 	jsr	$5042(a5)	; -> Spr_InitLinks
 	jsr	$50FA(a5)	; -> Pad_Update
 	ori.w	#$40,g_VdpReg1(a5)

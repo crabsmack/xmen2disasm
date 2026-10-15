@@ -14,7 +14,7 @@ Spr_EmitPre:
 	move.b	$A(a0),d2
 	bmi.w	loc_1FB898
 	moveq	#$50,d3
-	sub.w	-$1FE2(a5),d3
+	sub.w	g_SprIndex(a5),d3
 	ble.w	loc_1FB898
 	lea.l	$24(a1),a2
 	lsl.w	#$2,d2
@@ -25,7 +25,7 @@ Spr_EmitPre:
 	ble.s	loc_1FB796
 	move.b	$10(a2),d3
 loc_1FB796:
-	movea.l	-$1FE6(a5),a4
+	movea.l	g_SprWritePtr(a5),a4
 	moveq	#$0,d5
 	move.w	$16(a6),d7
 	sf.b	-$1(a6)
