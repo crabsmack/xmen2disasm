@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_13AD6C	[link-after-rts]
+; Mine_StateArm4 - mine arming step 4: fastest blink for 13 frames, then explode
+; In:  8(a6) = mine record
+; Out: none
+; Evidence: +$10 = Tbl_MineAnimArm4 (frame delay 1), +$1C = 13, +$18 = Mine_Explode
 ; ---------------------------------------------------------------------------
-sub_13AD6C:
+Mine_StateArm4:
 	link.w	a6,#$0
 	move.l	a4,-(a7)
 	movea.l	$8(a6),a4
@@ -12,7 +15,7 @@ sub_13AD6C:
 	move.b	$7(a0),d0
 	move.w	d0,$E(a4)
 	clr.l	$14(a4)
-	lea.l	sub_13ADA6(pc),a0
+	lea.l	Mine_Explode(pc),a0
 	move.l	a0,$18(a4)
 	move.w	#$D,$1C(a4)
 	movea.l	-$4(a6),a4

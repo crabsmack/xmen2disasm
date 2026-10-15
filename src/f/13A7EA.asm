@@ -1,14 +1,17 @@
 ; ---------------------------------------------------------------------------
-; sub_13A7EA	[link-after-rts]
+; Mine_InitPool - allocate the pool of 20 lightweight mine records and start its per-frame update timer and draw hook
+; In:  none
+; Out: none
+; Evidence: Mem_StackAlloc($2F8 = 20 x $26, Str_MinePoolTag) -> $FFE784, count $FFE788 = 0, Mem_Set; Timer_Create(Mine_PoolUpdate, 0, 0, 1) + Timer_Start; DrawList_Add(Mine_PoolDraw, 0, 0, $7F, 0, 0); caller Mine_ClassInit
 ; ---------------------------------------------------------------------------
-sub_13A7EA:
+Mine_InitPool:
 	link.w	a6,#$0
 	movem.l	d4-d7/a4,-(a7)
 	move.w	#$2F8,d7
 	clr.b	d4
 	moveq	#$7F,d5
 	clr.b	d6
-	pea.l	Str_Empty_13A880(pc)
+	pea.l	Str_MinePoolTag(pc)
 	ext.l	d7
 	move.l	d7,-(a7)
 	jsr	$5032(a5)	; -> Mem_StackAlloc
@@ -25,7 +28,7 @@ sub_13A7EA:
 	moveq	#$0,d1
 	move.l	d1,-(a7)
 	move.l	d1,-(a7)
-	pea.l	sub_13A8C4(pc)
+	pea.l	Mine_PoolUpdate(pc)
 	jsr	$4FD2(a5)	; -> Timer_Create
 	movea.l	d0,a4
 	move.l	a4,d0
@@ -58,7 +61,7 @@ loc_13A864:
 	move.l	d0,-(a7)
 	moveq	#$0,d0
 	move.l	d0,-(a7)
-	pea.l	sub_13AA02(pc)
+	pea.l	Mine_PoolDraw(pc)
 	jsr	$4F6A(a5)	; -> DrawList_Add
 	lea.l	$18(a7),a7
 	movem.l	-$14(a6),d4-d7/a4

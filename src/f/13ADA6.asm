@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_13ADA6	[link-after-rts]
+; Mine_Explode - mine state: explode - explosion effect, damage players inside the blast box, free the record, spawn the debris effect
+; In:  8(a6) = mine record
+; Out: d0 = misc
+; Evidence: Explosion_Spawn(x<<8, y<<8, 0); each live player with hit cooldown 0 and box within x +/-$3C, y-$28..y-$1E gets vtable +$26 TakeDamage(p, 0, 4, 1, x, y); +$18 = 0 (removed next update); ACTOR New at the spot (jt $4DC2) -> sub_13DE4A
 ; ---------------------------------------------------------------------------
-sub_13ADA6:
+Mine_Explode:
 	link.w	a6,#$FFF0
 	movem.l	d3-d7/a3-a4,-(a7)
 	movea.l	$8(a6),a3

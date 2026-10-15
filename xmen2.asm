@@ -4635,7 +4635,7 @@ Art_MineNem:	; Nemesis-style compressed 4bpp tiles (Nem_Decode; code table built
 	include "src/f/13A762.asm"
 	include "src/f/13A784.asm"
 	include "src/f/13A7EA.asm"
-Str_Empty_13A880:	; C string "" (used by sub_13A7EA)
+Str_MinePoolTag:	; empty C string: Mem_StackAlloc tag of the mine pool (Mine_InitPool)
 	incrom	$13A880,$2
 	include "src/f/13A882.asm"
 	include "src/f/13A8C4.asm"
@@ -4652,8 +4652,15 @@ Str_Empty_13A880:	; C string "" (used by sub_13A7EA)
 	include "src/f/13ADA6.asm"
 Tbl_Mine_vtable:	; class descriptor "MINE": word $6E = name offset, long parent (ACTOR), 26 method pointers, then the class name string
 	incrom	$13AF1A,$74
-	incrom	$13AF8E,$48
-Art_NinjaSpr:	; sprite definition (type $00): $24-byte header, $14-byte frame records, pieces, tiles; A of 12 bytes used at runtime; read by sub_13A8C4, sub_13AD6C, VDP_WriteWords; jt[1850] used by sub_13AD6C
+Tbl_MineAnimIdle:	; animation script {byte flags, byte 6 steps, word frame delay 5, ..., frames 0-5 from +6}: idle blink of a pooled mine (Mine_StateStart); delays 5,4,3,2,1 in this and the next four scripts = the blink speeds up while it arms; jt[1846]
+	incrom	$13AF8E,$12
+Tbl_MineAnimArm1:	; animation script, frames 0-5, frame delay 4: first arming step, 20 frames (Mine_StateArm1); jt[1847]
+	incrom	$13AFA0,$12
+Tbl_MineAnimArm2:	; animation script, frames 0-5, frame delay 3: second arming step, 20 frames (Mine_StateArm2); jt[1848]
+	incrom	$13AFB2,$12
+Tbl_MineAnimArm3:	; animation script, frames 0-5, frame delay 2: third arming step, 13 frames (Mine_StateArm3); jt[1849]
+	incrom	$13AFC4,$12
+Tbl_MineAnimArm4:	; sprite definition (type $00): $24-byte header, $14-byte frame records, pieces, tiles; A of 12 bytes used at runtime; read by Mine_PoolUpdate, Mine_StateArm4, VDP_WriteWords; jt[1850] used by Mine_StateArm4
 	incrom	$13AFD6,$12
 Art_NinjaSpr2:	; sprite definition (type $18, raw 4bpp tiles): $24-byte header, $14-byte frame records, pieces, tiles; 1C2C of 1C2C bytes used at runtime; read by VDP_WriteWords, Spr_PreloadTiles; DMA to VRAM $CE60-D4A0; jt[1851] used by Ninja_Init, SiberiaB1_LoadResources
 	incrom	$13AFE8,$1C2C

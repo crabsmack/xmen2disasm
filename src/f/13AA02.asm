@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_13AA02	[link-after-rts]
+; Mine_PoolDraw - draw-list hook: emit two hardware sprites (top and bottom halves) per pooled mine
+; In:  none (DrawList callback)
+; Out: none
+; Evidence: tile = frame*6 + base of sprite-def slot $FFE78A | $E000; writes g_SpriteTable entries via g_SprWritePtr/g_SprIndex at screen (x-g_CameraX+$79, y-g_CameraY+$70) and (+$70, +$78), sizes 4 and $C
 ; ---------------------------------------------------------------------------
-sub_13AA02:
+Mine_PoolDraw:
 	link.w	a6,#$0
 	movem.l	d4-d7/a4,-(a7)
 	movea.l	-$1A7C(a5),a4

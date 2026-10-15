@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_13AD32	[link-after-rts]
+; Mine_StateArm3 - mine arming step 3: faster blink for 13 frames
+; In:  8(a6) = mine record
+; Out: none
+; Evidence: +$10 = Tbl_MineAnimArm3 (frame delay 2), +$1C = 13, +$18 = Mine_StateArm4
 ; ---------------------------------------------------------------------------
-sub_13AD32:
+Mine_StateArm3:
 	link.w	a6,#$0
 	move.l	a4,-(a7)
 	movea.l	$8(a6),a4
@@ -12,7 +15,7 @@ sub_13AD32:
 	move.b	$7(a0),d0
 	move.w	d0,$E(a4)
 	clr.l	$14(a4)
-	lea.l	sub_13AD6C(pc),a0
+	lea.l	Mine_StateArm4(pc),a0
 	move.l	a0,$18(a4)
 	move.w	#$D,$1C(a4)
 	movea.l	-$4(a6),a4

@@ -6,7 +6,7 @@
 ; ---------------------------------------------------------------------------
 Mine_ClassInit:
 	link.w	a6,#$0
-	jsr	sub_13A7EA(pc)
+	jsr	Mine_InitPool(pc)
 	moveq	#$3,d0
 	move.l	d0,-(a7)
 	lea.l	$3992(a5),a0

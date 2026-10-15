@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_13AC06	[link-after-rts]
+; Mine_StatePickTarget - mine state: choose the nearest live player as target and watch it for 60 frames
+; In:  8(a6) = mine record
+; Out: d0 = target or 0
+; Evidence: sub_1F6A32 -> +$20; non-zero: +$1E = 60, +$18 = Mine_StateWatch
 ; ---------------------------------------------------------------------------
-sub_13AC06:
+Mine_StatePickTarget:
 	link.w	a6,#$0
 	movem.l	a3-a4,-(a7)
 	movea.l	$8(a6),a4
@@ -13,7 +16,7 @@ sub_13AC06:
 	addq.w	#$4,a7
 	beq.s	loc_13AC36
 	move.w	#$3C,$1E(a4)
-	lea.l	sub_13AC40(pc),a0
+	lea.l	Mine_StateWatch(pc),a0
 	move.l	a0,$18(a4)
 	clr.w	$1C(a4)
 loc_13AC36:

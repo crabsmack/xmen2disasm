@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_13AB12	[link-after-rts]
+; Mine_PoolAdd - take a free mine record (max 20) and place it at a spawn position
+; In:  8(a6) = position record (+2 word x, +4 word y)
+; Out: d0 = record or 0 when the pool is full
+; Evidence: pool + count*$26, count += 1, Mem_Set 0; +4/+6 = x/y, +$18 = Mine_StateStart; caller Mine_SpawnFromRec
 ; ---------------------------------------------------------------------------
-sub_13AB12:
+Mine_PoolAdd:
 	link.w	a6,#$0
 	movem.l	a3-a4,-(a7)
 	movea.l	$8(a6),a3
@@ -31,7 +34,7 @@ sub_13AB12:
 	jsr	$4DB2(a5)	; -> Mem_Set
 	move.w	$2(a3),$4(a4)
 	move.w	$4(a3),$6(a4)
-	lea.l	sub_13ABCE(pc),a0
+	lea.l	Mine_StateStart(pc),a0
 	move.l	a0,$18(a4)
 	clr.w	$1C(a4)
 	moveq	#$0,d0

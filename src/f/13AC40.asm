@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_13AC40	[link-after-rts]
+; Mine_StateWatch - mine state: start arming when the target comes within $50 px horizontally and $28 px vertically; re-pick the target every 60 frames
+; In:  8(a6) = mine record
+; Out: none
+; Evidence: compares +4/+6 with target box +$4C..+$52 widened by $50/$28 -> Mine_StateArm1; +$1E = 0 -> Mine_StatePickTarget
 ; ---------------------------------------------------------------------------
-sub_13AC40:
+Mine_StateWatch:
 	link.w	a6,#$0
 	movem.l	d4-d7/a3-a4,-(a7)
 	movea.l	$8(a6),a4
@@ -32,14 +35,14 @@ sub_13AC40:
 	bgt.s	loc_13ACA2
 	cmp.w	$6(a4),d7
 	blt.s	loc_13ACA2
-	lea.l	sub_13ACBE(pc),a0
+	lea.l	Mine_StateArm1(pc),a0
 	move.l	a0,$18(a4)
 	clr.w	$1C(a4)
 	bra.s	loc_13ACB4
 loc_13ACA2:
 	tst.w	$1E(a4)
 	bne.s	loc_13ACB4
-	lea.l	sub_13AC06(pc),a0
+	lea.l	Mine_StatePickTarget(pc),a0
 	move.l	a0,$18(a4)
 	clr.w	$1C(a4)
 loc_13ACB4:

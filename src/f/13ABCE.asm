@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_13ABCE	[link-after-rts]
+; Mine_StateStart - mine state: start the slow idle blink, then look for a target
+; In:  8(a6) = mine record
+; Out: none
+; Evidence: +$10 = Tbl_MineAnimIdle (jt 1846), frame = script byte 7, +$18 = Mine_StatePickTarget
 ; ---------------------------------------------------------------------------
-sub_13ABCE:
+Mine_StateStart:
 	link.w	a6,#$0
 	move.l	a4,-(a7)
 	movea.l	$8(a6),a4
@@ -12,7 +15,7 @@ sub_13ABCE:
 	move.b	$7(a0),d0
 	move.w	d0,$E(a4)
 	clr.l	$14(a4)
-	lea.l	sub_13AC06(pc),a0
+	lea.l	Mine_StatePickTarget(pc),a0
 	move.l	a0,$18(a4)
 	clr.w	$1C(a4)
 	movea.l	-$4(a6),a4

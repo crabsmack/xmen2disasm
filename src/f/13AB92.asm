@@ -9,7 +9,7 @@ Mine_SpawnFromRec:
 	movem.l	a3-a4,-(a7)
 	movea.l	$C(a6),a4
 	move.l	$A(a4),-(a7)
-	jsr	sub_13AB12(pc)
+	jsr	Mine_PoolAdd(pc)
 	movea.l	d0,a3
 	move.l	a3,d0
 	beq.s	loc_13ABC2

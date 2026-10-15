@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_13A8C4	[link-after-rts]
+; Mine_PoolUpdate - per-frame timer for the mine pool: drop dead or off-screen mines, run each mine's state function and step its animation
+; In:  none (Timer callback)
+; Out: none
+; Evidence: record {+4/+6 word x/y px, +8 spawn record, +$E frame, +$10 anim script, +$14 step, +$16 frame timer, +$18 state fn, +$1C delay, +$1E timer, +$20 target}; state fn 0 -> Mine_PoolRemove; outside the view window ($FFCC3A-$FFCC40 + $20) -> spawn record +4 = 1 (respawnable) and remove; delay/timer count by 1 or 2 (g_TwoPlayerStep)
 ; ---------------------------------------------------------------------------
-sub_13A8C4:
+Mine_PoolUpdate:
 	link.w	a6,#$0
 	movem.l	d4-d7/a4,-(a7)
 	tst.b	g_TwoPlayerStep(a5)
@@ -19,7 +22,7 @@ loc_13A8E4:
 	tst.l	$18(a4)
 	bne.s	loc_13A8FE
 	move.l	a4,-(a7)
-	jsr	sub_13A882(pc)
+	jsr	Mine_PoolRemove(pc)
 	move.w	d7,d0
 	subq.w	#$1,d7
 	lea.l	-$26(a4),a4
@@ -52,7 +55,7 @@ loc_13A93A:
 	movea.l	$8(a4),a0
 	move.b	#$1,$4(a0)
 	move.l	a4,-(a7)
-	jsr	sub_13A882(pc)
+	jsr	Mine_PoolRemove(pc)
 	move.w	d7,d0
 	subq.w	#$1,d7
 	lea.l	-$26(a4),a4
