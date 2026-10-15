@@ -70,14 +70,14 @@ loc_064760:
 	ble.s	loc_06477A
 	move.w	-$3BB6(a5),-$E(a6)
 loc_06477A:
-	pea.l	$647CE(pc)
+	pea.l	Tbl_PlayerSelect2(pc)
 	move.w	-$E(a6),d0
 	ext.l	d0
 	lsl.l	#$5,d0
 	move.l	d0,-(a7)
 	jsr	$5032(a5)	; -> Mem_StackAlloc
 	move.l	d0,-$C9E(a5)
-	pea.l	$647CC(pc)
+	pea.l	Tbl_PlayerSelect(pc)
 	move.l	-$8(a6),d0
 	moveq	#$26,d1
 	add.l	d1,d0

@@ -99,9 +99,101 @@ def kind(it: dict, head0: int) -> tuple[str, str, str] | None:
     return None
 
 
+STATIC_KINDS = [  # callee prefix the item's jt slot is handed to -> (prefix, role, format)
+    (("Spr_Init", "Spr_Set", "Obj_SetSprite", "Spr_Preload"), ("Art", "Spr", "sprite definition (NOTES: Sprite definitions)")),
+    (("Obj_SetAnim", "Obj_ChangeAnim", "Anim_"), ("Tbl", "Anim", "animation script (NOTES: Animation scripts)")),
+    (("Level_Load",), ("Lvl", "Data", "level map/tileset blob (NOTES: Level map / tileset blobs)")),
+    (("Seg_",), ("Lvl", "Segs", "floor-segment list (Seg_LoadList)")),
+    (("Pal_",), ("Pal", "", "palette data")),
+    (("Nem_",), ("Art", "Nem", "Nemesis-style compressed tiles")),
+    (("Eni_",), ("Map", "Eni", "Enigma-compressed tilemap")),
+    (("Cerebro_PrintText",), ("Str", "Text", "Cerebro briefing text")),
+    (("Snd_", "Music_"), ("Snd", "", "sound data")),
+]
+
+
+def slot_callees() -> dict[int, list[tuple[str, str]]]:
+    """jt slot -> [(user function, callee it hands the slot's data to)], from the source: the
+    first `jsr` within 10 lines after a `$d(a5)` / `$d+2(a5)` reference (d = $22 + 8 * slot)."""
+    out: dict[int, list[tuple[str, str]]] = {}
+    a5 = re.compile(r"(?<![-\w])\$([0-9A-F]+)\(a5\)")
+    for f in (ROOT / "src" / "f").glob("*.asm"):
+        lines = f.read_text().splitlines()
+        fn = next((ln[:-1] for ln in lines if re.match(r"^[A-Za-z_]\w*:$", ln)), f.stem)
+        for i, ln in enumerate(lines):
+            body = ln.split(";")[0]
+            if "jsr" in body:
+                continue
+            for m in a5.finditer(body):
+                d = int(m.group(1), 16)
+                slot = next(((dd - 0x22) // 8 for dd in (d, d - 2) if dd >= 0x22 and (dd - 0x22) % 8 == 0), None)
+                if slot is None:
+                    continue
+                callee = ""
+                for nxt in lines[i + 1:i + 11]:
+                    if "\tjsr\t" in nxt:
+                        mm = re.search(r"; -> (\w+)", nxt) or re.search(r"jsr\t(\w+)\(pc\)", nxt)
+                        callee = mm.group(1) if mm else ""
+                        break
+                out.setdefault(slot, []).append((fn, callee))
+    return out
+
+
+def static_items(items: list[dict], rom: bytes, used: set[str]) -> list[str]:
+    """Never-read items: kind from what the code hands their jt slot to; else a context name."""
+    callees = slot_callees()
+    out = []
+    for it in items:
+        if it["read"] or it["dma"]:
+            continue
+        s, ln = int(it["start"], 16), it["len"]
+        blob = rom[s:s + ln]
+        uses = [u for i in it["jt"] for u in callees.get(i, [])]
+        k = None
+        for pre, kd in STATIC_KINDS:
+            if any(c.startswith(pre) for _u, c in uses):
+                k = kd
+                break
+        ctx = context(it)
+        if k is None and not it["jt"] and not it["refs"]:
+            if set(blob) <= {0} or set(blob) <= {0xFF}:
+                k = ("Pad", "", f"${blob[0]:02X} fill")
+            else:
+                continue  # unreferenced, unread: left for NOTES "Unknown"
+        if k is None:
+            named = [c for _u, c in uses if c and not c.startswith(("sub_", "loc_", "Mem_"))]
+            if named:
+                c = named[0]
+                role = c.split("_")[0] if c.split("_")[0] not in GENERIC else verb(c)
+                k = ("Tbl", role, f"data handed to {c} (format not established)")
+            elif uses and not uses[0][0].startswith(("sub_", "loc_")):
+                k = ("Tbl", verb(uses[0][0]), "format not established")
+            else:
+                k = ("Tbl", "", "format not established")
+        prefix, role, fmt = k
+        base = re.sub(r"\W", "", f"{prefix}_{ctx}{role}") + ("" if ctx else f"_{s:06X}")
+        name, n = base, 2
+        while name in used:
+            name, n = f"{base}{n}", n + 1
+        used.add(name)
+        bits = [fmt, "never read in the corpus"]
+        if uses:
+            bits.append("jt[" + ",".join(map(str, it["jt"])) + "] used by " + ", ".join(
+                dict.fromkeys(f"{u}" + (f" -> {c}" if c else "") for u, c in uses[:3])))
+        elif it["jt"]:
+            bits.append(f"jt[{','.join(map(str, it['jt']))}] (no code reference found)")
+        elif it["refs"]:
+            bits.append("referenced by " + ", ".join(it["refs"][:3]))
+        else:
+            bits.append(f"between {it['near'][0]} and {it['near'][1]}")
+        out.append(f"{it['start']} {ln:X} {name} {'; '.join(bits)}")
+    return out
+
+
 def main() -> int:
     ap = argparse.ArgumentParser()
     ap.add_argument("--dry-run", action="store_true")
+    ap.add_argument("--static", action="store_true", help="label never-read items from static use instead")
     ap.add_argument("--show", type=int, default=40)
     ap.add_argument("--limit", type=int, default=0)
     a = ap.parse_args()
@@ -110,6 +202,9 @@ def main() -> int:
     used = {ln.split("=")[0] for ln in (ROOT / "build" / "symbols.txt").read_text().splitlines()}
     used |= set(re.findall(r"^([A-Za-z_]\w*)\s*=", (ROOT / "src" / "ram.asm").read_text(), re.M))
     out, skipped = [], []
+    if a.static:
+        out = static_items(items, rom, used)
+        items = []
     for it in items:
         if not (it["read"] or it["dma"]):
             continue
