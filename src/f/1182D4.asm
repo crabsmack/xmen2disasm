@@ -75,7 +75,7 @@ loc_11839E:
 	moveq	#$0,d0
 	move.l	d0,-(a7)
 	pea.l	Explosion_HurtActor(pc)
-	move.l	-$1652(a5),-(a7)
+	move.l	g_HitListEnemyBody(a5),-(a7)
 	move.w	$2(a4),d1
 	ext.l	d1
 	moveq	#$20,d2
@@ -95,7 +95,7 @@ loc_11839E:
 	moveq	#$0,d0
 	move.l	d0,-(a7)
 	pea.l	Explosion_HurtActor(pc)
-	move.l	-$165A(a5),-(a7)
+	move.l	g_HitListPlayerBody(a5),-(a7)
 	move.w	$2(a4),d1
 	ext.l	d1
 	moveq	#$20,d2

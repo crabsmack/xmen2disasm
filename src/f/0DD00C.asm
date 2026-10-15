@@ -5,7 +5,7 @@ sub_0DD00C:
 	link.w	a6,#$0
 	move.l	a4,-(a7)
 	movea.l	$8(a6),a4
-	pea.l	-$1656(a5)
+	pea.l	g_HitListEnemyAtk(a5)
 	move.l	$80(a4),-(a7)
 	jsr	$406A(a5)	; -> List_Unlink
 	moveq	#$0,d0

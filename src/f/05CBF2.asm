@@ -11,7 +11,7 @@ sub_05CBF2:
 	moveq	#$36,d0
 	move.l	d0,-(a7)
 	jsr	$521A(a5)	; -> Snd_Play
-	pea.l	-$1652(a5)
+	pea.l	g_HitListEnemyBody(a5)
 	move.l	$84(a4),-(a7)
 	jsr	$406A(a5)	; -> List_Unlink
 	moveq	#$0,d0

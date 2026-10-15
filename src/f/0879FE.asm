@@ -18,7 +18,7 @@ BroodBoss_StateHurt:
 	moveq	#$37,d0
 	move.l	d0,-(a7)
 	jsr	$521A(a5)	; -> Snd_Play
-	pea.l	-$1652(a5)
+	pea.l	g_HitListEnemyBody(a5)
 	movea.l	$8(a6),a0
 	move.l	$84(a0),-(a7)
 	jsr	$406A(a5)	; -> List_Unlink

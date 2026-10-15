@@ -10,10 +10,10 @@ sub_183320:
 	movea.l	$8(a6),a4
 	tst.b	d5
 	beq.s	loc_183342
-	move.l	-$1652(a5),d0
+	move.l	g_HitListEnemyBody(a5),d0
 	bra.s	loc_183346
 loc_183342:
-	move.l	-$165A(a5),d0
+	move.l	g_HitListPlayerBody(a5),d0
 loc_183346:
 	move.l	d0,-$4(a6)
 	movea.l	$C(a6),a0

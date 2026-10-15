@@ -6,12 +6,12 @@ sub_0BCE56:
 	move.l	a4,-(a7)
 	movea.l	$8(a6),a4
 	andi.w	#$FFFD,$6(a4)
-	pea.l	-$1652(a5)
+	pea.l	g_HitListEnemyBody(a5)
 	move.l	a4,-(a7)
 	jsr	$4062(a5)	; -> HitList_Add
 	move.l	d0,$84(a4)
 	andi.w	#$FFFE,$6(a4)
-	pea.l	-$1656(a5)
+	pea.l	g_HitListEnemyAtk(a5)
 	move.l	a4,-(a7)
 	jsr	$4062(a5)	; -> HitList_Add
 	move.l	d0,$80(a4)

@@ -14,7 +14,7 @@ loc_04E9FE:
 	cmpi.w	#$10,d7
 	bne.s	loc_04EA38
 	andi.w	#$FFFD,$6(a4)
-	pea.l	-$1652(a5)
+	pea.l	g_HitListEnemyBody(a5)
 	move.l	a4,-(a7)
 	jsr	$4062(a5)	; -> HitList_Add
 	move.l	d0,$84(a4)

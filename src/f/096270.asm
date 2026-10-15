@@ -33,7 +33,7 @@ loc_0962A2:
 	addq.w	#$4,a7
 loc_0962B8:
 	andi.w	#$FFFD,$6(a4)
-	pea.l	-$1652(a5)
+	pea.l	g_HitListEnemyBody(a5)
 	move.l	a4,-(a7)
 	jsr	$4062(a5)	; -> HitList_Add
 	move.l	d0,$84(a4)

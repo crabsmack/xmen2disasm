@@ -23,12 +23,12 @@ sub_1F1C06:
 	and.l	$90(a4),d0
 	addq.w	#$4,a7
 	beq.s	loc_1F1C82
-	pea.l	-$1656(a5)
+	pea.l	g_HitListEnemyAtk(a5)
 	move.l	$80(a4),-(a7)
 	jsr	$406A(a5)	; -> List_Unlink
 	moveq	#$0,d0
 	move.l	d0,$80(a4)
-	pea.l	-$1652(a5)
+	pea.l	g_HitListEnemyBody(a5)
 	move.l	$84(a4),-(a7)
 	jsr	$406A(a5)	; -> List_Unlink
 	moveq	#$0,d0
@@ -36,12 +36,12 @@ sub_1F1C06:
 	lea.l	$10(a7),a7
 	bra.s	loc_1F1CAA
 loc_1F1C82:
-	pea.l	-$165E(a5)
+	pea.l	g_HitListPlayerAtk(a5)
 	move.l	$80(a4),-(a7)
 	jsr	$406A(a5)	; -> List_Unlink
 	moveq	#$0,d0
 	move.l	d0,$80(a4)
-	pea.l	-$165A(a5)
+	pea.l	g_HitListPlayerBody(a5)
 	move.l	$84(a4),-(a7)
 	jsr	$406A(a5)	; -> List_Unlink
 	moveq	#$0,d0

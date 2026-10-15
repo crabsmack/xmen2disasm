@@ -44,7 +44,7 @@ loc_0968D4:
 	pea.l	($F2).w
 	jsr	$521A(a5)	; -> Snd_Play
 	ori.w	#$2,$6(a4)
-	pea.l	-$1652(a5)
+	pea.l	g_HitListEnemyBody(a5)
 	move.l	$84(a4),-(a7)
 	jsr	$406A(a5)	; -> List_Unlink
 	moveq	#$0,d0

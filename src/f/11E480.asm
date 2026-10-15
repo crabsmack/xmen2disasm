@@ -116,7 +116,7 @@ loc_11E590:
 	move.l	d0,-(a7)
 	move.l	d0,-(a7)
 	pea.l	BioBullet_HitActor(pc)
-	move.l	-$165A(a5),-(a7)
+	move.l	g_HitListPlayerBody(a5),-(a7)
 	ext.l	d7
 	move.l	d7,-(a7)
 	ext.l	d6

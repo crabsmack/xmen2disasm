@@ -6,9 +6,9 @@ sub_1E2F46:
 	movem.l	d3-d7/a3-a4,-(a7)
 	movea.l	$8(a6),a0
 	addq.w	#$1,$CA(a0)
-	tst.l	-$1652(a5)
+	tst.l	g_HitListEnemyBody(a5)
 	beq.w	loc_1E31B0
-	move.l	-$1652(a5),-$4(a6)
+	move.l	g_HitListEnemyBody(a5),-$4(a6)
 loc_1E2F64:
 	movea.l	-$4(a6),a0
 	movea.l	$8(a0),a4

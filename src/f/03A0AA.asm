@@ -10,7 +10,7 @@ sub_03A0AA:
 	pea.l	($BC).w
 	jsr	$521A(a5)	; -> Snd_Play
 	andi.w	#$BFFF,$6(a4)
-	pea.l	-$1652(a5)
+	pea.l	g_HitListEnemyBody(a5)
 	move.l	a4,-(a7)
 	jsr	$4062(a5)	; -> HitList_Add
 	move.l	d0,$84(a4)

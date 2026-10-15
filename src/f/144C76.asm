@@ -11,7 +11,7 @@ sub_144C76:
 	movea.l	$2(a0),a0
 	movea.l	$3E(a0),a1
 	jsr	(a1)
-	pea.l	-$165A(a5)
+	pea.l	g_HitListPlayerBody(a5)
 	move.l	a4,-(a7)
 	jsr	$4062(a5)	; -> HitList_Add
 	move.l	d0,$8C(a4)

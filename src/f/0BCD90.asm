@@ -8,12 +8,12 @@ sub_0BCD90:
 	clr.w	$1E(a4)
 	clr.l	$16(a4)
 	clr.w	$20(a4)
-	pea.l	-$1652(a5)
+	pea.l	g_HitListEnemyBody(a5)
 	move.l	$84(a4),-(a7)
 	jsr	$406A(a5)	; -> List_Unlink
 	moveq	#$0,d0
 	move.l	d0,$84(a4)
-	pea.l	-$1656(a5)
+	pea.l	g_HitListEnemyAtk(a5)
 	move.l	$80(a4),-(a7)
 	jsr	$406A(a5)	; -> List_Unlink
 	moveq	#$0,d0

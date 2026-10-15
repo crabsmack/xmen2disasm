@@ -102,7 +102,7 @@ loc_157F6A:
 	moveq	#$0,d0
 	move.l	d0,-(a7)
 	pea.l	sub_157CB2(pc)
-	move.l	-$1652(a5),-(a7)
+	move.l	g_HitListEnemyBody(a5),-(a7)
 	ext.l	d4
 	move.l	d4,-(a7)
 	ext.l	d5
@@ -116,7 +116,7 @@ loc_157FCE:
 	moveq	#$0,d0
 	move.l	d0,-(a7)
 	pea.l	sub_157CB2(pc)
-	move.l	-$165A(a5),-(a7)
+	move.l	g_HitListPlayerBody(a5),-(a7)
 	ext.l	d4
 	move.l	d4,-(a7)
 	ext.l	d5

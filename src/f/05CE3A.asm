@@ -32,7 +32,7 @@ loc_05CE7A:
 	subq.b	#$1,$9A(a3)
 	tst.b	$9A(a3)
 	bne.s	loc_05CE9A
-	pea.l	-$1652(a5)
+	pea.l	g_HitListEnemyBody(a5)
 	move.l	$84(a3),-(a7)
 	jsr	$406A(a5)	; -> List_Unlink
 	moveq	#$0,d0

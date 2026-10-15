@@ -7,13 +7,13 @@
 HitList_Init:
 	link.w	a6,#$0
 	movem.l	d3/d7/a3-a4,-(a7)
-	lea.l	-$164E(a5),a3
+	lea.l	g_HitNodes(a5),a3
 	movea.l	a3,a4
 	moveq	#$0,d0
-	move.l	d0,-$1652(a5)
-	move.l	d0,-$1656(a5)
-	move.l	d0,-$165A(a5)
-	move.l	d0,-$165E(a5)
+	move.l	d0,g_HitListEnemyBody(a5)
+	move.l	d0,g_HitListEnemyAtk(a5)
+	move.l	d0,g_HitListPlayerBody(a5)
+	move.l	d0,g_HitListPlayerAtk(a5)
 	clr.w	d7
 	moveq	#$32,d3
 loc_15DED2:

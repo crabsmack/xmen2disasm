@@ -54,14 +54,14 @@ loc_03630E:
 	moveq	#$10,d0
 	and.w	$6(a4),d0
 	beq.s	loc_036330
-	pea.l	-$165E(a5)
+	pea.l	g_HitListPlayerAtk(a5)
 	move.l	a4,-(a7)
 	jsr	$4062(a5)	; -> HitList_Add
 	move.l	d0,$80(a4)
 	addq.w	#$8,a7
 	bra.s	loc_036340
 loc_036330:
-	pea.l	-$1656(a5)
+	pea.l	g_HitListEnemyAtk(a5)
 	move.l	a4,-(a7)
 	jsr	$4062(a5)	; -> HitList_Add
 	move.l	d0,$80(a4)
@@ -73,7 +73,7 @@ loc_036340:
 	moveq	#$10,d0
 	and.w	$6(a4),d0
 	bne.s	loc_036360
-	pea.l	-$1652(a5)
+	pea.l	g_HitListEnemyBody(a5)
 	move.l	a4,-(a7)
 	jsr	$4062(a5)	; -> HitList_Add
 	move.l	d0,$84(a4)

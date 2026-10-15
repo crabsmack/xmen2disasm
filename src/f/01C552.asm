@@ -19,7 +19,7 @@ YoyoAcolyte_ThrowYoyo:
 	movea.l	(a3),a0
 	movea.l	$56(a0),a1
 	jsr	(a1)
-	pea.l	-$1652(a5)
+	pea.l	g_HitListEnemyBody(a5)
 	move.l	a3,-(a7)
 	jsr	$4062(a5)	; -> HitList_Add
 	move.l	d0,$84(a3)

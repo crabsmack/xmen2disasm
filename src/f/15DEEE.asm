@@ -7,7 +7,7 @@
 HitList_AllocNode:
 	link.w	a6,#$0
 	movem.l	d3/d7/a3-a4,-(a7)
-	lea.l	-$164E(a5),a3
+	lea.l	g_HitNodes(a5),a3
 	lea.l	(a3),a4
 	clr.w	d7
 	moveq	#$32,d3

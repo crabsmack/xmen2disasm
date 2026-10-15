@@ -9,12 +9,12 @@ Collide_RunAll:
 	move.l	a4,-(a7)
 	tst.w	g_SceneExitTimer(a5)
 	bne.s	loc_1FA0A6
-	tst.l	-$1652(a5)
+	tst.l	g_HitListEnemyBody(a5)
 	beq.s	loc_1FA086
-	movea.l	-$165E(a5),a4
+	movea.l	g_HitListPlayerAtk(a5),a4
 	bra.s	loc_1FA082
 loc_1FA072:
-	move.l	-$1652(a5),-(a7)
+	move.l	g_HitListEnemyBody(a5),-(a7)
 	move.l	$8(a4),-(a7)
 	jsr	Collide_ObjVsList(pc)
 	movea.l	(a4),a4
@@ -23,12 +23,12 @@ loc_1FA082:
 	move.l	a4,d0
 	bne.s	loc_1FA072
 loc_1FA086:
-	tst.l	-$165A(a5)
+	tst.l	g_HitListPlayerBody(a5)
 	beq.s	loc_1FA0A6
-	movea.l	-$1656(a5),a4
+	movea.l	g_HitListEnemyAtk(a5),a4
 	bra.s	loc_1FA0A2
 loc_1FA092:
-	move.l	-$165A(a5),-(a7)
+	move.l	g_HitListPlayerBody(a5),-(a7)
 	move.l	$8(a4),-(a7)
 	jsr	Collide_ObjVsList(pc)
 	movea.l	(a4),a4

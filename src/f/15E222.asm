@@ -116,7 +116,7 @@ loc_15E33A:
 	moveq	#$10,d0
 	and.w	$6(a3),d0
 	beq.s	loc_15E360
-	pea.l	-$165E(a5)
+	pea.l	g_HitListPlayerAtk(a5)
 	move.l	$80(a3),-(a7)
 	jsr	List_Unlink(pc)
 	moveq	#$0,d0
@@ -124,7 +124,7 @@ loc_15E33A:
 	addq.w	#$8,a7
 	bra.s	loc_15E374
 loc_15E360:
-	pea.l	-$1656(a5)
+	pea.l	g_HitListEnemyAtk(a5)
 	move.l	$80(a3),-(a7)
 	jsr	List_Unlink(pc)
 	moveq	#$0,d0
@@ -137,7 +137,7 @@ loc_15E374:
 	moveq	#$10,d0
 	and.w	$6(a3),d0
 	beq.s	loc_15E39A
-	pea.l	-$165A(a5)
+	pea.l	g_HitListPlayerBody(a5)
 	move.l	$84(a3),-(a7)
 	jsr	List_Unlink(pc)
 	moveq	#$0,d0
@@ -145,7 +145,7 @@ loc_15E374:
 	addq.w	#$8,a7
 	bra.s	loc_15E3AE
 loc_15E39A:
-	pea.l	-$1652(a5)
+	pea.l	g_HitListEnemyBody(a5)
 	move.l	$84(a3),-(a7)
 	jsr	List_Unlink(pc)
 	moveq	#$0,d0

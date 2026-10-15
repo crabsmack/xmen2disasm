@@ -11,7 +11,7 @@ BroodBoss_Defeat:
 	movea.l	$8(a6),a3
 	clr.w	d7
 	ori.w	#$2,$6(a3)
-	pea.l	-$1652(a5)
+	pea.l	g_HitListEnemyBody(a5)
 	move.l	$84(a3),-(a7)
 	jsr	$406A(a5)	; -> List_Unlink
 	moveq	#$0,d0

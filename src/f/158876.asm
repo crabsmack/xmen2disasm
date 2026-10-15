@@ -42,11 +42,11 @@ loc_1588F6:
 	moveq	#$10,d0
 	and.w	$6(a0),d0
 	beq.s	loc_15890E
-	movea.l	-$1652(a5),a3
+	movea.l	g_HitListEnemyBody(a5),a3
 	move.w	#$C,-$4(a6)
 	bra.s	loc_158968
 loc_15890E:
-	movea.l	-$165A(a5),a3
+	movea.l	g_HitListPlayerBody(a5),a3
 	move.w	#$4,-$4(a6)
 	bra.s	loc_158968
 loc_15891A:

@@ -29,7 +29,7 @@ sub_0DE2A8:
 	movea.l	(a4),a0
 	movea.l	$56(a0),a1
 	jsr	(a1)
-	pea.l	-$1652(a5)
+	pea.l	g_HitListEnemyBody(a5)
 	move.l	$84(a4),-(a7)
 	jsr	$406A(a5)	; -> List_Unlink
 	moveq	#$0,d0

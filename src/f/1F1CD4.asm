@@ -12,22 +12,22 @@ sub_1F1CD4:
 	and.l	$90(a4),d0
 	addq.w	#$4,a7
 	beq.s	loc_1F1D1C
-	pea.l	-$1656(a5)
+	pea.l	g_HitListEnemyAtk(a5)
 	move.l	a4,-(a7)
 	jsr	$4062(a5)	; -> HitList_Add
 	move.l	d0,$80(a4)
-	pea.l	-$1652(a5)
+	pea.l	g_HitListEnemyBody(a5)
 	move.l	a4,-(a7)
 	jsr	$4062(a5)	; -> HitList_Add
 	move.l	d0,$84(a4)
 	lea.l	$10(a7),a7
 	bra.s	loc_1F1D3C
 loc_1F1D1C:
-	pea.l	-$165E(a5)
+	pea.l	g_HitListPlayerAtk(a5)
 	move.l	a4,-(a7)
 	jsr	$4062(a5)	; -> HitList_Add
 	move.l	d0,$80(a4)
-	pea.l	-$165A(a5)
+	pea.l	g_HitListPlayerBody(a5)
 	move.l	a4,-(a7)
 	jsr	$4062(a5)	; -> HitList_Add
 	move.l	d0,$84(a4)

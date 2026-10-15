@@ -136,14 +136,14 @@ loc_15E0F8:
 	moveq	#$10,d0
 	and.w	$6(a4),d0
 	beq.s	loc_15E11A
-	pea.l	-$165E(a5)
+	pea.l	g_HitListPlayerAtk(a5)
 	move.l	a4,-(a7)
 	jsr	HitList_Add(pc)
 	move.l	d0,$80(a4)
 	addq.w	#$8,a7
 	bra.s	loc_15E12A
 loc_15E11A:
-	pea.l	-$1656(a5)
+	pea.l	g_HitListEnemyAtk(a5)
 	move.l	a4,-(a7)
 	jsr	HitList_Add(pc)
 	move.l	d0,$80(a4)
@@ -155,7 +155,7 @@ loc_15E12A:
 	moveq	#$10,d0
 	and.w	$6(a4),d0
 	bne.s	loc_15E14A
-	pea.l	-$1652(a5)
+	pea.l	g_HitListEnemyBody(a5)
 	move.l	a4,-(a7)
 	jsr	HitList_Add(pc)
 	move.l	d0,$84(a4)

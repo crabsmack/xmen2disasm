@@ -5,7 +5,7 @@ sub_144CAA:
 	link.w	a6,#$0
 	move.l	a4,-(a7)
 	movea.l	$8(a6),a4
-	pea.l	-$165A(a5)
+	pea.l	g_HitListPlayerBody(a5)
 	move.l	$8C(a4),-(a7)
 	jsr	$406A(a5)	; -> List_Unlink
 	moveq	#$0,d0

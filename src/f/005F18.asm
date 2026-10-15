@@ -22,21 +22,21 @@ unk_Player_005F18:
 	move.w	d1,d0
 	cmpi.l	#$8000,d0
 	bne.s	loc_005F9E
-	pea.l	-$165E(a5)
+	pea.l	g_HitListPlayerAtk(a5)
 	move.l	-$17C8(a5),-(a7)
 	jsr	$406A(a5)	; -> List_Unlink
 	moveq	#$0,d0
 	move.l	d0,-$17C8(a5)
-	pea.l	-$165A(a5)
+	pea.l	g_HitListPlayerBody(a5)
 	move.l	-$17C4(a5),-(a7)
 	jsr	$406A(a5)	; -> List_Unlink
 	moveq	#$0,d0
 	move.l	d0,-$17C4(a5)
-	pea.l	-$1656(a5)
+	pea.l	g_HitListEnemyAtk(a5)
 	pea.l	g_Player2(a5)
 	jsr	$4062(a5)	; -> HitList_Add
 	move.l	d0,-$17C8(a5)
-	pea.l	-$1652(a5)
+	pea.l	g_HitListEnemyBody(a5)
 	pea.l	g_Player2(a5)
 	jsr	$4062(a5)	; -> HitList_Add
 	move.l	d0,-$17C4(a5)
