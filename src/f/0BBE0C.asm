@@ -1,7 +1,11 @@
 ; ---------------------------------------------------------------------------
-; sub_0BBE0C	[jt 1007]
+; SavageBio_ActDashPast - SAVAGE bio script action: dash past the nearest player (targets: the player, then $82 beyond)
+; In:  8(a6) = this
+; Out: d0
+; Evidence: +$A8/+$AA targets; speed $220, sound $EA; next sub_0BC0C4; TAS 33754
+; Found: jt 1007
 ; ---------------------------------------------------------------------------
-sub_0BBE0C:
+SavageBio_ActDashPast:
 	link.w	a6,#$0
 	movem.l	d6-d7/a3-a4,-(a7)
 	movea.l	$8(a6),a4

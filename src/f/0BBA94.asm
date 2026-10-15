@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_0BBA94	[jt 1005]
+; SavageBio_ActChargeGo - SAVAGE bio script action: start a charge (speed $220, sound $EA) and go straight to the next step
+; In:  8(a6) = this
+; Out: none
+; Found: jt 1005
 ; ---------------------------------------------------------------------------
-sub_0BBA94:
+SavageBio_ActChargeGo:
 	link.w	a6,#$0
 	movem.l	d7/a4,-(a7)
 	movea.l	$8(a6),a4

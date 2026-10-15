@@ -1,7 +1,11 @@
 ; ---------------------------------------------------------------------------
-; sub_0BB850	[jt 1002]
+; SavageBio_ActAnimB - SAVAGE bio script action: animation jt[$2002], next step
+; In:  8(a6) = this
+; Out: none
+; Evidence: TAS 33753
+; Found: jt 1002
 ; ---------------------------------------------------------------------------
-sub_0BB850:
+SavageBio_ActAnimB:
 	link.w	a6,#$0
 	move.l	a4,-(a7)
 	movea.l	$8(a6),a4

@@ -1,7 +1,11 @@
 ; ---------------------------------------------------------------------------
-; sub_0BB71E	[jt 1000]
+; SavageBio_ActExtendShort - SAVAGE bio script action: extend a short tentacle (path jt[$205A], 10 segments; frame $42, sound $F0)
+; In:  8(a6) = this
+; Out: d0
+; Evidence: next SavageBio_StateExtend10; TAS 33676-33889
+; Found: jt 1000
 ; ---------------------------------------------------------------------------
-sub_0BB71E:
+SavageBio_ActExtendShort:
 	link.w	a6,#$0
 	move.l	a4,-(a7)
 	movea.l	$8(a6),a4
@@ -25,7 +29,7 @@ sub_0BB71E:
 	move.w	#$1,$AE(a4)
 loc_0BB766:
 	clr.w	$6C(a4)
-	lea.l	sub_0BB780(pc),a0
+	lea.l	SavageBio_StateExtend10(pc),a0
 	move.l	a0,$5C(a4)
 	moveq	#$8,d0
 	and.w	$4(a4),d0

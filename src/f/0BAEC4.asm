@@ -1,7 +1,11 @@
 ; ---------------------------------------------------------------------------
-; sub_0BAEC4	[jt 991]
+; SavageBio_ActScript2052 - SAVAGE bio script action: switch to script jt[$2052] from step 0
+; In:  8(a6) = this
+; Out: none
+; Evidence: AiScript_Set(+$96, jt[$2052]); TAS 33687
+; Found: jt 991
 ; ---------------------------------------------------------------------------
-sub_0BAEC4:
+SavageBio_ActScript2052:
 	link.w	a6,#$0
 	move.l	a4,-(a7)
 	movea.l	$8(a6),a4

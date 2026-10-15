@@ -1,7 +1,11 @@
 ; ---------------------------------------------------------------------------
-; sub_0BB634	[link-after-rts]
+; SavageBio_StateRetract - SAVAGE bio state: shrink the tentacle one segment per frame; when gone frame $40 and the next step
+; In:  8(a6) = this
+; Out: d0
+; Evidence: TAS 33857-33916
+; Found: link-after-rts
 ; ---------------------------------------------------------------------------
-sub_0BB634:
+SavageBio_StateRetract:
 	link.w	a6,#$0
 	move.l	a4,-(a7)
 	movea.l	$8(a6),a4
@@ -22,7 +26,7 @@ sub_0BB634:
 	move.l	d0,$B0(a4)
 	addq.w	#$8,a7
 	clr.w	$6C(a4)
-	lea.l	sub_0BB6CE(pc),a0
+	lea.l	SavageBio_StateNextStep(pc),a0
 	move.l	a0,$5C(a4)
 	moveq	#$8,d0
 	and.w	$4(a4),d0
@@ -30,7 +34,7 @@ sub_0BB634:
 loc_0BB67A:
 	subq.w	#$1,$AE(a4)
 	clr.w	$6C(a4)
-	lea.l	sub_0BB634(pc),a0
+	lea.l	SavageBio_StateRetract(pc),a0
 	move.l	a0,$5C(a4)
 	moveq	#$8,d0
 	and.w	$4(a4),d0

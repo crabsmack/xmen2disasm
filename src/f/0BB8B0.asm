@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_0BB8B0	[jt 1003]
+; SavageBio_ActAnimC - SAVAGE bio script action: animation jt[$200A], next step
+; In:  8(a6) = this
+; Out: none
+; Found: jt 1003
 ; ---------------------------------------------------------------------------
-sub_0BB8B0:
+SavageBio_ActAnimC:
 	link.w	a6,#$0
 	move.l	a4,-(a7)
 	movea.l	$8(a6),a4

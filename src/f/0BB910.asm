@@ -1,7 +1,11 @@
 ; ---------------------------------------------------------------------------
-; sub_0BB910	[jt 1004]
+; SavageBio_ActCharge - SAVAGE bio script action: charge to the far side of its range (speed $220, accel $56, sound $EA), then the next step
+; In:  8(a6) = this
+; Out: d0
+; Evidence: range +$9E..+$A0 (waits $3C when empty); next SavageBio_StateChargeToEdge
+; Found: jt 1004
 ; ---------------------------------------------------------------------------
-sub_0BB910:
+SavageBio_ActCharge:
 	link.w	a6,#$0
 	movem.l	d7/a4,-(a7)
 	movea.l	$8(a6),a4
@@ -74,7 +78,7 @@ loc_0BB9EA:
 	move.w	d0,$1E(a4)
 	addq.w	#$8,a7
 	clr.w	$6C(a4)
-	lea.l	sub_0BBA0E(pc),a0
+	lea.l	SavageBio_StateChargeToEdge(pc),a0
 	move.l	a0,$5C(a4)
 	moveq	#$8,d0
 	and.w	$4(a4),d0

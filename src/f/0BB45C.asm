@@ -1,7 +1,11 @@
 ; ---------------------------------------------------------------------------
-; sub_0BB45C	[jt 996]
+; SavageBio_ActReloadArt10 - SAVAGE bio script action: drop the tentacle and play animation jt[$202A], then reload the sprite tiles (frame $10)
+; In:  8(a6) = this
+; Out: d0
+; Evidence: next SavageBio_StateReloadArt10
+; Found: jt 996
 ; ---------------------------------------------------------------------------
-sub_0BB45C:
+SavageBio_ActReloadArt10:
 	link.w	a6,#$0
 	move.l	a4,-(a7)
 	movea.l	$8(a6),a4
@@ -14,7 +18,7 @@ sub_0BB45C:
 	jsr	$4E42(a5)	; -> Obj_SetAnim
 	addq.w	#$8,a7
 	move.w	#$FF,$6C(a4)
-	lea.l	sub_0BB49C(pc),a0
+	lea.l	SavageBio_StateReloadArt10(pc),a0
 	move.l	a0,$5C(a4)
 	moveq	#$8,d0
 	and.w	$4(a4),d0

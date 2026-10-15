@@ -1,7 +1,11 @@
 ; ---------------------------------------------------------------------------
-; sub_0BAF96	[jt 993]
+; SavageBio_ActFireRocket - SAVAGE bio script action: fire a BRAINROCKET - from the mouth when the tentacle is in (after animation $0B7DD8), else from the tentacle tip after $10 frames
+; In:  8(a6) = this
+; Out: d0
+; Evidence: next SavageBio_StateFireMouth or SavageBio_StateFireTip
+; Found: jt 993
 ; ---------------------------------------------------------------------------
-sub_0BAF96:
+SavageBio_ActFireRocket:
 	link.w	a6,#$0
 	move.l	a4,-(a7)
 	movea.l	$8(a6),a4
@@ -16,14 +20,14 @@ sub_0BAF96:
 	jsr	$4E42(a5)	; -> Obj_SetAnim
 	addq.w	#$8,a7
 	move.w	#$FF,$6C(a4)
-	lea.l	sub_0BAFF4(pc),a0
+	lea.l	SavageBio_StateFireMouth(pc),a0
 	move.l	a0,$5C(a4)
 	moveq	#$8,d0
 	and.w	$4(a4),d0
 	bra.s	loc_0BAFEC
 loc_0BAFD8:
 	move.w	#$10,$6C(a4)
-	lea.l	sub_0BB0D6(pc),a0
+	lea.l	SavageBio_StateFireTip(pc),a0
 	move.l	a0,$5C(a4)
 	moveq	#$8,d0
 	and.w	$4(a4),d0

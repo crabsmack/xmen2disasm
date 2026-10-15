@@ -1,7 +1,11 @@
 ; ---------------------------------------------------------------------------
-; sub_0BBBBE	[jt 1006]
+; SavageBio_ActChargePlayer - SAVAGE bio script action: charge (speed $220, sound $EA) until close to the nearest player
+; In:  8(a6) = this
+; Out: d0
+; Evidence: next SavageBio_StateChargeToPlayer
+; Found: jt 1006
 ; ---------------------------------------------------------------------------
-sub_0BBBBE:
+SavageBio_ActChargePlayer:
 	link.w	a6,#$0
 	movem.l	d7/a4,-(a7)
 	movea.l	$8(a6),a4
@@ -74,7 +78,7 @@ loc_0BBC98:
 	move.w	d0,$1E(a4)
 	addq.w	#$8,a7
 	clr.w	$6C(a4)
-	lea.l	sub_0BBCBC(pc),a0
+	lea.l	SavageBio_StateChargeToPlayer(pc),a0
 	move.l	a0,$5C(a4)
 	moveq	#$8,d0
 	and.w	$4(a4),d0

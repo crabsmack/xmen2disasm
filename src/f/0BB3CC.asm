@@ -1,7 +1,11 @@
 ; ---------------------------------------------------------------------------
-; sub_0BB3CC	[link-after-rts]
+; SavageBio_StateReloadArt14 - SAVAGE bio state: reload sprite tiles $12FCA6 frame $14 into the class VRAM slot, next step
+; In:  8(a6) = this
+; Out: none
+; Evidence: Spr_Init(tmp, 1, $12FCA6, $14, 3, slot + $14, 1); TAS 33888
+; Found: link-after-rts
 ; ---------------------------------------------------------------------------
-sub_0BB3CC:
+SavageBio_StateReloadArt14:
 	link.w	a6,#$FFEC
 	move.l	a4,-(a7)
 	movea.l	$8(a6),a4

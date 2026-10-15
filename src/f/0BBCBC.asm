@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_0BBCBC	[link-after-rts]
+; SavageBio_StateChargeToPlayer - SAVAGE bio state: charge until within $82 px of the nearest player, braking and turning when it passes
+; In:  8(a6) = this
+; Out: d0
+; Found: link-after-rts
 ; ---------------------------------------------------------------------------
-sub_0BBCBC:
+SavageBio_StateChargeToPlayer:
 	link.w	a6,#$0
 	movem.l	d3/d6-d7/a3-a4,-(a7)
 	movea.l	$8(a6),a4
@@ -125,7 +128,7 @@ loc_0BBDEC:
 	move.w	d0,$16(a4)
 loc_0BBDF0:
 	clr.w	$6C(a4)
-	lea.l	sub_0BBCBC(pc),a0
+	lea.l	SavageBio_StateChargeToPlayer(pc),a0
 	move.l	a0,$5C(a4)
 	moveq	#$8,d0
 	and.w	$4(a4),d0

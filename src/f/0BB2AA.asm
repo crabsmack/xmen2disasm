@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_0BB2AA	[link-after-rts]
+; SavageBio_StateFireVertical - SAVAGE bio state: fire a BRAINROCKET from (+-8, -+$72) at angle $5A (or $10E when v-flipped), next step after 10 frames
+; In:  8(a6) = this
+; Out: d0
+; Found: link-after-rts
 ; ---------------------------------------------------------------------------
-sub_0BB2AA:
+SavageBio_StateFireVertical:
 	link.w	a6,#$0
 	movem.l	d3/d6-d7/a3-a4,-(a7)
 	movea.l	$8(a6),a4

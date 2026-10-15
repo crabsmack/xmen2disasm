@@ -1,5 +1,5 @@
 ; ---------------------------------------------------------------------------
-; BrainBabyBio_Script - AI-script jmp thunks (3 steps): BabyBio_ActPlayAnimC, BabyBio_ActFacePlayer, sub_11D3F2
+; BrainBabyBio_Script - AI-script jmp thunks (3 steps): BabyBio_ActPlayAnimC, BabyBio_ActFacePlayer, BabyBio_ActStartFiring
 ; Evidence: 4-byte `jmp d(a5)` entries of a {word count; thunks} script, reached through +$5C (next-step idiom)
 ; Found: runtime: executed in 1 run(s) (tas)
 ; ---------------------------------------------------------------------------

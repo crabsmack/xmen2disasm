@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_0BB780	[link-after-rts]
+; SavageBio_StateExtend10 - SAVAGE bio state: grow the tentacle to 10 segments, then the next step
+; In:  8(a6) = this
+; Out: d0
+; Found: link-after-rts
 ; ---------------------------------------------------------------------------
-sub_0BB780:
+SavageBio_StateExtend10:
 	link.w	a6,#$0
 	move.l	a4,-(a7)
 	movea.l	$8(a6),a4
@@ -33,7 +36,7 @@ loc_0BB7B8:
 loc_0BB7D2:
 	addq.w	#$1,$AE(a4)
 	clr.w	$6C(a4)
-	lea.l	sub_0BB780(pc),a0
+	lea.l	SavageBio_StateExtend10(pc),a0
 	move.l	a0,$5C(a4)
 	moveq	#$8,d0
 	and.w	$4(a4),d0

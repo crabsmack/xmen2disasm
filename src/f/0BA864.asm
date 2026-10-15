@@ -1,7 +1,6 @@
 ; ---------------------------------------------------------------------------
-; SavageBigBio_Update - vtable +$4A: per-frame update of a SAVAGEBIGBIO
-; In:  8(a6) = this
-; Evidence: slot +$4A of the SAVAGEBIGBIO descriptor $0BD30C; TAS frames 33665-34355 (688 frames active); calls parent SAVAGEBIOBASE slot +$4A
+; SavageBigBio_Update - vtable +$4A: parent update, then damage the players the tentacle touched this frame (TakeDamage(0, 8, 1, hit point))
+; Evidence: -$3B06 bits 1/2 with hit points -$3B18/-$3B1C (SavageBigBio_TentacleHit); TAS 33665-34355
 ; ---------------------------------------------------------------------------
 SavageBigBio_Update:
 	link.w	a6,#$0

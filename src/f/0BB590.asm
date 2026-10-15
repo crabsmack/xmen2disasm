@@ -1,7 +1,11 @@
 ; ---------------------------------------------------------------------------
-; sub_0BB590	[jt 998]
+; SavageBio_ActExtendTentacle2 - SAVAGE bio script action: extend the tentacle along path $0B8066 (frame $42)
+; In:  8(a6) = this
+; Out: d0
+; Evidence: next SavageBio_StateExtend
+; Found: jt 998
 ; ---------------------------------------------------------------------------
-sub_0BB590:
+SavageBio_ActExtendTentacle2:
 	link.w	a6,#$0
 	move.l	a4,-(a7)
 	movea.l	$8(a6),a4
@@ -21,7 +25,7 @@ sub_0BB590:
 	move.w	#$1,$AE(a4)
 loc_0BB5C6:
 	clr.w	$6C(a4)
-	lea.l	sub_0BB5E0(pc),a0
+	lea.l	SavageBio_StateExtend(pc),a0
 	move.l	a0,$5C(a4)
 	moveq	#$8,d0
 	and.w	$4(a4),d0

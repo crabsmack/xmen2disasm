@@ -1,7 +1,11 @@
 ; ---------------------------------------------------------------------------
-; sub_0BAF14	[jt 992]
+; SavageBio_ActFacePlayer - SAVAGE bio script action: stop and face the nearest player, next step
+; In:  8(a6) = this
+; Out: none
+; Evidence: TAS 33721-33854
+; Found: jt 992
 ; ---------------------------------------------------------------------------
-sub_0BAF14:
+SavageBio_ActFacePlayer:
 	link.w	a6,#$0
 	movem.l	a3-a4,-(a7)
 	movea.l	$8(a6),a4

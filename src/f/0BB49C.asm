@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_0BB49C	[link-after-rts]
+; SavageBio_StateReloadArt10 - SAVAGE bio state: reload sprite tiles $12FCA6 frame $10, next step
+; In:  8(a6) = this
+; Out: none
+; Found: link-after-rts
 ; ---------------------------------------------------------------------------
-sub_0BB49C:
+SavageBio_StateReloadArt10:
 	link.w	a6,#$FFEC
 	move.l	a4,-(a7)
 	movea.l	$8(a6),a4

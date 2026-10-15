@@ -1,7 +1,11 @@
 ; ---------------------------------------------------------------------------
-; sub_0BB0D6	[link-after-rts]
+; SavageBio_StateFireTip - SAVAGE bio state: fire a BRAINROCKET from the tentacle tip, next step after 10 frames
+; In:  8(a6) = this
+; Out: d0
+; Evidence: tip = last segment + wave offset
+; Found: link-after-rts
 ; ---------------------------------------------------------------------------
-sub_0BB0D6:
+SavageBio_StateFireTip:
 	link.w	a6,#$FFFC
 	movem.l	d3/d5-d7/a3-a4,-(a7)
 	movea.l	$8(a6),a4

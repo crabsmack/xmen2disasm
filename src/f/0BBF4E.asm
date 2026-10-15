@@ -1,7 +1,11 @@
 ; ---------------------------------------------------------------------------
-; sub_0BBF4E	[jt 1008]
+; SavageBio_ActDashTo - SAVAGE bio script action: dash up to the nearest player (targets: halfway, then the player); if already within $20, just face it
+; In:  8(a6) = this
+; Out: d0
+; Evidence: next sub_0BC0C4 or SavageBio_ActFacePlayer after $3C
+; Found: jt 1008
 ; ---------------------------------------------------------------------------
-sub_0BBF4E:
+SavageBio_ActDashTo:
 	link.w	a6,#$0
 	movem.l	d3/d6-d7/a3-a4,-(a7)
 	movea.l	$8(a6),a4
@@ -65,7 +69,7 @@ loc_0BBFF0:
 	cmp.l	d0,d1
 	ble.s	loc_0BC00E
 	move.w	#$3C,$6C(a4)
-	lea.l	sub_0BAF14(pc),a0
+	lea.l	SavageBio_ActFacePlayer(pc),a0
 	move.l	a0,$5C(a4)
 	moveq	#$8,d0
 	and.w	$4(a4),d0

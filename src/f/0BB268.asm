@@ -1,7 +1,11 @@
 ; ---------------------------------------------------------------------------
-; sub_0BB268	[jt 994]
+; SavageBio_ActFireVertical - SAVAGE bio script action: animation $0B7DE2, then fire a rocket straight up/down
+; In:  8(a6) = this
+; Out: d0
+; Evidence: next SavageBio_StateFireVertical
+; Found: jt 994
 ; ---------------------------------------------------------------------------
-sub_0BB268:
+SavageBio_ActFireVertical:
 	link.w	a6,#$0
 	move.l	a4,-(a7)
 	movea.l	$8(a6),a4
@@ -14,7 +18,7 @@ sub_0BB268:
 	jsr	$4E42(a5)	; -> Obj_SetAnim
 	addq.w	#$8,a7
 	move.w	#$FF,$6C(a4)
-	lea.l	sub_0BB2AA(pc),a0
+	lea.l	SavageBio_StateFireVertical(pc),a0
 	move.l	a0,$5C(a4)
 	moveq	#$8,d0
 	and.w	$4(a4),d0

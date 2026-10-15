@@ -1,7 +1,6 @@
 ; ---------------------------------------------------------------------------
-; SavageBigBio_Move - vtable +$4E: per-frame movement of a SAVAGEBIGBIO
-; In:  8(a6) = this
-; Evidence: slot +$4E of the SAVAGEBIGBIO descriptor $0BD30C; TAS frames 33665-34355 (688 frames active); calls parent SAVAGEBIOBASE slot +$4E
+; SavageBigBio_Move - vtable +$4E: clamp horizontal speed to +-(-$3B24) (setting +-(-$3B22)), then the parent move
+; Evidence: TAS 33665-34355
 ; ---------------------------------------------------------------------------
 SavageBigBio_Move:
 	link.w	a6,#$0

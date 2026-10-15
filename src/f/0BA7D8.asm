@@ -1,7 +1,11 @@
 ; ---------------------------------------------------------------------------
-; sub_0BA7D8	[link-after-rts]
+; SavageBigBio_TentacleHit - SAVAGEBIGBIO: if a live, non-flashing player's box touches a 16x16 tentacle segment at (x, y), flag that player and remember the hit point
+; In:  8(a6) = player, $E(a6) = word player bit, $10(a6) = long *hit point, $16(a6) = word x, $1A(a6) = word y
+; Out: none
+; Evidence: -$3B06 |= bit; *hit = (x+8) | (y+8) << 16; called per segment by SavageBigBio_Draw for both players; TAS 33676-33915
+; Found: link-after-rts
 ; ---------------------------------------------------------------------------
-sub_0BA7D8:
+SavageBigBio_TentacleHit:
 	link.w	a6,#$0
 	movem.l	d6-d7/a4,-(a7)
 	move.w	$1A(a6),d6

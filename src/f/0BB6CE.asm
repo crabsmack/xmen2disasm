@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_0BB6CE	[link-after-rts]
+; SavageBio_StateNextStep - SAVAGE bio state: run the next script step
+; In:  8(a6) = this
+; Out: none
+; Found: link-after-rts
 ; ---------------------------------------------------------------------------
-sub_0BB6CE:
+SavageBio_StateNextStep:
 	link.w	a6,#$0
 	move.l	a4,-(a7)
 	movea.l	$8(a6),a4

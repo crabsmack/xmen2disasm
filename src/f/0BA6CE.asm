@@ -1,7 +1,6 @@
 ; ---------------------------------------------------------------------------
-; SavageBigBio_TakeDamage - vtable +$26: a SAVAGEBIGBIO is hit (attacker, damage)
-; In:  8(a6) = this, $C(a6) = attacker, then hit parameters (see ACTOR +$26 $15E680)
-; Evidence: slot +$26 of the SAVAGEBIGBIO descriptor $0BD30C; TAS frames 33684-33890 (7 frames active)
+; SavageBigBio_TakeDamage - vtable +$26: unless shielded (+$9C bit 0): health -= damage, 20-frame flash; at 0 stop, leave both lists and die (sub_0BC85C), else sound $D8; publish health in -$3B02
+; Evidence: -$3B02 drives the SavageA4 palette stages (SavageA4_FrameHook); TAS 33684-33890
 ; ---------------------------------------------------------------------------
 SavageBigBio_TakeDamage:
 	link.w	a6,#$0

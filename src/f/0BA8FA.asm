@@ -1,7 +1,6 @@
 ; ---------------------------------------------------------------------------
-; SavageBigBio_Draw - vtable +$1A: draw a SAVAGEBIGBIO
-; In:  8(a6) = this
-; Evidence: slot +$1A of the SAVAGEBIGBIO descriptor $0BD30C; TAS frames 33663-34354 (688 frames active); calls parent SAVAGEBIOBASE slot +$1A
+; SavageBigBio_Draw - vtable +$1A: draw the body, then each tentacle segment (+$B0 list, +$AE long) with a wave from jt[$2072] straight into the sprite table, hit-testing each against the players
+; Evidence: tip sprite at the last segment; mirrored when h-flipped; TAS 33663-34354
 ; ---------------------------------------------------------------------------
 SavageBigBio_Draw:
 	link.w	a6,#$FFF8
@@ -182,7 +181,7 @@ loc_0BAADE:
 	moveq	#$1,d0
 	move.l	d0,-(a7)
 	pea.l	g_Player1(a5)
-	jsr	sub_0BA7D8(pc)
+	jsr	SavageBigBio_TentacleHit(pc)
 	ext.l	d6
 	move.l	d6,-(a7)
 	ext.l	d5
@@ -191,7 +190,7 @@ loc_0BAADE:
 	moveq	#$2,d0
 	move.l	d0,-(a7)
 	pea.l	g_Player2(a5)
-	jsr	sub_0BA7D8(pc)
+	jsr	SavageBigBio_TentacleHit(pc)
 	lea.l	$28(a7),a7
 	bra.w	loc_0BABF6
 loc_0BAB1E:
@@ -257,7 +256,7 @@ loc_0BABBA:
 	moveq	#$1,d0
 	move.l	d0,-(a7)
 	pea.l	g_Player1(a5)
-	jsr	sub_0BA7D8(pc)
+	jsr	SavageBigBio_TentacleHit(pc)
 	ext.l	d6
 	move.l	d6,-(a7)
 	ext.l	d5
@@ -266,7 +265,7 @@ loc_0BABBA:
 	moveq	#$2,d0
 	move.l	d0,-(a7)
 	pea.l	g_Player2(a5)
-	jsr	sub_0BA7D8(pc)
+	jsr	SavageBigBio_TentacleHit(pc)
 	lea.l	$28(a7),a7
 loc_0BABF6:
 	lea.l	$1E72(a5),a0
@@ -367,7 +366,7 @@ loc_0BACEE:
 	moveq	#$1,d0
 	move.l	d0,-(a7)
 	pea.l	g_Player1(a5)
-	jsr	sub_0BA7D8(pc)
+	jsr	SavageBigBio_TentacleHit(pc)
 	ext.l	d6
 	move.l	d6,-(a7)
 	ext.l	d5
@@ -376,7 +375,7 @@ loc_0BACEE:
 	moveq	#$2,d0
 	move.l	d0,-(a7)
 	pea.l	g_Player2(a5)
-	jsr	sub_0BA7D8(pc)
+	jsr	SavageBigBio_TentacleHit(pc)
 	addq.w	#$4,a3
 	cmpi.w	#$3E8,(a3)
 	lea.l	$28(a7),a7
@@ -486,7 +485,7 @@ loc_0BAE36:
 	moveq	#$1,d0
 	move.l	d0,-(a7)
 	pea.l	g_Player1(a5)
-	jsr	sub_0BA7D8(pc)
+	jsr	SavageBigBio_TentacleHit(pc)
 	ext.l	d6
 	move.l	d6,-(a7)
 	ext.l	d5
@@ -495,7 +494,7 @@ loc_0BAE36:
 	moveq	#$2,d0
 	move.l	d0,-(a7)
 	pea.l	g_Player2(a5)
-	jsr	sub_0BA7D8(pc)
+	jsr	SavageBigBio_TentacleHit(pc)
 	addq.w	#$4,a3
 	cmpi.w	#$3E8,(a3)
 	lea.l	$28(a7),a7

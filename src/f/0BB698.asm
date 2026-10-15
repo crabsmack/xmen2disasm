@@ -1,7 +1,11 @@
 ; ---------------------------------------------------------------------------
-; sub_0BB698	[jt 999]
+; SavageBio_StateRetractStart - SAVAGE bio state: start retracting the tentacle (sound $F1)
+; In:  8(a6) = this
+; Out: d0
+; Evidence: also a script action (jt); next SavageBio_StateRetract
+; Found: jt 999
 ; ---------------------------------------------------------------------------
-sub_0BB698:
+SavageBio_StateRetractStart:
 	link.w	a6,#$0
 	move.l	a4,-(a7)
 	movea.l	$8(a6),a4
@@ -11,7 +15,7 @@ sub_0BB698:
 	jsr	$521A(a5)	; -> Snd_Play
 	addq.w	#$8,a7
 	clr.w	$6C(a4)
-	lea.l	sub_0BB634(pc),a0
+	lea.l	SavageBio_StateRetract(pc),a0
 	move.l	a0,$5C(a4)
 	moveq	#$8,d0
 	and.w	$4(a4),d0

@@ -1,7 +1,11 @@
 ; ---------------------------------------------------------------------------
-; sub_0BAFF4	[link-after-rts]
+; SavageBio_StateFireMouth - SAVAGE bio state: fire a BRAINROCKET from the mouth (offset +-$30, -+$50) in the facing direction, next step after 10 frames
+; In:  8(a6) = this
+; Out: d0
+; Evidence: BRAINROCKET ($133CFC) +$0E, sub_1339A6(rocket, this, 0 or $B4)
+; Found: link-after-rts
 ; ---------------------------------------------------------------------------
-sub_0BAFF4:
+SavageBio_StateFireMouth:
 	link.w	a6,#$0
 	movem.l	d3/d6-d7/a3-a4,-(a7)
 	movea.l	$8(a6),a4
