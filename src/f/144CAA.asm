@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_144CAA	[jt 1955]
+; ToxicCan_Deactivate - TOXICCAN slot +$46: leave the body hit list, then ACTOR Deactivate
+; In:  8(a6) = this
+; Out: none
+; Evidence: List_Unlink(+$8C, g_HitListPlayerBody); parent +$46
 ; ---------------------------------------------------------------------------
-sub_144CAA:
+ToxicCan_Deactivate:
 	link.w	a6,#$0
 	move.l	a4,-(a7)
 	movea.l	$8(a6),a4

@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_144D50	[jt 1958]
+; ToxicCanDamaged_Init - TOXICCANDAMAGED slot +$12: TOXICCAN Init with only 2 health
+; In:  8(a6) = this, $C..$14(a6) = Init args
+; Out: none
+; Evidence: parent +$12; +$68 = 2
 ; ---------------------------------------------------------------------------
-sub_144D50:
+ToxicCanDamaged_Init:
 	link.w	a6,#$0
 	move.l	a4,-(a7)
 	movea.l	$8(a6),a4

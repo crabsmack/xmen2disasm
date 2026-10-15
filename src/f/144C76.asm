@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_144C76	[jt 1954]
+; ToxicCan_Activate - TOXICCAN slot +$3E: ACTOR Activate, then join the player-side body hit list
+; In:  8(a6) = this
+; Out: none
+; Evidence: parent +$3E; +$8C = HitList_Add(this, g_HitListPlayerBody) (so enemy attacks can hit it)
 ; ---------------------------------------------------------------------------
-sub_144C76:
+ToxicCan_Activate:
 	link.w	a6,#$0
 	move.l	a4,-(a7)
 	movea.l	$8(a6),a4

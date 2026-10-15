@@ -1,8 +1,11 @@
 ; ---------------------------------------------------------------------------
-; sub_1449DA	[jt 1951]
+; ToxicCan_ClassInit - TOXICCAN slot +$5E: calls the empty ToxicCan_NopStatic
+; In:  none
+; Out: none
+; Evidence: only body is the call
 ; ---------------------------------------------------------------------------
-sub_1449DA:
+ToxicCan_ClassInit:
 	link.w	a6,#$0
-	jsr	sub_144D88(pc)
+	jsr	ToxicCan_NopStatic(pc)
 	unlk	a6
 	rts

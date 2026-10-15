@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_144CF0	[jt 1957]
+; ToxicCan_Despawn - TOXICCAN slot +$36: return to the spawn record; a damaged can respawns as TOXICCANDAMAGED
+; In:  8(a6) = this, $C(a6) = spawn record
+; Out: none
+; Evidence: like Actor_Despawn; frame 1 (damaged) -> rec+0 = TOXICCANDAMAGED descriptor
 ; ---------------------------------------------------------------------------
-sub_144CF0:
+ToxicCan_Despawn:
 	link.w	a6,#$0
 	movem.l	a3-a4,-(a7)
 	movea.l	$C(a6),a3

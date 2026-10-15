@@ -4954,17 +4954,17 @@ Art_Spr_1445D2:	; sprite definition (type $19, Nemesis-compressed tiles): $24-by
 	include "src/f/144CF0.asm"
 	include "src/f/144D50.asm"
 	include "src/f/144D88.asm"
-Lvl_Data_144D90:	; level data read by Level_FrameLoop; 48 of 78 bytes used at runtime; read by Level_FrameLoop, sub_144AE2, Actor_New; jt[1959] used by sub_1449E6, sub_144C76, sub_144CAA
+Lvl_Data_144D90:	; level data read by Level_FrameLoop; 48 of 78 bytes used at runtime; read by Level_FrameLoop, ToxicCan_Update, Actor_New; jt[1959] used by ToxicCan_Init, ToxicCan_Activate, ToxicCan_Deactivate
 	incrom	$144D90,$78
-Tbl_144E08:	; format not established; never read in the corpus; jt[1960] used by sub_144CF0, sub_144D50
+Tbl_144E08:	; format not established; never read in the corpus; jt[1960] used by ToxicCan_Despawn, ToxicCanDamaged_Init
 	incrom	$144E08,$7E
-Tbl_144E86:	; format not established; never read in the corpus; jt[1961] used by sub_144774
+Tbl_144E86:	; format not established; never read in the corpus; jt[1961] used by ToxicCan_DrawLeak
 	incrom	$144E86,$6C
-Tbl_144EF2:	; format not established; never read in the corpus; jt[1962] used by sub_144774
+Tbl_144EF2:	; format not established; never read in the corpus; jt[1962] used by ToxicCan_DrawLeak
 	incrom	$144EF2,$3C
-Tbl_PopChainStep:	; table read by ExplodeFx_ChainStep; C4 of C8 bytes used at runtime; read by ExplodeFx_ChainStep; jt[1963] used by Pop_FxChainPath, Tank_OnDeath, sub_144AE2
+Tbl_PopChainStep:	; table read by ExplodeFx_ChainStep; C4 of C8 bytes used at runtime; read by ExplodeFx_ChainStep; jt[1963] used by Pop_FxChainPath, Tank_OnDeath, ToxicCan_Update
 	incrom	$144F2E,$C8
-Art_Spr_144FF6:	; sprite definition (type $18, raw 4bpp tiles): $24-byte header, $14-byte frame records, pieces, tiles; 400 of 86C bytes used at runtime; read by VDP_FlushDmaQueue; DMA to VRAM $D6A0-DAA0; jt[1964] used by sub_1449E6
+Art_Spr_144FF6:	; sprite definition (type $18, raw 4bpp tiles): $24-byte header, $14-byte frame records, pieces, tiles; 400 of 86C bytes used at runtime; read by VDP_FlushDmaQueue; DMA to VRAM $D6A0-DAA0; jt[1964] used by ToxicCan_Init
 	incrom	$144FF6,$86C
 Art_EvilMagnetoSpr:	; sprite definition (type $18, raw 4bpp tiles): $24-byte header, $14-byte frame records, pieces, tiles; 57A0 of 82B4 bytes used at runtime; read by VDP_FlushDmaQueue; DMA to VRAM $7BA0-ABA0; jt[1965] used by EvilMagneto_Init, MagnetoBoss_Init, Magneto_SelectSpriteDef
 	incrom	$145862,$82B4

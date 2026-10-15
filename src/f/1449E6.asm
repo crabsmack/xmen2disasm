@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_1449E6	[jt 1952]
+; ToxicCan_Init - TOXICCAN slot +$12: a stationary 4-health barrel that others can stand on
+; In:  8(a6) = this, $C/$10(a6) = x/y, $14(a6) = placement (+$B draw layer)
+; Out: none
+; Evidence: ACTOR Init; sprite def $144FF6, palette 1; health 4; +6 |= $281 (no collision, no attack node, floor segment owner); priority from the live player; +$42 = placement byte $B; Obj_UpdateBoxes
 ; ---------------------------------------------------------------------------
-sub_1449E6:
+ToxicCan_Init:
 	link.w	a6,#$0
 	movem.l	a3-a4,-(a7)
 	movea.l	$14(a6),a3

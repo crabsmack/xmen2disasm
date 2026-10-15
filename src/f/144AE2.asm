@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_144AE2	[jt 1953]
+; ToxicCan_Update - TOXICCAN slot +$4A: window check, damage frame and toxin leak, chain explosion when destroyed, carried children
+; In:  8(a6) = this
+; Out: none
+; Evidence: health < 1 -> ExplodeFx_Chain(this, path jt $3F7A, +$70); < 3 -> frame 1 + ToxicCan_DrawLeak, else frame 0; children moved with Obj_CarryChild and updated; delay +$6C and hit cooldown +$6A count down
 ; ---------------------------------------------------------------------------
-sub_144AE2:
+ToxicCan_Update:
 	link.w	a6,#$0
 	movem.l	d3/d5-d7/a3-a4,-(a7)
 	movea.l	$8(a6),a4
@@ -78,7 +81,7 @@ loc_144B8A:
 	move.l	$8(a4),d0
 	asr.l	#$8,d0
 	move.l	d0,-(a7)
-	jsr	sub_144774(pc)
+	jsr	ToxicCan_DrawLeak(pc)
 	moveq	#$1,d0
 	move.l	d0,-(a7)
 	move.l	a4,-(a7)

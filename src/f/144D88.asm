@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_144D88	[link-after-rts]
+; ToxicCan_NopStatic - empty helper called by ToxicCan_ClassInit
+; In:  none
+; Out: none
+; Evidence: bare body
 ; ---------------------------------------------------------------------------
-sub_144D88:
+ToxicCan_NopStatic:
 	link.w	a6,#$0
 	unlk	a6
 	rts

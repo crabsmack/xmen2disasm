@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_144774
+; ToxicCan_DrawLeak - draw the leaking-toxin puffs of a damaged can (4 hardware sprites animated from two offset tables)
+; In:  8(a6) = word x, $C(a6) = word y (world), $10/$14(a6) = pointers to the two animation step counters
+; Out: none
+; Evidence: sprite def index $FFE778 in g_SpriteDefs; steps +1 (2 in two-player), wrap at entries > $FE in the tables at $144E86 / $144EF2 (tile, dx, dy); writes g_SpriteTable via g_SprWritePtr; called by ToxicCan_Update below 3 health
 ; ---------------------------------------------------------------------------
-sub_144774:
+ToxicCan_DrawLeak:
 	link.w	a6,#$FFFC
 	movem.l	d5-d7/a3-a4,-(a7)
 	move.w	$E(a6),d5
