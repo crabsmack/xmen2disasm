@@ -12,7 +12,7 @@ FlyBrood_Deactivate:
 	movea.l	$2(a0),a0
 	movea.l	$46(a0),a1
 	jsr	(a1)
-	move.w	-$1A86(a5),d0
-	subq.w	#$1,-$1A86(a5)
+	move.w	g_FlyBroodCount(a5),d0
+	subq.w	#$1,g_FlyBroodCount(a5)
 	unlk	a6
 	rts

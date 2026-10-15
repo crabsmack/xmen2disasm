@@ -498,3 +498,5 @@ g_SceneVar3B42 = -$3B42	; word, scene-local palette-cycle counter (CloneA1, Sent
 g_SceneVar3B44 = -$3B44	; word, scene-local palette-cycle counter (CloneA1, SavageA4, SentinelsA1, SiberiaB1; Cerebro_Run 1)
 g_SceneVar3B46 = -$3B46	; word, scene-local palette-cycle counter (SavageA4, SentinelsA1; Cerebro_Run 1)
 g_SceneVar3B48 = -$3B48	; word, scene-local: Cerebro palette animation direction (+1/-1), SentinelsA1 cycle counter, SentinelsB2 alarm, SiberiaB1 wind
+g_BabyBioUnused = -$1C9E	; byte: cleared by BabyBio_LevelStart; nothing in the code reads or sets it otherwise
+g_FlyBroodCount = -$1A86	; word: a count of fly broods by its use: FlyBrood_Deactivate reads and decrements it; nothing in the code increments it

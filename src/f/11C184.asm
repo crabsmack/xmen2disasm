@@ -6,6 +6,6 @@
 ; ---------------------------------------------------------------------------
 BabyBio_LevelStart:
 	link.w	a6,#$0
-	clr.b	-$1C9E(a5)
+	clr.b	g_BabyBioUnused(a5)
 	unlk	a6
 	rts

@@ -86,6 +86,22 @@ MPW C 3.3 matching, what reproduces the ROM (also COMPILER.md):
 - A `do { } while (0)` macro around a state change explains a branch to the next statement.
 - Stop after ~6 honest attempts on one function: if it is executed, keep the readable
   version for verify; if never executed, note what differs and move on.
+- An unmatched function counts as verified only when shadow tests have run **every**
+  instruction of it (`uncovered` 0). For paths the corpus never takes, write synthetic cases:
+  `XMen2Recomp/game/verify/<ADDR>.syn` (format in `game/runtime/verify.cpp` load_synth):
+  ```
+  # why these cases: which branch each one reaches
+  case hflip
+  b arg0+$2E = $10          # byte at (first argument, a pointer) + $2E
+  w [arg0+$76]+6 = 0        # [X] = the long at X: here the length of the object's segment
+  w $FFFA5A = $0003         # a global
+  reg d1 = 5                # (asm register conventions)
+  hw $0002 $0000            # hardware read values, in order (default 0)
+  ```
+  Each case mutates the state at the function's first corpus call (`at any` on a line of its
+  own: at the first call of any function, for functions the corpus never runs), then runs
+  both versions and compares. Keep the mutated state plausible (a case that couldn't happen
+  in the game proves little).
 
 ### Learned in round 1 (BigBio, SavageBio, Brood, SmallBrood: 145 functions, all matched)
 
@@ -170,6 +186,69 @@ MPW C 3.3 matching, what reproduces the ROM (also COMPILER.md):
   `register short x = expr;` in a block = `.l` work then `ext.l` at the push. A caller testing
   the result with `tst.b d0` means the callee returns `char`. `FN_DATA(f)` passes a function's
   address as a `void *` argument.
+- (MagnetoBoss, 56/56) Two calls in one expression (`Rand_Next() - Rand_Next()`): MPW
+  evaluates left to right, C++ leaves it open: the PC branch (`#ifndef XMEN2_MPW`) calls them
+  in separate statements in MPW's order. `field + field` on one struct was seen loading the
+  left into d0, the right into d1, then `add.l d0,d1` (round 2 saw the right loaded first
+  elsewhere): check the ROM, try both. `fx + (expr)` with a stack local = `add.l fx(a6),d0`;
+  `(expr) + fx` = `move.l fx,d1 / add.l d0,d1`. A u8 compared with `-1` = `moveq #0 / move.b /
+  cmpi.w #$FFFF` (`0xFFFF` gives `cmpi.l`). Block-local declarations per switch case
+  (`case 2: { long t; ... }`) reproduce the ROM's register sharing between cases. A local
+  stored but never read vanishes (store and slot); `if (0) p = pool;` brings both back. When
+  the ROM doesn't pop before a state store, write `self->state = F; F(self);` instead of
+  GOTO_STATE. An unread value the ROM keeps in a register = an unread short local. Adding or
+  removing `register` on single variables fixes allocation far more often than reordering
+  declarations.
+
+### Learned in round 5 (BroodBoss, Apocalypse, XPlayer, Magneto: 254 functions, 252 matched)
+
+- **Prologue order shows register params vs locals**: register parameters are loaded first
+  (data before address registers), then register locals initialised in declaration order.
+  A char parameter copied d7 -> d0 = a local `register char d = dir;`. `moveq #0 / move.b` on
+  a char parameter = `unsigned char` (Mac Boolean).
+- **Pops**: an assignment inside a condition (`if ((x = f()) != y)`) flushes the pending pop
+  before the branch; `x = f(); if (x != y)` keeps it pending. When the ROM pops once at the
+  end with no flush before a state change, write `if (1) { self->state = f; f(self); }` (a
+  label only at its end) or start the do/while before the first call. A label after the last
+  call (`end: ;`) keeps all pops in one final `lea`.
+- `if (c) ; else { ... }` makes MPW reload a stack-held `self` at the start of the else.
+- `(short)x` when passing a `register short x` copies it (`move.w d7,d1 / ext.l d1`); without
+  the cast it is extended in place.
+- Memory compares: the C left operand is loaded into d0, the right is the `cmp` source.
+  Constants vs memory: MPW reverses the compare itself (`angle < 100` = `moveq / cmp.w /
+  ble`): write it naturally.
+- `short v = a - b` as an initializer is 32-bit (`ext.l / sub.l`); as an assignment 16-bit.
+- `x &= ~m` on a global = `and.w d0,mem`; the ROM's load/and/store is `x = x & ~m`.
+  `v <<= 8` = `lsl.w`; `v = v << 8` = `ext.l / lsl.l`. `g++` as a statement loads the old
+  value; `++g` doesn't. `s * 224` is a `mulu` sequence: write the ROM's shifts.
+- Locals on the stack: laid out from the frame top in reverse declaration order, chars packed
+  bytewise; `if (0) unused = 0;` right after declarations both reserves a register and makes
+  MPW forget register contents.
+- A result tested with `tst.b` needs `(char)` on a method or `long` call. A state stored with
+  another return type: `self->state = (StateFn)Fn; Fn(self);`. Subclass `self` to a parent's
+  function: `(XPlayer *)self` (MPW Error 229 otherwise).
+- Switch: comparisons sorted by value, bodies in source order; when the last case tested is
+  the first body, the final compare is inverted to `bne default`.
+- **PC traps**: a discarded hardware read must be assigned (`r = IO_DATA(1);`): `(void)VDP_CTRL;`
+  reads nothing on PC. A null pointer the 68000 dereferences (reading ROM at low addresses)
+  crashes the host: add an `#ifndef XMEN2_MPW` branch reading what the 68000 read (e.g.
+  `(SprDef *)Vectors` for a missing sprite definition).
+
+## asm functions (tag `asm`: hand-written 68000, no MPW frame)
+
+They can't match; their C is verified by shadow tests, so it must reproduce every RAM write,
+hardware access (same order, same sizes), result register and SR change. Conventions go in
+the prototype tag (`tools/bridge.py` reads them):
+- MPW-style stack arguments (`4(a7)`, or `8(a6)` of a frame someone else built): no tag.
+- `regs(d0,d1)->d0`: parameter i arrives in that register, the result goes to the register
+  after `->`; `&d1`: a pointer parameter whose value is in d1 before and goes back to d1 after;
+  `a0=$A00036`: an input that is always that value (the C uses a hardware name instead).
+- `clobbers(d3,a2)`: callee-saved registers it leaves changed with no meaning.
+- `conv`: stack/frame effects no tag can say: adapters in `game/runtime/asm_conv.cpp`.
+- CPU-only operations: `CPU_GetSR()`, `CPU_SetSR(v)` (interrupt mask), `CPU_GetSP()`; a
+  pointer's bus address for DMA/sound pointers: `ADDR68(p)`; byte-wide ports: `VDP_DATA_B`,
+  `Z80_BUSREQ_B` (a `btst` reads a byte); `IO_DATA(n)`/`IO_CTRL(n)`. Delay loops (nop, dbra
+  busy-waits) have no C: say so in the comment.
 
 ## 5. Report
 
