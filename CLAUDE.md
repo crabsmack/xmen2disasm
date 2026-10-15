@@ -12,8 +12,9 @@ phases 2-5 `uv run tools/phase.py N` ([docs/phases/](docs/phases/)).
 compiler is Apple MPW C 3.3, `-mbg off -b` ([docs/COMPILER.md](docs/COMPILER.md);
 `uv run tools/cc.py --match FILE.c` checks C against the ROM).** Phase 2 complete (10/10):
 the recomp in `..\XMen2Recomp` equals the reference on every TAS and corpus frame and the
-user verified the Release build (2026-10-15). 4 and 5 are drafts. `uv run tools/phase.py status`
-shows every phase.
+user verified the Release build (2026-10-15). Phase 4's criteria are revised and wait for the
+user's D0 approval ([docs/phases/P4-decomp.md](docs/phases/P4-decomp.md)); 5 is a draft.
+`uv run tools/phase.py status` shows every phase.
 
 **Start of every session:** `uv run tools/setup.py` (idempotent: ROM, emulator,
 build, runs, Ghidra), then read `docs/ROADMAP.md`, the current phase's criteria doc and
@@ -73,6 +74,7 @@ labelled data.
 | `convert.py ADDR... --evidence "..."` | Raw bytes -> verified code from evidence (also batch: `--entries-file`) |
 | `candidates.py` | Unverified jump-table entries that trace cleanly as code |
 | `handoff.py` | Export build/recomp/ for phase 2 |
+| `decomp_queue.py [-n N] [--module M] [--stats]` | Phase 4: next functions to write as C (leaves first), how each must be verified, progress per module |
 | `cc.py FILE.c` / `cc.py --match config/compiler/match/ADDR.c` | Compile C with MPW C 3.3 (headless, under mps) / prove it byte-identical to the ROM function |
 | `cc_libmatch.py [--scan ID]` / `mpwobj.py FILE.o` | Library fingerprint per candidate toolchain / dump an MPW object file |
 | `explore.py` / `split.py --force` | Initial discovery/split. **Never re-split** a tree with hand edits (hook-blocked) |
@@ -136,7 +138,8 @@ I/O `$A10000-$A1001F`, TMSS `$A14000`, work RAM `$FF0000-$FFFFFF`.
 in table order, batches of ~5 items, notes + `phase.py N` + commit + push (every repo
 touched) after each green batch. The phase's doc under `docs/phases/` says where its work
 and notes live and what to do first; skill `/first-divergence` for trace mismatches
-(K5/K6/K8, D4, P2). Criteria that need the user (K10, C4's `user_ack`, D0/P0 approvals,
+(K5/K6/K8, D1/D2/D6, P2); phase 4's per-function loop is `/decomp-function` with
+`uv run tools/decomp_queue.py` as the queue. Criteria that need the user (K10, C4's `user_ack`, D0/P0 approvals,
 P6) mean stop and ask: never write those lines yourself. Never weaken a check in
 `tools/phase.py` or a contract tool it calls; changing a criterion needs the user's
 approval, recorded in the phase doc.

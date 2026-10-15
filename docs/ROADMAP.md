@@ -28,14 +28,18 @@ recorded result of every phase (from `docs/progress/`).
   the corpus never executes (22% of instructions) can only be checked by a matching compile
   or by differential tests against their recompiled version.
 - **Decomp (4) inside the recomp**: each function is replaced in the running game, leaves
-  first, and verified the same way the recomp was. C at this stage still works on the
-  emulated 68000 RAM layout, because generated code shares it until the last function goes.
+  first. Each one is verified against its generated version (shadow differential test) or by
+  an MPW C byte match. The whole game is compared with the emulator at logical frames ("sync
+  points"), because C has no instruction timing. C at this stage still works on the emulated
+  68000 RAM layout, because generated code shares it until the last function goes.
 - **Port (5) last**: once no generated code is left, game state moves to native structs and
   hardware access moves behind a platform layer. Equivalence is kept checkable by exporting
   native state back to the 68000 RAM image the reference compares.
 
 Phases 4 and 5 are **drafts**: each starts with a kickoff criterion (`D0`/`P0`) where the
-agent revises the criteria with what phases 2-3 taught and the user approves them.
+agent revises the criteria with what phases 2-3 taught and the user approves them. Phase 4's
+revision (2026-10-15) is written and waits for that approval; `uv run tools/phase.py 4 --draft`
+measures it meanwhile.
 
 ## Working a phase autonomously
 

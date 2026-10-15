@@ -1,6 +1,6 @@
 ---
 name: first-divergence
-description: Debug the first frame where the recompiled (or hand-C / native) X-Men 2 differs from the reference emulator - find what wrote the differing bytes, why, and fix the cause in the recompiler, game spec or hand-written C. Use for phase 2 criteria K5/K6/K8, phase 4 D4 and phase 5 P2, or any "trace diverges at frame N" task.
+description: Debug the first frame where the recompiled (or hand-C / native) X-Men 2 differs from the reference emulator - find what wrote the differing bytes, why, and fix the cause in the recompiler, game spec or hand-written C. Use for phase 2 criteria K5/K6/K8, phase 4 D1/D2/D6 (sync points) and phase 5 P2, or any "trace diverges at frame N" task.
 ---
 
 # First divergence
@@ -21,6 +21,11 @@ Its traces are in `build/phase_traces/<run>-<mode>/frames.csv` (game side) and
   (DMA, tile/palette uploads, scroll). VRAM-only differences usually mean a DMA source,
   length or timing problem, not game logic.
 - Divergence at a reset or right after `@tas N` → suspect the input export, not the game.
+- **Phase 4 (stepped/handc)** compares at sync points, not frames: `build/phase_traces/<run>-
+  <mode>-replay-<ref>/sync.csv` vs the D1 reference `<run>-recomp-sync/sync.csv`. Its `frame`
+  column says which reference frame a sync point fell in. Diff state at the first differing
+  sync point and the one before. A divergence that only the stepped runner shows (no hand C
+  involved) is a harness problem: interrupt or hardware-read replay, DMA, or VDP stepping.
 
 ## 2. Diff the state at frame N (and N-1)
 

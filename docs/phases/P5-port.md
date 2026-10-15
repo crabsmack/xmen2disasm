@@ -10,6 +10,10 @@ the original by exporting native state to the 68000 RAM image the reference comp
 
 Checked by `uv run tools/phase.py 5` (writes `docs/progress/P5.md`). Requires phase 4 complete.
 
+Note for P0: native code has no instruction timing, so P2 below should compare at phase 4's
+**sync points** with its replay log (P4-decomp.md "Definitions"), not at hardware frame ends.
+`phase.py`'s phase 5 still calls the frame-based comparison; switch it when P0 revises this file.
+
 ## Criteria
 
 | ID | Criterion | Check |
