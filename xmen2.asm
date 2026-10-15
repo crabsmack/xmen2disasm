@@ -260,6 +260,7 @@ Tbl_BigAcolyteFightScriptLen:	; word $14: entry count of the BIGACOLYTE fight AI
 	incrom	$0119FE,$1
 	incrom	$0119FF,$1
 	include "src/f/011A00.asm"
+Tbl_BigAcolyteRowBlocksLast80:	; table read by Scaler_RowBlocksLast80; 604 of 626 bytes used at runtime; read by Scaler_RowBlocksLast80; jt[59] used by BigAcolyte_ActAppear
 	incrom	$011A50,$626
 Art_BigAcolyteSpr:	; sprite definition (type $18, raw 4bpp tiles): $24-byte header, $14-byte frame records, pieces, tiles; F00 of 1024 bytes used at runtime; read by VDP_FlushDmaQueue; DMA to VRAM $ACE0-B600; jt[60] used by BigAcolyte_Init
 	incrom	$012076,$1024
@@ -534,11 +535,11 @@ Tbl_Zapper_vtable:	; class descriptor of ZAPPER: word name offset $6E, parent AC
 	incrom	$0273F4,$75
 Pad_AvalonA3:	; $00 fill; never read in the corpus; between Zapper_StateLoopAnim2 and AvalonA3_EmptyStub2
 	incrom	$027469,$1
-Tbl_AvalonA3Anim:	; animation script (byte flags, byte steps, ..., 2-byte steps from +6); 8 of A bytes used at runtime; read by Anim_AdvanceByDistance, Anim_ApplyStep, Anim_Advance; jt[180] used by Zapper_StateLoopAnim0
+Tbl_ZapperAnim:	; animation script (byte flags, byte steps, ..., 2-byte steps from +6); 8 of A bytes used at runtime; read by Anim_AdvanceByDistance, Anim_ApplyStep, Anim_Advance; jt[180] used by Zapper_StateLoopAnim0
 	incrom	$02746A,$A
-Tbl_AvalonA3Anim2:	; animation script (byte flags, byte steps, ..., 2-byte steps from +6); 8 of A bytes used at runtime; read by Anim_ApplyStep, Anim_AdvanceByDistance, Anim_Advance; jt[181] used by Zapper_StateLoopAnim1
+Tbl_ZapperAnim2:	; animation script (byte flags, byte steps, ..., 2-byte steps from +6); 8 of A bytes used at runtime; read by Anim_ApplyStep, Anim_AdvanceByDistance, Anim_Advance; jt[181] used by Zapper_StateLoopAnim1
 	incrom	$027474,$A
-Lvl_AvalonA3Segs:	; floor-segment list (Seg_LoadList: 12/10-byte records until a 0 byte); 8 of A bytes used at runtime; read by Seg_LoadList, Anim_ApplyStep, Anim_AdvanceByDistance; jt[182] used by Zapper_StateLoopAnim2
+Lvl_ZapperSegs:	; floor-segment list (Seg_LoadList: 12/10-byte records until a 0 byte); 8 of A bytes used at runtime; read by Seg_LoadList, Anim_ApplyStep, Anim_AdvanceByDistance; jt[182] used by Zapper_StateLoopAnim2
 	incrom	$02747E,$A
 Lvl_AvalonA3Segs2:	; floor-segment list (Seg_LoadList: 12/10-byte records until a 0 byte); 9B of 9C bytes used at runtime; read by Seg_LoadList; jt[183] used by AvalonA3_LoadLevel
 	incrom	$027488,$9C
@@ -633,17 +634,17 @@ Tbl_Exodus_vtable:	; class descriptor of EXODUS: word name offset $6E, parent AC
 	incrom	$02DEB4,$75
 Pad_ExodusBlast:	; $00 fill; never read in the corpus; between Exodus_CheckFloorHit and ExodusBlast_GetSize
 	incrom	$02DF29,$1
-Tbl_ExodusBlastAnim:	; animation script (byte flags, byte steps, ..., 2-byte steps from +6); 24 of 26 bytes used at runtime; read by Anim_ApplyStep, Anim_AdvanceByDistance; jt[204] used by Exodus_StateDescend, Exodus_StateEndVulnerable
+Tbl_ExodusAnim:	; animation script (byte flags, byte steps, ..., 2-byte steps from +6); 24 of 26 bytes used at runtime; read by Anim_ApplyStep, Anim_AdvanceByDistance; jt[204] used by Exodus_StateDescend, Exodus_StateEndVulnerable
 	incrom	$02DF2A,$26
-Tbl_ExodusBlastAnim2:	; animation script (byte flags, byte steps, ..., 2-byte steps from +6); C of E bytes used at runtime; read by Anim_ApplyStep, Anim_AdvanceByDistance, Anim_Advance; jt[205] used by Exodus_AtkBlast17
+Tbl_ExodusAnim2:	; animation script (byte flags, byte steps, ..., 2-byte steps from +6); C of E bytes used at runtime; read by Anim_ApplyStep, Anim_AdvanceByDistance, Anim_Advance; jt[205] used by Exodus_AtkBlast17
 	incrom	$02DF50,$E
-Tbl_ExodusBlastAnim3:	; animation script (byte flags, byte steps, ..., 2-byte steps from +6); C of E bytes used at runtime; read by Anim_ApplyStep; jt[206] used by Exodus_AtkBlast2
+Tbl_ExodusAnim3:	; animation script (byte flags, byte steps, ..., 2-byte steps from +6); C of E bytes used at runtime; read by Anim_ApplyStep; jt[206] used by Exodus_AtkBlast2
 	incrom	$02DF5E,$E
-Tbl_ExodusBlastAnim4:	; animation script (byte flags, byte steps, ..., 2-byte steps from +6); C of E bytes used at runtime; read by Anim_ApplyStep, Anim_AdvanceByDistance, Anim_Advance; jt[207] used by Exodus_AtkBlast3
+Tbl_ExodusAnim4:	; animation script (byte flags, byte steps, ..., 2-byte steps from +6); C of E bytes used at runtime; read by Anim_ApplyStep, Anim_AdvanceByDistance, Anim_Advance; jt[207] used by Exodus_AtkBlast3
 	incrom	$02DF6C,$E
-Tbl_ExodusBlastAnim5:	; animation script (byte flags, byte steps, ..., 2-byte steps from +6); C of E bytes used at runtime; read by Anim_ApplyStep, Anim_AdvanceByDistance, Anim_Advance; jt[208] used by Exodus_AtkBlast4
+Tbl_ExodusAnim5:	; animation script (byte flags, byte steps, ..., 2-byte steps from +6); C of E bytes used at runtime; read by Anim_ApplyStep, Anim_AdvanceByDistance, Anim_Advance; jt[208] used by Exodus_AtkBlast4
 	incrom	$02DF7A,$E
-Tbl_ExodusBlastAnim6:	; animation script (byte flags, byte steps, ..., 2-byte steps from +6); C of E bytes used at runtime; read by Anim_ApplyStep; jt[209] used by Exodus_StateSwoopBlast
+Tbl_ExodusAnim6:	; animation script (byte flags, byte steps, ..., 2-byte steps from +6); C of E bytes used at runtime; read by Anim_ApplyStep; jt[209] used by Exodus_StateSwoopBlast
 	incrom	$02DF88,$E
 	include "src/f/02DF96.asm"
 	include "src/f/02DFA4.asm"
@@ -674,13 +675,13 @@ Sw_02DFD8:	; switch table of sub at $02DFD8: 7 word offsets from Sw_02DFD8-2
 	include "src/f/02E526.asm"
 Tbl_ExodusBlast_vtable:	; class descriptor of EXODUSBLAST: word name offset $82, parent XNPC, 31 method slots from +6, then the name (tools/classes.py)
 	incrom	$02E566,$8E
-Tbl_AvalonA4Anim:	; animation script (byte flags, byte steps, ..., 2-byte steps from +6); C of E bytes used at runtime; read by Anim_ApplyStep, Anim_AdvanceByDistance, Anim_Advance; jt[218] used by ExodusBlast_StateLaunch
+Tbl_ExodusBlastAnim_2:	; animation script (byte flags, byte steps, ..., 2-byte steps from +6); C of E bytes used at runtime; read by Anim_ApplyStep, Anim_AdvanceByDistance, Anim_Advance; jt[218] used by ExodusBlast_StateLaunch
 	incrom	$02E5F4,$E
 Art_AvalonA4Nem:	; Nemesis-style compressed 4bpp tiles (Nem_Decode; code table built from pairs by the caller); 14E0 of 14EA bytes used at runtime; read by Nem_DecodeLoop, Eni_ReadInline, Eni_Decode; jt[219] used by AvalonA4_LoadLevel
 	incrom	$02E602,$14EA
 Art_AvalonA4Nem2:	; Nemesis-style compressed 4bpp tiles (Nem_Decode; code table built from pairs by the caller); FB of FC bytes used at runtime; read by Nem_DecodeLoop, Eni_ReadInline, Eni_Decode; jt[220] used by AvalonA4_LoadLevel
 	incrom	$02FAEC,$FC
-Art_AvalonA3Nem:	; Nemesis-style compressed 4bpp tiles (Nem_Decode; code table built from pairs by the caller); 50C4 of 5128 bytes used at runtime; read by Nem_DecodeLoop, Eni_Decode, Eni_ReadInline; jt[221] used by AvalonA3_LoadLevel, AvalonA4_LoadLevel
+Art_AvalonA4Nem_2:	; Nemesis-style compressed 4bpp tiles (Nem_Decode; code table built from pairs by the caller); 50C4 of 5128 bytes used at runtime; read by Nem_DecodeLoop, Eni_Decode, Eni_ReadInline; jt[221] used by AvalonA3_LoadLevel, AvalonA4_LoadLevel
 	incrom	$02FBE8,$5128
 Art_AvalonA4Nem3:	; Nemesis-style compressed 4bpp tiles (Nem_Decode; code table built from pairs by the caller); 1A of 32 bytes used at runtime; read by Nem_DecodeLoop, Eni_ReadInline, Eni_Decode; jt[222] used by AvalonA4_LoadLevel
 	incrom	$034D10,$32
@@ -746,15 +747,15 @@ Sw_0358D8:	; switch table of sub at $0358D8: 6 word offsets from Sw_0358D8-2
 	include "src/f/035A9E.asm"
 Tbl_MagnetoBossAnim:	; animation script (byte flags, byte steps, ..., 2-byte steps from +6); 8 of A bytes used at runtime; read by Anim_AdvanceByDistance, Anim_ApplyStep, Anim_Advance; jt[227] used by MagnetoBoss_TakeDamage
 	incrom	$035AC6,$A
-Tbl_AvalonA4Anim2:	; animation script (byte flags, byte steps, ..., 2-byte steps from +6); E of 10 bytes used at runtime; read by Anim_ApplyStep, MagnetoBoss_RubbleTimer, Cam_ShakeStep; jt[228] used by MagnetoBoss_EnterSpinState, MagnetoBoss_StateSpin
+Tbl_MagnetoBossAnim2_2:	; animation script (byte flags, byte steps, ..., 2-byte steps from +6); E of 10 bytes used at runtime; read by Anim_ApplyStep, MagnetoBoss_RubbleTimer, Cam_ShakeStep; jt[228] used by MagnetoBoss_EnterSpinState, MagnetoBoss_StateSpin
 	incrom	$035AD0,$10
 Tbl_MagnetoBossRubbleTimer:	; table read by MagnetoBoss_RubbleTimer; 12 of 12 bytes used at runtime; read by MagnetoBoss_RubbleTimer, Cam_ShakeStep, Anim_ApplyStep; jt[229] used by MagnetoBoss_RubbleTimer
 	incrom	$035AE0,$12
 Tbl_MagnetoBossRubbleTimer2:	; table read by MagnetoBoss_RubbleTimer; D of E bytes used at runtime; read by MagnetoBoss_RubbleTimer, Cam_ShakeStep, Anim_ApplyStep; jt[230] used by MagnetoBoss_StateIntroShake1
 	incrom	$035AF2,$E
-Tbl_AvalonA4ShakeStep:	; table read by Cam_ShakeStep; D of E bytes used at runtime; read by Cam_ShakeStep; jt[231] used by MagnetoBoss_StateIntroShake2
+Tbl_MagnetoBossShakeStep:	; table read by Cam_ShakeStep; D of E bytes used at runtime; read by Cam_ShakeStep; jt[231] used by MagnetoBoss_StateIntroShake2
 	incrom	$035B00,$E
-Tbl_AvalonA4ShakeStep2:	; table read by Cam_ShakeStep; D of E bytes used at runtime; read by Cam_ShakeStep; jt[232] used by MagnetoBoss_StateIntroShake3
+Tbl_MagnetoBossShakeStep2:	; table read by Cam_ShakeStep; D of E bytes used at runtime; read by Cam_ShakeStep; jt[232] used by MagnetoBoss_StateIntroShake3
 	incrom	$035B0E,$E
 Tbl_MagnetoBossMove:	; table read by MagnetoBoss_Move; 40 of 40 bytes used at runtime; read by MagnetoBoss_Move; jt[233] used by MagnetoBoss_Init
 	incrom	$035B1C,$40
@@ -991,25 +992,25 @@ Art_ApocalypseSpr:	; sprite definition (type $19, Nemesis-compressed tiles): $24
 	incrom	$04797A,$210E
 Art_ApocalypseSpr2:	; sprite definition (type $18, raw 4bpp tiles): $24-byte header, $14-byte frame records, pieces, tiles; 10A0 of 1674 bytes used at runtime; read by VDP_FlushDmaQueue; DMA to VRAM $D140-D960; jt[308] used by Apocalypse_Init, BeamScooter_Init
 	incrom	$049A88,$1674
-Tbl_BaniMazaA2Anim:	; animation script (byte flags, byte steps, ..., 2-byte steps from +6); A of C bytes used at runtime; read by Anim_ApplyStep, Anim_AdvanceByDistance, Anim_Advance; jt[309] used by Apocalypse_StateDefeated
+Tbl_ApocalypseAnim:	; animation script (byte flags, byte steps, ..., 2-byte steps from +6); A of C bytes used at runtime; read by Anim_ApplyStep, Anim_AdvanceByDistance, Anim_Advance; jt[309] used by Apocalypse_StateDefeated
 	incrom	$04B0FC,$C
-Tbl_BaniMazaA2Anim2:	; animation script (byte flags, byte steps, ..., 2-byte steps from +6); 16 of 18 bytes used at runtime; read by Anim_ApplyStep, Anim_AdvanceByDistance; jt[310] used by Apocalypse_StateLunge
+Tbl_ApocalypseAnim2:	; animation script (byte flags, byte steps, ..., 2-byte steps from +6); 16 of 18 bytes used at runtime; read by Anim_ApplyStep, Anim_AdvanceByDistance; jt[310] used by Apocalypse_StateLunge
 	incrom	$04B108,$18
-Tbl_BaniMazaA2Anim3:	; animation script (byte flags, byte steps, ..., 2-byte steps from +6); 18 of 1A bytes used at runtime; read by Anim_ApplyStep; jt[311] used by Apocalypse_StateDrop
+Tbl_ApocalypseAnim3:	; animation script (byte flags, byte steps, ..., 2-byte steps from +6); 18 of 1A bytes used at runtime; read by Anim_ApplyStep; jt[311] used by Apocalypse_StateDrop
 	incrom	$04B120,$1A
-Tbl_BaniMazaA2Anim4:	; animation script (NOTES: Animation scripts); never read in the corpus; jt[312] used by Apocalypse_StateHurt -> Obj_SetAnim
+Tbl_ApocalypseAnim4:	; animation script (NOTES: Animation scripts); never read in the corpus; jt[312] used by Apocalypse_StateHurt -> Obj_SetAnim
 	incrom	$04B13A,$A
 Tbl_ApocalypseInit:	; format not established; never read in the corpus; jt[313] used by Apocalypse_Init
 	incrom	$04B144,$40
 Tbl_ApocalypseStateWaitEntrance:	; table read by Apocalypse_StateWaitEntrance; 2 of 2 bytes used at runtime; read by Apocalypse_StateWaitEntrance; jt[314] used by Apocalypse_Init
 	incrom	$04B184,$2
 	include "src/f/04B186.asm"
-Tbl_AiScript_04B19E:	; word $0000 (2 bytes), not a string: reached only via jt[315] used by Apocalypse_ActStartMainScript -> AiScript_Set (e.g. an empty list/script count)
+Tbl_Apocalypse_04B19E:	; word $0000 (2 bytes), not a string: reached only via jt[315] used by Apocalypse_ActStartMainScript -> AiScript_Set (e.g. an empty list/script count)
 	incrom	$04B19E,$1
 Tbl_ApocalypseStateBombsDone:	; table read by Apocalypse_StateBombsDone; 1 of 1 bytes used at runtime; read by Apocalypse_StateBombsDone
 	incrom	$04B19F,$1
 	include "src/f/04B1A0.asm"
-Tbl_AiScript_04B1A4:	; word $0000 (2 bytes), not a string: reached only via jt[316] used by Apocalypse_StateBombsDone -> AiScript_Set (e.g. an empty list/script count)
+Tbl_Apocalypse_04B1A4:	; word $0000 (2 bytes), not a string: reached only via jt[316] used by Apocalypse_StateBombsDone -> AiScript_Set (e.g. an empty list/script count)
 	incrom	$04B1A4,$1
 Tbl_ApocalypseStateWaitEntrance2:	; table read by Apocalypse_StateWaitEntrance; 1 of 1 bytes used at runtime; read by Apocalypse_StateWaitEntrance
 	incrom	$04B1A5,$1
@@ -1114,13 +1115,13 @@ Art_ApocBombSpr:	; sprite definition (type $19, Nemesis-compressed tiles): $24-b
 	incrom	$04CE1E,$F0E
 Art_ApocBombNem:	; Nemesis-style compressed 4bpp tiles (Nem_Decode; code table built from pairs by the caller); 28 of 28 bytes used at runtime; read by Nem_DecodeLoop; jt[357] used by ApocBomb_Init
 	incrom	$04DD2C,$28
-Art_ApocalypseNem:	; Nemesis-style compressed 4bpp tiles (Nem_Decode; code table built from pairs by the caller); 14 of 14 bytes used at runtime; read by Nem_DecodeLoop; jt[358] used by ApocBomb_DrawShadow
+Art_ApocBombNem_2:	; Nemesis-style compressed 4bpp tiles (Nem_Decode; code table built from pairs by the caller); 14 of 14 bytes used at runtime; read by Nem_DecodeLoop; jt[358] used by ApocBomb_DrawShadow
 	incrom	$04DD54,$14
 Art_ApocBombNem2:	; Nemesis-style compressed 4bpp tiles (Nem_Decode; code table built from pairs by the caller); 84 of 88 bytes used at runtime; read by Nem_DecodeLoop; jt[359] used by ApocBomb_TakeDamage
 	incrom	$04DD68,$88
 Tbl_ApocalypseBaniMazaA2_04766A:	; format not established; never read in the corpus; jt[360] used by unk_BaniMazaA2_04766A
 	incrom	$04DDF0,$E0
-Tbl_ApocalypseShakeStep:	; table read by Cam_ShakeStep; 49 of 4A bytes used at runtime; read by Cam_ShakeStep; jt[361] used by ApocBomb_Explode
+Tbl_ApocBombShakeStep:	; table read by Cam_ShakeStep; 49 of 4A bytes used at runtime; read by Cam_ShakeStep; jt[361] used by ApocBomb_Explode
 	incrom	$04DED0,$4A
 	include "src/f/04DF1A.asm"
 	include "src/f/04DF28.asm"
@@ -1178,21 +1179,21 @@ Art_BaniMazaB2Nem3:	; Nemesis-style compressed 4bpp tiles (Nem_Decode; code tabl
 	incrom	$05958E,$2E
 Art_BaniMazaB2Nem4:	; Nemesis-style compressed 4bpp tiles (Nem_Decode; code table built from pairs by the caller); 1248 of 1252 bytes used at runtime; read by Nem_DecodeLoop, Eni_Decode; jt[390] used by BaniMazaB2_LoadLevel
 	incrom	$0595BC,$1252
-Tbl_BeamScooterAnim:	; animation script (byte flags, byte steps, ..., 2-byte steps from +6); A of C bytes used at runtime; read by Anim_ApplyStep, Nem_DecodeLoop, Anim_AdvanceByDistance; jt[391] used by Tuskette_Init_part5, Tuskette_StatePatrolStart, Tuskette_StateWalk
+Tbl_TusketteAnim:	; animation script (byte flags, byte steps, ..., 2-byte steps from +6); A of C bytes used at runtime; read by Anim_ApplyStep, Nem_DecodeLoop, Anim_AdvanceByDistance; jt[391] used by Tuskette_Init_part5, Tuskette_StatePatrolStart, Tuskette_StateWalk
 	incrom	$05A80E,$C
-Tbl_BeamScooterAnim2:	; animation script (byte flags, byte steps, ..., 2-byte steps from +6); C of E bytes used at runtime; read by Anim_ApplyStep, Anim_AdvanceByDistance, Anim_Advance; jt[392] used by Tuskette_StateWalkStart, Tuskette_StateChaseStart, Tuskette_StateRunRight
+Tbl_TusketteAnim2:	; animation script (byte flags, byte steps, ..., 2-byte steps from +6); C of E bytes used at runtime; read by Anim_ApplyStep, Anim_AdvanceByDistance, Anim_Advance; jt[392] used by Tuskette_StateWalkStart, Tuskette_StateChaseStart, Tuskette_StateRunRight
 	incrom	$05A81A,$E
-Tbl_BeamScooterAnim3:	; animation script (byte flags, byte steps, ..., 2-byte steps from +6); C of E bytes used at runtime; read by Anim_ApplyStep, Anim_AdvanceByDistance, Anim_Advance; jt[393] used by Tuskette_StateHopOut, Tuskette_StateHopBack
+Tbl_TusketteAnim3:	; animation script (byte flags, byte steps, ..., 2-byte steps from +6); C of E bytes used at runtime; read by Anim_ApplyStep, Anim_AdvanceByDistance, Anim_Advance; jt[393] used by Tuskette_StateHopOut, Tuskette_StateHopBack
 	incrom	$05A828,$E
-Tbl_BeamScooterAnim4:	; animation script (byte flags, byte steps, ..., 2-byte steps from +6); A of C bytes used at runtime; read by Anim_ApplyStep, Boulder_Update, Anim_AdvanceByDistance; jt[394] used by Boulder_StateStartRoll, Boulder_StateBounce
+Tbl_BoulderAnim4:	; animation script (byte flags, byte steps, ..., 2-byte steps from +6); A of C bytes used at runtime; read by Anim_ApplyStep, Boulder_Update, Anim_AdvanceByDistance; jt[394] used by Boulder_StateStartRoll, Boulder_StateBounce
 	incrom	$05A836,$C
-Tbl_BeamScooterUpdate:	; table read by Boulder_Update; 9 of 10 bytes used at runtime; read by Boulder_Update, Anim_ApplyStep, Boulder_StateBounce; jt[395] used by Boulder_StateBounce
+Tbl_BoulderUpdate:	; table read by Boulder_Update; 9 of 10 bytes used at runtime; read by Boulder_Update, Anim_ApplyStep, Boulder_StateBounce; jt[395] used by Boulder_StateBounce
 	incrom	$05A842,$10
-Tbl_BeamScooterShakeStep:	; table read by Cam_ShakeStep; 11 of 12 bytes used at runtime; read by Cam_ShakeStep; jt[396] used by Boulder_StateBounce
+Tbl_BoulderShakeStep:	; table read by Cam_ShakeStep; 11 of 12 bytes used at runtime; read by Cam_ShakeStep; jt[396] used by Boulder_StateBounce
 	incrom	$05A852,$12
-Tbl_BeamScooterShakeStep2:	; table read by Cam_ShakeStep; 13 of 14 bytes used at runtime; read by Cam_ShakeStep; jt[397] used by Boulder_StateBounce
+Tbl_BoulderShakeStep2:	; table read by Cam_ShakeStep; 13 of 14 bytes used at runtime; read by Cam_ShakeStep; jt[397] used by Boulder_StateBounce
 	incrom	$05A864,$14
-Tbl_BeamScooterNextWrap:	; table read by Seq_NextWrap; A of A bytes used at runtime; read by Seq_NextWrap; jt[398] used by Boulder_SpawnerTick
+Tbl_BoulderNextWrap:	; table read by Seq_NextWrap; A of A bytes used at runtime; read by Seq_NextWrap; jt[398] used by Boulder_SpawnerTick
 	incrom	$05A878,$A
 Tbl_BaniMazaB2ComputeParallax:	; table read by Scroll_ComputeParallax; 42 of 62 bytes used at runtime; read by Scroll_ComputeParallax, Scroll_SetParallax; jt[399] used by BaniMazaB2_SetParallax
 	incrom	$05A882,$62
@@ -1379,25 +1380,25 @@ Tbl_CerebroRenderToBitmap_Loop3:	; table read by Spr_RenderToBitmap_Loop; 180 of
 	incrom	$06364A,$180
 Tbl_CerebroRenderToBitmap_Loop4:	; table read by Spr_RenderToBitmap_Loop; 40C of 40C bytes used at runtime; read by Spr_RenderToBitmap_Loop, Nem_DecodeLoop, Mem_Copy; jt[444] used by Cerebro_PlayIntro
 	incrom	$0637CA,$40C
-Tbl_Cerebro:	; format not established; never read in the corpus; jt[445] used by Pause_HandleInput_EndCode
+Tbl_Pause:	; format not established; never read in the corpus; jt[445] used by Pause_HandleInput_EndCode
 	incrom	$063BD6,$4
-Tbl_Cerebro2:	; format not established; never read in the corpus; jt[446] used by Pause_HandleInput_EndCode
+Tbl_Pause2:	; format not established; never read in the corpus; jt[446] used by Pause_HandleInput_EndCode
 	incrom	$063BDA,$4
-Tbl_Cerebro3:	; format not established; never read in the corpus; jt[447] used by Pause_HandleInput_EndCode
+Tbl_Pause3:	; format not established; never read in the corpus; jt[447] used by Pause_HandleInput_EndCode
 	incrom	$063BDE,$4
-Tbl_Cerebro4:	; format not established; never read in the corpus; jt[448] used by Pause_HandleInput_EndCode
+Tbl_Pause4:	; format not established; never read in the corpus; jt[448] used by Pause_HandleInput_EndCode
 	incrom	$063BE2,$4
-Tbl_Cerebro5:	; format not established; never read in the corpus; jt[449] used by Pause_HandleInput_EndCode
+Tbl_Pause5:	; format not established; never read in the corpus; jt[449] used by Pause_HandleInput_EndCode
 	incrom	$063BE6,$4
-Tbl_Cerebro6:	; format not established; never read in the corpus; jt[450] used by Pause_HandleInput_EndCode
+Tbl_Pause6:	; format not established; never read in the corpus; jt[450] used by Pause_HandleInput_EndCode
 	incrom	$063BEA,$4
-Tbl_Cerebro7:	; format not established; never read in the corpus; jt[451] used by Pause_HandleInput_EndCode
+Tbl_Pause7:	; format not established; never read in the corpus; jt[451] used by Pause_HandleInput_EndCode
 	incrom	$063BEE,$8
-Tbl_Cerebro8:	; format not established; never read in the corpus; jt[452] used by Pause_HandleInput_EndCode
+Tbl_Pause8:	; format not established; never read in the corpus; jt[452] used by Pause_HandleInput_EndCode
 	incrom	$063BF6,$8
 Tbl_PauseHandleInput:	; table read by Pause_HandleInput; 1 of 8 bytes used at runtime; read by Pause_HandleInput; jt[453] used by Pause_HandleInput_EndCode
 	incrom	$063BFE,$8
-Tbl_Cerebro9:	; format not established; never read in the corpus; jt[454] used by Pause_HandleInput_EndCode
+Tbl_Pause9:	; format not established; never read in the corpus; jt[454] used by Pause_HandleInput_EndCode
 	incrom	$063C06,$A
 Tbl_PauseHandleInput2:	; table read by Pause_HandleInput; 1 of 8 bytes used at runtime; read by Pause_HandleInput; jt[455] used by Pause_HandleInput_EndCode
 	incrom	$063C10,$8
@@ -1693,7 +1694,7 @@ Art_CloneA1Nem2:	; Nemesis-style compressed 4bpp tiles (Nem_Decode; code table b
 	incrom	$074994,$5A
 Art_CloneA1Nem3:	; Nemesis-style compressed 4bpp tiles (Nem_Decode; code table built from pairs by the caller); 16A2 of 16AC bytes used at runtime; read by Nem_DecodeLoop, VDP_WriteWords, Eni_Decode; jt[526] used by CloneA1_LoadLevel
 	incrom	$0749EE,$16AC
-Art_LightBeamNem:	; Nemesis-style compressed 4bpp tiles (Nem_Decode; code table built from pairs by the caller); 4F0 of 4F0 bytes used at runtime; read by Nem_DecodeLoop, VDP_WriteWords, Eni_Decode; DMA to VRAM $B140-B5A0; jt[527] used by LightBeam_ClassInit, CloneA1_AnimTilesTimer
+Art_CloneA1Nem_2:	; Nemesis-style compressed 4bpp tiles (Nem_Decode; code table built from pairs by the caller); 4F0 of 4F0 bytes used at runtime; read by Nem_DecodeLoop, VDP_WriteWords, Eni_Decode; DMA to VRAM $B140-B5A0; jt[527] used by LightBeam_ClassInit, CloneA1_AnimTilesTimer
 	incrom	$07609A,$4F0
 Tbl_CloneA1Vdp:	; words copied to the VDP data port by VDP_WriteWords; C00 of CCC bytes used at runtime; read by VDP_WriteWords, VDP_DmaToVram; DMA to VRAM $53E0-59E0; jt[528] used by CloneA1_InitSprites, CloneA1_AnimTilesTimer
 	incrom	$07658A,$CCC
@@ -2400,13 +2401,13 @@ Tbl_XCloneSetFormation:	; table read by BioBalls_SetFormation; 2A of 54 bytes us
 	incrom	$09BA04,$54
 Lvl_SavageA2Data:	; level data read by Level_AssignBlockSlots; 28C0 of 28CA bytes used at runtime; read by Level_AssignBlockSlots, Seg_LoadList; jt[845] used by SavageA2_LoadLevel, SavageA3_LoadLevel
 	incrom	$09BA58,$28CA
-Lvl_BroodClawData:	; level data read by Level_AssignBlockSlots; 89F of 8A0 bytes used at runtime; read by Level_AssignBlockSlots, Seg_LoadList; jt[846] used by SavageB1_LoadLevel
+Lvl_SavageB1Data:	; level data read by Level_AssignBlockSlots; 89F of 8A0 bytes used at runtime; read by Level_AssignBlockSlots, Seg_LoadList; jt[846] used by SavageB1_LoadLevel
 	incrom	$09E322,$8A0
-Map_BroodClawEni:	; Enigma-compressed tilemap (Eni_Decode); 1AA9 of 1E4A bytes used at runtime; read by Eni_ReadInline, Eni_Decode, Eni_Ops; jt[847] used by SavageB1_LoadLevel
+Map_SavageB1Eni:	; Enigma-compressed tilemap (Eni_Decode); 1AA9 of 1E4A bytes used at runtime; read by Eni_ReadInline, Eni_Decode, Eni_Ops; jt[847] used by SavageB1_LoadLevel
 	incrom	$09EBC2,$1E4A
-Map_BroodClawEni2:	; Enigma-compressed tilemap (Eni_Decode); 32 of 4A bytes used at runtime; read by Eni_ReadInline, Eni_Decode, Eni_Ops; jt[848] used by SavageB1_LoadLevel
+Map_SavageB1Eni2:	; Enigma-compressed tilemap (Eni_Decode); 32 of 4A bytes used at runtime; read by Eni_ReadInline, Eni_Decode, Eni_Ops; jt[848] used by SavageB1_LoadLevel
 	incrom	$0A0A0C,$4A
-Lvl_BroodClawSegs:	; floor-segment list (Seg_LoadList: 12/10-byte records until a 0 byte); 18A of 1A6 bytes used at runtime; read by Seg_LoadList, Eni_ReadInline, Level_Load; jt[849] used by SavageB1_LoadLevel
+Lvl_SavageB1Segs:	; floor-segment list (Seg_LoadList: 12/10-byte records until a 0 byte); 18A of 1A6 bytes used at runtime; read by Seg_LoadList, Eni_ReadInline, Level_Load; jt[849] used by SavageB1_LoadLevel
 	incrom	$0A0A56,$1A6
 Lvl_SavageA2Segs:	; floor-segment list (Seg_LoadList: 12/10-byte records until a 0 byte); 4B3 of 4B4 bytes used at runtime; read by Seg_LoadList, Eni_ReadInline, Eni_Decode; jt[850] used by SavageA2_LoadLevel
 	incrom	$0A0BFC,$4B4
@@ -2722,7 +2723,7 @@ Tbl_SavageBioAnim2:	; animation script (byte flags, byte steps, ..., 2-byte step
 	incrom	$0B7DEC,$E
 Tbl_SavageBioAnim15:	; animation script (NOTES: Animation scripts); never read in the corpus; jt[961] used by SavageBio_ActReloadArt10 -> Obj_SetAnim
 	incrom	$0B7DFA,$10
-Tbl_ChildShipAnim:	; animation script (byte flags, byte steps, ..., 2-byte steps from +6); 6 of 8 bytes used at runtime; read by Anim_ApplyStep, Anim_AdvanceByDistance, Anim_Advance; jt[962] used by SavageMediumBio_StateAppear
+Tbl_SavageMediumBioAnim:	; animation script (byte flags, byte steps, ..., 2-byte steps from +6); 6 of 8 bytes used at runtime; read by Anim_ApplyStep, Anim_AdvanceByDistance, Anim_Advance; jt[962] used by SavageMediumBio_StateAppear
 	incrom	$0B7E0A,$8
 Tbl_SavageMediumBioAiScript:	; data handed to AiScript_Set (format not established); never read in the corpus; jt[963] used by SavageMediumBio_Init -> AiScript_Set
 	incrom	$0B7E12,$1A
@@ -2747,7 +2748,7 @@ Tbl_SavageBioActExtendTentacle2:	; format not established; never read in the cor
 	incrom	$0B8066,$60
 Tbl_SavageBigBioDraw:	; table read by SavageBigBio_Draw; 82 of 84 bytes used at runtime; read by SavageBigBio_Draw; jt[970] used by SavageBigBio_Draw, SavageBio_StateFireTip
 	incrom	$0B80C6,$84
-Tbl_SavageBio_Script4Len:	; word 4: step count of the AI script SavageBio_Script4 that follows (4 thunks disassembled); jt[971] used by SavageMediumBio_StateBurst
+Tbl_SavageMediumBio_Script4Len:	; word 4: step count of the AI script SavageBio_Script4 that follows (4 thunks disassembled); jt[971] used by SavageMediumBio_StateBurst
 	incrom	$0B814A,$2
 	include "src/f/0B814C.asm"
 Tbl_SavageBioAiScript:	; data handed to AiScript_Set (format not established); never read in the corpus; jt[972] used by SavageBio_StateCrossSurface -> AiScript_Set
@@ -2757,7 +2758,7 @@ Tbl_SavageBio_Script5Len:	; word 5: step count of the AI script SavageBio_Script
 	include "src/f/0B8178.asm"
 Tbl_SavageBioMove:	; table read by BioBalls_Move; 40 of 84 bytes used at runtime; read by BioBalls_Move, BioBalls_SetFormation; jt[974] used by SavageBio_StateCrossSurface, SavageBioBalls_ActLeap, SavageBio_ActDie
 	incrom	$0B818C,$84
-Tbl_SavageBioSetFormation:	; table read by BioBalls_SetFormation; 3A of 74 bytes used at runtime; read by BioBalls_SetFormation; jt[975] used by SavageMediumBio_StateBurst
+Tbl_SavageMediumBioSetFormation:	; table read by BioBalls_SetFormation; 3A of 74 bytes used at runtime; read by BioBalls_SetFormation; jt[975] used by SavageMediumBio_StateBurst
 	incrom	$0B8210,$74
 Art_BrainChildSpr:	; sprite definition (type $18, raw 4bpp tiles): $24-byte header, $14-byte frame records, pieces, tiles; 920 of 1700 bytes used at runtime; read by VDP_FlushDmaQueue; DMA to VRAM $AFA0-B3C0; jt[976] used by BrainChild_Init
 	incrom	$0B8284,$1700
@@ -2854,21 +2855,21 @@ Tbl_SavageMediumBio_vtable:	; class descriptor of SAVAGEMEDIUMBIO: word name off
 	incrom	$0BD39C,$92
 Tbl_BarbarianTakeDamage_Hurt:	; table read by XNpc_TakeDamage_Hurt; 4 of 8 bytes used at runtime; read by XNpc_TakeDamage_Hurt, Barbarian_Init, XNpc_KnockbackDist; jt[1036] used by Barbarian_Init
 	incrom	$0BD42E,$8
-Tbl_SavageBioAnim3:	; animation script (byte flags, byte steps, ..., 2-byte steps from +6); 10 of 12 bytes used at runtime; read by Anim_ApplyStep, Anim_AdvanceByDistance; jt[1037] used by Barbarian_StateWalkStart
+Tbl_BarbarianAnim3:	; animation script (byte flags, byte steps, ..., 2-byte steps from +6); 10 of 12 bytes used at runtime; read by Anim_ApplyStep, Anim_AdvanceByDistance; jt[1037] used by Barbarian_StateWalkStart
 	incrom	$0BD436,$12
-Tbl_SavageBioAnim4:	; animation script (byte flags, byte steps, ..., 2-byte steps from +6); 10 of 12 bytes used at runtime; read by Anim_ApplyStep, Anim_AdvanceByDistance; jt[1038] used by Barbarian_StateTaunt_Reset, Barbarian_StateTaunt_Play, Barbarian_StateStart
+Tbl_BarbarianAnim4:	; animation script (byte flags, byte steps, ..., 2-byte steps from +6); 10 of 12 bytes used at runtime; read by Anim_ApplyStep, Anim_AdvanceByDistance; jt[1038] used by Barbarian_StateTaunt_Reset, Barbarian_StateTaunt_Play, Barbarian_StateStart
 	incrom	$0BD448,$12
-Tbl_SavageBioAnim5:	; animation script (byte flags, byte steps, ..., 2-byte steps from +6); 2E of 60 bytes used at runtime; read by Anim_ApplyStep; jt[1039] used by Barbarian_StateIdle, Barbarian_StateIdleTimer, Barbarian_StateSegmentEnd
+Tbl_BarbarianAnim5:	; animation script (byte flags, byte steps, ..., 2-byte steps from +6); 2E of 60 bytes used at runtime; read by Anim_ApplyStep; jt[1039] used by Barbarian_StateIdle, Barbarian_StateIdleTimer, Barbarian_StateSegmentEnd
 	incrom	$0BD45A,$60
-Tbl_SavageBioAnim6:	; animation script (byte flags, byte steps, ..., 2-byte steps from +6); 16 of 18 bytes used at runtime; read by Anim_ApplyStep, Anim_AdvanceByDistance, Anim_Advance; jt[1040] used by Barbarian_StateAttack0
+Tbl_BarbarianAnim6:	; animation script (byte flags, byte steps, ..., 2-byte steps from +6); 16 of 18 bytes used at runtime; read by Anim_ApplyStep, Anim_AdvanceByDistance, Anim_Advance; jt[1040] used by Barbarian_StateAttack0
 	incrom	$0BD4BA,$18
-Tbl_SavageBioAnim7:	; animation script (byte flags, byte steps, ..., 2-byte steps from +6); E of 10 bytes used at runtime; read by Anim_ApplyStep, Anim_AdvanceByDistance, Anim_Advance; jt[1041] used by Barbarian_StateAttack1
+Tbl_BarbarianAnim7:	; animation script (byte flags, byte steps, ..., 2-byte steps from +6); E of 10 bytes used at runtime; read by Anim_ApplyStep, Anim_AdvanceByDistance, Anim_Advance; jt[1041] used by Barbarian_StateAttack1
 	incrom	$0BD4D2,$10
-Tbl_SavageBioAnim8:	; animation script (byte flags, byte steps, ..., 2-byte steps from +6); 12 of 14 bytes used at runtime; read by Anim_ApplyStep, Anim_AdvanceByDistance, Anim_Advance; jt[1042] used by Barbarian_StateAttack2
+Tbl_BarbarianAnim8:	; animation script (byte flags, byte steps, ..., 2-byte steps from +6); 12 of 14 bytes used at runtime; read by Anim_ApplyStep, Anim_AdvanceByDistance, Anim_Advance; jt[1042] used by Barbarian_StateAttack2
 	incrom	$0BD4E2,$14
-Tbl_SavageBioAnim9:	; animation script (byte flags, byte steps, ..., 2-byte steps from +6); 12 of 14 bytes used at runtime; read by Anim_ApplyStep, Anim_AdvanceByDistance, Anim_Advance; jt[1043] used by Barbarian_StateAttack3
+Tbl_BarbarianAnim9:	; animation script (byte flags, byte steps, ..., 2-byte steps from +6); 12 of 14 bytes used at runtime; read by Anim_ApplyStep, Anim_AdvanceByDistance, Anim_Advance; jt[1043] used by Barbarian_StateAttack3
 	incrom	$0BD4F6,$14
-Tbl_SavageBioAnim10:	; animation script (byte flags, byte steps, ..., 2-byte steps from +6); 12 of 14 bytes used at runtime; read by Anim_ApplyStep; jt[1044] used by Barbarian_StateAttack4
+Tbl_BarbarianAnim10:	; animation script (byte flags, byte steps, ..., 2-byte steps from +6); 12 of 14 bytes used at runtime; read by Anim_ApplyStep; jt[1044] used by Barbarian_StateAttack4
 	incrom	$0BD50A,$14
 	include "src/f/0BD51E.asm"
 	include "src/f/0BD52C.asm"
@@ -3041,7 +3042,7 @@ Tbl_SwampFlyStateFly4:	; table read by SwampFly_StateFly; 2A of 13E bytes used a
 	incrom	$0C064A,$13E
 Tbl_SwampFlyStateFly5:	; table read by SwampFly_StateFly; 22 of 1D0 bytes used at runtime; read by SwampFly_StateFly; jt[1105] used by SwampFly_StatePickPath_Case1
 	incrom	$0C0788,$1D0
-Tbl_SwampPlatform:	; format not established; never read in the corpus; jt[1106] used by SwampFly_StatePickPath_Case5
+Tbl_SwampFly:	; format not established; never read in the corpus; jt[1106] used by SwampFly_StatePickPath_Case5
 	incrom	$0C0958,$2
 	include "src/f/0C095A.asm"
 	include "src/f/0C0968.asm"
@@ -3063,9 +3064,9 @@ Tbl_SwampFly_vtable:	; class descriptor of SWAMPFLY: word name offset $82, paren
 	incrom	$0C0CEA,$8B
 Pad_SwampFly:	; $00 fill; never read in the corpus; between SwampFly_Init and SavageJungle_EmptyStub
 	incrom	$0C0D75,$1
-Tbl_SwampFlyComputeParallax:	; table read by Scroll_ComputeParallax; 16 of 22 bytes used at runtime; read by Scroll_ComputeParallax, Scroll_SetParallax; jt[1114] used by SavageC1_SetParallax
+Tbl_SavageC1ComputeParallax:	; table read by Scroll_ComputeParallax; 16 of 22 bytes used at runtime; read by Scroll_ComputeParallax, Scroll_SetParallax; jt[1114] used by SavageC1_SetParallax
 	incrom	$0C0D76,$22
-Tbl_SwampFlyComputeParallax2:	; table read by Scroll_ComputeParallax; 16 of 22 bytes used at runtime; read by Scroll_ComputeParallax, Scroll_SetParallax; jt[1115] used by SavageB1_SetParallax
+Tbl_SavageB1ComputeParallax2:	; table read by Scroll_ComputeParallax; 16 of 22 bytes used at runtime; read by Scroll_ComputeParallax, Scroll_SetParallax; jt[1115] used by SavageB1_SetParallax
 	incrom	$0C0D98,$22
 	include "src/f/0C0DBA.asm"
 	include "src/f/0C0DC2.asm"
@@ -3201,7 +3202,7 @@ Tbl_ControlBox_vtable:	; class descriptor of CONTROLBOX: word name offset $76, p
 	incrom	$0DDA02,$81
 Pad_ControlPanel:	; $00 fill; never read in the corpus; between ControlBox_StateFire and ControlPanel_GetSize
 	incrom	$0DDA83,$1
-Art_ControlPanelSpr:	; sprite definition (type $19, Nemesis-compressed tiles): $24-byte header, $14-byte frame records, pieces, tiles; 3B1 of 3B2 bytes used at runtime; read by Nem_DecodeLoop, Spr_PreloadTiles, Nem_BuildCodeTable; jt[1185] used by SentinelsD1_LoadResources
+Art_SentinelsD1Spr:	; sprite definition (type $19, Nemesis-compressed tiles): $24-byte header, $14-byte frame records, pieces, tiles; 3B1 of 3B2 bytes used at runtime; read by Nem_DecodeLoop, Spr_PreloadTiles, Nem_BuildCodeTable; jt[1185] used by SentinelsD1_LoadResources
 	incrom	$0DDA84,$3B2
 Art_ControlPanelNem:	; Nemesis-style compressed 4bpp tiles (Nem_Decode; code table built from pairs by the caller); 82 of 82 bytes used at runtime; read by Nem_DecodeLoop, ControlPanel_Draw; jt[1186] used by ControlPanel_StartPattern
 	incrom	$0DDE36,$82
@@ -3753,7 +3754,7 @@ Sw_11214E:	; switch table of sub at $11214E: 5 word offsets from Sw_11214E-2
 	include "src/f/112EA4.asm"
 	include "src/f/112F58.asm"
 	include "src/f/112F8E.asm"
-Tbl_DeathbirdVdp:	; words copied to the VDP data port by VDP_WriteWords; 18B of 1C8 bytes used at runtime; read by VDP_WriteWords; jt[1388] used by Pause_LoadSprite
+Tbl_PauseVdp:	; words copied to the VDP data port by VDP_WriteWords; 18B of 1C8 bytes used at runtime; read by VDP_WriteWords; jt[1388] used by Pause_LoadSprite
 	incrom	$112FD8,$1C8
 Tbl_XPlayer_vtable:	; class descriptor "XPLAYER": word $F2 = name offset, long parent (ACTOR), 59 method pointers, then the class name string
 	incrom	$1131A0,$FA
@@ -4398,11 +4399,11 @@ Tbl_BrainRocket_vtable:	; class descriptor "BRAINROCKET": word $6E = name offset
 	incrom	$133CFC,$7A
 Tbl_DropRocket_vtable:	; class descriptor "DROPROCKET": word $6E = name offset, long parent (BRAINROCKET), 26 method pointers, then the class name string
 	incrom	$133D76,$7A
-Tbl_BigAcBulletAnim2:	; animation script (byte flags, byte steps, ..., 2-byte steps from +6); A of C bytes used at runtime; read by Anim_ApplyStep, Anim_AdvanceByDistance, Anim_Advance; jt[1729] used by BrainRocket_StateSetDirection, DropRocket_StateDrop
+Tbl_BrainRocketAnim2:	; animation script (byte flags, byte steps, ..., 2-byte steps from +6); A of C bytes used at runtime; read by Anim_ApplyStep, Anim_AdvanceByDistance, Anim_Advance; jt[1729] used by BrainRocket_StateSetDirection, DropRocket_StateDrop
 	incrom	$133DF0,$C
-Tbl_BigAcBulletAnim3:	; animation script (NOTES: Animation scripts); never read in the corpus; jt[1730] used by BrainRocket_StateSetDirection -> Obj_SetAnim
+Tbl_BrainRocketAnim3:	; animation script (NOTES: Animation scripts); never read in the corpus; jt[1730] used by BrainRocket_StateSetDirection -> Obj_SetAnim
 	incrom	$133DFC,$C
-Tbl_BigAcBulletAnim4:	; animation script (NOTES: Animation scripts); never read in the corpus; jt[1731] used by BrainRocket_StateSetDirection -> Obj_SetAnim
+Tbl_BrainRocketAnim4:	; animation script (NOTES: Animation scripts); never read in the corpus; jt[1731] used by BrainRocket_StateSetDirection -> Obj_SetAnim
 	incrom	$133E08,$C
 Tbl_BrainRocketShakeStep:	; table read by Cam_ShakeStep; D of E bytes used at runtime; read by Cam_ShakeStep; jt[1732] used by BrainRocket_Attack
 	incrom	$133E14,$E
@@ -4441,7 +4442,7 @@ Tbl_Anim_134386:	; animation script (NOTES: Animation scripts); never read in th
 	incrom	$134386,$A
 Tbl_Anim_134390:	; animation script (NOTES: Animation scripts); never read in the corpus; jt[1750] used by FlyBrood_Init_Tail -> Obj_ChangeAnim, FlyBrood_ActDiveAtPlayer -> Obj_ChangeAnim, FlyBrood_ActDiveAtPlayerLow -> Obj_ChangeAnim
 	incrom	$134390,$18
-Tbl_AiScript_1343A8:	; data handed to AiScript_Set (format not established); never read in the corpus; jt[1751] used by FlyBrood_Init_Case4 -> AiScript_Set
+Tbl_FlyBrood_1343A8:	; data handed to AiScript_Set (format not established); never read in the corpus; jt[1751] used by FlyBrood_Init_Case4 -> AiScript_Set
 	incrom	$1343A8,$54
 Tbl_1343FC:	; format not established; never read in the corpus; jt[1752] used by FlyBrood_StateSwoopPatrol
 	incrom	$1343FC,$5C
@@ -4863,12 +4864,12 @@ Tbl_Anim_14220A:	; animation script (byte flags, byte steps, ..., 2-byte steps f
 Tbl_TankLeftActPause:	; table read by Tank_ActPause; 2 of 2 bytes used at runtime; read by Tank_ActPause; jt[1930] used by TankLeft_Init, Tank_Init
 	incrom	$14221C,$2
 	include "src/f/14221E.asm"
-Tbl_AiScript_14222A:	; word $0000 (2 bytes), not a string: reached only via jt[1931] used by TankLeft_StateWaitDrive -> AiScript_Set (e.g. an empty list/script count)
+Tbl_TankLeft_14222A:	; word $0000 (2 bytes), not a string: reached only via jt[1931] used by TankLeft_StateWaitDrive -> AiScript_Set (e.g. an empty list/script count)
 	incrom	$14222A,$1
 Tbl_TankActPause:	; table read by Tank_ActPause; 1 of 1 bytes used at runtime; read by Tank_ActPause
 	incrom	$14222B,$1
 	include "src/f/14222C.asm"
-Tbl_AiScript_142238:	; word $0000 (2 bytes), not a string: reached only via jt[1932] used by TankLeft_Deactivate -> Actor_DeactivateFree, TankLeft_StateDriveIn -> AiScript_Set (e.g. an empty list/script count)
+Tbl_TankLeft_142238:	; word $0000 (2 bytes), not a string: reached only via jt[1932] used by TankLeft_Deactivate -> Actor_DeactivateFree, TankLeft_StateDriveIn -> AiScript_Set (e.g. an empty list/script count)
 	incrom	$142238,$1
 Tbl_TankActPause2:	; table read by Tank_ActPause; 1 of 1 bytes used at runtime; read by Tank_ActPause
 	incrom	$142239,$1
@@ -5111,7 +5112,14 @@ Tbl_ApocalypsePostLoadVram:	; table read by Scene_PostLoadVram; 20 of 20 bytes u
 	incrom	$159BA8,$20
 Tbl_PostLoadVram_159BC8:	; table read by Scene_PostLoadVram; 20 of 20 bytes used at runtime; read by Scene_PostLoadVram; jt[1995] used by Scene_PostLoadVram
 	incrom	$159BC8,$20
-	incrom	$159BE8,$2E4
+Tbl_MagnetoReadInput:	; table read by Demo_ReadInput; 9D of 9E bytes used at runtime; read by Demo_ReadInput, Scene_PostLoadVram; jt[1996] used by Game_AttractDemoCyclops
+	incrom	$159BE8,$9E
+Tbl_MagnetoReadInput2:	; table read by Demo_ReadInput; 75 of 76 bytes used at runtime; read by Demo_ReadInput; jt[1997] used by Game_AttractDemoCyclops
+	incrom	$159C86,$76
+Tbl_MagnetoReadInput3:	; table read by Demo_ReadInput; 87 of 88 bytes used at runtime; read by Demo_ReadInput; jt[1998] used by Game_AttractDemoCyclops
+	incrom	$159CFC,$88
+Tbl_MagnetoReadInput4:	; table read by Demo_ReadInput; 121 of 148 bytes used at runtime; read by Demo_ReadInput; jt[1999] used by Game_AttractDemoNightcrawler
+	incrom	$159D84,$148
 	include "src/f/159ECC.asm"
 	include "src/f/159FB8.asm"
 	include "src/f/159FD6.asm"
@@ -5408,37 +5416,37 @@ Art_BeastSpr:	; sprite definition (type $18, raw 4bpp tiles): $24-byte header, $
 	incrom	$18434E,$9BDE
 Art_PlayerSpr2:	; sprite definition (type $18, raw 4bpp tiles): $24-byte header, $14-byte frame records, pieces, tiles; 74E0 of 8476 bytes used at runtime; read by VDP_FlushDmaQueue; DMA to VRAM $85E0-A220; jt[2149] used by Player_CalcMaxTiles, Beast_SetFrame
 	incrom	$18DF2C,$8476
-Tbl_BeastAnim:	; animation script (byte flags, byte steps, ..., 2-byte steps from +6); 1D of 22 bytes used at runtime; read by Anim_ApplyStep, Anim_AdvanceByDistance; jt[2150] used by PlayerSelect_PlayIdleAnim_part5
+Tbl_PlayerSelectAnim:	; animation script (byte flags, byte steps, ..., 2-byte steps from +6); 1D of 22 bytes used at runtime; read by Anim_ApplyStep, Anim_AdvanceByDistance; jt[2150] used by PlayerSelect_PlayIdleAnim_part5
 	incrom	$1963A2,$22
-Tbl_BeastAnim2:	; animation script (byte flags, byte steps, ..., 2-byte steps from +6); 8 of A bytes used at runtime; read by Anim_ApplyStep, Anim_AdvanceByDistance, Anim_Advance; jt[2151] used by Wolverine_StateWallCling
+Tbl_WolverineAnim2:	; animation script (byte flags, byte steps, ..., 2-byte steps from +6); 8 of A bytes used at runtime; read by Anim_ApplyStep, Anim_AdvanceByDistance, Anim_Advance; jt[2151] used by Wolverine_StateWallCling
 	incrom	$1963C4,$A
-Tbl_BeastAnim3:	; animation script (byte flags, byte steps, ..., 2-byte steps from +6); 8 of A bytes used at runtime; read by Anim_ApplyStep, Anim_AdvanceByDistance, Anim_Advance; jt[2152] used by Wolverine_StateWallCling
+Tbl_WolverineAnim3:	; animation script (byte flags, byte steps, ..., 2-byte steps from +6); 8 of A bytes used at runtime; read by Anim_ApplyStep, Anim_AdvanceByDistance, Anim_Advance; jt[2152] used by Wolverine_StateWallCling
 	incrom	$1963CE,$A
-Tbl_BeastAnim4:	; animation script (byte flags, byte steps, ..., 2-byte steps from +6); 8 of A bytes used at runtime; read by Anim_ApplyStep, Anim_AdvanceByDistance, Anim_Advance; jt[2153] used by Wolverine_StateWallCling
+Tbl_WolverineAnim4:	; animation script (byte flags, byte steps, ..., 2-byte steps from +6); 8 of A bytes used at runtime; read by Anim_ApplyStep, Anim_AdvanceByDistance, Anim_Advance; jt[2153] used by Wolverine_StateWallCling
 	incrom	$1963D8,$A
-Tbl_BeastAnim5:	; animation script (byte flags, byte steps, ..., 2-byte steps from +6); 8 of A bytes used at runtime; read by Anim_ApplyStep, Anim_AdvanceByDistance, Anim_Advance; jt[2154] used by Wolverine_StateWallCling
+Tbl_WolverineAnim5:	; animation script (byte flags, byte steps, ..., 2-byte steps from +6); 8 of A bytes used at runtime; read by Anim_ApplyStep, Anim_AdvanceByDistance, Anim_Advance; jt[2154] used by Wolverine_StateWallCling
 	incrom	$1963E2,$A
-Tbl_BeastAnim12:	; animation script (NOTES: Animation scripts); never read in the corpus; jt[2155] used by Wolverine_StartWallClimb -> Obj_SetAnim
+Tbl_WolverineAnim12:	; animation script (NOTES: Animation scripts); never read in the corpus; jt[2155] used by Wolverine_StartWallClimb -> Obj_SetAnim
 	incrom	$1963EC,$8
-Tbl_BeastAnim13:	; animation script (NOTES: Animation scripts); never read in the corpus; jt[2156] used by Wolverine_StartWallClimb -> Obj_SetAnim
+Tbl_WolverineAnim13:	; animation script (NOTES: Animation scripts); never read in the corpus; jt[2156] used by Wolverine_StartWallClimb -> Obj_SetAnim
 	incrom	$1963F4,$8
-Tbl_BeastAnim14:	; animation script (NOTES: Animation scripts); never read in the corpus; jt[2157] used by Wolverine_StartCeilingCrawl -> Obj_SetAnim, Wolverine_StateCeilingHang -> Obj_SetAnim
+Tbl_WolverineAnim14:	; animation script (NOTES: Animation scripts); never read in the corpus; jt[2157] used by Wolverine_StartCeilingCrawl -> Obj_SetAnim, Wolverine_StateCeilingHang -> Obj_SetAnim
 	incrom	$1963FC,$A
-Tbl_BeastAnim15:	; animation script (NOTES: Animation scripts); never read in the corpus; jt[2158] used by Wolverine_StartCeilingCrawl -> Obj_SetAnim, Wolverine_StateCeilingHang -> Obj_SetAnim
+Tbl_WolverineAnim15:	; animation script (NOTES: Animation scripts); never read in the corpus; jt[2158] used by Wolverine_StartCeilingCrawl -> Obj_SetAnim, Wolverine_StateCeilingHang -> Obj_SetAnim
 	incrom	$196406,$A
-Tbl_BeastAnim6:	; animation script (byte flags, byte steps, ..., 2-byte steps from +6); 36 of 3E bytes used at runtime; read by Anim_ApplyStep, Anim_AdvanceByDistance, Anim_Advance; jt[2159] used by PlayerSelect_PlayPickAnim_part2
+Tbl_PlayerSelectAnim6:	; animation script (byte flags, byte steps, ..., 2-byte steps from +6); 36 of 3E bytes used at runtime; read by Anim_ApplyStep, Anim_AdvanceByDistance, Anim_Advance; jt[2159] used by PlayerSelect_PlayPickAnim_part2
 	incrom	$196410,$3E
-Tbl_EvilWolverineAnim:	; animation script (byte flags, byte steps, ..., 2-byte steps from +6); 18 of 1A bytes used at runtime; read by Anim_ApplyStep, Anim_AdvanceByDistance, Anim_Advance; jt[2160] used by EvilWolverine_ActLeap, Wolverine_StateLunge, Wolverine_GroundSpecial
+Tbl_WolverineAnim:	; animation script (byte flags, byte steps, ..., 2-byte steps from +6); 18 of 1A bytes used at runtime; read by Anim_ApplyStep, Anim_AdvanceByDistance, Anim_Advance; jt[2160] used by EvilWolverine_ActLeap, Wolverine_StateLunge, Wolverine_GroundSpecial
 	incrom	$19644E,$1A
-Tbl_BeastAnim7:	; animation script (byte flags, byte steps, ..., 2-byte steps from +6); 18 of 1A bytes used at runtime; read by Anim_ApplyStep; jt[2161] used by Wolverine_StateLunge, Wolverine_GroundSpecial
+Tbl_WolverineAnim7:	; animation script (byte flags, byte steps, ..., 2-byte steps from +6); 18 of 1A bytes used at runtime; read by Anim_ApplyStep; jt[2161] used by Wolverine_StateLunge, Wolverine_GroundSpecial
 	incrom	$196468,$1A
-Tbl_BeastAnim8:	; animation script (byte flags, byte steps, ..., 2-byte steps from +6); 12 of 14 bytes used at runtime; read by Anim_ApplyStep, Anim_AdvanceByDistance, Anim_Advance; jt[2162] used by Wolverine_StateWallCling
+Tbl_WolverineAnim8:	; animation script (byte flags, byte steps, ..., 2-byte steps from +6); 12 of 14 bytes used at runtime; read by Anim_ApplyStep, Anim_AdvanceByDistance, Anim_Advance; jt[2162] used by Wolverine_StateWallCling
 	incrom	$196482,$14
-Tbl_BeastAnim9:	; animation script (byte flags, byte steps, ..., 2-byte steps from +6); 12 of 16 bytes used at runtime; read by Anim_ApplyStep, Anim_AdvanceByDistance, Anim_Advance; jt[2163] used by Wolverine_AirAttackDown
+Tbl_WolverineAnim9:	; animation script (byte flags, byte steps, ..., 2-byte steps from +6); 12 of 16 bytes used at runtime; read by Anim_ApplyStep, Anim_AdvanceByDistance, Anim_Advance; jt[2163] used by Wolverine_AirAttackDown
 	incrom	$196496,$16
-Tbl_BeastAnim10:	; animation script (byte flags, byte steps, ..., 2-byte steps from +6); 12 of 14 bytes used at runtime; read by Anim_ApplyStep, Anim_AdvanceByDistance, Anim_Advance; jt[2164] used by Wolverine_AirSpecial
+Tbl_WolverineAnim10:	; animation script (byte flags, byte steps, ..., 2-byte steps from +6); 12 of 14 bytes used at runtime; read by Anim_ApplyStep, Anim_AdvanceByDistance, Anim_Advance; jt[2164] used by Wolverine_AirSpecial
 	incrom	$1964AC,$14
-Tbl_BeastAnim11:	; animation script (byte flags, byte steps, ..., 2-byte steps from +6); 1E of 34 bytes used at runtime; read by Anim_ApplyStep, Anim_AdvanceByDistance; jt[2165] used by Wolverine_AirSpecial
+Tbl_WolverineAnim11:	; animation script (byte flags, byte steps, ..., 2-byte steps from +6); 1E of 34 bytes used at runtime; read by Anim_ApplyStep, Anim_AdvanceByDistance; jt[2165] used by Wolverine_AirSpecial
 	incrom	$1964C0,$34
 Tbl_EvilWolverineLand:	; table read by XPlayer_Land; 4C of 5E bytes used at runtime; read by XPlayer_Land, XPlayer_StateControl, XPlayer_DoubleJump; jt[2166] used by EvilWolverine_Init, PlayerSelect_PlayPickAnim_part2, Wolverine_Init
 	incrom	$1964F4,$5E
@@ -5548,31 +5556,31 @@ Art_PlayerSpr4:	; sprite definition (type $18, raw 4bpp tiles): $24-byte header,
 	incrom	$1B0A56,$3EF4
 Art_PlayerSpr5:	; sprite definition (type $18, raw 4bpp tiles): $24-byte header, $14-byte frame records, pieces, tiles; 3A40 of 4530 bytes used at runtime; read by VDP_FlushDmaQueue; DMA to VRAM $8620-A400; jt[2215] used by Player_CalcMaxTiles, Nightcrawler_SetFrame
 	incrom	$1B494A,$4530
-Tbl_NightcrawlerAnim:	; animation script (byte flags, byte steps, ..., 2-byte steps from +6); 14 of 16 bytes used at runtime; read by Anim_ApplyStep, Anim_AdvanceByDistance; jt[2216] used by PlayerSelect_PlayIdleAnim_part4
+Tbl_PlayerSelectAnim_2:	; animation script (byte flags, byte steps, ..., 2-byte steps from +6); 14 of 16 bytes used at runtime; read by Anim_ApplyStep, Anim_AdvanceByDistance; jt[2216] used by PlayerSelect_PlayIdleAnim_part4
 	incrom	$1B8E7A,$16
-Tbl_EvilPsylockeAnim:	; animation script (byte flags, byte steps, ..., 2-byte steps from +6); 1E of 34 bytes used at runtime; read by Anim_ApplyStep, Anim_AdvanceByDistance, Anim_Advance; jt[2217] used by EvilPsylocke_ActDash, Psylocke_StateCrouch
+Tbl_PsylockeAnim_2:	; animation script (byte flags, byte steps, ..., 2-byte steps from +6); 1E of 34 bytes used at runtime; read by Anim_ApplyStep, Anim_AdvanceByDistance, Anim_Advance; jt[2217] used by EvilPsylocke_ActDash, Psylocke_StateCrouch
 	incrom	$1B8E90,$34
-Tbl_NightcrawlerAnim2:	; animation script (byte flags, byte steps, ..., 2-byte steps from +6); 2E of 34 bytes used at runtime; read by Anim_ApplyStep, Anim_AdvanceByDistance; jt[2218] used by PlayerSelect_PlayPickAnim_part2
+Tbl_PlayerSelectAnim2:	; animation script (byte flags, byte steps, ..., 2-byte steps from +6); 2E of 34 bytes used at runtime; read by Anim_ApplyStep, Anim_AdvanceByDistance; jt[2218] used by PlayerSelect_PlayPickAnim_part2
 	incrom	$1B8EC4,$34
-Tbl_NightcrawlerAnim3:	; animation script (byte flags, byte steps, ..., 2-byte steps from +6); 12 of 14 bytes used at runtime; read by Anim_ApplyStep, Anim_AdvanceByDistance; jt[2219] used by Psylocke_GroundAttackDown
+Tbl_PsylockeAnim3_2:	; animation script (byte flags, byte steps, ..., 2-byte steps from +6); 12 of 14 bytes used at runtime; read by Anim_ApplyStep, Anim_AdvanceByDistance; jt[2219] used by Psylocke_GroundAttackDown
 	incrom	$1B8EF8,$14
-Tbl_NightcrawlerAnim4:	; animation script (byte flags, byte steps, ..., 2-byte steps from +6); E of 10 bytes used at runtime; read by Anim_ApplyStep, Anim_AdvanceByDistance, Anim_Advance; jt[2220] used by Psylocke_CrouchCombo2
+Tbl_PsylockeAnim4_2:	; animation script (byte flags, byte steps, ..., 2-byte steps from +6); E of 10 bytes used at runtime; read by Anim_ApplyStep, Anim_AdvanceByDistance, Anim_Advance; jt[2220] used by Psylocke_CrouchCombo2
 	incrom	$1B8F0C,$10
-Tbl_NightcrawlerAnim5:	; animation script (byte flags, byte steps, ..., 2-byte steps from +6); 18 of 1A bytes used at runtime; read by Anim_ApplyStep, Anim_AdvanceByDistance; jt[2221] used by Psylocke_GroundSpecial
+Tbl_PsylockeAnim5_2:	; animation script (byte flags, byte steps, ..., 2-byte steps from +6); 18 of 1A bytes used at runtime; read by Anim_ApplyStep, Anim_AdvanceByDistance; jt[2221] used by Psylocke_GroundSpecial
 	incrom	$1B8F1C,$1A
-Tbl_NightcrawlerAnim6:	; animation script (byte flags, byte steps, ..., 2-byte steps from +6); 18 of 1A bytes used at runtime; read by Anim_ApplyStep, Anim_AdvanceByDistance; jt[2222] used by Psylocke_GroundSpecial
+Tbl_PsylockeAnim6_2:	; animation script (byte flags, byte steps, ..., 2-byte steps from +6); 18 of 1A bytes used at runtime; read by Anim_ApplyStep, Anim_AdvanceByDistance; jt[2222] used by Psylocke_GroundSpecial
 	incrom	$1B8F36,$1A
-Tbl_NightcrawlerAnim7:	; animation script (byte flags, byte steps, ..., 2-byte steps from +6); 16 of 18 bytes used at runtime; read by Anim_ApplyStep; jt[2223] used by Psylocke_GroundSpecialDown
+Tbl_PsylockeAnim7_2:	; animation script (byte flags, byte steps, ..., 2-byte steps from +6); 16 of 18 bytes used at runtime; read by Anim_ApplyStep; jt[2223] used by Psylocke_GroundSpecialDown
 	incrom	$1B8F50,$18
-Tbl_NightcrawlerAnim8:	; animation script (byte flags, byte steps, ..., 2-byte steps from +6); 24 of 28 bytes used at runtime; read by Anim_ApplyStep, Anim_AdvanceByDistance; jt[2224] used by Psylocke_GroundSpecialDown
+Tbl_PsylockeAnim8_2:	; animation script (byte flags, byte steps, ..., 2-byte steps from +6); 24 of 28 bytes used at runtime; read by Anim_ApplyStep, Anim_AdvanceByDistance; jt[2224] used by Psylocke_GroundSpecialDown
 	incrom	$1B8F68,$28
-Tbl_NightcrawlerAnim9:	; animation script (byte flags, byte steps, ..., 2-byte steps from +6); 16 of 18 bytes used at runtime; read by Anim_ApplyStep, Anim_AdvanceByDistance, Anim_Advance; jt[2225] used by Psylocke_AirSpecial
+Tbl_PsylockeAnim9_2:	; animation script (byte flags, byte steps, ..., 2-byte steps from +6); 16 of 18 bytes used at runtime; read by Anim_ApplyStep, Anim_AdvanceByDistance, Anim_Advance; jt[2225] used by Psylocke_AirSpecial
 	incrom	$1B8F90,$18
-Tbl_NightcrawlerAnim10:	; animation script (byte flags, byte steps, ..., 2-byte steps from +6); 16 of 18 bytes used at runtime; read by Anim_ApplyStep; jt[2226] used by Psylocke_AirSpecial
+Tbl_PsylockeAnim10_2:	; animation script (byte flags, byte steps, ..., 2-byte steps from +6); 16 of 18 bytes used at runtime; read by Anim_ApplyStep; jt[2226] used by Psylocke_AirSpecial
 	incrom	$1B8FA8,$18
-Tbl_NightcrawlerAnim11:	; animation script (byte flags, byte steps, ..., 2-byte steps from +6); 10 of 16 bytes used at runtime; read by Anim_ApplyStep, Anim_AdvanceByDistance; jt[2227] used by Psylocke_StateCling
+Tbl_PsylockeAnim11_2:	; animation script (byte flags, byte steps, ..., 2-byte steps from +6); 10 of 16 bytes used at runtime; read by Anim_ApplyStep, Anim_AdvanceByDistance; jt[2227] used by Psylocke_StateCling
 	incrom	$1B8FC0,$16
-Tbl_NightcrawlerAnim12:	; animation script (NOTES: Animation scripts); never read in the corpus; jt[2228] used by Psylocke_StateCling -> Obj_SetAnim
+Tbl_PsylockeAnim12_2:	; animation script (NOTES: Animation scripts); never read in the corpus; jt[2228] used by Psylocke_StateCling -> Obj_SetAnim
 	incrom	$1B8FD6,$2C
 Tbl_EvilPsylockeLand:	; table read by XPlayer_Land; 40 of 5E bytes used at runtime; read by XPlayer_Land, PlayerSelect_PlayPickAnim_part3, Psylocke_Init; jt[2229] used by EvilPsylocke_Init, PlayerSelect_PlayPickAnim_part2, Psylocke_Init
 	incrom	$1B9002,$5E
@@ -5604,93 +5612,93 @@ Art_PlayerSpr6:	; sprite definition (type $18, raw 4bpp tiles): $24-byte header,
 	incrom	$1C0CF4,$2E8C
 Art_PlayerSpr7:	; sprite definition (type $18, raw 4bpp tiles): $24-byte header, $14-byte frame records, pieces, tiles; 7100 of 9B66 bytes used at runtime; read by VDP_FlushDmaQueue; DMA to VRAM $6860-CA80; jt[2247] used by Player_CalcMaxTiles, Psylocke_SetFrame
 	incrom	$1C3B80,$9B66
-Tbl_PsylockeAnim:	; animation script (byte flags, byte steps, ..., 2-byte steps from +6); E of 10 bytes used at runtime; read by Anim_ApplyStep, Anim_AdvanceByDistance, Anim_Advance; jt[2248] used by PlayerSelect_PlayIdleAnim_part6
+Tbl_PlayerSelectAnim_3:	; animation script (byte flags, byte steps, ..., 2-byte steps from +6); E of 10 bytes used at runtime; read by Anim_ApplyStep, Anim_AdvanceByDistance, Anim_Advance; jt[2248] used by PlayerSelect_PlayIdleAnim_part6
 	incrom	$1CD6E6,$10
-Tbl_PsylockeAnim2:	; animation script (byte flags, byte steps, ..., 2-byte steps from +6); 27 of 2C bytes used at runtime; read by Anim_ApplyStep; jt[2249] used by PlayerSelect_PlayPickAnim_part2
+Tbl_PlayerSelectAnim2_2:	; animation script (byte flags, byte steps, ..., 2-byte steps from +6); 27 of 2C bytes used at runtime; read by Anim_ApplyStep; jt[2249] used by PlayerSelect_PlayPickAnim_part2
 	incrom	$1CD6F6,$2C
 Tbl_MagnetoBossAnim2:	; animation script (byte flags, byte steps, ..., 2-byte steps from +6); E of 10 bytes used at runtime; read by Anim_ApplyStep, Anim_AdvanceByDistance; jt[2250] used by MagnetoBoss_Update
 	incrom	$1CD722,$10
-Tbl_CloneA5Anim:	; animation script (byte flags, byte steps, ..., 2-byte steps from +6); E of 10 bytes used at runtime; read by Anim_ApplyStep; jt[2251] used by CloneA5_CamUpdate, Magneto_AirSteer, Magneto_StateAirShotEnd
+Tbl_MagnetoAnim:	; animation script (byte flags, byte steps, ..., 2-byte steps from +6); E of 10 bytes used at runtime; read by Anim_ApplyStep; jt[2251] used by CloneA5_CamUpdate, Magneto_AirSteer, Magneto_StateAirShotEnd
 	incrom	$1CD732,$10
-Tbl_Psylocke:	; format not established; never read in the corpus; jt[2252] used by Magneto_ShotAnim_Case4
+Tbl_Magneto:	; format not established; never read in the corpus; jt[2252] used by Magneto_ShotAnim_Case4
 	incrom	$1CD742,$A
-Tbl_Psylocke2:	; format not established; never read in the corpus; jt[2253] used by Magneto_ShotEndAnim_Case4
+Tbl_Magneto2:	; format not established; never read in the corpus; jt[2253] used by Magneto_ShotEndAnim_Case4
 	incrom	$1CD74C,$10
-Tbl_PsylockeAnim3:	; animation script (byte flags, byte steps, ..., 2-byte steps from +6); 8 of A bytes used at runtime; read by Anim_AdvanceByDistance, Anim_ApplyStep, Anim_Advance; jt[2254] used by Magneto_ShotAnim_Case2, Magneto_ShotAnim_Case4
+Tbl_MagnetoAnim3:	; animation script (byte flags, byte steps, ..., 2-byte steps from +6); 8 of A bytes used at runtime; read by Anim_AdvanceByDistance, Anim_ApplyStep, Anim_Advance; jt[2254] used by Magneto_ShotAnim_Case2, Magneto_ShotAnim_Case4
 	incrom	$1CD75C,$A
-Tbl_PsylockeAnim4:	; animation script (byte flags, byte steps, ..., 2-byte steps from +6); E of 10 bytes used at runtime; read by Anim_ApplyStep, Anim_AdvanceByDistance, Anim_Advance; jt[2255] used by Magneto_ShotEndAnim_Case2, Magneto_ShotEndAnim_Case4
+Tbl_MagnetoAnim4:	; animation script (byte flags, byte steps, ..., 2-byte steps from +6); E of 10 bytes used at runtime; read by Anim_ApplyStep, Anim_AdvanceByDistance, Anim_Advance; jt[2255] used by Magneto_ShotEndAnim_Case2, Magneto_ShotEndAnim_Case4
 	incrom	$1CD766,$10
-Tbl_PsylockeAnim5:	; animation script (byte flags, byte steps, ..., 2-byte steps from +6); 8 of A bytes used at runtime; read by Anim_ApplyStep, Anim_AdvanceByDistance, Anim_Advance; jt[2256] used by Magneto_ShotAnim_Case2, Magneto_ShotAnim_Case7
+Tbl_MagnetoAnim5:	; animation script (byte flags, byte steps, ..., 2-byte steps from +6); 8 of A bytes used at runtime; read by Anim_ApplyStep, Anim_AdvanceByDistance, Anim_Advance; jt[2256] used by Magneto_ShotAnim_Case2, Magneto_ShotAnim_Case7
 	incrom	$1CD776,$A
-Tbl_PsylockeAnim6:	; animation script (byte flags, byte steps, ..., 2-byte steps from +6); E of 10 bytes used at runtime; read by Anim_ApplyStep; jt[2257] used by Magneto_ShotEndAnim_Case2, Magneto_ShotEndAnim_Case7
+Tbl_MagnetoAnim6:	; animation script (byte flags, byte steps, ..., 2-byte steps from +6); E of 10 bytes used at runtime; read by Anim_ApplyStep; jt[2257] used by Magneto_ShotEndAnim_Case2, Magneto_ShotEndAnim_Case7
 	incrom	$1CD780,$10
-Tbl_Psylocke3:	; format not established; never read in the corpus; jt[2258] used by Magneto_ShotAnim_Case1, Magneto_ShotAnim_Case8
+Tbl_Magneto3:	; format not established; never read in the corpus; jt[2258] used by Magneto_ShotAnim_Case1, Magneto_ShotAnim_Case8
 	incrom	$1CD790,$A
-Tbl_Psylocke4:	; format not established; never read in the corpus; jt[2259] used by Magneto_ShotEndAnim_Case1, Magneto_ShotEndAnim_Case8
+Tbl_Magneto4:	; format not established; never read in the corpus; jt[2259] used by Magneto_ShotEndAnim_Case1, Magneto_ShotEndAnim_Case8
 	incrom	$1CD79A,$10
-Tbl_PsylockeAnim26:	; animation script (NOTES: Animation scripts); never read in the corpus; jt[2260] used by Magneto_GroundAttackDown -> Obj_SetAnim
+Tbl_MagnetoAnim26:	; animation script (NOTES: Animation scripts); never read in the corpus; jt[2260] used by Magneto_GroundAttackDown -> Obj_SetAnim
 	incrom	$1CD7AA,$C
-Tbl_PsylockeAnim7:	; animation script (byte flags, byte steps, ..., 2-byte steps from +6); 8 of A bytes used at runtime; read by Anim_AdvanceByDistance, Anim_ApplyStep, Anim_Advance; jt[2261] used by Magneto_StartShot, Magneto_StartBomb
+Tbl_MagnetoAnim7:	; animation script (byte flags, byte steps, ..., 2-byte steps from +6); 8 of A bytes used at runtime; read by Anim_AdvanceByDistance, Anim_ApplyStep, Anim_Advance; jt[2261] used by Magneto_StartShot, Magneto_StartBomb
 	incrom	$1CD7B6,$A
-Tbl_PsylockeAnim8:	; animation script (byte flags, byte steps, ..., 2-byte steps from +6); E of 10 bytes used at runtime; read by Anim_ApplyStep; jt[2262] used by Magneto_FireShot, Magneto_SpawnBomb
+Tbl_MagnetoAnim8:	; animation script (byte flags, byte steps, ..., 2-byte steps from +6); E of 10 bytes used at runtime; read by Anim_ApplyStep; jt[2262] used by Magneto_FireShot, Magneto_SpawnBomb
 	incrom	$1CD7C0,$10
-Tbl_Psylocke5:	; format not established; never read in the corpus; jt[2263] used by Magneto_AirShotAnim_Case3
+Tbl_Magneto5:	; format not established; never read in the corpus; jt[2263] used by Magneto_AirShotAnim_Case3
 	incrom	$1CD7D0,$A
-Tbl_Psylocke6:	; format not established; never read in the corpus; jt[2264] used by Magneto_AirShotEndAnim_Case3
+Tbl_Magneto6:	; format not established; never read in the corpus; jt[2264] used by Magneto_AirShotEndAnim_Case3
 	incrom	$1CD7DA,$10
-Tbl_Psylocke7:	; format not established; never read in the corpus; jt[2265] used by Magneto_AirShotAnim_Case3
+Tbl_Magneto7:	; format not established; never read in the corpus; jt[2265] used by Magneto_AirShotAnim_Case3
 	incrom	$1CD7EA,$A
-Tbl_Psylocke8:	; format not established; never read in the corpus; jt[2266] used by Magneto_AirShotEndAnim_Case3
+Tbl_Magneto8:	; format not established; never read in the corpus; jt[2266] used by Magneto_AirShotEndAnim_Case3
 	incrom	$1CD7F4,$10
-Tbl_PsylockeAnim9:	; animation script (byte flags, byte steps, ..., 2-byte steps from +6); 8 of A bytes used at runtime; read by Anim_AdvanceByDistance, Anim_ApplyStep, Anim_Advance; jt[2267] used by Magneto_AirShotAnim_Case2, Magneto_AirShotAnim_Case7
+Tbl_MagnetoAnim9:	; animation script (byte flags, byte steps, ..., 2-byte steps from +6); 8 of A bytes used at runtime; read by Anim_AdvanceByDistance, Anim_ApplyStep, Anim_Advance; jt[2267] used by Magneto_AirShotAnim_Case2, Magneto_AirShotAnim_Case7
 	incrom	$1CD804,$A
-Tbl_PsylockeAnim10:	; animation script (byte flags, byte steps, ..., 2-byte steps from +6); E of 10 bytes used at runtime; read by Anim_ApplyStep, Anim_AdvanceByDistance, Anim_Advance; jt[2268] used by Magneto_AirShotEndAnim_Case2, Magneto_AirShotEndAnim_Case7
+Tbl_MagnetoAnim10:	; animation script (byte flags, byte steps, ..., 2-byte steps from +6); E of 10 bytes used at runtime; read by Anim_ApplyStep, Anim_AdvanceByDistance, Anim_Advance; jt[2268] used by Magneto_AirShotEndAnim_Case2, Magneto_AirShotEndAnim_Case7
 	incrom	$1CD80E,$10
-Tbl_PsylockeAnim11:	; animation script (byte flags, byte steps, ..., 2-byte steps from +6); 8 of A bytes used at runtime; read by Anim_ApplyStep, Anim_AdvanceByDistance, Anim_Advance; jt[2269] used by Magneto_AirShotAnim_Case0, Magneto_AirShotAnim_Case7
+Tbl_MagnetoAnim11:	; animation script (byte flags, byte steps, ..., 2-byte steps from +6); 8 of A bytes used at runtime; read by Anim_ApplyStep, Anim_AdvanceByDistance, Anim_Advance; jt[2269] used by Magneto_AirShotAnim_Case0, Magneto_AirShotAnim_Case7
 	incrom	$1CD81E,$A
-Tbl_PsylockeAnim12:	; animation script (byte flags, byte steps, ..., 2-byte steps from +6); E of 10 bytes used at runtime; read by Anim_ApplyStep; jt[2270] used by Magneto_AirShotEndAnim_Case0, Magneto_AirShotEndAnim_Case7
+Tbl_MagnetoAnim12:	; animation script (byte flags, byte steps, ..., 2-byte steps from +6); E of 10 bytes used at runtime; read by Anim_ApplyStep; jt[2270] used by Magneto_AirShotEndAnim_Case0, Magneto_AirShotEndAnim_Case7
 	incrom	$1CD828,$10
-Tbl_PsylockeAnim13:	; animation script (byte flags, byte steps, ..., 2-byte steps from +6); 8 of A bytes used at runtime; read by Anim_ApplyStep, Anim_AdvanceByDistance, Anim_Advance; jt[2271] used by Magneto_AirShotAnim_Case0, Magneto_AirShotAnim_Case9
+Tbl_MagnetoAnim13:	; animation script (byte flags, byte steps, ..., 2-byte steps from +6); 8 of A bytes used at runtime; read by Anim_ApplyStep, Anim_AdvanceByDistance, Anim_Advance; jt[2271] used by Magneto_AirShotAnim_Case0, Magneto_AirShotAnim_Case9
 	incrom	$1CD838,$A
-Tbl_PsylockeAnim14:	; animation script (byte flags, byte steps, ..., 2-byte steps from +6); E of 10 bytes used at runtime; read by Anim_ApplyStep; jt[2272] used by Magneto_AirShotEndAnim_Case0, Magneto_AirShotEndAnim_Case9
+Tbl_MagnetoAnim14:	; animation script (byte flags, byte steps, ..., 2-byte steps from +6); E of 10 bytes used at runtime; read by Anim_ApplyStep; jt[2272] used by Magneto_AirShotEndAnim_Case0, Magneto_AirShotEndAnim_Case9
 	incrom	$1CD842,$10
-Tbl_PsylockeAnim15:	; animation script (byte flags, byte steps, ..., 2-byte steps from +6); A of C bytes used at runtime; read by Anim_ApplyStep, Anim_AdvanceByDistance, Anim_Advance; jt[2273] used by Magneto_StateAim
+Tbl_MagnetoAnim15:	; animation script (byte flags, byte steps, ..., 2-byte steps from +6); A of C bytes used at runtime; read by Anim_ApplyStep, Anim_AdvanceByDistance, Anim_Advance; jt[2273] used by Magneto_StateAim
 	incrom	$1CD852,$C
-Tbl_Psylocke9:	; format not established; never read in the corpus; jt[2274] used by Magneto_StateAim
+Tbl_Magneto9:	; format not established; never read in the corpus; jt[2274] used by Magneto_StateAim
 	incrom	$1CD85E,$C
-Tbl_Psylocke10:	; format not established; never read in the corpus; jt[2275] used by Magneto_StateAim
+Tbl_Magneto10:	; format not established; never read in the corpus; jt[2275] used by Magneto_StateAim
 	incrom	$1CD86A,$C
-Tbl_Psylocke11:	; format not established; never read in the corpus; jt[2276] used by Magneto_StateAim
+Tbl_Magneto11:	; format not established; never read in the corpus; jt[2276] used by Magneto_StateAim
 	incrom	$1CD876,$C
-Tbl_PsylockeAnim16:	; animation script (byte flags, byte steps, ..., 2-byte steps from +6); 12 of 14 bytes used at runtime; read by Anim_ApplyStep, Anim_AdvanceByDistance, Anim_Advance; jt[2277] used by MagnetoBoss_StateOutro
+Tbl_MagnetoBossAnim16:	; animation script (byte flags, byte steps, ..., 2-byte steps from +6); 12 of 14 bytes used at runtime; read by Anim_ApplyStep, Anim_AdvanceByDistance, Anim_Advance; jt[2277] used by MagnetoBoss_StateOutro
 	incrom	$1CD882,$14
-Tbl_PsylockeAnim17:	; animation script (byte flags, byte steps, ..., 2-byte steps from +6); 6 of 8 bytes used at runtime; read by Anim_ApplyStep, Anim_AdvanceByDistance, Anim_Advance; jt[2278] used by MagnetoBoss_StateOutroLoop
+Tbl_MagnetoBossAnim17:	; animation script (byte flags, byte steps, ..., 2-byte steps from +6); 6 of 8 bytes used at runtime; read by Anim_ApplyStep, Anim_AdvanceByDistance, Anim_Advance; jt[2278] used by MagnetoBoss_StateOutroLoop
 	incrom	$1CD896,$8
-Tbl_PsylockeAnim18:	; animation script (byte flags, byte steps, ..., 2-byte steps from +6); 8 of A bytes used at runtime; read by Anim_ApplyStep, Anim_AdvanceByDistance, Anim_Advance; jt[2279] used by MagneticGlob_SetAnimForAngle
+Tbl_MagneticGlobAnim18:	; animation script (byte flags, byte steps, ..., 2-byte steps from +6); 8 of A bytes used at runtime; read by Anim_ApplyStep, Anim_AdvanceByDistance, Anim_Advance; jt[2279] used by MagneticGlob_SetAnimForAngle
 	incrom	$1CD89E,$A
-Tbl_PsylockeAnim19:	; animation script (byte flags, byte steps, ..., 2-byte steps from +6); 8 of A bytes used at runtime; read by Anim_ApplyStep, Anim_AdvanceByDistance, Anim_Advance; jt[2280] used by MagneticGlob_SetAnimForAngle
+Tbl_MagneticGlobAnim19:	; animation script (byte flags, byte steps, ..., 2-byte steps from +6); 8 of A bytes used at runtime; read by Anim_ApplyStep, Anim_AdvanceByDistance, Anim_Advance; jt[2280] used by MagneticGlob_SetAnimForAngle
 	incrom	$1CD8A8,$A
-Tbl_Psylocke12:	; format not established; never read in the corpus; jt[2281] used by MagneticGlob_SetAnimForAngle
+Tbl_MagneticGlob12:	; format not established; never read in the corpus; jt[2281] used by MagneticGlob_SetAnimForAngle
 	incrom	$1CD8B2,$A
-Tbl_Psylocke13:	; format not established; never read in the corpus; jt[2282] used by MagneticGlob_SetAnimForAngle
+Tbl_MagneticGlob13:	; format not established; never read in the corpus; jt[2282] used by MagneticGlob_SetAnimForAngle
 	incrom	$1CD8BC,$A
-Tbl_PsylockeAnim20:	; animation script (byte flags, byte steps, ..., 2-byte steps from +6); 8 of A bytes used at runtime; read by Anim_ApplyStep, Anim_AdvanceByDistance, Anim_Advance; jt[2283] used by MagneticGlob_SetAnimForAngle
+Tbl_MagneticGlobAnim20:	; animation script (byte flags, byte steps, ..., 2-byte steps from +6); 8 of A bytes used at runtime; read by Anim_ApplyStep, Anim_AdvanceByDistance, Anim_Advance; jt[2283] used by MagneticGlob_SetAnimForAngle
 	incrom	$1CD8C6,$A
-Tbl_PsylockeAnim21:	; animation script (byte flags, byte steps, ..., 2-byte steps from +6); C of E bytes used at runtime; read by Anim_ApplyStep, Anim_AdvanceByDistance, Anim_Advance; jt[2284] used by FluxBomb_StartThrown, FluxBomb_StartHeld
+Tbl_FluxBombAnim21:	; animation script (byte flags, byte steps, ..., 2-byte steps from +6); C of E bytes used at runtime; read by Anim_ApplyStep, Anim_AdvanceByDistance, Anim_Advance; jt[2284] used by FluxBomb_StartThrown, FluxBomb_StartHeld
 	incrom	$1CD8D0,$E
-Tbl_PsylockeAnim22:	; animation script (byte flags, byte steps, ..., 2-byte steps from +6); 12 of 14 bytes used at runtime; read by Anim_ApplyStep, Anim_AdvanceByDistance, Anim_Advance; jt[2285] used by FluxBomb_StateThrown, FluxBomb_StateHeld
+Tbl_FluxBombAnim22:	; animation script (byte flags, byte steps, ..., 2-byte steps from +6); 12 of 14 bytes used at runtime; read by Anim_ApplyStep, Anim_AdvanceByDistance, Anim_Advance; jt[2285] used by FluxBomb_StateThrown, FluxBomb_StateHeld
 	incrom	$1CD8DE,$14
-Tbl_PsylockeAnim23:	; animation script (byte flags, byte steps, ..., 2-byte steps from +6); 34 of 36 bytes used at runtime; read by Anim_ApplyStep, FluxBomb_StartImplode, FluxBomb_StartBurst; jt[2286] used by FluxBomb_Detonate
+Tbl_FluxBombAnim23:	; animation script (byte flags, byte steps, ..., 2-byte steps from +6); 34 of 36 bytes used at runtime; read by Anim_ApplyStep, FluxBomb_StartImplode, FluxBomb_StartBurst; jt[2286] used by FluxBomb_Detonate
 	incrom	$1CD8F2,$36
-Tbl_Psylocke_1CD928:	; format not established: read by the animation code but its header is not a well-formed animation script (step count / flags out of range); 2E of 2E bytes used at runtime; read by Anim_ApplyStep, FluxBomb_StartImplode, FluxBomb_StartBurst; jt[2287,2288] used by FluxBomb_StepImplode, FluxBomb_StartImplode
+Tbl_FluxBomb_1CD928:	; format not established: read by the animation code but its header is not a well-formed animation script (step count / flags out of range); 2E of 2E bytes used at runtime; read by Anim_ApplyStep, FluxBomb_StartImplode, FluxBomb_StartBurst; jt[2287,2288] used by FluxBomb_StepImplode, FluxBomb_StartImplode
 	incrom	$1CD928,$2E
-Tbl_Psylocke_1CD956:	; format not established: read by the animation code but its header is not a well-formed animation script (step count / flags out of range); 1A of 46 bytes used at runtime; read by Anim_ApplyStep, FluxBomb_StartImplode, FluxBomb_StartBurst; jt[2289,2290] used by FluxBomb_StepBurst, FluxBomb_StartBurst, FluxBomb_DrawBurst
+Tbl_FluxBomb_1CD956:	; format not established: read by the animation code but its header is not a well-formed animation script (step count / flags out of range); 1A of 46 bytes used at runtime; read by Anim_ApplyStep, FluxBomb_StartImplode, FluxBomb_StartBurst; jt[2289,2290] used by FluxBomb_StepBurst, FluxBomb_StartBurst, FluxBomb_DrawBurst
 	incrom	$1CD956,$46
 Tbl_MagnetoCharRecord:	; Magneto's character record (player +$8C; layout in NOTES 'XPLAYER slots': attack strengths, sounds, gravities, speeds, animation offsets), shared with EVILMAGNETO; 2F of 5E bytes used at runtime; read by Magneto_AirSteer, XPlayer_Land, XPlayer_StateControl; jt[2291] used by EvilMagneto_Init, Magneto_Init
 	incrom	$1CD99C,$5E
-Art_PsylockeTiles:	; uncompressed 4bpp tiles DMA'd to VRAM; 20 of 20 bytes used at runtime; read by VDP_FlushDmaQueue; DMA to VRAM $8400-8420; jt[2292] used by FluxBomb_StartImplode, FluxBomb_StartBurst
+Art_FluxBombTiles:	; uncompressed 4bpp tiles DMA'd to VRAM; 20 of 20 bytes used at runtime; read by VDP_FlushDmaQueue; DMA to VRAM $8400-8420; jt[2292] used by FluxBomb_StartImplode, FluxBomb_StartBurst
 	incrom	$1CD9FA,$20
-Art_PsylockeTiles2:	; uncompressed 4bpp tiles DMA'd to VRAM; 20 of 20 bytes used at runtime; read by VDP_FlushDmaQueue; DMA to VRAM $83E0-8400; jt[2293] used by FluxBomb_StartImplode, FluxBomb_StartBurst
+Art_FluxBombTiles2:	; uncompressed 4bpp tiles DMA'd to VRAM; 20 of 20 bytes used at runtime; read by VDP_FlushDmaQueue; DMA to VRAM $83E0-8400; jt[2293] used by FluxBomb_StartImplode, FluxBomb_StartBurst
 	incrom	$1CDA1A,$20
 	include "src/f/1CDA3A.asm"
 	include "src/f/1CDA48.asm"
