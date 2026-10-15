@@ -51,7 +51,7 @@ loc_184020:
 	move.l	$2(a0),-(a7)
 	move.l	d1,-(a7)
 	pea.l	$2E(a4)
-	jsr	$506A(a5)	; -> sub_1FB026
+	jsr	$506A(a5)	; -> Spr_Init
 	moveq	#$0,d0
 	move.l	d0,-(a7)
 	move.l	d0,-(a7)
@@ -63,7 +63,7 @@ loc_184020:
 	move.l	$2(a0),-(a7)
 	move.l	d1,-(a7)
 	pea.l	$C2(a4)
-	jsr	$506A(a5)	; -> sub_1FB026
+	jsr	$506A(a5)	; -> Spr_Init
 	move.w	d0,d5
 	ext.l	d7
 	move.w	-$3BB6(a5),d0

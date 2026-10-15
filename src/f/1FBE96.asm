@@ -50,7 +50,7 @@ loc_1FBF0E:
 	move.l	a3,d0
 	addq.l	#$4,d0
 	move.l	d0,-(a7)
-	jsr	$4112(a5)	; -> sub_15F5CA
+	jsr	$4112(a5)	; -> Nem_BuildCodeTable
 	movea.l	d0,a3
 	lea.l	-$202(a6),a4
 	clr.w	d7
@@ -119,7 +119,7 @@ loc_1FBF8C:
 	move.l	d1,-(a7)
 	pea.l	-$202(a6)
 	move.l	a3,-(a7)
-	jsr	$4102(a5)	; -> sub_15F37C
+	jsr	$4102(a5)	; -> Nem_Decode
 	jsr	$4DA2(a5)	; -> Irq_Enable
 	lea.l	$14(a7),a7
 loc_1FBFC2:

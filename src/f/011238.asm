@@ -21,7 +21,7 @@ sub_011238:
 	moveq	#$1,d0
 	move.l	d0,-(a7)
 	pea.l	$2E(a4)
-	jsr	$506A(a5)	; -> sub_1FB026
+	jsr	$506A(a5)	; -> Spr_Init
 	clr.b	$A9(a4)
 	ori.b	#$4,$2E(a4)
 	moveq	#$8,d0
@@ -44,7 +44,7 @@ sub_011238:
 	lea.l	$1D2(a5),a0
 	move.l	$2(a0),-(a7)
 	move.l	a4,-(a7)
-	jsr	$4E42(a5)	; -> sub_1F626A
+	jsr	$4E42(a5)	; -> Obj_SetAnim
 	pea.l	($1B49).w
 	move.l	a4,-(a7)
 	jsr	sub_01091E(pc)

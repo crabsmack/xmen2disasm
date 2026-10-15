@@ -12,7 +12,7 @@ sub_1B976C:
 	adda.w	$46(a1),a0
 	move.l	a0,-(a7)
 	move.l	a4,-(a7)
-	jsr	$4E4A(a5)	; -> sub_1F6296
+	jsr	$4E4A(a5)	; -> Obj_ChangeAnim
 	tst.b	$9D(a4)
 	seq.b	d3
 	neg.b	d3

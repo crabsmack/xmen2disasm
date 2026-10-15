@@ -31,7 +31,7 @@ loc_11EA06:
 	moveq	#$0,d0
 	move.l	d0,-(a7)
 	pea.l	$2E(a3)
-	jsr	$5062(a5)	; -> sub_1FAD44
+	jsr	$5062(a5)	; -> Spr_UploadFrame
 	move.b	$2F(a3),$38(a3)
 	addq.w	#$8,a7
 loc_11EA2E:

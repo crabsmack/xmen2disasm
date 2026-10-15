@@ -68,14 +68,14 @@ loc_1356B6:
 	lea.l	$36CA(a5),a0
 	move.l	$2(a0),-(a7)
 	move.l	a4,-(a7)
-	jsr	$4E4A(a5)	; -> sub_1F6296
+	jsr	$4E4A(a5)	; -> Obj_ChangeAnim
 	addq.w	#$8,a7
 	bra.s	loc_1356EE
 loc_1356DE:
 	lea.l	$36D2(a5),a0
 	move.l	$2(a0),-(a7)
 	move.l	a4,-(a7)
-	jsr	$4E4A(a5)	; -> sub_1F6296
+	jsr	$4E4A(a5)	; -> Obj_ChangeAnim
 	addq.w	#$8,a7
 loc_1356EE:
 	clr.w	$6C(a4)

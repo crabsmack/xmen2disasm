@@ -8,7 +8,7 @@ sub_142322:
 	lea.l	$3CDA(a5),a0
 	move.l	$2(a0),-(a7)
 	move.l	a4,-(a7)
-	jsr	$4E4A(a5)	; -> sub_1F6296
+	jsr	$4E4A(a5)	; -> Obj_ChangeAnim
 	tst.w	$68(a4)
 	addq.w	#$8,a7
 	bgt.s	loc_14234E
@@ -28,7 +28,7 @@ loc_14235E:
 	lea.l	$3CDA(a5),a0
 	move.l	$2(a0),-(a7)
 	move.l	a4,-(a7)
-	jsr	$4E4A(a5)	; -> sub_1F6296
+	jsr	$4E4A(a5)	; -> Obj_ChangeAnim
 	addq.w	#$8,a7
 	move.w	#$FF,$6C(a4)
 	lea.l	sub_14286A(pc),a0
@@ -40,7 +40,7 @@ loc_142384:
 	lea.l	$3CFA(a5),a0
 	move.l	$2(a0),-(a7)
 	move.l	a4,-(a7)
-	jsr	$4E4A(a5)	; -> sub_1F6296
+	jsr	$4E4A(a5)	; -> Obj_ChangeAnim
 	addq.w	#$8,a7
 	move.w	#$FF,$6C(a4)
 	lea.l	sub_1429A6(pc),a0
@@ -52,7 +52,7 @@ loc_1423AA:
 	lea.l	$3CDA(a5),a0
 	move.l	$2(a0),-(a7)
 	move.l	a4,-(a7)
-	jsr	$4E4A(a5)	; -> sub_1F6296
+	jsr	$4E4A(a5)	; -> Obj_ChangeAnim
 	addq.w	#$8,a7
 	move.w	#$FF,$6C(a4)
 	lea.l	sub_14286A(pc),a0

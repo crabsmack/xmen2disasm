@@ -238,7 +238,7 @@ loc_1F8D8E:
 	andi.w	#$2000,d0
 	bne.s	loc_1F8E1E
 	move.l	a4,-(a7)
-	jsr	$4E7A(a5)	; -> sub_1F6530
+	jsr	$4E7A(a5)	; -> Obj_Detach
 	addq.w	#$4,a7
 	moveq	#-$2,d0
 	cmp.b	$12(a3),d0
@@ -274,7 +274,7 @@ loc_1F8DFC:
 	jsr	Obj_InheritLayer(pc)
 	move.l	a4,-(a7)
 	move.l	a3,-(a7)
-	jsr	sub_1F6FF4(pc)
+	jsr	Seg_ComputeObjPos(pc)
 	move.l	a4,-(a7)
 	jsr	sub_1F6D76(pc)
 	lea.l	$14(a7),a7

@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_1FAD44	[jt 2568]
+; Spr_UploadFrame - send the tiles of a sprite instance's current frame to its VRAM tiles (queued DMA, or immediate writes)
+; In:  8(a6) = sprite instance   $C(a6) = byte: 0 = VDP_QueueDma, 1 = write now
+; Out: none
+; Evidence: +$A = +1 (uploaded frame); skipped when bit 5 set, frame $FF or def type $20 (preloaded); sets bit 5; type $18: 8-byte piece records with raw tiles; other types: 4-byte pieces, raw (type $14) or Nemesis-compressed via Nem_Decode; tile counts from the size table at $1FDE06; destination tile +6
 ; ---------------------------------------------------------------------------
-sub_1FAD44:
+Spr_UploadFrame:
 	link.w	a6,#$FDF8
 	movem.l	d4-d7/a3-a4,-(a7)
 	movea.l	$8(a6),a3
@@ -180,7 +183,7 @@ loc_1FAEFE:
 	move.l	a4,d1
 	addq.l	#$2,d1
 	move.l	d1,-(a7)
-	jsr	$4102(a5)	; -> sub_15F37C
+	jsr	$4102(a5)	; -> Nem_Decode
 	lea.l	$14(a7),a7
 loc_1FAF24:
 	jsr	$4DA2(a5)	; -> Irq_Enable

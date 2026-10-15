@@ -7,7 +7,7 @@ sub_1F64B4:
 	movea.l	$8(a6),a3
 	movea.l	$C(a6),a4
 	move.l	a4,-(a7)
-	jsr	sub_1F6530(pc)
+	jsr	Obj_Detach(pc)
 	ori.w	#$800,$4(a4)
 	move.l	$7C(a4),-$4(a6)
 	addq.w	#$4,a7

@@ -2,7 +2,7 @@
 ; Scene_AllocCommonVram - allocate VRAM tiles for the common sprite sets loaded with every scene
 ; In:  none
 ; Out: none (advances next-free-tile word -$3398)
-; Evidence: saves -$3398 into -$39B8, then sub_1FB026/sub_1FAD08 for one temporary and two persistent slots ($FFE9A4, $FFE798); called from Scene_PostLoadVram; what the sprite sets show is not confirmed
+; Evidence: saves -$3398 into -$39B8, then Spr_Init/Spr_PreloadToHeap for one temporary and two persistent slots ($FFE9A4, $FFE798); called from Scene_PostLoadVram; what the sprite sets show is not confirmed
 ; ---------------------------------------------------------------------------
 Scene_AllocCommonVram:
 	link.w	a6,#$FFEC
@@ -19,12 +19,12 @@ Scene_AllocCommonVram:
 	move.l	$2(a0),-(a7)
 	move.l	d1,-(a7)
 	pea.l	-$14(a6)
-	jsr	$506A(a5)	; -> sub_1FB026
+	jsr	$506A(a5)	; -> Spr_Init
 	move.w	-$3598(a5),d0
 	ext.l	d0
 	move.l	d0,-(a7)
 	pea.l	-$14(a6)
-	jsr	$505A(a5)	; -> sub_1FAD08
+	jsr	$505A(a5)	; -> Spr_PreloadToHeap
 	move.w	d0,-$3598(a5)
 	moveq	#$0,d0
 	move.l	d0,-(a7)
@@ -39,7 +39,7 @@ Scene_AllocCommonVram:
 	move.l	$2(a0),-(a7)
 	move.l	d1,-(a7)
 	pea.l	-$185C(a5)
-	jsr	$506A(a5)	; -> sub_1FB026
+	jsr	$506A(a5)	; -> Spr_Init
 	move.w	d0,-$3598(a5)
 	moveq	#$0,d0
 	move.l	d0,-(a7)
@@ -54,7 +54,7 @@ Scene_AllocCommonVram:
 	move.l	$2(a0),-(a7)
 	move.l	d1,-(a7)
 	pea.l	-$1A68(a5)
-	jsr	$506A(a5)	; -> sub_1FB026
+	jsr	$506A(a5)	; -> Spr_Init
 	move.w	d0,-$3598(a5)
 	unlk	a6
 	rts

@@ -66,7 +66,7 @@ loc_1A7BD2:
 	move.l	$2(a0),-(a7)
 	move.l	d0,-(a7)
 	pea.l	$2E(a4)
-	jsr	$506A(a5)	; -> sub_1FB026
+	jsr	$506A(a5)	; -> Spr_Init
 	lea.l	$20(a7),a7
 	movem.l	-$8(a6),d3/a4
 	unlk	a6

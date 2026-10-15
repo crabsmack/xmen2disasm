@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_15F740
+; Anim_Advance - move an object's animation to its next step, ending or looping at the script length
+; In:  8(a6) = object
+; Out: none
+; Evidence: +$48 += 1; at script byte +1 (step count): step = 0 and, if script flags & 3 (one-shot), +$44 = 0 (flag 2 also clears the handler timer +$6C)
 ; ---------------------------------------------------------------------------
-sub_15F740:
+Anim_Advance:
 	link.w	a6,#$0
 	movem.l	d7/a4,-(a7)
 	movea.l	$8(a6),a4

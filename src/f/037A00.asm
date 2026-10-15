@@ -6,6 +6,6 @@ sub_037A00:
 	lea.l	$4752(a5),a0
 	move.l	$2(a0),-(a7)
 	move.l	$8(a6),-(a7)
-	jsr	$4E4A(a5)	; -> sub_1F6296
+	jsr	$4E4A(a5)	; -> Obj_ChangeAnim
 	unlk	a6
 	rts

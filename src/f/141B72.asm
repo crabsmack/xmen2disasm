@@ -103,7 +103,7 @@ loc_141C6C:
 	cmp.l	-$8(a6),d0
 	bne.s	loc_141C96
 	move.l	a4,-(a7)
-	jsr	$4E7A(a5)	; -> sub_1F6530
+	jsr	$4E7A(a5)	; -> Obj_Detach
 	addq.w	#$4,a7
 loc_141C96:
 	addq.w	#$1,d7

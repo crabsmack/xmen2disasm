@@ -18,7 +18,7 @@ sub_03845C:
 	move.l	$2(a0),-(a7)
 	move.l	d0,-(a7)
 	pea.l	-$3596(a5)
-	jsr	$506A(a5)	; -> sub_1FB026
+	jsr	$506A(a5)	; -> Spr_Init
 	moveq	#$1,d0
 	move.l	d0,-(a7)
 	move.w	-$3AB0(a5),d1
@@ -35,7 +35,7 @@ sub_03845C:
 	moveq	#$1,d0
 	move.l	d0,-(a7)
 	pea.l	-$3582(a5)
-	jsr	$506A(a5)	; -> sub_1FB026
+	jsr	$506A(a5)	; -> Spr_Init
 	moveq	#$1,d0
 	move.l	d0,-(a7)
 	move.w	-$3AB0(a5),d1
@@ -52,7 +52,7 @@ sub_03845C:
 	moveq	#$1,d0
 	move.l	d0,-(a7)
 	pea.l	-$356E(a5)
-	jsr	$506A(a5)	; -> sub_1FB026
+	jsr	$506A(a5)	; -> Spr_Init
 	moveq	#$1,d0
 	move.l	d0,-(a7)
 	move.w	-$3AB0(a5),d1
@@ -69,7 +69,7 @@ sub_03845C:
 	moveq	#$1,d0
 	move.l	d0,-(a7)
 	pea.l	-$355A(a5)
-	jsr	$506A(a5)	; -> sub_1FB026
+	jsr	$506A(a5)	; -> Spr_Init
 	lea.l	$70(a7),a7
 	moveq	#$1,d0
 	move.l	d0,-(a7)
@@ -87,7 +87,7 @@ sub_03845C:
 	moveq	#$1,d0
 	move.l	d0,-(a7)
 	pea.l	-$3546(a5)
-	jsr	$506A(a5)	; -> sub_1FB026
+	jsr	$506A(a5)	; -> Spr_Init
 	moveq	#$1,d0
 	move.l	d0,-(a7)
 	move.w	-$3AB0(a5),d1
@@ -104,7 +104,7 @@ sub_03845C:
 	moveq	#$1,d0
 	move.l	d0,-(a7)
 	pea.l	-$3532(a5)
-	jsr	$506A(a5)	; -> sub_1FB026
+	jsr	$506A(a5)	; -> Spr_Init
 	moveq	#$1,d0
 	move.l	d0,-(a7)
 	move.w	-$3AB0(a5),d1
@@ -121,7 +121,7 @@ sub_03845C:
 	moveq	#$1,d0
 	move.l	d0,-(a7)
 	pea.l	-$351E(a5)
-	jsr	$506A(a5)	; -> sub_1FB026
+	jsr	$506A(a5)	; -> Spr_Init
 	moveq	#$1,d0
 	move.l	d0,-(a7)
 	move.w	-$3AB0(a5),d1
@@ -138,7 +138,7 @@ sub_03845C:
 	moveq	#$1,d0
 	move.l	d0,-(a7)
 	pea.l	-$350A(a5)
-	jsr	$506A(a5)	; -> sub_1FB026
+	jsr	$506A(a5)	; -> Spr_Init
 	lea.l	$70(a7),a7
 	moveq	#$1,d0
 	move.l	d0,-(a7)
@@ -154,7 +154,7 @@ sub_03845C:
 	move.l	$2(a0),-(a7)
 	move.l	d0,-(a7)
 	pea.l	-$34F6(a5)
-	jsr	$506A(a5)	; -> sub_1FB026
+	jsr	$506A(a5)	; -> Spr_Init
 	moveq	#$1,d0
 	move.l	d0,-(a7)
 	move.w	-$3AB0(a5),d1
@@ -169,7 +169,7 @@ sub_03845C:
 	move.l	$2(a0),-(a7)
 	move.l	d0,-(a7)
 	pea.l	-$34E2(a5)
-	jsr	$506A(a5)	; -> sub_1FB026
+	jsr	$506A(a5)	; -> Spr_Init
 	moveq	#$1,d0
 	move.l	d0,-(a7)
 	move.w	-$3AB0(a5),d1
@@ -184,7 +184,7 @@ sub_03845C:
 	move.l	$2(a0),-(a7)
 	move.l	d0,-(a7)
 	pea.l	-$34CE(a5)
-	jsr	$506A(a5)	; -> sub_1FB026
+	jsr	$506A(a5)	; -> Spr_Init
 	moveq	#$1,d0
 	move.l	d0,-(a7)
 	move.w	-$3AB0(a5),d1
@@ -199,7 +199,7 @@ sub_03845C:
 	move.l	$2(a0),-(a7)
 	move.l	d0,-(a7)
 	pea.l	-$34BA(a5)
-	jsr	$506A(a5)	; -> sub_1FB026
+	jsr	$506A(a5)	; -> Spr_Init
 	lea.l	$70(a7),a7
 	clr.w	-$3C88(a5)
 	move.w	#$2,-$3C8C(a5)

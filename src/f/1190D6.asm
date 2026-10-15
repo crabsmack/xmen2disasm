@@ -8,7 +8,7 @@ sub_1190D6:
 	move.l	d0,-(a7)
 	lea.l	$2E9A(a5),a0
 	move.l	$2(a0),-(a7)
-	jsr	$4E52(a5)	; -> sub_1F62C0
+	jsr	$4E52(a5)	; -> SprDef_Add
 	move.w	d0,-$1CA8(a5)
 	pea.l	Str_Empty_11918E(pc)
 	pea.l	($C8).w

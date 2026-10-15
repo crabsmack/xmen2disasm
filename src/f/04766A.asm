@@ -40,7 +40,7 @@ loc_0476C2:
 	moveq	#$0,d0
 	move.l	d0,-(a7)
 	pea.l	-$3596(a5)
-	jsr	$5062(a5)	; -> sub_1FAD44
+	jsr	$5062(a5)	; -> Spr_UploadFrame
 	lea.l	$992(a5),a0
 	movea.l	$2(a0),a4
 	moveq	#$0,d7

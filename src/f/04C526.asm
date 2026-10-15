@@ -23,7 +23,7 @@ loc_04C542:
 	move.l	d0,-(a7)
 	lea.l	$9BA(a5),a0
 	move.l	$2(a0),-(a7)
-	jsr	$4E52(a5)	; -> sub_1F62C0
+	jsr	$4E52(a5)	; -> SprDef_Add
 	move.w	d0,-$3C74(a5)
 	pea.l	Str_Empty_04C582(pc)
 	moveq	#$14,d0

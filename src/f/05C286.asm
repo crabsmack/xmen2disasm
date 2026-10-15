@@ -13,7 +13,7 @@ sub_05C286:
 	lea.l	$D2A(a5),a0
 	move.l	$2(a0),-(a7)
 	move.l	a4,-(a7)
-	jsr	$4E42(a5)	; -> sub_1F626A
+	jsr	$4E42(a5)	; -> Obj_SetAnim
 	move.l	$8(a4),d6
 	asr.l	#$8,d6
 	move.l	$C(a4),d0

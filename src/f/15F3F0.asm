@@ -1,14 +1,17 @@
 ; ---------------------------------------------------------------------------
-; sub_15F3F0
+; Nem_DecodeLoop - Nemesis decode loop: look up 8-bit codes, expand (count, nibble) runs into 4bpp rows and emit each full row
+; In:  a0 = source, a1 = code table, a3 = row writer, a4 = dest, d2 = rows left, d3 = nibbles left in row, d4 = row, d5/d6 = bit buffer/count
+; Out: returns through the row writer when d2 reaches 0
+; Evidence: codes >= $FC take the inline path (Nem_DecodeLoop_Inline); run nibbles from Tbl_NibbleFill masked with Tbl_NibbleMaskLow; refills a byte when fewer than 9 bits remain (the read-ahead noted under R5)
 ; ---------------------------------------------------------------------------
-sub_15F3F0:
+Nem_DecodeLoop:
 	move.w	d6,d0
 	subq.w	#$8,d0
 	move.w	d5,d1
 	lsr.w	d0,d1
 	andi.w	#$FF,d1
 	cmpi.w	#$FC,d1
-	bge.w	loc_15F540
+	bge.w	Nem_DecodeLoop_Inline
 	add.w	d1,d1
 	sub.b	(a1,d1.w),d6
 	cmpi.w	#$9,d6
@@ -33,7 +36,7 @@ loc_15F436:
 	asl.w	#$2,d1
 	move.l	Tbl_NibbleMaskLow(pc,d1.w),d1
 	cmp.w	d3,d0
-	beq.s	loc_15F4BA
+	beq.s	Nem_DecodeLoop_Row
 	bgt.w	loc_15F4C8
 	sub.w	d0,d3
 	move.w	d3,d0
@@ -41,4 +44,4 @@ loc_15F436:
 	sub.l	Tbl_NibbleMaskLow(pc,d0.w),d1
 	and.l	d7,d1
 	or.l	d1,d4
-	bra.s	sub_15F3F0
+	bra.s	Nem_DecodeLoop

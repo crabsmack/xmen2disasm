@@ -6,7 +6,7 @@ sub_1F2306:
 	move.l	a4,-(a7)
 	movea.l	$8(a6),a4
 	move.l	a4,-(a7)
-	jsr	$4E7A(a5)	; -> sub_1F6530
+	jsr	$4E7A(a5)	; -> Obj_Detach
 	ori.l	#$8,$90(a4)
 	moveq	#$0,d0
 	move.l	d0,$44(a4)

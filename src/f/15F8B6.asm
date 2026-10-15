@@ -50,7 +50,7 @@ loc_15F924:
 	add.w	d7,$4A(a4)
 loc_15F928:
 	move.l	a4,-(a7)
-	jsr	sub_15F740(pc)
+	jsr	Anim_Advance(pc)
 	tst.l	$44(a4)
 	addq.w	#$4,a7
 	bne.s	loc_15F93A
@@ -60,7 +60,7 @@ loc_15F93A:
 	moveq	#$1,d0
 	move.l	d0,-(a7)
 	move.l	a4,-(a7)
-	jsr	sub_15F78E(pc)
+	jsr	Anim_ApplyStep(pc)
 	addq.w	#$8,a7
 	bra.s	loc_15F94A
 loc_15F948:

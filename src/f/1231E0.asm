@@ -8,7 +8,7 @@ sub_1231E0:
 	lea.l	$3482(a5),a0
 	move.l	$2(a0),-(a7)
 	move.l	a4,-(a7)
-	jsr	$4E4A(a5)	; -> sub_1F6296
+	jsr	$4E4A(a5)	; -> Obj_ChangeAnim
 	lea.l	$34AA(a5),a0
 	move.l	$2(a0),-(a7)
 	pea.l	$96(a4)

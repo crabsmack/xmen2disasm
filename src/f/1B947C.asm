@@ -107,7 +107,7 @@ loc_1B9588:
 	lea.l	$456A(a5),a0
 	move.l	$2(a0),-(a7)
 	move.l	a4,-(a7)
-	jsr	$4E42(a5)	; -> sub_1F626A
+	jsr	$4E42(a5)	; -> Obj_SetAnim
 	ori.l	#$200000,$90(a4)
 	andi.l	#$FFFFFFFD,$90(a4)
 	addq.w	#$8,a7
@@ -138,7 +138,7 @@ loc_1B95FA:
 	lea.l	$456A(a5),a0
 	move.l	$2(a0),-(a7)
 	move.l	a4,-(a7)
-	jsr	$4E42(a5)	; -> sub_1F626A
+	jsr	$4E42(a5)	; -> Obj_SetAnim
 	ori.l	#$200000,$90(a4)
 	andi.l	#$FFFFFFFD,$90(a4)
 	addq.w	#$8,a7
@@ -238,7 +238,7 @@ loc_1B973C:
 	adda.w	$46(a1),a0
 	move.l	a0,-(a7)
 	move.l	a4,-(a7)
-	jsr	$4E4A(a5)	; -> sub_1F6296
+	jsr	$4E4A(a5)	; -> Obj_ChangeAnim
 	addq.w	#$8,a7
 	clr.w	$6C(a4)
 	lea.l	sub_1B947C(pc),a0

@@ -67,7 +67,7 @@ loc_088494:
 	moveq	#$0,d0
 	move.l	d0,-(a7)
 	pea.l	-$3596(a5)
-	jsr	$5062(a5)	; -> sub_1FAD44
+	jsr	$5062(a5)	; -> Spr_UploadFrame
 	ext.l	d7
 	move.l	d7,-(a7)
 	pea.l	-$3582(a5)
@@ -75,7 +75,7 @@ loc_088494:
 	moveq	#$0,d0
 	move.l	d0,-(a7)
 	pea.l	-$3582(a5)
-	jsr	$5062(a5)	; -> sub_1FAD44
+	jsr	$5062(a5)	; -> Spr_UploadFrame
 	lea.l	$20(a7),a7
 loc_0884C8:
 	movem.l	-$C(a6),d3/d6-d7

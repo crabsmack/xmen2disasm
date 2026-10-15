@@ -31,7 +31,7 @@ loc_02C9EC:
 	moveq	#$0,d0
 	move.l	d0,-(a7)
 	pea.l	-$3582(a5)
-	jsr	$5062(a5)	; -> sub_1FAD44
+	jsr	$5062(a5)	; -> Spr_UploadFrame
 	lea.l	$10(a7),a7
 loc_02CA12:
 	subq.w	#$1,-$3CBC(a5)
@@ -52,7 +52,7 @@ loc_02CA2E:
 	moveq	#$0,d0
 	move.l	d0,-(a7)
 	pea.l	-$356E(a5)
-	jsr	$5062(a5)	; -> sub_1FAD44
+	jsr	$5062(a5)	; -> Spr_UploadFrame
 	lea.l	$10(a7),a7
 loc_02CA54:
 	subq.w	#$1,-$3CC0(a5)
@@ -73,7 +73,7 @@ loc_02CA70:
 	moveq	#$0,d0
 	move.l	d0,-(a7)
 	pea.l	-$355A(a5)
-	jsr	$5062(a5)	; -> sub_1FAD44
+	jsr	$5062(a5)	; -> Spr_UploadFrame
 	lea.l	$10(a7),a7
 loc_02CA96:
 	subq.w	#$1,-$3CC4(a5)
@@ -94,7 +94,7 @@ loc_02CAB2:
 	moveq	#$0,d0
 	move.l	d0,-(a7)
 	pea.l	-$3546(a5)
-	jsr	$5062(a5)	; -> sub_1FAD44
+	jsr	$5062(a5)	; -> Spr_UploadFrame
 	lea.l	$10(a7),a7
 loc_02CAD8:
 	subq.w	#$1,-$3CC8(a5)

@@ -8,7 +8,7 @@ sub_0BB850:
 	lea.l	$1E02(a5),a0
 	move.l	$2(a0),-(a7)
 	move.l	a4,-(a7)
-	jsr	$4E4A(a5)	; -> sub_1F6296
+	jsr	$4E4A(a5)	; -> Obj_ChangeAnim
 	tst.l	$98(a4)
 	addq.w	#$8,a7
 	bne.s	loc_0BB87C

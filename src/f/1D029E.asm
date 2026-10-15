@@ -60,7 +60,7 @@ loc_1D0348:
 	move.l	$2(a0),-(a7)
 	move.l	d0,-(a7)
 	pea.l	$2E(a4)
-	jsr	$506A(a5)	; -> sub_1FB026
+	jsr	$506A(a5)	; -> Spr_Init
 	lea.l	g_Player1(a5),a0
 	cmpa.l	a4,a0
 	seq.b	d3
@@ -89,12 +89,12 @@ loc_1D037C:
 	move.l	$2(a0),-(a7)
 	move.l	d1,-(a7)
 	pea.l	-$14(a6)
-	jsr	$506A(a5)	; -> sub_1FB026
+	jsr	$506A(a5)	; -> Spr_Init
 	move.w	$C0(a4),d0
 	ext.l	d0
 	move.l	d0,-(a7)
 	pea.l	-$14(a6)
-	jsr	$505A(a5)	; -> sub_1FAD08
+	jsr	$505A(a5)	; -> Spr_PreloadToHeap
 	moveq	#$0,d0
 	move.l	d0,-(a7)
 	move.w	$C0(a4),d1
@@ -111,14 +111,14 @@ loc_1D037C:
 	moveq	#$1,d0
 	move.l	d0,-(a7)
 	pea.l	-$14(a6)
-	jsr	$506A(a5)	; -> sub_1FB026
+	jsr	$506A(a5)	; -> Spr_Init
 	move.w	$C0(a4),d0
 	ext.l	d0
 	moveq	#$C,d1
 	add.l	d1,d0
 	move.l	d0,-(a7)
 	pea.l	-$14(a6)
-	jsr	$505A(a5)	; -> sub_1FAD08
+	jsr	$505A(a5)	; -> Spr_PreloadToHeap
 	clr.b	$C2(a4)
 	move.l	a3,$BC(a4)
 	move.l	a4,-(a7)

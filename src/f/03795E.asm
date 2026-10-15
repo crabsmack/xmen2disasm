@@ -12,7 +12,7 @@ sub_03795E:
 	movea.l	d0,a3
 	move.l	a3,-(a7)
 	move.l	a4,-(a7)
-	jsr	$4E4A(a5)	; -> sub_1F6296
+	jsr	$4E4A(a5)	; -> Obj_ChangeAnim
 	tst.l	$90(a4)
 	beq.s	loc_037992
 	move.l	$90(a4),$5C(a4)

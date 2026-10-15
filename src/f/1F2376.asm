@@ -8,7 +8,7 @@ sub_1F2376:
 	move.l	g_Camera(a5),-(a7)
 	jsr	$3EAA(a5)	; -> sub_159FB8
 	move.l	a4,-(a7)
-	jsr	$4E7A(a5)	; -> sub_1F6530
+	jsr	$4E7A(a5)	; -> Obj_Detach
 	move.l	a4,-(a7)
 	jsr	$4EE2(a5)	; -> sub_1F6EC4
 	moveq	#$0,d0
@@ -20,7 +20,7 @@ sub_1F2376:
 	addi.l	#$2500,$C(a4)
 loc_1F23AE:
 	move.l	a4,-(a7)
-	jsr	$4E7A(a5)	; -> sub_1F6530
+	jsr	$4E7A(a5)	; -> Obj_Detach
 	move.b	#$1,-$3892(a5)
 	ori.l	#$8,$90(a4)
 	moveq	#$0,d0

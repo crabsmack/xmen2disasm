@@ -19,7 +19,7 @@ loc_05D4FC:
 	lea.l	$C6A(a5),a0
 	move.l	$2(a0),-(a7)
 	move.l	a4,-(a7)
-	jsr	$4E42(a5)	; -> sub_1F626A
+	jsr	$4E42(a5)	; -> Obj_SetAnim
 	moveq	#$10,d0
 	and.b	$2E(a4),d0
 	beq.s	loc_05D51C

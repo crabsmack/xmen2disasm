@@ -36,7 +36,7 @@ loc_183FC8:
 	adda.w	$3A(a1),a0
 	move.l	a0,-(a7)
 	move.l	a4,-(a7)
-	jsr	$4E42(a5)	; -> sub_1F626A
+	jsr	$4E42(a5)	; -> Obj_SetAnim
 	move.w	#$37,$6E(a4)
 	addq.w	#$8,a7
 	move.w	#$F,$6C(a4)

@@ -75,7 +75,7 @@ loc_0860B8:
 	move.l	d0,-(a7)
 	moveq	#$14,d1
 	move.l	d1,-(a7)
-	jsr	$4F1A(a5)	; -> sub_1F7C6A
+	jsr	$4F1A(a5)	; -> Seg_Create
 	move.l	d0,$44(a4)
 	lea.l	$18(a7),a7
 loc_086100:

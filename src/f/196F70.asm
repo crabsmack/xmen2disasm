@@ -108,7 +108,7 @@ loc_197092:
 	lea.l	$438A(a5),a0
 	move.l	$2(a0),-(a7)
 	move.l	a4,-(a7)
-	jsr	$4E42(a5)	; -> sub_1F626A
+	jsr	$4E42(a5)	; -> Obj_SetAnim
 	addq.w	#$8,a7
 	bra.s	loc_1970DE
 loc_1970CA:
@@ -116,7 +116,7 @@ loc_1970CA:
 	lea.l	$4392(a5),a0
 	move.l	$2(a0),-(a7)
 	move.l	a4,-(a7)
-	jsr	$4E42(a5)	; -> sub_1F626A
+	jsr	$4E42(a5)	; -> Obj_SetAnim
 	addq.w	#$8,a7
 loc_1970DE:
 	clr.w	$6C(a4)

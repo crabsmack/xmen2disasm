@@ -9,7 +9,7 @@ sub_15DAD8:
 	bgt.s	loc_15DB18
 	clr.w	$68(a4)
 	move.l	a4,-(a7)
-	jsr	$4E7A(a5)	; -> sub_1F6530
+	jsr	$4E7A(a5)	; -> Obj_Detach
 	clr.w	$1E(a4)
 	move.w	#$64,$20(a4)
 	ori.w	#$80,$6(a4)

@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_15F78E	[jt 2080]
+; Anim_ApplyStep - apply the current animation step: play its sound or show its frame and set the flip bits
+; In:  8(a6) = object   $C(a6) = byte: apply the step's flip flags
+; Out: d0 = byte: the flag arg, 0 if the script ended
+; Evidence: script +0 flags (4 = per-step flips, 8 = face velocity +$16), steps of 2 bytes from +6: {flags, value}; flag $20 = sound step: Snd_Stop + Snd_Play(value), Anim_Advance, repeat; else vtable +$56 SetFrame(obj, value), step bits $80/$40 toggle h/v flip in +$2E
 ; ---------------------------------------------------------------------------
-sub_15F78E:
+Anim_ApplyStep:
 	link.w	a6,#$FFFE
 	movem.l	d3-d7/a4,-(a7)
 	movea.l	$8(a6),a4
@@ -25,7 +28,7 @@ loc_15F7A6:
 	move.l	d7,-(a7)
 	jsr	$521A(a5)	; -> Snd_Play
 	move.l	a4,-(a7)
-	jsr	sub_15F740(pc)
+	jsr	Anim_Advance(pc)
 	tst.l	$44(a4)
 	lea.l	$C(a7),a7
 	bne.s	loc_15F7E0

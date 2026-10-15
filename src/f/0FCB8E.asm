@@ -17,7 +17,7 @@ sub_0FCB8E:
 	moveq	#$1,d0
 	move.l	d0,-(a7)
 	pea.l	-$3596(a5)
-	jsr	$506A(a5)	; -> sub_1FB026
+	jsr	$506A(a5)	; -> Spr_Init
 	moveq	#$2,d0
 	move.l	d0,-(a7)
 	moveq	#$1,d1

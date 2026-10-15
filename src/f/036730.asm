@@ -48,7 +48,7 @@ loc_03678A:
 	lea.l	$73A(a5),a0
 	move.l	$2(a0),-(a7)
 	move.l	a4,-(a7)
-	jsr	$4E4A(a5)	; -> sub_1F6296
+	jsr	$4E4A(a5)	; -> Obj_ChangeAnim
 	lea.l	$10(a7),a7
 	movem.l	-$C(a6),d6-d7/a4
 	unlk	a6

@@ -19,7 +19,7 @@ sub_0AD420:
 	moveq	#$1,d0
 	move.l	d0,-(a7)
 	pea.l	-$3596(a5)
-	jsr	$506A(a5)	; -> sub_1FB026
+	jsr	$506A(a5)	; -> Spr_Init
 	moveq	#$1,d0
 	move.l	d0,-(a7)
 	move.w	-$3AB0(a5),d1
@@ -36,6 +36,6 @@ sub_0AD420:
 	moveq	#$1,d0
 	move.l	d0,-(a7)
 	pea.l	-$3582(a5)
-	jsr	$506A(a5)	; -> sub_1FB026
+	jsr	$506A(a5)	; -> Spr_Init
 	unlk	a6
 	rts

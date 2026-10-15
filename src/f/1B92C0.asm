@@ -72,7 +72,7 @@ loc_1B937C:
 	adda.w	$3C(a1),a0
 	move.l	a0,-(a7)
 	move.l	a4,-(a7)
-	jsr	$4E42(a5)	; -> sub_1F626A
+	jsr	$4E42(a5)	; -> Obj_SetAnim
 	pea.l	($92).w
 	jsr	$5222(a5)	; -> Snd_Stop
 	pea.l	($92).w

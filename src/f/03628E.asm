@@ -26,7 +26,7 @@ MagnetoBoss_Activate:
 	moveq	#$1,d0
 	move.l	d0,-(a7)
 	pea.l	$2E(a4)
-	jsr	$506A(a5)	; -> sub_1FB026
+	jsr	$506A(a5)	; -> Spr_Init
 	move.w	d0,d5
 	cmp.w	-$1D46(a5),d5
 	lea.l	$1C(a7),a7

@@ -122,7 +122,7 @@ loc_1F396A:
 	adda.w	$44(a1),a0
 	move.l	a0,-(a7)
 	move.l	a4,-(a7)
-	jsr	$4E42(a5)	; -> sub_1F626A
+	jsr	$4E42(a5)	; -> Obj_SetAnim
 	addq.w	#$8,a7
 	bra.s	loc_1F39A8
 loc_1F3994:
@@ -131,7 +131,7 @@ loc_1F3994:
 	adda.w	$42(a1),a0
 	move.l	a0,-(a7)
 	move.l	a4,-(a7)
-	jsr	$4E42(a5)	; -> sub_1F626A
+	jsr	$4E42(a5)	; -> Obj_SetAnim
 	addq.w	#$8,a7
 loc_1F39A8:
 	clr.w	$6C(a4)

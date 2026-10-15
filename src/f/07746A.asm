@@ -18,7 +18,7 @@ sub_07746A:
 	moveq	#$1,d0
 	move.l	d0,-(a7)
 	pea.l	-$3596(a5)
-	jsr	$506A(a5)	; -> sub_1FB026
+	jsr	$506A(a5)	; -> Spr_Init
 	moveq	#$1,d0
 	move.l	d0,-(a7)
 	move.w	-$3AA8(a5),d1
@@ -50,7 +50,7 @@ sub_07746A:
 	move.l	$2(a0),-(a7)
 	move.l	d0,-(a7)
 	pea.l	-$3582(a5)
-	jsr	$506A(a5)	; -> sub_1FB026
+	jsr	$506A(a5)	; -> Spr_Init
 	moveq	#$2,d0
 	move.l	d0,-(a7)
 	move.w	-$3AA8(a5),d1
@@ -82,6 +82,6 @@ sub_07746A:
 	moveq	#$1,d0
 	move.l	d0,-(a7)
 	pea.l	-$356E(a5)
-	jsr	$506A(a5)	; -> sub_1FB026
+	jsr	$506A(a5)	; -> Spr_Init
 	unlk	a6
 	rts

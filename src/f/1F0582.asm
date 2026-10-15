@@ -108,7 +108,7 @@ loc_1F06B6:
 	cmpi.w	#$FF,d0
 	beq.s	loc_1F06CA
 	move.l	a4,-(a7)
-	jsr	$4E7A(a5)	; -> sub_1F6530
+	jsr	$4E7A(a5)	; -> Obj_Detach
 	addq.w	#$4,a7
 loc_1F06CA:
 	move.w	#$1000,d0

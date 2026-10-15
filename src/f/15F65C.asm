@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; loc_15F65C	[runtime: executed in tas]
+; Eni_Ops - Enigma command dispatch: branch table and the copy loops for each command
+; In:  as Eni_Decode (a1 dest, a2 incrementing word, a4 common word, d2 count)
+; Out: none
+; Evidence: 8 bra.s entries then loops: write a2 incrementing, write a4, inline repeated, inline incremented, inline decremented, inline list; return to the command loop at $15F628
 ; ---------------------------------------------------------------------------
-loc_15F65C:
+Eni_Ops:
 	bra.s	loc_15F66C
 loc_15F65E:
 	bra.s	loc_15F66C
@@ -27,20 +30,20 @@ loc_15F676:
 	dbra	d2,loc_15F676
 	bra.s	$15F628
 loc_15F67E:
-	bsr.s	sub_15F6F0
+	bsr.s	Eni_ReadInline
 loc_15F680:
 	move.w	d1,(a1)+
 	dbra	d2,loc_15F680
 	bra.s	$15F628
 loc_15F688:
-	bsr.s	sub_15F6F0
+	bsr.s	Eni_ReadInline
 loc_15F68A:
 	move.w	d1,(a1)+
 	addq.w	#$1,d1
 	dbra	d2,loc_15F68A
 	bra.s	$15F628
 loc_15F694:
-	bsr.s	sub_15F6F0
+	bsr.s	Eni_ReadInline
 loc_15F696:
 	move.w	d1,(a1)+
 	subq.w	#$1,d1
@@ -52,7 +55,7 @@ loc_15F6A0:
 	cmpi.w	#$F,d2
 	beq.s	loc_15F6E8
 loc_15F6AC:
-	bsr.s	sub_15F6F0
+	bsr.s	Eni_ReadInline
 	move.w	d1,(a1)+
 	dbra	d2,loc_15F6AC
 	bra.w	$15F628

@@ -128,7 +128,7 @@ loc_1F5708:
 	move.w	(a0),d7
 	move.l	a3,-(a7)
 	move.l	-$4(a6),-(a7)
-	jsr	$4112(a5)	; -> sub_15F5CA
+	jsr	$4112(a5)	; -> Nem_BuildCodeTable
 	move.l	d0,-$4(a6)
 	move.l	a4,-(a7)
 	move.w	$12(a6),d0
@@ -141,7 +141,7 @@ loc_1F5708:
 	move.l	d7,-(a7)
 	move.l	a3,-(a7)
 	move.l	-$4(a6),-(a7)
-	jsr	$410A(a5)	; -> sub_15F37C
+	jsr	$410A(a5)	; -> Nem_Decode
 	move.w	d5,d0
 	lea.l	$48(a7),a7
 	movem.l	-$111C(a6),d4-d7/a3-a4

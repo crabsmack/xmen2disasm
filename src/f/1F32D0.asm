@@ -24,7 +24,7 @@ loc_1F32F6:
 	bgt.s	loc_1F3312
 	move.l	$10(a6),-(a7)
 	move.l	a4,-(a7)
-	jsr	$4E4A(a5)	; -> sub_1F6296
+	jsr	$4E4A(a5)	; -> Obj_ChangeAnim
 	addq.w	#$8,a7
 	bra.s	loc_1F3338
 loc_1F3312:
@@ -39,7 +39,7 @@ loc_1F3320:
 loc_1F332C:
 	move.l	$C(a6),-(a7)
 	move.l	a4,-(a7)
-	jsr	$4E4A(a5)	; -> sub_1F6296
+	jsr	$4E4A(a5)	; -> Obj_ChangeAnim
 	addq.w	#$8,a7
 loc_1F3338:
 	movem.l	-$8(a6),d3/a4

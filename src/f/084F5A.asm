@@ -28,7 +28,7 @@ SmallBrood_StateWaitForPlayer:
 	lea.l	$11E2(a5),a0
 	move.l	$2(a0),-(a7)
 	move.l	a4,-(a7)
-	jsr	$4E4A(a5)	; -> sub_1F6296
+	jsr	$4E4A(a5)	; -> Obj_ChangeAnim
 	moveq	#$0,d7
 	addq.w	#$8,a7
 loc_084FAA:

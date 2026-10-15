@@ -10,7 +10,7 @@ sub_097F60:
 	lea.l	$428A(a5),a0
 	move.l	$2(a0),-(a7)
 	move.l	a4,-(a7)
-	jsr	$4E42(a5)	; -> sub_1F626A
+	jsr	$4E42(a5)	; -> Obj_SetAnim
 	tst.l	$98(a4)
 	addq.w	#$8,a7
 	bne.s	loc_097F9A

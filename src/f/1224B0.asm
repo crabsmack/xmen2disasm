@@ -95,7 +95,7 @@ loc_122570:
 	lea.l	$347A(a5),a0
 	move.l	$2(a0),-(a7)
 	move.l	$8(a6),-(a7)
-	jsr	$4E42(a5)	; -> sub_1F626A
+	jsr	$4E42(a5)	; -> Obj_SetAnim
 	pea.l	($FB).w
 	jsr	$5222(a5)	; -> Snd_Stop
 	pea.l	($F8).w

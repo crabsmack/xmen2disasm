@@ -13,19 +13,19 @@ Boulder_ClassInit:
 	move.l	d0,-(a7)
 	lea.l	$C12(a5),a0
 	move.l	$2(a0),-(a7)
-	jsr	$4E52(a5)	; -> sub_1F62C0
+	jsr	$4E52(a5)	; -> SprDef_Add
 	move.w	d0,-$3C6A(a5)
 	moveq	#$2,d0
 	move.l	d0,-(a7)
 	lea.l	$C1A(a5),a0
 	move.l	$2(a0),-(a7)
-	jsr	$4E52(a5)	; -> sub_1F62C0
+	jsr	$4E52(a5)	; -> SprDef_Add
 	move.w	d0,-$3C6C(a5)
 	moveq	#$2,d0
 	move.l	d0,-(a7)
 	lea.l	$C22(a5),a0
 	move.l	$2(a0),-(a7)
-	jsr	$4E52(a5)	; -> sub_1F62C0
+	jsr	$4E52(a5)	; -> SprDef_Add
 	move.w	d0,-$3C62(a5)
 	move.l	#$258,d7
 	pea.l	Str_Empty_05BB84(pc)

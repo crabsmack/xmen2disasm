@@ -73,7 +73,7 @@ loc_157F4E:
 loc_157F6A:
 	move.l	$9E(a4),-(a7)
 	move.l	a4,-(a7)
-	jsr	$4E4A(a5)	; -> sub_1F6296
+	jsr	$4E4A(a5)	; -> Obj_ChangeAnim
 	moveq	#$0,d0
 	move.l	d0,-(a7)
 	move.l	d0,-(a7)

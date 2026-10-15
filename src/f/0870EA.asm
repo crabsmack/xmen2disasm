@@ -15,7 +15,7 @@ sub_0870EA:
 	moveq	#$0,d0
 	move.l	d0,-(a7)
 	pea.l	-$3596(a5)
-	jsr	$5062(a5)	; -> sub_1FAD44
+	jsr	$5062(a5)	; -> Spr_UploadFrame
 	moveq	#$0,d0
 	move.l	d0,-(a7)
 	pea.l	-$3582(a5)
@@ -23,11 +23,11 @@ sub_0870EA:
 	moveq	#$0,d0
 	move.l	d0,-(a7)
 	pea.l	-$3582(a5)
-	jsr	$5062(a5)	; -> sub_1FAD44
+	jsr	$5062(a5)	; -> Spr_UploadFrame
 	lea.l	$1472(a5),a0
 	move.l	$2(a0),-(a7)
 	move.l	a4,-(a7)
-	jsr	$4E42(a5)	; -> sub_1F626A
+	jsr	$4E42(a5)	; -> Obj_SetAnim
 	tst.l	$92(a4)
 	lea.l	$2C(a7),a7
 	bne.s	loc_087156

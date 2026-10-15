@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_1FB026	[jt 2569]
+; Spr_Init - initialise a sprite instance for a sprite definition and reserve its VRAM tiles
+; In:  8(a6) = sprite instance   $C(a6) = unused   $10(a6) = sprite-def pointer   $14(a6) = word: frame ($FFFF = size for the largest frame)   $18(a6) = byte: palette   $1C(a6) = word: first VRAM tile   $20(a6) = byte: upload now
+; Out: d0 = word: next free VRAM tile
+; Evidence: +0 = palette, +$A = $FF, +1 = frame, +2 = def; for streamed defs (type != $20) +6 = tile base, +8 = tile count (frame byte +$11 or max over frames), bit 7 set; upload-now -> Spr_UploadFrame(spr, 1); 34 callers
 ; ---------------------------------------------------------------------------
-sub_1FB026:
+Spr_Init:
 	link.w	a6,#$FFFE
 	movem.l	d4-d7/a3-a4,-(a7)
 	move.w	$16(a6),d5
@@ -90,7 +93,7 @@ loc_1FB106:
 	moveq	#$1,d0
 	move.l	d0,-(a7)
 	move.l	a3,-(a7)
-	jsr	sub_1FAD44(pc)
+	jsr	Spr_UploadFrame(pc)
 	addq.w	#$8,a7
 loc_1FB118:
 	move.w	-$2(a6),d0

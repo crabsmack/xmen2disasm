@@ -54,7 +54,7 @@ loc_085704:
 	cmpi.l	#$8000,d0
 	bne.s	loc_08575E
 	move.l	a4,-(a7)
-	jsr	$4E7A(a5)	; -> sub_1F6530
+	jsr	$4E7A(a5)	; -> Obj_Detach
 	move.l	-$4(a6),$8(a4)
 	lea.l	g_Player2(a5),a0
 	cmpa.l	a4,a0

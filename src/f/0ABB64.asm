@@ -1,5 +1,5 @@
 ; ---------------------------------------------------------------------------
-; FloatBubble_ClassInit - vtable +$5E: per-level class setup for FLOATBUBBLE: load its resources (sub_1F62C0) into class globals
+; FloatBubble_ClassInit - vtable +$5E: per-level class setup for FLOATBUBBLE: load its resources (SprDef_Add) into class globals
 ; In:  8(a6) = 0, $C(a6) = long class index in the level class list
 ; Evidence: slot +$5E of the FLOATBUBBLE descriptor $0AB496; TAS frames 29684-32204 (3 frames active)
 ; ---------------------------------------------------------------------------
@@ -31,7 +31,7 @@ loc_0ABB9A:
 	move.l	d7,-(a7)
 	lea.l	$1ACA(a5),a0
 	move.l	$2(a0),-(a7)
-	jsr	$4E52(a5)	; -> sub_1F62C0
+	jsr	$4E52(a5)	; -> SprDef_Add
 	move.w	d0,-$3C3A(a5)
 	lea.l	$C(a7),a7
 	movem.l	-$8(a6),d3/d7

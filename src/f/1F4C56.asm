@@ -132,7 +132,7 @@ loc_1F4DA6:
 	move.l	a3,-(a7)
 	jsr	$4EE2(a5)	; -> sub_1F6EC4
 	move.l	a3,-(a7)
-	jsr	$4E7A(a5)	; -> sub_1F6530
+	jsr	$4E7A(a5)	; -> Obj_Detach
 	addq.l	#$8,a7
 	bra.s	loc_1F4DBC
 loc_1F4DB6:
@@ -165,7 +165,7 @@ loc_1F4DFC:
 	move.l	a3,-(a7)
 	jsr	$4EE2(a5)	; -> sub_1F6EC4
 	move.l	a3,-(a7)
-	jsr	$4E7A(a5)	; -> sub_1F6530
+	jsr	$4E7A(a5)	; -> Obj_Detach
 	addq.l	#$8,a7
 	bra.s	loc_1F4E1C
 loc_1F4E0C:

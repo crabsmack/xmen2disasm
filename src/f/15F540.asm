@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; loc_15F540
+; Nem_DecodeLoop_Inline - Nem_DecodeLoop escape path: read an inline 7-bit (count, nibble) value from the bit stream
+; In:  as Nem_DecodeLoop
+; Out: as Nem_DecodeLoop
+; Evidence: entered for codes >= $FC; consumes 6 escape bits then 8 data bits with byte refills, continues at the run expansion
 ; ---------------------------------------------------------------------------
-loc_15F540:
+Nem_DecodeLoop_Inline:
 	subq.w	#$6,d6
 	cmpi.w	#$9,d6
 	bge.s	loc_15F54E

@@ -53,7 +53,7 @@ loc_067656:
 	moveq	#$1,d1
 	move.l	d1,-(a7)
 	pea.l	$2E(a4)
-	jsr	$506A(a5)	; -> sub_1FB026
+	jsr	$506A(a5)	; -> Spr_Init
 	cmpi.w	#$F8,$A2(a4)
 	lea.l	$20(a7),a7
 	bne.s	loc_0676A8

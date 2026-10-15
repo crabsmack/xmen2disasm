@@ -69,7 +69,7 @@ loc_096920:
 	lea.l	$32EA(a5),a0
 	move.l	$2(a0),-(a7)
 	move.l	a3,-(a7)
-	jsr	$4E42(a5)	; -> sub_1F626A
+	jsr	$4E42(a5)	; -> Obj_SetAnim
 	clr.b	$96(a3)
 	lea.l	$3362(a5),a0
 	move.l	a0,$5C(a3)

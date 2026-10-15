@@ -92,7 +92,7 @@ loc_1F1EDE:
 	andi.b	#$F7,$2E(a4)
 	andi.w	#$BFFF,$6(a4)
 	move.l	a4,-(a7)
-	jsr	$4E7A(a5)	; -> sub_1F6530
+	jsr	$4E7A(a5)	; -> Obj_Detach
 	ori.l	#$8,$90(a4)
 	movea.l	$8C(a4),a0
 	move.b	$8(a0),d0

@@ -42,7 +42,7 @@ loc_1A7348:
 	lea.l	$449A(a5),a0
 	move.l	$2(a0),-(a7)
 	move.l	a4,-(a7)
-	jsr	$4E42(a5)	; -> sub_1F626A
+	jsr	$4E42(a5)	; -> Obj_SetAnim
 	moveq	#$10,d0
 	and.b	$2E(a4),d0
 	beq.s	loc_1A736A
@@ -61,7 +61,7 @@ loc_1A737E:
 	lea.l	$4492(a5),a0
 	move.l	$2(a0),-(a7)
 	move.l	a4,-(a7)
-	jsr	$4E42(a5)	; -> sub_1F626A
+	jsr	$4E42(a5)	; -> Obj_SetAnim
 	addq.w	#$8,a7
 loc_1A7396:
 	clr.w	$6C(a4)

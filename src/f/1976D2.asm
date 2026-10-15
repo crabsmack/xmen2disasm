@@ -6,7 +6,7 @@ sub_1976D2:
 	move.l	a4,-(a7)
 	movea.l	$8(a6),a4
 	move.l	a4,-(a7)
-	jsr	$4E7A(a5)	; -> sub_1F6530
+	jsr	$4E7A(a5)	; -> Obj_Detach
 	move.w	#$FD00,$18(a4)
 	move.w	#$3F,$20(a4)
 	move.w	#$396,$22(a4)
@@ -30,7 +30,7 @@ loc_19770E:
 	lea.l	$43AA(a5),a0
 	move.l	$2(a0),-(a7)
 	move.l	a4,-(a7)
-	jsr	$4E42(a5)	; -> sub_1F626A
+	jsr	$4E42(a5)	; -> Obj_SetAnim
 	lea.l	$10(a7),a7
 	bra.s	loc_197762
 loc_197740:
@@ -41,7 +41,7 @@ loc_197740:
 	lea.l	$43A2(a5),a0
 	move.l	$2(a0),-(a7)
 	move.l	a4,-(a7)
-	jsr	$4E42(a5)	; -> sub_1F626A
+	jsr	$4E42(a5)	; -> Obj_SetAnim
 	lea.l	$10(a7),a7
 loc_197762:
 	move.w	#$14,$6C(a4)

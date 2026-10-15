@@ -13,7 +13,7 @@ sub_1F6B56:
 	move.b	$2(a3),$42(a4)
 	move.l	a4,-(a7)
 	move.l	a3,-(a7)
-	jsr	$4EEA(a5)	; -> sub_1F6FF4
+	jsr	$4EEA(a5)	; -> Seg_ComputeObjPos
 	move.l	a4,-(a7)
 	jsr	$4EDA(a5)	; -> sub_1F6D76
 	move.l	a4,-(a7)

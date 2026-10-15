@@ -10,7 +10,7 @@ Tuskette_ClassInit:
 	move.l	d0,-(a7)
 	lea.l	$C32(a5),a0
 	move.l	$2(a0),-(a7)
-	jsr	$4E52(a5)	; -> sub_1F62C0
+	jsr	$4E52(a5)	; -> SprDef_Add
 	move.w	d0,-$3C60(a5)
 	addq.w	#$8,a7
 	unlk	a6

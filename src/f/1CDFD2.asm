@@ -39,7 +39,7 @@ loc_1CE02C:
 	movea.l	d0,a3
 	move.l	a3,-(a7)
 	move.l	a4,-(a7)
-	jsr	$4E42(a5)	; -> sub_1F626A
+	jsr	$4E42(a5)	; -> Obj_SetAnim
 	lea.l	sub_1CDEB2(pc),a0
 	move.l	a0,$5C(a4)
 	move.l	a4,-(a7)

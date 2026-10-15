@@ -40,7 +40,7 @@ loc_1F0A2A:
 	adda.w	$48(a1),a0
 	move.l	a0,-(a7)
 	move.l	a4,-(a7)
-	jsr	$4E4A(a5)	; -> sub_1F6296
+	jsr	$4E4A(a5)	; -> Obj_ChangeAnim
 	addq.w	#$8,a7
 loc_1F0A3E:
 	movem.l	-$8(a6),d3/a4

@@ -40,7 +40,7 @@ loc_133C64:
 	lea.l	$362A(a5),a0
 	move.l	$2(a0),-(a7)
 	move.l	a4,-(a7)
-	jsr	$4E42(a5)	; -> sub_1F626A
+	jsr	$4E42(a5)	; -> Obj_SetAnim
 	clr.w	$18(a4)
 	clr.w	$20(a4)
 	moveq	#$10,d0

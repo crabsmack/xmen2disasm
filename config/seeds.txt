@@ -499,9 +499,9 @@
 15949C	; loc_15949C - runtime: executed in tas
 15C22E	; Math_LDivS_Sel - runtime: executed in tas
 15C252	; Math_LModS_68000 - runtime: executed in tas
-15F566	; loc_15F566 - runtime: executed in tas
-15F57E	; loc_15F57E - runtime: executed in tas
-15F65C	; loc_15F65C - runtime: executed in tas
+15F566	; Nem_PutRowVdp - runtime: executed in tas
+15F57E	; Nem_PutRowMasked - runtime: executed in tas
+15F65C	; Eni_Ops - runtime: executed in tas
 15F65E	; loc_15F65E - runtime: executed in tas
 15F660	; loc_15F660 - runtime: executed in tas
 15F662	; loc_15F662 - runtime: executed in tas
@@ -902,4 +902,4 @@
 05CD18	; loc_05CD18 - static: switch-table case target (tools/switches.py: table after `move.w T(pc,dN.w),dN / jmp T-2(pc,dN.w)`, size from the cmpi bound)
 05CD22	; loc_05CD22 - static: switch-table case target (tools/switches.py: table after `move.w T(pc,dN.w),dN / jmp T-2(pc,dN.w)`, size from the cmpi bound)
 05CD36	; loc_05CD36 - static: switch-table case target (tools/switches.py: table after `move.w T(pc,dN.w),dN / jmp T-2(pc,dN.w)`, size from the cmpi bound)
-15F572	; loc_15F572 - static: row-output routine sub_15F37C selects when its mode arg $17(a6)=0 (lea into a3; the decoder calls jsr (a3) per row); writes each row long to RAM via (a4)+; mode 0 never used in the corpus
+15F572	; Nem_PutRowRam - static: row-output routine Nem_Decode selects when its mode arg $17(a6)=0 (lea into a3; the decoder calls jsr (a3) per row); writes each row long to RAM via (a4)+; mode 0 never used in the corpus

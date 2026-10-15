@@ -8,7 +8,7 @@ sub_0DC9C4:
 	lea.l	$3F62(a5),a0
 	move.l	$2(a0),-(a7)
 	move.l	a4,-(a7)
-	jsr	$4E42(a5)	; -> sub_1F626A
+	jsr	$4E42(a5)	; -> Obj_SetAnim
 	move.b	#$1,$96(a4)
 	move.w	$94(a4),d4
 	move.w	$92(a4),d6
@@ -30,7 +30,7 @@ sub_0DC9C4:
 	move.l	d0,-(a7)
 	moveq	#$15,d1
 	move.l	d1,-(a7)
-	jsr	$4F1A(a5)	; -> sub_1F7C6A
+	jsr	$4F1A(a5)	; -> Seg_Create
 	movea.l	d0,a3
 	movem.l	-$18(a6),d4-d7/a3-a4
 	unlk	a6

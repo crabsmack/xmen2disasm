@@ -122,7 +122,7 @@ loc_01845E:
 	lea.l	$3A2(a5),a0
 	move.l	$2(a0),-(a7)
 	move.l	a4,-(a7)
-	jsr	$4E4A(a5)	; -> sub_1F6296
+	jsr	$4E4A(a5)	; -> Obj_ChangeAnim
 	moveq	#$10,d0
 	and.b	$2E(a4),d0
 	beq.s	loc_01847C

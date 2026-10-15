@@ -48,7 +48,7 @@ loc_1A706A:
 	lea.l	$4472(a5),a0
 	move.l	$2(a0),-(a7)
 	move.l	a4,-(a7)
-	jsr	$4E42(a5)	; -> sub_1F626A
+	jsr	$4E42(a5)	; -> Obj_SetAnim
 	move.l	a4,-(a7)
 	jsr	$4DDA(a5)	; -> Obj_UpdateBox
 	move.w	$E(a3),d0
@@ -70,7 +70,7 @@ loc_1A70AC:
 	lea.l	$445A(a5),a0
 	move.l	$2(a0),-(a7)
 	move.l	a4,-(a7)
-	jsr	$4E42(a5)	; -> sub_1F626A
+	jsr	$4E42(a5)	; -> Obj_SetAnim
 	move.l	a4,-(a7)
 	jsr	$4DDA(a5)	; -> Obj_UpdateBox
 	ori.w	#$2000,$6(a4)
@@ -93,7 +93,7 @@ loc_1A70F8:
 	lea.l	$445A(a5),a0
 	move.l	$2(a0),-(a7)
 	move.l	a4,-(a7)
-	jsr	$4E42(a5)	; -> sub_1F626A
+	jsr	$4E42(a5)	; -> Obj_SetAnim
 	move.l	a4,-(a7)
 	jsr	$4DDA(a5)	; -> Obj_UpdateBox
 	ori.w	#$2000,$6(a4)

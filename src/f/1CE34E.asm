@@ -262,7 +262,7 @@ loc_1CE5F2:
 	move.w	#$5,$A8(a4)
 	move.l	a3,-(a7)
 	move.l	a4,-(a7)
-	jsr	$4E4A(a5)	; -> sub_1F6296
+	jsr	$4E4A(a5)	; -> Obj_ChangeAnim
 	addq.w	#$8,a7
 loc_1CE60E:
 	movem.l	-$C(a6),d3/a3-a4

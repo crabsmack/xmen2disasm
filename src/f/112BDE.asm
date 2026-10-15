@@ -27,7 +27,7 @@ loc_112C02:
 	lea.l	$2ADA(a5),a0
 	move.l	$2(a0),-(a7)
 	move.l	a4,-(a7)
-	jsr	$4E4A(a5)	; -> sub_1F6296
+	jsr	$4E4A(a5)	; -> Obj_ChangeAnim
 	lea.l	$18(a7),a7
 	clr.w	$6C(a4)
 	lea.l	sub_112C50(pc),a0

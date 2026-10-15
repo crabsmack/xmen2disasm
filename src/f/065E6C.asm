@@ -507,7 +507,7 @@ loc_06644C:
 	move.l	$2(a0),-(a7)
 	move.l	d1,-(a7)
 	pea.l	-$14(a6)
-	jsr	$506A(a5)	; -> sub_1FB026
+	jsr	$506A(a5)	; -> Spr_Init
 	lea.l	$DE2(a5),a0
 	movea.l	$2(a0),a3
 	move.l	a3,-$1EC(a6)

@@ -39,7 +39,7 @@ loc_05C6EE:
 	pea.l	($AC).w
 	jsr	$521A(a5)	; -> Snd_Play
 	move.l	a4,-(a7)
-	jsr	$4E7A(a5)	; -> sub_1F6530
+	jsr	$4E7A(a5)	; -> Obj_Detach
 	move.w	#$2BC,$16(a4)
 	move.w	#$FDA8,$18(a4)
 	move.w	#$6E,$20(a4)
@@ -174,7 +174,7 @@ loc_05C8CA:
 	lea.l	$D2A(a5),a0
 	move.l	$2(a0),-(a7)
 	move.l	a3,-(a7)
-	jsr	$4E42(a5)	; -> sub_1F626A
+	jsr	$4E42(a5)	; -> Obj_SetAnim
 	move.w	#$14,$6E(a3)
 	lea.l	sub_05C4A0(pc),a0
 	move.l	a0,$5C(a3)

@@ -19,7 +19,7 @@ sub_0E76DA:
 	moveq	#$0,d0
 	move.l	d0,-(a7)
 	move.l	a4,-(a7)
-	jsr	$5062(a5)	; -> sub_1FAD44
+	jsr	$5062(a5)	; -> Spr_UploadFrame
 	move.w	-$3B02(a5),d0
 	addq.w	#$1,-$3B02(a5)
 	moveq	#$7,d0
@@ -39,7 +39,7 @@ loc_0E772A:
 	moveq	#$0,d0
 	move.l	d0,-(a7)
 	move.l	a4,-(a7)
-	jsr	$5062(a5)	; -> sub_1FAD44
+	jsr	$5062(a5)	; -> Spr_UploadFrame
 	move.w	-$3B04(a5),d0
 	addq.w	#$1,-$3B04(a5)
 	moveq	#$7,d0
@@ -65,7 +65,7 @@ loc_0E7774:
 	moveq	#$0,d0
 	move.l	d0,-(a7)
 	move.l	a4,-(a7)
-	jsr	$5062(a5)	; -> sub_1FAD44
+	jsr	$5062(a5)	; -> Spr_UploadFrame
 	move.w	-$3B06(a5),d0
 	addq.w	#$1,-$3B06(a5)
 	moveq	#$7,d0
@@ -91,7 +91,7 @@ loc_0E77BE:
 	moveq	#$0,d0
 	move.l	d0,-(a7)
 	move.l	a4,-(a7)
-	jsr	$5062(a5)	; -> sub_1FAD44
+	jsr	$5062(a5)	; -> Spr_UploadFrame
 	move.w	-$3B08(a5),d0
 	addq.w	#$1,-$3B08(a5)
 	moveq	#$7,d0
@@ -117,7 +117,7 @@ loc_0E7808:
 	moveq	#$0,d0
 	move.l	d0,-(a7)
 	move.l	a4,-(a7)
-	jsr	$5062(a5)	; -> sub_1FAD44
+	jsr	$5062(a5)	; -> Spr_UploadFrame
 	move.w	-$3B0A(a5),d0
 	addq.w	#$1,-$3B0A(a5)
 	moveq	#$7,d0

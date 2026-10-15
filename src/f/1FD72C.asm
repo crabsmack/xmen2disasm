@@ -15,7 +15,7 @@ sub_1FD72C:
 	move.l	a4,d0
 	addq.l	#$4,d0
 	move.l	d0,-(a7)
-	jsr	$4112(a5)	; -> sub_15F5CA
+	jsr	$4112(a5)	; -> Nem_BuildCodeTable
 	movea.l	d0,a4
 	move.w	$E(a6),d0
 	ext.l	d0
@@ -27,7 +27,7 @@ sub_1FD72C:
 	move.l	d7,-(a7)
 	move.l	a3,-(a7)
 	move.l	a4,-(a7)
-	jsr	$4102(a5)	; -> sub_15F37C
+	jsr	$4102(a5)	; -> Nem_Decode
 	lea.l	$1C(a7),a7
 loc_1FD774:
 	movem.l	-$20C(a6),d7/a3-a4

@@ -129,7 +129,7 @@ loc_1F804C:
 	bne.s	loc_1F8080
 	move.l	$8(a6),-(a7)
 	move.l	a3,-(a7)
-	jsr	sub_1F6FF4(pc)
+	jsr	Seg_ComputeObjPos(pc)
 	addq.w	#$8,a7
 	bra.s	loc_1F80AC
 loc_1F8080:

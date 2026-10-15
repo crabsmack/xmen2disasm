@@ -46,7 +46,7 @@ loc_19756A:
 	cmp.w	$48(a4),d0
 	ble.s	loc_1975BC
 	move.l	a4,-(a7)
-	jsr	$4E7A(a5)	; -> sub_1F6530
+	jsr	$4E7A(a5)	; -> Obj_Detach
 	move.w	#$FD00,$18(a4)
 	move.w	#$3F,$20(a4)
 	move.w	#$396,$22(a4)

@@ -13,7 +13,7 @@ sub_097712:
 	adda.w	$46(a1),a0
 	move.l	a0,-(a7)
 	move.l	a4,-(a7)
-	jsr	$4E4A(a5)	; -> sub_1F6296
+	jsr	$4E4A(a5)	; -> Obj_ChangeAnim
 	tst.l	$98(a4)
 	addq.w	#$8,a7
 	bne.s	loc_097750

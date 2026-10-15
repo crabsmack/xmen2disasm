@@ -8,7 +8,7 @@ sub_02D4BA:
 	lea.l	$6AA(a5),a0
 	move.l	$2(a0),-(a7)
 	move.l	a4,-(a7)
-	jsr	$4E42(a5)	; -> sub_1F626A
+	jsr	$4E42(a5)	; -> Obj_SetAnim
 	moveq	#$0,d0
 	move.b	$A5(a4),d0
 	move.l	d0,-(a7)

@@ -264,7 +264,7 @@ loc_1F5A5C:
 	move.w	$A(a4),d1
 	add.l	a4,d1
 	move.l	d1,-(a7)
-	jsr	$411A(a5)	; -> sub_15F5FC
+	jsr	$411A(a5)	; -> Eni_Decode
 	tst.l	$10(a6)
 	lea.l	$14(a7),a7
 	beq.w	loc_1F5B22
@@ -305,7 +305,7 @@ loc_1F5AE0:
 	move.w	$A(a0),d1
 	add.l	$10(a6),d1
 	move.l	d1,-(a7)
-	jsr	$411A(a5)	; -> sub_15F5FC
+	jsr	$411A(a5)	; -> Eni_Decode
 	lea.l	$14(a7),a7
 	bra.s	loc_1F5B2C
 loc_1F5B22:
@@ -335,7 +335,7 @@ loc_1F5B38:
 	move.w	$C(a3),d1
 	add.l	a3,d1
 	move.l	d1,-(a7)
-	jsr	$411A(a5)	; -> sub_15F5FC
+	jsr	$411A(a5)	; -> Eni_Decode
 	tst.b	-$1(a6)
 	beq.s	loc_1F5B78
 	moveq	#$0,d0
@@ -411,7 +411,7 @@ loc_1F5C06:
 	move.w	$C(a0),d1
 	add.l	$14(a6),d1
 	move.l	d1,-(a7)
-	jsr	$411A(a5)	; -> sub_15F5FC
+	jsr	$411A(a5)	; -> Eni_Decode
 	moveq	#$1,d0
 	move.l	d0,-(a7)
 	move.l	-$3A8C(a5),-(a7)

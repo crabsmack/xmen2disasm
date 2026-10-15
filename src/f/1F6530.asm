@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_1F6530	[jt 2507]
+; Obj_Detach - detach an object from the parent object it rides, keeping the combined velocity, and unlink it from its siblings
+; In:  8(a6) = object
+; Out: d0 = 0
+; Evidence: parent = object table[-$34A6][+$3A]; velocities +$16/+$18 combined with the parent's (sub_1F6EC4 when flag $1000 clear); Timer_Start(+$7C); fixes parent +$3B and sibling +$3C/+$3D links; flags +4: clear $800, set $1000; +$76 = 0, +$3A/+$3C/+$3D = $FF; 28 callers
 ; ---------------------------------------------------------------------------
-sub_1F6530:
+Obj_Detach:
 	link.w	a6,#$0
 	movem.l	d3/d7/a3-a4,-(a7)
 	movea.l	$8(a6),a4

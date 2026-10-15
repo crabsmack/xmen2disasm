@@ -2,7 +2,7 @@
 ; Player_CalcMaxTiles - compute the largest VRAM tile count any playable character's sprite set needs
 ; In:  none
 ; Out: d0.w = max tiles
-; Evidence: calls sub_1FB026 (sprite slot setup; with frame -1 it returns base + max tiles over all frames) for 16 sprite definitions with small per-set extras, keeps the max; result stored in -$39B6 by Game_InitButtonMasks and used by Scene_PostLoadVram to size each player's VRAM area
+; Evidence: calls Spr_Init (sprite slot setup; with frame -1 it returns base + max tiles over all frames) for 16 sprite definitions with small per-set extras, keeps the max; result stored in -$39B6 by Game_InitButtonMasks and used by Scene_PostLoadVram to size each player's VRAM area
 ; ---------------------------------------------------------------------------
 Player_CalcMaxTiles:
 	link.w	a6,#$FFEC
@@ -20,7 +20,7 @@ Player_CalcMaxTiles:
 	move.l	$2(a0),-(a7)
 	move.l	d1,-(a7)
 	pea.l	-$14(a6)
-	jsr	$506A(a5)	; -> sub_1FB026
+	jsr	$506A(a5)	; -> Spr_Init
 	move.w	d0,d5
 	moveq	#$0,d0
 	move.l	d0,-(a7)
@@ -33,7 +33,7 @@ Player_CalcMaxTiles:
 	move.l	$2(a0),-(a7)
 	move.l	d1,-(a7)
 	pea.l	-$14(a6)
-	jsr	$506A(a5)	; -> sub_1FB026
+	jsr	$506A(a5)	; -> Spr_Init
 	move.w	d0,d7
 	add.w	d5,d7
 	cmp.w	d6,d7
@@ -57,7 +57,7 @@ loc_0066D2:
 	move.l	$2(a0),-(a7)
 	move.l	d1,-(a7)
 	pea.l	-$14(a6)
-	jsr	$506A(a5)	; -> sub_1FB026
+	jsr	$506A(a5)	; -> Spr_Init
 	move.w	d0,d7
 	add.w	d5,d7
 	cmp.w	d6,d7
@@ -81,7 +81,7 @@ loc_006706:
 	move.l	$2(a0),-(a7)
 	move.l	d1,-(a7)
 	pea.l	-$14(a6)
-	jsr	$506A(a5)	; -> sub_1FB026
+	jsr	$506A(a5)	; -> Spr_Init
 	move.w	d0,d7
 	cmp.w	d6,d7
 	slt.b	d3
@@ -104,7 +104,7 @@ loc_006738:
 	move.l	$2(a0),-(a7)
 	move.l	d1,-(a7)
 	pea.l	-$14(a6)
-	jsr	$506A(a5)	; -> sub_1FB026
+	jsr	$506A(a5)	; -> Spr_Init
 	move.w	d0,d7
 	cmp.w	d6,d7
 	slt.b	d3
@@ -127,7 +127,7 @@ loc_00676A:
 	move.l	$2(a0),-(a7)
 	move.l	d1,-(a7)
 	pea.l	-$14(a6)
-	jsr	$506A(a5)	; -> sub_1FB026
+	jsr	$506A(a5)	; -> Spr_Init
 	move.w	d0,d7
 	addi.w	#$10,d7
 	cmp.w	d6,d7
@@ -151,7 +151,7 @@ loc_0067A0:
 	move.l	$2(a0),-(a7)
 	move.l	d1,-(a7)
 	pea.l	-$14(a6)
-	jsr	$506A(a5)	; -> sub_1FB026
+	jsr	$506A(a5)	; -> Spr_Init
 	move.w	d0,d7
 	addi.w	#$10,d7
 	cmp.w	d6,d7
@@ -175,7 +175,7 @@ loc_0067D6:
 	move.l	$2(a0),-(a7)
 	move.l	d1,-(a7)
 	pea.l	-$14(a6)
-	jsr	$506A(a5)	; -> sub_1FB026
+	jsr	$506A(a5)	; -> Spr_Init
 	move.w	d0,d7
 	addi.w	#$10,d7
 	cmp.w	d6,d7
@@ -199,7 +199,7 @@ loc_00680C:
 	move.l	$2(a0),-(a7)
 	move.l	d1,-(a7)
 	pea.l	-$14(a6)
-	jsr	$506A(a5)	; -> sub_1FB026
+	jsr	$506A(a5)	; -> Spr_Init
 	move.w	d0,d7
 	cmp.w	d6,d7
 	slt.b	d3
@@ -222,7 +222,7 @@ loc_00683E:
 	move.l	$2(a0),-(a7)
 	move.l	d1,-(a7)
 	pea.l	-$14(a6)
-	jsr	$506A(a5)	; -> sub_1FB026
+	jsr	$506A(a5)	; -> Spr_Init
 	move.w	d0,d7
 	cmp.w	d6,d7
 	slt.b	d3
@@ -245,7 +245,7 @@ loc_006870:
 	move.l	$2(a0),-(a7)
 	move.l	d1,-(a7)
 	pea.l	-$14(a6)
-	jsr	$506A(a5)	; -> sub_1FB026
+	jsr	$506A(a5)	; -> Spr_Init
 	move.w	d0,d7
 	cmp.w	d6,d7
 	slt.b	d3
@@ -268,7 +268,7 @@ loc_0068A2:
 	move.l	$2(a0),-(a7)
 	move.l	d1,-(a7)
 	pea.l	-$14(a6)
-	jsr	$506A(a5)	; -> sub_1FB026
+	jsr	$506A(a5)	; -> Spr_Init
 	move.w	d0,d7
 	cmp.w	d6,d7
 	slt.b	d3
@@ -291,7 +291,7 @@ loc_0068D4:
 	move.l	$2(a0),-(a7)
 	move.l	d1,-(a7)
 	pea.l	-$14(a6)
-	jsr	$506A(a5)	; -> sub_1FB026
+	jsr	$506A(a5)	; -> Spr_Init
 	move.w	d0,d7
 	cmp.w	d6,d7
 	slt.b	d3
@@ -314,7 +314,7 @@ loc_006906:
 	move.l	$2(a0),-(a7)
 	move.l	d1,-(a7)
 	pea.l	-$14(a6)
-	jsr	$506A(a5)	; -> sub_1FB026
+	jsr	$506A(a5)	; -> Spr_Init
 	move.w	d0,d7
 	cmp.w	d6,d7
 	slt.b	d3
@@ -337,7 +337,7 @@ loc_006938:
 	move.l	$2(a0),-(a7)
 	move.l	d1,-(a7)
 	pea.l	-$14(a6)
-	jsr	$506A(a5)	; -> sub_1FB026
+	jsr	$506A(a5)	; -> Spr_Init
 	move.w	d0,d7
 	addi.w	#$D,d7
 	cmp.w	d6,d7
@@ -361,7 +361,7 @@ loc_00696E:
 	move.l	$2(a0),-(a7)
 	move.l	d1,-(a7)
 	pea.l	-$14(a6)
-	jsr	$506A(a5)	; -> sub_1FB026
+	jsr	$506A(a5)	; -> Spr_Init
 	move.w	d0,d7
 	addi.w	#$D,d7
 	cmp.w	d6,d7
@@ -385,7 +385,7 @@ loc_0069A4:
 	move.l	$2(a0),-(a7)
 	move.l	d1,-(a7)
 	pea.l	-$14(a6)
-	jsr	$506A(a5)	; -> sub_1FB026
+	jsr	$506A(a5)	; -> Spr_Init
 	move.w	d0,d7
 	addi.w	#$D,d7
 	cmp.w	d6,d7
@@ -409,7 +409,7 @@ loc_0069DA:
 	move.l	$2(a0),-(a7)
 	move.l	d1,-(a7)
 	pea.l	-$14(a6)
-	jsr	$506A(a5)	; -> sub_1FB026
+	jsr	$506A(a5)	; -> Spr_Init
 	move.w	d0,d7
 	addi.w	#$34,d7
 	cmp.w	d6,d7

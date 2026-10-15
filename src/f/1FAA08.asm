@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_1FAA08	[link-after-rts]
+; Spr_PreloadTiles - convert a streamed sprite definition into a RAM copy whose tiles are all uploaded once at a VRAM tile base (type $20)
+; In:  8(a6) = sprite instance   $C(a6) = word: first VRAM tile
+; Out: d0 = word: next free VRAM tile
+; Evidence: copies the $24-byte header and $14-byte frame records to the heap top g_HeapTop, rewrites piece lists with tile numbers, uploads each distinct tile block once (VDP_WriteWords, or Nem_Decode for type $19 after Nem_BuildCodeTable), sets type byte ' ' ($20), +2 = RAM copy, +6/+8 = tile base/count, advances g_HeapTop
 ; ---------------------------------------------------------------------------
-sub_1FAA08:
+Spr_PreloadTiles:
 	link.w	a6,#$FDDA
 	movem.l	d3-d7/a3-a4,-(a7)
 	movea.l	g_HeapTop(a5),a3
@@ -35,7 +38,7 @@ loc_1FAA34:
 	movea.l	a0,a1
 	adda.w	$2(a1),a0
 	move.l	a0,-(a7)
-	jsr	$4112(a5)	; -> sub_15F5CA
+	jsr	$4112(a5)	; -> Nem_BuildCodeTable
 	movea.l	d0,a3
 	addq.w	#$8,a7
 loc_1FAA7C:
@@ -212,7 +215,7 @@ loc_1FAC24:
 	move.l	d1,-(a7)
 	pea.l	-$202(a6)
 	move.l	-$20A(a6),-(a7)
-	jsr	$4102(a5)	; -> sub_15F37C
+	jsr	$4102(a5)	; -> Nem_Decode
 	lea.l	$14(a7),a7
 	bra.s	loc_1FACB6
 loc_1FAC72:

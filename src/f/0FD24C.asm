@@ -241,7 +241,7 @@ loc_0FD492:
 	cmpa.l	$76(a4),a3
 	bne.s	loc_0FD4B8
 	move.l	a4,-(a7)
-	jsr	$4E7A(a5)	; -> sub_1F6530
+	jsr	$4E7A(a5)	; -> Obj_Detach
 	addq.w	#$4,a7
 loc_0FD4B8:
 	addq.l	#$1,d7

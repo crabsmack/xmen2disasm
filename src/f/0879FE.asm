@@ -74,7 +74,7 @@ loc_087ADC:
 	lea.l	$149A(a5),a0
 	move.l	$2(a0),-(a7)
 	move.l	$8(a6),-(a7)
-	jsr	$4E42(a5)	; -> sub_1F626A
+	jsr	$4E42(a5)	; -> Obj_SetAnim
 	addq.w	#$8,a7
 	movea.l	$8(a6),a0
 	move.w	#$5,$6C(a0)

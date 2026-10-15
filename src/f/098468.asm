@@ -45,7 +45,7 @@ loc_0984BE:
 	beq.s	loc_098520
 	move.l	a3,-(a7)
 	move.l	a4,-(a7)
-	jsr	$4E42(a5)	; -> sub_1F626A
+	jsr	$4E42(a5)	; -> Obj_SetAnim
 	tst.l	$98(a4)
 	addq.w	#$8,a7
 	bne.s	loc_0984F0

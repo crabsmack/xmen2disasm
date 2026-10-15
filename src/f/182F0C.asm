@@ -9,7 +9,7 @@ sub_182F0C:
 	and.w	$4(a4),d0
 	bne.s	loc_182F30
 	move.l	a4,-(a7)
-	jsr	$4E7A(a5)	; -> sub_1F6530
+	jsr	$4E7A(a5)	; -> Obj_Detach
 	ori.l	#$8,$90(a4)
 	addq.w	#$4,a7
 loc_182F30:
@@ -26,7 +26,7 @@ loc_182F30:
 	lea.l	$425A(a5),a0
 	move.l	$2(a0),-(a7)
 	move.l	a4,-(a7)
-	jsr	$4E42(a5)	; -> sub_1F626A
+	jsr	$4E42(a5)	; -> Obj_SetAnim
 	move.w	#$FF,$6C(a4)
 	andi.l	#$FFFFFFFD,$90(a4)
 	bclr	#$0,$93(a4)

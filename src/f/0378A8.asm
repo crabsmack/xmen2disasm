@@ -13,7 +13,7 @@ sub_0378A8:
 	movea.l	d0,a3
 	move.l	a3,-(a7)
 	move.l	a4,-(a7)
-	jsr	$4E4A(a5)	; -> sub_1F6296
+	jsr	$4E4A(a5)	; -> Obj_ChangeAnim
 	move.w	$AE(a4),d0
 	ext.l	d0
 	move.l	d0,-(a7)

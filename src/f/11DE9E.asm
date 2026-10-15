@@ -34,7 +34,7 @@ loc_11DEE6:
 loc_11DEEE:
 	move.l	a3,-(a7)
 	move.l	a4,-(a7)
-	jsr	$4E42(a5)	; -> sub_1F626A
+	jsr	$4E42(a5)	; -> Obj_SetAnim
 	cmp.w	$AC(a4),d7
 	addq.w	#$8,a7
 	bne.s	loc_11DF14

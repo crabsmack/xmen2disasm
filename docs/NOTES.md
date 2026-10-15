@@ -234,6 +234,16 @@ _(module → functions, globals, data; add as you learn them)_
   inline-data escape (`cmpi.w #$FC,d1`), bit buffer d5/d6 refilled a byte at a time.
   Header/code-table format not yet checked against Nemesis. Other heavy ROM readers in
   the TAS: `$15F5FC`, `$15F6F0`, `$15F65C` (a second decoder family?), `$1FAD44`, `$1FBB5E`.
+  **(w140)** Unlike Sonic's NemDec the code table is NOT in the stream: callers build it
+  first with `Nem_BuildCodeTable(pairs, table)` from `{len, value}` byte pairs ending `$FF`,
+  then `Nem_Decode(src, table, rows, mode, dest, mask)` (mode 0 RAM, 1 VRAM, 2 VRAM with a
+  per-tile skip bitmap). `$15F5FC` is an **Enigma** tilemap decoder (`Eni_Decode(src, dst,
+  add)`: header inline-bit-count, mask, incrementing word, common word; 7-bit commands;
+  `Eni_Ops` = its branch table). `$1FAD44` = `Spr_UploadFrame` (sprite frame tiles).
+- **Animation scripts (w140)**: object +$44 = script, +$48 = step. Script: byte flags (bits
+  0-1 one-shot, 2 per-step flips, 3 face velocity), byte step count, ..., steps of 2 bytes
+  from +6 `{flags, value}`: flag $20 = play sound `value`, else frame `value` (bits $80/$40
+  toggle h/v flip). `Obj_SetAnim`/`Obj_ChangeAnim`, `Anim_ApplyStep`, `Anim_Advance`.
 
 ## Code read as data (R5)
 

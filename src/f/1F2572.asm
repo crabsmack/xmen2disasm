@@ -27,7 +27,7 @@ loc_1F25AE:
 	adda.w	$5A(a1),a0
 	move.l	a0,-(a7)
 	move.l	a4,-(a7)
-	jsr	$4E42(a5)	; -> sub_1F626A
+	jsr	$4E42(a5)	; -> Obj_SetAnim
 	addq.w	#$8,a7
 loc_1F25C8:
 	movea.l	$8C(a4),a0
@@ -57,7 +57,7 @@ loc_1F25EE:
 	adda.w	$5C(a1),a0
 	move.l	a0,-(a7)
 	move.l	a4,-(a7)
-	jsr	$4E42(a5)	; -> sub_1F626A
+	jsr	$4E42(a5)	; -> Obj_SetAnim
 	addq.w	#$8,a7
 loc_1F261C:
 	moveq	#$0,d0
@@ -99,7 +99,7 @@ loc_1F265E:
 	adda.w	$5C(a1),a0
 	move.l	a0,-(a7)
 	move.l	a4,-(a7)
-	jsr	$4E42(a5)	; -> sub_1F626A
+	jsr	$4E42(a5)	; -> Obj_SetAnim
 	addq.w	#$8,a7
 loc_1F268C:
 	moveq	#$1,d0

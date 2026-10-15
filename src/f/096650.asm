@@ -10,7 +10,7 @@ sub_096650:
 	adda.w	$4(a1),a0
 	move.l	a0,-(a7)
 	move.l	a4,-(a7)
-	jsr	$4E4A(a5)	; -> sub_1F6296
+	jsr	$4E4A(a5)	; -> Obj_ChangeAnim
 	clr.w	$1E(a4)
 	clr.l	$16(a4)
 	clr.w	$20(a4)

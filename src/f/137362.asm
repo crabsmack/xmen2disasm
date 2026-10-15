@@ -11,7 +11,7 @@ HornetBullet_ClassInit:
 	move.l	d0,-(a7)
 	lea.l	$3842(a5),a0
 	move.l	$2(a0),-(a7)
-	jsr	$4E52(a5)	; -> sub_1F62C0
+	jsr	$4E52(a5)	; -> SprDef_Add
 	move.w	d0,-$1A80(a5)
 	unlk	a6
 	rts

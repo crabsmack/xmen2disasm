@@ -38,7 +38,7 @@ loc_1F1690:
 	cmpi.w	#$FF,d0
 	beq.s	loc_1F16AE
 	move.l	a4,-(a7)
-	jsr	$4E7A(a5)	; -> sub_1F6530
+	jsr	$4E7A(a5)	; -> Obj_Detach
 	addq.w	#$4,a7
 loc_1F16AE:
 	ext.l	d7

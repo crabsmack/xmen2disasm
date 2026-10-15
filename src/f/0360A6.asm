@@ -37,7 +37,7 @@ MagnetoBoss_Init:
 	move.l	$2(a0),-(a7)
 	move.l	d1,-(a7)
 	pea.l	-$24(a6)
-	jsr	$506A(a5)	; -> sub_1FB026
+	jsr	$506A(a5)	; -> Spr_Init
 	move.w	d0,d6
 	cmp.w	d7,d6
 	slt.b	d3
@@ -60,7 +60,7 @@ loc_036126:
 	move.l	$2(a0),-(a7)
 	move.l	d1,-(a7)
 	pea.l	-$24(a6)
-	jsr	$506A(a5)	; -> sub_1FB026
+	jsr	$506A(a5)	; -> Spr_Init
 	move.w	d0,d6
 	cmp.w	d7,d6
 	slt.b	d3
@@ -83,7 +83,7 @@ loc_036158:
 	move.l	$2(a0),-(a7)
 	move.l	d1,-(a7)
 	pea.l	-$24(a6)
-	jsr	$506A(a5)	; -> sub_1FB026
+	jsr	$506A(a5)	; -> Spr_Init
 	move.w	d0,d6
 	cmp.w	d7,d6
 	slt.b	d3
@@ -113,7 +113,7 @@ loc_03618A:
 	move.l	$2(a0),-(a7)
 	move.l	d1,-(a7)
 	pea.l	$2E(a4)
-	jsr	$506A(a5)	; -> sub_1FB026
+	jsr	$506A(a5)	; -> Spr_Init
 	moveq	#$0,d0
 	move.l	d0,$8C(a4)
 	move.b	#$10,$9B(a4)

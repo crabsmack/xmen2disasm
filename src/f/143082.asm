@@ -16,7 +16,7 @@ sub_143082:
 	or.b	d4,$E(a4)
 	move.l	$94(a3),-(a7)
 	move.l	a3,-(a7)
-	jsr	$4E42(a5)	; -> sub_1F626A
+	jsr	$4E42(a5)	; -> Obj_SetAnim
 	move.w	d4,d0
 	subq.w	#$1,d0
 	addq.w	#$8,a7

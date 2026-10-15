@@ -22,7 +22,7 @@ loc_1F78CA:
 	bne.s	loc_1F790A
 	move.l	a4,-(a7)
 	move.l	$76(a4),-(a7)
-	jsr	sub_1F6FF4(pc)
+	jsr	Seg_ComputeObjPos(pc)
 	addq.w	#$8,a7
 loc_1F790A:
 	cmp.w	$16(a4),d6

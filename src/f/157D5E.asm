@@ -23,7 +23,7 @@ sub_157D5E:
 	moveq	#$1,d0
 	move.l	d0,-(a7)
 	pea.l	$2E(a4)
-	jsr	$506A(a5)	; -> sub_1FB026
+	jsr	$506A(a5)	; -> Spr_Init
 	lea.l	$1C(a7),a7
 loc_157D9E:
 	move.w	-$1754(a5),d0

@@ -63,7 +63,7 @@ Hologram_Init:
 	move.l	d0,-(a7)
 	moveq	#$14,d1
 	move.l	d1,-(a7)
-	jsr	$4F1A(a5)	; -> sub_1F7C6A
+	jsr	$4F1A(a5)	; -> Seg_Create
 	move.l	d0,$A2(a4)
 	lea.l	$38(a7),a7
 	move.w	$6(a3),d7

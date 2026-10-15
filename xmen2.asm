@@ -3871,12 +3871,12 @@ Str_Undefined:	; C string "UNDEFINED" (used by sub_15DCC4)
 	include "src/f/15F1F8.asm"
 	include "src/f/15F37C.asm"
 	include "src/f/15F3F0.asm"
-Tbl_NibbleFill:	; 16 longs: colour n (0-15) repeated in all 8 pixels of a 4bpp tile row ($00000000, $11111111 ... $FFFFFFFF); decoder sub_15F3F0 fills runs with it
+Tbl_NibbleFill:	; 16 longs: colour n (0-15) repeated in all 8 pixels of a 4bpp tile row ($00000000, $11111111 ... $FFFFFFFF); decoder Nem_DecodeLoop fills runs with it
 	incrom	$15F456,$40
-Tbl_NibbleMaskLow:	; 9 longs: mask of the low k nibbles, k = 0..8 ($0, $F, $FF ... $FFFFFFFF); decoder sub_15F3F0
+Tbl_NibbleMaskLow:	; 9 longs: mask of the low k nibbles, k = 0..8 ($0, $F, $FF ... $FFFFFFFF); decoder Nem_DecodeLoop
 	incrom	$15F496,$24
 	include "src/f/15F4BA.asm"
-Tbl_NibbleMaskAt:	; 9 longs: single-nibble mask at nibble position k-1 ($0, $F, $F0 ... $F0000000); decoder loc_15F4BA
+Tbl_NibbleMaskAt:	; 9 longs: single-nibble mask at nibble position k-1 ($0, $F, $F0 ... $F0000000); decoder Nem_DecodeLoop_Row
 	incrom	$15F51C,$24
 	include "src/f/15F540.asm"
 	include "src/f/15F566.asm"
@@ -4550,7 +4550,7 @@ Str_FreeMe:	; C string 'FREE ME': tag stored in a freed Mem_StackAlloc block hea
 	include "src/f/1FA9D2.asm"
 	include "src/f/1FAA08.asm"
 	include "src/f/1FAD08.asm"
-Str_EmptyTag:	; empty C string: allocation tag used by sub_1FAD08 for its Mem_StackAlloc mark block
+Str_EmptyTag:	; empty C string: allocation tag used by Spr_PreloadToHeap for its Mem_StackAlloc mark block
 	incrom	$1FAD42,$2
 	include "src/f/1FAD44.asm"
 	include "src/f/1FB026.asm"

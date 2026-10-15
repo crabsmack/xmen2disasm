@@ -8,7 +8,7 @@ sub_139108:
 	lea.l	$396A(a5),a0
 	move.l	$2(a0),-(a7)
 	move.l	a4,-(a7)
-	jsr	$4E42(a5)	; -> sub_1F626A
+	jsr	$4E42(a5)	; -> Obj_SetAnim
 	move.w	$9E(a4),$6E(a4)
 	tst.b	$A7(a4)
 	addq.w	#$8,a7

@@ -50,7 +50,7 @@ loc_1B9DF2:
 	move.l	$2(a0),-(a7)
 	move.l	d0,-(a7)
 	pea.l	$2E(a4)
-	jsr	$506A(a5)	; -> sub_1FB026
+	jsr	$506A(a5)	; -> Spr_Init
 	lea.l	g_Player1(a5),a0
 	cmpa.l	a4,a0
 	seq.b	d3
@@ -78,11 +78,11 @@ loc_1B9E26:
 	move.l	$2(a0),-(a7)
 	move.l	d1,-(a7)
 	pea.l	$C6(a4)
-	jsr	$506A(a5)	; -> sub_1FB026
+	jsr	$506A(a5)	; -> Spr_Init
 	ext.l	d7
 	move.l	d7,-(a7)
 	pea.l	$C6(a4)
-	jsr	$505A(a5)	; -> sub_1FAD08
+	jsr	$505A(a5)	; -> Spr_PreloadToHeap
 	lea.l	$C6(a4),a0
 	move.l	a0,-$18A6(a5)
 	lea.l	$50(a7),a7

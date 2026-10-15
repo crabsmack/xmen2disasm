@@ -55,7 +55,7 @@ loc_1CE29C:
 loc_1CE2B4:
 	move.l	a3,-(a7)
 	move.l	a4,-(a7)
-	jsr	$4E42(a5)	; -> sub_1F626A
+	jsr	$4E42(a5)	; -> Obj_SetAnim
 	move.w	#$FF,$6C(a4)
 	addq.w	#$8,a7
 	movem.l	-$8(a6),a3-a4

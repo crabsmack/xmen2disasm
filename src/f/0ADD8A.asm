@@ -17,7 +17,7 @@ sub_0ADD8A:
 	addq.w	#$8,a7
 	bne.s	loc_0ADDC4
 	pea.l	g_Player1(a5)
-	jsr	$4E7A(a5)	; -> sub_1F6530
+	jsr	$4E7A(a5)	; -> Obj_Detach
 	movea.l	$9C(a4),a0
 	ori.b	#$40,(a0)
 	addq.w	#$4,a7
@@ -26,7 +26,7 @@ loc_0ADDC4:
 	cmp.l	$9C(a4),d0
 	bne.s	loc_0ADDE0
 	pea.l	g_Player2(a5)
-	jsr	$4E7A(a5)	; -> sub_1F6530
+	jsr	$4E7A(a5)	; -> Obj_Detach
 	movea.l	$9C(a4),a0
 	ori.b	#$40,(a0)
 	addq.w	#$4,a7

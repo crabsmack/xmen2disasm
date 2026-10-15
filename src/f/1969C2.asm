@@ -116,7 +116,7 @@ loc_196AEA:
 	lea.l	$435A(a5),a0
 	move.l	$2(a0),-(a7)
 	move.l	a4,-(a7)
-	jsr	$4E42(a5)	; -> sub_1F626A
+	jsr	$4E42(a5)	; -> Obj_SetAnim
 	addq.w	#$8,a7
 	bra.s	loc_196B32
 loc_196B1E:
@@ -124,7 +124,7 @@ loc_196B1E:
 	lea.l	$4362(a5),a0
 	move.l	$2(a0),-(a7)
 	move.l	a4,-(a7)
-	jsr	$4E42(a5)	; -> sub_1F626A
+	jsr	$4E42(a5)	; -> Obj_SetAnim
 	addq.w	#$8,a7
 loc_196B32:
 	move.w	#$FDDA,$18(a4)
@@ -161,7 +161,7 @@ loc_196B6A:
 	lea.l	$436A(a5),a0
 	move.l	$2(a0),-(a7)
 	move.l	a4,-(a7)
-	jsr	$4E42(a5)	; -> sub_1F626A
+	jsr	$4E42(a5)	; -> Obj_SetAnim
 	addq.w	#$8,a7
 	bra.s	loc_196BB2
 loc_196B9E:
@@ -169,7 +169,7 @@ loc_196B9E:
 	lea.l	$4372(a5),a0
 	move.l	$2(a0),-(a7)
 	move.l	a4,-(a7)
-	jsr	$4E42(a5)	; -> sub_1F626A
+	jsr	$4E42(a5)	; -> Obj_SetAnim
 	addq.w	#$8,a7
 loc_196BB2:
 	move.w	#$2DA,$18(a4)
@@ -219,7 +219,7 @@ loc_196C10:
 	lea.l	$43B2(a5),a0
 	move.l	$2(a0),-(a7)
 	move.l	a4,-(a7)
-	jsr	$4E42(a5)	; -> sub_1F626A
+	jsr	$4E42(a5)	; -> Obj_SetAnim
 	lea.l	$10(a7),a7
 	move.w	#$FF,$6C(a4)
 	lea.l	sub_1969C2(pc),a0

@@ -53,12 +53,12 @@ loc_120C92:
 	move.w	d0,$98(a4)
 	move.l	a3,$9A(a4)
 	move.l	a4,-(a7)
-	jsr	$4E7A(a5)	; -> sub_1F6530
+	jsr	$4E7A(a5)	; -> Obj_Detach
 	move.w	#$28,$20(a4)
 	lea.l	$343A(a5),a0
 	move.l	$2(a0),-(a7)
 	move.l	a4,-(a7)
-	jsr	$4E42(a5)	; -> sub_1F626A
+	jsr	$4E42(a5)	; -> Obj_SetAnim
 	ori.w	#$1000,$6(a4)
 	lea.l	$18(a7),a7
 	move.w	#$FF,$6C(a4)

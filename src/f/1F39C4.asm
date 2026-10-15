@@ -92,7 +92,7 @@ loc_1F3AAE:
 	adda.w	$42(a1),a0
 	move.l	a0,-(a7)
 	move.l	a4,-(a7)
-	jsr	$4E42(a5)	; -> sub_1F626A
+	jsr	$4E42(a5)	; -> Obj_SetAnim
 	addq.w	#$8,a7
 	clr.w	$6C(a4)
 	lea.l	sub_1F383A(pc),a0

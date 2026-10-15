@@ -17,7 +17,7 @@ sub_0B6086:
 	moveq	#$1,d0
 	move.l	d0,-(a7)
 	pea.l	-$3596(a5)
-	jsr	$506A(a5)	; -> sub_1FB026
+	jsr	$506A(a5)	; -> Spr_Init
 	clr.w	-$3B3A(a5)
 	clr.w	-$3B32(a5)
 	unlk	a6

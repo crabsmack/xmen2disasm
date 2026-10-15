@@ -28,7 +28,7 @@ loc_097938:
 	adda.w	$3E(a1),a0
 	move.l	a0,-(a7)
 	move.l	a4,-(a7)
-	jsr	$4E4A(a5)	; -> sub_1F6296
+	jsr	$4E4A(a5)	; -> Obj_ChangeAnim
 	moveq	#$10,d0
 	and.b	$2E(a4),d0
 	beq.s	loc_09795C

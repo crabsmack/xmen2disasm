@@ -14,7 +14,7 @@ sub_097834:
 	adda.w	$38(a1),a0
 	move.l	a0,-(a7)
 	move.l	a4,-(a7)
-	jsr	$4E42(a5)	; -> sub_1F626A
+	jsr	$4E42(a5)	; -> Obj_SetAnim
 	addq.w	#$8,a7
 	bra.s	loc_09787A
 loc_097860:
@@ -24,7 +24,7 @@ loc_097860:
 	adda.w	$36(a1),a0
 	move.l	a0,-(a7)
 	move.l	a4,-(a7)
-	jsr	$4E42(a5)	; -> sub_1F626A
+	jsr	$4E42(a5)	; -> Obj_SetAnim
 	addq.w	#$8,a7
 loc_09787A:
 	tst.l	$98(a4)

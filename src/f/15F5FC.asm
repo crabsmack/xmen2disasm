@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_15F5FC	[jt 2079]
+; Eni_Decode - decompress an Enigma-format tilemap (Sega's plane-map compression) into a word buffer
+; In:  8(a6) = source   $C(a6) = destination words   $10(a6) = word added to every tile (base tile/palette)
+; Out: none
+; Evidence: header: inline bit count, flag mask, incrementing word (a2), common word (a4); 7-bit commands: copy incrementing, copy common, inline (Eni_ReadInline) repeat/increment/decrement via Eni_Ops; only caller sub_1F5788
 ; ---------------------------------------------------------------------------
-sub_15F5FC:
+Eni_Decode:
 	link.w	a6,#$0
 	movem.l	d3-d7/a2-a4,-(a7)
 	movea.l	$8(a6),a0
@@ -40,4 +43,4 @@ loc_15F650:
 	andi.w	#$F,d2
 	lsr.w	#$4,d1
 	add.w	d1,d1
-	jmp	loc_15F65C(pc,d1.w)
+	jmp	Eni_Ops(pc,d1.w)

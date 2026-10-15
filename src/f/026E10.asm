@@ -19,7 +19,7 @@ sub_026E10:
 	cmpi.l	#$8000,d0
 	bne.s	loc_026E52
 	move.l	a3,-(a7)
-	jsr	$4E7A(a5)	; -> sub_1F6530
+	jsr	$4E7A(a5)	; -> Obj_Detach
 	move.w	-$3CD0(a5),-$3AFA(a5)
 	addq.w	#$4,a7
 loc_026E52:
@@ -35,7 +35,7 @@ loc_026E52:
 	cmpi.l	#$8000,d0
 	bne.s	loc_026E80
 	move.l	a3,-(a7)
-	jsr	$4E7A(a5)	; -> sub_1F6530
+	jsr	$4E7A(a5)	; -> Obj_Detach
 	move.w	-$3CD0(a5),-$3AFA(a5)
 	addq.w	#$4,a7
 loc_026E80:

@@ -59,7 +59,7 @@ loc_1E3B64:
 	move.l	$2(a0),-(a7)
 	move.l	d0,-(a7)
 	pea.l	$2E(a4)
-	jsr	$506A(a5)	; -> sub_1FB026
+	jsr	$506A(a5)	; -> Spr_Init
 	clr.w	$CA(a4)
 	moveq	#$26,d0
 	move.l	d0,-(a7)

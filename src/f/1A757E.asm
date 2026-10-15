@@ -48,7 +48,7 @@ loc_1A75F0:
 	clr.l	$16(a4)
 	clr.w	$20(a4)
 	move.l	a4,-(a7)
-	jsr	$4E7A(a5)	; -> sub_1F6530
+	jsr	$4E7A(a5)	; -> Obj_Detach
 	ori.l	#$8,$90(a4)
 	ori.l	#$40,$90(a4)
 	clr.b	$70(a4)
@@ -59,7 +59,7 @@ loc_1A75F0:
 	lea.l	$44A2(a5),a0
 	move.l	$2(a0),-(a7)
 	move.l	a4,-(a7)
-	jsr	$4E42(a5)	; -> sub_1F626A
+	jsr	$4E42(a5)	; -> Obj_SetAnim
 	tst.b	d7
 	lea.l	$14(a7),a7
 	beq.s	loc_1A765A

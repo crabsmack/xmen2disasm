@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_15F5CA
+; Nem_BuildCodeTable - build the 256-entry code lookup table for Nem_Decode from (code length, value) byte pairs
+; In:  8(a6) = pair list ($FF terminated)   $C(a6) = 256-word table
+; Out: d0 = pointer past the list
+; Evidence: each pair fills 2^(8-len) consecutive words with (len << 8 | value); callers Spr_PreloadTiles, sub_1F5612, sub_1FBE96, sub_1FD72C
 ; ---------------------------------------------------------------------------
-sub_15F5CA:
+Nem_BuildCodeTable:
 	movea.l	$4(a7),a0
 	movea.l	$8(a7),a1
 loc_15F5D2:

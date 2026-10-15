@@ -26,7 +26,7 @@ loc_1B9C76:
 	lea.l	$4592(a5),a0
 	move.l	$2(a0),-(a7)
 	move.l	a4,-(a7)
-	jsr	$4E42(a5)	; -> sub_1F626A
+	jsr	$4E42(a5)	; -> Obj_SetAnim
 	addq.w	#$8,a7
 	bra.s	loc_1B9CAC
 loc_1B9C96:
@@ -34,7 +34,7 @@ loc_1B9C96:
 	lea.l	$458A(a5),a0
 	move.l	$2(a0),-(a7)
 	move.l	a4,-(a7)
-	jsr	$4E42(a5)	; -> sub_1F626A
+	jsr	$4E42(a5)	; -> Obj_SetAnim
 	addq.w	#$8,a7
 loc_1B9CAC:
 	lea.l	$4CCA(a5),a0

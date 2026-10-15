@@ -332,7 +332,7 @@ loc_0AC788:
 	move.l	d0,-(a7)
 	moveq	#$3,d0
 	move.l	d0,-(a7)
-	jsr	$4F1A(a5)	; -> sub_1F7C6A
+	jsr	$4F1A(a5)	; -> Seg_Create
 	move.l	d0,-$12(a6)
 	move.w	$90(a4),d6
 	lea.l	$18(a7),a7

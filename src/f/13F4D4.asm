@@ -32,7 +32,7 @@ sub_13F4D4:
 	ext.l	d0
 	move.l	d0,-(a7)
 	move.l	a3,-(a7)
-	jsr	$4E52(a5)	; -> sub_1F62C0
+	jsr	$4E52(a5)	; -> SprDef_Add
 	move.w	d0,$4(a4)
 	addq.w	#$8,a7
 	bra.s	loc_13F536

@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_1F62C0	[jt 2502]
+; SprDef_Add - append a sprite definition to g_SpriteDefs, preloading its tiles at the VRAM tile cursor
+; In:  8(a6) = sprite-def pointer   $C(a6) = word: frame
+; Out: none
+; Evidence: entry g_SpriteDefs + word -$34A2(a5)*$14: Spr_Init(entry, 0, def, frame, 0, cursor -$3598(a5), 0), Spr_PreloadToHeap(entry, cursor) -> new cursor -$3598; count -$34A2 += 1; Obj_SetSpriteDef later copies entries into objects
 ; ---------------------------------------------------------------------------
-sub_1F62C0:
+SprDef_Add:
 	link.w	a6,#$0
 	move.l	d3,-(a7)
 	moveq	#$0,d0
@@ -24,7 +27,7 @@ sub_1F62C0:
 	add.l	d3,d2
 	lea.l	g_SpriteDefs(a5),a0
 	pea.l	(a0,d2.w)
-	jsr	$506A(a5)	; -> sub_1FB026
+	jsr	$506A(a5)	; -> Spr_Init
 	move.w	-$3598(a5),d0
 	ext.l	d0
 	move.l	d0,-(a7)
@@ -36,7 +39,7 @@ sub_1F62C0:
 	add.l	d1,d0
 	lea.l	g_SpriteDefs(a5),a0
 	pea.l	(a0,d0.w)
-	jsr	$505A(a5)	; -> sub_1FAD08
+	jsr	$505A(a5)	; -> Spr_PreloadToHeap
 	move.w	d0,-$3598(a5)
 	move.w	-$34A2(a5),d0
 	addq.w	#$1,-$34A2(a5)

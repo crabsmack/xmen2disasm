@@ -26,7 +26,7 @@ sub_05C626:
 	lea.l	$D32(a5),a0
 	move.l	$2(a0),-(a7)
 	move.l	a3,-(a7)
-	jsr	$4E42(a5)	; -> sub_1F626A
+	jsr	$4E42(a5)	; -> Obj_SetAnim
 	move.l	-$4(a6),-(a7)
 	move.l	a3,-(a7)
 	jsr	$4E72(a5)	; -> sub_1F64B4

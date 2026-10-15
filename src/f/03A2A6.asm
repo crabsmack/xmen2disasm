@@ -14,7 +14,7 @@ BanimazaDoor_ClassInit:
 	move.l	d0,-(a7)
 	lea.l	$90A(a5),a0
 	move.l	$2(a0),-(a7)
-	jsr	$4E52(a5)	; -> sub_1F62C0
+	jsr	$4E52(a5)	; -> SprDef_Add
 	move.w	d0,-$3C86(a5)
 	lea.l	$10(a7),a7
 	pea.l	Str_Empty_03A2F2(pc)

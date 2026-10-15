@@ -111,14 +111,14 @@ loc_13CDB6:
 	move.l	a4,-(a7)
 	jsr	$4EBA(a5)	; -> sub_1F6B56
 	move.l	a4,-(a7)
-	jsr	$4E7A(a5)	; -> sub_1F6530
+	jsr	$4E7A(a5)	; -> Obj_Detach
 	clr.w	$1E(a4)
 	clr.l	$16(a4)
 	clr.w	$20(a4)
 	lea.l	$3A7A(a5),a0
 	move.l	$2(a0),-(a7)
 	move.l	a4,-(a7)
-	jsr	$4E42(a5)	; -> sub_1F626A
+	jsr	$4E42(a5)	; -> Obj_SetAnim
 	tst.w	$6(a3)
 	lea.l	$14(a7),a7
 	beq.s	loc_13CE20

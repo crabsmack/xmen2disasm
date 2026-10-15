@@ -25,13 +25,13 @@ loc_111E16:
 	move.l	d0,-(a7)
 	lea.l	$2AB2(a5),a0
 	move.l	$2(a0),-(a7)
-	jsr	$4E52(a5)	; -> sub_1F62C0
+	jsr	$4E52(a5)	; -> SprDef_Add
 	move.w	d0,-$3BC0(a5)
 	moveq	#$1,d0
 	move.l	d0,-(a7)
 	lea.l	$2AC2(a5),a0
 	move.l	$2(a0),-(a7)
-	jsr	$4E52(a5)	; -> sub_1F62C0
+	jsr	$4E52(a5)	; -> SprDef_Add
 	move.w	d0,-$3B04(a5)
 	unlk	a6
 	rts

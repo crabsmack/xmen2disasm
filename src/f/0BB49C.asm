@@ -28,7 +28,7 @@ sub_0BB49C:
 	moveq	#$1,d0
 	move.l	d0,-(a7)
 	pea.l	-$14(a6)
-	jsr	$506A(a5)	; -> sub_1FB026
+	jsr	$506A(a5)	; -> Spr_Init
 	tst.l	$98(a4)
 	lea.l	$1C(a7),a7
 	bne.s	loc_0BB4FA

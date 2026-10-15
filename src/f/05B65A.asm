@@ -61,7 +61,7 @@ loc_05B6F6:
 	lea.l	$C72(a5),a0
 	move.l	$2(a0),-(a7)
 	move.l	a4,-(a7)
-	jsr	$4E42(a5)	; -> sub_1F626A
+	jsr	$4E42(a5)	; -> Obj_SetAnim
 	lea.l	$C7A(a5),a0
 	move.l	$2(a0),$B8(a4)
 	move.l	$8(a4),d0
@@ -211,7 +211,7 @@ loc_05B888:
 	lea.l	$C72(a5),a0
 	move.l	$2(a0),-(a7)
 	move.l	a4,-(a7)
-	jsr	$4E42(a5)	; -> sub_1F626A
+	jsr	$4E42(a5)	; -> Obj_SetAnim
 	lea.l	$C7A(a5),a0
 	move.l	$2(a0),$B8(a4)
 	move.l	$8(a4),d0

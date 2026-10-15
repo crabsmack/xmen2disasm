@@ -76,7 +76,7 @@ loc_0EC91E:
 	lea.l	$290A(a5),a0
 	move.l	$2(a0),-(a7)
 	move.l	a4,-(a7)
-	jsr	$4E42(a5)	; -> sub_1F626A
+	jsr	$4E42(a5)	; -> Obj_SetAnim
 	move.l	a4,-(a7)
 	jsr	$4DD2(a5)	; -> Obj_UpdateBoxes
 	move.w	$8(a3),d7

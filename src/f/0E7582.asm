@@ -19,7 +19,7 @@ sub_0E7582:
 	moveq	#$1,d0
 	move.l	d0,-(a7)
 	pea.l	-$3596(a5)
-	jsr	$506A(a5)	; -> sub_1FB026
+	jsr	$506A(a5)	; -> Spr_Init
 	moveq	#$1,d0
 	move.l	d0,-(a7)
 	move.l	d0,-(a7)
@@ -41,7 +41,7 @@ sub_0E7582:
 	moveq	#$1,d0
 	move.l	d0,-(a7)
 	pea.l	-$3582(a5)
-	jsr	$506A(a5)	; -> sub_1FB026
+	jsr	$506A(a5)	; -> Spr_Init
 	moveq	#$1,d0
 	move.l	d0,-(a7)
 	moveq	#$2,d1
@@ -64,7 +64,7 @@ sub_0E7582:
 	moveq	#$1,d0
 	move.l	d0,-(a7)
 	pea.l	-$356E(a5)
-	jsr	$506A(a5)	; -> sub_1FB026
+	jsr	$506A(a5)	; -> Spr_Init
 	moveq	#$1,d0
 	move.l	d0,-(a7)
 	moveq	#$3,d1
@@ -87,7 +87,7 @@ sub_0E7582:
 	moveq	#$1,d0
 	move.l	d0,-(a7)
 	pea.l	-$355A(a5)
-	jsr	$506A(a5)	; -> sub_1FB026
+	jsr	$506A(a5)	; -> Spr_Init
 	moveq	#$1,d0
 	move.l	d0,-(a7)
 	moveq	#$4,d1
@@ -110,7 +110,7 @@ sub_0E7582:
 	moveq	#$1,d0
 	move.l	d0,-(a7)
 	pea.l	-$3546(a5)
-	jsr	$506A(a5)	; -> sub_1FB026
+	jsr	$506A(a5)	; -> Spr_Init
 	moveq	#$1,d0
 	move.l	d0,-(a7)
 	moveq	#$5,d1

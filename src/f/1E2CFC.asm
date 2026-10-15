@@ -107,7 +107,7 @@ loc_1E2DE8:
 	move.l	$BE(a4),-(a7)
 	move.l	d0,-(a7)
 	pea.l	$BC(a4)
-	jsr	$506A(a5)	; -> sub_1FB026
+	jsr	$506A(a5)	; -> Spr_Init
 	move.w	d0,d6
 	tst.b	$13(a6)
 	lea.l	$1C(a7),a7

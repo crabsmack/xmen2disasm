@@ -43,7 +43,7 @@ loc_0FCC34:
 	moveq	#$0,d0
 	move.l	d0,-(a7)
 	pea.l	-$3596(a5)
-	jsr	$5062(a5)	; -> sub_1FAD44
+	jsr	$5062(a5)	; -> Spr_UploadFrame
 	lea.l	$10(a7),a7
 loc_0FCC5A:
 	move.l	-$4(a6),d7

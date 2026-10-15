@@ -59,7 +59,7 @@ loc_183B34:
 	movea.l	$56(a0),a1
 	jsr	(a1)
 	move.l	a4,-(a7)
-	jsr	$4E7A(a5)	; -> sub_1F6530
+	jsr	$4E7A(a5)	; -> Obj_Detach
 	move.w	#$1E,$20(a4)
 	move.w	#$FDF4,$18(a4)
 	moveq	#$10,d0

@@ -166,7 +166,7 @@ loc_121BBA:
 	moveq	#$0,d0
 	move.l	d0,-(a7)
 	pea.l	$2E(a3)
-	jsr	$5062(a5)	; -> sub_1FAD44
+	jsr	$5062(a5)	; -> Spr_UploadFrame
 	move.w	$34(a3),d0
 	ext.l	d0
 	move.l	#$8000,d6

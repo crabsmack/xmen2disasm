@@ -11,7 +11,7 @@ sub_1E2B48:
 	adda.w	$30(a1),a0
 	move.l	a0,-(a7)
 	move.l	a4,-(a7)
-	jsr	$4E42(a5)	; -> sub_1F626A
+	jsr	$4E42(a5)	; -> Obj_SetAnim
 	movea.l	$8C(a4),a0
 	moveq	#$0,d0
 	move.b	$2C(a0),d0
