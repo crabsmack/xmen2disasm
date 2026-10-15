@@ -6,13 +6,13 @@ sub_1F0334:
 	move.l	a4,-(a7)
 	movea.l	$8(a6),a4
 	pea.l	($D5).w
-	jsr	$5222(a5)	; -> sub_1FE5A2
+	jsr	$5222(a5)	; -> Snd_Stop
 	moveq	#$52,d0
 	move.l	d0,-(a7)
-	jsr	$5222(a5)	; -> sub_1FE5A2
+	jsr	$5222(a5)	; -> Snd_Stop
 	moveq	#$52,d0
 	move.l	d0,-(a7)
-	jsr	$521A(a5)	; -> sub_1FE584
+	jsr	$521A(a5)	; -> Snd_Play
 	movea.l	$8C(a4),a0
 	moveq	#$0,d0
 	move.b	$28(a0),d0

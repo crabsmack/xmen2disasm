@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_1FD8D2	[jt 2585]
+; Pal_Update - per-frame palette work: step an active fade every N frames, or upload the working/base palette when requested
+; In:  none
+; Out: none
+; Evidence: fade active (-$3A02): every -$3A04 frames DMA -$3A00 (VDP_DmaPalette) and move level -$7BC up/down, ending past 7 or below 0; else if byte -$7C6 upload -$3A00; else if byte -$3A06 upload -$3980; called by VDP_FrameUpdate
 ; ---------------------------------------------------------------------------
-sub_1FD8D2:
+Pal_Update:
 	link.w	a6,#$FFFC
 	move.l	d3,-(a7)
 	tst.b	-$3A02(a5)
@@ -12,7 +15,7 @@ sub_1FD8D2:
 	bgt.w	loc_1FD990
 	move.w	-$3A04(a5),-$7C4(a5)
 	pea.l	-$3A00(a5)
-	jsr	$51EA(a5)	; -> sub_1FE316
+	jsr	$51EA(a5)	; -> VDP_DmaPalette
 	tst.b	-$7BA(a5)
 	addq.w	#$4,a7
 	beq.s	loc_1FD910
@@ -51,7 +54,7 @@ loc_1FD952:
 	move.w	-$7BC(a5),d0
 	ext.l	d0
 	move.l	d0,-(a7)
-	jsr	sub_1FD77E(pc)
+	jsr	Pal_ApplyFade(pc)
 	addq.w	#$8,a7
 	bra.s	loc_1FD990
 loc_1FD966:
@@ -59,7 +62,7 @@ loc_1FD966:
 	beq.s	loc_1FD97C
 	clr.b	-$7C6(a5)
 	pea.l	-$3A00(a5)
-	jsr	$51EA(a5)	; -> sub_1FE316
+	jsr	$51EA(a5)	; -> VDP_DmaPalette
 	addq.w	#$4,a7
 	bra.s	loc_1FD990
 loc_1FD97C:
@@ -67,7 +70,7 @@ loc_1FD97C:
 	beq.s	loc_1FD990
 	clr.b	-$3A06(a5)
 	pea.l	-$3980(a5)
-	jsr	$51EA(a5)	; -> sub_1FE316
+	jsr	$51EA(a5)	; -> VDP_DmaPalette
 	addq.w	#$4,a7
 loc_1FD990:
 	move.l	-$8(a6),d3

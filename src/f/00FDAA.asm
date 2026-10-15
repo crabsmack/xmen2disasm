@@ -62,7 +62,7 @@ sub_00FDAA:
 	move.b	#$1,-$18AC(a5)
 	jsr	$5002(a5)	; -> sub_1FA6FE
 	clr.b	-$18AC(a5)
-	jsr	$5242(a5)	; -> sub_1FE5F2
+	jsr	$5242(a5)	; -> Snd_StopAll
 	movea.l	-$24(a6),a4
 	unlk	a6
 	rts

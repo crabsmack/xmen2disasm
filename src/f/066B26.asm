@@ -13,7 +13,7 @@ sub_066B26:
 loc_066B3E:
 	cmpi.w	#$FFFF,d6
 	beq.s	loc_066B48
-	jsr	$5242(a5)	; -> sub_1FE5F2
+	jsr	$5242(a5)	; -> Snd_StopAll
 loc_066B48:
 	lea.l	$DD2(a5),a0
 	move.l	$2(a0),-(a7)
@@ -75,7 +75,7 @@ loc_066B48:
 	clr.b	-$38C2(a5)
 	move.w	-$3598(a5),-$3888(a5)
 	jsr	$5042(a5)	; -> sub_1FA956
-	jsr	$50FA(a5)	; -> sub_1FDA56
+	jsr	$50FA(a5)	; -> Pad_Update
 	ori.w	#$40,-$1D48(a5)
 	move.w	-$1D48(a5),($C00004).l
 	move.w	#$9100,($C00004).l
@@ -87,7 +87,7 @@ loc_066B48:
 	move.l	d0,-(a7)
 	moveq	#$0,d1
 	move.l	d1,-(a7)
-	jsr	$50F2(a5)	; -> sub_1FD998
+	jsr	$50F2(a5)	; -> Pal_StartFade
 	moveq	#$0,d0
 	move.b	-$3B8E(a5),d0
 	cmp.w	g_SceneIndex(a5),d0
@@ -160,13 +160,13 @@ loc_066D24:
 	beq.s	loc_066D90
 	cmpi.w	#$FFFF,d6
 	beq.s	loc_066D4C
-	jsr	$5242(a5)	; -> sub_1FE5F2
+	jsr	$5242(a5)	; -> Snd_StopAll
 	ext.l	d6
 	move.l	d6,-(a7)
-	jsr	$5222(a5)	; -> sub_1FE5A2
+	jsr	$5222(a5)	; -> Snd_Stop
 	ext.l	d6
 	move.l	d6,-(a7)
-	jsr	$521A(a5)	; -> sub_1FE584
+	jsr	$521A(a5)	; -> Snd_Play
 	addq.w	#$8,a7
 	bra.s	loc_066D4C
 loc_066D48:
@@ -188,13 +188,13 @@ loc_066D4C:
 loc_066D90:
 	tst.w	-$3B0A(a5)
 	beq.w	loc_066E38
-	jsr	$5242(a5)	; -> sub_1FE5F2
+	jsr	$5242(a5)	; -> Snd_StopAll
 	moveq	#$8,d0
 	move.l	d0,-(a7)
-	jsr	$5222(a5)	; -> sub_1FE5A2
+	jsr	$5222(a5)	; -> Snd_Stop
 	moveq	#$8,d0
 	move.l	d0,-(a7)
-	jsr	$521A(a5)	; -> sub_1FE584
+	jsr	$521A(a5)	; -> Snd_Play
 	addq.w	#$8,a7
 	bra.s	loc_066DB4
 loc_066DB0:
@@ -234,7 +234,7 @@ loc_066E20:
 	clr.w	-$1754(a5)
 	clr.w	-$1844(a5)
 	jsr	sub_0656B0(pc)
-	jsr	$5242(a5)	; -> sub_1FE5F2
+	jsr	$5242(a5)	; -> Snd_StopAll
 loc_066E38:
 	clr.b	-$3A06(a5)
 	tst.b	-$3A02(a5)
@@ -245,7 +245,7 @@ loc_066E38:
 	move.l	d0,-(a7)
 	moveq	#$7,d1
 	move.l	d1,-(a7)
-	jsr	$50F2(a5)	; -> sub_1FD998
+	jsr	$50F2(a5)	; -> Pal_StartFade
 	lea.l	$C(a7),a7
 	bra.s	loc_066E60
 loc_066E5C:

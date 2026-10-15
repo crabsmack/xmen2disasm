@@ -18,7 +18,7 @@ loc_1431D6:
 	move.b	d6,$C(a4)
 	move.b	d7,$D(a4)
 	pea.l	($F3).w
-	jsr	$5222(a5)	; -> sub_1FE5A2
+	jsr	$5222(a5)	; -> Snd_Stop
 	pea.l	($F3).w
-	jsr	$521A(a5)	; -> sub_1FE584
+	jsr	$521A(a5)	; -> Snd_Play
 	addq.w	#$8,a7

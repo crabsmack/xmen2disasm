@@ -35,12 +35,12 @@ sub_088730:
 	lea.l	$152A(a5),a0
 	move.l	$2(a0),-(a7)
 	jsr	$4FCA(a5)	; -> sub_1F98A8
-	jsr	$5242(a5)	; -> sub_1FE5F2
+	jsr	$5242(a5)	; -> Snd_StopAll
 	moveq	#$0,d0
 	move.l	d0,-(a7)
 	moveq	#$13,d1
 	move.l	d1,-(a7)
-	jsr	$524A(a5)	; -> sub_1FE630
+	jsr	$524A(a5)	; -> Snd_SetParam
 	moveq	#$A,d0
 	move.l	d0,-(a7)
 	moveq	#$48,d1

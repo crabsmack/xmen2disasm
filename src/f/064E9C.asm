@@ -10,7 +10,7 @@ sub_064E9C:
 	move.l	g_FrameCounter(a5),d0
 	addq.l	#$1,g_FrameCounter(a5)
 loc_064EB6:
-	jsr	$50FA(a5)	; -> sub_1FDA56
+	jsr	$50FA(a5)	; -> Pad_Update
 	moveq	#$2,d0
 	cmp.w	-$3B02(a5),d0
 	bne.s	loc_064ED6

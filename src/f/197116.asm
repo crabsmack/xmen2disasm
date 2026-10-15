@@ -27,13 +27,13 @@ loc_197158:
 	moveq	#$0,d0
 	move.b	$2C(a0),d0
 	move.l	d0,-(a7)
-	jsr	$5222(a5)	; -> sub_1FE5A2
+	jsr	$5222(a5)	; -> Snd_Stop
 	moveq	#$63,d0
 	move.l	d0,-(a7)
-	jsr	$5222(a5)	; -> sub_1FE5A2
+	jsr	$5222(a5)	; -> Snd_Stop
 	moveq	#$63,d0
 	move.l	d0,-(a7)
-	jsr	$521A(a5)	; -> sub_1FE584
+	jsr	$521A(a5)	; -> Snd_Play
 	move.b	#$1,-$3892(a5)
 	clr.l	$A6(a4)
 	clr.w	$1E(a4)

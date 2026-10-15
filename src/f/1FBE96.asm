@@ -41,7 +41,7 @@ loc_1FBEBC:
 	move.l	a4,d0
 	addq.l	#$8,d0
 	move.l	d0,-(a7)
-	jsr	$519A(a5)	; -> sub_1FE002
+	jsr	$519A(a5)	; -> VDP_WriteWords
 	addq.w	#$8,a7
 	bra.w	loc_1FBFC2
 loc_1FBF0E:

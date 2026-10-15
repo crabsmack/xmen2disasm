@@ -31,16 +31,16 @@ sub_038742:
 	move.l	d0,-(a7)
 	jsr	$8C2(a5)	; -> sub_03ABCE
 	pea.l	($DE).w
-	jsr	$5222(a5)	; -> sub_1FE5A2
+	jsr	$5222(a5)	; -> Snd_Stop
 	pea.l	($DE).w
-	jsr	$521A(a5)	; -> sub_1FE584
+	jsr	$521A(a5)	; -> Snd_Play
 	moveq	#$3,d0
 	move.l	d0,-(a7)
-	jsr	$5222(a5)	; -> sub_1FE5A2
+	jsr	$5222(a5)	; -> Snd_Stop
 	pea.l	($E7).w
-	jsr	$5222(a5)	; -> sub_1FE5A2
+	jsr	$5222(a5)	; -> Snd_Stop
 	pea.l	($E7).w
-	jsr	$521A(a5)	; -> sub_1FE584
+	jsr	$521A(a5)	; -> Snd_Play
 	move.w	#$28,-$3C94(a5)
 	lea.l	$20(a7),a7
 loc_0387C4:

@@ -81,9 +81,9 @@ loc_11923A:
 	and.l	d7,d0
 	bne.s	loc_119280
 	pea.l	($ED).w
-	jsr	$5222(a5)	; -> sub_1FE5A2
+	jsr	$5222(a5)	; -> Snd_Stop
 	pea.l	($ED).w
-	jsr	$521A(a5)	; -> sub_1FE584
+	jsr	$521A(a5)	; -> Snd_Play
 	addq.w	#$8,a7
 loc_119280:
 	movem.l	-$1C(a6),d3-d7/a3-a4

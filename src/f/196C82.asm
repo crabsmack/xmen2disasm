@@ -165,10 +165,10 @@ loc_196E1C:
 loc_196E2C:
 	moveq	#$63,d0
 	move.l	d0,-(a7)
-	jsr	$5222(a5)	; -> sub_1FE5A2
+	jsr	$5222(a5)	; -> Snd_Stop
 	moveq	#$63,d0
 	move.l	d0,-(a7)
-	jsr	$521A(a5)	; -> sub_1FE584
+	jsr	$521A(a5)	; -> Snd_Play
 	andi.l	#$FFFFFFDF,$90(a4)
 	addq.w	#$8,a7
 	move.w	#$A,$6C(a4)

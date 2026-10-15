@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_1FD77E	[jt 2584]
+; Pal_ApplyFade - build the working palette from the base palette, mapping each colour component through fade table level N
+; In:  8(a6) = long: fade level (0-7)   $C(a6) = pointer: fade table (8 bytes per level, indexed by 3-bit component)
+; Out: none
+; Evidence: for each word of -$3980(a5): components at bits 9/5/1 replaced by table[level*8 + c]; writes -$3A00(a5); all 64 colours when word -$7BE(a5) = -1, else only the 16 of palette line -$7BE
 ; ---------------------------------------------------------------------------
-sub_1FD77E:
+Pal_ApplyFade:
 	link.w	a6,#$0
 	movem.l	d3/d6-d7/a4,-(a7)
 	movea.l	$C(a6),a4

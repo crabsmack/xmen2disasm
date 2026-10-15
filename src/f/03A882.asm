@@ -100,10 +100,10 @@ loc_03A970:
 loc_03A97A:
 	moveq	#$3,d0
 	move.l	d0,-(a7)
-	jsr	$5222(a5)	; -> sub_1FE5A2
+	jsr	$5222(a5)	; -> Snd_Stop
 	moveq	#$3,d0
 	move.l	d0,-(a7)
-	jsr	$521A(a5)	; -> sub_1FE584
+	jsr	$521A(a5)	; -> Snd_Play
 	addq.w	#$8,a7
 loc_03A98C:
 	move.w	$E(a3),d0
@@ -310,8 +310,8 @@ loc_03ABA2:
 	pea.l	($380).w
 	move.l	#$F400,-(a7)
 	pea.l	-$BC6(a5)
-	jsr	$51DA(a5)	; -> sub_1FE17A
-	jsr	$4DF2(a5)	; -> sub_1F5228
+	jsr	$51DA(a5)	; -> VDP_QueueDma
+	jsr	$4DF2(a5)	; -> Scroll_RequestVsram
 	lea.l	$C(a7),a7
 	movem.l	-$3C(a6),d3-d7/a3-a4
 	unlk	a6

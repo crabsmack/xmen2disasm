@@ -25,9 +25,9 @@ sub_0BD128:
 	move.l	a4,-(a7)
 	jsr	$3392(a5)	; -> sub_11F2F2
 	pea.l	($F2).w
-	jsr	$5222(a5)	; -> sub_1FE5A2
+	jsr	$5222(a5)	; -> Snd_Stop
 	pea.l	($F2).w
-	jsr	$521A(a5)	; -> sub_1FE584
+	jsr	$521A(a5)	; -> Snd_Play
 	lea.l	$1E7A(a5),a0
 	move.l	$2(a0),-(a7)
 	pea.l	$8C(a4)

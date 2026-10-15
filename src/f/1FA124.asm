@@ -190,7 +190,7 @@ loc_1FA356:
 loc_1FA39A:
 	tst.b	-$3BBA(a5)
 	beq.s	loc_1FA3A8
-	jsr	$51BA(a5)	; -> sub_1FE052
+	jsr	$51BA(a5)	; -> Pad_IsP2Connected
 	tst.b	d0
 	bne.s	loc_1FA3B0
 loc_1FA3A8:
@@ -284,7 +284,7 @@ loc_1FA4BC:
 	beq.s	loc_1FA4D8
 	jsr	sub_1F9DE8(pc)
 loc_1FA4D8:
-	jsr	$50FA(a5)	; -> sub_1FDA56
+	jsr	$50FA(a5)	; -> Pad_Update
 	tst.b	-$38E4(a5)
 	bne.w	loc_1FA638
 	tst.b	-$3894(a5)

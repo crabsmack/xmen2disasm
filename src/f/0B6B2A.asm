@@ -33,9 +33,9 @@ loc_0B6B72:
 	lea.l	$C(a7),a7
 loc_0B6B8A:
 	pea.l	($F2).w
-	jsr	$5222(a5)	; -> sub_1FE5A2
+	jsr	$5222(a5)	; -> Snd_Stop
 	pea.l	($F2).w
-	jsr	$521A(a5)	; -> sub_1FE584
+	jsr	$521A(a5)	; -> Snd_Play
 	move.l	a4,-(a7)
 	movea.l	(a4),a0
 	movea.l	$52(a0),a1

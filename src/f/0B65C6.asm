@@ -12,7 +12,7 @@ sub_0B65C6:
 	jsr	sub_0B6322(pc)
 	lea.l	$1CAA(a5),a0
 	move.l	$2(a0),-(a7)
-	jsr	$5102(a5)	; -> sub_1FDAEC
+	jsr	$5102(a5)	; -> Scroll_SetParallax
 	moveq	#$0,d0
 	move.l	d0,-$3B20(a5)
 	pea.l	sub_0B65A0(pc)
@@ -27,8 +27,8 @@ sub_0B65C6:
 	moveq	#$10,d0
 	move.l	d0,-(a7)
 	jsr	$3382(a5)	; -> sub_11F1A6
-	jsr	$5242(a5)	; -> sub_1FE5F2
+	jsr	$5242(a5)	; -> Snd_StopAll
 	jsr	$5002(a5)	; -> sub_1FA6FE
-	jsr	$5242(a5)	; -> sub_1FE5F2
+	jsr	$5242(a5)	; -> Snd_StopAll
 	unlk	a6
 	rts

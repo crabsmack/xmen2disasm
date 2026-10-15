@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_1F45AE
+; Boot_DrawText - write a zero-terminated ASCII string as tile numbers (char - $20) at row/column of plane A ($C000)
+; In:  a0 = string, d0 = byte: column, d1 = byte: row, a4 = VDP data, a5 = VDP control
+; Out: none
+; Evidence: VRAM address = $C000 + row*$80 + col*2 (command $40000003 base); used only by Boot_RegionCheck
 ; ---------------------------------------------------------------------------
-sub_1F45AE:
+Boot_DrawText:
 	move.b	d1,d2
 	andi.l	#$FF,d2
 	swap	d2

@@ -28,7 +28,7 @@ loc_113F9A:
 	moveq	#$0,d1
 	move.b	d0,d1
 	move.l	d1,-(a7)
-	jsr	$5222(a5)	; -> sub_1FE5A2
+	jsr	$5222(a5)	; -> Snd_Stop
 	movea.l	$8C(a4),a0
 	moveq	#$0,d0
 	move.b	$1(a0),d0
@@ -47,7 +47,7 @@ loc_113FC6:
 	moveq	#$0,d1
 	move.b	d0,d1
 	move.l	d1,-(a7)
-	jsr	$521A(a5)	; -> sub_1FE584
+	jsr	$521A(a5)	; -> Snd_Play
 	move.b	$13(a6),d0
 	subi.b	#$9,d0
 	addq.w	#$8,a7

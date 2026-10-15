@@ -55,10 +55,10 @@ sub_0B674E:
 	jsr	$4DD2(a5)	; -> sub_1F4A40
 	moveq	#$46,d0
 	move.l	d0,-(a7)
-	jsr	$5222(a5)	; -> sub_1FE5A2
+	jsr	$5222(a5)	; -> Snd_Stop
 	moveq	#$46,d0
 	move.l	d0,-(a7)
-	jsr	$521A(a5)	; -> sub_1FE584
+	jsr	$521A(a5)	; -> Snd_Play
 	move.l	a4,-$3B20(a5)
 	movea.l	-$4(a6),a4
 	unlk	a6

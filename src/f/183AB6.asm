@@ -50,9 +50,9 @@ loc_183B14:
 	bra.s	loc_183BA4
 loc_183B34:
 	pea.l	($92).w
-	jsr	$5222(a5)	; -> sub_1FE5A2
+	jsr	$5222(a5)	; -> Snd_Stop
 	pea.l	($92).w
-	jsr	$521A(a5)	; -> sub_1FE584
+	jsr	$521A(a5)	; -> Snd_Play
 	pea.l	($96).w
 	move.l	a4,-(a7)
 	movea.l	(a4),a0

@@ -29,9 +29,9 @@ loc_1A702E:
 	move.w	d0,-$3A30(a5)
 loc_1A703C:
 	pea.l	($81).w
-	jsr	$5222(a5)	; -> sub_1FE5A2
+	jsr	$5222(a5)	; -> Snd_Stop
 	pea.l	($81).w
-	jsr	$521A(a5)	; -> sub_1FE584
+	jsr	$521A(a5)	; -> Snd_Play
 	moveq	#$0,d0
 	move.w	$C0(a4),d0
 	moveq	#$3,d1

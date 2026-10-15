@@ -18,9 +18,9 @@ sub_02D4BA:
 	move.l	$8(a4),-(a7)
 	jsr	$6E2(a5)	; -> sub_02E526
 	pea.l	($E0).w
-	jsr	$5222(a5)	; -> sub_1FE5A2
+	jsr	$5222(a5)	; -> Snd_Stop
 	pea.l	($E0).w
-	jsr	$521A(a5)	; -> sub_1FE584
+	jsr	$521A(a5)	; -> Snd_Play
 	clr.b	$AC(a4)
 	lea.l	$1C(a7),a7
 	move.w	#$1E,$6C(a4)

@@ -38,10 +38,10 @@ loc_036786:
 loc_03678A:
 	moveq	#$7D,d0
 	move.l	d0,-(a7)
-	jsr	$5222(a5)	; -> sub_1FE5A2
+	jsr	$5222(a5)	; -> Snd_Stop
 	moveq	#$7D,d0
 	move.l	d0,-(a7)
-	jsr	$521A(a5)	; -> sub_1FE584
+	jsr	$521A(a5)	; -> Snd_Play
 	lea.l	$73A(a5),a0
 	move.l	$2(a0),-(a7)
 	move.l	a4,-(a7)

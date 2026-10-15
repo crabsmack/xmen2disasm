@@ -26,9 +26,9 @@ sub_112D1E:
 	move.l	$9E(a4),-(a7)
 	jsr	$4FDA(a5)	; -> sub_1F9D04
 	pea.l	($FC).w
-	jsr	$5222(a5)	; -> sub_1FE5A2
+	jsr	$5222(a5)	; -> Snd_Stop
 	pea.l	($FC).w
-	jsr	$521A(a5)	; -> sub_1FE584
+	jsr	$521A(a5)	; -> Snd_Play
 	lea.l	$18(a7),a7
 	clr.w	$6C(a4)
 	lea.l	sub_112C9E(pc),a0

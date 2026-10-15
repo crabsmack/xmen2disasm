@@ -10,10 +10,10 @@ sub_0879FE:
 	ori.w	#$2,$6(a0)
 	moveq	#$37,d0
 	move.l	d0,-(a7)
-	jsr	$5222(a5)	; -> sub_1FE5A2
+	jsr	$5222(a5)	; -> Snd_Stop
 	moveq	#$37,d0
 	move.l	d0,-(a7)
-	jsr	$521A(a5)	; -> sub_1FE584
+	jsr	$521A(a5)	; -> Snd_Play
 	pea.l	-$1652(a5)
 	movea.l	$8(a6),a0
 	move.l	$84(a0),-(a7)

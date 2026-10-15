@@ -17,9 +17,9 @@ sub_04CD3A:
 	movea.l	$56(a0),a1
 	jsr	(a1)
 	pea.l	($EB).w
-	jsr	$5222(a5)	; -> sub_1FE5A2
+	jsr	$5222(a5)	; -> Snd_Stop
 	pea.l	($EB).w
-	jsr	$521A(a5)	; -> sub_1FE584
+	jsr	$521A(a5)	; -> Snd_Play
 	move.w	#$3C,$6A(a4)
 	lea.l	$10(a7),a7
 	bra.s	loc_04CD9C

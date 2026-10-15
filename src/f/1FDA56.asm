@@ -1,12 +1,15 @@
 ; ---------------------------------------------------------------------------
-; sub_1FDA56	[jt 2587]
+; Pad_Update - per-frame pad edge detection for both players: held, newly pressed, released, latched and accumulated buttons
+; In:  none
+; Out: none
+; Evidence: P1: pressed -$3A26 = new & ~old, released -$3A2A = old & ~new, held -$3A36, latch -$3A2E = (pressed|latch) & held, accum -$3A32 |= held; P2 the same at -$3A28/-$3A2C/-$3A38/-$3A30/-$3A34; the pause code tests pressed & $80 (Start)
 ; ---------------------------------------------------------------------------
-sub_1FDA56:
+Pad_Update:
 	link.w	a6,#$0
 	movem.l	d6-d7,-(a7)
 	moveq	#$1,d0
 	move.l	d0,-(a7)
-	jsr	sub_1FD9E8(pc)
+	jsr	Pad_Get(pc)
 	move.w	d0,d7
 	move.w	-$3A36(a5),d0
 	not.w	d0
@@ -28,7 +31,7 @@ sub_1FDA56:
 	move.w	d0,-$3A32(a5)
 	moveq	#$0,d0
 	move.l	d0,-(a7)
-	jsr	sub_1FD9E8(pc)
+	jsr	Pad_Get(pc)
 	move.w	d0,d7
 	move.w	-$3A38(a5),d0
 	not.w	d0

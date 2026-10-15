@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_160642	[jt 2094]
+; Sys_InitHardware - power-on hardware init: V-int hooks, VDP shadows, DMA queue, clear VRAM/CRAM/VSRAM, enable V-int and display
+; In:  none
+; Out: none
+; Evidence: clears -$3A14, Irq_Enable, reg 11 shadow -$204 = $8B00/$8B08, VDP_ResetDmaQueue, frame counter -$3A10 = 0, VDP_ClearCram/VDP_ClearVram/VDP_ClearVsram, reg1 shadow -$1D48 |= $20 then $40, Scroll_Init; TAS frame 4
 ; ---------------------------------------------------------------------------
-sub_160642:
+Sys_InitHardware:
 	link.w	a6,#$0
 	move.l	d7,-(a7)
 	moveq	#$0,d0
@@ -33,22 +36,22 @@ loc_160696:
 	beq.s	loc_1606A8
 	dc.w	$13FC,$FF80,$00A1,$000D	; insn: move.b #$80, $a1000d.l
 loc_1606A8:
-	jsr	$50D2(a5)	; -> sub_1FD720
+	jsr	$50D2(a5)	; -> VDP_ResetDmaQueue
 	moveq	#$0,d0
 	move.l	d0,-$3A10(a5)
-	jsr	$51CA(a5)	; -> sub_1FE05C
+	jsr	$51CA(a5)	; -> unk_VDP_1FE05C
 loc_1606B6:
 	moveq	#$2,d0
 	and.w	($C00004).l,d0
 	bne.s	loc_1606B6
-	jsr	$5192(a5)	; -> sub_1FDFE8
-	jsr	$5182(a5)	; -> sub_1FDF6C
-	jsr	$518A(a5)	; -> sub_1FDFCE
+	jsr	$5192(a5)	; -> VDP_ClearCram
+	jsr	$5182(a5)	; -> VDP_ClearVram
+	jsr	$518A(a5)	; -> VDP_ClearVsram
 	ori.w	#$20,-$1D48(a5)
 	move.w	-$1D48(a5),($C00004).l
 	ori.w	#$40,-$1D48(a5)
 	move.w	-$1D48(a5),($C00004).l
-	jsr	$4E02(a5)	; -> sub_1F5254
+	jsr	$4E02(a5)	; -> Scroll_Init
 	move.l	-$4(a6),d7
 	unlk	a6
 	rts

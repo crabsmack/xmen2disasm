@@ -63,10 +63,10 @@ loc_107898:
 	move.w	d3,d5
 	moveq	#$38,d0
 	move.l	d0,-(a7)
-	jsr	$5222(a5)	; -> sub_1FE5A2
+	jsr	$5222(a5)	; -> Snd_Stop
 	moveq	#$38,d0
 	move.l	d0,-(a7)
-	jsr	$521A(a5)	; -> sub_1FE584
+	jsr	$521A(a5)	; -> Snd_Play
 	tst.w	d5
 	addq.w	#$8,a7
 	beq.s	loc_10796C
@@ -79,10 +79,10 @@ loc_107898:
 	ori.w	#$200,(a0)
 	moveq	#$10,d0
 	move.l	d0,-(a7)
-	jsr	$5222(a5)	; -> sub_1FE5A2
+	jsr	$5222(a5)	; -> Snd_Stop
 	moveq	#$10,d0
 	move.l	d0,-(a7)
-	jsr	$521A(a5)	; -> sub_1FE584
+	jsr	$521A(a5)	; -> Snd_Play
 	moveq	#$1,d0
 	move.l	d0,-(a7)
 	move.w	-$2(a6),d1
@@ -106,10 +106,10 @@ loc_10796C:
 	andi.w	#$FDFF,(a0)
 	moveq	#$16,d0
 	move.l	d0,-(a7)
-	jsr	$5222(a5)	; -> sub_1FE5A2
+	jsr	$5222(a5)	; -> Snd_Stop
 	moveq	#$16,d0
 	move.l	d0,-(a7)
-	jsr	$521A(a5)	; -> sub_1FE584
+	jsr	$521A(a5)	; -> Snd_Play
 	moveq	#$1,d0
 	move.l	d0,-(a7)
 	move.w	-$2(a6),d1

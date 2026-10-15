@@ -23,9 +23,9 @@ sub_122E18:
 	move.w	d0,$12(a4)
 	subi.l	#$8200,$C(a4)
 	pea.l	($FA).w
-	jsr	$5222(a5)	; -> sub_1FE5A2
+	jsr	$5222(a5)	; -> Snd_Stop
 	pea.l	($FA).w
-	jsr	$521A(a5)	; -> sub_1FE584
+	jsr	$521A(a5)	; -> Snd_Play
 	lea.l	$18(a7),a7
 	clr.w	$6C(a4)
 	lea.l	sub_122B96(pc),a0

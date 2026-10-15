@@ -33,7 +33,7 @@ loc_15856A:
 	move.l	d2,-(a7)
 	lea.l	$47C2(a5),a0
 	move.l	$2(a0),-(a7)
-	jsr	$51DA(a5)	; -> sub_1FE17A
+	jsr	$51DA(a5)	; -> VDP_QueueDma
 	moveq	#$20,d0
 	move.l	d0,-(a7)
 	move.w	-$1A62(a5),d1
@@ -46,7 +46,7 @@ loc_15856A:
 	move.l	d2,-(a7)
 	lea.l	$47CA(a5),a0
 	move.l	$2(a0),-(a7)
-	jsr	$51DA(a5)	; -> sub_1FE17A
+	jsr	$51DA(a5)	; -> VDP_QueueDma
 	clr.w	d7
 	moveq	#$10,d3
 	lea.l	$18(a7),a7

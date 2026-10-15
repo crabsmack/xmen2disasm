@@ -87,7 +87,7 @@ loc_1FADDC:
 	lsl.l	#$4,d0
 	move.l	d0,-(a7)
 	move.l	a4,-(a7)
-	jsr	$519A(a5)	; -> sub_1FE002
+	jsr	$519A(a5)	; -> VDP_WriteWords
 	jsr	$4DA2(a5)	; -> Irq_Enable
 	add.w	d7,d4
 	addq.w	#$8,a7
@@ -162,7 +162,7 @@ loc_1FAE94:
 	move.l	a4,d0
 	addq.l	#$2,d0
 	move.l	d0,-(a7)
-	jsr	$519A(a5)	; -> sub_1FE002
+	jsr	$519A(a5)	; -> VDP_WriteWords
 	addq.w	#$8,a7
 	bra.s	loc_1FAF24
 loc_1FAEFE:
@@ -225,7 +225,7 @@ loc_1FAF52:
 	lsl.l	#$5,d0
 	move.l	d0,-(a7)
 	move.l	a4,-(a7)
-	jsr	$51DA(a5)	; -> sub_1FE17A
+	jsr	$51DA(a5)	; -> VDP_QueueDma
 	add.w	d7,d4
 	lea.l	$C(a7),a7
 loc_1FAF8C:
@@ -281,7 +281,7 @@ loc_1FAFD4:
 	move.l	a4,d0
 	addq.l	#$2,d0
 	move.l	d0,-(a7)
-	jsr	$51DA(a5)	; -> sub_1FE17A
+	jsr	$51DA(a5)	; -> VDP_QueueDma
 	add.w	d7,d4
 	lea.l	$C(a7),a7
 loc_1FB008:

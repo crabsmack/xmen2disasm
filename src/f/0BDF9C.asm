@@ -6,9 +6,9 @@ sub_0BDF9C:
 	move.l	a4,-(a7)
 	movea.l	$8(a6),a4
 	pea.l	($AD).w
-	jsr	$5222(a5)	; -> sub_1FE5A2
+	jsr	$5222(a5)	; -> Snd_Stop
 	pea.l	($AD).w
-	jsr	$521A(a5)	; -> sub_1FE584
+	jsr	$521A(a5)	; -> Snd_Play
 	moveq	#$0,d0
 	move.l	d0,$44(a4)
 	addq.w	#$8,a7

@@ -15,6 +15,6 @@ sub_0AD91A:
 	jsr	sub_0AD90A(pc)
 	jsr	$2E8A(a5)	; -> sub_1190D6
 	jsr	$5002(a5)	; -> sub_1FA6FE
-	jsr	$5242(a5)	; -> sub_1FE5F2
+	jsr	$5242(a5)	; -> Snd_StopAll
 	unlk	a6
 	rts

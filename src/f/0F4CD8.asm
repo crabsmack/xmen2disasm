@@ -13,6 +13,6 @@ loc_0F4CEE:
 loc_0F4CF2:
 	tst.b	-$3A02(a5)
 	bne.s	loc_0F4CEE
-	jsr	$5242(a5)	; -> sub_1FE5F2
+	jsr	$5242(a5)	; -> Snd_StopAll
 	unlk	a6
 	rts

@@ -14,10 +14,10 @@ sub_086C3E:
 	move.l	a0,$92(a1)
 	moveq	#$30,d0
 	move.l	d0,-(a7)
-	jsr	$5222(a5)	; -> sub_1FE5A2
+	jsr	$5222(a5)	; -> Snd_Stop
 	moveq	#$30,d0
 	move.l	d0,-(a7)
-	jsr	$521A(a5)	; -> sub_1FE584
+	jsr	$521A(a5)	; -> Snd_Play
 	moveq	#$0,d0
 	move.l	d0,-(a7)
 	move.w	$12(a4),d1

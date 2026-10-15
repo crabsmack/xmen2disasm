@@ -26,9 +26,9 @@ loc_12316A:
 	move.l	a4,-(a7)
 	jsr	$4E42(a5)	; -> sub_1F626A
 	pea.l	($F2).w
-	jsr	$5222(a5)	; -> sub_1FE5A2
+	jsr	$5222(a5)	; -> Snd_Stop
 	pea.l	($F2).w
-	jsr	$521A(a5)	; -> sub_1FE584
+	jsr	$521A(a5)	; -> Snd_Play
 	move.l	a4,-(a7)
 	jsr	$4E7A(a5)	; -> sub_1F6530
 	lea.l	$14(a7),a7

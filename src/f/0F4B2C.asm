@@ -39,13 +39,13 @@ sub_0F4B2C:
 	and.w	d0,d1
 	lea.l	$40(a7),a7
 	beq.s	loc_0F4BB0
-	jsr	$5242(a5)	; -> sub_1FE5F2
+	jsr	$5242(a5)	; -> Snd_StopAll
 	moveq	#$60,d0
 	move.l	d0,-(a7)
-	jsr	$5222(a5)	; -> sub_1FE5A2
+	jsr	$5222(a5)	; -> Snd_Stop
 	moveq	#$60,d0
 	move.l	d0,-(a7)
-	jsr	$521A(a5)	; -> sub_1FE584
+	jsr	$521A(a5)	; -> Snd_Play
 	addq.w	#$8,a7
 loc_0F4BB0:
 	ori.w	#$8000,-$3C5E(a5)

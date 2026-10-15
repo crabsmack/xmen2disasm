@@ -58,7 +58,7 @@ loc_1FD4B0:
 	move.l	d2,-(a7)
 	move.l	d0,-(a7)
 	move.l	d3,-(a7)
-	jsr	$51D2(a5)	; -> sub_1FE0EC
+	jsr	$51D2(a5)	; -> VDP_DmaToVram
 	lea.l	$C(a7),a7
 	move.w	-$C1A(a5),d7
 	bne.s	loc_1FD496
@@ -74,7 +74,7 @@ loc_1FD4DA:
 	move.l	d2,-(a7)
 	move.l	d0,-(a7)
 	move.l	d3,-(a7)
-	jsr	$51D2(a5)	; -> sub_1FE0EC
+	jsr	$51D2(a5)	; -> VDP_DmaToVram
 	lea.l	$C(a7),a7
 	bra.w	loc_1FC884
 loc_1FD500:

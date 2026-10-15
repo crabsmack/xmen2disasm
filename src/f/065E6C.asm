@@ -245,10 +245,10 @@ loc_066126:
 loc_06612E:
 	moveq	#$A,d0
 	move.l	d0,-(a7)
-	jsr	$5222(a5)	; -> sub_1FE5A2
+	jsr	$5222(a5)	; -> Snd_Stop
 	moveq	#$A,d0
 	move.l	d0,-(a7)
-	jsr	$521A(a5)	; -> sub_1FE584
+	jsr	$521A(a5)	; -> Snd_Play
 	jsr	sub_065494(pc)
 	clr.w	d7
 	lea.l	-$3960(a5),a4

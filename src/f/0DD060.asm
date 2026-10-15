@@ -39,7 +39,7 @@ loc_0DD0BC:
 	subq.w	#$1,$9A(a4)
 	bne.s	loc_0DD0DE
 	pea.l	($D5).w
-	jsr	$5222(a5)	; -> sub_1FE5A2
+	jsr	$5222(a5)	; -> Snd_Stop
 	addq.w	#$4,a7
 	clr.w	$6C(a4)
 	lea.l	sub_0DCFF0(pc),a0

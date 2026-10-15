@@ -20,7 +20,7 @@ sub_01C94A:
 	move.l	d1,d7
 	lsl.l	#$7,d7
 	pea.l	($DB).w
-	jsr	$5222(a5)	; -> sub_1FE5A2
+	jsr	$5222(a5)	; -> Snd_Stop
 	moveq	#$0,d0
 	move.l	d0,-(a7)
 	move.l	d7,-(a7)

@@ -17,7 +17,7 @@ sub_1F67C8:
 	move.w	-$7BC(a5),d0
 	ext.l	d0
 	move.l	d0,-(a7)
-	jsr	$50E2(a5)	; -> sub_1FD77E
+	jsr	$50E2(a5)	; -> Pal_ApplyFade
 	move.b	#$1,-$3A02(a5)
 	movem.l	-$8(a6),d3/d7
 	unlk	a6

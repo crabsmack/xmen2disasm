@@ -22,7 +22,7 @@ sub_09B45E:
 loc_09B494:
 	moveq	#$13,d0
 	move.l	d0,-(a7)
-	jsr	$5252(a5)	; -> sub_1FE644
+	jsr	$5252(a5)	; -> Snd_ReadDriverByte
 	tst.w	d0
 	addq.w	#$4,a7
 	beq.s	loc_09B4B4

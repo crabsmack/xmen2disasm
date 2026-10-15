@@ -107,7 +107,7 @@ loc_1176BE:
 	jsr	(a1)
 	moveq	#$39,d0
 	move.l	d0,-(a7)
-	jsr	$521A(a5)	; -> sub_1FE584
+	jsr	$521A(a5)	; -> Snd_Play
 	lea.l	$10(a7),a7
 	bra.s	loc_1177A0
 loc_117722:

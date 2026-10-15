@@ -197,9 +197,9 @@ loc_05AAF8:
 	move.l	d0,-(a7)
 	jsr	$CCA(a5)	; -> sub_05B322
 	pea.l	($E3).w
-	jsr	$5222(a5)	; -> sub_1FE5A2
+	jsr	$5222(a5)	; -> Snd_Stop
 	pea.l	($E3).w
-	jsr	$521A(a5)	; -> sub_1FE584
+	jsr	$521A(a5)	; -> Snd_Play
 	lea.l	$18(a7),a7
 loc_05AB3C:
 	move.l	d6,d0

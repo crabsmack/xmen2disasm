@@ -36,9 +36,9 @@ loc_0968D4:
 	beq.w	loc_09697C
 	move.l	a3,-$3B30(a5)
 	pea.l	($F2).w
-	jsr	$5222(a5)	; -> sub_1FE5A2
+	jsr	$5222(a5)	; -> Snd_Stop
 	pea.l	($F2).w
-	jsr	$521A(a5)	; -> sub_1FE584
+	jsr	$521A(a5)	; -> Snd_Play
 	ori.w	#$2,$6(a4)
 	pea.l	-$1652(a5)
 	move.l	$84(a4),-(a7)

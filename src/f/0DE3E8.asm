@@ -19,9 +19,9 @@ sub_0DE3E8:
 	bra.s	loc_0DE474
 loc_0DE414:
 	pea.l	($CB).w
-	jsr	$5222(a5)	; -> sub_1FE5A2
+	jsr	$5222(a5)	; -> Snd_Stop
 	pea.l	($CB).w
-	jsr	$521A(a5)	; -> sub_1FE584
+	jsr	$521A(a5)	; -> Snd_Play
 	addq.w	#$8,a7
 	clr.w	$6C(a4)
 	lea.l	sub_0DE240(pc),a0
@@ -31,9 +31,9 @@ loc_0DE414:
 	bra.s	loc_0DE486
 loc_0DE43A:
 	pea.l	($CB).w
-	jsr	$5222(a5)	; -> sub_1FE5A2
+	jsr	$5222(a5)	; -> Snd_Stop
 	pea.l	($CB).w
-	jsr	$521A(a5)	; -> sub_1FE584
+	jsr	$521A(a5)	; -> Snd_Play
 	addq.w	#$8,a7
 	clr.w	$6C(a4)
 	lea.l	sub_0DE274(pc),a0

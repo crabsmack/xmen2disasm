@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_1FD61E
+; Pad_ReadPort - read a 3/6-button joypad on port d0 (0 or 1) with the TH-toggle protocol
+; In:  d0 = word: port (0 = $A10003, 1 = $A10005); >1 returns at once
+; Out: d0 = buttons active-high (bits 0-3 Up/Down/Left/Right, 4-7 B/C/A/Start, 8-11 Z/Y/X/Mode, $4000 = 6-button pad), $8000 = no pad
+; Evidence: holds the Z80 bus, toggles TH ($40) four times, checks the 6-button signature; only caller Pad_ReadBoth in the V-int
 ; ---------------------------------------------------------------------------
-sub_1FD61E:
+Pad_ReadPort:
 	cmpi.w	#$1,d0
 	ble.s	loc_1FD626
 	rts

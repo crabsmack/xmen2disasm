@@ -73,10 +73,10 @@ loc_133766:
 	jsr	(a1)
 	moveq	#$38,d0
 	move.l	d0,-(a7)
-	jsr	$5222(a5)	; -> sub_1FE5A2
+	jsr	$5222(a5)	; -> Snd_Stop
 	moveq	#$38,d0
 	move.l	d0,-(a7)
-	jsr	$521A(a5)	; -> sub_1FE584
+	jsr	$521A(a5)	; -> Snd_Play
 	lea.l	$18(a7),a7
 loc_1337B0:
 	movem.l	-$10(a6),d3/d6-d7/a4

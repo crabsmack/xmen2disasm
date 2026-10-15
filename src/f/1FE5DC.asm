@@ -1,10 +1,13 @@
 ; ---------------------------------------------------------------------------
-; sub_1FE5DC
+; Snd_Resume - resume sound after Snd_Pause (driver command $0D) unless muted
+; In:  none
+; Out: none
+; Evidence: sent by sub_15CAA4 after the pause loop ends
 ; ---------------------------------------------------------------------------
-sub_1FE5DC:
+Snd_Resume:
 	jsr	Z80_BusAcquire(pc)
 	tst.b	-$18AC(a5)
 	bne.w	Z80_BusRelease
 	moveq	#$D,d0
-	jsr	sub_1FE4FE(pc)
+	jsr	Snd_PutCmd(pc)
 	jmp	Z80_BusRelease(pc)

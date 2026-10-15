@@ -38,9 +38,9 @@ loc_0BC756:
 	move.l	a4,-(a7)
 	jsr	$339A(a5)	; -> sub_11F3E2
 	pea.l	($EF).w
-	jsr	$5222(a5)	; -> sub_1FE5A2
+	jsr	$5222(a5)	; -> Snd_Stop
 	pea.l	($EF).w
-	jsr	$521A(a5)	; -> sub_1FE584
+	jsr	$521A(a5)	; -> Snd_Play
 	lea.l	$1C(a7),a7
 	clr.w	$6C(a4)
 	lea.l	$3352(a5),a0

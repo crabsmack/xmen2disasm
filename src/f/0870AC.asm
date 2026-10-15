@@ -7,9 +7,9 @@ sub_0870AC:
 	movea.l	$8(a6),a4
 	ori.w	#$2,-$3B0C(a5)
 	pea.l	($F5).w
-	jsr	$5222(a5)	; -> sub_1FE5A2
+	jsr	$5222(a5)	; -> Snd_Stop
 	pea.l	($F5).w
-	jsr	$521A(a5)	; -> sub_1FE584
+	jsr	$521A(a5)	; -> Snd_Play
 	addq.w	#$8,a7
 	move.w	#$F,$6C(a4)
 	lea.l	sub_0870EA(pc),a0

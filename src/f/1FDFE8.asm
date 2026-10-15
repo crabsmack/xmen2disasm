@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_1FDFE8
+; VDP_ClearCram - zero all 64 palette entries in CRAM
+; In:  none
+; Out: none
+; Evidence: command $C0000000 (CRAM write 0), 64 zero words; called once by Sys_InitHardware (TAS frame 4)
 ; ---------------------------------------------------------------------------
-sub_1FDFE8:
+VDP_ClearCram:
 	move.l	#$C0000000,($C00004).l
 	moveq	#$0,d1
 	moveq	#$3F,d0

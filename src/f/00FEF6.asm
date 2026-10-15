@@ -58,7 +58,7 @@ loc_00FF5E:
 	ext.l	d7
 	move.l	d7,-(a7)
 	move.l	-$C9E(a5),-(a7)
-	jsr	$51DA(a5)	; -> sub_1FE17A
+	jsr	$51DA(a5)	; -> VDP_QueueDma
 	lea.l	$C(a7),a7
 loc_00FFA2:
 	movem.l	-$10(a6),d6-d7/a3-a4

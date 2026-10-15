@@ -83,10 +83,10 @@ loc_13DFFA:
 	bgt.s	loc_13E068
 	moveq	#$38,d0
 	move.l	d0,-(a7)
-	jsr	$5222(a5)	; -> sub_1FE5A2
+	jsr	$5222(a5)	; -> Snd_Stop
 	moveq	#$38,d0
 	move.l	d0,-(a7)
-	jsr	$521A(a5)	; -> sub_1FE584
+	jsr	$521A(a5)	; -> Snd_Play
 	move.b	#$6,$D(a3)
 	addq.w	#$8,a7
 loc_13E068:

@@ -44,13 +44,13 @@ loc_00FA94:
 	clr.b	-$18AC(a5)
 	moveq	#$0,d0
 	move.l	d0,-(a7)
-	jsr	$5222(a5)	; -> sub_1FE5A2
+	jsr	$5222(a5)	; -> Snd_Stop
 	moveq	#$0,d0
 	move.l	d0,-(a7)
-	jsr	$521A(a5)	; -> sub_1FE584
+	jsr	$521A(a5)	; -> Snd_Play
 	lea.l	$C2(a5),a0
 	move.l	$2(a0),-(a7)
-	jsr	$5102(a5)	; -> sub_1FDAEC
+	jsr	$5102(a5)	; -> Scroll_SetParallax
 	jsr	sub_00F60E(pc)
 	lea.l	$4212(a5),a0
 	movea.l	-$35B6(a5),a1

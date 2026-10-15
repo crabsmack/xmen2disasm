@@ -111,10 +111,10 @@ loc_114E02:
 	move.w	d0,$94(a4)
 	moveq	#$36,d0
 	move.l	d0,-(a7)
-	jsr	$5222(a5)	; -> sub_1FE5A2
+	jsr	$5222(a5)	; -> Snd_Stop
 	moveq	#$36,d0
 	move.l	d0,-(a7)
-	jsr	$521A(a5)	; -> sub_1FE584
+	jsr	$521A(a5)	; -> Snd_Play
 	movea.l	$8C(a4),a0
 	moveq	#$0,d0
 	move.b	$7(a0),d0

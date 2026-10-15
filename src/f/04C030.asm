@@ -23,9 +23,9 @@ loc_04C04E:
 	move.l	a4,-(a7)
 	jsr	$4E42(a5)	; -> sub_1F626A
 	pea.l	($E8).w
-	jsr	$5222(a5)	; -> sub_1FE5A2
+	jsr	$5222(a5)	; -> Snd_Stop
 	pea.l	($E8).w
-	jsr	$521A(a5)	; -> sub_1FE584
+	jsr	$521A(a5)	; -> Snd_Play
 	moveq	#$0,d0
 	move.b	$9F(a4),d0
 	move.l	d0,-(a7)

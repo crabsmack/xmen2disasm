@@ -5,11 +5,11 @@ sub_096330:
 	link.w	a6,#$0
 	move.l	a4,-(a7)
 	movea.l	$8(a6),a4
-	jsr	$5242(a5)	; -> sub_1FE5F2
+	jsr	$5242(a5)	; -> Snd_StopAll
 	pea.l	($8F).w
-	jsr	$5222(a5)	; -> sub_1FE5A2
+	jsr	$5222(a5)	; -> Snd_Stop
 	pea.l	($8F).w
-	jsr	$521A(a5)	; -> sub_1FE584
+	jsr	$521A(a5)	; -> Snd_Play
 	tst.l	$98(a4)
 	addq.w	#$8,a7
 	bne.s	loc_096362

@@ -27,10 +27,10 @@ sub_197A3C:
 	addq.w	#$1,d7
 	moveq	#$39,d0
 	move.l	d0,-(a7)
-	jsr	$5222(a5)	; -> sub_1FE5A2
+	jsr	$5222(a5)	; -> Snd_Stop
 	moveq	#$39,d0
 	move.l	d0,-(a7)
-	jsr	$521A(a5)	; -> sub_1FE584
+	jsr	$521A(a5)	; -> Snd_Play
 	move.w	d7,d0
 	addq.w	#$1,d7
 	ext.l	d7

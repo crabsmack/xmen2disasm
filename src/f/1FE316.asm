@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_1FE316
+; VDP_DmaPalette - DMA a 64-colour palette (128 bytes) to CRAM, rewriting the first word by hand afterwards
+; In:  4(a7) after movem = pointer to 64 words (sp+$C)
+; Out: none
+; Evidence: length $40 words, command $C0000080 (CRAM write, DMA), then the first word is written again through the data port; callers pass -$3A00(a5) or -$3980(a5) (Pal_Update)
 ; ---------------------------------------------------------------------------
-sub_1FE316:
+VDP_DmaPalette:
 	movem.l	d7/a3,-(a7)
 	movea.l	$C(a7),a3
 	move.w	#$C000,-$7B6(a5)

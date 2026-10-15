@@ -5,6 +5,6 @@ sub_0C0E16:
 	link.w	a6,#$0
 	lea.l	$22F2(a5),a0
 	move.l	$2(a0),-(a7)
-	jsr	$5102(a5)	; -> sub_1FDAEC
+	jsr	$5102(a5)	; -> Scroll_SetParallax
 	unlk	a6
 	rts

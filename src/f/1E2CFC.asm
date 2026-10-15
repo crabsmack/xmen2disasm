@@ -57,16 +57,16 @@ loc_1E2D9E:
 	and.l	$90(a4),d0
 	beq.s	loc_1E2DBE
 	pea.l	($A2).w
-	jsr	$5222(a5)	; -> sub_1FE5A2
+	jsr	$5222(a5)	; -> Snd_Stop
 	pea.l	($A2).w
-	jsr	$521A(a5)	; -> sub_1FE584
+	jsr	$521A(a5)	; -> Snd_Play
 	addq.w	#$8,a7
 	bra.s	loc_1E2DD0
 loc_1E2DBE:
 	pea.l	($A1).w
-	jsr	$5222(a5)	; -> sub_1FE5A2
+	jsr	$5222(a5)	; -> Snd_Stop
 	pea.l	($A1).w
-	jsr	$521A(a5)	; -> sub_1FE584
+	jsr	$521A(a5)	; -> Snd_Play
 	addq.w	#$8,a7
 loc_1E2DD0:
 	cmpi.w	#$701,$68(a4)

@@ -14,7 +14,7 @@ sub_077256:
 	pea.l	($E0).w
 	move.l	d0,-(a7)
 	move.l	a0,-(a7)
-	jsr	$51D2(a5)	; -> sub_1FE0EC
+	jsr	$51D2(a5)	; -> VDP_DmaToVram
 	lea.l	$C(a7),a7
 	lea.l	$10A2(a5),a0
 	movea.l	$2(a0),a0
@@ -24,7 +24,7 @@ sub_077256:
 	pea.l	($600).w
 	move.l	d0,-(a7)
 	move.l	a0,-(a7)
-	jsr	$51D2(a5)	; -> sub_1FE0EC
+	jsr	$51D2(a5)	; -> VDP_DmaToVram
 	lea.l	$C(a7),a7
 	move.w	-$3B10(a5),d0
 	lsl.w	#$5,d0
@@ -39,7 +39,7 @@ loc_0772B4:
 	pea.l	($380).w
 	move.l	d0,-(a7)
 	move.l	a0,-(a7)
-	jsr	$51D2(a5)	; -> sub_1FE0EC
+	jsr	$51D2(a5)	; -> VDP_DmaToVram
 	lea.l	$C(a7),a7
 	lea.l	$10A2(a5),a0
 	movea.l	$2(a0),a0
@@ -49,7 +49,7 @@ loc_0772B4:
 	pea.l	($600).w
 	move.l	d0,-(a7)
 	move.l	a0,-(a7)
-	jsr	$51D2(a5)	; -> sub_1FE0EC
+	jsr	$51D2(a5)	; -> VDP_DmaToVram
 	lea.l	$C(a7),a7
 	move.w	-$3B10(a5),d0
 	lsl.w	#$5,d0

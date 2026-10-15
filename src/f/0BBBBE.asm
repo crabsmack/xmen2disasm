@@ -59,9 +59,9 @@ loc_0BBC70:
 loc_0BBC76:
 	move.w	d0,$16(a4)
 	pea.l	($EA).w
-	jsr	$5222(a5)	; -> sub_1FE5A2
+	jsr	$5222(a5)	; -> Snd_Stop
 	pea.l	($EA).w
-	jsr	$521A(a5)	; -> sub_1FE584
+	jsr	$521A(a5)	; -> Snd_Play
 	moveq	#$10,d0
 	and.b	$2E(a4),d0
 	beq.s	loc_0BBC96

@@ -27,12 +27,12 @@ sub_1F30DC:
 	moveq	#$0,d0
 	move.b	$2E(a0),d0
 	move.l	d0,-(a7)
-	jsr	$5222(a5)	; -> sub_1FE5A2
+	jsr	$5222(a5)	; -> Snd_Stop
 	movea.l	$8C(a4),a0
 	moveq	#$0,d0
 	move.b	$2E(a0),d0
 	move.l	d0,-(a7)
-	jsr	$521A(a5)	; -> sub_1FE584
+	jsr	$521A(a5)	; -> Snd_Play
 	addq.w	#$8,a7
 	bra.s	loc_1F3178
 loc_1F3152:
@@ -41,13 +41,13 @@ loc_1F3152:
 	ext.w	d0
 	ext.l	d0
 	move.l	d0,-(a7)
-	jsr	$5222(a5)	; -> sub_1FE5A2
+	jsr	$5222(a5)	; -> Snd_Stop
 	movea.l	$8C(a4),a0
 	move.b	$9(a0),d0
 	ext.w	d0
 	ext.l	d0
 	move.l	d0,-(a7)
-	jsr	$521A(a5)	; -> sub_1FE584
+	jsr	$521A(a5)	; -> Snd_Play
 	addq.w	#$8,a7
 loc_1F3178:
 	move.b	#$1,-$3892(a5)

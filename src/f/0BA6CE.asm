@@ -38,9 +38,9 @@ sub_0BA6CE:
 loc_0BA750:
 	ori.w	#$40,$6(a4)
 	pea.l	($D8).w
-	jsr	$5222(a5)	; -> sub_1FE5A2
+	jsr	$5222(a5)	; -> Snd_Stop
 	pea.l	($D8).w
-	jsr	$521A(a5)	; -> sub_1FE584
+	jsr	$521A(a5)	; -> Snd_Play
 	move.w	#$14,$AC(a4)
 	addq.w	#$8,a7
 loc_0BA76E:

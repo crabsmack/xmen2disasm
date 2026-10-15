@@ -39,13 +39,13 @@ loc_15CAFE:
 	move.w	#$FF7F,d0
 	and.w	-$3A2E(a5),d0
 	move.w	d0,-$3A2E(a5)
-	jsr	$5232(a5)	; -> sub_1FE5C6
+	jsr	$5232(a5)	; -> Snd_Pause
 	jsr	sub_15C306(pc)
 	jsr	sub_15C32E(pc)
 	jsr	sub_15C39A(pc)
 	jsr	sub_15CA6C(pc)
 	jsr	sub_15C41C(pc)
-	jsr	$523A(a5)	; -> sub_1FE5DC
+	jsr	$523A(a5)	; -> Snd_Resume
 loc_15CB30:
 	unlk	a6
 	rts

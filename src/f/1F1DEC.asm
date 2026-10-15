@@ -45,9 +45,9 @@ loc_1F1E3C:
 	move.w	$10(a0),$18(a4)
 	andi.l	#$FFFFFFF9,$90(a4)
 	pea.l	($9E).w
-	jsr	$5222(a5)	; -> sub_1FE5A2
+	jsr	$5222(a5)	; -> Snd_Stop
 	pea.l	($9E).w
-	jsr	$521A(a5)	; -> sub_1FE584
+	jsr	$521A(a5)	; -> Snd_Play
 	addq.w	#$8,a7
 	bra.w	loc_1F1FE4
 loc_1F1E8C:
@@ -99,13 +99,13 @@ loc_1F1EDE:
 	ext.w	d0
 	ext.l	d0
 	move.l	d0,-(a7)
-	jsr	$5222(a5)	; -> sub_1FE5A2
+	jsr	$5222(a5)	; -> Snd_Stop
 	movea.l	$8C(a4),a0
 	move.b	$8(a0),d0
 	ext.w	d0
 	ext.l	d0
 	move.l	d0,-(a7)
-	jsr	$521A(a5)	; -> sub_1FE584
+	jsr	$521A(a5)	; -> Snd_Play
 	move.b	d6,d0
 	subq.b	#$5,d0
 	lea.l	$C(a7),a7

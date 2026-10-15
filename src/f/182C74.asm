@@ -81,9 +81,9 @@ loc_182D50:
 	and.w	d0,d1
 	beq.s	loc_182D84
 	pea.l	($9E).w
-	jsr	$5222(a5)	; -> sub_1FE5A2
+	jsr	$5222(a5)	; -> Snd_Stop
 	pea.l	($9E).w
-	jsr	$521A(a5)	; -> sub_1FE584
+	jsr	$521A(a5)	; -> Snd_Play
 	addq.w	#$8,a7
 	move.w	#$6,$6C(a4)
 	lea.l	sub_182BDE(pc),a0
@@ -99,9 +99,9 @@ loc_182D84:
 	movea.l	$56(a0),a1
 	jsr	(a1)
 	pea.l	($81).w
-	jsr	$5222(a5)	; -> sub_1FE5A2
+	jsr	$5222(a5)	; -> Snd_Stop
 	pea.l	($81).w
-	jsr	$521A(a5)	; -> sub_1FE584
+	jsr	$521A(a5)	; -> Snd_Play
 	lea.l	$10(a7),a7
 	clr.w	$6C(a4)
 	lea.l	sub_182DC2(pc),a0

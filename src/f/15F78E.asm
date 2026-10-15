@@ -20,10 +20,10 @@ loc_15F7A6:
 	move.b	$7(a0),d7
 	ext.l	d7
 	move.l	d7,-(a7)
-	jsr	$5222(a5)	; -> sub_1FE5A2
+	jsr	$5222(a5)	; -> Snd_Stop
 	ext.l	d7
 	move.l	d7,-(a7)
-	jsr	$521A(a5)	; -> sub_1FE584
+	jsr	$521A(a5)	; -> Snd_Play
 	move.l	a4,-(a7)
 	jsr	sub_15F740(pc)
 	tst.l	$44(a4)

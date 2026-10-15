@@ -85,9 +85,9 @@ loc_04E17E:
 loc_04E1A2:
 	andi.w	#$FFFE,$92(a4)
 	pea.l	($E9).w
-	jsr	$5222(a5)	; -> sub_1FE5A2
+	jsr	$5222(a5)	; -> Snd_Stop
 	pea.l	($E9).w
-	jsr	$521A(a5)	; -> sub_1FE584
+	jsr	$521A(a5)	; -> Snd_Play
 	tst.w	$96(a4)
 	addq.w	#$8,a7
 	beq.s	loc_04E22E

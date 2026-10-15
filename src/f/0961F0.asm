@@ -20,9 +20,9 @@ sub_0961F0:
 loc_096220:
 	clr.b	$96(a3)
 	pea.l	($F2).w
-	jsr	$5222(a5)	; -> sub_1FE5A2
+	jsr	$5222(a5)	; -> Snd_Stop
 	pea.l	($F2).w
-	jsr	$521A(a5)	; -> sub_1FE584
+	jsr	$521A(a5)	; -> Snd_Play
 	lea.l	$32F2(a5),a0
 	move.l	$2(a0),-(a7)
 	move.l	a3,-(a7)

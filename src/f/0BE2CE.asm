@@ -6,9 +6,9 @@ sub_0BE2CE:
 	move.l	a4,-(a7)
 	movea.l	$8(a6),a4
 	pea.l	($AC).w
-	jsr	$5222(a5)	; -> sub_1FE5A2
+	jsr	$5222(a5)	; -> Snd_Stop
 	pea.l	($AC).w
-	jsr	$521A(a5)	; -> sub_1FE584
+	jsr	$521A(a5)	; -> Snd_Play
 	addq.b	#$1,$BE(a4)
 	move.b	$BE(a4),d0
 	cmpi.b	#$4,d0

@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_1FD720	[jt 2582]
+; VDP_ResetDmaQueue - empty the V-blank DMA queue
+; In:  none
+; Out: none
+; Evidence: clears word -$7B4(a5) (queue count used by VDP_QueueDma/VDP_FlushDmaQueue); called by Sys_InitHardware
 ; ---------------------------------------------------------------------------
-sub_1FD720:
+VDP_ResetDmaQueue:
 	link.w	a6,#$0
 	clr.w	-$7B4(a5)
 	unlk	a6

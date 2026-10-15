@@ -192,11 +192,11 @@ loc_1CF986:
 	lea.l	$60(a7),a7
 loc_1CFA1A:
 	pea.l	($9F).w
-	jsr	$5222(a5)	; -> sub_1FE5A2
+	jsr	$5222(a5)	; -> Snd_Stop
 	pea.l	($A0).w
-	jsr	$5222(a5)	; -> sub_1FE5A2
+	jsr	$5222(a5)	; -> Snd_Stop
 	pea.l	($A0).w
-	jsr	$521A(a5)	; -> sub_1FE584
+	jsr	$521A(a5)	; -> Snd_Play
 	andi.l	#$FFFFF7FF,$90(a4)
 	lea.l	$C(a7),a7
 	movem.l	-$1E(a6),d4-d7/a3-a4

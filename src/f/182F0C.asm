@@ -58,11 +58,11 @@ loc_182FBE:
 	move.w	d0,-$3A30(a5)
 loc_182FCC:
 	pea.l	($96).w
-	jsr	$5222(a5)	; -> sub_1FE5A2
+	jsr	$5222(a5)	; -> Snd_Stop
 	pea.l	($9A).w
-	jsr	$5222(a5)	; -> sub_1FE5A2
+	jsr	$5222(a5)	; -> Snd_Stop
 	pea.l	($9A).w
-	jsr	$521A(a5)	; -> sub_1FE584
+	jsr	$521A(a5)	; -> Snd_Play
 	lea.l	$42A2(a5),a0
 	move.l	$2(a0),-$38A4(a5)
 	lea.l	$C(a7),a7

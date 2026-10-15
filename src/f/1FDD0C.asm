@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_1FDD0C	[irq hook $214]
+; Irq_HBlank - H-int handler (hook $214): count the interrupt and disable further H-ints
+; In:  none
+; Out: none
+; Evidence: word -$BC8(a5) += 1; writes VDP reg 0 = $04 ($8004, H-int off)
 ; ---------------------------------------------------------------------------
-sub_1FDD0C:
+Irq_HBlank:
 	link.w	a6,#$0
 	move.w	-$BC8(a5),d0
 	addq.w	#$1,-$BC8(a5)

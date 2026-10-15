@@ -23,10 +23,10 @@ loc_15C5F2:
 	beq.s	loc_15C63C
 	moveq	#$1B,d0
 	move.l	d0,-(a7)
-	jsr	$5222(a5)	; -> sub_1FE5A2
+	jsr	$5222(a5)	; -> Snd_Stop
 	moveq	#$1B,d0
 	move.l	d0,-(a7)
-	jsr	$521A(a5)	; -> sub_1FE584
+	jsr	$521A(a5)	; -> Snd_Play
 	tst.w	-$16F0(a5)
 	addq.w	#$8,a7
 	ble.s	loc_15C62A
@@ -118,10 +118,10 @@ loc_15C740:
 	beq.s	loc_15C7A0
 	moveq	#$37,d0
 	move.l	d0,-(a7)
-	jsr	$5222(a5)	; -> sub_1FE5A2
+	jsr	$5222(a5)	; -> Snd_Stop
 	moveq	#$37,d0
 	move.l	d0,-(a7)
-	jsr	$521A(a5)	; -> sub_1FE584
+	jsr	$521A(a5)	; -> Snd_Play
 	move.w	-$1754(a5),d0
 	ext.l	d0
 	move.w	#$C000,d1
@@ -162,10 +162,10 @@ loc_15C7CA:
 	clr.w	d7
 	moveq	#$26,d0
 	move.l	d0,-(a7)
-	jsr	$5222(a5)	; -> sub_1FE5A2
+	jsr	$5222(a5)	; -> Snd_Stop
 	moveq	#$26,d0
 	move.l	d0,-(a7)
-	jsr	$521A(a5)	; -> sub_1FE584
+	jsr	$521A(a5)	; -> Snd_Play
 	tst.w	d7
 	addq.w	#$8,a7
 	bne.s	loc_15C80C
@@ -261,10 +261,10 @@ loc_15C8D8:
 	clr.w	d7
 	moveq	#$26,d0
 	move.l	d0,-(a7)
-	jsr	$5222(a5)	; -> sub_1FE5A2
+	jsr	$5222(a5)	; -> Snd_Stop
 	moveq	#$26,d0
 	move.l	d0,-(a7)
-	jsr	$521A(a5)	; -> sub_1FE584
+	jsr	$521A(a5)	; -> Snd_Play
 	tst.w	d7
 	addq.w	#$8,a7
 	bne.s	loc_15C918
@@ -353,10 +353,10 @@ loc_15C9D6:
 	beq.s	loc_15CA12
 	moveq	#$24,d0
 	move.l	d0,-(a7)
-	jsr	$5222(a5)	; -> sub_1FE5A2
+	jsr	$5222(a5)	; -> Snd_Stop
 	moveq	#$24,d0
 	move.l	d0,-(a7)
-	jsr	$521A(a5)	; -> sub_1FE584
+	jsr	$521A(a5)	; -> Snd_Play
 	tst.w	-$16F0(a5)
 	addq.w	#$8,a7
 	ble.s	loc_15CA04

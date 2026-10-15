@@ -26,9 +26,9 @@ sub_0EBC7C:
 	beq.s	loc_0EBCE2
 	move.w	$E(a6),$16(a4)
 	pea.l	($CD).w
-	jsr	$5222(a5)	; -> sub_1FE5A2
+	jsr	$5222(a5)	; -> Snd_Stop
 	pea.l	($CD).w
-	jsr	$521A(a5)	; -> sub_1FE584
+	jsr	$521A(a5)	; -> Snd_Play
 	clr.w	-$3B02(a5)
 	addq.w	#$8,a7
 loc_0EBCE2:

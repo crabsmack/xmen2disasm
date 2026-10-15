@@ -10,9 +10,9 @@ sub_087294:
 	move.l	a4,-(a7)
 	jsr	$4E42(a5)	; -> sub_1F626A
 	pea.l	($91).w
-	jsr	$5222(a5)	; -> sub_1FE5A2
+	jsr	$5222(a5)	; -> Snd_Stop
 	pea.l	($91).w
-	jsr	$521A(a5)	; -> sub_1FE584
+	jsr	$521A(a5)	; -> Snd_Play
 	tst.l	$A2(a4)
 	lea.l	$10(a7),a7
 	beq.s	loc_0872CE

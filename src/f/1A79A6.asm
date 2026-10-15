@@ -34,11 +34,11 @@ sub_1A79A6:
 	and.l	$90(a4),d0
 	beq.s	loc_1A7A7E
 	pea.l	($84).w
-	jsr	$5222(a5)	; -> sub_1FE5A2
+	jsr	$5222(a5)	; -> Snd_Stop
 	pea.l	($87).w
-	jsr	$5222(a5)	; -> sub_1FE5A2
+	jsr	$5222(a5)	; -> Snd_Stop
 	pea.l	($87).w
-	jsr	$521A(a5)	; -> sub_1FE584
+	jsr	$521A(a5)	; -> Snd_Play
 	move.w	#$F900,$18(a4)
 	movea.l	$8C(a4),a0
 	move.w	$E(a0),$20(a4)

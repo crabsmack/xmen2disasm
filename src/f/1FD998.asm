@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_1FD998	[jt 2586]
+; Pal_StartFade - start a palette fade from a given level (in from 0 upward, or out from a non-zero level downward)
+; In:  8(a6) = word: start level (0 = fade in, else fade out)   $C(a6) = word: palette line or -1 for all   $10(a6) = pointer: fade table
+; Out: none
+; Evidence: timer -$7C4 = 0, delay -$3A04 = 4, level -$7BC, direction -$7BA = (level == 0), line -$7BE, table -$7C2; applies the first step (Pal_ApplyFade) and sets active byte -$3A02(a5); Pal_Update advances it
 ; ---------------------------------------------------------------------------
-sub_1FD998:
+Pal_StartFade:
 	link.w	a6,#$0
 	move.l	d7,-(a7)
 	move.w	$A(a6),d7
@@ -19,7 +22,7 @@ loc_1FD9BE:
 	move.w	-$7BC(a5),d0
 	ext.l	d0
 	move.l	d0,-(a7)
-	jsr	sub_1FD77E(pc)
+	jsr	Pal_ApplyFade(pc)
 	move.b	#$1,-$3A02(a5)
 	move.l	-$4(a6),d7
 	unlk	a6

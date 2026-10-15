@@ -64,9 +64,9 @@ loc_026996:
 	beq.s	loc_0269C4
 	movea.l	a3,a4
 	pea.l	($DE).w
-	jsr	$5222(a5)	; -> sub_1FE5A2
+	jsr	$5222(a5)	; -> Snd_Stop
 	pea.l	($DE).w
-	jsr	$521A(a5)	; -> sub_1FE584
+	jsr	$521A(a5)	; -> Snd_Play
 	move.l	a4,-(a7)
 	movea.l	(a4),a0
 	movea.l	$6E(a0),a1

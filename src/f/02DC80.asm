@@ -5,8 +5,8 @@ sub_02DC80:
 	link.w	a6,#$0
 	move.w	#$E,-$3CBA(a5)
 	pea.l	($E1).w
-	jsr	$5222(a5)	; -> sub_1FE5A2
+	jsr	$5222(a5)	; -> Snd_Stop
 	pea.l	($E1).w
-	jsr	$521A(a5)	; -> sub_1FE584
+	jsr	$521A(a5)	; -> Snd_Play
 	unlk	a6
 	rts

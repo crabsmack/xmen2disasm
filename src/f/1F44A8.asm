@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; loc_1F44A8
+; Boot_RegionCheck - compare the console region with the header region codes; on mismatch draw a lockout message and hang
+; In:  none
+; Out: jumps to Boot_StartApp when the region matches
+; Evidence: reads $A10001 bits 6-7, maps through the byte table at $1F45E4, searches the header region string at $1F0; else sets up the VDP, expands a 1bpp font and prints strings with Boot_DrawText, then loops forever
 ; ---------------------------------------------------------------------------
-loc_1F44A8:
+Boot_RegionCheck:
 	tst.w	($C00004).l
 	clr.l	d0
 	move.b	($A10001).l,d0
@@ -15,7 +18,7 @@ loc_1F44A8:
 	move.w	#$F,d1
 loc_1F44D4:
 	cmp.b	(a0),d0
-	beq.w	loc_1F483E
+	beq.w	Boot_StartApp
 	addq.l	#$1,a0
 	dbra	d1,loc_1F44D4
 	lea.l	($C00000).l,a4
@@ -50,7 +53,7 @@ loc_1F4536:
 	move.b	#$8,d1
 	lea.l	$1F45FC(pc),a0
 	move.b	(a0)+,d0
-	bsr.w	sub_1F45AE
+	bsr.w	Boot_DrawText
 	lea.l	($1F0).l,a1
 loc_1F4558:
 	cmpi.b	#$20,(a1)
@@ -69,13 +72,13 @@ loc_1F4562:
 	lea.l	$1F4619(pc),a0
 	move.b	(a0)+,d0
 	addq.w	#$1,d1
-	bsr.w	sub_1F45AE
+	bsr.w	Boot_DrawText
 loc_1F4588:
 	lea.l	$1F45E4(pc),a0
 	adda.l	(a2)+,a0
 	move.b	(a0)+,d0
 	addq.w	#$1,d1
-	bsr.w	sub_1F45AE
+	bsr.w	Boot_DrawText
 	bra.s	loc_1F459C
 loc_1F4598:
 	addq.l	#$4,a2
@@ -87,6 +90,6 @@ loc_1F45A0:
 	lea.l	$1F461C(pc),a0
 	move.b	(a0)+,d0
 	addq.w	#$1,d1
-	bsr.w	sub_1F45AE
+	bsr.w	Boot_DrawText
 loc_1F45AC:
 	bra.s	loc_1F45AC

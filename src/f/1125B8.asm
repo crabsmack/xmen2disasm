@@ -24,10 +24,10 @@ sub_1125B8:
 	jsr	$4FE2(a5)	; -> sub_1F9D1E
 	moveq	#$63,d0
 	move.l	d0,-(a7)
-	jsr	$5222(a5)	; -> sub_1FE5A2
+	jsr	$5222(a5)	; -> Snd_Stop
 	moveq	#$63,d0
 	move.l	d0,-(a7)
-	jsr	$521A(a5)	; -> sub_1FE584
+	jsr	$521A(a5)	; -> Snd_Play
 	moveq	#$1,d0
 	move.l	d0,-(a7)
 	move.l	a4,-(a7)
@@ -38,9 +38,9 @@ sub_1125B8:
 	bra.s	loc_11264A
 loc_112628:
 	pea.l	($AA).w
-	jsr	$5222(a5)	; -> sub_1FE5A2
+	jsr	$5222(a5)	; -> Snd_Stop
 	pea.l	($AA).w
-	jsr	$521A(a5)	; -> sub_1FE584
+	jsr	$521A(a5)	; -> Snd_Play
 	moveq	#$A,d0
 	move.l	d0,-(a7)
 	move.l	a4,-(a7)

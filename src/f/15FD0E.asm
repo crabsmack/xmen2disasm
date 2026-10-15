@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_15FD0E
+; Scroll_ComputeParallax - fill the line/column scroll buffers from the current parallax descriptor and camera position
+; In:  none
+; Out: none
+; Evidence: walks the -$3A44(a5) descriptor records, writes longs at -$BC6(a5) ($FFF63A) per scanline band and column words at -$646; called by Scroll_UpdateParallax
 ; ---------------------------------------------------------------------------
-sub_15FD0E:
+Scroll_ComputeParallax:
 	move.l	-$3A44(a5),d0
 	bne.s	loc_15FD16
 	rts

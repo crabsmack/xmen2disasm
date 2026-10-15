@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_1FE002
+; VDP_WriteWords - copy N words from memory to the VDP data port (address already set)
+; In:  4(a7) = src pointer   8(a7) = long: word count
+; Out: none
+; Evidence: loop move.w (a0)+,$C00000; callers set the VDP address first (sub_1F5788, sub_1FAA08, sub_1FAD44, sub_1FBE96)
 ; ---------------------------------------------------------------------------
-sub_1FE002:
+VDP_WriteWords:
 	movea.l	$4(a7),a0
 	move.l	$8(a7),d0
 	bra.s	loc_1FE012

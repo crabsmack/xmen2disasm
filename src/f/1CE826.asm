@@ -36,9 +36,9 @@ loc_1CE852:
 	lea.l	$18(a7),a7
 	bne.s	loc_1CE8B2
 	pea.l	($83).w
-	jsr	$5222(a5)	; -> sub_1FE5A2
+	jsr	$5222(a5)	; -> Snd_Stop
 	pea.l	($83).w
-	jsr	$521A(a5)	; -> sub_1FE584
+	jsr	$521A(a5)	; -> Snd_Play
 	addq.w	#$8,a7
 	clr.w	$6C(a4)
 	movea.l	(a4),a0

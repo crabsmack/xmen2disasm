@@ -6,13 +6,13 @@ loc_0991DC:
 	move.l	d7,-(a7)
 	moveq	#$12,d0
 	move.l	d0,-(a7)
-	jsr	$524A(a5)	; -> sub_1FE630
+	jsr	$524A(a5)	; -> Snd_SetParam
 	moveq	#$74,d0
 	move.l	d0,-(a7)
-	jsr	$5222(a5)	; -> sub_1FE5A2
+	jsr	$5222(a5)	; -> Snd_Stop
 	moveq	#$74,d0
 	move.l	d0,-(a7)
-	jsr	$521A(a5)	; -> sub_1FE584
+	jsr	$521A(a5)	; -> Snd_Play
 	move.l	-$35B6(a5),-(a7)
 	jsr	sub_099BBE(pc)
 	ori.w	#$1,-$3B08(a5)

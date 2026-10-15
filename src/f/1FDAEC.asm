@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_1FDAEC	[jt 2588]
+; Scroll_SetParallax - install a parallax (line/column scroll) descriptor and set VDP reg 11 scroll mode for it
+; In:  8(a6) = pointer: descriptor (byte type, '2' = column vscroll; byte count; 8-byte band records)
+; Out: none
+; Evidence: reg 11 shadow -$204(a5) + 4 (2-cell vscroll) for type '2', else + 3 (line hscroll); stores the pointer in -$3A44(a5); per-band longs at -$846(a5), case 1 bands computed via sub_1F6258/sub_15C222; clears the 448 words at -$BC6(a5)
 ; ---------------------------------------------------------------------------
-sub_1FDAEC:
+Scroll_SetParallax:
 	link.w	a6,#$FFF6
 	movem.l	d3-d7/a3-a4,-(a7)
 	lea.l	-$846(a5),a3

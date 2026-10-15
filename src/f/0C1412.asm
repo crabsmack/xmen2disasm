@@ -30,17 +30,17 @@ loc_0C1442:
 	move.l	d0,-(a7)
 	moveq	#$A,d0
 	move.l	d0,-(a7)
-	jsr	$524A(a5)	; -> sub_1FE630
+	jsr	$524A(a5)	; -> Snd_SetParam
 	ext.l	d6
 	move.l	d6,-(a7)
 	moveq	#$B,d0
 	move.l	d0,-(a7)
-	jsr	$524A(a5)	; -> sub_1FE630
+	jsr	$524A(a5)	; -> Snd_SetParam
 	ext.l	d7
 	move.l	d7,-(a7)
 	moveq	#$C,d0
 	move.l	d0,-(a7)
-	jsr	$524A(a5)	; -> sub_1FE630
+	jsr	$524A(a5)	; -> Snd_SetParam
 	lea.l	$20(a7),a7
 	movem.l	-$8(a6),d6-d7
 	unlk	a6

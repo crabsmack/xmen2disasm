@@ -37,10 +37,10 @@ loc_013840:
 	bgt.s	loc_013862
 	moveq	#$38,d0
 	move.l	d0,-(a7)
-	jsr	$5222(a5)	; -> sub_1FE5A2
+	jsr	$5222(a5)	; -> Snd_Stop
 	moveq	#$38,d0
 	move.l	d0,-(a7)
-	jsr	$521A(a5)	; -> sub_1FE584
+	jsr	$521A(a5)	; -> Snd_Play
 	move.l	a4,-(a7)
 	jsr	$3ACA(a5)	; -> sub_13DE36
 	lea.l	$C(a7),a7

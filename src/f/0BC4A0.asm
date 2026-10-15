@@ -12,9 +12,9 @@ sub_0BC4A0:
 	movea.l	$56(a0),a1
 	jsr	(a1)
 	pea.l	($F2).w
-	jsr	$5222(a5)	; -> sub_1FE5A2
+	jsr	$5222(a5)	; -> Snd_Stop
 	pea.l	($F2).w
-	jsr	$521A(a5)	; -> sub_1FE584
+	jsr	$521A(a5)	; -> Snd_Play
 	tst.l	$98(a4)
 	lea.l	$10(a7),a7
 	bne.s	loc_0BC4E0

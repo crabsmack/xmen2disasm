@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_1FE0EC
+; VDP_DmaToVram - immediately DMA a block from 68000 memory to VRAM and wait for completion
+; In:  4(a7) = long: source address   8(a7) = long: VRAM dest (low word)   $C(a7) = long: length in bytes (low word)
+; Out: none
+; Evidence: builds regs $93-$97 from len/2 and src/2 and command $4000|dest + $80 (DMA), DMA enabled via reg1 shadow -$1D48 | $10; polls status bit 1; used by VDP_QueueDma when the display is off
 ; ---------------------------------------------------------------------------
-sub_1FE0EC:
+VDP_DmaToVram:
 	moveq	#$0,d0
 	move.w	$A(a7),d0
 	lsl.l	#$2,d0

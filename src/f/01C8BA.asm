@@ -16,7 +16,7 @@ sub_01C8BA:
 	movea.l	$56(a0),a1
 	jsr	(a1)
 	pea.l	($DB).w
-	jsr	$5222(a5)	; -> sub_1FE5A2
+	jsr	$5222(a5)	; -> Snd_Stop
 	pea.l	-$1652(a5)
 	move.l	$84(a4),-(a7)
 	jsr	$406A(a5)	; -> List_Unlink

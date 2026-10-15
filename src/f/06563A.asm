@@ -8,7 +8,7 @@ loc_06563A:
 	move.l	d0,-(a7)
 	moveq	#$7,d1
 	move.l	d1,-(a7)
-	jsr	$50F2(a5)	; -> sub_1FD998
+	jsr	$50F2(a5)	; -> Pal_StartFade
 	move.w	(a4)+,-$3A04(a5)
 	move.w	#$3,-$3B02(a5)
 	clr.b	-$3A06(a5)

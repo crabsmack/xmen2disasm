@@ -178,9 +178,9 @@ loc_122D5A:
 	beq.s	loc_122DA2
 	move.w	#$F,$6E(a3)
 	pea.l	($FB).w
-	jsr	$5222(a5)	; -> sub_1FE5A2
+	jsr	$5222(a5)	; -> Snd_Stop
 	pea.l	($FB).w
-	jsr	$521A(a5)	; -> sub_1FE584
+	jsr	$521A(a5)	; -> Snd_Play
 	addq.w	#$8,a7
 	clr.w	$6C(a3)
 	lea.l	sub_122AFA(pc),a0

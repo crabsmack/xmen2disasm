@@ -7,8 +7,8 @@ sub_1F98A8:
 	move.b	$2B(a6),d6
 	andi.w	#$FFBF,-$1D48(a5)
 	move.w	-$1D48(a5),($C00004).l
-	jsr	$5182(a5)	; -> sub_1FDF6C
-	jsr	$518A(a5)	; -> sub_1FDFCE
+	jsr	$5182(a5)	; -> VDP_ClearVram
+	jsr	$518A(a5)	; -> VDP_ClearVsram
 	move.l	#$FF0000,-$348C(a5)
 	move.l	$8(a6),-$CAE(a5)
 	move.l	$10(a6),-$CB2(a5)
@@ -33,12 +33,12 @@ loc_1F9910:
 	move.l	d0,-(a7)
 	moveq	#$0,d0
 	move.l	d0,-(a7)
-	jsr	$524A(a5)	; -> sub_1FE630
+	jsr	$524A(a5)	; -> Snd_SetParam
 	moveq	#$0,d0
 	move.l	d0,-(a7)
 	moveq	#$1,d1
 	move.l	d1,-(a7)
-	jsr	$524A(a5)	; -> sub_1FE630
+	jsr	$524A(a5)	; -> Snd_SetParam
 	moveq	#-$1,d0
 	cmp.w	-$38D2(a5),d0
 	lea.l	$10(a7),a7
@@ -46,7 +46,7 @@ loc_1F9910:
 	move.w	-$38D2(a5),d0
 	ext.l	d0
 	move.l	d0,-(a7)
-	jsr	sub_1F97A4(pc)
+	jsr	Music_Play(pc)
 	addq.w	#$4,a7
 loc_1F9942:
 	move.l	$44(a6),-$3900(a5)

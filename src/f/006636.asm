@@ -11,7 +11,7 @@ sub_006636:
 	move.l	$2(a0),-(a7)
 	lea.l	$421A(a5),a0
 	move.l	$2(a0),-(a7)
-	jsr	$5212(a5)	; -> sub_1FE544
+	jsr	$5212(a5)	; -> Snd_Init
 	clr.b	g_SceneCount(a5)
 	dc.w	$1B7C,$FFFF,$C444	; insn: move.b #$ff, -$3bbc(a5)
 	dc.w	$1B7C,$FFFF,$C445	; insn: move.b #$ff, -$3bbb(a5)

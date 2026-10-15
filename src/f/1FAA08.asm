@@ -238,7 +238,7 @@ loc_1FAC72:
 	lsl.l	#$4,d0
 	move.l	d0,-(a7)
 	move.l	-$20A(a6),-(a7)
-	jsr	$519A(a5)	; -> sub_1FE002
+	jsr	$519A(a5)	; -> VDP_WriteWords
 	addq.w	#$8,a7
 loc_1FACB6:
 	add.w	d4,d5

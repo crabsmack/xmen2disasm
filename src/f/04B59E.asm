@@ -12,7 +12,7 @@ sub_04B59E:
 	bne.s	loc_04B60E
 	moveq	#$79,d0
 	move.l	d0,-(a7)
-	jsr	$5222(a5)	; -> sub_1FE5A2
+	jsr	$5222(a5)	; -> Snd_Stop
 	clr.w	$1E(a4)
 	clr.l	$16(a4)
 	clr.w	$20(a4)

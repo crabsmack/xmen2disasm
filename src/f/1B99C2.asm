@@ -70,9 +70,9 @@ loc_1B9A74:
 loc_1B9A7C:
 	beq.s	loc_1B9AD6
 	pea.l	($92).w
-	jsr	$5222(a5)	; -> sub_1FE5A2
+	jsr	$5222(a5)	; -> Snd_Stop
 	pea.l	($92).w
-	jsr	$521A(a5)	; -> sub_1FE584
+	jsr	$521A(a5)	; -> Snd_Play
 	movea.l	$8C(a4),a0
 	move.b	$4(a0),$70(a4)
 	moveq	#$10,d0

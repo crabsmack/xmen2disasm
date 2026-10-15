@@ -285,13 +285,13 @@ loc_010F16:
 	pea.l	($D9).w
 	jsr	$3FE2(a5)	; -> sub_15D858
 	pea.l	($DC).w
-	jsr	$5222(a5)	; -> sub_1FE5A2
+	jsr	$5222(a5)	; -> Snd_Stop
 	moveq	#$34,d0
 	move.l	d0,-(a7)
-	jsr	$5222(a5)	; -> sub_1FE5A2
+	jsr	$5222(a5)	; -> Snd_Stop
 	moveq	#$34,d0
 	move.l	d0,-(a7)
-	jsr	$521A(a5)	; -> sub_1FE584
+	jsr	$521A(a5)	; -> Snd_Play
 	moveq	#$0,d0
 	move.l	d0,-(a7)
 	move.w	$34(a4),d1

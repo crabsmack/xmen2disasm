@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_1F5254	[jt 2492]
+; Scroll_Init - reset all scroll/camera state and set the plane size to 64x32 cells
+; In:  none
+; Out: none
+; Evidence: VDP reg $90 = 1; clears the scroll request flags -$3A56..-$3A5C and ~40 camera/scroll words in -$3AD8..-$3490; called last by Sys_InitHardware
 ; ---------------------------------------------------------------------------
-sub_1F5254:
+Scroll_Init:
 	link.w	a6,#$0
 	movem.l	d6-d7,-(a7)
 	move.w	#$9001,($C00004).l

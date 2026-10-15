@@ -24,13 +24,13 @@ sub_05C41A:
 	move.w	d7,-$3A9A(a5)
 	move.l	a4,-(a7)
 	jsr	sub_05C204(pc)
-	jsr	$5242(a5)	; -> sub_1FE5F2
+	jsr	$5242(a5)	; -> Snd_StopAll
 	moveq	#$23,d0
 	move.l	d0,-(a7)
-	jsr	$5222(a5)	; -> sub_1FE5A2
+	jsr	$5222(a5)	; -> Snd_Stop
 	moveq	#$23,d0
 	move.l	d0,-(a7)
-	jsr	$521A(a5)	; -> sub_1FE584
+	jsr	$521A(a5)	; -> Snd_Play
 	pea.l	g_Player1(a5)
 	jsr	sub_05C22E(pc)
 	pea.l	g_Player2(a5)

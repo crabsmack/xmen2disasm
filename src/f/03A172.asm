@@ -13,10 +13,10 @@ sub_03A172:
 	move.b	d3,d7
 	moveq	#$35,d0
 	move.l	d0,-(a7)
-	jsr	$5222(a5)	; -> sub_1FE5A2
+	jsr	$5222(a5)	; -> Snd_Stop
 	moveq	#$35,d0
 	move.l	d0,-(a7)
-	jsr	$521A(a5)	; -> sub_1FE584
+	jsr	$521A(a5)	; -> Snd_Play
 	ori.w	#$4000,$6(a4)
 	pea.l	-$1652(a5)
 	move.l	$84(a4),-(a7)

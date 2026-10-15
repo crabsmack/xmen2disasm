@@ -40,12 +40,12 @@ loc_1D0600:
 	moveq	#$0,d0
 	move.b	$2C(a0),d0
 	move.l	d0,-(a7)
-	jsr	$5222(a5)	; -> sub_1FE5A2
+	jsr	$5222(a5)	; -> Snd_Stop
 	movea.l	$8C(a4),a0
 	moveq	#$0,d0
 	move.b	$2C(a0),d0
 	move.l	d0,-(a7)
-	jsr	$521A(a5)	; -> sub_1FE584
+	jsr	$521A(a5)	; -> Snd_Play
 	tst.b	$9D(a4)
 	seq.b	d3
 	neg.b	d3

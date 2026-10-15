@@ -14,9 +14,9 @@ sub_0BB71E:
 	movea.l	$56(a0),a1
 	jsr	(a1)
 	pea.l	($F0).w
-	jsr	$5222(a5)	; -> sub_1FE5A2
+	jsr	$5222(a5)	; -> Snd_Stop
 	pea.l	($F0).w
-	jsr	$521A(a5)	; -> sub_1FE584
+	jsr	$521A(a5)	; -> Snd_Play
 	lea.l	$1E5A(a5),a0
 	move.l	$2(a0),$B0(a4)
 	tst.w	$AE(a4)

@@ -1,12 +1,15 @@
 ; ---------------------------------------------------------------------------
-; sub_1FE44E
+; Z80_LoadDriver - hold the Z80 in reset, copy the sound driver into Z80 RAM and zero the rest
+; In:  none
+; Out: none
+; Evidence: asserts reset ($A11200), Z80_BusRequest, copies ROM $1FE66C-$1FFED2 to $A00000 then zero-fills up to $A02000; called by Snd_Init
 ; ---------------------------------------------------------------------------
-sub_1FE44E:
+Z80_LoadDriver:
 	move.l	a1,-(a7)
 	move.w	sr,-(a7)
 	ori.w	#$700,sr
 	move.w	#$100,($A11200).l
-	jsr	sub_1FE3D8(pc)
+	jsr	Z80_BusRequest(pc)
 	lea.l	$1FE66C(pc),a0
 	lea.l	$1FFED3(pc),a1
 	move.l	a1,d0

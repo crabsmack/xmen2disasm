@@ -61,4 +61,4 @@ loc_1F4428:
 	movem.l	(a6),d0-d7/a0-a6
 	move.w	#$2700,sr
 loc_1F443A:
-	bra.s	loc_1F44A8
+	bra.s	Boot_RegionCheck

@@ -73,9 +73,9 @@ loc_05B6F6:
 	movea.l	$B8(a4),a0
 	move.b	$7(a0),$A5(a4)
 	pea.l	($97).w
-	jsr	$5222(a5)	; -> sub_1FE5A2
+	jsr	$5222(a5)	; -> Snd_Stop
 	pea.l	($97).w
-	jsr	$521A(a5)	; -> sub_1FE584
+	jsr	$521A(a5)	; -> Snd_Play
 	moveq	#$1,d3
 	move.w	$4E(a4),d0
 	ext.l	d0
@@ -223,9 +223,9 @@ loc_05B888:
 	movea.l	$B8(a4),a0
 	move.b	$7(a0),$A5(a4)
 	pea.l	($97).w
-	jsr	$5222(a5)	; -> sub_1FE5A2
+	jsr	$5222(a5)	; -> Snd_Stop
 	pea.l	($97).w
-	jsr	$521A(a5)	; -> sub_1FE584
+	jsr	$521A(a5)	; -> Snd_Play
 	moveq	#$1,d3
 	move.w	$4E(a4),d0
 	ext.l	d0

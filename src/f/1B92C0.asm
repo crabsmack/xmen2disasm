@@ -74,9 +74,9 @@ loc_1B937C:
 	move.l	a4,-(a7)
 	jsr	$4E42(a5)	; -> sub_1F626A
 	pea.l	($92).w
-	jsr	$5222(a5)	; -> sub_1FE5A2
+	jsr	$5222(a5)	; -> Snd_Stop
 	pea.l	($92).w
-	jsr	$521A(a5)	; -> sub_1FE584
+	jsr	$521A(a5)	; -> Snd_Play
 	tst.b	$9D(a4)
 	lea.l	$10(a7),a7
 	bne.s	loc_1B93BC

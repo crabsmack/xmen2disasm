@@ -16,9 +16,9 @@ sub_183136:
 	bra.s	loc_1831C8
 loc_18315C:
 	pea.l	($96).w
-	jsr	$5222(a5)	; -> sub_1FE5A2
+	jsr	$5222(a5)	; -> Snd_Stop
 	pea.l	($96).w
-	jsr	$521A(a5)	; -> sub_1FE584
+	jsr	$521A(a5)	; -> Snd_Play
 	clr.w	$1E(a4)
 	clr.l	$16(a4)
 	move.w	#$B4,$20(a4)

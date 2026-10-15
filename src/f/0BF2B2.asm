@@ -13,9 +13,9 @@ sub_0BF2B2:
 	move.w	d0,$E(a4)
 	clr.l	$14(a4)
 	pea.l	($B9).w
-	jsr	$5222(a5)	; -> sub_1FE5A2
+	jsr	$5222(a5)	; -> Snd_Stop
 	pea.l	($B9).w
-	jsr	$521A(a5)	; -> sub_1FE584
+	jsr	$521A(a5)	; -> Snd_Play
 	lea.l	sub_0BF2FC(pc),a0
 	move.l	a0,$18(a4)
 	move.w	#$14,$1C(a4)

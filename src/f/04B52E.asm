@@ -15,10 +15,10 @@ sub_04B52E:
 	jsr	(a1)
 	moveq	#$79,d0
 	move.l	d0,-(a7)
-	jsr	$5222(a5)	; -> sub_1FE5A2
+	jsr	$5222(a5)	; -> Snd_Stop
 	moveq	#$79,d0
 	move.l	d0,-(a7)
-	jsr	$521A(a5)	; -> sub_1FE584
+	jsr	$521A(a5)	; -> Snd_Play
 	moveq	#$5,d0
 	move.l	d0,-(a7)
 	pea.l	($6000).w

@@ -81,10 +81,10 @@ loc_0B71B2:
 	move.l	d0,$94(a4)
 	moveq	#$42,d0
 	move.l	d0,-(a7)
-	jsr	$5222(a5)	; -> sub_1FE5A2
+	jsr	$5222(a5)	; -> Snd_Stop
 	moveq	#$42,d0
 	move.l	d0,-(a7)
-	jsr	$521A(a5)	; -> sub_1FE584
+	jsr	$521A(a5)	; -> Snd_Play
 	move.l	a4,-$3B20(a5)
 	lea.l	$2FDA(a5),a0
 	move.l	$2(a0),$AA(a4)

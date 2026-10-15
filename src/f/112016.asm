@@ -103,9 +103,9 @@ loc_11211A:
 	bne.s	loc_112144
 	move.w	#$D,-$3B02(a5)
 	pea.l	($A9).w
-	jsr	$5222(a5)	; -> sub_1FE5A2
+	jsr	$5222(a5)	; -> Snd_Stop
 	pea.l	($A9).w
-	jsr	$521A(a5)	; -> sub_1FE584
+	jsr	$521A(a5)	; -> Snd_Play
 	addq.w	#$8,a7
 loc_112144:
 	movem.l	-$10(a6),d6-d7/a3-a4

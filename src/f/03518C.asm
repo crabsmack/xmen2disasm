@@ -30,10 +30,10 @@ sub_03518C:
 	jsr	$3FDA(a5)	; -> sub_15D7F8
 	moveq	#$1A,d0
 	move.l	d0,-(a7)
-	jsr	$5222(a5)	; -> sub_1FE5A2
+	jsr	$5222(a5)	; -> Snd_Stop
 	moveq	#$1A,d0
 	move.l	d0,-(a7)
-	jsr	$521A(a5)	; -> sub_1FE584
+	jsr	$521A(a5)	; -> Snd_Play
 	lea.l	$18(a7),a7
 loc_0351EC:
 	moveq	#$1,d0

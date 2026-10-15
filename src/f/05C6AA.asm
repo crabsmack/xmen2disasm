@@ -35,9 +35,9 @@ loc_05C6EE:
 	movea.l	$56(a0),a1
 	jsr	(a1)
 	pea.l	($AC).w
-	jsr	$5222(a5)	; -> sub_1FE5A2
+	jsr	$5222(a5)	; -> Snd_Stop
 	pea.l	($AC).w
-	jsr	$521A(a5)	; -> sub_1FE584
+	jsr	$521A(a5)	; -> Snd_Play
 	move.l	a4,-(a7)
 	jsr	$4E7A(a5)	; -> sub_1F6530
 	move.w	#$2BC,$16(a4)

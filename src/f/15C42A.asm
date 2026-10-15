@@ -5,7 +5,7 @@ sub_15C42A:
 	link.w	a6,#$0
 	movem.l	d6-d7,-(a7)
 	clr.b	-$3A08(a5)
-	jsr	$50FA(a5)	; -> sub_1FDA56
+	jsr	$50FA(a5)	; -> Pad_Update
 	tst.l	-$1666(a5)
 	beq.w	loc_15C5F2
 	moveq	#$7F,d0

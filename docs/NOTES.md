@@ -75,6 +75,30 @@ _(module → functions, globals, data; add as you learn them)_
   with the Z80 stopped, d1 = Z80 RAM `$A00036`, a1 = `$A01B40`) ... `jmp Z80_BusRelease`.
   `$1FE50A` writes one command byte; `$1FE584`/`$1FE5A2` send command `$10`/`$12` + a byte
   argument unless byte `-$18AC(a5)` is set (sound off?). `$1FE5A2` has 232 callers (SFX?).
+  **Update (w140):** the Z80 command ring is 64 bytes at Z80 `$1B40`, write index at `$0036`;
+  a command is `$FF, cmd, args` (`Snd_PutCmd`/`Snd_PutByte`). Commands: `$10` `Snd_Play(id)`,
+  `$12` `Snd_Stop(id)` (222/279 Stop calls are followed by Play of the same id = restart),
+  `$0C`/`$0D` `Snd_Pause`/`Snd_Resume` (Start-button pause, `sub_15CAA4`), `$16` `Snd_StopAll`,
+  `$1B` `Snd_SetParam(slot, value)`, `$20` unknown (`Music_Play` sends `$0A`), `$0B` + four
+  24-bit ROM pointers at boot (`Snd_Init`). `-$18AC(a5)` = mute flag, set while demos play
+  (`loc_005EB8`) and around some init calls. `Music_Play(track)` keeps the track in `-$38D2`.
+  Driver image `$1FE66C-$1FFED2` (`Z80_LoadDriver`). Around V-blank DMA the 68k sets Z80
+  `$1B20` = 1 and waits for `$1B21` = 0 (`Z80_DriverPause`/`Z80_DriverResume`).
+- **Video/frame (w140)**: V-int `Irq_VBlank` (hook `$210`): `Pad_ReadBoth`, frame counter long
+  `-$3A10`, then hooks `-$3A14` (system) and `-$3A18` (game, skipped if `-$38C0`/`-$359E`).
+  `VDP_FrameUpdate` runs once per frame (guard `-$3A0C`, cleared by `VDP_WaitVBlank`):
+  `Pal_Update`, `VDP_UpdateScroll`, and when byte `-$1D4A` is set `VDP_FlushDmaQueue` (sprite
+  table `$FFE226` (-$1FDA) -> VRAM `$F000`, $280 bytes, plus the `VDP_QueueDma` queue at -$7A4,
+  count -$7B4, $18-byte records). Word `-$1D48` = VDP reg 1 shadow ($81xx: $40 display, $20
+  V-int, $10 DMA); `-$204` = reg 11 shadow. VRAM map: plane A `$C000`, sprites `$F000`,
+  H-scroll `$F400`. Palettes: `-$3A00` working (uploaded), `-$3980` base; fades step a level
+  0-7 through an 8-byte-per-level component table (`Pal_StartFade`/`Pal_ApplyFade`).
+- **Joypads (w140)**: `Pad_ReadPort` returns active-high bits 0-3 U/D/L/R, 4-7 B/C/A/Start,
+  8-11 Z/Y/X/Mode, `$4000` 6-button, `$8000` no pad. Raw `-$7A8`/`-$7A6`; `Pad_Update` keeps
+  per player held (`-$3A36`/`-$3A38`), pressed (`-$3A26`/`-$3A28`), released (`-$3A2A`/`-$3A2C`),
+  press latch (`-$3A2E`/`-$3A30`, game code clears bits to consume), accumulated (`-$3A32`/
+  `-$3A34`). Demo playback: byte `-$3A1A` active, stream `-$3A1E` of (frame, pad) byte pairs,
+  `-$3A20` = demo pad for P1.
 - **Players**: two player objects at `$FFE9B8` and `$FFEAA8` (`Player_Nearest`). Which is P1
   is not yet confirmed.
 - **Game object layout** (from `Player_Nearest`, `$1F4BA2`, `$1F6334`): +4 word flags (bits

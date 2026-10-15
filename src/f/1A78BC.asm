@@ -11,9 +11,9 @@ sub_1A78BC:
 	movea.l	$8C(a4),a0
 	move.b	$3(a0),$70(a4)
 	pea.l	($CA).w
-	jsr	$5222(a5)	; -> sub_1FE5A2
+	jsr	$5222(a5)	; -> Snd_Stop
 	pea.l	($CA).w
-	jsr	$521A(a5)	; -> sub_1FE584
+	jsr	$521A(a5)	; -> Snd_Play
 	lea.l	$44B2(a5),a0
 	move.l	$2(a0),-(a7)
 	move.l	a4,-(a7)
@@ -30,9 +30,9 @@ loc_1A791A:
 	movea.l	$8C(a4),a0
 	move.b	$1(a0),$70(a4)
 	pea.l	($86).w
-	jsr	$5222(a5)	; -> sub_1FE5A2
+	jsr	$5222(a5)	; -> Snd_Stop
 	pea.l	($86).w
-	jsr	$521A(a5)	; -> sub_1FE584
+	jsr	$521A(a5)	; -> Snd_Play
 	lea.l	$44AA(a5),a0
 	move.l	$2(a0),-(a7)
 	move.l	a4,-(a7)

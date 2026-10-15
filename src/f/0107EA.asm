@@ -14,9 +14,9 @@ sub_0107EA:
 	tst.w	$6A(a4)
 	bne.w	loc_0108A4
 	pea.l	($D8).w
-	jsr	$5222(a5)	; -> sub_1FE5A2
+	jsr	$5222(a5)	; -> Snd_Stop
 	pea.l	($D8).w
-	jsr	$521A(a5)	; -> sub_1FE584
+	jsr	$521A(a5)	; -> Snd_Play
 	moveq	#$1C,d0
 	muls.w	d4,d0
 	move.w	d0,d6

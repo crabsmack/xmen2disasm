@@ -7,7 +7,7 @@ sub_01134E:
 	movea.l	$8(a6),a4
 	moveq	#$34,d0
 	move.l	d0,-(a7)
-	jsr	$5222(a5)	; -> sub_1FE5A2
+	jsr	$5222(a5)	; -> Snd_Stop
 	lea.l	$1F2(a5),a0
 	move.l	$2(a0),-(a7)
 	pea.l	$96(a4)

@@ -97,11 +97,11 @@ loc_122570:
 	move.l	$8(a6),-(a7)
 	jsr	$4E42(a5)	; -> sub_1F626A
 	pea.l	($FB).w
-	jsr	$5222(a5)	; -> sub_1FE5A2
+	jsr	$5222(a5)	; -> Snd_Stop
 	pea.l	($F8).w
-	jsr	$5222(a5)	; -> sub_1FE5A2
+	jsr	$5222(a5)	; -> Snd_Stop
 	pea.l	($F8).w
-	jsr	$521A(a5)	; -> sub_1FE584
+	jsr	$521A(a5)	; -> Snd_Play
 	movea.l	$8(a6),a0
 	tst.l	$98(a0)
 	lea.l	$14(a7),a7

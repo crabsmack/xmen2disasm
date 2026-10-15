@@ -1,10 +1,13 @@
 ; ---------------------------------------------------------------------------
-; sub_1FE5F2
+; Snd_StopAll - stop all sound (driver command $16) unless muted
+; In:  none
+; Out: none
+; Evidence: no argument; sent by Music_Play before starting a new track and by 17 stage/screen setup functions
 ; ---------------------------------------------------------------------------
-sub_1FE5F2:
+Snd_StopAll:
 	jsr	Z80_BusAcquire(pc)
 	tst.b	-$18AC(a5)
 	bne.w	Z80_BusRelease
 	moveq	#$16,d0
-	jsr	sub_1FE4FE(pc)
+	jsr	Snd_PutCmd(pc)
 	jmp	Z80_BusRelease(pc)

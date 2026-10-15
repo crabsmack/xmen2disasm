@@ -29,10 +29,10 @@ sub_11E36E:
 	move.b	#$60,$42(a4)
 	moveq	#$7E,d0
 	move.l	d0,-(a7)
-	jsr	$5222(a5)	; -> sub_1FE5A2
+	jsr	$5222(a5)	; -> Snd_Stop
 	moveq	#$7E,d0
 	move.l	d0,-(a7)
-	jsr	$521A(a5)	; -> sub_1FE584
+	jsr	$521A(a5)	; -> Snd_Play
 	movea.l	-$4(a6),a4
 	unlk	a6
 	rts

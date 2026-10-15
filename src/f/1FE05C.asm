@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_1FE05C
+; unk_VDP_1FE05C - init-time DMA of 4 bytes from the long at -$3A10(a5) to VRAM $ED00 with the display off
+; In:  none
+; Out: none
+; Evidence: reg1 $8114, length 2 words, source -$3A10(a5) (the V-int frame counter, just zeroed by the caller), command $6D000083 (VRAM $ED00 DMA), reg1 $8104; only caller Sys_InitHardware at TAS frame 4; purpose of the VRAM target unknown
 ; ---------------------------------------------------------------------------
-sub_1FE05C:
+unk_VDP_1FE05C:
 	move.l	d7,-(a7)
 	move.w	#$6D00,-$7B6(a5)
 	move.w	#$83,-$7B8(a5)

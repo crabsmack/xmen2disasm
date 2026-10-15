@@ -9,7 +9,7 @@ sub_096A36:
 	move.l	a3,d0
 	beq.s	loc_096A5A
 	pea.l	($FE).w
-	jsr	$5222(a5)	; -> sub_1FE5A2
+	jsr	$5222(a5)	; -> Snd_Stop
 	moveq	#$0,d0
 	move.l	d0,$A2(a3)
 	addq.w	#$4,a7

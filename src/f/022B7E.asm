@@ -5,7 +5,7 @@ sub_022B7E:
 	link.w	a6,#$0
 	lea.l	$512(a5),a0
 	move.l	$2(a0),-(a7)
-	jsr	$5102(a5)	; -> sub_1FDAEC
+	jsr	$5102(a5)	; -> Scroll_SetParallax
 	lea.l	sub_022A1C(pc),a0
 	move.l	a0,-$388E(a5)
 	jsr	sub_0229E8(pc)

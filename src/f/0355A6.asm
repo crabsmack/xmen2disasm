@@ -49,10 +49,10 @@ loc_0355DC:
 	movea.l	d0,a4
 	moveq	#$1A,d0
 	move.l	d0,-(a7)
-	jsr	$5222(a5)	; -> sub_1FE5A2
+	jsr	$5222(a5)	; -> Snd_Stop
 	moveq	#$1A,d0
 	move.l	d0,-(a7)
-	jsr	$521A(a5)	; -> sub_1FE584
+	jsr	$521A(a5)	; -> Snd_Play
 	cmpi.w	#$86,d7
 	lea.l	$14(a7),a7
 	bne.s	loc_03563E

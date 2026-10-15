@@ -22,9 +22,9 @@ loc_096182:
 	move.l	$C(a4),$C(a3)
 	clr.b	$96(a3)
 	pea.l	($EF).w
-	jsr	$5222(a5)	; -> sub_1FE5A2
+	jsr	$5222(a5)	; -> Snd_Stop
 	pea.l	($EF).w
-	jsr	$521A(a5)	; -> sub_1FE584
+	jsr	$521A(a5)	; -> Snd_Play
 	movea.l	$A8(a4),a0
 	movea.l	a0,a1
 	adda.w	$6(a1),a0

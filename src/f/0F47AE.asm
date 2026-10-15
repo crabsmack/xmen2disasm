@@ -232,7 +232,7 @@ loc_0F4A4E:
 	move.l	d0,-(a7)
 	moveq	#$7,d1
 	move.l	d1,-(a7)
-	jsr	$50F2(a5)	; -> sub_1FD998
+	jsr	$50F2(a5)	; -> Pal_StartFade
 	lea.l	$C(a7),a7
 	bra.s	loc_0F4AE4
 loc_0F4A6E:
@@ -254,7 +254,7 @@ loc_0F4A86:
 	move.l	d0,-(a7)
 	moveq	#$7,d1
 	move.l	d1,-(a7)
-	jsr	$50F2(a5)	; -> sub_1FD998
+	jsr	$50F2(a5)	; -> Pal_StartFade
 	clr.b	-$3A06(a5)
 	move.w	#$3C,-$7C4(a5)
 	move.w	#$8,-$3A04(a5)

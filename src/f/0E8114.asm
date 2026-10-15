@@ -11,9 +11,9 @@ sub_0E8114:
 	jsr	$4E42(a5)	; -> sub_1F626A
 	andi.w	#$BFFF,$6(a4)
 	pea.l	($CE).w
-	jsr	$5222(a5)	; -> sub_1FE5A2
+	jsr	$5222(a5)	; -> Snd_Stop
 	pea.l	($CE).w
-	jsr	$521A(a5)	; -> sub_1FE584
+	jsr	$521A(a5)	; -> Snd_Play
 	lea.l	$10(a7),a7
 	move.w	#$FF,$6C(a4)
 	lea.l	sub_0E8162(pc),a0

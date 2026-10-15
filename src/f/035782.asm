@@ -34,10 +34,10 @@ sub_035782:
 	jsr	$4FCA(a5)	; -> sub_1F98A8
 	moveq	#$7,d0
 	move.l	d0,-(a7)
-	jsr	$5222(a5)	; -> sub_1FE5A2
+	jsr	$5222(a5)	; -> Snd_Stop
 	moveq	#$7,d0
 	move.l	d0,-(a7)
-	jsr	$521A(a5)	; -> sub_1FE584
+	jsr	$521A(a5)	; -> Snd_Play
 	clr.w	-$3980(a5)
 	clr.b	-$38DE(a5)
 	move.w	#$7F,-$3498(a5)

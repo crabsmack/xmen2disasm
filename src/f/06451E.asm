@@ -16,7 +16,7 @@ sub_06451E:
 	lsl.l	#$5,d0
 	move.l	d0,-(a7)
 	move.l	-$C9E(a5),-(a7)
-	jsr	$51DA(a5)	; -> sub_1FE17A
+	jsr	$51DA(a5)	; -> VDP_QueueDma
 	move.b	#$1,$31(a4)
 	lea.l	$C(a7),a7
 loc_064554:

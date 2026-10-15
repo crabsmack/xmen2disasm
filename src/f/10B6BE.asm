@@ -53,10 +53,10 @@ loc_10B706:
 	jsr	$3FD2(a5)	; -> sub_15D7D8
 	moveq	#$38,d0
 	move.l	d0,-(a7)
-	jsr	$5222(a5)	; -> sub_1FE5A2
+	jsr	$5222(a5)	; -> Snd_Stop
 	moveq	#$38,d0
 	move.l	d0,-(a7)
-	jsr	$521A(a5)	; -> sub_1FE584
+	jsr	$521A(a5)	; -> Snd_Play
 	movea.l	-$3BC4(a5),a0
 	move.l	a0,-(a7)
 	movea.l	(a0),a0

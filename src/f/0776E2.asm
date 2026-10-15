@@ -9,7 +9,7 @@ sub_0776E2:
 	jsr	sub_077624(pc)
 	lea.l	$10B2(a5),a0
 	move.l	$2(a0),-(a7)
-	jsr	$5102(a5)	; -> sub_1FDAEC
+	jsr	$5102(a5)	; -> Scroll_SetParallax
 	jsr	$2E8A(a5)	; -> sub_1190D6
 	move.w	#$A,-$BD8(a5)
 	moveq	#$1,d0

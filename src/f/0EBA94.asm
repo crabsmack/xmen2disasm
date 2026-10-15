@@ -37,9 +37,9 @@ loc_0EBAEC:
 	beq.s	loc_0EBB36
 	move.w	#$B4,$6A(a4)
 	pea.l	($D0).w
-	jsr	$5222(a5)	; -> sub_1FE5A2
+	jsr	$5222(a5)	; -> Snd_Stop
 	pea.l	($D0).w
-	jsr	$521A(a5)	; -> sub_1FE584
+	jsr	$521A(a5)	; -> Snd_Play
 	moveq	#$1,d0
 	move.l	d0,-(a7)
 	move.w	$4C(a4),d1

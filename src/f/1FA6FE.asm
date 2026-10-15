@@ -24,7 +24,7 @@ sub_1FA6FE:
 	addq.w	#$8,a7
 loc_1FA744:
 	jsr	$5042(a5)	; -> sub_1FA956
-	jsr	$50FA(a5)	; -> sub_1FDA56
+	jsr	$50FA(a5)	; -> Pad_Update
 	ori.w	#$40,-$1D48(a5)
 	move.w	-$1D48(a5),($C00004).l
 	tst.b	-$38B4(a5)
@@ -40,7 +40,7 @@ loc_1FA764:
 	move.l	d0,-(a7)
 	moveq	#$0,d1
 	move.l	d1,-(a7)
-	jsr	$50F2(a5)	; -> sub_1FD998
+	jsr	$50F2(a5)	; -> Pal_StartFade
 	clr.b	-$38C6(a5)
 	move.b	#$1,-$38BE(a5)
 	jsr	sub_1FA7E8(pc)
@@ -54,7 +54,7 @@ loc_1FA764:
 	move.l	d0,-(a7)
 	moveq	#$7,d1
 	move.l	d1,-(a7)
-	jsr	$50F2(a5)	; -> sub_1FD998
+	jsr	$50F2(a5)	; -> Pal_StartFade
 	lea.l	$18(a7),a7
 	bra.s	loc_1FA7C8
 loc_1FA7C4:

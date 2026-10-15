@@ -10,9 +10,9 @@ sub_122E92:
 	move.l	a4,-(a7)
 	jsr	$4E42(a5)	; -> sub_1F626A
 	pea.l	($F9).w
-	jsr	$5222(a5)	; -> sub_1FE5A2
+	jsr	$5222(a5)	; -> Snd_Stop
 	pea.l	($F9).w
-	jsr	$521A(a5)	; -> sub_1FE584
+	jsr	$521A(a5)	; -> Snd_Play
 	lea.l	$10(a7),a7
 	move.w	#$FF,$6C(a4)
 	lea.l	sub_122E18(pc),a0

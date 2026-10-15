@@ -56,10 +56,10 @@ loc_10B8C4:
 	clr.w	$A(a0)
 	moveq	#$35,d0
 	move.l	d0,-(a7)
-	jsr	$5222(a5)	; -> sub_1FE5A2
+	jsr	$5222(a5)	; -> Snd_Stop
 	moveq	#$35,d0
 	move.l	d0,-(a7)
-	jsr	$521A(a5)	; -> sub_1FE584
+	jsr	$521A(a5)	; -> Snd_Play
 	move.w	-$1754(a5),d0
 	ext.l	d0
 	move.w	#$C000,d1

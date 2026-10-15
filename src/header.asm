@@ -28,9 +28,9 @@ Vectors:
 	dc.l	JumpTable	; 25
 	dc.l	JumpTable	; 26
 	dc.l	JumpTable	; 27
-	dc.l	sub_1F4870	; 28 IRQ4 / H-int
+	dc.l	Irq_HBlankVector	; 28 IRQ4 / H-int
 	dc.l	JumpTable	; 29
-	dc.l	sub_1F4860	; 30 IRQ6 / V-int
+	dc.l	Irq_VBlankVector	; 30 IRQ6 / V-int
 	dc.l	JumpTable	; 31
 	dc.l	JumpTable	; 32
 	dc.l	JumpTable	; 33
@@ -88,7 +88,7 @@ A5Params:
 	dc.l	$001FFED4	; $204
 	dc.l	$00FFC518	; $208
 	dc.l	$00000000	; $20C
-	dc.l	sub_1FDCCA	; $210
-	dc.l	sub_1FDD0C	; $214
+	dc.l	Irq_VBlank	; $210
+	dc.l	Irq_HBlank	; $214
 	dc.l	$00000000	; $218
 	dc.l	sub_005466	; $21C

@@ -101,7 +101,7 @@ loc_099170:
 	movea.l	-$35B6(a5),a1
 	move.l	a0,$1C(a1)
 	move.b	#$1,-$3892(a5)
-	jsr	$5242(a5)	; -> sub_1FE5F2
+	jsr	$5242(a5)	; -> Snd_StopAll
 	move.l	a4,-(a7)
 	jsr	sub_098CC8(pc)
 	subq.w	#$1,d0

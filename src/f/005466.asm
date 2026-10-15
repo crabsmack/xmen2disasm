@@ -23,7 +23,7 @@ loc_005486:
 	addq.w	#$1,d7
 	cmpi.w	#$6,d7
 	ble.s	loc_005486
-	jsr	$4192(a5)	; -> sub_160642
+	jsr	$4192(a5)	; -> Sys_InitHardware
 	jsr	$5042(a5)	; -> sub_1FA956
 	clr.b	-$38BE(a5)
 	clr.b	-$3A08(a5)

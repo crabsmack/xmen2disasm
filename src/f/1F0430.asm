@@ -7,7 +7,7 @@ sub_1F0430:
 	movea.l	$8(a6),a4
 	moveq	#$52,d0
 	move.l	d0,-(a7)
-	jsr	$5222(a5)	; -> sub_1FE5A2
+	jsr	$5222(a5)	; -> Snd_Stop
 	move.l	a4,-(a7)
 	movea.l	(a4),a0
 	movea.l	$46(a0),a1

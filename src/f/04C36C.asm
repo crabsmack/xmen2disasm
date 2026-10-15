@@ -36,9 +36,9 @@ loc_04C3AA:
 	clr.l	$16(a4)
 	clr.w	$20(a4)
 	pea.l	($EB).w
-	jsr	$5222(a5)	; -> sub_1FE5A2
+	jsr	$5222(a5)	; -> Snd_Stop
 	pea.l	($EB).w
-	jsr	$521A(a5)	; -> sub_1FE584
+	jsr	$521A(a5)	; -> Snd_Play
 	tst.w	$68(a4)
 	addq.w	#$8,a7
 	bgt.s	loc_04C3FC

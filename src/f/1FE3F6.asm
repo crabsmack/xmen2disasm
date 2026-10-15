@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_1FE3F6
+; Z80_DriverPause - ask the Z80 sound driver to hold off and wait until it acknowledges (before DMA)
+; In:  none
+; Out: none
+; Evidence: SR masked; under the bus writes 1 to Z80 RAM $1B20, reads $1B21 and retries after a short delay until it is 0; called first by VDP_FlushDmaQueue, undone by Z80_DriverResume
 ; ---------------------------------------------------------------------------
-sub_1FE3F6:
+Z80_DriverPause:
 	move.w	sr,-(a7)
 	ori.w	#$700,sr
 loc_1FE3FC:

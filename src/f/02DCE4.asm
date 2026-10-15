@@ -6,9 +6,9 @@ sub_02DCE4:
 	movem.l	d5-d7/a4,-(a7)
 	moveq	#$18,d6
 	pea.l	($E2).w
-	jsr	$5222(a5)	; -> sub_1FE5A2
+	jsr	$5222(a5)	; -> Snd_Stop
 	pea.l	($E2).w
-	jsr	$521A(a5)	; -> sub_1FE584
+	jsr	$521A(a5)	; -> Snd_Play
 	tst.b	$B(a6)
 	beq.s	loc_02DD0C
 	moveq	#$2,d7

@@ -49,14 +49,14 @@ sub_087E0C:
 	jsr	$3B6A(a5)	; -> sub_13F58A
 	moveq	#$34,d0
 	move.l	d0,-(a7)
-	jsr	$5222(a5)	; -> sub_1FE5A2
+	jsr	$5222(a5)	; -> Snd_Stop
 	moveq	#$34,d0
 	move.l	d0,-(a7)
-	jsr	$521A(a5)	; -> sub_1FE584
+	jsr	$521A(a5)	; -> Snd_Play
 	pea.l	($CF).w
-	jsr	$5222(a5)	; -> sub_1FE5A2
+	jsr	$5222(a5)	; -> Snd_Stop
 	pea.l	($CF).w
-	jsr	$521A(a5)	; -> sub_1FE584
+	jsr	$521A(a5)	; -> Snd_Play
 	lea.l	$40(a7),a7
 	move.w	#$2,$6C(a4)
 	lea.l	sub_087EBE(pc),a0

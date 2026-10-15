@@ -19,14 +19,14 @@ sub_006584:
 	pea.l	($200).w
 	move.l	#$FD00,-(a7)
 	move.l	a4,-(a7)
-	jsr	$51DA(a5)	; -> sub_1FE17A
+	jsr	$51DA(a5)	; -> VDP_QueueDma
 	lea.l	$C(a7),a7
 	bra.s	loc_0065DE
 loc_0065CA:
 	pea.l	($140).w
 	move.l	#$FD00,-(a7)
 	move.l	a3,-(a7)
-	jsr	$51DA(a5)	; -> sub_1FE17A
+	jsr	$51DA(a5)	; -> VDP_QueueDma
 	lea.l	$C(a7),a7
 loc_0065DE:
 	move.w	-$1844(a5),d0
@@ -41,14 +41,14 @@ loc_0065DE:
 	pea.l	($200).w
 	move.l	#$FA00,-(a7)
 	move.l	a4,-(a7)
-	jsr	$51DA(a5)	; -> sub_1FE17A
+	jsr	$51DA(a5)	; -> VDP_QueueDma
 	lea.l	$C(a7),a7
 	bra.s	loc_006624
 loc_006610:
 	pea.l	($140).w
 	move.l	#$FA00,-(a7)
 	move.l	a3,-(a7)
-	jsr	$51DA(a5)	; -> sub_1FE17A
+	jsr	$51DA(a5)	; -> VDP_QueueDma
 	lea.l	$C(a7),a7
 loc_006624:
 	jsr	sub_006386(pc)

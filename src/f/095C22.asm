@@ -8,9 +8,9 @@ sub_095C22:
 	tst.l	$9C(a4)
 	beq.s	loc_095C6C
 	pea.l	($F2).w
-	jsr	$5222(a5)	; -> sub_1FE5A2
+	jsr	$5222(a5)	; -> Snd_Stop
 	pea.l	($F2).w
-	jsr	$521A(a5)	; -> sub_1FE584
+	jsr	$521A(a5)	; -> Snd_Play
 	movea.l	$9C(a4),a0
 	move.l	a0,-(a7)
 	movea.l	(a0),a0

@@ -5,9 +5,9 @@ sub_0E9D3A:
 	link.w	a6,#$0
 	move.b	#$1,-$3BE6(a5)
 	pea.l	($D1).w
-	jsr	$5222(a5)	; -> sub_1FE5A2
+	jsr	$5222(a5)	; -> Snd_Stop
 	pea.l	($D1).w
-	jsr	$521A(a5)	; -> sub_1FE584
+	jsr	$521A(a5)	; -> Snd_Play
 	jsr	$2832(a5)	; -> sub_0EB670
 	movea.l	-$35B6(a5),a0
 	move.l	a0,-(a7)

@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_1F4EFC	[jt 2489]
+; VDP_UpdateScroll - write pending plane scroll values to the H-scroll table (VRAM $F400) and VSRAM, and ease camera values toward their targets
+; In:  none
+; Out: none
+; Evidence: flag bytes -$3A56/-$3A58/-$3A5A/-$3A5C ($FFC7AA/A8/A6/A4) select which of VRAM $F400/$F402 (commands $74000003/$74020003) and VSRAM 0/2 to write; -$3A5A also writes 40 column words from -$9C6(a5); then steps four words $FFC764-$FFC772 by 1 toward limits
 ; ---------------------------------------------------------------------------
-sub_1F4EFC:
+VDP_UpdateScroll:
 	link.w	a6,#$0
 	movem.l	d3/d7,-(a7)
 	moveq	#$0,d0

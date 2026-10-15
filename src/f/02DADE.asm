@@ -9,11 +9,11 @@ sub_02DADE:
 	move.b	$6B(a4),$A7(a4)
 	ori.w	#$40,$6(a4)
 	pea.l	($DF).w
-	jsr	$5222(a5)	; -> sub_1FE5A2
+	jsr	$5222(a5)	; -> Snd_Stop
 	pea.l	($D8).w
-	jsr	$5222(a5)	; -> sub_1FE5A2
+	jsr	$5222(a5)	; -> Snd_Stop
 	pea.l	($D8).w
-	jsr	$521A(a5)	; -> sub_1FE584
+	jsr	$521A(a5)	; -> Snd_Play
 	move.b	$17(a6),d0
 	ext.w	d0
 	sub.w	d0,$68(a4)

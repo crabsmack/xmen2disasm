@@ -4,7 +4,7 @@
 sub_0227E0:
 	link.w	a6,#$0
 	move.l	a4,-(a7)
-	jsr	$5242(a5)	; -> sub_1FE5F2
+	jsr	$5242(a5)	; -> Snd_StopAll
 	lea.l	$4E2(a5),a0
 	move.l	$2(a0),-(a7)
 	moveq	#$0,d0
@@ -70,7 +70,7 @@ sub_0227E0:
 	move.l	d0,-(a7)
 	jsr	$4FDA(a5)	; -> sub_1F9D04
 	jsr	$5002(a5)	; -> sub_1FA6FE
-	jsr	$5242(a5)	; -> sub_1FE5F2
+	jsr	$5242(a5)	; -> Snd_StopAll
 	movea.l	-$4(a6),a4
 	unlk	a6
 	rts

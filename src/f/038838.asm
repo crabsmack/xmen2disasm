@@ -22,7 +22,7 @@ loc_03885A:
 	lsl.l	#$5,d1
 	move.l	d1,-(a7)
 	move.l	a4,-(a7)
-	jsr	$51DA(a5)	; -> sub_1FE17A
+	jsr	$51DA(a5)	; -> VDP_QueueDma
 	addq.l	#$4,d7
 	adda.w	#$20,a4
 	moveq	#$20,d0
@@ -31,7 +31,7 @@ loc_03885A:
 	lsl.l	#$5,d1
 	move.l	d1,-(a7)
 	move.l	a4,-(a7)
-	jsr	$51DA(a5)	; -> sub_1FE17A
+	jsr	$51DA(a5)	; -> VDP_QueueDma
 	addq.l	#$4,d7
 	adda.w	#$20,a4
 	moveq	#$20,d0
@@ -40,7 +40,7 @@ loc_03885A:
 	lsl.l	#$5,d1
 	move.l	d1,-(a7)
 	move.l	a4,-(a7)
-	jsr	$51DA(a5)	; -> sub_1FE17A
+	jsr	$51DA(a5)	; -> VDP_QueueDma
 	addq.l	#$4,d7
 	adda.w	#$20,a4
 	moveq	#$20,d0
@@ -49,7 +49,7 @@ loc_03885A:
 	lsl.l	#$5,d1
 	move.l	d1,-(a7)
 	move.l	a4,-(a7)
-	jsr	$51DA(a5)	; -> sub_1FE17A
+	jsr	$51DA(a5)	; -> VDP_QueueDma
 	addq.l	#$4,d7
 	adda.w	#$20,a4
 	lea.l	$30(a7),a7

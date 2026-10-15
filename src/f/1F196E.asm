@@ -61,7 +61,7 @@ loc_1F19DE:
 	lsl.l	#$5,d0
 	move.l	d0,-(a7)
 	move.l	a4,-(a7)
-	jsr	$51DA(a5)	; -> sub_1FE17A
+	jsr	$51DA(a5)	; -> VDP_QueueDma
 	add.w	d5,d4
 	lea.l	$C(a7),a7
 loc_1F1A18:

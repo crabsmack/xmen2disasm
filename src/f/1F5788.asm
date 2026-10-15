@@ -17,7 +17,7 @@ sub_1F5788:
 loc_1F57B0:
 	clr.b	-$1(a6)
 loc_1F57B4:
-	jsr	sub_1F5254(pc)
+	jsr	Scroll_Init(pc)
 	move.b	$2F(a6),d7
 	move.b	d7,-$3AB4(a5)
 	move.b	d7,-$3AB6(a5)
@@ -243,7 +243,7 @@ loc_1F59D8:
 	move.w	$E(a3),d0
 	add.l	a3,d0
 	move.l	d0,-(a7)
-	jsr	$519A(a5)	; -> sub_1FE002
+	jsr	$519A(a5)	; -> VDP_WriteWords
 	addq.w	#$8,a7
 	bra.w	loc_1F5CD2
 loc_1F5A5C:

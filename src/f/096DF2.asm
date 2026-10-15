@@ -90,9 +90,9 @@ loc_096EA4:
 	lea.l	$10(a7),a7
 loc_096EC4:
 	pea.l	($F4).w
-	jsr	$5222(a5)	; -> sub_1FE5A2
+	jsr	$5222(a5)	; -> Snd_Stop
 	pea.l	($F4).w
-	jsr	$521A(a5)	; -> sub_1FE584
+	jsr	$521A(a5)	; -> Snd_Play
 	subq.b	#$1,$B9(a4)
 	tst.b	$B9(a4)
 	addq.w	#$8,a7

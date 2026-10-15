@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_1FDFCE
+; VDP_ClearVsram - zero the 40 words of VSRAM
+; In:  none
+; Out: none
+; Evidence: command $40000010 (VSRAM write 0), 40 zero words to $C00000
 ; ---------------------------------------------------------------------------
-sub_1FDFCE:
+VDP_ClearVsram:
 	move.l	#$40000010,($C00004).l
 	moveq	#$0,d1
 	moveq	#$27,d0
