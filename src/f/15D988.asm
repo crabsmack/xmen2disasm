@@ -9,7 +9,7 @@ Obj_AllocPool:
 	movem.l	d7/a3-a4,-(a7)
 	move.w	$A(a6),d7
 	addq.w	#$2,d7
-	pea.l	Str_ObjPoolTags+$2(pc)
+	pea.l	Str_ObjPoolTagPtrs(pc)
 	ext.l	d7
 	move.l	d7,d0
 	lsl.l	#$2,d0

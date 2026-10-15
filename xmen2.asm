@@ -5149,7 +5149,9 @@ Sw_15C42A:	; switch table of sub at $15C42A: 9 word offsets from Sw_15C42A-2
 	include "src/f/15D980.asm"
 	include "src/f/15D988.asm"
 Str_ObjPoolTags:	; two empty C strings: Mem_StackAlloc tags of the object storage ($15DA34) and object pointer table ($15DA36) in Obj_AllocPool
-	incrom	$15DA34,$4
+	incrom	$15DA34,$2
+Str_ObjPoolTagPtrs:	; empty C string: Mem_StackAlloc tag of the object pointer table (Obj_AllocPool)
+	incrom	$15DA36,$2
 	include "src/f/15DA38.asm"
 	include "src/f/15DA90.asm"
 	include "src/f/15DAD8.asm"
@@ -5969,7 +5971,17 @@ Boot_SetupValues:	; Sega ICD_BLK4 boot setup table read by EntryPoint (lea into 
 	include "src/f/1F44A8.asm"
 	include "src/f/1F45AE.asm"
 RegionCheck_Data:	; Sega region-lockout data for Boot_RegionCheck: region code letters (J/U/E/B/S), "DEVELOPED FOR USE ONLY WITH ... SYSTEMS" message strings, then a 1bpp 8x8 font (ASCII $20-$5A) to print them
-	incrom	$1F45E4,$25A
+	incrom	$1F45E4,$4
+Tbl_RegionCodePairs:	; word pairs {region letter, flag} for the region check, ending with a 0 word (Boot_RegionCheck)
+	incrom	$1F45E8,$14
+Str_RegionMsgDeveloped:	; length-prefixed text "DEVELOPED FOR USE ONLY WITH" (Boot_RegionCheck lockout screen)
+	incrom	$1F45FC,$1D
+Str_RegionMsgSystemsPos:	; 2 bytes before "SYSTEMS.": text position/length data used by Boot_RegionCheck
+	incrom	$1F4619,$3
+Str_RegionMsgSystems:	; length-prefixed text "SYSTEMS." then the console names (NTSC MEGA DRIVE, NTSC GENESIS, PAL AND FRENCH SECAM MEGA DRIVE)
+	incrom	$1F461C,$4A
+Art_RegionFont:	; 1bpp 8x8 font, ASCII $20 up (blank first), 8 bytes per glyph, for the region lockout text
+	incrom	$1F4666,$1D8
 	include "src/f/1F483E.asm"
 	include "src/f/1F4854.asm"
 	include "src/f/1F485A.asm"
@@ -6002,7 +6014,9 @@ Tbl_AvalonA3New:	; table read by Cam_New; 30 of 46 bytes used at runtime; read b
 	include "src/f/1F5612.asm"
 	include "src/f/1F5788.asm"
 Str_RowTableTags:	; two empty C strings: Mem_StackAlloc tags of the BG ($1F5EFC) and FG ($1F5EFE) row-offset tables (Level_LoadMaps)
-	incrom	$1F5EFC,$4
+	incrom	$1F5EFC,$2
+Str_RowTableTagFg:	; empty C string: Mem_StackAlloc tag of the FG row-offset table (Level_LoadMaps)
+	incrom	$1F5EFE,$2
 Str_APlaneTilesNoB:	; C string "A PLANE TILES -- NO B" (used by Level_LoadMaps)
 	incrom	$1F5F00,$16
 Str_BTilesTag:	; empty C string: Mem_StackAlloc tag of the BG block table (Level_LoadMaps)
@@ -6012,7 +6026,11 @@ Str_APlaneTiles:	; C string "A PLANE TILES" (used by Level_LoadMaps)
 Str_AbTilesSharing:	; C string "AB TILES -- SHARING" (used by Level_LoadMaps)
 	incrom	$1F5F26,$14
 Str_MapBufTags:	; three empty C strings: Mem_StackAlloc tags of the FG block table ($1F5F3A), BG layout ($1F5F3C) and FG layout ($1F5F3E) buffers (Level_LoadMaps)
-	incrom	$1F5F3A,$6
+	incrom	$1F5F3A,$2
+Str_MapBufTagBg:	; empty C string: Mem_StackAlloc tag of the BG layout buffer (Level_LoadMaps)
+	incrom	$1F5F3C,$2
+Str_MapBufTagFg:	; empty C string: Mem_StackAlloc tag of the FG layout buffer (Level_LoadMaps)
+	incrom	$1F5F3E,$2
 	include "src/f/1F5F40.asm"
 	include "src/f/1F5F5A.asm"
 	include "src/f/1F5F78.asm"

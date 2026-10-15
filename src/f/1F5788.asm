@@ -250,7 +250,7 @@ loc_1F59D8:
 	addq.w	#$8,a7
 	bra.w	loc_1F5CD2
 loc_1F5A5C:
-	pea.l	Str_MapBufTags+$4(pc)
+	pea.l	Str_MapBufTagFg(pc)
 	move.w	-$3A6E(a5),d0
 	ext.l	d0
 	add.l	d0,d0
@@ -290,7 +290,7 @@ loc_1F5AC6:
 	bne.s	loc_1F5AE0
 	move.l	$10(a6),$14(a6)
 loc_1F5AE0:
-	pea.l	Str_MapBufTags+$2(pc)
+	pea.l	Str_MapBufTagBg(pc)
 	move.w	-$3A7A(a5),d0
 	ext.l	d0
 	add.l	d0,d0
@@ -468,7 +468,7 @@ loc_1F5CD2:
 loc_1F5CEA:
 	addi.w	#$E0,-$3ACC(a5)
 loc_1F5CF0:
-	pea.l	Str_RowTableTags+$2(pc)
+	pea.l	Str_RowTableTagFg(pc)
 	move.w	-$3A78(a5),d0
 	ext.l	d0
 	add.l	d0,d0
