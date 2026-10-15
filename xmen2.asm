@@ -260,7 +260,7 @@ Tbl_BigAcolyteFightScriptLen:	; word $14: entry count of the BIGACOLYTE fight AI
 	incrom	$0119FE,$1
 	incrom	$0119FF,$1
 	include "src/f/011A00.asm"
-Tbl_BigAcolyteRowBlocksLast80:	; table read by Scaler_RowBlocksLast80; 604 of 626 bytes used at runtime; read by Scaler_RowBlocksLast80; jt[59] used by BigAcolyte_ActAppear
+Art_BigAcolytePicture:	; big acolyte picture: source data for BigAcolyte_RenderScaled -> Scaler_Start (read by the unrolled scaler row loop), drawn growing during the intro (BigAcolyte_ActAppear); layout not established (word $12, word 0, $2030, then colour-like words); 604 of 626 bytes used at runtime; read by Scaler_RowBlocksLast80; jt[59] used by BigAcolyte_ActAppear
 	incrom	$011A50,$626
 Art_BigAcolyteSpr:	; sprite definition (type $18, raw 4bpp tiles): $24-byte header, $14-byte frame records, pieces, tiles; F00 of 1024 bytes used at runtime; read by VDP_FlushDmaQueue; DMA to VRAM $ACE0-B600; jt[60] used by BigAcolyte_Init
 	incrom	$012076,$1024
@@ -341,7 +341,7 @@ Tbl_FarAcolyte_vtable:	; class descriptor of FARACOLYTE: word name offset $7E, p
 	incrom	$017E28,$89
 Pad_FarAcolyte:	; $00 fill; never read in the corpus; between FarAcolyte_StateDie and ShootAcolyte_GetSize
 	incrom	$017EB1,$1
-Tbl_CapedAcolyteMove:	; table read by CapedAcolyte_Move; 122 of 124 bytes used at runtime; read by CapedAcolyte_Move, FarAcolyte_Move; jt[100] used by CapedAcolyte_Init, CapedAcolyte_Move, FarAcolyte_Init
+Tbl_CapedAcolyteHoverOffsets:	; hover offsets (+$B4; CapedAcolyte_Move and FarAcolyte_Move): (x, y) word pairs in 8.8 fixed point added to the home position, one per step, ended by $6400 (restart); 122 of 124 bytes used at runtime; read by CapedAcolyte_Move, FarAcolyte_Move; jt[100] used by CapedAcolyte_Init, CapedAcolyte_Move, FarAcolyte_Init
 	incrom	$017EB2,$124
 	include "src/f/017FD6.asm"
 	include "src/f/017FE4.asm"
@@ -749,7 +749,7 @@ Tbl_MagnetoBossQuake2:	; camera shake script (format at Tbl_MagnetoBossQuake1): 
 	incrom	$035B00,$E
 Tbl_MagnetoBossQuake3:	; camera shake script (format at Tbl_MagnetoBossQuake1): MagnetoBoss intro shake 3 (+-4 px); D of E bytes used at runtime; read by Cam_ShakeStep; jt[232] used by MagnetoBoss_StateIntroShake3
 	incrom	$035B0E,$E
-Tbl_MagnetoBossMove:	; table read by MagnetoBoss_Move; 40 of 40 bytes used at runtime; read by MagnetoBoss_Move; jt[233] used by MagnetoBoss_Init
+Tbl_MagnetoBossOrbitWave:	; wave table: 32 words, one sine period in Q15 ($0000 up to $7FFF, back, down to $8001), the orbit offsets MagnetoBoss_Move adds from +$94 (x phase +$98, y phase +$98 + +$9A, shift +$99); set by MagnetoBoss_Init; 40 of 40 bytes used at runtime; read by MagnetoBoss_Move; jt[233] used by MagnetoBoss_Init
 	incrom	$035B1C,$40
 Tbl_MagnetoBoss_vtable:	; class descriptor of MAGNETOBOSS: word name offset $72, parent ACTOR, 27 method slots from +6, then the name (tools/classes.py)
 	incrom	$035B5C,$7E
@@ -992,7 +992,7 @@ Tbl_ApocalypseAnim3:	; animation script (byte flags, byte steps, ..., 2-byte ste
 	incrom	$04B120,$1A
 Tbl_ApocalypseAnim4:	; animation script (NOTES: Animation scripts); never read in the corpus; jt[312] used by Apocalypse_StateHurt -> Obj_SetAnim
 	incrom	$04B13A,$A
-Tbl_ApocalypseInit:	; format not established; never read in the corpus; jt[313] used by Apocalypse_Init
+Tbl_ApocalypseWave:	; wave table: the same 32-word Q15 sine period as Tbl_MagnetoBossOrbitWave; set in +$B2 by Apocalypse_Init, wave offsets added by Apocalypse_Move when +$8C bit 6 is set; never read in the corpus; jt[313] used by Apocalypse_Init
 	incrom	$04B144,$40
 Tbl_Apocalypse_ScriptALen:	; word 6: step count of the AI script Apocalypse_ScriptA that follows; set by Apocalypse_Init (AiScript_Set(+$A2)); read by Apocalypse_StateWaitEntrance (next-step wrap test); 2 of 2 bytes used at runtime; read by Apocalypse_StateWaitEntrance; jt[314] used by Apocalypse_Init
 	incrom	$04B184,$2
@@ -1016,17 +1016,17 @@ Tbl_ApocalypseChoiceScript2:	; AI script: word count 12, then jmp thunks (orbit 
 	incrom	$04B25E,$32
 Tbl_ApocalypseChoiceScript3:	; AI script: word count 12, then jmp thunks (orbit / go near the player / rotate, no ActNextScriptChoice at the end, so it wraps); fourth choice of Apocalypse_ActPickScript; never read in the corpus; jt[322] used by Apocalypse_ActPickScript_part2 -> AiScript_Set
 	incrom	$04B290,$32
-Tbl_ApocalypseStateDropBombs:	; table read by Apocalypse_StateDropBombs; A of C bytes used at runtime; read by Apocalypse_StateDropBombs; jt[323] used by Apocalypse_SelectBombPattern_part1, Apocalypse_SelectBombPattern_part3
+Tbl_ApocalypseBombPattern0:	; APOCALYPSE bomb pattern (Apocalypse_SelectBombPattern by +$AE, dropped by Apocalypse_StateDropBombs): {word bomb param (0/1/$10/$11, passed to ApocBomb_Spawn), word delay} entries ended by -1; pattern 0; A of C bytes used at runtime; read by Apocalypse_StateDropBombs; jt[323] used by Apocalypse_SelectBombPattern_part1, Apocalypse_SelectBombPattern_part3
 	incrom	$04B2C2,$C
-Tbl_ApocalypseStateDropBombs2:	; table read by Apocalypse_StateDropBombs; E of 10 bytes used at runtime; read by Apocalypse_StateDropBombs; jt[324] used by Apocalypse_SelectBombPattern_part1
+Tbl_ApocalypseBombPattern1:	; APOCALYPSE bomb pattern (format at Tbl_ApocalypseBombPattern0): pattern 1; E of 10 bytes used at runtime; read by Apocalypse_StateDropBombs; jt[324] used by Apocalypse_SelectBombPattern_part1
 	incrom	$04B2CE,$10
-Tbl_ApocalypseStateDropBombs3:	; table read by Apocalypse_StateDropBombs; 12 of 14 bytes used at runtime; read by Apocalypse_StateDropBombs; jt[325] used by Apocalypse_SelectBombPattern_part1
+Tbl_ApocalypseBombPattern2:	; APOCALYPSE bomb pattern (format at Tbl_ApocalypseBombPattern0): pattern 2; 12 of 14 bytes used at runtime; read by Apocalypse_StateDropBombs; jt[325] used by Apocalypse_SelectBombPattern_part1
 	incrom	$04B2DE,$14
-Tbl_ApocalypseStateDropBombs4:	; table read by Apocalypse_StateDropBombs; 12 of 14 bytes used at runtime; read by Apocalypse_StateDropBombs; jt[326] used by Apocalypse_SelectBombPattern_part1
+Tbl_ApocalypseBombPattern3:	; APOCALYPSE bomb pattern (format at Tbl_ApocalypseBombPattern0): pattern 3; 12 of 14 bytes used at runtime; read by Apocalypse_StateDropBombs; jt[326] used by Apocalypse_SelectBombPattern_part1
 	incrom	$04B2F2,$14
-Tbl_ApocalypseStateDropBombs5:	; table read by Apocalypse_StateDropBombs; 12 of 14 bytes used at runtime; read by Apocalypse_StateDropBombs; jt[327] used by Apocalypse_SelectBombPattern_part1
+Tbl_ApocalypseBombPattern4:	; APOCALYPSE bomb pattern (format at Tbl_ApocalypseBombPattern0): pattern 4; 12 of 14 bytes used at runtime; read by Apocalypse_StateDropBombs; jt[327] used by Apocalypse_SelectBombPattern_part1
 	incrom	$04B306,$14
-Tbl_ApocalypseStateDropBombs6:	; table read by Apocalypse_StateDropBombs; 1A of 1C bytes used at runtime; read by Apocalypse_StateDropBombs; jt[328] used by Apocalypse_SelectBombPattern_part2
+Tbl_ApocalypseBombPattern5:	; APOCALYPSE bomb pattern (format at Tbl_ApocalypseBombPattern0): pattern 5; 1A of 1C bytes used at runtime; read by Apocalypse_StateDropBombs; jt[328] used by Apocalypse_SelectBombPattern_part2
 	incrom	$04B31A,$1C
 	include "src/f/04B336.asm"
 	include "src/f/04B344.asm"
@@ -1181,7 +1181,7 @@ Tbl_BoulderQuake:	; camera shake script (format at Tbl_MagnetoBossQuake1): BOULD
 	incrom	$05A852,$12
 Tbl_BoulderQuake2:	; camera shake script (format at Tbl_MagnetoBossQuake1): BOULDER bounce (weaker), vertical only; 13 of 14 bytes used at runtime; read by Cam_ShakeStep; jt[397] used by Boulder_StateBounce
 	incrom	$05A864,$14
-Tbl_BoulderNextWrap:	; table read by Seq_NextWrap; A of A bytes used at runtime; read by Seq_NextWrap; jt[398] used by Boulder_SpawnerTick
+Tbl_BoulderSpawnDelays:	; word sequence for Seq_NextWrap, -1 = restart: frames between boulders (100, 100, 100, 300) in the BaniMazaB2 boulder rain (Boulder_SpawnerTick); A of A bytes used at runtime; read by Seq_NextWrap; jt[398] used by Boulder_SpawnerTick
 	incrom	$05A878,$A
 Tbl_BaniMazaB2Parallax:	; parallax descriptor (format at Tbl_AvalonB1Parallax): line h-scroll, count 12; 42 of 62 bytes used at runtime; read by Scroll_ComputeParallax, Scroll_SetParallax; jt[399] used by BaniMazaB2_SetParallax
 	incrom	$05A882,$62
@@ -1360,37 +1360,37 @@ Tbl_CerebroVdp:	; words copied to the VDP data port by VDP_WriteWords; FFC of FF
 	incrom	$0608E2,$FFC
 Art_CerebroSpr:	; sprite definition (type $18, raw 4bpp tiles): $24-byte header, $14-byte frame records, pieces, tiles; 1460 of 149C bytes used at runtime; read by Spr_RenderToBitmap_Loop, Nem_DecodeLoop, Mem_Copy; DMA to VRAM $A620-B4E0; jt[440] used by Cerebro_PlayIntro
 	incrom	$0618DE,$149C
-Tbl_CerebroRenderToBitmap_Loop:	; table read by Spr_RenderToBitmap_Loop; 134 of 134 bytes used at runtime; read by Spr_RenderToBitmap_Loop, Nem_DecodeLoop, Mem_Copy; jt[441] used by Cerebro_PlayIntro
+Map_CerebroIntroPic2:	; raw tilemap, $9A words of tile numbers from 0: Cerebro_PlayIntro copies it to RAM, adds $4000 + the VRAM tile base of Art_CerebroIntroPic2 and draws it (second intro picture); 134 of 134 bytes used at runtime; read by Spr_RenderToBitmap_Loop, Nem_DecodeLoop, Mem_Copy; jt[441] used by Cerebro_PlayIntro
 	incrom	$062D7A,$134
-Tbl_CerebroRenderToBitmap_Loop2:	; table read by Spr_RenderToBitmap_Loop; 79C of 79C bytes used at runtime; read by Spr_RenderToBitmap_Loop, Nem_DecodeLoop, Mem_Copy; jt[442] used by Cerebro_PlayIntro
+Art_CerebroIntroPic2:	; Nemesis-style compressed 4bpp tiles (Art_LoadNemToVram) of the second Cerebro intro picture (Map_CerebroIntroPic2; Cerebro_PlayIntro); 79C of 79C bytes used at runtime; read by Spr_RenderToBitmap_Loop, Nem_DecodeLoop, Mem_Copy; jt[442] used by Cerebro_PlayIntro
 	incrom	$062EAE,$79C
-Tbl_CerebroRenderToBitmap_Loop3:	; table read by Spr_RenderToBitmap_Loop; 180 of 180 bytes used at runtime; read by Spr_RenderToBitmap_Loop, Nem_DecodeLoop, Mem_Copy; jt[443] used by Cerebro_PlayIntro
+Map_CerebroIntroPic1:	; raw tilemap, $C0 words of tile numbers from 0: Cerebro_PlayIntro copies it to RAM, adds $4000 + the VRAM tile base of Art_CerebroIntroPic1 and draws it (first intro picture); 180 of 180 bytes used at runtime; read by Spr_RenderToBitmap_Loop, Nem_DecodeLoop, Mem_Copy; jt[443] used by Cerebro_PlayIntro
 	incrom	$06364A,$180
-Tbl_CerebroRenderToBitmap_Loop4:	; table read by Spr_RenderToBitmap_Loop; 40C of 40C bytes used at runtime; read by Spr_RenderToBitmap_Loop, Nem_DecodeLoop, Mem_Copy; jt[444] used by Cerebro_PlayIntro
+Art_CerebroIntroPic1:	; Nemesis-style compressed 4bpp tiles (Art_LoadNemToVram) of the first Cerebro intro picture (Map_CerebroIntroPic1; Cerebro_PlayIntro); 40C of 40C bytes used at runtime; read by Spr_RenderToBitmap_Loop, Nem_DecodeLoop, Mem_Copy; jt[444] used by Cerebro_PlayIntro
 	incrom	$0637CA,$40C
-Tbl_Pause:	; format not established; never read in the corpus; jt[445] used by Pause_HandleInput_EndCode
+Tbl_CheatCodeHealthAlt:	; pause cheat code (g_PauseCheatPtr, checked by Pause_HandleInput): pad 1 presses (1 Up, 2 Down, 4 Left, 8 Right, $10 B, $20 C, $40 A) ending $FF; health refill (chord C+Up), the variant used while pad 2 holds Left+Right: Down, Up, C; never read in the corpus; jt[445] used by Pause_HandleInput_EndCode
 	incrom	$063BD6,$4
-Tbl_Pause2:	; format not established; never read in the corpus; jt[446] used by Pause_HandleInput_EndCode
+Tbl_CheatCodeLivesAlt:	; pause cheat code (format at Tbl_CheatCodeHealthAlt): 99 lives (chord C+Down), variant while pad 2 holds Left+Right: Up, Down, C; never read in the corpus; jt[446] used by Pause_HandleInput_EndCode
 	incrom	$063BDA,$4
-Tbl_Pause3:	; format not established; never read in the corpus; jt[447] used by Pause_HandleInput_EndCode
+Tbl_CheatCodeSceneSkipAlt:	; pause cheat code (format at Tbl_CheatCodeHealthAlt): previous/next scene (chords C+Left/C+Right), variant while pad 2 holds Left+Right: A, B, C; never read in the corpus; jt[447] used by Pause_HandleInput_EndCode
 	incrom	$063BDE,$4
-Tbl_Pause4:	; format not established; never read in the corpus; jt[448] used by Pause_HandleInput_EndCode
+Tbl_CheatCodeFriendlyFireAlt:	; pause cheat code (format at Tbl_CheatCodeHealthAlt): players hit each other (chord B+Down), variant while pad 2 holds Left+Right: Up, Down, B; never read in the corpus; jt[448] used by Pause_HandleInput_EndCode
 	incrom	$063BE2,$4
-Tbl_Pause5:	; format not established; never read in the corpus; jt[449] used by Pause_HandleInput_EndCode
+Tbl_CheatCodeStageSkipAlt:	; pause cheat code (format at Tbl_CheatCodeHealthAlt): previous/next stage group (chords B+Left/B+Right), variant while pad 2 holds Left+Right: A, B, C; never read in the corpus; jt[449] used by Pause_HandleInput_EndCode
 	incrom	$063BE6,$4
-Tbl_Pause6:	; format not established; never read in the corpus; jt[450] used by Pause_HandleInput_EndCode
+Tbl_CheatCodeInvincibleAlt:	; pause cheat code (format at Tbl_CheatCodeHealthAlt): invincibility (chord B+Up), variant while pad 2 holds Left+Right: Down, Up, B; never read in the corpus; jt[450] used by Pause_HandleInput_EndCode
 	incrom	$063BEA,$4
-Tbl_Pause7:	; format not established; never read in the corpus; jt[451] used by Pause_HandleInput_EndCode
+Tbl_CheatCodeHealth:	; pause cheat code (format at Tbl_CheatCodeHealthAlt): health refill (chord C+Up): Down, Right, Left, Down, Right, Left, C; never read in the corpus; jt[451] used by Pause_HandleInput_EndCode
 	incrom	$063BEE,$8
-Tbl_Pause8:	; format not established; never read in the corpus; jt[452] used by Pause_HandleInput_EndCode
+Tbl_CheatCodeLives:	; pause cheat code (format at Tbl_CheatCodeHealthAlt): 99 lives (chord C+Down): Up, Left, Up, Right, Right, C; never read in the corpus; jt[452] used by Pause_HandleInput_EndCode
 	incrom	$063BF6,$8
-Tbl_PauseHandleInput:	; table read by Pause_HandleInput; 1 of 8 bytes used at runtime; read by Pause_HandleInput; jt[453] used by Pause_HandleInput_EndCode
+Tbl_CheatCodeSceneSkip:	; pause cheat code (format at Tbl_CheatCodeHealthAlt): previous/next scene (chords C+Left/C+Right): Up, Up, Left, Down, Down, Right, C; 1 of 8 bytes used at runtime; read by Pause_HandleInput; jt[453] used by Pause_HandleInput_EndCode
 	incrom	$063BFE,$8
-Tbl_Pause9:	; format not established; never read in the corpus; jt[454] used by Pause_HandleInput_EndCode
+Tbl_CheatCodeFriendlyFire:	; pause cheat code (format at Tbl_CheatCodeHealthAlt): players hit each other (chord B+Down): Down, Up, Right, Up, Down, Down, Down, B; never read in the corpus; jt[454] used by Pause_HandleInput_EndCode
 	incrom	$063C06,$A
-Tbl_PauseHandleInput2:	; table read by Pause_HandleInput; 1 of 8 bytes used at runtime; read by Pause_HandleInput; jt[455] used by Pause_HandleInput_EndCode
+Tbl_CheatCodeStageSkip:	; pause cheat code (format at Tbl_CheatCodeHealthAlt): previous/next stage group (chords B+Left/B+Right): Down, Left, Up, Up, Right, Right, B; 1 of 8 bytes used at runtime; read by Pause_HandleInput; jt[455] used by Pause_HandleInput_EndCode
 	incrom	$063C10,$8
-Tbl_PauseHandleInput3:	; table read by Pause_HandleInput; 1 of A bytes used at runtime; read by Pause_HandleInput; jt[456] used by Pause_HandleInput_EndCode
+Tbl_CheatCodeInvincible:	; pause cheat code (format at Tbl_CheatCodeHealthAlt): invincibility (chord B+Up): Up, Right, Down, Up, Right, Down, Down, Up, B; 1 of A bytes used at runtime; read by Pause_HandleInput; jt[456] used by Pause_HandleInput_EndCode
 	incrom	$063C18,$A
 Art_FailureNem:	; Nemesis-style compressed 4bpp tiles (Nem_Decode; code table built from pairs by the caller); 38 of 38 bytes used at runtime; read by Nem_DecodeLoop, Nem_BuildCodeTable; jt[457] used by Failure_RunScene
 	incrom	$063C22,$38
@@ -1411,9 +1411,9 @@ Sw_064638:	; switch table of sub at $064638: 7 word offsets from Sw_064638-2
 	dc.w	loc_0646AC-(Sw_064638-2), loc_0646BA-(Sw_064638-2), loc_0646C8-(Sw_064638-2)
 	include "src/f/064674.asm"
 	include "src/f/0646D6.asm"
-Tbl_PlayerSelect:	; format not established; never read in the corpus; referenced by PlayerSelect_AllocCharBuffers_Measure
+Str_Empty_0647CC:	; C string "" padded to 2 bytes: the Mem_StackAlloc tag of the character frame bitmap buffer (PlayerSelect_AllocCharBuffers_Measure); never read in the corpus; referenced by PlayerSelect_AllocCharBuffers_Measure
 	incrom	$0647CC,$2
-Tbl_PlayerSelect2:	; format not established; never read in the corpus; referenced by PlayerSelect_AllocCharBuffers_Measure
+Str_Empty_0647CE:	; C string "" padded to 2 bytes: the Mem_StackAlloc tag of g_ScaleTileBuf (PlayerSelect_AllocCharBuffers_Measure); never read in the corpus; referenced by PlayerSelect_AllocCharBuffers_Measure
 	incrom	$0647CE,$2
 	include "src/f/0647D0.asm"
 Sw_0647D0:	; switch table of sub at $0647D0: 7 word offsets from Sw_0647D0-2
@@ -1519,9 +1519,9 @@ Str_Press:	; C string "PRESS" (used by Cerebro_PlayIntro)
 	incrom	$066AFE,$6
 Str_DevelopedByHeadgamesInc:	; C string "DEVELOPED BY  HEADGAMES, INC." (used by Cerebro_PlayIntro)
 	incrom	$066B04,$1E
-Tbl_Cerebro10:	; format not established; never read in the corpus; referenced by Cerebro_PlayIntro
+Str_Empty_066B22:	; C string "" padded to 2 bytes: the Mem_StackAlloc tag of g_ScaleTileBuf ($1560 bytes; Cerebro_PlayIntro); never read in the corpus; referenced by Cerebro_PlayIntro
 	incrom	$066B22,$2
-Tbl_Cerebro11:	; format not established; never read in the corpus; referenced by Cerebro_PlayIntro
+Str_Empty_066B24:	; C string "" padded to 2 bytes: the Mem_StackAlloc tag of g_ScaleSrcBitmap ($2A56 bytes; Cerebro_PlayIntro); never read in the corpus; referenced by Cerebro_PlayIntro
 	incrom	$066B24,$2
 	include "src/f/066B26.asm"
 	include "src/f/066E80.asm"
@@ -1614,7 +1614,7 @@ Str_CerebroSavageText:	; Cerebro briefing text (Cerebro_PrintText); 159 of 162 b
 	incrom	$068A26,$162
 Str_CerebroSpaceText:	; Cerebro briefing text (Cerebro_PrintText); 235 of 252 bytes used at runtime; read by Cerebro_PrintText, Cerebro_TextOpPrint; jt[496] used by CerebroSpace_RunScene
 	incrom	$068B88,$252
-Tbl_FinalTextCerebro:	; data handed to Cerebro_Run (format not established); never read in the corpus; jt[497] used by FinalText_RunScene -> Cerebro_Run
+Tbl_FinalTextScript:	; Cerebro text script (g_SceneVar3B14, Cerebro_RunTextScript): ops {byte op, byte 0, 2 argument bytes}: 1 cursor (x, y), 2 wait (word frames, a button skips), 3 clear window + cursor, 4 fade out, 5/6 Snd_Play/Snd_Stop, 7+ print with style op-7 (word = offset of the text from that word), 0 = end; the ending text (FinalText_RunScene); never read in the corpus; jt[497] used by FinalText_RunScene -> Cerebro_Run
 	incrom	$068DDA,$83A
 Str_FailureText:	; Cerebro briefing text (Cerebro_PrintText); 226 of 252 bytes used at runtime; read by Cerebro_PrintText, Cerebro_TextOpPrint, Cerebro_TextOpSetCursor; jt[498] used by Failure_RunScene
 	incrom	$069614,$252
@@ -2681,7 +2681,7 @@ Tbl_BrainChildAiScript:	; AI script (AiScript_Set(+$9E)): word count 3, then jmp
 	incrom	$0B7D08,$E
 Tbl_ChildShipQuake:	; camera shake script (format at Tbl_MagnetoBossQuake1): CHILDSHIP crash; 13 of 14 bytes used at runtime; read by Cam_ShakeStep; jt[947] used by ChildShip_StateCrash1, ChildShip_StateCrash2, ChildShip_StateCrash3
 	incrom	$0B7D16,$14
-Tbl_ChildShipUpdate:	; table read by ChildShip_Update; 16 of 30 bytes used at runtime; read by ChildShip_Update; jt[948] used by ChildShip_StateCrash, ChildShip_Update
+Tbl_ChildShipWreckTrail:	; CHILDSHIP wreck trail (+$94): 8-byte entries {word dx, word dy, word $FF, word 0} where ChildShip_Update spawns an explosion every 3 frames; x >= 1000 ends (set by ChildShip_StateCrash); 16 of 30 bytes used at runtime; read by ChildShip_Update; jt[948] used by ChildShip_StateCrash, ChildShip_Update
 	incrom	$0B7D2A,$30
 Pal_SavageA4BossStage1:	; 8 colours for palette line 3 entries 8-15 (g_PalBase+$70), boss stage 1 (SavageA4_FrameHook picks one of Pal_SavageA4BossStage1-6 by the boss value g_SceneVar3B02 against 8/16/24/32/40; order assumed from the addresses); 10 of 10 bytes used at runtime; read by SavageA4_FrameHook; jt[949] used by SavageA4_FrameHook
 	incrom	$0B7D5A,$10
@@ -3014,17 +3014,17 @@ Pad_SwampBubbles:	; $00 fill; never read in the corpus; between SwampBubbles_Dea
 	include "src/f/0BFF8C.asm"
 Tbl_SwampPlatform_vtable:	; class descriptor of SWAMPPLATFORM: word name offset $6E, parent ACTOR, 26 method slots from +6, then the name (tools/classes.py)
 	incrom	$0C005A,$7C
-Tbl_SwampFlyStateFly:	; table read by SwampFly_StateFly; 114 of 23C bytes used at runtime; read by SwampFly_StateFly; jt[1101] used by SwampFly_StatePickPath_Default
+Tbl_SwampFlyPath0:	; SWAMPFLY flight path (+$A4; SwampFly_StatePickPath by type +$B2, followed by SwampFly_StateFly): word byte length, then signed (dx, dy) byte pairs shifted by +$B0/+$B1 from home; type 0 (and the default); 114 of 23C bytes used at runtime; read by SwampFly_StateFly; jt[1101] used by SwampFly_StatePickPath_Default
 	incrom	$0C00D6,$23C
-Tbl_SwampFlyStateFly2:	; table read by SwampFly_StateFly; 24 of 1FA bytes used at runtime; read by SwampFly_StateFly; jt[1102] used by SwampFly_StatePickPath_Case1
+Tbl_SwampFlyPath1:	; SWAMPFLY flight path (format at Tbl_SwampFlyPath0): type 1; 24 of 1FA bytes used at runtime; read by SwampFly_StateFly; jt[1102] used by SwampFly_StatePickPath_Case1
 	incrom	$0C0312,$1FA
-Tbl_SwampFlyStateFly3:	; table read by SwampFly_StateFly; 6 of 13E bytes used at runtime; read by SwampFly_StateFly, SwampFly_StatePickPath_Start; jt[1103] used by SwampFly_StatePickPath_Case1
+Tbl_SwampFlyPath2:	; SWAMPFLY flight path (format at Tbl_SwampFlyPath0): type 2; 6 of 13E bytes used at runtime; read by SwampFly_StateFly, SwampFly_StatePickPath_Start; jt[1103] used by SwampFly_StatePickPath_Case1
 	incrom	$0C050C,$13E
-Tbl_SwampFlyStateFly4:	; table read by SwampFly_StateFly; 2A of 13E bytes used at runtime; read by SwampFly_StateFly; jt[1104] used by SwampFly_StatePickPath_Case1
+Tbl_SwampFlyPath3:	; SWAMPFLY flight path (format at Tbl_SwampFlyPath0): type 3; 2A of 13E bytes used at runtime; read by SwampFly_StateFly; jt[1104] used by SwampFly_StatePickPath_Case1
 	incrom	$0C064A,$13E
-Tbl_SwampFlyStateFly5:	; table read by SwampFly_StateFly; 22 of 1D0 bytes used at runtime; read by SwampFly_StateFly; jt[1105] used by SwampFly_StatePickPath_Case1
+Tbl_SwampFlyPath4:	; SWAMPFLY flight path (format at Tbl_SwampFlyPath0): type 4; 22 of 1D0 bytes used at runtime; read by SwampFly_StateFly; jt[1105] used by SwampFly_StatePickPath_Case1
 	incrom	$0C0788,$1D0
-Tbl_SwampFly:	; format not established; never read in the corpus; jt[1106] used by SwampFly_StatePickPath_Case5
+Tbl_SwampFlyPath5:	; SWAMPFLY flight path (format at Tbl_SwampFlyPath0): type 5, empty (length 0); never read in the corpus; jt[1106] used by SwampFly_StatePickPath_Case5
 	incrom	$0C0958,$2
 	include "src/f/0C095A.asm"
 	include "src/f/0C0968.asm"
@@ -3090,7 +3090,7 @@ Art_SporeMineSpr:	; sprite definition (type $19, Nemesis-compressed tiles): $24-
 	incrom	$0D11DE,$286
 Tbl_SpikeBallVdp:	; words copied to the VDP data port by VDP_WriteWords; 466 of 466 bytes used at runtime; read by VDP_WriteWords, Nem_DecodeLoop; jt[1132] used by SpikeBall_ClassInit
 	incrom	$0D1464,$466
-Tbl_SwampBubblesInit:	; format not established; never read in the corpus; jt[1133] used by SwampBubbles_Init
+Art_SwampBubblesSpr:	; sprite definition (type $18, raw 4bpp tiles): $24-byte header ($12 frames), $14-byte frame records, pieces, tiles; SWAMPBUBBLES object +$30 (SwampBubbles_Init); never read in the corpus; jt[1133] used by SwampBubbles_Init
 	incrom	$0D18CA,$141C
 Art_SwampPlatformSpr:	; sprite definition (type $19, Nemesis-compressed tiles): $24-byte header, $14-byte frame records, pieces, tiles; 313 of 314 bytes used at runtime; read by Nem_DecodeLoop, Spr_PreloadTiles, Nem_BuildCodeTable; jt[1134] used by SwampPlatform_ClassInit
 	incrom	$0D2CE6,$314
@@ -3661,7 +3661,7 @@ Tbl_DeathbirdAnim8:	; animation script (byte flags, byte steps, ..., 2-byte step
 	incrom	$1110B0,$8
 Tbl_DeathbirdAttackOrder:	; DEATHBIRD attack pattern: one attack index (0-2) per byte, $FF = restart from the first; pointer kept in g_SceneVar3B14 (Deathbird_Init, Deathbird_StateChooseAttack); 5 of A bytes used at runtime; read by Deathbird_StateChooseAttack, Anim_ApplyStep; jt[1373] used by Deathbird_Init, Deathbird_StateChooseAttack
 	incrom	$1110B8,$A
-Tbl_DeathbirdStateSendHornets:	; table read by Deathbird_StateSendHornets; 9D of A0 bytes used at runtime; read by Deathbird_StateSendHornets; jt[1374] used by Deathbird_Init, Deathbird_StateSendHornets
+Tbl_DeathbirdHornetSchedule:	; DEATHBIRD hornet schedule (pointer kept at $FFC6E4; Deathbird_StateSendHornets): 4-byte entries {byte hornet type 0-3 (Hornet_SpawnForDeathbird), byte 0/1, byte frames to the next, byte 0}, ended by -1; 9D of A0 bytes used at runtime; read by Deathbird_StateSendHornets; jt[1374] used by Deathbird_Init, Deathbird_StateSendHornets
 	incrom	$1110C2,$A0
 Tbl_Deathbird_vtable:	; class descriptor "DEATHBIRD": word $76 = name offset, long parent (ACTOR), 28 method pointers, then the class name string
 	incrom	$111162,$80
@@ -3910,7 +3910,7 @@ Sw_11893C:	; switch table of sub at $11893C: 17 word offsets from Sw_11893C-2
 	include "src/f/118C2E.asm"
 Tbl_RThetaObject_vtable:	; class descriptor "RTHETAOBJECT": word $6E = name offset, long parent (ACTOR), 26 method pointers, then the class name string
 	incrom	$118C8E,$7C
-Tbl_GaussBulletUpdate:	; table read by GaussBullet_Update; 28 of 28 bytes used at runtime; read by GaussBullet_Update; jt[1481] used by GaussBullet_InitPool
+Tbl_GaussBulletFrames:	; GAUSSBULLET frame table (pool +4; GaussBullet_Update): 10 x 4 bytes {byte hardware size code, byte x origin, byte y origin, byte tile offset} indexed by the record's frame +$1E; 28 of 28 bytes used at runtime; read by GaussBullet_Update; jt[1481] used by GaussBullet_InitPool
 	incrom	$118D0A,$28
 Tbl_GaussBullet_vtable:	; class descriptor "GAUSSBULLET": word $E = name offset, long parent (none), 2 method pointers, then the class name string
 	incrom	$118D32,$1A
@@ -3988,7 +3988,7 @@ Tbl_BabyBioAnim3:	; animation script (byte flags, byte steps, ..., 2-byte steps 
 	incrom	$11B3AC,$A
 Tbl_BabyBioAnim4:	; animation script {flags 0 (loop), 2 steps, delay 6, frames 8,9} (Obj_SetAnim in BabyBio_ActPlayAnimD; read while BabyBio_Move steps the animation); jt[1526]
 	incrom	$11B3B6,$A
-Tbl_BabyBioMove2:	; table read by BabyBio_Move; 122 of 124 bytes used at runtime; read by BabyBio_Move; jt[1527] used by BabyBio_Init, BabyBio_Move, ChildShip_Init
+Tbl_BabyBioBobOffsets:	; bob offsets (+$A4; BabyBio_Move on bob frames, also CHILDSHIP): (x, y) word pairs in 8.8 fixed point, ended by $6400 (restart); 122 of 124 bytes used at runtime; read by BabyBio_Move; jt[1527] used by BabyBio_Init, BabyBio_Move, ChildShip_Init
 	incrom	$11B3C0,$124
 Tbl_BabySentinelA_ScriptLen:	; word 8: step count of the AI script BabySentinelA_Script that follows (8 thunks disassembled); jt[1528] used by BabySentinelA_Init -> AiScript_Set
 	incrom	$11B4E4,$2
@@ -4241,7 +4241,7 @@ Tbl_Anim_1206E6:	; animation script (byte flags, byte steps, ..., 2-byte steps f
 	incrom	$1206E6,$E
 Tbl_Anim_1206F4:	; animation script (byte flags, byte steps, ..., 2-byte steps from +6); C of E bytes used at runtime; read by Anim_ApplyStep; jt[1677] used by BigBio_ActSpit3
 	incrom	$1206F4,$E
-Tbl_BigBioBigBio:	; data handed to BigBio_SetOrbShape (format not established); never read in the corpus; jt[1678] used by BigBio_StateStartMorph -> BigBio_SetOrbShape, BigBio_StateLaunch -> BigBio_Launch, BigBio_StateDeathOrbs -> BigBio_SetOrbShape
+Tbl_BigBioOrbShape:	; BIGBIO orb shape (BigBio_SetOrbShape -> BigBio_PlaceOrbs, BigBio_Launch): 16 x 8-byte entries {word dx, word dy, long 0}, mirrored by the flip bits, ended by $0FFF; used to morph, launch and die; never read in the corpus; jt[1678] used by BigBio_StateStartMorph -> BigBio_SetOrbShape, BigBio_StateLaunch -> BigBio_Launch, BigBio_StateDeathOrbs -> BigBio_SetOrbShape
 	incrom	$120702,$84
 Tbl_BigBioOrbFallSpeeds:	; 16 words, one y step per BIGBIO orb (g_BigBioOrbs, 6-byte entries), added every frame while the orbs fall; orbs below the boss are hidden (BigBio_StateDying); never read in the corpus; jt[1679] used by BigBio_StateDying
 	incrom	$120786,$20
@@ -4319,9 +4319,9 @@ Tbl_BigBio_ScriptLen:	; word 16: step count of the AI script BigBio_Script that 
 	include "src/f/12340E.asm"
 	include "src/f/1234F4.asm"
 	include "src/f/1234FC.asm"
-Tbl_BigBio:	; format not established; never read in the corpus; referenced by BigBio_ClassInit
+Str_Empty_12355E:	; C string "" padded to 2 bytes: the Mem_StackAlloc tag of the spit pool g_BigBioSpitPool (BigBio_ClassInit); never read in the corpus; referenced by BigBio_ClassInit
 	incrom	$12355E,$2
-Tbl_BigBio2:	; format not established; never read in the corpus; referenced by BigBio_ClassInit
+Str_Empty_123560:	; C string "" padded to 2 bytes: the Mem_StackAlloc tag of the orb buffer g_BigBioOrbs (BigBio_ClassInit); never read in the corpus; referenced by BigBio_ClassInit
 	incrom	$123560,$2
 Tbl_BasicBioSentinel_vtable:	; class descriptor "BASICBIOSENTINEL": word $82 = name offset, long parent (BIONPC), 31 method pointers, then the class name string
 	incrom	$123562,$94
@@ -4788,7 +4788,7 @@ Tbl_Spark_vtable:	; class descriptor "SPARK" (parent ACTOR, tools/classes.py): w
 	incrom	$1400DE,$74
 Tbl_Anim_140152:	; animation script (NOTES: Animation scripts); never read in the corpus; jt[1907] used by Spark_StateStart -> Obj_SetAnim
 	incrom	$140152,$C
-Tbl_SparkMove:	; format not established; never read in the corpus; jt[1908] used by Spark_Move
+Tbl_SparkWobble:	; SPARK wobble (Spark_Move, free sparks): signed (dx, dy) word offsets added to the drifting origin, next entry every other frame, $0100 = restart; never read in the corpus; jt[1908] used by Spark_Move
 	incrom	$14015E,$30
 Art_Spr_14018E:	; sprite definition (type $19, Nemesis-compressed tiles): $24-byte header, $14-byte frame records, pieces, tiles; 1531 of 1532 bytes used at runtime; read by Nem_DecodeLoop, Spr_PreloadTiles; jt[1909] used by Tank_ClassInit
 	incrom	$14018E,$1532
@@ -4923,9 +4923,9 @@ Lvl_Data_144D90:	; level data read by Level_FrameLoop; 48 of 78 bytes used at ru
 	incrom	$144D90,$78
 Tbl_ToxicCanDamaged_vtable:	; class descriptor of TOXICCANDAMAGED: word name offset $6E, parent TOXICCAN, 26 method slots from +6, then the name (tools/classes.py); never read in the corpus; jt[1960] used by ToxicCan_Despawn, ToxicCanDamaged_Init
 	incrom	$144E08,$7E
-Tbl_144E86:	; format not established; never read in the corpus; jt[1961] used by ToxicCan_DrawLeak
+Tbl_ToxicCanLeakPuffs1:	; TOXICCAN leak puff animation (ToxicCan_DrawLeak, first counter): 4-byte steps {word tile, signed byte dx, signed byte dy}, tile $FF = restart; never read in the corpus; jt[1961] used by ToxicCan_DrawLeak
 	incrom	$144E86,$6C
-Tbl_144EF2:	; format not established; never read in the corpus; jt[1962] used by ToxicCan_DrawLeak
+Tbl_ToxicCanLeakPuffs2:	; TOXICCAN leak puff animation (format at Tbl_ToxicCanLeakPuffs1; second counter); never read in the corpus; jt[1962] used by ToxicCan_DrawLeak
 	incrom	$144EF2,$3C
 Tbl_ScatterExplodeChain:	; explosion chain path (format at Tbl_BroodBossDeathChain): 24 scattered explosions, shared by POP, TANK death and TOXICCAN; C4 of C8 bytes used at runtime; read by ExplodeFx_ChainStep; jt[1963] used by Pop_FxChainPath, Tank_OnDeath, ToxicCan_Update
 	incrom	$144F2E,$C8
@@ -5105,7 +5105,7 @@ Tbl_Anim_15B1FA:	; animation script (byte flags, byte steps, ..., 2-byte steps f
 	incrom	$15B1FA,$C
 Tbl_ClosedBarrierAnim:	; animation script (NOTES: Animation scripts); never read in the corpus; jt[2024] used by ClosedBarrier_Init -> Obj_SetAnim, Barrier_Close -> Obj_SetAnim
 	incrom	$15B206,$A
-Tbl_BioNpcEmitFlicker:	; table read by Spr_EmitFlicker; 10 of 10 bytes used at runtime; read by Spr_EmitFlicker, Spr_PreloadTiles, Nem_BuildCodeTable; jt[2025] used by BioNpc_DrawStunned, Blast_Draw
+Tbl_SprSizeTailTile:	; 16 bytes indexed by hardware sprite size code: 16 - its tile count, the start tile that makes a piece end on the 16th tile of the effect block; the tile index table Spr_EmitFlicker uses for the shock/zap overlay (BioNpc_DrawStunned, Blast_Draw); 10 of 10 bytes used at runtime; read by Spr_EmitFlicker, Spr_PreloadTiles, Nem_BuildCodeTable; jt[2025] used by BioNpc_DrawStunned, Blast_Draw
 	incrom	$15B210,$10
 Art_BlastSpr:	; sprite definition (type $19, Nemesis-compressed tiles): $24-byte header, $14-byte frame records, pieces, tiles; D3 of D4 bytes used at runtime; read by VDP_FlushDmaQueue, Spr_PreloadTiles, Nem_BuildCodeTable; jt[2026] used by Blast_ClassInit, Psylocke_Init
 	incrom	$15B220,$D4

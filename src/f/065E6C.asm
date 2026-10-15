@@ -14,11 +14,11 @@ Cerebro_PlayIntro:
 	lea.l	Cerebro_IntroPalHook(pc),a0
 	move.l	a0,g_VBlankGameHook(a5)
 	jsr	$50A2(a5)	; -> Scaler_InitParams
-	pea.l	Tbl_Cerebro11(pc)
+	pea.l	Str_Empty_066B24(pc)
 	pea.l	($2A56).w
 	jsr	$5032(a5)	; -> Mem_StackAlloc
 	move.l	d0,g_ScaleSrcBitmap(a5)
-	pea.l	Tbl_Cerebro10(pc)
+	pea.l	Str_Empty_066B22(pc)
 	pea.l	($1560).w
 	jsr	$5032(a5)	; -> Mem_StackAlloc
 	move.l	d0,g_ScaleTileBuf(a5)

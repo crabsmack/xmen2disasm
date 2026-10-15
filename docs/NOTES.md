@@ -493,6 +493,41 @@ _(module → functions, globals, data; add as you learn them)_
   0-1 one-shot, 2 per-step flips, 3 face velocity), byte step count, ..., steps of 2 bytes
   from +6 `{flags, value}`: flag $20 = play sound `value`, else frame `value` (bits $80/$40
   toggle h/v flip). `Obj_SetAnim`/`Obj_ChangeAnim`, `Anim_ApplyStep`, `Anim_Advance`.
+  **(dat)** Word +2 = frames per step (`Tbl_SegmentPowerUpAnim`: count 8, delay $A). The same
+  records drive ICANDY (`ICandy_SetAnim`), power-ups, mine/spore pools and LITTLELEG. A step
+  count above ~$40 is legal (`Tbl_CyclopsSelectIdleAnim` has $F8 steps).
+- **Data-label pass (dat), formats from the code that reads them** (labels in xmen2.asm carry
+  the per-table detail):
+  - XNPC stats (object +$8C, 8 bytes, `Tbl_<Class>Stats`): 0 damage, 1 hurt sound (0 = $63),
+    2 health / death-effect kind, 3-6 knockback for hit strength 1/2/4/8 (`XNpc_KnockbackDist`),
+    7 hurt frame ($FF none). Default `Tbl_XNpcDefaultStats`.
+  - Camera shake scripts (`g_CamShake`, `Tbl_<Class>Quake*`): signed (dx, dy) byte pairs, $64 end,
+    $65 n = jump back n bytes (loop), $66 x = call `Sys_Nop1F945C(x)`. `CloneA5_CamApply` has a copy.
+  - Explosion chain paths (`ExplodeFx_ChainRepeat`, `*Chain*`): 8-byte {dx, dy (upward), 0, delay},
+    ended by a negative long at +4.
+  - Parallax descriptors (`Scroll_SetParallax`, `Tbl_<Scene>Parallax`): byte '0' line h-scroll /
+    '2' column v-scroll, byte count, 8-byte bands {mode 0-4, ?, word height, word 8.8 speed, 2 params}.
+  - Palette lines: 16 colour words copied into `g_PalBase` lines (`Pal_*`); `Scene_PostLoadVram`
+    loads `Pal_SceneDefaultLine1/3` after every scene load.
+  - AI script heads: the count word before each thunk run is `Tbl_<Script>Len`. 22 of them had
+    been split into two 1-byte labels because the wrap test reads only the low byte; merged.
+  - Clone records (XCLONE/EVIL* +$A8, `Tbl_<Class>CloneRecord`): word $7F, word $8C3B, then word
+    offsets from the record: +4 idle animation, +6 ball path, +8 main script, +$A hurt script, +$C
+    low-health script (data placed just before the record).
+  - BIOBALLS ball lists/paths/formations: 8-byte {word x, word y, word, word}, end at x > 999
+    ($0400). `EvilDrop_Spawn(rec, path)` passes the capsule's opening path = the clone's +6 path.
+  - Cyclops beam sets (`Tbl_CyclopsBeam<Ground|Air|Crouch><Dir>`): 3 signed word offsets (strength
+    level 0/1/2) back to per-level beam records {+0/+1 origin, +9 attack type, +$C direction, +$D
+    length, piece lists}; the jt exports the sets in reverse address order.
+  - Hover/bob offsets (`Tbl_CapedAcolyteHoverOffsets`, `Tbl_BabyBioBobOffsets`): (x, y) 8.8 word
+    pairs ended by $6400. Wave tables (`Tbl_MagnetoBossOrbitWave`): 32-word Q15 sine period.
+  - Pause cheat codes (`Tbl_CheatCode*`, `g_PauseCheatPtr`): pad-1 press bytes ending $FF; each
+    chord has a second code used while pad 2 holds Left+Right (`*Alt`).
+  - Cerebro text scripts (`Tbl_FinalTextScript`): 4-byte ops {op, 0, args}; 7+ print (word = offset
+    of the text from that word, style op-7), 1 cursor, 2 wait, 3 clear, 4 fade, 5/6 sound, 0 end.
+  - Attract demos (`Tbl_DemoInput<Char>`): (frame, pad) byte pairs, pad $FF ends.
+  - `Tbl_SprSizeTailTile`: per hardware size code, 16 - tile count (Spr_EmitFlicker tile table).
+  - Mem_StackAlloc tags: 2-byte empty strings right after a function are `Str_Empty_XXXXXX`.
 
 ## Code read as data (R5)
 

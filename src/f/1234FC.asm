@@ -8,12 +8,12 @@ BigBio_ClassInit:
 	link.w	a6,#$0
 	move.l	a4,-(a7)
 	jsr	BigBio_EmptyStub(pc)
-	pea.l	Tbl_BigBio2(pc)
+	pea.l	Str_Empty_123560(pc)
 	moveq	#$60,d0
 	move.l	d0,-(a7)
 	jsr	$5032(a5)	; -> Mem_StackAlloc
 	move.l	d0,g_BigBioOrbs(a5)
-	pea.l	Tbl_BigBio(pc)
+	pea.l	Str_Empty_12355E(pc)
 	pea.l	($80).w
 	jsr	$5032(a5)	; -> Mem_StackAlloc
 	move.l	d0,g_BigBioSpitPool(a5)
