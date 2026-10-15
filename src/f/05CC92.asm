@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_05CC92	[link-after-rts]
+; Tusk_HurtCharge - TUSK hit while charging: stop being hittable, sound $E5, charge again after 50 frames
+; In:  8(a6) = this
+; Out: d0 = 0
+; Evidence: called from Tusk_TakeDamage
 ; ---------------------------------------------------------------------------
-sub_05CC92:
+Tusk_HurtCharge:
 	link.w	a6,#$0
 	move.l	a4,-(a7)
 	movea.l	$8(a6),a4
@@ -15,7 +18,7 @@ sub_05CC92:
 	jsr	$5222(a5)	; -> Snd_Stop
 	pea.l	($E5).w
 	jsr	$521A(a5)	; -> Snd_Play
-	lea.l	sub_05C92A(pc),a0
+	lea.l	Tusk_StateChargeStart(pc),a0
 	move.l	a0,$5C(a4)
 	move.w	#$32,$6C(a4)
 	moveq	#$0,d0

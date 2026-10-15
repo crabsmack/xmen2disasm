@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_05C17E	[link-after-rts]
+; Tusk_HookIsEvent3 - scene hook in -$321A while TUSK holds the arena: 1 for event 3
+; In:  8(a6) = word event
+; Out: d0 = 1/0
+; Evidence: installed by Tusk_LockArena
 ; ---------------------------------------------------------------------------
-sub_05C17E:
+Tusk_HookIsEvent3:
 	link.w	a6,#$0
 	move.l	d3,-(a7)
 	moveq	#$3,d1

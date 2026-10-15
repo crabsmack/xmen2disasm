@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_05B5D4	[link-after-rts]
+; Boulder_StateStart - BOULDER first state: frame 0, no motion, wait for the ground
+; In:  8(a6) = this
+; Out: d0 = +4 & 8
+; Evidence: next Boulder_StateWaitGround
 ; ---------------------------------------------------------------------------
-sub_05B5D4:
+Boulder_StateStart:
 	link.w	a6,#$0
 	move.l	a4,-(a7)
 	movea.l	$8(a6),a4
@@ -16,7 +19,7 @@ sub_05B5D4:
 	clr.w	$20(a4)
 	addq.w	#$8,a7
 	clr.w	$6C(a4)
-	lea.l	sub_05B58E(pc),a0
+	lea.l	Boulder_StateWaitGround(pc),a0
 	move.l	a0,$5C(a4)
 	moveq	#$8,d0
 	and.w	$4(a4),d0

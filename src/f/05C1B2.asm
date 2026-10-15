@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_05C1B2	[link-after-rts]
+; Tusk_PlayerOnPlatform - is a player present and standing on TUSK's platform segment (+$94)
+; In:  8(a6) = Tusk, $C(a6) = player
+; Out: d0 = 1/0
+; Evidence: player +$76 floor segment
 ; ---------------------------------------------------------------------------
-sub_05C1B2:
+Tusk_PlayerOnPlatform:
 	link.w	a6,#$0
 	movem.l	d3/a4,-(a7)
 	movea.l	$C(a6),a4

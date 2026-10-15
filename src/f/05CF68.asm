@@ -24,7 +24,7 @@ Tusk_Init:
 	clr.w	$1E(a4)
 	clr.l	$16(a4)
 	clr.w	$20(a4)
-	lea.l	sub_05C286(pc),a0
+	lea.l	Tusk_StateIntro(pc),a0
 	move.l	a0,$5C(a4)
 	lea.l	$10(a7),a7
 	lea.l	$C2A(a5),a0

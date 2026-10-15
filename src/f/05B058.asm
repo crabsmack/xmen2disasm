@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_05B058	[link-after-rts]
+; Boulder_AllocDebris - take the next free rock-debris record
+; In:  none
+; Out: d0 = record or 0 when all 30 are used
+; Evidence: -$3C64 += 1
 ; ---------------------------------------------------------------------------
-sub_05B058:
+Boulder_AllocDebris:
 	link.w	a6,#$0
 	move.l	a4,-(a7)
 	moveq	#$0,d0

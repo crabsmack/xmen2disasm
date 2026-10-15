@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_05B614	[link-after-rts]
+; Boulder_StateStartRoll - BOULDER: start rolling with sound $97 and the roll animation (jt $E72)
+; In:  8(a6) = this
+; Out: d0 = +4 & 8
+; Evidence: next Boulder_StateBounce
 ; ---------------------------------------------------------------------------
-sub_05B614:
+Boulder_StateStartRoll:
 	link.w	a6,#$0
 	move.l	a4,-(a7)
 	movea.l	$8(a6),a4
@@ -15,7 +18,7 @@ sub_05B614:
 	jsr	$4E42(a5)	; -> Obj_SetAnim
 	lea.l	$10(a7),a7
 	clr.w	$6C(a4)
-	lea.l	sub_05B65A(pc),a0
+	lea.l	Boulder_StateBounce(pc),a0
 	move.l	a0,$5C(a4)
 	moveq	#$8,d0
 	and.w	$4(a4),d0

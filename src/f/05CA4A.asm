@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_05CA4A	[link-after-rts]
+; Tusk_StateReturnStart - TUSK: walk back towards home at 900
+; In:  8(a6) = this
+; Out: d0 = 0
+; Evidence: max speed +$22 = |vx|; next Tusk_StateReturnHome
 ; ---------------------------------------------------------------------------
-sub_05CA4A:
+Tusk_StateReturnStart:
 	link.w	a6,#$0
 	movem.l	d3/a4,-(a7)
 	movea.l	$8(a6),a4
@@ -27,7 +30,7 @@ loc_05CA80:
 	neg.l	d0
 loc_05CA88:
 	move.w	d0,$22(a4)
-	lea.l	sub_05CAA0(pc),a0
+	lea.l	Tusk_StateReturnHome(pc),a0
 	move.l	a0,$5C(a4)
 	moveq	#$0,d0
 	movem.l	-$8(a6),d3/a4

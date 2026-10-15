@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_05B322	[jt 405]
+; Boulder_SpawnDebris - throw rock debris from (x, y): 2 small and 3 big pieces with random velocities that bounce near floor height h
+; In:  8(a6) = word x px, $C(a6) = word y px, $10(a6) = word floor y (screen)
+; Out: d0
+; Evidence: Boulder_AllocDebris; sub_1600AA random; caller BaniMazaB2_CrackFloorHook
 ; ---------------------------------------------------------------------------
-sub_05B322:
+Boulder_SpawnDebris:
 	link.w	a6,#$FFD0
 	movem.l	d3-d7/a4,-(a7)
 	move.w	$12(a6),d4
@@ -9,7 +12,7 @@ sub_05B322:
 	move.w	$A(a6),d6
 	clr.w	d7
 loc_05B338:
-	jsr	sub_05B058(pc)
+	jsr	Boulder_AllocDebris(pc)
 	movea.l	d0,a4
 	move.l	a4,d0
 	beq.w	loc_05B45C
@@ -114,7 +117,7 @@ loc_05B42C:
 loc_05B45C:
 	clr.w	d7
 loc_05B45E:
-	jsr	sub_05B058(pc)
+	jsr	Boulder_AllocDebris(pc)
 	movea.l	d0,a4
 	move.l	a4,d0
 	beq.w	loc_05B584

@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_05C4A0	[link-after-rts]
+; Tusk_StateChooseAttack - TUSK: face the nearest player; charge if that player is on the lower platform (+$90), else run the next attack of its 10-step cycle (+$98)
+; In:  8(a6) = this
+; Out: d0
+; Evidence: cycle: vulnerable, throw, spawn tuskette, throw, vulnerable, spawn, throw, spawn both, throw, throw
 ; ---------------------------------------------------------------------------
-sub_05C4A0:
+Tusk_StateChooseAttack:
 	link.w	a6,#$0
 	movem.l	d3/a3-a4,-(a7)
 	movea.l	$8(a6),a4
@@ -32,17 +35,17 @@ loc_05C4E4:
 	move.l	$76(a3),d0
 	cmp.l	$90(a4),d0
 	bne.s	loc_05C500
-	lea.l	sub_05C8F4(pc),a0
+	lea.l	Tusk_AtkCharge(pc),a0
 	move.l	a0,$5C(a4)
 	moveq	#$0,d0
-	bra.w	loc_05C5C4
+	bra.w	Tusk_StateChooseAttack_part3
 loc_05C500:
 	tst.w	$6E(a4)
-	bne.w	loc_05C5C4
+	bne.w	Tusk_StateChooseAttack_part3
 	addq.b	#$1,$98(a4)
 	move.b	$98(a4),d0
 	cmpi.b	#$9,d0
-	bhi.s	loc_05C538
+	bhi.s	Tusk_StateChooseAttack_part1
 	moveq	#$0,d1
 	move.b	d0,d1
 	add.w	d1,d1

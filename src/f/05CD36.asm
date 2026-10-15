@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; loc_05CD36	[static: switch-table case target (tools/switches.py: table after `move.w T(pc,dN.w),dN / jmp T-2(pc,dN.w)`, size from the cmpi bound)]
+; Tusk_Defeated_part4 - part 4 of Tusk_Defeated: switch case(s) split off by the code-flow tools (not a separate function)
+; In:  registers/frame of Tusk_Defeated
+; Out: continues in Tusk_Defeated
+; Evidence: only reached by branches from Tusk_Defeated
 ; ---------------------------------------------------------------------------
-loc_05CD36:
+Tusk_Defeated_part4:
 	move.l	a4,-(a7)
 	jsr	$3ADA(a5)	; -> sub_13E30E
 	addq.w	#$4,a7

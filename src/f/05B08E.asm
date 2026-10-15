@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_05B08E	[link-after-rts]
+; Boulder_FreeDebris - free a rock-debris record by moving the last live record into it
+; In:  8(a6) = record
+; Out: none
+; Evidence: Mem_Copy of $14 bytes; -$3C64 -= 1
 ; ---------------------------------------------------------------------------
-sub_05B08E:
+Boulder_FreeDebris:
 	link.w	a6,#$0
 	tst.w	-$3C64(a5)
 	beq.s	loc_05B0C4

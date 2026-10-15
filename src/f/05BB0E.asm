@@ -33,7 +33,7 @@ Boulder_ClassInit:
 	jsr	$5032(a5)	; -> Mem_StackAlloc
 	addq.l	#$8,a7
 	move.l	d0,-(a7)
-	jsr	sub_05B016(pc)
+	jsr	Boulder_InitDebrisPool(pc)
 	lea.l	$20(a7),a7
 	clr.w	-$3B32(a5)
 	clr.w	-$3B04(a5)

@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_05C9A2	[link-after-rts]
+; Tusk_StateCharging - TUSK: when $43 px past home brake (+/-800 backwards) for 7 frames
+; In:  8(a6) = this
+; Out: d0
+; Evidence: next Tusk_StateChargeStop
 ; ---------------------------------------------------------------------------
-sub_05C9A2:
+Tusk_StateCharging:
 	link.w	a6,#$0
 	movem.l	d3/d7/a4,-(a7)
 	movea.l	$8(a6),a4
@@ -34,7 +37,7 @@ loc_05C9EC:
 loc_05C9F2:
 	neg.w	d0
 	move.w	d0,$16(a4)
-	lea.l	sub_05CA12(pc),a0
+	lea.l	Tusk_StateChargeStop(pc),a0
 	move.l	a0,$5C(a4)
 	move.w	#$7,$6C(a4)
 	moveq	#$0,d0

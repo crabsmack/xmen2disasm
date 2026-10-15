@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_05B65A	[link-after-rts]
+; Boulder_StateBounce - BOULDER rolling/bouncing: on a solid floor bounce (vy = -vy/4) and roll off in a random direction; on a crumbling floor (types $13/$14) roll towards its nearer edge and crack it; each impact plays sound $97 and shakes the camera (harder when on screen)
+; In:  8(a6) = this
+; Out: d0
+; Evidence: sub_15A82A floor hit test with +$42; sub_15CECC impact when vy > $200; g_CamShake = jt $E82 / $E8A
 ; ---------------------------------------------------------------------------
-sub_05B65A:
+Boulder_StateBounce:
 	link.w	a6,#$0
 	movem.l	d3-d7/a3-a4,-(a7)
 	movea.l	$8(a6),a4
@@ -282,14 +285,14 @@ loc_05B950:
 	tst.l	d0
 	bne.s	loc_05B970
 	move.w	#$FF,$6C(a4)
-	lea.l	sub_05B65A(pc),a0
+	lea.l	Boulder_StateBounce(pc),a0
 	move.l	a0,$5C(a4)
 	moveq	#$8,d0
 	and.w	$4(a4),d0
 	bra.s	loc_05B982
 loc_05B970:
 	clr.w	$6C(a4)
-	lea.l	sub_05B65A(pc),a0
+	lea.l	Boulder_StateBounce(pc),a0
 	move.l	a0,$5C(a4)
 	moveq	#$8,d0
 	and.w	$4(a4),d0

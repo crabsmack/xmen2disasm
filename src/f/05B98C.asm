@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_05B98C	[link-after-rts]
+; Boulder_StatePiecesFall - BOULDER broken: bounce its three pieces off floors until none is on screen, then kill itself
+; In:  8(a6) = this
+; Out: d0
+; Evidence: pieces at +$8C (positions in 1/4 px); slot $52 Kill
 ; ---------------------------------------------------------------------------
-sub_05B98C:
+Boulder_StatePiecesFall:
 	link.w	a6,#$0
 	movem.l	d3-d7/a3-a4,-(a7)
 	movea.l	$8(a6),a0
@@ -95,7 +98,7 @@ loc_05BA60:
 loc_05BA84:
 	movea.l	$8(a6),a0
 	clr.w	$6C(a0)
-	lea.l	sub_05B98C(pc),a0
+	lea.l	Boulder_StatePiecesFall(pc),a0
 	movea.l	$8(a6),a1
 	move.l	a0,$5C(a1)
 	movea.l	$8(a6),a0

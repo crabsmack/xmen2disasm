@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_05CA12	[link-after-rts]
+; Tusk_StateChargeStop - TUSK: stop and idle for 20 frames
+; In:  8(a6) = this
+; Out: d0 = 0
+; Evidence: Obj_ChangeAnim jt $5C154; next Tusk_StateReturnStart
 ; ---------------------------------------------------------------------------
-sub_05CA12:
+Tusk_StateChargeStop:
 	link.w	a6,#$0
 	move.l	a4,-(a7)
 	movea.l	$8(a6),a4
@@ -11,7 +14,7 @@ sub_05CA12:
 	move.l	$2(a0),-(a7)
 	move.l	a4,-(a7)
 	jsr	$4E42(a5)	; -> Obj_SetAnim
-	lea.l	sub_05CA4A(pc),a0
+	lea.l	Tusk_StateReturnStart(pc),a0
 	move.l	a0,$5C(a4)
 	move.w	#$14,$6C(a4)
 	moveq	#$0,d0

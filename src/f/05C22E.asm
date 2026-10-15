@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_05C22E	[link-after-rts]
+; Tusk_PlayerToLayer0 - move a present player to draw layer 0 (clear +$2E bit 2)
+; In:  8(a6) = player
+; Out: none
+; Evidence: DrawList_SetPriority(+$88, 0, ...)
 ; ---------------------------------------------------------------------------
-sub_05C22E:
+Tusk_PlayerToLayer0:
 	link.w	a6,#$0
 	move.l	a4,-(a7)
 	movea.l	$8(a6),a4

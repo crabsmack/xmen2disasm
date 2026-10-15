@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_05CC3A	[link-after-rts]
+; Tusk_StateHurtFlash - TUSK: alternate palette 1/3 every 2 frames, then charge with palette 3
+; In:  8(a6) = this
+; Out: d0
+; Evidence: +$2E bits 0-1; next Tusk_StateChargeStart
 ; ---------------------------------------------------------------------------
-sub_05CC3A:
+Tusk_StateHurtFlash:
 	link.w	a6,#$0
 	move.l	a4,-(a7)
 	movea.l	$8(a6),a4
@@ -12,7 +15,7 @@ sub_05CC3A:
 	moveq	#$3,d1
 	or.b	d0,d1
 	move.b	d1,$2E(a4)
-	lea.l	sub_05C92A(pc),a0
+	lea.l	Tusk_StateChargeStart(pc),a0
 	move.l	a0,$5C(a4)
 	moveq	#$0,d0
 	bra.s	loc_05CC8A

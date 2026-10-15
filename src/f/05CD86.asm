@@ -43,17 +43,17 @@ loc_05CDD8:
 	cmpi.b	#$F,d7
 	bne.s	loc_05CE00
 loc_05CDF6:
-	lea.l	sub_05CBF2(pc),a0
+	lea.l	Tusk_HurtFlash(pc),a0
 	move.l	a0,$5C(a4)
 	bra.s	loc_05CE1E
 loc_05CE00:
 	ori.w	#$40,$6(a4)
-	lea.l	sub_05CC92(pc),a0
+	lea.l	Tusk_HurtCharge(pc),a0
 	move.l	a0,$5C(a4)
 	bra.s	loc_05CE1E
 loc_05CE10:
 	move.w	#$7FFF,$6A(a4)
-	lea.l	sub_05CCDA(pc),a0
+	lea.l	Tusk_Defeated(pc),a0
 	move.l	a0,$5C(a4)
 loc_05CE1E:
 	movem.l	-$8(a6),d7/a4

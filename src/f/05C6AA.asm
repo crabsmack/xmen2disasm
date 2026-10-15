@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_05C6AA	[link-after-rts]
+; Tusk_StateThrow - TUSK: release the held boulder with sound $AC and a velocity for the aim column (-6..5), then choose again after 20
+; In:  8(a6) = this
+; Out: d0 = 0
+; Evidence: held object index +$3B in the object table -$32A6; sub_1F6530 release; vx/vy/gravity table per column
 ; ---------------------------------------------------------------------------
-sub_05C6AA:
+Tusk_StateThrow:
 	link.w	a6,#$0
 	movem.l	d3/a3-a4,-(a7)
 	movea.l	$8(a6),a3
@@ -23,7 +26,7 @@ loc_05C6DA:
 	movea.l	d0,a4
 	move.l	a4,d0
 	bne.s	loc_05C6EE
-	lea.l	sub_05C4A0(pc),a0
+	lea.l	Tusk_StateChooseAttack(pc),a0
 	move.l	a0,$5C(a3)
 	moveq	#$0,d0
 	bra.w	loc_05C8EA
@@ -176,7 +179,7 @@ loc_05C8CA:
 	move.l	a3,-(a7)
 	jsr	$4E42(a5)	; -> Obj_SetAnim
 	move.w	#$14,$6E(a3)
-	lea.l	sub_05C4A0(pc),a0
+	lea.l	Tusk_StateChooseAttack(pc),a0
 	move.l	a0,$5C(a3)
 	addq.w	#$8,a7
 	moveq	#$0,d0

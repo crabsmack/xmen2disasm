@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_05CBF2	[link-after-rts]
+; Tusk_HurtFlash - TUSK hit: sound $36, stop being hittable, flash for 50 frames
+; In:  8(a6) = this
+; Out: d0 = 0
+; Evidence: called from Tusk_TakeDamage; List_Unlink(+$84); next Tusk_StateHurtFlash
 ; ---------------------------------------------------------------------------
-sub_05CBF2:
+Tusk_HurtFlash:
 	link.w	a6,#$0
 	move.l	a4,-(a7)
 	movea.l	$8(a6),a4
@@ -18,7 +21,7 @@ sub_05CBF2:
 	move.l	d0,$84(a4)
 	clr.b	$9A(a4)
 	move.w	#$32,$6E(a4)
-	lea.l	sub_05CC3A(pc),a0
+	lea.l	Tusk_StateHurtFlash(pc),a0
 	move.l	a0,$5C(a4)
 	moveq	#$0,d0
 	movea.l	-$4(a6),a4

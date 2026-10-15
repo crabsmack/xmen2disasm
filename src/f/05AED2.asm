@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_05AED2	[jt 403]
+; Boulder_SpawnerTick - BaniMazaB2 boulder spawner: when the countdown -$3B32 ends, drop a BOULDER from 80 px above the screen ahead of the lowest player, then take the next delay from the sequence jt $5A878
+; In:  8(a6) = long y limit
+; Out: d0
+; Evidence: jt 403; caller Tusk_StateBoulderRain; BOULDER +$0E New (Tbl_Boulder_vtable); Seq_NextWrap(jt $5A878, -$3B04, -$3B32); countdown -1 (-2 at half rate)
 ; ---------------------------------------------------------------------------
-sub_05AED2:
+Boulder_SpawnerTick:
 	link.w	a6,#$FFEE
 	movem.l	d3-d7,-(a7)
 	tst.w	-$3B32(a5)

@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_05CAA0	[link-after-rts]
+; Tusk_StateReturnHome - TUSK: stop when within one step of home x
+; In:  8(a6) = this
+; Out: d0
+; Evidence: next Tusk_StateAtHome
 ; ---------------------------------------------------------------------------
-sub_05CAA0:
+Tusk_StateReturnHome:
 	link.w	a6,#$0
 	movem.l	d3/d7/a4,-(a7)
 	movea.l	$8(a6),a4
@@ -36,7 +39,7 @@ loc_05CAE4:
 	ble.s	loc_05CAFA
 	clr.w	$1E(a4)
 	clr.w	$16(a4)
-	lea.l	sub_05CB04(pc),a0
+	lea.l	Tusk_StateAtHome(pc),a0
 	move.l	a0,$5C(a4)
 	moveq	#$0,d0
 loc_05CAFA:

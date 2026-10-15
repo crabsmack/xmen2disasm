@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_05C07C	[jt 415]
+; Boulder_Spawn - create a BOULDER at (x, y): kind 1 waits to land (held/thrown boulder), any other kind starts rolling
+; In:  8(a6) = long x, $C(a6) = long y, $10(a6) = long kind
+; Out: d0 = boulder or 0
+; Evidence: Tbl_Boulder_vtable +$0E New; +$64/+$5C = Boulder_StateStart or Boulder_StateStartRoll; caller Tusk_AtkThrowBoulder
 ; ---------------------------------------------------------------------------
-sub_05C07C:
+Boulder_Spawn:
 	link.w	a6,#$0
 	move.l	a4,-(a7)
 	moveq	#$0,d0
@@ -24,12 +27,12 @@ sub_05C07C:
 	subq.l	#$1,d0
 	beq.s	loc_05C0C8
 loc_05C0BA:
-	lea.l	sub_05B614(pc),a0
+	lea.l	Boulder_StateStartRoll(pc),a0
 	move.l	a0,$64(a4)
 	move.l	a0,$5C(a4)
 	bra.s	loc_05C0D4
 loc_05C0C8:
-	lea.l	sub_05B5D4(pc),a0
+	lea.l	Boulder_StateStart(pc),a0
 	move.l	a0,$64(a4)
 	move.l	a0,$5C(a4)
 loc_05C0D4:

@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_05C626	[link-after-rts]
+; Tusk_AtkThrowBoulder - TUSK attack step: create a boulder in its hands, pick the throw column towards the target player, play the throw animation
+; In:  8(a6) = this
+; Out: d0 = 0
+; Evidence: Boulder_Spawn(x, y, 1); +$99 = (player x - home x + 16) / 32; Obj_ChangeAnim jt $F32; sub_1F64B4 (hold object); next Tusk_StateThrow
 ; ---------------------------------------------------------------------------
-sub_05C626:
+Tusk_AtkThrowBoulder:
 	link.w	a6,#$FFFC
 	movem.l	a3-a4,-(a7)
 	movea.l	$8(a6),a3
@@ -9,7 +12,7 @@ sub_05C626:
 	move.l	d0,-(a7)
 	move.l	$C(a3),-(a7)
 	move.l	$8(a3),-(a7)
-	jsr	$D1A(a5)	; -> sub_05C07C
+	jsr	$D1A(a5)	; -> Boulder_Spawn
 	move.l	d0,-$4(a6)
 	lea.l	$C(a7),a7
 	beq.s	loc_05C696
@@ -30,14 +33,14 @@ sub_05C626:
 	move.l	-$4(a6),-(a7)
 	move.l	a3,-(a7)
 	jsr	$4E72(a5)	; -> sub_1F64B4
-	lea.l	sub_05C6AA(pc),a0
+	lea.l	Tusk_StateThrow(pc),a0
 	move.l	a0,$5C(a3)
 	lea.l	$10(a7),a7
 	move.w	#$FF,$6C(a3)
 	moveq	#$0,d0
 	bra.s	loc_05C6A0
 loc_05C696:
-	lea.l	sub_05C4A0(pc),a0
+	lea.l	Tusk_StateChooseAttack(pc),a0
 	move.l	a0,$5C(a3)
 	moveq	#$0,d0
 loc_05C6A0:

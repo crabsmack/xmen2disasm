@@ -1,9 +1,12 @@
 ; ---------------------------------------------------------------------------
-; sub_05C1F4	[link-after-rts]
+; Tusk_LockArena - install Tusk_HookIsEvent3 as the scene hook -$321A
+; In:  none
+; Out: none
+; Evidence: called by Tusk_StateIntro
 ; ---------------------------------------------------------------------------
-sub_05C1F4:
+Tusk_LockArena:
 	link.w	a6,#$0
-	lea.l	sub_05C17E(pc),a0
+	lea.l	Tusk_HookIsEvent3(pc),a0
 	move.l	a0,-$341A(a5)
 	unlk	a6
 	rts

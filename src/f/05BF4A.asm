@@ -58,10 +58,10 @@ Boulder_Init:
 	ori.b	#$4,$2E(a3)
 	ori.b	#$4,$A4(a3)
 	lea.l	$18(a7),a7
-	lea.l	sub_05BAAC(pc),a0
+	lea.l	Boulder_StateShatter(pc),a0
 	move.l	a0,$60(a3)
 	move.l	a3,-(a7)
-	jsr	sub_05AD2E(pc)
+	jsr	Boulder_FindFloorBelow(pc)
 	jsr	$417A(a5)	; -> Rand_Next
 	moveq	#$0,d1
 	move.w	d0,d1
@@ -81,12 +81,12 @@ loc_05C042:
 	beq.s	loc_05C060
 	bra.s	loc_05C06C
 loc_05C052:
-	lea.l	sub_05B614(pc),a0
+	lea.l	Boulder_StateStartRoll(pc),a0
 	move.l	a0,$64(a3)
 	move.l	a0,$5C(a3)
 	bra.s	loc_05C06C
 loc_05C060:
-	lea.l	sub_05B5D4(pc),a0
+	lea.l	Boulder_StateStart(pc),a0
 	move.l	a0,$64(a3)
 	move.l	a0,$5C(a3)
 loc_05C06C:

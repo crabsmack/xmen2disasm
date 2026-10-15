@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_05B016	[link-after-rts]
+; Boulder_InitDebrisPool - set up the pool of 30 rock-debris records ($14 bytes) and empty it
+; In:  8(a6) = buffer
+; Out: d0
+; Evidence: -$3C68 = buffer, -$3C64 = count 0
 ; ---------------------------------------------------------------------------
-sub_05B016:
+Boulder_InitDebrisPool:
 	link.w	a6,#$0
 	movem.l	d3/d7/a4,-(a7)
 	movea.l	$8(a6),a4

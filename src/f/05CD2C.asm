@@ -1,8 +1,11 @@
 ; ---------------------------------------------------------------------------
-; loc_05CD2C	[runtime: executed in tas]
+; Tusk_Defeated_part3 - part 3 of Tusk_Defeated: code block split off by the code-flow tools (not a separate function)
+; In:  registers/frame of Tusk_Defeated
+; Out: continues in Tusk_Defeated
+; Evidence: only reached by branches from Tusk_Defeated
 ; ---------------------------------------------------------------------------
-loc_05CD2C:
+Tusk_Defeated_part3:
 	move.l	a4,-(a7)
 	jsr	$3AE2(a5)	; -> sub_13E808
 	addq.w	#$4,a7
-	bra.s	loc_05CD3E
+	bra.s	Tusk_Defeated_part5

@@ -1,12 +1,15 @@
 ; ---------------------------------------------------------------------------
-; sub_05BAAC	[link-after-rts]
+; Boulder_StateShatter - BOULDER hit: split into three pieces, frame 4, invulnerable, then let the pieces fall
+; In:  8(a6) = this
+; Out: d0 = +4 & 8
+; Evidence: Boulder_SplitIntoPieces; +6 |= $1000; +$6A = 1000; next Boulder_StatePiecesFall
 ; ---------------------------------------------------------------------------
-sub_05BAAC:
+Boulder_StateShatter:
 	link.w	a6,#$0
 	move.l	a4,-(a7)
 	movea.l	$8(a6),a4
 	move.l	a4,-(a7)
-	jsr	sub_05AE10(pc)
+	jsr	Boulder_SplitIntoPieces(pc)
 	ori.w	#$1000,$6(a4)
 	clr.w	$1E(a4)
 	clr.l	$16(a4)
@@ -22,7 +25,7 @@ sub_05BAAC:
 	move.w	#$3E8,$6A(a4)
 	lea.l	$C(a7),a7
 	clr.w	$6C(a4)
-	lea.l	sub_05B98C(pc),a0
+	lea.l	Boulder_StatePiecesFall(pc),a0
 	move.l	a0,$5C(a4)
 	moveq	#$8,d0
 	and.w	$4(a4),d0

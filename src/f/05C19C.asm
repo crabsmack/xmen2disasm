@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_05C19C	[link-after-rts]
+; Tusk_HookReturn0 - scene hook in -$321A after the TUSK arena opens: always 0
+; In:  none
+; Out: d0 = 0
+; Evidence: installed by Tusk_UnlockArena
 ; ---------------------------------------------------------------------------
-sub_05C19C:
+Tusk_HookReturn0:
 	link.w	a6,#$0
 	moveq	#$3,d0
 	cmp.w	$A(a6),d0

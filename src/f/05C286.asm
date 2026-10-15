@@ -1,12 +1,15 @@
 ; ---------------------------------------------------------------------------
-; sub_05C286	[link-after-rts]
+; Tusk_StateIntro - TUSK intro: lock the arena, stand still, attach the segment found 32 px above it, wait 300 frames
+; In:  8(a6) = this
+; Out: d0 = 0
+; Evidence: Obj_ChangeAnim jt $5C154; sub_1F80CA(x, y-32, $13) + sub_1F6B56; next Tusk_StateIntroWait
 ; ---------------------------------------------------------------------------
-sub_05C286:
+Tusk_StateIntro:
 	link.w	a6,#$0
 	movem.l	d6-d7/a3-a4,-(a7)
 	movea.l	$8(a6),a4
 	move.l	a4,-(a7)
-	jsr	sub_05C1F4(pc)
+	jsr	Tusk_LockArena(pc)
 	clr.w	$1E(a4)
 	clr.l	$16(a4)
 	clr.w	$20(a4)
@@ -38,7 +41,7 @@ sub_05C286:
 	addq.w	#$8,a7
 loc_05C2E8:
 	move.w	#$12C,$6E(a4)
-	lea.l	sub_05C302(pc),a0
+	lea.l	Tusk_StateIntroWait(pc),a0
 	move.l	a0,$5C(a4)
 	moveq	#$0,d0
 	movem.l	-$10(a6),d6-d7/a3-a4

@@ -1166,15 +1166,15 @@ Tbl_BeamScooterAnim2:	; animation script (byte flags, byte steps, ..., 2-byte st
 	incrom	$05A81A,$E
 Tbl_BeamScooterAnim3:	; animation script (byte flags, byte steps, ..., 2-byte steps from +6); C of E bytes used at runtime; read by Anim_ApplyStep, Anim_AdvanceByDistance, Anim_Advance; jt[393] used by sub_05D3C8, sub_05D4D2
 	incrom	$05A828,$E
-Tbl_BeamScooterAnim4:	; animation script (byte flags, byte steps, ..., 2-byte steps from +6); A of C bytes used at runtime; read by Anim_ApplyStep, Boulder_Update, Anim_AdvanceByDistance; jt[394] used by sub_05B614, sub_05B65A
+Tbl_BeamScooterAnim4:	; animation script (byte flags, byte steps, ..., 2-byte steps from +6); A of C bytes used at runtime; read by Anim_ApplyStep, Boulder_Update, Anim_AdvanceByDistance; jt[394] used by Boulder_StateStartRoll, Boulder_StateBounce
 	incrom	$05A836,$C
-Tbl_BeamScooterUpdate:	; table read by Boulder_Update; 9 of 10 bytes used at runtime; read by Boulder_Update, Anim_ApplyStep, sub_05B65A; jt[395] used by sub_05B65A
+Tbl_BeamScooterUpdate:	; table read by Boulder_Update; 9 of 10 bytes used at runtime; read by Boulder_Update, Anim_ApplyStep, Boulder_StateBounce; jt[395] used by Boulder_StateBounce
 	incrom	$05A842,$10
-Tbl_BeamScooterShakeStep:	; table read by Cam_ShakeStep; 11 of 12 bytes used at runtime; read by Cam_ShakeStep; jt[396] used by sub_05B65A
+Tbl_BeamScooterShakeStep:	; table read by Cam_ShakeStep; 11 of 12 bytes used at runtime; read by Cam_ShakeStep; jt[396] used by Boulder_StateBounce
 	incrom	$05A852,$12
-Tbl_BeamScooterShakeStep2:	; table read by Cam_ShakeStep; 13 of 14 bytes used at runtime; read by Cam_ShakeStep; jt[397] used by sub_05B65A
+Tbl_BeamScooterShakeStep2:	; table read by Cam_ShakeStep; 13 of 14 bytes used at runtime; read by Cam_ShakeStep; jt[397] used by Boulder_StateBounce
 	incrom	$05A864,$14
-Tbl_BeamScooterNextWrap:	; table read by Seq_NextWrap; A of A bytes used at runtime; read by Seq_NextWrap; jt[398] used by sub_05AED2
+Tbl_BeamScooterNextWrap:	; table read by Seq_NextWrap; A of A bytes used at runtime; read by Seq_NextWrap; jt[398] used by Boulder_SpawnerTick
 	incrom	$05A878,$A
 Tbl_BaniMazaB2ComputeParallax:	; table read by Scroll_ComputeParallax; 42 of 62 bytes used at runtime; read by Scroll_ComputeParallax, Scroll_SetParallax; jt[399] used by BaniMazaB2_SetParallax
 	incrom	$05A882,$62
@@ -1220,9 +1220,9 @@ Str_Empty_05BB84:	; C string "" (used by Boulder_ClassInit)
 	include "src/f/05C07C.asm"
 Tbl_Boulder_vtable:	; class descriptor of BOULDER: word name offset $6E, parent ACTOR, 26 method slots from +6, then the name (tools/classes.py)
 	incrom	$05C0DE,$76
-Tbl_TuskAnim:	; animation script (byte flags, byte steps, ..., 2-byte steps from +6); A of C bytes used at runtime; read by Anim_ApplyStep, Anim_AdvanceByDistance, Anim_Advance; jt[417] used by sub_05C286, sub_05C6AA, sub_05CA12
+Tbl_TuskAnim:	; animation script (byte flags, byte steps, ..., 2-byte steps from +6); A of C bytes used at runtime; read by Anim_ApplyStep, Anim_AdvanceByDistance, Anim_Advance; jt[417] used by Tusk_StateIntro, Tusk_StateThrow, Tusk_StateChargeStop
 	incrom	$05C154,$C
-Tbl_TuskAnim2:	; animation script (byte flags, byte steps, ..., 2-byte steps from +6); E of 10 bytes used at runtime; read by Anim_ApplyStep; jt[418] used by sub_05C626
+Tbl_TuskAnim2:	; animation script (byte flags, byte steps, ..., 2-byte steps from +6); E of 10 bytes used at runtime; read by Anim_ApplyStep; jt[418] used by Tusk_AtkThrowBoulder
 	incrom	$05C160,$10
 	include "src/f/05C170.asm"
 	include "src/f/05C17E.asm"
@@ -1239,7 +1239,7 @@ Tbl_TuskAnim2:	; animation script (byte flags, byte steps, ..., 2-byte steps fro
 	include "src/f/05C41A.asm"
 	include "src/f/05C4A0.asm"
 Sw_05C4A0:	; switch table of sub at $05C4A0: 10 word offsets from Sw_05C4A0-2
-	dc.w	loc_05C53C-(Sw_05C4A0-2), loc_05C548-(Sw_05C4A0-2), loc_05C554-(Sw_05C4A0-2), loc_05C566-(Sw_05C4A0-2)
+	dc.w	loc_05C53C-(Sw_05C4A0-2), Tusk_StateChooseAttack_part2-(Sw_05C4A0-2), loc_05C554-(Sw_05C4A0-2), loc_05C566-(Sw_05C4A0-2)
 	dc.w	loc_05C572-(Sw_05C4A0-2), loc_05C57E-(Sw_05C4A0-2), loc_05C590-(Sw_05C4A0-2), loc_05C59C-(Sw_05C4A0-2)
 	dc.w	loc_05C5AE-(Sw_05C4A0-2), loc_05C5BA-(Sw_05C4A0-2)
 	include "src/f/05C538.asm"
@@ -1264,8 +1264,8 @@ Sw_05C4A0:	; switch table of sub at $05C4A0: 10 word offsets from Sw_05C4A0-2
 	include "src/f/05CC92.asm"
 	include "src/f/05CCDA.asm"
 Sw_05CCDA:	; switch table of sub at $05CCDA: 5 word offsets from Sw_05CCDA-2
-	dc.w	loc_05CD0A-(Sw_05CCDA-2), loc_05CD18-(Sw_05CCDA-2), loc_05CD22-(Sw_05CCDA-2), loc_05CD2C-(Sw_05CCDA-2)
-	dc.w	loc_05CD36-(Sw_05CCDA-2)
+	dc.w	Tusk_Defeated_part1-(Sw_05CCDA-2), Tusk_Defeated_part2-(Sw_05CCDA-2), loc_05CD22-(Sw_05CCDA-2), Tusk_Defeated_part3-(Sw_05CCDA-2)
+	dc.w	Tusk_Defeated_part4-(Sw_05CCDA-2)
 	include "src/f/05CD0A.asm"
 	include "src/f/05CD18.asm"
 	include "src/f/05CD2C.asm"

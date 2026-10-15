@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_05C92A	[link-after-rts]
+; Tusk_StateChargeStart - TUSK: charge forward (frame 8, vx +/-900, accel +/-40, max $640) with sound $E6
+; In:  8(a6) = this
+; Out: d0 = 0
+; Evidence: next Tusk_StateCharging
 ; ---------------------------------------------------------------------------
-sub_05C92A:
+Tusk_StateChargeStart:
 	link.w	a6,#$0
 	move.l	a4,-(a7)
 	movea.l	$8(a6),a4
@@ -37,7 +40,7 @@ loc_05C970:
 	jsr	$5222(a5)	; -> Snd_Stop
 	pea.l	($E6).w
 	jsr	$521A(a5)	; -> Snd_Play
-	lea.l	sub_05C9A2(pc),a0
+	lea.l	Tusk_StateCharging(pc),a0
 	move.l	a0,$5C(a4)
 	lea.l	$10(a7),a7
 	moveq	#$0,d0

@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_05AE10	[link-after-rts]
+; Boulder_SplitIntoPieces - BOULDER: set up its three break-up pieces (position, velocity, floor id) from its position and speed
+; In:  8(a6) = this
+; Out: d0
+; Evidence: piece records of 8 bytes at +$8C: offsets (-$30,-$30), (+$40,-$C), (+4,+$30) in 1/4 px; called by Boulder_StateShatter
 ; ---------------------------------------------------------------------------
-sub_05AE10:
+Boulder_SplitIntoPieces:
 	link.w	a6,#$0
 	movem.l	d3-d7/a3-a4,-(a7)
 	movea.l	$8(a6),a3

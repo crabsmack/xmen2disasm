@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_05CBB2	[link-after-rts]
+; Tusk_AtkSpawnTusketteBoth - TUSK attack step: spawn a kind-2 TUSKETTE, then a kind-3 one after 30 frames
+; In:  8(a6) = this
+; Out: d0 = 0
+; Evidence: next Tusk_AtkSpawnTuskette3
 ; ---------------------------------------------------------------------------
-sub_05CBB2:
+Tusk_AtkSpawnTusketteBoth:
 	link.w	a6,#$0
 	movem.l	a3-a4,-(a7)
 	movea.l	$8(a6),a4
@@ -13,7 +16,7 @@ sub_05CBB2:
 	move.l	$8(a4),-(a7)
 	jsr	$D8A(a5)	; -> sub_05D0BC
 	movea.l	d0,a3
-	lea.l	sub_05CB72(pc),a0
+	lea.l	Tusk_AtkSpawnTuskette3(pc),a0
 	move.l	a0,$5C(a4)
 	move.w	#$1E,$6C(a4)
 	moveq	#$0,d0
