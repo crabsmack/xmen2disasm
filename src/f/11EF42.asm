@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_11EF42	[jt 1636]
+; BioBalls_ActClearDone - BIOBALLS script action: clear the done flag (+$96), next entry
+; In:  8(a6) = this
+; Out: none
+; Evidence: BioBalls_IsDone reads +$96
 ; ---------------------------------------------------------------------------
-sub_11EF42:
+BioBalls_ActClearDone:
 	link.w	a6,#$0
 	move.l	a4,-(a7)
 	movea.l	$8(a6),a4

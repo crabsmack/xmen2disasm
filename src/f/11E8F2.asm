@@ -81,7 +81,7 @@ loc_11E9A8:
 	and.w	$98(a4),d0
 	beq.s	loc_11E9C2
 	move.l	a4,-(a7)
-	jsr	sub_11F22C(pc)
+	jsr	BioBalls_UpdateBox(pc)
 	addq.w	#$4,a7
 loc_11E9C2:
 	movem.l	-$10(a6),d5-d7/a4

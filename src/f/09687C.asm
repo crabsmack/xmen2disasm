@@ -2,7 +2,7 @@
 ; XClone_ActBecomeBalls - XCLONE script action: turn into a BIOBALLS object (clone hidden and unhittable, sound $F2), then wait for it
 ; In:  8(a6) = this
 ; Out: d0
-; Evidence: creates/reuses the child (BIOBALLS $1203AC +$0E), -$3B30 := child, List_Unlink(+$84, $FFEBAE), child animations from record + word 6, state sub_11F0C6; next XClone_StateWaitChild; jt 740; TAS 52394-56686
+; Evidence: creates/reuses the child (BIOBALLS $1203AC +$0E), -$3B30 := child, List_Unlink(+$84, $FFEBAE), child animations from record + word 6, state BioBalls_ActClearAnim; next XClone_StateWaitChild; jt 740; TAS 52394-56686
 ; Found: jt 740
 ; ---------------------------------------------------------------------------
 XClone_ActBecomeBalls:
@@ -63,7 +63,7 @@ loc_096920:
 	adda.w	$6(a1),a0
 	move.l	a0,-(a7)
 	move.l	a3,-(a7)
-	jsr	$3392(a5)	; -> sub_11F2F2
+	jsr	$3392(a5)	; -> BioBalls_SetFormation
 	lea.l	$1962(a5),a0
 	move.l	$2(a0),-(a7)
 	pea.l	$8C(a3)

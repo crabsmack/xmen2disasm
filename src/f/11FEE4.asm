@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_11FEE4	[jt 1655]
+; BioBalls_MotionPath - BIOBALLS motion: balls follow the path (+$9A, 8-byte points) with a sine sway
+; In:  8(a6) = this  $E(a6) = word steps
+; Out: d0.b = 1
+; Evidence: set by EvilGambit_ActBallsPath / EvilPsylocke_ActBallsPath (jt $33DA)
 ; ---------------------------------------------------------------------------
-sub_11FEE4:
+BioBalls_MotionPath:
 	link.w	a6,#$FFF0
 	movem.l	d3-d7/a3-a4,-(a7)
 	move.b	#$1,-$7(a6)

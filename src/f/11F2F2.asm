@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_11F2F2	[jt 1646]
+; BioBalls_SetFormation - BIOBALLS: place the balls at the object position plus a list of offsets (mirrored by the flip bits), then mark done
+; In:  8(a6) = this  $C(a6) = offsets (8-byte entries, x >= 1000 ends)
+; Out: none
+; Evidence: BioBalls_UpdateBox; next state BioBalls_ActSetDone; 5 callers
 ; ---------------------------------------------------------------------------
-sub_11F2F2:
+BioBalls_SetFormation:
 	link.w	a6,#$0
 	movem.l	d3-d7/a3-a4,-(a7)
 	movea.l	$C(a6),a4
@@ -82,8 +85,8 @@ loc_11F3A6:
 	move.w	#$FFFF,$2(a3)
 loc_11F3BA:
 	move.l	$8(a6),-(a7)
-	jsr	sub_11F22C(pc)
-	lea.l	sub_11EF96(pc),a0
+	jsr	BioBalls_UpdateBox(pc)
+	lea.l	BioBalls_ActSetDone(pc),a0
 	movea.l	$8(a6),a1
 	move.l	a0,$5C(a1)
 	movea.l	$8(a6),a0

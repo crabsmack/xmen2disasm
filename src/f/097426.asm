@@ -1,5 +1,5 @@
 ; ---------------------------------------------------------------------------
-; XClone_StateWaitChild2 - XCLONE state: wait until the child reports done (sub_11F188), then the next step
+; XClone_StateWaitChild2 - XCLONE state: wait until the child reports done (BioBalls_IsDone), then the next step
 ; In:  8(a6) = this
 ; Out: d0
 ; Evidence: like XClone_StateWaitChild without the null-child check; set by XClone_StateBallsReturn
@@ -11,7 +11,7 @@ XClone_StateWaitChild2:
 	movea.l	$8(a6),a4
 	movea.l	$9C(a4),a3
 	move.l	a3,-(a7)
-	jsr	$337A(a5)	; -> sub_11F188
+	jsr	$337A(a5)	; -> BioBalls_IsDone
 	tst.b	d0
 	addq.w	#$4,a7
 	beq.s	loc_097482

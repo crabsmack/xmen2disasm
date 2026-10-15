@@ -29,7 +29,7 @@ loc_0BC698:
 	lea.l	$1E92(a5),a0
 	move.l	$2(a0),-(a7)
 	move.l	a4,-(a7)
-	jsr	$3392(a5)	; -> sub_11F2F2
+	jsr	$3392(a5)	; -> BioBalls_SetFormation
 	lea.l	$1E82(a5),a0
 	move.l	$2(a0),-(a7)
 	pea.l	$8C(a4)

@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_11F4C0	[jt 1649]
+; BioBalls_FillFromFirst - BIOBALLS: copy ball 0 into every ball slot after the end marker (and seed ball 0 from the object if unset)
+; In:  8(a6) = this
+; Out: none
+; Evidence: 5 callers (XClone_ActBallsMotionA...)
 ; ---------------------------------------------------------------------------
-sub_11F4C0:
+BioBalls_FillFromFirst:
 	link.w	a6,#$0
 	movem.l	d5-d7/a3-a4,-(a7)
 	clr.b	d6

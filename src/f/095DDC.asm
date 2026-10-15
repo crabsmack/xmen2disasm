@@ -2,7 +2,7 @@
 ; XClone_StateDropPod - XCLONE entrance: drop a pod (BIOBALLS object) from the arena ceiling, clone hidden and unhittable
 ; In:  8(a6) = this
 ; Out: d0
-; Evidence: frame $FF; pod at (x, +$A4 ceiling), gravity $80, vy $100, state sub_11EF1E; List_Unlink from $FFEBAE; next XClone_StatePodFall (or XClone_StateEmerge without a pod)
+; Evidence: frame $FF; pod at (x, +$A4 ceiling), gravity $80, vy $100, state BioBalls_StateIdle; List_Unlink from $FFEBAE; next XClone_StatePodFall (or XClone_StateEmerge without a pod)
 ; Found: link-after-rts
 ; ---------------------------------------------------------------------------
 XClone_StateDropPod:
@@ -50,7 +50,7 @@ loc_095E34:
 	lsl.l	#$8,d1
 	move.l	d1,$C(a3)
 	move.l	a3,-(a7)
-	jsr	$33B2(a5)	; -> sub_11F538
+	jsr	$33B2(a5)	; -> BioBalls_ResetToPos
 	clr.b	$96(a3)
 	lea.l	$333A(a5),a0
 	move.l	a0,$5C(a3)

@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_11F42C	[jt 1648]
+; BioBalls_SetPathCollapsed - BIOBALLS: set a path and put every ball on the object position
+; In:  8(a6) = this  $C(a6) = path
+; Out: none
+; Evidence: 2 callers (XCLONE)
 ; ---------------------------------------------------------------------------
-sub_11F42C:
+BioBalls_SetPathCollapsed:
 	link.w	a6,#$0
 	movem.l	d4-d7/a3-a4,-(a7)
 	movea.l	$C(a6),a3

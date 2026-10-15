@@ -1,8 +1,8 @@
 ; ---------------------------------------------------------------------------
-; EvilDrop_ActOpen - EVILDROP script action: play the opening animation (+$AC, default jt[$183A]) and hand over to the BIOBALLS state sub_11EFF2
+; EvilDrop_ActOpen - EVILDROP script action: play the opening animation (+$AC, default jt[$183A]) and hand over to the BIOBALLS state BioBalls_WaitPathDone
 ; In:  8(a6) = this
 ; Out: none
-; Evidence: sub_11F42C(this, anim); +$5C = sub_11EFF2; jt 704
+; Evidence: BioBalls_SetPathCollapsed(this, anim); +$5C = BioBalls_WaitPathDone; jt 704
 ; Found: jt 704
 ; ---------------------------------------------------------------------------
 EvilDrop_ActOpen:
@@ -13,14 +13,14 @@ EvilDrop_ActOpen:
 	beq.s	loc_0950B2
 	move.l	$AC(a4),-(a7)
 	move.l	a4,-(a7)
-	jsr	$33A2(a5)	; -> sub_11F42C
+	jsr	$33A2(a5)	; -> BioBalls_SetPathCollapsed
 	addq.w	#$8,a7
 	bra.s	loc_0950C2
 loc_0950B2:
 	lea.l	$163A(a5),a0
 	move.l	$2(a0),-(a7)
 	move.l	a4,-(a7)
-	jsr	$33A2(a5)	; -> sub_11F42C
+	jsr	$33A2(a5)	; -> BioBalls_SetPathCollapsed
 	addq.w	#$8,a7
 loc_0950C2:
 	lea.l	$3352(a5),a0

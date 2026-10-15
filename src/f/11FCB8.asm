@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_11FCB8	[jt 1654]
+; BioBalls_MotionHelix - BIOBALLS motion: a rotating double helix (two strands half a turn apart) whose vertical spacing (+$A8) grows to $2800; sets the front/back bit per ball
+; In:  8(a6) = this  $E(a6) = word steps
+; Out: d0 = 1
+; Evidence: set by XClone_ActBallsMotionC (jt $33D2)
 ; ---------------------------------------------------------------------------
-sub_11FCB8:
+BioBalls_MotionHelix:
 	link.w	a6,#$FFEC
 	movem.l	d3-d7/a3-a4,-(a7)
 	movea.l	$8(a6),a3

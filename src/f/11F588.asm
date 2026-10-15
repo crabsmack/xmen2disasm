@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_11F588	[jt 1651]
+; BioBalls_MotionGather - BIOBALLS motion: pull every ball toward the object (+offset) a few pixels per step; clear the motion when all have arrived
+; In:  8(a6) = this  $E(a6) = word steps
+; Out: d0.b = 1
+; Evidence: motion function slot +$A2 called by BioBalls_Move; set by XClone_ActBallsMotionD (jt $33BA)
 ; ---------------------------------------------------------------------------
-sub_11F588:
+BioBalls_MotionGather:
 	link.w	a6,#$FFF8
 	movem.l	d3-d7/a3-a4,-(a7)
 	movea.l	$8(a6),a3

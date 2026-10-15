@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_11EF96	[jt 1637]
+; BioBalls_ActSetDone - BIOBALLS script action: clear the animation, set the done flag, next entry
+; In:  8(a6) = this
+; Out: none
+; Evidence: set as the next state by BioBalls_SetFormation; 3 callers
 ; ---------------------------------------------------------------------------
-sub_11EF96:
+BioBalls_ActSetDone:
 	link.w	a6,#$0
 	move.l	a4,-(a7)
 	movea.l	$8(a6),a4

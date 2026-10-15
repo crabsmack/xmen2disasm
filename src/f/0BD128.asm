@@ -23,7 +23,7 @@ sub_0BD128:
 	lea.l	$1E9A(a5),a0
 	move.l	$2(a0),-(a7)
 	move.l	a4,-(a7)
-	jsr	$3392(a5)	; -> sub_11F2F2
+	jsr	$3392(a5)	; -> BioBalls_SetFormation
 	pea.l	($F2).w
 	jsr	$5222(a5)	; -> Snd_Stop
 	pea.l	($F2).w

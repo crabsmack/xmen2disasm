@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_11F1A6	[jt 1644]
+; BioBalls_AllocBallList - allocate the shared ball list for N balls (filled with -1) and build the 128-entry sine table at $FFE564
+; In:  $A(a6) = word ball count
+; Out: d0 = list
+; Evidence: list kept in $FFE768 and picked up by BioBalls_UpdateBox/SetFormation; Mem_StackAlloc(6N+2), Math_SinDeg
 ; ---------------------------------------------------------------------------
-sub_11F1A6:
+BioBalls_AllocBallList:
 	link.w	a6,#$0
 	movem.l	d3/d6-d7/a4,-(a7)
 	move.w	$A(a6),d6

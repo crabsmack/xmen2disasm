@@ -71,7 +71,7 @@ loc_120E9E:
 	ext.l	d6
 	move.l	d6,-(a7)
 	move.l	a3,-(a7)
-	jsr	$32D2(a5)	; -> sub_11E5E6
+	jsr	$32D2(a5)	; -> BioBullet_SetVelocity
 	subq.w	#$1,$A2(a4)
 	lea.l	$10(a7),a7
 loc_120EF6:

@@ -1,12 +1,15 @@
 ; ---------------------------------------------------------------------------
-; sub_11EF1E	[jt 1635]
+; BioBalls_StateIdle - BIOBALLS idle state: do nothing, every frame
+; In:  8(a6) = this
+; Out: d0 = flags & 8
+; Evidence: loops on itself; TAS 33666-34594
 ; ---------------------------------------------------------------------------
-sub_11EF1E:
+BioBalls_StateIdle:
 	link.w	a6,#$0
 	move.l	a4,-(a7)
 	movea.l	$8(a6),a4
 	clr.w	$6C(a4)
-	lea.l	sub_11EF1E(pc),a0
+	lea.l	BioBalls_StateIdle(pc),a0
 	move.l	a0,$5C(a4)
 	moveq	#$8,d0
 	and.w	$4(a4),d0

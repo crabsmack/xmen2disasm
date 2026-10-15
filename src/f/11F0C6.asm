@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_11F0C6	[jt 1640]
+; BioBalls_ActClearAnim - BIOBALLS script action: clear the animation, next entry
+; In:  8(a6) = this
+; Out: none
+; Evidence: +$44 = 0
 ; ---------------------------------------------------------------------------
-sub_11F0C6:
+BioBalls_ActClearAnim:
 	link.w	a6,#$0
 	move.l	a4,-(a7)
 	movea.l	$8(a6),a4

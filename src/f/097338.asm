@@ -1,5 +1,5 @@
 ; ---------------------------------------------------------------------------
-; XClone_ActBallsMotionC - XCLONE script action: BIOBALLS motion C - motion sub_11FCB8 with +$A8 = $900, +$AA = 10
+; XClone_ActBallsMotionC - XCLONE script action: BIOBALLS motion C - motion BioBalls_MotionHelix with +$A8 = $900, +$AA = 10
 ; In:  8(a6) = this
 ; Out: d0
 ; Evidence: jt 750; TAS 52427-56718
@@ -13,7 +13,7 @@ XClone_ActBallsMotionC:
 	move.l	a3,d0
 	beq.s	loc_09736C
 	move.l	a3,-(a7)
-	jsr	$33AA(a5)	; -> sub_11F4C0
+	jsr	$33AA(a5)	; -> BioBalls_FillFromFirst
 	lea.l	$33D2(a5),a0
 	move.l	a0,$A2(a3)
 	clr.w	$A6(a3)

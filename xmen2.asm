@@ -3181,7 +3181,7 @@ Tbl_BioBullet_vtable:	; class descriptor "BIOBULLET": word $6E = name offset, lo
 	include "src/f/11F152.asm"
 	include "src/f/11F188.asm"
 	include "src/f/11F1A6.asm"
-Str_Empty_11F22A:	; C string "" (used by sub_11F1A6)
+Str_Empty_11F22A:	; C string "" (used by BioBalls_AllocBallList)
 	incrom	$11F22A,$2
 	include "src/f/11F22C.asm"
 	include "src/f/11F2F2.asm"

@@ -1,8 +1,8 @@
 ; ---------------------------------------------------------------------------
-; XClone_ActBallsMotionD - XCLONE script action: BIOBALLS motion D - motion sub_11F588, child state sub_11F05C, then wait for the child
+; XClone_ActBallsMotionD - XCLONE script action: BIOBALLS motion D - motion BioBalls_MotionGather, child state BioBalls_WaitMotionDone, then wait for the child
 ; In:  8(a6) = this
 ; Out: d0
-; Evidence: sub_11F22C(child); child +$9E = box centre - x, +$A0 = -$C0; next XClone_StateWaitChild; jt 751
+; Evidence: BioBalls_UpdateBox(child); child +$9E = box centre - x, +$A0 = -$C0; next XClone_StateWaitChild; jt 751
 ; Found: jt 751
 ; ---------------------------------------------------------------------------
 XClone_ActBallsMotionD:
@@ -17,7 +17,7 @@ XClone_ActBallsMotionD:
 	lea.l	$33BA(a5),a0
 	move.l	a0,$A2(a4)
 	move.l	a4,-(a7)
-	jsr	$338A(a5)	; -> sub_11F22C
+	jsr	$338A(a5)	; -> BioBalls_UpdateBox
 	move.w	$52(a4),d0
 	ext.l	d0
 	move.w	$4E(a4),d1

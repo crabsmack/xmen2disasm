@@ -1,5 +1,5 @@
 ; ---------------------------------------------------------------------------
-; XClone_StateWaitChild - XCLONE state: wait until the child object (+$9C) reports done (sub_11F188), then the next script step
+; XClone_StateWaitChild - XCLONE state: wait until the child object (+$9C) reports done (BioBalls_IsDone), then the next script step
 ; In:  8(a6) = this
 ; Out: none
 ; Evidence: 5 callers (actions that start a child effect); TAS 52268-56717
@@ -12,7 +12,7 @@ XClone_StateWaitChild:
 	tst.l	$9C(a4)
 	beq.s	loc_09599A
 	move.l	$9C(a4),-(a7)
-	jsr	$337A(a5)	; -> sub_11F188
+	jsr	$337A(a5)	; -> BioBalls_IsDone
 	tst.b	d0
 	addq.w	#$4,a7
 	bne.s	loc_09599A

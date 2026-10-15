@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_11F188	[jt 1643]
+; BioBalls_IsDone - has the BIOBALLS object finished its formation (byte +$96); a missing object counts as done
+; In:  8(a6) = bioballs or 0
+; Out: d0.b
+; Evidence: 7 callers in XCLONE/EVIL* code waiting on their balls form
 ; ---------------------------------------------------------------------------
-sub_11F188:
+BioBalls_IsDone:
 	link.w	a6,#$0
 	move.l	a4,-(a7)
 	movea.l	$8(a6),a4

@@ -6,7 +6,7 @@ sub_0BC80C:
 	move.l	a4,-(a7)
 	movea.l	$8(a6),a4
 	move.l	a4,-(a7)
-	jsr	$33AA(a5)	; -> sub_11F4C0
+	jsr	$33AA(a5)	; -> BioBalls_FillFromFirst
 	move.w	#$FFE0,$A0(a4)
 	lea.l	$33CA(a5),a0
 	move.l	a0,$A2(a4)

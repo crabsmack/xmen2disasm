@@ -1,14 +1,17 @@
 ; ---------------------------------------------------------------------------
-; sub_11F05C	[jt 1639]
+; BioBalls_WaitMotionDone - BIOBALLS: wait until the motion function (+$A2) is cleared, then next entry
+; In:  8(a6) = this
+; Out: none
+; Evidence: exported (jt $335A) for XCLONE actions; TAS 52494-52802
 ; ---------------------------------------------------------------------------
-sub_11F05C:
+BioBalls_WaitMotionDone:
 	link.w	a6,#$0
 	move.l	a4,-(a7)
 	movea.l	$8(a6),a4
 	tst.l	$A2(a4)
 	beq.s	loc_11F080
 	clr.w	$6C(a4)
-	lea.l	sub_11F05C(pc),a0
+	lea.l	BioBalls_WaitMotionDone(pc),a0
 	move.l	a0,$5C(a4)
 	moveq	#$8,d0
 	and.w	$4(a4),d0

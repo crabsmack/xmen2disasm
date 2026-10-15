@@ -12,7 +12,7 @@ sub_0BD1D8:
 	lea.l	$1E92(a5),a0
 	move.l	$2(a0),-(a7)
 	move.l	a4,-(a7)
-	jsr	$339A(a5)	; -> sub_11F3E2
+	jsr	$339A(a5)	; -> BioBalls_StartPath
 	lea.l	$14(a7),a7
 	clr.w	$6C(a4)
 	lea.l	$3352(a5),a0

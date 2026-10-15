@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_11EEA8	[link-after-rts]
+; BioBalls_ActCollapse - BIOBALLS script action: put ball 0 on the object, end the list after it, restart the script at entry 0
+; In:  8(a6) = this
+; Out: none
+; Evidence: ball list +$92 {word count, 6-byte balls {x, y, flags}}; -1,-1 = end marker; script {+$8C, +$8E}
 ; ---------------------------------------------------------------------------
-sub_11EEA8:
+BioBalls_ActCollapse:
 	link.w	a6,#$0
 	movem.l	a3-a4,-(a7)
 	movea.l	$8(a6),a4

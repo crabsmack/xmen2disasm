@@ -2,7 +2,7 @@
 ; SavageA4_RunScene - scene function for 'SavageA4 Chamber': boss stages, level, hooks, camera, run
 ; In:  none
 ; Out: none
-; Evidence: registered under that name (jt 912); SavageA4_InitBossStages with a stack table in -$3B14; Scroll_SetParallax($0B663A); CAMERA +$0A(SavageA4_CamSetHooks); sub_11F1A6($10); TAS 33301
+; Evidence: registered under that name (jt 912); SavageA4_InitBossStages with a stack table in -$3B14; Scroll_SetParallax($0B663A); CAMERA +$0A(SavageA4_CamSetHooks); BioBalls_AllocBallList($10); TAS 33301
 ; Found: jt 912
 ; ---------------------------------------------------------------------------
 SavageA4_RunScene:
@@ -30,7 +30,7 @@ SavageA4_RunScene:
 	jsr	$2E8A(a5)	; -> GaussBullet_InitPool
 	moveq	#$10,d0
 	move.l	d0,-(a7)
-	jsr	$3382(a5)	; -> sub_11F1A6
+	jsr	$3382(a5)	; -> BioBalls_AllocBallList
 	jsr	$5242(a5)	; -> Snd_StopAll
 	jsr	$5002(a5)	; -> Level_Run
 	jsr	$5242(a5)	; -> Snd_StopAll

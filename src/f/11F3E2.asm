@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_11F3E2	[jt 1647]
+; BioBalls_StartPath - BIOBALLS: start following a path (+$9A) with flags and an offset, waiting in BioBalls_WaitPathDone
+; In:  8(a6) = this  $C(a6) = path  $13(a6) = byte flags  $16/$1A(a6) = word dx, dy
+; Out: none
+; Evidence: +$98 bits 1-3, +$9E/+$A0; 4 callers
 ; ---------------------------------------------------------------------------
-sub_11F3E2:
+BioBalls_StartPath:
 	link.w	a6,#$0
 	move.l	a4,-(a7)
 	movea.l	$8(a6),a4
@@ -17,7 +20,7 @@ sub_11F3E2:
 	move.w	d2,$98(a4)
 	move.w	$16(a6),$9E(a4)
 	move.w	$1A(a6),$A0(a4)
-	lea.l	sub_11EFF2(pc),a0
+	lea.l	BioBalls_WaitPathDone(pc),a0
 	move.l	a0,$5C(a4)
 	clr.w	$6C(a4)
 	movea.l	-$4(a6),a4

@@ -2,7 +2,7 @@
 ; XClone_StatePodOpen - XCLONE entrance: open the pod at the clone's position (sound $EF, the clone record's opening animation)
 ; In:  8(a6) = this
 ; Out: d0
-; Evidence: pod script jt[$1B62], sub_11F42C(pod, record + word 6), pod state sub_11EFF2; next XClone_StatePodWaitOpen
+; Evidence: pod script jt[$1B62], BioBalls_SetPathCollapsed(pod, record + word 6), pod state BioBalls_WaitPathDone; next XClone_StatePodWaitOpen
 ; Found: link-after-rts
 ; ---------------------------------------------------------------------------
 XClone_StatePodOpen:
@@ -34,7 +34,7 @@ loc_096182:
 	adda.w	$6(a1),a0
 	move.l	a0,-(a7)
 	move.l	a3,-(a7)
-	jsr	$33A2(a5)	; -> sub_11F42C
+	jsr	$33A2(a5)	; -> BioBalls_SetPathCollapsed
 	lea.l	$3352(a5),a0
 	move.l	a0,$5C(a3)
 	clr.w	$6C(a3)

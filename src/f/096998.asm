@@ -2,7 +2,7 @@
 ; XClone_ActBallsToFloor - XCLONE script action: drop the BIOBALLS child to the arena floor (sound $EF)
 ; In:  8(a6) = this
 ; Out: d0
-; Evidence: clone x := child x; sub_11F3E2(child, record + word 6, 0, 0, 0); child y = floor +$A6, state sub_11F152; next XClone_StateWaitChild; jt 741
+; Evidence: clone x := child x; BioBalls_StartPath(child, record + word 6, 0, 0, 0); child y = floor +$A6, state BioBalls_StateAnimB; next XClone_StateWaitChild; jt 741
 ; Found: jt 741
 ; ---------------------------------------------------------------------------
 XClone_ActBallsToFloor:
@@ -35,7 +35,7 @@ loc_0969D4:
 	adda.w	$6(a1),a0
 	move.l	a0,-(a7)
 	move.l	a3,-(a7)
-	jsr	$339A(a5)	; -> sub_11F3E2
+	jsr	$339A(a5)	; -> BioBalls_StartPath
 	moveq	#$0,d0
 	move.l	d0,$A2(a3)
 	move.w	$A6(a4),d1

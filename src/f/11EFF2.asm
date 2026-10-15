@@ -1,14 +1,17 @@
 ; ---------------------------------------------------------------------------
-; sub_11EFF2	[jt 1638]
+; BioBalls_WaitPathDone - BIOBALLS: wait until the path pointer (+$9A) is cleared, then next entry
+; In:  8(a6) = this
+; Out: none
+; Evidence: set by BioBalls_StartPath
 ; ---------------------------------------------------------------------------
-sub_11EFF2:
+BioBalls_WaitPathDone:
 	link.w	a6,#$0
 	move.l	a4,-(a7)
 	movea.l	$8(a6),a4
 	tst.l	$9A(a4)
 	beq.s	loc_11F016
 	clr.w	$6C(a4)
-	lea.l	sub_11EFF2(pc),a0
+	lea.l	BioBalls_WaitPathDone(pc),a0
 	move.l	a0,$5C(a4)
 	moveq	#$8,d0
 	and.w	$4(a4),d0

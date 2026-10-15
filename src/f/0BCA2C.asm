@@ -7,7 +7,7 @@ sub_0BCA2C:
 	movea.l	$8(a6),a4
 	movea.l	$B4(a4),a3
 	move.l	a3,-(a7)
-	jsr	$337A(a5)	; -> sub_11F188
+	jsr	$337A(a5)	; -> BioBalls_IsDone
 	tst.b	d0
 	addq.w	#$4,a7
 	beq.s	loc_0BCA62

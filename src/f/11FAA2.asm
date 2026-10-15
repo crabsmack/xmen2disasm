@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_11FAA2	[jt 1653]
+; BioBalls_MotionRing - BIOBALLS motion: a rotating ring whose radius (+$A8) shrinks to $160
+; In:  8(a6) = this  $E(a6) = word steps
+; Out: d0 = 1
+; Evidence: set by XClone_ActBallsMotionB (jt $33CA) with radius $600
 ; ---------------------------------------------------------------------------
-sub_11FAA2:
+BioBalls_MotionRing:
 	link.w	a6,#$FFF2
 	movem.l	d3-d7/a3-a4,-(a7)
 	movea.l	$8(a6),a3

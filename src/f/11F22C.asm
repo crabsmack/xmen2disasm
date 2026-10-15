@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_11F22C	[jt 1645]
+; BioBalls_UpdateBox - BIOBALLS: set the collision box to the bounding box of all balls (+16 px)
+; In:  8(a6) = this
+; Out: none
+; Evidence: box +$4C-$52; ball list from +$92 or $FFE768
 ; ---------------------------------------------------------------------------
-sub_11F22C:
+BioBalls_UpdateBox:
 	link.w	a6,#$0
 	movem.l	d6-d7/a3-a4,-(a7)
 	movea.l	$8(a6),a3

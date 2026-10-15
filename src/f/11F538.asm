@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_11F538	[jt 1650]
+; BioBalls_ResetToPos - BIOBALLS: put ball 0 on the object and end the list after it
+; In:  8(a6) = this
+; Out: none
+; Evidence: caller in XCLONE code
 ; ---------------------------------------------------------------------------
-sub_11F538:
+BioBalls_ResetToPos:
 	link.w	a6,#$0
 	movem.l	a3-a4,-(a7)
 	movea.l	$8(a6),a4

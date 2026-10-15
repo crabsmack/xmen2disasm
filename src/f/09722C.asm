@@ -1,8 +1,8 @@
 ; ---------------------------------------------------------------------------
-; XClone_ActBallsMotionA - XCLONE script action: BIOBALLS motion A - child $60 above the floor, sub_11F4C0, motion sub_11F67C with +$A6 = $40
+; XClone_ActBallsMotionA - XCLONE script action: BIOBALLS motion A - child $60 above the floor, BioBalls_FillFromFirst, motion BioBalls_MotionOrbit with +$A6 = $40
 ; In:  8(a6) = this
 ; Out: d0
-; Evidence: child +$A2 = sub_11F67C (BIOBALLS code, $0E0000+ range); jt 748
+; Evidence: child +$A2 = BioBalls_MotionOrbit (BIOBALLS code, $0E0000+ range); jt 748
 ; Found: jt 748
 ; ---------------------------------------------------------------------------
 XClone_ActBallsMotionA:
@@ -19,7 +19,7 @@ XClone_ActBallsMotionA:
 	lsl.l	#$8,d0
 	move.l	d0,$C(a3)
 	move.l	a3,-(a7)
-	jsr	$33AA(a5)	; -> sub_11F4C0
+	jsr	$33AA(a5)	; -> BioBalls_FillFromFirst
 	lea.l	$33C2(a5),a0
 	move.l	a0,$A2(a3)
 	move.w	#$40,$A6(a3)

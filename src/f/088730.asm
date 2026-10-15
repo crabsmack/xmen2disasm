@@ -159,7 +159,7 @@ loc_0888F0:
 	jsr	CloneA5_InitShockSprites(pc)
 	moveq	#$10,d0
 	move.l	d0,-(a7)
-	jsr	$3382(a5)	; -> sub_11F1A6
+	jsr	$3382(a5)	; -> BioBalls_AllocBallList
 	move.w	#$200,g_PalBase(a5)
 	lea.l	$1122(a5),a0
 	movea.l	$2(a0),a4

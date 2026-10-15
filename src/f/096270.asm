@@ -12,7 +12,7 @@ XClone_StateEmerge:
 	tst.l	$9C(a4)
 	beq.s	loc_0962B8
 	move.l	$9C(a4),-(a7)
-	jsr	$337A(a5)	; -> sub_11F188
+	jsr	$337A(a5)	; -> BioBalls_IsDone
 	tst.b	d0
 	addq.w	#$4,a7
 	bne.s	loc_0962A2

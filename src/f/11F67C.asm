@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_11F67C	[jt 1652]
+; BioBalls_MotionOrbit - BIOBALLS motion: balls on two interleaved orbits (angles +$A6/+$A8, speed +$AA ramping up), easing in while flag $100 is set
+; In:  8(a6) = this  $E(a6) = word steps
+; Out: d0 = 1
+; Evidence: set by XClone_ActBallsMotionA (jt $33C2)
 ; ---------------------------------------------------------------------------
-sub_11F67C:
+BioBalls_MotionOrbit:
 	link.w	a6,#$FFE6
 	movem.l	d3-d7/a3-a4,-(a7)
 	movea.l	$8(a6),a4
