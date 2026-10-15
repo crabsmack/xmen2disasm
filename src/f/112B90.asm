@@ -1,5 +1,8 @@
 ; ---------------------------------------------------------------------------
-; Deathbird_StateHoverPause	[link-after-rts]
+; Deathbird_StateHoverPause - Deathbird: pause until the +$6E timer runs out, then circle
+; In:  8(a6) = this
+; Out: d0 = flags & 8
+; Evidence: SetMoveMode(2), next Deathbird_StateThrowBurst
 ; ---------------------------------------------------------------------------
 Deathbird_StateHoverPause:
 	link.w	a6,#$0

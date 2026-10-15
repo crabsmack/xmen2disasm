@@ -1,5 +1,8 @@
 ; ---------------------------------------------------------------------------
-; Deathbird_StateFlyOff	[link-after-rts]
+; Deathbird_StateFlyOff - Deathbird: once off screen (60 px past an edge) stop the burst and choose the next attack
+; In:  8(a6) = this
+; Out: d0 = flags & 8
+; Evidence: SetMoveMode(6), Timer_Stop(+$9E); 6 callers
 ; ---------------------------------------------------------------------------
 Deathbird_StateFlyOff:
 	link.w	a6,#$0

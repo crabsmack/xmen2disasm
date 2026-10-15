@@ -1,5 +1,8 @@
 ; ---------------------------------------------------------------------------
-; Deathbird_SetMoveMode	[jt 1379]
+; Deathbird_SetMoveMode - Deathbird slot 27 (+$72): pick a movement mode 0-10 (velocity, gravity, entry side, animation; byte +$AE = Deathbird_Move kind)
+; In:  8(a6) = this  $E(a6) = word mode
+; Out: none
+; Evidence: switch Sw_1117A0; Obj_ChangeAnim; modes used by the Deathbird states (1 = fall when dead, 4 = fly off, 6 = re-enter, 9 = to the switch)
 ; ---------------------------------------------------------------------------
 Deathbird_SetMoveMode:
 	link.w	a6,#$0

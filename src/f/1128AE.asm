@@ -1,5 +1,8 @@
 ; ---------------------------------------------------------------------------
-; Deathbird_StateStart	[link-after-rts]
+; Deathbird_StateStart - Deathbird first state: wobble flight, then send hornets
+; In:  8(a6) = this
+; Out: d0 = flags & 8
+; Evidence: set as +$5C/+$64 by Deathbird_Init; TAS frame 37300
 ; ---------------------------------------------------------------------------
 Deathbird_StateStart:
 	link.w	a6,#$0

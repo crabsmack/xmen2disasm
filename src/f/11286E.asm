@@ -1,5 +1,8 @@
 ; ---------------------------------------------------------------------------
-; Deathbird_StateDeadFlicker	[link-after-rts]
+; Deathbird_StateDeadFlicker - Deathbird after death: keep scrambling palette line 0 every 2 frames
+; In:  8(a6) = this
+; Out: d0 = flags & 8
+; Evidence: Mem_Copy($FFC8C0, ROM at g_FrameCounter, $20); TAS 44857-45094
 ; ---------------------------------------------------------------------------
 Deathbird_StateDeadFlicker:
 	link.w	a6,#$0

@@ -1,5 +1,8 @@
 ; ---------------------------------------------------------------------------
-; Deathbird_MovePolar_Case4	[static: switch-table case target (tools/switches.py: table after `move.w T(pc,dN.w),dN / jmp T-2(pc,dN.w)`, size from the cmpi bound)]
+; Deathbird_MovePolar_Case4 - Deathbird_MovePolar switch cases 4-15 and the step loop
+; In:  inside Deathbird_MovePolar
+; Out: -
+; Evidence: Sw_1111EA targets $111352-$1114CA
 ; ---------------------------------------------------------------------------
 Deathbird_MovePolar_Case4:
 	move.l	d6,d0

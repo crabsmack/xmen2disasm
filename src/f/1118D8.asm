@@ -1,5 +1,8 @@
 ; ---------------------------------------------------------------------------
-; Deathbird_SetMoveMode_Case4	[runtime: executed in tas]
+; Deathbird_SetMoveMode_Case4 - Deathbird_SetMoveMode case 4: fly away horizontally, accelerating
+; In:  inside Deathbird_SetMoveMode
+; Out: -
+; Evidence: Sw_1117A0 target
 ; ---------------------------------------------------------------------------
 Deathbird_SetMoveMode_Case4:
 	moveq	#$10,d0

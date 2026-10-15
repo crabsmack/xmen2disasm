@@ -1,5 +1,8 @@
 ; ---------------------------------------------------------------------------
-; Deathbird_MovePolar_Case0	[static: switch-table case target (tools/switches.py: table after `move.w T(pc,dN.w),dN / jmp T-2(pc,dN.w)`, size from the cmpi bound)]
+; Deathbird_MovePolar_Case0 - Deathbird_MovePolar switch cases 0-2: speed multiplier 0, 1 or 2
+; In:  inside Deathbird_MovePolar
+; Out: -
+; Evidence: Sw_1111EA targets loc_1112FE/11130E/11131E
 ; ---------------------------------------------------------------------------
 Deathbird_MovePolar_Case0:
 	movea.l	$28(a6),a0

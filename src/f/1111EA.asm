@@ -1,5 +1,8 @@
 ; ---------------------------------------------------------------------------
-; Deathbird_MovePolar	[link-after-rts]
+; Deathbird_MovePolar - Deathbird circling flight for N steps: accelerate speed (+$8C by +$8E, clamp +$90), turn the heading (angle and turn rate globals, degrees in 8.8 wrapped at 360), velocity = speed x cos/sin(heading)
+; In:  8(a6)..: pointers to speed, accel, max speed, heading, turn rate, turn accel, x, y, vx, vy, old vx, old vy; $3A(a6) = word steps
+; Out: none
+; Evidence: Math_CosDeg/Math_SinDeg; speed multiplier via Sw_1111EA (17 cases of speed>>8) plus 1/2 and 1/4 bits; called from Deathbird_Move mode 4
 ; ---------------------------------------------------------------------------
 Deathbird_MovePolar:
 	link.w	a6,#$0

@@ -1,5 +1,8 @@
 ; ---------------------------------------------------------------------------
-; Deathbird_StateThrowBurst	[link-after-rts]
+; Deathbird_StateThrowBurst - Deathbird: when the animation ends throw the 8-projectile burst (sound $FC)
+; In:  8(a6) = this
+; Out: d0 = flags & 8
+; Evidence: vtable +$6E Deathbird_LaunchBurst, Timer_Start(+$9E), Obj_ChangeAnim; next StateWaitThenLeave
 ; ---------------------------------------------------------------------------
 Deathbird_StateThrowBurst:
 	link.w	a6,#$0

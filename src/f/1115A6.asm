@@ -1,5 +1,8 @@
 ; ---------------------------------------------------------------------------
-; Deathbird_LaunchBurst	[jt 1378]
+; Deathbird_LaunchBurst - Deathbird slot 26 (+$6E): place 8 projectiles at the bird and give them fanned velocities (mirrored when facing left)
+; In:  8(a6) = this
+; Out: d0
+; Evidence: 16-byte projectile records at (+$9A)+$28; called by Deathbird_StateThrowBurst and Deathbird_StateDiveLow; projectiles run in Deathbird_UpdateBurst
 ; ---------------------------------------------------------------------------
 Deathbird_LaunchBurst:
 	link.w	a6,#$0

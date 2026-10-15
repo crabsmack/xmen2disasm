@@ -1,5 +1,8 @@
 ; ---------------------------------------------------------------------------
-; Deathbird_SetMoveMode_Case10	[runtime: executed in tas]
+; Deathbird_SetMoveMode_Case10 - Deathbird_SetMoveMode case 10: recoil after a hit
+; In:  inside Deathbird_SetMoveMode
+; Out: -
+; Evidence: Sw_1117A0 target; set by Deathbird_StateHurt when it survives
 ; ---------------------------------------------------------------------------
 Deathbird_SetMoveMode_Case10:
 	clr.w	$18(a4)

@@ -1,5 +1,8 @@
 ; ---------------------------------------------------------------------------
-; Deathbird_SetMoveMode_Case1	[runtime: executed in tas]
+; Deathbird_SetMoveMode_Case1 - Deathbird_SetMoveMode case 1: fall (gravity 4, keep a little x speed), dying animation
+; In:  inside Deathbird_SetMoveMode
+; Out: -
+; Evidence: Sw_1117A0 target; used when health runs out
 ; ---------------------------------------------------------------------------
 Deathbird_SetMoveMode_Case1:
 	clr.w	$18(a4)

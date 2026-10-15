@@ -1,5 +1,8 @@
 ; ---------------------------------------------------------------------------
-; Deathbird_EmptyStub3	[link-after-rts]
+; Deathbird_EmptyStub3 - Deathbird: empty function (part of Deathbird_Reset)
+; In:  none
+; Out: none
+; Evidence: body is link/unlk/rts
 ; ---------------------------------------------------------------------------
 Deathbird_EmptyStub3:
 	link.w	a6,#$0

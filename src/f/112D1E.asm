@@ -1,5 +1,8 @@
 ; ---------------------------------------------------------------------------
-; Deathbird_StateDiveLow	[link-after-rts]
+; Deathbird_StateDiveLow - Deathbird low pass: when 100 px below the camera top, throw the burst and fly off
+; In:  8(a6) = this
+; Out: d0 = flags & 8
+; Evidence: SetMoveMode(8), Deathbird_LaunchBurst, sound $FC; TAS 44613-44631
 ; ---------------------------------------------------------------------------
 Deathbird_StateDiveLow:
 	link.w	a6,#$0

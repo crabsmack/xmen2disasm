@@ -1,5 +1,8 @@
 ; ---------------------------------------------------------------------------
-; Deathbird_StateHitSwitch	[link-after-rts]
+; Deathbird_StateHitSwitch - Deathbird: hit the elevator switch tile (7,11), reversing the lift, then fly off
+; In:  8(a6) = this
+; Out: d0 = flags & 8
+; Evidence: SpaceA1_SwitchTileHit(7, 11, this) (allowed for DEATHBIRD), SetMoveMode(4)
 ; ---------------------------------------------------------------------------
 Deathbird_StateHitSwitch:
 	link.w	a6,#$0

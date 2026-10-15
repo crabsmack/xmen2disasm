@@ -1,5 +1,8 @@
 ; ---------------------------------------------------------------------------
-; Deathbird_UpdateBurst	[link-after-rts]
+; Deathbird_UpdateBurst - Deathbird projectile timer: move the 8 burst projectiles, draw them with a direction frame, hit players they touch
+; In:  8(a6) = deathbird
+; Out: none
+; Evidence: Timer_Create(.., this) in Deathbird_Init (+$9E); sprites into g_SpriteTable; vtable +$22 Attack on g_Player1/g_Player2; TAS 44632-44668
 ; ---------------------------------------------------------------------------
 Deathbird_UpdateBurst:
 	link.w	a6,#$FFEC

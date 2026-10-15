@@ -1,5 +1,8 @@
 ; ---------------------------------------------------------------------------
-; Deathbird_MovePolar_Case16
+; Deathbird_MovePolar_Case16 - Deathbird_MovePolar default case: speed multiplier 16
+; In:  inside Deathbird_MovePolar
+; Out: -
+; Evidence: last Sw_1111EA target
 ; ---------------------------------------------------------------------------
 Deathbird_MovePolar_Case16:
 	move.l	d6,d0

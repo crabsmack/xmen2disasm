@@ -1,5 +1,8 @@
 ; ---------------------------------------------------------------------------
-; Deathbird_StateWaitThenLeave	[link-after-rts]
+; Deathbird_StateWaitThenLeave - Deathbird: when the animation ends fly off
+; In:  8(a6) = this
+; Out: d0 = flags & 8
+; Evidence: SetMoveMode(4), next StateFlyOff
 ; ---------------------------------------------------------------------------
 Deathbird_StateWaitThenLeave:
 	link.w	a6,#$0

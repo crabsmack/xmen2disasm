@@ -1,5 +1,8 @@
 ; ---------------------------------------------------------------------------
-; Deathbird_StateSwoopDown	[link-after-rts]
+; Deathbird_StateSwoopDown - Deathbird swoop: descend until 120 px below the camera top, then hover
+; In:  8(a6) = this
+; Out: d0 = flags & 8
+; Evidence: SetMoveMode(3), cooldown 8, next Deathbird_StateHoverPause
 ; ---------------------------------------------------------------------------
 Deathbird_StateSwoopDown:
 	link.w	a6,#$0

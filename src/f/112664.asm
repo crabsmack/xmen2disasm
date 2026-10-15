@@ -1,5 +1,8 @@
 ; ---------------------------------------------------------------------------
-; Deathbird_StateHurtFlash	[link-after-rts]
+; Deathbird_StateHurtFlash - Deathbird: flash four palette colours for 12 steps; then fall if dead, else rejoin the hit lists and fly off
+; In:  8(a6) = this
+; Out: d0 = flags & 8
+; Evidence: colours $FFC8C2-$FFC8C8, g_PalBaseDirty; sub_15DF2A re-links; next StateFalling or StateFlyOff
 ; ---------------------------------------------------------------------------
 Deathbird_StateHurtFlash:
 	link.w	a6,#$0

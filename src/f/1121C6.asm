@@ -1,5 +1,8 @@
 ; ---------------------------------------------------------------------------
-; Deathbird_Move_Wobble	[runtime: executed in tas]
+; Deathbird_Move_Wobble - Deathbird_Move kind 3: velocity + acceleration plus a +-100 wobble around the anchor (+$92/+$96)
+; In:  inside Deathbird_Move (a4 = this, d5 = steps)
+; Out: -
+; Evidence: switch target in Deathbird_Move; wobble +$A2/+$A4 with rates +$A6/+$A8
 ; ---------------------------------------------------------------------------
 Deathbird_Move_Wobble:
 	move.w	$16(a4),$1A(a4)

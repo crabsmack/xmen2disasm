@@ -1,5 +1,8 @@
 ; ---------------------------------------------------------------------------
-; Deathbird_StatePeck	[link-after-rts]
+; Deathbird_StatePeck - Deathbird: second peck animation
+; In:  8(a6) = this
+; Out: d0 = flags & 8
+; Evidence: Obj_ChangeAnim jt $2CFA, wait 255, next StateHitSwitch
 ; ---------------------------------------------------------------------------
 Deathbird_StatePeck:
 	link.w	a6,#$0

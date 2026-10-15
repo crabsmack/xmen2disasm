@@ -1,5 +1,8 @@
 ; ---------------------------------------------------------------------------
-; Deathbird_StateGoToSwitch	[link-after-rts]
+; Deathbird_StateGoToSwitch - Deathbird: fly to the elevator switch near (240,408); give up when it leaves the screen
+; In:  8(a6) = this
+; Out: d0 = flags & 8
+; Evidence: next StateLandOnSwitch or (SetMoveMode 4) StateFlyOff
 ; ---------------------------------------------------------------------------
 Deathbird_StateGoToSwitch:
 	link.w	a6,#$0

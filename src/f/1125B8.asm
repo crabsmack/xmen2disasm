@@ -1,5 +1,8 @@
 ; ---------------------------------------------------------------------------
-; Deathbird_StateHurt	[link-after-rts]
+; Deathbird_StateHurt - Deathbird hurt state: leave the hit lists and flash; dead -> stop the burst, sound $63, fall; alive -> sound $AA, recoil
+; In:  8(a6) = this
+; Out: d0 = flags & 8
+; Evidence: set as +$60 by Deathbird_Init; List_Unlink $FFEBAE/$FFEBAA; next Deathbird_StateHurtFlash
 ; ---------------------------------------------------------------------------
 Deathbird_StateHurt:
 	link.w	a6,#$0
