@@ -2,7 +2,7 @@
 ; AvalonB1_CamHookFinish - AvalonB1 camera hook stage 5: scroll until camera y < $61, then once no player is busy start the music, restore the palette and hand the camera to the normal follow hook
 ; In:  8(a6) = camera
 ; Out: none
-; Evidence: Snd calls (Snd_Stop/Snd_Play with 0), AvalonB1_RestorePalette, g_Camera+4 = sub_161816; player +4 bit $1000 delays it
+; Evidence: Snd calls (Snd_Stop/Snd_Play with 0), AvalonB1_RestorePalette, g_Camera+4 = Cam_DefaultUpdate; player +4 bit $1000 delays it
 ; ---------------------------------------------------------------------------
 AvalonB1_CamHookFinish:
 	link.w	a6,#$0

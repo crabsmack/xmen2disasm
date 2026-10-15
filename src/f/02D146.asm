@@ -20,7 +20,7 @@ Exodus_HurtPlayer:
 	and.w	$4(a4),d0
 	beq.s	loc_02D17E
 	move.l	a4,-(a7)
-	jsr	$4D72(a5)	; -> sub_1F429E
+	jsr	$4D72(a5)	; -> Player_ClimbState
 	tst.b	d0
 	addq.w	#$4,a7
 	beq.s	loc_02D19E

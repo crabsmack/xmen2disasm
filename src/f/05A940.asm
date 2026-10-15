@@ -163,7 +163,7 @@ loc_05AAAA:
 	addq.w	#$4,a7
 loc_05AAD0:
 	move.l	a4,-(a7)
-	jsr	$4D6A(a5)	; -> sub_1F41C2
+	jsr	$4D6A(a5)	; -> Player_IsClimber
 	tst.b	d0
 	addq.w	#$4,a7
 	beq.s	loc_05AAEA

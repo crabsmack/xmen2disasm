@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_1F423A	[link-after-rts]
+; Player_IsBeastOrPsylocke - is this player Beast or Psylocke
+; In:  8(a6) = player
+; Out: d0 = byte 1/0
+; Evidence: compares obj+0 with Tbl_Beast_vtable / Tbl_Psylocke_vtable; only caller Player_ClimbStateBeastPsy
 ; ---------------------------------------------------------------------------
-sub_1F423A:
+Player_IsBeastOrPsylocke:
 	link.w	a6,#$0
 	movem.l	d3/a4,-(a7)
 	movea.l	$8(a6),a0

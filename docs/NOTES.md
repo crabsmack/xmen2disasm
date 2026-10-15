@@ -282,6 +282,21 @@ _(module → functions, globals, data; add as you learn them)_
   unless +6 flag 2); +6 flag $10 = player side. `Collide_RunAll` tests EBA2 vs EBAE and EBAA vs EBA6
   (`Collide_ObjVsList` -> attacker's +$22 Attack). Projectiles hit-test the opposing body list with
   `ObjList_ForEachAtPoint`. `unk_Player_005F18` moves P2 onto the enemy lists (players can hit each other?).
+- **CAMERA object (w140b)** (`Cam_*`, `$1607A0-$161816`, size $6C): +4 update fn (`Cam_DefaultUpdate`, scenes
+  swap in their own), +8 tracking fn (`Cam_TrackPlayer`/`TrackBoth`/`TrackObject`/`PanStep`), +$C apply
+  (`Cam_ApplyPos` -> `Cam_SetPos`), +$10 offset easing, +$14 `Cam_ShakeStep`, +$18 look up/down step, +$1C
+  post-update hook, +$24 target object, +$28/+$2A target's last pixel pos, +$2C/+$2E transition offset,
+  +$30/+$32 camera x/y, +$34/+$36 previous y/x, +$38/+$3A pan target, +$3C/+$40/+$3E/+$42 dead-zone box
+  left/top/right/bottom, +$46 easing step, +$4A flags (1 lock x, 2 lock y, 4 looking up, 8 looking down),
+  +$54/+$56 pan speed, +$5C look offset, +$68 wall margin. Vtable: +$16 Update, +$1A FollowBoth, +$1E
+  FollowPlayer, +$22 FollowObject, +$26/+$2A LookUp/LookDown, +$2E/+$32 End..., +$36 PanTo, +$3A UnlockAxes.
+  `Cam_SetPos` clamps to words `$FFC770/$FFC772` (x min/max) and `$FFC76C/$FFC76E` (y min/max).
+  Byte `$FFC920` (-$38E0) = live players this frame; byte -$38DE = 1 when both are alive, and then
+  `Actor_Update` steps objects by 2 (two-player mode runs the game logic at half rate).
+- **Player classes (w140b)**: XPLAYER `$1131A0` (methods `$1F00E8-$1F39C4`, slots up to +$EE) < XCLIMBER
+  `$11329A` (`$1F3CD6-$1F413E`) < BEAST (`$182AE6-$1840EC`), NIGHTCRAWLER (`$1A61DE-$1A7CA4`), PSYLOCKE
+  (`$1B9060-$1B9FE8`), WOLVERINE (`$196552-$197C3C`); XPLAYER < MAGNETO (`$1CDA3A-$1CEC42`), GAMBIT
+  (`$1CEF6E-$1D073C`), CYCLOPS (`$1E2AB0-$1E3C52`). Player +$C0 bits 0-1 = climb state, +$BC = climbed segment.
 
 ## Data formats
 

@@ -1,13 +1,16 @@
 ; ---------------------------------------------------------------------------
-; sub_160A18	[jt 2101]
+; Cam_FollowPlayer - CAMERA slot +$1E: one-player mode: track the live player inside a dead-zone box
+; In:  8(a6) = this, $C/$10/$14/$18(a6) = words box left, top, right, bottom
+; Out: none
+; Evidence: +8 = Cam_TrackPlayer; target +$24 = g_Player1 if present+alive else g_Player2 else 0; +$28/+$2A = target pixel x/y
 ; ---------------------------------------------------------------------------
-sub_160A18:
+Cam_FollowPlayer:
 	link.w	a6,#$0
 	movem.l	d3/a4,-(a7)
 	movea.l	$8(a6),a4
-	lea.l	sub_16136E(pc),a0
+	lea.l	Cam_TrackPlayer(pc),a0
 	move.l	a0,$8(a4)
-	lea.l	sub_160B0E(pc),a0
+	lea.l	Cam_EaseOffset(pc),a0
 	move.l	a0,$10(a4)
 	move.w	$E(a6),$3C(a4)
 	move.w	$12(a6),$40(a4)

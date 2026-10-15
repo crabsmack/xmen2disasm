@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_16103C	[link-after-rts]
+; Cam_TrackBoth - camera tracking fn for two players: x follows the players' midpoint through the dead-zone box, y keeps both on screen; drops to one-player mode when one is gone
+; In:  8(a6) = this
+; Out: none
+; Evidence: reads both players' +8/+$C; if $FFC920 (players alive) == 1 calls vtable +$1E Cam_FollowPlayer(96,90,224,192), sets g_CamModeSwitched and calls the hook +$1C
 ; ---------------------------------------------------------------------------
-sub_16103C:
+Cam_TrackBoth:
 	link.w	a6,#$FFF6
 	movem.l	d3-d7/a3-a4,-(a7)
 	movea.l	$8(a6),a4

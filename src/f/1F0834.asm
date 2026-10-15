@@ -37,12 +37,12 @@ loc_1F085A:
 	lsl.l	#$8,d0
 	move.l	d0,$C(a4)
 	move.l	a4,-(a7)
-	jsr	sub_1F41C2(pc)
+	jsr	Player_IsClimber(pc)
 	tst.b	d0
 	addq.w	#$4,a7
 	beq.s	loc_1F090E
 	move.l	a3,-(a7)
-	jsr	sub_1F41C2(pc)
+	jsr	Player_IsClimber(pc)
 	tst.b	d0
 	addq.w	#$4,a7
 	beq.s	loc_1F08DE

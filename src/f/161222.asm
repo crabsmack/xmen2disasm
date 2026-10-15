@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_161222	[link-after-rts]
+; Cam_SpringAxis - camera helper: move a camera coordinate toward the dead-zone edge with an accelerating velocity (8.8) capped at a maximum
+; In:  8(a6) = word target, $C(a6) = word previous target, $10/$14(a6) = words box low/high edge, $18(a6) = word max step, $1C(a6) = word max speed, $20..$2C(a6) = pointers camera coord, 8.8 accumulator, velocity, acceleration
+; Out: none
+; Evidence: accumulator and velocity reset and acceleration sign flipped when the target reverses; used by Cam_TrackPlayer for x and for y in mid-air
 ; ---------------------------------------------------------------------------
-sub_161222:
+Cam_SpringAxis:
 	link.w	a6,#$FFFC
 	movem.l	d3-d7/a3-a4,-(a7)
 	move.w	$A(a6),d6

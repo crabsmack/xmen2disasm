@@ -5019,7 +5019,7 @@ Str_SpawnRecTag:	; empty C string: Mem_StackAlloc tag of the spawn records (Spaw
 	include "src/f/1606F4.asm"
 	include "src/f/1607A0.asm"
 	include "src/f/1607AA.asm"
-Str_Empty_1607E6:	; C string "" (used by sub_1607AA)
+Str_Empty_1607E6:	; C string "" (used by Cam_New)
 	incrom	$1607E6,$2
 	include "src/f/1607E8.asm"
 	include "src/f/160996.asm"

@@ -40,7 +40,7 @@ loc_1A74E2:
 	neg.l	d0
 	move.w	d0,$16(a4)
 	move.l	g_Camera(a5),-(a7)
-	jsr	$420A(a5)	; -> sub_160FDE
+	jsr	$420A(a5)	; -> Cam_IsPanning
 	tst.b	d0
 	addq.w	#$4,a7
 	bne.s	loc_1A7554
@@ -58,7 +58,7 @@ loc_1A7524:
 	beq.s	loc_1A7554
 	move.w	d7,$16(a4)
 	move.l	g_Camera(a5),-(a7)
-	jsr	$420A(a5)	; -> sub_160FDE
+	jsr	$420A(a5)	; -> Cam_IsPanning
 	tst.b	d0
 	addq.w	#$4,a7
 	bne.s	loc_1A7554

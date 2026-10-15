@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_160C3E	[link-after-rts]
+; Cam_StepLookDown - camera step (+$18): move the look offset +$5C down while looking down, else back up to 0
+; In:  8(a6) = this
+; Out: none
+; Evidence: flag +$4A bit 8: +$5C += +$60 limited so the highest live player stays +$62 px below the screen top; else +$5C -= +$5E until 0, then +$18 = 0; installed by Cam_LookDown
 ; ---------------------------------------------------------------------------
-sub_160C3E:
+Cam_StepLookDown:
 	link.w	a6,#$0
 	movem.l	d3/d5-d7/a4,-(a7)
 	movea.l	$8(a6),a4

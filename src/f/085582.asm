@@ -2,7 +2,7 @@
 ; Teleporter_StateWait - TELEPORTER state: wait for a player to step onto the pad (box within 10 px), then teleport
 ; In:  8(a6) = this
 ; Out: d0
-; Evidence: keeps waiting while any live player has sub_1F429E(player) true; else a live player whose box overlaps +-10 px of the pad and lacks +4 bit $1000 -> +6 bit $1000, state Teleporter_StateTeleport; TAS 48266-48388
+; Evidence: keeps waiting while any live player has Player_ClimbState(player) true; else a live player whose box overlaps +-10 px of the pad and lacks +4 bit $1000 -> +6 bit $1000, state Teleporter_StateTeleport; TAS 48266-48388
 ; Found: link-after-rts
 ; ---------------------------------------------------------------------------
 Teleporter_StateWait:
@@ -49,7 +49,7 @@ loc_0855CE:
 	cmpi.l	#$8000,d0
 	bne.s	loc_08560A
 	move.l	a3,-(a7)
-	jsr	$4D72(a5)	; -> sub_1F429E
+	jsr	$4D72(a5)	; -> Player_ClimbState
 	tst.b	d0
 	addq.w	#$4,a7
 	beq.s	loc_08560A

@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_160FFE	[link-after-rts]
+; Cam_ApplyPos - camera step (+$C): set the scroll position = camera position + transition offset (+ look offset in y)
+; In:  8(a6) = this
+; Out: none
+; Evidence: Cam_SetPos(+$30 + +$2C, +$32 + +$2E + +$5C); last step of Cam_DefaultUpdate
 ; ---------------------------------------------------------------------------
-sub_160FFE:
+Cam_ApplyPos:
 	link.w	a6,#$0
 	move.l	a4,-(a7)
 	movea.l	$8(a6),a4
@@ -20,7 +23,7 @@ sub_160FFE:
 	ext.l	d1
 	add.l	d0,d1
 	move.l	d1,-(a7)
-	jsr	$4E32(a5)	; -> sub_1F5F78
+	jsr	$4E32(a5)	; -> Cam_SetPos
 	movea.l	-$4(a6),a4
 	unlk	a6
 	rts

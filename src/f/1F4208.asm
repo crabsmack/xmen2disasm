@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_1F4208	[link-after-rts]
+; Player_IsNcOrWolverine - is this player Nightcrawler or Wolverine
+; In:  8(a6) = player
+; Out: d0 = byte 1/0
+; Evidence: compares obj+0 with Tbl_Nightcrawler_vtable / Tbl_Wolverine_vtable; only caller Player_ClimbStateNcWolv (identical copy: Player_IsNcOrWolverine2)
 ; ---------------------------------------------------------------------------
-sub_1F4208:
+Player_IsNcOrWolverine:
 	link.w	a6,#$0
 	movem.l	d3/a4,-(a7)
 	movea.l	$8(a6),a0

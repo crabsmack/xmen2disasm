@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_160D06	[link-after-rts]
+; Cam_StepLookUp - camera step (+$18): move the look offset +$5C up while looking up, else back down to 0
+; In:  8(a6) = this
+; Out: none
+; Evidence: flag +$4A bit 4: +$5C -= +$60 limited by the lowest live player and +$64; else +$5C += +$5E until 0, then +$18 = 0; installed by Cam_LookUp
 ; ---------------------------------------------------------------------------
-sub_160D06:
+Cam_StepLookUp:
 	link.w	a6,#$0
 	movem.l	d3/d5-d7/a4,-(a7)
 	movea.l	$8(a6),a4

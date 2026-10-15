@@ -11,7 +11,7 @@ sub_1F1DEC:
 	ext.w	d0
 	move.w	d0,d7
 	move.l	a4,-(a7)
-	jsr	sub_1F429E(pc)
+	jsr	Player_ClimbState(pc)
 	move.b	d0,d4
 	tst.w	$6A(a4)
 	addq.w	#$4,a7

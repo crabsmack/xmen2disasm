@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_160DCE	[jt 2103]
+; Cam_LookUp - CAMERA slot +$26: start looking up (unless already looking down)
+; In:  8(a6) = this
+; Out: d0 = 1 started, 0 refused
+; Evidence: if +$4A bit 8 clear: speeds +$5E/+$60 = 2, +$18 = Cam_StepLookUp, +$4A |= 4, clears bit $10
 ; ---------------------------------------------------------------------------
-sub_160DCE:
+Cam_LookUp:
 	link.w	a6,#$0
 	move.l	a4,-(a7)
 	movea.l	$8(a6),a4
@@ -10,7 +13,7 @@ sub_160DCE:
 	bne.s	loc_160E04
 	move.w	#$2,$60(a4)
 	move.w	#$2,$5E(a4)
-	lea.l	sub_160D06(pc),a0
+	lea.l	Cam_StepLookUp(pc),a0
 	move.l	a0,$18(a4)
 	ori.w	#$4,$4A(a4)
 	andi.w	#$FFEF,$4A(a4)

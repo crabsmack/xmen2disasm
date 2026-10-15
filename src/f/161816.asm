@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_161816	[jt 2110]
+; Cam_DefaultUpdate - default camera update (+4): save the old position, then run tracking (+8), offset easing (+$10), shake (+$14), look (+$18) and apply (+$C)
+; In:  8(a6) = this
+; Out: none
+; Evidence: +$34/+$36 = old y/x; byte $FFC970 = 1 unless no player is alive and $FFC746 is clear
 ; ---------------------------------------------------------------------------
-sub_161816:
+Cam_DefaultUpdate:
 	link.w	a6,#$0
 	movem.l	d3/a3-a4,-(a7)
 	movea.l	$8(a6),a4

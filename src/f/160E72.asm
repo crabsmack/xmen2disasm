@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_160E72	[link-after-rts]
+; Cam_PanStep - camera tracking fn during a pan: move +$30/+$32 toward the pan target by the pan speeds; on arrival restore the saved tracking fn
+; In:  8(a6) = this
+; Out: none
+; Evidence: speeds +$54/+$56, target +$38/+$3A; on arrival +8 = saved +$20, +$10 = Cam_EaseOffset, offsets and look cleared, g_CamModeSwitched = 0
 ; ---------------------------------------------------------------------------
-sub_160E72:
+Cam_PanStep:
 	link.w	a6,#$0
 	movem.l	d3-d7/a4,-(a7)
 	movea.l	$8(a6),a4
@@ -76,7 +79,7 @@ loc_160F0A:
 	tst.w	d7
 	bne.s	loc_160F2C
 	move.l	$20(a4),$8(a4)
-	lea.l	sub_160B0E(pc),a0
+	lea.l	Cam_EaseOffset(pc),a0
 	move.l	a0,$10(a4)
 	clr.l	$2C(a4)
 	clr.w	$5C(a4)

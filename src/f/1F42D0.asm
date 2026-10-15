@@ -1,12 +1,15 @@
 ; ---------------------------------------------------------------------------
-; sub_1F42D0	[jt 2475]
+; Player_ClimbStateNcWolv - climb state (+$C0 & 3) if the player is Nightcrawler or Wolverine, else 0
+; In:  8(a6) = player
+; Out: d0 = +$C0 & 3 or 0
+; Evidence: Player_IsNcOrWolverine; Cam_TrackPlayer uses state 1 for a fixed y offset (+$66, +$20 more for Wolverine)
 ; ---------------------------------------------------------------------------
-sub_1F42D0:
+Player_ClimbStateNcWolv:
 	link.w	a6,#$0
 	move.l	a4,-(a7)
 	movea.l	$8(a6),a4
 	move.l	a4,-(a7)
-	jsr	sub_1F4208(pc)
+	jsr	Player_IsNcOrWolverine(pc)
 	tst.b	d0
 	addq.w	#$4,a7
 	beq.s	loc_1F42F8

@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_161744	[link-after-rts]
+; Cam_TrackObject - camera tracking fn: keep the target object (+$24) inside the dead-zone box +$3C..+$42
+; In:  8(a6) = this
+; Out: none
+; Evidence: x unless +$4A bit 1, y unless bit 2; installed by Cam_FollowObject
 ; ---------------------------------------------------------------------------
-sub_161744:
+Cam_TrackObject:
 	link.w	a6,#$FFFC
 	movem.l	d3-d7/a3-a4,-(a7)
 	movea.l	$8(a6),a4

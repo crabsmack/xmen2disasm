@@ -1,5 +1,5 @@
 ; ---------------------------------------------------------------------------
-; BroodClaw_CamApplyShake - camera apply hook after the boss scroll: play g_CamShake and set the camera position (sub_1F5F78)
+; BroodClaw_CamApplyShake - camera apply hook after the boss scroll: play g_CamShake and set the camera position (Cam_SetPos)
 ; In:  8(a6) = camera
 ; Out: none
 ; Evidence: installed at camera +$C by BroodClaw_Swing; position = +$30/+$32 + +$2C/+$2E (+$5C) + shake; TAS 52126-57465
@@ -79,7 +79,7 @@ loc_09B928:
 	ext.l	d6
 	add.l	d6,d1
 	move.l	d1,-(a7)
-	jsr	$4E32(a5)	; -> sub_1F5F78
+	jsr	$4E32(a5)	; -> Cam_SetPos
 	addq.w	#$8,a7
 	movem.l	-$C(a6),d6-d7/a4
 	unlk	a6

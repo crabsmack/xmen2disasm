@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_1F426C	[link-after-rts]
+; Player_IsNcOrWolverine2 - is this player Nightcrawler or Wolverine (byte-identical copy of Player_IsNcOrWolverine)
+; In:  8(a6) = player
+; Out: d0 = byte 1/0
+; Evidence: same body as Player_IsNcOrWolverine; only caller sub_1F07CA
 ; ---------------------------------------------------------------------------
-sub_1F426C:
+Player_IsNcOrWolverine2:
 	link.w	a6,#$0
 	movem.l	d3/a4,-(a7)
 	movea.l	$8(a6),a0

@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_16136E	[link-after-rts]
+; Cam_TrackPlayer - camera tracking fn for one player: x/y follow the target with climbing, ledge, lift and airborne special cases; switches to two-player mode when P2 joins
+; In:  8(a6) = this
+; Out: none
+; Evidence: Player_ClimbState 2/3 = on a wall (x pinned near the edge +$68), Seg_WouldLeaveEnd = near a ledge (look ahead by facing), Player_ClimbStateNcWolv/BeastPsy, Obj_GetLiftCarrier; runs twice when g_TwoPlayerStep; clamps to $FFC76C-$FFC772; $FFC920 == 2 -> vtable +$1A Cam_FollowBoth
 ; ---------------------------------------------------------------------------
-sub_16136E:
+Cam_TrackPlayer:
 	link.w	a6,#$FFEC
 	movem.l	d3-d7/a3-a4,-(a7)
 	movea.l	$8(a6),a4
@@ -50,7 +53,7 @@ loc_1613F8:
 	and.w	$4A(a4),d0
 	bne.w	loc_16154C
 	move.l	a3,-(a7)
-	jsr	$4D72(a5)	; -> sub_1F429E
+	jsr	$4D72(a5)	; -> Player_ClimbState
 	move.b	d0,d6
 	moveq	#$0,d0
 	move.b	d6,d0
@@ -93,7 +96,7 @@ loc_161446:
 	move.w	-$12(a6),d0
 	ext.l	d0
 	move.l	d0,-(a7)
-	jsr	sub_16118E(pc)
+	jsr	Cam_EaseAxis(pc)
 	move.w	d0,$30(a4)
 	move.b	#$1,-$1(a6)
 	lea.l	$14(a7),a7
@@ -134,7 +137,7 @@ loc_1614AE:
 	move.w	-$12(a6),d0
 	ext.l	d0
 	move.l	d0,-(a7)
-	jsr	sub_16118E(pc)
+	jsr	Cam_EaseAxis(pc)
 	move.w	d0,$30(a4)
 	moveq	#$1,d5
 	lea.l	$14(a7),a7
@@ -172,7 +175,7 @@ loc_161502:
 	move.w	-$A(a6),d0
 	ext.l	d0
 	move.l	d0,-(a7)
-	jsr	sub_161222(pc)
+	jsr	Cam_SpringAxis(pc)
 	moveq	#$1,d5
 	lea.l	$28(a7),a7
 loc_16154C:
@@ -183,7 +186,7 @@ loc_16154C:
 	move.w	$42(a4),d4
 	move.w	$32(a4),-$E(a6)
 	move.l	a3,-(a7)
-	jsr	$4D7A(a5)	; -> sub_1F42D0
+	jsr	$4D7A(a5)	; -> Player_ClimbStateNcWolv
 	move.b	d0,-$B(a6)
 	addq.w	#$4,a7
 	beq.w	loc_161616
@@ -212,7 +215,7 @@ loc_16159A:
 	move.w	-$14(a6),d0
 	ext.l	d0
 	move.l	d0,-(a7)
-	jsr	sub_16118E(pc)
+	jsr	Cam_EaseAxis(pc)
 	move.w	d0,$32(a4)
 	moveq	#$1,d5
 	lea.l	$14(a7),a7
@@ -236,18 +239,18 @@ loc_1615D0:
 	move.l	d1,-(a7)
 	ext.l	d7
 	move.l	d7,-(a7)
-	jsr	sub_161222(pc)
+	jsr	Cam_SpringAxis(pc)
 	move.b	#$1,-$1(a6)
 	lea.l	$28(a7),a7
 	bra.w	loc_1616D0
 loc_161616:
 	move.l	a3,-(a7)
-	jsr	$4D82(a5)	; -> sub_1F4302
+	jsr	$4D82(a5)	; -> Player_ClimbStateBeastPsy
 	tst.b	d0
 	addq.w	#$4,a7
 	bne.s	loc_161630
 	move.l	a3,-(a7)
-	jsr	sub_1606F4(pc)
+	jsr	Obj_GetLiftCarrier(pc)
 	move.l	d0,-$8(a6)
 	addq.w	#$4,a7
 	beq.s	loc_16165E
@@ -265,7 +268,7 @@ loc_161630:
 	move.l	d0,-(a7)
 	moveq	#$70,d0
 	move.l	d0,-(a7)
-	jsr	sub_16118E(pc)
+	jsr	Cam_EaseAxis(pc)
 	move.w	d0,$32(a4)
 	lea.l	$14(a7),a7
 	bra.s	loc_1616D0
@@ -286,7 +289,7 @@ loc_16165E:
 	move.l	d0,-(a7)
 	ext.l	d4
 	move.l	d4,-(a7)
-	jsr	sub_16118E(pc)
+	jsr	Cam_EaseAxis(pc)
 	move.w	d0,$32(a4)
 	moveq	#$1,d5
 	lea.l	$14(a7),a7

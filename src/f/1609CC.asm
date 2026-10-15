@@ -1,13 +1,16 @@
 ; ---------------------------------------------------------------------------
-; sub_1609CC	[jt 2100]
+; Cam_FollowBoth - CAMERA slot +$1A: two-player mode: track both players inside a dead-zone box
+; In:  8(a6) = this, $C/$10/$14/$18(a6) = words box left, top, right, bottom (+$3C, +$40, +$3E, +$42)
+; Out: none
+; Evidence: +8 tracking fn = Cam_TrackBoth, +$10 = Cam_EaseOffset, look limits +$62/+$64 = $40/$E0, target +$24 = 0; Cam_Init passes ($96,$40,$AA,$C0) when two players are alive
 ; ---------------------------------------------------------------------------
-sub_1609CC:
+Cam_FollowBoth:
 	link.w	a6,#$0
 	move.l	a4,-(a7)
 	movea.l	$8(a6),a4
-	lea.l	sub_16103C(pc),a0
+	lea.l	Cam_TrackBoth(pc),a0
 	move.l	a0,$8(a4)
-	lea.l	sub_160B0E(pc),a0
+	lea.l	Cam_EaseOffset(pc),a0
 	move.l	a0,$10(a4)
 	move.w	$E(a6),$3C(a4)
 	move.w	$12(a6),$40(a4)

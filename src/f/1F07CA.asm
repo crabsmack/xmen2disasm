@@ -7,7 +7,7 @@ sub_1F07CA:
 	movea.l	$8(a6),a3
 	movea.l	$C(a6),a4
 	move.l	a4,-(a7)
-	jsr	sub_1F41C2(pc)
+	jsr	Player_IsClimber(pc)
 	tst.b	d0
 	addq.w	#$4,a7
 	beq.s	loc_1F07FA
@@ -40,12 +40,12 @@ loc_1F0804:
 	bne.s	loc_1F0822
 loc_1F0818:
 	move.l	a3,-(a7)
-	jsr	sub_1F41C2(pc)
+	jsr	Player_IsClimber(pc)
 	addq.w	#$4,a7
 	bra.s	loc_1F082A
 loc_1F0822:
 	move.l	a3,-(a7)
-	jsr	sub_1F426C(pc)
+	jsr	Player_IsNcOrWolverine2(pc)
 	addq.w	#$4,a7
 loc_1F082A:
 	movem.l	-$C(a6),d7/a3-a4

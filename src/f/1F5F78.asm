@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_1F5F78	[jt 2498]
+; Cam_SetPos - set g_CameraX/Y clamped to the camera limits and, if anything changed, recompute the background scroll and run the scroll hooks
+; In:  8(a6) = word x, $C(a6) = word y
+; Out: none
+; Evidence: clamps to words $FFC770/$FFC772 (x min/max) and $FFC76C/$FFC76E (y min/max); background position $FFC73A/$FFC738 from the parallax factor (Math_MulFix8) or a locked object ($FFC702); calls hooks $FFC7AC/$FFC7B0 with interrupts off
 ; ---------------------------------------------------------------------------
-sub_1F5F78:
+Cam_SetPos:
 	link.w	a6,#$0
 	movem.l	d6-d7,-(a7)
 	move.w	g_CameraX(a5),d6

@@ -1,11 +1,14 @@
 ; ---------------------------------------------------------------------------
-; sub_160ACA	[jt 2102]
+; Cam_FollowObject - CAMERA slot +$22: track an arbitrary object inside a dead-zone box
+; In:  8(a6) = this, $C(a6) = object, $10/$14/$18/$1C(a6) = words box left, top, right, bottom
+; Out: none
+; Evidence: +8 = Cam_TrackObject, +$24 = object
 ; ---------------------------------------------------------------------------
-sub_160ACA:
+Cam_FollowObject:
 	link.w	a6,#$0
 	move.l	a4,-(a7)
 	movea.l	$8(a6),a4
-	lea.l	sub_161744(pc),a0
+	lea.l	Cam_TrackObject(pc),a0
 	move.l	a0,$8(a4)
 	move.w	$12(a6),$3C(a4)
 	move.w	$16(a6),$40(a4)

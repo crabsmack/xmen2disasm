@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_1F41C2	[jt 2473]
+; Player_IsClimber - is this player one of the XCLIMBER characters (Beast, Nightcrawler, Psylocke, Wolverine)
+; In:  8(a6) = player
+; Out: d0 = byte 1/0
+; Evidence: compares obj+0 with Tbl_Beast/Nightcrawler/Psylocke/Wolverine_vtable (classes.py: these four derive from XCLIMBER)
 ; ---------------------------------------------------------------------------
-sub_1F41C2:
+Player_IsClimber:
 	link.w	a6,#$0
 	movem.l	d3/a4,-(a7)
 	movea.l	$8(a6),a0

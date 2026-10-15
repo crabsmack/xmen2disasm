@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_1607AA	[jt 2096]
+; Cam_New - CAMERA slot +$0A: allocate a camera object on the stack heap, store its post-update hook and run Init
+; In:  8(a6) = CAMERA descriptor, $C(a6) = hook called after each camera update (stored at +$1C)
+; Out: d0 = camera object (scenes store it in g_Camera)
+; Evidence: desc+6 GetSize, Mem_StackAlloc, obj+0 = desc, +$1C = hook, desc+$E Init
 ; ---------------------------------------------------------------------------
-sub_1607AA:
+Cam_New:
 	link.w	a6,#$0
 	movem.l	a3-a4,-(a7)
 	movea.l	$8(a6),a3

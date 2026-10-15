@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_160F36	[jt 2107]
+; Cam_PanTo - CAMERA slot +$36: pan the camera to a point at given speeds, optionally keeping x and/or y locked afterwards
+; In:  8(a6) = this, $C/$10(a6) = words target x/y, $14/$18(a6) = words speed x/y (abs), $1C/$20(a6) = bytes lock x / lock y (+$4A bits 1/2)
+; Out: none
+; Evidence: start = g_CameraX/Y, +$10/+$18 cleared, saves tracking fn +8 in +$20, +8 = Cam_PanStep
 ; ---------------------------------------------------------------------------
-sub_160F36:
+Cam_PanTo:
 	link.w	a6,#$0
 	movem.l	d3/d6-d7/a4,-(a7)
 	move.w	$1A(a6),d6
@@ -49,7 +52,7 @@ loc_160FA8:
 	ori.w	#$2,$4A(a4)
 loc_160FB4:
 	move.l	$8(a4),$20(a4)
-	lea.l	sub_160E72(pc),a0
+	lea.l	Cam_PanStep(pc),a0
 	move.l	a0,$8(a4)
 	movem.l	-$10(a6),d3/d6-d7/a4
 	unlk	a6

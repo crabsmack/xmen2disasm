@@ -1,19 +1,22 @@
 ; ---------------------------------------------------------------------------
-; sub_1607E8	[jt 2097]
+; Cam_Init - CAMERA slot +$0E: set the default camera functions and tuning, pick one- or two-player follow mode, centre on the target and apply
+; In:  8(a6) = this
+; Out: d0 = hook +$1C result or 0
+; Evidence: +4 = Cam_DefaultUpdate, +$C = Cam_ApplyPos, +$10 = Cam_EaseOffset, +$14 = Cam_ShakeStep; counts live players: 0-1 -> vtable +$1E Cam_FollowPlayer, 2 -> +$1A Cam_FollowBoth; +$30/+$32 = target - ($A0, $C0); calls +$C and the hook +$1C
 ; ---------------------------------------------------------------------------
-sub_1607E8:
+Cam_Init:
 	link.w	a6,#$0
 	movem.l	d7/a3-a4,-(a7)
 	movea.l	$8(a6),a4
-	lea.l	sub_161816(pc),a0
+	lea.l	Cam_DefaultUpdate(pc),a0
 	move.l	a0,$4(a4)
-	lea.l	sub_160B0E(pc),a0
+	lea.l	Cam_EaseOffset(pc),a0
 	move.l	a0,$10(a4)
 	lea.l	Cam_ShakeStep(pc),a0
 	move.l	a0,$14(a4)
 	moveq	#$0,d0
 	move.l	d0,$18(a4)
-	lea.l	sub_160FFE(pc),a0
+	lea.l	Cam_ApplyPos(pc),a0
 	move.l	a0,$C(a4)
 	move.l	d0,$20(a4)
 	clr.l	$2C(a4)

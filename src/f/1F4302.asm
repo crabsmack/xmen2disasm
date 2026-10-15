@@ -1,12 +1,15 @@
 ; ---------------------------------------------------------------------------
-; sub_1F4302	[jt 2476]
+; Player_ClimbStateBeastPsy - climb state (+$C0 & 3) if the player is Beast or Psylocke, else 0
+; In:  8(a6) = player
+; Out: d0 = +$C0 & 3 or 0
+; Evidence: Player_IsBeastOrPsylocke; Cam_TrackPlayer centres y ($70) while it is non-zero
 ; ---------------------------------------------------------------------------
-sub_1F4302:
+Player_ClimbStateBeastPsy:
 	link.w	a6,#$0
 	move.l	a4,-(a7)
 	movea.l	$8(a6),a4
 	move.l	a4,-(a7)
-	jsr	sub_1F423A(pc)
+	jsr	Player_IsBeastOrPsylocke(pc)
 	tst.b	d0
 	addq.w	#$4,a7
 	beq.s	loc_1F432A

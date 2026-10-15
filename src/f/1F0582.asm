@@ -98,7 +98,7 @@ loc_1F0692:
 	and.w	$4(a3),d0
 	beq.s	loc_1F06B6
 	move.l	a3,-(a7)
-	jsr	sub_1F429E(pc)
+	jsr	Player_ClimbState(pc)
 	tst.b	d0
 	addq.w	#$4,a7
 	beq.w	loc_1F0742
@@ -115,7 +115,7 @@ loc_1F06CA:
 	and.w	$4(a4),d0
 	beq.s	loc_1F0728
 	move.l	a4,-(a7)
-	jsr	sub_1F429E(pc)
+	jsr	Player_ClimbState(pc)
 	tst.b	d0
 	addq.w	#$4,a7
 	bne.s	loc_1F0728

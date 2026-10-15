@@ -15,7 +15,7 @@ sub_039F80:
 	cmpi.l	#$8000,d0
 	bne.s	loc_03A010
 	move.l	a4,-(a7)
-	jsr	$4D72(a5)	; -> sub_1F429E
+	jsr	$4D72(a5)	; -> Player_ClimbState
 	tst.b	d0
 	addq.w	#$4,a7
 	beq.s	loc_039FB8

@@ -1,12 +1,15 @@
 ; ---------------------------------------------------------------------------
-; sub_1F429E	[jt 2474]
+; Player_ClimbState - climb state of a climber player (+$C0 bits 0-1), 0 for non-climbers
+; In:  8(a6) = player
+; Out: d0 = +$C0 & 3 (0 none, 1-3 climbing modes; 2/3 = on a wall left/right, used by Cam_TrackPlayer)
+; Evidence: Player_IsClimber, then +$C0 & 3
 ; ---------------------------------------------------------------------------
-sub_1F429E:
+Player_ClimbState:
 	link.w	a6,#$0
 	move.l	a4,-(a7)
 	movea.l	$8(a6),a4
 	move.l	a4,-(a7)
-	jsr	sub_1F41C2(pc)
+	jsr	Player_IsClimber(pc)
 	tst.b	d0
 	addq.w	#$4,a7
 	beq.s	loc_1F42C6

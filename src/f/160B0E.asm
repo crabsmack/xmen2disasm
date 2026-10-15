@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_160B0E	[link-after-rts]
+; Cam_EaseOffset - camera step: shrink the transition offset (+$2C, +$2E) toward 0 by +$46 per frame; on a mode switch first absorb the jump into it
+; In:  8(a6) = this
+; Out: none
+; Evidence: when g_CamModeSwitched ($FFC96E) is set: offset += previous - new position, flag cleared; y decays twice as fast with two players ($FFC920 == 2); Cam_ApplyPos adds the offset
 ; ---------------------------------------------------------------------------
-sub_160B0E:
+Cam_EaseOffset:
 	link.w	a6,#$0
 	movem.l	d5-d7/a4,-(a7)
 	movea.l	$8(a6),a4

@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_16118E	[link-after-rts]
+; Cam_EaseAxis - camera helper: new camera coordinate that keeps a target at a screen offset, moving at most `speed` from the target's previous offset
+; In:  8(a6) = word wanted screen offset, $C(a6) = word camera coord, $10(a6) = word max step, $14(a6) = word target coord, $18(a6) = word previous target coord
+; Out: d0 = new camera coord
+; Evidence: pure arithmetic; used by Cam_TrackPlayer for wall/edge cases
 ; ---------------------------------------------------------------------------
-sub_16118E:
+Cam_EaseAxis:
 	link.w	a6,#$FFFE
 	movem.l	d3-d7,-(a7)
 	move.w	$16(a6),d6

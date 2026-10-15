@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_1606F4	[link-after-rts]
+; Obj_GetLiftCarrier - return the object this one is attached to when it is a moving lift (vertical motion, or a segment of type '$'/'#')
+; In:  8(a6) = object
+; Out: d0 = carrier object or 0
+; Evidence: carrier = g_ObjTable[+$3A]; with carrier flag $1000 requires |vy| > |vx|; else carrier segment +$76 type byte '$' or '#'; Cam_TrackPlayer then keeps y simple
 ; ---------------------------------------------------------------------------
-sub_1606F4:
+Obj_GetLiftCarrier:
 	link.w	a6,#$0
 	movem.l	d3/d7/a3-a4,-(a7)
 	movea.l	$8(a6),a3
