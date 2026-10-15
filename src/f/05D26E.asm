@@ -8,7 +8,7 @@ sub_05D26E:
 	moveq	#$32,d0
 	move.l	d0,-(a7)
 	move.l	a4,-(a7)
-	jsr	$4E62(a5)	; -> sub_1F638A
+	jsr	$4E62(a5)	; -> Seg_WouldLeaveEnd
 	tst.b	d0
 	addq.w	#$8,a7
 	beq.s	loc_05D2BC

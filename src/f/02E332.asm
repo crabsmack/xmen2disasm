@@ -137,7 +137,7 @@ loc_02E458:
 	move.l	d7,-(a7)
 	move.l	d6,-(a7)
 	pea.l	$2E(a4)
-	jsr	$508A(a5)	; -> sub_1FB346
+	jsr	$508A(a5)	; -> Spr_Draw
 	lea.l	$C(a7),a7
 	move.l	d5,d0
 	addq.l	#$1,d5

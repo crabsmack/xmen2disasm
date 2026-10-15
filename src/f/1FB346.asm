@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_1FB346	[jt 2573]
+; Spr_Draw - draw a sprite instance at screen coordinates: upload its frame if needed, then emit hardware sprites (clipped or not) by definition type
+; In:  8(a6) = sprite instance (object+$2E)   $C(a6) = word: screen x   $10(a6) = word: screen y
+; Out: none
+; Evidence: bit 5 clear -> sub_1FAD44(spr, 0); frame record def(+2)+$24 + frame(+$A)*$14 bbox vs the 320x224 screen picks sub_1FB75A (inside) / sub_1FB8A2 (clipped) for type $20, sub_1FBA0C / sub_1FBB5E for $18/$19; attachments (+$D != $FF) use sub_1FB592 / sub_1FBCCE; coordinates + $80 (sprite space)
 ; ---------------------------------------------------------------------------
-sub_1FB346:
+Spr_Draw:
 	link.w	a6,#$FFFE
 	movem.l	d4-d7/a3-a4,-(a7)
 	move.w	$12(a6),d5

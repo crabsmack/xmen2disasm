@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_1F4A40
+; Obj_UpdateBoxes - recompute both object boxes (body +$4C..+$52 and second box +$54..+$5A) and, for objects owning a floor segment, the segment's endpoints
+; In:  8(a6) = object
+; Out: none
+; Evidence: like Obj_UpdateBox plus frame offsets +8..+$B into +$54..+$5A; if flags +6 bit $200 and segment index +$7A != $FF: segment record (-$33D2 + idx*$14) +8..+$E = left, top+1, right, bottom, then sub_1F79A2(segment)
 ; ---------------------------------------------------------------------------
-sub_1F4A40:
+Obj_UpdateBoxes:
 	movea.l	$4(a7),a0
 	movem.l	d5-d7/a3-a4,-(a7)
 	movea.l	a0,a3

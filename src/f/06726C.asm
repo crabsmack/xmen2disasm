@@ -34,7 +34,7 @@ loc_06728A:
 	sub.l	d1,d0
 	move.l	d0,-(a7)
 	pea.l	$2E(a4)
-	jsr	$508A(a5)	; -> sub_1FB346
+	jsr	$508A(a5)	; -> Spr_Draw
 	lea.l	$C(a7),a7
 loc_0672C6:
 	movea.l	-$4(a6),a4

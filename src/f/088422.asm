@@ -63,7 +63,7 @@ loc_088494:
 	ext.l	d6
 	move.l	d6,-(a7)
 	pea.l	-$3596(a5)
-	jsr	$507A(a5)	; -> sub_1FB142
+	jsr	$507A(a5)	; -> Spr_SetFrame
 	moveq	#$0,d0
 	move.l	d0,-(a7)
 	pea.l	-$3596(a5)
@@ -71,7 +71,7 @@ loc_088494:
 	ext.l	d7
 	move.l	d7,-(a7)
 	pea.l	-$3582(a5)
-	jsr	$507A(a5)	; -> sub_1FB142
+	jsr	$507A(a5)	; -> Spr_SetFrame
 	moveq	#$0,d0
 	move.l	d0,-(a7)
 	pea.l	-$3582(a5)

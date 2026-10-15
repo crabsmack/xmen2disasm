@@ -49,7 +49,7 @@ ClosedBarrier_Init:
 	move.l	a4,-(a7)
 	jsr	$4E42(a5)	; -> sub_1F626A
 	move.l	a4,-(a7)
-	jsr	$4DD2(a5)	; -> sub_1F4A40
+	jsr	$4DD2(a5)	; -> Obj_UpdateBoxes
 	movem.l	-$8(a6),a3-a4
 	unlk	a6
 	rts

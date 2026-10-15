@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_1F553C	[jt 2494]
+; Map_SetRowPalette - set the palette field of 16 consecutive tilemap words (one row of a 16-wide map buffer)
+; In:  8(a6) = map buffer   $C(a6) = word: row   $10(a6) = word: row offset   $14(a6) = word: palette 0-3
+; Out: none
+; Evidence: row base = buffer + (row + offset - 1) * $20; each word: bits 13-14 := palette; callers sub_07746A, sub_0E7582, sub_0FCB8E pass buffer -$3AA6(a5)
 ; ---------------------------------------------------------------------------
-sub_1F553C:
+Map_SetRowPalette:
 	link.w	a6,#$0
 	movem.l	d3/d6-d7/a4,-(a7)
 	move.w	$16(a6),d6

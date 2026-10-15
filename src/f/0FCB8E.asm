@@ -26,7 +26,7 @@ sub_0FCB8E:
 	ext.l	d2
 	move.l	d2,-(a7)
 	move.l	-$3AA6(a5),-(a7)
-	jsr	$4E12(a5)	; -> sub_1F553C
+	jsr	$4E12(a5)	; -> Map_SetRowPalette
 	clr.w	-$3B3A(a5)
 	unlk	a6
 	rts

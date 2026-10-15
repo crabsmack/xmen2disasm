@@ -12,7 +12,7 @@ sub_1F690E:
 	move.l	$8(a6),-(a7)
 	moveq	#$0,d1
 	move.l	d1,-(a7)
-	jsr	sub_1F67C8(pc)
+	jsr	Pal_StartFadeDelay(pc)
 	lea.l	$10(a7),a7
 	bra.s	loc_1F693C
 loc_1F6938:

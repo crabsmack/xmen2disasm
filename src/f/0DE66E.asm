@@ -15,7 +15,7 @@ SentinelDoor_Despawn:
 	movea.l	$36(a0),a1
 	jsr	(a1)
 	move.l	$94(a4),-(a7)
-	jsr	$4F22(a5)	; -> sub_1F7CFE
+	jsr	$4F22(a5)	; -> Seg_Free
 	moveq	#$0,d0
 	move.l	d0,$94(a4)
 	movea.l	-$4(a6),a4

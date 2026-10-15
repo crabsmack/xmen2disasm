@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_1F67C8	[link-after-rts]
+; Pal_StartFadeDelay - start a palette fade with an explicit frame delay (like Pal_StartFade)
+; In:  8(a6) = word: start level (0 = fade in)   $C(a6) = word: frames per step   $10(a6) = word: palette line or -1   $14(a6) = fade table pointer
+; Out: none
+; Evidence: g_PalFadeTimer = 0, g_PalFadeDelay = delay, g_PalFadeLevel, g_PalFadeUp = (level == 0), g_PalFadeLine, g_PalFadeTable; Pal_ApplyFade; g_PalFadeActive = 1; callers sub_1F68CE, sub_1F690E
 ; ---------------------------------------------------------------------------
-sub_1F67C8:
+Pal_StartFadeDelay:
 	link.w	a6,#$0
 	movem.l	d3/d7,-(a7)
 	move.w	$A(a6),d7

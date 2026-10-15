@@ -42,7 +42,7 @@ loc_138B1C:
 	bra.s	loc_138B38
 loc_138B30:
 	move.l	a4,-(a7)
-	jsr	$4DD2(a5)	; -> sub_1F4A40
+	jsr	$4DD2(a5)	; -> Obj_UpdateBoxes
 	addq.w	#$4,a7
 loc_138B38:
 	movem.l	-$10(a6),d5-d7/a4

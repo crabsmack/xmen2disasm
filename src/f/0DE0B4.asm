@@ -49,7 +49,7 @@ ControlPanel_Draw:
 	move.l	d7,-(a7)
 	move.l	d6,-(a7)
 	move.l	-$4(a6),-(a7)
-	jsr	$508A(a5)	; -> sub_1FB346
+	jsr	$508A(a5)	; -> Spr_Draw
 	lea.l	$C(a7),a7
 	bra.s	loc_0DE154
 loc_0DE13E:

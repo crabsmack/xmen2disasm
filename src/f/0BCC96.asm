@@ -53,7 +53,7 @@ SavageMediumBio_Init:
 	movea.l	$56(a0),a1
 	jsr	(a1)
 	move.l	a4,-(a7)
-	jsr	$4DD2(a5)	; -> sub_1F4A40
+	jsr	$4DD2(a5)	; -> Obj_UpdateBoxes
 	movea.l	-$4(a6),a4
 	unlk	a6
 	rts

@@ -107,7 +107,7 @@ loc_157F6A:
 	move.l	d4,-(a7)
 	ext.l	d5
 	move.l	d5,-(a7)
-	jsr	$4FFA(a5)	; -> sub_1FA0AE
+	jsr	$4FFA(a5)	; -> ObjList_ForEachAtPoint
 	tst.b	d0
 	lea.l	$18(a7),a7
 	bra.s	loc_157FEE
@@ -121,7 +121,7 @@ loc_157FCE:
 	move.l	d4,-(a7)
 	ext.l	d5
 	move.l	d5,-(a7)
-	jsr	$4FFA(a5)	; -> sub_1FA0AE
+	jsr	$4FFA(a5)	; -> ObjList_ForEachAtPoint
 	tst.b	d0
 	lea.l	$18(a7),a7
 loc_157FEE:

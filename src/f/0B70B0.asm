@@ -62,7 +62,7 @@ ChildShip_Init:
 	movea.l	$56(a0),a1
 	jsr	(a1)
 	move.l	a4,-(a7)
-	jsr	$4DD2(a5)	; -> sub_1F4A40
+	jsr	$4DD2(a5)	; -> Obj_UpdateBoxes
 	lea.l	$1EAA(a5),a0
 	move.l	$2(a0),d0
 	addq.l	#$4,d0

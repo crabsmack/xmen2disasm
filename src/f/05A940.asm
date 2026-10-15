@@ -181,7 +181,7 @@ loc_05AAF8:
 	cmp.l	d7,d0
 	bgt.s	loc_05AAAA
 	move.l	a3,-(a7)
-	jsr	$4F22(a5)	; -> sub_1F7CFE
+	jsr	$4F22(a5)	; -> Seg_Free
 	move.w	-$2(a6),d0
 	ext.l	d0
 	move.l	d0,-(a7)

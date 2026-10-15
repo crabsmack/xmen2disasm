@@ -62,7 +62,7 @@ loc_1971C4:
 	jsr	(a1)
 	move.b	#$1,$C2(a4)
 	move.l	a4,-(a7)
-	jsr	$4DDA(a5)	; -> sub_1F4BA2
+	jsr	$4DDA(a5)	; -> Obj_UpdateBox
 	andi.l	#$FFF7FFFF,$90(a4)
 	andi.l	#$FFEFFFFF,$90(a4)
 	move.w	$E(a3),d0
@@ -89,7 +89,7 @@ loc_19721C:
 	jsr	(a1)
 	clr.b	$C2(a4)
 	move.l	a4,-(a7)
-	jsr	$4DDA(a5)	; -> sub_1F4BA2
+	jsr	$4DDA(a5)	; -> Obj_UpdateBox
 	move.w	$C(a3),d0
 	ext.l	d0
 	move.w	$4E(a4),d1
@@ -114,7 +114,7 @@ loc_197266:
 	jsr	(a1)
 	clr.b	$C2(a4)
 	move.l	a4,-(a7)
-	jsr	$4DDA(a5)	; -> sub_1F4BA2
+	jsr	$4DDA(a5)	; -> Obj_UpdateBox
 	move.w	$8(a3),d0
 	ext.l	d0
 	move.w	$52(a4),d1

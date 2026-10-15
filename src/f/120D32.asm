@@ -18,7 +18,7 @@ sub_120D32:
 	move.l	a4,-(a7)
 	jsr	$4E42(a5)	; -> sub_1F626A
 	move.l	a4,-(a7)
-	jsr	$4DDA(a5)	; -> sub_1F4BA2
+	jsr	$4DDA(a5)	; -> Obj_UpdateBox
 	move.w	$4C(a4),d0
 	ext.l	d0
 	move.w	$50(a4),d1

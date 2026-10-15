@@ -28,7 +28,7 @@ loc_1969EE:
 	movea.l	$56(a0),a1
 	jsr	(a1)
 	move.l	a4,-(a7)
-	jsr	$4DDA(a5)	; -> sub_1F4BA2
+	jsr	$4DDA(a5)	; -> Obj_UpdateBox
 	moveq	#$10,d0
 	and.b	$2E(a4),d0
 	lea.l	$C(a7),a7

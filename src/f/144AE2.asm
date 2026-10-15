@@ -119,7 +119,7 @@ loc_144BE0:
 	move.w	d0,-$CAA(a5)
 	pea.l	$40C2(a5)
 	move.l	a4,-(a7)
-	jsr	$4E82(a5)	; -> sub_1F669A
+	jsr	$4E82(a5)	; -> Obj_ForEachChild
 	addq.w	#$8,a7
 loc_144C18:
 	moveq	#$0,d7

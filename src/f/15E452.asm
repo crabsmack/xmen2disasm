@@ -90,7 +90,7 @@ loc_15E512:
 loc_15E522:
 	move.l	d1,-(a7)
 	pea.l	$2E(a4)
-	jsr	$508A(a5)	; -> sub_1FB346
+	jsr	$508A(a5)	; -> Spr_Draw
 	lea.l	$C(a7),a7
 	bra.s	loc_15E550
 loc_15E532:
@@ -102,7 +102,7 @@ loc_15E532:
 	move.l	d0,-(a7)
 	move.l	d0,-(a7)
 	pea.l	$2E(a4)
-	jsr	$5082(a5)	; -> sub_1FB1C2
+	jsr	$5082(a5)	; -> Spr_PlaceAttached
 	lea.l	$C(a7),a7
 loc_15E550:
 	movem.l	-$8(a6),d3/a4

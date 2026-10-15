@@ -18,7 +18,7 @@ sub_157C22:
 	sub.l	d1,d0
 	move.l	d0,-(a7)
 	pea.l	$2E(a4)
-	jsr	$508A(a5)	; -> sub_1FB346
+	jsr	$508A(a5)	; -> Spr_Draw
 	movea.l	-$4(a6),a4
 	unlk	a6
 	rts

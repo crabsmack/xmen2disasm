@@ -664,7 +664,7 @@ loc_0665EE:
 	add.l	d2,d0
 	move.l	d0,-(a7)
 	pea.l	-$14(a6)
-	jsr	$508A(a5)	; -> sub_1FB346
+	jsr	$508A(a5)	; -> Spr_Draw
 	move.l	-$1CA(a6),d0
 	add.l	d0,-$1DA(a6)
 	move.l	-$1C6(a6),d0
@@ -802,7 +802,7 @@ loc_0667A0:
 	add.l	d2,d0
 	move.l	d0,-(a7)
 	pea.l	-$14(a6)
-	jsr	$508A(a5)	; -> sub_1FB346
+	jsr	$508A(a5)	; -> Spr_Draw
 	move.l	-$1CA(a6),d0
 	add.l	d0,-$1DA(a6)
 	move.l	-$1C6(a6),d0
@@ -966,7 +966,7 @@ loc_0669EC:
 	add.l	d2,d0
 	move.l	d0,-(a7)
 	pea.l	-$14(a6)
-	jsr	$508A(a5)	; -> sub_1FB346
+	jsr	$508A(a5)	; -> Spr_Draw
 	pea.l	-$1E8(a6)
 	jsr	sub_06451E(pc)
 	jsr	$5052(a5)	; -> sub_1FA9D2

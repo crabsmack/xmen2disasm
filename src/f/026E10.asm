@@ -40,7 +40,7 @@ loc_026E52:
 	addq.w	#$4,a7
 loc_026E80:
 	move.l	-$4(a6),-(a7)
-	jsr	$4F22(a5)	; -> sub_1F7CFE
+	jsr	$4F22(a5)	; -> Seg_Free
 	moveq	#$0,d0
 	move.l	d0,$90(a4)
 	addq.w	#$4,a7

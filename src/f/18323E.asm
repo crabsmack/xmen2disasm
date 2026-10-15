@@ -35,7 +35,7 @@ loc_183288:
 	moveq	#$0,d0
 	move.l	d0,-(a7)
 	move.l	$14(a6),-(a7)
-	jsr	$507A(a5)	; -> sub_1FB142
+	jsr	$507A(a5)	; -> Spr_SetFrame
 	addq.w	#$8,a7
 	move.l	-$4(a6),d7
 	unlk	a6

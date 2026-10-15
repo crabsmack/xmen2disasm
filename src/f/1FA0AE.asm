@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_1FA0AE	[jt 2555]
+; ObjList_ForEachAtPoint - call func(obj, x, y, arg) for each object in a list whose second box contains the point; stop when func returns true
+; In:  8(a6) = word: x   $C(a6) = word: y   $10(a6) = list (node +0 next, +8 object)   $14(a6) = func   $18(a6) = byte: include hit-flashing objects   $1C(a6) = arg
+; Out: d0 = byte: 1 if any object matched
+; Evidence: box test +$56 <= x <= +$5A, +$54 <= y <= +$58; skips objects with +$6A (hit-flash timer) unless the flag is set; callers BioBullet_Update and others hit-testing projectiles
 ; ---------------------------------------------------------------------------
-sub_1FA0AE:
+ObjList_ForEachAtPoint:
 	link.w	a6,#$0
 	movem.l	d4-d7/a3-a4,-(a7)
 	move.b	$1B(a6),d4

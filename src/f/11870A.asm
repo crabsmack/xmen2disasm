@@ -25,7 +25,7 @@ ICandy_Draw:
 	ext.l	d6
 	move.l	d6,-(a7)
 	pea.l	$1C(a4)
-	jsr	$508A(a5)	; -> sub_1FB346
+	jsr	$508A(a5)	; -> Spr_Draw
 	movem.l	-$C(a6),d6-d7/a4
 	unlk	a6
 	rts

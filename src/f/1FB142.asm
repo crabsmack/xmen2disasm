@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_1FB142	[jt 2571]
+; Spr_SetFrame - select the frame a sprite instance shows, marking it up to date if that frame is already uploaded
+; In:  8(a6) = sprite instance (object+$2E)   $C(a6) = word: frame index ($FF = none)
+; Out: none
+; Evidence: +1 = frame; bit 5 of +0 cleared, then set if frame != $FF and frame == uploaded frame +$A; called by actor Draw methods (BioBullet_Draw, SwampFly_Draw...) before Spr_Draw
 ; ---------------------------------------------------------------------------
-sub_1FB142:
+Spr_SetFrame:
 	link.w	a6,#$0
 	movem.l	d7/a4,-(a7)
 	move.w	$E(a6),d7

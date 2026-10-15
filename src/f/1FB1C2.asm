@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_1FB1C2	[jt 2572]
+; Spr_PlaceAttached - snap the objects attached to a sprite to its anchor point and call their vtable slot $1E
+; In:  8(a6) = sprite instance (object+$2E)   $C(a6) = word: screen x   $10(a6) = word: screen y
+; Out: none
+; Evidence: chain from sprite+$D through the object table -$34A6 (next = object+$3C); objects with flags +4 & $1800 == $1800 are moved by Obj_ShiftTree so their screen position matches (x, y - frame byte +$2B)
 ; ---------------------------------------------------------------------------
-sub_1FB1C2:
+Spr_PlaceAttached:
 	link.w	a6,#$FFFC
 	movem.l	d3-d7/a3-a4,-(a7)
 	movea.l	$8(a6),a3
@@ -130,7 +133,7 @@ loc_1FB2C8:
 	move.l	a4,-(a7)
 	moveq	#$0,d0
 	move.l	d0,-(a7)
-	jsr	sub_1FB178(pc)
+	jsr	Obj_ShiftTree(pc)
 	addq.w	#$8,a7
 loc_1FB304:
 	move.l	a4,-(a7)

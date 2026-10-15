@@ -166,7 +166,7 @@ loc_1F8CBA:
 	move.l	-$1368(a5),$C(a4)
 	clr.l	$16(a4)
 	move.l	a4,-(a7)
-	jsr	$4DDA(a5)	; -> sub_1F4BA2
+	jsr	$4DDA(a5)	; -> Obj_UpdateBox
 	addq.w	#$4,a7
 	bra.w	loc_1F8E7A
 loc_1F8CF8:
@@ -271,7 +271,7 @@ loc_1F8DDA:
 loc_1F8DFC:
 	move.l	a4,-(a7)
 	move.l	a4,-(a7)
-	jsr	sub_1F7956(pc)
+	jsr	Obj_InheritLayer(pc)
 	move.l	a4,-(a7)
 	move.l	a3,-(a7)
 	jsr	sub_1F6FF4(pc)
@@ -311,7 +311,7 @@ loc_1F8E70:
 	suba.l	a2,a2
 loc_1F8E72:
 	move.l	a4,-(a7)
-	jsr	$4DDA(a5)	; -> sub_1F4BA2
+	jsr	$4DDA(a5)	; -> Obj_UpdateBox
 	addq.w	#$4,a7
 loc_1F8E7A:
 	move.l	a2,d7
@@ -350,9 +350,9 @@ loc_1F8EC6:
 	move.b	$7A(a4),d0
 	cmpi.b	#$FF,d0
 	beq.s	loc_1F8EEC
-	pea.l	sub_1F7940(pc)
+	pea.l	Seg_SetLayerFromObj(pc)
 	move.l	a4,-(a7)
-	jsr	sub_1F7D5E(pc)
+	jsr	Seg_ForEachOfObj(pc)
 	addq.w	#$8,a7
 loc_1F8EEC:
 	movem.l	-$118(a6),d3-d7/a2-a4

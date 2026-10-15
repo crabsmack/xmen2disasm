@@ -43,7 +43,7 @@ loc_15B124:
 	move.w	$36(a4),d0
 	add.w	d0,-$3598(a5)
 	pea.l	$2E(a4)
-	jsr	$5072(a5)	; -> sub_1FB126
+	jsr	$5072(a5)	; -> Spr_InvalidateFrame
 	addq.w	#$4,a7
 loc_15B16A:
 	addq.w	#$1,d7

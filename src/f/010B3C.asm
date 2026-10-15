@@ -141,7 +141,7 @@ loc_010CAA:
 	beq.w	loc_010D5A
 	tst.b	d6
 	beq.w	loc_010D5A
-	jsr	$4F12(a5)	; -> sub_1F7C0A
+	jsr	$4F12(a5)	; -> Seg_Alloc
 	ext.l	d0
 	lsl.l	#$2,d0
 	move.l	d0,d1

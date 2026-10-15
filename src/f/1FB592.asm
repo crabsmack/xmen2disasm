@@ -64,7 +64,7 @@ loc_1FB636:
 	add.w	$E(a6),d0
 	move.l	d0,-(a7)
 	move.l	a0,-(a7)
-	jsr	sub_1FB1C2(pc)
+	jsr	Spr_PlaceAttached(pc)
 	bra.w	loc_1FB734
 loc_1FB646:
 	move.w	$16(a6),d6

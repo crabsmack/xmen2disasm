@@ -176,7 +176,7 @@ loc_04E3AE:
 	lea.l	$10(a7),a7
 loc_04E3E4:
 	move.l	a4,-(a7)
-	jsr	$4DD2(a5)	; -> sub_1F4A40
+	jsr	$4DD2(a5)	; -> Obj_UpdateBoxes
 	addq.w	#$4,a7
 loc_04E3EC:
 	movem.l	-$20(a6),d4-d7/a3-a4

@@ -78,7 +78,7 @@ loc_0EC91E:
 	move.l	a4,-(a7)
 	jsr	$4E42(a5)	; -> sub_1F626A
 	move.l	a4,-(a7)
-	jsr	$4DD2(a5)	; -> sub_1F4A40
+	jsr	$4DD2(a5)	; -> Obj_UpdateBoxes
 	move.w	$8(a3),d7
 	beq.s	loc_0EC94A
 	ext.l	d7

@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_1F4BA2
+; Obj_UpdateBox - recompute an object's body box (+$4C top, +$4E left, +$50 bottom, +$52 right) from its position and current frame, honouring flips
+; In:  8(a6) = object
+; Out: none
+; Evidence: frame record = def(+$30)+$24 + frame(+$2F)*$14 (frame $FF = first); signed offsets +4..+7 added to x>>8 / y>>8, mirrored when +$2E bit 4 (h-flip) / bit 3 (v-flip); 19 callers
 ; ---------------------------------------------------------------------------
-sub_1F4BA2:
+Obj_UpdateBox:
 	movea.l	$4(a7),a0
 	movem.l	d5-d7/a3-a4,-(a7)
 	movea.l	a0,a3

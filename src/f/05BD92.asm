@@ -40,7 +40,7 @@ loc_05BDD6:
 	ext.l	d5
 	move.l	d5,-(a7)
 	pea.l	$2E(a3)
-	jsr	$508A(a5)	; -> sub_1FB346
+	jsr	$508A(a5)	; -> Spr_Draw
 	lea.l	$C(a7),a7
 	move.w	d7,d0
 	addq.w	#$1,d7
@@ -98,7 +98,7 @@ loc_05BE02:
 	sub.l	d1,d0
 	move.l	d0,-(a7)
 	pea.l	$A4(a3)
-	jsr	$508A(a5)	; -> sub_1FB346
+	jsr	$508A(a5)	; -> Spr_Draw
 	lea.l	$C(a7),a7
 loc_05BE98:
 	moveq	#$0,d3
@@ -170,7 +170,7 @@ loc_05BF22:
 loc_05BF32:
 	move.l	d1,-(a7)
 	pea.l	$2E(a3)
-	jsr	$508A(a5)	; -> sub_1FB346
+	jsr	$508A(a5)	; -> Spr_Draw
 	lea.l	$C(a7),a7
 loc_05BF40:
 	movem.l	-$1C(a6),d3-d7/a3-a4

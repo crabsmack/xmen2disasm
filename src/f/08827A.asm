@@ -46,7 +46,7 @@ loc_0882D4:
 	lsl.l	#$8,d0
 	sub.l	d0,-$1750(a5)
 	pea.l	g_Player1(a5)
-	jsr	$4DD2(a5)	; -> sub_1F4A40
+	jsr	$4DD2(a5)	; -> Obj_UpdateBoxes
 	addq.w	#$4,a7
 loc_08830C:
 	move.w	-$1844(a5),d0
@@ -86,7 +86,7 @@ loc_08834A:
 	lsl.l	#$8,d0
 	sub.l	d0,-$1840(a5)
 	pea.l	g_Player2(a5)
-	jsr	$4DD2(a5)	; -> sub_1F4A40
+	jsr	$4DD2(a5)	; -> Obj_UpdateBoxes
 	addq.w	#$4,a7
 loc_088382:
 	move.l	a4,-(a7)

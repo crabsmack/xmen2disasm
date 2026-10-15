@@ -228,7 +228,7 @@ loc_1F18AE:
 	and.w	$4(a4),d0
 	beq.s	loc_1F18BE
 	move.l	a4,-(a7)
-	jsr	$4DD2(a5)	; -> sub_1F4A40
+	jsr	$4DD2(a5)	; -> Obj_UpdateBoxes
 	addq.w	#$4,a7
 loc_1F18BE:
 	tst.w	$6A(a4)

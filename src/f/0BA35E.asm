@@ -95,7 +95,7 @@ loc_0BA44A:
 	and.w	$4(a4),d0
 	beq.s	loc_0BA460
 	move.l	a4,-(a7)
-	jsr	$4DD2(a5)	; -> sub_1F4A40
+	jsr	$4DD2(a5)	; -> Obj_UpdateBoxes
 	andi.w	#$FFF7,$4(a4)
 	addq.w	#$4,a7
 loc_0BA460:

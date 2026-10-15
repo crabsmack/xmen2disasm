@@ -100,7 +100,7 @@ loc_0DE638:
 	movea.l	$56(a0),a1
 	jsr	(a1)
 	move.l	a4,-(a7)
-	jsr	$4DD2(a5)	; -> sub_1F4A40
+	jsr	$4DD2(a5)	; -> Obj_UpdateBoxes
 	lea.l	$C(a7),a7
 	movem.l	-$28(a6),d4-d7/a3-a4
 	unlk	a6

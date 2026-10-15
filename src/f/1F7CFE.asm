@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_1F7CFE	[jt 2528]
+; Seg_Free - free a floor-segment record and unlink it from its neighbours
+; In:  8(a6) = segment record
+; Out: none
+; Evidence: neighbour indexes +$10 (previous) / +$11 (next): their back/forward links set to $FF; +0 cleared; 13 callers (actor despawn code, e.g. SentinelDoor_Despawn)
 ; ---------------------------------------------------------------------------
-sub_1F7CFE:
+Seg_Free:
 	link.w	a6,#$0
 	move.l	a4,-(a7)
 	movea.l	$8(a6),a4

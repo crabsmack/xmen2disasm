@@ -85,7 +85,7 @@ loc_0DF310:
 loc_0DF336:
 	clr.w	$92(a4)
 	move.l	a4,-(a7)
-	jsr	$4DD2(a5)	; -> sub_1F4A40
+	jsr	$4DD2(a5)	; -> Obj_UpdateBoxes
 	addq.w	#$4,a7
 	movem.l	-$C(a6),d7/a3-a4
 	unlk	a6

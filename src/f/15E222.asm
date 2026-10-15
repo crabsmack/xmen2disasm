@@ -75,7 +75,7 @@ loc_15E2C2:
 	cmp.w	$34(a4),d5
 	bge.s	loc_15E2EE
 	pea.l	$2E(a4)
-	jsr	$5072(a5)	; -> sub_1FB126
+	jsr	$5072(a5)	; -> Spr_InvalidateFrame
 	sub.w	d6,$34(a4)
 	addq.w	#$4,a7
 loc_15E2EE:
@@ -97,7 +97,7 @@ loc_15E308:
 	beq.s	loc_15E32A
 	pea.l	sub_15E7EA(pc)
 	move.l	a3,-(a7)
-	jsr	$4F2A(a5)	; -> sub_1F7D5E
+	jsr	$4F2A(a5)	; -> Seg_ForEachOfObj
 	addq.w	#$8,a7
 loc_15E32A:
 	movea.l	$7C(a3),a4

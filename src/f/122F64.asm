@@ -53,7 +53,7 @@ loc_122FE0:
 	beq.w	loc_123130
 	tst.b	d6
 	beq.w	loc_123130
-	jsr	$4F12(a5)	; -> sub_1F7C0A
+	jsr	$4F12(a5)	; -> Seg_Alloc
 	move.b	d0,$B8(a4)
 	moveq	#$0,d1
 	move.b	d0,d1
@@ -88,7 +88,7 @@ loc_122FE0:
 	move.l	d1,-(a7)
 	move.l	a3,-(a7)
 	jsr	$4F0A(a5)	; -> sub_1F7BB6
-	jsr	$4F12(a5)	; -> sub_1F7C0A
+	jsr	$4F12(a5)	; -> Seg_Alloc
 	ext.l	d0
 	lsl.l	#$2,d0
 	move.l	d0,d1

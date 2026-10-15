@@ -123,7 +123,7 @@ loc_0356CC:
 	tst.b	d5
 	beq.s	loc_0356E2
 	move.l	a4,-(a7)
-	jsr	$4F22(a5)	; -> sub_1F7CFE
+	jsr	$4F22(a5)	; -> Seg_Free
 	addq.w	#$4,a7
 loc_0356E2:
 	moveq	#$0,d0

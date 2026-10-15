@@ -54,7 +54,7 @@ BrainBabyBio_Init:
 	movea.l	$56(a0),a1
 	jsr	(a1)
 	move.l	a4,-(a7)
-	jsr	$4DD2(a5)	; -> sub_1F4A40
+	jsr	$4DD2(a5)	; -> Obj_UpdateBoxes
 	moveq	#$46,d0
 	move.l	d0,-(a7)
 	jsr	$5222(a5)	; -> Snd_Stop

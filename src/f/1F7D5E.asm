@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_1F7D5E	[jt 2529]
+; Seg_ForEachOfObj - call func(obj, segment) for every floor segment an object owns
+; In:  8(a6) = object   $C(a6) = func(obj, segment)
+; Out: none
+; Evidence: first index object+$7A, next = segment+$13, $FF ends; records at -$33D2(a5)
 ; ---------------------------------------------------------------------------
-sub_1F7D5E:
+Seg_ForEachOfObj:
 	link.w	a6,#$0
 	movem.l	d5-d7/a3-a4,-(a7)
 	movea.l	$8(a6),a3

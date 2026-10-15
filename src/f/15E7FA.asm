@@ -90,7 +90,7 @@ loc_15E8CE:
 	beq.s	loc_15E8E8
 loc_15E8E0:
 	move.l	a4,-(a7)
-	jsr	$4DDA(a5)	; -> sub_1F4BA2
+	jsr	$4DDA(a5)	; -> Obj_UpdateBox
 	addq.w	#$4,a7
 loc_15E8E8:
 	move.b	$42(a4),d4
@@ -180,7 +180,7 @@ loc_15E9CC:
 	and.w	$4(a4),d0
 	beq.s	loc_15E9E2
 	move.l	a4,-(a7)
-	jsr	$4DD2(a5)	; -> sub_1F4A40
+	jsr	$4DD2(a5)	; -> Obj_UpdateBoxes
 	andi.w	#$FFF7,$4(a4)
 	addq.w	#$4,a7
 loc_15E9E2:
@@ -201,7 +201,7 @@ loc_15E9E2:
 	move.w	d0,-$CAA(a5)
 	pea.l	sub_15E76C(pc)
 	move.l	a4,-(a7)
-	jsr	$4E82(a5)	; -> sub_1F669A
+	jsr	$4E82(a5)	; -> Obj_ForEachChild
 	addq.w	#$8,a7
 loc_15EA1A:
 	moveq	#$0,d7

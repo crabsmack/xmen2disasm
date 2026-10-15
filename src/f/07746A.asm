@@ -34,7 +34,7 @@ sub_07746A:
 	ext.l	d2
 	move.l	d2,-(a7)
 	move.l	-$3AA6(a5),-(a7)
-	jsr	$4E12(a5)	; -> sub_1F553C
+	jsr	$4E12(a5)	; -> Map_SetRowPalette
 	moveq	#$1,d0
 	move.l	d0,-(a7)
 	move.w	-$3AAE(a5),d1
@@ -65,7 +65,7 @@ sub_07746A:
 	ext.l	d1
 	move.l	d1,-(a7)
 	move.l	-$3AA6(a5),-(a7)
-	jsr	$4E12(a5)	; -> sub_1F553C
+	jsr	$4E12(a5)	; -> Map_SetRowPalette
 	moveq	#$1,d0
 	move.l	d0,-(a7)
 	move.w	-$3AAE(a5),d1

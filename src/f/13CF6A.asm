@@ -10,7 +10,7 @@ sub_13CF6A:
 	move.w	$4C(a4),-$4(a6)
 	move.w	$50(a4),-$2(a6)
 	move.l	a4,-(a7)
-	jsr	$4DD2(a5)	; -> sub_1F4A40
+	jsr	$4DD2(a5)	; -> Obj_UpdateBoxes
 	move.w	$50(a4),d0
 	ext.l	d0
 	move.l	d0,-(a7)
@@ -229,7 +229,7 @@ loc_13D1A8:
 	lsl.l	#$8,d0
 	move.l	d0,$C(a4)
 	move.l	a4,-(a7)
-	jsr	$4DD2(a5)	; -> sub_1F4A40
+	jsr	$4DD2(a5)	; -> Obj_UpdateBoxes
 	addq.w	#$4,a7
 loc_13D1C4:
 	movem.l	-$32(a6),d3-d7/a3-a4

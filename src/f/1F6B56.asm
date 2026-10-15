@@ -17,7 +17,7 @@ sub_1F6B56:
 	move.l	a4,-(a7)
 	jsr	$4EDA(a5)	; -> sub_1F6D76
 	move.l	a4,-(a7)
-	jsr	$4DD2(a5)	; -> sub_1F4A40
+	jsr	$4DD2(a5)	; -> Obj_UpdateBoxes
 	lea.l	$10(a7),a7
 loc_1F6B92:
 	movem.l	-$8(a6),a3-a4

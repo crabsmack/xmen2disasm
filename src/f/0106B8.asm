@@ -120,7 +120,7 @@ loc_0107C2:
 loc_0107D2:
 	move.l	d1,-(a7)
 	pea.l	$2E(a4)
-	jsr	$508A(a5)	; -> sub_1FB346
+	jsr	$508A(a5)	; -> Spr_Draw
 	lea.l	$C(a7),a7
 loc_0107E0:
 	movem.l	-$8(a6),d3/a4

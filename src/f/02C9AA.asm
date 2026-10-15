@@ -27,7 +27,7 @@ loc_02C9EC:
 	addq.l	#$2,d0
 	move.l	d0,-(a7)
 	pea.l	-$3582(a5)
-	jsr	$507A(a5)	; -> sub_1FB142
+	jsr	$507A(a5)	; -> Spr_SetFrame
 	moveq	#$0,d0
 	move.l	d0,-(a7)
 	pea.l	-$3582(a5)
@@ -48,7 +48,7 @@ loc_02CA2E:
 	addq.l	#$6,d0
 	move.l	d0,-(a7)
 	pea.l	-$356E(a5)
-	jsr	$507A(a5)	; -> sub_1FB142
+	jsr	$507A(a5)	; -> Spr_SetFrame
 	moveq	#$0,d0
 	move.l	d0,-(a7)
 	pea.l	-$356E(a5)
@@ -69,7 +69,7 @@ loc_02CA70:
 	addq.l	#$2,d0
 	move.l	d0,-(a7)
 	pea.l	-$355A(a5)
-	jsr	$507A(a5)	; -> sub_1FB142
+	jsr	$507A(a5)	; -> Spr_SetFrame
 	moveq	#$0,d0
 	move.l	d0,-(a7)
 	pea.l	-$355A(a5)
@@ -90,7 +90,7 @@ loc_02CAB2:
 	addq.l	#$6,d0
 	move.l	d0,-(a7)
 	pea.l	-$3546(a5)
-	jsr	$507A(a5)	; -> sub_1FB142
+	jsr	$507A(a5)	; -> Spr_SetFrame
 	moveq	#$0,d0
 	move.l	d0,-(a7)
 	pea.l	-$3546(a5)

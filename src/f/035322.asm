@@ -229,7 +229,7 @@ loc_035554:
 	lea.l	$C(a7),a7
 	beq.s	loc_035588
 	move.l	a4,-(a7)
-	jsr	$4F22(a5)	; -> sub_1F7CFE
+	jsr	$4F22(a5)	; -> Seg_Free
 	addq.w	#$4,a7
 loc_035588:
 	moveq	#$1A,d0

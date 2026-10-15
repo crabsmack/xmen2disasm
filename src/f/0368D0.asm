@@ -81,7 +81,7 @@ loc_036990:
 	cmp.l	d7,d0
 	bge.s	loc_03695E
 	move.l	a4,-(a7)
-	jsr	$4F22(a5)	; -> sub_1F7CFE
+	jsr	$4F22(a5)	; -> Seg_Free
 	movea.l	$8C(a3),a0
 	move.l	$8(a0),d0
 	cmp.l	$8(a3),d0

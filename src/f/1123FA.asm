@@ -94,7 +94,7 @@ loc_1124C2:
 loc_1124D2:
 	move.l	d1,-(a7)
 	move.l	$B0(a4),-(a7)
-	jsr	$508A(a5)	; -> sub_1FB346
+	jsr	$508A(a5)	; -> Spr_Draw
 	lea.l	$C(a7),a7
 	bra.w	loc_11258C
 loc_1124E4:
@@ -167,7 +167,7 @@ loc_11256E:
 loc_11257E:
 	move.l	d1,-(a7)
 	pea.l	$2E(a4)
-	jsr	$508A(a5)	; -> sub_1FB346
+	jsr	$508A(a5)	; -> Spr_Draw
 	lea.l	$C(a7),a7
 loc_11258C:
 	movem.l	-$C(a6),d3/d7/a4

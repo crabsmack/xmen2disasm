@@ -34,7 +34,7 @@ loc_1F157A:
 	jsr	sub_1F0582(pc)
 	move.b	d0,d6
 	move.l	a4,-(a7)
-	jsr	$4DDA(a5)	; -> sub_1F4BA2
+	jsr	$4DDA(a5)	; -> Obj_UpdateBox
 	tst.b	d6
 	addq.w	#$8,a7
 	bne.s	loc_1F15B2

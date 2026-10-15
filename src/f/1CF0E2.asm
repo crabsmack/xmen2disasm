@@ -20,7 +20,7 @@ sub_1CF0E2:
 	move.l	d4,-(a7)
 	ext.l	d5
 	move.l	d5,-(a7)
-	jsr	$4FFA(a5)	; -> sub_1FA0AE
+	jsr	$4FFA(a5)	; -> ObjList_ForEachAtPoint
 	tst.b	d0
 	lea.l	$18(a7),a7
 	beq.s	loc_1CF124

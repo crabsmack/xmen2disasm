@@ -54,7 +54,7 @@ loc_183372:
 	move.w	(a4),d1
 	ext.l	d1
 	move.l	d1,-(a7)
-	jsr	$4FFA(a5)	; -> sub_1FA0AE
+	jsr	$4FFA(a5)	; -> ObjList_ForEachAtPoint
 	andi.b	#$EF,(a3)
 	movea.l	$C(a6),a0
 	move.w	(a0),d0
@@ -70,7 +70,7 @@ loc_183372:
 	sub.l	d1,d0
 	move.l	d0,-(a7)
 	move.l	a3,-(a7)
-	jsr	$508A(a5)	; -> sub_1FB346
+	jsr	$508A(a5)	; -> Spr_Draw
 	moveq	#$1,d0
 	move.l	d0,-(a7)
 	pea.l	($7800).w
@@ -141,7 +141,7 @@ loc_183448:
 	move.w	(a4),d1
 	ext.l	d1
 	move.l	d1,-(a7)
-	jsr	$4FFA(a5)	; -> sub_1FA0AE
+	jsr	$4FFA(a5)	; -> ObjList_ForEachAtPoint
 	ori.b	#$10,(a3)
 	movea.l	$C(a6),a0
 	move.w	(a0),d0
@@ -157,7 +157,7 @@ loc_183448:
 	sub.l	d1,d0
 	move.l	d0,-(a7)
 	move.l	a3,-(a7)
-	jsr	$508A(a5)	; -> sub_1FB346
+	jsr	$508A(a5)	; -> Spr_Draw
 	moveq	#$1,d0
 	move.l	d0,-(a7)
 	pea.l	($7800).w

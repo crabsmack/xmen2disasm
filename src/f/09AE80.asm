@@ -69,7 +69,7 @@ loc_09AF18:
 	beq.s	loc_09AF34
 loc_09AF2C:
 	move.l	a4,-(a7)
-	jsr	$4DD2(a5)	; -> sub_1F4A40
+	jsr	$4DD2(a5)	; -> Obj_UpdateBoxes
 	addq.w	#$4,a7
 loc_09AF34:
 	movem.l	-$10(a6),d5-d7/a4

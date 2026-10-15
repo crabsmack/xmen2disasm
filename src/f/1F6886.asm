@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_1F6886	[link-after-rts]
+; Pal_ClearBase - zero the 64-colour base palette
+; In:  none
+; Out: none
+; Evidence: 64 words of g_PalBase ($FFC880) cleared; caller sub_1F68CE
 ; ---------------------------------------------------------------------------
-sub_1F6886:
+Pal_ClearBase:
 	link.w	a6,#$0
 	movem.l	d3/d7,-(a7)
 	clr.b	d7

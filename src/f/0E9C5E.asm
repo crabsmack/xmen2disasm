@@ -58,7 +58,7 @@ loc_0E9CE0:
 	cmp.w	$34(a4),d5
 	bge.s	loc_0E9D0C
 	pea.l	$2E(a4)
-	jsr	$5072(a5)	; -> sub_1FB126
+	jsr	$5072(a5)	; -> Spr_InvalidateFrame
 	sub.w	d6,$34(a4)
 	addq.w	#$4,a7
 loc_0E9D0C:

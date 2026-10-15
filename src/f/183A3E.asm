@@ -26,7 +26,7 @@ loc_183A70:
 	movea.l	$56(a0),a1
 	jsr	(a1)
 	move.l	a4,-(a7)
-	jsr	$4DDA(a5)	; -> sub_1F4BA2
+	jsr	$4DDA(a5)	; -> Obj_UpdateBox
 	move.l	a4,-(a7)
 	jsr	$4F5A(a5)	; -> sub_1F8B42
 	move.l	a3,-$3488(a5)

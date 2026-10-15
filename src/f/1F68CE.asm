@@ -13,7 +13,7 @@ sub_1F68CE:
 	move.l	$8(a6),-(a7)
 	moveq	#$7,d1
 	move.l	d1,-(a7)
-	jsr	sub_1F67C8(pc)
+	jsr	Pal_StartFadeDelay(pc)
 	lea.l	$10(a7),a7
 	bra.s	loc_1F6900
 loc_1F68FC:
@@ -21,6 +21,6 @@ loc_1F68FC:
 loc_1F6900:
 	tst.b	g_PalFadeActive(a5)
 	bne.s	loc_1F68FC
-	jsr	sub_1F6886(pc)
+	jsr	Pal_ClearBase(pc)
 	unlk	a6
 	rts

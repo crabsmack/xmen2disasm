@@ -26,13 +26,13 @@ BioBullet_Draw:
 	moveq	#$0,d0
 	move.l	d0,-(a7)
 	pea.l	$2E(a4)
-	jsr	$507A(a5)	; -> sub_1FB142
+	jsr	$507A(a5)	; -> Spr_SetFrame
 	ext.l	d7
 	move.l	d7,-(a7)
 	ext.l	d6
 	move.l	d6,-(a7)
 	pea.l	$2E(a4)
-	jsr	$508A(a5)	; -> sub_1FB346
+	jsr	$508A(a5)	; -> Spr_Draw
 	lea.l	$14(a7),a7
 	bra.s	loc_11E6E2
 loc_11E66E:

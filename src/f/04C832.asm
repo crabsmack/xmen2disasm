@@ -95,7 +95,7 @@ loc_04C8FC:
 loc_04C90C:
 	move.l	d1,-(a7)
 	move.l	-$4(a6),-(a7)
-	jsr	$508A(a5)	; -> sub_1FB346
+	jsr	$508A(a5)	; -> Spr_Draw
 	lea.l	$C(a7),a7
 loc_04C91A:
 	moveq	#$0,d0
@@ -171,7 +171,7 @@ loc_04C9B2:
 loc_04C9C2:
 	move.l	d1,-(a7)
 	move.l	a3,-(a7)
-	jsr	$508A(a5)	; -> sub_1FB346
+	jsr	$508A(a5)	; -> Spr_Draw
 	lea.l	$C(a7),a7
 loc_04C9CE:
 	movem.l	-$14(a6),d3/d7/a3-a4

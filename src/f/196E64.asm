@@ -37,7 +37,7 @@ loc_196EB4:
 	bne.s	loc_196F0C
 	ori.b	#$10,$2E(a4)
 	move.l	a4,-(a7)
-	jsr	$4DDA(a5)	; -> sub_1F4BA2
+	jsr	$4DDA(a5)	; -> Obj_UpdateBox
 	movea.l	$BC(a4),a0
 	move.w	$C(a0),d0
 	ext.l	d0
@@ -62,7 +62,7 @@ loc_196EB4:
 loc_196F0C:
 	andi.b	#$EF,$2E(a4)
 	move.l	a4,-(a7)
-	jsr	$4DDA(a5)	; -> sub_1F4BA2
+	jsr	$4DDA(a5)	; -> Obj_UpdateBox
 	movea.l	$BC(a4),a0
 	move.w	$8(a0),d0
 	ext.l	d0

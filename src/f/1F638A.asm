@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_1F638A	[jt 2504]
+; Seg_WouldLeaveEnd - test whether moving dx along the floor segment an object stands on would pass an end that has no neighbouring segment
+; In:  8(a6) = object   $C(a6) = word: dx
+; Out: d0 = byte: 1 = would walk off
+; Evidence: segment = object+$76 (0 = none -> 0); position along it object+$72 >> 8, half width from box +$4E/+$52; facing right compares with segment +6 (length) and next link +$11, facing left with 0 and previous link +$10 ($FF = none)
 ; ---------------------------------------------------------------------------
-sub_1F638A:
+Seg_WouldLeaveEnd:
 	link.w	a6,#$0
 	movem.l	d3/d5-d7/a4,-(a7)
 	move.w	$E(a6),d5

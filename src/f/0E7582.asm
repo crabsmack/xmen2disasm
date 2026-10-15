@@ -27,7 +27,7 @@ sub_0E7582:
 	ext.l	d1
 	move.l	d1,-(a7)
 	move.l	-$3AA6(a5),-(a7)
-	jsr	$4E12(a5)	; -> sub_1F553C
+	jsr	$4E12(a5)	; -> Map_SetRowPalette
 	addi.w	#$10,d7
 	moveq	#$1,d0
 	move.l	d0,-(a7)
@@ -50,7 +50,7 @@ sub_0E7582:
 	ext.l	d2
 	move.l	d2,-(a7)
 	move.l	-$3AA6(a5),-(a7)
-	jsr	$4E12(a5)	; -> sub_1F553C
+	jsr	$4E12(a5)	; -> Map_SetRowPalette
 	addi.w	#$10,d7
 	moveq	#$1,d0
 	move.l	d0,-(a7)
@@ -73,7 +73,7 @@ sub_0E7582:
 	ext.l	d2
 	move.l	d2,-(a7)
 	move.l	-$3AA6(a5),-(a7)
-	jsr	$4E12(a5)	; -> sub_1F553C
+	jsr	$4E12(a5)	; -> Map_SetRowPalette
 	addi.w	#$10,d7
 	moveq	#$1,d0
 	move.l	d0,-(a7)
@@ -96,7 +96,7 @@ sub_0E7582:
 	ext.l	d2
 	move.l	d2,-(a7)
 	move.l	-$3AA6(a5),-(a7)
-	jsr	$4E12(a5)	; -> sub_1F553C
+	jsr	$4E12(a5)	; -> Map_SetRowPalette
 	addi.w	#$10,d7
 	moveq	#$1,d0
 	move.l	d0,-(a7)
@@ -119,7 +119,7 @@ sub_0E7582:
 	ext.l	d2
 	move.l	d2,-(a7)
 	move.l	-$3AA6(a5),-(a7)
-	jsr	$4E12(a5)	; -> sub_1F553C
+	jsr	$4E12(a5)	; -> Map_SetRowPalette
 	move.w	#$FFFF,-$3B02(a5)
 	move.w	#$FFFF,-$3B04(a5)
 	move.w	#$FFFF,-$3B06(a5)

@@ -50,7 +50,7 @@ loc_15E016:
 	move.w	#$200,d0
 	and.w	$6(a4),d0
 	beq.w	loc_15E0E2
-	jsr	$4F12(a5)	; -> sub_1F7C0A
+	jsr	$4F12(a5)	; -> Seg_Alloc
 	move.w	d0,d6
 	move.b	d6,$7A(a4)
 	move.l	d6,d0

@@ -39,7 +39,7 @@ loc_0FCC34:
 	ext.l	d0
 	move.l	d0,-(a7)
 	pea.l	-$3596(a5)
-	jsr	$507A(a5)	; -> sub_1FB142
+	jsr	$507A(a5)	; -> Spr_SetFrame
 	moveq	#$0,d0
 	move.l	d0,-(a7)
 	pea.l	-$3596(a5)

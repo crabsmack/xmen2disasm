@@ -39,7 +39,7 @@ loc_19693C:
 	addq.w	#$8,a7
 loc_196950:
 	move.l	a4,-(a7)
-	jsr	$4DDA(a5)	; -> sub_1F4BA2
+	jsr	$4DDA(a5)	; -> Obj_UpdateBox
 	movea.l	$BC(a4),a0
 	move.w	$E(a0),d0
 	ext.l	d0

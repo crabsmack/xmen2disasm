@@ -74,7 +74,7 @@ loc_141BC4:
 	beq.s	loc_141CB2
 	pea.l	$40CA(a5)
 	move.l	a3,-(a7)
-	jsr	$4F2A(a5)	; -> sub_1F7D5E
+	jsr	$4F2A(a5)	; -> Seg_ForEachOfObj
 	moveq	#$0,d0
 	move.b	$7A(a3),d0
 	ext.l	d0

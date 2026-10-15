@@ -15,7 +15,7 @@ sub_0E76DA:
 	ext.l	d0
 	move.l	d0,-(a7)
 	move.l	a4,-(a7)
-	jsr	$507A(a5)	; -> sub_1FB142
+	jsr	$507A(a5)	; -> Spr_SetFrame
 	moveq	#$0,d0
 	move.l	d0,-(a7)
 	move.l	a4,-(a7)
@@ -35,7 +35,7 @@ loc_0E772A:
 	ext.l	d0
 	move.l	d0,-(a7)
 	move.l	a4,-(a7)
-	jsr	$507A(a5)	; -> sub_1FB142
+	jsr	$507A(a5)	; -> Spr_SetFrame
 	moveq	#$0,d0
 	move.l	d0,-(a7)
 	move.l	a4,-(a7)
@@ -61,7 +61,7 @@ loc_0E7774:
 	ext.l	d0
 	move.l	d0,-(a7)
 	move.l	a4,-(a7)
-	jsr	$507A(a5)	; -> sub_1FB142
+	jsr	$507A(a5)	; -> Spr_SetFrame
 	moveq	#$0,d0
 	move.l	d0,-(a7)
 	move.l	a4,-(a7)
@@ -87,7 +87,7 @@ loc_0E77BE:
 	ext.l	d0
 	move.l	d0,-(a7)
 	move.l	a4,-(a7)
-	jsr	$507A(a5)	; -> sub_1FB142
+	jsr	$507A(a5)	; -> Spr_SetFrame
 	moveq	#$0,d0
 	move.l	d0,-(a7)
 	move.l	a4,-(a7)
@@ -113,7 +113,7 @@ loc_0E7808:
 	ext.l	d0
 	move.l	d0,-(a7)
 	move.l	a4,-(a7)
-	jsr	$507A(a5)	; -> sub_1FB142
+	jsr	$507A(a5)	; -> Spr_SetFrame
 	moveq	#$0,d0
 	move.l	d0,-(a7)
 	move.l	a4,-(a7)

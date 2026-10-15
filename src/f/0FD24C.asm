@@ -255,7 +255,7 @@ loc_0FD4C6:
 	cmp.l	d7,d0
 	bgt.s	loc_0FD492
 	move.l	a3,-(a7)
-	jsr	$4F22(a5)	; -> sub_1F7CFE
+	jsr	$4F22(a5)	; -> Seg_Free
 	addq.w	#$4,a7
 loc_0FD4D8:
 	moveq	#$35,d0

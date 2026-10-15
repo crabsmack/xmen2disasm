@@ -4,6 +4,6 @@
 sub_15E7EA:
 	link.w	a6,#$0
 	move.l	$C(a6),-(a7)
-	jsr	$4F22(a5)	; -> sub_1F7CFE
+	jsr	$4F22(a5)	; -> Seg_Free
 	unlk	a6
 	rts

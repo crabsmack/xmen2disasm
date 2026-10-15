@@ -48,7 +48,7 @@ loc_1A6C88:
 	movea.l	$56(a0),a1
 	jsr	(a1)
 	move.l	a4,-(a7)
-	jsr	$4DDA(a5)	; -> sub_1F4BA2
+	jsr	$4DDA(a5)	; -> Obj_UpdateBox
 	ext.l	d5
 	move.w	$4C(a4),d0
 	ext.l	d0
@@ -107,7 +107,7 @@ loc_1A6D06:
 	movea.l	$56(a0),a1
 	jsr	(a1)
 	move.l	a4,-(a7)
-	jsr	$4DDA(a5)	; -> sub_1F4BA2
+	jsr	$4DDA(a5)	; -> Obj_UpdateBox
 	ext.l	d6
 	ext.l	d5
 	move.l	d6,d0

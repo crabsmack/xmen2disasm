@@ -127,7 +127,7 @@ loc_1A66BC:
 	jsr	(a1)
 	andi.b	#$EF,$2E(a4)
 	move.l	a4,-(a7)
-	jsr	$4DDA(a5)	; -> sub_1F4BA2
+	jsr	$4DDA(a5)	; -> Obj_UpdateBox
 	ext.l	d7
 	ext.l	d6
 	move.l	d7,d0
@@ -148,7 +148,7 @@ loc_1A677E:
 	jsr	(a1)
 	ori.b	#$10,$2E(a4)
 	move.l	a4,-(a7)
-	jsr	$4DDA(a5)	; -> sub_1F4BA2
+	jsr	$4DDA(a5)	; -> Obj_UpdateBox
 	ext.l	d7
 	ext.l	d6
 	move.l	d7,d0

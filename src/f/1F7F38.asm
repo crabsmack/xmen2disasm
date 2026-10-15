@@ -155,7 +155,7 @@ loc_1F80AC:
 	move.l	$8(a6),-(a7)
 	jsr	sub_1F6D76(pc)
 	move.l	$8(a6),-(a7)
-	jsr	$4DD2(a5)	; -> sub_1F4A40
+	jsr	$4DD2(a5)	; -> Obj_UpdateBoxes
 	addq.w	#$8,a7
 loc_1F80BE:
 	move.l	a4,d0

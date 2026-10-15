@@ -10,7 +10,7 @@ sub_086032:
 	tst.l	$44(a4)
 	beq.s	loc_08605A
 	move.l	$44(a4),-(a7)
-	jsr	$4F22(a5)	; -> sub_1F7CFE
+	jsr	$4F22(a5)	; -> Seg_Free
 	moveq	#$0,d0
 	move.l	d0,$44(a4)
 	addq.w	#$4,a7

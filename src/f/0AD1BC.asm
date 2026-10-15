@@ -75,7 +75,7 @@ loc_0AD270:
 	cmp.l	d7,d0
 	bgt.s	loc_0AD23C
 	move.l	a4,-(a7)
-	jsr	$4F22(a5)	; -> sub_1F7CFE
+	jsr	$4F22(a5)	; -> Seg_Free
 	andi.w	#$7FFF,d5
 	andi.w	#$C7FF,d5
 	addq.w	#$4,a7

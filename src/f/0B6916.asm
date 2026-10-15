@@ -54,7 +54,7 @@ BrainChild_Init:
 	move.l	a4,-(a7)
 	jsr	$4E42(a5)	; -> sub_1F626A
 	move.l	a4,-(a7)
-	jsr	$4DD2(a5)	; -> sub_1F4A40
+	jsr	$4DD2(a5)	; -> Obj_UpdateBoxes
 	moveq	#$45,d0
 	move.l	d0,-(a7)
 	jsr	$5222(a5)	; -> Snd_Stop
