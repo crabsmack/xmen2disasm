@@ -9,7 +9,7 @@ BroodBoss_StateHurt:
 	link.w	a6,#$0
 	movem.l	d3/d7/a3-a4,-(a7)
 	lea.l	-$13A8(a5),a3
-	lea.l	-$3940(a5),a4
+	lea.l	g_PalBase+$40(a5),a4
 	movea.l	$8(a6),a0
 	ori.w	#$2,$6(a0)
 	moveq	#$37,d0
@@ -39,7 +39,7 @@ BroodBoss_StateHurt:
 	moveq	#$0,d0
 	move.l	d0,$92(a0)
 loc_087A72:
-	cmpi.w	#$424,-$393C(a5)
+	cmpi.w	#$424,g_PalBase+$44(a5)
 	beq.s	loc_087ACA
 	clr.b	d7
 	moveq	#$10,d3
@@ -49,7 +49,7 @@ loc_087A7E:
 	addq.b	#$1,d7
 	cmp.b	d7,d3
 	bgt.s	loc_087A7E
-	lea.l	-$393C(a5),a4
+	lea.l	g_PalBase+$44(a5),a4
 	move.w	#$424,(a4)+
 	move.w	#$646,(a4)+
 	move.w	#$848,(a4)+

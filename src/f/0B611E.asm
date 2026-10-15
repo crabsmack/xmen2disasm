@@ -94,7 +94,7 @@ loc_0B6204:
 loc_0B6224:
 	move.l	a4,d0
 	beq.s	loc_0B6242
-	lea.l	-$3910(a5),a3
+	lea.l	g_PalBase+$70(a5),a3
 	move.w	(a4)+,(a3)+
 	move.w	(a4)+,(a3)+
 	move.w	(a4)+,(a3)+

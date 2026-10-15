@@ -23,7 +23,7 @@ Cerebro_PlayIntro:
 	jsr	$5032(a5)	; -> Mem_StackAlloc
 	move.l	d0,-$C9E(a5)
 	clr.w	d7
-	lea.l	-$3960(a5),a4
+	lea.l	g_PalBase+$20(a5),a4
 	lea.l	$10(a7),a7
 	bra.s	loc_065ECA
 loc_065EC2:
@@ -81,7 +81,7 @@ loc_065F1E:
 	jsr	$4142(a5)	; -> sub_15FA7A
 	jsr	Cerebro_ClearScreen(pc)
 	clr.w	d7
-	lea.l	-$3960(a5),a4
+	lea.l	g_PalBase+$20(a5),a4
 	lea.l	$1C(a7),a7
 	bra.s	loc_065F5C
 loc_065F54:
@@ -163,12 +163,12 @@ loc_06600E:
 	ext.l	d7
 	move.l	d7,d0
 	add.l	d0,d0
-	move.w	(a4,d0.l),-$3924(a5)
+	move.w	(a4,d0.l),g_PalBase+$5C(a5)
 	ext.l	d7
 	move.l	d7,d0
 	addq.l	#$8,d0
 	add.l	d0,d0
-	move.w	(a4,d0.l),-$3926(a5)
+	move.w	(a4,d0.l),g_PalBase+$5A(a5)
 	move.b	#$1,g_PalBaseDirty(a5)
 	subq.w	#$1,d6
 	jsr	$5112(a5)	; -> VDP_WaitVBlank
@@ -179,8 +179,8 @@ loc_066034:
 	move.l	$2(a0),-$1F0(a6)
 	jsr	Cerebro_ClearScreen(pc)
 	jsr	Cerebro_ClearTextWindow(pc)
-	move.w	#$CC,-$3902(a5)
-	move.w	#$AA,-$3904(a5)
+	move.w	#$CC,g_PalBase+$7E(a5)
+	move.w	#$AA,g_PalBase+$7C(a5)
 	move.b	#$1,g_PalBaseDirty(a5)
 	move.w	-$3C56(a5),-$3B04(a5)
 	move.w	-$3C58(a5),d0
@@ -254,7 +254,7 @@ loc_06612E:
 	jsr	$521A(a5)	; -> Snd_Play
 	jsr	Cerebro_ClearScreen(pc)
 	clr.w	d7
-	lea.l	-$3960(a5),a4
+	lea.l	g_PalBase+$20(a5),a4
 	addq.w	#$8,a7
 	bra.s	loc_066154
 loc_06614C:
@@ -313,7 +313,7 @@ loc_0661AC:
 	addi.w	#$AB,g_VramTileCursor(a5)
 	lea.l	$F72(a5),a0
 	movea.l	$2(a0),a4
-	lea.l	-$3960(a5),a3
+	lea.l	g_PalBase+$20(a5),a3
 	moveq	#$0,d5
 	lea.l	$14(a7),a7
 loc_0661FC:
@@ -323,15 +323,15 @@ loc_0661FC:
 	moveq	#$10,d0
 	cmp.l	d5,d0
 	bgt.s	loc_0661FC
-	move.w	#$A0,-$3902(a5)
-	move.w	#$80,-$3904(a5)
-	move.w	#$660,-$3906(a5)
-	move.w	#$862,-$3908(a5)
-	move.w	#$A0,-$390A(a5)
-	move.w	#$80,-$390C(a5)
-	move.w	#$A,-$390E(a5)
-	move.w	#$8,-$3910(a5)
-	clr.w	-$391E(a5)
+	move.w	#$A0,g_PalBase+$7E(a5)
+	move.w	#$80,g_PalBase+$7C(a5)
+	move.w	#$660,g_PalBase+$7A(a5)
+	move.w	#$862,g_PalBase+$78(a5)
+	move.w	#$A0,g_PalBase+$76(a5)
+	move.w	#$80,g_PalBase+$74(a5)
+	move.w	#$A,g_PalBase+$72(a5)
+	move.w	#$8,g_PalBase+$70(a5)
+	clr.w	g_PalBase+$62(a5)
 	move.b	#$1,g_PalBaseDirty(a5)
 	move.l	-$C9A(a5),-(a7)
 	moveq	#$0,d0
@@ -622,7 +622,7 @@ loc_0664CA:
 	move.l	d0,-$1CE(a6)
 	lea.l	$F62(a5),a0
 	movea.l	$2(a0),a3
-	lea.l	-$3940(a5),a4
+	lea.l	g_PalBase+$40(a5),a4
 	moveq	#$0,d4
 	lea.l	$14(a7),a7
 loc_0665D8:
@@ -836,8 +836,8 @@ loc_0667A0:
 loc_066870:
 	tst.w	d6
 	bne.w	loc_0667A0
-	move.w	#$CC,-$3902(a5)
-	move.w	#$AA,-$3904(a5)
+	move.w	#$CC,g_PalBase+$7E(a5)
+	move.w	#$AA,g_PalBase+$7C(a5)
 	move.b	#$1,g_PalBaseDirty(a5)
 	move.w	-$3C56(a5),d0
 	addq.w	#$1,d0
@@ -868,7 +868,7 @@ loc_0668C8:
 	jsr	$5112(a5)	; -> VDP_WaitVBlank
 loc_0668D0:
 	moveq	#$40,d0
-	cmp.w	-$390C(a5),d0
+	cmp.w	g_PalBase+$74(a5),d0
 	bne.s	loc_0668C8
 	jsr	$504A(a5)	; -> Spr_BeginFrame
 	lea.l	g_SpriteTable(a5),a0

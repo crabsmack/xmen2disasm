@@ -4,7 +4,7 @@
 ; Evidence: writes g_PalBase+$1E (-$3962) and g_PalBaseDirty; reached from the switch cases and the default path
 ; ---------------------------------------------------------------------------
 CloneA2_FlickerUpdate_SetColor15:
-	move.w	d7,-$3962(a5)
+	move.w	d7,g_PalBase+$1E(a5)
 	move.b	#$1,g_PalBaseDirty(a5)
 loc_081CB6:
 	subq.w	#$1,-$3B34(a5)

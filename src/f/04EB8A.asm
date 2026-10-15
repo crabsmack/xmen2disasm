@@ -37,14 +37,14 @@ loc_04EBDA:
 	tst.b	d6
 	beq.s	loc_04EBEA
 	moveq	#$0,d0
-	move.b	-$171E(a5),d0
+	move.b	g_Player1+$3A(a5),d0
 	cmpi.w	#$FF,d0
 	beq.s	loc_04EC48
 loc_04EBEA:
 	tst.b	d7
 	beq.s	loc_04EBFA
 	moveq	#$0,d0
-	move.b	-$180E(a5),d0
+	move.b	g_Player2+$3A(a5),d0
 	cmpi.w	#$FF,d0
 	beq.s	loc_04EC48
 loc_04EBFA:

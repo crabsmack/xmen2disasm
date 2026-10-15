@@ -5,7 +5,7 @@
 ; ---------------------------------------------------------------------------
 CloneA2_BgPalTimer_Copy:
 	movea.l	a4,a3
-	lea.l	-$3940(a5),a4
+	lea.l	g_PalBase+$40(a5),a4
 	moveq	#$0,d7
 	moveq	#$10,d3
 loc_081FE4:

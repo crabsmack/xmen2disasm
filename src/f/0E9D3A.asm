@@ -22,7 +22,7 @@ Hologram_OpenExit:
 	ori.b	#$40,(a0)
 	lea.l	$263A(a5),a0
 	move.l	$2(a0),g_CamShake(a5)
-	clr.w	-$397E(a5)
-	clr.l	-$393E(a5)
+	clr.w	g_PalBase+$2(a5)
+	clr.l	g_PalBase+$42(a5)
 	unlk	a6
 	rts

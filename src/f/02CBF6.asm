@@ -29,7 +29,7 @@ loc_02CC12:
 loc_02CC34:
 	move.l	d7,d0
 	add.w	d0,d0
-	lea.l	-$3940(a5),a0
+	lea.l	g_PalBase+$40(a5),a0
 	movea.l	-$3B18(a5),a1
 	move.l	d7,d1
 	add.l	d1,d1

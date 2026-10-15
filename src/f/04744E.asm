@@ -24,13 +24,13 @@ loc_047476:
 	move.w	#$4,-$3B34(a5)
 	tst.w	-$3B3C(a5)
 	beq.s	loc_0474A0
-	move.w	#$20A,-$390C(a5)
-	move.w	#$24C,-$390A(a5)
+	move.w	#$20A,g_PalBase+$74(a5)
+	move.w	#$24C,g_PalBase+$76(a5)
 	clr.w	-$3B3C(a5)
 	bra.s	loc_0474B2
 loc_0474A0:
-	move.w	#$EEE,-$390C(a5)
-	move.w	#$EEE,-$390A(a5)
+	move.w	#$EEE,g_PalBase+$74(a5)
+	move.w	#$EEE,g_PalBase+$76(a5)
 	move.w	#$1,-$3B3C(a5)
 loc_0474B2:
 	tst.w	-$3B0E(a5)
@@ -51,7 +51,7 @@ loc_0474DA:
 	ext.l	d0
 	add.l	d0,d0
 	adda.l	d0,a3
-	move.w	(a3),-$396C(a5)
+	move.w	(a3),g_PalBase+$14(a5)
 loc_0474F0:
 	tst.w	-$3B32(a5)
 	bgt.w	loc_0475AA

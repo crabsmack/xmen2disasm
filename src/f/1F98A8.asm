@@ -95,7 +95,7 @@ loc_1F999A:
 	movea.l	d0,a0
 	move.l	d7,d0
 	add.w	d0,d0
-	lea.l	-$3940(a5),a1
+	lea.l	g_PalBase+$40(a5),a1
 	move.w	(a0),(a1,d0.w)
 	move.l	d7,d0
 	addq.l	#$1,d7

@@ -75,7 +75,7 @@ loc_006C82:
 	movea.l	g_Player1(a5),a0
 	movea.l	$3E(a0),a1
 	jsr	(a1)
-	clr.b	-$16BB(a5)
+	clr.b	g_Player1+$9D(a5)
 	lea.l	$14(a7),a7
 	bra.s	loc_006CA6
 loc_006C9E:
@@ -112,7 +112,7 @@ loc_006CE4:
 	movea.l	g_Player2(a5),a0
 	movea.l	$3E(a0),a1
 	jsr	(a1)
-	move.b	#$1,-$17AB(a5)
+	move.b	#$1,g_Player2+$9D(a5)
 	lea.l	$14(a7),a7
 	bra.s	loc_006D0A
 loc_006D02:

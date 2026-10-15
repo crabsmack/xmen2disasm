@@ -38,7 +38,7 @@ CloneA2_LoadLevel:
 	move.w	#$200,g_PalBase(a5)
 	lea.l	$112A(a5),a0
 	movea.l	$2(a0),a4
-	lea.l	-$3940(a5),a3
+	lea.l	g_PalBase+$40(a5),a3
 	moveq	#$0,d7
 	moveq	#$10,d3
 	lea.l	$40(a7),a7

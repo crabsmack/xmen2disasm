@@ -41,10 +41,10 @@ SiberiaB1_InitWind:
 	sub.w	#$E0,d0
 	move.w	d0,-$3A9A(a5)
 	move.w	d0,g_CamMaxY(a5)
-	move.w	#$A8A,-$392E(a5)
-	move.w	#$EEE,-$392C(a5)
-	move.w	#$CCC,-$392A(a5)
-	move.w	#$868,-$3928(a5)
+	move.w	#$A8A,g_PalBase+$52(a5)
+	move.w	#$EEE,g_PalBase+$54(a5)
+	move.w	#$CCC,g_PalBase+$56(a5)
+	move.w	#$868,g_PalBase+$58(a5)
 	move.b	#$1,g_PalBaseDirty(a5)
 	movem.l	-$8(a6),d7/a4
 	unlk	a6

@@ -14,7 +14,7 @@ BaniMazaA2_AnimatePalettes_copy:
 	moveq	#$C,d0
 	move.l	d0,-(a7)
 	move.l	a4,-(a7)
-	pea.l	-$392C(a5)
+	pea.l	g_PalBase+$54(a5)
 	jsr	$4DAA(a5)	; -> Mem_Copy
 	lea.l	$C(a7),a7
 loc_0475AA:

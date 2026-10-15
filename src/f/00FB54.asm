@@ -49,7 +49,7 @@ loc_00FBCE:
 	addq.w	#$1,d7
 	cmp.w	d7,d3
 	bgt.s	loc_00FBCE
-	lea.l	-$3940(a5),a4
+	lea.l	g_PalBase+$40(a5),a4
 	clr.w	d7
 	moveq	#$10,d3
 loc_00FBE0:

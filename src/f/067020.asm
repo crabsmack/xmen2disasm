@@ -41,7 +41,7 @@ loc_067070:
 	jsr	$50DA(a5)	; -> sub_1FD72C
 	lea.l	$3E72(a5),a0
 	move.l	$2(a0),-$40(a6)
-	lea.l	-$3940(a5),a0
+	lea.l	g_PalBase+$40(a5),a0
 	move.l	a0,-$3C(a6)
 	moveq	#$0,d6
 	moveq	#$10,d3

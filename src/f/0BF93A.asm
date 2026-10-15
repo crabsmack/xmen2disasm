@@ -6,31 +6,31 @@
 SavageJungle_PalPhaseUpdate_Case1:
 	movea.l	-$3C1A(a5),a0
 	move.w	$8(a0),-$3C1E(a5)
-	move.w	#$200,-$393C(a5)
-	move.w	#$400,-$393A(a5)
-	move.w	#$602,-$3938(a5)
-	move.w	#$804,-$3936(a5)
+	move.w	#$200,g_PalBase+$44(a5)
+	move.w	#$400,g_PalBase+$46(a5)
+	move.w	#$602,g_PalBase+$48(a5)
+	move.w	#$804,g_PalBase+$4A(a5)
 	bra.s	SavageJungle_PalPhaseUpdate_Done
 loc_0BF95E:
 	movea.l	-$3C1A(a5),a0
 	move.w	$A(a0),-$3C1E(a5)
-	move.w	#$200,-$393C(a5)
-	move.w	#$402,-$393A(a5)
-	move.w	#$604,-$3938(a5)
-	move.w	#$806,-$3936(a5)
+	move.w	#$200,g_PalBase+$44(a5)
+	move.w	#$402,g_PalBase+$46(a5)
+	move.w	#$604,g_PalBase+$48(a5)
+	move.w	#$806,g_PalBase+$4A(a5)
 	bra.s	SavageJungle_PalPhaseUpdate_Done
 loc_0BF982:
 	movea.l	-$3C1A(a5),a0
 	move.w	$C(a0),-$3C1E(a5)
-	move.w	#$402,-$393C(a5)
-	move.w	#$404,-$393A(a5)
-	move.w	#$606,-$3938(a5)
-	move.w	#$808,-$3936(a5)
+	move.w	#$402,g_PalBase+$44(a5)
+	move.w	#$404,g_PalBase+$46(a5)
+	move.w	#$606,g_PalBase+$48(a5)
+	move.w	#$808,g_PalBase+$4A(a5)
 	bra.s	SavageJungle_PalPhaseUpdate_Done
 loc_0BF9A6:
 	movea.l	-$3C1A(a5),a0
 	move.w	$E(a0),-$3C1E(a5)
-	move.w	#$404,-$393C(a5)
-	move.w	#$426,-$393A(a5)
-	move.w	#$608,-$3938(a5)
-	move.w	#$82A,-$3936(a5)
+	move.w	#$404,g_PalBase+$44(a5)
+	move.w	#$426,g_PalBase+$46(a5)
+	move.w	#$608,g_PalBase+$48(a5)
+	move.w	#$82A,g_PalBase+$4A(a5)

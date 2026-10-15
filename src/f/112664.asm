@@ -22,10 +22,10 @@ loc_11268A:
 	subq.w	#$1,-$3B06(a5)
 	tst.w	-$3B06(a5)
 	bge.s	loc_112700
-	move.w	#$2,-$393C(a5)
-	move.w	#$22,-$393A(a5)
-	move.w	#$24,-$3938(a5)
-	clr.w	-$393E(a5)
+	move.w	#$2,g_PalBase+$44(a5)
+	move.w	#$22,g_PalBase+$46(a5)
+	move.w	#$24,g_PalBase+$48(a5)
+	clr.w	g_PalBase+$42(a5)
 	tst.w	$68(a4)
 	bgt.s	loc_1126C6
 	clr.w	$6C(a4)
@@ -52,18 +52,18 @@ loc_1126C6:
 	and.w	$4(a4),d0
 	bra.s	loc_11274C
 loc_112700:
-	cmpi.w	#$462,-$393C(a5)
+	cmpi.w	#$462,g_PalBase+$44(a5)
 	bne.s	loc_112720
-	move.w	#$2,-$393C(a5)
-	move.w	#$22,-$393A(a5)
-	move.w	#$24,-$3938(a5)
-	clr.w	-$393E(a5)
+	move.w	#$2,g_PalBase+$44(a5)
+	move.w	#$22,g_PalBase+$46(a5)
+	move.w	#$24,g_PalBase+$48(a5)
+	clr.w	g_PalBase+$42(a5)
 	bra.s	loc_112738
 loc_112720:
-	move.w	#$462,-$393C(a5)
-	move.w	#$484,-$393A(a5)
-	move.w	#$886,-$3938(a5)
-	move.w	#$CCC,-$393E(a5)
+	move.w	#$462,g_PalBase+$44(a5)
+	move.w	#$484,g_PalBase+$46(a5)
+	move.w	#$886,g_PalBase+$48(a5)
+	move.w	#$CCC,g_PalBase+$42(a5)
 loc_112738:
 	move.w	#$2,$6C(a4)
 	lea.l	Deathbird_StateHurtFlash(pc),a0

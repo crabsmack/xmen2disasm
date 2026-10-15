@@ -173,7 +173,7 @@ loc_065140:
 	movea.l	-$4(a6),a0
 	move.l	d7,d0
 	add.l	d0,d0
-	move.w	(a0,d0.l),-$3912(a5)
+	move.w	(a0,d0.l),g_PalBase+$6E(a5)
 	move.b	#$1,g_PalBaseDirty(a5)
 	jsr	Cerebro_FrameHook(pc)
 	jsr	$5112(a5)	; -> VDP_WaitVBlank
@@ -282,7 +282,7 @@ loc_06527E:
 	movea.l	-$4(a6),a0
 	move.l	d7,d0
 	add.l	d0,d0
-	move.w	(a0,d0.l),-$3912(a5)
+	move.w	(a0,d0.l),g_PalBase+$6E(a5)
 	move.b	#$1,g_PalBaseDirty(a5)
 	jsr	Cerebro_FrameHook(pc)
 	jsr	$5112(a5)	; -> VDP_WaitVBlank

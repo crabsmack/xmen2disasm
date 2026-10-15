@@ -66,7 +66,7 @@ ChildShip_Init:
 	move.l	$2(a0),d0
 	addq.l	#$4,d0
 	move.l	d0,-$4(a6)
-	lea.l	-$3920(a5),a3
+	lea.l	g_PalBase+$60(a5),a3
 	moveq	#$0,d7
 	moveq	#$10,d3
 	lea.l	$24(a7),a7

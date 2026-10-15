@@ -30,7 +30,7 @@ loc_0882B8:
 	cmp.l	$2(a0),d0
 	bne.s	loc_08830C
 	lea.l	$467A(a5),a0
-	move.l	-$1714(a5),d0
+	move.l	g_Player1+$44(a5),d0
 	cmp.l	$2(a0),d0
 	bne.s	loc_08830C
 loc_0882D4:
@@ -44,7 +44,7 @@ loc_0882D4:
 	move.w	-$3B02(a5),d0
 	ext.l	d0
 	lsl.l	#$8,d0
-	sub.l	d0,-$16E6(a5)
+	sub.l	d0,g_Player1+$72(a5)
 	move.w	-$3B02(a5),d0
 	ext.l	d0
 	lsl.l	#$8,d0
@@ -70,7 +70,7 @@ loc_08832E:
 	cmp.l	$2(a0),d0
 	bne.s	loc_088382
 	lea.l	$467A(a5),a0
-	move.l	-$1804(a5),d0
+	move.l	g_Player2+$44(a5),d0
 	cmp.l	$2(a0),d0
 	bne.s	loc_088382
 loc_08834A:
@@ -84,7 +84,7 @@ loc_08834A:
 	move.w	-$3B02(a5),d0
 	ext.l	d0
 	lsl.l	#$8,d0
-	sub.l	d0,-$17D6(a5)
+	sub.l	d0,g_Player2+$72(a5)
 	move.w	-$3B02(a5),d0
 	ext.l	d0
 	lsl.l	#$8,d0

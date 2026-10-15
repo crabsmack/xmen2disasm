@@ -22,7 +22,7 @@ Water_DrawHook:
 	lsl.l	#$8,d0
 	cmp.l	g_Player1+$C(a5),d0
 	bge.s	loc_0C1008
-	tst.w	-$1740(a5)
+	tst.w	g_Player1+$18(a5)
 	bgt.s	loc_0C101C
 loc_0C1008:
 	move.w	-$3C10(a5),d0
@@ -30,7 +30,7 @@ loc_0C1008:
 	lsl.l	#$8,d0
 	cmp.l	g_Player1+$C(a5),d0
 	bge.s	loc_0C1032
-	tst.w	-$1740(a5)
+	tst.w	g_Player1+$18(a5)
 	bge.s	loc_0C1032
 loc_0C101C:
 	move.l	g_Player1+$8(a5),d0
@@ -54,7 +54,7 @@ loc_0C1032:
 	lsl.l	#$8,d0
 	cmp.l	g_Player2+$C(a5),d0
 	bge.s	loc_0C1064
-	tst.w	-$1830(a5)
+	tst.w	g_Player2+$18(a5)
 	bgt.s	loc_0C1078
 loc_0C1064:
 	move.w	-$3C10(a5),d0
@@ -62,7 +62,7 @@ loc_0C1064:
 	lsl.l	#$8,d0
 	cmp.l	g_Player2+$C(a5),d0
 	bge.s	loc_0C108E
-	tst.w	-$1830(a5)
+	tst.w	g_Player2+$18(a5)
 	bge.s	loc_0C108E
 loc_0C1078:
 	move.l	g_Player2+$8(a5),d0

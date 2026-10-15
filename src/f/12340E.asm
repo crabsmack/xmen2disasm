@@ -21,7 +21,7 @@ BigBio_TakeDamage:
 	cmp.w	$68(a4),d0
 	bge.s	loc_12346E
 	move.l	-$4(a6),-$8(a6)
-	lea.l	-$3920(a5),a3
+	lea.l	g_PalBase+$60(a5),a3
 	moveq	#$0,d7
 	moveq	#$10,d3
 loc_123454:
@@ -41,7 +41,7 @@ loc_12346E:
 	movea.l	-$4(a6),a0
 	lea.l	$20(a0),a0
 	move.l	a0,-$8(a6)
-	lea.l	-$3920(a5),a3
+	lea.l	g_PalBase+$60(a5),a3
 	moveq	#$0,d7
 	moveq	#$10,d3
 loc_12348A:

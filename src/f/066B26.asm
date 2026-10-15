@@ -130,7 +130,7 @@ loc_066CBE:
 	beq.s	loc_066D24
 loc_066CD8:
 	clr.w	d7
-	lea.l	-$3960(a5),a4
+	lea.l	g_PalBase+$20(a5),a4
 	moveq	#$30,d3
 	bra.s	loc_066CEA
 loc_066CE2:
@@ -148,7 +148,7 @@ loc_066CEA:
 	jsr	Cerebro_ClearTextWindow(pc)
 	lea.l	$3E72(a5),a0
 	movea.l	$2(a0),a4
-	lea.l	-$3960(a5),a3
+	lea.l	g_PalBase+$20(a5),a3
 	moveq	#$0,d7
 	moveq	#$10,d3
 loc_066D16:
@@ -177,15 +177,15 @@ loc_066D48:
 loc_066D4C:
 	tst.b	g_PalFadeActive(a5)
 	bne.s	loc_066D48
-	move.w	#$A0,-$3902(a5)
-	move.w	#$80,-$3904(a5)
-	move.w	#$660,-$3906(a5)
-	move.w	#$862,-$3908(a5)
-	move.w	#$A0,-$390A(a5)
-	move.w	#$80,-$390C(a5)
-	move.w	#$A,-$390E(a5)
-	move.w	#$8,-$3910(a5)
-	clr.w	-$391E(a5)
+	move.w	#$A0,g_PalBase+$7E(a5)
+	move.w	#$80,g_PalBase+$7C(a5)
+	move.w	#$660,g_PalBase+$7A(a5)
+	move.w	#$862,g_PalBase+$78(a5)
+	move.w	#$A0,g_PalBase+$76(a5)
+	move.w	#$80,g_PalBase+$74(a5)
+	move.w	#$A,g_PalBase+$72(a5)
+	move.w	#$8,g_PalBase+$70(a5)
+	clr.w	g_PalBase+$62(a5)
 	move.b	#$1,g_PalBaseDirty(a5)
 	jsr	Cerebro_RunTextScript(pc)
 loc_066D90:
@@ -206,15 +206,15 @@ loc_066DB4:
 	tst.b	g_PalFadeActive(a5)
 	bne.s	loc_066DB0
 	jsr	Cerebro_ClearTextWindow(pc)
-	move.w	#$A0,-$3902(a5)
-	move.w	#$80,-$3904(a5)
-	move.w	#$A,-$3906(a5)
-	move.w	#$8,-$3908(a5)
-	move.w	#$A0,-$390A(a5)
-	move.w	#$80,-$390C(a5)
-	move.w	#$A,-$390E(a5)
-	move.w	#$8,-$3910(a5)
-	clr.w	-$391E(a5)
+	move.w	#$A0,g_PalBase+$7E(a5)
+	move.w	#$80,g_PalBase+$7C(a5)
+	move.w	#$A,g_PalBase+$7A(a5)
+	move.w	#$8,g_PalBase+$78(a5)
+	move.w	#$A0,g_PalBase+$76(a5)
+	move.w	#$80,g_PalBase+$74(a5)
+	move.w	#$A,g_PalBase+$72(a5)
+	move.w	#$8,g_PalBase+$70(a5)
+	clr.w	g_PalBase+$62(a5)
 	move.b	#$1,g_PalBaseDirty(a5)
 	moveq	#-$1,d7
 	tst.w	g_P1Health(a5)

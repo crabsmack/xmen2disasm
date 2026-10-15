@@ -25,7 +25,7 @@ AvalonA3_PsiFlashStep:
 loc_02C944:
 	move.l	d7,d0
 	add.w	d0,d0
-	lea.l	-$397E(a5),a0
+	lea.l	g_PalBase+$2(a5),a0
 	move.l	d7,d1
 	add.w	d1,d1
 	lea.l	g_PalBase(a5),a1
@@ -34,7 +34,7 @@ loc_02C944:
 	addq.l	#$1,d7
 	cmp.l	d7,d3
 	bge.s	loc_02C944
-	move.w	d5,-$3966(a5)
+	move.w	d5,g_PalBase+$1A(a5)
 	bra.s	loc_02C9A0
 loc_02C968:
 	moveq	#$0,d7
@@ -52,7 +52,7 @@ loc_02C96C:
 	add.l	d0,d0
 	move.l	d7,d1
 	add.w	d1,d1
-	lea.l	-$3940(a5),a1
+	lea.l	g_PalBase+$40(a5),a1
 	move.w	(a0,d0.l),(a1,d1.w)
 	move.l	d7,d0
 	addq.l	#$1,d7

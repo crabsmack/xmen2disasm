@@ -146,7 +146,7 @@ loc_122FE0:
 	clr.w	$60(a0)
 	lea.l	$34A2(a5),a0
 	move.l	$2(a0),-$4(a6)
-	lea.l	-$3920(a5),a3
+	lea.l	g_PalBase+$60(a5),a3
 	moveq	#$0,d7
 	moveq	#$10,d3
 	lea.l	$54(a7),a7

@@ -21,12 +21,12 @@ loc_081C0A:
 	subq.b	#$1,d0
 	move.b	d0,d7
 	beq.s	loc_081C2A
-	move.w	#$468,-$3966(a5)
-	move.w	#$8EE,-$3964(a5)
+	move.w	#$468,g_PalBase+$1A(a5)
+	move.w	#$8EE,g_PalBase+$1C(a5)
 	bra.s	loc_081C36
 loc_081C2A:
-	move.w	#$68,-$3966(a5)
-	move.w	#$8CC,-$3964(a5)
+	move.w	#$68,g_PalBase+$1A(a5)
+	move.w	#$8CC,g_PalBase+$1C(a5)
 loc_081C36:
 	move.b	#$1,g_PalBaseDirty(a5)
 loc_081C3C:

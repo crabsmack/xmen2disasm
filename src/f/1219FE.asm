@@ -19,7 +19,7 @@ BigBio_Draw:
 	movea.l	-$4(a6),a0
 	lea.l	$40(a0),a0
 	move.l	a0,-$C(a6)
-	lea.l	-$3920(a5),a4
+	lea.l	g_PalBase+$60(a5),a4
 	moveq	#$0,d6
 	moveq	#$10,d3
 loc_121A38:
@@ -36,7 +36,7 @@ loc_121A52:
 	movea.l	-$4(a6),a0
 	lea.l	$60(a0),a0
 	move.l	a0,-$C(a6)
-	lea.l	-$3920(a5),a4
+	lea.l	g_PalBase+$60(a5),a4
 	moveq	#$0,d6
 	moveq	#$10,d3
 loc_121A66:

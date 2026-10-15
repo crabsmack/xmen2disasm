@@ -10,7 +10,7 @@ Scene_PostLoadVram:
 	jsr	Scene_AllocCommonVram(pc)
 	lea.l	$3E72(a5),a0
 	movea.l	$2(a0),a4
-	lea.l	-$3960(a5),a3
+	lea.l	g_PalBase+$20(a5),a3
 	moveq	#$0,d7
 	moveq	#$10,d3
 loc_006B80:
@@ -21,7 +21,7 @@ loc_006B80:
 	bgt.s	loc_006B80
 	lea.l	$3E7A(a5),a0
 	movea.l	$2(a0),a3
-	lea.l	-$3920(a5),a4
+	lea.l	g_PalBase+$60(a5),a4
 	moveq	#$0,d7
 	moveq	#$10,d3
 loc_006B9A:

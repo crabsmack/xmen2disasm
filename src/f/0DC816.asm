@@ -58,16 +58,16 @@ loc_0DC894:
 	move.w	d1,d0
 	cmpi.l	#$8000,d0
 	bne.s	loc_0DC8FC
-	move.w	-$170A(a5),d0
+	move.w	g_Player1+$4E(a5),d0
 	ext.l	d0
 	move.w	g_Player1+$52(a5),d1
 	ext.l	d1
 	add.l	d0,d1
 	move.l	d1,d7
 	asr.l	#$1,d7
-	move.w	-$170C(a5),d0
+	move.w	g_Player1+$4C(a5),d0
 	ext.l	d0
-	move.w	-$1708(a5),d1
+	move.w	g_Player1+$50(a5),d1
 	ext.l	d1
 	add.l	d0,d1
 	move.l	d1,d5
@@ -101,16 +101,16 @@ loc_0DC8FC:
 	move.w	d1,d0
 	cmpi.l	#$8000,d0
 	bne.s	loc_0DC964
-	move.w	-$17FA(a5),d0
+	move.w	g_Player2+$4E(a5),d0
 	ext.l	d0
 	move.w	g_Player2+$52(a5),d1
 	ext.l	d1
 	add.l	d0,d1
 	move.l	d1,d7
 	asr.l	#$1,d7
-	move.w	-$17FC(a5),d0
+	move.w	g_Player2+$4C(a5),d0
 	ext.l	d0
-	move.w	-$17F8(a5),d1
+	move.w	g_Player2+$50(a5),d1
 	ext.l	d1
 	add.l	d0,d1
 	move.l	d1,d5
