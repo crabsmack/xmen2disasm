@@ -19,7 +19,7 @@ ROOT = Path(__file__).resolve().parent.parent
 LABEL = re.compile(r"^([A-Za-z_]\w*):", re.M)
 WORD = re.compile(r"\b([A-Za-z_]\w*)\b")
 AUTO = re.compile(r"^(sub|loc)_[0-9A-F]{6}$")
-GLOBAL = re.compile(r"(-\$[0-9A-F]+|g_\w+)\(a5[,)]")
+GLOBAL = re.compile(r"(-\$[0-9A-F]+|g_\w+(?:\+\$[0-9A-F]+)?)\(a5[,)]")  # incl. struct fields g_Block+$off(a5)
 
 
 def load():
