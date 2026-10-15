@@ -2,7 +2,7 @@
 ; Seg_Create - allocate and initialise a floor segment
 ; In:  8(a6) = byte: type   $C(a6)..$1C(a6) = words: x1, y1, x2, y2, extra
 ; Out: d0 = segment record pointer (hangs if the table is full)
-; Evidence: same free search as Seg_Alloc over -$33D2 records (high-water -$3474), then sub_1F7BB6(record, type, ...); 5 callers
+; Evidence: same free search as Seg_Alloc over -$33D2 records (high-water -$3474), then Seg_Setup(record, type, ...); 5 callers
 ; ---------------------------------------------------------------------------
 Seg_Create:
 	link.w	a6,#$0
@@ -47,7 +47,7 @@ loc_1F7CB0:
 	ext.l	d6
 	move.l	d6,-(a7)
 	move.l	a4,-(a7)
-	jsr	sub_1F7BB6(pc)
+	jsr	Seg_Setup(pc)
 	move.l	a4,d0
 	lea.l	$1C(a7),a7
 	bra.s	loc_1F7CF4

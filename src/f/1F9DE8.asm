@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_1F9DE8	[link-after-rts]
+; Demo_ReadInput - attract-demo playback: when the level frame reaches the next event, read the next pad byte; $FF ends the demo
+; In:  none
+; Out: none
+; Evidence: g_DemoInput stream of (frames, pad) byte pairs relative to $FFC7DE; g_DemoPad = pad; pad -1 -> g_DemoPad = 0 and Scene_EndAfter(2)
 ; ---------------------------------------------------------------------------
-sub_1F9DE8:
+Demo_ReadInput:
 	link.w	a6,#$0
 	movea.l	g_DemoInput(a5),a0
 	moveq	#$0,d0

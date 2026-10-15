@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; loc_1FCE9E	[runtime: executed in tas]
+; Scaler_RowBlocksLast80 - unrolled scaler row loop, last 80 blocks (move.b (a0) / adda (a2)+ / and / or / move.b to (a1) / adda (a3)+)
+; In:  a0 = source, a1 = output, a2/a3 = step tables, d4/d5 = masks
+; Out: falls into Scaler_RowEnd
+; Evidence: runs in the TAS (BIGACOLYTE, Cerebro big sprites); jump target of Scaler_BeginPass for widths up to 160 px
 ; ---------------------------------------------------------------------------
-loc_1FCE9E:
+Scaler_RowBlocksLast80:
 	move.b	(a0),d0
 	adda.w	(a2)+,a0
 	and.b	d4,d0

@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_1FC1CC
+; Scaler_ExpandSource - expand a packed 4bpp source (two pixels per byte) into one byte per pixel via Tbl_PixelPairExpand
+; In:  none (g_ScalerSrcA -> g_ScalerSrcB, size from g_ScalerParams)
+; Out: none
+; Evidence: count = ((params+0 + 1) / 2) * params+2; word per source byte from Tbl_PixelPairExpand; called by Scaler_Start when both sources are given
 ; ---------------------------------------------------------------------------
-sub_1FC1CC:
+Scaler_ExpandSource:
 	move.l	a2,-(a7)
 	move.w	g_ScalerParams(a5),d0
 	addq.w	#$1,d0

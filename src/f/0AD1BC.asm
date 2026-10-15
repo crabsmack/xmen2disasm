@@ -2,7 +2,7 @@
 ; SavageA2_SetBlockTiles - SavageA2: rewrite the tiles of the solid block at a tile (and optionally remove the block, dropping anything standing on it)
 ; In:  8(a6) = column, $A(a6) = row, $C(a6) = word tile, $F(a6) = byte remove, $12(a6) = word edge tile
 ; Out: d0 = 0
-; Evidence: sub_1F8454($14, col, row) finds the block; remove: Obj_Detach on objects whose floor +$76 is it, Seg_Free, tile & $47FF; writes the tile over the block area (edge column gets the edge tile, with Explosion_Spawn debris) and redraws (Map_RedrawBlock); jt 890
+; Evidence: Seg_FindInBlock($14, col, row) finds the block; remove: Obj_Detach on objects whose floor +$76 is it, Seg_Free, tile & $47FF; writes the tile over the block area (edge column gets the edge tile, with Explosion_Spawn debris) and redraws (Map_RedrawBlock); jt 890
 ; Found: jt 890
 ; ---------------------------------------------------------------------------
 SavageA2_SetBlockTiles:
@@ -18,7 +18,7 @@ SavageA2_SetBlockTiles:
 	move.l	d0,-(a7)
 	moveq	#$14,d0
 	move.l	d0,-(a7)
-	jsr	$4F52(a5)	; -> sub_1F8454
+	jsr	$4F52(a5)	; -> Seg_FindInBlock
 	movea.l	d0,a4
 	move.l	a4,d0
 	lea.l	$C(a7),a7

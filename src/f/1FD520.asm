@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_1FD520	[jt 2580]
+; Scaler_EmitSprites - show the scaled picture as a grid of up-to-32x32 hardware sprites from the scaler's VRAM tiles
+; In:  $A(a6) = word x  $E(a6) = word y (sprite coordinates, +128)  $13(a6) = byte palette  $17(a6) = byte priority
+; Out: d0 = sprites written, -1 when the sprite table is full
+; Evidence: first tile g_ScalerVram >> 5; size code from Tbl_GridWidthBits | rows-1, tile advance Tbl_SprSizeTilesGrid; skips pieces outside 96..448 x 96..352; writes g_SpriteTable via g_SprWritePtr; callers BigAcolyte_Draw, Cerebro_BigSpriteDraw, Scaler_BeginPass
 ; ---------------------------------------------------------------------------
-sub_1FD520:
+Scaler_EmitSprites:
 	link.w	a6,#$FFFC
 	movem.l	d2-d7/a2-a3,-(a7)
 	clr.w	-$2(a6)
@@ -42,4 +45,4 @@ loc_1FD570:
 	or.b	Tbl_GridWidthBits(pc,d2.w),d1
 	move.b	Tbl_SprSizeTilesGrid(pc,d1.w),d2
 	lsl.w	#$8,d1
-	bra.s	loc_1FD5A0
+	bra.s	Scaler_EmitSprites_Loop

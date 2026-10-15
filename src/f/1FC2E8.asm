@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_1FC2E8
+; Scaler_InitParams - reset the scaler parameter block to defaults and start a job on g_ScaleTileBuf
+; In:  none
+; Out: g_ScaleParamsPtr = &g_ScalerParams or 0
+; Evidence: zeroes g_ScalerParams words +0..+$12, +$14/+$15 = 1, +$19 = 1, g_ScalerTableKey = $FF, then Scaler_Start(&g_ScalerParams, 0, 10, g_ScaleTileBuf, 10)
 ; ---------------------------------------------------------------------------
-sub_1FC2E8:
+Scaler_InitParams:
 	moveq	#$0,d0
 	move.w	d0,g_ScalerParams(a5)
 	move.w	d0,g_ScalerParams+$2(a5)
@@ -27,7 +30,7 @@ sub_1FC2E8:
 	pea.l	($A).w
 	clr.l	-(a7)
 	pea.l	g_ScalerParams(a5)
-	jsr	sub_1FC5FE(pc)
+	jsr	Scaler_Start(pc)
 	lea.l	$14(a7),a7
 	move.l	d0,g_ScaleParamsPtr(a5)
 	rts

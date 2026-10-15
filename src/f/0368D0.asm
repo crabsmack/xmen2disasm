@@ -26,7 +26,7 @@ MagnetoBoss_SmashSegmentStaggered:
 	move.l	d4,-(a7)
 	moveq	#$14,d0
 	move.l	d0,-(a7)
-	jsr	$4F52(a5)	; -> sub_1F8454
+	jsr	$4F52(a5)	; -> Seg_FindInBlock
 	movea.l	d0,a4
 	move.l	a4,d0
 	lea.l	$C(a7),a7

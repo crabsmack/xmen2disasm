@@ -2,7 +2,7 @@
 ; Game_PlayAttractDemo - common tail of the attract demos: set P1 class, health $900, demo input pointer, run the scene with sound muted, then reset players
 ; In:  d7 = scene id, a3 = demo input data, a4 = character class (from Game_AttractDemo*)
 ; Out: none (returns into Game_SceneLoop)
-; Evidence: sets -$3A1E = demo input pointer (read in (duration, buttons) pairs by sub_1F9DE8) and -$3A1A = 1 (demo active); -$18AC = 1 during the scene (sound commands suppressed); idle run plays demos after the title
+; Evidence: sets -$3A1E = demo input pointer (read in (duration, buttons) pairs by Demo_ReadInput) and -$3A1A = 1 (demo active); -$18AC = 1 during the scene (sound commands suppressed); idle run plays demos after the title
 ; ---------------------------------------------------------------------------
 Game_PlayAttractDemo:
 	addq.w	#$1,g_AttractDemoNum(a5)

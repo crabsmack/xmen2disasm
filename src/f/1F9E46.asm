@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_1F9E46	[link-after-rts]
+; Pal_RunCycleScript - per-frame palette-cycle script: after each delay copy the next run of colours into a palette range of g_PalBase
+; In:  none
+; Out: none
+; Evidence: g_PalCycleScript {byte (not read here), byte frames per step, byte first entry, byte last entry, colour words...}: $FFFF loops, $FFFE stops (script = 0), a word >= $1000 sets an explicit delay & $3FF; marks g_PalBaseDirty unless a fade is active; installed by Level_Load
 ; ---------------------------------------------------------------------------
-sub_1F9E46:
+Pal_RunCycleScript:
 	link.w	a6,#$0
 	movem.l	d3/d7,-(a7)
 	tst.l	g_PalCycleScript(a5)

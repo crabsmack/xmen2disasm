@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_1F8454	[jt 2534]
+; Seg_FindInBlock - find the floor segment of a type that contains the centre of a 32-px map block
+; In:  $A(a6) = word type  $E(a6) = word block column  $12(a6) = word block row
+; Out: d0 = segment or 0
+; Evidence: Seg_FindContaining(col*32+16, row*32+16, type); 9 callers that crack or change map blocks (AvalonA4/BaniMazaB2 floor cracks, MagnetoBoss_SmashSegment, XClone_TileHookOpenWall, ...)
 ; ---------------------------------------------------------------------------
-sub_1F8454:
+Seg_FindInBlock:
 	link.w	a6,#$0
 	movem.l	d6-d7,-(a7)
 	move.w	$E(a6),d0

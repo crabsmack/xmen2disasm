@@ -1,5 +1,5 @@
 ; ---------------------------------------------------------------------------
-; Blast_StateFly - BLAST state: fly until it hits something (sub_1F6420(this, 10)); then stick (if +$9C) or vanish
+; Blast_StateFly - BLAST state: fly until it hits something (Seg_AtOpenEndAhead(this, 10)); then stick (if +$9C) or vanish
 ; In:  8(a6) = this
 ; Out: d0
 ; Evidence: next Blast_StateStick or Blast_StateKill; TAS 2800-7237
@@ -12,7 +12,7 @@ Blast_StateFly:
 	moveq	#$A,d0
 	move.l	d0,-(a7)
 	move.l	a4,-(a7)
-	jsr	$4E6A(a5)	; -> sub_1F6420
+	jsr	$4E6A(a5)	; -> Seg_AtOpenEndAhead
 	tst.b	d0
 	addq.w	#$8,a7
 	beq.s	loc_0DCF50

@@ -83,7 +83,7 @@ loc_15E016:
 	moveq	#$1C,d0
 	move.l	d0,-(a7)
 	move.l	a3,-(a7)
-	jsr	$4F0A(a5)	; -> sub_1F7BB6
+	jsr	$4F0A(a5)	; -> Seg_Setup
 	ori.b	#$1,(a3)
 	move.b	$15(a4),$12(a3)
 	lea.l	$1C(a7),a7

@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; loc_1F7B3C
+; Seg_ComputeSlope_Calc - Seg_ComputeSlope default: divide the endpoint deltas
+; In:  a4 = segment
+; Out: none
+; Evidence: reached for types outside $13-$1C
 ; ---------------------------------------------------------------------------
-loc_1F7B3C:
+Seg_ComputeSlope_Calc:
 	move.w	$C(a4),d0
 	ext.l	d0
 	move.w	$8(a4),d1

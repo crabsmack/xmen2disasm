@@ -1,10 +1,13 @@
 ; ---------------------------------------------------------------------------
-; sub_1FC708
+; Scaler_BeginPass - set up and run a scaling pass: column/row step tables from the output size, centring, flips, then the unrolled row loop
+; In:  none (g_ScalerParams, g_ScalerSrcA/B, g_ScalerDest)
+; Out: d0 = 0 done, 1 yielded (budget used up)
+; Evidence: builds per-row source steps (g_ScalerLine0/1) by fixed-point division, Scaler_BuildStepTables, g_ScalerOffsetX centring, optional g_ScalerHalfWidth expansion through Tbl_PixelPairExpand; jumps into Scaler_RowBlocks at (160 - width/2)*18; may DMA chunks (VDP_DmaToVram) and call Scaler_EmitSprites
 ; ---------------------------------------------------------------------------
-sub_1FC708:
+Scaler_BeginPass:
 	move.w	g_ScalerParams+$1C(a5),g_ScalerBudget(a5)
 	tst.b	g_ScalerParams+$19(a5)
-	beq.w	sub_1FD520
+	beq.w	Scaler_EmitSprites
 	move.b	g_ScalerParams+$15(a5),d0
 	cmp.b	g_ScalerTableKey(a5),d0
 	beq.s	loc_1FC72E
@@ -117,7 +120,7 @@ loc_1FC818:
 	move.w	d1,(a3)+
 	add.w	d1,d3
 	dbra	d6,loc_1FC818
-	bsr.w	sub_1FC1FA
+	bsr.w	Scaler_BuildStepTables
 	moveq	#-$10,d4
 	moveq	#$F,d5
 	move.w	g_ScalerParams+$6(a5),d0
@@ -192,11 +195,11 @@ loc_1FC8E0:
 	move.w	g_ScalerParams+$10(a5),d7
 	move.w	d7,d2
 	lsr.w	#$1,d7
-	beq.w	loc_1FD43E
+	beq.w	Scaler_RowEnd
 	neg.w	d7
 	addi.w	#$A0,d7
 	add.w	d7,d7
 	move.w	d7,d0
 	lsl.w	#$3,d7
 	add.w	d0,d7
-	jmp	Tbl_1FC8FE(pc,d7.w)
+	jmp	Scaler_RowBlocks(pc,d7.w)

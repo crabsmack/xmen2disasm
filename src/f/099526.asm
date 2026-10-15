@@ -2,7 +2,7 @@
 ; XClone_TileHookOpenWall - clone-maker tile hook [3]: once the reward flag is set (and no player is Magneto), blast open the wall at map columns $5A-$5B rows $19-$1D
 ; In:  8(a6) = word column, $A(a6) = word row, $10(a6) = object
 ; Out: d0 = 0
-; Evidence: rewrites map tiles via Map_SetBlockFG/Map_SetBlockFGFlip, explosions along x $B50/$B70, clears tile priority bits, sound $35, removes the solid block (sub_1F8454/Seg_Free); installed in $FFC714
+; Evidence: rewrites map tiles via Map_SetBlockFG/Map_SetBlockFGFlip, explosions along x $B50/$B70, clears tile priority bits, sound $35, removes the solid block (Seg_FindInBlock/Seg_Free); installed in $FFC714
 ; Found: link-after-rts
 ; ---------------------------------------------------------------------------
 XClone_TileHookOpenWall:
@@ -298,7 +298,7 @@ loc_09972A:
 	move.l	d7,-(a7)
 	moveq	#$14,d0
 	move.l	d0,-(a7)
-	jsr	$4F52(a5)	; -> sub_1F8454
+	jsr	$4F52(a5)	; -> Seg_FindInBlock
 	movea.l	d0,a4
 	move.l	a4,d0
 	lea.l	$14(a7),a7

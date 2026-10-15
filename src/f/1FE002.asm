@@ -2,7 +2,7 @@
 ; VDP_WriteWords - copy N words from memory to the VDP data port (address already set)
 ; In:  4(a7) = src pointer   8(a7) = long: word count
 ; Out: none
-; Evidence: loop move.w (a0)+,$C00000; callers set the VDP address first (Level_LoadMaps, Spr_PreloadTiles, Spr_UploadFrame, sub_1FBE96)
+; Evidence: loop move.w (a0)+,$C00000; callers set the VDP address first (Level_LoadMaps, Spr_PreloadTiles, Spr_UploadFrame, Art_LoadToVramRecolor)
 ; ---------------------------------------------------------------------------
 VDP_WriteWords:
 	movea.l	$4(a7),a0

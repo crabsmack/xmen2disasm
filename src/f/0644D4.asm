@@ -2,7 +2,7 @@
 ; Cerebro_BigSpriteDecode - decode a big sprite's current frame into the tile buffer
 ; In:  8(a6) = record
 ; Out: none
-; Evidence: sub_1FC5FE (decode) into buffer -$CA2 at tile +$A, sub_1FC6CA; +$31 = needs upload
+; Evidence: Scaler_Start (decode) into buffer -$CA2 at tile +$A, Scaler_Step; +$31 = needs upload
 ; ---------------------------------------------------------------------------
 Cerebro_BigSpriteDecode:
 	link.w	a6,#$0
@@ -18,8 +18,8 @@ Cerebro_BigSpriteDecode:
 	moveq	#$0,d0
 	move.l	d0,-(a7)
 	move.l	(a4),-(a7)
-	jsr	$50B2(a5)	; -> sub_1FC5FE
-	jsr	$50BA(a5)	; -> sub_1FC6CA
+	jsr	$50B2(a5)	; -> Scaler_Start
+	jsr	$50BA(a5)	; -> Scaler_Step
 	movea.l	(a4),a0
 	tst.b	$1A(a0)
 	beq.s	loc_064512

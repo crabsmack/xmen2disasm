@@ -6231,17 +6231,17 @@ Sw_1F76D6:	; switch table of sub at $1F76D6: 32 word offsets from Sw_1F76D6-2
 	include "src/f/1F7956.asm"
 	include "src/f/1F79A2.asm"
 Sw_1F79A2:	; switch table of sub at $1F79A2: 10 word offsets from Sw_1F79A2-2
-	dc.w	loc_1F7A7C-(Sw_1F79A2-2), loc_1F7A7C-(Sw_1F79A2-2), loc_1F7A7C-(Sw_1F79A2-2), loc_1F7A7C-(Sw_1F79A2-2)
-	dc.w	loc_1F7A7C-(Sw_1F79A2-2), loc_1F7A7C-(Sw_1F79A2-2), loc_1F7A7C-(Sw_1F79A2-2), loc_1F7A7C-(Sw_1F79A2-2)
-	dc.w	loc_1F7A7C-(Sw_1F79A2-2), loc_1F7A7C-(Sw_1F79A2-2)
+	dc.w	Seg_ComputeLength_Flat-(Sw_1F79A2-2), Seg_ComputeLength_Flat-(Sw_1F79A2-2), Seg_ComputeLength_Flat-(Sw_1F79A2-2), Seg_ComputeLength_Flat-(Sw_1F79A2-2)
+	dc.w	Seg_ComputeLength_Flat-(Sw_1F79A2-2), Seg_ComputeLength_Flat-(Sw_1F79A2-2), Seg_ComputeLength_Flat-(Sw_1F79A2-2), Seg_ComputeLength_Flat-(Sw_1F79A2-2)
+	dc.w	Seg_ComputeLength_Flat-(Sw_1F79A2-2), Seg_ComputeLength_Flat-(Sw_1F79A2-2)
 	include "src/f/1F7A7C.asm"
 	include "src/f/1F7A82.asm"
 	include "src/f/1F7A9E.asm"
 	include "src/f/1F7AF8.asm"
 Sw_1F7AF8:	; switch table of sub at $1F7AF8: 10 word offsets from Sw_1F7AF8-2
-	dc.w	loc_1F7B36-(Sw_1F7AF8-2), loc_1F7B36-(Sw_1F7AF8-2), loc_1F7B36-(Sw_1F7AF8-2), loc_1F7B36-(Sw_1F7AF8-2)
-	dc.w	loc_1F7B36-(Sw_1F7AF8-2), loc_1F7B36-(Sw_1F7AF8-2), loc_1F7B36-(Sw_1F7AF8-2), loc_1F7B36-(Sw_1F7AF8-2)
-	dc.w	loc_1F7B36-(Sw_1F7AF8-2), loc_1F7B36-(Sw_1F7AF8-2)
+	dc.w	Seg_ComputeSlope_Flat-(Sw_1F7AF8-2), Seg_ComputeSlope_Flat-(Sw_1F7AF8-2), Seg_ComputeSlope_Flat-(Sw_1F7AF8-2), Seg_ComputeSlope_Flat-(Sw_1F7AF8-2)
+	dc.w	Seg_ComputeSlope_Flat-(Sw_1F7AF8-2), Seg_ComputeSlope_Flat-(Sw_1F7AF8-2), Seg_ComputeSlope_Flat-(Sw_1F7AF8-2), Seg_ComputeSlope_Flat-(Sw_1F7AF8-2)
+	dc.w	Seg_ComputeSlope_Flat-(Sw_1F7AF8-2), Seg_ComputeSlope_Flat-(Sw_1F7AF8-2)
 	include "src/f/1F7B36.asm"
 	include "src/f/1F7B3C.asm"
 	include "src/f/1F7BB6.asm"
@@ -6376,19 +6376,18 @@ Tbl_SizeCodePixels:	; 4 bytes 8,16,24,32: pixel extent per 2-bit sprite size fie
 	incrom	$1FC462,$4
 	include "src/f/1FC466.asm"
 	include "src/f/1FC5FE.asm"
-Str_ScalerData:	; C string "SCALER DATA" (used by sub_1FC5FE)
+Str_ScalerData:	; C string "SCALER DATA" (used by Scaler_Start)
 	incrom	$1FC6BE,$C
 	include "src/f/1FC6CA.asm"
 	include "src/f/1FC6F6.asm"
 	include "src/f/1FC708.asm"
-Tbl_1FC8FE:	; format not established; never read in the corpus; referenced by sub_1FC708
-	incrom	$1FC8FE,$5A0
+	include "src/f/1FC8FE.asm"
 	include "src/f/1FCE9E.asm"
 	include "src/f/1FD43E.asm"
 	include "src/f/1FD520.asm"
-Tbl_GridWidthBits:	; 4 bytes 0,4,8,12: (columns-1) << 2, or-ed with (rows-1) to form a sprite size code in sub_1FD520
+Tbl_GridWidthBits:	; 4 bytes 0,4,8,12: (columns-1) << 2, or-ed with (rows-1) to form a sprite size code in Scaler_EmitSprites
 	incrom	$1FD58C,$4
-Tbl_SprSizeTilesGrid:	; 16 bytes: tiles per sprite size code (w*h/64), tile advance per piece in sub_1FD520
+Tbl_SprSizeTilesGrid:	; 16 bytes: tiles per sprite size code (w*h/64), tile advance per piece in Scaler_EmitSprites
 	incrom	$1FD590,$10
 	include "src/f/1FD5A0.asm"
 	include "src/f/1FD61E.asm"

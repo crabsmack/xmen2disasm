@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_1F79A2	[jt 2524]
+; Seg_ComputeLength - normalise a floor segment's endpoints left to right and compute its length (+6)
+; In:  8(a6) = segment
+; Out: none
+; Evidence: type hook message 4 first; swaps endpoints when x1 > x2 unless byte -$38C4 is set; flat types $13-$1C: length = |dx|, else max(|dx|, |dy|)
 ; ---------------------------------------------------------------------------
-sub_1F79A2:
+Seg_ComputeLength:
 	link.w	a6,#$0
 	movem.l	d3/d6-d7/a4,-(a7)
 	movea.l	$8(a6),a4
@@ -70,9 +73,9 @@ loc_1F7A48:
 	move.w	d0,d6
 	move.b	$1(a4),d0
 	subi.b	#$13,d0
-	bmi.s	loc_1F7A82
+	bmi.s	Seg_ComputeLength_Max
 	cmpi.b	#$9,d0
-	bgt.s	loc_1F7A82
+	bgt.s	Seg_ComputeLength_Max
 	moveq	#$0,d1
 	move.b	d0,d1
 	add.w	d1,d1

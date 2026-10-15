@@ -2,7 +2,7 @@
 ; BaniMazaB2_CrackFloorHook - map tile hook: a cracking floor tile (8 -> 9 -> 10 -> 11) advances one stage across its floor segment; at the last stage the segment breaks
 ; In:  8(a6) = word column, $C(a6) = word row
 ; Out: d0 = 0
-; Evidence: finds the floor segment of type $14/$13 at the cell (sub_1F8454); Map_SetBlockFG sets the tiles; stage 11: tile $67 below, objects on the segment (+$76) get Obj_Detach, Seg_Free, debris Boulder_SpawnDebris, sound $E3; installed in -$3AF0 by BaniMazaB2_InstallTileHooks
+; Evidence: finds the floor segment of type $14/$13 at the cell (Seg_FindInBlock); Map_SetBlockFG sets the tiles; stage 11: tile $67 below, objects on the segment (+$76) get Obj_Detach, Seg_Free, debris Boulder_SpawnDebris, sound $E3; installed in -$3AF0 by BaniMazaB2_InstallTileHooks
 ; ---------------------------------------------------------------------------
 BaniMazaB2_CrackFloorHook:
 	link.w	a6,#$FFFA
@@ -46,7 +46,7 @@ loc_05A99C:
 	move.l	d6,-(a7)
 	moveq	#$14,d0
 	move.l	d0,-(a7)
-	jsr	$4F52(a5)	; -> sub_1F8454
+	jsr	$4F52(a5)	; -> Seg_FindInBlock
 	movea.l	d0,a3
 	move.l	a3,d0
 	lea.l	$C(a7),a7
@@ -57,7 +57,7 @@ loc_05A99C:
 	move.l	d6,-(a7)
 	moveq	#$13,d0
 	move.l	d0,-(a7)
-	jsr	$4F52(a5)	; -> sub_1F8454
+	jsr	$4F52(a5)	; -> Seg_FindInBlock
 	movea.l	d0,a3
 	move.l	a3,d0
 	lea.l	$C(a7),a7

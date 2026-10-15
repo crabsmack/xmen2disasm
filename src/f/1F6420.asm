@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_1F6420	[jt 2505]
+; Seg_AtOpenEndAhead - is a walker within a margin of the end of its floor segment it is moving toward, with no neighbouring segment there
+; In:  8(a6) = object (+$76 segment, +$72 position, +$16 vx)  $E(a6) = word margin
+; Out: d0 = 1 at an open end
+; Evidence: half the box width + margin vs 0 (moving left, checks prev +$10 = $FF) or length +6 (moving right, next +$11 = $FF); caller Blast_StateFly
 ; ---------------------------------------------------------------------------
-sub_1F6420:
+Seg_AtOpenEndAhead:
 	link.w	a6,#$0
 	movem.l	d3/d5-d7/a4,-(a7)
 	move.w	$E(a6),d5

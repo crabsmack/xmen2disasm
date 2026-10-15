@@ -13,7 +13,7 @@ Cerebro_PlayIntro:
 	move.w	#$2710,-$3B0C(a5)
 	lea.l	Cerebro_IntroPalHook(pc),a0
 	move.l	a0,g_VBlankGameHook(a5)
-	jsr	$50A2(a5)	; -> sub_1FC2E8
+	jsr	$50A2(a5)	; -> Scaler_InitParams
 	pea.l	Tbl_Cerebro11(pc)
 	pea.l	($2A56).w
 	jsr	$5032(a5)	; -> Mem_StackAlloc
@@ -42,7 +42,7 @@ loc_065ECA:
 	move.l	d0,-(a7)
 	lea.l	$E8A(a5),a0
 	move.l	$2(a0),-(a7)
-	jsr	$50DA(a5)	; -> sub_1FD72C
+	jsr	$50DA(a5)	; -> Art_LoadNemToVram
 	move.w	#$4000,d5
 	or.w	g_VramTileCursor(a5),d5
 	moveq	#$30,d4
@@ -99,7 +99,7 @@ loc_065F5C:
 	move.l	d0,-(a7)
 	lea.l	$E02(a5),a0
 	move.l	$2(a0),-(a7)
-	jsr	$50DA(a5)	; -> sub_1FD72C
+	jsr	$50DA(a5)	; -> Art_LoadNemToVram
 	move.w	#$4000,d5
 	or.w	g_VramTileCursor(a5),d5
 	move.w	#$C0,d4
@@ -272,7 +272,7 @@ loc_066154:
 	move.l	d0,-(a7)
 	lea.l	$DF2(a5),a0
 	move.l	$2(a0),-(a7)
-	jsr	$50DA(a5)	; -> sub_1FD72C
+	jsr	$50DA(a5)	; -> Art_LoadNemToVram
 	move.w	#$4000,d5
 	or.w	g_VramTileCursor(a5),d5
 	move.w	#$9A,d4

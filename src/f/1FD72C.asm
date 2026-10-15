@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_1FD72C	[jt 2583]
+; Art_LoadNemToVram - decode a Nemesis art blob (type 4) straight to VRAM at a tile index
+; In:  8(a6) = art blob {word 4, word rows, code pairs..., data}  $E(a6) = word VRAM tile
+; Out: d0
+; Evidence: Nem_BuildCodeTable(blob+4, local 512-byte table), Nem_Decode(..., rows, 1, tile << 5); callers Cerebro_PlayIntro, Failure_RunScene
 ; ---------------------------------------------------------------------------
-sub_1FD72C:
+Art_LoadNemToVram:
 	link.w	a6,#$FE00
 	movem.l	d7/a3-a4,-(a7)
 	lea.l	-$200(a6),a3

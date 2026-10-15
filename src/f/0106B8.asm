@@ -1,5 +1,5 @@
 ; ---------------------------------------------------------------------------
-; BigAcolyte_Draw - hit-flash blink like ACTOR Draw; while +$A9 is set draw the scaled picture (sub_1FD520 at the camera-relative box top-left with its flips), otherwise Spr_Draw at the camera-relative position (BIGACOLYTE override of slot +$1A Draw)
+; BigAcolyte_Draw - hit-flash blink like ACTOR Draw; while +$A9 is set draw the scaled picture (Scaler_EmitSprites at the camera-relative box top-left with its flips), otherwise Spr_Draw at the camera-relative position (BIGACOLYTE override of slot +$1A Draw)
 ; In:  8(a6) = this (BIGACOLYTE object)
 ; Out: none
 ; Evidence: class descriptor BIGACOLYTE slot +$1A (tools/classes.py); TAS frames 13007-13657 (617 active)
@@ -43,7 +43,7 @@ loc_0106E8:
 	ext.l	d2
 	sub.l	d2,d1
 	move.l	d1,-(a7)
-	jsr	$50C2(a5)	; -> sub_1FD520
+	jsr	$50C2(a5)	; -> Scaler_EmitSprites
 	lea.l	$10(a7),a7
 	bra.w	loc_0107E0
 loc_01072A:

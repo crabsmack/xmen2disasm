@@ -38,7 +38,7 @@ loc_067070:
 	move.l	d0,-(a7)
 	lea.l	$E72(a5),a0
 	move.l	$2(a0),-(a7)
-	jsr	$50DA(a5)	; -> sub_1FD72C
+	jsr	$50DA(a5)	; -> Art_LoadNemToVram
 	lea.l	$3E72(a5),a0
 	move.l	$2(a0),-$40(a6)
 	lea.l	g_PalBase+$40(a5),a0

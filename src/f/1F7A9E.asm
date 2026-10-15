@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_1F7A9E	[link-after-rts]
+; Seg_InitDefaults - initialise a floor-segment record: in use, type, layer, no neighbours, placeholder endpoints
+; In:  8(a6) = segment  $F(a6) = byte type  $13(a6) = byte layer
+; Out: none
+; Evidence: +0 = $A0, +1 type, +2 layer, +3/+4 = 0, +$10/+$11 = $FF (no prev/next), endpoints (-100,-100)-(-90,-90), +$12 = $FE, +$13 = $FF; used by Seg_Setup
 ; ---------------------------------------------------------------------------
-sub_1F7A9E:
+Seg_InitDefaults:
 	link.w	a6,#$0
 	move.l	a4,-(a7)
 	movea.l	$8(a6),a4

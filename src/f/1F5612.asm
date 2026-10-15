@@ -2,7 +2,7 @@
 ; Level_LoadUsedTiles - load only the tiles a map's blocks actually use: mark used blocks and tiles, compact and renumber them, then Nemesis-decode with a tile mask
 ; In:  8(a6) = map   $C(a6) = tileset   $10(a6) = word: first VRAM tile   $14(a6) = block layout   $18(a6) = block definitions   $1C(a6) = byte: map-driven (else mark all)
 ; Out: d0 = word: number of tiles loaded
-; Evidence: bitmaps via Bitmap_Set/Bitmap_FromTileWords/Tile_RemapWords and sub_1F5594; tileset +$E = {word tile rows, Nem code pairs, Nemesis data}: Nem_BuildCodeTable then Nem_Decode(mode 2 = masked, dest tile << 5)
+; Evidence: bitmaps via Bitmap_Set/Bitmap_FromTileWords/Tile_RemapWords and Level_CompactUsedItems; tileset +$E = {word tile rows, Nem code pairs, Nemesis data}: Nem_BuildCodeTable then Nem_Decode(mode 2 = masked, dest tile << 5)
 ; ---------------------------------------------------------------------------
 Level_LoadUsedTiles:
 	link.w	a6,#$EEFC
@@ -56,7 +56,7 @@ loc_1F5680:
 	ext.l	d6
 	move.l	d6,-(a7)
 	move.l	a4,-(a7)
-	jsr	sub_1F5594(pc)
+	jsr	Level_CompactUsedItems(pc)
 	move.w	d0,d6
 	move.w	d0,g_UsedBlockCount(a5)
 	move.l	d4,-(a7)
@@ -112,7 +112,7 @@ loc_1F5708:
 	ext.l	d5
 	move.l	d5,-(a7)
 	move.l	a4,-(a7)
-	jsr	sub_1F5594(pc)
+	jsr	Level_CompactUsedItems(pc)
 	move.w	d0,d5
 	ext.l	d4
 	move.l	d4,-(a7)

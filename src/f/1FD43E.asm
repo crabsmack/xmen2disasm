@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; loc_1FD43E
+; Scaler_RowEnd - end of a scaled row: odd last pixel, left offset padding, advance source/output; yield when the budget is spent; at chunk ends DMA the rows to VRAM
+; In:  registers of the row loop
+; Out: d0 = 0 finished, 1 yielded
+; Evidence: g_ScalerOffsetX zero bytes, g_ScalerColStep/g_ScalerRowStep advance, g_ScalerBudget -= 1 -> save d0-d7/a0-a4 in g_ScalerRegSave and g_ScalerResumePC = $1FD480; 32-row chunks with VDP_DmaToVram at g_ScalerVramCursor; Scaler_ClearRows for leftover rows
 ; ---------------------------------------------------------------------------
-loc_1FD43E:
+Scaler_RowEnd:
 	btst	#$0,d2
 	beq.s	loc_1FD44C
 	move.b	(a0),d0
@@ -47,7 +50,7 @@ loc_1FD496:
 loc_1FD4A4:
 	sub.w	d7,g_ScalerRowsLeft(a5)
 	clr.w	g_ScalerChunkRow(a5)
-	bsr.w	sub_1FC2A6
+	bsr.w	Scaler_ClearRows
 loc_1FD4B0:
 	move.l	a1,d2
 	movea.l	g_ScalerDest(a5),a1
@@ -81,7 +84,7 @@ loc_1FD4DA:
 loc_1FD500:
 	move.w	g_ScalerRowsLeft(a5),d7
 	beq.s	loc_1FD50A
-	bsr.w	sub_1FC2A6
+	bsr.w	Scaler_ClearRows
 loc_1FD50A:
 	moveq	#$0,d0
 	rts

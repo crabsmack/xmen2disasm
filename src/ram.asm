@@ -28,8 +28,8 @@ g_Pad2Latch = -$3A30	; word: P2 presses latched while held (Pad_Update)
 g_Pad1Accum = -$3A32	; word: P1 buttons OR-accumulated since last cleared (Pad_Update)
 g_Pad2Accum = -$3A34	; word: P2 buttons OR-accumulated since last cleared (Pad_Update)
 g_DemoActive = -$3A1A	; byte: demo playback on, P1 input comes from g_DemoPad (Pad_Get; set by Game_PlayAttractDemo)
-g_DemoInput = -$3A1E	; ptr: demo input stream of (frame, pad byte) pairs (sub_1F9DE8)
-g_DemoPad = -$3A20	; word: current demo pad value for P1 (sub_1F9DE8, Pad_Get)
+g_DemoInput = -$3A1E	; ptr: demo input stream of (frame, pad byte) pairs (Demo_ReadInput)
+g_DemoPad = -$3A20	; word: current demo pad value for P1 (Demo_ReadInput, Pad_Get)
 g_VdpReg1 = -$1D48	; word: VDP mode register 1 command shadow $81xx ($40 display, $20 V-int, $10 DMA) (Sys_InitHardware, VDP_DmaToVram)
 g_VdpReg11 = -$204	; word: VDP mode register 3 command shadow $8Bxx, scroll modes (Sys_InitHardware, Scroll_SetParallax)
 g_DmaQueue = -$7A4	; array: V-blank DMA queue, $18-byte records of VDP register words (VDP_QueueDma, VDP_FlushDmaQueue)
@@ -182,46 +182,46 @@ g_SegBlockedHook = -$135E	; ptr: called by the object-vs-floor-segment pass sub_
 g_SegResolveHook = -$3488	; ptr: called by sub_1F8B42 as (segment, obj, contact) to resolve the chosen floor contact when the segment type hook returns 0; Level_Load sets jt[$4EFA], Beast_RollPathClear swaps in Beast_RollProbeCb around its own sub_1F8B42 call
 g_PalSave = -$13E8	; 64 words: copy of g_PalBase saved by Pal_SaveBase and restored by Pal_RestoreBase (around palette fades, sub_1F690E)
 g_PalCycleSave = -$13EC	; ptr: saved g_PalCycleScript (Pal_SaveCycle saves, Pal_RestoreCycle restores after a fade)
-g_PalCycleScript = -$38CA	; ptr: palette-cycle script run by sub_1F9E46 each level frame {byte ?, byte delay, byte first colour, byte last colour; then colour words, -1 = loop, -2 = end, >= $1000 = delay & $3FF}; 0 = none (Level_Load clears)
-g_PalCycleCursor = -$38CE	; ptr: next word of g_PalCycleScript (sub_1F9E46; Level_Load clears)
-g_PalCycleDelay = -$38D0	; word: frames until the next g_PalCycleScript step (sub_1F9E46; Level_Load sets -1)
+g_PalCycleScript = -$38CA	; ptr: palette-cycle script run by Pal_RunCycleScript each level frame {byte ?, byte delay, byte first colour, byte last colour; then colour words, -1 = loop, -2 = end, >= $1000 = delay & $3FF}; 0 = none (Level_Load clears)
+g_PalCycleCursor = -$38CE	; ptr: next word of g_PalCycleScript (Pal_RunCycleScript; Level_Load clears)
+g_PalCycleDelay = -$38D0	; word: frames until the next g_PalCycleScript step (Pal_RunCycleScript; Level_Load sets -1)
 g_LevelScrollHook = -$3A48	; ptr: per-frame scroll update called by Level_FrameLoop; Level_Load sets Scroll_UpdateParallax, BaniMazaA1_InitScroll sets RollingDiscs_UpdateScroll
-g_LevelPalHook = -$3A4C	; ptr: per-frame palette hook called by Level_FrameLoop after g_LevelScrollHook; Level_Load sets sub_1F9E46 (g_PalCycleScript player)
+g_LevelPalHook = -$3A4C	; ptr: per-frame palette hook called by Level_FrameLoop after g_LevelScrollHook; Level_Load sets Pal_RunCycleScript (g_PalCycleScript player)
 g_PauseExit = -$1662	; byte: set to leave the pause loop (Pause_Loop waits on it): a pause cheat changed the scene, or a player pressed a button (Pause_HandleInput_EndCode); cleared by the pause handler Pause_Check and Level_Load
 g_PauseCheatPtr = -$1666	; ptr: position in a pause-screen button sequence: each new press (& $7F) must equal the next byte (Pause_HandleInput); sequences from jt data $E0A-$E62 (Pause_HandleInput_EndCode); 0 = none (Pause_Check clears)
 g_HScrollFreeTile = -$1D42	; word: first free VRAM tile after the H-scroll table: $7A1 by default (Scene_PreLoadReset), $7BE with a line-scroll parallax that fills $380 bytes (Scroll_SetParallax, BaniMazaA1_InitScroll)
 g_HScrollFreeCount = -$1D44	; word: number of free VRAM tiles from g_HScrollFreeTile to $800 ($5F default, $42 with line scroll; Scene_PreLoadReset, Scroll_SetParallax)
 g_VramTileLimit = -$1D46	; word: VRAM tile limit $700 for actor sprite graphics (Scene_PreLoadReset); Actor_Activate/MagnetoBoss_Activate compare the tile end from Spr_Init against it
-g_ScalerParams = -$C96	; $26-byte scaler parameter block, copied from the caller's record by sub_1FC5FE (9 longs + word) or set field by field by sub_1FC2E8: +0/+2 source size words, +$C/+$E output width/height in tiles, +$10/+$12 output size in pixels, +$14 byte 0 keep/1 clear buffer/2 centre, +$15 byte table key, +$19 byte 0 = emit hardware sprites directly, +$1A byte packed/streamed upload, +$1C word rows per call
+g_ScalerParams = -$C96	; $26-byte scaler parameter block, copied from the caller's record by Scaler_Start (9 longs + word) or set field by field by Scaler_InitParams: +0/+2 source size words, +$C/+$E output width/height in tiles, +$10/+$12 output size in pixels, +$14 byte 0 keep/1 clear buffer/2 centre, +$15 byte table key, +$19 byte 0 = emit hardware sprites directly, +$1A byte packed/streamed upload, +$1C word rows per call
 g_ScaleSrcBitmap = -$C9A	; ptr: source picture for the scaler: the big acolyte picture record (BigAcolyte_ActAppear) or a heap bitmap filled by Spr_RenderToBitmap (Cerebro_PlayIntro, PlayerSelect_AllocCharBuffers_Measure); freed after the Cerebro intro
 g_ScaleTileBuf = -$C9E	; ptr: heap tile buffer the scaler decodes into, then DMAed to VRAM (BigAcolyte_RenderScaled, Cerebro_BigSpriteDecode/Draw, PlayerSelect_AllocCharBuffers_Measure)
-g_ScaleParamsPtr = -$CA2	; ptr: result of sub_1FC2E8 = &g_ScalerParams (0 on failure), passed back as the scale record by BigAcolyte_ActGrow/StateBurstWall, PlayerSelect_Run, Cerebro_PlayIntro
-g_ScalerWork = -$CA6	; ptr: $DC0-byte scaler work area allocated on the first sub_1FC5FE call (Mem_StackAlloc tag Str_ScalerData); Level_Load clears it
-g_ScalerLine0 = -$BF0	; ptr: g_ScalerWork + 0, first of six $280-byte scaler line/step tables (sub_1FC5FE sets; sub_1FC708)
-g_ScalerLine1 = -$BEC	; ptr: g_ScalerWork + $280 (sub_1FC5FE); sub_1FC708 starts the column step pointer g_ScalerColStep here
-g_ScalerLine2 = -$BE8	; ptr: g_ScalerWork + $500 (sub_1FC5FE); read by sub_1FC1FA/sub_1FC2A6/sub_1FC708
-g_ScalerLine3 = -$BE4	; ptr: g_ScalerWork + $780 (sub_1FC5FE); read by sub_1FC1FA/sub_1FC2A6/sub_1FC708
-g_ScalerLine4 = -$BE0	; ptr: g_ScalerWork + $A00: step table rebuilt by sub_1FC1FA when the output size changes; start of g_ScalerRowStep (sub_1FC708)
-g_ScalerLine5 = -$BDC	; ptr: g_ScalerWork + $C80 (sub_1FC5FE; sub_1FC708)
-g_ScalerColStep = -$BF4	; ptr: walks the word offsets in g_ScalerLine1, one per output row, added to the source pointer (sub_1FC708 sets, loc_1FD43E steps)
-g_ScalerRowStep = -$BF8	; ptr: walks the word offsets in g_ScalerLine4 added to the output pointer (sub_1FC708 sets; sub_1FC2A6, loc_1FD43E step)
-g_ScalerTableKey = -$BFB	; byte: last g_ScalerParams+$15 seen; a change resets g_ScalerSizeKey to -1 (sub_1FC708; sub_1FC2E8 sets $FF)
-g_ScalerSizeKey = -$C00	; long: g_ScalerParams+$C (tiles wide/high) the step tables were built for; sub_1FC1FA rebuilds them when it differs (sub_1FC708 sets -1)
-g_ScalerRowsLeft = -$C1A	; word: output rows still to produce in the current pass (sub_1FC708 sets, loc_1FD43E consumes in 32-row chunks)
-g_ScalerOffsetX = -$C1C	; word: x offset of the picture inside the output, (width*8 - pixel width)/2 when g_ScalerParams+$14 = 2 (centre) else 0 (sub_1FC708; read by loc_1FD43E)
-g_ScalerVramCursor = -$C1E	; word: VRAM address of the next streamed chunk, starts at g_ScalerVram and advances by each DMA (sub_1FC708, loc_1FD43E)
-g_ScalerChunkRow = -$C20	; word: rows already in the current 32-row chunk (sub_1FC708 sets, loc_1FD43E clears)
-g_ScalerChunkLeft = -$C22	; word: rows of the current chunk still to emit before the next upload (sub_1FC708 sets, loc_1FD43E reads)
-g_ScalerRowCount = -$C24	; word: row counter that picks g_ScalerLine2 or g_ScalerLine3 (sub_1FC1FA sets from -$BFA, sub_1FC2A6/sub_1FC708 count down)
-g_ScalerBudget = -$C28	; word: rows left before the scaler yields, reloaded from g_ScalerParams+$1C (sub_1FC708, sub_1FC6F6); loc_1FD43E saves state when it reaches 0
-g_ScalerResumePC = -$C2C	; ptr: code address where a yielded scaler pass resumes (saved by loc_1FD43E, pushed and returned to by sub_1FC6F6)
-g_ScalerRegSave = -$C60	; 13 longs: d0-d7/a0-a4 of a yielded scaler pass (movem by loc_1FD43E, restored by sub_1FC6F6)
-g_ScalerReady = -$C61	; byte: scaler call accepted; sub_1FC5FE returns &g_ScalerParams when set, else 0 (sub_1FC5FE, sub_1FC6CA)
-g_ScalerHalfWidth = -$C62	; byte: set by sub_1FC5FE when a source is given without its second argument; sub_1FC708 then halves g_ScalerParams+0
-g_ScalerVram = -$C64	; word: VRAM address for the output (5th argument of sub_1FC5FE); >>5 = first tile for directly emitted sprites (sub_1FC708, sub_1FD520)
-g_ScalerDest = -$C68	; ptr: output tile buffer (4th argument of sub_1FC5FE; sub_1FC708 fills it, loc_1FD43E DMAs from it)
-g_ScalerSrcB = -$C6C	; long: 3rd argument of sub_1FC5FE, source offset added in sub_1FC708 and used by sub_1FC1CC
-g_ScalerSrcA = -$C70	; long: 2nd argument of sub_1FC5FE, source (sub_1FC1CC preprocesses it when g_ScalerSrcB is also given, then it is zeroed)
+g_ScaleParamsPtr = -$CA2	; ptr: result of Scaler_InitParams = &g_ScalerParams (0 on failure), passed back as the scale record by BigAcolyte_ActGrow/StateBurstWall, PlayerSelect_Run, Cerebro_PlayIntro
+g_ScalerWork = -$CA6	; ptr: $DC0-byte scaler work area allocated on the first Scaler_Start call (Mem_StackAlloc tag Str_ScalerData); Level_Load clears it
+g_ScalerLine0 = -$BF0	; ptr: g_ScalerWork + 0, first of six $280-byte scaler line/step tables (Scaler_Start sets; Scaler_BeginPass)
+g_ScalerLine1 = -$BEC	; ptr: g_ScalerWork + $280 (Scaler_Start); Scaler_BeginPass starts the column step pointer g_ScalerColStep here
+g_ScalerLine2 = -$BE8	; ptr: g_ScalerWork + $500 (Scaler_Start); read by Scaler_BuildStepTables/Scaler_ClearRows/Scaler_BeginPass
+g_ScalerLine3 = -$BE4	; ptr: g_ScalerWork + $780 (Scaler_Start); read by Scaler_BuildStepTables/Scaler_ClearRows/Scaler_BeginPass
+g_ScalerLine4 = -$BE0	; ptr: g_ScalerWork + $A00: step table rebuilt by Scaler_BuildStepTables when the output size changes; start of g_ScalerRowStep (Scaler_BeginPass)
+g_ScalerLine5 = -$BDC	; ptr: g_ScalerWork + $C80 (Scaler_Start; Scaler_BeginPass)
+g_ScalerColStep = -$BF4	; ptr: walks the word offsets in g_ScalerLine1, one per output row, added to the source pointer (Scaler_BeginPass sets, Scaler_RowEnd steps)
+g_ScalerRowStep = -$BF8	; ptr: walks the word offsets in g_ScalerLine4 added to the output pointer (Scaler_BeginPass sets; Scaler_ClearRows, Scaler_RowEnd step)
+g_ScalerTableKey = -$BFB	; byte: last g_ScalerParams+$15 seen; a change resets g_ScalerSizeKey to -1 (Scaler_BeginPass; Scaler_InitParams sets $FF)
+g_ScalerSizeKey = -$C00	; long: g_ScalerParams+$C (tiles wide/high) the step tables were built for; Scaler_BuildStepTables rebuilds them when it differs (Scaler_BeginPass sets -1)
+g_ScalerRowsLeft = -$C1A	; word: output rows still to produce in the current pass (Scaler_BeginPass sets, Scaler_RowEnd consumes in 32-row chunks)
+g_ScalerOffsetX = -$C1C	; word: x offset of the picture inside the output, (width*8 - pixel width)/2 when g_ScalerParams+$14 = 2 (centre) else 0 (Scaler_BeginPass; read by Scaler_RowEnd)
+g_ScalerVramCursor = -$C1E	; word: VRAM address of the next streamed chunk, starts at g_ScalerVram and advances by each DMA (Scaler_BeginPass, Scaler_RowEnd)
+g_ScalerChunkRow = -$C20	; word: rows already in the current 32-row chunk (Scaler_BeginPass sets, Scaler_RowEnd clears)
+g_ScalerChunkLeft = -$C22	; word: rows of the current chunk still to emit before the next upload (Scaler_BeginPass sets, Scaler_RowEnd reads)
+g_ScalerRowCount = -$C24	; word: row counter that picks g_ScalerLine2 or g_ScalerLine3 (Scaler_BuildStepTables sets from -$BFA, Scaler_ClearRows/Scaler_BeginPass count down)
+g_ScalerBudget = -$C28	; word: rows left before the scaler yields, reloaded from g_ScalerParams+$1C (Scaler_BeginPass, Scaler_Resume); Scaler_RowEnd saves state when it reaches 0
+g_ScalerResumePC = -$C2C	; ptr: code address where a yielded scaler pass resumes (saved by Scaler_RowEnd, pushed and returned to by Scaler_Resume)
+g_ScalerRegSave = -$C60	; 13 longs: d0-d7/a0-a4 of a yielded scaler pass (movem by Scaler_RowEnd, restored by Scaler_Resume)
+g_ScalerReady = -$C61	; byte: scaler call accepted; Scaler_Start returns &g_ScalerParams when set, else 0 (Scaler_Start, Scaler_Step)
+g_ScalerHalfWidth = -$C62	; byte: set by Scaler_Start when a source is given without its second argument; Scaler_BeginPass then halves g_ScalerParams+0
+g_ScalerVram = -$C64	; word: VRAM address for the output (5th argument of Scaler_Start); >>5 = first tile for directly emitted sprites (Scaler_BeginPass, Scaler_EmitSprites)
+g_ScalerDest = -$C68	; ptr: output tile buffer (4th argument of Scaler_Start; Scaler_BeginPass fills it, Scaler_RowEnd DMAs from it)
+g_ScalerSrcB = -$C6C	; long: 3rd argument of Scaler_Start, source offset added in Scaler_BeginPass and used by Scaler_ExpandSource
+g_ScalerSrcA = -$C70	; long: 2nd argument of Scaler_Start, source (Scaler_ExpandSource preprocesses it when g_ScalerSrcB is also given, then it is zeroed)
 g_TechWallGunSprDef = -$1A6E	; word: sprite-definition slot of Art_Spr_1445D2 (TECHWALLGUN ClassInit TechWallGun_ClassInit via SprDef_Add; read by TechWallGun_UpdateBullet_Draw)
 g_TankSprDef = -$1A70	; word: sprite-definition slot of Art_Spr_14018E (TANK ClassInit Tank_ClassInit via SprDef_Add; TANK Init Tank_Init)
 g_SparkSprDef = -$1A72	; word: sprite-definition slot of Art_SpaceB1Spr2 (SpaceB1_LoadResources via SprDef_Add; Spark_Init)
@@ -292,7 +292,7 @@ g_BgBlockDefs = -$3A8C	; ptr: BG block definitions, 4x4 tile words per block (Le
 g_FgBlockDefs = -$3AA6	; ptr: FG block definitions, 4x4 tile words per block (Level_LoadMaps, Enigma-decoded, tag Str_MapBufTags); scene sprites copy rows from it (CloneA1_InitSprites, SentinelsA1_InitZapLights)
 g_FgBlockCount = -$3AA8	; word: FG blocks kept by Level_LoadUsedTiles (copied from g_UsedBlockCount); a scene's extra blocks start at this id (Exodus hot floor tiles, CloneA1/SentinelsA1/SiberiaB1 sprite rows)
 g_BgBlockCount = -$3AAA	; word: BG blocks kept by Level_LoadUsedTiles (copied from g_UsedBlockCount; BaniMazaA1_InitSprites)
-g_UsedBlockCount = -$3AAC	; word: block count returned by sub_1F5594 in the last Level_LoadUsedTiles call (Level_LoadMaps copies it to g_FgBlockCount/g_BgBlockCount)
+g_UsedBlockCount = -$3AAC	; word: block count returned by Level_CompactUsedItems in the last Level_LoadUsedTiles call (Level_LoadMaps copies it to g_FgBlockCount/g_BgBlockCount)
 g_FgTilesEnd = -$3AAE	; word: first VRAM tile after the FG map tiles (Level_LoadMaps); scene effect sprites put their tiles here (AvalonB2/AvalonA3/CloneA1/SentinelsD1/SiberiaB1 InitSprite(s))
 g_BgTilesEnd = -$3AB0	; word: first VRAM tile after the BG map tiles (Level_LoadMaps; BaniMazaA1_InitSprites, CloneA5_InitShockSprites, SavageA2_InitLights)
 g_MapTilesEnd = -$3A9E	; word: first free VRAM tile after all map tiles (Level_LoadMaps; Scroll_Init 1); Level_Load copies it to g_VramTileCursor
@@ -375,7 +375,7 @@ g_BigBioSpitPool = -$1A90	; ptr: BIGBIO spit projectile pool (BigBio_ClassInit; 
 g_BigBioSpitCount = -$1A92	; word: spit projectiles in use (BigBio_ClassInit clears; BigBio_SpitSpawn/Free/UpdateAll)
 g_BioBallsList = -$1A98	; ptr: ball list shared by BIOBALLS objects {word count; records}, allocated by BioBalls_AllocBallList and copied to each object's +$92 (BioBalls_Init, UpdateBox, SetFormation)
 g_BioBallsSine = -$1C9C	; 128 longs: sine table built by BioBalls_AllocBallList, read by BioBalls_MotionOrbit/Ring/Helix
-g_SegHookTmp = -$346E	; ptr: the g_SegTypeHooks entry fetched before calling it (sub_1F6D76, sub_1F6EC4, Seg_ComputeObjPos, sub_1F71F2, sub_1F79A2)
+g_SegHookTmp = -$346E	; ptr: the g_SegTypeHooks entry fetched before calling it (sub_1F6D76, sub_1F6EC4, Seg_ComputeObjPos, sub_1F71F2, Seg_ComputeLength)
 g_SegLevelCount = -$3472	; word: segments created from the level's FG list (Seg_LoadList; sub_1F6BD2 clears); sub_1F85B6 skips them when indexing the grid
 g_SegGridPool = -$3478	; ptr: pool of $FF-terminated segment-index lists, one per grid cell (sub_1F84BE builds it on the heap; Seg_FindAt/Below/Above/Left/Right, Boulder_FindFloorBelow, Ninja_FindSegInBox)
 g_SegGrid = -$347C	; ptr: word grid, per cell the offset of its list in g_SegGridPool (sub_1F84BE; Seg_GridCell, sub_1F85B6)

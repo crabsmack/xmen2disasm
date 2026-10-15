@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_1FC2A6
+; Scaler_ClearRows - zero the remaining output rows of the current pass
+; In:  d7 = rows, a1 = output pointer
+; Out: none
+; Evidence: writes zero longs down each column using g_ScalerLine2/3 steps and g_ScalerRowStep; called from Scaler_RowEnd
 ; ---------------------------------------------------------------------------
-sub_1FC2A6:
+Scaler_ClearRows:
 	tst.w	g_ScalerRowCount(a5)
 	bgt.s	loc_1FC2B2
 	movea.l	g_ScalerLine3(a5),a3

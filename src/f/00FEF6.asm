@@ -2,7 +2,7 @@
 ; BigAcolyte_RenderScaled - decode the big acolyte picture at the current scale into a heap buffer and DMA it to VRAM
 ; In:  8(a6) = picture data, $C(a6) = scale record (+$C width, +$E height, +$1A packed flag), $10(a6) = word VRAM address, $14(a6) = byte first call (allocate buffer)
 ; Out: none
-; Evidence: buffer -$C9E from Mem_StackAlloc; sub_1FC5FE decode; VDP_QueueDma; callers BigAcolyte_ActAppear, BigAcolyte_ActGrow, BigAcolyte_StateBurstWall
+; Evidence: buffer -$C9E from Mem_StackAlloc; Scaler_Start decode; VDP_QueueDma; callers BigAcolyte_ActAppear, BigAcolyte_ActGrow, BigAcolyte_StateBurstWall
 ; ---------------------------------------------------------------------------
 BigAcolyte_RenderScaled:
 	link.w	a6,#$0
@@ -29,7 +29,7 @@ loc_00FF2A:
 	move.l	d6,-(a7)
 	jsr	$5032(a5)	; -> Mem_StackAlloc
 	move.l	d0,g_ScaleTileBuf(a5)
-	jsr	$50A2(a5)	; -> sub_1FC2E8
+	jsr	$50A2(a5)	; -> Scaler_InitParams
 	ext.l	d7
 	move.l	d7,-(a7)
 	move.l	g_ScaleTileBuf(a5),-(a7)
@@ -37,7 +37,7 @@ loc_00FF2A:
 	moveq	#$0,d0
 	move.l	d0,-(a7)
 	move.l	a4,-(a7)
-	jsr	$50B2(a5)	; -> sub_1FC5FE
+	jsr	$50B2(a5)	; -> Scaler_Start
 	move.l	d0,g_ScaleParamsPtr(a5)
 	lea.l	$1C(a7),a7
 loc_00FF5E:
@@ -48,9 +48,9 @@ loc_00FF5E:
 	moveq	#$0,d0
 	move.l	d0,-(a7)
 	move.l	a4,-(a7)
-	jsr	$50B2(a5)	; -> sub_1FC5FE
+	jsr	$50B2(a5)	; -> Scaler_Start
 	move.l	d0,g_ScaleParamsPtr(a5)
-	jsr	$50BA(a5)	; -> sub_1FC6CA
+	jsr	$50BA(a5)	; -> Scaler_Step
 	tst.b	$1A(a4)
 	lea.l	$14(a7),a7
 	bne.s	loc_00FFA2

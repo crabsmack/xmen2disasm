@@ -1,5 +1,5 @@
 ; ---------------------------------------------------------------------------
-; RetractFloor_Init - parent Init, then no vertical speed, flags |= $4083, sprite set -$3CCE (palette line 0), opening +$8C = 0, find the type-$13 floor segment at its 32-px cell (sub_1F8454) into +$90, state RetractFloor_StateInit (+$5C/+$64) (RETRACTFLOOR override of slot +$12 Init)
+; RetractFloor_Init - parent Init, then no vertical speed, flags |= $4083, sprite set -$3CCE (palette line 0), opening +$8C = 0, find the type-$13 floor segment at its 32-px cell (Seg_FindInBlock) into +$90, state RetractFloor_StateInit (+$5C/+$64) (RETRACTFLOOR override of slot +$12 Init)
 ; In:  8(a6) = this (RETRACTFLOOR object), $C(a6)/$10(a6) = x/y (8.8 fixed), $14(a6) = spawn param
 ; Out: none
 ; Evidence: class descriptor RETRACTFLOOR slot +$12 (tools/classes.py); TAS frames 14236-16679 (17 active)
@@ -43,7 +43,7 @@ RetractFloor_Init:
 	move.l	d6,-(a7)
 	moveq	#$13,d0
 	move.l	d0,-(a7)
-	jsr	$4F52(a5)	; -> sub_1F8454
+	jsr	$4F52(a5)	; -> Seg_FindInBlock
 	movea.l	d0,a3
 	move.l	a3,$90(a4)
 	lea.l	RetractFloor_StateInit(pc),a0

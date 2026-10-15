@@ -2,7 +2,7 @@
 ; Nem_Decode - decompress Nemesis-style tile data to RAM, to VRAM, or to VRAM through a tile mask
 ; In:  8(a6) = compressed source   $C(a6) = 256-word code table (Nem_BuildCodeTable)   $10(a6) = long: rows (8 per tile)   $14(a6) = byte: mode 0 RAM / 1 VRAM / 2 VRAM masked   $18(a6) = RAM dest or VRAM byte address   $1C(a6) = tile mask bitmap (mode 2)
 ; Out: none
-; Evidence: selects the row writer in a3 (Nem_PutRowRam / Nem_PutRowVdp / Nem_PutRowMasked), sets the VDP write address for modes 1-2, then Nem_DecodeLoop; callers Spr_UploadFrame, Spr_PreloadTiles, Level_LoadUsedTiles, sub_1FBE96, sub_1FD72C
+; Evidence: selects the row writer in a3 (Nem_PutRowRam / Nem_PutRowVdp / Nem_PutRowMasked), sets the VDP write address for modes 1-2, then Nem_DecodeLoop; callers Spr_UploadFrame, Spr_PreloadTiles, Level_LoadUsedTiles, Art_LoadToVramRecolor, Art_LoadNemToVram
 ; ---------------------------------------------------------------------------
 Nem_Decode:
 	link.w	a6,#$0

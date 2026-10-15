@@ -266,7 +266,7 @@ loc_1F9B58:
 	move.l	d0,g_ParallaxDesc(a5)
 	lea.l	$510A(a5),a0
 	move.l	a0,g_LevelScrollHook(a5)
-	lea.l	sub_1F9E46(pc),a0
+	lea.l	Pal_RunCycleScript(pc),a0
 	move.l	a0,g_LevelPalHook(a5)
 	move.l	d0,g_PalCycleScript(a5)
 	move.l	d0,g_PalCycleCursor(a5)

@@ -2,7 +2,7 @@
 ; BigAcolyte_ActWaitPlayers - BIGACOLYTE intro step 1: wait until every player is past x $1A5E (switching their draw layer around x $1900-$19C0), then lock the floor and camera and continue after 120 frames
 ; In:  8(a6) = this
 ; Out: d0
-; Evidence: DrawList_SetPriority on each player's +$88 node; Seg_Alloc/sub_1F7BB6 floor segment at x $1A5F; g_Camera +$36 zone at x $1A3C; script step with delay $78
+; Evidence: DrawList_SetPriority on each player's +$88 node; Seg_Alloc/Seg_Setup floor segment at x $1A5F; g_Camera +$36 zone at x $1A3C; script step with delay $78
 ; ---------------------------------------------------------------------------
 BigAcolyte_ActWaitPlayers:
 	link.w	a6,#$FFFE
@@ -161,7 +161,7 @@ loc_010CAA:
 	moveq	#$1,d1
 	move.l	d1,-(a7)
 	move.l	a3,-(a7)
-	jsr	$4F0A(a5)	; -> sub_1F7BB6
+	jsr	$4F0A(a5)	; -> Seg_Setup
 	moveq	#$0,d0
 	move.l	d0,-(a7)
 	moveq	#$1,d1

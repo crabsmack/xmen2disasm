@@ -525,15 +525,15 @@
 1F719C	; loc_1F719C - runtime: executed in tas
 1F72A0	; Seg_ObjPosUnclamped_Horiz - runtime: executed in tas
 1F7686	; loc_1F7686 - runtime: executed in tas
-1F7A7C	; loc_1F7A7C - runtime: executed in tas
-1F7B36	; loc_1F7B36 - runtime: executed in tas
+1F7A7C	; Seg_ComputeLength_Flat - runtime: executed in tas
+1F7B36	; Seg_ComputeSlope_Flat - runtime: executed in tas
 1F883A	; loc_1F883A - runtime: executed in tas
 1F88AC	; loc_1F88AC - runtime: executed in tas
 1F8938	; loc_1F8938 - runtime: executed in tas
 1F894A	; loc_1F894A - runtime: executed in tas
 1F89A4	; loc_1F89A4 - runtime: executed in tas
 1F8A1A	; loc_1F8A1A - runtime: executed in tas
-1FCE9E	; loc_1FCE9E - runtime: executed in tas
+1FCE9E	; Scaler_RowBlocksLast80 - runtime: executed in tas
 1FDB6A	; loc_1FDB6A - runtime: executed in tas
 1FDBC4	; loc_1FDBC4 - runtime: executed in tas
 03A2F4	; BanimazaDoor_DrawColumn - runtime: executed in fuzz-01800-s1+fuzz-01800-s2+fuzz-03600-s1+fuzz-03600-s2+fuzz-05400-s1+fuzz-05400-s2+fuzz-07200-s1+fuzz-07200-s2+fuzz-09000-s1+fuzz-09000-s2+fuzz-10800-s1+fuzz-10800-s2+fuzz-12600-s1+fuzz-12600-s2+fuzz-14400-s1+fuzz-14400-s2+fuzz-16200-s1+fuzz-16200-s2+fuzz-18000-s1+fuzz-18000-s2+fuzz-19800-s1+fuzz-19800-s2+fuzz-21600-s1+fuzz-21600-s2+fuzz-23400-s1+fuzz-23400-s2+fuzz-25200-s1+fuzz-25200-s2+fuzz-27000-s1+fuzz-27000-s2+fuzz-28800-s1+fuzz-28800-s2+fuzz-30600-s1+fuzz-30600-s2+fuzz-32400-s1+fuzz-32400-s2+fuzz-34200-s1+fuzz-34200-s2+fuzz-36000-s1+fuzz-36000-s2+fuzz-37800-s1+fuzz-37800-s2+fuzz-39600-s1+fuzz-39600-s2+fuzz-41400-s1+fuzz-41400-s2+fuzz-43200-s1+fuzz-43200-s2+fuzz-45000-s1+fuzz-45000-s2+fuzz-46800-s1+fuzz-46800-s2+fuzz-48600-s1+fuzz-48600-s2+fuzz-50400-s1+fuzz-50400-s2+fuzz-52200-s1+fuzz-52200-s2+fuzz-54000-s1+fuzz-54000-s2+fuzz-55800-s1+fuzz-55800-s2+idle+tas
@@ -906,3 +906,4 @@
 0853FA	; Teleporter_NoPause - empty function; Teleporter state at $085696 stores its address in the Start-press hook -$38FC while teleporting
 1E16CC	; Cyclops_DrawBeam_StepDown - targets of the beam-direction jump tables at $1E1902 (entry 2) and $1E190C (entries 1-2) in the Cyclops beam drawer Cyclops_DrawBeam; down-beam step and vertical cut cases
 1E1768	; Cyclops_DrawBeam_CutVertical - targets of the beam-direction jump tables at $1E1902 (entry 2) and $1E190C (entries 1-2) in the Cyclops beam drawer Cyclops_DrawBeam; down-beam step and vertical cut cases
+1FC8FE	; Scaler_RowBlocks - first 80 of the 160 unrolled 18-byte blocks of the scaler's row loop: Scaler_BeginPass jumps to $1FC8FE + (160 - width/2)*18, so rows wider than 160 px enter here; the bytes are 80 exact copies of the block at Scaler_RowBlocksLast80

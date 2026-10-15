@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; loc_1FD5A0
+; Scaler_EmitSprites_Loop - Scaler_EmitSprites inner loop: emit one piece if on screen, step to the next column / row
+; In:  registers of Scaler_EmitSprites
+; Out: d0 = count or -1
+; Evidence: loop body label inside Scaler_EmitSprites
 ; ---------------------------------------------------------------------------
-loc_1FD5A0:
+Scaler_EmitSprites_Loop:
 	cmpi.w	#$60,d6
 	blt.s	loc_1FD5E8
 	cmpi.w	#$1C0,d6

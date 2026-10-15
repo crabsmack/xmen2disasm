@@ -75,7 +75,7 @@ loc_06572E:
 	jsr	PlayerSelect_PlaceCursor(pc)
 	jsr	PlayerSelect_AllocCharBuffers(pc)
 	move.w	d0,d4
-	jsr	$50A2(a5)	; -> sub_1FC2E8
+	jsr	$50A2(a5)	; -> Scaler_InitParams
 	move.l	g_ScaleParamsPtr(a5),-$84(a6)
 	move.w	d4,-$7C(a6)
 	move.w	g_VramTileCursor(a5),-$7A(a6)

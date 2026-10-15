@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; loc_1F7A82
+; Seg_ComputeLength_Max - Seg_ComputeLength default: length = max(|dx|, |dy|)
+; In:  a4 = segment, d6/d7 = |dy|/|dx|
+; Out: none
+; Evidence: reached for types outside $13-$1C
 ; ---------------------------------------------------------------------------
-loc_1F7A82:
+Seg_ComputeLength_Max:
 	cmp.w	d7,d6
 	slt.b	d3
 	neg.b	d3

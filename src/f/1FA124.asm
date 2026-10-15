@@ -2,7 +2,7 @@
 ; Level_FrameLoop - per-frame level loop: input, demo playback, object updates/activation, timers, sprites and DMA, until the scene exit timer runs out
 ; In:  none
 ; Out: none
-; Evidence: Pad_Update, demo input (sub_1F9DE8), object list -$34A6 InActivateWindow/Activate unless g_ActivateHook, Timer_RunAll, Spr_BeginFrame/Spr_EndFrame, g_DmaFlushReq = 1, VDP_WaitVBlank, HUD_UpdateHealthBars; only caller Level_Run
+; Evidence: Pad_Update, demo input (Demo_ReadInput), object list -$34A6 InActivateWindow/Activate unless g_ActivateHook, Timer_RunAll, Spr_BeginFrame/Spr_EndFrame, g_DmaFlushReq = 1, VDP_WaitVBlank, HUD_UpdateHealthBars; only caller Level_Run
 ; ---------------------------------------------------------------------------
 Level_FrameLoop:
 	link.w	a6,#$FFF4
@@ -285,7 +285,7 @@ loc_1FA4BC:
 	clr.b	g_FrameTick(a5)
 	tst.b	g_DemoActive(a5)
 	beq.s	loc_1FA4D8
-	jsr	sub_1F9DE8(pc)
+	jsr	Demo_ReadInput(pc)
 loc_1FA4D8:
 	jsr	$50FA(a5)	; -> Pad_Update
 	tst.b	g_LevelFreeze(a5)

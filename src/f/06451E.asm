@@ -2,7 +2,7 @@
 ; Cerebro_BigSpriteDraw - upload a big sprite's tiles if needed and draw it
 ; In:  8(a6) = record
 ; Out: none
-; Evidence: VDP_QueueDma(buffer, tile*32, tiles*32) when +$31 clear; sub_1FD520(x, y, tile, flags)
+; Evidence: VDP_QueueDma(buffer, tile*32, tiles*32) when +$31 clear; Scaler_EmitSprites(x, y, tile, flags)
 ; ---------------------------------------------------------------------------
 Cerebro_BigSpriteDraw:
 	link.w	a6,#$0
@@ -37,7 +37,7 @@ loc_064554:
 	swap	d0
 	ext.l	d0
 	move.l	d0,-(a7)
-	jsr	$50C2(a5)	; -> sub_1FD520
+	jsr	$50C2(a5)	; -> Scaler_EmitSprites
 	lea.l	$10(a7),a7
 	movea.l	-$4(a6),a4
 	unlk	a6

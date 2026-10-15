@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_1FC1FA
+; Scaler_BuildStepTables - rebuild the scaler's output step tables when the output size (tiles wide/high) changed
+; In:  none
+; Out: g_ScalerRowCount reset
+; Evidence: compares g_ScalerParams+$C with g_ScalerSizeKey; fills g_ScalerLine4 (row steps in 32-px sprite columns), g_ScalerLine2/3 (byte steps, full and partial last column)
 ; ---------------------------------------------------------------------------
-sub_1FC1FA:
+Scaler_BuildStepTables:
 	move.l	g_ScalerParams+$C(a5),d7
 	cmp.l	g_ScalerSizeKey(a5),d7
 	beq.w	loc_1FC29E

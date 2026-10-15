@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_1FBE96	[jt 2575]
+; Art_LoadToVramRecolor - load tile art to VRAM at a tile index: raw (type 1) via the data port, or Nemesis (type 4) with colours 0, $E and $F remapped
+; In:  8(a6) = art blob {word type, ...}  $E(a6) = word VRAM tile  $12(a6)/$16(a6)/$1A(a6) = word replacement colour for 0 / $E / $F
+; Out: d0
+; Evidence: type 1: VDP write command for tile*32, VDP_WriteWords(blob+8, blob[3]*16); type 4: Nem_BuildCodeTable, patch the low nibble of each of the 256 code-table values, Nem_Decode(mode 1 VRAM) with interrupts off; caller Cerebro_SetupPalCycles
 ; ---------------------------------------------------------------------------
-sub_1FBE96:
+Art_LoadToVramRecolor:
 	link.w	a6,#$FDFE
 	movem.l	d3-d7/a3-a4,-(a7)
 	movea.l	$8(a6),a4
