@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_0B6D7E	[link-after-rts]
+; BrainChild_StateFallHome - BRAINCHILD leap: fall until reaching its home y (+$12)
+; In:  8(a6) = this
+; Out: d0
+; Found: link-after-rts
 ; ---------------------------------------------------------------------------
-sub_0B6D7E:
+BrainChild_StateFallHome:
 	link.w	a6,#$0
 	move.l	a4,-(a7)
 	movea.l	$8(a6),a4
@@ -18,14 +21,14 @@ sub_0B6D7E:
 	jsr	(a1)
 	addq.w	#$8,a7
 	clr.w	$6C(a4)
-	lea.l	sub_0B6DD4(pc),a0
+	lea.l	BrainChild_StateLand(pc),a0
 	move.l	a0,$5C(a4)
 	moveq	#$8,d0
 	and.w	$4(a4),d0
 	bra.s	loc_0B6DCC
 loc_0B6DBA:
 	clr.w	$6C(a4)
-	lea.l	sub_0B6D7E(pc),a0
+	lea.l	BrainChild_StateFallHome(pc),a0
 	move.l	a0,$5C(a4)
 	moveq	#$8,d0
 	and.w	$4(a4),d0

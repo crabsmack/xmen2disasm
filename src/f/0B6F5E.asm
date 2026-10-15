@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_0B6F5E	[link-after-rts]
+; BrainChild_StateFire - BRAINCHILD state: fire a shot forward (offset +-$23, -$1E; GaussBullet_Fire), sound $EC, next step after 10 frames
+; In:  8(a6) = this
+; Out: none
+; Found: link-after-rts
 ; ---------------------------------------------------------------------------
-sub_0B6F5E:
+BrainChild_StateFire:
 	link.w	a6,#$FFFC
 	movem.l	d4-d7/a4,-(a7)
 	movea.l	$8(a6),a4

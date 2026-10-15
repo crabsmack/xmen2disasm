@@ -1,7 +1,11 @@
 ; ---------------------------------------------------------------------------
-; sub_0B66DC	[jt 917]
+; SavageA4_InitBossStages - SavageA4: fill the boss stage table (2, 0, 2, 5, 10, $F, $1E, $FF) and set the boss value -$3B02/-$3B04 to 50
+; In:  none
+; Out: none
+; Evidence: table at -$3B14 (stack buffer of SavageA4_RunScene); -$3B06 := 0; jt 917; TAS 33301
+; Found: jt 917
 ; ---------------------------------------------------------------------------
-sub_0B66DC:
+SavageA4_InitBossStages:
 	link.w	a6,#$0
 	movea.l	-$3B14(a5),a0
 	move.b	#$2,(a0)

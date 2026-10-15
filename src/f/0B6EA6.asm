@@ -1,7 +1,11 @@
 ; ---------------------------------------------------------------------------
-; sub_0B6EA6	[jt 926]
+; BrainChild_ActFacePlayer - BRAINCHILD script action: stop, face the nearest player, next step
+; In:  8(a6) = this
+; Out: none
+; Evidence: script at +$A0, index +$9E
+; Found: jt 926
 ; ---------------------------------------------------------------------------
-sub_0B6EA6:
+BrainChild_ActFacePlayer:
 	link.w	a6,#$0
 	movem.l	a3-a4,-(a7)
 	movea.l	$8(a6),a4

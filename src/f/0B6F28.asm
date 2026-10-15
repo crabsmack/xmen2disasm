@@ -1,7 +1,11 @@
 ; ---------------------------------------------------------------------------
-; sub_0B6F28	[jt 927]
+; BrainChild_ActShoot - BRAINCHILD script action: shooting animation jt[$1F9A], then fire
+; In:  8(a6) = this
+; Out: d0
+; Evidence: +$6C = $FF; next BrainChild_StateFire
+; Found: jt 927
 ; ---------------------------------------------------------------------------
-sub_0B6F28:
+BrainChild_ActShoot:
 	link.w	a6,#$0
 	move.l	a4,-(a7)
 	movea.l	$8(a6),a4
@@ -11,7 +15,7 @@ sub_0B6F28:
 	jsr	$4E42(a5)	; -> Obj_SetAnim
 	addq.w	#$8,a7
 	move.w	#$FF,$6C(a4)
-	lea.l	sub_0B6F5E(pc),a0
+	lea.l	BrainChild_StateFire(pc),a0
 	move.l	a0,$5C(a4)
 	moveq	#$8,d0
 	and.w	$4(a4),d0

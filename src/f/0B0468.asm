@@ -1,7 +1,11 @@
 ; ---------------------------------------------------------------------------
-; sub_0B0468	[link-after-rts]
+; SavageA3_LoadResources - SavageA3: load its resource set into -$1A88
+; In:  none
+; Out: none
+; Evidence: SprDef_Add(jt[$3E98], 3)
+; Found: link-after-rts
 ; ---------------------------------------------------------------------------
-sub_0B0468:
+SavageA3_LoadResources:
 	link.w	a6,#$0
 	moveq	#$3,d0
 	move.l	d0,-(a7)

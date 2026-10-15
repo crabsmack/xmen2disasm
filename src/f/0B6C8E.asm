@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_0B6C8E	[link-after-rts]
+; BrainChild_StateRise2 - BRAINCHILD leap: until vy >= -$10D, then frame 4
+; In:  8(a6) = this
+; Out: d0
+; Found: link-after-rts
 ; ---------------------------------------------------------------------------
-sub_0B6C8E:
+BrainChild_StateRise2:
 	link.w	a6,#$0
 	move.l	a4,-(a7)
 	movea.l	$8(a6),a4
@@ -15,14 +18,14 @@ sub_0B6C8E:
 	jsr	(a1)
 	addq.w	#$8,a7
 	clr.w	$6C(a4)
-	lea.l	sub_0B6CDE(pc),a0
+	lea.l	BrainChild_StateApex(pc),a0
 	move.l	a0,$5C(a4)
 	moveq	#$8,d0
 	and.w	$4(a4),d0
 	bra.s	loc_0B6CD6
 loc_0B6CC4:
 	clr.w	$6C(a4)
-	lea.l	sub_0B6C8E(pc),a0
+	lea.l	BrainChild_StateRise2(pc),a0
 	move.l	a0,$5C(a4)
 	moveq	#$8,d0
 	and.w	$4(a4),d0

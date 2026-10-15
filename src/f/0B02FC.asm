@@ -1,7 +1,11 @@
 ; ---------------------------------------------------------------------------
-; sub_0B02FC	[link-after-rts]
+; SavageA3_TileHookCrack - SavageA3 tile hook [2]: crack a breakable tile one step ($86 -> $8B -> $8C -> $2A broken; broken removes its block)
+; In:  8(a6) = column, $A(a6) = row
+; Out: none
+; Evidence: SavageA2_SetBlockTiles(col, row, next | attrs, next == $2A, $47); installed by SavageA3_InstallTileHooks; TAS 32870-32879
+; Found: link-after-rts
 ; ---------------------------------------------------------------------------
-sub_0B02FC:
+SavageA3_TileHookCrack:
 	link.w	a6,#$0
 	movem.l	d3-d7,-(a7)
 	move.w	$A(a6),d4

@@ -1,7 +1,11 @@
 ; ---------------------------------------------------------------------------
-; sub_0B602A	[link-after-rts]
+; SavageA4_CyclePalettes - SavageA4: run the three palette cycles (tables $0B664C, $0B667C, $0B66AC)
+; In:  none
+; Out: none
+; Evidence: Pal_CycleStep x3 with the counters reset by SavageA4_ResetPalCycles; TAS 33423-34593
+; Found: link-after-rts
 ; ---------------------------------------------------------------------------
-sub_0B602A:
+SavageA4_CyclePalettes:
 	link.w	a6,#$0
 	moveq	#$0,d0
 	move.l	d0,-(a7)

@@ -1,9 +1,12 @@
 ; ---------------------------------------------------------------------------
-; sub_0B0408	[link-after-rts]
+; SavageA3_InitCamera - SavageA3: create the camera (CAMERA +$0A with SavageA3_CamSetHooks) into g_Camera
+; In:  none
+; Out: none
+; Found: link-after-rts
 ; ---------------------------------------------------------------------------
-sub_0B0408:
+SavageA3_InitCamera:
 	link.w	a6,#$0
-	pea.l	sub_0B03DA(pc)
+	pea.l	SavageA3_CamSetHooks(pc)
 	lea.l	$4DBA(a5),a0
 	move.l	$2(a0),-(a7)
 	lea.l	$4DBA(a5),a0

@@ -1,7 +1,11 @@
 ; ---------------------------------------------------------------------------
-; sub_0B0484	[link-after-rts]
+; SavageA3_LoadLevel - SavageA3: load the level (Level_Load with the Perimeter2 class list $0B0280) and set limits/parallax factors
+; In:  none
+; Out: none
+; Evidence: same settings as SavageA2_LoadLevel; TAS 32058
+; Found: link-after-rts
 ; ---------------------------------------------------------------------------
-sub_0B0484:
+SavageA3_LoadLevel:
 	link.w	a6,#$0
 	lea.l	$1C6A(a5),a0
 	move.l	$2(a0),-(a7)

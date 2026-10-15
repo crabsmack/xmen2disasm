@@ -1,7 +1,11 @@
 ; ---------------------------------------------------------------------------
-; sub_0B6DD4	[link-after-rts]
+; BrainChild_StateLand - BRAINCHILD state: landed - frame 2, stop, join the hit and collision lists, palette line 3 from $119F5E, start the script
+; In:  8(a6) = this
+; Out: d0
+; Evidence: sub_15DF2A into $FFEBAE and $FFEBAA; 16 words -> g_PalBase+$60; script +$A0/+$9E; TAS 33537
+; Found: link-after-rts
 ; ---------------------------------------------------------------------------
-sub_0B6DD4:
+BrainChild_StateLand:
 	link.w	a6,#$FFFC
 	movem.l	d3/d7/a3-a4,-(a7)
 	movea.l	$8(a6),a4

@@ -1,12 +1,16 @@
 ; ---------------------------------------------------------------------------
-; sub_0B6BB2	[link-after-rts]
+; BrainChild_StateStart - BRAINCHILD first state: go to BrainChild_StateLeap
+; In:  8(a6) = this
+; Out: d0
+; Evidence: TAS 33490
+; Found: link-after-rts
 ; ---------------------------------------------------------------------------
-sub_0B6BB2:
+BrainChild_StateStart:
 	link.w	a6,#$0
 	move.l	a4,-(a7)
 	movea.l	$8(a6),a4
 	clr.w	$6C(a4)
-	lea.l	sub_0B6BD6(pc),a0
+	lea.l	BrainChild_StateLeap(pc),a0
 	move.l	a0,$5C(a4)
 	moveq	#$8,d0
 	and.w	$4(a4),d0

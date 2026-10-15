@@ -37,7 +37,7 @@ BrainBabyBio_Init:
 	move.l	$2(a0),-(a7)
 	pea.l	$96(a4)
 	jsr	$3ED2(a5)	; -> AiScript_Set
-	lea.l	sub_0B68B8(pc),a0
+	lea.l	BrainBabyBio_StateStart(pc),a0
 	move.l	a0,$64(a4)
 	move.l	a0,$5C(a4)
 	ori.w	#$1000,$6(a4)

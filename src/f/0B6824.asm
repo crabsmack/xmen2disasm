@@ -1,7 +1,11 @@
 ; ---------------------------------------------------------------------------
-; sub_0B6824	[jt 920]
+; BrainBabyBio_OnDeath - BRAINBABYBIO slot +$72 OnDeath: turn into a SAVAGEMEDIUMBIO (same facing, 20-frame invulnerability, sub_0BCDF0($18E, $140)) and remove itself
+; In:  8(a6) = this
+; Out: none
+; Evidence: Tbl_SavageMediumBio_vtable +$0E New at its position; slot +$52; jt 920; TAS 33558
+; Found: jt 920
 ; ---------------------------------------------------------------------------
-sub_0B6824:
+BrainBabyBio_OnDeath:
 	link.w	a6,#$0
 	movem.l	a3-a4,-(a7)
 	movea.l	$8(a6),a4

@@ -38,7 +38,7 @@ BrainChild_Init:
 	move.l	$2(a0),-(a7)
 	pea.l	$9E(a4)
 	jsr	$3ED2(a5)	; -> AiScript_Set
-	lea.l	sub_0B6BB2(pc),a0
+	lea.l	BrainChild_StateStart(pc),a0
 	move.l	a0,$64(a4)
 	move.l	a0,$5C(a4)
 	ori.w	#$80,$6(a4)

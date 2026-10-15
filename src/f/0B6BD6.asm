@@ -1,7 +1,11 @@
 ; ---------------------------------------------------------------------------
-; sub_0B6BD6	[link-after-rts]
+; BrainChild_StateLeap - BRAINCHILD state: leap out (frame 3, vx +-$200, vy -$520, gravity $3C)
+; In:  8(a6) = this
+; Out: d0
+; Evidence: next BrainChild_StateRise1; TAS 33491
+; Found: link-after-rts
 ; ---------------------------------------------------------------------------
-sub_0B6BD6:
+BrainChild_StateLeap:
 	link.w	a6,#$0
 	movem.l	d3/a4,-(a7)
 	movea.l	$8(a6),a4
@@ -28,7 +32,7 @@ loc_0B6C10:
 	move.w	#$3C,$20(a4)
 	addq.w	#$8,a7
 	clr.w	$6C(a4)
-	lea.l	sub_0B6C3E(pc),a0
+	lea.l	BrainChild_StateRise1(pc),a0
 	move.l	a0,$5C(a4)
 	moveq	#$8,d0
 	and.w	$4(a4),d0

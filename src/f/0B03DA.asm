@@ -1,7 +1,11 @@
 ; ---------------------------------------------------------------------------
-; sub_0B03DA	[link-after-rts]
+; SavageA3_CamSetHooks - SavageA3 camera creation hook: the SavageA2 flood camera hooks, bounds +$40 = 100, +$42 = $A0
+; In:  8(a6) = camera
+; Out: none
+; Evidence: camera +4 = SavageA2_CamUpdateFlood, +$C = SavageA2_CamApply
+; Found: link-after-rts
 ; ---------------------------------------------------------------------------
-sub_0B03DA:
+SavageA3_CamSetHooks:
 	link.w	a6,#$0
 	move.l	a4,-(a7)
 	movea.l	$8(a6),a4

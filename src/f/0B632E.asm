@@ -1,7 +1,11 @@
 ; ---------------------------------------------------------------------------
-; sub_0B632E	[link-after-rts]
+; SavageA4_CamUpdate - SavageA4 camera update: follow the players (and the object -$3B20 when set), using the dead zones
+; In:  8(a6) = camera
+; Out: d0
+; Evidence: same follow logic as XClone_CamArenaUpdate without the arena clamp; installed by SavageA4_CamSetHooks; TAS 33388-34594
+; Found: link-after-rts
 ; ---------------------------------------------------------------------------
-sub_0B632E:
+SavageA4_CamUpdate:
 	link.w	a6,#$FFEC
 	movem.l	d3-d7/a4,-(a7)
 	movea.l	$8(a6),a4

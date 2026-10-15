@@ -1,7 +1,11 @@
 ; ---------------------------------------------------------------------------
-; sub_0B611E	[link-after-rts]
+; SavageA4_FrameHook - SavageA4 per-frame scene hook: effect sprite, palette cycles, and palette line 3 stepping as the boss value -$3B02 drops past 8/16/24/32/40
+; In:  none
+; Out: none
+; Evidence: sub_1F5F40(1), sub_1F5F5A($13); palettes from jt[$1FD2] / $0B7D5A.. into g_PalBase+$70 (8 words), -$3B24 += $80 per stage; installed by SavageA4_InstallHooks; TAS 33387-34593
+; Found: link-after-rts
 ; ---------------------------------------------------------------------------
-sub_0B611E:
+SavageA4_FrameHook:
 	link.w	a6,#$0
 	movem.l	a3-a4,-(a7)
 	moveq	#$0,d0
@@ -14,20 +18,20 @@ sub_0B611E:
 	jsr	$4E2A(a5)	; -> sub_1F5F5A
 	move.l	g_FrameCounter(a5),d0
 	addq.l	#$1,g_FrameCounter(a5)
-	jsr	sub_0B60BE(pc)
+	jsr	SavageA4_AnimEffectSprite(pc)
 	tst.b	g_PalFadeActive(a5)
 	addq.w	#$8,a7
 	bne.s	loc_0B6152
-	jsr	sub_0B602A(pc)
+	jsr	SavageA4_CyclePalettes(pc)
 loc_0B6152:
 	tst.b	-$38DE(a5)
 	beq.s	loc_0B616E
 	move.l	g_FrameCounter(a5),d0
 	addq.l	#$1,g_FrameCounter(a5)
-	jsr	sub_0B60BE(pc)
+	jsr	SavageA4_AnimEffectSprite(pc)
 	tst.b	g_PalFadeActive(a5)
 	bne.s	loc_0B616E
-	jsr	sub_0B602A(pc)
+	jsr	SavageA4_CyclePalettes(pc)
 loc_0B616E:
 	moveq	#$8,d0
 	cmp.w	-$3B02(a5),d0

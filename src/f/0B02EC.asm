@@ -1,7 +1,9 @@
 ; ---------------------------------------------------------------------------
-; sub_0B02EC
+; SavageA3_EmptyStub2 - empty function (SavageA3 scene setup stub)
+; Out: none
+; Evidence: called once from SavageA3_RunScene; TAS 32160
 ; ---------------------------------------------------------------------------
-sub_0B02EC:
+SavageA3_EmptyStub2:
 	link.w	a6,#$0
 	unlk	a6
 	rts

@@ -1,7 +1,11 @@
 ; ---------------------------------------------------------------------------
-; sub_0B626E	[link-after-rts]
+; SavageA4_LoadLevel - SavageA4: load the Chamber level (Level_Load with the class list jt[$1E8A]) and set the parallax factors
+; In:  none
+; Out: none
+; Evidence: TAS 33301
+; Found: link-after-rts
 ; ---------------------------------------------------------------------------
-sub_0B626E:
+SavageA4_LoadLevel:
 	link.w	a6,#$0
 	lea.l	$1C8A(a5),a0
 	move.l	$2(a0),-(a7)

@@ -1,7 +1,11 @@
 ; ---------------------------------------------------------------------------
-; sub_0B68B8	[link-after-rts]
+; BrainBabyBio_StateStart - BRAINBABYBIO first state: start its AI script after 10 frames
+; In:  8(a6) = this
+; Out: none
+; Evidence: +$5C/+$64 set by BrainBabyBio_Init; TAS 33539
+; Found: link-after-rts
 ; ---------------------------------------------------------------------------
-sub_0B68B8:
+BrainBabyBio_StateStart:
 	link.w	a6,#$0
 	move.l	a4,-(a7)
 	movea.l	$8(a6),a4

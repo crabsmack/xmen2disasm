@@ -1,7 +1,11 @@
 ; ---------------------------------------------------------------------------
-; sub_0B60BE	[link-after-rts]
+; SavageA4_AnimEffectSprite - SavageA4: animate the effect sprite (frames 0-5, 4 frames each)
+; In:  none
+; Out: none
+; Evidence: Spr_SetFrame + Spr_UploadFrame; TAS 33387-34593
+; Found: link-after-rts
 ; ---------------------------------------------------------------------------
-sub_0B60BE:
+SavageA4_AnimEffectSprite:
 	link.w	a6,#$0
 	move.l	d7,-(a7)
 	tst.b	-$38DE(a5)

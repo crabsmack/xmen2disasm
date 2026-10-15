@@ -1,21 +1,25 @@
 ; ---------------------------------------------------------------------------
-; sub_0B65C6	[jt 912]
+; SavageA4_RunScene - scene function for 'SavageA4 Chamber': boss stages, level, hooks, camera, run
+; In:  none
+; Out: none
+; Evidence: registered under that name (jt 912); SavageA4_InitBossStages with a stack table in -$3B14; Scroll_SetParallax($0B663A); CAMERA +$0A(SavageA4_CamSetHooks); sub_11F1A6($10); TAS 33301
+; Found: jt 912
 ; ---------------------------------------------------------------------------
-sub_0B65C6:
+SavageA4_RunScene:
 	link.w	a6,#$FFF8
 	lea.l	-$8(a6),a0
 	move.l	a0,-$3B14(a5)
-	jsr	$1CCA(a5)	; -> sub_0B66DC
-	jsr	sub_0B6322(pc)
-	jsr	sub_0B626E(pc)
-	jsr	sub_0B62F2(pc)
-	jsr	sub_0B6322(pc)
+	jsr	$1CCA(a5)	; -> SavageA4_InitBossStages
+	jsr	SavageA4_CallEmptyStub(pc)
+	jsr	SavageA4_LoadLevel(pc)
+	jsr	SavageA4_InstallHooks(pc)
+	jsr	SavageA4_CallEmptyStub(pc)
 	lea.l	$1CAA(a5),a0
 	move.l	$2(a0),-(a7)
 	jsr	$5102(a5)	; -> Scroll_SetParallax
 	moveq	#$0,d0
 	move.l	d0,-$3B20(a5)
-	pea.l	sub_0B65A0(pc)
+	pea.l	SavageA4_CamSetHooks(pc)
 	lea.l	$4DBA(a5),a0
 	move.l	$2(a0),-(a7)
 	lea.l	$4DBA(a5),a0
