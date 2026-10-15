@@ -120,11 +120,56 @@ MPW C 3.3 matching, what reproduces the ROM (also COMPILER.md):
   C left operand is the source. `register long dx, dy;` = dy d7, dx d6. A value computed and
   dropped = `(void)(expr);`. Dead locals kept spilled: mention them in a trailing `if (0) {}`.
   `for (i = 2; i >= 0; i--)` = `dbra`. `moveq #0; move.w` reads mean a u16 field.
+- Argument pops: a function with any loop (even an empty `do { } while (0);`) keeps its last
+  pop before `unlk`; a goto label right after a call keeps that call's pop without a loop's
+  register effects; `if (0) {}` / `return;` don't flush. `switch (x) { }` = a lone dead read.
+  `if (c) return 1; return 0;` returning short = `sCC/neg/sne/andi.w #1`. `>> n` (n >= 16) =
+  `swap / ext.l / asr.w #n-16`. On PC, a value from `PTR(PTR(Actor))` goes through
+  `(Actor *)` before a subclass cast.
 - Keep original bugs; where C++ disagrees (shift by 32, ...) use `#ifdef XMEN2_MPW` with the
   PC branch computing what the 68000 did.
 - Passing `&local` to a function that is still generated works (the bridge copies the local
   to the 68000 stack and back) for game-memory types only (`SprInst tmp;`, `s16 v;`), not
-  host scalars.
+  host scalars, and not through a `void *` parameter (size unknown). `Mem_Set`/`Mem_Copy`
+  are C, so `Mem_Set(&local, 0, sizeof local)` is fine.
+
+### Learned in round 3 (Tusk, EvilMaker, XClone: 147 functions, 146 matched)
+
+- **Two register operands**: `A op B` is `cmp A,B` (computes B-A) with the condition
+  flipped, so `cmp.w dX,dY` means dX was the C left operand (branches, `s<cc>`, the last term
+  of an `||` chain). `a + b` with simple operands loads b and adds a; a complex right operand
+  (`?:`, call) is evaluated first and a is added from memory. At `&` / `==` the left operand
+  is evaluated first (`1L << bit & dist`, `myType == f(x)`).
+- **Labels stop register sharing**: a loop written with a label/goto gives variables with
+  disjoint lifetimes their own registers; a do/while lets them share. A label also ends a
+  basic block (flushes pending argument pops).
+- Dead code: a statement right after `return` is dropped; one after an if/else whose arms
+  both return is still emitted.
+- `if (x & 1) return 0; return 1;` = `seq d0 / andi.w #1,d0` (`return !(x & 1)` uses d3).
+  `short n = c ? 2 : 1;` as an initializer has no `ext.w`; as an assignment it does.
+- Scene variables (`g_SceneVarXXXX` reused per level): a file-local `#define` alias to a
+  **typed** extern reloads like the ROM; `*(PTR(T) *)&g_SceneVar` gets cached in a3.
+- A `long` passed to a `short` parameter: no `ext.l`. `x << 1` = `lsl.l #1`, `x * 2` = `add.l`.
+  `return v;` adds no move when d0 already holds v. A char and a short sharing one register
+  are two variables. `register` on a parameter or a pointer local fixes a3/a4 swaps
+  (`register Tusk *p = self;`). Pointer locals that don't fit a3/a4 live on the stack, never
+  a2. Two adjacent byte clears merge into `clr.w`. MPW does CSE and constant folding: write
+  the plain expression, not the folded one.
+- `MAX(a,b)` / `MIN(a,b)` (`a > b ? a : b`) are in `xmen2_macros.h`: the ROM's compare
+  order shows the original used them.
+- Where MPW leaves a value in a shared register that the C doesn't state (d0 by accident),
+  the PC branch gets an `#ifndef XMEN2_MPW` line that computes it, with a comment.
+- (Hologram) `if (1) { ... }` puts a label at its end: MPW pops pending call arguments there
+  (`do { } while (0)` flushes at head and end, and weights register choice as a loop).
+  Only `register` variables get first pick of registers; plain locals compete by use count.
+  `long * 12` is a `mulu` sequence; the ROM's `(t<<3)+(t<<2)` comes from
+  `(t = x, (t << 3) + (t << 2))`. Stack temporaries: sibling blocks overlay their slots, a
+  nested block's locals sit below the enclosing ones, first-declared at the lowest address.
+  `a + b | 0x800` stays `.l`; `(short)(a + b) | 0x800` gives `add.w`. An explicit `(short)` on
+  an assignment to a short compiles the same as the implicit narrowing (silences MSVC C4244).
+  `register short x = expr;` in a block = `.l` work then `ext.l` at the push. A caller testing
+  the result with `tst.b d0` means the callee returns `char`. `FN_DATA(f)` passes a function's
+  address as a `void *` argument.
 
 ## 5. Report
 

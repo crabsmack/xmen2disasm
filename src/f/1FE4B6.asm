@@ -20,9 +20,3 @@ loc_1FE4DC:
 	move.b	(a0),d1
 	ext.w	d1
 	rts
-Z80_BusRelease:
-	move.w	#$0,($A11100).l
-	move.w	(a7)+,sr
-	movem.l	(a7)+,d1/a1
-	unlk	a6
-	rts

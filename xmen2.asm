@@ -6413,6 +6413,7 @@ Tbl_SineQuarter:	; 90 words: sin(0..89 deg) * $10000 (0 and 90 are special-cased
 	include "src/f/1FE44E.asm"
 	include "src/f/1FE48E.asm"
 	include "src/f/1FE4B6.asm"
+	include "src/f/1FE4EC.asm"
 	include "src/f/1FE4FE.asm"
 	include "src/f/1FE50A.asm"
 	include "src/f/1FE518.asm"
