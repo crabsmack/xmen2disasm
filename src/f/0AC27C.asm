@@ -1,7 +1,11 @@
 ; ---------------------------------------------------------------------------
-; sub_0AC27C	[link-after-rts]
+; FloatBubbleExplode_StateStart - FLOATBUBBLEEXPLODE first state: play the burst animation $0AC3A0 to its end
+; In:  8(a6) = this
+; Out: d0
+; Evidence: +$6C = $FF; next FloatBubbleExplode_StateEnd; TAS 31609
+; Found: link-after-rts
 ; ---------------------------------------------------------------------------
-sub_0AC27C:
+FloatBubbleExplode_StateStart:
 	link.w	a6,#$0
 	move.l	a4,-(a7)
 	movea.l	$8(a6),a4
@@ -11,7 +15,7 @@ sub_0AC27C:
 	jsr	$4E42(a5)	; -> Obj_SetAnim
 	addq.w	#$8,a7
 	move.w	#$FF,$6C(a4)
-	lea.l	sub_0AC2B2(pc),a0
+	lea.l	FloatBubbleExplode_StateEnd(pc),a0
 	move.l	a0,$5C(a4)
 	moveq	#$8,d0
 	and.w	$4(a4),d0

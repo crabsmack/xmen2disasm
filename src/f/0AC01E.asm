@@ -1,7 +1,6 @@
 ; ---------------------------------------------------------------------------
-; FloatBubble_Init - vtable +$12 constructor: run the parent's Init, then set up a FLOATBUBBLE
-; In:  8(a6) = this, $C(a6) = long x, $10(a6) = long y (8 fraction bits), $14(a6) = spawn parameter
-; Evidence: slot +$12 of the FLOATBUBBLE descriptor $0AB496; TAS frames 29719-31581 (13 frames active); calls parent ACTOR slot +$12
+; FloatBubble_Init - vtable +$12 constructor: sprite set -$3C3A, palette line 0 in the Jungle scenes else 2, direction/speed ($100-$500)/flags from the placement
+; Evidence: first state FloatBubble_StateGrowStart (placement flag bit 0) or FloatBubble_StateStart; +$60 = FloatBubble_StatePop; speed switch Sw_0AC01E
 ; ---------------------------------------------------------------------------
 FloatBubble_Init:
 	link.w	a6,#$0
@@ -82,9 +81,9 @@ loc_0AC05C:
 	and.w	$6(a3),d0
 	move.w	d0,$90(a4)
 	move.w	$8(a3),d0
-	bmi.s	loc_0AC132
+	bmi.s	FloatBubble_Init_Speed1
 	cmpi.w	#$4,d0
-	bgt.s	loc_0AC132
+	bgt.s	FloatBubble_Init_Speed1
 	add.w	d0,d0
 	move.w	Sw_0AC01E(pc,d0.w),d0
 	jmp	Sw_0AC01E-2(pc,d0.w)

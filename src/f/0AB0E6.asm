@@ -1,7 +1,11 @@
 ; ---------------------------------------------------------------------------
-; sub_0AB0E6	[link-after-rts]
+; BubbleManager_ConfigBurst - BUBBLEMANAGER: burst setup for SavageB1 - bursts of +$A2 clusters (default 6) separated by +$A4 frames (default 100)
+; In:  8(a6) = this, $C(a6) = placement record
+; Out: none
+; Evidence: used by BubbleManager_Init when g_ScnSavageB1 == g_SceneIndex; TAS 29716-30468
+; Found: link-after-rts
 ; ---------------------------------------------------------------------------
-sub_0AB0E6:
+BubbleManager_ConfigBurst:
 	link.w	a6,#$0
 	movem.l	a3-a4,-(a7)
 	movea.l	$8(a6),a3

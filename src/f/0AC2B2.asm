@@ -1,7 +1,11 @@
 ; ---------------------------------------------------------------------------
-; sub_0AC2B2	[link-after-rts]
+; FloatBubbleExplode_StateEnd - FLOATBUBBLEEXPLODE state: remove itself (slot +$52)
+; In:  8(a6) = this
+; Out: none
+; Evidence: TAS 31639
+; Found: link-after-rts
 ; ---------------------------------------------------------------------------
-sub_0AC2B2:
+FloatBubbleExplode_StateEnd:
 	link.w	a6,#$0
 	move.l	a4,-(a7)
 	movea.l	$8(a6),a4

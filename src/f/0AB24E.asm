@@ -1,7 +1,11 @@
 ; ---------------------------------------------------------------------------
-; sub_0AB24E	[link-after-rts]
+; BubbleManager_SpawnCluster - BUBBLEMANAGER: release +$9E bubbles around itself (random +-8 px, direction 4) and restart the timer
+; In:  8(a6) = this
+; Out: none
+; Evidence: sub_1600AA random offsets; FloatBubble_Spawn(..., +$98, +$9A, 4); +$6E = +$9C; 2 callers; TAS 29719-31581
+; Found: link-after-rts
 ; ---------------------------------------------------------------------------
-sub_0AB24E:
+BubbleManager_SpawnCluster:
 	link.w	a6,#$0
 	movem.l	d4-d7/a3-a4,-(a7)
 	movea.l	$8(a6),a4
@@ -33,7 +37,7 @@ loc_0AB260:
 	move.l	d0,-(a7)
 	move.l	d6,-(a7)
 	move.l	d5,-(a7)
-	jsr	$1B22(a5)	; -> sub_0AB75A
+	jsr	$1B22(a5)	; -> FloatBubble_Spawn
 	movea.l	d0,a3
 	lea.l	$14(a7),a7
 	move.l	d7,d0

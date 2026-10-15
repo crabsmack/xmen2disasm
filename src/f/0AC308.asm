@@ -47,7 +47,7 @@ loc_0AC33A:
 	move.w	d7,d1
 	or.w	d0,d1
 	move.b	d1,$2E(a4)
-	lea.l	sub_0AC27C(pc),a0
+	lea.l	FloatBubbleExplode_StateStart(pc),a0
 	move.l	a0,$64(a4)
 	move.l	a0,$5C(a4)
 	movem.l	-$C(a6),d3/d7/a4

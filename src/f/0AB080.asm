@@ -1,7 +1,11 @@
 ; ---------------------------------------------------------------------------
-; sub_0AB080	[link-after-rts]
+; BubbleManager_ConfigCluster - BUBBLEMANAGER: take bubble parameters from the placement (+$98/+$9A bubble setup, +$9C period, +$9E count); placement +$E selects surface-line spawning
+; In:  8(a6) = this, $C(a6) = placement record
+; Out: none
+; Evidence: used by BubbleManager_Init outside SavageB1; +$E != 0 -> +6 |= $1000, state BubbleManager_StateEdgeStart
+; Found: link-after-rts
 ; ---------------------------------------------------------------------------
-sub_0AB080:
+BubbleManager_ConfigCluster:
 	link.w	a6,#$0
 	movem.l	a3-a4,-(a7)
 	movea.l	$8(a6),a3
@@ -25,9 +29,9 @@ loc_0AB0C0:
 	tst.w	$E(a4)
 	beq.s	loc_0AB0DC
 	ori.w	#$1000,$6(a3)
-	lea.l	sub_0AB1CA(pc),a0
+	lea.l	BubbleManager_StateEdgeStart(pc),a0
 	move.l	a0,$5C(a3)
-	lea.l	sub_0AB1CA(pc),a0
+	lea.l	BubbleManager_StateEdgeStart(pc),a0
 	move.l	a0,$64(a3)
 loc_0AB0DC:
 	movem.l	-$8(a6),a3-a4

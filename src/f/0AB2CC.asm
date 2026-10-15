@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_0AB2CC	[link-after-rts]
+; BubbleManager_StateEdge - BUBBLEMANAGER state: when the timer is out and the surface line is on screen, release a surface bubble
+; In:  8(a6) = this
+; Out: none
+; Found: link-after-rts
 ; ---------------------------------------------------------------------------
-sub_0AB2CC:
+BubbleManager_StateEdge:
 	link.w	a6,#$0
 	move.l	a4,-(a7)
 	movea.l	$8(a6),a4
@@ -18,7 +21,7 @@ sub_0AB2CC:
 	cmp.l	d1,d0
 	ble.s	loc_0AB304
 	move.l	a4,-(a7)
-	jsr	sub_0AB1EE(pc)
+	jsr	BubbleManager_SpawnAtSurface(pc)
 	addq.w	#$4,a7
 loc_0AB304:
 	movea.l	-$4(a6),a4

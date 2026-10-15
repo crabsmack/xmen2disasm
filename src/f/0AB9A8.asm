@@ -1,7 +1,11 @@
 ; ---------------------------------------------------------------------------
-; sub_0AB9A8	[link-after-rts]
+; FloatBubble_StateWobble1 - FLOATBUBBLE wobble: frame 6 for 10 frames
+; In:  8(a6) = this
+; Out: d0
+; Evidence: loop 6 -> 7 -> 8 -> 6; 3 callers
+; Found: link-after-rts
 ; ---------------------------------------------------------------------------
-sub_0AB9A8:
+FloatBubble_StateWobble1:
 	link.w	a6,#$0
 	move.l	a4,-(a7)
 	movea.l	$8(a6),a4
@@ -13,7 +17,7 @@ sub_0AB9A8:
 	jsr	(a1)
 	addq.w	#$8,a7
 	move.w	#$A,$6C(a4)
-	lea.l	sub_0AB9DE(pc),a0
+	lea.l	FloatBubble_StateWobble2(pc),a0
 	move.l	a0,$5C(a4)
 	moveq	#$8,d0
 	and.w	$4(a4),d0

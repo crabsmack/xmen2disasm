@@ -1,7 +1,5 @@
 ; ---------------------------------------------------------------------------
-; FloatBubble_OutsideActiveWindow - vtable +$42: is a FLOATBUBBLE outside its active window
-; In:  8(a6) = this
-; Evidence: slot +$42 of the FLOATBUBBLE descriptor $0AB496; TAS frames 29721-31626 (299 frames active)
+; FloatBubble_OutsideActiveWindow - vtable +$42: true when more than -$10/$13B px outside the view vertically or -$65/$13B horizontally
 ; ---------------------------------------------------------------------------
 FloatBubble_OutsideActiveWindow:
 	link.w	a6,#$0

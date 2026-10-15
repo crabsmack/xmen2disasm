@@ -1815,7 +1815,7 @@ Tbl_BubbleManager_vtable:	; class descriptor of BUBBLEMANAGER: word name offset 
 	include "src/f/0AB350.asm"
 	include "src/f/0AB370.asm"
 Sw_0AB370:	; switch table of sub at $0AB370: 6 word offsets from Sw_0AB370-2
-	dc.w	loc_0AB3A4-(Sw_0AB370-2), loc_0AB3B6-(Sw_0AB370-2), loc_0AB3C8-(Sw_0AB370-2), loc_0AB3DC-(Sw_0AB370-2)
+	dc.w	BubbleManager_SetWaveParams_Case1-(Sw_0AB370-2), BubbleManager_SetWaveParams_Case2-(Sw_0AB370-2), loc_0AB3C8-(Sw_0AB370-2), loc_0AB3DC-(Sw_0AB370-2)
 	dc.w	loc_0AB3F0-(Sw_0AB370-2), loc_0AB404-(Sw_0AB370-2)
 	incrom	$0AB3A2,$2
 	include "src/f/0AB3A4.asm"
@@ -1829,8 +1829,8 @@ Tbl_FloatBubble_vtable:	; class descriptor of FLOATBUBBLE: word name offset $6E,
 	include "src/f/0AB51E.asm"
 	include "src/f/0AB526.asm"
 Sw_0AB526:	; switch table of sub at $0AB526: 8 word offsets from Sw_0AB526-2
-	dc.w	loc_0AB55C-(Sw_0AB526-2), loc_0AB706-(Sw_0AB526-2), loc_0AB6D8-(Sw_0AB526-2), loc_0AB68E-(Sw_0AB526-2)
-	dc.w	loc_0AB65E-(Sw_0AB526-2), loc_0AB610-(Sw_0AB526-2), loc_0AB5DE-(Sw_0AB526-2), loc_0AB58E-(Sw_0AB526-2)
+	dc.w	FloatBubble_SetDirection_Up-(Sw_0AB526-2), FloatBubble_SetDirection_UpRight-(Sw_0AB526-2), FloatBubble_SetDirection_Right-(Sw_0AB526-2), FloatBubble_SetDirection_DownRight-(Sw_0AB526-2)
+	dc.w	FloatBubble_SetDirection_Down-(Sw_0AB526-2), loc_0AB610-(Sw_0AB526-2), FloatBubble_SetDirection_Left-(Sw_0AB526-2), loc_0AB58E-(Sw_0AB526-2)
 	include "src/f/0AB55C.asm"
 	include "src/f/0AB5DE.asm"
 	include "src/f/0AB65E.asm"
@@ -1867,8 +1867,8 @@ Sw_0AB526:	; switch table of sub at $0AB526: 8 word offsets from Sw_0AB526-2
 	include "src/f/0ABF3A.asm"
 	include "src/f/0AC01E.asm"
 Sw_0AC01E:	; switch table of sub at $0AC01E: 5 word offsets from Sw_0AC01E-2
-	dc.w	loc_0AC132-(Sw_0AC01E-2), loc_0AC138-(Sw_0AC01E-2), loc_0AC13E-(Sw_0AC01E-2), loc_0AC144-(Sw_0AC01E-2)
-	dc.w	loc_0AC14A-(Sw_0AC01E-2)
+	dc.w	FloatBubble_Init_Speed1-(Sw_0AC01E-2), FloatBubble_Init_Speed2-(Sw_0AC01E-2), loc_0AC13E-(Sw_0AC01E-2), loc_0AC144-(Sw_0AC01E-2)
+	dc.w	FloatBubble_Init_Speed5-(Sw_0AC01E-2)
 	include "src/f/0AC132.asm"
 	include "src/f/0AC138.asm"
 	include "src/f/0AC14A.asm"

@@ -1,7 +1,11 @@
 ; ---------------------------------------------------------------------------
-; sub_0AB7A8	[link-after-rts]
+; FloatBubble_StateGrowStart - FLOATBUBBLE state: start growing in place (sound $B9)
+; In:  8(a6) = this
+; Out: d0
+; Evidence: first state when placement flag bit 0; stops; next FloatBubble_StateGrow0 after 10 frames
+; Found: link-after-rts
 ; ---------------------------------------------------------------------------
-sub_0AB7A8:
+FloatBubble_StateGrowStart:
 	link.w	a6,#$0
 	move.l	a4,-(a7)
 	movea.l	$8(a6),a4
@@ -14,7 +18,7 @@ sub_0AB7A8:
 	jsr	$521A(a5)	; -> Snd_Play
 	addq.w	#$8,a7
 	move.w	#$A,$6C(a4)
-	lea.l	sub_0AB7EC(pc),a0
+	lea.l	FloatBubble_StateGrow0(pc),a0
 	move.l	a0,$5C(a4)
 	moveq	#$8,d0
 	and.w	$4(a4),d0

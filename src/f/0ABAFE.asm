@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_0ABAFE	[link-after-rts]
+; FloatBubble_StatePopEnd - FLOATBUBBLE pop: remove itself (slot +$52 Kill)
+; In:  8(a6) = this
+; Out: none
+; Found: link-after-rts
 ; ---------------------------------------------------------------------------
-sub_0ABAFE:
+FloatBubble_StatePopEnd:
 	link.w	a6,#$0
 	move.l	a4,-(a7)
 	movea.l	$8(a6),a4

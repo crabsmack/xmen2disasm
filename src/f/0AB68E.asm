@@ -1,7 +1,9 @@
 ; ---------------------------------------------------------------------------
-; loc_0AB68E	[static: switch-table case target (tools/switches.py: table after `move.w T(pc,dN.w),dN / jmp T-2(pc,dN.w)`, size from the cmpi bound)]
+; FloatBubble_SetDirection_DownRight - FloatBubble_SetDirection case 3: down-right (accel +8/+8)
+; Evidence: switch target
+; Found: static: switch-table case target (tools/switches.py: table after `move.w T(pc,dN.w),dN / jmp T-2(pc,dN.w)`, size from the cmpi bound)
 ; ---------------------------------------------------------------------------
-loc_0AB68E:
+FloatBubble_SetDirection_DownRight:
 	move.w	#$8,$1E(a4)
 	move.w	#$8,$20(a4)
 	tst.w	$16(a4)
@@ -30,4 +32,4 @@ loc_0AB6CA:
 	neg.l	d0
 loc_0AB6D2:
 	move.w	d0,$18(a4)
-	bra.s	loc_0AB750
+	bra.s	FloatBubble_SetDirection_Done

@@ -1,7 +1,11 @@
 ; ---------------------------------------------------------------------------
-; sub_0ABA4A	[link-after-rts]
+; FloatBubble_StatePop - FLOATBUBBLE hurt state (+$60): pop - frame $F, sound $BA
+; In:  8(a6) = this
+; Out: d0
+; Evidence: set as +$60 by FloatBubble_Init; then frames $10, $11 and Kill, 6 frames each
+; Found: link-after-rts
 ; ---------------------------------------------------------------------------
-sub_0ABA4A:
+FloatBubble_StatePop:
 	link.w	a6,#$0
 	move.l	a4,-(a7)
 	movea.l	$8(a6),a4
@@ -17,7 +21,7 @@ sub_0ABA4A:
 	jsr	$521A(a5)	; -> Snd_Play
 	lea.l	$10(a7),a7
 	move.w	#$6,$6C(a4)
-	lea.l	sub_0ABA92(pc),a0
+	lea.l	FloatBubble_StatePop2(pc),a0
 	move.l	a0,$5C(a4)
 	moveq	#$8,d0
 	and.w	$4(a4),d0

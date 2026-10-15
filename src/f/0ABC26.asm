@@ -1,7 +1,5 @@
 ; ---------------------------------------------------------------------------
-; FloatBubble_Deactivate - Deactivate
-; In:  8(a6) = this
-; Evidence: slot +$46 of the FLOATBUBBLE descriptor $0AB496; TAS frames 29743-31626 (16 frames active); calls parent ACTOR slot +$46
+; FloatBubble_Deactivate - vtable +$46: parent Deactivate, then remove itself (slot +$52)
 ; ---------------------------------------------------------------------------
 FloatBubble_Deactivate:
 	link.w	a6,#$0

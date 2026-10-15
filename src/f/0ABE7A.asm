@@ -1,7 +1,5 @@
 ; ---------------------------------------------------------------------------
-; FloatBubble_TakeDamage - vtable +$26: a FLOATBUBBLE is hit (attacker, damage)
-; In:  8(a6) = this, $C(a6) = attacker, then hit parameters (see ACTOR +$26 $15E680)
-; Evidence: slot +$26 of the FLOATBUBBLE descriptor $0AB496; TAS frames 31606-31606 (1 frames active); calls parent ACTOR slot +$26
+; FloatBubble_TakeDamage - vtable +$26: parent TakeDamage, then health 1 and burst (FloatBubble_StateBurst)
 ; ---------------------------------------------------------------------------
 FloatBubble_TakeDamage:
 	link.w	a6,#$0
@@ -29,7 +27,7 @@ FloatBubble_TakeDamage:
 	movea.l	$26(a0),a1
 	jsr	(a1)
 	move.w	#$1,$68(a4)
-	lea.l	sub_0ABB1A(pc),a0
+	lea.l	FloatBubble_StateBurst(pc),a0
 	move.l	a0,$64(a4)
 	move.l	a0,$5C(a4)
 	movea.l	-$4(a6),a4

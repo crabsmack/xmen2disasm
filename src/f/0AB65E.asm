@@ -1,7 +1,9 @@
 ; ---------------------------------------------------------------------------
-; loc_0AB65E	[runtime: executed in tas]
+; FloatBubble_SetDirection_Down - FloatBubble_SetDirection case 4: down (accel 0/+8)
+; Evidence: switch target
+; Found: runtime: executed in 1 run(s) (tas)
 ; ---------------------------------------------------------------------------
-loc_0AB65E:
+FloatBubble_SetDirection_Down:
 	clr.w	$1E(a4)
 	move.w	#$8,$20(a4)
 	clr.w	$16(a4)
@@ -18,4 +20,4 @@ loc_0AB67E:
 	neg.l	d0
 loc_0AB686:
 	move.w	d0,$18(a4)
-	bra.w	loc_0AB750
+	bra.w	FloatBubble_SetDirection_Done

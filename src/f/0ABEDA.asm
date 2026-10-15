@@ -1,7 +1,5 @@
 ; ---------------------------------------------------------------------------
-; FloatBubble_Attack - vtable +$22: a FLOATBUBBLE hits a target object
-; In:  8(a6) = this, $C(a6) = target object, then hit parameters (see ACTOR +$22 $15E630)
-; Evidence: slot +$22 of the FLOATBUBBLE descriptor $0AB496; never runs in the corpus; calls parent ACTOR slot +$22
+; FloatBubble_Attack - vtable +$22: parent Attack (it hit someone), then health 1 and burst (FloatBubble_StateBurst)
 ; ---------------------------------------------------------------------------
 FloatBubble_Attack:
 	link.w	a6,#$0
@@ -29,7 +27,7 @@ FloatBubble_Attack:
 	movea.l	$22(a0),a1
 	jsr	(a1)
 	move.w	#$1,$68(a4)
-	lea.l	sub_0ABB1A(pc),a0
+	lea.l	FloatBubble_StateBurst(pc),a0
 	move.l	a0,$64(a4)
 	move.l	a0,$5C(a4)
 	movea.l	-$4(a6),a4

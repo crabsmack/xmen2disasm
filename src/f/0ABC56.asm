@@ -1,7 +1,6 @@
 ; ---------------------------------------------------------------------------
-; FloatBubble_Move - vtable +$4E: per-frame movement of a FLOATBUBBLE
-; In:  8(a6) = this
-; Evidence: slot +$4E of the FLOATBUBBLE descriptor $0AB496; TAS frames 29721-31625 (289 frames active)
+; FloatBubble_Move - vtable +$4E: drift (velocity/accel clamped to +-max) plus a wobble offset around the last turning point; stuck to the surface line -$38BC while +$8C bit 1
+; Evidence: only when +$8C bit 2; TAS 29721-31625
 ; ---------------------------------------------------------------------------
 FloatBubble_Move:
 	link.w	a6,#$0

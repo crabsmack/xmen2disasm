@@ -1,7 +1,11 @@
 ; ---------------------------------------------------------------------------
-; sub_0AB75A	[jt 864]
+; FloatBubble_Spawn - create a FLOATBUBBLE at (x, y) with setup words a/b and direction
+; In:  8(a6) = long x, $C(a6) = long y, $12(a6) = word a, $16(a6) = word b, $1A(a6) = word direction
+; Out: d0 = object
+; Evidence: builds a placement record {+6 a, +8 b, +$A 0, +$E dir} and calls Tbl_FloatBubble_vtable +$0E New; jt 864; callers BubbleManager_SpawnCluster/SpawnAtSurface
+; Found: jt 864
 ; ---------------------------------------------------------------------------
-sub_0AB75A:
+FloatBubble_Spawn:
 	link.w	a6,#$FFF0
 	move.l	a4,-(a7)
 	move.w	$12(a6),-$A(a6)

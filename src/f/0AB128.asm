@@ -1,7 +1,7 @@
 ; ---------------------------------------------------------------------------
 ; BubbleManager_Init - vtable +$12 constructor: run the parent's Init, then set up a BUBBLEMANAGER
 ; In:  8(a6) = this, $C(a6) = long x, $10(a6) = long y (8 fraction bits), $14(a6) = spawn parameter
-; Evidence: slot +$12 of the BUBBLEMANAGER descriptor $0AAFA8; TAS frames 29716-31577 (14 frames active); calls parent XNPC slot +$12; state handler(s) put in +$5C: sub_0AB30C
+; Evidence: slot +$12 of the BUBBLEMANAGER descriptor $0AAFA8; TAS frames 29716-31577 (14 frames active); calls parent XNPC slot +$12; state handler(s) put in +$5C: BubbleManager_StateStart
 ; ---------------------------------------------------------------------------
 BubbleManager_Init:
 	link.w	a6,#$0
@@ -23,9 +23,9 @@ BubbleManager_Init:
 	clr.b	$42(a4)
 	ori.b	#$4,$2E(a4)
 	ori.w	#$408B,$6(a4)
-	lea.l	sub_0AB30C(pc),a0
+	lea.l	BubbleManager_StateStart(pc),a0
 	move.l	a0,$5C(a4)
-	lea.l	sub_0AB30C(pc),a0
+	lea.l	BubbleManager_StateStart(pc),a0
 	move.l	a0,$64(a4)
 	clr.l	$94(a4)
 	clr.l	$98(a4)
@@ -40,13 +40,13 @@ BubbleManager_Init:
 	bne.s	loc_0AB1B6
 	move.l	a3,-(a7)
 	move.l	a4,-(a7)
-	jsr	sub_0AB0E6(pc)
+	jsr	BubbleManager_ConfigBurst(pc)
 	addq.w	#$8,a7
 	bra.s	loc_0AB1C0
 loc_0AB1B6:
 	move.l	a3,-(a7)
 	move.l	a4,-(a7)
-	jsr	sub_0AB080(pc)
+	jsr	BubbleManager_ConfigCluster(pc)
 	addq.w	#$8,a7
 loc_0AB1C0:
 	movem.l	-$8(a6),a3-a4
