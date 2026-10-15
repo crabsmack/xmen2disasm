@@ -1,5 +1,5 @@
 ; ---------------------------------------------------------------------------
-; SavageA3_FrameHook - SavageA3 per-frame scene hook: counter, light animation (SavageA2_AnimLights), empty stub; twice at half rate
+; SavageA3_FrameHook - SavageA3 per-frame scene hook: counter, light animation (SavageA2_AnimLights), empty stub; twice with g_TwoPlayerStep
 ; In:  none
 ; Out: none
 ; Evidence: installed by SavageA3_InstallFrameHook; TAS 32205-33097

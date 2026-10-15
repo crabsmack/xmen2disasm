@@ -2,7 +2,7 @@
 ; LittleLeg_Update - LITTLELEG slot +$0E (timer callback): step the three sprite animations and follow the boss scroll
 ; In:  8(a6) = this
 ; Out: none
-; Evidence: per sprite: frame counter += 1 (2 when -$38DE), advance the frame list, stop at the end when flag bit 1; screen pos +4/+6 = world +8/+A minus the boss offsets -$3C44/-$3C48; TAS 49292-51071 every frame
+; Evidence: per sprite: frame counter += 1 (2 when g_TwoPlayerStep), advance the frame list, stop at the end when flag bit 1; screen pos +4/+6 = world +8/+A minus the boss offsets -$3C44/-$3C48; TAS 49292-51071 every frame
 ; Found: jt 613
 ; ---------------------------------------------------------------------------
 LittleLeg_Update:

@@ -2,7 +2,7 @@
 ; CloneA5_FrameHook - CloneA5 per-frame scene hook: first frame loads resources and spawns the boss; then shockwave sprites and palette cycling at the boss's health-based speed
 ; In:  none
 ; Out: none
-; Evidence: installed in -$388E by CloneA5_RunScene; once (-$3B0C bit $20): sub_15B0E6(CloneA5_LoadResources, 1), CloneA5_SpawnBoss; counter -$33A2; speed byte -$3C4A (= boss health*2, BroodBoss_Update) into the cycle table, Pal_CycleStep unless fading; twice at half rate; TAS 49271-52803
+; Evidence: installed in -$388E by CloneA5_RunScene; once (-$3B0C bit $20): sub_15B0E6(CloneA5_LoadResources, 1), CloneA5_SpawnBoss; counter -$33A2; speed byte -$3C4A (= boss health*2, BroodBoss_Update) into the cycle table, Pal_CycleStep unless fading; twice with g_TwoPlayerStep; TAS 49271-52803
 ; Found: link-after-rts
 ; ---------------------------------------------------------------------------
 CloneA5_FrameHook:

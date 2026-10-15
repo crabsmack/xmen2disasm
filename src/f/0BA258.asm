@@ -1,5 +1,5 @@
 ; ---------------------------------------------------------------------------
-; SavageBioBase_Move - vtable +$4E: integrate velocity (twice at half rate) and clamp to the arena box (box top unless +$9C bit 0)
+; SavageBioBase_Move - vtable +$4E: integrate velocity (twice with g_TwoPlayerStep) and clamp to the arena box (box top unless +$9C bit 0)
 ; Evidence: TAS 33560-34355
 ; ---------------------------------------------------------------------------
 SavageBioBase_Move:

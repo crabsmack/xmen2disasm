@@ -1,5 +1,5 @@
 ; ---------------------------------------------------------------------------
-; BroodBoss_StateDeathSink - BROODBOSS death: lower the boss offset by $A0 (x2 at half rate) per frame to below $1A9
+; BroodBoss_StateDeathSink - BROODBOSS death: lower the boss offset by $A0 (x2 with g_TwoPlayerStep) per frame to below $1A9
 ; In:  8(a6) = this
 ; Out: d0
 ; Evidence: next BroodBoss_StateExplode; TAS 50693-50708

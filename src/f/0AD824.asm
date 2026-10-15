@@ -1,5 +1,5 @@
 ; ---------------------------------------------------------------------------
-; SavageA2_FrameHook - SavageA2 per-frame scene hook: counter -$33A2 and the light animation (twice at half rate)
+; SavageA2_FrameHook - SavageA2 per-frame scene hook: counter -$33A2 and the light animation (twice with g_TwoPlayerStep)
 ; In:  none
 ; Out: none
 ; Evidence: installed in g_SceneFrameHook; TAS 30901-31900

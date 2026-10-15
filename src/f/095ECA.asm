@@ -2,7 +2,7 @@
 ; XClone_StatePodFall - XCLONE entrance: move the pod until it hits the floor (+$A6), bounce at half speed
 ; In:  8(a6) = this
 ; Out: d0
-; Evidence: integrates the pod's velocity (twice at half rate) and its record +$92; next XClone_StatePodBounce1; TAS 53061-57292
+; Evidence: integrates the pod's velocity (twice with g_TwoPlayerStep) and its record +$92; next XClone_StatePodBounce1; TAS 53061-57292
 ; Found: link-after-rts
 ; ---------------------------------------------------------------------------
 XClone_StatePodFall:

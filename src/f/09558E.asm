@@ -1,6 +1,6 @@
 ; ---------------------------------------------------------------------------
 ; XClone_Update - vtable +$4A: parent update, count down the flash (+$B6), +$B7 and +$B8 timers, then slot +$82
-; Evidence: +$B6 reaching 0 clears +6 bit $40; steps of 2 at half rate (-$38DE); TAS 52266-57465
+; Evidence: +$B6 reaching 0 clears +6 bit $40; steps of 2 with g_TwoPlayerStep; TAS 52266-57465
 ; ---------------------------------------------------------------------------
 XClone_Update:
 	link.w	a6,#$0

@@ -2,7 +2,7 @@
 ; DropBomb_StateFall - DROPBOMB state: fall under gravity until reaching the floor y found at Init, then explode
 ; In:  8(a6) = this
 ; Out: d0
-; Evidence: x += vx, y += vy, v += accel (twice when -$38DE set); when y >> 8 >= +$8C (floor from Seg_FindBelow in DropBomb_Init) clears velocity and sets handler DropBomb_StateExplode; TAS 48480-50062
+; Evidence: x += vx, y += vy, v += accel (twice when g_TwoPlayerStep); when y >> 8 >= +$8C (floor from Seg_FindBelow in DropBomb_Init) clears velocity and sets handler DropBomb_StateExplode; TAS 48480-50062
 ; Found: link-after-rts
 ; ---------------------------------------------------------------------------
 DropBomb_StateFall:
