@@ -9,11 +9,11 @@ Platform1_SteerByPad_LeftRight:
 	seq.b	d3
 	neg.b	d3
 	beq.s	loc_106FB0
-	move.w	-$3B98(a5),d0
+	move.w	g_PadMaskLeft(a5),d0
 	and.w	-$3A36(a5),d0
 	bra.s	loc_106FB8
 loc_106FB0:
-	move.w	-$3B98(a5),d0
+	move.w	g_PadMaskLeft(a5),d0
 	and.w	-$3A38(a5),d0
 loc_106FB8:
 	beq.s	loc_106FC8
@@ -27,11 +27,11 @@ loc_106FC8:
 	seq.b	d3
 	neg.b	d3
 	beq.s	loc_106FDC
-	move.w	-$3B9A(a5),d0
+	move.w	g_PadMaskRight(a5),d0
 	and.w	-$3A36(a5),d0
 	bra.s	loc_106FE4
 loc_106FDC:
-	move.w	-$3B9A(a5),d0
+	move.w	g_PadMaskRight(a5),d0
 	and.w	-$3A38(a5),d0
 loc_106FE4:
 	beq.w	loc_1070DE
@@ -42,11 +42,11 @@ loc_106FF0:
 	seq.b	d3
 	neg.b	d3
 	beq.s	loc_107004
-	move.w	-$3BA0(a5),d0
+	move.w	g_PadMaskDown(a5),d0
 	and.w	-$3A36(a5),d0
 	bra.s	loc_10700C
 loc_107004:
-	move.w	-$3BA0(a5),d0
+	move.w	g_PadMaskDown(a5),d0
 	and.w	-$3A38(a5),d0
 loc_10700C:
 	beq.s	loc_10701C
@@ -60,11 +60,11 @@ loc_10701C:
 	seq.b	d3
 	neg.b	d3
 	beq.s	loc_107030
-	move.w	-$3B9E(a5),d0
+	move.w	g_PadMaskUp(a5),d0
 	and.w	-$3A36(a5),d0
 	bra.s	loc_107038
 loc_107030:
-	move.w	-$3B9E(a5),d0
+	move.w	g_PadMaskUp(a5),d0
 	and.w	-$3A38(a5),d0
 loc_107038:
 	beq.w	loc_1070DE
@@ -75,11 +75,11 @@ loc_107044:
 	seq.b	d3
 	neg.b	d3
 	beq.s	loc_107058
-	move.w	-$3B98(a5),d0
+	move.w	g_PadMaskLeft(a5),d0
 	and.w	-$3A36(a5),d0
 	bra.s	loc_107060
 loc_107058:
-	move.w	-$3B98(a5),d0
+	move.w	g_PadMaskLeft(a5),d0
 	and.w	-$3A38(a5),d0
 loc_107060:
 	beq.s	loc_107068
@@ -90,11 +90,11 @@ loc_107068:
 	seq.b	d3
 	neg.b	d3
 	beq.s	loc_10707C
-	move.w	-$3B9A(a5),d0
+	move.w	g_PadMaskRight(a5),d0
 	and.w	-$3A36(a5),d0
 	bra.s	loc_107084
 loc_10707C:
-	move.w	-$3B9A(a5),d0
+	move.w	g_PadMaskRight(a5),d0
 	and.w	-$3A38(a5),d0
 loc_107084:
 	beq.s	loc_1070DE

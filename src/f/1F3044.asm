@@ -26,13 +26,13 @@ loc_1F3080:
 	clr.w	$16(a4)
 	tst.b	$9D(a4)
 	bne.s	loc_1F309E
-	move.w	-$3BA6(a5),d0
+	move.w	g_PadMaskB(a5),d0
 	not.w	d0
 	and.w	g_Pad1Latch(a5),d0
 	move.w	d0,g_Pad1Latch(a5)
 	bra.s	loc_1F30AC
 loc_1F309E:
-	move.w	-$3BA6(a5),d0
+	move.w	g_PadMaskB(a5),d0
 	not.w	d0
 	and.w	g_Pad2Latch(a5),d0
 	move.w	d0,g_Pad2Latch(a5)

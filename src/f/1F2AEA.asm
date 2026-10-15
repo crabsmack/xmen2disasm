@@ -7,13 +7,13 @@ sub_1F2AEA:
 	movea.l	$8(a6),a4
 	tst.b	$9D(a4)
 	bne.s	loc_1F2B0A
-	move.w	-$3BA4(a5),d0
+	move.w	g_PadMaskC(a5),d0
 	not.w	d0
 	and.w	g_Pad1Latch(a5),d0
 	move.w	d0,g_Pad1Latch(a5)
 	bra.s	loc_1F2B18
 loc_1F2B0A:
-	move.w	-$3BA4(a5),d0
+	move.w	g_PadMaskC(a5),d0
 	not.w	d0
 	and.w	g_Pad2Latch(a5),d0
 	move.w	d0,g_Pad2Latch(a5)

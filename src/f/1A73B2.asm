@@ -37,11 +37,11 @@ loc_1A73DC:
 	seq.b	d3
 	neg.b	d3
 	beq.s	loc_1A7430
-	move.w	-$3B98(a5),d0
+	move.w	g_PadMaskLeft(a5),d0
 	and.w	g_Pad1Held(a5),d0
 	bra.s	loc_1A7438
 loc_1A7430:
-	move.w	-$3B98(a5),d0
+	move.w	g_PadMaskLeft(a5),d0
 	and.w	g_Pad2Held(a5),d0
 loc_1A7438:
 	lea.l	$10(a7),a7
@@ -56,11 +56,11 @@ loc_1A7456:
 	seq.b	d3
 	neg.b	d3
 	beq.s	loc_1A746A
-	move.w	-$3B9A(a5),d0
+	move.w	g_PadMaskRight(a5),d0
 	and.w	g_Pad1Held(a5),d0
 	bra.s	loc_1A7472
 loc_1A746A:
-	move.w	-$3B9A(a5),d0
+	move.w	g_PadMaskRight(a5),d0
 	and.w	g_Pad2Held(a5),d0
 loc_1A7472:
 	beq.s	loc_1A748A

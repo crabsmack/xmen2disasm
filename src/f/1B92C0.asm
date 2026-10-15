@@ -10,13 +10,13 @@ sub_1B92C0:
 	beq.s	loc_1B930E
 	tst.b	$9D(a4)
 	bne.s	loc_1B92EC
-	move.w	-$3BA4(a5),d0
+	move.w	g_PadMaskC(a5),d0
 	not.w	d0
 	and.w	g_Pad1Latch(a5),d0
 	move.w	d0,g_Pad1Latch(a5)
 	bra.s	loc_1B92FA
 loc_1B92EC:
-	move.w	-$3BA4(a5),d0
+	move.w	g_PadMaskC(a5),d0
 	not.w	d0
 	and.w	g_Pad2Latch(a5),d0
 	move.w	d0,g_Pad2Latch(a5)
@@ -34,13 +34,13 @@ loc_1B930E:
 	clr.w	$16(a4)
 	tst.b	$9D(a4)
 	bne.s	loc_1B9332
-	move.w	-$3BA4(a5),d0
+	move.w	g_PadMaskC(a5),d0
 	not.w	d0
 	and.w	g_Pad1Latch(a5),d0
 	move.w	d0,g_Pad1Latch(a5)
 	bra.s	loc_1B9340
 loc_1B9332:
-	move.w	-$3BA4(a5),d0
+	move.w	g_PadMaskC(a5),d0
 	not.w	d0
 	and.w	g_Pad2Latch(a5),d0
 	move.w	d0,g_Pad2Latch(a5)
@@ -80,13 +80,13 @@ loc_1B937C:
 	tst.b	$9D(a4)
 	lea.l	$10(a7),a7
 	bne.s	loc_1B93BC
-	move.w	-$3BA6(a5),d0
+	move.w	g_PadMaskB(a5),d0
 	not.w	d0
 	and.w	g_Pad1Latch(a5),d0
 	move.w	d0,g_Pad1Latch(a5)
 	bra.s	loc_1B93CA
 loc_1B93BC:
-	move.w	-$3BA6(a5),d0
+	move.w	g_PadMaskB(a5),d0
 	not.w	d0
 	and.w	g_Pad2Latch(a5),d0
 	move.w	d0,g_Pad2Latch(a5)
@@ -120,11 +120,11 @@ loc_1B940E:
 	seq.b	d3
 	neg.b	d3
 	beq.s	loc_1B9422
-	move.w	-$3BA4(a5),d0
+	move.w	g_PadMaskC(a5),d0
 	and.w	g_Pad1Released(a5),d0
 	bra.s	loc_1B942A
 loc_1B9422:
-	move.w	-$3BA4(a5),d0
+	move.w	g_PadMaskC(a5),d0
 	and.w	g_Pad2Released(a5),d0
 loc_1B942A:
 	beq.s	loc_1B943A
@@ -138,11 +138,11 @@ loc_1B943A:
 	seq.b	d3
 	neg.b	d3
 	beq.s	loc_1B944E
-	move.w	-$3BA6(a5),d0
+	move.w	g_PadMaskB(a5),d0
 	and.w	g_Pad1Latch(a5),d0
 	bra.s	loc_1B9456
 loc_1B944E:
-	move.w	-$3BA6(a5),d0
+	move.w	g_PadMaskB(a5),d0
 	and.w	g_Pad2Latch(a5),d0
 loc_1B9456:
 	beq.s	loc_1B9460

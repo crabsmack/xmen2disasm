@@ -18,11 +18,11 @@ loc_1F3FDE:
 	seq.b	d3
 	neg.b	d3
 	beq.s	loc_1F4000
-	move.w	-$3B9E(a5),d0
+	move.w	g_PadMaskUp(a5),d0
 	and.w	g_Pad1Held(a5),d0
 	bra.s	loc_1F4008
 loc_1F4000:
-	move.w	-$3B9E(a5),d0
+	move.w	g_PadMaskUp(a5),d0
 	and.w	g_Pad2Held(a5),d0
 loc_1F4008:
 	beq.s	loc_1F4016

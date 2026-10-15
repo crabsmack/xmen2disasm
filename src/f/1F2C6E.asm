@@ -7,13 +7,13 @@ sub_1F2C6E:
 	movea.l	$8(a6),a4
 	tst.b	$9D(a4)
 	bne.s	loc_1F2C90
-	move.w	-$3BA6(a5),d0
+	move.w	g_PadMaskB(a5),d0
 	not.w	d0
 	and.w	g_Pad1Latch(a5),d0
 	move.w	d0,g_Pad1Latch(a5)
 	bra.s	loc_1F2C9E
 loc_1F2C90:
-	move.w	-$3BA6(a5),d0
+	move.w	g_PadMaskB(a5),d0
 	not.w	d0
 	and.w	g_Pad2Latch(a5),d0
 	move.w	d0,g_Pad2Latch(a5)
@@ -23,23 +23,23 @@ loc_1F2C9E:
 	seq.b	d3
 	neg.b	d3
 	beq.s	loc_1F2CBA
-	move.w	-$3BA0(a5),d0
+	move.w	g_PadMaskDown(a5),d0
 	and.w	g_Pad1Held(a5),d0
 	bra.s	loc_1F2CC2
 loc_1F2CBA:
-	move.w	-$3BA0(a5),d0
+	move.w	g_PadMaskDown(a5),d0
 	and.w	g_Pad2Held(a5),d0
 loc_1F2CC2:
 	beq.s	loc_1F2CEA
 	tst.b	$9D(a4)
 	bne.s	loc_1F2CDA
-	move.w	-$3B9C(a5),d0
+	move.w	g_PadMaskLeftRight(a5),d0
 	not.w	d0
 	and.w	g_Pad1Latch(a5),d0
 	move.w	d0,g_Pad1Latch(a5)
 	bra.s	loc_1F2D58
 loc_1F2CDA:
-	move.w	-$3B9C(a5),d0
+	move.w	g_PadMaskLeftRight(a5),d0
 	not.w	d0
 	and.w	g_Pad2Latch(a5),d0
 	move.w	d0,g_Pad2Latch(a5)
@@ -49,21 +49,21 @@ loc_1F2CEA:
 	seq.b	d3
 	neg.b	d3
 	beq.s	loc_1F2CFE
-	move.w	-$3B9A(a5),d0
+	move.w	g_PadMaskRight(a5),d0
 	and.w	g_Pad1Held(a5),d0
 	bra.s	loc_1F2D06
 loc_1F2CFE:
-	move.w	-$3B9A(a5),d0
+	move.w	g_PadMaskRight(a5),d0
 	and.w	g_Pad2Held(a5),d0
 loc_1F2D06:
 	beq.s	loc_1F2D22
 	tst.b	$9D(a4)
 	bne.s	loc_1F2D18
-	move.w	-$3B9A(a5),d0
+	move.w	g_PadMaskRight(a5),d0
 	or.w	d0,g_Pad1Latch(a5)
 	bra.s	loc_1F2D58
 loc_1F2D18:
-	move.w	-$3B9A(a5),d0
+	move.w	g_PadMaskRight(a5),d0
 	or.w	d0,g_Pad2Latch(a5)
 	bra.s	loc_1F2D58
 loc_1F2D22:
@@ -71,21 +71,21 @@ loc_1F2D22:
 	seq.b	d3
 	neg.b	d3
 	beq.s	loc_1F2D36
-	move.w	-$3B98(a5),d0
+	move.w	g_PadMaskLeft(a5),d0
 	and.w	g_Pad1Held(a5),d0
 	bra.s	loc_1F2D3E
 loc_1F2D36:
-	move.w	-$3B98(a5),d0
+	move.w	g_PadMaskLeft(a5),d0
 	and.w	g_Pad2Held(a5),d0
 loc_1F2D3E:
 	beq.s	loc_1F2D58
 	tst.b	$9D(a4)
 	bne.s	loc_1F2D50
-	move.w	-$3B98(a5),d0
+	move.w	g_PadMaskLeft(a5),d0
 	or.w	d0,g_Pad1Latch(a5)
 	bra.s	loc_1F2D58
 loc_1F2D50:
-	move.w	-$3B98(a5),d0
+	move.w	g_PadMaskLeft(a5),d0
 	or.w	d0,g_Pad2Latch(a5)
 loc_1F2D58:
 	movea.l	(a4),a0

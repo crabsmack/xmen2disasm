@@ -9,23 +9,23 @@ sub_1CDB32:
 	seq.b	d3
 	neg.b	d3
 	beq.s	loc_1CDB52
-	move.w	-$3BA8(a5),d0
+	move.w	g_PadMaskA(a5),d0
 	and.w	g_Pad1Latch(a5),d0
 	bra.s	loc_1CDB5A
 loc_1CDB52:
-	move.w	-$3BA8(a5),d0
+	move.w	g_PadMaskA(a5),d0
 	and.w	g_Pad2Latch(a5),d0
 loc_1CDB5A:
 	beq.s	loc_1CDB9E
 	tst.b	$9D(a4)
 	bne.s	loc_1CDB72
-	move.w	-$3BA8(a5),d0
+	move.w	g_PadMaskA(a5),d0
 	not.w	d0
 	and.w	g_Pad1Latch(a5),d0
 	move.w	d0,g_Pad1Latch(a5)
 	bra.s	loc_1CDB80
 loc_1CDB72:
-	move.w	-$3BA8(a5),d0
+	move.w	g_PadMaskA(a5),d0
 	not.w	d0
 	and.w	g_Pad2Latch(a5),d0
 	move.w	d0,g_Pad2Latch(a5)
@@ -58,11 +58,11 @@ loc_1CDBC0:
 	seq.b	d3
 	neg.b	d3
 	beq.s	loc_1CDBDA
-	move.w	-$3BA0(a5),d1
+	move.w	g_PadMaskDown(a5),d1
 	and.w	g_Pad1Held(a5),d1
 	bra.s	loc_1CDBE4
 loc_1CDBDA:
-	move.w	-$3BA0(a5),d0
+	move.w	g_PadMaskDown(a5),d0
 	and.w	g_Pad2Held(a5),d0
 	move.w	d0,d1
 loc_1CDBE4:
@@ -74,11 +74,11 @@ loc_1CDBEE:
 	seq.b	d3
 	neg.b	d3
 	beq.s	loc_1CDC02
-	move.w	-$3BA4(a5),d0
+	move.w	g_PadMaskC(a5),d0
 	and.w	g_Pad1Held(a5),d0
 	bra.s	loc_1CDC0A
 loc_1CDC02:
-	move.w	-$3BA4(a5),d0
+	move.w	g_PadMaskC(a5),d0
 	and.w	g_Pad2Held(a5),d0
 loc_1CDC0A:
 	bne.s	loc_1CDC12
@@ -96,11 +96,11 @@ loc_1CDC28:
 	seq.b	d3
 	neg.b	d3
 	beq.s	loc_1CDC3C
-	move.w	-$3B9C(a5),d0
+	move.w	g_PadMaskLeftRight(a5),d0
 	and.w	g_Pad1Released(a5),d0
 	bra.s	loc_1CDC44
 loc_1CDC3C:
-	move.w	-$3B9C(a5),d0
+	move.w	g_PadMaskLeftRight(a5),d0
 	and.w	g_Pad2Released(a5),d0
 loc_1CDC44:
 	beq.s	loc_1CDC70
@@ -127,11 +127,11 @@ loc_1CDC70:
 	seq.b	d3
 	neg.b	d3
 	beq.s	loc_1CDC8A
-	move.w	-$3B9C(a5),d0
+	move.w	g_PadMaskLeftRight(a5),d0
 	and.w	g_Pad1Held(a5),d0
 	bra.s	loc_1CDC92
 loc_1CDC8A:
-	move.w	-$3B9C(a5),d0
+	move.w	g_PadMaskLeftRight(a5),d0
 	and.w	g_Pad2Held(a5),d0
 loc_1CDC92:
 	beq.s	loc_1CDCD2
@@ -139,11 +139,11 @@ loc_1CDC92:
 	seq.b	d3
 	neg.b	d3
 	beq.s	loc_1CDCA8
-	move.w	-$3B9A(a5),d0
+	move.w	g_PadMaskRight(a5),d0
 	and.w	g_Pad1Held(a5),d0
 	bra.s	loc_1CDCB0
 loc_1CDCA8:
-	move.w	-$3B9A(a5),d0
+	move.w	g_PadMaskRight(a5),d0
 	and.w	g_Pad2Held(a5),d0
 loc_1CDCB0:
 	ext.l	d0

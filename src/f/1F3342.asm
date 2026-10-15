@@ -9,11 +9,11 @@ sub_1F3342:
 	seq.b	d3
 	neg.b	d3
 	beq.s	loc_1F3362
-	move.w	-$3B9A(a5),d0
+	move.w	g_PadMaskRight(a5),d0
 	and.w	g_Pad1Latch(a5),d0
 	bra.s	loc_1F336A
 loc_1F3362:
-	move.w	-$3B9A(a5),d0
+	move.w	g_PadMaskRight(a5),d0
 	and.w	g_Pad2Latch(a5),d0
 loc_1F336A:
 	ext.l	d0
@@ -32,13 +32,13 @@ loc_1F336A:
 	tst.b	$9D(a4)
 	lea.l	$10(a7),a7
 	bne.s	loc_1F33A8
-	move.w	-$3B9C(a5),d0
+	move.w	g_PadMaskLeftRight(a5),d0
 	not.w	d0
 	and.w	g_Pad1Latch(a5),d0
 	move.w	d0,g_Pad1Latch(a5)
 	bra.s	loc_1F33B6
 loc_1F33A8:
-	move.w	-$3B9C(a5),d0
+	move.w	g_PadMaskLeftRight(a5),d0
 	not.w	d0
 	and.w	g_Pad2Latch(a5),d0
 	move.w	d0,g_Pad2Latch(a5)

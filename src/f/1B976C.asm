@@ -17,11 +17,11 @@ sub_1B976C:
 	seq.b	d3
 	neg.b	d3
 	beq.s	loc_1B97A6
-	move.w	-$3B9A(a5),d0
+	move.w	g_PadMaskRight(a5),d0
 	and.w	g_Pad1Held(a5),d0
 	bra.s	loc_1B97AE
 loc_1B97A6:
-	move.w	-$3B9A(a5),d0
+	move.w	g_PadMaskRight(a5),d0
 	and.w	g_Pad2Held(a5),d0
 loc_1B97AE:
 	addq.w	#$8,a7
@@ -33,11 +33,11 @@ loc_1B97BA:
 	seq.b	d3
 	neg.b	d3
 	beq.s	loc_1B97CE
-	move.w	-$3B98(a5),d0
+	move.w	g_PadMaskLeft(a5),d0
 	and.w	g_Pad1Held(a5),d0
 	bra.s	loc_1B97D6
 loc_1B97CE:
-	move.w	-$3B98(a5),d0
+	move.w	g_PadMaskLeft(a5),d0
 	and.w	g_Pad2Held(a5),d0
 loc_1B97D6:
 	beq.s	loc_1B97DE

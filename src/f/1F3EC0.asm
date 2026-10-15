@@ -25,11 +25,11 @@ loc_1F3EDE:
 	seq.b	d3
 	neg.b	d3
 	beq.s	loc_1F3F08
-	move.w	-$3BA6(a5),d0
+	move.w	g_PadMaskB(a5),d0
 	and.w	g_Pad1Pressed(a5),d0
 	bra.s	loc_1F3F10
 loc_1F3F08:
-	move.w	-$3BA6(a5),d0
+	move.w	g_PadMaskB(a5),d0
 	and.w	g_Pad2Pressed(a5),d0
 loc_1F3F10:
 	beq.s	loc_1F3F20
@@ -46,11 +46,11 @@ loc_1F3F20:
 	seq.b	d3
 	neg.b	d3
 	beq.s	loc_1F3F42
-	move.w	-$3BA4(a5),d0
+	move.w	g_PadMaskC(a5),d0
 	and.w	g_Pad1Pressed(a5),d0
 	bra.s	loc_1F3F4A
 loc_1F3F42:
-	move.w	-$3BA4(a5),d0
+	move.w	g_PadMaskC(a5),d0
 	and.w	g_Pad2Pressed(a5),d0
 loc_1F3F4A:
 	beq.s	loc_1F3F58

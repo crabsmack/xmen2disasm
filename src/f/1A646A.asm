@@ -9,11 +9,11 @@ sub_1A646A:
 	seq.b	d3
 	neg.b	d3
 	beq.s	loc_1A648A
-	move.w	-$3B98(a5),d0
+	move.w	g_PadMaskLeft(a5),d0
 	and.w	g_Pad1Held(a5),d0
 	bra.s	loc_1A6492
 loc_1A648A:
-	move.w	-$3B98(a5),d0
+	move.w	g_PadMaskLeft(a5),d0
 	and.w	g_Pad2Held(a5),d0
 loc_1A6492:
 	beq.s	loc_1A64A8

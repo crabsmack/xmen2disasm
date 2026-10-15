@@ -30,11 +30,11 @@ loc_1A72F0:
 	seq.b	d3
 	neg.b	d3
 	beq.s	loc_1A7340
-	move.w	-$3B9C(a5),d0
+	move.w	g_PadMaskLeftRight(a5),d0
 	and.w	g_Pad1Held(a5),d0
 	bra.s	loc_1A7348
 loc_1A7340:
-	move.w	-$3B9C(a5),d0
+	move.w	g_PadMaskLeftRight(a5),d0
 	and.w	g_Pad2Held(a5),d0
 loc_1A7348:
 	addq.w	#$8,a7

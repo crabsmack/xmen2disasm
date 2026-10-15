@@ -20,22 +20,22 @@ sub_1F3ADE:
 	seq.b	d3
 	neg.b	d3
 	beq.s	loc_1F3B2E
-	move.w	-$3B9A(a5),d0
+	move.w	g_PadMaskRight(a5),d0
 	and.w	g_Pad1Held(a5),d0
 	bra.s	loc_1F3B36
 loc_1F3B2E:
-	move.w	-$3B9A(a5),d0
+	move.w	g_PadMaskRight(a5),d0
 	and.w	g_Pad2Held(a5),d0
 loc_1F3B36:
 	addq.w	#$4,a7
 	beq.s	loc_1F3B54
 	tst.b	$9D(a4)
 	bne.s	loc_1F3B4A
-	move.w	-$3B9A(a5),d0
+	move.w	g_PadMaskRight(a5),d0
 	or.w	d0,g_Pad1Latch(a5)
 	bra.s	loc_1F3B8A
 loc_1F3B4A:
-	move.w	-$3B9A(a5),d0
+	move.w	g_PadMaskRight(a5),d0
 	or.w	d0,g_Pad2Latch(a5)
 	bra.s	loc_1F3B8A
 loc_1F3B54:
@@ -43,21 +43,21 @@ loc_1F3B54:
 	seq.b	d3
 	neg.b	d3
 	beq.s	loc_1F3B68
-	move.w	-$3B98(a5),d0
+	move.w	g_PadMaskLeft(a5),d0
 	and.w	g_Pad1Held(a5),d0
 	bra.s	loc_1F3B70
 loc_1F3B68:
-	move.w	-$3B98(a5),d0
+	move.w	g_PadMaskLeft(a5),d0
 	and.w	g_Pad2Held(a5),d0
 loc_1F3B70:
 	beq.s	loc_1F3B8A
 	tst.b	$9D(a4)
 	bne.s	loc_1F3B82
-	move.w	-$3B98(a5),d0
+	move.w	g_PadMaskLeft(a5),d0
 	or.w	d0,g_Pad1Latch(a5)
 	bra.s	loc_1F3B8A
 loc_1F3B82:
-	move.w	-$3B98(a5),d0
+	move.w	g_PadMaskLeft(a5),d0
 	or.w	d0,g_Pad2Latch(a5)
 loc_1F3B8A:
 	cmpi.w	#$44C,$1C(a4)
@@ -89,21 +89,21 @@ loc_1F3BCA:
 	seq.b	d3
 	neg.b	d3
 	beq.s	loc_1F3BF2
-	move.w	-$3B9A(a5),d0
+	move.w	g_PadMaskRight(a5),d0
 	and.w	g_Pad1Held(a5),d0
 	bra.s	loc_1F3BFA
 loc_1F3BF2:
-	move.w	-$3B9A(a5),d0
+	move.w	g_PadMaskRight(a5),d0
 	and.w	g_Pad2Held(a5),d0
 loc_1F3BFA:
 	beq.s	loc_1F3C16
 	tst.b	$9D(a4)
 	bne.s	loc_1F3C0C
-	move.w	-$3B9A(a5),d0
+	move.w	g_PadMaskRight(a5),d0
 	or.w	d0,g_Pad1Latch(a5)
 	bra.s	loc_1F3C4C
 loc_1F3C0C:
-	move.w	-$3B9A(a5),d0
+	move.w	g_PadMaskRight(a5),d0
 	or.w	d0,g_Pad2Latch(a5)
 	bra.s	loc_1F3C4C
 loc_1F3C16:
@@ -111,21 +111,21 @@ loc_1F3C16:
 	seq.b	d3
 	neg.b	d3
 	beq.s	loc_1F3C2A
-	move.w	-$3B98(a5),d0
+	move.w	g_PadMaskLeft(a5),d0
 	and.w	g_Pad1Held(a5),d0
 	bra.s	loc_1F3C32
 loc_1F3C2A:
-	move.w	-$3B98(a5),d0
+	move.w	g_PadMaskLeft(a5),d0
 	and.w	g_Pad2Held(a5),d0
 loc_1F3C32:
 	beq.s	loc_1F3C4C
 	tst.b	$9D(a4)
 	bne.s	loc_1F3C44
-	move.w	-$3B98(a5),d0
+	move.w	g_PadMaskLeft(a5),d0
 	or.w	d0,g_Pad1Latch(a5)
 	bra.s	loc_1F3C4C
 loc_1F3C44:
-	move.w	-$3B98(a5),d0
+	move.w	g_PadMaskLeft(a5),d0
 	or.w	d0,g_Pad2Latch(a5)
 loc_1F3C4C:
 	movea.l	(a4),a0

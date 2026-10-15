@@ -12,11 +12,11 @@ sub_1A7A86:
 	seq.b	d3
 	neg.b	d3
 	beq.s	loc_1A7AB2
-	move.w	-$3BA8(a5),d0
+	move.w	g_PadMaskA(a5),d0
 	and.w	g_Pad1Held(a5),d0
 	bra.s	loc_1A7ABA
 loc_1A7AB2:
-	move.w	-$3BA8(a5),d0
+	move.w	g_PadMaskA(a5),d0
 	and.w	g_Pad2Held(a5),d0
 loc_1A7ABA:
 	beq.s	loc_1A7ADE
@@ -39,11 +39,11 @@ loc_1A7ADE:
 	seq.b	d3
 	neg.b	d3
 	beq.s	loc_1A7AF2
-	move.w	-$3BA8(a5),d0
+	move.w	g_PadMaskA(a5),d0
 	and.w	g_Pad1Released(a5),d0
 	bra.s	loc_1A7AFA
 loc_1A7AF2:
-	move.w	-$3BA8(a5),d0
+	move.w	g_PadMaskA(a5),d0
 	and.w	g_Pad2Released(a5),d0
 loc_1A7AFA:
 	beq.s	loc_1A7B06

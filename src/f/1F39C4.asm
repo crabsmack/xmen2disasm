@@ -9,11 +9,11 @@ sub_1F39C4:
 	seq.b	d3
 	neg.b	d3
 	beq.s	loc_1F39E4
-	move.w	-$3B9C(a5),d0
+	move.w	g_PadMaskLeftRight(a5),d0
 	and.w	g_Pad1Held(a5),d0
 	bra.s	loc_1F39EC
 loc_1F39E4:
-	move.w	-$3B9C(a5),d0
+	move.w	g_PadMaskLeftRight(a5),d0
 	and.w	g_Pad2Held(a5),d0
 loc_1F39EC:
 	beq.w	loc_1F3A7E
@@ -24,21 +24,21 @@ loc_1F39EC:
 	seq.b	d3
 	neg.b	d3
 	beq.s	loc_1F3A10
-	move.w	-$3B9A(a5),d0
+	move.w	g_PadMaskRight(a5),d0
 	and.w	g_Pad1Held(a5),d0
 	bra.s	loc_1F3A18
 loc_1F3A10:
-	move.w	-$3B9A(a5),d0
+	move.w	g_PadMaskRight(a5),d0
 	and.w	g_Pad2Held(a5),d0
 loc_1F3A18:
 	beq.s	loc_1F3A34
 	tst.b	$9D(a4)
 	bne.s	loc_1F3A2A
-	move.w	-$3B9A(a5),d0
+	move.w	g_PadMaskRight(a5),d0
 	or.w	d0,g_Pad1Latch(a5)
 	bra.s	loc_1F3A6A
 loc_1F3A2A:
-	move.w	-$3B9A(a5),d0
+	move.w	g_PadMaskRight(a5),d0
 	or.w	d0,g_Pad2Latch(a5)
 	bra.s	loc_1F3A6A
 loc_1F3A34:
@@ -46,21 +46,21 @@ loc_1F3A34:
 	seq.b	d3
 	neg.b	d3
 	beq.s	loc_1F3A48
-	move.w	-$3B98(a5),d0
+	move.w	g_PadMaskLeft(a5),d0
 	and.w	g_Pad1Held(a5),d0
 	bra.s	loc_1F3A50
 loc_1F3A48:
-	move.w	-$3B98(a5),d0
+	move.w	g_PadMaskLeft(a5),d0
 	and.w	g_Pad2Held(a5),d0
 loc_1F3A50:
 	beq.s	loc_1F3A6A
 	tst.b	$9D(a4)
 	bne.s	loc_1F3A62
-	move.w	-$3B98(a5),d0
+	move.w	g_PadMaskLeft(a5),d0
 	or.w	d0,g_Pad1Latch(a5)
 	bra.s	loc_1F3A6A
 loc_1F3A62:
-	move.w	-$3B98(a5),d0
+	move.w	g_PadMaskLeft(a5),d0
 	or.w	d0,g_Pad2Latch(a5)
 loc_1F3A6A:
 	movea.l	(a4),a0
@@ -76,13 +76,13 @@ loc_1F3A7E:
 	clr.w	$20(a4)
 	tst.b	$9D(a4)
 	bne.s	loc_1F3AA0
-	move.w	-$3BA6(a5),d0
+	move.w	g_PadMaskB(a5),d0
 	not.w	d0
 	and.w	g_Pad1Latch(a5),d0
 	move.w	d0,g_Pad1Latch(a5)
 	bra.s	loc_1F3AAE
 loc_1F3AA0:
-	move.w	-$3BA6(a5),d0
+	move.w	g_PadMaskB(a5),d0
 	not.w	d0
 	and.w	g_Pad2Latch(a5),d0
 	move.w	d0,g_Pad2Latch(a5)

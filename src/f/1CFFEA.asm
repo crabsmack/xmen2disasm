@@ -24,11 +24,11 @@ loc_1D0014:
 	seq.b	d3
 	neg.b	d3
 	beq.s	loc_1D0032
-	move.w	-$3BA8(a5),d0
+	move.w	g_PadMaskA(a5),d0
 	and.w	g_Pad1Held(a5),d0
 	bra.s	loc_1D003A
 loc_1D0032:
-	move.w	-$3BA8(a5),d0
+	move.w	g_PadMaskA(a5),d0
 	and.w	g_Pad2Held(a5),d0
 loc_1D003A:
 	addq.w	#$4,a7

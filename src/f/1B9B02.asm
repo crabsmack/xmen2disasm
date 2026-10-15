@@ -13,13 +13,13 @@ sub_1B9B02:
 loc_1B9B1C:
 	tst.b	$9D(a4)
 	bne.s	loc_1B9B32
-	move.w	-$3BA8(a5),d0
+	move.w	g_PadMaskA(a5),d0
 	not.w	d0
 	and.w	g_Pad1Latch(a5),d0
 	move.w	d0,g_Pad1Latch(a5)
 	bra.s	loc_1B9B40
 loc_1B9B32:
-	move.w	-$3BA8(a5),d0
+	move.w	g_PadMaskA(a5),d0
 	not.w	d0
 	and.w	g_Pad2Latch(a5),d0
 	move.w	d0,g_Pad2Latch(a5)

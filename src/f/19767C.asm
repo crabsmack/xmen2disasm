@@ -7,13 +7,13 @@ sub_19767C:
 	movea.l	$8(a6),a4
 	tst.b	$9D(a4)
 	bne.s	loc_19769C
-	move.w	-$3BA8(a5),d0
+	move.w	g_PadMaskA(a5),d0
 	not.w	d0
 	and.w	g_Pad1Latch(a5),d0
 	move.w	d0,g_Pad1Latch(a5)
 	bra.s	loc_1976AA
 loc_19769C:
-	move.w	-$3BA8(a5),d0
+	move.w	g_PadMaskA(a5),d0
 	not.w	d0
 	and.w	g_Pad2Latch(a5),d0
 	move.w	d0,g_Pad2Latch(a5)

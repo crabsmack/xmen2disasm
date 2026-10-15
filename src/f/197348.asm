@@ -16,13 +16,13 @@ sub_197348:
 	move.w	$18(a0),$24(a4)
 	tst.b	$9D(a4)
 	bne.s	loc_197392
-	move.w	-$3BA6(a5),d0
+	move.w	g_PadMaskB(a5),d0
 	not.w	d0
 	and.w	g_Pad1Latch(a5),d0
 	move.w	d0,g_Pad1Latch(a5)
 	bra.s	loc_1973A0
 loc_197392:
-	move.w	-$3BA6(a5),d0
+	move.w	g_PadMaskB(a5),d0
 	not.w	d0
 	and.w	g_Pad2Latch(a5),d0
 	move.w	d0,g_Pad2Latch(a5)
@@ -41,11 +41,11 @@ loc_1973BA:
 	seq.b	d3
 	neg.b	d3
 	beq.s	loc_1973CE
-	move.w	-$3BA6(a5),d0
+	move.w	g_PadMaskB(a5),d0
 	and.w	g_Pad1Held(a5),d0
 	bra.s	loc_1973D6
 loc_1973CE:
-	move.w	-$3BA6(a5),d0
+	move.w	g_PadMaskB(a5),d0
 	and.w	g_Pad2Held(a5),d0
 loc_1973D6:
 	beq.s	loc_1973E2

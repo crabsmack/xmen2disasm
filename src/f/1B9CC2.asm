@@ -9,13 +9,13 @@ sub_1B9CC2:
 	clr.w	$16(a4)
 	tst.b	$9D(a4)
 	bne.s	loc_1B9CEA
-	move.w	-$3BA8(a5),d0
+	move.w	g_PadMaskA(a5),d0
 	not.w	d0
 	and.w	g_Pad1Latch(a5),d0
 	move.w	d0,g_Pad1Latch(a5)
 	bra.s	loc_1B9CF8
 loc_1B9CEA:
-	move.w	-$3BA8(a5),d0
+	move.w	g_PadMaskA(a5),d0
 	not.w	d0
 	and.w	g_Pad2Latch(a5),d0
 	move.w	d0,g_Pad2Latch(a5)

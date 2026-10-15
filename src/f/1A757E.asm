@@ -17,11 +17,11 @@ sub_1A757E:
 	move.l	-$4(a6),d3
 	tst.b	d0
 	beq.s	loc_1A75B6
-	move.w	-$3BA0(a5),d0
+	move.w	g_PadMaskDown(a5),d0
 	and.w	g_Pad1Held(a5),d0
 	bra.s	loc_1A75BE
 loc_1A75B6:
-	move.w	-$3BA0(a5),d0
+	move.w	g_PadMaskDown(a5),d0
 	and.w	g_Pad2Held(a5),d0
 loc_1A75BE:
 	beq.s	loc_1A75CC

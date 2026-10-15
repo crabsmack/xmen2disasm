@@ -9,11 +9,11 @@ sub_1B99C2:
 	seq.b	d3
 	neg.b	d3
 	beq.s	loc_1B99E2
-	move.w	-$3BA4(a5),d0
+	move.w	g_PadMaskC(a5),d0
 	and.w	g_Pad1Pressed(a5),d0
 	bra.s	loc_1B99EA
 loc_1B99E2:
-	move.w	-$3BA4(a5),d0
+	move.w	g_PadMaskC(a5),d0
 	and.w	g_Pad2Pressed(a5),d0
 loc_1B99EA:
 	beq.s	loc_1B9A60
@@ -61,11 +61,11 @@ loc_1B9A60:
 	seq.b	d3
 	neg.b	d3
 	beq.s	loc_1B9A74
-	move.w	-$3BA6(a5),d0
+	move.w	g_PadMaskB(a5),d0
 	and.w	g_Pad1Latch(a5),d0
 	bra.s	loc_1B9A7C
 loc_1B9A74:
-	move.w	-$3BA6(a5),d0
+	move.w	g_PadMaskB(a5),d0
 	and.w	g_Pad2Latch(a5),d0
 loc_1B9A7C:
 	beq.s	loc_1B9AD6

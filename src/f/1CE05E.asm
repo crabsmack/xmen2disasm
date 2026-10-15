@@ -9,11 +9,11 @@ sub_1CE05E:
 	seq.b	d3
 	neg.b	d3
 	beq.s	loc_1CE07E
-	move.w	-$3B9A(a5),d0
+	move.w	g_PadMaskRight(a5),d0
 	and.w	g_Pad1Held(a5),d0
 	bra.s	loc_1CE086
 loc_1CE07E:
-	move.w	-$3B9A(a5),d0
+	move.w	g_PadMaskRight(a5),d0
 	and.w	g_Pad2Held(a5),d0
 loc_1CE086:
 	beq.s	loc_1CE096
@@ -25,11 +25,11 @@ loc_1CE096:
 	seq.b	d3
 	neg.b	d3
 	beq.s	loc_1CE0AA
-	move.w	-$3B98(a5),d0
+	move.w	g_PadMaskLeft(a5),d0
 	and.w	g_Pad1Held(a5),d0
 	bra.s	loc_1CE0B2
 loc_1CE0AA:
-	move.w	-$3B98(a5),d0
+	move.w	g_PadMaskLeft(a5),d0
 	and.w	g_Pad2Held(a5),d0
 loc_1CE0B2:
 	beq.s	loc_1CE0C2

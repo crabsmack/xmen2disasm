@@ -23,11 +23,11 @@ loc_1CE7B0:
 	seq.b	d3
 	neg.b	d3
 	beq.s	loc_1CE7C4
-	move.w	-$3BA8(a5),d0
+	move.w	g_PadMaskA(a5),d0
 	and.w	g_Pad1Held(a5),d0
 	bra.s	loc_1CE7CC
 loc_1CE7C4:
-	move.w	-$3BA8(a5),d0
+	move.w	g_PadMaskA(a5),d0
 	and.w	g_Pad2Held(a5),d0
 loc_1CE7CC:
 	bne.s	loc_1CE80A

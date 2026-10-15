@@ -45,11 +45,11 @@ loc_1CEFDE:
 	seq.b	d3
 	neg.b	d3
 	beq.s	loc_1CEFF8
-	move.w	-$3BA8(a5),d0
+	move.w	g_PadMaskA(a5),d0
 	and.w	g_Pad1Latch(a5),d0
 	bra.s	loc_1CF000
 loc_1CEFF8:
-	move.w	-$3BA8(a5),d0
+	move.w	g_PadMaskA(a5),d0
 	and.w	g_Pad2Latch(a5),d0
 loc_1CF000:
 	bne.s	loc_1CF014
@@ -71,11 +71,11 @@ loc_1CF026:
 	seq.b	d3
 	neg.b	d3
 	beq.s	loc_1CF03A
-	move.w	-$3BA8(a5),d0
+	move.w	g_PadMaskA(a5),d0
 	and.w	g_Pad1Latch(a5),d0
 	bra.s	loc_1CF042
 loc_1CF03A:
-	move.w	-$3BA8(a5),d0
+	move.w	g_PadMaskA(a5),d0
 	and.w	g_Pad2Latch(a5),d0
 loc_1CF042:
 	bne.s	loc_1CF056

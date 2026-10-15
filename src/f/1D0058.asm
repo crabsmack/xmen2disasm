@@ -19,11 +19,11 @@ loc_1D0084:
 	seq.b	d3
 	neg.b	d3
 	beq.s	loc_1D0098
-	move.w	-$3B98(a5),d0
+	move.w	g_PadMaskLeft(a5),d0
 	and.w	g_Pad1Held(a5),d0
 	bra.s	loc_1D00A0
 loc_1D0098:
-	move.w	-$3B98(a5),d0
+	move.w	g_PadMaskLeft(a5),d0
 	and.w	g_Pad2Held(a5),d0
 loc_1D00A0:
 	beq.s	loc_1D00AA
@@ -34,11 +34,11 @@ loc_1D00AA:
 	seq.b	d3
 	neg.b	d3
 	beq.s	loc_1D00BE
-	move.w	-$3B9A(a5),d0
+	move.w	g_PadMaskRight(a5),d0
 	and.w	g_Pad1Held(a5),d0
 	bra.s	loc_1D00C6
 loc_1D00BE:
-	move.w	-$3B9A(a5),d0
+	move.w	g_PadMaskRight(a5),d0
 	and.w	g_Pad2Held(a5),d0
 loc_1D00C6:
 	beq.s	loc_1D00CE
@@ -48,11 +48,11 @@ loc_1D00CE:
 	seq.b	d3
 	neg.b	d3
 	beq.s	loc_1D00E2
-	move.w	-$3BA8(a5),d0
+	move.w	g_PadMaskA(a5),d0
 	and.w	g_Pad1Latch(a5),d0
 	bra.s	loc_1D00EA
 loc_1D00E2:
-	move.w	-$3BA8(a5),d0
+	move.w	g_PadMaskA(a5),d0
 	and.w	g_Pad2Latch(a5),d0
 loc_1D00EA:
 	bne.s	loc_1D0114

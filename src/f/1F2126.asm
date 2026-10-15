@@ -15,11 +15,11 @@ sub_1F2126:
 	seq.b	d3
 	neg.b	d3
 	beq.s	loc_1F215A
-	move.w	-$3BA8(a5),d0
+	move.w	g_PadMaskA(a5),d0
 	and.w	g_Pad1Latch(a5),d0
 	bra.s	loc_1F2162
 loc_1F215A:
-	move.w	-$3BA8(a5),d0
+	move.w	g_PadMaskA(a5),d0
 	and.w	g_Pad2Latch(a5),d0
 loc_1F2162:
 	beq.s	loc_1F218E
@@ -43,11 +43,11 @@ loc_1F218E:
 	seq.b	d3
 	neg.b	d3
 	beq.s	loc_1F21A2
-	move.w	-$3BA8(a5),d0
+	move.w	g_PadMaskA(a5),d0
 	and.w	g_Pad1Released(a5),d0
 	bra.s	loc_1F21AA
 loc_1F21A2:
-	move.w	-$3BA8(a5),d0
+	move.w	g_PadMaskA(a5),d0
 	and.w	g_Pad2Released(a5),d0
 loc_1F21AA:
 	beq.s	loc_1F21B6

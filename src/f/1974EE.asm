@@ -9,13 +9,13 @@ sub_1974EE:
 	bne.s	loc_197538
 	tst.b	$9D(a4)
 	bne.s	loc_197514
-	move.w	-$3BA8(a5),d0
+	move.w	g_PadMaskA(a5),d0
 	not.w	d0
 	and.w	g_Pad1Latch(a5),d0
 	move.w	d0,g_Pad1Latch(a5)
 	bra.s	loc_197522
 loc_197514:
-	move.w	-$3BA8(a5),d0
+	move.w	g_PadMaskA(a5),d0
 	not.w	d0
 	and.w	g_Pad2Latch(a5),d0
 	move.w	d0,g_Pad2Latch(a5)

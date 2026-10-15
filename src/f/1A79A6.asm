@@ -53,13 +53,13 @@ sub_1A79A6:
 	tst.b	$9D(a4)
 	lea.l	$C(a7),a7
 	bne.s	loc_1A7A70
-	move.w	-$3BA6(a5),d0
+	move.w	g_PadMaskB(a5),d0
 	not.w	d0
 	and.w	g_Pad1Latch(a5),d0
 	move.w	d0,g_Pad1Latch(a5)
 	bra.s	loc_1A7A7E
 loc_1A7A70:
-	move.w	-$3BA6(a5),d0
+	move.w	g_PadMaskB(a5),d0
 	not.w	d0
 	and.w	g_Pad2Latch(a5),d0
 	move.w	d0,g_Pad2Latch(a5)

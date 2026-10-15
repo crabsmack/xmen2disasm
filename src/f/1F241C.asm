@@ -10,11 +10,11 @@ sub_1F241C:
 	seq.b	d3
 	neg.b	d3
 	beq.s	loc_1F2440
-	move.w	-$3B9C(a5),d0
+	move.w	g_PadMaskLeftRight(a5),d0
 	and.w	g_Pad1Held(a5),d0
 	bra.s	loc_1F2448
 loc_1F2440:
-	move.w	-$3B9C(a5),d0
+	move.w	g_PadMaskLeftRight(a5),d0
 	and.w	g_Pad2Held(a5),d0
 loc_1F2448:
 	beq.s	loc_1F248A
@@ -22,11 +22,11 @@ loc_1F2448:
 	seq.b	d3
 	neg.b	d3
 	beq.s	loc_1F245E
-	move.w	-$3B9A(a5),d0
+	move.w	g_PadMaskRight(a5),d0
 	and.w	g_Pad1Held(a5),d0
 	bra.s	loc_1F2466
 loc_1F245E:
-	move.w	-$3B9A(a5),d0
+	move.w	g_PadMaskRight(a5),d0
 	and.w	g_Pad2Held(a5),d0
 loc_1F2466:
 	ext.l	d0
@@ -72,11 +72,11 @@ loc_1F24CE:
 	seq.b	d3
 	neg.b	d3
 	beq.s	loc_1F24E2
-	move.w	-$3BA4(a5),d0
+	move.w	g_PadMaskC(a5),d0
 	and.w	g_Pad1Held(a5),d0
 	bra.s	loc_1F24EA
 loc_1F24E2:
-	move.w	-$3BA4(a5),d0
+	move.w	g_PadMaskC(a5),d0
 	and.w	g_Pad2Held(a5),d0
 loc_1F24EA:
 	bne.s	loc_1F24F4

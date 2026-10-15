@@ -9,11 +9,11 @@ Platform1_SteerByPad_UpDown:
 	seq.b	d3
 	neg.b	d3
 	beq.s	loc_1070A6
-	move.w	-$3BA0(a5),d0
+	move.w	g_PadMaskDown(a5),d0
 	and.w	g_Pad1Held(a5),d0
 	bra.s	loc_1070AE
 loc_1070A6:
-	move.w	-$3BA0(a5),d0
+	move.w	g_PadMaskDown(a5),d0
 	and.w	g_Pad2Held(a5),d0
 loc_1070AE:
 	beq.s	loc_1070B6
@@ -24,11 +24,11 @@ loc_1070B6:
 	seq.b	d3
 	neg.b	d3
 	beq.s	loc_1070CA
-	move.w	-$3B9E(a5),d0
+	move.w	g_PadMaskUp(a5),d0
 	and.w	g_Pad1Held(a5),d0
 	bra.s	loc_1070D2
 loc_1070CA:
-	move.w	-$3B9E(a5),d0
+	move.w	g_PadMaskUp(a5),d0
 	and.w	g_Pad2Held(a5),d0
 loc_1070D2:
 	beq.s	loc_1070DE
