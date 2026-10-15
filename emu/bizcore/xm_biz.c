@@ -85,6 +85,30 @@ XM_EXPORT void xm_ztrace_mark(unsigned frame)
   }
 }
 XM_EXPORT XmZtrace *xm_ztrace_buf(void) { return ztrace; }
+
+/* YM2612 access log (armed with the Z80 trace): {cycles, address (| 0x100 = status read),
+   data, fm_cycles_count, timer counters TAC | TBC << 16} for every fm_write / fm_read (after the
+   chip caught up, before the write), frame markers as cycles 0xFFFFFFFF. */
+typedef struct { unsigned cyc, addr, data, fmc, tim; } XmFm;
+static XmFm fmlog[1 << 16];
+static unsigned fmlog_len;
+extern unsigned xm_ym_timers(void);
+XM_EXPORT void xm_fm_mark(unsigned frame)
+{
+  if (ztrace && fmlog_len < (1u << 16)) {
+    XmFm *e = &fmlog[fmlog_len++];
+    e->cyc = 0xFFFFFFFFu; e->addr = frame; e->data = 0; e->fmc = 0; e->tim = 0;
+  }
+}
+void xm_fm_note(unsigned cyc, unsigned addr, unsigned data, unsigned fmc)
+{
+  if (ztrace && fmlog_len < (1u << 16)) {
+    XmFm *e = &fmlog[fmlog_len++];
+    e->cyc = cyc; e->addr = addr; e->data = data; e->fmc = fmc; e->tim = xm_ym_timers();
+  }
+}
+XM_EXPORT XmFm *xm_fm_buf(void) { return fmlog; }
+XM_EXPORT unsigned xm_fm_len(void) { return fmlog_len; }
 XM_EXPORT unsigned xm_ztrace_len(void) { return ztrace_len; }
 void xm_z80_exec(void)
 {

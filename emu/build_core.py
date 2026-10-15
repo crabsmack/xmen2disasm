@@ -65,6 +65,24 @@ def patch_biz() -> None:
         t = t.replace(hook, "xm_dma_note(code, addr); " + hook)
         t = t.replace("static uint8 code;", "extern void xm_dma_note(unsigned int code, unsigned int addr);\nstatic uint8 code;", 1)
         p.write_text(t, encoding="latin-1", newline="\n")
+    p = BIZ_SRC / "waterbox" / "gpgx" / "core" / "sound" / "sound.c"
+    t = p.read_text(encoding="latin-1")
+    if "xm_fm_note" not in t:
+        w = "  /* write FM register */\n  YM_Write(address, data);"
+        r = "  /* read FM status (YM2612 only) */\n  return YM2612Read();"
+        if w not in t or r not in t:
+            sys.exit("patch_biz: fm_write/fm_read not found in sound/sound.c")
+        t = t.replace(w, "  /* write FM register */\n  xm_fm_note(cycles, address, data, fm_cycles_count);\n  YM_Write(address, data);")
+        t = t.replace(r, "  /* read FM status (YM2612 only) */\n  xm_fm_note(cycles, address | 0x100, YM2612Read(), fm_cycles_count);\n  return YM2612Read();")
+        t = t.replace("void fm_write(unsigned int cycles", "extern void xm_fm_note(unsigned, unsigned, unsigned, unsigned);\nvoid fm_write(unsigned int cycles", 1)
+        p.write_text(t, encoding="latin-1", newline="\n")
+    p = BIZ_SRC / "waterbox" / "gpgx" / "core" / "sound" / "ym2612.c"
+    t = p.read_text(encoding="latin-1")
+    if "xm_ym_timers" not in t:
+        t += ("\n/* xmen2disasm: read-only view of the timer counters for the YM access log. */\n"
+              "unsigned xm_ym_timers(void) { return ((unsigned)ym2612.OPN.ST.TAC & 0xFFFF) | "
+              "(((unsigned)ym2612.OPN.ST.TBC & 0xFFFF) << 16); }\n")
+        p.write_text(t, encoding="latin-1", newline="\n")
     p = BIZ_SRC / "waterbox" / "gpgx" / "core" / "z80" / "z80.c"
     t = p.read_text(encoding="latin-1")
     if "xm_z80_exec" not in t:
