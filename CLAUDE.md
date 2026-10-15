@@ -48,7 +48,12 @@ labelled data.
 | `decomp.py decomp NAME...` | Ghidra pseudo-C (A5 globals resolved to RAM, jump-table calls named). `decomp.py sync` after renames |
 | `peek.py ADDR` | Raw capstone disassembly at any address + which file holds it |
 | `rename.py OLD NEW ...` / `rename.py --global -0x38A6 g_Name "comment"` | Rename labels / name an A5 global everywhere |
-| `label_data.py START LEN Name "format + evidence"` | Name a raw data span; numeric refs become the label |
+| `header.py Name "purpose" --in .. --out .. --evidence ..` / `--batch f.jsonl` | Write the documented function header (N2) |
+| `label_data.py START LEN Name "format + evidence"` / `--batch FILE` | Name a raw data span; numeric refs become the label |
+| `datamap.py [--at ADDR \| --reader Func]` | Who reads each unlabelled data span at runtime (reader logs), plus jt/code refs |
+| `label_strings.py --refs [--read]` | Label C strings (`Str_`) at referenced / runtime-read raw addresses |
+| `switches.py [--convert-cases]` | MPW switch tables -> symbolic `Sw_` `dc.w` tables; converts unreached case code |
+| `symbolize.py` | Numeric operands that point at instruction starts -> labels (S3) |
 | `coverage.py [--list N] [--convert]` | Runtime truth vs. disassembly; `--convert` turns runtime-proven code into source |
 | `convert.py ADDR... --evidence "..."` | Raw bytes -> verified code from evidence (also batch: `--entries-file`) |
 | `candidates.py` | Unverified jump-table entries that trace cleanly as code |
@@ -73,9 +78,13 @@ uv run emu/corpus.py                                            # (re)run the st
   and the nearest PNG. Read it to see what the game is doing then.
 - RAM snapshots every 60 TAS frames: `emu/runs/tas/ram/` (68000 byte order).
 - New input paths (menus, a character, 2-player, game over) = a scenario file in
-  `emu/corpus/scenarios/` (format in `emu/corpus.py`), then `uv run emu/corpus.py`
-  and `uv run tools/coverage.py --convert`. Commit the scenario and the new
-  `emu/coverage/*.gz`.
+  `emu/corpus/scenarios/` (format in `emu/corpus.py`; a first line `@tas N` starts from
+  TAS frame N), then `uv run emu/corpus.py` and `uv run tools/coverage.py --convert`.
+  Commit the scenario and the new `emu/coverage/*.gz`.
+- Every run also writes `emu/coverage/<run>.readers.txt.gz`: for each ROM data span read
+  (or DMA'd), the functions/PCs that read it first. `tools/datamap.py` turns these into
+  per-span evidence for naming data. Needs a core built after this change
+  (`uv run emu/build_core.py biz`); older cores just skip the file.
 
 ## What we know about the binary
 
