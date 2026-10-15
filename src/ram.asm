@@ -502,3 +502,6 @@ g_BabyBioUnused = -$1C9E	; byte: cleared by BabyBio_LevelStart; nothing in the c
 g_FlyBroodCount = -$1A86	; word: a count of fly broods by its use: FlyBrood_Deactivate reads and decrements it; nothing in the code increments it
 g_GambitCards = -$18A2	; 3 x \ bytes: Gambit's thrown cards (GambitCard records; Gambit_Init points player +\ at them, Gambit_UpdateCard moves them)
 g_BeamFlickerSpr = -$1868	; 4 bytes: the two sprite link words Cyclops_BeamVBlankFlicker builds from g_BeamFlickerCur and writes to VRAM each V-blank (Cyclops_DrawBeam sets +3)
+g_ScalerSrcStride = -$C26	; word: bytes per source row of the scaler job (Scaler_BeginPass computes it and steps rows by it)
+g_ScalerUnusedFlag = -$BFC	; byte: cleared by Scaler_BeginPass; nothing in the code reads it
+g_ScalerFullRows = -$BFA	; word: output row count of a full pass (Scaler_BuildStepTables sets it, \ at first, and copies it to g_ScalerRowCount)

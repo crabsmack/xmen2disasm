@@ -50,12 +50,12 @@ loc_1FC25E:
 	move.w	d1,d2
 	andi.w	#$3,d1
 	bne.s	loc_1FC27C
-	move.w	#$3E8,-$BFA(a5)
+	move.w	#$3E8,g_ScalerFullRows(a5)
 	bra.s	loc_1FC29E
 loc_1FC27C:
 	andi.w	#$FFFC,d2
 	lsl.w	#$3,d2
-	move.w	d2,-$BFA(a5)
+	move.w	d2,g_ScalerFullRows(a5)
 	movea.l	g_ScalerLine3(a5),a4
 	lsl.w	#$5,d1
 	move.w	g_ScalerParams+$C(a5),d7
@@ -66,5 +66,5 @@ loc_1FC294:
 	addq.w	#$8,a4
 	dbra	d7,loc_1FC294
 loc_1FC29E:
-	move.w	-$BFA(a5),g_ScalerRowCount(a5)
+	move.w	g_ScalerFullRows(a5),g_ScalerRowCount(a5)
 	rts

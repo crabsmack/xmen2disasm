@@ -14,7 +14,7 @@ Scaler_BeginPass:
 	move.b	d0,g_ScalerTableKey(a5)
 	moveq	#-$1,d0
 	move.l	d0,g_ScalerSizeKey(a5)
-	sf.b	-$BFC(a5)
+	sf.b	g_ScalerUnusedFlag(a5)
 loc_1FC72E:
 	move.w	g_ScalerVram(a5),g_ScalerVramCursor(a5)
 	move.b	g_ScalerParams+$14(a5),d0
@@ -61,7 +61,7 @@ loc_1FC794:
 	addq.w	#$1,d0
 	lsr.w	#$1,d0
 loc_1FC7A2:
-	move.w	d0,-$C26(a5)
+	move.w	d0,g_ScalerSrcStride(a5)
 	movea.l	g_ScalerLine1(a5),a2
 	movea.l	g_ScalerLine0(a5),a3
 	move.w	g_ScalerParams+$10(a5),d6
@@ -81,7 +81,7 @@ loc_1FC7C0:
 	move.w	d2,d4
 	moveq	#$0,d2
 	moveq	#$0,d3
-	move.w	-$C26(a5),d0
+	move.w	g_ScalerSrcStride(a5),d0
 	tst.b	g_ScalerParams+$17(a5)
 	beq.s	loc_1FC7E2
 	neg.w	d0
@@ -129,7 +129,7 @@ loc_1FC818:
 	add.w	g_ScalerParams+$A(a5),d0
 	subq.w	#$1,d0
 loc_1FC840:
-	mulu.w	-$C26(a5),d0
+	mulu.w	g_ScalerSrcStride(a5),d0
 	add.w	g_ScalerParams+$4(a5),d0
 	tst.b	g_ScalerParams+$16(a5)
 	beq.s	loc_1FC854
@@ -174,7 +174,7 @@ loc_1FC8A0:
 	beq.s	loc_1FC8CC
 	movea.l	g_ScalerLine5(a5),a2
 	lea.l	Tbl_PixelPairExpand(pc),a3
-	move.w	-$C26(a5),d7
+	move.w	g_ScalerSrcStride(a5),d7
 	subq.w	#$1,d7
 loc_1FC8BA:
 	moveq	#$0,d0
