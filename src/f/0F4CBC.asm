@@ -1,10 +1,13 @@
 ; ---------------------------------------------------------------------------
-; sub_0F4CBC	[link-after-rts]
+; SentinelsB2_CallStubs - SentinelsB2: call two Sentinels helpers and an empty stub
+; In:  none
+; Out: none
+; Evidence: sub_0DC2C6, sub_0DC38C, SentinelsB2_EmptyStub
 ; ---------------------------------------------------------------------------
-sub_0F4CBC:
+SentinelsB2_CallStubs:
 	link.w	a6,#$0
 	jsr	$23EA(a5)	; -> sub_0DC2C6
 	jsr	$2402(a5)	; -> sub_0DC38C
-	jsr	sub_0F4CD0(pc)
+	jsr	SentinelsB2_EmptyStub(pc)
 	unlk	a6
 	rts

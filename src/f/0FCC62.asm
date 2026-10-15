@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_0FCC62	[link-after-rts]
+; SiberiaB1_EmptyStub - SiberiaB1: empty function
+; In:  none
+; Out: none
+; Evidence: body is link/unlk/rts
 ; ---------------------------------------------------------------------------
-sub_0FCC62:
+SiberiaB1_EmptyStub:
 	link.w	a6,#$0
 	unlk	a6
 	rts

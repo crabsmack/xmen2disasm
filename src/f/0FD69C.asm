@@ -1,8 +1,11 @@
 ; ---------------------------------------------------------------------------
-; sub_0FD69C	[link-after-rts]
+; SiberiaB1_CallEmptyStub - SiberiaB1: call the empty stub
+; In:  none
+; Out: none
+; Evidence: called twice by SiberiaB1_RunScene
 ; ---------------------------------------------------------------------------
-sub_0FD69C:
+SiberiaB1_CallEmptyStub:
 	link.w	a6,#$0
-	jsr	sub_0FCC62(pc)
+	jsr	SiberiaB1_EmptyStub(pc)
 	unlk	a6
 	rts

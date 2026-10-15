@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_0F4358	[link-after-rts]
+; SentinelsB1_LoadLevel - SentinelsB1: load the stage through the scene loader, copy 16 palette words, set scroll ratios
+; In:  none
+; Out: none
+; Evidence: sub_1F98A8 with level thunks $0ED120/$0DACA6/$0ECA88; 16 words from jt $261A to $FFC8C0
 ; ---------------------------------------------------------------------------
-sub_0F4358:
+SentinelsB1_LoadLevel:
 	link.w	a6,#$0
 	movem.l	d3/d7/a3-a4,-(a7)
 	lea.l	$292A(a5),a0

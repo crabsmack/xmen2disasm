@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_0FD6A8	[jt 1325]
+; SiberiaB1_RunScene - scene "SiberiaB1 Blizzard" (first stage and power-on demo): set load hooks, load, start music $27, run the level loop
+; In:  none
+; Out: none
+; Evidence: registered by Scene_RegisterAll (jt of sub_0FD6A8); g_MusicTrack = $27; TAS frame 7
 ; ---------------------------------------------------------------------------
-sub_0FD6A8:
+SiberiaB1_RunScene:
 	link.w	a6,#$0
 	jsr	$5242(a5)	; -> Snd_StopAll
 	moveq	#$1F,d0
@@ -10,14 +13,14 @@ sub_0FD6A8:
 	moveq	#$1F,d0
 	move.l	d0,-(a7)
 	jsr	$521A(a5)	; -> Snd_Play
-	jsr	sub_0FD69C(pc)
-	lea.l	sub_0FCC6A(pc),a0
+	jsr	SiberiaB1_CallEmptyStub(pc)
+	lea.l	SiberiaB1_PreLoad(pc),a0
 	move.l	a0,-$38E8(a5)
-	lea.l	sub_0FCC86(pc),a0
+	lea.l	SiberiaB1_PostLoad(pc),a0
 	move.l	a0,-$38EC(a5)
-	jsr	sub_0FD576(pc)
-	jsr	sub_0FD614(pc)
-	jsr	sub_0FD69C(pc)
+	jsr	SiberiaB1_LoadLevel(pc)
+	jsr	SiberiaB1_InstallHooks(pc)
+	jsr	SiberiaB1_CallEmptyStub(pc)
 	move.b	#$1,-$3ABA(a5)
 	clr.b	g_PalBaseDirty(a5)
 	jsr	$2322(a5)	; -> sub_0C1412

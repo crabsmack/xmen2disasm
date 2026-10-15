@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_0FCB8E	[link-after-rts]
+; SiberiaB1_InitWindSprite - SiberiaB1: set up the wind-indicator sprite and its palette row
+; In:  none
+; Out: none
+; Evidence: sub_1FB026 slot $FFCC6A art $0FB322, Map_SetRowPalette
 ; ---------------------------------------------------------------------------
-sub_0FCB8E:
+SiberiaB1_InitWindSprite:
 	link.w	a6,#$0
 	moveq	#$1,d0
 	move.l	d0,-(a7)

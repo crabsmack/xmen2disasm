@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_0FC72E	[link-after-rts]
+; SiberiaB1_CyclePalettes - SiberiaB1: step the three palette cycles
+; In:  none
+; Out: none
+; Evidence: sub_159FD6 with Tbl_SiberiaB1PalCycle1-3
 ; ---------------------------------------------------------------------------
-sub_0FC72E:
+SiberiaB1_CyclePalettes:
 	link.w	a6,#$0
 	moveq	#$0,d0
 	move.l	d0,-(a7)

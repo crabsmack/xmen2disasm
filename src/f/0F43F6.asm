@@ -1,11 +1,14 @@
 ; ---------------------------------------------------------------------------
-; sub_0F43F6	[link-after-rts]
+; SentinelsB1_InstallHooks - SentinelsB1: frame hook, Sentinels stage helpers, place players
+; In:  none
+; Out: none
+; Evidence: $FFC972 = SentinelsB1_FrameHook; calls sub_0DC394/sub_0DC316/sub_0DC294 (SentinelsD1 module), Players_PlaceAtStart, sub_1190D6
 ; ---------------------------------------------------------------------------
-sub_0F43F6:
+SentinelsB1_InstallHooks:
 	link.w	a6,#$0
-	lea.l	sub_0F4314(pc),a0
+	lea.l	SentinelsB1_FrameHook(pc),a0
 	move.l	a0,g_SceneFrameHook(a5)
-	jsr	sub_0F4350(pc)
+	jsr	SentinelsB1_EmptyStub(pc)
 	jsr	$240A(a5)	; -> sub_0DC394
 	jsr	$23FA(a5)	; -> sub_0DC316
 	jsr	$23E2(a5)	; -> sub_0DC294

@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_0F4440	[link-after-rts]
+; SentinelsB_HazardSeg - Sentinels segment handler: in mode 3, a player overlapping the segment box (not invulnerable) takes 1 damage, hit type 4/5/6 by side
+; In:  $A(a6) = word mode  $C(a6) = segment record  $10(a6) = actor
+; Out: d0 = 0 when overlapping, 1 otherwise (mode 3); 0 in other modes
+; Evidence: installed for type 21 ($FFCDEA) by SentinelsB2_InstallSegHooks; vtable +$26 TakeDamage on g_Player1/g_Player2
 ; ---------------------------------------------------------------------------
-sub_0F4440:
+SentinelsB_HazardSeg:
 	link.w	a6,#$0
 	movem.l	d7/a3-a4,-(a7)
 	movea.l	$C(a6),a3

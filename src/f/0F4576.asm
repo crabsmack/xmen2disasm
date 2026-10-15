@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_0F4576	[link-after-rts]
+; SentinelsB2_AlarmPalette - SentinelsB2: while the countdown runs, cycle three palette sets on a 25-step loop (alarm flashing)
+; In:  none
+; Out: none
+; Evidence: writes colour words $FFC882-$FFC8DE at steps 0, 6/18 and 12, sets g_PalBaseDirty; counter $FFC6C8
 ; ---------------------------------------------------------------------------
-sub_0F4576:
+SentinelsB2_AlarmPalette:
 	link.w	a6,#$0
 	move.l	d7,-(a7)
 	move.w	-$3B38(a5),d0

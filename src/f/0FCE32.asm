@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_0FCE32	[link-after-rts]
+; SiberiaB1_DebrisInit - SiberiaB1: clear the 48 x 20-byte debris pool and remember it
+; In:  8(a6) = pool
+; Out: d0
+; Evidence: pool $FFC6DC, count $FFC6F0
 ; ---------------------------------------------------------------------------
-sub_0FCE32:
+SiberiaB1_DebrisInit:
 	link.w	a6,#$0
 	movem.l	d3/d7/a4,-(a7)
 	movea.l	$8(a6),a4

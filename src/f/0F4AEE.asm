@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_0F4AEE	[link-after-rts]
+; SentinelsB2_LoadDigits - SentinelsB2: load the countdown digit graphics and remember their first tile in $FFC6FA
+; In:  none
+; Out: none
+; Evidence: sub_1F62C0(thunk $0F4D00, 1); tile base from the resource table $FFC980 + idx*$14
 ; ---------------------------------------------------------------------------
-sub_0F4AEE:
+SentinelsB2_LoadDigits:
 	link.w	a6,#$0
 	movem.l	d7/a4,-(a7)
 	moveq	#$1,d0

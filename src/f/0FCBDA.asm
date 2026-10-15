@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_0FCBDA	[link-after-rts]
+; SiberiaB1_UpdateWindSprite - SiberiaB1: pick wind-indicator sprite frame 1-4 from the wind angle when the wind is strong (>= $900), else 0
+; In:  none
+; Out: none
+; Evidence: Spr_SetFrame on sprite slot $FFCC6A
 ; ---------------------------------------------------------------------------
-sub_0FCBDA:
+SiberiaB1_UpdateWindSprite:
 	link.w	a6,#$0
 	move.l	d7,-(a7)
 	move.w	-$3B3A(a5),d7

@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_0FC954	[link-after-rts]
+; SiberiaB1_StepWind - SiberiaB1 blizzard: step the wind toward the next Tbl_SiberiaB1Wind keyframe (angle, strength), play wind sound $20/$21, compute the snow scroll vector
+; In:  none
+; Out: none
+; Evidence: keyframe pointer $FFC6EC, angle $FFC6FC, strength $FFC6FA, Math_CosDeg/SinDeg -> $FFC744/$FFC742 used by SiberiaB1_CamApply
 ; ---------------------------------------------------------------------------
-sub_0FC954:
+SiberiaB1_StepWind:
 	link.w	a6,#$FFF8
 	movem.l	d3-d7,-(a7)
 	clr.w	d6

@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_0FCEAA	[link-after-rts]
+; SiberiaB1_DebrisFree - SiberiaB1: remove a debris particle by moving the last one into its slot
+; In:  8(a6) = slot
+; Out: none
+; Evidence: Mem_Copy 20 bytes, count $FFC6F0 - 1
 ; ---------------------------------------------------------------------------
-sub_0FCEAA:
+SiberiaB1_DebrisFree:
 	link.w	a6,#$0
 	tst.w	-$3B10(a5)
 	beq.s	loc_0FCEDA

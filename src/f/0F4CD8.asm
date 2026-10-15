@@ -1,11 +1,14 @@
 ; ---------------------------------------------------------------------------
-; sub_0F4CD8	[jt 1317]
+; SentinelsB2_RunScene - scene "SentinelsB2 Exterior_Escape": load, install hooks, run the level loop, wait for the fade, stop all sound
+; In:  none
+; Out: none
+; Evidence: registered by Scene_RegisterAll (jt of sub_0F4CD8); TAS frame 9574 (escape after the CoolantCore)
 ; ---------------------------------------------------------------------------
-sub_0F4CD8:
+SentinelsB2_RunScene:
 	link.w	a6,#$0
-	jsr	sub_0F4B2C(pc)
-	jsr	sub_0F4C72(pc)
-	jsr	sub_0F4542(pc)
+	jsr	SentinelsB2_LoadLevel(pc)
+	jsr	SentinelsB2_InstallHooks(pc)
+	jsr	SentinelsB2_InstallSegHooks(pc)
 	jsr	$5002(a5)	; -> sub_1FA6FE
 	bra.s	loc_0F4CF2
 loc_0F4CEE:

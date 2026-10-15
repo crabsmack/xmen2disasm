@@ -1,14 +1,17 @@
 ; ---------------------------------------------------------------------------
-; sub_0F4C72	[link-after-rts]
+; SentinelsB2_InstallHooks - SentinelsB2: frame hook, digit graphics, alarm reset, place players at (2480,324), start the escape countdown at 1350, camera shake
+; In:  none
+; Out: none
+; Evidence: $FFC972 = SentinelsB2_FrameHook; countdown $FFC6FE = $546; g_CamShake
 ; ---------------------------------------------------------------------------
-sub_0F4C72:
+SentinelsB2_InstallHooks:
 	link.w	a6,#$0
-	lea.l	sub_0F47AE(pc),a0
+	lea.l	SentinelsB2_FrameHook(pc),a0
 	move.l	a0,g_SceneFrameHook(a5)
 	jsr	$23FA(a5)	; -> sub_0DC316
 	move.b	#$1,-$38B4(a5)
-	jsr	sub_0F4AEE(pc)
-	jsr	sub_0F4562(pc)
+	jsr	SentinelsB2_LoadDigits(pc)
+	jsr	SentinelsB2_ResetAlarm(pc)
 	pea.l	($13A).w
 	pea.l	($9A6).w
 	pea.l	($144).w

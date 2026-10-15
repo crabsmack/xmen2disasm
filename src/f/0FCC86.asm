@@ -1,9 +1,12 @@
 ; ---------------------------------------------------------------------------
-; sub_0FCC86	[link-after-rts]
+; SiberiaB1_PostLoad - SiberiaB1 scene post-load hook: wind sprite, scroll offset, run the plane-B scroll hook, then Scene_PostLoadVram
+; In:  none
+; Out: none
+; Evidence: installed in $FFC914 (-$38EC, called last by sub_1F98A8)
 ; ---------------------------------------------------------------------------
-sub_0FCC86:
+SiberiaB1_PostLoad:
 	link.w	a6,#$0
-	jsr	sub_0FCB8E(pc)
+	jsr	SiberiaB1_InitWindSprite(pc)
 	addi.w	#$100,-$3ACC(a5)
 	clr.b	-$13F0(a5)
 	jsr	$4D9A(a5)	; -> Irq_Disable

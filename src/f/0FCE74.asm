@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_0FCE74	[link-after-rts]
+; SiberiaB1_DebrisAlloc - SiberiaB1: take the next debris slot (max 48)
+; In:  none
+; Out: d0 = slot or 0
+; Evidence: count $FFC6F0
 ; ---------------------------------------------------------------------------
-sub_0FCE74:
+SiberiaB1_DebrisAlloc:
 	link.w	a6,#$0
 	move.l	a4,-(a7)
 	moveq	#$0,d0

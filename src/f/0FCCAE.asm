@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_0FCCAE	[link-after-rts]
+; SiberiaB1_FrameHook - SiberiaB1 per-frame hook: wind and wind sprite, palette cycles, stop P1 sounds when P2 joins, demo timer (timeout -> LogoAndDemo, any button cancels)
+; In:  none
+; Out: none
+; Evidence: g_ScnLogoAndDemo -> g_SceneIndex when $FFC6F6 reaches 0; g_Pad1Raw|g_Pad2Raw; TAS 165-1356
 ; ---------------------------------------------------------------------------
-sub_0FCCAE:
+SiberiaB1_FrameHook:
 	link.w	a6,#$0
 	move.l	g_FrameCounter(a5),d0
 	addq.l	#$1,g_FrameCounter(a5)
@@ -15,11 +18,11 @@ loc_0FCCC8:
 	move.w	-$3B32(a5),d0
 	subq.w	#$1,-$3B32(a5)
 loc_0FCCD6:
-	jsr	sub_0FCBDA(pc)
-	jsr	sub_0FC954(pc)
+	jsr	SiberiaB1_UpdateWindSprite(pc)
+	jsr	SiberiaB1_StepWind(pc)
 	tst.b	g_PalFadeActive(a5)
 	bne.s	loc_0FCCE8
-	jsr	sub_0FC72E(pc)
+	jsr	SiberiaB1_CyclePalettes(pc)
 loc_0FCCE8:
 	tst.b	-$38DE(a5)
 	beq.s	loc_0FCD24
@@ -37,10 +40,10 @@ loc_0FCD04:
 loc_0FCD12:
 	tst.b	g_PalFadeActive(a5)
 	bne.s	loc_0FCD1C
-	jsr	sub_0FC72E(pc)
+	jsr	SiberiaB1_CyclePalettes(pc)
 loc_0FCD1C:
-	jsr	sub_0FCBDA(pc)
-	jsr	sub_0FC954(pc)
+	jsr	SiberiaB1_UpdateWindSprite(pc)
+	jsr	SiberiaB1_StepWind(pc)
 loc_0FCD24:
 	tst.b	-$3BBA(a5)
 	beq.s	loc_0FCDA0

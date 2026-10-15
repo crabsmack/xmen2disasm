@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_0FCDEE	[link-after-rts]
+; SiberiaB1_LoadResources - SiberiaB1: load three graphics resources (one is the debris sprite set kept in $FFC6F2)
+; In:  none
+; Out: none
+; Evidence: sub_1F62C0 with $133E98, $0FBDD2, jt $3BFA
 ; ---------------------------------------------------------------------------
-sub_0FCDEE:
+SiberiaB1_LoadResources:
 	link.w	a6,#$0
 	moveq	#$3,d0
 	move.l	d0,-(a7)

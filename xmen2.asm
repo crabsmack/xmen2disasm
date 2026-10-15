@@ -2573,13 +2573,21 @@ Tbl_CoreZap_vtable:	; class descriptor "COREZAP": word $6E = name offset, long p
 	include "src/f/0FD0E0.asm"
 	include "src/f/0FD24C.asm"
 	include "src/f/0FD50A.asm"
-Str_Empty_0FD574:	; C string "" (used by sub_0FD50A)
+Str_Empty_0FD574:	; C string "" (used by SiberiaB1_InstallTileHooks)
 	incrom	$0FD574,$2
 	include "src/f/0FD576.asm"
 	include "src/f/0FD614.asm"
 	include "src/f/0FD69C.asm"
 	include "src/f/0FD6A8.asm"
-	incrom	$0FD71C,$9444
+Tbl_SiberiaB1Wind:	; 11 x 8-byte wind keyframes {word duration frames, word angle deg, word strength (16.8), word unused}, then $FFFF... (SiberiaB1_StepWind)
+	incrom	$0FD71C,$60
+Tbl_SiberiaB1PalCycle1:	; palette cycle: {long offset to colours, byte delay, byte palette index $2F}, long -1, then colour words ending $FFFF (sub_159FD6 via SiberiaB1_CyclePalettes)
+	incrom	$0FD77C,$1A
+Tbl_SiberiaB1PalCycle2:	; palette cycle for palette index $2D, same format (SiberiaB1_CyclePalettes)
+	incrom	$0FD796,$1A
+Tbl_SiberiaB1PalCycle3:	; palette cycle for palette index $2E, same format (SiberiaB1_CyclePalettes)
+	incrom	$0FD7B0,$1A
+	incrom	$0FD7CA,$9396
 	include "src/f/106B60.asm"
 	include "src/f/106B68.asm"
 	include "src/f/106B76.asm"

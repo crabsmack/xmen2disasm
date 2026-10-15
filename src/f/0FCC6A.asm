@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_0FCC6A	[link-after-rts]
+; SiberiaB1_PreLoad - SiberiaB1 scene pre-load hook: set stage flags, then the standard Scene_PreLoadReset
+; In:  none
+; Out: none
+; Evidence: installed in $FFC918 (-$38E8, called first by the scene loader sub_1F98A8)
 ; ---------------------------------------------------------------------------
-sub_0FCC6A:
+SiberiaB1_PreLoad:
 	link.w	a6,#$0
 	clr.b	-$13F0(a5)
 	move.b	#$1,-$13EE(a5)

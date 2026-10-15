@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_0F44E8	[jt 1315]
+; SentinelsB_ExitSeg - Sentinels segment handler: in mode 3 start the scene-exit timer (30 frames; in SentinelsB2 5 frames, only while the countdown runs)
+; In:  $A(a6) = word mode
+; Out: d0 = 1 in mode 3, else 0
+; Evidence: g_SceneExitTimer, g_ScnSentinelsB2 vs g_SceneIndex, countdown $FFC6FE
 ; ---------------------------------------------------------------------------
-sub_0F44E8:
+SentinelsB_ExitSeg:
 	link.w	a6,#$0
 	moveq	#$3,d0
 	cmp.w	$A(a6),d0

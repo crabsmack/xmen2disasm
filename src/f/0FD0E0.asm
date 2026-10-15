@@ -1,14 +1,17 @@
 ; ---------------------------------------------------------------------------
-; sub_0FD0E0	[link-after-rts]
+; SiberiaB1_SpawnDebris - SiberiaB1: spawn 4 ice debris particles at (x, y) with random velocities
+; In:  $A(a6) = word x  $E(a6) = word y
+; Out: d0
+; Evidence: SiberiaB1_DebrisAlloc, random sub_1600AA; gravity $20
 ; ---------------------------------------------------------------------------
-sub_0FD0E0:
+SiberiaB1_SpawnDebris:
 	link.w	a6,#$FFE8
 	movem.l	d3/d5-d7/a4,-(a7)
 	move.w	$E(a6),d5
 	move.w	$A(a6),d6
 	clr.w	d7
 loc_0FD0F2:
-	jsr	sub_0FCE74(pc)
+	jsr	SiberiaB1_DebrisAlloc(pc)
 	movea.l	d0,a4
 	move.l	a4,d0
 	beq.w	loc_0FD242

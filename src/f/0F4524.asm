@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_0F4524	[jt 1316]
+; SentinelsB_SegIsMode3 - Sentinels segment handler: return 1 in mode 3, 0 otherwise
+; In:  $A(a6) = word mode
+; Out: d0.b
+; Evidence: installed for segment types 26/27 by the SentinelsB1/B2 InstallSegHooks
 ; ---------------------------------------------------------------------------
-sub_0F4524:
+SentinelsB_SegIsMode3:
 	link.w	a6,#$0
 	move.l	d3,-(a7)
 	moveq	#$3,d1

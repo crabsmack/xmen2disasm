@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_0FC8A4	[link-after-rts]
+; SiberiaB1_InitWind - SiberiaB1: start the wind at the first keyframe, create the camera, set map bounds and four palette colours
+; In:  none
+; Out: none
+; Evidence: $FFC6EC = Tbl_SiberiaB1Wind; CAMERA New (jt $4FBA) with SiberiaB1_InitCamera; bounds from map header $0F563A
 ; ---------------------------------------------------------------------------
-sub_0FC8A4:
+SiberiaB1_InitWind:
 	link.w	a6,#$0
 	movem.l	d7/a4,-(a7)
 	move.b	#$1,-$3AB8(a5)
@@ -13,7 +16,7 @@ sub_0FC8A4:
 	move.l	$2(a0),-$3B14(a5)
 	clr.w	-$3B08(a5)
 	clr.w	-$3B32(a5)
-	pea.l	sub_0FC890(pc)
+	pea.l	SiberiaB1_InitCamera(pc)
 	lea.l	$4DBA(a5),a0
 	move.l	$2(a0),-(a7)
 	lea.l	$4DBA(a5),a0

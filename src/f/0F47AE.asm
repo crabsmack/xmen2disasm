@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_0F47AE	[link-after-rts]
+; SentinelsB2_FrameHook - SentinelsB2 per-frame hook: tick the escape countdown every 6 frames, draw it as digit sprites, run the alarm palette; at 0 flash white, fade, end the scene
+; In:  none
+; Out: d0
+; Evidence: countdown $FFC6FE, digit sprites at y $148 into g_SpriteTable, Pal_StartFade, g_PalBase = $EEE, g_SceneExitTimer = $78 then 1; TAS 9714-10022
 ; ---------------------------------------------------------------------------
-sub_0F47AE:
+SentinelsB2_FrameHook:
 	link.w	a6,#$0
 	movem.l	d3/d5-d7/a3-a4,-(a7)
 	move.l	g_FrameCounter(a5),d0
@@ -28,11 +31,11 @@ loc_0F47EC:
 	tst.b	g_PalFadeActive(a5)
 	bne.w	loc_0F4AE4
 	jsr	$23F2(a5)	; -> sub_0DC2CE
-	jsr	sub_0F4576(pc)
+	jsr	SentinelsB2_AlarmPalette(pc)
 	tst.b	-$38DE(a5)
 	beq.s	loc_0F4812
 	jsr	$23F2(a5)	; -> sub_0DC2CE
-	jsr	sub_0F4576(pc)
+	jsr	SentinelsB2_AlarmPalette(pc)
 loc_0F4812:
 	moveq	#$1,d0
 	cmp.w	-$3B08(a5),d0

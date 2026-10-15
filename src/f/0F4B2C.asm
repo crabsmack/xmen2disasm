@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_0F4B2C	[link-after-rts]
+; SentinelsB2_LoadLevel - SentinelsB2: load the stage, start music $60 if flagged, set the alarm palette base colours
+; In:  none
+; Out: none
+; Evidence: sub_1F98A8 with thunks $0ED120/$0DACA6/$0DA60E/$0DB702; Snd_Play($60); $FFC5A2 bit 15; colour words $FFC884-$FFC8DE
 ; ---------------------------------------------------------------------------
-sub_0F4B2C:
+SentinelsB2_LoadLevel:
 	link.w	a6,#$0
 	lea.l	$23CA(a5),a0
 	move.l	$2(a0),-(a7)
@@ -32,7 +35,7 @@ sub_0F4B2C:
 	lea.l	$2922(a5),a0
 	move.l	$2(a0),-(a7)
 	jsr	$4FCA(a5)	; -> sub_1F98A8
-	jsr	sub_0F4CBC(pc)
+	jsr	SentinelsB2_CallStubs(pc)
 	move.w	-$3C5E(a5),d0
 	ext.l	d0
 	move.w	#$8000,d1

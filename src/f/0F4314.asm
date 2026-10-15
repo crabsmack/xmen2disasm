@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_0F4314	[link-after-rts]
+; SentinelsB1_FrameHook - SentinelsB1 per-frame hook: camera field +$42 = 200, count the frame, run the Sentinels palette animation (twice at half rate)
+; In:  none
+; Out: d0
+; Evidence: g_Camera+$42, g_FrameCounter, sub_0DC2CE unless g_PalFadeActive; TAS 5209-7290
 ; ---------------------------------------------------------------------------
-sub_0F4314:
+SentinelsB1_FrameHook:
 	link.w	a6,#$0
 	movea.l	g_Camera(a5),a0
 	move.w	#$C8,$42(a0)

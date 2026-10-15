@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_0FC78A	[link-after-rts]
+; SiberiaB1_CamApply - SiberiaB1: camera to scroll globals with bounds clamp and parallax, adding the wind vector to the background scroll
+; In:  8(a6) = camera
+; Out: none
+; Evidence: g_CameraX/g_CameraY, bounds $FFC76C-$FFC772, $FFC73E += wind $FFC744, hooks $FFC7AC/$FFC7B0
 ; ---------------------------------------------------------------------------
-sub_0FC78A:
+SiberiaB1_CamApply:
 	link.w	a6,#$0
 	movem.l	d4-d7/a4,-(a7)
 	movea.l	$8(a6),a4

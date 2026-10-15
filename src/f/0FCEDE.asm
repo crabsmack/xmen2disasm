@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_0FCEDE	[link-after-rts]
+; SiberiaB1_DebrisUpdate - SiberiaB1 debris timer: move particles, bounce on the floor line ($FFC6F4) losing energy, animate and draw the visible ones
+; In:  none
+; Out: none
+; Evidence: Timer_Create callback; sprites into g_SpriteTable with tiles from $FFC6F2; TAS 169-1357
 ; ---------------------------------------------------------------------------
-sub_0FCEDE:
+SiberiaB1_DebrisUpdate:
 	link.w	a6,#$0
 	movem.l	d3-d7/a3-a4,-(a7)
 	movea.l	-$3B24(a5),a4
@@ -80,7 +83,7 @@ loc_0FCFA4:
 	ble.s	loc_0FCFBE
 loc_0FCFAA:
 	move.l	a4,-(a7)
-	jsr	sub_0FCEAA(pc)
+	jsr	SiberiaB1_DebrisFree(pc)
 	move.w	d4,d0
 	subq.w	#$1,d4
 	lea.l	-$14(a4),a4
