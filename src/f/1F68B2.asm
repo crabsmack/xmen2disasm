@@ -3,6 +3,6 @@
 ; ---------------------------------------------------------------------------
 sub_1F68B2:
 	link.w	a6,#$0
-	move.l	-$38CA(a5),-$13EC(a5)
+	move.l	g_PalCycleScript(a5),g_PalCycleSave(a5)
 	unlk	a6
 	rts

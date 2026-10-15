@@ -49,8 +49,8 @@ loc_15F9C8:
 	ext.l	d0
 	cmp.l	d7,d0
 	bgt.s	loc_15F980
-	clr.w	-$BCE(a5)
-	move.l	g_SpawnRecs(a5),-$BD2(a5)
+	clr.w	g_SpawnScanLeft(a5)
+	move.l	g_SpawnRecs(a5),g_SpawnScanPtr(a5)
 	move.w	g_SpawnRecCount(a5),d0
 	ext.l	d0
 	movea.l	g_SpawnRecs(a5),a0
@@ -62,17 +62,17 @@ loc_15F9C8:
 	clr.w	d1
 	add.l	d1,d0
 	adda.l	d0,a0
-	move.l	a0,-$BD6(a5)
-	move.w	#$A,-$BD8(a5)
-	move.w	#$5,-$BD8(a5)
+	move.l	a0,g_SpawnRecEnd(a5)
+	move.w	#$A,g_SpawnScanPerFrame(a5)
+	move.w	#$5,g_SpawnScanPerFrame(a5)
 	tst.w	g_SpawnRecCount(a5)
 	ble.s	loc_15FA18
 	moveq	#$0,d0
-	move.l	d0,-$BCC(a5)
+	move.l	d0,g_SpawnPassHook(a5)
 	bra.s	loc_15FA20
 loc_15FA18:
 	lea.l	Spawn_Nop(pc),a0
-	move.l	a0,-$BCC(a5)
+	move.l	a0,g_SpawnPassHook(a5)
 loc_15FA20:
 	movem.l	-$C(a6),d7/a3-a4
 	unlk	a6

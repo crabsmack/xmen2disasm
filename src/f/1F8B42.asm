@@ -77,7 +77,7 @@ loc_1F8BFC:
 	bge.s	loc_1F8C3A
 	tst.w	$6A(a4)
 	bne.s	loc_1F8C34
-	movea.l	-$135E(a5),a0
+	movea.l	g_SegBlockedHook(a5),a0
 	move.l	d7,-(a7)
 	pea.l	-$F0(a6)
 	move.l	a4,-(a7)
@@ -170,7 +170,7 @@ loc_1F8CBA:
 	addq.w	#$4,a7
 	bra.w	loc_1F8E7A
 loc_1F8CF8:
-	movea.l	-$135E(a5),a0
+	movea.l	g_SegBlockedHook(a5),a0
 	move.l	d7,-(a7)
 	pea.l	-$F0(a6)
 	move.l	a4,-(a7)
@@ -217,7 +217,7 @@ loc_1F8D50:
 	ori.b	#$40,(a3)
 	bra.s	loc_1F8D8E
 loc_1F8D6A:
-	movea.l	-$3488(a5),a0
+	movea.l	g_SegResolveHook(a5),a0
 	move.l	a2,-(a7)
 	move.l	a4,-(a7)
 	move.l	a3,-(a7)

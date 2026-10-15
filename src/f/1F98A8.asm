@@ -140,7 +140,7 @@ loc_1F9A08:
 	cmp.l	d7,d3
 	bgt.s	loc_1F9A08
 	lea.l	$4FA2(a5),a0
-	move.l	a0,-$135E(a5)
+	move.l	a0,g_SegBlockedHook(a5)
 	clr.w	g_SpriteDefCount(a5)
 	lea.l	g_SpriteDefs(a5),a4
 	moveq	#$0,d7
@@ -265,17 +265,17 @@ loc_1F9B58:
 	clr.b	g_CamModeSwitched(a5)
 	move.l	d0,g_ParallaxDesc(a5)
 	lea.l	$510A(a5),a0
-	move.l	a0,-$3A48(a5)
+	move.l	a0,g_LevelScrollHook(a5)
 	lea.l	sub_1F9E46(pc),a0
-	move.l	a0,-$3A4C(a5)
-	move.l	d0,-$38CA(a5)
-	move.l	d0,-$38CE(a5)
-	move.w	#$FFFF,-$38D0(a5)
+	move.l	a0,g_LevelPalHook(a5)
+	move.l	d0,g_PalCycleScript(a5)
+	move.l	d0,g_PalCycleCursor(a5)
+	move.w	#$FFFF,g_PalCycleDelay(a5)
 	move.l	d0,g_FrameCounter(a5)
 	move.b	#$1,g_TwoPlayerStep(a5)
 	clr.b	-$38B8(a5)
 	lea.l	$4EFA(a5),a0
-	move.l	a0,-$3488(a5)
+	move.l	a0,g_SegResolveHook(a5)
 	lea.l	$4FAA(a5),a0
 	move.l	a0,g_SceneFrameHook(a5)
 	lea.l	$4F82(a5),a0
@@ -303,7 +303,7 @@ loc_1F9B58:
 	move.l	d0,-$CA6(a5)
 	lea.l	$3FB2(a5),a0
 	move.l	a0,g_PauseHandler(a5)
-	clr.b	-$1662(a5)
+	clr.b	g_PauseExit(a5)
 	move.b	#$1,-$1660(a5)
 	jsr	Timer_InitAll(pc)
 	jsr	$405A(a5)	; -> HitList_Init

@@ -292,25 +292,25 @@ loc_1FA4D8:
 	bne.w	loc_1FA638
 	tst.b	-$3894(a5)
 	beq.w	loc_1FA61A
-	tst.l	-$BCC(a5)
+	tst.l	g_SpawnPassHook(a5)
 	beq.s	loc_1FA4FC
-	movea.l	-$BCC(a5),a0
+	movea.l	g_SpawnPassHook(a5),a0
 	jsr	(a0)
 	bra.w	loc_1FA5B0
 loc_1FA4FC:
-	move.w	-$BD8(a5),d0
+	move.w	g_SpawnScanPerFrame(a5),d0
 	ext.l	d0
 	move.l	d0,d5
 loc_1FA504:
-	tst.w	-$BCE(a5)
+	tst.w	g_SpawnScanLeft(a5)
 	bne.s	loc_1FA516
-	move.w	g_SpawnRecCount(a5),-$BCE(a5)
-	move.l	-$BD6(a5),-$BD2(a5)
+	move.w	g_SpawnRecCount(a5),g_SpawnScanLeft(a5)
+	move.l	g_SpawnRecEnd(a5),g_SpawnScanPtr(a5)
 loc_1FA516:
-	subq.w	#$1,-$BCE(a5)
+	subq.w	#$1,g_SpawnScanLeft(a5)
 	moveq	#-$E,d0
-	add.l	d0,-$BD2(a5)
-	movea.l	-$BD2(a5),a4
+	add.l	d0,g_SpawnScanPtr(a5)
+	movea.l	g_SpawnScanPtr(a5),a4
 	moveq	#$0,d7
 	move.b	$4(a4),d7
 	moveq	#$1,d0
@@ -444,9 +444,9 @@ loc_1FA644:
 loc_1FA660:
 	tst.b	-$38E4(a5)
 	bne.s	loc_1FA672
-	movea.l	-$3A48(a5),a0
+	movea.l	g_LevelScrollHook(a5),a0
 	jsr	(a0)
-	movea.l	-$3A4C(a5),a0
+	movea.l	g_LevelPalHook(a5),a0
 	jsr	(a0)
 loc_1FA672:
 	movea.l	g_SceneDrawHook(a5),a0

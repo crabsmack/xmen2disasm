@@ -4,12 +4,12 @@
 loc_15C5D6:
 	clr.w	-$3C58(a5)
 	moveq	#$0,d0
-	move.l	d0,-$1666(a5)
+	move.l	d0,g_PauseCheatPtr(a5)
 	bra.w	loc_15CA36
 loc_15C5E4:
 	clr.w	-$3C58(a5)
 	moveq	#$0,d0
-	move.l	d0,-$1666(a5)
+	move.l	d0,g_PauseCheatPtr(a5)
 	bra.w	loc_15CA36
 loc_15C5F2:
 	moveq	#$7F,d6
@@ -42,11 +42,11 @@ loc_15C63C:
 	cmp.w	g_Pad2Raw(a5),d0
 	bne.s	loc_15C658
 	lea.l	$E0A(a5),a0
-	move.l	$2(a0),-$1666(a5)
+	move.l	$2(a0),g_PauseCheatPtr(a5)
 	bra.w	loc_15CA36
 loc_15C658:
 	lea.l	$E3A(a5),a0
-	move.l	$2(a0),-$1666(a5)
+	move.l	$2(a0),g_PauseCheatPtr(a5)
 	bra.w	loc_15CA36
 loc_15C666:
 	cmpi.w	#$22,d6
@@ -59,11 +59,11 @@ loc_15C666:
 	cmp.w	g_Pad2Raw(a5),d0
 	bne.s	loc_15C692
 	lea.l	$E12(a5),a0
-	move.l	$2(a0),-$1666(a5)
+	move.l	$2(a0),g_PauseCheatPtr(a5)
 	bra.w	loc_15CA36
 loc_15C692:
 	lea.l	$E42(a5),a0
-	move.l	$2(a0),-$1666(a5)
+	move.l	$2(a0),g_PauseCheatPtr(a5)
 	bra.w	loc_15CA36
 loc_15C6A0:
 	cmpi.w	#$24,d6
@@ -72,7 +72,7 @@ loc_15C6A0:
 	and.w	-$3C5E(a5),d0
 	beq.s	loc_15C6C8
 	subq.w	#$1,g_SceneIndex(a5)
-	move.b	#$1,-$1662(a5)
+	move.b	#$1,g_PauseExit(a5)
 	move.b	#$1,-$38C2(a5)
 	move.w	#$1,g_SceneExitTimer(a5)
 	bra.w	loc_15CA36
@@ -82,11 +82,11 @@ loc_15C6C8:
 	cmp.w	g_Pad2Raw(a5),d0
 	bne.s	loc_15C6E4
 	lea.l	$E1A(a5),a0
-	move.l	$2(a0),-$1666(a5)
+	move.l	$2(a0),g_PauseCheatPtr(a5)
 	bra.w	loc_15CA36
 loc_15C6E4:
 	lea.l	$E4A(a5),a0
-	move.l	$2(a0),-$1666(a5)
+	move.l	$2(a0),g_PauseCheatPtr(a5)
 	bra.w	loc_15CA36
 loc_15C6F2:
 	cmpi.w	#$28,d6
@@ -95,7 +95,7 @@ loc_15C6F2:
 	and.w	-$3C5E(a5),d0
 	beq.s	loc_15C716
 	addq.w	#$1,g_SceneIndex(a5)
-	move.b	#$1,-$1662(a5)
+	move.b	#$1,g_PauseExit(a5)
 	move.w	#$1,g_SceneExitTimer(a5)
 	bra.w	loc_15CA36
 loc_15C716:
@@ -104,11 +104,11 @@ loc_15C716:
 	cmp.w	g_Pad2Raw(a5),d0
 	bne.s	loc_15C732
 	lea.l	$E1A(a5),a0
-	move.l	$2(a0),-$1666(a5)
+	move.l	$2(a0),g_PauseCheatPtr(a5)
 	bra.w	loc_15CA36
 loc_15C732:
 	lea.l	$E4A(a5),a0
-	move.l	$2(a0),-$1666(a5)
+	move.l	$2(a0),g_PauseCheatPtr(a5)
 	bra.w	loc_15CA36
 loc_15C740:
 	cmpi.w	#$12,d6
@@ -147,11 +147,11 @@ loc_15C7A0:
 	cmp.w	g_Pad2Raw(a5),d0
 	bne.s	loc_15C7BC
 	lea.l	$E22(a5),a0
-	move.l	$2(a0),-$1666(a5)
+	move.l	$2(a0),g_PauseCheatPtr(a5)
 	bra.w	loc_15CA36
 loc_15C7BC:
 	lea.l	$E52(a5),a0
-	move.l	$2(a0),-$1666(a5)
+	move.l	$2(a0),g_PauseCheatPtr(a5)
 	bra.w	loc_15CA36
 loc_15C7CA:
 	cmpi.w	#$14,d6
@@ -236,7 +236,7 @@ loc_15C88E:
 	tst.w	d7
 	beq.w	loc_15CA36
 	move.w	d7,g_SceneIndex(a5)
-	move.b	#$1,-$1662(a5)
+	move.b	#$1,g_PauseExit(a5)
 	move.w	#$1,g_SceneExitTimer(a5)
 	move.b	#$1,-$38C2(a5)
 	bra.w	loc_15CA36
@@ -246,11 +246,11 @@ loc_15C8AE:
 	cmp.w	g_Pad2Raw(a5),d0
 	bne.s	loc_15C8CA
 	lea.l	$E2A(a5),a0
-	move.l	$2(a0),-$1666(a5)
+	move.l	$2(a0),g_PauseCheatPtr(a5)
 	bra.w	loc_15CA36
 loc_15C8CA:
 	lea.l	$E5A(a5),a0
-	move.l	$2(a0),-$1666(a5)
+	move.l	$2(a0),g_PauseCheatPtr(a5)
 	bra.w	loc_15CA36
 loc_15C8D8:
 	cmpi.w	#$18,d6
@@ -329,7 +329,7 @@ loc_15C990:
 	tst.w	d7
 	beq.w	loc_15CA36
 	move.w	d7,g_SceneIndex(a5)
-	move.b	#$1,-$1662(a5)
+	move.b	#$1,g_PauseExit(a5)
 	move.w	#$1,g_SceneExitTimer(a5)
 	move.b	#$1,-$38C2(a5)
 	bra.w	loc_15CA36
@@ -339,11 +339,11 @@ loc_15C9B0:
 	cmp.w	g_Pad2Raw(a5),d0
 	bne.s	loc_15C9CA
 	lea.l	$E2A(a5),a0
-	move.l	$2(a0),-$1666(a5)
+	move.l	$2(a0),g_PauseCheatPtr(a5)
 	bra.s	loc_15CA36
 loc_15C9CA:
 	lea.l	$E5A(a5),a0
-	move.l	$2(a0),-$1666(a5)
+	move.l	$2(a0),g_PauseCheatPtr(a5)
 	bra.s	loc_15CA36
 loc_15C9D6:
 	cmpi.w	#$11,d6
@@ -372,25 +372,25 @@ loc_15CA12:
 	cmp.w	g_Pad2Raw(a5),d0
 	bne.s	loc_15CA2C
 	lea.l	$E32(a5),a0
-	move.l	$2(a0),-$1666(a5)
+	move.l	$2(a0),g_PauseCheatPtr(a5)
 	bra.s	loc_15CA36
 loc_15CA2C:
 	lea.l	$E62(a5),a0
-	move.l	$2(a0),-$1666(a5)
+	move.l	$2(a0),g_PauseCheatPtr(a5)
 loc_15CA36:
 	tst.w	g_Player1+$68(a5)
 	ble.s	loc_15CA4C
 	move.w	#$80,d0
 	and.w	g_Pad1Latch(a5),d0
 	beq.s	loc_15CA4C
-	move.b	#$1,-$1662(a5)
+	move.b	#$1,g_PauseExit(a5)
 loc_15CA4C:
 	tst.w	g_Player2+$68(a5)
 	ble.s	loc_15CA62
 	move.w	#$80,d0
 	and.w	g_Pad2Latch(a5),d0
 	beq.s	loc_15CA62
-	move.b	#$1,-$1662(a5)
+	move.b	#$1,g_PauseExit(a5)
 loc_15CA62:
 	movem.l	-$8(a6),d6-d7
 	unlk	a6

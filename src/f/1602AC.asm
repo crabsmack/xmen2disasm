@@ -5,10 +5,10 @@
 ; Evidence: index -$7B0 wraps at $12C
 ; ---------------------------------------------------------------------------
 Rand_Next_Mix2:
-	move.w	-$7B0(a5),d1
+	move.w	g_RandIdx2(a5),d1
 	move.w	Tbl_RandXor2(pc,d1.w),d1
 	eor.w	d1,d0
-	subq.w	#$2,-$7B0(a5)
+	subq.w	#$2,g_RandIdx2(a5)
 	bpl.w	Rand_Next_Mix3
-	move.w	#$12C,-$7B0(a5)
+	move.w	#$12C,g_RandIdx2(a5)
 	bra.w	Rand_Next_Mix3

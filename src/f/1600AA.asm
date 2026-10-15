@@ -5,11 +5,11 @@
 ; Evidence: index words -$7B2/-$7B0/-$7AE step down by 2 and wrap at $1D0/$12C/$FC; tables Tbl_RandXor1/2/3; history -$7AC/-$7AA; XPlayer_StateStand picks idle variants with it
 ; ---------------------------------------------------------------------------
 Rand_Next:
-	move.w	-$7AA(a5),d0
-	move.w	-$7B2(a5),d1
+	move.w	g_RandPrev2(a5),d0
+	move.w	g_RandIdx1(a5),d1
 	move.w	Tbl_RandXor1(pc,d1.w),d1
 	eor.w	d1,d0
-	subq.w	#$2,-$7B2(a5)
+	subq.w	#$2,g_RandIdx1(a5)
 	bpl.w	Rand_Next_Mix2
-	move.w	#$1D0,-$7B2(a5)
+	move.w	#$1D0,g_RandIdx1(a5)
 	bra.w	Rand_Next_Mix2

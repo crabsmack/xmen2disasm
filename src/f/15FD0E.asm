@@ -11,7 +11,7 @@ Scroll_ComputeParallax:
 loc_15FD16:
 	movem.l	d2-d7/a2-a4,-(a7)
 	movea.l	d0,a4
-	lea.l	-$846(a5),a3
+	lea.l	g_ParallaxBands(a5),a3
 	lea.l	g_HScrollBuf(a5),a2
 	moveq	#$0,d7
 	move.b	$1(a4),d7

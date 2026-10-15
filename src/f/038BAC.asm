@@ -8,9 +8,9 @@ BaniMazaA1_InitScroll:
 	link.w	a6,#$0
 	movem.l	d3/d7,-(a7)
 	lea.l	$8BA(a5),a0
-	move.l	a0,-$3A48(a5)
-	move.w	#$7BE,-$1D42(a5)
-	move.w	#$42,-$1D44(a5)
+	move.l	a0,g_LevelScrollHook(a5)
+	move.w	#$7BE,g_HScrollFreeTile(a5)
+	move.w	#$42,g_HScrollFreeCount(a5)
 	move.w	g_VdpReg11(a5),d0
 	addq.w	#$3,d0
 	move.w	d0,($C00004).l

@@ -28,7 +28,7 @@ loc_1F8F0C:
 	moveq	#$0,d0
 	move.l	d0,g_DrawListTail(a5)
 	move.l	d0,g_DrawListHead(a5)
-	clr.b	-$135A(a5)
+	clr.b	g_DrawListZero(a5)
 	moveq	#$0,d0
 	movem.l	-$10(a6),d3/d7/a3-a4
 	unlk	a6

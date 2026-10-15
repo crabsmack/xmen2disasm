@@ -5,10 +5,10 @@
 ; Evidence: index -$7AE wraps at $FC
 ; ---------------------------------------------------------------------------
 Rand_Next_Mix3:
-	move.w	-$7AE(a5),d1
+	move.w	g_RandIdx3(a5),d1
 	move.w	Tbl_RandXor3(pc,d1.w),d1
 	eor.w	d1,d0
-	subq.w	#$2,-$7AE(a5)
+	subq.w	#$2,g_RandIdx3(a5)
 	bpl.w	Rand_Next_Finish
-	move.w	#$FC,-$7AE(a5)
+	move.w	#$FC,g_RandIdx3(a5)
 	bra.w	Rand_Next_Finish

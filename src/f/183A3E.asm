@@ -8,11 +8,11 @@ Beast_RollPathClear:
 	link.w	a6,#$0
 	movem.l	d7/a3-a4,-(a7)
 	movea.l	$8(a6),a4
-	movea.l	-$3488(a5),a3
+	movea.l	g_SegResolveHook(a5),a3
 	move.l	$8(a4),d7
 	clr.b	$7B(a4)
 	lea.l	Beast_RollProbeCb(pc),a0
-	move.l	a0,-$3488(a5)
+	move.l	a0,g_SegResolveHook(a5)
 	moveq	#$10,d0
 	and.b	$2E(a4),d0
 	beq.s	loc_183A6C
@@ -32,7 +32,7 @@ loc_183A70:
 	jsr	$4DDA(a5)	; -> Obj_UpdateBox
 	move.l	a4,-(a7)
 	jsr	$4F5A(a5)	; -> sub_1F8B42
-	move.l	a3,-$3488(a5)
+	move.l	a3,g_SegResolveHook(a5)
 	tst.b	$7B(a4)
 	lea.l	$10(a7),a7
 	beq.s	loc_183AA6

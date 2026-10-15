@@ -6,18 +6,18 @@ sub_15C42A:
 	movem.l	d6-d7,-(a7)
 	clr.b	-$3A08(a5)
 	jsr	$50FA(a5)	; -> Pad_Update
-	tst.l	-$1666(a5)
+	tst.l	g_PauseCheatPtr(a5)
 	beq.w	loc_15C5F2
 	moveq	#$7F,d0
 	and.w	g_Pad1Pressed(a5),d0
 	beq.w	loc_15CA36
 	moveq	#$7F,d6
 	and.w	g_Pad1Pressed(a5),d6
-	movea.l	-$1666(a5),a0
+	movea.l	g_PauseCheatPtr(a5),a0
 	cmp.b	(a0),d6
 	bne.w	loc_15C5E4
-	addq.l	#$1,-$1666(a5)
-	movea.l	-$1666(a5),a0
+	addq.l	#$1,g_PauseCheatPtr(a5)
+	movea.l	g_PauseCheatPtr(a5),a0
 	moveq	#$0,d0
 	move.b	(a0),d0
 	cmpi.w	#$FF,d0

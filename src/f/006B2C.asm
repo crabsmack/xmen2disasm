@@ -12,9 +12,9 @@ Scene_PreLoadReset:
 	move.l	d0,-(a7)
 	move.l	d0,-(a7)
 	jsr	$2E2A(a5)	; -> ICandy_PoolInit
-	move.w	#$7A1,-$1D42(a5)
-	move.w	#$5F,-$1D44(a5)
-	move.w	#$700,-$1D46(a5)
+	move.w	#$7A1,g_HScrollFreeTile(a5)
+	move.w	#$5F,g_HScrollFreeCount(a5)
+	move.w	#$700,g_VramTileLimit(a5)
 	moveq	#$0,d0
 	move.l	d0,g_BBoard(a5)
 	move.l	d0,g_SyncPool(a5)

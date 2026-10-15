@@ -4,7 +4,7 @@
 sub_1F684E:
 	link.w	a6,#$0
 	movem.l	d3/d7/a4,-(a7)
-	lea.l	-$13E8(a5),a4
+	lea.l	g_PalSave(a5),a4
 	clr.b	d7
 	moveq	#$40,d3
 loc_1F685E:

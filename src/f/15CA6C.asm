@@ -14,7 +14,7 @@ loc_15CA88:
 	move.b	#$1,g_DmaFlushReq(a5)
 	jsr	sub_15C42A(pc)
 	jsr	$5112(a5)	; -> VDP_WaitVBlank
-	tst.b	-$1662(a5)
+	tst.b	g_PauseExit(a5)
 	beq.s	loc_15CA88
 	unlk	a6
 	rts

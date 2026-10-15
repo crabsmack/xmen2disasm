@@ -28,7 +28,7 @@ MagnetoBoss_Activate:
 	pea.l	$2E(a4)
 	jsr	$506A(a5)	; -> Spr_Init
 	move.w	d0,d5
-	cmp.w	-$1D46(a5),d5
+	cmp.w	g_VramTileLimit(a5),d5
 	lea.l	$1C(a7),a7
 	ble.s	loc_0362EA
 	movea.l	$30(a4),a0

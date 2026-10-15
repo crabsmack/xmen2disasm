@@ -4,8 +4,8 @@
 sub_15CAA4:
 	link.w	a6,#$0
 	moveq	#$0,d0
-	move.l	d0,-$1666(a5)
-	tst.b	-$1FD7(a5)
+	move.l	d0,g_PauseCheatPtr(a5)
+	tst.b	g_SpriteTable+$3(a5)
 	beq.s	loc_15CB30
 	tst.b	g_PalFadeActive(a5)
 	bne.s	loc_15CB30
@@ -34,7 +34,7 @@ loc_15CAE2:
 	jsr	$52(a5)	; -> Player2_StartLife
 	bra.s	loc_15CB30
 loc_15CAFE:
-	clr.b	-$1662(a5)
+	clr.b	g_PauseExit(a5)
 	move.b	#$1,-$1668(a5)
 	move.w	#$FF7F,d0
 	and.w	g_Pad1Latch(a5),d0

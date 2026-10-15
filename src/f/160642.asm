@@ -24,7 +24,7 @@ Sys_InitHardware:
 loc_160676:
 	move.l	#$FF0000,g_HeapTop(a5)
 	jsr	$4DA2(a5)	; -> Irq_Enable
-	tst.b	-$202(a5)
+	tst.b	g_ExtIntMode(a5)
 	beq.s	loc_160690
 	move.w	#$8B08,g_VdpReg11(a5)
 	bra.s	loc_160696
@@ -32,7 +32,7 @@ loc_160690:
 	move.w	#$8B00,g_VdpReg11(a5)
 loc_160696:
 	jsr	VDP_InitRegs(pc)
-	tst.b	-$202(a5)
+	tst.b	g_ExtIntMode(a5)
 	beq.s	loc_1606A8
 	dc.w	$13FC,$FF80,$00A1,$000D	; insn: move.b #$80, $a1000d.l
 loc_1606A8:

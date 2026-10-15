@@ -36,7 +36,7 @@ loc_15DFF6:
 	move.w	g_VramTileCursor(a5),d6
 	move.w	#$FFFF,$34(a4)
 loc_15E000:
-	cmp.w	-$1D46(a5),d6
+	cmp.w	g_VramTileLimit(a5),d6
 	ble.s	loc_15E016
 	movea.l	$30(a4),a0
 	moveq	#$0,d0
