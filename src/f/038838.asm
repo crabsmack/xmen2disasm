@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_038838	[link-after-rts]
+; BaniMazaA1_UploadBlockTiles - DMA one 8-frame animation step of a moving-block group: 4 sprite slots x 4 tiles
+; In:  8(a6) = first sprite slot (stride $14), $C(a6) = word frame 0-7
+; Out: none
+; Evidence: source jt $A5A + frame*$200; VDP_QueueDma 32-byte tiles to (slot +6 tile) + 0/4/8/12
 ; ---------------------------------------------------------------------------
-sub_038838:
+BaniMazaA1_UploadBlockTiles:
 	link.w	a6,#$0
 	movem.l	d6-d7/a3-a4,-(a7)
 	movea.l	$8(a6),a3

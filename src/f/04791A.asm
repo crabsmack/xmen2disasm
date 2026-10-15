@@ -1,22 +1,25 @@
 ; ---------------------------------------------------------------------------
-; sub_04791A	[jt 306]
+; BaniMazaA2_RunScene - scene function for 'BaniMazaA2 ApocalypseBoss': set up the stage, start the sprite timer, run the level loop
+; In:  none
+; Out: none
+; Evidence: Scene_RegisterAll entry; Timer_Create/Timer_Start(BaniMazaA2_AnimSprite); level loop sub_1FA6FE
 ; ---------------------------------------------------------------------------
-sub_04791A:
+BaniMazaA2_RunScene:
 	link.w	a6,#$FDE8
 	movem.l	a3-a4,-(a7)
 	lea.l	-$218(a6),a3
-	jsr	sub_047886(pc)
-	jsr	sub_047892(pc)
-	jsr	sub_047712(pc)
-	jsr	sub_047858(pc)
-	jsr	sub_04740A(pc)
-	jsr	sub_0475B4(pc)
+	jsr	BaniMazaA2_CallEmptyStub(pc)
+	jsr	BaniMazaA2_LoadLevel(pc)
+	jsr	BaniMazaA2_PlacePlayers(pc)
+	jsr	BaniMazaA2_InitCamera(pc)
+	jsr	BaniMazaA2_ResetCounters(pc)
+	jsr	BaniMazaA2_InitSprite(pc)
 	move.l	a3,-(a7)
 	jsr	sub_0472CC(pc)
 	addq.w	#$4,a7
 	moveq	#$1,d0
 	move.l	d0,-(a7)
-	pea.l	sub_0475E0(pc)
+	pea.l	BaniMazaA2_AnimSprite(pc)
 	moveq	#$A,d1
 	move.l	d1,-(a7)
 	pea.l	$3F32(a5)

@@ -1,8 +1,11 @@
 ; ---------------------------------------------------------------------------
-; sub_047886	[link-after-rts]
+; BaniMazaA2_CallEmptyStub - first step of BaniMazaA2_RunScene: call BaniMazaA2_NopStatic
+; In:  none
+; Out: none
+; Evidence: body is a single jsr
 ; ---------------------------------------------------------------------------
-sub_047886:
+BaniMazaA2_CallEmptyStub:
 	link.w	a6,#$0
-	jsr	sub_047402(pc)
+	jsr	BaniMazaA2_NopStatic(pc)
 	unlk	a6
 	rts

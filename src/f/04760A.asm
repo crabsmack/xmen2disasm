@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_04760A	[jt 304]
+; BaniMazaA2_SetPaletteStep - copy 9 colours of palette line 0 from step (-$3B0C - 1) of a $14-byte table; odd steps speed up the colour cycle
+; In:  none
+; Out: d0 = 1 on odd steps
+; Evidence: table jt $47194; decrements -$3B38 (cycle delay) down to 1
 ; ---------------------------------------------------------------------------
-sub_04760A:
+BaniMazaA2_SetPaletteStep:
 	link.w	a6,#$0
 	movem.l	d7/a4,-(a7)
 	lea.l	$98A(a5),a0

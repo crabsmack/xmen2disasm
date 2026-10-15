@@ -1,11 +1,14 @@
 ; ---------------------------------------------------------------------------
-; sub_047858	[link-after-rts]
+; BaniMazaA2_InitCamera - create the BaniMazaA2 camera with BaniMazaA2_CamHook unless one exists
+; In:  none
+; Out: none
+; Evidence: g_Camera == 0 -> CAMERA +$0A New(jt $4FBA, BaniMazaA2_CamHook)
 ; ---------------------------------------------------------------------------
-sub_047858:
+BaniMazaA2_InitCamera:
 	link.w	a6,#$0
 	tst.l	g_Camera(a5)
 	bne.s	loc_047882
-	pea.l	sub_047834(pc)
+	pea.l	BaniMazaA2_CamHook(pc)
 	lea.l	$4DBA(a5),a0
 	move.l	$2(a0),-(a7)
 	lea.l	$4DBA(a5),a0

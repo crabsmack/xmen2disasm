@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_0477B4	[link-after-rts]
+; BaniMazaA2_FrameHook - BaniMazaA2 per-frame hook: frame counter, update the four parts when active, palette animation
+; In:  none
+; Out: none
+; Evidence: installed in g_SceneFrameHook by BaniMazaA2_LoadLevel; BaniMazaA2_UpdateParts, BaniMazaA2_AnimatePalettes
 ; ---------------------------------------------------------------------------
-sub_0477B4:
+BaniMazaA2_FrameHook:
 	link.w	a6,#$0
 	move.l	g_FrameCounter(a5),d0
 	addq.l	#$1,g_FrameCounter(a5)
@@ -13,8 +16,8 @@ loc_0477CE:
 	movea.l	-$3B14(a5),a0
 	tst.w	$84(a0)
 	beq.s	loc_0477DC
-	jsr	sub_0473D4(pc)
+	jsr	BaniMazaA2_UpdateParts(pc)
 loc_0477DC:
-	jsr	sub_04744E(pc)
+	jsr	BaniMazaA2_AnimatePalettes(pc)
 	unlk	a6
 	rts

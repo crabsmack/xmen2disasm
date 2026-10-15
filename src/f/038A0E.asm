@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; loc_038A0E	[runtime: executed in tas]
+; BaniMazaA1_FrameHook_PulseColor - BaniMazaA1_FrameHook switch cases: colour 15 = $E0/$C0/$A0/$80...
+; In:  none
+; Out: none
+; Evidence: targets of Sw_0389B6
 ; ---------------------------------------------------------------------------
-loc_038A0E:
+BaniMazaA1_FrameHook_PulseColor:
 	move.w	#$E0,-$3962(a5)
 	bra.s	loc_038A4C
 loc_038A16:

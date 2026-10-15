@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_0477E4	[link-after-rts]
+; BaniMazaA2_DrawHook - BaniMazaA2 draw hook: draw the draw list, then sub_04E644 for each present player
+; In:  none
+; Out: none
+; Evidence: installed in -$38F4 (scene draw hook, called each frame by the level loop) by BaniMazaA2_LoadLevel; DrawList_DrawAll
 ; ---------------------------------------------------------------------------
-sub_0477E4:
+BaniMazaA2_DrawHook:
 	link.w	a6,#$0
 	jsr	$4F82(a5)	; -> DrawList_DrawAll
 	move.w	-$1754(a5),d0

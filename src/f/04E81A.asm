@@ -27,10 +27,10 @@ loc_04E860:
 	moveq	#$C,d0
 	cmp.w	-$3B0C(a5),d0
 	bne.s	loc_04E86E
-	jsr	$9AA(a5)	; -> sub_04766A
+	jsr	$9AA(a5)	; -> unk_BaniMazaA2_04766A
 	bra.s	loc_04E872
 loc_04E86E:
-	jsr	$9A2(a5)	; -> sub_04760A
+	jsr	$9A2(a5)	; -> BaniMazaA2_SetPaletteStep
 loc_04E872:
 	movem.l	-$C(a6),d6-d7/a4
 	unlk	a6

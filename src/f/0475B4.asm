@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_0475B4	[link-after-rts]
+; BaniMazaA2_InitSprite - set up the BaniMazaA2 sprite slot -$3596 (jt $46CCA) at tile -$3AAE
+; In:  none
+; Out: none
+; Evidence: Spr_Init(-$3596, 1, jt $46CCA, 0, 0, -$3AAE, 1)
 ; ---------------------------------------------------------------------------
-sub_0475B4:
+BaniMazaA2_InitSprite:
 	link.w	a6,#$0
 	moveq	#$1,d0
 	move.l	d0,-(a7)

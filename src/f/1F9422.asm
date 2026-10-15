@@ -2,7 +2,7 @@
 ; DrawList_DrawAll - call every draw-list callback in sorted order
 ; In:  none
 ; Out: none
-; Evidence: walks head -$1350 via +0, calls +8 func(+$C object) when set; callers sub_0477E4, sub_0C0FD2 (per-frame scene drawing)
+; Evidence: walks head -$1350 via +0, calls +8 func(+$C object) when set; callers BaniMazaA2_DrawHook, sub_0C0FD2 (per-frame scene drawing)
 ; ---------------------------------------------------------------------------
 DrawList_DrawAll:
 	link.w	a6,#$0

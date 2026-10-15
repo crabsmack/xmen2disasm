@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_0475E0	[link-after-rts]
+; BaniMazaA2_AnimSprite - timer callback: flip the BaniMazaA2 sprite between frames 0/1 unless stopped
+; In:  none
+; Out: none
+; Evidence: Timer_Create(sub_15B0D0, 10, BaniMazaA2_AnimSprite, 1) in BaniMazaA2_RunScene; skipped once -$3B0E is set
 ; ---------------------------------------------------------------------------
-sub_0475E0:
+BaniMazaA2_AnimSprite:
 	link.w	a6,#$0
 	tst.w	-$3B0E(a5)
 	bne.s	loc_047606

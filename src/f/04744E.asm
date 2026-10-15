@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_04744E	[link-after-rts]
+; BaniMazaA2_AnimatePalettes - BaniMazaA2 palette animation: flash two colours every 4 frames, cycle colour $14 through a 22-entry table, step a 6-colour band
+; In:  none
+; Out: none
+; Evidence: timers -$3B32/-$3B34/-$3B36 (-2 at half rate); colours $FFC8F4/$F6 alternate $EEE / $20A,$24C; table jt $472A0; switch Sw_04744E on -$3B0C >> 1 picks the band table, Mem_Copy 12 bytes to $FFC8D4
 ; ---------------------------------------------------------------------------
-sub_04744E:
+BaniMazaA2_AnimatePalettes:
 	link.w	a6,#$0
 	movem.l	a3-a4,-(a7)
 	tst.b	-$38DE(a5)
@@ -78,9 +81,9 @@ loc_047530:
 loc_04753C:
 	move.w	-$3B0C(a5),d0
 	asr.w	#$1,d0
-	bmi.s	loc_047586
+	bmi.s	BaniMazaA2_AnimatePalettes_copy
 	cmpi.w	#$4,d0
-	bgt.s	loc_047586
+	bgt.s	BaniMazaA2_AnimatePalettes_copy
 	add.w	d0,d0
 	move.w	Sw_04744E(pc,d0.w),d0
 	jmp	Sw_04744E-2(pc,d0.w)

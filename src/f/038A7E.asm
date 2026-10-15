@@ -1,9 +1,12 @@
 ; ---------------------------------------------------------------------------
-; sub_038A7E	[link-after-rts]
+; BaniMazaA1_InitCamera - create the BaniMazaA1 camera with BaniMazaA1_CamHook
+; In:  none
+; Out: none
+; Evidence: g_Camera = CAMERA +$0A New(jt $4FBA, BaniMazaA1_CamHook)
 ; ---------------------------------------------------------------------------
-sub_038A7E:
+BaniMazaA1_InitCamera:
 	link.w	a6,#$0
-	pea.l	sub_038A6C(pc)
+	pea.l	BaniMazaA1_CamHook(pc)
 	lea.l	$4DBA(a5),a0
 	move.l	$2(a0),-(a7)
 	lea.l	$4DBA(a5),a0

@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_047892	[link-after-rts]
+; BaniMazaA2_LoadLevel - load the BaniMazaA2 (Apocalypse boss) level and install its frame and draw hooks
+; In:  none
+; Out: none
+; Evidence: sub_1F98A8 level load (class list jt $44A78); g_SceneFrameHook = BaniMazaA2_FrameHook, -$38F4 = BaniMazaA2_DrawHook
 ; ---------------------------------------------------------------------------
-sub_047892:
+BaniMazaA2_LoadLevel:
 	link.w	a6,#$0
 	lea.l	$94A(a5),a0
 	move.l	$2(a0),-(a7)
@@ -39,9 +42,9 @@ sub_047892:
 	move.w	#$100,-$3496(a5)
 	move.b	#$1,-$38B4(a5)
 	clr.b	-$38DE(a5)
-	lea.l	sub_0477B4(pc),a0
+	lea.l	BaniMazaA2_FrameHook(pc),a0
 	move.l	a0,g_SceneFrameHook(a5)
-	lea.l	sub_0477E4(pc),a0
+	lea.l	BaniMazaA2_DrawHook(pc),a0
 	move.l	a0,-$38F4(a5)
 	unlk	a6
 	rts

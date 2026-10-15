@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_038AFE	[link-after-rts]
+; BaniMazaA1_PlacePlayers - place the players at the BaniMazaA1 start and move them to draw layer 0 (clear +$2E bit 2)
+; In:  none
+; Out: none
+; Evidence: Players_PlaceAtStart; per present player: +$2E &= ~4, DrawList_SetPriority(+$88 node, 0, ...); BaniMazaA2_PlacePlayers does the opposite
 ; ---------------------------------------------------------------------------
-sub_038AFE:
+BaniMazaA1_PlacePlayers:
 	link.w	a6,#$0
 	move.l	#$38410,-(a7)
 	move.l	#$38410,-(a7)

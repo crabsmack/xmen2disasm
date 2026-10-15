@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_0473D4	[link-after-rts]
+; BaniMazaA2_UpdateParts - update the four $86-byte BaniMazaA2 records at -$3B14 with sub_0472E0
+; In:  none
+; Out: none
+; Evidence: called from BaniMazaA2_FrameHook when record +$84 is set; records on BaniMazaA2_RunScene's stack (sub_0472CC)
 ; ---------------------------------------------------------------------------
-sub_0473D4:
+BaniMazaA2_UpdateParts:
 	link.w	a6,#$0
 	movem.l	d3/d7/a4,-(a7)
 	movea.l	-$3B14(a5),a4

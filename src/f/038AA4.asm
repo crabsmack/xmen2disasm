@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_038AA4	[link-after-rts]
+; BaniMazaA1_InitPalette - set BaniMazaA1 palette line 3 and a few line-2 colours
+; In:  none
+; Out: none
+; Evidence: 16 colours from jt $525CE+4 into $FFC8E0; $FFC8CA/$CE/$D2/$DC constants; g_PalBase[0] = 0
 ; ---------------------------------------------------------------------------
-sub_038AA4:
+BaniMazaA1_InitPalette:
 	link.w	a6,#$0
 	movem.l	d3/d7/a3-a4,-(a7)
 	lea.l	$C32(a5),a0

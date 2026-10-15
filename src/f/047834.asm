@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_047834	[link-after-rts]
+; BaniMazaA2_CamHook - CAMERA per-frame hook for BaniMazaA2: camera fields +$3C = $2E, +$3E = $80, +$44 = 7
+; In:  8(a6) = camera
+; Out: none
+; Evidence: passed to CAMERA New by BaniMazaA2_InitCamera
 ; ---------------------------------------------------------------------------
-sub_047834:
+BaniMazaA2_CamHook:
 	link.w	a6,#$0
 	move.l	a4,-(a7)
 	movea.l	$8(a6),a4

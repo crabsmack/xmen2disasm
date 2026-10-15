@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_0388D4	[link-after-rts]
+; BaniMazaA1_AnimateBlocks - step the three BaniMazaA1 block animations (8 frames, every 6 frames, direction per group)
+; In:  none
+; Out: none
+; Evidence: timers -$3C88/-$3C8C/-$3C90, frames -$3C8A/-$3C8E/-$3C92, reverse flags bytes -$3C98/-$3C97/-$3C96; BaniMazaA1_UploadBlockTiles on slots -$3596, -$3546, -$34F6
 ; ---------------------------------------------------------------------------
-sub_0388D4:
+BaniMazaA1_AnimateBlocks:
 	link.w	a6,#$0
 	move.l	a4,-(a7)
 	lea.l	-$3C98(a5),a4
@@ -27,7 +30,7 @@ loc_03890A:
 loc_038912:
 	move.l	d1,-(a7)
 	pea.l	-$3596(a5)
-	jsr	sub_038838(pc)
+	jsr	BaniMazaA1_UploadBlockTiles(pc)
 	addq.w	#$8,a7
 loc_03891E:
 	subq.w	#$1,-$3C88(a5)
@@ -53,7 +56,7 @@ loc_038950:
 loc_038958:
 	move.l	d1,-(a7)
 	pea.l	-$3546(a5)
-	jsr	sub_038838(pc)
+	jsr	BaniMazaA1_UploadBlockTiles(pc)
 	addq.w	#$8,a7
 loc_038964:
 	subq.w	#$1,-$3C8C(a5)
@@ -79,7 +82,7 @@ loc_038996:
 loc_03899E:
 	move.l	d1,-(a7)
 	pea.l	-$34F6(a5)
-	jsr	sub_038838(pc)
+	jsr	BaniMazaA1_UploadBlockTiles(pc)
 	addq.w	#$8,a7
 loc_0389AA:
 	subq.w	#$1,-$3C90(a5)

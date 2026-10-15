@@ -659,7 +659,7 @@ Sw_03645C:	; switch table of sub at $03645C: 4 word offsets from Sw_03645C-2
 	include "src/f/0388D4.asm"
 	include "src/f/0389B6.asm"
 Sw_0389B6:	; switch table of sub at $0389B6: 8 word offsets from Sw_0389B6-2
-	dc.w	loc_038A0E-(Sw_0389B6-2), loc_038A16-(Sw_0389B6-2), loc_038A1E-(Sw_0389B6-2), loc_038A26-(Sw_0389B6-2)
+	dc.w	BaniMazaA1_FrameHook_PulseColor-(Sw_0389B6-2), loc_038A16-(Sw_0389B6-2), loc_038A1E-(Sw_0389B6-2), loc_038A26-(Sw_0389B6-2)
 	dc.w	loc_038A2E-(Sw_0389B6-2), loc_038A36-(Sw_0389B6-2), loc_038A3E-(Sw_0389B6-2), loc_038A46-(Sw_0389B6-2)
 	include "src/f/038A0E.asm"
 	include "src/f/038A58.asm"
@@ -722,8 +722,8 @@ Str_Empty_03AD12:	; C string "" (used by sub_03AC3E)
 	include "src/f/04740A.asm"
 	include "src/f/04744E.asm"
 Sw_04744E:	; switch table of sub at $04744E: 5 word offsets from Sw_04744E-2
-	dc.w	loc_04755E-(Sw_04744E-2), loc_047568-(Sw_04744E-2), loc_047572-(Sw_04744E-2), loc_04757C-(Sw_04744E-2)
-	dc.w	loc_047586-(Sw_04744E-2)
+	dc.w	BaniMazaA2_AnimatePalettes_cases-(Sw_04744E-2), loc_047568-(Sw_04744E-2), BaniMazaA2_AnimatePalettes_case3-(Sw_04744E-2), BaniMazaA2_AnimatePalettes_case4-(Sw_04744E-2)
+	dc.w	BaniMazaA2_AnimatePalettes_copy-(Sw_04744E-2)
 	include "src/f/04755E.asm"
 	include "src/f/047572.asm"
 	include "src/f/04757C.asm"

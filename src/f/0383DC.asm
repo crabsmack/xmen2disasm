@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_0383DC	[link-after-rts]
+; BaniMazaA1_LoadLevel - load the BaniMazaA1 (Moving Blocks) level
+; In:  none
+; Out: none
+; Evidence: sub_1F98A8 level load (class list jt $4383A); -$3298/-$3296 = $100/$100; byte -$3AB4 = 1
 ; ---------------------------------------------------------------------------
-sub_0383DC:
+BaniMazaA1_LoadLevel:
 	link.w	a6,#$0
 	lea.l	$92A(a5),a0
 	move.l	$2(a0),-(a7)

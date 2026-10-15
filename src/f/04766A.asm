@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_04766A	[jt 305]
+; unk_BaniMazaA2_04766A - BaniMazaA2 event: spawn a root ACTOR at ($100,$100) with sub_13EFA0, freeze the background sprite and set a fixed palette line 0
+; In:  none
+; Out: none
+; Evidence: ACTOR +$0E New(0, ACTOR, $100, $100, 0); sub_13EFA0(obj, jt $D62, 0, -16, -16, 3); sprite frame 0; 14 colours from jt $47284; -$3B0E = 1 stops BaniMazaA2_AnimSprite and the colour cycle. Trigger and visible effect not confirmed
 ; ---------------------------------------------------------------------------
-sub_04766A:
+unk_BaniMazaA2_04766A:
 	link.w	a6,#$0
 	movem.l	d3/d7/a3-a4,-(a7)
 	moveq	#$0,d0

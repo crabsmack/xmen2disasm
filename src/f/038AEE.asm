@@ -1,9 +1,12 @@
 ; ---------------------------------------------------------------------------
-; sub_038AEE	[link-after-rts]
+; BaniMazaA1_InstallFrameHook - install BaniMazaA1_FrameHook as the scene frame hook
+; In:  none
+; Out: none
+; Evidence: g_SceneFrameHook = BaniMazaA1_FrameHook
 ; ---------------------------------------------------------------------------
-sub_038AEE:
+BaniMazaA1_InstallFrameHook:
 	link.w	a6,#$0
-	lea.l	sub_0389B6(pc),a0
+	lea.l	BaniMazaA1_FrameHook(pc),a0
 	move.l	a0,g_SceneFrameHook(a5)
 	unlk	a6
 	rts

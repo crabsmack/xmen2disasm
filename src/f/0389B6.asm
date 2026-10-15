@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_0389B6	[link-after-rts]
+; BaniMazaA1_FrameHook - BaniMazaA1 per-frame hook: frame counter, switch cooldown, block animation; every 8th frame set palette colour 15 from an 8-step sequence
+; In:  none
+; Out: none
+; Evidence: installed in g_SceneFrameHook by BaniMazaA1_InstallFrameHook; Sw_0389B6 on (counter >> 3) & 7 writes $E0/$C0/$A0/$80 into -$3962 (g_PalBase colour 15)
 ; ---------------------------------------------------------------------------
-sub_0389B6:
+BaniMazaA1_FrameHook:
 	link.w	a6,#$0
 	movem.l	d3/d7,-(a7)
 	tst.b	-$38DE(a5)
@@ -22,7 +25,7 @@ loc_0389CC:
 loc_0389E2:
 	moveq	#$7,d0
 	and.l	g_FrameCounter(a5),d0
-	bne.s	loc_038A58
+	bne.s	BaniMazaA1_FrameHook_tail
 	move.l	g_FrameCounter(a5),d0
 	lsr.l	#$3,d0
 	moveq	#$7,d1

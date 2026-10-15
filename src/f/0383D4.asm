@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_0383D4
+; BaniMazaA1_EmptyStub - empty stub, first call of BaniMazaA1_RunScene
+; In:  none
+; Out: none
+; Evidence: body is link/unlk/rts
 ; ---------------------------------------------------------------------------
-sub_0383D4:
+BaniMazaA1_EmptyStub:
 	link.w	a6,#$0
 	unlk	a6
 	rts
