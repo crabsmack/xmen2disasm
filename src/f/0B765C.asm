@@ -1,7 +1,11 @@
 ; ---------------------------------------------------------------------------
-; sub_0B765C	[link-after-rts]
+; ChildShip_StateCrash1 - CHILDSHIP crash: on reaching y $140 shake the screen (jt[$1FBA]) and bounce (vy -$458, gravity $60)
+; In:  8(a6) = this
+; Out: d0
+; Evidence: next ChildShip_StateCrash2; TAS 33438-33450
+; Found: link-after-rts
 ; ---------------------------------------------------------------------------
-sub_0B765C:
+ChildShip_StateCrash1:
 	link.w	a6,#$0
 	move.l	a4,-(a7)
 	movea.l	$8(a6),a4
@@ -13,14 +17,14 @@ sub_0B765C:
 	move.w	#$FBA8,$18(a4)
 	move.w	#$60,$20(a4)
 	clr.w	$6C(a4)
-	lea.l	sub_0B76BC(pc),a0
+	lea.l	ChildShip_StateCrash2(pc),a0
 	move.l	a0,$5C(a4)
 	moveq	#$8,d0
 	and.w	$4(a4),d0
 	bra.s	loc_0B76B4
 loc_0B76A2:
 	clr.w	$6C(a4)
-	lea.l	sub_0B765C(pc),a0
+	lea.l	ChildShip_StateCrash1(pc),a0
 	move.l	a0,$5C(a4)
 	moveq	#$8,d0
 	and.w	$4(a4),d0

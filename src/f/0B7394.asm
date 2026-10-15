@@ -1,7 +1,6 @@
 ; ---------------------------------------------------------------------------
-; ChildShip_TakeDamage - vtable +$26: a CHILDSHIP is hit (attacker, damage)
-; In:  8(a6) = this, $C(a6) = attacker, then hit parameters (see ACTOR +$26 $15E680)
-; Evidence: slot +$26 of the CHILDSHIP descriptor $0B7C3A; TAS frames 33414-33436 (2 frames active)
+; ChildShip_TakeDamage - vtable +$26: health -= damage, 20-frame invulnerability; at 0 leave the hit/collision lists and crash (ChildShip_StateCrash), else slot +$6E OnHurt
+; Evidence: TAS 33414-33436
 ; ---------------------------------------------------------------------------
 ChildShip_TakeDamage:
 	link.w	a6,#$0
@@ -18,7 +17,7 @@ ChildShip_TakeDamage:
 	tst.w	$68(a4)
 	bgt.s	loc_0B740E
 	move.w	#$FFFF,$6A(a4)
-	lea.l	sub_0B7622(pc),a0
+	lea.l	ChildShip_StateCrash(pc),a0
 	move.l	a0,$5C(a4)
 	clr.w	$6C(a4)
 	pea.l	-$1652(a5)

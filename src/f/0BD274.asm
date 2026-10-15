@@ -1,7 +1,8 @@
 ; ---------------------------------------------------------------------------
-; sub_0BD274	[link-after-rts]
+; SavageBio_NopStatic - empty non-virtual helper (called from SavageBioBase_ClassInit and SavageMediumBio_Init)
+; Out: none
 ; ---------------------------------------------------------------------------
-sub_0BD274:
+SavageBio_NopStatic:
 	link.w	a6,#$0
 	unlk	a6
 	rts

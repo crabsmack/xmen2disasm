@@ -1,7 +1,11 @@
 ; ---------------------------------------------------------------------------
-; sub_0B7622	[link-after-rts]
+; ChildShip_StateCrash - CHILDSHIP state: shot down - wreck trail jt[$1FC2], fall (vy $100, gravity $100)
+; In:  8(a6) = this
+; Out: d0
+; Evidence: next ChildShip_StateCrash1; TAS 33437
+; Found: link-after-rts
 ; ---------------------------------------------------------------------------
-sub_0B7622:
+ChildShip_StateCrash:
 	link.w	a6,#$0
 	move.l	a4,-(a7)
 	movea.l	$8(a6),a4
@@ -10,7 +14,7 @@ sub_0B7622:
 	move.w	#$100,$18(a4)
 	move.w	#$100,$20(a4)
 	clr.w	$6C(a4)
-	lea.l	sub_0B765C(pc),a0
+	lea.l	ChildShip_StateCrash1(pc),a0
 	move.l	a0,$5C(a4)
 	moveq	#$8,d0
 	and.w	$4(a4),d0

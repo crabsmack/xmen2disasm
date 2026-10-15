@@ -16,7 +16,7 @@ BrainBabyBio_Init:
 	movea.l	$2(a0),a0
 	movea.l	$12(a0),a1
 	jsr	(a1)
-	jsr	sub_0B7B14(pc)
+	jsr	SavageA4_NopStatic(pc)
 	moveq	#-$4,d0
 	and.b	$2E(a4),d0
 	moveq	#$3,d1

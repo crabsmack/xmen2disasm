@@ -1,7 +1,8 @@
 ; ---------------------------------------------------------------------------
-; loc_0B7490
+; ChildShip_OnHurt_SetDecel - tail of ChildShip_OnHurt: deceleration opposite to the knockback
+; Evidence: switch exit
 ; ---------------------------------------------------------------------------
-loc_0B7490:
+ChildShip_OnHurt_SetDecel:
 	tst.w	$16(a4)
 	ble.s	loc_0B749E
 	move.w	#$FF40,$1E(a4)

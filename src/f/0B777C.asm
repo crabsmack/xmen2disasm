@@ -1,7 +1,11 @@
 ; ---------------------------------------------------------------------------
-; sub_0B777C	[link-after-rts]
+; ChildShip_StateReleaseChild - CHILDSHIP crash: release a BRAINCHILD from the wreck (same facing, 20-frame invulnerability), wait $3C frames
+; In:  8(a6) = this
+; Out: d0
+; Evidence: Tbl_BrainChild_vtable +$0E New; next ChildShip_StateDie; TAS 33489
+; Found: link-after-rts
 ; ---------------------------------------------------------------------------
-sub_0B777C:
+ChildShip_StateReleaseChild:
 	link.w	a6,#$0
 	movem.l	a3-a4,-(a7)
 	movea.l	$8(a6),a4
@@ -27,7 +31,7 @@ sub_0B777C:
 	ori.b	#$10,$2E(a3)
 loc_0B77CA:
 	move.w	#$3C,$6C(a4)
-	lea.l	sub_0B77E8(pc),a0
+	lea.l	ChildShip_StateDie(pc),a0
 	move.l	a0,$5C(a4)
 	moveq	#$8,d0
 	and.w	$4(a4),d0

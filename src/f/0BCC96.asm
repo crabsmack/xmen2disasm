@@ -16,7 +16,7 @@ SavageMediumBio_Init:
 	movea.l	$2(a0),a0
 	movea.l	$12(a0),a1
 	jsr	(a1)
-	jsr	sub_0BD274(pc)
+	jsr	SavageBio_NopStatic(pc)
 	ori.w	#$83,$6(a4)
 	movea.l	-$3B14(a5),a0
 	move.b	#$4,$2(a0)

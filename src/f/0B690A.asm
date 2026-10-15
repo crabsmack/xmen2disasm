@@ -5,6 +5,6 @@
 ; ---------------------------------------------------------------------------
 BrainChild_ClassInit:
 	link.w	a6,#$0
-	jsr	sub_0B7B14(pc)
+	jsr	SavageA4_NopStatic(pc)
 	unlk	a6
 	rts

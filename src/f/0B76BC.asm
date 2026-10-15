@@ -1,7 +1,11 @@
 ; ---------------------------------------------------------------------------
-; sub_0B76BC	[link-after-rts]
+; ChildShip_StateCrash2 - CHILDSHIP crash: second impact - shake, bounce (vy -$592, gravity $100)
+; In:  8(a6) = this
+; Out: d0
+; Evidence: next ChildShip_StateCrash3
+; Found: link-after-rts
 ; ---------------------------------------------------------------------------
-sub_0B76BC:
+ChildShip_StateCrash2:
 	link.w	a6,#$0
 	move.l	a4,-(a7)
 	movea.l	$8(a6),a4
@@ -13,14 +17,14 @@ sub_0B76BC:
 	move.w	#$FA6E,$18(a4)
 	move.w	#$100,$20(a4)
 	clr.w	$6C(a4)
-	lea.l	sub_0B771C(pc),a0
+	lea.l	ChildShip_StateCrash3(pc),a0
 	move.l	a0,$5C(a4)
 	moveq	#$8,d0
 	and.w	$4(a4),d0
 	bra.s	loc_0B7714
 loc_0B7702:
 	clr.w	$6C(a4)
-	lea.l	sub_0B76BC(pc),a0
+	lea.l	ChildShip_StateCrash2(pc),a0
 	move.l	a0,$5C(a4)
 	moveq	#$8,d0
 	and.w	$4(a4),d0

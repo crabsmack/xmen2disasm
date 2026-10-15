@@ -1,7 +1,11 @@
 ; ---------------------------------------------------------------------------
-; sub_0B79DA	[jt 937]
+; ChildShip_ActWait20 - CHILDSHIP script action: wait $14 frames, next step
+; In:  8(a6) = this
+; Out: none
+; Evidence: jt 937
+; Found: jt 937
 ; ---------------------------------------------------------------------------
-sub_0B79DA:
+ChildShip_ActWait20:
 	link.w	a6,#$0
 	move.l	a4,-(a7)
 	movea.l	$8(a6),a4

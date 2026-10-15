@@ -1,7 +1,6 @@
 ; ---------------------------------------------------------------------------
-; SavageBigBio_Init - vtable +$12 constructor: run the parent's Init, then set up a SAVAGEBIGBIO
-; In:  8(a6) = this, $C(a6) = long x, $10(a6) = long y (8 fraction bits), $14(a6) = spawn parameter
-; Evidence: slot +$12 of the SAVAGEBIGBIO descriptor $0BD30C; TAS frames 33663-33663 (1 frames active); calls parent SAVAGEBIOBASE slot +$12
+; SavageBigBio_Init - vtable +$12 constructor: narrower arena, stats -$3B14 (health from byte -$3B01), script jt[$204A], sprite set $12FCA6, -$3B24 := $580, and a BIOBALLS companion (+$B4)
+; Evidence: clears -$3B06/-$3B18/-$3B1C; TAS 33663
 ; ---------------------------------------------------------------------------
 SavageBigBio_Init:
 	link.w	a6,#$0

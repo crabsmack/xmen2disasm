@@ -1,7 +1,6 @@
 ; ---------------------------------------------------------------------------
-; SavageBioBase_Init - vtable +$12 constructor: run the parent's Init, then set up a SAVAGEBIOBASE
-; In:  8(a6) = this, $C(a6) = long x, $10(a6) = long y (8 fraction bits), $14(a6) = spawn parameter
-; Evidence: slot +$12 of the SAVAGEBIOBASE descriptor $0BD27C; TAS frames 33558-33663 (2 frames active); calls parent BIONPC slot +$12
+; SavageBioBase_Init - vtable +$12 constructor: arena box x $40-$240 / y $60-$140, camera focus -$3B20 := this
+; Evidence: builds a spawn record from x/y when none; TAS 33558-33663
 ; ---------------------------------------------------------------------------
 SavageBioBase_Init:
 	link.w	a6,#$FFF0

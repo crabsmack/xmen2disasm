@@ -1,7 +1,6 @@
 ; ---------------------------------------------------------------------------
-; SavageBioBase_Move - vtable +$4E: per-frame movement of a SAVAGEBIOBASE
-; In:  8(a6) = this
-; Evidence: slot +$4E of the SAVAGEBIOBASE descriptor $0BD27C; TAS frames 33560-34355 (704 frames active)
+; SavageBioBase_Move - vtable +$4E: integrate velocity (twice at half rate) and clamp to the arena box (box top unless +$9C bit 0)
+; Evidence: TAS 33560-34355
 ; ---------------------------------------------------------------------------
 SavageBioBase_Move:
 	link.w	a6,#$0

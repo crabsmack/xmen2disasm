@@ -1,7 +1,11 @@
 ; ---------------------------------------------------------------------------
-; sub_0B7A2E	[jt 938]
+; ChildShip_ActOverPlayer - CHILDSHIP script action: fly over the nearest player (within 10 px), then the next step
+; In:  8(a6) = this
+; Out: d0
+; Evidence: vx +-$100, faces the direction of travel; jt 938
+; Found: jt 938
 ; ---------------------------------------------------------------------------
-sub_0B7A2E:
+ChildShip_ActOverPlayer:
 	link.w	a6,#$0
 	movem.l	d3/d6-d7/a3-a4,-(a7)
 	movea.l	$8(a6),a4
@@ -80,7 +84,7 @@ loc_0B7AE4:
 loc_0B7AF0:
 	move.l	#$F000,$A6(a4)
 	clr.w	$6C(a4)
-	lea.l	sub_0B7A2E(pc),a0
+	lea.l	ChildShip_ActOverPlayer(pc),a0
 	move.l	a0,$5C(a4)
 	moveq	#$8,d0
 	and.w	$4(a4),d0

@@ -1,7 +1,11 @@
 ; ---------------------------------------------------------------------------
-; sub_0B757C	[link-after-rts]
+; ChildShip_StateReturnY - CHILDSHIP state: return to the cruising height (+$12) at $100, then resume the current script step
+; In:  8(a6) = this
+; Out: none
+; Evidence: script +$9A / index +$98; TAS 33424
+; Found: link-after-rts
 ; ---------------------------------------------------------------------------
-sub_0B757C:
+ChildShip_StateReturnY:
 	link.w	a6,#$0
 	movem.l	d3/d6-d7/a4,-(a7)
 	movea.l	$8(a6),a4

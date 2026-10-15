@@ -2005,7 +2005,7 @@ Tbl_TrapDoor_vtable:	; class descriptor of TRAPDOOR: word name offset $86, paren
 	include "src/f/0B7394.asm"
 	include "src/f/0B7436.asm"
 Sw_0B7436:	; switch table of sub at $0B7436: 4 word offsets from Sw_0B7436-2
-	dc.w	loc_0B7482-(Sw_0B7436-2), loc_0B748A-(Sw_0B7436-2), loc_0B747A-(Sw_0B7436-2), loc_0B7472-(Sw_0B7436-2)
+	dc.w	ChildShip_OnHurt_Left-(Sw_0B7436-2), ChildShip_OnHurt_Right-(Sw_0B7436-2), loc_0B747A-(Sw_0B7436-2), ChildShip_OnHurt_Up-(Sw_0B7436-2)
 	include "src/f/0B7472.asm"
 	include "src/f/0B7482.asm"
 	include "src/f/0B748A.asm"

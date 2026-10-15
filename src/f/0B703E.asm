@@ -1,7 +1,11 @@
 ; ---------------------------------------------------------------------------
-; sub_0B703E	[jt 928]
+; BrainChild_ActIdle30 - BRAINCHILD script action: frame 0, next step after $1E frames
+; In:  8(a6) = this
+; Out: none
+; Evidence: script +$A0 / index +$9E; jt 928
+; Found: jt 928
 ; ---------------------------------------------------------------------------
-sub_0B703E:
+BrainChild_ActIdle30:
 	link.w	a6,#$0
 	move.l	a4,-(a7)
 	movea.l	$8(a6),a4

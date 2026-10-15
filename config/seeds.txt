@@ -282,21 +282,21 @@
 0AC138	; FloatBubble_Init_Speed2 - runtime: executed in tas
 0AC13E	; loc_0AC13E - runtime: executed in tas
 0AC144	; loc_0AC144 - runtime: executed in tas
-0B7482	; loc_0B7482 - runtime: executed in tas
-0B7CDA	; loc_0B7CDA - runtime: executed in tas
+0B7482	; ChildShip_OnHurt_Left - runtime: executed in tas
+0B7CDA	; BrainBabyBio_Script - runtime: executed in tas
 0B7CDE	; loc_0B7CDE - runtime: executed in tas
 0B7CE2	; loc_0B7CE2 - runtime: executed in tas
-0B7CF0	; loc_0B7CF0 - runtime: executed in tas
-0B7E2E	; loc_0B7E2E - runtime: executed in tas
+0B7CF0	; ChildShip_Script - runtime: executed in tas
+0B7E2E	; SavageBio_Script1 - runtime: executed in tas
 0B7E32	; loc_0B7E32 - runtime: executed in tas
 0B7E36	; loc_0B7E36 - runtime: executed in tas
 0B7E3A	; loc_0B7E3A - runtime: executed in tas
 0B7E3E	; loc_0B7E3E - runtime: executed in tas
 0B7E42	; loc_0B7E42 - runtime: executed in tas
-0B7E48	; loc_0B7E48 - runtime: executed in tas
+0B7E48	; SavageBio_Script2 - runtime: executed in tas
 0B7E4C	; loc_0B7E4C - runtime: executed in tas
 0B7E50	; loc_0B7E50 - runtime: executed in tas
-0B7E56	; loc_0B7E56 - runtime: executed in tas
+0B7E56	; SavageBio_Script3 - runtime: executed in tas
 0B7E5A	; loc_0B7E5A - runtime: executed in tas
 0B7E5E	; loc_0B7E5E - runtime: executed in tas
 0B7E62	; loc_0B7E62 - runtime: executed in tas
@@ -307,11 +307,11 @@
 0B7E76	; loc_0B7E76 - runtime: executed in tas
 0B7E7A	; loc_0B7E7A - runtime: executed in tas
 0B7E7E	; loc_0B7E7E - runtime: executed in tas
-0B814C	; loc_0B814C - runtime: executed in tas
+0B814C	; SavageBio_Script4 - runtime: executed in tas
 0B8150	; loc_0B8150 - runtime: executed in tas
 0B8154	; loc_0B8154 - runtime: executed in tas
 0B8158	; loc_0B8158 - runtime: executed in tas
-0B8178	; loc_0B8178 - runtime: executed in tas
+0B8178	; SavageBio_Script5 - runtime: executed in tas
 0B817C	; loc_0B817C - runtime: executed in tas
 0B8180	; loc_0B8180 - runtime: executed in tas
 0B8184	; loc_0B8184 - runtime: executed in tas
@@ -777,9 +777,9 @@
 0AB68E	; FloatBubble_SetDirection_DownRight - static: switch-table case target (tools/switches.py: table after `move.w T(pc,dN.w),dN / jmp T-2(pc,dN.w)`, size from the cmpi bound)
 0AB706	; FloatBubble_SetDirection_UpRight - static: switch-table case target (tools/switches.py: table after `move.w T(pc,dN.w),dN / jmp T-2(pc,dN.w)`, size from the cmpi bound)
 0AC14A	; FloatBubble_Init_Speed5 - static: switch-table case target (tools/switches.py: table after `move.w T(pc,dN.w),dN / jmp T-2(pc,dN.w)`, size from the cmpi bound)
-0B7472	; loc_0B7472 - static: switch-table case target (tools/switches.py: table after `move.w T(pc,dN.w),dN / jmp T-2(pc,dN.w)`, size from the cmpi bound)
+0B7472	; ChildShip_OnHurt_Up - static: switch-table case target (tools/switches.py: table after `move.w T(pc,dN.w),dN / jmp T-2(pc,dN.w)`, size from the cmpi bound)
 0B747A	; loc_0B747A - static: switch-table case target (tools/switches.py: table after `move.w T(pc,dN.w),dN / jmp T-2(pc,dN.w)`, size from the cmpi bound)
-0B748A	; loc_0B748A - static: switch-table case target (tools/switches.py: table after `move.w T(pc,dN.w),dN / jmp T-2(pc,dN.w)`, size from the cmpi bound)
+0B748A	; ChildShip_OnHurt_Right - static: switch-table case target (tools/switches.py: table after `move.w T(pc,dN.w),dN / jmp T-2(pc,dN.w)`, size from the cmpi bound)
 0BF93A	; loc_0BF93A - static: switch-table case target (tools/switches.py: table after `move.w T(pc,dN.w),dN / jmp T-2(pc,dN.w)`, size from the cmpi bound)
 0BF95E	; loc_0BF95E - static: switch-table case target (tools/switches.py: table after `move.w T(pc,dN.w),dN / jmp T-2(pc,dN.w)`, size from the cmpi bound)
 0BF982	; loc_0BF982 - static: switch-table case target (tools/switches.py: table after `move.w T(pc,dN.w),dN / jmp T-2(pc,dN.w)`, size from the cmpi bound)

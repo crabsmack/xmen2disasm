@@ -1,7 +1,6 @@
 ; ---------------------------------------------------------------------------
-; ChildShip_Update - vtable +$4A: per-frame update of a CHILDSHIP
-; In:  8(a6) = this
-; Evidence: slot +$4A of the CHILDSHIP descriptor $0B7C3A; TAS frames 33389-33550 (154 frames active); calls parent XNPC slot +$4A
+; ChildShip_Update - vtable +$4A: parent update, then emit the smoke/explosion trail (+$94 list of offsets, one every 3 frames)
+; Evidence: Explosion_Spawn at x/y + offset; list end (>= 1000) -> jt[$1FC2]; TAS 33389-33550
 ; ---------------------------------------------------------------------------
 ChildShip_Update:
 	link.w	a6,#$0

@@ -1,7 +1,9 @@
 ; ---------------------------------------------------------------------------
-; loc_0B7E56	[runtime: executed in tas]
+; SavageBio_Script3 - AI-script jmp thunks (11 steps): sub_0BB71E, sub_0BC398, sub_0BAF14, sub_0BC398, sub_0BB850, sub_0BBE0C, sub_0BC338, sub_0BAF14, sub_0BB698, sub_0BB38C, sub_0BB71E
+; Evidence: 4-byte `jmp d(a5)` entries of a {word count; thunks} script, reached through +$5C (next-step idiom)
+; Found: runtime: executed in 1 run(s) (tas)
 ; ---------------------------------------------------------------------------
-loc_0B7E56:
+SavageBio_Script3:
 	jmp	$1F62(a5)	; -> sub_0BB71E
 loc_0B7E5A:
 	jmp	$1FBA(a5)	; -> sub_0BC398

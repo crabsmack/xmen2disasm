@@ -1,7 +1,6 @@
 ; ---------------------------------------------------------------------------
-; ChildShip_Init - vtable +$12 constructor: run the parent's Init, then set up a CHILDSHIP
-; In:  8(a6) = this, $C(a6) = long x, $10(a6) = long y (8 fraction bits), $14(a6) = spawn parameter
-; Evidence: slot +$12 of the CHILDSHIP descriptor $0B7C3A; TAS frames 33388-33388 (1 frames active); calls parent XNPC slot +$12
+; ChildShip_Init - vtable +$12 constructor: CHILDSHIP flies in at the top of the view (y $F0) inside the box x $60-$220 / y $60-$140; palette line 3, sound $42; camera focus -$3B20
+; Evidence: stats -$3B14 (health 8), script jt[$1FAA], state ChildShip_StateEnter, bob table $11B3C0 (+$AA); TAS 33388
 ; ---------------------------------------------------------------------------
 ChildShip_Init:
 	link.w	a6,#$FFFC
@@ -37,7 +36,7 @@ ChildShip_Init:
 	move.l	$2(a0),-(a7)
 	pea.l	$98(a4)
 	jsr	$3ED2(a5)	; -> AiScript_Set
-	lea.l	sub_0B77FC(pc),a0
+	lea.l	ChildShip_StateEnter(pc),a0
 	move.l	a0,$64(a4)
 	move.l	a0,$5C(a4)
 	ori.w	#$80,$6(a4)

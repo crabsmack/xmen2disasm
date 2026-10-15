@@ -1,7 +1,11 @@
 ; ---------------------------------------------------------------------------
-; sub_0B74F6	[link-after-rts]
+; ChildShip_StateKnockbackSlow - CHILDSHIP state: decelerate until the knockback stops or the timer runs out
+; In:  8(a6) = this
+; Out: d0
+; Evidence: next ChildShip_StateReturnY; TAS 33417-33423
+; Found: link-after-rts
 ; ---------------------------------------------------------------------------
-sub_0B74F6:
+ChildShip_StateKnockbackSlow:
 	link.w	a6,#$0
 	move.l	a4,-(a7)
 	movea.l	$8(a6),a4
@@ -31,7 +35,7 @@ loc_0B752E:
 loc_0B753A:
 	clr.l	$1E(a4)
 	clr.w	$6C(a4)
-	lea.l	sub_0B757C(pc),a0
+	lea.l	ChildShip_StateReturnY(pc),a0
 	move.l	a0,$5C(a4)
 	moveq	#$8,d0
 	and.w	$4(a4),d0
@@ -46,7 +50,7 @@ loc_0B755C:
 loc_0B755E:
 	sub.b	d0,$90(a4)
 	clr.w	$6C(a4)
-	lea.l	sub_0B74F6(pc),a0
+	lea.l	ChildShip_StateKnockbackSlow(pc),a0
 	move.l	a0,$5C(a4)
 	moveq	#$8,d0
 	and.w	$4(a4),d0

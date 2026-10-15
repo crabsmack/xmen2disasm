@@ -1,7 +1,6 @@
 ; ---------------------------------------------------------------------------
-; SavageBioBase_SetFrame - vtable +$56: set a SAVAGEBIOBASE's animation frame
-; In:  8(a6) = this
-; Evidence: slot +$56 of the SAVAGEBIOBASE descriptor $0BD27C; TAS frames 33558-33929 (45 frames active)
+; SavageBioBase_SetFrame - vtable +$56: frame number selects one of four sprite sets (<$40 $128F30, $40-$5F $12FCA6, $60-$7F $12DE36, >=$80 $12370E)
+; Evidence: TAS 33558-33929
 ; ---------------------------------------------------------------------------
 SavageBioBase_SetFrame:
 	link.w	a6,#$FFFC

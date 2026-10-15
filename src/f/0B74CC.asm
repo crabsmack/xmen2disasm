@@ -1,13 +1,17 @@
 ; ---------------------------------------------------------------------------
-; sub_0B74CC	[link-after-rts]
+; ChildShip_StateKnockback - CHILDSHIP state: start the knockback timer (+$90 = $1E)
+; In:  8(a6) = this
+; Out: d0
+; Evidence: next ChildShip_StateKnockbackSlow
+; Found: link-after-rts
 ; ---------------------------------------------------------------------------
-sub_0B74CC:
+ChildShip_StateKnockback:
 	link.w	a6,#$0
 	move.l	a4,-(a7)
 	movea.l	$8(a6),a4
 	move.b	#$1E,$90(a4)
 	clr.w	$6C(a4)
-	lea.l	sub_0B74F6(pc),a0
+	lea.l	ChildShip_StateKnockbackSlow(pc),a0
 	move.l	a0,$5C(a4)
 	moveq	#$8,d0
 	and.w	$4(a4),d0
