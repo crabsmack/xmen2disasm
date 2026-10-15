@@ -2,7 +2,7 @@
 ; YoyoAcolyte_ScriptLevel - YOYOACOLYTE AI script (jt[142]): ThrowLevel, Idle
 ; In:  a4 = this
 ; Out: none
-; Evidence: preceded by Tbl_YoyoAcolyteScriptLevelLen
+; Evidence: preceded by Tbl_YoyoAcolyte_ScriptLevelLen
 ; ---------------------------------------------------------------------------
 YoyoAcolyte_ScriptLevel:
 	jmp	$462(a5)	; -> YoyoAcolyte_ActThrowLevel
