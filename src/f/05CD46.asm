@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_05CD46	[jt 420]
+; Tusk_NopExport - empty exported function (jt 420) among TUSK's methods
+; In:  none
+; Out: none
+; Evidence: body is link/unlk/rts; no caller or descriptor slot found
 ; ---------------------------------------------------------------------------
-sub_05CD46:
+Tusk_NopExport:
 	link.w	a6,#$0
 	unlk	a6
 	rts

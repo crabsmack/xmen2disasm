@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_03A29E	[jt 265]
+; BanimazaDoor_NopStatic - empty non-virtual helper called from BANIMAZADOOR's ClassInit
+; In:  none
+; Out: none
+; Evidence: body is link/unlk/rts
 ; ---------------------------------------------------------------------------
-sub_03A29E:
+BanimazaDoor_NopStatic:
 	link.w	a6,#$0
 	unlk	a6
 	rts

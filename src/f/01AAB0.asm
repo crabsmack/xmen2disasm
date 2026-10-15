@@ -6,6 +6,6 @@
 ; ---------------------------------------------------------------------------
 Tower_ClassInit:
 	link.w	a6,#$0
-	jsr	sub_01ABBC(pc)
+	jsr	Tower_NopStatic(pc)
 	unlk	a6
 	rts

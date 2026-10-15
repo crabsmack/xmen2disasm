@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_017FFA	[jt 103]
+; ShootAcolyte_NopExport - empty exported function (jt 103) among SHOOTACOLYTE's methods
+; In:  none
+; Out: none
+; Evidence: body is link/unlk/rts; no caller or descriptor slot found
 ; ---------------------------------------------------------------------------
-sub_017FFA:
+ShootAcolyte_NopExport:
 	link.w	a6,#$0
 	unlk	a6
 	rts

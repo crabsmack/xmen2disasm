@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_04B3C6	[link-after-rts]
+; Apocalypse_NopStatic1 - empty helper, first of three called by Apocalypse_CallNopStatics
+; In:  none
+; Out: none
+; Evidence: body is link/unlk/rts
 ; ---------------------------------------------------------------------------
-sub_04B3C6:
+Apocalypse_NopStatic1:
 	link.w	a6,#$0
 	unlk	a6
 	rts

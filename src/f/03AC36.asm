@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_03AC36	[jt 277]
+; RollingDiscs_NopStatic - empty non-virtual helper called from ROLLINGDISCS's ClassInit
+; In:  none
+; Out: none
+; Evidence: body is link/unlk/rts
 ; ---------------------------------------------------------------------------
-sub_03AC36:
+RollingDiscs_NopStatic:
 	link.w	a6,#$0
 	unlk	a6
 	rts

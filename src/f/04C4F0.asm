@@ -1,10 +1,13 @@
 ; ---------------------------------------------------------------------------
-; sub_04C4F0	[link-after-rts]
+; Apocalypse_CallNopStatics - call APOCALYPSE's three empty helpers
+; In:  none
+; Out: none
+; Evidence: callers Apocalypse_ClassInit and Apocalypse_NopExport
 ; ---------------------------------------------------------------------------
-sub_04C4F0:
+Apocalypse_CallNopStatics:
 	link.w	a6,#$0
-	jsr	sub_04B3C6(pc)
-	jsr	sub_04B6E2(pc)
-	jsr	sub_04BC10(pc)
+	jsr	Apocalypse_NopStatic1(pc)
+	jsr	Apocalypse_NopStatic2(pc)
+	jsr	Apocalypse_NopStatic3(pc)
 	unlk	a6
 	rts

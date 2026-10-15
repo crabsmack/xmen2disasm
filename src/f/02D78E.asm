@@ -7,7 +7,7 @@
 Exodus_ClassInit:
 	link.w	a6,#$0
 	move.l	$8(a6),-(a7)
-	jsr	sub_02D756(pc)
+	jsr	Exodus_NopStatic(pc)
 	moveq	#$1,d0
 	move.l	d0,-(a7)
 	lea.l	$5F2(a5),a0

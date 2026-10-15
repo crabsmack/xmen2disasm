@@ -7,7 +7,7 @@
 Apocalypse_ClassInit:
 	link.w	a6,#$0
 	movem.l	d3/d7/a3-a4,-(a7)
-	jsr	sub_04C4F0(pc)
+	jsr	Apocalypse_CallNopStatics(pc)
 	lea.l	$3E72(a5),a0
 	movea.l	$2(a0),a3
 	lea.l	-$3920(a5),a4

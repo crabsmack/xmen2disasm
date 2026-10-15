@@ -53,7 +53,7 @@ sub_037F7E:
 	jsr	$4F8A(a5)	; -> Scene_EndAfter
 	addq.w	#$8,a7
 	clr.w	$6C(a4)
-	lea.l	sub_038036(pc),a0
+	lea.l	ThronePhone_EmptyHelper(pc),a0
 	move.l	a0,$5C(a4)
 	moveq	#$8,d0
 	and.w	$4(a4),d0

@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_02D756	[jt 192]
+; Exodus_NopStatic - empty non-virtual helper called from EXODUS's ClassInit
+; In:  none
+; Out: none
+; Evidence: body is link/unlk/rts
 ; ---------------------------------------------------------------------------
-sub_02D756:
+Exodus_NopStatic:
 	link.w	a6,#$0
 	unlk	a6
 	rts

@@ -7,7 +7,7 @@
 ExodusBlast_ClassInit:
 	link.w	a6,#$0
 	move.l	$8(a6),-(a7)
-	jsr	sub_02E306(pc)
+	jsr	ExodusBlast_NopStatic(pc)
 	moveq	#$1,d0
 	move.l	d0,-(a7)
 	lea.l	$5FA(a5),a0

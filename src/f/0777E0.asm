@@ -6,7 +6,7 @@
 ; ---------------------------------------------------------------------------
 LightBeam_ClassInit:
 	link.w	a6,#$0
-	jsr	sub_0777C2(pc)
+	jsr	LightBeam_NopStatic(pc)
 	moveq	#$2,d0
 	move.l	d0,-(a7)
 	lea.l	$109A(a5),a0

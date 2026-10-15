@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_027254	[jt 176]
+; Zapper_NopExport - empty exported function (jt 176) among ZAPPER's methods
+; In:  none
+; Out: none
+; Evidence: body is link/unlk/rts; no caller or descriptor slot found
 ; ---------------------------------------------------------------------------
-sub_027254:
+Zapper_NopExport:
 	link.w	a6,#$0
 	unlk	a6
 	rts

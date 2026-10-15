@@ -2,7 +2,7 @@
 ; AvalonA4_RunScene - scene function for 'AvalonA4 Throne_Room' (Magneto boss): load, place players, hooks, camera, run the level loop
 ; In:  none
 ; Out: none
-; Evidence: Scene_RegisterAll entry for 'AvalonA4 Throne_Room'; sub_034D56, AvalonA4_InitCamera, level loop Level_Run
+; Evidence: Scene_RegisterAll entry for 'AvalonA4 Throne_Room'; AvalonA4_ResetEffectCounters, AvalonA4_InitCamera, level loop Level_Run
 ; ---------------------------------------------------------------------------
 AvalonA4_RunScene:
 	link.w	a6,#$0
@@ -11,7 +11,7 @@ AvalonA4_RunScene:
 	jsr	AvalonA4_PlacePlayers(pc)
 	jsr	AvalonA4_InstallHooks(pc)
 	jsr	AvalonA4_EmptyStub2(pc)
-	jsr	sub_034D56(pc)
+	jsr	AvalonA4_ResetEffectCounters(pc)
 	jsr	AvalonA4_InitCamera(pc)
 	jsr	$5002(a5)	; -> Level_Run
 	unlk	a6

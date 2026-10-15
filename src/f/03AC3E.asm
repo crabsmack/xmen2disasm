@@ -16,7 +16,7 @@ RollingDiscs_ClassInit:
 	movea.l	a4,a3
 	addq.w	#$2,a3
 	move.l	$8(a6),-(a7)
-	jsr	sub_03AC36(pc)
+	jsr	RollingDiscs_NopStatic(pc)
 	move.w	(a4),-$3C7A(a5)
 	pea.l	Str_Empty_03AD12(pc)
 	move.w	-$3C7A(a5),d1

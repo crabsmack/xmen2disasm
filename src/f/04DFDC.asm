@@ -6,7 +6,7 @@
 ; ---------------------------------------------------------------------------
 ApocBomb_ClassInit:
 	link.w	a6,#$0
-	jsr	sub_04DF28(pc)
+	jsr	ApocBomb_NopStatic(pc)
 	moveq	#$2,d0
 	move.l	d0,-(a7)
 	lea.l	$B42(a5),a0

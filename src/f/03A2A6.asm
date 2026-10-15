@@ -9,7 +9,7 @@ BanimazaDoor_ClassInit:
 	move.l	#$1869F,-(a7)
 	jsr	$4182(a5)	; -> sub_160512
 	move.l	$8(a6),-(a7)
-	jsr	sub_03A29E(pc)
+	jsr	BanimazaDoor_NopStatic(pc)
 	moveq	#$0,d0
 	move.l	d0,-(a7)
 	lea.l	$90A(a5),a0

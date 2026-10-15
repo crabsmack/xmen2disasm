@@ -1,8 +1,11 @@
 ; ---------------------------------------------------------------------------
-; sub_04DF30	[jt 363]
+; ApocBomb_NopExport - exported function (jt 363) that only calls ApocBomb_NopStatic
+; In:  none
+; Out: none
+; Evidence: no caller found
 ; ---------------------------------------------------------------------------
-sub_04DF30:
+ApocBomb_NopExport:
 	link.w	a6,#$0
-	jsr	sub_04DF28(pc)
+	jsr	ApocBomb_NopStatic(pc)
 	unlk	a6
 	rts

@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_04DF28	[link-after-rts]
+; ApocBomb_NopStatic - empty non-virtual helper called from APOCBOMB's ClassInit and ApocBomb_NopExport
+; In:  none
+; Out: none
+; Evidence: body is link/unlk/rts
 ; ---------------------------------------------------------------------------
-sub_04DF28:
+ApocBomb_NopStatic:
 	link.w	a6,#$0
 	unlk	a6
 	rts

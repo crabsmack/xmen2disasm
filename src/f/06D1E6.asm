@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_06D1E6	[jt 515]
+; Brood_NopExport - empty exported function (jt 515) among BROOD's methods
+; In:  none
+; Out: none
+; Evidence: body is link/unlk/rts; no caller or descriptor slot found
 ; ---------------------------------------------------------------------------
-sub_06D1E6:
+Brood_NopExport:
 	link.w	a6,#$0
 	unlk	a6
 	rts

@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_0269E4	[jt 167]
+; RetractFloor_NopExport - empty exported function (jt 167) among RETRACTFLOOR's methods
+; In:  none
+; Out: none
+; Evidence: body is link/unlk/rts; no caller or descriptor slot found
 ; ---------------------------------------------------------------------------
-sub_0269E4:
+RetractFloor_NopExport:
 	link.w	a6,#$0
 	unlk	a6
 	rts
