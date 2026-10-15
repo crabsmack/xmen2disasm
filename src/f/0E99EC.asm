@@ -4,7 +4,7 @@
 sub_0E99EC:
 	link.w	a6,#$0
 	movem.l	d7/a4,-(a7)
-	movea.l	-$38DC(a5),a0
+	movea.l	g_SpawnRecs(a5),a0
 	lea.l	(a0),a4
 	tst.b	$B(a6)
 	beq.s	loc_0E9A2A
@@ -21,7 +21,7 @@ loc_0E9A16:
 	addq.l	#$1,d7
 	lea.l	$E(a4),a4
 loc_0E9A1E:
-	move.w	-$38D8(a5),d0
+	move.w	g_SpawnRecCount(a5),d0
 	ext.l	d0
 	cmp.l	d7,d0
 	bgt.s	loc_0E9A04
@@ -40,7 +40,7 @@ loc_0E9A40:
 	addq.l	#$1,d7
 	lea.l	$E(a4),a4
 loc_0E9A48:
-	move.w	-$38D8(a5),d0
+	move.w	g_SpawnRecCount(a5),d0
 	ext.l	d0
 	cmp.l	d7,d0
 	bgt.s	loc_0E9A2E

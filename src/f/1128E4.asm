@@ -5,7 +5,7 @@ sub_1128E4:
 	link.w	a6,#$FFEA
 	movem.l	d4-d7/a3-a4,-(a7)
 	movea.l	$8(a6),a4
-	movea.l	-$3BC4(a5),a0
+	movea.l	g_Elevator(a5),a0
 	cmpi.l	#$10000,$4(a0)
 	bge.w	loc_1129E8
 	subq.w	#$1,-$3BBE(a5)

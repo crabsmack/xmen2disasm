@@ -13,10 +13,10 @@ loc_1079EE:
 	move.b	#$1,-$3BCA(a5)
 	move.w	$A(a6),$8(a4)
 	move.w	$E(a6),$A(a4)
-	move.l	-$38D6(a5),(a4)
-	move.w	-$38D8(a5),d0
+	move.l	g_PlacementList(a5),(a4)
+	move.w	g_SpawnRecCount(a5),d0
 	ext.l	d0
-	movea.l	-$38D6(a5),a0
+	movea.l	g_PlacementList(a5),a0
 	asl.l	#$4,d0
 	adda.l	d0,a0
 	move.l	a0,$4(a4)

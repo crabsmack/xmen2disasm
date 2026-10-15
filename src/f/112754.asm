@@ -23,7 +23,7 @@ sub_112754:
 	jsr	(a1)
 	pea.l	($F0).w
 	jsr	$4F8A(a5)	; -> Scene_EndAfter
-	movea.l	-$3BC4(a5),a0
+	movea.l	g_Elevator(a5),a0
 	tst.b	$10(a0)
 	lea.l	$C(a7),a7
 	bne.s	loc_1127BA
@@ -31,11 +31,11 @@ sub_112754:
 	movea.l	(a0),a0
 	movea.l	$12(a0),a1
 	jsr	(a1)
-	movea.l	-$3BC4(a5),a0
+	movea.l	g_Elevator(a5),a0
 	move.w	#$78,$8(a0)
 	addq.w	#$4,a7
 loc_1127BA:
-	movea.l	-$3BC4(a5),a0
+	movea.l	g_Elevator(a5),a0
 	move.w	#$78,$A(a0)
 	clr.w	$6C(a4)
 	lea.l	sub_11286E(pc),a0

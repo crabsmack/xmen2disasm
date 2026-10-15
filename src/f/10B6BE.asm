@@ -21,7 +21,7 @@ SpaceElev_SwitchTileHit:
 loc_10B6E6:
 	movea.l	a4,a3
 loc_10B6E8:
-	movea.l	-$3BC4(a5),a0
+	movea.l	g_Elevator(a5),a0
 	tst.b	$10(a0)
 	beq.s	loc_10B706
 	move.l	a4,d0
@@ -34,7 +34,7 @@ loc_10B702:
 	moveq	#$0,d0
 	bra.s	loc_10B762
 loc_10B706:
-	movea.l	-$3BC4(a5),a0
+	movea.l	g_Elevator(a5),a0
 	tst.w	$12(a0)
 	bne.s	loc_10B760
 	ext.l	d6
@@ -60,7 +60,7 @@ loc_10B706:
 	moveq	#$38,d0
 	move.l	d0,-(a7)
 	jsr	$521A(a5)	; -> Snd_Play
-	movea.l	-$3BC4(a5),a0
+	movea.l	g_Elevator(a5),a0
 	move.l	a0,-(a7)
 	movea.l	(a0),a0
 	movea.l	$12(a0),a1

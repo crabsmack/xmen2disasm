@@ -18,7 +18,7 @@ loc_1199C4:
 	moveq	#$0,d6
 	move.b	$14(a3),d6
 	ext.l	d6
-	movea.l	-$38DC(a5),a0
+	movea.l	g_SpawnRecs(a5),a0
 	move.l	d6,d0
 	move.l	d0,d1
 	mulu.w	#$E,d0

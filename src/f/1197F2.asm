@@ -13,7 +13,7 @@ Synchronizer_New:
 	movea.l	$6(a0),a1
 	jsr	(a1)
 	move.w	d0,d6
-	tst.l	-$1CA2(a5)
+	tst.l	g_SyncPool(a5)
 	bne.s	loc_119844
 	pea.l	Str_Empty_119892(pc)
 	move.w	d6,d0
@@ -21,9 +21,9 @@ Synchronizer_New:
 	asl.l	#$2,d0
 	move.l	d0,-(a7)
 	jsr	$5032(a5)	; -> Mem_StackAlloc
-	move.l	d0,-$1CA2(a5)
+	move.l	d0,g_SyncPool(a5)
 	clr.w	d7
-	movea.l	-$1CA2(a5),a4
+	movea.l	g_SyncPool(a5),a4
 	moveq	#$4,d3
 	addq.w	#$8,a7
 	bra.s	loc_119840
@@ -38,7 +38,7 @@ loc_119840:
 	bgt.s	loc_119834
 loc_119844:
 	clr.w	d7
-	movea.l	-$1CA2(a5),a4
+	movea.l	g_SyncPool(a5),a4
 	bra.s	loc_119880
 loc_11984C:
 	movea.l	a4,a3

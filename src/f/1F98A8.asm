@@ -231,8 +231,8 @@ loc_1F9B0E:
 	tst.l	d0
 	adda.l	d0,a4
 	movea.l	a4,a3
-	move.w	(a3)+,-$38D8(a5)
-	move.l	a3,-$38D6(a5)
+	move.w	(a3)+,g_SpawnRecCount(a5)
+	move.l	a3,g_PlacementList(a5)
 	jsr	$4132(a5)	; -> sub_15F95C
 	jsr	$4FB2(a5)	; -> Scene_ClearActivateHook
 	jsr	ClassList_CallSlot5A(pc)

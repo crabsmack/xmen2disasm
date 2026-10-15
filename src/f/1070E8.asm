@@ -7,7 +7,7 @@ sub_1070E8:
 	movea.l	$8(a6),a4
 	moveq	#$0,d0
 	move.b	$8B(a4),d0
-	movea.l	-$1CA6(a5),a0
+	movea.l	g_BBoard(a5),a0
 	add.l	d0,d0
 	move.w	#$200,d7
 	and.w	$6(a0,d0.l),d7

@@ -107,3 +107,12 @@ g_ScnCredits = -$3B86	; byte: scene id of "CerebroScreen Credits" (Scene_Registe
 g_ScnFailure = -$3B8C	; byte: scene id of "CerebroScreen Failure" (Scene_RegisterAll); game-over screen chosen by Game_SceneLoop
 g_ScnLogoAndDemo = -$3B8A	; byte: scene id of "CerebroScreen LogoAndDemo" (Scene_RegisterAll)
 g_AttractDemoNum = -$3B90	; word: next attract demo 0-3 (Game_SceneLoop switch -> Game_AttractDemo*; incremented by Game_PlayAttractDemo)
+g_ICandyPool = -$1CB2	; ptr: ICandy pool base (ICandy_PoolInit/ICandy_PoolAlloc)
+g_ICandyStride = -$1CB4	; word: ICandy pool slot size in bytes (ICandy_PoolInit)
+g_ICandyCount = -$1CAE	; word: ICandy pool slot count, 0 = no pool (ICandy_PoolInit)
+g_BBoard = -$1CA6	; ptr: BBOARD trigger-flag board, 100 word entries (Switch_ClassInit, Synchronizer_SetFlag)
+g_SyncPool = -$1CA2	; ptr: pool of 4 SYNCHRONIZER objects (Synchronizer_New)
+g_Elevator = -$3BC4	; ptr: SpaceA1 ELEVATOR object, on SpaceElev_Main's stack (SpaceElev_CameraUpdate)
+g_SpawnRecs = -$38DC	; ptr: spawn records, 14 bytes each (sub_15F95C fills them via InitSpawnRec; level loop sub_1FA124)
+g_SpawnRecCount = -$38D8	; word: number of spawn records / placement entries (sub_1F98A8, sub_15F95C)
+g_PlacementList = -$38D6	; ptr: level placement entries, 16 bytes, word 0 = class index into g_ClassList (sub_1F98A8, sub_15F95C)

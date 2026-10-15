@@ -14,7 +14,7 @@ loc_119BDC:
 	move.w	$34(a3),d7
 	addq.w	#$1,$34(a3)
 	ext.l	d7
-	movea.l	-$38DC(a5),a0
+	movea.l	g_SpawnRecs(a5),a0
 	move.l	d7,d0
 	move.l	d0,d1
 	mulu.w	#$E,d0
@@ -25,7 +25,7 @@ loc_119BDC:
 	add.l	d1,d0
 	lea.l	(a0,d0.l),a4
 	move.l	$A(a4),-$4(a6)
-	cmp.w	-$38D8(a5),d7
+	cmp.w	g_SpawnRecCount(a5),d7
 	blt.s	loc_119C1A
 	lea.l	Synchronizer_RunMembers(pc),a0
 	move.l	a0,$2C(a3)

@@ -46,7 +46,7 @@ loc_0854F2:
 	moveq	#$0,d7
 	bra.s	loc_08554A
 loc_085504:
-	movea.l	-$38DC(a5),a0
+	movea.l	g_SpawnRecs(a5),a0
 	move.l	d7,d0
 	move.l	d0,d1
 	mulu.w	#$E,d0
@@ -73,7 +73,7 @@ loc_085546:
 	move.l	d7,d0
 	addq.l	#$1,d7
 loc_08554A:
-	move.w	-$38D8(a5),d0
+	move.w	g_SpawnRecCount(a5),d0
 	ext.l	d0
 	cmp.l	d7,d0
 	bgt.s	loc_085504

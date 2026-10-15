@@ -30,7 +30,7 @@ BioSentinel_Deactivate:
 	beq.s	loc_1209D0
 	moveq	#$0,d0
 	move.b	$14(a4),d0
-	movea.l	-$38DC(a5),a0
+	movea.l	g_SpawnRecs(a5),a0
 	move.l	d0,d1
 	mulu.w	#$E,d0
 	swap	d1
@@ -41,7 +41,7 @@ BioSentinel_Deactivate:
 	andi.b	#$FD,$4(a0,d0.l)
 	moveq	#$0,d0
 	move.b	$14(a4),d0
-	movea.l	-$38DC(a5),a0
+	movea.l	g_SpawnRecs(a5),a0
 	move.l	d0,d1
 	mulu.w	#$E,d0
 	swap	d1

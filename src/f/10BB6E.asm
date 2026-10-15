@@ -7,7 +7,7 @@
 SpaceElev_Main:
 	link.w	a6,#$FF44
 	lea.l	-$BC(a6),a0
-	move.l	a0,-$3BC4(a5)
+	move.l	a0,g_Elevator(a5)
 	moveq	#$14,d0
 	move.l	d0,-(a7)
 	moveq	#$0,d1
@@ -22,7 +22,7 @@ SpaceElev_Main:
 	pea.l	-$A8(a6)
 	jsr	$4DB2(a5)	; -> Mem_Set
 	lea.l	$2A7A(a5),a0
-	movea.l	-$3BC4(a5),a1
+	movea.l	g_Elevator(a5),a1
 	move.l	$2(a0),(a1)
 	jsr	SpaceElev_CallEmptyHook(pc)
 	jsr	SpaceElev_LoadScene(pc)

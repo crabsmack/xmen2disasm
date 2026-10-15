@@ -6,7 +6,7 @@
 ; ---------------------------------------------------------------------------
 SyncActor_ClassInit:
 	link.w	a6,#$0
-	tst.l	-$1CA6(a5)
+	tst.l	g_BBoard(a5)
 	bne.s	loc_119D6E
 	moveq	#$64,d0
 	move.l	d0,-(a7)
@@ -16,7 +16,7 @@ SyncActor_ClassInit:
 	movea.l	$2(a0),a0
 	movea.l	$A(a0),a1
 	jsr	(a1)
-	move.l	d0,-$1CA6(a5)
+	move.l	d0,g_BBoard(a5)
 	addq.w	#$8,a7
 loc_119D6E:
 	unlk	a6

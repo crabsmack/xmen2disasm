@@ -72,7 +72,7 @@ loc_10BB1C:
 	moveq	#$0,d1
 	move.l	d1,-(a7)
 	move.l	d1,-(a7)
-	movea.l	-$3BC4(a5),a0
+	movea.l	g_Elevator(a5),a0
 	move.l	a0,-(a7)
 	movea.l	(a0),a0
 	movea.l	$A(a0),a1

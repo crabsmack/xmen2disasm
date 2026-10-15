@@ -10,7 +10,7 @@ Synchronizer_SetFlag:
 	movea.l	$8(a6),a0
 	moveq	#$0,d0
 	move.b	$37(a0),d0
-	movea.l	-$1CA6(a5),a0
+	movea.l	g_BBoard(a5),a0
 	add.l	d0,d0
 	lea.l	$6(a0,d0.l),a4
 	ori.w	#$100,(a4)

@@ -4,7 +4,7 @@
 sub_088600:
 	link.w	a6,#$0
 	movem.l	d7/a4,-(a7)
-	movea.l	-$38D6(a5),a4
+	movea.l	g_PlacementList(a5),a4
 	clr.w	d7
 	bra.s	loc_088664
 loc_088610:
@@ -41,7 +41,7 @@ loc_08865C:
 loc_088664:
 	moveq	#$0,d0
 	move.w	d7,d0
-	move.w	-$38D8(a5),d1
+	move.w	g_SpawnRecCount(a5),d1
 	ext.l	d1
 	cmp.l	d0,d1
 	bgt.s	loc_088610

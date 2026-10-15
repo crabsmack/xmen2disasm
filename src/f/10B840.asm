@@ -26,22 +26,22 @@ loc_10B864:
 	jsr	(a3)
 	addq.w	#$4,a7
 loc_10B872:
-	movea.l	-$3BC4(a5),a0
+	movea.l	g_Elevator(a5),a0
 	tst.b	$11(a0)
 	bne.w	loc_10B938
 	move.w	$8(a0),d0
 	asr.w	#$8,d0
 	sub.w	d0,-$3AC8(a5)
-	movea.l	-$3BC4(a5),a0
+	movea.l	g_Elevator(a5),a0
 	tst.b	$10(a0)
 	beq.s	loc_10B8C4
 	cmpi.l	#$20000,$4(a0)
 	ble.w	loc_10B938
-	movea.l	-$3BC4(a5),a0
+	movea.l	g_Elevator(a5),a0
 	move.b	#$1,$11(a0)
-	movea.l	-$3BC4(a5),a0
+	movea.l	g_Elevator(a5),a0
 	clr.w	$8(a0)
-	movea.l	-$3BC4(a5),a0
+	movea.l	g_Elevator(a5),a0
 	clr.w	$A(a0)
 	moveq	#$1E,d0
 	move.l	d0,-(a7)
@@ -49,13 +49,13 @@ loc_10B872:
 	addq.w	#$4,a7
 	bra.s	loc_10B938
 loc_10B8C4:
-	movea.l	-$3BC4(a5),a0
+	movea.l	g_Elevator(a5),a0
 	tst.l	$4(a0)
 	bge.s	loc_10B938
 	move.b	#$1,$11(a0)
-	movea.l	-$3BC4(a5),a0
+	movea.l	g_Elevator(a5),a0
 	clr.w	$8(a0)
-	movea.l	-$3BC4(a5),a0
+	movea.l	g_Elevator(a5),a0
 	clr.w	$A(a0)
 	moveq	#$35,d0
 	move.l	d0,-(a7)

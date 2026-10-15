@@ -5,16 +5,16 @@ sub_15F95C:
 	link.w	a6,#$0
 	movem.l	d7/a3-a4,-(a7)
 	pea.l	Str_Empty_15FA2A(pc)
-	move.w	-$38D8(a5),d0
+	move.w	g_SpawnRecCount(a5),d0
 	muls.w	#$E,d0
 	move.l	d0,-(a7)
 	jsr	$5032(a5)	; -> Mem_StackAlloc
-	move.l	d0,-$38DC(a5)
+	move.l	d0,g_SpawnRecs(a5)
 	moveq	#$0,d7
 	addq.w	#$8,a7
 	bra.s	loc_15F9C8
 loc_15F980:
-	movea.l	-$38DC(a5),a0
+	movea.l	g_SpawnRecs(a5),a0
 	move.l	d7,d0
 	move.l	d0,d1
 	mulu.w	#$E,d0
@@ -24,7 +24,7 @@ loc_15F980:
 	clr.w	d1
 	add.l	d1,d0
 	lea.l	(a0,d0.l),a4
-	movea.l	-$38D6(a5),a0
+	movea.l	g_PlacementList(a5),a0
 	move.l	d7,d0
 	asl.l	#$4,d0
 	lea.l	(a0,d0.l),a3
@@ -42,15 +42,15 @@ loc_15F980:
 	move.l	d7,d0
 	addq.l	#$1,d7
 loc_15F9C8:
-	move.w	-$38D8(a5),d0
+	move.w	g_SpawnRecCount(a5),d0
 	ext.l	d0
 	cmp.l	d7,d0
 	bgt.s	loc_15F980
 	clr.w	-$BCE(a5)
-	move.l	-$38DC(a5),-$BD2(a5)
-	move.w	-$38D8(a5),d0
+	move.l	g_SpawnRecs(a5),-$BD2(a5)
+	move.w	g_SpawnRecCount(a5),d0
 	ext.l	d0
-	movea.l	-$38DC(a5),a0
+	movea.l	g_SpawnRecs(a5),a0
 	move.l	d0,d1
 	mulu.w	#$E,d0
 	swap	d1
@@ -62,7 +62,7 @@ loc_15F9C8:
 	move.l	a0,-$BD6(a5)
 	move.w	#$A,-$BD8(a5)
 	move.w	#$5,-$BD8(a5)
-	tst.w	-$38D8(a5)
+	tst.w	g_SpawnRecCount(a5)
 	ble.s	loc_15FA18
 	moveq	#$0,d0
 	move.l	d0,-$BCC(a5)

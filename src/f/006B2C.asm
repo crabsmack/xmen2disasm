@@ -16,8 +16,8 @@ Scene_PreLoadReset:
 	move.w	#$5F,-$1D44(a5)
 	move.w	#$700,-$1D46(a5)
 	moveq	#$0,d0
-	move.l	d0,-$1CA6(a5)
-	move.l	d0,-$1CA2(a5)
+	move.l	d0,g_BBoard(a5)
+	move.l	d0,g_SyncPool(a5)
 	clr.w	-$3AFA(a5)
 	unlk	a6
 	rts

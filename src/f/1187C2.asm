@@ -9,10 +9,10 @@ ICandy_PoolAlloc:
 	movem.l	d7/a4,-(a7)
 	moveq	#$0,d0
 	movea.l	d0,a4
-	tst.w	-$1CAE(a5)
+	tst.w	g_ICandyCount(a5)
 	beq.s	loc_118808
 	moveq	#$0,d7
-	movea.l	-$1CB2(a5),a4
+	movea.l	g_ICandyPool(a5),a4
 	bra.s	loc_1187FA
 loc_1187DC:
 	move.w	$4(a4),d0
@@ -25,9 +25,9 @@ loc_1187DC:
 loc_1187F2:
 	move.l	d7,d0
 	addq.l	#$1,d7
-	adda.w	-$1CB4(a5),a4
+	adda.w	g_ICandyStride(a5),a4
 loc_1187FA:
-	move.w	-$1CAE(a5),d0
+	move.w	g_ICandyCount(a5),d0
 	ext.l	d0
 	cmp.l	d7,d0
 	bgt.s	loc_1187DC

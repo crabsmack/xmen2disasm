@@ -7,7 +7,7 @@ sub_112A2E:
 	movea.l	$8(a6),a4
 	tst.w	$6E(a4)
 	bgt.w	loc_112B12
-	movea.l	-$3BC4(a5),a0
+	movea.l	g_Elevator(a5),a0
 	tst.b	$10(a0)
 	beq.s	loc_112A7A
 	moveq	#$20,d0

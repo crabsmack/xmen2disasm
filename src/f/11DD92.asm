@@ -9,7 +9,7 @@ sub_11DD92:
 	asr.l	#$8,d7
 	moveq	#$0,d0
 	move.b	$14(a4),d0
-	movea.l	-$38D6(a5),a0
+	movea.l	g_PlacementList(a5),a0
 	asl.l	#$4,d0
 	lea.l	(a0,d0.l),a3
 	move.w	$A(a3),d0

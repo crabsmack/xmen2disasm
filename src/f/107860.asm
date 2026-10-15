@@ -52,7 +52,7 @@ loc_107898:
 	move.w	d1,-$2(a6)
 	move.w	$8(a4),d0
 	ext.l	d0
-	movea.l	-$1CA6(a5),a0
+	movea.l	g_BBoard(a5),a0
 	add.l	d0,d0
 	move.w	#$200,d5
 	and.w	$6(a0,d0.l),d5
@@ -72,7 +72,7 @@ loc_107898:
 	beq.s	loc_10796C
 	move.w	$8(a4),d0
 	ext.l	d0
-	movea.l	-$1CA6(a5),a0
+	movea.l	g_BBoard(a5),a0
 	add.l	d0,d0
 	lea.l	$6(a0,d0.l),a0
 	move.l	a0,-$6(a6)
@@ -99,7 +99,7 @@ loc_107898:
 loc_10796C:
 	move.w	$8(a4),d0
 	ext.l	d0
-	movea.l	-$1CA6(a5),a0
+	movea.l	g_BBoard(a5),a0
 	add.l	d0,d0
 	lea.l	$6(a0,d0.l),a0
 	move.l	a0,-$6(a6)

@@ -301,7 +301,7 @@ loc_1FA4FC:
 loc_1FA504:
 	tst.w	-$BCE(a5)
 	bne.s	loc_1FA516
-	move.w	-$38D8(a5),-$BCE(a5)
+	move.w	g_SpawnRecCount(a5),-$BCE(a5)
 	move.l	-$BD6(a5),-$BD2(a5)
 loc_1FA516:
 	subq.w	#$1,-$BCE(a5)
