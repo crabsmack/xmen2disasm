@@ -175,7 +175,8 @@ _(module → functions, globals, data; add as you learn them)_
   `Players_PlaceAtStart`), camera creation, timers, then `sub_0C1478(track)` (music; writes
   g_MusicTrack), `sub_1FA6FE` (scene loop), `sub_0C14B4`. Scene-local globals in
   `$FFC6C4-$FFC706` (`-$3B3C..-$3AFA`) are reused with different meanings by each scene:
-  don't give them global names. Per-frame helpers are `Timer_Create(fn, 1, arg, 0)` + `Timer_Start`,
+  ~~don't give them global names~~ (N3 still needs a name for each; the globals worker owns them:
+  use a neutral scene-scratch name and list the per-scene uses in the ram.asm comment). Per-frame helpers are `Timer_Create(fn, 1, arg, 0)` + `Timer_Start`,
   ended by `Timer_Free`. Camera limits: words
   `-$3A98/-$3A9C` min x/y, `-$3A96/-$3A9A` max x/y (`CloneA2_SetCameraZone`). Screen shake:
   `g_CamShake` script.
@@ -183,6 +184,14 @@ _(module → functions, globals, data; add as you learn them)_
   (`sub_088730`), SavageA2 Perimeter_1 (`sub_0AD91A`), SavageA3 Perimeter_2 (`sub_0B0538`),
   SavageA4 Chamber (`sub_0B65C6`), SavageC1 Jungle_1 (`sub_0C11CE`), SavageB1 Jungle_2
   (`sub_0C130A`), SentinelsD1 Exterior_1 (`sub_0DC4AA`).
+- **Hazard water / flood (w080)**: `Water_Init(variant, surface y, splash y)` + `Water_DrawHook` in
+  `g_SceneDrawHook`: players below the surface (`-$3C10`) splash and take damage every 5 frames while
+  `-$3C14` is set (Savage jungle swamp; SavageA2/A3 rising flood: `SavageA2_CamUpdateFlood` raises it).
+- **Stage music (w080)**: `Music_PlayStage(track)` / `Music_StopStage`; `Music_SetPlayerParams` tells
+  the driver the player count and each player's character (`Player_MusicVoice`, Snd_SetParam $A/$B/$C),
+  refreshed every frame by some scene hooks, so the music follows who is playing.
+- **Tile hooks (w080)**: 8 longs at `$FFC708` (byte `-$33C8` = installed); [2] = breakable tile hit
+  (`SavageA2_TileHookCrack`), [3] = door/wall hit (`PerimeterDoor_TileHook`, `XClone_TileHookOpenWall`).
 - **AI scripts (w080 range)**: SMALLBROOD, BROODBOSS, EVILMAKER, XCLONE... keep `{word count;
   jmp d(a5) thunks}` scripts; every action ends with the same "next step" idiom (index += 1, wrap,
   `+$5C` := script + 2 + 4*index, else `+$64`). Names: `<Class>_Act*` = script action (a jt entry),
