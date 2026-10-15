@@ -50,19 +50,30 @@ def fetch_biz() -> None:
 
 
 def patch_biz() -> None:
-    """Let xm_biz.c see where each DMA word goes: call xm_dma_note(code, addr) (the VDP's private
-    code/address registers) right before BizHawk logs a DMA source word. Recording only; the
-    emulation is unchanged (the TAS stays frame-identical)."""
+    """Recording-only hooks for xm_biz.c; the emulation is unchanged (the TAS stays
+    frame-identical):
+    - vdp_ctrl.c: xm_dma_note(code, addr) (the VDP's private code/address registers) right
+      before BizHawk logs a DMA source word;
+    - z80/z80.c: xm_z80_exec() before each Z80 instruction (after interrupt acceptance), for
+      the phase-2 Z80 instruction trace."""
     p = BIZ_SRC / "waterbox" / "gpgx" / "core" / "vdp_ctrl.c"
     t = p.read_text(encoding="latin-1")
-    if "xm_dma_note" in t:
-        return
-    hook = "CDLog68k(source,eCDLog_Flags_DMASource);"
-    if hook not in t:
-        sys.exit("patch_biz: DMA logging call not found in vdp_ctrl.c")
-    t = t.replace(hook, "xm_dma_note(code, addr); " + hook)
-    t = t.replace("static uint8 code;", "extern void xm_dma_note(unsigned int code, unsigned int addr);\nstatic uint8 code;", 1)
-    p.write_text(t, encoding="latin-1", newline="\n")
+    if "xm_dma_note" not in t:
+        hook = "CDLog68k(source,eCDLog_Flags_DMASource);"
+        if hook not in t:
+            sys.exit("patch_biz: DMA logging call not found in vdp_ctrl.c")
+        t = t.replace(hook, "xm_dma_note(code, addr); " + hook)
+        t = t.replace("static uint8 code;", "extern void xm_dma_note(unsigned int code, unsigned int addr);\nstatic uint8 code;", 1)
+        p.write_text(t, encoding="latin-1", newline="\n")
+    p = BIZ_SRC / "waterbox" / "gpgx" / "core" / "z80" / "z80.c"
+    t = p.read_text(encoding="latin-1")
+    if "xm_z80_exec" not in t:
+        hook = "    Z80.after_ei = FALSE;\n    R++;\n    EXEC_INLINE(op,ROP());"
+        if hook not in t:
+            sys.exit("patch_biz: Z80 run loop not found in z80/z80.c")
+        t = t.replace(hook, "    Z80.after_ei = FALSE;\n    xm_z80_exec();\n    R++;\n    EXEC_INLINE(op,ROP());")
+        t = t.replace("void z80_run(unsigned int cycles)\n", "extern void xm_z80_exec(void);\nvoid z80_run(unsigned int cycles)\n", 1)
+        p.write_text(t, encoding="latin-1", newline="\n")
 
 
 def build(src: Path, target: str) -> None:

@@ -62,6 +62,43 @@ XM_EXPORT void xm_rprobe_arm(unsigned pc) { probe_pc = pc; probe_len = 0; }
 XM_EXPORT unsigned *xm_rprobe_buf(void) { return probe_buf; }
 XM_EXPORT unsigned xm_rprobe_len(void) { return probe_len; }
 
+/* Z80 instruction trace (armed with the 68000 one): {pc, Z80.cycles (master clocks), regs hash,
+   frame marker as pc 0xFFFFFFFF}. Hash: word-wise FNV-1a over AF BC DE HL IX IY SP AF' BC' DE'
+   HL' (16-bit values), the same as the runner's exact-mode Z80 trace. */
+#include "z80.h"
+typedef struct { unsigned pc, cyc, rh; } XmZtrace;
+static XmZtrace *ztrace;
+static unsigned ztrace_len, ztrace_cap;
+XM_EXPORT int xm_ztrace_arm(unsigned cap)
+{
+  free(ztrace);
+  ztrace = cap ? (XmZtrace *)malloc((size_t)cap * sizeof *ztrace) : NULL;
+  ztrace_cap = ztrace ? cap : 0;
+  ztrace_len = 0;
+  return ztrace != NULL || !cap;
+}
+XM_EXPORT void xm_ztrace_mark(unsigned frame)
+{
+  if (ztrace_len < ztrace_cap) {
+    XmZtrace *e = &ztrace[ztrace_len++];
+    e->pc = 0xFFFFFFFFu; e->cyc = frame; e->rh = 0;
+  }
+}
+XM_EXPORT XmZtrace *xm_ztrace_buf(void) { return ztrace; }
+XM_EXPORT unsigned xm_ztrace_len(void) { return ztrace_len; }
+void xm_z80_exec(void)
+{
+  if (ztrace_len < ztrace_cap) {
+    XmZtrace *e = &ztrace[ztrace_len++];
+    unsigned v[11], h = 2166136261u, i;
+    v[0] = Z80.af.w.l; v[1] = Z80.bc.w.l; v[2] = Z80.de.w.l; v[3] = Z80.hl.w.l;
+    v[4] = Z80.ix.w.l; v[5] = Z80.iy.w.l; v[6] = Z80.sp.w.l;
+    v[7] = Z80.af2.w.l; v[8] = Z80.bc2.w.l; v[9] = Z80.de2.w.l; v[10] = Z80.hl2.w.l;
+    for (i = 0; i < 11; i++) h = (h ^ v[i]) * 16777619u;
+    e->pc = Z80.pc.w.l; e->cyc = Z80.cycles; e->rh = h;
+  }
+}
+
 XM_EXPORT XmCtrace *xm_ctrace_buf(void) { return ctrace; }
 XM_EXPORT unsigned xm_ctrace_len(void) { return ctrace_len; }
 

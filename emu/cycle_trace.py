@@ -29,16 +29,22 @@ def main() -> int:
     ap.add_argument("--to", dest="f1", type=int, required=True)
     ap.add_argument("--out", required=True)
     ap.add_argument("--cap", type=int, default=20_000_000, help="max instructions recorded")
+    ap.add_argument("--z80-out", help="also write the Z80 trace: frame,pc,zclk,rh (rh over AF..HL')")
     a = ap.parse_args()
     frames = stream(a.run)
     emu = BizEmu()
     L = emu.lib
     L.xm_ctrace_buf.restype = C.c_void_p
+    L.xm_ztrace_buf.restype = C.c_void_p
     for i, (p1, p2) in enumerate(frames[:a.f1], 1):
         if i == a.f0 and not L.xm_ctrace_arm(a.cap):
             raise SystemExit("cannot allocate the trace buffer")
+        if i == a.f0 and a.z80_out and not L.xm_ztrace_arm(a.cap):
+            raise SystemExit("cannot allocate the Z80 trace buffer")
         if i >= a.f0:
             L.xm_ctrace_mark(i)
+            if a.z80_out:
+                L.xm_ztrace_mark(i)
         L.xm_set_pads(to_gpgx(p1), to_gpgx(p2))
         L.xm_frame_clear()
         L.gpgx_advance()
@@ -56,6 +62,19 @@ def main() -> int:
             f.write(f"{frame},{pc:06X},{cyc},{sr:04X},{a7:06X},{rh:08X}\n")
     print(f"{out}: {n} entries, frames {a.f0}..{a.f1}" + (" (cap reached)" if n >= a.cap else ""))
     L.xm_ctrace_arm(0)
+    if a.z80_out:
+        n = L.xm_ztrace_len()
+        zb = np.frombuffer(C.string_at(L.xm_ztrace_buf(), n * 12), dtype="<u4").reshape(n, 3)
+        with open(a.z80_out, "w", newline="\n") as f:
+            f.write("frame,pc,zclk,rh\n")
+            frame = 0
+            for pc, cyc, rh in zb.tolist():
+                if pc == 0xFFFFFFFF:
+                    frame = cyc
+                    continue
+                f.write(f"{frame},{pc:04X},{cyc},{rh:08X}\n")
+        print(f"{a.z80_out}: {n} Z80 entries")
+        L.xm_ztrace_arm(0)
     return 0
 
 
