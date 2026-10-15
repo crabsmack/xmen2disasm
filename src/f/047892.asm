@@ -37,7 +37,7 @@ BaniMazaA2_LoadLevel:
 	move.l	$2(a0),-(a7)
 	lea.l	$942(a5),a0
 	move.l	$2(a0),-(a7)
-	jsr	$4FCA(a5)	; -> sub_1F98A8
+	jsr	$4FCA(a5)	; -> Level_Load
 	move.w	#$100,-$3498(a5)
 	move.w	#$100,-$3496(a5)
 	move.b	#$1,-$38B4(a5)

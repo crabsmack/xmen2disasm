@@ -288,6 +288,23 @@ _(module → functions, globals, data; add as you learn them)_
   Size code s: width ((s>>2)+1)*8, height ((s&3)+1)*8 (`Tbl_SprSizeTiles/Width/Height` at
   `$1FDE06`, and per-emitter copies `Tbl_SprWidth*`). Hardware sprites are written to
   `g_SpriteTable` following its link bytes (`Spr_BeginFrame`/`Spr_EndFrame`, 80 slots).
+- **Level map / tileset blobs (w140)** (`Level_Load(fgMap, fgTiles, bgMap, bgTiles, fgSegs,
+  bgSegs, ...)`, `Level_LoadMaps`): map +0 byte flags, +1 byte (high nibble != 0 =
+  compressed), +2/+4 words width/height in 8-px cells (>>2 = 32-px blocks), +$A word offset
+  of the Enigma block layout, +$10 offset of a 16-word palette line, +$12 offset of the spawn
+  list `{word count; 16-byte entries {word class index into the class list, word x, word y,
+  ...}}`, +$16 offset of the special-block list `{word count; {word slot 1-12, word x, word
+  y}}`. Tileset (may be the same blob): +6 word tile count, +8 word block count, +$C offset of
+  the Enigma block definitions (4x4 tile words per block), +$E offset of the tiles: raw words
+  when uncompressed, else `{word rows; Nem code pairs ... $FF; Nemesis data}` decoded with a
+  used-tile mask (`Level_LoadUsedTiles`). Readers: `Eni_Decode`, `Nem_*`, `Level_*`.
+- **Floor-segment lists (w140)** (`Seg_LoadList`): records until a 0 byte, `{byte type (bits
+  0-5; $40 = no neighbour links), byte extra, word x1, y1, x2, y2, word ?, [byte prev, byte
+  next]}` = 12 bytes, 10 when $40 is set.
+- **Palette cycle tables (w140)** (`Pal_CycleStep`): 6-byte sequences `{long offset of colour
+  words ending -1, byte frames per colour, byte palette entry}`, list ends with offset -1.
+- **Frame hit-point lists (w140)** (`Obj_FindHitPoint`, frame record +$C): signed (x, y) byte
+  pairs ending (0, 0); `$7F,$7F,cond,value` opens a group skipped unless the object matches.
 - **Fade tables (w140)**: `Tbl_FadeBlack` ($1FDD56), `Tbl_FadeInvertWhite` ($1FDD96): 8 levels
   x 8 bytes mapping a 3-bit colour component; passed to `Pal_StartFade`.
 - **Control layouts (w140)**: `Tbl_ButtonConfigs` ($1FDDD6), 6 x 8 joypad masks per action.

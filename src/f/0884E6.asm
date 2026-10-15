@@ -36,7 +36,7 @@ loc_088526:
 	pea.l	-$3C54(a5)
 	pea.l	-$3C52(a5)
 	pea.l	-$3C50(a5)
-	jsr	$3EB2(a5)	; -> sub_159FD6
+	jsr	$3EB2(a5)	; -> Pal_CycleStep
 	lea.l	$14(a7),a7
 loc_08854E:
 	tst.b	-$38DE(a5)
@@ -54,7 +54,7 @@ loc_08854E:
 	pea.l	-$3C54(a5)
 	pea.l	-$3C52(a5)
 	pea.l	-$3C50(a5)
-	jsr	$3EB2(a5)	; -> sub_159FD6
+	jsr	$3EB2(a5)	; -> Pal_CycleStep
 loc_088584:
 	unlk	a6
 	rts

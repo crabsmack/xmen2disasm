@@ -2,7 +2,7 @@
 ; Eni_Decode - decompress an Enigma-format tilemap (Sega's plane-map compression) into a word buffer
 ; In:  8(a6) = source   $C(a6) = destination words   $10(a6) = word added to every tile (base tile/palette)
 ; Out: none
-; Evidence: header: inline bit count, flag mask, incrementing word (a2), common word (a4); 7-bit commands: copy incrementing, copy common, inline (Eni_ReadInline) repeat/increment/decrement via Eni_Ops; only caller sub_1F5788
+; Evidence: header: inline bit count, flag mask, incrementing word (a2), common word (a4); 7-bit commands: copy incrementing, copy common, inline (Eni_ReadInline) repeat/increment/decrement via Eni_Ops; only caller Level_LoadMaps
 ; ---------------------------------------------------------------------------
 Eni_Decode:
 	link.w	a6,#$0

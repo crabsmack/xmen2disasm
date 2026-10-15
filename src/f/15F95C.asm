@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_15F95C	[jt 2082]
+; Spawn_InitRecords - allocate the level's 14-byte spawn records and let each class fill one from its spawn-list entry
+; In:  none
+; Out: none
+; Evidence: count word -$38D8, list -$38D6 (from map +$12): Mem_StackAlloc(count*14) -> -$38DC; record +0 = g_ClassList[entry word +0] (descriptor), descriptor +$0A InitSpawnRec(record, entry); entries 16 bytes {word class index, word x, word y, ...}; spawn cursor state $FFF628-$FFF634
 ; ---------------------------------------------------------------------------
-sub_15F95C:
+Spawn_InitRecords:
 	link.w	a6,#$0
 	movem.l	d7/a3-a4,-(a7)
 	pea.l	Str_Empty_15FA2A(pc)

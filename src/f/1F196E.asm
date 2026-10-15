@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_1F196E	[link-after-rts]
+; Spr_UploadFrame18 - queue DMA of the current frame tiles of a raw-tile (type $18) sprite instance
+; In:  8(a6) = sprite instance
+; Out: d0 = last piece index
+; Evidence: same loop as Spr_UploadFrame's type $18 path, always via VDP_QueueDma: 8-byte pieces, tile count (byte +5 >> 4) + 1, tile data offset +6; only caller sub_1F1A2E
 ; ---------------------------------------------------------------------------
-sub_1F196E:
+Spr_UploadFrame18:
 	link.w	a6,#$FFFA
 	movem.l	d4-d7/a3-a4,-(a7)
 	movea.l	$8(a6),a3

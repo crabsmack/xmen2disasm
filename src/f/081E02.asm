@@ -1,8 +1,8 @@
 ; ---------------------------------------------------------------------------
-; CloneA2_LoadLevel - load the CloneA2 level: map/layout via sub_1F98A8 with Tbl_CloneA2ClassList, initial palettes
+; CloneA2_LoadLevel - load the CloneA2 level: map/layout via Level_Load with Tbl_CloneA2ClassList, initial palettes
 ; In:  none
 ; Out: none
-; Evidence: passes jt[541]/jt[542] data, Tbl_CloneA2ClassList and layout constants to sub_1F98A8; copies 16 words jt[545] -> palette line 2 (g_PalBase+$40) and jt[544] -> line 0 (g_PalBase); palette colour 0 := $200, -$38B4 := 1, -$38DE := 0; second step of CloneA2_RunScene; TAS frame 47751
+; Evidence: passes jt[541]/jt[542] data, Tbl_CloneA2ClassList and layout constants to Level_Load; copies 16 words jt[545] -> palette line 2 (g_PalBase+$40) and jt[544] -> line 0 (g_PalBase); palette colour 0 := $200, -$38B4 := 1, -$38DE := 0; second step of CloneA2_RunScene; TAS frame 47751
 ; ---------------------------------------------------------------------------
 CloneA2_LoadLevel:
 	link.w	a6,#$0
@@ -34,7 +34,7 @@ CloneA2_LoadLevel:
 	move.l	$2(a0),-(a7)
 	lea.l	$1112(a5),a0
 	move.l	$2(a0),-(a7)
-	jsr	$4FCA(a5)	; -> sub_1F98A8
+	jsr	$4FCA(a5)	; -> Level_Load
 	move.w	#$200,g_PalBase(a5)
 	lea.l	$112A(a5),a0
 	movea.l	$2(a0),a4

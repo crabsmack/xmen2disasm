@@ -170,7 +170,7 @@ loc_1FC8A0:
 	tst.b	-$C62(a5)
 	beq.s	loc_1FC8CC
 	movea.l	-$BDC(a5),a2
-	lea.l	$1FBFCC(pc),a3
+	lea.l	Tbl_PixelPairExpand(pc),a3
 	move.w	-$C26(a5),d7
 	subq.w	#$1,d7
 loc_1FC8BA:

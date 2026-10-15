@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_1F94C4	[jt 2547]
+; Obj_FindHitPoint - find where a target's hit points (or hit rectangle) meet an attacker's second box
+; In:  8(a6) = object with box +$54..+$5A   $C(a6) = object whose frame gives the points   $10(a6) = point list   $14(a6)/$18(a6) = words: origin x, y   $1C(a6)/$20(a6) = word ptrs: result x, y
+; Out: d0 = 1 and the point when found, else 0 (results -1)
+; Evidence: frame flag bit 0 (+$32 of the record) selects rectangle mode (4 signed bytes) vs a list of signed (x,y) byte pairs ended by (0,0), with ($7F,$7F, cond, value) groups skipped unless object byte +$3E.. matches; flips mirror the box; result = overlap centre or matching point
 ; ---------------------------------------------------------------------------
-sub_1F94C4:
+Obj_FindHitPoint:
 	link.w	a6,#$FFEE
 	movem.l	d3-d7/a3-a4,-(a7)
 	movea.l	$C(a6),a3

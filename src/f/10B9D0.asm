@@ -2,7 +2,7 @@
 ; SpaceA1_LoadLevel - SpaceA1: load the stage data through the scene loader and set stage flags
 ; In:  none
 ; Out: none
-; Evidence: sub_1F98A8 with level data thunks $107AF2/$10A054/$107AB4/$10A02A; TAS frame 37205 once
+; Evidence: Level_Load with level data thunks $107AF2/$10A054/$107AB4/$10A02A; TAS frame 37205 once
 ; ---------------------------------------------------------------------------
 SpaceA1_LoadLevel:
 	link.w	a6,#$0
@@ -34,7 +34,7 @@ SpaceA1_LoadLevel:
 	move.l	$2(a0),-(a7)
 	lea.l	$2A5A(a5),a0
 	move.l	$2(a0),-(a7)
-	jsr	$4FCA(a5)	; -> sub_1F98A8
+	jsr	$4FCA(a5)	; -> Level_Load
 	clr.w	g_PalBase(a5)
 	move.b	#$1,-$38B4(a5)
 	clr.b	-$3AB4(a5)

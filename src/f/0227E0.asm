@@ -38,7 +38,7 @@ AvalonB2_RunScene:
 	move.l	$2(a0),-(a7)
 	lea.l	$4DA(a5),a0
 	move.l	$2(a0),-(a7)
-	jsr	$4FCA(a5)	; -> sub_1F98A8
+	jsr	$4FCA(a5)	; -> Level_Load
 	clr.w	-$3496(a5)
 	clr.w	-$3498(a5)
 	move.b	#$1,-$38B4(a5)
@@ -72,7 +72,7 @@ AvalonB2_RunScene:
 	jsr	$4FD2(a5)	; -> Timer_Create
 	move.l	d0,-(a7)
 	jsr	$4FDA(a5)	; -> Timer_Start
-	jsr	$5002(a5)	; -> sub_1FA6FE
+	jsr	$5002(a5)	; -> Level_Run
 	jsr	$5242(a5)	; -> Snd_StopAll
 	movea.l	-$4(a6),a4
 	unlk	a6

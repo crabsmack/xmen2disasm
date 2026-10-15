@@ -86,7 +86,7 @@ loc_1F9F74:
 	move.l	-$4(a6),-(a7)
 	move.l	a4,-(a7)
 	move.l	a3,-(a7)
-	jsr	$4FBA(a5)	; -> sub_1F94C4
+	jsr	$4FBA(a5)	; -> Obj_FindHitPoint
 	tst.b	d0
 	lea.l	$1C(a7),a7
 	beq.s	loc_1FA040

@@ -1242,7 +1242,7 @@ Str_XMenAndAllRelated:	; C string "@@@@X-MEN, AND ALL RELATED@@@@" (used by jt[4
 	include "src/f/077988.asm"
 	include "src/f/077CBC.asm"
 	incrom	$077CE0,$9B46
-Tbl_CloneA2ClassList:	; {word $52 bytes; 20 actor class descriptor ptrs} then Pascal name "CloneA2NGClassList"; passed to sub_1F98A8 by CloneA2_LoadLevel (classes.py)
+Tbl_CloneA2ClassList:	; {word $52 bytes; 20 actor class descriptor ptrs} then Pascal name "CloneA2NGClassList"; passed to Level_Load by CloneA2_LoadLevel (classes.py)
 	incrom	$081826,$6A
 Pal_CloneA2Line0:	; 16 CRAM words: initial palette line 0 (CloneA2_LoadLevel -> g_PalBase)
 	incrom	$081890,$20
@@ -3901,7 +3901,7 @@ Tbl_NibbleMaskAt:	; 9 longs: single-nibble mask at nibble position k-1 ($0, $F, 
 	include "src/f/15F8B6.asm"
 	include "src/f/15F954.asm"
 	include "src/f/15F95C.asm"
-Str_Empty_15FA2A:	; C string "" (used by sub_15F95C)
+Str_Empty_15FA2A:	; C string "" (used by Spawn_InitRecords)
 	incrom	$15FA2A,$2
 	include "src/f/15FA2C.asm"
 	include "src/f/15FA7A.asm"
@@ -4353,12 +4353,12 @@ Tbl_A5WorldInfo:	; 20 bytes: longs $3CE6 (size of the A5 globals area below $200
 	include "src/f/1F5612.asm"
 	include "src/f/1F5788.asm"
 	incrom	$1F5EFC,$4
-Str_APlaneTilesNoB:	; C string "A PLANE TILES -- NO B" (used by sub_1F5788)
+Str_APlaneTilesNoB:	; C string "A PLANE TILES -- NO B" (used by Level_LoadMaps)
 	incrom	$1F5F00,$16
 	incrom	$1F5F16,$2
-Str_APlaneTiles:	; C string "A PLANE TILES" (used by sub_1F5788)
+Str_APlaneTiles:	; C string "A PLANE TILES" (used by Level_LoadMaps)
 	incrom	$1F5F18,$E
-Str_AbTilesSharing:	; C string "AB TILES -- SHARING" (used by sub_1F5788)
+Str_AbTilesSharing:	; C string "AB TILES -- SHARING" (used by Level_LoadMaps)
 	incrom	$1F5F26,$14
 	incrom	$1F5F3A,$6
 	include "src/f/1F5F40.asm"
@@ -4391,7 +4391,7 @@ Str_AbTilesSharing:	; C string "AB TILES -- SHARING" (used by sub_1F5788)
 	include "src/f/1F6B9C.asm"
 	include "src/f/1F6BD2.asm"
 	include "src/f/1F6C04.asm"
-Str_Empty_1F6D74:	; C string "" (used by sub_1F6C04)
+Str_Empty_1F6D74:	; C string "" (used by Seg_LoadList)
 	incrom	$1F6D74,$2
 	include "src/f/1F6D76.asm"
 Sw_1F6D76:	; switch table of sub at $1F6D76: 36 word offsets from Sw_1F6D76-2
@@ -4544,7 +4544,7 @@ Sw_1F7AF8:	; switch table of sub at $1F7AF8: 10 word offsets from Sw_1F7AF8-2
 	include "src/f/1FA124.asm"
 	include "src/f/1FA6FE.asm"
 	include "src/f/1FA7E8.asm"
-Str_Empty_1FA876:	; C string "" (used by sub_1FA7E8)
+Str_Empty_1FA876:	; C string "" (used by ClassList_InitAll)
 	incrom	$1FA876,$2
 	include "src/f/1FA878.asm"
 	include "src/f/1FA8C4.asm"
@@ -4611,12 +4611,14 @@ Tbl_SprTilesStreamLinked:	; 16 words: tiles per sprite size code, tile advance i
 	incrom	$1FBDFA,$20
 	include "src/f/1FBE1A.asm"
 	include "src/f/1FBE96.asm"
+Tbl_PixelPairExpand:	; 256 words: a byte of two 4bpp pixels hl -> word (h*$11, l*$11), each pixel doubled into a full byte; Spr_RenderToBitmap writes the non-zero bytes into a chunky pixel buffer
 	incrom	$1FBFCC,$200
 	include "src/f/1FC1CC.asm"
 	include "src/f/1FC1FA.asm"
 	include "src/f/1FC2A6.asm"
 	include "src/f/1FC2E8.asm"
 	include "src/f/1FC35C.asm"
+Tbl_SizeCodePixels:	; 4 bytes 8,16,24,32: pixel extent per 2-bit sprite size field, used by Spr_RenderToBitmap to mirror flipped pieces
 	incrom	$1FC462,$4
 	include "src/f/1FC466.asm"
 	include "src/f/1FC5FE.asm"

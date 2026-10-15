@@ -32,7 +32,7 @@ BaniMazaA2_RunScene:
 	jsr	$4FDA(a5)	; -> Timer_Start
 	addq.w	#$4,a7
 loc_04796C:
-	jsr	$5002(a5)	; -> sub_1FA6FE
+	jsr	$5002(a5)	; -> Level_Run
 	movem.l	-$220(a6),a3-a4
 	unlk	a6
 	rts

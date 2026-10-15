@@ -2,7 +2,7 @@
 ; AvalonB1_CyclePalettes - advance the two AvalonB1 palette-cycle animations
 ; In:  none
 ; Out: none
-; Evidence: two calls to sub_159FD6 (palette cycle: timer, step, sequence, table; writes one g_PalBase colour) with jt $FEC4/$FEDA tables; called each frame from AvalonB1_FrameHook
+; Evidence: two calls to Pal_CycleStep (palette cycle: timer, step, sequence, table; writes one g_PalBase colour) with jt $FEC4/$FEDA tables; called each frame from AvalonB1_FrameHook
 ; ---------------------------------------------------------------------------
 AvalonB1_CyclePalettes:
 	link.w	a6,#$0
@@ -13,7 +13,7 @@ AvalonB1_CyclePalettes:
 	pea.l	-$3CDE(a5)
 	pea.l	-$3CE0(a5)
 	pea.l	-$3CDC(a5)
-	jsr	$3EB2(a5)	; -> sub_159FD6
+	jsr	$3EB2(a5)	; -> Pal_CycleStep
 	moveq	#$1,d0
 	move.l	d0,-(a7)
 	lea.l	$DA(a5),a0
@@ -21,6 +21,6 @@ AvalonB1_CyclePalettes:
 	pea.l	-$3CE4(a5)
 	pea.l	-$3CE6(a5)
 	pea.l	-$3CE2(a5)
-	jsr	$3EB2(a5)	; -> sub_159FD6
+	jsr	$3EB2(a5)	; -> Pal_CycleStep
 	unlk	a6
 	rts

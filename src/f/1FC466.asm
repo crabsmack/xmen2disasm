@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; loc_1FC466
+; Spr_RenderToBitmap_Loop - inner loop of Spr_RenderToBitmap: copy one piece's tiles row by row into the pixel buffer
+; In:  registers/frame of Spr_RenderToBitmap
+; Out: none
+; Evidence: reads raw tile longs from def + piece +6 (the main ROM reader of this routine), zero longs skip a row, flipped pieces write right to left
 ; ---------------------------------------------------------------------------
-loc_1FC466:
+Spr_RenderToBitmap_Loop:
 	add.l	d4,d3
 	movea.l	-$4(a6),a3
 	mulu.w	-$A(a6),d1

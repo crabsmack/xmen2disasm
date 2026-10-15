@@ -28,7 +28,7 @@ sub_0B65C6:
 	move.l	d0,-(a7)
 	jsr	$3382(a5)	; -> sub_11F1A6
 	jsr	$5242(a5)	; -> Snd_StopAll
-	jsr	$5002(a5)	; -> sub_1FA6FE
+	jsr	$5002(a5)	; -> Level_Run
 	jsr	$5242(a5)	; -> Snd_StopAll
 	unlk	a6
 	rts

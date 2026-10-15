@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_1F5612	[link-after-rts]
+; Level_LoadUsedTiles - load only the tiles a map's blocks actually use: mark used blocks and tiles, compact and renumber them, then Nemesis-decode with a tile mask
+; In:  8(a6) = map   $C(a6) = tileset   $10(a6) = word: first VRAM tile   $14(a6) = block layout   $18(a6) = block definitions   $1C(a6) = byte: map-driven (else mark all)
+; Out: d0 = word: number of tiles loaded
+; Evidence: bitmaps via sub_15FC70/sub_15FC9A/sub_15FCD8 and sub_1F5594; tileset +$E = {word tile rows, Nem code pairs, Nemesis data}: Nem_BuildCodeTable then Nem_Decode(mode 2 = masked, dest tile << 5)
 ; ---------------------------------------------------------------------------
-sub_1F5612:
+Level_LoadUsedTiles:
 	link.w	a6,#$EEFC
 	movem.l	d4-d7/a3-a4,-(a7)
 	lea.l	-$1004(a6),a3

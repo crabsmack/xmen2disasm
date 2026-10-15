@@ -2,7 +2,7 @@
 ; Cerebro_Run - run a Cerebro screen: load the Cerebro level, optionally play the intro, run the text script at -$3B14, optionally run player select
 ; In:  -$3B14 = text script (0 = none), -$3B0C = play intro, -$3B0A = run player select
 ; Out: none
-; Evidence: called by every Cerebro*_RunScene; sub_1F98A8 level load; Cerebro_PlayIntro, Cerebro_RunTextScript, PlayerSelect_Run; copies g_P1Health/g_P2Health into the players afterwards
+; Evidence: called by every Cerebro*_RunScene; Level_Load level load; Cerebro_PlayIntro, Cerebro_RunTextScript, PlayerSelect_Run; copies g_P1Health/g_P2Health into the players afterwards
 ; ---------------------------------------------------------------------------
 Cerebro_Run:
 	link.w	a6,#$0
@@ -46,7 +46,7 @@ loc_066B48:
 	move.l	$2(a0),-(a7)
 	lea.l	$DCA(a5),a0
 	move.l	$2(a0),-(a7)
-	jsr	$4FCA(a5)	; -> sub_1F98A8
+	jsr	$4FCA(a5)	; -> Level_Load
 	clr.b	-$38B4(a5)
 	clr.w	-$3496(a5)
 	clr.w	-$3498(a5)

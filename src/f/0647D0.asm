@@ -2,7 +2,7 @@
 ; PlayerSelect_LoadCharFrame - decode the select-screen frame of the character under a cursor into the shared buffer
 ; In:  8(a6) = cursor (+$3C = character index)
 ; Out: none
-; Evidence: switch Sw_0647D0 on the index (7 per-character sprite getters), then sub_1FC35C and Cerebro_BigSpriteInit
+; Evidence: switch Sw_0647D0 on the index (7 per-character sprite getters), then Spr_RenderToBitmap and Cerebro_BigSpriteInit
 ; ---------------------------------------------------------------------------
 PlayerSelect_LoadCharFrame:
 	link.w	a6,#$0

@@ -80,7 +80,7 @@ loc_157F6A:
 	ext.l	d6
 	move.l	d6,-(a7)
 	move.l	a4,-(a7)
-	jsr	$412A(a5)	; -> sub_15F8B6
+	jsr	$412A(a5)	; -> Anim_AdvanceByDistance
 	ext.l	d7
 	move.l	d7,d0
 	lsl.l	#$8,d0

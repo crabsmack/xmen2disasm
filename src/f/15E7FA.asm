@@ -133,7 +133,7 @@ loc_15E92A:
 	ext.l	d6
 	move.l	d6,-(a7)
 	move.l	a4,-(a7)
-	jsr	sub_15F8B6(pc)
+	jsr	Anim_AdvanceByDistance(pc)
 	tst.b	d0
 	lea.l	$10(a7),a7
 	beq.s	loc_15E95A

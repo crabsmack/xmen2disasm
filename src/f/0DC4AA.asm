@@ -5,6 +5,6 @@ sub_0DC4AA:
 	link.w	a6,#$0
 	jsr	sub_0DC3DE(pc)
 	jsr	sub_0DC47C(pc)
-	jsr	$5002(a5)	; -> sub_1FA6FE
+	jsr	$5002(a5)	; -> Level_Run
 	unlk	a6
 	rts

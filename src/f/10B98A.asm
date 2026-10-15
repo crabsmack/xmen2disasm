@@ -2,7 +2,7 @@
 ; SpaceA1_FrameHook - SpaceA1 per-frame hook: count the frame and run Elevator_Update (twice at half rate)
 ; In:  none
 ; Out: none
-; Evidence: installed in $FFC972 (called by the level loop sub_1FA124); frame counter word $FFCC5E; TAS 37298-45094
+; Evidence: installed in $FFC972 (called by the level loop Level_FrameLoop); frame counter word $FFCC5E; TAS 37298-45094
 ; ---------------------------------------------------------------------------
 SpaceA1_FrameHook:
 	link.w	a6,#$0

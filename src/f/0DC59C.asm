@@ -39,7 +39,7 @@ loc_0DC5E0:
 	ext.l	d7
 	move.l	d7,-(a7)
 	move.l	a4,-(a7)
-	jsr	$412A(a5)	; -> sub_15F8B6
+	jsr	$412A(a5)	; -> Anim_AdvanceByDistance
 	lea.l	$10(a7),a7
 loc_0DC5F4:
 	movem.l	-$8(a6),d7/a4

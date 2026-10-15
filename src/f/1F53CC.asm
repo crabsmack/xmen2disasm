@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_1F53CC	[link-after-rts]
+; Level_AssignBlockSlots - give each special block listed in the map its own 16-tile slot and point the layout cells at it
+; In:  8(a6) = map   $C(a6) = block layout   $10(a6) = block definitions   $14(a6) = word: first slot tile
+; Out: d0 = word: number of slot types used (max 12)
+; Evidence: map +$16 = offset of {word count; entries {word slot (1-12, 0 = none), word x, word y}}; first use of a slot calls Level_FillBlockSlot; layout word := slot block | flags & $FE00
 ; ---------------------------------------------------------------------------
-sub_1F53CC:
+Level_AssignBlockSlots:
 	link.w	a6,#$FFE2
 	movem.l	d3-d7/a3-a4,-(a7)
 	lea.l	-$E(a6),a3
@@ -82,7 +85,7 @@ loc_1F549A:
 	ext.l	d1
 	move.l	d1,-(a7)
 	move.l	$10(a6),-(a7)
-	jsr	sub_1F5340(pc)
+	jsr	Level_FillBlockSlot(pc)
 	lea.l	$14(a7),a7
 loc_1F54BA:
 	movea.l	-$12(a6),a0

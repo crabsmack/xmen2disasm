@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_15F8B6	[jt 2081]
+; Anim_AdvanceByDistance - advance a distance-driven animation: accumulate movement in +$4A and step the script each time it passes the script's step distance
+; In:  8(a6) = object   $C(a6) = word: distance (scripts without flag $80)   $10(a6)/$14(a6) = words: x / y distance (flag $80: $10 selects y)
+; Out: d0 = result of Anim_ApplyStep, 0 if no step
+; Evidence: script +2 word = step distance; on overflow wraps +$4A, Anim_Advance, Anim_ApplyStep(obj, 1)
 ; ---------------------------------------------------------------------------
-sub_15F8B6:
+Anim_AdvanceByDistance:
 	link.w	a6,#$0
 	movem.l	d7/a4,-(a7)
 	movea.l	$8(a6),a4

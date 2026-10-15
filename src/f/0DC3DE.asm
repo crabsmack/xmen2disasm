@@ -32,7 +32,7 @@ sub_0DC3DE:
 	move.l	$2(a0),-(a7)
 	lea.l	$23AA(a5),a0
 	move.l	$2(a0),-(a7)
-	jsr	$4FCA(a5)	; -> sub_1F98A8
+	jsr	$4FCA(a5)	; -> Level_Load
 	clr.w	g_PalBase(a5)
 	lea.l	$241A(a5),a0
 	movea.l	$2(a0),a3

@@ -2,7 +2,7 @@
 ; ClassList_CallSlot5A - call vtable slot $5A (0, i) on every class descriptor in the current level class list
 ; In:  none
 ; Out: none
-; Evidence: same walk as ClassList_CallSlot62 over g_ClassList(a5); slot $5A is empty in ACTOR; only caller sub_1F98A8
+; Evidence: same walk as ClassList_CallSlot62 over g_ClassList(a5); slot $5A is empty in ACTOR; only caller Level_Load
 ; ---------------------------------------------------------------------------
 ClassList_CallSlot5A:
 	link.w	a6,#$0

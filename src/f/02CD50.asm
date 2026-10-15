@@ -2,7 +2,7 @@
 ; AvalonA3_RunScene - scene function for 'AvalonA3 Exodus': load, place players, camera, hooks, sprites, save palettes, run the level loop
 ; In:  none
 ; Out: none
-; Evidence: Scene_RegisterAll entry for 'AvalonA3 Exodus'; level loop sub_1FA6FE
+; Evidence: Scene_RegisterAll entry for 'AvalonA3 Exodus'; level loop Level_Run
 ; ---------------------------------------------------------------------------
 AvalonA3_RunScene:
 	link.w	a6,#$FFC8
@@ -20,7 +20,7 @@ AvalonA3_RunScene:
 	move.l	a4,-(a7)
 	move.l	a3,-(a7)
 	jsr	AvalonA3_SavePalettes(pc)
-	jsr	$5002(a5)	; -> sub_1FA6FE
+	jsr	$5002(a5)	; -> Level_Run
 	movem.l	-$40(a6),a3-a4
 	unlk	a6
 	rts

@@ -165,7 +165,7 @@ loc_0658A2:
 	addq.w	#$8,a7
 loc_0658BC:
 	move.b	#$1,-$38BE(a5)
-	jsr	$500A(a5)	; -> sub_1FA7E8
+	jsr	$500A(a5)	; -> ClassList_InitAll
 loc_0658C6:
 	jsr	$504A(a5)	; -> Spr_BeginFrame
 	lea.l	g_SpriteTable(a5),a0

@@ -38,7 +38,7 @@ CloneA5_RunScene:
 	move.l	$2(a0),-(a7)
 	lea.l	$152A(a5),a0
 	move.l	$2(a0),-(a7)
-	jsr	$4FCA(a5)	; -> sub_1F98A8
+	jsr	$4FCA(a5)	; -> Level_Load
 	jsr	$5242(a5)	; -> Snd_StopAll
 	moveq	#$0,d0
 	move.l	d0,-(a7)
@@ -181,7 +181,7 @@ loc_088914:
 	lea.l	CloneA5_FrameHook(pc),a0
 	move.l	a0,g_SceneFrameHook(a5)
 	clr.b	-$38DE(a5)
-	jsr	$5002(a5)	; -> sub_1FA6FE
+	jsr	$5002(a5)	; -> Level_Run
 	movem.l	-$314(a6),d3/d7/a3-a4
 	unlk	a6
 	rts

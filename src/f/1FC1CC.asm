@@ -10,7 +10,7 @@ sub_1FC1CC:
 	subq.w	#$1,d0
 	movea.l	-$C70(a5),a0
 	movea.l	-$C6C(a5),a1
-	lea.l	$1FBFCC(pc),a2
+	lea.l	Tbl_PixelPairExpand(pc),a2
 loc_1FC1E8:
 	moveq	#$0,d1
 	move.b	(a0)+,d1

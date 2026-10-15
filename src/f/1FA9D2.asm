@@ -2,7 +2,7 @@
 ; Spr_EndFrame - terminate this frame's sprite list (link byte 0 on the last used slot)
 ; In:  none
 ; Out: none
-; Evidence: last = -$1FE2 (forced to $4F when the list wrapped); g_SpriteTable+3+last*8 = 0; -$1FDE = last; called from sub_1FA124 before the DMA flag is raised
+; Evidence: last = -$1FE2 (forced to $4F when the list wrapped); g_SpriteTable+3+last*8 = 0; -$1FDE = last; called from Level_FrameLoop before the DMA flag is raised
 ; ---------------------------------------------------------------------------
 Spr_EndFrame:
 	link.w	a6,#$0

@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_1FA124	[link-after-rts]
+; Level_FrameLoop - per-frame level loop: input, demo playback, object updates/activation, timers, sprites and DMA, until the scene exit timer runs out
+; In:  none
+; Out: none
+; Evidence: Pad_Update, demo input (sub_1F9DE8), object list -$34A6 InActivateWindow/Activate unless g_ActivateHook, Timer_RunAll, Spr_BeginFrame/Spr_EndFrame, g_DmaFlushReq = 1, VDP_WaitVBlank, HUD_UpdateHealthBars; only caller Level_Run
 ; ---------------------------------------------------------------------------
-sub_1FA124:
+Level_FrameLoop:
 	link.w	a6,#$FFF4
 	movem.l	d3/d5-d7/a3-a4,-(a7)
 loc_1FA12C:

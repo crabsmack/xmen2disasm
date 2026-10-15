@@ -79,7 +79,7 @@ loc_1F1AF8:
 	tst.l	d1
 	bne.s	loc_1F1B0C
 	move.l	a3,-(a7)
-	jsr	sub_1F196E(pc)
+	jsr	Spr_UploadFrame18(pc)
 	addq.w	#$4,a7
 loc_1F1B0C:
 	moveq	#$0,d7

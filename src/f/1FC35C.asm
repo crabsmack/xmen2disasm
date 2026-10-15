@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_1FC35C	[jt 2577]
+; Spr_RenderToBitmap - render one sprite frame into a chunky byte-per-pixel buffer (for effects), honouring piece flips
+; In:  8(a6) = sprite definition (type $18)   $C(a6) = word: frame   $10(a6) = buffer (+2..+5 header: 0, 0, width, height; pixels from +$26)
+; Out: none
+; Evidence: clears width*height bytes; per 8-byte piece: 4bpp tile longs expanded with Tbl_PixelPairExpand (zero pixels transparent), sizes from Tbl_SizeCodePixels; callers Cerebro_PlayIntro, loc_064868
 ; ---------------------------------------------------------------------------
-sub_1FC35C:
+Spr_RenderToBitmap:
 	link.w	a6,#$FFEC
 	movem.l	d2-d7/a2-a4,-(a7)
 	movea.l	$8(a6),a0
@@ -59,7 +62,7 @@ loc_1FC3EA:
 	move.w	$12(a4),d0
 	movea.l	$8(a6),a4
 	adda.w	d0,a4
-	lea.l	$1FBFCC(pc),a1
+	lea.l	Tbl_PixelPairExpand(pc),a1
 	bra.w	loc_1FC5F0
 loc_1FC400:
 	move.w	$4(a4),d0
@@ -85,14 +88,14 @@ loc_1FC400:
 	moveq	#$0,d2
 	tst.b	-$13(a6)
 	beq.s	loc_1FC450
-	move.b	$1FC462(pc,d6.w),d2
+	move.b	Tbl_SizeCodePixels(pc,d6.w),d2
 	add.w	d2,d0
 	neg.l	d4
 loc_1FC450:
 	tst.b	-$14(a6)
-	beq.s	loc_1FC466
-	move.b	$1FC462(pc,d5.w),d2
+	beq.s	Spr_RenderToBitmap_Loop
+	move.b	Tbl_SizeCodePixels(pc,d5.w),d2
 	subq.w	#$1,d2
 	add.w	d2,d1
 	neg.l	d3
-	bra.s	loc_1FC466
+	bra.s	Spr_RenderToBitmap_Loop

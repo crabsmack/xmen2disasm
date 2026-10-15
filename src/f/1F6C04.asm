@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_1F6C04	[jt 2518]
+; Seg_LoadList - create floor segments from a ROM segment list (FG list or appended BG list)
+; In:  8(a6) = segment list   $C(a6) = byte: 0 = first list, 1 = append (link indexes offset, flag 4)
+; Out: none
+; Evidence: records until a 0 byte: {byte type (bits 0-5) | $40 no-links, byte extra, words x1 y1 x2 y2, word, then if linked byte prev, byte next} = 12 bytes, 10 without links; each initialised by sub_1F7BB6 into -$33D2 records; updates -$3370/-$3372/-$3374; then sub_1F84BE builds the lookup grid (data reader of the level segment lists)
 ; ---------------------------------------------------------------------------
-sub_1F6C04:
+Seg_LoadList:
 	link.w	a6,#$0
 	movem.l	d3/d5-d7/a3-a4,-(a7)
 	move.b	$F(a6),d7

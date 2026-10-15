@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_1F5340	[link-after-rts]
+; Level_FillBlockSlot - write a 4x4 block definition whose 16 tiles are consecutive from a slot's tile base (optionally h-flipped)
+; In:  8(a6) = block definitions   $C(a6) = word: tile base   $10(a6) = word: block number   $14(a6) = word: first slot block   $18(a6) = byte: h-flip
+; Out: d0 = last row index
+; Evidence: definition = blocks + (n & $1FF) * $20; tile = base + (n - first)*$10 + row + col*4 (column-major), flip adds $800 and mirrors columns
 ; ---------------------------------------------------------------------------
-sub_1F5340:
+Level_FillBlockSlot:
 	link.w	a6,#$0
 	movem.l	d3-d7/a4,-(a7)
 	move.w	$12(a6),d6

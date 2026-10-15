@@ -11,6 +11,6 @@ SpaceB1_RunScene:
 	jsr	SpaceB1_InstallHooks(pc)
 	jsr	SpaceB1_CallEmptyStub(pc)
 	jsr	$2E8A(a5)	; -> sub_1190D6
-	jsr	$5002(a5)	; -> sub_1FA6FE
+	jsr	$5002(a5)	; -> Level_Run
 	unlk	a6
 	rts

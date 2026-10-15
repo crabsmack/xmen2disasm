@@ -11,7 +11,7 @@ loc_064868:
 	ext.l	d7
 	move.l	d7,-(a7)
 	move.l	a4,-(a7)
-	jsr	$50AA(a5)	; -> sub_1FC35C
+	jsr	$50AA(a5)	; -> Spr_RenderToBitmap
 	move.l	-$C9A(a5),-(a7)
 	move.l	a3,-(a7)
 	jsr	Cerebro_BigSpriteInit(pc)

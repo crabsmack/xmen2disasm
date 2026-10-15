@@ -36,7 +36,7 @@ SiberiaB1_RunScene:
 	moveq	#$27,d0
 	move.l	d0,-(a7)
 	jsr	$521A(a5)	; -> Snd_Play
-	jsr	$5002(a5)	; -> sub_1FA6FE
+	jsr	$5002(a5)	; -> Level_Run
 	jsr	$2332(a5)	; -> sub_0C14B4
 	unlk	a6
 	rts

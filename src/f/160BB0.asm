@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_160BB0	[link-after-rts]
+; MoveScript_Step - run one command of the byte movement script at -$38A4: add a (dx, dy) byte pair to an object's words +$30/+$32
+; In:  8(a6) = object
+; Out: none
+; Evidence: commands: 'd' ($64) end, 'e' ($65) jump back by the next byte, 'f' ($66) call Sys_Nop1F945C(next byte), else two signed bytes added to +$30/+$32; only caller sub_1607E8
 ; ---------------------------------------------------------------------------
-sub_160BB0:
+MoveScript_Step:
 	link.w	a6,#$0
 	move.l	a4,-(a7)
 	movea.l	$8(a6),a4

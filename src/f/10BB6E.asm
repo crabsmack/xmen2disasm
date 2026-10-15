@@ -2,7 +2,7 @@
 ; SpaceA1_RunScene - scene "SpaceA1 Space_Elevator": build the Elevator object on the stack, load and set up the stage, run the level loop with shadow/highlight on
 ; In:  none
 ; Out: none
-; Evidence: registered by Scene_RegisterAll with the name string at $58EA (jt $2AAA); g_Elevator = $FFC63C; calls sub_1FA6FE (level main loop); TAS frame 37205
+; Evidence: registered by Scene_RegisterAll with the name string at $58EA (jt $2AAA); g_Elevator = $FFC63C; calls Level_Run (level main loop); TAS frame 37205
 ; ---------------------------------------------------------------------------
 SpaceA1_RunScene:
 	link.w	a6,#$FF44
@@ -31,7 +31,7 @@ SpaceA1_RunScene:
 	move.l	d0,-(a7)
 	jsr	VDP_SetShadowHighlight(pc)
 	jsr	$2E8A(a5)	; -> sub_1190D6
-	jsr	$5002(a5)	; -> sub_1FA6FE
+	jsr	$5002(a5)	; -> Level_Run
 	moveq	#$0,d0
 	move.l	d0,-(a7)
 	jsr	VDP_SetShadowHighlight(pc)

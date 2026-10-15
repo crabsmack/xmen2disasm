@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_1FA6FE	[jt 2556]
+; Level_Run - run a loaded level: display on, fade in, init classes, frame loop until the scene ends, class teardown, fade out
+; In:  none
+; Out: none
+; Evidence: Spr_InitLinks, Pad_Update, reg1 display bit on, Pal_StartFade(0, -1, Tbl_FadeBlack); ClassList_InitAll; Level_FrameLoop; ClassList_CallSlot62; Pal_StartFade(7, -1, Tbl_FadeBlack) and waits for g_PalFadeActive; 23 callers (the <Stage>_RunScene functions)
 ; ---------------------------------------------------------------------------
-sub_1FA6FE:
+Level_Run:
 	link.w	a6,#$0
 	clr.w	g_SceneExitTimer(a5)
 	moveq	#$0,d0
@@ -43,8 +46,8 @@ loc_1FA764:
 	jsr	$50F2(a5)	; -> Pal_StartFade
 	clr.b	-$38C6(a5)
 	move.b	#$1,-$38BE(a5)
-	jsr	sub_1FA7E8(pc)
-	jsr	sub_1FA124(pc)
+	jsr	ClassList_InitAll(pc)
+	jsr	Level_FrameLoop(pc)
 	jsr	ClassList_CallSlot62(pc)
 	clr.b	-$38BE(a5)
 	clr.b	g_DemoActive(a5)

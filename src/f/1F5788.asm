@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_1F5788	[jt 2495]
+; Level_LoadMaps - set up the FG/BG plane maps and their tiles: decode Enigma layouts and block tables, load the used tiles, assign block slots, set initial scroll
+; In:  8(a6) = FG map   $C(a6) = FG tileset (0 = same)   $10(a6) = BG map   $14(a6) = BG tileset   $18/$1C(a6) = words: start x, y   $20..$27(a6) = bytes: priority/palette/no-wrap flags
+; Out: none
+; Evidence: map blob: +1 high nibble = compressed, +2/+4 width/height in cells (>>2 = 32-px blocks), +$A Enigma block layout, tileset +6 tile count, +8 block count, +$C Enigma block definitions (4x4 tile words), +$E tiles (raw: VDP_WriteWords; compressed: Level_LoadUsedTiles); Eni_Decode into Mem_StackAlloc blocks; row-offset tables per map; writes plane scroll to VRAM $F400/VSRAM; calls the plane draw hook $FFC7B0
 ; ---------------------------------------------------------------------------
-sub_1F5788:
+Level_LoadMaps:
 	link.w	a6,#$FFF8
 	movem.l	d4-d7/a3-a4,-(a7)
 	movea.l	$C(a6),a3
@@ -355,7 +358,7 @@ loc_1F5B7E:
 	move.l	d0,-(a7)
 	move.l	a3,-(a7)
 	move.l	a4,-(a7)
-	jsr	sub_1F5612(pc)
+	jsr	Level_LoadUsedTiles(pc)
 	move.w	d0,d5
 	move.w	-$3AAC(a5),-$3AA8(a5)
 	move.w	-$3A66(a5),d0
@@ -366,7 +369,7 @@ loc_1F5B7E:
 	move.l	-$3AA6(a5),-(a7)
 	move.l	-$3A84(a5),-(a7)
 	move.l	a4,-(a7)
-	jsr	sub_1F53CC(pc)
+	jsr	Level_AssignBlockSlots(pc)
 	move.w	d0,d7
 	ext.l	d7
 	move.l	d7,d0
@@ -423,7 +426,7 @@ loc_1F5C06:
 	move.l	d1,-(a7)
 	move.l	$14(a6),-(a7)
 	move.l	$10(a6),-(a7)
-	jsr	sub_1F5612(pc)
+	jsr	Level_LoadUsedTiles(pc)
 	move.w	d0,d4
 	move.w	-$3AAC(a5),-$3AAA(a5)
 	ext.l	d5
@@ -440,7 +443,7 @@ loc_1F5C9C:
 	move.l	-$3A8C(a5),-(a7)
 	move.l	-$3A88(a5),-(a7)
 	move.l	$10(a6),-(a7)
-	jsr	sub_1F53CC(pc)
+	jsr	Level_AssignBlockSlots(pc)
 	move.w	d0,d7
 	ext.l	d7
 	move.l	d7,d0

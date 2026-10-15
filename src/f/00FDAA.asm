@@ -2,7 +2,7 @@
 ; AvalonB1_RunScene - scene function for 'AvalonB1 Exterior': load the level, place the players, run the camera intro and the level loop
 ; In:  none
 ; Out: none
-; Evidence: Scene_RegisterAll entry for 'AvalonB1 Exterior'; sub_1F98A8 level load, Players_PlaceAtStart(0,0), AvalonB1_InstallTileHooks, AvalonB1_InitCamera, level loop sub_1FA6FE
+; Evidence: Scene_RegisterAll entry for 'AvalonB1 Exterior'; Level_Load level load, Players_PlaceAtStart(0,0), AvalonB1_InstallTileHooks, AvalonB1_InitCamera, level loop Level_Run
 ; ---------------------------------------------------------------------------
 AvalonB1_RunScene:
 	link.w	a6,#$FFE0
@@ -40,7 +40,7 @@ AvalonB1_RunScene:
 	move.l	$2(a0),-(a7)
 	lea.l	$A2(a5),a0
 	move.l	$2(a0),-(a7)
-	jsr	$4FCA(a5)	; -> sub_1F98A8
+	jsr	$4FCA(a5)	; -> Level_Load
 	move.b	#$1,-$38B4(a5)
 	clr.w	-$3496(a5)
 	clr.w	-$3498(a5)
@@ -63,7 +63,7 @@ AvalonB1_RunScene:
 	jsr	AvalonB1_InitCamera(pc)
 	jsr	$2E8A(a5)	; -> sub_1190D6
 	move.b	#$1,g_SndMute(a5)
-	jsr	$5002(a5)	; -> sub_1FA6FE
+	jsr	$5002(a5)	; -> Level_Run
 	clr.b	g_SndMute(a5)
 	jsr	$5242(a5)	; -> Snd_StopAll
 	movea.l	-$24(a6),a4

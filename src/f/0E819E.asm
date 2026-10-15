@@ -79,7 +79,7 @@ loc_0E8236:
 	ext.l	d7
 	move.l	d7,-(a7)
 	move.l	a4,-(a7)
-	jsr	$412A(a5)	; -> sub_15F8B6
+	jsr	$412A(a5)	; -> Anim_AdvanceByDistance
 	tst.b	d0
 	lea.l	$10(a7),a7
 	beq.s	loc_0E8266

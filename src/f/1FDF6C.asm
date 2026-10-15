@@ -2,7 +2,7 @@
 ; VDP_ClearVram - clear all 64 KB of VRAM with a DMA fill of zero and wait for it
 ; In:  none
 ; Out: none
-; Evidence: auto-inc 1, reg1 = shadow -$1D48 | $10 (DMA on), length $FFFF, source mode fill ($9780), dest VRAM 0, writes 0, polls status bit 1; called by Sys_InitHardware and sub_1F98A8
+; Evidence: auto-inc 1, reg1 = shadow -$1D48 | $10 (DMA on), length $FFFF, source mode fill ($9780), dest VRAM 0, writes 0, polls status bit 1; called by Sys_InitHardware and Level_Load
 ; ---------------------------------------------------------------------------
 VDP_ClearVram:
 	move.w	#$8F01,($C00004).l

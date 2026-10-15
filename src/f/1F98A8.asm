@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_1F98A8	[jt 2549]
+; Level_Load - load a level: clear VRAM, set music, palettes, maps, floor segments, spawn records and reset all per-level systems
+; In:  8(a6) = FG map blob   $C(a6) = FG tileset blob   $10(a6) = BG map blob   $14(a6) = BG tileset   $18(a6)/$1C(a6) = floor-segment lists for FG/BG (Seg_LoadList)   $20..$2C(a6) = flags   $32(a6) = word: class-init arg   $36(a6) = word: music track (-1 none)   $3A/$3E(a6) = words: x/y cell-size shifts of the level grid (cell counts at $FFCD7E/$FFCD7C, read by sub_15A7C8)   $40(a6) = byte: spawn list from BG map   $44(a6) = class list
+; Out: none
+; Evidence: display off, VDP_ClearVram/VDP_ClearVsram, g_HeapTop = $FF0000; Snd_SetParam(0, track/$7F), Music_Play; g_PalBase line 0/1 from map +$10 palette offsets (16 words); Level_LoadMaps; map size words +2/+4 (cells); Seg_LoadList; spawn list at map +$12 (word count, 16-byte entries) -> Spawn_InitRecords; window limits for spawn/activate; DrawList_Init, Timer_InitAll; reads ROM level headers (data reader)
 ; ---------------------------------------------------------------------------
-sub_1F98A8:
+Level_Load:
 	link.w	a6,#$0
 	movem.l	d3/d5-d7/a3-a4,-(a7)
 	move.b	$2B(a6),d6
@@ -118,7 +121,7 @@ loc_1F99B6:
 	move.l	$10(a6),-(a7)
 	move.l	$C(a6),-(a7)
 	move.l	$8(a6),-(a7)
-	jsr	$4E1A(a5)	; -> sub_1F5788
+	jsr	$4E1A(a5)	; -> Level_LoadMaps
 	moveq	#$0,d0
 	move.l	d0,g_CamShake(a5)
 	move.w	-$3A9E(a5),-$3598(a5)
@@ -202,7 +205,7 @@ loc_1F9AC4:
 	moveq	#$0,d0
 	move.l	d0,-(a7)
 	move.l	$18(a6),-(a7)
-	jsr	$4ED2(a5)	; -> sub_1F6C04
+	jsr	$4ED2(a5)	; -> Seg_LoadList
 	addq.w	#$8,a7
 loc_1F9ADC:
 	tst.l	$1C(a6)
@@ -210,7 +213,7 @@ loc_1F9ADC:
 	moveq	#$1,d0
 	move.l	d0,-(a7)
 	move.l	$1C(a6),-(a7)
-	jsr	$4ED2(a5)	; -> sub_1F6C04
+	jsr	$4ED2(a5)	; -> Seg_LoadList
 	addq.w	#$8,a7
 loc_1F9AF0:
 	move.w	$32(a6),d0
@@ -233,7 +236,7 @@ loc_1F9B0E:
 	movea.l	a4,a3
 	move.w	(a3)+,g_SpawnRecCount(a5)
 	move.l	a3,g_PlacementList(a5)
-	jsr	$4132(a5)	; -> sub_15F95C
+	jsr	$4132(a5)	; -> Spawn_InitRecords
 	jsr	$4FB2(a5)	; -> Scene_ClearActivateHook
 	jsr	ClassList_CallSlot5A(pc)
 	move.b	#$1,-$38B4(a5)

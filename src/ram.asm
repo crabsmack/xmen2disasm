@@ -13,7 +13,7 @@ g_SceneIndex = -$359C	; word: current scene, index into g_SceneTable (Cerebro sc
 g_FrameCounter = -$35A2	; long: game frame counter (+1 per frame, +2 when -$38DE set; TAS RAM +60 per 60 frames)
 g_SceneTable = -$E52	; 8-byte entries {+0 name string, +4 scene function}, filled by Scene_Register (scene register)
 g_SceneCount = -$E54	; byte: number of registered scenes (next free g_SceneTable slot, Scene_Register)
-g_SndMute = -$18AC	; byte: non-zero = Snd_Play/Stop/etc. send nothing (set while demos play, loc_005EB8, and around some init calls)
+g_SndMute = -$18AC	; byte: non-zero = Snd_Play/Stop/etc. send nothing (set while demos play, Game_PlayAttractDemo, and around some init calls)
 g_MusicTrack = -$38D2	; word: current music track id, -1 = none (Music_Play)
 g_Pad1Raw = -$7A8	; word: pad 1 buttons read in V-int (Pad_ReadBoth/Pad_ReadPort: bits 0-3 UDLR, 4-7 B C A Start, 8-11 Z Y X Mode, $4000 6-button, $8000 none)
 g_Pad2Raw = -$7A6	; word: pad 2 buttons read in V-int (same encoding as g_Pad1Raw; Pad_IsP2Connected tests bit 15)
@@ -27,7 +27,7 @@ g_Pad1Latch = -$3A2E	; word: P1 presses latched while held; game code clears bit
 g_Pad2Latch = -$3A30	; word: P2 presses latched while held (Pad_Update)
 g_Pad1Accum = -$3A32	; word: P1 buttons OR-accumulated since last cleared (Pad_Update)
 g_Pad2Accum = -$3A34	; word: P2 buttons OR-accumulated since last cleared (Pad_Update)
-g_DemoActive = -$3A1A	; byte: demo playback on, P1 input comes from g_DemoPad (Pad_Get; set by loc_005EB8)
+g_DemoActive = -$3A1A	; byte: demo playback on, P1 input comes from g_DemoPad (Pad_Get; set by Game_PlayAttractDemo)
 g_DemoInput = -$3A1E	; ptr: demo input stream of (frame, pad byte) pairs (sub_1F9DE8)
 g_DemoPad = -$3A20	; word: current demo pad value for P1 (sub_1F9DE8, Pad_Get)
 g_VdpReg1 = -$1D48	; word: VDP mode register 1 command shadow $81xx ($40 display, $20 V-int, $10 DMA) (Sys_InitHardware, VDP_DmaToVram)
@@ -68,10 +68,10 @@ g_DrawListTail = -$1354	; ptr: last draw-list node (DrawList_Add, DrawList_Remov
 g_DrawNodeCursor = -$1358	; ptr: round-robin search start for DrawList_AllocNode
 g_HeapTop = -$348C	; ptr: top of the Mem_StackAlloc heap ($FF0000 at Sys_InitHardware)
 g_SceneExitTimer = -$359A	; word: frames until the current scene ends, 0 = not ending (Scene_EndAfter; counted down in PlayerSelect_Run)
-g_ActivateHook = -$38F0	; ptr: replaces the scene loop's object-activation pass when set (sub_1FA124, Scene_ClearActivateHook)
+g_ActivateHook = -$38F0	; ptr: replaces the scene loop's object-activation pass when set (Level_FrameLoop, Scene_ClearActivateHook)
 g_SpriteDefs = -$3886	; array of $14-byte sprite-definition records {+0 flag bits, +2 def ptr, +6 word, +8 word} (Obj_SetSpriteDef)
-g_ClassList = -$3900	; ptr: current level class list {word bytes; desc*[]} (ClassList_CallSlot5A/62, sub_1FA7E8)
-g_CamShake = -$38A4	; ptr: camera shake script being played, 0 = none: byte pairs (dx, dy) added to g_CameraX/Y per frame; $64 end, $65 n = back n bytes, $66 x = sub_1F945C(x) (CloneA5_CamApply); e.g. Tbl_CloneA2QuakeScript
+g_ClassList = -$3900	; ptr: current level class list {word bytes; desc*[]} (ClassList_CallSlot5A/62, ClassList_InitAll)
+g_CamShake = -$38A4	; ptr: camera shake script being played, 0 = none: byte pairs (dx, dy) added to g_CameraX/Y per frame; $64 end, $65 n = back n bytes, $66 x = Sys_Nop1F945C(x) (CloneA5_CamApply); e.g. Tbl_CloneA2QuakeScript
 g_ScnSiberiaB1 = -$3B70	; byte: scene id of "SiberiaB1 Blizzard" (Scene_RegisterAll); first stage of a new game (Game_ResetPlayers)
 g_ScnCerebroSentinels = -$3B7A	; byte: scene id of "CerebroScreen Sentinels" (Scene_RegisterAll)
 g_ScnSentinelsD1 = -$3B72	; byte: scene id of "SentinelsD1 Exterior1" (Scene_RegisterAll); also attract demo 3 (Beast)
@@ -113,9 +113,9 @@ g_ICandyCount = -$1CAE	; word: ICandy pool slot count, 0 = no pool (ICandy_PoolI
 g_BBoard = -$1CA6	; ptr: BBOARD trigger-flag board, 100 word entries (Switch_ClassInit, Synchronizer_SetFlag)
 g_SyncPool = -$1CA2	; ptr: pool of 4 SYNCHRONIZER objects (Synchronizer_New)
 g_Elevator = -$3BC4	; ptr: SpaceA1 ELEVATOR object, on SpaceA1_RunScene's stack (SpaceA1_CamUpdate)
-g_SpawnRecs = -$38DC	; ptr: spawn records, 14 bytes each (sub_15F95C fills them via InitSpawnRec; level loop sub_1FA124)
-g_SpawnRecCount = -$38D8	; word: number of spawn records / placement entries (sub_1F98A8, sub_15F95C)
-g_PlacementList = -$38D6	; ptr: level placement entries, 16 bytes, word 0 = class index into g_ClassList (sub_1F98A8, sub_15F95C)
-g_PauseHandler = -$38FC	; ptr: called by the scene loop (sub_1FA124) when a player presses Start; sub_1F98A8 sets jt[$3FB2] = sub_15CAA4 (pause); Teleporter_StateTeleport swaps in Teleporter_NoPause
-g_SegTypeHooks = -$346A	; array of long: per floor-segment-type callback (mode, segment, object, 0), indexed by the segment's type byte +1; ACTOR Move (sub_1F4C56) and the floor code call it when non-zero; scenes install their own (CloneA5_SegHook15/16/17 at -$3416/-$3412/-$340E)
+g_SpawnRecs = -$38DC	; ptr: spawn records, 14 bytes each (Spawn_InitRecords fills them via InitSpawnRec; level loop Level_FrameLoop)
+g_SpawnRecCount = -$38D8	; word: number of spawn records / placement entries (Level_Load, Spawn_InitRecords)
+g_PlacementList = -$38D6	; ptr: level placement entries, 16 bytes, word 0 = class index into g_ClassList (Level_Load, Spawn_InitRecords)
+g_PauseHandler = -$38FC	; ptr: called by the scene loop (Level_FrameLoop) when a player presses Start; Level_Load sets jt[$3FB2] = sub_15CAA4 (pause); Teleporter_StateTeleport swaps in Teleporter_NoPause
+g_SegTypeHooks = -$346A	; array of long: per floor-segment-type callback (mode, segment, object, 0), indexed by the segment's type byte +1; ACTOR Move (Actor_Move) and the floor code call it when non-zero; scenes install their own (CloneA5_SegHook15/16/17 at -$3416/-$3412/-$340E)
 g_SceneFrameHook = -$388E	; ptr: per-frame scene hook installed by each scene's setup (CloneA2_FrameHook, CloneA5_FrameHook)

@@ -31,7 +31,7 @@ sub_0C1258:
 	move.l	$2(a0),-(a7)
 	lea.l	$1A9A(a5),a0
 	move.l	$2(a0),-(a7)
-	jsr	$4FCA(a5)	; -> sub_1F98A8
+	jsr	$4FCA(a5)	; -> Level_Load
 	move.w	#$100,-$3498(a5)
 	move.w	#$8C,-$3496(a5)
 	clr.w	-$34A0(a5)

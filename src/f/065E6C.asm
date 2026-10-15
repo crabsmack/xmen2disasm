@@ -338,7 +338,7 @@ loc_0661FC:
 	move.l	d0,-(a7)
 	lea.l	$DE2(a5),a0
 	move.l	$2(a0),-(a7)
-	jsr	$50AA(a5)	; -> sub_1FC35C
+	jsr	$50AA(a5)	; -> Spr_RenderToBitmap
 	move.l	-$C9A(a5),-(a7)
 	pea.l	-$1E8(a6)
 	jsr	Cerebro_BigSpriteInit(pc)
@@ -543,7 +543,7 @@ loc_0664CA:
 	move.l	d0,-(a7)
 	lea.l	$DE2(a5),a0
 	move.l	$2(a0),-(a7)
-	jsr	$50AA(a5)	; -> sub_1FC35C
+	jsr	$50AA(a5)	; -> Spr_RenderToBitmap
 	move.l	-$C9A(a5),-(a7)
 	pea.l	-$1E8(a6)
 	jsr	Cerebro_BigSpriteInit(pc)
