@@ -463,10 +463,10 @@
 134AFA	; FlyBrood_Init_Case1 - runtime: executed in tas
 134B10	; loc_134B10 - runtime: executed in tas
 134B26	; loc_134B26 - runtime: executed in tas
-136DC4	; loc_136DC4 - runtime: executed in tas
+136DC4	; Hornet_StatePickPattern_Case1 - runtime: executed in tas
 136DDA	; loc_136DDA - runtime: executed in tas
 136DF0	; loc_136DF0 - runtime: executed in tas
-1371D8	; loc_1371D8 - runtime: executed in tas
+1371D8	; Hornet_SpawnForDeathbird_Case2 - runtime: executed in tas
 137200	; loc_137200 - runtime: executed in tas
 138FBC	; loc_138FBC - runtime: executed in tas
 138FF0	; loc_138FF0 - runtime: executed in tas

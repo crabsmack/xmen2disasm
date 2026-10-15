@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_136642	[link-after-rts]
+; Hornet_MoveVelocity - Hornet motion: integrate velocity +$16/+$18 and acceleration +$1E/+$20 (twice in two-player half-rate mode)
+; In:  8(a6) = this
+; Out: none
+; Evidence: x += vx, y += vy, vx += ax, vy += ay, repeated when g_TwoPlayerStep; installed by Hornet_SpawnForDeathbird for the drop-in
 ; ---------------------------------------------------------------------------
-sub_136642:
+Hornet_MoveVelocity:
 	link.w	a6,#$0
 	move.l	a4,-(a7)
 	movea.l	$8(a6),a4

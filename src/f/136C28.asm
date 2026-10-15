@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_136C28	[link-after-rts]
+; Hornet_StateFire - Hornet state: fire a gauss bullet in the facing direction
+; In:  8(a6) = this
+; Out: d0 = flags & 8 (unused)
+; Evidence: GaussBullet_Fire(x +/- 8 px, y + 2 px, this, +/-8, 2, flags 3 | $800 when flipped | $8000 when +$2E bit 2), Obj_ChangeAnim(Tbl_HornetAnimFire), +$5C = Hornet_StateShotRecover
 ; ---------------------------------------------------------------------------
-sub_136C28:
+Hornet_StateFire:
 	link.w	a6,#$FFFC
 	movem.l	d4-d7/a4,-(a7)
 	movea.l	$8(a6),a4
@@ -51,7 +54,7 @@ loc_136C6C:
 	jsr	$4E4A(a5)	; -> Obj_ChangeAnim
 	lea.l	$20(a7),a7
 	move.w	#$FF,$6C(a4)
-	lea.l	sub_136CCA(pc),a0
+	lea.l	Hornet_StateShotRecover(pc),a0
 	move.l	a0,$5C(a4)
 	moveq	#$8,d0
 	and.w	$4(a4),d0

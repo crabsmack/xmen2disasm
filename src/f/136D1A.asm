@@ -1,13 +1,16 @@
 ; ---------------------------------------------------------------------------
-; sub_136D1A	[link-after-rts]
+; Hornet_StateDropIn - Hornet state (Deathbird-launched hornet): start falling into the arena
+; In:  8(a6) = this
+; Out: d0 = flags & 8 (unused)
+; Evidence: vy = $400, +$5C = Hornet_StateDropping; first state set by Hornet_SpawnForDeathbird
 ; ---------------------------------------------------------------------------
-sub_136D1A:
+Hornet_StateDropIn:
 	link.w	a6,#$0
 	move.l	a4,-(a7)
 	movea.l	$8(a6),a4
 	move.w	#$400,$18(a4)
 	clr.w	$6C(a4)
-	lea.l	sub_136D44(pc),a0
+	lea.l	Hornet_StateDropping(pc),a0
 	move.l	a0,$5C(a4)
 	moveq	#$8,d0
 	and.w	$4(a4),d0

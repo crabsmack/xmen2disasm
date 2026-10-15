@@ -6,6 +6,6 @@
 ; ---------------------------------------------------------------------------
 HornetBullet_Reset:
 	link.w	a6,#$0
-	jsr	sub_13734E(pc)
+	jsr	HornetBullet_NopStatic(pc)
 	unlk	a6
 	rts

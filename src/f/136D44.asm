@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_136D44	[link-after-rts]
+; Hornet_StateDropping - Hornet state: when y > $115 stop and wait 30 frames, then choose a flight pattern
+; In:  8(a6) = this
+; Out: none
+; Evidence: y px > $115: velocity and acceleration cleared, +$6C = 30, +$5C = Hornet_StatePickPattern
 ; ---------------------------------------------------------------------------
-sub_136D44:
+Hornet_StateDropping:
 	link.w	a6,#$0
 	movem.l	d7/a4,-(a7)
 	movea.l	$8(a6),a4
@@ -13,7 +16,7 @@ sub_136D44:
 	clr.l	$16(a4)
 	clr.w	$20(a4)
 	move.w	#$1E,$6C(a4)
-	lea.l	sub_136D86(pc),a0
+	lea.l	Hornet_StatePickPattern(pc),a0
 	move.l	a0,$5C(a4)
 	moveq	#$8,d0
 	and.w	$4(a4),d0

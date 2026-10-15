@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_136B84	[link-after-rts]
+; Hornet_StateFacePlayer - Hornet state: face the nearest player and load the volley shot count
+; In:  8(a6) = this
+; Out: d0 = flags & 8 (unused)
+; Evidence: Player_Nearest -> h-flip bit $10 of +$2E; +$A8 = shots per volley +$A4; +$5C = Hornet_StateShotLoop
 ; ---------------------------------------------------------------------------
-sub_136B84:
+Hornet_StateFacePlayer:
 	link.w	a6,#$0
 	movem.l	a3-a4,-(a7)
 	movea.l	$8(a6),a4
@@ -19,7 +22,7 @@ loc_136BAC:
 loc_136BB2:
 	move.w	$A4(a4),$A8(a4)
 	clr.w	$6C(a4)
-	lea.l	sub_136BD4(pc),a0
+	lea.l	Hornet_StateShotLoop(pc),a0
 	move.l	a0,$5C(a4)
 	moveq	#$8,d0
 	and.w	$4(a4),d0

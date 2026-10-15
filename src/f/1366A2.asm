@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_1366A2	[link-after-rts]
+; Hornet_MoveBounce - Hornet motion: fly with velocity plus circle hover, bouncing off the arena box; when the lifetime has run out start leaving
+; In:  8(a6) = this
+; Out: none
+; Evidence: +$A0 bit 0: x bounces in $3C-$1A4, bit 1: y bounces in $104-$172 (velocity negated); bit 2 (set by Hornet_Update when lifetime +$B6 reaches 0) -> +$6E = 0, +$94 = Hornet_MoveWaitThenFlyOff
 ; ---------------------------------------------------------------------------
-sub_1366A2:
+Hornet_MoveBounce:
 	link.w	a6,#$0
 	movem.l	d7/a4,-(a7)
 	movea.l	$8(a6),a4
@@ -27,7 +30,7 @@ loc_1366BC:
 	tst.l	$98(a4)
 	beq.s	loc_1366EE
 	move.l	a4,-(a7)
-	jsr	sub_136598(pc)
+	jsr	Hornet_StepCirclePath(pc)
 	addq.w	#$4,a7
 loc_1366EE:
 	subq.w	#$1,d7
@@ -80,7 +83,7 @@ loc_13677C:
 	and.w	$A0(a4),d0
 	beq.s	loc_136790
 	clr.w	$6E(a4)
-	lea.l	sub_136816(pc),a0
+	lea.l	Hornet_MoveWaitThenFlyOff(pc),a0
 	move.l	a0,$94(a4)
 loc_136790:
 	movem.l	-$8(a6),d7/a4

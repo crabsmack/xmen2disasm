@@ -6,7 +6,7 @@
 ; ---------------------------------------------------------------------------
 HornetBullet_ClassInit:
 	link.w	a6,#$0
-	jsr	sub_13734E(pc)
+	jsr	HornetBullet_NopStatic(pc)
 	moveq	#$1,d0
 	move.l	d0,-(a7)
 	lea.l	$3842(a5),a0

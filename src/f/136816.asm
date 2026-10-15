@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_136816	[link-after-rts]
+; Hornet_MoveWaitThenFlyOff - Hornet motion: hover in place until timer +$6E is 0, then launch diagonally upward away from the arena
+; In:  8(a6) = this
+; Out: none
+; Evidence: only Hornet_StepCirclePath while +$6E != 0; then vx = $500 (or -$500 when h-flipped), vy = -$500, +$94 = Hornet_MoveFlyOff
 ; ---------------------------------------------------------------------------
-sub_136816:
+Hornet_MoveWaitThenFlyOff:
 	link.w	a6,#$0
 	movem.l	d6-d7/a4,-(a7)
 	movea.l	$8(a6),a4
@@ -17,7 +20,7 @@ loc_136830:
 	tst.l	$98(a4)
 	beq.s	loc_13683E
 	move.l	a4,-(a7)
-	jsr	sub_136598(pc)
+	jsr	Hornet_StepCirclePath(pc)
 	addq.w	#$4,a7
 loc_13683E:
 	subq.w	#$1,d7
@@ -38,7 +41,7 @@ loc_13683E:
 loc_136866:
 	move.w	d7,$16(a4)
 	move.w	d6,$18(a4)
-	lea.l	sub_13679A(pc),a0
+	lea.l	Hornet_MoveFlyOff(pc),a0
 	move.l	a0,$94(a4)
 loc_136876:
 	movem.l	-$C(a6),d6-d7/a4

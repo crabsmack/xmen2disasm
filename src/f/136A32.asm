@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_136A32	[link-after-rts]
+; Hornet_MoveRiseThenWait - Hornet motion, pattern 3 loop: rise until y < $117, then hover 20 frames before the next dive
+; In:  8(a6) = this
+; Out: none
+; Evidence: integrates velocity + circle hover; at y px < $117: +$6E = 20, +$94 = Hornet_MoveWaitThenDive
 ; ---------------------------------------------------------------------------
-sub_136A32:
+Hornet_MoveRiseThenWait:
 	link.w	a6,#$0
 	movem.l	d7/a4,-(a7)
 	movea.l	$8(a6),a4
@@ -27,7 +30,7 @@ loc_136A4C:
 	tst.l	$98(a4)
 	beq.s	loc_136A7E
 	move.l	a4,-(a7)
-	jsr	sub_136598(pc)
+	jsr	Hornet_StepCirclePath(pc)
 	addq.w	#$4,a7
 loc_136A7E:
 	subq.w	#$1,d7
@@ -37,7 +40,7 @@ loc_136A7E:
 	cmpi.w	#$116,d7
 	bgt.s	loc_136A9C
 	move.w	#$14,$6E(a4)
-	lea.l	sub_1369C8(pc),a0
+	lea.l	Hornet_MoveWaitThenDive(pc),a0
 	move.l	a0,$94(a4)
 loc_136A9C:
 	movem.l	-$8(a6),d7/a4

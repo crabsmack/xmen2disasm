@@ -4487,12 +4487,13 @@ Art_FlyBroodNem:	; Nemesis-style compressed 4bpp tiles (Nem_Decode; code table b
 	incrom	$135A8E,$374
 Art_HornetSpr:	; sprite definition (type $19, Nemesis-compressed tiles): $24-byte header, $14-byte frame records, pieces, tiles; 607 of 608 bytes used at runtime; read by Nem_DecodeLoop, Spr_PreloadTiles, Nem_BuildCodeTable; jt[1780] used by Hornet_ClassInit
 	incrom	$135E02,$608
-Art_HornetNem:	; Nemesis-style compressed 4bpp tiles (Nem_Decode; code table built from pairs by the caller); 8 of A bytes used at runtime; read by Nem_DecodeLoop, Anim_ApplyStep, Anim_AdvanceByDistance; jt[1781] used by Hornet_Init, sub_136CCA
+Tbl_HornetAnimIdle:	; animation script (byte flags, byte steps, ..., 2-byte steps from +6): hornet idle/fly loop, set by Obj_ChangeAnim at spawn and after each shot; 8 of A bytes used at runtime; read by Anim_ApplyStep, Anim_AdvanceByDistance; jt[1781] used by Hornet_Init, Hornet_StateShotRecover
 	incrom	$13640A,$A
-Tbl_HornetAnim:	; animation script (byte flags, byte steps, ..., 2-byte steps from +6); A of C bytes used at runtime; read by Anim_ApplyStep, Anim_AdvanceByDistance, Anim_Advance; jt[1782] used by sub_136BD4
+Tbl_HornetAnimAim:	; animation script (byte flags, byte steps, ..., 2-byte steps from +6): wind-up before each shot (Hornet_StateShotLoop); A of C bytes used at runtime; read by Anim_ApplyStep, Anim_AdvanceByDistance, Anim_Advance; jt[1782] used by Hornet_StateShotLoop
 	incrom	$136414,$C
-Tbl_HornetAnim2:	; animation script (byte flags, byte steps, ..., 2-byte steps from +6); A of C bytes used at runtime; read by Anim_ApplyStep, sub_136598, Anim_AdvanceByDistance; jt[1783] used by sub_136C28
+Tbl_HornetAnimFire:	; animation script (byte flags, byte steps, ..., 2-byte steps from +6): played as the gauss bullet leaves (Hornet_StateFire); A of C bytes used at runtime; read by Anim_ApplyStep, Anim_AdvanceByDistance; jt[1783] used by Hornet_StateFire
 	incrom	$136420,$C
+Tbl_HornetCirclePath:	; 31 word pairs (dx, dy) = velocity steps around a circle (radius 8), then 127,127 end marker; Hornet_StepCirclePath adds (d << 8) >> obj+9C to x/y each step and wraps at 127 (jt 1784)
 	incrom	$13642C,$80
 Tbl_HornetTakeDamage_Hurt:	; table read by XNpc_TakeDamage_Hurt; 7 of 8 bytes used at runtime; read by XNpc_TakeDamage_Hurt, XNpc_KnockbackDist, Hornet_Init; jt[1785] used by Hornet_Init
 	incrom	$1364AC,$8
@@ -4522,7 +4523,7 @@ Tbl_HornetTakeDamage_Hurt:	; table read by XNpc_TakeDamage_Hurt; 7 of 8 bytes us
 	include "src/f/136D44.asm"
 	include "src/f/136D86.asm"
 Sw_136D86:	; switch table of sub at $136D86: 4 word offsets from Sw_136D86-2
-	dc.w	loc_136DAE-(Sw_136D86-2), loc_136DC4-(Sw_136D86-2), loc_136DDA-(Sw_136D86-2), loc_136DF0-(Sw_136D86-2)
+	dc.w	Hornet_StatePickPattern_CaseDefault-(Sw_136D86-2), Hornet_StatePickPattern_Case1-(Sw_136D86-2), loc_136DDA-(Sw_136D86-2), loc_136DF0-(Sw_136D86-2)
 	include "src/f/136DAE.asm"
 	include "src/f/136DC4.asm"
 	include "src/f/136E04.asm"
@@ -4535,7 +4536,7 @@ Sw_136D86:	; switch table of sub at $136D86: 4 word offsets from Sw_136D86-2
 	include "src/f/1370E8.asm"
 	include "src/f/137142.asm"
 Sw_137142:	; switch table of sub at $137142: 4 word offsets from Sw_137142-2
-	dc.w	loc_1371C8-(Sw_137142-2), loc_1371C8-(Sw_137142-2), loc_1371D8-(Sw_137142-2), loc_137200-(Sw_137142-2)
+	dc.w	Hornet_SpawnForDeathbird_CaseDefault-(Sw_137142-2), Hornet_SpawnForDeathbird_CaseDefault-(Sw_137142-2), Hornet_SpawnForDeathbird_Case2-(Sw_137142-2), loc_137200-(Sw_137142-2)
 	include "src/f/1371C8.asm"
 	include "src/f/1371D8.asm"
 	include "src/f/13722C.asm"

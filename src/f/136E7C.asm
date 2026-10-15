@@ -44,7 +44,7 @@ loc_136EB8:
 	moveq	#$0,d0
 	move.b	$2(a0),d0
 	move.w	d0,$68(a4)
-	lea.l	sub_136B44(pc),a0
+	lea.l	Hornet_StateAttackDelay(pc),a0
 	move.l	a0,$5C(a4)
 	move.w	-$1A82(a5),d0
 	ext.l	d0
@@ -58,7 +58,7 @@ loc_136EB8:
 	move.b	d1,$2E(a4)
 	move.b	#$1,$70(a4)
 	ori.w	#$80,$6(a4)
-	lea.l	sub_136584(pc),a0
+	lea.l	Hornet_MoveStartSwing(pc),a0
 	move.l	a0,$94(a4)
 	clr.w	$A0(a4)
 	clr.w	$A8(a4)

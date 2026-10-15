@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_13679A	[link-after-rts]
+; Hornet_MoveFlyOff - Hornet motion: fly away with velocity plus circle hover and Kill once off screen
+; In:  8(a6) = this
+; Out: none
+; Evidence: integrates velocity, Hornet_StepCirclePath; calls vtable +$52 Kill when y px < g_CameraX - $28 (compares y with the camera X word, as written); set by Hornet_MoveWaitThenFlyOff
 ; ---------------------------------------------------------------------------
-sub_13679A:
+Hornet_MoveFlyOff:
 	link.w	a6,#$0
 	movem.l	d7/a4,-(a7)
 	movea.l	$8(a6),a4
@@ -27,7 +30,7 @@ loc_1367B4:
 	tst.l	$98(a4)
 	beq.s	loc_1367E6
 	move.l	a4,-(a7)
-	jsr	sub_136598(pc)
+	jsr	Hornet_StepCirclePath(pc)
 	addq.w	#$4,a7
 loc_1367E6:
 	subq.w	#$1,d7

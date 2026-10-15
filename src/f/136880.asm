@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_136880	[link-after-rts]
+; Hornet_MoveRiseThenLeave - Hornet motion (dive-once pattern): rise until y < $117, then wait 30 and leave
+; In:  8(a6) = this
+; Out: none
+; Evidence: integrates velocity + circle hover; at y px < $117: +$6E = 30, +$94 = Hornet_MoveWaitThenFlyOff; set by Hornet_MoveWaitThenRiseLeave
 ; ---------------------------------------------------------------------------
-sub_136880:
+Hornet_MoveRiseThenLeave:
 	link.w	a6,#$0
 	movem.l	d7/a4,-(a7)
 	movea.l	$8(a6),a4
@@ -27,7 +30,7 @@ loc_13689A:
 	tst.l	$98(a4)
 	beq.s	loc_1368CC
 	move.l	a4,-(a7)
-	jsr	sub_136598(pc)
+	jsr	Hornet_StepCirclePath(pc)
 	addq.w	#$4,a7
 loc_1368CC:
 	subq.w	#$1,d7
@@ -37,7 +40,7 @@ loc_1368CC:
 	cmpi.w	#$116,d7
 	bgt.s	loc_1368EA
 	move.w	#$1E,$6E(a4)
-	lea.l	sub_136816(pc),a0
+	lea.l	Hornet_MoveWaitThenFlyOff(pc),a0
 	move.l	a0,$94(a4)
 loc_1368EA:
 	movem.l	-$8(a6),d7/a4

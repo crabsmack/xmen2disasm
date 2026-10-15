@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_1364CA	[link-after-rts]
+; Hornet_MoveSwing - Hornet motion (+$94) for level-placed hornets: swing back and forth on a half-circle arc below the spawn point
+; In:  8(a6) = this
+; Out: none
+; Evidence: angle +$AE += step +$AC, reversed at -180/0; x = (x px + $B0 radius offset) << 8 + cos(angle)*radius >> 8, y = y px << 8 + sin(angle)*radius >> 9 (Math_CosDeg/SinDeg/LMul); installed by Hornet_MoveStartSwing
 ; ---------------------------------------------------------------------------
-sub_1364CA:
+Hornet_MoveSwing:
 	link.w	a6,#$FFF8
 	movem.l	d5-d7/a4,-(a7)
 	movea.l	$8(a6),a4

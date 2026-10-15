@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_136598	[link-after-rts]
+; Hornet_StepCirclePath - add the next circle-path step to the hornet position (small circular hover), wrapping the path pointer
+; In:  8(a6) = this (+$98 = pointer into Tbl_HornetCirclePath, +$9C = shift)
+; Out: none
+; Evidence: x += (dx << 8) >> +$9C, y += (dy << 8) >> +$9C (sign kept); +$98 += 4, back to jt 1784 Tbl_HornetCirclePath at the 127 marker; called by every Deathbird-hornet motion function, TAS 37719-44691 (SpaceA1 Deathbird)
 ; ---------------------------------------------------------------------------
-sub_136598:
+Hornet_StepCirclePath:
 	link.w	a6,#$FFFE
 	movem.l	d3-d7/a4,-(a7)
 	movea.l	$8(a6),a4
