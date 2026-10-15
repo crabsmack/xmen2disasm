@@ -1,7 +1,11 @@
 ; ---------------------------------------------------------------------------
-; sub_096C30	[link-after-rts]
+; XClone_StateChildAim - XCLONE state: child velocity = (target - position) * (1/8 - 1/32), flag +$98 bit $400
+; In:  8(a6) = this
+; Out: d0
+; Evidence: next XClone_StateChildHome
+; Found: link-after-rts
 ; ---------------------------------------------------------------------------
-sub_096C30:
+XClone_StateChildAim:
 	link.w	a6,#$0
 	movem.l	d6-d7/a3-a4,-(a7)
 	movea.l	$8(a6),a3
@@ -30,7 +34,7 @@ sub_096C30:
 	move.w	d0,$18(a4)
 	ori.w	#$400,$98(a4)
 	clr.w	$6C(a3)
-	lea.l	sub_096C9A(pc),a0
+	lea.l	XClone_StateChildHome(pc),a0
 	move.l	a0,$5C(a3)
 	moveq	#$8,d0
 	and.w	$4(a3),d0

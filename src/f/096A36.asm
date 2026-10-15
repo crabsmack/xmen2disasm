@@ -1,7 +1,11 @@
 ; ---------------------------------------------------------------------------
-; sub_096A36	[jt 742]
+; XClone_ActStopSoundFE - XCLONE script action: stop sound $FE and clear the child's +$A2 motion, next step
+; In:  8(a6) = this
+; Out: none
+; Evidence: jt 742
+; Found: jt 742
 ; ---------------------------------------------------------------------------
-sub_096A36:
+XClone_ActStopSoundFE:
 	link.w	a6,#$0
 	movem.l	a3-a4,-(a7)
 	movea.l	$8(a6),a4

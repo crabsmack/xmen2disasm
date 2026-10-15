@@ -1,7 +1,8 @@
 ; ---------------------------------------------------------------------------
-; loc_096D36
+; XClone_StateChildHome_Step - tail of XClone_StateChildHome: apply the eased velocity and stay in that state
+; Evidence: branch target inside XClone_StateChildHome
 ; ---------------------------------------------------------------------------
-loc_096D36:
+XClone_StateChildHome_Step:
 	move.l	d6,d0
 	asr.l	#$3,d0
 	move.l	d6,d1
@@ -21,7 +22,7 @@ loc_096D36:
 	ext.l	d0
 	add.l	d0,$C(a3)
 	clr.w	$6C(a4)
-	lea.l	sub_096C9A(pc),a0
+	lea.l	XClone_StateChildHome(pc),a0
 	move.l	a0,$5C(a4)
 	moveq	#$8,d0
 	and.w	$4(a4),d0

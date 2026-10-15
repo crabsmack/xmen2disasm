@@ -1,7 +1,11 @@
 ; ---------------------------------------------------------------------------
-; sub_0972B2	[jt 749]
+; XClone_ActBallsMotionB - XCLONE script action: BIOBALLS motion B - child $60 above the floor, motion sub_11FAA2 with +$A8 = $600
+; In:  8(a6) = this
+; Out: d0
+; Evidence: jt 749
+; Found: jt 749
 ; ---------------------------------------------------------------------------
-sub_0972B2:
+XClone_ActBallsMotionB:
 	link.w	a6,#$0
 	movem.l	a3-a4,-(a7)
 	movea.l	$8(a6),a4

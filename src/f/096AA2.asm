@@ -1,7 +1,11 @@
 ; ---------------------------------------------------------------------------
-; sub_096AA2	[jt 743]
+; XClone_ActSoundFE - XCLONE script action: play sound $FE and set child flag +$98 bit $200, next step
+; In:  8(a6) = this
+; Out: none
+; Evidence: jt 743; TAS 53358-56721
+; Found: jt 743
 ; ---------------------------------------------------------------------------
-sub_096AA2:
+XClone_ActSoundFE:
 	link.w	a6,#$0
 	movem.l	a3-a4,-(a7)
 	movea.l	$8(a6),a4

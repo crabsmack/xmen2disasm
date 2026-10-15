@@ -1,7 +1,11 @@
 ; ---------------------------------------------------------------------------
-; sub_096F3E	[jt 747]
+; XClone_ActChildLeap - XCLONE script action: launch the child at the nearest player and down to the floor (accelerations (dx/64 - dx/512, dy/64 - dy/512))
+; In:  8(a6) = this
+; Out: d0
+; Evidence: saves the child's start point in +$10/+$12; next XClone_StateChildLeap; jt 747
+; Found: jt 747
 ; ---------------------------------------------------------------------------
-sub_096F3E:
+XClone_ActChildLeap:
 	link.w	a6,#$FFFC
 	movem.l	d6-d7/a3-a4,-(a7)
 	movea.l	$8(a6),a4
@@ -67,7 +71,7 @@ loc_096F94:
 	move.w	d0,$20(a3)
 	addq.w	#$4,a7
 	clr.w	$6C(a4)
-	lea.l	sub_09708A(pc),a0
+	lea.l	XClone_StateChildLeap(pc),a0
 	move.l	a0,$5C(a4)
 	moveq	#$8,d0
 	and.w	$4(a4),d0

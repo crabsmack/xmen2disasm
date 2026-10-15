@@ -4,7 +4,7 @@
 loc_09A8D2:
 	jmp	$17E2(a5)	; -> sub_097AA2
 loc_09A8D6:
-	jmp	$170A(a5)	; -> sub_096568
+	jmp	$170A(a5)	; -> XClone_ActStand30
 loc_09A8DA:
 	jmp	$17BA(a5)	; -> sub_097698
 loc_09A8DE:
@@ -12,7 +12,7 @@ loc_09A8DE:
 loc_09A8E2:
 	jmp	$18B2(a5)	; -> sub_098A66
 loc_09A8E6:
-	jmp	$16F2(a5)	; -> sub_096434
+	jmp	$16F2(a5)	; -> XClone_ActStop
 loc_09A8EA:
 	jmp	$17BA(a5)	; -> sub_097698
 loc_09A8EE:

@@ -1,7 +1,11 @@
 ; ---------------------------------------------------------------------------
-; sub_09715A	[link-after-rts]
+; XClone_StateChildReturn - XCLONE state: move the child back to its start point (1/16 of the distance per frame), then the next step
+; In:  8(a6) = this
+; Out: none
+; Evidence: snaps when within $200
+; Found: link-after-rts
 ; ---------------------------------------------------------------------------
-sub_09715A:
+XClone_StateChildReturn:
 	link.w	a6,#$0
 	movem.l	d3/d6-d7/a3-a4,-(a7)
 	movea.l	$8(a6),a4

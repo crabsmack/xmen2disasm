@@ -1,7 +1,11 @@
 ; ---------------------------------------------------------------------------
-; sub_096434	[jt 730]
+; XClone_ActStop - XCLONE script action: stop moving, next step
+; In:  8(a6) = this
+; Out: none
+; Evidence: clears speed/accel; jt 730
+; Found: jt 730
 ; ---------------------------------------------------------------------------
-sub_096434:
+XClone_ActStop:
 	link.w	a6,#$0
 	move.l	a4,-(a7)
 	movea.l	$8(a6),a4

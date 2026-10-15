@@ -1,7 +1,11 @@
 ; ---------------------------------------------------------------------------
-; sub_097338	[jt 750]
+; XClone_ActBallsMotionC - XCLONE script action: BIOBALLS motion C - motion sub_11FCB8 with +$A8 = $900, +$AA = 10
+; In:  8(a6) = this
+; Out: d0
+; Evidence: jt 750; TAS 52427-56718
+; Found: jt 750
 ; ---------------------------------------------------------------------------
-sub_097338:
+XClone_ActBallsMotionC:
 	link.w	a6,#$0
 	movem.l	a3-a4,-(a7)
 	movea.l	$8(a6),a4

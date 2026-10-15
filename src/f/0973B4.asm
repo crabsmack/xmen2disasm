@@ -1,7 +1,11 @@
 ; ---------------------------------------------------------------------------
-; sub_0973B4	[jt 751]
+; XClone_ActBallsMotionD - XCLONE script action: BIOBALLS motion D - motion sub_11F588, child state sub_11F05C, then wait for the child
+; In:  8(a6) = this
+; Out: d0
+; Evidence: sub_11F22C(child); child +$9E = box centre - x, +$A0 = -$C0; next XClone_StateWaitChild; jt 751
+; Found: jt 751
 ; ---------------------------------------------------------------------------
-sub_0973B4:
+XClone_ActBallsMotionD:
 	link.w	a6,#$0
 	movem.l	d7/a3-a4,-(a7)
 	movea.l	$8(a6),a3

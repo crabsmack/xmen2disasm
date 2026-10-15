@@ -1,7 +1,11 @@
 ; ---------------------------------------------------------------------------
-; sub_096C9A	[link-after-rts]
+; XClone_StateChildHome - XCLONE state: ease the child towards its target until within $200, then the next step
+; In:  8(a6) = this
+; Out: d0
+; Evidence: same easing as XClone_StateChildAim each frame
+; Found: link-after-rts
 ; ---------------------------------------------------------------------------
-sub_096C9A:
+XClone_StateChildHome:
 	link.w	a6,#$0
 	movem.l	d3/d6-d7/a3-a4,-(a7)
 	movea.l	$8(a6),a4
@@ -38,7 +42,7 @@ loc_096CE2:
 loc_096CE6:
 	add.l	d0,d1
 	cmpi.l	#$200,d1
-	bge.s	loc_096D36
+	bge.s	XClone_StateChildHome_Step
 	tst.l	$98(a4)
 	bne.s	loc_096D02
 	move.l	$64(a4),$5C(a4)

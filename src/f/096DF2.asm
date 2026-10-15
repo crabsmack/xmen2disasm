@@ -1,7 +1,11 @@
 ; ---------------------------------------------------------------------------
-; sub_096DF2	[link-after-rts]
+; XClone_StateChildShoot - XCLONE state: fire one BIOBULLET from the child at the nearest player (sound $F4) every 5 frames until +$B9 runs out
+; In:  8(a6) = this
+; Out: d0
+; Evidence: BIOBULLET ($11E6EC) +$0E at the child; direction = delta scaled down by its highest bit; sub_11E5E6(bullet, dx, dy, 1)
+; Found: link-after-rts
 ; ---------------------------------------------------------------------------
-sub_096DF2:
+XClone_StateChildShoot:
 	link.w	a6,#$FFF8
 	movem.l	d3-d7/a3-a4,-(a7)
 	movea.l	$8(a6),a4
@@ -98,7 +102,7 @@ loc_096EC4:
 	addq.w	#$8,a7
 	ble.s	loc_096EF6
 	move.w	#$5,$6C(a4)
-	lea.l	sub_096DF2(pc),a0
+	lea.l	XClone_StateChildShoot(pc),a0
 	move.l	a0,$5C(a4)
 	moveq	#$8,d0
 	and.w	$4(a4),d0

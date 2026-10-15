@@ -1,7 +1,11 @@
 ; ---------------------------------------------------------------------------
-; sub_096650	[jt 735]
+; XClone_ActStand60B - XCLONE script action: stand still for $3C frames (second copy of XClone_ActStand60)
+; In:  8(a6) = this
+; Out: none
+; Evidence: byte-for-byte the same body as XClone_ActStand60; jt 735; never runs in the corpus
+; Found: jt 735
 ; ---------------------------------------------------------------------------
-sub_096650:
+XClone_ActStand60B:
 	link.w	a6,#$0
 	move.l	a4,-(a7)
 	movea.l	$8(a6),a4

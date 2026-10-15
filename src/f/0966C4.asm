@@ -1,7 +1,11 @@
 ; ---------------------------------------------------------------------------
-; sub_0966C4	[jt 736]
+; XClone_ActWait60 - XCLONE script action: wait $3C frames (keep moving), next step
+; In:  8(a6) = this
+; Out: none
+; Evidence: next-step idiom with +$6C = $3C; jt 736; 3 callers
+; Found: jt 736
 ; ---------------------------------------------------------------------------
-sub_0966C4:
+XClone_ActWait60:
 	link.w	a6,#$0
 	move.l	a4,-(a7)
 	movea.l	$8(a6),a4

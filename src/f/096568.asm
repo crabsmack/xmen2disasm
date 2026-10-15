@@ -1,7 +1,11 @@
 ; ---------------------------------------------------------------------------
-; sub_096568	[jt 733]
+; XClone_ActStand30 - XCLONE script action: stand still for $1E frames
+; In:  8(a6) = this
+; Out: none
+; Evidence: jt 733
+; Found: jt 733
 ; ---------------------------------------------------------------------------
-sub_096568:
+XClone_ActStand30:
 	link.w	a6,#$0
 	move.l	a4,-(a7)
 	movea.l	$8(a6),a4

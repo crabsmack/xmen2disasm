@@ -1,7 +1,11 @@
 ; ---------------------------------------------------------------------------
-; sub_09676C	[jt 738]
+; XClone_ActWait10 - XCLONE script action: wait 10 frames, next step
+; In:  8(a6) = this
+; Out: none
+; Evidence: jt 738
+; Found: jt 738
 ; ---------------------------------------------------------------------------
-sub_09676C:
+XClone_ActWait10:
 	link.w	a6,#$0
 	move.l	a4,-(a7)
 	movea.l	$8(a6),a4

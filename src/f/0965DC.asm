@@ -1,7 +1,11 @@
 ; ---------------------------------------------------------------------------
-; sub_0965DC	[jt 734]
+; XClone_ActStand10 - XCLONE script action: stand still for 10 frames
+; In:  8(a6) = this
+; Out: none
+; Evidence: jt 734; TAS 55665-55738
+; Found: jt 734
 ; ---------------------------------------------------------------------------
-sub_0965DC:
+XClone_ActStand10:
 	link.w	a6,#$0
 	move.l	a4,-(a7)
 	movea.l	$8(a6),a4

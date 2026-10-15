@@ -1,7 +1,11 @@
 ; ---------------------------------------------------------------------------
-; sub_0964F4	[jt 732]
+; XClone_ActStand60 - XCLONE script action: stand still (standing animation) for $3C frames
+; In:  8(a6) = this
+; Out: none
+; Evidence: jt 732; TAS 52334-52604
+; Found: jt 732
 ; ---------------------------------------------------------------------------
-sub_0964F4:
+XClone_ActStand60:
 	link.w	a6,#$0
 	move.l	a4,-(a7)
 	movea.l	$8(a6),a4

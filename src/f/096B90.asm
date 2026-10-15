@@ -1,7 +1,11 @@
 ; ---------------------------------------------------------------------------
-; sub_096B90	[jt 745]
+; XClone_ActChildAimPlayer - XCLONE script action: aim the child at the nearest player (target +$10/+$12 = player x, box centre y)
+; In:  8(a6) = this
+; Out: d0
+; Evidence: Player_Nearest(child); next XClone_StateChildAim; jt 745
+; Found: jt 745
 ; ---------------------------------------------------------------------------
-sub_096B90:
+XClone_ActChildAimPlayer:
 	link.w	a6,#$FFFC
 	movem.l	a3-a4,-(a7)
 	movea.l	$8(a6),a4
@@ -48,7 +52,7 @@ loc_096BE4:
 	move.w	d1,$12(a3)
 	addq.w	#$4,a7
 	clr.w	$6C(a4)
-	lea.l	sub_096C30(pc),a0
+	lea.l	XClone_StateChildAim(pc),a0
 	move.l	a0,$5C(a4)
 	moveq	#$8,d0
 	and.w	$4(a4),d0

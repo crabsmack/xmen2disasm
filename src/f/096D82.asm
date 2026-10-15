@@ -1,7 +1,11 @@
 ; ---------------------------------------------------------------------------
-; sub_096D82	[jt 746]
+; XClone_ActChildShoot3 - XCLONE script action: make the child fire 3 shots (XClone_StateChildShoot)
+; In:  8(a6) = this
+; Out: none
+; Evidence: +$B9 = 3; next step when there is no child; jt 746
+; Found: jt 746
 ; ---------------------------------------------------------------------------
-sub_096D82:
+XClone_ActChildShoot3:
 	link.w	a6,#$0
 	move.l	a4,-(a7)
 	movea.l	$8(a6),a4
@@ -9,7 +13,7 @@ sub_096D82:
 	beq.s	loc_096DAC
 	move.b	#$3,$B9(a4)
 	clr.w	$6C(a4)
-	lea.l	sub_096DF2(pc),a0
+	lea.l	XClone_StateChildShoot(pc),a0
 	move.l	a0,$5C(a4)
 	moveq	#$8,d0
 	and.w	$4(a4),d0

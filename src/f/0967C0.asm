@@ -1,7 +1,11 @@
 ; ---------------------------------------------------------------------------
-; sub_0967C0	[jt 739]
+; XClone_ActLeaveBalls - XCLONE script action: come back out of the BIOBALLS form - remove the child (sound $F2), become hittable, run the main script (record +8)
+; In:  8(a6) = this
+; Out: none
+; Evidence: -$3B30 := this; sub_15DF2A(this, $FFEBAE); sub_15A6DE(+$96, record + word 8); jt 739
+; Found: jt 739
 ; ---------------------------------------------------------------------------
-sub_0967C0:
+XClone_ActLeaveBalls:
 	link.w	a6,#$0
 	move.l	a4,-(a7)
 	movea.l	$8(a6),a4

@@ -1,7 +1,11 @@
 ; ---------------------------------------------------------------------------
-; sub_096490	[jt 731]
+; XClone_ActStandAnim - XCLONE script action: standing animation (clone record + word 4), next step
+; In:  8(a6) = this
+; Out: none
+; Evidence: sub_1F6296(this, record + word 4); jt 731; TAS 54030
+; Found: jt 731
 ; ---------------------------------------------------------------------------
-sub_096490:
+XClone_ActStandAnim:
 	link.w	a6,#$0
 	move.l	a4,-(a7)
 	movea.l	$8(a6),a4
