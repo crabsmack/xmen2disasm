@@ -83,6 +83,28 @@ _(module → functions, globals, data; add as you learn them)_
   sprite-def record), +$2F byte frame index ($FF = none), +$30 long sprite-definition
   pointer (frame records of $14 bytes from +$24, signed box offsets at +4..+7),
   +$4C/+$4E/+$50/+$52 word box top/left/bottom/right in pixels.
+- **Actor classes (C++ vtables with names)** - `uv run tools/classes.py [NAME | --func ADDR]`.
+  ~130 classes. Descriptor = `{word name_off; long parent_desc; long method[] (+6 .. name_off);
+  char name[]}`; root `ACTOR` at `$1F49A6` (e.g. `DROPBOMB` `$082294`, `XPLAYER` `$1131A0`,
+  `XNPC`/`BIONPC` `$113A88`/`$113B10` add slots $6E-$82). Object +0 = its descriptor. Code
+  reaches a class's own descriptor as `lea jt(a5),a0 / movea.l 2(a0),a0` (a jt entry that
+  points at DATA), so `movea.l 2(a0),a0 / movea.l $12(a0),a1 / jsr (a1)` = call the
+  PARENT's Init. Slots, from ACTOR's own methods (`$15D92C`...): +$06 GetSize (returns
+  sizeof; called on the descriptor by the spawner `sub_1197F2`), +$0A InitSpawnRec, +$0E New
+  (alloc, Init, Activate if in window), +$12 Init(this, x, y, spawn param) (x/y longs with 8
+  fraction bits; calls parent Init first), +$16 ContainsPoint, +$1A Draw (sprite to screen
+  coords), +$22 Attack(target,...) -> target's +$26 TakeDamage (+$68 health -= dmg, +$6A
+  hit-flash timer = 10, +$5C handler := +$60), +$2A/+$2E/+$32/+$36 spawn-record in view /
+  spawn / out of view / despawn, +$3A/+$3E/+$42/+$46 in-window / Activate / out-of-window /
+  Deactivate, +$4A Update (per frame; calls handler +$5C when timer +$6C < 1, Move...),
+  +$4E Move (velocity +$16/+$18, accel +$1E/+$20, max +$22/+$24), +$52 Kill, +$56
+  SetFrame(frame), +$5E ClassInit(0, class index) (per level: `sub_1FA7E8` calls it for
+  every class in the class list `-$3900(a5)`; loads the class's resources). +$5A/+$62/+$6A
+  are empty in ACTOR; +$66 is the same 6-instruction no-op (`this` in a4) in every class.
+  Level class lists: `{word bytes; desc*[]}` then a Pascal-string name such as
+  `CloneA2NGClassList` (`$081826`), `BroodBossHallFGClassList`, `Jungle1NGClassList`.
+  Naming convention for overrides: `<Class>_<Slot>` in CamelCase (`DropBomb_Init`,
+  `XClone_Update`); no-op overrides `<Class>_Nop66` / `_Nop6A`.
 
 ## Data formats
 
