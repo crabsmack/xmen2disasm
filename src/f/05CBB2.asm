@@ -14,7 +14,7 @@ Tusk_AtkSpawnTusketteBoth:
 	sub.l	#$1000,d1
 	move.l	d1,-(a7)
 	move.l	$8(a4),-(a7)
-	jsr	$D8A(a5)	; -> sub_05D0BC
+	jsr	$D8A(a5)	; -> Tuskette_Spawn
 	movea.l	d0,a3
 	lea.l	Tusk_AtkSpawnTuskette3(pc),a0
 	move.l	a0,$5C(a4)

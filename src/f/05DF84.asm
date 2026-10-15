@@ -1,8 +1,11 @@
 ; ---------------------------------------------------------------------------
-; loc_05DF84	[static: switch-table case target (tools/switches.py: table after `move.w T(pc,dN.w),dN / jmp T-2(pc,dN.w)`, size from the cmpi bound)]
+; Tuskette_Init_part5 - part 5 of Tuskette_Init: switch case(s) split off by the code-flow tools (not a separate function)
+; In:  registers/frame of Tuskette_Init
+; Out: continues in Tuskette_Init
+; Evidence: only reached by branches from Tuskette_Init
 ; ---------------------------------------------------------------------------
-loc_05DF84:
-	lea.l	sub_05D11C(pc),a0
+Tuskette_Init_part5:
+	lea.l	Tuskette_StatePatrolStart(pc),a0
 	move.l	a0,$64(a4)
 	move.l	a0,$5C(a4)
 	bra.w	$5E044
@@ -11,7 +14,7 @@ loc_05DF94:
 	move.l	d0,-(a7)
 	move.l	$C(a4),-(a7)
 	move.l	$8(a4),-(a7)
-	jsr	sub_05D0BC(pc)
+	jsr	Tuskette_Spawn(pc)
 	movea.l	d0,a3
 	move.l	a3,d0
 	lea.l	$C(a7),a7
@@ -28,7 +31,7 @@ loc_05DFB6:
 	move.l	$2(a0),-(a7)
 	move.l	a4,-(a7)
 	jsr	$4E42(a5)	; -> Obj_SetAnim
-	lea.l	sub_05D5FC(pc),a0
+	lea.l	Tuskette_StateWaitSameFloor(pc),a0
 	move.l	a0,$64(a4)
 	move.l	a0,$5C(a4)
 	addq.w	#$8,a7
@@ -44,7 +47,7 @@ loc_05DFF4:
 	move.l	$2(a0),-(a7)
 	move.l	a4,-(a7)
 	jsr	$4E42(a5)	; -> Obj_SetAnim
-	lea.l	sub_05D5FC(pc),a0
+	lea.l	Tuskette_StateWaitSameFloor(pc),a0
 	move.l	a0,$64(a4)
 	move.l	a0,$5C(a4)
 	addq.w	#$8,a7

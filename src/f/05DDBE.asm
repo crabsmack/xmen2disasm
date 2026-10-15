@@ -99,7 +99,7 @@ loc_05DECC:
 loc_05DEDC:
 	move.b	$96(a4),d0
 	cmpi.b	#$7,d0
-	bhi.w	loc_05E038
+	bhi.w	Tuskette_Init_part6
 	moveq	#$0,d1
 	move.b	d0,d1
 	add.w	d1,d1

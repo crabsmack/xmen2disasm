@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_05D26E	[link-after-rts]
+; Tuskette_StateWalk - TUSKETTE walker: at a ledge turn round, when the time runs out stop; then idle 120 frames and walk again
+; In:  8(a6) = this
+; Out: d0
+; Evidence: next Tuskette_StateWalkStart
 ; ---------------------------------------------------------------------------
-sub_05D26E:
+Tuskette_StateWalk:
 	link.w	a6,#$0
 	move.l	a4,-(a7)
 	movea.l	$8(a6),a4
@@ -21,7 +24,7 @@ sub_05D26E:
 	jsr	$4E42(a5)	; -> Obj_SetAnim
 	addq.w	#$8,a7
 	move.w	#$78,$6C(a4)
-	lea.l	sub_05D1DA(pc),a0
+	lea.l	Tuskette_StateWalkStart(pc),a0
 	move.l	a0,$5C(a4)
 	moveq	#$8,d0
 	and.w	$4(a4),d0
@@ -37,7 +40,7 @@ loc_05D2BC:
 	jsr	$4E42(a5)	; -> Obj_SetAnim
 	addq.w	#$8,a7
 	move.w	#$78,$6C(a4)
-	lea.l	sub_05D1DA(pc),a0
+	lea.l	Tuskette_StateWalkStart(pc),a0
 	move.l	a0,$5C(a4)
 	moveq	#$8,d0
 	and.w	$4(a4),d0

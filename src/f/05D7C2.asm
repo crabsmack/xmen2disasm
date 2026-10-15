@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_05D7C2	[link-after-rts]
+; Tuskette_StateRestIdle - TUSKETTE: idle, then wait to charge
+; In:  8(a6) = this
+; Out: d0 = +4 & 8
+; Evidence: next Tuskette_StateWaitCharge
 ; ---------------------------------------------------------------------------
-sub_05D7C2:
+Tuskette_StateRestIdle:
 	link.w	a6,#$0
 	move.l	a4,-(a7)
 	movea.l	$8(a6),a4
@@ -11,7 +14,7 @@ sub_05D7C2:
 	jsr	$4E42(a5)	; -> Obj_SetAnim
 	addq.w	#$8,a7
 	clr.w	$6C(a4)
-	lea.l	sub_05D7F6(pc),a0
+	lea.l	Tuskette_StateWaitCharge(pc),a0
 	move.l	a0,$5C(a4)
 	moveq	#$8,d0
 	and.w	$4(a4),d0

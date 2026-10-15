@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_05D7F6	[link-after-rts]
+; Tuskette_StateWaitCharge - TUSKETTE: when the nearest player is on its floor within +$98 px, target it and run at it
+; In:  8(a6) = this
+; Out: d0
+; Evidence: +$A4 = player; next Tuskette_StateRunRight or Tuskette_StateRunLeft
 ; ---------------------------------------------------------------------------
-sub_05D7F6:
+Tuskette_StateWaitCharge:
 	link.w	a6,#$0
 	movem.l	d3/a3-a4,-(a7)
 	movea.l	$8(a6),a4
@@ -43,14 +46,14 @@ loc_05D860:
 	and.b	$2E(a4),d0
 	bne.s	loc_05D87C
 	clr.w	$6C(a4)
-	lea.l	sub_05D898(pc),a0
+	lea.l	Tuskette_StateRunRight(pc),a0
 	move.l	a0,$5C(a4)
 	moveq	#$8,d0
 	and.w	$4(a4),d0
 	bra.s	loc_05D88E
 loc_05D87C:
 	clr.w	$6C(a4)
-	lea.l	sub_05D956(pc),a0
+	lea.l	Tuskette_StateRunLeft(pc),a0
 	move.l	a0,$5C(a4)
 	moveq	#$8,d0
 	and.w	$4(a4),d0

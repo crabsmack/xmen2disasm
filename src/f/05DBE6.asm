@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_05DBE6	[link-after-rts]
+; Tuskette_StateExitBack - TUSKETTE: walk until back under its spawn x
+; In:  8(a6) = this
+; Out: d0
+; Evidence: next Tuskette_StateExitPast
 ; ---------------------------------------------------------------------------
-sub_05DBE6:
+Tuskette_StateExitBack:
 	link.w	a6,#$0
 	movem.l	d3/d7/a4,-(a7)
 	movea.l	$8(a6),a4
@@ -35,7 +38,7 @@ loc_05DC2A:
 	cmp.l	d0,d1
 	ble.s	loc_05DC40
 	clr.w	$6C(a4)
-	lea.l	sub_05DC4A(pc),a0
+	lea.l	Tuskette_StateExitPast(pc),a0
 	move.l	a0,$5C(a4)
 	moveq	#$8,d0
 	and.w	$4(a4),d0

@@ -1160,11 +1160,11 @@ Art_BaniMazaB2Nem3:	; Nemesis-style compressed 4bpp tiles (Nem_Decode; code tabl
 	incrom	$05958E,$2E
 Art_BaniMazaB2Nem4:	; Nemesis-style compressed 4bpp tiles (Nem_Decode; code table built from pairs by the caller); 1248 of 1252 bytes used at runtime; read by Nem_DecodeLoop, Eni_Decode; jt[390] used by BaniMazaB2_LoadLevel
 	incrom	$0595BC,$1252
-Tbl_BeamScooterAnim:	; animation script (byte flags, byte steps, ..., 2-byte steps from +6); A of C bytes used at runtime; read by Anim_ApplyStep, Nem_DecodeLoop, Anim_AdvanceByDistance; jt[391] used by loc_05DF84, sub_05D11C, sub_05D26E
+Tbl_BeamScooterAnim:	; animation script (byte flags, byte steps, ..., 2-byte steps from +6); A of C bytes used at runtime; read by Anim_ApplyStep, Nem_DecodeLoop, Anim_AdvanceByDistance; jt[391] used by Tuskette_Init_part5, Tuskette_StatePatrolStart, Tuskette_StateWalk
 	incrom	$05A80E,$C
-Tbl_BeamScooterAnim2:	; animation script (byte flags, byte steps, ..., 2-byte steps from +6); C of E bytes used at runtime; read by Anim_ApplyStep, Anim_AdvanceByDistance, Anim_Advance; jt[392] used by sub_05D1DA, sub_05D63A, sub_05D898
+Tbl_BeamScooterAnim2:	; animation script (byte flags, byte steps, ..., 2-byte steps from +6); C of E bytes used at runtime; read by Anim_ApplyStep, Anim_AdvanceByDistance, Anim_Advance; jt[392] used by Tuskette_StateWalkStart, Tuskette_StateChaseStart, Tuskette_StateRunRight
 	incrom	$05A81A,$E
-Tbl_BeamScooterAnim3:	; animation script (byte flags, byte steps, ..., 2-byte steps from +6); C of E bytes used at runtime; read by Anim_ApplyStep, Anim_AdvanceByDistance, Anim_Advance; jt[393] used by sub_05D3C8, sub_05D4D2
+Tbl_BeamScooterAnim3:	; animation script (byte flags, byte steps, ..., 2-byte steps from +6); C of E bytes used at runtime; read by Anim_ApplyStep, Anim_AdvanceByDistance, Anim_Advance; jt[393] used by Tuskette_StateHopOut, Tuskette_StateHopBack
 	incrom	$05A828,$E
 Tbl_BeamScooterAnim4:	; animation script (byte flags, byte steps, ..., 2-byte steps from +6); A of C bytes used at runtime; read by Anim_ApplyStep, Boulder_Update, Anim_AdvanceByDistance; jt[394] used by Boulder_StateStartRoll, Boulder_StateBounce
 	incrom	$05A836,$C
@@ -1331,8 +1331,8 @@ Pad_Tusk:	; $00 fill; never read in the corpus; between Tusk_Init and Tuskette_G
 	include "src/f/05DD7C.asm"
 	include "src/f/05DDBE.asm"
 Sw_05DDBE:	; switch table of sub at $05DDBE: 8 word offsets from Sw_05DDBE-2
-	dc.w	loc_05DF06-(Sw_05DDBE-2), loc_05DF16-(Sw_05DDBE-2), loc_05DF26-(Sw_05DDBE-2), loc_05DF4A-(Sw_05DDBE-2)
-	dc.w	loc_05DF6E-(Sw_05DDBE-2), loc_05DF84-(Sw_05DDBE-2), loc_05DF94-(Sw_05DDBE-2), loc_05DFF4-(Sw_05DDBE-2)
+	dc.w	Tuskette_Init_part1-(Sw_05DDBE-2), Tuskette_Init_part2-(Sw_05DDBE-2), Tuskette_Init_part3-(Sw_05DDBE-2), loc_05DF4A-(Sw_05DDBE-2)
+	dc.w	Tuskette_Init_part4-(Sw_05DDBE-2), Tuskette_Init_part5-(Sw_05DDBE-2), loc_05DF94-(Sw_05DDBE-2), loc_05DFF4-(Sw_05DDBE-2)
 	include "src/f/05DF06.asm"
 	include "src/f/05DF16.asm"
 	include "src/f/05DF26.asm"
@@ -1341,7 +1341,7 @@ Sw_05DDBE:	; switch table of sub at $05DDBE: 8 word offsets from Sw_05DDBE-2
 	include "src/f/05E038.asm"
 Tbl_Tuskette_vtable:	; class descriptor of TUSKETTE: word name offset $82, parent BIONPC, 31 method slots from +6, then the name (tools/classes.py)
 	incrom	$05E04E,$8B
-Pad_Cerebro:	; $00 fill; never read in the corpus; between loc_05E038 and Cerebro_BigSpriteDecode
+Pad_Cerebro:	; $00 fill; never read in the corpus; between Tuskette_Init_part6 and Cerebro_BigSpriteDecode
 	incrom	$05E0D9,$1
 Art_CerebroNem:	; Nemesis-style compressed 4bpp tiles (Nem_Decode; code table built from pairs by the caller); 1410 of 141A bytes used at runtime; read by Nem_DecodeLoop; jt[436] used by Cerebro_Run
 	incrom	$05E0DA,$141A

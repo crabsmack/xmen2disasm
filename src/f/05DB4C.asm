@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_05DB4C	[link-after-rts]
+; Tuskette_StateExitFall - TUSKETTE: fall 119 px
+; In:  8(a6) = this
+; Out: d0
+; Evidence: next Tuskette_StateExitTurn
 ; ---------------------------------------------------------------------------
-sub_05DB4C:
+Tuskette_StateExitFall:
 	link.w	a6,#$0
 	movem.l	d3/d7/a4,-(a7)
 	movea.l	$8(a6),a4
@@ -25,7 +28,7 @@ loc_05DB76:
 	clr.w	$18(a4)
 	clr.w	$20(a4)
 	clr.w	$6C(a4)
-	lea.l	sub_05DBA2(pc),a0
+	lea.l	Tuskette_StateExitTurn(pc),a0
 	move.l	a0,$5C(a4)
 	moveq	#$8,d0
 	and.w	$4(a4),d0

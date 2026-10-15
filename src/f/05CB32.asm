@@ -2,7 +2,7 @@
 ; Tusk_AtkSpawnTuskette2 - TUSK attack step: spawn a TUSKETTE of kind 2 16 px above itself
 ; In:  8(a6) = this
 ; Out: d0 = 0
-; Evidence: Tuskette_Spawn (sub_05D0BC); choose again after 60
+; Evidence: Tuskette_Spawn (Tuskette_Spawn); choose again after 60
 ; ---------------------------------------------------------------------------
 Tusk_AtkSpawnTuskette2:
 	link.w	a6,#$0
@@ -14,7 +14,7 @@ Tusk_AtkSpawnTuskette2:
 	sub.l	#$1000,d1
 	move.l	d1,-(a7)
 	move.l	$8(a4),-(a7)
-	jsr	$D8A(a5)	; -> sub_05D0BC
+	jsr	$D8A(a5)	; -> Tuskette_Spawn
 	movea.l	d0,a3
 	move.w	#$3C,$6E(a4)
 	lea.l	Tusk_StateChooseAttack(pc),a0

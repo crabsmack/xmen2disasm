@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_05D63A	[link-after-rts]
+; Tuskette_StateChaseStart - TUSKETTE chaser: stop vertical motion and start walking
+; In:  8(a6) = this
+; Out: d0 = +4 & 8
+; Evidence: animation jt $E62; next Tuskette_StateChaseTarget
 ; ---------------------------------------------------------------------------
-sub_05D63A:
+Tuskette_StateChaseStart:
 	link.w	a6,#$0
 	move.l	a4,-(a7)
 	movea.l	$8(a6),a4
@@ -14,7 +17,7 @@ sub_05D63A:
 	jsr	$4E42(a5)	; -> Obj_SetAnim
 	addq.w	#$8,a7
 	clr.w	$6C(a4)
-	lea.l	sub_05D67C(pc),a0
+	lea.l	Tuskette_StateChaseTarget(pc),a0
 	move.l	a0,$5C(a4)
 	moveq	#$8,d0
 	and.w	$4(a4),d0

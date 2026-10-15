@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_05D4D2	[link-after-rts]
+; Tuskette_StateHopBack - TUSKETTE hopper: jump back towards home x
+; In:  8(a6) = this
+; Out: d0 = +4 & 8
+; Evidence: next Tuskette_StateHopBackRise
 ; ---------------------------------------------------------------------------
-sub_05D4D2:
+Tuskette_StateHopBack:
 	link.w	a6,#$0
 	movem.l	d7/a4,-(a7)
 	movea.l	$8(a6),a4
@@ -37,7 +40,7 @@ loc_05D522:
 	andi.w	#$BFFF,$6(a4)
 	addq.w	#$8,a7
 	clr.w	$6C(a4)
-	lea.l	sub_05D556(pc),a0
+	lea.l	Tuskette_StateHopBackRise(pc),a0
 	move.l	a0,$5C(a4)
 	moveq	#$8,d0
 	and.w	$4(a4),d0

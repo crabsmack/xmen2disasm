@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_05D45A	[link-after-rts]
+; Tuskette_StateHopLand - TUSKETTE hopper: land when back at its home height
+; In:  8(a6) = this
+; Out: d0
+; Evidence: y = home +$12; +6 |= $4000; next Tuskette_StateHopPause
 ; ---------------------------------------------------------------------------
-sub_05D45A:
+Tuskette_StateHopLand:
 	link.w	a6,#$0
 	movem.l	d7/a4,-(a7)
 	movea.l	$8(a6),a4
@@ -14,7 +17,7 @@ sub_05D45A:
 	move.l	d7,$C(a4)
 	ori.w	#$4000,$6(a4)
 	clr.w	$6C(a4)
-	lea.l	sub_05D49C(pc),a0
+	lea.l	Tuskette_StateHopPause(pc),a0
 	move.l	a0,$5C(a4)
 	moveq	#$8,d0
 	and.w	$4(a4),d0

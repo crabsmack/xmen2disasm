@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_05D956	[link-after-rts]
+; Tuskette_StateRunLeft - TUSKETTE runner: run left (accel -40, max +$9A)
+; In:  8(a6) = this
+; Out: d0 = +4 & 8
+; Evidence: next Tuskette_StateRunLeftUntil
 ; ---------------------------------------------------------------------------
-sub_05D956:
+Tuskette_StateRunLeft:
 	link.w	a6,#$0
 	move.l	a4,-(a7)
 	movea.l	$8(a6),a4
@@ -19,7 +22,7 @@ sub_05D956:
 	andi.w	#$BFFF,$6(a4)
 	addq.w	#$8,a7
 	clr.w	$6C(a4)
-	lea.l	sub_05D9AA(pc),a0
+	lea.l	Tuskette_StateRunLeftUntil(pc),a0
 	move.l	a0,$5C(a4)
 	moveq	#$8,d0
 	and.w	$4(a4),d0

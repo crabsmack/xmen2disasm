@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_05DBA2	[link-after-rts]
+; Tuskette_StateExitTurn - TUSKETTE: turn round and walk at $200
+; In:  8(a6) = this
+; Out: d0 = +4 & 8
+; Evidence: next Tuskette_StateExitBack
 ; ---------------------------------------------------------------------------
-sub_05DBA2:
+Tuskette_StateExitTurn:
 	link.w	a6,#$0
 	move.l	a4,-(a7)
 	movea.l	$8(a6),a4
@@ -16,7 +19,7 @@ loc_05DBC2:
 loc_05DBC8:
 	move.w	d0,$16(a4)
 	clr.w	$6C(a4)
-	lea.l	sub_05DBE6(pc),a0
+	lea.l	Tuskette_StateExitBack(pc),a0
 	move.l	a0,$5C(a4)
 	moveq	#$8,d0
 	and.w	$4(a4),d0

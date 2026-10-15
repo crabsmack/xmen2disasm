@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_05D49C	[link-after-rts]
+; Tuskette_StateHopPause - TUSKETTE hopper: idle 25 frames
+; In:  8(a6) = this
+; Out: d0 = +4 & 8
+; Evidence: next Tuskette_StateHopBack
 ; ---------------------------------------------------------------------------
-sub_05D49C:
+Tuskette_StateHopPause:
 	link.w	a6,#$0
 	move.l	a4,-(a7)
 	movea.l	$8(a6),a4
@@ -11,7 +14,7 @@ sub_05D49C:
 	jsr	$4E42(a5)	; -> Obj_SetAnim
 	addq.w	#$8,a7
 	move.w	#$19,$6C(a4)
-	lea.l	sub_05D4D2(pc),a0
+	lea.l	Tuskette_StateHopBack(pc),a0
 	move.l	a0,$5C(a4)
 	moveq	#$8,d0
 	and.w	$4(a4),d0

@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_05D3C8	[link-after-rts]
+; Tuskette_StateHopOut - TUSKETTE hopper: jump towards the player (vx +$9A, vy -$7D0, gravity 100)
+; In:  8(a6) = this
+; Out: d0 = +4 & 8
+; Evidence: animation jt $E6A; +6 |= $1000, &= ~$4000; next Tuskette_StateHopRise
 ; ---------------------------------------------------------------------------
-sub_05D3C8:
+Tuskette_StateHopOut:
 	link.w	a6,#$0
 	move.l	a4,-(a7)
 	movea.l	$8(a6),a4
@@ -27,7 +30,7 @@ loc_05D3FE:
 	andi.w	#$BFFF,$6(a4)
 	addq.w	#$8,a7
 	clr.w	$6C(a4)
-	lea.l	sub_05D430(pc),a0
+	lea.l	Tuskette_StateHopRise(pc),a0
 	move.l	a0,$5C(a4)
 	moveq	#$8,d0
 	and.w	$4(a4),d0

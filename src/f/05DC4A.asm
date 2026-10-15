@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_05DC4A	[link-after-rts]
+; Tuskette_StateExitPast - TUSKETTE: keep walking until 200 px past it, then stop
+; In:  8(a6) = this
+; Out: d0
+; Evidence: next Tuskette_StateExitDrop2
 ; ---------------------------------------------------------------------------
-sub_05DC4A:
+Tuskette_StateExitPast:
 	link.w	a6,#$0
 	movem.l	d3/d7/a4,-(a7)
 	movea.l	$8(a6),a4
@@ -25,7 +28,7 @@ loc_05DC74:
 	clr.w	$1E(a4)
 	clr.w	$16(a4)
 	clr.w	$6C(a4)
-	lea.l	sub_05DCA0(pc),a0
+	lea.l	Tuskette_StateExitDrop2(pc),a0
 	move.l	a0,$5C(a4)
 	moveq	#$8,d0
 	and.w	$4(a4),d0

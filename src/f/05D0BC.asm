@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_05D0BC	[jt 429]
+; Tuskette_Spawn - create a TUSKETTE of behaviour kind K at (x, y) with a stack spawn record
+; In:  8(a6) = long x, $C(a6) = long y, $10(a6) = word kind
+; Out: d0 = object or 0
+; Evidence: Tbl_Tuskette_vtable +$0E New(0, desc, x, y, rec); callers Tusk_AtkSpawnTuskette*
 ; ---------------------------------------------------------------------------
-sub_05D0BC:
+Tuskette_Spawn:
 	link.w	a6,#$FFF0
 	movem.l	d6-d7/a4,-(a7)
 	move.l	$C(a6),d6

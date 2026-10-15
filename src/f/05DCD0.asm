@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_05DCD0	[link-after-rts]
+; Tuskette_StateExitFall2 - TUSKETTE: fall until 250 px below the camera top
+; In:  8(a6) = this
+; Out: d0
+; Evidence: next Tuskette_StateRemove
 ; ---------------------------------------------------------------------------
-sub_05DCD0:
+Tuskette_StateExitFall2:
 	link.w	a6,#$0
 	movem.l	d7/a4,-(a7)
 	movea.l	$8(a6),a4
@@ -13,7 +16,7 @@ sub_05DCD0:
 	cmpi.l	#$FA00,d7
 	ble.s	loc_05DD04
 	clr.w	$6C(a4)
-	lea.l	sub_05DD0E(pc),a0
+	lea.l	Tuskette_StateRemove(pc),a0
 	move.l	a0,$5C(a4)
 	moveq	#$8,d0
 	and.w	$4(a4),d0

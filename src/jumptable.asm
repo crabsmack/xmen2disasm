@@ -430,7 +430,7 @@ JumpTable:
 	jtentry	Tusk_Init	; [426] jsr $D72(a5)
 	jtentry	Tbl_Tusk_vtable	; [427] jsr $D7A(a5)
 	jtentry	Tuskette_GetSize	; [428] jsr $D82(a5)
-	jtentry	sub_05D0BC	; [429] jsr $D8A(a5)
+	jtentry	Tuskette_Spawn	; [429] jsr $D8A(a5)
 	jtentry	Tuskette_Nop6A	; [430] jsr $D92(a5)
 	jtentry	Tuskette_ClassInit	; [431] jsr $D9A(a5)
 	jtentry	Tuskette_Nop66	; [432] jsr $DA2(a5)

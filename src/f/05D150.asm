@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_05D150	[link-after-rts]
+; Tuskette_StateWaitNear - TUSKETTE walker: wait until the nearest player is within +$98 px horizontally and 64 px vertically
+; In:  8(a6) = this
+; Out: d0
+; Evidence: next Tuskette_StateWalkStart
 ; ---------------------------------------------------------------------------
-sub_05D150:
+Tuskette_StateWaitNear:
 	link.w	a6,#$0
 	movem.l	d3/a3-a4,-(a7)
 	movea.l	$8(a6),a4
@@ -43,7 +46,7 @@ loc_05D1B6:
 	cmpi.l	#$4000,d0
 	bge.s	loc_05D1D0
 	clr.w	$6C(a4)
-	lea.l	sub_05D1DA(pc),a0
+	lea.l	Tuskette_StateWalkStart(pc),a0
 	move.l	a0,$5C(a4)
 	moveq	#$8,d0
 	and.w	$4(a4),d0

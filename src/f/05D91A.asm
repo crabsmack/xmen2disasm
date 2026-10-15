@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_05D91A	[link-after-rts]
+; Tuskette_StateRunRightEnd - TUSKETTE runner: idle 30 frames, then run left
+; In:  8(a6) = this
+; Out: d0 = +4 & 8
+; Evidence: next Tuskette_StateRunLeft
 ; ---------------------------------------------------------------------------
-sub_05D91A:
+Tuskette_StateRunRightEnd:
 	link.w	a6,#$0
 	move.l	a4,-(a7)
 	movea.l	$8(a6),a4
@@ -12,7 +15,7 @@ sub_05D91A:
 	ori.w	#$4000,$6(a4)
 	addq.w	#$8,a7
 	move.w	#$1E,$6C(a4)
-	lea.l	sub_05D956(pc),a0
+	lea.l	Tuskette_StateRunLeft(pc),a0
 	move.l	a0,$5C(a4)
 	moveq	#$8,d0
 	and.w	$4(a4),d0

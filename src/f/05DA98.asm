@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_05DA98	[link-after-rts]
+; Tuskette_StateExitWalk - TUSKETTE: walk 100 px off Tusk's platform
+; In:  8(a6) = this
+; Out: d0
+; Evidence: next Tuskette_StateExitDrop
 ; ---------------------------------------------------------------------------
-sub_05DA98:
+Tuskette_StateExitWalk:
 	link.w	a6,#$0
 	movem.l	d3/d7/a4,-(a7)
 	movea.l	$8(a6),a4
@@ -25,7 +28,7 @@ loc_05DAC2:
 	clr.w	$1E(a4)
 	clr.w	$16(a4)
 	clr.w	$6C(a4)
-	lea.l	sub_05DAEE(pc),a0
+	lea.l	Tuskette_StateExitDrop(pc),a0
 	move.l	a0,$5C(a4)
 	moveq	#$8,d0
 	and.w	$4(a4),d0

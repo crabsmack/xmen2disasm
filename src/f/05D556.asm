@@ -1,14 +1,17 @@
 ; ---------------------------------------------------------------------------
-; sub_05D556	[link-after-rts]
+; Tuskette_StateHopBackRise - TUSKETTE hopper: wait until falling on the way back
+; In:  8(a6) = this
+; Out: none
+; Evidence: next Tuskette_StateHopBackLand
 ; ---------------------------------------------------------------------------
-sub_05D556:
+Tuskette_StateHopBackRise:
 	link.w	a6,#$0
 	move.l	a4,-(a7)
 	movea.l	$8(a6),a4
 	tst.w	$18(a4)
 	ble.s	loc_05D578
 	clr.w	$6C(a4)
-	lea.l	sub_05D580(pc),a0
+	lea.l	Tuskette_StateHopBackLand(pc),a0
 	move.l	a0,$5C(a4)
 	moveq	#$8,d0
 	and.w	$4(a4),d0
