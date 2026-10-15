@@ -51,7 +51,7 @@ loc_13FE1C:
 	ext.l	d0
 	move.l	d0,-(a7)
 	move.l	a4,-(a7)
-	jsr	$3ECA(a5)	; -> sub_15A19C
+	jsr	$3ECA(a5)	; -> Obj_RideRail
 	addq.w	#$8,a7
 loc_13FE2C:
 	movem.l	-$8(a6),a3-a4

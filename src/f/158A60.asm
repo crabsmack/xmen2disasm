@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_158A60	[jt 1982]
+; FluxBomb_Update - FLUXBOMB slot +$4A: step the particle phase (twice in two-player mode), then the parent Update
+; In:  8(a6) = bomb
+; Out: none
+; Evidence: +$100 == 1 -> FluxBomb_StepImplode, 3 -> FluxBomb_StepBurst; RTHETAOBJECT +$4A
 ; ---------------------------------------------------------------------------
-sub_158A60:
+FluxBomb_Update:
 	link.w	a6,#$0
 	movem.l	d7/a4,-(a7)
 	movea.l	$8(a6),a4
@@ -19,12 +22,12 @@ loc_158A78:
 	bra.s	loc_158A98
 loc_158A86:
 	move.l	a4,-(a7)
-	jsr	sub_158474(pc)
+	jsr	FluxBomb_StepImplode(pc)
 	addq.w	#$4,a7
 	bra.s	loc_158A98
 loc_158A90:
 	move.l	a4,-(a7)
-	jsr	sub_1583D6(pc)
+	jsr	FluxBomb_StepBurst(pc)
 	addq.w	#$4,a7
 loc_158A98:
 	move.w	d7,d0

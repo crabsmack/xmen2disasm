@@ -9,7 +9,7 @@ Nightcrawler_TeleportVanish:
 	move.l	a4,-(a7)
 	movea.l	$8(a6),a4
 	move.l	g_Camera(a5),-(a7)
-	jsr	$3EA2(a5)	; -> sub_159ECC
+	jsr	$3EA2(a5)	; -> Cam_ClampLookToPlayers
 	move.w	#$3C,$6A(a4)
 	pea.l	($FF).w
 	move.l	a4,-(a7)

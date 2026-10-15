@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_1CEBCC	[jt 2307]
+; Magneto_TakeDamage - MAGNETO slot +$26: XPLAYER TakeDamage, and let go of a held flux bomb
+; In:  8(a6) = player, $C..$1C(a6) = TakeDamage args
+; Out: none
+; Evidence: parent +$26; +$BE bomb -> its +$FE = 0
 ; ---------------------------------------------------------------------------
-sub_1CEBCC:
+Magneto_TakeDamage:
 	link.w	a6,#$0
 	move.l	a4,-(a7)
 	movea.l	$8(a6),a4

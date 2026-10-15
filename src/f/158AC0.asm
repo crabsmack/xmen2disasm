@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_158AC0	[jt 1983]
+; FluxBomb_SetFrame - FLUXBOMB slot +$56: set the frame of the shared bomb sprite $FFE798
+; In:  8(a6) = bomb, $C(a6) = frame
+; Out: none
+; Evidence: $FFE799 = frame; bit 5 of $FFE798 by comparison with $FFE7A2
 ; ---------------------------------------------------------------------------
-sub_158AC0:
+FluxBomb_SetFrame:
 	link.w	a6,#$0
 	movem.l	d7/a4,-(a7)
 	move.w	$E(a6),d7

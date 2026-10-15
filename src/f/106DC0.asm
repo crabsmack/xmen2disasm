@@ -17,7 +17,7 @@ loc_106DD8:
 	ext.l	d0
 	move.l	d0,-(a7)
 	move.l	a4,-(a7)
-	jsr	$3EBA(a5)	; -> sub_15A0AC
+	jsr	$3EBA(a5)	; -> Seg_MoveAlong
 	addq.w	#$8,a7
 loc_106DE8:
 	move.w	d7,d0

@@ -2,7 +2,7 @@
 ; MagnetoBoss_StateShoot - MAGNETOBOSS: play the throwing pose for direction +$9C and fire a magnetic globe
 ; In:  8(a6) = this
 ; Out: d0 = +4 & 8
-; Evidence: sub_159092(dir) animation; sub_1595EE(x, y, dir, ...) globe (MAGNETICGLOB code); next MagnetoBoss_StateShootRecover
+; Evidence: Magneto_AirShotAnim(dir) animation; Magneto_SpawnShot(x, y, dir, ...) globe (MAGNETICGLOB code); next MagnetoBoss_StateShootRecover
 ; ---------------------------------------------------------------------------
 MagnetoBoss_StateShoot:
 	link.w	a6,#$0
@@ -12,7 +12,7 @@ MagnetoBoss_StateShoot:
 	moveq	#$0,d0
 	move.b	d7,d0
 	move.l	d0,-(a7)
-	jsr	$3E2A(a5)	; -> sub_159092
+	jsr	$3E2A(a5)	; -> Magneto_AirShotAnim
 	movea.l	d0,a3
 	move.l	a3,-(a7)
 	move.l	a4,-(a7)
@@ -39,7 +39,7 @@ loc_0378E6:
 	move.l	d1,-(a7)
 	move.l	$C(a4),-(a7)
 	move.l	$8(a4),-(a7)
-	jsr	$3E4A(a5)	; -> sub_1595EE
+	jsr	$3E4A(a5)	; -> Magneto_SpawnShot
 	lea.l	$2C(a7),a7
 	move.w	#$FF,$6C(a4)
 	lea.l	MagnetoBoss_StateShootRecover(pc),a0

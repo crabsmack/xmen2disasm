@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_157ED6	[jt 1978]
+; MagneticGlob_Update - MAGNETICGLOB slot +$4A: fly, animate, hit the first body at the leading point, explode on walls
+; In:  8(a6) = bolt
+; Out: none
+; Evidence: out of window -> Kill; Move; ObjList_ForEachAtPoint on g_HitListEnemyBody (player bolt, +6 $10) else g_HitListPlayerBody with MagneticGlob_HitCb; $15CECC wall -> back off to the surface, Explosion_Spawn, Kill
 ; ---------------------------------------------------------------------------
-sub_157ED6:
+MagneticGlob_Update:
 	link.w	a6,#$0
 	movem.l	d3-d7/a4,-(a7)
 	movea.l	$8(a6),a4
@@ -101,7 +104,7 @@ loc_157F6A:
 	move.l	a4,-(a7)
 	moveq	#$0,d0
 	move.l	d0,-(a7)
-	pea.l	sub_157CB2(pc)
+	pea.l	MagneticGlob_HitCb(pc)
 	move.l	g_HitListEnemyBody(a5),-(a7)
 	ext.l	d4
 	move.l	d4,-(a7)
@@ -115,7 +118,7 @@ loc_157FCE:
 	move.l	a4,-(a7)
 	moveq	#$0,d0
 	move.l	d0,-(a7)
-	pea.l	sub_157CB2(pc)
+	pea.l	MagneticGlob_HitCb(pc)
 	move.l	g_HitListPlayerBody(a5),-(a7)
 	ext.l	d4
 	move.l	d4,-(a7)

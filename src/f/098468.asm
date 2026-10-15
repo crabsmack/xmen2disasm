@@ -2,7 +2,7 @@
 ; EvilMagneto_StateBlast - EVILMAGNETO state: fire a magnetic blast in direction +$BA (sound $83 if none could be made), play the blast animation
 ; In:  8(a6) = this
 ; Out: d0
-; Evidence: sub_1595EE(x, y, dir, 0, 0, palette bit, 0) (Magneto player code), animation from sub_15926A(dir); next step after the animation
+; Evidence: Magneto_SpawnShot(x, y, dir, 0, 0, palette bit, 0) (Magneto player code), animation from Magneto_ShotEndAnim(dir); next step after the animation
 ; Found: link-after-rts
 ; ---------------------------------------------------------------------------
 EvilMagneto_StateBlast:
@@ -28,7 +28,7 @@ loc_098486:
 	move.l	d1,-(a7)
 	move.l	$C(a4),-(a7)
 	move.l	$8(a4),-(a7)
-	jsr	$3E4A(a5)	; -> sub_1595EE
+	jsr	$3E4A(a5)	; -> Magneto_SpawnShot
 	movea.l	d0,a3
 	move.l	a3,d0
 	lea.l	$1C(a7),a7
@@ -42,7 +42,7 @@ loc_0984BE:
 	move.w	$BA(a4),d0
 	ext.l	d0
 	move.l	d0,-(a7)
-	jsr	$3E42(a5)	; -> sub_15926A
+	jsr	$3E42(a5)	; -> Magneto_ShotEndAnim
 	movea.l	d0,a3
 	move.l	a3,d0
 	addq.w	#$4,a7

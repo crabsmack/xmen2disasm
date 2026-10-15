@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_1582B6	[jt 1981]
+; FluxBomb_Init - FLUXBOMB slot +$12: RTHETAOBJECT Init; held mode for Magneto's bomb, thrown mode for the clone's
+; In:  8(a6) = bomb, $C/$10(a6) = x/y, $14(a6) = placement (+7 by player)
+; Out: none
+; Evidence: +$90 = $400, size 200; player -> state FluxBomb_StartHeld and +6 |= $10, else FluxBomb_StartThrown; shared sprite $FFE798 priority from the live player; SetFrame($FF)
 ; ---------------------------------------------------------------------------
-sub_1582B6:
+FluxBomb_Init:
 	link.w	a6,#$0
 	movem.l	d7/a3-a4,-(a7)
 	movea.l	$14(a6),a3
@@ -22,15 +25,15 @@ sub_1582B6:
 	move.w	#$C8,$A2(a4)
 	tst.b	d7
 	beq.s	loc_158314
-	lea.l	sub_158FE4(pc),a0
+	lea.l	FluxBomb_StartHeld(pc),a0
 	move.l	a0,$5C(a4)
-	lea.l	sub_158FE4(pc),a0
+	lea.l	FluxBomb_StartHeld(pc),a0
 	move.l	a0,$64(a4)
 	bra.s	loc_158324
 loc_158314:
-	lea.l	sub_158E32(pc),a0
+	lea.l	FluxBomb_StartThrown(pc),a0
 	move.l	a0,$5C(a4)
-	lea.l	sub_158E32(pc),a0
+	lea.l	FluxBomb_StartThrown(pc),a0
 	move.l	a0,$64(a4)
 loc_158324:
 	andi.w	#$BFFF,$4(a4)

@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_158AF8	[link-after-rts]
+; FluxBomb_DrawImplode - draw the imploding particles straight into the hardware sprite table (alternating tiles)
+; In:  8(a6) = bomb
+; Out: d0
+; Evidence: live particles on screen -> next g_SpriteTable slot via g_SprWritePtr link bytes; tile = bomb VRAM - 1 or - 2 by frame counter bit 2
 ; ---------------------------------------------------------------------------
-sub_158AF8:
+FluxBomb_DrawImplode:
 	link.w	a6,#$FFFC
 	movem.l	d3-d7/a3-a4,-(a7)
 	movea.l	$8(a6),a3

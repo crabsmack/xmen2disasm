@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_158FE4	[link-after-rts]
+; FluxBomb_StartHeld - Magneto's bomb: sound, animation, up to 45 frames of holding
+; In:  8(a6) = bomb
+; Out: d0 = +4 flag 8
+; Evidence: +$6E = $2D, sound $7A, animation (jt $D8D0 thunk), state FluxBomb_StateHeld
 ; ---------------------------------------------------------------------------
-sub_158FE4:
+FluxBomb_StartHeld:
 	link.w	a6,#$0
 	move.l	a4,-(a7)
 	movea.l	$8(a6),a4
@@ -18,7 +21,7 @@ sub_158FE4:
 	jsr	$4E42(a5)	; -> Obj_SetAnim
 	lea.l	$10(a7),a7
 	clr.w	$6C(a4)
-	lea.l	sub_159030(pc),a0
+	lea.l	FluxBomb_StateHeld(pc),a0
 	move.l	a0,$5C(a4)
 	moveq	#$8,d0
 	and.w	$4(a4),d0

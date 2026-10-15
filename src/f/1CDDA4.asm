@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_1CDDA4	[link-after-rts]
+; Magneto_StateAirShotEnd - after an air shot: hover-damp until the follow-through animation ends, then control (keep hovering if he was)
+; In:  8(a6) = player
+; Out: d0
+; Evidence: grounded -> re-latch direction, control; anim done -> clear B latch, +$6E = 10, hover animation again if +$12 (was hovering), control
 ; ---------------------------------------------------------------------------
-sub_1CDDA4:
+Magneto_StateAirShotEnd:
 	link.w	a6,#$0
 	movem.l	d3/a4,-(a7)
 	movea.l	$8(a6),a4
@@ -12,7 +15,7 @@ sub_1CDDA4:
 	move.l	d0,-(a7)
 	move.l	d0,-(a7)
 	move.l	a4,-(a7)
-	jsr	sub_1CDA48(pc)
+	jsr	Magneto_HoverDamp(pc)
 	lea.l	$C(a7),a7
 	bra.w	loc_1CDE50
 loc_1CDDCE:

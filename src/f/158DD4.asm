@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_158DD4	[jt 1984]
+; FluxBomb_Draw - FLUXBOMB slot +$1A: draw the particles for the current phase and the bomb sprite
+; In:  8(a6) = bomb
+; Out: none
+; Evidence: phase 1 FluxBomb_DrawImplode, 3 FluxBomb_DrawBurst; Spr_Draw($FFE798, screen x/y)
 ; ---------------------------------------------------------------------------
-sub_158DD4:
+FluxBomb_Draw:
 	link.w	a6,#$0
 	move.l	a4,-(a7)
 	movea.l	$8(a6),a4
@@ -13,12 +16,12 @@ sub_158DD4:
 	bra.s	loc_158DFE
 loc_158DEC:
 	move.l	a4,-(a7)
-	jsr	sub_158AF8(pc)
+	jsr	FluxBomb_DrawImplode(pc)
 	addq.w	#$4,a7
 	bra.s	loc_158DFE
 loc_158DF6:
 	move.l	a4,-(a7)
-	jsr	sub_158C0E(pc)
+	jsr	FluxBomb_DrawBurst(pc)
 	addq.w	#$4,a7
 loc_158DFE:
 	move.l	$C(a4),d0

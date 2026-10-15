@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_157CFE	[jt 1975]
+; MagneticGlob_OutsideActiveWindow - MAGNETICGLOB slot +$42: is the bolt well off screen
+; In:  8(a6) = bolt
+; Out: d0 = 1 outside
+; Evidence: screen x outside -$32..$172 or y outside -$33..$112
 ; ---------------------------------------------------------------------------
-sub_157CFE:
+MagneticGlob_OutsideActiveWindow:
 	link.w	a6,#$0
 	movem.l	d3/d7/a4,-(a7)
 	movea.l	$8(a6),a4

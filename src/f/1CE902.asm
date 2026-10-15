@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_1CE902	[link-after-rts]
+; Magneto_StartBomb - special wind-up before the flux bomb
+; In:  8(a6) = player
+; Out: d0 = +4 flag 8
+; Evidence: stop, clear B latch, Obj_SetAnim(Magneto_ShotAnim(dir)) or crouch wind-up, delay $FF, next Magneto_SpawnBomb
 ; ---------------------------------------------------------------------------
-sub_1CE902:
+Magneto_StartBomb:
 	link.w	a6,#$0
 	movem.l	a3-a4,-(a7)
 	movea.l	$8(a6),a4
@@ -29,7 +32,7 @@ loc_1CE94A:
 	move.w	$BC(a4),d0
 	ext.l	d0
 	move.l	d0,-(a7)
-	jsr	$3E3A(a5)	; -> sub_1591DE
+	jsr	$3E3A(a5)	; -> Magneto_ShotAnim
 	movea.l	d0,a3
 	addq.w	#$4,a7
 loc_1CE95A:
@@ -38,7 +41,7 @@ loc_1CE95A:
 	jsr	$4E42(a5)	; -> Obj_SetAnim
 	addq.w	#$8,a7
 	move.w	#$FF,$6C(a4)
-	lea.l	sub_1CE826(pc),a0
+	lea.l	Magneto_SpawnBomb(pc),a0
 	move.l	a0,$5C(a4)
 	moveq	#$8,d0
 	and.w	$4(a4),d0

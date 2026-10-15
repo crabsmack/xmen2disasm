@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_158C0E	[link-after-rts]
+; FluxBomb_DrawBurst - draw the bursting particles (two sprites each, a trail behind every particle)
+; In:  8(a6) = bomb
+; Out: d0
+; Evidence: up to +$101 particles; second sprite offset back by the direction pair; writes g_SpriteTable via g_SprWritePtr
 ; ---------------------------------------------------------------------------
-sub_158C0E:
+FluxBomb_DrawBurst:
 	link.w	a6,#$FFF8
 	movem.l	d3-d7/a3-a4,-(a7)
 	moveq	#$4,d0

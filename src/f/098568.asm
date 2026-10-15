@@ -2,7 +2,7 @@
 ; EvilMagneto_ActBlast - EVILMAGNETO script action: wind up a magnetic blast facing right (dir 7) or left (dir 2)
 ; In:  8(a6) = this
 ; Out: d0
-; Evidence: +$BA = dir; animation from sub_1591DE(dir), +$6C = $FF; next EvilMagneto_StateBlast; jt 780
+; Evidence: +$BA = dir; animation from Magneto_ShotAnim(dir), +$6C = $FF; next EvilMagneto_StateBlast; jt 780
 ; Found: jt 780
 ; ---------------------------------------------------------------------------
 EvilMagneto_ActBlast:
@@ -20,7 +20,7 @@ loc_09858A:
 	move.w	$BA(a4),d0
 	ext.l	d0
 	move.l	d0,-(a7)
-	jsr	$3E3A(a5)	; -> sub_1591DE
+	jsr	$3E3A(a5)	; -> Magneto_ShotAnim
 	movea.l	d0,a3
 	move.l	a3,d0
 	addq.w	#$4,a7

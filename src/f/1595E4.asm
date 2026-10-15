@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; loc_1595E4
+; Magneto_ShotOrigin_Ret - Magneto_ShotOrigin shared epilogue: restore registers and return
+; In:  a6 frame of Magneto_ShotOrigin
+; Out: d0 / output pointers as set by the case
+; Evidence: branch target of the cases of Magneto_ShotOrigin
 ; ---------------------------------------------------------------------------
-loc_1595E4:
+Magneto_ShotOrigin_Ret:
 	movem.l	-$C(a6),d7/a3-a4
 	unlk	a6
 	rts

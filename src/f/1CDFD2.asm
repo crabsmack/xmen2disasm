@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_1CDFD2	[link-after-rts]
+; Magneto_StartAirShot - start an air shot in the chosen direction (remember whether he was hovering)
+; In:  8(a6) = player
+; Out: none
+; Evidence: +$12 = hovering (anim == jt $487A); not hovering -> gravity char +$E; clear B latch; Obj_SetAnim(Magneto_AirShotAnim(+$BC)); state Magneto_StateAirShot
 ; ---------------------------------------------------------------------------
-sub_1CDFD2:
+Magneto_StartAirShot:
 	link.w	a6,#$0
 	movem.l	a3-a4,-(a7)
 	movea.l	$8(a6),a4
@@ -35,15 +38,15 @@ loc_1CE02C:
 	move.w	$BC(a4),d0
 	ext.l	d0
 	move.l	d0,-(a7)
-	jsr	$3E2A(a5)	; -> sub_159092
+	jsr	$3E2A(a5)	; -> Magneto_AirShotAnim
 	movea.l	d0,a3
 	move.l	a3,-(a7)
 	move.l	a4,-(a7)
 	jsr	$4E42(a5)	; -> Obj_SetAnim
-	lea.l	sub_1CDEB2(pc),a0
+	lea.l	Magneto_StateAirShot(pc),a0
 	move.l	a0,$5C(a4)
 	move.l	a4,-(a7)
-	jsr	sub_1CDEB2(pc)
+	jsr	Magneto_StateAirShot(pc)
 	lea.l	$10(a7),a7
 	movem.l	-$8(a6),a3-a4
 	unlk	a6

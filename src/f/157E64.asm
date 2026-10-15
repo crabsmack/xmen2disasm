@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_157E64	[jt 1977]
+; MagneticGlob_Deactivate - MAGNETICGLOB slot +$46: stop the timer and leave the draw list
+; In:  8(a6) = bolt
+; Out: none
+; Evidence: +4 |= $4000, Timer_Stop, DrawList_Remove
 ; ---------------------------------------------------------------------------
-sub_157E64:
+MagneticGlob_Deactivate:
 	link.w	a6,#$0
 	movem.l	a3-a4,-(a7)
 	movea.l	$8(a6),a4

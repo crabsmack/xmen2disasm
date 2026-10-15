@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_1581CA	[jt 1979]
+; MagneticGlob_Init - MAGNETICGLOB slot +$12: RTHETAOBJECT Init, sprite, palette and speed (player bolts faster and on the player side)
+; In:  8(a6) = bolt, $C/$10(a6) = x/y, $14(a6) = placement {+6 by player, +$A VRAM base}
+; Out: none
+; Evidence: +6 |= $8B; sprite def $14DB16; player -> +6 |= $10, max speed $2000 else $800; +$A4 = VRAM base; SetFrame($FF)
 ; ---------------------------------------------------------------------------
-sub_1581CA:
+MagneticGlob_Init:
 	link.w	a6,#$0
 	movem.l	a3-a4,-(a7)
 	movea.l	$14(a6),a3

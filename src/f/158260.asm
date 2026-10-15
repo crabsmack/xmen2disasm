@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_158260	[jt 1980]
+; FluxBomb_New - FLUXBOMB slot +$0E: (re)use the single static bomb object: kill the old one, Init and Activate
+; In:  8(a6) = unused, $C(a6) = descriptor, $10..$18(a6) = Init args
+; Out: d0 = $FFE7AC
+; Evidence: if $FFE7B0 bit 15 -> Kill; +$12 Init, +$3E Activate
 ; ---------------------------------------------------------------------------
-sub_158260:
+FluxBomb_New:
 	link.w	a6,#$0
 	move.l	a4,-(a7)
 	lea.l	-$1A54(a5),a4

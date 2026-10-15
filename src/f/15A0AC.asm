@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_15A0AC	[jt 2003]
+; Seg_MoveAlong - move an object a distance along its chain of floor segments, crossing to neighbours; mark the end of the chain
+; In:  8(a6) = object, $C(a6) = word distance (8.8)
+; Out: d0
+; Evidence: +$72 position along segment +$76; next/prev links seg +$11/+$10 ($FF = end -> +4 |= $100); length seg +6; then $1F6D76 (place on floor)
 ; ---------------------------------------------------------------------------
-sub_15A0AC:
+Seg_MoveAlong:
 	link.w	a6,#$0
 	movem.l	d5-d7/a3-a4,-(a7)
 	movea.l	$8(a6),a3

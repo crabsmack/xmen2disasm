@@ -1,21 +1,24 @@
 ; ---------------------------------------------------------------------------
-; loc_15988C	[static: switch-table case target (tools/switches.py: table after `move.w T(pc,dN.w),dN / jmp T-2(pc,dN.w)`, size from the cmpi bound)]
+; Magneto_BombOrigin_Case4 - Magneto_BombOrigin switch case 4 (with the cases that fall into it): set this case's results, then the common exit
+; In:  a6 frame of Magneto_BombOrigin
+; Out: d0 / output pointers as set by the case
+; Evidence: jump-table target of the switch in Magneto_BombOrigin (Sw_ table in xmen2.asm)
 ; ---------------------------------------------------------------------------
-loc_15988C:
+Magneto_BombOrigin_Case4:
 	move.w	#$FFF0,(a4)
 	move.w	#$79,(a3)
 	movea.l	$14(a6),a0
 	move.l	#$5A00,(a0)
-	bra.s	loc_1598EC
+	bra.s	Magneto_BombOrigin_Ret
 loc_1598A0:
 	move.w	#$10,(a4)
 	move.w	#$79,(a3)
 	movea.l	$14(a6),a0
 	move.l	#$5A00,(a0)
-	bra.s	loc_1598EC
+	bra.s	Magneto_BombOrigin_Ret
 loc_1598B4:
 	move.w	#$3D,(a4)
 	move.w	#$67,(a3)
 	movea.l	$14(a6),a0
 	move.l	#$2D00,(a0)
-	bra.s	loc_1598EC
+	bra.s	Magneto_BombOrigin_Ret

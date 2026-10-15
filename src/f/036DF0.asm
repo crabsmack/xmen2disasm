@@ -2,7 +2,7 @@
 ; MagnetoBoss_StateBurstIn - MAGNETOBOSS bursts through the wall: release camera zone 0, fly right, fire a globe, become hittable
 ; In:  8(a6) = this
 ; Out: d0 = +4 & 8
-; Evidence: AvalonA4_ClearCameraZone(0); vx $500, vy -$48; sub_1595EE (globe) with direction +$9C = 8; list $FFEBAE; next MagnetoBoss_Zone0Setup
+; Evidence: AvalonA4_ClearCameraZone(0); vx $500, vy -$48; Magneto_SpawnShot (globe) with direction +$9C = 8; list $FFEBAE; next MagnetoBoss_Zone0Setup
 ; ---------------------------------------------------------------------------
 MagnetoBoss_StateBurstIn:
 	link.w	a6,#$0
@@ -36,7 +36,7 @@ loc_036E2E:
 	move.l	d1,-(a7)
 	move.l	$C(a4),-(a7)
 	move.l	$8(a4),-(a7)
-	jsr	$3E4A(a5)	; -> sub_1595EE
+	jsr	$3E4A(a5)	; -> Magneto_SpawnShot
 	andi.w	#$FFFD,$6(a4)
 	pea.l	g_HitListEnemyBody(a5)
 	move.l	a4,-(a7)

@@ -4937,11 +4937,11 @@ Art_Spr_144FF6:	; sprite definition (type $18, raw 4bpp tiles): $24-byte header,
 	incrom	$144FF6,$86C
 Art_EvilMagnetoSpr:	; sprite definition (type $18, raw 4bpp tiles): $24-byte header, $14-byte frame records, pieces, tiles; 57A0 of 82B4 bytes used at runtime; read by VDP_FlushDmaQueue; DMA to VRAM $7BA0-ABA0; jt[1965] used by EvilMagneto_Init, MagnetoBoss_Init, Magneto_SelectSpriteDef
 	incrom	$145862,$82B4
-Art_Spr_14DB16:	; sprite definition (type $18, raw 4bpp tiles): $24-byte header, $14-byte frame records, pieces, tiles; 1500 of 1E88 bytes used at runtime; read by VDP_FlushDmaQueue, Spr_EmitStreamClip, Spr_UploadFrame; DMA to VRAM $81C0-F7E0; jt[1966] used by Scene_AllocCommonVram, sub_1581CA
+Art_Spr_14DB16:	; sprite definition (type $18, raw 4bpp tiles): $24-byte header, $14-byte frame records, pieces, tiles; 1500 of 1E88 bytes used at runtime; read by VDP_FlushDmaQueue, Spr_EmitStreamClip, Spr_UploadFrame; DMA to VRAM $81C0-F7E0; jt[1966] used by Scene_AllocCommonVram, MagneticGlob_Init
 	incrom	$14DB16,$1E88
-Art_MagnetoBossSpr2:	; sprite definition (type $18, raw 4bpp tiles): $24-byte header, $14-byte frame records, pieces, tiles; 29A0 of 334C bytes used at runtime; read by VDP_FlushDmaQueue; DMA to VRAM $7BA0-8AC0; jt[1967] used by MagnetoBoss_Init, Player_CalcMaxTiles, sub_1599CC
+Art_MagnetoBossSpr2:	; sprite definition (type $18, raw 4bpp tiles): $24-byte header, $14-byte frame records, pieces, tiles; 29A0 of 334C bytes used at runtime; read by VDP_FlushDmaQueue; DMA to VRAM $7BA0-8AC0; jt[1967] used by MagnetoBoss_Init, Player_CalcMaxTiles, Magneto_FrameBank
 	incrom	$14F99E,$334C
-Art_MagnetoBossSpr3:	; sprite definition (type $18, raw 4bpp tiles): $24-byte header, $14-byte frame records, pieces, tiles; 2720 of 4EBC bytes used at runtime; read by VDP_FlushDmaQueue, Spr_EmitStreamClip, Spr_UploadFrame; DMA to VRAM $7DA0-AAA0; jt[1968] used by MagnetoBoss_Init, Player_CalcMaxTiles, sub_1599CC
+Art_MagnetoBossSpr3:	; sprite definition (type $18, raw 4bpp tiles): $24-byte header, $14-byte frame records, pieces, tiles; 2720 of 4EBC bytes used at runtime; read by VDP_FlushDmaQueue, Spr_EmitStreamClip, Spr_UploadFrame; DMA to VRAM $7DA0-AAA0; jt[1968] used by MagnetoBoss_Init, Player_CalcMaxTiles, Magneto_FrameBank
 	incrom	$152CEA,$4EBC
 	include "src/f/157BA6.asm"
 	include "src/f/157BB4.asm"
@@ -4979,9 +4979,9 @@ Art_MagnetoBossSpr3:	; sprite definition (type $18, raw 4bpp tiles): $24-byte he
 	include "src/f/159030.asm"
 	include "src/f/159092.asm"
 Sw_159092:	; switch table of sub at $159092: 10 word offsets from Sw_159092-2
-	dc.w	loc_1590C6-(Sw_159092-2), loc_1590D0-(Sw_159092-2), loc_1590DA-(Sw_159092-2), loc_1590E4-(Sw_159092-2)
-	dc.w	loc_1590EE-(Sw_159092-2), loc_1590F8-(Sw_159092-2), loc_159102-(Sw_159092-2), loc_15910C-(Sw_159092-2)
-	dc.w	loc_159116-(Sw_159092-2), loc_159120-(Sw_159092-2)
+	dc.w	Magneto_AirShotAnim_Case0-(Sw_159092-2), loc_1590D0-(Sw_159092-2), Magneto_AirShotAnim_Case2-(Sw_159092-2), Magneto_AirShotAnim_Case3-(Sw_159092-2)
+	dc.w	loc_1590EE-(Sw_159092-2), loc_1590F8-(Sw_159092-2), loc_159102-(Sw_159092-2), Magneto_AirShotAnim_Case7-(Sw_159092-2)
+	dc.w	loc_159116-(Sw_159092-2), Magneto_AirShotAnim_Case9-(Sw_159092-2)
 	include "src/f/1590C6.asm"
 	include "src/f/1590DA.asm"
 	include "src/f/1590E4.asm"
@@ -4992,9 +4992,9 @@ Sw_159092:	; switch table of sub at $159092: 10 word offsets from Sw_159092-2
 	include "src/f/159130.asm"
 	include "src/f/159138.asm"
 Sw_159138:	; switch table of sub at $159138: 10 word offsets from Sw_159138-2
-	dc.w	loc_15916C-(Sw_159138-2), loc_159176-(Sw_159138-2), loc_159180-(Sw_159138-2), loc_15918A-(Sw_159138-2)
-	dc.w	loc_159194-(Sw_159138-2), loc_15919E-(Sw_159138-2), loc_1591A8-(Sw_159138-2), loc_1591B2-(Sw_159138-2)
-	dc.w	loc_1591BC-(Sw_159138-2), loc_1591C6-(Sw_159138-2)
+	dc.w	Magneto_AirShotEndAnim_Case0-(Sw_159138-2), loc_159176-(Sw_159138-2), Magneto_AirShotEndAnim_Case2-(Sw_159138-2), Magneto_AirShotEndAnim_Case3-(Sw_159138-2)
+	dc.w	loc_159194-(Sw_159138-2), loc_15919E-(Sw_159138-2), loc_1591A8-(Sw_159138-2), Magneto_AirShotEndAnim_Case7-(Sw_159138-2)
+	dc.w	loc_1591BC-(Sw_159138-2), Magneto_AirShotEndAnim_Case9-(Sw_159138-2)
 	include "src/f/15916C.asm"
 	include "src/f/159180.asm"
 	include "src/f/15918A.asm"
@@ -5005,8 +5005,8 @@ Sw_159138:	; switch table of sub at $159138: 10 word offsets from Sw_159138-2
 	include "src/f/1591D6.asm"
 	include "src/f/1591DE.asm"
 Sw_1591DE:	; switch table of sub at $1591DE: 8 word offsets from Sw_1591DE-2
-	dc.w	loc_15920C-(Sw_1591DE-2), loc_159216-(Sw_1591DE-2), loc_159220-(Sw_1591DE-2), loc_15922A-(Sw_1591DE-2)
-	dc.w	loc_159234-(Sw_1591DE-2), loc_15923E-(Sw_1591DE-2), loc_159248-(Sw_1591DE-2), loc_159252-(Sw_1591DE-2)
+	dc.w	Magneto_ShotAnim_Case1-(Sw_1591DE-2), Magneto_ShotAnim_Case2-(Sw_1591DE-2), loc_159220-(Sw_1591DE-2), Magneto_ShotAnim_Case4-(Sw_1591DE-2)
+	dc.w	loc_159234-(Sw_1591DE-2), loc_15923E-(Sw_1591DE-2), Magneto_ShotAnim_Case7-(Sw_1591DE-2), Magneto_ShotAnim_Case8-(Sw_1591DE-2)
 	include "src/f/15920C.asm"
 	include "src/f/159216.asm"
 	include "src/f/15922A.asm"
@@ -5017,8 +5017,8 @@ Sw_1591DE:	; switch table of sub at $1591DE: 8 word offsets from Sw_1591DE-2
 	include "src/f/159262.asm"
 	include "src/f/15926A.asm"
 Sw_15926A:	; switch table of sub at $15926A: 8 word offsets from Sw_15926A-2
-	dc.w	loc_159298-(Sw_15926A-2), loc_1592A2-(Sw_15926A-2), loc_1592AC-(Sw_15926A-2), loc_1592B6-(Sw_15926A-2)
-	dc.w	loc_1592C0-(Sw_15926A-2), loc_1592CA-(Sw_15926A-2), loc_1592D4-(Sw_15926A-2), loc_1592DE-(Sw_15926A-2)
+	dc.w	Magneto_ShotEndAnim_Case1-(Sw_15926A-2), Magneto_ShotEndAnim_Case2-(Sw_15926A-2), loc_1592AC-(Sw_15926A-2), Magneto_ShotEndAnim_Case4-(Sw_15926A-2)
+	dc.w	loc_1592C0-(Sw_15926A-2), loc_1592CA-(Sw_15926A-2), Magneto_ShotEndAnim_Case7-(Sw_15926A-2), Magneto_ShotEndAnim_Case8-(Sw_15926A-2)
 	include "src/f/159298.asm"
 	include "src/f/1592A2.asm"
 	include "src/f/1592B6.asm"
@@ -5030,9 +5030,9 @@ Sw_15926A:	; switch table of sub at $15926A: 8 word offsets from Sw_15926A-2
 	include "src/f/1592F6.asm"
 	include "src/f/159354.asm"
 Sw_159354:	; switch table of sub at $159354: 10 word offsets from Sw_159354-2
-	dc.w	loc_159398-(Sw_159354-2), loc_1593D4-(Sw_159354-2), loc_1593F2-(Sw_159354-2), loc_159410-(Sw_159354-2)
-	dc.w	loc_15942E-(Sw_159354-2), loc_15944A-(Sw_159354-2), loc_159466-(Sw_159354-2), loc_159482-(Sw_159354-2)
-	dc.w	loc_15949C-(Sw_159354-2), loc_1593B6-(Sw_159354-2)
+	dc.w	Magneto_ShotOriginAir_Case0-(Sw_159354-2), Magneto_ShotOriginAir_Case1-(Sw_159354-2), Magneto_ShotOriginAir_Case2-(Sw_159354-2), Magneto_ShotOriginAir_Case3-(Sw_159354-2)
+	dc.w	loc_15942E-(Sw_159354-2), loc_15944A-(Sw_159354-2), loc_159466-(Sw_159354-2), Magneto_ShotOriginAir_Case7-(Sw_159354-2)
+	dc.w	loc_15949C-(Sw_159354-2), Magneto_ShotOriginAir_Case9-(Sw_159354-2)
 	include "src/f/159398.asm"
 	include "src/f/1593B6.asm"
 	include "src/f/1593D4.asm"
@@ -5042,8 +5042,8 @@ Sw_159354:	; switch table of sub at $159354: 10 word offsets from Sw_159354-2
 	include "src/f/1594B6.asm"
 	include "src/f/1594C0.asm"
 Sw_1594C0:	; switch table of sub at $1594C0: 8 word offsets from Sw_1594C0-2
-	dc.w	loc_159502-(Sw_1594C0-2), loc_159520-(Sw_1594C0-2), loc_15953E-(Sw_1594C0-2), loc_15955C-(Sw_1594C0-2)
-	dc.w	loc_159578-(Sw_1594C0-2), loc_159594-(Sw_1594C0-2), loc_1595B0-(Sw_1594C0-2), loc_1595CA-(Sw_1594C0-2)
+	dc.w	Magneto_ShotOrigin_Case1-(Sw_1594C0-2), loc_159520-(Sw_1594C0-2), loc_15953E-(Sw_1594C0-2), loc_15955C-(Sw_1594C0-2)
+	dc.w	loc_159578-(Sw_1594C0-2), loc_159594-(Sw_1594C0-2), Magneto_ShotOrigin_Case7-(Sw_1594C0-2), Magneto_ShotOrigin_Case8-(Sw_1594C0-2)
 	include "src/f/159502.asm"
 	include "src/f/1595B0.asm"
 	include "src/f/1595CA.asm"
@@ -5052,8 +5052,8 @@ Sw_1594C0:	; switch table of sub at $1594C0: 8 word offsets from Sw_1594C0-2
 	include "src/f/1597BE.asm"
 	include "src/f/15980C.asm"
 Sw_15980C:	; switch table of sub at $15980C: 8 word offsets from Sw_15980C-2
-	dc.w	loc_15984E-(Sw_15980C-2), loc_159864-(Sw_15980C-2), loc_159878-(Sw_15980C-2), loc_15988C-(Sw_15980C-2)
-	dc.w	loc_1598A0-(Sw_15980C-2), loc_1598B4-(Sw_15980C-2), loc_1598C8-(Sw_15980C-2), loc_1598DA-(Sw_15980C-2)
+	dc.w	Magneto_BombOrigin_Case1-(Sw_15980C-2), Magneto_BombOrigin_Case2-(Sw_15980C-2), loc_159878-(Sw_15980C-2), Magneto_BombOrigin_Case4-(Sw_15980C-2)
+	dc.w	loc_1598A0-(Sw_15980C-2), loc_1598B4-(Sw_15980C-2), Magneto_BombOrigin_Case7-(Sw_15980C-2), Magneto_BombOrigin_Case8-(Sw_15980C-2)
 	include "src/f/15984E.asm"
 	include "src/f/159864.asm"
 	include "src/f/15988C.asm"
@@ -5557,86 +5557,86 @@ Tbl_PsylockeAnim2:	; animation script (byte flags, byte steps, ..., 2-byte steps
 	incrom	$1CD6F6,$2C
 Tbl_MagnetoBossAnim2:	; animation script (byte flags, byte steps, ..., 2-byte steps from +6); E of 10 bytes used at runtime; read by Anim_ApplyStep, Anim_AdvanceByDistance; jt[2250] used by MagnetoBoss_Update
 	incrom	$1CD722,$10
-Tbl_CloneA5Anim:	; animation script (byte flags, byte steps, ..., 2-byte steps from +6); E of 10 bytes used at runtime; read by Anim_ApplyStep; jt[2251] used by CloneA5_CamUpdate, sub_1CDB32, sub_1CDDA4
+Tbl_CloneA5Anim:	; animation script (byte flags, byte steps, ..., 2-byte steps from +6); E of 10 bytes used at runtime; read by Anim_ApplyStep; jt[2251] used by CloneA5_CamUpdate, Magneto_AirSteer, Magneto_StateAirShotEnd
 	incrom	$1CD732,$10
-Tbl_Psylocke:	; format not established; never read in the corpus; jt[2252] used by loc_15922A
+Tbl_Psylocke:	; format not established; never read in the corpus; jt[2252] used by Magneto_ShotAnim_Case4
 	incrom	$1CD742,$A
-Tbl_Psylocke2:	; format not established; never read in the corpus; jt[2253] used by loc_1592B6
+Tbl_Psylocke2:	; format not established; never read in the corpus; jt[2253] used by Magneto_ShotEndAnim_Case4
 	incrom	$1CD74C,$10
-Tbl_PsylockeAnim3:	; animation script (byte flags, byte steps, ..., 2-byte steps from +6); 8 of A bytes used at runtime; read by Anim_AdvanceByDistance, Anim_ApplyStep, Anim_Advance; jt[2254] used by loc_159216, loc_15922A
+Tbl_PsylockeAnim3:	; animation script (byte flags, byte steps, ..., 2-byte steps from +6); 8 of A bytes used at runtime; read by Anim_AdvanceByDistance, Anim_ApplyStep, Anim_Advance; jt[2254] used by Magneto_ShotAnim_Case2, Magneto_ShotAnim_Case4
 	incrom	$1CD75C,$A
-Tbl_PsylockeAnim4:	; animation script (byte flags, byte steps, ..., 2-byte steps from +6); E of 10 bytes used at runtime; read by Anim_ApplyStep, Anim_AdvanceByDistance, Anim_Advance; jt[2255] used by loc_1592A2, loc_1592B6
+Tbl_PsylockeAnim4:	; animation script (byte flags, byte steps, ..., 2-byte steps from +6); E of 10 bytes used at runtime; read by Anim_ApplyStep, Anim_AdvanceByDistance, Anim_Advance; jt[2255] used by Magneto_ShotEndAnim_Case2, Magneto_ShotEndAnim_Case4
 	incrom	$1CD766,$10
-Tbl_PsylockeAnim5:	; animation script (byte flags, byte steps, ..., 2-byte steps from +6); 8 of A bytes used at runtime; read by Anim_ApplyStep, Anim_AdvanceByDistance, Anim_Advance; jt[2256] used by loc_159216, loc_159248
+Tbl_PsylockeAnim5:	; animation script (byte flags, byte steps, ..., 2-byte steps from +6); 8 of A bytes used at runtime; read by Anim_ApplyStep, Anim_AdvanceByDistance, Anim_Advance; jt[2256] used by Magneto_ShotAnim_Case2, Magneto_ShotAnim_Case7
 	incrom	$1CD776,$A
-Tbl_PsylockeAnim6:	; animation script (byte flags, byte steps, ..., 2-byte steps from +6); E of 10 bytes used at runtime; read by Anim_ApplyStep; jt[2257] used by loc_1592A2, loc_1592D4
+Tbl_PsylockeAnim6:	; animation script (byte flags, byte steps, ..., 2-byte steps from +6); E of 10 bytes used at runtime; read by Anim_ApplyStep; jt[2257] used by Magneto_ShotEndAnim_Case2, Magneto_ShotEndAnim_Case7
 	incrom	$1CD780,$10
-Tbl_Psylocke3:	; format not established; never read in the corpus; jt[2258] used by loc_15920C, loc_159252
+Tbl_Psylocke3:	; format not established; never read in the corpus; jt[2258] used by Magneto_ShotAnim_Case1, Magneto_ShotAnim_Case8
 	incrom	$1CD790,$A
-Tbl_Psylocke4:	; format not established; never read in the corpus; jt[2259] used by loc_159298, loc_1592DE
+Tbl_Psylocke4:	; format not established; never read in the corpus; jt[2259] used by Magneto_ShotEndAnim_Case1, Magneto_ShotEndAnim_Case8
 	incrom	$1CD79A,$10
-Tbl_PsylockeAnim26:	; animation script (NOTES: Animation scripts); never read in the corpus; jt[2260] used by sub_1CE73E -> Obj_SetAnim
+Tbl_PsylockeAnim26:	; animation script (NOTES: Animation scripts); never read in the corpus; jt[2260] used by Magneto_GroundAttackDown -> Obj_SetAnim
 	incrom	$1CD7AA,$C
-Tbl_PsylockeAnim7:	; animation script (byte flags, byte steps, ..., 2-byte steps from +6); 8 of A bytes used at runtime; read by Anim_AdvanceByDistance, Anim_ApplyStep, Anim_Advance; jt[2261] used by sub_1CE2CE, sub_1CE902
+Tbl_PsylockeAnim7:	; animation script (byte flags, byte steps, ..., 2-byte steps from +6); 8 of A bytes used at runtime; read by Anim_AdvanceByDistance, Anim_ApplyStep, Anim_Advance; jt[2261] used by Magneto_StartShot, Magneto_StartBomb
 	incrom	$1CD7B6,$A
-Tbl_PsylockeAnim8:	; animation script (byte flags, byte steps, ..., 2-byte steps from +6); E of 10 bytes used at runtime; read by Anim_ApplyStep; jt[2262] used by sub_1CE22C, sub_1CE826
+Tbl_PsylockeAnim8:	; animation script (byte flags, byte steps, ..., 2-byte steps from +6); E of 10 bytes used at runtime; read by Anim_ApplyStep; jt[2262] used by Magneto_FireShot, Magneto_SpawnBomb
 	incrom	$1CD7C0,$10
-Tbl_Psylocke5:	; format not established; never read in the corpus; jt[2263] used by loc_1590E4
+Tbl_Psylocke5:	; format not established; never read in the corpus; jt[2263] used by Magneto_AirShotAnim_Case3
 	incrom	$1CD7D0,$A
-Tbl_Psylocke6:	; format not established; never read in the corpus; jt[2264] used by loc_15918A
+Tbl_Psylocke6:	; format not established; never read in the corpus; jt[2264] used by Magneto_AirShotEndAnim_Case3
 	incrom	$1CD7DA,$10
-Tbl_Psylocke7:	; format not established; never read in the corpus; jt[2265] used by loc_1590E4
+Tbl_Psylocke7:	; format not established; never read in the corpus; jt[2265] used by Magneto_AirShotAnim_Case3
 	incrom	$1CD7EA,$A
-Tbl_Psylocke8:	; format not established; never read in the corpus; jt[2266] used by loc_15918A
+Tbl_Psylocke8:	; format not established; never read in the corpus; jt[2266] used by Magneto_AirShotEndAnim_Case3
 	incrom	$1CD7F4,$10
-Tbl_PsylockeAnim9:	; animation script (byte flags, byte steps, ..., 2-byte steps from +6); 8 of A bytes used at runtime; read by Anim_AdvanceByDistance, Anim_ApplyStep, Anim_Advance; jt[2267] used by loc_1590DA, loc_15910C
+Tbl_PsylockeAnim9:	; animation script (byte flags, byte steps, ..., 2-byte steps from +6); 8 of A bytes used at runtime; read by Anim_AdvanceByDistance, Anim_ApplyStep, Anim_Advance; jt[2267] used by Magneto_AirShotAnim_Case2, Magneto_AirShotAnim_Case7
 	incrom	$1CD804,$A
-Tbl_PsylockeAnim10:	; animation script (byte flags, byte steps, ..., 2-byte steps from +6); E of 10 bytes used at runtime; read by Anim_ApplyStep, Anim_AdvanceByDistance, Anim_Advance; jt[2268] used by loc_159180, loc_1591B2
+Tbl_PsylockeAnim10:	; animation script (byte flags, byte steps, ..., 2-byte steps from +6); E of 10 bytes used at runtime; read by Anim_ApplyStep, Anim_AdvanceByDistance, Anim_Advance; jt[2268] used by Magneto_AirShotEndAnim_Case2, Magneto_AirShotEndAnim_Case7
 	incrom	$1CD80E,$10
-Tbl_PsylockeAnim11:	; animation script (byte flags, byte steps, ..., 2-byte steps from +6); 8 of A bytes used at runtime; read by Anim_ApplyStep, Anim_AdvanceByDistance, Anim_Advance; jt[2269] used by loc_1590C6, loc_15910C
+Tbl_PsylockeAnim11:	; animation script (byte flags, byte steps, ..., 2-byte steps from +6); 8 of A bytes used at runtime; read by Anim_ApplyStep, Anim_AdvanceByDistance, Anim_Advance; jt[2269] used by Magneto_AirShotAnim_Case0, Magneto_AirShotAnim_Case7
 	incrom	$1CD81E,$A
-Tbl_PsylockeAnim12:	; animation script (byte flags, byte steps, ..., 2-byte steps from +6); E of 10 bytes used at runtime; read by Anim_ApplyStep; jt[2270] used by loc_15916C, loc_1591B2
+Tbl_PsylockeAnim12:	; animation script (byte flags, byte steps, ..., 2-byte steps from +6); E of 10 bytes used at runtime; read by Anim_ApplyStep; jt[2270] used by Magneto_AirShotEndAnim_Case0, Magneto_AirShotEndAnim_Case7
 	incrom	$1CD828,$10
-Tbl_PsylockeAnim13:	; animation script (byte flags, byte steps, ..., 2-byte steps from +6); 8 of A bytes used at runtime; read by Anim_ApplyStep, Anim_AdvanceByDistance, Anim_Advance; jt[2271] used by loc_1590C6, loc_159120
+Tbl_PsylockeAnim13:	; animation script (byte flags, byte steps, ..., 2-byte steps from +6); 8 of A bytes used at runtime; read by Anim_ApplyStep, Anim_AdvanceByDistance, Anim_Advance; jt[2271] used by Magneto_AirShotAnim_Case0, Magneto_AirShotAnim_Case9
 	incrom	$1CD838,$A
-Tbl_PsylockeAnim14:	; animation script (byte flags, byte steps, ..., 2-byte steps from +6); E of 10 bytes used at runtime; read by Anim_ApplyStep; jt[2272] used by loc_15916C, loc_1591C6
+Tbl_PsylockeAnim14:	; animation script (byte flags, byte steps, ..., 2-byte steps from +6); E of 10 bytes used at runtime; read by Anim_ApplyStep; jt[2272] used by Magneto_AirShotEndAnim_Case0, Magneto_AirShotEndAnim_Case9
 	incrom	$1CD842,$10
-Tbl_PsylockeAnim15:	; animation script (byte flags, byte steps, ..., 2-byte steps from +6); A of C bytes used at runtime; read by Anim_ApplyStep, Anim_AdvanceByDistance, Anim_Advance; jt[2273] used by sub_1CE34E
+Tbl_PsylockeAnim15:	; animation script (byte flags, byte steps, ..., 2-byte steps from +6); A of C bytes used at runtime; read by Anim_ApplyStep, Anim_AdvanceByDistance, Anim_Advance; jt[2273] used by Magneto_StateAim
 	incrom	$1CD852,$C
-Tbl_Psylocke9:	; format not established; never read in the corpus; jt[2274] used by sub_1CE34E
+Tbl_Psylocke9:	; format not established; never read in the corpus; jt[2274] used by Magneto_StateAim
 	incrom	$1CD85E,$C
-Tbl_Psylocke10:	; format not established; never read in the corpus; jt[2275] used by sub_1CE34E
+Tbl_Psylocke10:	; format not established; never read in the corpus; jt[2275] used by Magneto_StateAim
 	incrom	$1CD86A,$C
-Tbl_Psylocke11:	; format not established; never read in the corpus; jt[2276] used by sub_1CE34E
+Tbl_Psylocke11:	; format not established; never read in the corpus; jt[2276] used by Magneto_StateAim
 	incrom	$1CD876,$C
 Tbl_PsylockeAnim16:	; animation script (byte flags, byte steps, ..., 2-byte steps from +6); 12 of 14 bytes used at runtime; read by Anim_ApplyStep, Anim_AdvanceByDistance, Anim_Advance; jt[2277] used by MagnetoBoss_StateOutro
 	incrom	$1CD882,$14
 Tbl_PsylockeAnim17:	; animation script (byte flags, byte steps, ..., 2-byte steps from +6); 6 of 8 bytes used at runtime; read by Anim_ApplyStep, Anim_AdvanceByDistance, Anim_Advance; jt[2278] used by MagnetoBoss_StateOutroLoop
 	incrom	$1CD896,$8
-Tbl_PsylockeAnim18:	; animation script (byte flags, byte steps, ..., 2-byte steps from +6); 8 of A bytes used at runtime; read by Anim_ApplyStep, Anim_AdvanceByDistance, Anim_Advance; jt[2279] used by sub_1580B2
+Tbl_PsylockeAnim18:	; animation script (byte flags, byte steps, ..., 2-byte steps from +6); 8 of A bytes used at runtime; read by Anim_ApplyStep, Anim_AdvanceByDistance, Anim_Advance; jt[2279] used by MagneticGlob_SetAnimForAngle
 	incrom	$1CD89E,$A
-Tbl_PsylockeAnim19:	; animation script (byte flags, byte steps, ..., 2-byte steps from +6); 8 of A bytes used at runtime; read by Anim_ApplyStep, Anim_AdvanceByDistance, Anim_Advance; jt[2280] used by sub_1580B2
+Tbl_PsylockeAnim19:	; animation script (byte flags, byte steps, ..., 2-byte steps from +6); 8 of A bytes used at runtime; read by Anim_ApplyStep, Anim_AdvanceByDistance, Anim_Advance; jt[2280] used by MagneticGlob_SetAnimForAngle
 	incrom	$1CD8A8,$A
-Tbl_Psylocke12:	; format not established; never read in the corpus; jt[2281] used by sub_1580B2
+Tbl_Psylocke12:	; format not established; never read in the corpus; jt[2281] used by MagneticGlob_SetAnimForAngle
 	incrom	$1CD8B2,$A
-Tbl_Psylocke13:	; format not established; never read in the corpus; jt[2282] used by sub_1580B2
+Tbl_Psylocke13:	; format not established; never read in the corpus; jt[2282] used by MagneticGlob_SetAnimForAngle
 	incrom	$1CD8BC,$A
-Tbl_PsylockeAnim20:	; animation script (byte flags, byte steps, ..., 2-byte steps from +6); 8 of A bytes used at runtime; read by Anim_ApplyStep, Anim_AdvanceByDistance, Anim_Advance; jt[2283] used by sub_1580B2
+Tbl_PsylockeAnim20:	; animation script (byte flags, byte steps, ..., 2-byte steps from +6); 8 of A bytes used at runtime; read by Anim_ApplyStep, Anim_AdvanceByDistance, Anim_Advance; jt[2283] used by MagneticGlob_SetAnimForAngle
 	incrom	$1CD8C6,$A
-Tbl_PsylockeAnim21:	; animation script (byte flags, byte steps, ..., 2-byte steps from +6); C of E bytes used at runtime; read by Anim_ApplyStep, Anim_AdvanceByDistance, Anim_Advance; jt[2284] used by sub_158E32, sub_158FE4
+Tbl_PsylockeAnim21:	; animation script (byte flags, byte steps, ..., 2-byte steps from +6); C of E bytes used at runtime; read by Anim_ApplyStep, Anim_AdvanceByDistance, Anim_Advance; jt[2284] used by FluxBomb_StartThrown, FluxBomb_StartHeld
 	incrom	$1CD8D0,$E
-Tbl_PsylockeAnim22:	; animation script (byte flags, byte steps, ..., 2-byte steps from +6); 12 of 14 bytes used at runtime; read by Anim_ApplyStep, Anim_AdvanceByDistance, Anim_Advance; jt[2285] used by sub_158E78, sub_159030
+Tbl_PsylockeAnim22:	; animation script (byte flags, byte steps, ..., 2-byte steps from +6); 12 of 14 bytes used at runtime; read by Anim_ApplyStep, Anim_AdvanceByDistance, Anim_Advance; jt[2285] used by FluxBomb_StateThrown, FluxBomb_StateHeld
 	incrom	$1CD8DE,$14
-Tbl_PsylockeAnim23:	; animation script (byte flags, byte steps, ..., 2-byte steps from +6); 34 of 36 bytes used at runtime; read by Anim_ApplyStep, sub_158536, sub_158992; jt[2286] used by sub_158F32
+Tbl_PsylockeAnim23:	; animation script (byte flags, byte steps, ..., 2-byte steps from +6); 34 of 36 bytes used at runtime; read by Anim_ApplyStep, FluxBomb_StartImplode, FluxBomb_StartBurst; jt[2286] used by FluxBomb_Detonate
 	incrom	$1CD8F2,$36
-Tbl_PsylockeAnim24:	; animation script (byte flags, byte steps, ..., 2-byte steps from +6); 2E of 2E bytes used at runtime; read by Anim_ApplyStep, sub_158536, sub_158992; jt[2287,2288] used by sub_158474, sub_158536
+Tbl_PsylockeAnim24:	; animation script (byte flags, byte steps, ..., 2-byte steps from +6); 2E of 2E bytes used at runtime; read by Anim_ApplyStep, FluxBomb_StartImplode, FluxBomb_StartBurst; jt[2287,2288] used by FluxBomb_StepImplode, FluxBomb_StartImplode
 	incrom	$1CD928,$2E
-Tbl_PsylockeAnim25:	; animation script (byte flags, byte steps, ..., 2-byte steps from +6); 1A of 46 bytes used at runtime; read by Anim_ApplyStep, sub_158536, sub_158992; jt[2289,2290] used by sub_1583D6, sub_158992, sub_158C0E
+Tbl_PsylockeAnim25:	; animation script (byte flags, byte steps, ..., 2-byte steps from +6); 1A of 46 bytes used at runtime; read by Anim_ApplyStep, FluxBomb_StartImplode, FluxBomb_StartBurst; jt[2289,2290] used by FluxBomb_StepBurst, FluxBomb_StartBurst, FluxBomb_DrawBurst
 	incrom	$1CD956,$46
 	incrom	$1CD99C,$5E
-Art_PsylockeTiles:	; uncompressed 4bpp tiles DMA'd to VRAM; 20 of 20 bytes used at runtime; read by VDP_FlushDmaQueue; DMA to VRAM $8400-8420; jt[2292] used by sub_158536, sub_158992
+Art_PsylockeTiles:	; uncompressed 4bpp tiles DMA'd to VRAM; 20 of 20 bytes used at runtime; read by VDP_FlushDmaQueue; DMA to VRAM $8400-8420; jt[2292] used by FluxBomb_StartImplode, FluxBomb_StartBurst
 	incrom	$1CD9FA,$20
-Art_PsylockeTiles2:	; uncompressed 4bpp tiles DMA'd to VRAM; 20 of 20 bytes used at runtime; read by VDP_FlushDmaQueue; DMA to VRAM $83E0-8400; jt[2293] used by sub_158536, sub_158992
+Art_PsylockeTiles2:	; uncompressed 4bpp tiles DMA'd to VRAM; 20 of 20 bytes used at runtime; read by VDP_FlushDmaQueue; DMA to VRAM $83E0-8400; jt[2293] used by FluxBomb_StartImplode, FluxBomb_StartBurst
 	incrom	$1CDA1A,$20
 	include "src/f/1CDA3A.asm"
 	include "src/f/1CDA48.asm"

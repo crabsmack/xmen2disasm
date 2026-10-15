@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_1CE778	[link-after-rts]
+; Magneto_StateHoldBomb - holding the flux bomb: it stays in Magneto's control while A is held; release lets it go
+; In:  8(a6) = player
+; Out: d0
+; Evidence: A released or airborne -> bomb +$FE = 0, +$BE = 0, recover (crouched or standing); else stay
 ; ---------------------------------------------------------------------------
-sub_1CE778:
+Magneto_StateHoldBomb:
 	link.w	a6,#$0
 	movem.l	d3/a4,-(a7)
 	movea.l	$8(a6),a4
@@ -53,7 +56,7 @@ loc_1CE800:
 	bra.s	loc_1CE81C
 loc_1CE80A:
 	clr.w	$6C(a4)
-	lea.l	sub_1CE778(pc),a0
+	lea.l	Magneto_StateHoldBomb(pc),a0
 	move.l	a0,$5C(a4)
 	moveq	#$8,d0
 	and.w	$4(a4),d0

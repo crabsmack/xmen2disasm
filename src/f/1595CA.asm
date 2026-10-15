@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; loc_1595CA	[static: switch-table case target (tools/switches.py: table after `move.w T(pc,dN.w),dN / jmp T-2(pc,dN.w)`, size from the cmpi bound)]
+; Magneto_ShotOrigin_Case8 - Magneto_ShotOrigin switch case 8 (with the cases that fall into it): set this case's results, then the common exit
+; In:  a6 frame of Magneto_ShotOrigin
+; Out: d0 / output pointers as set by the case
+; Evidence: jump-table target of the switch in Magneto_ShotOrigin (Sw_ table in xmen2.asm)
 ; ---------------------------------------------------------------------------
-loc_1595CA:
+Magneto_ShotOrigin_Case8:
 	move.w	#$45,(a4)
 	move.w	#$1,(a3)
 	movea.l	$14(a6),a0

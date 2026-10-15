@@ -2,7 +2,7 @@
 ; MagnetoBoss_StateShootRecover - MAGNETOBOSS: recover pose for the shot direction, then return to the resume state +$90
 ; In:  8(a6) = this
 ; Out: none
-; Evidence: sub_159138(dir) animation
+; Evidence: Magneto_AirShotEndAnim(dir) animation
 ; ---------------------------------------------------------------------------
 MagnetoBoss_StateShootRecover:
 	link.w	a6,#$0
@@ -11,7 +11,7 @@ MagnetoBoss_StateShootRecover:
 	moveq	#$0,d0
 	move.b	$9C(a4),d0
 	move.l	d0,-(a7)
-	jsr	$3E32(a5)	; -> sub_159138
+	jsr	$3E32(a5)	; -> Magneto_AirShotEndAnim
 	movea.l	d0,a3
 	move.l	a3,-(a7)
 	move.l	a4,-(a7)

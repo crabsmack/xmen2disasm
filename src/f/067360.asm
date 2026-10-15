@@ -8,5 +8,5 @@ ScalingActor_SetFrame_part2:
 	ext.l	d7
 	move.l	d7,-(a7)
 	move.l	a4,-(a7)
-	jsr	$3E5A(a5)	; -> sub_159A46
+	jsr	$3E5A(a5)	; -> Magneto_SetFrame
 	addq.w	#$8,a7

@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_158876	[link-after-rts]
+; FluxBomb_DamageArea - flux bomb blast: hit every vulnerable body within range (bigger when strong) and the tile hooks in that area
+; In:  8(a6) = bomb
+; Out: none
+; Evidence: range +/-$41 (strength 2) or +/-$A0 (strong, 4); g_HitListEnemyBody (player bomb, type 12) else g_HitListPlayerBody (type 4); skips bodies with +$6A; vtable +$22 Attack; FluxBomb_HitTilesInArea
 ; ---------------------------------------------------------------------------
-sub_158876:
+FluxBomb_DamageArea:
 	link.w	a6,#$FFF4
 	movem.l	d4-d7/a3-a4,-(a7)
 	movea.l	$8(a6),a0
@@ -91,7 +94,7 @@ loc_158968:
 	ext.l	d4
 	move.l	d4,-(a7)
 	move.l	$8(a6),-(a7)
-	jsr	sub_158610(pc)
+	jsr	FluxBomb_HitTilesInArea(pc)
 	lea.l	$14(a7),a7
 	movem.l	-$24(a6),d4-d7/a3-a4
 	unlk	a6

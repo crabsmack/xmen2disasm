@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_158E32	[link-after-rts]
+; FluxBomb_StartThrown - thrown bomb (clone's): sound and flight animation
+; In:  8(a6) = bomb
+; Out: d0 = +4 flag 8
+; Evidence: sound $7A, animation (jt $D8D0 thunk), state FluxBomb_StateThrown
 ; ---------------------------------------------------------------------------
-sub_158E32:
+FluxBomb_StartThrown:
 	link.w	a6,#$0
 	move.l	a4,-(a7)
 	movea.l	$8(a6),a4
@@ -17,7 +20,7 @@ sub_158E32:
 	jsr	$4E42(a5)	; -> Obj_SetAnim
 	lea.l	$10(a7),a7
 	clr.w	$6C(a4)
-	lea.l	sub_158E78(pc),a0
+	lea.l	FluxBomb_StateThrown(pc),a0
 	move.l	a0,$5C(a4)
 	moveq	#$8,d0
 	and.w	$4(a4),d0

@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_1CEC42	[jt 2310]
+; Magneto_Reset - MAGNETO slot +$6A: empty Reset
+; In:  none
+; Out: none
+; Evidence: bare link/unlk/rts; called by Magneto_Init
 ; ---------------------------------------------------------------------------
-sub_1CEC42:
+Magneto_Reset:
 	link.w	a6,#$0
 	unlk	a6
 	rts

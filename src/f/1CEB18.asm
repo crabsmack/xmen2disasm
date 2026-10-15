@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_1CEB18	[jt 2306]
+; Magneto_Init - MAGNETO slot +$12: XPLAYER Init plus Magneto's record, states and sprite
+; In:  8(a6) = player, $C/$10/$14(a6) = Init args
+; Out: none
+; Evidence: parent +$12, own +$6A Reset; +$8C = char record (jt $D99C thunk); +$60 = XPlayer_StateHurt; Spr_Init at +$2E with the per-player VRAM base
 ; ---------------------------------------------------------------------------
-sub_1CEB18:
+Magneto_Init:
 	link.w	a6,#$0
 	movem.l	d3/a4,-(a7)
 	movea.l	$8(a6),a4

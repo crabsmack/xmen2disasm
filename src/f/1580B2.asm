@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_1580B2	[link-after-rts]
+; MagneticGlob_SetAnimForAngle - choose the bolt animation and flip for its flight angle (8 sectors)
+; In:  8(a6) = bolt
+; Out: none
+; Evidence: angle +$92 >> 8 in 22/45-degree sectors -> +$9E animation (jt $495A-$497A data) and +$A2 flip
 ; ---------------------------------------------------------------------------
-sub_1580B2:
+MagneticGlob_SetAnimForAngle:
 	link.w	a6,#$0
 	movem.l	d7/a4,-(a7)
 	movea.l	$8(a6),a4

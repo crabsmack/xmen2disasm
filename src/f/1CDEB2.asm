@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_1CDEB2	[link-after-rts]
+; Magneto_StateAirShot - air shot wind-up: when the animation ends fire a magnetic bolt in the aim direction
+; In:  8(a6) = player
+; Out: d0
+; Evidence: grounded -> control; anim done -> Magneto_SpawnShot(x, y, dir +$BC, player, standing, priority, air, VRAM $7BE), Obj_SetAnim(Magneto_AirShotEndAnim(dir)), state Magneto_StateAirShotEnd
 ; ---------------------------------------------------------------------------
-sub_1CDEB2:
+Magneto_StateAirShot:
 	link.w	a6,#$FFFC
 	movem.l	d3/a3-a4,-(a7)
 	movea.l	$8(a6),a4
@@ -12,7 +15,7 @@ sub_1CDEB2:
 	move.l	d0,-(a7)
 	move.l	d0,-(a7)
 	move.l	a4,-(a7)
-	jsr	sub_1CDA48(pc)
+	jsr	Magneto_HoverDamp(pc)
 	lea.l	$C(a7),a7
 	bra.w	loc_1CDF5E
 loc_1CDEDC:
@@ -72,7 +75,7 @@ loc_1CDF5E:
 	move.w	$BC(a4),d0
 	ext.l	d0
 	move.l	d0,-(a7)
-	jsr	$3E32(a5)	; -> sub_159138
+	jsr	$3E32(a5)	; -> Magneto_AirShotEndAnim
 	movea.l	d0,a3
 	pea.l	($7BE).w
 	moveq	#$1,d0
@@ -95,14 +98,14 @@ loc_1CDF88:
 	move.l	d2,-(a7)
 	move.l	$C(a4),-(a7)
 	move.l	$8(a4),-(a7)
-	jsr	$3E4A(a5)	; -> sub_1595EE
+	jsr	$3E4A(a5)	; -> Magneto_SpawnShot
 	move.l	d0,-$4(a6)
 	move.l	a3,-(a7)
 	move.l	a4,-(a7)
 	jsr	$4E42(a5)	; -> Obj_SetAnim
 	lea.l	$2C(a7),a7
 	clr.w	$6C(a4)
-	lea.l	sub_1CDDA4(pc),a0
+	lea.l	Magneto_StateAirShotEnd(pc),a0
 	move.l	a0,$5C(a4)
 	moveq	#$8,d0
 	and.w	$4(a4),d0

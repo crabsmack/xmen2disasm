@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_157D5E	[jt 1976]
+; MagneticGlob_Activate - MAGNETICGLOB slot +$3E: sprite slot, priority from the live player, timer, draw list
+; In:  8(a6) = bolt
+; Out: none
+; Evidence: Spr_Init with VRAM base +$A4; +$2E bit 2 copied from player 1 (or 2) sprite flags; Timer_Start; DrawList_Add
 ; ---------------------------------------------------------------------------
-sub_157D5E:
+MagneticGlob_Activate:
 	link.w	a6,#$0
 	move.l	a4,-(a7)
 	movea.l	$8(a6),a4

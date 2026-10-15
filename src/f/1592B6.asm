@@ -1,15 +1,18 @@
 ; ---------------------------------------------------------------------------
-; loc_1592B6	[static: switch-table case target (tools/switches.py: table after `move.w T(pc,dN.w),dN / jmp T-2(pc,dN.w)`, size from the cmpi bound)]
+; Magneto_ShotEndAnim_Case4 - Magneto_ShotEndAnim switch case 4 (with the cases that fall into it): set this case's results, then the common exit
+; In:  a6 frame of Magneto_ShotEndAnim
+; Out: d0 / output pointers as set by the case
+; Evidence: jump-table target of the switch in Magneto_ShotEndAnim (Sw_ table in xmen2.asm)
 ; ---------------------------------------------------------------------------
-loc_1592B6:
+Magneto_ShotEndAnim_Case4:
 	lea.l	$468A(a5),a0
 	movea.l	$2(a0),a4
-	bra.s	loc_1592EC
+	bra.s	Magneto_ShotEndAnim_Result
 loc_1592C0:
 	lea.l	$468A(a5),a0
 	movea.l	$2(a0),a4
-	bra.s	loc_1592EC
+	bra.s	Magneto_ShotEndAnim_Result
 loc_1592CA:
 	lea.l	$469A(a5),a0
 	movea.l	$2(a0),a4
-	bra.s	loc_1592EC
+	bra.s	Magneto_ShotEndAnim_Result

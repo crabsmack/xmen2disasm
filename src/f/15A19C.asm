@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_15A19C	[jt 2005]
+; Obj_RideRail - move an object along a rail segment (types '$', '#', '!', '"') for n steps, hopping to linked segments at the ends
+; In:  8(a6) = object, $C(a6) = word steps
+; Out: d0
+; Evidence: type '$'/'#' move along y by vy (x by slope seg+4), '!'/'"' along x by vx; position +$72 vs length seg+6; links +$10/+$11 into g_Segs
 ; ---------------------------------------------------------------------------
-sub_15A19C:
+Obj_RideRail:
 	link.w	a6,#$0
 	movem.l	d7/a3-a4,-(a7)
 	move.w	$E(a6),d7

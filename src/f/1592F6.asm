@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_1592F6	[link-after-rts]
+; Magneto_ShotOriginCrouch - crouched shot origin: hand offset, angle and damage type for directions 2 (left) and 7 (right)
+; In:  8(a6) = byte dir, $C/$10(a6) = pointers dx, dy, $14(a6) = pointer angle (8.8 degrees), $18(a6) = pointer damage type
+; Out: d0
+; Evidence: dir 2: (-$59, $2E), 180 deg, type 9; dir 7: ($59, $2E), 0 deg, type 10
 ; ---------------------------------------------------------------------------
-sub_1592F6:
+Magneto_ShotOriginCrouch:
 	link.w	a6,#$0
 	movem.l	d7/a3-a4,-(a7)
 	movea.l	$10(a6),a3

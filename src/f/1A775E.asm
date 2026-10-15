@@ -16,7 +16,7 @@ Nightcrawler_StateTeleport:
 	sub.l	d1,d7
 	move.w	#$3C,$6A(a4)
 	move.l	g_Camera(a5),-(a7)
-	jsr	$3EA2(a5)	; -> sub_159ECC
+	jsr	$3EA2(a5)	; -> Cam_ClampLookToPlayers
 	tst.b	g_TwoPlayerStep(a5)
 	beq.s	loc_1A7792
 	moveq	#$4,d0

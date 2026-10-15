@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_1595EE	[jt 1989]
+; Magneto_SpawnShot - create the MAGNETICGLOB bolt at Magneto's hand for a direction; cancel it if it starts inside a wall
+; In:  8(a6) = long x, $C(a6) = long y, $10(a6) = byte dir, $14(a6) = byte by player, $18(a6) = byte crouch, $1C(a6) = byte priority, $20(a6) = byte air, $24(a6) = word VRAM base
+; Out: d0 = bolt object or 0
+; Evidence: origin from Magneto_ShotOrigin/Crouch/Air; MAGNETICGLOB ($159B2C) New; speed $100 (player) or $400; angle +$92, MagneticGlob_SetAnimForAngle; type +$71 (8 for clones); $15CECC wall test ahead -> Kill, else sound $78; also used by the EVILMAGNETO clone
 ; ---------------------------------------------------------------------------
-sub_1595EE:
+Magneto_SpawnShot:
 	link.w	a6,#$FFE2
 	movem.l	d3-d7/a4,-(a7)
 	move.b	$13(a6),d6
@@ -33,7 +36,7 @@ loc_159620:
 	ext.w	d6
 	ext.l	d6
 	move.l	d6,-(a7)
-	jsr	sub_159354(pc)
+	jsr	Magneto_ShotOriginAir(pc)
 	lea.l	$14(a7),a7
 	bra.s	loc_159696
 loc_159652:
@@ -46,7 +49,7 @@ loc_159652:
 	ext.w	d6
 	ext.l	d6
 	move.l	d6,-(a7)
-	jsr	sub_1592F6(pc)
+	jsr	Magneto_ShotOriginCrouch(pc)
 	lea.l	$14(a7),a7
 	bra.s	loc_159696
 loc_159678:
@@ -57,7 +60,7 @@ loc_159678:
 	ext.w	d6
 	ext.l	d6
 	move.l	d6,-(a7)
-	jsr	sub_1594C0(pc)
+	jsr	Magneto_ShotOrigin(pc)
 	lea.l	$14(a7),a7
 loc_159696:
 	moveq	#$0,d0
@@ -97,7 +100,7 @@ loc_159696:
 	move.l	-$14(a6),$92(a4)
 	move.l	d4,$96(a4)
 	move.l	a4,-(a7)
-	jsr	sub_1580B2(pc)
+	jsr	MagneticGlob_SetAnimForAngle(pc)
 	tst.b	d7
 	addq.w	#$4,a7
 	beq.s	loc_159722

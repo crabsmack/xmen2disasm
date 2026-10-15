@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_159030	[link-after-rts]
+; FluxBomb_StateHeld - held bomb: fly on while Magneto holds A (+$FE) and time remains, then implode
+; In:  8(a6) = bomb
+; Out: d0
+; Evidence: +$FE == 0 or +$6E < 1 -> stop, implode animation, FluxBomb_StartImplode, FluxBomb_StateImplode
 ; ---------------------------------------------------------------------------
-sub_159030:
+FluxBomb_StateHeld:
 	link.w	a6,#$0
 	move.l	a4,-(a7)
 	movea.l	$8(a6),a4
@@ -10,7 +13,7 @@ sub_159030:
 	tst.w	$6E(a4)
 	ble.s	loc_15905A
 	clr.w	$6C(a4)
-	lea.l	sub_159030(pc),a0
+	lea.l	FluxBomb_StateHeld(pc),a0
 	move.l	a0,$5C(a4)
 	moveq	#$8,d0
 	and.w	$4(a4),d0
@@ -22,10 +25,10 @@ loc_15905A:
 	move.l	a4,-(a7)
 	jsr	$4E42(a5)	; -> Obj_SetAnim
 	move.l	a4,-(a7)
-	jsr	sub_158536(pc)
+	jsr	FluxBomb_StartImplode(pc)
 	lea.l	$C(a7),a7
 	clr.w	$6C(a4)
-	lea.l	sub_158EEE(pc),a0
+	lea.l	FluxBomb_StateImplode(pc),a0
 	move.l	a0,$5C(a4)
 	moveq	#$8,d0
 	and.w	$4(a4),d0

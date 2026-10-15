@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_158610	[link-after-rts]
+; FluxBomb_HitTilesInArea - run the map-tile hooks for every hooked tile in the blast rectangle (spiralling out from the bomb), once per hook type
+; In:  8(a6) = bomb, $C/$10/$14/$18(a6) = words left, top, right, bottom
+; Out: none
+; Evidence: clipped to the screen; 32-px cells via the map row table ($FFC78E/$FFC77C, or the BG map when $FFCC36); tile bits $3800 -> hook index into $FFC708; a hook returning 0 stops further calls of that type
 ; ---------------------------------------------------------------------------
-sub_158610:
+FluxBomb_HitTilesInArea:
 	link.w	a6,#$FFE2
 	movem.l	d3-d7/a3-a4,-(a7)
 	move.w	$E(a6),d0

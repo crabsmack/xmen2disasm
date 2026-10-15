@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_158E78	[link-after-rts]
+; FluxBomb_StateThrown - thrown bomb flight: implode when it slows to speed $100 or drops below y $16C
+; In:  8(a6) = bomb
+; Out: d0
+; Evidence: y > $16C00 -> clamp, speed +$8C = $100; speed <= $100 -> stop (+6 $4000), implode animation, FluxBomb_StartImplode, FluxBomb_StateImplode
 ; ---------------------------------------------------------------------------
-sub_158E78:
+FluxBomb_StateThrown:
 	link.w	a6,#$0
 	move.l	a4,-(a7)
 	movea.l	$8(a6),a4
@@ -18,17 +21,17 @@ loc_158E9A:
 	move.l	a4,-(a7)
 	jsr	$4E42(a5)	; -> Obj_SetAnim
 	move.l	a4,-(a7)
-	jsr	sub_158536(pc)
+	jsr	FluxBomb_StartImplode(pc)
 	lea.l	$C(a7),a7
 	clr.w	$6C(a4)
-	lea.l	sub_158EEE(pc),a0
+	lea.l	FluxBomb_StateImplode(pc),a0
 	move.l	a0,$5C(a4)
 	moveq	#$8,d0
 	and.w	$4(a4),d0
 	bra.s	loc_158EE6
 loc_158ED4:
 	clr.w	$6C(a4)
-	lea.l	sub_158E78(pc),a0
+	lea.l	FluxBomb_StateThrown(pc),a0
 	move.l	a0,$5C(a4)
 	moveq	#$8,d0
 	and.w	$4(a4),d0

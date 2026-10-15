@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_157BD2	[jt 1972]
+; MagneticGlob_SetFrame - MAGNETICGLOB slot +$56: set the bolt's frame (graphics stay uploaded when unchanged)
+; In:  8(a6) = bolt, $C(a6) = frame
+; Out: none
+; Evidence: +$2F = frame; +$2E bit 5 by comparison with +$38
 ; ---------------------------------------------------------------------------
-sub_157BD2:
+MagneticGlob_SetFrame:
 	link.w	a6,#$0
 	movem.l	d7/a3-a4,-(a7)
 	movea.l	$8(a6),a3

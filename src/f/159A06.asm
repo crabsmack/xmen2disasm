@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_159A06	[link-after-rts]
+; Magneto_FrameInBank - frame number within its Magneto sprite bank
+; In:  8(a6) = word frame
+; Out: d0 = frame (- $40 or - $60), $FF kept
+; Evidence: companion of Magneto_FrameBank
 ; ---------------------------------------------------------------------------
-sub_159A06:
+Magneto_FrameInBank:
 	link.w	a6,#$0
 	move.l	d7,-(a7)
 	move.w	$A(a6),d7

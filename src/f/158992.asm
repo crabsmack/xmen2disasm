@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_158992	[link-after-rts]
+; FluxBomb_StartBurst - start the explosion: damage the area and begin the outward particle burst
+; In:  8(a6) = bomb
+; Out: d0
+; Evidence: +$6E = 6 (15 strong), +$100 = 3, FluxBomb_DamageArea, +$101 = 0, particle tiles DMA, particles reset to the centre
 ; ---------------------------------------------------------------------------
-sub_158992:
+FluxBomb_StartBurst:
 	link.w	a6,#$0
 	movem.l	d3/d7/a3-a4,-(a7)
 	movea.l	$8(a6),a0
@@ -22,7 +25,7 @@ loc_1589CE:
 	movea.l	$8(a6),a0
 	move.b	#$3,$100(a0)
 	move.l	$8(a6),-(a7)
-	jsr	sub_158876(pc)
+	jsr	FluxBomb_DamageArea(pc)
 	movea.l	$8(a6),a0
 	clr.b	$101(a0)
 	moveq	#$20,d0

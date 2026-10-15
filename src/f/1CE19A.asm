@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_1CE19A	[jt 2299]
+; Magneto_AirAttackDown - MAGNETO slot +$BE: Down+B in the air: shoot down / down-left / down-right
+; In:  8(a6) = player
+; Out: none
+; Evidence: +$BC = 8 (Right), 1 (Left), else 9/0 by facing; Magneto_StartAirShot
 ; ---------------------------------------------------------------------------
-sub_1CE19A:
+Magneto_AirAttackDown:
 	link.w	a6,#$0
 	movem.l	d3/a4,-(a7)
 	movea.l	$8(a6),a4
@@ -45,10 +48,10 @@ loc_1CE1FE:
 loc_1CE20E:
 	clr.w	$BC(a4)
 loc_1CE212:
-	lea.l	sub_1CDFD2(pc),a0
+	lea.l	Magneto_StartAirShot(pc),a0
 	move.l	a0,$5C(a4)
 	move.l	a4,-(a7)
-	jsr	sub_1CDFD2(pc)
+	jsr	Magneto_StartAirShot(pc)
 	addq.w	#$4,a7
 	movem.l	-$8(a6),d3/a4
 	unlk	a6

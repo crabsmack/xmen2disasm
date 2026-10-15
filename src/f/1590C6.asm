@@ -1,11 +1,14 @@
 ; ---------------------------------------------------------------------------
-; loc_1590C6	[static: switch-table case target (tools/switches.py: table after `move.w T(pc,dN.w),dN / jmp T-2(pc,dN.w)`, size from the cmpi bound)]
+; Magneto_AirShotAnim_Case0 - Magneto_AirShotAnim switch case 0 (with the cases that fall into it): set this case's results, then the common exit
+; In:  a6 frame of Magneto_AirShotAnim
+; Out: d0 / output pointers as set by the case
+; Evidence: jump-table target of the switch in Magneto_AirShotAnim (Sw_ table in xmen2.asm)
 ; ---------------------------------------------------------------------------
-loc_1590C6:
+Magneto_AirShotAnim_Case0:
 	lea.l	$471A(a5),a0
 	movea.l	$2(a0),a4
-	bra.s	loc_15912E
+	bra.s	Magneto_AirShotAnim_Result
 loc_1590D0:
 	lea.l	$470A(a5),a0
 	movea.l	$2(a0),a4
-	bra.s	loc_15912E
+	bra.s	Magneto_AirShotAnim_Result

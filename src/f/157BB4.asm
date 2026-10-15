@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_157BB4	[jt 1970]
+; MagneticGlob_GetSize - MAGNETICGLOB slot +$06: return sizeof(magnetic bolt) = $A6
+; In:  none
+; Out: d0 = $A6
+; Evidence: MAGNETICGLOB descriptor $159B2C (parent RTHETAOBJECT)
 ; ---------------------------------------------------------------------------
-sub_157BB4:
+MagneticGlob_GetSize:
 	link.w	a6,#$0
 	move.l	#$A6,d0
 	unlk	a6

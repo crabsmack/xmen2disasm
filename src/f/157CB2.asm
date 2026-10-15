@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_157CB2	[link-after-rts]
+; MagneticGlob_HitCb - ObjList_ForEachAtPoint callback: the bolt hits a body (TakeDamage with the bolt's type and strength)
+; In:  8(a6) = target, $C/$10(a6) = words point, $14(a6) = bolt
+; Out: d0 = 1 (stop)
+; Evidence: target +$26(target, bolt, bolt+$71, bolt+$70, x, y)
 ; ---------------------------------------------------------------------------
-sub_157CB2:
+MagneticGlob_HitCb:
 	link.w	a6,#$0
 	movem.l	a3-a4,-(a7)
 	movea.l	$8(a6),a3

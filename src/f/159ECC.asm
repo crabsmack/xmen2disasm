@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_159ECC	[jt 2000]
+; Cam_ClampLookToPlayers - fold the camera look offset into its y while keeping every live player inside the dead-zone rows
+; In:  8(a6) = camera
+; Out: none
+; Evidence: look +$5C != 0: +$4A |= $10; new y = y + look clamped by min/max player y minus +$40/+$42, remainder stays in +$5C; called each frame by Nightcrawler's teleport
 ; ---------------------------------------------------------------------------
-sub_159ECC:
+Cam_ClampLookToPlayers:
 	link.w	a6,#$FFFA
 	movem.l	d3-d7/a4,-(a7)
 	movea.l	$8(a6),a4

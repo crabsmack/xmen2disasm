@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_158F68	[link-after-rts]
+; FluxBomb_StateBurst - burst in progress: remove the bomb when the burst ends (phase 4)
+; In:  8(a6) = bomb
+; Out: none
+; Evidence: +$100 == 4 -> vtable +$52 Kill
 ; ---------------------------------------------------------------------------
-sub_158F68:
+FluxBomb_StateBurst:
 	link.w	a6,#$0
 	move.l	a4,-(a7)
 	movea.l	$8(a6),a4

@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_1CE982	[jt 2303]
+; Magneto_GroundSpecial - MAGNETO slot +$DE: A on the ground: flux bomb forward / up-diagonal / down-diagonal
+; In:  8(a6) = player
+; Out: none
+; Evidence: +$10 = 0; +$BC = Up 6/3, Down 8/1, else 7/2; Magneto_StartBomb
 ; ---------------------------------------------------------------------------
-sub_1CE982:
+Magneto_GroundSpecial:
 	link.w	a6,#$0
 	movem.l	d3/a4,-(a7)
 	movea.l	$8(a6),a4
@@ -56,10 +59,10 @@ loc_1CE9FE:
 loc_1CEA0E:
 	move.w	#$2,$BC(a4)
 loc_1CEA14:
-	lea.l	sub_1CE902(pc),a0
+	lea.l	Magneto_StartBomb(pc),a0
 	move.l	a0,$5C(a4)
 	move.l	a4,-(a7)
-	jsr	sub_1CE902(pc)
+	jsr	Magneto_StartBomb(pc)
 	addq.w	#$4,a7
 	movem.l	-$8(a6),d3/a4
 	unlk	a6

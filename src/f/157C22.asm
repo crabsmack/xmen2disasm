@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_157C22	[jt 1973]
+; MagneticGlob_Draw - MAGNETICGLOB slot +$1A: draw the bolt at its screen position
+; In:  8(a6) = bolt
+; Out: none
+; Evidence: Spr_Draw(+$2E, x - g_CameraX, y - g_CameraY)
 ; ---------------------------------------------------------------------------
-sub_157C22:
+MagneticGlob_Draw:
 	link.w	a6,#$0
 	move.l	a4,-(a7)
 	movea.l	$8(a6),a4

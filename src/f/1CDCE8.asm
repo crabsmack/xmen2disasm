@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_1CDCE8	[jt 2296]
+; Magneto_SetAirFrame - MAGNETO slot +$7E: pick the jump frame from the vertical speed
+; In:  8(a6) = player
+; Out: none
+; Evidence: vy bands -1000/-900/-800/-700/-600/200 -> frames $25..$2B
 ; ---------------------------------------------------------------------------
-sub_1CDCE8:
+Magneto_SetAirFrame:
 	link.w	a6,#$0
 	movem.l	d7/a4,-(a7)
 	movea.l	$8(a6),a4

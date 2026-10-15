@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_1598F6	[jt 1990]
+; Magneto_SpawnFluxBomb - create the FLUXBOMB at Magneto's hand for a direction
+; In:  8(a6) = long x, $C(a6) = long y, $10(a6) = byte dir, $14(a6) = byte by player, $18(a6) = byte crouch, $1C(a6) = byte strong
+; Out: d0 = bomb object or 0
+; Evidence: origin from Magneto_BombOrigin/Crouch; FLUXBOMB ($159AB4) New; speed $200 (player) or $400 with -$40; angle +$92; +$FF = strong; used by Magneto_SpawnBomb
 ; ---------------------------------------------------------------------------
-sub_1598F6:
+Magneto_SpawnFluxBomb:
 	link.w	a6,#$FFE8
 	movem.l	d4-d7/a4,-(a7)
 	move.b	$17(a6),d4
@@ -23,7 +26,7 @@ loc_15991C:
 	ext.w	d5
 	ext.l	d5
 	move.l	d5,-(a7)
-	jsr	sub_1597BE(pc)
+	jsr	Magneto_BombOriginCrouch(pc)
 	lea.l	$10(a7),a7
 	bra.s	loc_159958
 loc_15993E:
@@ -33,7 +36,7 @@ loc_15993E:
 	ext.w	d5
 	ext.l	d5
 	move.l	d5,-(a7)
-	jsr	sub_15980C(pc)
+	jsr	Magneto_BombOrigin(pc)
 	lea.l	$10(a7),a7
 loc_159958:
 	moveq	#$0,d0

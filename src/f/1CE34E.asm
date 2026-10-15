@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_1CE34E	[link-after-rts]
+; Magneto_StateAim - ground aiming: while B is held the pad picks one of 8 directions (aim pose); releasing B shoots
+; In:  8(a6) = player
+; Out: d0
+; Evidence: airborne -> control; C -> Jump; Up/Down/none x Left/Right choose +$BC (Up 4/5 or 3/6, Down 1/8, level 2/7) and the aim pose (jt $492A/$4932/$493A/$4942 data); B released -> Magneto_StartShot
 ; ---------------------------------------------------------------------------
-sub_1CE34E:
+Magneto_StateAim:
 	link.w	a6,#$0
 	movem.l	d3/a3-a4,-(a7)
 	movea.l	$8(a6),a4
@@ -140,10 +143,10 @@ loc_1CE4AA:
 loc_1CE4BC:
 	move.w	#$3,$BC(a4)
 loc_1CE4C2:
-	lea.l	sub_1CE2CE(pc),a0
+	lea.l	Magneto_StartShot(pc),a0
 	move.l	a0,$5C(a4)
 	move.l	a4,-(a7)
-	jsr	sub_1CE2CE(pc)
+	jsr	Magneto_StartShot(pc)
 	addq.w	#$4,a7
 	bra.w	loc_1CE60E
 loc_1CE4D6:
@@ -171,10 +174,10 @@ loc_1CE4FE:
 loc_1CE510:
 	move.w	#$4,$BC(a4)
 loc_1CE516:
-	lea.l	sub_1CE2CE(pc),a0
+	lea.l	Magneto_StartShot(pc),a0
 	move.l	a0,$5C(a4)
 	move.l	a4,-(a7)
-	jsr	sub_1CE2CE(pc)
+	jsr	Magneto_StartShot(pc)
 	addq.w	#$4,a7
 	bra.w	loc_1CE60E
 loc_1CE52A:
@@ -214,10 +217,10 @@ loc_1CE570:
 loc_1CE582:
 	move.w	#$1,$BC(a4)
 loc_1CE588:
-	lea.l	sub_1CE2CE(pc),a0
+	lea.l	Magneto_StartShot(pc),a0
 	move.l	a0,$5C(a4)
 	move.l	a4,-(a7)
-	jsr	sub_1CE2CE(pc)
+	jsr	Magneto_StartShot(pc)
 	addq.w	#$4,a7
 	bra.s	loc_1CE60E
 loc_1CE59A:
@@ -245,10 +248,10 @@ loc_1CE5C0:
 loc_1CE5D2:
 	move.w	#$2,$BC(a4)
 loc_1CE5D8:
-	lea.l	sub_1CE2CE(pc),a0
+	lea.l	Magneto_StartShot(pc),a0
 	move.l	a0,$5C(a4)
 	move.l	a4,-(a7)
-	jsr	sub_1CE2CE(pc)
+	jsr	Magneto_StartShot(pc)
 	addq.w	#$4,a7
 	bra.s	loc_1CE60E
 loc_1CE5EA:

@@ -363,6 +363,15 @@ _(module → functions, globals, data; add as you learn them)_
   sound, +$2E landing sound, +$30.. animation offsets (+$30/+$32/+$34 air attack, +$36/+$38 combo, +$3A/+$3C
   up/down attack, +$3E run, +$42 stand, +$44 idle, +$46 crouch, +$48 look up, +$4A look down, +$4C double
   jump, +$5A/+$5C float fall), +$4E/+$50 double-jump vy window, +$52 boost, +$54/+$56 double-jump steer.
+- **Character specials (w140b)**: Beast stomp + ground shockwaves (strong only above 7 health), down-air
+  dive; Wolverine claw climb on walls/ceilings, healing factor in `Wolverine_Update` (every 900 frames
+  below 3 units), lunge/leap slashes; Nightcrawler teleport (direction from the pad, distance from the
+  meter +$9E, palette flash when strong); Psylocke psi dash/blade (damage types $D-$F only hurt targets
+  with +6 flag $100), crouch slide; Magneto 8-way aimed bolts (`Magneto_SpawnShot` -> MAGNETICGLOB, single
+  static object `$FFE8AE`; aim index +$BC: 0/9 down, 1/8 down-diagonal, 2/7 level, 3/6 up-diagonal, 4/5
+  up, left/right) and the held FLUXBOMB (`$FFE7AC`, 16-particle implode/burst, area damage + map-tile
+  hooks), A in the air toggles hover. The EVILMAGNETO clone reuses the same spawners. "Strong" versions
+  of most specials need health > $700.
 - **RNG (w140b)**: `Rand_Next` (`$1600AA`) XORs three lagged word tables (`Tbl_RandXor1-3`) with its history
   (-$7AA/-$7AC), indexes -$7B2/-$7B0/-$7AE; returns 0..$FFF. `Rand_Seed(word)`.
 

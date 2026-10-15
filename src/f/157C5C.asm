@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_157C5C	[jt 1974]
+; MagneticGlob_New - MAGNETICGLOB slot +$0E: (re)use the single static bolt object: kill the old one, Init and Activate
+; In:  8(a6) = unused, $C(a6) = descriptor, $10..$18(a6) = Init args
+; Out: d0 = $FFE8AE
+; Evidence: if $FFE8B2 bit 15 -> Kill; +0 = descriptor, +$12 Init, +$3E Activate
 ; ---------------------------------------------------------------------------
-sub_157C5C:
+MagneticGlob_New:
 	link.w	a6,#$0
 	move.l	a4,-(a7)
 	lea.l	-$1952(a5),a4

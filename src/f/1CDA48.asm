@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_1CDA48	[link-after-rts]
+; Magneto_HoverDamp - damp Magneto's velocity while hovering (x friction, small vertical bob) and optionally face the held direction
+; In:  8(a6) = player, $C(a6) = byte stop slow x, $10(a6) = byte face pad direction
+; Out: d0
+; Evidence: |vx| >= $40 -> accel -vx/8 else (flag) stop; |vy| >= $40 -> accel -vy/8 else +/-1 bob; used by Magneto_AirSteer and the air-shot states
 ; ---------------------------------------------------------------------------
-sub_1CDA48:
+Magneto_HoverDamp:
 	link.w	a6,#$0
 	movem.l	d3/d6-d7/a4,-(a7)
 	movea.l	$8(a6),a4
