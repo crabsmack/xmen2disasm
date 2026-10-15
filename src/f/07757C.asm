@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_07757C	[link-after-rts]
+; CloneA1_LoadResources - add two CloneA1 sprite definitions (jt $3B82 count 1, jt $133E98 count 3), storing their ids in $FFE782/$FFE778
+; In:  none
+; Out: none
+; Evidence: two SprDef_Add calls (jt $4E52)
 ; ---------------------------------------------------------------------------
-sub_07757C:
+CloneA1_LoadResources:
 	link.w	a6,#$0
 	moveq	#$1,d0
 	move.l	d0,-(a7)

@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_05ACAE	[link-after-rts]
+; BaniMazaB2_InitPalette - copy 16 colours (jt $525CE+4, same table as BaniMazaA1) into palette line 3
+; In:  none
+; Out: none
+; Evidence: writes $FFC8E0..$FFC8FE
 ; ---------------------------------------------------------------------------
-sub_05ACAE:
+BaniMazaB2_InitPalette:
 	link.w	a6,#$0
 	movem.l	d3/d7/a3-a4,-(a7)
 	lea.l	$C32(a5),a0

@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_077402
+; CloneA1_ResetPalCycle - reset the CloneA1 palette-cycle counters
+; In:  none
+; Out: none
+; Evidence: clears -$3B32/-$3B42/-$3B3A and -$3B34/-$3B44/-$3B3C
 ; ---------------------------------------------------------------------------
-sub_077402:
+CloneA1_ResetPalCycle:
 	link.w	a6,#$0
 	clr.w	-$3B32(a5)
 	clr.w	-$3B42(a5)

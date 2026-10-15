@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_05AC24	[link-after-rts]
+; BaniMazaB2_PlacePlayers - place the players at the BaniMazaB2 start with +$2E bit 2 set
+; In:  none
+; Out: none
+; Evidence: Players_PlaceAtStart(0,0); +$2E |= 4 for each present player
 ; ---------------------------------------------------------------------------
-sub_05AC24:
+BaniMazaB2_PlacePlayers:
 	link.w	a6,#$0
 	moveq	#$0,d0
 	move.l	d0,-(a7)

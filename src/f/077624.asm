@@ -1,13 +1,16 @@
 ; ---------------------------------------------------------------------------
-; sub_077624	[link-after-rts]
+; CloneA1_InstallHooks - install CloneA1's frame hook, resources, sprites and palette cycle, then place the players in draw layer 1
+; In:  none
+; Out: none
+; Evidence: g_SceneFrameHook = CloneA1_FrameHook; Players_PlaceAtStart; +$2E |= 4 and DrawList_SetPriority(node, 1, ...) per player
 ; ---------------------------------------------------------------------------
-sub_077624:
+CloneA1_InstallHooks:
 	link.w	a6,#$0
-	lea.l	sub_07754A(pc),a0
+	lea.l	CloneA1_FrameHook(pc),a0
 	move.l	a0,g_SceneFrameHook(a5)
-	jsr	sub_07757C(pc)
-	jsr	sub_07746A(pc)
-	jsr	sub_077402(pc)
+	jsr	CloneA1_LoadResources(pc)
+	jsr	CloneA1_InitSprites(pc)
+	jsr	CloneA1_ResetPalCycle(pc)
 	moveq	#$0,d0
 	move.l	d0,-(a7)
 	move.l	d0,-(a7)

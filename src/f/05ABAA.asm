@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_05ABAA	[link-after-rts]
+; BaniMazaB2_LoadLevel - load the BaniMazaB2 (Exterior) level
+; In:  none
+; Out: none
+; Evidence: sub_1F98A8 level load (class list jt $5958E); -$3898/-$389A = $B8/$C0
 ; ---------------------------------------------------------------------------
-sub_05ABAA:
+BaniMazaB2_LoadLevel:
 	link.w	a6,#$0
 	lea.l	$C4A(a5),a0
 	move.l	$2(a0),-(a7)

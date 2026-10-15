@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_05A8F8	[jt 400]
+; Seq_NextWrap - fetch the next word of a -1-terminated sequence; at the end restart at entry 0 and report the wrap
+; In:  8(a6) = word sequence, $C(a6) = word* index, $10(a6) = word* out
+; Out: d0 = 1 if it wrapped (index reset to 1, out = entry 0)
+; Evidence: jt 400; caller sub_05AED2 (BOULDER code)
 ; ---------------------------------------------------------------------------
-sub_05A8F8:
+Seq_NextWrap:
 	link.w	a6,#$0
 	movem.l	a3-a4,-(a7)
 	movea.l	$10(a6),a3

@@ -1,9 +1,12 @@
 ; ---------------------------------------------------------------------------
-; sub_07746A	[link-after-rts]
+; CloneA1_InitSprites - set up the three CloneA1 sprite slots (jt $7658A frames 0-2) with their map rows
+; In:  none
+; Out: none
+; Evidence: Spr_Init on -$3596/-$3582/-$356E at tile -$3AAE + 0/$10/$20; sub_1F5500/Map_SetRowPalette on the map at -$3AA6
 ; ---------------------------------------------------------------------------
-sub_07746A:
+CloneA1_InitSprites:
 	link.w	a6,#$0
-	jsr	sub_077462(pc)
+	jsr	CloneA1_NopStatic(pc)
 	moveq	#$1,d0
 	move.l	d0,-(a7)
 	move.w	-$3AAE(a5),d1

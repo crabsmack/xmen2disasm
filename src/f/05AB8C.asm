@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_05AB8C	[link-after-rts]
+; BaniMazaB2_FrameHook - BaniMazaB2 per-frame hook: advance the frame counter (2 at half rate)
+; In:  none
+; Out: none
+; Evidence: installed in g_SceneFrameHook by BaniMazaB2_InstallFrameHook
 ; ---------------------------------------------------------------------------
-sub_05AB8C:
+BaniMazaB2_FrameHook:
 	link.w	a6,#$0
 	move.l	g_FrameCounter(a5),d0
 	addq.l	#$1,g_FrameCounter(a5)

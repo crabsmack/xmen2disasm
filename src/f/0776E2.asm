@@ -1,12 +1,15 @@
 ; ---------------------------------------------------------------------------
-; sub_0776E2	[jt 533]
+; CloneA1_RunScene - scene function for 'CloneA1 Factory_Floor_1': set up the stage, parallax, a 60-frame timer, music $5E, run the level loop
+; In:  none
+; Out: none
+; Evidence: Scene_RegisterAll entry; Scroll_SetParallax(jt $7737C); Timer_Create(sub_15B0D0, $3C, sub_077256, 1); sub_0C1478($5E) / sub_0C14B4 around level loop sub_1FA6FE
 ; ---------------------------------------------------------------------------
-sub_0776E2:
+CloneA1_RunScene:
 	link.w	a6,#$0
 	move.l	a4,-(a7)
-	jsr	sub_0776DA(pc)
-	jsr	sub_0775AC(pc)
-	jsr	sub_077624(pc)
+	jsr	CloneA1_EmptyStub(pc)
+	jsr	CloneA1_LoadLevel(pc)
+	jsr	CloneA1_InstallHooks(pc)
 	lea.l	$10B2(a5),a0
 	move.l	$2(a0),-(a7)
 	jsr	$5102(a5)	; -> Scroll_SetParallax

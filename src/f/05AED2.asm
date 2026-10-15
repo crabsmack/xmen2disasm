@@ -102,7 +102,7 @@ loc_05AFAE:
 	pea.l	-$3B04(a5)
 	lea.l	$C92(a5),a0
 	move.l	$2(a0),-(a7)
-	jsr	$CA2(a5)	; -> sub_05A8F8
+	jsr	$CA2(a5)	; -> Seq_NextWrap
 	lea.l	$20(a7),a7
 	bra.s	loc_05B00C
 loc_05AFF6:

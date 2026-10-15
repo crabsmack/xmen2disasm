@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_077422	[link-after-rts]
+; CloneA1_CyclePalettes - advance the CloneA1 palette cycles (two tables sharing one counter set)
+; In:  none
+; Out: none
+; Evidence: sub_159FD6 (palette cycle step) with jt $773BE (counters left unchanged) and jt $773E0 (counters advanced)
 ; ---------------------------------------------------------------------------
-sub_077422:
+CloneA1_CyclePalettes:
 	link.w	a6,#$0
 	moveq	#$0,d0
 	move.l	d0,-(a7)
