@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_14004A	[link-after-rts]
+; Spark_StateFlyStraight - SPARK type-1 state: fly along its segment path; at the end jump back to the start point and restart
+; In:  8(a6) = this
+; Out: d0 = +4 flag 8
+; Evidence: Seg_WouldLeaveEnd(this, 8) -> x/y = start pixels +$10/+$12 << 8, state Spark_StateStart; set by Spark_StateStart for spawn byte 7 = 1
 ; ---------------------------------------------------------------------------
-sub_14004A:
+Spark_StateFlyStraight:
 	link.w	a6,#$0
 	move.l	a4,-(a7)
 	movea.l	$8(a6),a4
@@ -28,7 +31,7 @@ sub_14004A:
 	bra.s	loc_1400A2
 loc_140090:
 	clr.w	$6C(a4)
-	lea.l	sub_14004A(pc),a0
+	lea.l	Spark_StateFlyStraight(pc),a0
 	move.l	a0,$5C(a4)
 	moveq	#$8,d0
 	and.w	$4(a4),d0

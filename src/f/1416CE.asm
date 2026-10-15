@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_1416CE	[jt 1911]
+; Tank_ClassInit - TANK slot +$5E: register the tank sprite definition for the level
+; In:  none
+; Out: none
+; Evidence: $FFE790 = SprDef_Add(def at $14018E, 3)
 ; ---------------------------------------------------------------------------
-sub_1416CE:
+Tank_ClassInit:
 	link.w	a6,#$0
 	moveq	#$3,d0
 	move.l	d0,-(a7)

@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_1423D6	[link-after-rts]
+; TechWallGun_StateBurst - firing burst: fire +$A2 shots via +$6E Fire, +$A6 frames apart, then return to the saved aim state
+; In:  8(a6) = this
+; Out: none
+; Evidence: count +$A2 runs out -> +$5C = +$90, delay +$98; else vtable +$6E(this, +$A4 direction)
 ; ---------------------------------------------------------------------------
-sub_1423D6:
+TechWallGun_StateBurst:
 	link.w	a6,#$0
 	move.l	a4,-(a7)
 	movea.l	$8(a6),a4

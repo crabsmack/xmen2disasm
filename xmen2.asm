@@ -4825,7 +4825,7 @@ Tbl_Anim_140152:	; animation script (NOTES: Animation scripts); never read in th
 	incrom	$140152,$C
 Tbl_SparkMove:	; format not established; never read in the corpus; jt[1908] used by Spark_Move
 	incrom	$14015E,$30
-Art_Spr_14018E:	; sprite definition (type $19, Nemesis-compressed tiles): $24-byte header, $14-byte frame records, pieces, tiles; 1531 of 1532 bytes used at runtime; read by Nem_DecodeLoop, Spr_PreloadTiles; jt[1909] used by sub_1416CE
+Art_Spr_14018E:	; sprite definition (type $19, Nemesis-compressed tiles): $24-byte header, $14-byte frame records, pieces, tiles; 1531 of 1532 bytes used at runtime; read by Nem_DecodeLoop, Spr_PreloadTiles; jt[1909] used by Tank_ClassInit
 	incrom	$14018E,$1532
 	include "src/f/1416C0.asm"
 	include "src/f/1416CE.asm"
@@ -4847,25 +4847,25 @@ Art_Spr_14018E:	; sprite definition (type $19, Nemesis-compressed tiles): $24-by
 	include "src/f/142008.asm"
 	include "src/f/14205E.asm"
 	incrom	$1420DE,$88
-Lvl_Data_142166:	; level data read by Level_FrameLoop; 68 of 8C bytes used at runtime; read by Level_FrameLoop, Actor_Update, Actor_New; jt[1926] used by sub_141CCA, sub_141DA8
+Lvl_Data_142166:	; level data read by Level_FrameLoop; 68 of 8C bytes used at runtime; read by Level_FrameLoop, Actor_Update, Actor_New; jt[1926] used by TankLeft_Init, TankLeft_Deactivate
 	incrom	$142166,$8C
-Tbl_Anim_1421F2:	; animation script (byte flags, byte steps, ..., 2-byte steps from +6); 6 of 8 bytes used at runtime; read by Anim_ApplyStep, Anim_AdvanceByDistance, Anim_Advance; jt[1927] used by sub_1416EA
+Tbl_Anim_1421F2:	; animation script (byte flags, byte steps, ..., 2-byte steps from +6); 6 of 8 bytes used at runtime; read by Anim_ApplyStep, Anim_AdvanceByDistance, Anim_Advance; jt[1927] used by Tank_Init
 	incrom	$1421F2,$8
-Tbl_Anim_1421FA:	; animation script (byte flags, byte steps, ..., 2-byte steps from +6); E of 10 bytes used at runtime; read by Anim_ApplyStep, Anim_AdvanceByDistance, Anim_Advance; jt[1928] used by sub_141DE8, sub_141F18, sub_142008
+Tbl_Anim_1421FA:	; animation script (byte flags, byte steps, ..., 2-byte steps from +6); E of 10 bytes used at runtime; read by Anim_ApplyStep, Anim_AdvanceByDistance, Anim_Advance; jt[1928] used by TankLeft_StateWaitDrive, TankLeft_StateDriveIn, TankLeft_ActDriveIn
 	incrom	$1421FA,$10
-Tbl_Anim_14220A:	; animation script (byte flags, byte steps, ..., 2-byte steps from +6); 10 of 12 bytes used at runtime; read by Anim_ApplyStep, sub_141ADC; jt[1929] used by sub_141B3C
+Tbl_Anim_14220A:	; animation script (byte flags, byte steps, ..., 2-byte steps from +6); 10 of 12 bytes used at runtime; read by Anim_ApplyStep, Tank_ActPause; jt[1929] used by Tank_StateWreck
 	incrom	$14220A,$12
 	incrom	$14221C,$2
 	include "src/f/14221E.asm"
-Tbl_AiScript_14222A:	; word $0000 (2 bytes), not a string: reached only via jt[1931] used by sub_141DE8 -> AiScript_Set (e.g. an empty list/script count)
+Tbl_AiScript_14222A:	; word $0000 (2 bytes), not a string: reached only via jt[1931] used by TankLeft_StateWaitDrive -> AiScript_Set (e.g. an empty list/script count)
 	incrom	$14222A,$1
 	incrom	$14222B,$1
 	include "src/f/14222C.asm"
-Tbl_AiScript_142238:	; word $0000 (2 bytes), not a string: reached only via jt[1932] used by sub_141DA8 -> sub_1F66F0, sub_141F18 -> AiScript_Set (e.g. an empty list/script count)
+Tbl_AiScript_142238:	; word $0000 (2 bytes), not a string: reached only via jt[1932] used by TankLeft_Deactivate -> sub_1F66F0, TankLeft_StateDriveIn -> AiScript_Set (e.g. an empty list/script count)
 	incrom	$142238,$1
 	incrom	$142239,$1
 	include "src/f/14223A.asm"
-Tbl_TakeDamage_Hurt_142246:	; table read by XNpc_TakeDamage_Hurt; 5 of 8 bytes used at runtime; read by XNpc_TakeDamage_Hurt, sub_1416EA, XNpc_KnockbackDist; jt[1933] used by sub_1416EA
+Tbl_TakeDamage_Hurt_142246:	; table read by XNpc_TakeDamage_Hurt; 5 of 8 bytes used at runtime; read by XNpc_TakeDamage_Hurt, Tank_Init, XNpc_KnockbackDist; jt[1933] used by Tank_Init
 	incrom	$142246,$8
 	include "src/f/14224E.asm"
 	include "src/f/14225C.asm"
@@ -4893,14 +4893,14 @@ Tbl_TakeDamage_Hurt_142246:	; table read by XNpc_TakeDamage_Hurt; 5 of 8 bytes u
 	include "src/f/142AA6.asm"
 	include "src/f/142ACA.asm"
 	include "src/f/142AE0.asm"
-Str_Empty_142B52:	; C string "" (used by sub_142AE0)
+Str_Empty_142B52:	; C string "" (used by TechWallGun_ClassInit)
 	incrom	$142B52,$2
 	include "src/f/142B54.asm"
 	include "src/f/142CD6.asm"
 Sw_142CD6:	; switch table of sub at $142CD6: 9 word offsets from Sw_142CD6-2
-	dc.w	loc_142F0C-(Sw_142CD6-2), loc_142F14-(Sw_142CD6-2), loc_142F1C-(Sw_142CD6-2), loc_142F2A-(Sw_142CD6-2)
-	dc.w	loc_142F38-(Sw_142CD6-2), loc_142F46-(Sw_142CD6-2), loc_142F54-(Sw_142CD6-2), loc_142F5C-(Sw_142CD6-2)
-	dc.w	loc_142F64-(Sw_142CD6-2)
+	dc.w	TechWallGun_UpdateBullet_Case1-(Sw_142CD6-2), loc_142F14-(Sw_142CD6-2), loc_142F1C-(Sw_142CD6-2), TechWallGun_UpdateBullet_Case4-(Sw_142CD6-2)
+	dc.w	TechWallGun_UpdateBullet_Case5-(Sw_142CD6-2), loc_142F46-(Sw_142CD6-2), loc_142F54-(Sw_142CD6-2), TechWallGun_UpdateBullet_Case8-(Sw_142CD6-2)
+	dc.w	TechWallGun_UpdateBullet_Case9-(Sw_142CD6-2)
 	include "src/f/142F0C.asm"
 	include "src/f/142F2A.asm"
 	include "src/f/142F38.asm"
@@ -4910,9 +4910,9 @@ Sw_142CD6:	; switch table of sub at $142CD6: 9 word offsets from Sw_142CD6-2
 	include "src/f/14304E.asm"
 	include "src/f/143082.asm"
 Sw_143082:	; switch table of sub at $143082: 9 word offsets from Sw_143082-2
-	dc.w	loc_1430E4-(Sw_143082-2), loc_143100-(Sw_143082-2), loc_14311A-(Sw_143082-2), loc_143136-(Sw_143082-2)
-	dc.w	loc_143152-(Sw_143082-2), loc_14316A-(Sw_143082-2), loc_143184-(Sw_143082-2), loc_14319E-(Sw_143082-2)
-	dc.w	loc_1431B6-(Sw_143082-2)
+	dc.w	TechWallGun_Fire_Case1-(Sw_143082-2), loc_143100-(Sw_143082-2), loc_14311A-(Sw_143082-2), TechWallGun_Fire_Case4-(Sw_143082-2)
+	dc.w	TechWallGun_Fire_Case5-(Sw_143082-2), loc_14316A-(Sw_143082-2), loc_143184-(Sw_143082-2), TechWallGun_Fire_Case8-(Sw_143082-2)
+	dc.w	TechWallGun_Fire_Case9-(Sw_143082-2)
 	include "src/f/1430E4.asm"
 	include "src/f/143136.asm"
 	include "src/f/143152.asm"
@@ -4921,27 +4921,27 @@ Sw_143082:	; switch table of sub at $143082: 9 word offsets from Sw_143082-2
 	include "src/f/1431D0.asm"
 	include "src/f/1431D6.asm"
 	include "src/f/14321A.asm"
-Lvl_Data_143224:	; level data read by Level_FrameLoop; 54 of 7E bytes used at runtime; read by Level_FrameLoop, sub_142B54, Actor_New; jt[1939] used by sub_142B54
+Lvl_Data_143224:	; level data read by Level_FrameLoop; 54 of 7E bytes used at runtime; read by Level_FrameLoop, TechWallGun_Init, Actor_New; jt[1939] used by TechWallGun_Init
 	incrom	$143224,$7E
-Tbl_Anim_1432A2:	; animation script (byte flags, byte steps, ..., 2-byte steps from +6); 8 of A bytes used at runtime; read by Anim_AdvanceByDistance, Anim_ApplyStep, Anim_Advance; jt[1940] used by sub_142446
+Tbl_Anim_1432A2:	; animation script (byte flags, byte steps, ..., 2-byte steps from +6); 8 of A bytes used at runtime; read by Anim_AdvanceByDistance, Anim_ApplyStep, Anim_Advance; jt[1940] used by TechWallGun_BurstDiagUp
 	incrom	$1432A2,$A
-Tbl_Anim_1432AC:	; animation script (byte flags, byte steps, ..., 2-byte steps from +6); 8 of A bytes used at runtime; read by Anim_ApplyStep, Anim_AdvanceByDistance, Anim_Advance; jt[1941] used by sub_142490, sub_142B54
+Tbl_Anim_1432AC:	; animation script (byte flags, byte steps, ..., 2-byte steps from +6); 8 of A bytes used at runtime; read by Anim_ApplyStep, Anim_AdvanceByDistance, Anim_Advance; jt[1941] used by TechWallGun_BurstLevel, TechWallGun_Init
 	incrom	$1432AC,$A
-Tbl_Anim_1432B6:	; animation script (byte flags, byte steps, ..., 2-byte steps from +6); 8 of A bytes used at runtime; read by Anim_ApplyStep, Anim_AdvanceByDistance, Anim_Advance; jt[1942] used by sub_1424DA
+Tbl_Anim_1432B6:	; animation script (byte flags, byte steps, ..., 2-byte steps from +6); 8 of A bytes used at runtime; read by Anim_ApplyStep, Anim_AdvanceByDistance, Anim_Advance; jt[1942] used by TechWallGun_BurstDiagDown
 	incrom	$1432B6,$A
-Tbl_Anim_1432C0:	; animation script (byte flags, byte steps, ..., 2-byte steps from +6); 3 of 10 bytes used at runtime; read by Anim_ApplyStep; jt[1943] used by sub_142322
+Tbl_Anim_1432C0:	; animation script (byte flags, byte steps, ..., 2-byte steps from +6); 3 of 10 bytes used at runtime; read by Anim_ApplyStep; jt[1943] used by TechWallGun_StateHurt
 	incrom	$1432C0,$10
-Tbl_Anim_1432D0:	; animation script (byte flags, byte steps, ..., 2-byte steps from +6); 8 of A bytes used at runtime; read by Anim_ApplyStep, Anim_AdvanceByDistance, Anim_Advance; jt[1944] used by sub_142524
+Tbl_Anim_1432D0:	; animation script (byte flags, byte steps, ..., 2-byte steps from +6); 8 of A bytes used at runtime; read by Anim_ApplyStep, Anim_AdvanceByDistance, Anim_Advance; jt[1944] used by TechWallGun_BurstCeilLeft
 	incrom	$1432D0,$A
-Tbl_Anim_1432DA:	; animation script (byte flags, byte steps, ..., 2-byte steps from +6); 8 of A bytes used at runtime; read by Anim_ApplyStep, Anim_AdvanceByDistance, Anim_Advance; jt[1945] used by sub_142562
+Tbl_Anim_1432DA:	; animation script (byte flags, byte steps, ..., 2-byte steps from +6); 8 of A bytes used at runtime; read by Anim_ApplyStep, Anim_AdvanceByDistance, Anim_Advance; jt[1945] used by TechWallGun_BurstCeilDown
 	incrom	$1432DA,$A
-Tbl_Anim_1432E4:	; animation script (byte flags, byte steps, ..., 2-byte steps from +6); 8 of A bytes used at runtime; read by Anim_ApplyStep, Anim_AdvanceByDistance, Anim_Advance; jt[1946] used by sub_1425A0
+Tbl_Anim_1432E4:	; animation script (byte flags, byte steps, ..., 2-byte steps from +6); 8 of A bytes used at runtime; read by Anim_ApplyStep, Anim_AdvanceByDistance, Anim_Advance; jt[1946] used by TechWallGun_BurstCeilRight
 	incrom	$1432E4,$A
-Tbl_Anim_1432EE:	; animation script (NOTES: Animation scripts); never read in the corpus; jt[1947] used by sub_142322 -> Obj_ChangeAnim
+Tbl_Anim_1432EE:	; animation script (NOTES: Animation scripts); never read in the corpus; jt[1947] used by TechWallGun_StateHurt -> Obj_ChangeAnim
 	incrom	$1432EE,$10
-Art_Spr_1432FE:	; sprite definition (type $18, raw 4bpp tiles): $24-byte header, $14-byte frame records, pieces, tiles; 1040 of 12D4 bytes used at runtime; read by VDP_FlushDmaQueue; DMA to VRAM $9A80-C9A0; jt[1948] used by sub_142B54
+Art_Spr_1432FE:	; sprite definition (type $18, raw 4bpp tiles): $24-byte header, $14-byte frame records, pieces, tiles; 1040 of 12D4 bytes used at runtime; read by VDP_FlushDmaQueue; DMA to VRAM $9A80-C9A0; jt[1948] used by TechWallGun_Init
 	incrom	$1432FE,$12D4
-Art_Spr_1445D2:	; sprite definition (type $19, Nemesis-compressed tiles): $24-byte header, $14-byte frame records, pieces, tiles; 1A1 of 1A2 bytes used at runtime; read by Spr_PreloadTiles, Nem_DecodeLoop, Nem_BuildCodeTable; jt[1949] used by sub_142AE0
+Art_Spr_1445D2:	; sprite definition (type $19, Nemesis-compressed tiles): $24-byte header, $14-byte frame records, pieces, tiles; 1A1 of 1A2 bytes used at runtime; read by Spr_PreloadTiles, Nem_DecodeLoop, Nem_BuildCodeTable; jt[1949] used by TechWallGun_ClassInit
 	incrom	$1445D2,$1A2
 	include "src/f/144774.asm"
 	include "src/f/1449CC.asm"
@@ -4962,7 +4962,7 @@ Tbl_144E86:	; format not established; never read in the corpus; jt[1961] used by
 	incrom	$144E86,$6C
 Tbl_144EF2:	; format not established; never read in the corpus; jt[1962] used by sub_144774
 	incrom	$144EF2,$3C
-Tbl_PopChainStep:	; table read by ExplodeFx_ChainStep; C4 of C8 bytes used at runtime; read by ExplodeFx_ChainStep; jt[1963] used by Pop_FxChainPath, sub_141B72, sub_144AE2
+Tbl_PopChainStep:	; table read by ExplodeFx_ChainStep; C4 of C8 bytes used at runtime; read by ExplodeFx_ChainStep; jt[1963] used by Pop_FxChainPath, Tank_OnDeath, sub_144AE2
 	incrom	$144F2E,$C8
 Art_Spr_144FF6:	; sprite definition (type $18, raw 4bpp tiles): $24-byte header, $14-byte frame records, pieces, tiles; 400 of 86C bytes used at runtime; read by VDP_FlushDmaQueue; DMA to VRAM $D6A0-DAA0; jt[1964] used by sub_1449E6
 	incrom	$144FF6,$86C

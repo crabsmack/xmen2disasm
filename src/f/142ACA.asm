@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_142ACA	[jt 1935]
+; TechWallGun_Nop66 - TECHWALLGUN slot +$66: no-op
+; In:  8(a6) = this
+; Out: none
+; Evidence: 6-instruction no-op
 ; ---------------------------------------------------------------------------
-sub_142ACA:
+TechWallGun_Nop66:
 	link.w	a6,#$FFFC
 	movem.l	a3-a4,-(a7)
 	movea.l	$8(a6),a4

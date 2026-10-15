@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_14199C	[jt 1914]
+; Tank_Deactivate - TANK slot +$46: kill its live rocket, then the parent Deactivate
+; In:  8(a6) = this
+; Out: none
+; Evidence: +$A2 object -> vtable +$52 Kill, +$A2 = 0; XNPC +$46
 ; ---------------------------------------------------------------------------
-sub_14199C:
+Tank_Deactivate:
 	link.w	a6,#$0
 	move.l	a4,-(a7)
 	movea.l	$8(a6),a4

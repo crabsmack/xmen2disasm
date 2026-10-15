@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_1418FA	[jt 1913]
+; Tank_Move - TANK slot +$4E: integrate velocity (twice at step 2) and stop at the track limits
+; In:  8(a6) = this, $C(a6) = word step
+; Out: none
+; Evidence: x/y += v, v += a; x clamped to +$9A..+$9C with vx/ax cleared
 ; ---------------------------------------------------------------------------
-sub_1418FA:
+Tank_Move:
 	link.w	a6,#$0
 	movem.l	d7/a4,-(a7)
 	movea.l	$8(a6),a4

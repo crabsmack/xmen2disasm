@@ -1,13 +1,16 @@
 ; ---------------------------------------------------------------------------
-; sub_1428E6	[link-after-rts]
+; TechWallGun_StateAimDown - wall gun aiming down (frame 4): fire down, or turn level
+; In:  8(a6) = this
+; Out: d0
+; Evidence: angle < $16 -> TechWallGun_StateAimLevel, else TechWallGun_BurstDiagDown
 ; ---------------------------------------------------------------------------
-sub_1428E6:
+TechWallGun_StateAimDown:
 	link.w	a6,#$FFFE
 	move.l	a4,-(a7)
 	movea.l	$8(a6),a4
 	pea.l	-$2(a6)
 	move.l	a4,-(a7)
-	jsr	sub_1426FE(pc)
+	jsr	TechWallGun_AimWall(pc)
 	tst.b	d0
 	addq.w	#$8,a7
 	beq.s	loc_14293E
@@ -22,14 +25,14 @@ sub_1428E6:
 	addq.w	#$8,a7
 	ble.s	loc_14292C
 	clr.w	$6C(a4)
-	lea.l	sub_14286A(pc),a0
+	lea.l	TechWallGun_StateAimLevel(pc),a0
 	move.l	a0,$5C(a4)
 	moveq	#$8,d0
 	and.w	$4(a4),d0
 	bra.s	loc_14293E
 loc_14292C:
 	clr.w	$6C(a4)
-	lea.l	sub_1424DA(pc),a0
+	lea.l	TechWallGun_BurstDiagDown(pc),a0
 	move.l	a0,$5C(a4)
 	moveq	#$8,d0
 	and.w	$4(a4),d0

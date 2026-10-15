@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_141CCA	[jt 1919]
+; TankLeft_Init - TANKLEFT slot +$12: TANK Init, face left, 4 health, its own AI script
+; In:  8(a6) = this, $C..$14(a6) = Init args
+; Out: none
+; Evidence: parent +$12; +$2E |= $10; health 4; AiScript_Set(+$94, jt $3E72), first thunk
 ; ---------------------------------------------------------------------------
-sub_141CCA:
+TankLeft_Init:
 	link.w	a6,#$0
 	move.l	a4,-(a7)
 	movea.l	$8(a6),a4

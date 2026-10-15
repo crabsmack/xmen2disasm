@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_1418A4	[link-after-rts]
+; Tank_SetTrackLimits - set the left/right x limits of the tank's track around its spawn x
+; In:  8(a6) = this, $C(a6) = word half-length, $10/$14(a6) = pointers left/right
+; Out: none
+; Evidence: left = +$10 - |n|, right = +$12 + |n|: the right limit is built from the y pixel word +$12, apparently a bug in the original
 ; ---------------------------------------------------------------------------
-sub_1418A4:
+Tank_SetTrackLimits:
 	link.w	a6,#$0
 	movem.l	d3/d7/a4,-(a7)
 	movea.l	$8(a6),a4

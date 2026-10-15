@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_1419E0	[jt 1915]
+; Tank_ActFireRocket - tank script action: stop and launch a BRAINROCKET from the barrel, then the next script step
+; In:  8(a6) = this
+; Out: d0
+; Evidence: BRAINROCKET New at (x +/-$40, y -/+$35 by flips), Rocket_SetAngleB(rocket, this, 0 or 180, $C0, $5A); script +$94/+$96 advance, delay 15
 ; ---------------------------------------------------------------------------
-sub_1419E0:
+Tank_ActFireRocket:
 	link.w	a6,#$0
 	movem.l	d3/d5-d7/a3-a4,-(a7)
 	movea.l	$8(a6),a4

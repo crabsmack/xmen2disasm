@@ -1,13 +1,16 @@
 ; ---------------------------------------------------------------------------
-; sub_142946	[link-after-rts]
+; TechWallGun_StateCeilAimLeft - ceiling gun aiming down-left (frame 6)
+; In:  8(a6) = this
+; Out: d0
+; Evidence: TechWallGun_AimCeiling; angle < $70 -> TechWallGun_StateCeilAimDown, else TechWallGun_BurstCeilLeft
 ; ---------------------------------------------------------------------------
-sub_142946:
+TechWallGun_StateCeilAimLeft:
 	link.w	a6,#$FFFE
 	move.l	a4,-(a7)
 	movea.l	$8(a6),a4
 	pea.l	-$2(a6)
 	move.l	a4,-(a7)
-	jsr	sub_14278E(pc)
+	jsr	TechWallGun_AimCeiling(pc)
 	tst.b	d0
 	addq.w	#$8,a7
 	beq.s	loc_14299E
@@ -22,14 +25,14 @@ sub_142946:
 	addq.w	#$8,a7
 	ble.s	loc_14298C
 	clr.w	$6C(a4)
-	lea.l	sub_1429A6(pc),a0
+	lea.l	TechWallGun_StateCeilAimDown(pc),a0
 	move.l	a0,$5C(a4)
 	moveq	#$8,d0
 	and.w	$4(a4),d0
 	bra.s	loc_14299E
 loc_14298C:
 	clr.w	$6C(a4)
-	lea.l	sub_142524(pc),a0
+	lea.l	TechWallGun_BurstCeilLeft(pc),a0
 	move.l	a0,$5C(a4)
 	moveq	#$8,d0
 	and.w	$4(a4),d0

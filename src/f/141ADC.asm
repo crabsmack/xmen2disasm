@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_141ADC	[jt 1916]
+; Tank_ActPause - tank script action: stop and wait 30 frames before the next script step
+; In:  8(a6) = this
+; Out: none
+; Evidence: velocity/accel 0; next script thunk, +$6C = 30
 ; ---------------------------------------------------------------------------
-sub_141ADC:
+Tank_ActPause:
 	link.w	a6,#$0
 	move.l	a4,-(a7)
 	movea.l	$8(a6),a4

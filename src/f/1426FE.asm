@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_1426FE	[link-after-rts]
+; TechWallGun_AimWall - wall gun: is the nearest player in range and in front; if so give its aim angle
+; In:  8(a6) = this, $C(a6) = pointer word angle
+; Out: d0 = 1 target found
+; Evidence: Player_Nearest; |dx| < range +$9E; in the facing direction; angle = (TechWallGun_AimAngle(|dx|, dy - 30) + 2) >> 2
 ; ---------------------------------------------------------------------------
-sub_1426FE:
+TechWallGun_AimWall:
 	link.w	a6,#$0
 	movem.l	d3/d5-d7/a3-a4,-(a7)
 	movea.l	$8(a6),a4
@@ -54,7 +57,7 @@ loc_142768:
 	move.l	d5,-(a7)
 	ext.l	d6
 	move.l	d6,-(a7)
-	jsr	sub_1425DE(pc)
+	jsr	TechWallGun_AimAngle(pc)
 	ext.l	d0
 	addq.l	#$2,d0
 	asr.l	#$2,d0

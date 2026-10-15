@@ -222,8 +222,8 @@ g_ScalerVram = -$C64	; word: VRAM address for the output (5th argument of sub_1F
 g_ScalerDest = -$C68	; ptr: output tile buffer (4th argument of sub_1FC5FE; sub_1FC708 fills it, loc_1FD43E DMAs from it)
 g_ScalerSrcB = -$C6C	; long: 3rd argument of sub_1FC5FE, source offset added in sub_1FC708 and used by sub_1FC1CC
 g_ScalerSrcA = -$C70	; long: 2nd argument of sub_1FC5FE, source (sub_1FC1CC preprocesses it when g_ScalerSrcB is also given, then it is zeroed)
-g_TechWallGunSprDef = -$1A6E	; word: sprite-definition slot of Art_Spr_1445D2 (TECHWALLGUN ClassInit sub_142AE0 via SprDef_Add; read by loc_142F70)
-g_TankSprDef = -$1A70	; word: sprite-definition slot of Art_Spr_14018E (TANK ClassInit sub_1416CE via SprDef_Add; TANK Init sub_1416EA)
+g_TechWallGunSprDef = -$1A6E	; word: sprite-definition slot of Art_Spr_1445D2 (TECHWALLGUN ClassInit TechWallGun_ClassInit via SprDef_Add; read by TechWallGun_UpdateBullet_Draw)
+g_TankSprDef = -$1A70	; word: sprite-definition slot of Art_Spr_14018E (TANK ClassInit Tank_ClassInit via SprDef_Add; TANK Init Tank_Init)
 g_SparkSprDef = -$1A72	; word: sprite-definition slot of Art_SpaceB1Spr2 (SpaceB1_LoadResources via SprDef_Add; Spark_Init)
 g_NinjaSprDef2 = -$1A74	; word: sprite-definition slot of Art_NinjaSpr2 (SiberiaB1_LoadResources via SprDef_Add; SentinelsD1_LoadResources sets -1 = not loaded; Ninja_Init tests and uses it)
 g_MineSprDef = -$1A76	; word: sprite-definition slot of Art_MineNem (Mine_ClassInit via SprDef_Add; Mine_Init, Mine_PoolDraw)

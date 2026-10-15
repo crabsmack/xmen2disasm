@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_142CD6	[link-after-rts]
+; TechWallGun_UpdateBullet - move one wall-gun bullet, stop it in solid tiles, hit players (1 damage) and draw it
+; In:  8(a6) = bullet slot {x, y longs; vx, vy words; ax, ay bytes; +$E flags; +$F frame}
+; Out: d0
+; Evidence: +$E bit 7 moving; solid bit $4000 in the FG map -> free; player boxes (no hit cooldown) -> vtable +$26(player, 0, 4, 1, x, y); off screen +/-64 -> free; muzzle flash ($40) counts frames then launches with a frame/flip by direction; sprite written via g_SprWritePtr
 ; ---------------------------------------------------------------------------
-sub_142CD6:
+TechWallGun_UpdateBullet:
 	link.w	a6,#$0
 	movem.l	d3-d7/a3-a4,-(a7)
 	movea.l	$8(a6),a3
@@ -187,7 +190,7 @@ loc_142E80:
 	move.b	d1,d0
 	moveq	#$40,d1
 	and.b	d0,d1
-	beq.w	loc_142F70
+	beq.w	TechWallGun_UpdateBullet_Draw
 	tst.b	g_TwoPlayerStep(a5)
 	seq.b	d3
 	neg.b	d3
@@ -201,7 +204,7 @@ loc_142EA8:
 	ext.l	d7
 	move.l	d7,d0
 	and.l	g_FrameCounter(a5),d0
-	bne.w	loc_142F70
+	bne.w	TechWallGun_UpdateBullet_Draw
 	addq.b	#$1,$F(a3)
 	move.b	$F(a3),d0
 	ext.w	d0
@@ -209,15 +212,15 @@ loc_142EA8:
 	move.l	d0,d7
 	moveq	#$2,d0
 	cmp.l	d7,d0
-	bge.w	loc_142F70
+	bge.w	TechWallGun_UpdateBullet_Draw
 	andi.b	#$BF,$E(a3)
 	ori.b	#$80,$E(a3)
 	moveq	#$F,d0
 	and.b	$E(a3),d0
 	subq.b	#$1,d0
-	bcs.w	loc_142F70
+	bcs.w	TechWallGun_UpdateBullet_Draw
 	cmpi.b	#$8,d0
-	bhi.w	loc_142F70
+	bhi.w	TechWallGun_UpdateBullet_Draw
 	moveq	#$0,d1
 	move.b	d0,d1
 	add.w	d1,d1

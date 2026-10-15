@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_141B72	[jt 1917]
+; Tank_OnDeath - TANK slot +$72 (XNPC OnDeath): blow up into debris, become a wreck and drop anything riding on it
+; In:  8(a6) = this
+; Out: d0
+; Evidence: ExplodeFx_ChainStart(new object, ... box centre, path jt $3F7A); health 0, +$6A = 10000; state Tank_StateWreck after 33 frames; Seg_ForEachOfObj(Actor_FreeSegCb) and Obj_Detach of objects standing on its segment +$7A; clears +6 $200
 ; ---------------------------------------------------------------------------
-sub_141B72:
+Tank_OnDeath:
 	link.w	a6,#$FFF8
 	movem.l	d4-d7/a3-a4,-(a7)
 	movea.l	$8(a6),a3
@@ -65,7 +68,7 @@ loc_141BC4:
 	clr.w	$1E(a3)
 	clr.w	$16(a3)
 	andi.w	#$FFFB,$4(a3)
-	lea.l	sub_141B3C(pc),a0
+	lea.l	Tank_StateWreck(pc),a0
 	move.l	a0,$5C(a3)
 	move.w	#$21,$6C(a3)
 	move.w	#$200,d0

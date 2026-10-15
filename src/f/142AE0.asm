@@ -1,10 +1,13 @@
 ; ---------------------------------------------------------------------------
-; sub_142AE0	[jt 1936]
+; TechWallGun_ClassInit - TECHWALLGUN slot +$5E: sprite definition, the shared 16-bullet pool and its update timer
+; In:  none
+; Out: none
+; Evidence: $FFE792 = SprDef_Add($1445D2, 3); Mem_StackAlloc($100) -> $FFE794, slots cleared; Timer_Create(TechWallGun_UpdateBullets, 0, pool, 0) + Timer_Start
 ; ---------------------------------------------------------------------------
-sub_142AE0:
+TechWallGun_ClassInit:
 	link.w	a6,#$0
 	move.l	a4,-(a7)
-	jsr	sub_1422A0(pc)
+	jsr	TechWallGun_NopStatic(pc)
 	moveq	#$3,d0
 	move.l	d0,-(a7)
 	lea.l	$3D0A(a5),a0
@@ -31,7 +34,7 @@ loc_142B20:
 	move.l	d0,-(a7)
 	move.l	-$1A6C(a5),-(a7)
 	move.l	d0,-(a7)
-	pea.l	sub_14304E(pc)
+	pea.l	TechWallGun_UpdateBullets(pc)
 	jsr	$4FD2(a5)	; -> Timer_Create
 	lea.l	$10(a7),a7
 	move.l	d0,-(a7)

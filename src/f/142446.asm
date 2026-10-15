@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_142446	[link-after-rts]
+; TechWallGun_BurstDiagUp - fire a burst diagonally upward (direction 1, or 4 when facing left)
+; In:  8(a6) = this
+; Out: d0 = +4 flag 8
+; Evidence: TechWallGun_SetupBurst(anim $1432A2, TechWallGun_StateAimUp, 1/4); state TechWallGun_StateBurst
 ; ---------------------------------------------------------------------------
-sub_142446:
+TechWallGun_BurstDiagUp:
 	link.w	a6,#$0
 	move.l	a4,-(a7)
 	movea.l	$8(a6),a4
@@ -14,14 +17,14 @@ loc_14245C:
 	moveq	#$1,d0
 loc_14245E:
 	move.l	d0,-(a7)
-	pea.l	sub_14280A(pc)
+	pea.l	TechWallGun_StateAimUp(pc)
 	lea.l	$3CC2(a5),a0
 	move.l	$2(a0),-(a7)
 	move.l	a4,-(a7)
-	jsr	sub_14241C(pc)
+	jsr	TechWallGun_SetupBurst(pc)
 	lea.l	$10(a7),a7
 	clr.w	$6C(a4)
-	lea.l	sub_1423D6(pc),a0
+	lea.l	TechWallGun_StateBurst(pc),a0
 	move.l	a0,$5C(a4)
 	moveq	#$8,d0
 	and.w	$4(a4),d0

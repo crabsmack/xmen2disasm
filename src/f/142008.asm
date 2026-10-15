@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_142008	[jt 1923]
+; TankLeft_ActDriveIn - tank script action: start driving and watch for the middle of the screen
+; In:  8(a6) = this
+; Out: d0 = +4 flag 8
+; Evidence: drive animation, vx = +/-$9E, +$6E = +$A0, state TankLeft_StateDriveIn
 ; ---------------------------------------------------------------------------
-sub_142008:
+TankLeft_ActDriveIn:
 	link.w	a6,#$0
 	move.l	a4,-(a7)
 	movea.l	$8(a6),a4
@@ -24,7 +27,7 @@ loc_142038:
 	move.w	$A0(a4),$6E(a4)
 	addq.w	#$8,a7
 	clr.w	$6C(a4)
-	lea.l	sub_141F18(pc),a0
+	lea.l	TankLeft_StateDriveIn(pc),a0
 	move.l	a0,$5C(a4)
 	moveq	#$8,d0
 	and.w	$4(a4),d0

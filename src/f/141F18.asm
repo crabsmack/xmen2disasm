@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_141F18	[link-after-rts]
+; TankLeft_StateDriveIn - drive in until the tank reaches mid-screen, then switch to its leaving script (jt $3E82)
+; In:  8(a6) = this
+; Out: d0
+; Evidence: after +$6E: x < g_CameraX + $A0 -> drive animation, vx = +/-$9E, AiScript_Set(+$94, jt $3E82); else next thunk
 ; ---------------------------------------------------------------------------
-sub_141F18:
+TankLeft_StateDriveIn:
 	link.w	a6,#$0
 	move.l	a4,-(a7)
 	movea.l	$8(a6),a4
@@ -76,7 +79,7 @@ loc_141FD4:
 	bra.s	loc_142000
 loc_141FEE:
 	clr.w	$6C(a4)
-	lea.l	sub_141F18(pc),a0
+	lea.l	TankLeft_StateDriveIn(pc),a0
 	move.l	a0,$5C(a4)
 	moveq	#$8,d0
 	and.w	$4(a4),d0

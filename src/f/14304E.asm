@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_14304E	[link-after-rts]
+; TechWallGun_UpdateBullets - timer callback: update every live bullet in the pool
+; In:  8(a6) = pool
+; Out: none
+; Evidence: 16 slots of $10; TechWallGun_UpdateBullet when +$E != 0; created by TechWallGun_ClassInit
 ; ---------------------------------------------------------------------------
-sub_14304E:
+TechWallGun_UpdateBullets:
 	link.w	a6,#$0
 	movem.l	d7/a3-a4,-(a7)
 	movea.l	$8(a6),a3
@@ -12,7 +15,7 @@ loc_143060:
 	tst.b	$E(a4)
 	beq.s	loc_14306E
 	move.l	a4,-(a7)
-	jsr	sub_142CD6(pc)
+	jsr	TechWallGun_UpdateBullet(pc)
 	addq.w	#$4,a7
 loc_14306E:
 	subq.w	#$1,d7

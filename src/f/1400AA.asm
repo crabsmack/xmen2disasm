@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_1400AA	[link-after-rts]
+; Spark_StateHit - SPARK hurt state (+$60): explode and disappear
+; In:  8(a6) = this
+; Out: none
+; Evidence: Explosion_Spawn(x, y, 1), vtable +$52 Kill; Spark_Init stores it in +$60
 ; ---------------------------------------------------------------------------
-sub_1400AA:
+Spark_StateHit:
 	link.w	a6,#$0
 	move.l	a4,-(a7)
 	movea.l	$8(a6),a4

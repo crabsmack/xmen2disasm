@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_1422A0	[link-after-rts]
+; TechWallGun_NopStatic - empty helper called by TechWallGun_ClassInit
+; In:  none
+; Out: none
+; Evidence: bare body
 ; ---------------------------------------------------------------------------
-sub_1422A0:
+TechWallGun_NopStatic:
 	link.w	a6,#$0
 	unlk	a6
 	rts

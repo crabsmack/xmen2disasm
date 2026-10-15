@@ -24,7 +24,7 @@ Spark_Init:
 	lea.l	Spark_StateStart(pc),a0
 	move.l	a0,$64(a4)
 	move.l	a0,$5C(a4)
-	lea.l	sub_1400AA(pc),a0
+	lea.l	Spark_StateHit(pc),a0
 	move.l	a0,$60(a4)
 	move.w	g_SparkSprDef(a5),d0
 	ext.l	d0

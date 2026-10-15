@@ -1,12 +1,15 @@
 ; ---------------------------------------------------------------------------
-; sub_142A82	[link-after-rts]
+; TechWallGun_StartWall - first state of a wall-mounted gun
+; In:  8(a6) = this
+; Out: d0 = +4 flag 8
+; Evidence: +$5C = TechWallGun_StateAimLevel
 ; ---------------------------------------------------------------------------
-sub_142A82:
+TechWallGun_StartWall:
 	link.w	a6,#$0
 	move.l	a4,-(a7)
 	movea.l	$8(a6),a4
 	clr.w	$6C(a4)
-	lea.l	sub_14286A(pc),a0
+	lea.l	TechWallGun_StateAimLevel(pc),a0
 	move.l	a0,$5C(a4)
 	moveq	#$8,d0
 	and.w	$4(a4),d0

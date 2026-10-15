@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_141DA8	[jt 1921]
+; TankLeft_Deactivate - TANKLEFT slot +$46: once driving away (script jt $3E82) remove it for good, else the parent Deactivate
+; In:  8(a6) = this
+; Out: none
+; Evidence: +$96 == jt $3E82 -> $1F66F0(this); else TANK +$46
 ; ---------------------------------------------------------------------------
-sub_141DA8:
+TankLeft_Deactivate:
 	link.w	a6,#$0
 	move.l	a4,-(a7)
 	movea.l	$8(a6),a4

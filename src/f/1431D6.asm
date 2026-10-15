@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; loc_1431D6
+; TechWallGun_Fire_Spawn - TechWallGun_Fire tail: place the bullet at the barrel offset with the chosen velocity and acceleration, play the shot sound
+; In:  a4 = bullet slot, d4/d5 = velocity, d6/d7 = acceleration, -4(a6)/-2(a6) = barrel offset
+; Out: d0
+; Evidence: +$F = 0, x/y = gun position + offset << 8, +8/+$A velocity, +$C/+$D accel; Snd_Play $F3
 ; ---------------------------------------------------------------------------
-loc_1431D6:
+TechWallGun_Fire_Spawn:
 	clr.b	$F(a4)
 	move.w	-$4(a6),d0
 	ext.l	d0

@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_14278E	[link-after-rts]
+; TechWallGun_AimCeiling - ceiling gun: is the nearest player in range and below; if so give its aim angle
+; In:  8(a6) = this, $C(a6) = pointer word angle
+; Out: d0 = 1 target found
+; Evidence: Player_Nearest; |dx| < +$9E and dy - 30 >= 0; angle = (TechWallGun_AimAngle(dx, dy) + 2) >> 2
 ; ---------------------------------------------------------------------------
-sub_14278E:
+TechWallGun_AimCeiling:
 	link.w	a6,#$0
 	movem.l	d3/d5-d7/a3-a4,-(a7)
 	movea.l	$8(a6),a4
@@ -43,7 +46,7 @@ loc_1427E4:
 	move.l	d6,-(a7)
 	ext.l	d7
 	move.l	d7,-(a7)
-	jsr	sub_1425DE(pc)
+	jsr	TechWallGun_AimAngle(pc)
 	ext.l	d0
 	addq.l	#$2,d0
 	asr.l	#$2,d0

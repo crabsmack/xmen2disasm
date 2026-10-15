@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_142B54	[jt 1937]
+; TechWallGun_Init - TECHWALLGUN slot +$12: mounting (left wall, ceiling, right wall), aim range, burst size and timing
+; In:  8(a6) = this, $C/$10(a6) = x/y, $14(a6) = placement (+6 mount, +8 pause, +$A shots, +$C shot gap)
+; Out: none
+; Evidence: +6 |= $4081; sprite $1432FE; palette 0 in SpaceB1 else 3; +$9A mount 0/1/2 (frames 2/8/2, facing); +$9C = $28, range +$9E = $FA; +$98 pause (default $78), +$A0 shots (default 1), +$A6 gap (default 10); +$60 = TechWallGun_StateHurt
 ; ---------------------------------------------------------------------------
-sub_142B54:
+TechWallGun_Init:
 	link.w	a6,#$0
 	movem.l	a3-a4,-(a7)
 	movea.l	$14(a6),a3
@@ -18,11 +21,11 @@ sub_142B54:
 	clr.w	$1E(a4)
 	clr.l	$16(a4)
 	clr.w	$20(a4)
-	lea.l	sub_142A82(pc),a0
+	lea.l	TechWallGun_StartWall(pc),a0
 	move.l	a0,$5C(a4)
-	lea.l	sub_142A82(pc),a0
+	lea.l	TechWallGun_StartWall(pc),a0
 	move.l	a0,$64(a4)
-	lea.l	sub_142322(pc),a0
+	lea.l	TechWallGun_StateHurt(pc),a0
 	move.l	a0,$60(a4)
 	ori.w	#$80,$6(a4)
 	ori.w	#$4000,$6(a4)
@@ -69,11 +72,11 @@ loc_142C10:
 	movea.l	(a4),a0
 	movea.l	$56(a0),a1
 	jsr	(a1)
-	lea.l	sub_142AA6(pc),a0
+	lea.l	TechWallGun_StartCeiling(pc),a0
 	move.l	a0,$5C(a4)
-	lea.l	sub_142AA6(pc),a0
+	lea.l	TechWallGun_StartCeiling(pc),a0
 	move.l	a0,$64(a4)
-	lea.l	sub_142322(pc),a0
+	lea.l	TechWallGun_StateHurt(pc),a0
 	move.l	a0,$60(a4)
 	addq.w	#$8,a7
 	bra.s	loc_142C66

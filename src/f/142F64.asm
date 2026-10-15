@@ -1,6 +1,9 @@
 ; ---------------------------------------------------------------------------
-; loc_142F64	[runtime: executed in tas]
+; TechWallGun_UpdateBullet_Case9 - TechWallGun_UpdateBullet switch case 9 (with the cases that fall into it): set this case's results, then the common exit
+; In:  a6 frame of TechWallGun_UpdateBullet
+; Out: d0 / output pointers as set by the case
+; Evidence: jump-table target of the switch in TechWallGun_UpdateBullet (Sw_ table in xmen2.asm)
 ; ---------------------------------------------------------------------------
-loc_142F64:
+TechWallGun_UpdateBullet_Case9:
 	ori.b	#$20,$E(a3)
 	move.b	#$4,$F(a3)

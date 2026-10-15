@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_1416EA	[jt 1912]
+; Tank_Init - TANK slot +$12: XNPC Init, stats, sprite, AI script, track limits, speed and pause from the placement
+; In:  8(a6) = this, $C/$10(a6) = x/y, $14(a6) = placement (+6 track half-length, +8 speed, +$C pause)
+; Out: none
+; Evidence: +$8C = stats (jt $2246 thunk), health 8; Obj_SetSpriteDef($FFE790); AiScript_Set(+$94, jt $3E72); +6 |= $280 (floor segment owner, no collision); priority from the live player; Tank_SetTrackLimits(range or $60); +$9E speed (default $100), +$A0 pause (default $78), +$A2 rocket = 0
 ; ---------------------------------------------------------------------------
-sub_1416EA:
+Tank_Init:
 	link.w	a6,#$0
 	movem.l	a3-a4,-(a7)
 	movea.l	$14(a6),a3
@@ -102,7 +105,7 @@ loc_141812:
 	ext.l	d0
 	move.l	d0,-(a7)
 	move.l	a4,-(a7)
-	jsr	sub_1418A4(pc)
+	jsr	Tank_SetTrackLimits(pc)
 	lea.l	$10(a7),a7
 	bra.s	loc_14184A
 loc_141834:
@@ -111,7 +114,7 @@ loc_141834:
 	moveq	#$60,d0
 	move.l	d0,-(a7)
 	move.l	a4,-(a7)
-	jsr	sub_1418A4(pc)
+	jsr	Tank_SetTrackLimits(pc)
 	lea.l	$10(a7),a7
 loc_14184A:
 	clr.w	$1E(a4)

@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_142322	[link-after-rts]
+; TechWallGun_StateHurt - wall gun hurt state (+$60): explode when dead, else resume aiming for its mounting
+; In:  8(a6) = this
+; Out: d0
+; Evidence: health <= 0 -> TechWallGun_Explode; mount 0/2 -> TechWallGun_StateAimLevel, 1 -> TechWallGun_StateCeilAimDown
 ; ---------------------------------------------------------------------------
-sub_142322:
+TechWallGun_StateHurt:
 	link.w	a6,#$0
 	move.l	a4,-(a7)
 	movea.l	$8(a6),a4
@@ -13,7 +16,7 @@ sub_142322:
 	addq.w	#$8,a7
 	bgt.s	loc_14234E
 	move.l	a4,-(a7)
-	jsr	sub_1422A8(pc)
+	jsr	TechWallGun_Explode(pc)
 	addq.w	#$4,a7
 	bra.w	loc_1423CE
 loc_14234E:
@@ -31,7 +34,7 @@ loc_14235E:
 	jsr	$4E4A(a5)	; -> Obj_ChangeAnim
 	addq.w	#$8,a7
 	move.w	#$FF,$6C(a4)
-	lea.l	sub_14286A(pc),a0
+	lea.l	TechWallGun_StateAimLevel(pc),a0
 	move.l	a0,$5C(a4)
 	moveq	#$8,d0
 	and.w	$4(a4),d0
@@ -43,7 +46,7 @@ loc_142384:
 	jsr	$4E4A(a5)	; -> Obj_ChangeAnim
 	addq.w	#$8,a7
 	move.w	#$FF,$6C(a4)
-	lea.l	sub_1429A6(pc),a0
+	lea.l	TechWallGun_StateCeilAimDown(pc),a0
 	move.l	a0,$5C(a4)
 	moveq	#$8,d0
 	and.w	$4(a4),d0
@@ -55,7 +58,7 @@ loc_1423AA:
 	jsr	$4E4A(a5)	; -> Obj_ChangeAnim
 	addq.w	#$8,a7
 	move.w	#$FF,$6C(a4)
-	lea.l	sub_14286A(pc),a0
+	lea.l	TechWallGun_StateAimLevel(pc),a0
 	move.l	a0,$5C(a4)
 	moveq	#$8,d0
 	and.w	$4(a4),d0

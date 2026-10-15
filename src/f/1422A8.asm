@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_1422A8	[link-after-rts]
+; TechWallGun_Explode - destroyed wall gun: explosion offset by its mounting, then remove it
+; In:  8(a6) = this
+; Out: none
+; Evidence: mount +$9A 0 (left wall) x+16, 1 (ceiling) y+32, 2 (right wall) x-16; Explosion_Spawn; vtable +$52 Kill
 ; ---------------------------------------------------------------------------
-sub_1422A8:
+TechWallGun_Explode:
 	link.w	a6,#$0
 	movem.l	d6-d7/a4,-(a7)
 	movea.l	$8(a6),a4

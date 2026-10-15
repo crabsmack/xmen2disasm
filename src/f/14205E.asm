@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_14205E	[jt 1924]
+; TankLeft_ActDrive - tank script action: drive for the pause time, then the next script step
+; In:  8(a6) = this
+; Out: none
+; Evidence: drive animation, vx = +/-$9E; next thunk with delay +$A0
 ; ---------------------------------------------------------------------------
-sub_14205E:
+TankLeft_ActDrive:
 	link.w	a6,#$0
 	move.l	a4,-(a7)
 	movea.l	$8(a6),a4

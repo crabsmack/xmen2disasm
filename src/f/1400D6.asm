@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_1400D6	[link-after-rts]
+; Spark_NopStatic - empty helper called by Spark_ClassInit
+; In:  none
+; Out: none
+; Evidence: bare rts body; only caller Spark_ClassInit
 ; ---------------------------------------------------------------------------
-sub_1400D6:
+Spark_NopStatic:
 	link.w	a6,#$0
 	unlk	a6
 	rts

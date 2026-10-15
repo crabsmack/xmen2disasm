@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; loc_142F70
+; TechWallGun_UpdateBullet_Draw - TechWallGun_UpdateBullet tail: build the bullet's sprite attributes (frame, flips, priority) and write it to the sprite table
+; In:  a3 = bullet slot, a6 frame of TechWallGun_UpdateBullet
+; Out: d0
+; Evidence: tile = g_TechWallGunSprDef record base | $6000 + frame*4, flips from +$E bits $20/$10, priority from the live player; reached from every switch case
 ; ---------------------------------------------------------------------------
-loc_142F70:
+TechWallGun_UpdateBullet_Draw:
 	move.w	g_TechWallGunSprDef(a5),d0
 	ext.l	d0
 	lsl.l	#$2,d0

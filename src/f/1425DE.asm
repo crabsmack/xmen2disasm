@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_1425DE	[link-after-rts]
+; TechWallGun_AimAngle - coarse angle of a (dx, dy) vector from octant tests (multiples of 45 and 22.5-degree sub-steps, as 4x values)
+; In:  8(a6) = word dx, $C(a6) = word dy
+; Out: d0 = angle code (callers use (code + 2) >> 2)
+; Evidence: compares |dx|, |dy| and 2x of each; returns $2D/$87/$E1/$13B/... style values; used by TechWallGun_AimWall/AimCeiling
 ; ---------------------------------------------------------------------------
-sub_1425DE:
+TechWallGun_AimAngle:
 	link.w	a6,#$0
 	movem.l	d6-d7,-(a7)
 	move.w	$A(a6),d6

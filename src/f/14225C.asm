@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_14225C	[link-after-rts]
+; TechWallGun_FindFreeBullet - find a free slot in the wall guns' 16-bullet pool
+; In:  none
+; Out: d0 = slot (or the pool end when full)
+; Evidence: pool $FFE794, 16 x $10 bytes, slot free when +$E high nibble is 0
 ; ---------------------------------------------------------------------------
-sub_14225C:
+TechWallGun_FindFreeBullet:
 	link.w	a6,#$0
 	move.l	a4,-(a7)
 	moveq	#$0,d0
