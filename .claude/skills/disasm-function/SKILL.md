@@ -11,7 +11,7 @@ header a newcomer can trust, and the tree still builds byte-identical.
 ## 1. Pick
 
 - Given a function: use it. Otherwise `uv run tools/xref.py --todo 25` and take
-  the top entry inside your claimed range (parallel mode). The queue puts leaves and
+  the top entry (parallel mode: `--todo 25 --range LO HI` for your claimed range). The queue puts leaves and
   the most-called helpers first because their names make every caller easier.
 - Read `docs/NOTES.md` "Subsystems" first. Someone may already know the module.
 
@@ -53,7 +53,12 @@ uv run tools/decomp.py sync      # optional: refresh names in Ghidra
 
 ## 4. Document (N2 checks the first line's format)
 
-Replace the generated header in `src/f/XXXXXX.asm`:
+Use `tools/header.py` (no hand edits needed; batch many with a JSONL file):
+```
+uv run tools/header.py Module_Verb "one-line purpose" --in "8(a6) = ..." --out "d0 = ..." --evidence "..."
+uv run tools/header.py --batch headers.jsonl   # {"name","purpose","in","out","evidence"} per line
+```
+It replaces the generated header in `src/f/XXXXXX.asm` with:
 ```
 ; ---------------------------------------------------------------------------
 ; Module_Verb - one-line purpose
