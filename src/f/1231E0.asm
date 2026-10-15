@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_1231E0	[link-after-rts]
+; BigBio_StartScript - BIGBIO: idle animation and start BigBio_Script after 60 frames
+; In:  8(a6) = this
+; Out: none
+; Evidence: AiScript_Set(+$96, jt $34AA)
 ; ---------------------------------------------------------------------------
-sub_1231E0:
+BigBio_StartScript:
 	link.w	a6,#$0
 	move.l	a4,-(a7)
 	movea.l	$8(a6),a4

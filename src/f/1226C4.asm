@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_1226C4	[link-after-rts]
+; BigBio_StateFlyToTarget - BIGBIO: fly toward the target (+$A4/+$A8) with the orbs spinning, braking near it; then next entry
+; In:  8(a6) = this
+; Out: d0
+; Evidence: BigBio_UpdateOrbRing; timer +$6E
 ; ---------------------------------------------------------------------------
-sub_1226C4:
+BigBio_StateFlyToTarget:
 	link.w	a6,#$0
 	movem.l	d3/d5-d7/a4,-(a7)
 	movea.l	$8(a6),a4
@@ -32,7 +35,7 @@ loc_122700:
 	move.l	d1,d5
 	add.l	d0,d5
 	move.l	a4,-(a7)
-	jsr	sub_121DB6(pc)
+	jsr	BigBio_UpdateOrbRing(pc)
 	cmpi.l	#$500,d5
 	addq.w	#$4,a7
 	bge.s	loc_12273E
@@ -56,7 +59,7 @@ loc_12273E:
 	tst.w	$6E(a4)
 	beq.s	loc_122760
 	clr.w	$6C(a4)
-	lea.l	sub_1226C4(pc),a0
+	lea.l	BigBio_StateFlyToTarget(pc),a0
 	move.l	a0,$5C(a4)
 	moveq	#$8,d0
 	and.w	$4(a4),d0

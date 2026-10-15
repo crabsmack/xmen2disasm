@@ -6,6 +6,6 @@
 ; ---------------------------------------------------------------------------
 BioBalls_Reset:
 	link.w	a6,#$0
-	jsr	sub_1203A4(pc)
+	jsr	BioBalls_EmptyStub(pc)
 	unlk	a6
 	rts

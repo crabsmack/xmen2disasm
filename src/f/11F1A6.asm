@@ -8,7 +8,7 @@ BioBalls_AllocBallList:
 	link.w	a6,#$0
 	movem.l	d3/d6-d7/a4,-(a7)
 	move.w	$A(a6),d6
-	jsr	sub_1203A4(pc)
+	jsr	BioBalls_EmptyStub(pc)
 	move.w	d6,d1
 	ext.l	d1
 	add.l	d1,d1

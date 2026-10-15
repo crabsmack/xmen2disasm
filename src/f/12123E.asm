@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_12123E	[link-after-rts]
+; BioSentinel_StateThink - BIOSENTINEL decision: swipe at a close player; when the cooldown is over reload (+$A0) and aim up/straight/down by the height difference; otherwise walk
+; In:  8(a6) = this
+; Out: d0
+; Evidence: 8 callers; next StateAim* / StateWalking / StateAfterSwipe
 ; ---------------------------------------------------------------------------
-sub_12123E:
+BioSentinel_StateThink:
 	link.w	a6,#$0
 	movem.l	d3/d6-d7/a3-a4,-(a7)
 	movea.l	$8(a6),a4
@@ -74,7 +77,7 @@ loc_1212DA:
 	jsr	$4E42(a5)	; -> Obj_SetAnim
 	addq.w	#$8,a7
 	move.w	#$FF,$6C(a4)
-	lea.l	sub_1210CE(pc),a0
+	lea.l	BioSentinel_StateAfterSwipe(pc),a0
 	move.l	a0,$5C(a4)
 	moveq	#$8,d0
 	and.w	$4(a4),d0
@@ -109,26 +112,26 @@ loc_12134E:
 loc_121354:
 	cmpi.l	#$FFFFE200,d6
 	bge.s	loc_121370
-	lea.l	sub_121062(pc),a0
+	lea.l	BioSentinel_StateAimUp(pc),a0
 	move.l	a0,$5C(a4)
 	move.l	a4,-(a7)
-	jsr	sub_121062(pc)
+	jsr	BioSentinel_StateAimUp(pc)
 	addq.w	#$4,a7
 	bra.w	loc_1213FE
 loc_121370:
 	cmpi.l	#$500,d6
 	ble.s	loc_12138A
-	lea.l	sub_121098(pc),a0
+	lea.l	BioSentinel_StateAimDown(pc),a0
 	move.l	a0,$5C(a4)
 	move.l	a4,-(a7)
-	jsr	sub_121098(pc)
+	jsr	BioSentinel_StateAimDown(pc)
 	addq.w	#$4,a7
 	bra.s	loc_1213FE
 loc_12138A:
-	lea.l	sub_12102C(pc),a0
+	lea.l	BioSentinel_StateAimLevel(pc),a0
 	move.l	a0,$5C(a4)
 	move.l	a4,-(a7)
-	jsr	sub_12102C(pc)
+	jsr	BioSentinel_StateAimLevel(pc)
 	addq.w	#$4,a7
 	bra.s	loc_1213FE
 loc_12139C:
@@ -140,7 +143,7 @@ loc_12139C:
 	addq.w	#$8,a7
 	beq.s	loc_1213C0
 	clr.w	$6C(a4)
-	lea.l	sub_12123E(pc),a0
+	lea.l	BioSentinel_StateThink(pc),a0
 	move.l	a0,$5C(a4)
 	moveq	#$8,d0
 	and.w	$4(a4),d0
@@ -164,7 +167,7 @@ loc_1213E6:
 	move.w	d0,$16(a4)
 	addq.w	#$8,a7
 	clr.w	$6C(a4)
-	lea.l	sub_12110E(pc),a0
+	lea.l	BioSentinel_StateWalking(pc),a0
 	move.l	a0,$5C(a4)
 	moveq	#$8,d0
 	and.w	$4(a4),d0

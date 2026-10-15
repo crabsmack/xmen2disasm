@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_1215A6	[link-after-rts]
+; BigBio_SpitSpawn - BIGBIO: launch a spit projectile (max 8) from its mouth, diagonally toward its facing
+; In:  8(a6) = this  $F(a6) = byte kind
+; Out: none
+; Evidence: pool $FFE770 (16-byte records), count $FFE76E; speed +-$900
 ; ---------------------------------------------------------------------------
-sub_1215A6:
+BigBio_SpitSpawn:
 	link.w	a6,#$0
 	movem.l	d7/a3-a4,-(a7)
 	movea.l	$8(a6),a3

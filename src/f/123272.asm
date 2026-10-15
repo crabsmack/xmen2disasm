@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_123272	[link-after-rts]
+; BigBio_StateDying - BIGBIO dying: let the orbs fall; when the timer ends Kill
+; In:  8(a6) = this
+; Out: d0
+; Evidence: fall offsets jt $120786; vtable +$52
 ; ---------------------------------------------------------------------------
-sub_123272:
+BigBio_StateDying:
 	link.w	a6,#$FFFC
 	movem.l	d3/d6-d7/a3-a4,-(a7)
 	movea.l	$8(a6),a3
@@ -40,7 +43,7 @@ loc_1232B6:
 	bra.s	loc_1232E6
 loc_1232D4:
 	clr.w	$6C(a3)
-	lea.l	sub_123272(pc),a0
+	lea.l	BigBio_StateDying(pc),a0
 	move.l	a0,$5C(a3)
 	moveq	#$8,d0
 	and.w	$4(a3),d0

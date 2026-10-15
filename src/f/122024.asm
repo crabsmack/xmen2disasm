@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_122024	[link-after-rts]
+; BigBio_ActIdleAnim90 - BIGBIO script action: idle animation $1206E6, next entry after 90 frames
+; In:  8(a6) = this
+; Out: none
+; Evidence: Obj_ChangeAnim
 ; ---------------------------------------------------------------------------
-sub_122024:
+BigBio_ActIdleAnim90:
 	link.w	a6,#$0
 	move.l	a4,-(a7)
 	movea.l	$8(a6),a4

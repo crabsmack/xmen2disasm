@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_123346	[link-after-rts]
+; BigBio_StateDefeated - BIGBIO defeated: open the arena wall, end the scene in 200 frames, death explosion, death animation and sound
+; In:  8(a6) = this
+; Out: d0 = flags & 8
+; Evidence: Seg_Free(+$B8), g_SceneExitTimer = 200, sub_13EEFA effect jt $3D42; TAS frame 36976
 ; ---------------------------------------------------------------------------
-sub_123346:
+BigBio_StateDefeated:
 	link.w	a6,#$0
 	movem.l	a3-a4,-(a7)
 	movea.l	$8(a6),a4
@@ -54,7 +57,7 @@ sub_123346:
 	jsr	$521A(a5)	; -> Snd_Play
 	lea.l	$3C(a7),a7
 	move.w	#$FF,$6C(a4)
-	lea.l	sub_1232F0(pc),a0
+	lea.l	BigBio_StateDeathOrbs(pc),a0
 	move.l	a0,$5C(a4)
 	moveq	#$8,d0
 	and.w	$4(a4),d0

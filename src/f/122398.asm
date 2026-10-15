@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_122398	[jt 1696]
+; BigBio_ActSpit3 - BIGBIO script action: spit animation (jt $368A), 3 shots
+; In:  8(a6) = this
+; Out: d0 = flags & 8
+; Evidence: first entry of BigBio_Script; next StateSpitStart
 ; ---------------------------------------------------------------------------
-sub_122398:
+BigBio_ActSpit3:
 	link.w	a6,#$0
 	move.l	a4,-(a7)
 	movea.l	$8(a6),a4
@@ -12,7 +15,7 @@ sub_122398:
 	move.w	#$3,$B4(a4)
 	addq.w	#$8,a7
 	move.w	#$FF,$6C(a4)
-	lea.l	sub_122362(pc),a0
+	lea.l	BigBio_StateSpitStart(pc),a0
 	move.l	a0,$5C(a4)
 	moveq	#$8,d0
 	and.w	$4(a4),d0

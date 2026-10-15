@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_1234F4	[link-after-rts]
+; BigBio_EmptyStub - BIGBIO: empty function (ClassInit helper)
+; In:  none
+; Out: none
+; Evidence: called by BigBio_ClassInit
 ; ---------------------------------------------------------------------------
-sub_1234F4:
+BigBio_EmptyStub:
 	link.w	a6,#$0
 	unlk	a6
 	rts

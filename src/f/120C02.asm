@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_120C02	[link-after-rts]
+; BioSentinel_StateCeilingCrawl - BIOSENTINEL on the ceiling: crawl, turning at segment ends; when a player passes below (|dx| < 40, 0 < dy < 210) drop toward the floor
+; In:  8(a6) = this
+; Out: d0 = flags & 8
+; Evidence: Player_Nearest, Seg_FindBelow, Seg_WouldLeaveEnd, Obj_Detach, gravity $28; next StateDropFlip
 ; ---------------------------------------------------------------------------
-sub_120C02:
+BioSentinel_StateCeilingCrawl:
 	link.w	a6,#$0
 	movem.l	d3/d6-d7/a3-a4,-(a7)
 	movea.l	$8(a6),a4
@@ -62,7 +65,7 @@ loc_120C92:
 	ori.w	#$1000,$6(a4)
 	lea.l	$18(a7),a7
 	move.w	#$FF,$6C(a4)
-	lea.l	sub_120D32(pc),a0
+	lea.l	BioSentinel_StateDropFlip(pc),a0
 	move.l	a0,$5C(a4)
 	moveq	#$8,d0
 	and.w	$4(a4),d0
@@ -88,14 +91,14 @@ loc_120CFC:
 	ext.w	d0
 	move.w	d0,$1E(a4)
 	clr.w	$6C(a4)
-	lea.l	sub_120C02(pc),a0
+	lea.l	BioSentinel_StateCeilingCrawl(pc),a0
 	move.l	a0,$5C(a4)
 	moveq	#$8,d0
 	and.w	$4(a4),d0
 	bra.s	loc_120D28
 loc_120D16:
 	clr.w	$6C(a4)
-	lea.l	sub_120C02(pc),a0
+	lea.l	BioSentinel_StateCeilingCrawl(pc),a0
 	move.l	a0,$5C(a4)
 	moveq	#$8,d0
 	and.w	$4(a4),d0

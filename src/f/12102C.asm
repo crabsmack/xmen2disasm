@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_12102C	[link-after-rts]
+; BioSentinel_StateAimLevel - BIOSENTINEL: straight aiming animation (jt $3612), then fire
+; In:  8(a6) = this
+; Out: d0 = flags & 8
+; Evidence: Obj_SetAnim; next StateFireLevel
 ; ---------------------------------------------------------------------------
-sub_12102C:
+BioSentinel_StateAimLevel:
 	link.w	a6,#$0
 	move.l	a4,-(a7)
 	movea.l	$8(a6),a4
@@ -11,7 +14,7 @@ sub_12102C:
 	jsr	$4E42(a5)	; -> Obj_SetAnim
 	addq.w	#$8,a7
 	move.w	#$FF,$6C(a4)
-	lea.l	sub_120FC8(pc),a0
+	lea.l	BioSentinel_StateFireLevel(pc),a0
 	move.l	a0,$5C(a4)
 	moveq	#$8,d0
 	and.w	$4(a4),d0

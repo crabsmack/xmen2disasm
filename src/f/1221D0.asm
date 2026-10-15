@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_1221D0	[link-after-rts]
+; BigBio_StateStartMorph - BIGBIO: set shape jt $3692, jump to the arena side and morph
+; In:  8(a6) = this
+; Out: d0 = flags & 8
+; Evidence: +$B0 arena left; next StateMorphToShape
 ; ---------------------------------------------------------------------------
-sub_1221D0:
+BigBio_StateStartMorph:
 	link.w	a6,#$0
 	move.l	a4,-(a7)
 	movea.l	$8(a6),a4
@@ -14,7 +17,7 @@ sub_1221D0:
 	lea.l	$3492(a5),a0
 	move.l	$2(a0),-(a7)
 	move.l	a4,-(a7)
-	jsr	sub_121D94(pc)
+	jsr	BigBio_SetOrbShape(pc)
 	tst.b	$B6(a4)
 	lea.l	$10(a7),a7
 	beq.s	loc_12221A
@@ -33,7 +36,7 @@ loc_12221A:
 	move.l	d0,$8(a4)
 loc_12222A:
 	clr.w	$6C(a4)
-	lea.l	sub_122088(pc),a0
+	lea.l	BigBio_StateMorphToShape(pc),a0
 	move.l	a0,$5C(a4)
 	moveq	#$8,d0
 	and.w	$4(a4),d0

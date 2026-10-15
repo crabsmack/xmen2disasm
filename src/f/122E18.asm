@@ -1,14 +1,17 @@
 ; ---------------------------------------------------------------------------
-; sub_122E18	[link-after-rts]
+; BigBio_StateLaunch - BIGBIO: leap into the air (sound $FA) and form the orb ring
+; In:  8(a6) = this
+; Out: d0 = flags & 8
+; Evidence: next StateFormRing
 ; ---------------------------------------------------------------------------
-sub_122E18:
+BigBio_StateLaunch:
 	link.w	a6,#$0
 	move.l	a4,-(a7)
 	movea.l	$8(a6),a4
 	lea.l	$3492(a5),a0
 	move.l	$2(a0),-(a7)
 	move.l	a4,-(a7)
-	jsr	sub_122DBE(pc)
+	jsr	BigBio_Launch(pc)
 	pea.l	($FF).w
 	move.l	a4,-(a7)
 	movea.l	(a4),a0
@@ -28,7 +31,7 @@ sub_122E18:
 	jsr	$521A(a5)	; -> Snd_Play
 	lea.l	$18(a7),a7
 	clr.w	$6C(a4)
-	lea.l	sub_122B96(pc),a0
+	lea.l	BigBio_StateFormRing(pc),a0
 	move.l	a0,$5C(a4)
 	moveq	#$8,d0
 	and.w	$4(a4),d0

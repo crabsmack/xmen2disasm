@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_122B96	[link-after-rts]
+; BigBio_StateFormRing - BIGBIO: move the orbs into the ring formation; when done sound $FB and spin up
+; In:  8(a6) = this
+; Out: d0 = flags & 8
+; Evidence: next StateSpinUp
 ; ---------------------------------------------------------------------------
-sub_122B96:
+BigBio_StateFormRing:
 	link.w	a6,#$FFE4
 	movem.l	d3-d7/a3-a4,-(a7)
 	movea.l	$8(a6),a3
@@ -183,14 +186,14 @@ loc_122D5A:
 	jsr	$521A(a5)	; -> Snd_Play
 	addq.w	#$8,a7
 	clr.w	$6C(a3)
-	lea.l	sub_122AFA(pc),a0
+	lea.l	BigBio_StateSpinUp(pc),a0
 	move.l	a0,$5C(a3)
 	moveq	#$8,d0
 	and.w	$4(a3),d0
 	bra.s	loc_122DB4
 loc_122DA2:
 	clr.w	$6C(a3)
-	lea.l	sub_122B96(pc),a0
+	lea.l	BigBio_StateFormRing(pc),a0
 	move.l	a0,$5C(a3)
 	moveq	#$8,d0
 	and.w	$4(a3),d0

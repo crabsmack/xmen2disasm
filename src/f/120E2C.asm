@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_120E2C	[link-after-rts]
+; BioSentinel_FireBullet - BIOSENTINEL: fire a BIOBULLET up-diagonal (-1), straight (0) or down-diagonal (1), mirrored by facing; one less shot left
+; In:  8(a6) = this  $F(a6) = byte direction
+; Out: d0
+; Evidence: Tbl_BioBullet_vtable New, BioBullet_SetVelocity; ammo +$A2; 3 callers
 ; ---------------------------------------------------------------------------
-sub_120E2C:
+BioSentinel_FireBullet:
 	link.w	a6,#$0
 	movem.l	d4-d7/a3-a4,-(a7)
 	movea.l	$8(a6),a4

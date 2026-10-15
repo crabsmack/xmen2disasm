@@ -1,12 +1,15 @@
 ; ---------------------------------------------------------------------------
-; sub_12287A	[jt 1700]
+; BigBio_ActStartArcSwoop - BIGBIO script action: set the swoop anchor at one side, turn around, start the arc
+; In:  8(a6) = this
+; Out: d0 = flags & 8
+; Evidence: next StateArcSwoop
 ; ---------------------------------------------------------------------------
-sub_12287A:
+BigBio_ActStartArcSwoop:
 	link.w	a6,#$0
 	movem.l	d3/a4,-(a7)
 	movea.l	$8(a6),a4
 	move.l	a4,-(a7)
-	jsr	sub_121DB6(pc)
+	jsr	BigBio_UpdateOrbRing(pc)
 	clr.w	$B2(a4)
 	tst.b	$B6(a4)
 	beq.s	loc_1228A4
@@ -34,7 +37,7 @@ loc_1228B2:
 	move.l	d0,$A8(a4)
 	addq.w	#$4,a7
 	clr.w	$6C(a4)
-	lea.l	sub_1227B4(pc),a0
+	lea.l	BigBio_StateArcSwoop(pc),a0
 	move.l	a0,$5C(a4)
 	moveq	#$8,d0
 	and.w	$4(a4),d0

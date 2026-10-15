@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_121DB6	[link-after-rts]
+; BigBio_UpdateOrbRing - BIGBIO: hurt players inside the orb radius, spin the 16 orbs around the body (angles +$9C/+$9E, speed +$A0 ramping up)
+; In:  8(a6) = this
+; Out: d0.b = 1 while still spinning up
+; Evidence: 8 callers (the flying states); TakeDamage type 4
 ; ---------------------------------------------------------------------------
-sub_121DB6:
+BigBio_UpdateOrbRing:
 	link.w	a6,#$FFE8
 	movem.l	d3-d7/a3-a4,-(a7)
 	movea.l	$8(a6),a3

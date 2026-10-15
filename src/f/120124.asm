@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_120124	[jt 1656]
+; BioBalls_MotionRoll - BIOBALLS motion: roll the ball chain through a half circle (angle +$A8 0..180 by +$AA); at the end clear the motion and puff at the far side
+; In:  8(a6) = this  $E(a6) = word steps
+; Out: d0 = 1
+; Evidence: exported jt $33E2; set by XCLONE actions ($09749E, $097514) whose child then shakes the screen
 ; ---------------------------------------------------------------------------
-sub_120124:
+BioBalls_MotionRoll:
 	link.w	a6,#$FFE8
 	movem.l	d3-d7/a3-a4,-(a7)
 	move.b	#$1,-$9(a6)
@@ -233,7 +236,7 @@ loc_12036C:
 	move.l	d0,-(a7)
 	ext.l	d4
 	move.l	d4,-(a7)
-	jsr	sub_1200AE(pc)
+	jsr	BioBalls_SpawnPuff(pc)
 	lea.l	$C(a7),a7
 loc_120386:
 	move.w	$E(a6),d0

@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_12232C	[link-after-rts]
+; BigBio_StateSpitB - BIGBIO: mouth frame between spits
+; In:  8(a6) = this
+; Out: d0 = flags & 8
+; Evidence: next StateSpitA
 ; ---------------------------------------------------------------------------
-sub_12232C:
+BigBio_StateSpitB:
 	link.w	a6,#$0
 	move.l	a4,-(a7)
 	movea.l	$8(a6),a4
@@ -12,7 +15,7 @@ sub_12232C:
 	jsr	(a1)
 	addq.w	#$8,a7
 	move.w	#$1,$6C(a4)
-	lea.l	sub_1222A0(pc),a0
+	lea.l	BigBio_StateSpitA(pc),a0
 	move.l	a0,$5C(a4)
 	moveq	#$8,d0
 	and.w	$4(a4),d0

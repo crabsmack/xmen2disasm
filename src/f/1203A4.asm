@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_1203A4	[jt 1657]
+; BioBalls_EmptyStub - BIOBALLS: empty function
+; In:  none
+; Out: none
+; Evidence: body is link/unlk/rts; called by BioBalls_AllocBallList and others
 ; ---------------------------------------------------------------------------
-sub_1203A4:
+BioBalls_EmptyStub:
 	link.w	a6,#$0
 	unlk	a6
 	rts

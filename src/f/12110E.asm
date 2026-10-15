@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_12110E	[link-after-rts]
+; BioSentinel_StateWalking - BIOSENTINEL walking: swipe at a player within 70x40 px, stop at the segment end, keep walking while the animation runs
+; In:  8(a6) = this
+; Out: d0 = flags & 8
+; Evidence: Seg_WouldLeaveEnd; swipe animation jt $362A; TAS 36160-48903
 ; ---------------------------------------------------------------------------
-sub_12110E:
+BioSentinel_StateWalking:
 	link.w	a6,#$0
 	movem.l	d3/d6-d7/a3-a4,-(a7)
 	movea.l	$8(a6),a4
@@ -40,7 +43,7 @@ sub_12110E:
 	clr.w	$16(a4)
 	clr.w	$6E(a4)
 	clr.w	$6C(a4)
-	lea.l	sub_12123E(pc),a0
+	lea.l	BioSentinel_StateThink(pc),a0
 	move.l	a0,$5C(a4)
 	moveq	#$8,d0
 	and.w	$4(a4),d0
@@ -92,7 +95,7 @@ loc_1211E2:
 	jsr	$4E42(a5)	; -> Obj_SetAnim
 	addq.w	#$8,a7
 	move.w	#$FF,$6C(a4)
-	lea.l	sub_1210CE(pc),a0
+	lea.l	BioSentinel_StateAfterSwipe(pc),a0
 	move.l	a0,$5C(a4)
 	moveq	#$8,d0
 	and.w	$4(a4),d0
@@ -101,14 +104,14 @@ loc_121208:
 	tst.l	$44(a4)
 	bne.s	loc_121222
 	clr.w	$6C(a4)
-	lea.l	sub_12123E(pc),a0
+	lea.l	BioSentinel_StateThink(pc),a0
 	move.l	a0,$5C(a4)
 	moveq	#$8,d0
 	and.w	$4(a4),d0
 	bra.s	loc_121234
 loc_121222:
 	clr.w	$6C(a4)
-	lea.l	sub_12110E(pc),a0
+	lea.l	BioSentinel_StateWalking(pc),a0
 	move.l	a0,$5C(a4)
 	moveq	#$8,d0
 	and.w	$4(a4),d0

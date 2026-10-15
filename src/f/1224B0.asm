@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_1224B0	[link-after-rts]
+; BigBio_StateGatherOrbs - BIGBIO: pull the orbs onto the shape (8 px per step); when done land animation, sounds, next entry
+; In:  8(a6) = this
+; Out: d0
+; Evidence: sounds $FB/$F8
 ; ---------------------------------------------------------------------------
-sub_1224B0:
+BigBio_StateGatherOrbs:
 	link.w	a6,#$FFF6
 	movem.l	d3-d7/a3-a4,-(a7)
 	movea.l	-$1A8C(a5),a4
@@ -144,7 +147,7 @@ loc_122626:
 loc_122638:
 	movea.l	$8(a6),a0
 	clr.w	$6C(a0)
-	lea.l	sub_1224B0(pc),a0
+	lea.l	BigBio_StateGatherOrbs(pc),a0
 	movea.l	$8(a6),a1
 	move.l	a0,$5C(a1)
 	movea.l	$8(a6),a0

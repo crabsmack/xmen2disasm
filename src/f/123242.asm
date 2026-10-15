@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_123242	[link-after-rts]
+; BigBio_ResumeAfterHit - BIGBIO: clear the hit flag and resume the state saved in +$60
+; In:  8(a6) = this
+; Out: d0 = 0
+; Evidence: called from BigBio_TakeDamage
 ; ---------------------------------------------------------------------------
-sub_123242:
+BigBio_ResumeAfterHit:
 	link.w	a6,#$0
 	move.l	a4,-(a7)
 	movea.l	$8(a6),a4

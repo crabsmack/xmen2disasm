@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_122DBE	[link-after-rts]
+; BigBio_Launch - BIGBIO: set a shape and launch up and forward (vx $5BE, vy -$420, drag), timer 200
+; In:  8(a6) = this  $C(a6) = shape or 0
+; Out: d0
+; Evidence: callers StateLaunch
 ; ---------------------------------------------------------------------------
-sub_122DBE:
+BigBio_Launch:
 	link.w	a6,#$0
 	movem.l	a3-a4,-(a7)
 	movea.l	$C(a6),a3
@@ -11,7 +14,7 @@ sub_122DBE:
 	beq.s	loc_122DE2
 	move.l	a3,-(a7)
 	move.l	a4,-(a7)
-	jsr	sub_121D94(pc)
+	jsr	BigBio_SetOrbShape(pc)
 	addq.w	#$8,a7
 loc_122DE2:
 	move.w	#$FFE5,$1E(a4)

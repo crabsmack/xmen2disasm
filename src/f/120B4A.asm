@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_120B4A	[link-after-rts]
+; BioSentinel_StateStart - BIOSENTINEL first state: variant 1 hangs on the ceiling (segment type $22) and crawls; others stand on the floor and think
+; In:  8(a6) = this
+; Out: none
+; Evidence: byte +$96 variant; sub_1F80CA/sub_1F6B56 attach to a segment; next StateCeilingCrawl or StateThink; TAS 35044-48732
 ; ---------------------------------------------------------------------------
-sub_120B4A:
+BioSentinel_StateStart:
 	link.w	a6,#$0
 	movem.l	d6-d7/a4,-(a7)
 	movea.l	$8(a6),a4
@@ -32,10 +35,10 @@ sub_120B4A:
 	move.l	a4,-(a7)
 	jsr	$4E42(a5)	; -> Obj_SetAnim
 	clr.b	$A6(a4)
-	lea.l	sub_120C02(pc),a0
+	lea.l	BioSentinel_StateCeilingCrawl(pc),a0
 	move.l	a0,$5C(a4)
 	move.l	a4,-(a7)
-	jsr	sub_120C02(pc)
+	jsr	BioSentinel_StateCeilingCrawl(pc)
 	lea.l	$14(a7),a7
 	bra.s	loc_120BF8
 loc_120BC4:
@@ -50,10 +53,10 @@ loc_120BC4:
 	move.l	d0,-(a7)
 	move.l	a4,-(a7)
 	jsr	$4EBA(a5)	; -> sub_1F6B56
-	lea.l	sub_12123E(pc),a0
+	lea.l	BioSentinel_StateThink(pc),a0
 	move.l	a0,$5C(a4)
 	move.l	a4,-(a7)
-	jsr	sub_12123E(pc)
+	jsr	BioSentinel_StateThink(pc)
 	lea.l	$C(a7),a7
 loc_120BF8:
 	movem.l	-$C(a6),d6-d7/a4

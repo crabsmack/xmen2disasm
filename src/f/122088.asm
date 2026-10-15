@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_122088	[link-after-rts]
+; BigBio_StateMorphToShape - BIGBIO: slide the orbs horizontally onto the shape; when done turn around, sound $F8, idle
+; In:  8(a6) = this
+; Out: d0 = flags & 8
+; Evidence: next BigBio_ActIdleAnim90
 ; ---------------------------------------------------------------------------
-sub_122088:
+BigBio_StateMorphToShape:
 	link.w	a6,#$FFF8
 	movem.l	d3-d7/a3-a4,-(a7)
 	movea.l	-$1A8C(a5),a4
@@ -98,7 +101,7 @@ loc_12216A:
 	lea.l	$10(a7),a7
 	movea.l	$8(a6),a0
 	move.w	#$FF,$6C(a0)
-	lea.l	sub_122024(pc),a0
+	lea.l	BigBio_ActIdleAnim90(pc),a0
 	movea.l	$8(a6),a1
 	move.l	a0,$5C(a1)
 	movea.l	$8(a6),a0
@@ -108,7 +111,7 @@ loc_12216A:
 loc_1221A8:
 	movea.l	$8(a6),a0
 	clr.w	$6C(a0)
-	lea.l	sub_122088(pc),a0
+	lea.l	BigBio_StateMorphToShape(pc),a0
 	movea.l	$8(a6),a1
 	move.l	a0,$5C(a1)
 	movea.l	$8(a6),a0

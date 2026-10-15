@@ -1,12 +1,15 @@
 ; ---------------------------------------------------------------------------
-; sub_122660	[jt 1699]
+; BigBio_ActJumpToSide - BIGBIO script action: spin the orbs and move to the far arena side, then gather the orbs
+; In:  8(a6) = this
+; Out: d0 = flags & 8
+; Evidence: x = arena left (+$B0) + 50 or 350; next StateGatherOrbs
 ; ---------------------------------------------------------------------------
-sub_122660:
+BigBio_ActJumpToSide:
 	link.w	a6,#$0
 	move.l	a4,-(a7)
 	movea.l	$8(a6),a4
 	move.l	a4,-(a7)
-	jsr	sub_121DB6(pc)
+	jsr	BigBio_UpdateOrbRing(pc)
 	move.w	#$5,$6E(a4)
 	tst.b	$B6(a4)
 	beq.s	loc_12268A
@@ -29,7 +32,7 @@ loc_122698:
 	move.l	d0,$C(a4)
 	addq.w	#$4,a7
 	clr.w	$6C(a4)
-	lea.l	sub_1224B0(pc),a0
+	lea.l	BigBio_StateGatherOrbs(pc),a0
 	move.l	a0,$5C(a4)
 	moveq	#$8,d0
 	and.w	$4(a4),d0

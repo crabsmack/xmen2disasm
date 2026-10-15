@@ -23,9 +23,9 @@ BigBio_Init:
 	clr.w	$20(a4)
 	move.w	#$32,$68(a4)
 	clr.w	$A2(a4)
-	lea.l	sub_122EDA(pc),a0
+	lea.l	BigBio_StateStart(pc),a0
 	move.l	a0,$5C(a4)
-	lea.l	sub_122EDA(pc),a0
+	lea.l	BigBio_StateStart(pc),a0
 	move.l	a0,$64(a4)
 	ori.w	#$80,$6(a4)
 	lea.l	$3582(a5),a0

@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_12314C	[link-after-rts]
+; BigBio_StateWalkIn - BIGBIO: walk in 80 px, then stop, roar (sound $F2), leave the ground and start the script
+; In:  8(a6) = this
+; Out: d0 = flags & 8
+; Evidence: Obj_Detach; next BigBio_StartScript
 ; ---------------------------------------------------------------------------
-sub_12314C:
+BigBio_StateWalkIn:
 	link.w	a6,#$0
 	move.l	a4,-(a7)
 	movea.l	$8(a6),a4
@@ -33,14 +36,14 @@ loc_12316A:
 	jsr	$4E7A(a5)	; -> Obj_Detach
 	lea.l	$14(a7),a7
 	move.w	#$FF,$6C(a4)
-	lea.l	sub_1231E0(pc),a0
+	lea.l	BigBio_StartScript(pc),a0
 	move.l	a0,$5C(a4)
 	moveq	#$8,d0
 	and.w	$4(a4),d0
 	bra.s	loc_1231D8
 loc_1231C6:
 	clr.w	$6C(a4)
-	lea.l	sub_12314C(pc),a0
+	lea.l	BigBio_StateWalkIn(pc),a0
 	move.l	a0,$5C(a4)
 	moveq	#$8,d0
 	and.w	$4(a4),d0

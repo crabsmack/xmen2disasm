@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_1200AE	[link-after-rts]
+; BioBalls_SpawnPuff - spawn a short ACTOR effect (animation $11E782) at pixel (x, y), optionally mirrored
+; In:  $A/$E(a6) = word x, y  $13(a6) = byte mirror
+; Out: d0
+; Evidence: ACTOR New + sub_13EFA0; called when BioBalls_MotionRoll finishes
 ; ---------------------------------------------------------------------------
-sub_1200AE:
+BioBalls_SpawnPuff:
 	link.w	a6,#$0
 	move.l	a4,-(a7)
 	moveq	#$0,d0

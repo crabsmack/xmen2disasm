@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_1223D4	[jt 1697]
+; BigBio_ActFaceSide - BIGBIO script action: face toward the arena centre (by +$B6), next entry
+; In:  8(a6) = this
+; Out: none
+; Evidence: +$2E bit 4
 ; ---------------------------------------------------------------------------
-sub_1223D4:
+BigBio_ActFaceSide:
 	link.w	a6,#$0
 	move.l	a4,-(a7)
 	movea.l	$8(a6),a4

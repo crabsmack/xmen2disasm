@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_121634	[link-after-rts]
+; BigBio_SpitFree - BIGBIO: remove a spit projectile (move the last one into its slot)
+; In:  8(a6) = record
+; Out: none
+; Evidence: Mem_Copy 16 bytes
 ; ---------------------------------------------------------------------------
-sub_121634:
+BigBio_SpitFree:
 	link.w	a6,#$0
 	tst.w	-$1A92(a5)
 	beq.s	loc_12165E

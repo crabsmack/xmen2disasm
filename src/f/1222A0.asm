@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_1222A0	[link-after-rts]
+; BigBio_StateSpitA - BIGBIO: spit frame, launch a projectile; after the shot count (+$B4) next entry, else frame B
+; In:  8(a6) = this
+; Out: d0
+; Evidence: BigBio_SpitSpawn; TAS 36842-36850
 ; ---------------------------------------------------------------------------
-sub_1222A0:
+BigBio_StateSpitA:
 	link.w	a6,#$0
 	move.l	a4,-(a7)
 	movea.l	$8(a6),a4
@@ -13,7 +16,7 @@ sub_1222A0:
 	moveq	#$0,d0
 	move.l	d0,-(a7)
 	move.l	a4,-(a7)
-	jsr	sub_1215A6(pc)
+	jsr	BigBio_SpitSpawn(pc)
 	subq.w	#$1,$B4(a4)
 	tst.w	$B4(a4)
 	lea.l	$10(a7),a7
@@ -42,7 +45,7 @@ loc_1222F6:
 	bra.s	loc_122324
 loc_122310:
 	move.w	#$1,$6C(a4)
-	lea.l	sub_12232C(pc),a0
+	lea.l	BigBio_StateSpitB(pc),a0
 	move.l	a0,$5C(a4)
 	moveq	#$8,d0
 	and.w	$4(a4),d0

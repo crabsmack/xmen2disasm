@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_122F64	[link-after-rts]
+; BigBio_StateWaitPlayers - BIGBIO: when all players are inside the arena, wall it in (two segments), lock the camera, load the boss palette and walk in
+; In:  8(a6) = this
+; Out: d0 = flags & 8
+; Evidence: Seg_Alloc/sub_1F7BB6, g_Camera +$36, 16 colours from jt $36A2 into $FFC8E0
 ; ---------------------------------------------------------------------------
-sub_122F64:
+BigBio_StateWaitPlayers:
 	link.w	a6,#$FFFC
 	movem.l	d3/d5-d7/a3-a4,-(a7)
 	movea.l	$8(a6),a4
@@ -162,14 +165,14 @@ loc_1230F4:
 	jsr	$4E42(a5)	; -> Obj_SetAnim
 	addq.w	#$8,a7
 	clr.w	$6C(a4)
-	lea.l	sub_12314C(pc),a0
+	lea.l	BigBio_StateWalkIn(pc),a0
 	move.l	a0,$5C(a4)
 	moveq	#$8,d0
 	and.w	$4(a4),d0
 	bra.s	loc_123142
 loc_123130:
 	clr.w	$6C(a4)
-	lea.l	sub_122F64(pc),a0
+	lea.l	BigBio_StateWaitPlayers(pc),a0
 	move.l	a0,$5C(a4)
 	moveq	#$8,d0
 	and.w	$4(a4),d0

@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_120DA2	[link-after-rts]
+; BioSentinel_StateFalling - BIOSENTINEL falling: on reaching the floor (+$98) stop, frame 6, attach to the floor segment and think after 9 frames
+; In:  8(a6) = this
+; Out: d0
+; Evidence: TAS 35146-46776
 ; ---------------------------------------------------------------------------
-sub_120DA2:
+BioSentinel_StateFalling:
 	link.w	a6,#$0
 	move.l	a4,-(a7)
 	movea.l	$8(a6),a4
@@ -30,14 +33,14 @@ sub_120DA2:
 	move.w	$A4(a4),$22(a4)
 	lea.l	$10(a7),a7
 	move.w	#$9,$6C(a4)
-	lea.l	sub_12123E(pc),a0
+	lea.l	BioSentinel_StateThink(pc),a0
 	move.l	a0,$5C(a4)
 	moveq	#$8,d0
 	and.w	$4(a4),d0
 	bra.s	loc_120E24
 loc_120E12:
 	clr.w	$6C(a4)
-	lea.l	sub_120DA2(pc),a0
+	lea.l	BioSentinel_StateFalling(pc),a0
 	move.l	a0,$5C(a4)
 	moveq	#$8,d0
 	and.w	$4(a4),d0

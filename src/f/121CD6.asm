@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_121CD6	[link-after-rts]
+; BigBio_PlaceOrbs - BIGBIO: put its 16 orbs at the position plus a shape's offsets (mirrored by the flip bits)
+; In:  8(a6) = this  $C(a6) = shape (8-byte entries, $FFF ends)
+; Out: d0
+; Evidence: orb list $FFE774 (16 x 6 bytes)
 ; ---------------------------------------------------------------------------
-sub_121CD6:
+BigBio_PlaceOrbs:
 	link.w	a6,#$FFFC
 	movem.l	d3-d7/a3-a4,-(a7)
 	movea.l	-$1A8C(a5),a4

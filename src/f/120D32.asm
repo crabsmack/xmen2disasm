@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_120D32	[link-after-rts]
+; BioSentinel_StateDropFlip - BIOSENTINEL drop: turn right side up (keep the box centre), falling animation
+; In:  8(a6) = this
+; Out: d0 = flags & 8
+; Evidence: Obj_UpdateBox; next StateFalling
 ; ---------------------------------------------------------------------------
-sub_120D32:
+BioSentinel_StateDropFlip:
 	link.w	a6,#$0
 	movem.l	d7/a4,-(a7)
 	movea.l	$8(a6),a4
@@ -30,7 +33,7 @@ sub_120D32:
 	add.l	d0,$C(a4)
 	lea.l	$C(a7),a7
 	clr.w	$6C(a4)
-	lea.l	sub_120DA2(pc),a0
+	lea.l	BioSentinel_StateFalling(pc),a0
 	move.l	a0,$5C(a4)
 	moveq	#$8,d0
 	and.w	$4(a4),d0

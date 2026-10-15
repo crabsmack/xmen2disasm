@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_121408	[link-after-rts]
+; BioSentinel_StateHurt - BIOSENTINEL hurt state: dead -> Explode; badly hurt (< 3) or lightly hurt animation, 40-frame invulnerability, then think
+; In:  8(a6) = this
+; Out: d0
+; Evidence: health +$68, vtable +$7E; set by BioSentinel_TakeDamage
 ; ---------------------------------------------------------------------------
-sub_121408:
+BioSentinel_StateHurt:
 	link.w	a6,#$0
 	move.l	a4,-(a7)
 	movea.l	$8(a6),a4
@@ -18,7 +21,7 @@ sub_121408:
 	move.w	#$28,$6A(a4)
 	addq.w	#$8,a7
 	move.w	#$28,$6C(a4)
-	lea.l	sub_12123E(pc),a0
+	lea.l	BioSentinel_StateThink(pc),a0
 	move.l	a0,$5C(a4)
 	moveq	#$8,d0
 	and.w	$4(a4),d0
@@ -33,7 +36,7 @@ loc_121452:
 	move.w	#$28,$6A(a4)
 	addq.w	#$8,a7
 	move.w	#$28,$6C(a4)
-	lea.l	sub_12123E(pc),a0
+	lea.l	BioSentinel_StateThink(pc),a0
 	move.l	a0,$5C(a4)
 	moveq	#$8,d0
 	and.w	$4(a4),d0
@@ -46,7 +49,7 @@ loc_121484:
 	jsr	(a1)
 	addq.w	#$4,a7
 	move.w	#$FF,$6C(a4)
-	lea.l	sub_121408(pc),a0
+	lea.l	BioSentinel_StateHurt(pc),a0
 	move.l	a0,$5C(a4)
 	moveq	#$8,d0
 	and.w	$4(a4),d0

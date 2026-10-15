@@ -451,7 +451,7 @@
 11DBC6	; loc_11DBC6 - runtime: executed in tas
 11DBDA	; loc_11DBDA - runtime: executed in tas
 11E77E	; BioBalls_ScriptIdle - runtime: executed in tas
-120828	; loc_120828 - runtime: executed in tas
+120828	; BigBio_Script - runtime: executed in tas
 12082C	; loc_12082C - runtime: executed in tas
 1344DA	; loc_1344DA - runtime: executed in tas
 1344E0	; loc_1344E0 - runtime: executed in tas

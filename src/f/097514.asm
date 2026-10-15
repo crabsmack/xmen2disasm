@@ -2,7 +2,7 @@
 ; XClone_ActBallsRoll - XCLONE script action: roll the BIOBALLS child in the facing direction (speed 10, $5A frames)
 ; In:  8(a6) = this
 ; Out: d0
-; Evidence: child +$AA = +-10, +$A2 = sub_120124, +$A8 = $5A, state BioBalls_WaitMotionDone; next XClone_StateBallsReturn; jt 752
+; Evidence: child +$AA = +-10, +$A2 = BioBalls_MotionRoll, +$A8 = $5A, state BioBalls_WaitMotionDone; next XClone_StateBallsReturn; jt 752
 ; Found: jt 752
 ; ---------------------------------------------------------------------------
 XClone_ActBallsRoll:

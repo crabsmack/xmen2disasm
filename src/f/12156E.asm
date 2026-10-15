@@ -6,6 +6,6 @@
 ; ---------------------------------------------------------------------------
 BioSentinel_ClassInit:
 	link.w	a6,#$0
-	jsr	sub_121566(pc)
+	jsr	BioSentinel_EmptyStub(pc)
 	unlk	a6
 	rts

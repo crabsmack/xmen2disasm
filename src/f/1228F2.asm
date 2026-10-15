@@ -1,12 +1,15 @@
 ; ---------------------------------------------------------------------------
-; sub_1228F2	[link-after-rts]
+; BigBio_StateWaitThenFlyBack - BIGBIO: when the timer runs out pick the other arena side and fly there
+; In:  8(a6) = this
+; Out: d0
+; Evidence: next StateFlyToTarget
 ; ---------------------------------------------------------------------------
-sub_1228F2:
+BigBio_StateWaitThenFlyBack:
 	link.w	a6,#$0
 	movem.l	d3/a4,-(a7)
 	movea.l	$8(a6),a4
 	move.l	a4,-(a7)
-	jsr	sub_121DB6(pc)
+	jsr	BigBio_UpdateOrbRing(pc)
 	tst.w	$6E(a4)
 	addq.w	#$4,a7
 	bne.w	loc_122990
@@ -46,14 +49,14 @@ loc_122944:
 	move.w	d0,$18(a4)
 	move.w	#$64,$6E(a4)
 	clr.w	$6C(a4)
-	lea.l	sub_1226C4(pc),a0
+	lea.l	BigBio_StateFlyToTarget(pc),a0
 	move.l	a0,$5C(a4)
 	moveq	#$8,d0
 	and.w	$4(a4),d0
 	bra.s	loc_1229A2
 loc_122990:
 	clr.w	$6C(a4)
-	lea.l	sub_1228F2(pc),a0
+	lea.l	BigBio_StateWaitThenFlyBack(pc),a0
 	move.l	a0,$5C(a4)
 	moveq	#$8,d0
 	and.w	$4(a4),d0

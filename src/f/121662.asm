@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_121662	[link-after-rts]
+; BigBio_SpitUpdateAll - BIGBIO spit timer: move projectiles, bounce them off the top/bottom, hit players (1 damage), drop them off screen, draw them
+; In:  none
+; Out: none
+; Evidence: TAS 33390-37014; g_SpriteTable
 ; ---------------------------------------------------------------------------
-sub_121662:
+BigBio_SpitUpdateAll:
 	link.w	a6,#$FFEC
 	movem.l	d3-d7/a3-a4,-(a7)
 	tst.w	-$1A92(a5)
@@ -132,7 +135,7 @@ loc_1217B6:
 	tst.b	-$D(a6)
 	beq.s	loc_1217DE
 	move.l	a3,-(a7)
-	jsr	sub_121634(pc)
+	jsr	BigBio_SpitFree(pc)
 	lea.l	-$10(a3),a3
 	move.w	-$8(a6),d0
 	subq.w	#$1,-$8(a6)

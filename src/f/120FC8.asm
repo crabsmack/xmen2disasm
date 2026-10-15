@@ -1,14 +1,17 @@
 ; ---------------------------------------------------------------------------
-; sub_120FC8	[link-after-rts]
+; BioSentinel_StateFireLevel - BIOSENTINEL: shoot straight (frame 7); out of shots -> think, else aim again
+; In:  8(a6) = this
+; Out: d0
+; Evidence: next StateAimLevel or StateThink
 ; ---------------------------------------------------------------------------
-sub_120FC8:
+BioSentinel_StateFireLevel:
 	link.w	a6,#$0
 	move.l	a4,-(a7)
 	movea.l	$8(a6),a4
 	moveq	#$0,d0
 	move.l	d0,-(a7)
 	move.l	a4,-(a7)
-	jsr	sub_120E2C(pc)
+	jsr	BioSentinel_FireBullet(pc)
 	moveq	#$7,d0
 	move.l	d0,-(a7)
 	move.l	a4,-(a7)
@@ -19,7 +22,7 @@ sub_120FC8:
 	lea.l	$10(a7),a7
 	ble.s	loc_12100A
 	move.w	#$C,$6C(a4)
-	lea.l	sub_12102C(pc),a0
+	lea.l	BioSentinel_StateAimLevel(pc),a0
 	move.l	a0,$5C(a4)
 	moveq	#$8,d0
 	and.w	$4(a4),d0
@@ -27,7 +30,7 @@ sub_120FC8:
 loc_12100A:
 	move.w	$9E(a4),$6E(a4)
 	move.w	#$19,$6C(a4)
-	lea.l	sub_12123E(pc),a0
+	lea.l	BioSentinel_StateThink(pc),a0
 	move.l	a0,$5C(a4)
 	moveq	#$8,d0
 	and.w	$4(a4),d0

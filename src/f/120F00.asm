@@ -1,14 +1,17 @@
 ; ---------------------------------------------------------------------------
-; sub_120F00	[link-after-rts]
+; BioSentinel_StateFireUp - BIOSENTINEL: shoot up-diagonal (frame 9); out of shots -> think with the cooldown, else aim again
+; In:  8(a6) = this
+; Out: d0
+; Evidence: next StateAimUp or StateThink
 ; ---------------------------------------------------------------------------
-sub_120F00:
+BioSentinel_StateFireUp:
 	link.w	a6,#$0
 	move.l	a4,-(a7)
 	movea.l	$8(a6),a4
 	moveq	#-$1,d0
 	move.l	d0,-(a7)
 	move.l	a4,-(a7)
-	jsr	sub_120E2C(pc)
+	jsr	BioSentinel_FireBullet(pc)
 	moveq	#$9,d0
 	move.l	d0,-(a7)
 	move.l	a4,-(a7)
@@ -19,7 +22,7 @@ sub_120F00:
 	lea.l	$10(a7),a7
 	ble.s	loc_120F42
 	move.w	#$C,$6C(a4)
-	lea.l	sub_121062(pc),a0
+	lea.l	BioSentinel_StateAimUp(pc),a0
 	move.l	a0,$5C(a4)
 	moveq	#$8,d0
 	and.w	$4(a4),d0
@@ -27,7 +30,7 @@ sub_120F00:
 loc_120F42:
 	move.w	$9E(a4),$6E(a4)
 	move.w	#$19,$6C(a4)
-	lea.l	sub_12123E(pc),a0
+	lea.l	BioSentinel_StateThink(pc),a0
 	move.l	a0,$5C(a4)
 	moveq	#$8,d0
 	and.w	$4(a4),d0

@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_122438	[jt 1698]
+; BigBio_ActFaceIdle90 - BIGBIO script action: face, idle animation, next entry after 90 frames
+; In:  8(a6) = this
+; Out: none
+; Evidence: Obj_ChangeAnim $1206E6
 ; ---------------------------------------------------------------------------
-sub_122438:
+BigBio_ActFaceIdle90:
 	link.w	a6,#$0
 	move.l	a4,-(a7)
 	movea.l	$8(a6),a4

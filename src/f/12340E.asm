@@ -59,7 +59,7 @@ loc_1234A2:
 	clr.w	$1E(a4)
 	clr.l	$16(a4)
 	clr.w	$20(a4)
-	lea.l	sub_123346(pc),a0
+	lea.l	BigBio_StateDefeated(pc),a0
 	move.l	a0,$5C(a4)
 	ori.w	#$40,$6(a4)
 	move.w	#$14,$6C(a4)
@@ -70,7 +70,7 @@ loc_1234CA:
 	move.l	$5C(a4),$60(a4)
 loc_1234D6:
 	ori.w	#$40,$6(a4)
-	lea.l	sub_123242(pc),a0
+	lea.l	BigBio_ResumeAfterHit(pc),a0
 	move.l	a0,$5C(a4)
 	move.w	#$14,$6C(a4)
 loc_1234EA:

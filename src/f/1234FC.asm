@@ -7,7 +7,7 @@
 BigBio_ClassInit:
 	link.w	a6,#$0
 	move.l	a4,-(a7)
-	jsr	sub_1234F4(pc)
+	jsr	BigBio_EmptyStub(pc)
 	pea.l	$123560(pc)
 	moveq	#$60,d0
 	move.l	d0,-(a7)
@@ -29,7 +29,7 @@ BigBio_ClassInit:
 	moveq	#$0,d1
 	move.l	d1,-(a7)
 	move.l	d1,-(a7)
-	pea.l	sub_121662(pc)
+	pea.l	BigBio_SpitUpdateAll(pc)
 	jsr	$4FD2(a5)	; -> Timer_Create
 	move.l	d0,-(a7)
 	jsr	$4FDA(a5)	; -> Timer_Start

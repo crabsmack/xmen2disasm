@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_121098	[link-after-rts]
+; BioSentinel_StateAimDown - BIOSENTINEL: downward aiming animation ($120654), then fire
+; In:  8(a6) = this
+; Out: d0 = flags & 8
+; Evidence: next StateFireDown
 ; ---------------------------------------------------------------------------
-sub_121098:
+BioSentinel_StateAimDown:
 	link.w	a6,#$0
 	move.l	a4,-(a7)
 	movea.l	$8(a6),a4
@@ -11,7 +14,7 @@ sub_121098:
 	jsr	$4E42(a5)	; -> Obj_SetAnim
 	addq.w	#$8,a7
 	move.w	#$FF,$6C(a4)
-	lea.l	sub_120F64(pc),a0
+	lea.l	BioSentinel_StateFireDown(pc),a0
 	move.l	a0,$5C(a4)
 	moveq	#$8,d0
 	and.w	$4(a4),d0

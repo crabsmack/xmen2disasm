@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_122244	[jt 1695]
+; BigBio_ActRoarThenMorph - BIGBIO script action: face the arena side, roar animation (jt $366A, sound $F9), then morph
+; In:  8(a6) = this
+; Out: d0 = flags & 8
+; Evidence: next StateStartMorph
 ; ---------------------------------------------------------------------------
-sub_122244:
+BigBio_ActRoarThenMorph:
 	link.w	a6,#$0
 	move.l	a4,-(a7)
 	movea.l	$8(a6),a4
@@ -22,7 +25,7 @@ loc_122262:
 	jsr	$521A(a5)	; -> Snd_Play
 	lea.l	$10(a7),a7
 	move.w	#$FF,$6C(a4)
-	lea.l	sub_1221D0(pc),a0
+	lea.l	BigBio_StateStartMorph(pc),a0
 	move.l	a0,$5C(a4)
 	moveq	#$8,d0
 	and.w	$4(a4),d0

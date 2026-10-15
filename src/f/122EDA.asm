@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_122EDA	[link-after-rts]
+; BigBio_StateStart - BIGBIO first state: stand on the ground segment (type $21), wait for the players
+; In:  8(a6) = this
+; Out: d0 = flags & 8
+; Evidence: TAS frame 36584 (SpaceB1 boss)
 ; ---------------------------------------------------------------------------
-sub_122EDA:
+BigBio_StateStart:
 	link.w	a6,#$0
 	move.l	a4,-(a7)
 	movea.l	$8(a6),a4
@@ -37,7 +40,7 @@ sub_122EDA:
 	move.w	#$7000,$24(a4)
 	lea.l	$10(a7),a7
 	clr.w	$6C(a4)
-	lea.l	sub_122F64(pc),a0
+	lea.l	BigBio_StateWaitPlayers(pc),a0
 	move.l	a0,$5C(a4)
 	moveq	#$8,d0
 	and.w	$4(a4),d0

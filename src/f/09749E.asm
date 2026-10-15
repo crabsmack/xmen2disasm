@@ -2,7 +2,7 @@
 ; XClone_StateBallsReturn - XCLONE state: when the rolling child stops, shake the screen and roll it back the other way
 ; In:  8(a6) = this
 ; Out: d0
-; Evidence: g_CamShake := jt[$44AA]; child +$A2 = sub_120124, +$AA negated, state BioBalls_WaitMotionDone; next XClone_StateWaitChild2
+; Evidence: g_CamShake := jt[$44AA]; child +$A2 = BioBalls_MotionRoll, +$AA negated, state BioBalls_WaitMotionDone; next XClone_StateWaitChild2
 ; Found: link-after-rts
 ; ---------------------------------------------------------------------------
 XClone_StateBallsReturn:

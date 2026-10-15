@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_1227B4	[link-after-rts]
+; BigBio_StateArcSwoop - BIGBIO: swoop along a sine arc from the anchor across the arena, then next entry
+; In:  8(a6) = this
+; Out: d0
+; Evidence: +$B2 0..90 by 2; Math_SinDeg
 ; ---------------------------------------------------------------------------
-sub_1227B4:
+BigBio_StateArcSwoop:
 	link.w	a6,#$0
 	movem.l	d6-d7/a4,-(a7)
 	movea.l	$8(a6),a4
@@ -35,7 +38,7 @@ loc_1227F6:
 	add.l	$A8(a4),d0
 	move.l	d0,$C(a4)
 	move.l	a4,-(a7)
-	jsr	sub_121DB6(pc)
+	jsr	BigBio_UpdateOrbRing(pc)
 	addq.w	#$2,$B2(a4)
 	moveq	#$5A,d0
 	cmp.w	$B2(a4),d0
@@ -65,7 +68,7 @@ loc_122844:
 	bra.s	loc_122870
 loc_12285E:
 	clr.w	$6C(a4)
-	lea.l	sub_1227B4(pc),a0
+	lea.l	BigBio_StateArcSwoop(pc),a0
 	move.l	a0,$5C(a4)
 	moveq	#$8,d0
 	and.w	$4(a4),d0

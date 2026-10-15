@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_122A14	[jt 1701]
+; BigBio_ActChargePlayer - BIGBIO script action: charge at the nearest player's centre (unless the scene is ending)
+; In:  8(a6) = this
+; Out: d0
+; Evidence: g_SceneExitTimer; next StateBrake
 ; ---------------------------------------------------------------------------
-sub_122A14:
+BigBio_ActChargePlayer:
 	link.w	a6,#$0
 	movem.l	d6-d7/a3-a4,-(a7)
 	movea.l	$8(a6),a4
@@ -9,7 +12,7 @@ sub_122A14:
 	jsr	$4EAA(a5)	; -> Player_Nearest
 	movea.l	d0,a3
 	move.l	a4,-(a7)
-	jsr	sub_121DB6(pc)
+	jsr	BigBio_UpdateOrbRing(pc)
 	tst.w	g_SceneExitTimer(a5)
 	addq.w	#$8,a7
 	beq.s	loc_122A78
@@ -71,7 +74,7 @@ loc_122A78:
 	move.w	d0,$18(a4)
 	move.w	#$12,$6E(a4)
 	clr.w	$6C(a4)
-	lea.l	sub_1229AC(pc),a0
+	lea.l	BigBio_StateBrake(pc),a0
 	move.l	a0,$5C(a4)
 	moveq	#$8,d0
 	and.w	$4(a4),d0
