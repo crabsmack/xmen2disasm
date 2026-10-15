@@ -1944,7 +1944,7 @@ JumpTable:
 	jtentry	TechWallGun_ClassInit	; [1936] jsr $3CA2(a5)
 	jtentry	TechWallGun_Init	; [1937] jsr $3CAA(a5)
 	jtentry	TechWallGun_Fire	; [1938] jsr $3CB2(a5)
-	jtentry	Lvl_Data_143224	; [1939] jsr $3CBA(a5)
+	jtentry	Tbl_TechWallGun_vtable	; [1939] jsr $3CBA(a5)
 	jtentry	Tbl_Anim_1432A2	; [1940] jsr $3CC2(a5)
 	jtentry	Tbl_Anim_1432AC	; [1941] jsr $3CCA(a5)
 	jtentry	Tbl_Anim_1432B6	; [1942] jsr $3CD2(a5)

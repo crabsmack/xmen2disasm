@@ -145,8 +145,9 @@ MPW C 3.3 matching, what reproduces the ROM (also COMPILER.md):
 - Keep original bugs; where C++ disagrees (shift by 32, ...) use `#ifdef XMEN2_MPW` with the
   PC branch computing what the 68000 did.
 - Passing `&local` to a function that is still generated works (the bridge copies the local
-  to the 68000 stack and back) for game-memory types only (`SprInst tmp;`, `s16 v;`), not
-  host scalars, and not through a `void *` parameter (size unknown). `Mem_Set`/`Mem_Copy`
+  to the 68000 stack and back) for game-memory types (`SprInst tmp;`) and plain scalars
+  (`char`/`short`/`long`, converted to the 68000's byte order), not through a `void *`
+  parameter (size unknown). `Mem_Set`/`Mem_Copy`
   are C, so `Mem_Set(&local, 0, sizeof local)` is fine.
 
 ### Learned in round 3 (Tusk, EvilMaker, XClone: 147 functions, 146 matched)
@@ -238,6 +239,19 @@ MPW C 3.3 matching, what reproduces the ROM (also COMPILER.md):
   `(*CLASS(Tbl_X_vtable)->method[n])(self)`. Callbacks passed as data (ObjList_ForEachAtPoint,
   `PTR(void)` hooks): `FN_DATA(f)`. To load a later parameter first in the prologue, make only
   it `register` and copy the earlier one into a register local.
+- (round 7: Deathbird, Hornet, Seg, Cam) Declaring every data variable the ROM keeps in a
+  register `register` fixes allocation where reordering doesn't; among `register` variables the
+  ranking follows use count. MPW splits a variable's live range per branch (stack in one arm,
+  register in the other). `*` loads its right operand first (`move.w slope,d0 / muls.w vx,d0`).
+  A `long` function returning a `short` local = `move.w x,d5 / ext.l d5 / move.l d5,d0`.
+  `g_A = (g_B = n) - 1;` vs two statements differ by a register copy. 8 case labels over a
+  32-value range = compare chain, 13 = jump table: list the do-nothing labels the ROM's table
+  implies. A parameter kept on the stack while registers are free had its address taken:
+  `if (0) (void)&kind;`. A short-returning callee compared with `cmp.l` and no `ext.l` was
+  called undeclared: `((long (*)())F)(args)` under XMEN2_MPW. `move.l X+2(a5)` = a code symbol
+  declared as extern data (jump-table entry + 2; cc.py accepts it). Two `v >>= shift` in a row
+  share one converted count: `ax >>= (long)shift; ay >>= shift;`. A file-local typed alias of
+  a global (`#define g_Shake (*(PTR(s8) *)&g_CamShake)`) compiles to direct operations on it.
 - A function that differs only by an A5 reference cc.py reports as `A5 -0x... -> jt None` uses
   a global the disassembly hasn't named: report the offset and what it holds; the
   orchestrator names it (`rename.py --global`) and it will match.
