@@ -1,7 +1,11 @@
 ; ---------------------------------------------------------------------------
-; sub_0876BA	[link-after-rts]
+; BroodBoss_StateRecoilReturn - BROODBOSS state: return from the recoil, then the next step after 10 frames
+; In:  8(a6) = this
+; Out: none
+; Evidence: +$8C and -$3C44 back down by 3/6 per frame to 0; next-step idiom
+; Found: link-after-rts
 ; ---------------------------------------------------------------------------
-sub_0876BA:
+BroodBoss_StateRecoilReturn:
 	link.w	a6,#$0
 	movem.l	d7/a4,-(a7)
 	movea.l	$8(a6),a4
@@ -18,7 +22,7 @@ loc_0876D0:
 	lsl.l	#$8,d0
 	sub.l	d0,-$3C44(a5)
 	clr.w	$6C(a4)
-	lea.l	sub_0876BA(pc),a0
+	lea.l	BroodBoss_StateRecoilReturn(pc),a0
 	move.l	a0,$5C(a4)
 	moveq	#$8,d0
 	and.w	$4(a4),d0

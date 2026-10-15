@@ -1,7 +1,11 @@
 ; ---------------------------------------------------------------------------
-; sub_087BFE	[link-after-rts]
+; BroodBoss_StateDeathSlide - BROODBOSS state: slide until the boss offset reaches $1B2, then stop and spawn a death effect actor
+; In:  8(a6) = this
+; Out: d0
+; Evidence: plain ACTOR New at the boss position with sub_13EFA0(effect, jt[$16DA], 0, -$10, -$10, 0); next sub_087CB4; TAS 50614-50629
+; Found: link-after-rts
 ; ---------------------------------------------------------------------------
-sub_087BFE:
+BroodBoss_StateDeathSlide:
 	link.w	a6,#$0
 	movem.l	a3-a4,-(a7)
 	movea.l	$8(a6),a4
@@ -10,7 +14,7 @@ sub_087BFE:
 	cmpi.l	#$1B2,d0
 	bge.s	loc_087C2C
 	clr.w	$6C(a4)
-	lea.l	sub_087BFE(pc),a0
+	lea.l	BroodBoss_StateDeathSlide(pc),a0
 	move.l	a0,$5C(a4)
 	moveq	#$8,d0
 	and.w	$4(a4),d0

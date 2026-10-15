@@ -23,7 +23,7 @@ BroodBoss_Init:
 	lea.l	BroodBoss_StateSetup(pc),a0
 	move.l	a0,$64(a4)
 	move.l	a0,$5C(a4)
-	lea.l	sub_0879FE(pc),a0
+	lea.l	BroodBoss_StateHurt(pc),a0
 	move.l	a0,$60(a4)
 	lea.l	$153A(a5),a0
 	move.l	$2(a0),$30(a4)

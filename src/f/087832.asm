@@ -1,7 +1,11 @@
 ; ---------------------------------------------------------------------------
-; sub_087832	[link-after-rts]
+; BroodBoss_StateMakeUnhittable - BROODBOSS state: take the boss out of the hit list, next step
+; In:  8(a6) = this
+; Out: none
+; Evidence: +6 |= 2, List_Unlink(+$84, $FFEBAE)
+; Found: link-after-rts
 ; ---------------------------------------------------------------------------
-sub_087832:
+BroodBoss_StateMakeUnhittable:
 	link.w	a6,#$0
 	move.l	a4,-(a7)
 	movea.l	$8(a6),a4

@@ -1,7 +1,11 @@
 ; ---------------------------------------------------------------------------
-; sub_0877D2	[link-after-rts]
+; BroodBoss_StateAdvance - BROODBOSS state: advance until the boss offset is below $131, then stop the claw
+; In:  8(a6) = this
+; Out: d0
+; Evidence: next BroodBoss_StateMakeUnhittable; TAS 50508-50570
+; Found: link-after-rts
 ; ---------------------------------------------------------------------------
-sub_0877D2:
+BroodBoss_StateAdvance:
 	link.w	a6,#$0
 	move.l	a4,-(a7)
 	movea.l	$8(a6),a4
@@ -10,7 +14,7 @@ sub_0877D2:
 	cmpi.l	#$130,d0
 	ble.s	loc_0877FE
 	clr.w	$6C(a4)
-	lea.l	sub_0877D2(pc),a0
+	lea.l	BroodBoss_StateAdvance(pc),a0
 	move.l	a0,$5C(a4)
 	moveq	#$8,d0
 	and.w	$4(a4),d0
@@ -24,7 +28,7 @@ loc_0877FE:
 	moveq	#$0,d0
 	move.l	d0,$92(a0)
 	clr.w	$6C(a4)
-	lea.l	sub_087832(pc),a0
+	lea.l	BroodBoss_StateMakeUnhittable(pc),a0
 	move.l	a0,$5C(a4)
 	moveq	#$8,d0
 	and.w	$4(a4),d0

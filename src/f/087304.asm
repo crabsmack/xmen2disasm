@@ -1,7 +1,11 @@
 ; ---------------------------------------------------------------------------
-; sub_087304	[link-after-rts]
+; BroodBoss_StateChargeStart - BROODBOSS state: start charging (frame 6, claw speed -$A00, legs walking)
+; In:  8(a6) = this
+; Out: d0
+; Evidence: claw +$16 = -$A00, +$92 = sub_09B224; LittleLeg_SetWalking(1); next BroodBoss_StateCharge
+; Found: link-after-rts
 ; ---------------------------------------------------------------------------
-sub_087304:
+BroodBoss_StateChargeStart:
 	link.w	a6,#$0
 	move.l	a4,-(a7)
 	movea.l	$8(a6),a4
@@ -30,7 +34,7 @@ sub_087304:
 	addq.w	#$8,a7
 loc_087356:
 	clr.w	$6C(a4)
-	lea.l	sub_087370(pc),a0
+	lea.l	BroodBoss_StateCharge(pc),a0
 	move.l	a0,$5C(a4)
 	moveq	#$8,d0
 	and.w	$4(a4),d0

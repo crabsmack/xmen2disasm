@@ -1,7 +1,11 @@
 ; ---------------------------------------------------------------------------
-; sub_0878E4	[link-after-rts]
+; BroodBoss_StateScream - BROODBOSS state: count +$8E down (1 or 2 per frame), then the next step
+; In:  8(a6) = this
+; Out: d0
+; Evidence: SetFrame(0); clears -$3B0C bit $40 while counting
+; Found: link-after-rts
 ; ---------------------------------------------------------------------------
-sub_0878E4:
+BroodBoss_StateScream:
 	link.w	a6,#$0
 	movem.l	d7/a4,-(a7)
 	movea.l	$8(a6),a4
@@ -22,7 +26,7 @@ loc_0878FA:
 	sub.w	d7,$8E(a4)
 	andi.w	#$FFBF,-$3B0C(a5)
 	clr.w	$6C(a4)
-	lea.l	sub_0878E4(pc),a0
+	lea.l	BroodBoss_StateScream(pc),a0
 	move.l	a0,$5C(a4)
 	moveq	#$8,d0
 	and.w	$4(a4),d0

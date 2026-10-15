@@ -1,7 +1,11 @@
 ; ---------------------------------------------------------------------------
-; sub_086F28	[jt 635]
+; BroodBoss_ActDropBomb2 - BROODBOSS script action: bomb-drop animation with rumble $91 (second variant, bomb further right)
+; In:  8(a6) = this
+; Out: d0
+; Evidence: same as BroodBoss_ActDropBomb; next BroodBoss_StateDropBomb2; jt 635
+; Found: jt 635
 ; ---------------------------------------------------------------------------
-sub_086F28:
+BroodBoss_ActDropBomb2:
 	link.w	a6,#$0
 	move.l	a4,-(a7)
 	movea.l	$8(a6),a4
@@ -15,7 +19,7 @@ sub_086F28:
 	jsr	$521A(a5)	; -> Snd_Play
 	lea.l	$10(a7),a7
 	move.w	#$FF,$6C(a4)
-	lea.l	sub_086F70(pc),a0
+	lea.l	BroodBoss_StateDropBomb2(pc),a0
 	move.l	a0,$5C(a4)
 	moveq	#$8,d0
 	and.w	$4(a4),d0

@@ -1,7 +1,11 @@
 ; ---------------------------------------------------------------------------
-; sub_087BAC	[link-after-rts]
+; BroodBoss_StateDeathStart - BROODBOSS state: death - animation, claw speed -$100
+; In:  8(a6) = this
+; Out: d0
+; Evidence: sub_1F626A(this, $088A2A); next BroodBoss_StateDeathSlide; TAS 50612
+; Found: link-after-rts
 ; ---------------------------------------------------------------------------
-sub_087BAC:
+BroodBoss_StateDeathStart:
 	link.w	a6,#$0
 	move.l	a4,-(a7)
 	movea.l	$8(a6),a4
@@ -18,7 +22,7 @@ sub_087BAC:
 	move.l	a0,$92(a1)
 	addq.w	#$8,a7
 	clr.w	$6C(a4)
-	lea.l	sub_087BFE(pc),a0
+	lea.l	BroodBoss_StateDeathSlide(pc),a0
 	move.l	a0,$5C(a4)
 	moveq	#$8,d0
 	and.w	$4(a4),d0

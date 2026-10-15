@@ -1,7 +1,11 @@
 ; ---------------------------------------------------------------------------
-; sub_0879FE	[link-after-rts]
+; BroodBoss_StateHurt - BROODBOSS hurt state (+$60): sound $37, unhittable, flash palette line 2, hurt animation; defeated at 0 health
+; In:  8(a6) = this
+; Out: d0
+; Evidence: set by BroodBoss_Init as +$60 (ACTOR TakeDamage switches to it); saves palette line 2 to $FFEE58 and writes a bright palette (unless already); health +$68 < 1 -> BroodBoss_Defeat; +$6A = $1E; animation $088A1C; next BroodBoss_StateHurtEnd
+; Found: link-after-rts
 ; ---------------------------------------------------------------------------
-sub_0879FE:
+BroodBoss_StateHurt:
 	link.w	a6,#$0
 	movem.l	d3/d7/a3-a4,-(a7)
 	lea.l	-$13A8(a5),a3
@@ -66,7 +70,7 @@ loc_087ACA:
 	tst.w	$68(a0)
 	bgt.s	loc_087ADC
 	move.l	a0,-(a7)
-	jsr	sub_08797A(pc)
+	jsr	BroodBoss_Defeat(pc)
 	addq.w	#$4,a7
 loc_087ADC:
 	movea.l	$8(a6),a0
@@ -78,7 +82,7 @@ loc_087ADC:
 	addq.w	#$8,a7
 	movea.l	$8(a6),a0
 	move.w	#$5,$6C(a0)
-	lea.l	sub_087B22(pc),a0
+	lea.l	BroodBoss_StateHurtEnd(pc),a0
 	movea.l	$8(a6),a1
 	move.l	a0,$5C(a1)
 	movea.l	$8(a6),a0

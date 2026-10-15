@@ -1,7 +1,11 @@
 ; ---------------------------------------------------------------------------
-; sub_087582	[link-after-rts]
+; BroodBoss_StateChargeWall - BROODBOSS state: charge until the boss offset reaches $1C4, then stop and shake the screen
+; In:  8(a6) = this
+; Out: d0
+; Evidence: claw/legs stopped, g_CamShake := jt[$16CA]; next BroodBoss_StateHitWall; TAS 50474-50480
+; Found: link-after-rts
 ; ---------------------------------------------------------------------------
-sub_087582:
+BroodBoss_StateChargeWall:
 	link.w	a6,#$0
 	move.l	a4,-(a7)
 	movea.l	$8(a6),a4
@@ -10,7 +14,7 @@ sub_087582:
 	cmpi.l	#$1C4,d0
 	bge.s	loc_0875AE
 	clr.w	$6C(a4)
-	lea.l	sub_087582(pc),a0
+	lea.l	BroodBoss_StateChargeWall(pc),a0
 	move.l	a0,$5C(a4)
 	moveq	#$8,d0
 	and.w	$4(a4),d0
@@ -34,7 +38,7 @@ loc_0875DC:
 	lea.l	$14CA(a5),a0
 	move.l	$2(a0),g_CamShake(a5)
 	clr.w	$6C(a4)
-	lea.l	sub_087600(pc),a0
+	lea.l	BroodBoss_StateHitWall(pc),a0
 	move.l	a0,$5C(a4)
 	moveq	#$8,d0
 	and.w	$4(a4),d0

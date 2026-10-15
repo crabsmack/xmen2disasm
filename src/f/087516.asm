@@ -1,7 +1,11 @@
 ; ---------------------------------------------------------------------------
-; sub_087516	[jt 639]
+; BroodBoss_ActChargeWall - BROODBOSS script action: charge at the wall (frame 6, claw speed -$A00, legs walking)
+; In:  8(a6) = this
+; Out: d0
+; Evidence: next BroodBoss_StateChargeWall; jt 639; TAS 50472
+; Found: jt 639
 ; ---------------------------------------------------------------------------
-sub_087516:
+BroodBoss_ActChargeWall:
 	link.w	a6,#$0
 	move.l	a4,-(a7)
 	movea.l	$8(a6),a4
@@ -30,7 +34,7 @@ sub_087516:
 	addq.w	#$8,a7
 loc_087568:
 	clr.w	$6C(a4)
-	lea.l	sub_087582(pc),a0
+	lea.l	BroodBoss_StateChargeWall(pc),a0
 	move.l	a0,$5C(a4)
 	moveq	#$8,d0
 	and.w	$4(a4),d0

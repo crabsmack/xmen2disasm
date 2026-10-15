@@ -1,7 +1,11 @@
 ; ---------------------------------------------------------------------------
-; sub_086FCA	[link-after-rts]
+; BroodBoss_StateAfterBomb - BROODBOSS state: hold frame 5, then the next AI-script step
+; In:  8(a6) = this
+; Out: none
+; Evidence: SetFrame(5) + next-step idiom; reached from both bomb drops; TAS 49896
+; Found: link-after-rts
 ; ---------------------------------------------------------------------------
-sub_086FCA:
+BroodBoss_StateAfterBomb:
 	link.w	a6,#$0
 	move.l	a4,-(a7)
 	movea.l	$8(a6),a4

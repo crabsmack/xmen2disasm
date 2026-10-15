@@ -1,7 +1,11 @@
 ; ---------------------------------------------------------------------------
-; sub_087600	[link-after-rts]
+; BroodBoss_StateHitWall - BROODBOSS state: smash the wall - frame $F, debris, recoil
+; In:  8(a6) = this
+; Out: d0
+; Evidence: wall +$43 = 1 (BroodBossWall_Update explodes it), +$A2 = 0, BroodBoss_SpawnDebris, -$3B0C |= $40, +$8E += 10; next BroodBoss_StateRecoil; TAS 50482
+; Found: link-after-rts
 ; ---------------------------------------------------------------------------
-sub_087600:
+BroodBoss_StateHitWall:
 	link.w	a6,#$0
 	move.l	a4,-(a7)
 	movea.l	$8(a6),a4
@@ -19,12 +23,12 @@ loc_087620:
 	movea.l	$56(a0),a1
 	jsr	(a1)
 	move.l	a4,-(a7)
-	jsr	sub_0874DC(pc)
+	jsr	BroodBoss_SpawnDebris(pc)
 	ori.w	#$40,-$3B0C(a5)
 	addi.w	#$A,$8E(a4)
 	lea.l	$C(a7),a7
 	clr.w	$6C(a4)
-	lea.l	sub_08765E(pc),a0
+	lea.l	BroodBoss_StateRecoil(pc),a0
 	move.l	a0,$5C(a4)
 	moveq	#$8,d0
 	and.w	$4(a4),d0

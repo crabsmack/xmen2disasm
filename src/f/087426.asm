@@ -1,7 +1,11 @@
 ; ---------------------------------------------------------------------------
-; sub_087426	[link-after-rts]
+; BroodBoss_StateRetreat - BROODBOSS state: move back until the boss offset is below $181, then stop and run the next step after $28 frames
+; In:  8(a6) = this
+; Out: d0
+; Evidence: animation jt[$167A]; claw and legs stopped; next-step idiom with +$6C = $28
+; Found: link-after-rts
 ; ---------------------------------------------------------------------------
-sub_087426:
+BroodBoss_StateRetreat:
 	link.w	a6,#$0
 	move.l	a4,-(a7)
 	movea.l	$8(a6),a4
@@ -10,7 +14,7 @@ sub_087426:
 	cmpi.l	#$180,d0
 	ble.s	loc_087454
 	clr.w	$6C(a4)
-	lea.l	sub_087426(pc),a0
+	lea.l	BroodBoss_StateRetreat(pc),a0
 	move.l	a0,$5C(a4)
 	moveq	#$8,d0
 	and.w	$4(a4),d0

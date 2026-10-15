@@ -1,7 +1,11 @@
 ; ---------------------------------------------------------------------------
-; sub_08718A	[jt 637]
+; BroodBoss_ActStop - BROODBOSS script action: stop the claw and the little leg, next step
+; In:  8(a6) = this
+; Out: none
+; Evidence: claw (+$96) speed/mode/handler cleared, LittleLeg_SetWalking(+$9E, 0); jt 637
+; Found: jt 637
 ; ---------------------------------------------------------------------------
-sub_08718A:
+BroodBoss_ActStop:
 	link.w	a6,#$0
 	move.l	a4,-(a7)
 	movea.l	$8(a6),a4

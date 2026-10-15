@@ -1,14 +1,18 @@
 ; ---------------------------------------------------------------------------
-; sub_087208	[jt 638]
+; BroodBoss_ActBringWall - BROODBOSS script action: bring in a BROODBOSSWALL from the left edge (if none) moving right at $200
+; In:  8(a6) = this
+; Out: d0
+; Evidence: Tbl_BroodBossWall_vtable +$0A at (g_CameraX-10, g_CameraY+$C9) -> +$A2, its +$14 = $200; +$6C = $10; next BroodBoss_StateWallStop; jt 638; TAS 50318
+; Found: jt 638
 ; ---------------------------------------------------------------------------
-sub_087208:
+BroodBoss_ActBringWall:
 	link.w	a6,#$0
 	move.l	a4,-(a7)
 	movea.l	$8(a6),a4
 	tst.l	$A2(a4)
 	beq.s	loc_08722C
 	clr.w	$6C(a4)
-	lea.l	sub_087294(pc),a0
+	lea.l	BroodBoss_StateWallStop(pc),a0
 	move.l	a0,$5C(a4)
 	moveq	#$8,d0
 	and.w	$4(a4),d0
@@ -40,7 +44,7 @@ loc_08722C:
 	move.w	#$200,$14(a0)
 loc_087278:
 	move.w	#$10,$6C(a4)
-	lea.l	sub_087294(pc),a0
+	lea.l	BroodBoss_StateWallStop(pc),a0
 	move.l	a0,$5C(a4)
 	moveq	#$8,d0
 	and.w	$4(a4),d0

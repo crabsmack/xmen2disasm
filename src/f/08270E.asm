@@ -2,7 +2,7 @@
 ; DropBomb_Spawn - spawn a DROPBOMB at (x, y) with spawn parameter p
 ; In:  8(a6) = long x, $C(a6) = long y, $10(a6) = spawn parameter
 ; Out: d0 = new object
-; Evidence: calls Tbl_DropBomb_vtable slot +$0E New(0, Tbl_DropBomb_vtable, x, y, p); jt 566; callers BroodBoss_StateDropBomb/sub_086F70 (BROODBOSS code)
+; Evidence: calls Tbl_DropBomb_vtable slot +$0E New(0, Tbl_DropBomb_vtable, x, y, p); jt 566; callers BroodBoss_StateDropBomb/BroodBoss_StateDropBomb2 (BROODBOSS code)
 ; Found: jt 566
 ; ---------------------------------------------------------------------------
 DropBomb_Spawn:

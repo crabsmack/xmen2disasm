@@ -1,7 +1,11 @@
 ; ---------------------------------------------------------------------------
-; sub_08765E	[link-after-rts]
+; BroodBoss_StateRecoil - BROODBOSS state: recoil - push the part offset +$8C and the boss offset out by 3 (6 at half rate) per frame up to 10
+; In:  8(a6) = this
+; Out: d0
+; Evidence: -$3C44 += step << 8; next BroodBoss_StateRecoilReturn
+; Found: link-after-rts
 ; ---------------------------------------------------------------------------
-sub_08765E:
+BroodBoss_StateRecoil:
 	link.w	a6,#$0
 	movem.l	d7/a4,-(a7)
 	movea.l	$8(a6),a4
@@ -19,14 +23,14 @@ loc_087674:
 	lsl.l	#$8,d0
 	add.l	d0,-$3C44(a5)
 	clr.w	$6C(a4)
-	lea.l	sub_08765E(pc),a0
+	lea.l	BroodBoss_StateRecoil(pc),a0
 	move.l	a0,$5C(a4)
 	moveq	#$8,d0
 	and.w	$4(a4),d0
 	bra.s	loc_0876B0
 loc_08769E:
 	clr.w	$6C(a4)
-	lea.l	sub_0876BA(pc),a0
+	lea.l	BroodBoss_StateRecoilReturn(pc),a0
 	move.l	a0,$5C(a4)
 	moveq	#$8,d0
 	and.w	$4(a4),d0

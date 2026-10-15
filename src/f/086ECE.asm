@@ -28,7 +28,7 @@ BroodBoss_StateDropBomb:
 	jsr	$11D2(a5)	; -> DropBomb_Spawn
 	lea.l	$14(a7),a7
 	clr.w	$6C(a4)
-	lea.l	sub_086FCA(pc),a0
+	lea.l	BroodBoss_StateAfterBomb(pc),a0
 	move.l	a0,$5C(a4)
 	moveq	#$8,d0
 	and.w	$4(a4),d0

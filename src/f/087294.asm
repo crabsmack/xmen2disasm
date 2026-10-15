@@ -1,7 +1,11 @@
 ; ---------------------------------------------------------------------------
-; sub_087294	[link-after-rts]
+; BroodBoss_StateWallStop - BROODBOSS state: stop the wall and the claw, roar (sound $91)
+; In:  8(a6) = this
+; Out: d0
+; Evidence: animation jt[$1682]; wall +$14 = 0; claw stopped; +$6C = $FF; next BroodBoss_StateChargeStart
+; Found: link-after-rts
 ; ---------------------------------------------------------------------------
-sub_087294:
+BroodBoss_StateWallStop:
 	link.w	a6,#$0
 	move.l	a4,-(a7)
 	movea.l	$8(a6),a4
@@ -27,7 +31,7 @@ loc_0872CE:
 	moveq	#$0,d0
 	move.l	d0,$92(a0)
 	move.w	#$FF,$6C(a4)
-	lea.l	sub_087304(pc),a0
+	lea.l	BroodBoss_StateChargeStart(pc),a0
 	move.l	a0,$5C(a4)
 	moveq	#$8,d0
 	and.w	$4(a4),d0

@@ -1,7 +1,11 @@
 ; ---------------------------------------------------------------------------
-; sub_087B22	[link-after-rts]
+; BroodBoss_StateHurtEnd - BROODBOSS state: restore palette line 2 after the hurt flash; resume the script or start dying
+; In:  8(a6) = this
+; Out: d0
+; Evidence: copies $FFEE58 back to g_PalBase+$40; health < 1 -> BroodBoss_StateDeathStart, else the current script step after 10 frames
+; Found: link-after-rts
 ; ---------------------------------------------------------------------------
-sub_087B22:
+BroodBoss_StateHurtEnd:
 	link.w	a6,#$0
 	movem.l	d3/d7/a3-a4,-(a7)
 	cmpi.w	#$424,-$393C(a5)
@@ -23,7 +27,7 @@ loc_087B4E:
 	bgt.s	loc_087B7A
 	movea.l	$8(a6),a0
 	move.w	#$FF,$6C(a0)
-	lea.l	sub_087BAC(pc),a0
+	lea.l	BroodBoss_StateDeathStart(pc),a0
 	movea.l	$8(a6),a1
 	move.l	a0,$5C(a1)
 	movea.l	$8(a6),a0

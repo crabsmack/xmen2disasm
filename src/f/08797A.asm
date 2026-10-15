@@ -1,7 +1,11 @@
 ; ---------------------------------------------------------------------------
-; sub_08797A	[link-after-rts]
+; BroodBoss_Defeat - BROODBOSS defeated: leave the hit list, kill all BROODBOSSDAMAGE zones, switch off the boss frame hook
+; In:  8(a6) = this
+; Out: none
+; Evidence: List_Unlink(+$84, $FFEBAE); every active object with vtable Tbl_BroodBossDamage_vtable gets slot +$52 Kill; -$3B0C &= ~1; -$340E := 0; caller BroodBoss_StateHurt when health < 1; TAS 50572
+; Found: link-after-rts
 ; ---------------------------------------------------------------------------
-sub_08797A:
+BroodBoss_Defeat:
 	link.w	a6,#$0
 	movem.l	d7/a3-a4,-(a7)
 	movea.l	$8(a6),a3

@@ -1,7 +1,11 @@
 ; ---------------------------------------------------------------------------
-; sub_0874DC	[link-after-rts]
+; BroodBoss_SpawnDebris - BROODBOSS: spawn the debris effect (sub_13F58A type 6) at the boss position
+; In:  8(a6) = this
+; Out: none
+; Evidence: sub_13F58A(x, y, -$3B14, 6); caller BroodBoss_StateHitWall; TAS 50482
+; Found: link-after-rts
 ; ---------------------------------------------------------------------------
-sub_0874DC:
+BroodBoss_SpawnDebris:
 	link.w	a6,#$0
 	movem.l	d6-d7/a4,-(a7)
 	movea.l	$8(a6),a4

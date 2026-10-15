@@ -1,7 +1,11 @@
 ; ---------------------------------------------------------------------------
-; sub_086F70	[link-after-rts]
+; BroodBoss_StateDropBomb2 - BROODBOSS state: frame 5 and drop a DROPBOMB at g_CameraX+$7D
+; In:  8(a6) = this
+; Out: d0
+; Evidence: DropBomb_Spawn((g_CameraX+$7D) << 8, (g_CameraY+$B) << 8, 0); next BroodBoss_StateAfterBomb
+; Found: link-after-rts
 ; ---------------------------------------------------------------------------
-sub_086F70:
+BroodBoss_StateDropBomb2:
 	link.w	a6,#$0
 	move.l	a4,-(a7)
 	movea.l	$8(a6),a4
@@ -28,7 +32,7 @@ sub_086F70:
 	jsr	$11D2(a5)	; -> DropBomb_Spawn
 	lea.l	$14(a7),a7
 	clr.w	$6C(a4)
-	lea.l	sub_086FCA(pc),a0
+	lea.l	BroodBoss_StateAfterBomb(pc),a0
 	move.l	a0,$5C(a4)
 	moveq	#$8,d0
 	and.w	$4(a4),d0
