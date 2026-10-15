@@ -12,7 +12,7 @@ Launcher_Draw:
 	movea.l	$2(a0),a0
 	movea.l	$1A(a0),a1
 	jsr	(a1)
-	move.w	-$3C2C(a5),d0
+	move.w	g_LauncherShotSprDef(a5),d0
 	ext.l	d0
 	lsl.l	#$2,d0
 	move.l	d0,d1

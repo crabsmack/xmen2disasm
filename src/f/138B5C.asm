@@ -31,7 +31,7 @@ MaintRobot_Init:
 	move.l	a0,$64(a4)
 	move.l	a0,$5C(a4)
 	moveq	#-$1,d0
-	cmp.w	-$1A7E(a5),d0
+	cmp.w	g_MaintRobotSprDef(a5),d0
 	lea.l	$10(a7),a7
 	bne.s	loc_138BD8
 	lea.l	$3982(a5),a0
@@ -43,7 +43,7 @@ MaintRobot_Init:
 	move.b	d1,$2E(a4)
 	bra.s	loc_138BE8
 loc_138BD8:
-	move.w	-$1A7E(a5),d0
+	move.w	g_MaintRobotSprDef(a5),d0
 	ext.l	d0
 	move.l	d0,-(a7)
 	move.l	a4,-(a7)

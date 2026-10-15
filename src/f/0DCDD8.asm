@@ -20,7 +20,7 @@ Blast_Draw:
 	move.l	d0,-(a7)
 	moveq	#$1,d0
 	move.l	d0,-(a7)
-	move.w	-$3BF6(a5),d2
+	move.w	g_BlastSprDef(a5),d2
 	ext.l	d2
 	lsl.l	#$2,d2
 	move.l	d2,d3

@@ -9,7 +9,7 @@ SporeMine_DrawPool:
 	link.w	a6,#$0
 	movem.l	d4-d7/a4,-(a7)
 	movea.l	-$3C28(a5),a4
-	move.w	-$3C22(a5),d0
+	move.w	g_SporeMineSprDef(a5),d0
 	ext.l	d0
 	lsl.l	#$2,d0
 	move.l	d0,d1

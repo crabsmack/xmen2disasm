@@ -26,7 +26,7 @@ Spark_Init:
 	move.l	a0,$5C(a4)
 	lea.l	sub_1400AA(pc),a0
 	move.l	a0,$60(a4)
-	move.w	-$1A72(a5),d0
+	move.w	g_SparkSprDef(a5),d0
 	ext.l	d0
 	move.l	d0,-(a7)
 	move.l	a4,-(a7)

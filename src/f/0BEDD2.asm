@@ -19,7 +19,7 @@ SporeMine_Init:
 	clr.w	$18(a4)
 	clr.w	$20(a4)
 	ori.w	#$4081,$6(a4)
-	move.w	-$3C22(a5),d0
+	move.w	g_SporeMineSprDef(a5),d0
 	ext.l	d0
 	move.l	d0,-(a7)
 	move.l	a4,-(a7)

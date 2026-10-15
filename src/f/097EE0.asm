@@ -15,7 +15,7 @@ EvilBeast_ActThrow:
 	asr.l	#$8,d6
 	moveq	#$0,d0
 	move.l	d0,-(a7)
-	move.w	-$3C3E(a5),d1
+	move.w	g_EvilBeastThrowSprDef(a5),d1
 	ext.l	d1
 	lsl.l	#$2,d1
 	move.l	d1,d2

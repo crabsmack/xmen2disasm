@@ -43,12 +43,12 @@ loc_0AC05C:
 	clr.b	$42(a4)
 	ori.b	#$4,$2E(a4)
 	ori.w	#$88,$6(a4)
-	move.w	-$3C3A(a5),d0
+	move.w	g_FloatBubbleSprDef(a5),d0
 	ext.l	d0
 	move.l	d0,-(a7)
 	move.l	a4,-(a7)
 	jsr	$4E5A(a5)	; -> Obj_SetSpriteDef
-	move.w	-$3C3A(a5),d0
+	move.w	g_FloatBubbleSprDef(a5),d0
 	ext.l	d0
 	lsl.l	#$2,d0
 	move.l	d0,d1

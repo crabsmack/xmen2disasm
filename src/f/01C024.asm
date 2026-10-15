@@ -11,7 +11,7 @@ YoyoAcolyte_ClassInit:
 	lea.l	$4CA(a5),a0
 	move.l	$2(a0),-(a7)
 	jsr	$4E52(a5)	; -> SprDef_Add
-	move.w	d0,-$3CD2(a5)
+	move.w	d0,g_YoyoAcolyteSprDef2(a5)
 	addq.w	#$8,a7
 	unlk	a6
 	rts

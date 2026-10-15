@@ -13,6 +13,6 @@ Exodus_ClassInit:
 	lea.l	$5F2(a5),a0
 	move.l	$2(a0),-(a7)
 	jsr	$4E52(a5)	; -> SprDef_Add
-	move.w	d0,-$3CB4(a5)
+	move.w	d0,g_ExodusSprDef(a5)
 	unlk	a6
 	rts

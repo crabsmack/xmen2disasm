@@ -9,7 +9,7 @@ SporeMine_ClassInit:
 	lea.l	$237A(a5),a0
 	move.l	$2(a0),-(a7)
 	jsr	$4E52(a5)	; -> SprDef_Add
-	move.w	d0,-$3C22(a5)
+	move.w	d0,g_SporeMineSprDef(a5)
 	addq.w	#$8,a7
 	unlk	a6
 	rts

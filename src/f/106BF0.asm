@@ -26,10 +26,10 @@ Platform1_Init:
 	lea.l	Platform1_StateStart(pc),a0
 	move.l	a0,$64(a4)
 	moveq	#-$1,d0
-	cmp.w	-$3BD4(a5),d0
+	cmp.w	g_Platform1SprDef(a5),d0
 	lea.l	$10(a7),a7
 	beq.s	loc_106C58
-	move.w	-$3BD4(a5),d0
+	move.w	g_Platform1SprDef(a5),d0
 	ext.l	d0
 	move.l	d0,-(a7)
 	move.l	a4,-(a7)

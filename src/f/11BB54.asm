@@ -41,7 +41,7 @@ loc_11BBA8:
 	ext.l	d0
 	lsl.l	#$8,d0
 	move.l	d0,$C(a4)
-	move.w	-$1A88(a5),d0
+	move.w	g_BioFlameSprDef(a5),d0
 	ext.l	d0
 	move.l	d0,-(a7)
 	move.l	a4,-(a7)

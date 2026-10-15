@@ -25,7 +25,7 @@ Blast_Init:
 	lea.l	Blast_StateStart(pc),a0
 	move.l	a0,$64(a3)
 	ori.w	#$82,$6(a3)
-	move.w	-$3BF4(a5),d0
+	move.w	g_BarrierSprDef(a5),d0
 	ext.l	d0
 	move.l	d0,-(a7)
 	move.l	a3,-(a7)

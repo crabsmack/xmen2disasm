@@ -96,7 +96,7 @@ loc_0BA9FC:
 	move.l	d7,d0
 	asl.l	#$2,d0
 	adda.l	d0,a3
-	move.w	-$3C2E(a5),d0
+	move.w	g_SavageBioSprDef(a5),d0
 	ext.l	d0
 	lsl.l	#$2,d0
 	move.l	d0,d1
@@ -276,7 +276,7 @@ loc_0BABF6:
 	and.l	d0,d1
 	asl.l	#$2,d1
 	adda.l	d1,a3
-	move.w	-$3C2E(a5),d0
+	move.w	g_SavageBioSprDef(a5),d0
 	ext.l	d0
 	lsl.l	#$2,d0
 	move.l	d0,d1

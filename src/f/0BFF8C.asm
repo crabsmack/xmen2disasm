@@ -20,12 +20,12 @@ SwampPlatform_Init:
 	ori.w	#$283,$6(a4)
 	move.w	$4(a3),$12(a4)
 	clr.b	$42(a4)
-	move.w	-$3C16(a5),d0
+	move.w	g_SwampPlatformSprDef(a5),d0
 	ext.l	d0
 	move.l	d0,-(a7)
 	move.l	a4,-(a7)
 	jsr	$4E5A(a5)	; -> Obj_SetSpriteDef
-	move.w	-$3C16(a5),d0
+	move.w	g_SwampPlatformSprDef(a5),d0
 	ext.l	d0
 	lsl.l	#$2,d0
 	move.l	d0,d1

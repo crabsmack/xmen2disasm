@@ -23,7 +23,7 @@ ControlBox_Init:
 	clr.w	$20(a3)
 	move.w	#$64,$68(a3)
 	ori.w	#$4083,$6(a3)
-	move.w	-$3BFE(a5),d0
+	move.w	g_ControlPanelSprDef(a5),d0
 	ext.l	d0
 	move.l	d0,-(a7)
 	move.l	a3,-(a7)

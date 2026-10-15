@@ -10,7 +10,7 @@ sub_142AE0:
 	lea.l	$3D0A(a5),a0
 	move.l	$2(a0),-(a7)
 	jsr	$4E52(a5)	; -> SprDef_Add
-	move.w	d0,-$1A6E(a5)
+	move.w	d0,g_TechWallGunSprDef(a5)
 	pea.l	Str_Empty_142B52(pc)
 	pea.l	($100).w
 	jsr	$5032(a5)	; -> Mem_StackAlloc

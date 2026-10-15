@@ -24,7 +24,7 @@ sub_1416EA:
 	move.b	$2(a0),d0
 	move.w	d0,$68(a4)
 	move.w	#$8,$68(a4)
-	move.w	-$1A70(a5),d0
+	move.w	g_TankSprDef(a5),d0
 	ext.l	d0
 	move.l	d0,-(a7)
 	move.l	a4,-(a7)

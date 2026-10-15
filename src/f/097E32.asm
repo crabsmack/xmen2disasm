@@ -22,7 +22,7 @@ EvilBeast_UpdateThrows:
 	moveq	#$1,d1
 	move.l	d1,-(a7)
 	move.l	d0,-(a7)
-	move.w	-$3C3E(a5),d2
+	move.w	g_EvilBeastThrowSprDef(a5),d2
 	ext.l	d2
 	lsl.l	#$2,d2
 	move.l	d2,d3
@@ -48,7 +48,7 @@ loc_097E90:
 	moveq	#$1,d1
 	move.l	d1,-(a7)
 	move.l	d1,-(a7)
-	move.w	-$3C3E(a5),d2
+	move.w	g_EvilBeastThrowSprDef(a5),d2
 	ext.l	d2
 	lsl.l	#$2,d2
 	move.l	d2,d3

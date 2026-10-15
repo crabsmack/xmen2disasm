@@ -10,6 +10,6 @@ SpikeBall_ClassInit:
 	lea.l	$2382(a5),a0
 	move.l	$2(a0),-(a7)
 	jsr	$4E52(a5)	; -> SprDef_Add
-	move.w	d0,-$3C20(a5)
+	move.w	d0,g_SpikeBallSprDef(a5)
 	unlk	a6
 	rts

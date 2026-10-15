@@ -80,7 +80,7 @@ loc_04E6B2:
 	bge.w	loc_04E810
 	cmpi.w	#$E0,d7
 	bge.w	loc_04E810
-	move.w	-$3C6E(a5),d0
+	move.w	g_ApocBombSprDef(a5),d0
 	ext.l	d0
 	lsl.l	#$2,d0
 	move.l	d0,d1

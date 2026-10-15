@@ -77,7 +77,7 @@ loc_026B3A:
 	move.l	d0,d1
 loc_026B4A:
 	move.w	d1,d5
-	move.w	-$3CCE(a5),d0
+	move.w	g_RetractFloorSprDef(a5),d0
 	ext.l	d0
 	lsl.l	#$2,d0
 	move.l	d0,d1

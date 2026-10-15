@@ -24,7 +24,7 @@ Apocalypse_Init:
 	move.w	#$7000,$24(a4)
 	lea.l	Apocalypse_StateHurt(pc),a0
 	move.l	a0,$60(a4)
-	move.w	-$3C74(a5),d0
+	move.w	g_ApocalypseSprDef(a5),d0
 	ext.l	d0
 	move.l	d0,-(a7)
 	move.l	a4,-(a7)

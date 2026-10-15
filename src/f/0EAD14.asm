@@ -18,7 +18,7 @@ Hologram_Init:
 	movea.l	$2(a0),a0
 	movea.l	$12(a0),a1
 	jsr	(a1)
-	move.w	-$3BE2(a5),d0
+	move.w	g_HologramSprDef(a5),d0
 	ext.l	d0
 	move.l	d0,-(a7)
 	move.l	a4,-(a7)

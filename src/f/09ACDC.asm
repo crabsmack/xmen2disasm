@@ -31,7 +31,7 @@ BroodClaw_Init:
 	ext.l	d0
 	lsl.l	#$8,d0
 	move.l	d0,$C(a4)
-	move.w	-$3C4C(a5),d0
+	move.w	g_BroodClawSprDef(a5),d0
 	ext.l	d0
 	move.l	d0,-(a7)
 	move.l	a4,-(a7)

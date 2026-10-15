@@ -27,7 +27,7 @@ Barrier_Init:
 	lea.l	Barrier_StateStart(pc),a0
 	move.l	a0,$64(a4)
 	ori.w	#$83,$6(a4)
-	move.w	-$3BF4(a5),d0
+	move.w	g_BarrierSprDef(a5),d0
 	ext.l	d0
 	move.l	d0,-(a7)
 	move.l	a4,-(a7)

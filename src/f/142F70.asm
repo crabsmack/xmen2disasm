@@ -2,7 +2,7 @@
 ; loc_142F70
 ; ---------------------------------------------------------------------------
 loc_142F70:
-	move.w	-$1A6E(a5),d0
+	move.w	g_TechWallGunSprDef(a5),d0
 	ext.l	d0
 	lsl.l	#$2,d0
 	move.l	d0,d1

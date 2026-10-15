@@ -28,7 +28,7 @@ Ninja_Init:
 	move.w	d0,$68(a4)
 	move.w	#$1,$68(a4)
 	moveq	#-$1,d0
-	cmp.w	-$1A74(a5),d0
+	cmp.w	g_NinjaSprDef2(a5),d0
 	lea.l	$10(a7),a7
 	bne.s	loc_13CD0C
 	lea.l	$39FA(a5),a0
@@ -40,7 +40,7 @@ Ninja_Init:
 	move.b	d1,$2E(a4)
 	bra.s	loc_13CD1C
 loc_13CD0C:
-	move.w	-$1A74(a5),d0
+	move.w	g_NinjaSprDef2(a5),d0
 	ext.l	d0
 	move.l	d0,-(a7)
 	move.l	a4,-(a7)

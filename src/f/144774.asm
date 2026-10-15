@@ -6,12 +6,12 @@ sub_144774:
 	movem.l	d5-d7/a3-a4,-(a7)
 	move.w	$E(a6),d5
 	move.w	$A(a6),d6
-	tst.w	-$1A88(a5)
+	tst.w	g_BioFlameSprDef(a5)
 	blt.w	loc_1449C2
-	move.w	-$1A88(a5),d0
+	move.w	g_BioFlameSprDef(a5),d0
 	cmp.w	g_SpriteDefCount(a5),d0
 	bge.w	loc_1449C2
-	move.w	-$1A88(a5),d0
+	move.w	g_BioFlameSprDef(a5),d0
 	ext.l	d0
 	lsl.l	#$2,d0
 	move.l	d0,d1

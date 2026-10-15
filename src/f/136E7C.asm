@@ -46,7 +46,7 @@ loc_136EB8:
 	move.w	d0,$68(a4)
 	lea.l	Hornet_StateAttackDelay(pc),a0
 	move.l	a0,$5C(a4)
-	move.w	-$1A82(a5),d0
+	move.w	g_HornetSprDef(a5),d0
 	ext.l	d0
 	move.l	d0,-(a7)
 	move.l	a4,-(a7)

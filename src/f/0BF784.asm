@@ -17,7 +17,7 @@ SpikeBall_Init:
 	jsr	(a1)
 	ori.w	#$4082,$6(a4)
 	move.b	#$1,$70(a4)
-	move.w	-$3C20(a5),d0
+	move.w	g_SpikeBallSprDef(a5),d0
 	ext.l	d0
 	move.l	d0,-(a7)
 	move.l	a4,-(a7)

@@ -19,7 +19,7 @@ ExodusBlast_Init:
 	movea.l	$12(a0),a1
 	jsr	(a1)
 	ori.w	#$7082,$6(a4)
-	move.w	-$3CB2(a5),d0
+	move.w	g_ExodusBlastSprDef(a5),d0
 	ext.l	d0
 	move.l	d0,-(a7)
 	move.l	a4,-(a7)

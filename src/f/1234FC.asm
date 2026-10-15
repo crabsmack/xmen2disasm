@@ -23,7 +23,7 @@ BigBio_ClassInit:
 	lea.l	$3592(a5),a0
 	move.l	$2(a0),-(a7)
 	jsr	$4E52(a5)	; -> SprDef_Add
-	move.w	d0,-$1A94(a5)
+	move.w	d0,g_BigBioSprDef(a5)
 	moveq	#$1,d0
 	move.l	d0,-(a7)
 	moveq	#$0,d1

@@ -12,6 +12,6 @@ SavageA4_LoadResources:
 	lea.l	$35AA(a5),a0
 	move.l	$2(a0),-(a7)
 	jsr	$4E52(a5)	; -> SprDef_Add
-	move.w	d0,-$3C2E(a5)
+	move.w	d0,g_SavageBioSprDef(a5)
 	unlk	a6
 	rts

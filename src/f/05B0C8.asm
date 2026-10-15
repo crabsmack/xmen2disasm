@@ -116,7 +116,7 @@ loc_05B1FA:
 	addq.w	#$4,a7
 	bra.w	loc_05B308
 loc_05B206:
-	move.w	-$3C62(a5),d0
+	move.w	g_BoulderDebrisSprDef(a5),d0
 	ext.l	d0
 	lsl.l	#$2,d0
 	move.l	d0,d1

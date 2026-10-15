@@ -39,7 +39,7 @@ FarAcolyte_Draw:
 	sub.l	d2,d1
 	move.l	d1,d7
 	sub.l	d0,d7
-	move.w	-$3CD6(a5),d1
+	move.w	g_FarAcolyteSprDef3(a5),d1
 	ext.l	d1
 	lsl.l	#$2,d1
 	move.l	d1,d2
@@ -139,7 +139,7 @@ loc_017680:
 	and.w	$92(a4),d0
 	beq.s	loc_0176E6
 	lea.l	$A4(a4),a3
-	move.w	-$3CD4(a5),d0
+	move.w	g_FarAcolyteSprDef2(a5),d0
 	ext.l	d0
 	lsl.l	#$2,d0
 	move.l	d0,d1

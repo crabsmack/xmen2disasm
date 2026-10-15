@@ -25,7 +25,7 @@ CloneA5_LoadResources:
 	lea.l	$1552(a5),a0
 	move.l	$2(a0),-(a7)
 	jsr	$4E52(a5)	; -> SprDef_Add
-	move.w	d0,-$3C4C(a5)
+	move.w	d0,g_BroodClawSprDef(a5)
 	moveq	#$2,d0
 	move.l	d0,-(a7)
 	lea.l	$1542(a5),a0

@@ -47,7 +47,7 @@ Deathbird_Init:
 	ori.w	#$80,$6(a4)
 	ori.w	#$1000,$6(a4)
 	ori.w	#$100,$6(a4)
-	move.w	-$3BC0(a5),d0
+	move.w	g_DeathbirdSprDef(a5),d0
 	ext.l	d0
 	move.l	d0,-(a7)
 	move.l	a4,-(a7)

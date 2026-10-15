@@ -19,7 +19,7 @@ Boulder_Init:
 	jsr	(a1)
 	ori.w	#$1080,$6(a3)
 	move.b	#$1,$70(a3)
-	move.w	-$3C6A(a5),d0
+	move.w	g_BoulderSprDef(a5),d0
 	ext.l	d0
 	move.l	d0,-(a7)
 	move.l	a3,-(a7)
@@ -44,7 +44,7 @@ Boulder_Init:
 	moveq	#$2,d2
 	or.b	d1,d2
 	move.b	d2,$A4(a3)
-	move.w	-$3C6C(a5),d1
+	move.w	g_BoulderSprDef2(a5),d1
 	ext.l	d1
 	lsl.l	#$2,d1
 	move.l	d1,d2

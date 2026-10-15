@@ -41,7 +41,7 @@ Tuskette_Init:
 	jsr	$4EBA(a5)	; -> sub_1F6B56
 	move.b	#$1,$70(a4)
 	move.w	#$1,$68(a4)
-	move.w	-$3C60(a5),d0
+	move.w	g_TusketteSprDef(a5),d0
 	ext.l	d0
 	move.l	d0,-(a7)
 	move.l	a4,-(a7)

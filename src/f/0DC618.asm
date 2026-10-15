@@ -11,6 +11,6 @@ Barrier_ClassInit:
 	lea.l	$24D2(a5),a0
 	move.l	$2(a0),-(a7)
 	jsr	$4E52(a5)	; -> SprDef_Add
-	move.w	d0,-$3BF4(a5)
+	move.w	d0,g_BarrierSprDef(a5)
 	unlk	a6
 	rts

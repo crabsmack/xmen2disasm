@@ -18,7 +18,7 @@ HoloBolt_Init:
 	movea.l	$12(a0),a1
 	jsr	(a1)
 	ori.w	#$5082,$6(a4)
-	move.w	-$3BE4(a5),d0
+	move.w	g_HoloBoltSprDef(a5),d0
 	ext.l	d0
 	move.l	d0,-(a7)
 	move.l	a4,-(a7)

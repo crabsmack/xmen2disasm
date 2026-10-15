@@ -14,19 +14,19 @@ Boulder_ClassInit:
 	lea.l	$C12(a5),a0
 	move.l	$2(a0),-(a7)
 	jsr	$4E52(a5)	; -> SprDef_Add
-	move.w	d0,-$3C6A(a5)
+	move.w	d0,g_BoulderSprDef(a5)
 	moveq	#$2,d0
 	move.l	d0,-(a7)
 	lea.l	$C1A(a5),a0
 	move.l	$2(a0),-(a7)
 	jsr	$4E52(a5)	; -> SprDef_Add
-	move.w	d0,-$3C6C(a5)
+	move.w	d0,g_BoulderSprDef2(a5)
 	moveq	#$2,d0
 	move.l	d0,-(a7)
 	lea.l	$C22(a5),a0
 	move.l	$2(a0),-(a7)
 	jsr	$4E52(a5)	; -> SprDef_Add
-	move.w	d0,-$3C62(a5)
+	move.w	d0,g_BoulderDebrisSprDef(a5)
 	move.l	#$258,d7
 	pea.l	Str_Empty_05BB84(pc)
 	move.l	d7,-(a7)

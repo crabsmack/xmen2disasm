@@ -12,7 +12,7 @@ ApocBomb_ClassInit:
 	lea.l	$B42(a5),a0
 	move.l	$2(a0),-(a7)
 	jsr	$4E52(a5)	; -> SprDef_Add
-	move.w	d0,-$3C6E(a5)
+	move.w	d0,g_ApocBombSprDef(a5)
 	jsr	ApocBomb_StartAccelTimer(pc)
 	unlk	a6
 	rts

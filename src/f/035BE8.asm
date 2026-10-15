@@ -8,7 +8,7 @@ MagnetoBoss_RubbleTimer:
 	link.w	a6,#$FFF6
 	movem.l	d4-d7/a3-a4,-(a7)
 	movea.l	$8(a6),a4
-	move.w	-$3CAC(a5),d0
+	move.w	g_MagnetoBossSprDef(a5),d0
 	ext.l	d0
 	lsl.l	#$2,d0
 	move.l	d0,d1

@@ -8,7 +8,7 @@ Mine_PoolDraw:
 	link.w	a6,#$0
 	movem.l	d4-d7/a4,-(a7)
 	movea.l	-$1A7C(a5),a4
-	move.w	-$1A76(a5),d0
+	move.w	g_MineSprDef(a5),d0
 	ext.l	d0
 	lsl.l	#$2,d0
 	move.l	d0,d1

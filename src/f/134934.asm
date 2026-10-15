@@ -33,7 +33,7 @@ FlyBrood_Init:
 	cmp.w	g_SceneIndex(a5),d0
 	lea.l	$10(a7),a7
 	beq.s	loc_1349A4
-	move.w	-$1A84(a5),d0
+	move.w	g_FlyBroodSprDef(a5),d0
 	ext.l	d0
 	move.l	d0,-(a7)
 	move.l	a4,-(a7)

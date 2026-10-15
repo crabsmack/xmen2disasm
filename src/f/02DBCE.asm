@@ -20,7 +20,7 @@ Exodus_Init:
 	movea.l	$12(a0),a1
 	jsr	(a1)
 	ori.w	#$3182,$6(a4)
-	move.w	-$3CB4(a5),d0
+	move.w	g_ExodusSprDef(a5),d0
 	ext.l	d0
 	move.l	d0,-(a7)
 	move.l	a4,-(a7)

@@ -62,7 +62,7 @@ YoyoAcolyte_Draw:
 	bge.s	loc_01C32E
 	clr.w	$10(a3)
 loc_01C32E:
-	move.w	-$3CD2(a5),d0
+	move.w	g_YoyoAcolyteSprDef2(a5),d0
 	ext.l	d0
 	lsl.l	#$2,d0
 	move.l	d0,d1

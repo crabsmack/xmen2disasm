@@ -20,7 +20,7 @@ ApocBomb_Init:
 	clr.w	$1E(a4)
 	clr.l	$16(a4)
 	clr.w	$20(a4)
-	move.w	-$3C6E(a5),d0
+	move.w	g_ApocBombSprDef(a5),d0
 	ext.l	d0
 	move.l	d0,-(a7)
 	move.l	a4,-(a7)

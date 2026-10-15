@@ -10,7 +10,7 @@ ControlBox_Draw:
 	moveq	#$1,d0
 	cmp.w	$9A(a3),d0
 	bne.s	loc_0DD7E4
-	move.w	-$3BFC(a5),d0
+	move.w	g_ControlPanelSprDef2(a5),d0
 	ext.l	d0
 	lsl.l	#$2,d0
 	move.l	d0,d1

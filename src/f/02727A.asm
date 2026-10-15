@@ -36,7 +36,7 @@ loc_0272B6:
 	clr.w	$18(a4)
 	clr.w	$20(a4)
 	ori.w	#$4082,$6(a4)
-	move.w	-$3CCC(a5),d0
+	move.w	g_ZapperSprDef(a5),d0
 	ext.l	d0
 	move.l	d0,-(a7)
 	move.l	a4,-(a7)

@@ -74,7 +74,7 @@ loc_121AB4:
 	moveq	#$8,d0
 	and.w	$A2(a3),d0
 	beq.w	loc_121B8E
-	move.w	-$1A94(a5),d0
+	move.w	g_BigBioSprDef(a5),d0
 	ext.l	d0
 	lsl.l	#$2,d0
 	move.l	d0,d1

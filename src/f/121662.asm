@@ -9,7 +9,7 @@ BigBio_SpitUpdateAll:
 	movem.l	d3-d7/a3-a4,-(a7)
 	tst.w	-$1A92(a5)
 	beq.w	loc_1218E6
-	move.w	-$1A94(a5),d0
+	move.w	g_BigBioSprDef(a5),d0
 	ext.l	d0
 	lsl.l	#$2,d0
 	move.l	d0,d1

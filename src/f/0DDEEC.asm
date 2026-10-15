@@ -25,7 +25,7 @@ ControlPanel_Init:
 	lea.l	ControlPanel_StateHit(pc),a0
 	move.l	a0,$60(a3)
 	ori.w	#$4081,$6(a3)
-	move.w	-$3BFE(a5),d0
+	move.w	g_ControlPanelSprDef(a5),d0
 	ext.l	d0
 	move.l	d0,-(a7)
 	move.l	a3,-(a7)

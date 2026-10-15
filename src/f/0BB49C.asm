@@ -10,7 +10,7 @@ SavageBio_StateReloadArt10:
 	movea.l	$8(a6),a4
 	moveq	#$1,d0
 	move.l	d0,-(a7)
-	move.w	-$3C2E(a5),d1
+	move.w	g_SavageBioSprDef(a5),d1
 	ext.l	d1
 	lsl.l	#$2,d1
 	move.l	d1,d2

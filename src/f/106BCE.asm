@@ -13,6 +13,6 @@ Platform1_LevelStart:
 	movea.l	$2(a0),a0
 	movea.l	$62(a0),a1
 	jsr	(a1)
-	clr.w	-$3BD4(a5)
+	clr.w	g_Platform1SprDef(a5)
 	unlk	a6
 	rts

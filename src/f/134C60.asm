@@ -12,7 +12,7 @@ FlyBrood_Draw:
 	move.b	-$3B5C(a5),d0
 	cmp.w	g_SceneIndex(a5),d0
 	beq.w	loc_134D44
-	move.w	-$1A84(a5),d0
+	move.w	g_FlyBroodSprDef(a5),d0
 	ext.l	d0
 	lsl.l	#$2,d0
 	move.l	d0,d1

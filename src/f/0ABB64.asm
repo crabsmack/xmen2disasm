@@ -32,7 +32,7 @@ loc_0ABB9A:
 	lea.l	$1ACA(a5),a0
 	move.l	$2(a0),-(a7)
 	jsr	$4E52(a5)	; -> SprDef_Add
-	move.w	d0,-$3C3A(a5)
+	move.w	d0,g_FloatBubbleSprDef(a5)
 	lea.l	$C(a7),a7
 	movem.l	-$8(a6),d3/d7
 	unlk	a6
