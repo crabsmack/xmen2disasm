@@ -36,6 +36,16 @@ def find_classes(rom: bytes) -> dict[int, tuple[str, int]]:
         return m.group()[:-1].decode() if m else None
 
     known = {ROOT_DESC: (name_at(ROOT_DESC + W(ROOT_DESC)), 0)}
+    # other roots (e.g. CAMERA $1F4960): parent 0, all slots even ROM code pointers, a name
+    for a in range(0, len(rom) - 8, 2):
+        n = W(a)
+        if L(a + 2) != 0 or not (14 <= n <= 0x200 and n % 2 == 0):
+            continue
+        ptrs = [L(a + o) for o in range(6, n, 4)]
+        if all(0x200 <= p < len(rom) and p % 2 == 0 for p in ptrs) and name_at(a + n):
+            nm = name_at(a + n)
+            if nm.isupper():
+                known.setdefault(a, (nm, 0))
     changed = True
     while changed:
         changed = False
@@ -62,12 +72,18 @@ def main() -> int:
     args = ap.parse_args()
     rom = m68k.load_rom()
     classes = find_classes(rom)
+
+    def slot_name(d, o):  # ACTOR slot names only apply to ACTOR's descendants
+        while classes[d][1]:
+            d = classes[d][1]
+        return SLOT_NAMES.get(o, "") if d == ROOT_DESC else ""
+
     if args.func is not None:
         for d, (nm, p) in sorted(classes.items()):
             for o, m in methods(rom, d).items():
                 if m == args.func:
                     own = p == 0 or methods(rom, p).get(o) != m
-                    print(f"{nm} (${d:06X}) slot +${o:X} {SLOT_NAMES.get(o, '')}"
+                    print(f"{nm} (${d:06X}) slot +${o:X} {slot_name(d, o)}"
                           + ("" if own else " (inherited)"))
         return 0
     if args.name:
@@ -80,7 +96,7 @@ def main() -> int:
         print(f"{nm} at ${d:06X}, parent {classes[p][0] if p else '-'}")
         pm = methods(rom, p) if p else {}
         for o, m in methods(rom, d).items():
-            print(f"  +${o:02X} {'*' if pm.get(o) != m else ' '} ${m:06X}  {SLOT_NAMES.get(o, '')}")
+            print(f"  +${o:02X} {'*' if pm.get(o) != m else ' '} ${m:06X}  {slot_name(d, o)}")
         return 0
     for d, (nm, p) in sorted(classes.items()):
         print(f"${d:06X} {nm:20} < {classes[p][0] if p else '-'}")
