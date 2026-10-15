@@ -299,7 +299,7 @@ loc_1F9B58:
 	moveq	#$0,d0
 	move.l	d0,-$CA6(a5)
 	lea.l	$3FB2(a5),a0
-	move.l	a0,-$38FC(a5)
+	move.l	a0,g_PauseHandler(a5)
 	clr.b	-$1662(a5)
 	move.b	#$1,-$1660(a5)
 	jsr	Timer_InitAll(pc)

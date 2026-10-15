@@ -2,7 +2,7 @@
 ; CloneA2_SetCameraLimitsToMap - open the camera limits to the whole map (map size from the header at -$CAE)
 ; In:  none
 ; Out: none
-; Evidence: max x = (hdr+2)*8 - $140, max y = (hdr+4)*8 - $E0, mins 0 (same globals as CloneA2_SetCameraZone); jt 556; caller sub_085696 (teleporter code), TAS frame 48336
+; Evidence: max x = (hdr+2)*8 - $140, max y = (hdr+4)*8 - $E0, mins 0 (same globals as CloneA2_SetCameraZone); jt 556; caller Teleporter_StateTeleport (teleporter code), TAS frame 48336
 ; ---------------------------------------------------------------------------
 CloneA2_SetCameraLimitsToMap:
 	link.w	a6,#$0

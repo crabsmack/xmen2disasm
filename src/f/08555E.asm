@@ -1,12 +1,16 @@
 ; ---------------------------------------------------------------------------
-; sub_08555E	[link-after-rts]
+; Teleporter_StateStart - TELEPORTER initial state: go to Teleporter_StateWait
+; In:  8(a6) = this
+; Out: d0
+; Evidence: +$5C/+$64 set by Teleporter_Init; TAS 48265
+; Found: link-after-rts
 ; ---------------------------------------------------------------------------
-sub_08555E:
+Teleporter_StateStart:
 	link.w	a6,#$0
 	move.l	a4,-(a7)
 	movea.l	$8(a6),a4
 	clr.w	$6C(a4)
-	lea.l	sub_085582(pc),a0
+	lea.l	Teleporter_StateWait(pc),a0
 	move.l	a0,$5C(a4)
 	moveq	#$8,d0
 	and.w	$4(a4),d0

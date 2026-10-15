@@ -463,7 +463,7 @@ loc_1FA696:
 	bne.s	loc_1FA6AE
 	moveq	#$0,d0
 	move.l	d0,-(a7)
-	movea.l	-$38FC(a5),a0
+	movea.l	g_PauseHandler(a5),a0
 	jsr	(a0)
 	addq.w	#$4,a7
 loc_1FA6AE:

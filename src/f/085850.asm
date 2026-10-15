@@ -1,7 +1,11 @@
 ; ---------------------------------------------------------------------------
-; sub_085850	[link-after-rts]
+; Teleporter_StateArrive - TELEPORTER state: arrive - set the receiver's camera zone, reset the players' states and fade back in
+; In:  8(a6) = this
+; Out: d0
+; Evidence: receiver flag +$E -> CloneA2_StartCamAltMode; CloneA2_SetCameraZone(+$8C); each live player: +$6A = 10, slot +$86, state := class slot +$A6; sub_1F690E(1) (blocking fade in); TAS 48377
+; Found: link-after-rts
 ; ---------------------------------------------------------------------------
-sub_085850:
+Teleporter_StateArrive:
 	link.w	a6,#$0
 	movem.l	d3/d7/a3-a4,-(a7)
 	movea.l	$8(a6),a3
@@ -56,7 +60,7 @@ loc_0858C8:
 	jsr	$4EA2(a5)	; -> sub_1F690E
 	addq.w	#$4,a7
 	clr.w	$6C(a3)
-	lea.l	sub_0858F6(pc),a0
+	lea.l	Teleporter_StateWaitFade(pc),a0
 	move.l	a0,$5C(a3)
 	moveq	#$8,d0
 	and.w	$4(a3),d0

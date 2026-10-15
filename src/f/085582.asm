@@ -1,7 +1,11 @@
 ; ---------------------------------------------------------------------------
-; sub_085582	[link-after-rts]
+; Teleporter_StateWait - TELEPORTER state: wait for a player to step onto the pad (box within 10 px), then teleport
+; In:  8(a6) = this
+; Out: d0
+; Evidence: keeps waiting while any live player has sub_1F429E(player) true; else a live player whose box overlaps +-10 px of the pad and lacks +4 bit $1000 -> +6 bit $1000, state Teleporter_StateTeleport; TAS 48266-48388
+; Found: link-after-rts
 ; ---------------------------------------------------------------------------
-sub_085582:
+Teleporter_StateWait:
 	link.w	a6,#$FFFE
 	movem.l	d3-d7/a3-a4,-(a7)
 	movea.l	$8(a6),a4
@@ -50,7 +54,7 @@ loc_0855CE:
 	addq.w	#$4,a7
 	beq.s	loc_08560A
 	clr.w	$6C(a4)
-	lea.l	sub_085582(pc),a0
+	lea.l	Teleporter_StateWait(pc),a0
 	move.l	a0,$5C(a4)
 	moveq	#$8,d0
 	and.w	$4(a4),d0
@@ -96,7 +100,7 @@ loc_08562A:
 	bne.s	loc_085684
 	ori.w	#$1000,$6(a4)
 	clr.w	$6C(a4)
-	lea.l	sub_085696(pc),a0
+	lea.l	Teleporter_StateTeleport(pc),a0
 	move.l	a0,$5C(a4)
 	moveq	#$8,d0
 	and.w	$4(a4),d0

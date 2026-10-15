@@ -1363,7 +1363,8 @@ Tbl_TeleportReceiver_vtable:	; class descriptor of TELEPORTRECEIVER: word name o
 	incrom	$08537F,$1
 Tbl_Teleporter_vtable:	; class descriptor of TELEPORTER: word name offset $6E, parent ACTOR, 26 method slots from +6, then the name (tools/classes.py)
 	incrom	$085380,$79
-	incrom	$0853F9,$9
+	incrom	$0853F9,$1
+	include "src/f/0853FA.asm"
 	include "src/f/085402.asm"
 	include "src/f/085410.asm"
 	include "src/f/085444.asm"

@@ -20,10 +20,10 @@ Teleporter_Init:
 	clr.w	$18(a0)
 	movea.l	$8(a6),a0
 	clr.w	$20(a0)
-	lea.l	sub_08555E(pc),a0
+	lea.l	Teleporter_StateStart(pc),a0
 	movea.l	$8(a6),a1
 	move.l	a0,$5C(a1)
-	lea.l	sub_08555E(pc),a0
+	lea.l	Teleporter_StateStart(pc),a0
 	movea.l	$8(a6),a1
 	move.l	a0,$64(a1)
 	movea.l	$8(a6),a0

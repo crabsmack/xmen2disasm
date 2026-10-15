@@ -1,7 +1,11 @@
 ; ---------------------------------------------------------------------------
-; sub_0857DC	[link-after-rts]
+; Teleporter_StateHold - TELEPORTER state: hold both players still until the $1E-frame timer +$6E runs out
+; In:  8(a6) = this
+; Out: d0
+; Evidence: clears player velocity/accel each frame; then Teleporter_StateArrive; TAS 48347-48376
+; Found: link-after-rts
 ; ---------------------------------------------------------------------------
-sub_0857DC:
+Teleporter_StateHold:
 	link.w	a6,#$0
 	movem.l	d3/d7/a3-a4,-(a7)
 	movea.l	$8(a6),a3
@@ -38,7 +42,7 @@ loc_085826:
 	tst.w	$6E(a3)
 	bne.s	loc_085846
 	clr.w	$6C(a3)
-	lea.l	sub_085850(pc),a0
+	lea.l	Teleporter_StateArrive(pc),a0
 	move.l	a0,$5C(a3)
 	moveq	#$8,d0
 	and.w	$4(a3),d0

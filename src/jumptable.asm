@@ -607,7 +607,7 @@ JumpTable:
 	jtentry	Teleporter_Nop6A	; [603] jsr $12FA(a5)
 	jtentry	Teleporter_ClassInit	; [604] jsr $1302(a5)
 	jtentry	Teleporter_Init	; [605] jsr $130A(a5)
-	jtentry	sub_085932	; [606] jsr $1312(a5)
+	jtentry	unk_CloneA5_085932	; [606] jsr $1312(a5)
 	jtentry	BroodBossParts_GetSize	; [607] jsr $131A(a5)
 	jtentry	BroodBossParts_Init	; [608] jsr $1322(a5)
 	jtentry	BroodBossParts_Draw	; [609] jsr $132A(a5)

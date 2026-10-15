@@ -1,7 +1,11 @@
 ; ---------------------------------------------------------------------------
-; sub_0858F6	[link-after-rts]
+; Teleporter_StateWaitFade - TELEPORTER state: once the fade is over, restore pausing and the palette code and wait for the next use
+; In:  8(a6) = this
+; Out: none
+; Evidence: when g_PalFadeActive is clear: -$3B04 := 0, g_PauseHandler := sub_15CAA4, clears +6 bit $1000, state Teleporter_StateWait; TAS 48387
+; Found: link-after-rts
 ; ---------------------------------------------------------------------------
-sub_0858F6:
+Teleporter_StateWaitFade:
 	link.w	a6,#$0
 	move.l	a4,-(a7)
 	movea.l	$8(a6),a4
@@ -9,10 +13,10 @@ sub_0858F6:
 	bne.s	loc_08592A
 	clr.w	-$3B04(a5)
 	lea.l	$3FB2(a5),a0
-	move.l	a0,-$38FC(a5)
+	move.l	a0,g_PauseHandler(a5)
 	andi.w	#$EFFF,$6(a4)
 	clr.w	$6C(a4)
-	lea.l	sub_085582(pc),a0
+	lea.l	Teleporter_StateWait(pc),a0
 	move.l	a0,$5C(a4)
 	moveq	#$8,d0
 	and.w	$4(a4),d0

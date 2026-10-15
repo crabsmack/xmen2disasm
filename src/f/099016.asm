@@ -20,7 +20,7 @@ sub_099016:
 	move.l	a0,-$3406(a5)
 	lea.l	$1432(a5),a0
 	move.l	a0,-$3402(a5)
-	jsr	$1312(a5)	; -> sub_085932
+	jsr	$1312(a5)	; -> unk_CloneA5_085932
 	lea.l	sub_09984A(pc),a0
 	move.l	a0,-$388E(a5)
 	jsr	$1162(a5)	; -> CloneA2_FlickerInit

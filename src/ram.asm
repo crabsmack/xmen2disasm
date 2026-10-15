@@ -116,3 +116,4 @@ g_Elevator = -$3BC4	; ptr: SpaceA1 ELEVATOR object, on SpaceElev_Main's stack (S
 g_SpawnRecs = -$38DC	; ptr: spawn records, 14 bytes each (sub_15F95C fills them via InitSpawnRec; level loop sub_1FA124)
 g_SpawnRecCount = -$38D8	; word: number of spawn records / placement entries (sub_1F98A8, sub_15F95C)
 g_PlacementList = -$38D6	; ptr: level placement entries, 16 bytes, word 0 = class index into g_ClassList (sub_1F98A8, sub_15F95C)
+g_PauseHandler = -$38FC	; ptr: called by the scene loop (sub_1FA124) when a player presses Start; sub_1F98A8 sets jt[$3FB2] = sub_15CAA4 (pause); Teleporter_StateTeleport swaps in Teleporter_NoPause
