@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_18323E	[jt 2136]
+; Beast_ShockwaveInit - start the two ground shockwaves at Beast's x (sound and screen shake by strength)
+; In:  8(a6) = word x, $C(a6) = pointer left wave x, $10(a6) = pointer right wave x, $14(a6) = wave sprite instance, $18(a6) = byte strong
+; Out: none
+; Evidence: strong: sound $99 + bigger shake script, else $97; left = x - $14, right = x + $14; Spr_SetFrame(sprite, 0)
 ; ---------------------------------------------------------------------------
-sub_18323E:
+Beast_ShockwaveInit:
 	link.w	a6,#$0
 	move.l	d7,-(a7)
 	move.w	$A(a6),d7

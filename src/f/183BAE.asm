@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_183BAE	[link-after-rts]
+; Beast_StateCrouch - Beast's crouch: look down after a while, turn, drop through floors, or roll with jump + direction
+; In:  8(a6) = player
+; Out: d0
+; Evidence: like XPlayer_StateCrouch; C + Left/Right -> Beast_StartRoll; C on a thin floor -> vtable +$86 DropThrough; anything else -> control
 ; ---------------------------------------------------------------------------
-sub_183BAE:
+Beast_StateCrouch:
 	link.w	a6,#$0
 	movem.l	d3/a4,-(a7)
 	movea.l	$8(a6),a4
@@ -114,7 +117,7 @@ loc_183CDA:
 	move.w	d0,g_Pad2Latch(a5)
 loc_183CE8:
 	clr.w	$6C(a4)
-	lea.l	sub_183AB6(pc),a0
+	lea.l	Beast_StartRoll(pc),a0
 	move.l	a0,$5C(a4)
 	moveq	#$8,d0
 	and.w	$4(a4),d0
@@ -212,7 +215,7 @@ loc_183DEA:
 	jsr	$4E4A(a5)	; -> Obj_ChangeAnim
 	addq.w	#$8,a7
 	clr.w	$6C(a4)
-	lea.l	sub_183BAE(pc),a0
+	lea.l	Beast_StateCrouch(pc),a0
 	move.l	a0,$5C(a4)
 	moveq	#$8,d0
 	and.w	$4(a4),d0

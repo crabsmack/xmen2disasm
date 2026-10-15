@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_1837B0	[link-after-rts]
+; Beast_SetFrameKeepCenterX - change frame keeping the box's horizontal centre in place
+; In:  8(a6) = player, $C(a6) = word frame
+; Out: none
+; Evidence: like Beast_SetFrameKeepCenter for x only
 ; ---------------------------------------------------------------------------
-sub_1837B0:
+Beast_SetFrameKeepCenterX:
 	link.w	a6,#$0
 	movem.l	d6-d7/a4,-(a7)
 	movea.l	$8(a6),a4

@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_18393C	[link-after-rts]
+; Beast_StateRoll - rolling leap: keep rolling forward at $1E0 until the time ends or a landing
+; In:  8(a6) = player
+; Out: d0
+; Evidence: roll animation (jt $4492 data), vx +/-$1E0 by facing; grounded during the roll -> Beast_RollLand; frame $97 once falling (vy > $96)
 ; ---------------------------------------------------------------------------
-sub_18393C:
+Beast_StateRoll:
 	link.w	a6,#$0
 	move.l	a4,-(a7)
 	movea.l	$8(a6),a4
@@ -14,7 +17,7 @@ sub_18393C:
 	jsr	$4E42(a5)	; -> Obj_SetAnim
 	addq.w	#$8,a7
 	clr.w	$6C(a4)
-	lea.l	sub_1838B8(pc),a0
+	lea.l	Beast_StateRollEnd(pc),a0
 	move.l	a0,$5C(a4)
 	moveq	#$8,d0
 	and.w	$4(a4),d0
@@ -37,7 +40,7 @@ loc_183992:
 	jsr	$4E42(a5)	; -> Obj_SetAnim
 	addq.w	#$8,a7
 	clr.w	$6C(a4)
-	lea.l	sub_1838B8(pc),a0
+	lea.l	Beast_StateRollEnd(pc),a0
 	move.l	a0,$5C(a4)
 	moveq	#$8,d0
 	and.w	$4(a4),d0
@@ -71,7 +74,7 @@ loc_183A02:
 	move.w	d0,$16(a4)
 	addq.w	#$8,a7
 	move.w	#$FF,$6C(a4)
-	lea.l	sub_183810(pc),a0
+	lea.l	Beast_RollLand(pc),a0
 	move.l	a0,$5C(a4)
 	moveq	#$8,d0
 	and.w	$4(a4),d0

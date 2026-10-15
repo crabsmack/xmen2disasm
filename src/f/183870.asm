@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_183870	[link-after-rts]
+; Beast_StateRollRecover - after a roll in the air: wait for landing or the timer, then control
+; In:  8(a6) = player
+; Out: d0
+; Evidence: grounded or +$6E < 1 -> control
 ; ---------------------------------------------------------------------------
-sub_183870:
+Beast_StateRollRecover:
 	link.w	a6,#$0
 	move.l	a4,-(a7)
 	movea.l	$8(a6),a4
@@ -11,7 +14,7 @@ sub_183870:
 	tst.w	$6E(a4)
 	ble.s	loc_18389E
 	clr.w	$6C(a4)
-	lea.l	sub_183870(pc),a0
+	lea.l	Beast_StateRollRecover(pc),a0
 	move.l	a0,$5C(a4)
 	moveq	#$8,d0
 	and.w	$4(a4),d0

@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_1830BE	[link-after-rts]
+; Beast_StateDiveHold - diving with B held: keep diving until landing or B release
+; In:  8(a6) = player
+; Out: d0
+; Evidence: grounded -> Beast_DiveImpact; B released or +4 $100 -> Beast_StateDive
 ; ---------------------------------------------------------------------------
-sub_1830BE:
+Beast_StateDiveHold:
 	link.w	a6,#$0
 	movem.l	d3/a4,-(a7)
 	movea.l	$8(a6),a4
@@ -9,7 +12,7 @@ sub_1830BE:
 	and.w	$4(a4),d0
 	bne.s	loc_1830DE
 	move.l	a4,-(a7)
-	jsr	sub_182F0C(pc)
+	jsr	Beast_DiveImpact(pc)
 	addq.w	#$4,a7
 	bra.s	loc_18312C
 loc_1830DE:
@@ -30,14 +33,14 @@ loc_1830FA:
 	beq.s	loc_18311A
 loc_183106:
 	clr.w	$6C(a4)
-	lea.l	sub_182FFA(pc),a0
+	lea.l	Beast_StateDive(pc),a0
 	move.l	a0,$5C(a4)
 	moveq	#$8,d0
 	and.w	$4(a4),d0
 	bra.s	loc_18312C
 loc_18311A:
 	clr.w	$6C(a4)
-	lea.l	sub_1830BE(pc),a0
+	lea.l	Beast_StateDiveHold(pc),a0
 	move.l	a0,$5C(a4)
 	moveq	#$8,d0
 	and.w	$4(a4),d0

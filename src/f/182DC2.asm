@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_182DC2	[link-after-rts]
+; Beast_StateCling - clinging to a wall: B swipes, jump leaps off
+; In:  8(a6) = player
+; Out: d0 = +4 flag 8
+; Evidence: C pressed -> SetFrame 9, vy -$834, max speed char +$12, gravity, climb state cleared, control; B latched -> attack strength char +4, sound char +$2C, wall-attack animation (jt $446A data)
 ; ---------------------------------------------------------------------------
-sub_182DC2:
+Beast_StateCling:
 	link.w	a6,#$0
 	movem.l	d3/a4,-(a7)
 	movea.l	$8(a6),a4
@@ -99,14 +102,14 @@ loc_182EA2:
 	jsr	$4E42(a5)	; -> Obj_SetAnim
 	lea.l	$10(a7),a7
 	move.w	#$FF,$6C(a4)
-	lea.l	sub_182DC2(pc),a0
+	lea.l	Beast_StateCling(pc),a0
 	move.l	a0,$5C(a4)
 	moveq	#$8,d0
 	and.w	$4(a4),d0
 	bra.s	loc_182F02
 loc_182EF0:
 	clr.w	$6C(a4)
-	lea.l	sub_182DC2(pc),a0
+	lea.l	Beast_StateCling(pc),a0
 	move.l	a0,$5C(a4)
 	moveq	#$8,d0
 	and.w	$4(a4),d0

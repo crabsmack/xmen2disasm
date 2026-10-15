@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_182B3C	[jt 2132]
+; Beast_SetAirFrame - BEAST slot +$7E: pick the jump frame from the vertical speed
+; In:  8(a6) = player
+; Out: none
+; Evidence: vy bands -$5A6/-$2A0/$2A0/$300 -> SetFrame 9/$B/$D/$B/$E; frame $C during the ledge slowdown +$AA
 ; ---------------------------------------------------------------------------
-sub_182B3C:
+Beast_SetAirFrame:
 	link.w	a6,#$0
 	movem.l	d7/a4,-(a7)
 	movea.l	$8(a6),a4

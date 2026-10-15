@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_183724	[link-after-rts]
+; Beast_SetFrameKeepCenter - change frame keeping the box centre in place
+; In:  8(a6) = player, $C(a6) = word frame
+; Out: none
+; Evidence: vtable +$56 SetFrame, Obj_UpdateBox, x/y shifted by the change of box centre; g_CamModeSwitched
 ; ---------------------------------------------------------------------------
-sub_183724:
+Beast_SetFrameKeepCenter:
 	link.w	a6,#$0
 	movem.l	d4-d7/a4,-(a7)
 	movea.l	$8(a6),a4

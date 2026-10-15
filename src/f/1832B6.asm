@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_1832B6	[link-after-rts]
+; Beast_ShockwaveHitCb - ObjList_ForEachAtPoint callback: a shockwave hits an enemy (damage + explosion)
+; In:  8(a6) = target, $C/$10(a6) = words point x/y, $14(a6) = word damage
+; Out: d0 = 0
+; Evidence: target vtable +$26 (type 2), Explosion_Spawn at the point
 ; ---------------------------------------------------------------------------
-sub_1832B6:
+Beast_ShockwaveHitCb:
 	link.w	a6,#$0
 	movem.l	d6-d7/a4,-(a7)
 	move.w	$12(a6),d6

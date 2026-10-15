@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_182AF4	[jt 2131]
+; Beast_Jump - BEAST slot +$82: XPLAYER jump, $100 higher while the bounce timer +$6E runs
+; In:  8(a6) = player
+; Out: none
+; Evidence: parent +$82 via lea jt / 2(a0); vy = char +$10 (- $100 when +$6E != 0)
 ; ---------------------------------------------------------------------------
-sub_182AF4:
+Beast_Jump:
 	link.w	a6,#$0
 	move.l	a4,-(a7)
 	movea.l	$8(a6),a4

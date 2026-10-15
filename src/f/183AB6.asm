@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_183AB6	[link-after-rts]
+; Beast_StartRoll - from a crouch with jump + direction: leap into a forward roll if there is room
+; In:  8(a6) = player
+; Out: d0 = +4 flag 8
+; Evidence: face the held direction; Beast_RollPathClear fails -> back to Beast_StateCrouch; else sound $92, frame $96, Obj_Detach, gravity $1E, vy -$20C, vx +/-$600, +$6E = $26, state Beast_StateRoll
 ; ---------------------------------------------------------------------------
-sub_183AB6:
+Beast_StartRoll:
 	link.w	a6,#$0
 	movem.l	d3/a4,-(a7)
 	movea.l	$8(a6),a4
@@ -38,12 +41,12 @@ loc_183B0C:
 	andi.b	#$EF,$2E(a4)
 loc_183B14:
 	move.l	a4,-(a7)
-	jsr	sub_183A3E(pc)
+	jsr	Beast_RollPathClear(pc)
 	tst.b	d0
 	addq.w	#$4,a7
 	bne.s	loc_183B34
 	clr.w	$6C(a4)
-	lea.l	sub_183BAE(pc),a0
+	lea.l	Beast_StateCrouch(pc),a0
 	move.l	a0,$5C(a4)
 	moveq	#$8,d0
 	and.w	$4(a4),d0
@@ -76,7 +79,7 @@ loc_183B7A:
 	move.w	#$26,$6E(a4)
 	lea.l	$14(a7),a7
 	clr.w	$6C(a4)
-	lea.l	sub_18393C(pc),a0
+	lea.l	Beast_StateRoll(pc),a0
 	move.l	a0,$5C(a4)
 	moveq	#$8,d0
 	and.w	$4(a4),d0

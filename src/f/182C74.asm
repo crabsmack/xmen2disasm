@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_182C74	[jt 2133]
+; Beast_StateGrabWall - BEAST slot +$AA: grab the wall: snap to its face, then cling (or wall-jump at once if jump was pressed)
+; In:  8(a6) = player
+; Out: d0 = +4 flag 8
+; Evidence: climb state +$C0 2/3: face the wall, SetFrame $F, x aligned to the wall segment +$BC; +$C0 bit $40 -> sound $9E, Beast_WallJump after 6 frames; else SetFrame $10, sound $81, state Beast_StateCling
 ; ---------------------------------------------------------------------------
-sub_182C74:
+Beast_StateGrabWall:
 	link.w	a6,#$0
 	movem.l	a3-a4,-(a7)
 	movea.l	$8(a6),a4
@@ -86,7 +89,7 @@ loc_182D50:
 	jsr	$521A(a5)	; -> Snd_Play
 	addq.w	#$8,a7
 	move.w	#$6,$6C(a4)
-	lea.l	sub_182BDE(pc),a0
+	lea.l	Beast_WallJump(pc),a0
 	move.l	a0,$5C(a4)
 	moveq	#$8,d0
 	and.w	$4(a4),d0
@@ -104,7 +107,7 @@ loc_182D84:
 	jsr	$521A(a5)	; -> Snd_Play
 	lea.l	$10(a7),a7
 	clr.w	$6C(a4)
-	lea.l	sub_182DC2(pc),a0
+	lea.l	Beast_StateCling(pc),a0
 	move.l	a0,$5C(a4)
 	moveq	#$8,d0
 	and.w	$4(a4),d0

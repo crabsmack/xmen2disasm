@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_184158	[jt 2144]
+; Beast_SetFrame - BEAST slot +$56: set a frame; frames $80+ come from Beast's second sprite bank
+; In:  8(a6) = player, $C(a6) = frame ($FF none)
+; Out: none
+; Evidence: < $80 -> sprite def jt $434E thunk, else frame - $80 from the def at $18DF2C; a bank change invalidates the uploaded frame +$38; then like Actor_SetFrame
 ; ---------------------------------------------------------------------------
-sub_184158:
+Beast_SetFrame:
 	link.w	a6,#$FFFC
 	movem.l	d7/a3-a4,-(a7)
 	movea.l	$8(a6),a3

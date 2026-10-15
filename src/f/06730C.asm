@@ -5,7 +5,7 @@ loc_06730C:
 	ext.l	d7
 	move.l	d7,-(a7)
 	move.l	a4,-(a7)
-	jsr	$4322(a5)	; -> sub_184158
+	jsr	$4322(a5)	; -> Beast_SetFrame
 	addq.w	#$8,a7
 	bra.s	loc_06736C
 loc_06731A:

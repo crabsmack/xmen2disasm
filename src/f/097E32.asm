@@ -2,7 +2,7 @@
 ; EvilBeast_UpdateThrows - EVILBEAST slot +$82 (per frame): advance its two thrown objects (+$BA, +$BC) until each reports done
 ; In:  8(a6) = this
 ; Out: none
-; Evidence: sub_183320(slot, &y, resource record -$3C3E*$14 + $FFC97A, side 0/1, 1, 0); clears +$BE bits 0/1; TAS 53043-53370
+; Evidence: Beast_ShockwaveStep(slot, &y, resource record -$3C3E*$14 + $FFC97A, side 0/1, 1, 0); clears +$BE bits 0/1; TAS 53043-53370
 ; Found: jt 766
 ; ---------------------------------------------------------------------------
 EvilBeast_UpdateThrows:
@@ -32,7 +32,7 @@ EvilBeast_UpdateThrows:
 	pea.l	(a0,d2.w)
 	pea.l	-$2(a6)
 	pea.l	$BA(a4)
-	jsr	$42EA(a5)	; -> sub_183320
+	jsr	$42EA(a5)	; -> Beast_ShockwaveStep
 	tst.b	d0
 	lea.l	$18(a7),a7
 	beq.s	loc_097E90
@@ -58,7 +58,7 @@ loc_097E90:
 	pea.l	(a0,d2.w)
 	pea.l	-$2(a6)
 	pea.l	$BC(a4)
-	jsr	$42EA(a5)	; -> sub_183320
+	jsr	$42EA(a5)	; -> Beast_ShockwaveStep
 	tst.b	d0
 	lea.l	$18(a7),a7
 	beq.s	loc_097ED6

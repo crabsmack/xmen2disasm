@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_183320	[jt 2137]
+; Beast_ShockwaveStep - move one shockwave 10 px along the floor, hit enemies, draw it; report when it ends
+; In:  8(a6) = pointer wave x, $C(a6) = pointer wave y, $10(a6) = sprite instance, $14(a6) = byte 0 left / 1 right, $18(a6) = byte priority bit, $1C(a6) = byte hits enemies
+; Out: d0 = 1 finished (wall hit or off screen)
+; Evidence: ObjList_ForEachAtPoint on g_HitListEnemyBody (else g_HitListPlayerBody) with Beast_ShockwaveHitCb, Spr_Draw, $15CECC wall test 30 px ahead -> Explosion_Spawn; off screen at -60 / +380 px
 ; ---------------------------------------------------------------------------
-sub_183320:
+Beast_ShockwaveStep:
 	link.w	a6,#$FFFA
 	movem.l	d3-d7/a3-a4,-(a7)
 	move.b	$1F(a6),d5
@@ -47,7 +50,7 @@ loc_183372:
 	move.l	d0,-(a7)
 	moveq	#$0,d0
 	move.l	d0,-(a7)
-	pea.l	sub_1832B6(pc)
+	pea.l	Beast_ShockwaveHitCb(pc)
 	move.l	-$4(a6),-(a7)
 	ext.l	d7
 	move.l	d7,-(a7)
@@ -134,7 +137,7 @@ loc_183448:
 	move.l	d4,-(a7)
 	moveq	#$0,d0
 	move.l	d0,-(a7)
-	pea.l	sub_1832B6(pc)
+	pea.l	Beast_ShockwaveHitCb(pc)
 	move.l	-$4(a6),-(a7)
 	ext.l	d7
 	move.l	d7,-(a7)

@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_183F70	[jt 2141]
+; Beast_GroundAttackUp - BEAST slot +$D6: Up+B on the ground: upward swipe that can launch the partner
+; In:  8(a6) = player
+; Out: d0 = +4 flag 8
+; Evidence: attack sound, stop, Obj_SetAnim(char +$3A), +$6E = $37, delay 15, state Beast_StateUpAttack
 ; ---------------------------------------------------------------------------
-sub_183F70:
+Beast_GroundAttackUp:
 	link.w	a6,#$0
 	move.l	a4,-(a7)
 	movea.l	$8(a6),a4
@@ -40,7 +43,7 @@ loc_183FC8:
 	move.w	#$37,$6E(a4)
 	addq.w	#$8,a7
 	move.w	#$F,$6C(a4)
-	lea.l	sub_183EB2(pc),a0
+	lea.l	Beast_StateUpAttack(pc),a0
 	move.l	a0,$5C(a4)
 	moveq	#$8,d0
 	and.w	$4(a4),d0

@@ -5279,28 +5279,28 @@ Tbl_Anim_182932:	; animation script (byte flags, byte steps, ..., 2-byte steps f
 	incrom	$182932,$22
 Tbl_Anim_182954:	; animation script (byte flags, byte steps, ..., 2-byte steps from +6); 3E of 48 bytes used at runtime; read by Anim_ApplyStep, Anim_AdvanceByDistance, Anim_Advance; jt[2117] used by loc_06745C
 	incrom	$182954,$48
-Tbl_Anim_18299C:	; animation script (byte flags, byte steps, ..., 2-byte steps from +6); 8 of A bytes used at runtime; read by Anim_ApplyStep, Anim_AdvanceByDistance, Anim_Advance; jt[2118] used by sub_183136
+Tbl_Anim_18299C:	; animation script (byte flags, byte steps, ..., 2-byte steps from +6); 8 of A bytes used at runtime; read by Anim_ApplyStep, Anim_AdvanceByDistance, Anim_Advance; jt[2118] used by Beast_AirAttackDown
 	incrom	$18299C,$A
-Tbl_Anim_1829A6:	; animation script (byte flags, byte steps, ..., 2-byte steps from +6); A of C bytes used at runtime; read by Anim_ApplyStep, Anim_AdvanceByDistance, Anim_Advance; jt[2119] used by sub_182F0C
+Tbl_Anim_1829A6:	; animation script (byte flags, byte steps, ..., 2-byte steps from +6); A of C bytes used at runtime; read by Anim_ApplyStep, Anim_AdvanceByDistance, Anim_Advance; jt[2119] used by Beast_DiveImpact
 	incrom	$1829A6,$C
-Tbl_Anim_1829B2:	; animation script (byte flags, byte steps, ..., 2-byte steps from +6); A of C bytes used at runtime; read by Anim_ApplyStep, Anim_AdvanceByDistance, Anim_Advance; jt[2120] used by sub_1831D0
+Tbl_Anim_1829B2:	; animation script (byte flags, byte steps, ..., 2-byte steps from +6); A of C bytes used at runtime; read by Anim_ApplyStep, Anim_AdvanceByDistance, Anim_Advance; jt[2120] used by Beast_AirSpecial
 	incrom	$1829B2,$C
-Tbl_Anim_1829BE:	; animation script (byte flags, byte steps, ..., 2-byte steps from +6); A of 12 bytes used at runtime; read by Anim_ApplyStep, Anim_AdvanceByDistance, Anim_Advance; jt[2121] used by sub_182DC2
+Tbl_Anim_1829BE:	; animation script (byte flags, byte steps, ..., 2-byte steps from +6); A of 12 bytes used at runtime; read by Anim_ApplyStep, Anim_AdvanceByDistance, Anim_Advance; jt[2121] used by Beast_StateCling
 	incrom	$1829BE,$12
-Tbl_Anim_1829D0:	; animation script (byte flags, byte steps, ..., 2-byte steps from +6); 8 of A bytes used at runtime; read by Anim_ApplyStep, Anim_AdvanceByDistance, Anim_Advance; jt[2122] used by sub_1836C0
+Tbl_Anim_1829D0:	; animation script (byte flags, byte steps, ..., 2-byte steps from +6); 8 of A bytes used at runtime; read by Anim_ApplyStep, Anim_AdvanceByDistance, Anim_Advance; jt[2122] used by Beast_GroundSpecial
 	incrom	$1829D0,$A
-Tbl_Anim_1829DA:	; animation script (byte flags, byte steps, ..., 2-byte steps from +6); A of C bytes used at runtime; read by Anim_ApplyStep, Anim_AdvanceByDistance, Anim_Advance; jt[2123] used by sub_183630
+Tbl_Anim_1829DA:	; animation script (byte flags, byte steps, ..., 2-byte steps from +6); A of C bytes used at runtime; read by Anim_ApplyStep, Anim_AdvanceByDistance, Anim_Advance; jt[2123] used by Beast_StateStomp
 	incrom	$1829DA,$C
-Tbl_EvilBeastAnim:	; animation script (byte flags, byte steps, ..., 2-byte steps from +6); 8 of A bytes used at runtime; read by Anim_ApplyStep, Anim_AdvanceByDistance, Anim_Advance; jt[2124] used by EvilBeast_ActThrow, sub_183630
+Tbl_EvilBeastAnim:	; animation script (byte flags, byte steps, ..., 2-byte steps from +6); 8 of A bytes used at runtime; read by Anim_ApplyStep, Anim_AdvanceByDistance, Anim_Advance; jt[2124] used by EvilBeast_ActThrow, Beast_StateStomp
 	incrom	$1829E6,$A
-Tbl_EvilBeastAnim2:	; animation script (byte flags, byte steps, ..., 2-byte steps from +6); 6 of 8 bytes used at runtime; read by Anim_ApplyStep, Anim_AdvanceByDistance, Anim_Advance; jt[2125] used by EvilBeast_StateThrow, sub_1835C2
+Tbl_EvilBeastAnim2:	; animation script (byte flags, byte steps, ..., 2-byte steps from +6); 6 of 8 bytes used at runtime; read by Anim_ApplyStep, Anim_AdvanceByDistance, Anim_Advance; jt[2125] used by EvilBeast_StateThrow, Beast_StateStompEnd
 	incrom	$1829F0,$8
-Tbl_Anim_1829F8:	; animation script (byte flags, byte steps, ..., 2-byte steps from +6); 8 of 1E bytes used at runtime; read by Anim_ApplyStep, Anim_AdvanceByDistance, Anim_Advance; jt[2126] used by sub_18393C
+Tbl_Anim_1829F8:	; animation script (byte flags, byte steps, ..., 2-byte steps from +6); 8 of 1E bytes used at runtime; read by Anim_ApplyStep, Anim_AdvanceByDistance, Anim_Advance; jt[2126] used by Beast_StateRoll
 	incrom	$1829F8,$1E
 	incrom	$182A16,$5E
-Tbl_ShakeStep_182A74:	; table read by Cam_ShakeStep; 1F of 20 bytes used at runtime; read by Cam_ShakeStep; jt[2128] used by sub_182F0C, sub_18323E
+Tbl_ShakeStep_182A74:	; table read by Cam_ShakeStep; 1F of 20 bytes used at runtime; read by Cam_ShakeStep; jt[2128] used by Beast_DiveImpact, Beast_ShockwaveInit
 	incrom	$182A74,$20
-Tbl_XCloneShakeStep:	; table read by Cam_ShakeStep; 51 of 52 bytes used at runtime; read by Cam_ShakeStep, BroodClaw_CamApplyShake; jt[2129] used by XClone_StateBallsReturn, sub_18323E
+Tbl_XCloneShakeStep:	; table read by Cam_ShakeStep; 51 of 52 bytes used at runtime; read by Cam_ShakeStep, BroodClaw_CamApplyShake; jt[2129] used by XClone_StateBallsReturn, Beast_ShockwaveInit
 	incrom	$182A94,$52
 	include "src/f/182AE6.asm"
 	include "src/f/182AF4.asm"
@@ -5338,11 +5338,11 @@ Tbl_XCloneShakeStep:	; table read by Cam_ShakeStep; 51 of 52 bytes used at runti
 	include "src/f/184158.asm"
 	include "src/f/1841E4.asm"
 	include "src/f/1841F4.asm"
-Art_PlayerSpr:	; sprite definition (type $18, raw 4bpp tiles): $24-byte header, $14-byte frame records, pieces, tiles; 150 of 150 bytes used at runtime; read by VDP_WriteWords, VDP_FlushDmaQueue, Spr_PreloadTiles; DMA to VRAM $9160-A560; jt[2147] used by Player_CalcMaxTiles, XClone_LoadResources, sub_183FFE
+Art_PlayerSpr:	; sprite definition (type $18, raw 4bpp tiles): $24-byte header, $14-byte frame records, pieces, tiles; 150 of 150 bytes used at runtime; read by VDP_WriteWords, VDP_FlushDmaQueue, Spr_PreloadTiles; DMA to VRAM $9160-A560; jt[2147] used by Player_CalcMaxTiles, XClone_LoadResources, Beast_Init
 	incrom	$1841FE,$150
-Art_BeastSpr:	; sprite definition (type $18, raw 4bpp tiles): $24-byte header, $14-byte frame records, pieces, tiles; 7860 of 9BDE bytes used at runtime; read by VDP_FlushDmaQueue; DMA to VRAM $66A0-A8E0; jt[2148] used by Beast_SelectSpriteDef, EvilBeast_Init, sub_183FFE
+Art_BeastSpr:	; sprite definition (type $18, raw 4bpp tiles): $24-byte header, $14-byte frame records, pieces, tiles; 7860 of 9BDE bytes used at runtime; read by VDP_FlushDmaQueue; DMA to VRAM $66A0-A8E0; jt[2148] used by Beast_SelectSpriteDef, EvilBeast_Init, Beast_Init
 	incrom	$18434E,$9BDE
-Art_PlayerSpr2:	; sprite definition (type $18, raw 4bpp tiles): $24-byte header, $14-byte frame records, pieces, tiles; 74E0 of 8476 bytes used at runtime; read by VDP_FlushDmaQueue; DMA to VRAM $85E0-A220; jt[2149] used by Player_CalcMaxTiles, sub_184158
+Art_PlayerSpr2:	; sprite definition (type $18, raw 4bpp tiles): $24-byte header, $14-byte frame records, pieces, tiles; 74E0 of 8476 bytes used at runtime; read by VDP_FlushDmaQueue; DMA to VRAM $85E0-A220; jt[2149] used by Player_CalcMaxTiles, Beast_SetFrame
 	incrom	$18DF2C,$8476
 Tbl_BeastAnim:	; animation script (byte flags, byte steps, ..., 2-byte steps from +6); 1D of 22 bytes used at runtime; read by Anim_ApplyStep, Anim_AdvanceByDistance; jt[2150] used by loc_0675D6
 	incrom	$1963A2,$22

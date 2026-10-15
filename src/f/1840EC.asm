@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_1840EC	[jt 2143]
+; Beast_Attack - BEAST slot +$22: XPLAYER Attack; a hit while diving ends the dive with an impact
+; In:  8(a6) = player, $C(a6) = target, $10..$1C(a6) = Attack args
+; Out: d0
+; Evidence: parent +$22; airborne with +$90 bit 1 -> Beast_DiveImpact
 ; ---------------------------------------------------------------------------
-sub_1840EC:
+Beast_Attack:
 	link.w	a6,#$0
 	move.l	a4,-(a7)
 	movea.l	$8(a6),a4
@@ -34,7 +37,7 @@ sub_1840EC:
 	and.l	$90(a4),d0
 	beq.s	loc_184150
 	move.l	a4,-(a7)
-	jsr	sub_182F0C(pc)
+	jsr	Beast_DiveImpact(pc)
 	addq.w	#$4,a7
 loc_184150:
 	movea.l	-$4(a6),a4

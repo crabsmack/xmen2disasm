@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_1835C2	[link-after-rts]
+; Beast_StateStompEnd - stomp recovery: launch the shockwaves when Beast is above 7 health, then recover
+; In:  8(a6) = player
+; Out: none
+; Evidence: health > $700 -> +$90 |= $80000 | $100000; clears the A latch, recovery animation, next state XPlayer_AttackRecover
 ; ---------------------------------------------------------------------------
-sub_1835C2:
+Beast_StateStompEnd:
 	link.w	a6,#$0
 	move.l	a4,-(a7)
 	movea.l	$8(a6),a4

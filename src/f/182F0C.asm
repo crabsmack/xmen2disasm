@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_182F0C	[link-after-rts]
+; Beast_DiveImpact - end of Beast's dive: hit the ground, bounce up and shake the screen
+; In:  8(a6) = player
+; Out: none
+; Evidence: Obj_Detach, +$90 |= 8, vy -$700, gravity/max fall from char, anim (jt $445A data), delay $FF, sound $9A, g_CamShake = script (jt $44A2 data); from Beast_StateDive/StateDiveHold on landing and Beast_Attack when diving
 ; ---------------------------------------------------------------------------
-sub_182F0C:
+Beast_DiveImpact:
 	link.w	a6,#$0
 	move.l	a4,-(a7)
 	movea.l	$8(a6),a4

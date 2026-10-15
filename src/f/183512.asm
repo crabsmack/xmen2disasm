@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_183512	[jt 2138]
+; Beast_UpdateShockwaves - BEAST slot +$72: per frame, advance the live left/right shockwaves
+; In:  8(a6) = player
+; Out: d0
+; Evidence: parent +$72; +$90 bit $80000 -> Beast_ShockwaveStep(+$D6, +$DA, +$C2, left), bit $100000 -> (+$D8, right); clears the bit when a wave ends
 ; ---------------------------------------------------------------------------
-sub_183512:
+Beast_UpdateShockwaves:
 	link.w	a6,#$0
 	move.l	a4,-(a7)
 	movea.l	$8(a6),a4
@@ -31,7 +34,7 @@ loc_183550:
 	pea.l	$C2(a4)
 	pea.l	$DA(a4)
 	pea.l	$D6(a4)
-	jsr	sub_183320(pc)
+	jsr	Beast_ShockwaveStep(pc)
 	tst.b	d0
 	lea.l	$18(a7),a7
 	beq.s	loc_183576
@@ -56,7 +59,7 @@ loc_183594:
 	pea.l	$C2(a4)
 	pea.l	$DA(a4)
 	pea.l	$D8(a4)
-	jsr	sub_183320(pc)
+	jsr	Beast_ShockwaveStep(pc)
 	tst.b	d0
 	lea.l	$18(a7),a7
 	beq.s	loc_1835BA

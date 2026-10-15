@@ -2,7 +2,7 @@
 ; EvilBeast_ActThrow - EVILBEAST script action: throw (set up the two thrown objects, stop, throw animation)
 ; In:  8(a6) = this
 ; Out: d0
-; Evidence: sub_18323E(x, +$BA, +$BC, resource record, 0) (Beast code), animation $1829E6, +$6C = $FF; next EvilBeast_StateThrow; jt 767
+; Evidence: Beast_ShockwaveInit(x, +$BA, +$BC, resource record, 0) (Beast code), animation $1829E6, +$6C = $FF; next EvilBeast_StateThrow; jt 767
 ; Found: jt 767
 ; ---------------------------------------------------------------------------
 EvilBeast_ActThrow:
@@ -27,7 +27,7 @@ EvilBeast_ActThrow:
 	pea.l	$BA(a4)
 	ext.l	d7
 	move.l	d7,-(a7)
-	jsr	$42E2(a5)	; -> sub_18323E
+	jsr	$42E2(a5)	; -> Beast_ShockwaveInit
 	clr.w	$1E(a4)
 	clr.l	$16(a4)
 	clr.w	$20(a4)

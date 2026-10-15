@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_1836C0	[jt 2139]
+; Beast_GroundSpecial - BEAST slot +$DE: ground special: stomp (start)
+; In:  8(a6) = player
+; Out: d0 = +4 flag 8
+; Evidence: attack sound char +$2C, stop, stomp animation (jt $4472 data), delay $FF, next Beast_StateStomp
 ; ---------------------------------------------------------------------------
-sub_1836C0:
+Beast_GroundSpecial:
 	link.w	a6,#$0
 	move.l	a4,-(a7)
 	movea.l	$8(a6),a4
@@ -24,7 +27,7 @@ sub_1836C0:
 	jsr	$4E42(a5)	; -> Obj_SetAnim
 	lea.l	$10(a7),a7
 	move.w	#$FF,$6C(a4)
-	lea.l	sub_183630(pc),a0
+	lea.l	Beast_StateStomp(pc),a0
 	move.l	a0,$5C(a4)
 	moveq	#$8,d0
 	and.w	$4(a4),d0

@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_1831D0	[jt 2135]
+; Beast_AirSpecial - BEAST slot +$C6: mid-air special (once per jump): play its animation as an air attack
+; In:  8(a6) = player
+; Out: d0
+; Evidence: +$90 bit 4 clear: gravity char +$E, +$90 |= 4, animation (jt $29B2 thunk data), sound $BD, state XPlayer_StateAirAttack
 ; ---------------------------------------------------------------------------
-sub_1831D0:
+Beast_AirSpecial:
 	link.w	a6,#$0
 	move.l	a4,-(a7)
 	movea.l	$8(a6),a4

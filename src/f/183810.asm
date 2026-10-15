@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_183810	[link-after-rts]
+; Beast_RollLand - roll landed: stop, upright frame, back to control
+; In:  8(a6) = player
+; Out: none
+; Evidence: velocities 0, Beast_SetFrameKeepCenterX(6), clears C latch, state +$A6
 ; ---------------------------------------------------------------------------
-sub_183810:
+Beast_RollLand:
 	link.w	a6,#$0
 	move.l	a4,-(a7)
 	movea.l	$8(a6),a4
@@ -11,7 +14,7 @@ sub_183810:
 	moveq	#$6,d0
 	move.l	d0,-(a7)
 	move.l	a4,-(a7)
-	jsr	sub_1837B0(pc)
+	jsr	Beast_SetFrameKeepCenterX(pc)
 	tst.b	$9D(a4)
 	addq.w	#$8,a7
 	bne.s	loc_183848

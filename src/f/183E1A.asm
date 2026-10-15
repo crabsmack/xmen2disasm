@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_183E1A	[jt 2140]
+; Beast_Crouch - BEAST slot +$B2: crouch, facing the held direction
+; In:  8(a6) = player
+; Out: d0 = +4 flag 8
+; Evidence: stop, Obj_ChangeAnim(char +$46), +$A6 = 60 look-down delay, state Beast_StateCrouch
 ; ---------------------------------------------------------------------------
-sub_183E1A:
+Beast_Crouch:
 	link.w	a6,#$0
 	movem.l	d3/a4,-(a7)
 	movea.l	$8(a6),a4
@@ -46,7 +49,7 @@ loc_183E88:
 loc_183E90:
 	move.w	#$3C,$A6(a4)
 	clr.w	$6C(a4)
-	lea.l	sub_183BAE(pc),a0
+	lea.l	Beast_StateCrouch(pc),a0
 	move.l	a0,$5C(a4)
 	moveq	#$8,d0
 	and.w	$4(a4),d0

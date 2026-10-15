@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_182FFA	[link-after-rts]
+; Beast_StateDive - diving after B was released: on landing impact, else when the dive time ends resume normal falling
+; In:  8(a6) = player
+; Out: d0
+; Evidence: grounded -> Beast_DiveImpact; +$6E < 1 -> normal gravity/max speed, +$90 |= 2, y -= $F px, control
 ; ---------------------------------------------------------------------------
-sub_182FFA:
+Beast_StateDive:
 	link.w	a6,#$0
 	move.l	a4,-(a7)
 	movea.l	$8(a6),a4
@@ -9,7 +12,7 @@ sub_182FFA:
 	and.w	$4(a4),d0
 	bne.s	loc_18301A
 	move.l	a4,-(a7)
-	jsr	sub_182F0C(pc)
+	jsr	Beast_DiveImpact(pc)
 	addq.w	#$4,a7
 	bra.w	loc_1830B6
 loc_18301A:
@@ -53,7 +56,7 @@ loc_183090:
 	bra.s	loc_1830B6
 loc_1830A4:
 	clr.w	$6C(a4)
-	lea.l	sub_182FFA(pc),a0
+	lea.l	Beast_StateDive(pc),a0
 	move.l	a0,$5C(a4)
 	moveq	#$8,d0
 	and.w	$4(a4),d0

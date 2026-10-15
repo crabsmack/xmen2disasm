@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_183EB2	[link-after-rts]
+; Beast_StateUpAttack - during Beast's up attack: a partner standing 100 px above gets boosted (type 12 damage = bounce)
+; In:  8(a6) = player
+; Out: none
+; Evidence: anim done or +$6E < 1 -> XPlayer_AttackRecover; partner present+alive whose box holds (x, y-100) -> partner vtable +$26(partner, this, 12, 0, x, y)
 ; ---------------------------------------------------------------------------
-sub_183EB2:
+Beast_StateUpAttack:
 	link.w	a6,#$0
 	movem.l	d3/d6-d7/a3-a4,-(a7)
 	movea.l	$8(a6),a4

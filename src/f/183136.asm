@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_183136	[jt 2134]
+; Beast_AirAttackDown - BEAST slot +$BE: Down+B in the air: dive straight down (once per jump)
+; In:  8(a6) = player
+; Out: d0 = +4 flag 8
+; Evidence: +$90 bit 2 clear: sound $96, vx 0, gravity $B4, max fall $860, +$6E = 6, +$90 |= 3, y += $F px, dive animation, state Beast_StateDiveHold
 ; ---------------------------------------------------------------------------
-sub_183136:
+Beast_AirAttackDown:
 	link.w	a6,#$0
 	move.l	a4,-(a7)
 	movea.l	$8(a6),a4
@@ -34,7 +37,7 @@ loc_18315C:
 	jsr	$4E42(a5)	; -> Obj_SetAnim
 	lea.l	$10(a7),a7
 	clr.w	$6C(a4)
-	lea.l	sub_1830BE(pc),a0
+	lea.l	Beast_StateDiveHold(pc),a0
 	move.l	a0,$5C(a4)
 	moveq	#$8,d0
 	and.w	$4(a4),d0
