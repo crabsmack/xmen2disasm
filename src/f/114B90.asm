@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_114B90	[link-after-rts]
+; BioNpc_StunShake - BIONPC stun step: jitter 4 px, count down the stun timer (+$94 low 14 bits), flicker the flip bits
+; In:  8(a6) = this  $E(a6) = word step
+; Out: none
+; Evidence: caller BioNpc_UpdateStunned
 ; ---------------------------------------------------------------------------
-sub_114B90:
+BioNpc_StunShake:
 	link.w	a6,#$0
 	movem.l	d6-d7/a4,-(a7)
 	movea.l	$8(a6),a4

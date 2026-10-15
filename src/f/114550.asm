@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_114550	[link-after-rts]
+; XNpc_StateKnockSlide - XNPC knockback slide: move with deceleration; stop at walls, when the speed reverses or the counter ends, then EndHurt
+; In:  8(a6) = this
+; Out: d0
+; Evidence: wall probe sub_15CECC at the box edge; vtable +$76; TAS 706-53680
 ; ---------------------------------------------------------------------------
-sub_114550:
+XNpc_StateKnockSlide:
 	link.w	a6,#$0
 	movem.l	d3/a4,-(a7)
 	movea.l	$8(a6),a4
@@ -134,7 +137,7 @@ loc_11468E:
 	bra.s	loc_1146BC
 loc_11469C:
 	clr.w	$6C(a4)
-	lea.l	sub_114550(pc),a0
+	lea.l	XNpc_StateKnockSlide(pc),a0
 	move.l	a0,$5C(a4)
 	moveq	#$8,d0
 	and.w	$4(a4),d0

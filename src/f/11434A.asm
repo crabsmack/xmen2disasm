@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_11434A	[link-after-rts]
+; XNpc_ShakeStep - jitter the NPC 1 px left/right by the low bits of the shake counter +$90
+; In:  8(a6) = this
+; Out: none
+; Evidence: x += $100 when (+$90 & 3) == 2, -= $100 when 0; used by the stun/knockback states
 ; ---------------------------------------------------------------------------
-sub_11434A:
+XNpc_ShakeStep:
 	link.w	a6,#$0
 	movem.l	d7/a4,-(a7)
 	movea.l	$8(a6),a4

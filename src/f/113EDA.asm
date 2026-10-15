@@ -15,6 +15,6 @@ XNpc_OnHurt:
 	ext.l	d0
 	move.l	d0,-(a7)
 	move.l	$8(a6),-(a7)
-	jsr	sub_113F5C(pc)
+	jsr	XNpc_HurtReact(pc)
 	unlk	a6
 	rts

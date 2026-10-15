@@ -80,7 +80,7 @@ loc_114D86:
 	lea.l	$18(a7),a7
 	bra.w	loc_114E66
 loc_114DD2:
-	lea.l	sub_114C4C(pc),a0
+	lea.l	BioNpc_UpdateStunned(pc),a0
 	movea.l	$7C(a4),a1
 	move.l	a0,$C(a1)
 	tst.w	$88(a4)
@@ -93,7 +93,7 @@ loc_114DD2:
 	add.l	d1,d0
 	lea.l	g_DrawNodes(a5),a0
 	lea.l	(a0,d0.w),a3
-	lea.l	sub_114B2E(pc),a0
+	lea.l	BioNpc_DrawStunned(pc),a0
 	move.l	a0,$8(a3)
 loc_114E02:
 	ext.w	d6

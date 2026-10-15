@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_11494A	[link-after-rts]
+; XNpc_StateDeathFling - XNPC death fling with the landing line at the current y
+; In:  8(a6) = this
+; Out: none
+; Evidence: next XNpc_StateDeathFlying; TAS 915-57140
 ; ---------------------------------------------------------------------------
-sub_11494A:
+XNpc_StateDeathFling:
 	link.w	a6,#$0
 	move.l	a4,-(a7)
 	movea.l	$8(a6),a4
@@ -9,11 +12,11 @@ sub_11494A:
 	asr.l	#$8,d0
 	move.w	d0,$12(a4)
 	move.l	a4,-(a7)
-	jsr	sub_1148B2(pc)
-	lea.l	sub_11497C(pc),a0
+	jsr	XNpc_StartDeathFling(pc)
+	lea.l	XNpc_StateDeathFlying(pc),a0
 	move.l	a0,$5C(a4)
 	move.l	a4,-(a7)
-	jsr	sub_11497C(pc)
+	jsr	XNpc_StateDeathFlying(pc)
 	addq.w	#$8,a7
 	movea.l	-$4(a6),a4
 	unlk	a6

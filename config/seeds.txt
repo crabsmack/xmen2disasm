@@ -383,11 +383,11 @@
 111A9A	; loc_111A9A - runtime: executed in tas
 111B50	; Deathbird_SetMoveMode_Case10 - runtime: executed in tas
 1121C6	; Deathbird_Move_Wobble - runtime: executed in tas
-113DA0	; loc_113DA0 - runtime: executed in tas
-113FFC	; loc_113FFC - runtime: executed in tas
+113DA0	; XNpc_TakeDamage_Hurt - runtime: executed in tas
+113FFC	; XNpc_HurtReact_Stun - runtime: executed in tas
 114008	; loc_114008 - runtime: executed in tas
 114088	; loc_114088 - runtime: executed in tas
-1141C6	; loc_1141C6 - runtime: executed in tas
+1141C6	; XNpc_DeathReact_Explode - runtime: executed in tas
 1141D2	; loc_1141D2 - runtime: executed in tas
 114256	; loc_114256 - runtime: executed in tas
 118AB4	; loc_118AB4 - runtime: executed in tas
@@ -810,7 +810,7 @@
 111476	; loc_111476 - static: switch-table case target (tools/switches.py: table after `move.w T(pc,dN.w),dN / jmp T-2(pc,dN.w)`, size from the cmpi bound)
 11149C	; loc_11149C - static: switch-table case target (tools/switches.py: table after `move.w T(pc,dN.w),dN / jmp T-2(pc,dN.w)`, size from the cmpi bound)
 1114CA	; loc_1114CA - static: switch-table case target (tools/switches.py: table after `move.w T(pc,dN.w),dN / jmp T-2(pc,dN.w)`, size from the cmpi bound)
-113D60	; loc_113D60 - static: switch-table case target (tools/switches.py: table after `move.w T(pc,dN.w),dN / jmp T-2(pc,dN.w)`, size from the cmpi bound)
+113D60	; XNpc_TakeDamage_Type4 - static: switch-table case target (tools/switches.py: table after `move.w T(pc,dN.w),dN / jmp T-2(pc,dN.w)`, size from the cmpi bound)
 118A74	; loc_118A74 - static: switch-table case target (tools/switches.py: table after `move.w T(pc,dN.w),dN / jmp T-2(pc,dN.w)`, size from the cmpi bound)
 118A7C	; loc_118A7C - static: switch-table case target (tools/switches.py: table after `move.w T(pc,dN.w),dN / jmp T-2(pc,dN.w)`, size from the cmpi bound)
 11C6BC	; loc_11C6BC - static: switch-table case target (tools/switches.py: table after `move.w T(pc,dN.w),dN / jmp T-2(pc,dN.w)`, size from the cmpi bound)

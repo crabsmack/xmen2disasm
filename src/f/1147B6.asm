@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_1147B6	[link-after-rts]
+; XNpc_StateKnockBSlide - XNPC knockback B: slide until the target x is passed, then a 20-frame drift
+; In:  8(a6) = this
+; Out: d0
+; Evidence: +$6E = 20; next KnockBExpire
 ; ---------------------------------------------------------------------------
-sub_1147B6:
+XNpc_StateKnockBSlide:
 	link.w	a6,#$0
 	move.l	a4,-(a7)
 	movea.l	$8(a6),a4
@@ -14,10 +17,10 @@ sub_1147B6:
 	cmp.l	d0,d1
 	bge.s	loc_1147EE
 	move.w	#$14,$6E(a4)
-	lea.l	sub_114860(pc),a0
+	lea.l	XNpc_StateKnockBExpire(pc),a0
 	move.l	a0,$5C(a4)
 	move.l	a4,-(a7)
-	jsr	sub_114860(pc)
+	jsr	XNpc_StateKnockBExpire(pc)
 	addq.w	#$4,a7
 	bra.s	loc_114858
 loc_1147EE:
@@ -30,10 +33,10 @@ loc_1147EE:
 	cmp.l	d0,d1
 	ble.s	loc_11481C
 	move.w	#$14,$6E(a4)
-	lea.l	sub_114860(pc),a0
+	lea.l	XNpc_StateKnockBExpire(pc),a0
 	move.l	a0,$5C(a4)
 	move.l	a4,-(a7)
-	jsr	sub_114860(pc)
+	jsr	XNpc_StateKnockBExpire(pc)
 	addq.w	#$4,a7
 	bra.s	loc_114858
 loc_11481C:
@@ -51,7 +54,7 @@ loc_11481C:
 	add.w	d0,$1A(a4)
 loc_114846:
 	clr.w	$6C(a4)
-	lea.l	sub_1147B6(pc),a0
+	lea.l	XNpc_StateKnockBSlide(pc),a0
 	move.l	a0,$5C(a4)
 	moveq	#$8,d0
 	and.w	$4(a4),d0

@@ -1,16 +1,19 @@
 ; ---------------------------------------------------------------------------
-; loc_1141C6	[runtime: executed in tas]
+; XNpc_DeathReact_Explode - XNpc_DeathReact cases 11/12: go to XNpc_StateExplode
+; In:  inside XNpc_DeathReact
+; Out: -
+; Evidence: switch target
 ; ---------------------------------------------------------------------------
-loc_1141C6:
-	lea.l	sub_11432E(pc),a0
+XNpc_DeathReact_Explode:
+	lea.l	XNpc_StateExplode(pc),a0
 	move.l	a0,$5C(a4)
-	bra.w	loc_1142D2
+	bra.w	XNpc_DeathReact_Done
 loc_1141D2:
 	ext.w	d5
 	ext.l	d5
 	move.l	d5,-(a7)
 	move.l	a4,-(a7)
-	jsr	sub_113E80(pc)
+	jsr	XNpc_KnockbackDist(pc)
 	ext.l	d0
 	move.l	d0,d6
 	lsl.l	#$1,d6
@@ -34,7 +37,7 @@ loc_1141D2:
 	cmp.w	d7,d4
 	blt.s	loc_114228
 loc_114214:
-	lea.l	sub_11494A(pc),a0
+	lea.l	XNpc_StateDeathFling(pc),a0
 	move.l	a0,$5C(a4)
 	ext.l	d6
 	move.l	d6,d0
@@ -49,21 +52,21 @@ loc_114228:
 	move.b	d1,$91(a4)
 	tst.b	-$1(a6)
 	bne.s	loc_114246
-	lea.l	sub_11494A(pc),a0
+	lea.l	XNpc_StateDeathFling(pc),a0
 	move.l	a0,$5C(a4)
 	bra.s	loc_11424E
 loc_114246:
-	lea.l	sub_114914(pc),a0
+	lea.l	XNpc_StateDeathFlingHigh(pc),a0
 	move.l	a0,$5C(a4)
 loc_11424E:
 	andi.b	#$EF,$2E(a4)
-	bra.s	loc_1142D2
+	bra.s	XNpc_DeathReact_Done
 loc_114256:
 	ext.w	d5
 	ext.l	d5
 	move.l	d5,-(a7)
 	move.l	a4,-(a7)
-	jsr	sub_113E80(pc)
+	jsr	XNpc_KnockbackDist(pc)
 	ext.l	d0
 	move.l	d0,d6
 	lsl.l	#$1,d6
@@ -87,7 +90,7 @@ loc_114256:
 	cmp.w	d7,d5
 	bgt.s	loc_1142A6
 loc_114298:
-	lea.l	sub_11494A(pc),a0
+	lea.l	XNpc_StateDeathFling(pc),a0
 	move.l	a0,$5C(a4)
 	move.b	d6,$91(a4)
 	bra.s	loc_1142CC
@@ -99,11 +102,11 @@ loc_1142A6:
 	move.b	d1,$91(a4)
 	tst.b	-$1(a6)
 	bne.s	loc_1142C4
-	lea.l	sub_11494A(pc),a0
+	lea.l	XNpc_StateDeathFling(pc),a0
 	move.l	a0,$5C(a4)
 	bra.s	loc_1142CC
 loc_1142C4:
-	lea.l	sub_114914(pc),a0
+	lea.l	XNpc_StateDeathFlingHigh(pc),a0
 	move.l	a0,$5C(a4)
 loc_1142CC:
 	ori.b	#$10,$2E(a4)

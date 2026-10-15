@@ -15,6 +15,6 @@ XNpc_OnDeath:
 	ext.l	d0
 	move.l	d0,-(a7)
 	move.l	$8(a6),-(a7)
-	jsr	sub_11410E(pc)
+	jsr	XNpc_DeathReact(pc)
 	unlk	a6
 	rts

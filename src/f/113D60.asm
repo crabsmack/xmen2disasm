@@ -1,6 +1,9 @@
 ; ---------------------------------------------------------------------------
-; loc_113D60	[static: switch-table case target (tools/switches.py: table after `move.w T(pc,dN.w),dN / jmp T-2(pc,dN.w)`, size from the cmpi bound)]
+; XNpc_TakeDamage_Type4 - XNpc_TakeDamage case hit type 4: treat as type 12, then the hurt path
+; In:  inside XNpc_TakeDamage (a4 = this, d7 = type, d6 = damage)
+; Out: -
+; Evidence: first target of Sw_113D20
 ; ---------------------------------------------------------------------------
-loc_113D60:
+XNpc_TakeDamage_Type4:
 	moveq	#$C,d7
-	bra.s	loc_113DA0
+	bra.s	XNpc_TakeDamage_Hurt

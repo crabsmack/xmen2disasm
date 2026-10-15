@@ -12,9 +12,9 @@ XNpc_TakeDamage:
 	movea.l	$8(a6),a4
 	move.b	d7,d0
 	subq.b	#$4,d0
-	bmi.s	loc_113D64
+	bmi.s	XNpc_TakeDamage_Default
 	cmpi.b	#$8,d0
-	bgt.s	loc_113D64
+	bgt.s	XNpc_TakeDamage_Default
 	moveq	#$0,d1
 	move.b	d0,d1
 	add.w	d1,d1

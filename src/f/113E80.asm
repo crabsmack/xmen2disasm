@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_113E80	[link-after-rts]
+; XNpc_KnockbackDist - knockback distance for a hit strength 1/2/4/8 from the NPC stats record bytes 3-6
+; In:  8(a6) = this  $F(a6) = byte strength
+; Out: d0 = distance (0 for other values)
+; Evidence: stats pointer +$8C; used by XNpc_HurtReact and XNpc_DeathReact
 ; ---------------------------------------------------------------------------
-sub_113E80:
+XNpc_KnockbackDist:
 	link.w	a6,#$0
 	move.l	a4,-(a7)
 	movea.l	$8(a6),a4

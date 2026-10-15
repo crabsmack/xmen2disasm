@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_114B2E	[link-after-rts]
+; BioNpc_DrawStunned - BIONPC draw callback while shocked/frozen: overlay effect, draw the body while alive or early in the stun
+; In:  8(a6) = this
+; Out: none
+; Evidence: installed in the draw list ($FFEEBC + idx*$14) by BioNpc_TakeDamage for hit types $D-$F; sub_15AE48 effect jt $416A; vtable +$1A Draw
 ; ---------------------------------------------------------------------------
-sub_114B2E:
+BioNpc_DrawStunned:
 	link.w	a6,#$0
 	movem.l	d7/a4,-(a7)
 	movea.l	$8(a6),a4

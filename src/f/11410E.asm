@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_11410E	[link-after-rts]
+; XNpc_DeathReact - XNPC OnDeath body: hit types $D-$F just Kill; left/right hits fling the body (twice the knockback), types 11/12 explode
+; In:  8(a6) = this  $F(a6) = byte strength  $13(a6) = byte hit type
+; Out: none
+; Evidence: called by XNpc_OnDeath; next XNpc_StateDeathFling / DeathFlingHigh / StateExplode
 ; ---------------------------------------------------------------------------
-sub_11410E:
+XNpc_DeathReact:
 	link.w	a6,#$FFFE
 	movem.l	d3-d7/a4,-(a7)
 	move.b	$F(a6),d5
@@ -62,9 +65,9 @@ loc_114192:
 	move.b	d7,d0
 	subi.b	#$9,d0
 	addq.w	#$8,a7
-	bmi.w	loc_1142D2
+	bmi.w	XNpc_DeathReact_Done
 	cmpi.b	#$3,d0
-	bgt.w	loc_1142D2
+	bgt.w	XNpc_DeathReact_Done
 	moveq	#$0,d1
 	move.b	d0,d1
 	add.w	d1,d1

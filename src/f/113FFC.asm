@@ -1,16 +1,19 @@
 ; ---------------------------------------------------------------------------
-; loc_113FFC	[runtime: executed in tas]
+; XNpc_HurtReact_Stun - XNpc_HurtReact cases 11/12: go to XNpc_StateStunStart
+; In:  inside XNpc_HurtReact
+; Out: -
+; Evidence: Sw_113F5C targets
 ; ---------------------------------------------------------------------------
-loc_113FFC:
-	lea.l	sub_1143BC(pc),a0
+XNpc_HurtReact_Stun:
+	lea.l	XNpc_StateStunStart(pc),a0
 	move.l	a0,$5C(a4)
-	bra.w	loc_114100
+	bra.w	XNpc_HurtReact_Done
 loc_114008:
 	ext.w	d5
 	ext.l	d5
 	move.l	d5,-(a7)
 	move.l	a4,-(a7)
-	jsr	sub_113E80(pc)
+	jsr	XNpc_KnockbackDist(pc)
 	move.w	d0,d7
 	move.l	$8(a4),d0
 	asr.l	#$8,d0
@@ -32,7 +35,7 @@ loc_114008:
 	cmp.w	d6,d4
 	blt.s	loc_11405A
 loc_114046:
-	lea.l	sub_11446C(pc),a0
+	lea.l	XNpc_StateKnockStart(pc),a0
 	move.l	a0,$5C(a4)
 	ext.l	d7
 	move.l	d7,d0
@@ -47,21 +50,21 @@ loc_11405A:
 	move.b	d1,$91(a4)
 	tst.b	-$1(a6)
 	bne.s	loc_114078
-	lea.l	sub_11446C(pc),a0
+	lea.l	XNpc_StateKnockStart(pc),a0
 	move.l	a0,$5C(a4)
 	bra.s	loc_114080
 loc_114078:
-	lea.l	sub_1146C6(pc),a0
+	lea.l	XNpc_StateKnockBStart(pc),a0
 	move.l	a0,$5C(a4)
 loc_114080:
 	andi.b	#$EF,$2E(a4)
-	bra.s	loc_114100
+	bra.s	XNpc_HurtReact_Done
 loc_114088:
 	ext.w	d5
 	ext.l	d5
 	move.l	d5,-(a7)
 	move.l	a4,-(a7)
-	jsr	sub_113E80(pc)
+	jsr	XNpc_KnockbackDist(pc)
 	move.w	d0,d6
 	move.l	$8(a4),d0
 	asr.l	#$8,d0
@@ -83,7 +86,7 @@ loc_114088:
 	cmp.w	d7,d5
 	bgt.s	loc_1140D4
 loc_1140C6:
-	lea.l	sub_11446C(pc),a0
+	lea.l	XNpc_StateKnockStart(pc),a0
 	move.l	a0,$5C(a4)
 	move.b	d6,$91(a4)
 	bra.s	loc_1140FA
@@ -95,11 +98,11 @@ loc_1140D4:
 	move.b	d1,$91(a4)
 	tst.b	-$1(a6)
 	bne.s	loc_1140F2
-	lea.l	sub_11446C(pc),a0
+	lea.l	XNpc_StateKnockStart(pc),a0
 	move.l	a0,$5C(a4)
 	bra.s	loc_1140FA
 loc_1140F2:
-	lea.l	sub_1146C6(pc),a0
+	lea.l	XNpc_StateKnockBStart(pc),a0
 	move.l	a0,$5C(a4)
 loc_1140FA:
 	ori.b	#$10,$2E(a4)

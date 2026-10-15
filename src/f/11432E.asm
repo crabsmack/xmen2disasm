@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_11432E	[link-after-rts]
+; XNpc_StateExplode - XNPC state: call Explode (+$7E)
+; In:  8(a6) = this
+; Out: none
+; Evidence: TAS 318-54508
 ; ---------------------------------------------------------------------------
-sub_11432E:
+XNpc_StateExplode:
 	link.w	a6,#$0
 	move.l	a4,-(a7)
 	movea.l	$8(a6),a4

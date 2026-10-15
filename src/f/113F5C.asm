@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_113F5C	[link-after-rts]
+; XNpc_HurtReact - XNPC OnHurt body: save the state, hurt sound; hits from the left/right (types 9/10) knock back up to a wall, types 11/12 stun
+; In:  8(a6) = this  $F(a6) = byte strength  $13(a6) = byte hit type
+; Out: none
+; Evidence: called by XNpc_OnHurt; wall probe via vtable +$7A (Query7A); next states XNpc_StateKnockStart / KnockBStart / StunStart; switch Sw_113F5C
 ; ---------------------------------------------------------------------------
-sub_113F5C:
+XNpc_HurtReact:
 	link.w	a6,#$FFFE
 	movem.l	d3-d7/a4,-(a7)
 	move.b	$F(a6),d5
@@ -51,9 +54,9 @@ loc_113FC6:
 	move.b	$13(a6),d0
 	subi.b	#$9,d0
 	addq.w	#$8,a7
-	bmi.w	loc_114100
+	bmi.w	XNpc_HurtReact_Done
 	cmpi.b	#$3,d0
-	bgt.w	loc_114100
+	bgt.w	XNpc_HurtReact_Done
 	moveq	#$0,d1
 	move.b	d0,d1
 	add.w	d1,d1

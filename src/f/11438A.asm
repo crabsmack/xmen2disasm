@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_11438A	[link-after-rts]
+; XNpc_CalcKnockback - knockback speed for a distance: v = dist*256/4, deceleration = -v/8
+; In:  $A(a6) = word distance  $C(a6) = word* speed out  $10(a6) = word* decel out
+; Out: none
+; Evidence: callers XNpc_StateKnockShake, XNpc_StateKnockBShake
 ; ---------------------------------------------------------------------------
-sub_11438A:
+XNpc_CalcKnockback:
 	link.w	a6,#$0
 	movem.l	d7/a4,-(a7)
 	movea.l	$10(a6),a4

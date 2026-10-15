@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_1143EC	[link-after-rts]
+; XNpc_StateStun - XNPC stunned: shake until the counter +$90 runs out, then EndHurt
+; In:  8(a6) = this
+; Out: d0
+; Evidence: XNpc_ShakeStep; vtable +$76
 ; ---------------------------------------------------------------------------
-sub_1143EC:
+XNpc_StateStun:
 	link.w	a6,#$0
 	movem.l	d3/a4,-(a7)
 	movea.l	$8(a6),a4
@@ -10,7 +13,7 @@ sub_1143EC:
 	tst.l	d0
 	bls.s	loc_114456
 	move.l	a4,-(a7)
-	jsr	sub_11434A(pc)
+	jsr	XNpc_ShakeStep(pc)
 	moveq	#$0,d0
 	move.b	$90(a4),d0
 	cmpi.b	#$1,d0
@@ -39,7 +42,7 @@ loc_11443C:
 	sub.b	d0,$90(a4)
 	addq.w	#$4,a7
 	clr.w	$6C(a4)
-	lea.l	sub_1143EC(pc),a0
+	lea.l	XNpc_StateStun(pc),a0
 	move.l	a0,$5C(a4)
 	moveq	#$8,d0
 	and.w	$4(a4),d0

@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; loc_113DA0	[runtime: executed in tas]
+; XNpc_TakeDamage_Hurt - XNpc_TakeDamage hit types 9-12: health -= damage, hurt frame, hurt sound; dead -> OnDeath, else 30-frame cooldown and OnHurt
+; In:  inside XNpc_TakeDamage
+; Out: -
+; Evidence: Sw_113D20 targets; stats +$8C bytes 1 (sound, default 99) and 7 (frame); vtable +$72 / +$6E
 ; ---------------------------------------------------------------------------
-loc_113DA0:
+XNpc_TakeDamage_Hurt:
 	ext.w	d6
 	sub.w	d6,$68(a4)
 	ori.w	#$4,$4(a4)
@@ -73,7 +76,7 @@ loc_113E22:
 	movea.l	$72(a0),a1
 	jsr	(a1)
 	lea.l	$C(a7),a7
-	bra.s	loc_113E76
+	bra.s	XNpc_TakeDamage_Done
 loc_113E56:
 	move.w	#$1E,$6A(a4)
 	ext.w	d7

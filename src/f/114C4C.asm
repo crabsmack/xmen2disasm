@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_114C4C	[link-after-rts]
+; BioNpc_UpdateStunned - BIONPC update timer while stunned: shake; when the stun ends restore Update and the draw callback, or OnDeath(1, $D) if dead
+; In:  8(a6) = this
+; Out: none
+; Evidence: installed into the object's timer (+$7C)+$C by BioNpc_TakeDamage; vtable +$72
 ; ---------------------------------------------------------------------------
-sub_114C4C:
+BioNpc_UpdateStunned:
 	link.w	a6,#$0
 	movem.l	a3-a4,-(a7)
 	movea.l	$8(a6),a4
@@ -19,7 +22,7 @@ sub_114C4C:
 	ext.l	d0
 	move.l	d0,-(a7)
 	move.l	a4,-(a7)
-	jsr	sub_114B90(pc)
+	jsr	BioNpc_StunShake(pc)
 	moveq	#$0,d0
 	move.w	$94(a4),d0
 	move.w	#$3FFF,d1

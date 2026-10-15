@@ -2821,9 +2821,9 @@ Tbl_BioNpc_vtable:	; class descriptor "BIONPC": word $82 = name offset, long par
 	include "src/f/113D0E.asm"
 	include "src/f/113D20.asm"
 Sw_113D20:	; switch table of sub at $113D20: 9 word offsets from Sw_113D20-2
-	dc.w	loc_113D60-(Sw_113D20-2), loc_113D64-(Sw_113D20-2), loc_113D64-(Sw_113D20-2), loc_113D64-(Sw_113D20-2)
-	dc.w	loc_113D64-(Sw_113D20-2), loc_113DA0-(Sw_113D20-2), loc_113DA0-(Sw_113D20-2), loc_113DA0-(Sw_113D20-2)
-	dc.w	loc_113DA0-(Sw_113D20-2)
+	dc.w	XNpc_TakeDamage_Type4-(Sw_113D20-2), XNpc_TakeDamage_Default-(Sw_113D20-2), XNpc_TakeDamage_Default-(Sw_113D20-2), XNpc_TakeDamage_Default-(Sw_113D20-2)
+	dc.w	XNpc_TakeDamage_Default-(Sw_113D20-2), XNpc_TakeDamage_Hurt-(Sw_113D20-2), XNpc_TakeDamage_Hurt-(Sw_113D20-2), XNpc_TakeDamage_Hurt-(Sw_113D20-2)
+	dc.w	XNpc_TakeDamage_Hurt-(Sw_113D20-2)
 	include "src/f/113D60.asm"
 	include "src/f/113D64.asm"
 	include "src/f/113DA0.asm"
@@ -2834,12 +2834,12 @@ Sw_113D20:	; switch table of sub at $113D20: 9 word offsets from Sw_113D20-2
 	include "src/f/113F38.asm"
 	include "src/f/113F5C.asm"
 Sw_113F5C:	; switch table of sub at $113F5C: 4 word offsets from Sw_113F5C-2
-	dc.w	loc_114008-(Sw_113F5C-2), loc_114088-(Sw_113F5C-2), loc_113FFC-(Sw_113F5C-2), loc_113FFC-(Sw_113F5C-2)
+	dc.w	loc_114008-(Sw_113F5C-2), loc_114088-(Sw_113F5C-2), XNpc_HurtReact_Stun-(Sw_113F5C-2), XNpc_HurtReact_Stun-(Sw_113F5C-2)
 	include "src/f/113FFC.asm"
 	include "src/f/114100.asm"
 	include "src/f/11410E.asm"
 Sw_11410E:	; switch table of sub at $11410E: 4 word offsets from Sw_11410E-2
-	dc.w	loc_1141D2-(Sw_11410E-2), loc_114256-(Sw_11410E-2), loc_1141C6-(Sw_11410E-2), loc_1141C6-(Sw_11410E-2)
+	dc.w	loc_1141D2-(Sw_11410E-2), loc_114256-(Sw_11410E-2), XNpc_DeathReact_Explode-(Sw_11410E-2), XNpc_DeathReact_Explode-(Sw_11410E-2)
 	include "src/f/1141C6.asm"
 	include "src/f/1142D2.asm"
 	include "src/f/1142E0.asm"

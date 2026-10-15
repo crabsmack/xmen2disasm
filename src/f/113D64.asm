@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; loc_113D64
+; XNpc_TakeDamage_Default - XNpc_TakeDamage hit types 5-8 and out-of-range: pass to ACTOR TakeDamage
+; In:  inside XNpc_TakeDamage
+; Out: -
+; Evidence: Sw_113D20 targets; parent +$26 via Tbl_XNpc_vtable
 ; ---------------------------------------------------------------------------
-loc_113D64:
+XNpc_TakeDamage_Default:
 	move.w	$1E(a6),d0
 	ext.l	d0
 	move.l	d0,-(a7)
@@ -22,4 +25,4 @@ loc_113D64:
 	movea.l	$26(a0),a1
 	jsr	(a1)
 	lea.l	$18(a7),a7
-	bra.w	loc_113E76
+	bra.w	XNpc_TakeDamage_Done

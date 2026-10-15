@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_114860	[link-after-rts]
+; XNpc_StateKnockBExpire - XNPC knockback B end: drift until the +$6E timer runs out, then Explode
+; In:  8(a6) = this
+; Out: d0
+; Evidence: vtable +$7E
 ; ---------------------------------------------------------------------------
-sub_114860:
+XNpc_StateKnockBExpire:
 	link.w	a6,#$0
 	move.l	a4,-(a7)
 	movea.l	$8(a6),a4
@@ -17,7 +20,7 @@ sub_114860:
 	add.l	d0,$8(a4)
 loc_11488A:
 	clr.w	$6C(a4)
-	lea.l	sub_114860(pc),a0
+	lea.l	XNpc_StateKnockBExpire(pc),a0
 	move.l	a0,$5C(a4)
 	moveq	#$8,d0
 	and.w	$4(a4),d0

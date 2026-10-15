@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_1148B2	[link-after-rts]
+; XNpc_StartDeathFling - XNPC death fling set-up: x speed +-$400 away from the hit, upward speed from the distance, gravity $20
+; In:  8(a6) = this
+; Out: none
+; Evidence: callers XNpc_StateDeathFling / DeathFlingHigh; flags +6 |= $5080
 ; ---------------------------------------------------------------------------
-sub_1148B2:
+XNpc_StartDeathFling:
 	link.w	a6,#$0
 	movem.l	d3/d7/a4,-(a7)
 	movea.l	$8(a6),a4
