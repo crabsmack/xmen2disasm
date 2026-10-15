@@ -1,7 +1,11 @@
 ; ---------------------------------------------------------------------------
-; sub_0C0FD2	[jt 1117]
+; Water_DrawHook - scene draw hook with hazard water: start a $24-frame splash when a player drops below the surface, hurt players in the water every 5 frames, then draw the draw list
+; In:  none
+; Out: none
+; Evidence: installed in -$38F4; players below -$3C10 with health: slot +$26 TakeDamage(self, 7, 4, -1, -1) while -$3C14; DrawList_DrawAll; TAS 27885-33098
+; Found: jt 1117
 ; ---------------------------------------------------------------------------
-sub_0C0FD2:
+Water_DrawHook:
 	link.w	a6,#$0
 	tst.w	-$3C08(a5)
 	bne.s	loc_0C1032
@@ -80,7 +84,7 @@ loc_0C108E:
 	ext.l	d0
 	move.l	d0,-(a7)
 	pea.l	g_Player1(a5)
-	jsr	sub_0C0F88(pc)
+	jsr	Water_DrawSplash(pc)
 	lea.l	$10(a7),a7
 loc_0C10BC:
 	tst.w	-$3C0A(a5)
@@ -96,7 +100,7 @@ loc_0C10BC:
 	ext.l	d0
 	move.l	d0,-(a7)
 	pea.l	g_Player2(a5)
-	jsr	sub_0C0F88(pc)
+	jsr	Water_DrawSplash(pc)
 	lea.l	$10(a7),a7
 loc_0C10EA:
 	move.w	-$1754(a5),d0

@@ -60,7 +60,7 @@ loc_0C0CC4:
 	moveq	#$0,d0
 	move.l	d0,$96(a4)
 	move.b	#$2,$AE(a4)
-	lea.l	sub_0C0968(pc),a0
+	lea.l	SwampFly_StateStart(pc),a0
 	move.l	a0,$64(a4)
 	move.l	a0,$5C(a4)
 	movem.l	-$8(a6),a3-a4

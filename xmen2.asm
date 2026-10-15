@@ -2381,13 +2381,13 @@ Tbl_XCloneSetFormation:	; table read by BioBalls_SetFormation; 2A of 54 bytes us
 	incrom	$09BA04,$54
 Lvl_SavageA2Data:	; level data read by Level_AssignBlockSlots; 28C0 of 28CA bytes used at runtime; read by Level_AssignBlockSlots, Seg_LoadList; jt[845] used by SavageA2_LoadLevel, SavageA3_LoadLevel
 	incrom	$09BA58,$28CA
-Lvl_BroodClawData:	; level data read by Level_AssignBlockSlots; 89F of 8A0 bytes used at runtime; read by Level_AssignBlockSlots, Seg_LoadList; jt[846] used by sub_0C1258
+Lvl_BroodClawData:	; level data read by Level_AssignBlockSlots; 89F of 8A0 bytes used at runtime; read by Level_AssignBlockSlots, Seg_LoadList; jt[846] used by SavageB1_LoadLevel
 	incrom	$09E322,$8A0
-Map_BroodClawEni:	; Enigma-compressed tilemap (Eni_Decode); 1AA9 of 1E4A bytes used at runtime; read by Eni_ReadInline, Eni_Decode, Eni_Ops; jt[847] used by sub_0C1258
+Map_BroodClawEni:	; Enigma-compressed tilemap (Eni_Decode); 1AA9 of 1E4A bytes used at runtime; read by Eni_ReadInline, Eni_Decode, Eni_Ops; jt[847] used by SavageB1_LoadLevel
 	incrom	$09EBC2,$1E4A
-Map_BroodClawEni2:	; Enigma-compressed tilemap (Eni_Decode); 32 of 4A bytes used at runtime; read by Eni_ReadInline, Eni_Decode, Eni_Ops; jt[848] used by sub_0C1258
+Map_BroodClawEni2:	; Enigma-compressed tilemap (Eni_Decode); 32 of 4A bytes used at runtime; read by Eni_ReadInline, Eni_Decode, Eni_Ops; jt[848] used by SavageB1_LoadLevel
 	incrom	$0A0A0C,$4A
-Lvl_BroodClawSegs:	; floor-segment list (Seg_LoadList: 12/10-byte records until a 0 byte); 18A of 1A6 bytes used at runtime; read by Seg_LoadList, Eni_ReadInline, Level_Load; jt[849] used by sub_0C1258
+Lvl_BroodClawSegs:	; floor-segment list (Seg_LoadList: 12/10-byte records until a 0 byte); 18A of 1A6 bytes used at runtime; read by Seg_LoadList, Eni_ReadInline, Level_Load; jt[849] used by SavageB1_LoadLevel
 	incrom	$0A0A56,$1A6
 Lvl_SavageA2Segs:	; floor-segment list (Seg_LoadList: 12/10-byte records until a 0 byte); 4B3 of 4B4 bytes used at runtime; read by Seg_LoadList, Eni_ReadInline, Eni_Decode; jt[850] used by SavageA2_LoadLevel
 	incrom	$0A0BFC,$4B4
@@ -3011,8 +3011,8 @@ Tbl_SwampPlatform:	; format not established; never read in the corpus; jt[1106] 
 	include "src/f/0C0968.asm"
 	include "src/f/0C099C.asm"
 Sw_0C099C:	; switch table of sub at $0C099C: 6 word offsets from Sw_0C099C-2
-	dc.w	loc_0C09D6-(Sw_0C099C-2), loc_0C09E2-(Sw_0C099C-2), loc_0C09EE-(Sw_0C099C-2), loc_0C09FA-(Sw_0C099C-2)
-	dc.w	loc_0C0A06-(Sw_0C099C-2), loc_0C0A12-(Sw_0C099C-2)
+	dc.w	SwampFly_StatePickPath_Default-(Sw_0C099C-2), SwampFly_StatePickPath_Case1-(Sw_0C099C-2), loc_0C09EE-(Sw_0C099C-2), loc_0C09FA-(Sw_0C099C-2)
+	dc.w	loc_0C0A06-(Sw_0C099C-2), SwampFly_StatePickPath_Case5-(Sw_0C099C-2)
 	include "src/f/0C09D6.asm"
 	include "src/f/0C09E2.asm"
 	include "src/f/0C0A12.asm"
@@ -3027,9 +3027,9 @@ Tbl_SwampFly_vtable:	; class descriptor of SWAMPFLY: word name offset $82, paren
 	incrom	$0C0CEA,$8B
 Pad_SwampFly:	; $00 fill; never read in the corpus; between SwampFly_Init and sub_0C0DBA
 	incrom	$0C0D75,$1
-Tbl_SwampFlyComputeParallax:	; table read by Scroll_ComputeParallax; 16 of 22 bytes used at runtime; read by Scroll_ComputeParallax, Scroll_SetParallax; jt[1114] used by sub_0C0E16
+Tbl_SwampFlyComputeParallax:	; table read by Scroll_ComputeParallax; 16 of 22 bytes used at runtime; read by Scroll_ComputeParallax, Scroll_SetParallax; jt[1114] used by SavageC1_SetParallax
 	incrom	$0C0D76,$22
-Tbl_SwampFlyComputeParallax2:	; table read by Scroll_ComputeParallax; 16 of 22 bytes used at runtime; read by Scroll_ComputeParallax, Scroll_SetParallax; jt[1115] used by sub_0C12F6
+Tbl_SwampFlyComputeParallax2:	; table read by Scroll_ComputeParallax; 16 of 22 bytes used at runtime; read by Scroll_ComputeParallax, Scroll_SetParallax; jt[1115] used by SavageB1_SetParallax
 	incrom	$0C0D98,$22
 	include "src/f/0C0DBA.asm"
 	include "src/f/0C0DC2.asm"
@@ -3051,13 +3051,13 @@ Tbl_SwampFlyComputeParallax2:	; table read by Scroll_ComputeParallax; 16 of 22 b
 	include "src/f/0C1412.asm"
 	include "src/f/0C1478.asm"
 	include "src/f/0C14B4.asm"
-Lvl_Segs_0C14E4:	; floor-segment list (Seg_LoadList: 12/10-byte records until a 0 byte); 8F7 of 8F8 bytes used at runtime; read by Seg_LoadList; jt[1123] used by sub_0C0E54
+Lvl_Segs_0C14E4:	; floor-segment list (Seg_LoadList: 12/10-byte records until a 0 byte); 8F7 of 8F8 bytes used at runtime; read by Seg_LoadList; jt[1123] used by SavageC1_LoadLevel
 	incrom	$0C14E4,$8F8
-Art_Nem_0C1DDC:	; Nemesis-style compressed 4bpp tiles (Nem_Decode; code table built from pairs by the caller); 860D of 897A bytes used at runtime; read by Nem_DecodeLoop, Eni_Decode, Eni_ReadInline; jt[1124] used by sub_0C0E54, sub_0C1258
+Art_Nem_0C1DDC:	; Nemesis-style compressed 4bpp tiles (Nem_Decode; code table built from pairs by the caller); 860D of 897A bytes used at runtime; read by Nem_DecodeLoop, Eni_Decode, Eni_ReadInline; jt[1124] used by SavageC1_LoadLevel, SavageB1_LoadLevel
 	incrom	$0C1DDC,$897A
-Art_Nem_0CA756:	; Nemesis-style compressed 4bpp tiles (Nem_Decode; code table built from pairs by the caller); 2E of 46 bytes used at runtime; read by Nem_DecodeLoop, Eni_Decode, Eni_ReadInline; jt[1125] used by sub_0C0E54
+Art_Nem_0CA756:	; Nemesis-style compressed 4bpp tiles (Nem_Decode; code table built from pairs by the caller); 2E of 46 bytes used at runtime; read by Nem_DecodeLoop, Eni_Decode, Eni_ReadInline; jt[1125] used by SavageC1_LoadLevel
 	incrom	$0CA756,$46
-Art_SpaceB1Nem:	; Nemesis-style compressed 4bpp tiles (Nem_Decode; code table built from pairs by the caller); 20C8 of 20E2 bytes used at runtime; read by Nem_DecodeLoop, Eni_Decode, Eni_ReadInline; jt[1126] used by SpaceB1_LoadLevel, sub_0C0E54, sub_0C1258
+Art_SpaceB1Nem:	; Nemesis-style compressed 4bpp tiles (Nem_Decode; code table built from pairs by the caller); 20C8 of 20E2 bytes used at runtime; read by Nem_DecodeLoop, Eni_Decode, Eni_ReadInline; jt[1126] used by SpaceB1_LoadLevel, SavageC1_LoadLevel, SavageB1_LoadLevel
 	incrom	$0CA79C,$20E2
 Art_BarbarianSpr:	; sprite definition (type $18, raw 4bpp tiles): $24-byte header, $14-byte frame records, pieces, tiles; 3580 of 40B8 bytes used at runtime; read by VDP_FlushDmaQueue, Spr_EmitStreamClip; DMA to VRAM $92A0-B500; jt[1127] used by Barbarian_Init
 	incrom	$0CC87E,$40B8
@@ -3065,7 +3065,7 @@ Art_LauncherSpr:	; sprite definition (type $18, raw 4bpp tiles): $24-byte header
 	incrom	$0D0936,$434
 Art_LauncherSpr2:	; sprite definition (type $18, raw 4bpp tiles): $24-byte header, $14-byte frame records, pieces, tiles; 60 of 60 bytes used at runtime; read by VDP_FlushDmaQueue, VDP_WriteWords; jt[1129] used by Launcher_ClassInit
 	incrom	$0D0D6A,$60
-Art_Spr_0D0DCA:	; sprite definition (type $19, Nemesis-compressed tiles): $24-byte header, $14-byte frame records, pieces, tiles; 413 of 414 bytes used at runtime; read by Nem_DecodeLoop, VDP_FlushDmaQueue, Spr_PreloadTiles; jt[1130] used by sub_0C0DC2
+Art_Spr_0D0DCA:	; sprite definition (type $19, Nemesis-compressed tiles): $24-byte header, $14-byte frame records, pieces, tiles; 413 of 414 bytes used at runtime; read by Nem_DecodeLoop, VDP_FlushDmaQueue, Spr_PreloadTiles; jt[1130] used by Water_Init
 	incrom	$0D0DCA,$414
 Art_SporeMineSpr:	; sprite definition (type $19, Nemesis-compressed tiles): $24-byte header, $14-byte frame records, pieces, tiles; 285 of 286 bytes used at runtime; read by VDP_WriteWords, Nem_DecodeLoop, Spr_PreloadTiles; jt[1131] used by SporeMine_ClassInit
 	incrom	$0D11DE,$286

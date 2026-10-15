@@ -23,7 +23,7 @@ SiberiaB1_RunScene:
 	jsr	SiberiaB1_CallEmptyStub(pc)
 	move.b	#$1,-$3ABA(a5)
 	clr.b	g_PalBaseDirty(a5)
-	jsr	$2322(a5)	; -> sub_0C1412
+	jsr	$2322(a5)	; -> Music_SetPlayerParams
 	move.w	#$27,g_MusicTrack(a5)
 	moveq	#$27,d0
 	move.l	d0,-(a7)
@@ -37,6 +37,6 @@ SiberiaB1_RunScene:
 	move.l	d0,-(a7)
 	jsr	$521A(a5)	; -> Snd_Play
 	jsr	$5002(a5)	; -> Level_Run
-	jsr	$2332(a5)	; -> sub_0C14B4
+	jsr	$2332(a5)	; -> Music_StopStage
 	unlk	a6
 	rts

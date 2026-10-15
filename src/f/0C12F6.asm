@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_0C12F6	[link-after-rts]
+; SavageB1_SetParallax - SavageB1: install its parallax descriptor jt[$24FA] (Scroll_SetParallax)
+; In:  none
+; Out: none
+; Found: link-after-rts
 ; ---------------------------------------------------------------------------
-sub_0C12F6:
+SavageB1_SetParallax:
 	link.w	a6,#$0
 	lea.l	$22FA(a5),a0
 	move.l	$2(a0),-(a7)

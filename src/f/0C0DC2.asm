@@ -1,7 +1,11 @@
 ; ---------------------------------------------------------------------------
-; sub_0C0DC2	[jt 1116]
+; Water_Init - set up the hazard water: splash sprite (resource variant n), surface y and splash y; water hurts
+; In:  8(a6) = word variant, $A(a6) = word surface y, $E(a6) = word splash y
+; Out: none
+; Evidence: SprDef_Add(jt[$0DCA], n) -> sprite record -$3C0E; -$3C10 surface, -$3C12 splash y, -$3C0A/-$3C08 := 0, -$3C14 := 1; callers SavageC1/B1_RunScene, SavageA2_InitFlood
+; Found: jt 1116
 ; ---------------------------------------------------------------------------
-sub_0C0DC2:
+Water_Init:
 	link.w	a6,#$0
 	move.l	d7,-(a7)
 	move.w	$A(a6),d0

@@ -1,7 +1,11 @@
 ; ---------------------------------------------------------------------------
-; sub_0C0A52	[link-after-rts]
+; SwampFly_StateFly - SWAMPFLY state: follow the path - position = home + (dx << +$B0, dy << +$B1), facing the target player, one step every +$AF frames; at the end pick a new path
+; In:  8(a6) = this
+; Out: d0
+; Evidence: TAS 27916-30560
+; Found: link-after-rts
 ; ---------------------------------------------------------------------------
-sub_0C0A52:
+SwampFly_StateFly:
 	link.w	a6,#$0
 	movem.l	d4-d7/a3-a4,-(a7)
 	movea.l	$8(a6),a3
@@ -79,10 +83,10 @@ loc_0C0B1C:
 	moveq	#-$1,d1
 	cmp.l	d0,d1
 	bne.s	loc_0C0B36
-	lea.l	sub_0C0A52(pc),a0
+	lea.l	SwampFly_StateFly(pc),a0
 	move.l	a0,$5C(a3)
 	move.l	a3,-(a7)
-	jsr	sub_0C0A52(pc)
+	jsr	SwampFly_StateFly(pc)
 	addq.w	#$4,a7
 	bra.s	loc_0C0B72
 loc_0C0B36:
@@ -98,14 +102,14 @@ loc_0C0B48:
 loc_0C0B4A:
 	lsl.l	d1,d0
 	move.w	d0,$6C(a3)
-	lea.l	sub_0C0A52(pc),a0
+	lea.l	SwampFly_StateFly(pc),a0
 	move.l	a0,$5C(a3)
 	moveq	#$8,d0
 	and.w	$4(a3),d0
 	bra.s	loc_0C0B72
 loc_0C0B60:
 	clr.w	$6C(a3)
-	lea.l	sub_0C099C(pc),a0
+	lea.l	SwampFly_StatePickPath(pc),a0
 	move.l	a0,$5C(a3)
 	moveq	#$8,d0
 	and.w	$4(a3),d0

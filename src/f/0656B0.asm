@@ -194,7 +194,7 @@ loc_0658C6:
 	bne.s	loc_065922
 	jsr	$4FF2(a5)	; -> Timer_RunAll
 loc_065922:
-	movea.l	-$38F4(a5),a0
+	movea.l	g_SceneDrawHook(a5),a0
 	jsr	(a0)
 	jsr	PlayerSelect_DrawFrames(pc)
 	movea.l	-$3B28(a5),a0

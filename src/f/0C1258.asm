@@ -1,7 +1,11 @@
 ; ---------------------------------------------------------------------------
-; sub_0C1258	[link-after-rts]
+; SavageB1_LoadLevel - SavageB1: load the Jungle_2 level (Level_Load with the class list jt[$1CA2]) and parallax factors
+; In:  none
+; Out: none
+; Evidence: TAS 29531
+; Found: link-after-rts
 ; ---------------------------------------------------------------------------
-sub_0C1258:
+SavageB1_LoadLevel:
 	link.w	a6,#$0
 	lea.l	$1AA2(a5),a0
 	move.l	$2(a0),-(a7)

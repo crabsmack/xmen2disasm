@@ -1,7 +1,11 @@
 ; ---------------------------------------------------------------------------
-; sub_0BFD6E	[link-after-rts]
+; SwampPlatform_StateIdle - SWAMPPLATFORM state: sit at its home height (+$12) on frame 0
+; In:  8(a6) = this
+; Out: d0
+; Evidence: re-arms itself with +$6C = $FF; TAS 28316-30422
+; Found: link-after-rts
 ; ---------------------------------------------------------------------------
-sub_0BFD6E:
+SwampPlatform_StateIdle:
 	link.w	a6,#$0
 	move.l	a4,-(a7)
 	movea.l	$8(a6),a4
@@ -17,7 +21,7 @@ sub_0BFD6E:
 	jsr	(a1)
 	addq.w	#$8,a7
 	move.w	#$FF,$6C(a4)
-	lea.l	sub_0BFD6E(pc),a0
+	lea.l	SwampPlatform_StateIdle(pc),a0
 	move.l	a0,$5C(a4)
 	moveq	#$8,d0
 	and.w	$4(a4),d0

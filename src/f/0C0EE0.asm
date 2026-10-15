@@ -1,7 +1,11 @@
 ; ---------------------------------------------------------------------------
-; sub_0C0EE0	[link-after-rts]
+; SavageJungle_PlacePlayers - Savage jungle: place the players and clear their sprite bit 2
+; In:  none
+; Out: none
+; Evidence: Players_PlaceAtStart($4000, $4000, $4010, $4010); live players +$2E &= ~4 and DrawList_SetPriority re-sort
+; Found: link-after-rts
 ; ---------------------------------------------------------------------------
-sub_0C0EE0:
+SavageJungle_PlacePlayers:
 	link.w	a6,#$0
 	pea.l	($4010).w
 	pea.l	($4010).w

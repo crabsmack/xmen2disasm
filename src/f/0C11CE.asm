@@ -1,11 +1,15 @@
 ; ---------------------------------------------------------------------------
-; sub_0C11CE	[jt 1118]
+; SavageC1_RunScene - scene function for 'SavageC1 Jungle_1'
+; In:  none
+; Out: none
+; Evidence: registered under that name (jt 1118); level, players, sounds $47/$51, hooks, parallax, water at $528/$520, Level_Run, Music_StopStage; TAS 27717
+; Found: jt 1118
 ; ---------------------------------------------------------------------------
-sub_0C11CE:
+SavageC1_RunScene:
 	link.w	a6,#$0
-	jsr	sub_0C0DBA(pc)
-	jsr	sub_0C0E54(pc)
-	jsr	sub_0C0EE0(pc)
+	jsr	SavageJungle_EmptyStub(pc)
+	jsr	SavageC1_LoadLevel(pc)
+	jsr	SavageJungle_PlacePlayers(pc)
 	jsr	$5242(a5)	; -> Snd_StopAll
 	moveq	#$47,d0
 	move.l	d0,-(a7)
@@ -19,15 +23,15 @@ sub_0C11CE:
 	moveq	#$51,d0
 	move.l	d0,-(a7)
 	jsr	$521A(a5)	; -> Snd_Play
-	jsr	sub_0C11B6(pc)
-	jsr	sub_0C0ED4(pc)
-	jsr	sub_0C0E16(pc)
+	jsr	SavageC1_InstallHooks(pc)
+	jsr	SavageJungle_ClearColor0(pc)
+	jsr	SavageC1_SetParallax(pc)
 	pea.l	($520).w
 	pea.l	($528).w
 	moveq	#$0,d0
 	move.l	d0,-(a7)
-	jsr	sub_0C0DC2(pc)
+	jsr	Water_Init(pc)
 	jsr	$5002(a5)	; -> Level_Run
-	jsr	sub_0C14B4(pc)
+	jsr	Music_StopStage(pc)
 	unlk	a6
 	rts

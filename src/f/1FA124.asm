@@ -449,7 +449,7 @@ loc_1FA660:
 	movea.l	-$3A4C(a5),a0
 	jsr	(a0)
 loc_1FA672:
-	movea.l	-$38F4(a5),a0
+	movea.l	g_SceneDrawHook(a5),a0
 	jsr	(a0)
 	jsr	$5052(a5)	; -> Spr_EndFrame
 	move.b	#$1,g_DmaFlushReq(a5)

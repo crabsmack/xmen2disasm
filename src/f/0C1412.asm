@@ -1,14 +1,18 @@
 ; ---------------------------------------------------------------------------
-; sub_0C1412	[jt 1120]
+; Music_SetPlayerParams - tell the sound driver how many players there are and which characters (parameters $A, $B, $C)
+; In:  none
+; Out: none
+; Evidence: Snd_SetParam($A, count), ($B, P1 voice), ($C, P2 voice); 2269 TAS frames
+; Found: jt 1120
 ; ---------------------------------------------------------------------------
-sub_0C1412:
+Music_SetPlayerParams:
 	link.w	a6,#$0
 	movem.l	d6-d7,-(a7)
 	pea.l	g_Player1(a5)
-	jsr	sub_0C1372(pc)
+	jsr	Player_MusicVoice(pc)
 	move.w	d0,d6
 	pea.l	g_Player2(a5)
-	jsr	sub_0C1372(pc)
+	jsr	Player_MusicVoice(pc)
 	move.w	d0,d7
 	tst.w	d6
 	beq.s	loc_0C1436

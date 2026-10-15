@@ -82,10 +82,10 @@ loc_0FCD3C:
 	moveq	#$2F,d0
 	move.l	d0,-(a7)
 	jsr	$5222(a5)	; -> Snd_Stop
-	jsr	$2322(a5)	; -> sub_0C1412
+	jsr	$2322(a5)	; -> Music_SetPlayerParams
 	moveq	#$27,d0
 	move.l	d0,-(a7)
-	jsr	$232A(a5)	; -> sub_0C1478
+	jsr	$232A(a5)	; -> Music_PlayStage
 	clr.b	-$3BBA(a5)
 	lea.l	$20(a7),a7
 loc_0FCDA0:

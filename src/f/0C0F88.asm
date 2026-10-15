@@ -1,7 +1,11 @@
 ; ---------------------------------------------------------------------------
-; sub_0C0F88	[link-after-rts]
+; Water_DrawSplash - draw a water splash: frame timer/4 at (x, y)
+; In:  8(a6) = player, $E(a6) = word timer, $12(a6) = word x, $16(a6) = word y
+; Out: none
+; Evidence: Spr_SetFrame + Spr_Draw on the splash sprite -$3C0E; caller Water_DrawHook
+; Found: link-after-rts
 ; ---------------------------------------------------------------------------
-sub_0C0F88:
+Water_DrawSplash:
 	link.w	a6,#$FFFE
 	movem.l	d4-d7,-(a7)
 	move.w	$E(a6),d5

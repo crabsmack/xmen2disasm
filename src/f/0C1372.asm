@@ -1,7 +1,11 @@
 ; ---------------------------------------------------------------------------
-; sub_0C1372	[link-after-rts]
+; Player_MusicVoice - music voice id of a player's character: 1 Beast, 2 Nightcrawler, 3 Magneto, 4 Gambit, 5 Wolverine, 6 Cyclops, 7 Psylocke, 0 = not playing
+; In:  8(a6) = player object
+; Out: d0
+; Evidence: compares the vtable with the player classes; caller Music_SetPlayerParams
+; Found: link-after-rts
 ; ---------------------------------------------------------------------------
-sub_0C1372:
+Player_MusicVoice:
 	link.w	a6,#$0
 	move.l	a4,-(a7)
 	movea.l	$8(a6),a4

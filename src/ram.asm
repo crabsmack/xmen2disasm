@@ -164,3 +164,4 @@ g_CamMaxX = -$3A8E	; word: camera x upper clamp (Cam_SetPos, Cam_TrackPlayer)
 g_CamMinY = -$3A94	; word: camera y lower clamp (Cam_SetPos, Cam_TrackPlayer)
 g_CamMaxY = -$3A92	; word: camera y upper clamp (Cam_SetPos, Cam_TrackPlayer)
 g_CamModeSwitched = -$3892	; byte: set when the camera changes tracking mode or target; Cam_EaseOffset absorbs the position jump and clears it
+g_SceneDrawHook = -$38F4	; ptr: per-frame scene draw hook called by the level loop (sub_1FA124) before Spr_EndFrame; sub_1F98A8 defaults it to jt[$4F82]; scenes swap in their own (Water_DrawHook, BaniMazaA2_DrawHook) which end with DrawList_DrawAll

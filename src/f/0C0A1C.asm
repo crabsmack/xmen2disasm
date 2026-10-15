@@ -1,7 +1,8 @@
 ; ---------------------------------------------------------------------------
-; loc_0C0A1C
+; SwampFly_StatePickPath_Start - tail of SwampFly_StatePickPath: start in the middle of the path
+; Evidence: switch exit
 ; ---------------------------------------------------------------------------
-loc_0C0A1C:
+SwampFly_StatePickPath_Start:
 	clr.w	$A8(a4)
 	movea.l	$A4(a4),a0
 	move.w	(a0),d0
@@ -11,7 +12,7 @@ loc_0C0A1C:
 	addq.w	#$1,$A8(a4)
 	subq.w	#$1,$AA(a4)
 	clr.w	$6C(a4)
-	lea.l	sub_0C0A52(pc),a0
+	lea.l	SwampFly_StateFly(pc),a0
 	move.l	a0,$5C(a4)
 	moveq	#$8,d0
 	and.w	$4(a4),d0

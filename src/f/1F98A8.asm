@@ -279,7 +279,7 @@ loc_1F9B58:
 	lea.l	$4FAA(a5),a0
 	move.l	a0,g_SceneFrameHook(a5)
 	lea.l	$4F82(a5),a0
-	move.l	a0,-$38F4(a5)
+	move.l	a0,g_SceneDrawHook(a5)
 	jsr	$4F62(a5)	; -> DrawList_Init
 	move.b	d0,d7
 	move.w	#$FF80,-$35A6(a5)

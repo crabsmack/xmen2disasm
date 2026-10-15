@@ -45,6 +45,6 @@ BaniMazaA2_LoadLevel:
 	lea.l	BaniMazaA2_FrameHook(pc),a0
 	move.l	a0,g_SceneFrameHook(a5)
 	lea.l	BaniMazaA2_DrawHook(pc),a0
-	move.l	a0,-$38F4(a5)
+	move.l	a0,g_SceneDrawHook(a5)
 	unlk	a6
 	rts

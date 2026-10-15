@@ -1,7 +1,11 @@
 ; ---------------------------------------------------------------------------
-; sub_0C0968	[link-after-rts]
+; SwampFly_StateStart - SWAMPFLY first state: frame 1, pick a flight path
+; In:  8(a6) = this
+; Out: d0
+; Evidence: next SwampFly_StatePickPath; TAS 27913-30516
+; Found: link-after-rts
 ; ---------------------------------------------------------------------------
-sub_0C0968:
+SwampFly_StateStart:
 	link.w	a6,#$0
 	move.l	a4,-(a7)
 	movea.l	$8(a6),a4
@@ -13,7 +17,7 @@ sub_0C0968:
 	jsr	(a1)
 	addq.w	#$8,a7
 	clr.w	$6C(a4)
-	lea.l	sub_0C099C(pc),a0
+	lea.l	SwampFly_StatePickPath(pc),a0
 	move.l	a0,$5C(a4)
 	moveq	#$8,d0
 	and.w	$4(a4),d0

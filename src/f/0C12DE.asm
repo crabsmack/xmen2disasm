@@ -1,11 +1,14 @@
 ; ---------------------------------------------------------------------------
-; sub_0C12DE	[link-after-rts]
+; SavageB1_InstallHooks - SavageB1: install the water draw hook (-$38F4) and its frame hook
+; In:  none
+; Out: none
+; Found: link-after-rts
 ; ---------------------------------------------------------------------------
-sub_0C12DE:
+SavageB1_InstallHooks:
 	link.w	a6,#$0
-	lea.l	sub_0C0FD2(pc),a0
-	move.l	a0,-$38F4(a5)
-	lea.l	sub_0C122A(pc),a0
+	lea.l	Water_DrawHook(pc),a0
+	move.l	a0,g_SceneDrawHook(a5)
+	lea.l	SavageB1_FrameHook(pc),a0
 	move.l	a0,g_SceneFrameHook(a5)
 	unlk	a6
 	rts

@@ -1,7 +1,11 @@
 ; ---------------------------------------------------------------------------
-; sub_0C14B4	[jt 1122]
+; Music_StopStage - stop the stage music: stop everything and clear the player parameters
+; In:  none
+; Out: none
+; Evidence: Snd_StopAll, Snd_SetParam($A/$B/$C, 0)
+; Found: jt 1122
 ; ---------------------------------------------------------------------------
-sub_0C14B4:
+Music_StopStage:
 	link.w	a6,#$0
 	jsr	$5242(a5)	; -> Snd_StopAll
 	moveq	#$0,d0

@@ -2,7 +2,7 @@
 ; SavageA2_InitFlood - SavageA2: start the flood line below the bottom camera limit and install its raster hook
 ; In:  none
 ; Out: none
-; Evidence: level = (max y + $E0) << 8; sub_0C0DC2(3, level+1, level+1); -$38F4 := sub_0C0FD2; jt 895
+; Evidence: level = (max y + $E0) << 8; Water_Init(3, level+1, level+1); -$38F4 := Water_DrawHook; jt 895
 ; Found: jt 895
 ; ---------------------------------------------------------------------------
 SavageA2_InitFlood:
@@ -23,8 +23,8 @@ SavageA2_InitFlood:
 	move.l	d0,-(a7)
 	moveq	#$3,d0
 	move.l	d0,-(a7)
-	jsr	$2302(a5)	; -> sub_0C0DC2
+	jsr	$2302(a5)	; -> Water_Init
 	lea.l	$230A(a5),a0
-	move.l	a0,-$38F4(a5)
+	move.l	a0,g_SceneDrawHook(a5)
 	unlk	a6
 	rts

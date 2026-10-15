@@ -67,7 +67,7 @@ loc_0C003C:
 	move.b	d0,$9B(a4)
 loc_0C0040:
 	clr.b	$9A(a4)
-	lea.l	sub_0BFD6E(pc),a0
+	lea.l	SwampPlatform_StateIdle(pc),a0
 	move.l	a0,$64(a4)
 	move.l	a0,$5C(a4)
 	movem.l	-$8(a6),a3-a4
