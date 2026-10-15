@@ -36,7 +36,12 @@ progress.py also reads this file:
 - The TAS (TASVideos 4473M, BizHawk 2.4, Genplus-gx, 2 x 6-button pads) syncs only on
   BizHawk 2.4's own gpgx fork (`emu/bizcore`). Upstream GPGX desyncs within seconds.
 - The full TAS is 57,465 frames and replays in ~46 s headless.
-- Runtime ground truth so far: the TAS executes 95,800 distinct instruction starts.
+- Runtime ground truth so far: the TAS executes 95,800 distinct instruction starts; the
+  full standard corpus (TAS + idle + 62 fuzz runs) 110,308. All are disassembled. The
+  fuzz runs found ~14.5k the speedrun never touches, so scenarios for paths the
+  corpus misses (R4) are likely to find more.
+- ~31k disassembled instruction starts (22%) never ran in the corpus: static-only code
+  (rare paths, unused code, or paths only a scenario reaches).
 
 ## Subsystems
 
