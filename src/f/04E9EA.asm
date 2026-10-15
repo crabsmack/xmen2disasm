@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; loc_04E9EA
+; ApocBomb_Spawn_part4 - part 4 of ApocBomb_Spawn: code block split off by the code-flow tools (not a separate function)
+; In:  registers/frame of ApocBomb_Spawn
+; Out: continues in ApocBomb_Spawn
+; Evidence: only reached by branches from ApocBomb_Spawn; ends with rts
 ; ---------------------------------------------------------------------------
-loc_04E9EA:
+ApocBomb_Spawn_part4:
 	tst.w	d7
 	bne.s	loc_04E9FE
 	moveq	#-$4,d0

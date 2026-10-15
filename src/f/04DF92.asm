@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_04DF92	[link-after-rts]
+; ApocBomb_StartAccelTimer - create and start the bomb-speed timer, speed and increase 0
+; In:  none
+; Out: none
+; Evidence: Timer_Create(ApocBomb_AccelTimer, 1, 0, 0) -> -$3B20; Timer_Start
 ; ---------------------------------------------------------------------------
-sub_04DF92:
+ApocBomb_StartAccelTimer:
 	link.w	a6,#$0
 	move.l	a4,-(a7)
 	moveq	#$0,d0
@@ -9,7 +12,7 @@ sub_04DF92:
 	move.l	d0,-(a7)
 	moveq	#$1,d1
 	move.l	d1,-(a7)
-	pea.l	sub_04DF7A(pc)
+	pea.l	ApocBomb_AccelTimer(pc)
 	jsr	$4FD2(a5)	; -> Timer_Create
 	movea.l	d0,a4
 	move.l	a4,d0

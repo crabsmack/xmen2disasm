@@ -1096,13 +1096,13 @@ Art_ApocBombSpr:	; sprite definition (type $19, Nemesis-compressed tiles): $24-b
 	incrom	$04CE1E,$F0E
 Art_ApocBombNem:	; Nemesis-style compressed 4bpp tiles (Nem_Decode; code table built from pairs by the caller); 28 of 28 bytes used at runtime; read by Nem_DecodeLoop; jt[357] used by ApocBomb_Init
 	incrom	$04DD2C,$28
-Art_ApocalypseNem:	; Nemesis-style compressed 4bpp tiles (Nem_Decode; code table built from pairs by the caller); 14 of 14 bytes used at runtime; read by Nem_DecodeLoop; jt[358] used by sub_04E644
+Art_ApocalypseNem:	; Nemesis-style compressed 4bpp tiles (Nem_Decode; code table built from pairs by the caller); 14 of 14 bytes used at runtime; read by Nem_DecodeLoop; jt[358] used by ApocBomb_DrawShadow
 	incrom	$04DD54,$14
 Art_ApocBombNem2:	; Nemesis-style compressed 4bpp tiles (Nem_Decode; code table built from pairs by the caller); 84 of 88 bytes used at runtime; read by Nem_DecodeLoop; jt[359] used by ApocBomb_TakeDamage
 	incrom	$04DD68,$88
 Tbl_ApocalypseBaniMazaA2_04766A:	; format not established; never read in the corpus; jt[360] used by unk_BaniMazaA2_04766A
 	incrom	$04DDF0,$E0
-Tbl_ApocalypseShakeStep:	; table read by Cam_ShakeStep; 49 of 4A bytes used at runtime; read by Cam_ShakeStep; jt[361] used by sub_04E81A
+Tbl_ApocalypseShakeStep:	; table read by Cam_ShakeStep; 49 of 4A bytes used at runtime; read by Cam_ShakeStep; jt[361] used by ApocBomb_Explode
 	incrom	$04DED0,$4A
 	include "src/f/04DF1A.asm"
 	include "src/f/04DF28.asm"
@@ -1122,14 +1122,14 @@ Tbl_ApocalypseShakeStep:	; table read by Cam_ShakeStep; 49 of 4A bytes used at r
 	include "src/f/04E8F2.asm"
 	include "src/f/04E94A.asm"
 Sw_04E94A:	; switch table of sub at $04E94A: 4 word offsets from Sw_04E94A-2
-	dc.w	loc_04E9C2-(Sw_04E94A-2), loc_04E9C8-(Sw_04E94A-2), loc_04E9D0-(Sw_04E94A-2), loc_04E9DE-(Sw_04E94A-2)
+	dc.w	ApocBomb_Spawn_part1-(Sw_04E94A-2), ApocBomb_Spawn_part2-(Sw_04E94A-2), ApocBomb_Spawn_part3-(Sw_04E94A-2), loc_04E9DE-(Sw_04E94A-2)
 	include "src/f/04E9C2.asm"
 	include "src/f/04E9C8.asm"
 	include "src/f/04E9D0.asm"
 	include "src/f/04E9EA.asm"
 Tbl_ApocBomb_vtable:	; class descriptor of APOCBOMB: word name offset $6E, parent ACTOR, 26 method slots from +6, then the name (tools/classes.py)
 	incrom	$04EA42,$77
-Pad_BeamScooter:	; $00 fill; never read in the corpus; between loc_04E9EA and BeamScooter_GetSize
+Pad_BeamScooter:	; $00 fill; never read in the corpus; between ApocBomb_Spawn_part4 and BeamScooter_GetSize
 	incrom	$04EAB9,$1
 	include "src/f/04EABA.asm"
 	include "src/f/04EAC8.asm"

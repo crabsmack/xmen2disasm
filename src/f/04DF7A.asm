@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_04DF7A	[link-after-rts]
+; ApocBomb_AccelTimer - timer callback: raise the bomb speed by its increase each frame, up to $280
+; In:  none
+; Out: none
+; Evidence: started by ApocBomb_StartAccelTimer
 ; ---------------------------------------------------------------------------
-sub_04DF7A:
+ApocBomb_AccelTimer:
 	link.w	a6,#$0
 	cmpi.w	#$280,-$3C70(a5)
 	bge.s	loc_04DF8E

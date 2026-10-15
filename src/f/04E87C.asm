@@ -22,7 +22,7 @@ ApocBomb_TakeDamage:
 	lea.l	$B5A(a5),a0
 	movea.l	$2(a0),a3
 	move.l	a4,-(a7)
-	jsr	sub_04E81A(pc)
+	jsr	ApocBomb_Explode(pc)
 	move.l	#$10000,$8(a4)
 	move.l	#$10000,$C(a4)
 	moveq	#$0,d0

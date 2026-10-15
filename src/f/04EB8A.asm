@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_04EB8A	[link-after-rts]
+; BeamScooter_StatePickUp - BEAMSCOOTER: wait until no living player is busy, then call each living player's slot $7A(1), fly off up-left and end the scene after 180 frames
+; In:  8(a6) = this
+; Out: d0
+; Evidence: player +$3A byte -1 = busy; Scene_EndAfter($B4); accel (-$10, -$20)
 ; ---------------------------------------------------------------------------
-sub_04EB8A:
+BeamScooter_StatePickUp:
 	link.w	a6,#$0
 	movem.l	d6-d7/a4,-(a7)
 	movea.l	$8(a6),a4
@@ -74,7 +77,7 @@ loc_04EC2A:
 	bra.s	loc_04EC5A
 loc_04EC48:
 	clr.w	$6C(a4)
-	lea.l	sub_04EB8A(pc),a0
+	lea.l	BeamScooter_StatePickUp(pc),a0
 	move.l	a0,$5C(a4)
 	moveq	#$8,d0
 	and.w	$4(a4),d0

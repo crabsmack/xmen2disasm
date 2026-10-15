@@ -1,10 +1,13 @@
 ; ---------------------------------------------------------------------------
-; loc_04E9D0	[static: switch-table case target (tools/switches.py: table after `move.w T(pc,dN.w),dN / jmp T-2(pc,dN.w)`, size from the cmpi bound)]
+; ApocBomb_Spawn_part3 - part 3 of ApocBomb_Spawn: switch case(s) split off by the code-flow tools (not a separate function)
+; In:  registers/frame of ApocBomb_Spawn
+; Out: continues in ApocBomb_Spawn
+; Evidence: only reached by branches from ApocBomb_Spawn
 ; ---------------------------------------------------------------------------
-loc_04E9D0:
+ApocBomb_Spawn_part3:
 	ori.w	#$2,$92(a4)
 	move.w	#$64,$9E(a4)
-	bra.s	loc_04E9EA
+	bra.s	ApocBomb_Spawn_part4
 loc_04E9DE:
 	ori.w	#$2,$92(a4)
 	move.w	#$C8,$9E(a4)

@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_04E94A	[jt 374]
+; ApocBomb_Spawn - create an APOCBOMB at (256, -20): low nibble of the parameter = drop offset kind 0-3, high nibble 0 = harmless palette 2, $10 = hittable (frame 9, palette 1)
+; In:  8(a6) = word speed, $C(a6) = word parameter
+; Out: d0
+; Evidence: Tbl_ApocBomb_vtable +$0E New; +$90 speed, +$96/+$98 kind fields; +$9E offset 0/-100/100/200; list $FFEBAE when hittable; caller Apocalypse_StateDropBombs
 ; ---------------------------------------------------------------------------
-sub_04E94A:
+ApocBomb_Spawn:
 	link.w	a6,#$0
 	movem.l	d5-d7/a4,-(a7)
 	move.w	$E(a6),d5
@@ -30,9 +33,9 @@ sub_04E94A:
 	move.w	d6,$96(a4)
 	move.w	d7,$98(a4)
 	move.w	d6,d0
-	bmi.s	loc_04E9C2
+	bmi.s	ApocBomb_Spawn_part1
 	cmpi.w	#$3,d0
-	bgt.s	loc_04E9C2
+	bgt.s	ApocBomb_Spawn_part1
 	add.w	d0,d0
 	move.w	Sw_04E94A(pc,d0.w),d0
 	jmp	Sw_04E94A-2(pc,d0.w)

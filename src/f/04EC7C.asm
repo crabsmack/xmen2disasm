@@ -30,7 +30,7 @@ BeamScooter_Init:
 	ori.w	#$1283,$6(a4)
 	ori.b	#$4,$2E(a4)
 	move.b	#$2,$42(a4)
-	lea.l	sub_04EAFC(pc),a0
+	lea.l	BeamScooter_StateEnter(pc),a0
 	move.l	a0,$5C(a4)
 	movea.l	-$4(a6),a4
 	unlk	a6

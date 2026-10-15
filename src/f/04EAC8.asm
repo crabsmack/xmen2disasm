@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_04EAC8	[jt 377]
+; BeamScooter_Spawn - create the BEAMSCOOTER at (x, y)
+; In:  8(a6) = long x, $C(a6) = long y
+; Out: none
+; Evidence: Tbl_BeamScooter_vtable +$0E New; caller Apocalypse_StateVanish
 ; ---------------------------------------------------------------------------
-sub_04EAC8:
+BeamScooter_Spawn:
 	link.w	a6,#$0
 	moveq	#$0,d0
 	move.l	d0,-(a7)

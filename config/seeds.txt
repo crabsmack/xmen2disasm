@@ -112,7 +112,7 @@
 04B388	; loc_04B388 - runtime: executed in tas
 04B392	; loc_04B392 - runtime: executed in tas
 04B39C	; loc_04B39C - runtime: executed in tas
-04E9C8	; loc_04E9C8 - runtime: executed in tas
+04E9C8	; ApocBomb_Spawn_part2 - runtime: executed in tas
 05CD2C	; loc_05CD2C - runtime: executed in tas
 05DF16	; loc_05DF16 - runtime: executed in tas
 05DF6E	; loc_05DF6E - runtime: executed in tas
@@ -747,7 +747,7 @@
 04BCB2	; Apocalypse_ActPickScript_part2 - static: switch-table case target (tools/switches.py: table after `move.w T(pc,dN.w),dN / jmp T-2(pc,dN.w)`, size from the cmpi bound)
 04BCC6	; loc_04BCC6 - static: switch-table case target (tools/switches.py: table after `move.w T(pc,dN.w),dN / jmp T-2(pc,dN.w)`, size from the cmpi bound)
 04BCDA	; loc_04BCDA - static: switch-table case target (tools/switches.py: table after `move.w T(pc,dN.w),dN / jmp T-2(pc,dN.w)`, size from the cmpi bound)
-04E9D0	; loc_04E9D0 - static: switch-table case target (tools/switches.py: table after `move.w T(pc,dN.w),dN / jmp T-2(pc,dN.w)`, size from the cmpi bound)
+04E9D0	; ApocBomb_Spawn_part3 - static: switch-table case target (tools/switches.py: table after `move.w T(pc,dN.w),dN / jmp T-2(pc,dN.w)`, size from the cmpi bound)
 04E9DE	; loc_04E9DE - static: switch-table case target (tools/switches.py: table after `move.w T(pc,dN.w),dN / jmp T-2(pc,dN.w)`, size from the cmpi bound)
 05DF06	; loc_05DF06 - static: switch-table case target (tools/switches.py: table after `move.w T(pc,dN.w),dN / jmp T-2(pc,dN.w)`, size from the cmpi bound)
 05DF84	; loc_05DF84 - static: switch-table case target (tools/switches.py: table after `move.w T(pc,dN.w),dN / jmp T-2(pc,dN.w)`, size from the cmpi bound)

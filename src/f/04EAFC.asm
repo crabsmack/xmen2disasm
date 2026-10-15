@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_04EAFC	[link-after-rts]
+; BeamScooter_StateEnter - BEAMSCOOTER: frame 0, descend at $200
+; In:  8(a6) = this
+; Out: d0 = +4 & 8
+; Evidence: next BeamScooter_StateDescend
 ; ---------------------------------------------------------------------------
-sub_04EAFC:
+BeamScooter_StateEnter:
 	link.w	a6,#$0
 	move.l	a4,-(a7)
 	movea.l	$8(a6),a4
@@ -15,7 +18,7 @@ sub_04EAFC:
 	andi.b	#$DF,$2E(a4)
 	addq.w	#$8,a7
 	clr.w	$6C(a4)
-	lea.l	sub_04EB3C(pc),a0
+	lea.l	BeamScooter_StateDescend(pc),a0
 	move.l	a0,$5C(a4)
 	moveq	#$8,d0
 	and.w	$4(a4),d0

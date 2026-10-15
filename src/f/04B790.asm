@@ -2,7 +2,7 @@
 ; Apocalypse_StateDropBombs - APOCALYPSE: while fewer than 6 bombs are alive drop the next bomb of the pattern after its delay; at the pattern end advance to the next pattern (0-5)
 ; In:  8(a6) = this
 ; Out: d0
-; Evidence: bomb count -$3B08; sub_04E94A(speed, param) spawns a bomb; next Apocalypse_StateBombsDone
+; Evidence: bomb count -$3B08; ApocBomb_Spawn(speed, param) spawns a bomb; next Apocalypse_StateBombsDone
 ; ---------------------------------------------------------------------------
 Apocalypse_StateDropBombs:
 	link.w	a6,#$0
@@ -22,7 +22,7 @@ Apocalypse_StateDropBombs:
 	move.w	$AC(a4),d0
 	ext.l	d0
 	move.l	d0,-(a7)
-	jsr	$BD2(a5)	; -> sub_04E94A
+	jsr	$BD2(a5)	; -> ApocBomb_Spawn
 	addq.l	#$4,$A8(a4)
 	movea.l	$A8(a4),a0
 	moveq	#$0,d0

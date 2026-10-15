@@ -2,7 +2,7 @@
 ; Apocalypse_StateVanish - APOCALYPSE defeated: hide, kill itself and spawn the object at (-10, -40) that ends the fight
 ; In:  8(a6) = this
 ; Out: none
-; Evidence: slot $56 SetFrame($FF), slot $52 Kill, sub_04EAC8($F600, -$2800) (BEAMSCOOTER code)
+; Evidence: slot $56 SetFrame($FF), slot $52 Kill, BeamScooter_Spawn($F600, -$2800) (BEAMSCOOTER code)
 ; ---------------------------------------------------------------------------
 Apocalypse_StateVanish:
 	link.w	a6,#$0
@@ -19,7 +19,7 @@ Apocalypse_StateVanish:
 	jsr	(a1)
 	move.l	#$FFFFD800,-(a7)
 	move.l	#$F600,-(a7)
-	jsr	$BEA(a5)	; -> sub_04EAC8
+	jsr	$BEA(a5)	; -> BeamScooter_Spawn
 	movea.l	-$4(a6),a4
 	unlk	a6
 	rts

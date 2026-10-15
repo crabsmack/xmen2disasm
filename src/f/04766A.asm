@@ -1,8 +1,8 @@
 ; ---------------------------------------------------------------------------
-; unk_BaniMazaA2_04766A - BaniMazaA2 event: spawn a root ACTOR at ($100,$100) with sub_13EFA0, freeze the background sprite and set a fixed palette line 0
+; unk_BaniMazaA2_04766A - BaniMazaA2 after the 12th destroyed bomb: spawn a root ACTOR at ($100,$100) with sub_13EFA0, freeze the background sprite and set a fixed palette line 0
 ; In:  none
 ; Out: none
-; Evidence: ACTOR +$0E New(0, ACTOR, $100, $100, 0); sub_13EFA0(obj, jt $D62, 0, -16, -16, 3); sprite frame 0; 14 colours from jt $47284; -$3B0E = 1 stops BaniMazaA2_AnimSprite and the colour cycle. Trigger and visible effect not confirmed
+; Evidence: called by ApocBomb_Explode when the count -$3B0C reaches 12; ACTOR +$0E New; sub_13EFA0(obj, jt $D62, 0, -16, -16, 3); 14 colours from jt $47284; -$3B0E = 1 stops BaniMazaA2_AnimSprite and the colour cycle. Visible effect not confirmed
 ; ---------------------------------------------------------------------------
 unk_BaniMazaA2_04766A:
 	link.w	a6,#$0

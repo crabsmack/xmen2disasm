@@ -13,6 +13,6 @@ ApocBomb_ClassInit:
 	move.l	$2(a0),-(a7)
 	jsr	$4E52(a5)	; -> SprDef_Add
 	move.w	d0,-$3C6E(a5)
-	jsr	sub_04DF92(pc)
+	jsr	ApocBomb_StartAccelTimer(pc)
 	unlk	a6
 	rts
