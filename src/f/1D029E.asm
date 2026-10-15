@@ -7,7 +7,7 @@
 Gambit_Init:
 	link.w	a6,#$FFEC
 	movem.l	d3/a3-a4,-(a7)
-	lea.l	-$18A2(a5),a3
+	lea.l	g_GambitCards(a5),a3
 	movea.l	$8(a6),a4
 	move.l	$14(a6),-(a7)
 	move.l	$10(a6),-(a7)
