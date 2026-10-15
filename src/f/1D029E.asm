@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_1D029E	[jt 2345]
+; Gambit_Init - GAMBIT slot +$12: XPLAYER Init, Gambit's record, states and gravity, body sprite, card and trail tiles preloaded, card array cleared
+; In:  8(a6) = player  $C(a6)/$10(a6) = x/y  $14(a6) = spawn param
+; Out: none
+; Evidence: +$90 &= ~$2000; byte $FFE958 (P1) / $FFE956 (P2) := 1; +$8C = Tbl_GambitCharRecord; +$20 = $5C; Spr_Init(+$2E, Art_EvilGambitSpr); +$C0 = tile base, Art_GambitSpr (card) and Art_GambitSpr2 (trail, base+$C) via Spr_PreloadToHeap; +$C2 = 0; +$BC = $FFE95E; Gambit_ClearCards
 ; ---------------------------------------------------------------------------
-sub_1D029E:
+Gambit_Init:
 	link.w	a6,#$FFEC
 	movem.l	d3/a3-a4,-(a7)
 	lea.l	-$18A2(a5),a3
@@ -122,7 +125,7 @@ loc_1D037C:
 	clr.b	$C2(a4)
 	move.l	a3,$BC(a4)
 	move.l	a4,-(a7)
-	jsr	sub_1D0270(pc)
+	jsr	Gambit_ClearCards(pc)
 	lea.l	$68(a7),a7
 	movem.l	-$20(a6),d3/a3-a4
 	unlk	a6

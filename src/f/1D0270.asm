@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_1D0270	[link-after-rts]
+; Gambit_ClearCards - mark all 3 card records free
+; In:  8(a6) = player
+; Out: none
+; Evidence: +$E = $FF for each $10-byte record at +$BC; called by Gambit_Init
 ; ---------------------------------------------------------------------------
-sub_1D0270:
+Gambit_ClearCards:
 	link.w	a6,#$0
 	movem.l	d7/a3-a4,-(a7)
 	movea.l	$8(a6),a3

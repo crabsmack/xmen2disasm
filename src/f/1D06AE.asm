@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_1D06AE	[jt 2348]
+; Gambit_AirAttack - GAMBIT slot +$C2: B in the air: once per jump, slow a fast rise then do the air kick
+; In:  8(a6) = player
+; Out: d0
+; Evidence: gravity = record +$E; grounded or +$90 bit 1 (kick used) -> consume B, StateControl; vy < -$300 += $100 and wait; else +$5C = Gambit_AirKick
 ; ---------------------------------------------------------------------------
-sub_1D06AE:
+Gambit_AirAttack:
 	link.w	a6,#$0
 	movem.l	d7/a4,-(a7)
 	movea.l	$8(a6),a4
@@ -42,7 +45,7 @@ loc_1D0712:
 	bra.s	loc_1D0732
 loc_1D0720:
 	clr.w	$6C(a4)
-	lea.l	sub_1D059C(pc),a0
+	lea.l	Gambit_AirKick(pc),a0
 	move.l	a0,$5C(a4)
 	moveq	#$8,d0
 	and.w	$4(a4),d0

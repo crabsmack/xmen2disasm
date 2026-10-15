@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_1CFF7E	[link-after-rts]
+; Gambit_StateAirThrowBrake - after A is released in the air: ease vertical speed into [-$300, $100] by $100 a frame, then aim the air throw
+; In:  8(a6) = player
+; Out: d0
+; Evidence: grounded -> Gambit_GroundAim; vy < -$300 += $100, vy > $100 -= $100, else gravity = record +$E and Gambit_AirThrowAim
 ; ---------------------------------------------------------------------------
-sub_1CFF7E:
+Gambit_StateAirThrowBrake:
 	link.w	a6,#$0
 	movem.l	d7/a4,-(a7)
 	movea.l	$8(a6),a4
@@ -9,10 +12,10 @@ sub_1CFF7E:
 	move.w	#$1000,d0
 	and.w	$4(a4),d0
 	bne.s	loc_1CFFAA
-	lea.l	sub_1D011E(pc),a0
+	lea.l	Gambit_GroundAim(pc),a0
 	move.l	a0,$5C(a4)
 	move.l	a4,-(a7)
-	jsr	sub_1D011E(pc)
+	jsr	Gambit_GroundAim(pc)
 	addq.w	#$4,a7
 	bra.s	loc_1CFFE0
 loc_1CFFAA:
@@ -28,10 +31,10 @@ loc_1CFFB8:
 loc_1CFFC6:
 	movea.l	$8C(a4),a0
 	move.w	$E(a0),$20(a4)
-	lea.l	sub_1CFE26(pc),a0
+	lea.l	Gambit_AirThrowAim(pc),a0
 	move.l	a0,$5C(a4)
 	move.l	a4,-(a7)
-	jsr	sub_1CFE26(pc)
+	jsr	Gambit_AirThrowAim(pc)
 	addq.w	#$4,a7
 loc_1CFFE0:
 	movem.l	-$8(a6),d7/a4

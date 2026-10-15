@@ -22,7 +22,7 @@ loc_067328:
 	ext.l	d7
 	move.l	d7,-(a7)
 	move.l	a4,-(a7)
-	jsr	$4972(a5)	; -> sub_1D041E
+	jsr	$4972(a5)	; -> Gambit_SetFrame
 	addq.w	#$8,a7
 	bra.s	ScalingActor_SetFrame_part3
 loc_067336:

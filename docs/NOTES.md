@@ -385,6 +385,13 @@ _(module → functions, globals, data; add as you learn them)_
   scene, $100 players hit each other, $200 invincible, $400 previous/next stage group), apply the cheat.
 - **RNG (w140b)**: `Rand_Next` (`$1600AA`) XORs three lagged word tables (`Tbl_RandXor1-3`) with its history
   (-$7AA/-$7AC), indexes -$7B2/-$7B0/-$7AE; returns 0..$FFF. `Rand_Seed(word)`.
+- **GAMBIT player (w1C0)** (`$1CEF6E-$1D073C`, object $C4): cards are not objects but 3 records of $10 bytes
+  at `$FFE95E` (player +$BC): `{long x, long y, word vx, word vy, byte attack type, byte power, byte card type
+  ($FF = free), byte 8}`, updated and drawn straight into the sprite table by `Gambit_AfterState` (slot +$72)
+  -> `Gambit_UpdateCard` (sparkle trail: 1 sprite, 5 above 7 health). A aims while held, release throws
+  (`Gambit_ThrowCards`: 1 card, 2 above 7 health, +1 with a full meter, angles from `Tbl_GambitThrowKinds`
+  by kind +$C2). B in the air = a once-per-jump flying kick (`Gambit_AirKick`, +$90 bit 1 = used). Character
+  records: `Tbl_MagnetoCharRecord` `$1CD99C`, `Tbl_GambitCharRecord` `$1CEE64`.
 
 ## Data formats
 

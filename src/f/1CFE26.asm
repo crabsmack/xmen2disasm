@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_1CFE26	[link-after-rts]
+; Gambit_AirThrowAim - choose the air throw kind from the d-pad (5 up, 6 up-diagonal, 7 level, 8 down-diagonal, 9 down), set its animation and go to Gambit_StateThrow
+; In:  8(a6) = player
+; Out: none
+; Evidence: +$C2 = 5 Up, 6 Up+L/R, 7 none, 8 Down+L/R, 9 Down; animations Tbl_Anim_1CEDCA, jt $4ABA/$4AC2/$4ACA/$4AD2
 ; ---------------------------------------------------------------------------
-sub_1CFE26:
+Gambit_AirThrowAim:
 	link.w	a6,#$0
 	movem.l	d3/a4,-(a7)
 	movea.l	$8(a6),a4
@@ -34,10 +37,10 @@ loc_1CFE6C:
 	move.l	a4,-(a7)
 	jsr	$4E42(a5)	; -> Obj_SetAnim
 	move.b	#$6,$C2(a4)
-	lea.l	sub_1CFB14(pc),a0
+	lea.l	Gambit_StateThrow(pc),a0
 	move.l	a0,$5C(a4)
 	move.l	a4,-(a7)
-	jsr	sub_1CFB14(pc)
+	jsr	Gambit_StateThrow(pc)
 	lea.l	$C(a7),a7
 	bra.w	loc_1CFF74
 loc_1CFE98:
@@ -46,10 +49,10 @@ loc_1CFE98:
 	move.l	a4,-(a7)
 	jsr	$4E42(a5)	; -> Obj_SetAnim
 	move.b	#$5,$C2(a4)
-	lea.l	sub_1CFB14(pc),a0
+	lea.l	Gambit_StateThrow(pc),a0
 	move.l	a0,$5C(a4)
 	move.l	a4,-(a7)
-	jsr	sub_1CFB14(pc)
+	jsr	Gambit_StateThrow(pc)
 	lea.l	$C(a7),a7
 	bra.w	loc_1CFF74
 loc_1CFEC2:
@@ -82,10 +85,10 @@ loc_1CFEFC:
 	move.l	a4,-(a7)
 	jsr	$4E42(a5)	; -> Obj_SetAnim
 	move.b	#$8,$C2(a4)
-	lea.l	sub_1CFB14(pc),a0
+	lea.l	Gambit_StateThrow(pc),a0
 	move.l	a0,$5C(a4)
 	move.l	a4,-(a7)
-	jsr	sub_1CFB14(pc)
+	jsr	Gambit_StateThrow(pc)
 	lea.l	$C(a7),a7
 	bra.s	loc_1CFF74
 loc_1CFF26:
@@ -94,10 +97,10 @@ loc_1CFF26:
 	move.l	a4,-(a7)
 	jsr	$4E42(a5)	; -> Obj_SetAnim
 	move.b	#$9,$C2(a4)
-	lea.l	sub_1CFB14(pc),a0
+	lea.l	Gambit_StateThrow(pc),a0
 	move.l	a0,$5C(a4)
 	move.l	a4,-(a7)
-	jsr	sub_1CFB14(pc)
+	jsr	Gambit_StateThrow(pc)
 	lea.l	$C(a7),a7
 	bra.s	loc_1CFF74
 loc_1CFF4E:
@@ -106,10 +109,10 @@ loc_1CFF4E:
 	move.l	a4,-(a7)
 	jsr	$4E42(a5)	; -> Obj_SetAnim
 	move.b	#$7,$C2(a4)
-	lea.l	sub_1CFB14(pc),a0
+	lea.l	Gambit_StateThrow(pc),a0
 	move.l	a0,$5C(a4)
 	move.l	a4,-(a7)
-	jsr	sub_1CFB14(pc)
+	jsr	Gambit_StateThrow(pc)
 	lea.l	$C(a7),a7
 loc_1CFF74:
 	movem.l	-$8(a6),d3/a4

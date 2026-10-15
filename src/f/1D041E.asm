@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_1D041E	[jt 2346]
+; Gambit_SetFrame - GAMBIT slot +$56: set a frame from one of three sprite banks (0-99, 100-149, 150+)
+; In:  8(a6) = player  $E(a6) = word frame ($FF = none)
+; Out: none
+; Evidence: bank Art_EvilGambitSpr / Art_PlayerSpr8 (frame-100) / Art_PlayerSpr9 (frame-150) into +$30; a bank change clears the uploaded flag (+$2E bit 5) and +$38; same shape as Psylocke_SetFrame
 ; ---------------------------------------------------------------------------
-sub_1D041E:
+Gambit_SetFrame:
 	link.w	a6,#$FFFC
 	movem.l	d7/a3-a4,-(a7)
 	movea.l	$8(a6),a3

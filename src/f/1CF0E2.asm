@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_1CF0E2	[link-after-rts]
+; Gambit_CardCollide - test a moving card against enemy bodies and the map: hit an enemy, or back out of a wall and explode
+; In:  8(a6) = card record {+0 x, +4 y (16.16 >>8), +8 vx, +$A vy}
+; Out: d0 = 1 when the card hit something (caller frees it), 0 otherwise
+; Evidence: ObjList_ForEachAtPoint(x, y, g_HitListEnemyBody, Gambit_CardHitEnemy); else map test sub_15CECC(0, x, y, ..., $7800, 1): step back by v/4 until clear, Explosion_Spawn there
 ; ---------------------------------------------------------------------------
-sub_1CF0E2:
+Gambit_CardCollide:
 	link.w	a6,#$0
 	movem.l	d3-d7/a4,-(a7)
 	movea.l	$8(a6),a4
@@ -14,7 +17,7 @@ sub_1CF0E2:
 	move.l	a4,-(a7)
 	moveq	#$0,d0
 	move.l	d0,-(a7)
-	pea.l	sub_1CF070(pc)
+	pea.l	Gambit_CardHitEnemy(pc)
 	move.l	g_HitListEnemyBody(a5),-(a7)
 	ext.l	d4
 	move.l	d4,-(a7)

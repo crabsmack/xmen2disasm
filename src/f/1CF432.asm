@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_1CF432	[link-after-rts]
+; Gambit_UpdateCard - per-frame card update: free it off screen, draw it as a hardware sprite, move it, hit-test it, and draw its sparkle trail
+; In:  8(a6) = player  $C(a6) = card record
+; Out: none
+; Evidence: more than 50 px outside the camera -> +$E = $FF; sprite size/tile from Tbl_GambitCardSize/Tbl_GambitCardTile by type, palette flips each 2 frames, flips from the velocity signs; moves twice when g_TwoPlayerStep; Gambit_CardCollide frees it on a hit; trail: 1 sprite (5 above 7 health) stepping back along -v, tile +$C0+$C, stops at Gambit (Gambit_PointNearBody)
 ; ---------------------------------------------------------------------------
-sub_1CF432:
+Gambit_UpdateCard:
 	link.w	a6,#$FFE8
 	movem.l	d3-d7/a3-a4,-(a7)
 	movea.l	$8(a6),a3
@@ -172,7 +175,7 @@ loc_1CF568:
 	add.l	d0,$4(a4)
 loc_1CF622:
 	move.l	a4,-(a7)
-	jsr	sub_1CF0E2(pc)
+	jsr	Gambit_CardCollide(pc)
 	tst.b	d0
 	addq.w	#$4,a7
 	beq.w	loc_1CF6C2
@@ -223,7 +226,7 @@ loc_1CF63A:
 	add.l	d0,$4(a4)
 loc_1CF6A2:
 	move.l	a4,-(a7)
-	jsr	sub_1CF0E2(pc)
+	jsr	Gambit_CardCollide(pc)
 	tst.b	d0
 	addq.w	#$4,a7
 	beq.s	loc_1CF6C2
@@ -264,13 +267,13 @@ loc_1CF6F4:
 	move.l	-$14(a6),d6
 	asr.l	#$8,d6
 	tst.w	d5
-	blt.w	loc_1CF7E6
+	blt.w	Gambit_UpdateCard_TrailNext
 	cmpi.w	#$140,d5
-	bgt.w	loc_1CF7E6
+	bgt.w	Gambit_UpdateCard_TrailNext
 	tst.w	d6
-	blt.w	loc_1CF7E6
+	blt.w	Gambit_UpdateCard_TrailNext
 	cmpi.w	#$E0,d6
-	bgt.w	loc_1CF7E6
+	bgt.w	Gambit_UpdateCard_TrailNext
 	move.l	g_FrameCounter(a5),d0
 	lsr.l	#$1,d0
 	add.l	d7,d0

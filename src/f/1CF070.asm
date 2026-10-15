@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_1CF070	[link-after-rts]
+; Gambit_CardHitEnemy - ObjList_ForEachAtPoint callback: a thrown card hit an enemy: damage it and spawn an explosion
+; In:  8(a6) = enemy  $E(a6)/$12(a6) = word x/y  $14(a6) = card record
+; Out: d0 = 1 (stop)
+; Evidence: enemy +$26 TakeDamage(0, card +$C strength, card +$D power, x, y), Explosion_Spawn(x<<8, y<<8, flip); passed by Gambit_CardCollide
 ; ---------------------------------------------------------------------------
-sub_1CF070:
+Gambit_CardHitEnemy:
 	link.w	a6,#$0
 	movem.l	d6-d7/a3-a4,-(a7)
 	move.w	$12(a6),d6

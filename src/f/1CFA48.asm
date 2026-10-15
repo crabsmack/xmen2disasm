@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_1CFA48	[link-after-rts]
+; Gambit_StateAirThrowEnd - after an air throw: back to control on landing or when the throw animation ends
+; In:  8(a6) = player
+; Out: d0 = StateControl result or 0
+; Evidence: grounded or +$44 = 0 -> +$5C = +$A6 StateControl
 ; ---------------------------------------------------------------------------
-sub_1CFA48:
+Gambit_StateAirThrowEnd:
 	link.w	a6,#$0
 	move.l	a4,-(a7)
 	movea.l	$8(a6),a4

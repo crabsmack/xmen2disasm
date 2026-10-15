@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_1CF1B6	[link-after-rts]
+; Gambit_FindFreeCard - find a free record in Gambit's 3-card array
+; In:  8(a6) = player
+; Out: d0 = card record pointer ($10-byte record with +$E = $FF), or 0 when all 3 are flying
+; Evidence: walks +$BC (card array, 3 x $10) looking for type byte +$E = -1; used by Gambit_SpawnCard
 ; ---------------------------------------------------------------------------
-sub_1CF1B6:
+Gambit_FindFreeCard:
 	link.w	a6,#$0
 	movem.l	d7/a3-a4,-(a7)
 	movea.l	$8(a6),a3

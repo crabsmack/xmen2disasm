@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_1D0560	[link-after-rts]
+; Gambit_StateAirKick - air kick in progress: on landing or when timer +$A8 runs out, mark the kick used (+$90 bit 1) and return to control
+; In:  8(a6) = player
+; Out: d0
+; Evidence: grounded or word +$A8 < 1 -> +$90 |= 2, +$5C = StateControl
 ; ---------------------------------------------------------------------------
-sub_1D0560:
+Gambit_StateAirKick:
 	link.w	a6,#$0
 	move.l	a4,-(a7)
 	movea.l	$8(a6),a4

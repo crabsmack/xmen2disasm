@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_1CFB56	[link-after-rts]
+; Gambit_StateGroundAim - standing card aim: turn and aim with the d-pad while A is held (jump cancels); releasing A throws
+; In:  8(a6) = player
+; Out: d0
+; Evidence: airborne -> StateControl; C press -> +$82 Jump; aim animations jt $4AEA/$4AF2/Tbl_Anim_1CEE1A/$4AE2; on A release: throw kind +$C2 = 2 level, 3 Down, 0 Up, 1 Up+Left/Right with its throw animation, +$5C = Gambit_StateThrow
 ; ---------------------------------------------------------------------------
-sub_1CFB56:
+Gambit_StateGroundAim:
 	link.w	a6,#$0
 	movem.l	d3/a3-a4,-(a7)
 	movea.l	$8(a6),a4
@@ -139,7 +142,7 @@ loc_1CFCB2:
 	move.b	#$1,$C2(a4)
 	addq.w	#$8,a7
 	clr.w	$6C(a4)
-	lea.l	sub_1CFB14(pc),a0
+	lea.l	Gambit_StateThrow(pc),a0
 	move.l	a0,$5C(a4)
 	moveq	#$8,d0
 	and.w	$4(a4),d0
@@ -168,7 +171,7 @@ loc_1CFD08:
 	clr.b	$C2(a4)
 	addq.w	#$8,a7
 	clr.w	$6C(a4)
-	lea.l	sub_1CFB14(pc),a0
+	lea.l	Gambit_StateThrow(pc),a0
 	move.l	a0,$5C(a4)
 	moveq	#$8,d0
 	and.w	$4(a4),d0
@@ -209,7 +212,7 @@ loc_1CFD7A:
 	move.b	#$3,$C2(a4)
 	addq.w	#$8,a7
 	clr.w	$6C(a4)
-	lea.l	sub_1CFB14(pc),a0
+	lea.l	Gambit_StateThrow(pc),a0
 	move.l	a0,$5C(a4)
 	moveq	#$8,d0
 	and.w	$4(a4),d0
@@ -238,7 +241,7 @@ loc_1CFDCC:
 	move.b	#$2,$C2(a4)
 	addq.w	#$8,a7
 	clr.w	$6C(a4)
-	lea.l	sub_1CFB14(pc),a0
+	lea.l	Gambit_StateThrow(pc),a0
 	move.l	a0,$5C(a4)
 	moveq	#$8,d0
 	and.w	$4(a4),d0

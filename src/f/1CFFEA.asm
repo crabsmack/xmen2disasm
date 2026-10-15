@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_1CFFEA	[link-after-rts]
+; Gambit_StateAirCharge - air special held: steer in the air while A stays held; on release go to Gambit_StateAirThrowBrake
+; In:  8(a6) = player
+; Out: d0
+; Evidence: grounded -> StateControl; calls +$8A AirSteer; A not held -> +$5C = Gambit_StateAirThrowBrake
 ; ---------------------------------------------------------------------------
-sub_1CFFEA:
+Gambit_StateAirCharge:
 	link.w	a6,#$0
 	movem.l	d3/a4,-(a7)
 	movea.l	$8(a6),a4
@@ -33,10 +36,10 @@ loc_1D0032:
 loc_1D003A:
 	addq.w	#$4,a7
 	bne.s	loc_1D004E
-	lea.l	sub_1CFF7E(pc),a0
+	lea.l	Gambit_StateAirThrowBrake(pc),a0
 	move.l	a0,$5C(a4)
 	move.l	a4,-(a7)
-	jsr	sub_1CFF7E(pc)
+	jsr	Gambit_StateAirThrowBrake(pc)
 	addq.w	#$4,a7
 loc_1D004E:
 	movem.l	-$8(a6),d3/a4

@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_1CF7FA	[jt 2338]
+; Gambit_AfterState - GAMBIT slot +$72: parent post-state hook, then update each of the 3 flying cards
+; In:  8(a6) = player
+; Out: none
+; Evidence: calls XPLAYER +$72 through the GAMBIT descriptor, then Gambit_UpdateCard for every card with +$E != $FF
 ; ---------------------------------------------------------------------------
-sub_1CF7FA:
+Gambit_AfterState:
 	link.w	a6,#$0
 	movem.l	d7/a3-a4,-(a7)
 	movea.l	$8(a6),a3
@@ -21,7 +24,7 @@ loc_1CF824:
 	beq.s	loc_1CF836
 	move.l	a4,-(a7)
 	move.l	a3,-(a7)
-	jsr	sub_1CF432(pc)
+	jsr	Gambit_UpdateCard(pc)
 	addq.w	#$8,a7
 loc_1CF836:
 	subq.w	#$1,d7

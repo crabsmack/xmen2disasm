@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_1D052A	[jt 2347]
+; Gambit_HardLanding - GAMBIT slot +$EA: XPLAYER HardLanding, then Gambit_StateHardLanding (a charged throw can fire on landing)
+; In:  8(a6) = player
+; Out: none
+; Evidence: parent +$EA via the GAMBIT descriptor, +$5C = Gambit_StateHardLanding
 ; ---------------------------------------------------------------------------
-sub_1D052A:
+Gambit_HardLanding:
 	link.w	a6,#$0
 	move.l	a4,-(a7)
 	movea.l	$8(a6),a4
@@ -11,10 +14,10 @@ sub_1D052A:
 	movea.l	$2(a0),a0
 	movea.l	$EA(a0),a1
 	jsr	(a1)
-	lea.l	sub_1D04C4(pc),a0
+	lea.l	Gambit_StateHardLanding(pc),a0
 	move.l	a0,$5C(a4)
 	move.l	a4,-(a7)
-	jsr	sub_1D04C4(pc)
+	jsr	Gambit_StateHardLanding(pc)
 	addq.w	#$8,a7
 	movea.l	-$4(a6),a4
 	unlk	a6

@@ -1,16 +1,19 @@
 ; ---------------------------------------------------------------------------
-; sub_1D011E	[link-after-rts]
+; Gambit_GroundAim - stop and enter the standing aim state Gambit_StateGroundAim
+; In:  8(a6) = player
+; Out: none
+; Evidence: ax = vx = 0, +$5C = Gambit_StateGroundAim; from the ground special slots and when an air throw finds him landed
 ; ---------------------------------------------------------------------------
-sub_1D011E:
+Gambit_GroundAim:
 	link.w	a6,#$0
 	move.l	a4,-(a7)
 	movea.l	$8(a6),a4
 	clr.w	$1E(a4)
 	clr.w	$16(a4)
-	lea.l	sub_1CFB56(pc),a0
+	lea.l	Gambit_StateGroundAim(pc),a0
 	move.l	a0,$5C(a4)
 	move.l	a4,-(a7)
-	jsr	sub_1CFB56(pc)
+	jsr	Gambit_StateGroundAim(pc)
 	addq.w	#$4,a7
 	movea.l	-$4(a6),a4
 	unlk	a6

@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_1D073C	[jt 2349]
+; Gambit_Nop6A - GAMBIT slot +$6A: empty Reset override
+; In:  none
+; Out: none
+; Evidence: single rts
 ; ---------------------------------------------------------------------------
-sub_1D073C:
+Gambit_Nop6A:
 	link.w	a6,#$0
 	unlk	a6
 	rts

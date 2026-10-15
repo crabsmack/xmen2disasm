@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; loc_1CF3E2
+; Gambit_PointNearBody_Test - Gambit_PointNearBody tail: compare the point with the player box widened by d7 (x) and d6 (y)
+; In:  a4 = player, d4/d5 = y/x, d6/d7 = margins
+; Out: d0 = 1 inside, 0 outside
+; Evidence: shared exit of the type switch cases
 ; ---------------------------------------------------------------------------
-loc_1CF3E2:
+Gambit_PointNearBody_Test:
 	moveq	#$0,d3
 	ext.l	d5
 	move.w	$4E(a4),d0

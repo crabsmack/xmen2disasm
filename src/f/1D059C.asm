@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_1D059C	[link-after-rts]
+; Gambit_AirKick - start the air kick: record's air-attack animation and sound, dash 8 px/frame toward a held Left/Right, 12-frame timer
+; In:  8(a6) = player
+; Out: d0
+; Evidence: grounded -> StateControl; animation record +$30, B latch cleared, Snd_Play(record +$2C); Left/Right: vx = -+$800, max $800, ax 0; +$A8 = 12; +$5C = Gambit_StateAirKick
 ; ---------------------------------------------------------------------------
-sub_1D059C:
+Gambit_AirKick:
 	link.w	a6,#$0
 	movem.l	d3/a4,-(a7)
 	movea.l	$8(a6),a4
@@ -84,7 +87,7 @@ loc_1D0674:
 loc_1D068C:
 	move.w	#$C,$A8(a4)
 	clr.w	$6C(a4)
-	lea.l	sub_1D0560(pc),a0
+	lea.l	Gambit_StateAirKick(pc),a0
 	move.l	a0,$5C(a4)
 	moveq	#$8,d0
 	and.w	$4(a4),d0

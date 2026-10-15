@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_1CF84A	[link-after-rts]
+; Gambit_ThrowCards - throw the cards for the current throw kind: 1 card, 2 above 7 health, one more with a full meter, spread by 5/10 degrees
+; In:  8(a6) = player (+$C2 = throw kind 0-9)
+; Out: none
+; Evidence: Tbl_GambitThrowKinds[kind] {direction class, card type, dx, dy, angle, speed}; attack type +$71 = $C up, $B down, 10/9 horizontal by facing; Gambit_SpawnCard x1 / x2 (angle +-5) / x3 (angle -10, 0, +10); Snd_Play($A0); clears +$90 $800 (meter full)
 ; ---------------------------------------------------------------------------
-sub_1CF84A:
+Gambit_ThrowCards:
 	link.w	a6,#$FFFA
 	movem.l	d4-d7/a3-a4,-(a7)
 	movea.l	$8(a6),a4
@@ -77,7 +80,7 @@ loc_1CF8EA:
 	ext.l	d1
 	move.l	d1,-(a7)
 	move.l	a4,-(a7)
-	jsr	sub_1CF1EC(pc)
+	jsr	Gambit_SpawnCard(pc)
 	lea.l	$20(a7),a7
 	bra.w	loc_1CFA1A
 loc_1CF91E:
@@ -101,7 +104,7 @@ loc_1CF91E:
 	ext.l	d1
 	move.l	d1,-(a7)
 	move.l	a4,-(a7)
-	jsr	sub_1CF1EC(pc)
+	jsr	Gambit_SpawnCard(pc)
 	moveq	#$0,d0
 	move.b	d7,d0
 	move.l	d0,-(a7)
@@ -122,7 +125,7 @@ loc_1CF91E:
 	ext.l	d1
 	move.l	d1,-(a7)
 	move.l	a4,-(a7)
-	jsr	sub_1CF1EC(pc)
+	jsr	Gambit_SpawnCard(pc)
 	lea.l	$40(a7),a7
 	bra.w	loc_1CFA1A
 loc_1CF986:
@@ -147,7 +150,7 @@ loc_1CF986:
 	ext.l	d2
 	move.l	d2,-(a7)
 	move.l	a4,-(a7)
-	jsr	sub_1CF1EC(pc)
+	jsr	Gambit_SpawnCard(pc)
 	moveq	#$0,d0
 	move.b	d7,d0
 	move.l	d0,-(a7)
@@ -166,7 +169,7 @@ loc_1CF986:
 	ext.l	d1
 	move.l	d1,-(a7)
 	move.l	a4,-(a7)
-	jsr	sub_1CF1EC(pc)
+	jsr	Gambit_SpawnCard(pc)
 	moveq	#$0,d0
 	move.b	d7,d0
 	move.l	d0,-(a7)
@@ -188,7 +191,7 @@ loc_1CF986:
 	ext.l	d2
 	move.l	d2,-(a7)
 	move.l	a4,-(a7)
-	jsr	sub_1CF1EC(pc)
+	jsr	Gambit_SpawnCard(pc)
 	lea.l	$60(a7),a7
 loc_1CFA1A:
 	pea.l	($9F).w

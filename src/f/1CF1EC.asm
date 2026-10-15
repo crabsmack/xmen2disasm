@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_1CF1EC	[link-after-rts]
+; Gambit_SpawnCard - launch one card: place it at an offset from Gambit (if that spot is not inside a wall), with velocity from angle and speed
+; In:  8(a6) = player  $F(a6) = byte card type  $13(a6) = byte power  $16(a6) = word dx  $1A(a6) = word dy  $1E(a6) = word angle (degrees)  $22(a6) = long speed  $27(a6) = byte: 1 = negate vy (aim up)
+; Out: d0 = card record or 0
+; Evidence: Math_CosDeg/SinDeg * speed; dx mirrored when facing left; refuses if sub_15CECC finds the map solid at the spot or 32 px behind it; card +$E type, +0/+4 pos, +8/+$A velocity, +$F = 8, +$C = attack type +$71, +$D = power
 ; ---------------------------------------------------------------------------
-sub_1CF1EC:
+Gambit_SpawnCard:
 	link.w	a6,#$FFFA
 	movem.l	d3-d7/a3-a4,-(a7)
 	move.w	$22(a6),d6
@@ -32,7 +35,7 @@ sub_1CF1EC:
 	asr.l	#$8,d0
 	move.w	d0,-$2(a6)
 	move.l	a3,-(a7)
-	jsr	sub_1CF1B6(pc)
+	jsr	Gambit_FindFreeCard(pc)
 	movea.l	d0,a4
 	move.w	-$6(a6),d0
 	ext.l	d0
