@@ -10,5 +10,5 @@
  "rom_bytes_dma_source": 183264,
  "ram_exec_words": 0,
  "instructions": 390902307,
- "functions_hit": 293
+ "functions_hit": 295
 }
