@@ -2,7 +2,7 @@
 ; Cerebro_BigSpriteDecode - decode a big sprite's current frame into the tile buffer
 ; In:  8(a6) = record
 ; Out: none
-; Evidence: Scaler_Start (decode) into buffer -$CA2 at tile +$A, Scaler_Step; +$31 = needs upload
+; Evidence: Scaler_Start (decode) into buffer g_ScaleParamsPtr at tile +$A, Scaler_Step; +$31 = needs upload
 ; ---------------------------------------------------------------------------
 Cerebro_BigSpriteDecode:
 	link.w	a6,#$0

@@ -2,7 +2,7 @@
 ; Cerebro_PlayIntro - Cerebro intro: logo pictures and flying Cerebro sprite, title lines; on the LogoAndDemo scene show PRESS START for 10 s
 ; In:  none
 ; Out: none
-; Evidence: called by Cerebro_Run when -$3B0C; skipped after START (bit 1 of -$3C5E); 'PRESS'/'START' strings; START sets -$3C5E bit 1; uses Cerebro_BigSprite*, Cerebro_PrintText; palette hook Cerebro_IntroPalHook
+; Evidence: called by Cerebro_Run when g_SceneVar3B0C; skipped after START (bit 1 of g_ProgressFlags); 'PRESS'/'START' strings; START sets g_ProgressFlags bit 1; uses Cerebro_BigSprite*, Cerebro_PrintText; palette hook Cerebro_IntroPalHook
 ; ---------------------------------------------------------------------------
 Cerebro_PlayIntro:
 	link.w	a6,#$FE10

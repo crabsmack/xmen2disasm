@@ -1,6 +1,6 @@
 ; ---------------------------------------------------------------------------
 ; SavageBigBio_Update - vtable +$4A: parent update, then damage the players the tentacle touched this frame (TakeDamage(0, 8, 1, hit point))
-; Evidence: -$3B06 bits 1/2 with hit points -$3B18/-$3B1C (SavageBigBio_TentacleHit); TAS 33665-34355
+; Evidence: g_SceneVar3B06 bits 1/2 with hit points g_SceneVar3B18/g_SceneVar3B1C (SavageBigBio_TentacleHit); TAS 33665-34355
 ; ---------------------------------------------------------------------------
 SavageBigBio_Update:
 	link.w	a6,#$0

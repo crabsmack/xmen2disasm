@@ -1,5 +1,5 @@
 ; ---------------------------------------------------------------------------
-; SentinelDoor_Init - parent Init, then no vertical speed, state SentinelDoor_StateStart (+$5C/+$64), flags |= $408B, +$42 = 0, sprite def jt $25C2 (palette 0), a solid type-$13 segment over the doorway (Seg_Create x-16..x+16, y-$70..y) into +$94, switch +$90 = placement +6 (0-14) with flag word +$8C = &(-$3BFA)[switch], frame 0, Obj_UpdateBoxes (SENTINELDOOR override of slot +$12 Init)
+; SentinelDoor_Init - parent Init, then no vertical speed, state SentinelDoor_StateStart (+$5C/+$64), flags |= $408B, +$42 = 0, sprite def jt $25C2 (palette 0), a solid type-$13 segment over the doorway (Seg_Create x-16..x+16, y-$70..y) into +$94, switch +$90 = placement +6 (0-14) with flag word +$8C = &(g_SentinelsD1Flags)[switch], frame 0, Obj_UpdateBoxes (SENTINELDOOR override of slot +$12 Init)
 ; In:  8(a6) = this, $C(a6) = long x, $10(a6) = long y (8 fraction bits), $14(a6) = placement entry or null
 ; Out: none
 ; Evidence: slot +$12 of the SENTINELDOOR descriptor $0DE9A0; TAS frames 2715-7112 (20 frames active)

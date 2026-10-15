@@ -1,5 +1,5 @@
 ; ---------------------------------------------------------------------------
-; SporeMine_ClassInit - vtable +$5E: per-level class setup for SPOREMINE: create the spore pool and load the spore resources (-$3C22)
+; SporeMine_ClassInit - vtable +$5E: per-level class setup for SPOREMINE: create the spore pool and load the spore resources (g_SporeMineSprDef)
 ; ---------------------------------------------------------------------------
 SporeMine_ClassInit:
 	link.w	a6,#$0

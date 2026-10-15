@@ -2,7 +2,7 @@
 ; CloneA2_BgPalTimer - timer callback (every frame): swap palette line 2 among four background palettes as the camera scrolls vertically
 ; In:  8(a6) = timer argument (the timer itself)
 ; Out: none
-; Evidence: index = (g_CameraY >> 4) & 3 (changes every 16 px); on change copies jt[546..549] (16 words) to g_PalBase+$40 and sets g_PalBaseDirty; skipped during fades (-$3A02) and -$3B04; started by CloneA2_StartBgPalTimer; TAS 47906-48905 every frame
+; Evidence: index = (g_CameraY >> 4) & 3 (changes every 16 px); on change copies jt[546..549] (16 words) to g_PalBase+$40 and sets g_PalBaseDirty; skipped during fades (g_PalFadeActive) and g_SceneVar3B04; started by CloneA2_StartBgPalTimer; TAS 47906-48905 every frame
 ; ---------------------------------------------------------------------------
 CloneA2_BgPalTimer:
 	link.w	a6,#$0

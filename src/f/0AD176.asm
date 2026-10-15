@@ -2,7 +2,7 @@
 ; PerimeterDoor_TileHook - SavageA2 tile hook [3]: forward a tile hit to the scene's PERIMETERDOOR (slot +$6E)
 ; In:  8(a6) = column, $A(a6) = row, $C(a6) = object, ...
 ; Out: d0 = 0
-; Evidence: -$3C38 = the door (PerimeterDoor_Init); installed in $FFC714 by SavageA2_InstallTileHooks; 2 callers
+; Evidence: g_PerimeterDoorObj = the door (PerimeterDoor_Init); installed in $FFC714 by SavageA2_InstallTileHooks; 2 callers
 ; Found: jt 889
 ; ---------------------------------------------------------------------------
 PerimeterDoor_TileHook:

@@ -2,7 +2,7 @@
 ; Sys_InitHardware - power-on hardware init: V-int hooks, VDP shadows, DMA queue, clear VRAM/CRAM/VSRAM, enable V-int and display
 ; In:  none
 ; Out: none
-; Evidence: clears -$3A14, Irq_Enable, reg 11 shadow -$204 = $8B00/$8B08, VDP_ResetDmaQueue, frame counter -$3A10 = 0, VDP_ClearCram/VDP_ClearVram/VDP_ClearVsram, reg1 shadow -$1D48 |= $20 then $40, Scroll_Init; TAS frame 4
+; Evidence: clears g_VBlankHook, Irq_Enable, reg 11 shadow g_VdpReg11 = $8B00/$8B08, VDP_ResetDmaQueue, frame counter g_VBlankCount = 0, VDP_ClearCram/VDP_ClearVram/VDP_ClearVsram, reg1 shadow g_VdpReg1 |= $20 then $40, Scroll_Init; TAS frame 4
 ; ---------------------------------------------------------------------------
 Sys_InitHardware:
 	link.w	a6,#$0

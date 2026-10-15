@@ -1,5 +1,5 @@
 ; ---------------------------------------------------------------------------
-; ApocBomb_ClassInit - per-level class setup: ApocBomb_NopStatic, SprDef_Add sprite set jt $B42 into -$3C6E, then ApocBomb_StartAccelTimer (APOCBOMB override of slot +$5E ClassInit)
+; ApocBomb_ClassInit - per-level class setup: ApocBomb_NopStatic, SprDef_Add sprite set jt $B42 into g_ApocBombSprDef, then ApocBomb_StartAccelTimer (APOCBOMB override of slot +$5E ClassInit)
 ; In:  8(a6) = this, $C(a6) = class index
 ; Out: none
 ; Evidence: class descriptor APOCBOMB slot +$5E (tools/classes.py); TAS frames 24044-24044 (1 active)

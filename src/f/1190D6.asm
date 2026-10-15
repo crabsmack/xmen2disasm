@@ -2,7 +2,7 @@
 ; GaussBullet_InitPool - set up the GAUSSBULLET pool (6 records, vtable Tbl_GaussBullet_vtable), its sprite definition and update timer
 ; In:  none
 ; Out: d0
-; Evidence: Mem_StackAlloc(200); SprDef_Add -> -$1CA8; 12 callers (scene set-ups)
+; Evidence: Mem_StackAlloc(200); SprDef_Add -> g_GaussSprDef; 12 callers (scene set-ups)
 ; ---------------------------------------------------------------------------
 GaussBullet_InitPool:
 	link.w	a6,#$0

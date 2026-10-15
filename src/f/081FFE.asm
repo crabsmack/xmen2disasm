@@ -2,7 +2,7 @@
 ; CloneA2_StartBgPalTimer - start CloneA2_BgPalTimer as a 1-frame timer
 ; In:  none
 ; Out: none
-; Evidence: Timer_Create(CloneA2_BgPalTimer, period 1, 0, 0), stores the timer as its own argument (+$10), Timer_Start, -$3B02 := 0; TAS frame 47901
+; Evidence: Timer_Create(CloneA2_BgPalTimer, period 1, 0, 0), stores the timer as its own argument (+$10), Timer_Start, g_SceneVar3B02 := 0; TAS frame 47901
 ; ---------------------------------------------------------------------------
 CloneA2_StartBgPalTimer:
 	link.w	a6,#$0

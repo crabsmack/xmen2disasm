@@ -2,7 +2,7 @@
 ; Pause_HandleInput - pause-screen input: button chords trigger unlocked cheats or start entering a cheat code; Start resumes
 ; In:  none
 ; Out: d0
-; Evidence: Pad_Update; no code in progress: P1 latch chords $21 health refill (flag $10 of -$3C5E), $22, $24/$28 previous/next scene, $12 players-hit-each-other (unk_Player_005F18), $14/$18 previous/next stage group, $11 invincible ($7FFF health); locked -> g_PauseCheatPtr = code sequence (other table when pad 2 holds Left+Right); in progress: each press must match, $FF end -> Pause_CheatUnlock case; Start by a live player -> g_PauseExit
+; Evidence: Pad_Update; no code in progress: P1 latch chords $21 health refill (flag $10 of g_ProgressFlags), $22, $24/$28 previous/next scene, $12 players-hit-each-other (unk_Player_005F18), $14/$18 previous/next stage group, $11 invincible ($7FFF health); locked -> g_PauseCheatPtr = code sequence (other table when pad 2 holds Left+Right); in progress: each press must match, $FF end -> Pause_CheatUnlock case; Start by a live player -> g_PauseExit
 ; ---------------------------------------------------------------------------
 Pause_HandleInput:
 	link.w	a6,#$0

@@ -2,7 +2,7 @@
 ; CloneA2_StartCamera - start the CloneA2 camera: alternate mode, zone 0, then camera +$36 at the start position
 ; In:  none
 ; Out: none
-; Evidence: reads start x (& $FE00) and y from the record at -$1860; calls CloneA2_StartCamAltMode, CloneA2_SetCameraZone(0), g_Camera slot +$36(x, y, 1000, 1000, 1, 0); TAS frame 47901
+; Evidence: reads start x (& $FE00) and y from the record at g_P1StartRec; calls CloneA2_StartCamAltMode, CloneA2_SetCameraZone(0), g_Camera slot +$36(x, y, 1000, 1000, 1, 0); TAS frame 47901
 ; ---------------------------------------------------------------------------
 CloneA2_StartCamera:
 	link.w	a6,#$0

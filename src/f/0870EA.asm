@@ -2,7 +2,7 @@
 ; BroodBoss_StateShockOff - BROODBOSS state: end the shockwave, reset two effect sprites, roar, next step
 ; In:  8(a6) = this
 ; Out: none
-; Evidence: -$3B0C &= ~2, Snd_Stop $F5, Spr_SetFrame/Spr_UploadFrame on the sprite instances at $FFCC6A/$FFCC7E, Obj_SetAnim(this, $0889AA), next-step idiom
+; Evidence: g_SceneVar3B0C &= ~2, Snd_Stop $F5, Spr_SetFrame/Spr_UploadFrame on the sprite instances at $FFCC6A/$FFCC7E, Obj_SetAnim(this, $0889AA), next-step idiom
 ; Found: link-after-rts
 ; ---------------------------------------------------------------------------
 BroodBoss_StateShockOff:

@@ -2,7 +2,7 @@
 ; SiberiaB1_PostLoad - SiberiaB1 scene post-load hook: wind sprite, scroll offset, run the plane-B scroll hook, then Scene_PostLoadVram
 ; In:  none
 ; Out: none
-; Evidence: installed in $FFC914 (-$38EC, called last by Level_Load)
+; Evidence: installed in $FFC914 (g_ScenePostLoadHook, called last by Level_Load)
 ; ---------------------------------------------------------------------------
 SiberiaB1_PostLoad:
 	link.w	a6,#$0

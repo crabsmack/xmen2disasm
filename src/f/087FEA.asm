@@ -2,7 +2,7 @@
 ; BroodBoss_StateFinish - BROODBOSS death: spawn a BROODCLAW off the right edge, flag the scene done, kill the boss
 ; In:  8(a6) = this
 ; Out: none
-; Evidence: BroodClaw_Spawn(rec x = g_CameraX+$1E0, y $660, 1); byte -$3894 := 1 (also cleared by CloneA5_RunScene); slot +$52 Kill; TAS 51132
+; Evidence: BroodClaw_Spawn(rec x = g_CameraX+$1E0, y $660, 1); byte g_SpawnEnabled := 1 (also cleared by CloneA5_RunScene); slot +$52 Kill; TAS 51132
 ; Found: link-after-rts
 ; ---------------------------------------------------------------------------
 BroodBoss_StateFinish:

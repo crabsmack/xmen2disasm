@@ -2,7 +2,7 @@
 ; SavageA2_InitLights - SavageA2: set up the two warning-light sprites ($FFCC6A/$FFCC7E, art $0A8DC4)
 ; In:  none
 ; Out: none
-; Evidence: -$3B34 := 1, -$3B3C := 0; Spr_Init x2 at VRAM -$3AB0 and +$10; jt 891
+; Evidence: g_SceneVar3B34 := 1, g_SceneVar3B3C := 0; Spr_Init x2 at VRAM g_BgTilesEnd and +$10; jt 891
 ; Found: jt 891
 ; ---------------------------------------------------------------------------
 SavageA2_InitLights:

@@ -1,8 +1,8 @@
 ; ---------------------------------------------------------------------------
-; SavageA2_CamUpdateFlood - SavageA2 camera update hook: after a delay raise the flood line -$38BC (fast, then slower), then the default camera update
+; SavageA2_CamUpdateFlood - SavageA2 camera update hook: after a delay raise the flood line g_FloodLineY (fast, then slower), then the default camera update
 ; In:  8(a6) = camera
 ; Out: none
-; Evidence: delay $78/$1E0 frames (counter -$33A2) by scene; level long -$3C32 -= $200/$400 then $80-$100 per frame; -$3C12/-$3C10 = level + 1; Cam_DefaultUpdate(camera); installed at camera +4; jt 893
+; Evidence: delay $78/$1E0 frames (counter -$33A2) by scene; level long g_FloodY88 -= $200/$400 then $80-$100 per frame; g_WaterSplashY/g_WaterSurfaceY = level + 1; Cam_DefaultUpdate(camera); installed at camera +4; jt 893
 ; Found: jt 893
 ; ---------------------------------------------------------------------------
 SavageA2_CamUpdateFlood:

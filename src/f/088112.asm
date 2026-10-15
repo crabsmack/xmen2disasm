@@ -2,7 +2,7 @@
 ; CloneA5_CamApply - CloneA5 camera apply hook: lock the camera to the arena, play g_CamShake, set the parallax scroll values from the boss offsets
 ; In:  8(a6) = camera
 ; Out: none
-; Evidence: installed at camera +$C by CloneA5_CamSetHooks; g_CameraX/Y := camera +$30/+$32 forced to -$3B24/-$3B22; g_CamShake interpreter (dx,dy pairs, $64 end, $65 back, $66 call Sys_Nop1F945C); scroll words -$3AC2.. from -$3C44/-$3C48 and the factors at -$3494..; calls the hooks at -$3A54/-$3A50 with interrupts off; TAS 49258-52125 every frame
+; Evidence: installed at camera +$C by CloneA5_CamSetHooks; g_CameraX/Y := camera +$30/+$32 forced to g_SceneVar3B24/g_SceneVar3B22; g_CamShake interpreter (dx,dy pairs, $64 end, $65 back, $66 call Sys_Nop1F945C); scroll words g_FgScrollX.. from g_BroodBossOffsetX/g_BroodBossOffsetY and the factors at g_FgScrollFactorY..; calls the hooks at g_MapColHook/g_MapRowHook with interrupts off; TAS 49258-52125 every frame
 ; Found: link-after-rts
 ; ---------------------------------------------------------------------------
 CloneA5_CamApply:

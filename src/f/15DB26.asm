@@ -2,7 +2,7 @@
 ; Actor_SpawnRecInView - ACTOR slot +$2A: test whether a spawn record's position is inside the spawn window around the camera
 ; In:  8(a6) = descriptor   $C(a6) = spawn record
 ; Out: d0 = 1 inside, else 0
-; Evidence: record x (+6) - g_CameraX within words -$35A6/-$35A8 ($FFCC5A/$FFCC58), y (+8) - g_CameraY within -$35A4/-$35AA
+; Evidence: record x (+6) - g_CameraX within words g_SpawnWinLeft/g_SpawnWinRight ($FFCC5A/$FFCC58), y (+8) - g_CameraY within g_SpawnWinTop/g_SpawnWinBottom
 ; ---------------------------------------------------------------------------
 Actor_SpawnRecInView:
 	link.w	a6,#$0

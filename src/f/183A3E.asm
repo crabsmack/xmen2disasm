@@ -2,7 +2,7 @@
 ; Beast_RollPathClear - probe 12 px ahead in the curled frame: is there room to roll
 ; In:  8(a6) = player
 ; Out: d0 = 1 clear, 0 blocked
-; Evidence: temporarily x += +/-$C00, SetFrame $83, Obj_UpdateBox, $1F8B42 with hook Beast_RollProbeCb in $FFCD78; restores x
+; Evidence: temporarily x += +/g_ScalerSizeKey, SetFrame $83, Obj_UpdateBox, $1F8B42 with hook Beast_RollProbeCb in $FFCD78; restores x
 ; ---------------------------------------------------------------------------
 Beast_RollPathClear:
 	link.w	a6,#$0

@@ -1,5 +1,5 @@
 ; ---------------------------------------------------------------------------
-; SpikeBall_ClassInit - vtable +$5E: per-level class setup for SPIKEBALL: load its resource set (-$3C20)
+; SpikeBall_ClassInit - vtable +$5E: per-level class setup for SPIKEBALL: load its resource set (g_SpikeBallSprDef)
 ; ---------------------------------------------------------------------------
 SpikeBall_ClassInit:
 	link.w	a6,#$0

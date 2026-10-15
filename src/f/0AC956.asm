@@ -2,7 +2,7 @@
 ; PerimeterDoor_StateWaitBroken - PERIMETERDOOR state: wait until the door has taken more than 10 hits
 ; In:  8(a6) = this
 ; Out: d0
-; Evidence: -$3C34 > 10 -> PerimeterDoor_StateCrumble; TAS 31697-33050
+; Evidence: g_PerimeterDoorHits > 10 -> PerimeterDoor_StateCrumble; TAS 31697-33050
 ; Found: link-after-rts
 ; ---------------------------------------------------------------------------
 PerimeterDoor_StateWaitBroken:

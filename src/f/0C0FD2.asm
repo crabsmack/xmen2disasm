@@ -2,7 +2,7 @@
 ; Water_DrawHook - scene draw hook with hazard water: start a $24-frame splash when a player drops below the surface, hurt players in the water every 5 frames, then draw the draw list
 ; In:  none
 ; Out: none
-; Evidence: installed in -$38F4; players below -$3C10 with health: slot +$26 TakeDamage(self, 7, 4, -1, -1) while -$3C14; DrawList_DrawAll; TAS 27885-33098
+; Evidence: installed in g_SceneDrawHook; players below g_WaterSurfaceY with health: slot +$26 TakeDamage(self, 7, 4, -1, -1) while g_WaterHurts; DrawList_DrawAll; TAS 27885-33098
 ; Found: jt 1117
 ; ---------------------------------------------------------------------------
 Water_DrawHook:

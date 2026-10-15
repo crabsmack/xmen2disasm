@@ -1,8 +1,8 @@
 ; ---------------------------------------------------------------------------
 ; Seg_BuildGrid - build the floor-segment lookup grid on the heap: per cell, a $FF-terminated list of segments whose box (plus 128 px) overlaps it
-; In:  none (grid size -$3482/-$3484, cell shifts -$347E/-$3480)
+; In:  none (grid size g_SegGridW/g_SegGridH, cell shifts g_SegGridShiftX/g_SegGridShiftY)
 ; Out: none
-; Evidence: word offset table at the heap top ($FFCD84), byte lists in the pool at $FFCD88 (-$3478), for segments 0..g_SegFirstFree-1; advances g_HeapTop; caller Seg_LoadList; read by Seg_GridCell users
+; Evidence: word offset table at the heap top ($FFCD84), byte lists in the pool at $FFCD88 (g_SegGridPool), for segments 0..g_SegFirstFree-1; advances g_HeapTop; caller Seg_LoadList; read by Seg_GridCell users
 ; ---------------------------------------------------------------------------
 Seg_BuildGrid:
 	link.w	a6,#$FFF8

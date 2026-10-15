@@ -1,5 +1,5 @@
 ; ---------------------------------------------------------------------------
-; Zapper_Init - parent Init (with a default placement when none), then no vertical speed, flags |= $4082, sprite set -$3CCC (palette line 1); placement +6 kind 0/1/2 (else 0) -> +$8C and state Zapper_StateLoopAnim0/1/2 (+$5C/+$64) (ZAPPER override of slot +$12 Init)
+; Zapper_Init - parent Init (with a default placement when none), then no vertical speed, flags |= $4082, sprite set g_ZapperSprDef (palette line 1); placement +6 kind 0/1/2 (else 0) -> +$8C and state Zapper_StateLoopAnim0/1/2 (+$5C/+$64) (ZAPPER override of slot +$12 Init)
 ; In:  8(a6) = this (ZAPPER object), $C(a6)/$10(a6) = x/y (8.8 fixed), $14(a6) = placement entry or null
 ; Out: none
 ; Evidence: class descriptor ZAPPER slot +$12 (tools/classes.py); TAS frames 14140-16816 (68 active)

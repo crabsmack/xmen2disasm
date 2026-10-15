@@ -2,7 +2,7 @@
 ; Exodus_NextPattern - EXODUS: advance to the next attack pattern from its spawn record's pattern table, reset the step
 ; In:  8(a6) = this
 ; Out: none
-; Evidence: table = -$38D6 + spawn index (+$14) * 16, words +6..+$E give the successor of patterns 1-5 (0 = default next); +$A8 pattern, +$A9 step
+; Evidence: table = g_PlacementList + spawn index (+$14) * 16, words +6..+$E give the successor of patterns 1-5 (0 = default next); +$A8 pattern, +$A9 step
 ; ---------------------------------------------------------------------------
 Exodus_NextPattern:
 	link.w	a6,#$0

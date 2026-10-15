@@ -2,7 +2,7 @@
 ; CloneA1_ResetPalCycle - reset the CloneA1 palette-cycle counters
 ; In:  none
 ; Out: none
-; Evidence: clears -$3B32/-$3B42/-$3B3A and -$3B34/-$3B44/-$3B3C
+; Evidence: clears g_SceneVar3B32/g_SceneVar3B42/g_SceneVar3B3A and g_SceneVar3B34/g_SceneVar3B44/g_SceneVar3B3C
 ; ---------------------------------------------------------------------------
 CloneA1_ResetPalCycle:
 	link.w	a6,#$0

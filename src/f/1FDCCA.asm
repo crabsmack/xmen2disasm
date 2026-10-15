@@ -2,7 +2,7 @@
 ; Irq_VBlank - V-int handler (hook $210): read pads, count frames and call the system and game V-blank hooks
 ; In:  none
 ; Out: none
-; Evidence: Pad_ReadBoth; long g_VBlankCount(a5) += 1; calls pointer g_VBlankHook(a5) if set; calls pointer g_VBlankGameHook(a5) unless byte -$38C0 or -$359E is set; clears byte -$3A0A
+; Evidence: Pad_ReadBoth; long g_VBlankCount(a5) += 1; calls pointer g_VBlankHook(a5) if set; calls pointer g_VBlankGameHook(a5) unless byte -$38C0 or -$359E is set; clears byte g_VBlankFrameDone
 ; ---------------------------------------------------------------------------
 Irq_VBlank:
 	link.w	a6,#$0

@@ -1,8 +1,8 @@
 ; ---------------------------------------------------------------------------
-; CloneA2_CamAltTimer - timer callback (every frame): when counter -$3AFA reaches 0, switch the camera back to CloneA2_CamHookNormal and end
+; CloneA2_CamAltTimer - timer callback (every frame): when counter g_FloatFallSpeed reaches 0, switch the camera back to CloneA2_CamHookNormal and end
 ; In:  8(a6) = timer argument (the timer itself)
 ; Out: none
-; Evidence: calls CloneA2_CamHookNormal(g_Camera), camera slot +$3A, sets -$3892 := 1, Timer_Free(timer) ends it; started by CloneA2_StartCamAltMode
+; Evidence: calls CloneA2_CamHookNormal(g_Camera), camera slot +$3A, sets g_CamModeSwitched := 1, Timer_Free(timer) ends it; started by CloneA2_StartCamAltMode
 ; ---------------------------------------------------------------------------
 CloneA2_CamAltTimer:
 	link.w	a6,#$0

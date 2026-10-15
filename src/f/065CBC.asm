@@ -2,7 +2,7 @@
 ; PlayerSelect_Run_SetP2 - PlayerSelect_Run: P1 absent (clear g_Player1), then apply P2's choice from its cursor
 ; In:  none
 ; Out: none
-; Evidence: g_P1CharIndex = $FF; g_P2CharIndex = cursor -$3B2C +$3C, health $700 if new; switch Sw_065CBC
+; Evidence: g_P1CharIndex = $FF; g_P2CharIndex = cursor g_SceneVar3B2C +$3C, health $700 if new; switch Sw_065CBC
 ; ---------------------------------------------------------------------------
 PlayerSelect_Run_SetP2:
 	moveq	#$0,d0

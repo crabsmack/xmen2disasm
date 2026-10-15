@@ -1,8 +1,8 @@
 ; ---------------------------------------------------------------------------
-; ThronePhone_StateInit - THRONEPHONE first state: remember the Magneto boss object (-$3AFE), then wait for it
+; ThronePhone_StateInit - THRONEPHONE first state: remember the Magneto boss object (g_BgLockObj), then wait for it
 ; In:  8(a6) = this
 ; Out: d0 = +4 & 8
-; Evidence: +$8C = -$3AFE; next ThronePhone_StateWaitMagneto
+; Evidence: +$8C = g_BgLockObj; next ThronePhone_StateWaitMagneto
 ; ---------------------------------------------------------------------------
 ThronePhone_StateInit:
 	link.w	a6,#$0

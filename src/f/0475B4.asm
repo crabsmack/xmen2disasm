@@ -1,8 +1,8 @@
 ; ---------------------------------------------------------------------------
-; BaniMazaA2_InitSprite - set up the BaniMazaA2 sprite slot -$3596 (jt $46CCA) at tile -$3AAE
+; BaniMazaA2_InitSprite - set up the BaniMazaA2 sprite slot g_SceneSprites (jt $46CCA) at tile g_FgTilesEnd
 ; In:  none
 ; Out: none
-; Evidence: Spr_Init(-$3596, 1, jt $46CCA, 0, 0, -$3AAE, 1)
+; Evidence: Spr_Init(g_SceneSprites, 1, jt $46CCA, 0, 0, g_FgTilesEnd, 1)
 ; ---------------------------------------------------------------------------
 BaniMazaA2_InitSprite:
 	link.w	a6,#$0

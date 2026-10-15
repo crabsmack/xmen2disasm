@@ -1,5 +1,5 @@
 ; ---------------------------------------------------------------------------
-; SavageA4_LoadResources - SavageA4: load its resource set into -$3C2E
+; SavageA4_LoadResources - SavageA4: load its resource set into g_SavageBioSprDef
 ; In:  none
 ; Out: none
 ; Evidence: SprDef_Add(jt[$2AE8], 3)

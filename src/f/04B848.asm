@@ -1,5 +1,5 @@
 ; ---------------------------------------------------------------------------
-; Apocalypse_StateBombsDone - APOCALYPSE: when all bombs are gone, switch AI script by damage phase (-$3B0C = 3, 7 or 12) or run the next step after 60 frames
+; Apocalypse_StateBombsDone - APOCALYPSE: when all bombs are gone, switch AI script by damage phase (g_SceneVar3B0C = 3, 7 or 12) or run the next step after 60 frames
 ; In:  8(a6) = this
 ; Out: none
 ; Evidence: AiScript_Set with jt $C02 / $C0A / $4B208

@@ -1,6 +1,6 @@
 ; ---------------------------------------------------------------------------
-; XClone_TakeDamage - vtable +$26: +$B8 += 60, parent TakeDamage; if the hit kills it and the attacker is the same character, set bit (8+type) in -$3B08; spark effect and sound $D8 at the hit point; hurt frame from the clone record
-; Evidence: Clone_CharTypeOf on both; Debris_Spawn(x, y, -$3B1C, size 6..16) + Snd $D8; SetFrame(record +$AC byte $28); TAS 53176-57449
+; XClone_TakeDamage - vtable +$26: +$B8 += 60, parent TakeDamage; if the hit kills it and the attacker is the same character, set bit (8+type) in g_SceneVar3B08; spark effect and sound $D8 at the hit point; hurt frame from the clone record
+; Evidence: Clone_CharTypeOf on both; Debris_Spawn(x, y, g_SceneVar3B1C, size 6..16) + Snd $D8; SetFrame(record +$AC byte $28); TAS 53176-57449
 ; ---------------------------------------------------------------------------
 XClone_TakeDamage:
 	link.w	a6,#$FFFE

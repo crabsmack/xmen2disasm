@@ -1,5 +1,5 @@
 ; ---------------------------------------------------------------------------
-; LightBeam_ClassInit - per-level class setup: LightBeam_NopStatic, SprDef_Add sprite set jt $109A into -$3C5C and keep its VRAM tile base in -$3B10 (LIGHTBEAM override of slot +$5E ClassInit)
+; LightBeam_ClassInit - per-level class setup: LightBeam_NopStatic, SprDef_Add sprite set jt $109A into g_TextWinBottom and keep its VRAM tile base in g_SceneVar3B10 (LIGHTBEAM override of slot +$5E ClassInit)
 ; In:  8(a6) = this, $C(a6) = class index
 ; Out: none
 ; Evidence: class descriptor LIGHTBEAM slot +$5E (tools/classes.py); TAS frames 45409-45409 (1 active)

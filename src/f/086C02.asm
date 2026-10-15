@@ -2,7 +2,7 @@
 ; BroodBoss_StateRoar - BROODBOSS state: roar animation, reset the boss x offset, wait $78 frames
 ; In:  8(a6) = this
 ; Out: d0
-; Evidence: Obj_SetAnim(this, $0889AA), -$3C44 := 0, +$6C = $78, next BroodBoss_StateEnter; TAS 49293
+; Evidence: Obj_SetAnim(this, $0889AA), g_BroodBossOffsetX := 0, +$6C = $78, next BroodBoss_StateEnter; TAS 49293
 ; ---------------------------------------------------------------------------
 BroodBoss_StateRoar:
 	link.w	a6,#$0

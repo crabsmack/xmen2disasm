@@ -2,7 +2,7 @@
 ; Cerebro_LoadSpriteTiles - load the Cerebro sprite resource and remember its tile base
 ; In:  none
 ; Out: none
-; Evidence: SprDef_Add(jt $608E2 resource, 1); -$3B10 = tile base from the 20-byte resource table at $FFC980
+; Evidence: SprDef_Add(jt $608E2 resource, 1); g_SceneVar3B10 = tile base from the 20-byte resource table at $FFC980
 ; ---------------------------------------------------------------------------
 Cerebro_LoadSpriteTiles:
 	link.w	a6,#$0

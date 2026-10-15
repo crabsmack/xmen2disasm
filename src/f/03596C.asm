@@ -1,5 +1,5 @@
 ; ---------------------------------------------------------------------------
-; AvalonA4_SetCameraZone_apply - tail of AvalonA4_SetCameraZone: or the mask into -$3B02
+; AvalonA4_SetCameraZone_apply - tail of AvalonA4_SetCameraZone: or the mask into g_SceneVar3B02
 ; In:  d7 = mask
 ; Out: none
 ; Evidence: common exit of the Sw_0358D8 cases

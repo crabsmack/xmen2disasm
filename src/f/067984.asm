@@ -2,7 +2,7 @@
 ; PortraitActor_StateWaitTurn - portrait: count down, wait until neither cursor is busy, then load the new character and fly it in
 ; In:  8(a6) = this
 ; Out: d0
-; Evidence: cursors -$3B28/-$3B2C +$34 busy; next PortraitActor_StartFlyIn
+; Evidence: cursors g_SceneVar3B28/g_SceneVar3B2C +$34 busy; next PortraitActor_StartFlyIn
 ; ---------------------------------------------------------------------------
 PortraitActor_StateWaitTurn:
 	link.w	a6,#$0

@@ -2,7 +2,7 @@
 ; AvalonA4_ResetEffectCounters - reset the AvalonA4 stage-effect counters used by AvalonA4_AnimatePalettes
 ; In:  none
 ; Out: none
-; Evidence: called by AvalonA4_RunScene; byte -$3CB0 = 0, -$3B32 = 5, -$3B3A = 0, -$3B34 = 4, -$3B3C = 0
+; Evidence: called by AvalonA4_RunScene; byte g_AvalonA4PalStep = 0, g_SceneVar3B32 = 5, g_SceneVar3B3A = 0, g_SceneVar3B34 = 4, g_SceneVar3B3C = 0
 ; ---------------------------------------------------------------------------
 AvalonA4_ResetEffectCounters:
 	link.w	a6,#$0

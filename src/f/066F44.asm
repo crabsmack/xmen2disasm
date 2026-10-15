@@ -2,7 +2,7 @@
 ; PlayerSelect_RunScene - scene 'CerebroScreen PlayerSelect' (between stages and after a death): player select, then resume the saved scene
 ; In:  none
 ; Out: none
-; Evidence: Scene_RegisterAll registers it between every stage; if -$3B92 >= 0 (scene to return to after a death, set by Game_SceneLoop) sets g_SceneIndex from it and clears it
+; Evidence: Scene_RegisterAll registers it between every stage; if g_ResumeSceneIndex >= 0 (scene to return to after a death, set by Game_SceneLoop) sets g_SceneIndex from it and clears it
 ; ---------------------------------------------------------------------------
 PlayerSelect_RunScene:
 	link.w	a6,#$0

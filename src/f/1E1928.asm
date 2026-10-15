@@ -2,7 +2,7 @@
 ; Cyclops_BeamVBlankFlicker - each frame (from VDP_FrameUpdate): alternate which of the beam's two sprite piece lists is linked in, by rewriting one sprite link byte in VRAM
 ; In:  none
 ; Out: none
-; Evidence: when -$3A0A and $FFE98E are set, latches the link indexes recorded by Cyclops_DrawBeam; then writes the link byte of sprite $FFE994 at VRAM $F000+8n+2 ($70000003 command) with $FFE995 or $FFE996 by g_VBlankCount parity; TAS frames 7-57465
+; Evidence: when g_VBlankFrameDone and $FFE98E are set, latches the link indexes recorded by Cyclops_DrawBeam; then writes the link byte of sprite $FFE994 at VRAM $F000+8n+2 ($70000003 command) with $FFE995 or $FFE996 by g_VBlankCount parity; TAS frames 7-57465
 ; ---------------------------------------------------------------------------
 Cyclops_BeamVBlankFlicker:
 	tst.b	g_VBlankFrameDone(a5)

@@ -1,8 +1,8 @@
 ; ---------------------------------------------------------------------------
-; Game_AttractDemoNightcrawler - attract demo 0: Nightcrawler in scene -$3B56 with demo input jt $3E9A
+; Game_AttractDemoNightcrawler - attract demo 0: Nightcrawler in scene g_ScnBaniMazaA1 with demo input jt $3E9A
 ; In:  none
 ; Out: none
-; Evidence: case 0 of the g_SceneIndex == -1 switch in Game_SceneLoop; resets demo counter -$3B90; loads class jt $2BA2 (Nightcrawler) then falls into Game_PlayAttractDemo
+; Evidence: case 0 of the g_SceneIndex == -1 switch in Game_SceneLoop; resets demo counter g_AttractDemoNum; loads class jt $2BA2 (Nightcrawler) then falls into Game_PlayAttractDemo
 ; ---------------------------------------------------------------------------
 Game_AttractDemoNightcrawler:
 	clr.w	g_AttractDemoNum(a5)

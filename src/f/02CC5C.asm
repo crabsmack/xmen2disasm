@@ -2,7 +2,7 @@
 ; AvalonA3_InitSprites - set up the four AvalonA3 animated sprite slots (jt $2B3C6) at consecutive VRAM tiles
 ; In:  none
 ; Out: none
-; Evidence: Spr_Init on -$3582/-$356E/-$355A/-$3546 at tile -$3AAE + 0/$10/$20/$30; staggered timers 0-3 in -$3CBC..-$3CC8
+; Evidence: Spr_Init on -$3582/-$356E/-$355A/-$3546 at tile g_FgTilesEnd + 0/$10/$20/$30; staggered timers 0-3 in -$3CBC..g_AvalonA3SprDelays
 ; ---------------------------------------------------------------------------
 AvalonA3_InitSprites:
 	link.w	a6,#$0

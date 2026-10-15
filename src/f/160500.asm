@@ -2,7 +2,7 @@
 ; Rand_Next_Finish - Rand_Next tail: shift the output history and mask the result to 12 bits
 ; In:  d0 = mixed value
 ; Out: d0 = value & $FFF
-; Evidence: -$7AA = old -$7AC, -$7AC = new value
+; Evidence: g_RandPrev2 = old g_RandPrev, g_RandPrev = new value
 ; ---------------------------------------------------------------------------
 Rand_Next_Finish:
 	move.w	g_RandPrev(a5),d1

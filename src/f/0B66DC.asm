@@ -1,8 +1,8 @@
 ; ---------------------------------------------------------------------------
-; SavageA4_InitBossStages - SavageA4: fill the boss stage table (2, 0, 2, 5, 10, $F, $1E, $FF) and set the boss value -$3B02/-$3B04 to 50
+; SavageA4_InitBossStages - SavageA4: fill the boss stage table (2, 0, 2, 5, 10, $F, $1E, $FF) and set the boss value g_SceneVar3B02/g_SceneVar3B04 to 50
 ; In:  none
 ; Out: none
-; Evidence: table at -$3B14 (stack buffer of SavageA4_RunScene); -$3B06 := 0; jt 917; TAS 33301
+; Evidence: table at g_SceneVar3B14 (stack buffer of SavageA4_RunScene); g_SceneVar3B06 := 0; jt 917; TAS 33301
 ; Found: jt 917
 ; ---------------------------------------------------------------------------
 SavageA4_InitBossStages:

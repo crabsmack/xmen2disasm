@@ -1,5 +1,5 @@
 ; ---------------------------------------------------------------------------
-; SavageBigBio_Move - vtable +$4E: clamp horizontal speed to +-(-$3B24) (setting +-(-$3B22)), then the parent move
+; SavageBigBio_Move - vtable +$4E: clamp horizontal speed to +-(g_SceneVar3B24) (setting +-(g_SceneVar3B22)), then the parent move
 ; Evidence: TAS 33665-34355
 ; ---------------------------------------------------------------------------
 SavageBigBio_Move:

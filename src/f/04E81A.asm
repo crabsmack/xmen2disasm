@@ -1,5 +1,5 @@
 ; ---------------------------------------------------------------------------
-; ApocBomb_Explode - an APOCBOMB is destroyed: explosion, power-up, screen shake; count it (-$3B0C, max 12) and step the room palette, or at the 12th trigger the final room change
+; ApocBomb_Explode - an APOCBOMB is destroyed: explosion, power-up, screen shake; count it (g_SceneVar3B0C, max 12) and step the room palette, or at the 12th trigger the final room change
 ; In:  8(a6) = bomb
 ; Out: none
 ; Evidence: caller ApocBomb_TakeDamage; Explosion_Spawn, SegmentPlusPowerUp_Spawn($D2), g_CamShake = jt $4DED0; BaniMazaA2_SetPaletteStep or unk_BaniMazaA2_04766A; Apocalypse_StateBombsDone switches scripts at 3, 7, 12

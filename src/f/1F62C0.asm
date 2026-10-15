@@ -2,7 +2,7 @@
 ; SprDef_Add - append a sprite definition to g_SpriteDefs, preloading its tiles at the VRAM tile cursor
 ; In:  8(a6) = sprite-def pointer   $C(a6) = word: frame
 ; Out: none
-; Evidence: entry g_SpriteDefs + word g_SpriteDefCount(a5)*$14: Spr_Init(entry, 0, def, frame, 0, cursor g_VramTileCursor(a5), 0), Spr_PreloadToHeap(entry, cursor) -> new cursor -$3598; count -$34A2 += 1; Obj_SetSpriteDef later copies entries into objects
+; Evidence: entry g_SpriteDefs + word g_SpriteDefCount(a5)*$14: Spr_Init(entry, 0, def, frame, 0, cursor g_VramTileCursor(a5), 0), Spr_PreloadToHeap(entry, cursor) -> new cursor g_VramTileCursor; count g_SpriteDefCount += 1; Obj_SetSpriteDef later copies entries into objects
 ; ---------------------------------------------------------------------------
 SprDef_Add:
 	link.w	a6,#$0

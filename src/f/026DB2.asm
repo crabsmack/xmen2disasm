@@ -1,8 +1,8 @@
 ; ---------------------------------------------------------------------------
-; RetractFloor_StateWait - RETRACTFLOOR: keep the camera fields at 100/$91 until a drop happened; when triggered raise the fall value -$3CD0 (+$10, max $500) and drop after 30 frames
+; RetractFloor_StateWait - RETRACTFLOOR: keep the camera fields at 100/$91 until a drop happened; when triggered raise the fall value g_RetractFloorDepth (+$10, max $500) and drop after 30 frames
 ; In:  8(a6) = this
 ; Out: d0
-; Evidence: g_Camera +$40/+$42 while -$3AFA == 0; +$8C bit 0 = triggered; +6 |= $1000; next RetractFloor_StateDrop
+; Evidence: g_Camera +$40/+$42 while g_FloatFallSpeed == 0; +$8C bit 0 = triggered; +6 |= $1000; next RetractFloor_StateDrop
 ; ---------------------------------------------------------------------------
 RetractFloor_StateWait:
 	link.w	a6,#$0

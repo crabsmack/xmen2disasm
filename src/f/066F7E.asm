@@ -2,7 +2,7 @@
 ; LogoAndDemo_RunScene - scene 'CerebroScreen LogoAndDemo': Cerebro intro with PRESS START; start pressed -> new game, else attract demos
 ; In:  none
 ; Out: none
-; Evidence: Scene_RegisterAll entry; -$3C5E bit 1 (set when START pressed in Cerebro_PlayIntro) -> Game_ResetPlayers, else g_SceneIndex = -1 (Game_SceneLoop plays demos)
+; Evidence: Scene_RegisterAll entry; g_ProgressFlags bit 1 (set when START pressed in Cerebro_PlayIntro) -> Game_ResetPlayers, else g_SceneIndex = -1 (Game_SceneLoop plays demos)
 ; ---------------------------------------------------------------------------
 LogoAndDemo_RunScene:
 	link.w	a6,#$0

@@ -2,7 +2,7 @@
 ; Spr_BeginFrame - start building this frame's sprite list: undo last frame's terminator and point the writer before the first slot
 ; In:  none
 ; Out: none
-; Evidence: if last index -$1FDE != $51: restore its link byte to index+1; write index -$1FE2 = $51, write pointer -$1FE6 = g_SpriteTable+$288; called from the scene loop Level_FrameLoop
+; Evidence: if last index g_SprLast != $51: restore its link byte to index+1; write index g_SprIndex = $51, write pointer g_SprWritePtr = g_SpriteTable+$288; called from the scene loop Level_FrameLoop
 ; ---------------------------------------------------------------------------
 Spr_BeginFrame:
 	link.w	a6,#$0

@@ -1,5 +1,5 @@
 ; ---------------------------------------------------------------------------
-; FloatBubble_Init - vtable +$12 constructor: sprite set -$3C3A, palette line 0 in the Jungle scenes else 2, direction/speed ($100-$500)/flags from the placement
+; FloatBubble_Init - vtable +$12 constructor: sprite set g_FloatBubbleSprDef, palette line 0 in the Jungle scenes else 2, direction/speed ($100-$500)/flags from the placement
 ; Evidence: first state FloatBubble_StateGrowStart (placement flag bit 0) or FloatBubble_StateStart; +$60 = FloatBubble_StatePop; speed switch Sw_0AC01E
 ; ---------------------------------------------------------------------------
 FloatBubble_Init:

@@ -1,5 +1,5 @@
 ; ---------------------------------------------------------------------------
-; BaniMazaA2_AnimatePalettes_copy - BaniMazaA2_AnimatePalettes default (table jt $982) and common tail: copy 6 colours from the band table at step -$3B3A into $FFC8D4
+; BaniMazaA2_AnimatePalettes_copy - BaniMazaA2_AnimatePalettes default (table jt $982) and common tail: copy 6 colours from the band table at step g_SceneVar3B3A into $FFC8D4
 ; In:  a4 = table
 ; Out: none
 ; Evidence: Mem_Copy(-$392C, a4 + step*2, 12)

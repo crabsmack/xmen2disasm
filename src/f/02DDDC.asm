@@ -2,7 +2,7 @@
 ; Exodus_CheckFloorHit - when a downward blast hit floor segment A or B: disable it, drop players standing on it and break its tiles
 ; In:  none
 ; Out: none
-; Evidence: Exodus object at -$3CB8; +$A2 hit segment vs +$A0/+$A1; segment records at -$33D2 + n*$14 (flag $40, +$10/+$11 = $FF); Exodus_DropPlayerFromSeg, Exodus_BreakFloorTiles
+; Evidence: Exodus object at g_ExodusObj; +$A2 hit segment vs +$A0/+$A1; segment records at g_Segs + n*$14 (flag $40, +$10/+$11 = $FF); Exodus_DropPlayerFromSeg, Exodus_BreakFloorTiles
 ; ---------------------------------------------------------------------------
 Exodus_CheckFloorHit:
 	link.w	a6,#$0

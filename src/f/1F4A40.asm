@@ -2,7 +2,7 @@
 ; Obj_UpdateBoxes - recompute both object boxes (body +$4C..+$52 and second box +$54..+$5A) and, for objects owning a floor segment, the segment's endpoints
 ; In:  8(a6) = object
 ; Out: none
-; Evidence: like Obj_UpdateBox plus frame offsets +8..+$B into +$54..+$5A; if flags +6 bit $200 and segment index +$7A != $FF: segment record (-$33D2 + idx*$14) +8..+$E = left, top+1, right, bottom, then Seg_ComputeLength(segment)
+; Evidence: like Obj_UpdateBox plus frame offsets +8..+$B into +$54..+$5A; if flags +6 bit $200 and segment index +$7A != $FF: segment record (g_Segs + idx*$14) +8..+$E = left, top+1, right, bottom, then Seg_ComputeLength(segment)
 ; ---------------------------------------------------------------------------
 Obj_UpdateBoxes:
 	movea.l	$4(a7),a0

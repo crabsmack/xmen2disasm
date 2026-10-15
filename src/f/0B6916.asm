@@ -1,5 +1,5 @@
 ; ---------------------------------------------------------------------------
-; BrainChild_Init - parent (BIONPC) Init, then sprite def jt $1EA2 (palette 1), arena x $60-$220 / y $60-$140 (+$96..+$9C), stats record -$3B14 with health 4, AI script jt $1DB2 (+$9E), state BrainChild_StateStart (+$5C/+$64), flags |= $1083, no motion, animation jt $1D92, Obj_UpdateBoxes, sound $45, camera focus -$3B20 := this (BRAINCHILD override of slot +$12 Init)
+; BrainChild_Init - parent (BIONPC) Init, then sprite def jt $1EA2 (palette 1), arena x $60-$220 / y $60-$140 (+$96..+$9C), stats record g_SceneVar3B14 with health 4, AI script jt $1DB2 (+$9E), state BrainChild_StateStart (+$5C/+$64), flags |= $1083, no motion, animation jt $1D92, Obj_UpdateBoxes, sound $45, camera focus g_SceneVar3B20 := this (BRAINCHILD override of slot +$12 Init)
 ; In:  8(a6) = this, $C(a6) = long x, $10(a6) = long y (8 fraction bits), $14(a6) = spawn parameter
 ; Out: none
 ; Evidence: slot +$12 of the BRAINCHILD descriptor $0B7BAC; TAS frames 33489-33489 (1 frames active)

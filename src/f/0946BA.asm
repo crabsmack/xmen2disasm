@@ -2,7 +2,7 @@
 ; EvilMaker_StateWaitKills - EVILMAKER state: wait until two clones have been killed, then switch the scene to clone-maker mode and start the drop script
 ; In:  8(a6) = this
 ; Out: d0
-; Evidence: -$3C3C (clone kill count, XClone_KillAndCount) >= 2 -> g_Camera slot +$3A, XClone_StartMakerMode, script step 0 (+$8E/+$8C); +$5C/+$64 from EvilMaker_Init; TAS 52155-52804
+; Evidence: g_CloneMakerKills (clone kill count, XClone_KillAndCount) >= 2 -> g_Camera slot +$3A, XClone_StartMakerMode, script step 0 (+$8E/+$8C); +$5C/+$64 from EvilMaker_Init; TAS 52155-52804
 ; Found: link-after-rts
 ; ---------------------------------------------------------------------------
 EvilMaker_StateWaitKills:

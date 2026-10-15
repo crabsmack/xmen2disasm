@@ -2,7 +2,7 @@
 ; Tusk_StateStartFight - TUSK: lock the camera around it, open the arena hook, start its music ($23), move players to layer 0
 ; In:  8(a6) = this
 ; Out: d0 = 0
-; Evidence: camera limits -$3A9C/-$3A98/-$3A96/-$3A9A from its home; Snd_StopAll, sound $23; next Tusk_StateChooseAttack after 100
+; Evidence: camera limits g_CamMinYTarget/g_CamMinXTarget/g_CamMaxXTarget/g_CamMaxYTarget from its home; Snd_StopAll, sound $23; next Tusk_StateChooseAttack after 100
 ; ---------------------------------------------------------------------------
 Tusk_StateStartFight:
 	link.w	a6,#$0

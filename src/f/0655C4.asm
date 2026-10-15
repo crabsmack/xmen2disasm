@@ -2,7 +2,7 @@
 ; Cerebro_TextOpSetCursor - text script ops 1-3 (set cursor, wait N frames, clear window + set cursor)
 ; In:  a4 = script pointer
 ; Out: none
-; Evidence: cases 1-3 of Sw_065532 in Cerebro_RunTextScript; cursor -$3B04/-$3B06 = window origin -$3C56/-$3C58 + signed bytes
+; Evidence: cases 1-3 of Sw_065532 in Cerebro_RunTextScript; cursor g_SceneVar3B04/g_SceneVar3B06 = window origin g_TextWinLeft/g_TextWinTop + signed bytes
 ; ---------------------------------------------------------------------------
 Cerebro_TextOpSetCursor:
 	move.b	(a4)+,d0

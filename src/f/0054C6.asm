@@ -1,7 +1,7 @@
 ; ---------------------------------------------------------------------------
 ; Scene_RegisterAll - register every scene (Cerebro screens and stage parts) by name + entry function, storing the returned scene ids
 ; In:  none
-; Out: none (byte globals -$3B70..-$3B4C etc. = scene ids)
+; Out: none (byte globals g_ScnSiberiaB1..g_ScnAvalonB2 etc. = scene ids)
 ; Evidence: calls Scene_Register(name, fn) ~50 times with Str_SiberiaB1Blizzard, Str_CerebroScreenPlayerSelect...; Scene_Register appends {name, fn} to g_SceneTable and returns the index
 ; ---------------------------------------------------------------------------
 Scene_RegisterAll:

@@ -2,7 +2,7 @@
 ; Spr_EmitStream_Piece - Spr_EmitStream inner loop: write one piece, advance the tile number by Tbl_SprTilesStream, finish the frame
 ; In:  registers of Spr_EmitStream
 ; Out: none
-; Evidence: a4 += 8 (ROM piece), stores -$1FE6/-$1FE2 at the end
+; Evidence: a4 += 8 (ROM piece), stores g_SprWritePtr/g_SprIndex at the end
 ; ---------------------------------------------------------------------------
 Spr_EmitStream_Piece:
 	swap	d6

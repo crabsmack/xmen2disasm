@@ -2,7 +2,7 @@
 ; BigAcolyte_ActGrow - BIGACOLYTE intro step 4: grow the rendered picture 2x3 px per frame (moving up-left) until width $39, then burst out
 ; In:  8(a6) = this
 ; Out: d0 = +4 & 8
-; Evidence: scale record -$CA2 +$10/+$12 += 2/3; sound $DC at the start; BigAcolyte_RenderScaled each frame; then BigAcolyte_StateBurstWall
+; Evidence: scale record g_ScaleParamsPtr +$10/+$12 += 2/3; sound $DC at the start; BigAcolyte_RenderScaled each frame; then BigAcolyte_StateBurstWall
 ; ---------------------------------------------------------------------------
 BigAcolyte_ActGrow:
 	link.w	a6,#$0

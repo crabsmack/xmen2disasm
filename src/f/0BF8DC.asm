@@ -1,5 +1,5 @@
 ; ---------------------------------------------------------------------------
-; SavageJungle_PalPhaseUpdate - Savage jungle per-frame: when the phase timer runs out step the palette phase -$3C1C (5-case switch writing palette colours) and reload the timer from the script (x 60 frames)
+; SavageJungle_PalPhaseUpdate - Savage jungle per-frame: when the phase timer runs out step the palette phase g_JunglePalPhase (5-case switch writing palette colours) and reload the timer from the script (x 60 frames)
 ; In:  none
 ; Out: none
 ; Evidence: phases gate SwampFly_SpawnRecInView; g_PalBaseDirty unless fading; TAS 29691-30594

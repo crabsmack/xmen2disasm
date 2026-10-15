@@ -2,7 +2,7 @@
 ; DrawList_Init - clear the 30-node draw list
 ; In:  none
 ; Out: d0 = 0
-; Evidence: nodes of $14 bytes at g_DrawNodes(a5) {+0 next, +4 prev, +8 func, +$C object, +$10 sort key = $5FF, +$12 flags = 0}; head -$1350, tail -$1354, alloc cursor -$1358
+; Evidence: nodes of $14 bytes at g_DrawNodes(a5) {+0 next, +4 prev, +8 func, +$C object, +$10 sort key = $5FF, +$12 flags = 0}; head g_DrawListHead, tail g_DrawListTail, alloc cursor g_DrawNodeCursor
 ; ---------------------------------------------------------------------------
 DrawList_Init:
 	link.w	a6,#$0

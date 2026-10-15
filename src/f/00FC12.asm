@@ -2,7 +2,7 @@
 ; AvalonB1_ScrollCameraTo - set the camera position clamped to the level limits and redraw the scroll
 ; In:  8(a6) = word x, $C(a6) = word y
 ; Out: none
-; Evidence: clamps to -$3A90..-$3A8E (x) and -$3A94..-$3A92 (y), stores g_CameraX/g_CameraY, calls the scroll hooks at -$3A54/-$3A50 with interrupts off; callers are the five AvalonB1_CamHook* functions
+; Evidence: clamps to g_CamMinX..g_CamMaxX (x) and g_CamMinY..g_CamMaxY (y), stores g_CameraX/g_CameraY, calls the scroll hooks at g_MapColHook/g_MapRowHook with interrupts off; callers are the five AvalonB1_CamHook* functions
 ; ---------------------------------------------------------------------------
 AvalonB1_ScrollCameraTo:
 	link.w	a6,#$0

@@ -1,5 +1,5 @@
 ; ---------------------------------------------------------------------------
-; SavageBioBase_Init - vtable +$12 constructor: arena box x $40-$240 / y $60-$140, camera focus -$3B20 := this
+; SavageBioBase_Init - vtable +$12 constructor: arena box x $40-$240 / y $60-$140, camera focus g_SceneVar3B20 := this
 ; Evidence: builds a spawn record from x/y when none; TAS 33558-33663
 ; ---------------------------------------------------------------------------
 SavageBioBase_Init:

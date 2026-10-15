@@ -2,7 +2,7 @@
 ; BroodBoss_StateScream - BROODBOSS state: count +$8E down (1 or 2 per frame), then the next step
 ; In:  8(a6) = this
 ; Out: d0
-; Evidence: SetFrame(0); clears -$3B0C bit $40 while counting
+; Evidence: SetFrame(0); clears g_SceneVar3B0C bit $40 while counting
 ; Found: link-after-rts
 ; ---------------------------------------------------------------------------
 BroodBoss_StateScream:

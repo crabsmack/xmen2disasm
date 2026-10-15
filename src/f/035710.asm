@@ -2,7 +2,7 @@
 ; AvalonA4_InstallTileHooks - install AvalonA4's four map tile hooks
 ; In:  none
 ; Out: none
-; Evidence: -$3AF4..-$3AE8 = AvalonA4_SwitchTileHook, AvalonA4_GlobCrackBlockHook, AvalonA4_GlobCrackColumnHook, AvalonA4_CrackFloorHook; others 0; byte -$35C8 = 1
+; Evidence: -$3AF4..-$3AE8 = AvalonA4_SwitchTileHook, AvalonA4_GlobCrackBlockHook, AvalonA4_GlobCrackColumnHook, AvalonA4_CrackFloorHook; others 0; byte g_TileHooksOn = 1
 ; ---------------------------------------------------------------------------
 AvalonA4_InstallTileHooks:
 	link.w	a6,#$0

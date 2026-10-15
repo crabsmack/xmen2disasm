@@ -2,7 +2,7 @@
 ; PlayerSelect_PrevFreeChar - previous portrait slot not taken by either cursor, wrapping
 ; In:  8(a6) = word slot (-1 = none)
 ; Out: d0.w = slot
-; Evidence: skips slots equal to cursor -$3B28/-$3B2C +$3C; wraps to -$3B0E - 1
+; Evidence: skips slots equal to cursor g_SceneVar3B28/g_SceneVar3B2C +$3C; wraps to g_SceneVar3B0E - 1
 ; ---------------------------------------------------------------------------
 PlayerSelect_PrevFreeChar:
 	link.w	a6,#$0

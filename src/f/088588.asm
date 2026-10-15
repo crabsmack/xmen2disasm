@@ -2,7 +2,7 @@
 ; CloneA5_LoadResources - CloneA5: load the scene's four resource sets
 ; In:  none
 ; Out: none
-; Evidence: SprDef_Add for jt[$2E0A]/[$3648]/[$2A92]/[$15AE] -> -$3B04, -$3B08, -$3C4C; two passed to Debris_SetSprDef for the effect pools -$3B1C/-$3B14; called via Spr_ReloadDefs by CloneA5_FrameHook; TAS 49271
+; Evidence: SprDef_Add for jt[$2E0A]/[$3648]/[$2A92]/[$15AE] -> g_SceneVar3B04, g_SceneVar3B08, g_BroodClawSprDef; two passed to Debris_SetSprDef for the effect pools g_SceneVar3B1C/g_SceneVar3B14; called via Spr_ReloadDefs by CloneA5_FrameHook; TAS 49271
 ; Found: link-after-rts
 ; ---------------------------------------------------------------------------
 CloneA5_LoadResources:

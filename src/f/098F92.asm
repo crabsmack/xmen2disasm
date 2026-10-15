@@ -1,8 +1,8 @@
 ; ---------------------------------------------------------------------------
-; XClone_KillAndCount - kill a clone and count it (-$3C3C += 1)
+; XClone_KillAndCount - kill a clone and count it (g_CloneMakerKills += 1)
 ; In:  8(a6) = object
 ; Out: d0 = old count
-; Evidence: slot +$52 Kill then increments -$3C3C, which EvilMaker_StateWaitKills compares with 2; jt 792
+; Evidence: slot +$52 Kill then increments g_CloneMakerKills, which EvilMaker_StateWaitKills compares with 2; jt 792
 ; Found: jt 792
 ; ---------------------------------------------------------------------------
 XClone_KillAndCount:

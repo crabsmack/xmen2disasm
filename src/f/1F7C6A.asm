@@ -2,7 +2,7 @@
 ; Seg_Create - allocate and initialise a floor segment
 ; In:  8(a6) = byte: type   $C(a6)..$1C(a6) = words: x1, y1, x2, y2, extra
 ; Out: d0 = segment record pointer (hangs if the table is full)
-; Evidence: same free search as Seg_Alloc over -$33D2 records (high-water -$3474), then Seg_Setup(record, type, ...); 5 callers
+; Evidence: same free search as Seg_Alloc over g_Segs records (high-water g_SegHighWater), then Seg_Setup(record, type, ...); 5 callers
 ; ---------------------------------------------------------------------------
 Seg_Create:
 	link.w	a6,#$0

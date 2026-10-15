@@ -2,7 +2,7 @@
 ; Actor_Draw - ACTOR slot +$1A: draw the object's sprite at its camera-relative position (blinks while flag $40 is set)
 ; In:  8(a6) = object
 ; Out: none
-; Evidence: skips odd/even frames when flags +6 bit $40 (frame counter -$3A24 bit 0); anim script flags $30 = $20/$30 offset x/y by +$4A; Spr_Draw(obj+$2E, x>>8 - g_CameraX, y>>8 - g_CameraY); the method DrawList_Add registers
+; Evidence: skips odd/even frames when flags +6 bit $40 (frame counter g_LevelFrame bit 0); anim script flags $30 = $20/$30 offset x/y by +$4A; Spr_Draw(obj+$2E, x>>8 - g_CameraX, y>>8 - g_CameraY); the method DrawList_Add registers
 ; ---------------------------------------------------------------------------
 Actor_Draw:
 	link.w	a6,#$0

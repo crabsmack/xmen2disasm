@@ -2,7 +2,7 @@
 ; Spr_EmitStreamLinked_Piece - Spr_EmitStreamLinked inner loop: add $80, clip one piece and write it to the next slot
 ; In:  registers of Spr_EmitStreamLinked
 ; Out: none
-; Evidence: window test after adding $80 to x and y; slot via link byte at -$1FE6; Tbl_SprTilesStreamLinked
+; Evidence: window test after adding $80 to x and y; slot via link byte at g_SprWritePtr; Tbl_SprTilesStreamLinked
 ; ---------------------------------------------------------------------------
 Spr_EmitStreamLinked_Piece:
 	move.w	#$80,d0

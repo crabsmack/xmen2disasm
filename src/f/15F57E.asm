@@ -2,7 +2,7 @@
 ; Nem_PutRowMasked - Nemesis row writer for masked VRAM output: per 8 rows (one tile) consult a bitmap to write or skip the tile
 ; In:  d4 = row, a4 = $C00000, d2 = rows left, $1C(a6) = tile mask bitmap
 ; Out: none
-; Evidence: row counter -$3B04 (8 per tile), tile index -$3B06; bit (index & 7) of byte bitmap[index >> 3] selects this routine or the skip entry for the next tile; mode 2
+; Evidence: row counter g_SceneVar3B04 (8 per tile), tile index g_SceneVar3B06; bit (index & 7) of byte bitmap[index >> 3] selects this routine or the skip entry for the next tile; mode 2
 ; ---------------------------------------------------------------------------
 Nem_PutRowMasked:
 	move.l	d4,(a4)

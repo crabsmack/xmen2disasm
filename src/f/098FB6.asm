@@ -2,7 +2,7 @@
 ; XClone_LoadResources - load the clone-maker resources (clone art, effects)
 ; In:  none
 ; Out: none
-; Evidence: SprDef_Add x4 -> -$3C3E, effect pool -$3B1C+4, -$1A84, -$1A88; GaussBullet_InitPool; run via Spr_ReloadDefs by XClone_StartMakerMode; TAS 52804
+; Evidence: SprDef_Add x4 -> g_EvilBeastThrowSprDef, effect pool g_SceneVar3B1C+4, g_FlyBroodSprDef, g_BioFlameSprDef; GaussBullet_InitPool; run via Spr_ReloadDefs by XClone_StartMakerMode; TAS 52804
 ; Found: link-after-rts
 ; ---------------------------------------------------------------------------
 XClone_LoadResources:

@@ -2,7 +2,7 @@
 ; Spr_PlaceAttached - snap the objects attached to a sprite to its anchor point and call their vtable slot $1E
 ; In:  8(a6) = sprite instance (object+$2E)   $C(a6) = word: screen x   $10(a6) = word: screen y
 ; Out: none
-; Evidence: chain from sprite+$D through the object table -$34A6 (next = object+$3C); objects with flags +4 & $1800 == $1800 are moved by Obj_ShiftTree so their screen position matches (x, y - frame byte +$2B)
+; Evidence: chain from sprite+$D through the object table g_ObjTable (next = object+$3C); objects with flags +4 & $1800 == $1800 are moved by Obj_ShiftTree so their screen position matches (x, y - frame byte +$2B)
 ; ---------------------------------------------------------------------------
 Spr_PlaceAttached:
 	link.w	a6,#$FFFC

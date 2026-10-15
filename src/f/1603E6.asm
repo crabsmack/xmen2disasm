@@ -2,7 +2,7 @@
 ; Rand_Next_Mix3 - Rand_Next third stage: XOR the third table entry and step its index
 ; In:  d0 = partial value
 ; Out: continues in Rand_Next_Finish
-; Evidence: index -$7AE wraps at $FC
+; Evidence: index g_RandIdx3 wraps at $FC
 ; ---------------------------------------------------------------------------
 Rand_Next_Mix3:
 	move.w	g_RandIdx3(a5),d1

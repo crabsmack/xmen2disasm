@@ -2,7 +2,7 @@
 ; ApocBomb_DrawShadow - draw a two-sprite floor shadow under an object (players in the Apocalypse fight): at the object if on a floor segment, else on the curved floor (y $E8 - |x-256|/16)
 ; In:  8(a6) = object
 ; Out: none
-; Evidence: sprite def jt $4DD54, tile base from the sprite table (-$3C6E); called by BaniMazaA2_DrawHook for each player
+; Evidence: sprite def jt $4DD54, tile base from the sprite table (g_ApocBombSprDef); called by BaniMazaA2_DrawHook for each player
 ; ---------------------------------------------------------------------------
 ApocBomb_DrawShadow:
 	link.w	a6,#$FFF4

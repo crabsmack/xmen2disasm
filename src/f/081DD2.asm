@@ -1,8 +1,8 @@
 ; ---------------------------------------------------------------------------
-; CloneA2_LoadResources - load the two CloneA2 graphics/resource sets into -$1A7E and -$1A88
+; CloneA2_LoadResources - load the two CloneA2 graphics/resource sets into g_MaintRobotSprDef and g_BioFlameSprDef
 ; In:  none
 ; Out: none
-; Evidence: SprDef_Add(jt $3982 data, 1) -> -$1A7E, SprDef_Add(jt $3662 data, 3) -> -$1A88 (same call shape as the actor ClassInit resource loads); called from CloneA2_InstallHooks
+; Evidence: SprDef_Add(jt $3982 data, 1) -> g_MaintRobotSprDef, SprDef_Add(jt $3662 data, 3) -> g_BioFlameSprDef (same call shape as the actor ClassInit resource loads); called from CloneA2_InstallHooks
 ; ---------------------------------------------------------------------------
 CloneA2_LoadResources:
 	link.w	a6,#$0

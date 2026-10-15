@@ -1,5 +1,5 @@
 ; ---------------------------------------------------------------------------
-; Exodus_HurtOnHotTiles - hurt an object standing on the energised floor tiles (tile ids -$3AA8..+3) below y $304
+; Exodus_HurtOnHotTiles - hurt an object standing on the energised floor tiles (tile ids g_FgBlockCount..+3) below y $304
 ; In:  8(a6) = object
 ; Out: none
 ; Evidence: present, y px > $304, hit cooldown +$6A == 0, map tile under its feet in range -> slot $26 TakeDamage(0, 4, 1, -1, -1)

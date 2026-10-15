@@ -2,7 +2,7 @@
 ; AvalonA4_InstallHooks - install AvalonA4's frame hook, tile hooks and event hooks
 ; In:  none
 ; Out: none
-; Evidence: -$388E = AvalonA4_FrameHook, AvalonA4_InstallTileHooks, AvalonA4_InstallEventHooks
+; Evidence: g_SceneFrameHook = AvalonA4_FrameHook, AvalonA4_InstallTileHooks, AvalonA4_InstallEventHooks
 ; ---------------------------------------------------------------------------
 AvalonA4_InstallHooks:
 	link.w	a6,#$0

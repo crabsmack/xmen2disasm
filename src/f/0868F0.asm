@@ -1,5 +1,5 @@
 ; ---------------------------------------------------------------------------
-; BroodBoss_Update - parent (BROODBOSSPARTS) Update, then unless +4 bit $10: move -$3C48 down to $2B while -$3B0C bit 4 (then clear it) or back up to $33, publish health x 2 in -$3C4A, and while -$3B0C bit 1 hit each live, on-screen player whose box spans the floor line y $62D (its own Attack, type 4, damage +$70) (BROODBOSS override of slot +$4A Update)
+; BroodBoss_Update - parent (BROODBOSSPARTS) Update, then unless +4 bit $10: move g_BroodBossOffsetY down to $2B while g_SceneVar3B0C bit 4 (then clear it) or back up to $33, publish health x 2 in g_BroodBossHealthBar, and while g_SceneVar3B0C bit 1 hit each live, on-screen player whose box spans the floor line y $62D (its own Attack, type 4, damage +$70) (BROODBOSS override of slot +$4A Update)
 ; In:  8(a6) = this
 ; Out: none
 ; Evidence: slot +$4A of the BROODBOSS descriptor $088D6E; TAS frames 49291-51132 (1087 frames active)

@@ -2,7 +2,7 @@
 ; Obj_InScreenWindow - test whether an object's body box overlaps the camera window
 ; In:  8(a6) = object
 ; Out: d0 = 1 overlapping (or flags +6 bit $1000), else 0
-; Evidence: box +$4E/+$52/+$4C/+$50 minus g_CameraX/Y against words -$35BA/-$35B8 (x) and -$35BE/-$35BC (y); flags +6 $800 / $20 skip the x / y test; jt 2007
+; Evidence: box +$4E/+$52/+$4C/+$50 minus g_CameraX/Y against words g_ActWinRight/g_ActWinLeft (x) and g_ActWinBottom/g_ActWinTop (y); flags +6 $800 / $20 skip the x / y test; jt 2007
 ; ---------------------------------------------------------------------------
 Obj_InScreenWindow:
 	link.w	a6,#$0

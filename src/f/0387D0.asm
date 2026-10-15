@@ -2,7 +2,7 @@
 ; BaniMazaA1_InstallTileHooks - install BaniMazaA1's map tile hook (slot -$3AF4 = BaniMazaA1_SwitchTileHook) and clear its cooldown
 ; In:  none
 ; Out: none
-; Evidence: clears the 8 hook longs -$3AF8..-$3ADC except -$3AF4; byte -$35C8 = 1; -$3C94 = 0
+; Evidence: clears the 8 hook longs g_TileHooks..-$3ADC except -$3AF4; byte g_TileHooksOn = 1; g_BmA1SwitchTimer = 0
 ; ---------------------------------------------------------------------------
 BaniMazaA1_InstallTileHooks:
 	link.w	a6,#$0

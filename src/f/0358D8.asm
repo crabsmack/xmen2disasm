@@ -1,8 +1,8 @@
 ; ---------------------------------------------------------------------------
-; AvalonA4_SetCameraZone - apply camera zone N (limits x0,y0,x1,y1 via g_Camera +$36) and set bit 1<<N in -$3B02
+; AvalonA4_SetCameraZone - apply camera zone N (limits x0,y0,x1,y1 via g_Camera +$36) and set bit 1<<N in g_SceneVar3B02
 ; In:  8(a6) = word zone 0-5, $C..$18(a6) = word x0, y0, x1, y1
 ; Out: none
-; Evidence: g_Camera +$36(x0, y0, x1, y1, N != 3, 0); switch Sw_0358D8 -> mask; or.w into -$3B02
+; Evidence: g_Camera +$36(x0, y0, x1, y1, N != 3, 0); switch Sw_0358D8 -> mask; or.w into g_SceneVar3B02
 ; ---------------------------------------------------------------------------
 AvalonA4_SetCameraZone:
 	link.w	a6,#$0

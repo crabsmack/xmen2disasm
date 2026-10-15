@@ -1,5 +1,5 @@
 ; ---------------------------------------------------------------------------
-; FloatBubble_Move - vtable +$4E: drift (velocity/accel clamped to +-max) plus a wobble offset around the last turning point; stuck to the surface line -$38BC while +$8C bit 1
+; FloatBubble_Move - vtable +$4E: drift (velocity/accel clamped to +-max) plus a wobble offset around the last turning point; stuck to the surface line g_FloodLineY while +$8C bit 1
 ; Evidence: only when +$8C bit 2; TAS 29721-31625
 ; ---------------------------------------------------------------------------
 FloatBubble_Move:

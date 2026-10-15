@@ -1,5 +1,5 @@
 ; ---------------------------------------------------------------------------
-; SavageA4_CamUpdate - SavageA4 camera update: follow the players (and the object -$3B20 when set), using the dead zones
+; SavageA4_CamUpdate - SavageA4 camera update: follow the players (and the object g_SceneVar3B20 when set), using the dead zones
 ; In:  8(a6) = camera
 ; Out: d0
 ; Evidence: same follow logic as XClone_CamArenaUpdate without the arena clamp; installed by SavageA4_CamSetHooks; TAS 33388-34594

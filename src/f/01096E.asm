@@ -2,7 +2,7 @@
 ; BigAcolyte_LoadSprite - level-load callback: add the BIGACOLYTE debris sprite definition and store its id
 ; In:  none
 ; Out: none
-; Evidence: SprDef_Add(jt $21F3E, 0) -> word at (-$3CDA)+4; registered with Spr_ReloadDefs by BigAcolyte_ActAppear
+; Evidence: SprDef_Add(jt $21F3E, 0) -> word at (g_BigAcolyteDebris)+4; registered with Spr_ReloadDefs by BigAcolyte_ActAppear
 ; ---------------------------------------------------------------------------
 BigAcolyte_LoadSprite:
 	link.w	a6,#$0

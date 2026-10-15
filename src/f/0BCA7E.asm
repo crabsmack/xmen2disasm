@@ -2,7 +2,7 @@
 ; SavageBio_ActDie - SAVAGE bio script action: die - hide; with a companion, move it here and run its death script jt[$208A]; without, end the scene in $F0 frames
 ; In:  8(a6) = this
 ; Out: d0
-; Evidence: no companion: Scene_EndAfter($F0), -$3B20 := 0, ExplodeFx_Chain(this, jt[$3D42], ...); TAS 33929
+; Evidence: no companion: Scene_EndAfter($F0), g_SceneVar3B20 := 0, ExplodeFx_Chain(this, jt[$3D42], ...); TAS 33929
 ; Found: jt 1021
 ; ---------------------------------------------------------------------------
 SavageBio_ActDie:

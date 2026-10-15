@@ -1,5 +1,5 @@
 ; ---------------------------------------------------------------------------
-; RetractFloor_Draw - draw the floor as two halves parted by the retract offset +$8E: up to 3 pairs of 32x16 hardware sprites from -$3CCE (right half mirrored), nothing once +$8E > $80 (RETRACTFLOOR override of slot +$1A Draw; does not call the parent)
+; RetractFloor_Draw - draw the floor as two halves parted by the retract offset +$8E: up to 3 pairs of 32x16 hardware sprites from g_RetractFloorSprDef (right half mirrored), nothing once +$8E > $80 (RETRACTFLOOR override of slot +$1A Draw; does not call the parent)
 ; In:  8(a6) = this (RETRACTFLOOR object)
 ; Out: none
 ; Evidence: class descriptor RETRACTFLOOR slot +$1A (tools/classes.py); TAS frames 14237-16781 (1456 active)

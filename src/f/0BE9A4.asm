@@ -1,5 +1,5 @@
 ; ---------------------------------------------------------------------------
-; Launcher_ClassInit - vtable +$5E: per-level class setup for LAUNCHER: load its two resource sets (-$3C2A, -$3C2C)
+; Launcher_ClassInit - vtable +$5E: per-level class setup for LAUNCHER: load its two resource sets (g_LauncherSprDef, g_LauncherShotSprDef)
 ; ---------------------------------------------------------------------------
 Launcher_ClassInit:
 	link.w	a6,#$0

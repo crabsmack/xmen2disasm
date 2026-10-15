@@ -2,7 +2,7 @@
 ; XClone_LockArena - lock the arena around a clone: players flagged, camera clamped to the arena (XClone_CamSetArenaMode), clone theme by type
 ; In:  8(a6) = clone
 ; Out: none
-; Evidence: +6 |= $1000; players +$90 |= $200000; -$3B30 := clone if none; camera limits -$3B0A..-$3B10 from the arena and the current limits; g_Camera +$1C := XClone_CamSetArenaMode; Snd_StopAll; switch on Clone_CharTypeOf -> Snd_SetParam($12, n); sound $74; -$3B08 |= 1 (arena locked, XClone_SegHookArenaLocked); clone +$B0 = 1; caller XClone_StateWaitPlayers; TAS 53059-57262
+; Evidence: +6 |= $1000; players +$90 |= $200000; g_SceneVar3B30 := clone if none; camera limits g_SceneVar3B0A..g_SceneVar3B10 from the arena and the current limits; g_Camera +$1C := XClone_CamSetArenaMode; Snd_StopAll; switch on Clone_CharTypeOf -> Snd_SetParam($12, n); sound $74; g_SceneVar3B08 |= 1 (arena locked, XClone_SegHookArenaLocked); clone +$B0 = 1; caller XClone_StateWaitPlayers; TAS 53059-57262
 ; ---------------------------------------------------------------------------
 XClone_LockArena:
 	link.w	a6,#$0

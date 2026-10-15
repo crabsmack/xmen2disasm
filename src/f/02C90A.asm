@@ -1,8 +1,8 @@
 ; ---------------------------------------------------------------------------
-; AvalonA3_PsiFlashStep - one frame of Exodus' screen-wide psychic flash: hurt both players, rotate colours 0-13 of palette line 0 while counter -$3CBA runs, restore the saved palettes when it ends
+; AvalonA3_PsiFlashStep - one frame of Exodus' screen-wide psychic flash: hurt both players, rotate colours 0-13 of palette line 0 while counter g_PsiFlashTimer runs, restore the saved palettes when it ends
 ; In:  none
 ; Out: none
-; Evidence: called from AvalonA3_FrameHook while -$3CBA != 0; -$3CBA = 14 set by Exodus_StartPsiFlash; Exodus_HurtPlayer on g_Player1/g_Player2 each step; restore from the buffers saved by AvalonA3_SavePalettes (-$3B14, -$3B18)
+; Evidence: called from AvalonA3_FrameHook while g_PsiFlashTimer != 0; g_PsiFlashTimer = 14 set by Exodus_StartPsiFlash; Exodus_HurtPlayer on g_Player1/g_Player2 each step; restore from the buffers saved by AvalonA3_SavePalettes (g_SceneVar3B14, g_SceneVar3B18)
 ; ---------------------------------------------------------------------------
 AvalonA3_PsiFlashStep:
 	link.w	a6,#$0

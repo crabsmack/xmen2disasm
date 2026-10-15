@@ -1,6 +1,6 @@
 ; ---------------------------------------------------------------------------
-; BroodBossArm_Draw - vtable +$1A: take the arm frame from the shared byte -$3B10/-$3B0F, then draw
-; Evidence: frame := -$3B0F when +$2F != -$3B10; parent Draw unless frame $FF; TAS 49292-51071
+; BroodBossArm_Draw - vtable +$1A: take the arm frame from the shared byte g_SceneVar3B10/-$3B0F, then draw
+; Evidence: frame := -$3B0F when +$2F != g_SceneVar3B10; parent Draw unless frame $FF; TAS 49292-51071
 ; ---------------------------------------------------------------------------
 BroodBossArm_Draw:
 	link.w	a6,#$0

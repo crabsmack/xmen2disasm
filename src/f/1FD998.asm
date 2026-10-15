@@ -2,7 +2,7 @@
 ; Pal_StartFade - start a palette fade from a given level (in from 0 upward, or out from a non-zero level downward)
 ; In:  8(a6) = word: start level (0 = fade in, else fade out)   $C(a6) = word: palette line or -1 for all   $10(a6) = pointer: fade table
 ; Out: none
-; Evidence: timer -$7C4 = 0, delay -$3A04 = 4, level -$7BC, direction -$7BA = (level == 0), line -$7BE, table -$7C2; applies the first step (Pal_ApplyFade) and sets active byte g_PalFadeActive(a5); Pal_Update advances it
+; Evidence: timer g_PalFadeTimer = 0, delay g_PalFadeDelay = 4, level g_PalFadeLevel, direction g_PalFadeUp = (level == 0), line g_PalFadeLine, table g_PalFadeTable; applies the first step (Pal_ApplyFade) and sets active byte g_PalFadeActive(a5); Pal_Update advances it
 ; ---------------------------------------------------------------------------
 Pal_StartFade:
 	link.w	a6,#$0

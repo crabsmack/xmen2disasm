@@ -2,7 +2,7 @@
 ; FinalText_RunScene - scene 'CerebroScreen FinalText': the ending text (jt $FAA)
 ; In:  none
 ; Out: none
-; Evidence: Scene_RegisterAll entry; Cerebro_Run with script jt $FAA, no select; sets -$3C5E bit $4000 (game finished)
+; Evidence: Scene_RegisterAll entry; Cerebro_Run with script jt $FAA, no select; sets g_ProgressFlags bit $4000 (game finished)
 ; ---------------------------------------------------------------------------
 FinalText_RunScene:
 	link.w	a6,#$0

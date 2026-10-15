@@ -2,7 +2,7 @@
 ; Scene_PreLoadReset - scene-load pre hook: clear the ten 14-byte slots at $FFE4C0 and the table set by ICandy_PoolInit, reset a few scene values
 ; In:  none
 ; Out: none
-; Evidence: installed in -$38E8 by Game_SceneLoop, called at the start of scene load Level_Load; Explosion_ResetAll + ICandy_PoolInit(0,0,0); e4be=$7A1, e4bc=$5F, e4ba=$700 (meaning unknown)
+; Evidence: installed in g_ScenePreLoadHook by Game_SceneLoop, called at the start of scene load Level_Load; Explosion_ResetAll + ICandy_PoolInit(0,0,0); e4be=$7A1, e4bc=$5F, e4ba=$700 (meaning unknown)
 ; ---------------------------------------------------------------------------
 Scene_PreLoadReset:
 	link.w	a6,#$0

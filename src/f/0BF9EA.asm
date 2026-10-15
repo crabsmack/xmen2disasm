@@ -1,6 +1,6 @@
 ; ---------------------------------------------------------------------------
 ; SwampFly_SpawnRecInView - vtable +$2A: in phase 0 the normal window test; later phases spawn a fly only off screen and only if its record's phase (+$E) is below the current phase
-; Evidence: phase -$3C1C (SavageJungle_PalPhaseUpdate); TAS 27889-30595
+; Evidence: phase g_JunglePalPhase (SavageJungle_PalPhaseUpdate); TAS 27889-30595
 ; ---------------------------------------------------------------------------
 SwampFly_SpawnRecInView:
 	link.w	a6,#$0

@@ -1,5 +1,5 @@
 ; ---------------------------------------------------------------------------
-; XClone_Init - parent (BIONPC) Init, then no motion, state XClone_StateWaitPlayers, clone record jt $197A (+$A8) and move set jt $1972 (+$AC), AI script from the record, stats jt $2C7A with health 32, flags |= $82, palette 2, face like the live player; arena x +$A0..+$A2 = x -/+ (placement +8 or $A0) inset $18, +$A6 = y, ceiling +$A4 (segment above or y-$C0), walls -$3B2C/-$3B2A (segments left/right or x -/+ $A0); frame $FF (XCLONE override of slot +$12 Init)
+; XClone_Init - parent (BIONPC) Init, then no motion, state XClone_StateWaitPlayers, clone record jt $197A (+$A8) and move set jt $1972 (+$AC), AI script from the record, stats jt $2C7A with health 32, flags |= $82, palette 2, face like the live player; arena x +$A0..+$A2 = x -/+ (placement +8 or $A0) inset $18, +$A6 = y, ceiling +$A4 (segment above or y-$C0), walls g_SceneVar3B2C/g_SceneVar3B2A (segments left/right or x -/+ $A0); frame $FF (XCLONE override of slot +$12 Init)
 ; In:  8(a6) = this, $C(a6) = long x, $10(a6) = long y (8 fraction bits), $14(a6) = placement entry
 ; Out: none
 ; Evidence: slot +$12 of the XCLONE descriptor $099C90; TAS frames 52266-57222 (8 frames active)

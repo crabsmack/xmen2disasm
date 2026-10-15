@@ -2,7 +2,7 @@
 ; BroodBoss_StateRecoil - BROODBOSS state: recoil - push the part offset +$8C and the boss offset out by 3 (6 with g_TwoPlayerStep) per frame up to 10
 ; In:  8(a6) = this
 ; Out: d0
-; Evidence: -$3C44 += step << 8; next BroodBoss_StateRecoilReturn
+; Evidence: g_BroodBossOffsetX += step << 8; next BroodBoss_StateRecoilReturn
 ; Found: link-after-rts
 ; ---------------------------------------------------------------------------
 BroodBoss_StateRecoil:

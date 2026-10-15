@@ -2,7 +2,7 @@
 ; Game_SceneLoop - run scenes in sequence (Cerebro, select, stages), handle deaths, lives and game over; when the sequence ends, play the 4 attract demos
 ; In:  none
 ; Out: none
-; Evidence: calls g_SceneTable[g_SceneIndex].fn with Scene_PreLoadReset/Scene_PostLoadVram as load hooks; afterwards copies player +$68 health to g_P1Health/g_P2Health, spends a life or drops the player; g_SceneIndex = -1 -> switch on -$3B90 to Game_AttractDemo*; TAS RAM: g_SceneIndex steps 0,1,2...
+; Evidence: calls g_SceneTable[g_SceneIndex].fn with Scene_PreLoadReset/Scene_PostLoadVram as load hooks; afterwards copies player +$68 health to g_P1Health/g_P2Health, spends a life or drops the player; g_SceneIndex = -1 -> switch on g_AttractDemoNum to Game_AttractDemo*; TAS RAM: g_SceneIndex steps 0,1,2...
 ; ---------------------------------------------------------------------------
 Game_SceneLoop:
 	link.w	a6,#$0

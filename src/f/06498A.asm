@@ -2,7 +2,7 @@
 ; PlayerSelect_DrawFrame - add the frame sprite of portrait slot N (small for 0-6, large otherwise) to the sprite list
 ; In:  8(a6) = slot, $C(a6) = x, $10(a6) = y, $14(a6) = palette, $18(a6) = priority flag
 ; Out: none
-; Evidence: writes a 4-word VDP sprite entry into the list at $FFE226 (link from -$1FE6), tile base -$3B10 + slot*$C
+; Evidence: writes a 4-word VDP sprite entry into the list at $FFE226 (link from g_SprWritePtr), tile base g_SceneVar3B10 + slot*$C
 ; ---------------------------------------------------------------------------
 PlayerSelect_DrawFrame:
 	link.w	a6,#$0

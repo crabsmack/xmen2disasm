@@ -2,7 +2,7 @@
 ; BaniMazaA2_ResetCounters - reset the BaniMazaA2 palette-animation counters and flags
 ; In:  none
 ; Out: none
-; Evidence: -$3B0C, -$3B0E = 0; -$3B02 = 2; -$3B32 = 2, -$3B34 = 4, -$3B36 = 6, -$3B38 = 6; -$3B0A = 1
+; Evidence: g_SceneVar3B0C, g_SceneVar3B0E = 0; g_SceneVar3B02 = 2; g_SceneVar3B32 = 2, g_SceneVar3B34 = 4, g_SceneVar3B36 = 6, g_SceneVar3B38 = 6; g_SceneVar3B0A = 1
 ; ---------------------------------------------------------------------------
 BaniMazaA2_ResetCounters:
 	link.w	a6,#$0

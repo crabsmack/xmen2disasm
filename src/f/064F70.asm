@@ -2,7 +2,7 @@
 ; Cerebro_PrintText - print a word-wrapped string into the Cerebro text window (plane at VRAM $E000), optionally typing it out with a colour flash
 ; In:  8(a6) = string ('\r' = newline), $C(a6) = style 0-7
 ; Out: none
-; Evidence: cursor -$3B04/-$3B06, window -$3C58..-$3C5C; styles 4-7 animate per character with VDP_WaitVBlank; style picks the font tile bank
+; Evidence: cursor g_SceneVar3B04/g_SceneVar3B06, window g_TextWinTop..g_TextWinBottom; styles 4-7 animate per character with VDP_WaitVBlank; style picks the font tile bank
 ; ---------------------------------------------------------------------------
 Cerebro_PrintText:
 	link.w	a6,#$FFE4

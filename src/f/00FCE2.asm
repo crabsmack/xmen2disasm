@@ -2,7 +2,7 @@
 ; AvalonB1_TileHook - map tile hook: turn tile $1F/$20 at (x,y) into tile $1E
 ; In:  8(a6) = word column, $C(a6) = word row
 ; Out: d0 = 1
-; Evidence: reads the map word at -$3A84 + row offset table -$3A72; Map_SetBlockFG (set map tile) with $1E; installed in -$3AF4 by AvalonB1_InstallTileHooks
+; Evidence: reads the map word at g_FgBlockMap + row offset table g_FgRowTable; Map_SetBlockFG (set map tile) with $1E; installed in -$3AF4 by AvalonB1_InstallTileHooks
 ; ---------------------------------------------------------------------------
 AvalonB1_TileHook:
 	link.w	a6,#$0

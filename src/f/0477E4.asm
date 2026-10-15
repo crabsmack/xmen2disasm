@@ -2,7 +2,7 @@
 ; BaniMazaA2_DrawHook - BaniMazaA2 draw hook: draw the draw list, then ApocBomb_DrawShadow for each present player
 ; In:  none
 ; Out: none
-; Evidence: installed in -$38F4 (scene draw hook, called each frame by the level loop) by BaniMazaA2_LoadLevel; DrawList_DrawAll
+; Evidence: installed in g_SceneDrawHook (scene draw hook, called each frame by the level loop) by BaniMazaA2_LoadLevel; DrawList_DrawAll
 ; ---------------------------------------------------------------------------
 BaniMazaA2_DrawHook:
 	link.w	a6,#$0

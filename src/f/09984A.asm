@@ -1,5 +1,5 @@
 ; ---------------------------------------------------------------------------
-; XClone_FrameHook - scene hook in clone-maker mode: palette flicker (CloneA2_FlickerUpdate) and the reward timer -$3B06
+; XClone_FrameHook - scene hook in clone-maker mode: palette flicker (CloneA2_FlickerUpdate) and the reward timer g_SceneVar3B06
 ; In:  none
 ; Out: none
 ; Evidence: installed by XClone_StartMakerMode; TAS 52808-57465 every frame

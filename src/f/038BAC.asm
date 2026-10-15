@@ -2,7 +2,7 @@
 ; BaniMazaA1_InitScroll - BaniMazaA1 scroll setup: values for the scroll code, VDP register write, clear the H-scroll buffer
 ; In:  none
 ; Out: none
-; Evidence: -$3A48 = $ABA, -$1D42/-$1D44 = $7BE/$42; writes VDP control from -$4 + 3; clears $1C0 words of g_HScrollBuf
+; Evidence: g_LevelScrollHook = $ABA, g_HScrollFreeTile/g_HScrollFreeCount = $7BE/$42; writes VDP control from -$4 + 3; clears $1C0 words of g_HScrollBuf
 ; ---------------------------------------------------------------------------
 BaniMazaA1_InitScroll:
 	link.w	a6,#$0

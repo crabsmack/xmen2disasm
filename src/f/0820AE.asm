@@ -2,7 +2,7 @@
 ; CloneA2_SetCameraZone - set the camera limits from CloneA2 camera zone N and re-arm the quake trigger
 ; In:  8(a6) = word: zone index
 ; Out: none
-; Evidence: record = Tbl_CloneA2CameraZones + 12*N: +0/+2 -> -$3A98/-$3A9C, +4 - $140 / +6 - $E0 -> -$3A96/-$3A9A (copied to -$3A90.. too); -$3B06 := N, -$3B08 := 0; jt 555; callers CloneA2_StartCamera (zone 0) and Teleporter_StateArrive (teleporter code)
+; Evidence: record = Tbl_CloneA2CameraZones + 12*N: +0/+2 -> g_CamMinXTarget/g_CamMinYTarget, +4 - $140 / +6 - $E0 -> g_CamMaxXTarget/g_CamMaxYTarget (copied to g_CamMinX.. too); g_SceneVar3B06 := N, g_SceneVar3B08 := 0; jt 555; callers CloneA2_StartCamera (zone 0) and Teleporter_StateArrive (teleporter code)
 ; ---------------------------------------------------------------------------
 CloneA2_SetCameraZone:
 	link.w	a6,#$FFFE

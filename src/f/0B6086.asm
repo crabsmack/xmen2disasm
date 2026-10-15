@@ -2,7 +2,7 @@
 ; SavageA4_InitEffectSprite - SavageA4: set up the chamber effect sprite ($FFCC6A, art $0B533E)
 ; In:  none
 ; Out: none
-; Evidence: Spr_Init; frame counters -$3B3A/-$3B32 := 0
+; Evidence: Spr_Init; frame counters g_SceneVar3B3A/g_SceneVar3B32 := 0
 ; Found: link-after-rts
 ; ---------------------------------------------------------------------------
 SavageA4_InitEffectSprite:

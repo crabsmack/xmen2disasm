@@ -2,7 +2,7 @@
 ; Cerebro_ClearTextWindow - fill the Cerebro text window with the blank tile and home the cursor
 ; In:  none
 ; Out: none
-; Evidence: writes tile $86C0 to rows -$3C58..-$3C5C, cols -$3C56..-$3C5A of the plane at VRAM $E000
+; Evidence: writes tile $86C0 to rows g_TextWinTop..g_TextWinBottom, cols g_TextWinLeft..g_TextWinRight of the plane at VRAM $E000
 ; ---------------------------------------------------------------------------
 Cerebro_ClearTextWindow:
 	link.w	a6,#$0

@@ -2,7 +2,7 @@
 ; AvalonA4_AnimatePalettes - AvalonA4 (Throne Room) palette animation: one 6-step sequence every 5 frames driven by a byte table, one 15-step sequence every 4 frames
 ; In:  none
 ; Out: d0
-; Evidence: called from AvalonA4_FrameHook; counters -$3B32/-$3B3A (table jt $34D42, index byte -$3CB0) and -$3B34/-$3B3C; switches write g_PalBase colours; sets g_PalBaseDirty
+; Evidence: called from AvalonA4_FrameHook; counters g_SceneVar3B32/g_SceneVar3B3A (table jt $34D42, index byte g_AvalonA4PalStep) and g_SceneVar3B34/g_SceneVar3B3C; switches write g_PalBase colours; sets g_PalBaseDirty
 ; ---------------------------------------------------------------------------
 AvalonA4_AnimatePalettes:
 	link.w	a6,#$0

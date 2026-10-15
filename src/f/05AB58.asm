@@ -2,7 +2,7 @@
 ; BaniMazaB2_InstallTileHooks - install BaniMazaB2's map tile hook (slot -$3AF0 = BaniMazaB2_CrackFloorHook)
 ; In:  none
 ; Out: none
-; Evidence: clears the 8 hook longs -$3AF8..-$3ADC except -$3AF0; byte -$35C8 = 1
+; Evidence: clears the 8 hook longs g_TileHooks..-$3ADC except -$3AF0; byte g_TileHooksOn = 1
 ; ---------------------------------------------------------------------------
 BaniMazaB2_InstallTileHooks:
 	link.w	a6,#$0

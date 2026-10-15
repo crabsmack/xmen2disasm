@@ -1,6 +1,6 @@
 ; ---------------------------------------------------------------------------
-; Cerebro_Run - run a Cerebro screen: load the Cerebro level, optionally play the intro, run the text script at -$3B14, optionally run player select
-; In:  -$3B14 = text script (0 = none), -$3B0C = play intro, -$3B0A = run player select
+; Cerebro_Run - run a Cerebro screen: load the Cerebro level, optionally play the intro, run the text script at g_SceneVar3B14, optionally run player select
+; In:  g_SceneVar3B14 = text script (0 = none), g_SceneVar3B0C = play intro, g_SceneVar3B0A = run player select
 ; Out: none
 ; Evidence: called by every Cerebro*_RunScene; Level_Load level load; Cerebro_PlayIntro, Cerebro_RunTextScript, PlayerSelect_Run; copies g_P1Health/g_P2Health into the players afterwards
 ; ---------------------------------------------------------------------------

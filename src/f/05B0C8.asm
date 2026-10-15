@@ -2,7 +2,7 @@
 ; Boulder_UpdateDebris - move every live rock-debris piece (gravity, one bounce off its floor height), draw it (small or big tiles), free it when off screen
 ; In:  none
 ; Out: none
-; Evidence: pool -$3C68/-$3C64; tile base from the sprite table entry -$3C62; Boulder_FreeDebris
+; Evidence: pool g_BoulderDebrisPool/g_BoulderDebrisCount; tile base from the sprite table entry g_BoulderDebrisSprDef; Boulder_FreeDebris
 ; ---------------------------------------------------------------------------
 Boulder_UpdateDebris:
 	link.w	a6,#$FFF8

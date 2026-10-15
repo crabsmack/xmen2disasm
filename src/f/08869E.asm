@@ -2,7 +2,7 @@
 ; CloneA5_InitCamera - CloneA5: create the camera; with both players present start it at ($7F0, $598)
 ; In:  none
 ; Out: none
-; Evidence: CAMERA +$0A(desc, CloneA5_CamSetHooks) -> g_Camera; -$3AC2 := $7D8; -$3C4E bit 0 set; TAS 49258
+; Evidence: CAMERA +$0A(desc, CloneA5_CamSetHooks) -> g_Camera; g_FgScrollX := $7D8; g_CloneA5CamFlags bit 0 set; TAS 49258
 ; Found: link-after-rts
 ; ---------------------------------------------------------------------------
 CloneA5_InitCamera:

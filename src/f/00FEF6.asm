@@ -2,7 +2,7 @@
 ; BigAcolyte_RenderScaled - decode the big acolyte picture at the current scale into a heap buffer and DMA it to VRAM
 ; In:  8(a6) = picture data, $C(a6) = scale record (+$C width, +$E height, +$1A packed flag), $10(a6) = word VRAM address, $14(a6) = byte first call (allocate buffer)
 ; Out: none
-; Evidence: buffer -$C9E from Mem_StackAlloc; Scaler_Start decode; VDP_QueueDma; callers BigAcolyte_ActAppear, BigAcolyte_ActGrow, BigAcolyte_StateBurstWall
+; Evidence: buffer g_ScaleTileBuf from Mem_StackAlloc; Scaler_Start decode; VDP_QueueDma; callers BigAcolyte_ActAppear, BigAcolyte_ActGrow, BigAcolyte_StateBurstWall
 ; ---------------------------------------------------------------------------
 BigAcolyte_RenderScaled:
 	link.w	a6,#$0

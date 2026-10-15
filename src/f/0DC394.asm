@@ -1,5 +1,5 @@
 ; ---------------------------------------------------------------------------
-; SentinelsD1_LoadResources - SentinelsD1: load its resource sets (-$3BFC, -$1A7E, -$3BFE) and reset -$1A74
+; SentinelsD1_LoadResources - SentinelsD1: load its resource sets (g_ControlPanelSprDef2, g_MaintRobotSprDef, g_ControlPanelSprDef) and reset g_NinjaSprDef2
 ; In:  none
 ; Out: none
 ; Evidence: SprDef_Add x3; TAS 2498-5176

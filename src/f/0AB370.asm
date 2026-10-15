@@ -1,5 +1,5 @@
 ; ---------------------------------------------------------------------------
-; BubbleManager_SetWaveParams - BUBBLEMANAGER: set the cluster parameters (+$9A, period +$9C, count +$9E) for the current wave -$3C1C (1-6)
+; BubbleManager_SetWaveParams - BUBBLEMANAGER: set the cluster parameters (+$9A, period +$9C, count +$9E) for the current wave g_JunglePalPhase (1-6)
 ; In:  a4 = this
 ; Out: none
 ; Evidence: 6-case switch Sw_0AB370; caller BubbleManager_StateBurst

@@ -1,5 +1,5 @@
 ; ---------------------------------------------------------------------------
-; LightBeam_Init - parent Init, then LightBeam_StateIdle as state, default and hurt state (hits do nothing), flags |= $50C3, kind +$90 = placement +6 (0), segment spacing +$92 = +8 (4), count +$94 = +$A (4), x offset +$96 = $3B (kind 0) or $2E, top y +$98 from the frame heights in jt $10B2, sprite set -$3C5C (palette 2), frame = kind (LIGHTBEAM override of slot +$12 Init)
+; LightBeam_Init - parent Init, then LightBeam_StateIdle as state, default and hurt state (hits do nothing), flags |= $50C3, kind +$90 = placement +6 (0), segment spacing +$92 = +8 (4), count +$94 = +$A (4), x offset +$96 = $3B (kind 0) or $2E, top y +$98 from the frame heights in jt $10B2, sprite set g_TextWinBottom (palette 2), frame = kind (LIGHTBEAM override of slot +$12 Init)
 ; In:  8(a6) = this (LIGHTBEAM object), $C(a6)/$10(a6) = x/y (8.8 fixed), $14(a6) = placement entry
 ; Out: none
 ; Evidence: class descriptor LIGHTBEAM slot +$12 (tools/classes.py); TAS frames 45425-45425 (1 active)

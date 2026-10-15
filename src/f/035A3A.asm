@@ -2,7 +2,7 @@
 ; AvalonA4_InstallEventHooks - clear the camera zone bits and install the six AvalonA4 event hooks
 ; In:  none
 ; Out: none
-; Evidence: -$3B02 = 0; -$3216..-$3202 = AvalonA4_EventZoneFree0..5
+; Evidence: g_SceneVar3B02 = 0; -$3216..-$3202 = AvalonA4_EventZoneFree0..5
 ; ---------------------------------------------------------------------------
 AvalonA4_InstallEventHooks:
 	link.w	a6,#$0

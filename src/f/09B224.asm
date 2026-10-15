@@ -1,8 +1,8 @@
 ; ---------------------------------------------------------------------------
-; BroodClaw_Swing - BROODCLAW motion: swing out/in along +$9C by the speed +$16; while retracting push the boss offset (-$3C44) or the scroll step (-$3B02, mode +$90); set the arm frame; hand the camera over when the scroll reaches the arena edge
+; BroodClaw_Swing - BROODCLAW motion: swing out/in along +$9C by the speed +$16; while retracting push the boss offset (g_BroodBossOffsetX) or the scroll step (g_SceneVar3B02, mode +$90); set the arm frame; hand the camera over when the scroll reaches the arena edge
 ; In:  8(a6) = this
 ; Out: none
-; Evidence: arm frame byte -$3B10 by swing range; ends set +$8B, -$3B0C |= $10, g_CamShake := $088B06; x = home + offset - boss offset; with +$91 and mode 1 past -$3B20: camera +4 = Cam_DefaultUpdate, +$C = BroodClaw_CamApplyShake, XClone_CamSetNormal, -$3B0C |= $80, LineSegKiller_KillAll; TAS 49418-52266
+; Evidence: arm frame byte g_SceneVar3B10 by swing range; ends set +$8B, g_SceneVar3B0C |= $10, g_CamShake := $088B06; x = home + offset - boss offset; with +$91 and mode 1 past g_SceneVar3B20: camera +4 = Cam_DefaultUpdate, +$C = BroodClaw_CamApplyShake, XClone_CamSetNormal, g_SceneVar3B0C |= $80, LineSegKiller_KillAll; TAS 49418-52266
 ; Found: jt 841
 ; ---------------------------------------------------------------------------
 BroodClaw_Swing:

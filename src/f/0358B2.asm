@@ -1,5 +1,5 @@
 ; ---------------------------------------------------------------------------
-; AvalonA4_ClearCameraZone_apply - tail of AvalonA4_ClearCameraZone: update -$3B02 and call g_Camera +$3A
+; AvalonA4_ClearCameraZone_apply - tail of AvalonA4_ClearCameraZone: update g_SceneVar3B02 and call g_Camera +$3A
 ; In:  d7 = mask
 ; Out: none
 ; Evidence: common exit of the Sw_035872 cases

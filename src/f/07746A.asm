@@ -2,7 +2,7 @@
 ; CloneA1_InitSprites - set up the three CloneA1 sprite slots (jt $7658A frames 0-2) with their map rows
 ; In:  none
 ; Out: none
-; Evidence: Spr_Init on -$3596/-$3582/-$356E at tile -$3AAE + 0/$10/$20; Map_SetRowPriority/Map_SetRowPalette on the map at -$3AA6
+; Evidence: Spr_Init on g_SceneSprites/-$3582/-$356E at tile g_FgTilesEnd + 0/$10/$20; Map_SetRowPriority/Map_SetRowPalette on the map at g_FgBlockDefs
 ; ---------------------------------------------------------------------------
 CloneA1_InitSprites:
 	link.w	a6,#$0

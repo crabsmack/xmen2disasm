@@ -2,7 +2,7 @@
 ; BaniMazaA1_AnimateBlocks - step the three BaniMazaA1 block animations (8 frames, every 6 frames, direction per group)
 ; In:  none
 ; Out: none
-; Evidence: timers -$3C88/-$3C8C/-$3C90, frames -$3C8A/-$3C8E/-$3C92, reverse flags bytes -$3C98/-$3C97/-$3C96; BaniMazaA1_UploadBlockTiles on slots -$3596, -$3546, -$34F6
+; Evidence: timers g_BmA1BlockTimer0/g_BmA1BlockTimer1/g_BmA1BlockTimer2, frames g_BmA1BlockFrame0/g_BmA1BlockFrame1/g_BmA1BlockFrame2, reverse flags bytes g_DiscBandReverse/-$3C97/-$3C96; BaniMazaA1_UploadBlockTiles on slots g_SceneSprites, -$3546, -$34F6
 ; ---------------------------------------------------------------------------
 BaniMazaA1_AnimateBlocks:
 	link.w	a6,#$0

@@ -2,7 +2,7 @@
 ; AvalonA2_FrameHook - AvalonA2 per-frame hook: frame counter (twice at half rate) and the disabled frame effect
 ; In:  none
 ; Out: none
-; Evidence: installed in -$388E by AvalonA2_InstallHooks; g_FrameCounter += 1 (again when -$38DE); AvalonA2_DisabledFrameEffect unless g_PalFadeActive
+; Evidence: installed in g_SceneFrameHook by AvalonA2_InstallHooks; g_FrameCounter += 1 (again when g_TwoPlayerStep); AvalonA2_DisabledFrameEffect unless g_PalFadeActive
 ; ---------------------------------------------------------------------------
 AvalonA2_FrameHook:
 	link.w	a6,#$0

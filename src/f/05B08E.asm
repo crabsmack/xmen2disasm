@@ -2,7 +2,7 @@
 ; Boulder_FreeDebris - free a rock-debris record by moving the last live record into it
 ; In:  8(a6) = record
 ; Out: none
-; Evidence: Mem_Copy of $14 bytes; -$3C64 -= 1
+; Evidence: Mem_Copy of $14 bytes; g_BoulderDebrisCount -= 1
 ; ---------------------------------------------------------------------------
 Boulder_FreeDebris:
 	link.w	a6,#$0

@@ -2,7 +2,7 @@
 ; PlayerSelect_Run - the player select screen: two cursors over the portraits, LIVES counters, until both players confirm; then set the chosen characters
 ; In:  none
 ; Out: none (g_Player1/2 class, g_P1/P2CharIndex, health $700 for a new player)
-; Evidence: string 'LIVES ' drawn with g_P1Lives/g_P2Lives; cursor objects on the stack (BOXINPUTACTOR/SCALINGACTOR New); portrait table jt $6826A (7 with Magneto when g_SceneIndex is past -$3B7E (g_ScnCerebroBaniMaza)) else $6825A; Magneto picks random 0-5; loops until PlayerSelect_CheckDone; screen seen at TAS frame 27660
+; Evidence: string 'LIVES ' drawn with g_P1Lives/g_P2Lives; cursor objects on the stack (BOXINPUTACTOR/SCALINGACTOR New); portrait table jt $6826A (7 with Magneto when g_SceneIndex is past g_ScnCerebroBaniMaza (g_ScnCerebroBaniMaza)) else $6825A; Magneto picks random 0-5; loops until PlayerSelect_CheckDone; screen seen at TAS frame 27660
 ; ---------------------------------------------------------------------------
 PlayerSelect_Run:
 	link.w	a6,#$FF7A

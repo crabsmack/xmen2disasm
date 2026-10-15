@@ -2,7 +2,7 @@
 ; Seg_FindNearestOfType - find the in-use floor segment of a type nearest a point, scanning grid cells downward until a cell has one
 ; In:  $A(a6) = word x  $E(a6) = word y  $12(a6) = word type (1001 = any, 1000 = types $21-$24)
 ; Out: d0 = segment record or 0
-; Evidence: Seg_GridCell, pool at -$3478 ($FFCD88); score = distance from y to the segment's mid-height (min 6 px tall) + horizontal distance outside x1..x2; steps y by the cell size (-$3480); callers Ninja_Init, Tusk_StateIntro, BigBio_StateStart, BioSentinel_StateStart
+; Evidence: Seg_GridCell, pool at g_SegGridPool ($FFCD88); score = distance from y to the segment's mid-height (min 6 px tall) + horizontal distance outside x1..x2; steps y by the cell size (g_SegGridShiftY); callers Ninja_Init, Tusk_StateIntro, BigBio_StateStart, BioSentinel_StateStart
 ; ---------------------------------------------------------------------------
 Seg_FindNearestOfType:
 	link.w	a6,#$FFEE

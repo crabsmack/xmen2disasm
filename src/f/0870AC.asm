@@ -2,7 +2,7 @@
 ; BroodBoss_StateShockOn - BROODBOSS state: start the floor shockwave for $F frames (sound $F5)
 ; In:  8(a6) = this
 ; Out: d0
-; Evidence: -$3B0C |= 2 (BroodBoss_Update then hurts players on the arena floor), Snd $F5, +$6C = $F, next BroodBoss_StateShockOff
+; Evidence: g_SceneVar3B0C |= 2 (BroodBoss_Update then hurts players on the arena floor), Snd $F5, +$6C = $F, next BroodBoss_StateShockOff
 ; Found: link-after-rts
 ; ---------------------------------------------------------------------------
 BroodBoss_StateShockOn:

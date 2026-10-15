@@ -2,7 +2,7 @@
 ; Obj_Detach - detach an object from the parent object it rides, keeping the combined velocity, and unlink it from its siblings
 ; In:  8(a6) = object
 ; Out: d0 = 0
-; Evidence: parent = object table[-$34A6][+$3A]; velocities +$16/+$18 combined with the parent's (Seg_AlignObjVelocity when flag $1000 clear); Timer_Start(+$7C); fixes parent +$3B and sibling +$3C/+$3D links; flags +4: clear $800, set $1000; +$76 = 0, +$3A/+$3C/+$3D = $FF; 28 callers
+; Evidence: parent = object table[g_ObjTable][+$3A]; velocities +$16/+$18 combined with the parent's (Seg_AlignObjVelocity when flag $1000 clear); Timer_Start(+$7C); fixes parent +$3B and sibling +$3C/+$3D links; flags +4: clear $800, set $1000; +$76 = 0, +$3A/+$3C/+$3D = $FF; 28 callers
 ; ---------------------------------------------------------------------------
 Obj_Detach:
 	link.w	a6,#$0

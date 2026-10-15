@@ -1,5 +1,5 @@
 ; ---------------------------------------------------------------------------
-; SavageC1_InstallHooks - SavageC1: install the water draw hook (-$38F4) and its frame hook
+; SavageC1_InstallHooks - SavageC1: install the water draw hook (g_SceneDrawHook) and its frame hook
 ; In:  none
 ; Out: none
 ; Found: link-after-rts

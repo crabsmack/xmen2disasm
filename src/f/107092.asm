@@ -2,7 +2,7 @@
 ; Platform1_SteerByPad_UpDown - case of Platform1_SteerByPad: Down gives +speed, Up gives -speed
 ; In:  a3 = player, a4 = this, d7 = speed
 ; Out: -
-; Evidence: switch target inside Platform1_SteerByPad (masks -$3BA0/-$3B9E)
+; Evidence: switch target inside Platform1_SteerByPad (masks g_PadMaskDown/g_PadMaskUp)
 ; ---------------------------------------------------------------------------
 Platform1_SteerByPad_UpDown:
 	tst.b	$9D(a3)

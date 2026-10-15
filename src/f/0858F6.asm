@@ -2,7 +2,7 @@
 ; Teleporter_StateWaitFade - TELEPORTER state: once the fade is over, restore pausing and the palette code and wait for the next use
 ; In:  8(a6) = this
 ; Out: none
-; Evidence: when g_PalFadeActive is clear: -$3B04 := 0, g_PauseHandler := Pause_Check, clears +6 bit $1000, state Teleporter_StateWait; TAS 48387
+; Evidence: when g_PalFadeActive is clear: g_SceneVar3B04 := 0, g_PauseHandler := Pause_Check, clears +6 bit $1000, state Teleporter_StateWait; TAS 48387
 ; Found: link-after-rts
 ; ---------------------------------------------------------------------------
 Teleporter_StateWaitFade:

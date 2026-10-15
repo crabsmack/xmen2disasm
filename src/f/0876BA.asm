@@ -2,7 +2,7 @@
 ; BroodBoss_StateRecoilReturn - BROODBOSS state: return from the recoil, then the next step after 10 frames
 ; In:  8(a6) = this
 ; Out: none
-; Evidence: +$8C and -$3C44 back down by 3/6 per frame to 0; next-step idiom
+; Evidence: +$8C and g_BroodBossOffsetX back down by 3/6 per frame to 0; next-step idiom
 ; Found: link-after-rts
 ; ---------------------------------------------------------------------------
 BroodBoss_StateRecoilReturn:

@@ -2,7 +2,7 @@
 ; CloneA2_StartQuake - start the CloneA2 earthquake: camera shake script + rumble sound $91, once
 ; In:  none
 ; Out: none
-; Evidence: g_CamShake := Tbl_CloneA2QuakeScript, Snd_Stop/Snd_Play $91, -$3B08 := 1 (fired flag); called from CloneA2_FrameHook when the current camera zone's trigger point is on screen
+; Evidence: g_CamShake := Tbl_CloneA2QuakeScript, Snd_Stop/Snd_Play $91, g_SceneVar3B08 := 1 (fired flag); called from CloneA2_FrameHook when the current camera zone's trigger point is on screen
 ; ---------------------------------------------------------------------------
 CloneA2_StartQuake:
 	link.w	a6,#$0

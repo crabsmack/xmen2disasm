@@ -2,7 +2,7 @@
 ; SavageA4_RunScene - scene function for 'SavageA4 Chamber': boss stages, level, hooks, camera, run
 ; In:  none
 ; Out: none
-; Evidence: registered under that name (jt 912); SavageA4_InitBossStages with a stack table in -$3B14; Scroll_SetParallax($0B663A); CAMERA +$0A(SavageA4_CamSetHooks); BioBalls_AllocBallList($10); TAS 33301
+; Evidence: registered under that name (jt 912); SavageA4_InitBossStages with a stack table in g_SceneVar3B14; Scroll_SetParallax($0B663A); CAMERA +$0A(SavageA4_CamSetHooks); BioBalls_AllocBallList($10); TAS 33301
 ; Found: jt 912
 ; ---------------------------------------------------------------------------
 SavageA4_RunScene:

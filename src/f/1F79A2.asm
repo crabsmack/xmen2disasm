@@ -2,7 +2,7 @@
 ; Seg_ComputeLength - normalise a floor segment's endpoints left to right and compute its length (+6)
 ; In:  8(a6) = segment
 ; Out: none
-; Evidence: type hook message 4 first; swaps endpoints when x1 > x2 unless byte -$38C4 is set; flat types $13-$1C: length = |dx|, else max(|dx|, |dy|)
+; Evidence: type hook message 4 first; swaps endpoints when x1 > x2 unless byte g_SegFlag38C4 is set; flat types $13-$1C: length = |dx|, else max(|dx|, |dy|)
 ; ---------------------------------------------------------------------------
 Seg_ComputeLength:
 	link.w	a6,#$0

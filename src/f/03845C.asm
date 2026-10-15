@@ -2,7 +2,7 @@
 ; BaniMazaA1_InitSprites - set up the twelve BaniMazaA1 block sprite slots, their animation timers, palette line 2 and map columns
 ; In:  none
 ; Out: none
-; Evidence: Spr_Init on 12 slots from -$3596 (stride $14) with sprite def jt $3B6E8 at tile -$3AB0 + $10n; timers -$3C88..-$3C92; 16 colours from jt $A52 into $FFC8C0
+; Evidence: Spr_Init on 12 slots from g_SceneSprites (stride $14) with sprite def jt $3B6E8 at tile g_BgTilesEnd + $10n; timers g_BmA1BlockTimer0..g_BmA1BlockFrame2; 16 colours from jt $A52 into $FFC8C0
 ; ---------------------------------------------------------------------------
 BaniMazaA1_InitSprites:
 	link.w	a6,#$0

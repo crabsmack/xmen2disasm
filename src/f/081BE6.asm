@@ -2,7 +2,7 @@
 ; CloneA2_FlickerUpdate - per-frame palette animation for CloneA2 Vertical Corridor 1: flicker palette line 0 colours 13/14 and step colour 15
 ; In:  none
 ; Out: none
-; Evidence: every 2 frames steps backwards through Tbl_CloneA2FlickerPattern: 1 -> colours 13/14 = $068/$8CC, else $468/$8EE; every 9 frames a 6-case switch puts $A0/$80/$C0 in colour 15 (g_PalBase+$1E); sets g_PalBaseDirty; called from CloneA2_FrameHook unless -$3A02/-$3B04 set; TAS 47933-57465
+; Evidence: every 2 frames steps backwards through Tbl_CloneA2FlickerPattern: 1 -> colours 13/14 = $068/$8CC, else $468/$8EE; every 9 frames a 6-case switch puts $A0/$80/$C0 in colour 15 (g_PalBase+$1E); sets g_PalBaseDirty; called from CloneA2_FrameHook unless g_PalFadeActive/g_SceneVar3B04 set; TAS 47933-57465
 ; ---------------------------------------------------------------------------
 CloneA2_FlickerUpdate:
 	link.w	a6,#$0

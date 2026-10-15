@@ -1,5 +1,5 @@
 ; ---------------------------------------------------------------------------
-; Hologram_SetPose - set the hologram pose/mode global (-$3B14); pose $1B also arms the sprite flicker
+; Hologram_SetPose - set the hologram pose/mode global (g_SceneVar3B14); pose $1B also arms the sprite flicker
 ; In:  $A(a6) = word pose
 ; Out: none
 ; Evidence: g_SceneVar3B14(a5) read by Hologram_Draw; $1B sets $FFC620 = 1 / $FFC623 = 0 used by Hologram_VBlankFlicker; 20 callers (script actions)

@@ -2,7 +2,7 @@
 ; BaniMazaA2_InitDebrisBuf - register the BaniMazaA2 debris buffer (on BaniMazaA2_RunScene's stack) and mark it empty
 ; In:  8(a6) = buffer (4 groups of $86 bytes)
 ; Out: none
-; Evidence: -$3B14 = buffer; +$84 timer = 0
+; Evidence: g_SceneVar3B14 = buffer; +$84 timer = 0
 ; ---------------------------------------------------------------------------
 BaniMazaA2_InitDebrisBuf:
 	link.w	a6,#$0

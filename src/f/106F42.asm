@@ -2,7 +2,7 @@
 ; Platform1_SteerByPad - Platform1 ridden by a player: set speed +$16 to +/- the platform speed from the rider's held d-pad, axis chosen by the floor segment type ($21/$22 left-right, $23/default up-down)
 ; In:  8(a6) = this  $C(a6) = player
 ; Out: d0
-; Evidence: g_Pad1Held/g_Pad2Held by player +$9D; button masks -$3B98 (Left 4), -$3B9A (Right 8), -$3B9E (Up 1), -$3BA0 (Down 2) from Game_InitButtonMasks; segment +$76 byte 1
+; Evidence: g_Pad1Held/g_Pad2Held by player +$9D; button masks g_PadMaskLeft (Left 4), g_PadMaskRight (Right 8), g_PadMaskUp (Up 1), g_PadMaskDown (Down 2) from Game_InitButtonMasks; segment +$76 byte 1
 ; ---------------------------------------------------------------------------
 Platform1_SteerByPad:
 	link.w	a6,#$0

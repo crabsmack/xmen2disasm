@@ -2,7 +2,7 @@
 ; AvalonA2_PlacePlayers - place the players at the AvalonA2 start and set two scene values to $300
 ; In:  none
 ; Out: none
-; Evidence: Players_PlaceAtStart(0,0); -$3CD0 = -$3AFA = $300
+; Evidence: Players_PlaceAtStart(0,0); g_RetractFloorDepth = g_FloatFallSpeed = $300
 ; ---------------------------------------------------------------------------
 AvalonA2_PlacePlayers:
 	link.w	a6,#$0

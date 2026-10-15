@@ -2,7 +2,7 @@
 ; BaniMazaA2_AnimatePalettes - BaniMazaA2 palette animation: flash two colours every 4 frames, cycle colour $14 through a 22-entry table, step a 6-colour band
 ; In:  none
 ; Out: none
-; Evidence: timers -$3B32/-$3B34/-$3B36 (-2 at half rate); colours $FFC8F4/$F6 alternate $EEE / $20A,$24C; table jt $472A0; switch Sw_04744E on -$3B0C >> 1 picks the band table, Mem_Copy 12 bytes to $FFC8D4
+; Evidence: timers g_SceneVar3B32/g_SceneVar3B34/g_SceneVar3B36 (-2 at half rate); colours $FFC8F4/$F6 alternate $EEE / $20A,$24C; table jt $472A0; switch Sw_04744E on g_SceneVar3B0C >> 1 picks the band table, Mem_Copy 12 bytes to $FFC8D4
 ; ---------------------------------------------------------------------------
 BaniMazaA2_AnimatePalettes:
 	link.w	a6,#$0

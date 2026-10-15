@@ -2,7 +2,7 @@
 ; AvalonB2_FrameHook - AvalonB2 per-frame hook: advance the frame counter and the palette cycles
 ; In:  none
 ; Out: none
-; Evidence: installed in -$388E by AvalonB2_RunScene; g_FrameCounter += 1/2; reuses AvalonB1_CyclePalettes
+; Evidence: installed in g_SceneFrameHook by AvalonB2_RunScene; g_FrameCounter += 1/2; reuses AvalonB1_CyclePalettes
 ; ---------------------------------------------------------------------------
 AvalonB2_FrameHook:
 	link.w	a6,#$0

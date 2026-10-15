@@ -2,7 +2,7 @@
 ; AvalonA4_EventZoneFree4 - scene event hook: event 3 and camera zone 4 not set -> 1
 ; In:  8(a6) = word event
 ; Out: d0 = 1/0
-; Evidence: tests bit $10 of -$3B02; hook -$3206
+; Evidence: tests bit $10 of g_SceneVar3B02; hook -$3206
 ; ---------------------------------------------------------------------------
 AvalonA4_EventZoneFree4:
 	link.w	a6,#$0

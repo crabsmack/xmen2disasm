@@ -1,8 +1,8 @@
 ; ---------------------------------------------------------------------------
 ; Scene_AllocCommonVram - allocate VRAM tiles for the common sprite sets loaded with every scene
 ; In:  none
-; Out: none (advances next-free-tile word -$3598)
-; Evidence: saves -$3598 into -$3BB8, then Spr_Init/Spr_PreloadToHeap for one temporary and two persistent slots ($FFE9A4, $FFE798); called from Scene_PostLoadVram; what the sprite sets show is not confirmed
+; Out: none (advances next-free-tile word g_VramTileCursor)
+; Evidence: saves g_VramTileCursor into g_FxTileBase, then Spr_Init/Spr_PreloadToHeap for one temporary and two persistent slots ($FFE9A4, $FFE798); called from Scene_PostLoadVram; what the sprite sets show is not confirmed
 ; ---------------------------------------------------------------------------
 Scene_AllocCommonVram:
 	link.w	a6,#$FFEC

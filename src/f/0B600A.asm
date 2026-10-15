@@ -2,7 +2,7 @@
 ; SavageA4_ResetPalCycles - SavageA4: reset the six palette-cycle counters
 ; In:  none
 ; Out: none
-; Evidence: -$3B34/-$3B44/-$3B3C/-$3B36/-$3B46/-$3B3E := 0; caller SavageA4_InstallHooks
+; Evidence: g_SceneVar3B34/g_SceneVar3B44/g_SceneVar3B3C/g_SceneVar3B36/g_SceneVar3B46/g_SceneVar3B3E := 0; caller SavageA4_InstallHooks
 ; ---------------------------------------------------------------------------
 SavageA4_ResetPalCycles:
 	link.w	a6,#$0

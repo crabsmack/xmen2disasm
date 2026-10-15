@@ -1,5 +1,5 @@
 ; ---------------------------------------------------------------------------
-; SentinelsD1_InitFlagBits - SentinelsD1: allocate and clear 15 words of switch/door flag bits (-$3BFA)
+; SentinelsD1_InitFlagBits - SentinelsD1: allocate and clear 15 words of switch/door flag bits (g_SentinelsD1Flags)
 ; In:  none
 ; Out: none
 ; Evidence: Mem_StackAlloc($1E); BLAST and CONTROL objects set/clear bits through pointers into it (Blast_SetFlags); TAS 2503-5181

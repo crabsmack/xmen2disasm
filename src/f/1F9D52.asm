@@ -2,7 +2,7 @@
 ; Timer_RunAll - per-frame timer pass: count down running timers, call due callbacks, then reap freed and start pending ones
 ; In:  none
 ; Out: none
-; Evidence: loop 1 over list -$10EC: state > 0 decremented; state 0 -> state = period, g_TimerCurrent(a5) = timer, call func(arg, timer); loop 2: -1 unlinked and set -3, -4 set to 0; called from the scene frame loop Level_FrameLoop
+; Evidence: loop 1 over list g_TimerList: state > 0 decremented; state 0 -> state = period, g_TimerCurrent(a5) = timer, call func(arg, timer); loop 2: -1 unlinked and set -3, -4 set to 0; called from the scene frame loop Level_FrameLoop
 ; ---------------------------------------------------------------------------
 Timer_RunAll:
 	link.w	a6,#$FFFC

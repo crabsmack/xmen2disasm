@@ -2,7 +2,7 @@
 ; BaniMazaA2_UpdateDebris - update the four BaniMazaA2 debris groups
 ; In:  none
 ; Out: none
-; Evidence: BaniMazaA2_UpdateDebrisGroup on each $86-byte group from -$3B14; called from BaniMazaA2_FrameHook when the first group's timer is running
+; Evidence: BaniMazaA2_UpdateDebrisGroup on each $86-byte group from g_SceneVar3B14; called from BaniMazaA2_FrameHook when the first group's timer is running
 ; ---------------------------------------------------------------------------
 BaniMazaA2_UpdateDebris:
 	link.w	a6,#$0

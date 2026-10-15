@@ -2,7 +2,7 @@
 ; AvalonA4_FrameHook - AvalonA4 per-frame hook: frame counter and the stage effect AvalonA4_AnimatePalettes (twice at half rate)
 ; In:  none
 ; Out: none
-; Evidence: installed in -$388E by AvalonA4_InstallHooks; skipped while g_PalFadeActive
+; Evidence: installed in g_SceneFrameHook by AvalonA4_InstallHooks; skipped while g_PalFadeActive
 ; ---------------------------------------------------------------------------
 AvalonA4_FrameHook:
 	link.w	a6,#$0

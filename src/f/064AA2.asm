@@ -2,7 +2,7 @@
 ; PlayerSelect_DrawFrames - draw the frame sprite of every portrait slot
 ; In:  none
 ; Out: none
-; Evidence: PlayerSelect_DrawFrame for each of -$3B0E slots from the (x,y) table at -$3B30
+; Evidence: PlayerSelect_DrawFrame for each of g_SceneVar3B0E slots from the (x,y) table at g_SceneVar3B30
 ; ---------------------------------------------------------------------------
 PlayerSelect_DrawFrames:
 	link.w	a6,#$0

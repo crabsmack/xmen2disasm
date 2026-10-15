@@ -2,7 +2,7 @@
 ; BaniMazaA1_LoadLevel - load the BaniMazaA1 (Moving Blocks) level
 ; In:  none
 ; Out: none
-; Evidence: Level_Load level load (class list jt $4383A); -$3298/-$3296 = $100/$100; byte -$3AB4 = 1
+; Evidence: Level_Load level load (class list jt $4383A); -$3298/-$3296 = $100/$100; byte g_BgWrapX = 1
 ; ---------------------------------------------------------------------------
 BaniMazaA1_LoadLevel:
 	link.w	a6,#$0

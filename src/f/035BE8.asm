@@ -2,7 +2,7 @@
 ; MagnetoBoss_RubbleTimer - timer callback: move and draw up to 32 rubble particles ($16 bytes each), bounce them once off their floor, end the timer when none is on screen
 ; In:  8(a6) = particle array, $C(a6) = timer
 ; Out: d0
-; Evidence: started by MagnetoBoss_SpawnRubble (Timer_Create(MagnetoBoss_RubbleTimer, 0, array, 1)); sprite entries into the list at $FFE226 every other frame; tile base from the sprite table ($FFC980 + -$3CAC*$14); Timer_Free ends the timer
+; Evidence: started by MagnetoBoss_SpawnRubble (Timer_Create(MagnetoBoss_RubbleTimer, 0, array, 1)); sprite entries into the list at $FFE226 every other frame; tile base from the sprite table ($FFC980 + g_MagnetoBossSprDef*$14); Timer_Free ends the timer
 ; ---------------------------------------------------------------------------
 MagnetoBoss_RubbleTimer:
 	link.w	a6,#$FFF6

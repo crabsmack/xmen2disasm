@@ -1,5 +1,5 @@
 ; ---------------------------------------------------------------------------
-; BroodClaw_Init - vtable +$12 constructor: claw at the record position (y - $1C), sprite set -$3C4C, swing motion BroodClaw_Swing, swing length $32
+; BroodClaw_Init - vtable +$12 constructor: claw at the record position (y - $1C), sprite set g_BroodClawSprDef, swing motion BroodClaw_Swing, swing length $32
 ; Evidence: +$92 = BroodClaw_Swing, +$9A = $32, +$9C = 0 (swing offset), +$A0 = start x; state BroodClaw_StateWaitMusic; TAS 49291-51133
 ; ---------------------------------------------------------------------------
 BroodClaw_Init:

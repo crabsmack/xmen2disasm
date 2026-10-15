@@ -1,6 +1,6 @@
 ; ---------------------------------------------------------------------------
 ; BroodBossParts_Update - vtable +$4A: place the part at placement + offset (+$8C/+$8E) minus the boss offsets, then run the state machine (no physics)
-; Evidence: x = (+$10 + +$8C - (-$3C44 >> 8) - $20) << 8, y = (+$12 + +$8E - (-$3C48 >> 8) + $5B) << 8; timers +$6E/+$6C/+$6A as ACTOR Update; TAS 49291-51132
+; Evidence: x = (+$10 + +$8C - (g_BroodBossOffsetX >> 8) - $20) << 8, y = (+$12 + +$8E - (g_BroodBossOffsetY >> 8) + $5B) << 8; timers +$6E/+$6C/+$6A as ACTOR Update; TAS 49291-51132
 ; ---------------------------------------------------------------------------
 BroodBossParts_Update:
 	link.w	a6,#$FFFE

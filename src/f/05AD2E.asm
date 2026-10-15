@@ -2,7 +2,7 @@
 ; Boulder_FindFloorBelow - BOULDER: find the nearest solid floor segment (type 3) below it and store its id in +$42
 ; In:  8(a6) = this
 ; Out: none
-; Evidence: segment list for its map cell (Seg_GridCell -> index into the -$3478 table); segment records at -$33D2 + id*$14 (+0 flag $80, +1 type, +2 id, +6/+$A x range, +8 y)
+; Evidence: segment list for its map cell (Seg_GridCell -> index into the g_SegGridPool table); segment records at g_Segs + id*$14 (+0 flag $80, +1 type, +2 id, +6/+$A x range, +8 y)
 ; ---------------------------------------------------------------------------
 Boulder_FindFloorBelow:
 	link.w	a6,#$FFF8

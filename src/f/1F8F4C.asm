@@ -2,7 +2,7 @@
 ; DrawList_AllocNode - find a free draw-list node (flags word 0), searching round-robin from the cursor
 ; In:  none
 ; Out: d0 = node pointer, 0 if none free
-; Evidence: scans -$134C..-$1108 from cursor -$1358 with wrap; advances the cursor past the found node
+; Evidence: scans g_DrawNodes..-$1108 from cursor g_DrawNodeCursor with wrap; advances the cursor past the found node
 ; ---------------------------------------------------------------------------
 DrawList_AllocNode:
 	link.w	a6,#$0

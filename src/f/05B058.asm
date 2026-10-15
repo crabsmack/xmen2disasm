@@ -2,7 +2,7 @@
 ; Boulder_AllocDebris - take the next free rock-debris record
 ; In:  none
 ; Out: d0 = record or 0 when all 30 are used
-; Evidence: -$3C64 += 1
+; Evidence: g_BoulderDebrisCount += 1
 ; ---------------------------------------------------------------------------
 Boulder_AllocDebris:
 	link.w	a6,#$0

@@ -2,7 +2,7 @@
 ; ApocBomb_StartAccelTimer - create and start the bomb-speed timer, speed and increase 0
 ; In:  none
 ; Out: none
-; Evidence: Timer_Create(ApocBomb_AccelTimer, 1, 0, 0) -> -$3B20; Timer_Start
+; Evidence: Timer_Create(ApocBomb_AccelTimer, 1, 0, 0) -> g_SceneVar3B20; Timer_Start
 ; ---------------------------------------------------------------------------
 ApocBomb_StartAccelTimer:
 	link.w	a6,#$0

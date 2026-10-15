@@ -2,7 +2,7 @@
 ; Seg_Alloc - find a free floor-segment record, starting from the low-water index, and track the high-water mark
 ; In:  none
 ; Out: d0 = word: record index (hangs if none below $FF)
-; Evidence: records of $14 bytes at g_Segs(a5) ($FFCE2E), bit 7 of +0 = in use; start index word -$3470, high-water word -$3474
+; Evidence: records of $14 bytes at g_Segs(a5) ($FFCE2E), bit 7 of +0 = in use; start index word g_SegFirstFree, high-water word g_SegHighWater
 ; ---------------------------------------------------------------------------
 Seg_Alloc:
 	link.w	a6,#$0

@@ -2,7 +2,7 @@
 ; Exodus_StartPsiFlash - start Exodus' screen-wide psychic flash (14 steps) with sound $E1
 ; In:  none
 ; Out: none
-; Evidence: -$3CBA = 14 (run by AvalonA3_PsiFlashStep); called when a horizontal blast reaches a wall (ExodusBlast_StateFlyRight/Left)
+; Evidence: g_PsiFlashTimer = 14 (run by AvalonA3_PsiFlashStep); called when a horizontal blast reaches a wall (ExodusBlast_StateFlyRight/Left)
 ; ---------------------------------------------------------------------------
 Exodus_StartPsiFlash:
 	link.w	a6,#$0

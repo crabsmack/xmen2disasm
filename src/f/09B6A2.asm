@@ -2,7 +2,7 @@
 ; BroodClaw_StateDropClone - BROODCLAW state: when the players are clear (x > $71E for a pair) or a clone was already killed, release an evil clone of a player's character and remove itself
 ; In:  8(a6) = this
 ; Out: d0
-; Evidence: pair: clears hooks -$3416/-$3402, g_CamShake, camera slot +$36($5EA, $5A0, 2, 2, 1, 1); XClone_SpawnByType({x-$28, y+$1C, type 0}, player), facing the player, XClone_ActUnhittableScript(clone); counts -$3C40 when none; slot +$52 Kill; TAS 52266-52535
+; Evidence: pair: clears hooks -$3416/-$3402, g_CamShake, camera slot +$36($5EA, $5A0, 2, 2, 1, 1); XClone_SpawnByType({x-$28, y+$1C, type 0}, player), facing the player, XClone_ActUnhittableScript(clone); counts g_CloneWaveKills when none; slot +$52 Kill; TAS 52266-52535
 ; Found: link-after-rts
 ; ---------------------------------------------------------------------------
 BroodClaw_StateDropClone:

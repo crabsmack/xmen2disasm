@@ -2,7 +2,7 @@
 ; AvalonB1_CamHookFadeIn - AvalonB1 camera hook stage 4: keep scrolling up and step the palette fade every 6 frames until the table ends
 ; In:  8(a6) = camera
 ; Out: none
-; Evidence: AvalonB1_PalFadeStep(row -$3B3A, jt $2CA table); negative table byte ends it -> AvalonB1_CamHookFinish and sets byte -$38B4
+; Evidence: AvalonB1_PalFadeStep(row g_SceneVar3B3A, jt $2CA table); negative table byte ends it -> AvalonB1_CamHookFinish and sets byte g_HudOn
 ; ---------------------------------------------------------------------------
 AvalonB1_CamHookFadeIn:
 	link.w	a6,#$0

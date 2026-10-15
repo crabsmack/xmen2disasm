@@ -1,5 +1,5 @@
 ; ---------------------------------------------------------------------------
-; Game_AttractDemoCyclops - attract demo 1: Cyclops in scene -$3B74 with demo input jt $3E92
+; Game_AttractDemoCyclops - attract demo 1: Cyclops in scene g_ScnSentinelsB1 with demo input jt $3E92
 ; In:  none
 ; Out: none
 ; Evidence: case 1 of the attract switch in Game_SceneLoop; class jt $2BCA = Cyclops (Player_CharIndexOf index 1)

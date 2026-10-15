@@ -2,7 +2,7 @@
 ; Credits_RunScene - scene 'CerebroScreen Credits': credits text (jt $FC2), then a new game
 ; In:  none
 ; Out: none
-; Evidence: Scene_RegisterAll entry; music 10 unless -$3C5E bit $4000; Cerebro_Run; Game_ResetPlayers; clears -$3C5E
+; Evidence: Scene_RegisterAll entry; music 10 unless g_ProgressFlags bit $4000; Cerebro_Run; Game_ResetPlayers; clears g_ProgressFlags
 ; ---------------------------------------------------------------------------
 Credits_RunScene:
 	link.w	a6,#$0

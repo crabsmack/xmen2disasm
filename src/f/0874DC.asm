@@ -2,7 +2,7 @@
 ; BroodBoss_SpawnDebris - BROODBOSS: spawn the debris effect (Debris_Spawn type 6) at the boss position
 ; In:  8(a6) = this
 ; Out: none
-; Evidence: Debris_Spawn(x, y, -$3B14, 6); caller BroodBoss_StateHitWall; TAS 50482
+; Evidence: Debris_Spawn(x, y, g_SceneVar3B14, 6); caller BroodBoss_StateHitWall; TAS 50482
 ; Found: link-after-rts
 ; ---------------------------------------------------------------------------
 BroodBoss_SpawnDebris:

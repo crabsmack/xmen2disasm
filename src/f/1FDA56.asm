@@ -2,7 +2,7 @@
 ; Pad_Update - per-frame pad edge detection for both players: held, newly pressed, released, latched and accumulated buttons
 ; In:  none
 ; Out: none
-; Evidence: P1: pressed -$3A26 = new & ~old, released -$3A2A = old & ~new, held -$3A36, latch -$3A2E = (pressed|latch) & held, accum -$3A32 |= held; P2 the same at -$3A28/-$3A2C/-$3A38/-$3A30/-$3A34; the pause code tests pressed & $80 (Start)
+; Evidence: P1: pressed g_Pad1Pressed = new & ~old, released g_Pad1Released = old & ~new, held g_Pad1Held, latch g_Pad1Latch = (pressed|latch) & held, accum g_Pad1Accum |= held; P2 the same at g_Pad2Pressed/g_Pad2Released/g_Pad2Held/g_Pad2Latch/g_Pad2Accum; the pause code tests pressed & $80 (Start)
 ; ---------------------------------------------------------------------------
 Pad_Update:
 	link.w	a6,#$0

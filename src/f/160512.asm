@@ -2,7 +2,7 @@
 ; Rand_Seed - seed Rand_Next: split a word into the three table indexes and the history
 ; In:  8(a6) = word seed
 ; Out: none
-; Evidence: bits 0-4 -> -$7AE (x4), 5-9 -> -$7B0, 10-15 -> -$7B2; -$7AC = seed, -$7AA = 0; jt 2092
+; Evidence: bits 0-4 -> g_RandIdx3 (x4), 5-9 -> g_RandIdx2, 10-15 -> g_RandIdx1; g_RandPrev = seed, g_RandPrev2 = 0; jt 2092
 ; ---------------------------------------------------------------------------
 Rand_Seed:
 	link.w	a6,#$0

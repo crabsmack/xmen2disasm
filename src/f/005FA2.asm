@@ -2,7 +2,7 @@
 ; Player_SetCharacter - set a player object's character class and place it near the other player or the camera
 ; In:  8(a6) = class descriptor, $C(a6) = player object (g_Player1/g_Player2)
 ; Out: none
-; Evidence: position: own x/y if alive (then ACTOR slot $52 Kill), else partner's, else camera -$348E/-$3490 + ($A0,$6E); stores the class at +0; if -$38BE: slot $12 Init(x, y, 0), health +$68 = $700, slot $3E Activate, copy partner's +$2E bit 2; +$9D = 0 for g_Player1, 1 for g_Player2
+; Evidence: position: own x/y if alive (then ACTOR slot $52 Kill), else partner's, else camera g_CameraX/g_CameraY + ($A0,$6E); stores the class at +0; if g_InLevelLoop: slot $12 Init(x, y, 0), health +$68 = $700, slot $3E Activate, copy partner's +$2E bit 2; +$9D = 0 for g_Player1, 1 for g_Player2
 ; ---------------------------------------------------------------------------
 Player_SetCharacter:
 	link.w	a6,#$0

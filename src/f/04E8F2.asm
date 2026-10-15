@@ -1,5 +1,5 @@
 ; ---------------------------------------------------------------------------
-; ApocBomb_Attack - call the target's TakeDamage with the same arguments, then blow itself up (live-bomb count -$3B08 -1, ExplodeFx_BurstSmall) (APOCBOMB override of slot +$22 Attack; no hit cooldown)
+; ApocBomb_Attack - call the target's TakeDamage with the same arguments, then blow itself up (live-bomb count g_SceneVar3B08 -1, ExplodeFx_BurstSmall) (APOCBOMB override of slot +$22 Attack; no hit cooldown)
 ; In:  8(a6) = this (APOCBOMB object), $C(a6) = target, $13(a6)/$17(a6) = byte hit type/damage, $1A/$1E(a6) = hit point
 ; Out: none
 ; Evidence: class descriptor APOCBOMB slot +$22 (tools/classes.py); TAS frames 24507-24783 (4 active)

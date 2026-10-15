@@ -1,8 +1,8 @@
 ; ---------------------------------------------------------------------------
-; BubbleManager_SpawnAtSurface - BUBBLEMANAGER: release one bubble on the surface line (-$38BC) near the left of the view (direction 7) and restart the timer
+; BubbleManager_SpawnAtSurface - BUBBLEMANAGER: release one bubble on the surface line (g_FloodLineY) near the left of the view (direction 7) and restart the timer
 ; In:  8(a6) = this
 ; Out: none
-; Evidence: FloatBubble_Spawn((g_CameraX + $20 + (counter & $FF)) << 8, -$38BC << 8, +$98, +$9A, 7); +$6E = +$9C
+; Evidence: FloatBubble_Spawn((g_CameraX + $20 + (counter & $FF)) << 8, g_FloodLineY << 8, +$98, +$9A, 7); +$6E = +$9C
 ; Found: link-after-rts
 ; ---------------------------------------------------------------------------
 BubbleManager_SpawnAtSurface:

@@ -2,7 +2,7 @@
 ; CloneA2_StartCamAltMode - put the CloneA2 camera in its alternate mode for $300 frames
 ; In:  none
 ; Out: none
-; Evidence: creates the CloneA2_CamAltTimer timer (period 1), -$3AFA := $300, calls CloneA2_CamHookAlt(g_Camera); jt 554; called from CloneA2_StartCamera
+; Evidence: creates the CloneA2_CamAltTimer timer (period 1), g_FloatFallSpeed := $300, calls CloneA2_CamHookAlt(g_Camera); jt 554; called from CloneA2_StartCamera
 ; ---------------------------------------------------------------------------
 CloneA2_StartCamAltMode:
 	link.w	a6,#$0

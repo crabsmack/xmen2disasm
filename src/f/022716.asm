@@ -1,8 +1,8 @@
 ; ---------------------------------------------------------------------------
-; AvalonB2_InitSprite - set up the AvalonB2 sprite slot -$3596 (sprite def jt $21AE2, frame 0) at VRAM tile -$3AAE and load it
+; AvalonB2_InitSprite - set up the AvalonB2 sprite slot g_SceneSprites (sprite def jt $21AE2, frame 0) at VRAM tile g_FgTilesEnd and load it
 ; In:  none
 ; Out: none
-; Evidence: Spr_Init(-$3596, 1, jt $21AE2, 0, 0, -$3AAE, 1); animated by AvalonB2_AnimSprite
+; Evidence: Spr_Init(g_SceneSprites, 1, jt $21AE2, 0, 0, g_FgTilesEnd, 1); animated by AvalonB2_AnimSprite
 ; ---------------------------------------------------------------------------
 AvalonB2_InitSprite:
 	link.w	a6,#$0

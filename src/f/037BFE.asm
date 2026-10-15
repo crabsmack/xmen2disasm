@@ -1,5 +1,5 @@
 ; ---------------------------------------------------------------------------
-; ThronePhone_Draw - draw +$93 rows of paired 8x8 hardware sprites (tiles from -$3CAA cycling 4) mirrored about its x by a sine offset with a cosine y wobble; phases +$98/+$A0 advance by +$9A/+$A2 each frame and by +$9E/+$A6 per row, rows +$96 apart starting +$94 above it (THRONEPHONE override of slot +$1A Draw; does not call the parent)
+; ThronePhone_Draw - draw +$93 rows of paired 8x8 hardware sprites (tiles from g_ThronePhoneSprDef cycling 4) mirrored about its x by a sine offset with a cosine y wobble; phases +$98/+$A0 advance by +$9A/+$A2 each frame and by +$9E/+$A6 per row, rows +$96 apart starting +$94 above it (THRONEPHONE override of slot +$1A Draw; does not call the parent)
 ; In:  8(a6) = this (THRONEPHONE object)
 ; Out: none
 ; Evidence: class descriptor THRONEPHONE slot +$1A (tools/classes.py); TAS frames 19373-20031 (654 active)

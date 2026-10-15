@@ -2,7 +2,7 @@
 ; Rand_Next_Mix2 - Rand_Next second stage: XOR the second table entry and step its index
 ; In:  d0 = partial value
 ; Out: continues in Rand_Next_Mix3
-; Evidence: index -$7B0 wraps at $12C
+; Evidence: index g_RandIdx2 wraps at $12C
 ; ---------------------------------------------------------------------------
 Rand_Next_Mix2:
 	move.w	g_RandIdx2(a5),d1

@@ -1,5 +1,5 @@
 ; ---------------------------------------------------------------------------
-; CloneA5_ResetPalCycle - CloneA5: clear the three palette-cycle counters -$3C50/-$3C52/-$3C54
+; CloneA5_ResetPalCycle - CloneA5: clear the three palette-cycle counters -$3C50/-$3C52/g_CloneA5PalCycles
 ; In:  none
 ; Out: none
 ; Evidence: counters passed to Pal_CycleStep by CloneA5_FrameHook; caller CloneA5_RunScene; TAS 49256

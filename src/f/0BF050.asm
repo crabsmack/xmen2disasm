@@ -2,7 +2,7 @@
 ; SporeMine_DrawPool - SPOREMINE pool draw-list callback: one sprite per spore
 ; In:  none
 ; Out: none
-; Evidence: tiles from the class slot of -$3C22; TAS 27885-30595
+; Evidence: tiles from the class slot of g_SporeMineSprDef; TAS 27885-30595
 ; Found: link-after-rts
 ; ---------------------------------------------------------------------------
 SporeMine_DrawPool:

@@ -2,7 +2,7 @@
 ; Exodus_BreakFloorTiles - draw the broken left (1) or right (0) floor section: 4 map tiles in row $18, sound $E2
 ; In:  8(a6) = byte left flag
 ; Out: none
-; Evidence: columns 2-5 or 6-9; tiles $27, base -$3AA8 (+2 for right), +1, $28; Map_RefreshBlock redraw
+; Evidence: columns 2-5 or 6-9; tiles $27, base g_FgBlockCount (+2 for right), +1, $28; Map_RefreshBlock redraw
 ; ---------------------------------------------------------------------------
 Exodus_BreakFloorTiles:
 	link.w	a6,#$0

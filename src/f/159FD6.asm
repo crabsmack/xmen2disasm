@@ -2,7 +2,7 @@
 ; Pal_CycleStep - palette cycling: count down and write the next colour of the current sequence into g_PalBase
 ; In:  8(a6) = word ptr: timer   $C(a6) = word ptr: colour index   $10(a6) = word ptr: sequence index   $14(a6) = cycle table   $18(a6) = byte: keep the new state
 ; Out: none
-; Evidence: table of 6-byte sequences {long offset to colour words (end -1), byte delay, byte palette entry}, list ends with offset -1; on expiry g_PalBase[entry] = colour, g_PalBaseDirty = 1; double speed when byte -$38DE ($FFC922) is set; state restored when the keep flag is 0
+; Evidence: table of 6-byte sequences {long offset to colour words (end -1), byte delay, byte palette entry}, list ends with offset -1; on expiry g_PalBase[entry] = colour, g_PalBaseDirty = 1; double speed when byte g_TwoPlayerStep ($FFC922) is set; state restored when the keep flag is 0
 ; ---------------------------------------------------------------------------
 Pal_CycleStep:
 	link.w	a6,#$0

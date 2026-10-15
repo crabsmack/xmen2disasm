@@ -1,6 +1,6 @@
 ; ---------------------------------------------------------------------------
 ; Cerebro_RunTextScript - interpret a Cerebro text script: print lines, move the cursor, wait, clear the window, fade out, play/stop sounds
-; In:  -$3B14 = script pointer
+; In:  g_SceneVar3B14 = script pointer
 ; Out: none
 ; Evidence: op bytes: 0/7+ text (style = op-7), 1 set cursor, 2 wait N frames (button skips), 3 clear window + set cursor, 4 fade out, 5 Snd_Play, 6 Snd_Stop; switch Sw_065532
 ; ---------------------------------------------------------------------------

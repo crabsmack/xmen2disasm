@@ -2,7 +2,7 @@
 ; VDP_QueueDma - queue a VRAM DMA for the next V-blank (merging with the previous entry if contiguous); DMA at once if the display is off
 ; In:  4(a7) = long: source address   8(a7) = long: VRAM dest   $C(a7) = long: length in bytes
 ; Out: none
-; Evidence: display bit (reg1 shadow -$1D48 bit 6) clear -> VDP_DmaToVram; else appends $18-byte VDP-register records at g_DmaQueue(a5), count word g_DmaQueueCount(a5), splitting at 128 KB source boundaries; VDP_FlushDmaQueue runs them; 11 callers
+; Evidence: display bit (reg1 shadow g_VdpReg1 bit 6) clear -> VDP_DmaToVram; else appends $18-byte VDP-register records at g_DmaQueue(a5), count word g_DmaQueueCount(a5), splitting at 128 KB source boundaries; VDP_FlushDmaQueue runs them; 11 callers
 ; ---------------------------------------------------------------------------
 VDP_QueueDma:
 	btst	#$6,-$1D47(a5)

@@ -2,7 +2,7 @@
 ; Cerebro_AnimatePalettes - per-frame Cerebro palette animation (two stepping colour sequences)
 ; In:  none
 ; Out: none
-; Evidence: counters -$3B38/-$3B40/-$3B48 and -$3B32/-$3B3A; 8-way switches Sw_064CA2 and Sw_064DD2 write colours into g_PalBase; paused while g_PalFadeActive (-$3A02) is set
+; Evidence: counters g_SceneVar3B38/g_SceneVar3B40/g_SceneVar3B48 and g_SceneVar3B32/g_SceneVar3B3A; 8-way switches Sw_064CA2 and Sw_064DD2 write colours into g_PalBase; paused while g_PalFadeActive (g_PalFadeActive) is set
 ; ---------------------------------------------------------------------------
 Cerebro_AnimatePalettes:
 	link.w	a6,#$0

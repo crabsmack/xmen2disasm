@@ -2,7 +2,7 @@
 ; AvalonB1_CamHookWait60 - AvalonB1 camera hook stage 2: hold the players still for 60 frames, then stage 3
 ; In:  8(a6) = camera
 ; Out: none
-; Evidence: g_Camera+4 chain after AvalonB1_CamHookWait2; counter -$3B32 > $3B -> AvalonB1_CamHookScroll120
+; Evidence: g_Camera+4 chain after AvalonB1_CamHookWait2; counter g_SceneVar3B32 > $3B -> AvalonB1_CamHookScroll120
 ; ---------------------------------------------------------------------------
 AvalonB1_CamHookWait60:
 	link.w	a6,#$0

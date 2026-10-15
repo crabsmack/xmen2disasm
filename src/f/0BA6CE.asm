@@ -1,6 +1,6 @@
 ; ---------------------------------------------------------------------------
-; SavageBigBio_TakeDamage - vtable +$26: unless shielded (+$9C bit 0): health -= damage, 20-frame flash; at 0 stop, leave both lists and die (SavageBio_StateDying), else sound $D8; publish health in -$3B02
-; Evidence: -$3B02 drives the SavageA4 palette stages (SavageA4_FrameHook); TAS 33684-33890
+; SavageBigBio_TakeDamage - vtable +$26: unless shielded (+$9C bit 0): health -= damage, 20-frame flash; at 0 stop, leave both lists and die (SavageBio_StateDying), else sound $D8; publish health in g_SceneVar3B02
+; Evidence: g_SceneVar3B02 drives the SavageA4 palette stages (SavageA4_FrameHook); TAS 33684-33890
 ; ---------------------------------------------------------------------------
 SavageBigBio_TakeDamage:
 	link.w	a6,#$0

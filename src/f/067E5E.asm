@@ -2,7 +2,7 @@
 ; CursorInput_StatePoll - select-screen cursor input (BOXINPUTACTOR): Start confirms, Left/Right move (with a repeat delay), ignored while a cursor is busy or confirmed
 ; In:  8(a6) = this (+$8C = cursor)
 ; Out: d0 = +4 & 8
-; Evidence: g_Pad1Pressed/g_Pad2Pressed bit $80, g_Pad1Latch / -$3A30 bits 4/8 by cursor +$3F; next CursorInput_Confirm / CursorInput_MoveLeft / CursorInput_MoveRight
+; Evidence: g_Pad1Pressed/g_Pad2Pressed bit $80, g_Pad1Latch / g_Pad2Latch bits 4/8 by cursor +$3F; next CursorInput_Confirm / CursorInput_MoveLeft / CursorInput_MoveRight
 ; ---------------------------------------------------------------------------
 CursorInput_StatePoll:
 	link.w	a6,#$0

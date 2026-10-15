@@ -2,7 +2,7 @@
 ; XClone_StartMakerMode - switch the CloneA? scene into clone-maker mode: reset counters, allocate the clone table, install its hooks, load the clone resources
 ; In:  none
 ; Out: none
-; Evidence: clears -$3B30/-$3C40/-$3B06/-$3B08, -$3B04 = XClone_MakerBufSize() count, Mem_StackAlloc -> -$3B20; segment hooks g_SegTypeHooks[$19] (-$3406) := XClone_SegHookArenaLocked and [$1A] (-$3402) := CloneA5_SegHook16 (always 1), g_SceneFrameHook := XClone_FrameHook; CloneA2_FlickerInit; Spr_ReloadDefs(XClone_LoadResources, 1); jt 793; caller EvilMaker_StateWaitKills; TAS 52804
+; Evidence: clears g_SceneVar3B30/g_CloneWaveKills/g_SceneVar3B06/g_SceneVar3B08, g_SceneVar3B04 = XClone_MakerBufSize() count, Mem_StackAlloc -> g_SceneVar3B20; segment hooks g_SegTypeHooks[$19] (-$3406) := XClone_SegHookArenaLocked and [$1A] (-$3402) := CloneA5_SegHook16 (always 1), g_SceneFrameHook := XClone_FrameHook; CloneA2_FlickerInit; Spr_ReloadDefs(XClone_LoadResources, 1); jt 793; caller EvilMaker_StateWaitKills; TAS 52804
 ; Found: jt 793
 ; ---------------------------------------------------------------------------
 XClone_StartMakerMode:

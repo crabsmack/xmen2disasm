@@ -2,7 +2,7 @@
 ; SporeMine_InitPool - SPOREMINE: create the spore pool (20 records of $26 bytes), its update timer and its draw-list entry
 ; In:  none
 ; Out: none
-; Evidence: Mem_StackAlloc($2F8) -> -$3C28, count -$3C24 := 0; Timer_Create(SporeMine_UpdatePool, 0, 0, 1); DrawList_Add(SporeMine_DrawPool); TAS 27879-29685
+; Evidence: Mem_StackAlloc($2F8) -> g_SporeMinePool, count g_SporeMinePoolCount := 0; Timer_Create(SporeMine_UpdatePool, 0, 0, 1); DrawList_Add(SporeMine_DrawPool); TAS 27879-29685
 ; Found: link-after-rts
 ; ---------------------------------------------------------------------------
 SporeMine_InitPool:

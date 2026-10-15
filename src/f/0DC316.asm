@@ -2,7 +2,7 @@
 ; SentinelsD1_InitLight - SentinelsD1: set up the warning-light sprite (art $0DB72C)
 ; In:  none
 ; Out: none
-; Evidence: Spr_Init at VRAM -$3AAE; TAS 2503-9698
+; Evidence: Spr_Init at VRAM g_FgTilesEnd; TAS 2503-9698
 ; Found: jt 1147
 ; ---------------------------------------------------------------------------
 SentinelsD1_InitLight:

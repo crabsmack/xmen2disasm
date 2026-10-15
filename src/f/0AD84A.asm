@@ -1,5 +1,5 @@
 ; ---------------------------------------------------------------------------
-; SavageA2_LoadResources - SavageA2: load its resource set into -$1A88
+; SavageA2_LoadResources - SavageA2: load its resource set into g_BioFlameSprDef
 ; In:  none
 ; Out: none
 ; Evidence: SprDef_Add(jt[$3E98], 3)

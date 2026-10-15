@@ -1,6 +1,6 @@
 ; ---------------------------------------------------------------------------
-; XClone_Kill - vtable +$52: kill the child (+$9C), count the clone (-$3C40, not for type 4 Magneto), unlock the arena if it holds it (+$B0), end the clone wave after 6, then the parent (BIONPC) Kill
-; Evidence: Clone_CharTypeOf(this) != 4 -> -$3C40 += 1; +$B0 set -> XClone_UnlockArena; -$3C40 > 5 -> XClone_EndWave; then BIONPC Kill; TAS 52535-56844
+; XClone_Kill - vtable +$52: kill the child (+$9C), count the clone (g_CloneWaveKills, not for type 4 Magneto), unlock the arena if it holds it (+$B0), end the clone wave after 6, then the parent (BIONPC) Kill
+; Evidence: Clone_CharTypeOf(this) != 4 -> g_CloneWaveKills += 1; +$B0 set -> XClone_UnlockArena; g_CloneWaveKills > 5 -> XClone_EndWave; then BIONPC Kill; TAS 52535-56844
 ; ---------------------------------------------------------------------------
 XClone_Kill:
 	link.w	a6,#$0

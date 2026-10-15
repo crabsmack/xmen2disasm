@@ -1,5 +1,5 @@
 ; ---------------------------------------------------------------------------
-; Apocalypse_ClassInit - per-level class setup: Apocalypse_CallNopStatics, copy 16 colours from jt $3E72 into palette line 3 (g_PalBase+$60), SprDef_Add sprite set jt $9BA into -$3C74, Mem_StackAlloc the $14-byte second-sprite record into -$3B1C, clear -$3B08 (APOCALYPSE override of slot +$5E ClassInit)
+; Apocalypse_ClassInit - per-level class setup: Apocalypse_CallNopStatics, copy 16 colours from jt $3E72 into palette line 3 (g_PalBase+$60), SprDef_Add sprite set jt $9BA into g_ApocalypseSprDef, Mem_StackAlloc the $14-byte second-sprite record into g_SceneVar3B1C, clear g_SceneVar3B08 (APOCALYPSE override of slot +$5E ClassInit)
 ; In:  8(a6) = this, $C(a6) = class index
 ; Out: none
 ; Evidence: class descriptor APOCALYPSE slot +$5E (tools/classes.py); TAS frames 24056-24056 (1 active)

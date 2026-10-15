@@ -2,7 +2,7 @@
 ; CloneA5_SpawnBoss - CloneA5: create the BROODBOSS from its placement entry
 ; In:  none
 ; Out: none
-; Evidence: walks the 16-byte placements ($FFC92A, count $FFC928); class index word 0 into the class list -$3900; Tbl_BroodBoss_vtable +$0E New at placement x/y; TAS 49283
+; Evidence: walks the 16-byte placements ($FFC92A, count $FFC928); class index word 0 into the class list g_ClassList; Tbl_BroodBoss_vtable +$0E New at placement x/y; TAS 49283
 ; Found: link-after-rts
 ; ---------------------------------------------------------------------------
 CloneA5_SpawnBoss:

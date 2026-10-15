@@ -2,7 +2,7 @@
 ; AvalonB1_FrameHook - AvalonB1 per-frame hook: advance the frame counters and the palette cycles
 ; In:  none
 ; Out: none
-; Evidence: installed in -$388E (scene frame hook) by AvalonB1_RunScene; g_FrameCounter and -$3B32 += 1 (2 when -$38DE); AvalonB1_CyclePalettes; TAS frames 10316-11480
+; Evidence: installed in g_SceneFrameHook (scene frame hook) by AvalonB1_RunScene; g_FrameCounter and g_SceneVar3B32 += 1 (2 when g_TwoPlayerStep); AvalonB1_CyclePalettes; TAS frames 10316-11480
 ; ---------------------------------------------------------------------------
 AvalonB1_FrameHook:
 	link.w	a6,#$0

@@ -2,7 +2,7 @@
 ; ClassList_InitAll - allocate the per-class pointer array and call ClassInit (slot +$5E) for every class in g_ClassList
 ; In:  none
 ; Out: none
-; Evidence: count = (list word - 2)/4; fewer than 1 -> clears g_ClassList and -$10F4; Mem_StackAlloc(count*4, empty tag) -> -$10F4 zeroed; descriptor +$5E (0, index)
+; Evidence: count = (list word - 2)/4; fewer than 1 -> clears g_ClassList and g_ClassData; Mem_StackAlloc(count*4, empty tag) -> g_ClassData zeroed; descriptor +$5E (0, index)
 ; ---------------------------------------------------------------------------
 ClassList_InitAll:
 	link.w	a6,#$0

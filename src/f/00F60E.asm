@@ -2,7 +2,7 @@
 ; AvalonB1_RestorePalette - copy the 16 saved AvalonB1 colours back into palette line 0
 ; In:  none
 ; Out: none
-; Evidence: copies 16 words from the buffer at -$3B14 (set by AvalonB1_RunScene to a stack copy) to g_PalBase, sets g_PalBaseDirty; called by AvalonB1_CamHookFinish
+; Evidence: copies 16 words from the buffer at g_SceneVar3B14 (set by AvalonB1_RunScene to a stack copy) to g_PalBase, sets g_PalBaseDirty; called by AvalonB1_CamHookFinish
 ; ---------------------------------------------------------------------------
 AvalonB1_RestorePalette:
 	link.w	a6,#$0

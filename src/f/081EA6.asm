@@ -2,7 +2,7 @@
 ; CloneA2_InstallHooks - install the CloneA2 per-frame hooks, load resources, init flicker, place players
 ; In:  none
 ; Out: none
-; Evidence: -$3402 := jt[$3F22] (SegHook_HurtPlayer), -$388E := CloneA2_FrameHook; calls CloneA2_LoadResources, CloneA2_FlickerInit, Players_PlaceAtStart(0,0,0,0); TAS frame 47900
+; Evidence: -$3402 := jt[$3F22] (SegHook_HurtPlayer), g_SceneFrameHook := CloneA2_FrameHook; calls CloneA2_LoadResources, CloneA2_FlickerInit, Players_PlaceAtStart(0,0,0,0); TAS frame 47900
 ; ---------------------------------------------------------------------------
 CloneA2_InstallHooks:
 	link.w	a6,#$0

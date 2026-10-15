@@ -2,7 +2,7 @@
 ; BaniMazaA2_AnimSprite - timer callback: flip the BaniMazaA2 sprite between frames 0/1 unless stopped
 ; In:  none
 ; Out: none
-; Evidence: Timer_Create(Timer_SetVBlankHookCb, 10, BaniMazaA2_AnimSprite, 1) in BaniMazaA2_RunScene; skipped once -$3B0E is set
+; Evidence: Timer_Create(Timer_SetVBlankHookCb, 10, BaniMazaA2_AnimSprite, 1) in BaniMazaA2_RunScene; skipped once g_SceneVar3B0E is set
 ; ---------------------------------------------------------------------------
 BaniMazaA2_AnimSprite:
 	link.w	a6,#$0

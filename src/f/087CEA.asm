@@ -2,7 +2,7 @@
 ; BroodBoss_StateDeathFx - BROODBOSS death: (once the boss offset is >= $8C) spawn the death effect actor, sound $73
 ; In:  8(a6) = this
 ; Out: d0
-; Evidence: plain ACTOR New + ExplodeFx_ChainRepeat(jt[$16DA]); Snd_Stop $30, Snd $73; below $8C it first raises -$3C44 by $A0/frame; next BroodBoss_StateDeathSink; TAS 50692
+; Evidence: plain ACTOR New + ExplodeFx_ChainRepeat(jt[$16DA]); Snd_Stop $30, Snd $73; below $8C it first raises g_BroodBossOffsetX by $A0/frame; next BroodBoss_StateDeathSink; TAS 50692
 ; Found: link-after-rts
 ; ---------------------------------------------------------------------------
 BroodBoss_StateDeathFx:

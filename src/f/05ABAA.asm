@@ -2,7 +2,7 @@
 ; BaniMazaB2_LoadLevel - load the BaniMazaB2 (Exterior) level
 ; In:  none
 ; Out: none
-; Evidence: Level_Load level load (class list jt $5958E); -$3898/-$389A = $B8/$C0
+; Evidence: Level_Load level load (class list jt $5958E); g_LevelLoadWord3898/g_StartCamOffsetY = $B8/$C0
 ; ---------------------------------------------------------------------------
 BaniMazaB2_LoadLevel:
 	link.w	a6,#$0

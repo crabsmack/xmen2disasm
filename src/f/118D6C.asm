@@ -2,7 +2,7 @@
 ; GaussBullet_Update - move one GAUSSBULLET record (or follow its owner), drop it on solid tiles, off screen or when it hits a player (1 damage, type 4), animate and draw it
 ; In:  8(a6) = record (32 bytes)  $E(a6) = word steps
 ; Out: none
-; Evidence: pool g_GaussPool -$1CAC (count, max, anim table, records); level map tile flag $4000; removal copies the last record over it
+; Evidence: pool g_GaussPool g_GaussPool (count, max, anim table, records); level map tile flag $4000; removal copies the last record over it
 ; ---------------------------------------------------------------------------
 GaussBullet_Update:
 	link.w	a6,#$FFF2

@@ -2,7 +2,7 @@
 ; SavageA2_LoadLevel - SavageA2: load the level (Level_Load with the Perimeter1 class list $0A7664) and set limits/parallax factors
 ; In:  none
 ; Out: none
-; Evidence: max y -= $60; -$3496 := $140, -$3498 := $120; TAS 30752
+; Evidence: max y -= $60; g_BgScrollFactorX := $140, g_BgScrollFactorY := $120; TAS 30752
 ; Found: link-after-rts
 ; ---------------------------------------------------------------------------
 SavageA2_LoadLevel:

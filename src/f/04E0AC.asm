@@ -1,5 +1,5 @@
 ; ---------------------------------------------------------------------------
-; ApocBomb_Move - orbit the arena: x = $100 - $E0*sin(a), ground y +$A6 = $C2 + 32*cos(a), angle += -$3C70 (doubled in two-player step); after 3 passes through 180 flag expiry (+$92 bit 2); while dropping (bit 0) fall with gravity $50 to the ground (then sound $E9, start bouncing if +$96); while bouncing (bit 1) height +$9A moves 0..$2800 by +$9E; y = ground - height (APOCBOMB override of slot +$4E Move; replaces it)
+; ApocBomb_Move - orbit the arena: x = $100 - $E0*sin(a), ground y +$A6 = $C2 + 32*cos(a), angle += g_ApocBombSpeed (doubled in two-player step); after 3 passes through 180 flag expiry (+$92 bit 2); while dropping (bit 0) fall with gravity $50 to the ground (then sound $E9, start bouncing if +$96); while bouncing (bit 1) height +$9A moves 0..$2800 by +$9E; y = ground - height (APOCBOMB override of slot +$4E Move; replaces it)
 ; In:  8(a6) = this (APOCBOMB object), $E(a6) = word step count
 ; Out: none
 ; Evidence: class descriptor APOCBOMB slot +$4E (tools/classes.py); TAS frames 24410-26319 (1722 active)

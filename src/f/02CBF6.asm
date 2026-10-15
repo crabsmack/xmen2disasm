@@ -2,7 +2,7 @@
 ; AvalonA3_SavePalettes - save 14 colours of palette lines 0 and 2 into two buffers for AvalonA3_PsiFlashStep
 ; In:  8(a6) = buffer for line 0, $C(a6) = buffer for line 2
 ; Out: none
-; Evidence: clears -$3CBA; pointers kept in -$3B14/-$3B18; buffers are on AvalonA3_RunScene's stack
+; Evidence: clears g_PsiFlashTimer; pointers kept in g_SceneVar3B14/g_SceneVar3B18; buffers are on AvalonA3_RunScene's stack
 ; ---------------------------------------------------------------------------
 AvalonA3_SavePalettes:
 	link.w	a6,#$0

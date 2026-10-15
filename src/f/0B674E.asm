@@ -1,5 +1,5 @@
 ; ---------------------------------------------------------------------------
-; BrainBabyBio_Init - parent (BABYBIO) Init, then SavageA4_NopStatic, palette 3, arena box x $60-$220 / y $60-$140 (+$AC..+$B2), stats record -$3B14 with health 4, AI script jt $1DA2, state BrainBabyBio_StateStart (+$5C/+$64), flags |= $1000, home +$BC/+$BE = position, frame 4, Obj_UpdateBoxes, sound $46, camera focus -$3B20 := this (BRAINBABYBIO override of slot +$12 Init)
+; BrainBabyBio_Init - parent (BABYBIO) Init, then SavageA4_NopStatic, palette 3, arena box x $60-$220 / y $60-$140 (+$AC..+$B2), stats record g_SceneVar3B14 with health 4, AI script jt $1DA2, state BrainBabyBio_StateStart (+$5C/+$64), flags |= $1000, home +$BC/+$BE = position, frame 4, Obj_UpdateBoxes, sound $46, camera focus g_SceneVar3B20 := this (BRAINBABYBIO override of slot +$12 Init)
 ; In:  8(a6) = this, $C(a6) = long x, $10(a6) = long y (8 fraction bits), $14(a6) = spawn parameter
 ; Out: none
 ; Evidence: slot +$12 of the BRAINBABYBIO descriptor $0B7B1C; TAS frames 33537-33537 (1 frames active)

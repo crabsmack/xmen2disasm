@@ -1,5 +1,5 @@
 ; ---------------------------------------------------------------------------
-; MagnetoBoss_Init - parent Init, then no vertical speed, health 50, max speed $600, flags |= $1083; reserve VRAM for the largest frame of sprite sets jt $3D9A/$3DA2/$3D8A plus 7 tiles (+$B0 base, +$AE extra), sprite jt $3D8A; +$94 = jt $76A; +$AA/+$AC = placement +6 (default $D2), +$9D = placement +$A (default 5); frame $FF, register in -$3AFE, state MagnetoBoss_StateIntroStart, +$A6 = -100, +$A8 = $1F40 (MAGNETOBOSS override of slot +$12 Init)
+; MagnetoBoss_Init - parent Init, then no vertical speed, health 50, max speed $600, flags |= $1083; reserve VRAM for the largest frame of sprite sets jt $3D9A/$3DA2/$3D8A plus 7 tiles (+$B0 base, +$AE extra), sprite jt $3D8A; +$94 = jt $76A; +$AA/+$AC = placement +6 (default $D2), +$9D = placement +$A (default 5); frame $FF, register in g_BgLockObj, state MagnetoBoss_StateIntroStart, +$A6 = -100, +$A8 = $1F40 (MAGNETOBOSS override of slot +$12 Init)
 ; In:  8(a6) = this (MAGNETOBOSS object), $C(a6)/$10(a6) = x/y (8.8 fixed), $14(a6) = placement entry or null
 ; Out: none
 ; Evidence: class descriptor MAGNETOBOSS slot +$12 (tools/classes.py); TAS frames 18542-18542 (1 active)

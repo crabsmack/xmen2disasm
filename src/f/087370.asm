@@ -2,7 +2,7 @@
 ; BroodBoss_StateCharge - BROODBOSS state: charge until the boss offset reaches $1C4, then shake the screen and push back
 ; In:  8(a6) = this
 ; Out: d0
-; Evidence: -$3C44 >> 8 >= $1C4: frame $D, wall animation jt[$1652] and +$1D = 1, g_CamShake := jt[$16CA], claw +$16 = $A00, legs mode 2; next BroodBoss_StateRetreat; TAS 50410-50424
+; Evidence: g_BroodBossOffsetX >> 8 >= $1C4: frame $D, wall animation jt[$1652] and +$1D = 1, g_CamShake := jt[$16CA], claw +$16 = $A00, legs mode 2; next BroodBoss_StateRetreat; TAS 50410-50424
 ; Found: link-after-rts
 ; ---------------------------------------------------------------------------
 BroodBoss_StateCharge:

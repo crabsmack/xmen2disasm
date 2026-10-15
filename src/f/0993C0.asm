@@ -2,7 +2,7 @@
 ; XClone_EndWave - end the clone wave: collapse effects and end the scene after 600 frames
 ; In:  none
 ; Out: none
-; Evidence: -$3894 := 0, g_SceneFrameHook := XClone_FrameHookCollapse, Scene_EndAfter(600) (scene exit timer); caller XClone_Kill when -$3C40 > 5
+; Evidence: g_SpawnEnabled := 0, g_SceneFrameHook := XClone_FrameHookCollapse, Scene_EndAfter(600) (scene exit timer); caller XClone_Kill when g_CloneWaveKills > 5
 ; Found: link-after-rts
 ; ---------------------------------------------------------------------------
 XClone_EndWave:

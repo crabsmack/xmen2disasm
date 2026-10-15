@@ -2,7 +2,7 @@
 ; XClone_UnlockArena - unlock the clone arena: clear the player flags and the arena camera mode
 ; In:  8(a6) = clone
 ; Out: none
-; Evidence: when clone +$B0: players +$90 &= ~$200000, -$3894 := 1, g_Camera +$1C := 0, XClone_CamSetNormal, -$3B08 &= ~1, -$3B30 := 0; caller XClone_Kill; TAS 53370-56844
+; Evidence: when clone +$B0: players +$90 &= ~$200000, g_SpawnEnabled := 1, g_Camera +$1C := 0, XClone_CamSetNormal, g_SceneVar3B08 &= ~1, g_SceneVar3B30 := 0; caller XClone_Kill; TAS 53370-56844
 ; Found: link-after-rts
 ; ---------------------------------------------------------------------------
 XClone_UnlockArena:

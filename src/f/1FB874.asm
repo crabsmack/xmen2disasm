@@ -2,7 +2,7 @@
 ; Spr_EmitPre_Piece - Spr_EmitPre inner loop: write one piece to the next sprite slot and finish the frame
 ; In:  registers of Spr_EmitPre
 ; Out: none
-; Evidence: (a4) = y/size/link, 4(a4) = attr/x; a3 += 6; at the end stores write pointer -$1FE6 and adds the count to -$1FE2
+; Evidence: (a4) = y/size/link, 4(a4) = attr/x; a3 += 6; at the end stores write pointer g_SprWritePtr and adds the count to g_SprIndex
 ; ---------------------------------------------------------------------------
 Spr_EmitPre_Piece:
 	swap	d6

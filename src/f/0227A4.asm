@@ -2,7 +2,7 @@
 ; AvalonB2_InstallTileHooks - install AvalonB2's map tile hooks (only slot -$3AF4 = AvalonB2_TileHook)
 ; In:  none
 ; Out: none
-; Evidence: clears the 8 hook longs -$3AF8..-$3ADC except -$3AF4, sets byte -$35C8 = 1
+; Evidence: clears the 8 hook longs g_TileHooks..-$3ADC except -$3AF4, sets byte g_TileHooksOn = 1
 ; ---------------------------------------------------------------------------
 AvalonB2_InstallTileHooks:
 	link.w	a6,#$0

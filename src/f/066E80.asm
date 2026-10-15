@@ -2,7 +2,7 @@
 ; CerebroSentinels_RunScene - scene 'CerebroScreen Sentinels': Cerebro intro + briefing text (jt $F82) + player select
 ; In:  none
 ; Out: none
-; Evidence: Scene_RegisterAll entry; sets -$3B0C = 1, -$3B0A = 1, script jt $F82, then Cerebro_Run; sets progress bit 1 in -$3C5E
+; Evidence: Scene_RegisterAll entry; sets g_SceneVar3B0C = 1, g_SceneVar3B0A = 1, script jt $F82, then Cerebro_Run; sets progress bit 1 in g_ProgressFlags
 ; ---------------------------------------------------------------------------
 CerebroSentinels_RunScene:
 	link.w	a6,#$0

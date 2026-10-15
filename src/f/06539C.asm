@@ -2,7 +2,7 @@
 ; PlayerSelect_CheckDone - start the select-screen exit countdown once every present player has confirmed
 ; In:  none
 ; Out: none
-; Evidence: cursor +$40 = confirmed, +$3C = -1 absent (cursors -$3B28/-$3B2C); sets countdown -$359A = 2
+; Evidence: cursor +$40 = confirmed, +$3C = -1 absent (cursors g_SceneVar3B28/g_SceneVar3B2C); sets countdown g_SceneExitTimer = 2
 ; ---------------------------------------------------------------------------
 PlayerSelect_CheckDone:
 	link.w	a6,#$0

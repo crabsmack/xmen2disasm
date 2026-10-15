@@ -2,7 +2,7 @@
 ; Cerebro_IntroPalHook - palette hook during the Cerebro intro: fade lines 1/2 in and out on a countdown
 ; In:  none
 ; Out: none
-; Evidence: installed in -$3A18 by Cerebro_PlayIntro; counter -$3B0C, copies 16-colour steps from jt tables into $FFC8C0/$FFC8A0, then Cerebro_AnimatePalettes
+; Evidence: installed in g_VBlankGameHook by Cerebro_PlayIntro; counter g_SceneVar3B0C, copies 16-colour steps from jt tables into $FFC8C0/$FFC8A0, then Cerebro_AnimatePalettes
 ; ---------------------------------------------------------------------------
 Cerebro_IntroPalHook:
 	link.w	a6,#$0

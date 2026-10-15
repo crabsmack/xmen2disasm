@@ -2,7 +2,7 @@
 ; CloneA2_FrameHook - CloneA2 per-frame scene hook: quake trigger check and palette flicker
 ; In:  none
 ; Out: none
-; Evidence: installed in g_SceneFrameHook(a5) by CloneA2_InstallHooks; if -$3B08 clear and the trigger point (+8/+A) of zone -$3B06 in Tbl_CloneA2CameraZones lies inside the 320x224 view (g_CameraX/Y) calls CloneA2_StartQuake; calls CloneA2_FlickerUpdate (a second time when g_TwoPlayerStep is set); TAS 47905-48904 every frame
+; Evidence: installed in g_SceneFrameHook(a5) by CloneA2_InstallHooks; if g_SceneVar3B08 clear and the trigger point (+8/+A) of zone g_SceneVar3B06 in Tbl_CloneA2CameraZones lies inside the 320x224 view (g_CameraX/Y) calls CloneA2_StartQuake; calls CloneA2_FlickerUpdate (a second time when g_TwoPlayerStep is set); TAS 47905-48904 every frame
 ; ---------------------------------------------------------------------------
 CloneA2_FrameHook:
 	link.w	a6,#$0

@@ -2,7 +2,7 @@
 ; Pal_Update - per-frame palette work: step an active fade every N frames, or upload the working/base palette when requested
 ; In:  none
 ; Out: none
-; Evidence: fade active (-$3A02): every -$3A04 frames DMA -$3A00 (VDP_DmaPalette) and move level -$7BC up/down, ending past 7 or below 0; else if byte -$7C6 upload -$3A00; else if byte -$3A06 upload -$3980; called by VDP_FrameUpdate
+; Evidence: fade active (g_PalFadeActive): every g_PalFadeDelay frames DMA g_PalWork (VDP_DmaPalette) and move level g_PalFadeLevel up/down, ending past 7 or below 0; else if byte g_PalWorkDirty upload g_PalWork; else if byte g_PalBaseDirty upload g_PalBase; called by VDP_FrameUpdate
 ; ---------------------------------------------------------------------------
 Pal_Update:
 	link.w	a6,#$FFFC

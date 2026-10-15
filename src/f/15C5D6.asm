@@ -2,7 +2,7 @@
 ; Pause_HandleInput_EndCode - Pause_HandleInput tail: clear the code state; also holds the chord dispatch body
 ; In:  a6 frame of Pause_HandleInput
 ; Out: d0
-; Evidence: clears -$3C58 and g_PauseCheatPtr; labels below are the chord handlers
+; Evidence: clears g_TextWinTop and g_PauseCheatPtr; labels below are the chord handlers
 ; ---------------------------------------------------------------------------
 Pause_HandleInput_EndCode:
 	clr.w	g_TextWinTop(a5)

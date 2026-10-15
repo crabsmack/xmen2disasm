@@ -2,7 +2,7 @@
 ; Seg_FindBelow - find the nearest in-use floor segment below a point, scanning grid cells downward
 ; In:  8(a6) = word: x   $C(a6) = word: y   $10(a6) = word: max layer
 ; Out: d0 = segment record, 0 if none
-; Evidence: like Seg_FindAt but keeps the smallest positive top - y (start 5000) and steps y by 1 << -$3480 to the next cell until one is found or the cell repeats; callers include Brood_Init, DropBomb_Init, Deathbird_StateLandOnSwitch
+; Evidence: like Seg_FindAt but keeps the smallest positive top - y (start 5000) and steps y by 1 << g_SegGridShiftY to the next cell until one is found or the cell repeats; callers include Brood_Init, DropBomb_Init, Deathbird_StateLandOnSwitch
 ; ---------------------------------------------------------------------------
 Seg_FindBelow:
 	link.w	a6,#$FFF2

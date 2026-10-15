@@ -1,8 +1,8 @@
 ; ---------------------------------------------------------------------------
-; SavageA4_FrameHook - SavageA4 per-frame scene hook: effect sprite, palette cycles, and palette line 3 stepping as the boss value -$3B02 drops past 8/16/24/32/40
+; SavageA4_FrameHook - SavageA4 per-frame scene hook: effect sprite, palette cycles, and palette line 3 stepping as the boss value g_SceneVar3B02 drops past 8/16/24/32/40
 ; In:  none
 ; Out: none
-; Evidence: Cam_SetMinXBlocks(1), Cam_SetMaxXBlocks($13); palettes from jt[$1FD2] / $0B7D5A.. into g_PalBase+$70 (8 words), -$3B24 += $80 per stage; installed by SavageA4_InstallHooks; TAS 33387-34593
+; Evidence: Cam_SetMinXBlocks(1), Cam_SetMaxXBlocks($13); palettes from jt[$1FD2] / $0B7D5A.. into g_PalBase+$70 (8 words), g_SceneVar3B24 += $80 per stage; installed by SavageA4_InstallHooks; TAS 33387-34593
 ; Found: link-after-rts
 ; ---------------------------------------------------------------------------
 SavageA4_FrameHook:

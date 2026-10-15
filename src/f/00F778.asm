@@ -2,7 +2,7 @@
 ; AvalonB1_CamHookWait2 - AvalonB1 camera hook stage 1: hold the players still; after 2 frames set the intro palette and go to stage 2
 ; In:  8(a6) = camera
 ; Out: none
-; Evidence: installed at g_Camera+4 by AvalonB1_InitCamera; counter -$3B32 (incremented by AvalonB1_FrameHook); zeroes both players' velocity/accel; AvalonB1_ScrollCameraTo(g_CameraX, g_CameraY)
+; Evidence: installed at g_Camera+4 by AvalonB1_InitCamera; counter g_SceneVar3B32 (incremented by AvalonB1_FrameHook); zeroes both players' velocity/accel; AvalonB1_ScrollCameraTo(g_CameraX, g_CameraY)
 ; ---------------------------------------------------------------------------
 AvalonB1_CamHookWait2:
 	link.w	a6,#$0

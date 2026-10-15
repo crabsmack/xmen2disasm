@@ -2,7 +2,7 @@
 ; AvalonA2_InstallHooks - install AvalonA2's parallax, frame hook, tile hook and event hooks
 ; In:  none
 ; Out: none
-; Evidence: Scroll_SetParallax(jt $22BEA), -$388E = AvalonA2_FrameHook, AvalonA2_InstallTileHooks, AvalonA2_InstallEventHooks
+; Evidence: Scroll_SetParallax(jt $22BEA), g_SceneFrameHook = AvalonA2_FrameHook, AvalonA2_InstallTileHooks, AvalonA2_InstallEventHooks
 ; ---------------------------------------------------------------------------
 AvalonA2_InstallHooks:
 	link.w	a6,#$0

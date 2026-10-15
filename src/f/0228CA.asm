@@ -1,5 +1,5 @@
 ; ---------------------------------------------------------------------------
-; AvalonA2_ResetCounters - reset the AvalonA2 scene counters -$3B32 = 1 and -$3B3A = 0
+; AvalonA2_ResetCounters - reset the AvalonA2 scene counters g_SceneVar3B32 = 1 and g_SceneVar3B3A = 0
 ; In:  none
 ; Out: none
 ; Evidence: called by AvalonA2_RunScene before the level loop

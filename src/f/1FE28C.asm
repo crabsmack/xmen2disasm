@@ -2,7 +2,7 @@
 ; VDP_FlushDmaQueue - V-blank DMA: upload the sprite table to VRAM $F000 and run every queued DMA, with the sound driver paused
 ; In:  none
 ; Out: none
-; Evidence: Z80_DriverPause; DMA $280 bytes from g_SpriteTable(a5) ($FFE226) to VRAM $F000 (command $70000083); then writes each queued record's 8 register words, clears count -$7B4; Z80_DriverResume; called by VDP_FrameUpdate when byte g_DmaFlushReq(a5) is set
+; Evidence: Z80_DriverPause; DMA $280 bytes from g_SpriteTable(a5) ($FFE226) to VRAM $F000 (command $70000083); then writes each queued record's 8 register words, clears count g_DmaQueueCount; Z80_DriverResume; called by VDP_FrameUpdate when byte g_DmaFlushReq(a5) is set
 ; ---------------------------------------------------------------------------
 VDP_FlushDmaQueue:
 	jsr	$5202(a5)	; -> Z80_DriverPause

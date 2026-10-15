@@ -1,5 +1,5 @@
 ; ---------------------------------------------------------------------------
-; PerimeterDoor_Init - vtable +$12 constructor: door at tile (x/32 - 1, y/32 - 1), solid-block id from placement +6; register as the scene's door (-$3C38)
+; PerimeterDoor_Init - vtable +$12 constructor: door at tile (x/32 - 1, y/32 - 1), solid-block id from placement +6; register as the scene's door (g_PerimeterDoorObj)
 ; Evidence: +$90/+$8E tile column/row, +$8C block id; first state PerimeterDoor_StateStart; TAS 31695-32936
 ; ---------------------------------------------------------------------------
 PerimeterDoor_Init:
