@@ -1,9 +1,9 @@
 ; ---------------------------------------------------------------------------
-; CloneA2_BgPalTask_Copy - tail of CloneA2_BgPalTask: copy 16 words from a4 to palette line 2 and mark the palette dirty
+; CloneA2_BgPalTimer_Copy - tail of CloneA2_BgPalTimer: copy 16 words from a4 to palette line 2 and mark the palette dirty
 ; In:  a4 = source palette
 ; Evidence: copies to -$3940 (g_PalBase+$40), sets g_PalBaseDirty
 ; ---------------------------------------------------------------------------
-CloneA2_BgPalTask_Copy:
+CloneA2_BgPalTimer_Copy:
 	movea.l	a4,a3
 	lea.l	-$3940(a5),a4
 	moveq	#$0,d7

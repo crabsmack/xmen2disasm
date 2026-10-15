@@ -9,7 +9,7 @@ CloneA2_RunScene:
 	jsr	CloneA2_CallEmptyStubs(pc)
 	jsr	CloneA2_LoadLevel(pc)
 	jsr	CloneA2_InstallHooks(pc)
-	jsr	CloneA2_StartBgPalTask(pc)
+	jsr	CloneA2_StartBgPalTimer(pc)
 	jsr	CloneA2_InitCamera(pc)
 	jsr	CloneA2_StartCamera(pc)
 	jsr	$2E8A(a5)	; -> sub_1190D6

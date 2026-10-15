@@ -1037,13 +1037,13 @@ Pal_CloneA2Line0:	; 16 CRAM words: initial palette line 0 (CloneA2_LoadLevel -> 
 	incrom	$081890,$20
 Pal_CloneA2Line2:	; 16 CRAM words: initial palette line 2 (CloneA2_LoadLevel -> g_PalBase+$40)
 	incrom	$0818B0,$20
-Pal_CloneA2Bg3:	; 16 CRAM words: background palette for (g_CameraY>>4)&3 = 3 (CloneA2_BgPalTask)
+Pal_CloneA2Bg3:	; 16 CRAM words: background palette for (g_CameraY>>4)&3 = 3 (CloneA2_BgPalTimer)
 	incrom	$0818D0,$20
-Pal_CloneA2Bg2:	; 16 CRAM words: background palette for (g_CameraY>>4)&3 = 2 (CloneA2_BgPalTask)
+Pal_CloneA2Bg2:	; 16 CRAM words: background palette for (g_CameraY>>4)&3 = 2 (CloneA2_BgPalTimer)
 	incrom	$0818F0,$20
-Pal_CloneA2Bg1:	; 16 CRAM words: background palette for (g_CameraY>>4)&3 = 1 (CloneA2_BgPalTask)
+Pal_CloneA2Bg1:	; 16 CRAM words: background palette for (g_CameraY>>4)&3 = 1 (CloneA2_BgPalTimer)
 	incrom	$081910,$20
-Pal_CloneA2Bg0:	; 16 CRAM words: background palette for (g_CameraY>>4)&3 = 0 (CloneA2_BgPalTask)
+Pal_CloneA2Bg0:	; 16 CRAM words: background palette for (g_CameraY>>4)&3 = 0 (CloneA2_BgPalTimer)
 	incrom	$081930,$20
 Tbl_CloneA2CameraZones:	; 12 records of 6 words {min x, min y, max x + 320, max y + 224, quake trigger x, trigger y} (CloneA2_SetCameraZone, CloneA2_FrameHook)
 	incrom	$081950,$90

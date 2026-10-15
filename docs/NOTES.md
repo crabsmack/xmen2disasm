@@ -156,11 +156,11 @@ _(module → functions, globals, data; add as you learn them)_
   ('CloneA2 Vertical_Corridor_1') shows the usual shape: empty stubs, `_LoadLevel`
   (`sub_1F98A8` with map data + `Tbl_<Scene>ClassList`, initial palettes into g_PalBase),
   `_InstallHooks` (per-frame scene hook into `-$388E(a5)`, resources via `sub_1F62C0`,
-  `Players_PlaceAtStart`), camera creation, tasks, then `sub_0C1478(track)` (music; writes
+  `Players_PlaceAtStart`), camera creation, timers, then `sub_0C1478(track)` (music; writes
   g_MusicTrack), `sub_1FA6FE` (scene loop), `sub_0C14B4`. Scene-local globals in
   `$FFC6C4-$FFC706` (`-$3B3C..-$3AFA`) are reused with different meanings by each scene:
-  don't give them global names. Tasks: `sub_1F9C92(fn, 1, 0, 0)` creates a task (fn gets the
-  task), `sub_1F9D04` starts it, `sub_1F9D38(task)` ends it. Camera limits: words
+  don't give them global names. Per-frame helpers are `Timer_Create(fn, 1, arg, 0)` + `Timer_Start`,
+  ended by `Timer_Free`. Camera limits: words
   `-$3A98/-$3A9C` min x/y, `-$3A96/-$3A9A` max x/y (`CloneA2_SetCameraZone`). Screen shake:
   `g_CamShake` script.
 - **Scene ids in $080000-$0E0000**: CloneA2 ($081BBA-$082244), CloneA5 BroodBoss
