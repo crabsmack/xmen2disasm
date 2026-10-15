@@ -1616,7 +1616,7 @@ Snd_Credits:	; sound data; never read in the corpus; jt[500] used by Credits_Run
 	incrom	$069926,$736
 Tbl_ScalingActor_vtable:	; class descriptor of SCALINGACTOR: word name offset $6E, parent ACTOR, 26 method slots from +6, then the name (tools/classes.py)
 	incrom	$06A05C,$7B
-Pad__06A0D7:	; $00 fill; never read in the corpus; between sub_068126 and loc_06D126
+Pad_06A0D7:	; $00 fill; never read in the corpus; between sub_068126 and loc_06D126
 	incrom	$06A0D7,$1
 Tbl_BoxInputActor_vtable:	; class descriptor of BOXINPUTACTOR: word name offset $6E, parent ACTOR, 26 method slots from +6, then the name (tools/classes.py)
 	incrom	$06A0D8,$7C
@@ -4387,13 +4387,13 @@ Art_CloneA1Spr:	; sprite definition (type $19, Nemesis-compressed tiles): $24-by
 Tbl_FireWall_vtable:	; class descriptor "FIREWALL": word $6E = name offset, long parent (ACTOR), 26 method pointers, then the class name string
 	incrom	$134214,$78
 	incrom	$13428C,$38
-Tbl__1342C4:	; format not established; never read in the corpus; jt[1743] used by sub_13412A
+Tbl_1342C4:	; format not established; never read in the corpus; jt[1743] used by sub_13412A
 	incrom	$1342C4,$28
 	incrom	$1342EC,$18
-Tbl__134304:	; format not established; never read in the corpus; jt[1745] used by sub_13412A
+Tbl_134304:	; format not established; never read in the corpus; jt[1745] used by sub_13412A
 	incrom	$134304,$38
 	incrom	$13433C,$28
-Tbl__134364:	; format not established; never read in the corpus; jt[1747] used by sub_13412A
+Tbl_134364:	; format not established; never read in the corpus; jt[1747] used by sub_13412A
 	incrom	$134364,$18
 Tbl_Anim_13437C:	; animation script (byte flags, byte steps, ..., 2-byte steps from +6); 8 of A bytes used at runtime; read by Anim_ApplyStep, Anim_AdvanceByDistance, Anim_Advance; jt[1748] used by loc_134BE6, sub_1351EA, sub_13536A
 	incrom	$13437C,$A
@@ -4403,7 +4403,7 @@ Tbl_Anim_134390:	; animation script (NOTES: Animation scripts); never read in th
 	incrom	$134390,$18
 Tbl_AiScript_1343A8:	; data handed to AiScript_Set (format not established); never read in the corpus; jt[1751] used by loc_134B42 -> AiScript_Set
 	incrom	$1343A8,$54
-Tbl__1343FC:	; format not established; never read in the corpus; jt[1752] used by sub_135610
+Tbl_1343FC:	; format not established; never read in the corpus; jt[1752] used by sub_135610
 	incrom	$1343FC,$5C
 	incrom	$134458,$80
 Tbl_AiScript_1344D8:	; data handed to AiScript_Set (format not established); never read in the corpus; jt[1754] used by loc_134AE4 -> AiScript_Set
@@ -4739,7 +4739,7 @@ Sw_13F114:	; switch table of sub at $13F114: 6 word offsets from Sw_13F114-2
 Tbl_Pop_vtable:	; class descriptor "POP": word $6E = name offset, long parent (ACTOR), 26 method pointers, then the class name string
 	incrom	$13F28A,$72
 	incrom	$13F2FC,$6C
-Tbl__13F368:	; format not established; never read in the corpus; jt[1891] used by sub_13DCB8
+Tbl_13F368:	; format not established; never read in the corpus; jt[1891] used by sub_13DCB8
 	incrom	$13F368,$6C
 	incrom	$13F3D4,$A0
 	include "src/f/13F474.asm"
@@ -4902,11 +4902,11 @@ Art_Spr_1445D2:	; sprite definition (type $19, Nemesis-compressed tiles): $24-by
 	include "src/f/144D88.asm"
 Lvl_Data_144D90:	; level data read by Level_FrameLoop; 48 of 78 bytes used at runtime; read by Level_FrameLoop, sub_144AE2, Actor_New; jt[1959] used by sub_1449E6, sub_144C76, sub_144CAA
 	incrom	$144D90,$78
-Tbl__144E08:	; format not established; never read in the corpus; jt[1960] used by sub_144CF0, sub_144D50
+Tbl_144E08:	; format not established; never read in the corpus; jt[1960] used by sub_144CF0, sub_144D50
 	incrom	$144E08,$7E
-Tbl__144E86:	; format not established; never read in the corpus; jt[1961] used by sub_144774
+Tbl_144E86:	; format not established; never read in the corpus; jt[1961] used by sub_144774
 	incrom	$144E86,$6C
-Tbl__144EF2:	; format not established; never read in the corpus; jt[1962] used by sub_144774
+Tbl_144EF2:	; format not established; never read in the corpus; jt[1962] used by sub_144774
 	incrom	$144EF2,$3C
 	incrom	$144F2E,$C8
 Art_Spr_144FF6:	; sprite definition (type $18, raw 4bpp tiles): $24-byte header, $14-byte frame records, pieces, tiles; 400 of 86C bytes used at runtime; read by VDP_FlushDmaQueue; DMA to VRAM $D6A0-DAA0; jt[1964] used by sub_1449E6
@@ -5210,13 +5210,13 @@ Str_SpawnRecTag:	; empty C string: Mem_StackAlloc tag of the spawn records (Spaw
 	include "src/f/15FD0E.asm"
 	include "src/f/1600A0.asm"
 	include "src/f/1600AA.asm"
-Tbl__1600CA:	; format not established; never read in the corpus; referenced by sub_1600AA
+Tbl_1600CA:	; format not established; never read in the corpus; referenced by sub_1600AA
 	incrom	$1600CA,$1E2
 	include "src/f/1602AC.asm"
-Tbl__1602C8:	; format not established; never read in the corpus; referenced by loc_1602AC
+Tbl_1602C8:	; format not established; never read in the corpus; referenced by loc_1602AC
 	incrom	$1602C8,$11E
 	include "src/f/1603E6.asm"
-Tbl__160402:	; format not established; never read in the corpus; referenced by loc_1603E6
+Tbl_160402:	; format not established; never read in the corpus; referenced by loc_1603E6
 	incrom	$160402,$FE
 	include "src/f/160500.asm"
 	include "src/f/160512.asm"
@@ -5253,13 +5253,13 @@ Str_Empty_1607E6:	; C string "" (used by Cam_New)
 	include "src/f/16136E.asm"
 	include "src/f/161744.asm"
 	include "src/f/161816.asm"
-Snd__1618BC:	; sound data; never read in the corpus; jt[2111] used by Game_Init -> Snd_Init
+Snd_1618BC:	; sound data; never read in the corpus; jt[2111] used by Game_Init -> Snd_Init
 	incrom	$1618BC,$2336
-Snd__163BF2:	; sound data; never read in the corpus; jt[2112] used by Game_Init -> Snd_Init
+Snd_163BF2:	; sound data; never read in the corpus; jt[2112] used by Game_Init -> Snd_Init
 	incrom	$163BF2,$5CC
-Snd__1641BE:	; sound data; never read in the corpus; jt[2113] used by Game_Init -> Snd_Init
+Snd_1641BE:	; sound data; never read in the corpus; jt[2113] used by Game_Init -> Snd_Init
 	incrom	$1641BE,$176EC
-Snd__17B8AA:	; sound data; never read in the corpus; jt[2114] used by Game_Init -> Snd_Init
+Snd_17B8AA:	; sound data; never read in the corpus; jt[2114] used by Game_Init -> Snd_Init
 	incrom	$17B8AA,$6DE6
 Art_Spr_182690:	; sprite definition (type $18, raw 4bpp tiles): $24-byte header, $14-byte frame records, pieces, tiles; 180 of 2A2 bytes used at runtime; read by VDP_FlushDmaQueue; DMA to VRAM $6940-9600; jt[2115] used by Scene_AllocCommonVram
 	incrom	$182690,$2A2
@@ -5782,14 +5782,14 @@ Tbl_Anim_1E1CE6:	; animation script (NOTES: Animation scripts); never read in th
 Tbl_Anim_1E1CF0:	; animation script (NOTES: Animation scripts); never read in the corpus; jt[2371] used by sub_1E3322 -> Obj_SetAnim
 	incrom	$1E1CF0,$A
 	incrom	$1E1CFA,$98A
-Tbl__1E2684:	; format not established; never read in the corpus; jt[2379] used by sub_1E2CFC
+Tbl_1E2684:	; format not established; never read in the corpus; jt[2379] used by sub_1E2CFC
 	incrom	$1E2684,$5C
 	incrom	$1E26E0,$A8
-Tbl__1E2788:	; format not established; never read in the corpus; jt[2376] used by sub_1E2CFC, sub_1E3322 -> sub_1E2CFC
+Tbl_1E2788:	; format not established; never read in the corpus; jt[2376] used by sub_1E2CFC, sub_1E3322 -> sub_1E2CFC
 	incrom	$1E2788,$54
-Tbl__1E27DC:	; format not established; never read in the corpus; jt[2375] used by sub_1E2CFC, sub_1E3322 -> sub_1E2CFC
+Tbl_1E27DC:	; format not established; never read in the corpus; jt[2375] used by sub_1E2CFC, sub_1E3322 -> sub_1E2CFC
 	incrom	$1E27DC,$12C
-Tbl__1E2908:	; format not established; never read in the corpus; jt[2374] used by sub_1E2CFC, sub_1E3322 -> sub_1E2CFC
+Tbl_1E2908:	; format not established; never read in the corpus; jt[2374] used by sub_1E2CFC, sub_1E3322 -> sub_1E2CFC
 	incrom	$1E2908,$12C
 Tbl_Anim_1E2A34:	; animation script (byte flags, byte steps, ..., 2-byte steps from +6); A of 1E bytes used at runtime; read by Anim_ApplyStep, Anim_AdvanceByDistance, Anim_Advance; jt[2373] used by sub_1E2CFC, sub_1E3322
 	incrom	$1E2A34,$1E
@@ -6257,7 +6257,7 @@ Str_ScalerData:	; C string "SCALER DATA" (used by sub_1FC5FE)
 	include "src/f/1FC6CA.asm"
 	include "src/f/1FC6F6.asm"
 	include "src/f/1FC708.asm"
-Tbl__1FC8FE:	; format not established; never read in the corpus; referenced by sub_1FC708
+Tbl_1FC8FE:	; format not established; never read in the corpus; referenced by sub_1FC708
 	incrom	$1FC8FE,$5A0
 	include "src/f/1FCE9E.asm"
 	include "src/f/1FD43E.asm"

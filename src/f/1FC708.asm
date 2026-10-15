@@ -199,4 +199,4 @@ loc_1FC8E0:
 	move.w	d7,d0
 	lsl.w	#$3,d7
 	add.w	d0,d7
-	jmp	Tbl__1FC8FE(pc,d7.w)
+	jmp	Tbl_1FC8FE(pc,d7.w)

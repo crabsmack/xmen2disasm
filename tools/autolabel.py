@@ -171,7 +171,8 @@ def static_items(items: list[dict], rom: bytes, used: set[str]) -> list[str]:
             else:
                 k = ("Tbl", "", "format not established")
         prefix, role, fmt = k
-        base = re.sub(r"\W", "", f"{prefix}_{ctx}{role}") + ("" if ctx else f"_{s:06X}")
+        stem = re.sub(r"\W", "", f"{ctx}{role}")
+        base = f"{prefix}_{stem}" + ("" if ctx else (f"_{s:06X}" if stem else f"{s:06X}"))
         name, n = base, 2
         while name in used:
             name, n = f"{base}{n}", n + 1
@@ -219,7 +220,7 @@ def main() -> int:
         if base.endswith("_"):
             base += "Data"
         if not ctx:  # no module context: the address is the honest identity
-            base += f"_{s:06X}"
+            base += f"{s:06X}" if base.endswith("_") else f"_{s:06X}"
         name, n = base, 2
         while name in used:
             name, n = f"{base}{n}", n + 1

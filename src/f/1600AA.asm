@@ -4,7 +4,7 @@
 sub_1600AA:
 	move.w	-$7AA(a5),d0
 	move.w	-$7B2(a5),d1
-	move.w	Tbl__1600CA(pc,d1.w),d1
+	move.w	Tbl_1600CA(pc,d1.w),d1
 	eor.w	d1,d0
 	subq.w	#$2,-$7B2(a5)
 	bpl.w	loc_1602AC
