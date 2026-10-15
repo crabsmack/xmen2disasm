@@ -1,5 +1,5 @@
 ; ---------------------------------------------------------------------------
-; ApocBomb_NopStatic - empty non-virtual helper called from APOCBOMB's ClassInit and ApocBomb_NopExport
+; ApocBomb_NopStatic - empty non-virtual helper called from APOCBOMB's ClassInit and Nop6A
 ; In:  none
 ; Out: none
 ; Evidence: body is link/unlk/rts

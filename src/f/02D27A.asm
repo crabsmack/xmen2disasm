@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_02D27A	[link-after-rts]
+; Exodus_AtkBlast3 - EXODUS attack: one blast of kind 3 (down-right), sound $E0
+; In:  8(a6) = this
+; Out: d0 = +4 & 8
+; Evidence: animation jt $2DF6C; ExodusBlast_Spawn(.., 3)
 ; ---------------------------------------------------------------------------
-sub_02D27A:
+Exodus_AtkBlast3:
 	link.w	a6,#$0
 	move.l	a4,-(a7)
 	movea.l	$8(a6),a4
@@ -15,14 +18,14 @@ sub_02D27A:
 	sub.l	#$4600,d1
 	move.l	d1,-(a7)
 	move.l	$8(a4),-(a7)
-	jsr	$6E2(a5)	; -> sub_02E526
+	jsr	$6E2(a5)	; -> ExodusBlast_Spawn
 	pea.l	($E0).w
 	jsr	$5222(a5)	; -> Snd_Stop
 	pea.l	($E0).w
 	jsr	$521A(a5)	; -> Snd_Play
 	lea.l	$1C(a7),a7
 	clr.w	$6C(a4)
-	lea.l	sub_02D658(pc),a0
+	lea.l	Exodus_StateVulnerable(pc),a0
 	move.l	a0,$5C(a4)
 	moveq	#$8,d0
 	and.w	$4(a4),d0

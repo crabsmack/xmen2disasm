@@ -1,10 +1,10 @@
 ; ---------------------------------------------------------------------------
-; YoyoAcolyte_NopExport - empty exported function (jt 128) among YOYOACOLYTE's methods
-; In:  none
+; YoyoAcolyte_Nop6A - vtable +$6A: empty hook for YOYOACOLYTE
+; In:  8(a6) = this
 ; Out: none
-; Evidence: body is link/unlk/rts; no caller or descriptor slot found
+; Evidence: class descriptor YOYOACOLYTE slot +$6A; jt 128; body is link/unlk/rts
 ; ---------------------------------------------------------------------------
-YoyoAcolyte_NopExport:
+YoyoAcolyte_Nop6A:
 	link.w	a6,#$0
 	unlk	a6
 	rts

@@ -31,7 +31,7 @@ ExodusBlast_Init:
 	moveq	#$1,d1
 	or.b	d0,d1
 	move.b	d1,$2E(a4)
-	lea.l	sub_02DFA4(pc),a0
+	lea.l	ExodusBlast_StateStart(pc),a0
 	move.l	a0,$64(a4)
 	move.l	a0,$5C(a4)
 	subq.b	#$2,$42(a4)

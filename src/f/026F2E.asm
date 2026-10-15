@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_026F2E	[link-after-rts]
+; RetractFloor_StateKill - RETRACTFLOOR last state: kill itself (slot $52)
+; In:  8(a6) = this
+; Out: none
+; Evidence: single virtual call
 ; ---------------------------------------------------------------------------
-sub_026F2E:
+RetractFloor_StateKill:
 	link.w	a6,#$0
 	move.l	a4,-(a7)
 	movea.l	$8(a6),a4

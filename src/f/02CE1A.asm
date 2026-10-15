@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_02CE1A	[link-after-rts]
+; Exodus_StateWaitLanded - EXODUS: wait until y reaches the target, then choose the next attack
+; In:  8(a6) = this
+; Out: d0
+; Evidence: next Exodus_StateNextAttack
 ; ---------------------------------------------------------------------------
-sub_02CE1A:
+Exodus_StateWaitLanded:
 	link.w	a6,#$0
 	move.l	a4,-(a7)
 	movea.l	$8(a6),a4
@@ -12,7 +15,7 @@ sub_02CE1A:
 	bgt.s	loc_02CE4A
 	andi.b	#$FE,$AC(a4)
 	clr.w	$6C(a4)
-	lea.l	sub_02CF04(pc),a0
+	lea.l	Exodus_StateNextAttack(pc),a0
 	move.l	a0,$5C(a4)
 	moveq	#$8,d0
 	and.w	$4(a4),d0

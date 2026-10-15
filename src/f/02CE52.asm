@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_02CE52	[link-after-rts]
+; Exodus_NextPattern - EXODUS: advance to the next attack pattern from its spawn record's pattern table, reset the step
+; In:  8(a6) = this
+; Out: none
+; Evidence: table = -$38D6 + spawn index (+$14) * 16, words +6..+$E give the successor of patterns 1-5 (0 = default next); +$A8 pattern, +$A9 step
 ; ---------------------------------------------------------------------------
-sub_02CE52:
+Exodus_NextPattern:
 	link.w	a6,#$0
 	movem.l	a3-a4,-(a7)
 	movea.l	$8(a6),a3
@@ -12,7 +15,7 @@ sub_02CE52:
 	lea.l	(a0,d0.l),a4
 	move.b	$A8(a3),d0
 	cmpi.b	#$5,d0
-	bhi.s	loc_02CEF6
+	bhi.s	Exodus_NextPattern_part3
 	moveq	#$0,d1
 	move.b	d0,d1
 	add.w	d1,d1

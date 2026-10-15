@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_02DDDC	[jt 202]
+; Exodus_CheckFloorHit - when a downward blast hit floor segment A or B: disable it, drop players standing on it and break its tiles
+; In:  none
+; Out: none
+; Evidence: Exodus object at -$3CB8; +$A2 hit segment vs +$A0/+$A1; segment records at -$33D2 + n*$14 (flag $40, +$10/+$11 = $FF); Exodus_DropPlayerFromSeg, Exodus_BreakFloorTiles
 ; ---------------------------------------------------------------------------
-sub_02DDDC:
+Exodus_CheckFloorHit:
 	link.w	a6,#$0
 	movem.l	d7/a3-a4,-(a7)
 	tst.l	-$3CB8(a5)
@@ -36,13 +39,13 @@ sub_02DDDC:
 	move.b	#$FF,$10(a4)
 	move.l	a3,-(a7)
 	pea.l	g_Player1(a5)
-	jsr	sub_02DC9E(pc)
+	jsr	Exodus_DropPlayerFromSeg(pc)
 	move.l	a3,-(a7)
 	pea.l	g_Player2(a5)
-	jsr	sub_02DC9E(pc)
+	jsr	Exodus_DropPlayerFromSeg(pc)
 	moveq	#$1,d0
 	move.l	d0,-(a7)
-	jsr	sub_02DCE4(pc)
+	jsr	Exodus_BreakFloorTiles(pc)
 	lea.l	$14(a7),a7
 	bra.s	loc_02DEA2
 loc_02DE68:
@@ -54,13 +57,13 @@ loc_02DE68:
 	move.b	#$FF,$11(a3)
 	move.l	a4,-(a7)
 	pea.l	g_Player1(a5)
-	jsr	sub_02DC9E(pc)
+	jsr	Exodus_DropPlayerFromSeg(pc)
 	move.l	a4,-(a7)
 	pea.l	g_Player2(a5)
-	jsr	sub_02DC9E(pc)
+	jsr	Exodus_DropPlayerFromSeg(pc)
 	moveq	#$0,d0
 	move.l	d0,-(a7)
-	jsr	sub_02DCE4(pc)
+	jsr	Exodus_BreakFloorTiles(pc)
 	lea.l	$14(a7),a7
 loc_02DEA2:
 	movea.l	-$3CB8(a5),a0

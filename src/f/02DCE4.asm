@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_02DCE4	[link-after-rts]
+; Exodus_BreakFloorTiles - draw the broken left (1) or right (0) floor section: 4 map tiles in row $18, sound $E2
+; In:  8(a6) = byte left flag
+; Out: none
+; Evidence: columns 2-5 or 6-9; tiles $27, base -$3AA8 (+2 for right), +1, $28; sub_15D7D8 redraw
 ; ---------------------------------------------------------------------------
-sub_02DCE4:
+Exodus_BreakFloorTiles:
 	link.w	a6,#$0
 	movem.l	d5-d7/a4,-(a7)
 	moveq	#$18,d6

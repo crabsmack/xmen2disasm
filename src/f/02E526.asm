@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_02E526	[jt 216]
+; ExodusBlast_Spawn - create an EXODUSBLAST of kind K at (x, y)
+; In:  8(a6) = long x, $C(a6) = long y, $10(a6) = byte kind
+; Out: d0 = blast or 0
+; Evidence: Tbl_ExodusBlast_vtable +$0E New(0, desc, x, y, 0); +$98 = kind; callers the Exodus_Atk* states
 ; ---------------------------------------------------------------------------
-sub_02E526:
+ExodusBlast_Spawn:
 	link.w	a6,#$0
 	move.l	a4,-(a7)
 	moveq	#$0,d0

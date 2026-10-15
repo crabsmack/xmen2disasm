@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_02D96C	[link-after-rts]
+; Exodus_HurtOnHotTiles - hurt an object standing on the energised floor tiles (tile ids -$3AA8..+3) below y $304
+; In:  8(a6) = object
+; Out: none
+; Evidence: present, y px > $304, hit cooldown +$6A == 0, map tile under its feet in range -> slot $26 TakeDamage(0, 4, 1, -1, -1)
 ; ---------------------------------------------------------------------------
-sub_02D96C:
+Exodus_HurtOnHotTiles:
 	link.w	a6,#$0
 	movem.l	d5-d7/a4,-(a7)
 	movea.l	$8(a6),a4

@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_02DC9E	[link-after-rts]
+; Exodus_DropPlayerFromSeg - make a player standing on floor segment S fall
+; In:  8(a6) = player, $C(a6) = floor segment
+; Out: d0
+; Evidence: present, +4 bit $1000 clear and +$76 == S -> sub_1F6530; caller Exodus_CheckFloorHit
 ; ---------------------------------------------------------------------------
-sub_02DC9E:
+Exodus_DropPlayerFromSeg:
 	link.w	a6,#$0
 	move.l	a4,-(a7)
 	movea.l	$8(a6),a4

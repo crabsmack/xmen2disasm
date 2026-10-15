@@ -26,16 +26,16 @@ Exodus_TakeDamage:
 	clr.w	$68(a4)
 loc_02DB2A:
 	tst.w	$68(a4)
-	bne.s	loc_02DB98
+	bne.s	Exodus_TakeDamage_part5
 	tst.w	g_SceneExitTimer(a5)
-	bne.s	loc_02DB98
+	bne.s	Exodus_TakeDamage_part5
 	moveq	#$28,d0
 	move.l	d0,-(a7)
 	jsr	$4F8A(a5)	; -> Scene_EndAfter
 	move.b	$A6(a4),d0
 	cmpi.b	#$4,d0
 	addq.w	#$4,a7
-	bhi.s	loc_02DB62
+	bhi.s	Exodus_TakeDamage_part1
 	moveq	#$0,d1
 	move.b	d0,d1
 	add.w	d1,d1

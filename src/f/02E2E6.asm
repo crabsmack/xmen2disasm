@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_02E2E6	[link-after-rts]
+; ExodusBlast_StateDie - EXODUSBLAST: clear its kind and kill itself
+; In:  8(a6) = this
+; Out: none
+; Evidence: +$98 = 0; slot $52 Kill
 ; ---------------------------------------------------------------------------
-sub_02E2E6:
+ExodusBlast_StateDie:
 	link.w	a6,#$0
 	move.l	a4,-(a7)
 	movea.l	$8(a6),a4

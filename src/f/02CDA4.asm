@@ -1,12 +1,15 @@
 ; ---------------------------------------------------------------------------
-; sub_02CDA4	[link-after-rts]
+; Exodus_StateStart - EXODUS first state: wait 50 frames, then descend
+; In:  8(a6) = this
+; Out: d0 = +4 & 8
+; Evidence: +$6C = $32; next Exodus_StateDescend
 ; ---------------------------------------------------------------------------
-sub_02CDA4:
+Exodus_StateStart:
 	link.w	a6,#$0
 	move.l	a4,-(a7)
 	movea.l	$8(a6),a4
 	move.w	#$32,$6C(a4)
-	lea.l	sub_02CDCA(pc),a0
+	lea.l	Exodus_StateDescend(pc),a0
 	move.l	a0,$5C(a4)
 	moveq	#$8,d0
 	and.w	$4(a4),d0

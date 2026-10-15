@@ -1,13 +1,16 @@
 ; ---------------------------------------------------------------------------
-; loc_02CF34	[static: switch-table case target (tools/switches.py: table after `move.w T(pc,dN.w),dN / jmp T-2(pc,dN.w)`, size from the cmpi bound)]
+; Exodus_StateNextAttack_part1 - part 1 of Exodus_StateNextAttack: switch case(s) split off by the code-flow tools (not a separate function)
+; In:  registers/frame of Exodus_StateNextAttack
+; Out: continues in Exodus_StateNextAttack
+; Evidence: only reached by branches from Exodus_StateNextAttack
 ; ---------------------------------------------------------------------------
-loc_02CF34:
+Exodus_StateNextAttack_part1:
 	addq.b	#$1,$A9(a4)
 	move.b	$A9(a4),d0
 	subq.b	#$1,d0
-	bcs.w	loc_02CFE8
+	bcs.w	Exodus_StateNextAttack_part3
 	cmpi.b	#$5,d0
-	bhi.w	loc_02CFE8
+	bhi.w	Exodus_StateNextAttack_part3
 	moveq	#$0,d1
 	move.b	d0,d1
 	add.w	d1,d1

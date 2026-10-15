@@ -56,21 +56,21 @@ loc_0272B6:
 	beq.s	loc_027334
 	clr.w	d7
 loc_027310:
-	lea.l	sub_027352(pc),a0
+	lea.l	Zapper_StateLoopAnim0(pc),a0
 	move.l	a0,$5C(a4)
-	lea.l	sub_027352(pc),a0
+	lea.l	Zapper_StateLoopAnim0(pc),a0
 	move.l	a0,$64(a4)
 	bra.s	loc_027344
 loc_027322:
-	lea.l	sub_027388(pc),a0
+	lea.l	Zapper_StateLoopAnim1(pc),a0
 	move.l	a0,$5C(a4)
-	lea.l	sub_027388(pc),a0
+	lea.l	Zapper_StateLoopAnim1(pc),a0
 	move.l	a0,$64(a4)
 	bra.s	loc_027344
 loc_027334:
-	lea.l	sub_0273BE(pc),a0
+	lea.l	Zapper_StateLoopAnim2(pc),a0
 	move.l	a0,$5C(a4)
-	lea.l	sub_0273BE(pc),a0
+	lea.l	Zapper_StateLoopAnim2(pc),a0
 	move.l	a0,$64(a4)
 loc_027344:
 	move.w	d7,$8C(a4)

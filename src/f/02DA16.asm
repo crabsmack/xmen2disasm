@@ -33,9 +33,9 @@ loc_02DA58:
 	andi.w	#$FFBF,$6(a4)
 loc_02DA6A:
 	pea.l	g_Player1(a5)
-	jsr	sub_02D96C(pc)
+	jsr	Exodus_HurtOnHotTiles(pc)
 	pea.l	g_Player2(a5)
-	jsr	sub_02D96C(pc)
+	jsr	Exodus_HurtOnHotTiles(pc)
 	move.l	$8(a4),d6
 	asr.l	#$8,d6
 	move.l	$C(a4),d7
@@ -63,7 +63,7 @@ loc_02DA9C:
 	lsl.l	#$8,d0
 	move.l	d0,$C(a4)
 	clr.w	$6C(a4)
-	lea.l	sub_02CDCA(pc),a0
+	lea.l	Exodus_StateDescend(pc),a0
 	move.l	a0,$64(a4)
 	move.l	a0,$5C(a4)
 loc_02DAD4:

@@ -1,10 +1,10 @@
 ; ---------------------------------------------------------------------------
-; Brood_NopExport - empty exported function (jt 515) among BROOD's methods
-; In:  none
+; Brood_Nop6A - vtable +$6A: empty hook for BROOD
+; In:  8(a6) = this
 ; Out: none
-; Evidence: body is link/unlk/rts; no caller or descriptor slot found
+; Evidence: class descriptor BROOD slot +$6A; jt 515; body is link/unlk/rts
 ; ---------------------------------------------------------------------------
-Brood_NopExport:
+Brood_Nop6A:
 	link.w	a6,#$0
 	unlk	a6
 	rts

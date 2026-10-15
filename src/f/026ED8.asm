@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_026ED8	[link-after-rts]
+; RetractFloor_StateSlide - RETRACTFLOOR: slide away 8 px a frame (16 at half rate) until offset $80, then kill itself
+; In:  8(a6) = this
+; Out: d0 = +4 & 8
+; Evidence: +$8E offset; next RetractFloor_StateKill
 ; ---------------------------------------------------------------------------
-sub_026ED8:
+RetractFloor_StateSlide:
 	link.w	a6,#$0
 	movem.l	d7/a4,-(a7)
 	movea.l	$8(a6),a4
@@ -17,14 +20,14 @@ loc_026EF0:
 	cmpi.w	#$80,$8E(a4)
 	ble.s	loc_026F12
 	clr.w	$6C(a4)
-	lea.l	sub_026F2E(pc),a0
+	lea.l	RetractFloor_StateKill(pc),a0
 	move.l	a0,$5C(a4)
 	moveq	#$8,d0
 	and.w	$4(a4),d0
 	bra.s	loc_026F24
 loc_026F12:
 	clr.w	$6C(a4)
-	lea.l	sub_026ED8(pc),a0
+	lea.l	RetractFloor_StateSlide(pc),a0
 	move.l	a0,$5C(a4)
 	moveq	#$8,d0
 	and.w	$4(a4),d0

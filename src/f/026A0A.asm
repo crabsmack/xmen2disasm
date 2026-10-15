@@ -46,7 +46,7 @@ RetractFloor_Init:
 	jsr	$4F52(a5)	; -> sub_1F8454
 	movea.l	d0,a3
 	move.l	a3,$90(a4)
-	lea.l	sub_026D8E(pc),a0
+	lea.l	RetractFloor_StateInit(pc),a0
 	move.l	a0,$64(a4)
 	move.l	a0,$5C(a4)
 	movem.l	-$10(a6),d6-d7/a3-a4

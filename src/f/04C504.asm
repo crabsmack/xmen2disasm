@@ -1,10 +1,10 @@
 ; ---------------------------------------------------------------------------
-; Apocalypse_NopExport - exported function (jt 345) that only calls Apocalypse_CallNopStatics
-; In:  none
+; Apocalypse_Nop6A - vtable +$6A: empty hook for APOCALYPSE (only calls Apocalypse_CallNopStatics)
+; In:  8(a6) = this
 ; Out: none
-; Evidence: no caller found
+; Evidence: class descriptor APOCALYPSE slot +$6A; jt 345
 ; ---------------------------------------------------------------------------
-Apocalypse_NopExport:
+Apocalypse_Nop6A:
 	link.w	a6,#$0
 	jsr	Apocalypse_CallNopStatics(pc)
 	unlk	a6

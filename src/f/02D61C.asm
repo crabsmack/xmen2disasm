@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_02D61C	[link-after-rts]
+; Exodus_StateRiseEnd - EXODUS: snap back to the saved x and descend again after 55 frames
+; In:  8(a6) = this
+; Out: d0 = +4 & 8
+; Evidence: next Exodus_StateDescend
 ; ---------------------------------------------------------------------------
-sub_02D61C:
+Exodus_StateRiseEnd:
 	link.w	a6,#$0
 	move.l	a4,-(a7)
 	movea.l	$8(a6),a4
@@ -12,7 +15,7 @@ sub_02D61C:
 	move.l	d0,$8(a4)
 	andi.b	#$FD,$AC(a4)
 	move.w	#$37,$6C(a4)
-	lea.l	sub_02CDCA(pc),a0
+	lea.l	Exodus_StateDescend(pc),a0
 	move.l	a0,$5C(a4)
 	moveq	#$8,d0
 	and.w	$4(a4),d0

@@ -1,10 +1,10 @@
 ; ---------------------------------------------------------------------------
-; FarAcolyte_NopExport - empty exported function (jt 89) among FARACOLYTE's methods
-; In:  none
+; FarAcolyte_Nop6A - vtable +$6A: empty hook for FARACOLYTE
+; In:  8(a6) = this
 ; Out: none
-; Evidence: body is link/unlk/rts; no caller or descriptor slot found
+; Evidence: class descriptor FARACOLYTE slot +$6A (tools/classes.py); jt 89; body is link/unlk/rts
 ; ---------------------------------------------------------------------------
-FarAcolyte_NopExport:
+FarAcolyte_Nop6A:
 	link.w	a6,#$0
 	unlk	a6
 	rts

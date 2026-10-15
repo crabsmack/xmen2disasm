@@ -1,10 +1,10 @@
 ; ---------------------------------------------------------------------------
-; ShootAcolyte_NopExport - empty exported function (jt 103) among SHOOTACOLYTE's methods
-; In:  none
+; ShootAcolyte_Nop6A - vtable +$6A: empty hook for SHOOTACOLYTE
+; In:  8(a6) = this
 ; Out: none
-; Evidence: body is link/unlk/rts; no caller or descriptor slot found
+; Evidence: class descriptor SHOOTACOLYTE slot +$6A; jt 103; body is link/unlk/rts
 ; ---------------------------------------------------------------------------
-ShootAcolyte_NopExport:
+ShootAcolyte_Nop6A:
 	link.w	a6,#$0
 	unlk	a6
 	rts

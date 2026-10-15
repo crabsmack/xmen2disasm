@@ -1,10 +1,10 @@
 ; ---------------------------------------------------------------------------
-; ThronePhone_NopExport - empty exported function (jt 250) among THRONEPHONE's methods
-; In:  none
+; ThronePhone_Nop6A - vtable +$6A: empty hook for THRONEPHONE
+; In:  8(a6) = this
 ; Out: none
-; Evidence: body is link/unlk/rts; no caller or descriptor slot found
+; Evidence: class descriptor THRONEPHONE slot +$6A; jt 250; body is link/unlk/rts
 ; ---------------------------------------------------------------------------
-ThronePhone_NopExport:
+ThronePhone_Nop6A:
 	link.w	a6,#$0
 	unlk	a6
 	rts

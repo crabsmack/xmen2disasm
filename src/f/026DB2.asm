@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_026DB2	[link-after-rts]
+; RetractFloor_StateWait - RETRACTFLOOR: keep the camera fields at 100/$91 until a drop happened; when triggered raise the fall value -$3CD0 (+$10, max $500) and drop after 30 frames
+; In:  8(a6) = this
+; Out: d0
+; Evidence: g_Camera +$40/+$42 while -$3AFA == 0; +$8C bit 0 = triggered; +6 |= $1000; next RetractFloor_StateDrop
 ; ---------------------------------------------------------------------------
-sub_026DB2:
+RetractFloor_StateWait:
 	link.w	a6,#$0
 	move.l	a4,-(a7)
 	movea.l	$8(a6),a4
@@ -21,7 +24,7 @@ loc_026DD6:
 	addi.w	#$10,-$3CD0(a5)
 loc_026DF4:
 	move.w	#$1E,$6C(a4)
-	lea.l	sub_026E10(pc),a0
+	lea.l	RetractFloor_StateDrop(pc),a0
 	move.l	a0,$5C(a4)
 	moveq	#$8,d0
 	and.w	$4(a4),d0

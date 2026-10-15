@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; loc_02DB70	[static: switch-table case target (tools/switches.py: table after `move.w T(pc,dN.w),dN / jmp T-2(pc,dN.w)`, size from the cmpi bound)]
+; Exodus_TakeDamage_part2 - part 2 of Exodus_TakeDamage: switch case(s) split off by the code-flow tools (not a separate function)
+; In:  registers/frame of Exodus_TakeDamage
+; Out: continues in Exodus_TakeDamage
+; Evidence: only reached by branches from Exodus_TakeDamage
 ; ---------------------------------------------------------------------------
-loc_02DB70:
+Exodus_TakeDamage_part2:
 	move.l	a4,-(a7)
 	jsr	$3ACA(a5)	; -> sub_13DE36
 	addq.w	#$4,a7

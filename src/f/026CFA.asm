@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_026CFA	[jt 171]
+; RetractFloor_StartRetract - RETRACTFLOOR slot +$6E (own virtual): mark it triggered and destroy every other active object within 60 px of its height
+; In:  8(a6) = this
+; Out: none
+; Evidence: tools/classes.py RETRACTFLOOR +$6E; +$8C |= 1; sub_13DE36 on objects in the active table
 ; ---------------------------------------------------------------------------
-sub_026CFA:
+RetractFloor_StartRetract:
 	link.w	a6,#$0
 	movem.l	d3-d7/a3-a4,-(a7)
 	movea.l	$8(a6),a3

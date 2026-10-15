@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_02690C	[jt 165]
+; RetractFloor_TriggerNearest - start the untriggered RETRACTFLOOR nearest to map row N retracting (sound $DE)
+; In:  8(a6) = word map row
+; Out: d0 = result of its slot +$6E
+; Evidence: scans the active object table (-$32A6, count $FFEE0E) for class Tbl_RetractFloor_vtable with +$8C == 0, nearest y to row*32; calls RetractFloor_StartRetract; caller AvalonA2_ToggleTileHook
 ; ---------------------------------------------------------------------------
-sub_02690C:
+RetractFloor_TriggerNearest:
 	link.w	a6,#$FFFC
 	movem.l	d3-d7/a3-a4,-(a7)
 	moveq	#$0,d0

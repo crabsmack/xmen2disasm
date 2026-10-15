@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_02D658	[link-after-rts]
+; Exodus_StateVulnerable - EXODUS: after an attack become hittable for 90 frames (hit box 5,10,8,8)
+; In:  8(a6) = this
+; Out: d0
+; Evidence: sub_15DF2A(this, $FFEBAE) node +$84; +$AB = $5A; flags +$AC |= $C; next Exodus_StateEndVulnerable
 ; ---------------------------------------------------------------------------
-sub_02D658:
+Exodus_StateVulnerable:
 	link.w	a6,#$0
 	move.l	a4,-(a7)
 	movea.l	$8(a6),a4
@@ -21,17 +24,17 @@ sub_02D658:
 	cmpi.w	#$FFFF,d0
 	addq.w	#$8,a7
 	bne.s	loc_02D6B8
-	lea.l	sub_02D6D8(pc),a0
+	lea.l	Exodus_StateEndVulnerable(pc),a0
 	move.l	a0,$5C(a4)
 	move.l	a4,-(a7)
-	jsr	sub_02D6D8(pc)
+	jsr	Exodus_StateEndVulnerable(pc)
 	addq.w	#$4,a7
 	bra.s	loc_02D6D0
 loc_02D6B8:
 	moveq	#$0,d0
 	move.b	$AB(a4),d0
 	move.w	d0,$6C(a4)
-	lea.l	sub_02D6D8(pc),a0
+	lea.l	Exodus_StateEndVulnerable(pc),a0
 	move.l	a0,$5C(a4)
 	moveq	#$8,d0
 	and.w	$4(a4),d0

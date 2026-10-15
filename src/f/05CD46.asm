@@ -1,10 +1,10 @@
 ; ---------------------------------------------------------------------------
-; Tusk_NopExport - empty exported function (jt 420) among TUSK's methods
-; In:  none
+; Tusk_Nop6A - vtable +$6A: empty hook for TUSK
+; In:  8(a6) = this
 ; Out: none
-; Evidence: body is link/unlk/rts; no caller or descriptor slot found
+; Evidence: class descriptor TUSK slot +$6A; jt 420; body is link/unlk/rts
 ; ---------------------------------------------------------------------------
-Tusk_NopExport:
+Tusk_Nop6A:
 	link.w	a6,#$0
 	unlk	a6
 	rts

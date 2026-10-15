@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_026E10	[link-after-rts]
+; RetractFloor_StateDrop - RETRACTFLOOR: remove its floor segment so the players fall, set the camera fields to $5A/$5F, sound $DD
+; In:  8(a6) = this
+; Out: d0 = +4 & 8
+; Evidence: sub_1F6530 on present players; -$3AFA = -$3CD0; Seg_Free(+$90); next RetractFloor_StateSlide
 ; ---------------------------------------------------------------------------
-sub_026E10:
+RetractFloor_StateDrop:
 	link.w	a6,#$FFFC
 	movem.l	a3-a4,-(a7)
 	movea.l	$8(a6),a4
@@ -58,7 +61,7 @@ loc_026EAA:
 	jsr	$521A(a5)	; -> Snd_Play
 	addq.w	#$8,a7
 	clr.w	$6C(a4)
-	lea.l	sub_026ED8(pc),a0
+	lea.l	RetractFloor_StateSlide(pc),a0
 	move.l	a0,$5C(a4)
 	moveq	#$8,d0
 	and.w	$4(a4),d0

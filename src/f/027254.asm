@@ -1,10 +1,10 @@
 ; ---------------------------------------------------------------------------
-; Zapper_NopExport - empty exported function (jt 176) among ZAPPER's methods
-; In:  none
+; Zapper_Nop6A - vtable +$6A: empty hook for ZAPPER
+; In:  8(a6) = this
 ; Out: none
-; Evidence: body is link/unlk/rts; no caller or descriptor slot found
+; Evidence: class descriptor ZAPPER slot +$6A; jt 176; body is link/unlk/rts
 ; ---------------------------------------------------------------------------
-Zapper_NopExport:
+Zapper_Nop6A:
 	link.w	a6,#$0
 	unlk	a6
 	rts

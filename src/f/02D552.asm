@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_02D552	[link-after-rts]
+; Exodus_StateRise - EXODUS: fly up (vy -200, ay -10) with a random drift
+; In:  8(a6) = this
+; Out: d0 = +4 & 8
+; Evidence: sub_15C222 random vx; next Exodus_StateRiseUntil
 ; ---------------------------------------------------------------------------
-sub_02D552:
+Exodus_StateRise:
 	link.w	a6,#$0
 	movem.l	d3/d5-d7/a4,-(a7)
 	movea.l	$8(a6),a4
@@ -48,7 +51,7 @@ loc_02D5B0:
 	ori.b	#$2,$AC(a4)
 	ori.b	#$1,$AC(a4)
 	clr.w	$6C(a4)
-	lea.l	sub_02D5EA(pc),a0
+	lea.l	Exodus_StateRiseUntil(pc),a0
 	move.l	a0,$5C(a4)
 	moveq	#$8,d0
 	and.w	$4(a4),d0

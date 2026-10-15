@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_02D3AE	[link-after-rts]
+; Exodus_StateSwoopStart - EXODUS: start swooping towards y $2D5 with a random velocity
+; In:  8(a6) = this
+; Out: d0 = +4 & 8
+; Evidence: sub_15C222 random; flags +$AC = 3; next Exodus_StateSwoopToY
 ; ---------------------------------------------------------------------------
-sub_02D3AE:
+Exodus_StateSwoopStart:
 	link.w	a6,#$0
 	movem.l	d3/d5-d7/a4,-(a7)
 	movea.l	$8(a6),a4
@@ -52,7 +55,7 @@ loc_02D412:
 	ori.b	#$2,$AC(a4)
 	ori.b	#$1,$AC(a4)
 	clr.w	$6C(a4)
-	lea.l	sub_02D456(pc),a0
+	lea.l	Exodus_StateSwoopToY(pc),a0
 	move.l	a0,$5C(a4)
 	moveq	#$8,d0
 	and.w	$4(a4),d0

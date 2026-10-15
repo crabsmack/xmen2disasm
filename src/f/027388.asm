@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_027388	[link-after-rts]
+; Zapper_StateLoopAnim1 - ZAPPER state for spawn type 1: loop animation jt $7CA forever
+; In:  8(a6) = this
+; Out: d0 = +4 & 8
+; Evidence: chosen by Zapper_Init
 ; ---------------------------------------------------------------------------
-sub_027388:
+Zapper_StateLoopAnim1:
 	link.w	a6,#$0
 	move.l	a4,-(a7)
 	movea.l	$8(a6),a4
@@ -11,7 +14,7 @@ sub_027388:
 	jsr	$4E4A(a5)	; -> Obj_ChangeAnim
 	addq.w	#$8,a7
 	move.w	#$FF,$6C(a4)
-	lea.l	sub_027388(pc),a0
+	lea.l	Zapper_StateLoopAnim1(pc),a0
 	move.l	a0,$5C(a4)
 	moveq	#$8,d0
 	and.w	$4(a4),d0

@@ -565,7 +565,7 @@ Art_AvalonA3Spr:	; sprite definition (type $18, raw 4bpp tiles): $24-byte header
 	include "src/f/02CE1A.asm"
 	include "src/f/02CE52.asm"
 Sw_02CE52:	; switch table of sub at $02CE52: 6 word offsets from Sw_02CE52-2
-	dc.w	loc_02CEF6-(Sw_02CE52-2), loc_02CE94-(Sw_02CE52-2), loc_02CEA8-(Sw_02CE52-2), loc_02CEBC-(Sw_02CE52-2)
+	dc.w	Exodus_NextPattern_part3-(Sw_02CE52-2), Exodus_NextPattern_part1-(Sw_02CE52-2), loc_02CEA8-(Sw_02CE52-2), Exodus_NextPattern_part2-(Sw_02CE52-2)
 	dc.w	loc_02CED0-(Sw_02CE52-2), loc_02CEE4-(Sw_02CE52-2)
 	incrom	$02CE92,$2
 	include "src/f/02CE94.asm"
@@ -573,11 +573,11 @@ Sw_02CE52:	; switch table of sub at $02CE52: 6 word offsets from Sw_02CE52-2
 	include "src/f/02CEF6.asm"
 	include "src/f/02CF04.asm"
 Sw_02CF04:	; switch table of sub at $02CF04: 6 word offsets from Sw_02CF04-2
-	dc.w	loc_02CF34-(Sw_02CF04-2), loc_02CFF4-(Sw_02CF04-2), loc_02D024-(Sw_02CF04-2), loc_02D06E-(Sw_02CF04-2)
-	dc.w	loc_02D0B8-(Sw_02CF04-2), loc_02D0FC-(Sw_02CF04-2)
+	dc.w	Exodus_StateNextAttack_part1-(Sw_02CF04-2), Exodus_StateNextAttack_part4-(Sw_02CF04-2), loc_02D024-(Sw_02CF04-2), loc_02D06E-(Sw_02CF04-2)
+	dc.w	Exodus_StateNextAttack_part5-(Sw_02CF04-2), loc_02D0FC-(Sw_02CF04-2)
 	include "src/f/02CF34.asm"
 Sw_02CF34:	; switch table of sub at $02CF34: 6 word offsets from Sw_02CF34-2
-	dc.w	loc_02CF64-(Sw_02CF34-2), loc_02CF7A-(Sw_02CF34-2), loc_02CF90-(Sw_02CF34-2), loc_02CFA6-(Sw_02CF34-2)
+	dc.w	Exodus_StateNextAttack_part2-(Sw_02CF34-2), loc_02CF7A-(Sw_02CF34-2), loc_02CF90-(Sw_02CF34-2), loc_02CFA6-(Sw_02CF34-2)
 	dc.w	loc_02CFBC-(Sw_02CF34-2), loc_02CFD2-(Sw_02CF34-2)
 	include "src/f/02CF64.asm"
 	include "src/f/02CFE8.asm"
@@ -611,8 +611,8 @@ Sw_02CF34:	; switch table of sub at $02CF34: 6 word offsets from Sw_02CF34-2
 	include "src/f/02DA16.asm"
 	include "src/f/02DADE.asm"
 Sw_02DADE:	; switch table of sub at $02DADE: 5 word offsets from Sw_02DADE-2
-	dc.w	loc_02DB62-(Sw_02DADE-2), loc_02DB70-(Sw_02DADE-2), loc_02DB7A-(Sw_02DADE-2), loc_02DB84-(Sw_02DADE-2)
-	dc.w	loc_02DB8E-(Sw_02DADE-2)
+	dc.w	Exodus_TakeDamage_part1-(Sw_02DADE-2), Exodus_TakeDamage_part2-(Sw_02DADE-2), loc_02DB7A-(Sw_02DADE-2), Exodus_TakeDamage_part3-(Sw_02DADE-2)
+	dc.w	Exodus_TakeDamage_part4-(Sw_02DADE-2)
 	include "src/f/02DB62.asm"
 	include "src/f/02DB70.asm"
 	include "src/f/02DB84.asm"
@@ -642,7 +642,7 @@ Tbl_ExodusBlastAnim6:	; animation script (byte flags, byte steps, ..., 2-byte st
 	include "src/f/02DFA4.asm"
 	include "src/f/02DFD8.asm"
 Sw_02DFD8:	; switch table of sub at $02DFD8: 7 word offsets from Sw_02DFD8-2
-	dc.w	loc_02E026-(Sw_02DFD8-2), loc_02E03A-(Sw_02DFD8-2), loc_02E04E-(Sw_02DFD8-2), loc_02E062-(Sw_02DFD8-2)
+	dc.w	ExodusBlast_StateLaunch_part1-(Sw_02DFD8-2), loc_02E03A-(Sw_02DFD8-2), ExodusBlast_StateLaunch_part2-(Sw_02DFD8-2), ExodusBlast_StateLaunch_part3-(Sw_02DFD8-2)
 	dc.w	loc_02E076-(Sw_02DFD8-2), loc_02E08A-(Sw_02DFD8-2), loc_02E09E-(Sw_02DFD8-2)
 	include "src/f/02E026.asm"
 	include "src/f/02E04E.asm"
