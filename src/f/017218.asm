@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_017218	[jt 87]
+; FarAcolyte_GetSize - vtable +$06: return sizeof(FARACOLYTE) = $C0 bytes
+; In:  8(a6) = class descriptor
+; Out: d0 = size
+; Evidence: class descriptor FARACOLYTE slot +$06 (tools/classes.py); not reached by the TAS
 ; ---------------------------------------------------------------------------
-sub_017218:
+FarAcolyte_GetSize:
 	link.w	a6,#$0
 	move.l	#$C0,d0
 	unlk	a6

@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_01AABC	[jt 120]
+; Tower_Init - vtable +$12 constructor: run the parent's Init(x, y, param), then set up a TOWER
+; In:  8(a6) = this (TOWER object)
+; Out: none
+; Evidence: class descriptor TOWER slot +$12 (tools/classes.py); TAS frames 10621-12742 (10 active)
 ; ---------------------------------------------------------------------------
-sub_01AABC:
+Tower_Init:
 	link.w	a6,#$0
 	movem.l	a3-a4,-(a7)
 	movea.l	$14(a6),a3

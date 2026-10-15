@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_04E238	[jt 369]
+; ApocBomb_Update - vtable +$4A: per-frame update of a APOCBOMB
+; In:  8(a6) = this (APOCBOMB object)
+; Out: none
+; Evidence: class descriptor APOCBOMB slot +$4A (tools/classes.py); TAS frames 24410-26319 (1722 active)
 ; ---------------------------------------------------------------------------
-sub_04E238:
+ApocBomb_Update:
 	link.w	a6,#$FFF8
 	movem.l	d4-d7/a3-a4,-(a7)
 	movea.l	$8(a6),a4

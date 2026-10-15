@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_02DBCE	[jt 200]
+; Exodus_Init - vtable +$12 constructor: run the parent's Init(x, y, param), then set up a EXODUS
+; In:  8(a6) = this (EXODUS object)
+; Out: none
+; Evidence: class descriptor EXODUS slot +$12 (tools/classes.py); TAS frames 17199-17199 (1 active)
 ; ---------------------------------------------------------------------------
-sub_02DBCE:
+Exodus_Init:
 	link.w	a6,#$0
 	movem.l	a3-a4,-(a7)
 	movea.l	$14(a6),a3

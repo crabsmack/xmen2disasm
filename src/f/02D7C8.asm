@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_02D7C8	[jt 196]
+; Exodus_Move - vtable +$4E: per-frame movement of a EXODUS
+; In:  8(a6) = this (EXODUS object)
+; Out: none
+; Evidence: class descriptor EXODUS slot +$4E (tools/classes.py); TAS frames 17200-18216 (901 active)
 ; ---------------------------------------------------------------------------
-sub_02D7C8:
+Exodus_Move:
 	link.w	a6,#$0
 	movem.l	d7/a4,-(a7)
 	movea.l	$8(a6),a4

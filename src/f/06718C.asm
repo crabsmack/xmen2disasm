@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_06718C	[jt 474]
+; ScalingActor_Init - vtable +$12 constructor: run the parent's Init(x, y, param), then set up a SCALINGACTOR
+; In:  8(a6) = this (SCALINGACTOR object)
+; Out: none
+; Evidence: class descriptor SCALINGACTOR slot +$12 (tools/classes.py); TAS frames 2346-49027 (21 active)
 ; ---------------------------------------------------------------------------
-sub_06718C:
+ScalingActor_Init:
 	link.w	a6,#$0
 	move.l	a4,-(a7)
 	movea.l	$8(a6),a4

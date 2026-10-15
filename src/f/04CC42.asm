@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_04CC42	[jt 352]
+; Apocalypse_Update - vtable +$4A: per-frame update of a APOCALYPSE
+; In:  8(a6) = this (APOCALYPSE object)
+; Out: none
+; Evidence: class descriptor APOCALYPSE slot +$4A (tools/classes.py); TAS frames 24088-27245 (3157 active)
 ; ---------------------------------------------------------------------------
-sub_04CC42:
+Apocalypse_Update:
 	link.w	a6,#$0
 	movem.l	d6-d7/a3-a4,-(a7)
 	movea.l	$8(a6),a4

@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_05DD7C	[jt 433]
+; Tuskette_Move - vtable +$4E: per-frame movement of a TUSKETTE
+; In:  8(a6) = this (TUSKETTE object)
+; Out: none
+; Evidence: class descriptor TUSKETTE slot +$4E (tools/classes.py); TAS frames 22486-23800 (643 active)
 ; ---------------------------------------------------------------------------
-sub_05DD7C:
+Tuskette_Move:
 	link.w	a6,#$0
 	movem.l	d7/a4,-(a7)
 	move.w	$E(a6),d7

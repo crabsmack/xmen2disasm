@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_0107EA	[jt 37]
+; BigAcolyte_TakeDamage - vtable +$26: a BIGACOLYTE takes a hit
+; In:  8(a6) = this (BIGACOLYTE object)
+; Out: none
+; Evidence: class descriptor BIGACOLYTE slot +$26 (tools/classes.py); TAS frames 13401-13657 (7 active)
 ; ---------------------------------------------------------------------------
-sub_0107EA:
+BigAcolyte_TakeDamage:
 	link.w	a6,#$0
 	movem.l	d4-d7/a4,-(a7)
 	move.b	$17(a6),d5

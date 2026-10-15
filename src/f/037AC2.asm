@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_037AC2	[jt 251]
+; ThronePhone_ClassInit - vtable +$5E: per-level class setup for THRONEPHONE (load its resources)
+; In:  8(a6) = this, $C(a6) = class index
+; Out: none
+; Evidence: class descriptor THRONEPHONE slot +$5E (tools/classes.py); TAS frames 18540-18540 (1 active)
 ; ---------------------------------------------------------------------------
-sub_037AC2:
+ThronePhone_ClassInit:
 	link.w	a6,#$0
 	moveq	#$0,d0
 	move.l	d0,-(a7)

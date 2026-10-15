@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_05DD66	[jt 432]
+; Tuskette_Nop66 - vtable +$66: empty (loads `this` and returns)
+; In:  8(a6) = this (TUSKETTE object)
+; Out: none
+; Evidence: class descriptor TUSKETTE slot +$66 (tools/classes.py); not reached by the TAS
 ; ---------------------------------------------------------------------------
-sub_05DD66:
+Tuskette_Nop66:
 	link.w	a6,#$FFFC
 	movem.l	a3-a4,-(a7)
 	movea.l	$8(a6),a4

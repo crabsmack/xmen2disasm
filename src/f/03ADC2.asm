@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_03ADC2	[jt 280]
+; RollingDiscs_Update - vtable +$4A: per-frame update of a ROLLINGDISCS
+; In:  8(a6) = this (ROLLINGDISCS object)
+; Out: none
+; Evidence: class descriptor ROLLINGDISCS slot +$4A (tools/classes.py); not reached by the TAS
 ; ---------------------------------------------------------------------------
-sub_03ADC2:
+RollingDiscs_Update:
 	link.w	a6,#$0
 	movem.l	d7/a4,-(a7)
 	movea.l	$8(a6),a4

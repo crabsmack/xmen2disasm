@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_02723E	[jt 175]
+; Zapper_Nop66 - vtable +$66: empty (loads `this` and returns)
+; In:  8(a6) = this (ZAPPER object)
+; Out: none
+; Evidence: class descriptor ZAPPER slot +$66 (tools/classes.py); not reached by the TAS
 ; ---------------------------------------------------------------------------
-sub_02723E:
+Zapper_Nop66:
 	link.w	a6,#$FFFC
 	movem.l	a3-a4,-(a7)
 	movea.l	$8(a6),a4

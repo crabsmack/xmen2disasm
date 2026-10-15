@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_0269EC	[jt 168]
+; RetractFloor_ClassInit - vtable +$5E: per-level class setup for RETRACTFLOOR (load its resources)
+; In:  8(a6) = this, $C(a6) = class index
+; Out: none
+; Evidence: class descriptor RETRACTFLOOR slot +$5E (tools/classes.py); TAS frames 14116-14116 (1 active)
 ; ---------------------------------------------------------------------------
-sub_0269EC:
+RetractFloor_ClassInit:
 	link.w	a6,#$0
 	moveq	#$0,d0
 	move.l	d0,-(a7)

@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_03A69A	[jt 270]
+; BanimazaDoor_OutsideActiveWindow - vtable +$42: a BANIMAZADOOR is outside the active window
+; In:  8(a6) = this (BANIMAZADOOR object)
+; Out: none
+; Evidence: class descriptor BANIMAZADOOR slot +$42 (tools/classes.py); TAS frames 23674-23743 (41 active)
 ; ---------------------------------------------------------------------------
-sub_03A69A:
+BanimazaDoor_OutsideActiveWindow:
 	link.w	a6,#$0
 	movem.l	d3/d7/a4,-(a7)
 	movea.l	$8(a6),a4

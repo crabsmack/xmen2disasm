@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_02D75E	[jt 193]
+; Exodus_InitSpawnRec - vtable +$0A: set up the spawn record of a EXODUS
+; In:  8(a6) = this (EXODUS object)
+; Out: none
+; Evidence: class descriptor EXODUS slot +$0A (tools/classes.py); TAS frames 17145-17145 (1 active)
 ; ---------------------------------------------------------------------------
-sub_02D75E:
+Exodus_InitSpawnRec:
 	link.w	a6,#$0
 	move.l	a4,-(a7)
 	movea.l	$8(a6),a4

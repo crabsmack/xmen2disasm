@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_05BD92	[jt 413]
+; Boulder_Draw - vtable +$1A: draw a BOULDER
+; In:  8(a6) = this (BOULDER object)
+; Out: none
+; Evidence: class descriptor BOULDER slot +$1A (tools/classes.py); TAS frames 20650-20996 (206 active)
 ; ---------------------------------------------------------------------------
-sub_05BD92:
+Boulder_Draw:
 	link.w	a6,#$0
 	movem.l	d3-d7/a3-a4,-(a7)
 	movea.l	$8(a6),a3

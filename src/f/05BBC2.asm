@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_05BBC2	[jt 410]
+; Boulder_Update - vtable +$4A: per-frame update of a BOULDER
+; In:  8(a6) = this (BOULDER object)
+; Out: none
+; Evidence: class descriptor BOULDER slot +$4A (tools/classes.py); TAS frames 20651-20996 (180 active)
 ; ---------------------------------------------------------------------------
-sub_05BBC2:
+Boulder_Update:
 	link.w	a6,#$0
 	movem.l	d7/a4,-(a7)
 	movea.l	$8(a6),a4

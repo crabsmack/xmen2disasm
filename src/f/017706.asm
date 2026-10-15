@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_017706	[jt 94]
+; FarAcolyte_Move - vtable +$4E: per-frame movement of a FARACOLYTE
+; In:  8(a6) = this (FARACOLYTE object)
+; Out: none
+; Evidence: class descriptor FARACOLYTE slot +$4E (tools/classes.py); TAS frames 10827-12963 (307 active)
 ; ---------------------------------------------------------------------------
-sub_017706:
+FarAcolyte_Move:
 	link.w	a6,#$FFF6
 	movem.l	d3-d7/a3-a4,-(a7)
 	move.w	$E(a6),d5

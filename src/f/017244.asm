@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_017244	[jt 90]
+; FarAcolyte_ClassInit - vtable +$5E: per-level class setup for FARACOLYTE (load its resources)
+; In:  8(a6) = this, $C(a6) = class index
+; Out: none
+; Evidence: class descriptor FARACOLYTE slot +$5E (tools/classes.py); TAS frames 10312-11766 (2 active)
 ; ---------------------------------------------------------------------------
-sub_017244:
+FarAcolyte_ClassInit:
 	link.w	a6,#$0
 	moveq	#$1,d0
 	move.l	d0,-(a7)

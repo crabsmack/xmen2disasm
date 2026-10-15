@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_04C526	[jt 347]
+; Apocalypse_ClassInit - vtable +$5E: per-level class setup for APOCALYPSE (load its resources)
+; In:  8(a6) = this, $C(a6) = class index
+; Out: none
+; Evidence: class descriptor APOCALYPSE slot +$5E (tools/classes.py); TAS frames 24056-24056 (1 active)
 ; ---------------------------------------------------------------------------
-sub_04C526:
+Apocalypse_ClassInit:
 	link.w	a6,#$0
 	movem.l	d3/d7/a3-a4,-(a7)
 	jsr	sub_04C4F0(pc)

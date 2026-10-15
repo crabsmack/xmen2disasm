@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_01800A	[jt 105]
+; ShootAcolyte_Init - vtable +$12 constructor: run the parent's Init(x, y, param), then set up a SHOOTACOLYTE
+; In:  8(a6) = this (SHOOTACOLYTE object)
+; Out: none
+; Evidence: class descriptor SHOOTACOLYTE slot +$12 (tools/classes.py); TAS frames 11789-12906 (14 active)
 ; ---------------------------------------------------------------------------
-sub_01800A:
+ShootAcolyte_Init:
 	link.w	a6,#$FFF0
 	movem.l	d3/d7/a3-a4,-(a7)
 	movea.l	$14(a6),a3

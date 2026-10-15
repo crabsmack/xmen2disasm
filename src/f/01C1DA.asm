@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_01C1DA	[jt 131]
+; YoyoAcolyte_Update - vtable +$4A: per-frame update of a YOYOACOLYTE
+; In:  8(a6) = this (YOYOACOLYTE object)
+; Out: none
+; Evidence: class descriptor YOYOACOLYTE slot +$4A (tools/classes.py); TAS frames 12185-16731 (1160 active)
 ; ---------------------------------------------------------------------------
-sub_01C1DA:
+YoyoAcolyte_Update:
 	link.w	a6,#$0
 	movem.l	d3/d6-d7/a3-a4,-(a7)
 	movea.l	$8(a6),a4

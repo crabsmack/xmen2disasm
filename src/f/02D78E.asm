@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_02D78E	[jt 194]
+; Exodus_ClassInit - vtable +$5E: per-level class setup for EXODUS (load its resources)
+; In:  8(a6) = this, $C(a6) = class index
+; Out: none
+; Evidence: class descriptor EXODUS slot +$5E (tools/classes.py); TAS frames 17148-17148 (1 active)
 ; ---------------------------------------------------------------------------
-sub_02D78E:
+Exodus_ClassInit:
 	link.w	a6,#$0
 	move.l	$8(a6),-(a7)
 	jsr	sub_02D756(pc)

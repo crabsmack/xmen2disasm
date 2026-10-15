@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_05BBA4	[jt 409]
+; Boulder_Kill - vtable +$52: kill a BOULDER
+; In:  8(a6) = this (BOULDER object)
+; Out: none
+; Evidence: class descriptor BOULDER slot +$52 (tools/classes.py); TAS frames 20742-20997 (4 active)
 ; ---------------------------------------------------------------------------
-sub_05BBA4:
+Boulder_Kill:
 	link.w	a6,#$0
 	move.l	$8(a6),-(a7)
 	lea.l	$D22(a5),a0

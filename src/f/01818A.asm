@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_01818A	[jt 106]
+; ShootAcolyte_Move - vtable +$4E: per-frame movement of a SHOOTACOLYTE
+; In:  8(a6) = this (SHOOTACOLYTE object)
+; Out: none
+; Evidence: class descriptor SHOOTACOLYTE slot +$4E (tools/classes.py); TAS frames 11790-12957 (586 active)
 ; ---------------------------------------------------------------------------
-sub_01818A:
+ShootAcolyte_Move:
 	link.w	a6,#$0
 	movem.l	d7/a4,-(a7)
 	movea.l	$8(a6),a4

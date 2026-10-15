@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_03628E	[jt 240]
+; MagnetoBoss_Activate - vtable +$3E: activate a MAGNETOBOSS (entered the active window)
+; In:  8(a6) = this (MAGNETOBOSS object)
+; Out: none
+; Evidence: class descriptor MAGNETOBOSS slot +$3E (tools/classes.py); TAS frames 18543-18543 (1 active)
 ; ---------------------------------------------------------------------------
-sub_03628E:
+MagnetoBoss_Activate:
 	link.w	a6,#$0
 	movem.l	d5-d7/a4,-(a7)
 	movea.l	$8(a6),a4

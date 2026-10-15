@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_04CD3A	[jt 354]
+; Apocalypse_TakeDamage - vtable +$26: a APOCALYPSE takes a hit
+; In:  8(a6) = this (APOCALYPSE object)
+; Out: none
+; Evidence: class descriptor APOCALYPSE slot +$26 (tools/classes.py); TAS frames 26561-27030 (8 active)
 ; ---------------------------------------------------------------------------
-sub_04CD3A:
+Apocalypse_TakeDamage:
 	link.w	a6,#$0
 	move.l	a4,-(a7)
 	movea.l	$8(a6),a4

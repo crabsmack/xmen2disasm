@@ -1,11 +1,14 @@
 ; ---------------------------------------------------------------------------
-; sub_05BB0E	[jt 407]
+; Boulder_ClassInit - vtable +$5E: per-level class setup for BOULDER (load its resources)
+; In:  8(a6) = this, $C(a6) = class index
+; Out: none
+; Evidence: class descriptor BOULDER slot +$5E (tools/classes.py); TAS frames 20323-20323 (1 active)
 ; ---------------------------------------------------------------------------
-sub_05BB0E:
+Boulder_ClassInit:
 	link.w	a6,#$0
 	move.l	d7,-(a7)
 	move.l	$8(a6),-(a7)
-	jsr	sub_05BB06(pc)
+	jsr	Boulder_Nop6A(pc)
 	moveq	#$2,d0
 	move.l	d0,-(a7)
 	lea.l	$C12(a5),a0

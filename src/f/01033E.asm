@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_01033E	[jt 31]
+; BigAcolyte_Activate - vtable +$3E: activate a BIGACOLYTE (entered the active window)
+; In:  8(a6) = this (BIGACOLYTE object)
+; Out: none
+; Evidence: class descriptor BIGACOLYTE slot +$3E (tools/classes.py); TAS frames 13007-13007 (1 active)
 ; ---------------------------------------------------------------------------
-sub_01033E:
+BigAcolyte_Activate:
 	link.w	a6,#$FFFC
 	movem.l	a3-a4,-(a7)
 	movea.l	$8(a6),a4

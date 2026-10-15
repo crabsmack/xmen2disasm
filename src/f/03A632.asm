@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_03A632	[jt 269]
+; BanimazaDoor_InActivateWindow - vtable +$3A: is a BANIMAZADOOR inside the active window
+; In:  8(a6) = this (BANIMAZADOOR object)
+; Out: none
+; Evidence: class descriptor BANIMAZADOOR slot +$3A (tools/classes.py); TAS frames 23236-23786 (277 active)
 ; ---------------------------------------------------------------------------
-sub_03A632:
+BanimazaDoor_InActivateWindow:
 	link.w	a6,#$0
 	movem.l	d3/d7/a4,-(a7)
 	movea.l	$8(a6),a4

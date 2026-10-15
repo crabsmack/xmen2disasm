@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_04EC7C	[jt 380]
+; BeamScooter_Init - vtable +$12 constructor: run the parent's Init(x, y, param), then set up a BEAMSCOOTER
+; In:  8(a6) = this (BEAMSCOOTER object)
+; Out: none
+; Evidence: class descriptor BEAMSCOOTER slot +$12 (tools/classes.py); TAS frames 27245-27245 (1 active)
 ; ---------------------------------------------------------------------------
-sub_04EC7C:
+BeamScooter_Init:
 	link.w	a6,#$0
 	move.l	a4,-(a7)
 	movea.l	$8(a6),a4

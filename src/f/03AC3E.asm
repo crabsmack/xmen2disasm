@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_03AC3E	[jt 278]
+; RollingDiscs_ClassInit - vtable +$5E: per-level class setup for ROLLINGDISCS (load its resources)
+; In:  8(a6) = this, $C(a6) = class index
+; Out: none
+; Evidence: class descriptor ROLLINGDISCS slot +$5E (tools/classes.py); TAS frames 22435-22435 (1 active)
 ; ---------------------------------------------------------------------------
-sub_03AC3E:
+RollingDiscs_ClassInit:
 	link.w	a6,#$0
 	movem.l	d3/d7/a3-a4,-(a7)
 	movea.l	-$CB2(a5),a0

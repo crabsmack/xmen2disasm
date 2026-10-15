@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_04C9D8	[jt 351]
+; Apocalypse_Move - vtable +$4E: per-frame movement of a APOCALYPSE
+; In:  8(a6) = this (APOCALYPSE object)
+; Out: none
+; Evidence: class descriptor APOCALYPSE slot +$4E (tools/classes.py); TAS frames 24088-27245 (3157 active)
 ; ---------------------------------------------------------------------------
-sub_04C9D8:
+Apocalypse_Move:
 	link.w	a6,#$FFFE
 	movem.l	d3-d7/a4,-(a7)
 	movea.l	$8(a6),a4

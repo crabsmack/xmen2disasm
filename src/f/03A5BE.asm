@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_03A5BE	[jt 268]
+; BanimazaDoor_TakeDamage - vtable +$26: a BANIMAZADOOR takes a hit
+; In:  8(a6) = this (BANIMAZADOOR object)
+; Out: none
+; Evidence: class descriptor BANIMAZADOOR slot +$26 (tools/classes.py); not reached by the TAS
 ; ---------------------------------------------------------------------------
-sub_03A5BE:
+BanimazaDoor_TakeDamage:
 	link.w	a6,#$0
 	move.l	a4,-(a7)
 	movea.l	$8(a6),a4

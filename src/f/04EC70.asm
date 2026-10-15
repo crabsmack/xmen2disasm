@@ -1,8 +1,11 @@
 ; ---------------------------------------------------------------------------
-; sub_04EC70	[jt 379]
+; BeamScooter_ClassInit - vtable +$5E: per-level class setup for BEAMSCOOTER (load its resources)
+; In:  8(a6) = this, $C(a6) = class index
+; Out: none
+; Evidence: class descriptor BEAMSCOOTER slot +$5E (tools/classes.py); TAS frames 24086-24086 (1 active)
 ; ---------------------------------------------------------------------------
-sub_04EC70:
+BeamScooter_ClassInit:
 	link.w	a6,#$0
-	jsr	sub_04EAF4(pc)
+	jsr	BeamScooter_NopStatic(pc)
 	unlk	a6
 	rts

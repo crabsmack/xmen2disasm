@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_03605C	[jt 238]
+; MagnetoBoss_ClassInit - vtable +$5E: per-level class setup for MAGNETOBOSS (load its resources)
+; In:  8(a6) = this, $C(a6) = class index
+; Out: none
+; Evidence: class descriptor MAGNETOBOSS slot +$5E (tools/classes.py); TAS frames 18539-18539 (1 active)
 ; ---------------------------------------------------------------------------
-sub_03605C:
+MagnetoBoss_ClassInit:
 	link.w	a6,#$0
 	move.l	d7,-(a7)
 	move.w	$E(a6),d7

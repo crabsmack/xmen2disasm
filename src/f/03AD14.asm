@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_03AD14	[jt 279]
+; RollingDiscs_Init - vtable +$12 constructor: run the parent's Init(x, y, param), then set up a ROLLINGDISCS
+; In:  8(a6) = this (ROLLINGDISCS object)
+; Out: none
+; Evidence: class descriptor ROLLINGDISCS slot +$12 (tools/classes.py); not reached by the TAS
 ; ---------------------------------------------------------------------------
-sub_03AD14:
+RollingDiscs_Init:
 	link.w	a6,#$0
 	movem.l	d3/a3-a4,-(a7)
 	movea.l	$14(a6),a3

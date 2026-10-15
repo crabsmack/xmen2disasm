@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_03A4EE	[jt 267]
+; BanimazaDoor_Draw - vtable +$1A: draw a BANIMAZADOOR
+; In:  8(a6) = this (BANIMAZADOOR object)
+; Out: none
+; Evidence: class descriptor BANIMAZADOOR slot +$1A (tools/classes.py); TAS frames 23673-23742 (41 active)
 ; ---------------------------------------------------------------------------
-sub_03A4EE:
+BanimazaDoor_Draw:
 	link.w	a6,#$0
 	movem.l	a3-a4,-(a7)
 	movea.l	$8(a6),a4

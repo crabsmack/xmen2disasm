@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_06726C	[jt 478]
+; ScalingActor_Draw - vtable +$1A: draw a SCALINGACTOR
+; In:  8(a6) = this (SCALINGACTOR object)
+; Out: none
+; Evidence: class descriptor SCALINGACTOR slot +$1A (tools/classes.py); TAS frames 2346-49094 (336 active)
 ; ---------------------------------------------------------------------------
-sub_06726C:
+ScalingActor_Draw:
 	link.w	a6,#$0
 	move.l	a4,-(a7)
 	movea.l	$8(a6),a4

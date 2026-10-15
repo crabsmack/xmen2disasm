@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_026AA0	[jt 170]
+; RetractFloor_Draw - vtable +$1A: draw a RETRACTFLOOR
+; In:  8(a6) = this (RETRACTFLOOR object)
+; Out: none
+; Evidence: class descriptor RETRACTFLOOR slot +$1A (tools/classes.py); TAS frames 14237-16781 (1456 active)
 ; ---------------------------------------------------------------------------
-sub_026AA0:
+RetractFloor_Draw:
 	link.w	a6,#$FFFA
 	movem.l	d3-d7/a4,-(a7)
 	movea.l	$8(a6),a4

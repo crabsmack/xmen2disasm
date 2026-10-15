@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_05BC9C	[jt 411]
+; Boulder_Move - vtable +$4E: per-frame movement of a BOULDER
+; In:  8(a6) = this (BOULDER object)
+; Out: none
+; Evidence: class descriptor BOULDER slot +$4E (tools/classes.py); TAS frames 20651-20996 (185 active)
 ; ---------------------------------------------------------------------------
-sub_05BC9C:
+Boulder_Move:
 	link.w	a6,#$0
 	movem.l	d3/d6-d7/a3-a4,-(a7)
 	move.w	$E(a6),d6

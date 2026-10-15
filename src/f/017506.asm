@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_017506	[jt 93]
+; FarAcolyte_Draw - vtable +$1A: draw a FARACOLYTE
+; In:  8(a6) = this (FARACOLYTE object)
+; Out: none
+; Evidence: class descriptor FARACOLYTE slot +$1A (tools/classes.py); TAS frames 10707-12962 (511 active)
 ; ---------------------------------------------------------------------------
-sub_017506:
+FarAcolyte_Draw:
 	link.w	a6,#$FFFC
 	movem.l	d5-d7/a3-a4,-(a7)
 	movea.l	$8(a6),a4

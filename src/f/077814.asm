@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_077814	[jt 538]
+; LightBeam_Activate - vtable +$3E: activate a LIGHTBEAM (entered the active window)
+; In:  8(a6) = this (LIGHTBEAM object)
+; Out: none
+; Evidence: class descriptor LIGHTBEAM slot +$3E (tools/classes.py); TAS frames 45425-45425 (1 active)
 ; ---------------------------------------------------------------------------
-sub_077814:
+LightBeam_Activate:
 	link.w	a6,#$0
 	move.l	a4,-(a7)
 	movea.l	$8(a6),a4

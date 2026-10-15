@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_067202	[jt 475]
+; ScalingActor_Activate - vtable +$3E: activate a SCALINGACTOR (entered the active window)
+; In:  8(a6) = this (SCALINGACTOR object)
+; Out: none
+; Evidence: class descriptor SCALINGACTOR slot +$3E (tools/classes.py); TAS frames 2346-49027 (21 active)
 ; ---------------------------------------------------------------------------
-sub_067202:
+ScalingActor_Activate:
 	link.w	a6,#$0
 	move.l	a4,-(a7)
 	movea.l	$8(a6),a4

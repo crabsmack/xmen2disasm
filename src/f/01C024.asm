@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_01C024	[jt 129]
+; YoyoAcolyte_ClassInit - vtable +$5E: per-level class setup for YOYOACOLYTE (load its resources)
+; In:  8(a6) = this, $C(a6) = class index
+; Out: none
+; Evidence: class descriptor YOYOACOLYTE slot +$5E (tools/classes.py); TAS frames 11770-14117 (2 active)
 ; ---------------------------------------------------------------------------
-sub_01C024:
+YoyoAcolyte_ClassInit:
 	link.w	a6,#$0
 	moveq	#$1,d0
 	move.l	d0,-(a7)

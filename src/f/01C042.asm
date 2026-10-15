@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_01C042	[jt 130]
+; YoyoAcolyte_Init - vtable +$12 constructor: run the parent's Init(x, y, param), then set up a YOYOACOLYTE
+; In:  8(a6) = this (YOYOACOLYTE object)
+; Out: none
+; Evidence: class descriptor YOYOACOLYTE slot +$12 (tools/classes.py); TAS frames 12178-16673 (32 active)
 ; ---------------------------------------------------------------------------
-sub_01C042:
+YoyoAcolyte_Init:
 	link.w	a6,#$FFEC
 	movem.l	d6-d7/a3-a4,-(a7)
 	move.l	$10(a6),d6

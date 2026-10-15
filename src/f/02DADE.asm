@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_02DADE	[jt 199]
+; Exodus_TakeDamage - vtable +$26: a EXODUS takes a hit
+; In:  8(a6) = this (EXODUS object)
+; Out: none
+; Evidence: class descriptor EXODUS slot +$26 (tools/classes.py); TAS frames 17303-18216 (4 active)
 ; ---------------------------------------------------------------------------
-sub_02DADE:
+Exodus_TakeDamage:
 	link.w	a6,#$0
 	move.l	a4,-(a7)
 	movea.l	$8(a6),a4

@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_013360	[jt 65]
+; CapedAcolyte_Init - vtable +$12 constructor: run the parent's Init(x, y, param), then set up a CAPEDACOLYTE
+; In:  8(a6) = this (CAPEDACOLYTE object)
+; Out: none
+; Evidence: class descriptor CAPEDACOLYTE slot +$12 (tools/classes.py); TAS frames 10847-11399 (6 active)
 ; ---------------------------------------------------------------------------
-sub_013360:
+CapedAcolyte_Init:
 	link.w	a6,#$0
 	movem.l	d3/d7/a3-a4,-(a7)
 	movea.l	$14(a6),a3

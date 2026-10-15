@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_04DFDC	[jt 366]
+; ApocBomb_ClassInit - vtable +$5E: per-level class setup for APOCBOMB (load its resources)
+; In:  8(a6) = this, $C(a6) = class index
+; Out: none
+; Evidence: class descriptor APOCBOMB slot +$5E (tools/classes.py); TAS frames 24044-24044 (1 active)
 ; ---------------------------------------------------------------------------
-sub_04DFDC:
+ApocBomb_ClassInit:
 	link.w	a6,#$0
 	jsr	sub_04DF28(pc)
 	moveq	#$2,d0

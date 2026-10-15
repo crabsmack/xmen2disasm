@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_0103B6	[jt 33]
+; BigAcolyte_OutsideActiveWindow - vtable +$42: a BIGACOLYTE is outside the active window
+; In:  8(a6) = this (BIGACOLYTE object)
+; Out: none
+; Evidence: class descriptor BIGACOLYTE slot +$42 (tools/classes.py); TAS frames 13008-13659 (617 active)
 ; ---------------------------------------------------------------------------
-sub_0103B6:
+BigAcolyte_OutsideActiveWindow:
 	link.w	a6,#$0
 	movem.l	d3/a4,-(a7)
 	movea.l	$8(a6),a4

@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_077848	[jt 539]
+; LightBeam_Init - vtable +$12 constructor: run the parent's Init(x, y, param), then set up a LIGHTBEAM
+; In:  8(a6) = this (LIGHTBEAM object)
+; Out: none
+; Evidence: class descriptor LIGHTBEAM slot +$12 (tools/classes.py); TAS frames 45425-45425 (1 active)
 ; ---------------------------------------------------------------------------
-sub_077848:
+LightBeam_Init:
 	link.w	a6,#$FFFC
 	movem.l	d4-d7/a3-a4,-(a7)
 	movea.l	$8(a6),a4

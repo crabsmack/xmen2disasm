@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_01C282	[jt 133]
+; YoyoAcolyte_Draw - vtable +$1A: draw a YOYOACOLYTE
+; In:  8(a6) = this (YOYOACOLYTE object)
+; Out: none
+; Evidence: class descriptor YOYOACOLYTE slot +$1A (tools/classes.py); TAS frames 12184-16730 (1179 active)
 ; ---------------------------------------------------------------------------
-sub_01C282:
+YoyoAcolyte_Draw:
 	link.w	a6,#$FFF8
 	movem.l	d3-d7/a3-a4,-(a7)
 	movea.l	$8(a6),a0

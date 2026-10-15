@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_02E4A8	[jt 215]
+; ExodusBlast_Init - vtable +$12 constructor: run the parent's Init(x, y, param), then set up a EXODUSBLAST
+; In:  8(a6) = this (EXODUSBLAST object)
+; Out: none
+; Evidence: class descriptor EXODUSBLAST slot +$12 (tools/classes.py); TAS frames 17302-18215 (6 active)
 ; ---------------------------------------------------------------------------
-sub_02E4A8:
+ExodusBlast_Init:
 	link.w	a6,#$0
 	movem.l	a3-a4,-(a7)
 	movea.l	$14(a6),a3

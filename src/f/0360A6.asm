@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_0360A6	[jt 239]
+; MagnetoBoss_Init - vtable +$12 constructor: run the parent's Init(x, y, param), then set up a MAGNETOBOSS
+; In:  8(a6) = this (MAGNETOBOSS object)
+; Out: none
+; Evidence: class descriptor MAGNETOBOSS slot +$12 (tools/classes.py); TAS frames 18542-18542 (1 active)
 ; ---------------------------------------------------------------------------
-sub_0360A6:
+MagnetoBoss_Init:
 	link.w	a6,#$FFDC
 	movem.l	d3-d7/a3-a4,-(a7)
 	move.l	$C(a6),d4

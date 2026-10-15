@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_04CCA0	[jt 353]
+; Apocalypse_Deactivate - vtable +$46: deactivate a APOCALYPSE
+; In:  8(a6) = this (APOCALYPSE object)
+; Out: none
+; Evidence: class descriptor APOCALYPSE slot +$46 (tools/classes.py); TAS frames 27245-27245 (1 active)
 ; ---------------------------------------------------------------------------
-sub_04CCA0:
+Apocalypse_Deactivate:
 	link.w	a6,#$0
 	movem.l	d5-d7/a3-a4,-(a7)
 	movea.l	$8(a6),a4

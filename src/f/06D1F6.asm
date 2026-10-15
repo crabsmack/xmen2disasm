@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_06D1F6	[jt 517]
+; Brood_Init - vtable +$12 constructor: run the parent's Init(x, y, param), then set up a BROOD
+; In:  8(a6) = this (BROOD object)
+; Out: none
+; Evidence: class descriptor BROOD slot +$12 (tools/classes.py); TAS frames 46223-48533 (6 active)
 ; ---------------------------------------------------------------------------
-sub_06D1F6:
+Brood_Init:
 	link.w	a6,#$FFFC
 	movem.l	d3/d6-d7/a3-a4,-(a7)
 	movea.l	$14(a6),a3

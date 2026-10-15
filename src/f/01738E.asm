@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_01738E	[jt 92]
+; FarAcolyte_OutsideActiveWindow - vtable +$42: a FARACOLYTE is outside the active window
+; In:  8(a6) = this (FARACOLYTE object)
+; Out: none
+; Evidence: class descriptor FARACOLYTE slot +$42 (tools/classes.py); TAS frames 10708-12963 (463 active)
 ; ---------------------------------------------------------------------------
-sub_01738E:
+FarAcolyte_OutsideActiveWindow:
 	link.w	a6,#$FFF6
 	movem.l	d3-d7/a4,-(a7)
 	movea.l	$8(a6),a4

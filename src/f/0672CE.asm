@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_0672CE	[jt 479]
+; ScalingActor_SetFrame - vtable +$56: set the animation frame of a SCALINGACTOR
+; In:  8(a6) = this (SCALINGACTOR object)
+; Out: none
+; Evidence: class descriptor SCALINGACTOR slot +$56 (tools/classes.py); TAS frames 2348-49088 (53 active)
 ; ---------------------------------------------------------------------------
-sub_0672CE:
+ScalingActor_SetFrame:
 	link.w	a6,#$0
 	movem.l	d7/a4,-(a7)
 	move.w	$E(a6),d7

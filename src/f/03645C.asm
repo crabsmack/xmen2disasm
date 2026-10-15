@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_03645C	[jt 242]
+; MagnetoBoss_Move - vtable +$4E: per-frame movement of a MAGNETOBOSS
+; In:  8(a6) = this (MAGNETOBOSS object)
+; Out: none
+; Evidence: class descriptor MAGNETOBOSS slot +$4E (tools/classes.py); TAS frames 18543-19488 (818 active)
 ; ---------------------------------------------------------------------------
-sub_03645C:
+MagnetoBoss_Move:
 	link.w	a6,#$FFFC
 	movem.l	d3-d7/a3-a4,-(a7)
 	move.w	$E(a6),d4

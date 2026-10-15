@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_04C76C	[jt 349]
+; Apocalypse_SetFrame - vtable +$56: set the animation frame of a APOCALYPSE
+; In:  8(a6) = this (APOCALYPSE object)
+; Out: none
+; Evidence: class descriptor APOCALYPSE slot +$56 (tools/classes.py); TAS frames 24086-27245 (316 active)
 ; ---------------------------------------------------------------------------
-sub_04C76C:
+Apocalypse_SetFrame:
 	link.w	a6,#$0
 	movem.l	d7/a3-a4,-(a7)
 	move.w	$E(a6),d7

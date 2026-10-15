@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_04E000	[jt 367]
+; ApocBomb_Init - vtable +$12 constructor: run the parent's Init(x, y, param), then set up a APOCBOMB
+; In:  8(a6) = this (APOCBOMB object)
+; Out: none
+; Evidence: class descriptor APOCBOMB slot +$12 (tools/classes.py); TAS frames 24409-25804 (13 active)
 ; ---------------------------------------------------------------------------
-sub_04E000:
+ApocBomb_Init:
 	link.w	a6,#$0
 	move.l	a4,-(a7)
 	movea.l	$8(a6),a4

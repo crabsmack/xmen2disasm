@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_037AA4	[jt 249]
+; ThronePhone_Nop66 - vtable +$66: empty (loads `this` and returns)
+; In:  8(a6) = this (THRONEPHONE object)
+; Out: none
+; Evidence: class descriptor THRONEPHONE slot +$66 (tools/classes.py); not reached by the TAS
 ; ---------------------------------------------------------------------------
-sub_037AA4:
+ThronePhone_Nop66:
 	link.w	a6,#$FFFC
 	movem.l	a3-a4,-(a7)
 	movea.l	$8(a6),a4

@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_04E8F2	[jt 373]
+; ApocBomb_Attack - vtable +$22: APOCBOMB attacks a target (calls the target's TakeDamage)
+; In:  8(a6) = this (APOCBOMB object)
+; Out: none
+; Evidence: class descriptor APOCBOMB slot +$22 (tools/classes.py); TAS frames 24507-24783 (4 active)
 ; ---------------------------------------------------------------------------
-sub_04E8F2:
+ApocBomb_Attack:
 	link.w	a6,#$0
 	movem.l	a3-a4,-(a7)
 	movea.l	$C(a6),a3

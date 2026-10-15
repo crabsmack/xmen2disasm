@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_05BF4A	[jt 414]
+; Boulder_Init - vtable +$12 constructor: run the parent's Init(x, y, param), then set up a BOULDER
+; In:  8(a6) = this (BOULDER object)
+; Out: none
+; Evidence: class descriptor BOULDER slot +$12 (tools/classes.py); TAS frames 20650-20958 (4 active)
 ; ---------------------------------------------------------------------------
-sub_05BF4A:
+Boulder_Init:
 	link.w	a6,#$0
 	movem.l	a3-a4,-(a7)
 	movea.l	$8(a6),a3

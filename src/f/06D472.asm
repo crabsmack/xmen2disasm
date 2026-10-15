@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_06D472	[jt 518]
+; Brood_TakeDamage - vtable +$26: a BROOD takes a hit
+; In:  8(a6) = this (BROOD object)
+; Out: none
+; Evidence: class descriptor BROOD slot +$26 (tools/classes.py); TAS frames 47337-47337 (1 active)
 ; ---------------------------------------------------------------------------
-sub_06D472:
+Brood_TakeDamage:
 	link.w	a6,#$0
 	movem.l	a3-a4,-(a7)
 	movea.l	$C(a6),a3

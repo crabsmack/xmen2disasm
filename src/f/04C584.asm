@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_04C584	[jt 348]
+; Apocalypse_Init - vtable +$12 constructor: run the parent's Init(x, y, param), then set up a APOCALYPSE
+; In:  8(a6) = this (APOCALYPSE object)
+; Out: none
+; Evidence: class descriptor APOCALYPSE slot +$12 (tools/classes.py); TAS frames 24086-24086 (1 active)
 ; ---------------------------------------------------------------------------
-sub_04C584:
+Apocalypse_Init:
 	link.w	a6,#$0
 	move.l	a4,-(a7)
 	movea.l	$8(a6),a4

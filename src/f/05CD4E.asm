@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_05CD4E	[jt 421]
+; Tusk_InitSpawnRec - vtable +$0A: set up the spawn record of a TUSK
+; In:  8(a6) = this (TUSK object)
+; Out: none
+; Evidence: class descriptor TUSK slot +$0A (tools/classes.py); TAS frames 20310-20310 (1 active)
 ; ---------------------------------------------------------------------------
-sub_05CD4E:
+Tusk_InitSpawnRec:
 	link.w	a6,#$0
 	move.l	a4,-(a7)
 	movea.l	$8(a6),a4

@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_02DF96	[jt 210]
+; ExodusBlast_GetSize - vtable +$06: return sizeof(EXODUSBLAST) = $9A bytes
+; In:  8(a6) = class descriptor
+; Out: d0 = size
+; Evidence: class descriptor EXODUSBLAST slot +$06 (tools/classes.py); not reached by the TAS
 ; ---------------------------------------------------------------------------
-sub_02DF96:
+ExodusBlast_GetSize:
 	link.w	a6,#$0
 	move.l	#$9A,d0
 	unlk	a6

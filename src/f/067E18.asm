@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_067E18	[jt 484]
+; BoxInputActor_Draw - vtable +$1A: draw a BOXINPUTACTOR
+; In:  8(a6) = this (BOXINPUTACTOR object)
+; Out: none
+; Evidence: class descriptor BOXINPUTACTOR slot +$1A (tools/classes.py); TAS frames 2346-49094 (349 active)
 ; ---------------------------------------------------------------------------
-sub_067E18:
+BoxInputActor_Draw:
 	link.w	a6,#$0
 	move.l	a4,-(a7)
 	movea.l	$8(a6),a0

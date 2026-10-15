@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_067D7A	[jt 481]
+; BoxInputActor_Init - vtable +$12 constructor: run the parent's Init(x, y, param), then set up a BOXINPUTACTOR
+; In:  8(a6) = this (BOXINPUTACTOR object)
+; Out: none
+; Evidence: class descriptor BOXINPUTACTOR slot +$12 (tools/classes.py); TAS frames 2346-49027 (21 active)
 ; ---------------------------------------------------------------------------
-sub_067D7A:
+BoxInputActor_Init:
 	link.w	a6,#$0
 	move.l	a4,-(a7)
 	movea.l	$8(a6),a4

@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_03A2A6	[jt 266]
+; BanimazaDoor_ClassInit - vtable +$5E: per-level class setup for BANIMAZADOOR (load its resources)
+; In:  8(a6) = this, $C(a6) = class index
+; Out: none
+; Evidence: class descriptor BANIMAZADOOR slot +$5E (tools/classes.py); TAS frames 22429-22429 (1 active)
 ; ---------------------------------------------------------------------------
-sub_03A2A6:
+BanimazaDoor_ClassInit:
 	link.w	a6,#$0
 	move.l	#$1869F,-(a7)
 	jsr	$4182(a5)	; -> sub_160512

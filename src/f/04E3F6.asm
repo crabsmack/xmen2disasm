@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_04E3F6	[jt 370]
+; ApocBomb_Draw - vtable +$1A: draw a APOCBOMB
+; In:  8(a6) = this (APOCBOMB object)
+; Out: none
+; Evidence: class descriptor APOCBOMB slot +$1A (tools/classes.py); TAS frames 24409-26318 (1722 active)
 ; ---------------------------------------------------------------------------
-sub_04E3F6:
+ApocBomb_Draw:
 	link.w	a6,#$FFF2
 	movem.l	d4-d7/a3-a4,-(a7)
 	movea.l	$8(a6),a4

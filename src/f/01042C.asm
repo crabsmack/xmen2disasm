@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_01042C	[jt 35]
+; BigAcolyte_Move - vtable +$4E: per-frame movement of a BIGACOLYTE
+; In:  8(a6) = this (BIGACOLYTE object)
+; Out: none
+; Evidence: class descriptor BIGACOLYTE slot +$4E (tools/classes.py); TAS frames 13008-13659 (617 active)
 ; ---------------------------------------------------------------------------
-sub_01042C:
+BigAcolyte_Move:
 	link.w	a6,#$0
 	movem.l	d6-d7/a4,-(a7)
 	move.w	$E(a6),d6

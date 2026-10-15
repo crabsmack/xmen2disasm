@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_010050	[jt 26]
+; BigAcBullet_Update - vtable +$4A: per-frame update of a BIGACBULLET
+; In:  8(a6) = this (BIGACBULLET object)
+; Out: none
+; Evidence: class descriptor BIGACBULLET slot +$4A (tools/classes.py); TAS frames 13510-13673 (161 active)
 ; ---------------------------------------------------------------------------
-sub_010050:
+BigAcBullet_Update:
 	link.w	a6,#$0
 	move.l	a4,-(a7)
 	movea.l	$8(a6),a4

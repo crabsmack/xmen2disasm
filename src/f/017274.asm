@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_017274	[jt 91]
+; FarAcolyte_Init - vtable +$12 constructor: run the parent's Init(x, y, param), then set up a FARACOLYTE
+; In:  8(a6) = this (FARACOLYTE object)
+; Out: none
+; Evidence: class descriptor FARACOLYTE slot +$12 (tools/classes.py); TAS frames 10665-12919 (9 active)
 ; ---------------------------------------------------------------------------
-sub_017274:
+FarAcolyte_Init:
 	link.w	a6,#$0
 	movem.l	a3-a4,-(a7)
 	movea.l	$14(a6),a3

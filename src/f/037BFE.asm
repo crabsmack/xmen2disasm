@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_037BFE	[jt 254]
+; ThronePhone_Draw - vtable +$1A: draw a THRONEPHONE
+; In:  8(a6) = this (THRONEPHONE object)
+; Out: none
+; Evidence: class descriptor THRONEPHONE slot +$1A (tools/classes.py); TAS frames 19373-20031 (654 active)
 ; ---------------------------------------------------------------------------
-sub_037BFE:
+ThronePhone_Draw:
 	link.w	a6,#$FFEC
 	movem.l	d4-d7/a4,-(a7)
 	movea.l	$8(a6),a4

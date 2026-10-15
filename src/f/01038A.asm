@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_01038A	[jt 32]
+; BigAcolyte_Deactivate - vtable +$46: deactivate a BIGACOLYTE
+; In:  8(a6) = this (BIGACOLYTE object)
+; Out: none
+; Evidence: class descriptor BIGACOLYTE slot +$46 (tools/classes.py); TAS frames 13659-13659 (1 active)
 ; ---------------------------------------------------------------------------
-sub_01038A:
+BigAcolyte_Deactivate:
 	link.w	a6,#$0
 	move.l	$8(a6),-(a7)
 	lea.l	$1CA(a5),a0

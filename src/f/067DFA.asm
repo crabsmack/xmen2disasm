@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_067DFA	[jt 483]
+; BoxInputActor_Move - vtable +$4E: per-frame movement of a BOXINPUTACTOR
+; In:  8(a6) = this (BOXINPUTACTOR object)
+; Out: none
+; Evidence: class descriptor BOXINPUTACTOR slot +$4E (tools/classes.py); TAS frames 2348-49093 (332 active)
 ; ---------------------------------------------------------------------------
-sub_067DFA:
+BoxInputActor_Move:
 	link.w	a6,#$0
 	move.l	a4,-(a7)
 	movea.l	$8(a6),a4

@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_05DDBE	[jt 434]
+; Tuskette_Init - vtable +$12 constructor: run the parent's Init(x, y, param), then set up a TUSKETTE
+; In:  8(a6) = this (TUSKETTE object)
+; Out: none
+; Evidence: class descriptor TUSKETTE slot +$12 (tools/classes.py); TAS frames 20384-23795 (39 active)
 ; ---------------------------------------------------------------------------
-sub_05DDBE:
+Tuskette_Init:
 	link.w	a6,#$0
 	movem.l	d6-d7/a3-a4,-(a7)
 	movea.l	$14(a6),a3

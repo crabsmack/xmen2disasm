@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_02725C	[jt 177]
+; Zapper_ClassInit - vtable +$5E: per-level class setup for ZAPPER (load its resources)
+; In:  8(a6) = this, $C(a6) = class index
+; Out: none
+; Evidence: class descriptor ZAPPER slot +$5E (tools/classes.py); TAS frames 14120-14120 (1 active)
 ; ---------------------------------------------------------------------------
-sub_02725C:
+Zapper_ClassInit:
 	link.w	a6,#$0
 	moveq	#$1,d0
 	move.l	d0,-(a7)

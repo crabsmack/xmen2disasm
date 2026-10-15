@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_036730	[jt 243]
+; MagnetoBoss_TakeDamage - vtable +$26: a MAGNETOBOSS takes a hit
+; In:  8(a6) = this (MAGNETOBOSS object)
+; Out: none
+; Evidence: class descriptor MAGNETOBOSS slot +$26 (tools/classes.py); TAS frames 19437-19469 (2 active)
 ; ---------------------------------------------------------------------------
-sub_036730:
+MagnetoBoss_TakeDamage:
 	link.w	a6,#$0
 	movem.l	d6-d7/a4,-(a7)
 	move.b	$17(a6),d6

@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_02727A	[jt 178]
+; Zapper_Init - vtable +$12 constructor: run the parent's Init(x, y, param), then set up a ZAPPER
+; In:  8(a6) = this (ZAPPER object)
+; Out: none
+; Evidence: class descriptor ZAPPER slot +$12 (tools/classes.py); TAS frames 14140-16816 (68 active)
 ; ---------------------------------------------------------------------------
-sub_02727A:
+Zapper_Init:
 	link.w	a6,#$FFF0
 	movem.l	d6-d7/a3-a4,-(a7)
 	move.l	$10(a6),d6

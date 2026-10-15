@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_026A0A	[jt 169]
+; RetractFloor_Init - vtable +$12 constructor: run the parent's Init(x, y, param), then set up a RETRACTFLOOR
+; In:  8(a6) = this (RETRACTFLOOR object)
+; Out: none
+; Evidence: class descriptor RETRACTFLOOR slot +$12 (tools/classes.py); TAS frames 14236-16679 (17 active)
 ; ---------------------------------------------------------------------------
-sub_026A0A:
+RetractFloor_Init:
 	link.w	a6,#$0
 	movem.l	d6-d7/a3-a4,-(a7)
 	movea.l	$8(a6),a4

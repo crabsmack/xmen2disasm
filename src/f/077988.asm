@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_077988	[jt 540]
+; LightBeam_Draw - vtable +$1A: draw a LIGHTBEAM
+; In:  8(a6) = this (LIGHTBEAM object)
+; Out: none
+; Evidence: class descriptor LIGHTBEAM slot +$1A (tools/classes.py); TAS frames 45425-47594 (1816 active)
 ; ---------------------------------------------------------------------------
-sub_077988:
+LightBeam_Draw:
 	link.w	a6,#$FFF6
 	movem.l	d4-d7/a4,-(a7)
 	movea.l	$8(a6),a4

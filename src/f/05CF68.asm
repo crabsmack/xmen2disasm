@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_05CF68	[jt 426]
+; Tusk_Init - vtable +$12 constructor: run the parent's Init(x, y, param), then set up a TUSK
+; In:  8(a6) = this (TUSK object)
+; Out: none
+; Evidence: class descriptor TUSK slot +$12 (tools/classes.py); TAS frames 20341-20341 (1 active)
 ; ---------------------------------------------------------------------------
-sub_05CF68:
+Tusk_Init:
 	link.w	a6,#$0
 	movem.l	d6-d7/a3-a4,-(a7)
 	movea.l	$14(a6),a3

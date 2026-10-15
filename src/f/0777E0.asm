@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_0777E0	[jt 537]
+; LightBeam_ClassInit - vtable +$5E: per-level class setup for LIGHTBEAM (load its resources)
+; In:  8(a6) = this, $C(a6) = class index
+; Out: none
+; Evidence: class descriptor LIGHTBEAM slot +$5E (tools/classes.py); TAS frames 45409-45409 (1 active)
 ; ---------------------------------------------------------------------------
-sub_0777E0:
+LightBeam_ClassInit:
 	link.w	a6,#$0
 	jsr	sub_0777C2(pc)
 	moveq	#$2,d0

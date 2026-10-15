@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_05BD34	[jt 412]
+; Boulder_TakeDamage - vtable +$26: a BOULDER takes a hit
+; In:  8(a6) = this (BOULDER object)
+; Out: none
+; Evidence: class descriptor BOULDER slot +$26 (tools/classes.py); TAS frames 20774-20978 (3 active)
 ; ---------------------------------------------------------------------------
-sub_05BD34:
+Boulder_TakeDamage:
 	link.w	a6,#$0
 	move.l	a4,-(a7)
 	movea.l	$8(a6),a4

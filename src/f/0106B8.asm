@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_0106B8	[jt 36]
+; BigAcolyte_Draw - vtable +$1A: draw a BIGACOLYTE
+; In:  8(a6) = this (BIGACOLYTE object)
+; Out: none
+; Evidence: class descriptor BIGACOLYTE slot +$1A (tools/classes.py); TAS frames 13007-13657 (617 active)
 ; ---------------------------------------------------------------------------
-sub_0106B8:
+BigAcolyte_Draw:
 	link.w	a6,#$0
 	movem.l	d3/a4,-(a7)
 	movea.l	$8(a6),a4

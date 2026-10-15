@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_05DD48	[jt 431]
+; Tuskette_ClassInit - vtable +$5E: per-level class setup for TUSKETTE (load its resources)
+; In:  8(a6) = this, $C(a6) = class index
+; Out: none
+; Evidence: class descriptor TUSKETTE slot +$5E (tools/classes.py); TAS frames 20333-22435 (2 active)
 ; ---------------------------------------------------------------------------
-sub_05DD48:
+Tuskette_ClassInit:
 	link.w	a6,#$0
 	moveq	#$1,d0
 	move.l	d0,-(a7)

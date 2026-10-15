@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_05CD86	[jt 423]
+; Tusk_TakeDamage - vtable +$26: a TUSK takes a hit
+; In:  8(a6) = this (TUSK object)
+; Out: none
+; Evidence: class descriptor TUSK slot +$26 (tools/classes.py); TAS frames 21174-21959 (8 active)
 ; ---------------------------------------------------------------------------
-sub_05CD86:
+Tusk_TakeDamage:
 	link.w	a6,#$0
 	movem.l	d7/a4,-(a7)
 	move.b	$13(a6),d7

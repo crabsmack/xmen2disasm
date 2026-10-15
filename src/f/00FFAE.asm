@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_00FFAE	[jt 24]
+; BigAcBullet_GetSize - vtable +$06: return sizeof(BIGACBULLET) = $9A bytes
+; In:  8(a6) = class descriptor
+; Out: d0 = size
+; Evidence: class descriptor BIGACBULLET slot +$06 (tools/classes.py); not reached by the TAS
 ; ---------------------------------------------------------------------------
-sub_00FFAE:
+BigAcBullet_GetSize:
 	link.w	a6,#$0
 	move.l	#$9A,d0
 	unlk	a6

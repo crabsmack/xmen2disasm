@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_02D91C	[jt 197]
+; Exodus_Draw - vtable +$1A: draw a EXODUS
+; In:  8(a6) = this (EXODUS object)
+; Out: none
+; Evidence: class descriptor EXODUS slot +$1A (tools/classes.py); TAS frames 17199-18215 (1014 active)
 ; ---------------------------------------------------------------------------
-sub_02D91C:
+Exodus_Draw:
 	link.w	a6,#$FFE0
 	movem.l	d6-d7/a3-a4,-(a7)
 	lea.l	-$20(a6),a3

@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_03A72A	[jt 272]
+; BanimazaDoor_Init - vtable +$12 constructor: run the parent's Init(x, y, param), then set up a BANIMAZADOOR
+; In:  8(a6) = this (BANIMAZADOOR object)
+; Out: none
+; Evidence: class descriptor BANIMAZADOOR slot +$12 (tools/classes.py); TAS frames 23235-23683 (3 active)
 ; ---------------------------------------------------------------------------
-sub_03A72A:
+BanimazaDoor_Init:
 	link.w	a6,#$0
 	movem.l	a3-a4,-(a7)
 	movea.l	$14(a6),a3

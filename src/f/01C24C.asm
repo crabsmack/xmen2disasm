@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_01C24C	[jt 132]
+; YoyoAcolyte_OutsideActiveWindow - vtable +$42: a YOYOACOLYTE is outside the active window
+; In:  8(a6) = this (YOYOACOLYTE object)
+; Out: none
+; Evidence: class descriptor YOYOACOLYTE slot +$42 (tools/classes.py); TAS frames 12185-16731 (1166 active)
 ; ---------------------------------------------------------------------------
-sub_01C24C:
+YoyoAcolyte_OutsideActiveWindow:
 	link.w	a6,#$0
 	move.l	a4,-(a7)
 	movea.l	$8(a6),a4

@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_00FFBC	[jt 25]
+; BigAcBullet_Init - vtable +$12 constructor: run the parent's Init(x, y, param), then set up a BIGACBULLET
+; In:  8(a6) = this (BIGACBULLET object)
+; Out: none
+; Evidence: class descriptor BIGACBULLET slot +$12 (tools/classes.py); TAS frames 13509-13648 (7 active)
 ; ---------------------------------------------------------------------------
-sub_00FFBC:
+BigAcBullet_Init:
 	link.w	a6,#$0
 	move.l	a4,-(a7)
 	movea.l	$8(a6),a4

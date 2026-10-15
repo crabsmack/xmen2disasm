@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_0101F4	[jt 30]
+; BigAcolyte_Init - vtable +$12 constructor: run the parent's Init(x, y, param), then set up a BIGACOLYTE
+; In:  8(a6) = this (BIGACOLYTE object)
+; Out: none
+; Evidence: class descriptor BIGACOLYTE slot +$12 (tools/classes.py); TAS frames 13007-13007 (1 active)
 ; ---------------------------------------------------------------------------
-sub_0101F4:
+BigAcolyte_Init:
 	link.w	a6,#$0
 	move.l	a4,-(a7)
 	movea.l	$8(a6),a4

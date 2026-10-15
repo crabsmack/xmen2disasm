@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_013596	[jt 66]
+; CapedAcolyte_Move - vtable +$4E: per-frame movement of a CAPEDACOLYTE
+; In:  8(a6) = this (CAPEDACOLYTE object)
+; Out: none
+; Evidence: class descriptor CAPEDACOLYTE slot +$4E (tools/classes.py); TAS frames 10849-11459 (283 active)
 ; ---------------------------------------------------------------------------
-sub_013596:
+CapedAcolyte_Move:
 	link.w	a6,#$0
 	movem.l	d5-d7/a4,-(a7)
 	move.w	$E(a6),d5

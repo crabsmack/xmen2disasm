@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_0118B6	[link-after-rts]
+; BigAcolyte_NopStatic - empty non-virtual helper (called from BIGACOLYTE's ClassInit/Nop6A)
+; In:  none
+; Out: none
+; Evidence: body is link/unlk/rts; callers are BIGACOLYTE slot +$6A and +$5E
 ; ---------------------------------------------------------------------------
-sub_0118B6:
+BigAcolyte_NopStatic:
 	link.w	a6,#$0
 	unlk	a6
 	rts

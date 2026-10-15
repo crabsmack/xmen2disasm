@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_017226	[jt 88]
+; FarAcolyte_Nop66 - vtable +$66: empty (loads `this` and returns)
+; In:  8(a6) = this (FARACOLYTE object)
+; Out: none
+; Evidence: class descriptor FARACOLYTE slot +$66 (tools/classes.py); not reached by the TAS
 ; ---------------------------------------------------------------------------
-sub_017226:
+FarAcolyte_Nop66:
 	link.w	a6,#$FFFC
 	movem.l	a3-a4,-(a7)
 	movea.l	$8(a6),a4

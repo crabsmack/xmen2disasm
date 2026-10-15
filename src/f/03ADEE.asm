@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_03ADEE	[jt 281]
+; RollingDiscs_Move - vtable +$4E: per-frame movement of a ROLLINGDISCS
+; In:  8(a6) = this (ROLLINGDISCS object)
+; Out: none
+; Evidence: class descriptor ROLLINGDISCS slot +$4E (tools/classes.py); not reached by the TAS
 ; ---------------------------------------------------------------------------
-sub_03ADEE:
+RollingDiscs_Move:
 	link.w	a6,#$0
 	move.w	$E(a6),d0
 	ext.l	d0
