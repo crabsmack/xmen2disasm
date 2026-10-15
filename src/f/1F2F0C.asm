@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_1F2F0C	[jt 2455]
+; XPlayer_GroundAttack - XPLAYER slot +$D2: B on the ground: stop and play the first attack of the combo
+; In:  8(a6) = player
+; Out: d0 = +4 flag 8
+; Evidence: attack sound char +$2C, vx/accel 0, +$6E = char +$22 (combo window), Obj_SetAnim(char +$36), state XPlayer_StateAttackCombo
 ; ---------------------------------------------------------------------------
-sub_1F2F0C:
+XPlayer_GroundAttack:
 	link.w	a6,#$0
 	move.l	a4,-(a7)
 	movea.l	$8(a6),a4
@@ -48,7 +51,7 @@ loc_1F2F74:
 	jsr	$4E42(a5)	; -> Obj_SetAnim
 	addq.w	#$8,a7
 	clr.w	$6C(a4)
-	lea.l	sub_1F2E56(pc),a0
+	lea.l	XPlayer_StateAttackCombo(pc),a0
 	move.l	a0,$5C(a4)
 	moveq	#$8,d0
 	and.w	$4(a4),d0

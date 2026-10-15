@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_1F0998	[link-after-rts]
+; XPlayer_StartFallOffScreen - start the fall-off-screen sequence (Cyclops also runs its own cleanup)
+; In:  8(a6) = player
+; Out: d0 = +4 flag 8
+; Evidence: +$6A = 60; Cyclops (Tbl_Cyclops_vtable) calls sub_1E2CBC; state XPlayer_StateFallOffScreen; set by XPlayer_TetherToPartner
 ; ---------------------------------------------------------------------------
-sub_1F0998:
+XPlayer_StartFallOffScreen:
 	link.w	a6,#$0
 	move.l	a4,-(a7)
 	movea.l	$8(a6),a4
@@ -15,7 +18,7 @@ sub_1F0998:
 	addq.w	#$4,a7
 loc_1F09BC:
 	clr.w	$6C(a4)
-	lea.l	sub_1F0930(pc),a0
+	lea.l	XPlayer_StateFallOffScreen(pc),a0
 	move.l	a0,$5C(a4)
 	moveq	#$8,d0
 	and.w	$4(a4),d0

@@ -9,7 +9,7 @@ sub_13FF5E:
 	move.l	$8(a0),d5
 	move.l	$C(a0),d6
 	sub.l	#$2800,d6
-	jsr	$417A(a5)	; -> sub_1600AA
+	jsr	$417A(a5)	; -> Rand_Next
 	move.w	d0,d7
 	moveq	#$1,d0
 	and.w	d7,d0
@@ -25,7 +25,7 @@ loc_13FF94:
 	moveq	#$A,d1
 	asr.l	d1,d0
 	add.l	d0,d5
-	jsr	$417A(a5)	; -> sub_1600AA
+	jsr	$417A(a5)	; -> Rand_Next
 	move.w	d0,d7
 	moveq	#$1,d0
 	and.w	d7,d0

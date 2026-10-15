@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_1F2736	[jt 2447]
+; XPlayer_StateAirAttack - air attack state: wait for the attack animation to end or a landing, allowing wall/ceiling grabs
+; In:  8(a6) = player
+; Out: d0
+; Evidence: anim done or on ground -> clear B/A latches, state +$A6; else vtable +$96 CheckGrab -> +$AA
 ; ---------------------------------------------------------------------------
-sub_1F2736:
+XPlayer_StateAirAttack:
 	link.w	a6,#$0
 	move.l	a4,-(a7)
 	movea.l	$8(a6),a4
@@ -61,7 +64,7 @@ loc_1F27AC:
 	bra.s	loc_1F27E2
 loc_1F27D0:
 	clr.w	$6C(a4)
-	lea.l	sub_1F2736(pc),a0
+	lea.l	XPlayer_StateAirAttack(pc),a0
 	move.l	a0,$5C(a4)
 	moveq	#$8,d0
 	and.w	$4(a4),d0

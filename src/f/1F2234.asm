@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_1F2234	[jt 2442]
+; XPlayer_Init - XPLAYER slot +$12: clear and initialise a player object (full health, empty meter, pad, safe spot)
+; In:  8(a6) = player, $C/$10(a6) = x/y (8 fraction bits), $14(a6) = spawn param
+; Out: none
+; Evidence: Mem_Set(obj+4, 0, GetSize-4) keeping +$15; ACTOR Init; +$15 = 0 for g_Player1 else 1; +$90 = $2000; +$68 = $900; +$9E = 0; +$94 = 0; +$98/+$9A = pixel pos
 ; ---------------------------------------------------------------------------
-sub_1F2234:
+XPlayer_Init:
 	link.w	a6,#$0
 	movem.l	d3/d6-d7/a3-a4,-(a7)
 	movea.l	$8(a6),a4

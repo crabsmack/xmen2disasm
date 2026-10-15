@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_1F220E	[jt 2439]
+; XPlayer_ClassInit - XPLAYER slot +$5E: empty
+; In:  none
+; Out: none
+; Evidence: bare link/unlk/rts
 ; ---------------------------------------------------------------------------
-sub_1F220E:
+XPlayer_ClassInit:
 	link.w	a6,#$0
 	unlk	a6
 	rts

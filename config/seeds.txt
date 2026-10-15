@@ -509,7 +509,7 @@
 15F666	; loc_15F666 - runtime: executed in tas
 15F668	; loc_15F668 - runtime: executed in tas
 15F66A	; loc_15F66A - runtime: executed in tas
-1F3FCC	; loc_1F3FCC - runtime: executed in tas
+1F3FCC	; XClimber_CheckGrab_Case0 - runtime: executed in tas
 1F3FD2	; loc_1F3FD2 - runtime: executed in tas
 1F3FDE	; loc_1F3FDE - runtime: executed in tas
 1F6E42	; loc_1F6E42 - runtime: executed in tas

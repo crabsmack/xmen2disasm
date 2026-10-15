@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_1F241C	[jt 2445]
+; XPlayer_AirSteer - XPLAYER slot +$8A: per-frame air control: steer with Left/Right or brake, and cut the jump short when jump is released while rising
+; In:  8(a6) = player
+; Out: none
+; Evidence: no direction: vx eased to 0 by $40 (x2 in two-player); else XPlayer_SteerFacing(char +$12, +$14); C released and vy < -899 -> gravity char +$C else +$E; vtable +$7E SetAirFrame
 ; ---------------------------------------------------------------------------
-sub_1F241C:
+XPlayer_AirSteer:
 	link.w	a6,#$0
 	movem.l	d3/d7/a4,-(a7)
 	movea.l	$8(a6),a4
@@ -39,7 +42,7 @@ loc_1F2466:
 	ext.l	d0
 	move.l	d0,-(a7)
 	move.l	a4,-(a7)
-	jsr	sub_1F1372(pc)
+	jsr	XPlayer_SteerFacing(pc)
 	lea.l	$10(a7),a7
 	bra.s	loc_1F24CE
 loc_1F248A:

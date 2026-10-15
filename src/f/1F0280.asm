@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_1F0280	[jt 2415]
+; XPlayer_AirSpecialUp - XPLAYER slot +$CA: base Up+A in the air = the neutral air special
+; In:  8(a6) = player
+; Out: none
+; Evidence: +$5C = vtable +$C6 and calls it
 ; ---------------------------------------------------------------------------
-sub_1F0280:
+XPlayer_AirSpecialUp:
 	link.w	a6,#$0
 	move.l	a4,-(a7)
 	movea.l	$8(a6),a4

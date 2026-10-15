@@ -22,7 +22,7 @@ loc_00630C:
 	cmpi.w	#$FFFF,d7
 	bne.s	loc_00632A
 loc_006312:
-	jsr	$417A(a5)	; -> sub_1600AA
+	jsr	$417A(a5)	; -> Rand_Next
 	moveq	#$0,d1
 	move.w	d0,d1
 	move.l	d1,d0

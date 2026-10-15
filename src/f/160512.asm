@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_160512	[jt 2092]
+; Rand_Seed - seed Rand_Next: split a word into the three table indexes and the history
+; In:  8(a6) = word seed
+; Out: none
+; Evidence: bits 0-4 -> -$7AE (x4), 5-9 -> -$7B0, 10-15 -> -$7B2; -$7AC = seed, -$7AA = 0; jt 2092
 ; ---------------------------------------------------------------------------
-sub_160512:
+Rand_Seed:
 	link.w	a6,#$0
 	move.w	$A(a6),d0
 	andi.w	#$1F,d0

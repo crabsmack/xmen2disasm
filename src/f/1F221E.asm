@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_1F221E	[jt 2441]
+; XPlayer_Nop66 - XPLAYER slot +$66: no-op
+; In:  8(a6) = player
+; Out: none
+; Evidence: 6-instruction no-op shared shape
 ; ---------------------------------------------------------------------------
-sub_1F221E:
+XPlayer_Nop66:
 	link.w	a6,#$FFFC
 	movem.l	a3-a4,-(a7)
 	movea.l	$8(a6),a4

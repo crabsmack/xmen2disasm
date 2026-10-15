@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_1F0A48	[link-after-rts]
+; XPlayer_StartLookUp - start looking up: stop, mark looking (+$90 $40000) and tell the camera to look up
+; In:  8(a6) = player
+; Out: d0 = +4 flag 8
+; Evidence: velocities/gravity 0, g_Camera vtable +$26 Cam_LookUp, state XPlayer_StateLookUp; reached from XPlayer_StateStand after Up is held ~50 frames
 ; ---------------------------------------------------------------------------
-sub_1F0A48:
+XPlayer_StartLookUp:
 	link.w	a6,#$0
 	move.l	a4,-(a7)
 	movea.l	$8(a6),a4
@@ -17,7 +20,7 @@ sub_1F0A48:
 	jsr	(a1)
 	addq.w	#$4,a7
 	clr.w	$6C(a4)
-	lea.l	sub_1F09D6(pc),a0
+	lea.l	XPlayer_StateLookUp(pc),a0
 	move.l	a0,$5C(a4)
 	moveq	#$8,d0
 	and.w	$4(a4),d0

@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_1F0430	[link-after-rts]
+; XPlayer_DeathDone - player death finished: remove the player and end the scene unless the partner is still alive
+; In:  8(a6) = player
+; Out: none
+; Evidence: Snd_Stop $52, vtable +$46 Deactivate, +$6C = $FF; partner not present+alive -> Scene_EndAfter(120)
 ; ---------------------------------------------------------------------------
-sub_1F0430:
+XPlayer_DeathDone:
 	link.w	a6,#$0
 	movem.l	d3/a3-a4,-(a7)
 	movea.l	$8(a6),a4

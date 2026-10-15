@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_1F3282	[link-after-rts]
+; XPlayer_WalkAccel - set walking acceleration and max speed toward a side; face the current velocity
+; In:  8(a6) = player, $C(a6) = word max speed, $10(a6) = word acceleration, $14(a6) = byte 1 right / 0 left
+; Out: none
+; Evidence: +$1E = +/-accel, +$22 = max; +$2E bit 4 from the sign of vx; used by XPlayer_Walk/StateWalk with char +$1C/+$1E
 ; ---------------------------------------------------------------------------
-sub_1F3282:
+XPlayer_WalkAccel:
 	link.w	a6,#$0
 	movem.l	d7/a4,-(a7)
 	move.w	$12(a6),d7

@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_1F0A94	[jt 2421]
+; XPlayer_StateControl - XPLAYER slot +$A6: the main player control state: read the pad and dispatch to attack, special, jump, drop, walk, crouch, stand, climb and landing states
+; In:  8(a6) = player
+; Out: d0 = +4 flag 8 or the called state's result
+; Evidence: airborne (+4 $1000): B -> +$BA/+$BE/+$C2 (Up/Down/none), A -> +$CA/+$CE/+$C6, C + CanDoubleJump(+$92) -> +$B6, else AirSteer +$8A; ground: landing +$9A (fall speed > 1099 -> +$EA), B -> +$D6/+$DA/+$D2, A -> +$E6/+$E2/+$DE, C -> Jump +$82 or Down+C on a thin floor -> DropThrough +$86, Left/Right -> Walk +$AE, Down -> Crouch +$B2, nothing -> Stand +$EE; +$96 CheckGrab -> +$AA
 ; ---------------------------------------------------------------------------
-sub_1F0A94:
+XPlayer_StateControl:
 	link.w	a6,#$0
 	movem.l	d3/d7/a3-a4,-(a7)
 	movea.l	$8(a6),a4
@@ -40,10 +43,10 @@ loc_1F0AF4:
 	move.w	#$1000,d0
 	and.w	$4(a4),d0
 	beq.s	loc_1F0B18
-	lea.l	sub_1F26F2(pc),a0
+	lea.l	XPlayer_StartFloatFall(pc),a0
 	move.l	a0,$5C(a4)
 	move.l	a4,-(a7)
-	jsr	sub_1F26F2(pc)
+	jsr	XPlayer_StartFloatFall(pc)
 	addq.w	#$4,a7
 	bra.w	loc_1F1368
 loc_1F0B18:
@@ -674,7 +677,7 @@ loc_1F1200:
 	and.w	$4(a4),d0
 	bne.s	loc_1F1216
 	move.l	a4,-(a7)
-	jsr	sub_1F049E(pc)
+	jsr	XPlayer_PushingTetherEdge(pc)
 	tst.b	d0
 	addq.w	#$4,a7
 	beq.s	loc_1F126A

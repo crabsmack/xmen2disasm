@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_1F33D0	[link-after-rts]
+; XPlayer_StateWalk - walking state: keep accelerating while Left/Right is held on the ground, else hand back to control
+; In:  8(a6) = player
+; Out: d0
+; Evidence: tether push or +4 $100 -> clear latch, control; B/C/A or no direction or airborne -> control; else XPlayer_WalkAccel and XPlayer_SetWalkAnim(char +$42, +$3E)
 ; ---------------------------------------------------------------------------
-sub_1F33D0:
+XPlayer_StateWalk:
 	link.w	a6,#$0
 	movem.l	d3/a4,-(a7)
 	movea.l	$8(a6),a4
@@ -9,7 +12,7 @@ sub_1F33D0:
 	and.w	$4(a4),d0
 	bne.s	loc_1F33F2
 	move.l	a4,-(a7)
-	jsr	sub_1F049E(pc)
+	jsr	XPlayer_PushingTetherEdge(pc)
 	tst.b	d0
 	addq.w	#$4,a7
 	beq.s	loc_1F345A
@@ -149,7 +152,7 @@ loc_1F3538:
 	ext.l	d1
 	move.l	d1,-(a7)
 	move.l	a4,-(a7)
-	jsr	sub_1F3282(pc)
+	jsr	XPlayer_WalkAccel(pc)
 	lea.l	$10(a7),a7
 	bra.s	loc_1F359E
 loc_1F355E:
@@ -175,7 +178,7 @@ loc_1F357A:
 	ext.l	d1
 	move.l	d1,-(a7)
 	move.l	a4,-(a7)
-	jsr	sub_1F3282(pc)
+	jsr	XPlayer_WalkAccel(pc)
 	lea.l	$10(a7),a7
 loc_1F359E:
 	movea.l	$8C(a4),a0
@@ -187,10 +190,10 @@ loc_1F359E:
 	adda.w	$42(a1),a0
 	move.l	a0,-(a7)
 	move.l	a4,-(a7)
-	jsr	sub_1F32D0(pc)
+	jsr	XPlayer_SetWalkAnim(pc)
 	lea.l	$C(a7),a7
 	clr.w	$6C(a4)
-	lea.l	sub_1F33D0(pc),a0
+	lea.l	XPlayer_StateWalk(pc),a0
 	move.l	a0,$5C(a4)
 	moveq	#$8,d0
 	and.w	$4(a4),d0

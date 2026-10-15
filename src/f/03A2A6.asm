@@ -7,7 +7,7 @@
 BanimazaDoor_ClassInit:
 	link.w	a6,#$0
 	move.l	#$1869F,-(a7)
-	jsr	$4182(a5)	; -> sub_160512
+	jsr	$4182(a5)	; -> Rand_Seed
 	move.l	$8(a6),-(a7)
 	jsr	BanimazaDoor_NopStatic(pc)
 	moveq	#$0,d0

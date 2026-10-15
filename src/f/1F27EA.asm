@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_1F27EA	[jt 2448]
+; XPlayer_AirAttackUp - XPLAYER slot +$BA: Up+B in the air: play the up air-attack animation
+; In:  8(a6) = player
+; Out: d0 = +4 flag 8
+; Evidence: gravity char +$E, Obj_SetAnim(char +$32), attack sound char +$2C, state XPlayer_StateAirAttack
 ; ---------------------------------------------------------------------------
-sub_1F27EA:
+XPlayer_AirAttackUp:
 	link.w	a6,#$0
 	move.l	a4,-(a7)
 	movea.l	$8(a6),a4
@@ -31,7 +34,7 @@ sub_1F27EA:
 	addq.w	#$8,a7
 loc_1F2840:
 	clr.w	$6C(a4)
-	lea.l	sub_1F2736(pc),a0
+	lea.l	XPlayer_StateAirAttack(pc),a0
 	move.l	a0,$5C(a4)
 	moveq	#$8,d0
 	and.w	$4(a4),d0

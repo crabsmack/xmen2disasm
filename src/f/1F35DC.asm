@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_1F35DC	[link-after-rts]
+; XPlayer_StateCrouchLook - crouched and looking down: hold the pose while nothing changes, else back to control
+; In:  8(a6) = player
+; Out: none
+; Evidence: (pressed | released) & $7F == 0 and on ground -> Obj_ChangeAnim(char +$4A); else state +$A6
 ; ---------------------------------------------------------------------------
-sub_1F35DC:
+XPlayer_StateCrouchLook:
 	link.w	a6,#$0
 	movem.l	d3/a4,-(a7)
 	movea.l	$8(a6),a4

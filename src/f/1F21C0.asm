@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_1F21C0	[jt 2438]
+; XPlayer_InitSpawnRec - XPLAYER slot +$0A: register a player start record (parent InitSpawnRec, then remember it as P1's or P2's start)
+; In:  8(a6) = spawn record, $C(a6) = placement entry
+; Out: d0
+; Evidence: ACTOR InitSpawnRec, rec+4 &= ~1 (never auto-spawns); placement +6 == 2 -> $FFE99C, else $FFE9A0
 ; ---------------------------------------------------------------------------
-sub_1F21C0:
+XPlayer_InitSpawnRec:
 	link.w	a6,#$0
 	movem.l	a3-a4,-(a7)
 	movea.l	$8(a6),a3

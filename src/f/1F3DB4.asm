@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_1F3DB4	[jt 2469]
+; XClimber_ClassifySeg - XCLIMBER slot +$F2: what kind of grab a touched segment allows: 0 none, 1 ceiling, 2 / 3 wall on one side / the other
+; In:  8(a6) = player, $C(a6) = segment
+; Out: d0 = grab kind
+; Evidence: segment type byte +1: 1 -> 2 and 2 -> 3 when the wall is >= $3E px tall, 4 -> 1 when > $3D px long, $13 (block) by which side the player's box is on, else 0
 ; ---------------------------------------------------------------------------
-sub_1F3DB4:
+XClimber_ClassifySeg:
 	link.w	a6,#$0
 	movem.l	d3/d6-d7/a3-a4,-(a7)
 	movea.l	$8(a6),a3

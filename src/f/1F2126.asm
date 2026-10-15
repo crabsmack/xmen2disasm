@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_1F2126	[jt 2437]
+; XPlayer_UpdateCharge - XPLAYER slot +$76: fill the special meter (+$9E, the HUD's second bar) while the special button is held; empty it on release
+; In:  8(a6) = player
+; Out: d0
+; Evidence: A latched and +$9E < $20: += 1 (2 in two-player mode), full -> +$90 |= $800; A released -> +$9E = 0; g_HudDirty
 ; ---------------------------------------------------------------------------
-sub_1F2126:
+XPlayer_UpdateCharge:
 	link.w	a6,#$0
 	movem.l	d3/a4,-(a7)
 	movea.l	$8(a6),a4

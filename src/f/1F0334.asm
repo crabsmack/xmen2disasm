@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_1F0334	[link-after-rts]
+; XPlayer_StartDeath - player death: death sound, death frame, start the blinking countdown
+; In:  8(a6) = player
+; Out: d0 = +4 flag 8
+; Evidence: Snd_Stop $D5, restart $52; SetFrame(char +$28); +$6E = 10, +$A6 = 20, +$10 = 0; state XPlayer_StateDeathBlink; installed by XPlayer_TakeDamage when health reaches 0
 ; ---------------------------------------------------------------------------
-sub_1F0334:
+XPlayer_StartDeath:
 	link.w	a6,#$0
 	move.l	a4,-(a7)
 	movea.l	$8(a6),a4
@@ -26,7 +29,7 @@ sub_1F0334:
 	clr.w	$10(a4)
 	lea.l	$14(a7),a7
 	clr.w	$6C(a4)
-	lea.l	sub_1F039A(pc),a0
+	lea.l	XPlayer_StateDeathBlink(pc),a0
 	move.l	a0,$5C(a4)
 	moveq	#$8,d0
 	and.w	$4(a4),d0

@@ -1,12 +1,15 @@
 ; ---------------------------------------------------------------------------
-; sub_1F383A	[link-after-rts]
+; XPlayer_StateStand - standing state: idle animation (random idle variant), hold Up to look up, any action returns to control
+; In:  8(a6) = player
+; Out: d0
+; Evidence: XPlayer_ActionPressed or airborne -> control (re-latch direction); Up held with the +$A6 timer -> XPlayer_StartLookUp; anim ended -> Rand_Next > char +$26 ? anim char +$44 : char +$42
 ; ---------------------------------------------------------------------------
-sub_1F383A:
+XPlayer_StateStand:
 	link.w	a6,#$0
 	movem.l	d3/a4,-(a7)
 	movea.l	$8(a6),a4
 	move.l	a4,-(a7)
-	jsr	sub_1F005C(pc)
+	jsr	XPlayer_ActionPressed(pc)
 	tst.b	d0
 	addq.w	#$4,a7
 	bne.s	loc_1F385E
@@ -92,7 +95,7 @@ loc_1F390E:
 	and.l	$90(a4),d0
 	bne.s	loc_1F394A
 	clr.w	$6C(a4)
-	lea.l	sub_1F0A48(pc),a0
+	lea.l	XPlayer_StartLookUp(pc),a0
 	move.l	a0,$5C(a4)
 	moveq	#$8,d0
 	and.w	$4(a4),d0
@@ -103,13 +106,13 @@ loc_1F3950:
 	tst.l	$44(a4)
 	beq.s	loc_1F396A
 	clr.w	$6C(a4)
-	lea.l	sub_1F383A(pc),a0
+	lea.l	XPlayer_StateStand(pc),a0
 	move.l	a0,$5C(a4)
 	moveq	#$8,d0
 	and.w	$4(a4),d0
 	bra.s	loc_1F39BA
 loc_1F396A:
-	jsr	$417A(a5)	; -> sub_1600AA
+	jsr	$417A(a5)	; -> Rand_Next
 	moveq	#$0,d1
 	move.w	d0,d1
 	tst.l	d1
@@ -135,7 +138,7 @@ loc_1F3994:
 	addq.w	#$8,a7
 loc_1F39A8:
 	clr.w	$6C(a4)
-	lea.l	sub_1F383A(pc),a0
+	lea.l	XPlayer_StateStand(pc),a0
 	move.l	a0,$5C(a4)
 	moveq	#$8,d0
 	and.w	$4(a4),d0

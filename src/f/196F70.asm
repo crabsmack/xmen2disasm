@@ -98,7 +98,7 @@ loc_197092:
 	moveq	#$0,d0
 	move.l	d0,-(a7)
 	move.l	a4,-(a7)
-	jsr	$4BEA(a5)	; -> sub_1F1478
+	jsr	$4BEA(a5)	; -> Player_FrontPastSeg
 	tst.b	d0
 	lea.l	$C(a7),a7
 	bne.s	loc_1970F2

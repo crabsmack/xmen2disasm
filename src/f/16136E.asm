@@ -148,7 +148,7 @@ loc_1614EC:
 	cmpi.w	#$1,d0
 	bne.s	loc_161502
 	move.l	a3,-(a7)
-	jsr	$4D8A(a5)	; -> sub_1F4334
+	jsr	$4D8A(a5)	; -> Player_CeilingEndInView
 	tst.b	d0
 	addq.w	#$4,a7
 	bne.s	loc_16154C

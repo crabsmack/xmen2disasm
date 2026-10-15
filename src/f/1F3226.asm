@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_1F3226	[jt 2460]
+; XPlayer_HardLanding - XPLAYER slot +$EA: land from a long fall: crouch frame, stop, short recovery
+; In:  8(a6) = player
+; Out: d0 = +4 flag 8
+; Evidence: SetFrame(char +$2A), velocities 0, +$6E = char +$23, state XPlayer_StateHardLanding; XPlayer_StateControl calls it when fall speed +$1C > 1099
 ; ---------------------------------------------------------------------------
-sub_1F3226:
+XPlayer_HardLanding:
 	link.w	a6,#$0
 	move.l	a4,-(a7)
 	movea.l	$8(a6),a4
@@ -24,7 +27,7 @@ sub_1F3226:
 	move.w	d0,$6E(a4)
 	addq.w	#$8,a7
 	clr.w	$6C(a4)
-	lea.l	sub_1F31F0(pc),a0
+	lea.l	XPlayer_StateHardLanding(pc),a0
 	move.l	a0,$5C(a4)
 	moveq	#$8,d0
 	and.w	$4(a4),d0

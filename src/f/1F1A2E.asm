@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_1F1A2E	[jt 2428]
+; XPlayer_Draw - XPLAYER slot +$1A: draw the player (blink while invulnerable) and its hit spark
+; In:  8(a6) = player
+; Out: d0
+; Evidence: only near the screen; hit spark sprite $FFE9A4 at +$A0/+$A2 while +$A4 counts down; Spr_UploadFrame18 when the frame is stale, Spr_EmitStream at screen + $80; blink on g_LevelFrame bit 0 when +6 flag $40
 ; ---------------------------------------------------------------------------
-sub_1F1A2E:
+XPlayer_Draw:
 	link.w	a6,#$FFFC
 	movem.l	d3/d6-d7/a3-a4,-(a7)
 	movea.l	$8(a6),a4

@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_160550
+; Mem_ClearAboveStack - zero work RAM from the initial stack pointer up to the end of RAM
+; In:  none
+; Out: none
+; Evidence: start = vector 0 (initial SSP) | $FFFF0000, length = -start.w; unrolled long stores; only caller Game_Main
 ; ---------------------------------------------------------------------------
-sub_160550:
+Mem_ClearAboveStack:
 	move.l	($0).w,d0
 	ori.l	#$FFFF0000,d0
 	movea.l	d0,a0

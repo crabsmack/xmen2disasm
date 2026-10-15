@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_1F3ADE	[link-after-rts]
+; XPlayer_StateHurtRecover - hurt state: stay knocked back until landing (then Land, maybe hard landing) or the hurt timer ends, blinking invulnerable
+; In:  8(a6) = player
+; Out: d0
+; Evidence: +$6A = 2 while flying; on ground: +$6A = 40, +6 |= $40 blink, +$90 &= ~8, vtable +$9A Land, fall speed >= $44C -> +$EA HardLanding else control; airborne and +$6E < 1 -> control
 ; ---------------------------------------------------------------------------
-sub_1F3ADE:
+XPlayer_StateHurtRecover:
 	link.w	a6,#$0
 	movem.l	d3/a4,-(a7)
 	movea.l	$8(a6),a4
@@ -137,7 +140,7 @@ loc_1F3C4C:
 	bra.s	loc_1F3C72
 loc_1F3C60:
 	clr.w	$6C(a4)
-	lea.l	sub_1F3ADE(pc),a0
+	lea.l	XPlayer_StateHurtRecover(pc),a0
 	move.l	a0,$5C(a4)
 	moveq	#$8,d0
 	and.w	$4(a4),d0

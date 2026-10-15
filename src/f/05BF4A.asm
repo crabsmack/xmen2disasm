@@ -62,7 +62,7 @@ Boulder_Init:
 	move.l	a0,$60(a3)
 	move.l	a3,-(a7)
 	jsr	sub_05AD2E(pc)
-	jsr	$417A(a5)	; -> sub_1600AA
+	jsr	$417A(a5)	; -> Rand_Next
 	moveq	#$0,d1
 	move.w	d0,d1
 	tst.l	d1

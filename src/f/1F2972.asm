@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_1F2972	[link-after-rts]
+; XPlayer_StateDoubleJump - double-jump state: steer in the air until landing, an attack or a grab
+; In:  8(a6) = player
+; Out: d0
+; Evidence: landing -> +$90 |= 4, +$A6; +$96 CheckGrab -> +$AA; Left/Right -> XPlayer_SteerFacing(char +$54, +$56); release -> vx = +/-char +$16; B/A -> back to control
 ; ---------------------------------------------------------------------------
-sub_1F2972:
+XPlayer_StateDoubleJump:
 	link.w	a6,#$0
 	movem.l	d3/a4,-(a7)
 	movea.l	$8(a6),a4
@@ -104,7 +107,7 @@ loc_1F2A74:
 	ext.l	d0
 	move.l	d0,-(a7)
 	move.l	a4,-(a7)
-	jsr	sub_1F1372(pc)
+	jsr	XPlayer_SteerFacing(pc)
 	lea.l	$10(a7),a7
 	bra.s	loc_1F2AE0
 loc_1F2A98:

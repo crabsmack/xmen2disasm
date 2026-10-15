@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_1F1424	[jt 2424]
+; Player_BottomBelowSeg - is the player's box bottom (plus a margin) below the bottom of a segment
+; In:  8(a6) = player, $C(a6) = word margin, $10(a6) = segment
+; Out: d0 = byte 1/0
+; Evidence: +$50 + margin > max(seg y1, y2); XClimber_CheckGrab
 ; ---------------------------------------------------------------------------
-sub_1F1424:
+Player_BottomBelowSeg:
 	link.w	a6,#$0
 	movem.l	d3/d7/a4,-(a7)
 	movea.l	$10(a6),a4

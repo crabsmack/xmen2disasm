@@ -12,7 +12,7 @@ sub_1A62D6:
 	moveq	#$5,d0
 	move.l	d0,-(a7)
 	move.l	a4,-(a7)
-	jsr	$4BE2(a5)	; -> sub_1F1424
+	jsr	$4BE2(a5)	; -> Player_BottomBelowSeg
 	tst.b	d0
 	lea.l	$C(a7),a7
 	beq.s	loc_1A632C
@@ -34,7 +34,7 @@ loc_1A632C:
 	moveq	#-$5,d0
 	move.l	d0,-(a7)
 	move.l	a4,-(a7)
-	jsr	$4BDA(a5)	; -> sub_1F13D0
+	jsr	$4BDA(a5)	; -> Player_TopAboveSeg
 	tst.b	d0
 	lea.l	$C(a7),a7
 	beq.s	loc_1A6370

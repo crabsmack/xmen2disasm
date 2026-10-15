@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_1F13D0	[jt 2423]
+; Player_TopAboveSeg - is the player's box top (minus a margin) above the top of a segment
+; In:  8(a6) = player, $C(a6) = word margin, $10(a6) = segment
+; Out: d0 = byte 1/0 (0 when no segment)
+; Evidence: +$4C - margin < min(seg y1 +$A, y2 +$E); XClimber_CheckGrab refuses wall grabs past the wall's top
 ; ---------------------------------------------------------------------------
-sub_1F13D0:
+Player_TopAboveSeg:
 	link.w	a6,#$0
 	movem.l	d3/d7/a4,-(a7)
 	movea.l	$10(a6),a4

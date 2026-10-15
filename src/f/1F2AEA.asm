@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_1F2AEA	[jt 2452]
+; XPlayer_DoubleJump - start a double jump: animation, sound and an upward boost
+; In:  8(a6) = player
+; Out: d0 = +4 flag 8
+; Evidence: clears C latch, Obj_SetAnim(char +$4C), sound char +$58, vy -= char +$52, gravity char +$E, state XPlayer_StateDoubleJump; slot +$B6 of NIGHTCRAWLER, PSYLOCKE, WOLVERINE
 ; ---------------------------------------------------------------------------
-sub_1F2AEA:
+XPlayer_DoubleJump:
 	link.w	a6,#$0
 	move.l	a4,-(a7)
 	movea.l	$8(a6),a4
@@ -48,7 +51,7 @@ loc_1F2B5E:
 	movea.l	$8C(a4),a0
 	move.w	$E(a0),$20(a4)
 	clr.w	$6C(a4)
-	lea.l	sub_1F2972(pc),a0
+	lea.l	XPlayer_StateDoubleJump(pc),a0
 	move.l	a0,$5C(a4)
 	moveq	#$8,d0
 	and.w	$4(a4),d0

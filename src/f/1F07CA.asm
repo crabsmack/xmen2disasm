@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_1F07CA	[link-after-rts]
+; XPlayer_CanRejoinAt - can this player be placed at the partner's safe position given how the partner was holding on there
+; In:  8(a6) = this player, $C(a6) = partner
+; Out: d0 = byte 1/0
+; Evidence: partner saved climb mode (+$C0 bits 4-5): 0 standing -> yes, 2/3 on a wall -> Player_IsClimber(this), 1 on a ceiling -> Player_IsNcOrWolverine2(this)
 ; ---------------------------------------------------------------------------
-sub_1F07CA:
+XPlayer_CanRejoinAt:
 	link.w	a6,#$0
 	movem.l	d7/a3-a4,-(a7)
 	movea.l	$8(a6),a3

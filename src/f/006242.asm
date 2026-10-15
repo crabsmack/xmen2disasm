@@ -2,7 +2,7 @@
 ; Player1_StartLife - give player 1 a new life: keep or randomly pick a character (not P2's), health $700, spend a life
 ; In:  none
 ; Out: d0 = 1 if started, 0 if -$3BBA is clear
-; Evidence: jt 5, called from Siberia init SiberiaB1_InstallHooks and sub_15CAA4; random = sub_1600AA % 6 (Math_LModS); switch on index to Player1_Set*; stores g_P1CharIndex, decrements g_P1Lives (TAS RAM 9 -> 8 at frame 180)
+; Evidence: jt 5, called from Siberia init SiberiaB1_InstallHooks and sub_15CAA4; random = Rand_Next % 6 (Math_LModS); switch on index to Player1_Set*; stores g_P1CharIndex, decrements g_P1Lives (TAS RAM 9 -> 8 at frame 180)
 ; ---------------------------------------------------------------------------
 Player1_StartLife:
 	link.w	a6,#$0
@@ -22,7 +22,7 @@ loc_00626A:
 	cmpi.w	#$FFFF,d7
 	bne.s	loc_006288
 loc_006270:
-	jsr	$417A(a5)	; -> sub_1600AA
+	jsr	$417A(a5)	; -> Rand_Next
 	moveq	#$0,d1
 	move.w	d0,d1
 	move.l	d1,d0

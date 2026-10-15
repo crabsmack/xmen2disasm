@@ -36,7 +36,7 @@ loc_1E32A0:
 	bra.s	loc_1E32E2
 loc_1E32DA:
 	move.l	a4,-(a7)
-	jsr	$4CFA(a5)	; -> sub_1F31F0
+	jsr	$4CFA(a5)	; -> XPlayer_StateHardLanding
 	addq.w	#$4,a7
 loc_1E32E2:
 	movem.l	-$8(a6),d3/a4

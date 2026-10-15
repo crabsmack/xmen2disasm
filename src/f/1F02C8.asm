@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_1F02C8	[jt 2417]
+; XPlayer_GroundSpecial - XPLAYER slot +$DE: base ground special (A button), none: back to control
+; In:  8(a6) = player
+; Out: d0 = +4 flag 8
+; Evidence: +$5C = +$A6; XPlayer_StateControl calls +$DE for A on the ground; characters override
 ; ---------------------------------------------------------------------------
-sub_1F02C8:
+XPlayer_GroundSpecial:
 	link.w	a6,#$0
 	move.l	a4,-(a7)
 	movea.l	$8(a6),a4

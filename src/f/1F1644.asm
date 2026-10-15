@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_1F1644	[jt 2427]
+; XPlayer_Update - XPLAYER slot +$4A: per-frame player update: move, save safe spot, animate, timers, run the state, look up/down release, charge meter, frame hit points
+; In:  8(a6) = player
+; Out: d0
+; Evidence: XPlayer_Move, +$A2, Anim_AdvanceByDistance, timers +$6E/+$A6/+$A8/+$AA, state +$5C when +$6C < 1, camera +$32/+$2E when Down/Up released while looking (+$90 $40000), +$72, Obj_UpdateBoxes, +$76 UpdateCharge, frame hit points via $15CB34
 ; ---------------------------------------------------------------------------
-sub_1F1644:
+XPlayer_Update:
 	link.w	a6,#$FFFC
 	movem.l	d3/d5-d7/a3-a4,-(a7)
 	movea.l	$8(a6),a4
@@ -44,7 +47,7 @@ loc_1F16AE:
 	ext.l	d7
 	move.l	d7,-(a7)
 	move.l	a4,-(a7)
-	jsr	sub_1F153A(pc)
+	jsr	XPlayer_Move(pc)
 	move.l	a4,-(a7)
 	movea.l	(a4),a0
 	movea.l	$A2(a0),a1
@@ -116,7 +119,7 @@ loc_1F1764:
 	addq.w	#$4,a7
 	beq.w	loc_1F1964
 	move.l	a4,-(a7)
-	jsr	sub_1F0582(pc)
+	jsr	XPlayer_TetherToPartner(pc)
 	addq.w	#$4,a7
 loc_1F1786:
 	move.l	#$40000,d0

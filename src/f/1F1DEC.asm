@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_1F1DEC	[jt 2433]
+; XPlayer_TakeDamage - XPLAYER slot +$26: lose health and get knocked back (or die), unless invulnerable
+; In:  8(a6) = player, $C(a6) = attacker, $10(a6) = byte damage type (5 left, 6 right, 7 raw, 12 = bounce (in the air: jump velocity again, sound $9E)), $14(a6) = byte damage
+; Out: d0
+; Evidence: ignored while +$6A > 0; health +$68 -= dmg << 8 (raw for type 7); 0 -> XPlayer_StartDeath; knockback vx +/-$100..$200 by type/attacker facing, vy -$100, hurt sound char +8, +$6A = 40, state +$60 (XPlayer_StateHurt); g_HudDirty
 ; ---------------------------------------------------------------------------
-sub_1F1DEC:
+XPlayer_TakeDamage:
 	link.w	a6,#$0
 	movem.l	d3-d7/a3-a4,-(a7)
 	movea.l	$C(a6),a3
@@ -67,7 +70,7 @@ loc_1F1E9E:
 loc_1F1EAC:
 	tst.w	$68(a4)
 	bgt.s	loc_1F1ED0
-	lea.l	sub_1F0334(pc),a0
+	lea.l	XPlayer_StartDeath(pc),a0
 	move.l	a0,$5C(a4)
 	clr.w	$6C(a4)
 	move.w	#$7FFF,$6A(a4)
@@ -139,7 +142,7 @@ loc_1F1F9A:
 loc_1F1FA6:
 	tst.w	$68(a4)
 	bgt.s	loc_1F1FCC
-	lea.l	sub_1F0334(pc),a0
+	lea.l	XPlayer_StartDeath(pc),a0
 	move.l	a0,$5C(a4)
 	clr.w	$6C(a4)
 	move.w	#$9C40,$6A(a4)

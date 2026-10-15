@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_1F2572	[link-after-rts]
+; XPlayer_StateFloatFall - slow-fall state (scene word $FFC706 caps the fall speed): steer while falling, end on landing
+; In:  8(a6) = player
+; Out: d0
+; Evidence: on landing $FFC706 = 0, +$24 = char +$18, state +$A6; airborne: anim char +$5A, gravity char +$E, Left/Right turn with anim char +$5C and XPlayer_Steer
 ; ---------------------------------------------------------------------------
-sub_1F2572:
+XPlayer_StateFloatFall:
 	link.w	a6,#$0
 	movem.l	d3/d7/a4,-(a7)
 	movea.l	$8(a6),a4
@@ -70,7 +73,7 @@ loc_1F261C:
 	ext.l	d1
 	move.l	d1,-(a7)
 	move.l	a4,-(a7)
-	jsr	sub_1F2520(pc)
+	jsr	XPlayer_Steer(pc)
 	lea.l	$10(a7),a7
 	bra.w	loc_1F26E8
 loc_1F2642:
@@ -112,7 +115,7 @@ loc_1F268C:
 	ext.l	d1
 	move.l	d1,-(a7)
 	move.l	a4,-(a7)
-	jsr	sub_1F2520(pc)
+	jsr	XPlayer_Steer(pc)
 	lea.l	$10(a7),a7
 	bra.s	loc_1F26E8
 loc_1F26B0:

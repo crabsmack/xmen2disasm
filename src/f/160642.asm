@@ -31,7 +31,7 @@ loc_160676:
 loc_160690:
 	move.w	#$8B00,g_VdpReg11(a5)
 loc_160696:
-	jsr	sub_160594(pc)
+	jsr	VDP_InitRegs(pc)
 	tst.b	-$202(a5)
 	beq.s	loc_1606A8
 	dc.w	$13FC,$FF80,$00A1,$000D	; insn: move.b #$80, $a1000d.l

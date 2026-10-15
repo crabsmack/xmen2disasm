@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_1F2C6E	[jt 2454]
+; XPlayer_CrouchAttackRecover - end of a crouching attack: stay crouched (+$90 $200000) and return to control
+; In:  8(a6) = player
+; Out: none
+; Evidence: clears B latch, +$90 |= $200000; Down held clears the Left/Right latch, else re-latches the held direction; state +$A6
 ; ---------------------------------------------------------------------------
-sub_1F2C6E:
+XPlayer_CrouchAttackRecover:
 	link.w	a6,#$0
 	movem.l	d3/a4,-(a7)
 	movea.l	$8(a6),a4

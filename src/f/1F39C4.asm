@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_1F39C4	[jt 2463]
+; XPlayer_Stand - XPLAYER slot +$EE: no input on the ground: stop and stand
+; In:  8(a6) = player
+; Out: d0
+; Evidence: no Left/Right (or +4 $100): velocities 0, clear B latch, Obj_SetAnim(char +$42), state XPlayer_StateStand; else re-latch the direction and control
 ; ---------------------------------------------------------------------------
-sub_1F39C4:
+XPlayer_Stand:
 	link.w	a6,#$0
 	movem.l	d3/a4,-(a7)
 	movea.l	$8(a6),a4
@@ -95,7 +98,7 @@ loc_1F3AAE:
 	jsr	$4E42(a5)	; -> Obj_SetAnim
 	addq.w	#$8,a7
 	clr.w	$6C(a4)
-	lea.l	sub_1F383A(pc),a0
+	lea.l	XPlayer_StateStand(pc),a0
 	move.l	a0,$5C(a4)
 	moveq	#$8,d0
 	and.w	$4(a4),d0

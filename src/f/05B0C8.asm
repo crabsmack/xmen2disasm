@@ -56,7 +56,7 @@ loc_05B124:
 	move.w	$A(a4),d0
 	ext.l	d0
 	move.l	d0,-$4(a6)
-	jsr	$417A(a5)	; -> sub_1600AA
+	jsr	$417A(a5)	; -> Rand_Next
 	moveq	#$0,d1
 	move.w	d0,d1
 	move.w	#$FF,d0
@@ -73,7 +73,7 @@ loc_05B194:
 	move.w	$A(a4),d0
 	ext.l	d0
 	move.l	d0,-$8(a6)
-	jsr	$417A(a5)	; -> sub_1600AA
+	jsr	$417A(a5)	; -> Rand_Next
 	moveq	#$0,d1
 	move.w	d0,d1
 	move.w	#$FF,d0

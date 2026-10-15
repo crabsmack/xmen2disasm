@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_1F2520	[link-after-rts]
+; XPlayer_Steer - set horizontal acceleration and max speed toward a side without turning the sprite
+; In:  8(a6) = player, $C(a6) = word max speed, $10(a6) = word acceleration, $14(a6) = byte 1 right / 0 left
+; Out: none
+; Evidence: like XPlayer_SteerFacing minus the facing bit; used by XPlayer_StateFloatFall
 ; ---------------------------------------------------------------------------
-sub_1F2520:
+XPlayer_Steer:
 	link.w	a6,#$0
 	movem.l	d6-d7/a4,-(a7)
 	move.b	$17(a6),d6

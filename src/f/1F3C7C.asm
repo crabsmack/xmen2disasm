@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_1F3C7C	[jt 2464]
+; XPlayer_StateHurt - player hurt state (+$60): show the hurt frame and start the recovery timer
+; In:  8(a6) = player
+; Out: d0 = +4 flag 8
+; Evidence: clears +$90 $200000/$400000, SetFrame(char +$28), +$6E = char +$24, state XPlayer_StateHurtRecover; every character Init stores its jt address in +$60
 ; ---------------------------------------------------------------------------
-sub_1F3C7C:
+XPlayer_StateHurt:
 	link.w	a6,#$0
 	move.l	a4,-(a7)
 	movea.l	$8(a6),a4
@@ -21,7 +24,7 @@ sub_1F3C7C:
 	move.w	d0,$6E(a4)
 	addq.w	#$8,a7
 	clr.w	$6C(a4)
-	lea.l	sub_1F3ADE(pc),a0
+	lea.l	XPlayer_StateHurtRecover(pc),a0
 	move.l	a0,$5C(a4)
 	moveq	#$8,d0
 	and.w	$4(a4),d0

@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_1F005C
+; XPlayer_ActionPressed - did the player's pad just press attack, jump, a direction, or trigger the special button
+; In:  8(a6) = player (+$9D = pad 0/1)
+; Out: d0 = byte 1/0
+; Evidence: g_PadNPressed & (g_PadMaskB | $F | g_PadMaskC), else special g_PadMaskA pressed (released when +$90 bit $10); used by the stand/hard-landing states to break out
 ; ---------------------------------------------------------------------------
-sub_1F005C:
+XPlayer_ActionPressed:
 	link.w	a6,#$0
 	movem.l	d3/a4,-(a7)
 	movea.l	$8(a6),a4

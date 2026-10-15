@@ -47,7 +47,7 @@ loc_05B6CA:
 	ext.l	d0
 	neg.l	d0
 	move.w	d0,$18(a4)
-	jsr	$417A(a5)	; -> sub_1600AA
+	jsr	$417A(a5)	; -> Rand_Next
 	moveq	#$0,d1
 	move.w	d0,d1
 	tst.l	d1

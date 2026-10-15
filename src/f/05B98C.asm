@@ -67,7 +67,7 @@ loc_05BA32:
 	clr.b	$6(a4)
 loc_05BA3C:
 	dc.w	$197C,$FFEC,$0005	; insn: move.b #$ec, $5(a4)
-	jsr	$417A(a5)	; -> sub_1600AA
+	jsr	$417A(a5)	; -> Rand_Next
 	moveq	#$0,d1
 	move.w	d0,d1
 	tst.l	d1

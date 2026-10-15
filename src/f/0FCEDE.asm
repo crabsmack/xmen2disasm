@@ -100,7 +100,7 @@ loc_0FCFBE:
 	bge.s	loc_0FCFDA
 	clr.b	$10(a4)
 loc_0FCFDA:
-	jsr	$417A(a5)	; -> sub_1600AA
+	jsr	$417A(a5)	; -> Rand_Next
 	moveq	#$0,d1
 	move.w	d0,d1
 	moveq	#$3,d0

@@ -25,7 +25,7 @@ loc_0656DE:
 	cmp.b	g_P1CharIndex(a5),d0
 	bne.s	loc_065708
 loc_0656EE:
-	jsr	$417A(a5)	; -> sub_1600AA
+	jsr	$417A(a5)	; -> Rand_Next
 	moveq	#$0,d1
 	move.w	d0,d1
 	move.l	d1,d0
@@ -39,7 +39,7 @@ loc_065708:
 	cmp.b	g_P2CharIndex(a5),d0
 	bne.s	loc_06572E
 loc_065710:
-	jsr	$417A(a5)	; -> sub_1600AA
+	jsr	$417A(a5)	; -> Rand_Next
 	moveq	#$0,d1
 	move.w	d0,d1
 	move.l	d1,d0

@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_1F1FEE	[jt 2434]
+; XPlayer_Attack - XPLAYER slot +$22: hit a target with the current attack and show a hit spark sized by the attack strength
+; In:  8(a6) = player, $C(a6) = target, $10(a6) = byte damage type, $14(a6) = word damage, $18/$1C(a6) = words spark x/y (-1 none)
+; Out: none
+; Evidence: only when +$70 (attack strength) != 0; type 9 becomes 10 when the target is to the right; target vtable +$26; +$6A = 15; spark sprite $FFE9A4 frame 1-3 and timer +$A4 8-14 by strength 1/2/4/8
 ; ---------------------------------------------------------------------------
-sub_1F1FEE:
+XPlayer_Attack:
 	link.w	a6,#$0
 	movem.l	d5-d7/a3-a4,-(a7)
 	move.w	$1E(a6),d5

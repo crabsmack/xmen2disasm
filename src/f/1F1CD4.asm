@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_1F1CD4	[jt 2430]
+; XPlayer_Activate - XPLAYER slot +$3E: put the player in play: start its timer, join the hit lists and the draw list
+; In:  8(a6) = player
+; Out: none
+; Evidence: +4 &= $B3FF; Timer_Start; HitList_Add to g_HitListPlayerAtk/Body (enemy lists when +$90 bit $1000000); DrawList_Add(vtable +$1A); g_HudDirty
 ; ---------------------------------------------------------------------------
-sub_1F1CD4:
+XPlayer_Activate:
 	link.w	a6,#$0
 	move.l	a4,-(a7)
 	movea.l	$8(a6),a4

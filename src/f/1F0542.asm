@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_1F0542	[link-after-rts]
+; XPlayer_TetherClamp - two-player tether helper: set a clamped coordinate, re-follow the ground and record which side blocked
+; In:  8(a6) = player, $C(a6) = pointer to x or y long, $10(a6) = clamped value, $14(a6) = +$90 flag to set
+; Out: none
+; Evidence: when on the ground calls $1F71F2(segment, obj) and $1F6D76(obj); +$90 |= flag; used by XPlayer_TetherToPartner
 ; ---------------------------------------------------------------------------
-sub_1F0542:
+XPlayer_TetherClamp:
 	link.w	a6,#$0
 	move.l	a4,-(a7)
 	movea.l	$8(a6),a4

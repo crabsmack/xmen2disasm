@@ -2,7 +2,7 @@
 ; SiberiaB1_InstallHooks - SiberiaB1: frame hook; with no player (power-on demo) pick a random character from the VDP H/V counter and start a 1200-frame demo timer; place players, resources, ice tiles, wind
 ; In:  none
 ; Out: none
-; Evidence: $FFC972 = SiberiaB1_FrameHook; reads $C00008; sub_160512, Player1_StartLife; $FFC6F6 = $4B0; NOTES: power-on play ends at ~frame 1380
+; Evidence: $FFC972 = SiberiaB1_FrameHook; reads $C00008; Rand_Seed, Player1_StartLife; $FFC6F6 = $4B0; NOTES: power-on play ends at ~frame 1380
 ; ---------------------------------------------------------------------------
 SiberiaB1_InstallHooks:
 	link.w	a6,#$0
@@ -25,7 +25,7 @@ loc_0FD62C:
 	ext.l	d0
 	add.l	d7,d0
 	move.l	d0,-(a7)
-	jsr	$4182(a5)	; -> sub_160512
+	jsr	$4182(a5)	; -> Rand_Seed
 	jsr	$4A(a5)	; -> Player1_StartLife
 	move.w	#$4B0,-$3B0A(a5)
 	addq.w	#$4,a7

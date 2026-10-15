@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; loc_1F401C
+; XClimber_CheckGrab_Default - XClimber_CheckGrab switch default: clear the grab timer +$A6 and run the common grab tests
+; In:  a4 = player
+; Out: d0 = 1 grab / 0
+; Evidence: switch-table default target inside XClimber_CheckGrab
 ; ---------------------------------------------------------------------------
-loc_1F401C:
+XClimber_CheckGrab_Default:
 	clr.w	$A6(a4)
 loc_1F4020:
 	tst.w	$A6(a4)
@@ -44,7 +47,7 @@ loc_1F4086:
 	moveq	#$A,d0
 	move.l	d0,-(a7)
 	move.l	a4,-(a7)
-	jsr	sub_1F13D0(pc)
+	jsr	Player_TopAboveSeg(pc)
 	tst.b	d0
 	lea.l	$C(a7),a7
 	bne.s	loc_1F40F0
@@ -52,7 +55,7 @@ loc_1F4086:
 	moveq	#$A,d0
 	move.l	d0,-(a7)
 	move.l	a4,-(a7)
-	jsr	sub_1F1424(pc)
+	jsr	Player_BottomBelowSeg(pc)
 	tst.b	d0
 	lea.l	$C(a7),a7
 	bne.s	loc_1F40F0
@@ -90,7 +93,7 @@ loc_1F40F4:
 	moveq	#$A,d0
 	move.l	d0,-(a7)
 	move.l	a4,-(a7)
-	jsr	sub_1F1478(pc)
+	jsr	Player_FrontPastSeg(pc)
 	tst.b	d0
 	lea.l	$C(a7),a7
 	bne.s	loc_1F4126

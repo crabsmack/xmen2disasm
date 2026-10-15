@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_1F00F6	[link-after-rts]
+; XPlayer_EnterAirFrame - switch to the airborne frame (+$7E) and refit the box so the feet and front edge stay in place
+; In:  8(a6) = player
+; Out: none
+; Evidence: anim +$44 = 0; vtable +$7E SetAirFrame, Obj_UpdateBox, then x/y corrected by the change of box front (+$4E or +$52 by facing) and bottom +$50; sets g_CamModeSwitched
 ; ---------------------------------------------------------------------------
-sub_1F00F6:
+XPlayer_EnterAirFrame:
 	link.w	a6,#$0
 	movem.l	d6-d7/a4,-(a7)
 	movea.l	$8(a6),a4

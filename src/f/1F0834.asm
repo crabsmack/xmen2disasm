@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_1F0834	[link-after-rts]
+; XPlayer_StateRejoin - after falling off screen: reappear at the partner's safe spot (or its own) and land there
+; In:  8(a6) = player
+; Out: none
+; Evidence: clears +6 $80; XPlayer_CanRejoinAt -> copy partner +$94/+$98/+$9A (and climb mode); x/y = saved pos << 8; g_CamModeSwitched; state vtable +$9E PlaceAtSafePos
 ; ---------------------------------------------------------------------------
-sub_1F0834:
+XPlayer_StateRejoin:
 	link.w	a6,#$0
 	movem.l	d3/d7/a3-a4,-(a7)
 	movea.l	$8(a6),a4
@@ -21,7 +24,7 @@ loc_1F085A:
 	andi.w	#$FF7F,$6(a4)
 	move.l	a3,-(a7)
 	move.l	a4,-(a7)
-	jsr	sub_1F07CA(pc)
+	jsr	XPlayer_CanRejoinAt(pc)
 	tst.b	d0
 	addq.w	#$8,a7
 	beq.w	loc_1F08F6

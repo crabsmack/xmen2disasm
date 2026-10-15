@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_1F2B8E	[jt 2453]
+; XPlayer_AttackRecover - end of a ground attack: re-latch the held direction (walk resumes) and return to control
+; In:  8(a6) = player
+; Out: none
+; Evidence: clears B latch; Up latched -> +$90 |= $400000; held Left/Right copied into the latch; state +$A6
 ; ---------------------------------------------------------------------------
-sub_1F2B8E:
+XPlayer_AttackRecover:
 	link.w	a6,#$0
 	movem.l	d3/a4,-(a7)
 	movea.l	$8(a6),a4

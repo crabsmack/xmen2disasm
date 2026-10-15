@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_1F32D0	[link-after-rts]
+; XPlayer_SetWalkAnim - choose the walk or run animation by speed
+; In:  8(a6) = player, $C(a6) = slow animation, $10(a6) = fast animation
+; Out: none
+; Evidence: |vx| < char +$20 -> face vx and Obj_ChangeAnim(slow), else Obj_ChangeAnim(fast)
 ; ---------------------------------------------------------------------------
-sub_1F32D0:
+XPlayer_SetWalkAnim:
 	link.w	a6,#$0
 	movem.l	d3/a4,-(a7)
 	movea.l	$8(a6),a4

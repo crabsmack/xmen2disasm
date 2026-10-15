@@ -2,7 +2,7 @@
 ; SiberiaB1_SpawnDebris - SiberiaB1: spawn 4 ice debris particles at (x, y) with random velocities
 ; In:  $A(a6) = word x  $E(a6) = word y
 ; Out: d0
-; Evidence: SiberiaB1_DebrisAlloc, random sub_1600AA; gravity $20
+; Evidence: SiberiaB1_DebrisAlloc, random Rand_Next; gravity $20
 ; ---------------------------------------------------------------------------
 SiberiaB1_SpawnDebris:
 	link.w	a6,#$FFE8
@@ -19,7 +19,7 @@ loc_0FD0F2:
 	move.l	d6,d0
 	lsl.l	#$8,d0
 	move.l	d0,-$4(a6)
-	jsr	$417A(a5)	; -> sub_1600AA
+	jsr	$417A(a5)	; -> Rand_Next
 	moveq	#$0,d1
 	move.w	d0,d1
 	move.w	#$3FF,d0
@@ -27,7 +27,7 @@ loc_0FD0F2:
 	moveq	#$0,d1
 	move.w	d0,d1
 	move.l	d1,-$8(a6)
-	jsr	$417A(a5)	; -> sub_1600AA
+	jsr	$417A(a5)	; -> Rand_Next
 	moveq	#$0,d1
 	move.w	d0,d1
 	move.w	#$3FF,d0
@@ -43,7 +43,7 @@ loc_0FD0F2:
 	move.l	d5,d0
 	lsl.l	#$8,d0
 	move.l	d0,-$C(a6)
-	jsr	$417A(a5)	; -> sub_1600AA
+	jsr	$417A(a5)	; -> Rand_Next
 	moveq	#$0,d1
 	move.w	d0,d1
 	move.w	#$3FF,d0
@@ -51,7 +51,7 @@ loc_0FD0F2:
 	moveq	#$0,d1
 	move.w	d0,d1
 	move.l	d1,-$10(a6)
-	jsr	$417A(a5)	; -> sub_1600AA
+	jsr	$417A(a5)	; -> Rand_Next
 	moveq	#$0,d1
 	move.w	d0,d1
 	move.w	#$3FF,d0
@@ -63,13 +63,13 @@ loc_0FD0F2:
 	move.l	-$C(a6),d1
 	add.l	d1,d0
 	move.l	d0,$4(a4)
-	jsr	$417A(a5)	; -> sub_1600AA
+	jsr	$417A(a5)	; -> Rand_Next
 	moveq	#$0,d1
 	move.w	d0,d1
 	move.w	#$1FF,d0
 	and.w	d1,d0
 	move.l	d0,-$14(a6)
-	jsr	$417A(a5)	; -> sub_1600AA
+	jsr	$417A(a5)	; -> Rand_Next
 	moveq	#$0,d1
 	move.w	d0,d1
 	move.w	#$1FF,d0
@@ -77,13 +77,13 @@ loc_0FD0F2:
 	move.l	-$14(a6),d1
 	sub.w	d0,d1
 	move.w	d1,$8(a4)
-	jsr	$417A(a5)	; -> sub_1600AA
+	jsr	$417A(a5)	; -> Rand_Next
 	moveq	#$0,d1
 	move.w	d0,d1
 	move.w	#$1FF,d0
 	and.w	d1,d0
 	move.l	d0,-$18(a6)
-	jsr	$417A(a5)	; -> sub_1600AA
+	jsr	$417A(a5)	; -> Rand_Next
 	moveq	#$0,d1
 	move.w	d0,d1
 	move.w	#$1FF,d0
@@ -99,7 +99,7 @@ loc_0FD1E2:
 	move.w	#$FFFE,$C(a4)
 loc_0FD1E8:
 	move.w	#$20,$E(a4)
-	jsr	$417A(a5)	; -> sub_1600AA
+	jsr	$417A(a5)	; -> Rand_Next
 	moveq	#$0,d1
 	move.w	d0,d1
 	moveq	#$1,d0
@@ -111,19 +111,19 @@ loc_0FD200:
 	moveq	#$3,d0
 loc_0FD202:
 	move.b	d0,$11(a4)
-	jsr	$417A(a5)	; -> sub_1600AA
+	jsr	$417A(a5)	; -> Rand_Next
 	moveq	#$0,d1
 	move.w	d0,d1
 	moveq	#$1,d0
 	and.w	d1,d0
 	move.b	d0,$10(a4)
-	jsr	$417A(a5)	; -> sub_1600AA
+	jsr	$417A(a5)	; -> Rand_Next
 	moveq	#$0,d1
 	move.w	d0,d1
 	moveq	#$3,d0
 	and.w	d1,d0
 	move.b	d0,$12(a4)
-	jsr	$417A(a5)	; -> sub_1600AA
+	jsr	$417A(a5)	; -> Rand_Next
 	moveq	#$0,d1
 	move.w	d0,d1
 	moveq	#$3F,d0

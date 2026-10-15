@@ -316,6 +316,28 @@ _(module → functions, globals, data; add as you learn them)_
   `$11329A` (`$1F3CD6-$1F413E`) < BEAST (`$182AE6-$1840EC`), NIGHTCRAWLER (`$1A61DE-$1A7CA4`), PSYLOCKE
   (`$1B9060-$1B9FE8`), WOLVERINE (`$196552-$197C3C`); XPLAYER < MAGNETO (`$1CDA3A-$1CEC42`), GAMBIT
   (`$1CEF6E-$1D073C`), CYCLOPS (`$1E2AB0-$1E3C52`). Player +$C0 bits 0-1 = climb state, +$BC = climbed segment.
+- **XPLAYER slots and state machine (w140b)**: +$A6 `StateControl` is the hub every state returns to. It
+  dispatches by pad (A = special/power, B = attack, C = jump; masks `g_PadMask*`): air B -> +$BA up / +$BE
+  down / +$C2 neutral attack; air A -> +$CA / +$CE / +$C6 special; air C -> +$B6 double jump if +$92; ground B
+  -> +$D6 / +$DA / +$D2 attack (combo); ground A -> +$E6 up / +$E2 down / +$DE special; C -> +$82 Jump, Down+C
+  -> +$86 DropThrough; Left/Right -> +$AE Walk; Down -> +$B2 Crouch; nothing -> +$EE Stand. Others: +$6E
+  AddHealth, +$72 post-state hook, +$76 UpdateCharge (A held fills +$9E, the HUD 2nd bar, to $20), +$7A
+  FreezeStanding, +$7E SetAirFrame (by vy), +$8A AirSteer, +$8E LeaveGround, +$96 CheckGrab -> +$AA climb
+  state (XCLIMBER; +$F2 ClassifySeg: 1 ceiling, 2/3 wall), +$9A Land (fall speed +$1C > 1099 -> +$EA
+  HardLanding), +$9E PlaceAtSafePos / +$A2 SaveSafePos (+$94 segment, +$98/+$9A pos). +$60 = `XPlayer_StateHurt`.
+  Player +4 flag $1000 = airborne; +$90 flags: 4 double-jump used, 8 jumped, $10 special fires on release,
+  $200 grounded latch, $800 meter full, $4000/$8000 tether-blocked left/right, $40000 looking up/down,
+  $200000 crouch-attack, $1000000 on the enemy hit lists. +$70 attack strength, +$A0/+$A2/+$A4 hit spark.
+  Only Nightcrawler and Wolverine can hang from ceilings (`XPlayer_CanRejoinAt`). **Character record**
+  (player +$8C): +0..7 attack strength bytes, +8 hurt sound, +9 hard-landing sound, +$C/+$E gravity (jump
+  released / normal), +$10 jump vy, +$12/+$14 air max speed/accel, +$18 max fall speed, +$1A stop speed,
+  +$1C/+$1E walk max/accel, +$20 run threshold, +$22 combo window, +$23 hard-landing time, +$24 hurt time,
+  +$26 idle-variant chance, +$28 hurt/death frame, +$2A hard-landing frame, +$2C attack sound, +$2D jump
+  sound, +$2E landing sound, +$30.. animation offsets (+$30/+$32/+$34 air attack, +$36/+$38 combo, +$3A/+$3C
+  up/down attack, +$3E run, +$42 stand, +$44 idle, +$46 crouch, +$48 look up, +$4A look down, +$4C double
+  jump, +$5A/+$5C float fall), +$4E/+$50 double-jump vy window, +$52 boost, +$54/+$56 double-jump steer.
+- **RNG (w140b)**: `Rand_Next` (`$1600AA`) XORs three lagged word tables (`Tbl_RandXor1-3`) with its history
+  (-$7AA/-$7AC), indexes -$7B2/-$7B0/-$7AE; returns 0..$FFF. `Rand_Seed(word)`.
 
 ## Data formats
 

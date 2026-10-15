@@ -1,12 +1,15 @@
 ; ---------------------------------------------------------------------------
-; sub_1F2376	[jt 2444]
+; XPlayer_DropThrough - XPLAYER slot +$86: drop down through a thin floor (Down + jump)
+; In:  8(a6) = player
+; Out: none
+; Evidence: Cam_CommitLook, Obj_Detach, $1F6EC4; draw layer +$42 - 1 and y += $25 px; +$90 |= 8; jump sound; SetFrame(char +$29); only when the floor's byte 2 > 0
 ; ---------------------------------------------------------------------------
-sub_1F2376:
+XPlayer_DropThrough:
 	link.w	a6,#$0
 	move.l	a4,-(a7)
 	movea.l	$8(a6),a4
 	move.l	g_Camera(a5),-(a7)
-	jsr	$3EAA(a5)	; -> sub_159FB8
+	jsr	$3EAA(a5)	; -> Cam_CommitLook
 	move.l	a4,-(a7)
 	jsr	$4E7A(a5)	; -> Obj_Detach
 	move.l	a4,-(a7)

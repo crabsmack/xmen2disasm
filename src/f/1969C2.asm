@@ -106,7 +106,7 @@ loc_196AEA:
 	moveq	#$0,d0
 	move.l	d0,-(a7)
 	move.l	a4,-(a7)
-	jsr	$4BDA(a5)	; -> sub_1F13D0
+	jsr	$4BDA(a5)	; -> Player_TopAboveSeg
 	tst.b	d0
 	lea.l	$C(a7),a7
 	bne.s	loc_196B4E
@@ -151,7 +151,7 @@ loc_196B6A:
 	moveq	#$28,d0
 	move.l	d0,-(a7)
 	move.l	a4,-(a7)
-	jsr	$4BE2(a5)	; -> sub_1F1424
+	jsr	$4BE2(a5)	; -> Player_BottomBelowSeg
 	tst.b	d0
 	lea.l	$C(a7),a7
 	bne.s	loc_196BCE

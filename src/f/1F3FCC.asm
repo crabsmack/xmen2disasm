@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; loc_1F3FCC	[runtime: executed in tas]
+; XClimber_CheckGrab_Case0 - XClimber_CheckGrab switch case 0 (no grab): clear the grab timer +$A6; also holds the case 2/3 body
+; In:  a4 = player, a3 = segment
+; Out: falls into the common tail
+; Evidence: switch-table target inside XClimber_CheckGrab
 ; ---------------------------------------------------------------------------
-loc_1F3FCC:
+XClimber_CheckGrab_Case0:
 	clr.w	$A6(a4)
 	bra.s	loc_1F4020
 loc_1F3FD2:

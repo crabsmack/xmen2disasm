@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_1F3CE4	[jt 2466]
+; XClimber_Init - XCLIMBER slot +$12: XPLAYER Init, then clear the climb segment and climb state
+; In:  8(a6) = player, $C/$10/$14(a6) = Init args
+; Out: none
+; Evidence: parent +$12; +$BC = 0, +$C0 = 0
 ; ---------------------------------------------------------------------------
-sub_1F3CE4:
+XClimber_Init:
 	link.w	a6,#$0
 	move.l	a4,-(a7)
 	movea.l	$8(a6),a4

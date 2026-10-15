@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_1F0582	[link-after-rts]
+; XPlayer_TetherToPartner - two-player mode: keep a player within one screen of the partner; a player left far below starts the fall-and-rejoin sequence
+; In:  8(a6) = player
+; Out: d0 = 1 when it started falling off screen
+; Evidence: partner alive: dx limited to $11A00 (282 px, +$90 $4000/$8000), dy to $E000 above ($10000) or below ($20000); far below and not climbing -> +$6A = 60, flag +6 $80, camera lock y, state XPlayer_StartFallOffScreen
 ; ---------------------------------------------------------------------------
-sub_1F0582:
+XPlayer_TetherToPartner:
 	link.w	a6,#$FFF8
 	movem.l	d3-d7/a3-a4,-(a7)
 	movea.l	$8(a6),a4
@@ -54,7 +57,7 @@ loc_1F05DE:
 	move.l	d0,-(a7)
 	pea.l	$8(a4)
 	move.l	a4,-(a7)
-	jsr	sub_1F0542(pc)
+	jsr	XPlayer_TetherClamp(pc)
 	lea.l	$10(a7),a7
 	bra.s	loc_1F064C
 loc_1F0628:
@@ -67,7 +70,7 @@ loc_1F0628:
 	move.l	d0,-(a7)
 	pea.l	$8(a4)
 	move.l	a4,-(a7)
-	jsr	sub_1F0542(pc)
+	jsr	XPlayer_TetherClamp(pc)
 	lea.l	$10(a7),a7
 loc_1F064C:
 	move.l	d6,d7
@@ -87,7 +90,7 @@ loc_1F064C:
 	move.l	d0,-(a7)
 	pea.l	$C(a4)
 	move.l	a4,-(a7)
-	jsr	sub_1F0542(pc)
+	jsr	XPlayer_TetherClamp(pc)
 	lea.l	$10(a7),a7
 	bra.w	loc_1F0742
 loc_1F0692:
@@ -132,7 +135,7 @@ loc_1F06CA:
 	ori.w	#$80,$6(a4)
 	movea.l	g_Camera(a5),a0
 	ori.w	#$2,$4A(a0)
-	lea.l	sub_1F0998(pc),a0
+	lea.l	XPlayer_StartFallOffScreen(pc),a0
 	move.l	a0,$5C(a4)
 	moveq	#$1,d0
 	bra.s	loc_1F0744
@@ -143,7 +146,7 @@ loc_1F0728:
 	move.l	d0,-(a7)
 	pea.l	$C(a4)
 	move.l	a4,-(a7)
-	jsr	sub_1F0542(pc)
+	jsr	XPlayer_TetherClamp(pc)
 	lea.l	$10(a7),a7
 loc_1F0742:
 	moveq	#$0,d0

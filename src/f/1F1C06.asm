@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_1F1C06	[jt 2429]
+; XPlayer_Deactivate - XPLAYER slot +$46: take the player out of play: stop its timer, leave the hit lists and the draw list
+; In:  8(a6) = player
+; Out: none
+; Evidence: +4 |= $4000; Timer_Stop(+$7C); List_Unlink from g_HitListPlayerAtk/Body, or the enemy lists when +$90 bit $1000000; DrawList_Remove; g_HudDirty = 1
 ; ---------------------------------------------------------------------------
-sub_1F1C06:
+XPlayer_Deactivate:
 	link.w	a6,#$0
 	move.l	a4,-(a7)
 	movea.l	$8(a6),a4

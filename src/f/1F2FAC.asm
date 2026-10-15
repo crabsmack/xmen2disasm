@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_1F2FAC	[jt 2456]
+; XPlayer_GroundAttackUp - XPLAYER slot +$D6: Up+B on the ground: up attack
+; In:  8(a6) = player
+; Out: d0 = +4 flag 8
+; Evidence: attack sound, stop, Obj_SetAnim(char +$3A), delay $FF, next XPlayer_AttackRecover
 ; ---------------------------------------------------------------------------
-sub_1F2FAC:
+XPlayer_GroundAttackUp:
 	link.w	a6,#$0
 	move.l	a4,-(a7)
 	movea.l	$8(a6),a4
@@ -45,7 +48,7 @@ loc_1F3014:
 	jsr	$4E42(a5)	; -> Obj_SetAnim
 	addq.w	#$8,a7
 	move.w	#$FF,$6C(a4)
-	lea.l	sub_1F2B8E(pc),a0
+	lea.l	XPlayer_AttackRecover(pc),a0
 	move.l	a0,$5C(a4)
 	moveq	#$8,d0
 	and.w	$4(a4),d0

@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_1F0250	[jt 2414]
+; XPlayer_AirSpecial - XPLAYER slot +$C6: base mid-air special (A button), just air steering then back to control
+; In:  8(a6) = player
+; Out: d0 = +4 flag 8
+; Evidence: vtable +$8A AirSteer, +$5C = +$A6; XPlayer_StateControl calls +$C6 for A in the air with no direction; characters override
 ; ---------------------------------------------------------------------------
-sub_1F0250:
+XPlayer_AirSpecial:
 	link.w	a6,#$0
 	move.l	a4,-(a7)
 	movea.l	$8(a6),a4

@@ -2,7 +2,7 @@
 ; Game_InitButtonMasks - set the joypad button-mask globals and precompute the player VRAM size
 ; In:  none
 ; Out: none
-; Evidence: jt 10, once at TAS frame 7; masks 4,8,$C,1,2,3,$20,$10,$40,$400,$200,$100,$800 = Left,Right,L|R,Up,Down,U|D,C,B,A,X,Y,Z,Mode (Genesis 6-button bit order); -$3BB6 = Player_CalcMaxTiles; sub_160512($1A3)
+; Evidence: jt 10, once at TAS frame 7; masks 4,8,$C,1,2,3,$20,$10,$40,$400,$200,$100,$800 = Left,Right,L|R,Up,Down,U|D,C,B,A,X,Y,Z,Mode (Genesis 6-button bit order); -$3BB6 = Player_CalcMaxTiles; Rand_Seed($1A3)
 ; ---------------------------------------------------------------------------
 Game_InitButtonMasks:
 	link.w	a6,#$0
@@ -26,6 +26,6 @@ Game_InitButtonMasks:
 	jsr	Player_CalcMaxTiles(pc)
 	move.w	d0,-$3BB6(a5)
 	pea.l	($1A3).w
-	jsr	$4182(a5)	; -> sub_160512
+	jsr	$4182(a5)	; -> Rand_Seed
 	unlk	a6
 	rts

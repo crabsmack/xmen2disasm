@@ -5222,13 +5222,13 @@ Str_SpawnRecTag:	; empty C string: Mem_StackAlloc tag of the spawn records (Spaw
 	include "src/f/15FD0E.asm"
 	include "src/f/1600A0.asm"
 	include "src/f/1600AA.asm"
-Tbl_1600CA:	; format not established; never read in the corpus; referenced by sub_1600AA
+Tbl_RandXor1:	; words: Rand_Next XOR table 1, indexed from $1D0 down by 2 (233 entries used of 241)
 	incrom	$1600CA,$1E2
 	include "src/f/1602AC.asm"
-Tbl_1602C8:	; format not established; never read in the corpus; referenced by loc_1602AC
+Tbl_RandXor2:	; words: Rand_Next XOR table 2, indexed from $12C down by 2 (151 entries; the top 8 run past the table into Rand_Next_Mix3 code bytes)
 	incrom	$1602C8,$11E
 	include "src/f/1603E6.asm"
-Tbl_160402:	; format not established; never read in the corpus; referenced by loc_1603E6
+Tbl_RandXor3:	; words: Rand_Next XOR table 3, indexed from $FC down by 2 (127 entries)
 	incrom	$160402,$FE
 	include "src/f/160500.asm"
 	include "src/f/160512.asm"
@@ -5942,7 +5942,7 @@ Tbl_CyclopsVdp3:	; words copied to the VDP data port by VDP_WriteWords; 2F4 of 8
 	include "src/f/1F3DB4.asm"
 	include "src/f/1F3EC0.asm"
 Sw_1F3EC0:	; switch table of sub at $1F3EC0: 4 word offsets from Sw_1F3EC0-2
-	dc.w	loc_1F3FCC-(Sw_1F3EC0-2), loc_1F3FDE-(Sw_1F3EC0-2), loc_1F3FD2-(Sw_1F3EC0-2), loc_1F3FD2-(Sw_1F3EC0-2)
+	dc.w	XClimber_CheckGrab_Case0-(Sw_1F3EC0-2), loc_1F3FDE-(Sw_1F3EC0-2), loc_1F3FD2-(Sw_1F3EC0-2), loc_1F3FD2-(Sw_1F3EC0-2)
 	include "src/f/1F3FCC.asm"
 	include "src/f/1F401C.asm"
 	include "src/f/1F4136.asm"

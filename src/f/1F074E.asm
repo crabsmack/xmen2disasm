@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_1F074E	[jt 2420]
+; XPlayer_PlaceAtSafePos - XPLAYER slot +$9E: put the player back on its last safe floor segment
+; In:  8(a6) = player
+; Out: d0 = +4 flag 8
+; Evidence: segment +$94 (saved by +$A2): attach to its owner object (seg+$12) via $1F64B4, stand on it ($1F6B56), gravity char +$E, +$6A = 60 invulnerable, state +$A6
 ; ---------------------------------------------------------------------------
-sub_1F074E:
+XPlayer_PlaceAtSafePos:
 	link.w	a6,#$0
 	movem.l	d3/a3-a4,-(a7)
 	movea.l	$8(a6),a4

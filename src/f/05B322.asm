@@ -17,7 +17,7 @@ loc_05B338:
 	move.l	d6,d0
 	lsl.l	#$8,d0
 	move.l	d0,-$4(a6)
-	jsr	$417A(a5)	; -> sub_1600AA
+	jsr	$417A(a5)	; -> Rand_Next
 	moveq	#$0,d1
 	move.w	d0,d1
 	move.w	#$FF,d0
@@ -25,7 +25,7 @@ loc_05B338:
 	moveq	#$0,d1
 	move.w	d0,d1
 	move.l	d1,-$8(a6)
-	jsr	$417A(a5)	; -> sub_1600AA
+	jsr	$417A(a5)	; -> Rand_Next
 	moveq	#$0,d1
 	move.w	d0,d1
 	move.w	#$FF,d0
@@ -41,7 +41,7 @@ loc_05B338:
 	move.l	d5,d0
 	lsl.l	#$8,d0
 	move.l	d0,-$C(a6)
-	jsr	$417A(a5)	; -> sub_1600AA
+	jsr	$417A(a5)	; -> Rand_Next
 	moveq	#$0,d1
 	move.w	d0,d1
 	moveq	#$7F,d0
@@ -49,7 +49,7 @@ loc_05B338:
 	moveq	#$0,d1
 	move.w	d0,d1
 	move.l	d1,-$10(a6)
-	jsr	$417A(a5)	; -> sub_1600AA
+	jsr	$417A(a5)	; -> Rand_Next
 	moveq	#$0,d1
 	move.w	d0,d1
 	move.w	#$FF,d0
@@ -61,13 +61,13 @@ loc_05B338:
 	move.l	-$C(a6),d1
 	add.l	d1,d0
 	move.l	d0,$4(a4)
-	jsr	$417A(a5)	; -> sub_1600AA
+	jsr	$417A(a5)	; -> Rand_Next
 	moveq	#$0,d1
 	move.w	d0,d1
 	move.w	#$7FF,d0
 	and.w	d1,d0
 	move.l	d0,-$14(a6)
-	jsr	$417A(a5)	; -> sub_1600AA
+	jsr	$417A(a5)	; -> Rand_Next
 	moveq	#$0,d1
 	move.w	d0,d1
 	move.w	#$7FF,d0
@@ -75,13 +75,13 @@ loc_05B338:
 	move.l	-$14(a6),d1
 	sub.w	d0,d1
 	move.w	d1,$8(a4)
-	jsr	$417A(a5)	; -> sub_1600AA
+	jsr	$417A(a5)	; -> Rand_Next
 	moveq	#$0,d1
 	move.w	d0,d1
 	move.w	#$FF,d0
 	and.w	d1,d0
 	move.l	d0,-$18(a6)
-	jsr	$417A(a5)	; -> sub_1600AA
+	jsr	$417A(a5)	; -> Rand_Next
 	moveq	#$0,d1
 	move.w	d0,d1
 	move.w	#$1FF,d0
@@ -97,7 +97,7 @@ loc_05B426:
 	move.w	#$1,$C(a4)
 loc_05B42C:
 	move.w	#$20,$E(a4)
-	jsr	$417A(a5)	; -> sub_1600AA
+	jsr	$417A(a5)	; -> Rand_Next
 	moveq	#$0,d1
 	move.w	d0,d1
 	moveq	#$7,d0
@@ -122,7 +122,7 @@ loc_05B45E:
 	move.l	d6,d0
 	lsl.l	#$8,d0
 	move.l	d0,-$1C(a6)
-	jsr	$417A(a5)	; -> sub_1600AA
+	jsr	$417A(a5)	; -> Rand_Next
 	moveq	#$0,d1
 	move.w	d0,d1
 	move.w	#$FF,d0
@@ -130,7 +130,7 @@ loc_05B45E:
 	moveq	#$0,d1
 	move.w	d0,d1
 	move.l	d1,-$20(a6)
-	jsr	$417A(a5)	; -> sub_1600AA
+	jsr	$417A(a5)	; -> Rand_Next
 	moveq	#$0,d1
 	move.w	d0,d1
 	move.w	#$FF,d0
@@ -146,7 +146,7 @@ loc_05B45E:
 	move.l	d5,d0
 	lsl.l	#$8,d0
 	move.l	d0,-$24(a6)
-	jsr	$417A(a5)	; -> sub_1600AA
+	jsr	$417A(a5)	; -> Rand_Next
 	moveq	#$0,d1
 	move.w	d0,d1
 	moveq	#$7F,d0
@@ -154,7 +154,7 @@ loc_05B45E:
 	moveq	#$0,d1
 	move.w	d0,d1
 	move.l	d1,-$28(a6)
-	jsr	$417A(a5)	; -> sub_1600AA
+	jsr	$417A(a5)	; -> Rand_Next
 	moveq	#$0,d1
 	move.w	d0,d1
 	move.w	#$FF,d0
@@ -166,13 +166,13 @@ loc_05B45E:
 	move.l	-$24(a6),d1
 	add.l	d1,d0
 	move.l	d0,$4(a4)
-	jsr	$417A(a5)	; -> sub_1600AA
+	jsr	$417A(a5)	; -> Rand_Next
 	moveq	#$0,d1
 	move.w	d0,d1
 	move.w	#$3FF,d0
 	and.w	d1,d0
 	move.l	d0,-$2C(a6)
-	jsr	$417A(a5)	; -> sub_1600AA
+	jsr	$417A(a5)	; -> Rand_Next
 	moveq	#$0,d1
 	move.w	d0,d1
 	move.w	#$3FF,d0
@@ -180,13 +180,13 @@ loc_05B45E:
 	move.l	-$2C(a6),d1
 	sub.w	d0,d1
 	move.w	d1,$8(a4)
-	jsr	$417A(a5)	; -> sub_1600AA
+	jsr	$417A(a5)	; -> Rand_Next
 	moveq	#$0,d1
 	move.w	d0,d1
 	move.w	#$FF,d0
 	and.w	d1,d0
 	move.l	d0,-$30(a6)
-	jsr	$417A(a5)	; -> sub_1600AA
+	jsr	$417A(a5)	; -> Rand_Next
 	moveq	#$0,d1
 	move.w	d0,d1
 	move.w	#$1FF,d0
@@ -202,7 +202,7 @@ loc_05B54C:
 	move.w	#$1,$C(a4)
 loc_05B552:
 	move.w	#$20,$E(a4)
-	jsr	$417A(a5)	; -> sub_1600AA
+	jsr	$417A(a5)	; -> Rand_Next
 	moveq	#$0,d1
 	move.w	d0,d1
 	moveq	#$3,d0

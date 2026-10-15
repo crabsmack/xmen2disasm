@@ -1,14 +1,17 @@
 ; ---------------------------------------------------------------------------
-; sub_1F31F0	[jt 2459]
+; XPlayer_StateHardLanding - hard-landing state: wait for the recovery time or any action press, then control
+; In:  8(a6) = player
+; Out: none
+; Evidence: +$6E != 0 and no XPlayer_ActionPressed -> stay; else state +$A6
 ; ---------------------------------------------------------------------------
-sub_1F31F0:
+XPlayer_StateHardLanding:
 	link.w	a6,#$0
 	move.l	a4,-(a7)
 	movea.l	$8(a6),a4
 	tst.w	$6E(a4)
 	beq.s	loc_1F320C
 	move.l	a4,-(a7)
-	jsr	sub_1F005C(pc)
+	jsr	XPlayer_ActionPressed(pc)
 	tst.b	d0
 	addq.w	#$4,a7
 	beq.s	loc_1F321E

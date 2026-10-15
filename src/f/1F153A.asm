@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_1F153A	[link-after-rts]
+; XPlayer_Move - player movement step: Move, two-player tether, box, floor follow, ledge slowdown clamp and draw-layer update
+; In:  8(a6) = player, $C(a6) = word step (1, or 2 in two-player mode)
+; Out: d0
+; Evidence: vtable +$4E Move unless carried, XPlayer_TetherToPartner, Obj_UpdateBox, $1F8B42 (floor), $1F71F2 when attached; +$AA > 0 limits dx to 2 px; DrawList_SetPriority when +$42 changes
 ; ---------------------------------------------------------------------------
-sub_1F153A:
+XPlayer_Move:
 	link.w	a6,#$0
 	movem.l	d5-d7/a4,-(a7)
 	movea.l	$8(a6),a4
@@ -31,7 +34,7 @@ loc_1F157A:
 	moveq	#$0,d5
 	move.b	$42(a4),d5
 	move.l	a4,-(a7)
-	jsr	sub_1F0582(pc)
+	jsr	XPlayer_TetherToPartner(pc)
 	move.b	d0,d6
 	move.l	a4,-(a7)
 	jsr	$4DDA(a5)	; -> Obj_UpdateBox

@@ -156,7 +156,7 @@ loc_1CDCB0:
 	ext.l	d0
 	move.l	d0,-(a7)
 	move.l	a4,-(a7)
-	jsr	$4BD2(a5)	; -> sub_1F1372
+	jsr	$4BD2(a5)	; -> XPlayer_SteerFacing
 	lea.l	$10(a7),a7
 loc_1CDCD2:
 	move.l	a4,-(a7)

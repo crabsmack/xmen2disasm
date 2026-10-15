@@ -2,7 +2,7 @@
 ; XClone_FrameHookCollapse - scene hook after the last clone: random falling debris and explosions around the camera with screen shakes
 ; In:  none
 ; Out: none
-; Evidence: installed by XClone_EndWave; random timers -$3B38/-$3B36 (sub_1600AA); plain ACTOR + sub_13EFA0(jt[$1C1A]) near the top of the view, g_CamShake := jt[$1C2A]; sub_13F58A(..., 10) explosions
+; Evidence: installed by XClone_EndWave; random timers -$3B38/-$3B36 (Rand_Next); plain ACTOR + sub_13EFA0(jt[$1C1A]) near the top of the view, g_CamShake := jt[$1C2A]; sub_13F58A(..., 10) explosions
 ; Found: link-after-rts
 ; ---------------------------------------------------------------------------
 XClone_FrameHookCollapse:
@@ -36,14 +36,14 @@ loc_099258:
 loc_099262:
 	tst.w	-$3B38(a5)
 	bgt.w	loc_09936E
-	jsr	$417A(a5)	; -> sub_1600AA
+	jsr	$417A(a5)	; -> Rand_Next
 	moveq	#$0,d1
 	move.w	d0,d1
 	moveq	#$F,d0
 	and.w	d1,d0
 	add.w	#$1E,d0
 	move.l	d0,-$4(a6)
-	jsr	$417A(a5)	; -> sub_1600AA
+	jsr	$417A(a5)	; -> Rand_Next
 	moveq	#$0,d1
 	move.w	d0,d1
 	moveq	#$F,d0
@@ -51,7 +51,7 @@ loc_099262:
 	move.l	-$4(a6),d1
 	add.w	d1,d0
 	move.l	d0,-$8(a6)
-	jsr	$417A(a5)	; -> sub_1600AA
+	jsr	$417A(a5)	; -> Rand_Next
 	moveq	#$0,d1
 	move.w	d0,d1
 	moveq	#$F,d0
@@ -68,7 +68,7 @@ loc_099262:
 	move.w	g_CameraX(a5),d0
 	add.w	#$20,d0
 	move.l	d0,-$C(a6)
-	jsr	$417A(a5)	; -> sub_1600AA
+	jsr	$417A(a5)	; -> Rand_Next
 	moveq	#$0,d1
 	move.w	d0,d1
 	moveq	#$3F,d0
@@ -84,7 +84,7 @@ loc_0992E2:
 	ext.l	d0
 	add.l	#$120,d0
 	move.l	d0,-$10(a6)
-	jsr	$417A(a5)	; -> sub_1600AA
+	jsr	$417A(a5)	; -> Rand_Next
 	moveq	#$0,d1
 	move.w	d0,d1
 	moveq	#$3F,d0
@@ -133,14 +133,14 @@ loc_099364:
 loc_09936E:
 	tst.w	-$3B36(a5)
 	bgt.s	loc_0993B6
-	jsr	$417A(a5)	; -> sub_1600AA
+	jsr	$417A(a5)	; -> Rand_Next
 	moveq	#$0,d1
 	move.w	d0,d1
 	moveq	#$1F,d0
 	and.w	d1,d0
 	add.w	#$3C,d0
 	move.w	d0,-$3B36(a5)
-	jsr	$417A(a5)	; -> sub_1600AA
+	jsr	$417A(a5)	; -> Rand_Next
 	moveq	#$0,d1
 	move.w	d0,d1
 	moveq	#$7F,d0

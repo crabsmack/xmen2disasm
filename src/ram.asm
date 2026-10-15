@@ -147,7 +147,7 @@ g_ShiftDX = -$CA8	; word: x delta applied by Obj_ShiftTree (set by Spr_PlaceAtta
 g_ShiftDY = -$CAA	; word: y delta applied by Obj_ShiftTree (set by Spr_PlaceAttached)
 g_LevelFrame = -$3A24	; word: level frame counter (+1 per Level_FrameLoop frame, cleared by Level_Run; bit 0 = blink phase in Actor_Draw; demo timing)
 g_ClassData = -$10F4	; ptr: per-class pointer array, one long per class in g_ClassList (ClassList_InitAll)
-g_HudDirty = -$38B2	; byte: 1 = redraw the HUD (set by power-ups and health changes, e.g. PowerUp_Collect, sub_1F1D88; the level loop calls sub_006386 while set, which clears it)
+g_HudDirty = -$38B2	; byte: 1 = redraw the HUD (set by power-ups and health changes, e.g. PowerUp_Collect, XPlayer_AddHealth; the level loop calls sub_006386 while set, which clears it)
 g_FxTileBase = -$3BB8	; word: first VRAM tile of the shared effect graphics (set from g_VramTileCursor in sub_006A20; used by Explosion_Update and NINJA effects)
 g_GaussPool = -$1CAC	; ptr: GAUSSBULLET pool {word count, word max 6, long anim table, 32-byte records} (GaussBullet_InitPool)
 g_GaussSprDef = -$1CA8	; word: sprite-definition slot of the gauss bullet graphics (GaussBullet_InitPool, GaussBullet_Update)

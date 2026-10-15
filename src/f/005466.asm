@@ -7,7 +7,7 @@
 Game_Main:
 	link.w	a6,#$0
 	movem.l	d3/d7,-(a7)
-	jsr	$418A(a5)	; -> sub_160550
+	jsr	$418A(a5)	; -> Mem_ClearAboveStack
 	clr.b	-$202(a5)
 	clr.b	g_SndMute(a5)
 loc_00547A:

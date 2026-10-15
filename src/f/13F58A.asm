@@ -40,7 +40,7 @@ loc_13F5D8:
 	move.l	d6,d0
 	lsl.l	#$8,d0
 	move.l	d0,-$8(a6)
-	jsr	$417A(a5)	; -> sub_1600AA
+	jsr	$417A(a5)	; -> Rand_Next
 	moveq	#$0,d1
 	move.w	d0,d1
 	move.w	#$3FF,d0
@@ -48,7 +48,7 @@ loc_13F5D8:
 	moveq	#$0,d1
 	move.w	d0,d1
 	move.l	d1,-$C(a6)
-	jsr	$417A(a5)	; -> sub_1600AA
+	jsr	$417A(a5)	; -> Rand_Next
 	moveq	#$0,d1
 	move.w	d0,d1
 	move.w	#$3FF,d0
@@ -64,7 +64,7 @@ loc_13F5D8:
 	move.l	d5,d0
 	lsl.l	#$8,d0
 	move.l	d0,-$10(a6)
-	jsr	$417A(a5)	; -> sub_1600AA
+	jsr	$417A(a5)	; -> Rand_Next
 	moveq	#$0,d1
 	move.w	d0,d1
 	move.w	#$3FF,d0
@@ -72,7 +72,7 @@ loc_13F5D8:
 	moveq	#$0,d1
 	move.w	d0,d1
 	move.l	d1,-$14(a6)
-	jsr	$417A(a5)	; -> sub_1600AA
+	jsr	$417A(a5)	; -> Rand_Next
 	moveq	#$0,d1
 	move.w	d0,d1
 	move.w	#$3FF,d0
@@ -84,13 +84,13 @@ loc_13F5D8:
 	move.l	-$10(a6),d1
 	add.l	d1,d0
 	move.l	d0,$4(a4)
-	jsr	$417A(a5)	; -> sub_1600AA
+	jsr	$417A(a5)	; -> Rand_Next
 	moveq	#$0,d1
 	move.w	d0,d1
 	move.w	#$7FF,d0
 	and.w	d1,d0
 	move.l	d0,-$18(a6)
-	jsr	$417A(a5)	; -> sub_1600AA
+	jsr	$417A(a5)	; -> Rand_Next
 	moveq	#$0,d1
 	move.w	d0,d1
 	move.w	#$7FF,d0
@@ -98,13 +98,13 @@ loc_13F5D8:
 	move.l	-$18(a6),d1
 	sub.w	d0,d1
 	move.w	d1,$8(a4)
-	jsr	$417A(a5)	; -> sub_1600AA
+	jsr	$417A(a5)	; -> Rand_Next
 	moveq	#$0,d1
 	move.w	d0,d1
 	move.w	#$3FF,d0
 	and.w	d1,d0
 	move.l	d0,-$1C(a6)
-	jsr	$417A(a5)	; -> sub_1600AA
+	jsr	$417A(a5)	; -> Rand_Next
 	moveq	#$0,d1
 	move.w	d0,d1
 	move.w	#$3FF,d0
@@ -120,26 +120,26 @@ loc_13F6C4:
 	move.w	#$FFFE,$C(a4)
 loc_13F6CA:
 	move.w	#$20,$E(a4)
-	jsr	$417A(a5)	; -> sub_1600AA
+	jsr	$417A(a5)	; -> Rand_Next
 	moveq	#$0,d1
 	move.w	d0,d1
 	moveq	#$3,d0
 	and.w	d1,d0
 	move.b	d0,$10(a4)
-	jsr	$417A(a5)	; -> sub_1600AA
+	jsr	$417A(a5)	; -> Rand_Next
 	moveq	#$0,d1
 	move.w	d0,d1
 	moveq	#$1,d0
 	and.w	d1,d0
 	move.b	d0,$11(a4)
-	jsr	$417A(a5)	; -> sub_1600AA
+	jsr	$417A(a5)	; -> Rand_Next
 	moveq	#$0,d1
 	move.w	d0,d1
 	moveq	#$3,d0
 	and.w	d1,d0
 	addq.b	#$4,d0
 	move.b	d0,$12(a4)
-	jsr	$417A(a5)	; -> sub_1600AA
+	jsr	$417A(a5)	; -> Rand_Next
 	moveq	#$0,d1
 	move.w	d0,d1
 	move.w	#$FF,d0

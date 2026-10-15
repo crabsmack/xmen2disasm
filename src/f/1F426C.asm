@@ -2,7 +2,7 @@
 ; Player_IsNcOrWolverine2 - is this player Nightcrawler or Wolverine (byte-identical copy of Player_IsNcOrWolverine)
 ; In:  8(a6) = player
 ; Out: d0 = byte 1/0
-; Evidence: same body as Player_IsNcOrWolverine; only caller sub_1F07CA
+; Evidence: same body as Player_IsNcOrWolverine; only caller XPlayer_CanRejoinAt
 ; ---------------------------------------------------------------------------
 Player_IsNcOrWolverine2:
 	link.w	a6,#$0

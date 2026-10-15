@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_1F01FE	[jt 2411]
+; XPlayer_DoubleJumpNone - XPLAYER slot +$B6: base double jump, none: go back to the control state
+; In:  8(a6) = player
+; Out: d0 = +4 flag 8
+; Evidence: +$6C = 0, +$5C = vtable +$A6 (XPlayer_StateControl)
 ; ---------------------------------------------------------------------------
-sub_1F01FE:
+XPlayer_DoubleJumpNone:
 	link.w	a6,#$0
 	move.l	a4,-(a7)
 	movea.l	$8(a6),a4

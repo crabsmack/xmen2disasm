@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_1F413E	[jt 2472]
+; XClimber_PlaceAtSafePos - XCLIMBER slot +$9E: put a climber back at its safe spot, re-grabbing the saved wall/ceiling when it was climbing
+; In:  8(a6) = player
+; Out: none
+; Evidence: saved mode (+$C0 bits 4-5) 0 -> XPLAYER +$9E (lea jt / 2(a0)); else +$C0 bits 0-1 = mode, +$BC = +$94, clears +$C0 bit 6, state vtable +$AA
 ; ---------------------------------------------------------------------------
-sub_1F413E:
+XClimber_PlaceAtSafePos:
 	link.w	a6,#$0
 	movem.l	d3/d7/a3-a4,-(a7)
 	movea.l	$8(a6),a4

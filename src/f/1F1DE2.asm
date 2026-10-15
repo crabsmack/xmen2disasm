@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_1F1DE2	[jt 2432]
+; XPlayer_OutsideActiveWindow - XPLAYER slot +$42: players never leave the active window
+; In:  none
+; Out: d0 = 0
+; Evidence: returns 0 so Actor_Update never deactivates a player
 ; ---------------------------------------------------------------------------
-sub_1F1DE2:
+XPlayer_OutsideActiveWindow:
 	link.w	a6,#$0
 	moveq	#$0,d0
 	unlk	a6

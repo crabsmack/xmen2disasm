@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_1F1D88	[jt 2431]
+; XPlayer_AddHealth - XPLAYER slot +$6E: add whole health units (x $100) clamped to 1..$900
+; In:  8(a6) = player, $C(a6) = unused, $10(a6) = word units (may be negative)
+; Out: none
+; Evidence: +$68 += n << 8, clamp [1, $900]; g_HudDirty = 1
 ; ---------------------------------------------------------------------------
-sub_1F1D88:
+XPlayer_AddHealth:
 	link.w	a6,#$0
 	movem.l	d3/d6-d7/a4,-(a7)
 	movea.l	$8(a6),a4

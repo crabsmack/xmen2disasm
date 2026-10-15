@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_1F364E	[link-after-rts]
+; XPlayer_StateCrouch - crouching state: turn with Left/Right; after the crouch timer start looking down; leave on attack/jump/special or Down release
+; In:  8(a6) = player
+; Out: d0
+; Evidence: +$A6 timer expired, camera not looking down, not attached, no crouch-attack flag -> +$90 |= $40000, camera vtable +$2A Cam_LookDown, state XPlayer_StateCrouchLook
 ; ---------------------------------------------------------------------------
-sub_1F364E:
+XPlayer_StateCrouch:
 	link.w	a6,#$0
 	movem.l	d3/a4,-(a7)
 	movea.l	$8(a6),a4
@@ -55,7 +58,7 @@ loc_1F36A4:
 	jsr	(a1)
 	addq.w	#$4,a7
 	clr.w	$6C(a4)
-	lea.l	sub_1F35DC(pc),a0
+	lea.l	XPlayer_StateCrouchLook(pc),a0
 	move.l	a0,$5C(a4)
 	moveq	#$8,d0
 	and.w	$4(a4),d0

@@ -59,7 +59,7 @@ loc_035E36:
 	lea.l	$10(a7),a7
 	bra.w	loc_035FE4
 loc_035E60:
-	jsr	$417A(a5)	; -> sub_1600AA
+	jsr	$417A(a5)	; -> Rand_Next
 	moveq	#$0,d1
 	move.w	d0,d1
 	move.w	#$3FF,d0
@@ -68,7 +68,7 @@ loc_035E60:
 	move.w	d0,d1
 	add.l	#$200,d1
 	move.l	d1,-$1C(a6)
-	jsr	$417A(a5)	; -> sub_1600AA
+	jsr	$417A(a5)	; -> Rand_Next
 	moveq	#$0,d1
 	move.w	d0,d1
 	move.w	#$FF,d0
@@ -76,7 +76,7 @@ loc_035E60:
 	move.l	-$1C(a6),d1
 	move.w	d1,d5
 	sub.w	d0,d5
-	jsr	$417A(a5)	; -> sub_1600AA
+	jsr	$417A(a5)	; -> Rand_Next
 	moveq	#$0,d1
 	move.w	d0,d1
 	moveq	#$3,d6
@@ -92,7 +92,7 @@ loc_035E60:
 	neg.w	d0
 	move.b	d0,d6
 loc_035EB4:
-	jsr	$417A(a5)	; -> sub_1600AA
+	jsr	$417A(a5)	; -> Rand_Next
 	moveq	#$0,d1
 	move.w	d0,d1
 	moveq	#$F,d0
@@ -100,7 +100,7 @@ loc_035EB4:
 	moveq	#$0,d1
 	move.w	d0,d1
 	move.l	d1,-$20(a6)
-	jsr	$417A(a5)	; -> sub_1600AA
+	jsr	$417A(a5)	; -> Rand_Next
 	moveq	#$0,d1
 	move.w	d0,d1
 	moveq	#$1F,d0
@@ -114,7 +114,7 @@ loc_035EB4:
 	move.l	d0,(a4)
 	move.w	d5,$8(a4)
 	move.b	d6,$C(a4)
-	jsr	$417A(a5)	; -> sub_1600AA
+	jsr	$417A(a5)	; -> Rand_Next
 	moveq	#$0,d1
 	move.w	d0,d1
 	moveq	#$3F,d0
@@ -122,7 +122,7 @@ loc_035EB4:
 	moveq	#$0,d1
 	move.w	d0,d1
 	move.l	d1,-$24(a6)
-	jsr	$417A(a5)	; -> sub_1600AA
+	jsr	$417A(a5)	; -> Rand_Next
 	moveq	#$0,d1
 	move.w	d0,d1
 	moveq	#$7F,d0
@@ -133,7 +133,7 @@ loc_035EB4:
 	sub.l	d1,d0
 	add.w	#$FDE0,d0
 	move.w	d0,-$16(a6)
-	jsr	$417A(a5)	; -> sub_1600AA
+	jsr	$417A(a5)	; -> Rand_Next
 	moveq	#$0,d1
 	move.w	d0,d1
 	moveq	#$F,d0
@@ -141,7 +141,7 @@ loc_035EB4:
 	moveq	#$20,d1
 	add.b	d1,d0
 	move.b	d0,-$13(a6)
-	jsr	$417A(a5)	; -> sub_1600AA
+	jsr	$417A(a5)	; -> Rand_Next
 	moveq	#$0,d1
 	move.w	d0,d1
 	moveq	#$F,d0
@@ -149,7 +149,7 @@ loc_035EB4:
 	moveq	#$0,d1
 	move.w	d0,d1
 	move.l	d1,-$28(a6)
-	jsr	$417A(a5)	; -> sub_1600AA
+	jsr	$417A(a5)	; -> Rand_Next
 	moveq	#$0,d1
 	move.w	d0,d1
 	moveq	#$1F,d0

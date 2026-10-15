@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_1F4334	[jt 2477]
+; Player_CeilingEndInView - while hanging from a ceiling, is the far end of that segment inside the screen margin in the facing direction
+; In:  8(a6) = player
+; Out: d0 = byte 1/0
+; Evidence: segment +$BC x1/x2 (+8/+$C); facing left: min x - g_CameraX >= camera +$68, right: max x - g_CameraX <= $140 - camera +$68; Cam_TrackPlayer
 ; ---------------------------------------------------------------------------
-sub_1F4334:
+Player_CeilingEndInView:
 	link.w	a6,#$0
 	movem.l	d3/d5-d7/a3-a4,-(a7)
 	movea.l	$8(a6),a3

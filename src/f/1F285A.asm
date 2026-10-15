@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_1F285A	[jt 2449]
+; XPlayer_AirAttack - XPLAYER slot +$C2: B in the air: play the air-attack animation
+; In:  8(a6) = player
+; Out: d0 = +4 flag 8
+; Evidence: Obj_SetAnim(char +$30), attack sound char +$2C, state XPlayer_StateAirAttack
 ; ---------------------------------------------------------------------------
-sub_1F285A:
+XPlayer_AirAttack:
 	link.w	a6,#$0
 	move.l	a4,-(a7)
 	movea.l	$8(a6),a4
@@ -31,7 +34,7 @@ sub_1F285A:
 	addq.w	#$8,a7
 loc_1F28B0:
 	clr.w	$6C(a4)
-	lea.l	sub_1F2736(pc),a0
+	lea.l	XPlayer_StateAirAttack(pc),a0
 	move.l	a0,$5C(a4)
 	moveq	#$8,d0
 	and.w	$4(a4),d0

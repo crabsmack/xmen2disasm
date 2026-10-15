@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_1F022C	[jt 2413]
+; XPlayer_StateClimbNone - XPLAYER slot +$AA: base climb state, none: back to the control state
+; In:  8(a6) = player
+; Out: d0 = +4 flag 8
+; Evidence: +$5C = vtable +$A6; climber characters override +$AA
 ; ---------------------------------------------------------------------------
-sub_1F022C:
+XPlayer_StateClimbNone:
 	link.w	a6,#$0
 	move.l	a4,-(a7)
 	movea.l	$8(a6),a4

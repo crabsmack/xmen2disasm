@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_1F3342	[jt 2461]
+; XPlayer_Walk - XPLAYER slot +$AE: start walking toward the latched direction
+; In:  8(a6) = player
+; Out: none
+; Evidence: XPlayer_WalkAccel(char +$1C, +$1E, Right latched), anim 0, clears the Left/Right latch, state XPlayer_StateWalk
 ; ---------------------------------------------------------------------------
-sub_1F3342:
+XPlayer_Walk:
 	link.w	a6,#$0
 	movem.l	d3/a4,-(a7)
 	movea.l	$8(a6),a4
@@ -26,7 +29,7 @@ loc_1F336A:
 	ext.l	d0
 	move.l	d0,-(a7)
 	move.l	a4,-(a7)
-	jsr	sub_1F3282(pc)
+	jsr	XPlayer_WalkAccel(pc)
 	moveq	#$0,d0
 	move.l	d0,$44(a4)
 	tst.b	$9D(a4)
@@ -43,10 +46,10 @@ loc_1F33A8:
 	and.w	g_Pad2Latch(a5),d0
 	move.w	d0,g_Pad2Latch(a5)
 loc_1F33B6:
-	lea.l	sub_1F33D0(pc),a0
+	lea.l	XPlayer_StateWalk(pc),a0
 	move.l	a0,$5C(a4)
 	move.l	a4,-(a7)
-	jsr	sub_1F33D0(pc)
+	jsr	XPlayer_StateWalk(pc)
 	addq.w	#$4,a7
 	movem.l	-$8(a6),d3/a4
 	unlk	a6

@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_1F3044	[jt 2457]
+; XPlayer_GroundAttackDown - XPLAYER slot +$DA: Down+B on the ground: crouching attack
+; In:  8(a6) = player
+; Out: d0 = +4 flag 8
+; Evidence: attack sound, stop, Obj_SetAnim(char +$3C), delay $FF, next XPlayer_CrouchAttackRecover
 ; ---------------------------------------------------------------------------
-sub_1F3044:
+XPlayer_GroundAttackDown:
 	link.w	a6,#$0
 	move.l	a4,-(a7)
 	movea.l	$8(a6),a4
@@ -45,7 +48,7 @@ loc_1F30AC:
 	jsr	$4E42(a5)	; -> Obj_SetAnim
 	addq.w	#$8,a7
 	move.w	#$FF,$6C(a4)
-	lea.l	sub_1F2C6E(pc),a0
+	lea.l	XPlayer_CrouchAttackRecover(pc),a0
 	move.l	a0,$5C(a4)
 	moveq	#$8,d0
 	and.w	$4(a4),d0

@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_1F3D36	[jt 2468]
+; XClimber_SaveSafePos - XCLIMBER slot +$A2: save the safe spot, including the wall/ceiling segment and climb mode when climbing
+; In:  8(a6) = player
+; Out: d0
+; Evidence: segment = +$BC when +$C0 & 3 else +$76; +$94/+$98/+$9A; climb mode copied to +$C0 bits 4-5; Nightcrawler upside down (+$2E bit 3) saves y + $41
 ; ---------------------------------------------------------------------------
-sub_1F3D36:
+XClimber_SaveSafePos:
 	link.w	a6,#$0
 	movem.l	d7/a3-a4,-(a7)
 	movea.l	$8(a6),a4

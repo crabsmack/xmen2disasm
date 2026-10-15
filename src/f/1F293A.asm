@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_1F293A	[jt 2451]
+; XPlayer_CanDoubleJump - double jump allowed: not used yet this jump and vy inside the character's window
+; In:  8(a6) = player
+; Out: d0 = 1/0
+; Evidence: +$90 bit 4 clear and char +$4E < vy < char +$50; slot +$92 of NIGHTCRAWLER, PSYLOCKE, WOLVERINE
 ; ---------------------------------------------------------------------------
-sub_1F293A:
+XPlayer_CanDoubleJump:
 	link.w	a6,#$0
 	move.l	a4,-(a7)
 	movea.l	$8(a6),a4

@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_1F09D6	[link-after-rts]
+; XPlayer_StateLookUp - look-up state: hold the look-up pose while no button changes and the player is on the ground, else back to control
+; In:  8(a6) = player
+; Out: none
+; Evidence: (pressed | released) & $7F == 0 and on ground -> Obj_ChangeAnim(char +$48), else +$5C = +$A6; XPlayer_Update ends the camera look when Up is released
 ; ---------------------------------------------------------------------------
-sub_1F09D6:
+XPlayer_StateLookUp:
 	link.w	a6,#$0
 	movem.l	d3/a4,-(a7)
 	movea.l	$8(a6),a4

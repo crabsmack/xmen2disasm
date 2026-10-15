@@ -63,7 +63,7 @@ loc_1127DA:
 	move.l	$8(a4),d0
 	add.l	#$FFFFF300,d0
 	move.l	d0,-$4(a6)
-	jsr	$417A(a5)	; -> sub_1600AA
+	jsr	$417A(a5)	; -> Rand_Next
 	moveq	#$0,d1
 	move.w	d0,d1
 	move.l	-$4(a6),d0
@@ -72,7 +72,7 @@ loc_1127DA:
 	move.l	$C(a4),d0
 	add.l	#$FFFFE400,d0
 	move.l	d0,-$8(a6)
-	jsr	$417A(a5)	; -> sub_1600AA
+	jsr	$417A(a5)	; -> Rand_Next
 	moveq	#$0,d1
 	move.w	d0,d1
 	move.l	-$8(a6),d0

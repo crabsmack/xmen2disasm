@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_1F3D20	[jt 2467]
+; XClimber_Nop66 - XCLIMBER slot +$66: no-op
+; In:  8(a6) = player
+; Out: none
+; Evidence: 6-instruction no-op shared shape
 ; ---------------------------------------------------------------------------
-sub_1F3D20:
+XClimber_Nop66:
 	link.w	a6,#$FFFC
 	movem.l	a3-a4,-(a7)
 	movea.l	$8(a6),a4

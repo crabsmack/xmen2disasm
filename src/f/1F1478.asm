@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_1F1478	[jt 2425]
+; Player_FrontPastSeg - is the player's front edge (plus a margin) past the end of a segment in the facing direction
+; In:  8(a6) = player, $C(a6) = word margin, $10(a6) = segment
+; Out: d0 = byte 1/0
+; Evidence: facing right: +$52 + margin > max(seg x1 +8, x2 +$C); left: +$4E - margin < min; XClimber_CheckGrab for ceilings
 ; ---------------------------------------------------------------------------
-sub_1F1478:
+Player_FrontPastSeg:
 	link.w	a6,#$0
 	movem.l	d3/d6-d7/a3-a4,-(a7)
 	move.w	$E(a6),d7

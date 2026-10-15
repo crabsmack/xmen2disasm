@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_1F0930	[link-after-rts]
+; XPlayer_StateFallOffScreen - falling-off-screen state: when the player is more than 224 px below the camera, stop it, hide it and wait 30 frames to rejoin
+; In:  8(a6) = player
+; Out: d0
+; Evidence: box top +$4C - g_CameraY > $E0 -> velocities/gravity 0, SetFrame($FF), camera +$4A &= ~2, delay 30, state XPlayer_StateRejoin; +$6A held at 60
 ; ---------------------------------------------------------------------------
-sub_1F0930:
+XPlayer_StateFallOffScreen:
 	link.w	a6,#$0
 	move.l	a4,-(a7)
 	movea.l	$8(a6),a4
@@ -25,7 +28,7 @@ sub_1F0930:
 	andi.w	#$FFFD,$4A(a0)
 	addq.w	#$8,a7
 	move.w	#$1E,$6C(a4)
-	lea.l	sub_1F0834(pc),a0
+	lea.l	XPlayer_StateRejoin(pc),a0
 	move.l	a0,$5C(a4)
 	moveq	#$8,d0
 	and.w	$4(a4),d0

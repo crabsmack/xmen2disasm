@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_1F049E	[link-after-rts]
+; XPlayer_PushingTetherEdge - two-player tether: is the player pressing toward the side where the partner holds it back
+; In:  8(a6) = player
+; Out: d0 = latched Left/Right bit or 0
+; Evidence: partner alive and +$90 bit $8000 (blocked right) -> latch & g_PadMaskRight, bit $4000 -> & g_PadMaskLeft; walk/control states then refuse to walk
 ; ---------------------------------------------------------------------------
-sub_1F049E:
+XPlayer_PushingTetherEdge:
 	link.w	a6,#$0
 	movem.l	d3/a3-a4,-(a7)
 	movea.l	$8(a6),a4

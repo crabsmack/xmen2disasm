@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_1F30DC	[jt 2458]
+; XPlayer_Land - XPLAYER slot +$9A: landing: reset air flags and fall cap, play the soft or hard landing sound, keep walking if a direction is held
+; In:  8(a6) = player
+; Out: d0 = byte 1 when |vx| < char +$1A (stop)
+; Evidence: $FFC706 = 0, +$24 = char +$18, +$90 |= $200 (grounded), clears 2/4/$800000; sound char +$2E (soft) or +9 (fall speed +$1C + $250 >= -jump vy); g_CamModeSwitched; re-latches Left/Right
 ; ---------------------------------------------------------------------------
-sub_1F30DC:
+XPlayer_Land:
 	link.w	a6,#$0
 	movem.l	d3/a4,-(a7)
 	movea.l	$8(a6),a4

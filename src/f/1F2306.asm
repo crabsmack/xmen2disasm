@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_1F2306	[jt 2443]
+; XPlayer_Jump - XPLAYER slot +$82: jump: detach from the floor, play the jump sound, set gravity, jump velocity and max speed
+; In:  8(a6) = player
+; Out: none
+; Evidence: Obj_Detach, +$90 |= 8 (jumped), anim 0, sound char +$2D, +$20 = char +$E, +$18 = char +$10, +$22 = char +$12; called by XPlayer_StateControl on C
 ; ---------------------------------------------------------------------------
-sub_1F2306:
+XPlayer_Jump:
 	link.w	a6,#$0
 	move.l	a4,-(a7)
 	movea.l	$8(a6),a4

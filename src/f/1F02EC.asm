@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_1F02EC	[jt 2418]
+; XPlayer_GroundSpecialUp - XPLAYER slot +$E6: base Up+A on the ground = the neutral ground special
+; In:  8(a6) = player
+; Out: none
+; Evidence: +$5C = vtable +$DE and calls it
 ; ---------------------------------------------------------------------------
-sub_1F02EC:
+XPlayer_GroundSpecialUp:
 	link.w	a6,#$0
 	move.l	a4,-(a7)
 	movea.l	$8(a6),a4
