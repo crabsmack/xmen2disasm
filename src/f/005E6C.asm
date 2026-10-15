@@ -6,7 +6,7 @@
 ; ---------------------------------------------------------------------------
 Game_AttractDemoCyclops:
 	moveq	#$0,d7
-	move.b	-$3B74(a5),d7
+	move.b	g_ScnSentinelsB1(a5),d7
 	tst.l	d7
 	lea.l	$3E92(a5),a0
 	movea.l	$2(a0),a3
@@ -15,7 +15,7 @@ Game_AttractDemoCyclops:
 	bra.s	Game_PlayAttractDemo
 Game_AttractDemoPsylocke:
 	moveq	#$0,d7
-	move.b	-$3B4C(a5),d7
+	move.b	g_ScnAvalonB2(a5),d7
 	tst.l	d7
 	lea.l	$3E8A(a5),a0
 	movea.l	$2(a0),a3
@@ -24,7 +24,7 @@ Game_AttractDemoPsylocke:
 	bra.s	Game_PlayAttractDemo
 Game_AttractDemoBeast:
 	moveq	#$0,d7
-	move.b	-$3B72(a5),d7
+	move.b	g_ScnSentinelsD1(a5),d7
 	tst.l	d7
 	lea.l	$3E82(a5),a0
 	movea.l	$2(a0),a3

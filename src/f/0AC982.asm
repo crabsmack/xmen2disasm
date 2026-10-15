@@ -21,7 +21,7 @@ sub_0AC982:
 	and.w	(a0,d0.l),d1
 	move.w	d1,-$4A(a6)
 	moveq	#$0,d0
-	move.b	-$3B60(a5),d0
+	move.b	g_ScnSavageA2(a5),d0
 	cmp.w	g_SceneIndex(a5),d0
 	bne.w	loc_0ACACC
 	move.w	#$38,-$48(a6)

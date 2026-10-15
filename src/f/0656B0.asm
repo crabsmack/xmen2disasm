@@ -9,7 +9,7 @@ sub_0656B0:
 	lea.l	-$42(a6),a0
 	move.l	a0,-$3B2C(a5)
 	moveq	#$0,d0
-	move.b	-$3B7E(a5),d0
+	move.b	g_ScnCerebroBaniMaza(a5),d0
 	cmp.w	g_SceneIndex(a5),d0
 	bgt.s	loc_0656DE
 	lea.l	$F4A(a5),a0

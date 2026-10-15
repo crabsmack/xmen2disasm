@@ -107,7 +107,7 @@ loc_005DD0:
 loc_005DDE:
 	addq.w	#$1,g_SceneIndex(a5)
 	moveq	#$0,d0
-	move.b	-$3B86(a5),d0
+	move.b	g_ScnCredits(a5),d0
 	cmp.w	g_SceneIndex(a5),d0
 	bge.w	loc_005F10
 	jsr	Game_ResetPlayers(pc)
@@ -120,19 +120,19 @@ loc_005DF8:
 loc_005E04:
 	move.w	g_SceneIndex(a5),-$3B92(a5)
 	moveq	#$0,d0
-	move.b	-$3B88(a5),d0
+	move.b	g_ScnPlayerSelect(a5),d0
 	move.w	d0,g_SceneIndex(a5)
 	bra.w	loc_005F10
 loc_005E18:
 	moveq	#$0,d0
-	move.b	-$3B8C(a5),d0
+	move.b	g_ScnFailure(a5),d0
 	move.w	d0,g_SceneIndex(a5)
 	bra.w	loc_005F10
 loc_005E26:
 	moveq	#-$1,d0
 	cmp.w	g_SceneIndex(a5),d0
 	bne.w	loc_005F10
-	move.w	-$3B90(a5),d0
+	move.w	g_AttractDemoNum(a5),d0
 	bmi.s	Game_AttractDemoNightcrawler
 	cmpi.w	#$3,d0
 	bgt.s	Game_AttractDemoNightcrawler

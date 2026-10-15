@@ -23,7 +23,7 @@ sub_0AC4E8:
 	tst.w	$6A(a4)
 	bgt.w	loc_0AC912
 	moveq	#$0,d0
-	move.b	-$3B60(a5),d0
+	move.b	g_ScnSavageA2(a5),d0
 	cmp.w	g_SceneIndex(a5),d0
 	bne.s	loc_0AC572
 	move.w	#$38,-$E(a6)

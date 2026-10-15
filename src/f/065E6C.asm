@@ -856,7 +856,7 @@ loc_0668B4:
 	tst.w	d6
 	bne.s	loc_0668AE
 	moveq	#$0,d0
-	move.b	-$3B8A(a5),d0
+	move.b	g_ScnLogoAndDemo(a5),d0
 	cmp.w	g_SceneIndex(a5),d0
 	bne.w	loc_066A52
 	bra.s	loc_0668D0

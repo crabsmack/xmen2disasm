@@ -5,7 +5,7 @@
 ; Evidence: sets -$3A1E = demo input pointer (read in (duration, buttons) pairs by sub_1F9DE8) and -$3A1A = 1 (demo active); -$18AC = 1 during the scene (sound commands suppressed); idle run plays demos after the title
 ; ---------------------------------------------------------------------------
 Game_PlayAttractDemo:
-	addq.w	#$1,-$3B90(a5)
+	addq.w	#$1,g_AttractDemoNum(a5)
 	move.l	a4,g_Player1(a5)
 	move.w	#$900,g_P1Health(a5)
 	move.l	a3,g_DemoInput(a5)

@@ -5,7 +5,7 @@ sub_0AD550:
 	link.w	a6,#$0
 	movem.l	d3/d6-d7,-(a7)
 	moveq	#$0,d0
-	move.b	-$3B60(a5),d0
+	move.b	g_ScnSavageA2(a5),d0
 	cmp.w	g_SceneIndex(a5),d0
 	bne.s	loc_0AD594
 	moveq	#$78,d0
@@ -71,7 +71,7 @@ loc_0AD5EA:
 	bra.s	loc_0AD652
 loc_0AD5FC:
 	moveq	#$0,d0
-	move.b	-$3B60(a5),d0
+	move.b	g_ScnSavageA2(a5),d0
 	cmp.w	g_SceneIndex(a5),d0
 	bne.s	loc_0AD62E
 	tst.b	-$38DE(a5)

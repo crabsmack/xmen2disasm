@@ -6,7 +6,7 @@ sub_066B26:
 	movem.l	d3/d6-d7/a3-a4,-(a7)
 	moveq	#$9,d6
 	moveq	#$0,d0
-	move.b	-$3B86(a5),d0
+	move.b	g_ScnCredits(a5),d0
 	cmp.w	g_SceneIndex(a5),d0
 	bne.s	loc_066B3E
 	moveq	#-$1,d6
@@ -89,7 +89,7 @@ loc_066B48:
 	move.l	d1,-(a7)
 	jsr	$50F2(a5)	; -> Pal_StartFade
 	moveq	#$0,d0
-	move.b	-$3B8E(a5),d0
+	move.b	g_ScnFinalText(a5),d0
 	cmp.w	g_SceneIndex(a5),d0
 	lea.l	$4C(a7),a7
 	bne.s	loc_066CA2
@@ -106,7 +106,7 @@ loc_066B48:
 	bra.s	loc_066CB2
 loc_066CA2:
 	moveq	#$0,d0
-	move.b	-$3B8C(a5),d0
+	move.b	g_ScnFailure(a5),d0
 	cmp.w	g_SceneIndex(a5),d0
 	beq.s	loc_066CB2
 	jsr	sub_065494(pc)

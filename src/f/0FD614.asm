@@ -18,7 +18,7 @@ loc_0FD62C:
 	bne.s	loc_0FD62C
 	jsr	$4DA2(a5)	; -> Irq_Enable
 	ext.l	d7
-	move.w	-$3B90(a5),d0
+	move.w	g_AttractDemoNum(a5),d0
 	ext.l	d0
 	add.l	d7,d0
 	move.l	d0,-(a7)

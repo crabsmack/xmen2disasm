@@ -52,7 +52,7 @@ Tuskette_Init:
 	or.b	d0,d1
 	move.b	d1,$2E(a4)
 	moveq	#$0,d0
-	move.b	-$3B56(a5),d0
+	move.b	g_ScnBaniMazaA1(a5),d0
 	cmp.w	g_SceneIndex(a5),d0
 	lea.l	$20(a7),a7
 	bne.s	loc_05DE6C

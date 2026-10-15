@@ -10,11 +10,11 @@ FloatBubble_ClassInit:
 	jsr	FloatBubble_Nop6A(pc)
 	moveq	#$1,d3
 	moveq	#$0,d0
-	move.b	-$3B5A(a5),d0
+	move.b	g_ScnSavageC1(a5),d0
 	cmp.w	g_SceneIndex(a5),d0
 	beq.s	loc_0ABB90
 	moveq	#$0,d0
-	move.b	-$3B5E(a5),d0
+	move.b	g_ScnSavageB1(a5),d0
 	cmp.w	g_SceneIndex(a5),d0
 	beq.s	loc_0ABB90
 	moveq	#$0,d3

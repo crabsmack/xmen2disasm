@@ -170,67 +170,67 @@ loc_15C7CA:
 	addq.w	#$8,a7
 	bne.s	loc_15C80C
 	moveq	#$0,d0
-	move.b	-$3B84(a5),d0
+	move.b	g_ScnCerebroClone(a5),d0
 	addq.w	#$1,d0
 	cmp.w	g_SceneIndex(a5),d0
 	bge.s	loc_15C80C
 	moveq	#$0,d7
-	move.b	-$3B84(a5),d7
+	move.b	g_ScnCerebroClone(a5),d7
 	tst.l	d7
 loc_15C80C:
 	tst.w	d7
 	bne.s	loc_15C826
 	moveq	#$0,d0
-	move.b	-$3B82(a5),d0
+	move.b	g_ScnCerebroSpace(a5),d0
 	addq.w	#$1,d0
 	cmp.w	g_SceneIndex(a5),d0
 	bge.s	loc_15C826
 	moveq	#$0,d7
-	move.b	-$3B82(a5),d7
+	move.b	g_ScnCerebroSpace(a5),d7
 	tst.l	d7
 loc_15C826:
 	tst.w	d7
 	bne.s	loc_15C840
 	moveq	#$0,d0
-	move.b	-$3B80(a5),d0
+	move.b	g_ScnCerebroSavage(a5),d0
 	addq.w	#$1,d0
 	cmp.w	g_SceneIndex(a5),d0
 	bge.s	loc_15C840
 	moveq	#$0,d7
-	move.b	-$3B80(a5),d7
+	move.b	g_ScnCerebroSavage(a5),d7
 	tst.l	d7
 loc_15C840:
 	tst.w	d7
 	bne.s	loc_15C85A
 	moveq	#$0,d0
-	move.b	-$3B7E(a5),d0
+	move.b	g_ScnCerebroBaniMaza(a5),d0
 	addq.w	#$1,d0
 	cmp.w	g_SceneIndex(a5),d0
 	bge.s	loc_15C85A
 	moveq	#$0,d7
-	move.b	-$3B7E(a5),d7
+	move.b	g_ScnCerebroBaniMaza(a5),d7
 	tst.l	d7
 loc_15C85A:
 	tst.w	d7
 	bne.s	loc_15C874
 	moveq	#$0,d0
-	move.b	-$3B7C(a5),d0
+	move.b	g_ScnCerebroAvalon(a5),d0
 	addq.w	#$1,d0
 	cmp.w	g_SceneIndex(a5),d0
 	bge.s	loc_15C874
 	moveq	#$0,d7
-	move.b	-$3B7C(a5),d7
+	move.b	g_ScnCerebroAvalon(a5),d7
 	tst.l	d7
 loc_15C874:
 	tst.w	d7
 	bne.s	loc_15C88E
 	moveq	#$0,d0
-	move.b	-$3B7A(a5),d0
+	move.b	g_ScnCerebroSentinels(a5),d0
 	addq.w	#$1,d0
 	cmp.w	g_SceneIndex(a5),d0
 	bge.s	loc_15C88E
 	moveq	#$0,d7
-	move.b	-$3B7A(a5),d7
+	move.b	g_ScnCerebroSentinels(a5),d7
 	tst.l	d7
 loc_15C88E:
 	tst.w	d7
@@ -269,61 +269,61 @@ loc_15C8D8:
 	addq.w	#$8,a7
 	bne.s	loc_15C918
 	moveq	#$0,d0
-	move.b	-$3B7A(a5),d0
+	move.b	g_ScnCerebroSentinels(a5),d0
 	cmp.w	g_SceneIndex(a5),d0
 	ble.s	loc_15C918
 	moveq	#$0,d7
-	move.b	-$3B7A(a5),d7
+	move.b	g_ScnCerebroSentinels(a5),d7
 	tst.l	d7
 loc_15C918:
 	tst.w	d7
 	bne.s	loc_15C930
 	moveq	#$0,d0
-	move.b	-$3B7C(a5),d0
+	move.b	g_ScnCerebroAvalon(a5),d0
 	cmp.w	g_SceneIndex(a5),d0
 	ble.s	loc_15C930
 	moveq	#$0,d7
-	move.b	-$3B7C(a5),d7
+	move.b	g_ScnCerebroAvalon(a5),d7
 	tst.l	d7
 loc_15C930:
 	tst.w	d7
 	bne.s	loc_15C948
 	moveq	#$0,d0
-	move.b	-$3B7E(a5),d0
+	move.b	g_ScnCerebroBaniMaza(a5),d0
 	cmp.w	g_SceneIndex(a5),d0
 	ble.s	loc_15C948
 	moveq	#$0,d7
-	move.b	-$3B7E(a5),d7
+	move.b	g_ScnCerebroBaniMaza(a5),d7
 	tst.l	d7
 loc_15C948:
 	tst.w	d7
 	bne.s	loc_15C960
 	moveq	#$0,d0
-	move.b	-$3B80(a5),d0
+	move.b	g_ScnCerebroSavage(a5),d0
 	cmp.w	g_SceneIndex(a5),d0
 	ble.s	loc_15C960
 	moveq	#$0,d7
-	move.b	-$3B80(a5),d7
+	move.b	g_ScnCerebroSavage(a5),d7
 	tst.l	d7
 loc_15C960:
 	tst.w	d7
 	bne.s	loc_15C978
 	moveq	#$0,d0
-	move.b	-$3B82(a5),d0
+	move.b	g_ScnCerebroSpace(a5),d0
 	cmp.w	g_SceneIndex(a5),d0
 	ble.s	loc_15C978
 	moveq	#$0,d7
-	move.b	-$3B82(a5),d7
+	move.b	g_ScnCerebroSpace(a5),d7
 	tst.l	d7
 loc_15C978:
 	tst.w	d7
 	bne.s	loc_15C990
 	moveq	#$0,d0
-	move.b	-$3B84(a5),d0
+	move.b	g_ScnCerebroClone(a5),d0
 	cmp.w	g_SceneIndex(a5),d0
 	ble.s	loc_15C990
 	moveq	#$0,d7
-	move.b	-$3B84(a5),d7
+	move.b	g_ScnCerebroClone(a5),d7
 	tst.l	d7
 loc_15C990:
 	tst.w	d7

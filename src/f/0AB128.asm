@@ -35,7 +35,7 @@ BubbleManager_Init:
 	lea.l	$10(a7),a7
 	beq.s	loc_0AB1C0
 	moveq	#$0,d0
-	move.b	-$3B5E(a5),d0
+	move.b	g_ScnSavageB1(a5),d0
 	cmp.w	g_SceneIndex(a5),d0
 	bne.s	loc_0AB1B6
 	move.l	a3,-(a7)

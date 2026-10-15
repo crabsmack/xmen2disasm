@@ -18,7 +18,7 @@ Game_ResetPlayers:
 	clr.w	-$1844(a5)
 	move.w	#$9,g_P2Lives(a5)
 	moveq	#$0,d1
-	move.b	-$3B70(a5),d1
+	move.b	g_ScnSiberiaB1(a5),d1
 	move.w	d1,g_SceneIndex(a5)
 	move.b	#$1,-$38C2(a5)
 	unlk	a6

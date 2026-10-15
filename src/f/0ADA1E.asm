@@ -65,7 +65,7 @@ loc_0ADACA:
 	bge.s	loc_0ADA90
 loc_0ADAD4:
 	moveq	#$0,d0
-	move.b	-$3B60(a5),d0
+	move.b	g_ScnSavageA2(a5),d0
 	cmp.w	g_SceneIndex(a5),d0
 	bne.s	loc_0ADAF0
 	moveq	#$7F,d7
