@@ -9,7 +9,7 @@ sub_1607E8:
 	move.l	a0,$4(a4)
 	lea.l	sub_160B0E(pc),a0
 	move.l	a0,$10(a4)
-	lea.l	MoveScript_Step(pc),a0
+	lea.l	Cam_ShakeStep(pc),a0
 	move.l	a0,$14(a4)
 	moveq	#$0,d0
 	move.l	d0,$18(a4)

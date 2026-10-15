@@ -1,10 +1,10 @@
 ; ---------------------------------------------------------------------------
-; MoveScript_Step - run one command of the byte movement script at -$38A4: add a (dx, dy) byte pair to an object's words +$30/+$32
-; In:  8(a6) = object
+; Cam_ShakeStep - run one step of the camera-shake script g_CamShake: add a (dx, dy) byte pair to the camera's offset words +$30/+$32
+; In:  8(a6) = camera object
 ; Out: none
-; Evidence: commands: 'd' ($64) end, 'e' ($65) jump back by the next byte, 'f' ($66) call Sys_Nop1F945C(next byte), else two signed bytes added to +$30/+$32; only caller sub_1607E8
+; Evidence: script bytes: 'd' ($64) end (g_CamShake = 0), 'e' ($65) n = jump back n bytes (loop), 'f' ($66) x = Sys_Nop1F945C(x), else signed dx, dy added to +$30/+$32; script e.g. Tbl_CloneA2QuakeScript; only caller sub_1607E8
 ; ---------------------------------------------------------------------------
-MoveScript_Step:
+Cam_ShakeStep:
 	link.w	a6,#$0
 	move.l	a4,-(a7)
 	movea.l	$8(a6),a4
