@@ -1,5 +1,8 @@
 ; ---------------------------------------------------------------------------
-; EntryPoint	[vector 1]
+; EntryPoint - reset vector: Sega's standard ICD_BLK4 hardware init (TMSS 'SEGA' write, VDP registers, Z80 stub, clear RAM/CRAM/VSRAM, PSG silence) unless a soft reset, then Boot_RegionCheck
+; In:  none (reset)
+; Out: does not return
+; Evidence: vector 1 target; skips the init when the I/O control ports $A10008/$A1000C are already set (soft reset); values from Boot_SetupValues; writes $53454741 ('SEGA') to $A14000 on TMSS consoles; ends with bra Boot_RegionCheck
 ; ---------------------------------------------------------------------------
 EntryPoint:
 	tst.l	($A10008).l
