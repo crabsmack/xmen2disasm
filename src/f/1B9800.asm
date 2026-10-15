@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_1B9800	[link-after-rts]
+; Psylocke_WallJump - jump away from the wall Psylocke is clinging to
+; In:  8(a6) = player
+; Out: d0 = +4 flag 8
+; Evidence: vy = char +$10 (0 if +$90 $10000), gravity, accel +/-$100 away from the wall, frame $11, climb state cleared, delay 16 then control
 ; ---------------------------------------------------------------------------
-sub_1B9800:
+Psylocke_WallJump:
 	link.w	a6,#$0
 	movem.l	d3/a4,-(a7)
 	movea.l	$8(a6),a4

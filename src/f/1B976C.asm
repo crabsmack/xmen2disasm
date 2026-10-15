@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_1B976C	[jt 2233]
+; Psylocke_Crouch - PSYLOCKE slot +$B2: crouch, facing the held direction
+; In:  8(a6) = player
+; Out: d0 = +4 flag 8
+; Evidence: stop, Obj_ChangeAnim(char +$46), +$A6 = 60, state Psylocke_StateCrouch
 ; ---------------------------------------------------------------------------
-sub_1B976C:
+Psylocke_Crouch:
 	link.w	a6,#$0
 	movem.l	d3/a4,-(a7)
 	movea.l	$8(a6),a4
@@ -45,7 +48,7 @@ loc_1B97D6:
 loc_1B97DE:
 	move.w	#$3C,$A6(a4)
 	clr.w	$6C(a4)
-	lea.l	sub_1B947C(pc),a0
+	lea.l	Psylocke_StateCrouch(pc),a0
 	move.l	a0,$5C(a4)
 	moveq	#$8,d0
 	and.w	$4(a4),d0

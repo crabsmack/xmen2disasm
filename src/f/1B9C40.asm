@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_1B9C40	[jt 2236]
+; Psylocke_GroundSpecial - PSYLOCKE slot +$DE: ground special: psychic blade strike (stronger above 7 health)
+; In:  8(a6) = player
+; Out: none
+; Evidence: stop, clear A latch; type +$71 = $D + animation jt $478A, or $F + $4792 above $700 health; next XPlayer_AttackRecover
 ; ---------------------------------------------------------------------------
-sub_1B9C40:
+Psylocke_GroundSpecial:
 	link.w	a6,#$0
 	move.l	a4,-(a7)
 	movea.l	$8(a6),a4

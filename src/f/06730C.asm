@@ -36,7 +36,7 @@ loc_067344:
 	ext.l	d7
 	move.l	d7,-(a7)
 	move.l	a4,-(a7)
-	jsr	$4622(a5)	; -> sub_1B9E78
+	jsr	$4622(a5)	; -> Psylocke_SetFrame
 	addq.w	#$8,a7
 	bra.s	ScalingActor_SetFrame_part3
 loc_067352:

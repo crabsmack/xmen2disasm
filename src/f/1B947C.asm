@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_1B947C	[link-after-rts]
+; Psylocke_StateCrouch - Psylocke's crouch: look down after a while, turn, slide with jump + direction, drop through thin floors
+; In:  8(a6) = player
+; Out: d0
+; Evidence: C + Right/Left -> vx +/-$760, accel -/+$3B, max $760, +$6E = $12, slide animation (jt $8E90 thunk), +$90 |= $200000, Psylocke_StateSlide; C alone on a thin floor -> vtable +$86 DropThrough; else control
 ; ---------------------------------------------------------------------------
-sub_1B947C:
+Psylocke_StateCrouch:
 	link.w	a6,#$0
 	movem.l	d3/a4,-(a7)
 	movea.l	$8(a6),a4
@@ -112,7 +115,7 @@ loc_1B9588:
 	andi.l	#$FFFFFFFD,$90(a4)
 	addq.w	#$8,a7
 	clr.w	$6C(a4)
-	lea.l	sub_1B92C0(pc),a0
+	lea.l	Psylocke_StateSlide(pc),a0
 	move.l	a0,$5C(a4)
 	moveq	#$8,d0
 	and.w	$4(a4),d0
@@ -143,7 +146,7 @@ loc_1B95FA:
 	andi.l	#$FFFFFFFD,$90(a4)
 	addq.w	#$8,a7
 	clr.w	$6C(a4)
-	lea.l	sub_1B92C0(pc),a0
+	lea.l	Psylocke_StateSlide(pc),a0
 	move.l	a0,$5C(a4)
 	moveq	#$8,d0
 	and.w	$4(a4),d0
@@ -241,7 +244,7 @@ loc_1B973C:
 	jsr	$4E4A(a5)	; -> Obj_ChangeAnim
 	addq.w	#$8,a7
 	clr.w	$6C(a4)
-	lea.l	sub_1B947C(pc),a0
+	lea.l	Psylocke_StateCrouch(pc),a0
 	move.l	a0,$5C(a4)
 	moveq	#$8,d0
 	and.w	$4(a4),d0

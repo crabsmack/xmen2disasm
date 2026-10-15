@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_1B9F1E	[jt 2241]
+; Psylocke_Attack - PSYLOCKE slot +$22: XPLAYER Attack; psychic attacks (types $D-$F) only affect targets flagged +6 $100
+; In:  8(a6) = player, $C(a6) = target, $10(a6) = byte damage type, $18/$1C(a6) = words spark x/y
+; Out: d0
+; Evidence: type $D/$E -> strength +$70 = 2, $F -> 4, and the parent Attack runs only when target +6 & $100; other types always attack
 ; ---------------------------------------------------------------------------
-sub_1B9F1E:
+Psylocke_Attack:
 	link.w	a6,#$0
 	movem.l	d4-d7/a3-a4,-(a7)
 	move.w	$1E(a6),d4

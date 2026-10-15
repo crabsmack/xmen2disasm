@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_1B9B02	[link-after-rts]
+; Psylocke_StateAirDash - air psi-dash in progress: end on landing or when its animation finishes
+; In:  8(a6) = player
+; Out: d0
+; Evidence: anim done or grounded -> clear A latch, control
 ; ---------------------------------------------------------------------------
-sub_1B9B02:
+Psylocke_StateAirDash:
 	link.w	a6,#$0
 	move.l	a4,-(a7)
 	movea.l	$8(a6),a4
@@ -33,7 +36,7 @@ loc_1B9B40:
 	bra.s	loc_1B9B66
 loc_1B9B54:
 	clr.w	$6C(a4)
-	lea.l	sub_1B9B02(pc),a0
+	lea.l	Psylocke_StateAirDash(pc),a0
 	move.l	a0,$5C(a4)
 	moveq	#$8,d0
 	and.w	$4(a4),d0

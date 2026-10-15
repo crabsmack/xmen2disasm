@@ -5097,7 +5097,7 @@ Tbl_ClosedBarrierAnim:	; animation script (NOTES: Animation scripts); never read
 	incrom	$15B206,$A
 Art_BioNpcSpr:	; sprite definition (type $0F): $24-byte header, $14-byte frame records, pieces, tiles; 10 of 10 bytes used at runtime; read by sub_15AE48, Spr_PreloadTiles, Nem_BuildCodeTable; jt[2025] used by BioNpc_DrawStunned, Blast_Draw
 	incrom	$15B210,$10
-Art_BlastSpr:	; sprite definition (type $19, Nemesis-compressed tiles): $24-byte header, $14-byte frame records, pieces, tiles; D3 of D4 bytes used at runtime; read by VDP_FlushDmaQueue, Spr_PreloadTiles, Nem_BuildCodeTable; jt[2026] used by Blast_ClassInit, sub_1B9D68
+Art_BlastSpr:	; sprite definition (type $19, Nemesis-compressed tiles): $24-byte header, $14-byte frame records, pieces, tiles; D3 of D4 bytes used at runtime; read by VDP_FlushDmaQueue, Spr_PreloadTiles, Nem_BuildCodeTable; jt[2026] used by Blast_ClassInit, Psylocke_Init
 	incrom	$15B220,$D4
 Art_HUDTiles:	; uncompressed 4bpp tiles DMA'd to VRAM; 400 of 400 bytes used at runtime; read by VDP_FlushDmaQueue, Nem_DecodeLoop; DMA to VRAM $FA00-FF00; jt[2027] used by HUD_Redraw
 	incrom	$15B2F4,$400
@@ -5494,29 +5494,29 @@ Art_PlayerSpr5:	; sprite definition (type $18, raw 4bpp tiles): $24-byte header,
 	incrom	$1B494A,$4530
 Tbl_NightcrawlerAnim:	; animation script (byte flags, byte steps, ..., 2-byte steps from +6); 14 of 16 bytes used at runtime; read by Anim_ApplyStep, Anim_AdvanceByDistance; jt[2216] used by PlayerSelect_PlayIdleAnim_part4
 	incrom	$1B8E7A,$16
-Tbl_EvilPsylockeAnim:	; animation script (byte flags, byte steps, ..., 2-byte steps from +6); 1E of 34 bytes used at runtime; read by Anim_ApplyStep, Anim_AdvanceByDistance, Anim_Advance; jt[2217] used by EvilPsylocke_ActDash, sub_1B947C
+Tbl_EvilPsylockeAnim:	; animation script (byte flags, byte steps, ..., 2-byte steps from +6); 1E of 34 bytes used at runtime; read by Anim_ApplyStep, Anim_AdvanceByDistance, Anim_Advance; jt[2217] used by EvilPsylocke_ActDash, Psylocke_StateCrouch
 	incrom	$1B8E90,$34
 Tbl_NightcrawlerAnim2:	; animation script (byte flags, byte steps, ..., 2-byte steps from +6); 2E of 34 bytes used at runtime; read by Anim_ApplyStep, Anim_AdvanceByDistance; jt[2218] used by PlayerSelect_PlayPickAnim_part2
 	incrom	$1B8EC4,$34
-Tbl_NightcrawlerAnim3:	; animation script (byte flags, byte steps, ..., 2-byte steps from +6); 12 of 14 bytes used at runtime; read by Anim_ApplyStep, Anim_AdvanceByDistance; jt[2219] used by sub_1B9248
+Tbl_NightcrawlerAnim3:	; animation script (byte flags, byte steps, ..., 2-byte steps from +6); 12 of 14 bytes used at runtime; read by Anim_ApplyStep, Anim_AdvanceByDistance; jt[2219] used by Psylocke_GroundAttackDown
 	incrom	$1B8EF8,$14
-Tbl_NightcrawlerAnim4:	; animation script (byte flags, byte steps, ..., 2-byte steps from +6); E of 10 bytes used at runtime; read by Anim_ApplyStep, Anim_AdvanceByDistance, Anim_Advance; jt[2220] used by sub_1B90E0
+Tbl_NightcrawlerAnim4:	; animation script (byte flags, byte steps, ..., 2-byte steps from +6); E of 10 bytes used at runtime; read by Anim_ApplyStep, Anim_AdvanceByDistance, Anim_Advance; jt[2220] used by Psylocke_CrouchCombo2
 	incrom	$1B8F0C,$10
-Tbl_NightcrawlerAnim5:	; animation script (byte flags, byte steps, ..., 2-byte steps from +6); 18 of 1A bytes used at runtime; read by Anim_ApplyStep, Anim_AdvanceByDistance; jt[2221] used by sub_1B9C40
+Tbl_NightcrawlerAnim5:	; animation script (byte flags, byte steps, ..., 2-byte steps from +6); 18 of 1A bytes used at runtime; read by Anim_ApplyStep, Anim_AdvanceByDistance; jt[2221] used by Psylocke_GroundSpecial
 	incrom	$1B8F1C,$1A
-Tbl_NightcrawlerAnim6:	; animation script (byte flags, byte steps, ..., 2-byte steps from +6); 18 of 1A bytes used at runtime; read by Anim_ApplyStep, Anim_AdvanceByDistance; jt[2222] used by sub_1B9C40
+Tbl_NightcrawlerAnim6:	; animation script (byte flags, byte steps, ..., 2-byte steps from +6); 18 of 1A bytes used at runtime; read by Anim_ApplyStep, Anim_AdvanceByDistance; jt[2222] used by Psylocke_GroundSpecial
 	incrom	$1B8F36,$1A
-Tbl_NightcrawlerAnim7:	; animation script (byte flags, byte steps, ..., 2-byte steps from +6); 16 of 18 bytes used at runtime; read by Anim_ApplyStep; jt[2223] used by sub_1B9CC2
+Tbl_NightcrawlerAnim7:	; animation script (byte flags, byte steps, ..., 2-byte steps from +6); 16 of 18 bytes used at runtime; read by Anim_ApplyStep; jt[2223] used by Psylocke_GroundSpecialDown
 	incrom	$1B8F50,$18
-Tbl_NightcrawlerAnim8:	; animation script (byte flags, byte steps, ..., 2-byte steps from +6); 24 of 28 bytes used at runtime; read by Anim_ApplyStep, Anim_AdvanceByDistance; jt[2224] used by sub_1B9CC2
+Tbl_NightcrawlerAnim8:	; animation script (byte flags, byte steps, ..., 2-byte steps from +6); 24 of 28 bytes used at runtime; read by Anim_ApplyStep, Anim_AdvanceByDistance; jt[2224] used by Psylocke_GroundSpecialDown
 	incrom	$1B8F68,$28
-Tbl_NightcrawlerAnim9:	; animation script (byte flags, byte steps, ..., 2-byte steps from +6); 16 of 18 bytes used at runtime; read by Anim_ApplyStep, Anim_AdvanceByDistance, Anim_Advance; jt[2225] used by sub_1B9B6E
+Tbl_NightcrawlerAnim9:	; animation script (byte flags, byte steps, ..., 2-byte steps from +6); 16 of 18 bytes used at runtime; read by Anim_ApplyStep, Anim_AdvanceByDistance, Anim_Advance; jt[2225] used by Psylocke_AirSpecial
 	incrom	$1B8F90,$18
-Tbl_NightcrawlerAnim10:	; animation script (byte flags, byte steps, ..., 2-byte steps from +6); 16 of 18 bytes used at runtime; read by Anim_ApplyStep; jt[2226] used by sub_1B9B6E
+Tbl_NightcrawlerAnim10:	; animation script (byte flags, byte steps, ..., 2-byte steps from +6); 16 of 18 bytes used at runtime; read by Anim_ApplyStep; jt[2226] used by Psylocke_AirSpecial
 	incrom	$1B8FA8,$18
-Tbl_NightcrawlerAnim11:	; animation script (byte flags, byte steps, ..., 2-byte steps from +6); 10 of 16 bytes used at runtime; read by Anim_ApplyStep, Anim_AdvanceByDistance; jt[2227] used by sub_1B99C2
+Tbl_NightcrawlerAnim11:	; animation script (byte flags, byte steps, ..., 2-byte steps from +6); 10 of 16 bytes used at runtime; read by Anim_ApplyStep, Anim_AdvanceByDistance; jt[2227] used by Psylocke_StateCling
 	incrom	$1B8FC0,$16
-Tbl_NightcrawlerAnim12:	; animation script (NOTES: Animation scripts); never read in the corpus; jt[2228] used by sub_1B99C2 -> Obj_SetAnim
+Tbl_NightcrawlerAnim12:	; animation script (NOTES: Animation scripts); never read in the corpus; jt[2228] used by Psylocke_StateCling -> Obj_SetAnim
 	incrom	$1B8FD6,$2C
 	incrom	$1B9002,$5E
 	include "src/f/1B9060.asm"
@@ -5543,9 +5543,9 @@ Tbl_NightcrawlerAnim12:	; animation script (NOTES: Animation scripts); never rea
 	include "src/f/1BA016.asm"
 Art_EvilPsylockeSpr:	; sprite definition (type $18, raw 4bpp tiles): $24-byte header, $14-byte frame records, pieces, tiles; 5020 of 6CD4 bytes used at runtime; read by VDP_FlushDmaQueue, Spr_RenderToBitmap_Loop; DMA to VRAM $6860-C660; jt[2245] used by EvilPsylocke_Init, Player_CalcMaxTiles, Psylocke_SelectSpriteDef
 	incrom	$1BA020,$6CD4
-Art_PlayerSpr6:	; sprite definition (type $18, raw 4bpp tiles): $24-byte header, $14-byte frame records, pieces, tiles; E00 of 2E8C bytes used at runtime; read by VDP_FlushDmaQueue, Spr_EmitStream; DMA to VRAM $8DE0-9300; jt[2246] used by Player_CalcMaxTiles, sub_1B9E78
+Art_PlayerSpr6:	; sprite definition (type $18, raw 4bpp tiles): $24-byte header, $14-byte frame records, pieces, tiles; E00 of 2E8C bytes used at runtime; read by VDP_FlushDmaQueue, Spr_EmitStream; DMA to VRAM $8DE0-9300; jt[2246] used by Player_CalcMaxTiles, Psylocke_SetFrame
 	incrom	$1C0CF4,$2E8C
-Art_PlayerSpr7:	; sprite definition (type $18, raw 4bpp tiles): $24-byte header, $14-byte frame records, pieces, tiles; 7100 of 9B66 bytes used at runtime; read by VDP_FlushDmaQueue; DMA to VRAM $6860-CA80; jt[2247] used by Player_CalcMaxTiles, sub_1B9E78
+Art_PlayerSpr7:	; sprite definition (type $18, raw 4bpp tiles): $24-byte header, $14-byte frame records, pieces, tiles; 7100 of 9B66 bytes used at runtime; read by VDP_FlushDmaQueue; DMA to VRAM $6860-CA80; jt[2247] used by Player_CalcMaxTiles, Psylocke_SetFrame
 	incrom	$1C3B80,$9B66
 Tbl_PsylockeAnim:	; animation script (byte flags, byte steps, ..., 2-byte steps from +6); E of 10 bytes used at runtime; read by Anim_ApplyStep, Anim_AdvanceByDistance, Anim_Advance; jt[2248] used by PlayerSelect_PlayIdleAnim_part6
 	incrom	$1CD6E6,$10

@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_1B9E78	[jt 2240]
+; Psylocke_SetFrame - PSYLOCKE slot +$56: set a frame from one of three sprite banks (0-$3F, $40-$C7, 200+)
+; In:  8(a6) = player, $C(a6) = frame
+; Out: none
+; Evidence: defs jt $A020 thunk, $485A data, $1C0CF4 thunk; bank change invalidates +$38; then like Actor_SetFrame
 ; ---------------------------------------------------------------------------
-sub_1B9E78:
+Psylocke_SetFrame:
 	link.w	a6,#$FFFC
 	movem.l	d7/a3-a4,-(a7)
 	movea.l	$8(a6),a3

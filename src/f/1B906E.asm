@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_1B906E	[jt 2231]
+; Psylocke_SetAirFrame - PSYLOCKE slot +$7E: pick the jump frame from the vertical speed
+; In:  8(a6) = player
+; Out: none
+; Evidence: vy < -$362 -> frame $11, < $1AE -> $12, else $14 ($13 unreachable: same bound twice)
 ; ---------------------------------------------------------------------------
-sub_1B906E:
+Psylocke_SetAirFrame:
 	link.w	a6,#$0
 	movem.l	d7/a4,-(a7)
 	movea.l	$8(a6),a4

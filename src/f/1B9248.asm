@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_1B9248	[jt 2232]
+; Psylocke_GroundAttackDown - PSYLOCKE slot +$DA: Down+B: crouching kick combo (first hit)
+; In:  8(a6) = player
+; Out: d0 = +4 flag 8
+; Evidence: sound $92, stop, clear B latch, +$6E = $18 combo window, animation (jt $8EF8 thunk), state Psylocke_StateCrouchCombo
 ; ---------------------------------------------------------------------------
-sub_1B9248:
+Psylocke_GroundAttackDown:
 	link.w	a6,#$0
 	move.l	a4,-(a7)
 	movea.l	$8(a6),a4
@@ -32,7 +35,7 @@ loc_1B9290:
 	jsr	$4E42(a5)	; -> Obj_SetAnim
 	addq.w	#$8,a7
 	clr.w	$6C(a4)
-	lea.l	sub_1B9198(pc),a0
+	lea.l	Psylocke_StateCrouchCombo(pc),a0
 	move.l	a0,$5C(a4)
 	moveq	#$8,d0
 	and.w	$4(a4),d0

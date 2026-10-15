@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_1B9B6E	[jt 2235]
+; Psylocke_AirSpecial - PSYLOCKE slot +$C6: mid-air special: psychic dash toward the held direction
+; In:  8(a6) = player
+; Out: d0 = +4 flag 8
+; Evidence: gravity char +$E; Left/Right -> vx and max +/-$708; health <= $700 -> type +$71 = $D + animation jt $47AA, else $F + $47B2; state Psylocke_StateAirDash
 ; ---------------------------------------------------------------------------
-sub_1B9B6E:
+Psylocke_AirSpecial:
 	link.w	a6,#$0
 	movem.l	d3/a4,-(a7)
 	movea.l	$8(a6),a4
@@ -60,7 +63,7 @@ loc_1B9C0E:
 	addq.w	#$8,a7
 loc_1B9C24:
 	clr.w	$6C(a4)
-	lea.l	sub_1B9B02(pc),a0
+	lea.l	Psylocke_StateAirDash(pc),a0
 	move.l	a0,$5C(a4)
 	moveq	#$8,d0
 	and.w	$4(a4),d0

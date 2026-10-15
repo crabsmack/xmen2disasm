@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_1B92C0	[link-after-rts]
+; Psylocke_StateSlide - crouch slide in progress: decelerate, B turns it into a slide kick, ends when the animation stops
+; In:  8(a6) = player
+; Out: d0
+; Evidence: airborne or anim done -> clear C latch, Psylocke_StateCrouch; |vx| < $31 stops; C released brakes (accel = -vx/16); B -> +$90 |= 2, then slide-kick animation (char +$3C), damage type +$71 = 9/10 by facing, sound $92
 ; ---------------------------------------------------------------------------
-sub_1B92C0:
+Psylocke_StateSlide:
 	link.w	a6,#$0
 	movem.l	d3/a4,-(a7)
 	movea.l	$8(a6),a4
@@ -21,10 +24,10 @@ loc_1B92EC:
 	and.w	g_Pad2Latch(a5),d0
 	move.w	d0,g_Pad2Latch(a5)
 loc_1B92FA:
-	lea.l	sub_1B947C(pc),a0
+	lea.l	Psylocke_StateCrouch(pc),a0
 	move.l	a0,$5C(a4)
 	move.l	a4,-(a7)
-	jsr	sub_1B947C(pc)
+	jsr	Psylocke_StateCrouch(pc)
 	addq.w	#$4,a7
 	bra.w	loc_1B9472
 loc_1B930E:
@@ -45,10 +48,10 @@ loc_1B9332:
 	and.w	g_Pad2Latch(a5),d0
 	move.w	d0,g_Pad2Latch(a5)
 loc_1B9340:
-	lea.l	sub_1B947C(pc),a0
+	lea.l	Psylocke_StateCrouch(pc),a0
 	move.l	a0,$5C(a4)
 	move.l	a4,-(a7)
-	jsr	sub_1B947C(pc)
+	jsr	Psylocke_StateCrouch(pc)
 	addq.w	#$4,a7
 	bra.w	loc_1B9472
 loc_1B9354:
@@ -93,7 +96,7 @@ loc_1B93BC:
 loc_1B93CA:
 	move.w	#$2710,$6E(a4)
 	clr.w	$6C(a4)
-	lea.l	sub_1B92C0(pc),a0
+	lea.l	Psylocke_StateSlide(pc),a0
 	move.l	a0,$5C(a4)
 	moveq	#$8,d0
 	and.w	$4(a4),d0
@@ -149,7 +152,7 @@ loc_1B9456:
 	ori.l	#$2,$90(a4)
 loc_1B9460:
 	clr.w	$6C(a4)
-	lea.l	sub_1B92C0(pc),a0
+	lea.l	Psylocke_StateSlide(pc),a0
 	move.l	a0,$5C(a4)
 	moveq	#$8,d0
 	and.w	$4(a4),d0

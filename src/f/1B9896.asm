@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_1B9896	[jt 2234]
+; Psylocke_StateGrabWall - PSYLOCKE slot +$AA: grab a wall: snap to it, then cling (or wall-jump if jump was pressed during the grab)
+; In:  8(a6) = player
+; Out: d0
+; Evidence: sound $81, stop; +$C0 2/3 -> face the wall, frame 200, x aligned to +$BC; +$C0 bit $40 -> Psylocke_WallJump after 8 frames, else Psylocke_StateCling
 ; ---------------------------------------------------------------------------
-sub_1B9896:
+Psylocke_StateGrabWall:
 	link.w	a6,#$0
 	movem.l	a3-a4,-(a7)
 	movea.l	$8(a6),a4
@@ -84,14 +87,14 @@ loc_1B9984:
 	and.w	d0,d1
 	beq.s	loc_1B99A6
 	move.w	#$8,$6C(a4)
-	lea.l	sub_1B9800(pc),a0
+	lea.l	Psylocke_WallJump(pc),a0
 	move.l	a0,$5C(a4)
 	moveq	#$8,d0
 	and.w	$4(a4),d0
 	bra.s	loc_1B99B8
 loc_1B99A6:
 	clr.w	$6C(a4)
-	lea.l	sub_1B99C2(pc),a0
+	lea.l	Psylocke_StateCling(pc),a0
 	move.l	a0,$5C(a4)
 	moveq	#$8,d0
 	and.w	$4(a4),d0

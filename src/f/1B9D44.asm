@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_1B9D44	[jt 2238]
+; Psylocke_GroundSpecialUp - PSYLOCKE slot +$E6: Up+A = the neutral ground special
+; In:  8(a6) = player
+; Out: none
+; Evidence: +$5C = vtable +$DE and calls it
 ; ---------------------------------------------------------------------------
-sub_1B9D44:
+Psylocke_GroundSpecialUp:
 	link.w	a6,#$0
 	move.l	a4,-(a7)
 	movea.l	$8(a6),a4

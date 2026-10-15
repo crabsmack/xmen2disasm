@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_1B9D68	[jt 2239]
+; Psylocke_Init - PSYLOCKE slot +$12: XCLIMBER Init plus Psylocke's record, states and two sprites (body and psi effect)
+; In:  8(a6) = player, $C/$10/$14(a6) = Init args
+; Out: none
+; Evidence: parent +$12; +$8C = char record (jt $9002 thunk); +$60 = XPlayer_StateHurt; +$C0 |= $100 (wall jump on grab); Spr_Init body +$2E and effect +$C6 (def $15B220), Spr_PreloadToHeap; $FFE95A = effect sprite
 ; ---------------------------------------------------------------------------
-sub_1B9D68:
+Psylocke_Init:
 	link.w	a6,#$0
 	movem.l	d3/d7/a4,-(a7)
 	movea.l	$8(a6),a4

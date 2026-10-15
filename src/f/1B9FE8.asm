@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_1B9FE8	[jt 2242]
+; Psylocke_AfterState - PSYLOCKE slot +$72: just the parent post-state hook
+; In:  8(a6) = player
+; Out: none
+; Evidence: calls XPLAYER +$72 via lea jt / 2(a0)
 ; ---------------------------------------------------------------------------
-sub_1B9FE8:
+Psylocke_AfterState:
 	link.w	a6,#$0
 	move.l	$8(a6),-(a7)
 	lea.l	$2BAA(a5),a0
