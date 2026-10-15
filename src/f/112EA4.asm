@@ -1,7 +1,7 @@
 ; ---------------------------------------------------------------------------
-; sub_112EA4	[link-after-rts]
+; Deathbird_StateLandOnSwitch	[link-after-rts]
 ; ---------------------------------------------------------------------------
-sub_112EA4:
+Deathbird_StateLandOnSwitch:
 	link.w	a6,#$0
 	movem.l	d3/d7/a3-a4,-(a7)
 	movea.l	$8(a6),a4
@@ -53,7 +53,7 @@ loc_112F2A:
 	jsr	$4E4A(a5)	; -> Obj_ChangeAnim
 	addq.w	#$8,a7
 	move.w	#$FF,$6C(a4)
-	lea.l	sub_112F58(pc),a0
+	lea.l	Deathbird_StatePeck(pc),a0
 	move.l	a0,$5C(a4)
 	moveq	#$8,d0
 	and.w	$4(a4),d0

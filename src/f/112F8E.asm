@@ -1,7 +1,7 @@
 ; ---------------------------------------------------------------------------
-; sub_112F8E	[link-after-rts]
+; Deathbird_StateHitSwitch	[link-after-rts]
 ; ---------------------------------------------------------------------------
-sub_112F8E:
+Deathbird_StateHitSwitch:
 	link.w	a6,#$0
 	move.l	a4,-(a7)
 	movea.l	$8(a6),a4
@@ -22,7 +22,7 @@ sub_112F8E:
 	jsr	(a1)
 	lea.l	$1C(a7),a7
 	clr.w	$6C(a4)
-	lea.l	sub_112C9E(pc),a0
+	lea.l	Deathbird_StateFlyOff(pc),a0
 	move.l	a0,$5C(a4)
 	moveq	#$8,d0
 	and.w	$4(a4),d0

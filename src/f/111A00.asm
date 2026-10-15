@@ -1,7 +1,7 @@
 ; ---------------------------------------------------------------------------
-; loc_111A00	[runtime: executed in tas]
+; Deathbird_SetMoveMode_Case7	[runtime: executed in tas]
 ; ---------------------------------------------------------------------------
-loc_111A00:
+Deathbird_SetMoveMode_Case7:
 	clr.w	$1E(a4)
 	clr.l	$16(a4)
 	clr.w	$20(a4)

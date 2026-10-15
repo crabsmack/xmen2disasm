@@ -1,7 +1,7 @@
 ; ---------------------------------------------------------------------------
-; loc_1118D8	[runtime: executed in tas]
+; Deathbird_SetMoveMode_Case4	[runtime: executed in tas]
 ; ---------------------------------------------------------------------------
-loc_1118D8:
+Deathbird_SetMoveMode_Case4:
 	moveq	#$10,d0
 	and.b	$2E(a4),d0
 	bne.s	loc_1118EE

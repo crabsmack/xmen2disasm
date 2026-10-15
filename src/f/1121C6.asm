@@ -1,7 +1,7 @@
 ; ---------------------------------------------------------------------------
-; loc_1121C6	[runtime: executed in tas]
+; Deathbird_Move_Wobble	[runtime: executed in tas]
 ; ---------------------------------------------------------------------------
-loc_1121C6:
+Deathbird_Move_Wobble:
 	move.w	$16(a4),$1A(a4)
 	move.w	$18(a4),$1C(a4)
 	move.w	$16(a4),d0
@@ -131,4 +131,4 @@ loc_112316:
 	ext.l	d0
 	add.l	d0,$C(a4)
 	subq.w	#$1,d5
-	bgt.w	loc_1121C6
+	bgt.w	Deathbird_Move_Wobble

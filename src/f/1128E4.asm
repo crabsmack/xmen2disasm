@@ -1,7 +1,7 @@
 ; ---------------------------------------------------------------------------
-; sub_1128E4	[link-after-rts]
+; Deathbird_StateSendHornets	[link-after-rts]
 ; ---------------------------------------------------------------------------
-sub_1128E4:
+Deathbird_StateSendHornets:
 	link.w	a6,#$FFEA
 	movem.l	d4-d7/a3-a4,-(a7)
 	movea.l	$8(a6),a4
@@ -77,7 +77,7 @@ loc_1129D0:
 	move.l	a3,-$3B1C(a5)
 loc_1129D4:
 	clr.w	$6C(a4)
-	lea.l	sub_1128E4(pc),a0
+	lea.l	Deathbird_StateSendHornets(pc),a0
 	move.l	a0,$5C(a4)
 	moveq	#$8,d0
 	and.w	$4(a4),d0
@@ -98,7 +98,7 @@ loc_1129E8:
 	jsr	$521A(a5)	; -> Snd_Play
 	lea.l	$10(a7),a7
 	clr.w	$6C(a4)
-	lea.l	sub_112A2E(pc),a0
+	lea.l	Deathbird_StateChooseAttack(pc),a0
 	move.l	a0,$5C(a4)
 	moveq	#$8,d0
 	and.w	$4(a4),d0

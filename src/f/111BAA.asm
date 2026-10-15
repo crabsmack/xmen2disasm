@@ -1,7 +1,7 @@
 ; ---------------------------------------------------------------------------
-; sub_111BAA	[link-after-rts]
+; Deathbird_UpdateBurst	[link-after-rts]
 ; ---------------------------------------------------------------------------
-sub_111BAA:
+Deathbird_UpdateBurst:
 	link.w	a6,#$FFEC
 	movem.l	d3-d7/a3-a4,-(a7)
 	movea.l	$8(a6),a3

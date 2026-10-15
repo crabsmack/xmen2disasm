@@ -1,7 +1,7 @@
 ; ---------------------------------------------------------------------------
-; sub_11286E	[link-after-rts]
+; Deathbird_StateDeadFlicker	[link-after-rts]
 ; ---------------------------------------------------------------------------
-sub_11286E:
+Deathbird_StateDeadFlicker:
 	link.w	a6,#$0
 	move.l	a4,-(a7)
 	movea.l	$8(a6),a4
@@ -13,7 +13,7 @@ sub_11286E:
 	move.b	#$1,g_PalBaseDirty(a5)
 	lea.l	$C(a7),a7
 	move.w	#$2,$6C(a4)
-	lea.l	sub_11286E(pc),a0
+	lea.l	Deathbird_StateDeadFlicker(pc),a0
 	move.l	a0,$5C(a4)
 	moveq	#$8,d0
 	and.w	$4(a4),d0

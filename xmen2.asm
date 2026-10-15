@@ -2673,11 +2673,11 @@ Tbl_Deathbird_vtable:	; class descriptor "DEATHBIRD": word $76 = name offset, lo
 	include "src/f/1111E2.asm"
 	include "src/f/1111EA.asm"
 Sw_1111EA:	; switch table of sub at $1111EA: 17 word offsets from Sw_1111EA-2
-	dc.w	loc_1112FE-(Sw_1111EA-2), loc_11130E-(Sw_1111EA-2), loc_11131E-(Sw_1111EA-2), loc_111336-(Sw_1111EA-2)
-	dc.w	loc_111352-(Sw_1111EA-2), loc_11136A-(Sw_1111EA-2), loc_111386-(Sw_1111EA-2), loc_1113AA-(Sw_1111EA-2)
+	dc.w	Deathbird_MovePolar_Case0-(Sw_1111EA-2), loc_11130E-(Sw_1111EA-2), loc_11131E-(Sw_1111EA-2), Deathbird_MovePolar_Case3-(Sw_1111EA-2)
+	dc.w	Deathbird_MovePolar_Case4-(Sw_1111EA-2), loc_11136A-(Sw_1111EA-2), loc_111386-(Sw_1111EA-2), loc_1113AA-(Sw_1111EA-2)
 	dc.w	loc_1113D2-(Sw_1111EA-2), loc_1113EA-(Sw_1111EA-2), loc_111406-(Sw_1111EA-2), loc_11142A-(Sw_1111EA-2)
 	dc.w	loc_111452-(Sw_1111EA-2), loc_111476-(Sw_1111EA-2), loc_11149C-(Sw_1111EA-2), loc_1114CA-(Sw_1111EA-2)
-	dc.w	loc_1114FC-(Sw_1111EA-2)
+	dc.w	Deathbird_MovePolar_Case16-(Sw_1111EA-2)
 	include "src/f/1112FE.asm"
 	include "src/f/111336.asm"
 	include "src/f/111352.asm"
@@ -2690,9 +2690,9 @@ Sw_1111EA:	; switch table of sub at $1111EA: 17 word offsets from Sw_1111EA-2
 	include "src/f/111798.asm"
 	include "src/f/1117A0.asm"
 Sw_1117A0:	; switch table of sub at $1117A0: 11 word offsets from Sw_1117A0-2
-	dc.w	loc_1117DC-(Sw_1117A0-2), loc_1117F0-(Sw_1117A0-2), loc_111842-(Sw_1117A0-2), loc_1118B2-(Sw_1117A0-2)
-	dc.w	loc_1118D8-(Sw_1117A0-2), loc_111920-(Sw_1117A0-2), loc_1119B2-(Sw_1117A0-2), loc_111A00-(Sw_1117A0-2)
-	dc.w	loc_111A9A-(Sw_1117A0-2), loc_111ABA-(Sw_1117A0-2), loc_111B50-(Sw_1117A0-2)
+	dc.w	Deathbird_SetMoveMode_Case0-(Sw_1117A0-2), Deathbird_SetMoveMode_Case1-(Sw_1117A0-2), Deathbird_SetMoveMode_Case2-(Sw_1117A0-2), loc_1118B2-(Sw_1117A0-2)
+	dc.w	Deathbird_SetMoveMode_Case4-(Sw_1117A0-2), Deathbird_SetMoveMode_Case5-(Sw_1117A0-2), loc_1119B2-(Sw_1117A0-2), Deathbird_SetMoveMode_Case7-(Sw_1117A0-2)
+	dc.w	loc_111A9A-(Sw_1117A0-2), Deathbird_SetMoveMode_Case9-(Sw_1117A0-2), Deathbird_SetMoveMode_Case10-(Sw_1117A0-2)
 	include "src/f/1117DC.asm"
 	include "src/f/1117F0.asm"
 	include "src/f/111842.asm"
@@ -2710,8 +2710,8 @@ Str_Empty_111E42:	; C string "" (used by sub_111DEA)
 	include "src/f/112016.asm"
 	include "src/f/11214E.asm"
 Sw_11214E:	; switch table of sub at $11214E: 5 word offsets from Sw_11214E-2
-	dc.w	loc_112330-(Sw_11214E-2), loc_112330-(Sw_11214E-2), loc_112330-(Sw_11214E-2), loc_1121C6-(Sw_11214E-2)
-	dc.w	loc_112186-(Sw_11214E-2)
+	dc.w	Deathbird_Move_Done-(Sw_11214E-2), Deathbird_Move_Done-(Sw_11214E-2), Deathbird_Move_Done-(Sw_11214E-2), Deathbird_Move_Wobble-(Sw_11214E-2)
+	dc.w	Deathbird_Move_Polar-(Sw_11214E-2)
 	incrom	$112182,$4
 	include "src/f/112186.asm"
 	include "src/f/1121C6.asm"

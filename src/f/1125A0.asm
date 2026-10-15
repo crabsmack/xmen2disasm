@@ -6,9 +6,9 @@
 ; ---------------------------------------------------------------------------
 Deathbird_Reset:
 	link.w	a6,#$0
-	jsr	sub_1111E2(pc)
-	jsr	sub_111588(pc)
-	jsr	sub_111790(pc)
-	jsr	sub_111798(pc)
+	jsr	Deathbird_EmptyStub1(pc)
+	jsr	Deathbird_EmptyStub2(pc)
+	jsr	Deathbird_EmptyStub3(pc)
+	jsr	Deathbird_EmptyStub4(pc)
 	unlk	a6
 	rts

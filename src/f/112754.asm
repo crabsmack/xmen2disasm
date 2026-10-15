@@ -1,7 +1,7 @@
 ; ---------------------------------------------------------------------------
-; sub_112754	[link-after-rts]
+; Deathbird_StateFalling	[link-after-rts]
 ; ---------------------------------------------------------------------------
-sub_112754:
+Deathbird_StateFalling:
 	link.w	a6,#$FFF8
 	movem.l	d6-d7/a4,-(a7)
 	movea.l	$8(a6),a4
@@ -38,7 +38,7 @@ loc_1127BA:
 	movea.l	g_Elevator(a5),a0
 	move.w	#$78,$A(a0)
 	clr.w	$6C(a4)
-	lea.l	sub_11286E(pc),a0
+	lea.l	Deathbird_StateDeadFlicker(pc),a0
 	move.l	a0,$5C(a4)
 	moveq	#$8,d0
 	and.w	$4(a4),d0
@@ -83,7 +83,7 @@ loc_1127DA:
 	lea.l	$C(a7),a7
 loc_112850:
 	move.w	#$2,$6C(a4)
-	lea.l	sub_112754(pc),a0
+	lea.l	Deathbird_StateFalling(pc),a0
 	move.l	a0,$5C(a4)
 	moveq	#$8,d0
 	and.w	$4(a4),d0

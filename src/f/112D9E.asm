@@ -1,7 +1,7 @@
 ; ---------------------------------------------------------------------------
-; sub_112D9E	[link-after-rts]
+; Deathbird_StateGoToSwitch	[link-after-rts]
 ; ---------------------------------------------------------------------------
-sub_112D9E:
+Deathbird_StateGoToSwitch:
 	link.w	a6,#$0
 	movem.l	d3/a4,-(a7)
 	movea.l	$8(a6),a4
@@ -44,7 +44,7 @@ loc_112E0C:
 	cmp.l	d0,d1
 	ble.s	loc_112E26
 	clr.w	$6C(a4)
-	lea.l	sub_112EA4(pc),a0
+	lea.l	Deathbird_StateLandOnSwitch(pc),a0
 	move.l	a0,$5C(a4)
 	moveq	#$8,d0
 	and.w	$4(a4),d0
@@ -83,14 +83,14 @@ loc_112E64:
 	jsr	(a1)
 	addq.w	#$8,a7
 	clr.w	$6C(a4)
-	lea.l	sub_112C9E(pc),a0
+	lea.l	Deathbird_StateFlyOff(pc),a0
 	move.l	a0,$5C(a4)
 	moveq	#$8,d0
 	and.w	$4(a4),d0
 	bra.s	loc_112E9A
 loc_112E88:
 	clr.w	$6C(a4)
-	lea.l	sub_112D9E(pc),a0
+	lea.l	Deathbird_StateGoToSwitch(pc),a0
 	move.l	a0,$5C(a4)
 	moveq	#$8,d0
 	and.w	$4(a4),d0

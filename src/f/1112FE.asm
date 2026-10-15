@@ -1,7 +1,7 @@
 ; ---------------------------------------------------------------------------
-; loc_1112FE	[static: switch-table case target (tools/switches.py: table after `move.w T(pc,dN.w),dN / jmp T-2(pc,dN.w)`, size from the cmpi bound)]
+; Deathbird_MovePolar_Case0	[static: switch-table case target (tools/switches.py: table after `move.w T(pc,dN.w),dN / jmp T-2(pc,dN.w)`, size from the cmpi bound)]
 ; ---------------------------------------------------------------------------
-loc_1112FE:
+Deathbird_MovePolar_Case0:
 	movea.l	$28(a6),a0
 	clr.w	(a0)
 	movea.l	$2C(a6),a0

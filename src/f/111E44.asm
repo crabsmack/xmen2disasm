@@ -38,11 +38,11 @@ Deathbird_Init:
 	movea.l	(a4),a0
 	movea.l	$6A(a0),a1
 	jsr	(a1)
-	lea.l	sub_1128AE(pc),a0
+	lea.l	Deathbird_StateStart(pc),a0
 	move.l	a0,$5C(a4)
-	lea.l	sub_1128AE(pc),a0
+	lea.l	Deathbird_StateStart(pc),a0
 	move.l	a0,$64(a4)
-	lea.l	sub_1125B8(pc),a0
+	lea.l	Deathbird_StateHurt(pc),a0
 	move.l	a0,$60(a4)
 	ori.w	#$80,$6(a4)
 	ori.w	#$1000,$6(a4)
@@ -89,7 +89,7 @@ Deathbird_Init:
 	move.l	d0,-(a7)
 	move.l	a4,-(a7)
 	move.l	d0,-(a7)
-	pea.l	sub_111BAA(pc)
+	pea.l	Deathbird_UpdateBurst(pc)
 	jsr	$4FD2(a5)	; -> Timer_Create
 	move.l	d0,$9E(a4)
 	move.l	-$3BC8(a5),$9A(a4)

@@ -1,7 +1,7 @@
 ; ---------------------------------------------------------------------------
-; sub_112C9E	[link-after-rts]
+; Deathbird_StateFlyOff	[link-after-rts]
 ; ---------------------------------------------------------------------------
-sub_112C9E:
+Deathbird_StateFlyOff:
 	link.w	a6,#$0
 	move.l	a4,-(a7)
 	movea.l	$8(a6),a4
@@ -33,14 +33,14 @@ loc_112CD6:
 	jsr	$4FE2(a5)	; -> Timer_Stop
 	lea.l	$C(a7),a7
 	clr.w	$6C(a4)
-	lea.l	sub_112A2E(pc),a0
+	lea.l	Deathbird_StateChooseAttack(pc),a0
 	move.l	a0,$5C(a4)
 	moveq	#$8,d0
 	and.w	$4(a4),d0
 	bra.s	loc_112D16
 loc_112D04:
 	clr.w	$6C(a4)
-	lea.l	sub_112C9E(pc),a0
+	lea.l	Deathbird_StateFlyOff(pc),a0
 	move.l	a0,$5C(a4)
 	moveq	#$8,d0
 	and.w	$4(a4),d0

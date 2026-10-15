@@ -1,7 +1,7 @@
 ; ---------------------------------------------------------------------------
-; sub_112D1E	[link-after-rts]
+; Deathbird_StateDiveLow	[link-after-rts]
 ; ---------------------------------------------------------------------------
-sub_112D1E:
+Deathbird_StateDiveLow:
 	link.w	a6,#$0
 	move.l	a4,-(a7)
 	movea.l	$8(a6),a4
@@ -31,14 +31,14 @@ sub_112D1E:
 	jsr	$521A(a5)	; -> Snd_Play
 	lea.l	$18(a7),a7
 	clr.w	$6C(a4)
-	lea.l	sub_112C9E(pc),a0
+	lea.l	Deathbird_StateFlyOff(pc),a0
 	move.l	a0,$5C(a4)
 	moveq	#$8,d0
 	and.w	$4(a4),d0
 	bra.s	loc_112D96
 loc_112D84:
 	clr.w	$6C(a4)
-	lea.l	sub_112D1E(pc),a0
+	lea.l	Deathbird_StateDiveLow(pc),a0
 	move.l	a0,$5C(a4)
 	moveq	#$8,d0
 	and.w	$4(a4),d0

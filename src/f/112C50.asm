@@ -1,14 +1,14 @@
 ; ---------------------------------------------------------------------------
-; sub_112C50	[link-after-rts]
+; Deathbird_StateWaitThenLeave	[link-after-rts]
 ; ---------------------------------------------------------------------------
-sub_112C50:
+Deathbird_StateWaitThenLeave:
 	link.w	a6,#$0
 	move.l	a4,-(a7)
 	movea.l	$8(a6),a4
 	tst.l	$44(a4)
 	beq.s	loc_112C74
 	clr.w	$6C(a4)
-	lea.l	sub_112C50(pc),a0
+	lea.l	Deathbird_StateWaitThenLeave(pc),a0
 	move.l	a0,$5C(a4)
 	moveq	#$8,d0
 	and.w	$4(a4),d0
@@ -22,7 +22,7 @@ loc_112C74:
 	jsr	(a1)
 	addq.w	#$8,a7
 	clr.w	$6C(a4)
-	lea.l	sub_112C9E(pc),a0
+	lea.l	Deathbird_StateFlyOff(pc),a0
 	move.l	a0,$5C(a4)
 	moveq	#$8,d0
 	and.w	$4(a4),d0

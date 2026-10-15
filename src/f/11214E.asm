@@ -11,7 +11,7 @@ Deathbird_Move:
 	movea.l	$8(a6),a4
 	move.b	$AE(a4),d0
 	cmpi.b	#$4,d0
-	bhi.w	loc_112330
+	bhi.w	Deathbird_Move_Done
 	moveq	#$0,d1
 	move.b	d0,d1
 	add.w	d1,d1

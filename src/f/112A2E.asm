@@ -1,7 +1,7 @@
 ; ---------------------------------------------------------------------------
-; sub_112A2E	[link-after-rts]
+; Deathbird_StateChooseAttack	[link-after-rts]
 ; ---------------------------------------------------------------------------
-sub_112A2E:
+Deathbird_StateChooseAttack:
 	link.w	a6,#$0
 	movem.l	d7/a4,-(a7)
 	movea.l	$8(a6),a4
@@ -21,7 +21,7 @@ sub_112A2E:
 	jsr	(a1)
 	addq.w	#$8,a7
 	clr.w	$6C(a4)
-	lea.l	sub_112D9E(pc),a0
+	lea.l	Deathbird_StateGoToSwitch(pc),a0
 	move.l	a0,$5C(a4)
 	moveq	#$8,d0
 	and.w	$4(a4),d0
@@ -53,7 +53,7 @@ loc_112AA6:
 	jsr	(a1)
 	addq.w	#$8,a7
 	clr.w	$6C(a4)
-	lea.l	sub_112B2E(pc),a0
+	lea.l	Deathbird_StateSwoopDown(pc),a0
 	move.l	a0,$5C(a4)
 	moveq	#$8,d0
 	and.w	$4(a4),d0
@@ -67,7 +67,7 @@ loc_112ACA:
 	jsr	(a1)
 	addq.w	#$8,a7
 	clr.w	$6C(a4)
-	lea.l	sub_112D1E(pc),a0
+	lea.l	Deathbird_StateDiveLow(pc),a0
 	move.l	a0,$5C(a4)
 	moveq	#$8,d0
 	and.w	$4(a4),d0
@@ -81,14 +81,14 @@ loc_112AEE:
 	jsr	(a1)
 	addq.w	#$8,a7
 	clr.w	$6C(a4)
-	lea.l	sub_112C9E(pc),a0
+	lea.l	Deathbird_StateFlyOff(pc),a0
 	move.l	a0,$5C(a4)
 	moveq	#$8,d0
 	and.w	$4(a4),d0
 	bra.s	loc_112B24
 loc_112B12:
 	clr.w	$6C(a4)
-	lea.l	sub_112A2E(pc),a0
+	lea.l	Deathbird_StateChooseAttack(pc),a0
 	move.l	a0,$5C(a4)
 	moveq	#$8,d0
 	and.w	$4(a4),d0

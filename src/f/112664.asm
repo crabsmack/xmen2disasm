@@ -1,7 +1,7 @@
 ; ---------------------------------------------------------------------------
-; sub_112664	[link-after-rts]
+; Deathbird_StateHurtFlash	[link-after-rts]
 ; ---------------------------------------------------------------------------
-sub_112664:
+Deathbird_StateHurtFlash:
 	link.w	a6,#$0
 	move.l	a4,-(a7)
 	movea.l	$8(a6),a4
@@ -26,7 +26,7 @@ loc_11268A:
 	tst.w	$68(a4)
 	bgt.s	loc_1126C6
 	clr.w	$6C(a4)
-	lea.l	sub_112754(pc),a0
+	lea.l	Deathbird_StateFalling(pc),a0
 	move.l	a0,$5C(a4)
 	moveq	#$8,d0
 	and.w	$4(a4),d0
@@ -43,7 +43,7 @@ loc_1126C6:
 	move.l	d0,$80(a4)
 	lea.l	$10(a7),a7
 	clr.w	$6C(a4)
-	lea.l	sub_112C9E(pc),a0
+	lea.l	Deathbird_StateFlyOff(pc),a0
 	move.l	a0,$5C(a4)
 	moveq	#$8,d0
 	and.w	$4(a4),d0
@@ -63,7 +63,7 @@ loc_112720:
 	move.w	#$CCC,-$393E(a5)
 loc_112738:
 	move.w	#$2,$6C(a4)
-	lea.l	sub_112664(pc),a0
+	lea.l	Deathbird_StateHurtFlash(pc),a0
 	move.l	a0,$5C(a4)
 	moveq	#$8,d0
 	and.w	$4(a4),d0

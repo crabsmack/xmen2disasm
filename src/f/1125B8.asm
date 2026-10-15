@@ -1,7 +1,7 @@
 ; ---------------------------------------------------------------------------
-; sub_1125B8	[link-after-rts]
+; Deathbird_StateHurt	[link-after-rts]
 ; ---------------------------------------------------------------------------
-sub_1125B8:
+Deathbird_StateHurt:
 	link.w	a6,#$0
 	move.l	a4,-(a7)
 	movea.l	$8(a6),a4
@@ -50,7 +50,7 @@ loc_112628:
 	lea.l	$10(a7),a7
 loc_11264A:
 	clr.w	$6C(a4)
-	lea.l	sub_112664(pc),a0
+	lea.l	Deathbird_StateHurtFlash(pc),a0
 	move.l	a0,$5C(a4)
 	moveq	#$8,d0
 	and.w	$4(a4),d0

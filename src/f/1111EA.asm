@@ -1,7 +1,7 @@
 ; ---------------------------------------------------------------------------
-; sub_1111EA	[link-after-rts]
+; Deathbird_MovePolar	[link-after-rts]
 ; ---------------------------------------------------------------------------
-sub_1111EA:
+Deathbird_MovePolar:
 	link.w	a6,#$0
 	movem.l	d5-d7/a3-a4,-(a7)
 	move.w	$3A(a6),d5
@@ -90,9 +90,9 @@ loc_11129A:
 	move.w	(a0),d0
 	asr.w	#$8,d0
 	addq.w	#$8,a7
-	bmi.w	loc_1114FC
+	bmi.w	Deathbird_MovePolar_Case16
 	cmpi.w	#$10,d0
-	bgt.w	loc_1114FC
+	bgt.w	Deathbird_MovePolar_Case16
 	add.w	d0,d0
 	move.w	Sw_1111EA(pc,d0.w),d0
 	jmp	Sw_1111EA-2(pc,d0.w)

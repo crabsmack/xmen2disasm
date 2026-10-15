@@ -1,7 +1,7 @@
 ; ---------------------------------------------------------------------------
-; sub_112F58	[link-after-rts]
+; Deathbird_StatePeck	[link-after-rts]
 ; ---------------------------------------------------------------------------
-sub_112F58:
+Deathbird_StatePeck:
 	link.w	a6,#$0
 	move.l	a4,-(a7)
 	movea.l	$8(a6),a4
@@ -11,7 +11,7 @@ sub_112F58:
 	jsr	$4E4A(a5)	; -> Obj_ChangeAnim
 	addq.w	#$8,a7
 	move.w	#$FF,$6C(a4)
-	lea.l	sub_112F8E(pc),a0
+	lea.l	Deathbird_StateHitSwitch(pc),a0
 	move.l	a0,$5C(a4)
 	moveq	#$8,d0
 	and.w	$4(a4),d0
