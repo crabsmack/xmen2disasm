@@ -116,7 +116,7 @@ loc_0AD29A:
 	move.l	d0,-(a7)
 	move.l	-$C(a6),-(a7)
 	move.l	-$10(a6),-(a7)
-	jsr	$2DCA(a5)	; -> sub_118136
+	jsr	$2DCA(a5)	; -> Explosion_Spawn
 	lea.l	$C(a7),a7
 loc_0AD2EE:
 	tst.b	d4

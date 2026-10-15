@@ -11,11 +11,11 @@ sub_04E81A:
 	move.l	d0,-(a7)
 	move.l	d7,-(a7)
 	move.l	d6,-(a7)
-	jsr	$2DCA(a5)	; -> sub_118136
+	jsr	$2DCA(a5)	; -> Explosion_Spawn
 	pea.l	($D2).w
 	move.l	d7,-(a7)
 	move.l	d6,-(a7)
-	jsr	$2CE2(a5)	; -> sub_117802
+	jsr	$2CE2(a5)	; -> SegmentPlusPowerUp_Spawn
 	lea.l	$B6A(a5),a0
 	move.l	$2(a0),g_CamShake(a5)
 	moveq	#$C,d0

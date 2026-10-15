@@ -265,7 +265,7 @@ loc_0AC788:
 	addq.l	#$8,d1
 	lsl.l	#$8,d1
 	move.l	d1,-(a7)
-	jsr	$2DCA(a5)	; -> sub_118136
+	jsr	$2DCA(a5)	; -> Explosion_Spawn
 	moveq	#$4,d0
 	move.l	d0,-(a7)
 	moveq	#$0,d1
@@ -284,7 +284,7 @@ loc_0AC788:
 	add.l	d0,d2
 	lsl.l	#$8,d2
 	move.l	d2,-(a7)
-	jsr	$2DD2(a5)	; -> sub_118166
+	jsr	$2DD2(a5)	; -> Explosion_SpawnSetTimerWord
 	moveq	#$8,d0
 	move.l	d0,-(a7)
 	moveq	#$0,d1
@@ -302,7 +302,7 @@ loc_0AC788:
 	add.l	d0,d2
 	lsl.l	#$8,d2
 	move.l	d2,-(a7)
-	jsr	$2DD2(a5)	; -> sub_118166
+	jsr	$2DD2(a5)	; -> Explosion_SpawnSetTimerWord
 	moveq	#$9,d0
 	cmp.w	-$3C34(a5),d0
 	lea.l	$2C(a7),a7

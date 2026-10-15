@@ -2,7 +2,7 @@
 ; SentinelsB1_InstallHooks - SentinelsB1: frame hook, Sentinels stage helpers, place players
 ; In:  none
 ; Out: none
-; Evidence: $FFC972 = SentinelsB1_FrameHook; calls sub_0DC394/sub_0DC316/sub_0DC294 (SentinelsD1 module), Players_PlaceAtStart, sub_1190D6
+; Evidence: $FFC972 = SentinelsB1_FrameHook; calls sub_0DC394/sub_0DC316/sub_0DC294 (SentinelsD1 module), Players_PlaceAtStart, GaussBullet_InitPool
 ; ---------------------------------------------------------------------------
 SentinelsB1_InstallHooks:
 	link.w	a6,#$0
@@ -18,6 +18,6 @@ SentinelsB1_InstallHooks:
 	move.l	d0,-(a7)
 	move.l	d0,-(a7)
 	jsr	$8A(a5)	; -> Players_PlaceAtStart
-	jsr	$2E8A(a5)	; -> sub_1190D6
+	jsr	$2E8A(a5)	; -> GaussBullet_InitPool
 	unlk	a6
 	rts

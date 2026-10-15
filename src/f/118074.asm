@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_118074	[link-after-rts]
+; Explosion_SpawnEx - start an explosion at (x, y): free slot, 5 animation steps of 4 frames, optional damage, sound $38
+; In:  8(a6) = x  $C(a6) = y (16.16)  $13(a6) = byte h-flip  $16(a6) = word damage flag
+; Out: d0 = slot or 0
+; Evidence: slots $FFE4C0; Timer_Create(Explosion_Update, 1, slot, 1); tile base $FFC648
 ; ---------------------------------------------------------------------------
-sub_118074:
+Explosion_SpawnEx:
 	link.w	a6,#$0
 	movem.l	d3-d7/a3-a4,-(a7)
 	lea.l	-$1D40(a5),a3
@@ -40,7 +43,7 @@ loc_1180D6:
 	move.l	d0,-(a7)
 	move.l	a4,-(a7)
 	move.l	d0,-(a7)
-	pea.l	sub_1182D4(pc)
+	pea.l	Explosion_Update(pc)
 	jsr	$4FD2(a5)	; -> Timer_Create
 	move.l	d0,$6(a4)
 	lea.l	$10(a7),a7

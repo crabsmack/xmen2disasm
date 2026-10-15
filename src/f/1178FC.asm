@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_1178FC	[jt 1436]
+; SegmentMinusPowerUp_Collect - SEGMENTMINUSPOWERUP collected: player loses 1 health segment
+; In:  8(a6) = this  $C(a6) = player
+; Out: none
+; Evidence: slot 26 override; player +$6E with -1
 ; ---------------------------------------------------------------------------
-sub_1178FC:
+SegmentMinusPowerUp_Collect:
 	link.w	a6,#$0
 	move.l	a4,-(a7)
 	movea.l	$C(a6),a4

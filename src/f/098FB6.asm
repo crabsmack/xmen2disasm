@@ -2,7 +2,7 @@
 ; XClone_LoadResources - load the clone-maker resources (clone art, effects)
 ; In:  none
 ; Out: none
-; Evidence: sub_1F62C0 x4 -> -$3C3E, effect pool -$3B1C+4, -$1A84, -$1A88; sub_1190D6; run via sub_15B0E6 by XClone_StartMakerMode; TAS 52804
+; Evidence: sub_1F62C0 x4 -> -$3C3E, effect pool -$3B1C+4, -$1A84, -$1A88; GaussBullet_InitPool; run via sub_15B0E6 by XClone_StartMakerMode; TAS 52804
 ; Found: link-after-rts
 ; ---------------------------------------------------------------------------
 XClone_LoadResources:
@@ -32,6 +32,6 @@ XClone_LoadResources:
 	move.l	$2(a0),-(a7)
 	jsr	$4E52(a5)	; -> SprDef_Add
 	move.w	d0,-$1A88(a5)
-	jsr	$2E8A(a5)	; -> sub_1190D6
+	jsr	$2E8A(a5)	; -> GaussBullet_InitPool
 	unlk	a6
 	rts

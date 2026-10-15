@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_1190D6	[jt 1485]
+; GaussBullet_InitPool - set up the GAUSSBULLET pool (6 records, vtable Tbl_GaussBullet_vtable), its sprite definition and update timer
+; In:  none
+; Out: d0
+; Evidence: Mem_StackAlloc(200); SprDef_Add -> -$1CA8; 12 callers (scene set-ups)
 ; ---------------------------------------------------------------------------
-sub_1190D6:
+GaussBullet_InitPool:
 	link.w	a6,#$0
 	movem.l	a3-a4,-(a7)
 	moveq	#$3,d0
@@ -50,7 +53,7 @@ loc_11915C:
 	move.l	d0,-(a7)
 	moveq	#$1,d1
 	move.l	d1,-(a7)
-	pea.l	sub_119086(pc)
+	pea.l	GaussBullet_UpdateAll(pc)
 	jsr	$4FD2(a5)	; -> Timer_Create
 	movea.l	d0,a3
 	move.l	a3,d0

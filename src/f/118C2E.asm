@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; loc_118C2E
+; RThetaObject_Move_Case16 - RThetaObject_Move speed case 16 (default)
+; In:  inside RThetaObject_Move
+; Out: -
+; Evidence: last Sw_11893C target
 ; ---------------------------------------------------------------------------
-loc_118C2E:
+RThetaObject_Move_Case16:
 	move.l	d6,d0
 	lsl.l	#$4,d0
 	move.w	d0,$16(a4)

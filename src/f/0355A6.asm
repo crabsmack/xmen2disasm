@@ -137,7 +137,7 @@ loc_0356E2:
 	lsl.l	#$8,d1
 	move.l	d1,-(a7)
 	move.l	-$8(a6),-(a7)
-	jsr	$2DD2(a5)	; -> sub_118166
+	jsr	$2DD2(a5)	; -> Explosion_SpawnSetTimerWord
 	lea.l	$10(a7),a7
 loc_035704:
 	moveq	#$0,d0

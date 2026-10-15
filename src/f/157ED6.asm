@@ -138,7 +138,7 @@ loc_158002:
 	move.l	d0,-(a7)
 	move.l	d7,-(a7)
 	move.l	d6,-(a7)
-	jsr	$2DCA(a5)	; -> sub_118136
+	jsr	$2DCA(a5)	; -> Explosion_Spawn
 	move.l	a4,-(a7)
 	movea.l	(a4),a0
 	movea.l	$52(a0),a1
@@ -197,7 +197,7 @@ loc_158056:
 	move.l	d0,-(a7)
 	move.l	d7,-(a7)
 	move.l	d6,-(a7)
-	jsr	$2DCA(a5)	; -> sub_118136
+	jsr	$2DCA(a5)	; -> Explosion_Spawn
 	move.l	a4,-(a7)
 	movea.l	(a4),a0
 	movea.l	$52(a0),a1

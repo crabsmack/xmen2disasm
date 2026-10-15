@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; loc_118AB4	[runtime: executed in tas]
+; RThetaObject_Move_Case4 - RThetaObject_Move speed cases 4-15
+; In:  inside RThetaObject_Move
+; Out: -
+; Evidence: Sw_11893C targets $118AB4-$118C00
 ; ---------------------------------------------------------------------------
-loc_118AB4:
+RThetaObject_Move_Case4:
 	move.l	d6,d0
 	lsl.l	#$2,d0
 	move.w	d0,$16(a4)

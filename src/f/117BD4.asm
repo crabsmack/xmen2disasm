@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_117BD4	[jt 1451]
+; MysteryPowerUp_Collect - MYSTERYPOWERUP collected: +3 or -3 health segments depending on the frame counter
+; In:  8(a6) = this  $C(a6) = player
+; Out: none
+; Evidence: slot 26 override; g_FrameCounter bit 1 picks +3/-3 for player +$6E
 ; ---------------------------------------------------------------------------
-sub_117BD4:
+MysteryPowerUp_Collect:
 	link.w	a6,#$0
 	movem.l	d7/a4,-(a7)
 	movea.l	$C(a6),a4

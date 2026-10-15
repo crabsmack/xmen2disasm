@@ -96,7 +96,7 @@ loc_0352C0:
 	move.l	d0,-(a7)
 	move.l	d5,-(a7)
 	move.l	d4,-(a7)
-	jsr	$2DCA(a5)	; -> sub_118136
+	jsr	$2DCA(a5)	; -> Explosion_Spawn
 	moveq	#$0,d0
 	move.l	d0,-(a7)
 	pea.l	($8E).w

@@ -88,9 +88,9 @@ loc_118A0C:
 	move.w	$8C(a4),d0
 	asr.w	#$8,d0
 	addq.w	#$8,a7
-	bmi.w	loc_118C2E
+	bmi.w	RThetaObject_Move_Case16
 	cmpi.w	#$10,d0
-	bgt.w	loc_118C2E
+	bgt.w	RThetaObject_Move_Case16
 	add.w	d0,d0
 	move.w	Sw_11893C(pc,d0.w),d0
 	jmp	Sw_11893C-2(pc,d0.w)

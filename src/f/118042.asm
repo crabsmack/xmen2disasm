@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_118042	[jt 1460]
+; Explosion_ResetAll - clear the 10 explosion slots at $FFE4C0 (14 bytes each)
+; In:  none
+; Out: d0
+; Evidence: timer pointer +6 and damage +$C zeroed; TAS 8-49127 (scene starts)
 ; ---------------------------------------------------------------------------
-sub_118042:
+Explosion_ResetAll:
 	link.w	a6,#$0
 	movem.l	d3/d7/a3-a4,-(a7)
 	lea.l	-$1D40(a5),a3

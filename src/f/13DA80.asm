@@ -78,7 +78,7 @@ loc_13DB20:
 	move.l	(a4),d1
 	add.l	#$1000,d1
 	move.l	d1,-(a7)
-	jsr	$2CE2(a5)	; -> sub_117802
+	jsr	$2CE2(a5)	; -> SegmentPlusPowerUp_Spawn
 	lea.l	$C(a7),a7
 	bra.s	loc_13DB90
 loc_13DB62:
@@ -93,7 +93,7 @@ loc_13DB62:
 	move.l	(a4),d0
 	add.l	#$1000,d0
 	move.l	d0,-(a7)
-	jsr	$2CE2(a5)	; -> sub_117802
+	jsr	$2CE2(a5)	; -> SegmentPlusPowerUp_Spawn
 	lea.l	$C(a7),a7
 loc_13DB90:
 	clr.b	$11(a4)

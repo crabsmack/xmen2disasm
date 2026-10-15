@@ -94,7 +94,7 @@ loc_0BEB48:
 	move.l	d0,-(a7)
 	move.l	$4(a4),-(a7)
 	move.l	(a4),-(a7)
-	jsr	$2DCA(a5)	; -> sub_118136
+	jsr	$2DCA(a5)	; -> Explosion_Spawn
 	moveq	#$0,d0
 	move.l	d0,(a4)
 	lea.l	$C(a7),a7
@@ -148,7 +148,7 @@ loc_0BEBBE:
 	move.l	d0,-(a7)
 	move.l	$4(a4),-(a7)
 	move.l	(a4),-(a7)
-	jsr	$2DCA(a5)	; -> sub_118136
+	jsr	$2DCA(a5)	; -> Explosion_Spawn
 	moveq	#$0,d0
 	move.l	d0,(a4)
 	lea.l	$C(a7),a7

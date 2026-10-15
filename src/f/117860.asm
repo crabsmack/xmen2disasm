@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_117860	[jt 1433]
+; SegmentPlusPowerUp_Collect - SEGMENTPLUSPOWERUP collected: player gains 1 health segment
+; In:  8(a6) = this  $C(a6) = player
+; Out: none
+; Evidence: slot 26 override; player vtable +$6E (sub_1F1D88: health += n*$100, clamped 1..$900) with +1; TAS 7263-52198
 ; ---------------------------------------------------------------------------
-sub_117860:
+SegmentPlusPowerUp_Collect:
 	link.w	a6,#$0
 	move.l	a4,-(a7)
 	movea.l	$C(a6),a4

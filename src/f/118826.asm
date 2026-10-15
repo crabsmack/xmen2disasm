@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_118826	[jt 1474]
+; ICandy_SetSpriteDef - ICandy: copy sprite-definition fields (frames pointer, tile base, palette bits) from resource slot N
+; In:  8(a6) = this  $F(a6) = byte resource index
+; Out: none
+; Evidence: table g_SpriteDefs / $FFC97C-$FFC982 + idx*$14 -> +$1E/+$22/+$24, +$1C bits 0-1
 ; ---------------------------------------------------------------------------
-sub_118826:
+ICandy_SetSpriteDef:
 	link.w	a6,#$0
 	movem.l	a3-a4,-(a7)
 	movea.l	$8(a6),a3

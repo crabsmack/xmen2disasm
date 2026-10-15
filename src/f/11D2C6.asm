@@ -65,7 +65,7 @@ loc_11D348:
 	move.l	a4,-(a7)
 	move.l	d4,-(a7)
 	move.l	-$4(a6),-(a7)
-	jsr	$2E92(a5)	; -> sub_119190
+	jsr	$2E92(a5)	; -> GaussBullet_Fire
 	lea.l	$18(a7),a7
 loc_11D37A:
 	subq.b	#$1,$B9(a4)

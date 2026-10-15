@@ -13,7 +13,7 @@ sub_0AD91A:
 	jsr	sub_0AD7BE(pc)
 	jsr	sub_0AD7E4(pc)
 	jsr	sub_0AD90A(pc)
-	jsr	$2E8A(a5)	; -> sub_1190D6
+	jsr	$2E8A(a5)	; -> GaussBullet_InitPool
 	jsr	$5002(a5)	; -> Level_Run
 	jsr	$5242(a5)	; -> Snd_StopAll
 	unlk	a6

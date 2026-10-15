@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_118166	[jt 1462]
+; Explosion_SpawnSetTimerWord - start a harmless explosion and store a word at the start of its timer record
+; In:  8(a6) = x  $C(a6) = y  $13(a6) = byte h-flip  $16(a6) = word
+; Out: d0 = slot or 0
+; Evidence: writes *(slot+6 timer) = word; 5 callers
 ; ---------------------------------------------------------------------------
-sub_118166:
+Explosion_SpawnSetTimerWord:
 	link.w	a6,#$0
 	move.l	a4,-(a7)
 	moveq	#$0,d0
@@ -11,7 +14,7 @@ sub_118166:
 	move.l	d1,-(a7)
 	move.l	$C(a6),-(a7)
 	move.l	$8(a6),-(a7)
-	jsr	sub_118074(pc)
+	jsr	Explosion_SpawnEx(pc)
 	movea.l	d0,a4
 	move.l	a4,d0
 	lea.l	$10(a7),a7

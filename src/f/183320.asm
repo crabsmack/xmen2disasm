@@ -101,7 +101,7 @@ loc_183372:
 	move.l	d4,d0
 	lsl.l	#$8,d0
 	move.l	d0,-(a7)
-	jsr	$2DCA(a5)	; -> sub_118136
+	jsr	$2DCA(a5)	; -> Explosion_Spawn
 	moveq	#$1,d0
 	lea.l	$C(a7),a7
 	bra.w	loc_183508
@@ -188,7 +188,7 @@ loc_183448:
 	move.l	d5,d0
 	lsl.l	#$8,d0
 	move.l	d0,-(a7)
-	jsr	$2DCA(a5)	; -> sub_118136
+	jsr	$2DCA(a5)	; -> Explosion_Spawn
 	moveq	#$1,d0
 	lea.l	$C(a7),a7
 	bra.s	loc_183508

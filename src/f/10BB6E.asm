@@ -30,7 +30,7 @@ SpaceA1_RunScene:
 	moveq	#$1,d0
 	move.l	d0,-(a7)
 	jsr	VDP_SetShadowHighlight(pc)
-	jsr	$2E8A(a5)	; -> sub_1190D6
+	jsr	$2E8A(a5)	; -> GaussBullet_InitPool
 	jsr	$5002(a5)	; -> Level_Run
 	moveq	#$0,d0
 	move.l	d0,-(a7)

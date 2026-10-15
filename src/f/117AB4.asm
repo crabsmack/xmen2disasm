@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_117AB4	[jt 1445]
+; MondoPlusPowerUp_Collect - MONDOPLUSPOWERUP collected: player health set to full ($900)
+; In:  8(a6) = this  $C(a6) = player
+; Out: none
+; Evidence: slot 26 override; player +$68 = $900
 ; ---------------------------------------------------------------------------
-sub_117AB4:
+MondoPlusPowerUp_Collect:
 	link.w	a6,#$0
 	move.l	a4,-(a7)
 	movea.l	$C(a6),a4

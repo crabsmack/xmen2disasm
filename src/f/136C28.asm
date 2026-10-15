@@ -44,7 +44,7 @@ loc_136C6C:
 	move.l	a4,-(a7)
 	move.l	d4,-(a7)
 	move.l	-$4(a6),-(a7)
-	jsr	$2E92(a5)	; -> sub_119190
+	jsr	$2E92(a5)	; -> GaussBullet_Fire
 	lea.l	$37DA(a5),a0
 	move.l	$2(a0),-(a7)
 	move.l	a4,-(a7)

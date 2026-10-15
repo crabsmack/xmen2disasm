@@ -60,7 +60,7 @@ loc_13861C:
 	move.l	d0,-(a7)
 	move.l	d4,-(a7)
 	move.l	-$4(a6),-(a7)
-	jsr	$2E92(a5)	; -> sub_119190
+	jsr	$2E92(a5)	; -> GaussBullet_Fire
 	pea.l	($F3).w
 	jsr	$5222(a5)	; -> Snd_Stop
 	pea.l	($F3).w

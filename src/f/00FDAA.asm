@@ -61,7 +61,7 @@ AvalonB1_RunScene:
 	clr.w	-$3CE6(a5)
 	clr.w	-$3CE4(a5)
 	jsr	AvalonB1_InitCamera(pc)
-	jsr	$2E8A(a5)	; -> sub_1190D6
+	jsr	$2E8A(a5)	; -> GaussBullet_InitPool
 	move.b	#$1,g_SndMute(a5)
 	jsr	$5002(a5)	; -> Level_Run
 	clr.b	g_SndMute(a5)

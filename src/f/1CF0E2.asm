@@ -79,7 +79,7 @@ loc_1CF15E:
 	move.l	d0,-(a7)
 	move.l	d7,-(a7)
 	move.l	d6,-(a7)
-	jsr	$2DCA(a5)	; -> sub_118136
+	jsr	$2DCA(a5)	; -> Explosion_Spawn
 	moveq	#$1,d0
 	lea.l	$C(a7),a7
 	bra.s	loc_1CF1AC

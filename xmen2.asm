@@ -2938,11 +2938,11 @@ Tbl_ICandy_vtable:	; class descriptor "ICANDY": word $26 = name offset, long par
 	include "src/f/1188E8.asm"
 	include "src/f/11893C.asm"
 Sw_11893C:	; switch table of sub at $11893C: 17 word offsets from Sw_11893C-2
-	dc.w	loc_118A74-(Sw_11893C-2), loc_118A7C-(Sw_11893C-2), loc_118A88-(Sw_11893C-2), loc_118A9C-(Sw_11893C-2)
-	dc.w	loc_118AB4-(Sw_11893C-2), loc_118AC8-(Sw_11893C-2), loc_118AE0-(Sw_11893C-2), loc_118B00-(Sw_11893C-2)
+	dc.w	RThetaObject_Move_Case0-(Sw_11893C-2), loc_118A7C-(Sw_11893C-2), RThetaObject_Move_Case2-(Sw_11893C-2), loc_118A9C-(Sw_11893C-2)
+	dc.w	RThetaObject_Move_Case4-(Sw_11893C-2), loc_118AC8-(Sw_11893C-2), loc_118AE0-(Sw_11893C-2), loc_118B00-(Sw_11893C-2)
 	dc.w	loc_118B24-(Sw_11893C-2), loc_118B38-(Sw_11893C-2), loc_118B50-(Sw_11893C-2), loc_118B70-(Sw_11893C-2)
 	dc.w	loc_118B94-(Sw_11893C-2), loc_118BB4-(Sw_11893C-2), loc_118BD6-(Sw_11893C-2), loc_118C00-(Sw_11893C-2)
-	dc.w	loc_118C2E-(Sw_11893C-2)
+	dc.w	RThetaObject_Move_Case16-(Sw_11893C-2)
 	include "src/f/118A74.asm"
 	include "src/f/118A88.asm"
 	include "src/f/118AB4.asm"
@@ -2957,7 +2957,7 @@ Tbl_GaussBullet_vtable:	; class descriptor "GAUSSBULLET": word $E = name offset,
 	include "src/f/118D6C.asm"
 	include "src/f/119086.asm"
 	include "src/f/1190D6.asm"
-Str_Empty_11918E:	; C string "" (used by sub_1190D6)
+Str_Empty_11918E:	; C string "" (used by GaussBullet_InitPool)
 	incrom	$11918E,$2
 	include "src/f/119190.asm"
 	incrom	$11928A,$4A4

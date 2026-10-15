@@ -23,7 +23,7 @@ sub_017DDC:
 	move.l	d0,-(a7)
 	move.l	d7,-(a7)
 	move.l	d6,-(a7)
-	jsr	$2DCA(a5)	; -> sub_118136
+	jsr	$2DCA(a5)	; -> Explosion_Spawn
 	move.l	a4,-(a7)
 	jsr	$3ACA(a5)	; -> sub_13DE36
 	movem.l	-$C(a6),d6-d7/a4

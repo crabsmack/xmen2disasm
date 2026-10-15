@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_118254	[jt 1464]
+; ObjList_ForEachInBox - walk an object list and call fn(actor, x1, y1) for every actor whose box overlaps (x1,y1)-(x2,y2) (skipping hit-cooldown actors unless asked); stop when fn returns true
+; In:  $A/$E(a6) = word x1, y1  $12/$16(a6) = word x2, y2  $18(a6) = list head  $1C(a6) = fn  $23(a6) = byte include invulnerable
+; Out: d0.b = 1 if anything overlapped
+; Evidence: list nodes {next, ?, actor}; boxes +$54-$5A; used by Explosion_Update with lists $FFEBAE/$FFEBA6
 ; ---------------------------------------------------------------------------
-sub_118254:
+ObjList_ForEachInBox:
 	link.w	a6,#$FFFE
 	movem.l	d4-d7/a3-a4,-(a7)
 	movea.l	$18(a6),a3

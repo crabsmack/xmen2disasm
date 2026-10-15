@@ -23,7 +23,7 @@ sub_0DE2A8:
 	move.l	d0,-(a7)
 	move.l	d7,-(a7)
 	move.l	d6,-(a7)
-	jsr	$2DCA(a5)	; -> sub_118136
+	jsr	$2DCA(a5)	; -> Explosion_Spawn
 	pea.l	($FF).w
 	move.l	a4,-(a7)
 	movea.l	(a4),a0

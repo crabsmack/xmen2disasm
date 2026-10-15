@@ -53,7 +53,7 @@ SmallBrood_StateExplode:
 	move.l	d0,-(a7)
 	move.l	d6,-(a7)
 	move.l	d5,-(a7)
-	jsr	$2DCA(a5)	; -> sub_118136
+	jsr	$2DCA(a5)	; -> Explosion_Spawn
 	moveq	#$0,d7
 	lea.l	$C(a7),a7
 loc_085244:

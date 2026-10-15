@@ -50,7 +50,7 @@ loc_01855A:
 	move.l	a3,-(a7)
 	move.l	d4,-(a7)
 	move.l	-$4(a6),-(a7)
-	jsr	$2E92(a5)	; -> sub_119190
+	jsr	$2E92(a5)	; -> GaussBullet_Fire
 	pea.l	($B0).w
 	jsr	$5222(a5)	; -> Snd_Stop
 	pea.l	($B0).w

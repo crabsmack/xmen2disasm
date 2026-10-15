@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_119190	[jt 1486]
+; GaussBullet_Fire - fire a GAUSSBULLET from (x, y) or attached to an owner at an offset; speed $C00 (diagonal $800), flags flip x ($800) / y ($1000), sound $ED unless flag 8
+; In:  8(a6) = x  $C(a6) = y  $10(a6) = owner or 0  $16/$1A(a6) = word offset x, y  $1C(a6) = flags
+; Out: d0
+; Evidence: callers in acolyte code ($013A86, $018504); record +$1C flags | $6000
 ; ---------------------------------------------------------------------------
-sub_119190:
+GaussBullet_Fire:
 	link.w	a6,#$0
 	movem.l	d3-d7/a3-a4,-(a7)
 	movea.l	$10(a6),a3

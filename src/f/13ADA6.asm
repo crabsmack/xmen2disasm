@@ -17,7 +17,7 @@ sub_13ADA6:
 	move.l	d0,-(a7)
 	move.l	-$4(a6),-(a7)
 	move.l	-$8(a6),-(a7)
-	jsr	$2DCA(a5)	; -> sub_118136
+	jsr	$2DCA(a5)	; -> Explosion_Spawn
 	clr.w	d7
 	lea.l	$C(a7),a7
 loc_13ADE0:

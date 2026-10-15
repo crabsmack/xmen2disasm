@@ -41,7 +41,7 @@ loc_1CF0BC:
 	move.l	d7,d0
 	lsl.l	#$8,d0
 	move.l	d0,-(a7)
-	jsr	$2DCA(a5)	; -> sub_118136
+	jsr	$2DCA(a5)	; -> Explosion_Spawn
 	moveq	#$1,d0
 	lea.l	$24(a7),a7
 	movem.l	-$10(a6),d6-d7/a3-a4

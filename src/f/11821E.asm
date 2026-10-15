@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_11821E	[link-after-rts]
+; Explosion_HurtActor - explosion hit callback: deal 4 damage (hit type 4) to the actor
+; In:  8(a6) = actor  $A/$E(a6) = word x, y
+; Out: none
+; Evidence: actor vtable +$26 TakeDamage(0, 4, 4, x, y); passed to ObjList_ForEachInBox
 ; ---------------------------------------------------------------------------
-sub_11821E:
+Explosion_HurtActor:
 	link.w	a6,#$0
 	move.l	a4,-(a7)
 	movea.l	$8(a6),a4

@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_119086	[link-after-rts]
+; GaussBullet_UpdateAll - timer: update every live GAUSSBULLET record
+; In:  none
+; Out: none
+; Evidence: Timer_Create(GaussBullet_UpdateAll) in GaussBullet_InitPool; TAS 2516-57465 every frame
 ; ---------------------------------------------------------------------------
-sub_119086:
+GaussBullet_UpdateAll:
 	link.w	a6,#$0
 	movem.l	d7/a4,-(a7)
 	tst.b	-$38DE(a5)
@@ -21,7 +24,7 @@ loc_1190AA:
 	ext.l	d7
 	move.l	d7,-(a7)
 	move.l	a4,-(a7)
-	jsr	sub_118D6C(pc)
+	jsr	GaussBullet_Update(pc)
 	addq.w	#$8,a7
 	lea.l	$20(a4),a4
 loc_1190BA:

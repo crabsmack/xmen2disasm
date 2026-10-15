@@ -52,7 +52,7 @@ loc_0B7240:
 	move.l	d1,-(a7)
 	move.l	d6,-(a7)
 	move.l	d5,-(a7)
-	jsr	$2DCA(a5)	; -> sub_118136
+	jsr	$2DCA(a5)	; -> Explosion_Spawn
 	addq.l	#$8,$94(a4)
 	move.w	#$3,$6E(a4)
 	lea.l	$C(a7),a7

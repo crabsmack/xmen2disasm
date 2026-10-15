@@ -51,7 +51,7 @@ loc_0BD0A0:
 	move.l	a4,-(a7)
 	move.l	d4,-(a7)
 	move.l	-$4(a6),-(a7)
-	jsr	$2E92(a5)	; -> sub_119190
+	jsr	$2E92(a5)	; -> GaussBullet_Fire
 	pea.l	($EE).w
 	jsr	$5222(a5)	; -> Snd_Stop
 	pea.l	($EE).w

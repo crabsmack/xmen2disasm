@@ -2,7 +2,7 @@
 ; DropBomb_StateExplode - DROPBOMB state: explode - hurt players within the blast box, spawn the explosion and die
 ; In:  8(a6) = this
 ; Out: none
-; Evidence: centre = box centre; for both players ($FFEAA8, $FFE9B8) alive, not flashing (+$6A = 0) and within +-$3C x / +-$28 y: player slot +$26 TakeDamage(this, side 5/6, damage +$70, x, y); calls sub_118136 at the centre and sub_13DE4A(this) (the XNPC death/explosion helper)
+; Evidence: centre = box centre; for both players ($FFEAA8, $FFE9B8) alive, not flashing (+$6A = 0) and within +-$3C x / +-$28 y: player slot +$26 TakeDamage(this, side 5/6, damage +$70, x, y); calls Explosion_Spawn at the centre and sub_13DE4A(this) (the XNPC death/explosion helper)
 ; Found: link-after-rts
 ; ---------------------------------------------------------------------------
 DropBomb_StateExplode:
@@ -53,7 +53,7 @@ DropBomb_StateExplode:
 	move.l	d0,-(a7)
 	move.l	d6,-(a7)
 	move.l	d5,-(a7)
-	jsr	$2DCA(a5)	; -> sub_118136
+	jsr	$2DCA(a5)	; -> Explosion_Spawn
 	moveq	#$0,d7
 	lea.l	$C(a7),a7
 loc_082652:

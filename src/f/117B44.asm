@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_117B44	[jt 1448]
+; MondoMinusPowerUp_Collect - MONDOMINUSPOWERUP collected: player health cut to at most $300
+; In:  8(a6) = this  $C(a6) = player
+; Out: none
+; Evidence: slot 26 override; player +$68 capped at $300
 ; ---------------------------------------------------------------------------
-sub_117B44:
+MondoMinusPowerUp_Collect:
 	link.w	a6,#$0
 	movem.l	d6-d7/a4,-(a7)
 	movea.l	$C(a6),a4

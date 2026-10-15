@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_1181F6	[link-after-rts]
+; Explosion_Free - stop an explosion: free its timer
+; In:  8(a6) = slot
+; Out: none
+; Evidence: Timer_Free(slot+6)
 ; ---------------------------------------------------------------------------
-sub_1181F6:
+Explosion_Free:
 	link.w	a6,#$0
 	move.l	a4,-(a7)
 	movea.l	$8(a6),a4

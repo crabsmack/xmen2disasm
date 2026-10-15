@@ -2,7 +2,7 @@
 ; BroodBossWall_Init - BROODBOSSWALL Init (ICANDY slot +$0E): parent Init, wall animation, 6 segments
 ; In:  8(a6) = this, $C(a6) = x, $10(a6) = y
 ; Out: none
-; Evidence: calls ICANDY's +$0E, sub_118826(this, -$3B08), sub_118874(this, $08894C), +$42 = 6 (segment count), +$43 = 0 (alive), +$44 = 0 (no solid box yet); TAS 50318
+; Evidence: calls ICANDY's +$0E, ICandy_SetSpriteDef(this, -$3B08), sub_118874(this, $08894C), +$42 = 6 (segment count), +$43 = 0 (alive), +$44 = 0 (no solid box yet); TAS 50318
 ; Found: jt 617
 ; ---------------------------------------------------------------------------
 BroodBossWall_Init:
@@ -21,7 +21,7 @@ BroodBossWall_Init:
 	ext.l	d0
 	move.l	d0,-(a7)
 	move.l	a4,-(a7)
-	jsr	$2E32(a5)	; -> sub_118826
+	jsr	$2E32(a5)	; -> ICandy_SetSpriteDef
 	lea.l	$144A(a5),a0
 	move.l	$2(a0),-(a7)
 	move.l	a4,-(a7)

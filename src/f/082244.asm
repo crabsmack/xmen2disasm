@@ -12,7 +12,7 @@ CloneA2_RunScene:
 	jsr	CloneA2_StartBgPalTimer(pc)
 	jsr	CloneA2_InitCamera(pc)
 	jsr	CloneA2_StartCamera(pc)
-	jsr	$2E8A(a5)	; -> sub_1190D6
+	jsr	$2E8A(a5)	; -> GaussBullet_InitPool
 	moveq	#$5F,d0
 	move.l	d0,-(a7)
 	jsr	$232A(a5)	; -> sub_0C1478

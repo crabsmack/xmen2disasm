@@ -2,7 +2,7 @@
 ; Deathbird_StateFalling - Deathbird dead: fall with explosions until off screen, then end the scene in 240 frames and stop the elevator
 ; In:  8(a6) = this
 ; Out: d0
-; Evidence: Scene_EndAfter($F0), g_Elevator vtable +$12 (Elevator_Toggle) and fields; sub_118136 effect spawns; TAS 44706-44856
+; Evidence: Scene_EndAfter($F0), g_Elevator vtable +$12 (Elevator_Toggle) and fields; Explosion_Spawn effect spawns; TAS 44706-44856
 ; ---------------------------------------------------------------------------
 Deathbird_StateFalling:
 	link.w	a6,#$FFF8
@@ -82,7 +82,7 @@ loc_1127DA:
 	move.l	d0,-(a7)
 	move.l	d7,-(a7)
 	move.l	d6,-(a7)
-	jsr	$2DCA(a5)	; -> sub_118136
+	jsr	$2DCA(a5)	; -> Explosion_Spawn
 	lea.l	$C(a7),a7
 loc_112850:
 	move.w	#$2,$6C(a4)

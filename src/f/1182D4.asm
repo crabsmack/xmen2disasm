@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_1182D4	[link-after-rts]
+; Explosion_Update - explosion timer: step the animation, draw the 32x32 sprite, hurt actors in the box if damaging; free after 5 steps
+; In:  8(a6) = slot
+; Out: none
+; Evidence: g_SpriteTable entry size $F; ObjList_ForEachInBox(.., Explosion_HurtActor); TAS 2770-50086
 ; ---------------------------------------------------------------------------
-sub_1182D4:
+Explosion_Update:
 	link.w	a6,#$0
 	movem.l	d6-d7/a4,-(a7)
 	movea.l	$8(a6),a4
@@ -14,7 +17,7 @@ sub_1182D4:
 	cmpi.b	#$4,d0
 	bls.s	loc_118308
 	move.l	a4,-(a7)
-	jsr	sub_1181F6(pc)
+	jsr	Explosion_Free(pc)
 	addq.w	#$4,a7
 	bra.w	loc_11841C
 loc_118308:
@@ -71,7 +74,7 @@ loc_11839E:
 	beq.s	loc_11840C
 	moveq	#$0,d0
 	move.l	d0,-(a7)
-	pea.l	sub_11821E(pc)
+	pea.l	Explosion_HurtActor(pc)
 	move.l	-$1652(a5),-(a7)
 	move.w	$2(a4),d1
 	ext.l	d1
@@ -88,10 +91,10 @@ loc_11839E:
 	move.w	(a4),d1
 	ext.l	d1
 	move.l	d1,-(a7)
-	jsr	sub_118254(pc)
+	jsr	ObjList_ForEachInBox(pc)
 	moveq	#$0,d0
 	move.l	d0,-(a7)
-	pea.l	sub_11821E(pc)
+	pea.l	Explosion_HurtActor(pc)
 	move.l	-$165A(a5),-(a7)
 	move.w	$2(a4),d1
 	ext.l	d1
@@ -108,7 +111,7 @@ loc_11839E:
 	move.w	(a4),d1
 	ext.l	d1
 	move.l	d1,-(a7)
-	jsr	sub_118254(pc)
+	jsr	ObjList_ForEachInBox(pc)
 	lea.l	$38(a7),a7
 loc_11840C:
 	tst.b	-$38DE(a5)

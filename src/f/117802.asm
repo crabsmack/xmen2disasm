@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_117802	[jt 1432]
+; SegmentPlusPowerUp_Spawn - drop a SEGMENTPLUSPOWERUP at (x, y), building its spawn record on the stack
+; In:  8(a6) = x  $C(a6) = y (16.16)  $12(a6) = word record value
+; Out: none
+; Evidence: class New via jt $2D8A (Tbl_SegmentPlusPowerUp_vtable); callers $04E81A and NINJA code $13DA80
 ; ---------------------------------------------------------------------------
-sub_117802:
+SegmentPlusPowerUp_Spawn:
 	link.w	a6,#$FFF0
 	movem.l	d6-d7/a3-a4,-(a7)
 	move.l	$C(a6),d6

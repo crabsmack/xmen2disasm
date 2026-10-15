@@ -24,7 +24,7 @@ sub_017D60:
 	move.l	d0,-(a7)
 	move.l	d7,-(a7)
 	move.l	d6,-(a7)
-	jsr	$2DDA(a5)	; -> sub_1181AC
+	jsr	$2DDA(a5)	; -> Explosion_SpawnHurtingSetTimerWord
 	moveq	#-$1,d0
 	cmp.w	$90(a4),d0
 	lea.l	$14(a7),a7

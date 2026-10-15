@@ -44,7 +44,7 @@ Spark_Attack:
 	add.l	d1,d2
 	lsl.l	#$7,d2
 	move.l	d2,-(a7)
-	jsr	$2DCA(a5)	; -> sub_118136
+	jsr	$2DCA(a5)	; -> Explosion_Spawn
 	move.l	a4,-(a7)
 	movea.l	(a4),a0
 	movea.l	$52(a0),a1

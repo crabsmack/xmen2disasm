@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_117A26	[jt 1442]
+; XPowerMinusPowerUp_Collect - XPOWERMINUSPOWERUP collected: player loses 3 health segments
+; In:  8(a6) = this  $C(a6) = player
+; Out: none
+; Evidence: slot 26 override; player +$6E with -3
 ; ---------------------------------------------------------------------------
-sub_117A26:
+XPowerMinusPowerUp_Collect:
 	link.w	a6,#$0
 	move.l	a4,-(a7)
 	movea.l	$C(a6),a4

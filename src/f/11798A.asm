@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_11798A	[jt 1439]
+; XPowerPlusPowerUp_Collect - XPOWERPLUSPOWERUP collected: player gains 3 health segments
+; In:  8(a6) = this  $C(a6) = player
+; Out: none
+; Evidence: slot 26 override; player +$6E with +3; the CoolantCore Hologram enables these spawns (Hologram_SetXPowerSpawns)
 ; ---------------------------------------------------------------------------
-sub_11798A:
+XPowerPlusPowerUp_Collect:
 	link.w	a6,#$0
 	move.l	a4,-(a7)
 	movea.l	$C(a6),a4

@@ -59,7 +59,7 @@ loc_0EBAEC:
 	add.l	d1,d2
 	lsl.l	#$7,d2
 	move.l	d2,-(a7)
-	jsr	$2DCA(a5)	; -> sub_118136
+	jsr	$2DCA(a5)	; -> Explosion_Spawn
 	lea.l	$14(a7),a7
 loc_0EBB36:
 	movem.l	-$C(a6),d6-d7/a4

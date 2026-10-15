@@ -82,7 +82,7 @@ loc_0353A0:
 	move.l	d0,-(a7)
 	move.l	-$6(a6),-(a7)
 	move.l	-$A(a6),-(a7)
-	jsr	$2DD2(a5)	; -> sub_118166
+	jsr	$2DD2(a5)	; -> Explosion_SpawnSetTimerWord
 	cmpi.w	#$8C,-$C(a6)
 	lea.l	$10(a7),a7
 	bne.s	loc_035418

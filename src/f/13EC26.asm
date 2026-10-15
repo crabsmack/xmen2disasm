@@ -135,7 +135,7 @@ loc_13ED3C:
 	move.w	(a4),d1
 	ext.l	d1
 	move.l	d1,-(a7)
-	jsr	$2DE2(a5)	; -> sub_118254
+	jsr	$2DE2(a5)	; -> ObjList_ForEachInBox
 	moveq	#$0,d0
 	move.l	d0,-(a7)
 	pea.l	sub_13EBB6(pc)
@@ -155,7 +155,7 @@ loc_13ED3C:
 	move.w	(a4),d1
 	ext.l	d1
 	move.l	d1,-(a7)
-	jsr	$2DE2(a5)	; -> sub_118254
+	jsr	$2DE2(a5)	; -> ObjList_ForEachInBox
 	lea.l	$38(a7),a7
 loc_13EDB2:
 	move.b	#$1,-$5(a6)
