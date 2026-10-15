@@ -1,8 +1,8 @@
 ; ---------------------------------------------------------------------------
-; WallCrawlBio_Move - WallCrawlBio: apply velocity (+$16/+$18), acceleration (+$1E/+$20) and speed limits (class slot 18, +$4E)
-; In:  8(a6) = this  $C(a6) = word frame step (1, or 2 when the game runs at half rate)
+; WallCrawlBio_Move - WallCrawlBio Move override (class slot 18, +$4E): on the last frame of the crawl animation step the crawl position 7 px along the wall in the velocity's direction (+$9C when +$BC == 2, else +$A0), keep it inside [+$AC, +$AE] (stop there if +$B7/+$B8 is set, else BabyBio_StateFallOff), then copy +$9C/+$A0 to x/y
+; In:  8(a6) = this  $C(a6) = word frame step (unused)
 ; Out: none
-; Evidence: method 18 of class descriptor $11BAA0 (name string "WALLCRAWLBIO", parent BABYBIO)
+; Evidence: no velocity/acceleration integration: only the sign of +$16/+$18 is read; step when +$4A == animation length - 1 and +$48 == 3; +$9C/+$A0 -> +$8/+$C at the end; method 18 of class descriptor $11BAA0 (name string "WALLCRAWLBIO", parent BABYBIO); TAS 32657-33098
 ; ---------------------------------------------------------------------------
 WallCrawlBio_Move:
 	link.w	a6,#$0

@@ -1,8 +1,8 @@
 ; ---------------------------------------------------------------------------
-; CoreShields_TakeDamage - CoreShields: receive a hit from an attacker: damage, hurt state, invulnerability timer (class slot 8, +$26)
-; In:  8(a6) = this  $C(a6) = attacker  $13(a6) = byte hit type  $17(a6) = byte damage  $1A/$1E(a6) = words
+; CoreShields_TakeDamage - CoreShields TakeDamage override (class slot 8, +$26): break the shield panel at index +$90, or the one before it (wrapping 0 -> 7), in the 8-byte flag array +$92; if one broke: timer +$6A = $B4, sound $D0, explosion at the box centre
+; In:  8(a6) = this  $C(a6) = attacker  $13(a6) = byte hit type  $17(a6) = byte damage  $1A/$1E(a6) = words (all unused)
 ; Out: none
-; Evidence: method 8 of class descriptor $0EBE7E (name string "CORESHIELDS", parent ACTOR)
+; Evidence: no health change and no parent TakeDamage call; Explosion_Spawn(centre of +$4C..+$52 box, 1); method 8 of class descriptor $0EBE7E (name string "CORESHIELDS", parent ACTOR); TAS 7821-9081
 ; ---------------------------------------------------------------------------
 CoreShields_TakeDamage:
 	link.w	a6,#$0

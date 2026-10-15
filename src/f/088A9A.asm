@@ -1,6 +1,6 @@
 ; ---------------------------------------------------------------------------
-; BroodBoss_ScrStepScream - BROODBOSS AI-script step: jmp BroodBoss_ActScream
-; Evidence: jmp thunk in a BROODBOSS script
+; BroodBoss_ScrStepScream - BROODBOSS AI script, steps 17-43 (first step jmp BroodBoss_ActScream)
+; Evidence: 27 jmp d(a5) thunks that continue BroodBoss_ScrStepClaw (steps 0-16) with no count word in between, completing the 44-entry script {word $2C @ $088A54}
 ; Found: runtime: executed in 64 run(s) (fuzz-01800-s1...)
 ; ---------------------------------------------------------------------------
 BroodBoss_ScrStepScream:

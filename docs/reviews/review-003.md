@@ -1,15 +1,17 @@
 # Review 003 (2026-10-14, reviewer: N4 reviewer agent 3, sample seed 9903)
-reviewed: 94
-agree: 92
+reviewed: 130
+agree: 125
 open disputes: 0
 ## Fixed
+- BroodBoss_ScrStepScream (header): "AI-script step: jmp BroodBoss_ActScream", but the file holds 27 thunks, steps 17-43 of the 44-entry script whose count word $2C is at $088A54 and whose steps 0-16 are BroodBoss_ScrStepClaw (no count word in between). Same problem review 002 fixed on ScrStepClaw. Header now says steps 17-43; name kept as the label of step 17.
 - LineSegKiller_Draw (header): templated "position/draw the object's sprite relative to the camera"; body is link/unlk/rts. Fixed concurrently upstream by 1b1bcb4 ("empty: returns at once"), which was kept. Name kept (slot +$1A convention).
 - BoxInputActor_OutsideActiveWindow (header): "a BOXINPUTACTOR is outside the active window", Out: none; the override is `moveq #0,d0`, i.e. never outside (ACTOR's version returns 1 off-window). Same templated-slot problem as ScalingActor in review 001. Header corrected.
+- CoreShields_TakeDamage (header): templated "receive a hit from an attacker: damage, hurt state, invulnerability timer"; the override changes no health, sets no hurt state and does not chain to ACTOR. It marks shield panel +$90 (or the previous one, wrapping 0->7) broken in the 8-byte array +$92 and, if one broke, sets timer +$6A = $B4, plays sound $D0 and spawns an explosion. Header rewritten.
+- WallCrawlBio_Move (header): templated "apply velocity (+$16/+$18), acceleration (+$1E/+$20) and speed limits"; the override integrates nothing and ignores the frame-step argument. On the last crawl-animation frame it steps the crawl position +$9C or +$A0 by 7 px in the velocity's sign, clamps it to [+$AC, +$AE] (stop, or BabyBio_StateFallOff), then copies +$9C/+$A0 to x/y. Header rewritten. (Replaces Deathbird_SetMoveMode_Case7, which review 002 reviewed first.)
 ## Disputes
 (none)
 ## Agreed
 - BrainRocket_Update (super Update via parent vtable +$4A, then on a sub_15CECC hit: cam shake, Explosion_Spawn, kill, sound $38; header describes the inherited part only)
-- BroodBoss_ScrStepScream (step 18 of the script that starts at BroodBoss_ScrStepClaw; no count word in between, so a step label, not a script start)
 - SavageA2_LoadResources
 - BBoard_Init
 - FloatBubble_StateBurst
@@ -100,3 +102,37 @@ open disputes: 0
 - Beast_GroundSpecial
 - BigBio_EmptyStub
 - BaniMazaB2_InstallFrameHook
+- Player1_SetNightcrawler
+- CoreElevator_CarriesAllPlayers
+- Tusk_Nop66
+- BigAcolyte_StateBurstWall
+- MagnetoBoss_Zone1Exit
+- SwampPlatform_Move (generic "per-frame movement"; it bobs y on a frame-counter triangle wave and clamps it to the -$CAE level height; not wrong)
+- SiberiaB1_StepWind
+- Apocalypse_Deactivate (generic "deactivate"; besides the parent call it releases its VRAM tiles: shifts other objects' tile bases +$34 down and lowers g_VramTileCursor; incomplete, not wrong)
+- SavageBio_StateExtend10
+- SporeMine_RecArm2
+- MagnetoBoss_StateIntroWait1
+- FireWall_GetSize
+- PlayerSelect_CharSpriteDef_Psylocke
+- DrawList_Add
+- XClone_Move
+- AvalonA3_InstallHooks
+- SentinelDoor_StateClose4
+- XPlayer_StateAttackCombo
+- Exodus_StateNextAttack_part1
+- Level_LoadUsedTiles
+- Cerebro_PlayIntro
+- Tusk_StateWaitP2Platform
+- TrapDoor_StateArm
+- XClone_StateChildAim
+- ChildShip_OnHurt_SetDecel (the y branch also writes +$1E, the x acceleration; looks like a game bug, header describes intent)
+- CloneA2_LoadResources
+- BroodBoss_StateEnter
+- BroodBoss_ActDropBomb
+- Hologram_StateDone
+- SavageMediumBio_ActWalk
+- BabyBio_ActWaitPlayerNear128 (distance is measured from +$9C, not from the current x; close enough)
+- MaintRobot_Init
+- EvilDrop_StateBounce2
+- BioNpc_StunShake
