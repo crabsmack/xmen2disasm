@@ -16,7 +16,7 @@ Cyclops_BeamVBlankFlicker:
 	moveq	#$0,d0
 	move.b	g_BeamFlickerCur(a5),d0
 	lsl.w	#$3,d0
-	move.b	$2(a0,d0.w),-$1868(a5)
+	move.b	$2(a0,d0.w),g_BeamFlickerSpr(a5)
 	moveq	#$0,d0
 	move.b	g_BeamFlickerNew+$2(a5),d0
 	subq.w	#$1,d0
@@ -43,6 +43,6 @@ loc_1E1996:
 	swap	d0
 	ori.l	#$70000003,d0
 	move.l	d0,($C00004).l
-	move.w	-$1868(a5),($C00000).l
+	move.w	g_BeamFlickerSpr(a5),($C00000).l
 loc_1E19B6:
 	rts
