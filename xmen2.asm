@@ -2284,8 +2284,8 @@ Tbl_XClone_Script2Len:	; word 9: step count of the AI script XClone_Script2 that
 Tbl_XClone_Script3Len:	; word 7: step count of the AI script XClone_Script3 that follows (2 thunks disassembled)
 	incrom	$09A33A,$2
 	include "src/f/09A33C.asm"
-Tbl_XCloneActAttack:	; table read by XClone_ActAttack; 2 of 16 bytes used at runtime; read by XClone_ActAttack
-	incrom	$09A344,$16
+Tbl_XClone_Script4Len:	; word 4: step count of the AI script XClone_Script4 that follows (4 thunks disassembled)
+	incrom	$09A358,$2
 	include "src/f/09A35A.asm"
 Tbl_XCloneAnim:	; animation script (byte flags, byte steps, ..., 2-byte steps from +6); 8 of 54 bytes used at runtime; read by Anim_ApplyStep, Anim_AdvanceByDistance, Anim_Advance
 	incrom	$09A36A,$54
@@ -2295,7 +2295,7 @@ Tbl_EvilBeastStateEmerge:	; table read by XClone_StateEmerge; A of 46 bytes used
 	incrom	$09A43A,$46
 	include "src/f/09A480.asm"
 Tbl_XCloneAnim2:	; animation script (byte flags, byte steps, ..., 2-byte steps from +6); 3 of 46 bytes used at runtime; read by Anim_ApplyStep, BioBalls_SetPathCollapsed, BioBalls_Move
-	incrom	$09A49C,$46
+	incrom	$09A4A0,$42
 Tbl_EvilMakerSetPathCollapsed2:	; table read by BioBalls_SetPathCollapsed; 32 of 64 bytes used at runtime; read by BioBalls_SetPathCollapsed, BioBalls_Move; jt[816] used by EvilMaker_ActDropCyclops
 	incrom	$09A4E2,$64
 Tbl_EvilCyclopsActStand10:	; table read by XClone_ActStand10; A of 2A bytes used at runtime; read by XClone_ActStand10, XClone_StateEmerge, XClone_StatePodOpen; jt[817] used by EvilCyclops_Init
@@ -2314,8 +2314,8 @@ Tbl_EvilMakerEvilDrop:	; data handed to EvilDrop_Spawn (format not established);
 Tbl_EvilMagnetoActCheckLowHealth:	; table read by XClone_ActCheckLowHealth; 2 of 10 bytes used at runtime; read by XClone_ActCheckLowHealth; jt[822] used by EvilMagneto_Init
 	incrom	$09A7F4,$10
 	include "src/f/09A804.asm"
-Tbl_XCloneActFacePlayer2:	; table read by XClone_ActFacePlayer; 2 of 12 bytes used at runtime; read by XClone_ActFacePlayer
-	incrom	$09A810,$12
+Tbl_XClone_Script8Len:	; word 5: step count of the AI script XClone_Script8 that follows (5 thunks disassembled)
+	incrom	$09A820,$2
 	include "src/f/09A822.asm"
 Tbl_XCloneAnim4:	; animation script (byte flags, byte steps, ..., 2-byte steps from +6); 8 of 34 bytes used at runtime; read by Anim_ApplyStep, Anim_AdvanceByDistance, Anim_Advance
 	incrom	$09A836,$34

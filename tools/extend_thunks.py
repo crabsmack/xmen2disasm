@@ -26,6 +26,7 @@ ROOT = build.ROOT
 def main() -> int:
     ap = argparse.ArgumentParser()
     ap.add_argument("--dry-run", action="store_true")
+    ap.add_argument("--labelled", action="store_true", help="also take thunks at the start of an unreferenced data label (moved past them)")
     a = ap.parse_args()
     rom = build.ROM.read_bytes()
     main_p = ROOT / "xmen2.asm"
@@ -41,10 +42,19 @@ def main() -> int:
     orig: dict[Path, str] = {}
     edits = []  # (line index, new incrom line or None)
     total = 0
+    refs_text = (ROOT / "src" / "jumptable.asm").read_text() + "".join(
+        p.read_text() for p in (ROOT / "src" / "f").glob("*.asm"))
     for k, s, e in raw:
         prev = lines[k - 1].strip() if k else ""
+        moved_label = None
         if prev.split(";")[0].strip().endswith(":"):
-            continue  # labelled data
+            # labelled data that starts with the script's remaining thunks (an auto-label that
+            # swallowed them): move the label past the thunks, if nothing refers to it by name
+            lab = prev.split(":")[0]
+            if not a.labelled or re.search(rf"\b{re.escape(lab)}\b", refs_text):
+                continue
+            moved_label = lines[k - 1]
+            prev = lines[k - 2].strip()
         m = re.match(r'include "src/f/([0-9A-F]{6})\.asm"', prev)
         if not m:
             continue
@@ -64,9 +74,16 @@ def main() -> int:
             a_ += 4
         if not add:
             continue
+        if moved_label and a_ >= e:
+            print(f"skip {f.stem}: label {moved_label.split(':')[0]} would have no bytes left")
+            continue
         orig.setdefault(f, f.read_text())
         changed[f] = text.rstrip("\n") + "\n" + "".join(add)
-        edits.append((k, f"\tincrom\t${a_:06X},${e - a_:X}\n" if a_ < e else None))
+        if moved_label:  # drop the label line, re-emit it in front of the remainder
+            edits.append((k, moved_label + f"\tincrom\t${a_:06X},${e - a_:X}\n"))
+            edits.append((k - 1, None))
+        else:
+            edits.append((k, f"\tincrom\t${a_:06X},${e - a_:X}\n" if a_ < e else None))
         total += len(add)
         print(f"{f.stem}: +{len(add)} thunk(s) ${s:06X}-${a_:06X}")
     print(f"{total} thunk(s) in {len(changed)} file(s)")

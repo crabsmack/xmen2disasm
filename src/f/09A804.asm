@@ -9,3 +9,7 @@ loc_09A808:
 	jmp	$17BA(a5)	; -> XClone_ActFacePlayer
 loc_09A80C:
 	jmp	$17DA(a5)	; -> XClone_ActApproachPlayer
+	jmp	$17D2(a5)	; -> XClone_ActAttack
+	jmp	$17BA(a5)	; -> XClone_ActFacePlayer
+	jmp	$189A(a5)	; -> EvilNightcrawler_ActTeleport
+	jmp	$17D2(a5)	; -> XClone_ActAttack

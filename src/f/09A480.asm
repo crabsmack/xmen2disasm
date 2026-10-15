@@ -17,3 +17,4 @@ loc_09A494:
 	jmp	$17F2(a5)	; -> XClone_ActWalkStep
 loc_09A498:
 	jmp	$17EA(a5)	; -> XClone_ActWaitStopped
+	jmp	$17FA(a5)	; -> XClone_ActMainScript
