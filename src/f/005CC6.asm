@@ -10,8 +10,8 @@ Game_SceneLoop:
 	moveq	#$0,d0
 	move.l	d0,-$38B0(a5)
 	clr.b	g_DemoActive(a5)
-	clr.b	-$38B6(a5)
-	clr.b	-$38C4(a5)
+	clr.b	g_StartEndsScene(a5)
+	clr.b	g_SegFlag38C4(a5)
 	move.w	#$3,-$38AC(a5)
 	clr.w	-$3B00(a5)
 	jsr	Scene_RegisterAll(pc)
@@ -24,9 +24,9 @@ loc_005CF8:
 	tst.l	$4(a0,d0.w)
 	beq.s	loc_005D2C
 	lea.l	Scene_PreLoadReset(pc),a0
-	move.l	a0,-$38E8(a5)
+	move.l	a0,g_ScenePreLoadHook(a5)
 	lea.l	Scene_PostLoadVram(pc),a0
-	move.l	a0,-$38EC(a5)
+	move.l	a0,g_ScenePostLoadHook(a5)
 	move.w	g_SceneIndex(a5),d0
 	asl.w	#$3,d0
 	lea.l	g_SceneTable(a5),a0
@@ -98,7 +98,7 @@ loc_005DBC:
 	move.l	d0,g_Player2(a5)
 	clr.w	g_Player2+$4(a5)
 loc_005DD0:
-	tst.b	-$38C2(a5)
+	tst.b	g_SceneIndexSet(a5)
 	bne.s	loc_005E26
 	tst.b	d5
 	beq.s	loc_005DDE

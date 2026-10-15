@@ -6,7 +6,7 @@
 ; ---------------------------------------------------------------------------
 VDP_FrameUpdate:
 	link.w	a6,#$0
-	move.b	#$1,-$3A08(a5)
+	move.b	#$1,g_FrameTick(a5)
 	tst.b	g_FrameUpdated(a5)
 	bne.s	loc_1FDCC2
 	move.b	#$1,g_FrameUpdated(a5)
@@ -16,7 +16,7 @@ VDP_FrameUpdate:
 	beq.s	loc_1FDCC2
 	clr.b	g_DmaFlushReq(a5)
 	jsr	$51E2(a5)	; -> VDP_FlushDmaQueue
-	move.b	#$1,-$3A0A(a5)
+	move.b	#$1,g_VBlankFrameDone(a5)
 loc_1FDCC2:
 	jsr	$49DA(a5)	; -> Cyclops_BeamVBlankFlicker
 	unlk	a6

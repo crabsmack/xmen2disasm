@@ -7,7 +7,7 @@
 Cerebro_RunTextScript:
 	link.w	a6,#$0
 	movem.l	d5-d7/a3-a4,-(a7)
-	clr.b	-$38C6(a5)
+	clr.b	g_DemoSkipped(a5)
 	move.w	#$2,-$3B02(a5)
 	jsr	$504A(a5)	; -> Spr_BeginFrame
 	lea.l	g_SpriteTable(a5),a0

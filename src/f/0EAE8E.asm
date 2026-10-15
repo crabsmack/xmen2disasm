@@ -5,7 +5,7 @@
 ; Evidence: writes VDP $C00004/$C00000 at VRAM $F000 + idx*8 + 2 (sprite link), g_VBlankCount bit 0, armed by Hologram_SetPose($1B) via $FFC620; exported as jt[1275]; TAS 7581-9574
 ; ---------------------------------------------------------------------------
 Hologram_VBlankFlicker:
-	tst.b	-$3A0A(a5)
+	tst.b	g_VBlankFrameDone(a5)
 	beq.s	loc_0EAEBE
 	tst.b	-$3BE0(a5)
 	beq.s	loc_0EAEBE

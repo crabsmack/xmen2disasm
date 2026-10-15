@@ -42,6 +42,6 @@ SavageC1_LoadLevel:
 	move.b	#$1,g_BgWrapX(a5)
 	move.b	#$1,g_TwoPlayerStep(a5)
 	clr.b	g_TwoPlayerStep(a5)
-	move.b	#$1,-$38B4(a5)
+	move.b	#$1,g_HudOn(a5)
 	unlk	a6
 	rts

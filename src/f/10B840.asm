@@ -114,7 +114,7 @@ loc_10B938:
 	bne.s	loc_10B97C
 	moveq	#$0,d3
 loc_10B97C:
-	move.b	d3,-$3890(a5)
+	move.b	d3,g_CamActive(a5)
 	movem.l	-$C(a6),d3/a3-a4
 	unlk	a6
 	rts

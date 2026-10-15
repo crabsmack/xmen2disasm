@@ -24,7 +24,7 @@ loc_1FDCE8:
 	movea.l	g_VBlankGameHook(a5),a0
 	jsr	(a0)
 loc_1FDD00:
-	clr.b	-$3A0A(a5)
+	clr.b	g_VBlankFrameDone(a5)
 	move.l	-$4(a6),d7
 	unlk	a6
 	rts

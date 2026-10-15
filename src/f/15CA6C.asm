@@ -13,7 +13,7 @@ Pause_Loop:
 	and.w	g_Pad2Latch(a5),d0
 	move.w	d0,g_Pad2Latch(a5)
 loc_15CA88:
-	clr.b	-$3A08(a5)
+	clr.b	g_FrameTick(a5)
 	move.b	#$1,g_DmaFlushReq(a5)
 	jsr	Pause_HandleInput(pc)
 	jsr	$5112(a5)	; -> VDP_WaitVBlank

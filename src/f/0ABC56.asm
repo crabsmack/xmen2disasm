@@ -12,7 +12,7 @@ FloatBubble_Move:
 	moveq	#$2,d0
 	and.w	$8C(a4),d0
 	beq.s	loc_0ABC84
-	move.w	-$38BC(a5),d0
+	move.w	g_FloodLineY(a5),d0
 	ext.l	d0
 	lsl.l	#$8,d0
 	move.l	d0,$C(a4)

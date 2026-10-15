@@ -15,9 +15,9 @@ SiberiaB1_RunScene:
 	jsr	$521A(a5)	; -> Snd_Play
 	jsr	SiberiaB1_CallEmptyStub(pc)
 	lea.l	SiberiaB1_PreLoad(pc),a0
-	move.l	a0,-$38E8(a5)
+	move.l	a0,g_ScenePreLoadHook(a5)
 	lea.l	SiberiaB1_PostLoad(pc),a0
-	move.l	a0,-$38EC(a5)
+	move.l	a0,g_ScenePostLoadHook(a5)
 	jsr	SiberiaB1_LoadLevel(pc)
 	jsr	SiberiaB1_InstallHooks(pc)
 	jsr	SiberiaB1_CallEmptyStub(pc)

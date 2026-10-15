@@ -7,7 +7,7 @@
 ; ---------------------------------------------------------------------------
 XClone_EndWave:
 	link.w	a6,#$0
-	clr.b	-$3894(a5)
+	clr.b	g_SpawnEnabled(a5)
 	lea.l	XClone_FrameHookCollapse(pc),a0
 	move.l	a0,g_SceneFrameHook(a5)
 	pea.l	($258).w

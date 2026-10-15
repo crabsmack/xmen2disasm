@@ -7,7 +7,7 @@
 Pause_HandleInput:
 	link.w	a6,#$0
 	movem.l	d6-d7,-(a7)
-	clr.b	-$3A08(a5)
+	clr.b	g_FrameTick(a5)
 	jsr	$50FA(a5)	; -> Pad_Update
 	tst.l	g_PauseCheatPtr(a5)
 	beq.w	loc_15C5F2

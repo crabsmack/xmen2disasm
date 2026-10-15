@@ -47,7 +47,7 @@ loc_066B48:
 	lea.l	$DCA(a5),a0
 	move.l	$2(a0),-(a7)
 	jsr	$4FCA(a5)	; -> Level_Load
-	clr.b	-$38B4(a5)
+	clr.b	g_HudOn(a5)
 	clr.w	g_BgScrollFactorX(a5)
 	clr.w	g_BgScrollFactorY(a5)
 	jsr	Cerebro_LoadSpriteTiles(pc)
@@ -73,10 +73,10 @@ loc_066B48:
 	clr.w	g_SceneExitTimer(a5)
 	moveq	#$0,d0
 	move.l	d0,g_VBlankCount(a5)
-	clr.w	-$3A22(a5)
+	clr.w	g_DemoStepFrame(a5)
 	clr.w	g_LevelFrame(a5)
-	clr.b	-$38C2(a5)
-	move.w	g_VramTileCursor(a5),-$3888(a5)
+	clr.b	g_SceneIndexSet(a5)
+	move.w	g_VramTileCursor(a5),g_LevelVramStart(a5)
 	jsr	$5042(a5)	; -> Spr_InitLinks
 	jsr	$50FA(a5)	; -> Pad_Update
 	ori.w	#$40,g_VdpReg1(a5)

@@ -17,7 +17,7 @@ loc_066F64:
 	jsr	Cerebro_Run(pc)
 	tst.w	-$3B92(a5)
 	blt.s	loc_066F7A
-	move.b	#$1,-$38C2(a5)
+	move.b	#$1,g_SceneIndexSet(a5)
 	move.w	#$FFFF,-$3B92(a5)
 loc_066F7A:
 	unlk	a6

@@ -76,7 +76,7 @@ loc_15C6A0:
 	beq.s	loc_15C6C8
 	subq.w	#$1,g_SceneIndex(a5)
 	move.b	#$1,g_PauseExit(a5)
-	move.b	#$1,-$38C2(a5)
+	move.b	#$1,g_SceneIndexSet(a5)
 	move.w	#$1,g_SceneExitTimer(a5)
 	bra.w	loc_15CA36
 loc_15C6C8:
@@ -241,7 +241,7 @@ loc_15C88E:
 	move.w	d7,g_SceneIndex(a5)
 	move.b	#$1,g_PauseExit(a5)
 	move.w	#$1,g_SceneExitTimer(a5)
-	move.b	#$1,-$38C2(a5)
+	move.b	#$1,g_SceneIndexSet(a5)
 	bra.w	loc_15CA36
 loc_15C8AE:
 	move.w	#$7,-$3C58(a5)
@@ -334,7 +334,7 @@ loc_15C990:
 	move.w	d7,g_SceneIndex(a5)
 	move.b	#$1,g_PauseExit(a5)
 	move.w	#$1,g_SceneExitTimer(a5)
-	move.b	#$1,-$38C2(a5)
+	move.b	#$1,g_SceneIndexSet(a5)
 	bra.w	loc_15CA36
 loc_15C9B0:
 	move.w	#$7,-$3C58(a5)

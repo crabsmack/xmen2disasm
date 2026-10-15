@@ -38,7 +38,7 @@ SpaceB1_LoadLevel:
 	move.l	$2(a0),-(a7)
 	jsr	$4FCA(a5)	; -> Level_Load
 	move.w	#$A84,g_PalBase(a5)
-	move.b	#$1,-$38B4(a5)
+	move.b	#$1,g_HudOn(a5)
 	lea.l	SpaceB1_Seg28Handler(pc),a0
 	move.l	a0,g_SegTypeHooks+$70(a5)
 	clr.b	g_BgWrapY(a5)

@@ -98,7 +98,7 @@ loc_0FCDA0:
 	moveq	#$0,d0
 	move.b	g_ScnLogoAndDemo(a5),d0
 	move.w	d0,g_SceneIndex(a5)
-	move.b	#$1,-$38C2(a5)
+	move.b	#$1,g_SceneIndexSet(a5)
 loc_0FCDC6:
 	move.w	g_Pad2Raw(a5),d0
 	or.w	g_Pad1Raw(a5),d0

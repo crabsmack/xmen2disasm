@@ -19,7 +19,7 @@ Level_Load:
 	clr.b	g_BgNarrow(a5)
 	clr.b	g_SolidMapIsBg(a5)
 	clr.b	-$3BBA(a5)
-	movea.l	-$38E8(a5),a0
+	movea.l	g_ScenePreLoadHook(a5),a0
 	jsr	(a0)
 	move.w	$36(a6),g_MusicTrack(a5)
 	moveq	#-$1,d0
@@ -239,10 +239,10 @@ loc_1F9B0E:
 	jsr	$4132(a5)	; -> Spawn_InitRecords
 	jsr	$4FB2(a5)	; -> Scene_ClearActivateHook
 	jsr	ClassList_CallSlot5A(pc)
-	move.b	#$1,-$38B4(a5)
+	move.b	#$1,g_HudOn(a5)
 	clr.b	g_BgLockToObj(a5)
-	move.b	#$1,-$3890(a5)
-	move.b	#$1,-$3894(a5)
+	move.b	#$1,g_CamActive(a5)
+	move.b	#$1,g_SpawnEnabled(a5)
 	clr.w	-$3896(a5)
 	moveq	#$0,d0
 	move.l	d0,-$38A0(a5)
@@ -298,7 +298,7 @@ loc_1F9B58:
 	move.w	#$19A,g_ActWinRight(a5)
 	move.w	#$FFD8,g_ActWinTop(a5)
 	move.w	#$130,g_ActWinBottom(a5)
-	clr.b	-$38BA(a5)
+	clr.b	g_HalfSpeed(a5)
 	moveq	#$0,d0
 	move.l	d0,g_ScalerWork(a5)
 	lea.l	$3FB2(a5),a0
@@ -307,7 +307,7 @@ loc_1F9B58:
 	move.b	#$1,-$1660(a5)
 	jsr	Timer_InitAll(pc)
 	jsr	$405A(a5)	; -> HitList_Init
-	movea.l	-$38EC(a5),a0
+	movea.l	g_ScenePostLoadHook(a5),a0
 	jsr	(a0)
 	movem.l	-$18(a6),d3/d5-d7/a3-a4
 	unlk	a6

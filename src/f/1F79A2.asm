@@ -29,7 +29,7 @@ loc_1F79DE:
 	move.w	$8(a4),d0
 	cmp.w	$C(a4),d0
 	ble.s	loc_1F7A0E
-	tst.b	-$38C4(a5)
+	tst.b	g_SegFlag38C4(a5)
 	bne.s	loc_1F7A0E
 	move.w	$8(a4),d7
 	move.w	$C(a4),$8(a4)

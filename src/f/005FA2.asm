@@ -64,7 +64,7 @@ loc_006022:
 	move.l	d0,d7
 	lsl.l	#$8,d7
 loc_006040:
-	tst.b	-$38BE(a5)
+	tst.b	g_InLevelLoop(a5)
 	beq.s	loc_006092
 	moveq	#$0,d0
 	move.l	d0,-(a7)

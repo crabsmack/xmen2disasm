@@ -66,7 +66,7 @@ loc_0AD6F8:
 	move.l	d0,-(a7)
 	jsr	$4E3A(a5)	; -> Math_MulFix8
 	move.w	d0,g_BgScrollX(a5)
-	move.w	-$38BC(a5),d0
+	move.w	g_FloodLineY(a5),d0
 	ext.l	d0
 	move.w	g_CameraY(a5),d1
 	ext.l	d1

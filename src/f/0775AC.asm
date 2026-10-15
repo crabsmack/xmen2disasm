@@ -40,7 +40,7 @@ CloneA1_LoadLevel:
 	clr.b	g_BgWrapY(a5)
 	move.w	#$100,g_BgScrollFactorY(a5)
 	clr.w	g_BgScrollFactorX(a5)
-	move.b	#$1,-$38B4(a5)
+	move.b	#$1,g_HudOn(a5)
 	clr.b	g_TwoPlayerStep(a5)
 	unlk	a6
 	rts

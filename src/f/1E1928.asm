@@ -5,7 +5,7 @@
 ; Evidence: when -$3A0A and $FFE98E are set, latches the link indexes recorded by Cyclops_DrawBeam; then writes the link byte of sprite $FFE994 at VRAM $F000+8n+2 ($70000003 command) with $FFE995 or $FFE996 by g_VBlankCount parity; TAS frames 7-57465
 ; ---------------------------------------------------------------------------
 Cyclops_BeamVBlankFlicker:
-	tst.b	-$3A0A(a5)
+	tst.b	g_VBlankFrameDone(a5)
 	beq.s	loc_1E197C
 	tst.b	g_SprFlickerPending(a5)
 	beq.s	loc_1E197C

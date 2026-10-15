@@ -138,7 +138,7 @@ loc_065FB4:
 	lea.l	$14(a7),a7
 	bra.s	loc_066034
 loc_065FE0:
-	clr.b	-$3A08(a5)
+	clr.b	g_FrameTick(a5)
 	ext.l	d6
 	move.l	#$B4,d0
 	sub.l	d6,d0
@@ -232,7 +232,7 @@ loc_066100:
 	move.w	#$B4,d6
 	bra.s	loc_066126
 loc_06610A:
-	clr.b	-$3A08(a5)
+	clr.b	g_FrameTick(a5)
 	subq.w	#$1,d6
 	jsr	$5112(a5)	; -> VDP_WaitVBlank
 	move.w	g_Pad2Raw(a5),d0
@@ -439,7 +439,7 @@ loc_066348:
 	clr.w	$4(a0)
 	movea.l	g_SprWritePtr(a5),a0
 	move.w	#$1C,$6(a0)
-	clr.b	-$3A08(a5)
+	clr.b	g_FrameTick(a5)
 	move.l	-$1CA(a6),d0
 	add.l	d0,-$1DA(a6)
 	move.l	-$1C6(a6),d0
@@ -532,7 +532,7 @@ loc_06644C:
 	lea.l	$1C(a7),a7
 	bra.s	loc_0664CA
 loc_0664C0:
-	clr.b	-$3A08(a5)
+	clr.b	g_FrameTick(a5)
 	subq.w	#$1,d6
 	jsr	$5112(a5)	; -> VDP_WaitVBlank
 loc_0664CA:
@@ -655,7 +655,7 @@ loc_0665EE:
 	move.w	d0,$4(a0)
 	movea.l	g_SprWritePtr(a5),a0
 	move.w	#$145,$6(a0)
-	clr.b	-$3A08(a5)
+	clr.b	g_FrameTick(a5)
 	ext.l	d5
 	move.l	d5,d0
 	moveq	#$40,d1
@@ -793,7 +793,7 @@ loc_0667A0:
 	move.w	d0,$4(a0)
 	movea.l	g_SprWritePtr(a5),a0
 	move.w	#$145,$6(a0)
-	clr.b	-$3A08(a5)
+	clr.b	g_FrameTick(a5)
 	ext.l	d5
 	move.l	d5,d0
 	moveq	#$40,d1
@@ -864,7 +864,7 @@ loc_0668B4:
 	bne.w	loc_066A52
 	bra.s	loc_0668D0
 loc_0668C8:
-	clr.b	-$3A08(a5)
+	clr.b	g_FrameTick(a5)
 	jsr	$5112(a5)	; -> VDP_WaitVBlank
 loc_0668D0:
 	moveq	#$40,d0
@@ -978,7 +978,7 @@ loc_0669EC:
 	lea.l	$10(a7),a7
 	bra.s	loc_066A4C
 loc_066A2A:
-	clr.b	-$3A08(a5)
+	clr.b	g_FrameTick(a5)
 	subq.w	#$1,d6
 	jsr	$5112(a5)	; -> VDP_WaitVBlank
 	move.w	g_Pad2Raw(a5),d0
@@ -996,7 +996,7 @@ loc_066A52:
 	move.w	#$258,d6
 	bra.s	loc_066A74
 loc_066A58:
-	clr.b	-$3A08(a5)
+	clr.b	g_FrameTick(a5)
 	subq.w	#$1,d6
 	jsr	$5112(a5)	; -> VDP_WaitVBlank
 	move.w	g_Pad2Raw(a5),d0
@@ -1027,7 +1027,7 @@ loc_066A78:
 	clr.w	$4(a0)
 	movea.l	g_SprWritePtr(a5),a0
 	move.w	#$1C,$6(a0)
-	clr.b	-$3A08(a5)
+	clr.b	g_FrameTick(a5)
 	jsr	$5052(a5)	; -> Spr_EndFrame
 	move.w	-$16(a6),g_VramTileCursor(a5)
 	moveq	#$0,d0

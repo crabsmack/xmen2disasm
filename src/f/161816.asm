@@ -66,7 +66,7 @@ loc_161874:
 	bne.s	loc_1618AE
 	moveq	#$0,d3
 loc_1618AE:
-	move.b	d3,-$3890(a5)
+	move.b	d3,g_CamActive(a5)
 	movem.l	-$C(a6),d3/a3-a4
 	unlk	a6
 	rts

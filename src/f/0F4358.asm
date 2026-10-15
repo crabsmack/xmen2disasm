@@ -49,7 +49,7 @@ loc_0F43CC:
 	addq.l	#$1,d7
 	cmp.l	d7,d3
 	bgt.s	loc_0F43CC
-	move.b	#$1,-$38B4(a5)
+	move.b	#$1,g_HudOn(a5)
 	move.w	#$C0,g_BgScrollFactorY(a5)
 	move.w	#$80,g_BgScrollFactorX(a5)
 	clr.b	g_TwoPlayerStep(a5)

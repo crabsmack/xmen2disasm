@@ -164,7 +164,7 @@ loc_0658A2:
 	jsr	Cerebro_PrintText(pc)
 	addq.w	#$8,a7
 loc_0658BC:
-	move.b	#$1,-$38BE(a5)
+	move.b	#$1,g_InLevelLoop(a5)
 	jsr	$500A(a5)	; -> ClassList_InitAll
 loc_0658C6:
 	jsr	$504A(a5)	; -> Spr_BeginFrame
@@ -189,8 +189,8 @@ loc_0658C6:
 	jsr	(a0)
 	move.w	g_LevelFrame(a5),d0
 	addq.w	#$1,g_LevelFrame(a5)
-	clr.b	-$3A08(a5)
-	tst.b	-$38E4(a5)
+	clr.b	g_FrameTick(a5)
+	tst.b	g_LevelFreeze(a5)
 	bne.s	loc_065922
 	jsr	$4FF2(a5)	; -> Timer_RunAll
 loc_065922:
@@ -418,14 +418,14 @@ loc_065BBE:
 	jsr	PlayerSelect_CheckDone(pc)
 	tst.b	g_TwoPlayerStep(a5)
 	beq.s	loc_065BDE
-	tst.b	-$38E4(a5)
+	tst.b	g_LevelFreeze(a5)
 	bne.s	loc_065BDE
 loc_065BD8:
-	tst.b	-$3A08(a5)
+	tst.b	g_FrameTick(a5)
 	beq.s	loc_065BD8
 loc_065BDE:
 	jsr	$5112(a5)	; -> VDP_WaitVBlank
-	tst.b	-$38E4(a5)
+	tst.b	g_LevelFreeze(a5)
 	bne.w	loc_0658C6
 	tst.w	g_SceneExitTimer(a5)
 	ble.w	loc_0658C6
@@ -441,7 +441,7 @@ loc_065BFE:
 	tst.w	g_SceneExitTimer(a5)
 	bgt.w	loc_0658C6
 	jsr	$5012(a5)	; -> ClassList_CallSlot62
-	clr.b	-$38BE(a5)
+	clr.b	g_InLevelLoop(a5)
 	movea.l	-$3B28(a5),a0
 	move.b	g_P1CharIndex(a5),d0
 	cmp.b	$3C(a0),d0

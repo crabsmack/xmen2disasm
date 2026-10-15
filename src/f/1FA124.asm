@@ -36,7 +36,7 @@ loc_1FA168:
 	neg.b	d3
 	move.b	d3,g_TwoPlayerStep(a5)
 	jsr	$504A(a5)	; -> Spr_BeginFrame
-	tst.b	-$38B4(a5)
+	tst.b	g_HudOn(a5)
 	beq.w	loc_1FA480
 	tst.b	g_HudDirty(a5)
 	beq.s	loc_1FA190
@@ -282,15 +282,15 @@ loc_1FA4BC:
 	jsr	(a0)
 	move.w	g_LevelFrame(a5),d0
 	addq.w	#$1,g_LevelFrame(a5)
-	clr.b	-$3A08(a5)
+	clr.b	g_FrameTick(a5)
 	tst.b	g_DemoActive(a5)
 	beq.s	loc_1FA4D8
 	jsr	sub_1F9DE8(pc)
 loc_1FA4D8:
 	jsr	$50FA(a5)	; -> Pad_Update
-	tst.b	-$38E4(a5)
+	tst.b	g_LevelFreeze(a5)
 	bne.w	loc_1FA638
-	tst.b	-$3894(a5)
+	tst.b	g_SpawnEnabled(a5)
 	beq.w	loc_1FA61A
 	tst.l	g_SpawnPassHook(a5)
 	beq.s	loc_1FA4FC
@@ -418,7 +418,7 @@ loc_1FA616:
 loc_1FA61A:
 	jsr	Timer_RunAll(pc)
 	jsr	Collide_RunAll(pc)
-	tst.b	-$3890(a5)
+	tst.b	g_CamActive(a5)
 	beq.s	loc_1FA638
 	movea.l	g_Camera(a5),a0
 	move.l	a0,-(a7)
@@ -429,7 +429,7 @@ loc_1FA61A:
 loc_1FA638:
 	tst.b	g_DemoActive(a5)
 	bne.s	loc_1FA644
-	tst.b	-$38B6(a5)
+	tst.b	g_StartEndsScene(a5)
 	beq.s	loc_1FA660
 loc_1FA644:
 	jsr	Pad_P1StartDown(pc)
@@ -439,10 +439,10 @@ loc_1FA644:
 	move.l	d0,-(a7)
 	jsr	$4F8A(a5)	; -> Scene_EndAfter
 	clr.b	g_DemoActive(a5)
-	move.b	#$1,-$38C6(a5)
+	move.b	#$1,g_DemoSkipped(a5)
 	addq.w	#$4,a7
 loc_1FA660:
-	tst.b	-$38E4(a5)
+	tst.b	g_LevelFreeze(a5)
 	bne.s	loc_1FA672
 	movea.l	g_LevelScrollHook(a5),a0
 	jsr	(a0)
@@ -470,18 +470,18 @@ loc_1FA696:
 	jsr	(a0)
 	addq.w	#$4,a7
 loc_1FA6AE:
-	tst.b	-$38C2(a5)
+	tst.b	g_SceneIndexSet(a5)
 	bne.s	loc_1FA6F4
 	tst.b	g_TwoPlayerStep(a5)
 	beq.s	loc_1FA6C6
-	tst.b	-$38E4(a5)
+	tst.b	g_LevelFreeze(a5)
 	bne.s	loc_1FA6C6
 loc_1FA6C0:
-	tst.b	-$3A08(a5)
+	tst.b	g_FrameTick(a5)
 	beq.s	loc_1FA6C0
 loc_1FA6C6:
 	jsr	$5112(a5)	; -> VDP_WaitVBlank
-	tst.b	-$38E4(a5)
+	tst.b	g_LevelFreeze(a5)
 	bne.w	loc_1FA12C
 	tst.w	g_SceneExitTimer(a5)
 	ble.w	loc_1FA12C

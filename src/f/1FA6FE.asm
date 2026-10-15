@@ -9,10 +9,10 @@ Level_Run:
 	clr.w	g_SceneExitTimer(a5)
 	moveq	#$0,d0
 	move.l	d0,g_VBlankCount(a5)
-	clr.w	-$3A22(a5)
+	clr.w	g_DemoStepFrame(a5)
 	clr.w	g_LevelFrame(a5)
-	clr.b	-$38C2(a5)
-	move.w	g_VramTileCursor(a5),-$3888(a5)
+	clr.b	g_SceneIndexSet(a5)
+	move.w	g_VramTileCursor(a5),g_LevelVramStart(a5)
 	tst.l	g_Camera(a5)
 	bne.s	loc_1FA744
 	moveq	#$0,d0
@@ -30,7 +30,7 @@ loc_1FA744:
 	jsr	$50FA(a5)	; -> Pad_Update
 	ori.w	#$40,g_VdpReg1(a5)
 	move.w	g_VdpReg1(a5),($C00004).l
-	tst.b	-$38B4(a5)
+	tst.b	g_HudOn(a5)
 	beq.s	loc_1FA764
 	jsr	$62(a5)	; -> HUD_Redraw
 loc_1FA764:
@@ -44,12 +44,12 @@ loc_1FA764:
 	moveq	#$0,d1
 	move.l	d1,-(a7)
 	jsr	$50F2(a5)	; -> Pal_StartFade
-	clr.b	-$38C6(a5)
-	move.b	#$1,-$38BE(a5)
+	clr.b	g_DemoSkipped(a5)
+	move.b	#$1,g_InLevelLoop(a5)
 	jsr	ClassList_InitAll(pc)
 	jsr	Level_FrameLoop(pc)
 	jsr	ClassList_CallSlot62(pc)
-	clr.b	-$38BE(a5)
+	clr.b	g_InLevelLoop(a5)
 	clr.b	g_DemoActive(a5)
 	lea.l	$5142(a5),a0
 	move.l	$2(a0),-(a7)

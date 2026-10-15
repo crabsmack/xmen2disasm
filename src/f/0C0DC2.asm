@@ -23,12 +23,12 @@ Water_Init:
 	add.l	d1,d0
 	lea.l	g_SpriteDefs(a5),a0
 	adda.w	d0,a0
-	move.l	a0,-$3C0E(a5)
-	move.w	$E(a6),-$3C10(a5)
-	move.w	$12(a6),-$3C12(a5)
-	clr.w	-$3C0A(a5)
-	clr.w	-$3C08(a5)
-	move.b	#$1,-$3C14(a5)
+	move.l	a0,g_WaterSplashSpr(a5)
+	move.w	$E(a6),g_WaterSurfaceY(a5)
+	move.w	$12(a6),g_WaterSplashY(a5)
+	clr.w	g_P2SplashTimer(a5)
+	clr.w	g_P1SplashTimer(a5)
+	move.b	#$1,g_WaterHurts(a5)
 	move.l	-$4(a6),d7
 	unlk	a6
 	rts

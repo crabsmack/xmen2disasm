@@ -44,7 +44,7 @@ AvalonA3_LoadLevel:
 	moveq	#$7,d0
 	move.l	d0,-(a7)
 	jsr	$521A(a5)	; -> Snd_Play
-	move.b	#$1,-$38B4(a5)
+	move.b	#$1,g_HudOn(a5)
 	move.w	#$7F,g_BgScrollFactorY(a5)
 	move.w	#$DC,g_BgScrollFactorX(a5)
 	clr.b	g_TwoPlayerStep(a5)

@@ -20,6 +20,6 @@ Game_ResetPlayers:
 	moveq	#$0,d1
 	move.b	g_ScnSiberiaB1(a5),d1
 	move.w	d1,g_SceneIndex(a5)
-	move.b	#$1,-$38C2(a5)
+	move.b	#$1,g_SceneIndexSet(a5)
 	unlk	a6
 	rts

@@ -9,7 +9,7 @@ SentinelsB2_InstallHooks:
 	lea.l	SentinelsB2_FrameHook(pc),a0
 	move.l	a0,g_SceneFrameHook(a5)
 	jsr	$23FA(a5)	; -> SentinelsD1_InitLight
-	move.b	#$1,-$38B4(a5)
+	move.b	#$1,g_HudOn(a5)
 	jsr	SentinelsB2_LoadDigits(pc)
 	jsr	SentinelsB2_ResetAlarm(pc)
 	pea.l	($13A).w

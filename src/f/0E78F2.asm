@@ -47,8 +47,8 @@ SentinelsA1_LoadLevel:
 	move.l	$2(a0),-(a7)
 	jsr	$4FCA(a5)	; -> Level_Load
 	clr.w	g_PalBase(a5)
-	clr.b	-$38B4(a5)
-	move.b	#$1,-$38B4(a5)
+	clr.b	g_HudOn(a5)
+	move.b	#$1,g_HudOn(a5)
 	move.w	#$80,g_BgScrollFactorX(a5)
 	move.w	#$80,g_BgScrollFactorY(a5)
 	clr.w	g_FgScrollBaseY(a5)

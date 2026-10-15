@@ -7,7 +7,7 @@
 ; ---------------------------------------------------------------------------
 Water_DrawHook:
 	link.w	a6,#$0
-	tst.w	-$3C08(a5)
+	tst.w	g_P1SplashTimer(a5)
 	bne.s	loc_0C1032
 	move.w	g_Player1+$4(a5),d0
 	ext.l	d0
@@ -17,7 +17,7 @@ Water_DrawHook:
 	move.w	d1,d0
 	cmpi.l	#$8000,d0
 	bne.s	loc_0C1032
-	move.w	-$3C10(a5),d0
+	move.w	g_WaterSurfaceY(a5),d0
 	ext.l	d0
 	lsl.l	#$8,d0
 	cmp.l	g_Player1+$C(a5),d0
@@ -25,7 +25,7 @@ Water_DrawHook:
 	tst.w	g_Player1+$18(a5)
 	bgt.s	loc_0C101C
 loc_0C1008:
-	move.w	-$3C10(a5),d0
+	move.w	g_WaterSurfaceY(a5),d0
 	ext.l	d0
 	lsl.l	#$8,d0
 	cmp.l	g_Player1+$C(a5),d0
@@ -36,10 +36,10 @@ loc_0C101C:
 	move.l	g_Player1+$8(a5),d0
 	asr.l	#$8,d0
 	move.w	d0,-$3C00(a5)
-	move.w	-$3C12(a5),-$3C02(a5)
-	move.w	#$24,-$3C08(a5)
+	move.w	g_WaterSplashY(a5),-$3C02(a5)
+	move.w	#$24,g_P1SplashTimer(a5)
 loc_0C1032:
-	tst.w	-$3C0A(a5)
+	tst.w	g_P2SplashTimer(a5)
 	bne.s	loc_0C108E
 	move.w	g_Player2+$4(a5),d0
 	ext.l	d0
@@ -49,7 +49,7 @@ loc_0C1032:
 	move.w	d1,d0
 	cmpi.l	#$8000,d0
 	bne.s	loc_0C108E
-	move.w	-$3C10(a5),d0
+	move.w	g_WaterSurfaceY(a5),d0
 	ext.l	d0
 	lsl.l	#$8,d0
 	cmp.l	g_Player2+$C(a5),d0
@@ -57,7 +57,7 @@ loc_0C1032:
 	tst.w	g_Player2+$18(a5)
 	bgt.s	loc_0C1078
 loc_0C1064:
-	move.w	-$3C10(a5),d0
+	move.w	g_WaterSurfaceY(a5),d0
 	ext.l	d0
 	lsl.l	#$8,d0
 	cmp.l	g_Player2+$C(a5),d0
@@ -68,35 +68,35 @@ loc_0C1078:
 	move.l	g_Player2+$8(a5),d0
 	asr.l	#$8,d0
 	move.w	d0,-$3C04(a5)
-	move.w	-$3C12(a5),-$3C06(a5)
-	move.w	#$24,-$3C0A(a5)
+	move.w	g_WaterSplashY(a5),-$3C06(a5)
+	move.w	#$24,g_P2SplashTimer(a5)
 loc_0C108E:
-	tst.w	-$3C08(a5)
+	tst.w	g_P1SplashTimer(a5)
 	beq.s	loc_0C10BC
-	subq.w	#$1,-$3C08(a5)
+	subq.w	#$1,g_P1SplashTimer(a5)
 	move.w	-$3C02(a5),d0
 	ext.l	d0
 	move.l	d0,-(a7)
 	move.w	-$3C00(a5),d0
 	ext.l	d0
 	move.l	d0,-(a7)
-	move.w	-$3C08(a5),d0
+	move.w	g_P1SplashTimer(a5),d0
 	ext.l	d0
 	move.l	d0,-(a7)
 	pea.l	g_Player1(a5)
 	jsr	Water_DrawSplash(pc)
 	lea.l	$10(a7),a7
 loc_0C10BC:
-	tst.w	-$3C0A(a5)
+	tst.w	g_P2SplashTimer(a5)
 	beq.s	loc_0C10EA
-	subq.w	#$1,-$3C0A(a5)
+	subq.w	#$1,g_P2SplashTimer(a5)
 	move.w	-$3C06(a5),d0
 	ext.l	d0
 	move.l	d0,-(a7)
 	move.w	-$3C04(a5),d0
 	ext.l	d0
 	move.l	d0,-(a7)
-	move.w	-$3C0A(a5),d0
+	move.w	g_P2SplashTimer(a5),d0
 	ext.l	d0
 	move.l	d0,-(a7)
 	pea.l	g_Player2(a5)
@@ -115,12 +115,12 @@ loc_0C10EA:
 	ble.s	loc_0C114C
 	tst.w	g_Player1+$6A(a5)
 	bgt.s	loc_0C114C
-	move.w	-$3C10(a5),d0
+	move.w	g_WaterSurfaceY(a5),d0
 	ext.l	d0
 	lsl.l	#$8,d0
 	cmp.l	g_Player1+$C(a5),d0
 	bge.s	loc_0C114C
-	tst.b	-$3C14(a5)
+	tst.b	g_WaterHurts(a5)
 	beq.s	loc_0C114C
 	moveq	#-$1,d0
 	move.l	d0,-(a7)
@@ -149,12 +149,12 @@ loc_0C114C:
 	ble.s	loc_0C11AE
 	tst.w	g_Player2+$6A(a5)
 	bgt.s	loc_0C11AE
-	move.w	-$3C10(a5),d0
+	move.w	g_WaterSurfaceY(a5),d0
 	ext.l	d0
 	lsl.l	#$8,d0
 	cmp.l	g_Player2+$C(a5),d0
 	bge.s	loc_0C11AE
-	tst.b	-$3C14(a5)
+	tst.b	g_WaterHurts(a5)
 	beq.s	loc_0C11AE
 	moveq	#-$1,d0
 	move.l	d0,-(a7)

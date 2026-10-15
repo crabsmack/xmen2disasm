@@ -12,9 +12,9 @@ Game_PlayAttractDemo:
 	move.b	#$1,g_DemoActive(a5)
 	move.w	d7,g_SceneIndex(a5)
 	lea.l	Scene_PreLoadReset(pc),a0
-	move.l	a0,-$38E8(a5)
+	move.l	a0,g_ScenePreLoadHook(a5)
 	lea.l	Scene_PostLoadVram(pc),a0
-	move.l	a0,-$38EC(a5)
+	move.l	a0,g_ScenePostLoadHook(a5)
 	move.b	#$1,g_SndMute(a5)
 	move.l	d7,d0
 	asl.w	#$3,d0
@@ -23,11 +23,11 @@ Game_PlayAttractDemo:
 	jsr	(a1)
 	clr.b	g_SndMute(a5)
 	jsr	$4ACA(a5)	; -> Cyclops_ResetBeams
-	tst.b	-$38C6(a5)
+	tst.b	g_DemoSkipped(a5)
 	beq.s	loc_005F0C
 	ori.w	#$2,-$3C5E(a5)
 loc_005F0C:
 	jsr	Game_ResetPlayers(pc)
 loc_005F10:
-	clr.b	-$38C2(a5)
+	clr.b	g_SceneIndexSet(a5)
 	bra.w	loc_005CF8

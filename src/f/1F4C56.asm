@@ -62,7 +62,7 @@ loc_1F4CE8:
 	ble.s	loc_1F4D34
 loc_1F4CF4:
 	ext.l	d0
-	tst.b	-$38BA(a5)
+	tst.b	g_HalfSpeed(a5)
 	beq.s	loc_1F4CFE
 	asr.l	#$1,d0
 loc_1F4CFE:
@@ -84,7 +84,7 @@ loc_1F4D18:
 loc_1F4D24:
 	neg.w	d0
 	ext.l	d0
-	tst.b	-$38BA(a5)
+	tst.b	g_HalfSpeed(a5)
 	beq.s	loc_1F4D30
 	asr.l	#$1,d0
 loc_1F4D30:
@@ -97,7 +97,7 @@ loc_1F4D34:
 	beq.w	loc_1F4EF8
 loc_1F4D46:
 	movea.l	$76(a3),a4
-	tst.b	-$38C4(a5)
+	tst.b	g_SegFlag38C4(a5)
 	beq.s	loc_1F4DB6
 	move.l	$72(a3),d0
 	bge.s	loc_1F4D5C
@@ -203,7 +203,7 @@ loc_1F4E62:
 	cmp.w	$26(a3),d0
 	ble.s	loc_1F4EA2
 	ext.l	d0
-	tst.b	-$38BA(a5)
+	tst.b	g_HalfSpeed(a5)
 	beq.s	loc_1F4E72
 	asr.l	#$1,d0
 loc_1F4E72:
@@ -222,7 +222,7 @@ loc_1F4E8C:
 	ble.s	loc_1F4EA2
 	neg.w	d0
 	ext.l	d0
-	tst.b	-$38BA(a5)
+	tst.b	g_HalfSpeed(a5)
 	beq.s	loc_1F4E9E
 	asr.l	#$1,d0
 loc_1F4E9E:
@@ -238,7 +238,7 @@ loc_1F4EB8:
 	cmp.w	$28(a3),d0
 	ble.s	loc_1F4EF8
 	ext.l	d0
-	tst.b	-$38BA(a5)
+	tst.b	g_HalfSpeed(a5)
 	beq.s	loc_1F4EC8
 	asr.l	#$1,d0
 loc_1F4EC8:
@@ -257,7 +257,7 @@ loc_1F4EE2:
 	ble.s	loc_1F4EF8
 	neg.w	d0
 	ext.l	d0
-	tst.b	-$38BA(a5)
+	tst.b	g_HalfSpeed(a5)
 	beq.s	loc_1F4EF4
 	asr.l	#$1,d0
 loc_1F4EF4:

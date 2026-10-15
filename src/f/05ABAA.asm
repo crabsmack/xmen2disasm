@@ -39,7 +39,7 @@ BaniMazaB2_LoadLevel:
 	clr.w	g_BgScrollFactorX(a5)
 	move.w	#$B8,g_LevelLoadWord3898(a5)
 	move.w	#$C0,g_StartCamOffsetY(a5)
-	move.b	#$1,-$38B4(a5)
+	move.b	#$1,g_HudOn(a5)
 	clr.b	g_TwoPlayerStep(a5)
 	unlk	a6
 	rts

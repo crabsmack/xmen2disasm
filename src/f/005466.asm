@@ -28,8 +28,8 @@ loc_005486:
 	ble.s	loc_005486
 	jsr	$4192(a5)	; -> Sys_InitHardware
 	jsr	$5042(a5)	; -> Spr_InitLinks
-	clr.b	-$38BE(a5)
-	clr.b	-$3A08(a5)
+	clr.b	g_InLevelLoop(a5)
+	clr.b	g_FrameTick(a5)
 	move.b	#$1,g_FrameUpdated(a5)
 	jsr	$4FC2(a5)	; -> Sys_InitGameVideo
 loc_0054BC:

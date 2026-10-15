@@ -37,7 +37,7 @@ SavageA4_LoadLevel:
 	lea.l	$1C82(a5),a0
 	move.l	$2(a0),-(a7)
 	jsr	$4FCA(a5)	; -> Level_Load
-	move.b	#$1,-$38B4(a5)
+	move.b	#$1,g_HudOn(a5)
 	clr.b	g_BgWrapY(a5)
 	clr.w	g_BgScrollFactorX(a5)
 	move.w	#$100,g_BgScrollFactorY(a5)

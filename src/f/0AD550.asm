@@ -56,7 +56,7 @@ loc_0AD5B4:
 loc_0AD5C4:
 	tst.b	d6
 	beq.w	loc_0AD660
-	tst.w	-$38BC(a5)
+	tst.w	g_FloodLineY(a5)
 	ble.w	loc_0AD660
 	tst.b	d7
 	beq.s	loc_0AD5FC
@@ -68,10 +68,10 @@ loc_0AD5E4:
 	move.l	#$200,d0
 loc_0AD5EA:
 	ext.l	d0
-	sub.l	d0,-$3C32(a5)
-	move.l	-$3C32(a5),d0
+	sub.l	d0,g_FloodY88(a5)
+	move.l	g_FloodY88(a5),d0
 	asr.l	#$8,d0
-	move.w	d0,-$38BC(a5)
+	move.w	d0,g_FloodLineY(a5)
 	bra.s	loc_0AD652
 loc_0AD5FC:
 	moveq	#$0,d0
@@ -86,10 +86,10 @@ loc_0AD616:
 	move.l	#$80,d0
 loc_0AD61C:
 	ext.l	d0
-	sub.l	d0,-$3C32(a5)
-	move.l	-$3C32(a5),d0
+	sub.l	d0,g_FloodY88(a5)
+	move.l	g_FloodY88(a5),d0
 	asr.l	#$8,d0
-	move.w	d0,-$38BC(a5)
+	move.w	d0,g_FloodLineY(a5)
 	bra.s	loc_0AD652
 loc_0AD62E:
 	tst.b	g_TwoPlayerStep(a5)
@@ -100,15 +100,15 @@ loc_0AD63C:
 	move.l	#$100,d0
 loc_0AD642:
 	ext.l	d0
-	sub.l	d0,-$3C32(a5)
-	move.l	-$3C32(a5),d0
+	sub.l	d0,g_FloodY88(a5)
+	move.l	g_FloodY88(a5),d0
 	asr.l	#$8,d0
-	move.w	d0,-$38BC(a5)
+	move.w	d0,g_FloodLineY(a5)
 loc_0AD652:
-	move.w	-$38BC(a5),d0
+	move.w	g_FloodLineY(a5),d0
 	addq.w	#$1,d0
-	move.w	d0,-$3C12(a5)
-	move.w	d0,-$3C10(a5)
+	move.w	d0,g_WaterSplashY(a5)
+	move.w	d0,g_WaterSurfaceY(a5)
 loc_0AD660:
 	move.l	$8(a6),-(a7)
 	jsr	$4212(a5)	; -> Cam_DefaultUpdate

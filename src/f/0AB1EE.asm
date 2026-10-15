@@ -19,7 +19,7 @@ BubbleManager_SpawnAtSurface:
 	add.l	d0,d2
 	move.l	d2,d6
 	lsl.l	#$8,d6
-	move.w	-$38BC(a5),d0
+	move.w	g_FloodLineY(a5),d0
 	ext.l	d0
 	move.l	d0,d7
 	lsl.l	#$8,d7

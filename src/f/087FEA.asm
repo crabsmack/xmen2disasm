@@ -23,7 +23,7 @@ BroodBoss_StateFinish:
 	move.l	d0,-(a7)
 	pea.l	-$10(a6)
 	jsr	$1A42(a5)	; -> BroodClaw_Spawn
-	move.b	#$1,-$3894(a5)
+	move.b	#$1,g_SpawnEnabled(a5)
 	move.l	a4,-(a7)
 	movea.l	(a4),a0
 	movea.l	$52(a0),a1

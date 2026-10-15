@@ -19,7 +19,7 @@ LogoAndDemo_RunScene:
 	bra.s	loc_066FB6
 loc_066FAA:
 	move.w	#$FFFF,g_SceneIndex(a5)
-	move.b	#$1,-$38C2(a5)
+	move.b	#$1,g_SceneIndexSet(a5)
 loc_066FB6:
 	unlk	a6
 	rts

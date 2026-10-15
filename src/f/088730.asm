@@ -51,7 +51,7 @@ CloneA5_RunScene:
 	move.l	d1,-(a7)
 	pea.l	-$2D0(a6)
 	jsr	$2E2A(a5)	; -> ICandy_PoolInit
-	move.b	#$1,-$38B4(a5)
+	move.b	#$1,g_HudOn(a5)
 	clr.w	g_FgScrollFactorX(a5)
 	move.w	#$100,g_FgScrollFactorY(a5)
 	clr.w	g_BgScrollFactorX(a5)
@@ -104,7 +104,7 @@ loc_08880A:
 	move.l	d1,-(a7)
 	jsr	$3B62(a5)	; -> Debris_CreatePool
 	move.l	d0,-$3B14(a5)
-	clr.b	-$3894(a5)
+	clr.b	g_SpawnEnabled(a5)
 	move.w	g_Player1+$4(a5),d0
 	ext.l	d0
 	move.w	#$C000,d1

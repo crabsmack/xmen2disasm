@@ -11,13 +11,13 @@ SavageA2_InitFlood:
 	ext.l	d0
 	add.l	#$E0,d0
 	lsl.l	#$8,d0
-	move.l	d0,-$3C32(a5)
+	move.l	d0,g_FloodY88(a5)
 	asr.l	#$8,d0
-	move.w	d0,-$38BC(a5)
+	move.w	d0,g_FloodLineY(a5)
 	ext.l	d0
 	addq.l	#$1,d0
 	move.l	d0,-(a7)
-	move.w	-$38BC(a5),d0
+	move.w	g_FloodLineY(a5),d0
 	ext.l	d0
 	addq.l	#$1,d0
 	move.l	d0,-(a7)

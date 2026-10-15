@@ -36,7 +36,7 @@ loc_00F996:
 	lea.l	AvalonB1_CamHookFinish(pc),a0
 	movea.l	g_Camera(a5),a1
 	move.l	a0,$4(a1)
-	move.b	#$1,-$38B4(a5)
+	move.b	#$1,g_HudOn(a5)
 loc_00F9AC:
 	move.w	g_Player1+$4(a5),d0
 	ext.l	d0

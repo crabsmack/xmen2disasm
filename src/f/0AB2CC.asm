@@ -10,13 +10,13 @@ BubbleManager_StateEdge:
 	movea.l	$8(a6),a4
 	tst.w	$6E(a4)
 	bne.s	loc_0AB304
-	move.w	-$38BC(a5),d0
+	move.w	g_FloodLineY(a5),d0
 	cmp.w	g_CameraY(a5),d0
 	ble.s	loc_0AB304
 	move.w	g_CameraY(a5),d0
 	ext.l	d0
 	add.l	#$E0,d0
-	move.w	-$38BC(a5),d1
+	move.w	g_FloodLineY(a5),d1
 	ext.l	d1
 	cmp.l	d1,d0
 	ble.s	loc_0AB304

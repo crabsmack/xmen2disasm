@@ -32,7 +32,7 @@ loc_099410:
 	bne.s	loc_099430
 	andi.l	#$FFDFFFFF,g_Player2+$90(a5)
 loc_099430:
-	move.b	#$1,-$3894(a5)
+	move.b	#$1,g_SpawnEnabled(a5)
 	movea.l	g_Camera(a5),a0
 	moveq	#$0,d0
 	move.l	d0,$1C(a0)
