@@ -5,7 +5,7 @@ sub_183FFE:
 	link.w	a6,#$0
 	movem.l	d3/d5-d7/a4,-(a7)
 	movea.l	$8(a6),a4
-	lea.l	-$1758(a5),a0
+	lea.l	g_Player1(a5),a0
 	cmpa.l	a4,a0
 	seq.b	d3
 	neg.b	d3

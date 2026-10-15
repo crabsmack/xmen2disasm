@@ -20,7 +20,7 @@ loc_03A8AC:
 	ext.w	d3
 	ext.l	d3
 	beq.s	loc_03A8BA
-	lea.l	-$1758(a5),a0
+	lea.l	g_Player1(a5),a0
 	move.l	a0,d0
 	bra.s	loc_03A8BC
 loc_03A8BA:
@@ -43,7 +43,7 @@ loc_03A8E2:
 	ext.w	d3
 	ext.l	d3
 	beq.s	loc_03A8F0
-	lea.l	-$1848(a5),a0
+	lea.l	g_Player2(a5),a0
 	move.l	a0,d0
 	bra.s	loc_03A8F2
 loc_03A8F0:

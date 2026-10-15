@@ -64,7 +64,7 @@ loc_0ADACA:
 loc_0ADAD4:
 	moveq	#$0,d0
 	move.b	-$3B60(a5),d0
-	cmp.w	-$359C(a5),d0
+	cmp.w	g_SceneIndex(a5),d0
 	bne.s	loc_0ADAF0
 	moveq	#$7F,d7
 	move.w	d7,d6

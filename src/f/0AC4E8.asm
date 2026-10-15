@@ -24,7 +24,7 @@ sub_0AC4E8:
 	bgt.w	loc_0AC912
 	moveq	#$0,d0
 	move.b	-$3B60(a5),d0
-	cmp.w	-$359C(a5),d0
+	cmp.w	g_SceneIndex(a5),d0
 	bne.s	loc_0AC572
 	move.w	#$38,-$E(a6)
 	move.w	-$E(a6),d0
@@ -383,7 +383,7 @@ loc_0AC8A6:
 	move.w	d1,d0
 	cmpi.l	#$8000,d0
 	bne.s	loc_0AC8D4
-	lea.l	-$1758(a5),a0
+	lea.l	g_Player1(a5),a0
 	cmpa.l	a3,a0
 	bne.s	loc_0AC8D4
 	tst.w	-$16EE(a5)
@@ -399,7 +399,7 @@ loc_0AC8D4:
 	move.w	d1,d0
 	cmpi.l	#$8000,d0
 	bne.s	loc_0AC900
-	lea.l	-$1848(a5),a0
+	lea.l	g_Player2(a5),a0
 	cmpa.l	a3,a0
 	bne.s	loc_0AC900
 	tst.w	-$17DE(a5)

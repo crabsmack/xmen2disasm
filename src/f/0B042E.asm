@@ -3,8 +3,8 @@
 ; ---------------------------------------------------------------------------
 sub_0B042E:
 	link.w	a6,#$0
-	move.l	-$35A2(a5),d0
-	addq.l	#$1,-$35A2(a5)
+	move.l	g_FrameCounter(a5),d0
+	addq.l	#$1,g_FrameCounter(a5)
 	jsr	$1C02(a5)	; -> sub_0AD486
 	tst.b	-$3A02(a5)
 	bne.s	loc_0B0448
@@ -12,8 +12,8 @@ sub_0B042E:
 loc_0B0448:
 	tst.b	-$38DE(a5)
 	beq.s	loc_0B0464
-	move.l	-$35A2(a5),d0
-	addq.l	#$1,-$35A2(a5)
+	move.l	g_FrameCounter(a5),d0
+	addq.l	#$1,g_FrameCounter(a5)
 	jsr	$1C02(a5)	; -> sub_0AD486
 	tst.b	-$3A02(a5)
 	bne.s	loc_0B0464

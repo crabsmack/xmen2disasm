@@ -50,7 +50,7 @@ sub_017506:
 	moveq	#$2,d1
 	and.w	$92(a4),d1
 	beq.s	loc_0175A4
-	move.l	-$35A2(a5),d0
+	move.l	g_FrameCounter(a5),d0
 	btst	#$0,d0
 	beq.s	loc_01759E
 	ori.w	#$2000,d5

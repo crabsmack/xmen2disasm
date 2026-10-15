@@ -24,7 +24,7 @@ loc_0063BE:
 	move.w	d1,d0
 	cmpi.l	#$8000,d0
 	bne.w	loc_00649C
-	lea.l	-$1758(a5),a3
+	lea.l	g_Player1(a5),a3
 	move.w	$68(a3),d6
 	bgt.s	loc_0063E6
 	clr.w	d7
@@ -48,7 +48,7 @@ loc_006400:
 	cmpi.w	#$2,d0
 	bhi.s	loc_006414
 	moveq	#$10,d0
-	and.l	-$35A2(a5),d0
+	and.l	g_FrameCounter(a5),d0
 	beq.s	loc_006414
 	clr.w	d7
 loc_006414:
@@ -86,7 +86,7 @@ loc_00645C:
 	cmp.l	d0,d1
 	bne.s	loc_006478
 	moveq	#$8,d0
-	and.l	-$35A2(a5),d0
+	and.l	g_FrameCounter(a5),d0
 	beq.s	loc_006472
 	addq.w	#$1,d7
 loc_006472:
@@ -111,7 +111,7 @@ loc_00649C:
 	move.w	d1,d0
 	cmpi.l	#$8000,d0
 	bne.w	loc_00657A
-	lea.l	-$1848(a5),a4
+	lea.l	g_Player2(a5),a4
 	move.w	$68(a4),d6
 	bgt.s	loc_0064C4
 	clr.w	d7
@@ -135,7 +135,7 @@ loc_0064DE:
 	cmpi.w	#$2,d0
 	bhi.s	loc_0064F2
 	moveq	#$10,d0
-	and.l	-$35A2(a5),d0
+	and.l	g_FrameCounter(a5),d0
 	beq.s	loc_0064F2
 	clr.w	d7
 loc_0064F2:
@@ -173,7 +173,7 @@ loc_00653A:
 	cmp.l	d0,d1
 	bne.s	loc_006556
 	moveq	#$8,d0
-	and.l	-$35A2(a5),d0
+	and.l	g_FrameCounter(a5),d0
 	beq.s	loc_006550
 	addq.w	#$1,d7
 loc_006550:

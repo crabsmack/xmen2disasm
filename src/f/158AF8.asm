@@ -18,7 +18,7 @@ sub_158AF8:
 	sub.l	d1,d0
 	move.w	d0,-$2(a6)
 	lea.l	$9E(a3),a4
-	move.l	-$35A2(a5),d0
+	move.l	g_FrameCounter(a5),d0
 	lsr.l	#$2,d0
 	btst	#$0,d0
 	beq.s	loc_158B4C

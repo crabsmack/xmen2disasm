@@ -114,11 +114,11 @@ loc_138C6C:
 	seq.b	d3
 	neg.b	d3
 	beq.s	loc_138CAE
-	lea.l	-$1758(a5),a0
+	lea.l	g_Player1(a5),a0
 	move.l	a0,d1
 	bra.s	loc_138CB4
 loc_138CAE:
-	lea.l	-$1848(a5),a0
+	lea.l	g_Player2(a5),a0
 	move.l	a0,d1
 loc_138CB4:
 	movea.l	d1,a0

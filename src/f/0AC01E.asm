@@ -11,11 +11,11 @@ sub_0AC01E:
 	moveq	#$1,d3
 	moveq	#$0,d0
 	move.b	-$3B5A(a5),d0
-	cmp.w	-$359C(a5),d0
+	cmp.w	g_SceneIndex(a5),d0
 	beq.s	loc_0AC052
 	moveq	#$0,d0
 	move.b	-$3B5E(a5),d0
-	cmp.w	-$359C(a5),d0
+	cmp.w	g_SceneIndex(a5),d0
 	beq.s	loc_0AC052
 	moveq	#$0,d3
 loc_0AC052:

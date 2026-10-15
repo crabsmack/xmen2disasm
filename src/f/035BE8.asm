@@ -101,7 +101,7 @@ loc_035CC4:
 	tst.b	-$38DE(a5)
 	bne.w	loc_035D9A
 	moveq	#$1,d0
-	and.l	-$35A2(a5),d0
+	and.l	g_FrameCounter(a5),d0
 	beq.w	loc_035D9A
 	lea.l	$74A(a5),a0
 	movea.l	$2(a0),a3

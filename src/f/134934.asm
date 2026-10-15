@@ -27,7 +27,7 @@ sub_134934:
 	clr.w	$20(a4)
 	moveq	#$0,d0
 	move.b	-$3B5C(a5),d0
-	cmp.w	-$359C(a5),d0
+	cmp.w	g_SceneIndex(a5),d0
 	lea.l	$10(a7),a7
 	beq.s	loc_1349A4
 	move.w	-$1A84(a5),d0

@@ -25,7 +25,7 @@ sub_160A18:
 	seq.b	d3
 	neg.b	d3
 	beq.s	loc_160A7C
-	lea.l	-$1758(a5),a0
+	lea.l	g_Player1(a5),a0
 	move.l	a0,d0
 	bra.s	loc_160AA2
 loc_160A7C:
@@ -39,7 +39,7 @@ loc_160A7C:
 	seq.b	d3
 	neg.b	d3
 	beq.s	loc_160AA0
-	lea.l	-$1848(a5),a0
+	lea.l	g_Player2(a5),a0
 	move.l	a0,d0
 	bra.s	loc_160AA2
 loc_160AA0:

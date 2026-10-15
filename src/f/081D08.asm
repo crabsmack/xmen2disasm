@@ -4,8 +4,8 @@
 sub_081D08:
 	link.w	a6,#$0
 	movem.l	d6-d7/a4,-(a7)
-	move.l	-$35A2(a5),d0
-	addq.l	#$1,-$35A2(a5)
+	move.l	g_FrameCounter(a5),d0
+	addq.l	#$1,g_FrameCounter(a5)
 	tst.w	-$3B08(a5)
 	bne.s	loc_081D9A
 	lea.l	$1152(a5),a0
@@ -60,8 +60,8 @@ loc_081D9A:
 loc_081DAA:
 	tst.b	-$38DE(a5)
 	beq.s	loc_081DC8
-	move.l	-$35A2(a5),d0
-	addq.l	#$1,-$35A2(a5)
+	move.l	g_FrameCounter(a5),d0
+	addq.l	#$1,g_FrameCounter(a5)
 	tst.b	-$3A02(a5)
 	bne.s	loc_081DC8
 	tst.w	-$3B04(a5)

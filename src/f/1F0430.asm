@@ -13,16 +13,16 @@ sub_1F0430:
 	movea.l	$46(a0),a1
 	jsr	(a1)
 	move.w	#$FF,$6C(a4)
-	lea.l	-$1758(a5),a0
+	lea.l	g_Player1(a5),a0
 	cmpa.l	a4,a0
 	seq.b	d3
 	neg.b	d3
 	beq.s	loc_1F0468
-	lea.l	-$1848(a5),a0
+	lea.l	g_Player2(a5),a0
 	move.l	a0,d0
 	bra.s	loc_1F046E
 loc_1F0468:
-	lea.l	-$1758(a5),a0
+	lea.l	g_Player1(a5),a0
 	move.l	a0,d0
 loc_1F046E:
 	movea.l	d0,a3

@@ -3,7 +3,7 @@
 ; ---------------------------------------------------------------------------
 sub_1F94A6:
 	link.w	a6,#$0
-	move.l	-$35A2(a5),d0
-	addq.l	#$1,-$35A2(a5)
+	move.l	g_FrameCounter(a5),d0
+	addq.l	#$1,g_FrameCounter(a5)
 	unlk	a6
 	rts

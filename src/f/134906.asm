@@ -6,7 +6,7 @@ sub_134906:
 	jsr	sub_13459E(pc)
 	moveq	#$0,d0
 	move.b	-$3B5C(a5),d0
-	cmp.w	-$359C(a5),d0
+	cmp.w	g_SceneIndex(a5),d0
 	beq.s	loc_134930
 	moveq	#$1,d0
 	move.l	d0,-(a7)

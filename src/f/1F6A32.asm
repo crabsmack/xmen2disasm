@@ -26,7 +26,7 @@ sub_1F6A32:
 	moveq	#$0,d0
 	bra.w	loc_1F6B4C
 loc_1F6A7C:
-	lea.l	-$1848(a5),a0
+	lea.l	g_Player2(a5),a0
 	move.l	a0,d0
 	bra.w	loc_1F6B4C
 loc_1F6A86:
@@ -49,7 +49,7 @@ loc_1F6A86:
 	moveq	#$0,d0
 	bra.w	loc_1F6B4C
 loc_1F6ABC:
-	lea.l	-$1758(a5),a0
+	lea.l	g_Player1(a5),a0
 	move.l	a0,d0
 	bra.w	loc_1F6B4C
 loc_1F6AC6:
@@ -109,11 +109,11 @@ loc_1F6B34:
 	add.l	d0,d5
 	cmp.l	-$C(a6),d5
 	ble.s	loc_1F6B46
-	lea.l	-$1758(a5),a0
+	lea.l	g_Player1(a5),a0
 	move.l	a0,d0
 	bra.s	loc_1F6B4C
 loc_1F6B46:
-	lea.l	-$1848(a5),a0
+	lea.l	g_Player2(a5),a0
 	move.l	a0,d0
 loc_1F6B4C:
 	movem.l	-$24(a6),d3-d7/a4

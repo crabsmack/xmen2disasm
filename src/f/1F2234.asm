@@ -30,7 +30,7 @@ sub_1F2234:
 	movea.l	$12(a0),a1
 	jsr	(a1)
 	andi.w	#$BFFF,$4(a4)
-	lea.l	-$1758(a5),a0
+	lea.l	g_Player1(a5),a0
 	cmpa.l	a4,a0
 	seq.b	d3
 	neg.b	d3
@@ -42,7 +42,7 @@ loc_1F229C:
 loc_1F229E:
 	move.b	d0,$15(a4)
 	move.l	#$2000,$90(a4)
-	lea.l	-$1758(a5),a0
+	lea.l	g_Player1(a5),a0
 	cmpa.l	a4,a0
 	lea.l	$1C(a7),a7
 	bne.s	loc_1F22BC

@@ -99,7 +99,7 @@ loc_1CF4E0:
 	moveq	#$0,d1
 	move.b	d0,d1
 	move.w	d1,-$14(a6)
-	move.l	-$35A2(a5),d0
+	move.l	g_FrameCounter(a5),d0
 	lsr.l	#$1,d0
 	moveq	#$1,d1
 	and.l	d0,d1
@@ -271,7 +271,7 @@ loc_1CF6F4:
 	blt.w	loc_1CF7E6
 	cmpi.w	#$E0,d6
 	bgt.w	loc_1CF7E6
-	move.l	-$35A2(a5),d0
+	move.l	g_FrameCounter(a5),d0
 	lsr.l	#$1,d0
 	add.l	d7,d0
 	moveq	#$3,d1

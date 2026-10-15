@@ -9,10 +9,10 @@ sub_10B6BE:
 	movea.l	$10(a6),a4
 	moveq	#$0,d0
 	movea.l	d0,a3
-	lea.l	-$1758(a5),a0
+	lea.l	g_Player1(a5),a0
 	cmpa.l	a4,a0
 	beq.s	loc_10B6E6
-	lea.l	-$1848(a5),a0
+	lea.l	g_Player2(a5),a0
 	cmpa.l	a4,a0
 	bne.s	loc_10B6E8
 loc_10B6E6:

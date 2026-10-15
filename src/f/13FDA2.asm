@@ -39,7 +39,7 @@ loc_13FDD2:
 	add.l	$96(a4),d0
 	move.l	d0,$C(a4)
 	moveq	#$1,d0
-	and.l	-$35A2(a5),d0
+	and.l	g_FrameCounter(a5),d0
 	beq.s	loc_13FE2C
 	addq.w	#$1,$9A(a4)
 	bra.s	loc_13FE2C

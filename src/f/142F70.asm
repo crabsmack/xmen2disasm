@@ -44,11 +44,11 @@ loc_142FC2:
 	seq.b	d3
 	neg.b	d3
 	beq.s	loc_142FE6
-	lea.l	-$1758(a5),a0
+	lea.l	g_Player1(a5),a0
 	move.l	a0,d0
 	bra.s	loc_142FEC
 loc_142FE6:
-	lea.l	-$1848(a5),a0
+	lea.l	g_Player2(a5),a0
 	move.l	a0,d0
 loc_142FEC:
 	movea.l	d0,a0

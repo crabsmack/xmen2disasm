@@ -140,7 +140,7 @@ loc_01C3C2:
 	add.l	d4,d0
 	asr.l	#$1,d0
 	move.w	d0,-$2(a6)
-	lea.l	-$1758(a5),a4
+	lea.l	g_Player1(a5),a4
 	move.w	$4(a4),d0
 	ext.l	d0
 	move.w	#$C000,d2
@@ -195,7 +195,7 @@ loc_01C464:
 	move.w	#$A,$6A(a0)
 	lea.l	$18(a7),a7
 loc_01C4A4:
-	lea.l	-$1848(a5),a4
+	lea.l	g_Player2(a5),a4
 	move.w	$4(a4),d0
 	ext.l	d0
 	move.w	#$C000,d1

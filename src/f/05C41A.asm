@@ -31,9 +31,9 @@ sub_05C41A:
 	moveq	#$23,d0
 	move.l	d0,-(a7)
 	jsr	$521A(a5)	; -> sub_1FE584
-	pea.l	-$1758(a5)
+	pea.l	g_Player1(a5)
 	jsr	sub_05C22E(pc)
-	pea.l	-$1848(a5)
+	pea.l	g_Player2(a5)
 	jsr	sub_05C22E(pc)
 	move.w	#$64,$6E(a4)
 	lea.l	sub_05C4A0(pc),a0

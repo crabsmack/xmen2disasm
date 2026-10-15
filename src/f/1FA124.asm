@@ -39,7 +39,7 @@ loc_1FA168:
 	beq.s	loc_1FA190
 	jsr	$5A(a5)	; -> sub_006386
 loc_1FA190:
-	lea.l	-$1758(a5),a0
+	lea.l	g_Player1(a5),a0
 	move.l	a0,-$4(a6)
 	move.w	$4(a0),d0
 	ext.l	d0
@@ -53,7 +53,7 @@ loc_1FA190:
 	cmpi.w	#$200,$68(a0)
 	bgt.s	loc_1FA1CA
 	moveq	#$E,d0
-	and.l	-$35A2(a5),d0
+	and.l	g_FrameCounter(a5),d0
 	bne.s	loc_1FA1CA
 	jsr	$5A(a5)	; -> sub_006386
 loc_1FA1CA:
@@ -113,7 +113,7 @@ loc_1FA252:
 	movea.l	-$1FE6(a5),a0
 	move.w	#$97,$6(a0)
 loc_1FA292:
-	lea.l	-$1848(a5),a0
+	lea.l	g_Player2(a5),a0
 	move.l	a0,-$4(a6)
 	move.w	$4(a0),d0
 	ext.l	d0
@@ -127,7 +127,7 @@ loc_1FA292:
 	cmpi.w	#$200,$68(a0)
 	bgt.s	loc_1FA2CC
 	moveq	#$E,d0
-	and.l	-$35A2(a5),d0
+	and.l	g_FrameCounter(a5),d0
 	bne.s	loc_1FA2CC
 	jsr	$5A(a5)	; -> sub_006386
 loc_1FA2CC:
@@ -198,7 +198,7 @@ loc_1FA3A8:
 	beq.w	loc_1FA43A
 loc_1FA3B0:
 	moveq	#$10,d0
-	and.l	-$35A2(a5),d0
+	and.l	g_FrameCounter(a5),d0
 	beq.w	loc_1FA43A
 	lea.l	-$1FDA(a5),a0
 	movea.l	-$1FE6(a5),a1

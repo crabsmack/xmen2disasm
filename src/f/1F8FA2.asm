@@ -49,14 +49,14 @@ loc_1F9000:
 	move.l	a4,d0
 	beq.s	loc_1F9046
 	move.l	a4,$C(a3)
-	lea.l	-$1758(a5),a0
+	lea.l	g_Player1(a5),a0
 	cmpa.l	a4,a0
 	bne.s	loc_1F9022
 	ori.w	#$8,$12(a3)
 	moveq	#$1,d6
 	bra.s	loc_1F905C
 loc_1F9022:
-	lea.l	-$1848(a5),a0
+	lea.l	g_Player2(a5),a0
 	cmpa.l	a4,a0
 	bne.s	loc_1F9034
 	ori.w	#$8,$12(a3)

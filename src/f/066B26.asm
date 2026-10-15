@@ -7,7 +7,7 @@ sub_066B26:
 	moveq	#$9,d6
 	moveq	#$0,d0
 	move.b	-$3B86(a5),d0
-	cmp.w	-$359C(a5),d0
+	cmp.w	g_SceneIndex(a5),d0
 	bne.s	loc_066B3E
 	moveq	#-$1,d6
 loc_066B3E:
@@ -90,7 +90,7 @@ loc_066B48:
 	jsr	$50F2(a5)	; -> sub_1FD998
 	moveq	#$0,d0
 	move.b	-$3B8E(a5),d0
-	cmp.w	-$359C(a5),d0
+	cmp.w	g_SceneIndex(a5),d0
 	lea.l	$4C(a7),a7
 	bne.s	loc_066CA2
 	clr.w	-$3C58(a5)
@@ -107,7 +107,7 @@ loc_066B48:
 loc_066CA2:
 	moveq	#$0,d0
 	move.b	-$3B8C(a5),d0
-	cmp.w	-$359C(a5),d0
+	cmp.w	g_SceneIndex(a5),d0
 	beq.s	loc_066CB2
 	jsr	sub_065494(pc)
 loc_066CB2:
@@ -214,23 +214,23 @@ loc_066DB4:
 	clr.w	-$391E(a5)
 	move.b	#$1,-$3A06(a5)
 	moveq	#-$1,d7
-	tst.w	-$3B94(a5)
+	tst.w	g_P1Health(a5)
 	beq.s	loc_066E0C
-	move.l	-$1758(a5),-(a7)
+	move.l	g_Player1(a5),-(a7)
 	jsr	$42(a5)	; -> sub_0061D0
 	move.w	d0,d7
 	addq.w	#$4,a7
 loc_066E0C:
 	moveq	#-$1,d6
-	tst.w	-$3B96(a5)
+	tst.w	g_P2Health(a5)
 	beq.s	loc_066E20
-	move.l	-$1848(a5),-(a7)
+	move.l	g_Player2(a5),-(a7)
 	jsr	$42(a5)	; -> sub_0061D0
 	move.w	d0,d6
 	addq.w	#$4,a7
 loc_066E20:
-	move.b	d7,-$3BBC(a5)
-	move.b	d6,-$3BBB(a5)
+	move.b	d7,g_P1CharIndex(a5)
+	move.b	d6,g_P2CharIndex(a5)
 	clr.w	-$1754(a5)
 	clr.w	-$1844(a5)
 	jsr	sub_0656B0(pc)
@@ -254,8 +254,8 @@ loc_066E60:
 	tst.b	-$3A02(a5)
 	bne.s	loc_066E5C
 	jsr	$5112(a5)	; -> VDP_WaitVBlank
-	move.w	-$3B94(a5),-$16F0(a5)
-	move.w	-$3B96(a5),-$17E0(a5)
+	move.w	g_P1Health(a5),-$16F0(a5)
+	move.w	g_P2Health(a5),-$17E0(a5)
 	movem.l	-$14(a6),d3/d6-d7/a3-a4
 	unlk	a6
 	rts

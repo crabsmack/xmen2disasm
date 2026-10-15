@@ -11,7 +11,7 @@ sub_0AB1EE:
 	moveq	#$20,d1
 	add.l	d1,d0
 	move.l	#$FF,d2
-	and.l	-$35A2(a5),d2
+	and.l	g_FrameCounter(a5),d2
 	add.l	d0,d2
 	move.l	d2,d6
 	lsl.l	#$8,d6

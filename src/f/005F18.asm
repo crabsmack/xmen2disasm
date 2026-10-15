@@ -30,11 +30,11 @@ sub_005F18:
 	moveq	#$0,d0
 	move.l	d0,-$17C4(a5)
 	pea.l	-$1656(a5)
-	pea.l	-$1848(a5)
+	pea.l	g_Player2(a5)
 	jsr	$4062(a5)	; -> sub_15DF2A
 	move.l	d0,-$17C8(a5)
 	pea.l	-$1652(a5)
-	pea.l	-$1848(a5)
+	pea.l	g_Player2(a5)
 	jsr	$4062(a5)	; -> sub_15DF2A
 	move.l	d0,-$17C4(a5)
 	moveq	#-$4,d0

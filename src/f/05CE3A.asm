@@ -48,7 +48,7 @@ loc_05CEAA:
 	ext.l	d0
 	move.l	d0,d7
 	lsl.l	#$8,d7
-	lea.l	-$1758(a5),a4
+	lea.l	g_Player1(a5),a4
 loc_05CEB8:
 	move.w	$4(a4),d0
 	ext.l	d0
@@ -101,12 +101,12 @@ loc_05CF0E:
 	jsr	$4F7A(a5)	; -> sub_1F91E8
 	lea.l	$10(a7),a7
 loc_05CF44:
-	lea.l	-$1758(a5),a0
+	lea.l	g_Player1(a5),a0
 	cmpa.l	a4,a0
 	seq.b	d3
 	neg.b	d3
 	beq.s	loc_05CF58
-	lea.l	-$1848(a5),a4
+	lea.l	g_Player2(a5),a4
 	move.l	a4,d0
 	bra.s	loc_05CF5A
 loc_05CF58:

@@ -5,16 +5,16 @@ sub_005FA2:
 	link.w	a6,#$0
 	movem.l	d3/d6-d7/a3-a4,-(a7)
 	movea.l	$C(a6),a4
-	lea.l	-$1758(a5),a0
+	lea.l	g_Player1(a5),a0
 	cmpa.l	a4,a0
 	seq.b	d3
 	neg.b	d3
 	beq.s	loc_005FC2
-	lea.l	-$1848(a5),a0
+	lea.l	g_Player2(a5),a0
 	move.l	a0,d0
 	bra.s	loc_005FC8
 loc_005FC2:
-	lea.l	-$1758(a5),a0
+	lea.l	g_Player1(a5),a0
 	move.l	a0,d0
 loc_005FC8:
 	movea.l	d0,a3
@@ -90,7 +90,7 @@ loc_006040:
 	beq.s	loc_006092
 	ori.b	#$4,$2E(a4)
 loc_006092:
-	lea.l	-$1758(a5),a0
+	lea.l	g_Player1(a5),a0
 	cmpa.l	a4,a0
 	bne.s	loc_0060A0
 	clr.b	$9D(a4)

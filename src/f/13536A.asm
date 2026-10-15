@@ -62,7 +62,7 @@ loc_1353EA:
 	move.w	d6,$18(a4)
 	moveq	#$0,d0
 	move.b	-$3B5C(a5),d0
-	cmp.w	-$359C(a5),d0
+	cmp.w	g_SceneIndex(a5),d0
 	beq.s	loc_135410
 	lea.l	$36C2(a5),a0
 	move.l	$2(a0),-(a7)

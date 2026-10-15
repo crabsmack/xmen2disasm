@@ -14,8 +14,8 @@ sub_0884E6:
 	jsr	sub_088600(pc)
 	addq.w	#$8,a7
 loc_08850A:
-	move.l	-$35A2(a5),d0
-	addq.l	#$1,-$35A2(a5)
+	move.l	g_FrameCounter(a5),d0
+	addq.l	#$1,g_FrameCounter(a5)
 	jsr	sub_088422(pc)
 	tst.b	-$3C4A(a5)
 	beq.s	loc_088526
@@ -37,8 +37,8 @@ loc_088526:
 loc_08854E:
 	tst.b	-$38DE(a5)
 	beq.s	loc_088584
-	move.l	-$35A2(a5),d0
-	addq.l	#$1,-$35A2(a5)
+	move.l	g_FrameCounter(a5),d0
+	addq.l	#$1,g_FrameCounter(a5)
 	jsr	sub_088422(pc)
 	tst.b	-$3A02(a5)
 	bne.s	loc_088584

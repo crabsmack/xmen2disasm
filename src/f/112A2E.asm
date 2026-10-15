@@ -11,7 +11,7 @@ sub_112A2E:
 	tst.b	$10(a0)
 	beq.s	loc_112A7A
 	moveq	#$20,d0
-	and.l	-$35A2(a5),d0
+	and.l	g_FrameCounter(a5),d0
 	beq.s	loc_112A7A
 	moveq	#$9,d0
 	move.l	d0,-(a7)

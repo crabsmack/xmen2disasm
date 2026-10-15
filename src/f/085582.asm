@@ -28,11 +28,11 @@ loc_0855B8:
 	seq.b	d3
 	neg.b	d3
 	beq.s	loc_0855C8
-	lea.l	-$1758(a5),a3
+	lea.l	g_Player1(a5),a3
 	move.l	a3,d0
 	bra.s	loc_0855CE
 loc_0855C8:
-	lea.l	-$1848(a5),a3
+	lea.l	g_Player2(a5),a3
 	move.l	a3,d0
 loc_0855CE:
 	movea.l	d0,a0
@@ -66,11 +66,11 @@ loc_085614:
 	seq.b	d3
 	neg.b	d3
 	beq.s	loc_085624
-	lea.l	-$1758(a5),a3
+	lea.l	g_Player1(a5),a3
 	move.l	a3,d0
 	bra.s	loc_08562A
 loc_085624:
-	lea.l	-$1848(a5),a3
+	lea.l	g_Player2(a5),a3
 	move.l	a3,d0
 loc_08562A:
 	movea.l	d0,a0

@@ -6,7 +6,7 @@ sub_117BD4:
 	movem.l	d7/a4,-(a7)
 	movea.l	$C(a6),a4
 	moveq	#$2,d0
-	and.l	-$35A2(a5),d0
+	and.l	g_FrameCounter(a5),d0
 	beq.s	loc_117BEC
 	moveq	#$3,d0
 	bra.s	loc_117BEE

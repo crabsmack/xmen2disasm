@@ -77,7 +77,7 @@ loc_0BA9BA:
 	sub.w	d0,-$6(a6)
 	lea.l	$1E72(a5),a0
 	movea.l	$2(a0),a3
-	move.l	-$35A2(a5),d0
+	move.l	g_FrameCounter(a5),d0
 	lsr.l	#$1,d0
 	moveq	#$1F,d1
 	and.l	d0,d1
@@ -179,7 +179,7 @@ loc_0BAADE:
 	pea.l	-$3B18(a5)
 	moveq	#$1,d0
 	move.l	d0,-(a7)
-	pea.l	-$1758(a5)
+	pea.l	g_Player1(a5)
 	jsr	sub_0BA7D8(pc)
 	ext.l	d6
 	move.l	d6,-(a7)
@@ -188,7 +188,7 @@ loc_0BAADE:
 	pea.l	-$3B1C(a5)
 	moveq	#$2,d0
 	move.l	d0,-(a7)
-	pea.l	-$1848(a5)
+	pea.l	g_Player2(a5)
 	jsr	sub_0BA7D8(pc)
 	lea.l	$28(a7),a7
 	bra.w	loc_0BABF6
@@ -254,7 +254,7 @@ loc_0BABBA:
 	pea.l	-$3B18(a5)
 	moveq	#$1,d0
 	move.l	d0,-(a7)
-	pea.l	-$1758(a5)
+	pea.l	g_Player1(a5)
 	jsr	sub_0BA7D8(pc)
 	ext.l	d6
 	move.l	d6,-(a7)
@@ -263,13 +263,13 @@ loc_0BABBA:
 	pea.l	-$3B1C(a5)
 	moveq	#$2,d0
 	move.l	d0,-(a7)
-	pea.l	-$1848(a5)
+	pea.l	g_Player2(a5)
 	jsr	sub_0BA7D8(pc)
 	lea.l	$28(a7),a7
 loc_0BABF6:
 	lea.l	$1E72(a5),a0
 	movea.l	$2(a0),a3
-	move.l	-$35A2(a5),d0
+	move.l	g_FrameCounter(a5),d0
 	lsr.l	#$1,d0
 	moveq	#$1F,d1
 	and.l	d0,d1
@@ -364,7 +364,7 @@ loc_0BACEE:
 	pea.l	-$3B18(a5)
 	moveq	#$1,d0
 	move.l	d0,-(a7)
-	pea.l	-$1758(a5)
+	pea.l	g_Player1(a5)
 	jsr	sub_0BA7D8(pc)
 	ext.l	d6
 	move.l	d6,-(a7)
@@ -373,7 +373,7 @@ loc_0BACEE:
 	pea.l	-$3B1C(a5)
 	moveq	#$2,d0
 	move.l	d0,-(a7)
-	pea.l	-$1848(a5)
+	pea.l	g_Player2(a5)
 	jsr	sub_0BA7D8(pc)
 	addq.w	#$4,a3
 	cmpi.w	#$3E8,(a3)
@@ -483,7 +483,7 @@ loc_0BAE36:
 	pea.l	-$3B18(a5)
 	moveq	#$1,d0
 	move.l	d0,-(a7)
-	pea.l	-$1758(a5)
+	pea.l	g_Player1(a5)
 	jsr	sub_0BA7D8(pc)
 	ext.l	d6
 	move.l	d6,-(a7)
@@ -492,7 +492,7 @@ loc_0BAE36:
 	pea.l	-$3B1C(a5)
 	moveq	#$2,d0
 	move.l	d0,-(a7)
-	pea.l	-$1848(a5)
+	pea.l	g_Player2(a5)
 	jsr	sub_0BA7D8(pc)
 	addq.w	#$4,a3
 	cmpi.w	#$3E8,(a3)

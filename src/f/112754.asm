@@ -46,16 +46,16 @@ loc_1127BA:
 loc_1127DA:
 	moveq	#$20,d0
 	move.l	d0,-(a7)
-	move.l	-$35A2(a5),-(a7)
+	move.l	g_FrameCounter(a5),-(a7)
 	pea.l	-$3940(a5)
 	jsr	$4DAA(a5)	; -> Mem_Copy
 	move.b	#$1,-$3A06(a5)
 	moveq	#$2,d0
-	and.l	-$35A2(a5),d0
+	and.l	g_FrameCounter(a5),d0
 	lea.l	$C(a7),a7
 	beq.s	loc_112850
 	moveq	#$1,d0
-	and.l	-$35A2(a5),d0
+	and.l	g_FrameCounter(a5),d0
 	beq.s	loc_112850
 	move.l	$8(a4),d0
 	add.l	#$FFFFF300,d0

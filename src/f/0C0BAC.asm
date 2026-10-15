@@ -11,7 +11,7 @@ sub_0C0BAC:
 	asr.l	#$8,d7
 	moveq	#$0,d5
 	move.b	$AE(a4),d5
-	move.l	-$35A2(a5),d0
+	move.l	g_FrameCounter(a5),d0
 	lsr.l	d5,d0
 	moveq	#$1,d1
 	and.l	d0,d1

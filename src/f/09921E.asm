@@ -13,7 +13,7 @@ loc_099230:
 loc_099232:
 	move.w	d0,d7
 	ext.l	d7
-	add.l	d7,-$35A2(a5)
+	add.l	d7,g_FrameCounter(a5)
 	tst.w	-$3B06(a5)
 	ble.s	loc_099244
 	sub.w	d7,-$3B06(a5)

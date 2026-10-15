@@ -12,8 +12,8 @@ sub_0B611E:
 	moveq	#$13,d0
 	move.l	d0,-(a7)
 	jsr	$4E2A(a5)	; -> sub_1F5F5A
-	move.l	-$35A2(a5),d0
-	addq.l	#$1,-$35A2(a5)
+	move.l	g_FrameCounter(a5),d0
+	addq.l	#$1,g_FrameCounter(a5)
 	jsr	sub_0B60BE(pc)
 	tst.b	-$3A02(a5)
 	addq.w	#$8,a7
@@ -22,8 +22,8 @@ sub_0B611E:
 loc_0B6152:
 	tst.b	-$38DE(a5)
 	beq.s	loc_0B616E
-	move.l	-$35A2(a5),d0
-	addq.l	#$1,-$35A2(a5)
+	move.l	g_FrameCounter(a5),d0
+	addq.l	#$1,g_FrameCounter(a5)
 	jsr	sub_0B60BE(pc)
 	tst.b	-$3A02(a5)
 	bne.s	loc_0B616E
@@ -32,7 +32,7 @@ loc_0B616E:
 	moveq	#$8,d0
 	cmp.w	-$3B02(a5),d0
 	blt.s	loc_0B6192
-	move.l	-$35A2(a5),d0
+	move.l	g_FrameCounter(a5),d0
 	btst	#$0,d0
 	beq.s	loc_0B618A
 	lea.l	$1DCA(a5),a0

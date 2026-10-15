@@ -63,7 +63,7 @@ loc_1356B6:
 	move.w	#$FFE5,$9C(a4)
 	moveq	#$0,d0
 	move.b	-$3B5C(a5),d0
-	cmp.w	-$359C(a5),d0
+	cmp.w	g_SceneIndex(a5),d0
 	beq.s	loc_1356DE
 	lea.l	$36CA(a5),a0
 	move.l	$2(a0),-(a7)

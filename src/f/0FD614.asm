@@ -6,7 +6,7 @@ sub_0FD614:
 	move.l	d7,-(a7)
 	lea.l	sub_0FCCAE(pc),a0
 	move.l	a0,-$388E(a5)
-	tst.l	-$1758(a5)
+	tst.l	g_Player1(a5)
 	bne.s	loc_0FD662
 	jsr	$4D9A(a5)	; -> Irq_Disable
 loc_0FD62C:

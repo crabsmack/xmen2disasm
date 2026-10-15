@@ -52,7 +52,7 @@ loc_107174:
 	move.b	d3,d7
 	tst.b	d6
 	beq.s	loc_107188
-	pea.l	-$1758(a5)
+	pea.l	g_Player1(a5)
 	move.l	a4,-(a7)
 	jsr	sub_106F42(pc)
 	addq.w	#$8,a7
@@ -60,7 +60,7 @@ loc_107174:
 loc_107188:
 	tst.b	d7
 	beq.s	loc_10719A
-	pea.l	-$1848(a5)
+	pea.l	g_Player2(a5)
 	move.l	a4,-(a7)
 	jsr	sub_106F42(pc)
 	addq.w	#$8,a7

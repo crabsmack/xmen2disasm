@@ -11,7 +11,7 @@ sub_1219FE:
 	lea.l	$34A2(a5),a0
 	move.l	$2(a0),-$4(a6)
 	moveq	#$8,d0
-	and.l	-$35A2(a5),d0
+	and.l	g_FrameCounter(a5),d0
 	beq.s	loc_121A52
 	movea.l	-$4(a6),a0
 	lea.l	$40(a0),a0

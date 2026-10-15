@@ -8,7 +8,7 @@ sub_05C324:
 	move.l	$C(a4),-(a7)
 	jsr	$CBA(a5)	; -> sub_05AED2
 	jsr	$CC2(a5)	; -> sub_05B0C8
-	pea.l	-$1758(a5)
+	pea.l	g_Player1(a5)
 	move.l	a4,-(a7)
 	jsr	sub_05C1B2(pc)
 	tst.b	d0
@@ -32,7 +32,7 @@ loc_05C370:
 	moveq	#$0,d0
 	bra.s	loc_05C3BA
 loc_05C37C:
-	pea.l	-$1848(a5)
+	pea.l	g_Player2(a5)
 	move.l	a4,-(a7)
 	jsr	sub_05C1B2(pc)
 	tst.b	d0

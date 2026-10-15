@@ -22,7 +22,7 @@ sub_0AC982:
 	move.w	d1,-$4A(a6)
 	moveq	#$0,d0
 	move.b	-$3B60(a5),d0
-	cmp.w	-$359C(a5),d0
+	cmp.w	g_SceneIndex(a5),d0
 	bne.w	loc_0ACACC
 	move.w	#$38,-$48(a6)
 	move.w	#$63,-$46(a6)

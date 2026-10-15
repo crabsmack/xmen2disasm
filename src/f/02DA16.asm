@@ -29,9 +29,9 @@ loc_02DA58:
 	bne.s	loc_02DA6A
 	andi.w	#$FFBF,$6(a4)
 loc_02DA6A:
-	pea.l	-$1758(a5)
+	pea.l	g_Player1(a5)
 	jsr	sub_02D96C(pc)
-	pea.l	-$1848(a5)
+	pea.l	g_Player2(a5)
 	jsr	sub_02D96C(pc)
 	move.l	$8(a4),d6
 	asr.l	#$8,d6

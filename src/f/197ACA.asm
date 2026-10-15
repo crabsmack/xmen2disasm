@@ -36,7 +36,7 @@ sub_197ACA:
 	move.w	#$384,$C4(a4)
 	moveq	#$0,d0
 	move.l	d0,-(a7)
-	lea.l	-$1758(a5),a0
+	lea.l	g_Player1(a5),a0
 	cmpa.l	a4,a0
 	seq.b	d3
 	neg.b	d3

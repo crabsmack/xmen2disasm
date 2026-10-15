@@ -3,14 +3,14 @@
 ; ---------------------------------------------------------------------------
 sub_02C9AA:
 	link.w	a6,#$0
-	move.l	-$35A2(a5),d0
-	addq.l	#$1,-$35A2(a5)
+	move.l	g_FrameCounter(a5),d0
+	addq.l	#$1,g_FrameCounter(a5)
 	move.w	-$3B06(a5),d0
 	subq.w	#$1,-$3B06(a5)
 	tst.b	-$38DE(a5)
 	beq.s	loc_02C9D4
-	move.l	-$35A2(a5),d0
-	addq.l	#$1,-$35A2(a5)
+	move.l	g_FrameCounter(a5),d0
+	addq.l	#$1,g_FrameCounter(a5)
 	move.w	-$3B06(a5),d0
 	subq.w	#$1,-$3B06(a5)
 loc_02C9D4:

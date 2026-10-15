@@ -6,15 +6,15 @@ sub_0AD550:
 	movem.l	d3/d6-d7,-(a7)
 	moveq	#$0,d0
 	move.b	-$3B60(a5),d0
-	cmp.w	-$359C(a5),d0
+	cmp.w	g_SceneIndex(a5),d0
 	bne.s	loc_0AD594
 	moveq	#$78,d0
-	cmp.l	-$35A2(a5),d0
+	cmp.l	g_FrameCounter(a5),d0
 	scs.b	d3
 	neg.b	d3
 	beq.s	loc_0AD580
 	moveq	#$6,d0
-	and.l	-$35A2(a5),d0
+	and.l	g_FrameCounter(a5),d0
 	moveq	#$6,d1
 	cmp.l	d0,d1
 	seq.b	d3
@@ -24,18 +24,18 @@ loc_0AD580:
 	moveq	#$0,d3
 loc_0AD582:
 	move.b	d3,d6
-	cmpi.l	#$C8,-$35A2(a5)
+	cmpi.l	#$C8,g_FrameCounter(a5)
 	scs.b	d3
 	neg.b	d3
 	move.b	d3,d7
 	bra.s	loc_0AD5C4
 loc_0AD594:
-	cmpi.l	#$1E0,-$35A2(a5)
+	cmpi.l	#$1E0,g_FrameCounter(a5)
 	shi.b	d3
 	neg.b	d3
 	beq.s	loc_0AD5B2
 	moveq	#$6,d0
-	and.l	-$35A2(a5),d0
+	and.l	g_FrameCounter(a5),d0
 	moveq	#$6,d1
 	cmp.l	d0,d1
 	seq.b	d3
@@ -45,7 +45,7 @@ loc_0AD5B2:
 	moveq	#$0,d3
 loc_0AD5B4:
 	move.b	d3,d6
-	cmpi.l	#$230,-$35A2(a5)
+	cmpi.l	#$230,g_FrameCounter(a5)
 	scs.b	d3
 	neg.b	d3
 	move.b	d3,d7
@@ -72,7 +72,7 @@ loc_0AD5EA:
 loc_0AD5FC:
 	moveq	#$0,d0
 	move.b	-$3B60(a5),d0
-	cmp.w	-$359C(a5),d0
+	cmp.w	g_SceneIndex(a5),d0
 	bne.s	loc_0AD62E
 	tst.b	-$38DE(a5)
 	beq.s	loc_0AD616

@@ -71,7 +71,7 @@ loc_0BEAFA:
 	move.l	d6,-(a7)
 	ext.l	d7
 	move.l	d7,-(a7)
-	pea.l	-$1758(a5)
+	pea.l	g_Player1(a5)
 	jsr	sub_0BE9F8(pc)
 	tst.b	d0
 	lea.l	$10(a7),a7
@@ -82,7 +82,7 @@ loc_0BEAFA:
 	move.l	d6,-(a7)
 	ext.l	d7
 	move.l	d7,-(a7)
-	pea.l	-$1848(a5)
+	pea.l	g_Player2(a5)
 	jsr	sub_0BE9F8(pc)
 	tst.b	d0
 	lea.l	$10(a7),a7

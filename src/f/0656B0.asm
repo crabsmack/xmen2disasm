@@ -10,7 +10,7 @@ sub_0656B0:
 	move.l	a0,-$3B2C(a5)
 	moveq	#$0,d0
 	move.b	-$3B7E(a5),d0
-	cmp.w	-$359C(a5),d0
+	cmp.w	g_SceneIndex(a5),d0
 	bgt.s	loc_0656DE
 	lea.l	$F4A(a5),a0
 	movea.l	$2(a0),a3
@@ -19,7 +19,7 @@ loc_0656DE:
 	lea.l	$F52(a5),a0
 	movea.l	$2(a0),a3
 	moveq	#$6,d0
-	cmp.b	-$3BBC(a5),d0
+	cmp.b	g_P1CharIndex(a5),d0
 	bne.s	loc_065708
 loc_0656EE:
 	jsr	$417A(a5)	; -> sub_1600AA
@@ -28,12 +28,12 @@ loc_0656EE:
 	move.l	d1,d0
 	moveq	#$6,d1
 	jsr	$3FAA(a5)	; -> sub_15C246
-	move.b	d0,-$3BBC(a5)
-	cmp.b	-$3BBB(a5),d0
+	move.b	d0,g_P1CharIndex(a5)
+	cmp.b	g_P2CharIndex(a5),d0
 	beq.s	loc_0656EE
 loc_065708:
 	moveq	#$6,d0
-	cmp.b	-$3BBB(a5),d0
+	cmp.b	g_P2CharIndex(a5),d0
 	bne.s	loc_06572E
 loc_065710:
 	jsr	$417A(a5)	; -> sub_1600AA
@@ -42,9 +42,9 @@ loc_065710:
 	move.l	d1,d0
 	moveq	#$6,d1
 	jsr	$3FAA(a5)	; -> sub_15C246
-	move.b	d0,-$3BBB(a5)
-	move.b	-$3BBC(a5),d0
-	cmp.b	-$3BBB(a5),d0
+	move.b	d0,g_P2CharIndex(a5)
+	move.b	g_P1CharIndex(a5),d0
+	cmp.b	g_P2CharIndex(a5),d0
 	beq.s	loc_065710
 loc_06572E:
 	moveq	#$0,d0
@@ -53,7 +53,7 @@ loc_06572E:
 	addq.w	#$2,a3
 	move.l	a3,-$3B30(a5)
 	move.b	#$1,-$45(a6)
-	move.b	-$3BBC(a5),-$48(a6)
+	move.b	g_P1CharIndex(a5),-$48(a6)
 	dc.w	$1D7C,$FFFF,$FFB9	; insn: move.b #$ff, -$47(a6)
 	move.b	#$7,-$46(a6)
 	clr.w	-$50(a6)
@@ -62,7 +62,7 @@ loc_06572E:
 	pea.l	-$84(a6)
 	jsr	sub_064AEC(pc)
 	move.b	#$2,-$3(a6)
-	move.b	-$3BBB(a5),-$6(a6)
+	move.b	g_P2CharIndex(a5),-$6(a6)
 	dc.w	$1D7C,$FFFF,$FFFB	; insn: move.b #$ff, -$5(a6)
 	move.b	#$8,-$4(a6)
 	clr.w	-$E(a6)
@@ -132,11 +132,11 @@ loc_06572E:
 	movea.l	$E(a0),a1
 	jsr	(a1)
 	movea.l	d0,a3
-	tst.w	-$38A8(a5)
+	tst.w	g_P1Lives(a5)
 	lea.l	$58(a7),a7
 	bne.s	loc_06587A
 	moveq	#-$1,d0
-	cmp.b	-$3BBC(a5),d0
+	cmp.b	g_P1CharIndex(a5),d0
 	beq.s	loc_065894
 loc_06587A:
 	move.w	#$5,-$3B04(a5)
@@ -147,10 +147,10 @@ loc_06587A:
 	jsr	sub_064F70(pc)
 	addq.w	#$8,a7
 loc_065894:
-	tst.w	-$38AA(a5)
+	tst.w	g_P2Lives(a5)
 	bne.s	loc_0658A2
 	moveq	#-$1,d0
-	cmp.b	-$3BBB(a5),d0
+	cmp.b	g_P2CharIndex(a5),d0
 	beq.s	loc_0658BC
 loc_0658A2:
 	move.w	#$18,-$3B04(a5)
@@ -202,7 +202,7 @@ loc_065922:
 	moveq	#$42,d4
 	move.w	#$C6,-$86(a6)
 	moveq	#$9,d0
-	cmp.w	-$38A8(a5),d0
+	cmp.w	g_P1Lives(a5),d0
 	bge.s	loc_0659A6
 	subq.w	#$4,d4
 	bra.s	loc_0659A6
@@ -237,9 +237,9 @@ loc_0659A6:
 	move.b	(a3),d6
 	bne.s	loc_065952
 	moveq	#$9,d0
-	cmp.w	-$38A8(a5),d0
+	cmp.w	g_P1Lives(a5),d0
 	bge.s	loc_065A1C
-	move.w	-$38A8(a5),d0
+	move.w	g_P1Lives(a5),d0
 	ext.l	d0
 	divs.w	#$A,d0
 	move.b	d0,d6
@@ -290,7 +290,7 @@ loc_065A1C:
 	move.w	d0,(a0)
 	movea.l	-$1FE6(a5),a0
 	clr.b	$2(a0)
-	move.w	-$38A8(a5),d0
+	move.w	g_P1Lives(a5),d0
 	ext.l	d0
 	divs.w	#$A,d0
 	swap	d0
@@ -311,7 +311,7 @@ loc_065A76:
 	move.w	#$CA,d5
 	move.w	#$C6,-$86(a6)
 	moveq	#$9,d0
-	cmp.w	-$38AA(a5),d0
+	cmp.w	g_P2Lives(a5),d0
 	bge.s	loc_065AF2
 	subq.w	#$4,d5
 	bra.s	loc_065AF2
@@ -346,9 +346,9 @@ loc_065AF2:
 	move.b	(a4),d7
 	bne.s	loc_065A9E
 	moveq	#$9,d0
-	cmp.w	-$38AA(a5),d0
+	cmp.w	g_P2Lives(a5),d0
 	bge.s	loc_065B64
-	move.w	-$38AA(a5),d0
+	move.w	g_P2Lives(a5),d0
 	ext.l	d0
 	divs.w	#$A,d0
 	move.b	d0,d7
@@ -397,7 +397,7 @@ loc_065B64:
 	move.w	d0,(a0)
 	movea.l	-$1FE6(a5),a0
 	clr.b	$2(a0)
-	move.w	-$38AA(a5),d0
+	move.w	g_P2Lives(a5),d0
 	ext.l	d0
 	divs.w	#$A,d0
 	swap	d0
@@ -440,19 +440,19 @@ loc_065BFE:
 	jsr	$5012(a5)	; -> sub_1FA878
 	clr.b	-$38BE(a5)
 	movea.l	-$3B28(a5),a0
-	move.b	-$3BBC(a5),d0
+	move.b	g_P1CharIndex(a5),d0
 	cmp.b	$3C(a0),d0
 	beq.s	loc_065C3A
 	moveq	#-$1,d0
-	cmp.b	-$3BBC(a5),d0
+	cmp.b	g_P1CharIndex(a5),d0
 	bne.s	loc_065C30
-	move.w	#$700,-$3B94(a5)
+	move.w	#$700,g_P1Health(a5)
 loc_065C30:
 	movea.l	-$3B28(a5),a0
-	move.b	$3C(a0),-$3BBC(a5)
+	move.b	$3C(a0),g_P1CharIndex(a5)
 loc_065C3A:
 	move.w	#$C000,-$1754(a5)
-	move.b	-$3BBC(a5),d0
+	move.b	g_P1CharIndex(a5),d0
 	bmi.s	loc_065CBC
 	cmpi.b	#$6,d0
 	bgt.s	loc_065CBC

@@ -13,17 +13,17 @@ loc_0389C8:
 loc_0389CA:
 	move.w	d0,d7
 loc_0389CC:
-	move.l	-$35A2(a5),d0
-	addq.l	#$1,-$35A2(a5)
+	move.l	g_FrameCounter(a5),d0
+	addq.l	#$1,g_FrameCounter(a5)
 	tst.w	-$3C94(a5)
 	beq.s	loc_0389E2
 	move.w	-$3C94(a5),d0
 	subq.w	#$1,-$3C94(a5)
 loc_0389E2:
 	moveq	#$7,d0
-	and.l	-$35A2(a5),d0
+	and.l	g_FrameCounter(a5),d0
 	bne.s	loc_038A58
-	move.l	-$35A2(a5),d0
+	move.l	g_FrameCounter(a5),d0
 	lsr.l	#$3,d0
 	moveq	#$7,d1
 	and.l	d0,d1

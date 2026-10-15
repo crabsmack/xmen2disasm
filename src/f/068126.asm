@@ -32,13 +32,13 @@ sub_068126:
 	addq.w	#$8,a7
 	bra.s	loc_06820A
 loc_06819A:
-	tst.w	-$38A8(a5)
+	tst.w	g_P1Lives(a5)
 	beq.s	loc_06820A
 	jsr	sub_064C66(pc)
 	move.w	d0,d7
 	cmpi.w	#$FFFF,d7
 	beq.s	loc_06820A
-	subq.w	#$1,-$38A8(a5)
+	subq.w	#$1,g_P1Lives(a5)
 	move.b	#$1,$33(a4)
 	move.b	d7,$3D(a4)
 	bra.s	loc_06820A
@@ -57,13 +57,13 @@ loc_0681BC:
 	addq.w	#$8,a7
 	bra.s	loc_06820A
 loc_0681EA:
-	tst.w	-$38AA(a5)
+	tst.w	g_P2Lives(a5)
 	beq.s	loc_06820A
 	jsr	sub_064C66(pc)
 	move.w	d0,d7
 	cmpi.w	#$FFFF,d7
 	beq.s	loc_06820A
-	subq.w	#$1,-$38AA(a5)
+	subq.w	#$1,g_P2Lives(a5)
 	move.b	#$1,$33(a4)
 	move.b	d7,$3D(a4)
 loc_06820A:

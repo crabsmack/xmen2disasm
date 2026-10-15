@@ -10,7 +10,7 @@ sub_0F44E8:
 	bne.s	loc_0F451A
 	moveq	#$0,d0
 	move.b	-$3B78(a5),d0
-	cmp.w	-$359C(a5),d0
+	cmp.w	g_SceneIndex(a5),d0
 	bne.s	loc_0F4514
 	tst.w	-$3B02(a5)
 	beq.s	loc_0F451A

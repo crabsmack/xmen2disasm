@@ -79,7 +79,7 @@ loc_0C108E:
 	move.w	-$3C08(a5),d0
 	ext.l	d0
 	move.l	d0,-(a7)
-	pea.l	-$1758(a5)
+	pea.l	g_Player1(a5)
 	jsr	sub_0C0F88(pc)
 	lea.l	$10(a7),a7
 loc_0C10BC:
@@ -95,7 +95,7 @@ loc_0C10BC:
 	move.w	-$3C0A(a5),d0
 	ext.l	d0
 	move.l	d0,-(a7)
-	pea.l	-$1848(a5)
+	pea.l	g_Player2(a5)
 	jsr	sub_0C0F88(pc)
 	lea.l	$10(a7),a7
 loc_0C10EA:
@@ -125,9 +125,9 @@ loc_0C10EA:
 	move.l	d1,-(a7)
 	moveq	#$7,d0
 	move.l	d0,-(a7)
-	pea.l	-$1758(a5)
-	pea.l	-$1758(a5)
-	movea.l	-$1758(a5),a0
+	pea.l	g_Player1(a5)
+	pea.l	g_Player1(a5)
+	movea.l	g_Player1(a5),a0
 	movea.l	$26(a0),a1
 	jsr	(a1)
 	move.w	#$5,-$16EE(a5)
@@ -159,9 +159,9 @@ loc_0C114C:
 	move.l	d1,-(a7)
 	moveq	#$7,d0
 	move.l	d0,-(a7)
-	pea.l	-$1848(a5)
-	pea.l	-$1848(a5)
-	movea.l	-$1848(a5),a0
+	pea.l	g_Player2(a5)
+	pea.l	g_Player2(a5)
+	movea.l	g_Player2(a5),a0
 	movea.l	$26(a0),a1
 	jsr	(a1)
 	move.w	#$5,-$17DE(a5)

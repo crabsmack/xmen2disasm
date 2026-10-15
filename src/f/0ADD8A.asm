@@ -16,7 +16,7 @@ sub_0ADD8A:
 	cmp.l	$9C(a4),d0
 	addq.w	#$8,a7
 	bne.s	loc_0ADDC4
-	pea.l	-$1758(a5)
+	pea.l	g_Player1(a5)
 	jsr	$4E7A(a5)	; -> sub_1F6530
 	movea.l	$9C(a4),a0
 	ori.b	#$40,(a0)
@@ -25,7 +25,7 @@ loc_0ADDC4:
 	move.l	-$17D2(a5),d0
 	cmp.l	$9C(a4),d0
 	bne.s	loc_0ADDE0
-	pea.l	-$1848(a5)
+	pea.l	g_Player2(a5)
 	jsr	$4E7A(a5)	; -> sub_1F6530
 	movea.l	$9C(a4),a0
 	ori.b	#$40,(a0)

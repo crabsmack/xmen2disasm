@@ -31,10 +31,10 @@ loc_15B124:
 	move.w	d1,d0
 	cmpi.l	#$8000,d0
 	bne.s	loc_15B16A
-	lea.l	-$1758(a5),a0
+	lea.l	g_Player1(a5),a0
 	cmpa.l	a4,a0
 	beq.s	loc_15B16A
-	lea.l	-$1848(a5),a0
+	lea.l	g_Player2(a5),a0
 	cmpa.l	a4,a0
 	beq.s	loc_15B16A
 	cmp.w	$34(a4),d6

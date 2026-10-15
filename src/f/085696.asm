@@ -37,11 +37,11 @@ loc_0856EE:
 	seq.b	d3
 	neg.b	d3
 	beq.s	loc_0856FE
-	lea.l	-$1758(a5),a4
+	lea.l	g_Player1(a5),a4
 	move.l	a4,d0
 	bra.s	loc_085704
 loc_0856FE:
-	lea.l	-$1848(a5),a4
+	lea.l	g_Player2(a5),a4
 	move.l	a4,d0
 loc_085704:
 	movea.l	d0,a0
@@ -56,7 +56,7 @@ loc_085704:
 	move.l	a4,-(a7)
 	jsr	$4E7A(a5)	; -> sub_1F6530
 	move.l	-$4(a6),$8(a4)
-	lea.l	-$1848(a5),a0
+	lea.l	g_Player2(a5),a0
 	cmpa.l	a4,a0
 	addq.w	#$4,a7
 	bne.s	loc_085748

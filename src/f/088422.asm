@@ -10,7 +10,7 @@ sub_088422:
 	tst.b	-$38DE(a5)
 	beq.s	loc_088470
 	moveq	#$3,d0
-	and.l	-$35A2(a5),d0
+	and.l	g_FrameCounter(a5),d0
 	moveq	#$2,d1
 	cmp.l	d0,d1
 	seq.b	d3
@@ -24,7 +24,7 @@ loc_088450:
 	ext.w	d0
 	move.w	d0,d6
 	moveq	#$3,d0
-	and.l	-$35A2(a5),d0
+	and.l	g_FrameCounter(a5),d0
 	moveq	#$2,d1
 	cmp.l	d0,d1
 	seq.b	d3
@@ -40,7 +40,7 @@ loc_08846A:
 	bra.s	loc_088494
 loc_088470:
 	moveq	#$1,d0
-	and.l	-$35A2(a5),d0
+	and.l	g_FrameCounter(a5),d0
 	beq.s	loc_08847C
 	moveq	#$1,d0
 	bra.s	loc_08847E
@@ -50,7 +50,7 @@ loc_08847E:
 	ext.w	d0
 	move.w	d0,d6
 	moveq	#$1,d0
-	and.l	-$35A2(a5),d0
+	and.l	g_FrameCounter(a5),d0
 	beq.s	loc_08848E
 	moveq	#$2,d0
 	bra.s	loc_088490

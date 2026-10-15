@@ -126,7 +126,7 @@ loc_11BD8E:
 	ext.w	d0
 	ext.l	d0
 	move.l	d0,-(a7)
-	pea.l	-$1758(a5)
+	pea.l	g_Player1(a5)
 	move.l	a4,-(a7)
 	movea.l	(a4),a0
 	movea.l	$22(a0),a1
@@ -167,7 +167,7 @@ loc_11BDF8:
 	ext.w	d0
 	ext.l	d0
 	move.l	d0,-(a7)
-	pea.l	-$1848(a5)
+	pea.l	g_Player2(a5)
 	move.l	a4,-(a7)
 	movea.l	(a4),a0
 	movea.l	$22(a0),a1

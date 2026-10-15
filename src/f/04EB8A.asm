@@ -49,8 +49,8 @@ loc_04EBFA:
 	beq.s	loc_04EC12
 	moveq	#$1,d0
 	move.l	d0,-(a7)
-	pea.l	-$1758(a5)
-	movea.l	-$1758(a5),a0
+	pea.l	g_Player1(a5)
+	movea.l	g_Player1(a5),a0
 	movea.l	$7A(a0),a1
 	jsr	(a1)
 	addq.w	#$8,a7
@@ -59,8 +59,8 @@ loc_04EC12:
 	beq.s	loc_04EC2A
 	moveq	#$1,d0
 	move.l	d0,-(a7)
-	pea.l	-$1848(a5)
-	movea.l	-$1848(a5),a0
+	pea.l	g_Player2(a5)
+	movea.l	g_Player2(a5),a0
 	movea.l	$7A(a0),a1
 	jsr	(a1)
 	addq.w	#$8,a7

@@ -32,7 +32,7 @@ sub_099526:
 	cmpi.l	#$8000,d0
 	bne.s	loc_099590
 	lea.l	$2BBA(a5),a0
-	move.l	-$1758(a5),d0
+	move.l	g_Player1(a5),d0
 	cmp.l	$2(a0),d0
 	bne.s	loc_099590
 	move.w	d6,d0
@@ -47,7 +47,7 @@ loc_099590:
 	cmpi.l	#$8000,d0
 	bne.s	loc_0995BA
 	lea.l	$2BBA(a5),a0
-	move.l	-$1848(a5),d0
+	move.l	g_Player2(a5),d0
 	cmp.l	$2(a0),d0
 	bne.s	loc_0995BA
 	move.w	d6,d0

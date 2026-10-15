@@ -3,8 +3,8 @@
 ; ---------------------------------------------------------------------------
 sub_10B98A:
 	link.w	a6,#$0
-	move.l	-$35A2(a5),d0
-	addq.l	#$1,-$35A2(a5)
+	move.l	g_FrameCounter(a5),d0
+	addq.l	#$1,g_FrameCounter(a5)
 	movea.l	-$3BC4(a5),a0
 	move.l	a0,-(a7)
 	movea.l	(a0),a0
@@ -13,8 +13,8 @@ sub_10B98A:
 	tst.b	-$38DE(a5)
 	addq.w	#$4,a7
 	beq.s	loc_10B9C4
-	move.l	-$35A2(a5),d0
-	addq.l	#$1,-$35A2(a5)
+	move.l	g_FrameCounter(a5),d0
+	addq.l	#$1,g_FrameCounter(a5)
 	movea.l	-$3BC4(a5),a0
 	move.l	a0,-(a7)
 	movea.l	(a0),a0

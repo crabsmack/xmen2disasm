@@ -3,11 +3,11 @@
 ; ---------------------------------------------------------------------------
 loc_005EB8:
 	addq.w	#$1,-$3B90(a5)
-	move.l	a4,-$1758(a5)
-	move.w	#$900,-$3B94(a5)
+	move.l	a4,g_Player1(a5)
+	move.w	#$900,g_P1Health(a5)
 	move.l	a3,-$3A1E(a5)
 	move.b	#$1,-$3A1A(a5)
-	move.w	d7,-$359C(a5)
+	move.w	d7,g_SceneIndex(a5)
 	lea.l	sub_006B2C(pc),a0
 	move.l	a0,-$38E8(a5)
 	lea.l	sub_006B64(pc),a0
@@ -15,7 +15,7 @@ loc_005EB8:
 	move.b	#$1,-$18AC(a5)
 	move.l	d7,d0
 	asl.w	#$3,d0
-	lea.l	-$E52(a5),a0
+	lea.l	g_SceneTable(a5),a0
 	movea.l	$4(a0,d0.w),a1
 	jsr	(a1)
 	clr.b	-$18AC(a5)

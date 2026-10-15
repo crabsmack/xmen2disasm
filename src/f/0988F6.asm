@@ -25,13 +25,13 @@ sub_0988F6:
 	move.w	d1,d0
 	cmpi.l	#$8000,d0
 	bne.s	loc_09894E
-	lea.l	-$1758(a5),a0
+	lea.l	g_Player1(a5),a0
 	cmpa.l	a3,a0
 	bne.s	loc_09894A
-	lea.l	-$1848(a5),a3
+	lea.l	g_Player2(a5),a3
 	bra.s	loc_09894E
 loc_09894A:
-	lea.l	-$1758(a5),a3
+	lea.l	g_Player1(a5),a3
 loc_09894E:
 	move.l	$8(a3),d0
 	asr.l	#$8,d0

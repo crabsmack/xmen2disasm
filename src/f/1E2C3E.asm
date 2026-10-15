@@ -15,10 +15,10 @@ sub_1E2C3E:
 	cmpi.l	#$8000,d1
 	bne.s	loc_1E2C74
 	lea.l	$2BCA(a5),a0
-	move.l	-$1758(a5),d0
+	move.l	g_Player1(a5),d0
 	cmp.l	$2(a0),d0
 	bne.s	loc_1E2C74
-	lea.l	-$1758(a5),a4
+	lea.l	g_Player1(a5),a4
 	bra.s	loc_1E2C9E
 loc_1E2C74:
 	move.w	-$1844(a5),d0
@@ -30,10 +30,10 @@ loc_1E2C74:
 	cmpi.l	#$8000,d0
 	bne.s	loc_1E2C9E
 	lea.l	$2BCA(a5),a0
-	move.l	-$1848(a5),d0
+	move.l	g_Player2(a5),d0
 	cmp.l	$2(a0),d0
 	bne.s	loc_1E2C9E
-	lea.l	-$1848(a5),a4
+	lea.l	g_Player2(a5),a4
 loc_1E2C9E:
 	move.l	a4,d0
 	beq.s	loc_1E2CB4

@@ -3,16 +3,16 @@
 ; ---------------------------------------------------------------------------
 sub_07754A:
 	link.w	a6,#$0
-	move.l	-$35A2(a5),d0
-	addq.l	#$1,-$35A2(a5)
+	move.l	g_FrameCounter(a5),d0
+	addq.l	#$1,g_FrameCounter(a5)
 	tst.b	-$3A02(a5)
 	bne.s	loc_077560
 	jsr	sub_077422(pc)
 loc_077560:
 	tst.b	-$38DE(a5)
 	beq.s	loc_077578
-	move.l	-$35A2(a5),d0
-	addq.l	#$1,-$35A2(a5)
+	move.l	g_FrameCounter(a5),d0
+	addq.l	#$1,g_FrameCounter(a5)
 	tst.b	-$3A02(a5)
 	bne.s	loc_077578
 	jsr	sub_077422(pc)

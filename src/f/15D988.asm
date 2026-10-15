@@ -20,10 +20,10 @@ sub_15D988:
 	jsr	$5032(a5)	; -> sub_1FA8DC
 	move.l	d0,-$13F6(a5)
 	move.w	d7,-$13F2(a5)
-	lea.l	-$1758(a5),a0
+	lea.l	g_Player1(a5),a0
 	movea.l	-$34A6(a5),a1
 	move.l	a0,(a1)
-	lea.l	-$1848(a5),a0
+	lea.l	g_Player2(a5),a0
 	movea.l	-$34A6(a5),a1
 	move.l	a0,$4(a1)
 	movea.l	-$13F6(a5),a3

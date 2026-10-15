@@ -12,7 +12,7 @@ sub_0477E4:
 	move.w	d1,d0
 	cmpi.l	#$8000,d0
 	bne.s	loc_04780E
-	pea.l	-$1758(a5)
+	pea.l	g_Player1(a5)
 	jsr	$BBA(a5)	; -> sub_04E644
 	addq.w	#$4,a7
 loc_04780E:
@@ -24,7 +24,7 @@ loc_04780E:
 	move.w	d1,d0
 	cmpi.l	#$8000,d0
 	bne.s	loc_047830
-	pea.l	-$1848(a5)
+	pea.l	g_Player2(a5)
 	jsr	$BBA(a5)	; -> sub_04E644
 	addq.w	#$4,a7
 loc_047830:

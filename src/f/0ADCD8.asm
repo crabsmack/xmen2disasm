@@ -29,7 +29,7 @@ sub_0ADCD8:
 	cmp.l	$9C(a4),d0
 	bne.s	loc_0ADD3A
 	subi.l	#$200,-$174C(a5)
-	pea.l	-$1758(a5)
+	pea.l	g_Player1(a5)
 	jsr	$4DD2(a5)	; -> sub_1F4A40
 	addq.w	#$4,a7
 loc_0ADD3A:
@@ -45,7 +45,7 @@ loc_0ADD3A:
 	cmp.l	$9C(a4),d0
 	bne.s	loc_0ADD6E
 	subi.l	#$200,-$183C(a5)
-	pea.l	-$1848(a5)
+	pea.l	g_Player2(a5)
 	jsr	$4DD2(a5)	; -> sub_1F4A40
 	addq.w	#$4,a7
 loc_0ADD6E:

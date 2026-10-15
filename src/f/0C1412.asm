@@ -4,10 +4,10 @@
 sub_0C1412:
 	link.w	a6,#$0
 	movem.l	d6-d7,-(a7)
-	pea.l	-$1758(a5)
+	pea.l	g_Player1(a5)
 	jsr	sub_0C1372(pc)
 	move.w	d0,d6
-	pea.l	-$1848(a5)
+	pea.l	g_Player2(a5)
 	jsr	sub_0C1372(pc)
 	move.w	d0,d7
 	tst.w	d6

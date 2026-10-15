@@ -31,7 +31,7 @@ sub_142B54:
 	move.l	$2(a0),$30(a4)
 	moveq	#$0,d0
 	move.b	-$3B66(a5),d0
-	cmp.w	-$359C(a5),d0
+	cmp.w	g_SceneIndex(a5),d0
 	lea.l	$10(a7),a7
 	bne.s	loc_142BE2
 	moveq	#-$4,d0

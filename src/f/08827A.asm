@@ -22,7 +22,7 @@ sub_08827A:
 	beq.s	loc_0882D4
 loc_0882B8:
 	lea.l	$2BBA(a5),a0
-	move.l	-$1758(a5),d0
+	move.l	g_Player1(a5),d0
 	cmp.l	$2(a0),d0
 	bne.s	loc_08830C
 	lea.l	$467A(a5),a0
@@ -45,7 +45,7 @@ loc_0882D4:
 	ext.l	d0
 	lsl.l	#$8,d0
 	sub.l	d0,-$1750(a5)
-	pea.l	-$1758(a5)
+	pea.l	g_Player1(a5)
 	jsr	$4DD2(a5)	; -> sub_1F4A40
 	addq.w	#$4,a7
 loc_08830C:
@@ -62,7 +62,7 @@ loc_08830C:
 	beq.s	loc_08834A
 loc_08832E:
 	lea.l	$2BBA(a5),a0
-	move.l	-$1848(a5),d0
+	move.l	g_Player2(a5),d0
 	cmp.l	$2(a0),d0
 	bne.s	loc_088382
 	lea.l	$467A(a5),a0
@@ -85,7 +85,7 @@ loc_08834A:
 	ext.l	d0
 	lsl.l	#$8,d0
 	sub.l	d0,-$1840(a5)
-	pea.l	-$1848(a5)
+	pea.l	g_Player2(a5)
 	jsr	$4DD2(a5)	; -> sub_1F4A40
 	addq.w	#$4,a7
 loc_088382:

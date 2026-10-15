@@ -19,7 +19,7 @@ loc_15CAC6:
 	beq.s	loc_15CAE2
 	tst.w	-$16F0(a5)
 	bgt.s	loc_15CAE2
-	tst.w	-$38A8(a5)
+	tst.w	g_P1Lives(a5)
 	beq.s	loc_15CB30
 	jsr	$4A(a5)	; -> sub_006242
 	bra.s	loc_15CB30
@@ -29,7 +29,7 @@ loc_15CAE2:
 	beq.s	loc_15CAFE
 	tst.w	-$17E0(a5)
 	bgt.s	loc_15CAFE
-	tst.w	-$38AA(a5)
+	tst.w	g_P2Lives(a5)
 	beq.s	loc_15CB30
 	jsr	$52(a5)	; -> sub_0062E4
 	bra.s	loc_15CB30

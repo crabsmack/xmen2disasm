@@ -4,15 +4,15 @@
 sub_0F47AE:
 	link.w	a6,#$0
 	movem.l	d3/d5-d7/a3-a4,-(a7)
-	move.l	-$35A2(a5),d0
-	addq.l	#$1,-$35A2(a5)
+	move.l	g_FrameCounter(a5),d0
+	addq.l	#$1,g_FrameCounter(a5)
 	tst.b	-$38DE(a5)
 	beq.s	loc_0F47EC
-	move.l	-$35A2(a5),d0
-	addq.l	#$1,-$35A2(a5)
+	move.l	g_FrameCounter(a5),d0
+	addq.l	#$1,g_FrameCounter(a5)
 	bra.s	loc_0F47EC
 loc_0F47CE:
-	subq.l	#$6,-$35A2(a5)
+	subq.l	#$6,g_FrameCounter(a5)
 	subq.w	#$1,-$3B02(a5)
 	tst.w	-$3B02(a5)
 	bge.s	loc_0F47E0
@@ -23,7 +23,7 @@ loc_0F47E0:
 	move.w	#$1,-$3B08(a5)
 loc_0F47EC:
 	moveq	#$6,d0
-	cmp.l	-$35A2(a5),d0
+	cmp.l	g_FrameCounter(a5),d0
 	bls.s	loc_0F47CE
 	tst.b	-$3A02(a5)
 	bne.w	loc_0F4AE4

@@ -15,7 +15,7 @@ sub_1A7B10:
 	movea.l	$12(a0),a1
 	jsr	(a1)
 	andi.l	#$FFFFDFFF,$90(a4)
-	lea.l	-$1758(a5),a0
+	lea.l	g_Player1(a5),a0
 	cmpa.l	a4,a0
 	lea.l	$10(a7),a7
 	bne.s	loc_1A7B58
@@ -46,7 +46,7 @@ loc_1A7B5E:
 	ori.l	#$10,$90(a4)
 	moveq	#$0,d0
 	move.l	d0,-(a7)
-	lea.l	-$1758(a5),a0
+	lea.l	g_Player1(a5),a0
 	cmpa.l	a4,a0
 	seq.b	d3
 	neg.b	d3

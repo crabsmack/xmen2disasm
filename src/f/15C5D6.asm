@@ -71,7 +71,7 @@ loc_15C6A0:
 	moveq	#$40,d0
 	and.w	-$3C5E(a5),d0
 	beq.s	loc_15C6C8
-	subq.w	#$1,-$359C(a5)
+	subq.w	#$1,g_SceneIndex(a5)
 	move.b	#$1,-$1662(a5)
 	move.b	#$1,-$38C2(a5)
 	move.w	#$1,-$359A(a5)
@@ -94,7 +94,7 @@ loc_15C6F2:
 	move.w	#$80,d0
 	and.w	-$3C5E(a5),d0
 	beq.s	loc_15C716
-	addq.w	#$1,-$359C(a5)
+	addq.w	#$1,g_SceneIndex(a5)
 	move.b	#$1,-$1662(a5)
 	move.w	#$1,-$359A(a5)
 	bra.w	loc_15CA36
@@ -172,7 +172,7 @@ loc_15C7CA:
 	moveq	#$0,d0
 	move.b	-$3B84(a5),d0
 	addq.w	#$1,d0
-	cmp.w	-$359C(a5),d0
+	cmp.w	g_SceneIndex(a5),d0
 	bge.s	loc_15C80C
 	moveq	#$0,d7
 	move.b	-$3B84(a5),d7
@@ -183,7 +183,7 @@ loc_15C80C:
 	moveq	#$0,d0
 	move.b	-$3B82(a5),d0
 	addq.w	#$1,d0
-	cmp.w	-$359C(a5),d0
+	cmp.w	g_SceneIndex(a5),d0
 	bge.s	loc_15C826
 	moveq	#$0,d7
 	move.b	-$3B82(a5),d7
@@ -194,7 +194,7 @@ loc_15C826:
 	moveq	#$0,d0
 	move.b	-$3B80(a5),d0
 	addq.w	#$1,d0
-	cmp.w	-$359C(a5),d0
+	cmp.w	g_SceneIndex(a5),d0
 	bge.s	loc_15C840
 	moveq	#$0,d7
 	move.b	-$3B80(a5),d7
@@ -205,7 +205,7 @@ loc_15C840:
 	moveq	#$0,d0
 	move.b	-$3B7E(a5),d0
 	addq.w	#$1,d0
-	cmp.w	-$359C(a5),d0
+	cmp.w	g_SceneIndex(a5),d0
 	bge.s	loc_15C85A
 	moveq	#$0,d7
 	move.b	-$3B7E(a5),d7
@@ -216,7 +216,7 @@ loc_15C85A:
 	moveq	#$0,d0
 	move.b	-$3B7C(a5),d0
 	addq.w	#$1,d0
-	cmp.w	-$359C(a5),d0
+	cmp.w	g_SceneIndex(a5),d0
 	bge.s	loc_15C874
 	moveq	#$0,d7
 	move.b	-$3B7C(a5),d7
@@ -227,7 +227,7 @@ loc_15C874:
 	moveq	#$0,d0
 	move.b	-$3B7A(a5),d0
 	addq.w	#$1,d0
-	cmp.w	-$359C(a5),d0
+	cmp.w	g_SceneIndex(a5),d0
 	bge.s	loc_15C88E
 	moveq	#$0,d7
 	move.b	-$3B7A(a5),d7
@@ -235,7 +235,7 @@ loc_15C874:
 loc_15C88E:
 	tst.w	d7
 	beq.w	loc_15CA36
-	move.w	d7,-$359C(a5)
+	move.w	d7,g_SceneIndex(a5)
 	move.b	#$1,-$1662(a5)
 	move.w	#$1,-$359A(a5)
 	move.b	#$1,-$38C2(a5)
@@ -270,7 +270,7 @@ loc_15C8D8:
 	bne.s	loc_15C918
 	moveq	#$0,d0
 	move.b	-$3B7A(a5),d0
-	cmp.w	-$359C(a5),d0
+	cmp.w	g_SceneIndex(a5),d0
 	ble.s	loc_15C918
 	moveq	#$0,d7
 	move.b	-$3B7A(a5),d7
@@ -280,7 +280,7 @@ loc_15C918:
 	bne.s	loc_15C930
 	moveq	#$0,d0
 	move.b	-$3B7C(a5),d0
-	cmp.w	-$359C(a5),d0
+	cmp.w	g_SceneIndex(a5),d0
 	ble.s	loc_15C930
 	moveq	#$0,d7
 	move.b	-$3B7C(a5),d7
@@ -290,7 +290,7 @@ loc_15C930:
 	bne.s	loc_15C948
 	moveq	#$0,d0
 	move.b	-$3B7E(a5),d0
-	cmp.w	-$359C(a5),d0
+	cmp.w	g_SceneIndex(a5),d0
 	ble.s	loc_15C948
 	moveq	#$0,d7
 	move.b	-$3B7E(a5),d7
@@ -300,7 +300,7 @@ loc_15C948:
 	bne.s	loc_15C960
 	moveq	#$0,d0
 	move.b	-$3B80(a5),d0
-	cmp.w	-$359C(a5),d0
+	cmp.w	g_SceneIndex(a5),d0
 	ble.s	loc_15C960
 	moveq	#$0,d7
 	move.b	-$3B80(a5),d7
@@ -310,7 +310,7 @@ loc_15C960:
 	bne.s	loc_15C978
 	moveq	#$0,d0
 	move.b	-$3B82(a5),d0
-	cmp.w	-$359C(a5),d0
+	cmp.w	g_SceneIndex(a5),d0
 	ble.s	loc_15C978
 	moveq	#$0,d7
 	move.b	-$3B82(a5),d7
@@ -320,7 +320,7 @@ loc_15C978:
 	bne.s	loc_15C990
 	moveq	#$0,d0
 	move.b	-$3B84(a5),d0
-	cmp.w	-$359C(a5),d0
+	cmp.w	g_SceneIndex(a5),d0
 	ble.s	loc_15C990
 	moveq	#$0,d7
 	move.b	-$3B84(a5),d7
@@ -328,7 +328,7 @@ loc_15C978:
 loc_15C990:
 	tst.w	d7
 	beq.w	loc_15CA36
-	move.w	d7,-$359C(a5)
+	move.w	d7,g_SceneIndex(a5)
 	move.b	#$1,-$1662(a5)
 	move.w	#$1,-$359A(a5)
 	move.b	#$1,-$38C2(a5)

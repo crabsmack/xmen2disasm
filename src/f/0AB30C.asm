@@ -7,7 +7,7 @@ sub_0AB30C:
 	movea.l	$8(a6),a4
 	moveq	#$0,d0
 	move.b	-$3B5E(a5),d0
-	cmp.w	-$359C(a5),d0
+	cmp.w	g_SceneIndex(a5),d0
 	bne.s	loc_0AB336
 	clr.w	$6C(a4)
 	lea.l	sub_0AB41E(pc),a0

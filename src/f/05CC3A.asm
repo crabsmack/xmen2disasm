@@ -18,7 +18,7 @@ sub_05CC3A:
 	bra.s	loc_05CC8A
 loc_05CC64:
 	moveq	#$2,d0
-	and.l	-$35A2(a5),d0
+	and.l	g_FrameCounter(a5),d0
 	beq.s	loc_05CC7C
 	moveq	#-$4,d0
 	and.b	$2E(a4),d0

@@ -7,7 +7,7 @@ sub_026E10:
 	movea.l	$8(a6),a4
 	move.l	$90(a4),-$4(a6)
 	beq.s	loc_026E90
-	lea.l	-$1758(a5),a3
+	lea.l	g_Player1(a5),a3
 	move.l	a3,d0
 	beq.s	loc_026E52
 	move.w	$4(a3),d0
@@ -23,7 +23,7 @@ sub_026E10:
 	move.w	-$3CD0(a5),-$3AFA(a5)
 	addq.w	#$4,a7
 loc_026E52:
-	lea.l	-$1848(a5),a3
+	lea.l	g_Player2(a5),a3
 	move.l	a3,d0
 	beq.s	loc_026E80
 	move.w	$4(a3),d0

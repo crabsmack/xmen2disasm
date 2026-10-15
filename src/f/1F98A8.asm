@@ -268,7 +268,7 @@ loc_1F9B58:
 	move.l	d0,-$38CA(a5)
 	move.l	d0,-$38CE(a5)
 	move.w	#$FFFF,-$38D0(a5)
-	move.l	d0,-$35A2(a5)
+	move.l	d0,g_FrameCounter(a5)
 	move.b	#$1,-$38DE(a5)
 	clr.b	-$38B8(a5)
 	lea.l	$4EFA(a5),a0

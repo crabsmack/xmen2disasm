@@ -3,8 +3,8 @@
 ; ---------------------------------------------------------------------------
 sub_0FCCAE:
 	link.w	a6,#$0
-	move.l	-$35A2(a5),d0
-	addq.l	#$1,-$35A2(a5)
+	move.l	g_FrameCounter(a5),d0
+	addq.l	#$1,g_FrameCounter(a5)
 	tst.w	-$3B08(a5)
 	ble.s	loc_0FCCC8
 	move.w	-$3B08(a5),d0
@@ -23,8 +23,8 @@ loc_0FCCD6:
 loc_0FCCE8:
 	tst.b	-$38DE(a5)
 	beq.s	loc_0FCD24
-	move.l	-$35A2(a5),d0
-	addq.l	#$1,-$35A2(a5)
+	move.l	g_FrameCounter(a5),d0
+	addq.l	#$1,g_FrameCounter(a5)
 	tst.w	-$3B08(a5)
 	ble.s	loc_0FCD04
 	move.w	-$3B08(a5),d0
@@ -94,7 +94,7 @@ loc_0FCDA0:
 	move.w	#$1,-$359A(a5)
 	moveq	#$0,d0
 	move.b	-$3B8A(a5),d0
-	move.w	d0,-$359C(a5)
+	move.w	d0,g_SceneIndex(a5)
 	move.b	#$1,-$38C2(a5)
 loc_0FCDC6:
 	move.w	-$7A6(a5),d0

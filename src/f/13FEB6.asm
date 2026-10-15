@@ -28,7 +28,7 @@ sub_13FEB6:
 	and.w	$4(a4),d0
 	bra.s	loc_13FF24
 loc_13FF0A:
-	lea.l	-$1758(a5),a0
+	lea.l	g_Player1(a5),a0
 	move.l	a0,$8E(a4)
 	clr.w	$6C(a4)
 	lea.l	sub_13FF2C(pc),a0

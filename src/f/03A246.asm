@@ -5,13 +5,13 @@ sub_03A246:
 	link.w	a6,#$0
 	move.l	a4,-(a7)
 	movea.l	$8(a6),a4
-	pea.l	-$1758(a5)
+	pea.l	g_Player1(a5)
 	move.l	a4,-(a7)
 	jsr	sub_039F80(pc)
 	tst.b	d0
 	addq.w	#$8,a7
 	beq.s	loc_03A286
-	pea.l	-$1848(a5)
+	pea.l	g_Player2(a5)
 	move.l	a4,-(a7)
 	jsr	sub_039F80(pc)
 	tst.b	d0

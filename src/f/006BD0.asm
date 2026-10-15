@@ -10,12 +10,12 @@ sub_006BD0:
 	clr.b	d4
 	clr.b	d5
 	moveq	#-$1,d0
-	cmp.b	-$3BBC(a5),d0
+	cmp.b	g_P1CharIndex(a5),d0
 	beq.s	loc_006BF6
 	move.b	#$1,-$1(a6)
 loc_006BF6:
 	moveq	#-$1,d0
-	cmp.b	-$3BBB(a5),d0
+	cmp.b	g_P2CharIndex(a5),d0
 	beq.s	loc_006C00
 	moveq	#$1,d4
 loc_006C00:
@@ -44,7 +44,7 @@ loc_006C20:
 	moveq	#$0,d0
 	move.l	d0,-$1864(a5)
 loc_006C48:
-	tst.w	-$3B94(a5)
+	tst.w	g_P1Health(a5)
 	beq.s	loc_006C9E
 	moveq	#$0,d0
 	move.l	d0,-(a7)
@@ -54,22 +54,22 @@ loc_006C48:
 	move.l	d7,d1
 	lsl.l	#$8,d1
 	move.l	d1,-(a7)
-	pea.l	-$1758(a5)
-	movea.l	-$1758(a5),a0
+	pea.l	g_Player1(a5)
+	movea.l	g_Player1(a5),a0
 	movea.l	$12(a0),a1
 	jsr	(a1)
-	cmpi.w	#$700,-$3B94(a5)
+	cmpi.w	#$700,g_P1Health(a5)
 	slt.b	d3
 	neg.b	d3
 	beq.s	loc_006C7E
 	move.w	#$700,d0
 	bra.s	loc_006C82
 loc_006C7E:
-	move.w	-$3B94(a5),d0
+	move.w	g_P1Health(a5),d0
 loc_006C82:
 	move.w	d0,-$16F0(a5)
-	pea.l	-$1758(a5)
-	movea.l	-$1758(a5),a0
+	pea.l	g_Player1(a5)
+	movea.l	g_Player1(a5),a0
 	movea.l	$3E(a0),a1
 	jsr	(a1)
 	clr.b	-$16BB(a5)
@@ -79,7 +79,7 @@ loc_006C9E:
 	clr.w	-$1754(a5)
 	clr.w	-$16F0(a5)
 loc_006CA6:
-	tst.w	-$3B96(a5)
+	tst.w	g_P2Health(a5)
 	beq.s	loc_006D02
 	moveq	#$0,d0
 	move.l	d0,-(a7)
@@ -91,22 +91,22 @@ loc_006CA6:
 	add.l	d2,d1
 	lsl.l	#$8,d1
 	move.l	d1,-(a7)
-	pea.l	-$1848(a5)
-	movea.l	-$1848(a5),a0
+	pea.l	g_Player2(a5)
+	movea.l	g_Player2(a5),a0
 	movea.l	$12(a0),a1
 	jsr	(a1)
-	cmpi.w	#$700,-$3B96(a5)
+	cmpi.w	#$700,g_P2Health(a5)
 	slt.b	d3
 	neg.b	d3
 	beq.s	loc_006CE0
 	move.w	#$700,d0
 	bra.s	loc_006CE4
 loc_006CE0:
-	move.w	-$3B96(a5),d0
+	move.w	g_P2Health(a5),d0
 loc_006CE4:
 	move.w	d0,-$17E0(a5)
-	pea.l	-$1848(a5)
-	movea.l	-$1848(a5),a0
+	pea.l	g_Player2(a5)
+	movea.l	g_Player2(a5),a0
 	movea.l	$3E(a0),a1
 	jsr	(a1)
 	move.b	#$1,-$17AB(a5)

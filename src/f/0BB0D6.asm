@@ -7,7 +7,7 @@ sub_0BB0D6:
 	movea.l	$8(a6),a4
 	lea.l	$1E72(a5),a0
 	movea.l	$2(a0),a3
-	move.l	-$35A2(a5),d0
+	move.l	g_FrameCounter(a5),d0
 	lsr.l	#$1,d0
 	moveq	#$1F,d1
 	and.l	d0,d1

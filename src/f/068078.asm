@@ -26,24 +26,24 @@ loc_0680B2:
 	move.b	$3F(a4),d0
 	cmpi.w	#$1,d0
 	bne.s	loc_0680E0
-	tst.w	-$38A8(a5)
+	tst.w	g_P1Lives(a5)
 	beq.s	loc_068100
 	jsr	sub_064C66(pc)
 	move.w	d0,d7
 	cmpi.w	#$FFFF,d7
 	beq.s	loc_068100
-	subq.w	#$1,-$38A8(a5)
+	subq.w	#$1,g_P1Lives(a5)
 	move.b	#$1,$33(a4)
 	move.b	d7,$3D(a4)
 	bra.s	loc_068100
 loc_0680E0:
-	tst.w	-$38AA(a5)
+	tst.w	g_P2Lives(a5)
 	beq.s	loc_068100
 	jsr	sub_064C66(pc)
 	move.w	d0,d7
 	cmpi.w	#$FFFF,d7
 	beq.s	loc_068100
-	subq.w	#$1,-$38AA(a5)
+	subq.w	#$1,g_P2Lives(a5)
 	move.b	#$1,$33(a4)
 	move.b	d7,$3D(a4)
 loc_068100:

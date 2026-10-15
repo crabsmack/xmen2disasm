@@ -10,10 +10,10 @@ sub_15AD8A:
 	movea.l	$14(a6),a0
 	andi.w	#$FFF7,(a0)
 	ori.w	#$100,$4(a4)
-	lea.l	-$1758(a5),a0
+	lea.l	g_Player1(a5),a0
 	cmpa.l	a4,a0
 	beq.s	loc_15ADB8
-	lea.l	-$1848(a5),a0
+	lea.l	g_Player2(a5),a0
 	cmpa.l	a4,a0
 	bne.s	loc_15ADDE
 loc_15ADB8:

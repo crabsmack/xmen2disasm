@@ -9,7 +9,7 @@ sub_09B6A2:
 	tst.l	$96(a4)
 	beq.w	loc_09B780
 	moveq	#$1,d7
-	lea.l	-$1758(a5),a3
+	lea.l	g_Player1(a5),a3
 	move.w	$4(a3),d0
 	ext.l	d0
 	move.w	#$C000,d1
@@ -29,7 +29,7 @@ sub_09B6A2:
 	ble.s	loc_09B6F0
 	clr.b	d7
 loc_09B6F0:
-	lea.l	-$1848(a5),a3
+	lea.l	g_Player2(a5),a3
 	move.w	$4(a3),d0
 	ext.l	d0
 	move.w	#$C000,d1
@@ -117,10 +117,10 @@ loc_09B7A2:
 	move.w	d1,d0
 	cmpi.l	#$8000,d0
 	bne.s	loc_09B7F8
-	lea.l	-$1848(a5),a3
+	lea.l	g_Player2(a5),a3
 	bra.s	loc_09B820
 loc_09B7F8:
-	lea.l	-$1758(a5),a3
+	lea.l	g_Player1(a5),a3
 	bra.s	loc_09B820
 loc_09B7FE:
 	move.w	-$1754(a5),d0
@@ -131,10 +131,10 @@ loc_09B7FE:
 	move.w	d1,d0
 	cmpi.l	#$8000,d0
 	bne.s	loc_09B81C
-	lea.l	-$1758(a5),a3
+	lea.l	g_Player1(a5),a3
 	bra.s	loc_09B820
 loc_09B81C:
-	lea.l	-$1848(a5),a3
+	lea.l	g_Player2(a5),a3
 loc_09B820:
 	move.l	a3,-(a7)
 	pea.l	-$10(a6)

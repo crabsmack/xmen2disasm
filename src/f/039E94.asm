@@ -21,7 +21,7 @@ loc_039EA6:
 	sub.l	d1,d7
 	move.w	$E(a6),d0
 	ext.l	d0
-	move.l	-$35A2(a5),d1
+	move.l	g_FrameCounter(a5),d1
 	add.l	d0,d1
 	lsr.l	#$3,d1
 	moveq	#$7,d0

@@ -4,9 +4,9 @@
 sub_1F9464:
 	link.w	a6,#$0
 	movem.l	d7/a4,-(a7)
-	lea.l	-$E52(a5),a4
-	move.b	-$E54(a5),d0
-	addq.b	#$1,-$E54(a5)
+	lea.l	g_SceneTable(a5),a4
+	move.b	g_SceneCount(a5),d0
+	addq.b	#$1,g_SceneCount(a5)
 	move.b	d0,d7
 	moveq	#$0,d0
 	move.b	d7,d0

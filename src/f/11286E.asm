@@ -7,7 +7,7 @@ sub_11286E:
 	movea.l	$8(a6),a4
 	moveq	#$20,d0
 	move.l	d0,-(a7)
-	move.l	-$35A2(a5),-(a7)
+	move.l	g_FrameCounter(a5),-(a7)
 	pea.l	-$3940(a5)
 	jsr	$4DAA(a5)	; -> Mem_Copy
 	move.b	#$1,-$3A06(a5)

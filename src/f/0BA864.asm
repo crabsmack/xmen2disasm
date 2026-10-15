@@ -26,8 +26,8 @@ sub_0BA864:
 	move.l	d1,-(a7)
 	moveq	#$0,d0
 	move.l	d0,-(a7)
-	pea.l	-$1758(a5)
-	movea.l	-$1758(a5),a0
+	pea.l	g_Player1(a5)
+	movea.l	g_Player1(a5),a0
 	movea.l	$26(a0),a1
 	jsr	(a1)
 	lea.l	$18(a7),a7
@@ -48,8 +48,8 @@ loc_0BA8BE:
 	move.l	d1,-(a7)
 	moveq	#$0,d0
 	move.l	d0,-(a7)
-	pea.l	-$1848(a5)
-	movea.l	-$1848(a5),a0
+	pea.l	g_Player2(a5)
+	movea.l	g_Player2(a5),a0
 	movea.l	$26(a0),a1
 	jsr	(a1)
 loc_0BA8F6:

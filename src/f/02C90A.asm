@@ -9,9 +9,9 @@ sub_02C90A:
 	move.b	#$1,-$3A06(a5)
 	tst.w	-$3CBA(a5)
 	beq.s	loc_02C968
-	pea.l	-$1758(a5)
+	pea.l	g_Player1(a5)
 	jsr	$61A(a5)	; -> sub_02D146
-	pea.l	-$1848(a5)
+	pea.l	g_Player2(a5)
 	jsr	$61A(a5)	; -> sub_02D146
 	addq.w	#$8,a7
 	move.w	-$3980(a5),d0

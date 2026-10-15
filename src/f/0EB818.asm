@@ -47,7 +47,7 @@ loc_0EB89C:
 	tst.w	$6A(a3)
 	ble.s	loc_0EB8B2
 	moveq	#$4,d0
-	and.l	-$35A2(a5),d0
+	and.l	g_FrameCounter(a5),d0
 	beq.s	loc_0EB8B2
 	ori.w	#$6000,d6
 loc_0EB8B2:

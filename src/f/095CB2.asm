@@ -17,7 +17,7 @@ sub_095CB2:
 	move.w	d0,-$2(a6)
 	move.w	$A6(a4),d4
 	sub.w	#$18,d4
-	lea.l	-$1758(a5),a3
+	lea.l	g_Player1(a5),a3
 	move.w	$4(a3),d0
 	ext.l	d0
 	move.w	#$C000,d1
@@ -53,7 +53,7 @@ loc_095D42:
 loc_095D44:
 	tst.b	d5
 	beq.s	loc_095DA0
-	lea.l	-$1848(a5),a3
+	lea.l	g_Player2(a5),a3
 	move.w	$4(a3),d0
 	ext.l	d0
 	move.w	#$C000,d1

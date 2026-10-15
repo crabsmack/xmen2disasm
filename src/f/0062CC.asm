@@ -3,8 +3,8 @@
 ; ---------------------------------------------------------------------------
 loc_0062CC:
 	jsr	sub_0060C8(pc)
-	move.b	d7,-$3BBC(a5)
-	subq.w	#$1,-$38A8(a5)
+	move.b	d7,g_P1CharIndex(a5)
+	subq.w	#$1,g_P1Lives(a5)
 	moveq	#$1,d0
 loc_0062DA:
 	movem.l	-$8(a6),d6-d7

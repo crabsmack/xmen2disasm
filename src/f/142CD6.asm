@@ -84,11 +84,11 @@ loc_142D92:
 	seq.b	d3
 	neg.b	d3
 	beq.s	loc_142DA2
-	lea.l	-$1758(a5),a4
+	lea.l	g_Player1(a5),a4
 	move.l	a4,d0
 	bra.s	loc_142DA8
 loc_142DA2:
-	lea.l	-$1848(a5),a4
+	lea.l	g_Player2(a5),a4
 	move.l	a4,d0
 loc_142DA8:
 	movea.l	d0,a0
@@ -200,7 +200,7 @@ loc_142EA8:
 	move.w	d0,d7
 	ext.l	d7
 	move.l	d7,d0
-	and.l	-$35A2(a5),d0
+	and.l	g_FrameCounter(a5),d0
 	bne.w	loc_142F70
 	addq.b	#$1,$F(a3)
 	move.b	$F(a3),d0

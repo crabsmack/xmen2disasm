@@ -5,7 +5,7 @@ sub_05C3EE:
 	link.w	a6,#$0
 	move.l	a4,-(a7)
 	movea.l	$8(a6),a4
-	pea.l	-$1848(a5)
+	pea.l	g_Player2(a5)
 	move.l	a4,-(a7)
 	jsr	sub_05C1B2(pc)
 	tst.b	d0

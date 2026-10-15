@@ -37,10 +37,10 @@ loc_0F4496:
 	ble.s	loc_0F44A2
 	moveq	#$5,d7
 loc_0F44A2:
-	lea.l	-$1758(a5),a0
+	lea.l	g_Player1(a5),a0
 	cmpa.l	a4,a0
 	beq.s	loc_0F44B2
-	lea.l	-$1848(a5),a0
+	lea.l	g_Player2(a5),a0
 	cmpa.l	a4,a0
 	bne.s	loc_0F44D8
 loc_0F44B2:

@@ -4,10 +4,10 @@
 sub_006242:
 	link.w	a6,#$0
 	movem.l	d6-d7,-(a7)
-	move.l	-$1758(a5),-(a7)
+	move.l	g_Player1(a5),-(a7)
 	jsr	sub_0061D0(pc)
 	move.w	d0,d7
-	move.l	-$1848(a5),-(a7)
+	move.l	g_Player2(a5),-(a7)
 	jsr	sub_0061D0(pc)
 	move.w	d0,d6
 	tst.b	-$3BBA(a5)
@@ -30,7 +30,7 @@ loc_006270:
 	cmp.w	d7,d6
 	beq.s	loc_006270
 loc_006288:
-	move.w	#$700,-$3B94(a5)
+	move.w	#$700,g_P1Health(a5)
 	move.w	d7,d0
 	bmi.s	loc_0062CC
 	cmpi.w	#$5,d0

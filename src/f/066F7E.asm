@@ -15,7 +15,7 @@ sub_066F7E:
 	jsr	$32(a5)	; -> sub_005C7C
 	bra.s	loc_066FB6
 loc_066FAA:
-	move.w	#$FFFF,-$359C(a5)
+	move.w	#$FFFF,g_SceneIndex(a5)
 	move.b	#$1,-$38C2(a5)
 loc_066FB6:
 	unlk	a6

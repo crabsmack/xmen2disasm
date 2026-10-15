@@ -62,10 +62,10 @@ loc_0EBE1C:
 	move.w	d6,d0
 	add.w	#$A,d0
 	move.w	d0,$58(a4)
-	pea.l	-$1758(a5)
+	pea.l	g_Player1(a5)
 	move.l	a4,-(a7)
 	jsr	sub_0EBCEE(pc)
-	pea.l	-$1848(a5)
+	pea.l	g_Player2(a5)
 	move.l	a4,-(a7)
 	jsr	sub_0EBCEE(pc)
 	lea.l	$10(a7),a7

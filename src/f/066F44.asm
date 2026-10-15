@@ -9,7 +9,7 @@ sub_066F44:
 	move.l	d0,-$3B14(a5)
 	tst.w	-$3B92(a5)
 	blt.s	loc_066F64
-	move.w	-$3B92(a5),-$359C(a5)
+	move.w	-$3B92(a5),g_SceneIndex(a5)
 loc_066F64:
 	jsr	sub_066B26(pc)
 	tst.w	-$3B92(a5)

@@ -13,7 +13,7 @@ loc_0E786E:
 loc_0E7870:
 	move.l	d0,d7
 loc_0E7872:
-	addq.l	#$1,-$35A2(a5)
+	addq.l	#$1,g_FrameCounter(a5)
 	tst.l	-$3B18(a5)
 	ble.s	loc_0E7880
 	subq.l	#$1,-$3B18(a5)

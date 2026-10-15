@@ -18,7 +18,7 @@ Player_Nearest:
 	move.w	d1,d0
 	cmpi.l	#$8000,d0
 	beq.s	loc_1F6980
-	lea.l	-$1848(a5),a0
+	lea.l	g_Player2(a5),a0
 	move.l	a0,d0
 	bra.w	loc_1F6A28
 loc_1F6980:
@@ -30,7 +30,7 @@ loc_1F6980:
 	move.w	d1,d0
 	cmpi.l	#$8000,d0
 	beq.s	loc_1F69A2
-	lea.l	-$1758(a5),a0
+	lea.l	g_Player1(a5),a0
 	move.l	a0,d0
 	bra.w	loc_1F6A28
 loc_1F69A2:
@@ -90,11 +90,11 @@ loc_1F6A10:
 	add.l	d0,d5
 	cmp.l	-$C(a6),d5
 	ble.s	loc_1F6A22
-	lea.l	-$1758(a5),a0
+	lea.l	g_Player1(a5),a0
 	move.l	a0,d0
 	bra.s	loc_1F6A28
 loc_1F6A22:
-	lea.l	-$1848(a5),a0
+	lea.l	g_Player2(a5),a0
 	move.l	a0,d0
 loc_1F6A28:
 	movem.l	-$24(a6),d3-d7/a4
