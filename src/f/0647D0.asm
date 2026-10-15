@@ -9,9 +9,9 @@ PlayerSelect_LoadCharFrame:
 	movem.l	d7/a3-a4,-(a7)
 	movea.l	$8(a6),a3
 	move.b	$3C(a3),d0
-	bmi.w	loc_064868
+	bmi.w	PlayerSelect_LoadCharFrame_part1
 	cmpi.b	#$6,d0
-	bgt.s	loc_064868
+	bgt.s	PlayerSelect_LoadCharFrame_part1
 	moveq	#$0,d1
 	move.b	d0,d1
 	add.w	d1,d1

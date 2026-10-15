@@ -11,9 +11,9 @@ ScalingActor_SetFrame:
 	movea.l	$8(a6),a4
 	movea.l	$8C(a4),a0
 	move.b	$3C(a0),d0
-	bmi.w	loc_06736C
+	bmi.w	ScalingActor_SetFrame_part3
 	cmpi.b	#$6,d0
-	bgt.s	loc_06736C
+	bgt.s	ScalingActor_SetFrame_part3
 	moveq	#$0,d1
 	move.b	d0,d1
 	add.w	d1,d1

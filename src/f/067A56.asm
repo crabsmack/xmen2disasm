@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_067A56	[link-after-rts]
+; PortraitActor_StateFirstChar - portrait: a player has just joined - take the first character and fly it in
+; In:  8(a6) = this
+; Out: d0 = +4 & 8
+; Evidence: PlayerSelect_RevertCursor; tile/size from the cursor; next PortraitActor_StartFlyIn
 ; ---------------------------------------------------------------------------
-sub_067A56:
+PortraitActor_StateFirstChar:
 	link.w	a6,#$0
 	move.l	a4,-(a7)
 	movea.l	$8(a6),a4
@@ -30,10 +33,10 @@ loc_067AA2:
 	move.w	$8(a0),$36(a4)
 	ori.b	#$80,$2E(a4)
 	move.l	a4,-(a7)
-	jsr	sub_067376(pc)
+	jsr	PlayerSelect_CalcPortraitPos(pc)
 	addq.w	#$4,a7
 	clr.w	$6C(a4)
-	lea.l	sub_067AE0(pc),a0
+	lea.l	PortraitActor_StartFlyIn(pc),a0
 	move.l	a0,$5C(a4)
 	moveq	#$8,d0
 	and.w	$4(a4),d0

@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_067E5E	[link-after-rts]
+; CursorInput_StatePoll - select-screen cursor input (BOXINPUTACTOR): Start confirms, Left/Right move (with a repeat delay), ignored while a cursor is busy or confirmed
+; In:  8(a6) = this (+$8C = cursor)
+; Out: d0 = +4 & 8
+; Evidence: g_Pad1Pressed/g_Pad2Pressed bit $80, g_Pad1Latch / -$3A30 bits 4/8 by cursor +$3F; next CursorInput_Confirm / CursorInput_MoveLeft / CursorInput_MoveRight
 ; ---------------------------------------------------------------------------
-sub_067E5E:
+CursorInput_StatePoll:
 	link.w	a6,#$0
 	movem.l	d3/d7/a3-a4,-(a7)
 	movea.l	$8(a6),a3
@@ -30,7 +33,7 @@ loc_067E82:
 	movea.l	a4,a0
 	move.b	#$1,$34(a0)
 	clr.w	$6C(a3)
-	lea.l	sub_068126(pc),a0
+	lea.l	CursorInput_Confirm(pc),a0
 	move.l	a0,$5C(a3)
 	moveq	#$8,d0
 	and.w	$4(a3),d0
@@ -42,7 +45,7 @@ loc_067ECA:
 	movea.l	$8C(a3),a0
 	move.b	#$1,$34(a0)
 	clr.w	$6C(a3)
-	lea.l	sub_068126(pc),a0
+	lea.l	CursorInput_Confirm(pc),a0
 	move.l	a0,$5C(a3)
 	moveq	#$8,d0
 	and.w	$4(a3),d0
@@ -65,7 +68,7 @@ loc_067F08:
 	movea.l	$8C(a3),a0
 	move.b	#$1,$34(a0)
 	clr.w	$6C(a3)
-	lea.l	sub_067FCA(pc),a0
+	lea.l	CursorInput_MoveLeft(pc),a0
 	move.l	a0,$5C(a3)
 	moveq	#$8,d0
 	and.w	$4(a3),d0
@@ -77,7 +80,7 @@ loc_067F3C:
 	movea.l	$8C(a3),a0
 	move.b	#$1,$34(a0)
 	clr.w	$6C(a3)
-	lea.l	sub_068078(pc),a0
+	lea.l	CursorInput_MoveRight(pc),a0
 	move.l	a0,$5C(a3)
 	moveq	#$8,d0
 	and.w	$4(a3),d0
@@ -89,7 +92,7 @@ loc_067F62:
 	movea.l	$8C(a3),a0
 	move.b	#$1,$34(a0)
 	clr.w	$6C(a3)
-	lea.l	sub_067FCA(pc),a0
+	lea.l	CursorInput_MoveLeft(pc),a0
 	move.l	a0,$5C(a3)
 	moveq	#$8,d0
 	and.w	$4(a3),d0
@@ -101,14 +104,14 @@ loc_067F88:
 	movea.l	$8C(a3),a0
 	move.b	#$1,$34(a0)
 	clr.w	$6C(a3)
-	lea.l	sub_068078(pc),a0
+	lea.l	CursorInput_MoveRight(pc),a0
 	move.l	a0,$5C(a3)
 	moveq	#$8,d0
 	and.w	$4(a3),d0
 	bra.s	loc_067FC0
 loc_067FAE:
 	clr.w	$6C(a3)
-	lea.l	sub_067E5E(pc),a0
+	lea.l	CursorInput_StatePoll(pc),a0
 	move.l	a0,$5C(a3)
 	moveq	#$8,d0
 	and.w	$4(a3),d0

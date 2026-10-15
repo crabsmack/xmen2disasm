@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_068078	[link-after-rts]
+; CursorInput_MoveRight - select cursor Right: join (spend a life) or move to the next free portrait
+; In:  8(a6) = this
+; Out: d0 = +4 & 8
+; Evidence: PlayerSelect_FirstFreeChar / PlayerSelect_NextFreeChar
 ; ---------------------------------------------------------------------------
-sub_068078:
+CursorInput_MoveRight:
 	link.w	a6,#$0
 	movem.l	d6-d7/a3-a4,-(a7)
 	movea.l	$8(a6),a3
@@ -52,7 +55,7 @@ loc_068100:
 	clr.b	$34(a4)
 loc_06810A:
 	clr.w	$6C(a3)
-	lea.l	sub_067E5E(pc),a0
+	lea.l	CursorInput_StatePoll(pc),a0
 	move.l	a0,$5C(a3)
 	moveq	#$8,d0
 	and.w	$4(a3),d0

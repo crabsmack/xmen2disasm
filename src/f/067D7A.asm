@@ -18,7 +18,7 @@ BoxInputActor_Init:
 	movea.l	$2(a0),a0
 	movea.l	$12(a0),a1
 	jsr	(a1)
-	lea.l	sub_067E5E(pc),a0
+	lea.l	CursorInput_StatePoll(pc),a0
 	move.l	a0,$64(a4)
 	move.l	a0,$5C(a4)
 	move.w	#$1,$68(a4)

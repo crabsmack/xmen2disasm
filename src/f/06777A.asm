@@ -1,13 +1,16 @@
 ; ---------------------------------------------------------------------------
-; sub_06777A	[link-after-rts]
+; PortraitActor_StartFlyOut - portrait: set up an 8-step scaled flight from the portrait back to the cursor's slot
+; In:  8(a6) = this
+; Out: d0 = +4 & 8
+; Evidence: big-sprite path fields of the cursor (+$E..+$2A) with random spreads (sub_15C222); next PortraitActor_StateFlyOut
 ; ---------------------------------------------------------------------------
-sub_06777A:
+PortraitActor_StartFlyOut:
 	link.w	a6,#$0
 	movem.l	d3/d7/a3-a4,-(a7)
 	movea.l	$8(a6),a4
 	movea.l	$8C(a4),a3
 	move.l	a4,-(a7)
-	jsr	sub_067376(pc)
+	jsr	PlayerSelect_CalcPortraitPos(pc)
 	move.w	$9A(a4),d0
 	add.w	$A2(a4),d0
 	move.w	d0,$94(a4)
@@ -95,7 +98,7 @@ sub_06777A:
 	move.l	d0,$12(a3)
 	addq.w	#$4,a7
 	clr.w	$6C(a4)
-	lea.l	sub_06789C(pc),a0
+	lea.l	PortraitActor_StateFlyOut(pc),a0
 	move.l	a0,$5C(a4)
 	moveq	#$8,d0
 	and.w	$4(a4),d0

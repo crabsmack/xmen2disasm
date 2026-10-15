@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_067FCA	[link-after-rts]
+; CursorInput_MoveLeft - select cursor Left: if the player has no character yet, join (spend a life) on the first free portrait; else move to the previous free portrait
+; In:  8(a6) = this
+; Out: d0 = +4 & 8
+; Evidence: g_P1Lives/g_P2Lives -= 1; PlayerSelect_FirstFreeChar / PlayerSelect_PrevFreeChar; cursor +$33 changed, +$3D new index
 ; ---------------------------------------------------------------------------
-sub_067FCA:
+CursorInput_MoveLeft:
 	link.w	a6,#$0
 	movem.l	d6-d7/a3-a4,-(a7)
 	movea.l	$8(a6),a3
@@ -52,7 +55,7 @@ loc_068052:
 	clr.b	$34(a4)
 loc_06805C:
 	clr.w	$6C(a3)
-	lea.l	sub_067E5E(pc),a0
+	lea.l	CursorInput_StatePoll(pc),a0
 	move.l	a0,$5C(a3)
 	moveq	#$8,d0
 	and.w	$4(a3),d0

@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; loc_06750E
+; PlayerSelect_PlayPickAnim_part3 - part 3 of PlayerSelect_PlayPickAnim: code block split off by the code-flow tools (not a separate function)
+; In:  registers/frame of PlayerSelect_PlayPickAnim
+; Out: continues in PlayerSelect_PlayPickAnim
+; Evidence: only reached by branches from PlayerSelect_PlayPickAnim; ends with rts
 ; ---------------------------------------------------------------------------
-loc_06750E:
+PlayerSelect_PlayPickAnim_part3:
 	move.l	a4,d0
 	beq.s	loc_067538
 	moveq	#$0,d0

@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_06789C	[link-after-rts]
+; PortraitActor_StateFlyOut - portrait: one step of the fly-out (Cerebro_BigSpriteDecode); after 8 steps swap characters
+; In:  8(a6) = this
+; Out: d0 = +4 & 8
+; Evidence: next PortraitActor_StateSwapChar
 ; ---------------------------------------------------------------------------
-sub_06789C:
+PortraitActor_StateFlyOut:
 	link.w	a6,#$FFFC
 	movem.l	a3-a4,-(a7)
 	movea.l	$8(a6),a4
@@ -32,14 +35,14 @@ sub_06789C:
 	addq.w	#$4,a7
 	beq.s	loc_067918
 	clr.w	$6C(a4)
-	lea.l	sub_06789C(pc),a0
+	lea.l	PortraitActor_StateFlyOut(pc),a0
 	move.l	a0,$5C(a4)
 	moveq	#$8,d0
 	and.w	$4(a4),d0
 	bra.s	loc_06792C
 loc_067918:
 	move.w	#$4,$6C(a4)
-	lea.l	sub_067936(pc),a0
+	lea.l	PortraitActor_StateSwapChar(pc),a0
 	move.l	a0,$5C(a4)
 	moveq	#$8,d0
 	and.w	$4(a4),d0

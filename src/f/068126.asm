@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_068126	[link-after-rts]
+; CursorInput_Confirm - select cursor Start: join (spend a life) if not playing yet, else confirm the character and print the confirmation text under the player's side
+; In:  8(a6) = this
+; Out: d0 = +4 & 8
+; Evidence: cursor +$40 = 1; Cerebro_PrintText(jt $6824E at col 5 / jt $68242 at col $18, row $16) with the full-screen window
 ; ---------------------------------------------------------------------------
-sub_068126:
+CursorInput_Confirm:
 	link.w	a6,#$FFFE
 	movem.l	d4-d7/a3-a4,-(a7)
 	movea.l	$8(a6),a3
@@ -76,7 +79,7 @@ loc_068214:
 	move.w	d5,-$3C5C(a5)
 	move.w	d6,-$3C5A(a5)
 	clr.w	$6C(a3)
-	lea.l	sub_067E5E(pc),a0
+	lea.l	CursorInput_StatePoll(pc),a0
 	move.l	a0,$5C(a3)
 	moveq	#$8,d0
 	and.w	$4(a3),d0

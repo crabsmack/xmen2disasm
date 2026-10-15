@@ -2,7 +2,7 @@
 ; Spr_RenderToBitmap - render one sprite frame into a chunky byte-per-pixel buffer (for effects), honouring piece flips
 ; In:  8(a6) = sprite definition (type $18)   $C(a6) = word: frame   $10(a6) = buffer (+2..+5 header: 0, 0, width, height; pixels from +$26)
 ; Out: none
-; Evidence: clears width*height bytes; per 8-byte piece: 4bpp tile longs expanded with Tbl_PixelPairExpand (zero pixels transparent), sizes from Tbl_SizeCodePixels; callers Cerebro_PlayIntro, loc_064868
+; Evidence: clears width*height bytes; per 8-byte piece: 4bpp tile longs expanded with Tbl_PixelPairExpand (zero pixels transparent), sizes from Tbl_SizeCodePixels; callers Cerebro_PlayIntro, PlayerSelect_LoadCharFrame_part1
 ; ---------------------------------------------------------------------------
 Spr_RenderToBitmap:
 	link.w	a6,#$FFEC

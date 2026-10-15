@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_067936	[link-after-rts]
+; PortraitActor_StateSwapChar - portrait: commit the cursor's new character and wait
+; In:  8(a6) = this
+; Out: d0 = +4 & 8
+; Evidence: PlayerSelect_RevertCursor (applies +$3D); timers +$2E = 30, +$3A = 10; next PortraitActor_StateWaitTurn
 ; ---------------------------------------------------------------------------
-sub_067936:
+PortraitActor_StateSwapChar:
 	link.w	a6,#$0
 	movem.l	a3-a4,-(a7)
 	movea.l	$8(a6),a3
@@ -15,7 +18,7 @@ sub_067936:
 	move.w	#$A,$3A(a4)
 	addq.w	#$4,a7
 	clr.w	$6C(a3)
-	lea.l	sub_067984(pc),a0
+	lea.l	PortraitActor_StateWaitTurn(pc),a0
 	move.l	a0,$5C(a3)
 	moveq	#$8,d0
 	and.w	$4(a3),d0

@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_067600	[link-after-rts]
+; PortraitActor_StateInit - select-screen portrait (SCALINGACTOR) first state: take the cursor's character sprite, stand at its side of the screen (x $48 for P1, $F8 for P2) at y $AE
+; In:  8(a6) = this
+; Out: d0 = +4 & 8
+; Evidence: cursor +$3F = player; Spr_Init; PlayerSelect_CalcPortraitPos; next PortraitActor_StateIdle
 ; ---------------------------------------------------------------------------
-sub_067600:
+PortraitActor_StateInit:
 	link.w	a6,#$0
 	movem.l	d3/a4,-(a7)
 	movea.l	$8(a6),a4
@@ -35,7 +38,7 @@ loc_067656:
 	move.b	d0,d1
 	move.w	d1,$A2(a4)
 	move.l	a4,-(a7)
-	jsr	sub_067376(pc)
+	jsr	PlayerSelect_CalcPortraitPos(pc)
 	moveq	#$0,d0
 	move.l	d0,-(a7)
 	move.w	$34(a4),d1
@@ -75,7 +78,7 @@ loc_0676AE:
 	lsl.l	#$8,d0
 	move.l	d0,$C(a4)
 	clr.w	$6C(a4)
-	lea.l	sub_0676F0(pc),a0
+	lea.l	PortraitActor_StateIdle(pc),a0
 	move.l	a0,$5C(a4)
 	moveq	#$8,d0
 	and.w	$4(a4),d0

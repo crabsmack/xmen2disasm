@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_067C32	[link-after-rts]
+; PortraitActor_StateFlyIn - portrait: one step of the fly-in; after 8 steps land
+; In:  8(a6) = this
+; Out: d0 = +4 & 8
+; Evidence: Cerebro_BigSpriteDecode; next PortraitActor_StateLanded
 ; ---------------------------------------------------------------------------
-sub_067C32:
+PortraitActor_StateFlyIn:
 	link.w	a6,#$FFFC
 	movem.l	a3-a4,-(a7)
 	movea.l	$8(a6),a4
@@ -31,14 +34,14 @@ sub_067C32:
 	addq.w	#$4,a7
 	beq.s	loc_067CA8
 	clr.w	$6C(a4)
-	lea.l	sub_067C32(pc),a0
+	lea.l	PortraitActor_StateFlyIn(pc),a0
 	move.l	a0,$5C(a4)
 	moveq	#$8,d0
 	and.w	$4(a4),d0
 	bra.s	loc_067CBA
 loc_067CA8:
 	clr.w	$6C(a4)
-	lea.l	sub_067CC4(pc),a0
+	lea.l	PortraitActor_StateLanded(pc),a0
 	move.l	a0,$5C(a4)
 	moveq	#$8,d0
 	and.w	$4(a4),d0

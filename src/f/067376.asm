@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_067376	[link-after-rts]
+; PlayerSelect_CalcPortraitPos - portrait actor helper: decode the cursor's character frame and compute the portrait offset from the frame box (mirrored on the right-hand side)
+; In:  8(a6) = portrait actor (+$8C = its cursor)
+; Out: none
+; Evidence: PlayerSelect_CharFrameNum/CharSpriteDef/LoadCharFrame; side +$A2 == $F8 -> mirrored; offsets +$9A/+$9C, size +$9E/+$A0
 ; ---------------------------------------------------------------------------
-sub_067376:
+PlayerSelect_CalcPortraitPos:
 	link.w	a6,#$FFF8
 	movem.l	d7/a3-a4,-(a7)
 	movea.l	$8(a6),a4

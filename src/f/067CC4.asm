@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_067CC4	[link-after-rts]
+; PortraitActor_StateLanded - portrait: back to a normal sprite at its side, play the pick pose and voice, idle
+; In:  8(a6) = this
+; Out: d0 = +4 & 8
+; Evidence: Spr_Init; PlayerSelect_PlayPickAnim; next PortraitActor_StateIdle
 ; ---------------------------------------------------------------------------
-sub_067CC4:
+PortraitActor_StateLanded:
 	link.w	a6,#$0
 	move.l	a4,-(a7)
 	movea.l	$8(a6),a4
@@ -35,7 +38,7 @@ loc_067D1E:
 	andi.b	#$EF,$2E(a4)
 loc_067D24:
 	move.l	a4,-(a7)
-	jsr	sub_067420(pc)
+	jsr	PlayerSelect_PlayPickAnim(pc)
 	move.w	$A2(a4),d0
 	ext.l	d0
 	move.w	g_CameraX(a5),d1
@@ -50,7 +53,7 @@ loc_067D24:
 	move.l	d0,$C(a4)
 	addq.w	#$4,a7
 	clr.w	$6C(a4)
-	lea.l	sub_0676F0(pc),a0
+	lea.l	PortraitActor_StateIdle(pc),a0
 	move.l	a0,$5C(a4)
 	moveq	#$8,d0
 	and.w	$4(a4),d0

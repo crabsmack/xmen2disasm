@@ -324,9 +324,9 @@ loc_0652AE:
 	bra.s	loc_065376
 loc_06530A:
 	move.w	d5,d0
-	bmi.s	loc_065374
+	bmi.s	Cerebro_PrintText_part2
 	cmpi.w	#$3,d0
-	bgt.s	loc_065374
+	bgt.s	Cerebro_PrintText_part2
 	add.w	d0,d0
 	move.w	Sw_064F70(pc,d0.w),d0
 	jmp	Sw_064F70-2(pc,d0.w)

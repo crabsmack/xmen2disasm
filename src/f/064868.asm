@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; loc_064868
+; PlayerSelect_LoadCharFrame_part1 - part 1 of PlayerSelect_LoadCharFrame: code block split off by the code-flow tools (not a separate function)
+; In:  registers/frame of PlayerSelect_LoadCharFrame
+; Out: continues in PlayerSelect_LoadCharFrame
+; Evidence: only reached by branches from PlayerSelect_LoadCharFrame; ends with rts
 ; ---------------------------------------------------------------------------
-loc_064868:
+PlayerSelect_LoadCharFrame_part1:
 	moveq	#$0,d0
 	movea.l	d0,a4
 	move.w	#$FF,d7

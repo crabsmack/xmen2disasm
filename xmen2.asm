@@ -1459,7 +1459,7 @@ Sw_064DD2:	; switch table of sub at $064DD2: 8 word offsets from Sw_064DD2-2
 	include "src/f/064EDE.asm"
 	include "src/f/064F70.asm"
 Sw_064F70:	; switch table of sub at $064F70: 4 word offsets from Sw_064F70-2
-	dc.w	loc_065326-(Sw_064F70-2), loc_06533A-(Sw_064F70-2), loc_06534E-(Sw_064F70-2), loc_065362-(Sw_064F70-2)
+	dc.w	Cerebro_PrintText_part1-(Sw_064F70-2), loc_06533A-(Sw_064F70-2), loc_06534E-(Sw_064F70-2), loc_065362-(Sw_064F70-2)
 	include "src/f/065326.asm"
 	include "src/f/065374.asm"
 	include "src/f/06539C.asm"
@@ -1532,23 +1532,23 @@ Tbl_Cerebro11:	; format not established; never read in the corpus; referenced by
 	include "src/f/06726C.asm"
 	include "src/f/0672CE.asm"
 Sw_0672CE:	; switch table of sub at $0672CE: 7 word offsets from Sw_0672CE-2
-	dc.w	loc_06730C-(Sw_0672CE-2), loc_06731A-(Sw_0672CE-2), loc_067328-(Sw_0672CE-2), loc_067336-(Sw_0672CE-2)
-	dc.w	loc_067344-(Sw_0672CE-2), loc_067352-(Sw_0672CE-2), loc_067360-(Sw_0672CE-2)
+	dc.w	ScalingActor_SetFrame_part1-(Sw_0672CE-2), loc_06731A-(Sw_0672CE-2), loc_067328-(Sw_0672CE-2), loc_067336-(Sw_0672CE-2)
+	dc.w	loc_067344-(Sw_0672CE-2), loc_067352-(Sw_0672CE-2), ScalingActor_SetFrame_part2-(Sw_0672CE-2)
 	include "src/f/06730C.asm"
 	include "src/f/067360.asm"
 	include "src/f/06736C.asm"
 	include "src/f/067376.asm"
 	include "src/f/067420.asm"
 Sw_067420:	; switch table of sub at $067420: 7 word offsets from Sw_067420-2
-	dc.w	loc_06745C-(Sw_067420-2), loc_067478-(Sw_067420-2), loc_067492-(Sw_067420-2), loc_0674AC-(Sw_067420-2)
+	dc.w	PlayerSelect_PlayPickAnim_part1-(Sw_067420-2), PlayerSelect_PlayPickAnim_part2-(Sw_067420-2), loc_067492-(Sw_067420-2), loc_0674AC-(Sw_067420-2)
 	dc.w	loc_0674C6-(Sw_067420-2), loc_0674E0-(Sw_067420-2), loc_0674FA-(Sw_067420-2)
 	include "src/f/06745C.asm"
 	include "src/f/067478.asm"
 	include "src/f/06750E.asm"
 	include "src/f/067542.asm"
 Sw_067542:	; switch table of sub at $067542: 7 word offsets from Sw_067542-2
-	dc.w	loc_06757C-(Sw_067542-2), loc_06758E-(Sw_067542-2), loc_0675A0-(Sw_067542-2), loc_0675B2-(Sw_067542-2)
-	dc.w	loc_0675C4-(Sw_067542-2), loc_0675D6-(Sw_067542-2), loc_0675E8-(Sw_067542-2)
+	dc.w	PlayerSelect_PlayIdleAnim_part1-(Sw_067542-2), PlayerSelect_PlayIdleAnim_part2-(Sw_067542-2), loc_0675A0-(Sw_067542-2), PlayerSelect_PlayIdleAnim_part3-(Sw_067542-2)
+	dc.w	PlayerSelect_PlayIdleAnim_part4-(Sw_067542-2), PlayerSelect_PlayIdleAnim_part5-(Sw_067542-2), PlayerSelect_PlayIdleAnim_part6-(Sw_067542-2)
 	include "src/f/06757C.asm"
 	include "src/f/06758E.asm"
 	include "src/f/0675B2.asm"
@@ -1575,9 +1575,9 @@ Sw_067542:	; switch table of sub at $067542: 7 word offsets from Sw_067542-2
 	include "src/f/067FCA.asm"
 	include "src/f/068078.asm"
 	include "src/f/068126.asm"
-Str_Selected:	; C string "   SELECTED" (used by sub_068126)
+Str_Selected:	; C string "   SELECTED" (used by CursorInput_Confirm)
 	incrom	$068242,$C
-Str_Selected_06824E:	; C string "SELECTED   " (used by sub_068126)
+Str_Selected_06824E:	; C string "SELECTED   " (used by CursorInput_Confirm)
 	incrom	$06824E,$C
 Tbl_PlayerSelectDrawFrames:	; table read by PlayerSelect_DrawFrames; F of 10 bytes used at runtime; read by PlayerSelect_DrawFrames, PlayerSelect_Run, PlayerSelect_PlaceCursor; jt[485] used by PlayerSelect_Run
 	incrom	$06825A,$10
@@ -1591,7 +1591,7 @@ Tbl_CerebroIntroPalHook3:	; table read by Cerebro_IntroPalHook; C0 of C0 bytes u
 	incrom	$0682B8,$C0
 Tbl_CerebroIntroPalHook4:	; table read by Cerebro_IntroPalHook; 20 of 20 bytes used at runtime; read by Cerebro_IntroPalHook, Cerebro_PlayIntro; jt[490] used by Cerebro_PlayIntro
 	incrom	$068378,$20
-Tbl_CerebroIntroPalHook5:	; table read by Cerebro_IntroPalHook; 2A of 2C bytes used at runtime; read by Cerebro_IntroPalHook, Cerebro_PlayIntro, loc_065374; jt[491] used by Cerebro_PlayIntro
+Tbl_CerebroIntroPalHook5:	; table read by Cerebro_IntroPalHook; 2A of 2C bytes used at runtime; read by Cerebro_IntroPalHook, Cerebro_PlayIntro, Cerebro_PrintText_part2; jt[491] used by Cerebro_PlayIntro
 	incrom	$068398,$2C
 Str_CerebroSentinelsText:	; Cerebro briefing text (Cerebro_PrintText); 27E of 29E bytes used at runtime; read by Cerebro_PrintText; jt[492] used by CerebroSentinels_RunScene
 	incrom	$0683C4,$29E
@@ -1615,7 +1615,7 @@ Snd_Credits:	; sound data; never read in the corpus; jt[500] used by Credits_Run
 	incrom	$069926,$736
 Tbl_ScalingActor_vtable:	; class descriptor of SCALINGACTOR: word name offset $6E, parent ACTOR, 26 method slots from +6, then the name (tools/classes.py)
 	incrom	$06A05C,$7B
-Pad_06A0D7:	; $00 fill; never read in the corpus; between sub_068126 and loc_06D126
+Pad_06A0D7:	; $00 fill; never read in the corpus; between CursorInput_Confirm and loc_06D126
 	incrom	$06A0D7,$1
 Tbl_BoxInputActor_vtable:	; class descriptor of BOXINPUTACTOR: word name offset $6E, parent ACTOR, 26 method slots from +6, then the name (tools/classes.py)
 	incrom	$06A0D8,$7C
@@ -5285,9 +5285,9 @@ Snd_17B8AA:	; sound data; never read in the corpus; jt[2114] used by Game_Init -
 	incrom	$17B8AA,$6DE6
 Art_Spr_182690:	; sprite definition (type $18, raw 4bpp tiles): $24-byte header, $14-byte frame records, pieces, tiles; 180 of 2A2 bytes used at runtime; read by VDP_FlushDmaQueue; DMA to VRAM $6940-9600; jt[2115] used by Scene_AllocCommonVram
 	incrom	$182690,$2A2
-Tbl_Anim_182932:	; animation script (byte flags, byte steps, ..., 2-byte steps from +6); 1E of 22 bytes used at runtime; read by Anim_ApplyStep, Anim_AdvanceByDistance; jt[2116] used by loc_06757C
+Tbl_Anim_182932:	; animation script (byte flags, byte steps, ..., 2-byte steps from +6); 1E of 22 bytes used at runtime; read by Anim_ApplyStep, Anim_AdvanceByDistance; jt[2116] used by PlayerSelect_PlayIdleAnim_part1
 	incrom	$182932,$22
-Tbl_Anim_182954:	; animation script (byte flags, byte steps, ..., 2-byte steps from +6); 3E of 48 bytes used at runtime; read by Anim_ApplyStep, Anim_AdvanceByDistance, Anim_Advance; jt[2117] used by loc_06745C
+Tbl_Anim_182954:	; animation script (byte flags, byte steps, ..., 2-byte steps from +6); 3E of 48 bytes used at runtime; read by Anim_ApplyStep, Anim_AdvanceByDistance, Anim_Advance; jt[2117] used by PlayerSelect_PlayPickAnim_part1
 	incrom	$182954,$48
 Tbl_Anim_18299C:	; animation script (byte flags, byte steps, ..., 2-byte steps from +6); 8 of A bytes used at runtime; read by Anim_ApplyStep, Anim_AdvanceByDistance, Anim_Advance; jt[2118] used by Beast_AirAttackDown
 	incrom	$18299C,$A
@@ -5354,7 +5354,7 @@ Art_BeastSpr:	; sprite definition (type $18, raw 4bpp tiles): $24-byte header, $
 	incrom	$18434E,$9BDE
 Art_PlayerSpr2:	; sprite definition (type $18, raw 4bpp tiles): $24-byte header, $14-byte frame records, pieces, tiles; 74E0 of 8476 bytes used at runtime; read by VDP_FlushDmaQueue; DMA to VRAM $85E0-A220; jt[2149] used by Player_CalcMaxTiles, Beast_SetFrame
 	incrom	$18DF2C,$8476
-Tbl_BeastAnim:	; animation script (byte flags, byte steps, ..., 2-byte steps from +6); 1D of 22 bytes used at runtime; read by Anim_ApplyStep, Anim_AdvanceByDistance; jt[2150] used by loc_0675D6
+Tbl_BeastAnim:	; animation script (byte flags, byte steps, ..., 2-byte steps from +6); 1D of 22 bytes used at runtime; read by Anim_ApplyStep, Anim_AdvanceByDistance; jt[2150] used by PlayerSelect_PlayIdleAnim_part5
 	incrom	$1963A2,$22
 Tbl_BeastAnim2:	; animation script (byte flags, byte steps, ..., 2-byte steps from +6); 8 of A bytes used at runtime; read by Anim_ApplyStep, Anim_AdvanceByDistance, Anim_Advance; jt[2151] used by Wolverine_StateWallCling
 	incrom	$1963C4,$A
@@ -5372,7 +5372,7 @@ Tbl_BeastAnim14:	; animation script (NOTES: Animation scripts); never read in th
 	incrom	$1963FC,$A
 Tbl_BeastAnim15:	; animation script (NOTES: Animation scripts); never read in the corpus; jt[2158] used by Wolverine_StartCeilingCrawl -> Obj_SetAnim, Wolverine_StateCeilingHang -> Obj_SetAnim
 	incrom	$196406,$A
-Tbl_BeastAnim6:	; animation script (byte flags, byte steps, ..., 2-byte steps from +6); 36 of 3E bytes used at runtime; read by Anim_ApplyStep, Anim_AdvanceByDistance, Anim_Advance; jt[2159] used by loc_067478
+Tbl_BeastAnim6:	; animation script (byte flags, byte steps, ..., 2-byte steps from +6); 36 of 3E bytes used at runtime; read by Anim_ApplyStep, Anim_AdvanceByDistance, Anim_Advance; jt[2159] used by PlayerSelect_PlayPickAnim_part2
 	incrom	$196410,$3E
 Tbl_EvilWolverineAnim:	; animation script (byte flags, byte steps, ..., 2-byte steps from +6); 18 of 1A bytes used at runtime; read by Anim_ApplyStep, Anim_AdvanceByDistance, Anim_Advance; jt[2160] used by EvilWolverine_ActLeap, Wolverine_StateLunge, Wolverine_GroundSpecial
 	incrom	$19644E,$1A
@@ -5418,7 +5418,7 @@ Art_EvilWolverineSpr:	; sprite definition (type $18, raw 4bpp tiles): $24-byte h
 	incrom	$197C44,$BA10
 Art_PlayerSpr3:	; sprite definition (type $18, raw 4bpp tiles): $24-byte header, $14-byte frame records, pieces, tiles; 2060 of 28F2 bytes used at runtime; read by VDP_FlushDmaQueue, Spr_EmitStream; DMA to VRAM $66A0-9FE0; jt[2181] used by Player_CalcMaxTiles, Wolverine_SetFrame
 	incrom	$1A3654,$28F2
-Tbl_Anim_1A5F46:	; animation script (byte flags, byte steps, ..., 2-byte steps from +6); 41 of 78 bytes used at runtime; read by Anim_ApplyStep, Anim_AdvanceByDistance, Anim_Advance; jt[2182] used by loc_0675B2
+Tbl_Anim_1A5F46:	; animation script (byte flags, byte steps, ..., 2-byte steps from +6); 41 of 78 bytes used at runtime; read by Anim_ApplyStep, Anim_AdvanceByDistance, Anim_Advance; jt[2182] used by PlayerSelect_PlayIdleAnim_part3
 	incrom	$1A5F46,$78
 Tbl_Anim_1A5FBE:	; animation script (byte flags, byte steps, ..., 2-byte steps from +6); E of 12 bytes used at runtime; read by Anim_ApplyStep, Anim_AdvanceByDistance, Anim_Advance; jt[2183] used by Nightcrawler_WallAttackEnd, Nightcrawler_StateWallClimb, Nightcrawler_StateGrab
 	incrom	$1A5FBE,$12
@@ -5432,7 +5432,7 @@ Tbl_Anim_1A5FFE:	; animation script (byte flags, byte steps, ..., 2-byte steps f
 	incrom	$1A5FFE,$A
 Tbl_Anim_1A6008:	; animation script (byte flags, byte steps, ..., 2-byte steps from +6); 14 of 16 bytes used at runtime; read by Anim_ApplyStep, Anim_AdvanceByDistance, Anim_Advance; jt[2188] used by Nightcrawler_StateWallCling
 	incrom	$1A6008,$16
-Tbl_Anim_1A601E:	; animation script (byte flags, byte steps, ..., 2-byte steps from +6); 38 of 42 bytes used at runtime; read by Anim_ApplyStep, Anim_AdvanceByDistance, Anim_Advance; jt[2189] used by loc_067478
+Tbl_Anim_1A601E:	; animation script (byte flags, byte steps, ..., 2-byte steps from +6); 38 of 42 bytes used at runtime; read by Anim_ApplyStep, Anim_AdvanceByDistance, Anim_Advance; jt[2189] used by PlayerSelect_PlayPickAnim_part2
 	incrom	$1A601E,$42
 Tbl_Anim_1A6060:	; animation script (byte flags, byte steps, ..., 2-byte steps from +6); 6 of 8 bytes used at runtime; read by Anim_ApplyStep, Anim_AdvanceByDistance, Anim_Advance; jt[2190] used by Nightcrawler_AirAttackDown
 	incrom	$1A6060,$8
@@ -5492,11 +5492,11 @@ Art_PlayerSpr4:	; sprite definition (type $18, raw 4bpp tiles): $24-byte header,
 	incrom	$1B0A56,$3EF4
 Art_PlayerSpr5:	; sprite definition (type $18, raw 4bpp tiles): $24-byte header, $14-byte frame records, pieces, tiles; 3A40 of 4530 bytes used at runtime; read by VDP_FlushDmaQueue; DMA to VRAM $8620-A400; jt[2215] used by Player_CalcMaxTiles, Nightcrawler_SetFrame
 	incrom	$1B494A,$4530
-Tbl_NightcrawlerAnim:	; animation script (byte flags, byte steps, ..., 2-byte steps from +6); 14 of 16 bytes used at runtime; read by Anim_ApplyStep, Anim_AdvanceByDistance; jt[2216] used by loc_0675C4
+Tbl_NightcrawlerAnim:	; animation script (byte flags, byte steps, ..., 2-byte steps from +6); 14 of 16 bytes used at runtime; read by Anim_ApplyStep, Anim_AdvanceByDistance; jt[2216] used by PlayerSelect_PlayIdleAnim_part4
 	incrom	$1B8E7A,$16
 Tbl_EvilPsylockeAnim:	; animation script (byte flags, byte steps, ..., 2-byte steps from +6); 1E of 34 bytes used at runtime; read by Anim_ApplyStep, Anim_AdvanceByDistance, Anim_Advance; jt[2217] used by EvilPsylocke_ActDash, sub_1B947C
 	incrom	$1B8E90,$34
-Tbl_NightcrawlerAnim2:	; animation script (byte flags, byte steps, ..., 2-byte steps from +6); 2E of 34 bytes used at runtime; read by Anim_ApplyStep, Anim_AdvanceByDistance; jt[2218] used by loc_067478
+Tbl_NightcrawlerAnim2:	; animation script (byte flags, byte steps, ..., 2-byte steps from +6); 2E of 34 bytes used at runtime; read by Anim_ApplyStep, Anim_AdvanceByDistance; jt[2218] used by PlayerSelect_PlayPickAnim_part2
 	incrom	$1B8EC4,$34
 Tbl_NightcrawlerAnim3:	; animation script (byte flags, byte steps, ..., 2-byte steps from +6); 12 of 14 bytes used at runtime; read by Anim_ApplyStep, Anim_AdvanceByDistance; jt[2219] used by sub_1B9248
 	incrom	$1B8EF8,$14
@@ -5547,9 +5547,9 @@ Art_PlayerSpr6:	; sprite definition (type $18, raw 4bpp tiles): $24-byte header,
 	incrom	$1C0CF4,$2E8C
 Art_PlayerSpr7:	; sprite definition (type $18, raw 4bpp tiles): $24-byte header, $14-byte frame records, pieces, tiles; 7100 of 9B66 bytes used at runtime; read by VDP_FlushDmaQueue; DMA to VRAM $6860-CA80; jt[2247] used by Player_CalcMaxTiles, sub_1B9E78
 	incrom	$1C3B80,$9B66
-Tbl_PsylockeAnim:	; animation script (byte flags, byte steps, ..., 2-byte steps from +6); E of 10 bytes used at runtime; read by Anim_ApplyStep, Anim_AdvanceByDistance, Anim_Advance; jt[2248] used by loc_0675E8
+Tbl_PsylockeAnim:	; animation script (byte flags, byte steps, ..., 2-byte steps from +6); E of 10 bytes used at runtime; read by Anim_ApplyStep, Anim_AdvanceByDistance, Anim_Advance; jt[2248] used by PlayerSelect_PlayIdleAnim_part6
 	incrom	$1CD6E6,$10
-Tbl_PsylockeAnim2:	; animation script (byte flags, byte steps, ..., 2-byte steps from +6); 27 of 2C bytes used at runtime; read by Anim_ApplyStep; jt[2249] used by loc_067478
+Tbl_PsylockeAnim2:	; animation script (byte flags, byte steps, ..., 2-byte steps from +6); 27 of 2C bytes used at runtime; read by Anim_ApplyStep; jt[2249] used by PlayerSelect_PlayPickAnim_part2
 	incrom	$1CD6F6,$2C
 Tbl_MagnetoBossAnim2:	; animation script (byte flags, byte steps, ..., 2-byte steps from +6); E of 10 bytes used at runtime; read by Anim_ApplyStep, Anim_AdvanceByDistance; jt[2250] used by MagnetoBoss_Update
 	incrom	$1CD722,$10
@@ -5664,7 +5664,7 @@ Art_PsylockeTiles2:	; uncompressed 4bpp tiles DMA'd to VRAM; 20 of 20 bytes used
 	include "src/f/1CEC42.asm"
 Tbl_Anim_1CEC4A:	; animation script (byte flags, byte steps, ..., 2-byte steps from +6); 10 of 12 bytes used at runtime; read by Anim_ApplyStep, Anim_AdvanceByDistance, Anim_Advance
 	incrom	$1CEC4A,$12
-Tbl_Anim_1CEC5C:	; animation script (byte flags, byte steps, ..., 2-byte steps from +6); 1A of 3A bytes used at runtime; read by Anim_ApplyStep, Anim_AdvanceByDistance, Anim_Advance; jt[2311] used by loc_06758E
+Tbl_Anim_1CEC5C:	; animation script (byte flags, byte steps, ..., 2-byte steps from +6); 1A of 3A bytes used at runtime; read by Anim_ApplyStep, Anim_AdvanceByDistance, Anim_Advance; jt[2311] used by PlayerSelect_PlayIdleAnim_part2
 	incrom	$1CEC5C,$3A
 Tbl_Anim_1CEC96:	; animation script (byte flags, byte steps, ..., 2-byte steps from +6); 8 of A bytes used at runtime; read by Anim_ApplyStep, Anim_AdvanceByDistance, Anim_Advance; jt[2312] used by sub_1CEF7C
 	incrom	$1CEC96,$A
@@ -5674,7 +5674,7 @@ Tbl_Anim_1CECAA:	; animation script (byte flags, byte steps, ..., 2-byte steps f
 	incrom	$1CECAA,$A
 Tbl_Anim_1CECB4:	; animation script (byte flags, byte steps, ..., 2-byte steps from +6); 8 of A bytes used at runtime; read by Anim_AdvanceByDistance, Anim_ApplyStep, Anim_Advance; jt[2315] used by sub_1CEF7C
 	incrom	$1CECB4,$A
-Tbl_Anim_1CECBE:	; animation script (byte flags, byte steps, ..., 2-byte steps from +6); 50 of 6C bytes used at runtime; read by Anim_ApplyStep, Anim_AdvanceByDistance; jt[2316] used by loc_067478
+Tbl_Anim_1CECBE:	; animation script (byte flags, byte steps, ..., 2-byte steps from +6); 50 of 6C bytes used at runtime; read by Anim_ApplyStep, Anim_AdvanceByDistance; jt[2316] used by PlayerSelect_PlayPickAnim_part2
 	incrom	$1CECBE,$6C
 Tbl_Anim_1CED2A:	; animation script (NOTES: Animation scripts); never read in the corpus; jt[2317] used by sub_1CFB56 -> Obj_SetAnim
 	incrom	$1CED2A,$20
@@ -5779,11 +5779,11 @@ Art_GambitSpr2:	; sprite definition (type $18, raw 4bpp tiles): $24-byte header,
 	include "src/f/1E1928.asm"
 Tbl_Anim_1E19B8:	; animation script (byte flags, byte steps, ..., 2-byte steps from +6); 10 of 12 bytes used at runtime; read by Anim_ApplyStep, Anim_AdvanceByDistance, Anim_Advance
 	incrom	$1E19B8,$12
-Tbl_Anim_1E19CA:	; animation script (byte flags, byte steps, ..., 2-byte steps from +6); 19C of 27E bytes used at runtime; read by Anim_ApplyStep; jt[2360] used by loc_06758E
+Tbl_Anim_1E19CA:	; animation script (byte flags, byte steps, ..., 2-byte steps from +6); 19C of 27E bytes used at runtime; read by Anim_ApplyStep; jt[2360] used by PlayerSelect_PlayIdleAnim_part2
 	incrom	$1E19CA,$27E
 Tbl_Anim_1E1C48:	; animation script (byte flags, byte steps, ..., 2-byte steps from +6); 13 of 18 bytes used at runtime; read by Anim_ApplyStep, Anim_AdvanceByDistance, Anim_Advance; jt[2361] used by sub_1E39B8
 	incrom	$1E1C48,$18
-Tbl_Anim_1E1C60:	; animation script (byte flags, byte steps, ..., 2-byte steps from +6); 2A of 30 bytes used at runtime; read by Anim_ApplyStep, Anim_AdvanceByDistance; jt[2362] used by loc_067478
+Tbl_Anim_1E1C60:	; animation script (byte flags, byte steps, ..., 2-byte steps from +6); 2A of 30 bytes used at runtime; read by Anim_ApplyStep, Anim_AdvanceByDistance; jt[2362] used by PlayerSelect_PlayPickAnim_part2
 	incrom	$1E1C60,$30
 Tbl_Anim_1E1C90:	; animation script (byte flags, byte steps, ..., 2-byte steps from +6); C of E bytes used at runtime; read by Anim_ApplyStep, Anim_AdvanceByDistance, Anim_Advance; jt[2363] used by sub_1E3594
 	incrom	$1E1C90,$E

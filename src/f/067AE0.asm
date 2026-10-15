@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_067AE0	[link-after-rts]
+; PortraitActor_StartFlyIn - portrait: set up an 8-step scaled flight from the cursor's slot to the portrait position
+; In:  8(a6) = this
+; Out: d0 = +4 & 8
+; Evidence: next PortraitActor_StateFlyIn
 ; ---------------------------------------------------------------------------
-sub_067AE0:
+PortraitActor_StartFlyIn:
 	link.w	a6,#$FFFC
 	movem.l	d3/d7/a3-a4,-(a7)
 	movea.l	$8(a6),a4
@@ -108,7 +111,7 @@ sub_067AE0:
 	clr.b	$35(a3)
 	addq.w	#$4,a7
 	move.w	#$4,$6C(a4)
-	lea.l	sub_067C32(pc),a0
+	lea.l	PortraitActor_StateFlyIn(pc),a0
 	move.l	a0,$5C(a4)
 	moveq	#$8,d0
 	and.w	$4(a4),d0

@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; loc_065374
+; Cerebro_PrintText_part2 - part 2 of Cerebro_PrintText: code block split off by the code-flow tools (not a separate function)
+; In:  registers/frame of Cerebro_PrintText
+; Out: continues in Cerebro_PrintText
+; Evidence: only reached by branches from Cerebro_PrintText; ends with rts
 ; ---------------------------------------------------------------------------
-loc_065374:
+Cerebro_PrintText_part2:
 	addq.w	#$1,a4
 loc_065376:
 	cmpa.l	a4,a3
