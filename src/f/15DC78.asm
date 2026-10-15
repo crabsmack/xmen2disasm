@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_15DC78	[jt 2052]
+; Actor_Despawn - ACTOR slot +$36: remove a live object back into its spawn record at its current position
+; In:  8(a6) = object   $C(a6) = spawn record
+; Out: none
+; Evidence: obj+4 = 0; rec+4 = 5, rec+6/+8 = x>>8, y>>8, rec+5 = $FF; Timer_Free(+$7C), +$7C = 0
 ; ---------------------------------------------------------------------------
-sub_15DC78:
+Actor_Despawn:
 	link.w	a6,#$0
 	movem.l	a3-a4,-(a7)
 	movea.l	$C(a6),a3

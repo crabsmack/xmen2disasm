@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_15DE1E	[jt 2054]
+; Actor_InActivateWindow - ACTOR slot +$3A: test whether an unattached object is inside the activation window
+; In:  8(a6) = object
+; Out: d0 = 1 inside (or flag $1000 = always), 0 outside or attached
+; Evidence: attached (+$3A != $FF) -> 0; flags +6 $800 / $20 skip the x / y test; screen x vs $FFCC46/$FFCC48, y vs $FFCC42/$FFCC44
 ; ---------------------------------------------------------------------------
-sub_15DE1E:
+Actor_InActivateWindow:
 	link.w	a6,#$0
 	movem.l	d7/a4,-(a7)
 	movea.l	$8(a6),a4

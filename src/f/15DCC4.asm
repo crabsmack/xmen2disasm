@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_15DCC4	[jt 2053]
+; Actor_Init - ACTOR slot +$12: base initialisation of an actor object at a position
+; In:  8(a6) = object   $C(a6)/$10(a6) = long: x, y   $14(a6) = spawn parameter
+; Out: none
+; Evidence: ACTOR's Init; every class Init calls its parent's first (NOTES Actor classes)
 ; ---------------------------------------------------------------------------
-sub_15DCC4:
+Actor_Init:
 	link.w	a6,#$0
 	movem.l	d6-d7/a4,-(a7)
 	move.l	$10(a6),d6

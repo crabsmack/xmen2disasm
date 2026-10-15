@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_15E452	[jt 2063]
+; Actor_DrawSprite - ACTOR slot +$1E: draw the sprite like Actor_Draw, or (flag $4000) only re-place attached objects
+; In:  8(a6) = object
+; Out: none
+; Evidence: flags +4 bit $4000 -> Spr_PlaceAttached(obj+$2E, 0, 0) when it has children; else same camera-relative Spr_Draw as Actor_Draw with the $40 blink test; Spr_PlaceAttached calls this slot on attached objects
 ; ---------------------------------------------------------------------------
-sub_15E452:
+Actor_DrawSprite:
 	link.w	a6,#$0
 	movem.l	d3/a4,-(a7)
 	movea.l	$8(a6),a4

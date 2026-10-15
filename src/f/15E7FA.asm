@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_15E7FA	[jt 2070]
+; Actor_Update - ACTOR slot +$4A: per-frame update (handler, timers, movement)
+; In:  8(a6) = object
+; Out: none
+; Evidence: calls the state handler +$5C when timer +$6C < 1, then Move (+$4E) (NOTES Actor classes)
 ; ---------------------------------------------------------------------------
-sub_15E7FA:
+Actor_Update:
 	link.w	a6,#$0
 	movem.l	d3-d7/a3-a4,-(a7)
 	movea.l	$8(a6),a4

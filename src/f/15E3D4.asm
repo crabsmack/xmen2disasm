@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_15E3D4	[jt 2061]
+; Actor_ContainsPoint - ACTOR slot +$16: test whether a point lies strictly inside the object's body box
+; In:  8(a6) = object   $C(a6) = word: x   $10(a6) = word: y
+; Out: d0 = 1 inside, else 0
+; Evidence: +$4E < x < +$52 and +$4C < y < +$50
 ; ---------------------------------------------------------------------------
-sub_15E3D4:
+Actor_ContainsPoint:
 	link.w	a6,#$0
 	movem.l	d6-d7/a4,-(a7)
 	move.w	$12(a6),d6

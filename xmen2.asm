@@ -3835,7 +3835,7 @@ Sw_15C42A:	; switch table of sub at $15C42A: 9 word offsets from Sw_15C42A-2
 	include "src/f/15DBF2.asm"
 	include "src/f/15DC78.asm"
 	include "src/f/15DCC4.asm"
-Str_Undefined:	; C string "UNDEFINED" (used by sub_15DCC4)
+Str_Undefined:	; C string "UNDEFINED" (used by Actor_Init)
 	incrom	$15DE14,$A
 	include "src/f/15DE1E.asm"
 	include "src/f/15DEAE.asm"

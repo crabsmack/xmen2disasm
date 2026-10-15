@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_15E222	[jt 2060]
+; Actor_Deactivate - ACTOR slot +$46: take an object out of play: free its preloaded VRAM tiles, segments, timer, list nodes and draw node
+; In:  8(a6) = object
+; Out: none
+; Evidence: flags +4 |= $4000; for a streamed sprite (def type != $20) shifts later objects' VRAM tile bases +$34 down by +$36 (Spr_InvalidateFrame) and lowers $FFCC68; flag $200: Seg_ForEachOfObj(sub_15E7EA); Timer_Stop(+$7C); List_Unlink +$80 / +$84 from $FFEBAA/$FFEBA2/$FFEBAE/$FFEBA6; DrawList_Remove(+$88), +$88 = -1
 ; ---------------------------------------------------------------------------
-sub_15E222:
+Actor_Deactivate:
 	link.w	a6,#$0
 	movem.l	d3/d5-d7/a3-a4,-(a7)
 	movea.l	$8(a6),a3

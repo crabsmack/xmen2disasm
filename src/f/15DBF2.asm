@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_15DBF2	[jt 2051]
+; Actor_SpawnRecOutOfView - ACTOR slot +$32: test whether a live object has left the despawn window
+; In:  8(a6) = object   $C(a6) = spawn record
+; Out: d0 = 1 when outside (despawn), else 0
+; Evidence: only when flags +4 bit $4000 and rec+4 bit 3 clear; screen x/y vs words $FFCC52/$FFCC50/$FFCC54/$FFCC4E
 ; ---------------------------------------------------------------------------
-sub_15DBF2:
+Actor_SpawnRecOutOfView:
 	link.w	a6,#$0
 	movem.l	d3/d6-d7/a4,-(a7)
 	movea.l	$8(a6),a4

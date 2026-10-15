@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_15E18C	[jt 2059]
+; Actor_OutsideActiveWindow - ACTOR slot +$42: test whether an unattached object has left the active window
+; In:  8(a6) = object
+; Out: d0 = 1 outside, else 0
+; Evidence: only unattached objects without flag $1000 (or with health +$68 < 1); screen x vs $FFCC3E/$FFCC40, y vs $FFCC3A/$FFCC3C, flags $800/$20 skip an axis
 ; ---------------------------------------------------------------------------
-sub_15E18C:
+Actor_OutsideActiveWindow:
 	link.w	a6,#$0
 	movem.l	d7/a4,-(a7)
 	movea.l	$8(a6),a4

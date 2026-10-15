@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_15E410	[jt 2062]
+; Actor_SetFrame - ACTOR slot +$56: select the sprite frame (Spr_SetFrame semantics) and flag the object for redraw
+; In:  8(a6) = object   $C(a6) = word: frame
+; Out: none
+; Evidence: obj+$2F = frame; bit 5 set when it equals the uploaded frame +$38, else cleared and flags +4 |= 8; called by Anim_ApplyStep
 ; ---------------------------------------------------------------------------
-sub_15E410:
+Actor_SetFrame:
 	link.w	a6,#$0
 	movem.l	d7/a3-a4,-(a7)
 	movea.l	$8(a6),a3

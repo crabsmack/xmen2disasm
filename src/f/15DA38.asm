@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_15DA38	[jt 2048]
+; Actor_New - ACTOR slot +$0E: allocate an object of a class, run its Init, and Activate it if inside the activation window
+; In:  8(a6) = unused   $C(a6) = class descriptor   $10(a6)/$14(a6) = long: x, y (8 fraction bits)   $18(a6) = spawn parameter
+; Out: d0 = object pointer, 0 if allocation failed
+; Evidence: object +0 = descriptor; descriptor +$12 Init(obj, x, y, param); vtable +$3A InActivateWindow then +$3E Activate
 ; ---------------------------------------------------------------------------
-sub_15DA38:
+Actor_New:
 	link.w	a6,#$0
 	movem.l	a3-a4,-(a7)
 	movea.l	$C(a6),a3

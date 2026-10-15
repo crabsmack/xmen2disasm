@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_15EAC8	[jt 2072]
+; Actor_Nop6A - ACTOR slot +$6A: empty
+; In:  none
+; Out: none
+; Evidence: link/unlk/rts
 ; ---------------------------------------------------------------------------
-sub_15EAC8:
+Actor_Nop6A:
 	link.w	a6,#$0
 	unlk	a6
 	rts

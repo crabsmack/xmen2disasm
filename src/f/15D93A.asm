@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_15D93A	[jt 2043]
+; Actor_InitSpawnRec - ACTOR slot +$0A: fill a spawn record from a level placement entry
+; In:  8(a6) = spawn record   $C(a6) = placement entry
+; Out: none
+; Evidence: rec+4 = 1 (state), +5 = $FF (no object), +6/+8 = entry words +2/+4 (x, y), +$A = entry pointer
 ; ---------------------------------------------------------------------------
-sub_15D93A:
+Actor_InitSpawnRec:
 	link.w	a6,#$0
 	movem.l	a3-a4,-(a7)
 	movea.l	$C(a6),a3

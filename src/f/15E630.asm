@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_15E630	[jt 2065]
+; Actor_Attack - ACTOR slot +$22: hit a target (its TakeDamage) and start this object's hit-flash timer
+; In:  8(a6) = this   $C(a6) = target   $10(a6)/$14(a6) = bytes   $18(a6)/$1C(a6) = words (damage and hit data passed through)
+; Out: none
+; Evidence: target vtable +$26 TakeDamage(target, this, ...); this+$6A = 10
 ; ---------------------------------------------------------------------------
-sub_15E630:
+Actor_Attack:
 	link.w	a6,#$0
 	movem.l	a3-a4,-(a7)
 	movea.l	$C(a6),a3

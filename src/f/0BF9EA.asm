@@ -39,7 +39,7 @@ loc_0BFA50:
 	move.l	d3,-(a7)
 	move.l	a4,-(a7)
 	move.l	a3,-(a7)
-	jsr	$402A(a5)	; -> sub_15DB26
+	jsr	$402A(a5)	; -> Actor_SpawnRecInView
 	addq.l	#$8,a7
 	move.l	(a7)+,d3
 	tst.b	d0
@@ -51,7 +51,7 @@ loc_0BFA64:
 loc_0BFA68:
 	move.l	a4,-(a7)
 	move.l	a3,-(a7)
-	jsr	$402A(a5)	; -> sub_15DB26
+	jsr	$402A(a5)	; -> Actor_SpawnRecInView
 	addq.w	#$8,a7
 loc_0BFA72:
 	movem.l	-$C(a6),d3/a3-a4

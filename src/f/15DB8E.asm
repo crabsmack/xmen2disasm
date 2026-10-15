@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_15DB8E	[jt 2050]
+; Actor_SpawnFromRec - ACTOR slot +$2E: create the object for a spawn record (New at the record position) and mark the record live
+; In:  8(a6) = descriptor   $C(a6) = spawn record
+; Out: d0 = object or 0
+; Evidence: vtable +$0E New(0, rec+0, x<<8, y<<8, rec+$A); obj+$14 = byte $FFF633; rec+5 = obj+$15 (object index); rec+4 bit 0 cleared, bit 1 set
 ; ---------------------------------------------------------------------------
-sub_15DB8E:
+Actor_SpawnFromRec:
 	link.w	a6,#$0
 	movem.l	d6-d7/a3-a4,-(a7)
 	movea.l	$C(a6),a4

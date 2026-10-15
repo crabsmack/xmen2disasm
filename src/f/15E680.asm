@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_15E680	[jt 2066]
+; Actor_TakeDamage - ACTOR slot +$26: lose health, start the hit-flash timer and switch to the hurt handler
+; In:  8(a6) = this   $C(a6) = attacker   $10(a6) = long   $14(a6) = byte: damage
+; Out: none
+; Evidence: if +$60 set: handler +$5C = +$60, timer +$6C = 0; +$6A = 10; +$68 (health) -= damage
 ; ---------------------------------------------------------------------------
-sub_15E680:
+Actor_TakeDamage:
 	link.w	a6,#$0
 	move.l	a4,-(a7)
 	movea.l	$8(a6),a4

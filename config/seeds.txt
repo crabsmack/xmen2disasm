@@ -4,7 +4,7 @@
 0EAE8E	; sub_0EAE8E - jt entries: movem/tst prologue, ends in rts, clean trace
 15EE48	; sub_15EE48 - jt entries: movem/tst prologue, ends in rts, clean trace
 15F1F8	; sub_15F1F8 - jt entries: movem/tst prologue, ends in rts, clean trace
-1F4C56	; sub_1F4C56 - jt entries: movem/tst prologue, ends in rts, clean trace
+1F4C56	; Actor_Move - jt entries: movem/tst prologue, ends in rts, clean trace
 0226B2	; sub_0226B2 - runtime: executed in tas
 065DB6	; sub_065DB6 - runtime: executed in tas
 0062C0	; Player1_StartLife_Nightcrawler - runtime: executed in tas

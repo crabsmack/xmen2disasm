@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_15DFA8	[jt 2058]
+; Actor_Activate - ACTOR slot +$3E: make an object active (register it for update/draw lists)
+; In:  8(a6) = object
+; Out: none
+; Evidence: counterpart of Actor_Deactivate (which unlinks the +$80/+$84 list nodes, the floor segments and the DrawList node +$88); called by Actor_New and the scene loop when InActivateWindow
 ; ---------------------------------------------------------------------------
-sub_15DFA8:
+Actor_Activate:
 	link.w	a6,#$0
 	movem.l	d3-d7/a3-a4,-(a7)
 	movea.l	$8(a6),a4

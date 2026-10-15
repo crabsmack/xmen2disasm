@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_1F4C56	[convert.py]
+; Actor_Move - ACTOR slot +$4E: integrate velocity with acceleration and maximum speed
+; In:  8(a6) = object
+; Out: none
+; Evidence: velocity +$16/+$18, acceleration +$1E/+$20, max +$22/+$24 (NOTES Actor classes); lives in the runtime area at $1F4C56
 ; ---------------------------------------------------------------------------
-sub_1F4C56:
+Actor_Move:
 	movem.l	d4-d7/a3-a4,-(a7)
 	movea.l	$1C(a7),a3
 	move.b	-$38DE(a5),d4
