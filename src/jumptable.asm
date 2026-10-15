@@ -1,5 +1,9 @@
 ; A5 jump table: `jsr $XX(a5)` calls entry ($XX-$22)/8. Entries whose target
 ; is not (yet) known code are numeric; many point at data, not functions.
+; jt[2612] was linked to address 0: its only user is dead code in Sys_InitHardware (an
+; if (0) block that stores V-blank hook candidates), so the slot points at nothing.
+Jt_NullTarget = $000000
+
 JumpTable:
 	jtentry	Game_Main	; [0] jsr $22(a5)
 	jtentry	unk_Boot_005458	; [1] jsr $2A(a5)
@@ -2613,7 +2617,7 @@ JumpTable:
 	jtentry	Pad_GetP2Clean	; [2609] jsr $51AA(a5)
 	jtentry	Pad_ReadBoth	; [2610] jsr $51B2(a5)
 	jtentry	Pad_IsP2Connected	; [2611] jsr $51BA(a5)
-	jtentry	$000000	; [2612] jsr $51C2(a5)
+	jtentry	Jt_NullTarget	; [2612] jsr $51C2(a5)
 	jtentry	unk_VDP_1FE05C	; [2613] jsr $51CA(a5)
 	jtentry	VDP_DmaToVram	; [2614] jsr $51D2(a5)
 	jtentry	VDP_QueueDma	; [2615] jsr $51DA(a5)
