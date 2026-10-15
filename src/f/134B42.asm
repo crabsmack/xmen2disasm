@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; loc_134B42	[static: switch-table case target (tools/switches.py: table after `move.w T(pc,dN.w),dN / jmp T-2(pc,dN.w)`, size from the cmpi bound)]
+; FlyBrood_Init_Case4 - FlyBrood_Init spawn types 4-7: swooping flyer entering from the farther side, homing mover
+; In:  inside FlyBrood_Init
+; Out: -
+; Evidence: Sw_134934 targets; FlyBrood_EnterFromSide, FlyBrood_MoveHoming, state FlyBrood_WaitPathDone
 ; ---------------------------------------------------------------------------
-loc_134B42:
+FlyBrood_Init_Case4:
 	move.l	$8(a4),d7
 	asr.l	#$8,d7
 	lea.l	$3712(a5),a0
@@ -18,38 +21,38 @@ loc_134B42:
 	moveq	#$1,d0
 	move.l	d0,-(a7)
 	move.l	a4,-(a7)
-	jsr	sub_1345A6(pc)
+	jsr	FlyBrood_EnterFromSide(pc)
 	addq.w	#$8,a7
 	bra.s	loc_134B86
 loc_134B7A:
 	moveq	#$0,d0
 	move.l	d0,-(a7)
 	move.l	a4,-(a7)
-	jsr	sub_1345A6(pc)
+	jsr	FlyBrood_EnterFromSide(pc)
 	addq.w	#$8,a7
 loc_134B86:
-	lea.l	sub_134E6A(pc),a0
+	lea.l	FlyBrood_WaitPathDone(pc),a0
 	move.l	a0,$64(a4)
 	move.l	a0,$5C(a4)
-	lea.l	sub_13463C(pc),a0
+	lea.l	FlyBrood_MoveHoming(pc),a0
 	move.l	a0,$9E(a4)
 	lea.l	$36DA(a5),a0
 	move.l	$2(a0),$A2(a4)
-	bra.s	loc_134BE6
+	bra.s	FlyBrood_Init_Tail
 loc_134BA6:
 	lea.l	$371A(a5),a0
 	move.l	$2(a0),-(a7)
 	pea.l	$8C(a4)
 	jsr	$3ED2(a5)	; -> AiScript_Set
 	addq.w	#$8,a7
-	bra.s	loc_134BE6
+	bra.s	FlyBrood_Init_Tail
 loc_134BBA:
 	lea.l	$3722(a5),a0
 	move.l	$2(a0),-(a7)
 	pea.l	$8C(a4)
 	jsr	$3ED2(a5)	; -> AiScript_Set
 	addq.w	#$8,a7
-	bra.s	loc_134BE6
+	bra.s	FlyBrood_Init_Tail
 loc_134BCE:
 	lea.l	$372A(a5),a0
 	move.l	$2(a0),-(a7)

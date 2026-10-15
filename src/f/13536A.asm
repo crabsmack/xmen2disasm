@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_13536A	[link-after-rts]
+; FlyBrood_ActDiveAtPlayerLow - FLYBROOD: dive at the nearest player's head (+6), then leave
+; In:  8(a6) = this
+; Out: d0 = flags & 8
+; Evidence: next FlyBrood_StateFlyOffKill
 ; ---------------------------------------------------------------------------
-sub_13536A:
+FlyBrood_ActDiveAtPlayerLow:
 	link.w	a6,#$FFFC
 	movem.l	d3-d7/a3-a4,-(a7)
 	movea.l	$8(a6),a4
@@ -77,14 +80,14 @@ loc_135410:
 	jsr	$4E4A(a5)	; -> Obj_ChangeAnim
 	addq.w	#$8,a7
 loc_135420:
-	lea.l	sub_1347F8(pc),a0
+	lea.l	FlyBrood_MoveBallistic(pc),a0
 	move.l	a0,$9E(a4)
 	move.l	d4,d0
 	asr.l	#$8,d0
 	move.w	d0,$9C(a4)
 	ori.w	#$1000,$6(a4)
 	clr.w	$6C(a4)
-	lea.l	sub_13518A(pc),a0
+	lea.l	FlyBrood_StateFlyOffKill(pc),a0
 	move.l	a0,$5C(a4)
 	moveq	#$8,d0
 	and.w	$4(a4),d0

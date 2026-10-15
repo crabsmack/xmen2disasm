@@ -22,7 +22,7 @@ BrainRocket_Init:
 	clr.w	$20(a4)
 	addi.l	#$600,$C(a4)
 	addq.w	#$6,$12(a4)
-	lea.l	sub_1339F4(pc),a0
+	lea.l	BrainRocket_StateLaunch(pc),a0
 	move.l	a0,$64(a4)
 	move.l	a0,$5C(a4)
 	lea.l	$35B2(a5),a0

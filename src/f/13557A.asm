@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_13557A	[jt 1776]
+; FlyBrood_StateWaitPlayerPassedSine - FLYBROOD: wait for the player on the trigger side, then the sine fly-by
+; In:  8(a6) = this
+; Out: d0 = flags & 8
+; Evidence: next FlyBrood_ActSineFlyBy
 ; ---------------------------------------------------------------------------
-sub_13557A:
+FlyBrood_StateWaitPlayerPassedSine:
 	link.w	a6,#$0
 	movem.l	d3/d7/a3-a4,-(a7)
 	movea.l	$8(a6),a4
@@ -28,7 +31,7 @@ loc_1355B6:
 	tst.b	$A7(a4)
 	bne.s	loc_1355F4
 	clr.w	$6C(a4)
-	lea.l	sub_1354E8(pc),a0
+	lea.l	FlyBrood_ActSineFlyBy(pc),a0
 	move.l	a0,$5C(a4)
 	moveq	#$8,d0
 	and.w	$4(a4),d0
@@ -37,14 +40,14 @@ loc_1355DA:
 	tst.b	$A7(a4)
 	beq.s	loc_1355F4
 	clr.w	$6C(a4)
-	lea.l	sub_1354E8(pc),a0
+	lea.l	FlyBrood_ActSineFlyBy(pc),a0
 	move.l	a0,$5C(a4)
 	moveq	#$8,d0
 	and.w	$4(a4),d0
 	bra.s	loc_135606
 loc_1355F4:
 	clr.w	$6C(a4)
-	lea.l	sub_13557A(pc),a0
+	lea.l	FlyBrood_StateWaitPlayerPassedSine(pc),a0
 	move.l	a0,$5C(a4)
 	moveq	#$8,d0
 	and.w	$4(a4),d0

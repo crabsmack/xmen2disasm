@@ -21,9 +21,9 @@ FireWall_Init:
 	clr.w	$1E(a4)
 	clr.l	$16(a4)
 	clr.w	$20(a4)
-	lea.l	sub_1340D0(pc),a0
+	lea.l	FireWall_StateWaitOnScreen(pc),a0
 	move.l	a0,$5C(a4)
-	lea.l	sub_1340D0(pc),a0
+	lea.l	FireWall_StateWaitOnScreen(pc),a0
 	move.l	a0,$64(a4)
 	ori.w	#$83,$6(a4)
 	move.w	-$1754(a5),d0

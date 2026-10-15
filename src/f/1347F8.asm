@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_1347F8	[link-after-rts]
+; FlyBrood_MoveBallistic - FLYBROOD mover: velocity + acceleration, stopping vertically at the target y (+$9C)
+; In:  8(a6) = this  $E(a6) = word steps
+; Out: none
+; Evidence: set by the dive actions
 ; ---------------------------------------------------------------------------
-sub_1347F8:
+FlyBrood_MoveBallistic:
 	link.w	a6,#$0
 	movem.l	d5-d7/a4,-(a7)
 	move.w	$E(a6),d7

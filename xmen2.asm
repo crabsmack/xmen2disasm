@@ -4254,8 +4254,8 @@ Tbl_FlyBrood_vtable:	; class descriptor "FLYBROOD": word $6E = name offset, long
 	include "src/f/134906.asm"
 	include "src/f/134934.asm"
 Sw_134934:	; switch table of sub at $134934: 8 word offsets from Sw_134934-2
-	dc.w	loc_134AE4-(Sw_134934-2), loc_134AFA-(Sw_134934-2), loc_134B10-(Sw_134934-2), loc_134B26-(Sw_134934-2)
-	dc.w	loc_134B42-(Sw_134934-2), loc_134BA6-(Sw_134934-2), loc_134BBA-(Sw_134934-2), loc_134BCE-(Sw_134934-2)
+	dc.w	FlyBrood_Init_Case0-(Sw_134934-2), FlyBrood_Init_Case1-(Sw_134934-2), loc_134B10-(Sw_134934-2), loc_134B26-(Sw_134934-2)
+	dc.w	FlyBrood_Init_Case4-(Sw_134934-2), loc_134BA6-(Sw_134934-2), loc_134BBA-(Sw_134934-2), loc_134BCE-(Sw_134934-2)
 	include "src/f/134AE4.asm"
 	include "src/f/134AFA.asm"
 	include "src/f/134B42.asm"

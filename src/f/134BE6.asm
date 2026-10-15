@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; loc_134BE6
+; FlyBrood_Init_Tail - FlyBrood_Init common tail: speed (+$AA), trigger side (+$A7), scene-specific animation
+; In:  inside FlyBrood_Init
+; Out: -
+; Evidence: 3 branch sources; scene id $FFC6A4 vs g_SceneIndex
 ; ---------------------------------------------------------------------------
-loc_134BE6:
+FlyBrood_Init_Tail:
 	move.w	$A(a3),d7
 	beq.s	loc_134BF6
 	ext.l	d7

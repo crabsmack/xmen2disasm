@@ -6,7 +6,7 @@
 ; ---------------------------------------------------------------------------
 FlyBrood_ClassInit:
 	link.w	a6,#$0
-	jsr	sub_13459E(pc)
+	jsr	FlyBrood_EmptyStub(pc)
 	moveq	#$0,d0
 	move.b	-$3B5C(a5),d0
 	cmp.w	g_SceneIndex(a5),d0

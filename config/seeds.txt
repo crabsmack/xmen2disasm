@@ -453,14 +453,14 @@
 11E77E	; BioBalls_ScriptIdle - runtime: executed in tas
 120828	; BigBio_Script - runtime: executed in tas
 12082C	; loc_12082C - runtime: executed in tas
-1344DA	; loc_1344DA - runtime: executed in tas
-1344E0	; loc_1344E0 - runtime: executed in tas
+1344DA	; FlyBrood_ScriptA - runtime: executed in tas
+1344E0	; FlyBrood_ScriptB - runtime: executed in tas
 1344E4	; loc_1344E4 - runtime: executed in tas
-1344EA	; loc_1344EA - runtime: executed in tas
+1344EA	; FlyBrood_ScriptC - runtime: executed in tas
 1344EE	; loc_1344EE - runtime: executed in tas
-1344F4	; loc_1344F4 - runtime: executed in tas
+1344F4	; FlyBrood_ScriptD - runtime: executed in tas
 1344F8	; loc_1344F8 - runtime: executed in tas
-134AFA	; loc_134AFA - runtime: executed in tas
+134AFA	; FlyBrood_Init_Case1 - runtime: executed in tas
 134B10	; loc_134B10 - runtime: executed in tas
 134B26	; loc_134B26 - runtime: executed in tas
 136DC4	; loc_136DC4 - runtime: executed in tas
@@ -817,7 +817,7 @@
 11D9BC	; BabyMoleMan_Init_Case0 - static: switch-table case target (tools/switches.py: table after `move.w T(pc,dN.w),dN / jmp T-2(pc,dN.w)`, size from the cmpi bound)
 11D9E4	; BabyMoleMan_Init_Case2 - static: switch-table case target (tools/switches.py: table after `move.w T(pc,dN.w),dN / jmp T-2(pc,dN.w)`, size from the cmpi bound)
 11D9F8	; loc_11D9F8 - static: switch-table case target (tools/switches.py: table after `move.w T(pc,dN.w),dN / jmp T-2(pc,dN.w)`, size from the cmpi bound)
-134B42	; loc_134B42 - static: switch-table case target (tools/switches.py: table after `move.w T(pc,dN.w),dN / jmp T-2(pc,dN.w)`, size from the cmpi bound)
+134B42	; FlyBrood_Init_Case4 - static: switch-table case target (tools/switches.py: table after `move.w T(pc,dN.w),dN / jmp T-2(pc,dN.w)`, size from the cmpi bound)
 134BA6	; loc_134BA6 - static: switch-table case target (tools/switches.py: table after `move.w T(pc,dN.w),dN / jmp T-2(pc,dN.w)`, size from the cmpi bound)
 134BBA	; loc_134BBA - static: switch-table case target (tools/switches.py: table after `move.w T(pc,dN.w),dN / jmp T-2(pc,dN.w)`, size from the cmpi bound)
 134BCE	; loc_134BCE - static: switch-table case target (tools/switches.py: table after `move.w T(pc,dN.w),dN / jmp T-2(pc,dN.w)`, size from the cmpi bound)

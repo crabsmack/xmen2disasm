@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_1354E8	[link-after-rts]
+; FlyBrood_ActSineFlyBy - FLYBROOD: fly past on a sine wave, then leave
+; In:  8(a6) = this
+; Out: d0 = flags & 8
+; Evidence: FlyBrood_MoveSine; next FlyBrood_StateFlyOffKill
 ; ---------------------------------------------------------------------------
-sub_1354E8:
+FlyBrood_ActSineFlyBy:
 	link.w	a6,#$0
 	movem.l	d6-d7/a3-a4,-(a7)
 	movea.l	$8(a6),a4
@@ -39,11 +42,11 @@ loc_135540:
 	jsr	$4E4A(a5)	; -> Obj_ChangeAnim
 	addq.w	#$8,a7
 loc_135550:
-	lea.l	sub_13486A(pc),a0
+	lea.l	FlyBrood_MoveSine(pc),a0
 	move.l	a0,$9E(a4)
 	ori.w	#$1000,$6(a4)
 	clr.w	$6C(a4)
-	lea.l	sub_13518A(pc),a0
+	lea.l	FlyBrood_StateFlyOffKill(pc),a0
 	move.l	a0,$5C(a4)
 	moveq	#$8,d0
 	and.w	$4(a4),d0

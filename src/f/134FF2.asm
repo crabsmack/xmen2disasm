@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_134FF2	[link-after-rts]
+; FlyBrood_StateWaitPlayerInRange - FLYBROOD: face the player; when a player is within 232 px on the trigger side and 56 px vertically, next entry after 30 frames
+; In:  8(a6) = this
+; Out: none
+; Evidence: TAS 45479-57141
 ; ---------------------------------------------------------------------------
-sub_134FF2:
+FlyBrood_StateWaitPlayerInRange:
 	link.w	a6,#$FFFE
 	movem.l	d3-d7/a3-a4,-(a7)
 	movea.l	$8(a6),a4

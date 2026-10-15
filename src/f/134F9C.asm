@@ -1,11 +1,14 @@
 ; ---------------------------------------------------------------------------
-; sub_134F9C	[jt 1772]
+; FlyBrood_ActHoverUntilNear - FLYBROOD script action: hover until a player comes into range
+; In:  8(a6) = this
+; Out: d0 = flags & 8
+; Evidence: next FlyBrood_StateWaitPlayerInRange
 ; ---------------------------------------------------------------------------
-sub_134F9C:
+FlyBrood_ActHoverUntilNear:
 	link.w	a6,#$0
 	move.l	a4,-(a7)
 	movea.l	$8(a6),a4
-	lea.l	sub_13478C(pc),a0
+	lea.l	FlyBrood_MovePath(pc),a0
 	move.l	a0,$9E(a4)
 	lea.l	$36EA(a5),a0
 	move.l	$2(a0),$A2(a4)
@@ -19,7 +22,7 @@ sub_134F9C:
 	clr.l	$16(a4)
 	clr.w	$20(a4)
 	clr.w	$6C(a4)
-	lea.l	sub_134FF2(pc),a0
+	lea.l	FlyBrood_StateWaitPlayerInRange(pc),a0
 	move.l	a0,$5C(a4)
 	moveq	#$8,d0
 	and.w	$4(a4),d0

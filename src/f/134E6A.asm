@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_134E6A	[link-after-rts]
+; FlyBrood_WaitPathDone - FLYBROOD: wait until the path (+$A2) ends, then restart the script
+; In:  8(a6) = this
+; Out: none
+; Evidence: state set by FlyBrood_Init_Case4
 ; ---------------------------------------------------------------------------
-sub_134E6A:
+FlyBrood_WaitPathDone:
 	link.w	a6,#$0
 	move.l	a4,-(a7)
 	movea.l	$8(a6),a4
@@ -25,7 +28,7 @@ loc_134E8C:
 	bra.s	loc_134EBC
 loc_134EAA:
 	clr.w	$6C(a4)
-	lea.l	sub_134E6A(pc),a0
+	lea.l	FlyBrood_WaitPathDone(pc),a0
 	move.l	a0,$5C(a4)
 	moveq	#$8,d0
 	and.w	$4(a4),d0

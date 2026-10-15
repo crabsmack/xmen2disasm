@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_1339A6	[jt 1723]
+; Rocket_SetAngleA - rocket set-up wrapper (Rocket_SetAngleOwner)
+; In:  8(a6) = rocket  $C(a6) = owner  $12(a6) = word angle
+; Out: none
+; Evidence: 4 callers in other modules ($0BAFF4...)
 ; ---------------------------------------------------------------------------
-sub_1339A6:
+Rocket_SetAngleA:
 	link.w	a6,#$0
 	moveq	#$0,d0
 	move.l	d0,-(a7)
@@ -11,6 +14,6 @@ sub_1339A6:
 	move.l	d1,-(a7)
 	move.l	$C(a6),-(a7)
 	move.l	$8(a6),-(a7)
-	jsr	sub_13395E(pc)
+	jsr	Rocket_SetAngleOwner(pc)
 	unlk	a6
 	rts

@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_13463C	[link-after-rts]
+; FlyBrood_MoveHoming - FLYBROOD mover: steer toward the nearest player (+offset), plus a path's velocity deltas
+; In:  8(a6) = this  $E(a6) = word steps
+; Out: d0 = 0
+; Evidence: mover pointer +$9E; path +$A2 ($3E9 loops back)
 ; ---------------------------------------------------------------------------
-sub_13463C:
+FlyBrood_MoveHoming:
 	link.w	a6,#$0
 	movem.l	d3-d7/a3-a4,-(a7)
 	movea.l	$8(a6),a4

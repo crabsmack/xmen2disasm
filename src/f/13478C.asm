@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_13478C	[link-after-rts]
+; FlyBrood_MovePath - FLYBROOD mover: position = anchor + path offset >> shift (+$A8), path looping at $7F
+; In:  8(a6) = this  $E(a6) = word steps
+; Out: none
+; Evidence: hover path $134458; TAS 45477-57170
 ; ---------------------------------------------------------------------------
-sub_13478C:
+FlyBrood_MovePath:
 	link.w	a6,#$0
 	movem.l	d4-d7/a4,-(a7)
 	move.w	$E(a6),d4

@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_13486A	[link-after-rts]
+; FlyBrood_MoveSine - FLYBROOD mover: fly horizontally while y follows a sine wave around +$9C
+; In:  8(a6) = this  $E(a6) = word steps
+; Out: none
+; Evidence: Math_SinDeg, phase +$AC, step +$AE, shift +$A8
 ; ---------------------------------------------------------------------------
-sub_13486A:
+FlyBrood_MoveSine:
 	link.w	a6,#$FFF8
 	movem.l	d4-d7/a4,-(a7)
 	movea.l	$8(a6),a4

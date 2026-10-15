@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; loc_1344EA	[runtime: executed in tas]
+; FlyBrood_ScriptC - FLYBROOD AI script thunks starting with FlyBrood_ActHoverUntilNear
+; In:  jmp thunks
+; Out: -
+; Evidence: thunk table in the FLYBROOD module
 ; ---------------------------------------------------------------------------
-loc_1344EA:
-	jmp	$3782(a5)	; -> sub_134F9C
+FlyBrood_ScriptC:
+	jmp	$3782(a5)	; -> FlyBrood_ActHoverUntilNear
 loc_1344EE:
-	jmp	$379A(a5)	; -> sub_135452
+	jmp	$379A(a5)	; -> FlyBrood_StateWaitPlayerPassedLow

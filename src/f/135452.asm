@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_135452	[jt 1775]
+; FlyBrood_StateWaitPlayerPassedLow - FLYBROOD: wait for the player on the trigger side, then the low dive
+; In:  8(a6) = this
+; Out: d0 = flags & 8
+; Evidence: next FlyBrood_ActDiveAtPlayerLow
 ; ---------------------------------------------------------------------------
-sub_135452:
+FlyBrood_StateWaitPlayerPassedLow:
 	link.w	a6,#$0
 	movem.l	d3/d7/a3-a4,-(a7)
 	movea.l	$8(a6),a4
@@ -28,7 +31,7 @@ loc_13548E:
 	tst.b	$A7(a4)
 	bne.s	loc_1354CC
 	clr.w	$6C(a4)
-	lea.l	sub_13536A(pc),a0
+	lea.l	FlyBrood_ActDiveAtPlayerLow(pc),a0
 	move.l	a0,$5C(a4)
 	moveq	#$8,d0
 	and.w	$4(a4),d0
@@ -37,14 +40,14 @@ loc_1354B2:
 	tst.b	$A7(a4)
 	beq.s	loc_1354CC
 	clr.w	$6C(a4)
-	lea.l	sub_13536A(pc),a0
+	lea.l	FlyBrood_ActDiveAtPlayerLow(pc),a0
 	move.l	a0,$5C(a4)
 	moveq	#$8,d0
 	and.w	$4(a4),d0
 	bra.s	loc_1354DE
 loc_1354CC:
 	clr.w	$6C(a4)
-	lea.l	sub_135452(pc),a0
+	lea.l	FlyBrood_StateWaitPlayerPassedLow(pc),a0
 	move.l	a0,$5C(a4)
 	moveq	#$8,d0
 	and.w	$4(a4),d0

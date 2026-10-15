@@ -71,7 +71,7 @@ loc_141A82:
 	move.l	d1,-(a7)
 	move.l	a4,-(a7)
 	move.l	a3,-(a7)
-	jsr	$3602(a5)	; -> sub_1339C8
+	jsr	$3602(a5)	; -> Rocket_SetAngleB
 	lea.l	$14(a7),a7
 loc_141A90:
 	tst.l	$96(a4)

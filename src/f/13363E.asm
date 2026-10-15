@@ -6,6 +6,6 @@
 ; ---------------------------------------------------------------------------
 BrainRocket_ClassInit:
 	link.w	a6,#$0
-	jsr	sub_133CF4(pc)
+	jsr	BrainRocket_EmptyStub(pc)
 	unlk	a6
 	rts

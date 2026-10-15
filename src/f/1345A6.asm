@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_1345A6	[link-after-rts]
+; FlyBrood_EnterFromSide - FLYBROOD: place itself just off the left or right screen edge at mid height, facing in, with the homing offset
+; In:  8(a6) = this  $F(a6) = byte side
+; Out: none
+; Evidence: g_CameraX/Y; +$9A/+$9C offset
 ; ---------------------------------------------------------------------------
-sub_1345A6:
+FlyBrood_EnterFromSide:
 	link.w	a6,#$0
 	movem.l	d7/a4,-(a7)
 	move.b	$F(a6),d7

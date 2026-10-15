@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_1339F4	[link-after-rts]
+; BrainRocket_StateLaunch - BRAINROCKET first state: launch sound $E9, face left for angles 90-270
+; In:  8(a6) = this
+; Out: d0 = flags & 8
+; Evidence: next BrainRocket_StateSetDirection
 ; ---------------------------------------------------------------------------
-sub_1339F4:
+BrainRocket_StateLaunch:
 	link.w	a6,#$0
 	move.l	a4,-(a7)
 	movea.l	$8(a6),a4
@@ -18,7 +21,7 @@ sub_1339F4:
 	ori.b	#$10,$2E(a4)
 loc_133A26:
 	clr.w	$6C(a4)
-	lea.l	sub_133A40(pc),a0
+	lea.l	BrainRocket_StateSetDirection(pc),a0
 	move.l	a0,$5C(a4)
 	moveq	#$8,d0
 	and.w	$4(a4),d0

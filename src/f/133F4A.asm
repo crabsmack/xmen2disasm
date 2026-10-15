@@ -6,6 +6,6 @@
 ; ---------------------------------------------------------------------------
 FireWall_Reset:
 	link.w	a6,#$0
-	jsr	sub_13420C(pc)
+	jsr	FireWall_EmptyStub(pc)
 	unlk	a6
 	rts

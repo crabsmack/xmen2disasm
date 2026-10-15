@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_13412A	[link-after-rts]
+; FireWall_StateSpawnFlame - FIREWALL: spawn its flame effect (animation by type +$8E and side +$90)
+; In:  8(a6) = this
+; Out: d0 = flags & 8
+; Evidence: ACTOR New + sub_13EFA0, flame anims $134284-$134364
 ; ---------------------------------------------------------------------------
-sub_13412A:
+FireWall_StateSpawnFlame:
 	link.w	a6,#$FFFC
 	movem.l	a3-a4,-(a7)
 	movea.l	$8(a6),a4
@@ -73,7 +76,7 @@ loc_134190:
 loc_1341EA:
 	move.l	-$4(a6),$92(a4)
 	clr.w	$6C(a4)
-	lea.l	sub_134080(pc),a0
+	lea.l	FireWall_StateWaitFlame(pc),a0
 	move.l	a0,$5C(a4)
 	moveq	#$8,d0
 	and.w	$4(a4),d0

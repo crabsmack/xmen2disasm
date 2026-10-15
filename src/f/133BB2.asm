@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_133BB2	[link-after-rts]
+; DropRocket_StateLaunch - DROPROCKET first state: sound $E9, frame 0, start falling (gravity $300)
+; In:  8(a6) = this
+; Out: d0 = flags & 8
+; Evidence: next DropRocket_StateDrop
 ; ---------------------------------------------------------------------------
-sub_133BB2:
+DropRocket_StateLaunch:
 	link.w	a6,#$0
 	move.l	a4,-(a7)
 	movea.l	$8(a6),a4
@@ -26,7 +29,7 @@ loc_133BF4:
 	move.w	#$300,$18(a4)
 	move.w	#$300,$20(a4)
 	clr.w	$6C(a4)
-	lea.l	sub_133C1A(pc),a0
+	lea.l	DropRocket_StateDrop(pc),a0
 	move.l	a0,$5C(a4)
 	moveq	#$8,d0
 	and.w	$4(a4),d0

@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_1350FE	[link-after-rts]
+; FlyBrood_StateFacePlayer - FLYBROOD: keep facing the nearest player
+; In:  8(a6) = this
+; Out: none
+; Evidence: state set by FlyBrood_ActHoverForever
 ; ---------------------------------------------------------------------------
-sub_1350FE:
+FlyBrood_StateFacePlayer:
 	link.w	a6,#$0
 	movem.l	a3-a4,-(a7)
 	movea.l	$8(a6),a4

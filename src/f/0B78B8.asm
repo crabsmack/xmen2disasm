@@ -2,7 +2,7 @@
 ; ChildShip_ActDropRocket - CHILDSHIP script action: drop a DROPROCKET below itself (aimed by facing), next step after $F frames
 ; In:  8(a6) = this
 ; Out: d0
-; Evidence: DROPROCKET ($133D76) +$0E at (x +-4, y - $13); sub_1339A6(rocket, this, 0 or $B4); jt 935; TAS 33425
+; Evidence: DROPROCKET ($133D76) +$0E at (x +-4, y - $13); Rocket_SetAngleA(rocket, this, 0 or $B4); jt 935; TAS 33425
 ; Found: jt 935
 ; ---------------------------------------------------------------------------
 ChildShip_ActDropRocket:
@@ -54,7 +54,7 @@ loc_0B792C:
 	move.l	d0,-(a7)
 	move.l	a4,-(a7)
 	move.l	a3,-(a7)
-	jsr	$35FA(a5)	; -> sub_1339A6
+	jsr	$35FA(a5)	; -> Rocket_SetAngleA
 	lea.l	$C(a7),a7
 loc_0B793A:
 	tst.l	$9A(a4)

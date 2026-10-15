@@ -1,5 +1,8 @@
 ; ---------------------------------------------------------------------------
-; loc_1344DA	[runtime: executed in tas]
+; FlyBrood_ScriptA - FLYBROOD AI script thunk (hover forever)
+; In:  jmp thunk
+; Out: -
+; Evidence: jmp FlyBrood_ActHoverForever
 ; ---------------------------------------------------------------------------
-loc_1344DA:
-	jmp	$378A(a5)	; -> sub_135134
+FlyBrood_ScriptA:
+	jmp	$378A(a5)	; -> FlyBrood_ActHoverForever

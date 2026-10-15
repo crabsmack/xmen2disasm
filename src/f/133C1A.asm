@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_133C1A	[link-after-rts]
+; DropRocket_StateDrop - DROPROCKET: fall 64 px below the start, then fly horizontally at +-$200
+; In:  8(a6) = this
+; Out: d0
+; Evidence: next DropRocket_StateFly
 ; ---------------------------------------------------------------------------
-sub_133C1A:
+DropRocket_StateDrop:
 	link.w	a6,#$0
 	movem.l	d3/d7/a4,-(a7)
 	movea.l	$8(a6),a4
@@ -56,14 +59,14 @@ loc_133C9A:
 	move.w	d0,$16(a4)
 	addq.w	#$8,a7
 	clr.w	$6C(a4)
-	lea.l	sub_133CD0(pc),a0
+	lea.l	DropRocket_StateFly(pc),a0
 	move.l	a0,$5C(a4)
 	moveq	#$8,d0
 	and.w	$4(a4),d0
 	bra.s	loc_133CC6
 loc_133CB4:
 	clr.w	$6C(a4)
-	lea.l	sub_133C1A(pc),a0
+	lea.l	DropRocket_StateDrop(pc),a0
 	move.l	a0,$5C(a4)
 	moveq	#$8,d0
 	and.w	$4(a4),d0

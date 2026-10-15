@@ -50,9 +50,9 @@ loc_1349A4:
 	move.b	d1,$2E(a4)
 loc_1349BC:
 	ori.w	#$4080,$6(a4)
-	lea.l	sub_134E2A(pc),a0
+	lea.l	FlyBrood_ActRestartScript(pc),a0
 	move.l	a0,$5C(a4)
-	lea.l	sub_135794(pc),a0
+	lea.l	FlyBrood_StateHit(pc),a0
 	move.l	a0,$60(a4)
 	move.w	-$1754(a5),d0
 	ext.l	d0
@@ -125,9 +125,9 @@ loc_134A48:
 	move.w	#$4,$AE(a4)
 	move.w	$8(a3),d1
 	addq.w	#$8,a7
-	bmi.s	loc_134AE4
+	bmi.s	FlyBrood_Init_Case0
 	cmpi.w	#$7,d1
-	bgt.s	loc_134AE4
+	bgt.s	FlyBrood_Init_Case0
 	add.w	d1,d1
 	move.w	Sw_134934(pc,d1.w),d1
 	jmp	Sw_134934-2(pc,d1.w)

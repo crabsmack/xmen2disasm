@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_13459E	[link-after-rts]
+; FlyBrood_EmptyStub - FLYBROOD: empty function
+; In:  none
+; Out: none
+; Evidence: body is link/unlk/rts
 ; ---------------------------------------------------------------------------
-sub_13459E:
+FlyBrood_EmptyStub:
 	link.w	a6,#$0
 	unlk	a6
 	rts

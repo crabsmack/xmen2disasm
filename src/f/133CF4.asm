@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_133CF4	[link-after-rts]
+; BrainRocket_EmptyStub - BRAINROCKET module: empty function
+; In:  none
+; Out: none
+; Evidence: body is link/unlk/rts
 ; ---------------------------------------------------------------------------
-sub_133CF4:
+BrainRocket_EmptyStub:
 	link.w	a6,#$0
 	unlk	a6
 	rts

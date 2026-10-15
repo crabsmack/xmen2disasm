@@ -66,7 +66,7 @@ loc_0BB332:
 	move.l	d0,-(a7)
 	move.l	a4,-(a7)
 	move.l	a3,-(a7)
-	jsr	$35FA(a5)	; -> sub_1339A6
+	jsr	$35FA(a5)	; -> Rocket_SetAngleA
 	lea.l	$C(a7),a7
 loc_0BB340:
 	tst.l	$98(a4)

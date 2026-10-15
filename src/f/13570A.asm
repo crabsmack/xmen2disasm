@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_13570A	[link-after-rts]
+; FlyBrood_WaitSwoopDone - FLYBROOD: when the swoop path ends turn around and take the next entry
+; In:  8(a6) = this
+; Out: d0
+; Evidence: +$A6 side flag
 ; ---------------------------------------------------------------------------
-sub_13570A:
+FlyBrood_WaitSwoopDone:
 	link.w	a6,#$0
 	move.l	a4,-(a7)
 	movea.l	$8(a6),a4
@@ -45,7 +48,7 @@ loc_135760:
 	bra.s	loc_13578C
 loc_13577A:
 	clr.w	$6C(a4)
-	lea.l	sub_13570A(pc),a0
+	lea.l	FlyBrood_WaitSwoopDone(pc),a0
 	move.l	a0,$5C(a4)
 	moveq	#$8,d0
 	and.w	$4(a4),d0

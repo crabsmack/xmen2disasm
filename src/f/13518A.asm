@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_13518A	[link-after-rts]
+; FlyBrood_StateFlyOffKill - FLYBROOD: once it has flown off the screen edge it faces, Kill
+; In:  8(a6) = this
+; Out: none
+; Evidence: vtable +$52; 3 callers
 ; ---------------------------------------------------------------------------
-sub_13518A:
+FlyBrood_StateFlyOffKill:
 	link.w	a6,#$0
 	movem.l	d7/a4,-(a7)
 	movea.l	$8(a6),a4

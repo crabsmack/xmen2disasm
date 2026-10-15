@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_1352D4	[jt 1774]
+; FlyBrood_StateWaitPlayerPassed - FLYBROOD: wait until the player is on the trigger side, then dive
+; In:  8(a6) = this
+; Out: d0 = flags & 8
+; Evidence: next FlyBrood_ActDiveAtPlayer
 ; ---------------------------------------------------------------------------
-sub_1352D4:
+FlyBrood_StateWaitPlayerPassed:
 	link.w	a6,#$0
 	movem.l	d3/d7/a3-a4,-(a7)
 	movea.l	$8(a6),a4
@@ -28,7 +31,7 @@ loc_135310:
 	tst.b	$A7(a4)
 	bne.s	loc_13534E
 	clr.w	$6C(a4)
-	lea.l	sub_1351EA(pc),a0
+	lea.l	FlyBrood_ActDiveAtPlayer(pc),a0
 	move.l	a0,$5C(a4)
 	moveq	#$8,d0
 	and.w	$4(a4),d0
@@ -37,14 +40,14 @@ loc_135334:
 	tst.b	$A7(a4)
 	beq.s	loc_13534E
 	clr.w	$6C(a4)
-	lea.l	sub_1351EA(pc),a0
+	lea.l	FlyBrood_ActDiveAtPlayer(pc),a0
 	move.l	a0,$5C(a4)
 	moveq	#$8,d0
 	and.w	$4(a4),d0
 	bra.s	loc_135360
 loc_13534E:
 	clr.w	$6C(a4)
-	lea.l	sub_1352D4(pc),a0
+	lea.l	FlyBrood_StateWaitPlayerPassed(pc),a0
 	move.l	a0,$5C(a4)
 	moveq	#$8,d0
 	and.w	$4(a4),d0

@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_135610	[jt 1777]
+; FlyBrood_StateSwoopPatrol - FLYBROOD: at a patrol end with the player outside its range take the next entry; otherwise swoop at the player along path $1343FC
+; In:  8(a6) = this
+; Out: d0
+; Evidence: patrol limits +$92/+$94; next FlyBrood_WaitSwoopDone
 ; ---------------------------------------------------------------------------
-sub_135610:
+FlyBrood_StateSwoopPatrol:
 	link.w	a6,#$0
 	movem.l	d3/d6-d7/a3-a4,-(a7)
 	movea.l	$8(a6),a4
@@ -46,7 +49,7 @@ loc_135672:
 	clr.w	$6C(a4)
 	bra.s	loc_135700
 loc_13568C:
-	lea.l	sub_13463C(pc),a0
+	lea.l	FlyBrood_MoveHoming(pc),a0
 	move.l	a0,$9E(a4)
 	lea.l	$36E2(a5),a0
 	move.l	$2(a0),$A2(a4)
@@ -79,7 +82,7 @@ loc_1356DE:
 	addq.w	#$8,a7
 loc_1356EE:
 	clr.w	$6C(a4)
-	lea.l	sub_13570A(pc),a0
+	lea.l	FlyBrood_WaitSwoopDone(pc),a0
 	move.l	a0,$5C(a4)
 	moveq	#$8,d0
 	and.w	$4(a4),d0

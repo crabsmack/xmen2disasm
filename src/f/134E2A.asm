@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_134E2A	[link-after-rts]
+; FlyBrood_ActRestartScript - FLYBROOD: start the AI script at entry 0
+; In:  8(a6) = this
+; Out: none
+; Evidence: set as the first state by FlyBrood_Init
 ; ---------------------------------------------------------------------------
-sub_134E2A:
+FlyBrood_ActRestartScript:
 	link.w	a6,#$0
 	move.l	a4,-(a7)
 	movea.l	$8(a6),a4

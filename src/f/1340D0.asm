@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_1340D0	[link-after-rts]
+; FireWall_StateWaitOnScreen - FIREWALL: wait until on screen, then spawn the flame
+; In:  8(a6) = this
+; Out: d0
+; Evidence: g_CameraX window
 ; ---------------------------------------------------------------------------
-sub_1340D0:
+FireWall_StateWaitOnScreen:
 	link.w	a6,#$0
 	movem.l	d7/a4,-(a7)
 	movea.l	$8(a6),a4
@@ -16,14 +19,14 @@ sub_1340D0:
 	cmp.l	d7,d0
 	ble.s	loc_13410E
 	clr.w	$6C(a4)
-	lea.l	sub_13412A(pc),a0
+	lea.l	FireWall_StateSpawnFlame(pc),a0
 	move.l	a0,$5C(a4)
 	moveq	#$8,d0
 	and.w	$4(a4),d0
 	bra.s	loc_134120
 loc_13410E:
 	clr.w	$6C(a4)
-	lea.l	sub_1340D0(pc),a0
+	lea.l	FireWall_StateWaitOnScreen(pc),a0
 	move.l	a0,$5C(a4)
 	moveq	#$8,d0
 	and.w	$4(a4),d0

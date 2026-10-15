@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_134F20	[link-after-rts]
+; FlyBrood_StateHoverFacePlayer - FLYBROOD: face the nearest player; when the timer runs out next entry
+; In:  8(a6) = this
+; Out: none
+; Evidence: +$6E timer
 ; ---------------------------------------------------------------------------
-sub_134F20:
+FlyBrood_StateHoverFacePlayer:
 	link.w	a6,#$0
 	movem.l	a3-a4,-(a7)
 	movea.l	$8(a6),a4

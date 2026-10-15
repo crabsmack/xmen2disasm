@@ -1,12 +1,15 @@
 ; ---------------------------------------------------------------------------
-; sub_133B42	[link-after-rts]
+; BrainRocket_StateFly - BRAINROCKET flying: nothing to do (Move carries it)
+; In:  8(a6) = this
+; Out: d0 = flags & 8
+; Evidence: loops on itself; TAS 215-1100
 ; ---------------------------------------------------------------------------
-sub_133B42:
+BrainRocket_StateFly:
 	link.w	a6,#$0
 	move.l	a4,-(a7)
 	movea.l	$8(a6),a4
 	clr.w	$6C(a4)
-	lea.l	sub_133B42(pc),a0
+	lea.l	BrainRocket_StateFly(pc),a0
 	move.l	a0,$5C(a4)
 	moveq	#$8,d0
 	and.w	$4(a4),d0
