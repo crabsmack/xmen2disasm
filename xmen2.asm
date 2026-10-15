@@ -187,7 +187,7 @@ Art_AvalonB1Nem3:	; Nemesis-style compressed 4bpp tiles (Nem_Decode; code table 
 	include "src/f/00FDAA.asm"
 Tbl_AvalonB1Parallax:	; parallax descriptor (Scroll_SetParallax, Scroll_ComputeParallax): byte type ('0' line h-scroll, '2' column v-scroll), byte band count (column mode: count bands; line mode: up to count+1, until 224 lines are filled), then 8-byte bands {byte mode 0-4, byte, word height in lines/columns, word speed (8.8 of the FG scroll), 2 bytes mode params}; 11 of 1A bytes used at runtime; read by Scroll_ComputeParallax, Scroll_SetParallax; jt[20] used by AvalonB1_CamHookFinish
 	incrom	$00FE78,$1A
-Tbl_AvalonB1PalFadeStep:	; table read by AvalonB1_PalFadeStep; 2B of 32 bytes used at runtime; read by AvalonB1_PalFadeStep, AvalonB1_CamHookFadeIn; jt[21] used by AvalonB1_CamHookFadeIn
+Tbl_AvalonB1FadeInLevels:	; fade level table (like Tbl_FadeBlack): rows of 8 bytes mapping a 3-bit colour component to its value at that step, 6 rows, then a negative byte ends the fade (AvalonB1_PalFadeStep every 6 frames from AvalonB1_CamHookFadeIn); 2B of 32 bytes used at runtime; read by AvalonB1_PalFadeStep, AvalonB1_CamHookFadeIn; jt[21] used by AvalonB1_CamHookFadeIn
 	incrom	$00FE92,$32
 Pal_AvalonB1Cycle:	; palette data read by Pal_CycleStep; 16 of 16 bytes used at runtime; read by Pal_CycleStep; jt[22] used by AvalonB1_CyclePalettes
 	incrom	$00FEC4,$16
@@ -490,7 +490,7 @@ Art_BigAcolyteSpr2:	; sprite definition (type $18, raw 4bpp tiles): $24-byte hea
 	include "src/f/022B76.asm"
 	include "src/f/022B7E.asm"
 	include "src/f/022BA2.asm"
-Tbl_AvalonA2LoadLevel:	; table read by AvalonA2_LoadLevel; 20 of 20 bytes used at runtime; read by AvalonA2_LoadLevel, Scroll_SetParallax; jt[157] used by AvalonA2_LoadLevel, AvalonA3_LoadLevel
+Pal_AvalonA2Line2:	; 16-colour palette copied to line 2 (g_PalBase+$40) at level load by AvalonA2_LoadLevel and AvalonA3_LoadLevel; 20 of 20 bytes used at runtime; read by AvalonA2_LoadLevel, Scroll_SetParallax; jt[157] used by AvalonA2_LoadLevel, AvalonA3_LoadLevel
 	incrom	$022BCA,$20
 Tbl_AvalonA2Parallax:	; parallax descriptor (format at Tbl_AvalonB1Parallax): type '2' column v-scroll, 7 bands; 25 of 3A bytes used at runtime; read by Scroll_ComputeParallax, Scroll_SetParallax, AvalonA2_LoadLevel; jt[158] used by AvalonA2_InstallHooks
 	incrom	$022BEA,$3A
@@ -685,7 +685,7 @@ Art_AvalonA4Nem_2:	; Nemesis-style compressed 4bpp tiles (Nem_Decode; code table
 	incrom	$02FBE8,$5128
 Art_AvalonA4Nem3:	; Nemesis-style compressed 4bpp tiles (Nem_Decode; code table built from pairs by the caller); 1A of 32 bytes used at runtime; read by Nem_DecodeLoop, Eni_ReadInline, Eni_Decode; jt[222] used by AvalonA4_LoadLevel
 	incrom	$034D10,$32
-Tbl_AvalonA4AnimatePalettes:	; table read by AvalonA4_AnimatePalettes; C of C bytes used at runtime; read by AvalonA4_AnimatePalettes; jt[223] used by AvalonA4_AnimatePalettes
+Tbl_AvalonA4PalPulse:	; byte step count (11), then one byte per 5-frame tick: nonzero = advance the 6-step colour sequence, 0 = hold (AvalonA4_AnimatePalettes, index g_AvalonA4PalStep); C of C bytes used at runtime; read by AvalonA4_AnimatePalettes; jt[223] used by AvalonA4_AnimatePalettes
 	incrom	$034D42,$C
 	include "src/f/034D4E.asm"
 	include "src/f/034D56.asm"
@@ -863,13 +863,13 @@ Sw_0389B6:	; switch table of sub at $0389B6: 8 word offsets from Sw_0389B6-2
 	include "src/f/038AFE.asm"
 	include "src/f/038BAC.asm"
 	include "src/f/038BFA.asm"
-Tbl_BaniMazaA1InitTablePtrs:	; format not established; never read in the corpus; jt[258] used by BaniMazaA1_InitTablePtrs
+Tbl_BaniMazaA1ColourSeq1:	; 32 words that are all Genesis colour values (repeating $020,$040,$020,$002), probably a colour sequence; BaniMazaA1_InitTablePtrs stores the pointer in -$3C9C but nothing reads that, so its use is not established; never read in the corpus; jt[258] used by BaniMazaA1_InitTablePtrs
 	incrom	$038C38,$40
-Tbl_BaniMazaA1InitTablePtrs2:	; format not established; never read in the corpus; jt[259] used by BaniMazaA1_InitTablePtrs
+Tbl_BaniMazaA1ColourSeq2:	; 32 colour-like words (a $042-$0C2 ramp up and down), probably a colour sequence; pointer stored in -$3CA0 by BaniMazaA1_InitTablePtrs, never read: use not established; never read in the corpus; jt[259] used by BaniMazaA1_InitTablePtrs
 	incrom	$038C78,$40
-Tbl_BaniMazaA1InitTablePtrs3:	; format not established; never read in the corpus; jt[260] used by BaniMazaA1_InitTablePtrs
+Tbl_BaniMazaA1ColourSeq3:	; 16 colour-like words (a $042-$0C2 ramp), probably a colour sequence; pointer stored in -$3CA4 by BaniMazaA1_InitTablePtrs, never read: use not established; never read in the corpus; jt[260] used by BaniMazaA1_InitTablePtrs
 	incrom	$038CB8,$20
-Tbl_BaniMazaA1InitTablePtrs4:	; format not established; never read in the corpus; jt[261] used by BaniMazaA1_InitTablePtrs
+Tbl_BaniMazaA1ColourSeq4:	; 16 colour-like words (repeating $084,$0A4,$084,$064), probably a colour sequence; pointer stored in -$3CA8 by BaniMazaA1_InitTablePtrs, never read: use not established; never read in the corpus; jt[261] used by BaniMazaA1_InitTablePtrs
 	incrom	$038CD8,$20
 Art_BaniMazaA1Tiles:	; uncompressed 4bpp tiles DMA'd to VRAM; 1E of 1E bytes used at runtime; read by VDP_FlushDmaQueue; jt[262] used by BaniMazaA1_InitSprites
 	incrom	$038CF8,$1E
@@ -953,15 +953,15 @@ Tbl_BaniMazaA2Vdp3:	; words copied to the VDP data port by VDP_WriteWords; 16 of
 	incrom	$04713C,$16
 Tbl_BaniMazaA2Vdp4:	; words copied to the VDP data port by VDP_WriteWords; 16 of 16 bytes used at runtime; read by VDP_WriteWords; jt[298] used by BaniMazaA2_AnimatePalettes_case3
 	incrom	$047152,$16
-Tbl_BaniMazaA2AnimatePalettes_case4:	; format not established; never read in the corpus; jt[299] used by BaniMazaA2_AnimatePalettes_case4
+Pal_BaniMazaA2Band3:	; 11 colour words: a sliding window of 6 (start = step g_SceneVar3B3A) is copied to palette line 2 entries $A-$F; band table 3 of BaniMazaA2_AnimatePalettes (destroyed bombs / 2 = 3; tables 0-2 are Tbl_BaniMazaA2Vdp2-4); never read in the corpus; jt[299] used by BaniMazaA2_AnimatePalettes_case4
 	incrom	$047168,$16
-Tbl_BaniMazaA2AnimatePalettes_copy:	; format not established; never read in the corpus; jt[300] used by BaniMazaA2_AnimatePalettes_copy -> Mem_Copy
+Pal_BaniMazaA2Band4:	; 11 colour words, band table 4 and default of BaniMazaA2_AnimatePalettes (format at Pal_BaniMazaA2Band3); never read in the corpus; jt[300] used by BaniMazaA2_AnimatePalettes_copy -> Mem_Copy
 	incrom	$04717E,$16
-Tbl_BaniMazaA2SetPaletteStep:	; table read by BaniMazaA2_SetPaletteStep; 48 of F0 bytes used at runtime; read by BaniMazaA2_SetPaletteStep; jt[301] used by BaniMazaA2_SetPaletteStep
+Pal_BaniMazaA2Line0Steps:	; 12 steps of $14 bytes (10 colour words; 9 copied into palette line 0) selected by destroyed bombs - 1 (BaniMazaA2_SetPaletteStep); 48 of F0 bytes used at runtime; read by BaniMazaA2_SetPaletteStep; jt[301] used by BaniMazaA2_SetPaletteStep
 	incrom	$047194,$F0
-Tbl_RollingDiscsBaniMazaA2_04766A:	; format not established; never read in the corpus; jt[302] used by unk_BaniMazaA2_04766A
+Pal_BaniMazaA2FinaleLine0:	; 14 colour words written into palette line 0 by unk_BaniMazaA2_04766A after the 12th bomb; never read in the corpus; jt[302] used by unk_BaniMazaA2_04766A
 	incrom	$047284,$1C
-Tbl_BaniMazaA2AnimatePalettes:	; table read by BaniMazaA2_AnimatePalettes; 2C of 2C bytes used at runtime; read by BaniMazaA2_AnimatePalettes; jt[303] used by BaniMazaA2_AnimatePalettes
+Pal_BaniMazaA2Colour14Cycle:	; 22 colour words that palette colour $14 cycles through (BaniMazaA2_AnimatePalettes); 2C of 2C bytes used at runtime; read by BaniMazaA2_AnimatePalettes; jt[303] used by BaniMazaA2_AnimatePalettes
 	incrom	$0472A0,$2C
 	include "src/f/0472CC.asm"
 	include "src/f/0472E0.asm"
@@ -1602,19 +1602,19 @@ Str_Selected:	; C string "   SELECTED" (used by CursorInput_Confirm)
 	incrom	$068242,$C
 Str_Selected_06824E:	; C string "SELECTED   " (used by CursorInput_Confirm)
 	incrom	$06824E,$C
-Tbl_PlayerSelectDrawFrames:	; table read by PlayerSelect_DrawFrames; F of 10 bytes used at runtime; read by PlayerSelect_DrawFrames, PlayerSelect_Run, PlayerSelect_PlaceCursor; jt[485] used by PlayerSelect_Run
+Tbl_PlayerSelectSlots7:	; player-select portrait layout with Magneto (once g_SceneIndex reaches g_ScnCerebroBaniMaza): word slot count 7, then (x, y) byte pairs per portrait (PlayerSelect_Run, PlayerSelect_DrawFrames, PlayerSelect_PlaceCursor); F of 10 bytes used at runtime; read by PlayerSelect_DrawFrames, PlayerSelect_Run, PlayerSelect_PlaceCursor; jt[485] used by PlayerSelect_Run
 	incrom	$06825A,$10
-Tbl_PlayerSelectIntroPalHook:	; table read by Cerebro_IntroPalHook; D of E bytes used at runtime; read by Cerebro_IntroPalHook, Cerebro_PlayIntro, PlayerSelect_DrawFrames; jt[486] used by PlayerSelect_Run
+Tbl_PlayerSelectSlots6:	; player-select portrait layout without Magneto: word slot count 6, then (x, y) byte pairs per portrait (PlayerSelect_Run); D of E bytes used at runtime; read by Cerebro_IntroPalHook, Cerebro_PlayIntro, PlayerSelect_DrawFrames; jt[486] used by PlayerSelect_Run
 	incrom	$06826A,$E
-Tbl_CerebroIntroPalHook:	; table read by Cerebro_IntroPalHook; 20 of 20 bytes used at runtime; read by Cerebro_IntroPalHook, Cerebro_PlayIntro; jt[487] used by Cerebro_IntroPalHook
+Pal_CerebroIntroFadeLine2:	; Cerebro intro fade-in for line 2: 16 black colours followed by Pal_CerebroIntroLine2; Cerebro_IntroPalHook copies a 16-word window starting at word (201 - counter)/4, sliding from black to the full palette; 20 of 20 bytes used at runtime; read by Cerebro_IntroPalHook, Cerebro_PlayIntro; jt[487] used by Cerebro_IntroPalHook
 	incrom	$068278,$20
-Tbl_CerebroIntroPalHook2:	; table read by Cerebro_IntroPalHook; 20 of 20 bytes used at runtime; read by Cerebro_IntroPalHook, Cerebro_PlayIntro; jt[488] used by Cerebro_PlayIntro
+Pal_CerebroIntroLine2:	; 16-colour palette for line 2 (g_PalBase+$40), Cerebro intro (Cerebro_PlayIntro); also the end of the Pal_CerebroIntroFadeLine2 window; 20 of 20 bytes used at runtime; read by Cerebro_IntroPalHook, Cerebro_PlayIntro; jt[488] used by Cerebro_PlayIntro
 	incrom	$068298,$20
-Tbl_CerebroIntroPalHook3:	; table read by Cerebro_IntroPalHook; C0 of C0 bytes used at runtime; read by Cerebro_IntroPalHook, Cerebro_PlayIntro; jt[489] used by Cerebro_IntroPalHook
+Pal_CerebroIntroFadeLine1:	; Cerebro intro fade for line 1: 6 steps of 16 colours; Cerebro_IntroPalHook copies step ((44 - counter) & ~3) / 4 to g_PalBase+$20; C0 of C0 bytes used at runtime; read by Cerebro_IntroPalHook, Cerebro_PlayIntro; jt[489] used by Cerebro_IntroPalHook
 	incrom	$0682B8,$C0
-Tbl_CerebroIntroPalHook4:	; table read by Cerebro_IntroPalHook; 20 of 20 bytes used at runtime; read by Cerebro_IntroPalHook, Cerebro_PlayIntro; jt[490] used by Cerebro_PlayIntro
+Pal_CerebroIntroLine1:	; 16-colour palette for line 1 (g_PalBase+$20), Cerebro intro (Cerebro_PlayIntro); 20 of 20 bytes used at runtime; read by Cerebro_IntroPalHook, Cerebro_PlayIntro; jt[490] used by Cerebro_PlayIntro
 	incrom	$068378,$20
-Tbl_CerebroIntroPalHook5:	; table read by Cerebro_IntroPalHook; 2A of 2C bytes used at runtime; read by Cerebro_IntroPalHook, Cerebro_PlayIntro, Cerebro_PrintText_part2; jt[491] used by Cerebro_PlayIntro
+Pal_CerebroTitleGlow:	; two 8-step colour ramps (black to bright) for line 2 entries $E (words 0-7) and $D (words 8-15): Cerebro_PlayIntro fades the title in and out over 180 frames (step = min(t, 180 - t) / 4, max 7); 6 more words follow; 2A of 2C bytes used at runtime; read by Cerebro_IntroPalHook, Cerebro_PlayIntro, Cerebro_PrintText_part2; jt[491] used by Cerebro_PlayIntro
 	incrom	$068398,$2C
 Str_CerebroSentinelsText:	; Cerebro briefing text (Cerebro_PrintText); 27E of 29E bytes used at runtime; read by Cerebro_PrintText; jt[492] used by CerebroSentinels_RunScene
 	incrom	$0683C4,$29E
@@ -2283,11 +2283,11 @@ Pad_XClone5:	; $00 fill; never read in the corpus; between XClone_NopStatic and 
 	incrom	$09A0B3,$1
 Tbl_EvilWolverine_vtable:	; class descriptor of EVILWOLVERINE: word name offset $86, parent XCLONE, 32 method slots from +6, then the name (tools/classes.py)
 	incrom	$09A0B4,$94
-Tbl_XCloneCopy:	; table read by Mem_Copy; 20 of 20 bytes used at runtime; read by Mem_Copy; jt[805] used by XClone_SetBgPalette
+Pal_XCloneBg1:	; 16-colour background palette 1 for line 2 (XClone_SetBgPalette(1) -> Mem_Copy to g_PalBase+$40); 20 of 20 bytes used at runtime; read by Mem_Copy; jt[805] used by XClone_SetBgPalette
 	incrom	$09A148,$20
-Tbl_XCloneSetBgPalette:	; format not established; never read in the corpus; jt[806] used by XClone_SetBgPalette
+Pal_XCloneBg2:	; 16-colour background palette 2 for line 2 (XClone_SetBgPalette(2)); never read in the corpus; jt[806] used by XClone_SetBgPalette
 	incrom	$09A168,$20
-Tbl_XCloneCopy2:	; table read by Mem_Copy; 20 of 20 bytes used at runtime; read by Mem_Copy; jt[807] used by XClone_SetBgPalette
+Pal_XCloneBg3:	; 16-colour background palette 3 for line 2 (XClone_SetBgPalette(3)); 20 of 20 bytes used at runtime; read by Mem_Copy; jt[807] used by XClone_SetBgPalette
 	incrom	$09A188,$20
 Tbl_XClone_PodScriptLen:	; word 1: step count of the AI script XClone_PodScript that follows (1 thunks disassembled); jt[808] used by XClone_ActBecomeBalls, XClone_ActOpenBioBalls, XClone_StatePodOpen
 	incrom	$09A1A8,$2
@@ -2697,17 +2697,17 @@ Tbl_ChildShipQuake:	; camera shake script (format at Tbl_MagnetoBossQuake1): CHI
 	incrom	$0B7D16,$14
 Tbl_ChildShipUpdate:	; table read by ChildShip_Update; 16 of 30 bytes used at runtime; read by ChildShip_Update; jt[948] used by ChildShip_StateCrash, ChildShip_Update
 	incrom	$0B7D2A,$30
-Tbl_SavageA4FrameHook:	; table read by SavageA4_FrameHook; 10 of 10 bytes used at runtime; read by SavageA4_FrameHook; jt[949] used by SavageA4_FrameHook
+Pal_SavageA4BossStage1:	; 8 colours for palette line 3 entries 8-15 (g_PalBase+$70), boss stage 1 (SavageA4_FrameHook picks one of Pal_SavageA4BossStage1-6 by the boss value g_SceneVar3B02 against 8/16/24/32/40; order assumed from the addresses); 10 of 10 bytes used at runtime; read by SavageA4_FrameHook; jt[949] used by SavageA4_FrameHook
 	incrom	$0B7D5A,$10
-Tbl_SavageA4FrameHook2:	; table read by SavageA4_FrameHook; 10 of 10 bytes used at runtime; read by SavageA4_FrameHook; jt[950] used by SavageA4_FrameHook
+Pal_SavageA4BossStage2:	; 8 colours for line 3 entries 8-15, SavageA4 boss stage 2 (see Pal_SavageA4BossStage1); 10 of 10 bytes used at runtime; read by SavageA4_FrameHook; jt[950] used by SavageA4_FrameHook
 	incrom	$0B7D6A,$10
-Tbl_SavageA4FrameHook3:	; table read by SavageA4_FrameHook; 10 of 10 bytes used at runtime; read by SavageA4_FrameHook; jt[951] used by SavageA4_FrameHook
+Pal_SavageA4BossStage3:	; 8 colours for line 3 entries 8-15, SavageA4 boss stage 3 (see Pal_SavageA4BossStage1); 10 of 10 bytes used at runtime; read by SavageA4_FrameHook; jt[951] used by SavageA4_FrameHook
 	incrom	$0B7D7A,$10
-Tbl_SavageA4FrameHook4:	; table read by SavageA4_FrameHook; 10 of 10 bytes used at runtime; read by SavageA4_FrameHook; jt[952] used by SavageA4_FrameHook
+Pal_SavageA4BossStage4:	; 8 colours for line 3 entries 8-15, SavageA4 boss stage 4 (see Pal_SavageA4BossStage1); 10 of 10 bytes used at runtime; read by SavageA4_FrameHook; jt[952] used by SavageA4_FrameHook
 	incrom	$0B7D8A,$10
-Tbl_SavageA4FrameHook5:	; table read by SavageA4_FrameHook; 10 of 10 bytes used at runtime; read by SavageA4_FrameHook; jt[953] used by SavageA4_FrameHook
+Pal_SavageA4BossStage5:	; 8 colours for line 3 entries 8-15, SavageA4 boss stage 5 (see Pal_SavageA4BossStage1); 10 of 10 bytes used at runtime; read by SavageA4_FrameHook; jt[953] used by SavageA4_FrameHook
 	incrom	$0B7D9A,$10
-Tbl_SavageA4FrameHook6:	; table read by SavageA4_FrameHook; 10 of 10 bytes used at runtime; read by SavageA4_FrameHook; jt[954] used by SavageA4_FrameHook
+Pal_SavageA4BossStage6:	; 8 colours for line 3 entries 8-15, SavageA4 boss stage 6 (see Pal_SavageA4BossStage1); 10 of 10 bytes used at runtime; read by SavageA4_FrameHook; jt[954] used by SavageA4_FrameHook
 	incrom	$0B7DAA,$10
 Tbl_SavageBioAnim11:	; animation script (NOTES: Animation scripts); never read in the corpus; jt[955] used by SavageBio_ActAnimA -> Obj_ChangeAnim
 	incrom	$0B7DBA,$A
@@ -3142,7 +3142,7 @@ Str_Empty_0DC2C4:	; C string "" (used by SentinelsD1_InitFlagBits)
 	include "src/f/0DC3DE.asm"
 	include "src/f/0DC47C.asm"
 	include "src/f/0DC4AA.asm"
-Tbl_SentinelsB1LoadLevel:	; table read by SentinelsD1_LoadLevel; 20 of 20 bytes used at runtime; read by SentinelsD1_LoadLevel; jt[1151] used by SentinelsB1_LoadLevel, SentinelsD1_LoadLevel
+Pal_SentinelsLine2:	; 16-colour palette copied to line 2 (g_PalBase+$40) at level load by SentinelsD1_LoadLevel and SentinelsB1_LoadLevel; 20 of 20 bytes used at runtime; read by SentinelsD1_LoadLevel; jt[1151] used by SentinelsB1_LoadLevel, SentinelsD1_LoadLevel
 	incrom	$0DC4BE,$20
 	include "src/f/0DC4DE.asm"
 	include "src/f/0DC4EC.asm"
@@ -4275,9 +4275,9 @@ Tbl_Anim_1206F4:	; animation script (byte flags, byte steps, ..., 2-byte steps f
 	incrom	$1206F4,$E
 Tbl_BigBioBigBio:	; data handed to BigBio_SetOrbShape (format not established); never read in the corpus; jt[1678] used by BigBio_StateStartMorph -> BigBio_SetOrbShape, BigBio_StateLaunch -> BigBio_Launch, BigBio_StateDeathOrbs -> BigBio_SetOrbShape
 	incrom	$120702,$84
-Tbl_BigBioStateDying:	; format not established; never read in the corpus; jt[1679] used by BigBio_StateDying
+Tbl_BigBioOrbFallSpeeds:	; 16 words, one y step per BIGBIO orb (g_BigBioOrbs, 6-byte entries), added every frame while the orbs fall; orbs below the boss are hidden (BigBio_StateDying); never read in the corpus; jt[1679] used by BigBio_StateDying
 	incrom	$120786,$20
-Tbl_BigBioDraw:	; table read by BigBio_Draw; 80 of 80 bytes used at runtime; read by BigBio_Draw, BigBio_StateWaitPlayers, BigBio_TakeDamage; jt[1680] used by BigBio_Draw, BigBio_TakeDamage, BigBio_StateWaitPlayers
+Pal_BigBioBody:	; 4 x 16-colour palettes for line 3 (g_PalBase+$60): row 0 loaded at the fight start (BigBio_StateWaitPlayers; same colours as Pal_SceneDefaultLine1), rows 1-3 by health (BigBio_TakeDamage) and for the low-health flash (BigBio_Draw); 80 of 80 bytes used at runtime; read by BigBio_Draw, BigBio_StateWaitPlayers, BigBio_TakeDamage; jt[1680] used by BigBio_Draw, BigBio_TakeDamage, BigBio_StateWaitPlayers
 	incrom	$1207A6,$80
 Tbl_BigBio_ScriptLen:	; word 16: step count of the AI script BigBio_Script that follows (16 thunks disassembled); jt[1681] used by BigBio_StartScript
 	incrom	$120826,$2
@@ -4851,7 +4851,7 @@ Art_Spr_14018E:	; sprite definition (type $19, Nemesis-compressed tiles): $24-by
 	include "src/f/141F18.asm"
 	include "src/f/142008.asm"
 	include "src/f/14205E.asm"
-Tbl_TankInit:	; table read by Tank_Init; C of 88 bytes used at runtime; read by Tank_Init, TankLeft_Init, TankLeft_Deactivate; jt[1925] used by Tank_Deactivate, Tank_Init
+Tbl_Tank_vtable:	; class descriptor of TANK: word name offset $82, parent XNPC, 31 method slots from +6, then the name (tools/classes.py); C of 88 bytes used at runtime; read by Tank_Init, TankLeft_Init, TankLeft_Deactivate; jt[1925] used by Tank_Deactivate, Tank_Init
 	incrom	$1420DE,$88
 Lvl_Data_142166:	; level data read by Level_FrameLoop; 68 of 8C bytes used at runtime; read by Level_FrameLoop, Actor_Update, Actor_New; jt[1926] used by TankLeft_Init, TankLeft_Deactivate
 	incrom	$142166,$8C
@@ -4965,7 +4965,7 @@ Art_Spr_1445D2:	; sprite definition (type $19, Nemesis-compressed tiles): $24-by
 	include "src/f/144D88.asm"
 Lvl_Data_144D90:	; level data read by Level_FrameLoop; 48 of 78 bytes used at runtime; read by Level_FrameLoop, ToxicCan_Update, Actor_New; jt[1959] used by ToxicCan_Init, ToxicCan_Activate, ToxicCan_Deactivate
 	incrom	$144D90,$78
-Tbl_144E08:	; format not established; never read in the corpus; jt[1960] used by ToxicCan_Despawn, ToxicCanDamaged_Init
+Tbl_ToxicCanDamaged_vtable:	; class descriptor of TOXICCANDAMAGED: word name offset $6E, parent TOXICCAN, 26 method slots from +6, then the name (tools/classes.py); never read in the corpus; jt[1960] used by ToxicCan_Despawn, ToxicCanDamaged_Init
 	incrom	$144E08,$7E
 Tbl_144E86:	; format not established; never read in the corpus; jt[1961] used by ToxicCan_DrawLeak
 	incrom	$144E86,$6C
@@ -5104,21 +5104,21 @@ Sw_15980C:	; switch table of sub at $15980C: 8 word offsets from Sw_15980C-2
 	include "src/f/1599CC.asm"
 	include "src/f/159A06.asm"
 	include "src/f/159A46.asm"
-Tbl_FluxBombInit:	; table read by FluxBomb_Init; 30 of 78 bytes used at runtime; read by FluxBomb_Init, FluxBomb_New, Actor_Update; jt[1992] used by FluxBomb_Init, FluxBomb_Update, Magneto_SpawnFluxBomb
+Tbl_FluxBomb_vtable:	; class descriptor of FLUXBOMB: word name offset $6E, parent RTHETAOBJECT, 26 method slots from +6, then the name (tools/classes.py); 30 of 78 bytes used at runtime; read by FluxBomb_Init, FluxBomb_New, Actor_Update; jt[1992] used by FluxBomb_Init, FluxBomb_Update, Magneto_SpawnFluxBomb
 	incrom	$159AB4,$78
-Tbl_AvalonA4Init:	; table read by MagneticGlob_Init; 2C of 7C bytes used at runtime; read by MagneticGlob_Init, Magneto_SpawnShot, MagneticGlob_New; jt[1993] used by AvalonA4_GlobCrackBlockHook, AvalonA4_GlobCrackColumnHook, MagneticGlob_Init
+Tbl_MagneticGlob_vtable:	; class descriptor of MAGNETICGLOB: word name offset $6E, parent RTHETAOBJECT, 26 method slots from +6, then the name (tools/classes.py); 2C of 7C bytes used at runtime; read by MagneticGlob_Init, Magneto_SpawnShot, MagneticGlob_New; jt[1993] used by AvalonA4_GlobCrackBlockHook, AvalonA4_GlobCrackColumnHook, MagneticGlob_Init
 	incrom	$159B2C,$7C
-Tbl_ApocalypsePostLoadVram:	; table read by Scene_PostLoadVram; 20 of 20 bytes used at runtime; read by Scene_PostLoadVram; jt[1994] used by Apocalypse_ClassInit, Cerebro_Run, Failure_RunScene
+Pal_SceneDefaultLine1:	; 16-colour palette copied to line 1 (g_PalBase+$20) after every scene load by Scene_PostLoadVram (also Cerebro_Run, Failure_RunScene; Apocalypse_ClassInit puts it in line 3); 20 of 20 bytes used at runtime; read by Scene_PostLoadVram; jt[1994] used by Apocalypse_ClassInit, Cerebro_Run, Failure_RunScene
 	incrom	$159BA8,$20
-Tbl_PostLoadVram_159BC8:	; table read by Scene_PostLoadVram; 20 of 20 bytes used at runtime; read by Scene_PostLoadVram; jt[1995] used by Scene_PostLoadVram
+Pal_SceneDefaultLine3:	; 16-colour palette copied to line 3 (g_PalBase+$60) after every scene load by Scene_PostLoadVram; 20 of 20 bytes used at runtime; read by Scene_PostLoadVram; jt[1995] used by Scene_PostLoadVram
 	incrom	$159BC8,$20
-Tbl_MagnetoReadInput:	; table read by Demo_ReadInput; 9D of 9E bytes used at runtime; read by Demo_ReadInput, Scene_PostLoadVram; jt[1996] used by Game_AttractDemoCyclops
+Tbl_DemoInputBeast:	; attract-demo input (g_DemoInput, Demo_ReadInput): (frame, pad) byte pairs, pad $FF ends the demo; Beast demo in SentinelsD1 (Game_AttractDemoBeast); 9D of 9E bytes used at runtime; read by Demo_ReadInput, Scene_PostLoadVram; jt[1996] used by Game_AttractDemoCyclops
 	incrom	$159BE8,$9E
-Tbl_MagnetoReadInput2:	; table read by Demo_ReadInput; 75 of 76 bytes used at runtime; read by Demo_ReadInput; jt[1997] used by Game_AttractDemoCyclops
+Tbl_DemoInputPsylocke:	; attract-demo input (format at Tbl_DemoInputBeast): Psylocke demo in AvalonB2 (Game_AttractDemoPsylocke); 75 of 76 bytes used at runtime; read by Demo_ReadInput; jt[1997] used by Game_AttractDemoCyclops
 	incrom	$159C86,$76
-Tbl_MagnetoReadInput3:	; table read by Demo_ReadInput; 87 of 88 bytes used at runtime; read by Demo_ReadInput; jt[1998] used by Game_AttractDemoCyclops
+Tbl_DemoInputCyclops:	; attract-demo input (format at Tbl_DemoInputBeast): Cyclops demo in SentinelsB1 (Game_AttractDemoCyclops); 87 of 88 bytes used at runtime; read by Demo_ReadInput; jt[1998] used by Game_AttractDemoCyclops
 	incrom	$159CFC,$88
-Tbl_MagnetoReadInput4:	; table read by Demo_ReadInput; 121 of 148 bytes used at runtime; read by Demo_ReadInput; jt[1999] used by Game_AttractDemoNightcrawler
+Tbl_DemoInputNightcrawler:	; attract-demo input (format at Tbl_DemoInputBeast): Nightcrawler demo in BaniMazaA1 (Game_AttractDemoNightcrawler); 121 of 148 bytes used at runtime; read by Demo_ReadInput; jt[1999] used by Game_AttractDemoNightcrawler
 	incrom	$159D84,$148
 	include "src/f/159ECC.asm"
 	include "src/f/159FB8.asm"
@@ -5368,7 +5368,7 @@ Tbl_EvilBeastAnim2:	; animation script (byte flags, byte steps, ..., 2-byte step
 	incrom	$1829F0,$8
 Tbl_Anim_1829F8:	; animation script (byte flags, byte steps, ..., 2-byte steps from +6); 8 of 1E bytes used at runtime; read by Anim_ApplyStep, Anim_AdvanceByDistance, Anim_Advance; jt[2126] used by Beast_StateRoll
 	incrom	$1829F8,$1E
-Tbl_BeastLand:	; table read by XPlayer_Land; 3B of 5E bytes used at runtime; read by XPlayer_Land, XPlayer_AirSteer, Beast_Init; jt[2127] used by Beast_Init, EvilBeast_Init, PlayerSelect_PlayPickAnim_part1
+Tbl_BeastCharRecord:	; Beast's character record (player +$8C; layout in NOTES 'XPLAYER slots': attack strengths, sounds, gravities, speeds, animation offsets), shared with EVILBEAST; 3B of 5E bytes used at runtime; read by XPlayer_Land, XPlayer_AirSteer, Beast_Init; jt[2127] used by Beast_Init, EvilBeast_Init, PlayerSelect_PlayPickAnim_part1
 	incrom	$182A16,$5E
 Tbl_BeastQuakeSmall:	; camera shake script (format at Tbl_MagnetoBossQuake1): vertical +-2 px, Beast dive impact and weak stomp shockwave; 1F of 20 bytes used at runtime; read by Cam_ShakeStep; jt[2128] used by Beast_DiveImpact, Beast_ShockwaveInit
 	incrom	$182A74,$20
@@ -5448,7 +5448,7 @@ Tbl_WolverineAnim10:	; animation script (byte flags, byte steps, ..., 2-byte ste
 	incrom	$1964AC,$14
 Tbl_WolverineAnim11:	; animation script (byte flags, byte steps, ..., 2-byte steps from +6); 1E of 34 bytes used at runtime; read by Anim_ApplyStep, Anim_AdvanceByDistance; jt[2165] used by Wolverine_AirSpecial
 	incrom	$1964C0,$34
-Tbl_EvilWolverineLand:	; table read by XPlayer_Land; 4C of 5E bytes used at runtime; read by XPlayer_Land, XPlayer_StateControl, XPlayer_DoubleJump; jt[2166] used by EvilWolverine_Init, PlayerSelect_PlayPickAnim_part2, Wolverine_Init
+Tbl_WolverineCharRecord:	; Wolverine's character record (player +$8C; layout in NOTES 'XPLAYER slots'), shared with EVILWOLVERINE; 4C of 5E bytes used at runtime; read by XPlayer_Land, XPlayer_StateControl, XPlayer_DoubleJump; jt[2166] used by EvilWolverine_Init, PlayerSelect_PlayPickAnim_part2, Wolverine_Init
 	incrom	$1964F4,$5E
 	include "src/f/196552.asm"
 	include "src/f/196560.asm"
@@ -5510,7 +5510,7 @@ Tbl_EvilNightcrawlerAnim2:	; animation script (byte flags, byte steps, ..., 2-by
 	include "src/f/1A60B6.asm"
 Tbl_Anim_1A616A:	; animation script (byte flags, byte steps, ..., 2-byte steps from +6); 12 of 16 bytes used at runtime; read by Anim_ApplyStep, Anim_AdvanceByDistance, Anim_Advance
 	incrom	$1A616A,$16
-Tbl_EvilNightcrawlerLand:	; table read by XPlayer_Land; 52 of 5E bytes used at runtime; read by XPlayer_Land, XPlayer_StateDoubleJump, XPlayer_DoubleJump; jt[2196] used by EvilNightcrawler_Init, Nightcrawler_Init, PlayerSelect_PlayPickAnim_part2
+Tbl_NightcrawlerCharRecord:	; Nightcrawler's character record (player +$8C; layout in NOTES 'XPLAYER slots'), shared with EVILNIGHTCRAWLER; 52 of 5E bytes used at runtime; read by XPlayer_Land, XPlayer_StateDoubleJump, XPlayer_DoubleJump; jt[2196] used by EvilNightcrawler_Init, Nightcrawler_Init, PlayerSelect_PlayPickAnim_part2
 	incrom	$1A6180,$5E
 	include "src/f/1A61DE.asm"
 	include "src/f/1A61EC.asm"
@@ -5582,7 +5582,7 @@ Tbl_PsylockeAnim11_2:	; animation script (byte flags, byte steps, ..., 2-byte st
 	incrom	$1B8FC0,$16
 Tbl_PsylockeAnim12_2:	; animation script (NOTES: Animation scripts); never read in the corpus; jt[2228] used by Psylocke_StateCling -> Obj_SetAnim
 	incrom	$1B8FD6,$2C
-Tbl_EvilPsylockeLand:	; table read by XPlayer_Land; 40 of 5E bytes used at runtime; read by XPlayer_Land, PlayerSelect_PlayPickAnim_part3, Psylocke_Init; jt[2229] used by EvilPsylocke_Init, PlayerSelect_PlayPickAnim_part2, Psylocke_Init
+Tbl_PsylockeCharRecord:	; Psylocke's character record (player +$8C; layout in NOTES 'XPLAYER slots'), shared with EVILPSYLOCKE; 40 of 5E bytes used at runtime; read by XPlayer_Land, PlayerSelect_PlayPickAnim_part3, Psylocke_Init; jt[2229] used by EvilPsylocke_Init, PlayerSelect_PlayPickAnim_part2, Psylocke_Init
 	incrom	$1B9002,$5E
 	include "src/f/1B9060.asm"
 	include "src/f/1B906E.asm"
@@ -5903,8 +5903,7 @@ Tbl_CyclopsBeamAirUpDiag:	; Cyclops beam set (format at Tbl_CyclopsBeamGroundLev
 	incrom	$1E2908,$12C
 Tbl_CyclopsBeamAirDownDiag:	; Cyclops beam set (format at Tbl_CyclopsBeamGroundLevel): air beam, down-diagonal; followed at $1E2A3A by two animation scripts (frames $12-$14, then $10/$11); A of 1E bytes used at runtime; read by Anim_ApplyStep, Anim_AdvanceByDistance, Anim_Advance; jt[2373] used by Cyclops_StartBeam, Cyclops_AirBeamAim
 	incrom	$1E2A34,$1E
-Tbl_EvilCyclopsLand:	; table read by XPlayer_Land; 39 of 5E bytes used at runtime; read by XPlayer_Land, Cyclops_Init, XPlayer_AirSteer; jt[2384] used by EvilCyclops_Init, PlayerSelect_PlayPickAnim_part2, Cyclops_Init
-Tbl_CyclopsCharRecord:	; Cyclops's character record (player +$8C; layout in NOTES 'XPLAYER slots': attack strengths, sounds, gravities, speeds, animation offsets); set by Cyclops_Init
+Tbl_CyclopsCharRecord:	; Cyclops's character record (player +$8C; layout in NOTES 'XPLAYER slots': attack strengths, sounds, gravities, speeds, animation offsets), shared with EVILCYCLOPS; set by Cyclops_Init and EvilCyclops_Init; jt[2384]
 	incrom	$1E2A52,$5E
 	include "src/f/1E2AB0.asm"
 	include "src/f/1E2ABE.asm"
@@ -6085,9 +6084,9 @@ Tbl_A5WorldInfo:	; 20 bytes: longs $3CE6 (size of the A5 globals area below $200
 	incrom	$1F48F6,$A
 	include "src/f/1F4900.asm"
 	incrom	$1F4956,$A
-Tbl_AvalonA3New:	; table read by Cam_New; 30 of 46 bytes used at runtime; read by Cam_New, Cam_Init, SiberiaB1_InitWind; jt[2483] used by AvalonA3_InitCamera, AvalonA4_InitCamera, AvalonB1_InitCamera
+Tbl_Camera_vtable:	; class descriptor of CAMERA (root class, no parent): word name offset $3E, parent 0, 14 method slots from +6 (+$0A New, +$16 Update...; NOTES 'CAMERA object'), then the name (tools/classes.py); every scene's camera is created through it; 30 of 46 bytes used at runtime; read by Cam_New, Cam_Init, SiberiaB1_InitWind; jt[2483] used by AvalonA3_InitCamera, AvalonA4_InitCamera, AvalonB1_InitCamera
 	incrom	$1F4960,$46
-Tbl_XCloneInitSpawnRec:	; table read by XPlayer_InitSpawnRec; 3C of 74 bytes used at runtime; read by XPlayer_InitSpawnRec, XPlayer_Init, Actor_DeactivateFree; jt[2484] used by BigBio_StateDefeated, BioBalls_SpawnPuff, BroodBoss_StateDeathFx
+Tbl_Actor_vtable:	; class descriptor of ACTOR, the root actor class: word name offset $6E, parent 0, 26 method slots from +6 (slot names in NOTES 'Actor classes'), then the name (tools/classes.py); used directly for plain effect actors (ExplodeFx chains); 3C of 74 bytes used at runtime; read by XPlayer_InitSpawnRec, XPlayer_Init, Actor_DeactivateFree; jt[2484] used by BigBio_StateDefeated, BioBalls_SpawnPuff, BroodBoss_StateDeathFx
 	incrom	$1F49A6,$74
 	include "src/f/1F4A1A.asm"
 	include "src/f/1F4A40.asm"
