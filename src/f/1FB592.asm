@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_1FB592	[link-after-rts]
+; Spr_EmitPreLinked - Spr_EmitPre variant for sprite instances that carry attached objects (+$D != $FF)
+; In:  8(a6) = sprite instance   $C(a6)/$10(a6) = word: x, y (+$80)   $14(a6) = word: tile base
+; Out: none
+; Evidence: chosen by Spr_Draw for type $20 with attachments; per-piece clip like the Clip variant (Spr_EmitPreLinked_Piece) and a skip test on piece word +2 bit 15 vs object byte +$10; Tbl_SprWidthLinked/Tbl_SprHeightLinked
 ; ---------------------------------------------------------------------------
-sub_1FB592:
+Spr_EmitPreLinked:
 	link.w	a6,#$FFFC
 	movem.l	d4-d7/a2-a3,-(a7)
 	clr.b	-$1(a6)
@@ -87,13 +90,13 @@ loc_1FB646:
 	tst.b	-$2(a6)
 	beq.s	loc_1FB680
 	neg.w	d7
-	sub.w	$1FB696(pc,d4.w),d7
+	sub.w	Tbl_SprWidthLinked(pc,d4.w),d7
 loc_1FB680:
 	add.w	$E(a6),d7
 	tst.b	-$3(a6)
 	beq.s	loc_1FB690
 	neg.w	d6
-	sub.w	$1FB6B6(pc,d4.w),d6
+	sub.w	Tbl_SprHeightLinked(pc,d4.w),d6
 loc_1FB690:
 	add.w	$12(a6),d6
-	bra.s	loc_1FB6D6
+	bra.s	Spr_EmitPreLinked_Piece

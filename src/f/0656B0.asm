@@ -167,7 +167,7 @@ loc_0658BC:
 	move.b	#$1,-$38BE(a5)
 	jsr	$500A(a5)	; -> sub_1FA7E8
 loc_0658C6:
-	jsr	$504A(a5)	; -> sub_1FA99C
+	jsr	$504A(a5)	; -> Spr_BeginFrame
 	lea.l	g_SpriteTable(a5),a0
 	movea.l	-$1FE6(a5),a1
 	move.b	$3(a1),d0
@@ -413,7 +413,7 @@ loc_065B64:
 	movea.l	-$1FE6(a5),a0
 	move.w	d0,$6(a0)
 loc_065BBE:
-	jsr	$5052(a5)	; -> sub_1FA9D2
+	jsr	$5052(a5)	; -> Spr_EndFrame
 	move.b	#$1,g_DmaFlushReq(a5)
 	jsr	PlayerSelect_CheckDone(pc)
 	tst.b	-$38DE(a5)

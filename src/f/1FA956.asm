@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_1FA956	[jt 2564]
+; Spr_InitLinks - chain all 80 hardware sprite slots (link byte = index+1) and reset the sprite list state
+; In:  none
+; Out: none
+; Evidence: g_SpriteTable+3+i*8 = i+1 for i < 80; byte -$1D57 = $50, -$1D4F = 0, word -$1FDC = 0, -$1FDE = $51, -$1FE0 = 0
 ; ---------------------------------------------------------------------------
-sub_1FA956:
+Spr_InitLinks:
 	link.w	a6,#$0
 	movem.l	d3/d7,-(a7)
 	clr.w	d7

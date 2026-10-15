@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_1FB75A	[link-after-rts]
+; Spr_EmitPre - append the hardware sprites of a preloaded (type $20) sprite frame that is fully on screen to g_SpriteTable
+; In:  8(a6) = sprite instance   $C(a6)/$10(a6) = word: x, y in sprite space (+$80)   $14(a6) = word: tile base
+; Out: none
+; Evidence: reads the RAM frame record (def+$24+frame*$14: +$10 piece count, +$12 piece list offset); pieces of 6 bytes {byte x, byte y, word size/flip attr, word tile}; flips mirror with Tbl_SprWidthPre/Tbl_SprHeightPre; follows the link bytes from write pointer -$1FE6, stops at 80 sprites (count -$1FE2); chosen by Spr_Draw
 ; ---------------------------------------------------------------------------
-sub_1FB75A:
+Spr_EmitPre:
 	link.w	a6,#$FFFC
 	movem.l	d3-d7/a2-a4,-(a7)
 	moveq	#$0,d2
@@ -70,13 +73,13 @@ loc_1FB7E2:
 	tst.b	-$1(a6)
 	beq.s	loc_1FB81E
 	neg.w	d7
-	sub.w	$1FB834(pc,d4.w),d7
+	sub.w	Tbl_SprWidthPre(pc,d4.w),d7
 loc_1FB81E:
 	add.w	$E(a6),d7
 	tst.b	-$2(a6)
 	beq.s	loc_1FB82E
 	neg.w	d6
-	sub.w	$1FB854(pc,d4.w),d6
+	sub.w	Tbl_SprHeightPre(pc,d4.w),d6
 loc_1FB82E:
 	add.w	$12(a6),d6
-	bra.s	loc_1FB874
+	bra.s	Spr_EmitPre_Piece

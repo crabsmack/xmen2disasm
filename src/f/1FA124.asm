@@ -32,7 +32,7 @@ loc_1FA168:
 	seq.b	d3
 	neg.b	d3
 	move.b	d3,-$38DE(a5)
-	jsr	$504A(a5)	; -> sub_1FA99C
+	jsr	$504A(a5)	; -> Spr_BeginFrame
 	tst.b	-$38B4(a5)
 	beq.w	loc_1FA480
 	tst.b	-$38B2(a5)
@@ -448,7 +448,7 @@ loc_1FA660:
 loc_1FA672:
 	movea.l	-$38F4(a5),a0
 	jsr	(a0)
-	jsr	$5052(a5)	; -> sub_1FA9D2
+	jsr	$5052(a5)	; -> Spr_EndFrame
 	move.b	#$1,g_DmaFlushReq(a5)
 	move.w	#$80,d0
 	and.w	g_Pad1Pressed(a5),d0

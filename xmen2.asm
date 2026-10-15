@@ -4561,22 +4561,46 @@ Str_EmptyTag:	; empty C string: allocation tag used by Spr_PreloadToHeap for its
 	include "src/f/1FB1C2.asm"
 	include "src/f/1FB346.asm"
 	include "src/f/1FB592.asm"
-	incrom	$1FB696,$40
+Tbl_SprWidthLinked:	; 16 words: pixel width per hardware sprite size code 0-15 (((s>>2)+1)*8), mirrors x for h-flip in Spr_EmitPreLinked
+	incrom	$1FB696,$20
+Tbl_SprHeightLinked:	; 16 words: pixel height per sprite size code (((s&3)+1)*8), mirrors y for v-flip in Spr_EmitPreLinked
+	incrom	$1FB6B6,$20
 	include "src/f/1FB6D6.asm"
 	include "src/f/1FB75A.asm"
-	incrom	$1FB834,$40
+Tbl_SprWidthPre:	; 16 words: pixel width per sprite size code, h-flip mirroring in Spr_EmitPre
+	incrom	$1FB834,$20
+Tbl_SprHeightPre:	; 16 words: pixel height per sprite size code, v-flip mirroring in Spr_EmitPre
+	incrom	$1FB854,$20
 	include "src/f/1FB874.asm"
 	include "src/f/1FB8A2.asm"
-	incrom	$1FB978,$40
+Tbl_SprWidthPreClip:	; 16 words: pixel width per sprite size code, h-flip mirroring in Spr_EmitPreClip
+	incrom	$1FB978,$20
+Tbl_SprHeightPreClip:	; 16 words: pixel height per sprite size code, v-flip mirroring in Spr_EmitPreClip
+	incrom	$1FB998,$20
 	include "src/f/1FB9B8.asm"
 	include "src/f/1FBA0C.asm"
-	incrom	$1FBACE,$60
+Tbl_SprWidthStream:	; 16 words: pixel width per sprite size code, h-flip mirroring in Spr_EmitStream
+	incrom	$1FBACE,$20
+Tbl_SprHeightStream:	; 16 words: pixel height per sprite size code, v-flip mirroring in Spr_EmitStream
+	incrom	$1FBAEE,$20
+Tbl_SprTilesStream:	; 16 words: tiles per sprite size code (w*h/64), advances the tile number per piece in Spr_EmitStream
+	incrom	$1FBB0E,$20
 	include "src/f/1FBB2E.asm"
 	include "src/f/1FBB5E.asm"
-	incrom	$1FBC16,$60
+Tbl_SprWidthStreamClip:	; 16 words: pixel width per sprite size code, h-flip mirroring in Spr_EmitStreamClip
+	incrom	$1FBC16,$20
+Tbl_SprHeightStreamClip:	; 16 words: pixel height per sprite size code, v-flip mirroring in Spr_EmitStreamClip
+	incrom	$1FBC36,$20
+Tbl_SprTilesStreamClip:	; 16 words: tiles per sprite size code, tile advance in Spr_EmitStreamClip
+	incrom	$1FBC56,$20
 	include "src/f/1FBC76.asm"
 	include "src/f/1FBCCE.asm"
-	incrom	$1FBDBA,$60
+Tbl_SprWidthStreamLinked:	; 16 words: pixel width per sprite size code, h-flip mirroring in Spr_EmitStreamLinked
+	incrom	$1FBDBA,$20
+Tbl_SprHeightStreamLinked:	; 16 words: pixel height per sprite size code, v-flip mirroring in Spr_EmitStreamLinked
+	incrom	$1FBDDA,$20
+Tbl_SprTilesStreamLinked:	; 16 words: tiles per sprite size code, tile advance in Spr_EmitStreamLinked
+	incrom	$1FBDFA,$20
 	include "src/f/1FBE1A.asm"
 	include "src/f/1FBE96.asm"
 	incrom	$1FBFCC,$200
@@ -4622,7 +4646,18 @@ Sw_1FDAEC:	; switch table of sub at $1FDAEC: 4 word offsets from Sw_1FDAEC-2
 	include "src/f/1FDD0C.asm"
 	include "src/f/1FDD26.asm"
 	include "src/f/1FDD4C.asm"
-	incrom	$1FDD56,$E0
+Tbl_FadeBlack:	; palette fade table for Pal_StartFade/Pal_ApplyFade: 8 levels x 8 bytes, level L maps 3-bit component c to max(0, c-(7-L)) (level 0 black, 7 identity); reached as jt 2596 data (lea $5142(a5)) by the screen fades in sub_066B26/sub_067020
+	incrom	$1FDD56,$40
+Tbl_FadeInvertWhite:	; palette fade table: 8 levels x 8 bytes, level L maps c to min(7, 7-c+L) (level 0 = inverted colours, level 7 = white); jt 2597 data, used once by sub_0F47AE
+	incrom	$1FDD96,$40
+Tbl_ButtonConfigs:	; 6 control layouts x 8 bytes of joypad masks per action: a permutation of $20/$40/$10 (C/A/B), then $01 $02 $04 $08 (Up Down Left Right), 0; Pad_ConfigButtonMask(action) indexes it with the layout word -$38A6; jt 2598 data
+	incrom	$1FDDD6,$30
+Tbl_SprSizeTiles:	; 16 bytes: tiles per hardware sprite size code 0-15 (w*h/64), read by Spr_UploadFrame / Spr_PreloadTiles (jt 2599 data)
+	incrom	$1FDE06,$10
+Tbl_SprSizeWidth:	; 16 bytes: pixel width per sprite size code (((s>>2)+1)*8); jt 2600 data (sub_15AE48, sub_1CF432)
+	incrom	$1FDE16,$10
+Tbl_SprSizeHeight:	; 16 bytes: pixel height per sprite size code (((s&3)+1)*8); jt 2601 data
+	incrom	$1FDE26,$10
 Tbl_SineQuarter:	; 90 words: sin(0..89 deg) * $10000 (0 and 90 are special-cased in Math_SinDeg/Math_CosDeg)
 	incrom	$1FDE36,$B4
 	include "src/f/1FDEEA.asm"

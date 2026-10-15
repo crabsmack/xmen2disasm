@@ -421,7 +421,7 @@ loc_0661FC:
 loc_066348:
 	moveq	#$0,d0
 	move.l	d0,g_VBlankCount(a5)
-	jsr	$504A(a5)	; -> sub_1FA99C
+	jsr	$504A(a5)	; -> Spr_BeginFrame
 	lea.l	g_SpriteTable(a5),a0
 	movea.l	-$1FE6(a5),a1
 	move.b	$3(a1),d0
@@ -492,7 +492,7 @@ loc_066436:
 	moveq	#$3,d0
 	cmp.l	g_VBlankCount(a5),d0
 	bgt.s	loc_066432
-	jsr	$5052(a5)	; -> sub_1FA9D2
+	jsr	$5052(a5)	; -> Spr_EndFrame
 	move.b	#$1,g_DmaFlushReq(a5)
 	jsr	$5112(a5)	; -> VDP_WaitVBlank
 loc_06644C:
@@ -635,7 +635,7 @@ loc_0665D8:
 	move.b	#$1,g_PalBaseDirty(a5)
 	bra.w	loc_0666BE
 loc_0665EE:
-	jsr	$504A(a5)	; -> sub_1FA99C
+	jsr	$504A(a5)	; -> Spr_BeginFrame
 	lea.l	g_SpriteTable(a5),a0
 	movea.l	-$1FE6(a5),a1
 	move.b	$3(a1),d0
@@ -691,7 +691,7 @@ loc_0665EE:
 	pea.l	-$1E8(a6)
 	jsr	Cerebro_BigSpriteDraw(pc)
 	subq.w	#$1,d6
-	jsr	$5052(a5)	; -> sub_1FA9D2
+	jsr	$5052(a5)	; -> Spr_EndFrame
 	move.b	#$1,g_DmaFlushReq(a5)
 	jsr	$5112(a5)	; -> VDP_WaitVBlank
 	lea.l	$14(a7),a7
@@ -773,7 +773,7 @@ loc_0666BE:
 	move.l	d0,-$1CE(a6)
 	bra.w	loc_066870
 loc_0667A0:
-	jsr	$504A(a5)	; -> sub_1FA99C
+	jsr	$504A(a5)	; -> Spr_BeginFrame
 	lea.l	g_SpriteTable(a5),a0
 	movea.l	-$1FE6(a5),a1
 	move.b	$3(a1),d0
@@ -829,7 +829,7 @@ loc_0667A0:
 	pea.l	-$1E8(a6)
 	jsr	Cerebro_BigSpriteDraw(pc)
 	subq.w	#$1,d6
-	jsr	$5052(a5)	; -> sub_1FA9D2
+	jsr	$5052(a5)	; -> Spr_EndFrame
 	move.b	#$1,g_DmaFlushReq(a5)
 	jsr	$5112(a5)	; -> VDP_WaitVBlank
 	lea.l	$14(a7),a7
@@ -870,7 +870,7 @@ loc_0668D0:
 	moveq	#$40,d0
 	cmp.w	-$390C(a5),d0
 	bne.s	loc_0668C8
-	jsr	$504A(a5)	; -> sub_1FA99C
+	jsr	$504A(a5)	; -> Spr_BeginFrame
 	lea.l	g_SpriteTable(a5),a0
 	movea.l	-$1FE6(a5),a1
 	move.b	$3(a1),d0
@@ -972,7 +972,7 @@ loc_0669EC:
 	jsr	$508A(a5)	; -> Spr_Draw
 	pea.l	-$1E8(a6)
 	jsr	Cerebro_BigSpriteDraw(pc)
-	jsr	$5052(a5)	; -> sub_1FA9D2
+	jsr	$5052(a5)	; -> Spr_EndFrame
 	move.b	#$1,g_DmaFlushReq(a5)
 	move.w	#$258,d6
 	lea.l	$10(a7),a7
@@ -1009,7 +1009,7 @@ loc_066A74:
 	tst.w	d6
 	bne.s	loc_066A58
 loc_066A78:
-	jsr	$504A(a5)	; -> sub_1FA99C
+	jsr	$504A(a5)	; -> Spr_BeginFrame
 	lea.l	g_SpriteTable(a5),a0
 	movea.l	-$1FE6(a5),a1
 	move.b	$3(a1),d0
@@ -1028,7 +1028,7 @@ loc_066A78:
 	movea.l	-$1FE6(a5),a0
 	move.w	#$1C,$6(a0)
 	clr.b	-$3A08(a5)
-	jsr	$5052(a5)	; -> sub_1FA9D2
+	jsr	$5052(a5)	; -> Spr_EndFrame
 	move.w	-$16(a6),-$3598(a5)
 	moveq	#$0,d0
 	move.l	d0,g_VBlankGameHook(a5)

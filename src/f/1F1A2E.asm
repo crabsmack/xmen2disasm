@@ -178,7 +178,7 @@ loc_1F1BD0:
 	add.l	#$80,d0
 	move.l	d0,-(a7)
 	move.l	a3,-(a7)
-	jsr	$5092(a5)	; -> sub_1FBA0C
+	jsr	$5092(a5)	; -> Spr_EmitStream
 	lea.l	$10(a7),a7
 loc_1F1BFC:
 	movem.l	-$18(a6),d3/d6-d7/a3-a4

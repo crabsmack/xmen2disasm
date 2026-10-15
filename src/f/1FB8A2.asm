@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_1FB8A2	[link-after-rts]
+; Spr_EmitPreClip - like Spr_EmitPre for a frame that crosses the screen edge: skip pieces outside the visible sprite window
+; In:  8(a6) = sprite instance   $C(a6)/$10(a6) = word: x, y (+$80)   $14(a6) = word: tile base
+; Out: none
+; Evidence: same 6-byte pieces; each piece kept only if $60 <= x <= $1C0 and $60 <= y <= $160 (Spr_EmitPreClip_Piece); Tbl_SprWidthPreClip/Tbl_SprHeightPreClip
 ; ---------------------------------------------------------------------------
-sub_1FB8A2:
+Spr_EmitPreClip:
 	link.w	a6,#$FFFC
 	movem.l	d3-d7/a2-a4,-(a7)
 	cmpi.w	#$50,-$1FE2(a5)
@@ -67,13 +70,13 @@ loc_1FB926:
 	tst.b	-$1(a6)
 	beq.s	loc_1FB962
 	neg.w	d7
-	sub.w	$1FB978(pc,d4.w),d7
+	sub.w	Tbl_SprWidthPreClip(pc,d4.w),d7
 loc_1FB962:
 	add.w	$E(a6),d7
 	tst.b	-$2(a6)
 	beq.s	loc_1FB972
 	neg.w	d6
-	sub.w	$1FB998(pc,d4.w),d6
+	sub.w	Tbl_SprHeightPreClip(pc,d4.w),d6
 loc_1FB972:
 	add.w	$12(a6),d6
-	bra.s	loc_1FB9B8
+	bra.s	Spr_EmitPreClip_Piece

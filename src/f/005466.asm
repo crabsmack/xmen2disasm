@@ -2,7 +2,7 @@
 ; Game_Main - main program: init hardware/sound/scenes, then run Game_SceneLoop forever
 ; In:  none
 ; Out: never returns
-; Evidence: irq hook $21C entry; waits VDP status, reads 7 settings bytes via sub_1FDD26 into -$3A40, calls init Sys_InitGameVideo, then loops Game_SceneLoop with demo flag cleared
+; Evidence: irq hook $21C entry; waits VDP status, reads 7 settings bytes via Pad_ConfigButtonMask into -$3A40, calls init Sys_InitGameVideo, then loops Game_SceneLoop with demo flag cleared
 ; ---------------------------------------------------------------------------
 Game_Main:
 	link.w	a6,#$0
@@ -18,7 +18,7 @@ loc_00547A:
 loc_005486:
 	ext.l	d7
 	move.l	d7,-(a7)
-	jsr	$5132(a5)	; -> sub_1FDD26
+	jsr	$5132(a5)	; -> Pad_ConfigButtonMask
 	lea.l	-$3A40(a5),a0
 	move.b	d0,(a0,d7.w)
 	addq.w	#$4,a7
@@ -27,7 +27,7 @@ loc_005486:
 	cmpi.w	#$6,d7
 	ble.s	loc_005486
 	jsr	$4192(a5)	; -> Sys_InitHardware
-	jsr	$5042(a5)	; -> sub_1FA956
+	jsr	$5042(a5)	; -> Spr_InitLinks
 	clr.b	-$38BE(a5)
 	clr.b	-$3A08(a5)
 	move.b	#$1,g_FrameUpdated(a5)

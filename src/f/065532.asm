@@ -9,7 +9,7 @@ Cerebro_RunTextScript:
 	movem.l	d5-d7/a3-a4,-(a7)
 	clr.b	-$38C6(a5)
 	move.w	#$2,-$3B02(a5)
-	jsr	$504A(a5)	; -> sub_1FA99C
+	jsr	$504A(a5)	; -> Spr_BeginFrame
 	lea.l	g_SpriteTable(a5),a0
 	movea.l	-$1FE6(a5),a1
 	move.b	$3(a1),d0
@@ -27,7 +27,7 @@ Cerebro_RunTextScript:
 	clr.w	$4(a0)
 	movea.l	-$1FE6(a5),a0
 	move.w	#$1C,$6(a0)
-	jsr	$5052(a5)	; -> sub_1FA9D2
+	jsr	$5052(a5)	; -> Spr_EndFrame
 	move.b	#$1,g_DmaFlushReq(a5)
 	movea.l	-$3B14(a5),a4
 	bra.w	loc_06569A

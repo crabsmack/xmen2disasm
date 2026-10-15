@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_1FBB5E	[link-after-rts]
+; Spr_EmitStreamClip - like Spr_EmitStream for a frame crossing the screen edge: skip off-screen pieces
+; In:  8(a6) = sprite instance   $C(a6)/$10(a6) = word: x, y (+$80)   $14(a6) = word: tile base
+; Out: none
+; Evidence: same 8-byte ROM pieces; window $60-$1C0 x $60-$160 (Spr_EmitStreamClip_Piece); Tbl_SprWidthStreamClip/HeightStreamClip/TilesStreamClip
 ; ---------------------------------------------------------------------------
-sub_1FBB5E:
+Spr_EmitStreamClip:
 	link.w	a6,#$FFFC
 	movem.l	d2-d7/a2-a4,-(a7)
 	cmpi.w	#$50,-$1FE2(a5)
@@ -56,13 +59,13 @@ loc_1FBBD0:
 	tst.b	-$2(a6)
 	beq.s	loc_1FBC00
 	neg.w	d7
-	sub.w	$1FBC16(pc,d3.w),d7
+	sub.w	Tbl_SprWidthStreamClip(pc,d3.w),d7
 loc_1FBC00:
 	add.w	$E(a6),d7
 	tst.b	-$3(a6)
 	beq.s	loc_1FBC10
 	neg.w	d6
-	sub.w	$1FBC36(pc,d3.w),d6
+	sub.w	Tbl_SprHeightStreamClip(pc,d3.w),d6
 loc_1FBC10:
 	add.w	$12(a6),d6
-	bra.s	loc_1FBC76
+	bra.s	Spr_EmitStreamClip_Piece

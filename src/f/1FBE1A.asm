@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; loc_1FBE1A
+; Spr_EmitStreamLinked_Piece - Spr_EmitStreamLinked inner loop: add $80, clip one piece and write it to the next slot
+; In:  registers of Spr_EmitStreamLinked
+; Out: none
+; Evidence: window test after adding $80 to x and y; slot via link byte at -$1FE6; Tbl_SprTilesStreamLinked
 ; ---------------------------------------------------------------------------
-loc_1FBE1A:
+Spr_EmitStreamLinked_Piece:
 	move.w	#$80,d0
 	add.w	d0,d7
 	cmpi.w	#$60,d7
@@ -32,7 +35,7 @@ loc_1FBE66:
 	st.b	-$1(a6)
 loc_1FBE6A:
 	swap	d7
-	add.w	$1FBDFA(pc,d3.w),d7
+	add.w	Tbl_SprTilesStreamLinked(pc,d3.w),d7
 loc_1FBE70:
 	addq.w	#$8,a4
 	addq.w	#$1,d5

@@ -77,7 +77,7 @@ loc_066B48:
 	clr.w	-$3A24(a5)
 	clr.b	-$38C2(a5)
 	move.w	-$3598(a5),-$3888(a5)
-	jsr	$5042(a5)	; -> sub_1FA956
+	jsr	$5042(a5)	; -> Spr_InitLinks
 	jsr	$50FA(a5)	; -> Pad_Update
 	ori.w	#$40,g_VdpReg1(a5)
 	move.w	g_VdpReg1(a5),($C00004).l

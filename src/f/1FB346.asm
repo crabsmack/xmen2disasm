@@ -2,7 +2,7 @@
 ; Spr_Draw - draw a sprite instance at screen coordinates: upload its frame if needed, then emit hardware sprites (clipped or not) by definition type
 ; In:  8(a6) = sprite instance (object+$2E)   $C(a6) = word: screen x   $10(a6) = word: screen y
 ; Out: none
-; Evidence: bit 5 clear -> Spr_UploadFrame(spr, 0); frame record def(+2)+$24 + frame(+$A)*$14 bbox vs the 320x224 screen picks sub_1FB75A (inside) / sub_1FB8A2 (clipped) for type $20, sub_1FBA0C / sub_1FBB5E for $18/$19; attachments (+$D != $FF) use sub_1FB592 / sub_1FBCCE; coordinates + $80 (sprite space)
+; Evidence: bit 5 clear -> Spr_UploadFrame(spr, 0); frame record def(+2)+$24 + frame(+$A)*$14 bbox vs the 320x224 screen picks Spr_EmitPre (inside) / Spr_EmitPreClip (clipped) for type $20, Spr_EmitStream / Spr_EmitStreamClip for $18/$19; attachments (+$D != $FF) use Spr_EmitPreLinked / Spr_EmitStreamLinked; coordinates + $80 (sprite space)
 ; ---------------------------------------------------------------------------
 Spr_Draw:
 	link.w	a6,#$FFFE
@@ -98,7 +98,7 @@ loc_1FB376:
 	add.l	#$80,d0
 	move.l	d0,-(a7)
 	move.l	a4,-(a7)
-	jsr	sub_1FB75A(pc)
+	jsr	Spr_EmitPre(pc)
 	lea.l	$10(a7),a7
 	bra.w	loc_1FB588
 loc_1FB450:
@@ -113,7 +113,7 @@ loc_1FB450:
 	add.l	#$80,d0
 	move.l	d0,-(a7)
 	move.l	a4,-(a7)
-	jsr	sub_1FB8A2(pc)
+	jsr	Spr_EmitPreClip(pc)
 	lea.l	$10(a7),a7
 	bra.w	loc_1FB588
 loc_1FB47A:
@@ -128,7 +128,7 @@ loc_1FB47A:
 	add.l	#$80,d0
 	move.l	d0,-(a7)
 	move.l	a4,-(a7)
-	jsr	sub_1FB592(pc)
+	jsr	Spr_EmitPreLinked(pc)
 	lea.l	$10(a7),a7
 	bra.w	loc_1FB588
 loc_1FB4A4:
@@ -190,7 +190,7 @@ loc_1FB4B2:
 	add.l	#$80,d0
 	move.l	d0,-(a7)
 	move.l	a4,-(a7)
-	jsr	sub_1FBA0C(pc)
+	jsr	Spr_EmitStream(pc)
 	lea.l	$10(a7),a7
 	bra.s	loc_1FB588
 loc_1FB54A:
@@ -205,7 +205,7 @@ loc_1FB54A:
 	add.l	#$80,d0
 	move.l	d0,-(a7)
 	move.l	a4,-(a7)
-	jsr	sub_1FBB5E(pc)
+	jsr	Spr_EmitStreamClip(pc)
 	lea.l	$10(a7),a7
 	bra.s	loc_1FB588
 loc_1FB572:
@@ -216,7 +216,7 @@ loc_1FB572:
 	ext.l	d6
 	move.l	d6,-(a7)
 	move.l	a4,-(a7)
-	jsr	sub_1FBCCE(pc)
+	jsr	Spr_EmitStreamLinked(pc)
 	lea.l	$10(a7),a7
 loc_1FB588:
 	movem.l	-$1A(a6),d4-d7/a3-a4

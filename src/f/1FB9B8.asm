@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; loc_1FB9B8
+; Spr_EmitPreClip_Piece - Spr_EmitPreClip inner loop: clip and write one piece
+; In:  registers of Spr_EmitPreClip
+; Out: none
+; Evidence: window test then the same slot write as Spr_EmitPre_Piece; stops at link $50
 ; ---------------------------------------------------------------------------
-loc_1FB9B8:
+Spr_EmitPreClip_Piece:
 	cmpi.w	#$60,d7
 	blt.s	loc_1FB9E8
 	cmpi.w	#$1C0,d7

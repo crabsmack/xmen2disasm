@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; loc_1FBC76
+; Spr_EmitStreamClip_Piece - Spr_EmitStreamClip inner loop: clip one piece, write it, advance the tile number
+; In:  registers of Spr_EmitStreamClip
+; Out: none
+; Evidence: window $60-$1C0 / $60-$160; Tbl_SprTilesStreamClip
 ; ---------------------------------------------------------------------------
-loc_1FBC76:
+Spr_EmitStreamClip_Piece:
 	cmpi.w	#$60,d7
 	blt.s	loc_1FBCA2
 	cmpi.w	#$1C0,d7
@@ -19,7 +22,7 @@ loc_1FBC76:
 	beq.s	loc_1FBCB4
 loc_1FBCA2:
 	swap	d7
-	add.w	$1FBC56(pc,d3.w),d7
+	add.w	Tbl_SprTilesStreamClip(pc,d3.w),d7
 	addq.w	#$8,a4
 	addq.w	#$1,d5
 loc_1FBCAC:

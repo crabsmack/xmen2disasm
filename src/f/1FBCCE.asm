@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_1FBCCE	[link-after-rts]
+; Spr_EmitStreamLinked - Spr_EmitStream variant for sprite instances with attached objects, clipping each piece
+; In:  8(a6) = sprite instance   $C(a6)/$10(a6) = word: x, y (screen; +$80 added per piece)   $14(a6) = word: tile base
+; Out: none
+; Evidence: chosen by Spr_Draw for type $18/$19 when +$D != $FF; Spr_EmitStreamLinked_Piece adds $80 and clips; Tbl_SprWidthStreamLinked/HeightStreamLinked/TilesStreamLinked
 ; ---------------------------------------------------------------------------
-sub_1FBCCE:
+Spr_EmitStreamLinked:
 	link.w	a6,#$FFFC
 	movem.l	d2-d7/a2-a4,-(a7)
 	clr.b	-$1(a6)
@@ -75,13 +78,13 @@ loc_1FBD78:
 	tst.b	-$2(a6)
 	beq.s	loc_1FBDA4
 	neg.w	d7
-	sub.w	$1FBDBA(pc,d3.w),d7
+	sub.w	Tbl_SprWidthStreamLinked(pc,d3.w),d7
 loc_1FBDA4:
 	add.w	$E(a6),d7
 	tst.b	-$3(a6)
 	beq.s	loc_1FBDB4
 	neg.w	d6
-	sub.w	$1FBDDA(pc,d3.w),d6
+	sub.w	Tbl_SprHeightStreamLinked(pc,d3.w),d6
 loc_1FBDB4:
 	add.w	$12(a6),d6
-	bra.s	loc_1FBE1A
+	bra.s	Spr_EmitStreamLinked_Piece

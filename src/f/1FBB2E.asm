@@ -1,14 +1,17 @@
 ; ---------------------------------------------------------------------------
-; loc_1FBB2E
+; Spr_EmitStream_Piece - Spr_EmitStream inner loop: write one piece, advance the tile number by Tbl_SprTilesStream, finish the frame
+; In:  registers of Spr_EmitStream
+; Out: none
+; Evidence: a4 += 8 (ROM piece), stores -$1FE6/-$1FE2 at the end
 ; ---------------------------------------------------------------------------
-loc_1FBB2E:
+Spr_EmitStream_Piece:
 	swap	d6
 	addq.w	#$8,a1
 	move.b	$3(a1),d6
 	move.l	d6,(a1)
 	move.l	d7,$4(a1)
 	swap	d7
-	add.w	$1FBB0E(pc,d3.w),d7
+	add.w	Tbl_SprTilesStream(pc,d3.w),d7
 	addq.w	#$8,a4
 	addq.w	#$1,d5
 loc_1FBB46:

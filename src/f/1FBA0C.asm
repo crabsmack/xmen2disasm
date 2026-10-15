@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_1FBA0C	[jt 2574]
+; Spr_EmitStream - append the hardware sprites of a streamed (type $18/$19) sprite frame that is fully on screen
+; In:  8(a6) = sprite instance   $C(a6)/$10(a6) = word: x, y (+$80)   $14(a6) = word: tile base
+; Out: none
+; Evidence: ROM frame record (def+$24+frame*$14); pieces of 8 bytes {word x, word y, word attr (bits 0-3 size, $1800 flips), word tile-data offset}; the tile number advances by Tbl_SprTilesStream[size] per piece (Spr_EmitStream_Piece); a main ROM data reader (sprite piece lists)
 ; ---------------------------------------------------------------------------
-sub_1FBA0C:
+Spr_EmitStream:
 	link.w	a6,#$FFFC
 	movem.l	d2-d7/a2-a4,-(a7)
 	moveq	#$0,d2
@@ -61,13 +64,13 @@ loc_1FBA88:
 	tst.b	-$2(a6)
 	beq.s	loc_1FBAB8
 	neg.w	d7
-	sub.w	$1FBACE(pc,d3.w),d7
+	sub.w	Tbl_SprWidthStream(pc,d3.w),d7
 loc_1FBAB8:
 	add.w	$E(a6),d7
 	tst.b	-$3(a6)
 	beq.s	loc_1FBAC8
 	neg.w	d6
-	sub.w	$1FBAEE(pc,d3.w),d6
+	sub.w	Tbl_SprHeightStream(pc,d3.w),d6
 loc_1FBAC8:
 	add.w	$12(a6),d6
-	bra.s	loc_1FBB2E
+	bra.s	Spr_EmitStream_Piece

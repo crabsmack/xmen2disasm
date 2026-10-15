@@ -276,6 +276,21 @@ _(module → functions, globals, data; add as you learn them)_
   per-tile skip bitmap). `$15F5FC` is an **Enigma** tilemap decoder (`Eni_Decode(src, dst,
   add)`: header inline-bit-count, mask, incrementing word, common word; 7-bit commands;
   `Eni_Ops` = its branch table). `$1FAD44` = `Spr_UploadFrame` (sprite frame tiles).
+- **Sprite definitions (w140)** (pointer at sprite instance +2 / object +$30; readers
+  `Spr_UploadFrame`, `Spr_EmitStream*`, `Spr_PreloadTiles`, `Obj_UpdateBoxes`): $24-byte
+  header {+0 byte type: $18 raw tiles, $19 Nemesis tiles (+2 word: offset of its code-table
+  pairs), $14 raw (4-byte pieces), $20 = RAM copy made by `Spr_PreloadTiles`; +1 byte frame
+  count; +5 byte max tiles} then frame records of $14 bytes: +0..+3 signed bbox (l,t,r,b),
+  +4..+7 body box, +8..+$B second box, +$C word offset of a 0-terminated word list, +$10 byte
+  piece count, +$11 byte tile count, +$12 word offset of the piece list. Type $18 pieces are
+  8 bytes `{word x, word y, word attr (bits 0-3 hardware size code, $1800 flips), word
+  tile-data offset}`; RAM ($20) pieces are 6 bytes `{byte x, byte y, word attr, word tile}`.
+  Size code s: width ((s>>2)+1)*8, height ((s&3)+1)*8 (`Tbl_SprSizeTiles/Width/Height` at
+  `$1FDE06`, and per-emitter copies `Tbl_SprWidth*`). Hardware sprites are written to
+  `g_SpriteTable` following its link bytes (`Spr_BeginFrame`/`Spr_EndFrame`, 80 slots).
+- **Fade tables (w140)**: `Tbl_FadeBlack` ($1FDD56), `Tbl_FadeInvertWhite` ($1FDD96): 8 levels
+  x 8 bytes mapping a 3-bit colour component; passed to `Pal_StartFade`.
+- **Control layouts (w140)**: `Tbl_ButtonConfigs` ($1FDDD6), 6 x 8 joypad masks per action.
 - **Animation scripts (w140)**: object +$44 = script, +$48 = step. Script: byte flags (bits
   0-1 one-shot, 2 per-step flips, 3 face velocity), byte step count, ..., steps of 2 bytes
   from +6 `{flags, value}`: flag $20 = play sound `value`, else frame `value` (bits $80/$40

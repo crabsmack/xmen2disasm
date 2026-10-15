@@ -23,7 +23,7 @@ sub_1FA6FE:
 	move.l	d0,g_Camera(a5)
 	addq.w	#$8,a7
 loc_1FA744:
-	jsr	$5042(a5)	; -> sub_1FA956
+	jsr	$5042(a5)	; -> Spr_InitLinks
 	jsr	$50FA(a5)	; -> Pad_Update
 	ori.w	#$40,g_VdpReg1(a5)
 	move.w	g_VdpReg1(a5),($C00004).l

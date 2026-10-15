@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; loc_1FB6D6
+; Spr_EmitPreLinked_Piece - Spr_EmitPreLinked inner loop: clip one piece and write it to the next free sprite slot
+; In:  registers of Spr_EmitPreLinked (d6/d7 = y/x, a3 = piece)
+; Out: none
+; Evidence: window $60-$1C0 / $60-$160; slot from the link byte at write pointer -$1FE6, sprite index -$1FE2; 80-slot limit
 ; ---------------------------------------------------------------------------
-loc_1FB6D6:
+Spr_EmitPreLinked_Piece:
 	cmpi.w	#$60,d7
 	blt.s	loc_1FB730
 	cmpi.w	#$1C0,d7
