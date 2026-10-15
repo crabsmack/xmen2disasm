@@ -11,7 +11,8 @@ phases 2-5 `uv run tools/phase.py N` ([docs/phases/](docs/phases/)).
 **Status (2026-10-15): phase 1 complete, 16/16 criteria pass. Phase 3 complete (5/5): the
 compiler is Apple MPW C 3.3, `-mbg off -b` ([docs/COMPILER.md](docs/COMPILER.md);
 `uv run tools/cc.py --match FILE.c` checks C against the ROM).** Phase 2 (recomp, in
-`..\XMen2Recomp`) is in progress; 4 and 5 are drafts. `uv run tools/phase.py status`
+`..\XMen2Recomp`): 9/10, every TAS and corpus frame equals the reference; only K10 (the
+user plays the Release build) remains. 4 and 5 are drafts. `uv run tools/phase.py status`
 shows every phase.
 
 **Start of every session:** `uv run tools/setup.py` (idempotent: ROM, emulator,
