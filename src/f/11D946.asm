@@ -1,5 +1,5 @@
 ; ---------------------------------------------------------------------------
-; BabyMoleMan_Init - BABYBIO Init, then palette 1, stats Tbl_BabyMoleManTakeDamage_Hurt (health = byte 2), AI script by variant +$BB (0-4: jt $320A/$3212/$321A, Tbl_BabyMoleManAiScript2/3), start at the script's first step (class slot 3, +$12)
+; BabyMoleMan_Init - BABYBIO Init, then palette 1, stats Tbl_BabyMoleManStats (health = byte 2), AI script by variant +$BB (0-4: jt $320A/$3212/$321A, Tbl_BabyMoleManAiScript2/3), start at the script's first step (class slot 3, +$12)
 ; In:  8(a6) = this  $C/$10(a6) = x, y (16.16)  $14(a6) = placement entry or 0
 ; Out: none
 ; Evidence: method 3 of class descriptor $11B986 (name string "BABYMOLEMAN", parent BABYBIO)

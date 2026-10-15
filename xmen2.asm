@@ -185,7 +185,7 @@ Art_AvalonB1Nem3:	; Nemesis-style compressed 4bpp tiles (Nem_Decode; code table 
 	include "src/f/00FD44.asm"
 	include "src/f/00FD78.asm"
 	include "src/f/00FDAA.asm"
-Tbl_AvalonB1ComputeParallax:	; table read by Scroll_ComputeParallax; 11 of 1A bytes used at runtime; read by Scroll_ComputeParallax, Scroll_SetParallax; jt[20] used by AvalonB1_CamHookFinish
+Tbl_AvalonB1Parallax:	; parallax descriptor (Scroll_SetParallax, Scroll_ComputeParallax): byte type ('0' line h-scroll, '2' column v-scroll), byte band count (column mode: count bands; line mode: up to count+1, until 224 lines are filled), then 8-byte bands {byte mode 0-4, byte, word height in lines/columns, word speed (8.8 of the FG scroll), 2 bytes mode params}; 11 of 1A bytes used at runtime; read by Scroll_ComputeParallax, Scroll_SetParallax; jt[20] used by AvalonB1_CamHookFinish
 	incrom	$00FE78,$1A
 Tbl_AvalonB1PalFadeStep:	; table read by AvalonB1_PalFadeStep; 2B of 32 bytes used at runtime; read by AvalonB1_PalFadeStep, AvalonB1_CamHookFadeIn; jt[21] used by AvalonB1_CamHookFadeIn
 	incrom	$00FE92,$32
@@ -309,7 +309,7 @@ Tbl_CapedAcolyteActAnimLow:	; table read by CapedAcolyte_ActAnimLow; 1 of 1 byte
 	incrom	$013ED3,$1
 	include "src/f/013ED4.asm"
 	include "src/f/013EE4.asm"
-Tbl_CapedAcolyteTakeDamage_Hurt:	; table read by XNpc_TakeDamage_Hurt; 3 of 8 bytes used at runtime; read by XNpc_TakeDamage_Hurt, CapedAcolyte_Init, Spr_Init; jt[82] used by CapedAcolyte_Init
+Tbl_CapedAcolyteStats:	; XNPC stats record (8 bytes, object +$8C): byte 0 attack damage, 1 hurt sound (0 = $63), 2 health / death-effect kind, 3-6 knockback distance for hit strength 1/2/4/8, 7 hurt frame ($FF none) (XNpc_TakeDamage, XNpc_Attack, XNpc_KnockbackDist, XNpc_Explode); 3 of 8 bytes used at runtime; read by XNpc_TakeDamage_Hurt, CapedAcolyte_Init, Spr_Init; jt[82] used by CapedAcolyte_Init
 	incrom	$013EE8,$8
 Art_CapedAcolyteSpr:	; sprite definition (type $18, raw 4bpp tiles): $24-byte header, $14-byte frame records, pieces, tiles; 25C0 of 2B18 bytes used at runtime; read by VDP_FlushDmaQueue; DMA to VRAM $BC20-C780; jt[83] used by CapedAcolyte_Init
 	incrom	$013EF0,$2B18
@@ -374,7 +374,7 @@ Tbl_ShootAcolyteScriptLen:	; word 4: entry count of the SHOOTACOLYTE AI script (
 	incrom	$0186F8,$2
 	include "src/f/0186FA.asm"
 	include "src/f/018706.asm"
-Tbl_ShootAcolyteTakeDamage_Hurt:	; table read by XNpc_TakeDamage_Hurt; 6 of 8 bytes used at runtime; read by XNpc_TakeDamage_Hurt, XNpc_KnockbackDist, ShootAcolyte_Init; jt[116] used by ShootAcolyte_Init
+Tbl_ShootAcolyteStats:	; XNPC stats record (8 bytes, object +$8C; layout at Tbl_CapedAcolyteStats): damage 1, health 2, knockback 10/20/30/50, hurt frame 1; 6 of 8 bytes used at runtime; read by XNpc_TakeDamage_Hurt, XNpc_KnockbackDist, ShootAcolyte_Init; jt[116] used by ShootAcolyte_Init
 	incrom	$01870A,$8
 Art_ShootAcolyteSpr:	; sprite definition (type $18, raw 4bpp tiles): $24-byte header, $14-byte frame records, pieces, tiles; 1C60 of 2390 bytes used at runtime; read by VDP_FlushDmaQueue; DMA to VRAM $BA60-C920; jt[117] used by ShootAcolyte_Init
 	incrom	$018712,$2390
@@ -447,7 +447,7 @@ Tbl_YoyoAcolyteStateYoyoOut3:	; table read by YoyoAcolyte_StateYoyoOut; 1 of 1 b
 Tbl_YoyoAcolyte_ScriptMixBLen:	; word 6: step count of the AI script YoyoAcolyte_ScriptMixB that follows (6 thunks disassembled); jt[146] used by YoyoAcolyte_Init_Script1to4
 	incrom	$01CA86,$2
 	include "src/f/01CA88.asm"
-Tbl_YoyoAcolyteInit:	; table read by YoyoAcolyte_Init; 5 of 8 bytes used at runtime; read by YoyoAcolyte_Init, XNpc_TakeDamage_Hurt; jt[147] used by YoyoAcolyte_Init
+Tbl_YoyoAcolyteStats:	; XNPC stats record (8 bytes, object +$8C; layout at Tbl_CapedAcolyteStats): damage 1, health 1, knockback $12/$14/$19/$28, hurt frame 0; 5 of 8 bytes used at runtime; read by YoyoAcolyte_Init, XNpc_TakeDamage_Hurt; jt[147] used by YoyoAcolyte_Init
 	incrom	$01CAA0,$8
 Art_YoyoAcolyteSpr:	; sprite definition (type $18, raw 4bpp tiles): $24-byte header, $14-byte frame records, pieces, tiles; 2180 of 2774 bytes used at runtime; read by VDP_FlushDmaQueue; DMA to VRAM $BA60-C760; jt[148] used by YoyoAcolyte_Init
 	incrom	$01CAA8,$2774
@@ -492,7 +492,7 @@ Art_BigAcolyteSpr2:	; sprite definition (type $18, raw 4bpp tiles): $24-byte hea
 	include "src/f/022BA2.asm"
 Tbl_AvalonA2LoadLevel:	; table read by AvalonA2_LoadLevel; 20 of 20 bytes used at runtime; read by AvalonA2_LoadLevel, Scroll_SetParallax; jt[157] used by AvalonA2_LoadLevel, AvalonA3_LoadLevel
 	incrom	$022BCA,$20
-Tbl_AvalonA2ComputeParallax:	; table read by Scroll_ComputeParallax; 25 of 3A bytes used at runtime; read by Scroll_ComputeParallax, Scroll_SetParallax, AvalonA2_LoadLevel; jt[158] used by AvalonA2_InstallHooks
+Tbl_AvalonA2Parallax:	; parallax descriptor (format at Tbl_AvalonB1Parallax): type '2' column v-scroll, 7 bands; 25 of 3A bytes used at runtime; read by Scroll_ComputeParallax, Scroll_SetParallax, AvalonA2_LoadLevel; jt[158] used by AvalonA2_InstallHooks
 	incrom	$022BEA,$3A
 Art_AvalonA2Nem2:	; Nemesis-style compressed 4bpp tiles (Nem_Decode; code table built from pairs by the caller); 2664 of 266E bytes used at runtime; read by Nem_DecodeLoop; jt[159] used by AvalonA2_LoadLevel, AvalonA3_LoadLevel
 	incrom	$022C24,$266E
@@ -749,13 +749,13 @@ Tbl_MagnetoBossAnim:	; animation script (byte flags, byte steps, ..., 2-byte ste
 	incrom	$035AC6,$A
 Tbl_MagnetoBossAnim2_2:	; animation script (byte flags, byte steps, ..., 2-byte steps from +6); E of 10 bytes used at runtime; read by Anim_ApplyStep, MagnetoBoss_RubbleTimer, Cam_ShakeStep; jt[228] used by MagnetoBoss_EnterSpinState, MagnetoBoss_StateSpin
 	incrom	$035AD0,$10
-Tbl_MagnetoBossRubbleTimer:	; table read by MagnetoBoss_RubbleTimer; 12 of 12 bytes used at runtime; read by MagnetoBoss_RubbleTimer, Cam_ShakeStep, Anim_ApplyStep; jt[229] used by MagnetoBoss_RubbleTimer
+Tbl_MagnetoBossRubbleSprites:	; rubble particle sprites (MagnetoBoss_RubbleTimer): 9 byte pairs {tile offset from the rubble tile base, hardware size code}, indexed by particle kind (+$13) + animation frame (+$12); 12 of 12 bytes used at runtime; read by MagnetoBoss_RubbleTimer, Cam_ShakeStep, Anim_ApplyStep; jt[229] used by MagnetoBoss_RubbleTimer
 	incrom	$035AE0,$12
-Tbl_MagnetoBossRubbleTimer2:	; table read by MagnetoBoss_RubbleTimer; D of E bytes used at runtime; read by MagnetoBoss_RubbleTimer, Cam_ShakeStep, Anim_ApplyStep; jt[230] used by MagnetoBoss_StateIntroShake1
+Tbl_MagnetoBossQuake1:	; camera shake script (g_CamShake, Cam_ShakeStep): signed (dx, dy) byte pairs added to the camera, $64 = end, $65 n = loop back n bytes; MagnetoBoss intro shake 1 (+-2 px); D of E bytes used at runtime; read by MagnetoBoss_RubbleTimer, Cam_ShakeStep, Anim_ApplyStep; jt[230] used by MagnetoBoss_StateIntroShake1
 	incrom	$035AF2,$E
-Tbl_MagnetoBossShakeStep:	; table read by Cam_ShakeStep; D of E bytes used at runtime; read by Cam_ShakeStep; jt[231] used by MagnetoBoss_StateIntroShake2
+Tbl_MagnetoBossQuake2:	; camera shake script (format at Tbl_MagnetoBossQuake1): MagnetoBoss intro shake 2 (+-3 px); D of E bytes used at runtime; read by Cam_ShakeStep; jt[231] used by MagnetoBoss_StateIntroShake2
 	incrom	$035B00,$E
-Tbl_MagnetoBossShakeStep2:	; table read by Cam_ShakeStep; D of E bytes used at runtime; read by Cam_ShakeStep; jt[232] used by MagnetoBoss_StateIntroShake3
+Tbl_MagnetoBossQuake3:	; camera shake script (format at Tbl_MagnetoBossQuake1): MagnetoBoss intro shake 3 (+-4 px); D of E bytes used at runtime; read by Cam_ShakeStep; jt[232] used by MagnetoBoss_StateIntroShake3
 	incrom	$035B0E,$E
 Tbl_MagnetoBossMove:	; table read by MagnetoBoss_Move; 40 of 40 bytes used at runtime; read by MagnetoBoss_Move; jt[233] used by MagnetoBoss_Init
 	incrom	$035B1C,$40
@@ -1119,9 +1119,9 @@ Art_ApocBombNem_2:	; Nemesis-style compressed 4bpp tiles (Nem_Decode; code table
 	incrom	$04DD54,$14
 Art_ApocBombNem2:	; Nemesis-style compressed 4bpp tiles (Nem_Decode; code table built from pairs by the caller); 84 of 88 bytes used at runtime; read by Nem_DecodeLoop; jt[359] used by ApocBomb_TakeDamage
 	incrom	$04DD68,$88
-Tbl_ApocalypseBaniMazaA2_04766A:	; format not established; never read in the corpus; jt[360] used by unk_BaniMazaA2_04766A
+Tbl_BaniMazaA2FinaleChain:	; explosion chain path (format at Tbl_BroodBossDeathChain): 27 explosions started by unk_BaniMazaA2_04766A after the 12th bomb; never read in the corpus; jt[360] used by unk_BaniMazaA2_04766A
 	incrom	$04DDF0,$E0
-Tbl_ApocBombShakeStep:	; table read by Cam_ShakeStep; 49 of 4A bytes used at runtime; read by Cam_ShakeStep; jt[361] used by ApocBomb_Explode
+Tbl_ApocBombQuake:	; camera shake script (format at Tbl_MagnetoBossQuake1): APOCBOMB explosion, horizontal +-1/+-2 px; 49 of 4A bytes used at runtime; read by Cam_ShakeStep; jt[361] used by ApocBomb_Explode
 	incrom	$04DED0,$4A
 	include "src/f/04DF1A.asm"
 	include "src/f/04DF28.asm"
@@ -1189,13 +1189,13 @@ Tbl_BoulderAnim4:	; animation script (byte flags, byte steps, ..., 2-byte steps 
 	incrom	$05A836,$C
 Tbl_BoulderUpdate:	; table read by Boulder_Update; 9 of 10 bytes used at runtime; read by Boulder_Update, Anim_ApplyStep, Boulder_StateBounce; jt[395] used by Boulder_StateBounce
 	incrom	$05A842,$10
-Tbl_BoulderShakeStep:	; table read by Cam_ShakeStep; 11 of 12 bytes used at runtime; read by Cam_ShakeStep; jt[396] used by Boulder_StateBounce
+Tbl_BoulderQuake:	; camera shake script (format at Tbl_MagnetoBossQuake1): BOULDER bounce, vertical only; 11 of 12 bytes used at runtime; read by Cam_ShakeStep; jt[396] used by Boulder_StateBounce
 	incrom	$05A852,$12
-Tbl_BoulderShakeStep2:	; table read by Cam_ShakeStep; 13 of 14 bytes used at runtime; read by Cam_ShakeStep; jt[397] used by Boulder_StateBounce
+Tbl_BoulderQuake2:	; camera shake script (format at Tbl_MagnetoBossQuake1): BOULDER bounce (weaker), vertical only; 13 of 14 bytes used at runtime; read by Cam_ShakeStep; jt[397] used by Boulder_StateBounce
 	incrom	$05A864,$14
 Tbl_BoulderNextWrap:	; table read by Seq_NextWrap; A of A bytes used at runtime; read by Seq_NextWrap; jt[398] used by Boulder_SpawnerTick
 	incrom	$05A878,$A
-Tbl_BaniMazaB2ComputeParallax:	; table read by Scroll_ComputeParallax; 42 of 62 bytes used at runtime; read by Scroll_ComputeParallax, Scroll_SetParallax; jt[399] used by BaniMazaB2_SetParallax
+Tbl_BaniMazaB2Parallax:	; parallax descriptor (format at Tbl_AvalonB1Parallax): line h-scroll, count 12; 42 of 62 bytes used at runtime; read by Scroll_ComputeParallax, Scroll_SetParallax; jt[399] used by BaniMazaB2_SetParallax
 	incrom	$05A882,$62
 	include "src/f/05A8E4.asm"
 	include "src/f/05A8F8.asm"
@@ -1659,7 +1659,7 @@ Tbl_BroodAiScript:	; data handed to AiScript_Set (format not established); never
 Tbl_BroodStateLand:	; table read by Brood_StateLand; 2 of 2 bytes used at runtime; read by Brood_StateLand; jt[510] used by Brood_Init
 	incrom	$06D124,$2
 	include "src/f/06D126.asm"
-Tbl_BroodTakeDamage_Hurt:	; table read by XNpc_TakeDamage_Hurt; 4 of 8 bytes used at runtime; read by XNpc_TakeDamage_Hurt, Brood_Init, XNpc_KnockbackDist; jt[511] used by Brood_Init
+Tbl_BroodStats:	; XNPC stats record (8 bytes, object +$8C; layout at Tbl_CapedAcolyteStats): damage 4, health 8, knockback 1/2/4/8, hurt frame $B; 4 of 8 bytes used at runtime; read by XNpc_TakeDamage_Hurt, Brood_Init, XNpc_KnockbackDist; jt[511] used by Brood_Init
 	incrom	$06D12E,$8
 Tbl_Brood_vtable:	; class descriptor of BROOD: word name offset $86, parent SMALLBROOD, 32 method slots from +6, then the name (tools/classes.py)
 	incrom	$06D136,$8C
@@ -1699,7 +1699,7 @@ Art_CloneA1Nem_2:	; Nemesis-style compressed 4bpp tiles (Nem_Decode; code table 
 Tbl_CloneA1Vdp:	; words copied to the VDP data port by VDP_WriteWords; C00 of CCC bytes used at runtime; read by VDP_WriteWords, VDP_DmaToVram; DMA to VRAM $53E0-59E0; jt[528] used by CloneA1_InitSprites, CloneA1_AnimTilesTimer
 	incrom	$07658A,$CCC
 	include "src/f/077256.asm"
-Tbl_CloneA1ComputeParallax:	; table read by Scroll_ComputeParallax; 2A of 42 bytes used at runtime; read by Scroll_ComputeParallax, Scroll_SetParallax; jt[530] used by CloneA1_RunScene, LightBeam_Init
+Tbl_CloneA1Parallax:	; parallax descriptor (format at Tbl_AvalonB1Parallax): line h-scroll, count 7; 2A of 42 bytes used at runtime; read by Scroll_ComputeParallax, Scroll_SetParallax; jt[530] used by CloneA1_RunScene, LightBeam_Init
 	incrom	$07737C,$42
 Pal_CloneA1Cycle:	; palette data read by Pal_CycleStep; 22 of 22 bytes used at runtime; read by Pal_CycleStep; jt[531] used by CloneA1_CyclePalettes
 	incrom	$0773BE,$22
@@ -1818,7 +1818,7 @@ Tbl_SmallBroodAnim5:	; animation script (byte flags, byte steps, ..., 2-byte ste
 	incrom	$0840A8,$A
 Tbl_SmallBroodAnim6:	; animation script (NOTES: Animation scripts); never read in the corpus; jt[574] used by SmallBrood_StateJumpUntilSurface -> Obj_ChangeAnim
 	incrom	$0840B2,$8
-Tbl_SmallBroodInit:	; table read by SmallBrood_Init; 5 of 8 bytes used at runtime; read by SmallBrood_Init, XNpc_TakeDamage_Hurt, XNpc_KnockbackDist; jt[575] used by SmallBrood_Init
+Tbl_SmallBroodStats:	; XNPC stats record (8 bytes, object +$8C; layout at Tbl_CapedAcolyteStats): damage 2, health 2, knockback 10/20/30/50, no hurt frame; 5 of 8 bytes used at runtime; read by SmallBrood_Init, XNpc_TakeDamage_Hurt, XNpc_KnockbackDist; jt[575] used by SmallBrood_Init
 	incrom	$0840BA,$8
 Tbl_SmallBroodAiScript:	; data handed to AiScript_Set (format not established); never read in the corpus; jt[576] used by SmallBrood_Init_CaseDefault -> AiScript_Set
 	incrom	$0840C2,$A
@@ -2016,13 +2016,13 @@ Tbl_BroodBossScriptLen:	; word $2C = 44: step count of the BROODBOSS AI script t
 	incrom	$088A54,$2
 	include "src/f/088A56.asm"
 	include "src/f/088A9A.asm"
-Tbl_BroodClawCamApply:	; table read by CloneA5_CamApply; 9 of A bytes used at runtime; read by CloneA5_CamApply; jt[660] used by BroodClaw_Swing
+Tbl_BroodClawQuake:	; camera shake script (format at Tbl_MagnetoBossQuake1; CloneA5_CamApply has its own copy of the interpreter): BROODCLAW swing, vertical only; 9 of A bytes used at runtime; read by CloneA5_CamApply; jt[660] used by BroodClaw_Swing
 	incrom	$088B06,$A
-Tbl_BroodBossCamApply:	; table read by CloneA5_CamApply; D of E bytes used at runtime; read by CloneA5_CamApply; jt[661] used by BroodBoss_StateCharge, BroodBoss_StateChargeWall
+Tbl_BroodBossQuake:	; camera shake script (format at Tbl_MagnetoBossQuake1; interpreted by CloneA5_CamApply): BROODBOSS charge hitting the wall, horizontal only; D of E bytes used at runtime; read by CloneA5_CamApply; jt[661] used by BroodBoss_StateCharge, BroodBoss_StateChargeWall
 	incrom	$088B10,$E
-Tbl_CloneA5RunScene:	; table read by CloneA5_RunScene; 20 of 20 bytes used at runtime; read by CloneA5_RunScene, ExplodeFx_ChainStep; jt[662] used by CloneA5_RunScene
+Tbl_CloneA5PalCycle:	; palette cycle table (Pal_CycleStep format, offsets relative to the copy): {long $A = offset of the colour words, byte 5 frames per colour, byte palette entry $2E}, -1, then colour words ending -1; CloneA5_RunScene copies 52 bytes (into the next table too) to the RAM buffer at -$3B18; 20 of 20 bytes used at runtime; read by CloneA5_RunScene, ExplodeFx_ChainStep; jt[662] used by CloneA5_RunScene
 	incrom	$088B1E,$20
-Tbl_BroodBossChainStep:	; table read by ExplodeFx_ChainStep; 5C of 60 bytes used at runtime; read by ExplodeFx_ChainStep, CloneA5_RunScene; jt[663] used by BroodBoss_StateDeathFx, BroodBoss_StateDeathSlide
+Tbl_BroodBossDeathChain:	; explosion chain path (ExplodeFx_ChainRepeat/ExplodeFx_ChainStep): 8-byte entries {word dx (negated when h-flipped), word dy (upward), word 0, word delay} ended by a negative long at +4; BROODBOSS death; 5C of 60 bytes used at runtime; read by ExplodeFx_ChainStep, CloneA5_RunScene; jt[663] used by BroodBoss_StateDeathFx, BroodBoss_StateDeathSlide
 	incrom	$088B3E,$60
 Tbl_BroodBossParts_vtable:	; class descriptor of BROODBOSSPARTS: word name offset $6E, parent ACTOR, 26 method slots from +6, then the name (tools/classes.py)
 	incrom	$088B9E,$7D
@@ -2301,7 +2301,7 @@ Tbl_XCloneAiScript:	; data handed to AiScript_Set (format not established); neve
 	incrom	$09A1E0,$36
 Tbl_XCloneInit:	; table read by XClone_Init; 2 of E bytes used at runtime; read by XClone_Init; jt[811] used by XClone_Init
 	incrom	$09A216,$E
-Tbl_XCloneTileHookReward:	; format not established; never read in the corpus; jt[812] used by XClone_TileHookReward -> ExplodeFx_ChainRepeat
+Tbl_XCloneWallBlastChain:	; explosion chain path (format at Tbl_BroodBossDeathChain): the wall blasted open by XClone_TileHookReward; never read in the corpus; jt[812] used by XClone_TileHookReward -> ExplodeFx_ChainRepeat
 	incrom	$09A224,$F0
 Tbl_XClone_Script2Len:	; word 9: step count of the AI script XClone_Script2 that follows (9 thunks disassembled); jt[813] used by XClone_Explode
 	incrom	$09A314,$2
@@ -2373,7 +2373,7 @@ Tbl_EvilWolverineActCloseBioBalls:	; table read by XClone_ActCloseBioBalls; 8 of
 	incrom	$09AB46,$E
 Tbl_XCloneBioBalls:	; data handed to BioBalls_StartPath (format not established); never read in the corpus; jt[830] used by XClone_ActBallsCollapse -> BioBalls_StartPath
 	incrom	$09AB54,$7C
-Tbl_XCloneImpact:	; format not established; never read in the corpus; jt[831] used by XClone_Impact -> ExplodeFx_ChainRepeat, XClone_FrameHookCollapse -> ExplodeFx_ChainRepeat
+Tbl_XCloneImpactChain:	; explosion chain path (format at Tbl_BroodBossDeathChain): XCLONE ground impact and the collapse debris; never read in the corpus; jt[831] used by XClone_Impact -> ExplodeFx_ChainRepeat, XClone_FrameHookCollapse -> ExplodeFx_ChainRepeat
 	incrom	$09ABD0,$48
 Tbl_XCloneImpact2:	; format not established; never read in the corpus; jt[832] used by XClone_Impact
 	incrom	$09AC18,$70
@@ -2613,7 +2613,7 @@ Art_SavageA4Spr:	; sprite definition (type $18, raw 4bpp tiles): $24-byte header
 	include "src/f/0B65A0.asm"
 	include "src/f/0B65C6.asm"
 	include "src/f/0B6632.asm"
-Tbl_SavageA4ComputeParallax:	; table read by Scroll_ComputeParallax; C of 12 bytes used at runtime; read by Scroll_ComputeParallax, Scroll_SetParallax; jt[913] used by SavageA4_RunScene
+Tbl_SavageA4Parallax:	; parallax descriptor (format at Tbl_AvalonB1Parallax): line h-scroll, count 2; C of 12 bytes used at runtime; read by Scroll_ComputeParallax, Scroll_SetParallax; jt[913] used by SavageA4_RunScene
 	incrom	$0B663A,$12
 Pal_SavageA4Cycle:	; palette data read by Pal_CycleStep; 30 of 30 bytes used at runtime; read by Pal_CycleStep; jt[914] used by SavageA4_CyclePalettes
 	incrom	$0B664C,$30
@@ -2693,7 +2693,7 @@ Tbl_ChildShip_ScriptLen:	; word 6: step count of the AI script ChildShip_Script 
 	include "src/f/0B7CF0.asm"
 Tbl_BrainChildStateLand:	; table read by BrainChild_StateLand; 2 of E bytes used at runtime; read by BrainChild_StateLand; jt[946] used by BrainChild_Init
 	incrom	$0B7D08,$E
-Tbl_ChildShipShakeStep:	; table read by Cam_ShakeStep; 13 of 14 bytes used at runtime; read by Cam_ShakeStep; jt[947] used by ChildShip_StateCrash1, ChildShip_StateCrash2, ChildShip_StateCrash3
+Tbl_ChildShipQuake:	; camera shake script (format at Tbl_MagnetoBossQuake1): CHILDSHIP crash; 13 of 14 bytes used at runtime; read by Cam_ShakeStep; jt[947] used by ChildShip_StateCrash1, ChildShip_StateCrash2, ChildShip_StateCrash3
 	incrom	$0B7D16,$14
 Tbl_ChildShipUpdate:	; table read by ChildShip_Update; 16 of 30 bytes used at runtime; read by ChildShip_Update; jt[948] used by ChildShip_StateCrash, ChildShip_Update
 	incrom	$0B7D2A,$30
@@ -2853,7 +2853,7 @@ Pad_SavageBio:	; $00 fill; never read in the corpus; between SavageBio_NopStatic
 	incrom	$0BD39B,$1
 Tbl_SavageMediumBio_vtable:	; class descriptor of SAVAGEMEDIUMBIO: word name offset $82, parent SAVAGEBIOBASE, 31 method slots from +6, then the name (tools/classes.py)
 	incrom	$0BD39C,$92
-Tbl_BarbarianTakeDamage_Hurt:	; table read by XNpc_TakeDamage_Hurt; 4 of 8 bytes used at runtime; read by XNpc_TakeDamage_Hurt, Barbarian_Init, XNpc_KnockbackDist; jt[1036] used by Barbarian_Init
+Tbl_BarbarianStats:	; XNPC stats record (8 bytes, object +$8C; layout at Tbl_CapedAcolyteStats): damage 1, health 3, knockback $12/$14/$19/$28, hurt frame $B; 4 of 8 bytes used at runtime; read by XNpc_TakeDamage_Hurt, Barbarian_Init, XNpc_KnockbackDist; jt[1036] used by Barbarian_Init
 	incrom	$0BD42E,$8
 Tbl_BarbarianAnim3:	; animation script (byte flags, byte steps, ..., 2-byte steps from +6); 10 of 12 bytes used at runtime; read by Anim_ApplyStep, Anim_AdvanceByDistance; jt[1037] used by Barbarian_StateWalkStart
 	incrom	$0BD436,$12
@@ -3064,9 +3064,9 @@ Tbl_SwampFly_vtable:	; class descriptor of SWAMPFLY: word name offset $82, paren
 	incrom	$0C0CEA,$8B
 Pad_SwampFly:	; $00 fill; never read in the corpus; between SwampFly_Init and SavageJungle_EmptyStub
 	incrom	$0C0D75,$1
-Tbl_SavageC1ComputeParallax:	; table read by Scroll_ComputeParallax; 16 of 22 bytes used at runtime; read by Scroll_ComputeParallax, Scroll_SetParallax; jt[1114] used by SavageC1_SetParallax
+Tbl_SavageC1Parallax:	; parallax descriptor (format at Tbl_AvalonB1Parallax): line h-scroll, count 3; 16 of 22 bytes used at runtime; read by Scroll_ComputeParallax, Scroll_SetParallax; jt[1114] used by SavageC1_SetParallax
 	incrom	$0C0D76,$22
-Tbl_SavageB1ComputeParallax2:	; table read by Scroll_ComputeParallax; 16 of 22 bytes used at runtime; read by Scroll_ComputeParallax, Scroll_SetParallax; jt[1115] used by SavageB1_SetParallax
+Tbl_SavageB1Parallax:	; parallax descriptor (format at Tbl_AvalonB1Parallax): line h-scroll, count 3; 16 of 22 bytes used at runtime; read by Scroll_ComputeParallax, Scroll_SetParallax; jt[1115] used by SavageB1_SetParallax
 	incrom	$0C0D98,$22
 	include "src/f/0C0DBA.asm"
 	include "src/f/0C0DC2.asm"
@@ -3290,9 +3290,9 @@ Art_SentinelsA1Spr:	; sprite definition (type $18, raw 4bpp tiles): $24-byte hea
 	include "src/f/0E7A5E.asm"
 	include "src/f/0E7A6A.asm"
 	include "src/f/0E7A8C.asm"
-Tbl_CoreShieldsShakeStep:	; table read by Cam_ShakeStep; 14 of 14 bytes used at runtime; read by Cam_ShakeStep; jt[1218] used by CoreShields_StateAllDown, SentinelsB2_InstallHooks
+Tbl_CoreShieldsQuake:	; camera shake script (format at Tbl_MagnetoBossQuake1): endless rumble (ends $65 $12 = loop back over all 9 pairs) when all CORESHIELDS are down, also SentinelsB2; 14 of 14 bytes used at runtime; read by Cam_ShakeStep; jt[1218] used by CoreShields_StateAllDown, SentinelsB2_InstallHooks
 	incrom	$0E7A94,$14
-Tbl_HologramShakeStep:	; table read by Cam_ShakeStep; 53 of 54 bytes used at runtime; read by Cam_ShakeStep; jt[1219] used by Hologram_OpenExit
+Tbl_HologramQuake:	; camera shake script (format at Tbl_MagnetoBossQuake1): HOLOGRAM defeat / exit opening, 41 steps; 53 of 54 bytes used at runtime; read by Cam_ShakeStep; jt[1219] used by Hologram_OpenExit
 	incrom	$0E7AA8,$54
 Pal_SentinelsA1Cycle:	; palette data read by Pal_CycleStep; 18 of 18 bytes used at runtime; read by Pal_CycleStep, Spr_PreloadTiles; jt[1220] used by SentinelsA1_CyclePalettes
 	incrom	$0E7AFC,$18
@@ -3430,7 +3430,7 @@ Tbl_HologramAiScript_0EAF10:	; word $0000 (2 bytes), not a string: reached only 
 Tbl_HologramActPose0:	; table read by Hologram_ActPose0; 1 of 1 bytes used at runtime; read by Hologram_ActPose0
 	incrom	$0EAF11,$1
 	include "src/f/0EAF12.asm"
-Tbl_HologramChainStep:	; table read by ExplodeFx_ChainStep; 94 of 98 bytes used at runtime; read by ExplodeFx_ChainStep; jt[1279] used by Hologram_Explode
+Tbl_HologramDeathChain:	; explosion chain path (format at Tbl_BroodBossDeathChain): HOLOGRAM death; 94 of 98 bytes used at runtime; read by ExplodeFx_ChainStep; jt[1279] used by Hologram_Explode
 	incrom	$0EAF7A,$98
 Art_SentinelsA1Spr26:	; sprite definition (type $19, Nemesis-compressed tiles): $24-byte header, $14-byte frame records, pieces, tiles; 647 of 648 bytes used at runtime; read by Nem_DecodeLoop, Spr_PreloadTiles; jt[1280] used by SentinelsA1_LoadResources
 	incrom	$0EB012,$648
@@ -3454,13 +3454,13 @@ Art_SentinelsA1Spr26:	; sprite definition (type $19, Nemesis-compressed tiles): 
 	include "src/f/0EBDBC.asm"
 Tbl_CoreShields_vtable:	; class descriptor "CORESHIELDS": word $6E = name offset, long parent (ACTOR), 26 method pointers, then the class name string
 	incrom	$0EBE7E,$7A
-Tbl_CoreShieldsDraw:	; table read by CoreShields_Draw; 40 of 50 bytes used at runtime; read by CoreShields_Draw; jt[1294] used by CoreShields_Draw
+Tbl_CoreShieldsLayout0:	; CORESHIELDS panel layout (CoreShields_Draw, phase +$91 = 0): 8-byte sprite records {word dx, word dy, byte attr high (flips/palette), byte size code (low 4 bits), word tile offset}, 5 front then 5 back panels; 40 of 50 bytes used at runtime; read by CoreShields_Draw; jt[1294] used by CoreShields_Draw
 	incrom	$0EBEF8,$50
-Tbl_CoreShieldsDraw2:	; table read by CoreShields_Draw; 40 of 50 bytes used at runtime; read by CoreShields_Draw, ExplodeFx_ChainStep; jt[1295] used by CoreShields_Draw
+Tbl_CoreShieldsLayout1:	; CORESHIELDS panel layout (format at Tbl_CoreShieldsLayout0), phase 1: 5 front then 5 back panels; 40 of 50 bytes used at runtime; read by CoreShields_Draw, ExplodeFx_ChainStep; jt[1295] used by CoreShields_Draw
 	incrom	$0EBF48,$50
-Tbl_CoreShieldsChainStep:	; table read by ExplodeFx_ChainStep; 40 of 40 bytes used at runtime; read by ExplodeFx_ChainStep, CoreShields_Draw; jt[1296] used by CoreShields_Draw
+Tbl_CoreShieldsLayout2:	; CORESHIELDS panel layout (format at Tbl_CoreShieldsLayout0), phase 2: 4 front then 4 back panels (not an explosion chain); 40 of 40 bytes used at runtime; read by ExplodeFx_ChainStep, CoreShields_Draw; jt[1296] used by CoreShields_Draw
 	incrom	$0EBF98,$40
-Tbl_CoreShieldsChainStep2:	; table read by ExplodeFx_ChainStep; D4 of D8 bytes used at runtime; read by ExplodeFx_ChainStep, CoreShields_Draw; jt[1297] used by CoreShields_StateAllDown
+Tbl_CoreShieldsDeathChain:	; explosion chain path (format at Tbl_BroodBossDeathChain): all CORESHIELDS down; D4 of D8 bytes used at runtime; read by ExplodeFx_ChainStep, CoreShields_Draw; jt[1297] used by CoreShields_StateAllDown
 	incrom	$0EBFD8,$D8
 Art_SentinelsA1Spr27:	; sprite definition (type $19, Nemesis-compressed tiles): $24-byte header, $14-byte frame records, pieces, tiles; 46D of 46E bytes used at runtime; read by Spr_PreloadTiles, Nem_DecodeLoop, Nem_BuildCodeTable; jt[1298] used by SentinelsA1_LoadResources
 	incrom	$0EC0B0,$46E
@@ -3833,11 +3833,11 @@ Sw_11410E:	; switch table of sub at $11410E: 4 word offsets from Sw_11410E-2
 	include "src/f/114B90.asm"
 	include "src/f/114C4C.asm"
 	include "src/f/114D0A.asm"
-Tbl_XNpcTakeDamage_Hurt:	; table read by XNpc_TakeDamage_Hurt; 6 of 8 bytes used at runtime; read by XNpc_TakeDamage_Hurt, XNpc_Init, XNpc_KnockbackDist; jt[1417] used by XNpc_Init
+Tbl_XNpcDefaultStats:	; XNPC stats record (8 bytes, object +$8C; layout at Tbl_CapedAcolyteStats), the XNPC default set by XNpc_Init: damage 1, health 1, knockback $12/$14/$19/$28, no hurt frame; 6 of 8 bytes used at runtime; read by XNpc_TakeDamage_Hurt, XNpc_Init, XNpc_KnockbackDist; jt[1417] used by XNpc_Init
 	incrom	$114E70,$8
-Tbl_MaintRobotTakeDamage_Hurt:	; table read by XNpc_TakeDamage_Hurt; 3 of 8 bytes used at runtime; read by XNpc_TakeDamage_Hurt, MaintRobot_Init; jt[1418] used by MaintRobot_Init, SwampFly_Init
+Tbl_MaintRobotStats:	; XNPC stats record (8 bytes, object +$8C; layout at Tbl_CapedAcolyteStats), shared by MAINTROBOT and SWAMPFLY: damage 1, health 1, knockback $12/$14/$19/$28, no hurt frame; 3 of 8 bytes used at runtime; read by XNpc_TakeDamage_Hurt, MaintRobot_Init; jt[1418] used by MaintRobot_Init, SwampFly_Init
 	incrom	$114E78,$8
-Tbl_XCloneTakeDamage_Hurt:	; table read by XNpc_TakeDamage_Hurt; 5 of 8 bytes used at runtime; read by XNpc_TakeDamage_Hurt, VDP_WriteWords, XClone_Init; jt[1419] used by XClone_Init
+Tbl_XCloneStats:	; XNPC stats record (8 bytes, object +$8C; layout at Tbl_CapedAcolyteStats): damage 1, health 4 (XClone_Init then sets 32), knockback 5/10/15/30, no hurt frame; 5 of 8 bytes used at runtime; read by XNpc_TakeDamage_Hurt, VDP_WriteWords, XClone_Init; jt[1419] used by XClone_Init
 	incrom	$114E80,$8
 Tbl_BioNpcVdp:	; words copied to the VDP data port by VDP_WriteWords; EE8 of EE8 bytes used at runtime; read by VDP_WriteWords; jt[1420] used by Scene_AllocCommonVram
 	incrom	$114E88,$EE8
@@ -4069,13 +4069,13 @@ Tbl_WallCrawlBioAiScript_11B6AA:	; word $0000 (2 bytes), not a string: reached o
 Tbl_WallCrawlBioActStopFrame0:	; table read by WallCrawlBio_ActStopFrame0; 1 of 1 bytes used at runtime; read by WallCrawlBio_ActStopFrame0
 	incrom	$11B6AB,$1
 	include "src/f/11B6AC.asm"
-Tbl_BabyMoleManTakeDamage_Hurt:	; table read by XNpc_TakeDamage_Hurt; 6 of 8 bytes used at runtime; read by XNpc_TakeDamage_Hurt, XNpc_KnockbackDist, BabyMoleMan_Init; jt[1544] used by BabyMoleMan_Init, BabySentinelA_Init, WallCrawlBio_Init
+Tbl_BabyMoleManStats:	; XNPC stats record (8 bytes, object +$8C; layout at Tbl_CapedAcolyteStats), shared by BABYMOLEMAN, BABYSENTINELA and WALLCRAWLBIO: damage 1, health 4, knockback $12/$14/$19/$28, hurt frame 7; 6 of 8 bytes used at runtime; read by XNpc_TakeDamage_Hurt, XNpc_KnockbackDist, BabyMoleMan_Init; jt[1544] used by BabyMoleMan_Init, BabySentinelA_Init, WallCrawlBio_Init
 	incrom	$11B6B4,$8
-Tbl_BabySentinelBInit:	; table read by BabySentinelB_Init; 5 of 8 bytes used at runtime; read by BabySentinelB_Init, XNpc_TakeDamage_Hurt, XNpc_KnockbackDist; jt[1545] used by BabySentinelB_Init
+Tbl_BabySentinelBStats:	; XNPC stats record (8 bytes, object +$8C; layout at Tbl_CapedAcolyteStats): damage 1, health 8, knockback $12/$14/$19/$28, hurt frame $A; 5 of 8 bytes used at runtime; read by BabySentinelB_Init, XNpc_TakeDamage_Hurt, XNpc_KnockbackDist; jt[1545] used by BabySentinelB_Init
 	incrom	$11B6BC,$8
-Tbl_FloatBioTakeDamage_Hurt:	; table read by XNpc_TakeDamage_Hurt; 5 of 8 bytes used at runtime; read by XNpc_TakeDamage_Hurt, FloatBio_Init, XNpc_KnockbackDist; jt[1546] used by FloatBio_Init
+Tbl_FloatBioStats:	; XNPC stats record (8 bytes, object +$8C; layout at Tbl_CapedAcolyteStats): damage 1, health 4, knockback $12/$14/$19/$28, hurt frame 7; 5 of 8 bytes used at runtime; read by XNpc_TakeDamage_Hurt, FloatBio_Init, XNpc_KnockbackDist; jt[1546] used by FloatBio_Init
 	incrom	$11B6C4,$8
-Tbl_BabySentinelCTakeDamage_Hurt:	; table read by XNpc_TakeDamage_Hurt; 3 of 8 bytes used at runtime; read by XNpc_TakeDamage_Hurt, BabySentinelC_Init; jt[1547] used by BabySentinelC_Init
+Tbl_BabySentinelCStats:	; XNPC stats record (8 bytes, object +$8C; layout at Tbl_CapedAcolyteStats): damage 1, health 8, knockback $12/$14/$19/$28, hurt frame $A; 3 of 8 bytes used at runtime; read by XNpc_TakeDamage_Hurt, BabySentinelC_Init; jt[1547] used by BabySentinelC_Init
 	incrom	$11B6CC,$8
 Tbl_BioFlame_vtable:	; class descriptor "BIOFLAME": word $6E = name offset, long parent (ACTOR), 26 method pointers, then the class name string
 	incrom	$11B6D4,$78
@@ -4198,7 +4198,7 @@ Tbl_BioBallsAnim:	; animation script (byte flags, byte steps, ..., 2-byte steps 
 Tbl_BioBalls_ScriptIdleLen:	; word 1: step count of the AI script BioBalls_ScriptIdle that follows (1 thunks disassembled); jt[1627] used by BioBalls_Init -> AiScript_Set
 	incrom	$11E77C,$2
 	include "src/f/11E77E.asm"
-Tbl_BioBallsChainStep:	; table read by ExplodeFx_ChainStep; 24 of 28 bytes used at runtime; read by ExplodeFx_ChainStep; jt[1628] used by BioBalls_SpawnPuff
+Tbl_BioBallsPuffChain:	; explosion chain path (format at Tbl_BroodBossDeathChain): BIOBALLS puff, 4 explosions; 24 of 28 bytes used at runtime; read by ExplodeFx_ChainStep; jt[1628] used by BioBalls_SpawnPuff
 	incrom	$11E782,$28
 	include "src/f/11E7AA.asm"
 	include "src/f/11E7B8.asm"
@@ -4259,7 +4259,7 @@ Tbl_Anim_120688:	; animation script (byte flags, byte steps, ..., 2-byte steps f
 	incrom	$120688,$E
 Tbl_Anim_120696:	; animation script (byte flags, byte steps, ..., 2-byte steps from +6); C of E bytes used at runtime; read by Anim_ApplyStep, Anim_AdvanceByDistance, Anim_Advance; jt[1670] used by BioSentinel_StateHurt
 	incrom	$120696,$E
-Tbl_BioSentinelInit:	; table read by BioSentinel_Init; 1 of 8 bytes used at runtime; read by BioSentinel_Init; jt[1671] used by BioSentinel_Init
+Tbl_BioSentinelStats:	; XNPC stats record (8 bytes, object +$8C; layout at Tbl_CapedAcolyteStats): damage 1, health 4, knockback 5/10/15/30, hurt frame $15; 1 of 8 bytes used at runtime; read by BioSentinel_Init; jt[1671] used by BioSentinel_Init
 	incrom	$1206A4,$8
 Tbl_Anim_1206AC:	; animation script (byte flags, byte steps, ..., 2-byte steps from +6); E of 10 bytes used at runtime; read by Anim_ApplyStep, Anim_AdvanceByDistance; jt[1672] used by BigBio_StateWalkIn
 	incrom	$1206AC,$10
@@ -4405,11 +4405,11 @@ Tbl_BrainRocketAnim3:	; animation script (NOTES: Animation scripts); never read 
 	incrom	$133DFC,$C
 Tbl_BrainRocketAnim4:	; animation script (NOTES: Animation scripts); never read in the corpus; jt[1731] used by BrainRocket_StateSetDirection -> Obj_SetAnim
 	incrom	$133E08,$C
-Tbl_BrainRocketShakeStep:	; table read by Cam_ShakeStep; D of E bytes used at runtime; read by Cam_ShakeStep; jt[1732] used by BrainRocket_Attack
+Tbl_BrainRocketQuake:	; camera shake script (format at Tbl_MagnetoBossQuake1): BRAINROCKET attack; D of E bytes used at runtime; read by Cam_ShakeStep; jt[1732] used by BrainRocket_Attack
 	incrom	$133E14,$E
-Tbl_BrainRocketShakeStep2:	; table read by Cam_ShakeStep; 13 of 14 bytes used at runtime; read by Cam_ShakeStep; jt[1733] used by BrainRocket_Update
+Tbl_BrainRocketQuake2:	; camera shake script (format at Tbl_MagnetoBossQuake1): BRAINROCKET update (default case); 13 of 14 bytes used at runtime; read by Cam_ShakeStep; jt[1733] used by BrainRocket_Update
 	incrom	$133E22,$14
-Tbl_BrainRocketUpdate:	; format not established; never read in the corpus; jt[1734] used by BrainRocket_Update, BrainRocket_Attack
+Tbl_BrainRocketQuake3:	; camera shake script (format at Tbl_MagnetoBossQuake1): BRAINROCKET, used instead of Quake/Quake2 when +$8C = $10E (or the preceding test is true); never read in the corpus; jt[1734] used by BrainRocket_Update, BrainRocket_Attack
 	incrom	$133E36,$14
 	include "src/f/133E4A.asm"
 Art_CloneA1Spr:	; sprite definition (type $19, Nemesis-compressed tiles): $24-byte header, $14-byte frame records, pieces, tiles; A3 of A4 bytes used at runtime; read by Spr_PreloadTiles, Nem_BuildCodeTable; jt[1736] used by CloneA1_LoadResources, CloneA2_LoadResources, SavageA2_LoadResources
@@ -4424,17 +4424,17 @@ Art_CloneA1Spr:	; sprite definition (type $19, Nemesis-compressed tiles): $24-by
 	include "src/f/13420C.asm"
 Tbl_FireWall_vtable:	; class descriptor "FIREWALL": word $6E = name offset, long parent (ACTOR), 26 method pointers, then the class name string
 	incrom	$134214,$78
-Tbl_FireWallChainStep:	; table read by ExplodeFx_ChainStep; 34 of 38 bytes used at runtime; read by ExplodeFx_ChainStep; jt[1742] used by FireWall_StateSpawnFlame
+Tbl_FireWallChain6Rise:	; explosion chain path (format at Tbl_BroodBossDeathChain): FIREWALL flame column, 6 explosions bottom to top every $18 px (type +$8E 2, side +$90 set); 34 of 38 bytes used at runtime; read by ExplodeFx_ChainStep; jt[1742] used by FireWall_StateSpawnFlame
 	incrom	$13428C,$38
-Tbl_1342C4:	; format not established; never read in the corpus; jt[1743] used by FireWall_StateSpawnFlame
+Tbl_FireWallChain4Rise:	; explosion chain path (format at Tbl_BroodBossDeathChain): FIREWALL flame column, 4 explosions bottom to top (type 1, side set); never read in the corpus; jt[1743] used by FireWall_StateSpawnFlame
 	incrom	$1342C4,$28
-Tbl_FireWallChainStep2:	; table read by ExplodeFx_ChainStep; 14 of 18 bytes used at runtime; read by ExplodeFx_ChainStep; jt[1744] used by FireWall_StateSpawnFlame
+Tbl_FireWallChain2Rise:	; explosion chain path (format at Tbl_BroodBossDeathChain): FIREWALL flame column, 2 explosions bottom to top (type 0, side set); 14 of 18 bytes used at runtime; read by ExplodeFx_ChainStep; jt[1744] used by FireWall_StateSpawnFlame
 	incrom	$1342EC,$18
-Tbl_134304:	; format not established; never read in the corpus; jt[1745] used by FireWall_StateSpawnFlame
+Tbl_FireWallChain6Drop:	; explosion chain path (format at Tbl_BroodBossDeathChain): FIREWALL flame column, 6 explosions top to bottom (type 2, side clear); never read in the corpus; jt[1745] used by FireWall_StateSpawnFlame
 	incrom	$134304,$38
-Tbl_FireWallChainStep3:	; table read by ExplodeFx_ChainStep; 24 of 28 bytes used at runtime; read by ExplodeFx_ChainStep; jt[1746] used by FireWall_StateSpawnFlame
+Tbl_FireWallChain4Drop:	; explosion chain path (format at Tbl_BroodBossDeathChain): FIREWALL flame column, 4 explosions top to bottom (type 1, side clear); 24 of 28 bytes used at runtime; read by ExplodeFx_ChainStep; jt[1746] used by FireWall_StateSpawnFlame
 	incrom	$13433C,$28
-Tbl_134364:	; format not established; never read in the corpus; jt[1747] used by FireWall_StateSpawnFlame
+Tbl_FireWallChain2Drop:	; explosion chain path (format at Tbl_BroodBossDeathChain): FIREWALL flame column, 2 explosions top to bottom (type 0, side clear); never read in the corpus; jt[1747] used by FireWall_StateSpawnFlame
 	incrom	$134364,$18
 Tbl_Anim_13437C:	; animation script (byte flags, byte steps, ..., 2-byte steps from +6); 8 of A bytes used at runtime; read by Anim_ApplyStep, Anim_AdvanceByDistance, Anim_Advance; jt[1748] used by FlyBrood_Init_Tail, FlyBrood_ActDiveAtPlayer, FlyBrood_ActDiveAtPlayerLow
 	incrom	$13437C,$A
@@ -4529,7 +4529,7 @@ Tbl_HornetAnimFire:	; animation script (byte flags, byte steps, ..., 2-byte step
 	incrom	$136420,$C
 Tbl_HornetCirclePath:	; 31 word pairs (dx, dy) = velocity steps around a circle (radius 8), then 127,127 end marker; Hornet_StepCirclePath adds (d << 8) >> obj+9C to x/y each step and wraps at 127 (jt 1784)
 	incrom	$13642C,$80
-Tbl_HornetTakeDamage_Hurt:	; table read by XNpc_TakeDamage_Hurt; 7 of 8 bytes used at runtime; read by XNpc_TakeDamage_Hurt, XNpc_KnockbackDist, Hornet_Init; jt[1785] used by Hornet_Init
+Tbl_HornetStats:	; XNPC stats record (8 bytes, object +$8C; layout at Tbl_CapedAcolyteStats): damage 1, health 1, knockback 6/7/9/12, no hurt frame; 7 of 8 bytes used at runtime; read by XNpc_TakeDamage_Hurt, XNpc_KnockbackDist, Hornet_Init; jt[1785] used by Hornet_Init
 	incrom	$1364AC,$8
 	include "src/f/1364B4.asm"
 	include "src/f/1364C2.asm"
@@ -4612,7 +4612,7 @@ Tbl_LaserCannonAnimExtend:	; animation script (byte flags, byte steps, ..., 2-by
 	incrom	$138742,$E
 Tbl_LaserCannonAnimRetract:	; animation script (byte flags, byte steps, ..., 2-byte steps from +6): frames 3,2,1,0 played after the burst (LaserCannon_StateRetract); jt[1813]
 	incrom	$138750,$E
-Tbl_LaserCannonTakeDamage_Hurt:	; table read by XNpc_TakeDamage_Hurt; 4 of 8 bytes used at runtime; read by XNpc_TakeDamage_Hurt, LaserCannon_Init, XNpc_KnockbackDist; jt[1814] used by LaserCannon_Init
+Tbl_LaserCannonStats:	; XNPC stats record (8 bytes, object +$8C; layout at Tbl_CapedAcolyteStats): damage 1, health 4, no knockback, hurt frame 0; 4 of 8 bytes used at runtime; read by XNpc_TakeDamage_Hurt, LaserCannon_Init, XNpc_KnockbackDist; jt[1814] used by LaserCannon_Init
 	incrom	$13875E,$8
 	include "src/f/138766.asm"
 	include "src/f/13884A.asm"
@@ -4742,7 +4742,7 @@ Tbl_NinjaActFacePlayer:	; table read by Ninja_ActFacePlayer; 1 of 1 bytes used a
 	include "src/f/13D8D0.asm"
 Tbl_NinjaLeaveScript:	; AI script: word count 2, thunks jmp Ninja_ActLeap, jmp Ninja_ActPause30; installed by Ninja_ActCheckLeave when the +$A2 timer runs out; Ninja_Deactivate removes a ninja running it for good (Actor_DeactivateFree); jt[1874]
 	incrom	$13D8E4,$A
-Tbl_NinjaTakeDamage_Hurt:	; table read by XNpc_TakeDamage_Hurt; 6 of 8 bytes used at runtime; read by XNpc_TakeDamage_Hurt, XNpc_KnockbackDist, Ninja_Init; jt[1875] used by Ninja_Init
+Tbl_NinjaStats:	; XNPC stats record (8 bytes, object +$8C; layout at Tbl_CapedAcolyteStats): damage 1, health 2, knockback 10/20/30/50, hurt frame 9; 6 of 8 bytes used at runtime; read by XNpc_TakeDamage_Hurt, XNpc_KnockbackDist, Ninja_Init; jt[1875] used by Ninja_Init
 	incrom	$13D8EE,$8
 	include "src/f/13D8F6.asm"
 	include "src/f/13D954.asm"
@@ -4874,7 +4874,7 @@ Tbl_TankLeft_142238:	; word $0000 (2 bytes), not a string: reached only via jt[1
 Tbl_TankActPause2:	; table read by Tank_ActPause; 1 of 1 bytes used at runtime; read by Tank_ActPause
 	incrom	$142239,$1
 	include "src/f/14223A.asm"
-Tbl_TakeDamage_Hurt_142246:	; table read by XNpc_TakeDamage_Hurt; 5 of 8 bytes used at runtime; read by XNpc_TakeDamage_Hurt, Tank_Init, XNpc_KnockbackDist; jt[1933] used by Tank_Init
+Tbl_TankStats:	; XNPC stats record (8 bytes, object +$8C; layout at Tbl_CapedAcolyteStats): damage 1, health 4, knockback 1/2/4/6, no hurt frame; 5 of 8 bytes used at runtime; read by XNpc_TakeDamage_Hurt, Tank_Init, XNpc_KnockbackDist; jt[1933] used by Tank_Init
 	incrom	$142246,$8
 	include "src/f/14224E.asm"
 	include "src/f/14225C.asm"
@@ -4971,7 +4971,7 @@ Tbl_144E86:	; format not established; never read in the corpus; jt[1961] used by
 	incrom	$144E86,$6C
 Tbl_144EF2:	; format not established; never read in the corpus; jt[1962] used by ToxicCan_DrawLeak
 	incrom	$144EF2,$3C
-Tbl_PopChainStep:	; table read by ExplodeFx_ChainStep; C4 of C8 bytes used at runtime; read by ExplodeFx_ChainStep; jt[1963] used by Pop_FxChainPath, Tank_OnDeath, ToxicCan_Update
+Tbl_ScatterExplodeChain:	; explosion chain path (format at Tbl_BroodBossDeathChain): 24 scattered explosions, shared by POP, TANK death and TOXICCAN; C4 of C8 bytes used at runtime; read by ExplodeFx_ChainStep; jt[1963] used by Pop_FxChainPath, Tank_OnDeath, ToxicCan_Update
 	incrom	$144F2E,$C8
 Art_Spr_144FF6:	; sprite definition (type $18, raw 4bpp tiles): $24-byte header, $14-byte frame records, pieces, tiles; 400 of 86C bytes used at runtime; read by VDP_FlushDmaQueue; DMA to VRAM $D6A0-DAA0; jt[1964] used by ToxicCan_Init
 	incrom	$144FF6,$86C
@@ -5370,9 +5370,9 @@ Tbl_Anim_1829F8:	; animation script (byte flags, byte steps, ..., 2-byte steps f
 	incrom	$1829F8,$1E
 Tbl_BeastLand:	; table read by XPlayer_Land; 3B of 5E bytes used at runtime; read by XPlayer_Land, XPlayer_AirSteer, Beast_Init; jt[2127] used by Beast_Init, EvilBeast_Init, PlayerSelect_PlayPickAnim_part1
 	incrom	$182A16,$5E
-Tbl_ShakeStep_182A74:	; table read by Cam_ShakeStep; 1F of 20 bytes used at runtime; read by Cam_ShakeStep; jt[2128] used by Beast_DiveImpact, Beast_ShockwaveInit
+Tbl_BeastQuakeSmall:	; camera shake script (format at Tbl_MagnetoBossQuake1): vertical +-2 px, Beast dive impact and weak stomp shockwave; 1F of 20 bytes used at runtime; read by Cam_ShakeStep; jt[2128] used by Beast_DiveImpact, Beast_ShockwaveInit
 	incrom	$182A74,$20
-Tbl_XCloneShakeStep:	; table read by Cam_ShakeStep; 51 of 52 bytes used at runtime; read by Cam_ShakeStep, BroodClaw_CamApplyShake; jt[2129] used by XClone_StateBallsReturn, Beast_ShockwaveInit
+Tbl_BeastQuakeBig:	; camera shake script (format at Tbl_MagnetoBossQuake1): vertical +-4 px, Beast strong stomp shockwave; also XCLONE balls returning; 51 of 52 bytes used at runtime; read by Cam_ShakeStep, BroodClaw_CamApplyShake; jt[2129] used by XClone_StateBallsReturn, Beast_ShockwaveInit
 	incrom	$182A94,$52
 	include "src/f/182AE6.asm"
 	include "src/f/182AF4.asm"
