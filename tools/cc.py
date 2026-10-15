@@ -76,8 +76,34 @@ def candidate(cid: str) -> dict:
 
 # --- compiling ---------------------------------------------------------------------------
 
-def compile_c(src: Path, cand: dict, flags: str) -> tuple[bytes | None, str]:
-    """Compile src with the candidate -> (object file bytes, compiler output)."""
+IDENT = re.compile(r"[A-Za-z_]\w*")
+# One-line declarations of the game repo's headers (phase 4): a prototype, a ROM data name,
+# a global. MPW C 3.3's global symbol table cannot hold all of them at once (Fatal Error 429),
+# so a file is compiled with the lines that declare names it uses; a declaration nothing uses
+# generates no code, so the subset compiles to the same object.
+SUBSET_LINE = {
+    "xmen2_funcs.h": re.compile(r"^[^#/(]*?\b([A-Za-z_]\w*)\s*\([^;]*\)\s*;"),
+    "xmen2_data.h": re.compile(r"^extern\s+void\s+([A-Za-z_]\w*)\s*\(\s*\)\s*;"),
+    "xmen2_globals.h": re.compile(r"^extern\s+[^;]*?\b([A-Za-z_]\w*)\s*(?:\[[^\]]*\])?\s*;"),
+}
+
+
+def header_subset(name: str, text: str, used: set[str]) -> str:
+    pat = SUBSET_LINE.get(name)
+    if not pat:
+        return text
+    out = []
+    for line in text.splitlines():
+        m = pat.match(line)
+        if m and m.group(1) not in used:
+            continue
+        out.append(line)
+    return "\n".join(out) + "\n"
+
+
+def compile_c(src: Path, cand: dict, flags: str, include: Path | None = None) -> tuple[bytes | None, str]:
+    """Compile src with the candidate -> (object file bytes, compiler output). `include`: a
+    directory whose headers are put next to the source (`#include "x.h"` finds them)."""
     tc = toolchains()
     mps = tc / "bin" / ("mps.exe" if os.name == "nt" else "mps")
     tool = tc / cand["root"] / cand["compiler"]
@@ -87,6 +113,11 @@ def compile_c(src: Path, cand: dict, flags: str) -> tuple[bytes | None, str]:
     with tempfile.TemporaryDirectory(prefix="xmen2cc_") as wd:
         name = "f.c"
         shutil.copy(src, Path(wd) / name)
+        if include:
+            used = set(IDENT.findall(re.sub(r"/\*.*?\*/", " ", src.read_text(encoding="utf-8", errors="replace"), flags=re.S)))
+            for h in sorted(include.glob("*.h")):
+                text = h.read_text(encoding="utf-8", errors="replace")
+                (Path(wd) / h.name).write_text(header_subset(h.name, text, used), encoding="mac_roman", errors="replace")
         cmd = [str(mps), "%%", str(tool), *flags.split(), "-o", "f.o", name]
         r = subprocess.run(cmd, cwd=wd, capture_output=True, text=True, env=env, timeout=600,
                            encoding="mac_roman", errors="replace")
@@ -196,14 +227,15 @@ def disasm(code: bytes, addr: int) -> list[tuple[int, int, str]]:
     return out
 
 
-def match(src: Path, cid: str, flags: str, verbose: bool = True) -> tuple[bool, str]:
+def match(src: Path, cid: str, flags: str, verbose: bool = True, include: Path | None = None,
+          names: "Names | None" = None) -> tuple[bool, str]:
     addr = int(src.stem, 16)
-    names = Names()
+    names = names or Names()
     fname = names.funcs.get(addr)
     if fname is None:
         return False, f"{src.name}: ${addr:06X} is not a function start"
     cand = candidate(cid)
-    obj, out = compile_c(src, cand, file_flags(src, flags))
+    obj, out = compile_c(src, cand, file_flags(src, flags), include)
     if obj is None:
         return False, f"{src.name}: compile failed:\n{out}"
     mods = [m for m in mpwobj.parse(obj) if not m.data_module]
@@ -242,6 +274,51 @@ def match(src: Path, cid: str, flags: str, verbose: bool = True) -> tuple[bool, 
     return ok, "\n".join(lines)
 
 
+def match_recomp(root: Path, cid: str, flags: str, only: list[str] | None = None, jobs: int = 8) -> dict:
+    """Phase 4 (P4-decomp.md "Matched"): every game/c/<ADDR>.c of the game repo at `root`,
+    compiled with its game/include headers in their MPW mode, matched like --match. Results
+    are cached by the hash of the file, the headers, the candidate and the flags."""
+    import concurrent.futures
+    import hashlib
+    import json
+    inc = root / "game" / "include"
+    files = sorted(p for p in (root / "game" / "c").glob("*.c") if re.fullmatch(r"[0-9A-Fa-f]{6}", p.stem))
+    if only:
+        want = {a.upper().zfill(6) for a in only}
+        files = [p for p in files if p.stem.upper() in want]
+    h = hashlib.sha1(f"{cid}|{flags}".encode())
+    for p in sorted(inc.glob("*.h")):
+        h.update(p.name.encode() + b"\0" + p.read_bytes())
+    base = h.hexdigest()
+    cache_path = ROOT / "build" / "match_recomp_cache.json"
+    cache = json.loads(cache_path.read_text(encoding="utf-8")) if cache_path.exists() else {}
+    names = Names()
+    todo, res = [], {}
+    for p in files:
+        key = hashlib.sha1((base + "|").encode() + p.read_bytes()).hexdigest()
+        hit = cache.get(p.stem.upper())
+        if hit and hit.get("key") == key:
+            res[p.stem.upper()] = hit
+        else:
+            todo.append((p, key))
+
+    def run(item):
+        p, key = item
+        ok, msg = match(p, cid, flags, verbose=False, include=inc, names=names)
+        lines = msg.splitlines()
+        return p.stem.upper(), {"key": key, "ok": ok, "detail": " | ".join(lines[:3])}
+    with concurrent.futures.ThreadPoolExecutor(max_workers=jobs) as ex:
+        for a, r in ex.map(run, todo):
+            res[a] = r
+            cache[a] = r
+    if todo:
+        cache_path.parent.mkdir(parents=True, exist_ok=True)
+        cache_path.write_text(json.dumps(cache, indent=0), encoding="utf-8")
+    return {"matched": sorted(a for a, r in res.items() if r["ok"]),
+            "files": {a: {"ok": r["ok"], "detail": r["detail"]} for a, r in sorted(res.items())},
+            "candidate": cid, "flags": flags}
+
+
 SELFTEST_C = """
 long BanimazaDoor_GetSize(void *cls)
 {
@@ -272,6 +349,11 @@ def main() -> int:
     ap.add_argument("--match", type=Path, metavar="FILE")
     ap.add_argument("--match-all", action="store_true")
     ap.add_argument("--selftest", action="store_true")
+    ap.add_argument("--match-recomp", type=Path, metavar="ROOT",
+                    help="phase 4: match every game/c/<ADDR>.c of the game repo at ROOT")
+    ap.add_argument("--only", default="", help="--match-recomp: comma-separated addresses")
+    ap.add_argument("--include", type=Path, help="headers to compile FILE / --match FILE with")
+    ap.add_argument("--json", action="store_true")
     ap.add_argument("--candidate")
     ap.add_argument("--flags")
     ap.add_argument("-q", "--quiet", action="store_true")
@@ -281,8 +363,21 @@ def main() -> int:
     flags = a.flags if a.flags is not None else v.get("flags", DEFAULT_FLAGS)
     if a.selftest:
         return selftest(cid, flags)
+    if a.match_recomp:
+        import json
+        r = match_recomp(a.match_recomp, cid, flags, [x for x in a.only.split(",") if x])
+        if a.json:
+            print(json.dumps(r))
+        else:
+            for addr, f in r["files"].items():
+                print(f["detail"] if not a.quiet or not f["ok"] else f"{addr} MATCH")
+            print(f"{len(r['matched'])}/{len(r['files'])} game/c files match with {cid}")
+        return 0
     if a.match:
-        ok, msg = match(a.match, cid, flags, verbose=not a.quiet)
+        include = a.include
+        if include is None and a.match.parent.name == "c" and (a.match.parent.parent / "include").is_dir():
+            include = a.match.parent.parent / "include"   # a game repo's game/c/<ADDR>.c
+        ok, msg = match(a.match, cid, flags, verbose=not a.quiet, include=include)
         print(msg)
         return 0 if ok else 1
     if a.match_all:
@@ -295,7 +390,10 @@ def main() -> int:
         print(f"{len(files) - bad}/{len(files)} match with {cid}")
         return 1 if bad else 0
     if a.file:
-        obj, out = compile_c(a.file, candidate(cid), file_flags(a.file, flags))
+        include = a.include
+        if include is None and a.file.parent.name == "c" and (a.file.parent.parent / "include").is_dir():
+            include = a.file.parent.parent / "include"
+        obj, out = compile_c(a.file, candidate(cid), file_flags(a.file, flags), include)
         if out:
             print(out)
         if obj is None:
