@@ -276,6 +276,16 @@ _(module → functions, globals, data; add as you learn them)_
 - **Non-actor classes**: ICANDY (`$1188AC`, size $42, light sprite: 0 SizeOf, 1 New, 2 Init, 3 Update,
   4 Draw, 5 Destroy), BBOARD (`$1197CA`: word array, one entry per switch/synchronizer; created with 100
   entries by `Switch_LevelInit` into `$FFE55A`), SYNCHRONIZER (`$119CFE`, pool of 4), ELEVATOR (`$10B532`).
+- **Shared effects/projectiles (w0E0)**: `Explosion_Spawn(x, y, flip)` (27 callers; 10 slots `g_Explosions`,
+  optional damage via `ObjList_ForEachInBox`), GAUSSBULLET pool (`GaussBullet_InitPool` per scene,
+  `GaussBullet_Fire`, 6 records in `g_GaussPool`), power-up `*_Collect` = player vtable +$6E (`sub_1F1D88`
+  AddHealth: health += n*$100, clamp 1..$900; segment +1, XPower +3, Mondo = full). BIOBALLS (`$1203AC`) is
+  a chain of balls (list +$92, {x, y, flags}) driven by a motion function in +$A2 (`BioBalls_Motion*`:
+  Orbit, Ring, Helix, Path, Roll, Gather) that XCLONE/EVIL* actions plug in. XNPC hurt/death reactions:
+  `XNpc_HurtReact`/`XNpc_DeathReact` (knockback limited by `GetMoveLimit`, stun, fling, explode).
+- **Bosses in `$0E0000-$140000` (w0E0)**: HOLOGRAM (SentinelsA1 CoolantCore: poses via `Hologram_SetPose`,
+  lifts = COREELEVATOR, CORESHIELDS fire COREZAPs), DEATHBIRD (SpaceA1 elevator: hornet waves, burst
+  projectiles, can hit the lift switch), BIGBIO (SpaceB1 arena: 16 orbs at `$FFE774`, spit pool `$FFE770`).
 - **Hit lists (w140b)**: 50 nodes x $C `{next, prev, owner}` at `$FFEBB2` (`HitList_Init`/`HitList_Add`), four
   heads: `$FFEBA2` player attackers, `$FFEBA6` player bodies, `$FFEBAA` enemy attackers, `$FFEBAE` enemy
   bodies. `Actor_Activate` adds an object's attacker node (+$80, unless +6 flag 1) and body node (+$84,
