@@ -100,6 +100,13 @@ XM_EXPORT unsigned int xm_bitmap_bytes(void) { return sizeof exec_total; }
 XM_EXPORT unsigned long long xm_instr_count(void) { return instr_count; }
 XM_EXPORT unsigned char *xm_work_ram(void) { return work_ram; }
 
+/* Video and sound memory for the per-frame reference CRCs (phase 2, K2). gpgx keeps VRAM and
+   VSRAM as host-order words and CRAM packed to 9 bits (BBBGGGRRR); xmen2emu.py converts. */
+XM_EXPORT unsigned char *xm_vram(void) { return vram; }
+XM_EXPORT unsigned char *xm_cram(void) { return cram; }
+XM_EXPORT unsigned char *xm_vsram(void) { return vsram; }
+XM_EXPORT unsigned char *xm_zram(void) { return zram; }
+
 /* BizHawk "Normal" control type: P1 -> input.pad[0], P2 -> input.pad[4] */
 XM_EXPORT void xm_set_pads(unsigned short p1, unsigned short p2)
 {

@@ -57,9 +57,14 @@ The phase-2 loop is: run the recompiled game and the reference emulator on the
 
 - Reference emulator: `emu/` (BizHawk 2.4 gpgx, deterministic, headless).
 - Input stream: `emu/corpus/tas/tas-4473M.bk2` (or any corpus scenario).
-- `emu/runs/tas/frames.csv`: `frame, ram_crc32, fb_crc32, p1, p2` for all 57,465 frames.
-  RAM CRC is over the 64 KB work RAM in 68000 byte order; the framebuffer CRC is over
-  the visible XRGB pixels (backend-specific, so compare RAM first).
+- `emu/runs/<run>/frames.csv`: `frame, ram_crc32, vram_crc32, cram_crc32, vsram_crc32,
+  z80_crc32, fb_crc32, p1, p2` for every frame (TAS: all 57,465). RAM CRC is over the 64 KB
+  work RAM in 68000 byte order; VRAM 64 KB in 68000 byte order; CRAM the 64 words as the bus
+  reads them (`0000BBB0GGG0RRR0`, big-endian); VSRAM the 40 words masked to 11 bits,
+  big-endian; Z80 the 8 KB sound RAM. The framebuffer CRC is over the visible XRGB pixels
+  (backend-specific, so compare memory first).
+- `uv run emu/export_input.py <run>` writes a run's whole input stream (TAS prefix included)
+  as a runner `.input` script (`PADS p1 p2` / `WAIT n`, runner button bits).
 - `emu/runs/tas/ram/fNNNNNN.bin`: full RAM every 60 frames, for diffing at divergence.
 - To get RAM at any exact frame: `make_emu("biz")`, replay the movie to frame N
   (`play_movie`), then `emu.ram()` (see `emu/xmen2emu.py`).

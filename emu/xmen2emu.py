@@ -20,8 +20,9 @@ CLI (outputs under emu/runs/<name>/; compact coverage under emu/coverage/):
     uv run emu/xmen2emu.py shot --from-frame 12000 --out x.png
 
 Each run writes coverage.bin (exec bitmap, 1 bit/ROM word), data.bin + dma.bin (biz: 1 bit/ROM
-byte), frames.csv (frame, ram crc32, framebuffer crc32, inputs: the reference trace for
-frame-by-frame recomp comparison), func_frames.json (first/last frame and frame count per
+byte), frames.csv (the reference trace for frame-by-frame recomp comparison: frame,
+ram/vram/cram/vsram/z80 crc32s (definitions in BaseEmu.vdp_crcs), framebuffer crc32, inputs),
+func_frames.json (first/last frame and frame count per
 executed function entry), ram/ snapshots every --ram-every frames, png/ every --png-every.
 """
 from __future__ import annotations
@@ -114,6 +115,13 @@ class BaseEmu:
         rgb = self.frame_rgb()
         return zlib.crc32(rgb.tobytes()) if rgb is not None else 0
 
+    def vdp_crcs(self) -> tuple[int, int, int, int] | None:
+        """(vram, cram, vsram, z80) CRC-32s over canonical images, the same bytes any backend can
+        produce: VRAM 64 KB in 68000 byte order; CRAM 64 words as the bus sees them (0000BBB0GGG0RRR0),
+        big-endian; VSRAM the 40 words the VDP uses, 11 bits each, big-endian; Z80 RAM 8 KB as is.
+        None when the core can't expose them."""
+        return None
+
     def save_png(self, path: Path) -> None:
         from PIL import Image
         rgb = self.frame_rgb()
@@ -152,6 +160,10 @@ class BizEmu(BaseEmu):
         self._has_reader = hasattr(L, "xm_reader")  # cores built before the reader map lack it
         if self._has_reader:
             L.xm_reader.restype = C.c_void_p
+        self._has_vdp = hasattr(L, "xm_vram")  # cores built before phase 2 lack these
+        for fn in ("xm_vram", "xm_cram", "xm_vsram", "xm_zram"):
+            if self._has_vdp:
+                getattr(L, fn).restype = C.c_void_p
         self._has_dma_dest = hasattr(L, "xm_dma_dest")
         if self._has_dma_dest:
             L.xm_dma_dest.restype = C.c_void_p
@@ -215,6 +227,16 @@ class BizEmu(BaseEmu):
         if px is None:
             return None
         return np.dstack([(px >> 16) & 0xFF, (px >> 8) & 0xFF, px & 0xFF]).astype(np.uint8)
+
+    def vdp_crcs(self) -> tuple[int, int, int, int] | None:
+        if not self._has_vdp:
+            return None
+        L = self.lib
+        vram = swap16(C.string_at(L.xm_vram(), 0x10000))
+        c9 = np.frombuffer(C.string_at(L.xm_cram(), 0x80), dtype="<u2")  # packed BBBGGGRRR
+        cram = (((c9 & 0x1C0) << 3) | ((c9 & 0x038) << 2) | ((c9 & 0x007) << 1)).astype(">u2").tobytes()
+        vs = (np.frombuffer(C.string_at(L.xm_vsram(), 0x50), dtype="<u2") & 0x7FF).astype(">u2").tobytes()
+        return (zlib.crc32(vram), zlib.crc32(cram), zlib.crc32(vs), zlib.crc32(C.string_at(L.xm_zram(), 0x2000)))
 
     def save_state(self) -> bytes:
         raise NotImplementedError("biz core has no savestates; use --from-frame (TAS replay)")
@@ -440,7 +462,9 @@ class Recorder:
         self.png_every, self.ram_every = png_every, ram_every
         self.dir.mkdir(parents=True, exist_ok=True)
         self.csv = (self.dir / "frames.csv").open("w", newline="\n")
-        self.csv.write("frame,ram_crc32,fb_crc32,p1,p2\n")
+        if isinstance(emu, BizEmu) and emu.vdp_crcs() is None:
+            sys.exit("core lacks VRAM/CRAM/VSRAM/Z80 access: rebuild it (uv run emu/build_core.py biz)")
+        self.csv.write("frame,ram_crc32,vram_crc32,cram_crc32,vsram_crc32,z80_crc32,fb_crc32,p1,p2\n")
         self.entries = function_entries()
         self.ebits = self.entries >> 1
         self.first: dict[int, int] = {}
@@ -451,7 +475,8 @@ class Recorder:
     def after_frame(self, p1: str, p2: str) -> None:
         e, f = self.emu, self.emu.frame
         ram = e.ram()
-        self.csv.write(f"{f},{zlib.crc32(ram):08x},{e.fb_crc():08x},{p1},{p2}\n")
+        vc = "".join(f"{c:08x}," for c in (e.vdp_crcs() or ())) or ",,,,"
+        self.csv.write(f"{f},{zlib.crc32(ram):08x},{vc}{e.fb_crc():08x},{p1},{p2}\n")
         if len(self.entries):
             bm = e.frame_bitmap()
             idx = np.nonzero((bm[self.ebits >> 3] >> (self.ebits & 7)) & 1)[0]
