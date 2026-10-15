@@ -119,7 +119,7 @@ loc_006D02:
 	clr.w	-$1844(a5)
 	clr.w	-$17E0(a5)
 loc_006D0A:
-	move.b	#$1,-$38B2(a5)
+	move.b	#$1,g_HudDirty(a5)
 	tst.b	d5
 	beq.s	loc_006D18
 	jsr	unk_Player_005F18(pc)

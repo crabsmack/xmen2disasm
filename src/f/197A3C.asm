@@ -37,7 +37,7 @@ sub_197A3C:
 	move.l	d7,d0
 	lsl.l	#$8,d0
 	move.w	d0,$68(a4)
-	move.b	#$1,-$38B2(a5)
+	move.b	#$1,g_HudDirty(a5)
 	addq.w	#$8,a7
 	bra.s	loc_197AC0
 loc_197AAE:

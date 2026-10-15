@@ -75,7 +75,7 @@ loc_1F1EAC:
 	clr.l	$16(a4)
 	clr.w	$20(a4)
 loc_1F1ED0:
-	move.b	#$1,-$38B2(a5)
+	move.b	#$1,g_HudDirty(a5)
 	cmpi.b	#$7,d6
 	beq.w	loc_1F1FE4
 loc_1F1EDE:

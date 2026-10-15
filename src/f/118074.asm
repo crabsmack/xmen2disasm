@@ -7,7 +7,7 @@
 Explosion_SpawnEx:
 	link.w	a6,#$0
 	movem.l	d3-d7/a3-a4,-(a7)
-	lea.l	-$1D40(a5),a3
+	lea.l	g_Explosions(a5),a3
 	move.b	$13(a6),d4
 	move.l	$C(a6),d5
 	move.l	$8(a6),d6
@@ -28,7 +28,7 @@ loc_118090:
 	move.b	#$4,$5(a4)
 	clr.b	$4(a4)
 	move.w	#$2000,d0
-	or.w	-$3BB8(a5),d0
+	or.w	g_FxTileBase(a5),d0
 	ext.l	d0
 	tst.b	d4
 	beq.s	loc_1180D4

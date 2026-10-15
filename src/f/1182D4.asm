@@ -25,7 +25,7 @@ loc_118308:
 	moveq	#$0,d0
 	move.b	$4(a4),d0
 	lsl.l	#$4,d0
-	add.w	-$3BB8(a5),d0
+	add.w	g_FxTileBase(a5),d0
 	or.w	d0,$A(a4)
 loc_11831E:
 	move.w	(a4),d0

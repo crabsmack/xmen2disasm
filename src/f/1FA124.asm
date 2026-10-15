@@ -38,7 +38,7 @@ loc_1FA168:
 	jsr	$504A(a5)	; -> Spr_BeginFrame
 	tst.b	-$38B4(a5)
 	beq.w	loc_1FA480
-	tst.b	-$38B2(a5)
+	tst.b	g_HudDirty(a5)
 	beq.s	loc_1FA190
 	jsr	$5A(a5)	; -> HUD_UpdateHealthBars
 loc_1FA190:

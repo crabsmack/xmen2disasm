@@ -23,7 +23,7 @@ loc_1F215A:
 	and.w	g_Pad2Latch(a5),d0
 loc_1F2162:
 	beq.s	loc_1F218E
-	move.b	#$1,-$38B2(a5)
+	move.b	#$1,g_HudDirty(a5)
 	tst.b	-$38DE(a5)
 	beq.s	loc_1F2174
 	moveq	#$2,d0
@@ -51,7 +51,7 @@ loc_1F21A2:
 	and.w	g_Pad2Released(a5),d0
 loc_1F21AA:
 	beq.s	loc_1F21B6
-	move.b	#$1,-$38B2(a5)
+	move.b	#$1,g_HudDirty(a5)
 	clr.w	$9E(a4)
 loc_1F21B6:
 	movem.l	-$8(a6),d3/a4

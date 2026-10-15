@@ -15,7 +15,7 @@ loc_119098:
 	moveq	#$1,d0
 loc_11909A:
 	move.w	d0,d7
-	movea.l	-$1CAC(a5),a0
+	movea.l	g_GaussPool(a5),a0
 	tst.w	(a0)
 	beq.s	loc_1190CC
 	lea.l	$8(a0),a4
@@ -28,7 +28,7 @@ loc_1190AA:
 	addq.w	#$8,a7
 	lea.l	$20(a4),a4
 loc_1190BA:
-	movea.l	-$1CAC(a5),a0
+	movea.l	g_GaussPool(a5),a0
 	move.w	(a0),d0
 	ext.l	d0
 	asl.l	#$5,d0

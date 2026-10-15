@@ -57,7 +57,7 @@ loc_1F1D3C:
 	move.w	d0,$88(a4)
 	lea.l	$18(a7),a7
 loc_1F1D7A:
-	move.b	#$1,-$38B2(a5)
+	move.b	#$1,g_HudDirty(a5)
 	movea.l	-$4(a6),a4
 	unlk	a6
 	rts

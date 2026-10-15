@@ -12,7 +12,7 @@ GaussBullet_InitPool:
 	lea.l	$2E9A(a5),a0
 	move.l	$2(a0),-(a7)
 	jsr	$4E52(a5)	; -> SprDef_Add
-	move.w	d0,-$1CA8(a5)
+	move.w	d0,g_GaussSprDef(a5)
 	pea.l	Str_Empty_11918E(pc)
 	pea.l	($C8).w
 	jsr	$5032(a5)	; -> Mem_StackAlloc
@@ -20,15 +20,15 @@ GaussBullet_InitPool:
 	move.l	a4,d0
 	lea.l	$10(a7),a7
 	beq.s	loc_119156
-	move.l	a4,-$1CAC(a5)
+	move.l	a4,g_GaussPool(a5)
 	lea.l	$2E6A(a5),a0
-	movea.l	-$1CAC(a5),a1
+	movea.l	g_GaussPool(a5),a1
 	move.l	$2(a0),$4(a1)
-	movea.l	-$1CAC(a5),a0
+	movea.l	g_GaussPool(a5),a0
 	clr.w	(a0)
-	movea.l	-$1CAC(a5),a0
+	movea.l	g_GaussPool(a5),a0
 	move.w	#$6,$2(a0)
-	movea.l	-$1CAC(a5),a0
+	movea.l	g_GaussPool(a5),a0
 	lea.l	$8(a0),a4
 	bra.s	loc_119140
 loc_119134:
@@ -36,7 +36,7 @@ loc_119134:
 	move.l	$2(a0),(a4)
 	lea.l	$20(a4),a4
 loc_119140:
-	movea.l	-$1CAC(a5),a0
+	movea.l	g_GaussPool(a5),a0
 	move.w	$2(a0),d0
 	ext.l	d0
 	asl.l	#$5,d0
@@ -46,7 +46,7 @@ loc_119140:
 	bra.s	loc_11915C
 loc_119156:
 	moveq	#$0,d0
-	move.l	d0,-$1CAC(a5)
+	move.l	d0,g_GaussPool(a5)
 loc_11915C:
 	moveq	#$0,d0
 	move.l	d0,-(a7)

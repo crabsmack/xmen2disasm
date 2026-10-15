@@ -58,7 +58,7 @@ loc_1F1CAA:
 	move.w	#$FFFF,$88(a4)
 	addq.w	#$4,a7
 loc_1F1CC6:
-	move.b	#$1,-$38B2(a5)
+	move.b	#$1,g_HudDirty(a5)
 loc_1F1CCC:
 	movea.l	-$4(a6),a4
 	unlk	a6

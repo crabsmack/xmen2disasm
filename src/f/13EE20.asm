@@ -26,7 +26,7 @@ loc_13EE34:
 	ext.l	d0
 	lsl.l	#$4,d0
 	move.w	d0,d5
-	add.w	-$3BB8(a5),d5
+	add.w	g_FxTileBase(a5),d5
 	ori.w	#$2000,d5
 	moveq	#$1,d0
 	and.w	$4(a3),d0

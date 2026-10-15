@@ -7,7 +7,7 @@
 Explosion_ResetAll:
 	link.w	a6,#$0
 	movem.l	d3/d7/a3-a4,-(a7)
-	lea.l	-$1D40(a5),a3
+	lea.l	g_Explosions(a5),a3
 	lea.l	(a3),a4
 	clr.w	d7
 	moveq	#$A,d3

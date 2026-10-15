@@ -32,7 +32,7 @@ loc_1A7ACE:
 loc_1A7AD0:
 	ext.w	d0
 	add.w	d0,$9E(a4)
-	move.b	#$1,-$38B2(a5)
+	move.b	#$1,g_HudDirty(a5)
 	bra.s	loc_1A7B06
 loc_1A7ADE:
 	tst.b	$9D(a4)
@@ -47,7 +47,7 @@ loc_1A7AF2:
 	and.w	g_Pad2Released(a5),d0
 loc_1A7AFA:
 	beq.s	loc_1A7B06
-	move.b	#$1,-$38B2(a5)
+	move.b	#$1,g_HudDirty(a5)
 	clr.w	$9E(a4)
 loc_1A7B06:
 	movem.l	-$8(a6),d3/a4

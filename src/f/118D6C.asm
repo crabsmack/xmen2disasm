@@ -96,7 +96,7 @@ loc_118E4C:
 	moveq	#$1,d0
 loc_118E4E:
 	beq.s	loc_118E7C
-	movea.l	-$1CAC(a5),a0
+	movea.l	g_GaussPool(a5),a0
 	tst.w	(a0)
 	beq.w	loc_11907C
 	moveq	#$20,d0
@@ -104,7 +104,7 @@ loc_118E4E:
 	subq.w	#$1,(a0)
 	move.w	(a0),d1
 	ext.l	d1
-	movea.l	-$1CAC(a5),a0
+	movea.l	g_GaussPool(a5),a0
 	asl.l	#$5,d1
 	pea.l	$8(a0,d1.l)
 	move.l	a3,-(a7)
@@ -162,7 +162,7 @@ loc_118E94:
 	movea.l	(a4),a0
 	movea.l	$26(a0),a1
 	jsr	(a1)
-	movea.l	-$1CAC(a5),a0
+	movea.l	g_GaussPool(a5),a0
 	tst.w	(a0)
 	lea.l	$18(a7),a7
 	beq.w	loc_11907C
@@ -171,7 +171,7 @@ loc_118E94:
 	subq.w	#$1,(a0)
 	move.w	(a0),d1
 	ext.l	d1
-	movea.l	-$1CAC(a5),a0
+	movea.l	g_GaussPool(a5),a0
 	asl.l	#$5,d1
 	pea.l	$8(a0,d1.l)
 	move.l	a3,-(a7)
@@ -198,7 +198,7 @@ loc_118F34:
 	cmp.w	d6,d7
 	bge.s	loc_118F9E
 loc_118F72:
-	movea.l	-$1CAC(a5),a0
+	movea.l	g_GaussPool(a5),a0
 	tst.w	(a0)
 	beq.w	loc_11907C
 	moveq	#$20,d0
@@ -206,7 +206,7 @@ loc_118F72:
 	subq.w	#$1,(a0)
 	move.w	(a0),d1
 	ext.l	d1
-	movea.l	-$1CAC(a5),a0
+	movea.l	g_GaussPool(a5),a0
 	asl.l	#$5,d1
 	pea.l	$8(a0,d1.l)
 	move.l	a3,-(a7)
@@ -240,14 +240,14 @@ loc_118FDE:
 	subq.w	#$1,d4
 	bne.s	loc_118FAE
 loc_118FE2:
-	movea.l	-$1CAC(a5),a0
+	movea.l	g_GaussPool(a5),a0
 	movea.l	$4(a0),a4
 	moveq	#$0,d0
 	move.b	$1E(a3),d0
 	asl.l	#$2,d0
 	adda.w	d0,a4
 	move.b	(a4),d4
-	move.w	-$1CA8(a5),d0
+	move.w	g_GaussSprDef(a5),d0
 	ext.l	d0
 	lsl.l	#$2,d0
 	move.l	d0,d1

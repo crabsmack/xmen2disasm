@@ -33,7 +33,7 @@ loc_1F1DCC:
 	move.w	d7,d0
 loc_1F1DCE:
 	move.w	d0,$68(a4)
-	move.b	#$1,-$38B2(a5)
+	move.b	#$1,g_HudDirty(a5)
 loc_1F1DD8:
 	movem.l	-$10(a6),d3/d6-d7/a4
 	unlk	a6

@@ -6,7 +6,7 @@
 ; ---------------------------------------------------------------------------
 Scene_AllocCommonVram:
 	link.w	a6,#$FFEC
-	move.w	g_VramTileCursor(a5),-$3BB8(a5)
+	move.w	g_VramTileCursor(a5),g_FxTileBase(a5)
 	moveq	#$0,d0
 	move.l	d0,-(a7)
 	move.w	g_VramTileCursor(a5),d1

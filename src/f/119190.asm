@@ -9,7 +9,7 @@ GaussBullet_Fire:
 	movem.l	d3-d7/a3-a4,-(a7)
 	movea.l	$10(a6),a3
 	move.l	$1C(a6),d7
-	movea.l	-$1CAC(a5),a0
+	movea.l	g_GaussPool(a5),a0
 	movea.l	a0,a1
 	move.w	(a0),d0
 	cmp.w	$2(a1),d0
@@ -19,7 +19,7 @@ GaussBullet_Fire:
 	move.w	(a0),d0
 	addq.w	#$1,(a0)
 	ext.l	d0
-	movea.l	-$1CAC(a5),a0
+	movea.l	g_GaussPool(a5),a0
 	asl.l	#$5,d0
 	lea.l	$8(a0,d0.l),a0
 	move.l	a0,d0
