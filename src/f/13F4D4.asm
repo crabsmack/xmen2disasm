@@ -19,7 +19,7 @@ sub_13F4D4:
 	moveq	#$C,d1
 	add.l	d1,d0
 	move.l	d0,-(a7)
-	jsr	$5032(a5)	; -> sub_1FA8DC
+	jsr	$5032(a5)	; -> Mem_StackAlloc
 	movea.l	d0,a4
 	clr.b	(a4)
 	move.b	d6,$1(a4)
@@ -45,12 +45,12 @@ loc_13F536:
 	moveq	#$0,d1
 	move.l	d1,-(a7)
 	pea.l	sub_13F728(pc)
-	jsr	$4FD2(a5)	; -> sub_1F9C92
+	jsr	$4FD2(a5)	; -> Timer_Create
 	move.l	d0,$6(a4)
 	lea.l	$10(a7),a7
 	beq.s	loc_13F55C
 	move.l	$6(a4),-(a7)
-	jsr	$4FDA(a5)	; -> sub_1F9D04
+	jsr	$4FDA(a5)	; -> Timer_Start
 	addq.w	#$4,a7
 loc_13F55C:
 	moveq	#$4,d0

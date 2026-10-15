@@ -2,7 +2,7 @@
 ; Game_Main - main program: init hardware/sound/scenes, then run Game_SceneLoop forever
 ; In:  none
 ; Out: never returns
-; Evidence: irq hook $21C entry; waits VDP status, reads 7 settings bytes via sub_1FDD26 into -$3A40, calls init sub_1F9850, then loops Game_SceneLoop with demo flag cleared
+; Evidence: irq hook $21C entry; waits VDP status, reads 7 settings bytes via sub_1FDD26 into -$3A40, calls init Sys_InitGameVideo, then loops Game_SceneLoop with demo flag cleared
 ; ---------------------------------------------------------------------------
 Game_Main:
 	link.w	a6,#$0
@@ -31,7 +31,7 @@ loc_005486:
 	clr.b	-$38BE(a5)
 	clr.b	-$3A08(a5)
 	move.b	#$1,g_FrameUpdated(a5)
-	jsr	$4FC2(a5)	; -> sub_1F9850
+	jsr	$4FC2(a5)	; -> Sys_InitGameVideo
 loc_0054BC:
 	clr.b	g_DemoActive(a5)
 	jsr	Game_SceneLoop(pc)

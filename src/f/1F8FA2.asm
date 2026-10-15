@@ -1,13 +1,16 @@
 ; ---------------------------------------------------------------------------
-; sub_1F8FA2	[jt 2537]
+; DrawList_Add - add a draw callback for an object to the draw list, sorted by a priority key
+; In:  8(a6) = func(object)   $C(a6) = object   $10(a6) = long: behind flag (0 adds $400 to the key)   $14(a6) = byte: layer (key bits 2+)   $18(a6) = long: flag ($10)   $1C(a6) = byte: flag ($04)
+; Out: d0 = word: node index (0-29), -1 if full
+; Evidence: key low bits 1 = g_Player1, 2 = g_Player2, else 3; inserts before the first node with a larger key; index = (node - base) / $14 via Math_LDivS; callers pass an actor's vtable Draw slot (+$1A) and store the index (e.g. +$88)
 ; ---------------------------------------------------------------------------
-sub_1F8FA2:
+DrawList_Add:
 	link.w	a6,#$FFFC
 	movem.l	d5-d7/a3-a4,-(a7)
 	move.w	$12(a6),d5
 	move.w	$1A(a6),d7
 	movea.l	$C(a6),a4
-	jsr	sub_1F8F4C(pc)
+	jsr	DrawList_AllocNode(pc)
 	movea.l	d0,a3
 	move.l	a3,d0
 	beq.w	loc_1F9114
@@ -160,7 +163,7 @@ loc_1F9102:
 	move.l	a3,d0
 	sub.l	a0,d0
 	moveq	#$14,d1
-	jsr	$3FA2(a5)	; -> sub_15C222
+	jsr	$3FA2(a5)	; -> Math_LDivS
 	move.w	d0,d7
 	bra.s	loc_1F9116
 loc_1F9114:

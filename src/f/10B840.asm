@@ -42,7 +42,7 @@ loc_10B872:
 	clr.w	$A(a0)
 	moveq	#$1E,d0
 	move.l	d0,-(a7)
-	jsr	$4F8A(a5)	; -> sub_1F944E
+	jsr	$4F8A(a5)	; -> Scene_EndAfter
 	addq.w	#$4,a7
 	bra.s	loc_10B938
 loc_10B8C4:
@@ -83,7 +83,7 @@ loc_10B912:
 loc_10B92E:
 	moveq	#$1E,d0
 	move.l	d0,-(a7)
-	jsr	$4F8A(a5)	; -> sub_1F944E
+	jsr	$4F8A(a5)	; -> Scene_EndAfter
 	addq.w	#$4,a7
 loc_10B938:
 	move.l	a4,-(a7)

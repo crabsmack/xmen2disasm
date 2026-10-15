@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_1F9122	[jt 2538]
+; DrawList_Remove - unlink draw-list node N and free it
+; In:  8(a6) = word: node index (0-29)
+; Out: d0 = byte -$135A(a5)
+; Evidence: ignored unless flags bit $8000 set; clears flags, fixes next/prev and head/tail; callers pass the index saved from DrawList_Add then set it to -1
 ; ---------------------------------------------------------------------------
-sub_1F9122:
+DrawList_Remove:
 	link.w	a6,#$0
 	movem.l	d7/a3-a4,-(a7)
 	lea.l	-$134C(a5),a3

@@ -24,7 +24,7 @@ HornetBullet_Init:
 	ext.l	d0
 	move.l	d0,-(a7)
 	move.l	a4,-(a7)
-	jsr	$4E5A(a5)	; -> sub_1F6334
+	jsr	$4E5A(a5)	; -> Obj_SetSpriteDef
 	moveq	#-$4,d0
 	and.b	$2E(a4),d0
 	moveq	#$1,d1

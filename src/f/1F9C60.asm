@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_1F9C60	[link-after-rts]
+; Timer_InitAll - mark all 30 timer slots free and empty the active-timer list
+; In:  none
+; Out: none
+; Evidence: 30 slots of $16 bytes at -$10E8(a5): state word = -3 (free); list head long -$10EC(a5) = 0
 ; ---------------------------------------------------------------------------
-sub_1F9C60:
+Timer_InitAll:
 	link.w	a6,#$0
 	movem.l	d3/d7/a3-a4,-(a7)
 	lea.l	-$10E8(a5),a3

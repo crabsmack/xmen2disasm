@@ -24,7 +24,7 @@ loc_00FF2A:
 	pea.l	$FFAC(pc)
 	ext.l	d6
 	move.l	d6,-(a7)
-	jsr	$5032(a5)	; -> sub_1FA8DC
+	jsr	$5032(a5)	; -> Mem_StackAlloc
 	move.l	d0,-$C9E(a5)
 	jsr	$50A2(a5)	; -> sub_1FC2E8
 	ext.l	d7

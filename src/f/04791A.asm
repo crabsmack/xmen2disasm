@@ -20,13 +20,13 @@ sub_04791A:
 	moveq	#$A,d1
 	move.l	d1,-(a7)
 	pea.l	$3F32(a5)
-	jsr	$4FD2(a5)	; -> sub_1F9C92
+	jsr	$4FD2(a5)	; -> Timer_Create
 	movea.l	d0,a4
 	move.l	a4,d0
 	lea.l	$10(a7),a7
 	beq.s	loc_04796C
 	move.l	a4,-(a7)
-	jsr	$4FDA(a5)	; -> sub_1F9D04
+	jsr	$4FDA(a5)	; -> Timer_Start
 	addq.w	#$4,a7
 loc_04796C:
 	jsr	$5002(a5)	; -> sub_1FA6FE

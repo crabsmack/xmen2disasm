@@ -99,6 +99,25 @@ _(module → functions, globals, data; add as you learn them)_
   press latch (`-$3A2E`/`-$3A30`, game code clears bits to consume), accumulated (`-$3A32`/
   `-$3A34`). Demo playback: byte `-$3A1A` active, stream `-$3A1E` of (frame, pad) byte pairs,
   `-$3A20` = demo pad for P1.
+- **Timers (w140)**: 30 slots x $16 at `-$10E8`, list head `-$10EC`: `{+0 state, +2 period,
+  +4 next, +8 prev, +$C func(arg, timer), +$10 arg, +$14 byte}`. State: >0 counting, 0 fire
+  (then reload period), -2 stopped, -4 start pending, -1 free pending, -3 free.
+  `Timer_Create` (returns stopped) / `Timer_Start` / `Timer_Stop` / `Timer_Free`; `Timer_RunAll`
+  each frame from the scene loop `sub_1FA124`. Objects keep timer pointers in fields (+$24, +$62).
+- **Draw list (w140)**: 30 nodes x $14 at `-$134C` `{next, prev, func, object, word key, word
+  flags}` sorted by key (`$400` = behind, layer << 2, low bits 1 = P1, 2 = P2, 3 = other).
+  `DrawList_Add(func, obj, ...)` returns a node index that actors store (e.g. +$88) for
+  `DrawList_SetPriority`/`DrawList_Remove`; func is usually the actor's vtable Draw (+$1A).
+  `DrawList_DrawAll` calls them in order.
+- **Heap (w140)**: `Mem_StackAlloc(size, tag)`/`Mem_StackFree` - a mark/release stack from
+  `$FF0000` upward, top in `-$348C`, 8-byte header `{next top, tag string}`; freeing a non-top
+  block only retags it "FREE ME".
+- **Compiler runtime (w140)**: `$15C1FC-$15C3xx`: `Math_LMul`, `Math_LDivS`, `Math_LModS`
+  (register args d0 op d1; each has an embedded 68020 `divs.l` path skipped by
+  `jmp -2(a0,a1)` with a1 = 2), `Math_DivModS`/`Math_DivModU` (d1 = quotient, d0 = remainder).
+  `Math_MulFix8(a, b)` = (a*b) >> 8.
+- **Scenes**: `Scene_Register(name, func)` fills `g_SceneTable`; `Scene_EndAfter(n)` sets the
+  exit countdown `-$359A` that the scene loop decrements to 0.
 - **Players**: two player objects at `$FFE9B8` and `$FFEAA8` (`Player_Nearest`). Which is P1
   is not yet confirmed.
 - **Game object layout** (from `Player_Nearest`, `$1F4BA2`, `$1F6334`): +4 word flags (bits

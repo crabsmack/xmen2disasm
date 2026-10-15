@@ -124,7 +124,7 @@ loc_08880A:
 	move.w	-$16D0(a5),d1
 	ext.l	d1
 	move.l	d1,-(a7)
-	jsr	$4F7A(a5)	; -> sub_1F91E8
+	jsr	$4F7A(a5)	; -> DrawList_SetPriority
 	lea.l	$10(a7),a7
 loc_0888AA:
 	move.w	-$1844(a5),d0
@@ -149,7 +149,7 @@ loc_0888AA:
 	move.w	-$17C0(a5),d1
 	ext.l	d1
 	move.l	d1,-(a7)
-	jsr	$4F7A(a5)	; -> sub_1F91E8
+	jsr	$4F7A(a5)	; -> DrawList_SetPriority
 	lea.l	$10(a7),a7
 loc_0888F0:
 	jsr	sub_0883C2(pc)

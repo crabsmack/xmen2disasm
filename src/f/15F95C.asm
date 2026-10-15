@@ -8,7 +8,7 @@ sub_15F95C:
 	move.w	-$38D8(a5),d0
 	muls.w	#$E,d0
 	move.l	d0,-(a7)
-	jsr	$5032(a5)	; -> sub_1FA8DC
+	jsr	$5032(a5)	; -> Mem_StackAlloc
 	move.l	d0,-$38DC(a5)
 	moveq	#$0,d7
 	addq.w	#$8,a7

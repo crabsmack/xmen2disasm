@@ -74,7 +74,7 @@ loc_1F6050:
 	move.w	g_CameraX(a5),d0
 	ext.l	d0
 	move.l	d0,-(a7)
-	jsr	sub_1F6258(pc)
+	jsr	Math_MulFix8(pc)
 	move.w	d0,-$3AC6(a5)
 	move.w	g_CameraY(a5),d0
 	ext.l	d0
@@ -83,7 +83,7 @@ loc_1F6050:
 	sub.l	d1,d0
 	move.w	-$3498(a5),d1
 	ext.l	d1
-	jsr	$3F9A(a5)	; -> sub_15C1FC
+	jsr	$3F9A(a5)	; -> Math_LMul
 	asr.l	#$8,d0
 	add.w	-$34A0(a5),d0
 	move.w	d0,-$3AC8(a5)

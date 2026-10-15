@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_1F9464	[jt 2543]
+; Scene_Register - append a named scene {name string, scene function} to g_SceneTable
+; In:  8(a6) = C string: scene name   $C(a6) = scene function pointer
+; Out: d0 = byte: index of the new entry
+; Evidence: 8-byte entries at g_SceneTable, count byte g_SceneCount post-incremented; callers pass Str_* names (Cerebro screens, stages)
 ; ---------------------------------------------------------------------------
-sub_1F9464:
+Scene_Register:
 	link.w	a6,#$0
 	movem.l	d7/a4,-(a7)
 	lea.l	g_SceneTable(a5),a4

@@ -14,7 +14,7 @@ sub_082038:
 	jsr	(a1)
 	move.b	#$1,-$3892(a5)
 	move.l	$8(a6),-(a7)
-	jsr	$4FEA(a5)	; -> sub_1F9D38
+	jsr	$4FEA(a5)	; -> Timer_Free
 loc_082066:
 	unlk	a6
 	rts

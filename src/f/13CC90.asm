@@ -44,7 +44,7 @@ loc_13CD0C:
 	ext.l	d0
 	move.l	d0,-(a7)
 	move.l	a4,-(a7)
-	jsr	$4E5A(a5)	; -> sub_1F6334
+	jsr	$4E5A(a5)	; -> Obj_SetSpriteDef
 	addq.w	#$8,a7
 loc_13CD1C:
 	lea.l	$3AA2(a5),a0

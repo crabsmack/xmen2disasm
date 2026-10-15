@@ -3813,6 +3813,7 @@ Tbl_Pop_vtable:	; class descriptor "POP": word $6E = name offset, long parent (A
 	include "src/f/1F4870.asm"
 	incrom	$1F4880,$10
 	include "src/f/1F4890.asm"
+Tbl_A5WorldInfo:	; 20 bytes: longs $3CE6 (size of the A5 globals area below $200 = $FFC51A..$FFFFFF), 0, 0, $04EC, $25413569; pointer returned by unk_Sys_1F4890
 	incrom	$1F4896,$14
 	include "src/f/1F48AA.asm"
 	incrom	$1F48F6,$A
@@ -3963,12 +3964,14 @@ Tbl_Pop_vtable:	; class descriptor "POP": word $6E = name offset, long parent (A
 	include "src/f/1FA8D4.asm"
 	include "src/f/1FA8DC.asm"
 	include "src/f/1FA924.asm"
+Str_FreeMe:	; C string 'FREE ME': tag stored in a freed Mem_StackAlloc block header that is not at the top (Mem_StackFree)
 	incrom	$1FA94E,$8
 	include "src/f/1FA956.asm"
 	include "src/f/1FA99C.asm"
 	include "src/f/1FA9D2.asm"
 	include "src/f/1FAA08.asm"
 	include "src/f/1FAD08.asm"
+Str_EmptyTag:	; empty C string: allocation tag used by sub_1FAD08 for its Mem_StackAlloc mark block
 	incrom	$1FAD42,$2
 	include "src/f/1FAD44.asm"
 	include "src/f/1FB026.asm"

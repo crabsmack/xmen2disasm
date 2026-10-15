@@ -55,7 +55,7 @@ loc_088186:
 	ext.w	d1
 	ext.l	d1
 	move.l	d1,-(a7)
-	jsr	$4F92(a5)	; -> sub_1F945C
+	jsr	$4F92(a5)	; -> Sys_Nop1F945C
 	addq.w	#$8,a7
 	bra.s	loc_0881D2
 loc_0881B2:

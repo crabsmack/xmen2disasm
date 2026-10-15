@@ -19,7 +19,7 @@ sub_1CF1EC:
 	jsr	$5172(a5)	; -> Math_CosDeg
 	move.l	d0,d1
 	move.l	d6,d0
-	jsr	$3F9A(a5)	; -> sub_15C1FC
+	jsr	$3F9A(a5)	; -> Math_LMul
 	asr.l	#$8,d0
 	move.w	d0,-$4(a6)
 	ext.l	d6
@@ -28,7 +28,7 @@ sub_1CF1EC:
 	jsr	$517A(a5)	; -> Math_SinDeg
 	move.l	d0,d1
 	move.l	d6,d0
-	jsr	$3F9A(a5)	; -> sub_15C1FC
+	jsr	$3F9A(a5)	; -> Math_LMul
 	asr.l	#$8,d0
 	move.w	d0,-$2(a6)
 	move.l	a3,-(a7)

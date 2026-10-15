@@ -80,7 +80,7 @@ loc_05CEB8:
 	move.w	$88(a4),d1
 	ext.l	d1
 	move.l	d1,-(a7)
-	jsr	$4F7A(a5)	; -> sub_1F91E8
+	jsr	$4F7A(a5)	; -> DrawList_SetPriority
 	lea.l	$10(a7),a7
 	bra.s	loc_05CF44
 loc_05CF0E:
@@ -101,7 +101,7 @@ loc_05CF0E:
 	move.w	$88(a4),d1
 	ext.l	d1
 	move.l	d1,-(a7)
-	jsr	$4F7A(a5)	; -> sub_1F91E8
+	jsr	$4F7A(a5)	; -> DrawList_SetPriority
 	lea.l	$10(a7),a7
 loc_05CF44:
 	lea.l	g_Player1(a5),a0

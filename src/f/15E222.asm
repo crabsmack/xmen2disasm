@@ -104,7 +104,7 @@ loc_15E32A:
 	move.l	a4,d0
 	beq.s	loc_15E33A
 	move.l	a4,-(a7)
-	jsr	$4FE2(a5)	; -> sub_1F9D1E
+	jsr	$4FE2(a5)	; -> Timer_Stop
 	addq.w	#$4,a7
 loc_15E33A:
 	moveq	#$1,d0
@@ -155,7 +155,7 @@ loc_15E3AE:
 	move.w	$88(a3),d0
 	ext.l	d0
 	move.l	d0,-(a7)
-	jsr	$4F72(a5)	; -> sub_1F9122
+	jsr	$4F72(a5)	; -> DrawList_Remove
 	move.w	#$FFFF,$88(a3)
 	addq.w	#$4,a7
 loc_15E3CA:

@@ -11,7 +11,7 @@ sub_0AC91C:
 	move.w	$88(a4),d0
 	ext.l	d0
 	move.l	d0,-(a7)
-	jsr	$4F72(a5)	; -> sub_1F9122
+	jsr	$4F72(a5)	; -> DrawList_Remove
 	addq.w	#$4,a7
 loc_0AC93C:
 	clr.w	$6C(a4)

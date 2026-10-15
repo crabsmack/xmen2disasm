@@ -23,7 +23,7 @@ loc_144D18:
 	move.w	d0,$8(a3)
 	move.b	#$FF,$5(a3)
 	move.l	$7C(a4),-(a7)
-	jsr	$4FEA(a5)	; -> sub_1F9D38
+	jsr	$4FEA(a5)	; -> Timer_Free
 	moveq	#$0,d0
 	move.l	d0,$7C(a4)
 	movem.l	-$8(a6),a3-a4

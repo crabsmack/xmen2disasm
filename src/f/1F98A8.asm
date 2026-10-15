@@ -234,8 +234,8 @@ loc_1F9B0E:
 	move.w	(a3)+,-$38D8(a5)
 	move.l	a3,-$38D6(a5)
 	jsr	$4132(a5)	; -> sub_15F95C
-	jsr	$4FB2(a5)	; -> sub_1F94B6
-	jsr	sub_1F9804(pc)
+	jsr	$4FB2(a5)	; -> Scene_ClearActivateHook
+	jsr	ClassList_CallSlot5A(pc)
 	move.b	#$1,-$38B4(a5)
 	clr.b	-$3ABA(a5)
 	move.b	#$1,-$3890(a5)
@@ -277,7 +277,7 @@ loc_1F9B58:
 	move.l	a0,-$388E(a5)
 	lea.l	$4F82(a5),a0
 	move.l	a0,-$38F4(a5)
-	jsr	$4F62(a5)	; -> sub_1F8EF6
+	jsr	$4F62(a5)	; -> DrawList_Init
 	move.b	d0,d7
 	move.w	#$FF80,-$35A6(a5)
 	move.w	#$1C0,-$35A8(a5)
@@ -302,7 +302,7 @@ loc_1F9B58:
 	move.l	a0,-$38FC(a5)
 	clr.b	-$1662(a5)
 	move.b	#$1,-$1660(a5)
-	jsr	sub_1F9C60(pc)
+	jsr	Timer_InitAll(pc)
 	jsr	$405A(a5)	; -> sub_15DEAE
 	movea.l	-$38EC(a5),a0
 	jsr	(a0)

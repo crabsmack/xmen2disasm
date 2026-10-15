@@ -25,10 +25,10 @@ loc_1079EE:
 	move.l	a4,-(a7)
 	move.l	d0,-(a7)
 	pea.l	sub_107860(pc)
-	jsr	$4FD2(a5)	; -> sub_1F9C92
+	jsr	$4FD2(a5)	; -> Timer_Create
 	movea.l	d0,a3
 	move.l	a3,-(a7)
-	jsr	$4FDA(a5)	; -> sub_1F9D04
+	jsr	$4FDA(a5)	; -> Timer_Start
 	moveq	#$0,d0
 	lea.l	$14(a7),a7
 loc_107A34:

@@ -12,7 +12,7 @@ sub_1190D6:
 	move.w	d0,-$1CA8(a5)
 	pea.l	$11918E(pc)
 	pea.l	($C8).w
-	jsr	$5032(a5)	; -> sub_1FA8DC
+	jsr	$5032(a5)	; -> Mem_StackAlloc
 	movea.l	d0,a4
 	move.l	a4,d0
 	lea.l	$10(a7),a7
@@ -51,14 +51,14 @@ loc_11915C:
 	moveq	#$1,d1
 	move.l	d1,-(a7)
 	pea.l	sub_119086(pc)
-	jsr	$4FD2(a5)	; -> sub_1F9C92
+	jsr	$4FD2(a5)	; -> Timer_Create
 	movea.l	d0,a3
 	move.l	a3,d0
 	lea.l	$10(a7),a7
 	beq.s	loc_119184
 	move.l	a3,$10(a3)
 	move.l	a3,-(a7)
-	jsr	$4FDA(a5)	; -> sub_1F9D04
+	jsr	$4FDA(a5)	; -> Timer_Start
 	addq.w	#$4,a7
 loc_119184:
 	movem.l	-$8(a6),a3-a4

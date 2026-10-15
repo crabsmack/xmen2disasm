@@ -7,7 +7,7 @@ sub_085C5E:
 	pea.l	$85D4A(pc)
 	moveq	#$68,d0
 	move.l	d0,-(a7)
-	jsr	$5032(a5)	; -> sub_1FA8DC
+	jsr	$5032(a5)	; -> Mem_StackAlloc
 	movea.l	d0,a4
 	move.l	a4,d0
 	addq.w	#$8,a7
@@ -53,12 +53,12 @@ sub_085C5E:
 	move.l	d0,-(a7)
 	movea.l	(a4),a0
 	move.l	$E(a0),-(a7)
-	jsr	$4FD2(a5)	; -> sub_1F9C92
+	jsr	$4FD2(a5)	; -> Timer_Create
 	move.l	d0,$62(a4)
 	lea.l	$3C(a7),a7
 	beq.s	loc_085D1E
 	move.l	$62(a4),-(a7)
-	jsr	$4FDA(a5)	; -> sub_1F9D04
+	jsr	$4FDA(a5)	; -> Timer_Start
 	addq.w	#$4,a7
 loc_085D1E:
 	moveq	#$0,d0
@@ -71,7 +71,7 @@ loc_085D1E:
 	move.l	a4,-(a7)
 	movea.l	(a4),a0
 	move.l	$12(a0),-(a7)
-	jsr	$4F6A(a5)	; -> sub_1F8FA2
+	jsr	$4F6A(a5)	; -> DrawList_Add
 	move.w	d0,$66(a4)
 	lea.l	$18(a7),a7
 loc_085D40:

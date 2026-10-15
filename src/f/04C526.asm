@@ -28,7 +28,7 @@ loc_04C542:
 	pea.l	$4C582(pc)
 	moveq	#$14,d0
 	move.l	d0,-(a7)
-	jsr	$5032(a5)	; -> sub_1FA8DC
+	jsr	$5032(a5)	; -> Mem_StackAlloc
 	move.l	d0,-$3B1C(a5)
 	clr.w	-$3B08(a5)
 	lea.l	$10(a7),a7

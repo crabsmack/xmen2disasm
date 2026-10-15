@@ -27,7 +27,7 @@ loc_0656EE:
 	move.w	d0,d1
 	move.l	d1,d0
 	moveq	#$6,d1
-	jsr	$3FAA(a5)	; -> sub_15C246
+	jsr	$3FAA(a5)	; -> Math_LModS
 	move.b	d0,g_P1CharIndex(a5)
 	cmp.b	g_P2CharIndex(a5),d0
 	beq.s	loc_0656EE
@@ -41,7 +41,7 @@ loc_065710:
 	move.w	d0,d1
 	move.l	d1,d0
 	moveq	#$6,d1
-	jsr	$3FAA(a5)	; -> sub_15C246
+	jsr	$3FAA(a5)	; -> Math_LModS
 	move.b	d0,g_P2CharIndex(a5)
 	move.b	g_P1CharIndex(a5),d0
 	cmp.b	g_P2CharIndex(a5),d0
@@ -189,7 +189,7 @@ loc_0658C6:
 	clr.b	-$3A08(a5)
 	tst.b	-$38E4(a5)
 	bne.s	loc_065922
-	jsr	$4FF2(a5)	; -> sub_1F9D52
+	jsr	$4FF2(a5)	; -> Timer_RunAll
 loc_065922:
 	movea.l	-$38F4(a5),a0
 	jsr	(a0)
@@ -437,7 +437,7 @@ loc_065BFE:
 	sub.w	d0,-$359A(a5)
 	tst.w	-$359A(a5)
 	bgt.w	loc_0658C6
-	jsr	$5012(a5)	; -> sub_1FA878
+	jsr	$5012(a5)	; -> ClassList_CallSlot62
 	clr.b	-$38BE(a5)
 	movea.l	-$3B28(a5),a0
 	move.b	g_P1CharIndex(a5),d0

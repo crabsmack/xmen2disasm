@@ -14,7 +14,7 @@ sub_099016:
 	move.w	-$3B04(a5),d0
 	ext.l	d0
 	move.l	d0,-(a7)
-	jsr	$5032(a5)	; -> sub_1FA8DC
+	jsr	$5032(a5)	; -> Mem_StackAlloc
 	move.l	d0,-$3B20(a5)
 	lea.l	sub_099C22(pc),a0
 	move.l	a0,-$3406(a5)

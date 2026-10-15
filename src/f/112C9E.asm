@@ -30,7 +30,7 @@ loc_112CD6:
 	movea.l	$72(a0),a1
 	jsr	(a1)
 	move.l	$9E(a4),-(a7)
-	jsr	$4FE2(a5)	; -> sub_1F9D1E
+	jsr	$4FE2(a5)	; -> Timer_Stop
 	lea.l	$C(a7),a7
 	clr.w	$6C(a4)
 	lea.l	sub_112A2E(pc),a0

@@ -22,7 +22,7 @@ HoloBolt_Init:
 	ext.l	d0
 	move.l	d0,-(a7)
 	move.l	a4,-(a7)
-	jsr	$4E5A(a5)	; -> sub_1F6334
+	jsr	$4E5A(a5)	; -> Obj_SetSpriteDef
 	move.w	-$1754(a5),d0
 	ext.l	d0
 	move.w	#$C000,d1

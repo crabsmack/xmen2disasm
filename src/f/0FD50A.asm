@@ -17,7 +17,7 @@ sub_0FD50A:
 	move.b	#$1,-$35CA(a5)
 	pea.l	$FD574(pc)
 	pea.l	($3C0).w
-	jsr	$5032(a5)	; -> sub_1FA8DC
+	jsr	$5032(a5)	; -> Mem_StackAlloc
 	addq.l	#$8,a7
 	move.l	d0,-(a7)
 	jsr	sub_0FCE32(pc)
@@ -27,9 +27,9 @@ sub_0FD50A:
 	move.l	d1,-(a7)
 	move.l	d1,-(a7)
 	pea.l	sub_0FCEDE(pc)
-	jsr	$4FD2(a5)	; -> sub_1F9C92
+	jsr	$4FD2(a5)	; -> Timer_Create
 	move.l	d0,-$3B28(a5)
 	move.l	d0,-(a7)
-	jsr	$4FDA(a5)	; -> sub_1F9D04
+	jsr	$4FDA(a5)	; -> Timer_Start
 	unlk	a6
 	rts

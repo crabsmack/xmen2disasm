@@ -27,7 +27,7 @@ loc_006312:
 	move.w	d0,d1
 	move.l	d1,d0
 	moveq	#$6,d1
-	jsr	$3FAA(a5)	; -> sub_15C246
+	jsr	$3FAA(a5)	; -> Math_LModS
 	ext.w	d0
 	move.w	d0,d7
 	cmp.w	d6,d7

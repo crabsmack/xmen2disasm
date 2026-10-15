@@ -1,11 +1,14 @@
 ; ---------------------------------------------------------------------------
-; sub_1FA8DC	[jt 2562]
+; Mem_StackAlloc - allocate a block from the top-of-heap stack allocator with an 8-byte header {next top, tag}
+; In:  8(a6) = long: size in bytes (rounded up to even)   $C(a6) = tag (C string)
+; Out: d0 = pointer to the block after the header
+; Evidence: heap top long -$348C(a5) (= $FF0000 at Sys_InitHardware); header +0 = new top, +4 = tag; Sys_GetStackPtr is called first (result unused)
 ; ---------------------------------------------------------------------------
-sub_1FA8DC:
+Mem_StackAlloc:
 	link.w	a6,#$0
 	movem.l	d6-d7/a3-a4,-(a7)
 	move.l	$8(a6),d6
-	jsr	$4172(a5)	; -> sub_1600A0
+	jsr	$4172(a5)	; -> Sys_GetStackPtr
 	movea.l	d0,a4
 	movea.l	-$348C(a5),a4
 	moveq	#$8,d7

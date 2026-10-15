@@ -67,7 +67,7 @@ loc_1F65D2:
 	addq.w	#$4,a7
 loc_1F65F2:
 	move.l	$7C(a4),-(a7)
-	jsr	$4FDA(a5)	; -> sub_1F9D04
+	jsr	$4FDA(a5)	; -> Timer_Start
 	move.b	$3B(a3),d0
 	cmp.b	$15(a4),d0
 	addq.w	#$4,a7

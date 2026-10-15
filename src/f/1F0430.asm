@@ -37,7 +37,7 @@ loc_1F046E:
 	beq.s	loc_1F0494
 	moveq	#$78,d0
 	move.l	d0,-(a7)
-	jsr	$4F8A(a5)	; -> sub_1F944E
+	jsr	$4F8A(a5)	; -> Scene_EndAfter
 	addq.w	#$4,a7
 loc_1F0494:
 	movem.l	-$C(a6),d3/a3-a4

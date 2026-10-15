@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_1F91E8	[jt 2539]
+; DrawList_SetPriority - recompute a draw-list node's sort key and move it to its new sorted position
+; In:  8(a6) = word: node index   $C(a6) = long: behind flag   $10(a6) = byte: layer   $14(a6) = long: flag
+; Out: d0 = byte -$135A(a5)
+; Evidence: same key formula as DrawList_Add (player nodes keep their low 2 bits); walks backward or forward from the node to reinsert
 ; ---------------------------------------------------------------------------
-sub_1F91E8:
+DrawList_SetPriority:
 	link.w	a6,#$FFFC
 	movem.l	d4-d7/a3-a4,-(a7)
 	move.w	$16(a6),d4

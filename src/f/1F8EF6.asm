@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_1F8EF6	[jt 2536]
+; DrawList_Init - clear the 30-node draw list
+; In:  none
+; Out: d0 = 0
+; Evidence: nodes of $14 bytes at -$134C(a5) {+0 next, +4 prev, +8 func, +$C object, +$10 sort key = $5FF, +$12 flags = 0}; head -$1350, tail -$1354, alloc cursor -$1358
 ; ---------------------------------------------------------------------------
-sub_1F8EF6:
+DrawList_Init:
 	link.w	a6,#$0
 	movem.l	d3/d7/a3-a4,-(a7)
 	lea.l	-$134C(a5),a3

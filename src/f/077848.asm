@@ -99,7 +99,7 @@ loc_077924:
 	ext.l	d0
 	move.l	d0,-(a7)
 	move.l	a4,-(a7)
-	jsr	$4E5A(a5)	; -> sub_1F6334
+	jsr	$4E5A(a5)	; -> Obj_SetSpriteDef
 	move.w	-$3C5C(a5),$8C(a4)
 	moveq	#-$4,d0
 	and.b	$2E(a4),d0

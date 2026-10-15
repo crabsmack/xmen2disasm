@@ -19,7 +19,7 @@ sub_05DAEE:
 	move.w	$88(a4),d1
 	ext.l	d1
 	move.l	d1,-(a7)
-	jsr	$4F7A(a5)	; -> sub_1F91E8
+	jsr	$4F7A(a5)	; -> DrawList_SetPriority
 	move.w	#$200,$18(a4)
 	move.w	#$A,$20(a4)
 	lea.l	$10(a7),a7

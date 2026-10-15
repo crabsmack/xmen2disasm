@@ -17,7 +17,7 @@ MagnetoBoss_ClassInit:
 	move.w	d7,-$3CAE(a5)
 	pea.l	$360A4(pc)
 	pea.l	($800).w
-	jsr	$5032(a5)	; -> sub_1FA8DC
+	jsr	$5032(a5)	; -> Mem_StackAlloc
 	ext.l	d7
 	movea.l	-$10F4(a5),a0
 	move.l	d7,d1

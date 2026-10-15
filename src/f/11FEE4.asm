@@ -51,7 +51,7 @@ loc_11FF60:
 	jsr	$517A(a5)	; -> Math_SinDeg
 	move.l	-$10(a6),d1
 	exg.l	d0,d1
-	jsr	$3F9A(a5)	; -> sub_15C1FC
+	jsr	$3F9A(a5)	; -> Math_LMul
 	swap	d0
 	ext.l	d0
 	add.w	-$6(a6),d0

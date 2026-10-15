@@ -50,7 +50,7 @@ sub_037F7E:
 	move.l	a3,-(a7)
 	jsr	$7D2(a5)	; -> sub_036B10
 	pea.l	($F0).w
-	jsr	$4F8A(a5)	; -> sub_1F944E
+	jsr	$4F8A(a5)	; -> Scene_EndAfter
 	addq.w	#$8,a7
 	clr.w	$6C(a4)
 	lea.l	sub_038036(pc),a0

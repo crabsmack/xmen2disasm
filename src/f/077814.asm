@@ -15,7 +15,7 @@ LightBeam_Activate:
 	movea.l	$3E(a0),a1
 	jsr	(a1)
 	move.l	$7C(a4),-(a7)
-	jsr	$4FEA(a5)	; -> sub_1F9D38
+	jsr	$4FEA(a5)	; -> Timer_Free
 	moveq	#$0,d0
 	move.l	d0,$7C(a4)
 	movea.l	-$4(a6),a4

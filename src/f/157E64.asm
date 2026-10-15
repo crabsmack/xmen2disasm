@@ -21,7 +21,7 @@ sub_157E64:
 	move.l	a3,d0
 	beq.s	loc_157EB0
 	move.l	a3,-(a7)
-	jsr	$4FE2(a5)	; -> sub_1F9D1E
+	jsr	$4FE2(a5)	; -> Timer_Stop
 	addq.w	#$4,a7
 loc_157EB0:
 	moveq	#-$1,d0
@@ -30,7 +30,7 @@ loc_157EB0:
 	move.w	$88(a4),d0
 	ext.l	d0
 	move.l	d0,-(a7)
-	jsr	$4F72(a5)	; -> sub_1F9122
+	jsr	$4F72(a5)	; -> DrawList_Remove
 	move.w	#$FFFF,$88(a4)
 	addq.w	#$4,a7
 loc_157ECC:

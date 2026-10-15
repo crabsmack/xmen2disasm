@@ -74,7 +74,7 @@ loc_09AE3A:
 	move.w	$88(a4),d0
 	ext.l	d0
 	move.l	d0,-(a7)
-	jsr	$4F7A(a5)	; -> sub_1F91E8
+	jsr	$4F7A(a5)	; -> DrawList_SetPriority
 	move.l	a4,d0
 	lea.l	$10(a7),a7
 	movem.l	-$C(a6),a3-a4

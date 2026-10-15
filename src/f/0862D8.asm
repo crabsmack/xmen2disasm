@@ -87,7 +87,7 @@ loc_0863B4:
 	pea.l	$864E0(pc)
 	ext.l	d6
 	move.l	d6,-(a7)
-	jsr	$5032(a5)	; -> sub_1FA8DC
+	jsr	$5032(a5)	; -> Mem_StackAlloc
 	movea.l	$8(a6),a0
 	move.l	d0,$92(a0)
 	move.l	d5,d6

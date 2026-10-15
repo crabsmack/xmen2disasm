@@ -21,7 +21,7 @@ sub_1125B8:
 	lea.l	$10(a7),a7
 	bgt.s	loc_112628
 	move.l	$9E(a4),-(a7)
-	jsr	$4FE2(a5)	; -> sub_1F9D1E
+	jsr	$4FE2(a5)	; -> Timer_Stop
 	moveq	#$63,d0
 	move.l	d0,-(a7)
 	jsr	$5222(a5)	; -> Snd_Stop

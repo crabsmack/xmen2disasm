@@ -45,7 +45,7 @@ loc_0362EA:
 	tst.l	$7C(a4)
 	beq.s	loc_03630E
 	move.l	$7C(a4),-(a7)
-	jsr	$4FDA(a5)	; -> sub_1F9D04
+	jsr	$4FDA(a5)	; -> Timer_Start
 	addq.w	#$4,a7
 loc_03630E:
 	moveq	#$1,d0
@@ -97,7 +97,7 @@ loc_036360:
 	move.l	a4,-(a7)
 	movea.l	(a4),a0
 	move.l	$1A(a0),-(a7)
-	jsr	$4F6A(a5)	; -> sub_1F8FA2
+	jsr	$4F6A(a5)	; -> DrawList_Add
 	move.w	d0,$88(a4)
 	lea.l	$18(a7),a7
 loc_036398:

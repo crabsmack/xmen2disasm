@@ -9,7 +9,7 @@ Sys_InitHardware:
 	move.l	d7,-(a7)
 	moveq	#$0,d0
 	move.l	d0,g_VBlankHook(a5)
-	jsr	$4D92(a5)	; -> sub_1F4890
+	jsr	$4D92(a5)	; -> unk_Sys_1F4890
 	moveq	#$0,d7
 	tst.l	d7
 	beq.s	loc_160676

@@ -60,7 +60,7 @@ loc_0AD6F8:
 	move.w	g_CameraX(a5),d0
 	ext.l	d0
 	move.l	d0,-(a7)
-	jsr	$4E3A(a5)	; -> sub_1F6258
+	jsr	$4E3A(a5)	; -> Math_MulFix8
 	move.w	d0,-$3AC6(a5)
 	move.w	-$38BC(a5),d0
 	ext.l	d0

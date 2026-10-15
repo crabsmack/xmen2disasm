@@ -83,7 +83,7 @@ loc_0AD134:
 loc_0AD140:
 	moveq	#$A,d0
 	move.l	d0,-(a7)
-	jsr	$4F8A(a5)	; -> sub_1F944E
+	jsr	$4F8A(a5)	; -> Scene_EndAfter
 	addq.w	#$4,a7
 	clr.w	$6C(a4)
 	lea.l	sub_0AD166(pc),a0

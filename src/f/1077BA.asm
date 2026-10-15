@@ -22,7 +22,7 @@ loc_1077E4:
 	pea.l	$1077FE(pc)
 	moveq	#$10,d0
 	move.l	d0,-(a7)
-	jsr	$5032(a5)	; -> sub_1FA8DC
+	jsr	$5032(a5)	; -> Mem_StackAlloc
 	move.l	d0,-$3BCE(a5)
 	clr.b	-$3BCA(a5)
 	addq.w	#$8,a7

@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_1F9D52	[jt 2554]
+; Timer_RunAll - per-frame timer pass: count down running timers, call due callbacks, then reap freed and start pending ones
+; In:  none
+; Out: none
+; Evidence: loop 1 over list -$10EC: state > 0 decremented; state 0 -> state = period, -$10F0(a5) = timer, call func(arg, timer); loop 2: -1 unlinked and set -3, -4 set to 0; called from the scene frame loop sub_1FA124
 ; ---------------------------------------------------------------------------
-sub_1F9D52:
+Timer_RunAll:
 	link.w	a6,#$FFFC
 	movem.l	a3-a4,-(a7)
 	movea.l	-$10EC(a5),a4

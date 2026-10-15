@@ -9,7 +9,7 @@ sub_0BCB92:
 	tst.w	$6E(a4)
 	bgt.s	loc_0BCBC8
 	pea.l	($F0).w
-	jsr	$4F8A(a5)	; -> sub_1F944E
+	jsr	$4F8A(a5)	; -> Scene_EndAfter
 	moveq	#$0,d0
 	move.l	d0,-$3B20(a5)
 	move.l	a4,-(a7)

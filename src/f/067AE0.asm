@@ -41,7 +41,7 @@ sub_067AE0:
 	lsl.l	d0,d3
 	move.l	d3,d0
 	moveq	#$8,d1
-	jsr	$3FA2(a5)	; -> sub_15C222
+	jsr	$3FA2(a5)	; -> Math_LDivS
 	move.l	d0,$26(a3)
 	move.w	$A0(a4),d0
 	ext.l	d0
@@ -55,7 +55,7 @@ sub_067AE0:
 	lsl.l	d0,d1
 	move.l	d1,d0
 	moveq	#$8,d1
-	jsr	$3FA2(a5)	; -> sub_15C222
+	jsr	$3FA2(a5)	; -> Math_LDivS
 	move.l	d0,$2A(a3)
 	move.w	$90(a4),d0
 	ext.l	d0
@@ -67,7 +67,7 @@ sub_067AE0:
 	swap	d0
 	clr.w	d0
 	moveq	#$8,d1
-	jsr	$3FA2(a5)	; -> sub_15C222
+	jsr	$3FA2(a5)	; -> Math_LDivS
 	move.l	d0,$1E(a3)
 	move.w	$92(a4),d0
 	ext.l	d0
@@ -79,7 +79,7 @@ sub_067AE0:
 	swap	d0
 	clr.w	d0
 	moveq	#$8,d1
-	jsr	$3FA2(a5)	; -> sub_15C222
+	jsr	$3FA2(a5)	; -> Math_LDivS
 	move.l	d0,$22(a3)
 	move.w	#$8,$98(a4)
 	move.w	$94(a4),d0

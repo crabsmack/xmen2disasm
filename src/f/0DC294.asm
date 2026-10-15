@@ -7,7 +7,7 @@ sub_0DC294:
 	pea.l	$DC2C4(pc)
 	moveq	#$1E,d0
 	move.l	d0,-(a7)
-	jsr	$5032(a5)	; -> sub_1FA8DC
+	jsr	$5032(a5)	; -> Mem_StackAlloc
 	move.l	d0,-$3BFA(a5)
 	movea.l	d0,a4
 	moveq	#$F,d7

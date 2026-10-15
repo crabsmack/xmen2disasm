@@ -123,7 +123,7 @@ loc_0FCAA0:
 	sub.l	d5,d0
 	ext.l	d6
 	move.l	d6,d1
-	jsr	$3FA2(a5)	; -> sub_15C222
+	jsr	$3FA2(a5)	; -> Math_LDivS
 	move.w	d0,-$3B40(a5)
 loc_0FCABA:
 	tst.w	-$3B40(a5)
@@ -179,7 +179,7 @@ loc_0FCB1E:
 	jsr	$5172(a5)	; -> Math_CosDeg
 	move.l	-$4(a6),d1
 	exg.l	d0,d1
-	jsr	$3F9A(a5)	; -> sub_15C1FC
+	jsr	$3F9A(a5)	; -> Math_LMul
 	move.l	d0,d4
 	move.w	-$3B06(a5),d0
 	ext.l	d0
@@ -190,7 +190,7 @@ loc_0FCB1E:
 	jsr	$517A(a5)	; -> Math_SinDeg
 	move.l	-$8(a6),d1
 	exg.l	d0,d1
-	jsr	$3F9A(a5)	; -> sub_15C1FC
+	jsr	$3F9A(a5)	; -> Math_LMul
 	move.l	d0,d5
 	move.l	d4,d7
 	swap	d7

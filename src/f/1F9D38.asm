@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_1F9D38	[jt 2553]
+; Timer_Free - free a timer; it is unlinked at the end of the next Timer_RunAll pass
+; In:  8(a6) = timer pointer (null ignored)
+; Out: none
+; Evidence: state = -1; Timer_RunAll's second loop unlinks -1 slots and sets them to -3 (free); callers then clear their stored pointer
 ; ---------------------------------------------------------------------------
-sub_1F9D38:
+Timer_Free:
 	link.w	a6,#$0
 	move.l	a4,-(a7)
 	movea.l	$8(a6),a4

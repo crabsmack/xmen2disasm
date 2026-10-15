@@ -13,7 +13,7 @@ sub_1F64B4:
 	addq.w	#$4,a7
 	beq.s	loc_1F64E4
 	move.l	-$4(a6),-(a7)
-	jsr	$4FE2(a5)	; -> sub_1F9D1E
+	jsr	$4FE2(a5)	; -> Timer_Stop
 	addq.w	#$4,a7
 loc_1F64E4:
 	move.b	$3B(a3),$3C(a4)

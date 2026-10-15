@@ -69,7 +69,7 @@ sub_15DCC4:
 	move.l	d0,-(a7)
 	movea.l	(a4),a0
 	move.l	$4A(a0),-(a7)
-	jsr	$4FD2(a5)	; -> sub_1F9C92
+	jsr	$4FD2(a5)	; -> Timer_Create
 	move.l	d0,$7C(a4)
 	moveq	#$0,d0
 	move.l	d0,$80(a4)

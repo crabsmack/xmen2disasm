@@ -31,7 +31,7 @@ loc_02DB2A:
 	bne.s	loc_02DB98
 	moveq	#$28,d0
 	move.l	d0,-(a7)
-	jsr	$4F8A(a5)	; -> sub_1F944E
+	jsr	$4F8A(a5)	; -> Scene_EndAfter
 	move.b	$A6(a4),d0
 	cmpi.b	#$4,d0
 	addq.w	#$4,a7

@@ -75,7 +75,7 @@ loc_11F738:
 	neg.l	d0
 loc_11F754:
 	move.l	-$1A(a6),d1
-	jsr	$3F9A(a5)	; -> sub_15C1FC
+	jsr	$3F9A(a5)	; -> Math_LMul
 	swap	d0
 	ext.l	d0
 	move.w	d0,-$6(a6)
@@ -114,7 +114,7 @@ loc_11F7A2:
 	neg.l	d0
 loc_11F7C2:
 	move.l	-$1A(a6),d1
-	jsr	$3F9A(a5)	; -> sub_15C1FC
+	jsr	$3F9A(a5)	; -> Math_LMul
 	swap	d0
 	ext.l	d0
 	move.w	d0,-$4(a6)
@@ -146,7 +146,7 @@ loc_11F80C:
 	move.l	(a0,d1.w),d1
 	neg.l	d1
 loc_11F826:
-	jsr	$3F9A(a5)	; -> sub_15C1FC
+	jsr	$3F9A(a5)	; -> Math_LMul
 	swap	d0
 	ext.l	d0
 	add.w	-$E(a6),d0
@@ -186,7 +186,7 @@ loc_11F87C:
 	neg.l	d0
 loc_11F898:
 	move.l	-$1A(a6),d1
-	jsr	$3F9A(a5)	; -> sub_15C1FC
+	jsr	$3F9A(a5)	; -> Math_LMul
 	swap	d0
 	ext.l	d0
 	move.w	d0,-$6(a6)
@@ -225,7 +225,7 @@ loc_11F8E6:
 	neg.l	d0
 loc_11F906:
 	move.l	-$1A(a6),d1
-	jsr	$3F9A(a5)	; -> sub_15C1FC
+	jsr	$3F9A(a5)	; -> Math_LMul
 	swap	d0
 	ext.l	d0
 	move.w	d0,-$4(a6)
@@ -253,7 +253,7 @@ loc_11F946:
 	move.l	(a0,d1.w),d1
 	neg.l	d1
 loc_11F95A:
-	jsr	$3F9A(a5)	; -> sub_15C1FC
+	jsr	$3F9A(a5)	; -> Math_LMul
 	swap	d0
 	ext.l	d0
 	add.w	-$E(a6),d0

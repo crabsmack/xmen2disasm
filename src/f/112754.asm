@@ -22,7 +22,7 @@ sub_112754:
 	movea.l	$56(a0),a1
 	jsr	(a1)
 	pea.l	($F0).w
-	jsr	$4F8A(a5)	; -> sub_1F944E
+	jsr	$4F8A(a5)	; -> Scene_EndAfter
 	movea.l	-$3BC4(a5),a0
 	tst.b	$10(a0)
 	lea.l	$C(a7),a7

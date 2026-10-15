@@ -10,7 +10,7 @@ sub_08206A:
 	moveq	#$1,d1
 	move.l	d1,-(a7)
 	pea.l	sub_082038(pc)
-	jsr	$4FD2(a5)	; -> sub_1F9C92
+	jsr	$4FD2(a5)	; -> Timer_Create
 	movea.l	d0,a4
 	move.w	#$300,-$3AFA(a5)
 	move.l	a4,d0
@@ -18,7 +18,7 @@ sub_08206A:
 	beq.s	loc_0820A6
 	move.l	a4,$10(a4)
 	move.l	a4,-(a7)
-	jsr	$4FDA(a5)	; -> sub_1F9D04
+	jsr	$4FDA(a5)	; -> Timer_Start
 	move.l	g_Camera(a5),-(a7)
 	jsr	sub_081F02(pc)
 	addq.w	#$8,a7

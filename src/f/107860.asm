@@ -16,7 +16,7 @@ loc_10787A:
 	cmpa.l	$4(a3),a4
 	bls.s	loc_107898
 	move.l	-$10F0(a5),-(a7)
-	jsr	$4FEA(a5)	; -> sub_1F9D38
+	jsr	$4FEA(a5)	; -> Timer_Free
 	clr.b	-$3BCA(a5)
 	addq.w	#$4,a7
 	bra.w	loc_1079CE

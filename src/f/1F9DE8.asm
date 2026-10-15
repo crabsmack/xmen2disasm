@@ -31,7 +31,7 @@ sub_1F9DE8:
 	clr.w	g_DemoPad(a5)
 	moveq	#$2,d0
 	move.l	d0,-(a7)
-	jsr	$4F8A(a5)	; -> sub_1F944E
+	jsr	$4F8A(a5)	; -> Scene_EndAfter
 	addq.w	#$4,a7
 loc_1F9E42:
 	unlk	a6

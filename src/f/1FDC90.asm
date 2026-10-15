@@ -1,8 +1,8 @@
 ; ---------------------------------------------------------------------------
-; VDP_FrameUpdate - once-per-frame V-blank video work: palette fade/upload, scroll registers, queued DMA, then the sprite flicker helper
+; VDP_FrameUpdate - V-int system hook: once-per-frame video work (palette fade/upload, scroll registers, queued DMA, sprite flicker helper)
 ; In:  none
 ; Out: none
-; Evidence: byte -$3A08 = 1; guard byte -$3A0C (cleared by VDP_WaitVBlank) makes it run once per frame: Pal_Update, VDP_UpdateScroll, and if byte -$1D4A set: clear it, VDP_FlushDmaQueue, -$3A0A = 1; always calls sub_1E1928; jt 2591 with no static caller (reached indirectly), active every TAS frame from 7
+; Evidence: installed as g_VBlankHook (jt $511A) by Sys_InitGameVideo, so Irq_VBlank calls it every V-int; byte -$3A08 = 1; guard g_FrameUpdated (cleared by VDP_WaitVBlank) makes the work run once per game frame: Pal_Update, VDP_UpdateScroll, and if g_DmaFlushReq: clear it, VDP_FlushDmaQueue, -$3A0A = 1; always calls sub_1E1928
 ; ---------------------------------------------------------------------------
 VDP_FrameUpdate:
 	link.w	a6,#$0

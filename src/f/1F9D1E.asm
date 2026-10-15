@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_1F9D1E	[jt 2552]
+; Timer_Stop - stop a timer without freeing it
+; In:  8(a6) = timer pointer (null ignored)
+; Out: none
+; Evidence: state = -2: neither counted down nor fired by Timer_RunAll
 ; ---------------------------------------------------------------------------
-sub_1F9D1E:
+Timer_Stop:
 	link.w	a6,#$0
 	move.l	a4,-(a7)
 	movea.l	$8(a6),a4

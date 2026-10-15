@@ -90,7 +90,7 @@ loc_1F891E:
 	cmp.b	$1(a3),d0
 	bne.w	loc_1F8AD6
 	pea.l	($1).w
-	jsr	$4F8A(a5)	; -> sub_1F944E
+	jsr	$4F8A(a5)	; -> Scene_EndAfter
 	addq.w	#$4,a7
 	clr.b	(a3)
 	bra.w	loc_1F8ACA

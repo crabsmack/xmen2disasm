@@ -2,7 +2,7 @@
 ; Scroll_SetParallax - install a parallax (line/column scroll) descriptor and set VDP reg 11 scroll mode for it
 ; In:  8(a6) = pointer: descriptor (byte type, '2' = column vscroll; byte count; 8-byte band records)
 ; Out: none
-; Evidence: reg 11 shadow g_VdpReg11(a5) + 4 (2-cell vscroll) for type '2', else + 3 (line hscroll); stores the pointer in g_ParallaxDesc(a5); per-band longs at -$846(a5), case 1 bands computed via sub_1F6258/sub_15C222; clears the 448 words at g_HScrollBuf(a5)
+; Evidence: reg 11 shadow g_VdpReg11(a5) + 4 (2-cell vscroll) for type '2', else + 3 (line hscroll); stores the pointer in g_ParallaxDesc(a5); per-band longs at -$846(a5), case 1 bands computed via Math_MulFix8/Math_LDivS; clears the 448 words at g_HScrollBuf(a5)
 ; ---------------------------------------------------------------------------
 Scroll_SetParallax:
 	link.w	a6,#$FFF6

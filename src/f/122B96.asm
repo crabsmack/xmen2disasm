@@ -39,7 +39,7 @@ loc_122BEA:
 	jsr	$517A(a5)	; -> Math_SinDeg
 	move.w	-$8(a6),d1
 	ext.l	d1
-	jsr	$3F9A(a5)	; -> sub_15C1FC
+	jsr	$3F9A(a5)	; -> Math_LMul
 	swap	d0
 	ext.l	d0
 	move.w	d0,-$14(a6)
@@ -51,7 +51,7 @@ loc_122BEA:
 	jsr	$5172(a5)	; -> Math_CosDeg
 	move.w	-$8(a6),d1
 	ext.l	d1
-	jsr	$3F9A(a5)	; -> sub_15C1FC
+	jsr	$3F9A(a5)	; -> Math_LMul
 	swap	d0
 	ext.l	d0
 	move.w	d0,-$12(a6)
@@ -65,7 +65,7 @@ loc_122BEA:
 	jsr	$517A(a5)	; -> Math_SinDeg
 	move.l	-$18(a6),d1
 	exg.l	d0,d1
-	jsr	$3F9A(a5)	; -> sub_15C1FC
+	jsr	$3F9A(a5)	; -> Math_LMul
 	swap	d0
 	ext.l	d0
 	add.w	-$E(a6),d0
@@ -81,7 +81,7 @@ loc_122C6C:
 	jsr	$517A(a5)	; -> Math_SinDeg
 	move.w	-$6(a6),d1
 	ext.l	d1
-	jsr	$3F9A(a5)	; -> sub_15C1FC
+	jsr	$3F9A(a5)	; -> Math_LMul
 	swap	d0
 	ext.l	d0
 	move.w	d0,-$14(a6)
@@ -93,7 +93,7 @@ loc_122C6C:
 	jsr	$5172(a5)	; -> Math_CosDeg
 	move.w	-$6(a6),d1
 	ext.l	d1
-	jsr	$3F9A(a5)	; -> sub_15C1FC
+	jsr	$3F9A(a5)	; -> Math_LMul
 	swap	d0
 	ext.l	d0
 	move.w	d0,-$12(a6)
@@ -106,7 +106,7 @@ loc_122C6C:
 	jsr	$517A(a5)	; -> Math_SinDeg
 	move.l	-$1C(a6),d1
 	exg.l	d0,d1
-	jsr	$3F9A(a5)	; -> sub_15C1FC
+	jsr	$3F9A(a5)	; -> Math_LMul
 	swap	d0
 	ext.l	d0
 	add.w	-$E(a6),d0

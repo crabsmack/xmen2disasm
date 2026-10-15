@@ -11,11 +11,11 @@ BigBio_LevelInit:
 	pea.l	$123560(pc)
 	moveq	#$60,d0
 	move.l	d0,-(a7)
-	jsr	$5032(a5)	; -> sub_1FA8DC
+	jsr	$5032(a5)	; -> Mem_StackAlloc
 	move.l	d0,-$1A8C(a5)
 	pea.l	$12355E(pc)
 	pea.l	($80).w
-	jsr	$5032(a5)	; -> sub_1FA8DC
+	jsr	$5032(a5)	; -> Mem_StackAlloc
 	move.l	d0,-$1A90(a5)
 	clr.w	-$1A92(a5)
 	moveq	#$3,d0
@@ -30,9 +30,9 @@ BigBio_LevelInit:
 	move.l	d1,-(a7)
 	move.l	d1,-(a7)
 	pea.l	sub_121662(pc)
-	jsr	$4FD2(a5)	; -> sub_1F9C92
+	jsr	$4FD2(a5)	; -> Timer_Create
 	move.l	d0,-(a7)
-	jsr	$4FDA(a5)	; -> sub_1F9D04
+	jsr	$4FDA(a5)	; -> Timer_Start
 	movea.l	-$4(a6),a4
 	unlk	a6
 	rts

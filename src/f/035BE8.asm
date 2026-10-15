@@ -155,7 +155,7 @@ loc_035DA2:
 	tst.b	-$1(a6)
 	bne.s	loc_035DB8
 	move.l	$C(a6),-(a7)
-	jsr	$4FEA(a5)	; -> sub_1F9D38
+	jsr	$4FEA(a5)	; -> Timer_Free
 	addq.w	#$4,a7
 loc_035DB8:
 	movem.l	-$22(a6),d4-d7/a3-a4

@@ -497,8 +497,8 @@
 1591BC	; loc_1591BC - runtime: executed in tas
 159482	; loc_159482 - runtime: executed in tas
 15949C	; loc_15949C - runtime: executed in tas
-15C22E	; loc_15C22E - runtime: executed in tas
-15C252	; loc_15C252 - runtime: executed in tas
+15C22E	; Math_LDivS_Sel - runtime: executed in tas
+15C252	; Math_LModS_68000 - runtime: executed in tas
 15F566	; loc_15F566 - runtime: executed in tas
 15F57E	; loc_15F57E - runtime: executed in tas
 15F65C	; loc_15F65C - runtime: executed in tas

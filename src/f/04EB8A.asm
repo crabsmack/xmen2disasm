@@ -68,7 +68,7 @@ loc_04EC2A:
 	move.w	#$FFE0,$20(a4)
 	move.w	#$FFF0,$1E(a4)
 	pea.l	($B4).w
-	jsr	$4F8A(a5)	; -> sub_1F944E
+	jsr	$4F8A(a5)	; -> Scene_EndAfter
 	move.w	#$FF,$6C(a4)
 	addq.w	#$4,a7
 	bra.s	loc_04EC5A

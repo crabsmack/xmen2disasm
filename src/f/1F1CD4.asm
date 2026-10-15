@@ -7,7 +7,7 @@ sub_1F1CD4:
 	movea.l	$8(a6),a4
 	andi.w	#$B3FF,$4(a4)
 	move.l	$7C(a4),-(a7)
-	jsr	$4FDA(a5)	; -> sub_1F9D04
+	jsr	$4FDA(a5)	; -> Timer_Start
 	move.l	#$1000000,d0
 	and.l	$90(a4),d0
 	addq.w	#$4,a7
@@ -53,7 +53,7 @@ loc_1F1D3C:
 	move.l	a4,-(a7)
 	movea.l	(a4),a0
 	move.l	$1A(a0),-(a7)
-	jsr	$4F6A(a5)	; -> sub_1F8FA2
+	jsr	$4F6A(a5)	; -> DrawList_Add
 	move.w	d0,$88(a4)
 	lea.l	$18(a7),a7
 loc_1F1D7A:

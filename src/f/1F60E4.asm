@@ -82,7 +82,7 @@ loc_1F61D4:
 	move.w	g_CameraX(a5),d0
 	ext.l	d0
 	move.l	d0,-(a7)
-	jsr	sub_1F6258(pc)
+	jsr	Math_MulFix8(pc)
 	move.w	d0,-$3AC6(a5)
 	move.w	-$3498(a5),d0
 	muls.w	g_CameraY(a5),d0

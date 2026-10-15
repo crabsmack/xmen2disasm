@@ -22,7 +22,7 @@ Hologram_Init:
 	ext.l	d0
 	move.l	d0,-(a7)
 	move.l	a4,-(a7)
-	jsr	$4E5A(a5)	; -> sub_1F6334
+	jsr	$4E5A(a5)	; -> Obj_SetSpriteDef
 	lea.l	$2802(a5),a0
 	move.l	$2(a0),-(a7)
 	pea.l	$8C(a4)
@@ -80,10 +80,10 @@ loc_0EADE2:
 	moveq	#$3C,d1
 	move.l	d1,-(a7)
 	pea.l	$3F32(a5)
-	jsr	$4FD2(a5)	; -> sub_1F9C92
+	jsr	$4FD2(a5)	; -> Timer_Create
 	movea.l	d0,a4
 	move.l	a4,-(a7)
-	jsr	$4FDA(a5)	; -> sub_1F9D04
+	jsr	$4FDA(a5)	; -> Timer_Start
 	move.b	#$1,-$3BE0(a5)
 	clr.b	-$3BDD(a5)
 	lea.l	$14(a7),a7

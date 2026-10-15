@@ -70,7 +70,7 @@ loc_0BCB3E:
 	bra.s	loc_0BCB88
 loc_0BCB52:
 	pea.l	($F0).w
-	jsr	$4F8A(a5)	; -> sub_1F944E
+	jsr	$4F8A(a5)	; -> Scene_EndAfter
 	moveq	#$0,d0
 	move.l	d0,-$3B20(a5)
 	move.w	$4C(a4),d0

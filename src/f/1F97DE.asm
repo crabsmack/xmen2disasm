@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_1F97DE	[link-after-rts]
+; Pad_P1StartDown - test whether Start is held on pad 1 right now
+; In:  none
+; Out: d0 = long: $80 if Start held, else 0
+; Evidence: Z80_BusRequest, Pad_GetP1Clean, Z80_BusFree, & $80 (Start bit)
 ; ---------------------------------------------------------------------------
-sub_1F97DE:
+Pad_P1StartDown:
 	link.w	a6,#$0
 	move.l	d7,-(a7)
 	jsr	$51F2(a5)	; -> Z80_BusRequest

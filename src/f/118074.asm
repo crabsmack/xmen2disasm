@@ -41,12 +41,12 @@ loc_1180D6:
 	move.l	a4,-(a7)
 	move.l	d0,-(a7)
 	pea.l	sub_1182D4(pc)
-	jsr	$4FD2(a5)	; -> sub_1F9C92
+	jsr	$4FD2(a5)	; -> Timer_Create
 	move.l	d0,$6(a4)
 	lea.l	$10(a7),a7
 	beq.s	loc_118116
 	move.l	$6(a4),-(a7)
-	jsr	$4FDA(a5)	; -> sub_1F9D04
+	jsr	$4FDA(a5)	; -> Timer_Start
 	moveq	#$38,d0
 	move.l	d0,-(a7)
 	jsr	$5222(a5)	; -> Snd_Stop

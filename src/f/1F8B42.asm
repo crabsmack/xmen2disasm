@@ -292,20 +292,20 @@ loc_1F8E1E:
 	pea.l	($0).w
 	pea.l	($2).w
 	pea.l	($0).w
-	jsr	$501A(a5)	; -> sub_1FA8C4
+	jsr	$501A(a5)	; -> Sys_Nop1FA8C4
 	lea.l	$C(a7),a7
 	bra.s	loc_1F8E70
 loc_1F8E4E:
 	pea.l	($63).w
 	pea.l	($FFFFFFFF).w
-	jsr	$5022(a5)	; -> sub_1FA8CC
+	jsr	$5022(a5)	; -> Sys_Nop1FA8CC
 	addq.w	#$8,a7
 	bra.s	loc_1F8E70
 loc_1F8E5E:
 	pea.l	($0).w
 	pea.l	($63).w
 	move.l	a4,-(a7)
-	jsr	$502A(a5)	; -> sub_1FA8D4
+	jsr	$502A(a5)	; -> Sys_Nop1FA8D4
 	lea.l	$C(a7),a7
 loc_1F8E70:
 	suba.l	a2,a2

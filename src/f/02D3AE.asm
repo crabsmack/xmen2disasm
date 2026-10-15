@@ -40,11 +40,11 @@ loc_02D40A:
 	ext.l	d1
 	neg.l	d1
 loc_02D412:
-	jsr	$3FA2(a5)	; -> sub_15C222
+	jsr	$3FA2(a5)	; -> Math_LDivS
 	move.l	d0,d6
 	move.l	d5,d0
 	move.l	d6,d1
-	jsr	$3FA2(a5)	; -> sub_15C222
+	jsr	$3FA2(a5)	; -> Math_LDivS
 	move.w	d0,$16(a4)
 	ext.l	d0
 	add.w	d0,$16(a4)

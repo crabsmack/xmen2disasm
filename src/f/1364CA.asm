@@ -45,7 +45,7 @@ loc_136518:
 	jsr	$5172(a5)	; -> Math_CosDeg
 	move.l	d0,d1
 	move.l	d6,d0
-	jsr	$3F9A(a5)	; -> sub_15C1FC
+	jsr	$3F9A(a5)	; -> Math_LMul
 	asr.l	#$8,d0
 	move.l	-$4(a6),d1
 	add.l	d1,d0
@@ -60,7 +60,7 @@ loc_136518:
 	jsr	$517A(a5)	; -> Math_SinDeg
 	move.l	d0,d1
 	move.l	d6,d0
-	jsr	$3F9A(a5)	; -> sub_15C1FC
+	jsr	$3F9A(a5)	; -> Math_LMul
 	moveq	#$9,d1
 	asr.l	d1,d0
 	move.l	-$8(a6),d1

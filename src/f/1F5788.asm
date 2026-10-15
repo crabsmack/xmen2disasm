@@ -135,7 +135,7 @@ loc_1F5902:
 	move.w	g_CameraX(a5),d0
 	ext.l	d0
 	move.l	d0,-(a7)
-	jsr	sub_1F6258(pc)
+	jsr	Math_MulFix8(pc)
 	move.w	d0,-$3AC6(a5)
 	lea.l	sub_1F60E4(pc),a0
 	cmpa.l	-$38F8(a5),a0
@@ -155,7 +155,7 @@ loc_1F593A:
 	sub.l	d1,d0
 	move.w	-$3498(a5),d1
 	ext.l	d1
-	jsr	$3F9A(a5)	; -> sub_15C1FC
+	jsr	$3F9A(a5)	; -> Math_LMul
 	asr.l	#$8,d0
 	add.w	-$34A0(a5),d0
 	move.w	d0,-$3AC8(a5)
@@ -253,9 +253,9 @@ loc_1F5A5C:
 	add.l	d0,d0
 	move.w	-$3A78(a5),d1
 	ext.l	d1
-	jsr	$3F9A(a5)	; -> sub_15C1FC
+	jsr	$3F9A(a5)	; -> Math_LMul
 	move.l	d0,-(a7)
-	jsr	$5032(a5)	; -> sub_1FA8DC
+	jsr	$5032(a5)	; -> Mem_StackAlloc
 	move.l	d0,-$3A84(a5)
 	moveq	#$0,d0
 	move.l	d0,-(a7)
@@ -293,9 +293,9 @@ loc_1F5AE0:
 	add.l	d0,d0
 	move.w	-$3A7C(a5),d1
 	ext.l	d1
-	jsr	$3F9A(a5)	; -> sub_15C1FC
+	jsr	$3F9A(a5)	; -> Math_LMul
 	move.l	d0,-(a7)
-	jsr	$5032(a5)	; -> sub_1FA8DC
+	jsr	$5032(a5)	; -> Mem_StackAlloc
 	move.l	d0,-$3A88(a5)
 	moveq	#$0,d0
 	move.l	d0,-(a7)
@@ -326,7 +326,7 @@ loc_1F5B38:
 	pea.l	$1F5F3A(pc)
 	moveq	#$0,d0
 	move.l	d0,-(a7)
-	jsr	$5032(a5)	; -> sub_1FA8DC
+	jsr	$5032(a5)	; -> Mem_StackAlloc
 	move.l	-$348C(a5),-$3AA6(a5)
 	moveq	#$0,d0
 	move.l	d0,-(a7)
@@ -399,7 +399,7 @@ loc_1F5C06:
 	pea.l	$1F5F16(pc)
 	moveq	#$0,d0
 	move.l	d0,-(a7)
-	jsr	$5032(a5)	; -> sub_1FA8DC
+	jsr	$5032(a5)	; -> Mem_StackAlloc
 	movea.l	$14(a6),a0
 	move.w	$8(a0),-$3AAA(a5)
 	move.l	-$348C(a5),-$3A8C(a5)
@@ -470,7 +470,7 @@ loc_1F5CF0:
 	ext.l	d0
 	add.l	d0,d0
 	move.l	d0,-(a7)
-	jsr	$5032(a5)	; -> sub_1FA8DC
+	jsr	$5032(a5)	; -> Mem_StackAlloc
 	move.l	d0,-$3A72(a5)
 	clr.w	d6
 	clr.w	d7
@@ -543,7 +543,7 @@ loc_1F5DC4:
 	ext.l	d0
 	add.l	d0,d0
 	move.l	d0,-(a7)
-	jsr	$5032(a5)	; -> sub_1FA8DC
+	jsr	$5032(a5)	; -> Mem_StackAlloc
 	move.l	d0,-$3A76(a5)
 	clr.w	d6
 	clr.w	d7

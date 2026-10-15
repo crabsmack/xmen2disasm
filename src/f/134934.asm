@@ -37,7 +37,7 @@ FlyBrood_Init:
 	ext.l	d0
 	move.l	d0,-(a7)
 	move.l	a4,-(a7)
-	jsr	$4E5A(a5)	; -> sub_1F6334
+	jsr	$4E5A(a5)	; -> Obj_SetSpriteDef
 	addq.w	#$8,a7
 	bra.s	loc_1349BC
 loc_1349A4:

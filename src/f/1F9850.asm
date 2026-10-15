@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_1F9850	[jt 2548]
+; Sys_InitGameVideo - game start-up: Game_Init, reset palette/DMA state, clear the base palette and install VDP_FrameUpdate as the V-int hook
+; In:  none
+; Out: none
+; Evidence: calls jt $6A Game_Init; clears g_PalBaseDirty, g_PalFadeActive, g_DmaFlushReq; g_PalFadeDelay = 4; VDP reg $90 = 1; zeroes g_PalBase; g_VBlankHook = jt $511A (VDP_FrameUpdate); Game_InitButtonMasks; called by Game_Main
 ; ---------------------------------------------------------------------------
-sub_1F9850:
+Sys_InitGameVideo:
 	link.w	a6,#$0
 	movem.l	d3/d7,-(a7)
 	jsr	$6A(a5)	; -> Game_Init

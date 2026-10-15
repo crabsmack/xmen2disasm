@@ -9,7 +9,7 @@ Deathbird_LevelInit:
 	pea.l	$111E42(pc)
 	moveq	#$14,d0
 	move.l	d0,-(a7)
-	jsr	$5032(a5)	; -> sub_1FA8DC
+	jsr	$5032(a5)	; -> Mem_StackAlloc
 	move.l	d0,-$3B18(a5)
 	addq.w	#$8,a7
 	beq.s	loc_111E16

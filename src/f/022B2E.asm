@@ -8,7 +8,7 @@ sub_022B2E:
 	bne.s	loc_022B48
 	moveq	#$1,d0
 	move.l	d0,-(a7)
-	jsr	$4F8A(a5)	; -> sub_1F944E
+	jsr	$4F8A(a5)	; -> Scene_EndAfter
 	moveq	#$1,d0
 	addq.w	#$4,a7
 	bra.s	loc_022B4A

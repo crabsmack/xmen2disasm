@@ -24,7 +24,7 @@ loc_1FA816:
 	move.l	d6,d0
 	asl.l	#$2,d0
 	move.l	d0,-(a7)
-	jsr	sub_1FA8DC(pc)
+	jsr	Mem_StackAlloc(pc)
 	move.l	d0,-$10F4(a5)
 	moveq	#$0,d7
 	addq.w	#$8,a7

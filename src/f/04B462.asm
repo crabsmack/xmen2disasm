@@ -60,7 +60,7 @@ loc_04B4C8:
 	move.w	-$2(a6),d0
 	ext.l	d0
 	move.l	d7,d1
-	jsr	$3FA2(a5)	; -> sub_15C222
+	jsr	$3FA2(a5)	; -> Math_LDivS
 	move.w	d0,d6
 loc_04B4EA:
 	cmpi.w	#$2,d5
@@ -78,7 +78,7 @@ loc_04B4F4:
 	move.w	-$2(a6),d0
 	ext.l	d0
 	move.l	d4,d1
-	jsr	$3FA2(a5)	; -> sub_15C222
+	jsr	$3FA2(a5)	; -> Math_LDivS
 	move.w	d0,d7
 loc_04B516:
 	move.w	d6,$1E(a4)

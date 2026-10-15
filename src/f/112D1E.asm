@@ -24,7 +24,7 @@ sub_112D1E:
 	movea.l	$6E(a0),a1
 	jsr	(a1)
 	move.l	$9E(a4),-(a7)
-	jsr	$4FDA(a5)	; -> sub_1F9D04
+	jsr	$4FDA(a5)	; -> Timer_Start
 	pea.l	($FC).w
 	jsr	$5222(a5)	; -> Snd_Stop
 	pea.l	($FC).w

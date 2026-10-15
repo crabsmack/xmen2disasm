@@ -30,7 +30,7 @@ Boulder_ClassInit:
 	move.l	#$258,d7
 	pea.l	$5BB84(pc)
 	move.l	d7,-(a7)
-	jsr	$5032(a5)	; -> sub_1FA8DC
+	jsr	$5032(a5)	; -> Mem_StackAlloc
 	addq.l	#$8,a7
 	move.l	d0,-(a7)
 	jsr	sub_05B016(pc)

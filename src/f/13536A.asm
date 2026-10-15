@@ -37,7 +37,7 @@ loc_1353B8:
 	move.w	#$200,d1
 loc_1353BC:
 	ext.l	d1
-	jsr	$3FA2(a5)	; -> sub_15C222
+	jsr	$3FA2(a5)	; -> Math_LDivS
 	move.l	d0,d5
 	beq.s	loc_1353CA
 	move.l	d5,d0
@@ -47,7 +47,7 @@ loc_1353CA:
 loc_1353CC:
 	move.l	d0,d1
 	move.l	-$4(a6),d0
-	jsr	$3FA2(a5)	; -> sub_15C222
+	jsr	$3FA2(a5)	; -> Math_LDivS
 	move.w	d0,d6
 	moveq	#$10,d0
 	and.b	$2E(a4),d0

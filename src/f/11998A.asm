@@ -14,7 +14,7 @@ sub_11998A:
 	movea.l	$22(a0),a1
 	jsr	(a1)
 	move.l	-$10F0(a5),-(a7)
-	jsr	$4FEA(a5)	; -> sub_1F9D38
+	jsr	$4FEA(a5)	; -> Timer_Free
 	movea.l	-$4(a6),a4
 	unlk	a6
 	rts

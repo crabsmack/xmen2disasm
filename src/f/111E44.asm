@@ -51,7 +51,7 @@ Deathbird_Init:
 	ext.l	d0
 	move.l	d0,-(a7)
 	move.l	a4,-(a7)
-	jsr	$4E5A(a5)	; -> sub_1F6334
+	jsr	$4E5A(a5)	; -> Obj_SetSpriteDef
 	moveq	#-$4,d0
 	and.b	$2E(a4),d0
 	moveq	#$1,d1
@@ -90,7 +90,7 @@ Deathbird_Init:
 	move.l	a4,-(a7)
 	move.l	d0,-(a7)
 	pea.l	sub_111BAA(pc)
-	jsr	$4FD2(a5)	; -> sub_1F9C92
+	jsr	$4FD2(a5)	; -> Timer_Create
 	move.l	d0,$9E(a4)
 	move.l	-$3BC8(a5),$9A(a4)
 	movea.l	-$3B18(a5),a0

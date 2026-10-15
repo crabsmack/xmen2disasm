@@ -413,7 +413,7 @@ loc_1FA616:
 	subq.l	#$1,d6
 	bne.s	loc_1FA5D8
 loc_1FA61A:
-	jsr	sub_1F9D52(pc)
+	jsr	Timer_RunAll(pc)
 	jsr	sub_1FA05A(pc)
 	tst.b	-$3890(a5)
 	beq.s	loc_1FA638
@@ -429,12 +429,12 @@ loc_1FA638:
 	tst.b	-$38B6(a5)
 	beq.s	loc_1FA660
 loc_1FA644:
-	jsr	sub_1F97DE(pc)
+	jsr	Pad_P1StartDown(pc)
 	tst.b	d0
 	beq.s	loc_1FA660
 	moveq	#$1,d0
 	move.l	d0,-(a7)
-	jsr	$4F8A(a5)	; -> sub_1F944E
+	jsr	$4F8A(a5)	; -> Scene_EndAfter
 	clr.b	g_DemoActive(a5)
 	move.b	#$1,-$38C6(a5)
 	addq.w	#$4,a7

@@ -19,7 +19,7 @@ BanimazaDoor_ClassInit:
 	lea.l	$10(a7),a7
 	pea.l	$3A2F2(pc)
 	pea.l	($120).w
-	jsr	$5032(a5)	; -> sub_1FA8DC
+	jsr	$5032(a5)	; -> Mem_StackAlloc
 	move.l	d0,-$3C84(a5)
 	lea.l	sub_039D24(pc),a0
 	move.l	a0,-$33FA(a5)

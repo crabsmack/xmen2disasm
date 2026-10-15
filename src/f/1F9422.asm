@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_1F9422	[jt 2540]
+; DrawList_DrawAll - call every draw-list callback in sorted order
+; In:  none
+; Out: none
+; Evidence: walks head -$1350 via +0, calls +8 func(+$C object) when set; callers sub_0477E4, sub_0C0FD2 (per-frame scene drawing)
 ; ---------------------------------------------------------------------------
-sub_1F9422:
+DrawList_DrawAll:
 	link.w	a6,#$0
 	move.l	a4,-(a7)
 	movea.l	-$1350(a5),a4

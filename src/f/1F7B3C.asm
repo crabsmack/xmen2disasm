@@ -41,7 +41,7 @@ loc_1F7B7C:
 	move.l	d6,d0
 	lsl.l	#$8,d0
 	move.l	d7,d1
-	jsr	$3FA2(a5)	; -> sub_15C222
+	jsr	$3FA2(a5)	; -> Math_LDivS
 	move.w	d0,$4(a4)
 	bra.s	loc_1F7BAC
 loc_1F7B94:
@@ -51,7 +51,7 @@ loc_1F7B9A:
 	move.l	d7,d0
 	lsl.l	#$8,d0
 	move.l	d6,d1
-	jsr	$3FA2(a5)	; -> sub_15C222
+	jsr	$3FA2(a5)	; -> Math_LDivS
 	move.w	d0,$4(a4)
 	ori.b	#$8,(a4)
 loc_1F7BAC:

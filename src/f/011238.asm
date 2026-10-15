@@ -37,7 +37,7 @@ sub_011238:
 	move.w	$88(a4),d1
 	ext.l	d1
 	move.l	d1,-(a7)
-	jsr	$4F7A(a5)	; -> sub_1F91E8
+	jsr	$4F7A(a5)	; -> DrawList_SetPriority
 	ori.b	#$10,$2E(a4)
 	addi.l	#$1200,$8(a4)
 	addi.l	#$1100,$C(a4)

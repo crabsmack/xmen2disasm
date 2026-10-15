@@ -28,12 +28,12 @@ loc_09801A:
 	move.l	d0,-(a7)
 	movea.l	(a4),a0
 	move.l	$E(a0),-(a7)
-	jsr	$4FD2(a5)	; -> sub_1F9C92
+	jsr	$4FD2(a5)	; -> Timer_Create
 	move.l	d0,$24(a4)
 	lea.l	$10(a7),a7
 	beq.s	loc_098040
 	move.l	$24(a4),-(a7)
-	jsr	$4FDA(a5)	; -> sub_1F9D04
+	jsr	$4FDA(a5)	; -> Timer_Start
 	addq.w	#$4,a7
 loc_098040:
 	moveq	#$0,d0
@@ -46,7 +46,7 @@ loc_098040:
 	move.l	a4,-(a7)
 	movea.l	(a4),a0
 	move.l	$12(a0),-(a7)
-	jsr	$4F6A(a5)	; -> sub_1F8FA2
+	jsr	$4F6A(a5)	; -> DrawList_Add
 	move.w	d0,$28(a4)
 	lea.l	$18(a7),a7
 loc_098062:

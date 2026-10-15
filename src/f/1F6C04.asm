@@ -141,7 +141,7 @@ loc_1F6D3E:
 	pea.l	$1F6D74(pc)
 	moveq	#$0,d0
 	move.l	d0,-(a7)
-	jsr	$5032(a5)	; -> sub_1FA8DC
+	jsr	$5032(a5)	; -> Mem_StackAlloc
 	jsr	sub_1F84BE(pc)
 	move.l	-$348C(a5),(a3)
 	move.l	-$348C(a5),-$33D6(a5)

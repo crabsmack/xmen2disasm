@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_1F9C92	[jt 2550]
+; Timer_Create - allocate a timer slot with a callback, period and argument, created stopped, and link it at the list head
+; In:  8(a6) = callback(arg, timer)   $C(a6) = word: period in frames   $10(a6) = long: argument   $14(a6) = byte: user byte
+; Out: d0 = timer slot pointer, 0 if all 30 are in use
+; Evidence: slot {+0 state, +2 period, +4 next, +8 prev, +$C func, +$10 arg, +$14 byte}; state = -2 (stopped); 27 callers keep the pointer and later Timer_Start/Timer_Free it
 ; ---------------------------------------------------------------------------
-sub_1F9C92:
+Timer_Create:
 	link.w	a6,#$0
 	movem.l	d3/d5-d7/a3-a4,-(a7)
 	move.b	$17(a6),d5

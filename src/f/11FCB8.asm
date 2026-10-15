@@ -73,7 +73,7 @@ loc_11FD76:
 	move.l	(a0,d1.w),d1
 	neg.l	d1
 loc_11FD90:
-	jsr	$3F9A(a5)	; -> sub_15C1FC
+	jsr	$3F9A(a5)	; -> Math_LMul
 	swap	d0
 	ext.l	d0
 	asr.w	#$8,d0

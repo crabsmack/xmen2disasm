@@ -55,7 +55,7 @@ loc_11FB28:
 	neg.l	d1
 loc_11FB42:
 	asr.l	#$8,d1
-	jsr	$3F9A(a5)	; -> sub_15C1FC
+	jsr	$3F9A(a5)	; -> Math_LMul
 	swap	d0
 	ext.l	d0
 	add.w	-$6(a6),d0
@@ -85,7 +85,7 @@ loc_11FB80:
 	neg.l	d1
 loc_11FB92:
 	asr.l	#$8,d1
-	jsr	$3F9A(a5)	; -> sub_15C1FC
+	jsr	$3F9A(a5)	; -> Math_LMul
 	swap	d0
 	ext.l	d0
 	add.w	-$4(a6),d0

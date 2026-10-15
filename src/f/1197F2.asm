@@ -17,7 +17,7 @@ sub_1197F2:
 	ext.l	d0
 	asl.l	#$2,d0
 	move.l	d0,-(a7)
-	jsr	$5032(a5)	; -> sub_1FA8DC
+	jsr	$5032(a5)	; -> Mem_StackAlloc
 	move.l	d0,-$1CA2(a5)
 	clr.w	d7
 	movea.l	-$1CA2(a5),a4

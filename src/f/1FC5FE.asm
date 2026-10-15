@@ -7,7 +7,7 @@ sub_1FC5FE:
 	bne.s	loc_1FC64A
 	pea.l	$1FC6BE(pc)
 	pea.l	($DC0).w
-	jsr	$5032(a5)	; -> sub_1FA8DC
+	jsr	$5032(a5)	; -> Mem_StackAlloc
 	addq.w	#$8,a7
 	movea.l	d0,a0
 	move.l	a0,-$CA6(a5)

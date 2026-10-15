@@ -20,7 +20,7 @@ BioSentinel_Deactivate:
 	bne.s	loc_1209D0
 	clr.w	$4(a4)
 	move.l	$7C(a4),-(a7)
-	jsr	$4FEA(a5)	; -> sub_1F9D38
+	jsr	$4FEA(a5)	; -> Timer_Free
 	moveq	#$0,d0
 	move.l	d0,$7C(a4)
 	moveq	#$0,d1

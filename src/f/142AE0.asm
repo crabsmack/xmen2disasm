@@ -13,7 +13,7 @@ sub_142AE0:
 	move.w	d0,-$1A6E(a5)
 	pea.l	$142B52(pc)
 	pea.l	($100).w
-	jsr	$5032(a5)	; -> sub_1FA8DC
+	jsr	$5032(a5)	; -> Mem_StackAlloc
 	move.l	d0,-$1A6C(a5)
 	movea.l	d0,a0
 	lea.l	(a0),a4
@@ -32,10 +32,10 @@ loc_142B20:
 	move.l	-$1A6C(a5),-(a7)
 	move.l	d0,-(a7)
 	pea.l	sub_14304E(pc)
-	jsr	$4FD2(a5)	; -> sub_1F9C92
+	jsr	$4FD2(a5)	; -> Timer_Create
 	lea.l	$10(a7),a7
 	move.l	d0,-(a7)
-	jsr	$4FDA(a5)	; -> sub_1F9D04
+	jsr	$4FDA(a5)	; -> Timer_Start
 	addq.w	#$4,a7
 	movea.l	-$4(a6),a4
 	unlk	a6

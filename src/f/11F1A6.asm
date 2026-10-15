@@ -17,7 +17,7 @@ sub_11F1A6:
 	pea.l	$11F22A(pc)
 	ext.l	d7
 	move.l	d7,-(a7)
-	jsr	$5032(a5)	; -> sub_1FA8DC
+	jsr	$5032(a5)	; -> Mem_StackAlloc
 	move.l	d0,-$1A98(a5)
 	ext.l	d7
 	move.l	d7,-(a7)
@@ -33,7 +33,7 @@ loc_11F1F6:
 	move.w	#$B4,d0
 	muls.w	d7,d0
 	move.l	#$80,d1
-	jsr	$3FA2(a5)	; -> sub_15C222
+	jsr	$3FA2(a5)	; -> Math_LDivS
 	move.l	d0,-(a7)
 	jsr	$517A(a5)	; -> Math_SinDeg
 	move.l	d0,(a4)

@@ -12,7 +12,7 @@ sub_107834:
 	cmp.l	d1,d0
 	bcc.s	loc_10785C
 	move.l	-$10F0(a5),-(a7)
-	jsr	$4FEA(a5)	; -> sub_1F9D38
+	jsr	$4FEA(a5)	; -> Timer_Free
 	clr.b	-$3BCA(a5)
 	addq.w	#$4,a7
 loc_10785C:

@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_1F8F4C	[link-after-rts]
+; DrawList_AllocNode - find a free draw-list node (flags word 0), searching round-robin from the cursor
+; In:  none
+; Out: d0 = node pointer, 0 if none free
+; Evidence: scans -$134C..-$1108 from cursor -$1358 with wrap; advances the cursor past the found node
 ; ---------------------------------------------------------------------------
-sub_1F8F4C:
+DrawList_AllocNode:
 	link.w	a6,#$0
 	movem.l	a3-a4,-(a7)
 	movea.l	-$1358(a5),a4

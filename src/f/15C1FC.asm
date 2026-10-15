@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_15C1FC
+; Math_LMul - 32x32 -> 32-bit multiply (compiler runtime)
+; In:  d0 = long, d1 = long
+; Out: d0 = d0 * d1 (low 32 bits)
+; Evidence: three mulu.w partial products; 12 callers in compiled code
 ; ---------------------------------------------------------------------------
-sub_15C1FC:
+Math_LMul:
 	move.l	d0,-(a7)
 	mulu.w	d1,d0
 	movea.l	d0,a0

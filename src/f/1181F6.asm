@@ -8,7 +8,7 @@ sub_1181F6:
 	tst.l	$6(a4)
 	beq.s	loc_118210
 	move.l	$6(a4),-(a7)
-	jsr	$4FEA(a5)	; -> sub_1F9D38
+	jsr	$4FEA(a5)	; -> Timer_Free
 	addq.w	#$4,a7
 loc_118210:
 	moveq	#$0,d0

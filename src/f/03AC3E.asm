@@ -26,7 +26,7 @@ RollingDiscs_ClassInit:
 	lsl.l	#$2,d1
 	add.l	d0,d1
 	move.l	d1,-(a7)
-	jsr	$5032(a5)	; -> sub_1FA8DC
+	jsr	$5032(a5)	; -> Mem_StackAlloc
 	move.l	d0,-$3C7E(a5)
 	move.w	-$3C7A(a5),d0
 	ext.l	d0

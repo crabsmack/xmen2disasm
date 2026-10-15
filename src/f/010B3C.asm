@@ -38,7 +38,7 @@ sub_010B3C:
 	move.w	-$16D0(a5),d1
 	ext.l	d1
 	move.l	d1,-(a7)
-	jsr	$4F7A(a5)	; -> sub_1F91E8
+	jsr	$4F7A(a5)	; -> DrawList_SetPriority
 	lea.l	$10(a7),a7
 loc_010BAE:
 	cmpi.w	#$1900,d7
@@ -60,7 +60,7 @@ loc_010BAE:
 	move.w	-$16D0(a5),d1
 	ext.l	d1
 	move.l	d1,-(a7)
-	jsr	$4F7A(a5)	; -> sub_1F91E8
+	jsr	$4F7A(a5)	; -> DrawList_SetPriority
 	lea.l	$10(a7),a7
 loc_010BEA:
 	move.b	#$1,-$1(a6)
@@ -102,7 +102,7 @@ loc_010C02:
 	move.w	-$17C0(a5),d1
 	ext.l	d1
 	move.l	d1,-(a7)
-	jsr	$4F7A(a5)	; -> sub_1F91E8
+	jsr	$4F7A(a5)	; -> DrawList_SetPriority
 	lea.l	$10(a7),a7
 loc_010C5E:
 	cmpi.w	#$1900,d7
@@ -124,7 +124,7 @@ loc_010C5E:
 	move.w	-$17C0(a5),d1
 	ext.l	d1
 	move.l	d1,-(a7)
-	jsr	$4F7A(a5)	; -> sub_1F91E8
+	jsr	$4F7A(a5)	; -> DrawList_SetPriority
 	lea.l	$10(a7),a7
 loc_010C9A:
 	moveq	#$1,d4

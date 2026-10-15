@@ -72,14 +72,14 @@ loc_06477A:
 	ext.l	d0
 	lsl.l	#$5,d0
 	move.l	d0,-(a7)
-	jsr	$5032(a5)	; -> sub_1FA8DC
+	jsr	$5032(a5)	; -> Mem_StackAlloc
 	move.l	d0,-$C9E(a5)
 	pea.l	$647CC(pc)
 	move.l	-$8(a6),d0
 	moveq	#$26,d1
 	add.l	d1,d0
 	move.l	d0,-(a7)
-	jsr	$5032(a5)	; -> sub_1FA8DC
+	jsr	$5032(a5)	; -> Mem_StackAlloc
 	move.l	d0,-$C9A(a5)
 	movea.l	d0,a3
 	clr.w	(a3)

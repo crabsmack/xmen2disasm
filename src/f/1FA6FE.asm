@@ -45,7 +45,7 @@ loc_1FA764:
 	move.b	#$1,-$38BE(a5)
 	jsr	sub_1FA7E8(pc)
 	jsr	sub_1FA124(pc)
-	jsr	sub_1FA878(pc)
+	jsr	ClassList_CallSlot62(pc)
 	clr.b	-$38BE(a5)
 	clr.b	g_DemoActive(a5)
 	lea.l	$5142(a5),a0

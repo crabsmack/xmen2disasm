@@ -11,13 +11,13 @@ sub_15D988:
 	move.l	d7,d0
 	lsl.l	#$2,d0
 	move.l	d0,-(a7)
-	jsr	$5032(a5)	; -> sub_1FA8DC
+	jsr	$5032(a5)	; -> Mem_StackAlloc
 	move.l	d0,-$34A6(a5)
 	pea.l	$15DA34(pc)
 	move.w	#$C2,d0
 	muls.w	d7,d0
 	move.l	d0,-(a7)
-	jsr	$5032(a5)	; -> sub_1FA8DC
+	jsr	$5032(a5)	; -> Mem_StackAlloc
 	move.l	d0,-$13F6(a5)
 	move.w	d7,-$13F2(a5)
 	lea.l	g_Player1(a5),a0

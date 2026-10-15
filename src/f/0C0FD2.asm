@@ -167,6 +167,6 @@ loc_0C114C:
 	move.w	#$5,-$17DE(a5)
 	lea.l	$18(a7),a7
 loc_0C11AE:
-	jsr	$4F82(a5)	; -> sub_1F9422
+	jsr	$4F82(a5)	; -> DrawList_DrawAll
 	unlk	a6
 	rts

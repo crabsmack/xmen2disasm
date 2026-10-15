@@ -40,7 +40,7 @@ sub_1184AC:
 	move.l	d0,-(a7)
 	movea.l	(a4),a0
 	move.l	$12(a0),-(a7)
-	jsr	$4FD2(a5)	; -> sub_1F9C92
+	jsr	$4FD2(a5)	; -> Timer_Create
 	move.l	d0,$3E(a4)
 	movem.l	-$C(a6),d6-d7/a4
 	unlk	a6

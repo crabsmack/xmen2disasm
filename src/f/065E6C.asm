@@ -13,11 +13,11 @@ sub_065E6C:
 	jsr	$50A2(a5)	; -> sub_1FC2E8
 	pea.l	$66B24(pc)
 	pea.l	($2A56).w
-	jsr	$5032(a5)	; -> sub_1FA8DC
+	jsr	$5032(a5)	; -> Mem_StackAlloc
 	move.l	d0,-$C9A(a5)
 	pea.l	$66B22(pc)
 	pea.l	($1560).w
-	jsr	$5032(a5)	; -> sub_1FA8DC
+	jsr	$5032(a5)	; -> Mem_StackAlloc
 	move.l	d0,-$C9E(a5)
 	clr.w	d7
 	lea.l	-$3960(a5),a4
@@ -358,7 +358,7 @@ loc_0661FC:
 	clr.w	d0
 	ext.l	d6
 	move.l	d6,d1
-	jsr	$3FA2(a5)	; -> sub_15C222
+	jsr	$3FA2(a5)	; -> Math_LDivS
 	move.l	d0,-$1C2(a6)
 	move.w	-$1A(a6),d0
 	ext.l	d0
@@ -368,7 +368,7 @@ loc_0661FC:
 	clr.w	d0
 	ext.l	d6
 	move.l	d6,d1
-	jsr	$3FA2(a5)	; -> sub_15C222
+	jsr	$3FA2(a5)	; -> Math_LDivS
 	move.l	d0,-$1BE(a6)
 	move.w	-$20(a6),d0
 	ext.l	d0
@@ -379,7 +379,7 @@ loc_0661FC:
 	clr.w	d0
 	ext.l	d6
 	move.l	d6,d1
-	jsr	$3FA2(a5)	; -> sub_15C222
+	jsr	$3FA2(a5)	; -> Math_LDivS
 	move.l	d0,-$1CA(a6)
 	move.w	-$1E(a6),d0
 	ext.l	d0
@@ -390,7 +390,7 @@ loc_0661FC:
 	clr.w	d0
 	ext.l	d6
 	move.l	d6,d1
-	jsr	$3FA2(a5)	; -> sub_15C222
+	jsr	$3FA2(a5)	; -> Math_LDivS
 	move.l	d0,-$1C6(a6)
 	move.w	-$26(a6),d0
 	ext.l	d0
@@ -563,7 +563,7 @@ loc_0664CA:
 	clr.w	d0
 	ext.l	d6
 	move.l	d6,d1
-	jsr	$3FA2(a5)	; -> sub_15C222
+	jsr	$3FA2(a5)	; -> Math_LDivS
 	move.l	d0,-$1C2(a6)
 	move.w	-$1A(a6),d0
 	ext.l	d0
@@ -573,7 +573,7 @@ loc_0664CA:
 	clr.w	d0
 	ext.l	d6
 	move.l	d6,d1
-	jsr	$3FA2(a5)	; -> sub_15C222
+	jsr	$3FA2(a5)	; -> Math_LDivS
 	move.l	d0,-$1BE(a6)
 	move.w	-$20(a6),d0
 	ext.l	d0
@@ -584,7 +584,7 @@ loc_0664CA:
 	clr.w	d0
 	ext.l	d6
 	move.l	d6,d1
-	jsr	$3FA2(a5)	; -> sub_15C222
+	jsr	$3FA2(a5)	; -> Math_LDivS
 	move.l	d0,-$1CA(a6)
 	move.w	-$1E(a6),d0
 	ext.l	d0
@@ -595,7 +595,7 @@ loc_0664CA:
 	clr.w	d0
 	ext.l	d6
 	move.l	d6,d1
-	jsr	$3FA2(a5)	; -> sub_15C222
+	jsr	$3FA2(a5)	; -> Math_LDivS
 	move.l	d0,-$1C6(a6)
 	move.w	-$26(a6),d0
 	ext.l	d0
@@ -714,7 +714,7 @@ loc_0666BE:
 	clr.w	d0
 	ext.l	d6
 	move.l	d6,d1
-	jsr	$3FA2(a5)	; -> sub_15C222
+	jsr	$3FA2(a5)	; -> Math_LDivS
 	move.l	d0,-$1C2(a6)
 	move.w	-$1A(a6),d0
 	ext.l	d0
@@ -724,7 +724,7 @@ loc_0666BE:
 	clr.w	d0
 	ext.l	d6
 	move.l	d6,d1
-	jsr	$3FA2(a5)	; -> sub_15C222
+	jsr	$3FA2(a5)	; -> Math_LDivS
 	move.l	d0,-$1BE(a6)
 	move.w	-$20(a6),d0
 	ext.l	d0
@@ -735,7 +735,7 @@ loc_0666BE:
 	clr.w	d0
 	ext.l	d6
 	move.l	d6,d1
-	jsr	$3FA2(a5)	; -> sub_15C222
+	jsr	$3FA2(a5)	; -> Math_LDivS
 	move.l	d0,-$1CA(a6)
 	move.w	-$1E(a6),d0
 	ext.l	d0
@@ -746,7 +746,7 @@ loc_0666BE:
 	clr.w	d0
 	ext.l	d6
 	move.l	d6,d1
-	jsr	$3FA2(a5)	; -> sub_15C222
+	jsr	$3FA2(a5)	; -> Math_LDivS
 	move.l	d0,-$1C6(a6)
 	move.w	-$26(a6),d0
 	ext.l	d0
@@ -1030,9 +1030,9 @@ loc_066A78:
 	moveq	#$0,d0
 	move.l	d0,g_VBlankGameHook(a5)
 	move.l	-$C9E(a5),-(a7)
-	jsr	$503A(a5)	; -> sub_1FA924
+	jsr	$503A(a5)	; -> Mem_StackFree
 	move.l	-$C9A(a5),-(a7)
-	jsr	$503A(a5)	; -> sub_1FA924
+	jsr	$503A(a5)	; -> Mem_StackFree
 	clr.w	g_Pad1Pressed(a5)
 	clr.w	g_Pad2Pressed(a5)
 	clr.w	g_Pad1Latch(a5)

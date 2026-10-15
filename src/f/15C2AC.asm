@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_15C2AC
+; Math_DivModU - unsigned 32-bit divide with remainder
+; In:  d0 = dividend, d1 = divisor
+; Out: d1 = quotient, d0 = remainder
+; Evidence: 16-bit divisor: two divu.w steps; otherwise a shift-subtract loop (d2/d3 saved)
 ; ---------------------------------------------------------------------------
-sub_15C2AC:
+Math_DivModU:
 	move.w	d1,-(a7)
 	swap	d1
 	tst.w	d1
