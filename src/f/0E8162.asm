@@ -1,10 +1,10 @@
 ; ---------------------------------------------------------------------------
-; HoloBolt_StateC - HoloBolt third state: animation jt $2932, then StateDone
+; HoloBolt_StateEnd - HOLOBOLT state: play the end animation (frames 6-9), then HoloBolt_StateDone
 ; In:  8(a6) = this
 ; Out: d0 = flags & 8
-; Evidence: Obj_SetAnim
+; Evidence: Obj_SetAnim(Tbl_HoloBoltAnimEnd), +$6C = 0, +$5C = HoloBolt_StateDone
 ; ---------------------------------------------------------------------------
-HoloBolt_StateC:
+HoloBolt_StateEnd:
 	link.w	a6,#$0
 	move.l	a4,-(a7)
 	movea.l	$8(a6),a4

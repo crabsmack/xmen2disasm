@@ -65,7 +65,7 @@ loc_0E8382:
 loc_0E8392:
 	andi.b	#$FB,$2E(a4)
 loc_0E8398:
-	lea.l	HoloBolt_StateA(pc),a0
+	lea.l	HoloBolt_StateAppear(pc),a0
 	move.l	a0,$64(a4)
 	move.l	a0,$5C(a4)
 	movea.l	-$4(a6),a4

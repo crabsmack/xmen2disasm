@@ -1,10 +1,10 @@
 ; ---------------------------------------------------------------------------
-; FlyBrood_ScriptC - FLYBROOD AI script thunks starting with FlyBrood_ActHoverUntilNear
+; FlyBrood_ScrStepsWaitPassedLow - FLYBROOD AI script thunks: hover until a player is near, then FlyBrood_StateWaitPlayerPassedLow
 ; In:  jmp thunks
 ; Out: -
-; Evidence: thunk table in the FLYBROOD module
+; Evidence: jmp FlyBrood_ActHoverUntilNear, jmp FlyBrood_StateWaitPlayerPassedLow
 ; ---------------------------------------------------------------------------
-FlyBrood_ScriptC:
+FlyBrood_ScrStepsWaitPassedLow:
 	jmp	$3782(a5)	; -> FlyBrood_ActHoverUntilNear
 loc_1344EE:
 	jmp	$379A(a5)	; -> FlyBrood_StateWaitPlayerPassedLow

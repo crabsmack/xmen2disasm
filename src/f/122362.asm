@@ -14,7 +14,7 @@ BigBio_StateSpitStart:
 	jsr	$521A(a5)	; -> Snd_Play
 	addq.w	#$8,a7
 	clr.w	$6C(a4)
-	lea.l	BigBio_StateSpitB(pc),a0
+	lea.l	BigBio_StateSpitBetween(pc),a0
 	move.l	a0,$5C(a4)
 	moveq	#$8,d0
 	and.w	$4(a4),d0

@@ -453,12 +453,12 @@
 11E77E	; BioBalls_ScriptIdle - runtime: executed in tas
 120828	; BigBio_Script - runtime: executed in tas
 12082C	; loc_12082C - runtime: executed in tas
-1344DA	; FlyBrood_ScriptA - runtime: executed in tas
-1344E0	; FlyBrood_ScriptB - runtime: executed in tas
+1344DA	; FlyBrood_ScrStepHoverForever - runtime: executed in tas
+1344E0	; FlyBrood_ScrStepsWaitPassed - runtime: executed in tas
 1344E4	; loc_1344E4 - runtime: executed in tas
-1344EA	; FlyBrood_ScriptC - runtime: executed in tas
+1344EA	; FlyBrood_ScrStepsWaitPassedLow - runtime: executed in tas
 1344EE	; loc_1344EE - runtime: executed in tas
-1344F4	; FlyBrood_ScriptD - runtime: executed in tas
+1344F4	; FlyBrood_ScrStepsWaitPassedSine - runtime: executed in tas
 1344F8	; loc_1344F8 - runtime: executed in tas
 134AFA	; FlyBrood_Init_Case1 - runtime: executed in tas
 134B10	; loc_134B10 - runtime: executed in tas

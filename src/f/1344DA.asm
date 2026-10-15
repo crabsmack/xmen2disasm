@@ -1,8 +1,8 @@
 ; ---------------------------------------------------------------------------
-; FlyBrood_ScriptA - FLYBROOD AI script thunk (hover forever)
+; FlyBrood_ScrStepHoverForever - FLYBROOD AI script thunk: jmp FlyBrood_ActHoverForever
 ; In:  jmp thunk
 ; Out: -
-; Evidence: jmp FlyBrood_ActHoverForever
+; Evidence: only entry of its script
 ; ---------------------------------------------------------------------------
-FlyBrood_ScriptA:
+FlyBrood_ScrStepHoverForever:
 	jmp	$378A(a5)	; -> FlyBrood_ActHoverForever

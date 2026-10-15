@@ -3324,11 +3324,11 @@ Art_SentinelsA1Spr24:	; sprite definition (type $19, Nemesis-compressed tiles): 
 	include "src/f/0E82E4.asm"
 Tbl_HoloBolt_vtable:	; class descriptor "HOLOBOLT": word $6E = name offset, long parent (ACTOR), 26 method pointers, then the class name string
 	incrom	$0E83AC,$78
-Tbl_HoloBoltAnim:	; animation script (byte flags, byte steps, ..., 2-byte steps from +6); E of 10 bytes used at runtime; read by Anim_ApplyStep, Anim_AdvanceByDistance, Anim_Advance; jt[1248] used by HoloBolt_StateA
+Tbl_HoloBoltAnimAppear:	; animation script {flags 2 (once), 5 steps, delay 4, frames 0,1,0,1,2}: HOLOBOLT appearing (HoloBolt_StateAppear); jt[1248]
 	incrom	$0E8424,$10
-Tbl_HoloBoltAnim2:	; animation script (byte flags, byte steps, ..., 2-byte steps from +6); A of C bytes used at runtime; read by Anim_ApplyStep, Anim_AdvanceByDistance, Anim_Advance; jt[1249] used by HoloBolt_StateB
+Tbl_HoloBoltAnimActive:	; animation script {flags 2 (once), 3 steps, delay 4, frames 3,4,5}: HOLOBOLT once active (HoloBolt_StateActivate); jt[1249]
 	incrom	$0E8434,$C
-Art_HoloBoltSpr:	; sprite definition (type $00): $24-byte header, $14-byte frame records, pieces, tiles; C of E bytes used at runtime; read by Spr_PreloadTiles, Anim_ApplyStep, Anim_AdvanceByDistance; jt[1250] used by HoloBolt_StateC
+Tbl_HoloBoltAnimEnd:	; animation script {flags 2 (once), 4 steps, delay 4, frames 6-9} (was labelled a sprite definition): HOLOBOLT end (HoloBolt_StateEnd); jt[1250]
 	incrom	$0E8440,$E
 Art_SentinelsA1Spr25:	; sprite definition (type $19, Nemesis-compressed tiles): $24-byte header, $14-byte frame records, pieces, tiles; 1587 of 1588 bytes used at runtime; read by Nem_DecodeLoop, Spr_PreloadTiles; jt[1251] used by SentinelsA1_LoadResources
 	incrom	$0E844E,$1588
@@ -3978,7 +3978,7 @@ Tbl_BabyBioAnim2:	; animation script (byte flags, byte steps, ..., 2-byte steps 
 	incrom	$11B3A4,$8
 Tbl_BabyBioAnim3:	; animation script (byte flags, byte steps, ..., 2-byte steps from +6); 8 of A bytes used at runtime; read by Anim_ApplyStep, Anim_AdvanceByDistance, Anim_Advance; jt[1525] used by BabyBio_ActPlayAnimC
 	incrom	$11B3AC,$A
-Tbl_BabyBioMove:	; table read by BabyBio_Move; 8 of A bytes used at runtime; read by BabyBio_Move, Anim_ApplyStep, Anim_AdvanceByDistance; jt[1526] used by BabyBio_ActPlayAnimD
+Tbl_BabyBioAnim4:	; animation script {flags 0 (loop), 2 steps, delay 6, frames 8,9} (Obj_SetAnim in BabyBio_ActPlayAnimD; read while BabyBio_Move steps the animation); jt[1526]
 	incrom	$11B3B6,$A
 Tbl_BabyBioMove2:	; table read by BabyBio_Move; 122 of 124 bytes used at runtime; read by BabyBio_Move; jt[1527] used by BabyBio_Init, BabyBio_Move, ChildShip_Init
 	incrom	$11B3C0,$124

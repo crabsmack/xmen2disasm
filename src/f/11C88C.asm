@@ -1,8 +1,8 @@
 ; ---------------------------------------------------------------------------
-; BabyBio_ActPlayAnimA - BABYBIO script action: drop the attachment, stop, play animation jt $31C2, next entry after 8 frames
+; BabyBio_ActPlayAnimA - BABYBIO script action: kill the attached flame (+$A8), stop, show frame 4 (Tbl_BabyBioAnim2), next entry after 8 frames
 ; In:  8(a6) = this
 ; Out: none
-; Evidence: Obj_SetAnim
+; Evidence: attachment vtable +$52 Kill, velocity cleared, Obj_SetAnim(jt $2FC2 = Tbl_BabyBioAnim2: one step, frame 4)
 ; ---------------------------------------------------------------------------
 BabyBio_ActPlayAnimA:
 	link.w	a6,#$0

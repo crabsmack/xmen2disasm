@@ -1,8 +1,8 @@
 ; ---------------------------------------------------------------------------
-; BabyBio_ActPlayAnimB - BABYBIO script action: play animation $11B39C, next entry
+; BabyBio_ActPlayAnimB - BABYBIO script action: show frame 0 (Tbl_BabyBioAnim), next entry
 ; In:  8(a6) = this
 ; Out: none
-; Evidence: Obj_SetAnim
+; Evidence: Obj_SetAnim(jt $2FBA = Tbl_BabyBioAnim $11B39C: one step, frame 0)
 ; ---------------------------------------------------------------------------
 BabyBio_ActPlayAnimB:
 	link.w	a6,#$0

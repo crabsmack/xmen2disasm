@@ -1,8 +1,8 @@
 ; ---------------------------------------------------------------------------
-; BabyBio_ActPlayAnimC - BABYBIO script action: play animation jt $31CA, next entry
+; BabyBio_ActPlayAnimC - BABYBIO script action: loop frames 5,6 (Tbl_BabyBioAnim3), next entry
 ; In:  8(a6) = this
 ; Out: none
-; Evidence: Obj_SetAnim; 7 callers
+; Evidence: Obj_SetAnim(jt $2FCA = Tbl_BabyBioAnim3: 2 steps, delay 6, frames 5,6); 7 callers
 ; ---------------------------------------------------------------------------
 BabyBio_ActPlayAnimC:
 	link.w	a6,#$0
