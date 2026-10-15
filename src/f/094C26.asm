@@ -1,5 +1,7 @@
 ; ---------------------------------------------------------------------------
-; loc_094C26	[runtime: executed in tas]
+; EvilMaker_ScrStepKill - EVILMAKER AI-script step: jmp EvilMaker_ActKill
+; Evidence: jmp thunk in an EVILMAKER script (EvilMaker_Init picks jt[$17EA])
+; Found: runtime: executed in 1 run(s) (tas)
 ; ---------------------------------------------------------------------------
-loc_094C26:
-	jmp	$15AA(a5)	; -> sub_094834
+EvilMaker_ScrStepKill:
+	jmp	$15AA(a5)	; -> EvilMaker_ActKill

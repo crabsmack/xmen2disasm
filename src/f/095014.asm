@@ -1,7 +1,11 @@
 ; ---------------------------------------------------------------------------
-; sub_095014	[link-after-rts]
+; EvilDrop_StateBounce2 - EVILDROP state: third landing - stop moving and start the capsule's AI script
+; In:  8(a6) = this
+; Out: d0
+; Evidence: clears speed/accel and +$C4 (moving), y = floor, script step 0 (+$8E/+$8C, script jt[$51FA] from Init)
+; Found: link-after-rts
 ; ---------------------------------------------------------------------------
-sub_095014:
+EvilDrop_StateBounce2:
 	link.w	a6,#$0
 	movem.l	d7/a4,-(a7)
 	movea.l	$8(a6),a4
@@ -35,7 +39,7 @@ loc_09505A:
 	bra.s	loc_09508A
 loc_095078:
 	clr.w	$6C(a4)
-	lea.l	sub_095014(pc),a0
+	lea.l	EvilDrop_StateBounce2(pc),a0
 	move.l	a0,$5C(a4)
 	moveq	#$8,d0
 	and.w	$4(a4),d0

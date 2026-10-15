@@ -1,7 +1,11 @@
 ; ---------------------------------------------------------------------------
-; sub_0948DE	[jt 691]
+; EvilMaker_ActDropGambit - EVILMAKER script action: drop a capsule holding clone type 3 (EVILGAMBIT)
+; In:  8(a6) = this
+; Out: none
+; Evidence: record type 3, jt[$1BB2]; jt 691
+; Found: jt 691
 ; ---------------------------------------------------------------------------
-sub_0948DE:
+EvilMaker_ActDropGambit:
 	link.w	a6,#$FFF0
 	move.l	a4,-(a7)
 	movea.l	$8(a6),a4
@@ -21,7 +25,7 @@ sub_0948DE:
 	lea.l	$19B2(a5),a0
 	move.l	$2(a0),-(a7)
 	pea.l	-$10(a6)
-	jsr	$15FA(a5)	; -> sub_094C90
+	jsr	$15FA(a5)	; -> EvilDrop_Spawn
 	tst.l	$8E(a4)
 	lea.l	$14(a7),a7
 	bne.s	loc_094938

@@ -24,4 +24,4 @@ loc_09A1D4:
 loc_09A1D8:
 	jmp	$179A(a5)	; -> sub_0973B4
 loc_09A1DC:
-	jmp	$18E2(a5)	; -> sub_098F92
+	jmp	$18E2(a5)	; -> XClone_KillAndCount

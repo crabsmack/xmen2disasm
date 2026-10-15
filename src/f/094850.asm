@@ -1,7 +1,11 @@
 ; ---------------------------------------------------------------------------
-; sub_094850	[jt 690]
+; EvilMaker_ActDropCyclops - EVILMAKER script action: drop a capsule holding clone type 2 (EVILCYCLOPS)
+; In:  8(a6) = this
+; Out: none
+; Evidence: record type 2, EvilDrop_Spawn(rec, jt[$1BA2]); jt 690
+; Found: jt 690
 ; ---------------------------------------------------------------------------
-sub_094850:
+EvilMaker_ActDropCyclops:
 	link.w	a6,#$FFF0
 	move.l	a4,-(a7)
 	movea.l	$8(a6),a4
@@ -21,7 +25,7 @@ sub_094850:
 	lea.l	$19A2(a5),a0
 	move.l	$2(a0),-(a7)
 	pea.l	-$10(a6)
-	jsr	$15FA(a5)	; -> sub_094C90
+	jsr	$15FA(a5)	; -> EvilDrop_Spawn
 	tst.l	$8E(a4)
 	lea.l	$14(a7),a7
 	bne.s	loc_0948AA

@@ -1649,7 +1649,7 @@ Sw_098DA8:	; switch table of sub at $098DA8: 7 word offsets from Sw_098DA8-2
 	include "src/f/098F92.asm"
 	include "src/f/098FB6.asm"
 	include "src/f/099016.asm"
-Str_Empty_099078:	; C string "" (used by sub_099016)
+Str_Empty_099078:	; C string "" (used by XClone_StartMakerMode)
 	incrom	$099078,$2
 	include "src/f/09907A.asm"
 Sw_09907A:	; switch table of sub at $09907A: 7 word offsets from Sw_09907A-2

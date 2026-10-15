@@ -206,7 +206,7 @@
 088A8E	; loc_088A8E - runtime: executed in tas
 088A92	; loc_088A92 - runtime: executed in tas
 088A96	; loc_088A96 - runtime: executed in tas
-094C26	; loc_094C26 - runtime: executed in tas
+094C26	; EvilMaker_ScrStepKill - runtime: executed in tas
 098F50	; loc_098F50 - runtime: executed in tas
 0991C2	; loc_0991C2 - runtime: executed in tas
 0991C6	; loc_0991C6 - runtime: executed in tas

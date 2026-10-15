@@ -1,7 +1,7 @@
 ; ---------------------------------------------------------------------------
 ; EvilDrop_Init - vtable +$12 constructor: run the parent's Init, then set up a EVILDROP
 ; In:  8(a6) = this, $C(a6) = long x, $10(a6) = long y (8 fraction bits), $14(a6) = spawn parameter
-; Evidence: slot +$12 of the EVILDROP descriptor $095126; never runs in the corpus; calls parent BIOBALLS slot +$12; state handler(s) put in +$5C: sub_094EFC
+; Evidence: slot +$12 of the EVILDROP descriptor $095126; never runs in the corpus; calls parent BIOBALLS slot +$12; state handler(s) put in +$5C: EvilDrop_StateStart
 ; ---------------------------------------------------------------------------
 EvilDrop_Init:
 	link.w	a6,#$0
@@ -23,9 +23,9 @@ EvilDrop_Init:
 	move.l	$2(a0),-(a7)
 	pea.l	$8C(a4)
 	jsr	$3ED2(a5)	; -> sub_15A6DE
-	lea.l	sub_094EFC(pc),a0
+	lea.l	EvilDrop_StateStart(pc),a0
 	move.l	a0,$5C(a4)
-	lea.l	sub_094EFC(pc),a0
+	lea.l	EvilDrop_StateStart(pc),a0
 	move.l	a0,$64(a4)
 	ori.w	#$1083,$6(a4)
 	lea.l	$163A(a5),a0

@@ -1,7 +1,11 @@
 ; ---------------------------------------------------------------------------
-; sub_098F92	[jt 792]
+; XClone_KillAndCount - kill a clone and count it (-$3C3C += 1)
+; In:  8(a6) = object
+; Out: d0 = old count
+; Evidence: slot +$52 Kill then increments -$3C3C, which EvilMaker_StateWaitKills compares with 2; jt 792
+; Found: jt 792
 ; ---------------------------------------------------------------------------
-sub_098F92:
+XClone_KillAndCount:
 	link.w	a6,#$0
 	move.l	a4,-(a7)
 	movea.l	$8(a6),a4

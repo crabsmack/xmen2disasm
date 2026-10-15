@@ -1,7 +1,11 @@
 ; ---------------------------------------------------------------------------
-; sub_098DA8	[jt 791]
+; XClone_SpawnByType - create the evil clone of the type in a spawn record (1 Beast, 2 Cyclops, 3 Gambit, 4 Magneto, 5 Nightcrawler, 6 Psylocke, 7 Wolverine)
+; In:  8(a6) = record {+2 x, +4 y, +6 type}, $C(a6) = player (used when type = 0)
+; Out: d0 = object or 0
+; Evidence: switch on type -> Tbl_EvilBeast/Cyclops/Gambit/Magneto/Nightcrawler/Psylocke/Wolverine_vtable +$0E New(0, desc, x << 8, y << 8, rec); type 0 -> sub_098CC8(player); jt 791
+; Found: jt 791
 ; ---------------------------------------------------------------------------
-sub_098DA8:
+XClone_SpawnByType:
 	link.w	a6,#$0
 	movem.l	d7/a3-a4,-(a7)
 	movea.l	$8(a6),a4

@@ -1,7 +1,11 @@
 ; ---------------------------------------------------------------------------
-; sub_098FB6	[link-after-rts]
+; XClone_LoadResources - load the clone-maker resources (clone art, effects)
+; In:  none
+; Out: none
+; Evidence: sub_1F62C0 x4 -> -$3C3E, effect pool -$3B1C+4, -$1A84, -$1A88; sub_1190D6; run via sub_15B0E6 by XClone_StartMakerMode; TAS 52804
+; Found: link-after-rts
 ; ---------------------------------------------------------------------------
-sub_098FB6:
+XClone_LoadResources:
 	link.w	a6,#$0
 	moveq	#$2,d0
 	move.l	d0,-(a7)

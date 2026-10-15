@@ -1,7 +1,11 @@
 ; ---------------------------------------------------------------------------
-; sub_095094	[jt 704]
+; EvilDrop_ActOpen - EVILDROP script action: play the opening animation (+$AC, default jt[$183A]) and hand over to the BIOBALLS state sub_11EFF2
+; In:  8(a6) = this
+; Out: none
+; Evidence: sub_11F42C(this, anim); +$5C = sub_11EFF2; jt 704
+; Found: jt 704
 ; ---------------------------------------------------------------------------
-sub_095094:
+EvilDrop_ActOpen:
 	link.w	a6,#$0
 	move.l	a4,-(a7)
 	movea.l	$8(a6),a4

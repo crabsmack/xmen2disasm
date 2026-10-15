@@ -1,7 +1,11 @@
 ; ---------------------------------------------------------------------------
-; sub_094A88	[jt 694]
+; EvilMaker_ActDropPsylocke - EVILMAKER script action: drop a capsule holding clone type 6 (EVILPSYLOCKE)
+; In:  8(a6) = this
+; Out: none
+; Evidence: record type 6, data $09A950; jt 694
+; Found: jt 694
 ; ---------------------------------------------------------------------------
-sub_094A88:
+EvilMaker_ActDropPsylocke:
 	link.w	a6,#$FFF0
 	move.l	a4,-(a7)
 	movea.l	$8(a6),a4
@@ -21,7 +25,7 @@ sub_094A88:
 	lea.l	$19EA(a5),a0
 	move.l	$2(a0),-(a7)
 	pea.l	-$10(a6)
-	jsr	$15FA(a5)	; -> sub_094C90
+	jsr	$15FA(a5)	; -> EvilDrop_Spawn
 	tst.l	$8E(a4)
 	lea.l	$14(a7),a7
 	bne.s	loc_094AE2

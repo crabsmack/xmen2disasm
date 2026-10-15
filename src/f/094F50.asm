@@ -1,7 +1,11 @@
 ; ---------------------------------------------------------------------------
-; sub_094F50	[link-after-rts]
+; EvilDrop_StateFall - EVILDROP state: fall to the floor (+$C2), bounce at half speed
+; In:  8(a6) = this
+; Out: d0
+; Evidence: y >= floor: y = floor, vy = -vy/2; next EvilDrop_StateBounce1
+; Found: link-after-rts
 ; ---------------------------------------------------------------------------
-sub_094F50:
+EvilDrop_StateFall:
 	link.w	a6,#$0
 	movem.l	d7/a4,-(a7)
 	movea.l	$8(a6),a4
@@ -19,14 +23,14 @@ sub_094F50:
 	neg.l	d0
 	move.w	d0,$18(a4)
 	clr.w	$6C(a4)
-	lea.l	sub_094FB2(pc),a0
+	lea.l	EvilDrop_StateBounce1(pc),a0
 	move.l	a0,$5C(a4)
 	moveq	#$8,d0
 	and.w	$4(a4),d0
 	bra.s	loc_094FA8
 loc_094F96:
 	clr.w	$6C(a4)
-	lea.l	sub_094F50(pc),a0
+	lea.l	EvilDrop_StateFall(pc),a0
 	move.l	a0,$5C(a4)
 	moveq	#$8,d0
 	and.w	$4(a4),d0

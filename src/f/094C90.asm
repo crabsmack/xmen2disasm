@@ -1,7 +1,11 @@
 ; ---------------------------------------------------------------------------
-; sub_094C90	[jt 699]
+; EvilDrop_Spawn - create an EVILDROP capsule from a 16-byte spawn record
+; In:  8(a6) = record {+2 x, +4 y, +6 clone type, ...}
+; Out: d0 = object
+; Evidence: Tbl_EvilDrop_vtable +$0E New(0, desc, x << 8, y << 8, rec); jt 699; called by the EvilMaker_ActDrop* actions
+; Found: jt 699
 ; ---------------------------------------------------------------------------
-sub_094C90:
+EvilDrop_Spawn:
 	link.w	a6,#$0
 	movem.l	a3-a4,-(a7)
 	movea.l	$8(a6),a4

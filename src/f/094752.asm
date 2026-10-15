@@ -1,7 +1,11 @@
 ; ---------------------------------------------------------------------------
-; sub_094752	[jt 687]
+; EvilMaker_ActWait60 - EVILMAKER script action: wait $3C frames, then the next step
+; In:  8(a6) = this
+; Out: none
+; Evidence: next-step idiom (+$8E script, +$8C index) with +$6C = $3C; jt 687
+; Found: jt 687
 ; ---------------------------------------------------------------------------
-sub_094752:
+EvilMaker_ActWait60:
 	link.w	a6,#$0
 	move.l	a4,-(a7)
 	movea.l	$8(a6),a4

@@ -138,7 +138,7 @@ loc_09B81C:
 loc_09B820:
 	move.l	a3,-(a7)
 	pea.l	-$10(a6)
-	jsr	$18DA(a5)	; -> sub_098DA8
+	jsr	$18DA(a5)	; -> XClone_SpawnByType
 	move.l	d0,-$14(a6)
 	addq.w	#$8,a7
 	beq.s	loc_09B862

@@ -1,7 +1,11 @@
 ; ---------------------------------------------------------------------------
-; sub_094834	[jt 689]
+; EvilMaker_ActKill - EVILMAKER script action: remove itself (slot +$52 Kill)
+; In:  8(a6) = this
+; Out: none
+; Evidence: jt 689; TAS 52809
+; Found: jt 689
 ; ---------------------------------------------------------------------------
-sub_094834:
+EvilMaker_ActKill:
 	link.w	a6,#$0
 	move.l	a4,-(a7)
 	movea.l	$8(a6),a4
