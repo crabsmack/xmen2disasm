@@ -1,7 +1,11 @@
 ; ---------------------------------------------------------------------------
-; sub_082508	[link-after-rts]
+; DropBomb_StateDrop - DROPBOMB state: start falling (gravity +$20 = $3C, falling animation)
+; In:  8(a6) = this
+; Out: d0
+; Evidence: sets y acceleration +$20 = $3C, sub_1F6296(this, Tbl_DropBombAnimFall), handler := DropBomb_StateFall
+; Found: link-after-rts
 ; ---------------------------------------------------------------------------
-sub_082508:
+DropBomb_StateDrop:
 	link.w	a6,#$0
 	move.l	a4,-(a7)
 	movea.l	$8(a6),a4
@@ -12,7 +16,7 @@ sub_082508:
 	jsr	$4E4A(a5)	; -> sub_1F6296
 	addq.w	#$8,a7
 	clr.w	$6C(a4)
-	lea.l	sub_082542(pc),a0
+	lea.l	DropBomb_StateFall(pc),a0
 	move.l	a0,$5C(a4)
 	moveq	#$8,d0
 	and.w	$4(a4),d0

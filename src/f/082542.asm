@@ -1,7 +1,11 @@
 ; ---------------------------------------------------------------------------
-; sub_082542	[link-after-rts]
+; DropBomb_StateFall - DROPBOMB state: fall under gravity until reaching the floor y found at Init, then explode
+; In:  8(a6) = this
+; Out: d0
+; Evidence: x += vx, y += vy, v += accel (twice when -$38DE set); when y >> 8 >= +$8C (floor from sub_15A8FE in DropBomb_Init) clears velocity and sets handler DropBomb_StateExplode; TAS 48480-50062
+; Found: link-after-rts
 ; ---------------------------------------------------------------------------
-sub_082542:
+DropBomb_StateFall:
 	link.w	a6,#$0
 	move.l	a4,-(a7)
 	movea.l	$8(a6),a4
@@ -37,7 +41,7 @@ loc_08259A:
 	clr.w	$18(a4)
 	clr.w	$20(a4)
 	clr.w	$6C(a4)
-	lea.l	sub_0825CC(pc),a0
+	lea.l	DropBomb_StateExplode(pc),a0
 	move.l	a0,$5C(a4)
 	moveq	#$8,d0
 	and.w	$4(a4),d0

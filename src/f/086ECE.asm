@@ -25,7 +25,7 @@ sub_086ECE:
 	add.l	d0,d1
 	lsl.l	#$8,d1
 	move.l	d1,-(a7)
-	jsr	$11D2(a5)	; -> sub_08270E
+	jsr	$11D2(a5)	; -> DropBomb_Spawn
 	lea.l	$14(a7),a7
 	clr.w	$6C(a4)
 	lea.l	sub_086FCA(pc),a0

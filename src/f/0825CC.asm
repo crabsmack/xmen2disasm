@@ -1,7 +1,11 @@
 ; ---------------------------------------------------------------------------
-; sub_0825CC	[link-after-rts]
+; DropBomb_StateExplode - DROPBOMB state: explode - hurt players within the blast box, spawn the explosion and die
+; In:  8(a6) = this
+; Out: none
+; Evidence: centre = box centre; for both players ($FFEAA8, $FFE9B8) alive, not flashing (+$6A = 0) and within +-$3C x / +-$28 y: player slot +$26 TakeDamage(this, side 5/6, damage +$70, x, y); calls sub_118136 at the centre and sub_13DE4A(this) (the XNPC death/explosion helper)
+; Found: link-after-rts
 ; ---------------------------------------------------------------------------
-sub_0825CC:
+DropBomb_StateExplode:
 	link.w	a6,#$FFF6
 	movem.l	d3-d7/a3-a4,-(a7)
 	movea.l	$8(a6),a3

@@ -1,7 +1,7 @@
 ; ---------------------------------------------------------------------------
 ; DropBomb_Init - vtable +$12 constructor: run the parent's Init, then set up a DROPBOMB
 ; In:  8(a6) = this, $C(a6) = long x, $10(a6) = long y (8 fraction bits), $14(a6) = spawn parameter
-; Evidence: slot +$12 of the DROPBOMB descriptor $082294; TAS frames 48297-49894 (5 frames active); calls parent ACTOR slot +$12; state handler(s) put in +$5C: sub_08243E
+; Evidence: slot +$12 of the DROPBOMB descriptor $082294; TAS frames 48297-49894 (5 frames active); calls parent ACTOR slot +$12; state handler(s) put in +$5C: DropBomb_StateStart
 ; ---------------------------------------------------------------------------
 DropBomb_Init:
 	link.w	a6,#$FFF0
@@ -21,9 +21,9 @@ DropBomb_Init:
 	jsr	(a1)
 	clr.w	$18(a4)
 	clr.w	$20(a4)
-	lea.l	sub_08243E(pc),a0
+	lea.l	DropBomb_StateStart(pc),a0
 	move.l	a0,$5C(a4)
-	lea.l	sub_08243E(pc),a0
+	lea.l	DropBomb_StateStart(pc),a0
 	move.l	a0,$64(a4)
 	ori.w	#$4083,$6(a4)
 	lea.l	$1572(a5),a0
