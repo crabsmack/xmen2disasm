@@ -67,6 +67,23 @@ progress.py also reads this file:
 
 _(module → functions, globals, data; add as you learn them)_
 
+- **Runtime library, `$1F4xxx-$1FExxx`** (most-called helpers): `Mem_Set`/`Mem_Copy`
+  (memset/memcpy, args dst, val|src, n), `Math_SinDeg`/`Math_CosDeg` (degrees -> 16.16,
+  `Tbl_SineQuarter`), `List_Unlink` (node {+0 next, +4 prev, +8 owner}, head ptr),
+  `Irq_Enable`/`Irq_Disable` (SR mask), `VDP_WaitVBlank`.
+- **Sound, `$1FE4B6-$1FE6xx`**: every call does `Z80_BusAcquire` (returns into the caller
+  with the Z80 stopped, d1 = Z80 RAM `$A00036`, a1 = `$A01B40`) ... `jmp Z80_BusRelease`.
+  `$1FE50A` writes one command byte; `$1FE584`/`$1FE5A2` send command `$10`/`$12` + a byte
+  argument unless byte `-$18AC(a5)` is set (sound off?). `$1FE5A2` has 232 callers (SFX?).
+- **Players**: two player objects at `$FFE9B8` and `$FFEAA8` (`Player_Nearest`). Which is P1
+  is not yet confirmed.
+- **Game object layout** (from `Player_Nearest`, `$1F4BA2`, `$1F6334`): +4 word flags (bits
+  $C000 = $8000: present and alive), +8 long x and +$C long y (16.16; pixel = value >> 8 is
+  used for boxes), +$2E byte flags (bit 4 = h-flip, bit 3 = v-flip, bits 0-1 from the
+  sprite-def record), +$2F byte frame index ($FF = none), +$30 long sprite-definition
+  pointer (frame records of $14 bytes from +$24, signed box offsets at +4..+7),
+  +$4C/+$4E/+$50/+$52 word box top/left/bottom/right in pixels.
+
 ## Data formats
 
 - Graphics compression: Burt Sloane nibble Huffman (`huffsloane` in
