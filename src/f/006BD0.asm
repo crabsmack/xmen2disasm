@@ -2,7 +2,7 @@
 ; Players_PlaceAtStart - put the players that are still in play at a stage's start position (P2 30 px right of P1) with their carried health
 ; In:  8(a6) = long x px, $C(a6) = long y px (overridden by the start record at $FFE9A0 if set)
 ; Out: none
-; Evidence: jt 13, called by 22 stage init functions; vtable $12 = set position (x<<8, y<<8, 0); +$68 = max(g_P1Health, $700); vtable $3E; g_P1Health 0 -> player cleared
+; Evidence: jt 13, called by 22 stage init functions; ACTOR slot $12 Init(x<<8, y<<8, 0); +$68 = max(g_P1Health, $700); slot $3E Activate; g_P1Health 0 -> player cleared (+4 flags 0)
 ; ---------------------------------------------------------------------------
 Players_PlaceAtStart:
 	link.w	a6,#$FFFE
