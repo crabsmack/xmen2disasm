@@ -1,6 +1,7 @@
 ; ---------------------------------------------------------------------------
-; Barrier_Despawn - vtable +$36: a BARRIER leaves play (written back to its spawn record)
-; In:  8(a6) = this
+; Barrier_Despawn - own despawn (no parent call): clear +4, swap the record's class to CLOSEDBARRIER (jt $2462) when closed (+$96), record state 5 at its current position, no object ($FF), free its timer (BARRIER override of slot +$36 Despawn)
+; In:  8(a6) = this, $C(a6) = spawn record
+; Out: none
 ; Evidence: slot +$36 of the BARRIER descriptor $0DCAAA; never runs in the corpus
 ; ---------------------------------------------------------------------------
 Barrier_Despawn:

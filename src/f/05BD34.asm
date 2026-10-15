@@ -1,6 +1,6 @@
 ; ---------------------------------------------------------------------------
-; Boulder_TakeDamage - vtable +$26: a BOULDER takes a hit
-; In:  8(a6) = this (BOULDER object)
+; Boulder_TakeDamage - pass the hit to the parent TakeDamage only while byte +$3A is $FF, otherwise ignore it (BOULDER override of slot +$26 TakeDamage)
+; In:  8(a6) = this (BOULDER object), $C(a6) = attacker, $13(a6)/$17(a6) = byte hit type/damage, $1A/$1E(a6) = hit point
 ; Out: none
 ; Evidence: class descriptor BOULDER slot +$26 (tools/classes.py); TAS frames 20774-20978 (3 active)
 ; ---------------------------------------------------------------------------

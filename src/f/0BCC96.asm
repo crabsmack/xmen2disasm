@@ -1,7 +1,8 @@
 ; ---------------------------------------------------------------------------
-; SavageMediumBio_Init - vtable +$12 constructor: run the parent's Init, then set up a SAVAGEMEDIUMBIO
+; SavageMediumBio_Init - parent (SAVAGEBIOBASE) Init, then SavageBio_NopStatic, flags |= $83, stats record -$3B14 with health 4, AI script jt $1E3A, state SavageMediumBio_StateAppear (+$5C/+$64), sprite def jt $359A (palette 3), home +$AE/+$B0 = position, frame $60, Obj_UpdateBoxes (SAVAGEMEDIUMBIO override of slot +$12 Init)
 ; In:  8(a6) = this, $C(a6) = long x, $10(a6) = long y (8 fraction bits), $14(a6) = spawn parameter
-; Evidence: slot +$12 of the SAVAGEMEDIUMBIO descriptor $0BD39C; TAS frames 33558-33558 (1 frames active); calls parent SAVAGEBIOBASE slot +$12; state handler(s) put in +$5C: SavageMediumBio_StateAppear
+; Out: none
+; Evidence: slot +$12 of the SAVAGEMEDIUMBIO descriptor $0BD39C; TAS frames 33558-33558 (1 frames active)
 ; ---------------------------------------------------------------------------
 SavageMediumBio_Init:
 	link.w	a6,#$0

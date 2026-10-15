@@ -1,5 +1,5 @@
 ; ---------------------------------------------------------------------------
-; LightBeam_Draw - vtable +$1A: draw a LIGHTBEAM
+; LightBeam_Draw - write +$94 beam columns straight into the sprite table, +$92 x 32 px apart, starting at x +$96 plus the horizontal scroll of its top screen line (table -$BC4), top y +$98: kind 0 three stacked 16x32 sprites, kind 1 two, kind 2 one; x wraps at $180 (LIGHTBEAM override of slot +$1A Draw; does not call the parent)
 ; In:  8(a6) = this (LIGHTBEAM object)
 ; Out: none
 ; Evidence: class descriptor LIGHTBEAM slot +$1A (tools/classes.py); TAS frames 45425-47594 (1816 active)

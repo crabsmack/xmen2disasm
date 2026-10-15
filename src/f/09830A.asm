@@ -1,7 +1,8 @@
 ; ---------------------------------------------------------------------------
-; EvilGambit_Init - vtable +$12 constructor: run the parent's Init, then set up a EVILGAMBIT
-; In:  8(a6) = this, $C(a6) = long x, $10(a6) = long y (8 fraction bits), $14(a6) = spawn parameter
-; Evidence: slot +$12 of the EVILGAMBIT descriptor $099E64; TAS frames 55491-55491 (1 frames active); calls parent XCLONE slot +$12
+; EvilGambit_Init - parent (XCLONE) Init, then the Gambit look: sprite def jt $49A2, clone record jt $19C2 (+$A8), move set jt $4902 (+$AC), AI script from the record, XClone_SetBgPalette(3) (EVILGAMBIT override of slot +$12 Init)
+; In:  8(a6) = this, $C(a6) = long x, $10(a6) = long y (8 fraction bits), $14(a6) = placement entry
+; Out: none
+; Evidence: slot +$12 of the EVILGAMBIT descriptor $099E64; TAS frames 55491-55491 (1 frames active)
 ; ---------------------------------------------------------------------------
 EvilGambit_Init:
 	link.w	a6,#$0

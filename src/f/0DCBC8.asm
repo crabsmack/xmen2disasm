@@ -1,7 +1,8 @@
 ; ---------------------------------------------------------------------------
-; Blast_Init - vtable +$12 constructor: run the parent's Init, then set up a BLAST
-; In:  8(a6) = this, $C(a6) = long x, $10(a6) = long y (8 fraction bits), $14(a6) = spawn parameter
-; Evidence: slot +$12 of the BLAST descriptor $0DD0E8; TAS frames 2782-7178 (40 frames active); calls parent ACTOR slot +$12
+; Blast_Init - parent Init, then no vertical speed, state Blast_StateStart (+$5C/+$64), flags |= $82, sprite set g_BarrierSprDef (palette 0, priority), sub_1F7F38(this, 1000, -1) (result unused); from the placement (or defaults): switch number +$94 (+6), speed +$98 = |+8| ($100) reversed when +$A is set, +$9C = byte +$F, switch flag word +$8C = &(-$3BFA)[switch]; no latched target (BLAST override of slot +$12 Init)
+; In:  8(a6) = this, $C(a6) = long x, $10(a6) = long y (8 fraction bits), $14(a6) = placement entry or null
+; Out: none
+; Evidence: slot +$12 of the BLAST descriptor $0DD0E8; TAS frames 2782-7178 (40 frames active)
 ; ---------------------------------------------------------------------------
 Blast_Init:
 	link.w	a6,#$FFF0

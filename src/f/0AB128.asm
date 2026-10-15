@@ -1,7 +1,8 @@
 ; ---------------------------------------------------------------------------
-; BubbleManager_Init - vtable +$12 constructor: run the parent's Init, then set up a BUBBLEMANAGER
-; In:  8(a6) = this, $C(a6) = long x, $10(a6) = long y (8 fraction bits), $14(a6) = spawn parameter
-; Evidence: slot +$12 of the BUBBLEMANAGER descriptor $0AAFA8; TAS frames 29716-31577 (14 frames active); calls parent XNPC slot +$12; state handler(s) put in +$5C: BubbleManager_StateStart
+; BubbleManager_Init - parent (XNPC) Init, then no motion, +$42 = 0, priority bit, flags |= $408B, state BubbleManager_StateStart (+$5C/+$64), +$94/+$98 = 0, +$9C = 180, +$9E = 2; with a placement configure it with BubbleManager_ConfigBurst in SavageB1, else BubbleManager_ConfigCluster (BUBBLEMANAGER override of slot +$12 Init)
+; In:  8(a6) = this, $C(a6) = long x, $10(a6) = long y (8 fraction bits), $14(a6) = placement entry or null
+; Out: none
+; Evidence: slot +$12 of the BUBBLEMANAGER descriptor $0AAFA8; TAS frames 29716-31577 (14 frames active)
 ; ---------------------------------------------------------------------------
 BubbleManager_Init:
 	link.w	a6,#$0

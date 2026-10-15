@@ -1,5 +1,5 @@
 ; ---------------------------------------------------------------------------
-; ScalingActor_Draw - vtable +$1A: draw a SCALINGACTOR
+; ScalingActor_Draw - in big-sprite mode (picture descriptor +$32) Cerebro_BigSpriteDraw(descriptor); otherwise, if it has a sprite def and descriptor +$35 is clear, Spr_Draw at the camera-relative position (SCALINGACTOR override of slot +$1A Draw; no hit blink, does not call the parent)
 ; In:  8(a6) = this (SCALINGACTOR object)
 ; Out: none
 ; Evidence: class descriptor SCALINGACTOR slot +$1A (tools/classes.py); TAS frames 2346-49094 (336 active)

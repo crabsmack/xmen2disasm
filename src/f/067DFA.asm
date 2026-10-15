@@ -1,5 +1,5 @@
 ; ---------------------------------------------------------------------------
-; BoxInputActor_Move - vtable +$4E: per-frame movement of a BOXINPUTACTOR
+; BoxInputActor_Move - no movement: just zero the velocity and acceleration (BOXINPUTACTOR override of slot +$4E Move)
 ; In:  8(a6) = this (BOXINPUTACTOR object)
 ; Out: none
 ; Evidence: class descriptor BOXINPUTACTOR slot +$4E (tools/classes.py); TAS frames 2348-49093 (332 active)

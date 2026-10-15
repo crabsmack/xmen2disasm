@@ -1,6 +1,6 @@
 ; ---------------------------------------------------------------------------
-; Boulder_Move - vtable +$4E: per-frame movement of a BOULDER
-; In:  8(a6) = this (BOULDER object)
+; Boulder_Move - n times: while shattered (+$6A > 0) move the three fragments (+$8C, 8 bytes each: quarter-pixel x/y, byte dx/dy, dy += 2), otherwise integrate velocity and acceleration with the fall speed capped at $800 (BOULDER override of slot +$4E Move; replaces it)
+; In:  8(a6) = this (BOULDER object), $E(a6) = word step count
 ; Out: none
 ; Evidence: class descriptor BOULDER slot +$4E (tools/classes.py); TAS frames 20651-20996 (185 active)
 ; ---------------------------------------------------------------------------

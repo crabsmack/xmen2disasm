@@ -1,7 +1,8 @@
 ; ---------------------------------------------------------------------------
-; SwampFly_Init - vtable +$12 constructor: run the parent's Init, then set up a SWAMPFLY
-; In:  8(a6) = this, $C(a6) = long x, $10(a6) = long y (8 fraction bits), $14(a6) = spawn parameter
-; Evidence: slot +$12 of the SWAMPFLY descriptor $0C0CEA; TAS frames 27911-30514 (32 frames active); calls parent BIONPC slot +$12
+; SwampFly_Init - parent (BIONPC) Init, then flags |= $4080, stats jt $2C72 (health), sprite def jt $239A (priority, palette 1), position = placement, flight parameters +$B2/+$AF = placement bytes +7/+9, +$B0/+$B1 = words +$A/+$C plus 8, flap rate +$AE = 2, state SwampFly_StateStart (+$5C/+$64) (SWAMPFLY override of slot +$12 Init)
+; In:  8(a6) = this, $C(a6) = long x, $10(a6) = long y (8 fraction bits), $14(a6) = placement entry
+; Out: none
+; Evidence: slot +$12 of the SWAMPFLY descriptor $0C0CEA; TAS frames 27911-30514 (32 frames active)
 ; ---------------------------------------------------------------------------
 SwampFly_Init:
 	link.w	a6,#$0

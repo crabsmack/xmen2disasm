@@ -1,7 +1,8 @@
 ; ---------------------------------------------------------------------------
-; SmallBrood_Init - vtable +$12 constructor: run the parent's Init, then set up a SMALLBROOD
-; In:  8(a6) = this, $C(a6) = long x, $10(a6) = long y (8 fraction bits), $14(a6) = spawn parameter
-; Evidence: slot +$12 of the SMALLBROOD descriptor $0840FE; TAS frames 46166-57101 (35 frames active); calls parent BIONPC slot +$12; state handler(s) put in +$5C: SmallBrood_StateStart
+; SmallBrood_Init - parent (BIONPC) Init, then no vertical speed, state SmallBrood_StateStart (+$5C/+$64), flags |= $80, sprite def jt $11DA (palette 3), face like the live player, stats jt $121A (health); patrol x range +$A2..+$A4 = x -/+ |placement +6/+8| ($60) with direction flags +$A0/+$A1, speed +$A6 = |+$A| << 8 ($100), +$AE/+$B0 = +$C (90); variant 0-3 from |+$E| (Sw_0841C4; sign = flag) (SMALLBROOD override of slot +$12 Init)
+; In:  8(a6) = this, $C(a6) = long x, $10(a6) = long y (8 fraction bits), $14(a6) = placement entry
+; Out: none
+; Evidence: slot +$12 of the SMALLBROOD descriptor $0840FE; TAS frames 46166-57101 (35 frames active)
 ; ---------------------------------------------------------------------------
 SmallBrood_Init:
 	link.w	a6,#$FFFC

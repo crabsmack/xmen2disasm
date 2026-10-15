@@ -1,7 +1,8 @@
 ; ---------------------------------------------------------------------------
-; ControlPanel_Draw - vtable +$1A: draw a CONTROLPANEL
+; ControlPanel_Draw - in display mode 5 (+$9A) draw the current pattern step's sprite (g_ControlPanelSprDef2, byte dx/dy/frame from step +$94 of table +$90), otherwise the parent Draw (CONTROLPANEL override of slot +$1A Draw)
 ; In:  8(a6) = this
-; Evidence: slot +$1A of the CONTROLPANEL descriptor $0DE48E; TAS frames 2712-6946 (1135 frames active); calls parent ACTOR slot +$1A
+; Out: none
+; Evidence: slot +$1A of the CONTROLPANEL descriptor $0DE48E; TAS frames 2712-6946 (1135 frames active)
 ; ---------------------------------------------------------------------------
 ControlPanel_Draw:
 	link.w	a6,#$FFFC

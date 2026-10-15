@@ -1,7 +1,8 @@
 ; ---------------------------------------------------------------------------
-; SmallBrood_Move - vtable +$4E: per-frame movement of a SMALLBROOD
-; In:  8(a6) = this
-; Evidence: slot +$4E of the SMALLBROOD descriptor $0840FE; TAS frames 46167-57140 (1288 frames active); calls parent BIONPC slot +$4E
+; SmallBrood_Move - parent (BIONPC) Move, then clamp x to +$A2..+$A4 and y to +$AA..+$A8, stopping that axis at a limit (SMALLBROOD override of slot +$4E Move)
+; In:  8(a6) = this, $E(a6) = word step count
+; Out: none
+; Evidence: slot +$4E of the SMALLBROOD descriptor $0840FE; TAS frames 46167-57140 (1288 frames active)
 ; ---------------------------------------------------------------------------
 SmallBrood_Move:
 	link.w	a6,#$0

@@ -1,6 +1,6 @@
 ; ---------------------------------------------------------------------------
-; Brood_TakeDamage - vtable +$26: a BROOD takes a hit
-; In:  8(a6) = this (BROOD object)
+; Brood_TakeDamage - become provoked (+$B2 bit 0), face the attacker and switch to Brood_ActCharge, then the parent TakeDamage and a 60-frame cooldown (BROOD override of slot +$26 TakeDamage)
+; In:  8(a6) = this (BROOD object), $C(a6) = attacker, $13(a6)/$17(a6) = byte hit type/damage, $1A/$1E(a6) = hit point
 ; Out: none
 ; Evidence: class descriptor BROOD slot +$26 (tools/classes.py); TAS frames 47337-47337 (1 active)
 ; ---------------------------------------------------------------------------

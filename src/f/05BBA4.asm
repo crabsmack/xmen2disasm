@@ -1,5 +1,5 @@
 ; ---------------------------------------------------------------------------
-; Boulder_Kill - vtable +$52: kill a BOULDER
+; Boulder_Kill - only calls the parent Kill (BOULDER override of slot +$52 Kill; adds nothing)
 ; In:  8(a6) = this (BOULDER object)
 ; Out: none
 ; Evidence: class descriptor BOULDER slot +$52 (tools/classes.py); TAS frames 20742-20997 (4 active)

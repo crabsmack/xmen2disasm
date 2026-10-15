@@ -1,5 +1,5 @@
 ; ---------------------------------------------------------------------------
-; Boulder_Draw - vtable +$1A: draw a BOULDER
+; Boulder_Draw - while shattered (+$6A > 0) draw the three fragments (frames 3-5); otherwise, when its box (+-$28 px) is on screen, draw the secondary sprite (+$A4 at +$22/+$24) while its animation runs, then the boulder (Spr_Draw) (BOULDER override of slot +$1A Draw; no hit blink, does not call the parent)
 ; In:  8(a6) = this (BOULDER object)
 ; Out: none
 ; Evidence: class descriptor BOULDER slot +$1A (tools/classes.py); TAS frames 20650-20996 (206 active)

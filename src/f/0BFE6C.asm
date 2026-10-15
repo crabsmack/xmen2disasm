@@ -1,6 +1,7 @@
 ; ---------------------------------------------------------------------------
-; SwampPlatform_Draw - vtable +$1A: draw a SWAMPPLATFORM
+; SwampPlatform_Draw - write two 32x32 hardware sprites side by side (tiles +$98 and +$98+$10) 32 px above its position when on screen (SWAMPPLATFORM override of slot +$1A Draw; does not call the parent)
 ; In:  8(a6) = this
+; Out: none
 ; Evidence: slot +$1A of the SWAMPPLATFORM descriptor $0C005A; TAS frames 28315-30468 (422 frames active)
 ; ---------------------------------------------------------------------------
 SwampPlatform_Draw:

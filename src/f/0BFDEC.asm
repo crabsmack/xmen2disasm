@@ -1,6 +1,7 @@
 ; ---------------------------------------------------------------------------
-; SwampPlatform_Move - vtable +$4E: per-frame movement of a SWAMPPLATFORM
+; SwampPlatform_Move - bob up and down: y = base y (+$12) minus a triangle wave of the frame counter (phase +$8C, period 256, peak $80 >> +$9B), never above (level header -$CAE word +4) x 8 - $1A (SWAMPPLATFORM override of slot +$4E Move; no velocity)
 ; In:  8(a6) = this
+; Out: none
 ; Evidence: slot +$4E of the SWAMPPLATFORM descriptor $0C005A; TAS frames 28316-30469 (422 frames active)
 ; ---------------------------------------------------------------------------
 SwampPlatform_Move:

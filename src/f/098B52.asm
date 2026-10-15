@@ -1,7 +1,8 @@
 ; ---------------------------------------------------------------------------
-; EvilWolverine_Init - vtable +$12 constructor: run the parent's Init, then set up a EVILWOLVERINE
-; In:  8(a6) = this, $C(a6) = long x, $10(a6) = long y (8 fraction bits), $14(a6) = spawn parameter
-; Evidence: slot +$12 of the EVILWOLVERINE descriptor $09A0B4; TAS frames 52266-54629 (3 frames active); calls parent XCLONE slot +$12
+; EvilWolverine_Init - parent (XCLONE) Init, then the Wolverine look: sprite def jt $4442, clone record jt $1A0A (+$A8), move set jt $43D2 (+$AC), AI script from the record, XClone_SetBgPalette(1) (EVILWOLVERINE override of slot +$12 Init)
+; In:  8(a6) = this, $C(a6) = long x, $10(a6) = long y (8 fraction bits), $14(a6) = placement entry
+; Out: none
+; Evidence: slot +$12 of the EVILWOLVERINE descriptor $09A0B4; TAS frames 52266-54629 (3 frames active)
 ; ---------------------------------------------------------------------------
 EvilWolverine_Init:
 	link.w	a6,#$0

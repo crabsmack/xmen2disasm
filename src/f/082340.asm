@@ -1,7 +1,8 @@
 ; ---------------------------------------------------------------------------
-; DropBomb_Init - vtable +$12 constructor: run the parent's Init, then set up a DROPBOMB
-; In:  8(a6) = this, $C(a6) = long x, $10(a6) = long y (8 fraction bits), $14(a6) = spawn parameter
-; Evidence: slot +$12 of the DROPBOMB descriptor $082294; TAS frames 48297-49894 (5 frames active); calls parent ACTOR slot +$12; state handler(s) put in +$5C: DropBomb_StateStart
+; DropBomb_Init - parent Init, then no vertical speed, state DropBomb_StateStart (+$5C/+$64), flags |= $4083, sprite def jt $1572 (palette 3), drop interval +$8E = placement +6 (default $78), floor y +$8C from the segment below (or y + $A0) (DROPBOMB override of slot +$12 Init)
+; In:  8(a6) = this, $C(a6) = long x, $10(a6) = long y (8 fraction bits), $14(a6) = placement entry or null
+; Out: none
+; Evidence: slot +$12 of the DROPBOMB descriptor $082294; TAS frames 48297-49894 (5 frames active)
 ; ---------------------------------------------------------------------------
 DropBomb_Init:
 	link.w	a6,#$FFF0

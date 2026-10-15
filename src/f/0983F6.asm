@@ -1,7 +1,8 @@
 ; ---------------------------------------------------------------------------
-; EvilMagneto_Init - vtable +$12 constructor: run the parent's Init, then set up a EVILMAGNETO
-; In:  8(a6) = this, $C(a6) = long x, $10(a6) = long y (8 fraction bits), $14(a6) = spawn parameter
-; Evidence: slot +$12 of the EVILMAGNETO descriptor $099EF6; never runs in the corpus; calls parent XCLONE slot +$12
+; EvilMagneto_Init - parent (XCLONE) Init, then the Magneto look: sprite def jt $3D8A, clone record jt $19D2 (+$A8), move set jt $47BA (+$AC), AI script from the record, XClone_SetBgPalette(2), +$BA = -1 (EVILMAGNETO override of slot +$12 Init)
+; In:  8(a6) = this, $C(a6) = long x, $10(a6) = long y (8 fraction bits), $14(a6) = placement entry
+; Out: none
+; Evidence: slot +$12 of the EVILMAGNETO descriptor $099EF6; never runs in the corpus
 ; ---------------------------------------------------------------------------
 EvilMagneto_Init:
 	link.w	a6,#$0

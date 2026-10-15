@@ -1,7 +1,8 @@
 ; ---------------------------------------------------------------------------
-; EvilMaker_Init - vtable +$12 constructor: run the parent's Init, then set up a EVILMAKER
+; EvilMaker_Init - parent Init, then no motion, AI script jt $15EA (+$8C), state EvilMaker_StateWaitKills (+$5C/+$64), flags |= $5083, face like the live player (EVILMAKER override of slot +$12 Init)
 ; In:  8(a6) = this, $C(a6) = long x, $10(a6) = long y (8 fraction bits), $14(a6) = spawn parameter
-; Evidence: slot +$12 of the EVILMAKER descriptor $094BAC; TAS frames 52154-52154 (1 frames active); calls parent ACTOR slot +$12; state handler(s) put in +$5C: EvilMaker_StateWaitKills
+; Out: none
+; Evidence: slot +$12 of the EVILMAKER descriptor $094BAC; TAS frames 52154-52154 (1 frames active)
 ; ---------------------------------------------------------------------------
 EvilMaker_Init:
 	link.w	a6,#$0

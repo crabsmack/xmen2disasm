@@ -1,7 +1,8 @@
 ; ---------------------------------------------------------------------------
-; Barbarian_Draw - vtable +$1A: draw a BARBARIAN
+; Barbarian_Draw - only calls the parent (BIONPC) Draw (BARBARIAN override of slot +$1A Draw; adds nothing)
 ; In:  8(a6) = this
-; Evidence: slot +$1A of the BARBARIAN descriptor $0BE74E; TAS frames 27992-33098 (1755 frames active); calls parent BIONPC slot +$1A
+; Out: none
+; Evidence: slot +$1A of the BARBARIAN descriptor $0BE74E; TAS frames 27992-33098 (1755 frames active)
 ; ---------------------------------------------------------------------------
 Barbarian_Draw:
 	link.w	a6,#$0

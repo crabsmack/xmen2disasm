@@ -1,6 +1,7 @@
 ; ---------------------------------------------------------------------------
-; ClosedBarrier_Update - vtable +$4A: per-frame update of a CLOSEDBARRIER
+; ClosedBarrier_Update - own update (no parent Update): Deactivate when outside the active window (stop if that removed it), otherwise step its animation (Anim_AdvanceByDistance, 2 steps in two-player step) (CLOSEDBARRIER override of slot +$4A Update)
 ; In:  8(a6) = this
+; Out: none
 ; Evidence: slot +$4A of the CLOSEDBARRIER descriptor $0DCA2E; never runs in the corpus
 ; ---------------------------------------------------------------------------
 ClosedBarrier_Update:

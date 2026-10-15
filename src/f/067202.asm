@@ -1,5 +1,5 @@
 ; ---------------------------------------------------------------------------
-; ScalingActor_Activate - vtable +$3E: activate a SCALINGACTOR (entered the active window)
+; ScalingActor_Activate - parent Activate, then sprite fields +$34/+$36 from the picture descriptor (+$A/+8), sprite flag $80, frame $FF (SCALINGACTOR override of slot +$3E Activate)
 ; In:  8(a6) = this (SCALINGACTOR object)
 ; Out: none
 ; Evidence: class descriptor SCALINGACTOR slot +$3E (tools/classes.py); TAS frames 2346-49027 (21 active)

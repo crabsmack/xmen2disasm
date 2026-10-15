@@ -1,5 +1,5 @@
 ; ---------------------------------------------------------------------------
-; Tuskette_ClassInit - vtable +$5E: per-level class setup for TUSKETTE (load its resources)
+; Tuskette_ClassInit - per-level class setup: SprDef_Add sprite set jt $C32 into g_TusketteSprDef (TUSKETTE override of slot +$5E ClassInit)
 ; In:  8(a6) = this, $C(a6) = class index
 ; Out: none
 ; Evidence: class descriptor TUSKETTE slot +$5E (tools/classes.py); TAS frames 20333-22435 (2 active)

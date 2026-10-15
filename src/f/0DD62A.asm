@@ -1,7 +1,8 @@
 ; ---------------------------------------------------------------------------
-; ControlBox_Init - vtable +$12 constructor: run the parent's Init, then set up a CONTROLBOX
-; In:  8(a6) = this, $C(a6) = long x, $10(a6) = long y (8 fraction bits), $14(a6) = spawn parameter
-; Evidence: slot +$12 of the CONTROLBOX descriptor $0DDA02; TAS frames 2522-7098 (52 frames active); calls parent ACTOR slot +$12
+; ControlBox_Init - parent Init, then no vertical speed, health 100, flags |= $4083, sprite set g_ControlPanelSprDef (palette 0); from the placement (or defaults): switch +$98 (+6), +$9E (+8, $B4), blast speed +$A0 (+$A, $300), +$A2/+$A3 = bytes +$D/+$F, switch flag word +$8C = &(-$3BFA)[switch]; switch already on (bit 0): ControlBox_StateArm, frame $FF and start its pattern (slot +$6E), else ControlBox_StateWaitSwitch (CONTROLBOX override of slot +$12 Init)
+; In:  8(a6) = this, $C(a6) = long x, $10(a6) = long y (8 fraction bits), $14(a6) = placement entry or null
+; Out: none
+; Evidence: slot +$12 of the CONTROLBOX descriptor $0DDA02; TAS frames 2522-7098 (52 frames active)
 ; ---------------------------------------------------------------------------
 ControlBox_Init:
 	link.w	a6,#$FFF0

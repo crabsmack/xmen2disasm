@@ -1,6 +1,7 @@
 ; ---------------------------------------------------------------------------
-; FloatBubble_ClassInit - vtable +$5E: per-level class setup for FLOATBUBBLE: load its resources (SprDef_Add) into class globals
+; FloatBubble_ClassInit - per-level class setup: FloatBubble_Nop6A, then SprDef_Add sprite set jt $1ACA into g_FloatBubbleSprDef with palette line 0 in SavageC1/SavageB1 (the Jungle scenes), else 2 (FLOATBUBBLE override of slot +$5E ClassInit)
 ; In:  8(a6) = 0, $C(a6) = long class index in the level class list
+; Out: none
 ; Evidence: slot +$5E of the FLOATBUBBLE descriptor $0AB496; TAS frames 29684-32204 (3 frames active)
 ; ---------------------------------------------------------------------------
 FloatBubble_ClassInit:

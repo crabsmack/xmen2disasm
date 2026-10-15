@@ -1,6 +1,6 @@
 ; ---------------------------------------------------------------------------
-; Tusk_TakeDamage - vtable +$26: a TUSK takes a hit
-; In:  8(a6) = this (TUSK object)
+; Tusk_TakeDamage - parent TakeDamage (health floored at 0); still alive: 90-frame cooldown and state Tusk_HurtFlash for hit types $D-$F, else blink and Tusk_HurtCharge; dead: cooldown $7FFF and state Tusk_Defeated (TUSK override of slot +$26 TakeDamage)
+; In:  8(a6) = this (TUSK object), $C(a6) = attacker, $13(a6)/$17(a6) = byte hit type/damage, $1A/$1E(a6) = hit point
 ; Out: none
 ; Evidence: class descriptor TUSK slot +$26 (tools/classes.py); TAS frames 21174-21959 (8 active)
 ; ---------------------------------------------------------------------------

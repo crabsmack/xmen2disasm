@@ -1,8 +1,8 @@
 ; ---------------------------------------------------------------------------
-; Brood_Init - vtable +$12 constructor: run the parent's Init(x, y, param), then set up a BROOD
-; In:  8(a6) = this (BROOD object)
+; Brood_Init - parent Init, then no vertical speed, state Brood_StateStart (+$5C/+$64), flags |= $80, sprite def jt $FDA (palette 1), face like the live player; patrol x range +$A2..+$A4 = x -/+ |placement +6/+8| ($80) with direction flags +$A0/+$A1, speed +$A6 = |+$A| << 8 ($100), +$AE/+$B0 = +$C (90); floor y +$A8 from the segment below (+$AA = 32 above), +$AC = 120; frame $FF, stats jt $101A (health), AI script jt $1012 (+$96) (BROOD override of slot +$12 Init)
+; In:  8(a6) = this (BROOD object), $C(a6)/$10(a6) = x/y (8.8 fixed), $14(a6) = placement entry
 ; Out: none
-; Evidence: class descriptor BROOD slot +$12 (tools/classes.py); TAS frames 46223-48533 (6 active)
+; Evidence: class descriptor BROOD slot +$12 (tools/classes.py); AiScript_Set is called with jt $100A then jt $1012, the second wins; TAS frames 46223-48533 (6 active)
 ; ---------------------------------------------------------------------------
 Brood_Init:
 	link.w	a6,#$FFFC

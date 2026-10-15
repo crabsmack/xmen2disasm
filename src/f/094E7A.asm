@@ -1,7 +1,8 @@
 ; ---------------------------------------------------------------------------
-; EvilDrop_Move - vtable +$4E: per-frame movement of a EVILDROP
-; In:  8(a6) = this
-; Evidence: slot +$4E of the EVILDROP descriptor $095126; never runs in the corpus; calls parent BIOBALLS slot +$4E
+; EvilDrop_Move - n times: while falling (+$C4) integrate velocity and acceleration and keep ball 0 centred on it, then one step of the parent (BIOBALLS) Move (EVILDROP override of slot +$4E Move)
+; In:  8(a6) = this, $E(a6) = word step count
+; Out: none
+; Evidence: slot +$4E of the EVILDROP descriptor $095126; never runs in the corpus
 ; ---------------------------------------------------------------------------
 EvilDrop_Move:
 	link.w	a6,#$0

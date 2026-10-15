@@ -1,6 +1,7 @@
 ; ---------------------------------------------------------------------------
-; Barbarian_ClassInit - vtable +$5E: per-level class setup for BARBARIAN
+; Barbarian_ClassInit - per-level class setup: Barbarian_Nop6A, then install Barbarian_SegHook1A in -$3402 (BARBARIAN override of slot +$5E ClassInit; loads no resources)
 ; In:  8(a6) = 0, $C(a6) = long class index in the level class list
+; Out: none
 ; Evidence: slot +$5E of the BARBARIAN descriptor $0BE74E; TAS frames 27879-32204 (4 frames active)
 ; ---------------------------------------------------------------------------
 Barbarian_ClassInit:

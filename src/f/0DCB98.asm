@@ -1,6 +1,7 @@
 ; ---------------------------------------------------------------------------
-; Blast_ClassInit - vtable +$5E: per-level class setup for BLAST: load its resources (SprDef_Add) into class globals
+; Blast_ClassInit - per-level class setup: SprDef_Add the barrier sprite set jt $24D2 into g_BarrierSprDef (palette 0) and the zap set jt $3F72 into g_BlastSprDef (palette 1) (BLAST override of slot +$5E ClassInit)
 ; In:  8(a6) = 0, $C(a6) = long class index in the level class list
+; Out: none
 ; Evidence: slot +$5E of the BLAST descriptor $0DD0E8; TAS frames 2509-5203 (2 frames active)
 ; ---------------------------------------------------------------------------
 Blast_ClassInit:

@@ -1,6 +1,7 @@
 ; ---------------------------------------------------------------------------
-; SwampFly_Draw - vtable +$1A: draw a SWAMPFLY
+; SwampFly_Draw - flap between frames 0 and 1 every 2^(+$AE) frames and Spr_Draw at the camera-relative position (SWAMPFLY override of slot +$1A Draw; no hit blink, does not call the parent)
 ; In:  8(a6) = this
+; Out: none
 ; Evidence: slot +$1A of the SWAMPFLY descriptor $0C0CEA; TAS frames 27912-30560 (660 frames active)
 ; ---------------------------------------------------------------------------
 SwampFly_Draw:

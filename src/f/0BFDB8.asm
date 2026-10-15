@@ -1,6 +1,7 @@
 ; ---------------------------------------------------------------------------
-; SwampPlatform_ClassInit - vtable +$5E: per-level class setup for SWAMPPLATFORM: load its resources (SprDef_Add) into class globals
+; SwampPlatform_ClassInit - per-level class setup: SprDef_Add sprite set jt $2392 into g_SwampPlatformSprDef (SWAMPPLATFORM override of slot +$5E ClassInit)
 ; In:  8(a6) = 0, $C(a6) = long class index in the level class list
+; Out: none
 ; Evidence: slot +$5E of the SWAMPPLATFORM descriptor $0C005A; TAS frames 27881-29687 (2 frames active)
 ; ---------------------------------------------------------------------------
 SwampPlatform_ClassInit:

@@ -1,6 +1,6 @@
 ; ---------------------------------------------------------------------------
-; BoxInputActor_Init - vtable +$12 constructor: run the parent's Init(x, y, param), then set up a BOXINPUTACTOR
-; In:  8(a6) = this (BOXINPUTACTOR object)
+; BoxInputActor_Init - parent Init (spawn param 0), then state CursorInput_StatePoll (+$5C/+$64), health 1, damage 1, no sprite def (palette 1), flags |= $1080, no motion, cursor record +$8C = the 4th argument (BOXINPUTACTOR override of slot +$12 Init)
+; In:  8(a6) = this (BOXINPUTACTOR object), $C(a6)/$10(a6) = x/y (8.8 fixed), $14(a6) = select cursor record
 ; Out: none
 ; Evidence: class descriptor BOXINPUTACTOR slot +$12 (tools/classes.py); TAS frames 2346-49027 (21 active)
 ; ---------------------------------------------------------------------------

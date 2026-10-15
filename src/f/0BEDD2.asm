@@ -1,7 +1,8 @@
 ; ---------------------------------------------------------------------------
-; SporeMine_Init - vtable +$12 constructor: run the parent's Init, then set up a SPOREMINE
+; SporeMine_Init - parent Init, then no vertical speed, flags |= $4081, sprite set g_SporeMineSprDef (palette 3), +$8C = 0, +$90 = 0 (SPOREMINE override of slot +$12 Init)
 ; In:  8(a6) = this, $C(a6) = long x, $10(a6) = long y (8 fraction bits), $14(a6) = spawn parameter
-; Evidence: slot +$12 of the SPOREMINE descriptor $0BF580; never runs in the corpus; calls parent ACTOR slot +$12
+; Out: none
+; Evidence: slot +$12 of the SPOREMINE descriptor $0BF580; never runs in the corpus (spores come from SporeMine_SpawnFromRec)
 ; ---------------------------------------------------------------------------
 SporeMine_Init:
 	link.w	a6,#$0

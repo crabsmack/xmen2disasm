@@ -1,5 +1,5 @@
 ; ---------------------------------------------------------------------------
-; Boulder_Deactivate - vtable +$46: deactivate a BOULDER
+; Boulder_Deactivate - only calls the parent Deactivate (BOULDER override of slot +$46 Deactivate; adds nothing)
 ; In:  8(a6) = this (BOULDER object)
 ; Out: none
 ; Evidence: class descriptor BOULDER slot +$46 (tools/classes.py); TAS frames 20742-20997 (4 active)

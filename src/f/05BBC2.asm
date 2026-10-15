@@ -1,5 +1,5 @@
 ; ---------------------------------------------------------------------------
-; Boulder_Update - vtable +$4A: per-frame update of a BOULDER
+; Boulder_Update - parent Update, then step the secondary sprite's animation (+$B8 script, timer/index in +$26/+$28, cleared when a one-shot ends; frame -> +$A5) and Kill itself once it is more than $144 px below the top of the view (BOULDER override of slot +$4A Update)
 ; In:  8(a6) = this (BOULDER object)
 ; Out: none
 ; Evidence: class descriptor BOULDER slot +$4A (tools/classes.py); TAS frames 20651-20996 (180 active)

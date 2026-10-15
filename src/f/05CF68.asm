@@ -1,6 +1,6 @@
 ; ---------------------------------------------------------------------------
-; Tusk_Init - vtable +$12 constructor: run the parent's Init(x, y, param), then set up a TUSK
-; In:  8(a6) = this (TUSK object)
+; Tusk_Init - parent Init, then flags |= $1182, damage 1, health 30, no motion, state Tusk_StateIntro, sprite def jt $C2A (palette 3), the floor segments above/below its placement (+32 px, within 1000) into +$90/+$94, +$9A = 0 (TUSK override of slot +$12 Init)
+; In:  8(a6) = this (TUSK object), $C(a6)/$10(a6) = x/y (8.8 fixed), $14(a6) = placement entry
 ; Out: none
 ; Evidence: class descriptor TUSK slot +$12 (tools/classes.py); TAS frames 20341-20341 (1 active)
 ; ---------------------------------------------------------------------------

@@ -1,8 +1,8 @@
 ; ---------------------------------------------------------------------------
-; ScalingActor_SetFrame - vtable +$56: set the animation frame of a SCALINGACTOR
-; In:  8(a6) = this (SCALINGACTOR object)
+; ScalingActor_SetFrame - set the frame with the SetFrame of the character in picture descriptor +$3C (0 Beast_SetFrame, 1 Actor_SetFrame for Cyclops, 2 sub_1D041E Gambit, 3 Nightcrawler, 4 Psylocke, 5 Wolverine, 6 Magneto; others nothing) (SCALINGACTOR override of slot +$56 SetFrame)
+; In:  8(a6) = this (SCALINGACTOR object), $E(a6) = word frame
 ; Out: none
-; Evidence: class descriptor SCALINGACTOR slot +$56 (tools/classes.py); TAS frames 2348-49088 (53 active)
+; Evidence: class descriptor SCALINGACTOR slot +$56 (tools/classes.py); switch Sw_0672CE, ScalingActor_SetFrame_part1-3; TAS frames 2348-49088 (53 active)
 ; ---------------------------------------------------------------------------
 ScalingActor_SetFrame:
 	link.w	a6,#$0

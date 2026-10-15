@@ -1,6 +1,6 @@
 ; ---------------------------------------------------------------------------
-; ScalingActor_Init - vtable +$12 constructor: run the parent's Init(x, y, param), then set up a SCALINGACTOR
-; In:  8(a6) = this (SCALINGACTOR object)
+; ScalingActor_Init - parent Init (spawn param 0), then state PortraitActor_StateInit (+$5C/+$64), health 1, damage 1, no sprite def (+$30 = 0, palette 1), flags |= $1080, no motion, picture descriptor +$8C = the 4th argument (SCALINGACTOR override of slot +$12 Init)
+; In:  8(a6) = this (SCALINGACTOR object), $C(a6)/$10(a6) = x/y (8.8 fixed), $14(a6) = picture descriptor
 ; Out: none
 ; Evidence: class descriptor SCALINGACTOR slot +$12 (tools/classes.py); TAS frames 2346-49027 (21 active)
 ; ---------------------------------------------------------------------------

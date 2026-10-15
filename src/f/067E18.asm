@@ -1,5 +1,5 @@
 ; ---------------------------------------------------------------------------
-; BoxInputActor_Draw - vtable +$1A: draw a BOXINPUTACTOR
+; BoxInputActor_Draw - unless the cursor's character (+$3C) is -1, draw its portrait frame: PlayerSelect_DrawFrame(slot +$3E, x +$36, y +$38, 3, 1) (BOXINPUTACTOR override of slot +$1A Draw; does not call the parent)
 ; In:  8(a6) = this (BOXINPUTACTOR object)
 ; Out: none
 ; Evidence: class descriptor BOXINPUTACTOR slot +$1A (tools/classes.py); TAS frames 2346-49094 (349 active)

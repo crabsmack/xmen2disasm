@@ -1,7 +1,8 @@
 ; ---------------------------------------------------------------------------
-; EvilNightcrawler_Init - vtable +$12 constructor: run the parent's Init, then set up a EVILNIGHTCRAWLER
-; In:  8(a6) = this, $C(a6) = long x, $10(a6) = long y (8 fraction bits), $14(a6) = spawn parameter
-; Evidence: slot +$12 of the EVILNIGHTCRAWLER descriptor $099F88; TAS frames 56384-56384 (1 frames active); calls parent XCLONE slot +$12
+; EvilNightcrawler_Init - parent (XCLONE) Init, then the Nightcrawler look: sprite def jt $454A, clone record jt $19E2 (+$A8), move set jt $44C2 (+$AC), AI script from the record, XClone_SetBgPalette(3) (EVILNIGHTCRAWLER override of slot +$12 Init)
+; In:  8(a6) = this, $C(a6) = long x, $10(a6) = long y (8 fraction bits), $14(a6) = placement entry
+; Out: none
+; Evidence: slot +$12 of the EVILNIGHTCRAWLER descriptor $099F88; TAS frames 56384-56384 (1 frames active)
 ; ---------------------------------------------------------------------------
 EvilNightcrawler_Init:
 	link.w	a6,#$0

@@ -1,7 +1,8 @@
 ; ---------------------------------------------------------------------------
-; BroodBoss_Init - vtable +$12 constructor: run the parent's Init, then set up a BROODBOSS
-; In:  8(a6) = this, $C(a6) = long x, $10(a6) = long y (8 fraction bits), $14(a6) = spawn parameter
-; Evidence: slot +$12 of the BROODBOSS descriptor $088D6E; TAS frames 49283-49283 (1 frames active); calls parent BROODBOSSPARTS slot +$12
+; BroodBoss_Init - parent (BROODBOSSPARTS) Init, then no motion, damage 1, states BroodBoss_StateSetup / hurt BroodBoss_StateHurt, sprite def jt $153A (palette 2), flags |= $5102, +$71 = 5, health 24, shared arm frame -$3B10 = $FF, AI script jt $14BA (+$90); arena from the map: floor y (segment below, or y+$5A) for both debris pools (Debris_SetFloorY, bounce limit 3), left edge -$3B20 (placement +6 or x-$220), ceiling -$3B22, left wall -$3B24 (BROODBOSS override of slot +$12 Init)
+; In:  8(a6) = this, $C(a6) = long x, $10(a6) = long y (8 fraction bits), $14(a6) = placement entry
+; Out: none
+; Evidence: slot +$12 of the BROODBOSS descriptor $088D6E; TAS frames 49283-49283 (1 frames active)
 ; ---------------------------------------------------------------------------
 BroodBoss_Init:
 	link.w	a6,#$0

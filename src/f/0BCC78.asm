@@ -1,7 +1,8 @@
 ; ---------------------------------------------------------------------------
-; SavageMediumBio_ClassInit - vtable +$5E: per-level class setup for SAVAGEMEDIUMBIO
+; SavageMediumBio_ClassInit - per-level class setup that does nothing: only the parent's (SavageBioBase_ClassInit, which calls the empty SavageBio_NopStatic) (SAVAGEMEDIUMBIO override of slot +$5E ClassInit)
 ; In:  8(a6) = 0, $C(a6) = long class index in the level class list
-; Evidence: slot +$5E of the SAVAGEMEDIUMBIO descriptor $0BD39C; TAS frames 33387-33387 (1 frames active); calls parent SAVAGEBIOBASE slot +$5E
+; Out: none
+; Evidence: slot +$5E of the SAVAGEMEDIUMBIO descriptor $0BD39C; TAS frames 33387-33387 (1 frames active)
 ; ---------------------------------------------------------------------------
 SavageMediumBio_ClassInit:
 	link.w	a6,#$0

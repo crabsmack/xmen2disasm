@@ -1,6 +1,7 @@
 ; ---------------------------------------------------------------------------
-; Barbarian_Move - vtable +$4E: per-frame movement of a BARBARIAN
-; In:  8(a6) = this
+; Barbarian_Move - n times integrate velocity and acceleration with no speed limit (BARBARIAN override of slot +$4E Move; replaces it)
+; In:  8(a6) = this, $E(a6) = word step count
+; Out: none
 ; Evidence: slot +$4E of the BARBARIAN descriptor $0BE74E; TAS frames 28050-33062 (183 frames active)
 ; ---------------------------------------------------------------------------
 Barbarian_Move:

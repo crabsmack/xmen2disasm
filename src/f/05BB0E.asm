@@ -1,5 +1,5 @@
 ; ---------------------------------------------------------------------------
-; Boulder_ClassInit - vtable +$5E: per-level class setup for BOULDER (load its resources)
+; Boulder_ClassInit - per-level class setup: Boulder_Nop6A, SprDef_Add sprite sets jt $C12/$C1A/$C22 into g_BoulderSprDef/g_BoulderSprDef2/g_BoulderDebrisSprDef, Mem_StackAlloc $258 bytes for Boulder_InitDebrisPool, clear -$3B32 and -$3B04 (BOULDER override of slot +$5E ClassInit)
 ; In:  8(a6) = this, $C(a6) = class index
 ; Out: none
 ; Evidence: class descriptor BOULDER slot +$5E (tools/classes.py); TAS frames 20323-20323 (1 active)

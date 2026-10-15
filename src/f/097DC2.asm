@@ -1,7 +1,8 @@
 ; ---------------------------------------------------------------------------
-; EvilBeast_Init - vtable +$12 constructor: run the parent's Init, then set up a EVILBEAST
-; In:  8(a6) = this, $C(a6) = long x, $10(a6) = long y (8 fraction bits), $14(a6) = spawn parameter
-; Evidence: slot +$12 of the EVILBEAST descriptor $099D1E; TAS frames 53039-53039 (1 frames active); calls parent XCLONE slot +$12
+; EvilBeast_Init - parent (XCLONE) Init, then the Beast look: sprite def jt $4342, clone record jt $199A (+$A8), move set jt $429A (+$AC), AI script from the record, XClone_SetBgPalette(1), +$BE = 0 (EVILBEAST override of slot +$12 Init)
+; In:  8(a6) = this, $C(a6) = long x, $10(a6) = long y (8 fraction bits), $14(a6) = placement entry
+; Out: none
+; Evidence: slot +$12 of the EVILBEAST descriptor $099D1E; TAS frames 53039-53039 (1 frames active)
 ; ---------------------------------------------------------------------------
 EvilBeast_Init:
 	link.w	a6,#$0

@@ -1,6 +1,6 @@
 ; ---------------------------------------------------------------------------
-; Tuskette_Move - vtable +$4E: per-frame movement of a TUSKETTE
-; In:  8(a6) = this (TUSKETTE object)
+; Tuskette_Move - n times integrate velocity and acceleration with no speed limit (TUSKETTE override of slot +$4E Move; replaces it)
+; In:  8(a6) = this (TUSKETTE object), $E(a6) = word step count
 ; Out: none
 ; Evidence: class descriptor TUSKETTE slot +$4E (tools/classes.py); TAS frames 22486-23800 (643 active)
 ; ---------------------------------------------------------------------------

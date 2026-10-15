@@ -1,7 +1,8 @@
 ; ---------------------------------------------------------------------------
-; FloatBubbleExplode_Init - vtable +$12 constructor: run the parent's Init, then set up a FLOATBUBBLEEXPLODE
+; FloatBubbleExplode_Init - parent Init, then +$42 = 0, priority bit, flags |= $508A, sprite def jt $1AD2 with palette line 0 in the Jungle scenes (SavageC1/B1) else 2, state FloatBubbleExplode_StateStart (+$5C/+$64) (FLOATBUBBLEEXPLODE override of slot +$12 Init)
 ; In:  8(a6) = this, $C(a6) = long x, $10(a6) = long y (8 fraction bits), $14(a6) = spawn parameter
-; Evidence: slot +$12 of the FLOATBUBBLEEXPLODE descriptor $0AC1B8; TAS frames 31607-31607 (1 frames active); calls parent ACTOR slot +$12
+; Out: none
+; Evidence: slot +$12 of the FLOATBUBBLEEXPLODE descriptor $0AC1B8; TAS frames 31607-31607 (1 frames active)
 ; ---------------------------------------------------------------------------
 FloatBubbleExplode_Init:
 	link.w	a6,#$0

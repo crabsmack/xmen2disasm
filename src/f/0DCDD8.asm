@@ -1,7 +1,8 @@
 ; ---------------------------------------------------------------------------
-; Blast_Draw - vtable +$1A: draw a BLAST
+; Blast_Draw - while latched (+$96 bit 0) draw the zap flicker on the target (Spr_EmitFlicker with jt $3F6A and g_BlastSprDef), otherwise the parent Draw (BLAST override of slot +$1A Draw)
 ; In:  8(a6) = this
-; Evidence: slot +$1A of the BLAST descriptor $0DD0E8; TAS frames 2782-7280 (1786 frames active); calls parent ACTOR slot +$1A
+; Out: none
+; Evidence: slot +$1A of the BLAST descriptor $0DD0E8; TAS frames 2782-7280 (1786 frames active)
 ; ---------------------------------------------------------------------------
 Blast_Draw:
 	link.w	a6,#$0

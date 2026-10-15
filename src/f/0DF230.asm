@@ -1,7 +1,8 @@
 ; ---------------------------------------------------------------------------
-; SentinelElevator_Init - vtable +$12 constructor: run the parent's Init, then set up a SENTINELELEVATOR
-; In:  8(a6) = this, $C(a6) = long x, $10(a6) = long y (8 fraction bits), $14(a6) = spawn parameter
-; Evidence: slot +$12 of the SENTINELELEVATOR descriptor $0DF556; TAS frames 4818-9969 (3 frames active); calls parent ACTOR slot +$12; state handler(s) put in +$5C: SentinelElevator_StateAuto, SentinelElevator_StateStart
+; SentinelElevator_Init - parent Init, then no vertical speed, state SentinelElevator_StateStart (+$5C/+$64), flags |= $52A3, +$42 = 4, sprite def jt $25FA (palette 0), +$98/+$99 = 20; from the placement: switch +$90 (0-14) with flag word +$8C, travel top +$94 = y - 32 x (+8), bottom +$96 = y + 32 x (+$A); +$E = 99 makes it automatic (SentinelElevator_StateAuto, flag $1000 cleared); Obj_UpdateBoxes (SENTINELELEVATOR override of slot +$12 Init)
+; In:  8(a6) = this, $C(a6) = long x, $10(a6) = long y (8 fraction bits), $14(a6) = placement entry or null
+; Out: none
+; Evidence: slot +$12 of the SENTINELELEVATOR descriptor $0DF556; TAS frames 4818-9969 (3 frames active)
 ; ---------------------------------------------------------------------------
 SentinelElevator_Init:
 	link.w	a6,#$0

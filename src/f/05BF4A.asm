@@ -1,6 +1,6 @@
 ; ---------------------------------------------------------------------------
-; Boulder_Init - vtable +$12 constructor: run the parent's Init(x, y, param), then set up a BOULDER
-; In:  8(a6) = this (BOULDER object)
+; Boulder_Init - parent Init, then flags |= $1080, damage 1, sprite set g_BoulderSprDef (palette 2), no animation (+$B8), +$B0-+$B3 = $FF, secondary sprite record +$A4 from g_BoulderSprDef2, hurt state Boulder_StateShatter, Boulder_FindFloorBelow, random x speed +-$150, state by placement +6 (0 Boulder_StateStartRoll, 1 Boulder_StateStart), +$6E = 75 (BOULDER override of slot +$12 Init)
+; In:  8(a6) = this (BOULDER object), $C(a6)/$10(a6) = x/y (8.8 fixed), $14(a6) = placement entry
 ; Out: none
 ; Evidence: class descriptor BOULDER slot +$12 (tools/classes.py); TAS frames 20650-20958 (4 active)
 ; ---------------------------------------------------------------------------

@@ -1,5 +1,5 @@
 ; ---------------------------------------------------------------------------
-; LightBeam_Activate - vtable +$3E: activate a LIGHTBEAM (entered the active window)
+; LightBeam_Activate - parent Activate, then free its per-frame update Timer (+$7C = 0), so it is drawn but not updated (LIGHTBEAM override of slot +$3E Activate)
 ; In:  8(a6) = this (LIGHTBEAM object)
 ; Out: none
 ; Evidence: class descriptor LIGHTBEAM slot +$3E (tools/classes.py); TAS frames 45425-45425 (1 active)

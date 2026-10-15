@@ -1,5 +1,5 @@
 ; ---------------------------------------------------------------------------
-; ScalingActor_Move - vtable +$4E: per-frame movement of a SCALINGACTOR
+; ScalingActor_Move - no movement: just zero the velocity and acceleration (SCALINGACTOR override of slot +$4E Move)
 ; In:  8(a6) = this (SCALINGACTOR object)
 ; Out: none
 ; Evidence: class descriptor SCALINGACTOR slot +$4E (tools/classes.py); TAS frames 2346-49093 (397 active)

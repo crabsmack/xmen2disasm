@@ -1,7 +1,8 @@
 ; ---------------------------------------------------------------------------
-; EvilCyclops_Init - vtable +$12 constructor: run the parent's Init, then set up a EVILCYCLOPS
-; In:  8(a6) = this, $C(a6) = long x, $10(a6) = long y (8 fraction bits), $14(a6) = spawn parameter
-; Evidence: slot +$12 of the EVILCYCLOPS descriptor $099DD2; TAS frames 57222-57222 (1 frames active); calls parent XCLONE slot +$12
+; EvilCyclops_Init - parent (XCLONE) Init, then the Cyclops look: sprite def jt $4B42, clone record jt $19AA (+$A8), move set jt $4AA2 (+$AC), AI script from the record, XClone_SetBgPalette(1) (EVILCYCLOPS override of slot +$12 Init)
+; In:  8(a6) = this, $C(a6) = long x, $10(a6) = long y (8 fraction bits), $14(a6) = placement entry
+; Out: none
+; Evidence: slot +$12 of the EVILCYCLOPS descriptor $099DD2; TAS frames 57222-57222 (1 frames active)
 ; ---------------------------------------------------------------------------
 EvilCyclops_Init:
 	link.w	a6,#$0

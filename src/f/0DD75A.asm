@@ -1,7 +1,8 @@
 ; ---------------------------------------------------------------------------
-; ControlBox_Draw - vtable +$1A: draw a CONTROLBOX
+; ControlBox_Draw - in display mode 1 (+$9A) draw the current pattern step's sprite (g_ControlPanelSprDef2, byte dx/dy/frame from step +$94 of table +$90), otherwise the parent Draw (CONTROLBOX override of slot +$1A Draw)
 ; In:  8(a6) = this
-; Evidence: slot +$1A of the CONTROLBOX descriptor $0DDA02; TAS frames 2523-7268 (2540 frames active); calls parent ACTOR slot +$1A
+; Out: none
+; Evidence: slot +$1A of the CONTROLBOX descriptor $0DDA02; TAS frames 2523-7268 (2540 frames active)
 ; ---------------------------------------------------------------------------
 ControlBox_Draw:
 	link.w	a6,#$FFFC

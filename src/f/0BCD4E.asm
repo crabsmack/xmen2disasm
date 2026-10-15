@@ -1,7 +1,8 @@
 ; ---------------------------------------------------------------------------
-; SavageMediumBio_TakeDamage - vtable +$26: a SAVAGEMEDIUMBIO is hit (attacker, damage)
+; SavageMediumBio_TakeDamage - only calls BIONPC's TakeDamage (BioNpc_TakeDamage, through Tbl_BioNpc_vtable), which SAVAGEBIOBASE inherits anyway (SAVAGEMEDIUMBIO override of slot +$26 TakeDamage; adds nothing)
 ; In:  8(a6) = this, $C(a6) = attacker, then hit parameters (see ACTOR +$26 $15E680)
-; Evidence: slot +$26 of the SAVAGEMEDIUMBIO descriptor $0BD39C; TAS frames 33579-33579 (1 frames active)
+; Out: none
+; Evidence: slot +$26 of the SAVAGEMEDIUMBIO descriptor $0BD39C; jt $2BDA = Tbl_BioNpc_vtable, slot +$26 = $114D0A; TAS frames 33579-33579 (1 frames active)
 ; ---------------------------------------------------------------------------
 SavageMediumBio_TakeDamage:
 	link.w	a6,#$0

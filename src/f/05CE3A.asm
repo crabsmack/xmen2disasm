@@ -1,5 +1,5 @@
 ; ---------------------------------------------------------------------------
-; Tusk_Update - vtable +$4A: per-frame update of a TUSK
+; Tusk_Update - parent Update, then unless +4 bit $10: count down +$9A (2 per frame in two-player step; at 0 leave the enemy body hit list), clear the blink when the cooldown ends, and draw each live player behind it while above its y, in front otherwise (sprite priority bit + DrawList_SetPriority) (TUSK override of slot +$4A Update)
 ; In:  8(a6) = this (TUSK object)
 ; Out: none
 ; Evidence: class descriptor TUSK slot +$4A (tools/classes.py); TAS frames 20343-21960 (1555 active)

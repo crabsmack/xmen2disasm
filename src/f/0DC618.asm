@@ -1,6 +1,7 @@
 ; ---------------------------------------------------------------------------
-; Barrier_ClassInit - vtable +$5E: per-level class setup for BARRIER: load its resources (SprDef_Add) into class globals
+; Barrier_ClassInit - per-level class setup: Barrier_NopStatic, then SprDef_Add sprite set jt $24D2 into g_BarrierSprDef (BARRIER override of slot +$5E ClassInit)
 ; In:  8(a6) = 0, $C(a6) = long class index in the level class list
+; Out: none
 ; Evidence: slot +$5E of the BARRIER descriptor $0DCAAA; TAS frames 9712-9712 (1 frames active)
 ; ---------------------------------------------------------------------------
 Barrier_ClassInit:

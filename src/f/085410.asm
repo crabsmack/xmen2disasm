@@ -1,7 +1,8 @@
 ; ---------------------------------------------------------------------------
-; TeleportReceiver_InitSpawnRec - vtable +$0A: initialise a TELEPORTRECEIVER spawn record from level data
-; In:  8(a6) = class descriptor, $C(a6) = spawn record
-; Evidence: slot +$A of the TELEPORTRECEIVER descriptor $085300; TAS frames 47898-47898 (1 frames active); calls parent ACTOR slot +$A
+; TeleportReceiver_InitSpawnRec - parent InitSpawnRec, then clear the record's state byte +4, so a receiver is never spawned by the scroll window (TELEPORTRECEIVER override of slot +$0A InitSpawnRec)
+; In:  8(a6) = spawn record, $C(a6) = placement entry
+; Out: none
+; Evidence: slot +$A of the TELEPORTRECEIVER descriptor $085300; Teleporter_Init looks receivers up in g_SpawnRecs; TAS frames 47898-47898 (1 frames active)
 ; ---------------------------------------------------------------------------
 TeleportReceiver_InitSpawnRec:
 	link.w	a6,#$0

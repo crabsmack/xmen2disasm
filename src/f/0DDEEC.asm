@@ -1,7 +1,8 @@
 ; ---------------------------------------------------------------------------
-; ControlPanel_Init - vtable +$12 constructor: run the parent's Init, then set up a CONTROLPANEL
-; In:  8(a6) = this, $C(a6) = long x, $10(a6) = long y (8 fraction bits), $14(a6) = spawn parameter
-; Evidence: slot +$12 of the CONTROLPANEL descriptor $0DE48E; TAS frames 2711-6810 (18 frames active); calls parent ACTOR slot +$12
+; ControlPanel_Init - parent Init, then no vertical speed, health 100, hurt state ControlPanel_StateHit, flags |= $4081, sprite set g_ControlPanelSprDef (palette 0); from the placement (or defaults): switch +$98 (0-14), +$9E ($B4), +$A0 ($300), +$A2 = byte +$D, switch flag word +$8C; start state by the flag bits: 0 ControlPanel_StateArm (frame $FF, start pattern via slot +$72), 3 StateDamaged2, 2 StateDamaged1, else StateIntact (+$9A = 3/2/1); h-flip when its map tile has attribute $200 (CONTROLPANEL override of slot +$12 Init)
+; In:  8(a6) = this, $C(a6) = long x, $10(a6) = long y (8 fraction bits), $14(a6) = placement entry or null
+; Out: none
+; Evidence: slot +$12 of the CONTROLPANEL descriptor $0DE48E; TAS frames 2711-6810 (18 frames active)
 ; ---------------------------------------------------------------------------
 ControlPanel_Init:
 	link.w	a6,#$FFF0

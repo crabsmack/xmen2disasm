@@ -1,7 +1,8 @@
 ; ---------------------------------------------------------------------------
-; EvilDrop_Init - vtable +$12 constructor: run the parent's Init, then set up a EVILDROP
-; In:  8(a6) = this, $C(a6) = long x, $10(a6) = long y (8 fraction bits), $14(a6) = spawn parameter
-; Evidence: slot +$12 of the EVILDROP descriptor $095126; never runs in the corpus; calls parent BIOBALLS slot +$12; state handler(s) put in +$5C: EvilDrop_StateStart
+; EvilDrop_Init - parent (BIOBALLS) Init, then no motion, AI script jt $1642 (+$8C), state EvilDrop_StateStart (+$5C/+$64), flags |= $1083, +$AC = jt $163A, copy of the 16-byte placement in +$B0, falling (+$C4 = 1), first ball at its position and the second unused, face like the live player, floor y +$C2 from the segment below (or y + $80) (EVILDROP override of slot +$12 Init)
+; In:  8(a6) = this, $C(a6) = long x, $10(a6) = long y (8 fraction bits), $14(a6) = placement entry
+; Out: none
+; Evidence: slot +$12 of the EVILDROP descriptor $095126; never runs in the corpus
 ; ---------------------------------------------------------------------------
 EvilDrop_Init:
 	link.w	a6,#$0

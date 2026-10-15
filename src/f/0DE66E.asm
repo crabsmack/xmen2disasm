@@ -1,7 +1,8 @@
 ; ---------------------------------------------------------------------------
-; SentinelDoor_Despawn - vtable +$36: a SENTINELDOOR leaves play (written back to its spawn record)
-; In:  8(a6) = this
-; Evidence: slot +$36 of the SENTINELDOOR descriptor $0DE9A0; TAS frames 2904-7103 (17 frames active); calls parent ACTOR slot +$36
+; SentinelDoor_Despawn - parent Despawn, then Seg_Free its doorway segment (+$94 = 0) (SENTINELDOOR override of slot +$36 Despawn)
+; In:  8(a6) = this, $C(a6) = spawn record
+; Out: none
+; Evidence: slot +$36 of the SENTINELDOOR descriptor $0DE9A0; TAS frames 2904-7103 (17 frames active)
 ; ---------------------------------------------------------------------------
 SentinelDoor_Despawn:
 	link.w	a6,#$0

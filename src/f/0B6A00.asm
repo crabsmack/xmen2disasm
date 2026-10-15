@@ -1,6 +1,7 @@
 ; ---------------------------------------------------------------------------
-; BrainChild_Move - vtable +$4E: per-frame movement of a BRAINCHILD
-; In:  8(a6) = this
+; BrainChild_Move - integrate velocity and acceleration once (twice when 2+ steps), clamp x to +$96..+$98, keep its box top at or below +$9C and y at or above +$9A (stopping that axis) (BRAINCHILD override of slot +$4E Move; replaces it)
+; In:  8(a6) = this, $E(a6) = word step count
+; Out: none
 ; Evidence: slot +$4E of the BRAINCHILD descriptor $0B7BAC; TAS frames 33490-33537 (48 frames active)
 ; ---------------------------------------------------------------------------
 BrainChild_Move:

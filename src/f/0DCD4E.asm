@@ -1,7 +1,8 @@
 ; ---------------------------------------------------------------------------
-; Blast_Attack - vtable +$22: a BLAST hits a target object
+; Blast_Attack - parent Attack, then stop, drop the animation, frame $FF, latch onto the target (+$90, +$96 bit 0) and switch to Blast_Latch (BLAST override of slot +$22 Attack)
 ; In:  8(a6) = this, $C(a6) = target object, then hit parameters (see ACTOR +$22 $15E630)
-; Evidence: slot +$22 of the BLAST descriptor $0DD0E8; runs in corpus run fuzz-03600-s2 (not the TAS); calls parent ACTOR slot +$22
+; Out: none
+; Evidence: slot +$22 of the BLAST descriptor $0DD0E8; runs in corpus run fuzz-03600-s2 (not the TAS)
 ; ---------------------------------------------------------------------------
 Blast_Attack:
 	link.w	a6,#$0
