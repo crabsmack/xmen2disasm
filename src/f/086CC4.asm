@@ -1,5 +1,8 @@
 ; ---------------------------------------------------------------------------
-; BroodBoss_StateWaitArrive	[link-after-rts]
+; BroodBoss_StateWaitArrive - BROODBOSS state: wait until the boss x offset reaches $130, then enable its frame hook and start the AI script
+; In:  8(a6) = this
+; Out: d0
+; Evidence: |(-$3C44 >> 8) - $130| < 5 -> -$3B0C |= 1, -$340E := CloneA5_SegHook17, script step 0 (+$92/+$90); TAS 49418-49566
 ; ---------------------------------------------------------------------------
 BroodBoss_StateWaitArrive:
 	link.w	a6,#$0

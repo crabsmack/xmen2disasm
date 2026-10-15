@@ -1,5 +1,8 @@
 ; ---------------------------------------------------------------------------
-; BroodBoss_StateSetup	[link-after-rts]
+; BroodBoss_StateSetup - BROODBOSS first state: create its claw, arm and little leg, then start the entrance
+; In:  8(a6) = this
+; Out: d0
+; Evidence: SetFrame($FF); BroodClaw_Spawn(rec x+$11 y $660, 1) BROODCLAW -> +$96 (state BroodClaw_StateIdle); BROODBOSSARM New at (x+$31, y-$C) -> +$9A; LITTLELEG +$0A at (x+$6A, y-$24) -> +$9E; next BroodBoss_StateRoar; TAS 49291
 ; ---------------------------------------------------------------------------
 BroodBoss_StateSetup:
 	link.w	a6,#$FFF0

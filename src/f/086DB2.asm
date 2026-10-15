@@ -1,5 +1,8 @@
 ; ---------------------------------------------------------------------------
-; BroodBoss_ActWait30	[jt 632]
+; BroodBoss_ActWait30 - BROODBOSS script action: wait $1E frames, then the next step
+; In:  8(a6) = this
+; Out: none
+; Evidence: next-step idiom with +$6C = $1E; jt 632
 ; ---------------------------------------------------------------------------
 BroodBoss_ActWait30:
 	link.w	a6,#$0

@@ -1,5 +1,8 @@
 ; ---------------------------------------------------------------------------
-; BroodBossDamage_StateIdle	[link-after-rts]
+; BroodBossDamage_StateIdle - BROODBOSSDAMAGE state: idle (re-arms itself every frame)
+; In:  8(a6) = this
+; Out: d0
+; Evidence: +$5C/+$64 = itself (BroodBossDamage_Init)
 ; ---------------------------------------------------------------------------
 BroodBossDamage_StateIdle:
 	link.w	a6,#$0

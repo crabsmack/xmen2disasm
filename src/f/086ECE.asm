@@ -1,5 +1,8 @@
 ; ---------------------------------------------------------------------------
-; BroodBoss_StateDropBomb	[link-after-rts]
+; BroodBoss_StateDropBomb - BROODBOSS state: frame 5 and drop a DROPBOMB near the top-left of the screen
+; In:  8(a6) = this
+; Out: d0
+; Evidence: SetFrame(5), DropBomb_Spawn((g_CameraX+$2D) << 8, (g_CameraY+$B) << 8, 0), next BroodBoss_StateAfterBomb; TAS 49894
 ; ---------------------------------------------------------------------------
 BroodBoss_StateDropBomb:
 	link.w	a6,#$0

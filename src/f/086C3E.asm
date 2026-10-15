@@ -1,5 +1,8 @@
 ; ---------------------------------------------------------------------------
-; BroodBoss_StateEnter	[link-after-rts]
+; BroodBoss_StateEnter - BROODBOSS state: send the claw in, play sound $30, create the BROODBOSSDAMAGE hurt zones
+; In:  8(a6) = this
+; Out: d0
+; Evidence: claw +$16 = -$200, +$90 = 0, +$92 = BroodClaw_Swing; Snd $30; Tbl_BroodBossDamage_vtable New at the boss position; next BroodBoss_StateWaitArrive; TAS 49416
 ; ---------------------------------------------------------------------------
 BroodBoss_StateEnter:
 	link.w	a6,#$0

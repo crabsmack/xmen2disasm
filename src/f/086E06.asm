@@ -1,5 +1,8 @@
 ; ---------------------------------------------------------------------------
-; BroodBoss_ActClaw	[jt 633]
+; BroodBoss_ActClaw - BROODBOSS script action: roar and send the claw out (claw mode 1)
+; In:  8(a6) = this
+; Out: none
+; Evidence: Obj_SetAnim(this, $0889AA); claw +$16 = -$200, +$90 = 1, +$92 = BroodClaw_Swing; next step; jt 633
 ; ---------------------------------------------------------------------------
 BroodBoss_ActClaw:
 	link.w	a6,#$0
