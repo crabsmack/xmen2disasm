@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_1F6816	[link-after-rts]
+; Pal_SaveBase - copy the 64-colour base palette to the save buffer
+; In:  none
+; Out: none
+; Evidence: g_PalSave[i] = g_PalBase[i], i = 0..63; paired with Pal_RestoreBase
 ; ---------------------------------------------------------------------------
-sub_1F6816:
+Pal_SaveBase:
 	link.w	a6,#$0
 	movem.l	d3/d7/a4,-(a7)
 	lea.l	g_PalSave(a5),a4

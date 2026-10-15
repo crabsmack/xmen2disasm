@@ -36,7 +36,7 @@ loc_141BC2:
 	moveq	#$0,d0
 loc_141BC4:
 	move.b	d0,d7
-	jsr	$4DCA(a5)	; -> sub_1F4A1A
+	jsr	$4DCA(a5)	; -> Obj_FindFreeSlot
 	movea.l	d0,a4
 	moveq	#$0,d0
 	move.l	d0,-(a7)

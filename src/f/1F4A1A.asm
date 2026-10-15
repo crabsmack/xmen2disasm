@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_1F4A1A
+; Obj_FindFreeSlot - find an unused object in the object table (flags word 0), skipping the two player slots
+; In:  none
+; Out: d0 = object pointer or 0
+; Evidence: walks g_ObjTable from entry 2 for g_ObjCount-2 entries, returns the first with +4 = 0
 ; ---------------------------------------------------------------------------
-sub_1F4A1A:
+Obj_FindFreeSlot:
 	movea.l	g_ObjTable(a5),a0
 	moveq	#$2,d0
 	move.w	g_ObjCount(a5),d1

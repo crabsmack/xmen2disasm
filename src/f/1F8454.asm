@@ -22,7 +22,7 @@ sub_1F8454:
 	move.l	d7,-(a7)
 	ext.l	d6
 	move.l	d6,-(a7)
-	jsr	sub_1F82CC(pc)
+	jsr	Seg_FindContaining(pc)
 	movem.l	-$8(a6),d6-d7
 	unlk	a6
 	rts

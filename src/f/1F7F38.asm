@@ -153,7 +153,7 @@ loc_1F80A2:
 	move.l	d0,$72(a0)
 loc_1F80AC:
 	move.l	$8(a6),-(a7)
-	jsr	sub_1F6D76(pc)
+	jsr	Seg_ApplyObjPos(pc)
 	move.l	$8(a6),-(a7)
 	jsr	$4DD2(a5)	; -> Obj_UpdateBoxes
 	addq.w	#$8,a7

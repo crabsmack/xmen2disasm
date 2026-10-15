@@ -2,14 +2,14 @@
 ; LaserCannon_StatePickTarget - LaserCannon state: pick the nearest live player as target (+$94) and watch it for 60 frames
 ; In:  8(a6) = this
 ; Out: d0 = flags & 8, or 0 when no player is alive
-; Evidence: sub_1F6A32 (nearest player with flags $8000 set, else 0) -> +$94; +$6E = 60, +$5C = LaserCannon_StateWatchTarget
+; Evidence: Player_NearestLive (nearest player with flags $8000 set, else 0) -> +$94; +$6E = 60, +$5C = LaserCannon_StateWatchTarget
 ; ---------------------------------------------------------------------------
 LaserCannon_StatePickTarget:
 	link.w	a6,#$0
 	movem.l	a3-a4,-(a7)
 	movea.l	$8(a6),a4
 	move.l	a4,-(a7)
-	jsr	$4EB2(a5)	; -> sub_1F6A32
+	jsr	$4EB2(a5)	; -> Player_NearestLive
 	move.l	d0,$94(a4)
 	movea.l	d0,a3
 	move.l	a3,d0

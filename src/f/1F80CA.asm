@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_1F80CA	[jt 2532]
+; Seg_FindNearestOfType - find the in-use floor segment of a type nearest a point, scanning grid cells downward until a cell has one
+; In:  $A(a6) = word x  $E(a6) = word y  $12(a6) = word type (1001 = any, 1000 = types $21-$24)
+; Out: d0 = segment record or 0
+; Evidence: Seg_GridCell, pool at -$3478 ($FFCD88); score = distance from y to the segment's mid-height (min 6 px tall) + horizontal distance outside x1..x2; steps y by the cell size (-$3480); callers Ninja_Init, Tusk_StateIntro, BigBio_StateStart, BioSentinel_StateStart
 ; ---------------------------------------------------------------------------
-sub_1F80CA:
+Seg_FindNearestOfType:
 	link.w	a6,#$FFEE
 	movem.l	d3-d7/a3-a4,-(a7)
 	move.w	#$4E20,-$E(a6)

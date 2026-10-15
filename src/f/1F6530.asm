@@ -2,7 +2,7 @@
 ; Obj_Detach - detach an object from the parent object it rides, keeping the combined velocity, and unlink it from its siblings
 ; In:  8(a6) = object
 ; Out: d0 = 0
-; Evidence: parent = object table[-$34A6][+$3A]; velocities +$16/+$18 combined with the parent's (sub_1F6EC4 when flag $1000 clear); Timer_Start(+$7C); fixes parent +$3B and sibling +$3C/+$3D links; flags +4: clear $800, set $1000; +$76 = 0, +$3A/+$3C/+$3D = $FF; 28 callers
+; Evidence: parent = object table[-$34A6][+$3A]; velocities +$16/+$18 combined with the parent's (Seg_AlignObjVelocity when flag $1000 clear); Timer_Start(+$7C); fixes parent +$3B and sibling +$3C/+$3D links; flags +4: clear $800, set $1000; +$76 = 0, +$3A/+$3C/+$3D = $FF; 28 callers
 ; ---------------------------------------------------------------------------
 Obj_Detach:
 	link.w	a6,#$0
@@ -40,7 +40,7 @@ loc_1F6566:
 loc_1F6590:
 	move.w	$16(a3),d7
 	move.l	a3,-(a7)
-	jsr	$4EE2(a5)	; -> sub_1F6EC4
+	jsr	$4EE2(a5)	; -> Seg_AlignObjVelocity
 	move.w	$16(a3),$16(a4)
 	move.w	$18(a3),$18(a4)
 	move.w	d7,$16(a3)
@@ -48,7 +48,7 @@ loc_1F6590:
 	bra.s	loc_1F65F2
 loc_1F65AE:
 	move.l	a4,-(a7)
-	jsr	$4EE2(a5)	; -> sub_1F6EC4
+	jsr	$4EE2(a5)	; -> Seg_AlignObjVelocity
 	move.w	#$1000,d0
 	and.w	$4(a3),d0
 	addq.w	#$4,a7
@@ -61,7 +61,7 @@ loc_1F65AE:
 loc_1F65D2:
 	move.w	$16(a3),d7
 	move.l	a3,-(a7)
-	jsr	$4EE2(a5)	; -> sub_1F6EC4
+	jsr	$4EE2(a5)	; -> Seg_AlignObjVelocity
 	move.w	$16(a3),d0
 	add.w	d0,$16(a4)
 	move.w	$18(a3),d0

@@ -4,8 +4,8 @@
 sub_1F68CE:
 	link.w	a6,#$0
 	clr.b	g_PalBaseDirty(a5)
-	jsr	sub_1F6816(pc)
-	jsr	sub_1F68B2(pc)
+	jsr	Pal_SaveBase(pc)
+	jsr	Pal_SaveCycle(pc)
 	lea.l	$5142(a5),a0
 	move.l	$2(a0),-(a7)
 	moveq	#-$1,d0

@@ -51,7 +51,7 @@ loc_1F15B2:
 	beq.s	loc_1F15CA
 	move.l	a4,-(a7)
 	move.l	$76(a4),-(a7)
-	jsr	$4EF2(a5)	; -> sub_1F71F2
+	jsr	$4EF2(a5)	; -> Seg_ObjPosUnclamped
 	addq.w	#$8,a7
 loc_1F15CA:
 	tst.w	$AA(a4)

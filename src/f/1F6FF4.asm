@@ -29,12 +29,12 @@ Seg_ComputeObjPos:
 loc_1F7032:
 	moveq	#$0,d0
 loc_1F7034:
-	bne.w	loc_1F71E8
+	bne.w	Seg_ComputeObjPos_Done
 	move.b	$1(a4),d0
 	subq.b	#$1,d0
-	bmi.w	loc_1F71E8
+	bmi.w	Seg_ComputeObjPos_Done
 	cmpi.b	#$23,d0
-	bgt.w	loc_1F71E8
+	bgt.w	Seg_ComputeObjPos_Done
 	moveq	#$0,d1
 	move.b	d0,d1
 	add.w	d1,d1

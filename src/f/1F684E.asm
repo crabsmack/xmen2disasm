@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_1F684E	[link-after-rts]
+; Pal_RestoreBase - copy the saved 64-colour palette back into the base palette
+; In:  none
+; Out: none
+; Evidence: g_PalBase[i] = g_PalSave[i], i = 0..63
 ; ---------------------------------------------------------------------------
-sub_1F684E:
+Pal_RestoreBase:
 	link.w	a6,#$0
 	movem.l	d3/d7/a4,-(a7)
 	lea.l	g_PalSave(a5),a4

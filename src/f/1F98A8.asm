@@ -199,7 +199,7 @@ loc_1F9A90:
 	addq.w	#$1,d0
 	move.w	d0,g_SegGridH(a5)
 loc_1F9AC4:
-	jsr	$4ECA(a5)	; -> sub_1F6BD2
+	jsr	$4ECA(a5)	; -> Seg_ClearAll
 	tst.l	$18(a6)
 	beq.s	loc_1F9ADC
 	moveq	#$0,d0

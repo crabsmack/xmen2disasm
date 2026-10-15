@@ -13,7 +13,7 @@ Ninja_Deactivate:
 	cmp.l	$2(a0),d0
 	bne.s	loc_13D282
 	move.l	a4,-(a7)
-	jsr	$4E8A(a5)	; -> sub_1F66F0
+	jsr	$4E8A(a5)	; -> Actor_DeactivateFree
 	addq.w	#$4,a7
 	bra.s	loc_13D298
 loc_13D282:

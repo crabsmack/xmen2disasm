@@ -4,7 +4,7 @@
 sub_1F690E:
 	link.w	a6,#$0
 	clr.b	g_PalBaseDirty(a5)
-	jsr	sub_1F684E(pc)
+	jsr	Pal_RestoreBase(pc)
 	lea.l	$5142(a5),a0
 	move.l	$2(a0),-(a7)
 	moveq	#-$1,d0
@@ -20,6 +20,6 @@ loc_1F6938:
 loc_1F693C:
 	tst.b	g_PalFadeActive(a5)
 	bne.s	loc_1F6938
-	jsr	sub_1F68C0(pc)
+	jsr	Pal_RestoreCycle(pc)
 	unlk	a6
 	rts

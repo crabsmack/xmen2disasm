@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_1F5F5A	[jt 2497]
+; Cam_SetMaxXBlocks - set the camera's maximum x (and its saved copy) so the screen's right edge stops at a 32-px block column
+; In:  $A(a6) = word block column
+; Out: none
+; Evidence: g_CamMaxX = $FFC76A = n*32 - 320
 ; ---------------------------------------------------------------------------
-sub_1F5F5A:
+Cam_SetMaxXBlocks:
 	link.w	a6,#$0
 	move.w	$A(a6),d0
 	ext.l	d0

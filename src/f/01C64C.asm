@@ -2,14 +2,14 @@
 ; YoyoAcolyte_StateIdleRestart - YOYOACOLYTE: face the nearest target; when the timer ends restart the AI script at entry 0
 ; In:  8(a6) = this
 ; Out: d0
-; Evidence: sub_1F6A32 nearest target -> +$96; script +$9C / index +$9A
+; Evidence: Player_NearestLive nearest target -> +$96; script +$9C / index +$9A
 ; ---------------------------------------------------------------------------
 YoyoAcolyte_StateIdleRestart:
 	link.w	a6,#$0
 	movem.l	a3-a4,-(a7)
 	movea.l	$8(a6),a4
 	move.l	a4,-(a7)
-	jsr	$4EB2(a5)	; -> sub_1F6A32
+	jsr	$4EB2(a5)	; -> Player_NearestLive
 	move.l	d0,$96(a4)
 	movea.l	d0,a3
 	move.l	a3,d0

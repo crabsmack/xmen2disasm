@@ -29,7 +29,7 @@ loc_1F077A:
 	move.l	(a0,d0.l),d0
 loc_1F078C:
 	move.l	d0,-(a7)
-	jsr	$4E72(a5)	; -> sub_1F64B4
+	jsr	$4E72(a5)	; -> Obj_AttachChild
 	addq.w	#$8,a7
 loc_1F0794:
 	move.l	a3,-(a7)

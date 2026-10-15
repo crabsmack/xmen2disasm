@@ -180,8 +180,8 @@ g_SpawnScanPerFrame = -$BD8	; word: spawn records examined per frame (Spawn_Init
 g_DrawListZero = -$135A	; byte: cleared by DrawList_Init and never set; DrawList_Remove/DrawList_SetPriority return it as their failure result (a C 'false' global)
 g_SegBlockedHook = -$135E	; ptr: called by the object-vs-floor-segment pass sub_1F8B42 as (obj, contact list, contact) when a contact is blocked and the object is not in hit cooldown (segment +0 |= $40, +3 = 30); Level_Load sets Sys_Nop1F949E
 g_SegResolveHook = -$3488	; ptr: called by sub_1F8B42 as (segment, obj, contact) to resolve the chosen floor contact when the segment type hook returns 0; Level_Load sets jt[$4EFA], Beast_RollPathClear swaps in Beast_RollProbeCb around its own sub_1F8B42 call
-g_PalSave = -$13E8	; 64 words: copy of g_PalBase saved by sub_1F6816 and restored by sub_1F684E (around palette fades, sub_1F690E)
-g_PalCycleSave = -$13EC	; ptr: saved g_PalCycleScript (sub_1F68B2 saves, sub_1F68C0 restores after a fade)
+g_PalSave = -$13E8	; 64 words: copy of g_PalBase saved by Pal_SaveBase and restored by Pal_RestoreBase (around palette fades, sub_1F690E)
+g_PalCycleSave = -$13EC	; ptr: saved g_PalCycleScript (Pal_SaveCycle saves, Pal_RestoreCycle restores after a fade)
 g_PalCycleScript = -$38CA	; ptr: palette-cycle script run by sub_1F9E46 each level frame {byte ?, byte delay, byte first colour, byte last colour; then colour words, -1 = loop, -2 = end, >= $1000 = delay & $3FF}; 0 = none (Level_Load clears)
 g_PalCycleCursor = -$38CE	; ptr: next word of g_PalCycleScript (sub_1F9E46; Level_Load clears)
 g_PalCycleDelay = -$38D0	; word: frames until the next g_PalCycleScript step (sub_1F9E46; Level_Load sets -1)
@@ -329,7 +329,7 @@ g_StartCamOffsetY = -$389A	; word: start y minus this = initial g_CameraY (Level
 g_StartCamOffsetX = -$389C	; word: start x minus this = initial g_CameraX (Level_LoadMaps); Level_Load sets $A0 (half the screen)
 g_LevelLoadWord3898 = -$3898	; word: set next to g_StartCamOffsetY by BaniMazaB2_LoadLevel ($B8) and SpaceB1_LoadLevel ($82); no reader found, meaning unclear
 g_CamMaxXTarget = -$3A96	; word: target for g_CamMaxX, which VDP_UpdateScroll eases toward it 1 px per frame (Level_LoadMaps: (map width - 40 cells) * 8; CloneA2_SetCameraZone and scene camera zones)
-g_CamMinXTarget = -$3A98	; word: target for g_CamMinX, eased by VDP_UpdateScroll (CloneA2_SetCameraZone, sub_1F5F40)
+g_CamMinXTarget = -$3A98	; word: target for g_CamMinX, eased by VDP_UpdateScroll (CloneA2_SetCameraZone, Cam_SetMinXBlocks)
 g_CamMaxYTarget = -$3A9A	; word: target for g_CamMaxY, eased by VDP_UpdateScroll (Level_LoadMaps: (map height - 28 cells) * 8; AvalonA2_RaiseCameraFloor, scene zones)
 g_CamMinYTarget = -$3A9C	; word: target for g_CamMinY, eased by VDP_UpdateScroll (AvalonA4_CamHook, CloneA2_SetCameraZone)
 g_BgNarrow = -$13EE	; byte: BG map narrower than 16 blocks, so it is repeated horizontally (Level_LoadMaps; SiberiaB1_PreLoad sets; streaming sub_15D00E/sub_15EDCC/sub_15F1F8)

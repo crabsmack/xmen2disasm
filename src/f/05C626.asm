@@ -2,7 +2,7 @@
 ; Tusk_AtkThrowBoulder - TUSK attack step: create a boulder in its hands, pick the throw column towards the target player, play the throw animation
 ; In:  8(a6) = this
 ; Out: d0 = 0
-; Evidence: Boulder_Spawn(x, y, 1); +$99 = (player x - home x + 16) / 32; Obj_ChangeAnim jt $F32; sub_1F64B4 (hold object); next Tusk_StateThrow
+; Evidence: Boulder_Spawn(x, y, 1); +$99 = (player x - home x + 16) / 32; Obj_ChangeAnim jt $F32; Obj_AttachChild (hold object); next Tusk_StateThrow
 ; ---------------------------------------------------------------------------
 Tusk_AtkThrowBoulder:
 	link.w	a6,#$FFFC
@@ -32,7 +32,7 @@ Tusk_AtkThrowBoulder:
 	jsr	$4E42(a5)	; -> Obj_SetAnim
 	move.l	-$4(a6),-(a7)
 	move.l	a3,-(a7)
-	jsr	$4E72(a5)	; -> sub_1F64B4
+	jsr	$4E72(a5)	; -> Obj_AttachChild
 	lea.l	Tusk_StateThrow(pc),a0
 	move.l	a0,$5C(a3)
 	lea.l	$10(a7),a7

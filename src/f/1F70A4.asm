@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; loc_1F70A4	[runtime: executed in tas]
+; Seg_ComputeObjPos_Cases - Seg_ComputeObjPos switch cases: position along vertical, sloped/flat and reversed segments, clamped to the segment
+; In:  a3 = segment, a4 = object
+; Out: none
+; Evidence: targets of Sw_1F6FF4 (vertical types use y vs +$A/+$E, horizontal ones x vs +8/+$C)
 ; ---------------------------------------------------------------------------
-loc_1F70A4:
+Seg_ComputeObjPos_Cases:
 	move.l	$8(a3),d0
 	asr.l	#$8,d0
 	move.w	$8(a4),d1
@@ -37,7 +40,7 @@ loc_1F70E2:
 	move.w	$16(a3),d0
 	asr.w	#$1,d0
 	move.w	d0,$16(a3)
-	bra.w	loc_1F71E8
+	bra.w	Seg_ComputeObjPos_Done
 loc_1F70FE:
 	move.w	$C(a4),d0
 	ext.l	d0
@@ -71,7 +74,7 @@ loc_1F7142:
 	sub.l	d1,d0
 	lsl.l	#$8,d0
 	move.l	d0,$72(a3)
-	bra.w	loc_1F71E8
+	bra.w	Seg_ComputeObjPos_Done
 loc_1F714E:
 	move.l	$C(a3),d0
 	asr.l	#$8,d0
@@ -105,7 +108,7 @@ loc_1F718C:
 	sub.l	d1,d0
 	lsl.l	#$8,d0
 	move.l	d0,$72(a3)
-	bra.s	loc_1F71E8
+	bra.s	Seg_ComputeObjPos_Done
 loc_1F719C:
 	move.w	$E(a4),d0
 	ext.l	d0

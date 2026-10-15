@@ -72,7 +72,7 @@ loc_15A14E:
 	move.l	a4,$76(a3)
 	move.l	d7,$72(a3)
 	move.l	a3,-(a7)
-	jsr	$4EDA(a5)	; -> sub_1F6D76
+	jsr	$4EDA(a5)	; -> Seg_ApplyObjPos
 	addq.w	#$4,a7
 loc_15A15E:
 	movem.l	-$14(a6),d5-d7/a3-a4

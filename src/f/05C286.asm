@@ -2,7 +2,7 @@
 ; Tusk_StateIntro - TUSK intro: lock the arena, stand still, attach the segment found 32 px above it, wait 300 frames
 ; In:  8(a6) = this
 ; Out: d0 = 0
-; Evidence: Obj_ChangeAnim jt $5C154; sub_1F80CA(x, y-32, $13) + sub_1F6B56; next Tusk_StateIntroWait
+; Evidence: Obj_ChangeAnim jt $5C154; Seg_FindNearestOfType(x, y-32, $13) + sub_1F6B56; next Tusk_StateIntroWait
 ; ---------------------------------------------------------------------------
 Tusk_StateIntro:
 	link.w	a6,#$0
@@ -30,7 +30,7 @@ Tusk_StateIntro:
 	move.l	d7,-(a7)
 	ext.l	d6
 	move.l	d6,-(a7)
-	jsr	$4F42(a5)	; -> sub_1F80CA
+	jsr	$4F42(a5)	; -> Seg_FindNearestOfType
 	movea.l	d0,a3
 	move.l	a3,d0
 	lea.l	$18(a7),a7

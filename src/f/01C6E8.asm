@@ -2,14 +2,14 @@
 ; YoyoAcolyte_StateIdleNext - YOYOACOLYTE: idle animation facing the nearest target; when the timer ends run the next script step
 ; In:  8(a6) = this
 ; Out: d0
-; Evidence: sub_1F6A32; Obj_ChangeAnim jt $1CA34
+; Evidence: Player_NearestLive; Obj_ChangeAnim jt $1CA34
 ; ---------------------------------------------------------------------------
 YoyoAcolyte_StateIdleNext:
 	link.w	a6,#$0
 	movem.l	a3-a4,-(a7)
 	movea.l	$8(a6),a4
 	move.l	a4,-(a7)
-	jsr	$4EB2(a5)	; -> sub_1F6A32
+	jsr	$4EB2(a5)	; -> Player_NearestLive
 	move.l	d0,$96(a4)
 	movea.l	d0,a3
 	lea.l	$482(a5),a0

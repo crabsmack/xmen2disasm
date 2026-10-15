@@ -105,7 +105,7 @@ loc_13CDB6:
 	move.l	$8(a4),d0
 	asr.l	#$8,d0
 	move.l	d0,-(a7)
-	jsr	$4F42(a5)	; -> sub_1F80CA
+	jsr	$4F42(a5)	; -> Seg_FindNearestOfType
 	lea.l	$C(a7),a7
 	move.l	d0,-(a7)
 	move.l	a4,-(a7)

@@ -1,5 +1,5 @@
 ; ---------------------------------------------------------------------------
-; MagnetoBoss_Update - parent Update, then unless +4 bit $10: count down +$AC (2 per frame in two-player step), every 60 frames re-pick the nearest live player (sub_1F6A32) into +$8C, face it when +$9B bit 4 and not in hit cooldown, and restart animation jt $4672 when none plays (MAGNETOBOSS override of slot +$4A Update)
+; MagnetoBoss_Update - parent Update, then unless +4 bit $10: count down +$AC (2 per frame in two-player step), every 60 frames re-pick the nearest live player (Player_NearestLive) into +$8C, face it when +$9B bit 4 and not in hit cooldown, and restart animation jt $4672 when none plays (MAGNETOBOSS override of slot +$4A Update)
 ; In:  8(a6) = this (MAGNETOBOSS object)
 ; Out: none
 ; Evidence: class descriptor MAGNETOBOSS slot +$4A (tools/classes.py); TAS frames 18543-20031 (1363 active)
@@ -39,7 +39,7 @@ loc_0363EE:
 	tst.w	$6E(a4)
 	bne.s	loc_03640A
 	move.l	a4,-(a7)
-	jsr	$4EB2(a5)	; -> sub_1F6A32
+	jsr	$4EB2(a5)	; -> Player_NearestLive
 	move.l	d0,$8C(a4)
 	move.w	#$3C,$6E(a4)
 	addq.w	#$4,a7

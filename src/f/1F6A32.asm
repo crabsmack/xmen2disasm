@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_1F6A32	[jt 2514]
+; Player_NearestLive - return the live player nearer to an object (Manhattan distance on the 16.16 positions), or the only live one, or 0
+; In:  8(a6) = object
+; Out: d0 = g_Player1 / g_Player2 / 0
+; Evidence: player +4 & $C000 = $8000 = alive; compares |dx|+|dy| of +8/+$C against $FFEAB0/$FFEAB4 (P1) and $FFE9C0/$FFE9C4 (P2); 6 callers
 ; ---------------------------------------------------------------------------
-sub_1F6A32:
+Player_NearestLive:
 	link.w	a6,#$FFF4
 	movem.l	d3-d7/a4,-(a7)
 	movea.l	$8(a6),a4

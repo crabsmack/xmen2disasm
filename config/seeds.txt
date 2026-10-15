@@ -512,18 +512,18 @@
 1F3FCC	; XClimber_CheckGrab_Case0 - runtime: executed in tas
 1F3FD2	; loc_1F3FD2 - runtime: executed in tas
 1F3FDE	; loc_1F3FDE - runtime: executed in tas
-1F6E42	; loc_1F6E42 - runtime: executed in tas
+1F6E42	; Seg_ApplyObjPos_Cases - runtime: executed in tas
 1F6E48	; loc_1F6E48 - runtime: executed in tas
 1F6E4C	; loc_1F6E4C - runtime: executed in tas
 1F6E5A	; loc_1F6E5A - runtime: executed in tas
 1F6E78	; loc_1F6E78 - runtime: executed in tas
-1F6F80	; loc_1F6F80 - runtime: executed in tas
-1F6FD6	; loc_1F6FD6 - runtime: executed in tas
-1F70A4	; loc_1F70A4 - runtime: executed in tas
+1F6F80	; Seg_AlignObjVelocity_Slope - runtime: executed in tas
+1F6FD6	; Seg_AlignObjVelocity_Flat - runtime: executed in tas
+1F70A4	; Seg_ComputeObjPos_Cases - runtime: executed in tas
 1F70FE	; loc_1F70FE - runtime: executed in tas
 1F714E	; loc_1F714E - runtime: executed in tas
 1F719C	; loc_1F719C - runtime: executed in tas
-1F72A0	; loc_1F72A0 - runtime: executed in tas
+1F72A0	; Seg_ObjPosUnclamped_Horiz - runtime: executed in tas
 1F7686	; loc_1F7686 - runtime: executed in tas
 1F7A7C	; loc_1F7A7C - runtime: executed in tas
 1F7B36	; loc_1F7B36 - runtime: executed in tas
@@ -882,10 +882,10 @@
 1CF3C4	; loc_1CF3C4 - static: switch-table case target (tools/switches.py: table after `move.w T(pc,dN.w),dN / jmp T-2(pc,dN.w)`, size from the cmpi bound)
 1CF3C8	; loc_1CF3C8 - static: switch-table case target (tools/switches.py: table after `move.w T(pc,dN.w),dN / jmp T-2(pc,dN.w)`, size from the cmpi bound)
 1CF3DE	; loc_1CF3DE - static: switch-table case target (tools/switches.py: table after `move.w T(pc,dN.w),dN / jmp T-2(pc,dN.w)`, size from the cmpi bound)
-1F6F92	; loc_1F6F92 - static: switch-table case target (tools/switches.py: table after `move.w T(pc,dN.w),dN / jmp T-2(pc,dN.w)`, size from the cmpi bound)
+1F6F92	; Seg_AlignObjVelocity_Reverse - static: switch-table case target (tools/switches.py: table after `move.w T(pc,dN.w),dN / jmp T-2(pc,dN.w)`, size from the cmpi bound)
 1F6FAC	; loc_1F6FAC - static: switch-table case target (tools/switches.py: table after `move.w T(pc,dN.w),dN / jmp T-2(pc,dN.w)`, size from the cmpi bound)
 1F6FC4	; loc_1F6FC4 - static: switch-table case target (tools/switches.py: table after `move.w T(pc,dN.w),dN / jmp T-2(pc,dN.w)`, size from the cmpi bound)
-1F72B6	; loc_1F72B6 - static: switch-table case target (tools/switches.py: table after `move.w T(pc,dN.w),dN / jmp T-2(pc,dN.w)`, size from the cmpi bound)
+1F72B6	; Seg_ObjPosUnclamped_Reverse - static: switch-table case target (tools/switches.py: table after `move.w T(pc,dN.w),dN / jmp T-2(pc,dN.w)`, size from the cmpi bound)
 1F72CC	; loc_1F72CC - static: switch-table case target (tools/switches.py: table after `move.w T(pc,dN.w),dN / jmp T-2(pc,dN.w)`, size from the cmpi bound)
 1F72E2	; loc_1F72E2 - static: switch-table case target (tools/switches.py: table after `move.w T(pc,dN.w),dN / jmp T-2(pc,dN.w)`, size from the cmpi bound)
 1F7848	; loc_1F7848 - static: switch-table case target (tools/switches.py: table after `move.w T(pc,dN.w),dN / jmp T-2(pc,dN.w)`, size from the cmpi bound)

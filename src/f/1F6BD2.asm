@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_1F6BD2	[jt 2517]
+; Seg_ClearAll - free all 255 floor-segment records and reset the allocation cursors
+; In:  none
+; Out: d0 = 254
+; Evidence: clears byte +0 of every $14-byte record at g_Segs, g_SegFirstFree = 0, word $FFCD8E = 0
 ; ---------------------------------------------------------------------------
-sub_1F6BD2:
+Seg_ClearAll:
 	link.w	a6,#$0
 	movem.l	d3/d7/a4,-(a7)
 	lea.l	g_Segs(a5),a4

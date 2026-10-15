@@ -133,7 +133,7 @@ loc_1F4D78:
 	bra.s	loc_1F4DB6
 loc_1F4DA6:
 	move.l	a3,-(a7)
-	jsr	$4EE2(a5)	; -> sub_1F6EC4
+	jsr	$4EE2(a5)	; -> Seg_AlignObjVelocity
 	move.l	a3,-(a7)
 	jsr	$4E7A(a5)	; -> Obj_Detach
 	addq.l	#$8,a7
@@ -166,7 +166,7 @@ loc_1F4DCA:
 	bra.s	loc_1F4E0C
 loc_1F4DFC:
 	move.l	a3,-(a7)
-	jsr	$4EE2(a5)	; -> sub_1F6EC4
+	jsr	$4EE2(a5)	; -> Seg_AlignObjVelocity
 	move.l	a3,-(a7)
 	jsr	$4E7A(a5)	; -> Obj_Detach
 	addq.l	#$8,a7
@@ -183,7 +183,7 @@ loc_1F4E1C:
 	and.w	$4(a3),d0
 	bne.w	loc_1F4EF8
 	move.l	a3,-(a7)
-	jsr	$4EDA(a5)	; -> sub_1F6D76
+	jsr	$4EDA(a5)	; -> Seg_ApplyObjPos
 	addq.l	#$4,a7
 	bra.w	loc_1F4EF8
 loc_1F4E34:

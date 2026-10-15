@@ -257,7 +257,7 @@ loc_1F8DCE:
 loc_1F8DD0:
 	move.l	a4,-(a7)
 	move.l	d0,-(a7)
-	jsr	$4E72(a5)	; -> sub_1F64B4
+	jsr	$4E72(a5)	; -> Obj_AttachChild
 	addq.w	#$8,a7
 loc_1F8DDA:
 	move.w	$4(a4),d0
@@ -276,7 +276,7 @@ loc_1F8DFC:
 	move.l	a3,-(a7)
 	jsr	Seg_ComputeObjPos(pc)
 	move.l	a4,-(a7)
-	jsr	sub_1F6D76(pc)
+	jsr	Seg_ApplyObjPos(pc)
 	lea.l	$14(a7),a7
 	ori.w	#$4,(a2)
 	ori.b	#$40,(a3)

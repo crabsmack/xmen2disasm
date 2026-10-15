@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_1F5F40	[jt 2496]
+; Cam_SetMinXBlocks - set the camera's minimum x (and its saved copy) from a 32-px block column
+; In:  $A(a6) = word block column
+; Out: none
+; Evidence: g_CamMinX = $FFC768 = n << 5
 ; ---------------------------------------------------------------------------
-sub_1F5F40:
+Cam_SetMinXBlocks:
 	link.w	a6,#$0
 	move.w	$A(a6),d0
 	ext.l	d0

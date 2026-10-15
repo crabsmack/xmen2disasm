@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_1F6774	[jt 2510]
+; Obj_ForEachChildCall - call func(child) for each object attached to a parent (reads the next sibling first, so func may unlink the child)
+; In:  8(a6) = parent  $C(a6) = func
+; Out: none
+; Evidence: walks parent +$3B then child +$3C through g_ObjTable; caller Actor_Kill; unlike Obj_ForEachChild the parent is not passed
 ; ---------------------------------------------------------------------------
-sub_1F6774:
+Obj_ForEachChildCall:
 	link.w	a6,#$0
 	movem.l	d3/d7/a3-a4,-(a7)
 	movea.l	$C(a6),a3

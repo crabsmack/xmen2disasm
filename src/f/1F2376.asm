@@ -13,7 +13,7 @@ XPlayer_DropThrough:
 	move.l	a4,-(a7)
 	jsr	$4E7A(a5)	; -> Obj_Detach
 	move.l	a4,-(a7)
-	jsr	$4EE2(a5)	; -> sub_1F6EC4
+	jsr	$4EE2(a5)	; -> Seg_AlignObjVelocity
 	moveq	#$0,d0
 	move.b	$42(a4),d0
 	tst.l	d0

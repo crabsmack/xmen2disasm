@@ -1,5 +1,5 @@
 ; ---------------------------------------------------------------------------
-; SporeMine_RecFindTarget - spore handler: pick a player to watch (sub_1F6A32), then watch it for $3C frames
+; SporeMine_RecFindTarget - spore handler: pick a player to watch (Player_NearestLive), then watch it for $3C frames
 ; In:  8(a6) = spore record
 ; Out: d0
 ; Evidence: next SporeMine_RecWatch
@@ -10,7 +10,7 @@ SporeMine_RecFindTarget:
 	movem.l	a3-a4,-(a7)
 	movea.l	$8(a6),a4
 	move.l	a4,-(a7)
-	jsr	$4EB2(a5)	; -> sub_1F6A32
+	jsr	$4EB2(a5)	; -> Player_NearestLive
 	move.l	d0,$20(a4)
 	movea.l	d0,a3
 	move.l	a3,d0

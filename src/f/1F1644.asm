@@ -30,7 +30,7 @@ loc_1F165C:
 	beq.s	loc_1F1690
 loc_1F1688:
 	move.l	a4,-(a7)
-	jsr	$4EDA(a5)	; -> sub_1F6D76
+	jsr	$4EDA(a5)	; -> Seg_ApplyObjPos
 	addq.w	#$4,a7
 loc_1F1690:
 	move.w	#$800,d0

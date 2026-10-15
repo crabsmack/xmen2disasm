@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_1F6D76	[jt 2519]
+; Seg_ApplyObjPos - place a walker on its floor segment: compute its x/y from its position along the segment (+$72) and the segment slope
+; In:  8(a6) = object (+$76 = segment it stands on)
+; Out: d0
+; Evidence: segment type hook (g_SegTypeHooks[type]) gets message 6 first and may handle it; else by type: 1/$24 and 2/$23 vertical (y from the end, x = slope * pos), 3/$E/$F/$21 sloped (x = x1 + pos, y = y1 + slope*pos), 4/$22 reversed from x2/y2, $13-$1C flat (x only); types 5-$D do nothing; writes +8/+$C (<< 8)
 ; ---------------------------------------------------------------------------
-sub_1F6D76:
+Seg_ApplyObjPos:
 	link.w	a6,#$0
 	movem.l	d4-d7/a3-a4,-(a7)
 	movea.l	$8(a6),a3
@@ -39,9 +42,9 @@ loc_1F6DBC:
 	asr.l	#$8,d4
 	move.b	$1(a4),d0
 	subq.b	#$1,d0
-	bmi.w	loc_1F6EA6
+	bmi.w	Seg_ApplyObjPos_Store
 	cmpi.b	#$23,d0
-	bgt.w	loc_1F6EA6
+	bgt.w	Seg_ApplyObjPos_Store
 	moveq	#$0,d1
 	move.b	d0,d1
 	add.w	d1,d1

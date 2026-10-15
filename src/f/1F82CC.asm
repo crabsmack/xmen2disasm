@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_1F82CC	[jt 2533]
+; Seg_FindContaining - find the first in-use floor segment of a type whose bounding box (widened to 6 px) contains a point, scanning grid cells downward
+; In:  $A(a6) = word x  $E(a6) = word y  $12(a6) = word type (1001 = any, 1000 = types $21-$24)
+; Out: d0 = segment record or 0
+; Evidence: same scan as Seg_FindNearestOfType, test x1..x2/y1..y2 (each at least 6 px); callers Hologram_FindGateSeg and two segment helpers
 ; ---------------------------------------------------------------------------
-sub_1F82CC:
+Seg_FindContaining:
 	link.w	a6,#$FFF2
 	movem.l	d4-d7/a3-a4,-(a7)
 	move.w	$E(a6),-$C(a6)

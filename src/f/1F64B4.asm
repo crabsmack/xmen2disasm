@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_1F64B4	[jt 2506]
+; Obj_AttachChild - attach an object to a parent as its first child: detach it first, flag it riding (+4 $800), stop its timer, link the sibling chain
+; In:  8(a6) = parent  $C(a6) = child
+; Out: d0 = the previous first child (or 0)
+; Evidence: Obj_Detach(child); child +$3C = parent +$3B, parent +$3B = child index +$15, child +$3A = parent index; old first child's +$3D = child index; counterpart of Obj_Detach
 ; ---------------------------------------------------------------------------
-sub_1F64B4:
+Obj_AttachChild:
 	link.w	a6,#$FFFC
 	movem.l	d3/a3-a4,-(a7)
 	movea.l	$8(a6),a3

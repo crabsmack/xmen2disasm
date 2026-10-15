@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_1F5500	[jt 2493]
+; Map_SetRowPriority - set the priority bit ($8000) on 16 consecutive tilemap words (one row of a 16-wide map buffer)
+; In:  8(a6) = buffer  $E(a6) = word row  $12(a6) = word row offset (row + offset - 1 is used)
+; Out: none
+; Evidence: ORs $8000 into words at buffer + (row+offset-1)*$20; companion of Map_SetRowPalette
 ; ---------------------------------------------------------------------------
-sub_1F5500:
+Map_SetRowPriority:
 	link.w	a6,#$0
 	movem.l	d3/d7/a4,-(a7)
 	move.w	$E(a6),d0

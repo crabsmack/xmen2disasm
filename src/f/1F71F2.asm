@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_1F71F2	[jt 2522]
+; Seg_ObjPosUnclamped - set an object's position along a segment (+$72) from its x or y, without clamping
+; In:  8(a6) = segment  $C(a6) = object
+; Out: none
+; Evidence: type hook message 5 first; types 1/$24: (y - y1) << 8; 2/$23: (y2 - y) << 8; 3/$E/$F/$13-$1C/$21: (x - x1) << 8; 4/$22: (x2 - x) << 8; unlike Seg_ComputeObjPos no clamp and no velocity change
 ; ---------------------------------------------------------------------------
-sub_1F71F2:
+Seg_ObjPosUnclamped:
 	link.w	a6,#$0
 	movem.l	a3-a4,-(a7)
 	movea.l	$8(a6),a3
@@ -26,12 +29,12 @@ sub_1F71F2:
 loc_1F7230:
 	moveq	#$0,d0
 loc_1F7232:
-	bne.w	loc_1F72F6
+	bne.w	Seg_ObjPosUnclamped_Done
 	move.b	$1(a3),d0
 	subq.b	#$1,d0
-	bmi.w	loc_1F72F6
+	bmi.w	Seg_ObjPosUnclamped_Done
 	cmpi.b	#$23,d0
-	bgt.w	loc_1F72F6
+	bgt.w	Seg_ObjPosUnclamped_Done
 	moveq	#$0,d1
 	move.b	d0,d1
 	add.w	d1,d1

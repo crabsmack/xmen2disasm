@@ -4739,7 +4739,7 @@ Tbl_NinjaActFacePlayer:	; table read by Ninja_ActFacePlayer; 1 of 1 bytes used a
 	incrom	$13D8C7,$1
 	include "src/f/13D8C8.asm"
 	include "src/f/13D8D0.asm"
-Tbl_NinjaLeaveScript:	; AI script: word count 2, thunks jmp Ninja_ActLeap, jmp Ninja_ActPause30; installed by Ninja_ActCheckLeave when the +$A2 timer runs out; Ninja_Deactivate removes a ninja running it for good (sub_1F66F0); jt[1874]
+Tbl_NinjaLeaveScript:	; AI script: word count 2, thunks jmp Ninja_ActLeap, jmp Ninja_ActPause30; installed by Ninja_ActCheckLeave when the +$A2 timer runs out; Ninja_Deactivate removes a ninja running it for good (Actor_DeactivateFree); jt[1874]
 	incrom	$13D8E4,$A
 Tbl_NinjaTakeDamage_Hurt:	; table read by XNpc_TakeDamage_Hurt; 6 of 8 bytes used at runtime; read by XNpc_TakeDamage_Hurt, XNpc_KnockbackDist, Ninja_Init; jt[1875] used by Ninja_Init
 	incrom	$13D8EE,$8
@@ -4868,7 +4868,7 @@ Tbl_AiScript_14222A:	; word $0000 (2 bytes), not a string: reached only via jt[1
 Tbl_TankActPause:	; table read by Tank_ActPause; 1 of 1 bytes used at runtime; read by Tank_ActPause
 	incrom	$14222B,$1
 	include "src/f/14222C.asm"
-Tbl_AiScript_142238:	; word $0000 (2 bytes), not a string: reached only via jt[1932] used by TankLeft_Deactivate -> sub_1F66F0, TankLeft_StateDriveIn -> AiScript_Set (e.g. an empty list/script count)
+Tbl_AiScript_142238:	; word $0000 (2 bytes), not a string: reached only via jt[1932] used by TankLeft_Deactivate -> Actor_DeactivateFree, TankLeft_StateDriveIn -> AiScript_Set (e.g. an empty list/script count)
 	incrom	$142238,$1
 Tbl_TankActPause2:	; table read by Tank_ActPause; 1 of 1 bytes used at runtime; read by Tank_ActPause
 	incrom	$142239,$1
@@ -6079,7 +6079,7 @@ Tbl_A5WorldInfo:	; 20 bytes: longs $3CE6 (size of the A5 globals area below $200
 	incrom	$1F4956,$A
 Tbl_AvalonA3New:	; table read by Cam_New; 30 of 46 bytes used at runtime; read by Cam_New, Cam_Init, SiberiaB1_InitWind; jt[2483] used by AvalonA3_InitCamera, AvalonA4_InitCamera, AvalonB1_InitCamera
 	incrom	$1F4960,$46
-Tbl_XCloneInitSpawnRec:	; table read by XPlayer_InitSpawnRec; 3C of 74 bytes used at runtime; read by XPlayer_InitSpawnRec, XPlayer_Init, sub_1F66F0; jt[2484] used by BigBio_StateDefeated, BioBalls_SpawnPuff, BroodBoss_StateDeathFx
+Tbl_XCloneInitSpawnRec:	; table read by XPlayer_InitSpawnRec; 3C of 74 bytes used at runtime; read by XPlayer_InitSpawnRec, XPlayer_Init, Actor_DeactivateFree; jt[2484] used by BigBio_StateDefeated, BioBalls_SpawnPuff, BroodBoss_StateDeathFx
 	incrom	$1F49A6,$74
 	include "src/f/1F4A1A.asm"
 	include "src/f/1F4A40.asm"
@@ -6149,58 +6149,58 @@ Str_SegGridTag:	; empty C string: Mem_StackAlloc mark tag in Seg_LoadList
 	incrom	$1F6D74,$2
 	include "src/f/1F6D76.asm"
 Sw_1F6D76:	; switch table of sub at $1F6D76: 36 word offsets from Sw_1F6D76-2
-	dc.w	loc_1F6E5A-(Sw_1F6D76-2), loc_1F6E78-(Sw_1F6D76-2), loc_1F6E42-(Sw_1F6D76-2), loc_1F6E4C-(Sw_1F6D76-2)
+	dc.w	loc_1F6E5A-(Sw_1F6D76-2), loc_1F6E78-(Sw_1F6D76-2), Seg_ApplyObjPos_Cases-(Sw_1F6D76-2), loc_1F6E4C-(Sw_1F6D76-2)
 	dc.w	loc_1F6EBA-(Sw_1F6D76-2), loc_1F6EBA-(Sw_1F6D76-2), loc_1F6EBA-(Sw_1F6D76-2), loc_1F6EBA-(Sw_1F6D76-2)
 	dc.w	loc_1F6EBA-(Sw_1F6D76-2), loc_1F6EBA-(Sw_1F6D76-2), loc_1F6EBA-(Sw_1F6D76-2), loc_1F6EBA-(Sw_1F6D76-2)
-	dc.w	loc_1F6EBA-(Sw_1F6D76-2), loc_1F6E42-(Sw_1F6D76-2), loc_1F6E42-(Sw_1F6D76-2), loc_1F6EA6-(Sw_1F6D76-2)
-	dc.w	loc_1F6EA6-(Sw_1F6D76-2), loc_1F6EA6-(Sw_1F6D76-2), loc_1F6E48-(Sw_1F6D76-2), loc_1F6E48-(Sw_1F6D76-2)
+	dc.w	loc_1F6EBA-(Sw_1F6D76-2), Seg_ApplyObjPos_Cases-(Sw_1F6D76-2), Seg_ApplyObjPos_Cases-(Sw_1F6D76-2), Seg_ApplyObjPos_Store-(Sw_1F6D76-2)
+	dc.w	Seg_ApplyObjPos_Store-(Sw_1F6D76-2), Seg_ApplyObjPos_Store-(Sw_1F6D76-2), loc_1F6E48-(Sw_1F6D76-2), loc_1F6E48-(Sw_1F6D76-2)
 	dc.w	loc_1F6E48-(Sw_1F6D76-2), loc_1F6E48-(Sw_1F6D76-2), loc_1F6E48-(Sw_1F6D76-2), loc_1F6E48-(Sw_1F6D76-2)
 	dc.w	loc_1F6E48-(Sw_1F6D76-2), loc_1F6E48-(Sw_1F6D76-2), loc_1F6E48-(Sw_1F6D76-2), loc_1F6E48-(Sw_1F6D76-2)
-	dc.w	loc_1F6EA6-(Sw_1F6D76-2), loc_1F6EA6-(Sw_1F6D76-2), loc_1F6EA6-(Sw_1F6D76-2), loc_1F6EA6-(Sw_1F6D76-2)
-	dc.w	loc_1F6E42-(Sw_1F6D76-2), loc_1F6E4C-(Sw_1F6D76-2), loc_1F6E78-(Sw_1F6D76-2), loc_1F6E5A-(Sw_1F6D76-2)
+	dc.w	Seg_ApplyObjPos_Store-(Sw_1F6D76-2), Seg_ApplyObjPos_Store-(Sw_1F6D76-2), Seg_ApplyObjPos_Store-(Sw_1F6D76-2), Seg_ApplyObjPos_Store-(Sw_1F6D76-2)
+	dc.w	Seg_ApplyObjPos_Cases-(Sw_1F6D76-2), loc_1F6E4C-(Sw_1F6D76-2), loc_1F6E78-(Sw_1F6D76-2), loc_1F6E5A-(Sw_1F6D76-2)
 	incrom	$1F6E40,$2
 	include "src/f/1F6E42.asm"
 	include "src/f/1F6EA6.asm"
 	include "src/f/1F6EC4.asm"
 Sw_1F6EC4:	; switch table of sub at $1F6EC4: 34 word offsets from Sw_1F6EC4-2
-	dc.w	loc_1F6FC4-(Sw_1F6EC4-2), loc_1F6FAC-(Sw_1F6EC4-2), loc_1F6F80-(Sw_1F6EC4-2), loc_1F6FDA-(Sw_1F6EC4-2)
+	dc.w	loc_1F6FC4-(Sw_1F6EC4-2), loc_1F6FAC-(Sw_1F6EC4-2), Seg_AlignObjVelocity_Slope-(Sw_1F6EC4-2), Seg_AlignObjVelocity_Store-(Sw_1F6EC4-2)
 	dc.w	loc_1F6FEA-(Sw_1F6EC4-2), loc_1F6FEA-(Sw_1F6EC4-2), loc_1F6FEA-(Sw_1F6EC4-2), loc_1F6FEA-(Sw_1F6EC4-2)
 	dc.w	loc_1F6FEA-(Sw_1F6EC4-2), loc_1F6FEA-(Sw_1F6EC4-2), loc_1F6FEA-(Sw_1F6EC4-2), loc_1F6FEA-(Sw_1F6EC4-2)
-	dc.w	loc_1F6FEA-(Sw_1F6EC4-2), loc_1F6F80-(Sw_1F6EC4-2), loc_1F6F80-(Sw_1F6EC4-2), loc_1F6FDA-(Sw_1F6EC4-2)
-	dc.w	loc_1F6FDA-(Sw_1F6EC4-2), loc_1F6FDA-(Sw_1F6EC4-2), loc_1F6FD6-(Sw_1F6EC4-2), loc_1F6FD6-(Sw_1F6EC4-2)
-	dc.w	loc_1F6FD6-(Sw_1F6EC4-2), loc_1F6FD6-(Sw_1F6EC4-2), loc_1F6FD6-(Sw_1F6EC4-2), loc_1F6FD6-(Sw_1F6EC4-2)
-	dc.w	loc_1F6FD6-(Sw_1F6EC4-2), loc_1F6FD6-(Sw_1F6EC4-2), loc_1F6FD6-(Sw_1F6EC4-2), loc_1F6FD6-(Sw_1F6EC4-2)
-	dc.w	loc_1F6FDA-(Sw_1F6EC4-2), loc_1F6FDA-(Sw_1F6EC4-2), loc_1F6FDA-(Sw_1F6EC4-2), loc_1F6FDA-(Sw_1F6EC4-2)
-	dc.w	loc_1F6F80-(Sw_1F6EC4-2), loc_1F6F92-(Sw_1F6EC4-2)
+	dc.w	loc_1F6FEA-(Sw_1F6EC4-2), Seg_AlignObjVelocity_Slope-(Sw_1F6EC4-2), Seg_AlignObjVelocity_Slope-(Sw_1F6EC4-2), Seg_AlignObjVelocity_Store-(Sw_1F6EC4-2)
+	dc.w	Seg_AlignObjVelocity_Store-(Sw_1F6EC4-2), Seg_AlignObjVelocity_Store-(Sw_1F6EC4-2), Seg_AlignObjVelocity_Flat-(Sw_1F6EC4-2), Seg_AlignObjVelocity_Flat-(Sw_1F6EC4-2)
+	dc.w	Seg_AlignObjVelocity_Flat-(Sw_1F6EC4-2), Seg_AlignObjVelocity_Flat-(Sw_1F6EC4-2), Seg_AlignObjVelocity_Flat-(Sw_1F6EC4-2), Seg_AlignObjVelocity_Flat-(Sw_1F6EC4-2)
+	dc.w	Seg_AlignObjVelocity_Flat-(Sw_1F6EC4-2), Seg_AlignObjVelocity_Flat-(Sw_1F6EC4-2), Seg_AlignObjVelocity_Flat-(Sw_1F6EC4-2), Seg_AlignObjVelocity_Flat-(Sw_1F6EC4-2)
+	dc.w	Seg_AlignObjVelocity_Store-(Sw_1F6EC4-2), Seg_AlignObjVelocity_Store-(Sw_1F6EC4-2), Seg_AlignObjVelocity_Store-(Sw_1F6EC4-2), Seg_AlignObjVelocity_Store-(Sw_1F6EC4-2)
+	dc.w	Seg_AlignObjVelocity_Slope-(Sw_1F6EC4-2), Seg_AlignObjVelocity_Reverse-(Sw_1F6EC4-2)
 	include "src/f/1F6F80.asm"
 	include "src/f/1F6F92.asm"
 	include "src/f/1F6FD6.asm"
 	include "src/f/1F6FDA.asm"
 	include "src/f/1F6FF4.asm"
 Sw_1F6FF4:	; switch table of sub at $1F6FF4: 36 word offsets from Sw_1F6FF4-2
-	dc.w	loc_1F714E-(Sw_1F6FF4-2), loc_1F719C-(Sw_1F6FF4-2), loc_1F70A4-(Sw_1F6FF4-2), loc_1F70FE-(Sw_1F6FF4-2)
-	dc.w	loc_1F71E8-(Sw_1F6FF4-2), loc_1F71E8-(Sw_1F6FF4-2), loc_1F71E8-(Sw_1F6FF4-2), loc_1F71E8-(Sw_1F6FF4-2)
-	dc.w	loc_1F71E8-(Sw_1F6FF4-2), loc_1F71E8-(Sw_1F6FF4-2), loc_1F71E8-(Sw_1F6FF4-2), loc_1F71E8-(Sw_1F6FF4-2)
-	dc.w	loc_1F71E8-(Sw_1F6FF4-2), loc_1F70A4-(Sw_1F6FF4-2), loc_1F70A4-(Sw_1F6FF4-2), loc_1F71E8-(Sw_1F6FF4-2)
-	dc.w	loc_1F71E8-(Sw_1F6FF4-2), loc_1F71E8-(Sw_1F6FF4-2), loc_1F70A4-(Sw_1F6FF4-2), loc_1F70A4-(Sw_1F6FF4-2)
-	dc.w	loc_1F70A4-(Sw_1F6FF4-2), loc_1F70A4-(Sw_1F6FF4-2), loc_1F70A4-(Sw_1F6FF4-2), loc_1F70A4-(Sw_1F6FF4-2)
-	dc.w	loc_1F70A4-(Sw_1F6FF4-2), loc_1F70A4-(Sw_1F6FF4-2), loc_1F70A4-(Sw_1F6FF4-2), loc_1F70A4-(Sw_1F6FF4-2)
-	dc.w	loc_1F71E8-(Sw_1F6FF4-2), loc_1F71E8-(Sw_1F6FF4-2), loc_1F71E8-(Sw_1F6FF4-2), loc_1F71E8-(Sw_1F6FF4-2)
-	dc.w	loc_1F70A4-(Sw_1F6FF4-2), loc_1F70FE-(Sw_1F6FF4-2), loc_1F719C-(Sw_1F6FF4-2), loc_1F714E-(Sw_1F6FF4-2)
+	dc.w	loc_1F714E-(Sw_1F6FF4-2), loc_1F719C-(Sw_1F6FF4-2), Seg_ComputeObjPos_Cases-(Sw_1F6FF4-2), loc_1F70FE-(Sw_1F6FF4-2)
+	dc.w	Seg_ComputeObjPos_Done-(Sw_1F6FF4-2), Seg_ComputeObjPos_Done-(Sw_1F6FF4-2), Seg_ComputeObjPos_Done-(Sw_1F6FF4-2), Seg_ComputeObjPos_Done-(Sw_1F6FF4-2)
+	dc.w	Seg_ComputeObjPos_Done-(Sw_1F6FF4-2), Seg_ComputeObjPos_Done-(Sw_1F6FF4-2), Seg_ComputeObjPos_Done-(Sw_1F6FF4-2), Seg_ComputeObjPos_Done-(Sw_1F6FF4-2)
+	dc.w	Seg_ComputeObjPos_Done-(Sw_1F6FF4-2), Seg_ComputeObjPos_Cases-(Sw_1F6FF4-2), Seg_ComputeObjPos_Cases-(Sw_1F6FF4-2), Seg_ComputeObjPos_Done-(Sw_1F6FF4-2)
+	dc.w	Seg_ComputeObjPos_Done-(Sw_1F6FF4-2), Seg_ComputeObjPos_Done-(Sw_1F6FF4-2), Seg_ComputeObjPos_Cases-(Sw_1F6FF4-2), Seg_ComputeObjPos_Cases-(Sw_1F6FF4-2)
+	dc.w	Seg_ComputeObjPos_Cases-(Sw_1F6FF4-2), Seg_ComputeObjPos_Cases-(Sw_1F6FF4-2), Seg_ComputeObjPos_Cases-(Sw_1F6FF4-2), Seg_ComputeObjPos_Cases-(Sw_1F6FF4-2)
+	dc.w	Seg_ComputeObjPos_Cases-(Sw_1F6FF4-2), Seg_ComputeObjPos_Cases-(Sw_1F6FF4-2), Seg_ComputeObjPos_Cases-(Sw_1F6FF4-2), Seg_ComputeObjPos_Cases-(Sw_1F6FF4-2)
+	dc.w	Seg_ComputeObjPos_Done-(Sw_1F6FF4-2), Seg_ComputeObjPos_Done-(Sw_1F6FF4-2), Seg_ComputeObjPos_Done-(Sw_1F6FF4-2), Seg_ComputeObjPos_Done-(Sw_1F6FF4-2)
+	dc.w	Seg_ComputeObjPos_Cases-(Sw_1F6FF4-2), loc_1F70FE-(Sw_1F6FF4-2), loc_1F719C-(Sw_1F6FF4-2), loc_1F714E-(Sw_1F6FF4-2)
 	incrom	$1F70A0,$4
 	include "src/f/1F70A4.asm"
 	include "src/f/1F71E8.asm"
 	include "src/f/1F71F2.asm"
 Sw_1F71F2:	; switch table of sub at $1F71F2: 36 word offsets from Sw_1F71F2-2
-	dc.w	loc_1F72CC-(Sw_1F71F2-2), loc_1F72E2-(Sw_1F71F2-2), loc_1F72A0-(Sw_1F71F2-2), loc_1F72B6-(Sw_1F71F2-2)
-	dc.w	loc_1F72F6-(Sw_1F71F2-2), loc_1F72F6-(Sw_1F71F2-2), loc_1F72F6-(Sw_1F71F2-2), loc_1F72F6-(Sw_1F71F2-2)
-	dc.w	loc_1F72F6-(Sw_1F71F2-2), loc_1F72F6-(Sw_1F71F2-2), loc_1F72F6-(Sw_1F71F2-2), loc_1F72F6-(Sw_1F71F2-2)
-	dc.w	loc_1F72F6-(Sw_1F71F2-2), loc_1F72A0-(Sw_1F71F2-2), loc_1F72A0-(Sw_1F71F2-2), loc_1F72F6-(Sw_1F71F2-2)
-	dc.w	loc_1F72F6-(Sw_1F71F2-2), loc_1F72F6-(Sw_1F71F2-2), loc_1F72A0-(Sw_1F71F2-2), loc_1F72A0-(Sw_1F71F2-2)
-	dc.w	loc_1F72A0-(Sw_1F71F2-2), loc_1F72A0-(Sw_1F71F2-2), loc_1F72A0-(Sw_1F71F2-2), loc_1F72A0-(Sw_1F71F2-2)
-	dc.w	loc_1F72A0-(Sw_1F71F2-2), loc_1F72A0-(Sw_1F71F2-2), loc_1F72A0-(Sw_1F71F2-2), loc_1F72A0-(Sw_1F71F2-2)
-	dc.w	loc_1F72F6-(Sw_1F71F2-2), loc_1F72F6-(Sw_1F71F2-2), loc_1F72F6-(Sw_1F71F2-2), loc_1F72F6-(Sw_1F71F2-2)
-	dc.w	loc_1F72A0-(Sw_1F71F2-2), loc_1F72B6-(Sw_1F71F2-2), loc_1F72E2-(Sw_1F71F2-2), loc_1F72CC-(Sw_1F71F2-2)
+	dc.w	loc_1F72CC-(Sw_1F71F2-2), loc_1F72E2-(Sw_1F71F2-2), Seg_ObjPosUnclamped_Horiz-(Sw_1F71F2-2), Seg_ObjPosUnclamped_Reverse-(Sw_1F71F2-2)
+	dc.w	Seg_ObjPosUnclamped_Done-(Sw_1F71F2-2), Seg_ObjPosUnclamped_Done-(Sw_1F71F2-2), Seg_ObjPosUnclamped_Done-(Sw_1F71F2-2), Seg_ObjPosUnclamped_Done-(Sw_1F71F2-2)
+	dc.w	Seg_ObjPosUnclamped_Done-(Sw_1F71F2-2), Seg_ObjPosUnclamped_Done-(Sw_1F71F2-2), Seg_ObjPosUnclamped_Done-(Sw_1F71F2-2), Seg_ObjPosUnclamped_Done-(Sw_1F71F2-2)
+	dc.w	Seg_ObjPosUnclamped_Done-(Sw_1F71F2-2), Seg_ObjPosUnclamped_Horiz-(Sw_1F71F2-2), Seg_ObjPosUnclamped_Horiz-(Sw_1F71F2-2), Seg_ObjPosUnclamped_Done-(Sw_1F71F2-2)
+	dc.w	Seg_ObjPosUnclamped_Done-(Sw_1F71F2-2), Seg_ObjPosUnclamped_Done-(Sw_1F71F2-2), Seg_ObjPosUnclamped_Horiz-(Sw_1F71F2-2), Seg_ObjPosUnclamped_Horiz-(Sw_1F71F2-2)
+	dc.w	Seg_ObjPosUnclamped_Horiz-(Sw_1F71F2-2), Seg_ObjPosUnclamped_Horiz-(Sw_1F71F2-2), Seg_ObjPosUnclamped_Horiz-(Sw_1F71F2-2), Seg_ObjPosUnclamped_Horiz-(Sw_1F71F2-2)
+	dc.w	Seg_ObjPosUnclamped_Horiz-(Sw_1F71F2-2), Seg_ObjPosUnclamped_Horiz-(Sw_1F71F2-2), Seg_ObjPosUnclamped_Horiz-(Sw_1F71F2-2), Seg_ObjPosUnclamped_Horiz-(Sw_1F71F2-2)
+	dc.w	Seg_ObjPosUnclamped_Done-(Sw_1F71F2-2), Seg_ObjPosUnclamped_Done-(Sw_1F71F2-2), Seg_ObjPosUnclamped_Done-(Sw_1F71F2-2), Seg_ObjPosUnclamped_Done-(Sw_1F71F2-2)
+	dc.w	Seg_ObjPosUnclamped_Horiz-(Sw_1F71F2-2), Seg_ObjPosUnclamped_Reverse-(Sw_1F71F2-2), loc_1F72E2-(Sw_1F71F2-2), loc_1F72CC-(Sw_1F71F2-2)
 	incrom	$1F729E,$2
 	include "src/f/1F72A0.asm"
 	include "src/f/1F72B6.asm"

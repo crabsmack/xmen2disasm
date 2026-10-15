@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_1F66F0	[jt 2509]
+; Actor_DeactivateFree - deactivate an actor for good: ACTOR Deactivate, clear its flags, free its timer, release its spawn record
+; In:  8(a6) = actor
+; Out: none
+; Evidence: ACTOR slot +$46 via the ACTOR descriptor ($1F49A6), +4 = 0, Timer_Free(+$7C), +$7C = 0; spawn record +$14 (14-byte records at g_SpawnRecs): +4 bit 1 cleared, +5 = $FF; used as Deactivate by BRAINROCKET, NINJA, TANKLEFT
 ; ---------------------------------------------------------------------------
-sub_1F66F0:
+Actor_DeactivateFree:
 	link.w	a6,#$0
 	move.l	a4,-(a7)
 	movea.l	$8(a6),a4

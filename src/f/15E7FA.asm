@@ -55,7 +55,7 @@ loc_15E850:
 	beq.s	loc_15E87E
 loc_15E876:
 	move.l	a4,-(a7)
-	jsr	$4EDA(a5)	; -> sub_1F6D76
+	jsr	$4EDA(a5)	; -> Seg_ApplyObjPos
 	addq.w	#$4,a7
 loc_15E87E:
 	move.w	#$4000,d0

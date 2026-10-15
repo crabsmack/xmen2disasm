@@ -15,7 +15,7 @@ sub_1F6B56:
 	move.l	a3,-(a7)
 	jsr	$4EEA(a5)	; -> Seg_ComputeObjPos
 	move.l	a4,-(a7)
-	jsr	$4EDA(a5)	; -> sub_1F6D76
+	jsr	$4EDA(a5)	; -> Seg_ApplyObjPos
 	move.l	a4,-(a7)
 	jsr	$4DD2(a5)	; -> Obj_UpdateBoxes
 	lea.l	$10(a7),a7

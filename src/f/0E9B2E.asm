@@ -2,7 +2,7 @@
 ; Hologram_FindGateSeg - find the floor segment of type $1C 320 px left of the hologram, set its bit $40 and keep it at +$9E
 ; In:  8(a6) = this
 ; Out: none
-; Evidence: sub_1F82CC (segment lookup by point and type); bit $40 cleared again by Hologram_LockArena
+; Evidence: Seg_FindContaining (segment lookup by point and type); bit $40 cleared again by Hologram_LockArena
 ; ---------------------------------------------------------------------------
 Hologram_FindGateSeg:
 	link.w	a6,#$0
@@ -20,7 +20,7 @@ Hologram_FindGateSeg:
 	move.l	d7,-(a7)
 	ext.l	d6
 	move.l	d6,-(a7)
-	jsr	$4F4A(a5)	; -> sub_1F82CC
+	jsr	$4F4A(a5)	; -> Seg_FindContaining
 	movea.l	d0,a3
 	ori.b	#$40,(a3)
 	move.l	a3,$9E(a4)

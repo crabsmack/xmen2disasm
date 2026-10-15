@@ -2,7 +2,7 @@
 ; Actor_Kill - ACTOR slot +$52: destroy an object: detach it and its children, Deactivate if active, free its timer and release its spawn record
 ; In:  8(a6) = object
 ; Out: none
-; Evidence: Obj_Detach; children via sub_1F6774(obj, Obj_Detach); flags $C000 == $8000 -> vtable +$46 Deactivate; +4 = 0; Timer_Free(+$7C); spawn record (byte +$14, 14-byte records at ptr -$38DC): bit 1 cleared, +5 = $FF
+; Evidence: Obj_Detach; children via Obj_ForEachChildCall(obj, Obj_Detach); flags $C000 == $8000 -> vtable +$46 Deactivate; +4 = 0; Timer_Free(+$7C); spawn record (byte +$14, 14-byte records at ptr -$38DC): bit 1 cleared, +5 = $FF
 ; ---------------------------------------------------------------------------
 Actor_Kill:
 	link.w	a6,#$0
@@ -17,7 +17,7 @@ Actor_Kill:
 	beq.s	loc_15E6DC
 	pea.l	$4E7A(a5)
 	move.l	a4,-(a7)
-	jsr	$4E92(a5)	; -> sub_1F6774
+	jsr	$4E92(a5)	; -> Obj_ForEachChildCall
 	addq.w	#$8,a7
 loc_15E6DC:
 	move.w	$4(a4),d0

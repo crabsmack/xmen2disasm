@@ -2,7 +2,7 @@
 ; Seg_GridCell - floor-segment grid cell at a world point: offset of that cell's segment list
 ; In:  8(a6) = long: x   $C(a6) = long: y
 ; Out: d0 = long: word from the grid (offset into the segment-index pool at -$3478)
-; Evidence: cx = clamp(x >> word -$347E, 0, width -$3482 - 1), cy = clamp(y >> -$3480, 0, height -$3484 - 1); returns grid(-$347C)[cy*width + cx]; shifts and sizes set by Level_Load; callers Seg_FindAt, Seg_FindBelow, sub_1F80CA, sub_1F82CC
+; Evidence: cx = clamp(x >> word -$347E, 0, width -$3482 - 1), cy = clamp(y >> -$3480, 0, height -$3484 - 1); returns grid(-$347C)[cy*width + cx]; shifts and sizes set by Level_Load; callers Seg_FindAt, Seg_FindBelow, Seg_FindNearestOfType, Seg_FindContaining
 ; ---------------------------------------------------------------------------
 Seg_GridCell:
 	link.w	a6,#$0

@@ -15,9 +15,9 @@ XPlayer_TetherClamp:
 	bne.s	loc_1F0572
 	move.l	a4,-(a7)
 	move.l	$76(a4),-(a7)
-	jsr	$4EF2(a5)	; -> sub_1F71F2
+	jsr	$4EF2(a5)	; -> Seg_ObjPosUnclamped
 	move.l	a4,-(a7)
-	jsr	$4EDA(a5)	; -> sub_1F6D76
+	jsr	$4EDA(a5)	; -> Seg_ApplyObjPos
 	lea.l	$C(a7),a7
 loc_1F0572:
 	move.l	$14(a6),d0
