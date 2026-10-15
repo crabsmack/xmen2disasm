@@ -5677,7 +5677,7 @@ Tbl_Psylocke_1CD928:	; format not established: read by the animation code but it
 	incrom	$1CD928,$2E
 Tbl_Psylocke_1CD956:	; format not established: read by the animation code but its header is not a well-formed animation script (step count / flags out of range); 1A of 46 bytes used at runtime; read by Anim_ApplyStep, FluxBomb_StartImplode, FluxBomb_StartBurst; jt[2289,2290] used by FluxBomb_StepBurst, FluxBomb_StartBurst, FluxBomb_DrawBurst
 	incrom	$1CD956,$46
-Tbl_EvilMagnetoAirSteer:	; table read by Magneto_AirSteer; 2F of 5E bytes used at runtime; read by Magneto_AirSteer, XPlayer_Land, XPlayer_StateControl; jt[2291] used by EvilMagneto_Init, Magneto_Init
+Tbl_MagnetoCharRecord:	; Magneto's character record (player +$8C; layout in NOTES 'XPLAYER slots': attack strengths, sounds, gravities, speeds, animation offsets), shared with EVILMAGNETO; 2F of 5E bytes used at runtime; read by Magneto_AirSteer, XPlayer_Land, XPlayer_StateControl; jt[2291] used by EvilMagneto_Init, Magneto_Init
 	incrom	$1CD99C,$5E
 Art_PsylockeTiles:	; uncompressed 4bpp tiles DMA'd to VRAM; 20 of 20 bytes used at runtime; read by VDP_FlushDmaQueue; DMA to VRAM $8400-8420; jt[2292] used by FluxBomb_StartImplode, FluxBomb_StartBurst
 	incrom	$1CD9FA,$20
@@ -5715,49 +5715,54 @@ Tbl_Anim_1CEC4A:	; animation script (byte flags, byte steps, ..., 2-byte steps f
 	incrom	$1CEC4A,$12
 Tbl_Anim_1CEC5C:	; animation script (byte flags, byte steps, ..., 2-byte steps from +6); 1A of 3A bytes used at runtime; read by Anim_ApplyStep, Anim_AdvanceByDistance, Anim_Advance; jt[2311] used by PlayerSelect_PlayIdleAnim_part2
 	incrom	$1CEC5C,$3A
-Tbl_Anim_1CEC96:	; animation script (byte flags, byte steps, ..., 2-byte steps from +6); 8 of A bytes used at runtime; read by Anim_ApplyStep, Anim_AdvanceByDistance, Anim_Advance; jt[2312] used by sub_1CEF7C
+Tbl_Anim_1CEC96:	; animation script (byte flags, byte steps, ..., 2-byte steps from +6); 8 of A bytes used at runtime; read by Anim_ApplyStep, Anim_AdvanceByDistance, Anim_Advance; jt[2312] used by Gambit_SetAirFrame
 	incrom	$1CEC96,$A
-Tbl_Anim_1CECA0:	; animation script (byte flags, byte steps, ..., 2-byte steps from +6); 8 of A bytes used at runtime; read by Anim_ApplyStep, Anim_AdvanceByDistance, Anim_Advance; jt[2313] used by sub_1CEF7C
+Tbl_Anim_1CECA0:	; animation script (byte flags, byte steps, ..., 2-byte steps from +6); 8 of A bytes used at runtime; read by Anim_ApplyStep, Anim_AdvanceByDistance, Anim_Advance; jt[2313] used by Gambit_SetAirFrame
 	incrom	$1CECA0,$A
-Tbl_Anim_1CECAA:	; animation script (byte flags, byte steps, ..., 2-byte steps from +6); 5 of A bytes used at runtime; read by Anim_ApplyStep, Anim_AdvanceByDistance; jt[2314] used by sub_1CEF7C
+Tbl_Anim_1CECAA:	; animation script (byte flags, byte steps, ..., 2-byte steps from +6); 5 of A bytes used at runtime; read by Anim_ApplyStep, Anim_AdvanceByDistance; jt[2314] used by Gambit_SetAirFrame
 	incrom	$1CECAA,$A
-Tbl_Anim_1CECB4:	; animation script (byte flags, byte steps, ..., 2-byte steps from +6); 8 of A bytes used at runtime; read by Anim_AdvanceByDistance, Anim_ApplyStep, Anim_Advance; jt[2315] used by sub_1CEF7C
+Tbl_Anim_1CECB4:	; animation script (byte flags, byte steps, ..., 2-byte steps from +6); 8 of A bytes used at runtime; read by Anim_AdvanceByDistance, Anim_ApplyStep, Anim_Advance; jt[2315] used by Gambit_SetAirFrame
 	incrom	$1CECB4,$A
 Tbl_Anim_1CECBE:	; animation script (byte flags, byte steps, ..., 2-byte steps from +6); 50 of 6C bytes used at runtime; read by Anim_ApplyStep, Anim_AdvanceByDistance; jt[2316] used by PlayerSelect_PlayPickAnim_part2
 	incrom	$1CECBE,$6C
-Tbl_Anim_1CED2A:	; animation script (NOTES: Animation scripts); never read in the corpus; jt[2317] used by sub_1CFB56 -> Obj_SetAnim
+Tbl_Anim_1CED2A:	; animation script (NOTES: Animation scripts); never read in the corpus; jt[2317] used by Gambit_StateGroundAim -> Obj_SetAnim
 	incrom	$1CED2A,$20
-Tbl_Anim_1CED4A:	; animation script (NOTES: Animation scripts); never read in the corpus; jt[2318] used by sub_1CFB56 -> Obj_SetAnim
+Tbl_Anim_1CED4A:	; animation script (NOTES: Animation scripts); never read in the corpus; jt[2318] used by Gambit_StateGroundAim -> Obj_SetAnim
 	incrom	$1CED4A,$20
-Tbl_Anim_1CED6A:	; animation script (byte flags, byte steps, ..., 2-byte steps from +6); 1E of 20 bytes used at runtime; read by Anim_ApplyStep; jt[2319] used by sub_1CFB56
+Tbl_Anim_1CED6A:	; animation script (byte flags, byte steps, ..., 2-byte steps from +6); 1E of 20 bytes used at runtime; read by Anim_ApplyStep; jt[2319] used by Gambit_StateGroundAim
 	incrom	$1CED6A,$20
-Tbl_Anim_1CED8A:	; animation script (NOTES: Animation scripts); never read in the corpus; jt[2320] used by sub_1CFB56 -> Obj_SetAnim
+Tbl_Anim_1CED8A:	; animation script (NOTES: Animation scripts); never read in the corpus; jt[2320] used by Gambit_StateGroundAim -> Obj_SetAnim
 	incrom	$1CED8A,$20
-Tbl_Anim_1CEDAA:	; animation script (byte flags, byte steps, ..., 2-byte steps from +6); 1E of 20 bytes used at runtime; read by Anim_ApplyStep; jt[2321] used by sub_1D0058, sub_1D04C4
+Tbl_Anim_1CEDAA:	; animation script (byte flags, byte steps, ..., 2-byte steps from +6); 1E of 20 bytes used at runtime; read by Anim_ApplyStep; jt[2321] used by Gambit_StateCrouchAim, Gambit_StateHardLanding
 	incrom	$1CEDAA,$20
-Tbl_Anim_1CEDCA:	; animation script (NOTES: Animation scripts); never read in the corpus; jt[2322] used by sub_1CFE26 -> Obj_SetAnim
+Tbl_Anim_1CEDCA:	; animation script (NOTES: Animation scripts); never read in the corpus; jt[2322] used by Gambit_AirThrowAim -> Obj_SetAnim
 	incrom	$1CEDCA,$10
-Tbl_Anim_1CEDDA:	; animation script (NOTES: Animation scripts); never read in the corpus; jt[2323] used by sub_1CFE26 -> Obj_SetAnim
+Tbl_Anim_1CEDDA:	; animation script (NOTES: Animation scripts); never read in the corpus; jt[2323] used by Gambit_AirThrowAim -> Obj_SetAnim
 	incrom	$1CEDDA,$10
-Tbl_Anim_1CEDEA:	; animation script (byte flags, byte steps, ..., 2-byte steps from +6); E of 10 bytes used at runtime; read by Anim_ApplyStep, Anim_AdvanceByDistance; jt[2324] used by sub_1CFE26
+Tbl_Anim_1CEDEA:	; animation script (byte flags, byte steps, ..., 2-byte steps from +6); E of 10 bytes used at runtime; read by Anim_ApplyStep, Anim_AdvanceByDistance; jt[2324] used by Gambit_AirThrowAim
 	incrom	$1CEDEA,$10
-Tbl_Anim_1CEDFA:	; animation script (NOTES: Animation scripts); never read in the corpus; jt[2325] used by sub_1CFE26 -> Obj_SetAnim
+Tbl_Anim_1CEDFA:	; animation script (NOTES: Animation scripts); never read in the corpus; jt[2325] used by Gambit_AirThrowAim -> Obj_SetAnim
 	incrom	$1CEDFA,$10
-Tbl_Anim_1CEE0A:	; animation script (NOTES: Animation scripts); never read in the corpus; jt[2326] used by sub_1CFE26 -> Obj_SetAnim
+Tbl_Anim_1CEE0A:	; animation script (NOTES: Animation scripts); never read in the corpus; jt[2326] used by Gambit_AirThrowAim -> Obj_SetAnim
 	incrom	$1CEE0A,$10
-Tbl_Anim_1CEE1A:	; animation script (byte flags, byte steps, ..., 2-byte steps from +6); 5 of A bytes used at runtime; read by Anim_ApplyStep, Anim_AdvanceByDistance; jt[2327] used by sub_1CFB56
+Tbl_Anim_1CEE1A:	; animation script (byte flags, byte steps, ..., 2-byte steps from +6); 5 of A bytes used at runtime; read by Anim_ApplyStep, Anim_AdvanceByDistance; jt[2327] used by Gambit_StateGroundAim
 	incrom	$1CEE1A,$A
-Tbl_Anim_1CEE24:	; animation script (byte flags, byte steps, ..., 2-byte steps from +6); 8 of A bytes used at runtime; read by Anim_ApplyStep, Anim_AdvanceByDistance, Anim_Advance; jt[2328] used by sub_1CFB56
+Tbl_Anim_1CEE24:	; animation script (byte flags, byte steps, ..., 2-byte steps from +6); 8 of A bytes used at runtime; read by Anim_ApplyStep, Anim_AdvanceByDistance, Anim_Advance; jt[2328] used by Gambit_StateGroundAim
 	incrom	$1CEE24,$A
-Tbl_Anim_1CEE2E:	; animation script (byte flags, byte steps, ..., 2-byte steps from +6); 8 of A bytes used at runtime; read by Anim_ApplyStep, Anim_AdvanceByDistance, Anim_Advance; jt[2329] used by sub_1CFB56
+Tbl_Anim_1CEE2E:	; animation script (byte flags, byte steps, ..., 2-byte steps from +6); 8 of A bytes used at runtime; read by Anim_ApplyStep, Anim_AdvanceByDistance, Anim_Advance; jt[2329] used by Gambit_StateGroundAim
 	incrom	$1CEE2E,$A
-Tbl_Anim_1CEE38:	; animation script (byte flags, byte steps, ..., 2-byte steps from +6); 8 of A bytes used at runtime; read by Anim_ApplyStep, Anim_AdvanceByDistance, Anim_Advance; jt[2330] used by sub_1CFB56
+Tbl_Anim_1CEE38:	; animation script (byte flags, byte steps, ..., 2-byte steps from +6); 8 of A bytes used at runtime; read by Anim_ApplyStep, Anim_AdvanceByDistance, Anim_Advance; jt[2330] used by Gambit_StateGroundAim
 	incrom	$1CEE38,$A
-Tbl_Anim_1CEE42:	; animation script (byte flags, byte steps, ..., 2-byte steps from +6); 8 of 22 bytes used at runtime; read by Anim_ApplyStep, Anim_AdvanceByDistance, Anim_Advance; jt[2331] used by sub_1D0148
+Tbl_Anim_1CEE42:	; animation script (byte flags, byte steps, ..., 2-byte steps from +6); 8 of 22 bytes used at runtime; read by Anim_ApplyStep, Anim_AdvanceByDistance, Anim_Advance; jt[2331] used by Gambit_CrouchAim
 	incrom	$1CEE42,$22
-Tbl_EvilGambitAirSteer:	; table read by XPlayer_AirSteer; 34 of 5E bytes used at runtime; read by XPlayer_AirSteer, XPlayer_Land, PlayerSelect_PlayPickAnim_part3; jt[2332] used by EvilGambit_Init, PlayerSelect_PlayPickAnim_part2, sub_1D029E
+Tbl_GambitCharRecord:	; Gambit's character record (player +$8C; layout in NOTES 'XPLAYER slots'), shared with EVILGAMBIT; 34 of 5E bytes used at runtime; read by XPlayer_AirSteer, XPlayer_Land, PlayerSelect_PlayPickAnim_part3; jt[2332] used by EvilGambit_Init, PlayerSelect_PlayPickAnim_part2, Gambit_Init
 	incrom	$1CEE64,$5E
-	incrom	$1CEEC2,$AC
+Tbl_GambitThrowKinds:	; 10 x 16 bytes, one per throw kind +$C2 (0 up, 1 up-diag, 2 level, 3 down-diag, 4 crouched, 5-9 air): word direction class (0 up, 1 down, 2 level), word card type, word dx, word dy, word angle (deg), word speed, 4 pad; read by Gambit_ThrowCards
+	incrom	$1CEEC2,$A0
+Tbl_GambitCardSize:	; 6 bytes: hardware sprite size code per card type (0 level 16x8, 1 vertical 8x16, 3 diagonal 16x16); read by Gambit_UpdateCard
+	incrom	$1CEF62,$6
+Tbl_GambitCardTile:	; 6 bytes: tile offset from the card tile base (+$C0) per card type; read by Gambit_UpdateCard
+	incrom	$1CEF68,$6
 	include "src/f/1CEF6E.asm"
 	include "src/f/1CEF7C.asm"
 	include "src/f/1CF070.asm"
@@ -5766,14 +5771,14 @@ Tbl_EvilGambitAirSteer:	; table read by XPlayer_AirSteer; 34 of 5E bytes used at
 	include "src/f/1CF1EC.asm"
 	include "src/f/1CF36E.asm"
 Sw_1CF36E:	; switch table of sub at $1CF36E: 5 word offsets from Sw_1CF36E-2
-	dc.w	loc_1CF3AE-(Sw_1CF36E-2), loc_1CF3C0-(Sw_1CF36E-2), loc_1CF3C4-(Sw_1CF36E-2), loc_1CF3C8-(Sw_1CF36E-2)
+	dc.w	Gambit_PointNearBody_Type0-(Sw_1CF36E-2), Gambit_PointNearBody_Type1-(Sw_1CF36E-2), loc_1CF3C4-(Sw_1CF36E-2), loc_1CF3C8-(Sw_1CF36E-2)
 	dc.w	loc_1CF3DE-(Sw_1CF36E-2)
 	include "src/f/1CF3AE.asm"
 	include "src/f/1CF3C0.asm"
 	include "src/f/1CF3E2.asm"
 	include "src/f/1CF432.asm"
 Sw_1CF432:	; switch table of sub at $1CF432: 4 word offsets from Sw_1CF432-2
-	dc.w	loc_1CF74E-(Sw_1CF432-2), loc_1CF752-(Sw_1CF432-2), loc_1CF758-(Sw_1CF432-2), loc_1CF75C-(Sw_1CF432-2)
+	dc.w	Gambit_UpdateCard_TrailLoop-(Sw_1CF432-2), loc_1CF752-(Sw_1CF432-2), loc_1CF758-(Sw_1CF432-2), loc_1CF75C-(Sw_1CF432-2)
 	include "src/f/1CF74E.asm"
 	include "src/f/1CF7E6.asm"
 	include "src/f/1CF7FA.asm"
@@ -5809,13 +5814,13 @@ Sw_1CF432:	; switch table of sub at $1CF432: 4 word offsets from Sw_1CF432-2
 	include "src/f/1D0754.asm"
 Art_EvilGambitSpr:	; sprite definition (type $18, raw 4bpp tiles): $24-byte header, $14-byte frame records, pieces, tiles; 4C00 of 64DC bytes used at runtime; read by VDP_FlushDmaQueue, Spr_RenderToBitmap_Loop; DMA to VRAM $7CC0-C700; jt[2352] used by EvilGambit_Init, Gambit_SelectSpriteDef, Player_CalcMaxTiles
 	incrom	$1D075E,$64DC
-Art_PlayerSpr8:	; sprite definition (type $18, raw 4bpp tiles): $24-byte header, $14-byte frame records, pieces, tiles; 36A0 of 4962 bytes used at runtime; read by VDP_FlushDmaQueue; DMA to VRAM $7CC0-C740; jt[2353] used by Player_CalcMaxTiles, sub_1D041E
+Art_PlayerSpr8:	; sprite definition (type $18, raw 4bpp tiles): $24-byte header, $14-byte frame records, pieces, tiles; 36A0 of 4962 bytes used at runtime; read by VDP_FlushDmaQueue; DMA to VRAM $7CC0-C740; jt[2353] used by Player_CalcMaxTiles, Gambit_SetFrame
 	incrom	$1D6C3A,$4962
-Art_PlayerSpr9:	; sprite definition (type $18, raw 4bpp tiles): $24-byte header, $14-byte frame records, pieces, tiles; 2880 of 5E6E bytes used at runtime; read by VDP_FlushDmaQueue, Spr_EmitStream; DMA to VRAM $7CC0-A2A0; jt[2354] used by Player_CalcMaxTiles, sub_1D041E
+Art_PlayerSpr9:	; sprite definition (type $18, raw 4bpp tiles): $24-byte header, $14-byte frame records, pieces, tiles; 2880 of 5E6E bytes used at runtime; read by VDP_FlushDmaQueue, Spr_EmitStream; DMA to VRAM $7CC0-A2A0; jt[2354] used by Player_CalcMaxTiles, Gambit_SetFrame
 	incrom	$1DB59C,$5E6E
-Art_GambitSpr:	; sprite definition (type $19, Nemesis-compressed tiles): $24-byte header, $14-byte frame records, pieces, tiles; 189 of 18A bytes used at runtime; read by Spr_PreloadTiles, Nem_DecodeLoop, VDP_FlushDmaQueue; jt[2355] used by sub_1D029E
+Art_GambitSpr:	; sprite definition (type $19, Nemesis-compressed tiles): $24-byte header, $14-byte frame records, pieces, tiles; 189 of 18A bytes used at runtime; read by Spr_PreloadTiles, Nem_DecodeLoop, VDP_FlushDmaQueue; jt[2355] used by Gambit_Init
 	incrom	$1E140A,$18A
-Art_GambitSpr2:	; sprite definition (type $18, raw 4bpp tiles): $24-byte header, $14-byte frame records, pieces, tiles; 60 of 60 bytes used at runtime; read by Nem_DecodeLoop, Spr_PreloadTiles, VDP_WriteWords; jt[2356] used by sub_1D029E
+Art_GambitSpr2:	; sprite definition (type $18, raw 4bpp tiles): $24-byte header, $14-byte frame records, pieces, tiles; 60 of 60 bytes used at runtime; read by Nem_DecodeLoop, Spr_PreloadTiles, VDP_WriteWords; jt[2356] used by Gambit_Init
 	incrom	$1E1594,$60
 	include "src/f/1E15F4.asm"
 	include "src/f/1E1604.asm"
@@ -6392,7 +6397,7 @@ Tbl_ButtonConfigs:	; 6 control layouts x 8 bytes of joypad masks per action: a p
 	incrom	$1FDDD6,$30
 Tbl_SprSizeTiles:	; 16 bytes: tiles per hardware sprite size code 0-15 (w*h/64), read by Spr_UploadFrame / Spr_PreloadTiles (jt 2599 data)
 	incrom	$1FDE06,$10
-Tbl_SprSizeWidth:	; 16 bytes: pixel width per sprite size code (((s>>2)+1)*8); jt 2600 data (Spr_EmitFlicker, sub_1CF432)
+Tbl_SprSizeWidth:	; 16 bytes: pixel width per sprite size code (((s>>2)+1)*8); jt 2600 data (Spr_EmitFlicker, Gambit_UpdateCard)
 	incrom	$1FDE16,$10
 Tbl_SprSizeHeight:	; 16 bytes: pixel height per sprite size code (((s&3)+1)*8); jt 2601 data
 	incrom	$1FDE26,$10
