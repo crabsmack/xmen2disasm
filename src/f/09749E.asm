@@ -1,7 +1,11 @@
 ; ---------------------------------------------------------------------------
-; sub_09749E	[link-after-rts]
+; XClone_StateBallsReturn - XCLONE state: when the rolling child stops, shake the screen and roll it back the other way
+; In:  8(a6) = this
+; Out: d0
+; Evidence: g_CamShake := jt[$44AA]; child +$A2 = sub_120124, +$AA negated, state sub_11F05C; next XClone_StateWaitChild2
+; Found: link-after-rts
 ; ---------------------------------------------------------------------------
-sub_09749E:
+XClone_StateBallsReturn:
 	link.w	a6,#$0
 	movem.l	a3-a4,-(a7)
 	movea.l	$8(a6),a4
@@ -23,14 +27,14 @@ sub_09749E:
 	move.l	a0,$5C(a3)
 	clr.w	$6C(a3)
 	clr.w	$6C(a4)
-	lea.l	sub_097426(pc),a0
+	lea.l	XClone_StateWaitChild2(pc),a0
 	move.l	a0,$5C(a4)
 	moveq	#$8,d0
 	and.w	$4(a4),d0
 	bra.s	loc_09750A
 loc_0974F8:
 	clr.w	$6C(a4)
-	lea.l	sub_09749E(pc),a0
+	lea.l	XClone_StateBallsReturn(pc),a0
 	move.l	a0,$5C(a4)
 	moveq	#$8,d0
 	and.w	$4(a4),d0

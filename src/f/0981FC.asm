@@ -1,7 +1,11 @@
 ; ---------------------------------------------------------------------------
-; sub_0981FC	[jt 771]
+; EvilBeam_Draw - EVILBEAM slot +$12 (draw-list callback): draw the beam sprite
+; In:  8(a6) = this
+; Out: none
+; Evidence: sub_1FB346(this+$10, x - g_CameraX, y - g_CameraY)
+; Found: jt 771
 ; ---------------------------------------------------------------------------
-sub_0981FC:
+EvilBeam_Draw:
 	link.w	a6,#$0
 	move.l	a4,-(a7)
 	movea.l	$8(a6),a4

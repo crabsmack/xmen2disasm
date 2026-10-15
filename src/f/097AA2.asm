@@ -1,7 +1,11 @@
 ; ---------------------------------------------------------------------------
-; sub_097AA2	[jt 760]
+; XClone_ActKeepDistance - XCLONE script action: walk to +$B4 px from the nearest player (facing away from both players when both are that close), then stand
+; In:  8(a6) = this
+; Out: d0
+; Evidence: same walk/stand logic as XClone_ActApproachPlayer; jt 760
+; Found: jt 760
 ; ---------------------------------------------------------------------------
-sub_097AA2:
+XClone_ActKeepDistance:
 	link.w	a6,#$FFFE
 	movem.l	d3-d7/a3-a4,-(a7)
 	movea.l	$8(a6),a4
@@ -133,12 +137,12 @@ loc_097BDC:
 	andi.b	#$EF,$2E(a4)
 loc_097BEE:
 	move.l	a4,-(a7)
-	jsr	sub_097904(pc)
+	jsr	XClone_WalkStep(pc)
 	tst.b	d0
 	addq.w	#$4,a7
 	beq.s	loc_097C0E
 	clr.w	$6C(a4)
-	lea.l	sub_097AA2(pc),a0
+	lea.l	XClone_ActKeepDistance(pc),a0
 	move.l	a0,$5C(a4)
 	moveq	#$8,d0
 	and.w	$4(a4),d0

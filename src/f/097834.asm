@@ -1,7 +1,11 @@
 ; ---------------------------------------------------------------------------
-; sub_097834	[jt 758]
+; XClone_ActAttack - XCLONE script action: attack - move-set animation +$36 (when the cooldown +$B7 is out, reloading it from set byte $22) else +$38, to its end
+; In:  8(a6) = this
+; Out: none
+; Evidence: skipped when the character has no +$36 animation; jt 758; 6 callers; TAS 53188-57436
+; Found: jt 758
 ; ---------------------------------------------------------------------------
-sub_097834:
+XClone_ActAttack:
 	link.w	a6,#$0
 	move.l	a4,-(a7)
 	movea.l	$8(a6),a4

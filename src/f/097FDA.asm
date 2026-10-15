@@ -1,7 +1,11 @@
 ; ---------------------------------------------------------------------------
-; sub_097FDA	[jt 769]
+; EvilBeam_Construct - EVILBEAM slot +$0A: construct a beam in caller memory at (x, y): update timer and draw-list entry
+; In:  8(a6) = memory ($2A bytes), $C(a6) = word x, $10(a6) = word y, $14(a6) = unused, $18(a6) = byte: 1 = h-flip
+; Out: d0 = the object
+; Evidence: Mem_Set, vtable, Timer_Create(slot +$0E, 1, this, 1) -> +$24, DrawList_Add(slot +$12...) -> +$28
+; Found: jt 769
 ; ---------------------------------------------------------------------------
-sub_097FDA:
+EvilBeam_Construct:
 	link.w	a6,#$0
 	move.l	a4,-(a7)
 	movea.l	$8(a6),a4

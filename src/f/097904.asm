@@ -1,7 +1,11 @@
 ; ---------------------------------------------------------------------------
-; sub_097904	[link-after-rts]
+; XClone_WalkStep - XCLONE: walk one frame in the facing direction unless at the arena edge
+; In:  8(a6) = this
+; Out: d0.b = 1 walking, 0 at the edge
+; Evidence: edge = +$A2 facing right / +$A0 facing left; walk animation set + word $3E, vx = +-(+$B2); 3 callers
+; Found: link-after-rts
 ; ---------------------------------------------------------------------------
-sub_097904:
+XClone_WalkStep:
 	link.w	a6,#$0
 	movem.l	d6-d7/a4,-(a7)
 	movea.l	$8(a6),a4

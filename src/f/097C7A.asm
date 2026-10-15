@@ -1,14 +1,18 @@
 ; ---------------------------------------------------------------------------
-; sub_097C7A	[jt 761]
+; XClone_ActWaitStopped - XCLONE script action: wait until horizontal speed is 0, stand, next step after 10 frames
+; In:  8(a6) = this
+; Out: d0
+; Evidence: jt 761; TAS 57458-57465
+; Found: jt 761
 ; ---------------------------------------------------------------------------
-sub_097C7A:
+XClone_ActWaitStopped:
 	link.w	a6,#$0
 	move.l	a4,-(a7)
 	movea.l	$8(a6),a4
 	tst.w	$16(a4)
 	beq.s	loc_097C9E
 	clr.w	$6C(a4)
-	lea.l	sub_097C7A(pc),a0
+	lea.l	XClone_ActWaitStopped(pc),a0
 	move.l	a0,$5C(a4)
 	moveq	#$8,d0
 	and.w	$4(a4),d0

@@ -1,7 +1,11 @@
 ; ---------------------------------------------------------------------------
-; sub_097F60	[link-after-rts]
+; EvilBeast_StateThrow - EVILBEAST state: release both thrown objects (+$BE bits 0 and 1) with the follow-through animation, next step
+; In:  8(a6) = this
+; Out: none
+; Evidence: animation $1829F0; next step after the animation
+; Found: link-after-rts
 ; ---------------------------------------------------------------------------
-sub_097F60:
+EvilBeast_StateThrow:
 	link.w	a6,#$0
 	move.l	a4,-(a7)
 	movea.l	$8(a6),a4

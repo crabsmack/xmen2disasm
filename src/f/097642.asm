@@ -1,7 +1,11 @@
 ; ---------------------------------------------------------------------------
-; sub_097642	[jt 754]
+; XClone_ActTurn - XCLONE script action: turn around (toggle the h-flip), next step
+; In:  8(a6) = this
+; Out: none
+; Evidence: +$2E ^= $10; jt 754; 5 callers
+; Found: jt 754
 ; ---------------------------------------------------------------------------
-sub_097642:
+XClone_ActTurn:
 	link.w	a6,#$0
 	move.l	a4,-(a7)
 	movea.l	$8(a6),a4

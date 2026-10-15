@@ -1,7 +1,11 @@
 ; ---------------------------------------------------------------------------
-; sub_097514	[jt 752]
+; XClone_ActBallsRoll - XCLONE script action: roll the BIOBALLS child in the facing direction (speed 10, $5A frames)
+; In:  8(a6) = this
+; Out: d0
+; Evidence: child +$AA = +-10, +$A2 = sub_120124, +$A8 = $5A, state sub_11F05C; next XClone_StateBallsReturn; jt 752
+; Found: jt 752
 ; ---------------------------------------------------------------------------
-sub_097514:
+XClone_ActBallsRoll:
 	link.w	a6,#$0
 	movem.l	a3-a4,-(a7)
 	movea.l	$8(a6),a4
@@ -24,7 +28,7 @@ loc_09753E:
 	move.l	a0,$5C(a3)
 	clr.w	$6C(a3)
 	clr.w	$6C(a4)
-	lea.l	sub_09749E(pc),a0
+	lea.l	XClone_StateBallsReturn(pc),a0
 	move.l	a0,$5C(a4)
 	moveq	#$8,d0
 	and.w	$4(a4),d0

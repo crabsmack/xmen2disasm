@@ -1,7 +1,11 @@
 ; ---------------------------------------------------------------------------
-; sub_097698	[jt 755]
+; XClone_ActFacePlayer - XCLONE script action: face the nearest player, next step after 10 frames
+; In:  8(a6) = this
+; Out: none
+; Evidence: Player_Nearest; jt 755; 9 callers (script thunks)
+; Found: jt 755
 ; ---------------------------------------------------------------------------
-sub_097698:
+XClone_ActFacePlayer:
 	link.w	a6,#$0
 	movem.l	a3-a4,-(a7)
 	movea.l	$8(a6),a4

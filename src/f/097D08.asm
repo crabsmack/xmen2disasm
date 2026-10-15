@@ -1,12 +1,16 @@
 ; ---------------------------------------------------------------------------
-; sub_097D08	[jt 762]
+; XClone_ActWalkStep - XCLONE script action: one XClone_WalkStep, next step
+; In:  8(a6) = this
+; Out: none
+; Evidence: jt 762
+; Found: jt 762
 ; ---------------------------------------------------------------------------
-sub_097D08:
+XClone_ActWalkStep:
 	link.w	a6,#$0
 	move.l	a4,-(a7)
 	movea.l	$8(a6),a4
 	move.l	a4,-(a7)
-	jsr	sub_097904(pc)
+	jsr	XClone_WalkStep(pc)
 	tst.l	$98(a4)
 	addq.w	#$4,a7
 	bne.s	loc_097D2C

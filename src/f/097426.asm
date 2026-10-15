@@ -1,7 +1,11 @@
 ; ---------------------------------------------------------------------------
-; sub_097426	[link-after-rts]
+; XClone_StateWaitChild2 - XCLONE state: wait until the child reports done (sub_11F188), then the next step
+; In:  8(a6) = this
+; Out: d0
+; Evidence: like XClone_StateWaitChild without the null-child check; set by XClone_StateBallsReturn
+; Found: link-after-rts
 ; ---------------------------------------------------------------------------
-sub_097426:
+XClone_StateWaitChild2:
 	link.w	a6,#$0
 	movem.l	a3-a4,-(a7)
 	movea.l	$8(a6),a4
@@ -35,7 +39,7 @@ loc_097468:
 	bra.s	loc_097494
 loc_097482:
 	clr.w	$6C(a4)
-	lea.l	sub_097426(pc),a0
+	lea.l	XClone_StateWaitChild2(pc),a0
 	move.l	a0,$5C(a4)
 	moveq	#$8,d0
 	and.w	$4(a4),d0

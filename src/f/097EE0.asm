@@ -1,7 +1,11 @@
 ; ---------------------------------------------------------------------------
-; sub_097EE0	[jt 767]
+; EvilBeast_ActThrow - EVILBEAST script action: throw (set up the two thrown objects, stop, throw animation)
+; In:  8(a6) = this
+; Out: d0
+; Evidence: sub_18323E(x, +$BA, +$BC, resource record, 0) (Beast code), animation $1829E6, +$6C = $FF; next EvilBeast_StateThrow; jt 767
+; Found: jt 767
 ; ---------------------------------------------------------------------------
-sub_097EE0:
+EvilBeast_ActThrow:
 	link.w	a6,#$0
 	movem.l	d6-d7/a4,-(a7)
 	movea.l	$8(a6),a4
@@ -34,7 +38,7 @@ sub_097EE0:
 	jsr	$4E42(a5)	; -> Obj_SetAnim
 	addq.w	#$8,a7
 	move.w	#$FF,$6C(a4)
-	lea.l	sub_097F60(pc),a0
+	lea.l	EvilBeast_StateThrow(pc),a0
 	move.l	a0,$5C(a4)
 	moveq	#$8,d0
 	and.w	$4(a4),d0

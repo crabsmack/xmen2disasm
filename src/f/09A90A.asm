@@ -10,13 +10,13 @@ loc_09A912:
 loc_09A916:
 	jmp	$1722(a5)	; -> XClone_ActWait60
 loc_09A91A:
-	jmp	$17BA(a5)	; -> sub_097698
+	jmp	$17BA(a5)	; -> XClone_ActFacePlayer
 loc_09A91E:
-	jmp	$17A2(a5)	; -> sub_097514
+	jmp	$17A2(a5)	; -> XClone_ActBallsRoll
 loc_09A922:
-	jmp	$17B2(a5)	; -> sub_097642
+	jmp	$17B2(a5)	; -> XClone_ActTurn
 loc_09A926:
-	jmp	$17A2(a5)	; -> sub_097514
+	jmp	$17A2(a5)	; -> XClone_ActBallsRoll
 loc_09A92A:
 	jmp	$1752(a5)	; -> XClone_ActStopSoundFE
 loc_09A92E:

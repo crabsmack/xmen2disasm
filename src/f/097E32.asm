@@ -1,7 +1,11 @@
 ; ---------------------------------------------------------------------------
-; sub_097E32	[jt 766]
+; EvilBeast_UpdateThrows - EVILBEAST slot +$82 (per frame): advance its two thrown objects (+$BA, +$BC) until each reports done
+; In:  8(a6) = this
+; Out: none
+; Evidence: sub_183320(slot, &y, resource record -$3C3E*$14 + $FFC97A, side 0/1, 1, 0); clears +$BE bits 0/1; TAS 53043-53370
+; Found: jt 766
 ; ---------------------------------------------------------------------------
-sub_097E32:
+EvilBeast_UpdateThrows:
 	link.w	a6,#$FFFE
 	movem.l	d3/a4,-(a7)
 	movea.l	$8(a6),a4

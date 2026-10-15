@@ -1,7 +1,11 @@
 ; ---------------------------------------------------------------------------
-; sub_0975B8	[jt 753]
+; XClone_ActBallsCollapse - XCLONE script action: collapse the BIOBALLS child onto the floor (animation jt[$1C12]), then wait for it
+; In:  8(a6) = this
+; Out: d0
+; Evidence: sub_11F4C0, sub_11F3E2(child, jt[$1C12], 0, 0, 0), child y = floor, state sub_11F0C6; next XClone_StateWaitChild; jt 753
+; Found: jt 753
 ; ---------------------------------------------------------------------------
-sub_0975B8:
+XClone_ActBallsCollapse:
 	link.w	a6,#$0
 	movem.l	a3-a4,-(a7)
 	movea.l	$8(a6),a3

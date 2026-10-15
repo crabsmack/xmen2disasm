@@ -1,7 +1,11 @@
 ; ---------------------------------------------------------------------------
-; sub_097974	[jt 759]
+; XClone_ActApproachPlayer - XCLONE script action: walk up to the nearest player (touching distance), then stand
+; In:  8(a6) = this
+; Out: d0
+; Evidence: target = player x +- (half box widths); stops within 9 px or at the edge (XClone_WalkStep); standing animation; next step after 10; jt 759; TAS 53297-56675
+; Found: jt 759
 ; ---------------------------------------------------------------------------
-sub_097974:
+XClone_ActApproachPlayer:
 	link.w	a6,#$0
 	movem.l	d3-d7/a3-a4,-(a7)
 	movea.l	$8(a6),a4
@@ -74,12 +78,12 @@ loc_097A04:
 	andi.b	#$EF,$2E(a4)
 loc_097A16:
 	move.l	a4,-(a7)
-	jsr	sub_097904(pc)
+	jsr	XClone_WalkStep(pc)
 	tst.b	d0
 	addq.w	#$4,a7
 	beq.s	loc_097A36
 	clr.w	$6C(a4)
-	lea.l	sub_097974(pc),a0
+	lea.l	XClone_ActApproachPlayer(pc),a0
 	move.l	a0,$5C(a4)
 	moveq	#$8,d0
 	and.w	$4(a4),d0

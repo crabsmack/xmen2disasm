@@ -6,4 +6,4 @@ loc_09A8C6:
 loc_09A8CA:
 	jmp	$16FA(a5)	; -> XClone_ActStandAnim
 loc_09A8CE:
-	jmp	$17BA(a5)	; -> sub_097698
+	jmp	$17BA(a5)	; -> XClone_ActFacePlayer

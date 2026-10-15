@@ -1,7 +1,11 @@
 ; ---------------------------------------------------------------------------
-; sub_098236	[jt 772]
+; EvilBeam_Destroy - EVILBEAM slot +$16: destroy - free its timer and draw-list entry
+; In:  8(a6) = this
+; Out: none
+; Evidence: Timer_Stop/Timer_Free(+$24), DrawList_Remove(+$28)
+; Found: jt 772
 ; ---------------------------------------------------------------------------
-sub_098236:
+EvilBeam_Destroy:
 	link.w	a6,#$0
 	move.l	a4,-(a7)
 	movea.l	$8(a6),a4

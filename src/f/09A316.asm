@@ -2,9 +2,9 @@
 ; loc_09A316	[runtime: executed in tas]
 ; ---------------------------------------------------------------------------
 loc_09A316:
-	jmp	$17BA(a5)	; -> sub_097698
+	jmp	$17BA(a5)	; -> XClone_ActFacePlayer
 loc_09A31A:
-	jmp	$17DA(a5)	; -> sub_097974
+	jmp	$17DA(a5)	; -> XClone_ActApproachPlayer
 loc_09A31E:
 	jmp	$1742(a5)	; -> XClone_ActBecomeBalls
 loc_09A322:

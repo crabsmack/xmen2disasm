@@ -1,7 +1,11 @@
 ; ---------------------------------------------------------------------------
-; sub_097712	[jt 756]
+; XClone_ActStopAnim46 - XCLONE script action: stop and play move-set animation +$46, next step after 10 frames
+; In:  8(a6) = this
+; Out: none
+; Evidence: +$AC = the clone's character move-set record (word offsets to animations); jt 756
+; Found: jt 756
 ; ---------------------------------------------------------------------------
-sub_097712:
+XClone_ActStopAnim46:
 	link.w	a6,#$0
 	move.l	a4,-(a7)
 	movea.l	$8(a6),a4

@@ -1,7 +1,11 @@
 ; ---------------------------------------------------------------------------
-; sub_097D60	[jt 763]
+; XClone_ActMainScript - XCLONE script action: restart the clone's main script (clone record + word 8) from step 0
+; In:  8(a6) = this
+; Out: none
+; Evidence: jt 763; 5 callers
+; Found: jt 763
 ; ---------------------------------------------------------------------------
-sub_097D60:
+XClone_ActMainScript:
 	link.w	a6,#$0
 	move.l	a4,-(a7)
 	movea.l	$8(a6),a4

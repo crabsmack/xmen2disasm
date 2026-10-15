@@ -1,7 +1,11 @@
 ; ---------------------------------------------------------------------------
-; sub_09806C	[jt 770]
+; EvilBeam_Update - EVILBEAM slot +$0E (timer callback): step the animation and hurt players at the beam while it plays; destroy itself when it ends
+; In:  8(a6) = this
+; Out: none
+; Evidence: player box containing the beam point -> slot +$26 TakeDamage(0, $C, 1, x, y); animation end -> slot +$16
+; Found: jt 770
 ; ---------------------------------------------------------------------------
-sub_09806C:
+EvilBeam_Update:
 	link.w	a6,#$0
 	movem.l	d6-d7/a4,-(a7)
 	movea.l	$8(a6),a4
