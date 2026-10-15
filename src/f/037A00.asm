@@ -2,7 +2,7 @@
 ; MagnetoBoss_StateOutroLoop - MAGNETOBOSS outro: keep setting animation jt $4952
 ; In:  8(a6) = this
 ; Out: none
-; Evidence: single sub_1F6296 call
+; Evidence: single Obj_ChangeAnim call
 ; ---------------------------------------------------------------------------
 MagnetoBoss_StateOutroLoop:
 	link.w	a6,#$0

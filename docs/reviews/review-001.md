@@ -1,0 +1,108 @@
+# Review 001 (2026-10-14, reviewer: N4 reviewer agent, sample seed 4401)
+reviewed: 100
+agree: 96
+open disputes: 0
+## Fixed
+- Hornet_Reset (header): templated "per-class reset hook; some Inits call it on this" text, but the body only calls the empty sub_1364C2 (link/unlk/rts). Header now says it does nothing. Name kept (slot +$6A convention).
+- BigAcolyte_ClassInit (header): templated "load its resources", but it only calls the empty BigAcolyte_NopStatic. Header now says there is nothing to set up.
+- ScalingActor_OutsideActiveWindow (header): "a SCALINGACTOR is outside the active window" read as a test/event; the override is `moveq #0,d0`, i.e. never outside (ACTOR's version returns 1 off-window). Header corrected.
+- SavageJungle_PalPhaseUpdate_Case0 (header): said "palette line 0 colours 2-5"; it writes -$393C..-$3936 = g_PalBase+$44..+$4A = line 2 colours 2-5, and also reloads the phase timer -$3C1E from the script. Header corrected.
+## Disputes
+(none)
+## Agreed
+- Seg_WouldLeaveEnd
+- BrainChild_StateFallHome
+- Barbarian_TakeDamage
+- FloatBubble_Attack
+- XNpc_StateDeathFling
+- VDP_FlushDmaQueue
+- PerimeterDoor_TileHook
+- ChildShip_StateReturnY
+- Cyclops_SelectFrame
+- Synchronizer_DeactivateMembers
+- BigBio_ActStartArcSwoop
+- MagnetoBoss_EnterOutroState
+- RThetaObject_Move_Case4
+- BaniMazaB2_FrameHook
+- BioSentinel_StateFireUp
+- AvalonA4_SetCameraZone_apply
+- SentinelDoor_StateOpen1
+- Hologram_RideUpperLift
+- XClone_ActOpenBioBalls
+- XClone_StateLand
+- BaniMazaA2_LoadLevel
+- PlayerSelect_LoadCharFrame_Beast
+- SiberiaB1_UpdateWindSprite
+- Player2_SetGambit
+- BioBalls_GetSize
+- EvilWolverine_ActLeap
+- Teleporter_NoPause
+- FlyBrood_StateWaitPlayerPassedSine
+- SporeMine_RecWatch
+- XClone_ActStand60
+- SentinelsA1_RunScene
+- AvalonA4_PlacePlayers
+- Barbarian_StateToLeapEdge
+- BroodBoss_StateDeathFx
+- BigBio_StateWalkIn
+- CloneA2_EmptyStub3
+- MagnetoBoss_StateZone2Approach
+- PlayerSelect_Run_P2Cyclops
+- Game_ResetPlayers
+- Player1_SetPsylocke
+- FlyBrood_ScriptA
+- BubbleManager_SpawnAtSurface
+- BigAcolyte_IntroScript
+- Pad_ReadBoth
+- ChildShip_StateKnockbackSlow
+- AvalonA4_NopStatic
+- Actor_Draw
+- SpikeBall_StateCycle
+- BaniMazaA1_UploadBlockTiles ("jt $A5A" = ROM address of `$85A(a5)`, not a typo)
+- PlayerSelect_CharSpriteDef_Wolverine
+- MagnetoBoss_StateOutroLoop (evidence line updated: sub_1F6296 is now Obj_ChangeAnim)
+- Deathbird_SetMoveMode_Case9 (Deathbird_StateChooseAttack calls SetMoveMode(9) right before Deathbird_StateGoToSwitch)
+- Actor_Kill
+- Cam_ApplyPos
+- SentinelsA1_InstallHooks
+- SmallBrood_Update
+- SmallBrood_ScrStepWalk
+- SavageBio_StateDeathExplode
+- FloatBubble_StateGrow4
+- BaniMazaA2_AnimatePalettes_case4
+- Launcher_ShotHitsPlayer
+- Beast_SelectSpriteDef
+- SavageA2_TileHookCrack
+- SporeMine_RecIdle
+- BaniMazaA1_AnimateBlocks
+- ICandy_Destroy
+- SentinelsD1_InstallHooks
+- HoloBolt_Spawn
+- Hornet_GetSize
+- SporeMine_AddSpore
+- MagnetoBoss_Init
+- Hologram_InitSpawnRec
+- CloneA5_SegHook15
+- SpaceB1_InstallHooks
+- BaniMazaA2_RunScene
+- SavageA3_EmptyStub1
+- CapedAcolyte_GetSize
+- BigBio_Script
+- Barbarian_StateLeapLand
+- XClone_ActWait10
+- PerimeterDoor_Init
+- Spr_EmitStreamLinked_Piece
+- CloneA5_InitCamera
+- BigBio_ResumeAfterHit
+- Hologram_EmptyStub
+- XNpc_Init
+- Boot_StartApp
+- Eni_Decode
+- Hologram_ScriptAttack
+- LaserCannon_OnDeath (header only names the slot; body spawns an effect via sub_13EEFA, not described but not wrong)
+- BigAcolyte_ActRise1
+- BigAcolyte_SetTargetY
+- SpikeBall_Draw
+- Psylocke_SelectSpriteDef
+- FarAcolyte_StateAppear
+- SporeMine_Nop6A
