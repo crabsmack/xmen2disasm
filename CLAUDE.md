@@ -2,17 +2,19 @@
 
 Byte-matching disassembly of **X-Men 2: Clone Wars** (Sega Genesis, USA/Europe,
 SHA-1 `61409e6cf6065ab67d8952b891d8edcf47777193`), built with The Macro Assembler
-AS (Sonic Retro's toolchain). Phase 1 of 2: when every criterion in
-[docs/DONE.md](docs/DONE.md) passes, phase 2 (static recompilation on
-[segagenesisrecomp](https://github.com/mstan/segagenesisrecomp)) starts from
-`build/recomp/` (see [docs/RECOMP_HANDOFF.md](docs/RECOMP_HANDOFF.md)).
+AS (Sonic Retro's toolchain). This repo is the hub of a five-phase project toward a PC
+port: [docs/ROADMAP.md](docs/ROADMAP.md) has the phases, their order, where each one's
+work lives, and the decisions on record. Every phase has a measured definition of done
+and a checker: phase 1 `uv run tools/progress.py` ([docs/DONE.md](docs/DONE.md)),
+phases 2-5 `uv run tools/phase.py N` ([docs/phases/](docs/phases/)).
 
-**Status (2026-10-14): phase 1 complete, 16/16 criteria pass** (R4 now requires
-`pause-cheats` instead of the nonexistent options menu/continue; user-approved). Phase 2
-starts from [docs/RECOMP_HANDOFF.md](docs/RECOMP_HANDOFF.md).
+**Status (2026-10-15): phase 1 complete, 16/16 criteria pass.** Phases 2 (recomp, in
+`..\XMen2Recomp`) and 3 (compiler identification, here) are next and independent of
+each other; 4 and 5 are drafts. `uv run tools/phase.py status` shows every phase.
 
 **Start of every session:** `uv run tools/setup.py` (idempotent: ROM, emulator,
-build, runs, Ghidra), then read `docs/PROGRESS.md` and the relevant parts of
+build, runs, Ghidra), then read `docs/ROADMAP.md`, the current phase's criteria doc and
+progress (`docs/PROGRESS.md` / `docs/progress/PN.md`), and the relevant parts of
 `docs/NOTES.md`.
 
 ## The one rule
@@ -122,9 +124,19 @@ I/O `$A10000-$A1001F`, TMSS `$A14000`, work RAM `$FF0000-$FFFFFF`.
 - Unsure after real effort: `unk_<Module>_XXXXXX` plus a header saying what is
   known (≤5% allowed). Never a confident-sounding guess: wrong names spread.
 
-## Autonomous mode ("work until the phase is done")
+## Autonomous mode ("work through phase N until it's done")
 
-Loop until `uv run tools/progress.py` exits 0:
+**Phases 2-5**: loop until `uv run tools/phase.py N` exits 0, as in
+[docs/ROADMAP.md](docs/ROADMAP.md) "Working a phase autonomously": first failing criterion
+in table order, batches of ~5 items, notes + `phase.py N` + commit + push (every repo
+touched) after each green batch. The phase's doc under `docs/phases/` says where its work
+and notes live and what to do first; skill `/first-divergence` for trace mismatches
+(K5/K6/K8, D4, P2). Criteria that need the user (K10, C4's `user_ack`, D0/P0 approvals,
+P6) mean stop and ask: never write those lines yourself. Never weaken a check in
+`tools/phase.py` or a contract tool it calls; changing a criterion needs the user's
+approval, recorded in the phase doc.
+
+**Phase 1** (complete; for reference). Loop until `uv run tools/progress.py` exits 0:
 1. `uv run tools/progress.py` and take the **first failing criterion**, in table
    order. Work it in batches of ~5 items (functions, spans, scenarios).
 2. Use the matching skill: R2/S2/S3 → `/find-code`; N1/N2/N3 → `/disasm-function`;

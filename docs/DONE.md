@@ -58,5 +58,5 @@ was recorded on, with an execution and data-read logger.
 
 - Understanding every data format byte-for-byte (graphics/level formats can stay
   labelled blobs with a one-line description).
-- A C decompilation (optional phase 3).
+- A C decompilation (phase 4 of [ROADMAP.md](ROADMAP.md)).
 - Matching output for a modified game (shiftable builds).

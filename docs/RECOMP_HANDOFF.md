@@ -1,5 +1,6 @@
 # Recompilation handoff (phase 2)
 
+Criteria: [phases/P2-recomp.md](phases/P2-recomp.md) (checked by `uv run tools/phase.py 2`).
 Phase 2 is a static recompilation on [segagenesisrecomp](https://github.com/mstan/segagenesisrecomp),
 as a new game repository (like SonicTheHedgehog2Recomp) that pins this disassembly.
 Regenerate everything here with `uv run tools/build.py && uv run tools/handoff.py`.
