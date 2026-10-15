@@ -6,10 +6,10 @@
 ; ---------------------------------------------------------------------------
 ApocBomb_AccelTimer:
 	link.w	a6,#$0
-	cmpi.w	#$280,-$3C70(a5)
+	cmpi.w	#$280,g_ApocBombSpeed(a5)
 	bge.s	loc_04DF8E
-	move.w	-$3C72(a5),d0
-	add.w	d0,-$3C70(a5)
+	move.w	g_ApocBombAccel(a5),d0
+	add.w	d0,g_ApocBombSpeed(a5)
 loc_04DF8E:
 	unlk	a6
 	rts

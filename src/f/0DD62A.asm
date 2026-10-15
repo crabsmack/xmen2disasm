@@ -68,7 +68,7 @@ loc_0DD6E6:
 	move.b	$F(a4),$A3(a3)
 	move.w	$98(a3),d0
 	ext.l	d0
-	movea.l	-$3BFA(a5),a0
+	movea.l	g_SentinelsD1Flags(a5),a0
 	add.l	d0,d0
 	adda.l	d0,a0
 	move.l	a0,$8C(a3)

@@ -10,7 +10,7 @@ Magneto_FireShot:
 	movea.l	$8(a6),a4
 	move.w	$34(a4),d0
 	ext.l	d0
-	move.w	-$3BB6(a5),d1
+	move.w	g_PlayerTiles(a5),d1
 	ext.l	d1
 	add.l	d0,d1
 	subq.l	#$7,d1

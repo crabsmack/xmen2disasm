@@ -21,7 +21,7 @@ loc_087674:
 	ext.l	d7
 	move.l	d7,d0
 	lsl.l	#$8,d0
-	add.l	d0,-$3C44(a5)
+	add.l	d0,g_BroodBossOffsetX(a5)
 	clr.w	$6C(a4)
 	lea.l	BroodBoss_StateRecoil(pc),a0
 	move.l	a0,$5C(a4)

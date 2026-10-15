@@ -9,7 +9,7 @@ Exodus_Init:
 	movem.l	a3-a4,-(a7)
 	movea.l	$14(a6),a3
 	movea.l	$8(a6),a4
-	move.l	a4,-$3CB8(a5)
+	move.l	a4,g_ExodusObj(a5)
 	move.l	a3,-(a7)
 	move.l	$10(a6),-(a7)
 	move.l	$C(a6),-(a7)

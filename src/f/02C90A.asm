@@ -7,10 +7,10 @@
 AvalonA3_PsiFlashStep:
 	link.w	a6,#$0
 	movem.l	d3/d5-d7,-(a7)
-	move.w	-$3CBA(a5),d0
-	subq.w	#$1,-$3CBA(a5)
+	move.w	g_PsiFlashTimer(a5),d0
+	subq.w	#$1,g_PsiFlashTimer(a5)
 	move.b	#$1,g_PalBaseDirty(a5)
-	tst.w	-$3CBA(a5)
+	tst.w	g_PsiFlashTimer(a5)
 	beq.s	loc_02C968
 	pea.l	g_Player1(a5)
 	jsr	$61A(a5)	; -> Exodus_HurtPlayer

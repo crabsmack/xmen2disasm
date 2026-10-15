@@ -54,10 +54,10 @@ loc_1A7B5E:
 	seq.b	d3
 	neg.b	d3
 	beq.s	loc_1A7BCE
-	move.w	-$3BB2(a5),d1
+	move.w	g_P1VramTile(a5),d1
 	bra.s	loc_1A7BD2
 loc_1A7BCE:
-	move.w	-$3BB4(a5),d1
+	move.w	g_P2VramTile(a5),d1
 loc_1A7BD2:
 	ext.l	d1
 	move.l	d1,-(a7)

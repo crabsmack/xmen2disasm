@@ -10,17 +10,17 @@ AvalonB1_CyclePalettes:
 	move.l	d0,-(a7)
 	lea.l	$D2(a5),a0
 	move.l	$2(a0),-(a7)
-	pea.l	-$3CDE(a5)
-	pea.l	-$3CE0(a5)
-	pea.l	-$3CDC(a5)
+	pea.l	g_AvalonB1PalCycles+$8(a5)
+	pea.l	g_AvalonB1PalCycles+$6(a5)
+	pea.l	g_AvalonB1PalCycles+$A(a5)
 	jsr	$3EB2(a5)	; -> Pal_CycleStep
 	moveq	#$1,d0
 	move.l	d0,-(a7)
 	lea.l	$DA(a5),a0
 	move.l	$2(a0),-(a7)
-	pea.l	-$3CE4(a5)
-	pea.l	-$3CE6(a5)
-	pea.l	-$3CE2(a5)
+	pea.l	g_AvalonB1PalCycles+$2(a5)
+	pea.l	g_AvalonB1PalCycles(a5)
+	pea.l	g_AvalonB1PalCycles+$4(a5)
 	jsr	$3EB2(a5)	; -> Pal_CycleStep
 	unlk	a6
 	rts

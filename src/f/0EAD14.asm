@@ -84,8 +84,8 @@ loc_0EADE2:
 	movea.l	d0,a4
 	move.l	a4,-(a7)
 	jsr	$4FDA(a5)	; -> Timer_Start
-	move.b	#$1,-$3BE0(a5)
-	clr.b	-$3BDD(a5)
+	move.b	#$1,g_HoloFlickerArmed(a5)
+	clr.b	g_HoloFlickerLinks+$1(a5)
 	lea.l	$14(a7),a7
 	movem.l	-$18(a6),d4-d7/a3-a4
 	unlk	a6

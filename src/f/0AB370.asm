@@ -9,7 +9,7 @@ BubbleManager_SetWaveParams:
 	link.w	a6,#$0
 	move.l	a4,-(a7)
 	movea.l	$8(a6),a4
-	move.w	-$3C1C(a5),d0
+	move.w	g_JunglePalPhase(a5),d0
 	subq.w	#$1,d0
 	bmi.w	BubbleManager_SetWaveParams_Done
 	cmpi.w	#$5,d0

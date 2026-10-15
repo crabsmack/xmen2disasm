@@ -12,11 +12,11 @@ SporeMine_AddSpore:
 	moveq	#$0,d0
 	movea.l	d0,a4
 	moveq	#$14,d1
-	cmp.w	-$3C24(a5),d1
+	cmp.w	g_SporeMinePoolCount(a5),d1
 	ble.s	loc_0BF17A
-	move.w	-$3C24(a5),d0
+	move.w	g_SporeMinePoolCount(a5),d0
 	ext.l	d0
-	movea.l	-$3C28(a5),a0
+	movea.l	g_SporeMinePool(a5),a0
 	move.l	d0,d1
 	mulu.w	#$26,d0
 	swap	d1
@@ -25,8 +25,8 @@ SporeMine_AddSpore:
 	clr.w	d1
 	add.l	d1,d0
 	lea.l	(a0,d0.l),a4
-	move.w	-$3C24(a5),d0
-	addq.w	#$1,-$3C24(a5)
+	move.w	g_SporeMinePoolCount(a5),d0
+	addq.w	#$1,g_SporeMinePoolCount(a5)
 	moveq	#$26,d0
 	move.l	d0,-(a7)
 	moveq	#$0,d1

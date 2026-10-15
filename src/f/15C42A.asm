@@ -25,7 +25,7 @@ Pause_HandleInput:
 	move.b	(a0),d0
 	cmpi.w	#$FF,d0
 	bne.w	loc_15CA36
-	move.w	-$3C58(a5),d0
+	move.w	g_TextWinTop(a5),d0
 	subq.w	#$1,d0
 	bmi.w	Pause_HandleInput_EndCode
 	cmpi.w	#$8,d0

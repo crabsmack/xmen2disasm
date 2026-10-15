@@ -6,7 +6,7 @@
 ; ---------------------------------------------------------------------------
 Exodus_StartPsiFlash:
 	link.w	a6,#$0
-	move.w	#$E,-$3CBA(a5)
+	move.w	#$E,g_PsiFlashTimer(a5)
 	pea.l	($E1).w
 	jsr	$5222(a5)	; -> Snd_Stop
 	pea.l	($E1).w

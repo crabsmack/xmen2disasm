@@ -24,7 +24,7 @@ Game_InitButtonMasks:
 	move.w	#$100,g_PadMaskZ(a5)
 	move.w	#$800,g_PadMaskMode(a5)
 	jsr	Player_CalcMaxTiles(pc)
-	move.w	d0,-$3BB6(a5)
+	move.w	d0,g_PlayerTiles(a5)
 	pea.l	($1A3).w
 	jsr	$4182(a5)	; -> Rand_Seed
 	unlk	a6

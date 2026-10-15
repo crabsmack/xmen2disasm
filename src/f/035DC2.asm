@@ -7,7 +7,7 @@
 MagnetoBoss_SpawnRubble:
 	link.w	a6,#$FFD8
 	movem.l	d4-d7/a3-a4,-(a7)
-	move.w	-$3CAE(a5),d0
+	move.w	g_MagnetoRubbleClass(a5),d0
 	ext.l	d0
 	movea.l	g_ClassData(a5),a0
 	asl.l	#$2,d0

@@ -16,7 +16,7 @@ loc_0BEF24:
 	moveq	#$1,d0
 loc_0BEF26:
 	move.w	d0,d6
-	movea.l	-$3C28(a5),a4
+	movea.l	g_SporeMinePool(a5),a4
 	clr.w	d7
 	bra.w	loc_0BF036
 loc_0BEF32:
@@ -120,7 +120,7 @@ loc_0BF02E:
 loc_0BF036:
 	moveq	#$0,d0
 	move.w	d7,d0
-	move.w	-$3C24(a5),d1
+	move.w	g_SporeMinePoolCount(a5),d1
 	ext.l	d1
 	cmp.l	d0,d1
 	bgt.w	loc_0BEF32

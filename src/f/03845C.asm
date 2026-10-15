@@ -204,12 +204,12 @@ BaniMazaA1_InitSprites:
 	pea.l	-$34BA(a5)
 	jsr	$506A(a5)	; -> Spr_Init
 	lea.l	$70(a7),a7
-	clr.w	-$3C88(a5)
-	move.w	#$2,-$3C8C(a5)
-	move.w	#$4,-$3C90(a5)
-	clr.w	-$3C8A(a5)
-	clr.w	-$3C8E(a5)
-	clr.w	-$3C92(a5)
+	clr.w	g_BmA1BlockTimer0(a5)
+	move.w	#$2,g_BmA1BlockTimer1(a5)
+	move.w	#$4,g_BmA1BlockTimer2(a5)
+	clr.w	g_BmA1BlockFrame0(a5)
+	clr.w	g_BmA1BlockFrame1(a5)
+	clr.w	g_BmA1BlockFrame2(a5)
 	lea.l	$852(a5),a0
 	movea.l	$2(a0),a3
 	movea.l	a3,a4

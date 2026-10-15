@@ -13,8 +13,8 @@ XClone_KillAndCount:
 	movea.l	(a4),a0
 	movea.l	$52(a0),a1
 	jsr	(a1)
-	move.w	-$3C3C(a5),d0
-	addq.w	#$1,-$3C3C(a5)
+	move.w	g_CloneMakerKills(a5),d0
+	addq.w	#$1,g_CloneMakerKills(a5)
 	movea.l	-$4(a6),a4
 	unlk	a6
 	rts

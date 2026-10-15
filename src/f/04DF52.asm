@@ -12,8 +12,8 @@ ApocBomb_SetSpeed:
 	beq.s	loc_04DF66
 	move.w	$A(a6),$2(a4)
 loc_04DF66:
-	move.w	$E(a6),-$3C70(a5)
-	move.w	$12(a6),-$3C72(a5)
+	move.w	$E(a6),g_ApocBombSpeed(a5)
+	move.w	$12(a6),g_ApocBombAccel(a5)
 	movea.l	-$4(a6),a4
 	unlk	a6
 	rts

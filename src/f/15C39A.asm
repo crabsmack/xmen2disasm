@@ -8,7 +8,7 @@ Pause_LinkSprites:
 	link.w	a6,#$0
 	move.b	g_SpriteTable+$B(a5),d0
 	ext.w	d0
-	move.w	d0,-$3C5A(a5)
+	move.w	d0,g_TextWinRight(a5)
 	beq.s	loc_15C418
 	move.w	g_Player1+$4(a5),d0
 	ext.l	d0

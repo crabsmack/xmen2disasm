@@ -33,7 +33,7 @@ loc_010F16:
 	subq.w	#$8,d6
 	moveq	#$3,d0
 	move.l	d0,-(a7)
-	move.l	-$3CDA(a5),-(a7)
+	move.l	g_BigAcolyteDebris(a5),-(a7)
 	ext.l	d6
 	move.l	d6,-(a7)
 	ext.l	d5

@@ -13,7 +13,7 @@ Player2_StartLife:
 	move.l	g_Player2(a5),-(a7)
 	jsr	Player_CharIndexOf(pc)
 	move.w	d0,d7
-	tst.b	-$3BBA(a5)
+	tst.b	g_SiberiaIntro(a5)
 	addq.w	#$8,a7
 	bne.s	loc_00630C
 	moveq	#$0,d0

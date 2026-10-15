@@ -19,9 +19,9 @@ loc_026DD6:
 	btst	#$0,d0
 	beq.s	loc_026E08
 	ori.w	#$1000,$6(a4)
-	cmpi.w	#$500,-$3CD0(a5)
+	cmpi.w	#$500,g_RetractFloorDepth(a5)
 	bge.s	loc_026DF4
-	addi.w	#$10,-$3CD0(a5)
+	addi.w	#$10,g_RetractFloorDepth(a5)
 loc_026DF4:
 	move.w	#$1E,$6C(a4)
 	lea.l	RetractFloor_StateDrop(pc),a0

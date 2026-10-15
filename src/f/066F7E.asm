@@ -6,14 +6,14 @@
 ; ---------------------------------------------------------------------------
 LogoAndDemo_RunScene:
 	link.w	a6,#$0
-	move.w	#$1,-$3C5E(a5)
+	move.w	#$1,g_ProgressFlags(a5)
 	move.w	#$1,-$3B0C(a5)
 	clr.w	-$3B0A(a5)
 	moveq	#$0,d0
 	move.l	d0,-$3B14(a5)
 	jsr	Cerebro_Run(pc)
 	moveq	#$2,d0
-	and.w	-$3C5E(a5),d0
+	and.w	g_ProgressFlags(a5),d0
 	beq.s	loc_066FAA
 	jsr	$32(a5)	; -> Game_ResetPlayers
 	bra.s	loc_066FB6

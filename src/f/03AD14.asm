@@ -48,7 +48,7 @@ loc_03AD92:
 loc_03AD9A:
 	move.w	d0,$22(a4)
 	clr.b	$8B(a4)
-	move.l	-$3C7E(a5),$8C(a4)
+	move.l	g_DiscBands(a5),$8C(a4)
 	lea.l	RollingDiscs_InitStub(pc),a0
 	move.l	a0,$64(a4)
 	move.l	a0,$5C(a4)

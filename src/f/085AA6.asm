@@ -22,7 +22,7 @@ loc_085AC6:
 	move.w	$8C(a4),d1
 	ext.l	d1
 	add.l	d0,d1
-	move.l	-$3C44(a5),d0
+	move.l	g_BroodBossOffsetX(a5),d0
 	asr.l	#$8,d0
 	sub.l	d0,d1
 	add.w	#$FFE0,d1
@@ -32,7 +32,7 @@ loc_085AC6:
 	move.w	$8E(a4),d1
 	ext.l	d1
 	add.l	d0,d1
-	move.l	-$3C48(a5),d0
+	move.l	g_BroodBossOffsetY(a5),d0
 	asr.l	#$8,d0
 	sub.l	d0,d1
 	move.w	d1,d4

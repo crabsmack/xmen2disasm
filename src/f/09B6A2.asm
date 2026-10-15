@@ -82,7 +82,7 @@ loc_09B726:
 	lea.l	$1C(a7),a7
 	bra.s	loc_09B788
 loc_09B780:
-	tst.w	-$3C3C(a5)
+	tst.w	g_CloneMakerKills(a5)
 	ble.s	loc_09B788
 	moveq	#$1,d7
 loc_09B788:
@@ -163,8 +163,8 @@ loc_09B856:
 	addq.w	#$4,a7
 	bra.s	loc_09B86A
 loc_09B862:
-	move.w	-$3C40(a5),d0
-	addq.w	#$1,-$3C40(a5)
+	move.w	g_CloneWaveKills(a5),d0
+	addq.w	#$1,g_CloneWaveKills(a5)
 loc_09B86A:
 	tst.l	$96(a4)
 	beq.s	loc_09B88A

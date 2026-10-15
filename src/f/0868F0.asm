@@ -23,35 +23,35 @@ BroodBoss_Update:
 	moveq	#$10,d0
 	and.w	-$3B0C(a5),d0
 	beq.s	loc_08694E
-	subi.l	#$200,-$3C48(a5)
-	move.l	-$3C48(a5),d0
+	subi.l	#$200,g_BroodBossOffsetY(a5)
+	move.l	g_BroodBossOffsetY(a5),d0
 	asr.l	#$8,d0
 	moveq	#$2B,d1
 	cmp.l	d0,d1
 	ble.s	loc_086976
 	andi.w	#$FFEF,-$3B0C(a5)
-	move.l	#$2B00,-$3C48(a5)
+	move.l	#$2B00,g_BroodBossOffsetY(a5)
 	bra.s	loc_086976
 loc_08694E:
-	move.l	-$3C48(a5),d0
+	move.l	g_BroodBossOffsetY(a5),d0
 	asr.l	#$8,d0
 	moveq	#$33,d1
 	cmp.l	d0,d1
 	beq.s	loc_086976
-	addi.l	#$200,-$3C48(a5)
-	move.l	-$3C48(a5),d0
+	addi.l	#$200,g_BroodBossOffsetY(a5)
+	move.l	g_BroodBossOffsetY(a5),d0
 	asr.l	#$8,d0
 	moveq	#$33,d1
 	cmp.l	d0,d1
 	bge.s	loc_086976
-	move.l	#$3300,-$3C48(a5)
+	move.l	#$3300,g_BroodBossOffsetY(a5)
 loc_086976:
 	tst.w	$68(a4)
 	ble.s	loc_086988
 	move.w	$68(a4),d0
 	ext.l	d0
 	lsl.l	#$1,d0
-	move.b	d0,-$3C4A(a5)
+	move.b	d0,g_BroodBossHealthBar(a5)
 loc_086988:
 	moveq	#$2,d0
 	and.w	-$3B0C(a5),d0

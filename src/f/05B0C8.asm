@@ -7,7 +7,7 @@
 Boulder_UpdateDebris:
 	link.w	a6,#$FFF8
 	movem.l	d4-d7/a3-a4,-(a7)
-	movea.l	-$3C68(a5),a4
+	movea.l	g_BoulderDebrisPool(a5),a4
 	clr.w	d4
 	bra.w	loc_05B310
 loc_05B0DA:
@@ -204,7 +204,7 @@ loc_05B308:
 	addq.w	#$1,d4
 	lea.l	$14(a4),a4
 loc_05B310:
-	cmp.w	-$3C64(a5),d4
+	cmp.w	g_BoulderDebrisCount(a5),d4
 	blt.w	loc_05B0DA
 	movem.l	-$20(a6),d4-d7/a3-a4
 	unlk	a6

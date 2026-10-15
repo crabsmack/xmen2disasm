@@ -7,9 +7,9 @@
 Exodus_CheckFloorHit:
 	link.w	a6,#$0
 	movem.l	d7/a3-a4,-(a7)
-	tst.l	-$3CB8(a5)
+	tst.l	g_ExodusObj(a5)
 	beq.w	loc_02DEAA
-	movea.l	-$3CB8(a5),a0
+	movea.l	g_ExodusObj(a5),a0
 	move.b	$A2(a0),d7
 	beq.w	loc_02DEAA
 	moveq	#$0,d0
@@ -21,7 +21,7 @@ Exodus_CheckFloorHit:
 	add.l	d1,d0
 	lea.l	g_Segs(a5),a0
 	lea.l	(a0,d0.w),a3
-	movea.l	-$3CB8(a5),a0
+	movea.l	g_ExodusObj(a5),a0
 	moveq	#$0,d0
 	move.b	$A1(a0),d0
 	ext.l	d0
@@ -31,7 +31,7 @@ Exodus_CheckFloorHit:
 	add.l	d1,d0
 	lea.l	g_Segs(a5),a0
 	lea.l	(a0,d0.w),a4
-	movea.l	-$3CB8(a5),a0
+	movea.l	g_ExodusObj(a5),a0
 	cmp.b	$A0(a0),d7
 	bne.s	loc_02DE68
 	ori.b	#$40,(a3)
@@ -49,7 +49,7 @@ Exodus_CheckFloorHit:
 	lea.l	$14(a7),a7
 	bra.s	loc_02DEA2
 loc_02DE68:
-	movea.l	-$3CB8(a5),a0
+	movea.l	g_ExodusObj(a5),a0
 	cmp.b	$A1(a0),d7
 	bne.s	loc_02DEA2
 	ori.b	#$40,(a4)
@@ -66,7 +66,7 @@ loc_02DE68:
 	jsr	Exodus_BreakFloorTiles(pc)
 	lea.l	$14(a7),a7
 loc_02DEA2:
-	movea.l	-$3CB8(a5),a0
+	movea.l	g_ExodusObj(a5),a0
 	clr.b	$A2(a0)
 loc_02DEAA:
 	movem.l	-$C(a6),d7/a3-a4

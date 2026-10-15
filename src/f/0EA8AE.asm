@@ -15,7 +15,7 @@ Hologram_Draw:
 	move.b	$3(a0),d0
 	ext.w	d0
 	subq.w	#$1,d0
-	move.b	d0,-$3BDE(a5)
+	move.b	d0,g_HoloFlickerLinks(a5)
 	move.w	$34(a4),d7
 	move.l	$8(a4),d0
 	asr.l	#$8,d0
@@ -38,8 +38,8 @@ Hologram_Draw:
 	cmpi.w	#$C8,d5
 	ble.s	loc_0EA91C
 loc_0EA90E:
-	clr.b	-$3BDD(a5)
-	move.b	#$1,-$3BE0(a5)
+	clr.b	g_HoloFlickerLinks+$1(a5)
+	move.b	#$1,g_HoloFlickerArmed(a5)
 	bra.w	loc_0EAD0A
 loc_0EA91C:
 	move.l	-$3B14(a5),d0
@@ -335,8 +335,8 @@ loc_0EAB8C:
 	move.w	d0,$6(a0)
 loc_0EACBE:
 	movea.l	g_SprWritePtr(a5),a0
-	move.b	$3(a0),-$3BDD(a5)
-	move.b	#$1,-$3BE0(a5)
+	move.b	$3(a0),g_HoloFlickerLinks+$1(a5)
+	move.b	#$1,g_HoloFlickerArmed(a5)
 	lea.l	g_SpriteTable(a5),a0
 	movea.l	g_SprWritePtr(a5),a1
 	move.b	$3(a1),d0

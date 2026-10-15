@@ -8,7 +8,7 @@
 SporeMine_DrawPool:
 	link.w	a6,#$0
 	movem.l	d4-d7/a4,-(a7)
-	movea.l	-$3C28(a5),a4
+	movea.l	g_SporeMinePool(a5),a4
 	move.w	g_SporeMineSprDef(a5),d0
 	ext.l	d0
 	lsl.l	#$2,d0
@@ -59,7 +59,7 @@ loc_0BF08E:
 loc_0BF0EE:
 	moveq	#$0,d0
 	move.w	d7,d0
-	move.w	-$3C24(a5),d1
+	move.w	g_SporeMinePoolCount(a5),d1
 	ext.l	d1
 	cmp.l	d0,d1
 	bgt.s	loc_0BF08E

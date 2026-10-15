@@ -18,10 +18,10 @@ loc_0389CA:
 loc_0389CC:
 	move.l	g_FrameCounter(a5),d0
 	addq.l	#$1,g_FrameCounter(a5)
-	tst.w	-$3C94(a5)
+	tst.w	g_BmA1SwitchTimer(a5)
 	beq.s	loc_0389E2
-	move.w	-$3C94(a5),d0
-	subq.w	#$1,-$3C94(a5)
+	move.w	g_BmA1SwitchTimer(a5),d0
+	subq.w	#$1,g_BmA1SwitchTimer(a5)
 loc_0389E2:
 	moveq	#$7,d0
 	and.l	g_FrameCounter(a5),d0

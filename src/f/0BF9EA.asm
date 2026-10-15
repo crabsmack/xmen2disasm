@@ -7,12 +7,12 @@ SwampFly_SpawnRecInView:
 	movem.l	d3/a3-a4,-(a7)
 	movea.l	$8(a6),a3
 	movea.l	$C(a6),a4
-	tst.w	-$3C1C(a5)
+	tst.w	g_JunglePalPhase(a5)
 	beq.s	loc_0BFA68
 	moveq	#$0,d3
 	movea.l	$A(a4),a0
 	move.w	$E(a0),d0
-	cmp.w	-$3C1C(a5),d0
+	cmp.w	g_JunglePalPhase(a5),d0
 	bge.s	loc_0BFA64
 	move.w	$6(a4),d0
 	cmp.w	g_CameraX(a5),d0

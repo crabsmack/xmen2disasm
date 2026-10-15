@@ -11,8 +11,8 @@ Deathbird_StateSendHornets:
 	movea.l	g_Elevator(a5),a0
 	cmpi.l	#$10000,$4(a0)
 	bge.w	loc_1129E8
-	subq.w	#$1,-$3BBE(a5)
-	tst.w	-$3BBE(a5)
+	subq.w	#$1,g_HornetWaveTimer(a5)
+	tst.w	g_HornetWaveTimer(a5)
 	bgt.w	loc_1129D4
 	move.l	$383C(a5),-(a7)
 	jsr	$40DA(a5)	; -> Obj_CountOfClass
@@ -68,7 +68,7 @@ loc_112960:
 	move.l	d7,-(a7)
 	jsr	$3832(a5)	; -> Hornet_SpawnForDeathbird
 	ext.w	d5
-	move.w	d5,-$3BBE(a5)
+	move.w	d5,g_HornetWaveTimer(a5)
 	addq.w	#$4,a3
 	moveq	#-$1,d0
 	cmp.b	(a3),d0

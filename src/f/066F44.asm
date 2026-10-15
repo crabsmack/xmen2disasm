@@ -10,15 +10,15 @@ PlayerSelect_RunScene:
 	move.w	#$1,-$3B0A(a5)
 	moveq	#$0,d0
 	move.l	d0,-$3B14(a5)
-	tst.w	-$3B92(a5)
+	tst.w	g_ResumeSceneIndex(a5)
 	blt.s	loc_066F64
-	move.w	-$3B92(a5),g_SceneIndex(a5)
+	move.w	g_ResumeSceneIndex(a5),g_SceneIndex(a5)
 loc_066F64:
 	jsr	Cerebro_Run(pc)
-	tst.w	-$3B92(a5)
+	tst.w	g_ResumeSceneIndex(a5)
 	blt.s	loc_066F7A
 	move.b	#$1,g_SceneIndexSet(a5)
-	move.w	#$FFFF,-$3B92(a5)
+	move.w	#$FFFF,g_ResumeSceneIndex(a5)
 loc_066F7A:
 	unlk	a6
 	rts

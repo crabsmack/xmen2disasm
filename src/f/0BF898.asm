@@ -20,12 +20,12 @@ SavageJungle_InitPalPhases:
 	cmpi.w	#$1,d7
 	beq.s	loc_0BF8C6
 	moveq	#$0,d0
-	move.l	d0,-$3C1A(a5)
+	move.l	d0,g_JunglePalScript(a5)
 	bra.s	loc_0BF8D2
 loc_0BF8C6:
-	move.l	a3,-$3C1A(a5)
-	clr.w	-$3C1C(a5)
-	clr.w	-$3C1E(a5)
+	move.l	a3,g_JunglePalScript(a5)
+	clr.w	g_JunglePalPhase(a5)
+	clr.w	g_JunglePalTimer(a5)
 loc_0BF8D2:
 	movem.l	-$C(a6),d7/a3-a4
 	unlk	a6

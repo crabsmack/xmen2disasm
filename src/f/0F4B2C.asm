@@ -36,7 +36,7 @@ SentinelsB2_LoadLevel:
 	move.l	$2(a0),-(a7)
 	jsr	$4FCA(a5)	; -> Level_Load
 	jsr	SentinelsB2_CallStubs(pc)
-	move.w	-$3C5E(a5),d0
+	move.w	g_ProgressFlags(a5),d0
 	ext.l	d0
 	move.w	#$8000,d1
 	and.w	d0,d1
@@ -51,7 +51,7 @@ SentinelsB2_LoadLevel:
 	jsr	$521A(a5)	; -> Snd_Play
 	addq.w	#$8,a7
 loc_0F4BB0:
-	ori.w	#$8000,-$3C5E(a5)
+	ori.w	#$8000,g_ProgressFlags(a5)
 	clr.l	g_PalBase(a5)
 	move.w	#$2,g_PalBase+$4(a5)
 	move.w	#$4,g_PalBase+$6(a5)

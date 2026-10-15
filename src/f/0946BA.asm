@@ -10,7 +10,7 @@ EvilMaker_StateWaitKills:
 	move.l	a4,-(a7)
 	movea.l	$8(a6),a4
 	moveq	#$2,d0
-	cmp.w	-$3C3C(a5),d0
+	cmp.w	g_CloneMakerKills(a5),d0
 	bgt.s	loc_094714
 	move.l	g_Camera(a5),-(a7)
 	lea.l	$4DBA(a5),a0

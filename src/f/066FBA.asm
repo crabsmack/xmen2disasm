@@ -11,6 +11,6 @@ FinalText_RunScene:
 	lea.l	$FAA(a5),a0
 	move.l	$2(a0),-$3B14(a5)
 	jsr	Cerebro_Run(pc)
-	ori.w	#$4000,-$3C5E(a5)
+	ori.w	#$4000,g_ProgressFlags(a5)
 	unlk	a6
 	rts

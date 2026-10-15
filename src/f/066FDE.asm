@@ -11,7 +11,7 @@ Credits_RunScene:
 	lea.l	$FC2(a5),a0
 	move.l	$2(a0),-$3B14(a5)
 	move.w	#$4000,d0
-	and.w	-$3C5E(a5),d0
+	and.w	g_ProgressFlags(a5),d0
 	bne.s	loc_067010
 	moveq	#$A,d0
 	move.l	d0,-(a7)
@@ -23,6 +23,6 @@ Credits_RunScene:
 loc_067010:
 	jsr	Cerebro_Run(pc)
 	jsr	$32(a5)	; -> Game_ResetPlayers
-	clr.w	-$3C5E(a5)
+	clr.w	g_ProgressFlags(a5)
 	unlk	a6
 	rts

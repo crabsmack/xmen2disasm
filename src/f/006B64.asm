@@ -30,13 +30,13 @@ loc_006B9A:
 	addq.l	#$1,d7
 	cmp.l	d7,d3
 	bgt.s	loc_006B9A
-	move.w	g_VramTileCursor(a5),-$3BB2(a5)
-	move.w	-$3BB6(a5),d7
+	move.w	g_VramTileCursor(a5),g_P1VramTile(a5)
+	move.w	g_PlayerTiles(a5),d7
 	move.w	d7,d0
-	add.w	-$3BB2(a5),d0
-	move.w	d0,-$3BB4(a5)
+	add.w	g_P1VramTile(a5),d0
+	move.w	d0,g_P2VramTile(a5)
 	move.w	d7,d0
-	add.w	-$3BB4(a5),d0
+	add.w	g_P2VramTile(a5),d0
 	move.w	d0,g_VramTileCursor(a5)
 	jsr	$3DBA(a5)	; -> MagnetoShots_Reset
 	movem.l	-$24(a6),d3/d7/a3-a4

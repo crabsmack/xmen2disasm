@@ -17,6 +17,6 @@ BaniMazaA1_InstallTileHooks:
 	move.l	d0,g_TileHooks+$14(a5)
 	move.l	d0,g_TileHooks+$18(a5)
 	move.l	d0,g_TileHooks+$1C(a5)
-	clr.w	-$3C94(a5)
+	clr.w	g_BmA1SwitchTimer(a5)
 	unlk	a6
 	rts

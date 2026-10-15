@@ -8,18 +8,18 @@ BroodBoss_StateWaitArrive:
 	link.w	a6,#$0
 	movem.l	d3/a4,-(a7)
 	movea.l	$8(a6),a4
-	move.l	-$3C44(a5),d0
+	move.l	g_BroodBossOffsetX(a5),d0
 	asr.l	#$8,d0
 	sub.l	#$130,d0
 	sge.b	d3
 	neg.b	d3
 	beq.s	loc_086CF0
-	move.l	-$3C44(a5),d0
+	move.l	g_BroodBossOffsetX(a5),d0
 	asr.l	#$8,d0
 	sub.l	#$130,d0
 	bra.s	loc_086CFE
 loc_086CF0:
-	move.l	-$3C44(a5),d0
+	move.l	g_BroodBossOffsetX(a5),d0
 	asr.l	#$8,d0
 	sub.l	#$130,d0
 	neg.l	d0

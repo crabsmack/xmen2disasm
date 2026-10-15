@@ -7,8 +7,8 @@
 ; ---------------------------------------------------------------------------
 CloneA5_ResetPalCycle:
 	link.w	a6,#$0
-	clr.w	-$3C50(a5)
-	clr.w	-$3C52(a5)
-	clr.w	-$3C54(a5)
+	clr.w	g_CloneA5PalCycles+$4(a5)
+	clr.w	g_CloneA5PalCycles+$2(a5)
+	clr.w	g_CloneA5PalCycles(a5)
 	unlk	a6
 	rts

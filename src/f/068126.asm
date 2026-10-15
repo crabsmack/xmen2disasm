@@ -9,14 +9,14 @@ CursorInput_Confirm:
 	movem.l	d4-d7/a3-a4,-(a7)
 	movea.l	$8(a6),a3
 	movea.l	$8C(a3),a4
-	move.w	-$3C58(a5),-$2(a6)
-	move.w	-$3C56(a5),d4
-	move.w	-$3C5C(a5),d5
-	move.w	-$3C5A(a5),d6
-	move.w	#$3,-$3C58(a5)
-	move.w	#$5,-$3C56(a5)
-	move.w	#$16,-$3C5C(a5)
-	move.w	#$22,-$3C5A(a5)
+	move.w	g_TextWinTop(a5),-$2(a6)
+	move.w	g_TextWinLeft(a5),d4
+	move.w	g_TextWinBottom(a5),d5
+	move.w	g_TextWinRight(a5),d6
+	move.w	#$3,g_TextWinTop(a5)
+	move.w	#$5,g_TextWinLeft(a5)
+	move.w	#$16,g_TextWinBottom(a5)
+	move.w	#$22,g_TextWinRight(a5)
 	moveq	#$0,d0
 	move.b	$3F(a4),d0
 	cmpi.w	#$1,d0
@@ -74,10 +74,10 @@ loc_06820A:
 	bne.s	loc_068214
 	clr.b	$34(a4)
 loc_068214:
-	move.w	-$2(a6),-$3C58(a5)
-	move.w	d4,-$3C56(a5)
-	move.w	d5,-$3C5C(a5)
-	move.w	d6,-$3C5A(a5)
+	move.w	-$2(a6),g_TextWinTop(a5)
+	move.w	d4,g_TextWinLeft(a5)
+	move.w	d5,g_TextWinBottom(a5)
+	move.w	d6,g_TextWinRight(a5)
 	clr.w	$6C(a3)
 	lea.l	CursorInput_StatePoll(pc),a0
 	move.l	a0,$5C(a3)

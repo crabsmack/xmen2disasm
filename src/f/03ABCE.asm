@@ -8,10 +8,10 @@ RollingDiscs_ReverseAtY:
 	link.w	a6,#$0
 	movem.l	d6-d7/a4,-(a7)
 	move.w	$A(a6),d6
-	move.w	-$3C7A(a5),d0
+	move.w	g_DiscBandCount(a5),d0
 	ext.l	d0
 	move.l	d0,d7
-	movea.l	-$3C7E(a5),a4
+	movea.l	g_DiscBands(a5),a4
 	bra.s	loc_03AC28
 loc_03ABE8:
 	cmp.w	$2(a4),d6

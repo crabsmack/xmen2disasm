@@ -6,8 +6,8 @@
 ; ---------------------------------------------------------------------------
 XClone_ClassInit:
 	link.w	a6,#$0
-	clr.w	-$3C3C(a5)
-	clr.w	-$3C40(a5)
+	clr.w	g_CloneMakerKills(a5)
+	clr.w	g_CloneWaveKills(a5)
 	clr.w	-$3B06(a5)
 	jsr	XClone_NopStatic(pc)
 	unlk	a6

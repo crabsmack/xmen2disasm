@@ -29,7 +29,7 @@ FlyBrood_Init:
 	clr.w	$18(a4)
 	clr.w	$20(a4)
 	moveq	#$0,d0
-	move.b	-$3B5C(a5),d0
+	move.b	g_ScnUnused3B5C(a5),d0
 	cmp.w	g_SceneIndex(a5),d0
 	lea.l	$10(a7),a7
 	beq.s	loc_1349A4

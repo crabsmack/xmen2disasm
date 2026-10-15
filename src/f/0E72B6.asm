@@ -18,11 +18,11 @@ SentinelsA1_ResetPalCycles:
 	clr.w	-$3B38(a5)
 	clr.w	-$3B48(a5)
 	clr.w	-$3B40(a5)
-	clr.w	-$3BE8(a5)
-	clr.w	-$3BEA(a5)
-	clr.w	-$3BEC(a5)
-	clr.w	-$3BEE(a5)
-	clr.w	-$3BF0(a5)
-	clr.w	-$3BF2(a5)
+	clr.w	g_SentinelsA1PalCycles+$A(a5)
+	clr.w	g_SentinelsA1PalCycles+$8(a5)
+	clr.w	g_SentinelsA1PalCycles+$6(a5)
+	clr.w	g_SentinelsA1PalCycles+$4(a5)
+	clr.w	g_SentinelsA1PalCycles+$2(a5)
+	clr.w	g_SentinelsA1PalCycles(a5)
 	unlk	a6
 	rts

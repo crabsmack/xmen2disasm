@@ -8,10 +8,10 @@
 SavageJungle_PalPhaseUpdate:
 	link.w	a6,#$0
 	move.l	d3,-(a7)
-	tst.w	-$3C1E(a5)
+	tst.w	g_JunglePalTimer(a5)
 	bne.w	loc_0BF9DE
-	addq.w	#$1,-$3C1C(a5)
-	move.w	-$3C1C(a5),d0
+	addq.w	#$1,g_JunglePalPhase(a5)
+	move.w	g_JunglePalPhase(a5),d0
 	subq.w	#$1,d0
 	bmi.w	SavageJungle_PalPhaseUpdate_Done
 	cmpi.w	#$4,d0

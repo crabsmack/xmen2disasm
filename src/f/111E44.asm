@@ -92,7 +92,7 @@ Deathbird_Init:
 	pea.l	Deathbird_UpdateBurst(pc)
 	jsr	$4FD2(a5)	; -> Timer_Create
 	move.l	d0,$9E(a4)
-	move.l	-$3BC8(a5),$9A(a4)
+	move.l	g_SpaceA1Buf(a5),$9A(a4)
 	movea.l	-$3B18(a5),a0
 	move.l	a0,$B0(a4)
 	move.b	#$5,(a0)
@@ -120,7 +120,7 @@ Deathbird_Init:
 	move.w	g_VramTileCursor(a5),$6(a0)
 	addi.w	#$3D,g_VramTileCursor(a5)
 	clr.b	$B4(a4)
-	move.w	#$78,-$3BBE(a5)
+	move.w	#$78,g_HornetWaveTimer(a5)
 	move.w	#$D,-$3B02(a5)
 	lea.l	$2B12(a5),a0
 	move.l	$2(a0),-$3B1C(a5)

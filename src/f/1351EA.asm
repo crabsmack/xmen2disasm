@@ -65,7 +65,7 @@ loc_13526C:
 	move.w	d7,$16(a4)
 	move.w	d6,$18(a4)
 	moveq	#$0,d0
-	move.b	-$3B5C(a5),d0
+	move.b	g_ScnUnused3B5C(a5),d0
 	cmp.w	g_SceneIndex(a5),d0
 	beq.s	loc_135292
 	lea.l	$36C2(a5),a0

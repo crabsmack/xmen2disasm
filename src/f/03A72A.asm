@@ -46,7 +46,7 @@ BanimazaDoor_Init:
 	clr.b	$42(a4)
 	lea.l	$90A(a5),a0
 	move.l	$2(a0),$30(a4)
-	move.l	-$3C84(a5),$8C(a4)
+	move.l	g_BanimazaDoorBuf(a5),$8C(a4)
 	move.w	#$10,$90(a4)
 	moveq	#$0,d0
 	move.l	d0,$92(a4)

@@ -20,12 +20,12 @@ loc_034D96:
 	movea.l	$2(a0),a4
 	move.w	#$5,-$3B32(a5)
 	move.b	#$1,g_PalBaseDirty(a5)
-	move.b	-$3CB0(a5),d0
+	move.b	g_AvalonA4PalStep(a5),d0
 	cmp.b	(a4),d0
 	bne.s	loc_034DBE
-	clr.b	-$3CB0(a5)
+	clr.b	g_AvalonA4PalStep(a5)
 loc_034DBE:
-	move.b	-$3CB0(a5),d0
+	move.b	g_AvalonA4PalStep(a5),d0
 	ext.w	d0
 	ext.l	d0
 	add.l	a4,d0

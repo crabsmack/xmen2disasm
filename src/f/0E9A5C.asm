@@ -13,8 +13,8 @@ Hologram_SetPose:
 	moveq	#$1B,d0
 	cmp.l	-$3B14(a5),d0
 	beq.s	loc_0E9A7E
-	move.b	#$1,-$3BE0(a5)
-	clr.b	-$3BDD(a5)
+	move.b	#$1,g_HoloFlickerArmed(a5)
+	clr.b	g_HoloFlickerLinks+$1(a5)
 loc_0E9A7E:
 	ext.l	d7
 	move.l	d7,-$3B14(a5)

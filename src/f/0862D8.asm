@@ -97,7 +97,7 @@ loc_0863B4:
 	asr.l	#$8,d5
 	addi.w	#$FFE0,d6
 	addi.w	#$5B,d5
-	move.l	-$3C44(a5),d0
+	move.l	g_BroodBossOffsetX(a5),d0
 	asr.l	#$8,d0
 	sub.w	d0,d6
 	sub.w	g_CameraX(a5),d6

@@ -65,10 +65,10 @@ loc_064760:
 	addq.w	#$1,d4
 	cmpi.w	#$7,d4
 	blt.w	loc_064650
-	move.w	-$3BB6(a5),d0
+	move.w	g_PlayerTiles(a5),d0
 	cmp.w	-$E(a6),d0
 	ble.s	loc_06477A
-	move.w	-$3BB6(a5),-$E(a6)
+	move.w	g_PlayerTiles(a5),-$E(a6)
 loc_06477A:
 	pea.l	Tbl_PlayerSelect2(pc)
 	move.w	-$E(a6),d0

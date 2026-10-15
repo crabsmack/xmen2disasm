@@ -73,10 +73,10 @@ AvalonA3_InitSprites:
 	move.l	d0,-(a7)
 	pea.l	g_SceneSprites+$50(a5)
 	jsr	$506A(a5)	; -> Spr_Init
-	clr.w	-$3CBC(a5)
-	move.w	#$1,-$3CC0(a5)
-	move.w	#$2,-$3CC4(a5)
-	move.w	#$3,-$3CC8(a5)
+	clr.w	g_AvalonA3SprDelays+$C(a5)
+	move.w	#$1,g_AvalonA3SprDelays+$8(a5)
+	move.w	#$2,g_AvalonA3SprDelays+$4(a5)
+	move.w	#$3,g_AvalonA3SprDelays(a5)
 	lea.l	$70(a7),a7
 	move.l	-$4(a6),d7
 	unlk	a6

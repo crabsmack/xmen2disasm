@@ -6,7 +6,7 @@
 ; ---------------------------------------------------------------------------
 Hologram_OpenExit:
 	link.w	a6,#$0
-	move.b	#$1,-$3BE6(a5)
+	move.b	#$1,g_SentinelsA1ExitOpen(a5)
 	pea.l	($D1).w
 	jsr	$5222(a5)	; -> Snd_Stop
 	pea.l	($D1).w

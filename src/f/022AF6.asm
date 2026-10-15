@@ -12,7 +12,7 @@ AvalonA2_PlacePlayers:
 	move.l	d0,-(a7)
 	move.l	d0,-(a7)
 	jsr	$8A(a5)	; -> Players_PlaceAtStart
-	move.w	#$300,-$3CD0(a5)
-	move.w	-$3CD0(a5),-$3AFA(a5)
+	move.w	#$300,g_RetractFloorDepth(a5)
+	move.w	g_RetractFloorDepth(a5),-$3AFA(a5)
 	unlk	a6
 	rts

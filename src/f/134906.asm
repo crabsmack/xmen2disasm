@@ -8,7 +8,7 @@ FlyBrood_ClassInit:
 	link.w	a6,#$0
 	jsr	FlyBrood_EmptyStub(pc)
 	moveq	#$0,d0
-	move.b	-$3B5C(a5),d0
+	move.b	g_ScnUnused3B5C(a5),d0
 	cmp.w	g_SceneIndex(a5),d0
 	beq.s	loc_134930
 	moveq	#$1,d0

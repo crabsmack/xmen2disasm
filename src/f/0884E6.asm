@@ -21,21 +21,21 @@ loc_08850A:
 	move.l	g_FrameCounter(a5),d0
 	addq.l	#$1,g_FrameCounter(a5)
 	jsr	CloneA5_AnimShockSprites(pc)
-	tst.b	-$3C4A(a5)
+	tst.b	g_BroodBossHealthBar(a5)
 	beq.s	loc_088526
 	movea.l	-$3B18(a5),a0
-	move.b	-$3C4A(a5),$4(a0)
+	move.b	g_BroodBossHealthBar(a5),$4(a0)
 loc_088526:
 	tst.b	g_PalFadeActive(a5)
 	bne.s	loc_08854E
-	tst.b	-$3C4A(a5)
+	tst.b	g_BroodBossHealthBar(a5)
 	beq.s	loc_08854E
 	moveq	#$1,d0
 	move.l	d0,-(a7)
 	move.l	-$3B18(a5),-(a7)
-	pea.l	-$3C54(a5)
-	pea.l	-$3C52(a5)
-	pea.l	-$3C50(a5)
+	pea.l	g_CloneA5PalCycles(a5)
+	pea.l	g_CloneA5PalCycles+$2(a5)
+	pea.l	g_CloneA5PalCycles+$4(a5)
 	jsr	$3EB2(a5)	; -> Pal_CycleStep
 	lea.l	$14(a7),a7
 loc_08854E:
@@ -46,14 +46,14 @@ loc_08854E:
 	jsr	CloneA5_AnimShockSprites(pc)
 	tst.b	g_PalFadeActive(a5)
 	bne.s	loc_088584
-	tst.b	-$3C4A(a5)
+	tst.b	g_BroodBossHealthBar(a5)
 	beq.s	loc_088584
 	moveq	#$1,d0
 	move.l	d0,-(a7)
 	move.l	-$3B18(a5),-(a7)
-	pea.l	-$3C54(a5)
-	pea.l	-$3C52(a5)
-	pea.l	-$3C50(a5)
+	pea.l	g_CloneA5PalCycles(a5)
+	pea.l	g_CloneA5PalCycles+$2(a5)
+	pea.l	g_CloneA5PalCycles+$4(a5)
 	jsr	$3EB2(a5)	; -> Pal_CycleStep
 loc_088584:
 	unlk	a6

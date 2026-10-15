@@ -409,3 +409,61 @@ g_ScenePostLoadHook = -$38EC	; ptr: called last by Level_Load; Scene_PostLoadVra
 g_FrameTick = -$3A08	; byte: set by VDP_FrameUpdate every V-blank; the level loops clear it at frame start and in two-player half-rate mode spin until it is set again (Level_FrameLoop, PlayerSelect_Run, Cerebro_PlayIntro)
 g_VBlankFrameDone = -$3A0A	; byte: VDP_FrameUpdate ran in this V-blank (Irq_VBlank clears it first); the V-blank hooks Hologram_VBlankFlicker and sub_1E1928 act only when set
 g_DemoStepFrame = -$3A22	; word: g_LevelFrame at the last demo input step (sub_1F9DE8); Level_Run and Cerebro_Run clear it
+g_ScnUnused3B5C = -$3B5C	; byte: scene-id slot between g_ScnSavageC1 and g_ScnSavageB1 that Scene_RegisterAll never fills (0 throughout the TAS); FLYBROOD code takes its alternate art/animation path when g_SceneIndex equals it (FlyBrood_ClassInit, _Init, _Draw, _Act*)
+g_ResumeSceneIndex = -$3B92	; word: scene to resume after the death player-select screen: Game_SceneLoop saves g_SceneIndex here, PlayerSelect_RunScene restores it and sets -1 (= none)
+g_P1VramTile = -$3BB2	; word: first VRAM tile reserved for player 1's sprite graphics (Scene_PostLoadVram = g_VramTileCursor); the character Inits use it when this == g_Player1
+g_P2VramTile = -$3BB4	; word: first VRAM tile reserved for player 2 = g_P1VramTile + g_PlayerTiles (Scene_PostLoadVram; character Inits, Spr_ReloadDefs)
+g_PlayerTiles = -$3BB6	; word: VRAM tiles reserved per player = Player_CalcMaxTiles() (Game_InitButtonMasks); Scene_PostLoadVram, Spr_ReloadDefs, PlayerSelect_AllocCharBuffers_Measure
+g_SiberiaIntro = -$3BBA	; byte: SiberiaB1 opening phase of a new game: set by SiberiaB1_PreLoad, cleared when P1 passes x $360 or the stage music starts (SiberiaB1_FrameHook; Level_Load clears); Player1/2_StartLife and Level_FrameLoop handle a joining player differently while set
+g_HornetWaveTimer = -$3BBE	; word: frames until Deathbird_StateSendHornets spawns the next HORNET from its schedule ($78 at Deathbird_Init)
+g_SpaceA1Buf = -$3BC8	; ptr: $A8-byte zeroed buffer on SpaceA1_RunScene's stack (next to the ELEVATOR); Deathbird_Init keeps it in +$9A
+g_SwitchSearchBusy = -$3BCA	; byte: a SWITCH lookup timer is running; Switch_TileHit only starts one when clear (Switch_ClassInit, Switch_DebounceWait, Switch_FindAndToggle clear)
+g_SwitchSearchRec = -$3BCE	; ptr: 16-byte record allocated by Switch_ClassInit for the tile Switch_TileHit is looking up
+g_HoloFlickerLinks = -$3BDE	; 2 bytes: sprite slots / link values set by Hologram_Draw; Hologram_VBlankFlicker copies the word and rewrites that sprite link in VRAM on odd V-blanks
+g_HoloFlickerArmed = -$3BE0	; byte: hologram flicker armed (Hologram_Init, Hologram_SetPose, Hologram_Draw set; Hologram_VBlankFlicker consumes)
+g_SentinelsA1ExitOpen = -$3BE6	; byte: SentinelsA1 exit opened by Hologram_OpenExit; SentinelsA1_CyclePalettes switches palette cycles on it (SentinelsA1_InstallHooks clears)
+g_SentinelsA1PalCycles = -$3BF2	; 6 words: SentinelsA1 palette-cycle step counters passed by address to the cycle stepper (SentinelsA1_CyclePalettes; SentinelsA1_ResetPalCycles clears)
+g_SentinelsD1Flags = -$3BFA	; ptr: flag-bit array allocated by SentinelsD1_InitFlagBits; Blast/ControlBox/ControlPanel/SentinelDoor/SentinelElevator Init link to it
+g_JunglePalScript = -$3C1A	; ptr: current palette-phase script entry (SavageJungle_InitPalPhases from the BG map's +$12 list; SavageJungle_PalPhaseUpdate cases)
+g_JunglePalPhase = -$3C1C	; word: current jungle palette phase (SavageJungle_InitPalPhases clears, SavageJungle_PalPhaseUpdate increments); BubbleManager_SetWaveParams and SwampFly_SpawnRecInView read it
+g_JunglePalTimer = -$3C1E	; word: frames left in the current jungle palette phase (SavageJungle_PalPhaseUpdate*)
+g_SporeMinePoolCount = -$3C24	; word: spores in use (SporeMine_InitPool clears; SporeMine_AddSpore/RemoveSpore/UpdatePool/DrawPool)
+g_SporeMinePool = -$3C28	; ptr: spore pool records (SporeMine_InitPool allocates; Add/Remove/Update/Draw)
+g_PerimeterDoorHits = -$3C34	; word: hits taken by the perimeter door (PerimeterDoor_ClassInit clears, PerimeterDoor_TileHit counts; PerimeterDoor_StateWaitBroken compares)
+g_PerimeterDoorObj = -$3C38	; ptr: the PERIMETERDOOR object (PerimeterDoor_Init stores itself; PerimeterDoor_TileHook)
+g_CloneMakerKills = -$3C3C	; word: clones killed while the clone maker runs (XClone_KillAndCount; EvilMaker_StateWaitKills compares; XClone_ClassInit clears; BroodClaw_StateDropClone tests)
+g_CloneWaveKills = -$3C40	; word: clones killed in the current wave; 6 end it (XClone_Kill; XClone_ClassInit/StartMakerMode clear; BroodClaw_StateDropClone counts)
+g_BroodBossOffsetX = -$3C44	; long: BROODBOSS x offset (BroodBoss_StateRoar resets it; Recoil/Advance/Death states move it); parts, LittleLeg and CloneA5_CamApply (boss plane scroll) read it
+g_BroodBossOffsetY = -$3C48	; long: BROODBOSS vertical offset ($3300 at CloneA5_RunScene; BroodBoss_Update moves it by $200 between $2B00 and $3300); parts and CloneA5_CamApply read it
+g_BroodBossHealthBar = -$3C4A	; byte: BROODBOSS health * 2 (BroodBoss_Update; 5 at CloneA5_RunScene); CloneA5_FrameHook writes it into the object at -$3B18 (+4)
+g_CloneA5CamFlags = -$3C4E	; word: CloneA5 camera flags; bit 0 set by CloneA5_InitCamera, tested by CloneA5_CamApply
+g_CloneA5PalCycles = -$3C54	; 3 words: CloneA5 palette-cycle step counters passed by address (CloneA5_FrameHook; CloneA5_ResetPalCycle clears)
+g_TextWinLeft = -$3C56	; word: Cerebro text window left column (Cerebro_Run, CursorInput_Confirm, Failure_RunScene; Cerebro_PrintText/ClearTextWindow)
+g_TextWinTop = -$3C58	; word: Cerebro text window top row (Cerebro_Run, CursorInput_Confirm); the pause code reuses it as its button-code state (Pause_HandleInput, Pause_HandleInput_EndCode)
+g_TextWinRight = -$3C5A	; word: Cerebro text window right column (Cerebro_Run, CursorInput_Confirm; Cerebro_PrintText, Cerebro_ClearTextWindow); Pause_LinkSprites also writes it
+g_TextWinBottom = -$3C5C	; word: Cerebro text window bottom row (Cerebro_Run; Cerebro_PrintText, ClearTextWindow); in levels LightBeam_ClassInit reuses it for its sprite-definition slot (LightBeam_Init)
+g_ProgressFlags = -$3C5E	; word: game progress flags: bit 1 = logo START pressed / demos seen (Cerebro_PlayIntro, Game_PlayAttractDemo, SiberiaB1_FrameHook), $4000 = game finished (FinalText_RunScene), $8000 = SentinelsB2 reached, $10/$20/$200/$400/$2000 set by pause cheats (Pause_CheatUnlock); Credits/Failure clear it
+g_BoulderDebrisCount = -$3C64	; word: boulder debris in use (Boulder_InitDebrisPool clears; Boulder_AllocDebris/FreeDebris/UpdateDebris)
+g_BoulderDebrisPool = -$3C68	; ptr: boulder debris records (Boulder_InitDebrisPool; Alloc/Free/Update)
+g_ApocBombSpeed = -$3C70	; word: speed given to new and moving APOCBOMBs (ApocBomb_SetSpeed, raised by ApocBomb_AccelTimer up to $280; ApocBomb_Init/Move copy it to +$90)
+g_ApocBombAccel = -$3C72	; word: increment ApocBomb_AccelTimer adds to g_ApocBombSpeed (ApocBomb_SetSpeed; ApocBomb_StartAccelTimer clears)
+g_DiscBandCount = -$3C7A	; word: number of rolling-disc bands (RollingDiscs_ClassInit from the level list; RollingDiscs_UpdateScroll, RollingDiscs_ReverseAtY)
+g_DiscBands = -$3C7E	; ptr: rolling-disc band records, $14 bytes each (RollingDiscs_ClassInit; UpdateScroll, ReverseAtY; RollingDiscs_Init keeps it in +$8C)
+g_DiscHurtCooldown = -$3C80	; word: frames before rolling discs can hurt a player again ($DC after a hit; RollingDiscs_UpdateScroll, ClassInit clears)
+g_BanimazaDoorBuf = -$3C84	; ptr: $120-byte buffer allocated by BanimazaDoor_ClassInit; each BANIMAZADOOR keeps it in +$8C
+g_BmA1SwitchTimer = -$3C94	; word: BaniMazaA1 switch effect timer ($28 when a switch tile is hit, BaniMazaA1_SwitchTileHook; BaniMazaA1_FrameHook counts down; InstallTileHooks clears)
+g_DiscBandReverse = -$3C98	; bytes: per-band direction flags of the rolling discs (RollingDiscs_UpdateScroll); BaniMazaA1_AnimateBlocks reverses its block animations with them
+g_BmA1BlockTimer0 = -$3C88	; word: frames until BaniMazaA1 animated block group 0 steps (6; BaniMazaA1_AnimateBlocks, BaniMazaA1_InitSprites)
+g_BmA1BlockFrame0 = -$3C8A	; word: animation frame of BaniMazaA1 block group 0 (8 frames; BaniMazaA1_AnimateBlocks)
+g_BmA1BlockTimer1 = -$3C8C	; word: step timer of BaniMazaA1 block group 1 (BaniMazaA1_AnimateBlocks; InitSprites starts it at 2)
+g_BmA1BlockFrame1 = -$3C8E	; word: animation frame of BaniMazaA1 block group 1 (BaniMazaA1_AnimateBlocks)
+g_BmA1BlockTimer2 = -$3C90	; word: step timer of BaniMazaA1 block group 2 (BaniMazaA1_AnimateBlocks; InitSprites starts it at 4)
+g_BmA1BlockFrame2 = -$3C92	; word: animation frame of BaniMazaA1 block group 2 (BaniMazaA1_AnimateBlocks)
+g_MagnetoRubbleClass = -$3CAE	; word: class index whose g_ClassData entry is the rubble particle pool (MagnetoBoss_ClassInit; MagnetoBoss_SpawnRubble)
+g_AvalonA4PalStep = -$3CB0	; byte: AvalonA4 palette animation step (AvalonA4_AnimatePalettes, _part4; AvalonA4_ResetEffectCounters clears)
+g_ExodusObj = -$3CB8	; ptr: the EXODUS boss object (Exodus_Init stores itself; Exodus_CheckFloorHit)
+g_PsiFlashTimer = -$3CBA	; word: AvalonA3 psi-flash countdown ($E from Exodus_StartPsiFlash; AvalonA3_PsiFlashStep steps the palette, AvalonA3_FrameHook tests; AvalonA3_SavePalettes clears)
+g_AvalonA3SprDelays = -$3CC8	; 4 words at stride 4: AvalonA3 effect-sprite frame delays (AvalonA3_InitSprites staggers them 3, 2, 1, 0; AvalonA3_FrameHook reloads 5)
+g_RetractFloorDepth = -$3CD0	; word: AvalonA2 retracting floor value: $300 at AvalonA2_PlacePlayers, RetractFloor_StateWait adds $10 up to $500; copied into -$3AFA
+g_BigAcolyteDebris = -$3CDA	; ptr: debris pool from Debris_CreatePool in BigAcolyte_ActAppear (+2 = $400, +4 = sprite definition from BigAcolyte_LoadSprite); used by BigAcolyte_StateBurstWall
+g_AvalonB1PalCycles = -$3CE6	; 6 words: AvalonB1 palette-cycle step counters passed by address (AvalonB1_CyclePalettes; AvalonB1_RunScene clears)

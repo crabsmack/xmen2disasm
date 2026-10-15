@@ -15,7 +15,7 @@ SpaceA1_RunScene:
 	pea.l	-$BC(a6)
 	jsr	$4DB2(a5)	; -> Mem_Set
 	lea.l	-$A8(a6),a0
-	move.l	a0,-$3BC8(a5)
+	move.l	a0,g_SpaceA1Buf(a5)
 	pea.l	($A8).w
 	moveq	#$0,d0
 	move.l	d0,-(a7)

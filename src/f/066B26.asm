@@ -64,12 +64,12 @@ loc_066B48:
 	move.w	#$2,-$3B38(a5)
 	clr.w	-$3B40(a5)
 	move.w	#$1,-$3B48(a5)
-	move.w	#$3,-$3C58(a5)
-	move.w	#$5,-$3C56(a5)
-	move.w	#$16,-$3C5C(a5)
-	move.w	#$22,-$3C5A(a5)
-	move.w	-$3C58(a5),-$3B04(a5)
-	move.w	-$3C56(a5),-$3B06(a5)
+	move.w	#$3,g_TextWinTop(a5)
+	move.w	#$5,g_TextWinLeft(a5)
+	move.w	#$16,g_TextWinBottom(a5)
+	move.w	#$22,g_TextWinRight(a5)
+	move.w	g_TextWinTop(a5),-$3B04(a5)
+	move.w	g_TextWinLeft(a5),-$3B06(a5)
 	clr.w	g_SceneExitTimer(a5)
 	moveq	#$0,d0
 	move.l	d0,g_VBlankCount(a5)
@@ -96,15 +96,15 @@ loc_066B48:
 	cmp.w	g_SceneIndex(a5),d0
 	lea.l	$4C(a7),a7
 	bne.s	loc_066CA2
-	clr.w	-$3C58(a5)
-	clr.w	-$3C56(a5)
-	move.w	#$1F,-$3C5C(a5)
-	move.w	#$27,-$3C5A(a5)
+	clr.w	g_TextWinTop(a5)
+	clr.w	g_TextWinLeft(a5)
+	move.w	#$1F,g_TextWinBottom(a5)
+	move.w	#$27,g_TextWinRight(a5)
 	jsr	Cerebro_ClearTextWindow(pc)
-	addq.w	#$2,-$3C58(a5)
-	addq.w	#$2,-$3C56(a5)
-	subq.w	#$2,-$3C5C(a5)
-	subq.w	#$2,-$3C5A(a5)
+	addq.w	#$2,g_TextWinTop(a5)
+	addq.w	#$2,g_TextWinLeft(a5)
+	subq.w	#$2,g_TextWinBottom(a5)
+	subq.w	#$2,g_TextWinRight(a5)
 	moveq	#$A,d6
 	bra.s	loc_066CB2
 loc_066CA2:

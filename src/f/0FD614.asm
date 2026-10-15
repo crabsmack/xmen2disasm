@@ -34,7 +34,7 @@ loc_0FD662:
 	clr.w	-$3B0A(a5)
 loc_0FD666:
 	moveq	#$2,d0
-	and.w	-$3C5E(a5),d0
+	and.w	g_ProgressFlags(a5),d0
 	beq.s	loc_0FD672
 	clr.w	-$3B0A(a5)
 loc_0FD672:

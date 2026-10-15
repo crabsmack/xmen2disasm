@@ -7,7 +7,7 @@
 AvalonA3_SavePalettes:
 	link.w	a6,#$0
 	movem.l	d3/d7,-(a7)
-	clr.w	-$3CBA(a5)
+	clr.w	g_PsiFlashTimer(a5)
 	move.l	$8(a6),-$3B14(a5)
 	move.l	$C(a6),-$3B18(a5)
 	moveq	#$0,d7

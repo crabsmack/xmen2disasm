@@ -37,7 +37,7 @@ ApocBomb_Init:
 	lea.l	$B4A(a5),a0
 	move.l	$2(a0),$A0(a4)
 	move.l	#$B400,$8C(a4)
-	move.w	-$3C70(a5),$90(a4)
+	move.w	g_ApocBombSpeed(a5),$90(a4)
 	moveq	#$0,d0
 	move.l	d0,$9A(a4)
 	clr.w	$9E(a4)

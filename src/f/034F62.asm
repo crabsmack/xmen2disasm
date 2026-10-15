@@ -10,8 +10,8 @@ AvalonA4_AnimatePalettes_part4:
 	cmp.w	-$3B3A(a5),d0
 	bne.s	loc_034F7A
 	clr.w	-$3B3A(a5)
-	move.b	-$3CB0(a5),d0
-	addq.b	#$1,-$3CB0(a5)
+	move.b	g_AvalonA4PalStep(a5),d0
+	addq.b	#$1,g_AvalonA4PalStep(a5)
 loc_034F7A:
 	move.w	-$3B34(a5),d0
 	subq.w	#$1,-$3B34(a5)

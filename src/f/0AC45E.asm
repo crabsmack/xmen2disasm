@@ -5,6 +5,6 @@
 PerimeterDoor_ClassInit:
 	link.w	a6,#$0
 	jsr	PerimeterDoor_NopStatic(pc)
-	clr.w	-$3C34(a5)
+	clr.w	g_PerimeterDoorHits(a5)
 	unlk	a6
 	rts

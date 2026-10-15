@@ -10,7 +10,7 @@ PerimeterDoor_StateWaitBroken:
 	move.l	a4,-(a7)
 	movea.l	$8(a6),a4
 	moveq	#$B,d0
-	cmp.w	-$3C34(a5),d0
+	cmp.w	g_PerimeterDoorHits(a5),d0
 	bgt.s	loc_0AC97A
 	clr.w	$6C(a4)
 	lea.l	PerimeterDoor_StateCrumble(pc),a0

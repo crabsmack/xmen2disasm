@@ -16,7 +16,7 @@ Switch_DebounceWait:
 	bcc.s	loc_10785C
 	move.l	g_TimerCurrent(a5),-(a7)
 	jsr	$4FEA(a5)	; -> Timer_Free
-	clr.b	-$3BCA(a5)
+	clr.b	g_SwitchSearchBusy(a5)
 	addq.w	#$4,a7
 loc_10785C:
 	unlk	a6

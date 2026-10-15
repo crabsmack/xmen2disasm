@@ -11,7 +11,7 @@ BigAcolyte_LoadSprite:
 	lea.l	$4F2(a5),a0
 	move.l	$2(a0),-(a7)
 	jsr	$4E52(a5)	; -> SprDef_Add
-	movea.l	-$3CDA(a5),a0
+	movea.l	g_BigAcolyteDebris(a5),a0
 	move.w	d0,$4(a0)
 	unlk	a6
 	rts

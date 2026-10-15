@@ -17,9 +17,9 @@ AvalonA3_FrameHook:
 	move.w	-$3B06(a5),d0
 	subq.w	#$1,-$3B06(a5)
 loc_02C9D4:
-	tst.w	-$3CBC(a5)
+	tst.w	g_AvalonA3SprDelays+$C(a5)
 	bne.s	loc_02CA12
-	move.w	#$5,-$3CBC(a5)
+	move.w	#$5,g_AvalonA3SprDelays+$C(a5)
 	tst.w	-$3CBE(a5)
 	bne.s	loc_02C9EC
 	move.w	#$3,-$3CBE(a5)
@@ -37,10 +37,10 @@ loc_02C9EC:
 	jsr	$5062(a5)	; -> Spr_UploadFrame
 	lea.l	$10(a7),a7
 loc_02CA12:
-	subq.w	#$1,-$3CBC(a5)
-	tst.w	-$3CC0(a5)
+	subq.w	#$1,g_AvalonA3SprDelays+$C(a5)
+	tst.w	g_AvalonA3SprDelays+$8(a5)
 	bne.s	loc_02CA54
-	move.w	#$5,-$3CC0(a5)
+	move.w	#$5,g_AvalonA3SprDelays+$8(a5)
 	tst.w	-$3CC2(a5)
 	bne.s	loc_02CA2E
 	move.w	#$3,-$3CC2(a5)
@@ -58,10 +58,10 @@ loc_02CA2E:
 	jsr	$5062(a5)	; -> Spr_UploadFrame
 	lea.l	$10(a7),a7
 loc_02CA54:
-	subq.w	#$1,-$3CC0(a5)
-	tst.w	-$3CC4(a5)
+	subq.w	#$1,g_AvalonA3SprDelays+$8(a5)
+	tst.w	g_AvalonA3SprDelays+$4(a5)
 	bne.s	loc_02CA96
-	move.w	#$5,-$3CC4(a5)
+	move.w	#$5,g_AvalonA3SprDelays+$4(a5)
 	tst.w	-$3CC6(a5)
 	bne.s	loc_02CA70
 	move.w	#$3,-$3CC6(a5)
@@ -79,10 +79,10 @@ loc_02CA70:
 	jsr	$5062(a5)	; -> Spr_UploadFrame
 	lea.l	$10(a7),a7
 loc_02CA96:
-	subq.w	#$1,-$3CC4(a5)
-	tst.w	-$3CC8(a5)
+	subq.w	#$1,g_AvalonA3SprDelays+$4(a5)
+	tst.w	g_AvalonA3SprDelays(a5)
 	bne.s	loc_02CAD8
-	move.w	#$5,-$3CC8(a5)
+	move.w	#$5,g_AvalonA3SprDelays(a5)
 	tst.w	-$3CCA(a5)
 	bne.s	loc_02CAB2
 	move.w	#$3,-$3CCA(a5)
@@ -100,10 +100,10 @@ loc_02CAB2:
 	jsr	$5062(a5)	; -> Spr_UploadFrame
 	lea.l	$10(a7),a7
 loc_02CAD8:
-	subq.w	#$1,-$3CC8(a5)
+	subq.w	#$1,g_AvalonA3SprDelays(a5)
 	tst.b	g_PalFadeActive(a5)
 	bne.s	loc_02CAEC
-	tst.w	-$3CBA(a5)
+	tst.w	g_PsiFlashTimer(a5)
 	beq.s	loc_02CAEC
 	jsr	AvalonA3_PsiFlashStep(pc)
 loc_02CAEC:

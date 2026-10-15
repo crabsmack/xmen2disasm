@@ -71,10 +71,10 @@ loc_03A924:
 	move.l	d4,(a3)+
 	subq.l	#$1,-$C(a6)
 	bne.s	loc_03A924
-	move.w	-$3C7A(a5),d0
+	move.w	g_DiscBandCount(a5),d0
 	ext.l	d0
 	move.l	d0,-$C(a6)
-	movea.l	-$3C7E(a5),a3
+	movea.l	g_DiscBands(a5),a3
 	bra.w	loc_03ABA2
 loc_03A93E:
 	move.w	$2(a3),d0
@@ -185,13 +185,13 @@ loc_03AA36:
 loc_03AA38:
 	moveq	#$0,d1
 	move.b	$12(a3),d1
-	lea.l	-$3C98(a5),a0
+	lea.l	g_DiscBandReverse(a5),a0
 	move.b	d0,(a0,d1.w)
 	subq.l	#$4,a4
 loc_03AA48:
-	tst.w	-$3C80(a5)
+	tst.w	g_DiscHurtCooldown(a5)
 	beq.s	loc_03AA56
-	subq.w	#$1,-$3C80(a5)
+	subq.w	#$1,g_DiscHurtCooldown(a5)
 	bra.w	loc_03AB96
 loc_03AA56:
 	move.w	g_CameraX(a5),d0
@@ -259,7 +259,7 @@ loc_03AAF4:
 	movea.l	(a0),a0
 	movea.l	$26(a0),a1
 	jsr	(a1)
-	move.w	#$DC,-$3C80(a5)
+	move.w	#$DC,g_DiscHurtCooldown(a5)
 	lea.l	$18(a7),a7
 loc_03AB24:
 	tst.l	-$4(a6)
@@ -301,7 +301,7 @@ loc_03AB66:
 	movea.l	(a0),a0
 	movea.l	$26(a0),a1
 	jsr	(a1)
-	move.w	#$DC,-$3C80(a5)
+	move.w	#$DC,g_DiscHurtCooldown(a5)
 	lea.l	$18(a7),a7
 loc_03AB96:
 	move.l	-$C(a6),d0

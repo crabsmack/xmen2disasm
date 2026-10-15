@@ -13,10 +13,10 @@ Beast_Init:
 	seq.b	d3
 	neg.b	d3
 	beq.s	loc_18401C
-	move.w	-$3BB2(a5),d0
+	move.w	g_P1VramTile(a5),d0
 	bra.s	loc_184020
 loc_18401C:
-	move.w	-$3BB4(a5),d0
+	move.w	g_P2VramTile(a5),d0
 loc_184020:
 	move.w	d0,d7
 	move.l	$14(a6),-(a7)
@@ -69,7 +69,7 @@ loc_184020:
 	jsr	$506A(a5)	; -> Spr_Init
 	move.w	d0,d5
 	ext.l	d7
-	move.w	-$3BB6(a5),d0
+	move.w	g_PlayerTiles(a5),d0
 	ext.l	d0
 	add.l	d7,d0
 	ext.l	d5

@@ -71,7 +71,7 @@ loc_0AC572:
 loc_0AC5AC:
 	move.w	#$A,$6A(a4)
 	moveq	#$9,d0
-	cmp.w	-$3C34(a5),d0
+	cmp.w	g_PerimeterDoorHits(a5),d0
 	ble.w	loc_0AC89E
 	cmp.w	$90(a4),d6
 	bne.w	loc_0AC652
@@ -97,8 +97,8 @@ loc_0AC5DE:
 	ext.l	d6
 	move.l	d6,-(a7)
 	jsr	$3FDA(a5)	; -> Map_SetBlockFG
-	move.w	-$3C34(a5),d0
-	addq.w	#$1,-$3C34(a5)
+	move.w	g_PerimeterDoorHits(a5),d0
+	addq.w	#$1,g_PerimeterDoorHits(a5)
 	lea.l	$10(a7),a7
 	bra.w	loc_0AC788
 loc_0AC606:
@@ -112,8 +112,8 @@ loc_0AC606:
 	ext.l	d6
 	move.l	d6,-(a7)
 	jsr	$3FDA(a5)	; -> Map_SetBlockFG
-	move.w	-$3C34(a5),d0
-	addq.w	#$1,-$3C34(a5)
+	move.w	g_PerimeterDoorHits(a5),d0
+	addq.w	#$1,g_PerimeterDoorHits(a5)
 	lea.l	$10(a7),a7
 	bra.w	loc_0AC788
 loc_0AC62E:
@@ -126,8 +126,8 @@ loc_0AC62E:
 	ext.l	d6
 	move.l	d6,-(a7)
 	jsr	$3FDA(a5)	; -> Map_SetBlockFG
-	move.w	-$3C34(a5),d0
-	addq.w	#$1,-$3C34(a5)
+	move.w	g_PerimeterDoorHits(a5),d0
+	addq.w	#$1,g_PerimeterDoorHits(a5)
 	lea.l	$10(a7),a7
 	bra.w	loc_0AC788
 loc_0AC652:
@@ -159,8 +159,8 @@ loc_0AC67C:
 	ext.l	d6
 	move.l	d6,-(a7)
 	jsr	$3FDA(a5)	; -> Map_SetBlockFG
-	move.w	-$3C34(a5),d0
-	addq.w	#$1,-$3C34(a5)
+	move.w	g_PerimeterDoorHits(a5),d0
+	addq.w	#$1,g_PerimeterDoorHits(a5)
 	lea.l	$10(a7),a7
 	bra.w	loc_0AC788
 loc_0AC6A4:
@@ -174,8 +174,8 @@ loc_0AC6A4:
 	ext.l	d6
 	move.l	d6,-(a7)
 	jsr	$3FDA(a5)	; -> Map_SetBlockFG
-	move.w	-$3C34(a5),d0
-	addq.w	#$1,-$3C34(a5)
+	move.w	g_PerimeterDoorHits(a5),d0
+	addq.w	#$1,g_PerimeterDoorHits(a5)
 	lea.l	$10(a7),a7
 	bra.w	loc_0AC788
 loc_0AC6CC:
@@ -188,8 +188,8 @@ loc_0AC6CC:
 	ext.l	d6
 	move.l	d6,-(a7)
 	jsr	$3FDA(a5)	; -> Map_SetBlockFG
-	move.w	-$3C34(a5),d0
-	addq.w	#$1,-$3C34(a5)
+	move.w	g_PerimeterDoorHits(a5),d0
+	addq.w	#$1,g_PerimeterDoorHits(a5)
 	lea.l	$10(a7),a7
 	bra.w	loc_0AC788
 loc_0AC6F0:
@@ -221,8 +221,8 @@ loc_0AC718:
 	ext.l	d6
 	move.l	d6,-(a7)
 	jsr	$3FDA(a5)	; -> Map_SetBlockFG
-	move.w	-$3C34(a5),d0
-	addq.w	#$1,-$3C34(a5)
+	move.w	g_PerimeterDoorHits(a5),d0
+	addq.w	#$1,g_PerimeterDoorHits(a5)
 	lea.l	$10(a7),a7
 	bra.s	loc_0AC788
 loc_0AC73E:
@@ -236,8 +236,8 @@ loc_0AC73E:
 	ext.l	d6
 	move.l	d6,-(a7)
 	jsr	$3FDA(a5)	; -> Map_SetBlockFG
-	move.w	-$3C34(a5),d0
-	addq.w	#$1,-$3C34(a5)
+	move.w	g_PerimeterDoorHits(a5),d0
+	addq.w	#$1,g_PerimeterDoorHits(a5)
 	lea.l	$10(a7),a7
 	bra.s	loc_0AC788
 loc_0AC764:
@@ -251,8 +251,8 @@ loc_0AC764:
 	ext.l	d6
 	move.l	d6,-(a7)
 	jsr	$3FDA(a5)	; -> Map_SetBlockFG
-	move.w	-$3C34(a5),d0
-	addq.w	#$1,-$3C34(a5)
+	move.w	g_PerimeterDoorHits(a5),d0
+	addq.w	#$1,g_PerimeterDoorHits(a5)
 	lea.l	$10(a7),a7
 loc_0AC788:
 	moveq	#$0,d0
@@ -308,7 +308,7 @@ loc_0AC788:
 	move.l	d2,-(a7)
 	jsr	$2DD2(a5)	; -> Explosion_SpawnSetTimerWord
 	moveq	#$9,d0
-	cmp.w	-$3C34(a5),d0
+	cmp.w	g_PerimeterDoorHits(a5),d0
 	lea.l	$2C(a7),a7
 	bne.w	loc_0AC8A6
 	move.w	$8E(a4),d0
@@ -376,8 +376,8 @@ loc_0AC88E:
 	bge.s	loc_0AC852
 	bra.s	loc_0AC8A6
 loc_0AC89E:
-	move.w	-$3C34(a5),d0
-	addq.w	#$1,-$3C34(a5)
+	move.w	g_PerimeterDoorHits(a5),d0
+	addq.w	#$1,g_PerimeterDoorHits(a5)
 loc_0AC8A6:
 	move.w	g_Player1+$4(a5),d0
 	ext.l	d0

@@ -20,7 +20,7 @@ loc_10787A:
 	bls.s	loc_107898
 	move.l	g_TimerCurrent(a5),-(a7)
 	jsr	$4FEA(a5)	; -> Timer_Free
-	clr.b	-$3BCA(a5)
+	clr.b	g_SwitchSearchBusy(a5)
 	addq.w	#$4,a7
 	bra.w	loc_1079CE
 loc_107898:

@@ -74,10 +74,10 @@ loc_0881B2:
 	ext.w	d0
 	add.w	d0,g_CameraY(a5)
 loc_0881D2:
-	move.l	-$3C44(a5),d0
+	move.l	g_BroodBossOffsetX(a5),d0
 	asr.l	#$8,d0
 	move.w	d0,g_BgScrollBaseX(a5)
-	move.l	-$3C48(a5),d0
+	move.l	g_BroodBossOffsetY(a5),d0
 	asr.l	#$8,d0
 	move.w	d0,g_BgScrollBaseY(a5)
 	move.w	-$3B02(a5),d0
@@ -98,7 +98,7 @@ loc_0881D2:
 	add.w	g_BgScrollBaseY(a5),d0
 	move.w	d0,g_BgScrollY(a5)
 	clr.w	-$3B02(a5)
-	move.w	-$3C4E(a5),d0
+	move.w	g_CloneA5CamFlags(a5),d0
 	btst	#$0,d0
 	beq.s	loc_088250
 	move.w	g_FgScrollX(a5),d0

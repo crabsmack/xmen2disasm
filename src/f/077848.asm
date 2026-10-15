@@ -95,12 +95,12 @@ loc_077924:
 	move.w	#$FFFF,$9A(a4)
 	move.w	#$FFFF,$9C(a4)
 	move.w	#$FFFF,$9E(a4)
-	move.w	-$3C5C(a5),d0
+	move.w	g_TextWinBottom(a5),d0
 	ext.l	d0
 	move.l	d0,-(a7)
 	move.l	a4,-(a7)
 	jsr	$4E5A(a5)	; -> Obj_SetSpriteDef
-	move.w	-$3C5C(a5),$8C(a4)
+	move.w	g_TextWinBottom(a5),$8C(a4)
 	moveq	#-$4,d0
 	and.b	$2E(a4),d0
 	moveq	#$2,d1

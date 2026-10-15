@@ -33,7 +33,7 @@ PerimeterDoor_Init:
 	subq.w	#$1,d1
 	move.w	d1,$90(a4)
 	move.w	$6(a3),$8C(a4)
-	move.l	a4,-$3C38(a5)
+	move.l	a4,g_PerimeterDoorObj(a5)
 	movem.l	-$8(a6),a3-a4
 	unlk	a6
 	rts

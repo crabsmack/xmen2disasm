@@ -101,7 +101,7 @@ loc_0DCCE4:
 	move.b	$F(a0),$9C(a3)
 	move.w	$94(a3),d0
 	ext.l	d0
-	movea.l	-$3BFA(a5),a0
+	movea.l	g_SentinelsD1Flags(a5),a0
 	add.l	d0,d0
 	adda.l	d0,a0
 	move.l	a0,$8C(a3)

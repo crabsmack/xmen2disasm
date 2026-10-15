@@ -48,10 +48,10 @@ loc_1D02F0:
 	seq.b	d3
 	neg.b	d3
 	beq.s	loc_1D0344
-	move.w	-$3BB2(a5),d1
+	move.w	g_P1VramTile(a5),d1
 	bra.s	loc_1D0348
 loc_1D0344:
-	move.w	-$3BB4(a5),d1
+	move.w	g_P2VramTile(a5),d1
 loc_1D0348:
 	ext.l	d1
 	move.l	d1,-(a7)
@@ -69,13 +69,13 @@ loc_1D0348:
 	seq.b	d3
 	neg.b	d3
 	beq.s	loc_1D0378
-	move.w	-$3BB2(a5),d0
+	move.w	g_P1VramTile(a5),d0
 	bra.s	loc_1D037C
 loc_1D0378:
-	move.w	-$3BB4(a5),d0
+	move.w	g_P2VramTile(a5),d0
 loc_1D037C:
 	ext.l	d0
-	move.w	-$3BB6(a5),d1
+	move.w	g_PlayerTiles(a5),d1
 	ext.l	d1
 	add.l	d0,d1
 	sub.w	#$D,d1

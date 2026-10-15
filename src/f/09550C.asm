@@ -23,8 +23,8 @@ loc_095534:
 	cmpi.w	#$4,d7
 	addq.w	#$4,a7
 	beq.s	loc_09554C
-	move.w	-$3C40(a5),d0
-	addq.w	#$1,-$3C40(a5)
+	move.w	g_CloneWaveKills(a5),d0
+	addq.w	#$1,g_CloneWaveKills(a5)
 loc_09554C:
 	tst.b	$B0(a4)
 	beq.s	loc_09555A
@@ -33,7 +33,7 @@ loc_09554C:
 	addq.w	#$4,a7
 loc_09555A:
 	moveq	#$6,d0
-	cmp.w	-$3C40(a5),d0
+	cmp.w	g_CloneWaveKills(a5),d0
 	bgt.s	loc_095566
 	jsr	XClone_EndWave(pc)
 loc_095566:

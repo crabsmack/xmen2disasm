@@ -18,7 +18,7 @@ Level_Load:
 	move.b	#$1,g_MapStreamNarrow(a5)
 	clr.b	g_BgNarrow(a5)
 	clr.b	g_SolidMapIsBg(a5)
-	clr.b	-$3BBA(a5)
+	clr.b	g_SiberiaIntro(a5)
 	movea.l	g_ScenePreLoadHook(a5),a0
 	jsr	(a0)
 	move.w	$36(a6),g_MusicTrack(a5)

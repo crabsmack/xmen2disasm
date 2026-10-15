@@ -9,7 +9,7 @@ BroodBoss_StateRemoveParts:
 	link.w	a6,#$0
 	move.l	a4,-(a7)
 	movea.l	$8(a6),a4
-	move.l	-$3C44(a5),d0
+	move.l	g_BroodBossOffsetX(a5),d0
 	asr.l	#$8,d0
 	moveq	#$68,d1
 	cmp.l	d0,d1

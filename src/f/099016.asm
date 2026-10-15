@@ -9,7 +9,7 @@ XClone_StartMakerMode:
 	link.w	a6,#$0
 	moveq	#$0,d0
 	move.l	d0,-$3B30(a5)
-	clr.w	-$3C40(a5)
+	clr.w	g_CloneWaveKills(a5)
 	clr.w	-$3B06(a5)
 	clr.w	-$3B08(a5)
 	jsr	XClone_MakerBufSize(pc)

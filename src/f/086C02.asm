@@ -13,7 +13,7 @@ BroodBoss_StateRoar:
 	move.l	a4,-(a7)
 	jsr	$4E42(a5)	; -> Obj_SetAnim
 	moveq	#$0,d0
-	move.l	d0,-$3C44(a5)
+	move.l	d0,g_BroodBossOffsetX(a5)
 	addq.w	#$8,a7
 	move.w	#$78,$6C(a4)
 	lea.l	BroodBoss_StateEnter(pc),a0

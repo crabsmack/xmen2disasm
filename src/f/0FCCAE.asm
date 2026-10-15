@@ -45,13 +45,13 @@ loc_0FCD1C:
 	jsr	SiberiaB1_UpdateWindSprite(pc)
 	jsr	SiberiaB1_StepWind(pc)
 loc_0FCD24:
-	tst.b	-$3BBA(a5)
+	tst.b	g_SiberiaIntro(a5)
 	beq.s	loc_0FCDA0
 	move.l	g_Player1+$8(a5),d0
 	asr.l	#$8,d0
 	cmpi.l	#$360,d0
 	ble.s	loc_0FCD3C
-	clr.b	-$3BBA(a5)
+	clr.b	g_SiberiaIntro(a5)
 loc_0FCD3C:
 	move.w	g_Player2+$4(a5),d0
 	ext.l	d0
@@ -86,7 +86,7 @@ loc_0FCD3C:
 	moveq	#$27,d0
 	move.l	d0,-(a7)
 	jsr	$232A(a5)	; -> Music_PlayStage
-	clr.b	-$3BBA(a5)
+	clr.b	g_SiberiaIntro(a5)
 	lea.l	$20(a7),a7
 loc_0FCDA0:
 	tst.w	-$3B0A(a5)
@@ -106,10 +106,10 @@ loc_0FCDC6:
 	and.w	d0,d1
 	beq.s	loc_0FCDEA
 	clr.w	-$3B0A(a5)
-	move.w	-$3C5E(a5),d0
+	move.w	g_ProgressFlags(a5),d0
 	btst	#$0,d0
 	beq.s	loc_0FCDEA
-	ori.w	#$2,-$3C5E(a5)
+	ori.w	#$2,g_ProgressFlags(a5)
 loc_0FCDEA:
 	unlk	a6
 	rts

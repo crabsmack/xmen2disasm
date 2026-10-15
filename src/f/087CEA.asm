@@ -14,12 +14,12 @@ BroodBoss_StateDeathFx:
 	beq.s	loc_087D02
 	lsl.w	#$1,d7
 loc_087D02:
-	move.l	-$3C44(a5),d0
+	move.l	g_BroodBossOffsetX(a5),d0
 	asr.l	#$8,d0
 	cmpi.l	#$8C,d0
 	bge.s	loc_087D2A
 	ext.l	d7
-	add.l	d7,-$3C44(a5)
+	add.l	d7,g_BroodBossOffsetX(a5)
 	clr.w	$6C(a4)
 	lea.l	BroodBoss_StateDeathFx(pc),a0
 	move.l	a0,$5C(a4)

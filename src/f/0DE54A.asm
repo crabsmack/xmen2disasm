@@ -88,7 +88,7 @@ loc_0DE632:
 	clr.w	$90(a4)
 loc_0DE638:
 	ext.l	d7
-	movea.l	-$3BFA(a5),a0
+	movea.l	g_SentinelsD1Flags(a5),a0
 	move.l	d7,d0
 	add.l	d0,d0
 	adda.l	d0,a0

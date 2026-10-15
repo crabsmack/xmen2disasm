@@ -7,13 +7,13 @@
 Switch_TileHit:
 	link.w	a6,#$0
 	movem.l	a3-a4,-(a7)
-	movea.l	-$3BCE(a5),a4
-	tst.b	-$3BCA(a5)
+	movea.l	g_SwitchSearchRec(a5),a4
+	tst.b	g_SwitchSearchBusy(a5)
 	beq.s	loc_1079EE
 	moveq	#$0,d0
 	bra.s	loc_107A34
 loc_1079EE:
-	move.b	#$1,-$3BCA(a5)
+	move.b	#$1,g_SwitchSearchBusy(a5)
 	move.w	$A(a6),$8(a4)
 	move.w	$E(a6),$A(a4)
 	move.l	g_PlacementList(a5),(a4)

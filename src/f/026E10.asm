@@ -23,7 +23,7 @@ RetractFloor_StateDrop:
 	bne.s	loc_026E52
 	move.l	a3,-(a7)
 	jsr	$4E7A(a5)	; -> Obj_Detach
-	move.w	-$3CD0(a5),-$3AFA(a5)
+	move.w	g_RetractFloorDepth(a5),-$3AFA(a5)
 	addq.w	#$4,a7
 loc_026E52:
 	lea.l	g_Player2(a5),a3
@@ -39,7 +39,7 @@ loc_026E52:
 	bne.s	loc_026E80
 	move.l	a3,-(a7)
 	jsr	$4E7A(a5)	; -> Obj_Detach
-	move.w	-$3CD0(a5),-$3AFA(a5)
+	move.w	g_RetractFloorDepth(a5),-$3AFA(a5)
 	addq.w	#$4,a7
 loc_026E80:
 	move.l	-$4(a6),-(a7)

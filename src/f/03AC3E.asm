@@ -17,9 +17,9 @@ RollingDiscs_ClassInit:
 	addq.w	#$2,a3
 	move.l	$8(a6),-(a7)
 	jsr	RollingDiscs_NopStatic(pc)
-	move.w	(a4),-$3C7A(a5)
+	move.w	(a4),g_DiscBandCount(a5)
 	pea.l	Str_Empty_03AD12(pc)
-	move.w	-$3C7A(a5),d1
+	move.w	g_DiscBandCount(a5),d1
 	ext.l	d1
 	lsl.l	#$2,d1
 	move.l	d1,d0
@@ -27,11 +27,11 @@ RollingDiscs_ClassInit:
 	add.l	d0,d1
 	move.l	d1,-(a7)
 	jsr	$5032(a5)	; -> Mem_StackAlloc
-	move.l	d0,-$3C7E(a5)
-	move.w	-$3C7A(a5),d0
+	move.l	d0,g_DiscBands(a5)
+	move.w	g_DiscBandCount(a5),d0
 	ext.l	d0
 	move.l	d0,d7
-	movea.l	-$3C7E(a5),a4
+	movea.l	g_DiscBands(a5),a4
 	lea.l	$C(a7),a7
 	bra.s	loc_03AD00
 loc_03AC96:
@@ -75,7 +75,7 @@ loc_03ACF0:
 loc_03AD00:
 	tst.l	d7
 	bne.s	loc_03AC96
-	clr.w	-$3C80(a5)
+	clr.w	g_DiscHurtCooldown(a5)
 	movem.l	-$10(a6),d3/d7/a3-a4
 	unlk	a6
 	rts

@@ -15,7 +15,7 @@ Game_SceneLoop:
 	move.w	#$3,-$38AC(a5)
 	clr.w	-$3B00(a5)
 	jsr	Scene_RegisterAll(pc)
-	move.w	#$FFFF,-$3B92(a5)
+	move.w	#$FFFF,g_ResumeSceneIndex(a5)
 	jsr	Game_ResetPlayers(pc)
 loc_005CF8:
 	move.w	g_SceneIndex(a5),d0
@@ -118,7 +118,7 @@ loc_005DF8:
 	tst.w	g_P2Health(a5)
 	beq.s	loc_005E18
 loc_005E04:
-	move.w	g_SceneIndex(a5),-$3B92(a5)
+	move.w	g_SceneIndex(a5),g_ResumeSceneIndex(a5)
 	moveq	#$0,d0
 	move.b	g_ScnPlayerSelect(a5),d0
 	move.w	d0,g_SceneIndex(a5)

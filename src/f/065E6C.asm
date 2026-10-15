@@ -35,7 +35,7 @@ loc_065ECA:
 	cmpi.w	#$30,d7
 	blt.s	loc_065EC2
 	moveq	#$2,d0
-	and.w	-$3C5E(a5),d0
+	and.w	g_ProgressFlags(a5),d0
 	bne.w	loc_06612E
 	move.w	g_VramTileCursor(a5),d0
 	ext.l	d0
@@ -182,8 +182,8 @@ loc_066034:
 	move.w	#$CC,g_PalBase+$7E(a5)
 	move.w	#$AA,g_PalBase+$7C(a5)
 	move.b	#$1,g_PalBaseDirty(a5)
-	move.w	-$3C56(a5),-$3B04(a5)
-	move.w	-$3C58(a5),d0
+	move.w	g_TextWinLeft(a5),-$3B04(a5)
+	move.w	g_TextWinTop(a5),d0
 	addq.w	#$4,d0
 	move.w	d0,-$3B06(a5)
 	moveq	#$0,d0
@@ -839,10 +839,10 @@ loc_066870:
 	move.w	#$CC,g_PalBase+$7E(a5)
 	move.w	#$AA,g_PalBase+$7C(a5)
 	move.b	#$1,g_PalBaseDirty(a5)
-	move.w	-$3C56(a5),d0
+	move.w	g_TextWinLeft(a5),d0
 	addq.w	#$1,d0
 	move.w	d0,-$3B04(a5)
-	move.w	-$3C5C(a5),d0
+	move.w	g_TextWinBottom(a5),d0
 	subq.w	#$1,d0
 	move.w	d0,-$3B06(a5)
 	moveq	#$0,d0
@@ -986,7 +986,7 @@ loc_066A2A:
 	move.w	#$F0,d1
 	and.w	d0,d1
 	beq.s	loc_066A4C
-	ori.w	#$2,-$3C5E(a5)
+	ori.w	#$2,g_ProgressFlags(a5)
 	clr.w	d6
 loc_066A4C:
 	tst.w	d6

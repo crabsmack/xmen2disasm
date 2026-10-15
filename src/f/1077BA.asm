@@ -23,8 +23,8 @@ loc_1077E4:
 	moveq	#$10,d0
 	move.l	d0,-(a7)
 	jsr	$5032(a5)	; -> Mem_StackAlloc
-	move.l	d0,-$3BCE(a5)
-	clr.b	-$3BCA(a5)
+	move.l	d0,g_SwitchSearchRec(a5)
+	clr.b	g_SwitchSearchBusy(a5)
 	addq.w	#$8,a7
 	unlk	a6
 	rts

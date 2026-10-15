@@ -191,7 +191,7 @@ loc_1FA356:
 	move.w	#$1A1,$6(a0)
 	bra.w	loc_1FA43A
 loc_1FA39A:
-	tst.b	-$3BBA(a5)
+	tst.b	g_SiberiaIntro(a5)
 	beq.s	loc_1FA3A8
 	jsr	$51BA(a5)	; -> Pad_IsP2Connected
 	tst.b	d0

@@ -147,12 +147,12 @@ loc_085ED6:
 loc_085EDC:
 	clr.w	$4A(a4)
 loc_085EE0:
-	move.l	-$3C44(a5),d0
+	move.l	g_BroodBossOffsetX(a5),d0
 	asr.l	#$8,d0
 	move.w	$8(a4),d1
 	sub.w	d0,d1
 	move.w	d1,$4(a4)
-	move.l	-$3C48(a5),d0
+	move.l	g_BroodBossOffsetY(a5),d0
 	asr.l	#$8,d0
 	move.w	$A(a4),d1
 	sub.w	d0,d1

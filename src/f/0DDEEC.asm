@@ -77,7 +77,7 @@ loc_0DDFC4:
 	clr.w	$98(a3)
 loc_0DDFCA:
 	ext.l	d7
-	movea.l	-$3BFA(a5),a0
+	movea.l	g_SentinelsD1Flags(a5),a0
 	move.l	d7,d0
 	add.l	d0,d0
 	adda.l	d0,a0

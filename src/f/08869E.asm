@@ -34,7 +34,7 @@ CloneA5_InitCamera:
 	move.w	d1,d0
 	cmpi.l	#$8000,d0
 	bne.s	loc_088722
-	clr.w	-$3C4E(a5)
+	clr.w	g_CloneA5CamFlags(a5)
 	move.w	#$7D8,g_FgScrollX(a5)
 	move.w	#$7F0,$30(a4)
 	move.w	#$598,$32(a4)
@@ -45,7 +45,7 @@ CloneA5_InitCamera:
 	move.w	$30(a4),$36(a4)
 	addq.w	#$4,a7
 loc_088722:
-	ori.w	#$1,-$3C4E(a5)
+	ori.w	#$1,g_CloneA5CamFlags(a5)
 	movea.l	-$4(a6),a4
 	unlk	a6
 	rts

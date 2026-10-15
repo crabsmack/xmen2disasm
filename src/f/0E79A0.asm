@@ -68,6 +68,6 @@ loc_0E7A10:
 	jsr	$4F7A(a5)	; -> DrawList_SetPriority
 	lea.l	$10(a7),a7
 loc_0E7A56:
-	clr.b	-$3BE6(a5)
+	clr.b	g_SentinelsA1ExitOpen(a5)
 	unlk	a6
 	rts

@@ -38,10 +38,10 @@ Psylocke_Init:
 	seq.b	d3
 	neg.b	d3
 	beq.s	loc_1B9DEE
-	move.w	-$3BB2(a5),d1
+	move.w	g_P1VramTile(a5),d1
 	bra.s	loc_1B9DF2
 loc_1B9DEE:
-	move.w	-$3BB4(a5),d1
+	move.w	g_P2VramTile(a5),d1
 loc_1B9DF2:
 	ext.l	d1
 	move.l	d1,-(a7)
@@ -59,13 +59,13 @@ loc_1B9DF2:
 	seq.b	d3
 	neg.b	d3
 	beq.s	loc_1B9E22
-	move.w	-$3BB2(a5),d0
+	move.w	g_P1VramTile(a5),d0
 	bra.s	loc_1B9E26
 loc_1B9E22:
-	move.w	-$3BB4(a5),d0
+	move.w	g_P2VramTile(a5),d0
 loc_1B9E26:
 	ext.l	d0
-	move.w	-$3BB6(a5),d1
+	move.w	g_PlayerTiles(a5),d1
 	ext.l	d1
 	add.l	d0,d1
 	move.w	d1,d7

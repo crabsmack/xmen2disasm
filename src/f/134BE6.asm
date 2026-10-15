@@ -17,7 +17,7 @@ loc_134BF6:
 	move.b	#$1,$A7(a4)
 loc_134C02:
 	moveq	#$0,d0
-	move.b	-$3B5C(a5),d0
+	move.b	g_ScnUnused3B5C(a5),d0
 	cmp.w	g_SceneIndex(a5),d0
 	beq.s	loc_134C20
 	lea.l	$36C2(a5),a0

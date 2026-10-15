@@ -50,140 +50,140 @@ SentinelsA1_CyclePalettes:
 	move.l	d0,-(a7)
 	lea.l	$266A(a5),a0
 	move.l	$2(a0),-(a7)
-	pea.l	-$3BEC(a5)
-	pea.l	-$3BEA(a5)
-	pea.l	-$3BE8(a5)
+	pea.l	g_SentinelsA1PalCycles+$6(a5)
+	pea.l	g_SentinelsA1PalCycles+$8(a5)
+	pea.l	g_SentinelsA1PalCycles+$A(a5)
 	jsr	$3EB2(a5)	; -> Pal_CycleStep
-	tst.b	-$3BE6(a5)
+	tst.b	g_SentinelsA1ExitOpen(a5)
 	lea.l	$78(a7),a7
 	beq.w	loc_0E757E
 	moveq	#$0,d0
 	move.l	d0,-(a7)
 	lea.l	$2672(a5),a0
 	move.l	$2(a0),-(a7)
-	pea.l	-$3BF2(a5)
-	pea.l	-$3BF0(a5)
-	pea.l	-$3BEE(a5)
+	pea.l	g_SentinelsA1PalCycles(a5)
+	pea.l	g_SentinelsA1PalCycles+$2(a5)
+	pea.l	g_SentinelsA1PalCycles+$4(a5)
 	jsr	$3EB2(a5)	; -> Pal_CycleStep
 	moveq	#$0,d0
 	move.l	d0,-(a7)
 	lea.l	$267A(a5),a0
 	move.l	$2(a0),-(a7)
-	pea.l	-$3BF2(a5)
-	pea.l	-$3BF0(a5)
-	pea.l	-$3BEE(a5)
+	pea.l	g_SentinelsA1PalCycles(a5)
+	pea.l	g_SentinelsA1PalCycles+$2(a5)
+	pea.l	g_SentinelsA1PalCycles+$4(a5)
 	jsr	$3EB2(a5)	; -> Pal_CycleStep
 	moveq	#$0,d0
 	move.l	d0,-(a7)
 	lea.l	$2682(a5),a0
 	move.l	$2(a0),-(a7)
-	pea.l	-$3BF2(a5)
-	pea.l	-$3BF0(a5)
-	pea.l	-$3BEE(a5)
+	pea.l	g_SentinelsA1PalCycles(a5)
+	pea.l	g_SentinelsA1PalCycles+$2(a5)
+	pea.l	g_SentinelsA1PalCycles+$4(a5)
 	jsr	$3EB2(a5)	; -> Pal_CycleStep
 	moveq	#$0,d0
 	move.l	d0,-(a7)
 	lea.l	$268A(a5),a0
 	move.l	$2(a0),-(a7)
-	pea.l	-$3BF2(a5)
-	pea.l	-$3BF0(a5)
-	pea.l	-$3BEE(a5)
+	pea.l	g_SentinelsA1PalCycles(a5)
+	pea.l	g_SentinelsA1PalCycles+$2(a5)
+	pea.l	g_SentinelsA1PalCycles+$4(a5)
 	jsr	$3EB2(a5)	; -> Pal_CycleStep
 	moveq	#$0,d0
 	move.l	d0,-(a7)
 	lea.l	$2692(a5),a0
 	move.l	$2(a0),-(a7)
-	pea.l	-$3BF2(a5)
-	pea.l	-$3BF0(a5)
-	pea.l	-$3BEE(a5)
+	pea.l	g_SentinelsA1PalCycles(a5)
+	pea.l	g_SentinelsA1PalCycles+$2(a5)
+	pea.l	g_SentinelsA1PalCycles+$4(a5)
 	jsr	$3EB2(a5)	; -> Pal_CycleStep
 	moveq	#$0,d0
 	move.l	d0,-(a7)
 	lea.l	$269A(a5),a0
 	move.l	$2(a0),-(a7)
-	pea.l	-$3BF2(a5)
-	pea.l	-$3BF0(a5)
-	pea.l	-$3BEE(a5)
+	pea.l	g_SentinelsA1PalCycles(a5)
+	pea.l	g_SentinelsA1PalCycles+$2(a5)
+	pea.l	g_SentinelsA1PalCycles+$4(a5)
 	jsr	$3EB2(a5)	; -> Pal_CycleStep
 	moveq	#$0,d0
 	move.l	d0,-(a7)
 	lea.l	$26A2(a5),a0
 	move.l	$2(a0),-(a7)
-	pea.l	-$3BF2(a5)
-	pea.l	-$3BF0(a5)
-	pea.l	-$3BEE(a5)
+	pea.l	g_SentinelsA1PalCycles(a5)
+	pea.l	g_SentinelsA1PalCycles+$2(a5)
+	pea.l	g_SentinelsA1PalCycles+$4(a5)
 	jsr	$3EB2(a5)	; -> Pal_CycleStep
 	moveq	#$0,d0
 	move.l	d0,-(a7)
 	lea.l	$26AA(a5),a0
 	move.l	$2(a0),-(a7)
-	pea.l	-$3BF2(a5)
-	pea.l	-$3BF0(a5)
-	pea.l	-$3BEE(a5)
+	pea.l	g_SentinelsA1PalCycles(a5)
+	pea.l	g_SentinelsA1PalCycles+$2(a5)
+	pea.l	g_SentinelsA1PalCycles+$4(a5)
 	jsr	$3EB2(a5)	; -> Pal_CycleStep
 	moveq	#$0,d0
 	move.l	d0,-(a7)
 	lea.l	$26B2(a5),a0
 	move.l	$2(a0),-(a7)
-	pea.l	-$3BF2(a5)
-	pea.l	-$3BF0(a5)
-	pea.l	-$3BEE(a5)
+	pea.l	g_SentinelsA1PalCycles(a5)
+	pea.l	g_SentinelsA1PalCycles+$2(a5)
+	pea.l	g_SentinelsA1PalCycles+$4(a5)
 	jsr	$3EB2(a5)	; -> Pal_CycleStep
 	moveq	#$0,d0
 	move.l	d0,-(a7)
 	lea.l	$26BA(a5),a0
 	move.l	$2(a0),-(a7)
-	pea.l	-$3BF2(a5)
-	pea.l	-$3BF0(a5)
-	pea.l	-$3BEE(a5)
+	pea.l	g_SentinelsA1PalCycles(a5)
+	pea.l	g_SentinelsA1PalCycles+$2(a5)
+	pea.l	g_SentinelsA1PalCycles+$4(a5)
 	jsr	$3EB2(a5)	; -> Pal_CycleStep
 	moveq	#$0,d0
 	move.l	d0,-(a7)
 	lea.l	$26C2(a5),a0
 	move.l	$2(a0),-(a7)
-	pea.l	-$3BF2(a5)
-	pea.l	-$3BF0(a5)
-	pea.l	-$3BEE(a5)
+	pea.l	g_SentinelsA1PalCycles(a5)
+	pea.l	g_SentinelsA1PalCycles+$2(a5)
+	pea.l	g_SentinelsA1PalCycles+$4(a5)
 	jsr	$3EB2(a5)	; -> Pal_CycleStep
 	moveq	#$0,d0
 	move.l	d0,-(a7)
 	lea.l	$26CA(a5),a0
 	move.l	$2(a0),-(a7)
-	pea.l	-$3BF2(a5)
-	pea.l	-$3BF0(a5)
-	pea.l	-$3BEE(a5)
+	pea.l	g_SentinelsA1PalCycles(a5)
+	pea.l	g_SentinelsA1PalCycles+$2(a5)
+	pea.l	g_SentinelsA1PalCycles+$4(a5)
 	jsr	$3EB2(a5)	; -> Pal_CycleStep
 	moveq	#$0,d0
 	move.l	d0,-(a7)
 	lea.l	$26D2(a5),a0
 	move.l	$2(a0),-(a7)
-	pea.l	-$3BF2(a5)
-	pea.l	-$3BF0(a5)
-	pea.l	-$3BEE(a5)
+	pea.l	g_SentinelsA1PalCycles(a5)
+	pea.l	g_SentinelsA1PalCycles+$2(a5)
+	pea.l	g_SentinelsA1PalCycles+$4(a5)
 	jsr	$3EB2(a5)	; -> Pal_CycleStep
 	moveq	#$0,d0
 	move.l	d0,-(a7)
 	lea.l	$26DA(a5),a0
 	move.l	$2(a0),-(a7)
-	pea.l	-$3BF2(a5)
-	pea.l	-$3BF0(a5)
-	pea.l	-$3BEE(a5)
+	pea.l	g_SentinelsA1PalCycles(a5)
+	pea.l	g_SentinelsA1PalCycles+$2(a5)
+	pea.l	g_SentinelsA1PalCycles+$4(a5)
 	jsr	$3EB2(a5)	; -> Pal_CycleStep
 	moveq	#$0,d0
 	move.l	d0,-(a7)
 	lea.l	$26E2(a5),a0
 	move.l	$2(a0),-(a7)
-	pea.l	-$3BF2(a5)
-	pea.l	-$3BF0(a5)
-	pea.l	-$3BEE(a5)
+	pea.l	g_SentinelsA1PalCycles(a5)
+	pea.l	g_SentinelsA1PalCycles+$2(a5)
+	pea.l	g_SentinelsA1PalCycles+$4(a5)
 	jsr	$3EB2(a5)	; -> Pal_CycleStep
 	moveq	#$1,d0
 	move.l	d0,-(a7)
 	lea.l	$26EA(a5),a0
 	move.l	$2(a0),-(a7)
-	pea.l	-$3BF2(a5)
-	pea.l	-$3BF0(a5)
-	pea.l	-$3BEE(a5)
+	pea.l	g_SentinelsA1PalCycles(a5)
+	pea.l	g_SentinelsA1PalCycles+$2(a5)
+	pea.l	g_SentinelsA1PalCycles+$4(a5)
 	jsr	$3EB2(a5)	; -> Pal_CycleStep
 loc_0E757E:
 	unlk	a6

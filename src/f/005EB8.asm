@@ -25,7 +25,7 @@ Game_PlayAttractDemo:
 	jsr	$4ACA(a5)	; -> Cyclops_ResetBeams
 	tst.b	g_DemoSkipped(a5)
 	beq.s	loc_005F0C
-	ori.w	#$2,-$3C5E(a5)
+	ori.w	#$2,g_ProgressFlags(a5)
 loc_005F0C:
 	jsr	Game_ResetPlayers(pc)
 loc_005F10:

@@ -7,12 +7,12 @@
 Cerebro_TextOpSetCursor:
 	move.b	(a4)+,d0
 	ext.w	d0
-	move.w	-$3C56(a5),d1
+	move.w	g_TextWinLeft(a5),d1
 	add.w	d0,d1
 	move.w	d1,-$3B04(a5)
 	move.b	(a4)+,d0
 	ext.w	d0
-	move.w	-$3C58(a5),d1
+	move.w	g_TextWinTop(a5),d1
 	add.w	d0,d1
 	move.w	d1,-$3B06(a5)
 	bra.w	loc_06569A
@@ -40,12 +40,12 @@ loc_065612:
 	jsr	Cerebro_ClearTextWindow(pc)
 	move.b	(a4)+,d0
 	ext.w	d0
-	move.w	-$3C56(a5),d1
+	move.w	g_TextWinLeft(a5),d1
 	add.w	d0,d1
 	move.w	d1,-$3B04(a5)
 	move.b	(a4)+,d0
 	ext.w	d0
-	move.w	-$3C58(a5),d1
+	move.w	g_TextWinTop(a5),d1
 	add.w	d0,d1
 	move.w	d1,-$3B06(a5)
 	bra.s	loc_06569A

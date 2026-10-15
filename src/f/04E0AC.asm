@@ -42,7 +42,7 @@ ApocBomb_Move:
 	ext.l	d0
 	move.l	d0,d6
 	lsl.l	#$8,d6
-	move.w	-$3C70(a5),$90(a4)
+	move.w	g_ApocBombSpeed(a5),$90(a4)
 	tst.b	g_TwoPlayerStep(a5)
 	beq.s	loc_04E128
 	move.w	$90(a4),d0

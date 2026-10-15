@@ -14,10 +14,10 @@ Failure_RunScene:
 	move.l	$2(a0),-$3B14(a5)
 	jsr	Cerebro_Run(pc)
 	jsr	Cerebro_ClearScreen(pc)
-	clr.w	-$3C58(a5)
-	clr.w	-$3C56(a5)
-	move.w	#$1F,-$3C5C(a5)
-	move.w	#$27,-$3C5A(a5)
+	clr.w	g_TextWinTop(a5)
+	clr.w	g_TextWinLeft(a5)
+	move.w	#$1F,g_TextWinBottom(a5)
+	move.w	#$27,g_TextWinRight(a5)
 	jsr	Cerebro_ClearTextWindow(pc)
 	clr.w	d7
 	lea.l	g_PalBase(a5),a4
@@ -125,7 +125,7 @@ loc_067166:
 	tst.b	g_PalFadeActive(a5)
 	bne.s	loc_067162
 	jsr	$32(a5)	; -> Game_ResetPlayers
-	clr.w	-$3C5E(a5)
+	clr.w	g_ProgressFlags(a5)
 	movem.l	-$58(a6),d3/d5-d7/a3-a4
 	unlk	a6
 	rts

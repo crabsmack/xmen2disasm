@@ -12,7 +12,7 @@ LightBeam_ClassInit:
 	lea.l	$109A(a5),a0
 	move.l	$2(a0),-(a7)
 	jsr	$4E52(a5)	; -> SprDef_Add
-	move.w	d0,-$3C5C(a5)
+	move.w	d0,g_TextWinBottom(a5)
 	ext.l	d0
 	lsl.l	#$2,d0
 	move.l	d0,d1

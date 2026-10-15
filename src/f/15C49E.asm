@@ -11,7 +11,7 @@ Pause_CheatUnlock:
 	moveq	#$1B,d0
 	move.l	d0,-(a7)
 	jsr	$521A(a5)	; -> Snd_Play
-	ori.w	#$10,-$3C5E(a5)
+	ori.w	#$10,g_ProgressFlags(a5)
 	addq.w	#$8,a7
 	bra.w	Pause_HandleInput_EndCode
 loc_15C4BA:
@@ -21,7 +21,7 @@ loc_15C4BA:
 	moveq	#$22,d0
 	move.l	d0,-(a7)
 	jsr	$521A(a5)	; -> Snd_Play
-	ori.w	#$20,-$3C5E(a5)
+	ori.w	#$20,g_ProgressFlags(a5)
 	move.w	#$63,-$38A8(a5)
 	move.w	#$63,-$38AA(a5)
 	addq.w	#$8,a7
@@ -33,7 +33,7 @@ loc_15C4E2:
 	moveq	#$36,d0
 	move.l	d0,-(a7)
 	jsr	$521A(a5)	; -> Snd_Play
-	ori.w	#$C0,-$3C5E(a5)
+	ori.w	#$C0,g_ProgressFlags(a5)
 	addq.w	#$8,a7
 	bra.w	Pause_HandleInput_EndCode
 loc_15C4FE:
@@ -43,7 +43,7 @@ loc_15C4FE:
 	moveq	#$36,d0
 	move.l	d0,-(a7)
 	jsr	$521A(a5)	; -> Snd_Play
-	ori.w	#$C0,-$3C5E(a5)
+	ori.w	#$C0,g_ProgressFlags(a5)
 	addq.w	#$8,a7
 	bra.w	Pause_HandleInput_EndCode
 loc_15C51A:
@@ -79,7 +79,7 @@ loc_15C564:
 	moveq	#$39,d0
 	move.l	d0,-(a7)
 	jsr	$521A(a5)	; -> Snd_Play
-	ori.w	#$2000,-$3C5E(a5)
+	ori.w	#$2000,g_ProgressFlags(a5)
 	addq.w	#$8,a7
 	bra.s	Pause_HandleInput_EndCode
 loc_15C57E:
@@ -89,7 +89,7 @@ loc_15C57E:
 	moveq	#$26,d0
 	move.l	d0,-(a7)
 	jsr	$521A(a5)	; -> Snd_Play
-	ori.w	#$400,-$3C5E(a5)
+	ori.w	#$400,g_ProgressFlags(a5)
 	addq.w	#$8,a7
 	bra.s	Pause_HandleInput_EndCode
 loc_15C598:
@@ -99,7 +99,7 @@ loc_15C598:
 	moveq	#$24,d0
 	move.l	d0,-(a7)
 	jsr	$521A(a5)	; -> Snd_Play
-	ori.w	#$200,-$3C5E(a5)
+	ori.w	#$200,g_ProgressFlags(a5)
 	addq.w	#$8,a7
 	bra.s	Pause_HandleInput_EndCode
 loc_15C5B2:
@@ -111,5 +111,5 @@ loc_15C5B2:
 	jsr	$521A(a5)	; -> Snd_Play
 	move.w	#$63,-$38A8(a5)
 	move.w	#$63,-$38AA(a5)
-	ori.w	#$27F0,-$3C5E(a5)
+	ori.w	#$27F0,g_ProgressFlags(a5)
 	addq.w	#$8,a7

@@ -9,7 +9,7 @@ BaniMazaA1_SwitchTileHook:
 	movem.l	d6-d7/a4,-(a7)
 	move.w	$A(a6),d6
 	move.w	$E(a6),d7
-	tst.w	-$3C94(a5)
+	tst.w	g_BmA1SwitchTimer(a5)
 	bne.s	loc_0387C4
 	ext.l	d7
 	movea.l	g_FgRowTable(a5),a0
@@ -44,7 +44,7 @@ BaniMazaA1_SwitchTileHook:
 	jsr	$5222(a5)	; -> Snd_Stop
 	pea.l	($E7).w
 	jsr	$521A(a5)	; -> Snd_Play
-	move.w	#$28,-$3C94(a5)
+	move.w	#$28,g_BmA1SwitchTimer(a5)
 	lea.l	$20(a7),a7
 loc_0387C4:
 	moveq	#$0,d0

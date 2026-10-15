@@ -9,7 +9,7 @@ FlyBrood_Draw:
 	movem.l	d3-d7/a3-a4,-(a7)
 	movea.l	$8(a6),a4
 	moveq	#$0,d0
-	move.b	-$3B5C(a5),d0
+	move.b	g_ScnUnused3B5C(a5),d0
 	cmp.w	g_SceneIndex(a5),d0
 	beq.w	loc_134D44
 	move.w	g_FlyBroodSprDef(a5),d0

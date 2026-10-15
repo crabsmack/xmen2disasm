@@ -66,12 +66,12 @@ loc_065026:
 	cmp.b	(a0),d0
 	bne.s	loc_065054
 	move.w	-$3B06(a5),d0
-	cmp.w	-$3C5C(a5),d0
+	cmp.w	g_TextWinBottom(a5),d0
 	bge.s	loc_065042
 	move.w	-$3B06(a5),d0
 	addq.w	#$1,-$3B06(a5)
 loc_065042:
-	move.w	-$3C56(a5),-$3B04(a5)
+	move.w	g_TextWinLeft(a5),-$3B04(a5)
 	move.l	$8(a6),d0
 	addq.l	#$1,$8(a6)
 	bra.w	loc_065388
@@ -113,17 +113,17 @@ loc_06508A:
 	sub.l	$8(a6),d1
 	subq.l	#$1,d1
 	add.l	d0,d1
-	move.w	-$3C5A(a5),d0
+	move.w	g_TextWinRight(a5),d0
 	ext.l	d0
 	cmp.l	d1,d0
 	bge.s	loc_0650C0
 	move.w	-$3B06(a5),d0
-	cmp.w	-$3C5C(a5),d0
+	cmp.w	g_TextWinBottom(a5),d0
 	bge.s	loc_0650B6
 	move.w	-$3B06(a5),d0
 	addq.w	#$1,-$3B06(a5)
 loc_0650B6:
-	move.w	-$3C56(a5),-$3B04(a5)
+	move.w	g_TextWinLeft(a5),-$3B04(a5)
 	move.l	a4,$8(a6)
 loc_0650C0:
 	cmpi.w	#$6,d4

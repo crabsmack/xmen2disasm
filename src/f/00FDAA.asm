@@ -54,12 +54,12 @@ AvalonB1_RunScene:
 	lea.l	AvalonB1_FrameHook(pc),a0
 	move.l	a0,g_SceneFrameHook(a5)
 	clr.b	g_TwoPlayerStep(a5)
-	clr.w	-$3CDC(a5)
-	clr.w	-$3CE0(a5)
-	clr.w	-$3CDE(a5)
-	clr.w	-$3CE2(a5)
-	clr.w	-$3CE6(a5)
-	clr.w	-$3CE4(a5)
+	clr.w	g_AvalonB1PalCycles+$A(a5)
+	clr.w	g_AvalonB1PalCycles+$6(a5)
+	clr.w	g_AvalonB1PalCycles+$8(a5)
+	clr.w	g_AvalonB1PalCycles+$4(a5)
+	clr.w	g_AvalonB1PalCycles(a5)
+	clr.w	g_AvalonB1PalCycles+$2(a5)
 	jsr	AvalonB1_InitCamera(pc)
 	jsr	$2E8A(a5)	; -> GaussBullet_InitPool
 	move.b	#$1,g_SndMute(a5)

@@ -90,7 +90,7 @@ loc_09B316:
 	move.w	#$FF00,d0
 	and.w	$16(a4),d0
 	ext.l	d0
-	sub.l	d0,-$3C44(a5)
+	sub.l	d0,g_BroodBossOffsetX(a5)
 loc_09B324:
 	tst.l	$96(a4)
 	beq.s	loc_09B354
@@ -132,7 +132,7 @@ loc_09B388:
 	lsl.l	#$8,d0
 	move.l	$9C(a4),d1
 	add.l	d0,d1
-	sub.l	-$3C44(a5),d1
+	sub.l	g_BroodBossOffsetX(a5),d1
 	move.l	d1,$8(a4)
 	move.w	$12(a4),d0
 	ext.l	d0

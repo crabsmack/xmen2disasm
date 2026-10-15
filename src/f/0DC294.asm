@@ -12,7 +12,7 @@ SentinelsD1_InitFlagBits:
 	moveq	#$1E,d0
 	move.l	d0,-(a7)
 	jsr	$5032(a5)	; -> Mem_StackAlloc
-	move.l	d0,-$3BFA(a5)
+	move.l	d0,g_SentinelsD1Flags(a5)
 	movea.l	d0,a4
 	moveq	#$F,d7
 	addq.w	#$8,a7

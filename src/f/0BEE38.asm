@@ -16,13 +16,13 @@ SporeMine_InitPool:
 	ext.l	d7
 	move.l	d7,-(a7)
 	jsr	$5032(a5)	; -> Mem_StackAlloc
-	move.l	d0,-$3C28(a5)
-	clr.w	-$3C24(a5)
+	move.l	d0,g_SporeMinePool(a5)
+	clr.w	g_SporeMinePoolCount(a5)
 	ext.l	d7
 	move.l	d7,-(a7)
 	moveq	#$0,d0
 	move.l	d0,-(a7)
-	move.l	-$3C28(a5),-(a7)
+	move.l	g_SporeMinePool(a5),-(a7)
 	jsr	$4DB2(a5)	; -> Mem_Set
 	moveq	#$1,d0
 	move.l	d0,-(a7)

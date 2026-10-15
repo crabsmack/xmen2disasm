@@ -57,13 +57,13 @@ CloneA5_RunScene:
 	clr.w	g_BgScrollFactorX(a5)
 	clr.w	g_BgScrollFactorY(a5)
 	moveq	#$0,d0
-	move.l	d0,-$3C44(a5)
-	move.l	#$3300,-$3C48(a5)
+	move.l	d0,g_BroodBossOffsetX(a5)
+	move.l	#$3300,g_BroodBossOffsetY(a5)
 	clr.w	g_BgScrollBaseY(a5)
 	jsr	CloneA5_ResetPalCycle(pc)
 	lea.l	-$304(a6),a0
 	move.l	a0,-$3B18(a5)
-	move.b	#$5,-$3C4A(a5)
+	move.b	#$5,g_BroodBossHealthBar(a5)
 	moveq	#$33,d7
 	lea.l	$14D2(a5),a0
 	movea.l	$2(a0),a4

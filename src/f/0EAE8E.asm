@@ -7,17 +7,17 @@
 Hologram_VBlankFlicker:
 	tst.b	g_VBlankFrameDone(a5)
 	beq.s	loc_0EAEBE
-	tst.b	-$3BE0(a5)
+	tst.b	g_HoloFlickerArmed(a5)
 	beq.s	loc_0EAEBE
-	move.w	-$3BDE(a5),-$3BDC(a5)
-	move.b	-$3BDD(a5),-$3BDF(a5)
+	move.w	g_HoloFlickerLinks(a5),-$3BDC(a5)
+	move.b	g_HoloFlickerLinks+$1(a5),-$3BDF(a5)
 	beq.s	loc_0EAEFA
 	lea.l	g_SpriteTable(a5),a0
 	moveq	#$0,d0
 	move.b	-$3BDC(a5),d0
 	lsl.w	#$3,d0
 	move.b	$2(a0,d0.w),-$3BDA(a5)
-	clr.b	-$3BE0(a5)
+	clr.b	g_HoloFlickerArmed(a5)
 loc_0EAEBE:
 	tst.b	-$3BDF(a5)
 	beq.s	loc_0EAEFA

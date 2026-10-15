@@ -8,8 +8,8 @@ Boulder_InitDebrisPool:
 	link.w	a6,#$0
 	movem.l	d3/d7/a4,-(a7)
 	movea.l	$8(a6),a4
-	clr.w	-$3C64(a5)
-	move.l	a4,-$3C68(a5)
+	clr.w	g_BoulderDebrisCount(a5)
+	move.l	a4,g_BoulderDebrisPool(a5)
 	clr.w	d7
 	moveq	#$1E,d3
 loc_05B02E:

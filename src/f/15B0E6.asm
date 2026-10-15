@@ -8,8 +8,8 @@ Spr_ReloadDefs:
 	link.w	a6,#$0
 	movem.l	d6-d7/a4,-(a7)
 	move.w	g_VramTileCursor(a5),d6
-	move.w	-$3BB6(a5),d0
-	add.w	-$3BB4(a5),d0
+	move.w	g_PlayerTiles(a5),d0
+	add.w	g_P2VramTile(a5),d0
 	move.w	d0,g_VramTileCursor(a5)
 	clr.w	g_SpriteDefCount(a5)
 	movea.l	$8(a6),a0

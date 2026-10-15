@@ -9,7 +9,7 @@ BroodBoss_StateCharge:
 	link.w	a6,#$0
 	move.l	a4,-(a7)
 	movea.l	$8(a6),a4
-	move.l	-$3C44(a5),d0
+	move.l	g_BroodBossOffsetX(a5),d0
 	asr.l	#$8,d0
 	cmpi.l	#$1C4,d0
 	bge.s	loc_08739E

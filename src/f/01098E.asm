@@ -15,14 +15,14 @@ BigAcolyte_ActAppear:
 	moveq	#$24,d1
 	move.l	d1,-(a7)
 	jsr	$3B62(a5)	; -> Debris_CreatePool
-	move.l	d0,-$3CDA(a5)
+	move.l	d0,g_BigAcolyteDebris(a5)
 	moveq	#$0,d0
 	move.l	d0,-(a7)
 	pea.l	BigAcolyte_LoadSprite(pc)
 	jsr	$3F3A(a5)	; -> Spr_ReloadDefs
-	movea.l	-$3CDA(a5),a0
+	movea.l	g_BigAcolyteDebris(a5),a0
 	move.w	#$400,$2(a0)
-	movea.l	-$3CDA(a5),a0
+	movea.l	g_BigAcolyteDebris(a5),a0
 	move.w	$4(a0),d0
 	ext.l	d0
 	lsl.l	#$2,d0

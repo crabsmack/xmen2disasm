@@ -5,12 +5,12 @@
 ; Evidence: clears -$3C58 and g_PauseCheatPtr; labels below are the chord handlers
 ; ---------------------------------------------------------------------------
 Pause_HandleInput_EndCode:
-	clr.w	-$3C58(a5)
+	clr.w	g_TextWinTop(a5)
 	moveq	#$0,d0
 	move.l	d0,g_PauseCheatPtr(a5)
 	bra.w	loc_15CA36
 loc_15C5E4:
-	clr.w	-$3C58(a5)
+	clr.w	g_TextWinTop(a5)
 	moveq	#$0,d0
 	move.l	d0,g_PauseCheatPtr(a5)
 	bra.w	loc_15CA36
@@ -22,7 +22,7 @@ loc_15C5F2:
 	cmpi.w	#$21,d6
 	bne.s	loc_15C666
 	moveq	#$10,d0
-	and.w	-$3C5E(a5),d0
+	and.w	g_ProgressFlags(a5),d0
 	beq.s	loc_15C63C
 	moveq	#$1B,d0
 	move.l	d0,-(a7)
@@ -40,7 +40,7 @@ loc_15C62A:
 	move.w	#$900,g_Player2+$68(a5)
 	bra.w	loc_15CA36
 loc_15C63C:
-	move.w	#$1,-$3C58(a5)
+	move.w	#$1,g_TextWinTop(a5)
 	moveq	#$C,d0
 	cmp.w	g_Pad2Raw(a5),d0
 	bne.s	loc_15C658
@@ -55,9 +55,9 @@ loc_15C666:
 	cmpi.w	#$22,d6
 	bne.s	loc_15C6A0
 	moveq	#$20,d0
-	and.w	-$3C5E(a5),d0
+	and.w	g_ProgressFlags(a5),d0
 	bne.w	loc_15CA36
-	move.w	#$2,-$3C58(a5)
+	move.w	#$2,g_TextWinTop(a5)
 	moveq	#$C,d0
 	cmp.w	g_Pad2Raw(a5),d0
 	bne.s	loc_15C692
@@ -72,7 +72,7 @@ loc_15C6A0:
 	cmpi.w	#$24,d6
 	bne.s	loc_15C6F2
 	moveq	#$40,d0
-	and.w	-$3C5E(a5),d0
+	and.w	g_ProgressFlags(a5),d0
 	beq.s	loc_15C6C8
 	subq.w	#$1,g_SceneIndex(a5)
 	move.b	#$1,g_PauseExit(a5)
@@ -80,7 +80,7 @@ loc_15C6A0:
 	move.w	#$1,g_SceneExitTimer(a5)
 	bra.w	loc_15CA36
 loc_15C6C8:
-	move.w	#$3,-$3C58(a5)
+	move.w	#$3,g_TextWinTop(a5)
 	moveq	#$C,d0
 	cmp.w	g_Pad2Raw(a5),d0
 	bne.s	loc_15C6E4
@@ -95,14 +95,14 @@ loc_15C6F2:
 	cmpi.w	#$28,d6
 	bne.s	loc_15C740
 	move.w	#$80,d0
-	and.w	-$3C5E(a5),d0
+	and.w	g_ProgressFlags(a5),d0
 	beq.s	loc_15C716
 	addq.w	#$1,g_SceneIndex(a5)
 	move.b	#$1,g_PauseExit(a5)
 	move.w	#$1,g_SceneExitTimer(a5)
 	bra.w	loc_15CA36
 loc_15C716:
-	move.w	#$3,-$3C58(a5)
+	move.w	#$3,g_TextWinTop(a5)
 	moveq	#$C,d0
 	cmp.w	g_Pad2Raw(a5),d0
 	bne.s	loc_15C732
@@ -117,7 +117,7 @@ loc_15C740:
 	cmpi.w	#$12,d6
 	bne.w	loc_15C7CA
 	move.w	#$100,d0
-	and.w	-$3C5E(a5),d0
+	and.w	g_ProgressFlags(a5),d0
 	beq.s	loc_15C7A0
 	moveq	#$37,d0
 	move.l	d0,-(a7)
@@ -145,7 +145,7 @@ loc_15C740:
 	jsr	$3A(a5)	; -> unk_Player_005F18
 	bra.w	loc_15CA36
 loc_15C7A0:
-	move.w	#$5,-$3C58(a5)
+	move.w	#$5,g_TextWinTop(a5)
 	moveq	#$C,d0
 	cmp.w	g_Pad2Raw(a5),d0
 	bne.s	loc_15C7BC
@@ -160,7 +160,7 @@ loc_15C7CA:
 	cmpi.w	#$14,d6
 	bne.w	loc_15C8D8
 	move.w	#$400,d0
-	and.w	-$3C5E(a5),d0
+	and.w	g_ProgressFlags(a5),d0
 	beq.w	loc_15C8AE
 	clr.w	d7
 	moveq	#$26,d0
@@ -244,7 +244,7 @@ loc_15C88E:
 	move.b	#$1,g_SceneIndexSet(a5)
 	bra.w	loc_15CA36
 loc_15C8AE:
-	move.w	#$7,-$3C58(a5)
+	move.w	#$7,g_TextWinTop(a5)
 	moveq	#$C,d0
 	cmp.w	g_Pad2Raw(a5),d0
 	bne.s	loc_15C8CA
@@ -259,7 +259,7 @@ loc_15C8D8:
 	cmpi.w	#$18,d6
 	bne.w	loc_15C9D6
 	move.w	#$400,d0
-	and.w	-$3C5E(a5),d0
+	and.w	g_ProgressFlags(a5),d0
 	beq.w	loc_15C9B0
 	clr.w	d7
 	moveq	#$26,d0
@@ -337,7 +337,7 @@ loc_15C990:
 	move.b	#$1,g_SceneIndexSet(a5)
 	bra.w	loc_15CA36
 loc_15C9B0:
-	move.w	#$7,-$3C58(a5)
+	move.w	#$7,g_TextWinTop(a5)
 	moveq	#$C,d0
 	cmp.w	g_Pad2Raw(a5),d0
 	bne.s	loc_15C9CA
@@ -352,7 +352,7 @@ loc_15C9D6:
 	cmpi.w	#$11,d6
 	bne.s	loc_15CA36
 	move.w	#$200,d0
-	and.w	-$3C5E(a5),d0
+	and.w	g_ProgressFlags(a5),d0
 	beq.s	loc_15CA12
 	moveq	#$24,d0
 	move.l	d0,-(a7)
@@ -370,7 +370,7 @@ loc_15CA04:
 	move.w	#$7FFF,g_Player2+$68(a5)
 	bra.s	loc_15CA36
 loc_15CA12:
-	move.w	#$8,-$3C58(a5)
+	move.w	#$8,g_TextWinTop(a5)
 	moveq	#$C,d0
 	cmp.w	g_Pad2Raw(a5),d0
 	bne.s	loc_15CA2C

@@ -10,12 +10,12 @@ Boulder_AllocDebris:
 	moveq	#$0,d0
 	movea.l	d0,a4
 	moveq	#$1E,d1
-	cmp.w	-$3C64(a5),d1
+	cmp.w	g_BoulderDebrisCount(a5),d1
 	ble.s	loc_05B084
-	move.w	-$3C64(a5),d0
-	addq.w	#$1,-$3C64(a5)
+	move.w	g_BoulderDebrisCount(a5),d0
+	addq.w	#$1,g_BoulderDebrisCount(a5)
 	ext.l	d0
-	movea.l	-$3C68(a5),a0
+	movea.l	g_BoulderDebrisPool(a5),a0
 	lsl.l	#$2,d0
 	move.l	d0,d1
 	lsl.l	#$2,d0
