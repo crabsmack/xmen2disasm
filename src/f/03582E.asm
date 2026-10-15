@@ -1,11 +1,14 @@
 ; ---------------------------------------------------------------------------
-; sub_03582E	[link-after-rts]
+; AvalonA4_InitCamera - create the AvalonA4 camera with AvalonA4_CamHook unless one exists
+; In:  none
+; Out: none
+; Evidence: g_Camera == 0 -> CAMERA +$0A New(jt $4FBA, AvalonA4_CamHook)
 ; ---------------------------------------------------------------------------
-sub_03582E:
+AvalonA4_InitCamera:
 	link.w	a6,#$0
 	tst.l	g_Camera(a5)
 	bne.s	loc_035858
-	pea.l	sub_035802(pc)
+	pea.l	AvalonA4_CamHook(pc)
 	lea.l	$4DBA(a5),a0
 	move.l	$2(a0),-(a7)
 	lea.l	$4DBA(a5),a0

@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_035710	[link-after-rts]
+; AvalonA4_InstallTileHooks - install AvalonA4's four map tile hooks
+; In:  none
+; Out: none
+; Evidence: -$3AF4..-$3AE8 = sub_03518C, sub_0351F8, sub_035322, sub_0355A6; others 0; byte -$35C8 = 1
 ; ---------------------------------------------------------------------------
-sub_035710:
+AvalonA4_InstallTileHooks:
 	link.w	a6,#$0
 	moveq	#$0,d0
 	move.l	d0,-$3AF8(a5)

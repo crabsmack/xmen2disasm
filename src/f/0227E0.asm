@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_0227E0	[jt 155]
+; AvalonB2_RunScene - scene function for 'AvalonB2 InnerShell': load the level, place the players, hooks, camera, sprite timer, run the level loop
+; In:  none
+; Out: none
+; Evidence: Scene_RegisterAll entry for 'AvalonB2 InnerShell' (also attract demo 2); Snd_StopAll, sub_1F98A8 load, Players_PlaceAtStart, CAMERA New with AvalonB2_CamHook, Timer_Create/Timer_Start, level loop sub_1FA6FE
 ; ---------------------------------------------------------------------------
-sub_0227E0:
+AvalonB2_RunScene:
 	link.w	a6,#$0
 	move.l	a4,-(a7)
 	jsr	$5242(a5)	; -> Snd_StopAll
@@ -39,7 +42,7 @@ sub_0227E0:
 	clr.w	-$3496(a5)
 	clr.w	-$3498(a5)
 	move.b	#$1,-$38B4(a5)
-	lea.l	sub_0226F4(pc),a0
+	lea.l	AvalonB2_FrameHook(pc),a0
 	move.l	a0,g_SceneFrameHook(a5)
 	clr.b	-$38DE(a5)
 	moveq	#$0,d0
@@ -48,10 +51,10 @@ sub_0227E0:
 	move.l	d0,-(a7)
 	move.l	d0,-(a7)
 	jsr	$8A(a5)	; -> Players_PlaceAtStart
-	jsr	sub_0227D8(pc)
-	jsr	sub_0227A4(pc)
-	jsr	sub_022716(pc)
-	pea.l	sub_0226B2(pc)
+	jsr	AvalonB2_NopStatic(pc)
+	jsr	AvalonB2_InstallTileHooks(pc)
+	jsr	AvalonB2_InitSprite(pc)
+	pea.l	AvalonB2_CamHook(pc)
 	lea.l	$4DBA(a5),a0
 	move.l	$2(a0),-(a7)
 	lea.l	$4DBA(a5),a0
@@ -62,7 +65,7 @@ sub_0227E0:
 	jsr	$2E8A(a5)	; -> sub_1190D6
 	moveq	#$1,d0
 	move.l	d0,-(a7)
-	pea.l	sub_0226D0(pc)
+	pea.l	AvalonB2_AnimSprite(pc)
 	moveq	#$3C,d1
 	move.l	d1,-(a7)
 	pea.l	$3F32(a5)

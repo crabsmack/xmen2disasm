@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_022AF6	[link-after-rts]
+; AvalonA2_PlacePlayers - place the players at the AvalonA2 start and set two scene values to $300
+; In:  none
+; Out: none
+; Evidence: Players_PlaceAtStart(0,0); -$3CD0 = -$3AFA = $300
 ; ---------------------------------------------------------------------------
-sub_022AF6:
+AvalonA2_PlacePlayers:
 	link.w	a6,#$0
 	moveq	#$0,d0
 	move.l	d0,-(a7)

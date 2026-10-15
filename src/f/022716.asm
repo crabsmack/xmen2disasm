@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_022716	[link-after-rts]
+; AvalonB2_InitSprite - set up the AvalonB2 sprite slot -$3596 (sprite def jt $21AE2, frame 0) at VRAM tile -$3AAE and load it
+; In:  none
+; Out: none
+; Evidence: Spr_Init(-$3596, 1, jt $21AE2, 0, 0, -$3AAE, 1); animated by AvalonB2_AnimSprite
 ; ---------------------------------------------------------------------------
-sub_022716:
+AvalonB2_InitSprite:
 	link.w	a6,#$0
 	moveq	#$1,d0
 	move.l	d0,-(a7)

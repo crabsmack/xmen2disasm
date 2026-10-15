@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_0228C2	[link-after-rts]
+; AvalonA2_EmptyStub1 - empty stub, first of the three called by AvalonA2_CallEmptyStubs
+; In:  none
+; Out: none
+; Evidence: body is link/unlk/rts
 ; ---------------------------------------------------------------------------
-sub_0228C2:
+AvalonA2_EmptyStub1:
 	link.w	a6,#$0
 	unlk	a6
 	rts

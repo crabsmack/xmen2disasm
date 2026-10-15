@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_0228CA	[link-after-rts]
+; AvalonA2_ResetCounters - reset the AvalonA2 scene counters -$3B32 = 1 and -$3B3A = 0
+; In:  none
+; Out: none
+; Evidence: called by AvalonA2_RunScene before the level loop
 ; ---------------------------------------------------------------------------
-sub_0228CA:
+AvalonA2_ResetCounters:
 	link.w	a6,#$0
 	move.w	#$1,-$3B32(a5)
 	clr.w	-$3B3A(a5)

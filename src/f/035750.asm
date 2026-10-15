@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_035750	[link-after-rts]
+; AvalonA4_FrameHook - AvalonA4 per-frame hook: frame counter and the stage effect sub_034D7A (twice at half rate)
+; In:  none
+; Out: none
+; Evidence: installed in -$388E by AvalonA4_InstallHooks; skipped while g_PalFadeActive
 ; ---------------------------------------------------------------------------
-sub_035750:
+AvalonA4_FrameHook:
 	link.w	a6,#$0
 	move.l	g_FrameCounter(a5),d0
 	addq.l	#$1,g_FrameCounter(a5)

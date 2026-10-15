@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_022B18	[link-after-rts]
+; AvalonA2_HookReturn0 - scene hook in -$321A that always returns 0
+; In:  none
+; Out: d0 = 0
+; Evidence: installed by AvalonA2_InstallEventHooks
 ; ---------------------------------------------------------------------------
-sub_022B18:
+AvalonA2_HookReturn0:
 	link.w	a6,#$0
 	moveq	#$3,d0
 	cmp.w	$A(a6),d0

@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_035A1A	[link-after-rts]
+; AvalonA4_EventZoneFree5 - scene event hook: event 3 and camera zone 5 not set -> 1
+; In:  8(a6) = word event
+; Out: d0 = 1/0
+; Evidence: tests bit $20 of -$3B02; hook -$3202
 ; ---------------------------------------------------------------------------
-sub_035A1A:
+AvalonA4_EventZoneFree5:
 	link.w	a6,#$0
 	moveq	#$3,d0
 	cmp.w	$A(a6),d0

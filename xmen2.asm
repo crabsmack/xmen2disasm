@@ -545,8 +545,8 @@ Sw_034F62:	; switch table of sub at $034F62: 15 word offsets from Sw_034F62-2
 	include "src/f/03585C.asm"
 	include "src/f/035872.asm"
 Sw_035872:	; switch table of sub at $035872: 6 word offsets from Sw_035872-2
-	dc.w	loc_03589C-(Sw_035872-2), loc_0358A0-(Sw_035872-2), loc_0358A4-(Sw_035872-2), loc_0358A8-(Sw_035872-2)
-	dc.w	loc_0358AC-(Sw_035872-2), loc_0358B0-(Sw_035872-2)
+	dc.w	AvalonA4_ClearCameraZone_case0-(Sw_035872-2), loc_0358A0-(Sw_035872-2), loc_0358A4-(Sw_035872-2), AvalonA4_ClearCameraZone_case3-(Sw_035872-2)
+	dc.w	AvalonA4_ClearCameraZone_case4-(Sw_035872-2), AvalonA4_ClearCameraZone_case5-(Sw_035872-2)
 	include "src/f/03589C.asm"
 	include "src/f/0358A8.asm"
 	include "src/f/0358AC.asm"
@@ -554,8 +554,8 @@ Sw_035872:	; switch table of sub at $035872: 6 word offsets from Sw_035872-2
 	include "src/f/0358B2.asm"
 	include "src/f/0358D8.asm"
 Sw_0358D8:	; switch table of sub at $0358D8: 6 word offsets from Sw_0358D8-2
-	dc.w	loc_035956-(Sw_0358D8-2), loc_03595A-(Sw_0358D8-2), loc_03595E-(Sw_0358D8-2), loc_035962-(Sw_0358D8-2)
-	dc.w	loc_035966-(Sw_0358D8-2), loc_03596A-(Sw_0358D8-2)
+	dc.w	AvalonA4_SetCameraZone_case0-(Sw_0358D8-2), loc_03595A-(Sw_0358D8-2), loc_03595E-(Sw_0358D8-2), AvalonA4_SetCameraZone_case3-(Sw_0358D8-2)
+	dc.w	AvalonA4_SetCameraZone_case4-(Sw_0358D8-2), loc_03596A-(Sw_0358D8-2)
 	include "src/f/035956.asm"
 	include "src/f/035962.asm"
 	include "src/f/035966.asm"

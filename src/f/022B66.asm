@@ -1,9 +1,12 @@
 ; ---------------------------------------------------------------------------
-; sub_022B66	[link-after-rts]
+; AvalonA2_CallEmptyStubs - first step of AvalonA2_RunScene: call two empty stubs
+; In:  none
+; Out: none
+; Evidence: AvalonA2_EmptyStub1 + AvalonA2_EmptyStub2 (same pattern as CloneA2_CallEmptyStubs)
 ; ---------------------------------------------------------------------------
-sub_022B66:
+AvalonA2_CallEmptyStubs:
 	link.w	a6,#$0
-	jsr	sub_0228C2(pc)
-	jsr	sub_022ADA(pc)
+	jsr	AvalonA2_EmptyStub1(pc)
+	jsr	AvalonA2_EmptyStub2(pc)
 	unlk	a6
 	rts

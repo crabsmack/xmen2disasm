@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_02C9AA	[link-after-rts]
+; AvalonA3_FrameHook - AvalonA3 per-frame hook: frame counter, cycle four 3-frame sprite slots every 5 frames, run the palette effect
+; In:  none
+; Out: none
+; Evidence: installed in -$388E by AvalonA3_InstallHooks; Spr_SetFrame/Spr_UploadFrame on slots -$3582,-$356E,-$355A,-$3546 (frames 2-4 / 6-8); AvalonA3_PaletteRotate unless g_PalFadeActive
 ; ---------------------------------------------------------------------------
-sub_02C9AA:
+AvalonA3_FrameHook:
 	link.w	a6,#$0
 	move.l	g_FrameCounter(a5),d0
 	addq.l	#$1,g_FrameCounter(a5)
@@ -102,7 +105,7 @@ loc_02CAD8:
 	bne.s	loc_02CAEC
 	tst.w	-$3CBA(a5)
 	beq.s	loc_02CAEC
-	jsr	sub_02C90A(pc)
+	jsr	AvalonA3_PaletteRotate(pc)
 loc_02CAEC:
 	unlk	a6
 	rts

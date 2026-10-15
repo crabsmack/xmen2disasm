@@ -14,7 +14,7 @@ sub_037180:
 	pea.l	($39F).w
 	moveq	#$2,d1
 	move.l	d1,-(a7)
-	jsr	$72A(a5)	; -> sub_0358D8
+	jsr	$72A(a5)	; -> AvalonA4_SetCameraZone
 	lea.l	$14(a7),a7
 	clr.w	$6C(a4)
 	lea.l	sub_037210(pc),a0

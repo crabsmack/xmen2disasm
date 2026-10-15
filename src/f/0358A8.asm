@@ -1,6 +1,9 @@
 ; ---------------------------------------------------------------------------
-; loc_0358A8	[static: switch-table case target (tools/switches.py: table after `move.w T(pc,dN.w),dN / jmp T-2(pc,dN.w)`, size from the cmpi bound)]
+; AvalonA4_ClearCameraZone_case3 - AvalonA4_ClearCameraZone case 3 (mask 8)
+; In:  none
+; Out: d7 = mask
+; Evidence: Sw_035872 target
 ; ---------------------------------------------------------------------------
-loc_0358A8:
+AvalonA4_ClearCameraZone_case3:
 	moveq	#$8,d7
-	bra.s	loc_0358B2
+	bra.s	AvalonA4_ClearCameraZone_apply

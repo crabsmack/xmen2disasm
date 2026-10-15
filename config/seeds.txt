@@ -5,7 +5,7 @@
 15EE48	; sub_15EE48 - jt entries: movem/tst prologue, ends in rts, clean trace
 15F1F8	; sub_15F1F8 - jt entries: movem/tst prologue, ends in rts, clean trace
 1F4C56	; Actor_Move - jt entries: movem/tst prologue, ends in rts, clean trace
-0226B2	; sub_0226B2 - runtime: executed in tas
+0226B2	; AvalonB2_CamHook - runtime: executed in tas
 065DB6	; Cerebro_IntroPalHook - runtime: executed in tas
 0062C0	; Player1_StartLife_Nightcrawler - runtime: executed in tas
 0119E6	; loc_0119E6 - runtime: executed in tas
@@ -71,14 +71,14 @@
 035128	; loc_035128 - runtime: executed in tas
 035142	; loc_035142 - runtime: executed in tas
 03515C	; loc_03515C - runtime: executed in tas
-03589C	; loc_03589C - runtime: executed in tas
+03589C	; AvalonA4_ClearCameraZone_case0 - runtime: executed in tas
 0358A0	; loc_0358A0 - runtime: executed in tas
 0358A4	; loc_0358A4 - runtime: executed in tas
-0358AC	; loc_0358AC - runtime: executed in tas
-035956	; loc_035956 - runtime: executed in tas
+0358AC	; AvalonA4_ClearCameraZone_case4 - runtime: executed in tas
+035956	; AvalonA4_SetCameraZone_case0 - runtime: executed in tas
 03595A	; loc_03595A - runtime: executed in tas
 03595E	; loc_03595E - runtime: executed in tas
-035966	; loc_035966 - runtime: executed in tas
+035966	; AvalonA4_SetCameraZone_case4 - runtime: executed in tas
 03596A	; loc_03596A - runtime: executed in tas
 03653E	; loc_03653E - runtime: executed in tas
 0365FA	; loc_0365FA - runtime: executed in tas
@@ -740,9 +740,9 @@
 02DB70	; loc_02DB70 - static: switch-table case target (tools/switches.py: table after `move.w T(pc,dN.w),dN / jmp T-2(pc,dN.w)`, size from the cmpi bound)
 02DB7A	; loc_02DB7A - static: switch-table case target (tools/switches.py: table after `move.w T(pc,dN.w),dN / jmp T-2(pc,dN.w)`, size from the cmpi bound)
 02DB8E	; loc_02DB8E - static: switch-table case target (tools/switches.py: table after `move.w T(pc,dN.w),dN / jmp T-2(pc,dN.w)`, size from the cmpi bound)
-0358A8	; loc_0358A8 - static: switch-table case target (tools/switches.py: table after `move.w T(pc,dN.w),dN / jmp T-2(pc,dN.w)`, size from the cmpi bound)
-0358B0	; loc_0358B0 - static: switch-table case target (tools/switches.py: table after `move.w T(pc,dN.w),dN / jmp T-2(pc,dN.w)`, size from the cmpi bound)
-035962	; loc_035962 - static: switch-table case target (tools/switches.py: table after `move.w T(pc,dN.w),dN / jmp T-2(pc,dN.w)`, size from the cmpi bound)
+0358A8	; AvalonA4_ClearCameraZone_case3 - static: switch-table case target (tools/switches.py: table after `move.w T(pc,dN.w),dN / jmp T-2(pc,dN.w)`, size from the cmpi bound)
+0358B0	; AvalonA4_ClearCameraZone_case5 - static: switch-table case target (tools/switches.py: table after `move.w T(pc,dN.w),dN / jmp T-2(pc,dN.w)`, size from the cmpi bound)
+035962	; AvalonA4_SetCameraZone_case3 - static: switch-table case target (tools/switches.py: table after `move.w T(pc,dN.w),dN / jmp T-2(pc,dN.w)`, size from the cmpi bound)
 04757C	; loc_04757C - static: switch-table case target (tools/switches.py: table after `move.w T(pc,dN.w),dN / jmp T-2(pc,dN.w)`, size from the cmpi bound)
 04BCB2	; loc_04BCB2 - static: switch-table case target (tools/switches.py: table after `move.w T(pc,dN.w),dN / jmp T-2(pc,dN.w)`, size from the cmpi bound)
 04BCC6	; loc_04BCC6 - static: switch-table case target (tools/switches.py: table after `move.w T(pc,dN.w),dN / jmp T-2(pc,dN.w)`, size from the cmpi bound)

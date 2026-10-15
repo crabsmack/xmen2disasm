@@ -1,15 +1,18 @@
 ; ---------------------------------------------------------------------------
-; sub_022BA2	[jt 156]
+; AvalonA2_RunScene - scene function for 'AvalonA2 Falling_Room': stubs, load, place players, hooks, camera floor, level loop
+; In:  none
+; Out: none
+; Evidence: Scene_RegisterAll entry for 'AvalonA2 Falling_Room'; calls the AvalonA2_* setup functions then level loop sub_1FA6FE
 ; ---------------------------------------------------------------------------
-sub_022BA2:
+AvalonA2_RunScene:
 	link.w	a6,#$0
-	jsr	sub_022B66(pc)
-	jsr	sub_022A4E(pc)
-	jsr	sub_022AF6(pc)
-	jsr	sub_022B7E(pc)
-	jsr	sub_022B76(pc)
-	jsr	sub_0228CA(pc)
-	jsr	sub_022AE2(pc)
+	jsr	AvalonA2_CallEmptyStubs(pc)
+	jsr	AvalonA2_LoadLevel(pc)
+	jsr	AvalonA2_PlacePlayers(pc)
+	jsr	AvalonA2_InstallHooks(pc)
+	jsr	AvalonA2_EmptyStub3(pc)
+	jsr	AvalonA2_ResetCounters(pc)
+	jsr	AvalonA2_RaiseCameraFloor(pc)
 	jsr	$5002(a5)	; -> sub_1FA6FE
 	unlk	a6
 	rts

@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_02C90A	[link-after-rts]
+; AvalonA3_PaletteRotate - one frame of the AvalonA3 palette effect: rotate colours 0-13 of line 0 while counter -$3CBA runs, restore both saved lines when it ends
+; In:  none
+; Out: none
+; Evidence: called from AvalonA3_FrameHook while -$3CBA != 0; also calls sub_02D146 on g_Player1 and g_Player2 each step; restore from the buffers saved by AvalonA3_SavePalettes (-$3B14, -$3B18)
 ; ---------------------------------------------------------------------------
-sub_02C90A:
+AvalonA3_PaletteRotate:
 	link.w	a6,#$0
 	movem.l	d3/d5-d7,-(a7)
 	move.w	-$3CBA(a5),d0

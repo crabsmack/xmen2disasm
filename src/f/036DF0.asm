@@ -7,7 +7,7 @@ sub_036DF0:
 	movea.l	$8(a6),a4
 	moveq	#$0,d0
 	move.l	d0,-(a7)
-	jsr	$722(a5)	; -> sub_035872
+	jsr	$722(a5)	; -> AvalonA4_ClearCameraZone
 	move.w	#$500,$16(a4)
 	move.w	#$FFB8,$18(a4)
 	move.b	#$8,$9C(a4)

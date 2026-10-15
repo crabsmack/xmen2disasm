@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_03585C	[link-after-rts]
+; AvalonA4_PlacePlayers - place the players at the AvalonA4 start
+; In:  none
+; Out: none
+; Evidence: Players_PlaceAtStart(0,0)
 ; ---------------------------------------------------------------------------
-sub_03585C:
+AvalonA4_PlacePlayers:
 	link.w	a6,#$0
 	moveq	#$0,d0
 	move.l	d0,-(a7)

@@ -1,11 +1,14 @@
 ; ---------------------------------------------------------------------------
-; sub_035A86	[link-after-rts]
+; AvalonA4_InstallHooks - install AvalonA4's frame hook, tile hooks and event hooks
+; In:  none
+; Out: none
+; Evidence: -$388E = AvalonA4_FrameHook, AvalonA4_InstallTileHooks, AvalonA4_InstallEventHooks
 ; ---------------------------------------------------------------------------
-sub_035A86:
+AvalonA4_InstallHooks:
 	link.w	a6,#$0
-	lea.l	sub_035750(pc),a0
+	lea.l	AvalonA4_FrameHook(pc),a0
 	move.l	a0,g_SceneFrameHook(a5)
-	jsr	sub_035710(pc)
-	jsr	sub_035A3A(pc)
+	jsr	AvalonA4_InstallTileHooks(pc)
+	jsr	AvalonA4_InstallEventHooks(pc)
 	unlk	a6
 	rts

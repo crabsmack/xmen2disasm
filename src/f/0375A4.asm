@@ -27,7 +27,7 @@ sub_0375A4:
 	bne.s	loc_03761C
 	moveq	#$4,d0
 	move.l	d0,-(a7)
-	jsr	$722(a5)	; -> sub_035872
+	jsr	$722(a5)	; -> AvalonA4_ClearCameraZone
 	andi.b	#$F1,$9B(a4)
 	move.w	#$FF9C,$A6(a4)
 	move.w	#$1F40,$A8(a4)

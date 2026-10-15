@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_035802	[link-after-rts]
+; AvalonA4_CamHook - CAMERA per-frame hook for AvalonA4: top limits $20, camera +$64 = +$42 = $D8
+; In:  8(a6) = camera
+; Out: none
+; Evidence: -$3A9C = -$3A94 = $20; passed to CAMERA New by AvalonA4_InitCamera
 ; ---------------------------------------------------------------------------
-sub_035802:
+AvalonA4_CamHook:
 	link.w	a6,#$0
 	movem.l	d7/a4,-(a7)
 	movea.l	$8(a6),a4

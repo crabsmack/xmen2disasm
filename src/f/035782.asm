@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_035782	[link-after-rts]
+; AvalonA4_LoadLevel - load the AvalonA4 (Throne Room) level and start music 7
+; In:  none
+; Out: none
+; Evidence: sub_1F98A8 level load (class list jt $34D10); Snd calls with 7; -$3298/-$3296 = $7F/$A0
 ; ---------------------------------------------------------------------------
-sub_035782:
+AvalonA4_LoadLevel:
 	link.w	a6,#$0
 	lea.l	$712(a5),a0
 	move.l	$2(a0),-(a7)

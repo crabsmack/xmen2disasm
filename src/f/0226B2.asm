@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_0226B2	[runtime: executed in tas]
+; AvalonB2_CamHook - CAMERA per-frame hook for AvalonB2: set camera fields +$62 = $60 and +$42 = $A0
+; In:  8(a6) = camera
+; Out: none
+; Evidence: passed to CAMERA +$0A New by AvalonB2_RunScene
 ; ---------------------------------------------------------------------------
-sub_0226B2:
+AvalonB2_CamHook:
 	link.w	a6,#$0
 	move.l	a4,-(a7)
 	movea.l	$8(a6),a4

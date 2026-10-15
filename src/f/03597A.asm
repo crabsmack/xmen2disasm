@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_03597A	[link-after-rts]
+; AvalonA4_EventZoneFree0 - scene event hook: event 3 and camera zone 0 not set -> 1
+; In:  8(a6) = word event
+; Out: d0 = 1/0
+; Evidence: tests bit 1 of -$3B02; installed in -$3216 by AvalonA4_InstallEventHooks
 ; ---------------------------------------------------------------------------
-sub_03597A:
+AvalonA4_EventZoneFree0:
 	link.w	a6,#$0
 	moveq	#$3,d0
 	cmp.w	$A(a6),d0

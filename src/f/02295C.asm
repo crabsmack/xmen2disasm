@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_02295C	[link-after-rts]
+; AvalonA2_ToggleTileHook - map tile hook: toggle tile bit 9 at (x,y), clear its palette/flip bits and redraw it (after sub_02690C on the row)
+; In:  8(a6) = word column, $C(a6) = word row
+; Out: d0 = 0
+; Evidence: installed in -$3AF0 by AvalonA2_InstallTileHooks; sub_15D7D8 redraws the cell
 ; ---------------------------------------------------------------------------
-sub_02295C:
+AvalonA2_ToggleTileHook:
 	link.w	a6,#$0
 	movem.l	d5-d7/a4,-(a7)
 	move.w	$A(a6),d6

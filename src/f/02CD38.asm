@@ -1,9 +1,12 @@
 ; ---------------------------------------------------------------------------
-; sub_02CD38	[link-after-rts]
+; AvalonA3_InstallHooks - install the AvalonA3 per-frame hook
+; In:  none
+; Out: none
+; Evidence: -$388E = AvalonA3_FrameHook
 ; ---------------------------------------------------------------------------
-sub_02CD38:
+AvalonA3_InstallHooks:
 	link.w	a6,#$0
-	lea.l	sub_02C9AA(pc),a0
+	lea.l	AvalonA3_FrameHook(pc),a0
 	move.l	a0,g_SceneFrameHook(a5)
 	unlk	a6
 	rts

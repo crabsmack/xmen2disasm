@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_02CBF6	[link-after-rts]
+; AvalonA3_SavePalettes - save 14 colours of palette lines 0 and 2 into two buffers for AvalonA3_PaletteRotate
+; In:  8(a6) = buffer for line 0, $C(a6) = buffer for line 2
+; Out: none
+; Evidence: clears -$3CBA; pointers kept in -$3B14/-$3B18; buffers are on AvalonA3_RunScene's stack
 ; ---------------------------------------------------------------------------
-sub_02CBF6:
+AvalonA3_SavePalettes:
 	link.w	a6,#$0
 	movem.l	d3/d7,-(a7)
 	clr.w	-$3CBA(a5)

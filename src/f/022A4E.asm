@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_022A4E	[link-after-rts]
+; AvalonA2_LoadLevel - load the AvalonA2 level with sub_1F98A8 and set its initial palette line 2
+; In:  none
+; Out: none
+; Evidence: sub_1F98A8(... jt $267A0 class list ...); copies 16 colours from jt $22BCA to $FFC8C0; g_PalBase[0] = 0
 ; ---------------------------------------------------------------------------
-sub_022A4E:
+AvalonA2_LoadLevel:
 	link.w	a6,#$0
 	movem.l	d3/d7/a3-a4,-(a7)
 	lea.l	$532(a5),a0

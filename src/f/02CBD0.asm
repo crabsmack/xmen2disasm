@@ -1,9 +1,12 @@
 ; ---------------------------------------------------------------------------
-; sub_02CBD0	[link-after-rts]
+; AvalonA3_InitCamera - create the AvalonA3 camera with AvalonA3_CamHook
+; In:  none
+; Out: none
+; Evidence: g_Camera = CAMERA +$0A New(jt $4FBA, AvalonA3_CamHook)
 ; ---------------------------------------------------------------------------
-sub_02CBD0:
+AvalonA3_InitCamera:
 	link.w	a6,#$0
-	pea.l	sub_02CBBE(pc)
+	pea.l	AvalonA3_CamHook(pc)
 	lea.l	$4DBA(a5),a0
 	move.l	$2(a0),-(a7)
 	lea.l	$4DBA(a5),a0

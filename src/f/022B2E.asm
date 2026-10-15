@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_022B2E	[link-after-rts]
+; AvalonA2_HookEndOnEvent3 - scene event hook in -$3216: event 3 ends the scene after 1 frame
+; In:  8(a6) = word event
+; Out: d0 = 1 if event 3
+; Evidence: Scene_EndAfter(1) on event 3; installed by AvalonA2_InstallEventHooks
 ; ---------------------------------------------------------------------------
-sub_022B2E:
+AvalonA2_HookEndOnEvent3:
 	link.w	a6,#$0
 	moveq	#$3,d0
 	cmp.w	$A(a6),d0
