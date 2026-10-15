@@ -1,0 +1,102 @@
+# options-menu: X-Men 2: Clone Wars has NO options menu (no "OPTION" text anywhere in the ROM;
+# the Cerebro screen list is LogoAndDemo, PlayerSelect, Failure, Credits, FinalText and stage
+# briefings). This scenario covers the menu-input paths that do exist: every button and the
+# usual secret-menu combos on the power-on demo, the SEGA/Marvel logos, the title screen,
+# the briefing text, the character-select screen and the in-game pause screen.
+# From power-on (no TAS prefix). Power-on is real play (a random X-Man in Siberia); with no
+# input the game drops to the logo/title/attract loop, where the title sits around frame 2950.
+# --- power-on: the first Siberia stage runs, then (no input) SEGA/Marvel logos and the title
+. x2950
+# --- title screen (around frame 3000): directions first, then buttons. Observed: the title
+# has no menu; a button press starts a new game in Siberia (P2 joins with the later P2 Start).
+U x4
+. x15
+D x4
+. x15
+L x4
+. x15
+R x4
+. x15
+A x4
+. x15
+B x4
+. x15
+C x4
+. x15
+X x4
+. x15
+Y x4
+. x15
+Z x4
+. x15
+M x4
+. x15
+ABC x30
+. x15
+UA x10
+. x15
+DB x10
+. x15
+LC x10
+. x15
+RX x10
+. x15
+. S x4
+. x60
+S x4
+# --- buttons/directions in play (the first stage has no briefing or select screen)
+. x120
+A x4
+. x60
+B x4
+. x60
+C x4
+. x120
+L x2
+. x120
+R x2
+. x120
+U x2
+. x60
+D x2
+. x120
+S x2
+. x300
+# --- in game: pause, buttons and directions while paused, unpause; repeat
+R x60
+S x2
+. x30
+U x4
+. x20
+D x4
+. x20
+L x4
+. x20
+R x4
+. x20
+A x4
+. x20
+B x4
+. x20
+C x4
+. x20
+X x4
+. x20
+Y x4
+. x20
+Z x4
+. x20
+M x4
+. x20
+ABC x20
+. x20
+S x2
+. x60
+RB x30
+. x60
+S x2
+. x200
+S x2
+. x120
+# --- leave it to the attract loop
+. x3000

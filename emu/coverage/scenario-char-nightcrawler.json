@@ -1,0 +1,14 @@
+{
+ "kind": "script",
+ "script": "char-nightcrawler.txt",
+ "from_frame": 2344,
+ "core": "BizEmu",
+ "start_frame": 2344,
+ "end_frame": 7831,
+ "executed_rom_instruction_starts": 29513,
+ "rom_bytes_read_as_data": 129083,
+ "rom_bytes_dma_source": 60864,
+ "ram_exec_words": 0,
+ "instructions": 116450025,
+ "functions_hit": 520
+}

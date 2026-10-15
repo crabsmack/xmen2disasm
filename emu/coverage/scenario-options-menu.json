@@ -1,0 +1,14 @@
+{
+ "kind": "script",
+ "script": "options-menu.txt",
+ "from_frame": 0,
+ "core": "BizEmu",
+ "start_frame": 0,
+ "end_frame": 8346,
+ "executed_rom_instruction_starts": 19412,
+ "rom_bytes_read_as_data": 86637,
+ "rom_bytes_dma_source": 41216,
+ "ram_exec_words": 0,
+ "instructions": 133283122,
+ "functions_hit": 437
+}

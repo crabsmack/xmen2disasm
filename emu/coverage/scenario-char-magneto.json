@@ -1,0 +1,14 @@
+{
+ "kind": "script",
+ "script": "char-magneto.txt",
+ "from_frame": 27660,
+ "core": "BizEmu",
+ "start_frame": 27660,
+ "end_frame": 33391,
+ "executed_rom_instruction_starts": 62066,
+ "rom_bytes_read_as_data": 493895,
+ "rom_bytes_dma_source": 211136,
+ "ram_exec_words": 0,
+ "instructions": 478852250,
+ "functions_hit": 465
+}

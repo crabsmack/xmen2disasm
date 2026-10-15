@@ -55,7 +55,8 @@ Str_SiberiaB1Blizzard:	; C string, resource name looked up by sub_0054C6
 	include "src/f/0062C6.asm"
 	include "src/f/0062CC.asm"
 	include "src/f/0062E4.asm"
-	incrom	$006344,$2A
+	incrom	$006344,$24
+	include "src/f/006368.asm"
 	include "src/f/00636E.asm"
 	include "src/f/006386.asm"
 	include "src/f/006584.asm"
@@ -903,7 +904,8 @@ Str_SiberiaB1Blizzard:	; C string, resource name looked up by sub_0054C6
 	include "src/f/065532.asm"
 	incrom	$0655B8,$C
 	include "src/f/0655C4.asm"
-	incrom	$06563A,$48
+	include "src/f/06563A.asm"
+	incrom	$065662,$20
 	include "src/f/065682.asm"
 	include "src/f/0656B0.asm"
 	incrom	$065C5A,$E
@@ -916,7 +918,8 @@ Str_SiberiaB1Blizzard:	; C string, resource name looked up by sub_0054C6
 	include "src/f/065CBC.asm"
 	incrom	$065D12,$E
 	include "src/f/065D20.asm"
-	incrom	$065D2C,$48
+	include "src/f/065D2C.asm"
+	incrom	$065D38,$3C
 	include "src/f/065D74.asm"
 	incrom	$065D8E,$28
 	include "src/f/065DB6.asm"
@@ -2901,7 +2904,8 @@ Str_SiberiaB1Blizzard:	; C string, resource name looked up by sub_0054C6
 	include "src/f/13D8C2.asm"
 	incrom	$13D8C6,$2
 	include "src/f/13D8C8.asm"
-	incrom	$13D8D0,$26
+	include "src/f/13D8D0.asm"
+	incrom	$13D8E4,$12
 	include "src/f/13D8F6.asm"
 	include "src/f/13D954.asm"
 	include "src/f/13DA0C.asm"
@@ -3094,7 +3098,7 @@ Str_SiberiaB1Blizzard:	; C string, resource name looked up by sub_0054C6
 	include "src/f/1590DA.asm"
 	incrom	$1590E4,$28
 	include "src/f/15910C.asm"
-	incrom	$159120,$A
+	include "src/f/159120.asm"
 	include "src/f/15912A.asm"
 	include "src/f/15912E.asm"
 	include "src/f/159130.asm"
@@ -3103,7 +3107,7 @@ Str_SiberiaB1Blizzard:	; C string, resource name looked up by sub_0054C6
 	include "src/f/159180.asm"
 	incrom	$15918A,$28
 	include "src/f/1591B2.asm"
-	incrom	$1591C6,$A
+	include "src/f/1591C6.asm"
 	include "src/f/1591D0.asm"
 	include "src/f/1591D4.asm"
 	include "src/f/1591D6.asm"
@@ -3127,7 +3131,9 @@ Str_SiberiaB1Blizzard:	; C string, resource name looked up by sub_0054C6
 	include "src/f/1592EE.asm"
 	include "src/f/1592F6.asm"
 	include "src/f/159354.asm"
-	incrom	$159384,$6E
+	incrom	$159384,$32
+	include "src/f/1593B6.asm"
+	incrom	$1593D4,$1E
 	include "src/f/1593F2.asm"
 	incrom	$159410,$72
 	include "src/f/159482.asm"

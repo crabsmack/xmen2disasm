@@ -1,0 +1,14 @@
+{
+ "kind": "script",
+ "script": "char-cyclops.txt",
+ "from_frame": 2344,
+ "core": "BizEmu",
+ "start_frame": 2344,
+ "end_frame": 8319,
+ "executed_rom_instruction_starts": 28453,
+ "rom_bytes_read_as_data": 138791,
+ "rom_bytes_dma_source": 85184,
+ "ram_exec_words": 0,
+ "instructions": 125306868,
+ "functions_hit": 463
+}

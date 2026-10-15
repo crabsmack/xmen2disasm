@@ -1,0 +1,14 @@
+{
+ "kind": "script",
+ "script": "char-psylocke.txt",
+ "from_frame": 2344,
+ "core": "BizEmu",
+ "start_frame": 2344,
+ "end_frame": 7953,
+ "executed_rom_instruction_starts": 27417,
+ "rom_bytes_read_as_data": 133254,
+ "rom_bytes_dma_source": 71552,
+ "ram_exec_words": 0,
+ "instructions": 120769324,
+ "functions_hit": 432
+}

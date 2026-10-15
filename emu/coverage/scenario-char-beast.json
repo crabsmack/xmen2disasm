@@ -1,0 +1,14 @@
+{
+ "kind": "script",
+ "script": "char-beast.txt",
+ "from_frame": 2344,
+ "core": "BizEmu",
+ "start_frame": 2344,
+ "end_frame": 8197,
+ "executed_rom_instruction_starts": 27598,
+ "rom_bytes_read_as_data": 135518,
+ "rom_bytes_dma_source": 81536,
+ "ram_exec_words": 0,
+ "instructions": 123425524,
+ "functions_hit": 442
+}

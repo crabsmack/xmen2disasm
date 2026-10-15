@@ -451,7 +451,9 @@ def cmd_idle(a) -> None:
 
 def read_script(path: Path) -> list[tuple[str, str]]:
     """Scenario file: one entry per line `P1 [P2] [xN]`; `.` = no buttons; `#` comments;
-    `@reset` soft reset, `@power` hard reset. Example: `R x120` holds Right 120 frames."""
+    `@reset` soft reset, `@power` hard reset. Example: `R x120` holds Right 120 frames.
+    `@tas N` as the first entry replays the TAS to frame N before the script starts
+    (reach a mid-game point such as a character-select screen); it is returned as ("@TAS", "N")."""
     out: list[tuple[str, str]] = []
     for raw in path.read_text().splitlines():
         line = raw.split("#")[0].strip()
@@ -459,6 +461,11 @@ def read_script(path: Path) -> list[tuple[str, str]]:
             continue
         if line in ("@reset", "@power"):
             out.append((line, ""))
+            continue
+        if line.startswith("@tas"):
+            if out:
+                raise ValueError(f"{path.name}: @tas must be the first entry")
+            out.append(("@TAS", line.split()[1]))
             continue
         toks = line.split()
         n = 1
@@ -471,9 +478,12 @@ def read_script(path: Path) -> list[tuple[str, str]]:
 
 
 def cmd_script(a) -> None:
+    script = read_script(Path(a.script))
+    if script and script[0][0] == "@TAS":
+        a.from_frame = int(script.pop(0)[1])
     emu = start_point(a)
     rec = Recorder(emu, a.name, a.png_every, a.ram_every)
-    for p1, p2 in read_script(Path(a.script)):
+    for p1, p2 in script:
         if p1 in ("@RESET", "@POWER"):
             emu.reset(hard=p1 == "@POWER")
             continue

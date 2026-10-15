@@ -11,7 +11,8 @@ Corpus:
                    play (dying, game over, continue screens, enemy variety, other routes)
   scenario-*       hand-written input scripts in emu/corpus/scenarios/*.txt (one line per
                    frame: `p1 p2` button letters, `.` for none, `#` comments, `xN` repeat
-                   suffix like `R x120`); add scenarios for paths the corpus misses.
+                   suffix like `R x120`; a first line `@tas N` starts from TAS frame N, e.g. a
+                   character-select screen); add scenarios for paths the corpus misses.
 
 Every run lands in emu/coverage/<name>.{exec,data,dma}.bin.gz + <name>.json; tools/coverage.py
 unions them. The emulator is deterministic, so a run's coverage never changes.

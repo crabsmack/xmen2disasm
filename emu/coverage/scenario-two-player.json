@@ -1,0 +1,14 @@
+{
+ "kind": "script",
+ "script": "two-player.txt",
+ "from_frame": 2344,
+ "core": "BizEmu",
+ "start_frame": 2344,
+ "end_frame": 7775,
+ "executed_rom_instruction_starts": 29197,
+ "rom_bytes_read_as_data": 137616,
+ "rom_bytes_dma_source": 90048,
+ "ram_exec_words": 0,
+ "instructions": 117499016,
+ "functions_hit": 462
+}

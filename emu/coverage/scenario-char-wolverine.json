@@ -1,0 +1,14 @@
+{
+ "kind": "script",
+ "script": "char-wolverine.txt",
+ "from_frame": 2344,
+ "core": "BizEmu",
+ "start_frame": 2344,
+ "end_frame": 8075,
+ "executed_rom_instruction_starts": 29243,
+ "rom_bytes_read_as_data": 135225,
+ "rom_bytes_dma_source": 81024,
+ "ram_exec_words": 0,
+ "instructions": 119331452,
+ "functions_hit": 508
+}

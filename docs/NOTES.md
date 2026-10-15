@@ -31,6 +31,26 @@ progress.py also reads this file:
   in byte globals (`sub_0054C6`). Probably registers named resources/handlers.
 - **No title screen first**: power-on drops straight into the snowy first stage.
 
+## Game flow (from emulator screenshots, R4 scenarios)
+
+- **Power-on is real play**: a random X-Man (Cyclops with no input; the TAS's U+D mashing
+  gets Nightcrawler) in Siberia, P2 "PRESS START" blinking. Buttons take control. With no
+  input the stage ends at ~frame 1380, then SEGA logo (~1500), Marvel logo, copyright, title
+  (~2950-3450), then an attract loop of demos in other stages (idle run).
+- **Title has no menu**: any button starts a new game in Siberia. There is **no options
+  menu, no continue and no password** (no such text in the ROM; web sources agree: 9 lives,
+  no continues). Cerebro screen names (strings at `$0057D9-$005C50`): LogoAndDemo,
+  PlayerSelect, Failure, Credits, FinalText, Clone, Space, Savage, BaniMaza, Avalon, Sentinels.
+- **Between stages**: Cerebro briefing text (Start skips) then **PlayerSelect**: portraits
+  Beast, Cyclops, Gambit, Nightcrawler, Psylocke, Wolverine (+ Magneto 7th after his stage;
+  present at TAS frame 27660). Right wraps last -> first. Cursor input is ignored while the
+  highlighted character's intro animation plays (~80 frames). P2 joins by pressing Start
+  there (TAS does at the end, frame ~49070) or in play. "LIVES 8" shown at the first select.
+- **Death**: back to PlayerSelect for the next life. **Game over**: Failure screen ("WARNING:
+  RAPPORT PHALANX INFECTION DETECTED ... NEW YORK ASSIMILATED ..."), "Game Over" text, then
+  the power-on style Siberia game again (scenario `game-over`, script frames ~25640-28700).
+- Scenario files can start mid-game with `@tas N` (replay the TAS to frame N first).
+
 ## Emulator facts
 
 - The TAS (TASVideos 4473M, BizHawk 2.4, Genplus-gx, 2 x 6-button pads) syncs only on
@@ -63,5 +83,8 @@ _(remaining unlabelled, never-read spans: `$XXXXXX-$YYYYYY` - what was tried)_
 ## Open questions
 
 - Exact compiler/version (matters for an optional C decomp phase).
-- Playable character list for scenario R4 (assumed: Cyclops, Wolverine, Gambit,
-  Psylocke, Nightcrawler, Beast, Magneto). Verify and fix `REQUIRED_SCENARIOS`.
+- ~~Playable character list for scenario R4 (assumed: Cyclops, Wolverine, Gambit,
+  Psylocke, Nightcrawler, Beast, Magneto). Verify and fix `REQUIRED_SCENARIOS`.~~
+  Verified on the select screen: exactly those seven. `options-menu` and `continue` name
+  features the game does not have; their scenario files cover the nearest real paths
+  (title/pause input; game over -> restart) and say so in their headers.

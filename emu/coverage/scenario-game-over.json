@@ -1,0 +1,14 @@
+{
+ "kind": "script",
+ "script": "game-over.txt",
+ "from_frame": 2344,
+ "core": "BizEmu",
+ "start_frame": 2344,
+ "end_frame": 31504,
+ "executed_rom_instruction_starts": 30729,
+ "rom_bytes_read_as_data": 146799,
+ "rom_bytes_dma_source": 127968,
+ "ram_exec_words": 0,
+ "instructions": 472365957,
+ "functions_hit": 609
+}
