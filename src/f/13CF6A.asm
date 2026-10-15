@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_13CF6A	[link-after-rts]
+; Ninja_ClipToSegs - keep an airborne NINJA out of segments: push its box out of the overlapping segment and stop the blocked velocity (landing clears vy and gravity)
+; In:  8(a6) = this  $C(a6) = word previous x px  $E(a6) = word previous y px
+; Out: d0 = misc
+; Evidence: Obj_UpdateBoxes, Ninja_FindSegInBox(box centre, ...); side hits zero +$16/+$1E, floor hit zeroes +$18/+$20 (Ninja_StateWaitLanding waits for +$20 = 0); caller Ninja_Move while the animation is Tbl_NinjaAnimAirborne
 ; ---------------------------------------------------------------------------
-sub_13CF6A:
+Ninja_ClipToSegs:
 	link.w	a6,#$FFEA
 	movem.l	d3-d7/a3-a4,-(a7)
 	movea.l	$8(a6),a4
@@ -48,7 +51,7 @@ sub_13CF6A:
 	asr.l	#$1,d1
 	add.l	d5,d1
 	move.l	d1,-(a7)
-	jsr	sub_13CE68(pc)
+	jsr	Ninja_FindSegInBox(pc)
 	movea.l	d0,a3
 	move.l	a3,d0
 	lea.l	$24(a7),a7

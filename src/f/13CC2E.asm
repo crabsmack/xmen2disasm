@@ -6,6 +6,6 @@
 ; ---------------------------------------------------------------------------
 Ninja_ClassInit:
 	link.w	a6,#$0
-	jsr	sub_13D7F6(pc)
+	jsr	Ninja_NopStatic(pc)
 	unlk	a6
 	rts

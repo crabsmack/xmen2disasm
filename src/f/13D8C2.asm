@@ -1,5 +1,8 @@
 ; ---------------------------------------------------------------------------
-; loc_13D8C2	[runtime: executed in tas]
+; Ninja_ScrStepStartCombat - intro-script thunk 2: jmp Ninja_ActStartCombat
+; In:  a4 = this
+; Out: none
+; Evidence: jmp $3A32(a5); entry 2 of Tbl_NinjaIntroScript (jt 1872, installed by Ninja_Init); the next label Tbl_NinjaCombatScript starts the combat script
 ; ---------------------------------------------------------------------------
-loc_13D8C2:
-	jmp	$3A32(a5)	; -> sub_13D2F4
+Ninja_ScrStepStartCombat:
+	jmp	$3A32(a5)	; -> Ninja_ActStartCombat

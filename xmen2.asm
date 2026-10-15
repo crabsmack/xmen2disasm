@@ -4687,24 +4687,25 @@ Art_NinjaSpr2:	; sprite definition (type $18, raw 4bpp tiles): $24-byte header, 
 	include "src/f/13D7F6.asm"
 Tbl_Ninja_vtable:	; class descriptor "NINJA": word $82 = name offset, long parent (BIONPC), 31 method pointers, then the class name string
 	incrom	$13D7FE,$88
-Tbl_NinjaAnim:	; animation script (byte flags, byte steps, ..., 2-byte steps from +6); 8 of A bytes used at runtime; read by Anim_ApplyStep, Anim_AdvanceByDistance, Anim_Advance; jt[1867] used by Ninja_Init, sub_13D60C, sub_13D6B6
+Tbl_NinjaAnimIdle:	; animation script {byte flags 0 (loop), byte 2 steps, word delay 8, ..., frames 0,1}: NINJA standing (Init, Ninja_ActFacePlayer/IdleAnim/Wait/Pause30); jt[1867]
 	incrom	$13D886,$A
-Tbl_Anim_13D890:	; animation script (byte flags, byte steps, ..., 2-byte steps from +6); A of C bytes used at runtime; read by Anim_ApplyStep, Anim_AdvanceByDistance, Anim_Advance; jt[1868] used by sub_13D4FE
+Tbl_NinjaAnimAttack:	; animation script {flags 2 (once), 3 steps, delay 8, frames 2,3,4}: NINJA attack with sound $AC (Ninja_ActAttack); jt[1868]
 	incrom	$13D890,$C
-Tbl_Anim_13D89C:	; animation script (byte flags, byte steps, ..., 2-byte steps from +6); 6 of 8 bytes used at runtime; read by Anim_AdvanceByDistance, Anim_ApplyStep, Anim_Advance; jt[1869] used by sub_13D344
+Tbl_NinjaAnimCrouch:	; animation script {flags 2 (once), 1 step, delay 8, frame 5}: NINJA take-off pose (Ninja_ActLeap); jt[1869]
 	incrom	$13D89C,$8
-Tbl_NinjaAnim2:	; animation script (byte flags, byte steps, ..., 2-byte steps from +6); C of E bytes used at runtime; read by Anim_ApplyStep, Anim_AdvanceByDistance, Anim_Advance; jt[1870] used by Ninja_Move, sub_13D424
+Tbl_NinjaAnimAirborne:	; animation script {flags 0 (loop), 4 steps, delay 4, frames 5-8}: NINJA in the air (Ninja_StateLeapAir); Ninja_Move clips to segments only while this is the current animation; jt[1870]
 	incrom	$13D8A4,$E
-Tbl_Anim_13D8B2:	; animation script (byte flags, byte steps, ..., 2-byte steps from +6); 8 of A bytes used at runtime; read by Anim_ApplyStep, Anim_AdvanceByDistance, Anim_Advance; jt[1871] used by sub_13D46A
+Tbl_NinjaAnimLand:	; animation script {flags 2 (once), 2 steps, delay 8, frames 1,2}: NINJA landing (Ninja_StateWaitLanding); jt[1871]
 	incrom	$13D8B2,$A
+Tbl_NinjaIntroScript:	; AI script (AiScript_Set in Ninja_Init, jt[1872]): word count 2, jmp Ninja_ActWait, then the thunk Ninja_ScrStepStartCombat (jmp Ninja_ActStartCombat) that follows
 	incrom	$13D8BC,$6
 	include "src/f/13D8C2.asm"
-Tbl_AiScript_13D8C6:	; word $0000 (2 bytes), not a string: reached only via jt[1873] used by sub_13D2F4 -> AiScript_Set (e.g. an empty list/script count)
+Tbl_NinjaCombatScript:	; AI script (AiScript_Set): word count 7, then jmp thunks Ninja_ScrStepFacePlayer, leap, face, attack, check-leave, idle anim, wait; set by Ninja_ActStartCombat (jt[1873]); the intro script at $13D8BC (count 2: wait, start combat) is jt[1872]
 	incrom	$13D8C6,$1
 	incrom	$13D8C7,$1
 	include "src/f/13D8C8.asm"
 	include "src/f/13D8D0.asm"
-Tbl_NinjaAiScript:	; data handed to AiScript_Set (format not established); never read in the corpus; jt[1874] used by Ninja_Deactivate -> sub_1F66F0, sub_13D574 -> AiScript_Set
+Tbl_NinjaLeaveScript:	; AI script: word count 2, thunks jmp Ninja_ActLeap, jmp Ninja_ActPause30; installed by Ninja_ActCheckLeave when the +$A2 timer runs out; Ninja_Deactivate removes a ninja running it for good (sub_1F66F0); jt[1874]
 	incrom	$13D8E4,$A
 Tbl_NinjaTakeDamage_Hurt:	; table read by XNpc_TakeDamage_Hurt; 6 of 8 bytes used at runtime; read by XNpc_TakeDamage_Hurt, XNpc_KnockbackDist, Ninja_Init; jt[1875] used by Ninja_Init
 	incrom	$13D8EE,$8

@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_13D424	[link-after-rts]
+; Ninja_StateLeapAir - NINJA state: airborne animation and leap sound, then wait for the landing
+; In:  8(a6) = this
+; Out: d0 = flags & 8
+; Evidence: Obj_SetAnim(Tbl_NinjaAnimAirborne), Snd_Stop/Snd_Play($80), +$5C = Ninja_StateWaitLanding
 ; ---------------------------------------------------------------------------
-sub_13D424:
+Ninja_StateLeapAir:
 	link.w	a6,#$0
 	move.l	a4,-(a7)
 	movea.l	$8(a6),a4
@@ -15,7 +18,7 @@ sub_13D424:
 	jsr	$521A(a5)	; -> Snd_Play
 	lea.l	$10(a7),a7
 	clr.w	$6C(a4)
-	lea.l	sub_13D46A(pc),a0
+	lea.l	Ninja_StateWaitLanding(pc),a0
 	move.l	a0,$5C(a4)
 	moveq	#$8,d0
 	and.w	$4(a4),d0

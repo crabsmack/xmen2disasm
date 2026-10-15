@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_13D716	[jt 1864]
+; Ninja_ActWait - NINJA script action: stop, idle animation and wait +$A0 frames before the next step
+; In:  8(a6) = this
+; Out: none
+; Evidence: velocity/acceleration cleared, Obj_ChangeAnim(Tbl_NinjaAnimIdle), +$6C = +$A0 (spawn word +$C, default 90); first step of the intro script and last of Tbl_NinjaCombatScript
 ; ---------------------------------------------------------------------------
-sub_13D716:
+Ninja_ActWait:
 	link.w	a6,#$0
 	move.l	a4,-(a7)
 	movea.l	$8(a6),a4

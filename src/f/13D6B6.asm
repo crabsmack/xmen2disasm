@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_13D6B6	[jt 1863]
+; Ninja_ActIdleAnim - NINJA script action: idle animation, next step at once
+; In:  8(a6) = this
+; Out: none
+; Evidence: Obj_ChangeAnim(Tbl_NinjaAnimIdle), next step, +$6C = 0
 ; ---------------------------------------------------------------------------
-sub_13D6B6:
+Ninja_ActIdleAnim:
 	link.w	a6,#$0
 	move.l	a4,-(a7)
 	movea.l	$8(a6),a4

@@ -45,7 +45,7 @@ loc_13D236:
 	ext.l	d6
 	move.l	d6,-(a7)
 	move.l	a4,-(a7)
-	jsr	sub_13CF6A(pc)
+	jsr	Ninja_ClipToSegs(pc)
 	lea.l	$C(a7),a7
 loc_13D256:
 	movem.l	-$C(a6),d6-d7/a4

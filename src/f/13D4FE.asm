@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_13D4FE	[jt 1860]
+; Ninja_ActAttack - NINJA script action: attack animation with sound $AC, then the next step
+; In:  8(a6) = this
+; Out: none
+; Evidence: Obj_SetAnim(Tbl_NinjaAnimAttack = frames 2-4 once), Snd_Stop/Snd_Play($AC), next step after the animation; 4th step of Tbl_NinjaCombatScript; not reached in the local corpus
 ; ---------------------------------------------------------------------------
-sub_13D4FE:
+Ninja_ActAttack:
 	link.w	a6,#$0
 	move.l	a4,-(a7)
 	movea.l	$8(a6),a4

@@ -51,7 +51,7 @@ loc_13CD1C:
 	move.l	$2(a0),-(a7)
 	pea.l	$96(a4)
 	jsr	$3ED2(a5)	; -> AiScript_Set
-	lea.l	sub_13D2A0(pc),a0
+	lea.l	Ninja_StateNextStep(pc),a0
 	move.l	a0,$64(a4)
 	move.l	a0,$5C(a4)
 	ori.w	#$80,$6(a4)
@@ -128,7 +128,7 @@ loc_13CDB6:
 	ext.l	d0
 	move.l	d0,-(a7)
 	move.l	a4,-(a7)
-	jsr	sub_13CC3A(pc)
+	jsr	Ninja_CalcPatrolBounds(pc)
 	lea.l	$10(a7),a7
 	bra.s	loc_13CE36
 loc_13CE20:
@@ -136,7 +136,7 @@ loc_13CE20:
 	pea.l	$9C(a4)
 	pea.l	($A0).w
 	move.l	a4,-(a7)
-	jsr	sub_13CC3A(pc)
+	jsr	Ninja_CalcPatrolBounds(pc)
 	lea.l	$10(a7),a7
 loc_13CE36:
 	tst.w	$C(a3)

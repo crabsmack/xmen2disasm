@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_13D60C	[jt 1862]
+; Ninja_ActFacePlayer - NINJA script action: turn toward the nearest player if it is behind, idle animation, next step
+; In:  8(a6) = this
+; Out: none
+; Evidence: Player_Nearest; flips +$2E bit 4 only when the player is not ahead; Obj_ChangeAnim(Tbl_NinjaAnimIdle), next step with delay 0
 ; ---------------------------------------------------------------------------
-sub_13D60C:
+Ninja_ActFacePlayer:
 	link.w	a6,#$0
 	movem.l	a3-a4,-(a7)
 	movea.l	$8(a6),a4

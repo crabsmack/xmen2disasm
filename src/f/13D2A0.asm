@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_13D2A0	[link-after-rts]
+; Ninja_StateNextStep - NINJA default state (+$5C/+$64 from Init): advance its AI script to the next step after 60 frames
+; In:  8(a6) = this
+; Out: none
+; Evidence: script +$96 index/+$98 table: index += 1 (wraps at the count), +$5C = thunk table + 2 + 4*index, +$6C = 60; null script -> +$64
 ; ---------------------------------------------------------------------------
-sub_13D2A0:
+Ninja_StateNextStep:
 	link.w	a6,#$0
 	move.l	a4,-(a7)
 	movea.l	$8(a6),a4

@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_13D46A	[link-after-rts]
+; Ninja_StateWaitLanding - NINJA state: wait until it has landed, then stop, play the landing animation and go to the next script step
+; In:  8(a6) = this
+; Out: d0 = misc
+; Evidence: repeats while flags +4 bit $1000 and gravity +$20 != 0 (Ninja_ClipToSegs clears +$20 on a floor hit); then velocity cleared, Obj_SetAnim(Tbl_NinjaAnimLand), next step after the animation
 ; ---------------------------------------------------------------------------
-sub_13D46A:
+Ninja_StateWaitLanding:
 	link.w	a6,#$0
 	move.l	a4,-(a7)
 	movea.l	$8(a6),a4
@@ -43,7 +46,7 @@ loc_13D4C8:
 	bra.s	loc_13D4F6
 loc_13D4E4:
 	clr.w	$6C(a4)
-	lea.l	sub_13D46A(pc),a0
+	lea.l	Ninja_StateWaitLanding(pc),a0
 	move.l	a0,$5C(a4)
 	moveq	#$8,d0
 	and.w	$4(a4),d0

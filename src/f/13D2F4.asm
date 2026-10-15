@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_13D2F4	[jt 1858]
+; Ninja_ActStartCombat - NINJA script action: switch to the combat script and start it at step 0
+; In:  8(a6) = this
+; Out: none
+; Evidence: AiScript_Set(+$96, Tbl_NinjaCombatScript), +$5C = first thunk, +$6C = 0; second step of the intro script ($13D8BC, set by Ninja_Init); TAS SiberiaB1 frames 203-4658
 ; ---------------------------------------------------------------------------
-sub_13D2F4:
+Ninja_ActStartCombat:
 	link.w	a6,#$0
 	move.l	a4,-(a7)
 	movea.l	$8(a6),a4

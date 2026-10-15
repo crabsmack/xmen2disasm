@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_13D344	[jt 1859]
+; Ninja_ActLeap - NINJA script action: leap forward when there is room inside the patrol bounds, else go to the next step
+; In:  8(a6) = this
+; Out: d0 = flags & 8 or misc
+; Evidence: +$A2 -= 1 while > 0; facing direction not within 50 px of +$9C/+$9E -> Obj_SetAnim(Tbl_NinjaAnimCrouch), vx = +/-$4D4, vy = -$540, gravity +$20 = $56, +$5C = Ninja_StateLeapAir after the animation (+$6C = $FF)
 ; ---------------------------------------------------------------------------
-sub_13D344:
+Ninja_ActLeap:
 	link.w	a6,#$0
 	movem.l	d7/a4,-(a7)
 	movea.l	$8(a6),a4
@@ -73,7 +76,7 @@ loc_13D3F4:
 	move.w	#$56,$20(a4)
 	addq.w	#$8,a7
 	move.w	#$FF,$6C(a4)
-	lea.l	sub_13D424(pc),a0
+	lea.l	Ninja_StateLeapAir(pc),a0
 	move.l	a0,$5C(a4)
 	moveq	#$8,d0
 	and.w	$4(a4),d0

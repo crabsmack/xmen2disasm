@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_13D574	[jt 1861]
+; Ninja_ActCheckLeave - NINJA script action: when its +$A2 timer has run out switch to the leave script, else continue
+; In:  8(a6) = this
+; Out: none
+; Evidence: +$A2 (spawn word +$E, default -1 = never) == 0 -> AiScript_Set(+$96, Tbl_NinjaLeaveScript) and start it; else next step; +$A2 is decremented by Ninja_ActLeap
 ; ---------------------------------------------------------------------------
-sub_13D574:
+Ninja_ActCheckLeave:
 	link.w	a6,#$0
 	move.l	a4,-(a7)
 	movea.l	$8(a6),a4

@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_13D786	[jt 1865]
+; Ninja_ActPause30 - NINJA script action: stop, idle animation and wait 30 frames before the next step
+; In:  8(a6) = this
+; Out: none
+; Evidence: same as Ninja_ActWait with a fixed 30-frame delay; second step of Tbl_NinjaLeaveScript
 ; ---------------------------------------------------------------------------
-sub_13D786:
+Ninja_ActPause30:
 	link.w	a6,#$0
 	move.l	a4,-(a7)
 	movea.l	$8(a6),a4

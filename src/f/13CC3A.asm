@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_13CC3A	[link-after-rts]
+; Ninja_CalcPatrolBounds - compute a NINJA's patrol limits: home x (+$10) minus and plus a half-width
+; In:  8(a6) = this  $C(a6) = word half-width (sign ignored)  $10(a6) = word* low out  $14(a6) = word* high out
+; Out: *low = home x - |w|, *high = home x + |w|
+; Evidence: only caller Ninja_Init with spawn word +6 (default $A0) into +$9C/+$9E, which Ninja_ActLeap checks
 ; ---------------------------------------------------------------------------
-sub_13CC3A:
+Ninja_CalcPatrolBounds:
 	link.w	a6,#$0
 	movem.l	d3/d7/a4,-(a7)
 	movea.l	$8(a6),a4
