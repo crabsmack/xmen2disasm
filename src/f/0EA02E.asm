@@ -24,7 +24,7 @@ loc_0EA066:
 	move.l	$C(a0),d7
 	cmpi.l	#$6400,d7
 	bge.s	loc_0EA08E
-	move.w	#$1,-$359A(a5)
+	move.w	#$1,g_SceneExitTimer(a5)
 	clr.w	$6C(a4)
 	lea.l	sub_0EA098(pc),a0
 	move.l	a0,$5C(a4)

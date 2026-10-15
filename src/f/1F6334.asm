@@ -2,7 +2,7 @@
 ; Obj_SetSpriteDef - give an object sprite definition N: definition pointer, two size words and the low flag bits
 ; In:  8(a6) = object   $C(a6) = byte: sprite-def index
 ; Out: none
-; Evidence: record of $14 bytes at -$3886(a5)+N*$14: +2 long -> obj+$30, +6 word -> +$34, +8 word -> +$36, byte +0 bits 0-1 -> obj+$2E bits 0-1; 37 callers
+; Evidence: record of $14 bytes at g_SpriteDefs(a5)+N*$14: +2 long -> obj+$30, +6 word -> +$34, +8 word -> +$36, byte +0 bits 0-1 -> obj+$2E bits 0-1; 37 callers
 ; ---------------------------------------------------------------------------
 Obj_SetSpriteDef:
 	link.w	a6,#$0
@@ -15,7 +15,7 @@ Obj_SetSpriteDef:
 	move.l	d0,d1
 	lsl.l	#$2,d0
 	add.l	d1,d0
-	lea.l	-$3886(a5),a0
+	lea.l	g_SpriteDefs(a5),a0
 	lea.l	(a0,d0.w),a4
 	move.l	$2(a4),$30(a3)
 	move.w	$6(a4),$34(a3)

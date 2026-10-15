@@ -6,7 +6,7 @@ sub_1F53CC:
 	movem.l	d3-d7/a3-a4,-(a7)
 	lea.l	-$E(a6),a3
 	clr.w	d4
-	move.l	-$348C(a5),d0
+	move.l	g_HeapTop(a5),d0
 	sub.l	$10(a6),d0
 	move.l	d0,d4
 	asr.l	#$5,d4
@@ -67,10 +67,10 @@ loc_1F5428:
 	add.l	d1,d1
 	add.l	$10(a6),d1
 	move.l	d1,-$1E(a6)
-	move.l	-$348C(a5),d0
+	move.l	g_HeapTop(a5),d0
 	cmp.l	-$1E(a6),d0
 	bcc.s	loc_1F549A
-	move.l	-$1E(a6),-$348C(a5)
+	move.l	-$1E(a6),g_HeapTop(a5)
 loc_1F549A:
 	moveq	#$0,d0
 	move.l	d0,-(a7)

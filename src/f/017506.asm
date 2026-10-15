@@ -45,7 +45,7 @@ FarAcolyte_Draw:
 	move.l	d1,d2
 	lsl.l	#$2,d1
 	add.l	d2,d1
-	lea.l	-$3886(a5),a0
+	lea.l	g_SpriteDefs(a5),a0
 	move.w	$6(a0,d1.w),d1
 	ext.l	d1
 	move.l	#$8000,d5
@@ -145,7 +145,7 @@ loc_017680:
 	move.l	d0,d1
 	lsl.l	#$2,d0
 	add.l	d1,d0
-	lea.l	-$3886(a5),a0
+	lea.l	g_SpriteDefs(a5),a0
 	adda.w	d0,a0
 	move.l	a0,-$4(a6)
 	move.l	(a3),d0

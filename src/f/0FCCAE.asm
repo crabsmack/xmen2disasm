@@ -91,7 +91,7 @@ loc_0FCDA0:
 	subq.w	#$1,-$3B0A(a5)
 	tst.w	-$3B0A(a5)
 	bne.s	loc_0FCDC6
-	move.w	#$1,-$359A(a5)
+	move.w	#$1,g_SceneExitTimer(a5)
 	moveq	#$0,d0
 	move.b	-$3B8A(a5),d0
 	move.w	d0,g_SceneIndex(a5)

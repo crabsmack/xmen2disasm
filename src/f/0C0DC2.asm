@@ -17,7 +17,7 @@ sub_0C0DC2:
 	move.l	d0,d1
 	lsl.l	#$2,d0
 	add.l	d1,d0
-	lea.l	-$3886(a5),a0
+	lea.l	g_SpriteDefs(a5),a0
 	adda.w	d0,a0
 	move.l	a0,-$3C0E(a5)
 	move.w	$E(a6),-$3C10(a5)

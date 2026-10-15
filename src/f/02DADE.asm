@@ -27,7 +27,7 @@ Exodus_TakeDamage:
 loc_02DB2A:
 	tst.w	$68(a4)
 	bne.s	loc_02DB98
-	tst.w	-$359A(a5)
+	tst.w	g_SceneExitTimer(a5)
 	bne.s	loc_02DB98
 	moveq	#$28,d0
 	move.l	d0,-(a7)

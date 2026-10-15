@@ -7,7 +7,7 @@
 DrawList_Remove:
 	link.w	a6,#$0
 	movem.l	d7/a3-a4,-(a7)
-	lea.l	-$134C(a5),a3
+	lea.l	g_DrawNodes(a5),a3
 	move.w	$A(a6),d7
 	blt.s	loc_1F913A
 	cmpi.w	#$1D,d7
@@ -46,12 +46,12 @@ loc_1F9180:
 	movea.l	$4(a4),a0
 	move.l	(a4),(a0)
 loc_1F918C:
-	move.l	(a4),-$1350(a5)
+	move.l	(a4),g_DrawListHead(a5)
 	bra.s	loc_1F91DA
 loc_1F9192:
 	moveq	#$0,d0
-	move.l	d0,-$1354(a5)
-	move.l	d0,-$1350(a5)
+	move.l	d0,g_DrawListTail(a5)
+	move.l	d0,g_DrawListHead(a5)
 	bra.s	loc_1F91DA
 loc_1F919E:
 	tst.l	(a4)
@@ -66,7 +66,7 @@ loc_1F91AE:
 	movea.l	$4(a4),a0
 	move.l	(a4),(a0)
 loc_1F91BA:
-	move.l	$4(a4),-$1354(a5)
+	move.l	$4(a4),g_DrawListTail(a5)
 	bra.s	loc_1F91DA
 loc_1F91C2:
 	tst.l	(a4)

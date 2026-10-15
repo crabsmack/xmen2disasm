@@ -10,7 +10,7 @@ sub_10B5D0:
 	move.w	$8(a4),$C(a4)
 	move.w	$A(a4),d0
 	add.w	d0,$8(a4)
-	tst.w	-$359A(a5)
+	tst.w	g_SceneExitTimer(a5)
 	bne.s	loc_10B61A
 	cmpi.w	#$900,$8(a4)
 	ble.s	loc_10B608

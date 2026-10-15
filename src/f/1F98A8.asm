@@ -9,7 +9,7 @@ sub_1F98A8:
 	move.w	g_VdpReg1(a5),($C00004).l
 	jsr	$5182(a5)	; -> VDP_ClearVram
 	jsr	$518A(a5)	; -> VDP_ClearVsram
-	move.l	#$FF0000,-$348C(a5)
+	move.l	#$FF0000,g_HeapTop(a5)
 	move.l	$8(a6),-$CAE(a5)
 	move.l	$10(a6),-$CB2(a5)
 	move.b	#$1,-$13F0(a5)
@@ -49,7 +49,7 @@ loc_1F9910:
 	jsr	Music_Play(pc)
 	addq.w	#$4,a7
 loc_1F9942:
-	move.l	$44(a6),-$3900(a5)
+	move.l	$44(a6),g_ClassList(a5)
 	move.l	$8(a6),d7
 	movea.l	d7,a0
 	moveq	#$0,d0
@@ -139,7 +139,7 @@ loc_1F9A08:
 	lea.l	$4FA2(a5),a0
 	move.l	a0,-$135E(a5)
 	clr.w	-$34A2(a5)
-	lea.l	-$3886(a5),a4
+	lea.l	g_SpriteDefs(a5),a4
 	moveq	#$0,d7
 	moveq	#$23,d3
 loc_1F9A32:

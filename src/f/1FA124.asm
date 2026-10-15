@@ -370,9 +370,9 @@ loc_1FA5AA:
 	subq.l	#$1,d5
 	bne.w	loc_1FA504
 loc_1FA5B0:
-	tst.l	-$38F0(a5)
+	tst.l	g_ActivateHook(a5)
 	beq.s	loc_1FA5BE
-	movea.l	-$38F0(a5),a0
+	movea.l	g_ActivateHook(a5),a0
 	jsr	(a0)
 	bra.s	loc_1FA61A
 loc_1FA5BE:
@@ -459,7 +459,7 @@ loc_1FA672:
 loc_1FA696:
 	tst.b	g_PalFadeActive(a5)
 	bne.s	loc_1FA6AE
-	tst.w	-$359A(a5)
+	tst.w	g_SceneExitTimer(a5)
 	bne.s	loc_1FA6AE
 	moveq	#$0,d0
 	move.l	d0,-(a7)
@@ -480,7 +480,7 @@ loc_1FA6C6:
 	jsr	$5112(a5)	; -> VDP_WaitVBlank
 	tst.b	-$38E4(a5)
 	bne.w	loc_1FA12C
-	tst.w	-$359A(a5)
+	tst.w	g_SceneExitTimer(a5)
 	ble.w	loc_1FA12C
 	tst.b	-$38DE(a5)
 	beq.s	loc_1FA6E4
@@ -490,8 +490,8 @@ loc_1FA6E4:
 	moveq	#$1,d0
 loc_1FA6E6:
 	ext.w	d0
-	sub.w	d0,-$359A(a5)
-	tst.w	-$359A(a5)
+	sub.w	d0,g_SceneExitTimer(a5)
+	tst.w	g_SceneExitTimer(a5)
 	bgt.w	loc_1FA12C
 loc_1FA6F4:
 	movem.l	-$24(a6),d3/d5-d7/a3-a4

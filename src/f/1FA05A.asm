@@ -4,7 +4,7 @@
 sub_1FA05A:
 	link.w	a6,#$0
 	move.l	a4,-(a7)
-	tst.w	-$359A(a5)
+	tst.w	g_SceneExitTimer(a5)
 	bne.s	loc_1FA0A6
 	tst.l	-$1652(a5)
 	beq.s	loc_1FA086

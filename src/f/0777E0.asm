@@ -18,7 +18,7 @@ LightBeam_ClassInit:
 	move.l	d0,d1
 	lsl.l	#$2,d0
 	add.l	d1,d0
-	lea.l	-$3886(a5),a0
+	lea.l	g_SpriteDefs(a5),a0
 	move.w	$6(a0,d0.w),-$3B10(a5)
 	unlk	a6
 	rts

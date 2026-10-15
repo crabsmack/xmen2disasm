@@ -10,7 +10,7 @@ sub_088600:
 loc_088610:
 	move.w	(a4),d0
 	ext.l	d0
-	movea.l	-$3900(a5),a0
+	movea.l	g_ClassList(a5),a0
 	asl.l	#$2,d0
 	lea.l	$150A(a5),a1
 	move.l	$2(a0,d0.l),d0

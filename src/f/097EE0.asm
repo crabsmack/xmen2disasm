@@ -17,7 +17,7 @@ sub_097EE0:
 	move.l	d1,d2
 	lsl.l	#$2,d1
 	add.l	d2,d1
-	lea.l	-$3886(a5),a0
+	lea.l	g_SpriteDefs(a5),a0
 	pea.l	(a0,d1.w)
 	pea.l	$BC(a4)
 	pea.l	$BA(a4)

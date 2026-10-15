@@ -3,7 +3,7 @@
 ; ---------------------------------------------------------------------------
 sub_1FA6FE:
 	link.w	a6,#$0
-	clr.w	-$359A(a5)
+	clr.w	g_SceneExitTimer(a5)
 	moveq	#$0,d0
 	move.l	d0,g_VBlankCount(a5)
 	clr.w	-$3A22(a5)

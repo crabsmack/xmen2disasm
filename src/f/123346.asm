@@ -16,7 +16,7 @@ sub_123346:
 	lea.l	-$33D2(a5),a0
 	pea.l	(a0,d0.w)
 	jsr	$4F22(a5)	; -> sub_1F7CFE
-	move.w	#$C8,-$359A(a5)
+	move.w	#$C8,g_SceneExitTimer(a5)
 	moveq	#$0,d0
 	move.l	d0,-(a7)
 	move.l	$C(a4),-(a7)

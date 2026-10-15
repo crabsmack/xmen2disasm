@@ -26,7 +26,7 @@ Blast_Draw:
 	move.l	d2,d3
 	lsl.l	#$2,d2
 	add.l	d3,d2
-	lea.l	-$3886(a5),a0
+	lea.l	g_SpriteDefs(a5),a0
 	pea.l	(a0,d2.w)
 	lea.l	$3F6A(a5),a0
 	move.l	$2(a0),-(a7)

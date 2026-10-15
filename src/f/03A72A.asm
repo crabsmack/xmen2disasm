@@ -36,7 +36,7 @@ BanimazaDoor_Init:
 	move.l	d0,d1
 	lsl.l	#$2,d0
 	add.l	d1,d0
-	lea.l	-$3886(a5),a0
+	lea.l	g_SpriteDefs(a5),a0
 	moveq	#$0,d1
 	or.w	$6(a0,d0.w),d1
 	move.w	d1,$9C(a4)

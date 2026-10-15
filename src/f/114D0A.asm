@@ -91,7 +91,7 @@ loc_114DD2:
 	move.l	d0,d1
 	lsl.l	#$2,d0
 	add.l	d1,d0
-	lea.l	-$134C(a5),a0
+	lea.l	g_DrawNodes(a5),a0
 	lea.l	(a0,d0.w),a3
 	lea.l	sub_114B2E(pc),a0
 	move.l	a0,$8(a3)

@@ -137,14 +137,14 @@ loc_1F6D3E:
 	move.w	d5,d0
 	subq.w	#$1,d0
 	move.w	d0,-$3474(a5)
-	movea.l	-$348C(a5),a3
+	movea.l	g_HeapTop(a5),a3
 	pea.l	$1F6D74(pc)
 	moveq	#$0,d0
 	move.l	d0,-(a7)
 	jsr	$5032(a5)	; -> Mem_StackAlloc
 	jsr	sub_1F84BE(pc)
-	move.l	-$348C(a5),(a3)
-	move.l	-$348C(a5),-$33D6(a5)
+	move.l	g_HeapTop(a5),(a3)
+	move.l	g_HeapTop(a5),-$33D6(a5)
 	addq.w	#$8,a7
 	movem.l	-$18(a6),d3/d5-d7/a3-a4
 	unlk	a6

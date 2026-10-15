@@ -31,7 +31,7 @@ loc_119C1A:
 	movea.l	-$4(a6),a0
 	move.w	(a0),d0
 	ext.l	d0
-	movea.l	-$3900(a5),a0
+	movea.l	g_ClassList(a5),a0
 	asl.l	#$2,d0
 	move.l	$2(a0,d0.l),d0
 	cmp.l	$30(a3),d0

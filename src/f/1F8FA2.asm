@@ -108,7 +108,7 @@ loc_1F906A:
 	move.l	d0,d7
 	or.l	d1,d7
 	move.w	d7,$10(a3)
-	movea.l	-$1350(a5),a4
+	movea.l	g_DrawListHead(a5),a4
 	move.l	a4,d0
 	beq.s	loc_1F90F2
 	bra.s	loc_1F9092
@@ -133,11 +133,11 @@ loc_1F909C:
 	movea.l	(a3),a0
 	move.l	a3,$4(a0)
 loc_1F90BA:
-	move.l	a3,-$1354(a5)
+	move.l	a3,g_DrawListTail(a5)
 	movea.l	-$4(a6),a0
 	tst.l	$4(a0)
 	bne.s	loc_1F9102
-	move.l	a0,-$1350(a5)
+	move.l	a0,g_DrawListHead(a5)
 	bra.s	loc_1F9102
 loc_1F90CE:
 	move.l	a4,(a3)
@@ -150,16 +150,16 @@ loc_1F90CE:
 loc_1F90E6:
 	tst.l	$4(a3)
 	bne.s	loc_1F9102
-	move.l	a3,-$1350(a5)
+	move.l	a3,g_DrawListHead(a5)
 	bra.s	loc_1F9102
 loc_1F90F2:
-	move.l	a3,-$1354(a5)
-	move.l	a3,-$1350(a5)
+	move.l	a3,g_DrawListTail(a5)
+	move.l	a3,g_DrawListHead(a5)
 	moveq	#$0,d0
 	move.l	d0,$4(a3)
 	move.l	d0,(a3)
 loc_1F9102:
-	lea.l	-$134C(a5),a0
+	lea.l	g_DrawNodes(a5),a0
 	move.l	a3,d0
 	sub.l	a0,d0
 	moveq	#$14,d1

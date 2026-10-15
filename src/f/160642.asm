@@ -22,7 +22,7 @@ Sys_InitHardware:
 	moveq	#$0,d0
 	move.l	d0,g_VBlankHook(a5)
 loc_160676:
-	move.l	#$FF0000,-$348C(a5)
+	move.l	#$FF0000,g_HeapTop(a5)
 	jsr	$4DA2(a5)	; -> Irq_Enable
 	tst.b	-$202(a5)
 	beq.s	loc_160690

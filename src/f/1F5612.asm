@@ -66,7 +66,7 @@ loc_1F5680:
 	lsl.l	#$4,d0
 	add.l	d0,d0
 	add.l	$18(a6),d0
-	move.l	d0,-$348C(a5)
+	move.l	d0,g_HeapTop(a5)
 	ext.l	d6
 	move.l	d6,d4
 	lsl.l	#$4,d4

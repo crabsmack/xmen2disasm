@@ -24,7 +24,7 @@ sub_097E32:
 	move.l	d2,d3
 	lsl.l	#$2,d2
 	add.l	d3,d2
-	lea.l	-$3886(a5),a0
+	lea.l	g_SpriteDefs(a5),a0
 	pea.l	(a0,d2.w)
 	pea.l	-$2(a6)
 	pea.l	$BA(a4)
@@ -50,7 +50,7 @@ loc_097E90:
 	move.l	d2,d3
 	lsl.l	#$2,d2
 	add.l	d3,d2
-	lea.l	-$3886(a5),a0
+	lea.l	g_SpriteDefs(a5),a0
 	pea.l	(a0,d2.w)
 	pea.l	-$2(a6)
 	pea.l	$BC(a4)

@@ -50,7 +50,7 @@ Boulder_Init:
 	move.l	d1,d2
 	lsl.l	#$2,d1
 	add.l	d2,d1
-	lea.l	-$3886(a5),a0
+	lea.l	g_SpriteDefs(a5),a0
 	lea.l	(a0,d1.w),a4
 	move.l	$2(a4),$A6(a3)
 	move.w	$6(a4),$AA(a3)

@@ -10,7 +10,7 @@ sub_122A14:
 	movea.l	d0,a3
 	move.l	a4,-(a7)
 	jsr	sub_121DB6(pc)
-	tst.w	-$359A(a5)
+	tst.w	g_SceneExitTimer(a5)
 	addq.w	#$8,a7
 	beq.s	loc_122A78
 	tst.l	$98(a4)

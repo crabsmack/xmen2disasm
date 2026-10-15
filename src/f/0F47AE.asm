@@ -258,7 +258,7 @@ loc_0F4A86:
 	clr.b	g_PalBaseDirty(a5)
 	move.w	#$3C,g_PalFadeTimer(a5)
 	move.w	#$8,g_PalFadeDelay(a5)
-	move.w	#$78,-$359A(a5)
+	move.w	#$78,g_SceneExitTimer(a5)
 	clr.w	-$16F0(a5)
 	clr.w	-$17E0(a5)
 	lea.l	$C(a7),a7
@@ -277,7 +277,7 @@ loc_0F4AD4:
 	cmp.w	d7,d3
 	bgt.s	loc_0F4ACC
 	move.b	#$1,g_PalBaseDirty(a5)
-	move.w	#$1,-$359A(a5)
+	move.w	#$1,g_SceneExitTimer(a5)
 loc_0F4AE4:
 	movem.l	-$18(a6),d3/d5-d7/a3-a4
 	unlk	a6

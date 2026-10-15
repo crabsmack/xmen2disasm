@@ -4,9 +4,9 @@
 sub_1FA7E8:
 	link.w	a6,#$0
 	movem.l	d6-d7/a3-a4,-(a7)
-	tst.l	-$3900(a5)
+	tst.l	g_ClassList(a5)
 	beq.s	loc_1FA86C
-	movea.l	-$3900(a5),a0
+	movea.l	g_ClassList(a5),a0
 	move.w	(a0),d0
 	ext.l	d0
 	subq.l	#$2,d0
@@ -16,7 +16,7 @@ sub_1FA7E8:
 	cmp.l	d6,d0
 	ble.s	loc_1FA816
 	moveq	#$0,d0
-	move.l	d0,-$3900(a5)
+	move.l	d0,g_ClassList(a5)
 	move.l	d0,-$10F4(a5)
 	bra.s	loc_1FA86C
 loc_1FA816:
@@ -41,7 +41,7 @@ loc_1FA82E:
 loc_1FA842:
 	cmp.l	d7,d6
 	bgt.s	loc_1FA82E
-	movea.l	-$3900(a5),a0
+	movea.l	g_ClassList(a5),a0
 	lea.l	$2(a0),a4
 	moveq	#$0,d7
 	bra.s	loc_1FA868

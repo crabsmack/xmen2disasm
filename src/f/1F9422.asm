@@ -7,7 +7,7 @@
 DrawList_DrawAll:
 	link.w	a6,#$0
 	move.l	a4,-(a7)
-	movea.l	-$1350(a5),a4
+	movea.l	g_DrawListHead(a5),a4
 	bra.s	loc_1F9442
 loc_1F942E:
 	tst.l	$8(a4)

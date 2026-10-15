@@ -322,12 +322,12 @@ loc_1F5B36:
 loc_1F5B38:
 	move.b	d0,d7
 	move.w	$8(a3),-$3AA8(a5)
-	move.l	-$348C(a5),-$6(a6)
+	move.l	g_HeapTop(a5),-$6(a6)
 	pea.l	$1F5F3A(pc)
 	moveq	#$0,d0
 	move.l	d0,-(a7)
 	jsr	$5032(a5)	; -> Mem_StackAlloc
-	move.l	-$348C(a5),-$3AA6(a5)
+	move.l	g_HeapTop(a5),-$3AA6(a5)
 	moveq	#$0,d0
 	move.l	d0,-(a7)
 	move.l	-$3AA6(a5),-(a7)
@@ -390,7 +390,7 @@ loc_1F5B7E:
 	bra.w	loc_1F5C9C
 loc_1F5C06:
 	movea.l	-$6(a6),a0
-	move.l	-$348C(a5),(a0)
+	move.l	g_HeapTop(a5),(a0)
 	lea.l	$1F5F18(pc),a0
 	movea.l	-$6(a6),a1
 	move.l	a0,$4(a1)
@@ -402,7 +402,7 @@ loc_1F5C06:
 	jsr	$5032(a5)	; -> Mem_StackAlloc
 	movea.l	$14(a6),a0
 	move.w	$8(a0),-$3AAA(a5)
-	move.l	-$348C(a5),-$3A8C(a5)
+	move.l	g_HeapTop(a5),-$3A8C(a5)
 	moveq	#$0,d0
 	move.l	d0,-(a7)
 	move.l	-$3A8C(a5),-(a7)
@@ -456,7 +456,7 @@ loc_1F5CC0:
 	move.l	a0,$4(a1)
 loc_1F5CD2:
 	movea.l	-$6(a6),a0
-	move.l	-$348C(a5),(a0)
+	move.l	g_HeapTop(a5),(a0)
 	moveq	#$7,d0
 	cmp.w	-$3A78(a5),d0
 	bge.s	loc_1F5CEA
@@ -624,7 +624,7 @@ loc_1F5ED2:
 	move.b	$2F(a6),d5
 	move.b	d5,-$3AB4(a5)
 	move.b	d5,-$3AB6(a5)
-	move.l	-$348C(a5),-$3AA2(a5)
+	move.l	g_HeapTop(a5),-$3AA2(a5)
 	movem.l	-$20(a6),d4-d7/a3-a4
 	unlk	a6
 	rts

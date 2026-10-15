@@ -30,7 +30,7 @@ loc_15F980:
 	lea.l	(a0,d0.l),a3
 	move.w	(a3),d0
 	ext.l	d0
-	movea.l	-$3900(a5),a0
+	movea.l	g_ClassList(a5),a0
 	asl.l	#$2,d0
 	move.l	$2(a0,d0.l),(a4)
 	move.l	a3,-(a7)

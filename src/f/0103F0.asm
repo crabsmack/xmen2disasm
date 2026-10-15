@@ -5,7 +5,7 @@ sub_0103F0:
 	link.w	a6,#$0
 	move.l	a4,-(a7)
 	movea.l	$8(a6),a4
-	move.w	#$C8,-$359A(a5)
+	move.w	#$C8,g_SceneExitTimer(a5)
 	move.w	$4C(a4),d0
 	ext.l	d0
 	move.l	$C(a4),d1

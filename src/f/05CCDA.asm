@@ -5,7 +5,7 @@ sub_05CCDA:
 	link.w	a6,#$0
 	move.l	a4,-(a7)
 	movea.l	$8(a6),a4
-	move.w	#$C8,-$359A(a5)
+	move.w	#$C8,g_SceneExitTimer(a5)
 	moveq	#$3,d0
 	bmi.s	loc_05CD0A
 	cmpi.l	#$4,d0

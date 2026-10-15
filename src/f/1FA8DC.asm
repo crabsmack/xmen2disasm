@@ -2,7 +2,7 @@
 ; Mem_StackAlloc - allocate a block from the top-of-heap stack allocator with an 8-byte header {next top, tag}
 ; In:  8(a6) = long: size in bytes (rounded up to even)   $C(a6) = tag (C string)
 ; Out: d0 = pointer to the block after the header
-; Evidence: heap top long -$348C(a5) (= $FF0000 at Sys_InitHardware); header +0 = new top, +4 = tag; Sys_GetStackPtr is called first (result unused)
+; Evidence: heap top long g_HeapTop(a5) (= $FF0000 at Sys_InitHardware); header +0 = new top, +4 = tag; Sys_GetStackPtr is called first (result unused)
 ; ---------------------------------------------------------------------------
 Mem_StackAlloc:
 	link.w	a6,#$0
@@ -10,7 +10,7 @@ Mem_StackAlloc:
 	move.l	$8(a6),d6
 	jsr	$4172(a5)	; -> Sys_GetStackPtr
 	movea.l	d0,a4
-	movea.l	-$348C(a5),a4
+	movea.l	g_HeapTop(a5),a4
 	moveq	#$8,d7
 	moveq	#$1,d0
 	and.w	d7,d0
@@ -24,7 +24,7 @@ Mem_StackAlloc:
 	and.l	d6,d0
 	add.l	d6,d0
 	add.l	a3,d0
-	move.l	d0,-$348C(a5)
+	move.l	d0,g_HeapTop(a5)
 	move.l	d0,(a4)
 	move.l	$C(a6),$4(a4)
 	move.l	a3,d0

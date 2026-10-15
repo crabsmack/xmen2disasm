@@ -15,7 +15,7 @@ loc_10787A:
 	add.l	d0,(a3)
 	cmpa.l	$4(a3),a4
 	bls.s	loc_107898
-	move.l	-$10F0(a5),-(a7)
+	move.l	g_TimerCurrent(a5),-(a7)
 	jsr	$4FEA(a5)	; -> Timer_Free
 	clr.b	-$3BCA(a5)
 	addq.w	#$4,a7
@@ -23,7 +23,7 @@ loc_10787A:
 loc_107898:
 	move.w	(a4),d0
 	ext.l	d0
-	movea.l	-$3900(a5),a0
+	movea.l	g_ClassList(a5),a0
 	asl.l	#$2,d0
 	lea.l	$2A4A(a5),a1
 	move.l	$2(a0,d0.l),d0
@@ -125,7 +125,7 @@ loc_10796C:
 loc_1079B2:
 	move.w	-$35A0(a5),$C(a3)
 	lea.l	sub_107834(pc),a0
-	movea.l	-$10F0(a5),a1
+	movea.l	g_TimerCurrent(a5),a1
 	move.l	a0,$C(a1)
 	bra.s	loc_1079CE
 loc_1079C6:

@@ -4,13 +4,13 @@
 sub_1F84BE:
 	link.w	a6,#$FFF8
 	movem.l	d2-d3/d5-d7/a2-a4,-(a7)
-	move.l	-$348C(a5),-$347C(a5)
+	move.l	g_HeapTop(a5),-$347C(a5)
 	movea.l	-$347C(a5),a3
 	move.w	-$3482(a5),d0
 	mulu.w	-$3484(a5),d0
 	add.l	d0,d0
-	add.l	d0,-$348C(a5)
-	move.l	-$348C(a5),-$3478(a5)
+	add.l	d0,g_HeapTop(a5)
+	move.l	g_HeapTop(a5),-$3478(a5)
 	movea.l	-$3478(a5),a4
 	move.w	-$3484(a5),d6
 	bra.w	loc_1F859C
@@ -86,7 +86,7 @@ loc_1F859C:
 	move.l	a4,d1
 	and.l	d1,d0
 	add.l	d0,d1
-	move.l	d1,-$348C(a5)
+	move.l	d1,g_HeapTop(a5)
 	movem.l	-$28(a6),d2-d3/d5-d7/a2-a4
 	unlk	a6
 	rts

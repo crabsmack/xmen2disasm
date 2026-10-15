@@ -424,7 +424,7 @@ loc_065BDE:
 	jsr	$5112(a5)	; -> VDP_WaitVBlank
 	tst.b	-$38E4(a5)
 	bne.w	loc_0658C6
-	tst.w	-$359A(a5)
+	tst.w	g_SceneExitTimer(a5)
 	ble.w	loc_0658C6
 	tst.b	-$38DE(a5)
 	beq.s	loc_065BFC
@@ -434,8 +434,8 @@ loc_065BFC:
 	moveq	#$1,d0
 loc_065BFE:
 	ext.w	d0
-	sub.w	d0,-$359A(a5)
-	tst.w	-$359A(a5)
+	sub.w	d0,g_SceneExitTimer(a5)
+	tst.w	g_SceneExitTimer(a5)
 	bgt.w	loc_0658C6
 	jsr	$5012(a5)	; -> ClassList_CallSlot62
 	clr.b	-$38BE(a5)

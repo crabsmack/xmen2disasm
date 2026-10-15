@@ -67,7 +67,7 @@ loc_066B48:
 	move.w	#$22,-$3C5A(a5)
 	move.w	-$3C58(a5),-$3B04(a5)
 	move.w	-$3C56(a5),-$3B06(a5)
-	clr.w	-$359A(a5)
+	clr.w	g_SceneExitTimer(a5)
 	moveq	#$0,d0
 	move.l	d0,g_VBlankCount(a5)
 	clr.w	-$3A22(a5)

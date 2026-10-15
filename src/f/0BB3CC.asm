@@ -13,7 +13,7 @@ sub_0BB3CC:
 	move.l	d1,d2
 	lsl.l	#$2,d1
 	add.l	d2,d1
-	lea.l	-$3886(a5),a0
+	lea.l	g_SpriteDefs(a5),a0
 	move.w	$6(a0,d1.w),d1
 	ext.l	d1
 	moveq	#$14,d2

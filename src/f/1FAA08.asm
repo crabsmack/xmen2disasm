@@ -4,7 +4,7 @@
 sub_1FAA08:
 	link.w	a6,#$FDDA
 	movem.l	d3-d7/a3-a4,-(a7)
-	movea.l	-$348C(a5),a3
+	movea.l	g_HeapTop(a5),a3
 	movea.l	$8(a6),a0
 	move.l	$2(a0),-$226(a6)
 	move.l	a3,-$222(a6)
@@ -250,12 +250,12 @@ loc_1FACBC:
 	bcs.w	loc_1FABDC
 	movea.l	$8(a6),a0
 	move.l	-$222(a6),$2(a0)
-	move.l	a4,-$348C(a5)
+	move.l	a4,g_HeapTop(a5)
 	move.l	a4,d0
 	btst	#$0,d0
 	beq.s	loc_1FACE4
 	move.l	a4,d0
-	addq.l	#$1,-$348C(a5)
+	addq.l	#$1,g_HeapTop(a5)
 loc_1FACE4:
 	move.w	d5,d0
 	sub.w	$E(a6),d0

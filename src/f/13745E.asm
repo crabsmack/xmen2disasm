@@ -94,7 +94,7 @@ loc_137524:
 	addq.w	#$4,a7
 	bra.w	loc_1375D0
 loc_137536:
-	tst.w	-$359A(a5)
+	tst.w	g_SceneExitTimer(a5)
 	bne.w	loc_1375D0
 	moveq	#$0,d7
 loc_137540:

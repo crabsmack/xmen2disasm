@@ -22,7 +22,7 @@ sub_1F62C0:
 	move.l	d2,d3
 	lsl.l	#$2,d2
 	add.l	d3,d2
-	lea.l	-$3886(a5),a0
+	lea.l	g_SpriteDefs(a5),a0
 	pea.l	(a0,d2.w)
 	jsr	$506A(a5)	; -> sub_1FB026
 	move.w	-$3598(a5),d0
@@ -34,7 +34,7 @@ sub_1F62C0:
 	move.l	d0,d1
 	lsl.l	#$2,d0
 	add.l	d1,d0
-	lea.l	-$3886(a5),a0
+	lea.l	g_SpriteDefs(a5),a0
 	pea.l	(a0,d0.w)
 	jsr	$505A(a5)	; -> sub_1FAD08
 	move.w	d0,-$3598(a5)

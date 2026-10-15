@@ -10,7 +10,7 @@ Timer_Create:
 	move.b	$17(a6),d5
 	move.w	$E(a6),d6
 	movea.l	$8(a6),a3
-	lea.l	-$10E8(a5),a4
+	lea.l	g_Timers(a5),a4
 	clr.w	d7
 	moveq	#$1E,d3
 loc_1F9CAE:
@@ -22,15 +22,15 @@ loc_1F9CAE:
 	move.l	$10(a6),$10(a4)
 	move.b	d5,$14(a4)
 	move.w	#$FFFE,(a4)
-	tst.l	-$10EC(a5)
+	tst.l	g_TimerList(a5)
 	beq.s	loc_1F9CD8
-	movea.l	-$10EC(a5),a0
+	movea.l	g_TimerList(a5),a0
 	move.l	a4,$8(a0)
 loc_1F9CD8:
-	move.l	-$10EC(a5),$4(a4)
+	move.l	g_TimerList(a5),$4(a4)
 	moveq	#$0,d0
 	move.l	d0,$8(a4)
-	move.l	a4,-$10EC(a5)
+	move.l	a4,g_TimerList(a5)
 	move.l	a4,d0
 	bra.s	loc_1F9CFA
 loc_1F9CEC:

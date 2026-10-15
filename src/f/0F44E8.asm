@@ -6,7 +6,7 @@ sub_0F44E8:
 	moveq	#$3,d0
 	cmp.w	$A(a6),d0
 	bne.s	loc_0F451E
-	tst.w	-$359A(a5)
+	tst.w	g_SceneExitTimer(a5)
 	bne.s	loc_0F451A
 	moveq	#$0,d0
 	move.b	-$3B78(a5),d0
@@ -14,10 +14,10 @@ sub_0F44E8:
 	bne.s	loc_0F4514
 	tst.w	-$3B02(a5)
 	beq.s	loc_0F451A
-	move.w	#$5,-$359A(a5)
+	move.w	#$5,g_SceneExitTimer(a5)
 	bra.s	loc_0F451A
 loc_0F4514:
-	move.w	#$1E,-$359A(a5)
+	move.w	#$1E,g_SceneExitTimer(a5)
 loc_0F451A:
 	moveq	#$1,d0
 	bra.s	loc_0F4520

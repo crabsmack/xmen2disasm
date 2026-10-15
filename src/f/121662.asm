@@ -12,7 +12,7 @@ sub_121662:
 	move.l	d0,d1
 	lsl.l	#$2,d0
 	add.l	d1,d0
-	lea.l	-$3886(a5),a0
+	lea.l	g_SpriteDefs(a5),a0
 	adda.w	d0,a0
 	move.l	a0,-$C(a6)
 	movea.l	-$1A90(a5),a3
