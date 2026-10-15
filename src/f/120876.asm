@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_120876	[jt 1683]
+; BasicBioSentinel_SetFrame - BasicBioSentinel: set the animation frame byte +$2F (class slot 20, +$56)
+; In:  8(a6) = this  $F(a6) = byte frame index ($FF = none)
+; Out: none
+; Evidence: method 20 of class descriptor $123562 (name string "BASICBIOSENTINEL", parent BIONPC)
 ; ---------------------------------------------------------------------------
-sub_120876:
+BasicBioSentinel_SetFrame:
 	link.w	a6,#$FFFC
 	movem.l	d7/a3-a4,-(a7)
 	movea.l	$8(a6),a3

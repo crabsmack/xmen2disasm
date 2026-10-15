@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_139162	[jt 1830]
+; MaintRobot_Hook66 - MaintRobot: virtual hook at class slot 24 (+$66); no caller found yet
+; In:  8(a6) = this
+; Out: none
+; Evidence: method 24 of class descriptor $1391FE (name string "MAINTROBOT", parent XNPC)
 ; ---------------------------------------------------------------------------
-sub_139162:
+MaintRobot_Hook66:
 	link.w	a6,#$FFFC
 	movem.l	a3-a4,-(a7)
 	movea.l	$8(a6),a4

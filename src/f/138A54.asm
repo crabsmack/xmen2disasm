@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_138A54	[jt 1825]
+; MaintRobotFire_Init - MaintRobotFire: constructor: chain to the parent Init, then set this class's fields (class slot 3, +$12)
+; In:  8(a6) = this  $C/$10(a6) = x, y (16.16)  $14(a6) = spawn record or 0
+; Out: none
+; Evidence: method 3 of class descriptor $139180 (name string "MAINTROBOTFIRE", parent ACTOR)
 ; ---------------------------------------------------------------------------
-sub_138A54:
+MaintRobotFire_Init:
 	link.w	a6,#$0
 	move.l	a4,-(a7)
 	movea.l	$8(a6),a4

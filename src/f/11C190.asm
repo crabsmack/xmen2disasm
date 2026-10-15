@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_11C190	[jt 1566]
+; BabyBio_Init - BabyBio: constructor: chain to the parent Init, then set this class's fields (class slot 3, +$12)
+; In:  8(a6) = this  $C/$10(a6) = x, y (16.16)  $14(a6) = spawn record or 0
+; Out: none
+; Evidence: method 3 of class descriptor $11B74C (name string "BABYBIO", parent BIONPC)
 ; ---------------------------------------------------------------------------
-sub_11C190:
+BabyBio_Init:
 	link.w	a6,#$FFF0
 	movem.l	d3/d6-d7/a3-a4,-(a7)
 	move.l	$10(a6),d6

@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_11ED04	[jt 1634]
+; BioBalls_Move - BioBalls: apply velocity (+$16/+$18), acceleration (+$1E/+$20) and speed limits (class slot 18, +$4E)
+; In:  8(a6) = this  $C(a6) = word frame step (1, or 2 when the game runs at half rate)
+; Out: none
+; Evidence: method 18 of class descriptor $1203AC (name string "BIOBALLS", parent ACTOR)
 ; ---------------------------------------------------------------------------
-sub_11ED04:
+BioBalls_Move:
 	link.w	a6,#$FFF6
 	movem.l	d3-d7/a3-a4,-(a7)
 	move.b	#$1,-$2(a6)

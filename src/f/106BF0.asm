@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_106BF0	[jt 1339]
+; Platform1_Init - Platform1: constructor: chain to the parent Init, then set this class's fields (class slot 3, +$12)
+; In:  8(a6) = this  $C/$10(a6) = x, y (16.16)  $14(a6) = spawn record or 0
+; Out: none
+; Evidence: method 3 of class descriptor $1072E8 (name string "PLATFORM1", parent SYNCHRONIZEDACTOR)
 ; ---------------------------------------------------------------------------
-sub_106BF0:
+Platform1_Init:
 	link.w	a6,#$0
 	movem.l	d3/a3-a4,-(a7)
 	movea.l	$14(a6),a3

@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_13745E	[jt 1801]
+; HornetBullet_Update - HornetBullet: per-frame update: range checks, Move, run the state function at +$5C after the +$6C delay (class slot 17, +$4A)
+; In:  8(a6) = this
+; Out: none
+; Evidence: method 17 of class descriptor $137708 (name string "HORNETBULLET", parent ACTOR)
 ; ---------------------------------------------------------------------------
-sub_13745E:
+HornetBullet_Update:
 	link.w	a6,#$0
 	movem.l	d3/d5-d7/a3-a4,-(a7)
 	movea.l	$8(a6),a3

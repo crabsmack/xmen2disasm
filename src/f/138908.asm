@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_138908	[jt 1820]
+; LineSegKiller_Deactivate - LineSegKiller: deactivate: release sprite/collision resources, leave object lists (class slot 16, +$46)
+; In:  8(a6) = this
+; Out: none
+; Evidence: method 16 of class descriptor $1389CA (name string "LINESEGKILLER", parent ACTOR)
 ; ---------------------------------------------------------------------------
-sub_138908:
+LineSegKiller_Deactivate:
 	link.w	a6,#$0
 	movea.l	$8(a6),a0
 	ori.w	#$4000,$4(a0)

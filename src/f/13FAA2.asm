@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_13FAA2	[jt 1901]
+; Spark_Init - Spark: constructor: chain to the parent Init, then set this class's fields (class slot 3, +$12)
+; In:  8(a6) = this  $C/$10(a6) = x, y (16.16)  $14(a6) = spawn record or 0
+; Out: none
+; Evidence: method 3 of class descriptor $1400DE (name string "SPARK", parent ACTOR)
 ; ---------------------------------------------------------------------------
-sub_13FAA2:
+Spark_Init:
 	link.w	a6,#$0
 	movem.l	d6-d7/a3-a4,-(a7)
 	move.l	$10(a6),d6

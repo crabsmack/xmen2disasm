@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_113CA6	[jt 1405]
+; XNpc_Attack - XNpc: hit another actor: call its TakeHit and start this object's hit cooldown (class slot 7, +$22)
+; In:  8(a6) = this  $C(a6) = target actor  then hit type, damage, extra words
+; Out: none
+; Evidence: method 7 of class descriptor $113A88 (name string "XNPC", parent ACTOR)
 ; ---------------------------------------------------------------------------
-sub_113CA6:
+XNpc_Attack:
 	link.w	a6,#$0
 	movem.l	d3/d7/a3-a4,-(a7)
 	move.b	$17(a6),d7

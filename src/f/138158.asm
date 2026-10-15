@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_138158	[jt 1806]
+; LaserCannon_Hook66 - LaserCannon: virtual hook at class slot 24 (+$66); no caller found yet
+; In:  8(a6) = this
+; Out: none
+; Evidence: method 24 of class descriptor $1386B4 (name string "LASERCANNON", parent XNPC)
 ; ---------------------------------------------------------------------------
-sub_138158:
+LaserCannon_Hook66:
 	link.w	a6,#$FFFC
 	movem.l	a3-a4,-(a7)
 	movea.l	$8(a6),a4

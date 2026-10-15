@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_0EB818	[jt 1286]
+; CoreShields_Draw - CoreShields: position/draw the object's sprite relative to the camera (class slot 5, +$1A)
+; In:  8(a6) = this
+; Out: none
+; Evidence: method 5 of class descriptor $0EBE7E (name string "CORESHIELDS", parent ACTOR)
 ; ---------------------------------------------------------------------------
-sub_0EB818:
+CoreShields_Draw:
 	link.w	a6,#$FFF2
 	movem.l	d4-d7/a3-a4,-(a7)
 	movea.l	$8(a6),a3

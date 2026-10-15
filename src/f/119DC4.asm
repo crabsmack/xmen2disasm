@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_119DC4	[jt 1506]
+; SyncActor_CanActivate - SyncActor: may this inactive object activate now (camera range test) (class slot 13, +$3A)
+; In:  8(a6) = this
+; Out: d0.b = 1 to activate
+; Evidence: method 13 of class descriptor $119ECA (name string "SYNCHRONIZEDACTOR", parent ACTOR)
 ; ---------------------------------------------------------------------------
-sub_119DC4:
+SyncActor_CanActivate:
 	link.w	a6,#$0
 	movem.l	d7/a4,-(a7)
 	movea.l	$8(a6),a4

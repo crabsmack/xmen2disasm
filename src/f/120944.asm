@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_120944	[jt 1685]
+; BioSentinel_Deactivate - BioSentinel: deactivate: release sprite/collision resources, leave object lists (class slot 16, +$46)
+; In:  8(a6) = this
+; Out: none
+; Evidence: method 16 of class descriptor $1235F6 (name string "BIOSENTINEL", parent BASICBIOSENTINEL)
 ; ---------------------------------------------------------------------------
-sub_120944:
+BioSentinel_Deactivate:
 	link.w	a6,#$0
 	move.l	a4,-(a7)
 	movea.l	$8(a6),a4

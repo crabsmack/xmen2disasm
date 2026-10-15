@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_0EB7D8	[jt 1285]
+; CoreShields_Update - CoreShields: per-frame update: range checks, Move, run the state function at +$5C after the +$6C delay (class slot 17, +$4A)
+; In:  8(a6) = this
+; Out: none
+; Evidence: method 17 of class descriptor $0EBE7E (name string "CORESHIELDS", parent ACTOR)
 ; ---------------------------------------------------------------------------
-sub_0EB7D8:
+CoreShields_Update:
 	link.w	a6,#$0
 	move.l	a4,-(a7)
 	movea.l	$8(a6),a4

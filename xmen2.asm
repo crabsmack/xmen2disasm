@@ -2035,7 +2035,9 @@ Str_SiberiaB1Blizzard:	; C string, resource name looked up by Scene_RegisterAll
 	include "src/f/0E8196.asm"
 	include "src/f/0E819E.asm"
 	include "src/f/0E82E4.asm"
-	incrom	$0E83AC,$162A
+Tbl_HoloBolt_vtable:	; class descriptor "HOLOBOLT": word $6E = name offset, long parent (ACTOR), 26 method pointers, then the class name string
+	incrom	$0E83AC,$78
+	incrom	$0E8424,$15B2
 	include "src/f/0E99D6.asm"
 	include "src/f/0E99E4.asm"
 	include "src/f/0E99EC.asm"
@@ -2091,6 +2093,7 @@ Str_SiberiaB1Blizzard:	; C string, resource name looked up by Scene_RegisterAll
 	include "src/f/0EA898.asm"
 	include "src/f/0EA8AE.asm"
 	include "src/f/0EAD14.asm"
+Tbl_Hologram_vtable:	; class descriptor "HOLOGRAM": word $6E = name offset, long parent (ACTOR), 26 method pointers, then the class name string
 	incrom	$0EAE16,$78
 	include "src/f/0EAE8E.asm"
 	incrom	$0EAEFC,$2
@@ -2118,7 +2121,9 @@ Str_SiberiaB1Blizzard:	; C string, resource name looked up by Scene_RegisterAll
 	include "src/f/0EBCEE.asm"
 	include "src/f/0EBD78.asm"
 	include "src/f/0EBDBC.asm"
-	incrom	$0EBE7E,$6A0
+Tbl_CoreShields_vtable:	; class descriptor "CORESHIELDS": word $6E = name offset, long parent (ACTOR), 26 method pointers, then the class name string
+	incrom	$0EBE7E,$7A
+	incrom	$0EBEF8,$626
 	include "src/f/0EC51E.asm"
 	include "src/f/0EC526.asm"
 	include "src/f/0EC534.asm"
@@ -2137,7 +2142,12 @@ Str_SiberiaB1Blizzard:	; C string, resource name looked up by Scene_RegisterAll
 	include "src/f/0EC834.asm"
 	include "src/f/0EC840.asm"
 	include "src/f/0EC856.asm"
-	incrom	$0EC98E,$796E
+Tbl_CoreElevator_vtable:	; class descriptor "COREELEVATOR": word $6E = name offset, long parent (ACTOR), 26 method pointers, then the class name string
+	incrom	$0EC98E,$7C
+	incrom	$0ECA0A,$8
+Tbl_CoreZap_vtable:	; class descriptor "COREZAP": word $6E = name offset, long parent (ACTOR), 26 method pointers, then the class name string
+	incrom	$0ECA12,$76
+	incrom	$0ECA88,$7874
 	include "src/f/0F42FC.asm"
 	include "src/f/0F4314.asm"
 	include "src/f/0F4350.asm"
@@ -2203,6 +2213,7 @@ Str_SiberiaB1Blizzard:	; C string, resource name looked up by Scene_RegisterAll
 	include "src/f/1071AA.asm"
 	include "src/f/1071DE.asm"
 	include "src/f/107254.asm"
+Tbl_Platform1_vtable:	; class descriptor "PLATFORM1": word $7E = name offset, long parent (SYNCHRONIZEDACTOR), 30 method pointers, then the class name string
 	incrom	$1072E8,$88
 	include "src/f/107370.asm"
 	include "src/f/107378.asm"
@@ -2229,7 +2240,11 @@ Str_SiberiaB1Blizzard:	; C string, resource name looked up by Scene_RegisterAll
 	include "src/f/107834.asm"
 	include "src/f/107860.asm"
 	include "src/f/1079D8.asm"
-	incrom	$107A3E,$3B14
+Tbl_Switch_vtable:	; class descriptor "SWITCH": word $6E = name offset, long parent (ACTOR), 26 method pointers, then the class name string
+	incrom	$107A3E,$76
+	incrom	$107AB4,$3A7E
+Tbl_Elevator_vtable:	; class descriptor "ELEVATOR": word $16 = name offset, long parent (none), 4 method pointers, then the class name string
+	incrom	$10B532,$20
 	include "src/f/10B552.asm"
 	include "src/f/10B57C.asm"
 	include "src/f/10B584.asm"
@@ -2247,7 +2262,9 @@ Str_SiberiaB1Blizzard:	; C string, resource name looked up by Scene_RegisterAll
 	include "src/f/10BA6A.asm"
 	include "src/f/10BB62.asm"
 	include "src/f/10BB6E.asm"
-	incrom	$10BBD6,$560C
+	incrom	$10BBD6,$558C
+Tbl_Deathbird_vtable:	; class descriptor "DEATHBIRD": word $76 = name offset, long parent (ACTOR), 28 method pointers, then the class name string
+	incrom	$111162,$80
 	include "src/f/1111E2.asm"
 	include "src/f/1111EA.asm"
 	incrom	$1112DC,$5A
@@ -2302,7 +2319,29 @@ Str_SiberiaB1Blizzard:	; C string, resource name looked up by Scene_RegisterAll
 	include "src/f/112EA4.asm"
 	include "src/f/112F58.asm"
 	include "src/f/112F8E.asm"
-	incrom	$112FD8,$BC2
+	incrom	$112FD8,$1C8
+Tbl_XPlayer_vtable:	; class descriptor "XPLAYER": word $F2 = name offset, long parent (ACTOR), 59 method pointers, then the class name string
+	incrom	$1131A0,$FA
+Tbl_XClimber_vtable:	; class descriptor "XCLIMBER": word $F6 = name offset, long parent (XPLAYER), 60 method pointers, then the class name string
+	incrom	$11329A,$100
+Tbl_Beast_vtable:	; class descriptor "BEAST": word $F6 = name offset, long parent (XCLIMBER), 60 method pointers, then the class name string
+	incrom	$11339A,$FC
+Tbl_Nightcrawler_vtable:	; class descriptor "NIGHTCRAWLER": word $F6 = name offset, long parent (XCLIMBER), 60 method pointers, then the class name string
+	incrom	$113496,$104
+Tbl_Psylocke_vtable:	; class descriptor "PSYLOCKE": word $F6 = name offset, long parent (XCLIMBER), 60 method pointers, then the class name string
+	incrom	$11359A,$100
+Tbl_Wolverine_vtable:	; class descriptor "WOLVERINE": word $F6 = name offset, long parent (XCLIMBER), 60 method pointers, then the class name string
+	incrom	$11369A,$100
+Tbl_Magneto_vtable:	; class descriptor "MAGNETO": word $F2 = name offset, long parent (XPLAYER), 59 method pointers, then the class name string
+	incrom	$11379A,$FA
+Tbl_Gambit_vtable:	; class descriptor "GAMBIT": word $F2 = name offset, long parent (XPLAYER), 59 method pointers, then the class name string
+	incrom	$113894,$FA
+Tbl_Cyclops_vtable:	; class descriptor "CYCLOPS": word $F2 = name offset, long parent (XPLAYER), 59 method pointers, then the class name string
+	incrom	$11398E,$FA
+Tbl_XNpc_vtable:	; class descriptor "XNPC": word $82 = name offset, long parent (ACTOR), 31 method pointers, then the class name string
+	incrom	$113A88,$88
+Tbl_BioNpc_vtable:	; class descriptor "BIONPC": word $82 = name offset, long parent (XNPC), 31 method pointers, then the class name string
+	incrom	$113B10,$8A
 	include "src/f/113B9A.asm"
 	include "src/f/113BA8.asm"
 	include "src/f/113BBE.asm"
@@ -2379,7 +2418,22 @@ Str_SiberiaB1Blizzard:	; C string, resource name looked up by Scene_RegisterAll
 	include "src/f/117B82.asm"
 	include "src/f/117B90.asm"
 	include "src/f/117BD4.asm"
-	incrom	$117C28,$41A
+Tbl_PowerUp_vtable:	; class descriptor "POWERUP": word $72 = name offset, long parent (ACTOR), 27 method pointers, then the class name string
+	incrom	$117C28,$7A
+Tbl_SegmentPlusPowerUp_vtable:	; class descriptor "SEGMENTPLUSPOWERUP": word $72 = name offset, long parent (POWERUP), 27 method pointers, then the class name string
+	incrom	$117CA2,$86
+Tbl_SegmentMinusPowerUp_vtable:	; class descriptor "SEGMENTMINUSPOWERUP": word $72 = name offset, long parent (POWERUP), 27 method pointers, then the class name string
+	incrom	$117D28,$86
+Tbl_XPowerPlusPowerUp_vtable:	; class descriptor "XPOWERPLUSPOWERUP": word $72 = name offset, long parent (POWERUP), 27 method pointers, then the class name string
+	incrom	$117DAE,$84
+Tbl_XPowerMinusPowerUp_vtable:	; class descriptor "XPOWERMINUSPOWERUP": word $72 = name offset, long parent (POWERUP), 27 method pointers, then the class name string
+	incrom	$117E32,$86
+Tbl_MondoPlusPowerUp_vtable:	; class descriptor "MONDOPLUSPOWERUP": word $72 = name offset, long parent (POWERUP), 27 method pointers, then the class name string
+	incrom	$117EB8,$84
+Tbl_MondoMinusPowerUp_vtable:	; class descriptor "MONDOMINUSPOWERUP": word $72 = name offset, long parent (POWERUP), 27 method pointers, then the class name string
+	incrom	$117F3C,$84
+Tbl_MysteryPowerUp_vtable:	; class descriptor "MYSTERYPOWERUP": word $72 = name offset, long parent (POWERUP), 27 method pointers, then the class name string
+	incrom	$117FC0,$82
 	include "src/f/118042.asm"
 	include "src/f/118074.asm"
 	include "src/f/118136.asm"
@@ -2402,6 +2456,7 @@ Str_SiberiaB1Blizzard:	; C string, resource name looked up by Scene_RegisterAll
 	include "src/f/118814.asm"
 	include "src/f/118826.asm"
 	include "src/f/118874.asm"
+Tbl_ICandy_vtable:	; class descriptor "ICANDY": word $26 = name offset, long parent (none), 8 method pointers, then the class name string
 	incrom	$1188AC,$2E
 	include "src/f/1188DA.asm"
 	include "src/f/1188E8.asm"
@@ -2410,7 +2465,11 @@ Str_SiberiaB1Blizzard:	; C string, resource name looked up by Scene_RegisterAll
 	include "src/f/118A88.asm"
 	include "src/f/118AB4.asm"
 	include "src/f/118C2E.asm"
-	incrom	$118C8E,$BE
+Tbl_RThetaObject_vtable:	; class descriptor "RTHETAOBJECT": word $6E = name offset, long parent (ACTOR), 26 method pointers, then the class name string
+	incrom	$118C8E,$7C
+	incrom	$118D0A,$28
+Tbl_GaussBullet_vtable:	; class descriptor "GAUSSBULLET": word $E = name offset, long parent (none), 2 method pointers, then the class name string
+	incrom	$118D32,$1A
 	include "src/f/118D4C.asm"
 	include "src/f/118D56.asm"
 	include "src/f/118D6C.asm"
@@ -2424,6 +2483,7 @@ Str_SiberiaB1Blizzard:	; C string, resource name looked up by Scene_RegisterAll
 	incrom	$119782,$2
 	include "src/f/119784.asm"
 	include "src/f/119796.asm"
+Tbl_BBoard_vtable:	; class descriptor "BBOARD": word $16 = name offset, long parent (none), 4 method pointers, then the class name string
 	incrom	$1197CA,$1E
 	include "src/f/1197E8.asm"
 	include "src/f/1197F2.asm"
@@ -2441,6 +2501,7 @@ Str_SiberiaB1Blizzard:	; C string, resource name looked up by Scene_RegisterAll
 	include "src/f/119B66.asm"
 	include "src/f/119BCA.asm"
 	include "src/f/119CEC.asm"
+Tbl_Synchronizer_vtable:	; class descriptor "SYNCHRONIZER": word $2A = name offset, long parent (none), 9 method pointers, then the class name string
 	incrom	$119CFE,$38
 	include "src/f/119D36.asm"
 	include "src/f/119D44.asm"
@@ -2453,7 +2514,9 @@ Str_SiberiaB1Blizzard:	; C string, resource name looked up by Scene_RegisterAll
 	include "src/f/119E70.asm"
 	include "src/f/119E92.asm"
 	include "src/f/119EB4.asm"
-	incrom	$119ECA,$161C
+Tbl_SyncActor_vtable:	; class descriptor "SYNCHRONIZEDACTOR": word $7E = name offset, long parent (ACTOR), 30 method pointers, then the class name string
+	incrom	$119ECA,$90
+	incrom	$119F5A,$158C
 	include "src/f/11B4E6.asm"
 	incrom	$11B4EA,$1E
 	include "src/f/11B508.asm"
@@ -2480,7 +2543,23 @@ Str_SiberiaB1Blizzard:	; C string, resource name looked up by Scene_RegisterAll
 	include "src/f/11B6A2.asm"
 	incrom	$11B6AA,$2
 	include "src/f/11B6AC.asm"
-	incrom	$11B6B4,$47C
+	incrom	$11B6B4,$20
+Tbl_BioFlame_vtable:	; class descriptor "BIOFLAME": word $6E = name offset, long parent (ACTOR), 26 method pointers, then the class name string
+	incrom	$11B6D4,$78
+Tbl_BabyBio_vtable:	; class descriptor "BABYBIO": word $82 = name offset, long parent (BIONPC), 31 method pointers, then the class name string
+	incrom	$11B74C,$8A
+Tbl_BabySentinelA_vtable:	; class descriptor "BABYSENTINELA": word $82 = name offset, long parent (BABYBIO), 31 method pointers, then the class name string
+	incrom	$11B7D6,$90
+Tbl_BabySentinelB_vtable:	; class descriptor "BABYSENTINELB": word $82 = name offset, long parent (BABYBIO), 31 method pointers, then the class name string
+	incrom	$11B866,$90
+Tbl_BabySentinelC_vtable:	; class descriptor "BABYSENTINELC": word $82 = name offset, long parent (BABYBIO), 31 method pointers, then the class name string
+	incrom	$11B8F6,$90
+Tbl_BabyMoleMan_vtable:	; class descriptor "BABYMOLEMAN": word $82 = name offset, long parent (BABYBIO), 31 method pointers, then the class name string
+	incrom	$11B986,$8E
+Tbl_FloatBio_vtable:	; class descriptor "FLOATBIO": word $82 = name offset, long parent (BABYBIO), 31 method pointers, then the class name string
+	incrom	$11BA14,$8C
+Tbl_WallCrawlBio_vtable:	; class descriptor "WALLCRAWLBIO": word $82 = name offset, long parent (BABYBIO), 31 method pointers, then the class name string
+	incrom	$11BAA0,$90
 	include "src/f/11BB30.asm"
 	include "src/f/11BB3E.asm"
 	include "src/f/11BB54.asm"
@@ -2572,7 +2651,9 @@ Str_SiberiaB1Blizzard:	; C string, resource name looked up by Scene_RegisterAll
 	include "src/f/11E480.asm"
 	include "src/f/11E5E6.asm"
 	include "src/f/11E618.asm"
-	incrom	$11E6EC,$92
+Tbl_BioBullet_vtable:	; class descriptor "BIOBULLET": word $6E = name offset, long parent (ACTOR), 26 method pointers, then the class name string
+	incrom	$11E6EC,$78
+	incrom	$11E764,$1A
 	include "src/f/11E77E.asm"
 	incrom	$11E782,$28
 	include "src/f/11E7AA.asm"
@@ -2607,7 +2688,9 @@ Str_SiberiaB1Blizzard:	; C string, resource name looked up by Scene_RegisterAll
 	include "src/f/1200AE.asm"
 	include "src/f/120124.asm"
 	include "src/f/1203A4.asm"
-	incrom	$1203AC,$47C
+Tbl_BioBalls_vtable:	; class descriptor "BIOBALLS": word $6E = name offset, long parent (ACTOR), 26 method pointers, then the class name string
+	incrom	$1203AC,$78
+	incrom	$120424,$404
 	include "src/f/120828.asm"
 	incrom	$120830,$38
 	include "src/f/120868.asm"
@@ -2679,7 +2762,14 @@ Str_SiberiaB1Blizzard:	; C string, resource name looked up by Scene_RegisterAll
 	include "src/f/12340E.asm"
 	include "src/f/1234F4.asm"
 	include "src/f/1234FC.asm"
-	incrom	$12355E,$100D2
+	incrom	$12355E,$4
+Tbl_BasicBioSentinel_vtable:	; class descriptor "BASICBIOSENTINEL": word $82 = name offset, long parent (BIONPC), 31 method pointers, then the class name string
+	incrom	$123562,$94
+Tbl_BioSentinel_vtable:	; class descriptor "BIOSENTINEL": word $82 = name offset, long parent (BASICBIOSENTINEL), 31 method pointers, then the class name string
+	incrom	$1235F6,$8E
+Tbl_BigBio_vtable:	; class descriptor "BIGBIO": word $82 = name offset, long parent (BASICBIOSENTINEL), 31 method pointers, then the class name string
+	incrom	$123684,$8A
+	incrom	$12370E,$FF22
 	include "src/f/133630.asm"
 	include "src/f/13363E.asm"
 	include "src/f/13364A.asm"
@@ -2700,7 +2790,11 @@ Str_SiberiaB1Blizzard:	; C string, resource name looked up by Scene_RegisterAll
 	include "src/f/133C1A.asm"
 	include "src/f/133CD0.asm"
 	include "src/f/133CF4.asm"
-	incrom	$133CFC,$14E
+Tbl_BrainRocket_vtable:	; class descriptor "BRAINROCKET": word $6E = name offset, long parent (ACTOR), 26 method pointers, then the class name string
+	incrom	$133CFC,$7A
+Tbl_DropRocket_vtable:	; class descriptor "DROPROCKET": word $6E = name offset, long parent (BRAINROCKET), 26 method pointers, then the class name string
+	incrom	$133D76,$7A
+	incrom	$133DF0,$5A
 	include "src/f/133E4A.asm"
 	incrom	$133E98,$A4
 	include "src/f/133F3C.asm"
@@ -2711,7 +2805,9 @@ Str_SiberiaB1Blizzard:	; C string, resource name looked up by Scene_RegisterAll
 	include "src/f/1340D0.asm"
 	include "src/f/13412A.asm"
 	include "src/f/13420C.asm"
-	incrom	$134214,$2C6
+Tbl_FireWall_vtable:	; class descriptor "FIREWALL": word $6E = name offset, long parent (ACTOR), 26 method pointers, then the class name string
+	incrom	$134214,$78
+	incrom	$13428C,$24E
 	include "src/f/1344DA.asm"
 	incrom	$1344DE,$2
 	include "src/f/1344E0.asm"
@@ -2719,7 +2815,9 @@ Str_SiberiaB1Blizzard:	; C string, resource name looked up by Scene_RegisterAll
 	include "src/f/1344EA.asm"
 	incrom	$1344F2,$2
 	include "src/f/1344F4.asm"
-	incrom	$1344FC,$94
+	incrom	$1344FC,$1C
+Tbl_FlyBrood_vtable:	; class descriptor "FLYBROOD": word $6E = name offset, long parent (ACTOR), 26 method pointers, then the class name string
+	incrom	$134518,$78
 	include "src/f/134590.asm"
 	include "src/f/13459E.asm"
 	include "src/f/1345A6.asm"
@@ -2799,7 +2897,9 @@ Str_SiberiaB1Blizzard:	; C string, resource name looked up by Scene_RegisterAll
 	include "src/f/1371C8.asm"
 	include "src/f/1371D8.asm"
 	include "src/f/13722C.asm"
-	incrom	$137252,$EE
+Tbl_Hornet_vtable:	; class descriptor "HORNET": word $82 = name offset, long parent (XNPC), 31 method pointers, then the class name string
+	incrom	$137252,$8A
+	incrom	$1372DC,$64
 	include "src/f/137340.asm"
 	include "src/f/13734E.asm"
 	include "src/f/137356.asm"
@@ -2807,7 +2907,9 @@ Str_SiberiaB1Blizzard:	; C string, resource name looked up by Scene_RegisterAll
 	include "src/f/137382.asm"
 	include "src/f/13745E.asm"
 	include "src/f/1375DA.asm"
-	incrom	$137708,$A42
+Tbl_HornetBullet_vtable:	; class descriptor "HORNETBULLET": word $6E = name offset, long parent (ACTOR), 26 method pointers, then the class name string
+	incrom	$137708,$7C
+	incrom	$137784,$9C6
 	include "src/f/13814A.asm"
 	include "src/f/138158.asm"
 	include "src/f/13816E.asm"
@@ -2825,7 +2927,9 @@ Str_SiberiaB1Blizzard:	; C string, resource name looked up by Scene_RegisterAll
 	include "src/f/138556.asm"
 	include "src/f/138582.asm"
 	include "src/f/1385B8.asm"
-	incrom	$1386B4,$B2
+Tbl_LaserCannon_vtable:	; class descriptor "LASERCANNON": word $82 = name offset, long parent (XNPC), 31 method pointers, then the class name string
+	incrom	$1386B4,$8E
+	incrom	$138742,$24
 	include "src/f/138766.asm"
 	include "src/f/13884A.asm"
 	include "src/f/138858.asm"
@@ -2836,6 +2940,7 @@ Str_SiberiaB1Blizzard:	; C string, resource name looked up by Scene_RegisterAll
 	include "src/f/13891A.asm"
 	include "src/f/138968.asm"
 	include "src/f/1389C2.asm"
+Tbl_LineSegKiller_vtable:	; class descriptor "LINESEGKILLER": word $6E = name offset, long parent (ACTOR), 26 method pointers, then the class name string
 	incrom	$1389CA,$7C
 	include "src/f/138A46.asm"
 	include "src/f/138A54.asm"
@@ -2857,7 +2962,11 @@ Str_SiberiaB1Blizzard:	; C string, resource name looked up by Scene_RegisterAll
 	include "src/f/139108.asm"
 	include "src/f/139162.asm"
 	include "src/f/139178.asm"
-	incrom	$139180,$15B6
+Tbl_MaintRobotFire_vtable:	; class descriptor "MAINTROBOTFIRE": word $6E = name offset, long parent (ACTOR), 26 method pointers, then the class name string
+	incrom	$139180,$7E
+Tbl_MaintRobot_vtable:	; class descriptor "MAINTROBOT": word $82 = name offset, long parent (XNPC), 31 method pointers, then the class name string
+	incrom	$1391FE,$8E
+	incrom	$13928C,$14AA
 	include "src/f/13A736.asm"
 	include "src/f/13A744.asm"
 	include "src/f/13A75A.asm"
@@ -2878,7 +2987,9 @@ Str_SiberiaB1Blizzard:	; C string, resource name looked up by Scene_RegisterAll
 	include "src/f/13AD32.asm"
 	include "src/f/13AD6C.asm"
 	include "src/f/13ADA6.asm"
-	incrom	$13AF1A,$1CFA
+Tbl_Mine_vtable:	; class descriptor "MINE": word $6E = name offset, long parent (ACTOR), 26 method pointers, then the class name string
+	incrom	$13AF1A,$74
+	incrom	$13AF8E,$1C86
 	include "src/f/13CC14.asm"
 	include "src/f/13CC22.asm"
 	include "src/f/13CC2E.asm"
@@ -2900,7 +3011,9 @@ Str_SiberiaB1Blizzard:	; C string, resource name looked up by Scene_RegisterAll
 	include "src/f/13D716.asm"
 	include "src/f/13D786.asm"
 	include "src/f/13D7F6.asm"
-	incrom	$13D7FE,$C4
+Tbl_Ninja_vtable:	; class descriptor "NINJA": word $82 = name offset, long parent (BIONPC), 31 method pointers, then the class name string
+	incrom	$13D7FE,$88
+	incrom	$13D886,$3C
 	include "src/f/13D8C2.asm"
 	incrom	$13D8C6,$2
 	include "src/f/13D8C8.asm"
@@ -2950,7 +3063,9 @@ Str_SiberiaB1Blizzard:	; C string, resource name looked up by Scene_RegisterAll
 	include "src/f/13F21C.asm"
 	include "src/f/13F24C.asm"
 	include "src/f/13F282.asm"
-	incrom	$13F28A,$1EA
+Tbl_Pop_vtable:	; class descriptor "POP": word $6E = name offset, long parent (ACTOR), 26 method pointers, then the class name string
+	incrom	$13F28A,$72
+	incrom	$13F2FC,$178
 	include "src/f/13F474.asm"
 	include "src/f/13F486.asm"
 	include "src/f/13F498.asm"

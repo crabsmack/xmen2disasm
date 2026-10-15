@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_119EB4	[jt 1513]
+; SyncActor_Hook66 - SyncActor: virtual hook at class slot 24 (+$66); no caller found yet
+; In:  8(a6) = this
+; Out: none
+; Evidence: method 24 of class descriptor $119ECA (name string "SYNCHRONIZEDACTOR", parent ACTOR)
 ; ---------------------------------------------------------------------------
-sub_119EB4:
+SyncActor_Hook66:
 	link.w	a6,#$FFFC
 	movem.l	a3-a4,-(a7)
 	movea.l	$8(a6),a4

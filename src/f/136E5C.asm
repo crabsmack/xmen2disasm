@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_136E5C	[jt 1789]
+; Hornet_LevelInit - Hornet: per-class hook run at level start before the spawn pass (static, class slot 22, +$5E; sub_1FA7E8)
+; In:  8(a6) = 0  $C(a6) = class index in the level class list
+; Out: none
+; Evidence: method 22 of class descriptor $137252 (name string "HORNET", parent XNPC)
 ; ---------------------------------------------------------------------------
-sub_136E5C:
+Hornet_LevelInit:
 	link.w	a6,#$0
 	jsr	sub_1364C2(pc)
 	moveq	#$3,d0

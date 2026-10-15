@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_117AF2	[jt 1447]
+; MondoMinusPowerUp_Init - MondoMinusPowerUp: constructor: chain to the parent Init, then set this class's fields (class slot 3, +$12)
+; In:  8(a6) = this  $C/$10(a6) = x, y (16.16)  $14(a6) = spawn record or 0
+; Out: none
+; Evidence: method 3 of class descriptor $117F3C (name string "MONDOMINUSPOWERUP", parent POWERUP)
 ; ---------------------------------------------------------------------------
-sub_117AF2:
+MondoMinusPowerUp_Init:
 	link.w	a6,#$0
 	move.l	a4,-(a7)
 	movea.l	$8(a6),a4

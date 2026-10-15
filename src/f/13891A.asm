@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_13891A	[jt 1821]
+; LineSegKiller_Kill - LineSegKiller: remove the object (health ran out or explicit kill) (class slot 19, +$52)
+; In:  8(a6) = this
+; Out: none
+; Evidence: method 19 of class descriptor $1389CA (name string "LINESEGKILLER", parent ACTOR)
 ; ---------------------------------------------------------------------------
-sub_13891A:
+LineSegKiller_Kill:
 	link.w	a6,#$0
 	move.l	a4,-(a7)
 	movea.l	$8(a6),a4

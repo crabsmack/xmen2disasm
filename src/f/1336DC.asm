@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_1336DC	[jt 1718]
+; BrainRocket_Update - BrainRocket: per-frame update: range checks, Move, run the state function at +$5C after the +$6C delay (class slot 17, +$4A)
+; In:  8(a6) = this
+; Out: none
+; Evidence: method 17 of class descriptor $133CFC (name string "BRAINROCKET", parent ACTOR)
 ; ---------------------------------------------------------------------------
-sub_1336DC:
+BrainRocket_Update:
 	link.w	a6,#$0
 	movem.l	d3/d6-d7/a4,-(a7)
 	movea.l	$8(a6),a4

@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_112596	[jt 1386]
+; Deathbird_ShouldDeactivate - Deathbird: is the active object out of range and due to deactivate (class slot 15, +$42)
+; In:  8(a6) = this
+; Out: d0.b = 1 to deactivate
+; Evidence: method 15 of class descriptor $111162 (name string "DEATHBIRD", parent ACTOR)
 ; ---------------------------------------------------------------------------
-sub_112596:
+Deathbird_ShouldDeactivate:
 	link.w	a6,#$0
 	moveq	#$0,d0
 	unlk	a6

@@ -1,9 +1,12 @@
 ; ---------------------------------------------------------------------------
-; sub_0EB7C8	[jt 1284]
+; CoreShields_LevelInit - CoreShields: per-class hook run at level start before the spawn pass (static, class slot 22, +$5E; sub_1FA7E8)
+; In:  8(a6) = 0  $C(a6) = class index in the level class list
+; Out: none
+; Evidence: method 22 of class descriptor $0EBE7E (name string "CORESHIELDS", parent ACTOR)
 ; ---------------------------------------------------------------------------
-sub_0EB7C8:
+CoreShields_LevelInit:
 	link.w	a6,#$0
 	move.l	$8(a6),-(a7)
-	jsr	sub_0EB7BC(pc)
+	jsr	CoreShields_Reset(pc)
 	unlk	a6
 	rts

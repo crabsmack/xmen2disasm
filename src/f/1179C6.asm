@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_1179C6	[jt 1440]
+; XPowerMinusPowerUp_SizeOf - XPowerMinusPowerUp: return the object size in bytes (class slot 0, +$06)
+; In:  none
+; Out: d0 = object size in bytes
+; Evidence: method 0 of class descriptor $117E32 (name string "XPOWERMINUSPOWERUP", parent POWERUP)
 ; ---------------------------------------------------------------------------
-sub_1179C6:
+XPowerMinusPowerUp_SizeOf:
 	link.w	a6,#$0
 	move.l	#$8E,d0
 	unlk	a6

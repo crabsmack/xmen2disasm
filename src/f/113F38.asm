@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_113F38	[jt 1410]
+; XNpc_OnDeath - XNpc: XNPC hook: health ran out (class slot 27, +$72; called from XNpc_TakeHit)
+; In:  8(a6) = this  $F(a6) = byte damage  $13(a6) = byte hit type
+; Out: none
+; Evidence: method 27 of class descriptor $113A88 (name string "XNPC", parent ACTOR)
 ; ---------------------------------------------------------------------------
-sub_113F38:
+XNpc_OnDeath:
 	link.w	a6,#$0
 	move.b	$13(a6),d0
 	ext.w	d0

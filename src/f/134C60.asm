@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_134C60	[jt 1769]
+; FlyBrood_Draw - FlyBrood: position/draw the object's sprite relative to the camera (class slot 5, +$1A)
+; In:  8(a6) = this
+; Out: none
+; Evidence: method 5 of class descriptor $134518 (name string "FLYBROOD", parent ACTOR)
 ; ---------------------------------------------------------------------------
-sub_134C60:
+FlyBrood_Draw:
 	link.w	a6,#$FFFE
 	movem.l	d3-d7/a3-a4,-(a7)
 	movea.l	$8(a6),a4

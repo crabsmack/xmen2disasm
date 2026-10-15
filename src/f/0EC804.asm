@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_0EC804	[jt 1304]
+; CoreElevator_InitSpawnRec - CoreElevator: fill a 14-byte spawn record from level placement data (static, class slot 1, +$0A; called by the level spawn-list builder)
+; In:  8(a6) = spawn record (14 bytes)  $C(a6) = level placement entry
+; Out: none
+; Evidence: method 1 of class descriptor $0EC98E (name string "COREELEVATOR", parent ACTOR)
 ; ---------------------------------------------------------------------------
-sub_0EC804:
+CoreElevator_InitSpawnRec:
 	link.w	a6,#$0
 	move.l	a4,-(a7)
 	movea.l	$8(a6),a4

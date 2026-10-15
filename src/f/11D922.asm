@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_11D922	[jt 1602]
+; BabyMoleMan_SizeOf - BabyMoleMan: return the object size in bytes (class slot 0, +$06)
+; In:  none
+; Out: d0 = object size in bytes
+; Evidence: method 0 of class descriptor $11B986 (name string "BABYMOLEMAN", parent BABYBIO)
 ; ---------------------------------------------------------------------------
-sub_11D922:
+BabyMoleMan_SizeOf:
 	link.w	a6,#$0
 	move.l	#$BC,d0
 	unlk	a6

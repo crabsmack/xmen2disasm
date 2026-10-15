@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_1337FC	[jt 1720]
+; BrainRocket_ShouldDeactivate - BrainRocket: is the active object out of range and due to deactivate (class slot 15, +$42)
+; In:  8(a6) = this
+; Out: d0.b = 1 to deactivate
+; Evidence: method 15 of class descriptor $133CFC (name string "BRAINROCKET", parent ACTOR)
 ; ---------------------------------------------------------------------------
-sub_1337FC:
+BrainRocket_ShouldDeactivate:
 	link.w	a6,#$0
 	movem.l	d3/d6-d7/a4,-(a7)
 	movea.l	$8(a6),a4

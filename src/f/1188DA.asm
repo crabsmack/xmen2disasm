@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_1188DA	[jt 1477]
+; RThetaObject_SizeOf - RThetaObject: return the object size in bytes (class slot 0, +$06)
+; In:  none
+; Out: d0 = object size in bytes
+; Evidence: method 0 of class descriptor $118C8E (name string "RTHETAOBJECT", parent ACTOR)
 ; ---------------------------------------------------------------------------
-sub_1188DA:
+RThetaObject_SizeOf:
 	link.w	a6,#$0
 	move.l	#$9E,d0
 	unlk	a6

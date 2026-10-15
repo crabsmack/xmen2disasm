@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_0EA8AE	[jt 1272]
+; Hologram_Draw - Hologram: position/draw the object's sprite relative to the camera (class slot 5, +$1A)
+; In:  8(a6) = this
+; Out: none
+; Evidence: method 5 of class descriptor $0EAE16 (name string "HOLOGRAM", parent ACTOR)
 ; ---------------------------------------------------------------------------
-sub_0EA8AE:
+Hologram_Draw:
 	link.w	a6,#$FFE8
 	movem.l	d4-d7/a4,-(a7)
 	movea.l	$8(a6),a4

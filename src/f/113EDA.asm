@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_113EDA	[jt 1408]
+; XNpc_OnHurt - XNpc: XNPC hook: took damage but survived (class slot 26, +$6E; called from XNpc_TakeHit)
+; In:  8(a6) = this  $F(a6) = byte damage  $13(a6) = byte hit type
+; Out: none
+; Evidence: method 26 of class descriptor $113A88 (name string "XNPC", parent ACTOR)
 ; ---------------------------------------------------------------------------
-sub_113EDA:
+XNpc_OnHurt:
 	link.w	a6,#$0
 	move.b	$13(a6),d0
 	ext.w	d0

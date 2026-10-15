@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_1338A8	[jt 1722]
+; BrainRocket_Attack - BrainRocket: hit another actor: call its TakeHit and start this object's hit cooldown (class slot 7, +$22)
+; In:  8(a6) = this  $C(a6) = target actor  then hit type, damage, extra words
+; Out: none
+; Evidence: method 7 of class descriptor $133CFC (name string "BRAINROCKET", parent ACTOR)
 ; ---------------------------------------------------------------------------
-sub_1338A8:
+BrainRocket_Attack:
 	link.w	a6,#$0
 	movem.l	a3-a4,-(a7)
 	movea.l	$C(a6),a3

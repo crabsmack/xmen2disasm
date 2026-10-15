@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_0EBA56	[jt 1287]
+; CoreShields_Move - CoreShields: apply velocity (+$16/+$18), acceleration (+$1E/+$20) and speed limits (class slot 18, +$4E)
+; In:  8(a6) = this  $C(a6) = word frame step (1, or 2 when the game runs at half rate)
+; Out: none
+; Evidence: method 18 of class descriptor $0EBE7E (name string "CORESHIELDS", parent ACTOR)
 ; ---------------------------------------------------------------------------
-sub_0EBA56:
+CoreShields_Move:
 	link.w	a6,#$0
 	move.l	a4,-(a7)
 	movea.l	$8(a6),a4

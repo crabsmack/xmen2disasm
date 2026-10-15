@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_11E480	[jt 1621]
+; BioBullet_Update - BioBullet: per-frame update: range checks, Move, run the state function at +$5C after the +$6C delay (class slot 17, +$4A)
+; In:  8(a6) = this
+; Out: none
+; Evidence: method 17 of class descriptor $11E6EC (name string "BIOBULLET", parent ACTOR)
 ; ---------------------------------------------------------------------------
-sub_11E480:
+BioBullet_Update:
 	link.w	a6,#$0
 	movem.l	d3/d6-d7/a4,-(a7)
 	movea.l	$8(a6),a4

@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_0EC840	[jt 1306]
+; CoreElevator_Hook66 - CoreElevator: virtual hook at class slot 24 (+$66); no caller found yet
+; In:  8(a6) = this
+; Out: none
+; Evidence: method 24 of class descriptor $0EC98E (name string "COREELEVATOR", parent ACTOR)
 ; ---------------------------------------------------------------------------
-sub_0EC840:
+CoreElevator_Hook66:
 	link.w	a6,#$FFFC
 	movem.l	a3-a4,-(a7)
 	movea.l	$8(a6),a4

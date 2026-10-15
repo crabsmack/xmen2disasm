@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_13AB92	[jt 1844]
+; Mine_SpawnFromRec - Mine: create the object for a spawn record (static, class slot 10, +$2E)
+; In:  8(a6) = spawn record (class ptr at +0)  $C(a6) = spawn record
+; Out: d0 = object or 0
+; Evidence: method 10 of class descriptor $13AF1A (name string "MINE", parent ACTOR)
 ; ---------------------------------------------------------------------------
-sub_13AB92:
+Mine_SpawnFromRec:
 	link.w	a6,#$0
 	movem.l	a3-a4,-(a7)
 	movea.l	$C(a6),a4

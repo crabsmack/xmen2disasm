@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_1370E8	[jt 1793]
+; Hornet_Explode - Hornet: XNPC hook: death explosion/effect chosen by the stats record (class slot 30, +$7E)
+; In:  8(a6) = this
+; Out: none
+; Evidence: method 30 of class descriptor $137252 (name string "HORNET", parent XNPC)
 ; ---------------------------------------------------------------------------
-sub_1370E8:
+Hornet_Explode:
 	link.w	a6,#$0
 	move.l	a4,-(a7)
 	movea.l	$8(a6),a4

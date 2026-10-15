@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_0EA898	[jt 1271]
+; Hologram_Hook66 - Hologram: virtual hook at class slot 24 (+$66); no caller found yet
+; In:  8(a6) = this
+; Out: none
+; Evidence: method 24 of class descriptor $0EAE16 (name string "HOLOGRAM", parent ACTOR)
 ; ---------------------------------------------------------------------------
-sub_0EA898:
+Hologram_Hook66:
 	link.w	a6,#$FFFC
 	movem.l	a3-a4,-(a7)
 	movea.l	$8(a6),a4

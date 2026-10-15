@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_117608	[jt 1428]
+; PowerUp_Update - PowerUp: per-frame update: range checks, Move, run the state function at +$5C after the +$6C delay (class slot 17, +$4A)
+; In:  8(a6) = this
+; Out: none
+; Evidence: method 17 of class descriptor $117C28 (name string "POWERUP", parent ACTOR)
 ; ---------------------------------------------------------------------------
-sub_117608:
+PowerUp_Update:
 	link.w	a6,#$FFFE
 	movem.l	d3-d7/a3-a4,-(a7)
 	movea.l	$8(a6),a3

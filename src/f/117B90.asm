@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_117B90	[jt 1450]
+; MysteryPowerUp_Init - MysteryPowerUp: constructor: chain to the parent Init, then set this class's fields (class slot 3, +$12)
+; In:  8(a6) = this  $C/$10(a6) = x, y (16.16)  $14(a6) = spawn record or 0
+; Out: none
+; Evidence: method 3 of class descriptor $117FC0 (name string "MYSTERYPOWERUP", parent POWERUP)
 ; ---------------------------------------------------------------------------
-sub_117B90:
+MysteryPowerUp_Init:
 	link.w	a6,#$0
 	move.l	a4,-(a7)
 	movea.l	$8(a6),a4

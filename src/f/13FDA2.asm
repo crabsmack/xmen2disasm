@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_13FDA2	[jt 1904]
+; Spark_Move - Spark: apply velocity (+$16/+$18), acceleration (+$1E/+$20) and speed limits (class slot 18, +$4E)
+; In:  8(a6) = this  $C(a6) = word frame step (1, or 2 when the game runs at half rate)
+; Out: none
+; Evidence: method 18 of class descriptor $1400DE (name string "SPARK", parent ACTOR)
 ; ---------------------------------------------------------------------------
-sub_13FDA2:
+Spark_Move:
 	link.w	a6,#$0
 	movem.l	a3-a4,-(a7)
 	movea.l	$8(a6),a4

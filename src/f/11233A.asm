@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_11233A	[jt 1384]
+; Deathbird_SetFrame - Deathbird: set the animation frame byte +$2F (class slot 20, +$56)
+; In:  8(a6) = this  $F(a6) = byte frame index ($FF = none)
+; Out: none
+; Evidence: method 20 of class descriptor $111162 (name string "DEATHBIRD", parent ACTOR)
 ; ---------------------------------------------------------------------------
-sub_11233A:
+Deathbird_SetFrame:
 	link.w	a6,#$FFFC
 	movem.l	d7/a3-a4,-(a7)
 	movea.l	$8(a6),a3

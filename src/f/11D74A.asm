@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_11D74A	[jt 1596]
+; BabySentinelB_SizeOf - BabySentinelB: return the object size in bytes (class slot 0, +$06)
+; In:  none
+; Out: d0 = object size in bytes
+; Evidence: method 0 of class descriptor $11B866 (name string "BABYSENTINELB", parent BABYBIO)
 ; ---------------------------------------------------------------------------
-sub_11D74A:
+BabySentinelB_SizeOf:
 	link.w	a6,#$0
 	move.l	#$BC,d0
 	unlk	a6

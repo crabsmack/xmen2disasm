@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_11C576	[jt 1568]
+; BabyBio_Deactivate - BabyBio: deactivate: release sprite/collision resources, leave object lists (class slot 16, +$46)
+; In:  8(a6) = this
+; Out: none
+; Evidence: method 16 of class descriptor $11B74C (name string "BABYBIO", parent BIONPC)
 ; ---------------------------------------------------------------------------
-sub_11C576:
+BabyBio_Deactivate:
 	link.w	a6,#$0
 	move.l	a4,-(a7)
 	movea.l	$8(a6),a4

@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_119D72	[jt 1505]
+; SyncActor_Init - SyncActor: constructor: chain to the parent Init, then set this class's fields (class slot 3, +$12)
+; In:  8(a6) = this  $C/$10(a6) = x, y (16.16)  $14(a6) = spawn record or 0
+; Out: none
+; Evidence: method 3 of class descriptor $119ECA (name string "SYNCHRONIZEDACTOR", parent ACTOR)
 ; ---------------------------------------------------------------------------
-sub_119D72:
+SyncActor_Init:
 	link.w	a6,#$0
 	movem.l	a3-a4,-(a7)
 	movea.l	$14(a6),a3

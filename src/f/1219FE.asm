@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_1219FE	[jt 1694]
+; BigBio_Draw - BigBio: position/draw the object's sprite relative to the camera (class slot 5, +$1A)
+; In:  8(a6) = this
+; Out: none
+; Evidence: method 5 of class descriptor $123684 (name string "BIGBIO", parent BASICBIOSENTINEL)
 ; ---------------------------------------------------------------------------
-sub_1219FE:
+BigBio_Draw:
 	link.w	a6,#$FFF4
 	movem.l	d3/d6-d7/a3-a4,-(a7)
 	movea.l	$8(a6),a3

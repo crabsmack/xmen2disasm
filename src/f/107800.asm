@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_107800	[jt 1347]
+; Switch_InitSpawnRec - Switch: fill a 14-byte spawn record from level placement data (static, class slot 1, +$0A; called by the level spawn-list builder)
+; In:  8(a6) = spawn record (14 bytes)  $C(a6) = level placement entry
+; Out: none
+; Evidence: method 1 of class descriptor $107A3E (name string "SWITCH", parent ACTOR)
 ; ---------------------------------------------------------------------------
-sub_107800:
+Switch_InitSpawnRec:
 	link.w	a6,#$0
 	movem.l	a3-a4,-(a7)
 	movea.l	$8(a6),a4

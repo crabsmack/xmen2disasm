@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_1218F0	[jt 1692]
+; BigBio_Init - BigBio: constructor: chain to the parent Init, then set this class's fields (class slot 3, +$12)
+; In:  8(a6) = this  $C/$10(a6) = x, y (16.16)  $14(a6) = spawn record or 0
+; Out: none
+; Evidence: method 3 of class descriptor $123684 (name string "BIGBIO", parent BASICBIOSENTINEL)
 ; ---------------------------------------------------------------------------
-sub_1218F0:
+BigBio_Init:
 	link.w	a6,#$0
 	movem.l	a3-a4,-(a7)
 	movea.l	$14(a6),a3

@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_111590	[jt 1377]
+; Deathbird_Hook66 - Deathbird: virtual hook at class slot 24 (+$66); no caller found yet
+; In:  8(a6) = this
+; Out: none
+; Evidence: method 24 of class descriptor $111162 (name string "DEATHBIRD", parent ACTOR)
 ; ---------------------------------------------------------------------------
-sub_111590:
+Deathbird_Hook66:
 	link.w	a6,#$FFFC
 	movem.l	a3-a4,-(a7)
 	movea.l	$8(a6),a4

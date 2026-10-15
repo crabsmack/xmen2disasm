@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_133F3C	[jt 1737]
+; FireWall_SizeOf - FireWall: return the object size in bytes (class slot 0, +$06)
+; In:  none
+; Out: d0 = object size in bytes
+; Evidence: method 0 of class descriptor $134214 (name string "FIREWALL", parent ACTOR)
 ; ---------------------------------------------------------------------------
-sub_133F3C:
+FireWall_SizeOf:
 	link.w	a6,#$0
 	move.l	#$96,d0
 	unlk	a6

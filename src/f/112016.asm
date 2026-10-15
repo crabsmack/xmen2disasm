@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_112016	[jt 1382]
+; Deathbird_Update - Deathbird: per-frame update: range checks, Move, run the state function at +$5C after the +$6C delay (class slot 17, +$4A)
+; In:  8(a6) = this
+; Out: none
+; Evidence: method 17 of class descriptor $111162 (name string "DEATHBIRD", parent ACTOR)
 ; ---------------------------------------------------------------------------
-sub_112016:
+Deathbird_Update:
 	link.w	a6,#$0
 	movem.l	d6-d7/a3-a4,-(a7)
 	movea.l	$8(a6),a4

@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_113C14	[jt 1403]
+; XNpc_Explode - XNpc: XNPC hook: death explosion/effect chosen by the stats record (class slot 30, +$7E)
+; In:  8(a6) = this
+; Out: none
+; Evidence: method 30 of class descriptor $113A88 (name string "XNPC", parent ACTOR)
 ; ---------------------------------------------------------------------------
-sub_113C14:
+XNpc_Explode:
 	link.w	a6,#$0
 	move.l	a4,-(a7)
 	movea.l	$8(a6),a4

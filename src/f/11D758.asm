@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_11D758	[jt 1597]
+; BabySentinelB_Hook66 - BabySentinelB: virtual hook at class slot 24 (+$66); no caller found yet
+; In:  8(a6) = this
+; Out: none
+; Evidence: method 24 of class descriptor $11B866 (name string "BABYSENTINELB", parent BABYBIO)
 ; ---------------------------------------------------------------------------
-sub_11D758:
+BabySentinelB_Hook66:
 	link.w	a6,#$FFFC
 	movem.l	a3-a4,-(a7)
 	movea.l	$8(a6),a4

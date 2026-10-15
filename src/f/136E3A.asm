@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_136E3A	[jt 1787]
+; Hornet_Hook66 - Hornet: virtual hook at class slot 24 (+$66); no caller found yet
+; In:  8(a6) = this
+; Out: none
+; Evidence: method 24 of class descriptor $137252 (name string "HORNET", parent XNPC)
 ; ---------------------------------------------------------------------------
-sub_136E3A:
+Hornet_Hook66:
 	link.w	a6,#$FFFC
 	movem.l	a3-a4,-(a7)
 	movea.l	$8(a6),a4

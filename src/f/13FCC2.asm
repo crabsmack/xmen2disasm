@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_13FCC2	[jt 1903]
+; Spark_Draw - Spark: position/draw the object's sprite relative to the camera (class slot 5, +$1A)
+; In:  8(a6) = this
+; Out: none
+; Evidence: method 5 of class descriptor $1400DE (name string "SPARK", parent ACTOR)
 ; ---------------------------------------------------------------------------
-sub_13FCC2:
+Spark_Draw:
 	link.w	a6,#$0
 	movem.l	d5-d7/a4,-(a7)
 	movea.l	$8(a6),a4

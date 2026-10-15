@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_138A46	[jt 1824]
+; MaintRobotFire_SizeOf - MaintRobotFire: return the object size in bytes (class slot 0, +$06)
+; In:  none
+; Out: d0 = object size in bytes
+; Evidence: method 0 of class descriptor $139180 (name string "MAINTROBOTFIRE", parent ACTOR)
 ; ---------------------------------------------------------------------------
-sub_138A46:
+MaintRobotFire_SizeOf:
 	link.w	a6,#$0
 	move.l	#$8C,d0
 	unlk	a6

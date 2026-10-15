@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_1123FA	[jt 1385]
+; Deathbird_Draw - Deathbird: position/draw the object's sprite relative to the camera (class slot 5, +$1A)
+; In:  8(a6) = this
+; Out: none
+; Evidence: method 5 of class descriptor $111162 (name string "DEATHBIRD", parent ACTOR)
 ; ---------------------------------------------------------------------------
-sub_1123FA:
+Deathbird_Draw:
 	link.w	a6,#$0
 	movem.l	d3/d7/a4,-(a7)
 	movea.l	$8(a6),a4

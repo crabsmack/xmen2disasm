@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_13D260	[jt 1857]
+; Ninja_Deactivate - Ninja: deactivate: release sprite/collision resources, leave object lists (class slot 16, +$46)
+; In:  8(a6) = this
+; Out: none
+; Evidence: method 16 of class descriptor $13D7FE (name string "NINJA", parent BIONPC)
 ; ---------------------------------------------------------------------------
-sub_13D260:
+Ninja_Deactivate:
 	link.w	a6,#$0
 	move.l	a4,-(a7)
 	movea.l	$8(a6),a4

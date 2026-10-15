@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_11C662	[jt 1571]
+; BabyBio_Query7A - BabyBio: XNPC hook (class slot 29, +$7A): base writes 2 to *arg3 and returns 0; meaning unknown
+; In:  8(a6) = this  $C(a6) = ?  $10(a6) = byte* out
+; Out: d0
+; Evidence: method 29 of class descriptor $11B74C (name string "BABYBIO", parent BIONPC)
 ; ---------------------------------------------------------------------------
-sub_11C662:
+BabyBio_Query7A:
 	link.w	a6,#$0
 	movem.l	a3-a4,-(a7)
 	movea.l	$10(a6),a3

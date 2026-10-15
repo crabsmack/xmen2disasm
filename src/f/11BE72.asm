@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_11BE72	[jt 1560]
+; BioFlame_Draw - BioFlame: position/draw the object's sprite relative to the camera (class slot 5, +$1A)
+; In:  8(a6) = this
+; Out: none
+; Evidence: method 5 of class descriptor $11B6D4 (name string "BIOFLAME", parent ACTOR)
 ; ---------------------------------------------------------------------------
-sub_11BE72:
+BioFlame_Draw:
 	link.w	a6,#$FFFE
 	movem.l	d3-d7/a4,-(a7)
 	movea.l	$8(a6),a4

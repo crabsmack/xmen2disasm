@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_11E9CC	[jt 1633]
+; BioBalls_Draw - BioBalls: position/draw the object's sprite relative to the camera (class slot 5, +$1A)
+; In:  8(a6) = this
+; Out: none
+; Evidence: method 5 of class descriptor $1203AC (name string "BIOBALLS", parent ACTOR)
 ; ---------------------------------------------------------------------------
-sub_11E9CC:
+BioBalls_Draw:
 	link.w	a6,#$0
 	movem.l	d5-d7/a3-a4,-(a7)
 	movea.l	$8(a6),a3

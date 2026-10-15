@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_11C146	[jt 1561]
+; BabyBio_SizeOf - BabyBio: return the object size in bytes (class slot 0, +$06)
+; In:  none
+; Out: d0 = object size in bytes
+; Evidence: method 0 of class descriptor $11B74C (name string "BABYBIO", parent BIONPC)
 ; ---------------------------------------------------------------------------
-sub_11C146:
+BabyBio_SizeOf:
 	link.w	a6,#$0
 	move.l	#$BC,d0
 	unlk	a6

@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_1375DA	[jt 1802]
+; HornetBullet_Draw - HornetBullet: position/draw the object's sprite relative to the camera (class slot 5, +$1A)
+; In:  8(a6) = this
+; Out: none
+; Evidence: method 5 of class descriptor $137708 (name string "HORNETBULLET", parent ACTOR)
 ; ---------------------------------------------------------------------------
-sub_1375DA:
+HornetBullet_Draw:
 	link.w	a6,#$0
 	movem.l	d3/d5-d7/a4,-(a7)
 	movea.l	$8(a6),a4

@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_13A784	[jt 1843]
+; Mine_Init - Mine: constructor: chain to the parent Init, then set this class's fields (class slot 3, +$12)
+; In:  8(a6) = this  $C/$10(a6) = x, y (16.16)  $14(a6) = spawn record or 0
+; Out: none
+; Evidence: method 3 of class descriptor $13AF1A (name string "MINE", parent ACTOR)
 ; ---------------------------------------------------------------------------
-sub_13A784:
+Mine_Init:
 	link.w	a6,#$0
 	move.l	a4,-(a7)
 	movea.l	$8(a6),a4

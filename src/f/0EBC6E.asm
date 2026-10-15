@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_0EBC6E	[jt 1290]
+; CoreZap_SizeOf - CoreZap: return the object size in bytes (class slot 0, +$06)
+; In:  none
+; Out: d0 = object size in bytes
+; Evidence: method 0 of class descriptor $0ECA12 (name string "COREZAP", parent ACTOR)
 ; ---------------------------------------------------------------------------
-sub_0EBC6E:
+CoreZap_SizeOf:
 	link.w	a6,#$0
 	move.l	#$8C,d0
 	unlk	a6

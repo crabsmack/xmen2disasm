@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_11893C	[jt 1479]
+; RThetaObject_Move - RThetaObject: apply velocity (+$16/+$18), acceleration (+$1E/+$20) and speed limits (class slot 18, +$4E)
+; In:  8(a6) = this  $C(a6) = word frame step (1, or 2 when the game runs at half rate)
+; Out: none
+; Evidence: method 18 of class descriptor $118C8E (name string "RTHETAOBJECT", parent ACTOR)
 ; ---------------------------------------------------------------------------
-sub_11893C:
+RThetaObject_Move:
 	link.w	a6,#$0
 	movem.l	d6-d7/a4,-(a7)
 	move.w	$E(a6),d6

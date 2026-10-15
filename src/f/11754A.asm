@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_11754A	[jt 1427]
+; PowerUp_Init - PowerUp: constructor: chain to the parent Init, then set this class's fields (class slot 3, +$12)
+; In:  8(a6) = this  $C/$10(a6) = x, y (16.16)  $14(a6) = spawn record or 0
+; Out: none
+; Evidence: method 3 of class descriptor $117C28 (name string "POWERUP", parent ACTOR)
 ; ---------------------------------------------------------------------------
-sub_11754A:
+PowerUp_Init:
 	link.w	a6,#$0
 	movem.l	d3/a3-a4,-(a7)
 	movea.l	$14(a6),a3
