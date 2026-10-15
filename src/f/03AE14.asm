@@ -1,5 +1,5 @@
 ; ---------------------------------------------------------------------------
-; RollingDiscs_Draw - vtable +$1A: draw a ROLLINGDISCS
+; RollingDiscs_Draw - empty: returns at once (this class's override of: draw a ROLLINGDISCS)
 ; In:  8(a6) = this (ROLLINGDISCS object)
 ; Out: none
 ; Evidence: class descriptor ROLLINGDISCS slot +$1A (tools/classes.py); not reached by the TAS

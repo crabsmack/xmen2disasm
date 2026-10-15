@@ -1,5 +1,5 @@
 ; ---------------------------------------------------------------------------
-; LineSegKiller_Draw - LineSegKiller: position/draw the object's sprite relative to the camera (class slot 5, +$1A)
+; LineSegKiller_Draw - empty: returns at once (this class's override of: position/draw the object's sprite relative to the camera (class slot 5, +$1A))
 ; In:  8(a6) = this
 ; Out: none
 ; Evidence: method 5 of class descriptor $1389CA (name string "LINESEGKILLER", parent ACTOR)

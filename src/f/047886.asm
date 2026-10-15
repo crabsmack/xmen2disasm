@@ -1,5 +1,5 @@
 ; ---------------------------------------------------------------------------
-; BaniMazaA2_CallEmptyStub - first step of BaniMazaA2_RunScene: call BaniMazaA2_NopStatic
+; BaniMazaA2_CallEmptyStub - does nothing: only calls the empty BaniMazaA2_NopStatic (this class's override of: call BaniMazaA2_NopStatic)
 ; In:  none
 ; Out: none
 ; Evidence: body is a single jsr

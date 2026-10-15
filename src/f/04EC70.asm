@@ -1,5 +1,5 @@
 ; ---------------------------------------------------------------------------
-; BeamScooter_ClassInit - vtable +$5E: per-level class setup for BEAMSCOOTER (load its resources)
+; BeamScooter_ClassInit - does nothing: only calls the empty BeamScooter_NopStatic (this class's override of: per-level class setup for BEAMSCOOTER (load its resources))
 ; In:  8(a6) = this, $C(a6) = class index
 ; Out: none
 ; Evidence: class descriptor BEAMSCOOTER slot +$5E (tools/classes.py); TAS frames 24086-24086 (1 active)
