@@ -139,34 +139,42 @@ def _signed_hex(s: str) -> int:
 
 PCREL_TO_A5 = {0x3A: 0x2D}   # EA field (d16,PC) -> (d16,A5) in the low 6 bits of an opcode
 
+# MPW library entry points (cc_libmatch.py --scan) -> the disassembly's names for them
+LIB_NAMES = {"memcpy": "Mem_Copy", "memset": "Mem_Set", "ULMULT": "Math_LMul", "LDIVT": "Math_LDivS",
+             "LMODT": "Math_LModS", "_LMODT": "Math_DivModS", "_ULMODT": "Math_DivModU"}
+
 
 def check_ref(rom: bytes, names: Names, base: int, obj: bytes, ref: mpwobj.Ref, off: int) -> tuple[bool, str, set[int]]:
     """Does reference `ref` patched at module offset `off` resolve in the ROM to ref.name?
     Returns (ok, explanation, module offsets the explanation accounts for)."""
     a = base + off
-    want = ref.name
+    want = LIB_NAMES.get(ref.name, ref.name)
     if ref.computed:
         return True, f"computed {ref.name}-{ref.name2} (masked)", set(range(off, off + ref.patch))
+    # the patched field holds the addend (e.g. g_Table+$50); the linker adds the symbol to it
     if ref.patch == 4:
-        v = int.from_bytes(rom[a:a + 4], "big")
+        add = int.from_bytes(obj[off:off + 4], "big", signed=True)
+        v = int.from_bytes(rom[a:a + 4], "big") - add
         got = names.at(v)
-        return got == want, f"abs.l {got}", set(range(off, off + 4))
-    d = int.from_bytes(rom[a:a + 2], "big", signed=True)
+        return got == want, f"abs.l {got}{add:+#x}", set(range(off, off + 4))
+    add = int.from_bytes(obj[off:off + 2], "big", signed=True)
+    d = int.from_bytes(rom[a:a + 2], "big", signed=True) - add
     cover = {off, off + 1}
     if ref.a5:
         if want in names.globals:
-            return names.globals[want] == d, f"A5 {d:+#x} = global {want}" if names.globals[want] == d else f"A5 {d:+#x}, {want} is {names.globals[want]:+#x}", cover
-        got = names.jt.get(d - 2) or names.jt.get(d)
-        return got == want, f"A5 {d:+#x} -> jt {got}", cover
+            ok = names.globals[want] == d
+            return ok, f"A5 {d:+#x}{add:+#x} = global {want}" if ok else f"A5 {d:+#x}, {want} is {names.globals[want]:+#x}", cover
+        got = names.jt.get(d)
+        return got == want and add == 0, f"A5 {d:+#x} -> jt {got}", cover
     # PC-relative from code: same segment, or rewritten by the linker to a jump-table access
     op_obj = int.from_bytes(obj[off - 2:off], "big") if off >= 2 else 0
     op_rom = int.from_bytes(rom[a - 2:a], "big")
     if op_obj == op_rom:
         got = names.at(a + d)
-        return got == want, f"pc-rel -> {got}", cover
+        return got == want, f"pc-rel -> {got}{add:+#x}", cover
     if (op_obj & ~0x3F) == (op_rom & ~0x3F) and PCREL_TO_A5.get(op_obj & 0x3F) == op_rom & 0x3F:
-        got = names.jt.get(d - 2) or names.jt.get(d)
-        return got == want, f"pc-rel made jt call by the linker: A5 {d:+#x} -> {got}", cover | {off - 2, off - 1}
+        got = names.jt.get(d)
+        return got == want and add == 0, f"pc-rel made jt call by the linker: A5 {d:+#x} -> {got}", cover | {off - 2, off - 1}
     return False, f"opcode {op_obj:04X} vs ROM {op_rom:04X}", cover
 
 
