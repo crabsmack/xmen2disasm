@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_0EB65A
+; CoreShields_EmptyStub - CoreShields: empty function (Reset body)
+; In:  none
+; Out: none
+; Evidence: called by CoreShields_Reset; body is link/unlk/rts
 ; ---------------------------------------------------------------------------
-sub_0EB65A:
+CoreShields_EmptyStub:
 	link.w	a6,#$0
 	unlk	a6
 	rts

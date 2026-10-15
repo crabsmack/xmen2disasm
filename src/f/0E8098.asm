@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_0E8098	[jt 1244]
+; HoloBolt_Spawn - create a HOLOBOLT at (x, y) with velocity (vx, vy)
+; In:  8(a6) = x  $C(a6) = y (16.16)  $12(a6) = word vx  $16(a6) = word vy
+; Out: d0 = bolt or 0
+; Evidence: Tbl_HoloBolt_vtable New (+$E), then +$16/+$18; called by Hologram_Fire*_Bolts (two bolts each)
 ; ---------------------------------------------------------------------------
-sub_0E8098:
+HoloBolt_Spawn:
 	link.w	a6,#$0
 	move.l	a4,-(a7)
 	moveq	#$0,d0

@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_0E9A5C	[link-after-rts]
+; Hologram_SetPose - set the hologram pose/mode global (-$3B14); pose $1B also arms the sprite flicker
+; In:  $A(a6) = word pose
+; Out: none
+; Evidence: -$3B14(a5) read by Hologram_Draw; $1B sets $FFC620 = 1 / $FFC623 = 0 used by Hologram_VBlankFlicker; 20 callers (script actions)
 ; ---------------------------------------------------------------------------
-sub_0E9A5C:
+Hologram_SetPose:
 	link.w	a6,#$0
 	move.l	d7,-(a7)
 	move.w	$A(a6),d7

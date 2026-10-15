@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_0E72B6
+; SentinelsA1_ResetPalCycles - SentinelsA1: zero the palette-cycle timers/indices
+; In:  none
+; Out: none
+; Evidence: clears the counter triples passed to sub_159FD6 by SentinelsA1_CyclePalettes
 ; ---------------------------------------------------------------------------
-sub_0E72B6:
+SentinelsA1_ResetPalCycles:
 	link.w	a6,#$0
 	clr.w	-$3B32(a5)
 	clr.w	-$3B42(a5)

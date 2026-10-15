@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_0EA7F8	[jt 1267]
+; Hologram_ActWait30 - Hologram script action: next entry after 30 frames
+; In:  8(a6) = this
+; Out: none
+; Evidence: entry of Hologram_ScriptAttack
 ; ---------------------------------------------------------------------------
-sub_0EA7F8:
+Hologram_ActWait30:
 	link.w	a6,#$0
 	move.l	a4,-(a7)
 	movea.l	$8(a6),a4

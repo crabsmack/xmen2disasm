@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_0EC740	[jt 1300]
+; CoreElevator_CarriesAllPlayers - is every live player standing on this lift's floor segment
+; In:  8(a6) = this
+; Out: d0 = 1 if so
+; Evidence: compares segment $FFCE2E + (+$7A)*$14 with each player's +$76 segment ($FFEB1E, $FFEA2E); used by the Hologram lift states
 ; ---------------------------------------------------------------------------
-sub_0EC740:
+CoreElevator_CarriesAllPlayers:
 	link.w	a6,#$0
 	move.l	a4,-(a7)
 	movea.l	$8(a6),a0

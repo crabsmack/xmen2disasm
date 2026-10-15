@@ -6,6 +6,6 @@
 ; ---------------------------------------------------------------------------
 Hologram_Reset:
 	link.w	a6,#$0
-	jsr	sub_0E99E4(pc)
+	jsr	Hologram_EmptyStub(pc)
 	unlk	a6
 	rts

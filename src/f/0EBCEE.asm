@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_0EBCEE	[link-after-rts]
+; CoreZap_HitActor - CoreZap: if the actor is alive, not invulnerable and overlapping, deal 1 damage (hit type 4)
+; In:  8(a6) = this  $C(a6) = actor
+; Out: none
+; Evidence: box +$54..+$5A overlap, +$6A cooldown 0, actor vtable +$26 TakeDamage; called from CoreZap_Update
 ; ---------------------------------------------------------------------------
-sub_0EBCEE:
+CoreZap_HitActor:
 	link.w	a6,#$0
 	movem.l	a3-a4,-(a7)
 	movea.l	$8(a6),a3

@@ -23,7 +23,7 @@ CoreElevator_Init:
 	move.l	d0,-(a7)
 	move.l	a4,-(a7)
 	jsr	$4E5A(a5)	; -> Obj_SetSpriteDef
-	lea.l	sub_0EC572(pc),a0
+	lea.l	CoreElevator_StateIdle(pc),a0
 	move.l	a0,$64(a4)
 	move.l	a0,$5C(a4)
 	ori.w	#$5283,$6(a4)

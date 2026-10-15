@@ -239,11 +239,24 @@ _(module → functions, globals, data; add as you learn them)_
   word x/y pixels, +$16/+$18 word velocity x/y, +$1E/+$20 word acceleration (gravity default 100),
   +$22/+$24 word max speed, +$26/+$28 word min speed to move, +$5C state function (run by Update when
   the +$6C word delay reaches 0), +$60 hurt state, +$64 default state, +$68 word health, +$6A word hit
-  cooldown (10 after a hit), +$7C collision handle. XNPC (size $94): +$8C pointer to a stats record
+  cooldown (10 after a hit), ~~+$7C collision handle~~ +$7C per-object Timer (`Timer_Create(class
+  Update, 1, this, 1)` in ACTOR Init). XNPC (size $94): +$8C pointer to a stats record
   (byte 0 attack damage, 1 hurt sound, 2 health/death type, 7 hurt frame).
-- **AI scripts**: many enemies keep a script pointer (e.g. BABYBIO `+$98`): word count, then 4-byte
-  `jmp d(a5)` thunks (`loc_11B508`...). An action function sets `+$5C` to the next thunk and `+$6C`
-  to a delay; when the script is null it falls back to `+$64`.
+- **AI scripts**: many enemies keep a script `{word index; long table}` (HOLOGRAM `+$8C/+$8E`, BABYBIO
+  `+$96/+$98`), set by `sub_15A6DE(&script, table)`. Table = word count, then 4-byte `jmp d(a5)`
+  thunks (`Hologram_ScriptAttack`, `loc_11B508`...); the jump table exports the table start. An action
+  function sets `+$5C` to the next thunk and `+$6C` to a delay; when the script is null it falls back to
+  `+$64`. Caution: the count word's high byte is $00, so several tables are mislabelled
+  `Str_Empty_XXXXXX` ("C string") right before such thunk files (e.g. `$0EAEFC`, `$0EAF02`, `$0EAF10`).
+- **Scene entry functions** (from `Scene_RegisterAll`): SiberiaB1 `sub_0FD6A8`, SentinelsD1 `sub_0DC4AA`,
+  SentinelsB1 `sub_0F4428`, SentinelsA1 CoolantCore `SentinelsA1_RunScene`, SentinelsB2 `sub_0F4CD8`,
+  AvalonB1 `sub_00FDAA`, AvalonB2 `sub_0227E0`, AvalonA2 `sub_022BA2`, AvalonA3 `sub_02CD50`, AvalonA4
+  `sub_035A9E`, BaniMazaB2 `sub_05ACEC`, BaniMazaA1 `sub_038BFA`, BaniMazaA2 `sub_04791A`, SavageC1
+  `sub_0C11CE`, SavageB1 `sub_0C130A`, SavageA2 `sub_0AD91A`, SavageA3 `sub_0B0538`, SavageA4 `sub_0B65C6`,
+  SpaceB1 `sub_10778C`, SpaceA1 `SpaceA1_RunScene`, CloneA1 `sub_0776E2`, CloneA2 `CloneA2_RunScene`,
+  CloneA5 `sub_088730`; Cerebro screens `$066E80-$067020`. TAS order: SentinelsA1 at ~7450-9575,
+  SpaceA1 (elevator shaft) 37205-45095. Stage helpers follow the CloneA2 pattern (`<Scene>_LoadLevel`,
+  `_InstallHooks`, `_FrameHook` in `$FFC972`, ...).
 - **Non-actor classes**: ICANDY (`$1188AC`, size $42, light sprite: 0 SizeOf, 1 New, 2 Init, 3 Update,
   4 Draw, 5 Destroy), BBOARD (`$1197CA`: word array, one entry per switch/synchronizer; created with 100
   entries by `Switch_LevelInit` into `$FFE55A`), SYNCHRONIZER (`$119CFE`, pool of 4), ELEVATOR (`$10B532`).

@@ -1,13 +1,16 @@
 ; ---------------------------------------------------------------------------
-; sub_0EA746	[jt 1265]
+; Hologram_ActPose0WaitA - Hologram script action: pose 0, next entry after the delay in word +$92
+; In:  8(a6) = this
+; Out: none
+; Evidence: used after each Fire* in Hologram_ScriptAttack
 ; ---------------------------------------------------------------------------
-sub_0EA746:
+Hologram_ActPose0WaitA:
 	link.w	a6,#$0
 	move.l	a4,-(a7)
 	movea.l	$8(a6),a4
 	moveq	#$0,d0
 	move.l	d0,-(a7)
-	jsr	sub_0E9A5C(pc)
+	jsr	Hologram_SetPose(pc)
 	tst.l	$8E(a4)
 	addq.w	#$4,a7
 	bne.s	loc_0EA76E

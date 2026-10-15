@@ -67,10 +67,10 @@ loc_0EBE1C:
 	move.w	d0,$58(a4)
 	pea.l	g_Player1(a5)
 	move.l	a4,-(a7)
-	jsr	sub_0EBCEE(pc)
+	jsr	CoreZap_HitActor(pc)
 	pea.l	g_Player2(a5)
 	move.l	a4,-(a7)
-	jsr	sub_0EBCEE(pc)
+	jsr	CoreZap_HitActor(pc)
 	lea.l	$10(a7),a7
 loc_0EBE74:
 	movem.l	-$10(a6),d5-d7/a4

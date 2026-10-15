@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_0E99EC	[link-after-rts]
+; Hologram_SetXPowerSpawns - enable (1) or disable (0) every XPOWERPLUSPOWERUP spawn record (bit 0 of record byte +4)
+; In:  $B(a6) = byte enable
+; Out: none
+; Evidence: compares spawn record class with Tbl_XPowerPlusPowerUp_vtable over g_SpawnRecs; disabled in Hologram_StateSetup, enabled in Hologram_Explode
 ; ---------------------------------------------------------------------------
-sub_0E99EC:
+Hologram_SetXPowerSpawns:
 	link.w	a6,#$0
 	movem.l	d7/a4,-(a7)
 	movea.l	g_SpawnRecs(a5),a0

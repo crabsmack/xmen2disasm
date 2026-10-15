@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_0EC5E0	[link-after-rts]
+; CoreElevator_MoveDown - CoreElevator: stop at the bottom limit (+$8C) and go to WaitAtBottom
+; In:  8(a6) = this
+; Out: d0
+; Evidence: sets +6 bit $4000 when stopped; TAS 7634-7810
 ; ---------------------------------------------------------------------------
-sub_0EC5E0:
+CoreElevator_MoveDown:
 	link.w	a6,#$0
 	movem.l	d7/a4,-(a7)
 	movea.l	$8(a6),a4
@@ -14,7 +17,7 @@ sub_0EC5E0:
 	move.l	d7,$C(a4)
 	ori.w	#$4000,$6(a4)
 	clr.w	$6C(a4)
-	lea.l	sub_0EC622(pc),a0
+	lea.l	CoreElevator_WaitAtBottom(pc),a0
 	move.l	a0,$5C(a4)
 	moveq	#$8,d0
 	and.w	$4(a4),d0

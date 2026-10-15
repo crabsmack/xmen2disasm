@@ -1,10 +1,10 @@
 ; ---------------------------------------------------------------------------
-; SpaceElev_CameraApply - SpaceA1: copy the camera position (+$30/+$32) to the scroll globals, clamped to the level bounds, and run the scroll hooks
+; SpaceA1_CamApply - SpaceA1: copy the camera position (+$30/+$32) to the scroll globals, clamped to the level bounds, and run the scroll hooks
 ; In:  8(a6) = camera
 ; Out: none
 ; Evidence: camera x/y $FFCD72/$FFCD70, bounds $FFC76C-$FFC772, hooks $FFC7AC/$FFC7B0 under Irq_Disable
 ; ---------------------------------------------------------------------------
-SpaceElev_CameraApply:
+SpaceA1_CamApply:
 	link.w	a6,#$0
 	movem.l	d5-d7/a4,-(a7)
 	movea.l	$8(a6),a4

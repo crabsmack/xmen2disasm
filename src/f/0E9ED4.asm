@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_0E9ED4	[link-after-rts]
+; Hologram_StartDyingScript - Hologram: switch to the dying script (pose flicker sequences, then explode)
+; In:  8(a6) = this
+; Out: none
+; Evidence: sub_15A6DE(this+$8C, jt $280A = Hologram_ScriptDying's table); TAS frame 9083
 ; ---------------------------------------------------------------------------
-sub_0E9ED4:
+Hologram_StartDyingScript:
 	link.w	a6,#$0
 	move.l	a4,-(a7)
 	movea.l	$8(a6),a4

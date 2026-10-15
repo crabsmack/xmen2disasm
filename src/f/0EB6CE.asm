@@ -1,11 +1,14 @@
 ; ---------------------------------------------------------------------------
-; sub_0EB6CE	[link-after-rts]
+; CoreShields_StateAllDown - CoreShields: all 8 shields are gone: camera shake, start the hologram's death, explosion
+; In:  8(a6) = this
+; Out: none
+; Evidence: g_CamShake, Hologram_BeginDying, sub_13EFA0 explosion; TAS frame 9083
 ; ---------------------------------------------------------------------------
-sub_0EB6CE:
+CoreShields_StateAllDown:
 	link.w	a6,#$0
 	lea.l	$2632(a5),a0
 	move.l	$2(a0),g_CamShake(a5)
-	jsr	$274A(a5)	; -> sub_0E9C04
+	jsr	$274A(a5)	; -> Hologram_BeginDying
 	moveq	#$4,d0
 	move.l	d0,-(a7)
 	moveq	#-$10,d1

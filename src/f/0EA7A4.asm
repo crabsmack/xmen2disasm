@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_0EA7A4	[jt 1266]
+; Hologram_ActWaitB - Hologram script action: next entry after the delay in word +$94
+; In:  8(a6) = this
+; Out: none
+; Evidence: entry of Hologram_ScriptAttack
 ; ---------------------------------------------------------------------------
-sub_0EA7A4:
+Hologram_ActWaitB:
 	link.w	a6,#$0
 	move.l	a4,-(a7)
 	movea.l	$8(a6),a4

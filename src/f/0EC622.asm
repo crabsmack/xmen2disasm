@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_0EC622	[link-after-rts]
+; CoreElevator_WaitAtBottom - CoreElevator: wait at the bottom; when the trip counter +$92 reaches 0 start back up
+; In:  8(a6) = this
+; Out: d0 = flags & 8
+; Evidence: next StartUp
 ; ---------------------------------------------------------------------------
-sub_0EC622:
+CoreElevator_WaitAtBottom:
 	link.w	a6,#$0
 	move.l	a4,-(a7)
 	movea.l	$8(a6),a4
@@ -12,14 +15,14 @@ sub_0EC622:
 	bra.s	loc_0EC660
 loc_0EC638:
 	move.w	#$FF,$6C(a4)
-	lea.l	sub_0EC622(pc),a0
+	lea.l	CoreElevator_WaitAtBottom(pc),a0
 	move.l	a0,$5C(a4)
 	moveq	#$8,d0
 	and.w	$4(a4),d0
 	bra.s	loc_0EC660
 loc_0EC64E:
 	clr.w	$6C(a4)
-	lea.l	sub_0EC668(pc),a0
+	lea.l	CoreElevator_StartUp(pc),a0
 	move.l	a0,$5C(a4)
 	moveq	#$8,d0
 	and.w	$4(a4),d0

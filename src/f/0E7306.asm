@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_0E7306	[link-after-rts]
+; SentinelsA1_CyclePalettes - SentinelsA1: step the stage's palette cycles (sub_159FD6), plus 16 more once the exit is open ($FFC61A)
+; In:  none
+; Out: none
+; Evidence: sub_159FD6 writes g_PalBase colours from cycle tables $0E7AFC-$0E7CC2; $FFC61A set by Hologram_OpenExit
 ; ---------------------------------------------------------------------------
-sub_0E7306:
+SentinelsA1_CyclePalettes:
 	link.w	a6,#$0
 	moveq	#$1,d0
 	move.l	d0,-(a7)

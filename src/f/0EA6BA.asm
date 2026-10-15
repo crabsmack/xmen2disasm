@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_0EA6BA	[link-after-rts]
+; Hologram_Fire4_Bolts - Hologram attack 4: two nearly horizontal HoloBolts (-$328,$62)/(-$30B,$80); next entry after 30 frames
+; In:  8(a6) = this
+; Out: none
+; Evidence: HoloBolt_Spawn x2
 ; ---------------------------------------------------------------------------
-sub_0EA6BA:
+Hologram_Fire4_Bolts:
 	link.w	a6,#$0
 	move.l	a4,-(a7)
 	movea.l	$8(a6),a4
@@ -10,12 +13,12 @@ sub_0EA6BA:
 	move.l	#$FFFFFCD8,-(a7)
 	move.l	#$28100,-(a7)
 	move.l	#$23000,-(a7)
-	jsr	$2702(a5)	; -> sub_0E8098
+	jsr	$2702(a5)	; -> HoloBolt_Spawn
 	pea.l	($80).w
 	move.l	#$FFFFFCF5,-(a7)
 	move.l	#$28100,-(a7)
 	move.l	#$24100,-(a7)
-	jsr	$2702(a5)	; -> sub_0E8098
+	jsr	$2702(a5)	; -> HoloBolt_Spawn
 	tst.l	$8E(a4)
 	lea.l	$20(a7),a7
 	bne.s	loc_0EA710

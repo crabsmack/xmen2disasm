@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_0E9B72	[link-after-rts]
+; Hologram_PlayerInArena - is a player (absent counts as yes) past the gate segment and below hologram y - 64
+; In:  8(a6) = this  $C(a6) = player
+; Out: d0.b = 1 if inside
+; Evidence: player box left +$4E vs segment +$C, player y vs this +$12; called for g_Player1 and g_Player2
 ; ---------------------------------------------------------------------------
-sub_0E9B72:
+Hologram_PlayerInArena:
 	link.w	a6,#$0
 	movem.l	d3/a3-a4,-(a7)
 	movea.l	$8(a6),a3

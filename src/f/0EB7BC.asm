@@ -6,6 +6,6 @@
 ; ---------------------------------------------------------------------------
 CoreShields_Reset:
 	link.w	a6,#$0
-	jsr	sub_0EB65A(pc)
+	jsr	CoreShields_EmptyStub(pc)
 	unlk	a6
 	rts

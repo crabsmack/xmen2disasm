@@ -1,13 +1,16 @@
 ; ---------------------------------------------------------------------------
-; sub_0EA3F8	[link-after-rts]
+; Hologram_Lower_Pose0 - Hologram attack script: pose 0, next script entry after 10 frames
+; In:  8(a6) = this
+; Out: none
+; Evidence: Hologram_SetPose(0) and script advance
 ; ---------------------------------------------------------------------------
-sub_0EA3F8:
+Hologram_Lower_Pose0:
 	link.w	a6,#$0
 	move.l	a4,-(a7)
 	movea.l	$8(a6),a4
 	moveq	#$0,d0
 	move.l	d0,-(a7)
-	jsr	sub_0E9A5C(pc)
+	jsr	Hologram_SetPose(pc)
 	tst.l	$8E(a4)
 	addq.w	#$4,a7
 	bne.s	loc_0EA420

@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_0EC668	[link-after-rts]
+; CoreElevator_StartUp - CoreElevator: start moving up (vy = -speed), active
+; In:  8(a6) = this
+; Out: d0 = flags & 8
+; Evidence: next MoveUp
 ; ---------------------------------------------------------------------------
-sub_0EC668:
+CoreElevator_StartUp:
 	link.w	a6,#$0
 	move.l	a4,-(a7)
 	movea.l	$8(a6),a4
@@ -11,7 +14,7 @@ sub_0EC668:
 	neg.l	d0
 	move.w	d0,$18(a4)
 	clr.w	$6C(a4)
-	lea.l	sub_0EC69E(pc),a0
+	lea.l	CoreElevator_MoveUp(pc),a0
 	move.l	a0,$5C(a4)
 	moveq	#$8,d0
 	and.w	$4(a4),d0

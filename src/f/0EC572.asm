@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_0EC572	[link-after-rts]
+; CoreElevator_StateIdle - CoreElevator idle state: clear its segment's byte +2 and stay
+; In:  8(a6) = this
+; Out: d0 = flags & 8
+; Evidence: segment record $FFCE2E + idx*$14 (+$7A index); loops on itself
 ; ---------------------------------------------------------------------------
-sub_0EC572:
+CoreElevator_StateIdle:
 	link.w	a6,#$0
 	move.l	a4,-(a7)
 	movea.l	$8(a6),a4
@@ -15,7 +18,7 @@ sub_0EC572:
 	lea.l	-$33D2(a5),a0
 	clr.b	$2(a0,d0.w)
 	move.w	#$FF,$6C(a4)
-	lea.l	sub_0EC572(pc),a0
+	lea.l	CoreElevator_StateIdle(pc),a0
 	move.l	a0,$5C(a4)
 	moveq	#$8,d0
 	and.w	$4(a4),d0

@@ -1,5 +1,8 @@
 ; ---------------------------------------------------------------------------
-; loc_0EAEFE	[runtime: executed in tas]
+; Hologram_ScriptIntro - Hologram AI script (1 entry): Hologram_StartAttackScript
+; In:  jmp thunk entered with the hologram on the stack
+; Out: -
+; Evidence: count word at $0EAEFC (labelled Str_Empty_0EAEFC, really the word $0001); script pointer set from jt[1276]
 ; ---------------------------------------------------------------------------
-loc_0EAEFE:
-	jmp	$275A(a5)	; -> sub_0EA0A0
+Hologram_ScriptIntro:
+	jmp	$275A(a5)	; -> Hologram_StartAttackScript

@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_0EB670	[jt 1282]
+; SentinelsA1_OpenExitTiles - SentinelsA1: change map tiles at (17-18, 22) to tile $ED and flag one passable/visible, then redraw
+; In:  none
+; Out: none
+; Evidence: sub_15D7F8(x, y, $ED, 0) twice, XOR/OR $200 in the level map, sub_15D7D8; called by Hologram_OpenExit
 ; ---------------------------------------------------------------------------
-sub_0EB670:
+SentinelsA1_OpenExitTiles:
 	link.w	a6,#$0
 	move.l	a4,-(a7)
 	moveq	#$0,d0

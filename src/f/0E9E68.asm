@@ -1,24 +1,27 @@
 ; ---------------------------------------------------------------------------
-; sub_0E9E68	[link-after-rts]
+; Hologram_WaitPlayersInArena - Hologram: when both players are in the arena, lock it and start the script after 60 frames
+; In:  8(a6) = this
+; Out: none
+; Evidence: Hologram_PlayerInArena for both players, Hologram_LockArena; script pointer +$8E, index +$8C; TAS frame 7812
 ; ---------------------------------------------------------------------------
-sub_0E9E68:
+Hologram_WaitPlayersInArena:
 	link.w	a6,#$0
 	move.l	a4,-(a7)
 	movea.l	$8(a6),a4
 	pea.l	g_Player1(a5)
 	move.l	a4,-(a7)
-	jsr	sub_0E9B72(pc)
+	jsr	Hologram_PlayerInArena(pc)
 	tst.b	d0
 	addq.w	#$8,a7
 	beq.s	loc_0E9ECC
 	pea.l	g_Player2(a5)
 	move.l	a4,-(a7)
-	jsr	sub_0E9B72(pc)
+	jsr	Hologram_PlayerInArena(pc)
 	tst.b	d0
 	addq.w	#$8,a7
 	beq.s	loc_0E9ECC
 	move.l	a4,-(a7)
-	jsr	sub_0E9BCE(pc)
+	jsr	Hologram_LockArena(pc)
 	tst.l	$8E(a4)
 	addq.w	#$4,a7
 	bne.s	loc_0E9EAE

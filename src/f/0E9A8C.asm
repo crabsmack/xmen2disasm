@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_0E9A8C	[link-after-rts]
+; Hologram_FindLifts - find the two active COREELEVATOR objects and store the upper one at +$96, the lower at +$9A
+; In:  8(a6) = this
+; Out: d0
+; Evidence: scans the object table $FFCD5A for Tbl_CoreElevator_vtable, compares y (+$C)
 ; ---------------------------------------------------------------------------
-sub_0E9A8C:
+Hologram_FindLifts:
 	link.w	a6,#$FFFC
 	movem.l	d7/a3-a4,-(a7)
 	moveq	#$0,d0

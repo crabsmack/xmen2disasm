@@ -1,14 +1,17 @@
 ; ---------------------------------------------------------------------------
-; sub_0E9D3A	[link-after-rts]
+; Hologram_OpenExit - open the exit: start the extra palette cycles, sound $D1, change the exit tiles, unlock the camera, camera shake
+; In:  8(a6) = this
+; Out: none
+; Evidence: $FFC61A = 1, Snd_Play($D1), SentinelsA1_OpenExitTiles, g_Camera vtable +$3A, g_CamShake
 ; ---------------------------------------------------------------------------
-sub_0E9D3A:
+Hologram_OpenExit:
 	link.w	a6,#$0
 	move.b	#$1,-$3BE6(a5)
 	pea.l	($D1).w
 	jsr	$5222(a5)	; -> Snd_Stop
 	pea.l	($D1).w
 	jsr	$521A(a5)	; -> Snd_Play
-	jsr	$2832(a5)	; -> sub_0EB670
+	jsr	$2832(a5)	; -> SentinelsA1_OpenExitTiles
 	movea.l	g_Camera(a5),a0
 	move.l	a0,-(a7)
 	movea.l	(a0),a0

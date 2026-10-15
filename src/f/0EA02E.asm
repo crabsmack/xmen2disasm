@@ -1,20 +1,23 @@
 ; ---------------------------------------------------------------------------
-; sub_0EA02E	[link-after-rts]
+; Hologram_RideUpperLift - Hologram: if a player steps off, send the upper lift back down; once it is above y $64 end the scene
+; In:  8(a6) = this
+; Out: d0
+; Evidence: g_SceneExitTimer = 1 when lift y < $6400; TAS 9401-9544
 ; ---------------------------------------------------------------------------
-sub_0EA02E:
+Hologram_RideUpperLift:
 	link.w	a6,#$0
 	movem.l	d7/a4,-(a7)
 	movea.l	$8(a6),a4
 	move.l	$96(a4),-(a7)
-	jsr	$28C2(a5)	; -> sub_0EC740
+	jsr	$28C2(a5)	; -> CoreElevator_CarriesAllPlayers
 	tst.b	d0
 	addq.w	#$4,a7
 	bne.s	loc_0EA066
 	move.l	$96(a4),-(a7)
-	jsr	$28CA(a5)	; -> sub_0EC7B0
+	jsr	$28CA(a5)	; -> CoreElevator_SendDown
 	addq.w	#$4,a7
 	clr.w	$6C(a4)
-	lea.l	sub_0E9FF2(pc),a0
+	lea.l	Hologram_WaitUpperLiftBoarded(pc),a0
 	move.l	a0,$5C(a4)
 	moveq	#$8,d0
 	and.w	$4(a4),d0
@@ -26,7 +29,7 @@ loc_0EA066:
 	bge.s	loc_0EA08E
 	move.w	#$1,g_SceneExitTimer(a5)
 	clr.w	$6C(a4)
-	lea.l	sub_0EA098(pc),a0
+	lea.l	Hologram_StateDone(pc),a0
 	move.l	a0,$5C(a4)
 	moveq	#$8,d0
 	and.w	$4(a4),d0

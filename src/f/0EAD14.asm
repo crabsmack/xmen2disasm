@@ -27,7 +27,7 @@ Hologram_Init:
 	move.l	$2(a0),-(a7)
 	pea.l	$8C(a4)
 	jsr	$3ED2(a5)	; -> sub_15A6DE
-	lea.l	sub_0E9D88(pc),a0
+	lea.l	Hologram_StateStart(pc),a0
 	move.l	a0,$64(a4)
 	move.l	a0,$5C(a4)
 	ori.w	#$5083,$6(a4)

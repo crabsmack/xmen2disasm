@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_0EC534	[link-after-rts]
+; CoreElevator_PlayerBelow - is the player alive and below the lift (player y > lift y)
+; In:  8(a6) = this  $C(a6) = player
+; Out: d0.b
+; Evidence: used by CoreElevator_WaitAtTop for both players
 ; ---------------------------------------------------------------------------
-sub_0EC534:
+CoreElevator_PlayerBelow:
 	link.w	a6,#$0
 	move.l	a4,-(a7)
 	movea.l	$C(a6),a4

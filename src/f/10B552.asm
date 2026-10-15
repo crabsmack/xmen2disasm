@@ -2,7 +2,7 @@
 ; VDP_SetShadowHighlight - write VDP reg 12: H40 mode, with shadow/highlight when the flag is set ($8C89) or without ($8C81)
 ; In:  $B(a6) = byte flag
 ; Out: d0 = command word
-; Evidence: writes $C00004; SpaceElev_Main turns it on for the stage and off after
+; Evidence: writes $C00004; SpaceA1_RunScene turns it on for the stage and off after
 ; ---------------------------------------------------------------------------
 VDP_SetShadowHighlight:
 	link.w	a6,#$0

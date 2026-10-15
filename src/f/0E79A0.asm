@@ -1,13 +1,16 @@
 ; ---------------------------------------------------------------------------
-; sub_0E79A0	[link-after-rts]
+; SentinelsA1_InstallHooks - SentinelsA1: install the frame hook, load resources, set up the zap lights and palette cycles, place the players
+; In:  none
+; Out: none
+; Evidence: $FFC972 = SentinelsA1_FrameHook; Players_PlaceAtStart; clears $FFC61A (exit-open palette cycles off)
 ; ---------------------------------------------------------------------------
-sub_0E79A0:
+SentinelsA1_InstallHooks:
 	link.w	a6,#$0
-	lea.l	sub_0E785E(pc),a0
+	lea.l	SentinelsA1_FrameHook(pc),a0
 	move.l	a0,-$388E(a5)
-	jsr	sub_0E789A(pc)
-	jsr	sub_0E7582(pc)
-	jsr	sub_0E72B6(pc)
+	jsr	SentinelsA1_LoadResources(pc)
+	jsr	SentinelsA1_InitZapLights(pc)
+	jsr	SentinelsA1_ResetPalCycles(pc)
 	moveq	#$0,d0
 	move.l	d0,-(a7)
 	move.l	d0,-(a7)

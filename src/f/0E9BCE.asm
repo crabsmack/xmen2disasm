@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_0E9BCE	[link-after-rts]
+; Hologram_LockArena - lock the camera to the arena (camera slot +$36 with $140, $240...) and clear the gate segment's bit $40
+; In:  8(a6) = this
+; Out: none
+; Evidence: g_Camera vtable +$36; called when both players are in the arena
 ; ---------------------------------------------------------------------------
-sub_0E9BCE:
+Hologram_LockArena:
 	link.w	a6,#$0
 	moveq	#$1,d0
 	move.l	d0,-(a7)

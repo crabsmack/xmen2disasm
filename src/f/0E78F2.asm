@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_0E78F2	[link-after-rts]
+; SentinelsA1_LoadLevel - SentinelsA1: load the stage data through the scene loader and set camera/scroll parameters
+; In:  none
+; Out: none
+; Evidence: sub_1F98A8 with level data thunks $0DFB0C/$0E2D9C/$0DFA42/$0E2D4E; sets byte $FFC922 = 1 (half-rate frame stepping)
 ; ---------------------------------------------------------------------------
-sub_0E78F2:
+SentinelsA1_LoadLevel:
 	link.w	a6,#$0
 	movem.l	d4-d7,-(a7)
 	clr.b	d5

@@ -1,8 +1,11 @@
 ; ---------------------------------------------------------------------------
-; sub_0E7A5E	[link-after-rts]
+; SentinelsA1_CallEmptyStub - SentinelsA1: call the empty stub (before and after loading)
+; In:  none
+; Out: none
+; Evidence: only calls SentinelsA1_EmptyStub; called twice by SentinelsA1_RunScene
 ; ---------------------------------------------------------------------------
-sub_0E7A5E:
+SentinelsA1_CallEmptyStub:
 	link.w	a6,#$0
-	jsr	sub_0E7A8C(pc)
+	jsr	SentinelsA1_EmptyStub(pc)
 	unlk	a6
 	rts

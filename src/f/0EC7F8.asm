@@ -6,6 +6,6 @@
 ; ---------------------------------------------------------------------------
 CoreElevator_Reset:
 	link.w	a6,#$0
-	jsr	sub_0EC51E(pc)
+	jsr	CoreElevator_EmptyStub(pc)
 	unlk	a6
 	rts

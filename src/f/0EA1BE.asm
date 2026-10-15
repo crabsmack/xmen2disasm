@@ -1,16 +1,19 @@
 ; ---------------------------------------------------------------------------
-; sub_0EA1BE	[link-after-rts]
+; Hologram_SeqA_Pose1b - Hologram sequence A step 3: pose 1 for 10 frames
+; In:  8(a6) = this
+; Out: d0 = flags & 8
+; Evidence: chains to SeqA_Pose0
 ; ---------------------------------------------------------------------------
-sub_0EA1BE:
+Hologram_SeqA_Pose1b:
 	link.w	a6,#$0
 	move.l	a4,-(a7)
 	movea.l	$8(a6),a4
 	moveq	#$1,d0
 	move.l	d0,-(a7)
-	jsr	sub_0E9A5C(pc)
+	jsr	Hologram_SetPose(pc)
 	addq.w	#$4,a7
 	move.w	#$A,$6C(a4)
-	lea.l	sub_0EA1EE(pc),a0
+	lea.l	Hologram_SeqA_Pose0(pc),a0
 	move.l	a0,$5C(a4)
 	moveq	#$8,d0
 	and.w	$4(a4),d0

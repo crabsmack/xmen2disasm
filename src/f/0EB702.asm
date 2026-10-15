@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_0EB702	[link-after-rts]
+; CoreShields_StateActive - CoreShields main state: fire a CoreZap when the cooldown (+$9A) allows; when all 8 shield bytes (+$92..) are set go to StateAllDown
+; In:  8(a6) = this
+; Out: d0 = flags & 8
+; Evidence: CoreShields_FireZap(this, -$200), cooldown 20; TAS 7858-9082
 ; ---------------------------------------------------------------------------
-sub_0EB702:
+CoreShields_StateActive:
 	link.w	a6,#$0
 	movem.l	d3/d6-d7/a3-a4,-(a7)
 	movea.l	$8(a6),a4
@@ -20,7 +23,7 @@ sub_0EB702:
 	blt.s	loc_0EB748
 	move.l	#$FFFFFE00,-(a7)
 	move.l	a4,-(a7)
-	jsr	sub_0EBC7C(pc)
+	jsr	CoreShields_FireZap(pc)
 	move.w	#$14,$9A(a4)
 	addq.w	#$8,a7
 loc_0EB748:
@@ -42,14 +45,14 @@ loc_0EB762:
 	tst.b	d6
 	beq.s	loc_0EB77A
 	clr.w	$6C(a4)
-	lea.l	sub_0EB6CE(pc),a0
+	lea.l	CoreShields_StateAllDown(pc),a0
 	move.l	a0,$5C(a4)
 	moveq	#$8,d0
 	and.w	$4(a4),d0
 	bra.s	loc_0EB78C
 loc_0EB77A:
 	clr.w	$6C(a4)
-	lea.l	sub_0EB702(pc),a0
+	lea.l	CoreShields_StateActive(pc),a0
 	move.l	a0,$5C(a4)
 	moveq	#$8,d0
 	and.w	$4(a4),d0

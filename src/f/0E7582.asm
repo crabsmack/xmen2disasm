@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_0E7582	[link-after-rts]
+; SentinelsA1_InitZapLights - SentinelsA1: set up 5 stacked light sprites (16 px apart) and their palette rows, all idle (frame -1)
+; In:  none
+; Out: none
+; Evidence: sub_1FB026 on sprite slots $FFCC6A + $14*i, Map_SetRowPalette rows 1-5; counters $FFC6FE..$FFC6F6 = -1; CoreShields_FireZap restarts the chain
 ; ---------------------------------------------------------------------------
-sub_0E7582:
+SentinelsA1_InitZapLights:
 	link.w	a6,#$0
 	movem.l	d7/a4,-(a7)
 	lea.l	$2622(a5),a0

@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_0EA0A0	[jt 1255]
+; Hologram_StartAttackScript - Hologram intro script action: sound $D0 and switch to the attack script
+; In:  8(a6) = this
+; Out: none
+; Evidence: Snd_Play($D0), sub_15A6DE(this+$8C, jt $2812 = Hologram_ScriptAttack's table); only entry of Hologram_ScriptIntro; TAS frame 7873
 ; ---------------------------------------------------------------------------
-sub_0EA0A0:
+Hologram_StartAttackScript:
 	link.w	a6,#$0
 	move.l	a4,-(a7)
 	movea.l	$8(a6),a4

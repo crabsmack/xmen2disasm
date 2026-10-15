@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_0E9C04	[jt 1253]
+; Hologram_BeginDying - find the HOLOGRAM object and switch it (current and default state) to Hologram_StartDyingScript
+; In:  none
+; Out: none
+; Evidence: object table scan for Tbl_Hologram_vtable; called by CoreShields_StateAllDown
 ; ---------------------------------------------------------------------------
-sub_0E9C04:
+Hologram_BeginDying:
 	link.w	a6,#$0
 	movem.l	d7/a4,-(a7)
 	clr.w	d7
@@ -18,7 +21,7 @@ loc_0E9C16:
 	move.l	(a4),d0
 	cmp.l	$2(a0),d0
 	bne.s	loc_0E9C3E
-	lea.l	sub_0E9ED4(pc),a0
+	lea.l	Hologram_StartDyingScript(pc),a0
 	move.l	a0,$64(a4)
 	move.l	a0,$5C(a4)
 	bra.s	loc_0E9C54

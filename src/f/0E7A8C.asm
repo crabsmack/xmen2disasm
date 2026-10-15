@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_0E7A8C	[link-after-rts]
+; SentinelsA1_EmptyStub - SentinelsA1: empty function
+; In:  none
+; Out: none
+; Evidence: body is link/unlk/rts
 ; ---------------------------------------------------------------------------
-sub_0E7A8C:
+SentinelsA1_EmptyStub:
 	link.w	a6,#$0
 	unlk	a6
 	rts

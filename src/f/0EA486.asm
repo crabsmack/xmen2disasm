@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_0EA486	[link-after-rts]
+; Hologram_Fire1_Bolts - Hologram attack 1: two HoloBolts from (560,641)/(577,641) with velocity (-$1BA,$246)/(-$188,$246); next entry after 30 frames
+; In:  8(a6) = this
+; Out: none
+; Evidence: HoloBolt_Spawn x2; TAS 8152-9000
 ; ---------------------------------------------------------------------------
-sub_0EA486:
+Hologram_Fire1_Bolts:
 	link.w	a6,#$0
 	move.l	a4,-(a7)
 	movea.l	$8(a6),a4
@@ -9,12 +12,12 @@ sub_0EA486:
 	move.l	#$FFFFFE46,-(a7)
 	move.l	#$28100,-(a7)
 	move.l	#$23000,-(a7)
-	jsr	$2702(a5)	; -> sub_0E8098
+	jsr	$2702(a5)	; -> HoloBolt_Spawn
 	pea.l	($246).w
 	move.l	#$FFFFFE78,-(a7)
 	move.l	#$28100,-(a7)
 	move.l	#$24100,-(a7)
-	jsr	$2702(a5)	; -> sub_0E8098
+	jsr	$2702(a5)	; -> HoloBolt_Spawn
 	tst.l	$8E(a4)
 	lea.l	$20(a7),a7
 	bne.s	loc_0EA4DC

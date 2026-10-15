@@ -13,7 +13,7 @@ sub_112F8E:
 	move.l	d1,-(a7)
 	moveq	#$7,d0
 	move.l	d0,-(a7)
-	jsr	$2AA2(a5)	; -> SpaceElev_SwitchTileHit
+	jsr	$2AA2(a5)	; -> SpaceA1_SwitchTileHit
 	moveq	#$4,d0
 	move.l	d0,-(a7)
 	move.l	a4,-(a7)

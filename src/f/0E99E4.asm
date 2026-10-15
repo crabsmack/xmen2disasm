@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_0E99E4	[link-after-rts]
+; Hologram_EmptyStub - Hologram: empty function (Reset body)
+; In:  none
+; Out: none
+; Evidence: called by Hologram_Reset; body is link/unlk/rts
 ; ---------------------------------------------------------------------------
-sub_0E99E4:
+Hologram_EmptyStub:
 	link.w	a6,#$0
 	unlk	a6
 	rts

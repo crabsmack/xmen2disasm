@@ -1,10 +1,10 @@
 ; ---------------------------------------------------------------------------
-; SpaceElev_LoadScene - SpaceA1: load the stage data through the scene loader and set stage flags
+; SpaceA1_LoadLevel - SpaceA1: load the stage data through the scene loader and set stage flags
 ; In:  none
 ; Out: none
 ; Evidence: sub_1F98A8 with level data thunks $107AF2/$10A054/$107AB4/$10A02A; TAS frame 37205 once
 ; ---------------------------------------------------------------------------
-SpaceElev_LoadScene:
+SpaceA1_LoadLevel:
 	link.w	a6,#$0
 	lea.l	$2A62(a5),a0
 	move.l	$2(a0),-(a7)
