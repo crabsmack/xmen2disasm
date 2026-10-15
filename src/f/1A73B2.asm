@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_1A73B2	[jt 2203]
+; Nightcrawler_AirAttack - NIGHTCRAWLER slot +$C2: B in the air: flying kick, dashing $8FC toward the held direction (once per jump)
+; In:  8(a6) = player
+; Out: d0
+; Evidence: +$90 bit 2 clear: +$90 |= 2, Obj_SetAnim(char +$30), attack sound; Left/Right -> face it, vx and max +/-$8FC; state XPlayer_StateAirAttack
 ; ---------------------------------------------------------------------------
-sub_1A73B2:
+Nightcrawler_AirAttack:
 	link.w	a6,#$0
 	movem.l	d3/a4,-(a7)
 	movea.l	$8(a6),a4

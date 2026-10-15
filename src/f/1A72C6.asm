@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_1A72C6	[jt 2202]
+; Nightcrawler_AirAttackDown - NIGHTCRAWLER slot +$BE: Down+B in the air: dive kick, drifting forward when a direction is held (once per jump)
+; In:  8(a6) = player
+; Out: d0 = +4 flag 8
+; Evidence: +$90 bit 2 clear: sound $84, vy 0, gravity $B4, max fall $860, +$6E = 6, +$90 |= 3; with Left/Right accel +/-$96, max $730; state Nightcrawler_StateDiveHold
 ; ---------------------------------------------------------------------------
-sub_1A72C6:
+Nightcrawler_AirAttackDown:
 	link.w	a6,#$0
 	movem.l	d3/a4,-(a7)
 	movea.l	$8(a6),a4
@@ -65,7 +68,7 @@ loc_1A737E:
 	addq.w	#$8,a7
 loc_1A7396:
 	clr.w	$6C(a4)
-	lea.l	sub_1A71EE(pc),a0
+	lea.l	Nightcrawler_StateDiveHold(pc),a0
 	move.l	a0,$5C(a4)
 	moveq	#$8,d0
 	and.w	$4(a4),d0

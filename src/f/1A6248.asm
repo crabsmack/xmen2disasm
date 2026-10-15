@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_1A6248	[jt 2200]
+; Nightcrawler_SetAirFrame - NIGHTCRAWLER slot +$7E: pick the jump frame from the vertical speed
+; In:  8(a6) = player
+; Out: none
+; Evidence: vy < -$1B6 -> frame $21, < $14A -> 200 (third bank), else $22
 ; ---------------------------------------------------------------------------
-sub_1A6248:
+Nightcrawler_SetAirFrame:
 	link.w	a6,#$0
 	movem.l	d7/a4,-(a7)
 	movea.l	$8(a6),a4

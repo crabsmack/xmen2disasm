@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_1A77F0	[link-after-rts]
+; Nightcrawler_TeleportDone - teleport over: clear the teleport flags and camera override, back to control
+; In:  8(a6) = player
+; Out: none
+; Evidence: +$6A = 0, +$90 &= ~$40 and ~$200000 (and ~$800000 when grounded), +$10 = 0, camera +$4A &= ~$10, control
 ; ---------------------------------------------------------------------------
-sub_1A77F0:
+Nightcrawler_TeleportDone:
 	link.w	a6,#$0
 	move.l	a4,-(a7)
 	movea.l	$8(a6),a4

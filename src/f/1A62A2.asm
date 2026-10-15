@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_1A62A2	[link-after-rts]
+; Nightcrawler_WallAttackEnd - after a wall slash: back to the wall pose and cling
+; In:  8(a6) = player
+; Out: d0 = +4 flag 8
+; Evidence: Obj_SetAnim(wall pose, jt $5FBE thunk), state Nightcrawler_StateWallCling
 ; ---------------------------------------------------------------------------
-sub_1A62A2:
+Nightcrawler_WallAttackEnd:
 	link.w	a6,#$0
 	move.l	a4,-(a7)
 	movea.l	$8(a6),a4
@@ -11,7 +14,7 @@ sub_1A62A2:
 	jsr	$4E42(a5)	; -> Obj_SetAnim
 	addq.w	#$8,a7
 	clr.w	$6C(a4)
-	lea.l	sub_1A65EC(pc),a0
+	lea.l	Nightcrawler_StateWallCling(pc),a0
 	move.l	a0,$5C(a4)
 	moveq	#$8,d0
 	and.w	$4(a4),d0

@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_1A65EC	[link-after-rts]
+; Nightcrawler_StateWallCling - on a wall: Up/Down climb (flipping upright/upside down), B slashes, jump leaps off, touching a ceiling moves onto it
+; In:  8(a6) = player
+; Out: d0 = +4 flag 8
+; Evidence: C -> frame $21, vy -$834, control; Up -> vy -$2BC, Down -> vy 700 with flip animation (jt $466A data) -> Nightcrawler_StateWallClimb; B -> slash (jt $4682 data) -> Nightcrawler_WallAttackEnd; +4 $80 with a segment classified 1 -> frame $8C, Nightcrawler_WallToCeiling
 ; ---------------------------------------------------------------------------
-sub_1A65EC:
+Nightcrawler_StateWallCling:
 	link.w	a6,#$0
 	movem.l	d3/d6-d7/a3-a4,-(a7)
 	movea.l	$8(a6),a4
@@ -72,7 +75,7 @@ loc_1A6674:
 	move.l	$A6(a0),$5C(a4)
 	moveq	#$8,d0
 	and.w	$4(a4),d0
-	bra.w	loc_1A6A52
+	bra.w	Nightcrawler_StateWallCling_Ret
 loc_1A66BC:
 	move.w	#$80,d0
 	and.w	$4(a4),d0
@@ -171,20 +174,20 @@ loc_1A67B6:
 	lsl.l	#$8,d1
 	move.l	d1,$C(a4)
 	move.w	#$7,$6C(a4)
-	lea.l	sub_1A651E(pc),a0
+	lea.l	Nightcrawler_WallToCeiling(pc),a0
 	move.l	a0,$5C(a4)
 	moveq	#$8,d0
 	and.w	$4(a4),d0
-	bra.w	loc_1A6A52
+	bra.w	Nightcrawler_StateWallCling_Ret
 loc_1A67EA:
 	clr.w	$18(a4)
 	clr.w	$20(a4)
 	clr.w	$6C(a4)
-	lea.l	sub_1A65EC(pc),a0
+	lea.l	Nightcrawler_StateWallCling(pc),a0
 	move.l	a0,$5C(a4)
 	moveq	#$8,d0
 	and.w	$4(a4),d0
-	bra.w	loc_1A6A52
+	bra.w	Nightcrawler_StateWallCling_Ret
 loc_1A6808:
 	tst.b	$9D(a4)
 	seq.b	d3
@@ -238,18 +241,18 @@ loc_1A6824:
 	move.l	d0,$C(a4)
 	addq.w	#$8,a7
 	clr.w	$6C(a4)
-	lea.l	sub_1A62D6(pc),a0
+	lea.l	Nightcrawler_StateWallClimb(pc),a0
 	move.l	a0,$5C(a4)
 	moveq	#$8,d0
 	and.w	$4(a4),d0
-	bra.w	loc_1A6A52
+	bra.w	Nightcrawler_StateWallCling_Ret
 loc_1A68B2:
 	clr.w	$6C(a4)
-	lea.l	sub_1A65EC(pc),a0
+	lea.l	Nightcrawler_StateWallCling(pc),a0
 	move.l	a0,$5C(a4)
 	moveq	#$8,d0
 	and.w	$4(a4),d0
-	bra.w	loc_1A6A52
+	bra.w	Nightcrawler_StateWallCling_Ret
 loc_1A68C8:
 	tst.b	$9D(a4)
 	seq.b	d3
@@ -303,18 +306,18 @@ loc_1A68E4:
 	move.l	d0,$C(a4)
 	addq.w	#$8,a7
 	clr.w	$6C(a4)
-	lea.l	sub_1A62D6(pc),a0
+	lea.l	Nightcrawler_StateWallClimb(pc),a0
 	move.l	a0,$5C(a4)
 	moveq	#$8,d0
 	and.w	$4(a4),d0
-	bra.w	loc_1A6A52
+	bra.w	Nightcrawler_StateWallCling_Ret
 loc_1A6972:
 	clr.w	$6C(a4)
-	lea.l	sub_1A65EC(pc),a0
+	lea.l	Nightcrawler_StateWallCling(pc),a0
 	move.l	a0,$5C(a4)
 	moveq	#$8,d0
 	and.w	$4(a4),d0
-	bra.w	loc_1A6A52
+	bra.w	Nightcrawler_StateWallCling_Ret
 loc_1A6988:
 	tst.b	$9D(a4)
 	seq.b	d3
@@ -361,17 +364,17 @@ loc_1A69CA:
 	clr.w	$20(a4)
 	lea.l	$10(a7),a7
 	move.w	#$FF,$6C(a4)
-	lea.l	sub_1A62A2(pc),a0
+	lea.l	Nightcrawler_WallAttackEnd(pc),a0
 	move.l	a0,$5C(a4)
 	moveq	#$8,d0
 	and.w	$4(a4),d0
-	bra.s	loc_1A6A52
+	bra.s	Nightcrawler_StateWallCling_Ret
 loc_1A6A24:
 	clr.w	$18(a4)
 	clr.w	$20(a4)
 	clr.w	$6C(a4)
-	lea.l	sub_1A65EC(pc),a0
+	lea.l	Nightcrawler_StateWallCling(pc),a0
 	move.l	a0,$5C(a4)
 	moveq	#$8,d0
 	and.w	$4(a4),d0
-	bra.s	loc_1A6A52
+	bra.s	Nightcrawler_StateWallCling_Ret

@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_1A62D6	[link-after-rts]
+; Nightcrawler_StateWallClimb - climbing along a wall (either way up) until its end, then cling
+; In:  8(a6) = player
+; Out: d0 = +4 flag 8
+; Evidence: upside down (+$2E bit 3) and Player_BottomBelowSeg(5) or Player_TopAboveSeg(-5) or blocked -> stop, pose, Nightcrawler_StateWallCling; keeps moving while vy != 0 and the anim runs
 ; ---------------------------------------------------------------------------
-sub_1A62D6:
+Nightcrawler_StateWallClimb:
 	link.w	a6,#$0
 	move.l	a4,-(a7)
 	movea.l	$8(a6),a4
@@ -24,7 +27,7 @@ sub_1A62D6:
 	jsr	$4E42(a5)	; -> Obj_SetAnim
 	addq.w	#$8,a7
 	clr.w	$6C(a4)
-	lea.l	sub_1A65EC(pc),a0
+	lea.l	Nightcrawler_StateWallCling(pc),a0
 	move.l	a0,$5C(a4)
 	moveq	#$8,d0
 	and.w	$4(a4),d0
@@ -46,7 +49,7 @@ loc_1A632C:
 	jsr	$4E42(a5)	; -> Obj_SetAnim
 	addq.w	#$8,a7
 	clr.w	$6C(a4)
-	lea.l	sub_1A65EC(pc),a0
+	lea.l	Nightcrawler_StateWallCling(pc),a0
 	move.l	a0,$5C(a4)
 	moveq	#$8,d0
 	and.w	$4(a4),d0
@@ -67,7 +70,7 @@ loc_1A6380:
 	jsr	$4E42(a5)	; -> Obj_SetAnim
 	addq.w	#$8,a7
 	clr.w	$6C(a4)
-	lea.l	sub_1A65EC(pc),a0
+	lea.l	Nightcrawler_StateWallCling(pc),a0
 	move.l	a0,$5C(a4)
 	moveq	#$8,d0
 	and.w	$4(a4),d0
@@ -92,14 +95,14 @@ loc_1A63D2:
 	addq.w	#$8,a7
 loc_1A63E2:
 	clr.w	$6C(a4)
-	lea.l	sub_1A65EC(pc),a0
+	lea.l	Nightcrawler_StateWallCling(pc),a0
 	move.l	a0,$5C(a4)
 	moveq	#$8,d0
 	and.w	$4(a4),d0
 	bra.s	loc_1A6408
 loc_1A63F6:
 	clr.w	$6C(a4)
-	lea.l	sub_1A62D6(pc),a0
+	lea.l	Nightcrawler_StateWallClimb(pc),a0
 	move.l	a0,$5C(a4)
 	moveq	#$8,d0
 	and.w	$4(a4),d0

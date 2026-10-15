@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_1A775E	[link-after-rts]
+; Nightcrawler_StateTeleport - teleport travel: continue until the timer ends, a segment is touched or 176 px of height is covered, then reappear
+; In:  8(a6) = player
+; Out: none
+; Evidence: timer +$C4 -= 2 (4 in two-player); +$7B != $FF or |saved y +$9A - y| >= $B0 or timer out -> stop, Nightcrawler_TeleportAppear; +$6A held at 60; camera $159ECC each frame
 ; ---------------------------------------------------------------------------
-sub_1A775E:
+Nightcrawler_StateTeleport:
 	link.w	a6,#$0
 	movem.l	d3/d7/a4,-(a7)
 	movea.l	$8(a6),a4
@@ -48,10 +51,10 @@ loc_1A77CA:
 	clr.w	$1E(a4)
 	clr.l	$16(a4)
 	clr.w	$20(a4)
-	lea.l	sub_1A78BC(pc),a0
+	lea.l	Nightcrawler_TeleportAppear(pc),a0
 	move.l	a0,$5C(a4)
 	move.l	a4,-(a7)
-	jsr	sub_1A78BC(pc)
+	jsr	Nightcrawler_TeleportAppear(pc)
 	addq.w	#$4,a7
 loc_1A77E6:
 	movem.l	-$C(a6),d3/d7/a4

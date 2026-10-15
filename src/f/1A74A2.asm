@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_1A74A2	[link-after-rts]
+; Nightcrawler_SetTeleportVelocity - set the teleport velocity from the stored direction bits (diagonals slower) and match the camera pan
+; In:  8(a6) = player
+; Out: d0
+; Evidence: +$C2 bits U/D/L/R; speed $A00 straight, $700 diagonal; vx/vy and max +$22; when not Cam_IsPanning: camera +$54 = vx, +$4C = +/-camera +$58
 ; ---------------------------------------------------------------------------
-sub_1A74A2:
+Nightcrawler_SetTeleportVelocity:
 	link.w	a6,#$0
 	movem.l	d3/d5-d7/a4,-(a7)
 	movea.l	$8(a6),a4

@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_1A79A6	[jt 2206]
+; Nightcrawler_Attack - NIGHTCRAWLER slot +$22: XPLAYER Attack; a hit during the dive kick bounces him up
+; In:  8(a6) = player, $C(a6) = target, $10..$1C(a6) = Attack args
+; Out: d0
+; Evidence: parent +$22; airborne with +$90 bit 1: sounds $84/$87, vy -$700, gravity and max fall from char, delay 2, control
 ; ---------------------------------------------------------------------------
-sub_1A79A6:
+Nightcrawler_Attack:
 	link.w	a6,#$0
 	move.l	a4,-(a7)
 	movea.l	$8(a6),a4

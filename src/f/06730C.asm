@@ -26,7 +26,7 @@ loc_067336:
 	ext.l	d7
 	move.l	d7,-(a7)
 	move.l	a4,-(a7)
-	jsr	$452A(a5)	; -> sub_1A7BFE
+	jsr	$452A(a5)	; -> Nightcrawler_SetFrame
 	addq.w	#$8,a7
 	bra.s	loc_06736C
 loc_067344:

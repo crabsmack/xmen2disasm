@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_1A7B10	[jt 2208]
+; Nightcrawler_Init - NIGHTCRAWLER slot +$12: XCLIMBER Init plus Nightcrawler's record, states, flags and sprite
+; In:  8(a6) = player, $C/$10/$14(a6) = Init args
+; Out: none
+; Evidence: parent +$12; +$90 &= ~$2000, |= $10 (special fires on release); byte $FFE958/$FFE956 = 1 for P1/P2; own +$6A Reset; +$8C = char record (jt $6180 thunk); +$60 = XPlayer_StateHurt; +$C0 |= $80 (ceilings); Spr_Init with the per-player VRAM base
 ; ---------------------------------------------------------------------------
-sub_1A7B10:
+Nightcrawler_Init:
 	link.w	a6,#$0
 	movem.l	d3/a4,-(a7)
 	movea.l	$8(a6),a4

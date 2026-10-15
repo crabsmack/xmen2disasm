@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_1A60B6	[jt 2195]
+; Nightcrawler_FlashPalette - teleport flash: write g_PalBase brightened by a step-dependent amount into g_PalWork
+; In:  8(a6) = word step
+; Out: d0 = 1 when the flash is over (step > 5), else 0
+; Evidence: step < 1 adds R+5 G+4 B+3, 1-2 adds R+3 G+2 B+1, 3-5 adds R+1, clamped to 7, 64 colours; g_PalWorkDirty = 1; used by Nightcrawler_StateTeleportFlash
 ; ---------------------------------------------------------------------------
-sub_1A60B6:
+Nightcrawler_FlashPalette:
 	link.w	a6,#$FFF8
 	movem.l	d3-d7/a3-a4,-(a7)
 	move.w	$A(a6),d4

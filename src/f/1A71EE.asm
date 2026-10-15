@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_1A71EE	[link-after-rts]
+; Nightcrawler_StateDiveHold - dive kick with B held: continue until landing or release
+; In:  8(a6) = player
+; Out: d0
+; Evidence: grounded -> control (+$90 &= ~2); B released or +4 $100 -> Nightcrawler_StateDive
 ; ---------------------------------------------------------------------------
-sub_1A71EE:
+Nightcrawler_StateDiveHold:
 	link.w	a6,#$0
 	movem.l	d3/a4,-(a7)
 	movea.l	$8(a6),a4
@@ -56,14 +59,14 @@ loc_1A728A:
 	beq.s	loc_1A72AA
 loc_1A7296:
 	clr.w	$6C(a4)
-	lea.l	sub_1A714C(pc),a0
+	lea.l	Nightcrawler_StateDive(pc),a0
 	move.l	a0,$5C(a4)
 	moveq	#$8,d0
 	and.w	$4(a4),d0
 	bra.s	loc_1A72BC
 loc_1A72AA:
 	clr.w	$6C(a4)
-	lea.l	sub_1A71EE(pc),a0
+	lea.l	Nightcrawler_StateDiveHold(pc),a0
 	move.l	a0,$5C(a4)
 	moveq	#$8,d0
 	and.w	$4(a4),d0

@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_1A757E	[link-after-rts]
+; Nightcrawler_StartTeleport - special: teleport: vanish and travel in the held direction for a distance set by the charge meter (Down on a thin floor = through it)
+; In:  8(a6) = player
+; Out: d0 = +4 flag 8
+; Evidence: once (+$90 $800000): +$10 = 1, +$6A = 60, Obj_Detach, sound $85, vanish animation (jt $46A2 data), +$C4 = max(meter +$9E, $E) (Down-through costs 8), +$C2 = held U/D/L/R; no direction -> Nightcrawler_TeleportAppear; Down through floor -> Nightcrawler_TeleportDown else Nightcrawler_TeleportVanish
 ; ---------------------------------------------------------------------------
-sub_1A757E:
+Nightcrawler_StartTeleport:
 	link.w	a6,#$FFFC
 	movem.l	d3/d7/a4,-(a7)
 	movea.l	$8(a6),a4
@@ -94,21 +97,21 @@ loc_1A768A:
 	tst.b	d7
 	beq.s	loc_1A76B2
 	move.w	#$FF,$6C(a4)
-	lea.l	sub_1A7730(pc),a0
+	lea.l	Nightcrawler_TeleportDown(pc),a0
 	move.l	a0,$5C(a4)
 	moveq	#$8,d0
 	and.w	$4(a4),d0
 	bra.s	loc_1A76DC
 loc_1A76B2:
 	move.w	#$FF,$6C(a4)
-	lea.l	sub_1A76E6(pc),a0
+	lea.l	Nightcrawler_TeleportVanish(pc),a0
 	move.l	a0,$5C(a4)
 	moveq	#$8,d0
 	and.w	$4(a4),d0
 	bra.s	loc_1A76DC
 loc_1A76C8:
 	move.w	#$FF,$6C(a4)
-	lea.l	sub_1A78BC(pc),a0
+	lea.l	Nightcrawler_TeleportAppear(pc),a0
 	move.l	a0,$5C(a4)
 	moveq	#$8,d0
 	and.w	$4(a4),d0

@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_1A646A	[link-after-rts]
+; Nightcrawler_StateWaitLeftRelease - after moving onto a ceiling: ignore Left until it is released, then hang
+; In:  8(a6) = player
+; Out: d0 = +4 flag 8
+; Evidence: Left held -> stay; else Nightcrawler_StateCeilingHang
 ; ---------------------------------------------------------------------------
-sub_1A646A:
+Nightcrawler_StateWaitLeftRelease:
 	link.w	a6,#$0
 	movem.l	d3/a4,-(a7)
 	movea.l	$8(a6),a4
@@ -18,14 +21,14 @@ loc_1A648A:
 loc_1A6492:
 	beq.s	loc_1A64A8
 	clr.w	$6C(a4)
-	lea.l	sub_1A646A(pc),a0
+	lea.l	Nightcrawler_StateWaitLeftRelease(pc),a0
 	move.l	a0,$5C(a4)
 	moveq	#$8,d0
 	and.w	$4(a4),d0
 	bra.s	loc_1A64BA
 loc_1A64A8:
 	clr.w	$6C(a4)
-	lea.l	sub_1A6C48(pc),a0
+	lea.l	Nightcrawler_StateCeilingHang(pc),a0
 	move.l	a0,$5C(a4)
 	moveq	#$8,d0
 	and.w	$4(a4),d0

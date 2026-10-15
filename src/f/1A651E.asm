@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_1A651E	[link-after-rts]
+; Nightcrawler_WallToCeiling - finish climbing from a wall onto a ceiling: hang pose under it
+; In:  8(a6) = player
+; Out: d0 = +4 flag 8
+; Evidence: Obj_SetAnim(ceiling pose jt $4672 data), y aligned under +$BC (+$E); a direction still held toward the wall -> wait-release state, else Nightcrawler_StateCeilingHang
 ; ---------------------------------------------------------------------------
-sub_1A651E:
+Nightcrawler_WallToCeiling:
 	link.w	a6,#$0
 	movem.l	d3/d7/a4,-(a7)
 	movea.l	$8(a6),a4
@@ -38,7 +41,7 @@ loc_1A6580:
 loc_1A6588:
 	beq.s	loc_1A65D0
 	clr.w	$6C(a4)
-	lea.l	sub_1A64C4(pc),a0
+	lea.l	Nightcrawler_StateWaitRightRelease(pc),a0
 	move.l	a0,$5C(a4)
 	moveq	#$8,d0
 	and.w	$4(a4),d0
@@ -57,14 +60,14 @@ loc_1A65B2:
 loc_1A65BA:
 	beq.s	loc_1A65D0
 	clr.w	$6C(a4)
-	lea.l	sub_1A646A(pc),a0
+	lea.l	Nightcrawler_StateWaitLeftRelease(pc),a0
 	move.l	a0,$5C(a4)
 	moveq	#$8,d0
 	and.w	$4(a4),d0
 	bra.s	loc_1A65E2
 loc_1A65D0:
 	clr.w	$6C(a4)
-	lea.l	sub_1A6C48(pc),a0
+	lea.l	Nightcrawler_StateCeilingHang(pc),a0
 	move.l	a0,$5C(a4)
 	moveq	#$8,d0
 	and.w	$4(a4),d0

@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_1A6B36	[link-after-rts]
+; Nightcrawler_CeilingToWall - go round the end of a ceiling onto a wall, upside down
+; In:  8(a6) = player
+; Out: d0 = +4 flag 8
+; Evidence: +6 |= $2000, +$2E bit 3 (upside down), wall animation (jt $4662 data), x aligned to the wall +$BC by side (+$C0 2/3); Up held -> Nightcrawler_StateWaitUpRelease else Nightcrawler_StateWallCling
 ; ---------------------------------------------------------------------------
-sub_1A6B36:
+Nightcrawler_CeilingToWall:
 	link.w	a6,#$0
 	movem.l	d3/d7/a4,-(a7)
 	movea.l	$8(a6),a4
@@ -81,14 +84,14 @@ loc_1A6C0E:
 loc_1A6C16:
 	beq.s	loc_1A6C2C
 	clr.w	$6C(a4)
-	lea.l	sub_1A6410(pc),a0
+	lea.l	Nightcrawler_StateWaitUpRelease(pc),a0
 	move.l	a0,$5C(a4)
 	moveq	#$8,d0
 	and.w	$4(a4),d0
 	bra.s	loc_1A6C3E
 loc_1A6C2C:
 	clr.w	$6C(a4)
-	lea.l	sub_1A65EC(pc),a0
+	lea.l	Nightcrawler_StateWallCling(pc),a0
 	move.l	a0,$5C(a4)
 	moveq	#$8,d0
 	and.w	$4(a4),d0

@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_1A76E6	[link-after-rts]
+; Nightcrawler_TeleportVanish - teleport: hide the sprite and start moving
+; In:  8(a6) = player
+; Out: d0 = +4 flag 8
+; Evidence: camera $159ECC, +$6A = 60, SetFrame($FF), Nightcrawler_SetTeleportVelocity, state Nightcrawler_StateTeleport
 ; ---------------------------------------------------------------------------
-sub_1A76E6:
+Nightcrawler_TeleportVanish:
 	link.w	a6,#$0
 	move.l	a4,-(a7)
 	movea.l	$8(a6),a4
@@ -14,10 +17,10 @@ sub_1A76E6:
 	movea.l	$56(a0),a1
 	jsr	(a1)
 	move.l	a4,-(a7)
-	jsr	sub_1A74A2(pc)
+	jsr	Nightcrawler_SetTeleportVelocity(pc)
 	lea.l	$10(a7),a7
 	clr.w	$6C(a4)
-	lea.l	sub_1A775E(pc),a0
+	lea.l	Nightcrawler_StateTeleport(pc),a0
 	move.l	a0,$5C(a4)
 	moveq	#$8,d0
 	and.w	$4(a4),d0

@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_1A6A5C	[link-after-rts]
+; Nightcrawler_StateCeilingCrawl - crawling along a ceiling until the step animation ends or the segment ends
+; In:  8(a6) = player
+; Out: d0 = +4 flag 8
+; Evidence: anim done -> hang pose, Nightcrawler_StateCeilingHang; touching (+4 $100) past the segment end -> +4 |= $100, hang
 ; ---------------------------------------------------------------------------
-sub_1A6A5C:
+Nightcrawler_StateCeilingCrawl:
 	link.w	a6,#$0
 	movem.l	d3/d5-d7/a3-a4,-(a7)
 	movea.l	$8(a6),a4
@@ -53,7 +56,7 @@ loc_1A6AD0:
 loc_1A6AD6:
 	ori.w	#$100,$4(a4)
 	clr.w	$6C(a4)
-	lea.l	sub_1A6C48(pc),a0
+	lea.l	Nightcrawler_StateCeilingHang(pc),a0
 	move.l	a0,$5C(a4)
 	moveq	#$8,d0
 	and.w	$4(a4),d0
@@ -67,14 +70,14 @@ loc_1A6AF0:
 	jsr	$4E42(a5)	; -> Obj_SetAnim
 	addq.w	#$8,a7
 	clr.w	$6C(a4)
-	lea.l	sub_1A6C48(pc),a0
+	lea.l	Nightcrawler_StateCeilingHang(pc),a0
 	move.l	a0,$5C(a4)
 	moveq	#$8,d0
 	and.w	$4(a4),d0
 	bra.s	loc_1A6B2C
 loc_1A6B1A:
 	clr.w	$6C(a4)
-	lea.l	sub_1A6A5C(pc),a0
+	lea.l	Nightcrawler_StateCeilingCrawl(pc),a0
 	move.l	a0,$5C(a4)
 	moveq	#$8,d0
 	and.w	$4(a4),d0

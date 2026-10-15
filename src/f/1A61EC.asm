@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_1A61EC	[jt 2198]
+; Nightcrawler_Jump - NIGHTCRAWLER slot +$82: XPLAYER jump with the record's jump velocity
+; In:  8(a6) = player
+; Out: none
+; Evidence: parent +$82, vy = char +$10
 ; ---------------------------------------------------------------------------
-sub_1A61EC:
+Nightcrawler_Jump:
 	link.w	a6,#$0
 	move.l	a4,-(a7)
 	movea.l	$8(a6),a4

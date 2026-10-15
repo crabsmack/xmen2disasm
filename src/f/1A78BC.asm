@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_1A78BC	[link-after-rts]
+; Nightcrawler_TeleportAppear - reappear after a teleport, as an attack; above 7 health with a palette flash and the stronger hit
+; In:  8(a6) = player
+; Out: d0 = +4 flag 8
+; Evidence: +$6A = 60; health <= $700: +$70 = char +1, sound $86, appear animation, Nightcrawler_TeleportDone; else +$70 = char +3, sound $CA, flash animation, Nightcrawler_StateTeleportFlash
 ; ---------------------------------------------------------------------------
-sub_1A78BC:
+Nightcrawler_TeleportAppear:
 	link.w	a6,#$0
 	move.l	a4,-(a7)
 	movea.l	$8(a6),a4
@@ -21,7 +24,7 @@ sub_1A78BC:
 	clr.w	$12(a4)
 	lea.l	$10(a7),a7
 	move.w	#$2,$6C(a4)
-	lea.l	sub_1A7848(pc),a0
+	lea.l	Nightcrawler_StateTeleportFlash(pc),a0
 	move.l	a0,$5C(a4)
 	moveq	#$8,d0
 	and.w	$4(a4),d0
@@ -39,7 +42,7 @@ loc_1A791A:
 	jsr	$4E42(a5)	; -> Obj_SetAnim
 	lea.l	$10(a7),a7
 	move.w	#$FF,$6C(a4)
-	lea.l	sub_1A77F0(pc),a0
+	lea.l	Nightcrawler_TeleportDone(pc),a0
 	move.l	a0,$5C(a4)
 	moveq	#$8,d0
 	and.w	$4(a4),d0

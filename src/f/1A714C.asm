@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_1A714C	[link-after-rts]
+; Nightcrawler_StateDive - dive kick finished or landed: restore normal falling and return to control
+; In:  8(a6) = player
+; Out: d0
+; Evidence: grounded or +$6E < 1 -> gravity/max speed from char, clears B latch and +$93 bit 0, +$90 |= 2, control
 ; ---------------------------------------------------------------------------
-sub_1A714C:
+Nightcrawler_StateDive:
 	link.w	a6,#$0
 	move.l	a4,-(a7)
 	movea.l	$8(a6),a4
@@ -44,7 +47,7 @@ loc_1A71AC:
 	bra.s	loc_1A71E6
 loc_1A71D4:
 	clr.w	$6C(a4)
-	lea.l	sub_1A714C(pc),a0
+	lea.l	Nightcrawler_StateDive(pc),a0
 	move.l	a0,$5C(a4)
 	moveq	#$8,d0
 	and.w	$4(a4),d0

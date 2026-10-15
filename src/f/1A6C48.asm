@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_1A6C48	[link-after-rts]
+; Nightcrawler_StateCeilingHang - hanging from a ceiling: Left/Right crawl (stopping at the ends), jump drops, reaching a wall goes round onto it
+; In:  8(a6) = player
+; Out: d0 = +4 flag 8
+; Evidence: y kept under +$BC; C -> frame 200, normal gravity, control; +4 $100 with a segment classified != 0 -> frame $8D, Nightcrawler_CeilingToWall; Left/Right vx -/+$208 unless Player_FrontPastSeg -> crawl animation (jt $467A data), Nightcrawler_StateCeilingCrawl
 ; ---------------------------------------------------------------------------
-sub_1A6C48:
+Nightcrawler_StateCeilingHang:
 	link.w	a6,#$0
 	movem.l	d3/d5-d7/a3-a4,-(a7)
 	movea.l	$8(a6),a4
@@ -140,7 +143,7 @@ loc_1A6DBE:
 	add.l	d0,$8(a4)
 loc_1A6DD6:
 	move.w	#$7,$6C(a4)
-	lea.l	sub_1A6B36(pc),a0
+	lea.l	Nightcrawler_CeilingToWall(pc),a0
 	move.l	a0,$5C(a4)
 	moveq	#$8,d0
 	and.w	$4(a4),d0
@@ -181,7 +184,7 @@ loc_1A6E12:
 	move.b	#$1,g_CamModeSwitched(a5)
 	addq.w	#$8,a7
 	clr.w	$6C(a4)
-	lea.l	sub_1A6A5C(pc),a0
+	lea.l	Nightcrawler_StateCeilingCrawl(pc),a0
 	move.l	a0,$5C(a4)
 	moveq	#$8,d0
 	and.w	$4(a4),d0
@@ -190,7 +193,7 @@ loc_1A6E6C:
 	clr.w	$1E(a4)
 	clr.w	$16(a4)
 	clr.w	$6C(a4)
-	lea.l	sub_1A6C48(pc),a0
+	lea.l	Nightcrawler_StateCeilingHang(pc),a0
 	move.l	a0,$5C(a4)
 	moveq	#$8,d0
 	and.w	$4(a4),d0
@@ -206,7 +209,7 @@ loc_1A6E8A:
 	bne.s	loc_1A6EBC
 	move.w	#$208,$16(a4)
 	clr.w	$6C(a4)
-	lea.l	sub_1A6C48(pc),a0
+	lea.l	Nightcrawler_StateCeilingHang(pc),a0
 	move.l	a0,$5C(a4)
 	moveq	#$8,d0
 	and.w	$4(a4),d0
@@ -215,7 +218,7 @@ loc_1A6EBC:
 	clr.w	$1E(a4)
 	clr.w	$16(a4)
 	clr.w	$6C(a4)
-	lea.l	sub_1A6C48(pc),a0
+	lea.l	Nightcrawler_StateCeilingHang(pc),a0
 	move.l	a0,$5C(a4)
 	moveq	#$8,d0
 	and.w	$4(a4),d0
@@ -253,7 +256,7 @@ loc_1A6EF6:
 	move.b	#$1,g_CamModeSwitched(a5)
 	addq.w	#$8,a7
 	clr.w	$6C(a4)
-	lea.l	sub_1A6A5C(pc),a0
+	lea.l	Nightcrawler_StateCeilingCrawl(pc),a0
 	move.l	a0,$5C(a4)
 	moveq	#$8,d0
 	and.w	$4(a4),d0
@@ -262,7 +265,7 @@ loc_1A6F50:
 	clr.w	$1E(a4)
 	clr.w	$16(a4)
 	clr.w	$6C(a4)
-	lea.l	sub_1A6C48(pc),a0
+	lea.l	Nightcrawler_StateCeilingHang(pc),a0
 	move.l	a0,$5C(a4)
 	moveq	#$8,d0
 	and.w	$4(a4),d0
@@ -278,7 +281,7 @@ loc_1A6F6C:
 	bne.s	loc_1A6F9C
 	move.w	#$FDF8,$16(a4)
 	clr.w	$6C(a4)
-	lea.l	sub_1A6C48(pc),a0
+	lea.l	Nightcrawler_StateCeilingHang(pc),a0
 	move.l	a0,$5C(a4)
 	moveq	#$8,d0
 	and.w	$4(a4),d0
@@ -287,7 +290,7 @@ loc_1A6F9C:
 	clr.w	$1E(a4)
 	clr.w	$16(a4)
 	clr.w	$6C(a4)
-	lea.l	sub_1A6C48(pc),a0
+	lea.l	Nightcrawler_StateCeilingHang(pc),a0
 	move.l	a0,$5C(a4)
 	moveq	#$8,d0
 	and.w	$4(a4),d0
@@ -296,7 +299,7 @@ loc_1A6FB8:
 	clr.w	$1E(a4)
 	clr.w	$16(a4)
 	clr.w	$6C(a4)
-	lea.l	sub_1A6C48(pc),a0
+	lea.l	Nightcrawler_StateCeilingHang(pc),a0
 	move.l	a0,$5C(a4)
 	moveq	#$8,d0
 	and.w	$4(a4),d0

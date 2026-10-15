@@ -5420,29 +5420,29 @@ Art_PlayerSpr3:	; sprite definition (type $18, raw 4bpp tiles): $24-byte header,
 	incrom	$1A3654,$28F2
 Tbl_Anim_1A5F46:	; animation script (byte flags, byte steps, ..., 2-byte steps from +6); 41 of 78 bytes used at runtime; read by Anim_ApplyStep, Anim_AdvanceByDistance, Anim_Advance; jt[2182] used by loc_0675B2
 	incrom	$1A5F46,$78
-Tbl_Anim_1A5FBE:	; animation script (byte flags, byte steps, ..., 2-byte steps from +6); E of 12 bytes used at runtime; read by Anim_ApplyStep, Anim_AdvanceByDistance, Anim_Advance; jt[2183] used by sub_1A62A2, sub_1A62D6, sub_1A6FDC
+Tbl_Anim_1A5FBE:	; animation script (byte flags, byte steps, ..., 2-byte steps from +6); E of 12 bytes used at runtime; read by Anim_ApplyStep, Anim_AdvanceByDistance, Anim_Advance; jt[2183] used by Nightcrawler_WallAttackEnd, Nightcrawler_StateWallClimb, Nightcrawler_StateGrab
 	incrom	$1A5FBE,$12
-Tbl_Anim_1A5FD0:	; animation script (byte flags, byte steps, ..., 2-byte steps from +6); 8 of 12 bytes used at runtime; read by Anim_ApplyStep, Anim_AdvanceByDistance, Anim_Advance; jt[2184] used by sub_1A62D6, sub_1A6B36
+Tbl_Anim_1A5FD0:	; animation script (byte flags, byte steps, ..., 2-byte steps from +6); 8 of 12 bytes used at runtime; read by Anim_ApplyStep, Anim_AdvanceByDistance, Anim_Advance; jt[2184] used by Nightcrawler_StateWallClimb, Nightcrawler_CeilingToWall
 	incrom	$1A5FD0,$12
-Tbl_Anim_1A5FE2:	; animation script (byte flags, byte steps, ..., 2-byte steps from +6); 8 of A bytes used at runtime; read by Anim_AdvanceByDistance, Anim_ApplyStep, Anim_Advance; jt[2185] used by sub_1A65EC
+Tbl_Anim_1A5FE2:	; animation script (byte flags, byte steps, ..., 2-byte steps from +6); 8 of A bytes used at runtime; read by Anim_AdvanceByDistance, Anim_ApplyStep, Anim_Advance; jt[2185] used by Nightcrawler_StateWallCling
 	incrom	$1A5FE2,$A
-Tbl_Anim_1A5FEC:	; animation script (byte flags, byte steps, ..., 2-byte steps from +6); 10 of 12 bytes used at runtime; read by Anim_ApplyStep, Anim_AdvanceByDistance, Anim_Advance; jt[2186] used by sub_1A651E, sub_1A6A5C, sub_1A6FDC
+Tbl_Anim_1A5FEC:	; animation script (byte flags, byte steps, ..., 2-byte steps from +6); 10 of 12 bytes used at runtime; read by Anim_ApplyStep, Anim_AdvanceByDistance, Anim_Advance; jt[2186] used by Nightcrawler_WallToCeiling, Nightcrawler_StateCeilingCrawl, Nightcrawler_StateGrab
 	incrom	$1A5FEC,$12
-Tbl_Anim_1A5FFE:	; animation script (byte flags, byte steps, ..., 2-byte steps from +6); 8 of A bytes used at runtime; read by Anim_ApplyStep, Anim_AdvanceByDistance, Anim_Advance; jt[2187] used by sub_1A6C48
+Tbl_Anim_1A5FFE:	; animation script (byte flags, byte steps, ..., 2-byte steps from +6); 8 of A bytes used at runtime; read by Anim_ApplyStep, Anim_AdvanceByDistance, Anim_Advance; jt[2187] used by Nightcrawler_StateCeilingHang
 	incrom	$1A5FFE,$A
-Tbl_Anim_1A6008:	; animation script (byte flags, byte steps, ..., 2-byte steps from +6); 14 of 16 bytes used at runtime; read by Anim_ApplyStep, Anim_AdvanceByDistance, Anim_Advance; jt[2188] used by sub_1A65EC
+Tbl_Anim_1A6008:	; animation script (byte flags, byte steps, ..., 2-byte steps from +6); 14 of 16 bytes used at runtime; read by Anim_ApplyStep, Anim_AdvanceByDistance, Anim_Advance; jt[2188] used by Nightcrawler_StateWallCling
 	incrom	$1A6008,$16
 Tbl_Anim_1A601E:	; animation script (byte flags, byte steps, ..., 2-byte steps from +6); 38 of 42 bytes used at runtime; read by Anim_ApplyStep, Anim_AdvanceByDistance, Anim_Advance; jt[2189] used by loc_067478
 	incrom	$1A601E,$42
-Tbl_Anim_1A6060:	; animation script (byte flags, byte steps, ..., 2-byte steps from +6); 6 of 8 bytes used at runtime; read by Anim_ApplyStep, Anim_AdvanceByDistance, Anim_Advance; jt[2190] used by sub_1A72C6
+Tbl_Anim_1A6060:	; animation script (byte flags, byte steps, ..., 2-byte steps from +6); 6 of 8 bytes used at runtime; read by Anim_ApplyStep, Anim_AdvanceByDistance, Anim_Advance; jt[2190] used by Nightcrawler_AirAttackDown
 	incrom	$1A6060,$8
-Tbl_Anim_1A6068:	; animation script (byte flags, byte steps, ..., 2-byte steps from +6); 6 of 8 bytes used at runtime; read by Anim_ApplyStep, Anim_AdvanceByDistance, Anim_Advance; jt[2191] used by sub_1A72C6
+Tbl_Anim_1A6068:	; animation script (byte flags, byte steps, ..., 2-byte steps from +6); 6 of 8 bytes used at runtime; read by Anim_ApplyStep, Anim_AdvanceByDistance, Anim_Advance; jt[2191] used by Nightcrawler_AirAttackDown
 	incrom	$1A6068,$8
-Tbl_EvilNightcrawlerAnim:	; animation script (byte flags, byte steps, ..., 2-byte steps from +6); 14 of 16 bytes used at runtime; read by Anim_ApplyStep, Anim_AdvanceByDistance; jt[2192] used by EvilNightcrawler_ActTeleport, sub_1A757E
+Tbl_EvilNightcrawlerAnim:	; animation script (byte flags, byte steps, ..., 2-byte steps from +6); 14 of 16 bytes used at runtime; read by Anim_ApplyStep, Anim_AdvanceByDistance; jt[2192] used by EvilNightcrawler_ActTeleport, Nightcrawler_StartTeleport
 	incrom	$1A6070,$16
-Tbl_Anim_1A6086:	; animation script (byte flags, byte steps, ..., 2-byte steps from +6); 14 of 16 bytes used at runtime; read by Anim_ApplyStep, Anim_AdvanceByDistance; jt[2193] used by sub_1A78BC
+Tbl_Anim_1A6086:	; animation script (byte flags, byte steps, ..., 2-byte steps from +6); 14 of 16 bytes used at runtime; read by Anim_ApplyStep, Anim_AdvanceByDistance; jt[2193] used by Nightcrawler_TeleportAppear
 	incrom	$1A6086,$16
-Tbl_EvilNightcrawlerAnim2:	; animation script (byte flags, byte steps, ..., 2-byte steps from +6); 18 of 1A bytes used at runtime; read by Anim_ApplyStep; jt[2194] used by EvilNightcrawler_StateTeleportIn, sub_1A78BC
+Tbl_EvilNightcrawlerAnim2:	; animation script (byte flags, byte steps, ..., 2-byte steps from +6); 18 of 1A bytes used at runtime; read by Anim_ApplyStep; jt[2194] used by EvilNightcrawler_StateTeleportIn, Nightcrawler_TeleportAppear
 	incrom	$1A609C,$1A
 	include "src/f/1A60B6.asm"
 Tbl_Anim_1A616A:	; animation script (byte flags, byte steps, ..., 2-byte steps from +6); 12 of 16 bytes used at runtime; read by Anim_ApplyStep, Anim_AdvanceByDistance, Anim_Advance
@@ -5488,9 +5488,9 @@ Tbl_Anim_1A616A:	; animation script (byte flags, byte steps, ..., 2-byte steps f
 	include "src/f/1A7CBC.asm"
 Art_EvilNightcrawlerSpr:	; sprite definition (type $18, raw 4bpp tiles): $24-byte header, $14-byte frame records, pieces, tiles; 6F20 of 8D90 bytes used at runtime; read by VDP_FlushDmaQueue, Spr_EmitStream; DMA to VRAM $6CA0-A580; jt[2213] used by EvilNightcrawler_Init, Nightcrawler_SelectSpriteDef, Player_CalcMaxTiles
 	incrom	$1A7CC6,$8D90
-Art_PlayerSpr4:	; sprite definition (type $18, raw 4bpp tiles): $24-byte header, $14-byte frame records, pieces, tiles; 35C0 of 3EF4 bytes used at runtime; read by VDP_FlushDmaQueue; DMA to VRAM $7080-9D40; jt[2214] used by Player_CalcMaxTiles, sub_1A7BFE
+Art_PlayerSpr4:	; sprite definition (type $18, raw 4bpp tiles): $24-byte header, $14-byte frame records, pieces, tiles; 35C0 of 3EF4 bytes used at runtime; read by VDP_FlushDmaQueue; DMA to VRAM $7080-9D40; jt[2214] used by Player_CalcMaxTiles, Nightcrawler_SetFrame
 	incrom	$1B0A56,$3EF4
-Art_PlayerSpr5:	; sprite definition (type $18, raw 4bpp tiles): $24-byte header, $14-byte frame records, pieces, tiles; 3A40 of 4530 bytes used at runtime; read by VDP_FlushDmaQueue; DMA to VRAM $8620-A400; jt[2215] used by Player_CalcMaxTiles, sub_1A7BFE
+Art_PlayerSpr5:	; sprite definition (type $18, raw 4bpp tiles): $24-byte header, $14-byte frame records, pieces, tiles; 3A40 of 4530 bytes used at runtime; read by VDP_FlushDmaQueue; DMA to VRAM $8620-A400; jt[2215] used by Player_CalcMaxTiles, Nightcrawler_SetFrame
 	incrom	$1B494A,$4530
 Tbl_NightcrawlerAnim:	; animation script (byte flags, byte steps, ..., 2-byte steps from +6); 14 of 16 bytes used at runtime; read by Anim_ApplyStep, Anim_AdvanceByDistance; jt[2216] used by loc_0675C4
 	incrom	$1B8E7A,$16

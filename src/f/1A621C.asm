@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_1A621C	[jt 2199]
+; Nightcrawler_DropThrough - NIGHTCRAWLER slot +$86: XPLAYER drop-through, then fall at $14A
+; In:  8(a6) = player
+; Out: none
+; Evidence: parent +$86, vy = $14A
 ; ---------------------------------------------------------------------------
-sub_1A621C:
+Nightcrawler_DropThrough:
 	link.w	a6,#$0
 	move.l	a4,-(a7)
 	movea.l	$8(a6),a4

@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_1A6FDC	[jt 2201]
+; Nightcrawler_StateGrab - NIGHTCRAWLER slot +$AA: grab what XClimber_CheckGrab found: hang from a ceiling or cling to a wall
+; In:  8(a6) = player
+; Out: d0
+; Evidence: sound $81, stop, clear B latch; +$C0 & 3: 1 -> ceiling pose, Nightcrawler_StateCeilingHang; 2/3 -> face the wall, x aligned, Nightcrawler_StateWallCling
 ; ---------------------------------------------------------------------------
-sub_1A6FDC:
+Nightcrawler_StateGrab:
 	link.w	a6,#$0
 	movem.l	a3-a4,-(a7)
 	movea.l	$8(a6),a4
@@ -60,7 +63,7 @@ loc_1A706A:
 	add.l	d0,$C(a4)
 	lea.l	$C(a7),a7
 	clr.w	$6C(a4)
-	lea.l	sub_1A6C48(pc),a0
+	lea.l	Nightcrawler_StateCeilingHang(pc),a0
 	move.l	a0,$5C(a4)
 	moveq	#$8,d0
 	and.w	$4(a4),d0
@@ -83,7 +86,7 @@ loc_1A70AC:
 	add.l	d0,$8(a4)
 	lea.l	$C(a7),a7
 	clr.w	$6C(a4)
-	lea.l	sub_1A65EC(pc),a0
+	lea.l	Nightcrawler_StateWallCling(pc),a0
 	move.l	a0,$5C(a4)
 	moveq	#$8,d0
 	and.w	$4(a4),d0
@@ -106,7 +109,7 @@ loc_1A70F8:
 	add.l	d0,$8(a4)
 	lea.l	$C(a7),a7
 	clr.w	$6C(a4)
-	lea.l	sub_1A65EC(pc),a0
+	lea.l	Nightcrawler_StateWallCling(pc),a0
 	move.l	a0,$5C(a4)
 	moveq	#$8,d0
 	and.w	$4(a4),d0

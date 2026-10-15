@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_1A7CA4	[jt 2210]
+; Nightcrawler_Reset - NIGHTCRAWLER slot +$6A: empty Reset
+; In:  none
+; Out: none
+; Evidence: bare link/unlk/rts; called by Nightcrawler_Init
 ; ---------------------------------------------------------------------------
-sub_1A7CA4:
+Nightcrawler_Reset:
 	link.w	a6,#$0
 	unlk	a6
 	rts

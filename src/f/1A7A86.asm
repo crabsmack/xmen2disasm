@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_1A7A86	[jt 2207]
+; Nightcrawler_UpdateCharge - NIGHTCRAWLER slot +$76: fill the teleport meter (+$9E) while A is held (twice as fast as the base); empty on release
+; In:  8(a6) = player
+; Out: d0
+; Evidence: not while teleporting (+$90 $800000): A held and +$9E < $20 -> += 2 (4 in two-player), g_HudDirty; A released -> 0
 ; ---------------------------------------------------------------------------
-sub_1A7A86:
+Nightcrawler_UpdateCharge:
 	link.w	a6,#$0
 	movem.l	d3/a4,-(a7)
 	movea.l	$8(a6),a4
