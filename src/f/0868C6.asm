@@ -1,7 +1,8 @@
 ; ---------------------------------------------------------------------------
-; BroodBoss_SpawnRecInView - vtable +$2A: is a BROODBOSS spawn record inside the spawn window
+; BroodBoss_SpawnRecInView - vtable +$2A override: never report a BROODBOSS spawn record as in the spawn window; just clear its bit 0
 ; In:  8(a6) = class descriptor, $C(a6) = spawn record
-; Evidence: slot +$2A of the BROODBOSS descriptor $088D6E; TAS frames 51133-51133 (1 frames active)
+; Out: d0 = 0 always
+; Evidence: slot +$2A of the BROODBOSS descriptor $088D6E; if record +4 bit 0 is set it is cleared, both paths return 0, so the spawn pass never creates the boss (CloneA5_SpawnBoss does); TAS 51133
 ; ---------------------------------------------------------------------------
 BroodBoss_SpawnRecInView:
 	link.w	a6,#$0

@@ -1,9 +1,12 @@
 # Review 002 (2026-10-14, reviewer: N4 reviewer agent 2, sample seed 7702)
-reviewed: 80
-agree: 79
+reviewed: 130
+agree: 126
 open disputes: 0
 ## Fixed
 - AvalonA2_InstallEventHooks (header): said the hooks go to -$321A/-$3216; the stores are to -$341A/-$3416 ($FFCDE6/$FFCDEA). Header corrected.
+- Cerebro_FrameHook (header): evidence named the text-wait flag -$3902; the code tests and clears -$3B02. Header corrected.
+- BroodBoss_SpawnRecInView (header): read as a real in-window test; both paths return 0 (only clearing record +4 bit 0), so the boss is never spawned by the spawn pass (CloneA5_SpawnBoss creates it). Header now says so. Name kept (slot +$2A convention).
+- BroodBoss_ScrStepClaw (header): called a single step and cited jt[$16BA] (XClone_ActSoundEF); the file is steps 0-16 of the 44-entry BROODBOSS script whose count word $2C sits at $088A54 (jt[659] = $14BA(a5)), continued by BroodBoss_ScrStepScream. Header corrected; the count word's label Tbl_BroodBossActClaw is a misnomer (it is the script head) and is left for a data pass.
 ## Disputes
 (none)
 ## Agreed
@@ -86,3 +89,50 @@ open disputes: 0
 - PlayerSelect_CharFrameNum_Magneto
 - BioSentinel_StateFireLevel
 - XClone_Script4
+- BaniMazaB2_RunScene
+- SmallBrood_StateFire
+- SavageBioBalls_ActLeap
+- Hologram_SeqB_Pose3
+- ChildShip_StateEnter
+- Actor_New
+- Mine_PoolDraw
+- PlayerSelect_CharFrameNum_Wolverine
+- CloneA5_SpawnBoss
+- BroodBoss_Update (header thin: also eases -$3C48 between $2B and $33 and, with -$3B0C bit 1, hits players standing at y $62D-$631 via slot +$22)
+- Exodus_StateNextAttack_part2
+- BeamScooter_Spawn
+- Spr_RenderToBitmap
+- BrainRocket_OutsideActiveWindow
+- CoreZap_HitActor
+- RollingDiscs_Update (only chains to the parent Update)
+- Hornet_StateShotRecover
+- LightBeam_Nop66
+- Sys_Nop1F949E
+- Game_Init
+- Tusk_GetSize
+- EvilDrop_Move
+- BroodBoss_StateClawOut
+- SporeMine_RecFindTarget
+- FlyBrood_Deactivate (templated header; body = parent Deactivate, then live-count -$1A86 -= 1)
+- XClone_ActStopAnim46
+- EvilGambit_Init
+- Deathbird_StateDiveLow
+- FlyBrood_Init_Tail
+- Platform1_Init_SetFrame2
+- GaussBullet_InitPool
+- DropBomb_Nop66
+- BroodBossArm_Draw
+- SavageBio_StateRetractStart
+- BabyBio_ActStartWalk
+- Timer_Stop
+- Deathbird_SetMoveMode_Case7
+- Beast_ShockwaveInit
+- Player2_StartLife_Psylocke
+- AvalonB1_RestorePalette
+- CoreShields_StateActive
+- DropRocket_GetSize
+- ChildShip_StateCrash3
+- BabyMoleMan_Init_Default
+- EvilMaker_ActDropPsylocke (type 6 = Psylocke matches Clone_CharTypeOf's order)
+- FlyBrood_ActSineFlyBy
+- SavageBio_ActFrame4F
