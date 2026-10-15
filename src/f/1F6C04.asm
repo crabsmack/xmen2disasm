@@ -138,7 +138,7 @@ loc_1F6D3E:
 	subq.w	#$1,d0
 	move.w	d0,-$3474(a5)
 	movea.l	g_HeapTop(a5),a3
-	pea.l	$1F6D74(pc)
+	pea.l	Str_Empty_1F6D74(pc)
 	moveq	#$0,d0
 	move.l	d0,-(a7)
 	jsr	$5032(a5)	; -> Mem_StackAlloc

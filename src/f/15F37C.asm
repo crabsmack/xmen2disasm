@@ -4,7 +4,7 @@
 sub_15F37C:
 	link.w	a6,#$0
 	movem.l	d3-d7/a2-a4,-(a7)
-	lea.l	$15F572(pc),a3
+	lea.l	loc_15F572(pc),a3
 	movea.l	$18(a6),a4
 	move.b	$17(a6),d0
 	beq.s	loc_15F3CC

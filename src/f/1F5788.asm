@@ -384,14 +384,14 @@ loc_1F5B7E:
 	move.w	-$3A66(a5),d0
 	add.w	d6,d0
 	move.w	d0,-$3AB0(a5)
-	lea.l	$1F5F26(pc),a0
+	lea.l	Str_AbTilesSharing(pc),a0
 	movea.l	-$6(a6),a1
 	move.l	a0,$4(a1)
 	bra.w	loc_1F5C9C
 loc_1F5C06:
 	movea.l	-$6(a6),a0
 	move.l	g_HeapTop(a5),(a0)
-	lea.l	$1F5F18(pc),a0
+	lea.l	Str_APlaneTiles(pc),a0
 	movea.l	-$6(a6),a1
 	move.l	a0,$4(a1)
 	movea.l	-$6(a6),a0
@@ -451,7 +451,7 @@ loc_1F5C9C:
 loc_1F5CC0:
 	clr.w	-$3AAA(a5)
 	clr.w	d4
-	lea.l	$1F5F00(pc),a0
+	lea.l	Str_APlaneTilesNoB(pc),a0
 	movea.l	-$6(a6),a1
 	move.l	a0,$4(a1)
 loc_1F5CD2:

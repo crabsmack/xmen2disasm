@@ -8,7 +8,7 @@ sub_065E6C:
 	move.w	-$3598(a5),-$16(a6)
 	move.w	#$1,-$3B02(a5)
 	move.w	#$2710,-$3B0C(a5)
-	lea.l	$65DB6(pc),a0
+	lea.l	sub_065DB6(pc),a0
 	move.l	a0,g_VBlankGameHook(a5)
 	jsr	$50A2(a5)	; -> sub_1FC2E8
 	pea.l	$66B24(pc)

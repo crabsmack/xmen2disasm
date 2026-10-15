@@ -3,7 +3,8 @@
     uv run tools/symbolize.py --dry-run     # list what would change
     uv run tools/symbolize.py               # apply
 
-Covers `$XXXX(pc...)` and `($XXXX).l` operands in src/f whose target is the start of a
+Covers `$XXXX(pc...)` and `($XXXX).l` operands in src/f whose target is inside an already
+labelled raw data span (-> Name or Name+$off), or the start of a
 disassembled instruction (e.g. `jmp $5E44(pc,d0.w)` into the branch table that follows it,
 `pea $226B2(pc)` handing a routine to a callback). An existing label at the target is
 reused; otherwise `loc_XXXXXX:` is inserted before the target instruction. Targets that are
@@ -41,6 +42,24 @@ def main() -> int:
         name, _, v = line.partition("=$")
         if v and not name.startswith("Tbl_") and int(v, 16) in lineno:
             labels.setdefault(int(v, 16), name)
+    # labelled raw data spans (`Name:` line right before an incrom): operands into them -> Name(+off)
+    import convert
+    main_lines = (ROOT / "xmen2.asm").read_text().splitlines()
+    dspans = []
+    for i, s, e in convert.incrom_spans(main_lines):
+        prev = main_lines[i - 1].split(";")[0].strip() if i else ""
+        if prev.endswith(":"):
+            dspans.append((s, e, prev[:-1]))
+    dspans.sort()
+    dstarts = [s for s, _e, _n in dspans]
+
+    def data_label(v: int) -> str | None:
+        k = bisect.bisect_right(dstarts, v) - 1
+        if k >= 0 and dspans[k][0] <= v < dspans[k][1]:
+            s, _e, n = dspans[k]
+            return n if v == s else f"{n}+${v - s:X}"
+        return None
+
     texts = {p: p.read_text() for p in files}
     orig = dict(texts)
     inserts: dict[Path, dict[int, str]] = {}
@@ -66,6 +85,11 @@ def main() -> int:
             def sub(m: re.Match) -> str:
                 nonlocal done
                 v = int(m.group(1) or m.group(2), 16)
+                dl = data_label(v) if v < 0x200000 and v not in lineno else None
+                if dl:
+                    done += 1
+                    print(f"{p.stem}: {code.strip()}  ->  {dl}")
+                    return dl
                 if v >= 0x200000 or v not in lineno:
                     if v < 0x200000 and v not in lineno and any(v - k in lineno for k in (2, 4, 6, 8)):
                         bad.append(f"{p.stem}: {code.strip()} -> ${v:06X} is not an instruction start")
