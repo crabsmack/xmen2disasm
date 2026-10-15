@@ -1395,10 +1395,14 @@ Tbl_Cerebro7:	; format not established; never read in the corpus; jt[451] used b
 	incrom	$063BEE,$8
 Tbl_Cerebro8:	; format not established; never read in the corpus; jt[452] used by Pause_HandleInput_EndCode
 	incrom	$063BF6,$8
+Tbl_PauseHandleInput:	; table read by Pause_HandleInput; 1 of 8 bytes used at runtime; read by Pause_HandleInput; jt[453] used by Pause_HandleInput_EndCode
 	incrom	$063BFE,$8
 Tbl_Cerebro9:	; format not established; never read in the corpus; jt[454] used by Pause_HandleInput_EndCode
 	incrom	$063C06,$A
-	incrom	$063C10,$12
+Tbl_PauseHandleInput2:	; table read by Pause_HandleInput; 1 of 8 bytes used at runtime; read by Pause_HandleInput; jt[455] used by Pause_HandleInput_EndCode
+	incrom	$063C10,$8
+Tbl_PauseHandleInput3:	; table read by Pause_HandleInput; 1 of A bytes used at runtime; read by Pause_HandleInput; jt[456] used by Pause_HandleInput_EndCode
+	incrom	$063C18,$A
 Art_FailureNem:	; Nemesis-style compressed 4bpp tiles (Nem_Decode; code table built from pairs by the caller); 38 of 38 bytes used at runtime; read by Nem_DecodeLoop, Nem_BuildCodeTable; jt[457] used by Failure_RunScene
 	incrom	$063C22,$38
 Art_FailureNem2:	; Nemesis-style compressed 4bpp tiles (Nem_Decode; code table built from pairs by the caller); 122 of 122 bytes used at runtime; read by Nem_DecodeLoop, Nem_BuildCodeTable; jt[458] used by Failure_RunScene
@@ -4846,6 +4850,7 @@ Art_Spr_14018E:	; sprite definition (type $19, Nemesis-compressed tiles): $24-by
 	include "src/f/141F18.asm"
 	include "src/f/142008.asm"
 	include "src/f/14205E.asm"
+Tbl_TankInit:	; table read by Tank_Init; C of 88 bytes used at runtime; read by Tank_Init, TankLeft_Init, TankLeft_Deactivate; jt[1925] used by Tank_Deactivate, Tank_Init
 	incrom	$1420DE,$88
 Lvl_Data_142166:	; level data read by Level_FrameLoop; 68 of 8C bytes used at runtime; read by Level_FrameLoop, Actor_Update, Actor_New; jt[1926] used by TankLeft_Init, TankLeft_Deactivate
 	incrom	$142166,$8C
@@ -4855,14 +4860,17 @@ Tbl_Anim_1421FA:	; animation script (byte flags, byte steps, ..., 2-byte steps f
 	incrom	$1421FA,$10
 Tbl_Anim_14220A:	; animation script (byte flags, byte steps, ..., 2-byte steps from +6); 10 of 12 bytes used at runtime; read by Anim_ApplyStep, Tank_ActPause; jt[1929] used by Tank_StateWreck
 	incrom	$14220A,$12
+Tbl_TankLeftActPause:	; table read by Tank_ActPause; 2 of 2 bytes used at runtime; read by Tank_ActPause; jt[1930] used by TankLeft_Init, Tank_Init
 	incrom	$14221C,$2
 	include "src/f/14221E.asm"
 Tbl_AiScript_14222A:	; word $0000 (2 bytes), not a string: reached only via jt[1931] used by TankLeft_StateWaitDrive -> AiScript_Set (e.g. an empty list/script count)
 	incrom	$14222A,$1
+Tbl_TankActPause:	; table read by Tank_ActPause; 1 of 1 bytes used at runtime; read by Tank_ActPause
 	incrom	$14222B,$1
 	include "src/f/14222C.asm"
 Tbl_AiScript_142238:	; word $0000 (2 bytes), not a string: reached only via jt[1932] used by TankLeft_Deactivate -> sub_1F66F0, TankLeft_StateDriveIn -> AiScript_Set (e.g. an empty list/script count)
 	incrom	$142238,$1
+Tbl_TankActPause2:	; table read by Tank_ActPause; 1 of 1 bytes used at runtime; read by Tank_ActPause
 	incrom	$142239,$1
 	include "src/f/14223A.asm"
 Tbl_TakeDamage_Hurt_142246:	; table read by XNpc_TakeDamage_Hurt; 5 of 8 bytes used at runtime; read by XNpc_TakeDamage_Hurt, Tank_Init, XNpc_KnockbackDist; jt[1933] used by Tank_Init
@@ -5133,6 +5141,7 @@ Tbl_Anim_15B1FA:	; animation script (byte flags, byte steps, ..., 2-byte steps f
 	incrom	$15B1FA,$C
 Tbl_ClosedBarrierAnim:	; animation script (NOTES: Animation scripts); never read in the corpus; jt[2024] used by ClosedBarrier_Init -> Obj_SetAnim, Barrier_Close -> Obj_SetAnim
 	incrom	$15B206,$A
+Tbl_BioNpcEmitFlicker:	; table read by Spr_EmitFlicker; 10 of 10 bytes used at runtime; read by Spr_EmitFlicker, Spr_PreloadTiles, Nem_BuildCodeTable; jt[2025] used by BioNpc_DrawStunned, Blast_Draw
 	incrom	$15B210,$10
 Art_BlastSpr:	; sprite definition (type $19, Nemesis-compressed tiles): $24-byte header, $14-byte frame records, pieces, tiles; D3 of D4 bytes used at runtime; read by VDP_FlushDmaQueue, Spr_PreloadTiles, Nem_BuildCodeTable; jt[2026] used by Blast_ClassInit, Psylocke_Init
 	incrom	$15B220,$D4
@@ -5862,10 +5871,22 @@ Tbl_Anim_1E1CE6:	; animation script (NOTES: Animation scripts); never read in th
 	incrom	$1E1CE6,$A
 Tbl_Anim_1E1CF0:	; animation script (NOTES: Animation scripts); never read in the corpus; jt[2371] used by Cyclops_AirBeamAim -> Obj_SetAnim
 	incrom	$1E1CF0,$A
-	incrom	$1E1CFA,$98A
+Tbl_CyclopsDrawBeam_Emit:	; table read by Cyclops_DrawBeam_Emit; 244 of 6DA bytes used at runtime; read by Cyclops_DrawBeam_Emit; jt[2372] used by Cyclops_AirBeamAim
+	incrom	$1E1CFA,$6DA
+Tbl_CyclopsStartBeam:	; table read by Cyclops_StartBeam; F of 5C bytes used at runtime; read by Cyclops_StartBeam, Cyclops_DrawBeam_Emit; jt[2383] used by Cyclops_StateGroundAim
+	incrom	$1E23D4,$5C
+Tbl_CyclopsDrawBeam_Emit2:	; table read by Cyclops_DrawBeam_Emit; D of 12C bytes used at runtime; read by Cyclops_DrawBeam_Emit, Cyclops_StartBeam, Cyclops_DrawBeam; jt[2382] used by Cyclops_StartBeam, Cyclops_StateGroundAim
+	incrom	$1E2430,$12C
+Tbl_CyclopsDrawBeam_Emit3:	; table read by Cyclops_DrawBeam_Emit; 18 of CC bytes used at runtime; read by Cyclops_DrawBeam_Emit, Cyclops_StartBeam, Cyclops_DrawBeam; jt[2381] used by Cyclops_StartBeam, Cyclops_StateGroundAim
+	incrom	$1E255C,$CC
+Tbl_CyclopsStartBeam2:	; table read by Cyclops_StartBeam; 4 of 5C bytes used at runtime; read by Cyclops_StartBeam; jt[2380] used by Cyclops_StartBeam, Cyclops_StateGroundAim
+	incrom	$1E2628,$5C
 Tbl_1E2684:	; format not established; never read in the corpus; jt[2379] used by Cyclops_StartBeam
 	incrom	$1E2684,$5C
-	incrom	$1E26E0,$A8
+Tbl_CyclopsDrawBeam_Emit4:	; table read by Cyclops_DrawBeam_Emit; B of 54 bytes used at runtime; read by Cyclops_DrawBeam_Emit, Cyclops_StartBeam, Cyclops_DrawBeam; jt[2378] used by Cyclops_StateCrouchAim, Cyclops_StateHardLanding
+	incrom	$1E26E0,$54
+Tbl_CyclopsStartBeam3:	; table read by Cyclops_StartBeam; 2 of 54 bytes used at runtime; read by Cyclops_StartBeam; jt[2377] used by Cyclops_AirBeamAim
+	incrom	$1E2734,$54
 Tbl_1E2788:	; format not established; never read in the corpus; jt[2376] used by Cyclops_StartBeam, Cyclops_AirBeamAim -> Cyclops_StartBeam
 	incrom	$1E2788,$54
 Tbl_1E27DC:	; format not established; never read in the corpus; jt[2375] used by Cyclops_StartBeam, Cyclops_AirBeamAim -> Cyclops_StartBeam
