@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; loc_0648CC	[runtime: executed in tas]
+; PlayerSelect_CharSpriteDef_Beast - PlayerSelect_CharSpriteDef case 0 (Beast)
+; In:  none
+; Out: a4 = sprite def
+; Evidence: Sw_06489A entry 0: sub_1841E4
 ; ---------------------------------------------------------------------------
-loc_0648CC:
+PlayerSelect_CharSpriteDef_Beast:
 	jsr	$432A(a5)	; -> sub_1841E4
 	movea.l	d0,a4
 	bra.s	$64908

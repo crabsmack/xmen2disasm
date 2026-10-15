@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_064BF0	[link-after-rts]
+; PlayerSelect_NextFreeChar - next portrait slot not taken by either cursor, wrapping
+; In:  8(a6) = word slot (-1 = none)
+; Out: d0.w = slot
+; Evidence: mirror of PlayerSelect_PrevFreeChar (Right wraps last -> first, NOTES)
 ; ---------------------------------------------------------------------------
-sub_064BF0:
+PlayerSelect_NextFreeChar:
 	link.w	a6,#$0
 	movem.l	d6-d7,-(a7)
 	move.w	$A(a6),d6

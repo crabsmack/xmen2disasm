@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_065494	[link-after-rts]
+; Cerebro_ClearScreen - fill a 40x32 plane at VRAM $0000 with the blank tile $86C0
+; In:  none
+; Out: none
+; Evidence: direct VDP writes, 32 rows of 40 words at $80-byte stride
 ; ---------------------------------------------------------------------------
-sub_065494:
+Cerebro_ClearScreen:
 	link.w	a6,#$0
 	movem.l	d3/d6-d7,-(a7)
 	clr.w	d6

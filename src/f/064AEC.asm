@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_064AEC	[link-after-rts]
+; PlayerSelect_PlaceCursor - move a select cursor onto its portrait slot (or off screen at -200,-200 if none)
+; In:  8(a6) = cursor (+$3C slot)
+; Out: none
+; Evidence: (x,y) bytes from the slot table at -$3B30 into cursor +$36/+$38; invalid slot -> $FF
 ; ---------------------------------------------------------------------------
-sub_064AEC:
+PlayerSelect_PlaceCursor:
 	link.w	a6,#$0
 	movem.l	a3-a4,-(a7)
 	movea.l	$8(a6),a4

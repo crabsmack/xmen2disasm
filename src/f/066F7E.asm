@@ -1,14 +1,17 @@
 ; ---------------------------------------------------------------------------
-; sub_066F7E	[jt 469]
+; LogoAndDemo_RunScene - scene 'CerebroScreen LogoAndDemo': Cerebro intro with PRESS START; start pressed -> new game, else attract demos
+; In:  none
+; Out: none
+; Evidence: Scene_RegisterAll entry; -$3C5E bit 1 (set when START pressed in Cerebro_PlayIntro) -> Game_ResetPlayers, else g_SceneIndex = -1 (Game_SceneLoop plays demos)
 ; ---------------------------------------------------------------------------
-sub_066F7E:
+LogoAndDemo_RunScene:
 	link.w	a6,#$0
 	move.w	#$1,-$3C5E(a5)
 	move.w	#$1,-$3B0C(a5)
 	clr.w	-$3B0A(a5)
 	moveq	#$0,d0
 	move.l	d0,-$3B14(a5)
-	jsr	sub_066B26(pc)
+	jsr	Cerebro_Run(pc)
 	moveq	#$2,d0
 	and.w	-$3C5E(a5),d0
 	beq.s	loc_066FAA

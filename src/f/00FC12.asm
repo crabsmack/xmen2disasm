@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_00FC12	[link-after-rts]
+; AvalonB1_ScrollCameraTo - set the camera position clamped to the level limits and redraw the scroll
+; In:  8(a6) = word x, $C(a6) = word y
+; Out: none
+; Evidence: clamps to -$3A90..-$3A8E (x) and -$3A94..-$3A92 (y), stores g_CameraX/g_CameraY, calls the scroll hooks at -$3A54/-$3A50 with interrupts off; callers are the five AvalonB1_CamHook* functions
 ; ---------------------------------------------------------------------------
-sub_00FC12:
+AvalonB1_ScrollCameraTo:
 	link.w	a6,#$0
 	move.w	$A(a6),g_CameraX(a5)
 	move.w	$E(a6),g_CameraY(a5)

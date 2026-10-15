@@ -14,7 +14,7 @@ loc_064868:
 	jsr	$50AA(a5)	; -> sub_1FC35C
 	move.l	-$C9A(a5),-(a7)
 	move.l	a3,-(a7)
-	jsr	sub_064588(pc)
+	jsr	Cerebro_BigSpriteInit(pc)
 	lea.l	$14(a7),a7
 loc_064890:
 	movem.l	-$C(a6),d7/a3-a4

@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_065400	[link-after-rts]
+; Cerebro_ClearTextWindow - fill the Cerebro text window with the blank tile and home the cursor
+; In:  none
+; Out: none
+; Evidence: writes tile $86C0 to rows -$3C58..-$3C5C, cols -$3C56..-$3C5A of the plane at VRAM $E000
 ; ---------------------------------------------------------------------------
-sub_065400:
+Cerebro_ClearTextWindow:
 	link.w	a6,#$0
 	movem.l	d6-d7,-(a7)
 	move.w	-$3C58(a5),d6

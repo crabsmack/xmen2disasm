@@ -1,14 +1,17 @@
 ; ---------------------------------------------------------------------------
-; sub_065E6C	[link-after-rts]
+; Cerebro_PlayIntro - Cerebro intro: logo pictures and flying Cerebro sprite, title lines; on the LogoAndDemo scene show PRESS START for 10 s
+; In:  none
+; Out: none
+; Evidence: called by Cerebro_Run when -$3B0C; skipped after START (bit 1 of -$3C5E); 'PRESS'/'START' strings; START sets -$3C5E bit 1; uses Cerebro_BigSprite*, Cerebro_PrintText; palette hook Cerebro_IntroPalHook
 ; ---------------------------------------------------------------------------
-sub_065E6C:
+Cerebro_PlayIntro:
 	link.w	a6,#$FE10
 	movem.l	d3-d7/a3-a4,-(a7)
 	lea.l	-$1A6(a6),a3
 	move.w	-$3598(a5),-$16(a6)
 	move.w	#$1,-$3B02(a5)
 	move.w	#$2710,-$3B0C(a5)
-	lea.l	sub_065DB6(pc),a0
+	lea.l	Cerebro_IntroPalHook(pc),a0
 	move.l	a0,g_VBlankGameHook(a5)
 	jsr	$50A2(a5)	; -> sub_1FC2E8
 	pea.l	$66B24(pc)
@@ -76,7 +79,7 @@ loc_065F1E:
 	moveq	#$0,d1
 	move.l	d1,-(a7)
 	jsr	$4142(a5)	; -> sub_15FA7A
-	jsr	sub_065494(pc)
+	jsr	Cerebro_ClearScreen(pc)
 	clr.w	d7
 	lea.l	-$3960(a5),a4
 	lea.l	$1C(a7),a7
@@ -174,8 +177,8 @@ loc_066034:
 	bne.s	loc_065FE0
 	lea.l	$FBA(a5),a0
 	move.l	$2(a0),-$1F0(a6)
-	jsr	sub_065494(pc)
-	jsr	sub_065400(pc)
+	jsr	Cerebro_ClearScreen(pc)
+	jsr	Cerebro_ClearTextWindow(pc)
 	move.w	#$CC,-$3902(a5)
 	move.w	#$AA,-$3904(a5)
 	move.b	#$1,g_PalBaseDirty(a5)
@@ -186,37 +189,37 @@ loc_066034:
 	moveq	#$0,d0
 	move.l	d0,-(a7)
 	move.l	-$1F0(a6),-(a7)
-	jsr	sub_064F70(pc)
+	jsr	Cerebro_PrintText(pc)
 	addq.w	#$1,-$3B06(a5)
 	addi.l	#$20,-$1F0(a6)
 	moveq	#$0,d0
 	move.l	d0,-(a7)
 	move.l	-$1F0(a6),-(a7)
-	jsr	sub_064F70(pc)
+	jsr	Cerebro_PrintText(pc)
 	addq.w	#$1,-$3B06(a5)
 	addi.l	#$20,-$1F0(a6)
 	moveq	#$0,d0
 	move.l	d0,-(a7)
 	move.l	-$1F0(a6),-(a7)
-	jsr	sub_064F70(pc)
+	jsr	Cerebro_PrintText(pc)
 	addq.w	#$1,-$3B06(a5)
 	addi.l	#$20,-$1F0(a6)
 	moveq	#$0,d0
 	move.l	d0,-(a7)
 	move.l	-$1F0(a6),-(a7)
-	jsr	sub_064F70(pc)
+	jsr	Cerebro_PrintText(pc)
 	addq.w	#$3,-$3B06(a5)
 	addi.l	#$20,-$1F0(a6)
 	moveq	#$0,d0
 	move.l	d0,-(a7)
 	move.l	-$1F0(a6),-(a7)
-	jsr	sub_064F70(pc)
+	jsr	Cerebro_PrintText(pc)
 	addq.w	#$1,-$3B06(a5)
 	addi.l	#$20,-$1F0(a6)
 	moveq	#$0,d0
 	move.l	d0,-(a7)
 	move.l	-$1F0(a6),-(a7)
-	jsr	sub_064F70(pc)
+	jsr	Cerebro_PrintText(pc)
 	move.w	#$B4,d6
 	lea.l	$30(a7),a7
 	bra.s	loc_066100
@@ -241,7 +244,7 @@ loc_06610A:
 loc_066126:
 	tst.w	d6
 	bne.s	loc_06610A
-	jsr	sub_065400(pc)
+	jsr	Cerebro_ClearTextWindow(pc)
 loc_06612E:
 	moveq	#$A,d0
 	move.l	d0,-(a7)
@@ -249,7 +252,7 @@ loc_06612E:
 	moveq	#$A,d0
 	move.l	d0,-(a7)
 	jsr	$521A(a5)	; -> Snd_Play
-	jsr	sub_065494(pc)
+	jsr	Cerebro_ClearScreen(pc)
 	clr.w	d7
 	lea.l	-$3960(a5),a4
 	addq.w	#$8,a7
@@ -338,7 +341,7 @@ loc_0661FC:
 	jsr	$50AA(a5)	; -> sub_1FC35C
 	move.l	-$C9A(a5),-(a7)
 	pea.l	-$1E8(a6)
-	jsr	sub_064588(pc)
+	jsr	Cerebro_BigSpriteInit(pc)
 	move.w	#$3C,-$20(a6)
 	move.w	#$40,-$1E(a6)
 	move.w	#$A0,-$26(a6)
@@ -456,9 +459,9 @@ loc_066348:
 	movea.l	-$1E8(a6),a0
 	move.w	d0,$12(a0)
 	pea.l	-$1E8(a6)
-	jsr	sub_0644D4(pc)
+	jsr	Cerebro_BigSpriteDecode(pc)
 	pea.l	-$1E8(a6)
-	jsr	sub_06451E(pc)
+	jsr	Cerebro_BigSpriteDraw(pc)
 	subq.w	#$1,d6
 	tst.w	d6
 	addq.w	#$8,a7
@@ -543,7 +546,7 @@ loc_0664CA:
 	jsr	$50AA(a5)	; -> sub_1FC35C
 	move.l	-$C9A(a5),-(a7)
 	pea.l	-$1E8(a6)
-	jsr	sub_064588(pc)
+	jsr	Cerebro_BigSpriteInit(pc)
 	move.w	#$48,-$20(a6)
 	move.w	#$95,-$1E(a6)
 	move.w	#$A0,-$26(a6)
@@ -684,9 +687,9 @@ loc_0665EE:
 	movea.l	-$1E8(a6),a0
 	move.w	d0,$12(a0)
 	pea.l	-$1E8(a6)
-	jsr	sub_0644D4(pc)
+	jsr	Cerebro_BigSpriteDecode(pc)
 	pea.l	-$1E8(a6)
-	jsr	sub_06451E(pc)
+	jsr	Cerebro_BigSpriteDraw(pc)
 	subq.w	#$1,d6
 	jsr	$5052(a5)	; -> sub_1FA9D2
 	move.b	#$1,g_DmaFlushReq(a5)
@@ -822,9 +825,9 @@ loc_0667A0:
 	movea.l	-$1E8(a6),a0
 	move.w	d0,$12(a0)
 	pea.l	-$1E8(a6)
-	jsr	sub_0644D4(pc)
+	jsr	Cerebro_BigSpriteDecode(pc)
 	pea.l	-$1E8(a6)
-	jsr	sub_06451E(pc)
+	jsr	Cerebro_BigSpriteDraw(pc)
 	subq.w	#$1,d6
 	jsr	$5052(a5)	; -> sub_1FA9D2
 	move.b	#$1,g_DmaFlushReq(a5)
@@ -845,7 +848,7 @@ loc_066870:
 	moveq	#$0,d0
 	move.l	d0,-(a7)
 	pea.l	Str_DevelopedByHeadgamesInc(pc)
-	jsr	sub_064F70(pc)
+	jsr	Cerebro_PrintText(pc)
 	moveq	#$78,d6
 	addq.w	#$8,a7
 	bra.s	loc_0668B4
@@ -968,7 +971,7 @@ loc_0669EC:
 	pea.l	-$14(a6)
 	jsr	$508A(a5)	; -> Spr_Draw
 	pea.l	-$1E8(a6)
-	jsr	sub_06451E(pc)
+	jsr	Cerebro_BigSpriteDraw(pc)
 	jsr	$5052(a5)	; -> sub_1FA9D2
 	move.b	#$1,g_DmaFlushReq(a5)
 	move.w	#$258,d6

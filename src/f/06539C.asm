@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_06539C	[link-after-rts]
+; PlayerSelect_CheckDone - start the select-screen exit countdown once every present player has confirmed
+; In:  none
+; Out: none
+; Evidence: cursor +$40 = confirmed, +$3C = -1 absent (cursors -$3B28/-$3B2C); sets countdown -$359A = 2
 ; ---------------------------------------------------------------------------
-sub_06539C:
+PlayerSelect_CheckDone:
 	link.w	a6,#$0
 	tst.w	g_SceneExitTimer(a5)
 	bne.s	loc_0653FC

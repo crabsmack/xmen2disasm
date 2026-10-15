@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_064AA2	[link-after-rts]
+; PlayerSelect_DrawFrames - draw the frame sprite of every portrait slot
+; In:  none
+; Out: none
+; Evidence: PlayerSelect_DrawFrame for each of -$3B0E slots from the (x,y) table at -$3B30
 ; ---------------------------------------------------------------------------
-sub_064AA2:
+PlayerSelect_DrawFrames:
 	link.w	a6,#$0
 	movem.l	d7/a4,-(a7)
 	movea.l	-$3B30(a5),a4
@@ -21,7 +24,7 @@ loc_064AB2:
 	move.w	d7,d2
 	ext.l	d2
 	move.l	d2,-(a7)
-	jsr	sub_06498A(pc)
+	jsr	PlayerSelect_DrawFrame(pc)
 	lea.l	$14(a7),a7
 	move.w	d7,d0
 	addq.w	#$1,d7

@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_00F648	[link-after-rts]
+; AvalonB1_PalFadeStep - one step of the AvalonB1 fade-in: rebuild each colour of line 0 from a row of the per-component level table
+; In:  8(a6) = word step row, $C(a6) = table (8 bytes per row, indexed by the saved colour's 3-bit components)
+; Out: none
+; Evidence: colours 6-8 keep the brighter of old/new, 9 and 15 are left alone; called every 6 frames from AvalonB1_CamHookFadeIn with jt $2CA data
 ; ---------------------------------------------------------------------------
-sub_00F648:
+AvalonB1_PalFadeStep:
 	link.w	a6,#$0
 	movem.l	d3-d7/a3-a4,-(a7)
 	move.b	#$1,g_PalBaseDirty(a5)

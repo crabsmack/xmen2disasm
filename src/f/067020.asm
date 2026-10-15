@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_067020	[jt 472]
+; Failure_RunScene - scene 'CerebroScreen Failure' (game over): failure text, then the Game Over picture for 20 s or until a button, then a new game
+; In:  none
+; Out: none
+; Evidence: Scene_RegisterAll entry; Cerebro_Run with script jt $FB2; draws a tilemap, fades in (Pal_StartFade), waits $4B0 frames or pad buttons $F0, fades out, Game_ResetPlayers; scenario game-over shows the Failure text then 'Game Over'
 ; ---------------------------------------------------------------------------
-sub_067020:
+Failure_RunScene:
 	link.w	a6,#$FFC0
 	movem.l	d3/d5-d7/a3-a4,-(a7)
 	lea.l	-$38(a6),a3
@@ -9,13 +12,13 @@ sub_067020:
 	clr.w	-$3B0A(a5)
 	lea.l	$FB2(a5),a0
 	move.l	$2(a0),-$3B14(a5)
-	jsr	sub_066B26(pc)
-	jsr	sub_065494(pc)
+	jsr	Cerebro_Run(pc)
+	jsr	Cerebro_ClearScreen(pc)
 	clr.w	-$3C58(a5)
 	clr.w	-$3C56(a5)
 	move.w	#$1F,-$3C5C(a5)
 	move.w	#$27,-$3C5A(a5)
-	jsr	sub_065400(pc)
+	jsr	Cerebro_ClearTextWindow(pc)
 	clr.w	d7
 	lea.l	g_PalBase(a5),a4
 	moveq	#$40,d3

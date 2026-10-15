@@ -103,7 +103,7 @@ sub_067AE0:
 	movea.l	-$4(a6),a0
 	move.w	d0,$12(a0)
 	move.l	a3,-(a7)
-	jsr	sub_0644D4(pc)
+	jsr	Cerebro_BigSpriteDecode(pc)
 	move.b	#$1,$32(a3)
 	clr.b	$35(a3)
 	addq.w	#$4,a7

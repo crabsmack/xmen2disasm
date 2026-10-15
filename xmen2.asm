@@ -1013,15 +1013,15 @@ Sw_05DDBE:	; switch table of sub at $05DDBE: 8 word offsets from Sw_05DDBE-2
 	include "src/f/064588.asm"
 	include "src/f/064638.asm"
 Sw_064638:	; switch table of sub at $064638: 7 word offsets from Sw_064638-2
-	dc.w	loc_064674-(Sw_064638-2), loc_064682-(Sw_064638-2), loc_064690-(Sw_064638-2), loc_06469E-(Sw_064638-2)
+	dc.w	PlayerSelect_AllocCharBuffers_Cases-(Sw_064638-2), loc_064682-(Sw_064638-2), loc_064690-(Sw_064638-2), loc_06469E-(Sw_064638-2)
 	dc.w	loc_0646AC-(Sw_064638-2), loc_0646BA-(Sw_064638-2), loc_0646C8-(Sw_064638-2)
 	include "src/f/064674.asm"
 	include "src/f/0646D6.asm"
 	incrom	$0647CC,$4
 	include "src/f/0647D0.asm"
 Sw_0647D0:	; switch table of sub at $0647D0: 7 word offsets from Sw_0647D0-2
-	dc.w	loc_064806-(Sw_0647D0-2), loc_064814-(Sw_0647D0-2), loc_064822-(Sw_0647D0-2), loc_064830-(Sw_0647D0-2)
-	dc.w	loc_06483E-(Sw_0647D0-2), loc_06484C-(Sw_0647D0-2), loc_06485A-(Sw_0647D0-2)
+	dc.w	PlayerSelect_LoadCharFrame_Beast-(Sw_0647D0-2), PlayerSelect_LoadCharFrame_Cyclops-(Sw_0647D0-2), loc_064822-(Sw_0647D0-2), PlayerSelect_LoadCharFrame_Nightcrawler-(Sw_0647D0-2)
+	dc.w	PlayerSelect_LoadCharFrame_Psylocke-(Sw_0647D0-2), PlayerSelect_LoadCharFrame_Wolverine-(Sw_0647D0-2), PlayerSelect_LoadCharFrame_Magneto-(Sw_0647D0-2)
 	include "src/f/064806.asm"
 	include "src/f/064814.asm"
 	include "src/f/064830.asm"
@@ -1031,8 +1031,8 @@ Sw_0647D0:	; switch table of sub at $0647D0: 7 word offsets from Sw_0647D0-2
 	include "src/f/064868.asm"
 	include "src/f/06489A.asm"
 Sw_06489A:	; switch table of sub at $06489A: 7 word offsets from Sw_06489A-2
-	dc.w	loc_0648CC-(Sw_06489A-2), loc_0648D4-(Sw_06489A-2), loc_0648DC-(Sw_06489A-2), loc_0648E4-(Sw_06489A-2)
-	dc.w	loc_0648EC-(Sw_06489A-2), loc_0648F4-(Sw_06489A-2), loc_0648FC-(Sw_06489A-2)
+	dc.w	PlayerSelect_CharSpriteDef_Beast-(Sw_06489A-2), PlayerSelect_CharSpriteDef_Cyclops-(Sw_06489A-2), loc_0648DC-(Sw_06489A-2), PlayerSelect_CharSpriteDef_Nightcrawler-(Sw_06489A-2)
+	dc.w	PlayerSelect_CharSpriteDef_Psylocke-(Sw_06489A-2), PlayerSelect_CharSpriteDef_Wolverine-(Sw_06489A-2), PlayerSelect_CharSpriteDef_Magneto-(Sw_06489A-2)
 	include "src/f/0648CC.asm"
 	include "src/f/0648D4.asm"
 	include "src/f/0648E4.asm"
@@ -1042,8 +1042,8 @@ Sw_06489A:	; switch table of sub at $06489A: 7 word offsets from Sw_06489A-2
 	include "src/f/064904.asm"
 	include "src/f/064912.asm"
 Sw_064912:	; switch table of sub at $064912: 7 word offsets from Sw_064912-2
-	dc.w	loc_064944-(Sw_064912-2), loc_06494C-(Sw_064912-2), loc_064954-(Sw_064912-2), loc_06495C-(Sw_064912-2)
-	dc.w	loc_064964-(Sw_064912-2), loc_06496C-(Sw_064912-2), loc_064974-(Sw_064912-2)
+	dc.w	PlayerSelect_CharFrameNum_Beast-(Sw_064912-2), PlayerSelect_CharFrameNum_Cyclops-(Sw_064912-2), loc_064954-(Sw_064912-2), PlayerSelect_CharFrameNum_Nightcrawler-(Sw_064912-2)
+	dc.w	PlayerSelect_CharFrameNum_Psylocke-(Sw_064912-2), PlayerSelect_CharFrameNum_Wolverine-(Sw_064912-2), PlayerSelect_CharFrameNum_Magneto-(Sw_064912-2)
 	include "src/f/064944.asm"
 	include "src/f/06494C.asm"
 	include "src/f/06495C.asm"
@@ -1060,12 +1060,12 @@ Sw_064912:	; switch table of sub at $064912: 7 word offsets from Sw_064912-2
 	include "src/f/064C66.asm"
 	include "src/f/064CA2.asm"
 Sw_064CA2:	; switch table of sub at $064CA2: 8 word offsets from Sw_064CA2-2
-	dc.w	loc_064CF2-(Sw_064CA2-2), loc_064D14-(Sw_064CA2-2), loc_064D30-(Sw_064CA2-2), loc_064D4C-(Sw_064CA2-2)
+	dc.w	Cerebro_AnimatePalettes_CasesA-(Sw_064CA2-2), loc_064D14-(Sw_064CA2-2), loc_064D30-(Sw_064CA2-2), loc_064D4C-(Sw_064CA2-2)
 	dc.w	loc_064D66-(Sw_064CA2-2), loc_064D80-(Sw_064CA2-2), loc_064D9A-(Sw_064CA2-2), loc_064DB4-(Sw_064CA2-2)
 	include "src/f/064CF2.asm"
 	include "src/f/064DD2.asm"
 Sw_064DD2:	; switch table of sub at $064DD2: 8 word offsets from Sw_064DD2-2
-	dc.w	loc_064E14-(Sw_064DD2-2), loc_064E22-(Sw_064DD2-2), loc_064E30-(Sw_064DD2-2), loc_064E3E-(Sw_064DD2-2)
+	dc.w	Cerebro_AnimatePalettes_CasesB-(Sw_064DD2-2), loc_064E22-(Sw_064DD2-2), loc_064E30-(Sw_064DD2-2), loc_064E3E-(Sw_064DD2-2)
 	dc.w	loc_064E4C-(Sw_064DD2-2), loc_064E5A-(Sw_064DD2-2), loc_064E68-(Sw_064DD2-2), loc_064E76-(Sw_064DD2-2)
 	include "src/f/064E14.asm"
 	include "src/f/064E82.asm"
@@ -1082,16 +1082,16 @@ Sw_064F70:	; switch table of sub at $064F70: 4 word offsets from Sw_064F70-2
 	include "src/f/0654F4.asm"
 	include "src/f/065532.asm"
 Sw_065532:	; switch table of sub at $065532: 6 word offsets from Sw_065532-2
-	dc.w	loc_0655C4-(Sw_065532-2), loc_0655E4-(Sw_065532-2), loc_065612-(Sw_065532-2), loc_06563A-(Sw_065532-2)
-	dc.w	loc_065662-(Sw_065532-2), loc_065672-(Sw_065532-2)
+	dc.w	Cerebro_TextOpSetCursor-(Sw_065532-2), loc_0655E4-(Sw_065532-2), loc_065612-(Sw_065532-2), Cerebro_TextOpFadeOut-(Sw_065532-2)
+	dc.w	Cerebro_TextOpPlaySound-(Sw_065532-2), Cerebro_TextOpStopSound-(Sw_065532-2)
 	include "src/f/0655C4.asm"
 	include "src/f/06563A.asm"
 	include "src/f/065662.asm"
 	include "src/f/065682.asm"
 	include "src/f/0656B0.asm"
 Sw_0656B0:	; switch table of sub at $0656B0: 7 word offsets from Sw_0656B0-2
-	dc.w	loc_065C68-(Sw_0656B0-2), loc_065C74-(Sw_0656B0-2), loc_065C80-(Sw_0656B0-2), loc_065C8C-(Sw_0656B0-2)
-	dc.w	loc_065C98-(Sw_0656B0-2), loc_065CA4-(Sw_0656B0-2), loc_065CB0-(Sw_0656B0-2)
+	dc.w	PlayerSelect_Run_P1Beast-(Sw_0656B0-2), PlayerSelect_Run_P1Cyclops-(Sw_0656B0-2), loc_065C80-(Sw_0656B0-2), PlayerSelect_Run_P1Nightcrawler-(Sw_0656B0-2)
+	dc.w	PlayerSelect_Run_P1Psylocke-(Sw_0656B0-2), PlayerSelect_Run_P1Wolverine-(Sw_0656B0-2), PlayerSelect_Run_P1Magneto-(Sw_0656B0-2)
 	include "src/f/065C68.asm"
 	include "src/f/065C74.asm"
 	include "src/f/065C8C.asm"
@@ -1100,27 +1100,27 @@ Sw_0656B0:	; switch table of sub at $0656B0: 7 word offsets from Sw_0656B0-2
 	include "src/f/065CB0.asm"
 	include "src/f/065CBC.asm"
 Sw_065CBC:	; switch table of sub at $065CBC: 7 word offsets from Sw_065CBC-2
-	dc.w	loc_065D20-(Sw_065CBC-2), loc_065D2C-(Sw_065CBC-2), loc_065D38-(Sw_065CBC-2), loc_065D44-(Sw_065CBC-2)
+	dc.w	PlayerSelect_Run_P2Beast-(Sw_065CBC-2), PlayerSelect_Run_P2Cyclops-(Sw_065CBC-2), PlayerSelect_Run_P2Gambit-(Sw_065CBC-2), loc_065D44-(Sw_065CBC-2)
 	dc.w	loc_065D50-(Sw_065CBC-2), loc_065D5C-(Sw_065CBC-2), loc_065D68-(Sw_065CBC-2)
 	include "src/f/065D20.asm"
 	include "src/f/065D2C.asm"
 	include "src/f/065D38.asm"
 	include "src/f/065D74.asm"
-Str_Lives:	; C string "LIVES " (used by sub_0656B0)
+Str_Lives:	; C string "LIVES " (used by PlayerSelect_Run)
 	incrom	$065D8E,$8
-Str_Lives_065D96:	; C string "LIVES " (used by sub_0656B0)
+Str_Lives_065D96:	; C string "LIVES " (used by PlayerSelect_Run)
 	incrom	$065D96,$8
-Str_PressStart:	; C string "PRESS START" (used by sub_0656B0)
+Str_PressStart:	; C string "PRESS START" (used by PlayerSelect_Run)
 	incrom	$065D9E,$C
-Str_PressStart_065DAA:	; C string "PRESS START" (used by sub_0656B0)
+Str_PressStart_065DAA:	; C string "PRESS START" (used by PlayerSelect_Run)
 	incrom	$065DAA,$C
 	include "src/f/065DB6.asm"
 	include "src/f/065E6C.asm"
-Str_Start:	; C string "START" (used by sub_065E6C)
+Str_Start:	; C string "START" (used by Cerebro_PlayIntro)
 	incrom	$066AF8,$6
-Str_Press:	; C string "PRESS" (used by sub_065E6C)
+Str_Press:	; C string "PRESS" (used by Cerebro_PlayIntro)
 	incrom	$066AFE,$6
-Str_DevelopedByHeadgamesInc:	; C string "DEVELOPED BY  HEADGAMES, INC." (used by sub_065E6C)
+Str_DevelopedByHeadgamesInc:	; C string "DEVELOPED BY  HEADGAMES, INC." (used by Cerebro_PlayIntro)
 	incrom	$066B04,$1E
 	incrom	$066B22,$4
 	include "src/f/066B26.asm"

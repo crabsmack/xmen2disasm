@@ -26,7 +26,7 @@ sub_067C32:
 	movea.l	-$4(a6),a0
 	move.w	d0,$12(a0)
 	move.l	a3,-(a7)
-	jsr	sub_0644D4(pc)
+	jsr	Cerebro_BigSpriteDecode(pc)
 	subq.w	#$1,$98(a4)
 	addq.w	#$4,a7
 	beq.s	loc_067CA8

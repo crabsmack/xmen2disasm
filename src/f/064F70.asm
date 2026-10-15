@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_064F70	[link-after-rts]
+; Cerebro_PrintText - print a word-wrapped string into the Cerebro text window (plane at VRAM $E000), optionally typing it out with a colour flash
+; In:  8(a6) = string ('\r' = newline), $C(a6) = style 0-7
+; Out: none
+; Evidence: cursor -$3B04/-$3B06, window -$3C58..-$3C5C; styles 4-7 animate per character with VDP_WaitVBlank; style picks the font tile bank
 ; ---------------------------------------------------------------------------
-sub_064F70:
+Cerebro_PrintText:
 	link.w	a6,#$FFE4
 	movem.l	d3-d7/a3-a4,-(a7)
 	move.w	$E(a6),d4
@@ -172,7 +175,7 @@ loc_065140:
 	add.l	d0,d0
 	move.w	(a0,d0.l),-$3912(a5)
 	move.b	#$1,g_PalBaseDirty(a5)
-	jsr	sub_064E9C(pc)
+	jsr	Cerebro_FrameHook(pc)
 	jsr	$5112(a5)	; -> VDP_WaitVBlank
 	move.w	d7,d0
 	addq.w	#$1,d7
@@ -220,7 +223,7 @@ loc_0651D2:
 	sub.w	#$20,d0
 	move.w	d0,($C00000).l
 loc_0651E4:
-	jsr	sub_064E9C(pc)
+	jsr	Cerebro_FrameHook(pc)
 	jsr	$5112(a5)	; -> VDP_WaitVBlank
 	addq.w	#$1,d6
 	addq.w	#$1,a4
@@ -281,9 +284,9 @@ loc_06527E:
 	add.l	d0,d0
 	move.w	(a0,d0.l),-$3912(a5)
 	move.b	#$1,g_PalBaseDirty(a5)
-	jsr	sub_064E9C(pc)
+	jsr	Cerebro_FrameHook(pc)
 	jsr	$5112(a5)	; -> VDP_WaitVBlank
-	jsr	sub_064E9C(pc)
+	jsr	Cerebro_FrameHook(pc)
 	jsr	$5112(a5)	; -> VDP_WaitVBlank
 	move.w	d7,d0
 	addq.w	#$1,d7

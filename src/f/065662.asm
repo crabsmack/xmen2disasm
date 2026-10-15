@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; loc_065662	[static: switch-table case target (tools/switches.py: table after `move.w T(pc,dN.w),dN / jmp T-2(pc,dN.w)`, size from the cmpi bound)]
+; Cerebro_TextOpPlaySound - text script ops 5/6: play or stop sound N
+; In:  a4 = script pointer
+; Out: none
+; Evidence: cases 5 and 6 of Sw_065532: jt $521A (Snd_Play) / jt $5222 (Snd_Stop) with the word argument
 ; ---------------------------------------------------------------------------
-loc_065662:
+Cerebro_TextOpPlaySound:
 	move.w	(a4),d0
 	ext.l	d0
 	move.l	d0,-(a7)
@@ -9,7 +12,7 @@ loc_065662:
 	addq.l	#$2,a4
 	addq.w	#$4,a7
 	bra.s	loc_06569A
-loc_065672:
+Cerebro_TextOpStopSound:
 	move.w	(a4),d0
 	ext.l	d0
 	move.l	d0,-(a7)

@@ -7,7 +7,7 @@ sub_067936:
 	movea.l	$8(a6),a3
 	movea.l	$8C(a3),a4
 	move.l	a4,-(a7)
-	jsr	sub_064B54(pc)
+	jsr	PlayerSelect_RevertCursor(pc)
 	clr.b	$32(a4)
 	clr.b	$34(a4)
 	move.b	#$1,$35(a4)

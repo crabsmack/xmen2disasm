@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_00FCA2	[jt 18]
+; AvalonB1_CyclePalettes - advance the two AvalonB1 palette-cycle animations
+; In:  none
+; Out: none
+; Evidence: two calls to sub_159FD6 (palette cycle: timer, step, sequence, table; writes one g_PalBase colour) with jt $FEC4/$FEDA tables; called each frame from AvalonB1_FrameHook
 ; ---------------------------------------------------------------------------
-sub_00FCA2:
+AvalonB1_CyclePalettes:
 	link.w	a6,#$0
 	moveq	#$1,d0
 	move.l	d0,-(a7)

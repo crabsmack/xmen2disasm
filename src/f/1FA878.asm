@@ -2,7 +2,7 @@
 ; ClassList_CallSlot62 - call vtable slot $62 (0, i) on every class descriptor in the current level class list
 ; In:  none
 ; Out: none
-; Evidence: class list g_ClassList(a5) = {word bytes; desc*[]}, count = (bytes-2)/4; slot $62 is empty in ACTOR; called by the scene loop sub_0656B0 when the scene-exit countdown ends
+; Evidence: class list g_ClassList(a5) = {word bytes; desc*[]}, count = (bytes-2)/4; slot $62 is empty in ACTOR; called by the scene loop PlayerSelect_Run when the scene-exit countdown ends
 ; ---------------------------------------------------------------------------
 ClassList_CallSlot62:
 	link.w	a6,#$0

@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_00FA24	[link-after-rts]
+; AvalonB1_CamHookFinish - AvalonB1 camera hook stage 5: scroll until camera y < $61, then once no player is busy start the music, restore the palette and hand the camera to the normal follow hook
+; In:  8(a6) = camera
+; Out: none
+; Evidence: Snd calls (sub_1FE5A2/sub_1FE584 with 0), AvalonB1_RestorePalette, g_Camera+4 = sub_161816; player +4 bit $1000 delays it
 ; ---------------------------------------------------------------------------
-sub_00FA24:
+AvalonB1_CamHookFinish:
 	link.w	a6,#$0
 	movem.l	d6-d7/a4,-(a7)
 	movea.l	$8(a6),a4
@@ -51,7 +54,7 @@ loc_00FA94:
 	lea.l	$C2(a5),a0
 	move.l	$2(a0),-(a7)
 	jsr	$5102(a5)	; -> Scroll_SetParallax
-	jsr	sub_00F60E(pc)
+	jsr	AvalonB1_RestorePalette(pc)
 	lea.l	$4212(a5),a0
 	movea.l	g_Camera(a5),a1
 	move.l	a0,$4(a1)
@@ -100,7 +103,7 @@ loc_00FB2E:
 	move.l	d7,-(a7)
 	ext.l	d6
 	move.l	d6,-(a7)
-	jsr	sub_00FC12(pc)
+	jsr	AvalonB1_ScrollCameraTo(pc)
 	addq.w	#$8,a7
 loc_00FB4A:
 	movem.l	-$C(a6),d6-d7/a4

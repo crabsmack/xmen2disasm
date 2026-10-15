@@ -9,7 +9,7 @@ sub_067984:
 	tst.b	$33(a4)
 	beq.s	loc_0679B2
 	move.l	a4,-(a7)
-	jsr	sub_064B54(pc)
+	jsr	PlayerSelect_RevertCursor(pc)
 	clr.b	$34(a4)
 	move.w	#$1E,$2E(a4)
 	move.w	#$A,$3A(a4)
@@ -38,12 +38,12 @@ loc_0679E8:
 	bne.s	loc_067A3A
 	move.b	#$1,$34(a4)
 	move.l	$8C(a3),-(a7)
-	jsr	sub_06489A(pc)
+	jsr	PlayerSelect_CharSpriteDef(pc)
 	move.l	d0,$30(a3)
 	addq.w	#$4,a7
 	beq.s	loc_067A12
 	move.l	$8C(a3),-(a7)
-	jsr	sub_064912(pc)
+	jsr	PlayerSelect_CharFrameNum(pc)
 	move.w	d0,$A4(a3)
 	addq.w	#$4,a7
 	bra.s	loc_067A18

@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; loc_064674	[runtime: executed in tas]
+; PlayerSelect_AllocCharBuffers_Cases - switch cases of PlayerSelect_AllocCharBuffers: fetch character N's select sprite and frame
+; In:  d7 = character index
+; Out: none
+; Evidence: targets of Sw_064638
 ; ---------------------------------------------------------------------------
-loc_064674:
+PlayerSelect_AllocCharBuffers_Cases:
 	jsr	$432A(a5)	; -> sub_1841E4
 	movea.l	d0,a4
 	jsr	$4332(a5)	; -> sub_1841F4

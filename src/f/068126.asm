@@ -28,13 +28,13 @@ sub_068126:
 	moveq	#$0,d0
 	move.l	d0,-(a7)
 	pea.l	Str_Selected_06824E(pc)
-	jsr	sub_064F70(pc)
+	jsr	Cerebro_PrintText(pc)
 	addq.w	#$8,a7
 	bra.s	loc_06820A
 loc_06819A:
 	tst.w	g_P1Lives(a5)
 	beq.s	loc_06820A
-	jsr	sub_064C66(pc)
+	jsr	PlayerSelect_FirstFreeChar(pc)
 	move.w	d0,d7
 	cmpi.w	#$FFFF,d7
 	beq.s	loc_06820A
@@ -53,13 +53,13 @@ loc_0681BC:
 	moveq	#$1,d0
 	move.l	d0,-(a7)
 	pea.l	Str_Selected(pc)
-	jsr	sub_064F70(pc)
+	jsr	Cerebro_PrintText(pc)
 	addq.w	#$8,a7
 	bra.s	loc_06820A
 loc_0681EA:
 	tst.w	g_P2Lives(a5)
 	beq.s	loc_06820A
-	jsr	sub_064C66(pc)
+	jsr	PlayerSelect_FirstFreeChar(pc)
 	move.w	d0,d7
 	cmpi.w	#$FFFF,d7
 	beq.s	loc_06820A

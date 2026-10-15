@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; loc_065D38	[static: switch-table case target (tools/switches.py: table after `move.w T(pc,dN.w),dN / jmp T-2(pc,dN.w)`, size from the cmpi bound)]
+; PlayerSelect_Run_P2Gambit - PlayerSelect_Run: P2 chose Gambit, Nightcrawler, Psylocke, Wolverine or Magneto
+; In:  none
+; Out: none
+; Evidence: Sw_065CBC entries 2-6 (loc_065D38..loc_065D68)
 ; ---------------------------------------------------------------------------
-loc_065D38:
+PlayerSelect_Run_P2Gambit:
 	lea.l	$2BC2(a5),a0
 	move.l	$2(a0),-$1848(a5)
 	bra.s	$65D84

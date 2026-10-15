@@ -1,10 +1,13 @@
 ; ---------------------------------------------------------------------------
-; sub_065DB6	[runtime: executed in tas]
+; Cerebro_IntroPalHook - palette hook during the Cerebro intro: fade lines 1/2 in and out on a countdown
+; In:  none
+; Out: none
+; Evidence: installed in -$3A18 by Cerebro_PlayIntro; counter -$3B0C, copies 16-colour steps from jt tables into $FFC8C0/$FFC8A0, then Cerebro_AnimatePalettes
 ; ---------------------------------------------------------------------------
-sub_065DB6:
+Cerebro_IntroPalHook:
 	link.w	a6,#$0
 	movem.l	d3/d7/a3-a4,-(a7)
-	jsr	sub_064CA2(pc)
+	jsr	Cerebro_AnimatePalettes(pc)
 	subq.w	#$1,-$3B0C(a5)
 	cmpi.w	#$C9,-$3B0C(a5)
 	bgt.s	loc_065E12

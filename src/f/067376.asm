@@ -7,10 +7,10 @@ sub_067376:
 	movea.l	$8(a6),a4
 	movea.l	$8C(a4),a3
 	move.l	a3,-(a7)
-	jsr	sub_064912(pc)
+	jsr	PlayerSelect_CharFrameNum(pc)
 	move.w	d0,d7
 	move.l	a3,-(a7)
-	jsr	sub_06489A(pc)
+	jsr	PlayerSelect_CharSpriteDef(pc)
 	move.l	d0,-$8(a6)
 	moveq	#$24,d1
 	add.l	d1,d0
@@ -30,7 +30,7 @@ sub_067376:
 	bra.s	loc_067416
 loc_0673BE:
 	move.l	a3,-(a7)
-	jsr	sub_0647D0(pc)
+	jsr	PlayerSelect_LoadCharFrame(pc)
 	cmpi.w	#$F8,$A2(a4)
 	addq.w	#$4,a7
 	bne.s	loc_0673E8

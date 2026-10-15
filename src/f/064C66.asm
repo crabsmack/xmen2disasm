@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_064C66	[link-after-rts]
+; PlayerSelect_FirstFreeChar - first portrait slot not taken by either cursor
+; In:  none
+; Out: d0.w = slot or -1
+; Evidence: scans 0..-$3B0E for a slot neither cursor holds
 ; ---------------------------------------------------------------------------
-sub_064C66:
+PlayerSelect_FirstFreeChar:
 	link.w	a6,#$0
 	move.l	d7,-(a7)
 	clr.w	d7

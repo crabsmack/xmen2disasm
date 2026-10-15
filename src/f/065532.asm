@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_065532	[link-after-rts]
+; Cerebro_RunTextScript - interpret a Cerebro text script: print lines, move the cursor, wait, clear the window, fade out, play/stop sounds
+; In:  -$3B14 = script pointer
+; Out: none
+; Evidence: op bytes: 0/7+ text (style = op-7), 1 set cursor, 2 wait N frames (button skips), 3 clear window + set cursor, 4 fade out, 5 Snd_Play, 6 Snd_Stop; switch Sw_065532
 ; ---------------------------------------------------------------------------
-sub_065532:
+Cerebro_RunTextScript:
 	link.w	a6,#$0
 	movem.l	d5-d7/a3-a4,-(a7)
 	clr.b	-$38C6(a5)
@@ -33,9 +36,9 @@ loc_065596:
 	addq.l	#$2,a4
 	move.b	d6,d0
 	subq.b	#$1,d0
-	bcs.w	loc_065682
+	bcs.w	Cerebro_TextOpPrint
 	cmpi.b	#$5,d0
-	bhi.w	loc_065682
+	bhi.w	Cerebro_TextOpPrint
 	moveq	#$0,d1
 	move.b	d0,d1
 	add.w	d1,d1

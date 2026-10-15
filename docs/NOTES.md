@@ -196,10 +196,33 @@ _(module → functions, globals, data; add as you learn them)_
   0 = spend a life (`g_P1Lives`) or drop out. `g_SceneIndex = -1` -> attract demos
   (`Game_AttractDemo*`, demo input at `-$3A1E` read as (duration, buttons) pairs by
   `sub_1F9DE8`; `-$3A1A` = demo active; `-$18AC` = 1 mutes sound during demos).
-- **VRAM**: word `-$3398` ($FFCC68) = next free VRAM tile; `sub_1FB026` sets up a sprite slot
+- **VRAM**: word `-$3598` ($FFCC68) = next free VRAM tile; `sub_1FB026` sets up a sprite slot
   and returns base + tiles needed; `sub_1FE17A(src, vram addr, bytes)` = DMA to VRAM (immediate
   while word `-$1D48` = VDP reg 1 mirror has bit 6 (display) clear, else queued at `$FFFA5C`). Joypad bits: Up 1, Down 2, Left 4, Right 8, B $10, C $20, A $40,
   Start $80, Z $100, Y $200, X $400, Mode $800 (`Game_InitButtonMasks`).
+- **Scene list** (w000, `Scene_RegisterAll` + `g_Scn*` byte globals = scene ids): Siberia B1,
+  Cerebro Sentinels, Sentinels D1/B1/A1/B2, Cerebro Avalon, Avalon B1/B2/A2/A3 (Exodus)/A4
+  (Throne Room), Cerebro BaniMaza, BaniMaza B2/A1/A2 (Apocalypse), Cerebro Savage, Savage
+  C1/B1/A2/A3/A4, Cerebro Space, Space B1/A1, Cerebro Clone, Clone A1/A2/A5 (Brood boss),
+  FinalText, Credits, Failure, LogoAndDemo, with a PlayerSelect scene between stages. Scene
+  functions are `<Scene>_RunScene`. Played in registration order (`g_SceneIndex` += 1).
+  Magneto is selectable once `g_SceneIndex` > `g_ScnCerebroBaniMaza` (`PlayerSelect_Run`).
+- **Cerebro screens** (`$0644D4-$067200`, w000): `Cerebro_Run` loads the Cerebro level and runs,
+  as flagged by its caller: `Cerebro_PlayIntro` (-$3B0C), the text script at -$3B14
+  (`Cerebro_RunTextScript`: op 0/7+ print with style op-7, 1 cursor, 2 wait, 3 clear, 4 fade,
+  5 Snd_Play, 6 Snd_Stop), `PlayerSelect_Run` (-$3B0A). Text window rows -$3C58..-$3C5C, cols
+  -$3C56..-$3C5A, cursor -$3B04/-$3B06, plane at VRAM $E000. -$3C5E = progress flags (bit 1
+  START pressed on the logo, bit $4000 game finished). PlayerSelect cursors are objects at
+  -$3B28 (P1) / -$3B2C (P2): +$3C character index, +$3D saved index, +$40 confirmed.
+  Per-character select-screen sprite getters (index order): Beast `sub_1841E4`, Cyclops
+  `sub_1E3C5A`, Gambit `sub_1D0744`, Nightcrawler `sub_1A7CAC`, Psylocke `sub_1BA006`,
+  Wolverine `sub_197C22`, Magneto `sub_1CEC28` (each +$10 = frame getter).
+- **Scene hooks** (w000): `-$388E` = per-frame scene hook (e.g. `AvalonB1_FrameHook`), the
+  CAMERA object's +4 = per-frame camera hook (AvalonB1 chains five `AvalonB1_CamHook*` for its
+  intro), `-$3AF8..-$3ADC` = 8 map-tile hook pointers (`AvalonB1_InstallTileHooks`),
+  `sub_15D7F8(x, y, tile, keep)` sets a map tile, `sub_159FD6` steps a palette cycle into
+  `g_PalBase`. **Offset tip**: Ghidra shows RAM addresses; A5 offset = address - $10200
+  (`$FFC6CE` -> `-$3B32`), not address - $10000.
 
 - **Class slots, additions (w0E0)** to the `tools/classes.py` names above (`$0E0000-$140000` follows
   them; descriptors there are labelled `Tbl_<Class>_vtable`, 60 of them): +$1E `DrawIfActive` (ACTOR

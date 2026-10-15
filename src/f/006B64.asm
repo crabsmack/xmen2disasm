@@ -2,7 +2,7 @@
 ; Scene_PostLoadVram - scene-load post hook: allocate common sprite VRAM, copy two 16-colour palettes, reserve each player's VRAM tile area
 ; In:  none
 ; Out: none
-; Evidence: installed in -$38EC, called at the end of scene load sub_1F98A8; Scene_AllocCommonVram; 16 words each to $FFC8A0/$FFC8E0; P1 base -$39B2 and P2 base -$39B4 = next tile + Player_CalcMaxTiles each
+; Evidence: installed in -$38EC, called at the end of scene load sub_1F98A8; Scene_AllocCommonVram; 16 words each to $FFC8A0/$FFC8E0; P1 base -$3BB2 and P2 base -$3BB4 = next tile + Player_CalcMaxTiles each
 ; ---------------------------------------------------------------------------
 Scene_PostLoadVram:
 	link.w	a6,#$FFEC

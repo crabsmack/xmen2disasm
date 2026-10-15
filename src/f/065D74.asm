@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; loc_065D74
+; PlayerSelect_Run_P2None - PlayerSelect_Run: P2 not playing: clear g_Player2 and g_P2CharIndex
+; In:  none
+; Out: none
+; Evidence: default of Sw_065CBC; also the function's exit
 ; ---------------------------------------------------------------------------
-loc_065D74:
+PlayerSelect_Run_P2None:
 	moveq	#$0,d0
 	move.l	d0,g_Player2(a5)
 	clr.w	-$1844(a5)

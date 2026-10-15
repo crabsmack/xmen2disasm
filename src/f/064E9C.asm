@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_064E9C	[link-after-rts]
+; Cerebro_FrameHook - per-frame hook of Cerebro screens: frame counter, a button ends a text wait, palette animation
+; In:  none
+; Out: none
+; Evidence: installed in -$388E by Cerebro_Run; g_FrameCounter += 1/2; sub_1FDA56; -$3902 == 2 and pad bits $F0 -> 0; Cerebro_AnimatePalettes
 ; ---------------------------------------------------------------------------
-sub_064E9C:
+Cerebro_FrameHook:
 	link.w	a6,#$0
 	move.l	g_FrameCounter(a5),d0
 	addq.l	#$1,g_FrameCounter(a5)
@@ -21,6 +24,6 @@ loc_064EB6:
 	beq.s	loc_064ED6
 	clr.w	-$3B02(a5)
 loc_064ED6:
-	jsr	sub_064CA2(pc)
+	jsr	Cerebro_AnimatePalettes(pc)
 	unlk	a6
 	rts

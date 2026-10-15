@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_00F80A	[link-after-rts]
+; AvalonB1_CamHookWait60 - AvalonB1 camera hook stage 2: hold the players still for 60 frames, then stage 3
+; In:  8(a6) = camera
+; Out: none
+; Evidence: g_Camera+4 chain after AvalonB1_CamHookWait2; counter -$3B32 > $3B -> AvalonB1_CamHookScroll120
 ; ---------------------------------------------------------------------------
-sub_00F80A:
+AvalonB1_CamHookWait60:
 	link.w	a6,#$0
 	clr.w	g_Pad1Pressed(a5)
 	clr.w	g_Pad2Pressed(a5)
@@ -11,7 +14,7 @@ sub_00F80A:
 	cmp.w	-$3B32(a5),d0
 	bgt.s	loc_00F836
 	clr.w	-$3B32(a5)
-	lea.l	sub_00F896(pc),a0
+	lea.l	AvalonB1_CamHookScroll120(pc),a0
 	movea.l	g_Camera(a5),a1
 	move.l	a0,$4(a1)
 loc_00F836:
@@ -45,6 +48,6 @@ loc_00F87E:
 	move.w	g_CameraX(a5),d0
 	ext.l	d0
 	move.l	d0,-(a7)
-	jsr	sub_00FC12(pc)
+	jsr	AvalonB1_ScrollCameraTo(pc)
 	unlk	a6
 	rts

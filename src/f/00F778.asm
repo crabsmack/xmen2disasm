@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_00F778	[link-after-rts]
+; AvalonB1_CamHookWait2 - AvalonB1 camera hook stage 1: hold the players still; after 2 frames set the intro palette and go to stage 2
+; In:  8(a6) = camera
+; Out: none
+; Evidence: installed at g_Camera+4 by AvalonB1_InitCamera; counter -$3B32 (incremented by AvalonB1_FrameHook); zeroes both players' velocity/accel; AvalonB1_ScrollCameraTo(g_CameraX, g_CameraY)
 ; ---------------------------------------------------------------------------
-sub_00F778:
+AvalonB1_CamHookWait2:
 	link.w	a6,#$0
 	clr.w	g_Pad1Pressed(a5)
 	clr.w	g_Pad2Pressed(a5)
@@ -11,10 +14,10 @@ sub_00F778:
 	cmp.w	-$3B32(a5),d0
 	bgt.s	loc_00F7A8
 	clr.w	-$3B32(a5)
-	lea.l	sub_00F80A(pc),a0
+	lea.l	AvalonB1_CamHookWait60(pc),a0
 	movea.l	g_Camera(a5),a1
 	move.l	a0,$4(a1)
-	jsr	sub_00F59A(pc)
+	jsr	AvalonB1_InitIntroPalette(pc)
 loc_00F7A8:
 	move.w	-$1754(a5),d0
 	ext.l	d0
@@ -46,7 +49,7 @@ loc_00F7F0:
 	move.w	g_CameraX(a5),d0
 	ext.l	d0
 	move.l	d0,-(a7)
-	jsr	sub_00FC12(pc)
+	jsr	AvalonB1_ScrollCameraTo(pc)
 	addq.w	#$8,a7
 	unlk	a6
 	rts

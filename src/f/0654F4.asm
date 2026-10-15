@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_0654F4	[link-after-rts]
+; Cerebro_LoadSpriteTiles - load the Cerebro sprite resource and remember its tile base
+; In:  none
+; Out: none
+; Evidence: sub_1F62C0(jt $608E2 resource, 1); -$3B10 = tile base from the 20-byte resource table at $FFC980
 ; ---------------------------------------------------------------------------
-sub_0654F4:
+Cerebro_LoadSpriteTiles:
 	link.w	a6,#$0
 	movem.l	d7/a4,-(a7)
 	moveq	#$1,d0

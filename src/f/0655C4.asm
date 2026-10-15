@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; loc_0655C4	[runtime: executed in tas]
+; Cerebro_TextOpSetCursor - text script ops 1-3 (set cursor, wait N frames, clear window + set cursor)
+; In:  a4 = script pointer
+; Out: none
+; Evidence: cases 1-3 of Sw_065532 in Cerebro_RunTextScript; cursor -$3B04/-$3B06 = window origin -$3C56/-$3C58 + signed bytes
 ; ---------------------------------------------------------------------------
-loc_0655C4:
+Cerebro_TextOpSetCursor:
 	move.b	(a4)+,d0
 	ext.w	d0
 	move.w	-$3C56(a5),d1
@@ -23,7 +26,7 @@ loc_0655E4:
 loc_0655F0:
 	move.w	#$2,-$3B02(a5)
 loc_0655F6:
-	jsr	sub_064E9C(pc)
+	jsr	Cerebro_FrameHook(pc)
 	jsr	$5112(a5)	; -> VDP_WaitVBlank
 	subq.w	#$1,d7
 	tst.w	d7
@@ -34,7 +37,7 @@ loc_0655F6:
 	bra.w	loc_06569A
 loc_065612:
 	move.w	#$2,-$3B02(a5)
-	jsr	sub_065400(pc)
+	jsr	Cerebro_ClearTextWindow(pc)
 	move.b	(a4)+,d0
 	ext.w	d0
 	move.w	-$3C56(a5),d1

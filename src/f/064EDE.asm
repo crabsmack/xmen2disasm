@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_064EDE	[link-after-rts]
+; Cerebro_SetupPalCycles - register the Cerebro screen's five palette ranges with sub_1FBE96
+; In:  none
+; Out: none
+; Evidence: five sub_1FBE96(jt $63D7C, $6C0..$5C0, 0, first, last) calls; called by Cerebro_Run
 ; ---------------------------------------------------------------------------
-sub_064EDE:
+Cerebro_SetupPalCycles:
 	link.w	a6,#$0
 	moveq	#$F,d0
 	move.l	d0,-(a7)

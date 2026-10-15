@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_06451E	[link-after-rts]
+; Cerebro_BigSpriteDraw - upload a big sprite's tiles if needed and draw it
+; In:  8(a6) = record
+; Out: none
+; Evidence: VDP_QueueDma(buffer, tile*32, tiles*32) when +$31 clear; sub_1FD520(x, y, tile, flags)
 ; ---------------------------------------------------------------------------
-sub_06451E:
+Cerebro_BigSpriteDraw:
 	link.w	a6,#$0
 	move.l	a4,-(a7)
 	movea.l	$8(a6),a4

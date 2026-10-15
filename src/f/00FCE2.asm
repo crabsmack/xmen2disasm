@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_00FCE2	[link-after-rts]
+; AvalonB1_TileHook - map tile hook: turn tile $1F/$20 at (x,y) into tile $1E
+; In:  8(a6) = word column, $C(a6) = word row
+; Out: d0 = 1
+; Evidence: reads the map word at -$3A84 + row offset table -$3A72; sub_15D7F8 (set map tile) with $1E; installed in -$3AF4 by AvalonB1_InstallTileHooks
 ; ---------------------------------------------------------------------------
-sub_00FCE2:
+AvalonB1_TileHook:
 	link.w	a6,#$0
 	movem.l	d5-d7,-(a7)
 	move.w	$E(a6),d5

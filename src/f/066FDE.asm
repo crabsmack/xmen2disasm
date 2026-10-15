@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_066FDE	[jt 471]
+; Credits_RunScene - scene 'CerebroScreen Credits': credits text (jt $FC2), then a new game
+; In:  none
+; Out: none
+; Evidence: Scene_RegisterAll entry; music 10 unless -$3C5E bit $4000; Cerebro_Run; Game_ResetPlayers; clears -$3C5E
 ; ---------------------------------------------------------------------------
-sub_066FDE:
+Credits_RunScene:
 	link.w	a6,#$0
 	clr.w	-$3B0C(a5)
 	clr.w	-$3B0A(a5)
@@ -18,7 +21,7 @@ sub_066FDE:
 	jsr	$521A(a5)	; -> Snd_Play
 	addq.w	#$8,a7
 loc_067010:
-	jsr	sub_066B26(pc)
+	jsr	Cerebro_Run(pc)
 	jsr	$32(a5)	; -> Game_ResetPlayers
 	clr.w	-$3C5E(a5)
 	unlk	a6

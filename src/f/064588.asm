@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_064588	[link-after-rts]
+; Cerebro_BigSpriteInit - set up a big (software-decoded) sprite record from a frame's box
+; In:  8(a6) = record {+0 state ptr, +4 frame}, $C(a6) = frame info
+; Out: none
+; Evidence: size = box right-left (rounded even), bottom-top; tiles = (w+7)/8 x (h+7)/8; used by PlayerSelect_LoadCharFrame and Cerebro_PlayIntro
 ; ---------------------------------------------------------------------------
-sub_064588:
+Cerebro_BigSpriteInit:
 	link.w	a6,#$0
 	movem.l	a3-a4,-(a7)
 	movea.l	$C(a6),a3

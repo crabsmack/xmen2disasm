@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_00F942	[link-after-rts]
+; AvalonB1_CamHookFadeIn - AvalonB1 camera hook stage 4: keep scrolling up and step the palette fade every 6 frames until the table ends
+; In:  8(a6) = camera
+; Out: none
+; Evidence: AvalonB1_PalFadeStep(row -$3B3A, jt $2CA table); negative table byte ends it -> AvalonB1_CamHookFinish and sets byte -$38B4
 ; ---------------------------------------------------------------------------
-sub_00F942:
+AvalonB1_CamHookFadeIn:
 	link.w	a6,#$0
 	movem.l	d6-d7/a4,-(a7)
 	clr.w	g_Pad1Pressed(a5)
@@ -23,14 +26,14 @@ sub_00F942:
 	move.w	-$3B3A(a5),d0
 	ext.l	d0
 	move.l	d0,-(a7)
-	jsr	sub_00F648(pc)
+	jsr	AvalonB1_PalFadeStep(pc)
 	move.w	-$3B3A(a5),d0
 	addq.w	#$1,-$3B3A(a5)
 	addq.w	#$8,a7
 	bra.s	loc_00F9AC
 loc_00F996:
 	clr.w	-$3B32(a5)
-	lea.l	sub_00FA24(pc),a0
+	lea.l	AvalonB1_CamHookFinish(pc),a0
 	movea.l	g_Camera(a5),a1
 	move.l	a0,$4(a1)
 	move.b	#$1,-$38B4(a5)
@@ -74,7 +77,7 @@ loc_00FA04:
 	move.l	d7,-(a7)
 	ext.l	d6
 	move.l	d6,-(a7)
-	jsr	sub_00FC12(pc)
+	jsr	AvalonB1_ScrollCameraTo(pc)
 	addq.w	#$8,a7
 	movem.l	-$C(a6),d6-d7/a4
 	unlk	a6

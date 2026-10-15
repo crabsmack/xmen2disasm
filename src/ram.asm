@@ -51,7 +51,7 @@ g_PalWorkDirty = -$7C6	; byte: upload g_PalWork at the next V-blank (Pal_Update 
 g_PalBaseDirty = -$3A06	; byte: upload g_PalBase at the next V-blank (Pal_Update clears)
 g_VBlankCount = -$3A10	; long: V-interrupt counter (+1 in Irq_VBlank; zeroed in Sys_InitHardware)
 g_VBlankHook = -$3A14	; ptr: function called from Irq_VBlank every V-int when non-zero (Sys_InitHardware clears; sub_15FA7A saves/sets)
-g_VBlankGameHook = -$3A18	; ptr: game function called from Irq_VBlank unless bytes -$38C0/-$359E are set (sub_15B0D0, sub_065E6C)
+g_VBlankGameHook = -$3A18	; ptr: game function called from Irq_VBlank unless bytes -$38C0/-$359E are set (sub_15B0D0, Cerebro_PlayIntro)
 g_FrameUpdated = -$3A0C	; byte: VDP_FrameUpdate ran this frame (VDP_WaitVBlank clears)
 g_HBlankCount = -$BC8	; word: H-interrupt counter (Irq_HBlank)
 g_ParallaxDesc = -$3A44	; ptr: current parallax descriptor (Scroll_SetParallax, Scroll_UpdateParallax)
@@ -67,7 +67,7 @@ g_DrawListHead = -$1350	; ptr: first (lowest key) draw-list node (DrawList_Add, 
 g_DrawListTail = -$1354	; ptr: last draw-list node (DrawList_Add, DrawList_Remove)
 g_DrawNodeCursor = -$1358	; ptr: round-robin search start for DrawList_AllocNode
 g_HeapTop = -$348C	; ptr: top of the Mem_StackAlloc heap ($FF0000 at Sys_InitHardware)
-g_SceneExitTimer = -$359A	; word: frames until the current scene ends, 0 = not ending (Scene_EndAfter; counted down in sub_0656B0)
+g_SceneExitTimer = -$359A	; word: frames until the current scene ends, 0 = not ending (Scene_EndAfter; counted down in PlayerSelect_Run)
 g_ActivateHook = -$38F0	; ptr: replaces the scene loop's object-activation pass when set (sub_1FA124, Scene_ClearActivateHook)
 g_SpriteDefs = -$3886	; array of $14-byte sprite-definition records {+0 flag bits, +2 def ptr, +6 word, +8 word} (Obj_SetSpriteDef)
 g_ClassList = -$3900	; ptr: current level class list {word bytes; desc*[]} (ClassList_CallSlot5A/62, sub_1FA7E8)

@@ -10,6 +10,6 @@ sub_0226F4:
 	move.l	g_FrameCounter(a5),d0
 	addq.l	#$1,g_FrameCounter(a5)
 loc_02270E:
-	jsr	$B2(a5)	; -> sub_00FCA2
+	jsr	$B2(a5)	; -> AvalonB1_CyclePalettes
 	unlk	a6
 	rts

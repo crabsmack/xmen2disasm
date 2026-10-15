@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; loc_064830	[runtime: executed in tas]
+; PlayerSelect_LoadCharFrame_Nightcrawler - PlayerSelect_LoadCharFrame case 3 (Nightcrawler)
+; In:  a3 = cursor
+; Out: none
+; Evidence: Sw_0647D0 entry 3: sub_1A7CAC
 ; ---------------------------------------------------------------------------
-loc_064830:
+PlayerSelect_LoadCharFrame_Nightcrawler:
 	jsr	$453A(a5)	; -> sub_1A7CAC
 	movea.l	d0,a4
 	jsr	$4542(a5)	; -> sub_1A7CBC

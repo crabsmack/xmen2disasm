@@ -13,7 +13,7 @@ sub_067FCA:
 	beq.s	loc_068004
 	ext.l	d6
 	move.l	d6,-(a7)
-	jsr	sub_064B76(pc)
+	jsr	PlayerSelect_PrevFreeChar(pc)
 	move.w	d0,d7
 	cmp.w	d7,d6
 	addq.w	#$4,a7
@@ -28,7 +28,7 @@ loc_068004:
 	bne.s	loc_068032
 	tst.w	g_P1Lives(a5)
 	beq.s	loc_068052
-	jsr	sub_064C66(pc)
+	jsr	PlayerSelect_FirstFreeChar(pc)
 	move.w	d0,d7
 	cmpi.w	#$FFFF,d7
 	beq.s	loc_068052
@@ -39,7 +39,7 @@ loc_068004:
 loc_068032:
 	tst.w	g_P2Lives(a5)
 	beq.s	loc_068052
-	jsr	sub_064C66(pc)
+	jsr	PlayerSelect_FirstFreeChar(pc)
 	move.w	d0,d7
 	cmpi.w	#$FFFF,d7
 	beq.s	loc_068052

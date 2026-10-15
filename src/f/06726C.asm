@@ -12,7 +12,7 @@ ScalingActor_Draw:
 	tst.b	$32(a0)
 	beq.s	loc_06728A
 	move.l	a0,-(a7)
-	jsr	sub_06451E(pc)
+	jsr	Cerebro_BigSpriteDraw(pc)
 	addq.w	#$4,a7
 	bra.s	loc_0672C6
 loc_06728A:

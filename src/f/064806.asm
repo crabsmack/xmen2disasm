@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; loc_064806	[runtime: executed in tas]
+; PlayerSelect_LoadCharFrame_Beast - PlayerSelect_LoadCharFrame case 0 (Beast)
+; In:  a3 = cursor
+; Out: none
+; Evidence: Sw_0647D0 entry 0: sub_1841E4 / sub_1841F4
 ; ---------------------------------------------------------------------------
-loc_064806:
+PlayerSelect_LoadCharFrame_Beast:
 	jsr	$432A(a5)	; -> sub_1841E4
 	movea.l	d0,a4
 	jsr	$4332(a5)	; -> sub_1841F4

@@ -6,18 +6,18 @@ sub_067A56:
 	move.l	a4,-(a7)
 	movea.l	$8(a6),a4
 	move.l	$8C(a4),-(a7)
-	jsr	sub_064B54(pc)
+	jsr	PlayerSelect_RevertCursor(pc)
 	movea.l	$8C(a4),a0
 	move.b	#$1,$34(a0)
 	movea.l	$8C(a4),a0
 	move.b	#$1,$35(a0)
 	move.l	$8C(a4),-(a7)
-	jsr	sub_06489A(pc)
+	jsr	PlayerSelect_CharSpriteDef(pc)
 	move.l	d0,$30(a4)
 	addq.w	#$8,a7
 	beq.s	loc_067A9C
 	move.l	$8C(a4),-(a7)
-	jsr	sub_064912(pc)
+	jsr	PlayerSelect_CharFrameNum(pc)
 	move.w	d0,$A4(a4)
 	addq.w	#$4,a7
 	bra.s	loc_067AA2

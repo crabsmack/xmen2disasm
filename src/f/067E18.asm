@@ -25,7 +25,7 @@ BoxInputActor_Draw:
 	moveq	#$0,d2
 	move.b	$3E(a4),d2
 	move.l	d2,-(a7)
-	jsr	sub_06498A(pc)
+	jsr	PlayerSelect_DrawFrame(pc)
 	lea.l	$14(a7),a7
 loc_067E56:
 	movea.l	-$4(a6),a4

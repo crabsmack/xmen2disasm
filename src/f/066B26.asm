@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_066B26
+; Cerebro_Run - run a Cerebro screen: load the Cerebro level, optionally play the intro, run the text script at -$3B14, optionally run player select
+; In:  -$3B14 = text script (0 = none), -$3B0C = play intro, -$3B0A = run player select
+; Out: none
+; Evidence: called by every Cerebro*_RunScene; sub_1F98A8 level load; Cerebro_PlayIntro, Cerebro_RunTextScript, PlayerSelect_Run; copies g_P1Health/g_P2Health into the players afterwards
 ; ---------------------------------------------------------------------------
-sub_066B26:
+Cerebro_Run:
 	link.w	a6,#$0
 	movem.l	d3/d6-d7/a3-a4,-(a7)
 	moveq	#$9,d6
@@ -47,11 +50,11 @@ loc_066B48:
 	clr.b	-$38B4(a5)
 	clr.w	-$3496(a5)
 	clr.w	-$3498(a5)
-	jsr	sub_0654F4(pc)
-	lea.l	sub_064E9C(pc),a0
+	jsr	Cerebro_LoadSpriteTiles(pc)
+	lea.l	Cerebro_FrameHook(pc),a0
 	move.l	a0,-$388E(a5)
 	clr.b	-$38DE(a5)
-	jsr	sub_064EDE(pc)
+	jsr	Cerebro_SetupPalCycles(pc)
 	move.w	#$2,-$3B34(a5)
 	clr.w	-$3B3C(a5)
 	move.w	#$1,-$3B44(a5)
@@ -97,7 +100,7 @@ loc_066B48:
 	clr.w	-$3C56(a5)
 	move.w	#$1F,-$3C5C(a5)
 	move.w	#$27,-$3C5A(a5)
-	jsr	sub_065400(pc)
+	jsr	Cerebro_ClearTextWindow(pc)
 	addq.w	#$2,-$3C58(a5)
 	addq.w	#$2,-$3C56(a5)
 	subq.w	#$2,-$3C5C(a5)
@@ -109,7 +112,7 @@ loc_066CA2:
 	move.b	g_ScnFailure(a5),d0
 	cmp.w	g_SceneIndex(a5),d0
 	beq.s	loc_066CB2
-	jsr	sub_065494(pc)
+	jsr	Cerebro_ClearScreen(pc)
 loc_066CB2:
 	tst.w	-$3B0C(a5)
 	beq.s	loc_066D24
@@ -119,8 +122,8 @@ loc_066CBA:
 loc_066CBE:
 	tst.b	g_PalFadeActive(a5)
 	bne.s	loc_066CBA
-	jsr	sub_065494(pc)
-	jsr	sub_065E6C(pc)
+	jsr	Cerebro_ClearScreen(pc)
+	jsr	Cerebro_PlayIntro(pc)
 	tst.l	-$3B14(a5)
 	bne.s	loc_066CD8
 	tst.w	-$3B0A(a5)
@@ -141,8 +144,8 @@ loc_066CEA:
 	move.b	#$1,g_PalBaseDirty(a5)
 	move.b	#$1,g_DmaFlushReq(a5)
 	jsr	$5112(a5)	; -> VDP_WaitVBlank
-	jsr	sub_065494(pc)
-	jsr	sub_065400(pc)
+	jsr	Cerebro_ClearScreen(pc)
+	jsr	Cerebro_ClearTextWindow(pc)
 	lea.l	$3E72(a5),a0
 	movea.l	$2(a0),a4
 	lea.l	-$3960(a5),a3
@@ -154,7 +157,7 @@ loc_066D16:
 	addq.l	#$1,d7
 	cmp.l	d7,d3
 	bgt.s	loc_066D16
-	jsr	sub_064EDE(pc)
+	jsr	Cerebro_SetupPalCycles(pc)
 loc_066D24:
 	tst.l	-$3B14(a5)
 	beq.s	loc_066D90
@@ -184,7 +187,7 @@ loc_066D4C:
 	move.w	#$8,-$3910(a5)
 	clr.w	-$391E(a5)
 	move.b	#$1,g_PalBaseDirty(a5)
-	jsr	sub_065532(pc)
+	jsr	Cerebro_RunTextScript(pc)
 loc_066D90:
 	tst.w	-$3B0A(a5)
 	beq.w	loc_066E38
@@ -202,7 +205,7 @@ loc_066DB0:
 loc_066DB4:
 	tst.b	g_PalFadeActive(a5)
 	bne.s	loc_066DB0
-	jsr	sub_065400(pc)
+	jsr	Cerebro_ClearTextWindow(pc)
 	move.w	#$A0,-$3902(a5)
 	move.w	#$80,-$3904(a5)
 	move.w	#$A,-$3906(a5)
@@ -233,7 +236,7 @@ loc_066E20:
 	move.b	d6,g_P2CharIndex(a5)
 	clr.w	-$1754(a5)
 	clr.w	-$1844(a5)
-	jsr	sub_0656B0(pc)
+	jsr	PlayerSelect_Run(pc)
 	jsr	$5242(a5)	; -> Snd_StopAll
 loc_066E38:
 	clr.b	g_PalBaseDirty(a5)

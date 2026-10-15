@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_00F59A
+; AvalonB1_InitIntroPalette - set palette line 0 of g_PalBase to the AvalonB1 intro colours and copy 16 level colours into line 2
+; In:  none
+; Out: none
+; Evidence: writes $FFC880.. (g_PalBase) constants, copies 16 words from the level palette resource (+$10 offset) to $FFC8C0, sets g_PalBaseDirty; called from AvalonB1_CamHookWait2
 ; ---------------------------------------------------------------------------
-sub_00F59A:
+AvalonB1_InitIntroPalette:
 	link.w	a6,#$FFFC
 	movem.l	d3/d7/a3-a4,-(a7)
 	lea.l	g_PalBase(a5),a4

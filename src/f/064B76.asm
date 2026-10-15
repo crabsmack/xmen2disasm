@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_064B76	[link-after-rts]
+; PlayerSelect_PrevFreeChar - previous portrait slot not taken by either cursor, wrapping
+; In:  8(a6) = word slot (-1 = none)
+; Out: d0.w = slot
+; Evidence: skips slots equal to cursor -$3B28/-$3B2C +$3C; wraps to -$3B0E - 1
 ; ---------------------------------------------------------------------------
-sub_064B76:
+PlayerSelect_PrevFreeChar:
 	link.w	a6,#$0
 	movem.l	d3/d6-d7,-(a7)
 	move.w	$A(a6),d6

@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_00F896	[link-after-rts]
+; AvalonB1_CamHookScroll120 - AvalonB1 camera hook stage 3: scroll the camera up 2 px a frame (4 at half rate) for 120 frames, then start the fade-in
+; In:  8(a6) = camera
+; Out: none
+; Evidence: g_CameraY - 2/4 via AvalonB1_ScrollCameraTo; counter > $77 -> AvalonB1_CamHookFadeIn
 ; ---------------------------------------------------------------------------
-sub_00F896:
+AvalonB1_CamHookScroll120:
 	link.w	a6,#$0
 	movem.l	d6-d7,-(a7)
 	clr.w	g_Pad1Pressed(a5)
@@ -13,7 +16,7 @@ sub_00F896:
 	bgt.s	loc_00F8CA
 	clr.w	-$3B32(a5)
 	clr.w	-$3AC8(a5)
-	lea.l	sub_00F942(pc),a0
+	lea.l	AvalonB1_CamHookFadeIn(pc),a0
 	movea.l	g_Camera(a5),a1
 	move.l	a0,$4(a1)
 loc_00F8CA:
@@ -56,7 +59,7 @@ loc_00F922:
 	move.l	d7,-(a7)
 	ext.l	d6
 	move.l	d6,-(a7)
-	jsr	sub_00FC12(pc)
+	jsr	AvalonB1_ScrollCameraTo(pc)
 	addq.w	#$8,a7
 	movem.l	-$8(a6),d6-d7
 	unlk	a6

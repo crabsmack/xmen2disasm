@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_0656B0	[link-after-rts]
+; PlayerSelect_Run - the player select screen: two cursors over the portraits, LIVES counters, until both players confirm; then set the chosen characters
+; In:  none
+; Out: none (g_Player1/2 class, g_P1/P2CharIndex, health $700 for a new player)
+; Evidence: string 'LIVES ' drawn with g_P1Lives/g_P2Lives; cursor objects on the stack (BOXINPUTACTOR/SCALINGACTOR New); portrait table jt $6826A (7 with Magneto when g_SceneIndex is past -$3B7E (g_ScnCerebroBaniMaza)) else $6825A; Magneto picks random 0-5; loops until PlayerSelect_CheckDone; screen seen at TAS frame 27660
 ; ---------------------------------------------------------------------------
-sub_0656B0:
+PlayerSelect_Run:
 	link.w	a6,#$FF7A
 	movem.l	d4-d7/a3-a4,-(a7)
 	lea.l	-$84(a6),a0
@@ -60,7 +63,7 @@ loc_06572E:
 	clr.b	-$44(a6)
 	clr.w	-$52(a6)
 	pea.l	-$84(a6)
-	jsr	sub_064AEC(pc)
+	jsr	PlayerSelect_PlaceCursor(pc)
 	move.b	#$2,-$3(a6)
 	move.b	g_P2CharIndex(a5),-$6(a6)
 	dc.w	$1D7C,$FFFF,$FFFB	; insn: move.b #$ff, -$5(a6)
@@ -69,8 +72,8 @@ loc_06572E:
 	clr.b	-$2(a6)
 	clr.w	-$10(a6)
 	pea.l	-$42(a6)
-	jsr	sub_064AEC(pc)
-	jsr	sub_064638(pc)
+	jsr	PlayerSelect_PlaceCursor(pc)
+	jsr	PlayerSelect_AllocCharBuffers(pc)
 	move.w	d0,d4
 	jsr	$50A2(a5)	; -> sub_1FC2E8
 	move.l	-$CA2(a5),-$84(a6)
@@ -144,7 +147,7 @@ loc_06587A:
 	moveq	#$2,d0
 	move.l	d0,-(a7)
 	pea.l	Str_PressStart_065DAA(pc)
-	jsr	sub_064F70(pc)
+	jsr	Cerebro_PrintText(pc)
 	addq.w	#$8,a7
 loc_065894:
 	tst.w	g_P2Lives(a5)
@@ -158,7 +161,7 @@ loc_0658A2:
 	moveq	#$3,d0
 	move.l	d0,-(a7)
 	pea.l	Str_PressStart(pc)
-	jsr	sub_064F70(pc)
+	jsr	Cerebro_PrintText(pc)
 	addq.w	#$8,a7
 loc_0658BC:
 	move.b	#$1,-$38BE(a5)
@@ -193,7 +196,7 @@ loc_0658C6:
 loc_065922:
 	movea.l	-$38F4(a5),a0
 	jsr	(a0)
-	jsr	sub_064AA2(pc)
+	jsr	PlayerSelect_DrawFrames(pc)
 	movea.l	-$3B28(a5),a0
 	moveq	#-$1,d0
 	cmp.b	$3C(a0),d0
@@ -412,7 +415,7 @@ loc_065B64:
 loc_065BBE:
 	jsr	$5052(a5)	; -> sub_1FA9D2
 	move.b	#$1,g_DmaFlushReq(a5)
-	jsr	sub_06539C(pc)
+	jsr	PlayerSelect_CheckDone(pc)
 	tst.b	-$38DE(a5)
 	beq.s	loc_065BDE
 	tst.b	-$38E4(a5)
@@ -453,9 +456,9 @@ loc_065C30:
 loc_065C3A:
 	move.w	#$C000,-$1754(a5)
 	move.b	g_P1CharIndex(a5),d0
-	bmi.s	loc_065CBC
+	bmi.s	PlayerSelect_Run_SetP2
 	cmpi.b	#$6,d0
-	bgt.s	loc_065CBC
+	bgt.s	PlayerSelect_Run_SetP2
 	moveq	#$0,d1
 	move.b	d0,d1
 	add.w	d1,d1

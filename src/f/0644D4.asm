@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_0644D4
+; Cerebro_BigSpriteDecode - decode a big sprite's current frame into the tile buffer
+; In:  8(a6) = record
+; Out: none
+; Evidence: sub_1FC5FE (decode) into buffer -$CA2 at tile +$A, sub_1FC6CA; +$31 = needs upload
 ; ---------------------------------------------------------------------------
-sub_0644D4:
+Cerebro_BigSpriteDecode:
 	link.w	a6,#$0
 	move.l	a4,-(a7)
 	movea.l	$8(a6),a4

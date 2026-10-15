@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; loc_0646D6
+; PlayerSelect_AllocCharBuffers_Measure - measure one character's frame box and keep the maximum; then allocate the buffers
+; In:  a4 = sprite definition, d0 = frame
+; Out: none
+; Evidence: tail of PlayerSelect_AllocCharBuffers
 ; ---------------------------------------------------------------------------
-loc_0646D6:
+PlayerSelect_AllocCharBuffers_Measure:
 	moveq	#$0,d0
 	movea.l	d0,a4
 	move.w	#$FF,d7
