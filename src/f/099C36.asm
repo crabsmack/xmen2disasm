@@ -27,7 +27,7 @@ loc_099C68:
 	move.l	a4,-(a7)
 	pea.l	-$3940(a5)
 	jsr	$4DAA(a5)	; -> Mem_Copy
-	move.b	#$1,-$3A06(a5)
+	move.b	#$1,g_PalBaseDirty(a5)
 	lea.l	$C(a7),a7
 	movea.l	-$4(a6),a4
 	unlk	a6

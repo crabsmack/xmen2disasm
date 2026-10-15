@@ -57,7 +57,7 @@ loc_02CB8A:
 	addq.l	#$1,d7
 	cmp.l	d7,d3
 	bgt.s	loc_02CB8A
-	clr.w	-$3980(a5)
+	clr.w	g_PalBase(a5)
 	subi.w	#$20,-$3A9A(a5)
 	movem.l	-$10(a6),d3/d7/a3-a4
 	unlk	a6

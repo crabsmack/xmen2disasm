@@ -214,7 +214,7 @@ sub_03845C:
 	move.l	d6,d0
 	lsl.l	#$4,d0
 	add.w	d0,d0
-	lea.l	-$3980(a5),a0
+	lea.l	g_PalBase(a5),a0
 	lea.l	(a0,d0.w),a3
 	moveq	#$0,d6
 	moveq	#$10,d3

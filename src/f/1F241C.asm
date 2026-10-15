@@ -11,11 +11,11 @@ sub_1F241C:
 	neg.b	d3
 	beq.s	loc_1F2440
 	move.w	-$3B9C(a5),d0
-	and.w	-$3A36(a5),d0
+	and.w	g_Pad1Held(a5),d0
 	bra.s	loc_1F2448
 loc_1F2440:
 	move.w	-$3B9C(a5),d0
-	and.w	-$3A38(a5),d0
+	and.w	g_Pad2Held(a5),d0
 loc_1F2448:
 	beq.s	loc_1F248A
 	tst.b	$9D(a4)
@@ -23,11 +23,11 @@ loc_1F2448:
 	neg.b	d3
 	beq.s	loc_1F245E
 	move.w	-$3B9A(a5),d0
-	and.w	-$3A36(a5),d0
+	and.w	g_Pad1Held(a5),d0
 	bra.s	loc_1F2466
 loc_1F245E:
 	move.w	-$3B9A(a5),d0
-	and.w	-$3A38(a5),d0
+	and.w	g_Pad2Held(a5),d0
 loc_1F2466:
 	ext.l	d0
 	move.l	d0,-(a7)
@@ -73,11 +73,11 @@ loc_1F24CE:
 	neg.b	d3
 	beq.s	loc_1F24E2
 	move.w	-$3BA4(a5),d0
-	and.w	-$3A36(a5),d0
+	and.w	g_Pad1Held(a5),d0
 	bra.s	loc_1F24EA
 loc_1F24E2:
 	move.w	-$3BA4(a5),d0
-	and.w	-$3A38(a5),d0
+	and.w	g_Pad2Held(a5),d0
 loc_1F24EA:
 	bne.s	loc_1F24F4
 	cmpi.w	#$FC7C,$18(a4)

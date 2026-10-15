@@ -16,7 +16,7 @@ loc_038ABE:
 	addq.l	#$1,d7
 	cmp.l	d7,d3
 	bgt.s	loc_038ABE
-	clr.w	-$3980(a5)
+	clr.w	g_PalBase(a5)
 	move.w	#$68,-$3936(a5)
 	move.w	#$4AC,-$3932(a5)
 	move.w	#$ACE,-$392E(a5)

@@ -17,7 +17,7 @@ loc_1FDBEC:
 loc_1FDBFA:
 	move.l	d7,d0
 	add.w	d0,d0
-	lea.l	-$BC6(a5),a0
+	lea.l	g_HScrollBuf(a5),a0
 	clr.w	(a0,d0.w)
 	move.w	d7,d0
 	addq.w	#$1,d7

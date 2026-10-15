@@ -47,7 +47,7 @@ loc_13DC40:
 	ble.s	loc_13DCA2
 	cmpi.w	#$E0,d7
 	bge.s	loc_13DCA2
-	lea.l	-$1FDA(a5),a0
+	lea.l	g_SpriteTable(a5),a0
 	movea.l	-$1FE6(a5),a1
 	move.b	$3(a1),d0
 	ext.w	d0

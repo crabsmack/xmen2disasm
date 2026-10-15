@@ -46,7 +46,7 @@ loc_0EA91C:
 	lsl.l	#$2,d1
 	add.w	d0,d1
 	move.w	d1,d6
-	lea.l	-$1FDA(a5),a0
+	lea.l	g_SpriteTable(a5),a0
 	movea.l	-$1FE6(a5),a1
 	move.b	$3(a1),d0
 	ext.w	d0
@@ -77,7 +77,7 @@ loc_0EA91C:
 	add.l	d0,d1
 	move.w	d1,d6
 	add.w	#$54,d6
-	lea.l	-$1FDA(a5),a0
+	lea.l	g_SpriteTable(a5),a0
 	movea.l	-$1FE6(a5),a1
 	move.b	$3(a1),d0
 	ext.w	d0
@@ -108,7 +108,7 @@ loc_0EA91C:
 	add.l	d0,d1
 	move.w	d1,d6
 	add.w	#$A8,d6
-	lea.l	-$1FDA(a5),a0
+	lea.l	g_SpriteTable(a5),a0
 	movea.l	-$1FE6(a5),a1
 	move.b	$3(a1),d0
 	ext.w	d0
@@ -141,7 +141,7 @@ loc_0EA91C:
 	lsl.l	#$2,d1
 	add.w	d0,d1
 	move.w	d1,d6
-	lea.l	-$1FDA(a5),a0
+	lea.l	g_SpriteTable(a5),a0
 	movea.l	-$1FE6(a5),a1
 	move.b	$3(a1),d0
 	ext.w	d0
@@ -174,7 +174,7 @@ loc_0EA91C:
 	add.l	d0,d1
 	move.w	d1,d6
 	add.w	#$54,d6
-	lea.l	-$1FDA(a5),a0
+	lea.l	g_SpriteTable(a5),a0
 	movea.l	-$1FE6(a5),a1
 	move.b	$3(a1),d0
 	ext.w	d0
@@ -207,7 +207,7 @@ loc_0EA91C:
 	add.l	d0,d1
 	move.w	d1,d6
 	add.w	#$A8,d6
-	lea.l	-$1FDA(a5),a0
+	lea.l	g_SpriteTable(a5),a0
 	movea.l	-$1FE6(a5),a1
 	move.b	$3(a1),d0
 	ext.w	d0
@@ -243,7 +243,7 @@ loc_0EAB8C:
 	add.l	d0,d1
 	move.w	d1,d6
 	add.w	#$FC,d6
-	lea.l	-$1FDA(a5),a0
+	lea.l	g_SpriteTable(a5),a0
 	movea.l	-$1FE6(a5),a1
 	move.b	$3(a1),d0
 	ext.w	d0
@@ -275,7 +275,7 @@ loc_0EAB8C:
 	add.l	d0,d1
 	move.w	d1,d6
 	add.w	#$114,d6
-	lea.l	-$1FDA(a5),a0
+	lea.l	g_SpriteTable(a5),a0
 	movea.l	-$1FE6(a5),a1
 	move.b	$3(a1),d0
 	ext.w	d0
@@ -307,7 +307,7 @@ loc_0EAB8C:
 	add.l	d0,d1
 	move.w	d1,d6
 	add.w	#$12C,d6
-	lea.l	-$1FDA(a5),a0
+	lea.l	g_SpriteTable(a5),a0
 	movea.l	-$1FE6(a5),a1
 	move.b	$3(a1),d0
 	ext.w	d0
@@ -334,7 +334,7 @@ loc_0EACBE:
 	movea.l	-$1FE6(a5),a0
 	move.b	$3(a0),-$3BDD(a5)
 	move.b	#$1,-$3BE0(a5)
-	lea.l	-$1FDA(a5),a0
+	lea.l	g_SpriteTable(a5),a0
 	movea.l	-$1FE6(a5),a1
 	move.b	$3(a1),d0
 	ext.w	d0

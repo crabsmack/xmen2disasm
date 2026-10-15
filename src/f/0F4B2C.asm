@@ -49,7 +49,7 @@ sub_0F4B2C:
 	addq.w	#$8,a7
 loc_0F4BB0:
 	ori.w	#$8000,-$3C5E(a5)
-	clr.l	-$3980(a5)
+	clr.l	g_PalBase(a5)
 	move.w	#$2,-$397C(a5)
 	move.w	#$4,-$397A(a5)
 	move.w	#$6,-$3978(a5)

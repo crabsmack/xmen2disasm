@@ -119,7 +119,7 @@ loc_04E778:
 	moveq	#$0,d0
 loc_04E77A:
 	or.w	d0,d5
-	lea.l	-$1FDA(a5),a0
+	lea.l	g_SpriteTable(a5),a0
 	movea.l	-$1FE6(a5),a1
 	move.b	$3(a1),d0
 	ext.w	d0
@@ -141,7 +141,7 @@ loc_04E77A:
 	add.w	#$80,d0
 	movea.l	-$1FE6(a5),a0
 	move.w	d0,$6(a0)
-	lea.l	-$1FDA(a5),a0
+	lea.l	g_SpriteTable(a5),a0
 	movea.l	-$1FE6(a5),a1
 	move.b	$3(a1),d0
 	ext.w	d0

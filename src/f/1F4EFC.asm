@@ -117,7 +117,7 @@ loc_1F5028:
 loc_1F5096:
 	move.l	d7,d0
 	add.w	d0,d0
-	lea.l	-$BC6(a5),a0
+	lea.l	g_HScrollBuf(a5),a0
 	move.w	(a0,d0.w),($C00000).l
 	move.w	d7,d0
 	addq.w	#$1,d7

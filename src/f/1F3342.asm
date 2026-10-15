@@ -10,11 +10,11 @@ sub_1F3342:
 	neg.b	d3
 	beq.s	loc_1F3362
 	move.w	-$3B9A(a5),d0
-	and.w	-$3A2E(a5),d0
+	and.w	g_Pad1Latch(a5),d0
 	bra.s	loc_1F336A
 loc_1F3362:
 	move.w	-$3B9A(a5),d0
-	and.w	-$3A30(a5),d0
+	and.w	g_Pad2Latch(a5),d0
 loc_1F336A:
 	ext.l	d0
 	move.l	d0,-(a7)
@@ -34,14 +34,14 @@ loc_1F336A:
 	bne.s	loc_1F33A8
 	move.w	-$3B9C(a5),d0
 	not.w	d0
-	and.w	-$3A2E(a5),d0
-	move.w	d0,-$3A2E(a5)
+	and.w	g_Pad1Latch(a5),d0
+	move.w	d0,g_Pad1Latch(a5)
 	bra.s	loc_1F33B6
 loc_1F33A8:
 	move.w	-$3B9C(a5),d0
 	not.w	d0
-	and.w	-$3A30(a5),d0
-	move.w	d0,-$3A30(a5)
+	and.w	g_Pad2Latch(a5),d0
+	move.w	d0,g_Pad2Latch(a5)
 loc_1F33B6:
 	lea.l	sub_1F33D0(pc),a0
 	move.l	a0,$5C(a4)

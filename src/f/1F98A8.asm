@@ -5,8 +5,8 @@ sub_1F98A8:
 	link.w	a6,#$0
 	movem.l	d3/d5-d7/a3-a4,-(a7)
 	move.b	$2B(a6),d6
-	andi.w	#$FFBF,-$1D48(a5)
-	move.w	-$1D48(a5),($C00004).l
+	andi.w	#$FFBF,g_VdpReg1(a5)
+	move.w	g_VdpReg1(a5),($C00004).l
 	jsr	$5182(a5)	; -> VDP_ClearVram
 	jsr	$518A(a5)	; -> VDP_ClearVsram
 	move.l	#$FF0000,-$348C(a5)
@@ -18,16 +18,16 @@ sub_1F98A8:
 	clr.b	-$3BBA(a5)
 	movea.l	-$38E8(a5),a0
 	jsr	(a0)
-	move.w	$36(a6),-$38D2(a5)
+	move.w	$36(a6),g_MusicTrack(a5)
 	moveq	#-$1,d0
-	cmp.w	-$38D2(a5),d0
+	cmp.w	g_MusicTrack(a5),d0
 	seq.b	d3
 	neg.b	d3
 	beq.s	loc_1F990C
 	moveq	#$7F,d0
 	bra.s	loc_1F9910
 loc_1F990C:
-	move.w	-$38D2(a5),d0
+	move.w	g_MusicTrack(a5),d0
 loc_1F9910:
 	ext.l	d0
 	move.l	d0,-(a7)
@@ -40,10 +40,10 @@ loc_1F9910:
 	move.l	d1,-(a7)
 	jsr	$524A(a5)	; -> Snd_SetParam
 	moveq	#-$1,d0
-	cmp.w	-$38D2(a5),d0
+	cmp.w	g_MusicTrack(a5),d0
 	lea.l	$10(a7),a7
 	beq.s	loc_1F9942
-	move.w	-$38D2(a5),d0
+	move.w	g_MusicTrack(a5),d0
 	ext.l	d0
 	move.l	d0,-(a7)
 	jsr	Music_Play(pc)
@@ -66,7 +66,7 @@ loc_1F995E:
 	movea.l	d0,a0
 	move.l	d7,d0
 	add.w	d0,d0
-	lea.l	-$3980(a5),a1
+	lea.l	g_PalBase(a5),a1
 	move.w	(a0),(a1,d0.w)
 	move.l	d7,d0
 	addq.l	#$1,d7
@@ -260,7 +260,7 @@ loc_1F9B58:
 	moveq	#$0,d0
 	move.l	d0,-$35B6(a5)
 	clr.b	-$3892(a5)
-	move.l	d0,-$3A44(a5)
+	move.l	d0,g_ParallaxDesc(a5)
 	lea.l	$510A(a5),a0
 	move.l	a0,-$3A48(a5)
 	lea.l	sub_1F9E46(pc),a0

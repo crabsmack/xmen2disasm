@@ -2,17 +2,17 @@
 ; Scroll_ComputeParallax - fill the line/column scroll buffers from the current parallax descriptor and camera position
 ; In:  none
 ; Out: none
-; Evidence: walks the -$3A44(a5) descriptor records, writes longs at -$BC6(a5) ($FFF63A) per scanline band and column words at -$646; called by Scroll_UpdateParallax
+; Evidence: walks the g_ParallaxDesc(a5) descriptor records, writes longs at g_HScrollBuf(a5) ($FFF63A) per scanline band and column words at -$646; called by Scroll_UpdateParallax
 ; ---------------------------------------------------------------------------
 Scroll_ComputeParallax:
-	move.l	-$3A44(a5),d0
+	move.l	g_ParallaxDesc(a5),d0
 	bne.s	loc_15FD16
 	rts
 loc_15FD16:
 	movem.l	d2-d7/a2-a4,-(a7)
 	movea.l	d0,a4
 	lea.l	-$846(a5),a3
-	lea.l	-$BC6(a5),a2
+	lea.l	g_HScrollBuf(a5),a2
 	moveq	#$0,d7
 	move.b	$1(a4),d7
 	addq.w	#$2,a4
@@ -42,7 +42,7 @@ loc_15FD50:
 	beq.w	loc_15FFD4
 	bra.w	loc_16009A
 loc_15FD78:
-	movea.l	-$3A44(a5),a0
+	movea.l	g_ParallaxDesc(a5),a0
 	cmpi.b	#$32,(a0)
 	beq.s	loc_15FDEC
 	move.w	d6,d5
@@ -164,7 +164,7 @@ loc_15FE7A:
 	dbra	d3,loc_15FE7A
 	bra.w	loc_16006E
 loc_15FE94:
-	movea.l	-$3A44(a5),a0
+	movea.l	g_ParallaxDesc(a5),a0
 	cmpi.b	#$32,(a0)
 	beq.s	loc_15FF0C
 	move.w	d6,d5
@@ -253,7 +253,7 @@ loc_15FF56:
 	neg.w	d0
 	andi.w	#$1FF,d0
 	swap	d0
-	movea.l	-$3A44(a5),a1
+	movea.l	g_ParallaxDesc(a5),a1
 	adda.w	$6(a4),a1
 	move.w	$2(a3),d1
 	move.w	(a3),d0
@@ -300,7 +300,7 @@ loc_15FFB8:
 loc_15FFD0:
 	dbra	d3,loc_15FFB8
 loc_15FFD4:
-	movea.l	-$3A44(a5),a0
+	movea.l	g_ParallaxDesc(a5),a0
 	cmpi.b	#$32,(a0)
 	beq.s	loc_160048
 	move.w	d6,d5
@@ -363,7 +363,7 @@ loc_160068:
 	move.l	d0,(a2)+
 	dbra	d3,loc_160068
 loc_16006E:
-	movea.l	-$3A44(a5),a0
+	movea.l	g_ParallaxDesc(a5),a0
 	cmpi.b	#$32,(a0)
 	beq.s	loc_160090
 	sub.w	$2(a4),d6

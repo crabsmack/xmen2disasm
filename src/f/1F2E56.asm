@@ -19,25 +19,25 @@ loc_1F2E7E:
 	neg.b	d3
 	beq.s	loc_1F2E92
 	move.w	-$3BA6(a5),d0
-	and.w	-$3A2E(a5),d0
+	and.w	g_Pad1Latch(a5),d0
 	bra.s	loc_1F2E9A
 loc_1F2E92:
 	move.w	-$3BA6(a5),d0
-	and.w	-$3A30(a5),d0
+	and.w	g_Pad2Latch(a5),d0
 loc_1F2E9A:
 	beq.s	loc_1F2EF0
 	tst.b	$9D(a4)
 	bne.s	loc_1F2EB2
 	move.w	-$3BA6(a5),d0
 	not.w	d0
-	and.w	-$3A2E(a5),d0
-	move.w	d0,-$3A2E(a5)
+	and.w	g_Pad1Latch(a5),d0
+	move.w	d0,g_Pad1Latch(a5)
 	bra.s	loc_1F2EC0
 loc_1F2EB2:
 	move.w	-$3BA6(a5),d0
 	not.w	d0
-	and.w	-$3A30(a5),d0
-	move.w	d0,-$3A30(a5)
+	and.w	g_Pad2Latch(a5),d0
+	move.w	d0,g_Pad2Latch(a5)
 loc_1F2EC0:
 	moveq	#-$1,d0
 	cmp.w	$6E(a4),d0

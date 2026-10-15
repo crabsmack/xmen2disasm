@@ -16,7 +16,7 @@ loc_087B3E:
 	addq.b	#$1,d7
 	cmp.b	d7,d3
 	bgt.s	loc_087B3E
-	move.b	#$1,-$3A06(a5)
+	move.b	#$1,g_PalBaseDirty(a5)
 loc_087B4E:
 	movea.l	$8(a6),a0
 	tst.w	$68(a0)

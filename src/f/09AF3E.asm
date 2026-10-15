@@ -61,7 +61,7 @@ loc_09AF90:
 	beq.s	loc_09AFE0
 	ori.w	#$8000,d7
 loc_09AFE0:
-	lea.l	-$1FDA(a5),a0
+	lea.l	g_SpriteTable(a5),a0
 	movea.l	-$1FE6(a5),a1
 	move.b	$3(a1),d0
 	ext.w	d0
@@ -92,7 +92,7 @@ loc_09AFE0:
 	move.w	d1,$6(a0)
 	addq.w	#$2,d7
 	addq.w	#$8,a4
-	lea.l	-$1FDA(a5),a0
+	lea.l	g_SpriteTable(a5),a0
 	movea.l	-$1FE6(a5),a1
 	move.b	$3(a1),d0
 	ext.w	d0
@@ -123,7 +123,7 @@ loc_09AFE0:
 	move.w	d1,$6(a0)
 	addi.w	#$10,d7
 	addq.w	#$8,a4
-	lea.l	-$1FDA(a5),a0
+	lea.l	g_SpriteTable(a5),a0
 	movea.l	-$1FE6(a5),a1
 	move.b	$3(a1),d0
 	ext.w	d0
@@ -154,7 +154,7 @@ loc_09AFE0:
 	move.w	d1,$6(a0)
 	addi.w	#$10,d7
 	addq.w	#$8,a4
-	lea.l	-$1FDA(a5),a0
+	lea.l	g_SpriteTable(a5),a0
 	movea.l	-$1FE6(a5),a1
 	move.b	$3(a1),d0
 	ext.w	d0

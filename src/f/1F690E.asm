@@ -3,7 +3,7 @@
 ; ---------------------------------------------------------------------------
 sub_1F690E:
 	link.w	a6,#$0
-	clr.b	-$3A06(a5)
+	clr.b	g_PalBaseDirty(a5)
 	jsr	sub_1F684E(pc)
 	lea.l	$5142(a5),a0
 	move.l	$2(a0),-(a7)
@@ -18,7 +18,7 @@ sub_1F690E:
 loc_1F6938:
 	jsr	$5112(a5)	; -> VDP_WaitVBlank
 loc_1F693C:
-	tst.b	-$3A02(a5)
+	tst.b	g_PalFadeActive(a5)
 	bne.s	loc_1F6938
 	jsr	sub_1F68C0(pc)
 	unlk	a6

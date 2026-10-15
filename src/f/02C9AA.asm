@@ -98,7 +98,7 @@ loc_02CAB2:
 	lea.l	$10(a7),a7
 loc_02CAD8:
 	subq.w	#$1,-$3CC8(a5)
-	tst.b	-$3A02(a5)
+	tst.b	g_PalFadeActive(a5)
 	bne.s	loc_02CAEC
 	tst.w	-$3CBA(a5)
 	beq.s	loc_02CAEC

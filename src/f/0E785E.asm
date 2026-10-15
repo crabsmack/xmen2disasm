@@ -18,7 +18,7 @@ loc_0E7872:
 	ble.s	loc_0E7880
 	subq.l	#$1,-$3B18(a5)
 loc_0E7880:
-	tst.b	-$3A02(a5)
+	tst.b	g_PalFadeActive(a5)
 	bne.s	loc_0E788A
 	jsr	sub_0E7306(pc)
 loc_0E788A:

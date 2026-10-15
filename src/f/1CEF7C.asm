@@ -46,11 +46,11 @@ loc_1CEFDE:
 	neg.b	d3
 	beq.s	loc_1CEFF8
 	move.w	-$3BA8(a5),d0
-	and.w	-$3A2E(a5),d0
+	and.w	g_Pad1Latch(a5),d0
 	bra.s	loc_1CF000
 loc_1CEFF8:
 	move.w	-$3BA8(a5),d0
-	and.w	-$3A30(a5),d0
+	and.w	g_Pad2Latch(a5),d0
 loc_1CF000:
 	bne.s	loc_1CF014
 	lea.l	$4862(a5),a0
@@ -72,11 +72,11 @@ loc_1CF026:
 	neg.b	d3
 	beq.s	loc_1CF03A
 	move.w	-$3BA8(a5),d0
-	and.w	-$3A2E(a5),d0
+	and.w	g_Pad1Latch(a5),d0
 	bra.s	loc_1CF042
 loc_1CF03A:
 	move.w	-$3BA8(a5),d0
-	and.w	-$3A30(a5),d0
+	and.w	g_Pad2Latch(a5),d0
 loc_1CF042:
 	bne.s	loc_1CF056
 	lea.l	$486A(a5),a0

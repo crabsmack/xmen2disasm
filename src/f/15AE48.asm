@@ -129,7 +129,7 @@ loc_15AF9A:
 	tst.b	$17(a6)
 	beq.s	loc_15AFB4
 	move.l	d5,d0
-	add.l	-$3A10(a5),d0
+	add.l	g_VBlankCount(a5),d0
 	moveq	#$0,d1
 	move.b	$1B(a6),d1
 	tst.l	d1
@@ -199,18 +199,18 @@ loc_15B04A:
 	moveq	#$0,d0
 	move.b	$23(a6),d0
 	tst.l	d0
-	and.l	-$3A10(a5),d0
+	and.l	g_VBlankCount(a5),d0
 	beq.s	loc_15B05E
 	ori.l	#$800,d7
 loc_15B05E:
 	moveq	#$0,d0
 	move.b	$27(a6),d0
 	tst.l	d0
-	and.l	-$3A10(a5),d0
+	and.l	g_VBlankCount(a5),d0
 	beq.s	loc_15B072
 	ori.l	#$1000,d7
 loc_15B072:
-	lea.l	-$1FDA(a5),a0
+	lea.l	g_SpriteTable(a5),a0
 	movea.l	-$1FE6(a5),a1
 	move.b	$3(a1),d0
 	ext.w	d0

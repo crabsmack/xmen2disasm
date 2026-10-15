@@ -5,10 +5,10 @@ loc_0BF9C8:
 	moveq	#$3C,d0
 	muls.w	-$3C1E(a5),d0
 	move.w	d0,-$3C1E(a5)
-	tst.b	-$3A02(a5)
+	tst.b	g_PalFadeActive(a5)
 	seq.b	d3
 	neg.b	d3
-	move.b	d3,-$3A06(a5)
+	move.b	d3,g_PalBaseDirty(a5)
 loc_0BF9DE:
 	subq.w	#$1,-$3C1E(a5)
 	move.l	-$4(a6),d3

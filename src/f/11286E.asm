@@ -10,7 +10,7 @@ sub_11286E:
 	move.l	g_FrameCounter(a5),-(a7)
 	pea.l	-$3940(a5)
 	jsr	$4DAA(a5)	; -> Mem_Copy
-	move.b	#$1,-$3A06(a5)
+	move.b	#$1,g_PalBaseDirty(a5)
 	lea.l	$C(a7),a7
 	move.w	#$2,$6C(a4)
 	lea.l	sub_11286E(pc),a0

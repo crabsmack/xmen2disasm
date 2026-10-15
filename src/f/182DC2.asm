@@ -10,11 +10,11 @@ sub_182DC2:
 	neg.b	d3
 	beq.s	loc_182DE2
 	move.w	-$3BA4(a5),d0
-	and.w	-$3A26(a5),d0
+	and.w	g_Pad1Pressed(a5),d0
 	bra.s	loc_182DEA
 loc_182DE2:
 	move.w	-$3BA4(a5),d0
-	and.w	-$3A28(a5),d0
+	and.w	g_Pad2Pressed(a5),d0
 loc_182DEA:
 	beq.s	loc_182E60
 	moveq	#$0,d0
@@ -62,25 +62,25 @@ loc_182E60:
 	neg.b	d3
 	beq.s	loc_182E74
 	move.w	-$3BA6(a5),d0
-	and.w	-$3A2E(a5),d0
+	and.w	g_Pad1Latch(a5),d0
 	bra.s	loc_182E7C
 loc_182E74:
 	move.w	-$3BA6(a5),d0
-	and.w	-$3A30(a5),d0
+	and.w	g_Pad2Latch(a5),d0
 loc_182E7C:
 	beq.s	loc_182EF0
 	tst.b	$9D(a4)
 	bne.s	loc_182E94
 	move.w	-$3BA6(a5),d0
 	not.w	d0
-	and.w	-$3A2E(a5),d0
-	move.w	d0,-$3A2E(a5)
+	and.w	g_Pad1Latch(a5),d0
+	move.w	d0,g_Pad1Latch(a5)
 	bra.s	loc_182EA2
 loc_182E94:
 	move.w	-$3BA6(a5),d0
 	not.w	d0
-	and.w	-$3A30(a5),d0
-	move.w	d0,-$3A30(a5)
+	and.w	g_Pad2Latch(a5),d0
+	move.w	d0,g_Pad2Latch(a5)
 loc_182EA2:
 	movea.l	$8C(a4),a0
 	move.b	$4(a0),$70(a4)

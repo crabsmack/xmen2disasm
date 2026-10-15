@@ -5,7 +5,7 @@ sub_09984A:
 	link.w	a6,#$0
 	move.l	g_FrameCounter(a5),d0
 	addq.l	#$1,g_FrameCounter(a5)
-	tst.b	-$3A02(a5)
+	tst.b	g_PalFadeActive(a5)
 	bne.s	loc_099860
 	jsr	$116A(a5)	; -> sub_081BE6
 loc_099860:
@@ -13,7 +13,7 @@ loc_099860:
 	beq.s	loc_099878
 	move.l	g_FrameCounter(a5),d0
 	addq.l	#$1,g_FrameCounter(a5)
-	tst.b	-$3A02(a5)
+	tst.b	g_PalFadeActive(a5)
 	bne.s	loc_099878
 	jsr	$116A(a5)	; -> sub_081BE6
 loc_099878:

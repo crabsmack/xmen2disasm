@@ -19,7 +19,7 @@ loc_1FD5A0:
 	move.b	d0,d1
 	addq.w	#$1,d1
 	asl.w	#$3,d0
-	lea.l	-$1FDA(a5),a0
+	lea.l	g_SpriteTable(a5),a0
 	adda.w	d0,a0
 	move.l	a0,-$1FE6(a5)
 	move.w	d5,(a0)+

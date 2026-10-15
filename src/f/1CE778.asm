@@ -24,11 +24,11 @@ loc_1CE7B0:
 	neg.b	d3
 	beq.s	loc_1CE7C4
 	move.w	-$3BA8(a5),d0
-	and.w	-$3A36(a5),d0
+	and.w	g_Pad1Held(a5),d0
 	bra.s	loc_1CE7CC
 loc_1CE7C4:
 	move.w	-$3BA8(a5),d0
-	and.w	-$3A38(a5),d0
+	and.w	g_Pad2Held(a5),d0
 loc_1CE7CC:
 	bne.s	loc_1CE80A
 	movea.l	$BE(a4),a0

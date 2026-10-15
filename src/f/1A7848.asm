@@ -5,7 +5,7 @@ sub_1A7848:
 	link.w	a6,#$0
 	movem.l	d7/a4,-(a7)
 	movea.l	$8(a6),a4
-	tst.b	-$3A02(a5)
+	tst.b	g_PalFadeActive(a5)
 	beq.s	loc_1A785E
 	moveq	#$1,d7
 	bra.s	loc_1A787A
@@ -23,7 +23,7 @@ loc_1A785E:
 loc_1A787A:
 	tst.b	d7
 	beq.s	loc_1A78B2
-	move.b	#$1,-$3A06(a5)
+	move.b	#$1,g_PalBaseDirty(a5)
 	tst.l	$44(a4)
 	beq.s	loc_1A78A0
 	move.w	#$FF,$6C(a4)

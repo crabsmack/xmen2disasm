@@ -13,13 +13,13 @@ sub_19673A:
 	tst.b	$9D(a4)
 	bne.s	loc_19676C
 	moveq	#-$4,d0
-	and.w	-$3A2E(a5),d0
-	move.w	d0,-$3A2E(a5)
+	and.w	g_Pad1Latch(a5),d0
+	move.w	d0,g_Pad1Latch(a5)
 	bra.s	loc_196776
 loc_19676C:
 	moveq	#-$4,d0
-	and.w	-$3A30(a5),d0
-	move.w	d0,-$3A30(a5)
+	and.w	g_Pad2Latch(a5),d0
+	move.w	d0,g_Pad2Latch(a5)
 loc_196776:
 	moveq	#$0,d0
 	move.l	d0,$44(a4)
@@ -66,13 +66,13 @@ loc_1967BE:
 	addq.w	#$8,a7
 	bne.s	loc_1967F8
 	moveq	#-$4,d0
-	and.w	-$3A2E(a5),d0
-	move.w	d0,-$3A2E(a5)
+	and.w	g_Pad1Latch(a5),d0
+	move.w	d0,g_Pad1Latch(a5)
 	bra.s	loc_196802
 loc_1967F8:
 	moveq	#-$4,d0
-	and.w	-$3A30(a5),d0
-	move.w	d0,-$3A30(a5)
+	and.w	g_Pad2Latch(a5),d0
+	move.w	d0,g_Pad2Latch(a5)
 loc_196802:
 	moveq	#$0,d0
 	move.l	d0,$44(a4)

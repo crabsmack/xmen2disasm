@@ -31,7 +31,7 @@ loc_065E02:
 	addq.l	#$1,d7
 	cmp.l	d7,d3
 	bgt.s	loc_065E02
-	move.b	#$1,-$3A06(a5)
+	move.b	#$1,g_PalBaseDirty(a5)
 loc_065E12:
 	moveq	#$2C,d0
 	cmp.w	-$3B0C(a5),d0
@@ -62,7 +62,7 @@ loc_065E52:
 	addq.l	#$1,d7
 	cmp.l	d7,d3
 	bgt.s	loc_065E52
-	move.b	#$1,-$3A06(a5)
+	move.b	#$1,g_PalBaseDirty(a5)
 loc_065E62:
 	movem.l	-$10(a6),d3/d7/a3-a4
 	unlk	a6

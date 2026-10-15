@@ -29,7 +29,7 @@ loc_123454:
 	addq.l	#$1,d7
 	cmp.l	d7,d3
 	bgt.s	loc_123454
-	move.b	#$1,-$3A06(a5)
+	move.b	#$1,g_PalBaseDirty(a5)
 	bra.s	loc_1234A2
 loc_12346E:
 	moveq	#$1E,d0
@@ -49,7 +49,7 @@ loc_12348A:
 	addq.l	#$1,d7
 	cmp.l	d7,d3
 	bgt.s	loc_12348A
-	move.b	#$1,-$3A06(a5)
+	move.b	#$1,g_PalBaseDirty(a5)
 loc_1234A2:
 	tst.w	$68(a4)
 	bgt.s	loc_1234CA

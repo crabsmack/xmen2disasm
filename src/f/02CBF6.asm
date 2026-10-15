@@ -12,7 +12,7 @@ sub_02CBF6:
 loc_02CC12:
 	move.l	d7,d0
 	add.w	d0,d0
-	lea.l	-$3980(a5),a0
+	lea.l	g_PalBase(a5),a0
 	movea.l	-$3B14(a5),a1
 	move.l	d7,d1
 	add.l	d1,d1

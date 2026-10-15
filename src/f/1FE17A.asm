@@ -2,7 +2,7 @@
 ; VDP_QueueDma - queue a VRAM DMA for the next V-blank (merging with the previous entry if contiguous); DMA at once if the display is off
 ; In:  4(a7) = long: source address   8(a7) = long: VRAM dest   $C(a7) = long: length in bytes
 ; Out: none
-; Evidence: display bit (reg1 shadow -$1D48 bit 6) clear -> VDP_DmaToVram; else appends $18-byte VDP-register records at -$7A4(a5), count word -$7B4(a5), splitting at 128 KB source boundaries; VDP_FlushDmaQueue runs them; 11 callers
+; Evidence: display bit (reg1 shadow -$1D48 bit 6) clear -> VDP_DmaToVram; else appends $18-byte VDP-register records at g_DmaQueue(a5), count word g_DmaQueueCount(a5), splitting at 128 KB source boundaries; VDP_FlushDmaQueue runs them; 11 callers
 ; ---------------------------------------------------------------------------
 VDP_QueueDma:
 	btst	#$6,-$1D47(a5)
@@ -10,8 +10,8 @@ VDP_QueueDma:
 	jmp	VDP_DmaToVram(pc)
 loc_1FE186:
 	ori.w	#$700,sr
-	lea.l	-$7A4(a5),a0
-	move.w	-$7B4(a5),d0
+	lea.l	g_DmaQueue(a5),a0
+	move.w	g_DmaQueueCount(a5),d0
 	beq.s	loc_1FE1C6
 	asl.w	#$3,d0
 	adda.w	d0,a0
@@ -33,7 +33,7 @@ loc_1FE186:
 	movea.l	a1,a0
 	bra.s	loc_1FE21A
 loc_1FE1C6:
-	addq.w	#$1,-$7B4(a5)
+	addq.w	#$1,g_DmaQueueCount(a5)
 	clr.l	(a0)
 	move.w	#$8174,$8(a0)
 	move.l	$4(a7),d1

@@ -3,10 +3,10 @@
 ; ---------------------------------------------------------------------------
 sub_00F778:
 	link.w	a6,#$0
-	clr.w	-$3A26(a5)
-	clr.w	-$3A28(a5)
-	clr.w	-$3A2E(a5)
-	clr.w	-$3A30(a5)
+	clr.w	g_Pad1Pressed(a5)
+	clr.w	g_Pad2Pressed(a5)
+	clr.w	g_Pad1Latch(a5)
+	clr.w	g_Pad2Latch(a5)
 	moveq	#$2,d0
 	cmp.w	-$3B32(a5),d0
 	bgt.s	loc_00F7A8

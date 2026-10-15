@@ -10,11 +10,11 @@ sub_1CFE26:
 	neg.b	d3
 	beq.s	loc_1CFE46
 	move.w	-$3B9E(a5),d0
-	and.w	-$3A36(a5),d0
+	and.w	g_Pad1Held(a5),d0
 	bra.s	loc_1CFE4E
 loc_1CFE46:
 	move.w	-$3B9E(a5),d0
-	and.w	-$3A38(a5),d0
+	and.w	g_Pad2Held(a5),d0
 loc_1CFE4E:
 	beq.s	loc_1CFEC2
 	tst.b	$9D(a4)
@@ -22,11 +22,11 @@ loc_1CFE4E:
 	neg.b	d3
 	beq.s	loc_1CFE64
 	move.w	-$3B9C(a5),d0
-	and.w	-$3A36(a5),d0
+	and.w	g_Pad1Held(a5),d0
 	bra.s	loc_1CFE6C
 loc_1CFE64:
 	move.w	-$3B9C(a5),d0
-	and.w	-$3A38(a5),d0
+	and.w	g_Pad2Held(a5),d0
 loc_1CFE6C:
 	beq.s	loc_1CFE98
 	lea.l	$48BA(a5),a0
@@ -58,11 +58,11 @@ loc_1CFEC2:
 	neg.b	d3
 	beq.s	loc_1CFED6
 	move.w	-$3BA0(a5),d0
-	and.w	-$3A36(a5),d0
+	and.w	g_Pad1Held(a5),d0
 	bra.s	loc_1CFEDE
 loc_1CFED6:
 	move.w	-$3BA0(a5),d0
-	and.w	-$3A38(a5),d0
+	and.w	g_Pad2Held(a5),d0
 loc_1CFEDE:
 	beq.s	loc_1CFF4E
 	tst.b	$9D(a4)
@@ -70,11 +70,11 @@ loc_1CFEDE:
 	neg.b	d3
 	beq.s	loc_1CFEF4
 	move.w	-$3B9C(a5),d0
-	and.w	-$3A36(a5),d0
+	and.w	g_Pad1Held(a5),d0
 	bra.s	loc_1CFEFC
 loc_1CFEF4:
 	move.w	-$3B9C(a5),d0
-	and.w	-$3A38(a5),d0
+	and.w	g_Pad2Held(a5),d0
 loc_1CFEFC:
 	beq.s	loc_1CFF26
 	lea.l	$48CA(a5),a0

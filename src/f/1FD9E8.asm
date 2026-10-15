@@ -2,17 +2,17 @@
 ; Pad_Get - current buttons for player 1 or 2, or the recorded demo input while a demo plays
 ; In:  8(a6) = byte: 1 = player 1, 0 = player 2
 ; Out: d0 = word: buttons with opposite directions cleared
-; Evidence: if byte -$3A1A(a5) (demo active): P1 gets word -$3A20(a5), P2 gets 0; else Pad_GetP1Clean/Pad_GetP2Clean under Irq_Disable + Z80_BusRequest; only caller Pad_Update
+; Evidence: if byte g_DemoActive(a5) (demo active): P1 gets word g_DemoPad(a5), P2 gets 0; else Pad_GetP1Clean/Pad_GetP2Clean under Irq_Disable + Z80_BusRequest; only caller Pad_Update
 ; ---------------------------------------------------------------------------
 Pad_Get:
 	link.w	a6,#$0
 	move.l	d7,-(a7)
 	move.b	$B(a6),d7
-	tst.b	-$3A1A(a5)
+	tst.b	g_DemoActive(a5)
 	beq.s	loc_1FDA06
 	tst.b	d7
 	beq.s	loc_1FDA02
-	move.w	-$3A20(a5),d0
+	move.w	g_DemoPad(a5),d0
 	bra.s	loc_1FDA4E
 loc_1FDA02:
 	moveq	#$0,d0

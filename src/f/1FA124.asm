@@ -57,7 +57,7 @@ loc_1FA190:
 	bne.s	loc_1FA1CA
 	jsr	$5A(a5)	; -> HUD_UpdateHealthBars
 loc_1FA1CA:
-	lea.l	-$1FDA(a5),a0
+	lea.l	g_SpriteTable(a5),a0
 	movea.l	-$1FE6(a5),a1
 	move.b	$3(a1),d0
 	ext.w	d0
@@ -76,7 +76,7 @@ loc_1FA1CA:
 	move.w	#$A5,$6(a0)
 	tst.b	-$18A8(a5)
 	beq.s	loc_1FA252
-	lea.l	-$1FDA(a5),a0
+	lea.l	g_SpriteTable(a5),a0
 	movea.l	-$1FE6(a5),a1
 	move.b	$3(a1),d0
 	ext.w	d0
@@ -95,7 +95,7 @@ loc_1FA1CA:
 	move.w	#$8F,$6(a0)
 	bra.s	loc_1FA292
 loc_1FA252:
-	lea.l	-$1FDA(a5),a0
+	lea.l	g_SpriteTable(a5),a0
 	movea.l	-$1FE6(a5),a1
 	move.b	$3(a1),d0
 	ext.w	d0
@@ -131,7 +131,7 @@ loc_1FA292:
 	bne.s	loc_1FA2CC
 	jsr	$5A(a5)	; -> HUD_UpdateHealthBars
 loc_1FA2CC:
-	lea.l	-$1FDA(a5),a0
+	lea.l	g_SpriteTable(a5),a0
 	movea.l	-$1FE6(a5),a1
 	move.b	$3(a1),d0
 	ext.w	d0
@@ -150,7 +150,7 @@ loc_1FA2CC:
 	move.w	#$17A,$6(a0)
 	tst.b	-$18AA(a5)
 	beq.s	loc_1FA356
-	lea.l	-$1FDA(a5),a0
+	lea.l	g_SpriteTable(a5),a0
 	movea.l	-$1FE6(a5),a1
 	move.b	$3(a1),d0
 	ext.w	d0
@@ -169,7 +169,7 @@ loc_1FA2CC:
 	move.w	#$1A1,$6(a0)
 	bra.w	loc_1FA43A
 loc_1FA356:
-	lea.l	-$1FDA(a5),a0
+	lea.l	g_SpriteTable(a5),a0
 	movea.l	-$1FE6(a5),a1
 	move.b	$3(a1),d0
 	ext.w	d0
@@ -194,13 +194,13 @@ loc_1FA39A:
 	tst.b	d0
 	bne.s	loc_1FA3B0
 loc_1FA3A8:
-	tst.b	-$3A1A(a5)
+	tst.b	g_DemoActive(a5)
 	beq.w	loc_1FA43A
 loc_1FA3B0:
 	moveq	#$10,d0
 	and.l	g_FrameCounter(a5),d0
 	beq.w	loc_1FA43A
-	lea.l	-$1FDA(a5),a0
+	lea.l	g_SpriteTable(a5),a0
 	movea.l	-$1FE6(a5),a1
 	move.b	$3(a1),d0
 	ext.w	d0
@@ -217,7 +217,7 @@ loc_1FA3B0:
 	move.w	#$A7D0,$4(a0)
 	movea.l	-$1FE6(a5),a0
 	move.w	#$16D,$6(a0)
-	lea.l	-$1FDA(a5),a0
+	lea.l	g_SpriteTable(a5),a0
 	movea.l	-$1FE6(a5),a1
 	move.b	$3(a1),d0
 	ext.w	d0
@@ -238,7 +238,7 @@ loc_1FA43A:
 	moveq	#$51,d0
 	cmp.w	-$1FE2(a5),d0
 	bne.s	loc_1FA4BC
-	lea.l	-$1FDA(a5),a0
+	lea.l	g_SpriteTable(a5),a0
 	movea.l	-$1FE6(a5),a1
 	move.b	$3(a1),d0
 	ext.w	d0
@@ -257,7 +257,7 @@ loc_1FA43A:
 	move.w	#$1C,$6(a0)
 	bra.s	loc_1FA4BC
 loc_1FA480:
-	lea.l	-$1FDA(a5),a0
+	lea.l	g_SpriteTable(a5),a0
 	movea.l	-$1FE6(a5),a1
 	move.b	$3(a1),d0
 	ext.w	d0
@@ -280,7 +280,7 @@ loc_1FA4BC:
 	move.w	-$3A24(a5),d0
 	addq.w	#$1,-$3A24(a5)
 	clr.b	-$3A08(a5)
-	tst.b	-$3A1A(a5)
+	tst.b	g_DemoActive(a5)
 	beq.s	loc_1FA4D8
 	jsr	sub_1F9DE8(pc)
 loc_1FA4D8:
@@ -424,7 +424,7 @@ loc_1FA61A:
 	jsr	(a1)
 	addq.w	#$4,a7
 loc_1FA638:
-	tst.b	-$3A1A(a5)
+	tst.b	g_DemoActive(a5)
 	bne.s	loc_1FA644
 	tst.b	-$38B6(a5)
 	beq.s	loc_1FA660
@@ -435,7 +435,7 @@ loc_1FA644:
 	moveq	#$1,d0
 	move.l	d0,-(a7)
 	jsr	$4F8A(a5)	; -> sub_1F944E
-	clr.b	-$3A1A(a5)
+	clr.b	g_DemoActive(a5)
 	move.b	#$1,-$38C6(a5)
 	addq.w	#$4,a7
 loc_1FA660:
@@ -449,15 +449,15 @@ loc_1FA672:
 	movea.l	-$38F4(a5),a0
 	jsr	(a0)
 	jsr	$5052(a5)	; -> sub_1FA9D2
-	move.b	#$1,-$1D4A(a5)
+	move.b	#$1,g_DmaFlushReq(a5)
 	move.w	#$80,d0
-	and.w	-$3A26(a5),d0
+	and.w	g_Pad1Pressed(a5),d0
 	bne.s	loc_1FA696
 	move.w	#$80,d0
-	and.w	-$3A28(a5),d0
+	and.w	g_Pad2Pressed(a5),d0
 	beq.s	loc_1FA6AE
 loc_1FA696:
-	tst.b	-$3A02(a5)
+	tst.b	g_PalFadeActive(a5)
 	bne.s	loc_1FA6AE
 	tst.w	-$359A(a5)
 	bne.s	loc_1FA6AE

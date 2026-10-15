@@ -22,14 +22,14 @@ loc_1A7166:
 	bne.s	loc_1A719E
 	move.w	-$3BA6(a5),d0
 	not.w	d0
-	and.w	-$3A2E(a5),d0
-	move.w	d0,-$3A2E(a5)
+	and.w	g_Pad1Latch(a5),d0
+	move.w	d0,g_Pad1Latch(a5)
 	bra.s	loc_1A71AC
 loc_1A719E:
 	move.w	-$3BA6(a5),d0
 	not.w	d0
-	and.w	-$3A30(a5),d0
-	move.w	d0,-$3A30(a5)
+	and.w	g_Pad2Latch(a5),d0
+	move.w	d0,g_Pad2Latch(a5)
 loc_1A71AC:
 	moveq	#$0,d0
 	move.l	d0,$44(a4)

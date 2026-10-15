@@ -42,7 +42,7 @@ sub_0FC8A4:
 	move.w	#$EEE,-$392C(a5)
 	move.w	#$CCC,-$392A(a5)
 	move.w	#$868,-$3928(a5)
-	move.b	#$1,-$3A06(a5)
+	move.b	#$1,g_PalBaseDirty(a5)
 	movem.l	-$8(a6),d7/a4
 	unlk	a6
 	rts

@@ -4,14 +4,14 @@
 sub_15CA6C:
 	link.w	a6,#$0
 	move.w	#$FF0F,d0
-	and.w	-$3A2E(a5),d0
-	move.w	d0,-$3A2E(a5)
+	and.w	g_Pad1Latch(a5),d0
+	move.w	d0,g_Pad1Latch(a5)
 	move.w	#$FF0F,d0
-	and.w	-$3A30(a5),d0
-	move.w	d0,-$3A30(a5)
+	and.w	g_Pad2Latch(a5),d0
+	move.w	d0,g_Pad2Latch(a5)
 loc_15CA88:
 	clr.b	-$3A08(a5)
-	move.b	#$1,-$1D4A(a5)
+	move.b	#$1,g_DmaFlushReq(a5)
 	jsr	sub_15C42A(pc)
 	jsr	$5112(a5)	; -> VDP_WaitVBlank
 	tst.b	-$1662(a5)

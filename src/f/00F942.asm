@@ -4,10 +4,10 @@
 sub_00F942:
 	link.w	a6,#$0
 	movem.l	d6-d7/a4,-(a7)
-	clr.w	-$3A26(a5)
-	clr.w	-$3A28(a5)
-	clr.w	-$3A2E(a5)
-	clr.w	-$3A30(a5)
+	clr.w	g_Pad1Pressed(a5)
+	clr.w	g_Pad2Pressed(a5)
+	clr.w	g_Pad1Latch(a5)
+	clr.w	g_Pad2Latch(a5)
 	moveq	#$6,d0
 	cmp.w	-$3B32(a5),d0
 	bgt.s	loc_00F9AC

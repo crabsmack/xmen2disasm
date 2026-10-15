@@ -14,14 +14,14 @@ loc_1835E4:
 	bne.s	loc_1835FA
 	move.w	-$3BA8(a5),d0
 	not.w	d0
-	and.w	-$3A2E(a5),d0
-	move.w	d0,-$3A2E(a5)
+	and.w	g_Pad1Latch(a5),d0
+	move.w	d0,g_Pad1Latch(a5)
 	bra.s	loc_183608
 loc_1835FA:
 	move.w	-$3BA8(a5),d0
 	not.w	d0
-	and.w	-$3A30(a5),d0
-	move.w	d0,-$3A30(a5)
+	and.w	g_Pad2Latch(a5),d0
+	move.w	d0,g_Pad2Latch(a5)
 loc_183608:
 	lea.l	$428A(a5),a0
 	move.l	$2(a0),-(a7)

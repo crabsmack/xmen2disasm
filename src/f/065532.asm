@@ -7,7 +7,7 @@ sub_065532:
 	clr.b	-$38C6(a5)
 	move.w	#$2,-$3B02(a5)
 	jsr	$504A(a5)	; -> sub_1FA99C
-	lea.l	-$1FDA(a5),a0
+	lea.l	g_SpriteTable(a5),a0
 	movea.l	-$1FE6(a5),a1
 	move.b	$3(a1),d0
 	ext.w	d0
@@ -25,7 +25,7 @@ sub_065532:
 	movea.l	-$1FE6(a5),a0
 	move.w	#$1C,$6(a0)
 	jsr	$5052(a5)	; -> sub_1FA9D2
-	move.b	#$1,-$1D4A(a5)
+	move.b	#$1,g_DmaFlushReq(a5)
 	movea.l	-$3B14(a5),a4
 	bra.w	loc_06569A
 loc_065596:

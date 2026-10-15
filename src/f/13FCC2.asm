@@ -58,7 +58,7 @@ loc_13FD4A:
 	beq.s	loc_13FD50
 	ori.w	#$8000,d5
 loc_13FD50:
-	lea.l	-$1FDA(a5),a0
+	lea.l	g_SpriteTable(a5),a0
 	movea.l	-$1FE6(a5),a1
 	move.b	$3(a1),d0
 	ext.w	d0

@@ -22,7 +22,7 @@ loc_08850A:
 	movea.l	-$3B18(a5),a0
 	move.b	-$3C4A(a5),$4(a0)
 loc_088526:
-	tst.b	-$3A02(a5)
+	tst.b	g_PalFadeActive(a5)
 	bne.s	loc_08854E
 	tst.b	-$3C4A(a5)
 	beq.s	loc_08854E
@@ -40,7 +40,7 @@ loc_08854E:
 	move.l	g_FrameCounter(a5),d0
 	addq.l	#$1,g_FrameCounter(a5)
 	jsr	sub_088422(pc)
-	tst.b	-$3A02(a5)
+	tst.b	g_PalFadeActive(a5)
 	bne.s	loc_088584
 	tst.b	-$3C4A(a5)
 	beq.s	loc_088584

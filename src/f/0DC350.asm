@@ -7,7 +7,7 @@ sub_0DC350:
 	move.w	#$C8,$42(a0)
 	move.l	g_FrameCounter(a5),d0
 	addq.l	#$1,g_FrameCounter(a5)
-	tst.b	-$3A02(a5)
+	tst.b	g_PalFadeActive(a5)
 	bne.s	loc_0DC370
 	jsr	sub_0DC2CE(pc)
 loc_0DC370:
@@ -15,7 +15,7 @@ loc_0DC370:
 	beq.s	loc_0DC388
 	move.l	g_FrameCounter(a5),d0
 	addq.l	#$1,g_FrameCounter(a5)
-	tst.b	-$3A02(a5)
+	tst.b	g_PalFadeActive(a5)
 	bne.s	loc_0DC388
 	jsr	sub_0DC2CE(pc)
 loc_0DC388:

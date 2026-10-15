@@ -29,7 +29,7 @@ loc_0649CE:
 loc_0649D0:
 	or.l	d2,d0
 	move.w	d0,d7
-	lea.l	-$1FDA(a5),a0
+	lea.l	g_SpriteTable(a5),a0
 	movea.l	-$1FE6(a5),a1
 	move.b	$3(a1),d0
 	ext.w	d0
@@ -74,7 +74,7 @@ loc_064A4A:
 loc_064A4C:
 	or.l	d2,d0
 	move.w	d0,d7
-	lea.l	-$1FDA(a5),a0
+	lea.l	g_SpriteTable(a5),a0
 	movea.l	-$1FE6(a5),a1
 	move.b	$3(a1),d0
 	ext.w	d0

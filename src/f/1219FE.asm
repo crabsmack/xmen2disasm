@@ -27,7 +27,7 @@ loc_121A38:
 	addq.l	#$1,d6
 	cmp.l	d6,d3
 	bgt.s	loc_121A38
-	move.b	#$1,-$3A06(a5)
+	move.b	#$1,g_PalBaseDirty(a5)
 	bra.s	loc_121A7E
 loc_121A52:
 	movea.l	-$4(a6),a0
@@ -44,7 +44,7 @@ loc_121A66:
 	addq.l	#$1,d6
 	cmp.l	d6,d3
 	bgt.s	loc_121A66
-	move.b	#$1,-$3A06(a5)
+	move.b	#$1,g_PalBaseDirty(a5)
 loc_121A7E:
 	move.w	-$1754(a5),d0
 	ext.l	d0
@@ -100,7 +100,7 @@ loc_121AF4:
 	move.l	#$6000,d1
 	or.l	d0,d1
 	move.w	d1,d6
-	lea.l	-$1FDA(a5),a0
+	lea.l	g_SpriteTable(a5),a0
 	movea.l	-$1FE6(a5),a1
 	move.b	$3(a1),d0
 	ext.w	d0
@@ -214,7 +214,7 @@ loc_121BF6:
 	sub.l	d1,d0
 	cmpi.l	#$E0,d0
 	bge.s	loc_121CA8
-	lea.l	-$1FDA(a5),a0
+	lea.l	g_SpriteTable(a5),a0
 	movea.l	-$1FE6(a5),a1
 	move.b	$3(a1),d0
 	ext.w	d0

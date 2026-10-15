@@ -5,7 +5,7 @@ sub_0858F6:
 	link.w	a6,#$0
 	move.l	a4,-(a7)
 	movea.l	$8(a6),a4
-	tst.b	-$3A02(a5)
+	tst.b	g_PalFadeActive(a5)
 	bne.s	loc_08592A
 	clr.w	-$3B04(a5)
 	lea.l	$3FB2(a5),a0

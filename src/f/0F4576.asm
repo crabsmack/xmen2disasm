@@ -7,7 +7,7 @@ sub_0F4576:
 	move.w	-$3B38(a5),d0
 	ext.l	d0
 	move.l	d0,d7
-	tst.b	-$3A02(a5)
+	tst.b	g_PalFadeActive(a5)
 	bne.w	loc_0F47A6
 	tst.w	-$3B02(a5)
 	beq.w	loc_0F47A6
@@ -48,7 +48,7 @@ loc_0F45A4:
 	move.w	#$C,-$3926(a5)
 	move.w	#$4,-$3924(a5)
 	move.w	#$E,-$3922(a5)
-	move.b	#$1,-$3A06(a5)
+	move.b	#$1,g_PalBaseDirty(a5)
 	bra.w	loc_0F47A6
 loc_0F465C:
 	moveq	#$6,d0
@@ -84,7 +84,7 @@ loc_0F466A:
 	move.w	#$A,-$3926(a5)
 	move.w	#$2,-$3924(a5)
 	move.w	#$E,-$3922(a5)
-	move.b	#$1,-$3A06(a5)
+	move.b	#$1,g_PalBaseDirty(a5)
 	bra.w	loc_0F47A6
 loc_0F470A:
 	moveq	#$C,d0
@@ -116,7 +116,7 @@ loc_0F470A:
 	move.w	#$8,-$3926(a5)
 	clr.w	-$3924(a5)
 	move.w	#$C,-$3922(a5)
-	move.b	#$1,-$3A06(a5)
+	move.b	#$1,g_PalBaseDirty(a5)
 loc_0F47A6:
 	move.l	-$4(a6),d7
 	unlk	a6

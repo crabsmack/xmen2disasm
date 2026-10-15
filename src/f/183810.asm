@@ -17,14 +17,14 @@ sub_183810:
 	bne.s	loc_183848
 	move.w	-$3BA4(a5),d0
 	not.w	d0
-	and.w	-$3A2E(a5),d0
-	move.w	d0,-$3A2E(a5)
+	and.w	g_Pad1Latch(a5),d0
+	move.w	d0,g_Pad1Latch(a5)
 	bra.s	loc_183856
 loc_183848:
 	move.w	-$3BA4(a5),d0
 	not.w	d0
-	and.w	-$3A30(a5),d0
-	move.w	d0,-$3A30(a5)
+	and.w	g_Pad2Latch(a5),d0
+	move.w	d0,g_Pad2Latch(a5)
 loc_183856:
 	movea.l	(a4),a0
 	move.l	$A6(a0),$5C(a4)

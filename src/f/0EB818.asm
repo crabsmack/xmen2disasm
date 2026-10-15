@@ -63,7 +63,7 @@ loc_0EB8C2:
 	lea.l	$92(a3),a0
 	tst.b	(a0,d5.w)
 	bne.s	loc_0EB944
-	lea.l	-$1FDA(a5),a0
+	lea.l	g_SpriteTable(a5),a0
 	movea.l	-$1FE6(a5),a1
 	move.b	$3(a1),d0
 	ext.w	d0
@@ -152,7 +152,7 @@ loc_0EB9B4:
 	tst.b	(a0,d5.w)
 	beq.s	loc_0EBA36
 loc_0EB9C0:
-	lea.l	-$1FDA(a5),a0
+	lea.l	g_SpriteTable(a5),a0
 	movea.l	-$1FE6(a5),a1
 	move.b	$3(a1),d0
 	ext.w	d0

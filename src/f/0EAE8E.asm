@@ -9,7 +9,7 @@ sub_0EAE8E:
 	move.w	-$3BDE(a5),-$3BDC(a5)
 	move.b	-$3BDD(a5),-$3BDF(a5)
 	beq.s	loc_0EAEFA
-	lea.l	-$1FDA(a5),a0
+	lea.l	g_SpriteTable(a5),a0
 	moveq	#$0,d0
 	move.b	-$3BDC(a5),d0
 	lsl.w	#$3,d0
@@ -20,7 +20,7 @@ loc_0EAEBE:
 	beq.s	loc_0EAEFA
 	move.b	-$3BDB(a5),d1
 	moveq	#$1,d0
-	and.l	-$3A10(a5),d0
+	and.l	g_VBlankCount(a5),d0
 	beq.s	loc_0EAED6
 	move.b	-$3BDC(a5),d1
 	addq.w	#$1,d1

@@ -167,7 +167,7 @@ loc_13F884:
 	moveq	#$A,d0
 	lsl.l	d0,d1
 	or.w	d1,-$A(a6)
-	lea.l	-$1FDA(a5),a0
+	lea.l	g_SpriteTable(a5),a0
 	movea.l	-$1FE6(a5),a1
 	move.b	$3(a1),d0
 	ext.w	d0

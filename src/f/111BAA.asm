@@ -131,7 +131,7 @@ loc_111CB4:
 	bge.s	loc_111D48
 	cmpi.w	#$E0,-$10(a6)
 	bge.s	loc_111D48
-	lea.l	-$1FDA(a5),a0
+	lea.l	g_SpriteTable(a5),a0
 	movea.l	-$1FE6(a5),a1
 	move.b	$3(a1),d0
 	ext.w	d0

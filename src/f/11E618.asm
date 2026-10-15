@@ -53,7 +53,7 @@ loc_11E67C:
 	ext.l	d5
 	move.l	d5,d4
 	or.l	d2,d4
-	lea.l	-$1FDA(a5),a0
+	lea.l	g_SpriteTable(a5),a0
 	movea.l	-$1FE6(a5),a1
 	move.b	$3(a1),d0
 	ext.w	d0

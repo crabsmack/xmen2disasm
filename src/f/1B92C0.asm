@@ -12,14 +12,14 @@ sub_1B92C0:
 	bne.s	loc_1B92EC
 	move.w	-$3BA4(a5),d0
 	not.w	d0
-	and.w	-$3A2E(a5),d0
-	move.w	d0,-$3A2E(a5)
+	and.w	g_Pad1Latch(a5),d0
+	move.w	d0,g_Pad1Latch(a5)
 	bra.s	loc_1B92FA
 loc_1B92EC:
 	move.w	-$3BA4(a5),d0
 	not.w	d0
-	and.w	-$3A30(a5),d0
-	move.w	d0,-$3A30(a5)
+	and.w	g_Pad2Latch(a5),d0
+	move.w	d0,g_Pad2Latch(a5)
 loc_1B92FA:
 	lea.l	sub_1B947C(pc),a0
 	move.l	a0,$5C(a4)
@@ -36,14 +36,14 @@ loc_1B930E:
 	bne.s	loc_1B9332
 	move.w	-$3BA4(a5),d0
 	not.w	d0
-	and.w	-$3A2E(a5),d0
-	move.w	d0,-$3A2E(a5)
+	and.w	g_Pad1Latch(a5),d0
+	move.w	d0,g_Pad1Latch(a5)
 	bra.s	loc_1B9340
 loc_1B9332:
 	move.w	-$3BA4(a5),d0
 	not.w	d0
-	and.w	-$3A30(a5),d0
-	move.w	d0,-$3A30(a5)
+	and.w	g_Pad2Latch(a5),d0
+	move.w	d0,g_Pad2Latch(a5)
 loc_1B9340:
 	lea.l	sub_1B947C(pc),a0
 	move.l	a0,$5C(a4)
@@ -82,14 +82,14 @@ loc_1B937C:
 	bne.s	loc_1B93BC
 	move.w	-$3BA6(a5),d0
 	not.w	d0
-	and.w	-$3A2E(a5),d0
-	move.w	d0,-$3A2E(a5)
+	and.w	g_Pad1Latch(a5),d0
+	move.w	d0,g_Pad1Latch(a5)
 	bra.s	loc_1B93CA
 loc_1B93BC:
 	move.w	-$3BA6(a5),d0
 	not.w	d0
-	and.w	-$3A30(a5),d0
-	move.w	d0,-$3A30(a5)
+	and.w	g_Pad2Latch(a5),d0
+	move.w	d0,g_Pad2Latch(a5)
 loc_1B93CA:
 	move.w	#$2710,$6E(a4)
 	clr.w	$6C(a4)
@@ -121,11 +121,11 @@ loc_1B940E:
 	neg.b	d3
 	beq.s	loc_1B9422
 	move.w	-$3BA4(a5),d0
-	and.w	-$3A2A(a5),d0
+	and.w	g_Pad1Released(a5),d0
 	bra.s	loc_1B942A
 loc_1B9422:
 	move.w	-$3BA4(a5),d0
-	and.w	-$3A2C(a5),d0
+	and.w	g_Pad2Released(a5),d0
 loc_1B942A:
 	beq.s	loc_1B943A
 	move.w	$16(a4),d0
@@ -139,11 +139,11 @@ loc_1B943A:
 	neg.b	d3
 	beq.s	loc_1B944E
 	move.w	-$3BA6(a5),d0
-	and.w	-$3A2E(a5),d0
+	and.w	g_Pad1Latch(a5),d0
 	bra.s	loc_1B9456
 loc_1B944E:
 	move.w	-$3BA6(a5),d0
-	and.w	-$3A30(a5),d0
+	and.w	g_Pad2Latch(a5),d0
 loc_1B9456:
 	beq.s	loc_1B9460
 	ori.l	#$2,$90(a4)

@@ -6,7 +6,7 @@
 ; ---------------------------------------------------------------------------
 Snd_SetParam:
 	jsr	Z80_BusAcquire(pc)
-	tst.b	-$18AC(a5)
+	tst.b	g_SndMute(a5)
 	bne.w	Z80_BusRelease
 	moveq	#$1B,d0
 	bra.w	Snd_SendCmd2

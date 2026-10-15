@@ -4,12 +4,12 @@
 sub_00F648:
 	link.w	a6,#$0
 	movem.l	d3-d7/a3-a4,-(a7)
-	move.b	#$1,-$3A06(a5)
+	move.b	#$1,g_PalBaseDirty(a5)
 	move.w	$A(a6),d0
 	lsl.w	#$3,d0
 	move.w	d0,$A(a6)
 	movea.l	-$3B14(a5),a3
-	lea.l	-$3980(a5),a4
+	lea.l	g_PalBase(a5),a4
 	clr.w	d7
 	moveq	#$10,d3
 loc_00F66C:
@@ -127,7 +127,7 @@ loc_00F736:
 	add.w	d1,d2
 	move.l	d7,d0
 	add.w	d0,d0
-	lea.l	-$3980(a5),a0
+	lea.l	g_PalBase(a5),a0
 	move.w	d2,(a0,d0.w)
 loc_00F760:
 	move.w	d7,d0

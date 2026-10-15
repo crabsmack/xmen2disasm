@@ -2,7 +2,7 @@
 ; Pal_ApplyFade - build the working palette from the base palette, mapping each colour component through fade table level N
 ; In:  8(a6) = long: fade level (0-7)   $C(a6) = pointer: fade table (8 bytes per level, indexed by 3-bit component)
 ; Out: none
-; Evidence: for each word of -$3980(a5): components at bits 9/5/1 replaced by table[level*8 + c]; writes -$3A00(a5); all 64 colours when word -$7BE(a5) = -1, else only the 16 of palette line -$7BE
+; Evidence: for each word of g_PalBase(a5): components at bits 9/5/1 replaced by table[level*8 + c]; writes g_PalWork(a5); all 64 colours when word g_PalFadeLine(a5) = -1, else only the 16 of palette line -$7BE
 ; ---------------------------------------------------------------------------
 Pal_ApplyFade:
 	link.w	a6,#$0
@@ -10,14 +10,14 @@ Pal_ApplyFade:
 	movea.l	$C(a6),a4
 	adda.l	$8(a6),a4
 	moveq	#-$1,d0
-	cmp.w	-$7BE(a5),d0
+	cmp.w	g_PalFadeLine(a5),d0
 	bne.s	loc_1FD814
 	clr.w	d7
 	moveq	#$40,d3
 loc_1FD79A:
 	move.l	d7,d0
 	add.w	d0,d0
-	lea.l	-$3980(a5),a0
+	lea.l	g_PalBase(a5),a0
 	move.w	(a0,d0.w),d6
 	moveq	#$9,d0
 	move.w	d6,d1
@@ -64,7 +64,7 @@ loc_1FD79A:
 	add.w	d1,d0
 	move.l	d7,d1
 	add.w	d1,d1
-	lea.l	-$3A00(a5),a0
+	lea.l	g_PalWork(a5),a0
 	move.w	d0,(a0,d1.w)
 	move.w	d7,d0
 	addq.w	#$1,d7
@@ -77,16 +77,16 @@ loc_1FD814:
 loc_1FD818:
 	move.l	d7,d0
 	add.w	d0,d0
-	lea.l	-$3980(a5),a0
+	lea.l	g_PalBase(a5),a0
 	move.l	d7,d1
 	add.w	d1,d1
-	lea.l	-$3A00(a5),a1
+	lea.l	g_PalWork(a5),a1
 	move.w	(a0,d0.w),(a1,d1.w)
 	move.w	d7,d0
 	addq.w	#$1,d7
 	cmp.w	d7,d3
 	bgt.s	loc_1FD818
-	move.w	-$7BE(a5),d0
+	move.w	g_PalFadeLine(a5),d0
 	ext.l	d0
 	move.l	d0,d7
 	lsl.l	#$4,d7
@@ -94,7 +94,7 @@ loc_1FD818:
 loc_1FD842:
 	move.l	d7,d0
 	add.w	d0,d0
-	lea.l	-$3980(a5),a0
+	lea.l	g_PalBase(a5),a0
 	move.w	(a0,d0.w),d6
 	moveq	#$9,d0
 	move.w	d6,d1
@@ -141,13 +141,13 @@ loc_1FD842:
 	add.w	d1,d0
 	move.l	d7,d1
 	add.w	d1,d1
-	lea.l	-$3A00(a5),a0
+	lea.l	g_PalWork(a5),a0
 	move.w	d0,(a0,d1.w)
 	move.w	d7,d0
 	addq.w	#$1,d7
 loc_1FD8B4:
 	ext.l	d7
-	move.w	-$7BE(a5),d0
+	move.w	g_PalFadeLine(a5),d0
 	ext.l	d0
 	lsl.l	#$4,d0
 	moveq	#$10,d1

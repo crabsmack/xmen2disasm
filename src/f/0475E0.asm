@@ -6,7 +6,7 @@ sub_0475E0:
 	tst.w	-$3B0E(a5)
 	bne.s	loc_047606
 	moveq	#$1,d0
-	and.l	-$3A10(a5),d0
+	and.l	g_VBlankCount(a5),d0
 	move.l	d0,-(a7)
 	pea.l	-$3596(a5)
 	jsr	$507A(a5)	; -> sub_1FB142

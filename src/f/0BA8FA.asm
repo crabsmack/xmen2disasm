@@ -150,7 +150,7 @@ loc_0BA9FC:
 	ble.s	loc_0BAADE
 	cmpi.w	#$E0,d6
 	bge.s	loc_0BAADE
-	lea.l	-$1FDA(a5),a0
+	lea.l	g_SpriteTable(a5),a0
 	movea.l	-$1FE6(a5),a1
 	move.b	$3(a1),d0
 	ext.w	d0
@@ -223,7 +223,7 @@ loc_0BAB1E:
 	ble.s	loc_0BABBA
 	cmpi.w	#$E0,d6
 	bge.s	loc_0BABBA
-	lea.l	-$1FDA(a5),a0
+	lea.l	g_SpriteTable(a5),a0
 	movea.l	-$1FE6(a5),a1
 	move.b	$3(a1),d0
 	ext.w	d0
@@ -325,7 +325,7 @@ loc_0BAC52:
 	ble.s	loc_0BACEE
 	cmpi.w	#$E0,d6
 	bge.s	loc_0BACEE
-	lea.l	-$1FDA(a5),a0
+	lea.l	g_SpriteTable(a5),a0
 	movea.l	-$1FE6(a5),a1
 	move.b	$3(a1),d0
 	ext.w	d0
@@ -431,7 +431,7 @@ loc_0BAD56:
 	ble.w	loc_0BAE36
 	cmpi.w	#$E0,d6
 	bge.s	loc_0BAE36
-	lea.l	-$1FDA(a5),a0
+	lea.l	g_SpriteTable(a5),a0
 	movea.l	-$1FE6(a5),a1
 	move.b	$3(a1),d0
 	ext.w	d0

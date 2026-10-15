@@ -10,25 +10,25 @@ sub_1CDB32:
 	neg.b	d3
 	beq.s	loc_1CDB52
 	move.w	-$3BA8(a5),d0
-	and.w	-$3A2E(a5),d0
+	and.w	g_Pad1Latch(a5),d0
 	bra.s	loc_1CDB5A
 loc_1CDB52:
 	move.w	-$3BA8(a5),d0
-	and.w	-$3A30(a5),d0
+	and.w	g_Pad2Latch(a5),d0
 loc_1CDB5A:
 	beq.s	loc_1CDB9E
 	tst.b	$9D(a4)
 	bne.s	loc_1CDB72
 	move.w	-$3BA8(a5),d0
 	not.w	d0
-	and.w	-$3A2E(a5),d0
-	move.w	d0,-$3A2E(a5)
+	and.w	g_Pad1Latch(a5),d0
+	move.w	d0,g_Pad1Latch(a5)
 	bra.s	loc_1CDB80
 loc_1CDB72:
 	move.w	-$3BA8(a5),d0
 	not.w	d0
-	and.w	-$3A30(a5),d0
-	move.w	d0,-$3A30(a5)
+	and.w	g_Pad2Latch(a5),d0
+	move.w	d0,g_Pad2Latch(a5)
 loc_1CDB80:
 	lea.l	$467A(a5),a0
 	move.l	$44(a4),d0
@@ -59,11 +59,11 @@ loc_1CDBC0:
 	neg.b	d3
 	beq.s	loc_1CDBDA
 	move.w	-$3BA0(a5),d1
-	and.w	-$3A36(a5),d1
+	and.w	g_Pad1Held(a5),d1
 	bra.s	loc_1CDBE4
 loc_1CDBDA:
 	move.w	-$3BA0(a5),d0
-	and.w	-$3A38(a5),d0
+	and.w	g_Pad2Held(a5),d0
 	move.w	d0,d1
 loc_1CDBE4:
 	beq.s	loc_1CDBEE
@@ -75,11 +75,11 @@ loc_1CDBEE:
 	neg.b	d3
 	beq.s	loc_1CDC02
 	move.w	-$3BA4(a5),d0
-	and.w	-$3A36(a5),d0
+	and.w	g_Pad1Held(a5),d0
 	bra.s	loc_1CDC0A
 loc_1CDC02:
 	move.w	-$3BA4(a5),d0
-	and.w	-$3A38(a5),d0
+	and.w	g_Pad2Held(a5),d0
 loc_1CDC0A:
 	bne.s	loc_1CDC12
 	tst.w	$18(a4)
@@ -97,11 +97,11 @@ loc_1CDC28:
 	neg.b	d3
 	beq.s	loc_1CDC3C
 	move.w	-$3B9C(a5),d0
-	and.w	-$3A2A(a5),d0
+	and.w	g_Pad1Released(a5),d0
 	bra.s	loc_1CDC44
 loc_1CDC3C:
 	move.w	-$3B9C(a5),d0
-	and.w	-$3A2C(a5),d0
+	and.w	g_Pad2Released(a5),d0
 loc_1CDC44:
 	beq.s	loc_1CDC70
 	clr.w	$1E(a4)
@@ -128,11 +128,11 @@ loc_1CDC70:
 	neg.b	d3
 	beq.s	loc_1CDC8A
 	move.w	-$3B9C(a5),d0
-	and.w	-$3A36(a5),d0
+	and.w	g_Pad1Held(a5),d0
 	bra.s	loc_1CDC92
 loc_1CDC8A:
 	move.w	-$3B9C(a5),d0
-	and.w	-$3A38(a5),d0
+	and.w	g_Pad2Held(a5),d0
 loc_1CDC92:
 	beq.s	loc_1CDCD2
 	tst.b	$9D(a4)
@@ -140,11 +140,11 @@ loc_1CDC92:
 	neg.b	d3
 	beq.s	loc_1CDCA8
 	move.w	-$3B9A(a5),d0
-	and.w	-$3A36(a5),d0
+	and.w	g_Pad1Held(a5),d0
 	bra.s	loc_1CDCB0
 loc_1CDCA8:
 	move.w	-$3B9A(a5),d0
-	and.w	-$3A38(a5),d0
+	and.w	g_Pad2Held(a5),d0
 loc_1CDCB0:
 	ext.l	d0
 	move.l	d0,-(a7)

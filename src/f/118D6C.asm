@@ -268,7 +268,7 @@ loc_118FE2:
 	moveq	#$0,d0
 	move.b	$2(a4),d0
 	sub.w	d0,d6
-	lea.l	-$1FDA(a5),a0
+	lea.l	g_SpriteTable(a5),a0
 	movea.l	-$1FE6(a5),a1
 	move.b	$3(a1),d0
 	ext.w	d0

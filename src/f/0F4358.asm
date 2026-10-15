@@ -33,7 +33,7 @@ sub_0F4358:
 	lea.l	$2922(a5),a0
 	move.l	$2(a0),-(a7)
 	jsr	$4FCA(a5)	; -> sub_1F98A8
-	clr.w	-$3980(a5)
+	clr.w	g_PalBase(a5)
 	lea.l	$241A(a5),a0
 	movea.l	$2(a0),a3
 	lea.l	-$3940(a5),a4

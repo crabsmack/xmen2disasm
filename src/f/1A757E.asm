@@ -18,11 +18,11 @@ sub_1A757E:
 	tst.b	d0
 	beq.s	loc_1A75B6
 	move.w	-$3BA0(a5),d0
-	and.w	-$3A36(a5),d0
+	and.w	g_Pad1Held(a5),d0
 	bra.s	loc_1A75BE
 loc_1A75B6:
 	move.w	-$3BA0(a5),d0
-	and.w	-$3A38(a5),d0
+	and.w	g_Pad2Held(a5),d0
 loc_1A75BE:
 	beq.s	loc_1A75CC
 	movea.l	$76(a4),a0
@@ -82,11 +82,11 @@ loc_1A766E:
 	neg.b	d3
 	beq.s	loc_1A7684
 	moveq	#$F,d0
-	and.w	-$3A36(a5),d0
+	and.w	g_Pad1Held(a5),d0
 	bra.s	loc_1A768A
 loc_1A7684:
 	moveq	#$F,d0
-	and.w	-$3A38(a5),d0
+	and.w	g_Pad2Held(a5),d0
 loc_1A768A:
 	move.w	d0,$C2(a4)
 	beq.s	loc_1A76C8

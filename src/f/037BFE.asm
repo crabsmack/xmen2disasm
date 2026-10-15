@@ -119,7 +119,7 @@ loc_037D10:
 	bge.s	loc_037DCC
 	cmpi.l	#$140,d4
 	bge.s	loc_037DCC
-	lea.l	-$1FDA(a5),a0
+	lea.l	g_SpriteTable(a5),a0
 	movea.l	-$1FE6(a5),a1
 	move.b	$3(a1),d0
 	ext.w	d0
@@ -146,7 +146,7 @@ loc_037DCC:
 	bge.s	loc_037E22
 	cmpi.l	#$140,d5
 	bge.s	loc_037E22
-	lea.l	-$1FDA(a5),a0
+	lea.l	g_SpriteTable(a5),a0
 	movea.l	-$1FE6(a5),a1
 	move.b	$3(a1),d0
 	ext.w	d0

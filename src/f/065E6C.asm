@@ -9,7 +9,7 @@ sub_065E6C:
 	move.w	#$1,-$3B02(a5)
 	move.w	#$2710,-$3B0C(a5)
 	lea.l	$65DB6(pc),a0
-	move.l	a0,-$3A18(a5)
+	move.l	a0,g_VBlankGameHook(a5)
 	jsr	$50A2(a5)	; -> sub_1FC2E8
 	pea.l	$66B24(pc)
 	pea.l	($2A56).w
@@ -89,7 +89,7 @@ loc_065F54:
 loc_065F5C:
 	cmpi.w	#$30,d7
 	blt.s	loc_065F54
-	move.b	#$1,-$3A06(a5)
+	move.b	#$1,g_PalBaseDirty(a5)
 	jsr	$5112(a5)	; -> VDP_WaitVBlank
 	move.w	-$3598(a5),d0
 	ext.l	d0
@@ -166,7 +166,7 @@ loc_06600E:
 	addq.l	#$8,d0
 	add.l	d0,d0
 	move.w	(a4,d0.l),-$3926(a5)
-	move.b	#$1,-$3A06(a5)
+	move.b	#$1,g_PalBaseDirty(a5)
 	subq.w	#$1,d6
 	jsr	$5112(a5)	; -> VDP_WaitVBlank
 loc_066034:
@@ -178,7 +178,7 @@ loc_066034:
 	jsr	sub_065400(pc)
 	move.w	#$CC,-$3902(a5)
 	move.w	#$AA,-$3904(a5)
-	move.b	#$1,-$3A06(a5)
+	move.b	#$1,g_PalBaseDirty(a5)
 	move.w	-$3C56(a5),-$3B04(a5)
 	move.w	-$3C58(a5),d0
 	addq.w	#$4,d0
@@ -232,8 +232,8 @@ loc_06610A:
 	clr.b	-$3A08(a5)
 	subq.w	#$1,d6
 	jsr	$5112(a5)	; -> VDP_WaitVBlank
-	move.w	-$7A6(a5),d0
-	or.w	-$7A8(a5),d0
+	move.w	g_Pad2Raw(a5),d0
+	or.w	g_Pad1Raw(a5),d0
 	move.w	#$F0,d1
 	and.w	d0,d1
 	beq.s	loc_066126
@@ -262,7 +262,7 @@ loc_06614C:
 loc_066154:
 	cmpi.w	#$30,d7
 	blt.s	loc_06614C
-	move.b	#$1,-$3A06(a5)
+	move.b	#$1,g_PalBaseDirty(a5)
 	jsr	$5112(a5)	; -> VDP_WaitVBlank
 	move.w	-$3598(a5),d0
 	ext.l	d0
@@ -329,7 +329,7 @@ loc_0661FC:
 	move.w	#$A,-$390E(a5)
 	move.w	#$8,-$3910(a5)
 	clr.w	-$391E(a5)
-	move.b	#$1,-$3A06(a5)
+	move.b	#$1,g_PalBaseDirty(a5)
 	move.l	-$C9A(a5),-(a7)
 	moveq	#$0,d0
 	move.l	d0,-(a7)
@@ -417,9 +417,9 @@ loc_0661FC:
 	bra.w	loc_06644C
 loc_066348:
 	moveq	#$0,d0
-	move.l	d0,-$3A10(a5)
+	move.l	d0,g_VBlankCount(a5)
 	jsr	$504A(a5)	; -> sub_1FA99C
-	lea.l	-$1FDA(a5),a0
+	lea.l	g_SpriteTable(a5),a0
 	movea.l	-$1FE6(a5),a1
 	move.b	$3(a1),d0
 	ext.w	d0
@@ -463,7 +463,7 @@ loc_066348:
 	tst.w	d6
 	addq.w	#$8,a7
 	bne.s	loc_066436
-	lea.l	-$1FDA(a5),a0
+	lea.l	g_SpriteTable(a5),a0
 	movea.l	-$1FE6(a5),a1
 	move.b	$3(a1),d0
 	ext.w	d0
@@ -487,10 +487,10 @@ loc_066432:
 	jsr	$5112(a5)	; -> VDP_WaitVBlank
 loc_066436:
 	moveq	#$3,d0
-	cmp.l	-$3A10(a5),d0
+	cmp.l	g_VBlankCount(a5),d0
 	bgt.s	loc_066432
 	jsr	$5052(a5)	; -> sub_1FA9D2
-	move.b	#$1,-$1D4A(a5)
+	move.b	#$1,g_DmaFlushReq(a5)
 	jsr	$5112(a5)	; -> VDP_WaitVBlank
 loc_06644C:
 	tst.w	d6
@@ -629,11 +629,11 @@ loc_0665D8:
 	moveq	#$10,d0
 	cmp.l	d4,d0
 	bgt.s	loc_0665D8
-	move.b	#$1,-$3A06(a5)
+	move.b	#$1,g_PalBaseDirty(a5)
 	bra.w	loc_0666BE
 loc_0665EE:
 	jsr	$504A(a5)	; -> sub_1FA99C
-	lea.l	-$1FDA(a5),a0
+	lea.l	g_SpriteTable(a5),a0
 	movea.l	-$1FE6(a5),a1
 	move.b	$3(a1),d0
 	ext.w	d0
@@ -689,7 +689,7 @@ loc_0665EE:
 	jsr	sub_06451E(pc)
 	subq.w	#$1,d6
 	jsr	$5052(a5)	; -> sub_1FA9D2
-	move.b	#$1,-$1D4A(a5)
+	move.b	#$1,g_DmaFlushReq(a5)
 	jsr	$5112(a5)	; -> VDP_WaitVBlank
 	lea.l	$14(a7),a7
 loc_0666BE:
@@ -771,7 +771,7 @@ loc_0666BE:
 	bra.w	loc_066870
 loc_0667A0:
 	jsr	$504A(a5)	; -> sub_1FA99C
-	lea.l	-$1FDA(a5),a0
+	lea.l	g_SpriteTable(a5),a0
 	movea.l	-$1FE6(a5),a1
 	move.b	$3(a1),d0
 	ext.w	d0
@@ -827,7 +827,7 @@ loc_0667A0:
 	jsr	sub_06451E(pc)
 	subq.w	#$1,d6
 	jsr	$5052(a5)	; -> sub_1FA9D2
-	move.b	#$1,-$1D4A(a5)
+	move.b	#$1,g_DmaFlushReq(a5)
 	jsr	$5112(a5)	; -> VDP_WaitVBlank
 	lea.l	$14(a7),a7
 loc_066870:
@@ -835,7 +835,7 @@ loc_066870:
 	bne.w	loc_0667A0
 	move.w	#$CC,-$3902(a5)
 	move.w	#$AA,-$3904(a5)
-	move.b	#$1,-$3A06(a5)
+	move.b	#$1,g_PalBaseDirty(a5)
 	move.w	-$3C56(a5),d0
 	addq.w	#$1,d0
 	move.w	d0,-$3B04(a5)
@@ -868,7 +868,7 @@ loc_0668D0:
 	cmp.w	-$390C(a5),d0
 	bne.s	loc_0668C8
 	jsr	$504A(a5)	; -> sub_1FA99C
-	lea.l	-$1FDA(a5),a0
+	lea.l	g_SpriteTable(a5),a0
 	movea.l	-$1FE6(a5),a1
 	move.b	$3(a1),d0
 	ext.w	d0
@@ -892,7 +892,7 @@ loc_0668D0:
 	move.w	#$C6,-$1EE(a6)
 	bra.s	loc_066984
 loc_066930:
-	lea.l	-$1FDA(a5),a0
+	lea.l	g_SpriteTable(a5),a0
 	movea.l	-$1FE6(a5),a1
 	move.b	$3(a1),d0
 	ext.w	d0
@@ -926,7 +926,7 @@ loc_066984:
 	move.w	#$C6,-$1EE(a6)
 	bra.s	loc_0669EC
 loc_066998:
-	lea.l	-$1FDA(a5),a0
+	lea.l	g_SpriteTable(a5),a0
 	movea.l	-$1FE6(a5),a1
 	move.b	$3(a1),d0
 	ext.w	d0
@@ -970,7 +970,7 @@ loc_0669EC:
 	pea.l	-$1E8(a6)
 	jsr	sub_06451E(pc)
 	jsr	$5052(a5)	; -> sub_1FA9D2
-	move.b	#$1,-$1D4A(a5)
+	move.b	#$1,g_DmaFlushReq(a5)
 	move.w	#$258,d6
 	lea.l	$10(a7),a7
 	bra.s	loc_066A4C
@@ -978,8 +978,8 @@ loc_066A2A:
 	clr.b	-$3A08(a5)
 	subq.w	#$1,d6
 	jsr	$5112(a5)	; -> VDP_WaitVBlank
-	move.w	-$7A6(a5),d0
-	or.w	-$7A8(a5),d0
+	move.w	g_Pad2Raw(a5),d0
+	or.w	g_Pad1Raw(a5),d0
 	move.w	#$F0,d1
 	and.w	d0,d1
 	beq.s	loc_066A4C
@@ -996,8 +996,8 @@ loc_066A58:
 	clr.b	-$3A08(a5)
 	subq.w	#$1,d6
 	jsr	$5112(a5)	; -> VDP_WaitVBlank
-	move.w	-$7A6(a5),d0
-	or.w	-$7A8(a5),d0
+	move.w	g_Pad2Raw(a5),d0
+	or.w	g_Pad1Raw(a5),d0
 	move.w	#$F0,d1
 	and.w	d0,d1
 	beq.s	loc_066A74
@@ -1007,7 +1007,7 @@ loc_066A74:
 	bne.s	loc_066A58
 loc_066A78:
 	jsr	$504A(a5)	; -> sub_1FA99C
-	lea.l	-$1FDA(a5),a0
+	lea.l	g_SpriteTable(a5),a0
 	movea.l	-$1FE6(a5),a1
 	move.b	$3(a1),d0
 	ext.w	d0
@@ -1028,15 +1028,15 @@ loc_066A78:
 	jsr	$5052(a5)	; -> sub_1FA9D2
 	move.w	-$16(a6),-$3598(a5)
 	moveq	#$0,d0
-	move.l	d0,-$3A18(a5)
+	move.l	d0,g_VBlankGameHook(a5)
 	move.l	-$C9E(a5),-(a7)
 	jsr	$503A(a5)	; -> sub_1FA924
 	move.l	-$C9A(a5),-(a7)
 	jsr	$503A(a5)	; -> sub_1FA924
-	clr.w	-$3A26(a5)
-	clr.w	-$3A28(a5)
-	clr.w	-$3A2E(a5)
-	clr.w	-$3A30(a5)
+	clr.w	g_Pad1Pressed(a5)
+	clr.w	g_Pad2Pressed(a5)
+	clr.w	g_Pad1Latch(a5)
+	clr.w	g_Pad2Latch(a5)
 	addq.w	#$8,a7
 	movem.l	-$20C(a6),d3-d7/a3-a4
 	unlk	a6

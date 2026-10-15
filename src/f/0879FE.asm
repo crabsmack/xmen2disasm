@@ -60,7 +60,7 @@ loc_087A7E:
 	move.w	#$8EE,(a4)+
 	move.w	#$E6E,(a4)+
 	move.w	#$426,(a4)+
-	move.b	#$1,-$3A06(a5)
+	move.b	#$1,g_PalBaseDirty(a5)
 loc_087ACA:
 	movea.l	$8(a6),a0
 	tst.w	$68(a0)

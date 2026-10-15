@@ -14,7 +14,7 @@ sub_038BFA:
 	jsr	sub_038AA4(pc)
 	jsr	sub_038A7E(pc)
 	jsr	$5002(a5)	; -> sub_1FA6FE
-	move.w	-$204(a5),d0
+	move.w	g_VdpReg11(a5),d0
 	move.w	d0,($C00004).l
 	unlk	a6
 	rts

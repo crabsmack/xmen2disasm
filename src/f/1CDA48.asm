@@ -72,11 +72,11 @@ loc_1CDAD8:
 	neg.b	d3
 	beq.s	loc_1CDAF2
 	move.w	-$3B98(a5),d0
-	and.w	-$3A36(a5),d0
+	and.w	g_Pad1Held(a5),d0
 	bra.s	loc_1CDAFA
 loc_1CDAF2:
 	move.w	-$3B98(a5),d0
-	and.w	-$3A38(a5),d0
+	and.w	g_Pad2Held(a5),d0
 loc_1CDAFA:
 	beq.s	loc_1CDB04
 	ori.b	#$10,$2E(a4)
@@ -87,11 +87,11 @@ loc_1CDB04:
 	neg.b	d3
 	beq.s	loc_1CDB18
 	move.w	-$3B9A(a5),d0
-	and.w	-$3A36(a5),d0
+	and.w	g_Pad1Held(a5),d0
 	bra.s	loc_1CDB20
 loc_1CDB18:
 	move.w	-$3B9A(a5),d0
-	and.w	-$3A38(a5),d0
+	and.w	g_Pad2Held(a5),d0
 loc_1CDB20:
 	beq.s	loc_1CDB28
 	andi.b	#$EF,$2E(a4)

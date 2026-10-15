@@ -52,7 +52,7 @@ sub_081D08:
 	ble.s	loc_081D9A
 	jsr	sub_081CE0(pc)
 loc_081D9A:
-	tst.b	-$3A02(a5)
+	tst.b	g_PalFadeActive(a5)
 	bne.s	loc_081DAA
 	tst.w	-$3B04(a5)
 	bne.s	loc_081DAA
@@ -62,7 +62,7 @@ loc_081DAA:
 	beq.s	loc_081DC8
 	move.l	g_FrameCounter(a5),d0
 	addq.l	#$1,g_FrameCounter(a5)
-	tst.b	-$3A02(a5)
+	tst.b	g_PalFadeActive(a5)
 	bne.s	loc_081DC8
 	tst.w	-$3B04(a5)
 	bne.s	loc_081DC8

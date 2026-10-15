@@ -12,7 +12,7 @@ loc_081FE4:
 	addq.l	#$1,d7
 	cmp.l	d7,d3
 	bgt.s	loc_081FE4
-	move.b	#$1,-$3A06(a5)
+	move.b	#$1,g_PalBaseDirty(a5)
 loc_081FF4:
 	movem.l	-$10(a6),d3/d7/a3-a4
 	unlk	a6

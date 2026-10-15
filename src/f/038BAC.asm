@@ -8,7 +8,7 @@ sub_038BAC:
 	move.l	a0,-$3A48(a5)
 	move.w	#$7BE,-$1D42(a5)
 	move.w	#$42,-$1D44(a5)
-	move.w	-$204(a5),d0
+	move.w	g_VdpReg11(a5),d0
 	addq.w	#$3,d0
 	move.w	d0,($C00004).l
 	moveq	#$0,d7
@@ -16,7 +16,7 @@ sub_038BAC:
 loc_038BDC:
 	move.l	d7,d0
 	add.w	d0,d0
-	lea.l	-$BC6(a5),a0
+	lea.l	g_HScrollBuf(a5),a0
 	clr.w	(a0,d0.w)
 	move.l	d7,d0
 	addq.l	#$1,d7

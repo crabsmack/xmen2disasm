@@ -19,11 +19,11 @@ sub_1979A4:
 	neg.b	d3
 	beq.s	loc_1979E2
 	move.w	-$3B9A(a5),d0
-	and.w	-$3A36(a5),d0
+	and.w	g_Pad1Held(a5),d0
 	bra.s	loc_1979EA
 loc_1979E2:
 	move.w	-$3B9A(a5),d0
-	and.w	-$3A38(a5),d0
+	and.w	g_Pad2Held(a5),d0
 loc_1979EA:
 	addq.w	#$8,a7
 	beq.s	loc_1979F6
@@ -35,11 +35,11 @@ loc_1979F6:
 	neg.b	d3
 	beq.s	loc_197A0A
 	move.w	-$3B98(a5),d0
-	and.w	-$3A36(a5),d0
+	and.w	g_Pad1Held(a5),d0
 	bra.s	loc_197A12
 loc_197A0A:
 	move.w	-$3B98(a5),d0
-	and.w	-$3A38(a5),d0
+	and.w	g_Pad2Held(a5),d0
 loc_197A12:
 	beq.s	loc_197A1A
 	ori.b	#$10,$2E(a4)

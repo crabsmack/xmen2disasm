@@ -10,7 +10,7 @@ loc_1F6892:
 	ext.w	d7
 	move.l	d7,d0
 	add.w	d0,d0
-	lea.l	-$3980(a5),a0
+	lea.l	g_PalBase(a5),a0
 	clr.w	(a0,d0.w)
 	move.b	d7,d0
 	addq.b	#$1,d7

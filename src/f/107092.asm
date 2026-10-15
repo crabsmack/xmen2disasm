@@ -7,11 +7,11 @@ loc_107092:
 	neg.b	d3
 	beq.s	loc_1070A6
 	move.w	-$3BA0(a5),d0
-	and.w	-$3A36(a5),d0
+	and.w	g_Pad1Held(a5),d0
 	bra.s	loc_1070AE
 loc_1070A6:
 	move.w	-$3BA0(a5),d0
-	and.w	-$3A38(a5),d0
+	and.w	g_Pad2Held(a5),d0
 loc_1070AE:
 	beq.s	loc_1070B6
 	move.w	d7,$16(a4)
@@ -22,11 +22,11 @@ loc_1070B6:
 	neg.b	d3
 	beq.s	loc_1070CA
 	move.w	-$3B9E(a5),d0
-	and.w	-$3A36(a5),d0
+	and.w	g_Pad1Held(a5),d0
 	bra.s	loc_1070D2
 loc_1070CA:
 	move.w	-$3B9E(a5),d0
-	and.w	-$3A38(a5),d0
+	and.w	g_Pad2Held(a5),d0
 loc_1070D2:
 	beq.s	loc_1070DE
 	ext.l	d7

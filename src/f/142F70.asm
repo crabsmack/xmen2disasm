@@ -57,7 +57,7 @@ loc_142FEC:
 	beq.s	loc_142FFC
 	ori.l	#$8000,d7
 loc_142FFC:
-	lea.l	-$1FDA(a5),a0
+	lea.l	g_SpriteTable(a5),a0
 	movea.l	-$1FE6(a5),a1
 	move.b	$3(a1),d0
 	ext.w	d0

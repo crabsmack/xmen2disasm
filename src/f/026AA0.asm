@@ -102,7 +102,7 @@ loc_026B4A:
 	move.l	d0,d5
 	cmpi.w	#$80,d6
 	bgt.w	loc_026CF0
-	lea.l	-$1FDA(a5),a0
+	lea.l	g_SpriteTable(a5),a0
 	movea.l	-$1FE6(a5),a1
 	move.b	$3(a1),d0
 	ext.w	d0
@@ -123,7 +123,7 @@ loc_026B4A:
 	add.w	#$80,d0
 	movea.l	-$1FE6(a5),a0
 	move.w	d0,$6(a0)
-	lea.l	-$1FDA(a5),a0
+	lea.l	g_SpriteTable(a5),a0
 	movea.l	-$1FE6(a5),a1
 	move.b	$3(a1),d0
 	ext.w	d0
@@ -154,7 +154,7 @@ loc_026C34:
 	addi.l	#$20,d7
 	cmpi.l	#$140,d7
 	bgt.w	loc_026CF0
-	lea.l	-$1FDA(a5),a0
+	lea.l	g_SpriteTable(a5),a0
 	movea.l	-$1FE6(a5),a1
 	move.b	$3(a1),d0
 	ext.w	d0
@@ -175,7 +175,7 @@ loc_026C34:
 	add.w	#$80,d0
 	movea.l	-$1FE6(a5),a0
 	move.w	d0,$6(a0)
-	lea.l	-$1FDA(a5),a0
+	lea.l	g_SpriteTable(a5),a0
 	movea.l	-$1FE6(a5),a1
 	move.b	$3(a1),d0
 	ext.w	d0

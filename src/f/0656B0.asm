@@ -165,7 +165,7 @@ loc_0658BC:
 	jsr	$500A(a5)	; -> sub_1FA7E8
 loc_0658C6:
 	jsr	$504A(a5)	; -> sub_1FA99C
-	lea.l	-$1FDA(a5),a0
+	lea.l	g_SpriteTable(a5),a0
 	movea.l	-$1FE6(a5),a1
 	move.b	$3(a1),d0
 	ext.w	d0
@@ -207,7 +207,7 @@ loc_065922:
 	subq.w	#$4,d4
 	bra.s	loc_0659A6
 loc_065952:
-	lea.l	-$1FDA(a5),a0
+	lea.l	g_SpriteTable(a5),a0
 	movea.l	-$1FE6(a5),a1
 	move.b	$3(a1),d0
 	ext.w	d0
@@ -249,7 +249,7 @@ loc_0659A6:
 	bls.s	loc_0659CA
 	moveq	#$9,d6
 loc_0659CA:
-	lea.l	-$1FDA(a5),a0
+	lea.l	g_SpriteTable(a5),a0
 	movea.l	-$1FE6(a5),a1
 	move.b	$3(a1),d0
 	ext.w	d0
@@ -275,7 +275,7 @@ loc_0659CA:
 	move.w	d0,$6(a0)
 	addq.w	#$8,d4
 loc_065A1C:
-	lea.l	-$1FDA(a5),a0
+	lea.l	g_SpriteTable(a5),a0
 	movea.l	-$1FE6(a5),a1
 	move.b	$3(a1),d0
 	ext.w	d0
@@ -316,7 +316,7 @@ loc_065A76:
 	subq.w	#$4,d5
 	bra.s	loc_065AF2
 loc_065A9E:
-	lea.l	-$1FDA(a5),a0
+	lea.l	g_SpriteTable(a5),a0
 	movea.l	-$1FE6(a5),a1
 	move.b	$3(a1),d0
 	ext.w	d0
@@ -356,7 +356,7 @@ loc_065AF2:
 	ble.s	loc_065B12
 	moveq	#$9,d7
 loc_065B12:
-	lea.l	-$1FDA(a5),a0
+	lea.l	g_SpriteTable(a5),a0
 	movea.l	-$1FE6(a5),a1
 	move.b	$3(a1),d0
 	ext.w	d0
@@ -382,7 +382,7 @@ loc_065B12:
 	move.w	d0,$6(a0)
 	addq.w	#$8,d5
 loc_065B64:
-	lea.l	-$1FDA(a5),a0
+	lea.l	g_SpriteTable(a5),a0
 	movea.l	-$1FE6(a5),a1
 	move.b	$3(a1),d0
 	ext.w	d0
@@ -411,7 +411,7 @@ loc_065B64:
 	move.w	d0,$6(a0)
 loc_065BBE:
 	jsr	$5052(a5)	; -> sub_1FA9D2
-	move.b	#$1,-$1D4A(a5)
+	move.b	#$1,g_DmaFlushReq(a5)
 	jsr	sub_06539C(pc)
 	tst.b	-$38DE(a5)
 	beq.s	loc_065BDE

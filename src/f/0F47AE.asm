@@ -25,7 +25,7 @@ loc_0F47EC:
 	moveq	#$6,d0
 	cmp.l	g_FrameCounter(a5),d0
 	bls.s	loc_0F47CE
-	tst.b	-$3A02(a5)
+	tst.b	g_PalFadeActive(a5)
 	bne.w	loc_0F4AE4
 	jsr	$23F2(a5)	; -> sub_0DC2CE
 	jsr	sub_0F4576(pc)
@@ -62,7 +62,7 @@ loc_0F4840:
 	move.l	#$8000,d0
 	or.l	d1,d0
 	move.w	d0,d7
-	lea.l	-$1FDA(a5),a0
+	lea.l	g_SpriteTable(a5),a0
 	movea.l	-$1FE6(a5),a1
 	move.b	$3(a1),d0
 	ext.w	d0
@@ -104,7 +104,7 @@ loc_0F48B6:
 	move.l	#$8000,d0
 	or.l	d1,d0
 	move.w	d0,d7
-	lea.l	-$1FDA(a5),a0
+	lea.l	g_SpriteTable(a5),a0
 	movea.l	-$1FE6(a5),a1
 	move.b	$3(a1),d0
 	ext.w	d0
@@ -144,7 +144,7 @@ loc_0F490E:
 	move.l	#$8000,d0
 	or.l	d1,d0
 	move.w	d0,d7
-	lea.l	-$1FDA(a5),a0
+	lea.l	g_SpriteTable(a5),a0
 	movea.l	-$1FE6(a5),a1
 	move.b	$3(a1),d0
 	ext.w	d0
@@ -169,7 +169,7 @@ loc_0F490E:
 	or.l	d0,d2
 	move.l	#$8000,d7
 	or.l	d2,d7
-	lea.l	-$1FDA(a5),a0
+	lea.l	g_SpriteTable(a5),a0
 	movea.l	-$1FE6(a5),a1
 	move.b	$3(a1),d0
 	ext.w	d0
@@ -196,7 +196,7 @@ loc_0F490E:
 	move.l	#$8000,d0
 	or.l	d2,d0
 	move.w	d0,d7
-	lea.l	-$1FDA(a5),a0
+	lea.l	g_SpriteTable(a5),a0
 	movea.l	-$1FE6(a5),a1
 	move.b	$3(a1),d0
 	ext.w	d0
@@ -238,7 +238,7 @@ loc_0F4A4E:
 loc_0F4A6E:
 	move.w	#$3,-$3B08(a5)
 	clr.w	d7
-	lea.l	-$3980(a5),a3
+	lea.l	g_PalBase(a5),a3
 	moveq	#$40,d3
 	bra.s	loc_0F4A86
 loc_0F4A7E:
@@ -255,9 +255,9 @@ loc_0F4A86:
 	moveq	#$7,d1
 	move.l	d1,-(a7)
 	jsr	$50F2(a5)	; -> Pal_StartFade
-	clr.b	-$3A06(a5)
-	move.w	#$3C,-$7C4(a5)
-	move.w	#$8,-$3A04(a5)
+	clr.b	g_PalBaseDirty(a5)
+	move.w	#$3C,g_PalFadeTimer(a5)
+	move.w	#$8,g_PalFadeDelay(a5)
 	move.w	#$78,-$359A(a5)
 	clr.w	-$16F0(a5)
 	clr.w	-$17E0(a5)
@@ -265,7 +265,7 @@ loc_0F4A86:
 	bra.s	loc_0F4AE4
 loc_0F4AC2:
 	clr.w	d7
-	lea.l	-$3980(a5),a4
+	lea.l	g_PalBase(a5),a4
 	moveq	#$40,d3
 	bra.s	loc_0F4AD4
 loc_0F4ACC:
@@ -276,7 +276,7 @@ loc_0F4ACC:
 loc_0F4AD4:
 	cmp.w	d7,d3
 	bgt.s	loc_0F4ACC
-	move.b	#$1,-$3A06(a5)
+	move.b	#$1,g_PalBaseDirty(a5)
 	move.w	#$1,-$359A(a5)
 loc_0F4AE4:
 	movem.l	-$18(a6),d3/d5-d7/a3-a4

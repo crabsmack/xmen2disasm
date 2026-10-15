@@ -62,7 +62,7 @@ loc_13E77C:
 	ble.s	loc_13E7DE
 	cmpi.w	#$E0,d7
 	bge.s	loc_13E7DE
-	lea.l	-$1FDA(a5),a0
+	lea.l	g_SpriteTable(a5),a0
 	movea.l	-$1FE6(a5),a1
 	move.b	$3(a1),d0
 	ext.w	d0

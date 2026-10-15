@@ -4,7 +4,7 @@
 sub_00F59A:
 	link.w	a6,#$FFFC
 	movem.l	d3/d7/a3-a4,-(a7)
-	lea.l	-$3980(a5),a4
+	lea.l	g_PalBase(a5),a4
 	lea.l	$92(a5),a0
 	move.l	$2(a0),-$4(a6)
 	clr.w	(a4)+
@@ -39,7 +39,7 @@ loc_00F5F4:
 	addq.w	#$1,d7
 	cmp.w	d7,d3
 	bgt.s	loc_00F5F4
-	move.b	#$1,-$3A06(a5)
+	move.b	#$1,g_PalBaseDirty(a5)
 	movem.l	-$14(a6),d3/d7/a3-a4
 	unlk	a6
 	rts

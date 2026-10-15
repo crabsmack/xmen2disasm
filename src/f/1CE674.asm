@@ -20,11 +20,11 @@ loc_1CE6A0:
 	neg.b	d3
 	beq.s	loc_1CE6B4
 	move.w	-$3B98(a5),d0
-	and.w	-$3A36(a5),d0
+	and.w	g_Pad1Held(a5),d0
 	bra.s	loc_1CE6BC
 loc_1CE6B4:
 	move.w	-$3B98(a5),d0
-	and.w	-$3A38(a5),d0
+	and.w	g_Pad2Held(a5),d0
 loc_1CE6BC:
 	beq.s	loc_1CE6C6
 	ori.b	#$10,$2E(a4)
@@ -35,11 +35,11 @@ loc_1CE6C6:
 	neg.b	d3
 	beq.s	loc_1CE6DA
 	move.w	-$3B9A(a5),d0
-	and.w	-$3A36(a5),d0
+	and.w	g_Pad1Held(a5),d0
 	bra.s	loc_1CE6E2
 loc_1CE6DA:
 	move.w	-$3B9A(a5),d0
-	and.w	-$3A38(a5),d0
+	and.w	g_Pad2Held(a5),d0
 loc_1CE6E2:
 	beq.s	loc_1CE6EA
 	andi.b	#$EF,$2E(a4)
@@ -49,11 +49,11 @@ loc_1CE6EA:
 	neg.b	d3
 	beq.s	loc_1CE6FE
 	move.w	-$3BA6(a5),d0
-	and.w	-$3A2E(a5),d0
+	and.w	g_Pad1Latch(a5),d0
 	bra.s	loc_1CE706
 loc_1CE6FE:
 	move.w	-$3BA6(a5),d0
-	and.w	-$3A30(a5),d0
+	and.w	g_Pad2Latch(a5),d0
 loc_1CE706:
 	bne.s	loc_1CE734
 	move.w	#$1,$10(a4)

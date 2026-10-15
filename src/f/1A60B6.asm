@@ -5,8 +5,8 @@ sub_1A60B6:
 	link.w	a6,#$FFF8
 	movem.l	d3-d7/a3-a4,-(a7)
 	move.w	$A(a6),d4
-	lea.l	-$3980(a5),a3
-	lea.l	-$3A00(a5),a4
+	lea.l	g_PalBase(a5),a3
+	lea.l	g_PalWork(a5),a4
 	tst.w	d4
 	bgt.s	loc_1A60DE
 	moveq	#$5,d1
@@ -70,7 +70,7 @@ loc_1A6140:
 	addq.w	#$1,d6
 	cmpi.w	#$40,d6
 	blt.s	loc_1A610E
-	move.b	#$1,-$7C6(a5)
+	move.b	#$1,g_PalWorkDirty(a5)
 	moveq	#$0,d0
 loc_1A6160:
 	movem.l	-$24(a6),d3-d7/a3-a4

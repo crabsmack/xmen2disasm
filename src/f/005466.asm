@@ -9,7 +9,7 @@ Game_Main:
 	movem.l	d3/d7,-(a7)
 	jsr	$418A(a5)	; -> sub_160550
 	clr.b	-$202(a5)
-	clr.b	-$18AC(a5)
+	clr.b	g_SndMute(a5)
 loc_00547A:
 	moveq	#$2,d0
 	and.w	($C00004).l,d0
@@ -30,9 +30,9 @@ loc_005486:
 	jsr	$5042(a5)	; -> sub_1FA956
 	clr.b	-$38BE(a5)
 	clr.b	-$3A08(a5)
-	move.b	#$1,-$3A0C(a5)
+	move.b	#$1,g_FrameUpdated(a5)
 	jsr	$4FC2(a5)	; -> sub_1F9850
 loc_0054BC:
-	clr.b	-$3A1A(a5)
+	clr.b	g_DemoActive(a5)
 	jsr	Game_SceneLoop(pc)
 	bra.s	loc_0054BC

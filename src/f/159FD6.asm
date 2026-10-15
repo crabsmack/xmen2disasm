@@ -40,9 +40,9 @@ loc_15A008:
 	move.b	$5(a4),d0
 	ext.w	d0
 	add.w	d0,d0
-	lea.l	-$3980(a5),a0
+	lea.l	g_PalBase(a5),a0
 	move.w	(a3),(a0,d0.w)
-	move.b	#$1,-$3A06(a5)
+	move.b	#$1,g_PalBaseDirty(a5)
 	move.b	$4(a4),d0
 	ext.w	d0
 	movea.l	$8(a6),a0

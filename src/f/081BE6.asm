@@ -25,7 +25,7 @@ loc_081C2A:
 	move.w	#$68,-$3966(a5)
 	move.w	#$8CC,-$3964(a5)
 loc_081C36:
-	move.b	#$1,-$3A06(a5)
+	move.b	#$1,g_PalBaseDirty(a5)
 loc_081C3C:
 	subq.w	#$1,-$3B32(a5)
 	tst.w	-$3B34(a5)

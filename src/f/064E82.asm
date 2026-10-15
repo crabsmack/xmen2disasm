@@ -8,7 +8,7 @@ loc_064E82:
 	bge.s	loc_064E92
 	clr.w	-$3B3A(a5)
 loc_064E92:
-	move.b	#$1,-$3A06(a5)
+	move.b	#$1,g_PalBaseDirty(a5)
 loc_064E98:
 	unlk	a6
 	rts

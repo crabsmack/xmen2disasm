@@ -6,7 +6,7 @@ sub_02C90A:
 	movem.l	d3/d5-d7,-(a7)
 	move.w	-$3CBA(a5),d0
 	subq.w	#$1,-$3CBA(a5)
-	move.b	#$1,-$3A06(a5)
+	move.b	#$1,g_PalBaseDirty(a5)
 	tst.w	-$3CBA(a5)
 	beq.s	loc_02C968
 	pea.l	g_Player1(a5)
@@ -14,7 +14,7 @@ sub_02C90A:
 	pea.l	g_Player2(a5)
 	jsr	$61A(a5)	; -> sub_02D146
 	addq.w	#$8,a7
-	move.w	-$3980(a5),d0
+	move.w	g_PalBase(a5),d0
 	ext.l	d0
 	move.l	d0,d5
 	moveq	#$0,d7
@@ -25,7 +25,7 @@ loc_02C944:
 	lea.l	-$397E(a5),a0
 	move.l	d7,d1
 	add.w	d1,d1
-	lea.l	-$3980(a5),a1
+	lea.l	g_PalBase(a5),a1
 	move.w	(a0,d0.w),(a1,d1.w)
 	move.l	d7,d0
 	addq.l	#$1,d7
@@ -42,7 +42,7 @@ loc_02C96C:
 	add.l	d0,d0
 	move.l	d7,d1
 	add.w	d1,d1
-	lea.l	-$3980(a5),a1
+	lea.l	g_PalBase(a5),a1
 	move.w	(a0,d0.l),(a1,d1.w)
 	movea.l	-$3B18(a5),a0
 	move.l	d7,d0

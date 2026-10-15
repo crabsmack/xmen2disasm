@@ -20,12 +20,12 @@ loc_04762E:
 	add.l	d0,d0
 	move.l	d7,d1
 	add.w	d1,d1
-	lea.l	-$3980(a5),a0
+	lea.l	g_PalBase(a5),a0
 	move.w	(a4,d0.l),(a0,d1.w)
 	subq.l	#$1,d7
 	tst.l	d7
 	bne.s	loc_04762E
-	move.b	#$1,-$3A06(a5)
+	move.b	#$1,g_PalBaseDirty(a5)
 	moveq	#$1,d0
 	and.w	-$3B0C(a5),d0
 	beq.s	loc_047660

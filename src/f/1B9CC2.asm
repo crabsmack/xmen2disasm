@@ -11,14 +11,14 @@ sub_1B9CC2:
 	bne.s	loc_1B9CEA
 	move.w	-$3BA8(a5),d0
 	not.w	d0
-	and.w	-$3A2E(a5),d0
-	move.w	d0,-$3A2E(a5)
+	and.w	g_Pad1Latch(a5),d0
+	move.w	d0,g_Pad1Latch(a5)
 	bra.s	loc_1B9CF8
 loc_1B9CEA:
 	move.w	-$3BA8(a5),d0
 	not.w	d0
-	and.w	-$3A30(a5),d0
-	move.w	d0,-$3A30(a5)
+	and.w	g_Pad2Latch(a5),d0
+	move.w	d0,g_Pad2Latch(a5)
 loc_1B9CF8:
 	cmpi.w	#$701,$68(a4)
 	blt.s	loc_1B9D18

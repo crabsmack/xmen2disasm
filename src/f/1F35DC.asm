@@ -11,14 +11,14 @@ sub_1F35DC:
 	seq.b	d3
 	neg.b	d3
 	beq.s	loc_1F3604
-	move.w	-$3A2A(a5),d0
-	or.w	-$3A26(a5),d0
+	move.w	g_Pad1Released(a5),d0
+	or.w	g_Pad1Pressed(a5),d0
 	moveq	#$7F,d1
 	and.w	d0,d1
 	bra.s	loc_1F3610
 loc_1F3604:
-	move.w	-$3A2C(a5),d0
-	or.w	-$3A28(a5),d0
+	move.w	g_Pad2Released(a5),d0
+	or.w	g_Pad2Pressed(a5),d0
 	moveq	#$7F,d1
 	and.w	d0,d1
 loc_1F3610:

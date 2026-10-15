@@ -17,7 +17,7 @@ loc_0FCCC8:
 loc_0FCCD6:
 	jsr	sub_0FCBDA(pc)
 	jsr	sub_0FC954(pc)
-	tst.b	-$3A02(a5)
+	tst.b	g_PalFadeActive(a5)
 	bne.s	loc_0FCCE8
 	jsr	sub_0FC72E(pc)
 loc_0FCCE8:
@@ -35,7 +35,7 @@ loc_0FCD04:
 	move.w	-$3B32(a5),d0
 	subq.w	#$1,-$3B32(a5)
 loc_0FCD12:
-	tst.b	-$3A02(a5)
+	tst.b	g_PalFadeActive(a5)
 	bne.s	loc_0FCD1C
 	jsr	sub_0FC72E(pc)
 loc_0FCD1C:
@@ -97,8 +97,8 @@ loc_0FCDA0:
 	move.w	d0,g_SceneIndex(a5)
 	move.b	#$1,-$38C2(a5)
 loc_0FCDC6:
-	move.w	-$7A6(a5),d0
-	or.w	-$7A8(a5),d0
+	move.w	g_Pad2Raw(a5),d0
+	or.w	g_Pad1Raw(a5),d0
 	move.w	#$FF,d1
 	and.w	d0,d1
 	beq.s	loc_0FCDEA

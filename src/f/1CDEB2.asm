@@ -21,21 +21,21 @@ loc_1CDEDC:
 	neg.b	d3
 	beq.s	loc_1CDEF0
 	move.w	-$3B9A(a5),d0
-	and.w	-$3A36(a5),d0
+	and.w	g_Pad1Held(a5),d0
 	bra.s	loc_1CDEF8
 loc_1CDEF0:
 	move.w	-$3B9A(a5),d0
-	and.w	-$3A38(a5),d0
+	and.w	g_Pad2Held(a5),d0
 loc_1CDEF8:
 	beq.s	loc_1CDF14
 	tst.b	$9D(a4)
 	bne.s	loc_1CDF0A
 	move.w	-$3B9A(a5),d0
-	or.w	d0,-$3A2E(a5)
+	or.w	d0,g_Pad1Latch(a5)
 	bra.s	loc_1CDF4A
 loc_1CDF0A:
 	move.w	-$3B9A(a5),d0
-	or.w	d0,-$3A30(a5)
+	or.w	d0,g_Pad2Latch(a5)
 	bra.s	loc_1CDF4A
 loc_1CDF14:
 	tst.b	$9D(a4)
@@ -43,21 +43,21 @@ loc_1CDF14:
 	neg.b	d3
 	beq.s	loc_1CDF28
 	move.w	-$3B98(a5),d0
-	and.w	-$3A36(a5),d0
+	and.w	g_Pad1Held(a5),d0
 	bra.s	loc_1CDF30
 loc_1CDF28:
 	move.w	-$3B98(a5),d0
-	and.w	-$3A38(a5),d0
+	and.w	g_Pad2Held(a5),d0
 loc_1CDF30:
 	beq.s	loc_1CDF4A
 	tst.b	$9D(a4)
 	bne.s	loc_1CDF42
 	move.w	-$3B98(a5),d0
-	or.w	d0,-$3A2E(a5)
+	or.w	d0,g_Pad1Latch(a5)
 	bra.s	loc_1CDF4A
 loc_1CDF42:
 	move.w	-$3B98(a5),d0
-	or.w	d0,-$3A30(a5)
+	or.w	d0,g_Pad2Latch(a5)
 loc_1CDF4A:
 	movea.l	(a4),a0
 	move.l	$A6(a0),$5C(a4)

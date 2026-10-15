@@ -31,11 +31,11 @@ loc_1A72F0:
 	neg.b	d3
 	beq.s	loc_1A7340
 	move.w	-$3B9C(a5),d0
-	and.w	-$3A36(a5),d0
+	and.w	g_Pad1Held(a5),d0
 	bra.s	loc_1A7348
 loc_1A7340:
 	move.w	-$3B9C(a5),d0
-	and.w	-$3A38(a5),d0
+	and.w	g_Pad2Held(a5),d0
 loc_1A7348:
 	addq.w	#$8,a7
 	beq.s	loc_1A737E

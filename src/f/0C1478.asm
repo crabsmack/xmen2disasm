@@ -7,7 +7,7 @@ sub_0C1478:
 	move.w	$A(a6),d7
 	jsr	$5242(a5)	; -> Snd_StopAll
 	jsr	sub_0C1412(pc)
-	move.w	d7,-$38D2(a5)
+	move.w	d7,g_MusicTrack(a5)
 	move.w	d7,d0
 	ext.l	d0
 	move.l	d0,-(a7)

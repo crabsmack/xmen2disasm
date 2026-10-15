@@ -6,7 +6,7 @@
 ; ---------------------------------------------------------------------------
 VDP_ClearVram:
 	move.w	#$8F01,($C00004).l
-	move.w	-$1D48(a5),d0
+	move.w	g_VdpReg1(a5),d0
 	ori.w	#$10,d0
 	move.w	d0,($C00004).l
 	move.w	#$93FF,($C00004).l
@@ -19,6 +19,6 @@ VDP_ClearVram:
 loc_1FDFB4:
 	and.w	($C00004).l,d0
 	bne.s	loc_1FDFB4
-	move.w	-$1D48(a5),($C00004).l
+	move.w	g_VdpReg1(a5),($C00004).l
 	move.w	#$8F02,($C00004).l
 	rts

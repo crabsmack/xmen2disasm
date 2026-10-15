@@ -23,7 +23,7 @@ loc_04730C:
 	move.l	-$3B18(a5),d0
 	btst	#$0,d0
 	beq.s	loc_047374
-	lea.l	-$1FDA(a5),a0
+	lea.l	g_SpriteTable(a5),a0
 	movea.l	-$1FE6(a5),a1
 	move.b	$3(a1),d0
 	ext.w	d0

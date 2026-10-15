@@ -18,14 +18,14 @@ sub_1A71EE:
 	bne.s	loc_1A7238
 	move.w	-$3BA6(a5),d0
 	not.w	d0
-	and.w	-$3A2E(a5),d0
-	move.w	d0,-$3A2E(a5)
+	and.w	g_Pad1Latch(a5),d0
+	move.w	d0,g_Pad1Latch(a5)
 	bra.s	loc_1A7246
 loc_1A7238:
 	move.w	-$3BA6(a5),d0
 	not.w	d0
-	and.w	-$3A30(a5),d0
-	move.w	d0,-$3A30(a5)
+	and.w	g_Pad2Latch(a5),d0
+	move.w	d0,g_Pad2Latch(a5)
 loc_1A7246:
 	moveq	#$0,d0
 	move.l	d0,$44(a4)
@@ -44,11 +44,11 @@ loc_1A726E:
 	neg.b	d3
 	beq.s	loc_1A7282
 	move.w	-$3BA6(a5),d0
-	and.w	-$3A36(a5),d0
+	and.w	g_Pad1Held(a5),d0
 	bra.s	loc_1A728A
 loc_1A7282:
 	move.w	-$3BA6(a5),d0
-	and.w	-$3A38(a5),d0
+	and.w	g_Pad2Held(a5),d0
 loc_1A728A:
 	beq.s	loc_1A7296
 	move.w	#$100,d0

@@ -11,11 +11,11 @@ sub_1CEA2E:
 	neg.b	d3
 	beq.s	loc_1CEA52
 	move.w	-$3B9A(a5),d0
-	and.w	-$3A36(a5),d0
+	and.w	g_Pad1Held(a5),d0
 	bra.s	loc_1CEA5A
 loc_1CEA52:
 	move.w	-$3B9A(a5),d0
-	and.w	-$3A38(a5),d0
+	and.w	g_Pad2Held(a5),d0
 loc_1CEA5A:
 	beq.s	loc_1CEA74
 	moveq	#$10,d0
@@ -32,11 +32,11 @@ loc_1CEA74:
 	neg.b	d3
 	beq.s	loc_1CEA88
 	move.w	-$3B98(a5),d0
-	and.w	-$3A36(a5),d0
+	and.w	g_Pad1Held(a5),d0
 	bra.s	loc_1CEA90
 loc_1CEA88:
 	move.w	-$3B98(a5),d0
-	and.w	-$3A38(a5),d0
+	and.w	g_Pad2Held(a5),d0
 loc_1CEA90:
 	beq.s	loc_1CEAAA
 	moveq	#$10,d0

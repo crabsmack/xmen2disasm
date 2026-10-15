@@ -59,9 +59,9 @@ sub_00FDAA:
 	clr.w	-$3CE4(a5)
 	jsr	sub_00FB54(pc)
 	jsr	$2E8A(a5)	; -> sub_1190D6
-	move.b	#$1,-$18AC(a5)
+	move.b	#$1,g_SndMute(a5)
 	jsr	$5002(a5)	; -> sub_1FA6FE
-	clr.b	-$18AC(a5)
+	clr.b	g_SndMute(a5)
 	jsr	$5242(a5)	; -> Snd_StopAll
 	movea.l	-$24(a6),a4
 	unlk	a6

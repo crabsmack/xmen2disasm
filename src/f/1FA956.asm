@@ -11,7 +11,7 @@ loc_1FA962:
 	addq.b	#$1,d0
 	move.l	d7,d1
 	asl.w	#$3,d1
-	lea.l	-$1FDA(a5),a0
+	lea.l	g_SpriteTable(a5),a0
 	move.b	d0,$3(a0,d1.w)
 	move.w	d7,d0
 	addq.w	#$1,d7

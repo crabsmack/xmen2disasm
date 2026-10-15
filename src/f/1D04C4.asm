@@ -10,11 +10,11 @@ sub_1D04C4:
 	neg.b	d3
 	beq.s	loc_1D04E4
 	move.w	-$3BA8(a5),d0
-	and.w	-$3A2A(a5),d0
+	and.w	g_Pad1Released(a5),d0
 	bra.s	loc_1D04EC
 loc_1D04E4:
 	move.w	-$3BA8(a5),d0
-	and.w	-$3A2C(a5),d0
+	and.w	g_Pad2Released(a5),d0
 loc_1D04EC:
 	beq.s	loc_1D0518
 	lea.l	$48AA(a5),a0

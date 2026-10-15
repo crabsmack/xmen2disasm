@@ -20,7 +20,7 @@ loc_1FBE1A:
 	beq.s	loc_1FBE8A
 	move.w	d0,-$1FE2(a5)
 	asl.w	#$3,d0
-	lea.l	-$1FDA(a5),a0
+	lea.l	g_SpriteTable(a5),a0
 	adda.w	d0,a0
 	move.l	a0,-$1FE6(a5)
 	swap	d6

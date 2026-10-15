@@ -9,7 +9,7 @@ sub_1E1928:
 	move.l	-$1870(a5),-$186C(a5)
 	move.b	-$1869(a5),-$1871(a5)
 	beq.s	loc_1E19B6
-	lea.l	-$1FDA(a5),a0
+	lea.l	g_SpriteTable(a5),a0
 	moveq	#$0,d0
 	move.b	-$186C(a5),d0
 	lsl.w	#$3,d0
@@ -29,7 +29,7 @@ loc_1E197C:
 	beq.s	loc_1E19B6
 	move.b	-$186A(a5),-$1867(a5)
 	moveq	#$1,d0
-	and.l	-$3A10(a5),d0
+	and.l	g_VBlankCount(a5),d0
 	bne.s	loc_1E1996
 	move.b	-$186B(a5),-$1867(a5)
 loc_1E1996:

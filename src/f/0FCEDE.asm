@@ -160,7 +160,7 @@ loc_0FCFEC:
 	or.l	d2,d0
 	add.w	$6(a3),d0
 	move.w	d0,d5
-	lea.l	-$1FDA(a5),a0
+	lea.l	g_SpriteTable(a5),a0
 	movea.l	-$1FE6(a5),a1
 	move.b	$3(a1),d0
 	ext.w	d0

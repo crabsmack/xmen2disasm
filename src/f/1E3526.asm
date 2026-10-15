@@ -25,11 +25,11 @@ loc_1E3550:
 	neg.b	d3
 	beq.s	loc_1E356E
 	move.w	-$3BA8(a5),d0
-	and.w	-$3A36(a5),d0
+	and.w	g_Pad1Held(a5),d0
 	bra.s	loc_1E3576
 loc_1E356E:
 	move.w	-$3BA8(a5),d0
-	and.w	-$3A38(a5),d0
+	and.w	g_Pad2Held(a5),d0
 loc_1E3576:
 	addq.w	#$4,a7
 	bne.s	loc_1E358A

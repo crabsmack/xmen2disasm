@@ -32,7 +32,7 @@ loc_13AA4C:
 	sub.w	-$348E(a5),d5
 	move.w	$6(a4),d6
 	sub.w	-$3490(a5),d6
-	lea.l	-$1FDA(a5),a0
+	lea.l	g_SpriteTable(a5),a0
 	movea.l	-$1FE6(a5),a1
 	move.b	$3(a1),d0
 	ext.w	d0
@@ -53,7 +53,7 @@ loc_13AA4C:
 	add.w	#$79,d0
 	movea.l	-$1FE6(a5),a0
 	move.w	d0,$6(a0)
-	lea.l	-$1FDA(a5),a0
+	lea.l	g_SpriteTable(a5),a0
 	movea.l	-$1FE6(a5),a1
 	move.b	$3(a1),d0
 	ext.w	d0

@@ -9,10 +9,10 @@ sub_15C42A:
 	tst.l	-$1666(a5)
 	beq.w	loc_15C5F2
 	moveq	#$7F,d0
-	and.w	-$3A26(a5),d0
+	and.w	g_Pad1Pressed(a5),d0
 	beq.w	loc_15CA36
 	moveq	#$7F,d6
-	and.w	-$3A26(a5),d6
+	and.w	g_Pad1Pressed(a5),d6
 	movea.l	-$1666(a5),a0
 	cmp.b	(a0),d6
 	bne.w	loc_15C5E4

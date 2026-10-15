@@ -15,7 +15,7 @@ sub_0B611E:
 	move.l	g_FrameCounter(a5),d0
 	addq.l	#$1,g_FrameCounter(a5)
 	jsr	sub_0B60BE(pc)
-	tst.b	-$3A02(a5)
+	tst.b	g_PalFadeActive(a5)
 	addq.w	#$8,a7
 	bne.s	loc_0B6152
 	jsr	sub_0B602A(pc)
@@ -25,7 +25,7 @@ loc_0B6152:
 	move.l	g_FrameCounter(a5),d0
 	addq.l	#$1,g_FrameCounter(a5)
 	jsr	sub_0B60BE(pc)
-	tst.b	-$3A02(a5)
+	tst.b	g_PalFadeActive(a5)
 	bne.s	loc_0B616E
 	jsr	sub_0B602A(pc)
 loc_0B616E:
@@ -99,7 +99,7 @@ loc_0B6224:
 	move.w	(a4)+,(a3)+
 	move.w	(a4)+,(a3)+
 	move.w	(a4)+,(a3)+
-	move.b	#$1,-$3A06(a5)
+	move.b	#$1,g_PalBaseDirty(a5)
 loc_0B6242:
 	move.w	-$3B02(a5),-$3B04(a5)
 	movem.l	-$8(a6),a3-a4

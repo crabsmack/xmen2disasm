@@ -2,7 +2,7 @@
 ; sub_077256	[convert.py]
 ; ---------------------------------------------------------------------------
 sub_077256:
-	move.l	-$3A10(a5),d1
+	move.l	g_VBlankCount(a5),d1
 	btst	#$0,d1
 	bne.s	loc_0772B4
 	lea.l	$109A(a5),a0
@@ -61,7 +61,7 @@ loc_077306:
 	ori.l	#$804000,d0
 	swap	d0
 	move.l	d0,-(a7)
-	move.w	-$1D48(a5),d0
+	move.w	g_VdpReg1(a5),d0
 	ori.w	#$10,d0
 	move.w	d0,($C00004).l
 	move.w	#$8F01,($C00004).l
@@ -80,6 +80,6 @@ loc_077306:
 loc_077362:
 	and.w	($C00004).l,d0
 	bne.s	loc_077362
-	move.w	-$1D48(a5),($C00004).l
+	move.w	g_VdpReg1(a5),($C00004).l
 	move.w	#$8F02,($C00004).l
 	rts

@@ -7,7 +7,7 @@ sub_15CAA4:
 	move.l	d0,-$1666(a5)
 	tst.b	-$1FD7(a5)
 	beq.s	loc_15CB30
-	tst.b	-$3A02(a5)
+	tst.b	g_PalFadeActive(a5)
 	bne.s	loc_15CB30
 	tst.w	-$16F0(a5)
 	bgt.s	loc_15CAC6
@@ -15,7 +15,7 @@ sub_15CAA4:
 	ble.s	loc_15CB30
 loc_15CAC6:
 	move.w	#$80,d0
-	and.w	-$3A26(a5),d0
+	and.w	g_Pad1Pressed(a5),d0
 	beq.s	loc_15CAE2
 	tst.w	-$16F0(a5)
 	bgt.s	loc_15CAE2
@@ -25,7 +25,7 @@ loc_15CAC6:
 	bra.s	loc_15CB30
 loc_15CAE2:
 	move.w	#$80,d0
-	and.w	-$3A28(a5),d0
+	and.w	g_Pad2Pressed(a5),d0
 	beq.s	loc_15CAFE
 	tst.w	-$17E0(a5)
 	bgt.s	loc_15CAFE
@@ -37,8 +37,8 @@ loc_15CAFE:
 	clr.b	-$1662(a5)
 	move.b	#$1,-$1668(a5)
 	move.w	#$FF7F,d0
-	and.w	-$3A2E(a5),d0
-	move.w	d0,-$3A2E(a5)
+	and.w	g_Pad1Latch(a5),d0
+	move.w	d0,g_Pad1Latch(a5)
 	jsr	$5232(a5)	; -> Snd_Pause
 	jsr	sub_15C306(pc)
 	jsr	sub_15C32E(pc)

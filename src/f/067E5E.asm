@@ -25,7 +25,7 @@ loc_067E82:
 	cmpi.w	#$1,d0
 	bne.s	loc_067ECA
 	move.w	#$80,d0
-	and.w	-$3A26(a5),d0
+	and.w	g_Pad1Pressed(a5),d0
 	beq.s	loc_067EF4
 	movea.l	a4,a0
 	move.b	#$1,$34(a0)
@@ -37,7 +37,7 @@ loc_067E82:
 	bra.w	loc_067FC0
 loc_067ECA:
 	move.w	#$80,d0
-	and.w	-$3A28(a5),d0
+	and.w	g_Pad2Pressed(a5),d0
 	beq.s	loc_067EF4
 	movea.l	$8C(a3),a0
 	move.b	#$1,$34(a0)
@@ -60,7 +60,7 @@ loc_067F08:
 	cmpi.w	#$1,d0
 	bne.s	loc_067F62
 	moveq	#$4,d0
-	and.w	-$3A2E(a5),d0
+	and.w	g_Pad1Latch(a5),d0
 	beq.s	loc_067F3C
 	movea.l	$8C(a3),a0
 	move.b	#$1,$34(a0)
@@ -72,7 +72,7 @@ loc_067F08:
 	bra.w	loc_067FC0
 loc_067F3C:
 	moveq	#$8,d0
-	and.w	-$3A2E(a5),d0
+	and.w	g_Pad1Latch(a5),d0
 	beq.s	loc_067FAE
 	movea.l	$8C(a3),a0
 	move.b	#$1,$34(a0)
@@ -84,7 +84,7 @@ loc_067F3C:
 	bra.s	loc_067FC0
 loc_067F62:
 	moveq	#$4,d0
-	and.w	-$3A30(a5),d0
+	and.w	g_Pad2Latch(a5),d0
 	beq.s	loc_067F88
 	movea.l	$8C(a3),a0
 	move.b	#$1,$34(a0)
@@ -96,7 +96,7 @@ loc_067F62:
 	bra.s	loc_067FC0
 loc_067F88:
 	moveq	#$8,d0
-	and.w	-$3A30(a5),d0
+	and.w	g_Pad2Latch(a5),d0
 	beq.s	loc_067FAE
 	movea.l	$8C(a3),a0
 	move.b	#$1,$34(a0)

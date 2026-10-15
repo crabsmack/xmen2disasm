@@ -11,7 +11,7 @@ sub_15C32E:
 	ori.w	#$8000,d7
 	move.w	d6,d0
 	add.w	#$60,d0
-	move.w	d0,-$1FDA(a5)
+	move.w	d0,g_SpriteTable(a5)
 	move.b	#$5,-$1FD8(a5)
 	move.w	d7,-$1FD6(a5)
 	move.w	d5,d0

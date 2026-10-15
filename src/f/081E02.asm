@@ -32,7 +32,7 @@ sub_081E02:
 	lea.l	$1112(a5),a0
 	move.l	$2(a0),-(a7)
 	jsr	$4FCA(a5)	; -> sub_1F98A8
-	move.w	#$200,-$3980(a5)
+	move.w	#$200,g_PalBase(a5)
 	lea.l	$112A(a5),a0
 	movea.l	$2(a0),a4
 	lea.l	-$3940(a5),a3
@@ -47,7 +47,7 @@ loc_081E6E:
 	bgt.s	loc_081E6E
 	lea.l	$1122(a5),a0
 	movea.l	$2(a0),a3
-	lea.l	-$3980(a5),a4
+	lea.l	g_PalBase(a5),a4
 	moveq	#$0,d7
 	moveq	#$10,d3
 loc_081E88:

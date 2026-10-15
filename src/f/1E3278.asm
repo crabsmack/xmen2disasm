@@ -10,11 +10,11 @@ sub_1E3278:
 	neg.b	d3
 	beq.s	loc_1E3298
 	move.w	-$3BA8(a5),d0
-	and.w	-$3A2A(a5),d0
+	and.w	g_Pad1Released(a5),d0
 	bra.s	loc_1E32A0
 loc_1E3298:
 	move.w	-$3BA8(a5),d0
-	and.w	-$3A2C(a5),d0
+	and.w	g_Pad2Released(a5),d0
 loc_1E32A0:
 	beq.s	loc_1E32DA
 	moveq	#$0,d0

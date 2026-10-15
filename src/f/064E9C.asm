@@ -14,8 +14,8 @@ loc_064EB6:
 	moveq	#$2,d0
 	cmp.w	-$3B02(a5),d0
 	bne.s	loc_064ED6
-	move.w	-$3A28(a5),d0
-	or.w	-$3A26(a5),d0
+	move.w	g_Pad2Pressed(a5),d0
+	or.w	g_Pad1Pressed(a5),d0
 	move.w	#$F0,d1
 	and.w	d0,d1
 	beq.s	loc_064ED6

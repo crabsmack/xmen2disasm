@@ -73,11 +73,11 @@ loc_1A6BFA:
 	neg.b	d3
 	beq.s	loc_1A6C0E
 	move.w	-$3B9E(a5),d0
-	and.w	-$3A36(a5),d0
+	and.w	g_Pad1Held(a5),d0
 	bra.s	loc_1A6C16
 loc_1A6C0E:
 	move.w	-$3B9E(a5),d0
-	and.w	-$3A38(a5),d0
+	and.w	g_Pad2Held(a5),d0
 loc_1A6C16:
 	beq.s	loc_1A6C2C
 	clr.w	$6C(a4)

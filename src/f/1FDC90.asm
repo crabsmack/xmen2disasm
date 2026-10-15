@@ -7,14 +7,14 @@
 VDP_FrameUpdate:
 	link.w	a6,#$0
 	move.b	#$1,-$3A08(a5)
-	tst.b	-$3A0C(a5)
+	tst.b	g_FrameUpdated(a5)
 	bne.s	loc_1FDCC2
-	move.b	#$1,-$3A0C(a5)
+	move.b	#$1,g_FrameUpdated(a5)
 	jsr	Pal_Update(pc)
 	jsr	$4DEA(a5)	; -> VDP_UpdateScroll
-	tst.b	-$1D4A(a5)
+	tst.b	g_DmaFlushReq(a5)
 	beq.s	loc_1FDCC2
-	clr.b	-$1D4A(a5)
+	clr.b	g_DmaFlushReq(a5)
 	jsr	$51E2(a5)	; -> VDP_FlushDmaQueue
 	move.b	#$1,-$3A0A(a5)
 loc_1FDCC2:

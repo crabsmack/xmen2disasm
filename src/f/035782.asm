@@ -38,7 +38,7 @@ sub_035782:
 	moveq	#$7,d0
 	move.l	d0,-(a7)
 	jsr	$521A(a5)	; -> Snd_Play
-	clr.w	-$3980(a5)
+	clr.w	g_PalBase(a5)
 	clr.b	-$38DE(a5)
 	move.w	#$7F,-$3498(a5)
 	move.w	#$A0,-$3496(a5)

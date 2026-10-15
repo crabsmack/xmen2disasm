@@ -6,10 +6,10 @@ sub_00FA24:
 	movem.l	d6-d7/a4,-(a7)
 	movea.l	$8(a6),a4
 	moveq	#$1,d7
-	clr.w	-$3A26(a5)
-	clr.w	-$3A28(a5)
-	clr.w	-$3A2E(a5)
-	clr.w	-$3A30(a5)
+	clr.w	g_Pad1Pressed(a5)
+	clr.w	g_Pad2Pressed(a5)
+	clr.w	g_Pad1Latch(a5)
+	clr.w	g_Pad2Latch(a5)
 	moveq	#$60,d0
 	cmp.w	-$3490(a5),d0
 	blt.w	loc_00FAD0
@@ -41,7 +41,7 @@ loc_00FA70:
 loc_00FA94:
 	tst.b	d7
 	beq.w	loc_00FB4A
-	clr.b	-$18AC(a5)
+	clr.b	g_SndMute(a5)
 	moveq	#$0,d0
 	move.l	d0,-(a7)
 	jsr	$5222(a5)	; -> Snd_Stop

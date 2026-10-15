@@ -4,15 +4,15 @@
 sub_160594:
 	link.w	a6,#$0
 	move.w	#$8004,($C00004).l
-	move.w	#$8124,-$1D48(a5)
-	move.w	-$1D48(a5),($C00004).l
+	move.w	#$8124,g_VdpReg1(a5)
+	move.w	g_VdpReg1(a5),($C00004).l
 	move.w	#$8238,($C00004).l
 	move.w	#$8334,($C00004).l
 	move.w	#$8400,($C00004).l
 	move.w	#$8578,($C00004).l
 	move.w	#$8700,($C00004).l
 	move.w	#$8A00,($C00004).l
-	move.w	-$204(a5),($C00004).l
+	move.w	g_VdpReg11(a5),($C00004).l
 	move.w	#$8C81,($C00004).l
 	move.w	#$8D3D,($C00004).l
 	move.w	#$8F02,($C00004).l

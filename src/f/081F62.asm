@@ -6,9 +6,9 @@ sub_081F62:
 	movem.l	d3/d7/a3-a4,-(a7)
 	tst.w	-$3B04(a5)
 	bne.w	loc_081FF4
-	tst.b	-$3A02(a5)
+	tst.b	g_PalFadeActive(a5)
 	bne.s	loc_081FF4
-	tst.b	-$3A02(a5)
+	tst.b	g_PalFadeActive(a5)
 	bne.s	loc_081FF4
 	move.w	-$3B02(a5),d7
 	move.w	-$3490(a5),d0

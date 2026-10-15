@@ -25,7 +25,7 @@ loc_038A3E:
 loc_038A46:
 	move.w	#$C0,-$3962(a5)
 loc_038A4C:
-	tst.b	-$3A02(a5)
+	tst.b	g_PalFadeActive(a5)
 	seq.b	d3
 	neg.b	d3
-	move.b	d3,-$3A06(a5)
+	move.b	d3,g_PalBaseDirty(a5)

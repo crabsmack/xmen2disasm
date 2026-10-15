@@ -16,7 +16,7 @@ loc_034D96:
 	lea.l	$71A(a5),a0
 	movea.l	$2(a0),a4
 	move.w	#$5,-$3B32(a5)
-	move.b	#$1,-$3A06(a5)
+	move.b	#$1,g_PalBaseDirty(a5)
 	move.b	-$3CB0(a5),d0
 	cmp.b	(a4),d0
 	bne.s	loc_034DBE

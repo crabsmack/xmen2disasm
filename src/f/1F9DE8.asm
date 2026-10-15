@@ -3,7 +3,7 @@
 ; ---------------------------------------------------------------------------
 sub_1F9DE8:
 	link.w	a6,#$0
-	movea.l	-$3A1E(a5),a0
+	movea.l	g_DemoInput(a5),a0
 	moveq	#$0,d0
 	move.b	(a0),d0
 	move.w	#$FF,d1
@@ -18,17 +18,17 @@ sub_1F9DE8:
 	cmp.l	d0,d1
 	bne.s	loc_1F9E42
 	move.l	a0,d0
-	addq.l	#$1,-$3A1E(a5)
-	movea.l	-$3A1E(a5),a0
-	addq.l	#$1,-$3A1E(a5)
+	addq.l	#$1,g_DemoInput(a5)
+	movea.l	g_DemoInput(a5),a0
+	addq.l	#$1,g_DemoInput(a5)
 	move.b	(a0),d0
 	ext.w	d0
-	move.w	d0,-$3A20(a5)
+	move.w	d0,g_DemoPad(a5)
 	move.w	-$3A24(a5),-$3A22(a5)
 	moveq	#-$1,d0
-	cmp.w	-$3A20(a5),d0
+	cmp.w	g_DemoPad(a5),d0
 	bne.s	loc_1F9E42
-	clr.w	-$3A20(a5)
+	clr.w	g_DemoPad(a5)
 	moveq	#$2,d0
 	move.l	d0,-(a7)
 	jsr	$4F8A(a5)	; -> sub_1F944E

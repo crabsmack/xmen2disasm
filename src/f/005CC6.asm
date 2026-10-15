@@ -9,7 +9,7 @@ Game_SceneLoop:
 	movem.l	d3/d5-d7/a3-a4,-(a7)
 	moveq	#$0,d0
 	move.l	d0,-$38B0(a5)
-	clr.b	-$3A1A(a5)
+	clr.b	g_DemoActive(a5)
 	clr.b	-$38B6(a5)
 	clr.b	-$38C4(a5)
 	move.w	#$3,-$38AC(a5)

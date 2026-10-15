@@ -4,12 +4,12 @@
 sub_1073A8:
 	link.w	a6,#$0
 	move.l	a4,-(a7)
-	lea.l	-$3980(a5),a4
+	lea.l	g_PalBase(a5),a4
 	subq.w	#$1,-$3B34(a5)
 	tst.w	-$3B34(a5)
 	bge.w	loc_10747C
 	move.w	#$3,-$3B34(a5)
-	move.b	#$1,-$3A06(a5)
+	move.b	#$1,g_PalBaseDirty(a5)
 	move.w	-$3B3C(a5),d0
 	bmi.w	loc_10746C
 	cmpi.w	#$D,d0

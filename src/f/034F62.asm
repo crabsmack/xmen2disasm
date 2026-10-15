@@ -20,7 +20,7 @@ loc_034F90:
 	tst.w	-$3B34(a5)
 	bgt.w	loc_035184
 	move.w	#$4,-$3B34(a5)
-	move.b	#$1,-$3A06(a5)
+	move.b	#$1,g_PalBaseDirty(a5)
 	move.w	-$3B3C(a5),d0
 	bmi.w	loc_035174
 	cmpi.w	#$E,d0

@@ -54,7 +54,7 @@ loc_03A358:
 	bge.s	loc_03A3CE
 	cmpi.l	#$E0,d7
 	bge.s	loc_03A3CE
-	lea.l	-$1FDA(a5),a0
+	lea.l	g_SpriteTable(a5),a0
 	movea.l	-$1FE6(a5),a1
 	move.b	$3(a1),d0
 	ext.w	d0
@@ -109,7 +109,7 @@ loc_03A3F2:
 	bge.s	loc_03A468
 	cmpi.l	#$E0,d7
 	bge.s	loc_03A468
-	lea.l	-$1FDA(a5),a0
+	lea.l	g_SpriteTable(a5),a0
 	movea.l	-$1FE6(a5),a1
 	move.b	$3(a1),d0
 	ext.w	d0
@@ -148,7 +148,7 @@ loc_03A468:
 	bge.s	loc_03A4E4
 	cmpi.l	#$E0,d7
 	bge.s	loc_03A4E4
-	lea.l	-$1FDA(a5),a0
+	lea.l	g_SpriteTable(a5),a0
 	movea.l	-$1FE6(a5),a1
 	move.b	$3(a1),d0
 	ext.w	d0

@@ -10,11 +10,11 @@ sub_1A6410:
 	neg.b	d3
 	beq.s	loc_1A6430
 	move.w	-$3B9E(a5),d0
-	and.w	-$3A36(a5),d0
+	and.w	g_Pad1Held(a5),d0
 	bra.s	loc_1A6438
 loc_1A6430:
 	move.w	-$3B9E(a5),d0
-	and.w	-$3A38(a5),d0
+	and.w	g_Pad2Held(a5),d0
 loc_1A6438:
 	beq.s	loc_1A644E
 	clr.w	$6C(a4)

@@ -7,7 +7,7 @@ sub_0F4314:
 	move.w	#$C8,$42(a0)
 	move.l	g_FrameCounter(a5),d0
 	addq.l	#$1,g_FrameCounter(a5)
-	tst.b	-$3A02(a5)
+	tst.b	g_PalFadeActive(a5)
 	bne.s	loc_0F4334
 	jsr	$23F2(a5)	; -> sub_0DC2CE
 loc_0F4334:
@@ -15,7 +15,7 @@ loc_0F4334:
 	beq.s	loc_0F434C
 	move.l	g_FrameCounter(a5),d0
 	addq.l	#$1,g_FrameCounter(a5)
-	tst.b	-$3A02(a5)
+	tst.b	g_PalFadeActive(a5)
 	bne.s	loc_0F434C
 	jsr	$23F2(a5)	; -> sub_0DC2CE
 loc_0F434C:

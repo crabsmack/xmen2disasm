@@ -171,7 +171,7 @@ loc_065140:
 	move.l	d7,d0
 	add.l	d0,d0
 	move.w	(a0,d0.l),-$3912(a5)
-	move.b	#$1,-$3A06(a5)
+	move.b	#$1,g_PalBaseDirty(a5)
 	jsr	sub_064E9C(pc)
 	jsr	$5112(a5)	; -> VDP_WaitVBlank
 	move.w	d7,d0
@@ -280,7 +280,7 @@ loc_06527E:
 	move.l	d7,d0
 	add.l	d0,d0
 	move.w	(a0,d0.l),-$3912(a5)
-	move.b	#$1,-$3A06(a5)
+	move.b	#$1,g_PalBaseDirty(a5)
 	jsr	sub_064E9C(pc)
 	jsr	$5112(a5)	; -> VDP_WaitVBlank
 	jsr	sub_064E9C(pc)

@@ -5,7 +5,7 @@ sub_112664:
 	link.w	a6,#$0
 	move.l	a4,-(a7)
 	movea.l	$8(a6),a4
-	move.b	#$1,-$3A06(a5)
+	move.b	#$1,g_PalBaseDirty(a5)
 	tst.l	$44(a4)
 	bne.s	loc_11268A
 	moveq	#$4,d0

@@ -2,10 +2,10 @@
 ; Pad_GetP2Clean - pad 2 raw buttons with impossible Up+Down / Left+Right pairs cleared
 ; In:  none
 ; Out: d0 = word: buttons
-; Evidence: same as Pad_GetP1Clean on word -$7A6(a5)
+; Evidence: same as Pad_GetP1Clean on word g_Pad2Raw(a5)
 ; ---------------------------------------------------------------------------
 Pad_GetP2Clean:
-	move.w	-$7A6(a5),d0
+	move.w	g_Pad2Raw(a5),d0
 loc_1FE022:
 	move.w	d0,d1
 	moveq	#$3,d2

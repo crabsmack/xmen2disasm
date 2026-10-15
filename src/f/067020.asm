@@ -17,7 +17,7 @@ sub_067020:
 	move.w	#$27,-$3C5A(a5)
 	jsr	sub_065400(pc)
 	clr.w	d7
-	lea.l	-$3980(a5),a4
+	lea.l	g_PalBase(a5),a4
 	moveq	#$40,d3
 	bra.s	loc_067070
 loc_067068:
@@ -28,7 +28,7 @@ loc_067068:
 loc_067070:
 	cmp.w	d7,d3
 	bgt.s	loc_067068
-	move.b	#$1,-$3A06(a5)
+	move.b	#$1,g_PalBaseDirty(a5)
 	jsr	$5112(a5)	; -> VDP_WaitVBlank
 	move.w	-$3598(a5),d0
 	ext.l	d0
@@ -96,8 +96,8 @@ loc_0670F4:
 	bra.s	loc_067144
 loc_06712C:
 	subq.w	#$1,d7
-	move.w	-$7A6(a5),d0
-	or.w	-$7A8(a5),d0
+	move.w	g_Pad2Raw(a5),d0
+	or.w	g_Pad1Raw(a5),d0
 	move.w	#$F0,d1
 	and.w	d0,d1
 	beq.s	loc_067140
@@ -119,7 +119,7 @@ loc_067144:
 loc_067162:
 	jsr	$5112(a5)	; -> VDP_WaitVBlank
 loc_067166:
-	tst.b	-$3A02(a5)
+	tst.b	g_PalFadeActive(a5)
 	bne.s	loc_067162
 	jsr	$32(a5)	; -> Game_ResetPlayers
 	clr.w	-$3C5E(a5)

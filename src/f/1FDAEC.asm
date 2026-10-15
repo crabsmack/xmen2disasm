@@ -2,7 +2,7 @@
 ; Scroll_SetParallax - install a parallax (line/column scroll) descriptor and set VDP reg 11 scroll mode for it
 ; In:  8(a6) = pointer: descriptor (byte type, '2' = column vscroll; byte count; 8-byte band records)
 ; Out: none
-; Evidence: reg 11 shadow -$204(a5) + 4 (2-cell vscroll) for type '2', else + 3 (line hscroll); stores the pointer in -$3A44(a5); per-band longs at -$846(a5), case 1 bands computed via sub_1F6258/sub_15C222; clears the 448 words at -$BC6(a5)
+; Evidence: reg 11 shadow g_VdpReg11(a5) + 4 (2-cell vscroll) for type '2', else + 3 (line hscroll); stores the pointer in g_ParallaxDesc(a5); per-band longs at -$846(a5), case 1 bands computed via sub_1F6258/sub_15C222; clears the 448 words at g_HScrollBuf(a5)
 ; ---------------------------------------------------------------------------
 Scroll_SetParallax:
 	link.w	a6,#$FFF6
@@ -14,17 +14,17 @@ Scroll_SetParallax:
 	beq.s	loc_1FDB1C
 	move.w	#$7BE,-$1D42(a5)
 	move.w	#$42,-$1D44(a5)
-	move.w	-$204(a5),d0
+	move.w	g_VdpReg11(a5),d0
 	addq.w	#$3,d0
 	move.w	d0,($C00004).l
 	bra.s	loc_1FDB28
 loc_1FDB1C:
-	move.w	-$204(a5),d0
+	move.w	g_VdpReg11(a5),d0
 	addq.w	#$4,d0
 	move.w	d0,($C00004).l
 loc_1FDB28:
 	movea.l	$8(a6),a0
-	move.l	a0,-$3A44(a5)
+	move.l	a0,g_ParallaxDesc(a5)
 	move.b	$1(a0),d0
 	ext.w	d0
 	move.w	d0,-$2(a6)

@@ -3,7 +3,7 @@
 ; ---------------------------------------------------------------------------
 sub_15B0D0:
 	link.w	a6,#$0
-	move.l	$8(a6),-$3A18(a5)
+	move.l	$8(a6),g_VBlankGameHook(a5)
 	move.l	$C(a6),-(a7)
 	jsr	$4FEA(a5)	; -> sub_1F9D38
 	unlk	a6

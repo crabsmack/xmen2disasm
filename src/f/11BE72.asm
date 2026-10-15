@@ -97,7 +97,7 @@ loc_11BF24:
 	add.l	d6,d0
 	cmpi.l	#$E0,d0
 	bge.s	loc_11BFA0
-	lea.l	-$1FDA(a5),a0
+	lea.l	g_SpriteTable(a5),a0
 	movea.l	-$1FE6(a5),a1
 	move.b	$3(a1),d0
 	ext.w	d0
@@ -182,7 +182,7 @@ loc_11BFF2:
 	add.l	d6,d0
 	cmpi.l	#$E0,d0
 	bge.s	loc_11C06E
-	lea.l	-$1FDA(a5),a0
+	lea.l	g_SpriteTable(a5),a0
 	movea.l	-$1FE6(a5),a1
 	move.b	$3(a1),d0
 	ext.w	d0
@@ -267,7 +267,7 @@ loc_11C0C0:
 	add.l	d6,d0
 	cmpi.l	#$E0,d0
 	bge.s	loc_11C13C
-	lea.l	-$1FDA(a5),a0
+	lea.l	g_SpriteTable(a5),a0
 	movea.l	-$1FE6(a5),a1
 	move.b	$3(a1),d0
 	ext.w	d0

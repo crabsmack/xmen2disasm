@@ -4,11 +4,11 @@
 sub_15FA7A:
 	link.w	a6,#$FFFC
 	movem.l	d6-d7/a2-a4,-(a7)
-	move.l	-$3A14(a5),-$4(a6)
+	move.l	g_VBlankHook(a5),-$4(a6)
 	lea.l	$50EA(a5),a0
-	move.l	a0,-$3A14(a5)
-	sf.b	-$3A06(a5)
-	lea.l	-$3980(a5),a4
+	move.l	a0,g_VBlankHook(a5)
+	sf.b	g_PalBaseDirty(a5)
+	lea.l	g_PalBase(a5),a4
 	move.w	$E(a6),d0
 	lsl.w	#$5,d0
 	adda.w	d0,a4
@@ -29,7 +29,7 @@ loc_15FAB8:
 	move.w	d0,(a1)+
 	dbra	d6,loc_15FAB8
 loc_15FAC2:
-	st.b	-$3A06(a5)
+	st.b	g_PalBaseDirty(a5)
 	moveq	#$3,d7
 loc_15FAC8:
 	bsr.w	sub_15FBAE
@@ -53,7 +53,7 @@ loc_15FAEC:
 	bne.s	loc_15FAFE
 	move.w	#$EEE,$2(a4)
 loc_15FAFE:
-	st.b	-$3A06(a5)
+	st.b	g_PalBaseDirty(a5)
 	moveq	#$1,d7
 loc_15FB04:
 	bsr.w	sub_15FBAE
@@ -75,12 +75,12 @@ loc_15FB26:
 	move.w	d0,(a1)+
 	dbra	d6,loc_15FB26
 loc_15FB30:
-	st.b	-$3A06(a5)
+	st.b	g_PalBaseDirty(a5)
 	moveq	#$4,d7
 loc_15FB36:
 	bsr.w	sub_15FBAE
-	move.w	-$7A8(a5),d0
-	or.w	-$7A6(a5),d0
+	move.w	g_Pad1Raw(a5),d0
+	or.w	g_Pad2Raw(a5),d0
 	andi.w	#$F0,d0
 	bne.s	loc_15FB8A
 	dbra	d7,loc_15FB36
@@ -98,12 +98,12 @@ loc_15FB5E:
 	move.w	d0,(a1)+
 	dbra	d6,loc_15FB5E
 loc_15FB68:
-	st.b	-$3A06(a5)
+	st.b	g_PalBaseDirty(a5)
 	moveq	#$4,d7
 loc_15FB6E:
 	bsr.w	sub_15FBAE
-	move.w	-$7A8(a5),d0
-	or.w	-$7A6(a5),d0
+	move.w	g_Pad1Raw(a5),d0
+	or.w	g_Pad2Raw(a5),d0
 	andi.w	#$F0,d0
 	bne.s	loc_15FB8A
 	dbra	d7,loc_15FB6E
@@ -117,9 +117,9 @@ loc_15FB8A:
 loc_15FB90:
 	move.l	d0,(a0)+
 	dbra	d1,loc_15FB90
-	st.b	-$3A06(a5)
+	st.b	g_PalBaseDirty(a5)
 	bsr.w	sub_15FBAE
-	move.l	-$4(a6),-$3A14(a5)
+	move.l	-$4(a6),g_VBlankHook(a5)
 	movem.l	-$18(a6),d6-d7/a2-a4
 	unlk	a6
 	rts

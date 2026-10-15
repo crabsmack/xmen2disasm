@@ -12,7 +12,7 @@ VDP_DmaToVram:
 	ori.l	#$804000,d0
 	swap	d0
 	move.l	d0,-(a7)
-	move.w	-$1D48(a5),d0
+	move.w	g_VdpReg1(a5),d0
 	ori.w	#$10,d0
 	move.w	d0,($C00004).l
 	move.w	$12(a7),d1
@@ -41,5 +41,5 @@ VDP_DmaToVram:
 loc_1FE168:
 	and.w	($C00004).l,d0
 	bne.s	loc_1FE168
-	move.w	-$1D48(a5),($C00004).l
+	move.w	g_VdpReg1(a5),($C00004).l
 	rts

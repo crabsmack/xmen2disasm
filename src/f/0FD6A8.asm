@@ -19,9 +19,9 @@ sub_0FD6A8:
 	jsr	sub_0FD614(pc)
 	jsr	sub_0FD69C(pc)
 	move.b	#$1,-$3ABA(a5)
-	clr.b	-$3A06(a5)
+	clr.b	g_PalBaseDirty(a5)
 	jsr	$2322(a5)	; -> sub_0C1412
-	move.w	#$27,-$38D2(a5)
+	move.w	#$27,g_MusicTrack(a5)
 	moveq	#$27,d0
 	move.l	d0,-(a7)
 	moveq	#$0,d1

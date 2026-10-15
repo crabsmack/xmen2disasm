@@ -5,7 +5,7 @@
 ; Evidence: SR masked, Z80_BusRequest, reads $A01B22+idx, Z80_BusFree; one caller sub_09B45E (TAS frames 51133-51930)
 ; ---------------------------------------------------------------------------
 Snd_ReadDriverByte:
-	tst.b	-$18AC(a5)
+	tst.b	g_SndMute(a5)
 	bne.s	loc_1FE66A
 	move.w	sr,-(a7)
 	ori.w	#$700,sr

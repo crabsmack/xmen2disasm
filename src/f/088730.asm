@@ -156,10 +156,10 @@ loc_0888F0:
 	moveq	#$10,d0
 	move.l	d0,-(a7)
 	jsr	$3382(a5)	; -> sub_11F1A6
-	move.w	#$200,-$3980(a5)
+	move.w	#$200,g_PalBase(a5)
 	lea.l	$1122(a5),a0
 	movea.l	$2(a0),a4
-	lea.l	-$3980(a5),a3
+	lea.l	g_PalBase(a5),a3
 	moveq	#$0,d7
 	moveq	#$10,d3
 	addq.w	#$4,a7

@@ -17,7 +17,7 @@ loc_04746A:
 loc_047476:
 	tst.w	-$3B34(a5)
 	bgt.s	loc_0474B2
-	move.b	#$1,-$3A06(a5)
+	move.b	#$1,g_PalBaseDirty(a5)
 	move.w	#$4,-$3B34(a5)
 	tst.w	-$3B3C(a5)
 	beq.s	loc_0474A0
@@ -34,7 +34,7 @@ loc_0474B2:
 	bne.s	loc_0474F0
 	tst.w	-$3B36(a5)
 	bgt.s	loc_0474F0
-	move.b	#$1,-$3A06(a5)
+	move.b	#$1,g_PalBaseDirty(a5)
 	move.w	-$3B38(a5),-$3B36(a5)
 	addq.w	#$1,-$3B3E(a5)
 	moveq	#$15,d0
@@ -52,7 +52,7 @@ loc_0474DA:
 loc_0474F0:
 	tst.w	-$3B32(a5)
 	bgt.w	loc_0475AA
-	move.b	#$1,-$3A06(a5)
+	move.b	#$1,g_PalBaseDirty(a5)
 	move.w	#$2,-$3B02(a5)
 	move.w	-$3B02(a5),-$3B32(a5)
 	tst.w	-$3B04(a5)

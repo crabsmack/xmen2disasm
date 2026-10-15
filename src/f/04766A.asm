@@ -49,12 +49,12 @@ loc_0476C2:
 loc_0476EA:
 	move.l	d7,d0
 	add.w	d0,d0
-	lea.l	-$3980(a5),a0
+	lea.l	g_PalBase(a5),a0
 	move.w	(a4)+,(a0,d0.w)
 	addq.l	#$1,d7
 	cmp.l	d7,d3
 	bgt.s	loc_0476EA
-	move.b	#$1,-$3A06(a5)
+	move.b	#$1,g_PalBaseDirty(a5)
 	move.w	#$1,-$3B0E(a5)
 	movem.l	-$10(a6),d3/d7/a3-a4
 	unlk	a6

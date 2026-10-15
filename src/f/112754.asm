@@ -49,7 +49,7 @@ loc_1127DA:
 	move.l	g_FrameCounter(a5),-(a7)
 	pea.l	-$3940(a5)
 	jsr	$4DAA(a5)	; -> Mem_Copy
-	move.b	#$1,-$3A06(a5)
+	move.b	#$1,g_PalBaseDirty(a5)
 	moveq	#$2,d0
 	and.l	g_FrameCounter(a5),d0
 	lea.l	$C(a7),a7

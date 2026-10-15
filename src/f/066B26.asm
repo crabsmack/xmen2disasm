@@ -69,18 +69,18 @@ loc_066B48:
 	move.w	-$3C56(a5),-$3B06(a5)
 	clr.w	-$359A(a5)
 	moveq	#$0,d0
-	move.l	d0,-$3A10(a5)
+	move.l	d0,g_VBlankCount(a5)
 	clr.w	-$3A22(a5)
 	clr.w	-$3A24(a5)
 	clr.b	-$38C2(a5)
 	move.w	-$3598(a5),-$3888(a5)
 	jsr	$5042(a5)	; -> sub_1FA956
 	jsr	$50FA(a5)	; -> Pad_Update
-	ori.w	#$40,-$1D48(a5)
-	move.w	-$1D48(a5),($C00004).l
+	ori.w	#$40,g_VdpReg1(a5)
+	move.w	g_VdpReg1(a5),($C00004).l
 	move.w	#$9100,($C00004).l
 	move.w	#$929C,($C00004).l
-	clr.b	-$3A06(a5)
+	clr.b	g_PalBaseDirty(a5)
 	lea.l	$5142(a5),a0
 	move.l	$2(a0),-(a7)
 	moveq	#-$1,d0
@@ -117,7 +117,7 @@ loc_066CB2:
 loc_066CBA:
 	jsr	$5112(a5)	; -> VDP_WaitVBlank
 loc_066CBE:
-	tst.b	-$3A02(a5)
+	tst.b	g_PalFadeActive(a5)
 	bne.s	loc_066CBA
 	jsr	sub_065494(pc)
 	jsr	sub_065E6C(pc)
@@ -138,8 +138,8 @@ loc_066CE2:
 loc_066CEA:
 	cmp.w	d7,d3
 	bgt.s	loc_066CE2
-	move.b	#$1,-$3A06(a5)
-	move.b	#$1,-$1D4A(a5)
+	move.b	#$1,g_PalBaseDirty(a5)
+	move.b	#$1,g_DmaFlushReq(a5)
 	jsr	$5112(a5)	; -> VDP_WaitVBlank
 	jsr	sub_065494(pc)
 	jsr	sub_065400(pc)
@@ -172,7 +172,7 @@ loc_066D24:
 loc_066D48:
 	jsr	$5112(a5)	; -> VDP_WaitVBlank
 loc_066D4C:
-	tst.b	-$3A02(a5)
+	tst.b	g_PalFadeActive(a5)
 	bne.s	loc_066D48
 	move.w	#$A0,-$3902(a5)
 	move.w	#$80,-$3904(a5)
@@ -183,7 +183,7 @@ loc_066D4C:
 	move.w	#$A,-$390E(a5)
 	move.w	#$8,-$3910(a5)
 	clr.w	-$391E(a5)
-	move.b	#$1,-$3A06(a5)
+	move.b	#$1,g_PalBaseDirty(a5)
 	jsr	sub_065532(pc)
 loc_066D90:
 	tst.w	-$3B0A(a5)
@@ -200,7 +200,7 @@ loc_066D90:
 loc_066DB0:
 	jsr	$5112(a5)	; -> VDP_WaitVBlank
 loc_066DB4:
-	tst.b	-$3A02(a5)
+	tst.b	g_PalFadeActive(a5)
 	bne.s	loc_066DB0
 	jsr	sub_065400(pc)
 	move.w	#$A0,-$3902(a5)
@@ -212,7 +212,7 @@ loc_066DB4:
 	move.w	#$A,-$390E(a5)
 	move.w	#$8,-$3910(a5)
 	clr.w	-$391E(a5)
-	move.b	#$1,-$3A06(a5)
+	move.b	#$1,g_PalBaseDirty(a5)
 	moveq	#-$1,d7
 	tst.w	g_P1Health(a5)
 	beq.s	loc_066E0C
@@ -236,8 +236,8 @@ loc_066E20:
 	jsr	sub_0656B0(pc)
 	jsr	$5242(a5)	; -> Snd_StopAll
 loc_066E38:
-	clr.b	-$3A06(a5)
-	tst.b	-$3A02(a5)
+	clr.b	g_PalBaseDirty(a5)
+	tst.b	g_PalFadeActive(a5)
 	bne.s	loc_066E60
 	lea.l	$5142(a5),a0
 	move.l	$2(a0),-(a7)
@@ -251,7 +251,7 @@ loc_066E38:
 loc_066E5C:
 	jsr	$5112(a5)	; -> VDP_WaitVBlank
 loc_066E60:
-	tst.b	-$3A02(a5)
+	tst.b	g_PalFadeActive(a5)
 	bne.s	loc_066E5C
 	jsr	$5112(a5)	; -> VDP_WaitVBlank
 	move.w	g_P1Health(a5),-$16F0(a5)

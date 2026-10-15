@@ -9,7 +9,7 @@ sub_00FB54:
 loc_00FB60:
 	move.w	d7,d0
 	add.w	d0,d0
-	lea.l	-$3980(a5),a0
+	lea.l	g_PalBase(a5),a0
 	ext.l	d7
 	movea.l	-$3B14(a5),a1
 	move.l	d7,d1
@@ -36,7 +36,7 @@ loc_00FB60:
 	move.w	#$430,-$3490(a5)
 	move.w	-$3490(a5),-$3AC4(a5)
 	move.w	#$E0,-$3AC8(a5)
-	lea.l	-$3980(a5),a4
+	lea.l	g_PalBase(a5),a4
 	clr.w	d7
 	moveq	#$10,d3
 	addq.w	#$8,a7
@@ -55,7 +55,7 @@ loc_00FBE0:
 	addq.w	#$1,d7
 	cmp.w	d7,d3
 	bgt.s	loc_00FBE0
-	move.b	#$1,-$3A06(a5)
+	move.b	#$1,g_PalBaseDirty(a5)
 	addi.w	#$100,-$3ACC(a5)
 	clr.b	-$13F0(a5)
 	jsr	$4D9A(a5)	; -> Irq_Disable

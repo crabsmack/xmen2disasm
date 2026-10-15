@@ -50,7 +50,7 @@ loc_03A8F0:
 	moveq	#$0,d0
 loc_03A8F2:
 	move.l	d0,-$4(a6)
-	lea.l	-$BC6(a5),a3
+	lea.l	g_HScrollBuf(a5),a3
 	move.w	-$3AC2(a5),d0
 	ext.l	d0
 	neg.l	d0
@@ -131,7 +131,7 @@ loc_03A9B6:
 	bge.w	loc_03AB96
 	cmpi.l	#$E0,d5
 	bge.w	loc_03AB96
-	lea.l	-$BC6(a5),a0
+	lea.l	g_HScrollBuf(a5),a0
 	movea.l	a0,a4
 	addq.w	#$2,a4
 	move.l	#$80,d7
@@ -309,7 +309,7 @@ loc_03ABA2:
 	bne.w	loc_03A93E
 	pea.l	($380).w
 	move.l	#$F400,-(a7)
-	pea.l	-$BC6(a5)
+	pea.l	g_HScrollBuf(a5)
 	jsr	$51DA(a5)	; -> VDP_QueueDma
 	jsr	$4DF2(a5)	; -> Scroll_RequestVsram
 	lea.l	$C(a7),a7

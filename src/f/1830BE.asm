@@ -18,11 +18,11 @@ loc_1830DE:
 	neg.b	d3
 	beq.s	loc_1830F2
 	move.w	-$3BA6(a5),d0
-	and.w	-$3A36(a5),d0
+	and.w	g_Pad1Held(a5),d0
 	bra.s	loc_1830FA
 loc_1830F2:
 	move.w	-$3BA6(a5),d0
-	and.w	-$3A38(a5),d0
+	and.w	g_Pad2Held(a5),d0
 loc_1830FA:
 	beq.s	loc_183106
 	move.w	#$100,d0

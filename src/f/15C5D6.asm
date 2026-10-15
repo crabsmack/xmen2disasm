@@ -13,7 +13,7 @@ loc_15C5E4:
 	bra.w	loc_15CA36
 loc_15C5F2:
 	moveq	#$7F,d6
-	and.w	-$3A2E(a5),d6
+	and.w	g_Pad1Latch(a5),d6
 	tst.w	d6
 	beq.w	loc_15CA36
 	cmpi.w	#$21,d6
@@ -39,7 +39,7 @@ loc_15C62A:
 loc_15C63C:
 	move.w	#$1,-$3C58(a5)
 	moveq	#$C,d0
-	cmp.w	-$7A6(a5),d0
+	cmp.w	g_Pad2Raw(a5),d0
 	bne.s	loc_15C658
 	lea.l	$E0A(a5),a0
 	move.l	$2(a0),-$1666(a5)
@@ -56,7 +56,7 @@ loc_15C666:
 	bne.w	loc_15CA36
 	move.w	#$2,-$3C58(a5)
 	moveq	#$C,d0
-	cmp.w	-$7A6(a5),d0
+	cmp.w	g_Pad2Raw(a5),d0
 	bne.s	loc_15C692
 	lea.l	$E12(a5),a0
 	move.l	$2(a0),-$1666(a5)
@@ -79,7 +79,7 @@ loc_15C6A0:
 loc_15C6C8:
 	move.w	#$3,-$3C58(a5)
 	moveq	#$C,d0
-	cmp.w	-$7A6(a5),d0
+	cmp.w	g_Pad2Raw(a5),d0
 	bne.s	loc_15C6E4
 	lea.l	$E1A(a5),a0
 	move.l	$2(a0),-$1666(a5)
@@ -101,7 +101,7 @@ loc_15C6F2:
 loc_15C716:
 	move.w	#$3,-$3C58(a5)
 	moveq	#$C,d0
-	cmp.w	-$7A6(a5),d0
+	cmp.w	g_Pad2Raw(a5),d0
 	bne.s	loc_15C732
 	lea.l	$E1A(a5),a0
 	move.l	$2(a0),-$1666(a5)
@@ -144,7 +144,7 @@ loc_15C740:
 loc_15C7A0:
 	move.w	#$5,-$3C58(a5)
 	moveq	#$C,d0
-	cmp.w	-$7A6(a5),d0
+	cmp.w	g_Pad2Raw(a5),d0
 	bne.s	loc_15C7BC
 	lea.l	$E22(a5),a0
 	move.l	$2(a0),-$1666(a5)
@@ -243,7 +243,7 @@ loc_15C88E:
 loc_15C8AE:
 	move.w	#$7,-$3C58(a5)
 	moveq	#$C,d0
-	cmp.w	-$7A6(a5),d0
+	cmp.w	g_Pad2Raw(a5),d0
 	bne.s	loc_15C8CA
 	lea.l	$E2A(a5),a0
 	move.l	$2(a0),-$1666(a5)
@@ -336,7 +336,7 @@ loc_15C990:
 loc_15C9B0:
 	move.w	#$7,-$3C58(a5)
 	moveq	#$C,d0
-	cmp.w	-$7A6(a5),d0
+	cmp.w	g_Pad2Raw(a5),d0
 	bne.s	loc_15C9CA
 	lea.l	$E2A(a5),a0
 	move.l	$2(a0),-$1666(a5)
@@ -369,7 +369,7 @@ loc_15CA04:
 loc_15CA12:
 	move.w	#$8,-$3C58(a5)
 	moveq	#$C,d0
-	cmp.w	-$7A6(a5),d0
+	cmp.w	g_Pad2Raw(a5),d0
 	bne.s	loc_15CA2C
 	lea.l	$E32(a5),a0
 	move.l	$2(a0),-$1666(a5)
@@ -381,14 +381,14 @@ loc_15CA36:
 	tst.w	-$16F0(a5)
 	ble.s	loc_15CA4C
 	move.w	#$80,d0
-	and.w	-$3A2E(a5),d0
+	and.w	g_Pad1Latch(a5),d0
 	beq.s	loc_15CA4C
 	move.b	#$1,-$1662(a5)
 loc_15CA4C:
 	tst.w	-$17E0(a5)
 	ble.s	loc_15CA62
 	move.w	#$80,d0
-	and.w	-$3A30(a5),d0
+	and.w	g_Pad2Latch(a5),d0
 	beq.s	loc_15CA62
 	move.b	#$1,-$1662(a5)
 loc_15CA62:
