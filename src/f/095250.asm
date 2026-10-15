@@ -33,7 +33,7 @@ XClone_Init:
 	adda.w	$8(a1),a0
 	move.l	a0,-(a7)
 	pea.l	$96(a4)
-	jsr	$3ED2(a5)	; -> sub_15A6DE
+	jsr	$3ED2(a5)	; -> AiScript_Set
 	lea.l	$2C7A(a5),a0
 	movea.l	$2(a0),a0
 	move.l	a0,$8C(a4)

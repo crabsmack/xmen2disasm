@@ -4,7 +4,7 @@
 loc_01C1B0:
 	move.l	-$14(a6),-(a7)
 	pea.l	$9A(a4)
-	jsr	$3ED2(a5)	; -> sub_15A6DE
+	jsr	$3ED2(a5)	; -> AiScript_Set
 	move.w	$C(a3),d7
 	addq.w	#$8,a7
 	beq.s	loc_01C1CA

@@ -67,7 +67,7 @@ loc_096920:
 	lea.l	$1962(a5),a0
 	move.l	$2(a0),-(a7)
 	pea.l	$8C(a3)
-	jsr	$3ED2(a5)	; -> sub_15A6DE
+	jsr	$3ED2(a5)	; -> AiScript_Set
 	move.l	$8(a4),$8(a3)
 	move.l	$C(a4),$C(a3)
 	lea.l	$32EA(a5),a0

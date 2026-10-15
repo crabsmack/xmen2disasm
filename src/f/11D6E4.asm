@@ -31,7 +31,7 @@ BabySentinelA_Init:
 	lea.l	$2FE2(a5),a0
 	move.l	$2(a0),-(a7)
 	pea.l	$96(a4)
-	jsr	$3ED2(a5)	; -> sub_15A6DE
+	jsr	$3ED2(a5)	; -> AiScript_Set
 	movea.l	-$4(a6),a4
 	unlk	a6
 	rts

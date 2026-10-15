@@ -36,7 +36,7 @@ sub_120C02:
 	move.l	$8(a4),d0
 	asr.l	#$8,d0
 	move.l	d0,-(a7)
-	jsr	$3EFA(a5)	; -> sub_15A8FE
+	jsr	$3EFA(a5)	; -> Seg_FindBelow
 	movea.l	d0,a3
 	clr.w	$1E(a4)
 	clr.w	$16(a4)

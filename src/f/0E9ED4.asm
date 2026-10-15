@@ -2,7 +2,7 @@
 ; Hologram_StartDyingScript - Hologram: switch to the dying script (pose flicker sequences, then explode)
 ; In:  8(a6) = this
 ; Out: none
-; Evidence: sub_15A6DE(this+$8C, jt $280A = Hologram_ScriptDying's table); TAS frame 9083
+; Evidence: AiScript_Set(this+$8C, jt $280A = Hologram_ScriptDying's table); TAS frame 9083
 ; ---------------------------------------------------------------------------
 Hologram_StartDyingScript:
 	link.w	a6,#$0
@@ -11,7 +11,7 @@ Hologram_StartDyingScript:
 	lea.l	$280A(a5),a0
 	move.l	$2(a0),-(a7)
 	pea.l	$8C(a4)
-	jsr	$3ED2(a5)	; -> sub_15A6DE
+	jsr	$3ED2(a5)	; -> AiScript_Set
 	tst.l	$8E(a4)
 	bne.s	loc_0E9F00
 	move.l	$64(a4),$5C(a4)

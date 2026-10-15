@@ -2,7 +2,7 @@
 ; Hologram_StartAttackScript - Hologram intro script action: sound $D0 and switch to the attack script
 ; In:  8(a6) = this
 ; Out: none
-; Evidence: Snd_Play($D0), sub_15A6DE(this+$8C, jt $2812 = Hologram_ScriptAttack's table); only entry of Hologram_ScriptIntro; TAS frame 7873
+; Evidence: Snd_Play($D0), AiScript_Set(this+$8C, jt $2812 = Hologram_ScriptAttack's table); only entry of Hologram_ScriptIntro; TAS frame 7873
 ; ---------------------------------------------------------------------------
 Hologram_StartAttackScript:
 	link.w	a6,#$0
@@ -15,7 +15,7 @@ Hologram_StartAttackScript:
 	lea.l	$2812(a5),a0
 	move.l	$2(a0),-(a7)
 	pea.l	$8C(a4)
-	jsr	$3ED2(a5)	; -> sub_15A6DE
+	jsr	$3ED2(a5)	; -> AiScript_Set
 	tst.l	$8E(a4)
 	bne.s	loc_0EA0DC
 	move.l	$64(a4),$5C(a4)

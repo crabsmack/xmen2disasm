@@ -2,9 +2,9 @@
 ; PlayerSelect_CharSpriteDef_Psylocke - PlayerSelect_CharSpriteDef case 4 (Psylocke)
 ; In:  none
 ; Out: a4 = sprite def
-; Evidence: Sw_06489A entry 4: sub_1BA006
+; Evidence: Sw_06489A entry 4: Psylocke_SelectSpriteDef
 ; ---------------------------------------------------------------------------
 PlayerSelect_CharSpriteDef_Psylocke:
-	jsr	$463A(a5)	; -> sub_1BA006
+	jsr	$463A(a5)	; -> Psylocke_SelectSpriteDef
 	movea.l	d0,a4
 	bra.s	$64908

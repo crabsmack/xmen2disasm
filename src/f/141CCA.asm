@@ -19,7 +19,7 @@ sub_141CCA:
 	lea.l	$3C72(a5),a0
 	move.l	$2(a0),-(a7)
 	pea.l	$94(a4)
-	jsr	$3ED2(a5)	; -> sub_15A6DE
+	jsr	$3ED2(a5)	; -> AiScript_Set
 	tst.l	$96(a4)
 	bne.s	loc_141D22
 	move.l	$64(a4),$5C(a4)

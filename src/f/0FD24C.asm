@@ -50,7 +50,7 @@ loc_0FD2A8:
 	lsl.l	#$5,d0
 	add.l	d1,d0
 	move.l	d0,-(a7)
-	jsr	$3EFA(a5)	; -> sub_15A8FE
+	jsr	$3EFA(a5)	; -> Seg_FindBelow
 	movea.l	d0,a3
 	move.l	a3,d0
 	lea.l	$C(a7),a7

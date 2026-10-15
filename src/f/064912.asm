@@ -2,7 +2,7 @@
 ; PlayerSelect_CharFrameNum - return the select-screen frame number of the character under a cursor
 ; In:  8(a6) = cursor (+$3C = character index)
 ; Out: d0.w = frame, $FF if none
-; Evidence: switch Sw_064912 over the 7 per-character frame getters (sub_1841F4 ... sub_1CEC38)
+; Evidence: switch Sw_064912 over the 7 per-character frame getters (Beast_SelectFrame ... Magneto_SelectFrame)
 ; ---------------------------------------------------------------------------
 PlayerSelect_CharFrameNum:
 	link.w	a6,#$0

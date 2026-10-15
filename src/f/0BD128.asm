@@ -31,7 +31,7 @@ sub_0BD128:
 	lea.l	$1E7A(a5),a0
 	move.l	$2(a0),-(a7)
 	pea.l	$8C(a4)
-	jsr	$3ED2(a5)	; -> sub_15A6DE
+	jsr	$3ED2(a5)	; -> AiScript_Set
 	tst.l	$8E(a4)
 	lea.l	$18(a7),a7
 	bne.s	loc_0BD1A6

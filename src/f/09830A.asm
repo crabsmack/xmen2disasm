@@ -27,7 +27,7 @@ EvilGambit_Init:
 	adda.w	$8(a1),a0
 	move.l	a0,-(a7)
 	pea.l	$96(a4)
-	jsr	$3ED2(a5)	; -> sub_15A6DE
+	jsr	$3ED2(a5)	; -> AiScript_Set
 	moveq	#$3,d0
 	move.l	d0,-(a7)
 	jsr	XClone_SetBgPalette(pc)

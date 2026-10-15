@@ -33,7 +33,7 @@ loc_141F66:
 	lea.l	$3C82(a5),a0
 	move.l	$2(a0),-(a7)
 	pea.l	$94(a4)
-	jsr	$3ED2(a5)	; -> sub_15A6DE
+	jsr	$3ED2(a5)	; -> AiScript_Set
 	tst.l	$96(a4)
 	lea.l	$10(a7),a7
 	bne.s	loc_141F90

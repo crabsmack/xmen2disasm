@@ -2,7 +2,7 @@
 ; PlayerSelect_AllocCharBuffers - allocate buffers big enough for the largest select-screen animation frame of the 7 characters
 ; In:  none
 ; Out: d0 = tiles reserved
-; Evidence: switch over the 7 per-character sprite getters (sub_1841E4 Beast ... sub_1CEC28 Magneto), max box area and tile count; heap allocations stored in -$C9E/-$C9A
+; Evidence: switch over the 7 per-character sprite getters (Beast_SelectSpriteDef Beast ... Magneto_SelectSpriteDef Magneto), max box area and tile count; heap allocations stored in -$C9E/-$C9A
 ; ---------------------------------------------------------------------------
 PlayerSelect_AllocCharBuffers:
 	link.w	a6,#$FFF0

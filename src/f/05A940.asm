@@ -88,7 +88,7 @@ loc_05A9D2:
 	moveq	#$10,d2
 	add.l	d2,d0
 	move.l	d0,-(a7)
-	jsr	$3EFA(a5)	; -> sub_15A8FE
+	jsr	$3EFA(a5)	; -> Seg_FindBelow
 	movea.l	d0,a4
 	move.l	a4,d0
 	lea.l	$C(a7),a7

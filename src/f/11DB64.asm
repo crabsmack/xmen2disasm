@@ -44,14 +44,14 @@ loc_11DBAA:
 	lea.l	$3042(a5),a0
 	move.l	$2(a0),-(a7)
 	pea.l	$96(a4)
-	jsr	$3ED2(a5)	; -> sub_15A6DE
+	jsr	$3ED2(a5)	; -> AiScript_Set
 	addq.w	#$8,a7
 	bra.s	loc_11DBFA
 loc_11DBC6:
 	lea.l	$304A(a5),a0
 	move.l	$2(a0),-(a7)
 	pea.l	$96(a4)
-	jsr	$3ED2(a5)	; -> sub_15A6DE
+	jsr	$3ED2(a5)	; -> AiScript_Set
 	addq.w	#$8,a7
 	bra.s	loc_11DBFA
 loc_11DBDA:
@@ -64,5 +64,5 @@ loc_11DBE8:
 	lea.l	$303A(a5),a0
 	move.l	$2(a0),-(a7)
 	pea.l	$96(a4)
-	jsr	$3ED2(a5)	; -> sub_15A6DE
+	jsr	$3ED2(a5)	; -> AiScript_Set
 	addq.w	#$8,a7

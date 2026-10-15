@@ -50,7 +50,7 @@ loc_05B9BC:
 	asr.w	#$2,d1
 	ext.l	d1
 	move.l	d1,-(a7)
-	jsr	$3EF2(a5)	; -> sub_15A82A
+	jsr	$3EF2(a5)	; -> Seg_FindAt
 	movea.l	d0,a3
 	move.l	a3,d0
 	lea.l	$10(a7),a7

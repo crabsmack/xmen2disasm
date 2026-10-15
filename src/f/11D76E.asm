@@ -41,14 +41,14 @@ BabySentinelB_Init:
 	lea.l	$2FF2(a5),a0
 	move.l	$2(a0),-(a7)
 	pea.l	$96(a4)
-	jsr	$3ED2(a5)	; -> sub_15A6DE
+	jsr	$3ED2(a5)	; -> AiScript_Set
 	addq.w	#$8,a7
 	bra.s	loc_11D800
 loc_11D7EE:
 	lea.l	$2FEA(a5),a0
 	move.l	$2(a0),-(a7)
 	pea.l	$96(a4)
-	jsr	$3ED2(a5)	; -> sub_15A6DE
+	jsr	$3ED2(a5)	; -> AiScript_Set
 	addq.w	#$8,a7
 loc_11D800:
 	tst.l	$98(a4)

@@ -101,7 +101,7 @@ loc_11C2B4:
 	moveq	#$0,d0
 	move.l	d0,-(a7)
 	pea.l	$96(a4)
-	jsr	$3ED2(a5)	; -> sub_15A6DE
+	jsr	$3ED2(a5)	; -> AiScript_Set
 	lea.l	sub_11C6CE(pc),a0
 	move.l	a0,$64(a4)
 	move.l	a0,$5C(a4)

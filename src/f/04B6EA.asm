@@ -8,7 +8,7 @@ sub_04B6EA:
 	lea.l	$9FA(a5),a0
 	move.l	$2(a0),-(a7)
 	pea.l	$A2(a4)
-	jsr	$3ED2(a5)	; -> sub_15A6DE
+	jsr	$3ED2(a5)	; -> AiScript_Set
 	tst.l	$A4(a4)
 	bne.s	loc_04B716
 	move.l	$64(a4),$5C(a4)

@@ -33,7 +33,7 @@ loc_0BC698:
 	lea.l	$1E82(a5),a0
 	move.l	$2(a0),-(a7)
 	pea.l	$8C(a4)
-	jsr	$3ED2(a5)	; -> sub_15A6DE
+	jsr	$3ED2(a5)	; -> AiScript_Set
 	tst.l	$8E(a4)
 	lea.l	$10(a7),a7
 	bne.s	loc_0BC6CC

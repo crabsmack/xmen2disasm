@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_15A82A	[jt 2010]
+; Seg_FindAt - find an in-use floor segment in the point's grid cell whose top lies within a height band above the point
+; In:  8(a6) = word: x   $C(a6) = word: y   $10(a6) = word: max layer   $14(a6) = word: band height
+; Out: d0 = segment record, 0 if none
+; Evidence: walks the $FF-terminated index list at -$3478 + Seg_GridCell(x, y); accepts bit 7 in use, layer byte +2 <= max, x within [min(x1,x2), max(x1,x2)], top = min(y1,y2) <= y < top + height
 ; ---------------------------------------------------------------------------
-sub_15A82A:
+Seg_FindAt:
 	link.w	a6,#$0
 	movem.l	d3-d7/a3-a4,-(a7)
 	move.w	$E(a6),d0
@@ -10,7 +13,7 @@ sub_15A82A:
 	move.w	$A(a6),d0
 	ext.l	d0
 	move.l	d0,-(a7)
-	jsr	sub_15A7C8(pc)
+	jsr	Seg_GridCell(pc)
 	move.w	d0,d5
 	movea.l	-$3478(a5),a0
 	lea.l	(a0,d5.w),a3

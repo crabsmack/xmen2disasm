@@ -129,6 +129,9 @@ _(module → functions, globals, data; add as you learn them)_
   neighbour index, +$13 next segment of the same owner. Objects with flags +6 bit $200 own
   segments from +$7A (their box top becomes a walkable line); a walker keeps the segment it
   stands on in +$76 and its position along it in +$72 (`Seg_WouldLeaveEnd`).
+  Lookup grid: word grid at `-$347C`, cell size shifts `-$347E`/`-$3480` (Level_Load args),
+  size `-$3482`/`-$3484`; each cell = offset of a $FF-terminated segment-index list in the pool
+  at `-$3478` (`Seg_GridCell`, `Seg_FindAt`, `Seg_FindBelow`; built by `sub_1F84BE`).
 - **Scenes**: `Scene_Register(name, func)` fills `g_SceneTable`; `Scene_EndAfter(n)` sets the
   exit countdown `-$359A` that the scene loop decrements to 0.
 - **Players**: two player objects at `$FFE9B8` and `$FFEAA8` (`Player_Nearest`). Which is P1

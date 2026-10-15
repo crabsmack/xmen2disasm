@@ -45,7 +45,7 @@ BroodBoss_Init:
 	lea.l	$14BA(a5),a0
 	move.l	$2(a0),-(a7)
 	pea.l	$90(a4)
-	jsr	$3ED2(a5)	; -> sub_15A6DE
+	jsr	$3ED2(a5)	; -> AiScript_Set
 	movea.l	$14(a6),a0
 	move.w	$2(a0),d7
 	move.w	$4(a0),d6
@@ -57,7 +57,7 @@ BroodBoss_Init:
 	move.l	d0,-(a7)
 	ext.l	d7
 	move.l	d7,-(a7)
-	jsr	$3EFA(a5)	; -> sub_15A8FE
+	jsr	$3EFA(a5)	; -> Seg_FindBelow
 	movea.l	d0,a3
 	move.l	a3,d0
 	lea.l	$24(a7),a7

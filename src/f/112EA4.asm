@@ -11,7 +11,7 @@ Deathbird_StateLandOnSwitch:
 	pea.l	($3E8).w
 	pea.l	($170).w
 	pea.l	($F0).w
-	jsr	$3EFA(a5)	; -> sub_15A8FE
+	jsr	$3EFA(a5)	; -> Seg_FindBelow
 	movea.l	d0,a3
 	move.l	a3,d0
 	lea.l	$C(a7),a7

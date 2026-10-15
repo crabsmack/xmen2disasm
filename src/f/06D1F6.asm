@@ -192,7 +192,7 @@ loc_06D3A4:
 	move.l	d7,-(a7)
 	ext.l	d6
 	move.l	d6,-(a7)
-	jsr	$3EFA(a5)	; -> sub_15A8FE
+	jsr	$3EFA(a5)	; -> Seg_FindBelow
 	move.l	d0,-$4(a6)
 	lea.l	$C(a7),a7
 	beq.s	loc_06D404
@@ -232,11 +232,11 @@ loc_06D40A:
 	lea.l	$100A(a5),a0
 	move.l	$2(a0),-(a7)
 	pea.l	$96(a4)
-	jsr	$3ED2(a5)	; -> sub_15A6DE
+	jsr	$3ED2(a5)	; -> AiScript_Set
 	lea.l	$1012(a5),a0
 	move.l	$2(a0),-(a7)
 	pea.l	$96(a4)
-	jsr	$3ED2(a5)	; -> sub_15A6DE
+	jsr	$3ED2(a5)	; -> AiScript_Set
 	clr.w	$B4(a4)
 	lea.l	$18(a7),a7
 	movem.l	-$18(a6),d3/d6-d7/a3-a4

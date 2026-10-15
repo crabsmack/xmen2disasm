@@ -113,7 +113,7 @@ Apocalypse_Init:
 	lea.l	$9F2(a5),a0
 	move.l	$2(a0),-(a7)
 	pea.l	$A2(a4)
-	jsr	$3ED2(a5)	; -> sub_15A6DE
+	jsr	$3ED2(a5)	; -> AiScript_Set
 	lea.l	$48(a7),a7
 	tst.l	$A4(a4)
 	bne.s	loc_04C748

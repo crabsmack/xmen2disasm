@@ -13,7 +13,7 @@ sub_04B848:
 	lea.l	$A02(a5),a0
 	move.l	$2(a0),-(a7)
 	pea.l	$A2(a4)
-	jsr	$3ED2(a5)	; -> sub_15A6DE
+	jsr	$3ED2(a5)	; -> AiScript_Set
 	tst.l	$A4(a4)
 	addq.w	#$8,a7
 	bne.s	loc_04B88A
@@ -38,7 +38,7 @@ loc_04B8AC:
 	lea.l	$A0A(a5),a0
 	move.l	$2(a0),-(a7)
 	pea.l	$A2(a4)
-	jsr	$3ED2(a5)	; -> sub_15A6DE
+	jsr	$3ED2(a5)	; -> AiScript_Set
 	tst.l	$A4(a4)
 	addq.w	#$8,a7
 	bne.s	loc_04B8DC
@@ -63,7 +63,7 @@ loc_04B8FE:
 	lea.l	$A12(a5),a0
 	move.l	$2(a0),-(a7)
 	pea.l	$A2(a4)
-	jsr	$3ED2(a5)	; -> sub_15A6DE
+	jsr	$3ED2(a5)	; -> AiScript_Set
 	tst.l	$A4(a4)
 	addq.w	#$8,a7
 	bne.s	loc_04B92C

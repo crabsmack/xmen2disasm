@@ -5,19 +5,19 @@ loc_04BCB2:
 	lea.l	$A22(a5),a0
 	move.l	$2(a0),-(a7)
 	pea.l	$A2(a4)
-	jsr	$3ED2(a5)	; -> sub_15A6DE
+	jsr	$3ED2(a5)	; -> AiScript_Set
 	addq.w	#$8,a7
 	bra.s	loc_04BCEC
 loc_04BCC6:
 	lea.l	$A2A(a5),a0
 	move.l	$2(a0),-(a7)
 	pea.l	$A2(a4)
-	jsr	$3ED2(a5)	; -> sub_15A6DE
+	jsr	$3ED2(a5)	; -> AiScript_Set
 	addq.w	#$8,a7
 	bra.s	loc_04BCEC
 loc_04BCDA:
 	lea.l	$A32(a5),a0
 	move.l	$2(a0),-(a7)
 	pea.l	$A2(a4)
-	jsr	$3ED2(a5)	; -> sub_15A6DE
+	jsr	$3ED2(a5)	; -> AiScript_Set
 	addq.w	#$8,a7

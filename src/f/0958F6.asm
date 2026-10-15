@@ -25,7 +25,7 @@ loc_095930:
 	beq.s	loc_09595E
 	move.l	a3,-(a7)
 	pea.l	$96(a4)
-	jsr	$3ED2(a5)	; -> sub_15A6DE
+	jsr	$3ED2(a5)	; -> AiScript_Set
 	moveq	#$0,d0
 	move.l	d0,$44(a4)
 	clr.w	$1E(a4)

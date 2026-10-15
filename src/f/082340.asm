@@ -64,7 +64,7 @@ loc_0823E4:
 	move.l	d0,-(a7)
 	ext.l	d6
 	move.l	d6,-(a7)
-	jsr	$3EFA(a5)	; -> sub_15A8FE
+	jsr	$3EFA(a5)	; -> Seg_FindBelow
 	movea.l	d0,a3
 	move.l	a3,d0
 	lea.l	$C(a7),a7

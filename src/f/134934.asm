@@ -99,7 +99,7 @@ loc_134A48:
 	moveq	#$0,d0
 	move.l	d0,-(a7)
 	pea.l	$8C(a4)
-	jsr	$3ED2(a5)	; -> sub_15A6DE
+	jsr	$3ED2(a5)	; -> AiScript_Set
 	move.b	#$1,$96(a4)
 	move.b	#$1,$97(a4)
 	move.w	$2(a3),d0

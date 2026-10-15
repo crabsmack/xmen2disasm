@@ -2,7 +2,7 @@
 ; XClone_ActUnhittableScript - XCLONE script action: become unhittable (+6 bits 2 and $1000) and switch to script jt[$1B6A]
 ; In:  8(a6) = this
 ; Out: none
-; Evidence: List_Unlink(+$84, $FFEBAE); sub_15A6DE(+$96, jt[$1B6A]), step 0; jt 722; TAS 52266-52535
+; Evidence: List_Unlink(+$84, $FFEBAE); AiScript_Set(+$96, jt[$1B6A]), step 0; jt 722; TAS 52266-52535
 ; Found: jt 722
 ; ---------------------------------------------------------------------------
 XClone_ActUnhittableScript:
@@ -24,7 +24,7 @@ loc_095A0C:
 	lea.l	$196A(a5),a0
 	move.l	$2(a0),-(a7)
 	pea.l	$96(a4)
-	jsr	$3ED2(a5)	; -> sub_15A6DE
+	jsr	$3ED2(a5)	; -> AiScript_Set
 	tst.l	$98(a4)
 	addq.w	#$8,a7
 	bne.s	loc_095A36

@@ -10,7 +10,7 @@ sub_15AB44:
 	move.w	$A(a6),d0
 	ext.l	d0
 	move.l	d0,-(a7)
-	jsr	sub_15A7C8(pc)
+	jsr	Seg_GridCell(pc)
 	move.w	d0,-$E(a6)
 	move.w	#$1388,-$6(a6)
 	moveq	#$0,d0
@@ -92,7 +92,7 @@ loc_15AC1A:
 	move.w	-$8(a6),d0
 	ext.l	d0
 	move.l	d0,-(a7)
-	jsr	sub_15A7C8(pc)
+	jsr	Seg_GridCell(pc)
 	move.w	d0,-$E(a6)
 	cmp.w	-$C(a6),d0
 	addq.w	#$8,a7

@@ -10,7 +10,7 @@ sub_13CE68:
 	move.w	$A(a6),d0
 	ext.l	d0
 	move.l	d0,-(a7)
-	jsr	$3EEA(a5)	; -> sub_15A7C8
+	jsr	$3EEA(a5)	; -> Seg_GridCell
 	move.w	d0,d7
 	movea.l	-$3478(a5),a0
 	lea.l	(a0,d7.w),a3

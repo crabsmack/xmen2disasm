@@ -1,6 +1,6 @@
 ; ---------------------------------------------------------------------------
 ; SmallBrood_Init_SetYLimits - tail of SmallBrood_Init: floor (+$A8) and ceiling (+$AA) y limits, +$AC = $50, frame $FF
-; Evidence: with spawn +$E = 0 floor = spawn y, ceiling = y-1; else floor below / ceiling above from sub_15A8FE / sub_15AA20 (default ceiling = floor - $A0); then slot +$56 SetFrame($FF)
+; Evidence: with spawn +$E = 0 floor = spawn y, ceiling = y-1; else floor below / ceiling above from Seg_FindBelow / sub_15AA20 (default ceiling = floor - $A0); then slot +$56 SetFrame($FF)
 ; ---------------------------------------------------------------------------
 SmallBrood_Init_SetYLimits:
 	tst.w	$E(a3)
@@ -16,7 +16,7 @@ SmallBrood_Init_SetYLimits:
 	move.l	d7,-(a7)
 	ext.l	d6
 	move.l	d6,-(a7)
-	jsr	$3EFA(a5)	; -> sub_15A8FE
+	jsr	$3EFA(a5)	; -> Seg_FindBelow
 	move.l	d0,-$4(a6)
 	lea.l	$C(a7),a7
 	beq.s	loc_08447A

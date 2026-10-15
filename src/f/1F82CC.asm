@@ -11,7 +11,7 @@ sub_1F82CC:
 	move.w	$A(a6),d0
 	ext.l	d0
 	move.l	d0,-(a7)
-	jsr	$3EEA(a5)	; -> sub_15A7C8
+	jsr	$3EEA(a5)	; -> Seg_GridCell
 	move.w	d0,-$A(a6)
 	moveq	#$0,d0
 	movea.l	d0,a4
@@ -135,7 +135,7 @@ loc_1F8412:
 	move.w	$A(a6),d0
 	ext.l	d0
 	move.l	d0,-(a7)
-	jsr	$3EEA(a5)	; -> sub_15A7C8
+	jsr	$3EEA(a5)	; -> Seg_GridCell
 	move.w	d0,-$A(a6)
 	cmp.w	-$8(a6),d0
 	addq.w	#$8,a7

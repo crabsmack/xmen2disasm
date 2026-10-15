@@ -34,7 +34,7 @@ Tuskette_Init:
 	move.l	d7,-(a7)
 	ext.l	d6
 	move.l	d6,-(a7)
-	jsr	$3EFA(a5)	; -> sub_15A8FE
+	jsr	$3EFA(a5)	; -> Seg_FindBelow
 	lea.l	$C(a7),a7
 	move.l	d0,-(a7)
 	move.l	a4,-(a7)

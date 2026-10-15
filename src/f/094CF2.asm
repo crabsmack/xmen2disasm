@@ -22,7 +22,7 @@ EvilDrop_Init:
 	lea.l	$1642(a5),a0
 	move.l	$2(a0),-(a7)
 	pea.l	$8C(a4)
-	jsr	$3ED2(a5)	; -> sub_15A6DE
+	jsr	$3ED2(a5)	; -> AiScript_Set
 	lea.l	EvilDrop_StateStart(pc),a0
 	move.l	a0,$5C(a4)
 	lea.l	EvilDrop_StateStart(pc),a0
@@ -109,7 +109,7 @@ loc_094E1C:
 	move.l	d1,-(a7)
 	ext.l	d6
 	move.l	d6,-(a7)
-	jsr	$3EFA(a5)	; -> sub_15A8FE
+	jsr	$3EFA(a5)	; -> Seg_FindBelow
 	movea.l	d0,a3
 	move.l	a3,d0
 	lea.l	$C(a7),a7

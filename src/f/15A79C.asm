@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_15A79C	[jt 2008]
+; Obj_OutsideActivateWindow - negation of the object's InActivateWindow (vtable +$3A)
+; In:  8(a6) = object
+; Out: d0 = 1 outside, 0 inside
+; Evidence: calls obj vtable +$3A and inverts the byte result; jt 2008
 ; ---------------------------------------------------------------------------
-sub_15A79C:
+Obj_OutsideActivateWindow:
 	link.w	a6,#$0
 	movem.l	d7/a4,-(a7)
 	movea.l	$8(a6),a4

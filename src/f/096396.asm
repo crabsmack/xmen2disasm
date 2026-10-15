@@ -2,7 +2,7 @@
 ; XClone_ActCheckLowHealth - XCLONE script action: below $E health switch to the clone record's low-health script (record +$C), else the next step
 ; In:  8(a6) = this
 ; Out: none
-; Evidence: +$68 < $E -> sub_15A6DE(+$96, record + word $C); jt 729; 3 callers
+; Evidence: +$68 < $E -> AiScript_Set(+$96, record + word $C); jt 729; 3 callers
 ; Found: jt 729
 ; ---------------------------------------------------------------------------
 XClone_ActCheckLowHealth:
@@ -17,7 +17,7 @@ XClone_ActCheckLowHealth:
 	adda.w	$C(a1),a0
 	move.l	a0,-(a7)
 	pea.l	$96(a4)
-	jsr	$3ED2(a5)	; -> sub_15A6DE
+	jsr	$3ED2(a5)	; -> AiScript_Set
 	tst.l	$98(a4)
 	addq.w	#$8,a7
 	bne.s	loc_0963D0

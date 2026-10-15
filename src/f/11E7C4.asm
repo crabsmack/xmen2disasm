@@ -29,7 +29,7 @@ BioBalls_Init:
 	lea.l	$32FA(a5),a0
 	move.l	$2(a0),-(a7)
 	pea.l	$8C(a4)
-	jsr	$3ED2(a5)	; -> sub_15A6DE
+	jsr	$3ED2(a5)	; -> AiScript_Set
 	lea.l	sub_11EEA8(pc),a0
 	move.l	a0,$5C(a4)
 	lea.l	sub_11EEA8(pc),a0

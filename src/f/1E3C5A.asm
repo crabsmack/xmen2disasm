@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_1E3C5A	[jt 2402]
+; Cyclops_SelectSpriteDef - return the sprite definition Cyclops uses on the player-select screen
+; In:  none
+; Out: d0 = sprite-def pointer
+; Evidence: jt data entry lea $4B42(a5) / move.l 2(a0),d0; called by PlayerSelect_CharSpriteDef case 1, PlayerSelect_LoadCharFrame and PlayerSelect_AllocCharBuffers_Cases
 ; ---------------------------------------------------------------------------
-sub_1E3C5A:
+Cyclops_SelectSpriteDef:
 	link.w	a6,#$0
 	lea.l	$4B42(a5),a0
 	move.l	$2(a0),d0

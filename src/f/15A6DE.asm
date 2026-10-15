@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_15A6DE	[jt 2006]
+; AiScript_Set - point an object's AI script cursor at a script table and rewind it
+; In:  8(a6) = script cursor {word index; long table} (null ignored)   $C(a6) = script table (word count, then 4-byte jmp thunks)
+; Out: none
+; Evidence: cursor+0 = 0, cursor+2 = table; 71 callers, mostly class Init methods passing &obj+$8C or +$96 and a jt-exported table (NOTES AI scripts)
 ; ---------------------------------------------------------------------------
-sub_15A6DE:
+AiScript_Set:
 	link.w	a6,#$0
 	move.l	a4,-(a7)
 	movea.l	$8(a6),a4

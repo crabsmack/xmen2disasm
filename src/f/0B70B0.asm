@@ -36,7 +36,7 @@ ChildShip_Init:
 	lea.l	$1DAA(a5),a0
 	move.l	$2(a0),-(a7)
 	pea.l	$98(a4)
-	jsr	$3ED2(a5)	; -> sub_15A6DE
+	jsr	$3ED2(a5)	; -> AiScript_Set
 	lea.l	sub_0B77FC(pc),a0
 	move.l	a0,$64(a4)
 	move.l	a0,$5C(a4)
