@@ -1,10 +1,10 @@
 ; ---------------------------------------------------------------------------
-; BioBullet_ShouldDeactivate - BioBullet: is the active object out of range and due to deactivate (class slot 15, +$42)
+; BioBullet_OutsideActiveWindow - BioBullet: is the active object out of range and due to deactivate (class slot 15, +$42)
 ; In:  8(a6) = this
 ; Out: d0.b = 1 to deactivate
 ; Evidence: method 15 of class descriptor $11E6EC (name string "BIOBULLET", parent ACTOR)
 ; ---------------------------------------------------------------------------
-BioBullet_ShouldDeactivate:
+BioBullet_OutsideActiveWindow:
 	link.w	a6,#$0
 	movem.l	d3/d7/a4,-(a7)
 	movea.l	$8(a6),a4

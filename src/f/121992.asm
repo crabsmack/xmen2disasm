@@ -1,10 +1,10 @@
 ; ---------------------------------------------------------------------------
-; BigBio_CanActivate - BigBio: may this inactive object activate now (camera range test) (class slot 13, +$3A)
+; BigBio_InActivateWindow - BigBio: may this inactive object activate now (camera range test) (class slot 13, +$3A)
 ; In:  8(a6) = this
 ; Out: d0.b = 1 to activate
 ; Evidence: method 13 of class descriptor $123684 (name string "BIGBIO", parent BASICBIOSENTINEL)
 ; ---------------------------------------------------------------------------
-BigBio_CanActivate:
+BigBio_InActivateWindow:
 	link.w	a6,#$0
 	move.l	a4,-(a7)
 	movea.l	$8(a6),a4

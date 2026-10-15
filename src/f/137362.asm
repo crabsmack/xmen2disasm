@@ -1,10 +1,10 @@
 ; ---------------------------------------------------------------------------
-; HornetBullet_LevelInit - HornetBullet: per-class hook run at level start before the spawn pass (static, class slot 22, +$5E; sub_1FA7E8)
+; HornetBullet_ClassInit - HornetBullet: per-class hook run at level start before the spawn pass (static, class slot 22, +$5E; sub_1FA7E8)
 ; In:  8(a6) = 0  $C(a6) = class index in the level class list
 ; Out: none
 ; Evidence: method 22 of class descriptor $137708 (name string "HORNETBULLET", parent ACTOR)
 ; ---------------------------------------------------------------------------
-HornetBullet_LevelInit:
+HornetBullet_ClassInit:
 	link.w	a6,#$0
 	jsr	sub_13734E(pc)
 	moveq	#$1,d0

@@ -1,10 +1,10 @@
 ; ---------------------------------------------------------------------------
-; Mine_LevelInit - Mine: per-class hook run at level start before the spawn pass (static, class slot 22, +$5E; sub_1FA7E8)
+; Mine_ClassInit - Mine: per-class hook run at level start before the spawn pass (static, class slot 22, +$5E; sub_1FA7E8)
 ; In:  8(a6) = 0  $C(a6) = class index in the level class list
 ; Out: none
 ; Evidence: method 22 of class descriptor $13AF1A (name string "MINE", parent ACTOR)
 ; ---------------------------------------------------------------------------
-Mine_LevelInit:
+Mine_ClassInit:
 	link.w	a6,#$0
 	jsr	sub_13A7EA(pc)
 	moveq	#$3,d0

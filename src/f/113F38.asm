@@ -1,5 +1,5 @@
 ; ---------------------------------------------------------------------------
-; XNpc_OnDeath - XNpc: XNPC hook: health ran out (class slot 27, +$72; called from XNpc_TakeHit)
+; XNpc_OnDeath - XNpc: XNPC hook: health ran out (class slot 27, +$72; called from XNpc_TakeDamage)
 ; In:  8(a6) = this  $F(a6) = byte damage  $13(a6) = byte hit type
 ; Out: none
 ; Evidence: method 27 of class descriptor $113A88 (name string "XNPC", parent ACTOR)

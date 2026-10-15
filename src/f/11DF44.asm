@@ -1,10 +1,10 @@
 ; ---------------------------------------------------------------------------
-; WallCrawlBio_Hook66 - WallCrawlBio: virtual hook at class slot 24 (+$66); no caller found yet
-; In:  8(a6) = this
+; WallCrawlBio_Nop66 - WallCrawlBio: no-op override of virtual slot 24 (+$66)
+; In:  8(a6) = this (unused)
 ; Out: none
 ; Evidence: method 24 of class descriptor $11BAA0 (name string "WALLCRAWLBIO", parent BABYBIO)
 ; ---------------------------------------------------------------------------
-WallCrawlBio_Hook66:
+WallCrawlBio_Nop66:
 	link.w	a6,#$FFFC
 	movem.l	a3-a4,-(a7)
 	movea.l	$8(a6),a4

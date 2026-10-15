@@ -169,29 +169,17 @@ _(module → functions, globals, data; add as you learn them)_
   while word `-$1D48` = VDP reg 1 mirror has bit 6 (display) clear, else queued at `$FFFA5C`). Joypad bits: Up 1, Down 2, Left 4, Right 8, B $10, C $20, A $40,
   Start $80, Z $100, Y $200, X $400, Mode $800 (`Game_InitButtonMasks`).
 
-- **C++ class descriptors (= vtables), with class-name strings** (w0E0, found by scanning the ROM):
-  `word N` (offset of the name), `long parent descriptor` (0 = root), `(N-6)/4` method pointers, then
-  the NUL-terminated class name at +N. An object's +0 points at its descriptor, so a virtual call
-  `movea.l (a4),a0 / movea.l $XX(a0),a1` is method `(XX-6)/4`. The jump table exports each descriptor
-  (`lea $3082(a5),a0 / movea.l 2(a0),a0` = BIOFLAME's descriptor; `movea.l 2(a0),a0 / movea.l $12(a0),a1`
-  = the parent's Init, i.e. `Parent::Init` chaining). 142 classes, e.g. ACTOR `$1F49A6` (root, 26
-  methods), XNPC `$113A88`, BIONPC `$113B10`, XPLAYER `$1131A0` (59 methods) with BEAST/NIGHTCRAWLER/
-  PSYLOCKE/WOLVERINE (via XCLIMBER) and MAGNETO/GAMBIT/CYCLOPS, CAMERA `$1F4960`, plus every enemy/boss
-  (MAGNETOBOSS `$035B5C`, APOCALYPSE `$04CDA4`, EXODUS `$02DEB4`, TUSK, BROODBOSS, DEATHBIRD...). Descriptors
-  in `$0E0000-$140000` are labelled `Tbl_<Class>_vtable`; methods are named `<Class>_<Slot>`.
-  Scanner: any even address where the word/long/pointer/name pattern holds (no false positives seen).
-- **ACTOR method slots** (from ACTOR's own methods `$15D92C...` and their callers `sub_15DA38` (New),
-  `sub_1FA124` (level main loop), `sub_1FA7E8`/`sub_1FA878`/`sub_1F9804` (per-class level hooks)):
-  0 `+$06` SizeOf · 1 `+$0A` InitSpawnRec (static: fill a 14-byte spawn record from level placement data) ·
-  2 `+$0E` New(0, desc, x, y, rec) · 3 `+$12` Init(this, x, y, rec) · 4 `+$16` ContainsPoint ·
-  5 `+$1A` Draw · 6 `+$1E` DrawIfActive · 7 `+$22` Attack(this, target, type, dmg...) → target's TakeHit ·
-  8 `+$26` TakeHit(this, attacker, type, dmg, ...) · 9 `+$2A` SpawnInRange(rec) · 10 `+$2E` SpawnFromRec ·
-  11 `+$32` ShouldDespawn · 12 `+$36` Despawn · 13 `+$3A` CanActivate · 14 `+$3E` Activate ·
-  15 `+$42` ShouldDeactivate · 16 `+$46` Deactivate · 17 `+$4A` Update (per frame) · 18 `+$4E` Move ·
-  19 `+$52` Kill · 20 `+$56` SetFrame · 21 `+$5A` LevelLoad · 22 `+$5E` LevelInit · 23 `+$62` LevelStart
-  (21-23 static, called for each class in the level class list `-$3900(a5)` = `$FFC900`: word byte
-  count, then descriptor pointers) · 24 `+$66` Hook66 (no caller found) · 25 `+$6A` Reset.
-  XNPC adds 26 `+$6E` OnHurt · 27 `+$72` OnDeath · 28 `+$76` EndHurt · 29 `+$7A` Query7A · 30 `+$7E` Explode.
+- **Class slots, additions (w0E0)** to the `tools/classes.py` names above (`$0E0000-$140000` follows
+  them; descriptors there are labelled `Tbl_<Class>_vtable`, 60 of them): +$1E `DrawIfActive` (ACTOR
+  `$15E452`: Draw unless flag $4000) · +$5A `LevelLoad` (static, run by the scene loader `sub_1F98A8` ->
+  `sub_1F9804` for each class in `-$3900(a5)`) · +$62 `LevelStart` (static, `sub_1FA878`, after the first
+  spawn pass of `sub_1FA124`, the level main loop) · +$6A `Reset` when non-empty (DEATHBIRD Init calls
+  it on `this`; HOLOGRAM/POP/FIREWALL ClassInit share its body), else `Nop6A`. XNPC slots: +$6E
+  `OnHurt(this, dmg, type)` and +$72 `OnDeath` (both from `XNpc_TakeDamage`), +$76 `EndHurt` (restore
+  the state saved in +$60), +$7A `Query7A` (base: `*arg3 = 2`, return 0; unknown), +$7E `Explode`
+  (death effect by stats byte 2). Spawn records: 14 bytes each at `$FFC924` (count `$FFC928`), built
+  from 16-byte placement entries (`$FFC92A`, word 0 = class index into `-$3900`) by `sub_15F95C`
+  calling each class's InitSpawnRec.
 - **ACTOR object fields** (ACTOR Init `sub_15DCC4`, Move `sub_1F4C56`, Update `sub_15E7FA`): +$10/+$12
   word x/y pixels, +$16/+$18 word velocity x/y, +$1E/+$20 word acceleration (gravity default 100),
   +$22/+$24 word max speed, +$26/+$28 word min speed to move, +$5C state function (run by Update when

@@ -1,10 +1,10 @@
 ; ---------------------------------------------------------------------------
-; MaintRobot_Hook66 - MaintRobot: virtual hook at class slot 24 (+$66); no caller found yet
-; In:  8(a6) = this
+; MaintRobot_Nop66 - MaintRobot: no-op override of virtual slot 24 (+$66)
+; In:  8(a6) = this (unused)
 ; Out: none
 ; Evidence: method 24 of class descriptor $1391FE (name string "MAINTROBOT", parent XNPC)
 ; ---------------------------------------------------------------------------
-MaintRobot_Hook66:
+MaintRobot_Nop66:
 	link.w	a6,#$FFFC
 	movem.l	a3-a4,-(a7)
 	movea.l	$8(a6),a4

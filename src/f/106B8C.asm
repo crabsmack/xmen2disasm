@@ -1,10 +1,10 @@
 ; ---------------------------------------------------------------------------
-; Platform1_LevelInit - Platform1: per-class hook run at level start before the spawn pass (static, class slot 22, +$5E; sub_1FA7E8)
+; Platform1_ClassInit - Platform1: per-class hook run at level start before the spawn pass (static, class slot 22, +$5E; sub_1FA7E8)
 ; In:  8(a6) = 0  $C(a6) = class index in the level class list
 ; Out: none
 ; Evidence: method 22 of class descriptor $1072E8 (name string "PLATFORM1", parent SYNCHRONIZEDACTOR)
 ; ---------------------------------------------------------------------------
-Platform1_LevelInit:
+Platform1_ClassInit:
 	link.w	a6,#$0
 	moveq	#-$1,d0
 	cmp.w	-$3BD4(a5),d0

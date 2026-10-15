@@ -1,10 +1,10 @@
 ; ---------------------------------------------------------------------------
-; BioNpc_Hook66 - BioNpc: virtual hook at class slot 24 (+$66); no caller found yet
-; In:  8(a6) = this
+; BioNpc_Nop66 - BioNpc: no-op override of virtual slot 24 (+$66)
+; In:  8(a6) = this (unused)
 ; Out: none
 ; Evidence: method 24 of class descriptor $113B10 (name string "BIONPC", parent XNPC)
 ; ---------------------------------------------------------------------------
-BioNpc_Hook66:
+BioNpc_Nop66:
 	link.w	a6,#$FFFC
 	movem.l	a3-a4,-(a7)
 	movea.l	$8(a6),a4

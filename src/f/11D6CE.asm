@@ -1,10 +1,10 @@
 ; ---------------------------------------------------------------------------
-; BabySentinelA_Hook66 - BabySentinelA: virtual hook at class slot 24 (+$66); no caller found yet
-; In:  8(a6) = this
+; BabySentinelA_Nop66 - BabySentinelA: no-op override of virtual slot 24 (+$66)
+; In:  8(a6) = this (unused)
 ; Out: none
 ; Evidence: method 24 of class descriptor $11B7D6 (name string "BABYSENTINELA", parent BABYBIO)
 ; ---------------------------------------------------------------------------
-BabySentinelA_Hook66:
+BabySentinelA_Nop66:
 	link.w	a6,#$FFFC
 	movem.l	a3-a4,-(a7)
 	movea.l	$8(a6),a4

@@ -1,10 +1,10 @@
 ; ---------------------------------------------------------------------------
-; FlyBrood_Hook66 - FlyBrood: virtual hook at class slot 24 (+$66); no caller found yet
-; In:  8(a6) = this
+; FlyBrood_Nop66 - FlyBrood: no-op override of virtual slot 24 (+$66)
+; In:  8(a6) = this (unused)
 ; Out: none
 ; Evidence: method 24 of class descriptor $134518 (name string "FLYBROOD", parent ACTOR)
 ; ---------------------------------------------------------------------------
-FlyBrood_Hook66:
+FlyBrood_Nop66:
 	link.w	a6,#$FFFC
 	movem.l	a3-a4,-(a7)
 	movea.l	$8(a6),a4

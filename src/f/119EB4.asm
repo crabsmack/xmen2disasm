@@ -1,10 +1,10 @@
 ; ---------------------------------------------------------------------------
-; SyncActor_Hook66 - SyncActor: virtual hook at class slot 24 (+$66); no caller found yet
-; In:  8(a6) = this
+; SyncActor_Nop66 - SyncActor: no-op override of virtual slot 24 (+$66)
+; In:  8(a6) = this (unused)
 ; Out: none
 ; Evidence: method 24 of class descriptor $119ECA (name string "SYNCHRONIZEDACTOR", parent ACTOR)
 ; ---------------------------------------------------------------------------
-SyncActor_Hook66:
+SyncActor_Nop66:
 	link.w	a6,#$FFFC
 	movem.l	a3-a4,-(a7)
 	movea.l	$8(a6),a4

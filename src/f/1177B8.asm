@@ -1,10 +1,10 @@
 ; ---------------------------------------------------------------------------
-; SegmentPlusPowerUp_SizeOf - SegmentPlusPowerUp: return the object size in bytes (class slot 0, +$06)
+; SegmentPlusPowerUp_GetSize - SegmentPlusPowerUp: return the object size in bytes (class slot 0, +$06)
 ; In:  none
 ; Out: d0 = object size in bytes
 ; Evidence: method 0 of class descriptor $117CA2 (name string "SEGMENTPLUSPOWERUP", parent POWERUP)
 ; ---------------------------------------------------------------------------
-SegmentPlusPowerUp_SizeOf:
+SegmentPlusPowerUp_GetSize:
 	link.w	a6,#$0
 	move.l	#$8E,d0
 	unlk	a6

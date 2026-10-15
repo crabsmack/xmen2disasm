@@ -1,5 +1,5 @@
 ; ---------------------------------------------------------------------------
-; XNpc_OnHurt - XNpc: XNPC hook: took damage but survived (class slot 26, +$6E; called from XNpc_TakeHit)
+; XNpc_OnHurt - XNpc: XNPC hook: took damage but survived (class slot 26, +$6E; called from XNpc_TakeDamage)
 ; In:  8(a6) = this  $F(a6) = byte damage  $13(a6) = byte hit type
 ; Out: none
 ; Evidence: method 26 of class descriptor $113A88 (name string "XNPC", parent ACTOR)

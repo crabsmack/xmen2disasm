@@ -1,10 +1,10 @@
 ; ---------------------------------------------------------------------------
-; BioSentinel_Reset - BioSentinel: per-class reset hook (class slot 25, +$6A); some Inits call it on this, some LevelInit hooks share its body
-; In:  8(a6) = this (0 when reached from LevelInit)
+; BioSentinel_Nop6A - BioSentinel: no-op override of virtual slot 25 (+$6A)
+; In:  none (unused)
 ; Out: none
 ; Evidence: method 25 of class descriptor $1235F6 (name string "BIOSENTINEL", parent BASICBIOSENTINEL)
 ; ---------------------------------------------------------------------------
-BioSentinel_Reset:
+BioSentinel_Nop6A:
 	link.w	a6,#$0
 	unlk	a6
 	rts

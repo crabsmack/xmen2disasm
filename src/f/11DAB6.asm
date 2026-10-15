@@ -1,10 +1,10 @@
 ; ---------------------------------------------------------------------------
-; FloatBio_Hook66 - FloatBio: virtual hook at class slot 24 (+$66); no caller found yet
-; In:  8(a6) = this
+; FloatBio_Nop66 - FloatBio: no-op override of virtual slot 24 (+$66)
+; In:  8(a6) = this (unused)
 ; Out: none
 ; Evidence: method 24 of class descriptor $11BA14 (name string "FLOATBIO", parent BABYBIO)
 ; ---------------------------------------------------------------------------
-FloatBio_Hook66:
+FloatBio_Nop66:
 	link.w	a6,#$FFFC
 	movem.l	a3-a4,-(a7)
 	movea.l	$8(a6),a4

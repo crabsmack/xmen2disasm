@@ -1,10 +1,10 @@
 ; ---------------------------------------------------------------------------
-; BioFlame_Hook66 - BioFlame: virtual hook at class slot 24 (+$66); no caller found yet
-; In:  8(a6) = this
+; BioFlame_Nop66 - BioFlame: no-op override of virtual slot 24 (+$66)
+; In:  8(a6) = this (unused)
 ; Out: none
 ; Evidence: method 24 of class descriptor $11B6D4 (name string "BIOFLAME", parent ACTOR)
 ; ---------------------------------------------------------------------------
-BioFlame_Hook66:
+BioFlame_Nop66:
 	link.w	a6,#$FFFC
 	movem.l	a3-a4,-(a7)
 	movea.l	$8(a6),a4

@@ -1,10 +1,10 @@
 ; ---------------------------------------------------------------------------
-; Switch_LevelInit - Switch: per-class hook run at level start before the spawn pass (static, class slot 22, +$5E; sub_1FA7E8)
+; Switch_ClassInit - Switch: per-class hook run at level start before the spawn pass (static, class slot 22, +$5E; sub_1FA7E8)
 ; In:  8(a6) = 0  $C(a6) = class index in the level class list
 ; Out: none
 ; Evidence: method 22 of class descriptor $107A3E (name string "SWITCH", parent ACTOR)
 ; ---------------------------------------------------------------------------
-Switch_LevelInit:
+Switch_ClassInit:
 	link.w	a6,#$0
 	tst.l	-$1CA6(a5)
 	bne.s	loc_1077E4

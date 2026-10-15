@@ -1,6 +1,6 @@
 ; ---------------------------------------------------------------------------
 ; BioBalls_Reset - BioBalls: per-class reset hook (class slot 25, +$6A); some Inits call it on this, some LevelInit hooks share its body
-; In:  8(a6) = this (0 when reached from LevelInit)
+; In:  8(a6) = this (0 when reached from ClassInit)
 ; Out: none
 ; Evidence: method 25 of class descriptor $1203AC (name string "BIOBALLS", parent ACTOR)
 ; ---------------------------------------------------------------------------

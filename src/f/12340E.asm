@@ -1,10 +1,10 @@
 ; ---------------------------------------------------------------------------
-; BigBio_TakeHit - BigBio: receive a hit from an attacker: damage, hurt state, invulnerability timer (class slot 8, +$26)
+; BigBio_TakeDamage - BigBio: receive a hit from an attacker: damage, hurt state, invulnerability timer (class slot 8, +$26)
 ; In:  8(a6) = this  $C(a6) = attacker  $13(a6) = byte hit type  $17(a6) = byte damage  $1A/$1E(a6) = words
 ; Out: none
 ; Evidence: method 8 of class descriptor $123684 (name string "BIGBIO", parent BASICBIOSENTINEL)
 ; ---------------------------------------------------------------------------
-BigBio_TakeHit:
+BigBio_TakeDamage:
 	link.w	a6,#$FFF8
 	movem.l	d3/d7/a3-a4,-(a7)
 	movea.l	$8(a6),a4

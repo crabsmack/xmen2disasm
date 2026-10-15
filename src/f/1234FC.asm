@@ -1,10 +1,10 @@
 ; ---------------------------------------------------------------------------
-; BigBio_LevelInit - BigBio: per-class hook run at level start before the spawn pass (static, class slot 22, +$5E; sub_1FA7E8)
+; BigBio_ClassInit - BigBio: per-class hook run at level start before the spawn pass (static, class slot 22, +$5E; sub_1FA7E8)
 ; In:  8(a6) = 0  $C(a6) = class index in the level class list
 ; Out: none
 ; Evidence: method 22 of class descriptor $123684 (name string "BIGBIO", parent BASICBIOSENTINEL)
 ; ---------------------------------------------------------------------------
-BigBio_LevelInit:
+BigBio_ClassInit:
 	link.w	a6,#$0
 	move.l	a4,-(a7)
 	jsr	sub_1234F4(pc)
