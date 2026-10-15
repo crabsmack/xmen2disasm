@@ -50,7 +50,7 @@ from m68k import load_rom  # noqa: E402
 CDIR = ROOT / "config" / "compiler"
 RECOMP = ROOT / "build" / "recomp"
 DEFAULT_CANDIDATE = "mpw-c-3.3.3"
-DEFAULT_FLAGS = "-mbg off"
+DEFAULT_FLAGS = "-mbg off -b"
 
 
 def toolchains() -> Path:
