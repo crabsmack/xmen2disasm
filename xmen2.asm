@@ -162,7 +162,14 @@ Sw_0062E4:	; switch table of sub at $0062E4: 6 word offsets from Sw_0062E4-2
 	include "src/f/006B2C.asm"
 	include "src/f/006B64.asm"
 	include "src/f/006BD0.asm"
-	incrom	$006D22,$8878
+Art_AvalonB1Nem:	; Nemesis-style compressed 4bpp tiles (Nem_Decode; code table built from pairs by the caller); 3082 of 308C bytes used at runtime; read by Nem_DecodeLoop; jt[14] used by AvalonB1_InitIntroPalette, AvalonB1_RunScene, AvalonB2_RunScene
+	incrom	$006D22,$308C
+Art_AvalonB1Nem2:	; Nemesis-style compressed 4bpp tiles (Nem_Decode; code table built from pairs by the caller); 259 of 25A bytes used at runtime; read by Nem_DecodeLoop; jt[15] used by AvalonB1_RunScene
+	incrom	$009DAE,$25A
+Art_AvalonA2Nem:	; Nemesis-style compressed 4bpp tiles (Nem_Decode; code table built from pairs by the caller); 5344 of 5540 bytes used at runtime; read by Nem_DecodeLoop, Eni_ReadInline, Eni_Decode; jt[16] used by AvalonA2_LoadLevel, AvalonB1_RunScene, AvalonB2_RunScene
+	incrom	$00A008,$5540
+Art_AvalonB1Nem3:	; Nemesis-style compressed 4bpp tiles (Nem_Decode; code table built from pairs by the caller); 3A of 52 bytes used at runtime; read by Nem_DecodeLoop, Eni_ReadInline, Eni_Decode; jt[17] used by AvalonB1_RunScene
+	incrom	$00F548,$52
 	include "src/f/00F59A.asm"
 	include "src/f/00F60E.asm"
 	include "src/f/00F648.asm"
@@ -178,7 +185,14 @@ Sw_0062E4:	; switch table of sub at $0062E4: 6 word offsets from Sw_0062E4-2
 	include "src/f/00FD44.asm"
 	include "src/f/00FD78.asm"
 	include "src/f/00FDAA.asm"
-	incrom	$00FE78,$7E
+Tbl_AvalonB1ComputeParallax:	; table read by Scroll_ComputeParallax; 11 of 1A bytes used at runtime; read by Scroll_ComputeParallax, Scroll_SetParallax; jt[20] used by AvalonB1_CamHookFinish
+	incrom	$00FE78,$1A
+Tbl_AvalonB1PalFadeStep:	; table read by AvalonB1_PalFadeStep; 2B of 32 bytes used at runtime; read by AvalonB1_PalFadeStep, AvalonB1_CamHookFadeIn; jt[21] used by AvalonB1_CamHookFadeIn
+	incrom	$00FE92,$32
+Pal_AvalonB1Cycle:	; palette data read by Pal_CycleStep; 16 of 16 bytes used at runtime; read by Pal_CycleStep; jt[22] used by AvalonB1_CyclePalettes
+	incrom	$00FEC4,$16
+Pal_AvalonB1Cycle2:	; palette data read by Pal_CycleStep; 1C of 1C bytes used at runtime; read by Pal_CycleStep; jt[23] used by AvalonB1_CyclePalettes
+	incrom	$00FEDA,$1C
 	include "src/f/00FEF6.asm"
 Str_Empty_00FFAC:	; C string "" (used by BigAcolyte_RenderScaled)
 	incrom	$00FFAC,$2
@@ -231,7 +245,13 @@ Tbl_BigAcBullet_vtable:	; class descriptor of BIGACBULLET: word name offset $6E,
 	incrom	$0118BE,$7A
 Tbl_BigAcolyte_vtable:	; class descriptor of BIGACOLYTE: word name offset $82, parent BIONPC, 31 method slots from +6, then the name (tools/classes.py)
 	incrom	$011938,$8D
-	incrom	$0119C5,$1F
+	incrom	$0119C5,$1
+Tbl_BigAcolyteAnim:	; animation script (byte flags, byte steps, ..., 2-byte steps from +6); 8 of A bytes used at runtime; read by Anim_AdvanceByDistance, Anim_ApplyStep, Anim_Advance; jt[54] used by BigAcolyte_StateBecomeSprite, BigAcolyte_StateShoot
+	incrom	$0119C6,$A
+Tbl_BigAcolyteAnim2:	; animation script (byte flags, byte steps, ..., 2-byte steps from +6); 8 of A bytes used at runtime; read by Anim_ApplyStep, Anim_AdvanceByDistance, Anim_Advance; jt[55] used by BigAcolyte_StateShootAnim
+	incrom	$0119D0,$A
+Tbl_BigAcBulletAnim:	; animation script (byte flags, byte steps, ..., 2-byte steps from +6); 8 of A bytes used at runtime; read by Anim_ApplyStep, Anim_AdvanceByDistance, Anim_Advance; jt[56] used by BigAcBullet_StateLaunch
+	incrom	$0119DA,$A
 Tbl_BigAcolyteIntroScriptLen:	; word 6: entry count of the BIGACOLYTE intro AI script (6 jmp thunks follow at BigAcolyte_IntroScript)
 	incrom	$0119E4,$2
 	include "src/f/0119E6.asm"
@@ -239,7 +259,11 @@ Tbl_BigAcolyteFightScriptLen:	; word $14: entry count of the BIGACOLYTE fight AI
 	incrom	$0119FE,$1
 	incrom	$0119FF,$1
 	include "src/f/011A00.asm"
-	incrom	$011A04,$193E
+	incrom	$011A04,$672
+Art_BigAcolyteSpr:	; sprite definition (type $18, raw 4bpp tiles): $24-byte header, $14-byte frame records, pieces, tiles; F00 of 1024 bytes used at runtime; read by VDP_FlushDmaQueue; DMA to VRAM $ACE0-B600; jt[60] used by BigAcolyte_Init
+	incrom	$012076,$1024
+Art_BigAcBulletSpr:	; sprite definition (type $18, raw 4bpp tiles): $24-byte header, $14-byte frame records, pieces, tiles; 240 of 2A8 bytes used at runtime; read by VDP_FlushDmaQueue; DMA to VRAM $BFE0-C100; jt[61] used by BigAcBullet_Init
+	incrom	$01309A,$2A8
 	include "src/f/013342.asm"
 	include "src/f/013350.asm"
 	include "src/f/013358.asm"
@@ -266,16 +290,32 @@ Sw_013722:	; switch table of sub at $013722: 4 word offsets from Sw_013722-2
 	include "src/f/013DB0.asm"
 Tbl_CapedAcolyte_vtable:	; class descriptor of CAPEDACOLYTE: word name offset $82, parent BIONPC, 31 method slots from +6, then the name (tools/classes.py)
 	incrom	$013E10,$8F
-	incrom	$013E9F,$25
+	incrom	$013E9F,$1
+Tbl_CapedAcolyteAnim:	; animation script (byte flags, byte steps, ..., 2-byte steps from +6); 5 of 8 bytes used at runtime; read by Anim_AdvanceByDistance, Anim_ApplyStep, Anim_Advance; jt[77] used by CapedAcolyte_Init
+	incrom	$013EA0,$8
+Tbl_CapedAcolyteAnim2:	; animation script (byte flags, byte steps, ..., 2-byte steps from +6); 8 of E bytes used at runtime; read by Anim_ApplyStep, Anim_AdvanceByDistance, Anim_Advance; jt[78] used by CapedAcolyte_ActAnimHigh, CapedAcolyte_StateShoot
+	incrom	$013EA8,$E
+Tbl_CapedAcolyteAnim3:	; animation script (byte flags, byte steps, ..., 2-byte steps from +6); C of E bytes used at runtime; read by Anim_ApplyStep, Anim_AdvanceByDistance, CapedAcolyte_ActAnimHigh; jt[79] used by CapedAcolyte_ActAnimLow, CapedAcolyte_StateShoot
+	incrom	$013EB6,$E
 Tbl_CapedAcolyteIntroScriptLen:	; word 3: entry count of the CAPEDACOLYTE intro AI script (3 jmp thunks follow at CapedAcolyte_IntroScript)
 	incrom	$013EC4,$2
 	include "src/f/013EC6.asm"
 Tbl_CapedAcolyteMainScriptLen:	; word 5: entry count of the CAPEDACOLYTE main AI script (jt[81]); 5 jmp thunks follow at CapedAcolyte_MainScript
 	incrom	$013ED2,$1
+Tbl_CapedAcolyteActAnimLow:	; table read by CapedAcolyte_ActAnimLow; 1 of 1 bytes used at runtime; read by CapedAcolyte_ActAnimLow
 	incrom	$013ED3,$1
 	include "src/f/013ED4.asm"
 	include "src/f/013EE4.asm"
-	incrom	$013EE8,$3330
+Tbl_CapedAcolyteTakeDamage_Hurt:	; table read by XNpc_TakeDamage_Hurt; 3 of 8 bytes used at runtime; read by XNpc_TakeDamage_Hurt, CapedAcolyte_Init, Spr_Init; jt[82] used by CapedAcolyte_Init
+	incrom	$013EE8,$8
+Art_CapedAcolyteSpr:	; sprite definition (type $18, raw 4bpp tiles): $24-byte header, $14-byte frame records, pieces, tiles; 25C0 of 2B18 bytes used at runtime; read by VDP_FlushDmaQueue; DMA to VRAM $BC20-C780; jt[83] used by CapedAcolyte_Init
+	incrom	$013EF0,$2B18
+Art_FarAcolyteSpr:	; sprite definition (type $18, raw 4bpp tiles): $24-byte header, $14-byte frame records, pieces, tiles; 480 of 53C bytes used at runtime; read by VDP_FlushDmaQueue; DMA to VRAM $BC20-C260; jt[84] used by FarAcolyte_Init
+	incrom	$016A08,$53C
+Art_FarAcolyteSpr2:	; sprite definition (type $19, Nemesis-compressed tiles): $24-byte header, $14-byte frame records, pieces, tiles; 24D of 24E bytes used at runtime; read by Spr_PreloadTiles, Nem_DecodeLoop, Nem_BuildCodeTable; jt[85] used by FarAcolyte_ClassInit
+	incrom	$016F44,$24E
+Art_FarAcolyteSpr3:	; sprite definition (type $19, Nemesis-compressed tiles): $24-byte header, $14-byte frame records, pieces, tiles; 85 of 86 bytes used at runtime; read by Nem_DecodeLoop, Spr_PreloadTiles, Nem_DecodeLoop_Inline; jt[86] used by FarAcolyte_ClassInit
+	incrom	$017192,$86
 	include "src/f/017218.asm"
 	include "src/f/017226.asm"
 	include "src/f/01723C.asm"
@@ -298,7 +338,9 @@ Tbl_CapedAcolyteMainScriptLen:	; word 5: entry count of the CAPEDACOLYTE main AI
 	include "src/f/017DDC.asm"
 Tbl_FarAcolyte_vtable:	; class descriptor of FARACOLYTE: word name offset $7E, parent ACTOR, 30 method slots from +6, then the name (tools/classes.py)
 	incrom	$017E28,$89
-	incrom	$017EB1,$125
+	incrom	$017EB1,$1
+Tbl_CapedAcolyteMove:	; table read by CapedAcolyte_Move; 122 of 124 bytes used at runtime; read by CapedAcolyte_Move, FarAcolyte_Move; jt[100] used by CapedAcolyte_Init, CapedAcolyte_Move, FarAcolyte_Init
+	incrom	$017EB2,$124
 	include "src/f/017FD6.asm"
 	include "src/f/017FE4.asm"
 	include "src/f/017FFA.asm"
@@ -316,12 +358,21 @@ Tbl_FarAcolyte_vtable:	; class descriptor of FARACOLYTE: word name offset $7E, p
 	include "src/f/0185BE.asm"
 Tbl_ShootAcolyte_vtable:	; class descriptor of SHOOTACOLYTE: word name offset $82, parent BIONPC, 31 method slots from +6, then the name (tools/classes.py)
 	incrom	$018644,$8F
-	incrom	$0186D3,$25
+	incrom	$0186D3,$1
+Tbl_ShootAcolyteAnim:	; animation script (byte flags, byte steps, ..., 2-byte steps from +6); 10 of 12 bytes used at runtime; read by Anim_ApplyStep, Anim_AdvanceByDistance, Anim_Advance; jt[112] used by ShootAcolyte_StateWalkToPlayer
+	incrom	$0186D4,$12
+Tbl_ShootAcolyteAnim2:	; animation script (byte flags, byte steps, ..., 2-byte steps from +6); 8 of A bytes used at runtime; read by Anim_ApplyStep, Anim_AdvanceByDistance, Anim_Advance; jt[113] used by ShootAcolyte_StateAim
+	incrom	$0186E6,$A
+Tbl_ShootAcolyteAnim3:	; animation script (byte flags, byte steps, ..., 2-byte steps from +6); 6 of 8 bytes used at runtime; read by Anim_ApplyStep, Anim_AdvanceByDistance, Anim_Advance; jt[114] used by ShootAcolyte_StateFire
+	incrom	$0186F0,$8
 Tbl_ShootAcolyteScriptLen:	; word 4: entry count of the SHOOTACOLYTE AI script (jmp thunks follow at ShootAcolyte_Script)
 	incrom	$0186F8,$2
 	include "src/f/0186FA.asm"
 	include "src/f/018706.asm"
-	incrom	$01870A,$2398
+Tbl_ShootAcolyteTakeDamage_Hurt:	; table read by XNpc_TakeDamage_Hurt; 6 of 8 bytes used at runtime; read by XNpc_TakeDamage_Hurt, XNpc_KnockbackDist, ShootAcolyte_Init; jt[116] used by ShootAcolyte_Init
+	incrom	$01870A,$8
+Art_ShootAcolyteSpr:	; sprite definition (type $18, raw 4bpp tiles): $24-byte header, $14-byte frame records, pieces, tiles; 1C60 of 2390 bytes used at runtime; read by VDP_FlushDmaQueue; DMA to VRAM $BA60-C920; jt[117] used by ShootAcolyte_Init
+	incrom	$018712,$2390
 	include "src/f/01AAA2.asm"
 	include "src/f/01AAB0.asm"
 	include "src/f/01AABC.asm"
@@ -329,7 +380,13 @@ Tbl_ShootAcolyteScriptLen:	; word 4: entry count of the SHOOTACOLYTE AI script (
 	include "src/f/01ABBC.asm"
 Tbl_Tower_vtable:	; class descriptor of TOWER: word name offset $6E, parent ACTOR, 26 method slots from +6, then the name (tools/classes.py)
 	incrom	$01ABC4,$74
-	incrom	$01AC38,$13C0
+	incrom	$01AC38,$8
+Tbl_TowerAnim:	; animation script (byte flags, byte steps, ..., 2-byte steps from +6); 7E of 80 bytes used at runtime; read by Anim_ApplyStep; jt[123] used by Tower_Init
+	incrom	$01AC40,$80
+Tbl_TowerAnim2:	; animation script (byte flags, byte steps, ..., 2-byte steps from +6); 2C of 60 bytes used at runtime; read by Anim_ApplyStep; jt[124] used by Tower_Init
+	incrom	$01ACC0,$60
+Art_TowerSpr:	; sprite definition (type $18, raw 4bpp tiles): $24-byte header, $14-byte frame records, pieces, tiles; EE0 of 12D8 bytes used at runtime; read by VDP_FlushDmaQueue; DMA to VRAM $BA60-BF20; jt[125] used by Tower_Init
+	incrom	$01AD20,$12D8
 	include "src/f/01BFF8.asm"
 	include "src/f/01C006.asm"
 	include "src/f/01C01C.asm"
@@ -359,25 +416,48 @@ Sw_01C042:	; switch table of sub at $01C042: 5 word offsets from Sw_01C042-2
 	include "src/f/01C94A.asm"
 Tbl_YoyoAcolyte_vtable:	; class descriptor of YOYOACOLYTE: word name offset $86, parent BIONPC, 32 method slots from +6, then the name (tools/classes.py)
 	incrom	$01C9A2,$92
-	incrom	$01CA34,$1A
+Tbl_YoyoAcolyteAnim:	; animation script (byte flags, byte steps, ..., 2-byte steps from +6); 10 of 12 bytes used at runtime; read by Anim_ApplyStep, Anim_AdvanceByDistance, Anim_Advance; jt[140] used by YoyoAcolyte_ActIdle100, YoyoAcolyte_StateIdleNext
+	incrom	$01CA34,$12
+Tbl_YoyoAcolyteAnim2:	; animation script (byte flags, byte steps, ..., 2-byte steps from +6); 6 of 8 bytes used at runtime; read by Anim_ApplyStep, Anim_AdvanceByDistance, Anim_Advance; jt[141] used by YoyoAcolyte_ActThrowHigh, YoyoAcolyte_ActThrowLevel, YoyoAcolyte_ActThrowLow
+	incrom	$01CA46,$8
 Tbl_YoyoAcolyteScriptLevelLen:	; word 2: entry count of a YOYOACOLYTE AI script (jt[142]): ThrowLevel, Idle (YoyoAcolyte_ScriptLevel)
 	incrom	$01CA4E,$2
 	include "src/f/01CA50.asm"
 Tbl_YoyoAcolyteScriptHighLen:	; word 2: entry count of a YOYOACOLYTE AI script (jt[143]): ThrowHigh, Idle (YoyoAcolyte_ScriptHigh)
 	incrom	$01CA58,$1
+Tbl_YoyoAcolyteStateYoyoOut:	; table read by YoyoAcolyte_StateYoyoOut; 1 of 1 bytes used at runtime; read by YoyoAcolyte_StateYoyoOut
 	incrom	$01CA59,$1
 	include "src/f/01CA5A.asm"
 Tbl_YoyoAcolyteScriptLowLen:	; word 2: entry count of a YOYOACOLYTE AI script (jt[144]): ThrowLow, Idle (YoyoAcolyte_ScriptLow)
 	incrom	$01CA62,$1
+Tbl_YoyoAcolyteStateYoyoOut2:	; table read by YoyoAcolyte_StateYoyoOut; 1 of 1 bytes used at runtime; read by YoyoAcolyte_StateYoyoOut
 	incrom	$01CA63,$1
 	include "src/f/01CA64.asm"
 Tbl_YoyoAcolyteScriptMixALen:	; word 6: entry count of a YOYOACOLYTE AI script (jt[145]): Level, Idle, High, Idle, Low, Idle (YoyoAcolyte_ScriptMixA)
 	incrom	$01CA6C,$1
+Tbl_YoyoAcolyteStateYoyoOut3:	; table read by YoyoAcolyte_StateYoyoOut; 1 of 1 bytes used at runtime; read by YoyoAcolyte_StateYoyoOut
 	incrom	$01CA6D,$1
 	include "src/f/01CA6E.asm"
-	incrom	$01CA82,$6
+	incrom	$01CA82,$4
+Tbl_YoyoAcolyteStateYoyoOut4:	; table read by YoyoAcolyte_StateYoyoOut; 2 of 2 bytes used at runtime; read by YoyoAcolyte_StateYoyoOut; jt[146] used by YoyoAcolyte_Init_Script1to4
+	incrom	$01CA86,$2
 	include "src/f/01CA88.asm"
-	incrom	$01CAA0,$5C12
+Tbl_YoyoAcolyteInit:	; table read by YoyoAcolyte_Init; 5 of 8 bytes used at runtime; read by YoyoAcolyte_Init, XNpc_TakeDamage_Hurt; jt[147] used by YoyoAcolyte_Init
+	incrom	$01CAA0,$8
+Art_YoyoAcolyteSpr:	; sprite definition (type $18, raw 4bpp tiles): $24-byte header, $14-byte frame records, pieces, tiles; 2180 of 2774 bytes used at runtime; read by VDP_FlushDmaQueue; DMA to VRAM $BA60-C760; jt[148] used by YoyoAcolyte_Init
+	incrom	$01CAA8,$2774
+Lvl_YoyoAcolyteSegs:	; floor-segment list (Seg_LoadList: 12/10-byte records until a 0 byte); 381 of 382 bytes used at runtime; read by Seg_LoadList, Nem_DecodeLoop, VDP_FlushDmaQueue; jt[149] used by YoyoAcolyte_ClassInit
+	incrom	$01F21C,$382
+Lvl_AvalonB2Segs:	; floor-segment list (Seg_LoadList: 12/10-byte records until a 0 byte); 29F of 2A0 bytes used at runtime; read by Seg_LoadList, Nem_DecodeLoop; jt[150] used by AvalonB2_RunScene
+	incrom	$01F59E,$2A0
+Map_AvalonB2Eni:	; Enigma-compressed tilemap (Eni_Decode); 2002 of 224E bytes used at runtime; read by Eni_ReadInline, Eni_Decode, Eni_Ops; jt[151] used by AvalonB2_RunScene
+	incrom	$01F83E,$224E
+Map_AvalonB2Eni2:	; Enigma-compressed tilemap (Eni_Decode); 3E of 56 bytes used at runtime; read by Eni_ReadInline, Eni_Decode, Eni_Ops; jt[152] used by AvalonB2_RunScene
+	incrom	$021A8C,$56
+Art_AvalonB2Spr:	; sprite definition (type $18, raw 4bpp tiles): $24-byte header, $14-byte frame records, pieces, tiles; 40F of 45C bytes used at runtime; read by VDP_WriteWords, Spr_PreloadTiles; jt[153] used by AvalonB2_InitSprite
+	incrom	$021AE2,$45C
+Art_BigAcolyteSpr2:	; sprite definition (type $18, raw 4bpp tiles): $24-byte header, $14-byte frame records, pieces, tiles; 774 of 774 bytes used at runtime; read by VDP_WriteWords, Spr_PreloadTiles; jt[154] used by BigAcolyte_LoadSprite
+	incrom	$021F3E,$774
 	include "src/f/0226B2.asm"
 	include "src/f/0226D0.asm"
 	include "src/f/0226F4.asm"
@@ -405,7 +485,20 @@ Tbl_YoyoAcolyteScriptMixALen:	; word 6: entry count of a YOYOACOLYTE AI script (
 	include "src/f/022B76.asm"
 	include "src/f/022B7E.asm"
 	include "src/f/022BA2.asm"
-	incrom	$022BCA,$3D34
+Tbl_AvalonA2LoadLevel:	; table read by AvalonA2_LoadLevel; 20 of 20 bytes used at runtime; read by AvalonA2_LoadLevel, Scroll_SetParallax; jt[157] used by AvalonA2_LoadLevel, AvalonA3_LoadLevel
+	incrom	$022BCA,$20
+Tbl_AvalonA2ComputeParallax:	; table read by Scroll_ComputeParallax; 25 of 3A bytes used at runtime; read by Scroll_ComputeParallax, Scroll_SetParallax, AvalonA2_LoadLevel; jt[158] used by AvalonA2_InstallHooks
+	incrom	$022BEA,$3A
+Art_AvalonA2Nem2:	; Nemesis-style compressed 4bpp tiles (Nem_Decode; code table built from pairs by the caller); 2664 of 266E bytes used at runtime; read by Nem_DecodeLoop; jt[159] used by AvalonA2_LoadLevel, AvalonA3_LoadLevel
+	incrom	$022C24,$266E
+Art_AvalonA2Nem3:	; Nemesis-style compressed 4bpp tiles (Nem_Decode; code table built from pairs by the caller); D3 of D4 bytes used at runtime; read by Nem_DecodeLoop; jt[160] used by AvalonA2_LoadLevel
+	incrom	$025292,$D4
+Map_AvalonA2Eni:	; Enigma-compressed tilemap (Eni_Decode); 104A of 143A bytes used at runtime; read by Eni_Decode, Eni_ReadInline, Eni_Ops; jt[161] used by AvalonA2_LoadLevel
+	incrom	$025366,$143A
+Map_AvalonA2Eni2:	; Enigma-compressed tilemap (Eni_Decode); 36 of 4E bytes used at runtime; read by Eni_Decode, Eni_ReadInline, Eni_Ops; jt[162] used by AvalonA2_LoadLevel
+	incrom	$0267A0,$4E
+Art_RetractFloorSpr:	; sprite definition (type $19, Nemesis-compressed tiles): $24-byte header, $14-byte frame records, pieces, tiles; 10F of 110 bytes used at runtime; read by Nem_DecodeLoop, Spr_PreloadTiles, Nem_BuildCodeTable; jt[163] used by RetractFloor_ClassInit
+	incrom	$0267EE,$110
 	include "src/f/0268FE.asm"
 	include "src/f/02690C.asm"
 	include "src/f/0269CE.asm"
@@ -421,7 +514,9 @@ Tbl_YoyoAcolyteScriptMixALen:	; word 6: entry count of a YOYOACOLYTE AI script (
 	include "src/f/026F2E.asm"
 Tbl_RetractFloor_vtable:	; class descriptor of RETRACTFLOOR: word name offset $72, parent ACTOR, 27 method slots from +6, then the name (tools/classes.py)
 	incrom	$026F4A,$7F
-	incrom	$026FC9,$267
+	incrom	$026FC9,$1
+Art_ZapperSpr:	; sprite definition (type $19, Nemesis-compressed tiles): $24-byte header, $14-byte frame records, pieces, tiles; 265 of 266 bytes used at runtime; read by Spr_PreloadTiles, Nem_DecodeLoop; jt[173] used by Zapper_ClassInit
+	incrom	$026FCA,$266
 	include "src/f/027230.asm"
 	include "src/f/02723E.asm"
 	include "src/f/027254.asm"
@@ -432,7 +527,25 @@ Tbl_RetractFloor_vtable:	; class descriptor of RETRACTFLOOR: word name offset $7
 	include "src/f/0273BE.asm"
 Tbl_Zapper_vtable:	; class descriptor of ZAPPER: word name offset $6E, parent ACTOR, 26 method slots from +6, then the name (tools/classes.py)
 	incrom	$0273F4,$75
-	incrom	$027469,$5499
+	incrom	$027469,$1
+Tbl_AvalonA3Anim:	; animation script (byte flags, byte steps, ..., 2-byte steps from +6); 8 of A bytes used at runtime; read by Anim_AdvanceByDistance, Anim_ApplyStep, Anim_Advance; jt[180] used by sub_027352
+	incrom	$02746A,$A
+Tbl_AvalonA3Anim2:	; animation script (byte flags, byte steps, ..., 2-byte steps from +6); 8 of A bytes used at runtime; read by Anim_ApplyStep, Anim_AdvanceByDistance, Anim_Advance; jt[181] used by sub_027388
+	incrom	$027474,$A
+Lvl_AvalonA3Segs:	; floor-segment list (Seg_LoadList: 12/10-byte records until a 0 byte); 8 of A bytes used at runtime; read by Seg_LoadList, Anim_ApplyStep, Anim_AdvanceByDistance; jt[182] used by sub_0273BE
+	incrom	$02747E,$A
+Lvl_AvalonA3Segs2:	; floor-segment list (Seg_LoadList: 12/10-byte records until a 0 byte); 9B of 9C bytes used at runtime; read by Seg_LoadList; jt[183] used by AvalonA3_LoadLevel
+	incrom	$027488,$9C
+Lvl_AvalonA3Map:	; level map blob, Enigma-compressed layout (NOTES: Level map / tileset blobs); 1E8 of 1FC bytes used at runtime; read by Eni_ReadInline, Eni_Decode, Level_Load; jt[184] used by AvalonA3_LoadLevel
+	incrom	$027524,$1FC
+Lvl_AvalonA3Map2:	; level map blob, Enigma-compressed layout (NOTES: Level map / tileset blobs); E of 26 bytes used at runtime; read by Eni_ReadInline, Eni_Decode, Eni_Ops; jt[185] used by AvalonA3_LoadLevel
+	incrom	$027720,$26
+Art_ExodusSpr:	; sprite definition (type $19, Nemesis-compressed tiles): $24-byte header, $14-byte frame records, pieces, tiles; 3291 of 3292 bytes used at runtime; read by Spr_PreloadTiles, Nem_DecodeLoop; jt[186] used by Exodus_ClassInit
+	incrom	$027746,$3292
+Art_ExodusBlastNem:	; Nemesis-style compressed 4bpp tiles (Nem_Decode; code table built from pairs by the caller); 9ED of 9EE bytes used at runtime; read by Nem_DecodeLoop; jt[187] used by ExodusBlast_ClassInit
+	incrom	$02A9D8,$9EE
+Art_AvalonA3Spr:	; sprite definition (type $18, raw 4bpp tiles): $24-byte header, $14-byte frame records, pieces, tiles; C00 of 153C bytes used at runtime; read by VDP_FlushDmaQueue, VDP_WriteWords; DMA to VRAM $22A0-26A0; jt[188] used by AvalonA3_InitSprites
+	incrom	$02B3C6,$153C
 	include "src/f/02C902.asm"
 	include "src/f/02C90A.asm"
 	include "src/f/02C9AA.asm"
@@ -512,7 +625,19 @@ Sw_02DADE:	; switch table of sub at $02DADE: 5 word offsets from Sw_02DADE-2
 	include "src/f/02DDDC.asm"
 Tbl_Exodus_vtable:	; class descriptor of EXODUS: word name offset $6E, parent ACTOR, 26 method slots from +6, then the name (tools/classes.py)
 	incrom	$02DEB4,$75
-	incrom	$02DF29,$6D
+	incrom	$02DF29,$1
+Tbl_ExodusBlastAnim:	; animation script (byte flags, byte steps, ..., 2-byte steps from +6); 24 of 26 bytes used at runtime; read by Anim_ApplyStep, Anim_AdvanceByDistance; jt[204] used by sub_02CDCA, sub_02D6D8
+	incrom	$02DF2A,$26
+Tbl_ExodusBlastAnim2:	; animation script (byte flags, byte steps, ..., 2-byte steps from +6); C of E bytes used at runtime; read by Anim_ApplyStep, Anim_AdvanceByDistance, Anim_Advance; jt[205] used by sub_02D1A6
+	incrom	$02DF50,$E
+Tbl_ExodusBlastAnim3:	; animation script (byte flags, byte steps, ..., 2-byte steps from +6); C of E bytes used at runtime; read by Anim_ApplyStep; jt[206] used by sub_02D21C
+	incrom	$02DF5E,$E
+Tbl_ExodusBlastAnim4:	; animation script (byte flags, byte steps, ..., 2-byte steps from +6); C of E bytes used at runtime; read by Anim_ApplyStep, Anim_AdvanceByDistance, Anim_Advance; jt[207] used by sub_02D27A
+	incrom	$02DF6C,$E
+Tbl_ExodusBlastAnim5:	; animation script (byte flags, byte steps, ..., 2-byte steps from +6); C of E bytes used at runtime; read by Anim_ApplyStep, Anim_AdvanceByDistance, Anim_Advance; jt[208] used by sub_02D2D8
+	incrom	$02DF7A,$E
+Tbl_ExodusBlastAnim6:	; animation script (byte flags, byte steps, ..., 2-byte steps from +6); C of E bytes used at runtime; read by Anim_ApplyStep; jt[209] used by sub_02D4BA
+	incrom	$02DF88,$E
 	include "src/f/02DF96.asm"
 	include "src/f/02DFA4.asm"
 	include "src/f/02DFD8.asm"
@@ -542,7 +667,17 @@ Sw_02DFD8:	; switch table of sub at $02DFD8: 7 word offsets from Sw_02DFD8-2
 	include "src/f/02E526.asm"
 Tbl_ExodusBlast_vtable:	; class descriptor of EXODUSBLAST: word name offset $82, parent XNPC, 31 method slots from +6, then the name (tools/classes.py)
 	incrom	$02E566,$8E
-	incrom	$02E5F4,$675A
+Tbl_AvalonA4Anim:	; animation script (byte flags, byte steps, ..., 2-byte steps from +6); C of E bytes used at runtime; read by Anim_ApplyStep, Anim_AdvanceByDistance, Anim_Advance; jt[218] used by sub_02DFD8
+	incrom	$02E5F4,$E
+Art_AvalonA4Nem:	; Nemesis-style compressed 4bpp tiles (Nem_Decode; code table built from pairs by the caller); 14E0 of 14EA bytes used at runtime; read by Nem_DecodeLoop, Eni_ReadInline, Eni_Decode; jt[219] used by AvalonA4_LoadLevel
+	incrom	$02E602,$14EA
+Art_AvalonA4Nem2:	; Nemesis-style compressed 4bpp tiles (Nem_Decode; code table built from pairs by the caller); FB of FC bytes used at runtime; read by Nem_DecodeLoop, Eni_ReadInline, Eni_Decode; jt[220] used by AvalonA4_LoadLevel
+	incrom	$02FAEC,$FC
+Art_AvalonA3Nem:	; Nemesis-style compressed 4bpp tiles (Nem_Decode; code table built from pairs by the caller); 50C4 of 5128 bytes used at runtime; read by Nem_DecodeLoop, Eni_Decode, Eni_ReadInline; jt[221] used by AvalonA3_LoadLevel, AvalonA4_LoadLevel
+	incrom	$02FBE8,$5128
+Art_AvalonA4Nem3:	; Nemesis-style compressed 4bpp tiles (Nem_Decode; code table built from pairs by the caller); 1A of 32 bytes used at runtime; read by Nem_DecodeLoop, Eni_ReadInline, Eni_Decode; jt[222] used by AvalonA4_LoadLevel
+	incrom	$034D10,$32
+	incrom	$034D42,$C
 	include "src/f/034D4E.asm"
 	include "src/f/034D56.asm"
 	include "src/f/034D7A.asm"
@@ -601,7 +736,17 @@ Sw_0358D8:	; switch table of sub at $0358D8: 6 word offsets from Sw_0358D8-2
 	include "src/f/035A7E.asm"
 	include "src/f/035A86.asm"
 	include "src/f/035A9E.asm"
-	incrom	$035AC6,$96
+Tbl_MagnetoBossAnim:	; animation script (byte flags, byte steps, ..., 2-byte steps from +6); 8 of A bytes used at runtime; read by Anim_AdvanceByDistance, Anim_ApplyStep, Anim_Advance; jt[227] used by MagnetoBoss_TakeDamage
+	incrom	$035AC6,$A
+Tbl_AvalonA4Anim2:	; animation script (byte flags, byte steps, ..., 2-byte steps from +6); E of 10 bytes used at runtime; read by Anim_ApplyStep, sub_035BE8, Cam_ShakeStep; jt[228] used by sub_036AC6, sub_03799C
+	incrom	$035AD0,$10
+	incrom	$035AE0,$20
+Tbl_AvalonA4ShakeStep:	; table read by Cam_ShakeStep; D of E bytes used at runtime; read by Cam_ShakeStep; jt[231] used by sub_036CCA
+	incrom	$035B00,$E
+Tbl_AvalonA4ShakeStep2:	; table read by Cam_ShakeStep; D of E bytes used at runtime; read by Cam_ShakeStep; jt[232] used by sub_036D3C
+	incrom	$035B0E,$E
+Tbl_MagnetoBossMove:	; table read by MagnetoBoss_Move; 40 of 40 bytes used at runtime; read by MagnetoBoss_Move; jt[233] used by MagnetoBoss_Init
+	incrom	$035B1C,$40
 Tbl_MagnetoBoss_vtable:	; class descriptor of MAGNETOBOSS: word name offset $72, parent ACTOR, 27 method slots from +6, then the name (tools/classes.py)
 	incrom	$035B5C,$7E
 	include "src/f/035BDA.asm"
@@ -681,7 +826,10 @@ Tbl_ThronePhone_vtable:	; class descriptor of THRONEPHONE: word name offset $72,
 	include "src/f/037F26.asm"
 	include "src/f/037F7E.asm"
 	include "src/f/038036.asm"
-	incrom	$03803E,$396
+Art_ThronePhoneSpr:	; sprite definition (type $19, Nemesis-compressed tiles): $24-byte header, $14-byte frame records, pieces, tiles; 103 of 104 bytes used at runtime; read by Spr_PreloadTiles, Nem_BuildCodeTable; jt[255] used by ThronePhone_ClassInit
+	incrom	$03803E,$104
+Art_MagnetoBossSpr:	; sprite definition (type $19, Nemesis-compressed tiles): $24-byte header, $14-byte frame records, pieces, tiles; 291 of 292 bytes used at runtime; read by Nem_DecodeLoop, Spr_PreloadTiles, Nem_BuildCodeTable; jt[256] used by MagnetoBoss_ClassInit
+	incrom	$038142,$292
 	include "src/f/0383D4.asm"
 	include "src/f/0383DC.asm"
 	include "src/f/03845C.asm"
@@ -703,7 +851,11 @@ Sw_0389B6:	; switch table of sub at $0389B6: 8 word offsets from Sw_0389B6-2
 	include "src/f/038AFE.asm"
 	include "src/f/038BAC.asm"
 	include "src/f/038BFA.asm"
-	incrom	$038C38,$10DE
+	incrom	$038C38,$C0
+Art_BaniMazaA1Tiles:	; uncompressed 4bpp tiles DMA'd to VRAM; 1E of 1E bytes used at runtime; read by VDP_FlushDmaQueue; jt[262] used by BaniMazaA1_InitSprites
+	incrom	$038CF8,$1E
+Art_BaniMazaA1Tiles2:	; uncompressed 4bpp tiles DMA'd to VRAM; 1000 of 1000 bytes used at runtime; read by VDP_FlushDmaQueue; DMA to VRAM $5CC0-6460; jt[263] used by BaniMazaA1_UploadBlockTiles
+	incrom	$038D16,$1000
 	include "src/f/039D16.asm"
 	include "src/f/039D24.asm"
 	include "src/f/039DBA.asm"
@@ -751,7 +903,41 @@ Str_Empty_03AD12:	; C string "" (used by sub_03AC3E)
 	include "src/f/03AE1C.asm"
 Tbl_RollingDiscs_vtable:	; class descriptor of ROLLINGDISCS: word name offset $6E, parent ACTOR, 26 method slots from +6, then the name (tools/classes.py)
 	incrom	$03AE32,$7B
-	incrom	$03AEAD,$C41F
+	incrom	$03AEAD,$1
+Art_BanimazaDoorSpr:	; sprite definition (type $19, Nemesis-compressed tiles): $24-byte header, $14-byte frame records, pieces, tiles; 839 of 83A bytes used at runtime; read by Nem_DecodeLoop, Spr_PreloadTiles; jt[285] used by BanimazaDoor_ClassInit, BanimazaDoor_Init
+	incrom	$03AEAE,$83A
+Tbl_BaniMazaA1Vdp:	; words copied to the VDP data port by VDP_WriteWords; 211 of 11C4 bytes used at runtime; read by VDP_WriteWords; jt[286] used by BaniMazaA1_InitSprites
+	incrom	$03B6E8,$11C4
+Lvl_BaniMazaA1Segs:	; floor-segment list (Seg_LoadList: 12/10-byte records until a 0 byte); 3AD of 3AE bytes used at runtime; read by Seg_LoadList; jt[287] used by BaniMazaA1_LoadLevel
+	incrom	$03C8AC,$3AE
+Art_BaniMazaA1Nem:	; Nemesis-style compressed 4bpp tiles (Nem_Decode; code table built from pairs by the caller); 6970 of 6BE0 bytes used at runtime; read by Nem_DecodeLoop, Eni_ReadInline, Eni_Decode; jt[288] used by BaniMazaA1_LoadLevel
+	incrom	$03CC5A,$6BE0
+Art_BaniMazaA1Nem2:	; Nemesis-style compressed 4bpp tiles (Nem_Decode; code table built from pairs by the caller); 2A of 44 bytes used at runtime; read by Nem_DecodeLoop, Eni_ReadInline, Eni_Decode; jt[289] used by BaniMazaA1_LoadLevel
+	incrom	$04383A,$44
+Lvl_BaniMazaA1Data:	; level data read by Level_AssignBlockSlots; 3D1 of 3FA bytes used at runtime; read by Level_AssignBlockSlots, Eni_Decode, RollingDiscs_ClassInit; jt[290] used by BaniMazaA1_LoadLevel
+	incrom	$04387E,$3FA
+Lvl_BaniMazaA2Data:	; level data read by Level_AssignBlockSlots; 5B of 5C bytes used at runtime; read by Level_AssignBlockSlots, Eni_Decode, Seg_LoadList; jt[291] used by BaniMazaA2_LoadLevel
+	incrom	$043C78,$5C
+Art_BaniMazaA2Nem:	; Nemesis-style compressed 4bpp tiles (Nem_Decode; code table built from pairs by the caller); D8E of DA4 bytes used at runtime; read by Nem_DecodeLoop; jt[292] used by BaniMazaA2_LoadLevel
+	incrom	$043CD4,$DA4
+Art_BaniMazaA2Nem2:	; Nemesis-style compressed 4bpp tiles (Nem_Decode; code table built from pairs by the caller); 12 of 2C bytes used at runtime; read by Nem_DecodeLoop; jt[293] used by BaniMazaA2_LoadLevel
+	incrom	$044A78,$2C
+Art_BaniMazaA2Nem3:	; Nemesis-style compressed 4bpp tiles (Nem_Decode; code table built from pairs by the caller); 221C of 2226 bytes used at runtime; read by Nem_DecodeLoop; jt[294] used by BaniMazaA2_LoadLevel
+	incrom	$044AA4,$2226
+Tbl_BaniMazaA2Vdp:	; words copied to the VDP data port by VDP_WriteWords; 40F of 45C bytes used at runtime; read by VDP_WriteWords; jt[295] used by BaniMazaA2_InitSprite
+	incrom	$046CCA,$45C
+Tbl_BaniMazaA2Vdp2:	; words copied to the VDP data port by VDP_WriteWords; 16 of 16 bytes used at runtime; read by VDP_WriteWords; jt[296] used by BaniMazaA2_AnimatePalettes_cases
+	incrom	$047126,$16
+Tbl_BaniMazaA2Vdp3:	; words copied to the VDP data port by VDP_WriteWords; 16 of 16 bytes used at runtime; read by VDP_WriteWords; jt[297] used by BaniMazaA2_AnimatePalettes_cases
+	incrom	$04713C,$16
+Tbl_BaniMazaA2Vdp4:	; words copied to the VDP data port by VDP_WriteWords; 16 of 16 bytes used at runtime; read by VDP_WriteWords; jt[298] used by BaniMazaA2_AnimatePalettes_case3
+	incrom	$047152,$16
+	incrom	$047168,$2C
+Tbl_BaniMazaA2SetPaletteStep:	; table read by BaniMazaA2_SetPaletteStep; 48 of F0 bytes used at runtime; read by BaniMazaA2_SetPaletteStep; jt[301] used by BaniMazaA2_SetPaletteStep
+	incrom	$047194,$F0
+	incrom	$047284,$1C
+Tbl_BaniMazaA2AnimatePalettes:	; table read by BaniMazaA2_AnimatePalettes; 2C of 2C bytes used at runtime; read by BaniMazaA2_AnimatePalettes; jt[303] used by BaniMazaA2_AnimatePalettes
+	incrom	$0472A0,$2C
 	include "src/f/0472CC.asm"
 	include "src/f/0472E0.asm"
 	include "src/f/0473D4.asm"
@@ -777,7 +963,17 @@ Sw_04744E:	; switch table of sub at $04744E: 5 word offsets from Sw_04744E-2
 	include "src/f/047886.asm"
 	include "src/f/047892.asm"
 	include "src/f/04791A.asm"
-	incrom	$04797A,$380C
+Art_ApocalypseSpr:	; sprite definition (type $19, Nemesis-compressed tiles): $24-byte header, $14-byte frame records, pieces, tiles; 210D of 210E bytes used at runtime; read by Nem_DecodeLoop, Spr_PreloadTiles; jt[307] used by Apocalypse_ClassInit
+	incrom	$04797A,$210E
+Art_ApocalypseSpr2:	; sprite definition (type $18, raw 4bpp tiles): $24-byte header, $14-byte frame records, pieces, tiles; 10A0 of 1674 bytes used at runtime; read by VDP_FlushDmaQueue; DMA to VRAM $D140-D960; jt[308] used by Apocalypse_Init, BeamScooter_Init
+	incrom	$049A88,$1674
+Tbl_BaniMazaA2Anim:	; animation script (byte flags, byte steps, ..., 2-byte steps from +6); A of C bytes used at runtime; read by Anim_ApplyStep, Anim_AdvanceByDistance, Anim_Advance; jt[309] used by sub_04C240
+	incrom	$04B0FC,$C
+Tbl_BaniMazaA2Anim2:	; animation script (byte flags, byte steps, ..., 2-byte steps from +6); 16 of 18 bytes used at runtime; read by Anim_ApplyStep, Anim_AdvanceByDistance; jt[310] used by sub_04C030
+	incrom	$04B108,$18
+Tbl_BaniMazaA2Anim3:	; animation script (byte flags, byte steps, ..., 2-byte steps from +6); 18 of 1A bytes used at runtime; read by Anim_ApplyStep; jt[311] used by sub_04C168
+	incrom	$04B120,$1A
+	incrom	$04B13A,$4C
 	include "src/f/04B186.asm"
 Str_Empty_04B19E:	; C string "" (used by jt[315])
 	incrom	$04B19E,$1
@@ -858,7 +1054,18 @@ Str_Empty_04C582:	; C string "" (used by sub_04C526)
 	include "src/f/04CD3A.asm"
 Tbl_Apocalypse_vtable:	; class descriptor of APOCALYPSE: word name offset $6E, parent ACTOR, 26 method slots from +6, then the name (tools/classes.py)
 	incrom	$04CDA4,$79
-	incrom	$04CE1D,$10FD
+	incrom	$04CE1D,$1
+Art_ApocBombSpr:	; sprite definition (type $19, Nemesis-compressed tiles): $24-byte header, $14-byte frame records, pieces, tiles; F0D of F0E bytes used at runtime; read by Nem_DecodeLoop, Spr_PreloadTiles; jt[356] used by ApocBomb_ClassInit
+	incrom	$04CE1E,$F0E
+Art_ApocBombNem:	; Nemesis-style compressed 4bpp tiles (Nem_Decode; code table built from pairs by the caller); 28 of 28 bytes used at runtime; read by Nem_DecodeLoop; jt[357] used by ApocBomb_Init
+	incrom	$04DD2C,$28
+Art_ApocalypseNem:	; Nemesis-style compressed 4bpp tiles (Nem_Decode; code table built from pairs by the caller); 14 of 14 bytes used at runtime; read by Nem_DecodeLoop; jt[358] used by sub_04E644
+	incrom	$04DD54,$14
+Art_ApocBombNem2:	; Nemesis-style compressed 4bpp tiles (Nem_Decode; code table built from pairs by the caller); 84 of 88 bytes used at runtime; read by Nem_DecodeLoop; jt[359] used by ApocBomb_TakeDamage
+	incrom	$04DD68,$88
+	incrom	$04DDF0,$E0
+Tbl_ApocalypseShakeStep:	; table read by Cam_ShakeStep; 49 of 4A bytes used at runtime; read by Cam_ShakeStep; jt[361] used by sub_04E81A
+	incrom	$04DED0,$4A
 	include "src/f/04DF1A.asm"
 	include "src/f/04DF28.asm"
 	include "src/f/04DF30.asm"
@@ -896,7 +1103,42 @@ Tbl_ApocBomb_vtable:	; class descriptor of APOCBOMB: word name offset $6E, paren
 	include "src/f/04EC7C.asm"
 Tbl_BeamScooter_vtable:	; class descriptor of BEAMSCOOTER: word name offset $6E, parent ACTOR, 26 method slots from +6, then the name (tools/classes.py)
 	incrom	$04ECEC,$7A
-	incrom	$04ED66,$BB7E
+Art_BoulderSpr:	; sprite definition (type $19, Nemesis-compressed tiles): $24-byte header, $14-byte frame records, pieces, tiles; 749 of 74A bytes used at runtime; read by Nem_DecodeLoop, Spr_PreloadTiles, Nem_BuildCodeTable; jt[382] used by Boulder_ClassInit
+	incrom	$04ED66,$74A
+Art_BoulderSpr2:	; sprite definition (type $19, Nemesis-compressed tiles): $24-byte header, $14-byte frame records, pieces, tiles; 219 of 21A bytes used at runtime; read by Nem_DecodeLoop, Spr_PreloadTiles; jt[383] used by Boulder_ClassInit
+	incrom	$04F4B0,$21A
+Art_BoulderSpr3:	; sprite definition (type $19, Nemesis-compressed tiles): $24-byte header, $14-byte frame records, pieces, tiles; 36D of 36E bytes used at runtime; read by Nem_DecodeLoop, Spr_PreloadTiles; jt[384] used by Boulder_ClassInit
+	incrom	$04F6CA,$36E
+Art_TuskSpr:	; sprite definition (type $18, raw 4bpp tiles): $24-byte header, $14-byte frame records, pieces, tiles; 2520 of 2B96 bytes used at runtime; read by VDP_FlushDmaQueue; DMA to VRAM $BA20-C380; jt[385] used by Tusk_Init
+	incrom	$04FA38,$2B96
+Art_BaniMazaA1Nem3:	; Nemesis-style compressed 4bpp tiles (Nem_Decode; code table built from pairs by the caller); 7D7 of 7D8 bytes used at runtime; read by Nem_DecodeLoop, Seg_LoadList, VDP_FlushDmaQueue; jt[386] used by BaniMazaA1_InitPalette, BaniMazaB2_InitPalette, Tuskette_ClassInit
+	incrom	$0525CE,$7D8
+Art_BaniMazaB2Nem:	; Nemesis-style compressed 4bpp tiles (Nem_Decode; code table built from pairs by the caller); 37B of 37C bytes used at runtime; read by Nem_DecodeLoop, Seg_LoadList; jt[387] used by BaniMazaB2_LoadLevel
+	incrom	$052DA6,$37C
+Art_BaniMazaB2Nem2:	; Nemesis-style compressed 4bpp tiles (Nem_Decode; code table built from pairs by the caller); 6366 of 646C bytes used at runtime; read by Nem_DecodeLoop, Eni_ReadInline, Eni_Decode; jt[388] used by BaniMazaB2_LoadLevel
+	incrom	$053122,$646C
+Art_BaniMazaB2Nem3:	; Nemesis-style compressed 4bpp tiles (Nem_Decode; code table built from pairs by the caller); 16 of 2E bytes used at runtime; read by Nem_DecodeLoop, Eni_ReadInline, Eni_Decode; jt[389] used by BaniMazaB2_LoadLevel
+	incrom	$05958E,$2E
+Art_BaniMazaB2Nem4:	; Nemesis-style compressed 4bpp tiles (Nem_Decode; code table built from pairs by the caller); 1248 of 1252 bytes used at runtime; read by Nem_DecodeLoop, Eni_Decode; jt[390] used by BaniMazaB2_LoadLevel
+	incrom	$0595BC,$1252
+Tbl_BeamScooterAnim:	; animation script (byte flags, byte steps, ..., 2-byte steps from +6); A of C bytes used at runtime; read by Anim_ApplyStep, Nem_DecodeLoop, Anim_AdvanceByDistance; jt[391] used by loc_05DF84, sub_05D11C, sub_05D26E
+	incrom	$05A80E,$C
+Tbl_BeamScooterAnim2:	; animation script (byte flags, byte steps, ..., 2-byte steps from +6); C of E bytes used at runtime; read by Anim_ApplyStep, Anim_AdvanceByDistance, Anim_Advance; jt[392] used by sub_05D1DA, sub_05D63A, sub_05D898
+	incrom	$05A81A,$E
+Tbl_BeamScooterAnim3:	; animation script (byte flags, byte steps, ..., 2-byte steps from +6); C of E bytes used at runtime; read by Anim_ApplyStep, Anim_AdvanceByDistance, Anim_Advance; jt[393] used by sub_05D3C8, sub_05D4D2
+	incrom	$05A828,$E
+Tbl_BeamScooterAnim4:	; animation script (byte flags, byte steps, ..., 2-byte steps from +6); A of C bytes used at runtime; read by Anim_ApplyStep, Boulder_Update, Anim_AdvanceByDistance; jt[394] used by sub_05B614, sub_05B65A
+	incrom	$05A836,$C
+Tbl_BeamScooterUpdate:	; table read by Boulder_Update; 9 of 10 bytes used at runtime; read by Boulder_Update, Anim_ApplyStep, sub_05B65A; jt[395] used by sub_05B65A
+	incrom	$05A842,$10
+Tbl_BeamScooterShakeStep:	; table read by Cam_ShakeStep; 11 of 12 bytes used at runtime; read by Cam_ShakeStep; jt[396] used by sub_05B65A
+	incrom	$05A852,$12
+Tbl_BeamScooterShakeStep2:	; table read by Cam_ShakeStep; 13 of 14 bytes used at runtime; read by Cam_ShakeStep; jt[397] used by sub_05B65A
+	incrom	$05A864,$14
+Tbl_BeamScooterNextWrap:	; table read by Seq_NextWrap; A of A bytes used at runtime; read by Seq_NextWrap; jt[398] used by sub_05AED2
+	incrom	$05A878,$A
+Tbl_BaniMazaB2ComputeParallax:	; table read by Scroll_ComputeParallax; 42 of 62 bytes used at runtime; read by Scroll_ComputeParallax, Scroll_SetParallax; jt[399] used by BaniMazaB2_SetParallax
+	incrom	$05A882,$62
 	include "src/f/05A8E4.asm"
 	include "src/f/05A8F8.asm"
 	include "src/f/05A938.asm"
@@ -939,7 +1181,10 @@ Str_Empty_05BB84:	; C string "" (used by sub_05BB0E)
 	include "src/f/05C07C.asm"
 Tbl_Boulder_vtable:	; class descriptor of BOULDER: word name offset $6E, parent ACTOR, 26 method slots from +6, then the name (tools/classes.py)
 	incrom	$05C0DE,$76
-	incrom	$05C154,$1C
+Tbl_TuskAnim:	; animation script (byte flags, byte steps, ..., 2-byte steps from +6); A of C bytes used at runtime; read by Anim_ApplyStep, Anim_AdvanceByDistance, Anim_Advance; jt[417] used by sub_05C286, sub_05C6AA, sub_05CA12
+	incrom	$05C154,$C
+Tbl_TuskAnim2:	; animation script (byte flags, byte steps, ..., 2-byte steps from +6); E of 10 bytes used at runtime; read by Anim_ApplyStep; jt[418] used by sub_05C626
+	incrom	$05C160,$10
 	include "src/f/05C170.asm"
 	include "src/f/05C17E.asm"
 	include "src/f/05C19C.asm"
@@ -1056,7 +1301,36 @@ Sw_05DDBE:	; switch table of sub at $05DDBE: 8 word offsets from Sw_05DDBE-2
 	include "src/f/05E038.asm"
 Tbl_Tuskette_vtable:	; class descriptor of TUSKETTE: word name offset $82, parent BIONPC, 31 method slots from +6, then the name (tools/classes.py)
 	incrom	$05E04E,$8B
-	incrom	$05E0D9,$63FB
+	incrom	$05E0D9,$1
+Art_CerebroNem:	; Nemesis-style compressed 4bpp tiles (Nem_Decode; code table built from pairs by the caller); 1410 of 141A bytes used at runtime; read by Nem_DecodeLoop; jt[436] used by Cerebro_Run
+	incrom	$05E0DA,$141A
+Art_CerebroNem2:	; Nemesis-style compressed 4bpp tiles (Nem_Decode; code table built from pairs by the caller); 13D0 of 13D4 bytes used at runtime; read by Nem_DecodeLoop; jt[437] used by Cerebro_Run
+	incrom	$05F4F4,$13D4
+Art_CerebroNem3:	; Nemesis-style compressed 4bpp tiles (Nem_Decode; code table built from pairs by the caller); 2 of 1A bytes used at runtime; read by Nem_DecodeLoop, Nem_BuildCodeTable, Eni_Decode; jt[438] used by Cerebro_Run
+	incrom	$0608C8,$1A
+Tbl_CerebroVdp:	; words copied to the VDP data port by VDP_WriteWords; FFC of FFC bytes used at runtime; read by VDP_WriteWords; jt[439] used by Cerebro_LoadSpriteTiles
+	incrom	$0608E2,$FFC
+Art_CerebroSpr:	; sprite definition (type $18, raw 4bpp tiles): $24-byte header, $14-byte frame records, pieces, tiles; 1460 of 149C bytes used at runtime; read by Spr_RenderToBitmap_Loop, Nem_DecodeLoop, Mem_Copy; DMA to VRAM $A620-B4E0; jt[440] used by Cerebro_PlayIntro
+	incrom	$0618DE,$149C
+Art_CerebroSpr2:	; sprite definition (type $00): $24-byte header, $14-byte frame records, pieces, tiles; 134 of 134 bytes used at runtime; read by Spr_RenderToBitmap_Loop, Nem_DecodeLoop, Mem_Copy; jt[441] used by Cerebro_PlayIntro
+	incrom	$062D7A,$134
+Art_CerebroSpr3:	; sprite definition (type $00): $24-byte header, $14-byte frame records, pieces, tiles; 79C of 79C bytes used at runtime; read by Spr_RenderToBitmap_Loop, Nem_DecodeLoop, Mem_Copy; jt[442] used by Cerebro_PlayIntro
+	incrom	$062EAE,$79C
+Art_CerebroSpr4:	; sprite definition (type $00): $24-byte header, $14-byte frame records, pieces, tiles; 180 of 180 bytes used at runtime; read by Spr_RenderToBitmap_Loop, Nem_DecodeLoop, Mem_Copy; jt[443] used by Cerebro_PlayIntro
+	incrom	$06364A,$180
+Art_CerebroSpr5:	; sprite definition (type $00): $24-byte header, $14-byte frame records, pieces, tiles; 40C of 40C bytes used at runtime; read by Spr_RenderToBitmap_Loop, Nem_DecodeLoop, Mem_Copy; jt[444] used by Cerebro_PlayIntro
+	incrom	$0637CA,$40C
+	incrom	$063BD6,$4C
+Art_FailureNem:	; Nemesis-style compressed 4bpp tiles (Nem_Decode; code table built from pairs by the caller); 38 of 38 bytes used at runtime; read by Nem_DecodeLoop, Nem_BuildCodeTable; jt[457] used by Failure_RunScene
+	incrom	$063C22,$38
+Art_FailureNem2:	; Nemesis-style compressed 4bpp tiles (Nem_Decode; code table built from pairs by the caller); 122 of 122 bytes used at runtime; read by Nem_DecodeLoop, Nem_BuildCodeTable; jt[458] used by Failure_RunScene
+	incrom	$063C5A,$122
+Art_CerebroNem4:	; Nemesis-style compressed 4bpp tiles (Nem_Decode; code table built from pairs by the caller); 2FA of 2FA bytes used at runtime; read by Nem_DecodeLoop; jt[459] used by Cerebro_SetupPalCycles
+	incrom	$063D7C,$2FA
+Art_CerebroNem5:	; Nemesis-style compressed 4bpp tiles (Nem_Decode; code table built from pairs by the caller); 60 of 60 bytes used at runtime; read by Nem_DecodeLoop; jt[460] used by Cerebro_PlayIntro
+	incrom	$064076,$60
+Art_CerebroNem6:	; Nemesis-style compressed 4bpp tiles (Nem_Decode; code table built from pairs by the caller); 3FE of 3FE bytes used at runtime; read by Nem_DecodeLoop; jt[461] used by Cerebro_PlayIntro
+	incrom	$0640D6,$3FE
 	include "src/f/0644D4.asm"
 	include "src/f/06451E.asm"
 	include "src/f/064588.asm"
@@ -1239,17 +1513,57 @@ Str_Selected:	; C string "   SELECTED" (used by sub_068126)
 	incrom	$068242,$C
 Str_Selected_06824E:	; C string "SELECTED   " (used by sub_068126)
 	incrom	$06824E,$C
-	incrom	$06825A,$160C
+Tbl_PlayerSelectDrawFrames:	; table read by PlayerSelect_DrawFrames; F of 10 bytes used at runtime; read by PlayerSelect_DrawFrames, PlayerSelect_Run, PlayerSelect_PlaceCursor; jt[485] used by PlayerSelect_Run
+	incrom	$06825A,$10
+Tbl_PlayerSelectIntroPalHook:	; table read by Cerebro_IntroPalHook; D of E bytes used at runtime; read by Cerebro_IntroPalHook, Cerebro_PlayIntro, PlayerSelect_DrawFrames; jt[486] used by PlayerSelect_Run
+	incrom	$06826A,$E
+Tbl_CerebroIntroPalHook:	; table read by Cerebro_IntroPalHook; 20 of 20 bytes used at runtime; read by Cerebro_IntroPalHook, Cerebro_PlayIntro; jt[487] used by Cerebro_IntroPalHook
+	incrom	$068278,$20
+Tbl_CerebroIntroPalHook2:	; table read by Cerebro_IntroPalHook; 20 of 20 bytes used at runtime; read by Cerebro_IntroPalHook, Cerebro_PlayIntro; jt[488] used by Cerebro_PlayIntro
+	incrom	$068298,$20
+Tbl_CerebroIntroPalHook3:	; table read by Cerebro_IntroPalHook; C0 of C0 bytes used at runtime; read by Cerebro_IntroPalHook, Cerebro_PlayIntro; jt[489] used by Cerebro_IntroPalHook
+	incrom	$0682B8,$C0
+Tbl_CerebroIntroPalHook4:	; table read by Cerebro_IntroPalHook; 20 of 20 bytes used at runtime; read by Cerebro_IntroPalHook, Cerebro_PlayIntro; jt[490] used by Cerebro_PlayIntro
+	incrom	$068378,$20
+Tbl_CerebroIntroPalHook5:	; table read by Cerebro_IntroPalHook; 2A of 2C bytes used at runtime; read by Cerebro_IntroPalHook, Cerebro_PlayIntro, loc_065374; jt[491] used by Cerebro_PlayIntro
+	incrom	$068398,$2C
+Str_CerebroSentinelsText:	; Cerebro briefing text (Cerebro_PrintText); 27E of 29E bytes used at runtime; read by Cerebro_PrintText; jt[492] used by CerebroSentinels_RunScene
+	incrom	$0683C4,$29E
+Str_CerebroAvalonText:	; Cerebro briefing text (Cerebro_PrintText); 1AC of 1C6 bytes used at runtime; read by Cerebro_PrintText, Cerebro_TextOpPrint; jt[493] used by CerebroAvalon_RunScene
+	incrom	$068662,$1C6
+Str_CerebroBaniMazaText:	; Cerebro briefing text (Cerebro_PrintText); 1F1 of 1FE bytes used at runtime; read by Cerebro_PrintText; jt[494] used by CerebroBaniMaza_RunScene
+	incrom	$068828,$1FE
+Str_CerebroSavageText:	; Cerebro briefing text (Cerebro_PrintText); 159 of 162 bytes used at runtime; read by Cerebro_PrintText; jt[495] used by CerebroSavage_RunScene
+	incrom	$068A26,$162
+Str_CerebroSpaceText:	; Cerebro briefing text (Cerebro_PrintText); 235 of 252 bytes used at runtime; read by Cerebro_PrintText, Cerebro_TextOpPrint; jt[496] used by CerebroSpace_RunScene
+	incrom	$068B88,$252
+	incrom	$068DDA,$83A
+Str_FailureText:	; Cerebro briefing text (Cerebro_PrintText); 226 of 252 bytes used at runtime; read by Cerebro_PrintText, Cerebro_TextOpPrint, Cerebro_TextOpSetCursor; jt[498] used by Failure_RunScene
+	incrom	$069614,$252
 Str_XMenAndAllRelated:	; C string "@@@@X-MEN, AND ALL RELATED@@@@" (used by jt[499])
 	incrom	$069866,$20
-	incrom	$069886,$7D6
+Str_Text_069886:	; Cerebro briefing text (Cerebro_PrintText); 9B of A0 bytes used at runtime; read by Cerebro_PrintText
+	incrom	$069886,$A0
+	incrom	$069926,$736
 Tbl_ScalingActor_vtable:	; class descriptor of SCALINGACTOR: word name offset $6E, parent ACTOR, 26 method slots from +6, then the name (tools/classes.py)
 	incrom	$06A05C,$7B
 	incrom	$06A0D7,$1
 Tbl_BoxInputActor_vtable:	; class descriptor of BOXINPUTACTOR: word name offset $6E, parent ACTOR, 26 method slots from +6, then the name (tools/classes.py)
 	incrom	$06A0D8,$7C
-	incrom	$06A154,$2FD2
+Art_BroodSpr:	; sprite definition (type $18, raw 4bpp tiles): $24-byte header, $14-byte frame records, pieces, tiles; 28A0 of 2F84 bytes used at runtime; read by VDP_FlushDmaQueue; DMA to VRAM $A1A0-C040; jt[503] used by Brood_Init
+	incrom	$06A154,$2F84
+Tbl_Anim_06D0D8:	; animation script (byte flags, byte steps, ..., 2-byte steps from +6); 8 of A bytes used at runtime; read by Anim_ApplyStep, VDP_FlushDmaQueue, Anim_AdvanceByDistance; jt[504] used by sub_06D69E, sub_06D9DE, sub_06DA42
+	incrom	$06D0D8,$A
+	incrom	$06D0E2,$E
+Tbl_Anim_06D0F0:	; animation script (byte flags, byte steps, ..., 2-byte steps from +6); C of E bytes used at runtime; read by Anim_ApplyStep, Anim_AdvanceByDistance, Anim_Advance; jt[506] used by sub_06D70E, sub_06DB86, sub_06DCDC
+	incrom	$06D0F0,$E
+Tbl_Anim_06D0FE:	; animation script (byte flags, byte steps, ..., 2-byte steps from +6); E of 10 bytes used at runtime; read by Anim_ApplyStep, Anim_AdvanceByDistance, Anim_Advance; jt[507] used by sub_06D92C
+	incrom	$06D0FE,$10
+Tbl_Anim_06D10E:	; animation script (byte flags, byte steps, ..., 2-byte steps from +6); 6 of 8 bytes used at runtime; read by Anim_ApplyStep, Anim_AdvanceByDistance, Anim_Advance; jt[508] used by sub_06D990
+	incrom	$06D10E,$8
+	incrom	$06D116,$10
 	include "src/f/06D126.asm"
+Tbl_BroodTakeDamage_Hurt:	; table read by XNpc_TakeDamage_Hurt; 4 of 8 bytes used at runtime; read by XNpc_TakeDamage_Hurt, Brood_Init, XNpc_KnockbackDist; jt[511] used by Brood_Init
 	incrom	$06D12E,$8
 Tbl_Brood_vtable:	; class descriptor of BROOD: word name offset $86, parent SMALLBROOD, 32 method slots from +6, then the name (tools/classes.py)
 	incrom	$06D136,$8C
@@ -1276,9 +1590,25 @@ Tbl_Brood_vtable:	; class descriptor of BROOD: word name offset $86, parent SMAL
 	include "src/f/06DDE0.asm"
 	include "src/f/06DE3A.asm"
 	include "src/f/06DE90.asm"
-	incrom	$06DF42,$9314
+Lvl_CloneA1Segs:	; floor-segment list (Seg_LoadList: 12/10-byte records until a 0 byte); 3B1 of 3B2 bytes used at runtime; read by Seg_LoadList; jt[523] used by CloneA1_LoadLevel
+	incrom	$06DF42,$3B2
+Art_CloneA1Nem:	; Nemesis-style compressed 4bpp tiles (Nem_Decode; code table built from pairs by the caller); 6504 of 66A0 bytes used at runtime; read by Nem_DecodeLoop, Eni_ReadInline, Eni_Decode; jt[524] used by CloneA1_LoadLevel
+	incrom	$06E2F4,$66A0
+Art_CloneA1Nem2:	; Nemesis-style compressed 4bpp tiles (Nem_Decode; code table built from pairs by the caller); 42 of 5A bytes used at runtime; read by Nem_DecodeLoop, Eni_ReadInline, Eni_Decode; jt[525] used by CloneA1_LoadLevel
+	incrom	$074994,$5A
+Art_CloneA1Nem3:	; Nemesis-style compressed 4bpp tiles (Nem_Decode; code table built from pairs by the caller); 16A2 of 16AC bytes used at runtime; read by Nem_DecodeLoop, VDP_WriteWords, Eni_Decode; jt[526] used by CloneA1_LoadLevel
+	incrom	$0749EE,$16AC
+Art_LightBeamNem:	; Nemesis-style compressed 4bpp tiles (Nem_Decode; code table built from pairs by the caller); 4F0 of 4F0 bytes used at runtime; read by Nem_DecodeLoop, VDP_WriteWords, Eni_Decode; DMA to VRAM $B140-B5A0; jt[527] used by LightBeam_ClassInit, sub_077256
+	incrom	$07609A,$4F0
+Tbl_CloneA1Vdp:	; words copied to the VDP data port by VDP_WriteWords; C00 of CCC bytes used at runtime; read by VDP_WriteWords, VDP_DmaToVram; DMA to VRAM $53E0-59E0; jt[528] used by CloneA1_InitSprites, sub_077256
+	incrom	$07658A,$CCC
 	include "src/f/077256.asm"
-	incrom	$07737C,$86
+Tbl_CloneA1ComputeParallax:	; table read by Scroll_ComputeParallax; 2A of 42 bytes used at runtime; read by Scroll_ComputeParallax, Scroll_SetParallax; jt[530] used by CloneA1_RunScene, LightBeam_Init
+	incrom	$07737C,$42
+Pal_CloneA1Cycle:	; palette data read by Pal_CycleStep; 22 of 22 bytes used at runtime; read by Pal_CycleStep; jt[531] used by CloneA1_CyclePalettes
+	incrom	$0773BE,$22
+Pal_CloneA1Cycle2:	; palette data read by Pal_CycleStep; 22 of 22 bytes used at runtime; read by Pal_CycleStep; jt[532] used by CloneA1_CyclePalettes
+	incrom	$0773E0,$22
 	include "src/f/077402.asm"
 	include "src/f/077422.asm"
 	include "src/f/077462.asm"
@@ -1299,7 +1629,10 @@ Tbl_LightBeam_vtable:	; class descriptor of LIGHTBEAM: word name offset $6E, par
 	include "src/f/077848.asm"
 	include "src/f/077988.asm"
 	include "src/f/077CBC.asm"
-	incrom	$077CE0,$9B46
+Lvl_CloneA2Segs:	; floor-segment list (Seg_LoadList: 12/10-byte records until a 0 byte); 919 of 91A bytes used at runtime; read by Seg_LoadList; jt[541] used by CloneA2_LoadLevel
+	incrom	$077CE0,$91A
+Art_CloneA2Nem:	; Nemesis-style compressed 4bpp tiles (Nem_Decode; code table built from pairs by the caller); 8A66 of 922C bytes used at runtime; read by Nem_DecodeLoop, Eni_Decode, Eni_ReadInline; jt[542] used by CloneA2_LoadLevel, CloneA5_RunScene
+	incrom	$0785FA,$922C
 Tbl_CloneA2ClassList:	; {word $52 bytes; 20 actor class descriptor ptrs} then Pascal name "CloneA2NGClassList"; passed to Level_Load by CloneA2_LoadLevel (classes.py)
 	incrom	$081826,$6A
 Pal_CloneA2Line0:	; 16 CRAM words: initial palette line 0 (CloneA2_LoadLevel -> g_PalBase)
@@ -1371,10 +1704,30 @@ Tbl_DropBomb_vtable:	; class descriptor of DROPBOMB: word name offset $6E, paren
 	include "src/f/082542.asm"
 	include "src/f/0825CC.asm"
 	include "src/f/08270E.asm"
-	incrom	$082746,$1988
+Art_SmallBroodSpr:	; sprite definition (type $18, raw 4bpp tiles): $24-byte header, $14-byte frame records, pieces, tiles; 1580 of 192C bytes used at runtime; read by VDP_FlushDmaQueue; DMA to VRAM $C080-C6C0; jt[567] used by SmallBrood_Init
+	incrom	$082746,$192C
+Art_SmallBroodSpr2:	; sprite definition (type $00): $24-byte header, $14-byte frame records, pieces, tiles; 5 of A bytes used at runtime; read by Anim_ApplyStep, Anim_AdvanceByDistance, VDP_FlushDmaQueue; jt[568] used by SmallBrood_StateWaitCooldown, SmallBrood_StateWaitForPlayer
+	incrom	$084072,$A
+Tbl_SmallBroodAnim:	; animation script (byte flags, byte steps, ..., 2-byte steps from +6); C of E bytes used at runtime; read by Anim_ApplyStep, Anim_AdvanceByDistance, Anim_Advance; jt[569] used by SmallBrood_ActApproach, SmallBrood_ActChase, SmallBrood_ActKamikaze
+	incrom	$08407C,$E
+Tbl_SmallBroodAnim2:	; animation script (byte flags, byte steps, ..., 2-byte steps from +6); 8 of A bytes used at runtime; read by Anim_ApplyStep, Anim_AdvanceByDistance, Anim_Advance; jt[570] used by SmallBrood_ActShoot
+	incrom	$08408A,$A
+Tbl_SmallBroodAnim3:	; animation script (byte flags, byte steps, ..., 2-byte steps from +6); 6 of 8 bytes used at runtime; read by Anim_ApplyStep, Anim_AdvanceByDistance, Anim_Advance; jt[571] used by SmallBrood_StateFire
+	incrom	$084094,$8
+Tbl_SmallBroodAnim4:	; animation script (byte flags, byte steps, ..., 2-byte steps from +6); A of C bytes used at runtime; read by Anim_ApplyStep, Anim_AdvanceByDistance, Anim_Advance; jt[572] used by SmallBrood_ActJump
+	incrom	$08409C,$C
+Tbl_SmallBroodAnim5:	; animation script (byte flags, byte steps, ..., 2-byte steps from +6); 8 of A bytes used at runtime; read by Anim_ApplyStep, Anim_AdvanceByDistance, Anim_Advance; jt[573] used by SmallBrood_StateJumpFlip
+	incrom	$0840A8,$A
+	incrom	$0840B2,$8
+Tbl_SmallBroodInit:	; table read by SmallBrood_Init; 5 of 8 bytes used at runtime; read by SmallBrood_Init, XNpc_TakeDamage_Hurt, XNpc_KnockbackDist; jt[575] used by SmallBrood_Init
+	incrom	$0840BA,$8
+	incrom	$0840C2,$C
 	include "src/f/0840CE.asm"
-	incrom	$0840D2,$6
+	incrom	$0840D2,$4
+Tbl_SmallBroodStateLand:	; table read by SmallBrood_StateLand; 2 of 2 bytes used at runtime; read by SmallBrood_StateLand; jt[578] used by SmallBrood_Init_Case1
+	incrom	$0840D6,$2
 	include "src/f/0840D8.asm"
+Tbl_SmallBroodStateLand2:	; table read by SmallBrood_StateLand; 2 of 6 bytes used at runtime; read by SmallBrood_StateLand; jt[579] used by SmallBrood_Init_Case1
 	incrom	$0840E0,$6
 	include "src/f/0840E6.asm"
 	incrom	$0840EE,$10
@@ -1528,10 +1881,46 @@ Str_Empty_0864E0:	; C string "" (used by sub_0862D8)
 	include "src/f/08867C.asm"
 	include "src/f/08869E.asm"
 	include "src/f/088730.asm"
-	incrom	$08894C,$10A
+Tbl_BroodBossWallSetAnim:	; table read by ICandy_SetAnim; 1 of 8 bytes used at runtime; read by ICandy_SetAnim; jt[645] used by BroodBossWall_Init
+	incrom	$08894C,$8
+Tbl_BroodBossUpdate:	; table read by LittleLeg_Update; 1 of 8 bytes used at runtime; read by LittleLeg_Update, ICandy_SetAnim; jt[646] used by BroodBoss_StateCharge
+	incrom	$088954,$8
+Tbl_LittleLegUpdate:	; table read by LittleLeg_Update; E of 1A bytes used at runtime; read by LittleLeg_Update; jt[647] used by LittleLeg_SetWalking
+	incrom	$08895C,$1A
+Tbl_LittleLegUpdate2:	; table read by LittleLeg_Update; E of 1A bytes used at runtime; read by LittleLeg_Update; jt[648] used by LittleLeg_SetWalking
+	incrom	$088976,$1A
+Tbl_LittleLegUpdate3:	; table read by LittleLeg_Update; E of 1A bytes used at runtime; read by LittleLeg_Update; jt[649] used by LittleLeg_SetWalking
+	incrom	$088990,$1A
+Tbl_BroodBossAnim:	; animation script (byte flags, byte steps, ..., 2-byte steps from +6); 8 of A bytes used at runtime; read by Anim_AdvanceByDistance, Anim_ApplyStep, Anim_Advance; jt[650] used by BroodBoss_ActClaw, BroodBoss_StateRoar, BroodBoss_StateShockOff
+	incrom	$0889AA,$A
+Tbl_BroodBossAnim2:	; animation script (byte flags, byte steps, ..., 2-byte steps from +6); C of E bytes used at runtime; read by Anim_ApplyStep, Anim_AdvanceByDistance, Anim_Advance; jt[651] used by BroodBoss_StateRetreat
+	incrom	$0889B4,$E
+Tbl_BroodBossAnim3:	; animation script (byte flags, byte steps, ..., 2-byte steps from +6); 1C of 1E bytes used at runtime; read by Anim_ApplyStep, Anim_AdvanceByDistance; jt[652] used by BroodBoss_StateWallStop
+	incrom	$0889C2,$1E
+Tbl_BroodBossAnim4:	; animation script (byte flags, byte steps, ..., 2-byte steps from +6); 1E of 20 bytes used at runtime; read by Anim_ApplyStep, Anim_AdvanceByDistance; jt[653] used by BroodBoss_ActStomp
+	incrom	$0889E0,$20
+Tbl_BroodBossAnim5:	; animation script (byte flags, byte steps, ..., 2-byte steps from +6); 1A of 1C bytes used at runtime; read by Anim_ApplyStep, Anim_AdvanceByDistance; jt[654] used by BroodBoss_ActDropBomb, BroodBoss_ActDropBomb2
+	incrom	$088A00,$1C
+Tbl_BroodBossAnim6:	; animation script (byte flags, byte steps, ..., 2-byte steps from +6); C of E bytes used at runtime; read by Anim_ApplyStep, Anim_AdvanceByDistance, Anim_Advance; jt[655] used by BroodBoss_StateHurt
+	incrom	$088A1C,$E
+Tbl_BroodBossAnim7:	; animation script (byte flags, byte steps, ..., 2-byte steps from +6); 8 of E bytes used at runtime; read by Anim_ApplyStep, Anim_AdvanceByDistance, Anim_Advance; jt[656] used by BroodBoss_StateDeathStart
+	incrom	$088A2A,$E
+Tbl_BroodBossAnim8:	; animation script (byte flags, byte steps, ..., 2-byte steps from +6); 8 of A bytes used at runtime; read by Anim_ApplyStep, Anim_AdvanceByDistance, Anim_Advance; jt[657] used by BroodBoss_StateDeathAnim
+	incrom	$088A38,$A
+Tbl_BroodBossAnim9:	; animation script (byte flags, byte steps, ..., 2-byte steps from +6); 10 of 12 bytes used at runtime; read by Anim_ApplyStep, Anim_AdvanceByDistance, BroodBoss_ActClaw; jt[658] used by BroodBoss_ActScream
+	incrom	$088A42,$12
+Tbl_BroodBossActClaw:	; table read by BroodBoss_ActClaw; 2 of 2 bytes used at runtime; read by BroodBoss_ActClaw, Anim_ApplyStep; jt[659] used by BroodBoss_Init
+	incrom	$088A54,$2
 	include "src/f/088A56.asm"
 	include "src/f/088A9A.asm"
-	incrom	$088AE2,$BC
+	incrom	$088AE2,$24
+Tbl_BroodClawCamApply:	; table read by CloneA5_CamApply; 9 of A bytes used at runtime; read by CloneA5_CamApply; jt[660] used by BroodClaw_Swing
+	incrom	$088B06,$A
+Tbl_BroodBossCamApply:	; table read by CloneA5_CamApply; D of E bytes used at runtime; read by CloneA5_CamApply; jt[661] used by BroodBoss_StateCharge, BroodBoss_StateChargeWall
+	incrom	$088B10,$E
+Tbl_CloneA5RunScene:	; table read by CloneA5_RunScene; 20 of 20 bytes used at runtime; read by CloneA5_RunScene, sub_13EA46; jt[662] used by CloneA5_RunScene
+	incrom	$088B1E,$20
+	incrom	$088B3E,$60
 Tbl_BroodBossParts_vtable:	; class descriptor of BROODBOSSPARTS: word name offset $6E, parent ACTOR, 26 method slots from +6, then the name (tools/classes.py)
 	incrom	$088B9E,$7D
 	incrom	$088C1B,$1
@@ -1546,7 +1935,32 @@ Tbl_BroodBossDamage_vtable:	; class descriptor of BROODBOSSDAMAGE: word name off
 	incrom	$088CF0,$7E
 Tbl_BroodBoss_vtable:	; class descriptor of BROODBOSS: word name offset $6E, parent BROODBOSSPARTS, 26 method slots from +6, then the name (tools/classes.py)
 	incrom	$088D6E,$78
-	incrom	$088DE6,$B7E0
+Lvl_CloneA5Segs:	; floor-segment list (Seg_LoadList: 12/10-byte records until a 0 byte); 29 of 2A bytes used at runtime; read by Seg_LoadList; jt[670] used by CloneA5_RunScene
+	incrom	$088DE6,$2A
+Art_CloneA5Nem:	; Nemesis-style compressed 4bpp tiles (Nem_Decode; code table built from pairs by the caller); 1C66 of 1C70 bytes used at runtime; read by Nem_DecodeLoop, Seg_LoadList; jt[671] used by CloneA5_RunScene
+	incrom	$088E10,$1C70
+Art_CloneA5Nem2:	; Nemesis-style compressed 4bpp tiles (Nem_Decode; code table built from pairs by the caller); 56F of 570 bytes used at runtime; read by Nem_DecodeLoop, Seg_LoadList; jt[672] used by CloneA5_RunScene
+	incrom	$08AA80,$570
+Map_CloneA5Eni:	; Enigma-compressed tilemap (Eni_Decode); 1BE7 of 1D38 bytes used at runtime; read by Eni_ReadInline, Eni_Decode; jt[673] used by CloneA5_RunScene
+	incrom	$08AFF0,$1D38
+Map_CloneA5Eni2:	; Enigma-compressed tilemap (Eni_Decode); 62 of 80 bytes used at runtime; read by Eni_ReadInline, Eni_Decode; jt[674] used by CloneA5_RunScene
+	incrom	$08CD28,$80
+Art_BroodBossSpr:	; sprite definition (type $18, raw 4bpp tiles): $24-byte header, $14-byte frame records, pieces, tiles; 3DC0 of 4806 bytes used at runtime; read by VDP_FlushDmaQueue; DMA to VRAM $C8C0-CFC0; jt[675] used by BroodBoss_Init, BroodBoss_StateSetup
+	incrom	$08CDA8,$4806
+Art_CloneA5Spr:	; sprite definition (type $18, raw 4bpp tiles): $24-byte header, $14-byte frame records, pieces, tiles; 774 of 774 bytes used at runtime; read by VDP_WriteWords, Spr_PreloadTiles; jt[676] used by CloneA5_LoadResources, XClone_LoadResources
+	incrom	$0915AE,$774
+Art_BroodBossArmSpr:	; sprite definition (type $18, raw 4bpp tiles): $24-byte header, $14-byte frame records, pieces, tiles; C40 of D70 bytes used at runtime; read by VDP_FlushDmaQueue; DMA to VRAM $D020-D2C0; jt[677] used by BroodBossArm_Init
+	incrom	$091D22,$D70
+Art_BroodClawSpr:	; sprite definition (type $19, Nemesis-compressed tiles): $24-byte header, $14-byte frame records, pieces, tiles; 377 of 378 bytes used at runtime; read by Spr_PreloadTiles, Nem_DecodeLoop, VDP_FlushDmaQueue; jt[678] used by BroodClaw_Draw, CloneA5_LoadResources
+	incrom	$092A92,$378
+Art_CloneA5Spr2:	; sprite definition (type $19, Nemesis-compressed tiles): $24-byte header, $14-byte frame records, pieces, tiles; 83D of 83E bytes used at runtime; read by Nem_DecodeLoop, Spr_PreloadTiles; jt[679] used by CloneA5_LoadResources
+	incrom	$092E0A,$83E
+Art_CloneA5Nem3:	; Nemesis-style compressed 4bpp tiles (Nem_Decode; code table built from pairs by the caller); 2AF of 2B0 bytes used at runtime; read by Nem_DecodeLoop; jt[680] used by CloneA5_LoadResources
+	incrom	$093648,$2B0
+Art_CloneA5Spr3:	; sprite definition (type $18, raw 4bpp tiles): $24-byte header, $14-byte frame records, pieces, tiles; 600 of 678 bytes used at runtime; read by VDP_FlushDmaQueue, VDP_WriteWords; DMA to VRAM $8180-8580; jt[681] used by CloneA5_InitShockSprites
+	incrom	$0938F8,$678
+Art_DropBombSpr:	; sprite definition (type $18, raw 4bpp tiles): $24-byte header, $14-byte frame records, pieces, tiles; 540 of 656 bytes used at runtime; read by VDP_FlushDmaQueue; DMA to VRAM $A300-A5A0; jt[682] used by DropBomb_Init
+	incrom	$093F70,$656
 	include "src/f/0945C6.asm"
 	include "src/f/0945D4.asm"
 	include "src/f/0945E0.asm"
@@ -1754,36 +2168,90 @@ Tbl_EvilPsylocke_vtable:	; class descriptor of EVILPSYLOCKE: word name offset $8
 	incrom	$09A0B3,$1
 Tbl_EvilWolverine_vtable:	; class descriptor of EVILWOLVERINE: word name offset $86, parent XCLONE, 32 method slots from +6, then the name (tools/classes.py)
 	incrom	$09A0B4,$94
-	incrom	$09A148,$62
+Tbl_XCloneCopy:	; table read by Mem_Copy; 20 of 20 bytes used at runtime; read by Mem_Copy; jt[805] used by XClone_SetBgPalette
+	incrom	$09A148,$20
+	incrom	$09A168,$20
+Tbl_XCloneCopy2:	; table read by Mem_Copy; 20 of 20 bytes used at runtime; read by Mem_Copy; jt[807] used by XClone_SetBgPalette
+	incrom	$09A188,$20
+Tbl_XCloneActClearAnim:	; table read by BioBalls_ActClearAnim; 2 of 2 bytes used at runtime; read by BioBalls_ActClearAnim, Mem_Copy; jt[808] used by XClone_ActBecomeBalls, XClone_ActOpenBioBalls, XClone_StatePodOpen
+	incrom	$09A1A8,$2
 	include "src/f/09A1AA.asm"
 Str_Empty_09A1AE:	; C string "" (used by jt[809])
 	incrom	$09A1AE,$1
+Tbl_XCloneStateWaitChild:	; table read by XClone_StateWaitChild; 1 of 1 bytes used at runtime; read by XClone_StateWaitChild
 	incrom	$09A1AF,$1
 	include "src/f/09A1B0.asm"
-	incrom	$09A1E0,$136
+	incrom	$09A1E0,$36
+Tbl_XCloneInit:	; table read by XClone_Init; 2 of E bytes used at runtime; read by XClone_Init; jt[811] used by XClone_Init
+	incrom	$09A216,$E
+	incrom	$09A224,$F0
+Tbl_XCloneActFacePlayer:	; table read by XClone_ActFacePlayer; 2 of 2 bytes used at runtime; read by XClone_ActFacePlayer; jt[813] used by XClone_Explode
+	incrom	$09A314,$2
 	include "src/f/09A316.asm"
+Tbl_XCloneActCheckLowHealth:	; table read by XClone_ActCheckLowHealth; 2 of 2 bytes used at runtime; read by XClone_ActCheckLowHealth
 	incrom	$09A33A,$2
 	include "src/f/09A33C.asm"
+Tbl_XCloneActAttack:	; table read by XClone_ActAttack; 2 of 16 bytes used at runtime; read by XClone_ActAttack
 	incrom	$09A344,$16
 	include "src/f/09A35A.asm"
-	incrom	$09A36A,$116
+Tbl_XCloneAnim:	; animation script (byte flags, byte steps, ..., 2-byte steps from +6); 8 of 54 bytes used at runtime; read by Anim_ApplyStep, Anim_AdvanceByDistance, Anim_Advance
+	incrom	$09A36A,$54
+Tbl_EvilMakerSetPathCollapsed:	; table read by BioBalls_SetPathCollapsed; 3E of 7C bytes used at runtime; read by BioBalls_SetPathCollapsed, BioBalls_Move; jt[814] used by EvilMaker_ActDropBeast
+	incrom	$09A3BE,$7C
+Tbl_EvilBeastStateEmerge:	; table read by XClone_StateEmerge; A of 46 bytes used at runtime; read by XClone_StateEmerge, XClone_StatePodOpen, EvilBeast_Init; jt[815] used by EvilBeast_Init
+	incrom	$09A43A,$46
 	include "src/f/09A480.asm"
-	incrom	$09A49C,$D4
+Tbl_XCloneAnim2:	; animation script (byte flags, byte steps, ..., 2-byte steps from +6); 3 of 46 bytes used at runtime; read by Anim_ApplyStep, BioBalls_SetPathCollapsed, BioBalls_Move
+	incrom	$09A49C,$46
+Tbl_EvilMakerSetPathCollapsed2:	; table read by BioBalls_SetPathCollapsed; 32 of 64 bytes used at runtime; read by BioBalls_SetPathCollapsed, BioBalls_Move; jt[816] used by EvilMaker_ActDropCyclops
+	incrom	$09A4E2,$64
+Tbl_EvilCyclopsActStand10:	; table read by XClone_ActStand10; A of 2A bytes used at runtime; read by XClone_ActStand10, XClone_StateEmerge, XClone_StatePodOpen; jt[817] used by EvilCyclops_Init
+	incrom	$09A546,$2A
 	include "src/f/09A570.asm"
-	incrom	$09A584,$280
+Tbl_XCloneAnim3:	; animation script (byte flags, byte steps, ..., 2-byte steps from +6); 8 of 38 bytes used at runtime; read by Anim_ApplyStep, Anim_AdvanceByDistance, Anim_Advance
+	incrom	$09A584,$38
+Tbl_EvilMakerSetPathCollapsed3:	; table read by BioBalls_SetPathCollapsed; 36 of 6C bytes used at runtime; read by BioBalls_SetPathCollapsed, BioBalls_Move; jt[818] used by EvilMaker_ActDropGambit
+	incrom	$09A5BC,$6C
+	incrom	$09A628,$D4
+Tbl_EvilGambitStateEmerge:	; table read by XClone_StateEmerge; 8 of 7C bytes used at runtime; read by XClone_StateEmerge, XClone_StatePodOpen, EvilGambit_Init; jt[820] used by EvilGambit_Init
+	incrom	$09A6FC,$7C
+	incrom	$09A778,$7C
+Tbl_EvilMagnetoActCheckLowHealth:	; table read by XClone_ActCheckLowHealth; 2 of 10 bytes used at runtime; read by XClone_ActCheckLowHealth; jt[822] used by EvilMagneto_Init
+	incrom	$09A7F4,$10
 	include "src/f/09A804.asm"
+Tbl_XCloneActFacePlayer2:	; table read by XClone_ActFacePlayer; 2 of 12 bytes used at runtime; read by XClone_ActFacePlayer
 	incrom	$09A810,$12
 	include "src/f/09A822.asm"
-	incrom	$09A836,$90
+Tbl_XCloneAnim4:	; animation script (byte flags, byte steps, ..., 2-byte steps from +6); 8 of 34 bytes used at runtime; read by Anim_ApplyStep, Anim_AdvanceByDistance, Anim_Advance
+	incrom	$09A836,$34
+Tbl_EvilMakerSetPathCollapsed4:	; table read by BioBalls_SetPathCollapsed; 26 of 4C bytes used at runtime; read by BioBalls_SetPathCollapsed, BioBalls_Move; jt[823] used by EvilMaker_ActDropNightcrawler
+	incrom	$09A86A,$4C
+Tbl_EvilNightcrawlerActCheckLowHealth:	; table read by XClone_ActCheckLowHealth; A of 10 bytes used at runtime; read by XClone_ActCheckLowHealth, XClone_StateEmerge, XClone_StatePodOpen; jt[824] used by EvilNightcrawler_Init
+	incrom	$09A8B6,$10
 	include "src/f/09A8C6.asm"
 	include "src/f/09A8D2.asm"
+Tbl_XCloneActAttack2:	; table read by XClone_ActAttack; 2 of 2 bytes used at runtime; read by XClone_ActAttack
 	incrom	$09A8F6,$2
 	include "src/f/09A8F8.asm"
+Tbl_XCloneStateWaitChild2:	; table read by XClone_StateWaitChild; 2 of 2 bytes used at runtime; read by XClone_StateWaitChild
 	incrom	$09A908,$2
 	include "src/f/09A90A.asm"
-	incrom	$09A93A,$150
+Tbl_XCloneAnim5:	; animation script (byte flags, byte steps, ..., 2-byte steps from +6); 12 of 16 bytes used at runtime; read by Anim_ApplyStep, Anim_AdvanceByDistance, Anim_Advance
+	incrom	$09A93A,$16
+Tbl_EvilMakerSetPathCollapsed5:	; table read by BioBalls_SetPathCollapsed; 2E of 5C bytes used at runtime; read by BioBalls_SetPathCollapsed, BioBalls_Move; jt[825] used by EvilMaker_ActDropPsylocke
+	incrom	$09A950,$5C
+Tbl_EvilPsylockeMotionPath:	; table read by BioBalls_MotionPath; 52 of A4 bytes used at runtime; read by BioBalls_MotionPath; jt[826] used by EvilPsylocke_ActBallsPath
+	incrom	$09A9AC,$A4
+Tbl_EvilPsylockeStateEmerge:	; table read by XClone_StateEmerge; C of 3A bytes used at runtime; read by XClone_StateEmerge, XClone_StatePodOpen, EvilPsylocke_Init; jt[827] used by EvilPsylocke_Init
+	incrom	$09AA50,$3A
 	include "src/f/09AA8A.asm"
-	incrom	$09AA9E,$230
+Tbl_XCloneAnim6:	; animation script (byte flags, byte steps, ..., 2-byte steps from +6); 14 of 44 bytes used at runtime; read by Anim_ApplyStep, Anim_AdvanceByDistance
+	incrom	$09AA9E,$44
+Tbl_EvilMakerMove:	; table read by BioBalls_Move; 32 of 64 bytes used at runtime; read by BioBalls_Move, BioBalls_SetFormation; jt[828] used by EvilMaker_ActDropWolverine
+	incrom	$09AAE2,$64
+Tbl_EvilWolverineActCloseBioBalls:	; table read by XClone_ActCloseBioBalls; 8 of E bytes used at runtime; read by XClone_ActCloseBioBalls, XClone_ActBallsToFloor, EvilWolverine_Init; jt[829] used by EvilWolverine_Init
+	incrom	$09AB46,$E
+	incrom	$09AB54,$17A
 	include "src/f/09ACCE.asm"
 	include "src/f/09ACDC.asm"
 	include "src/f/09AD96.asm"
@@ -1802,7 +2270,30 @@ Str_Empty_09A1AE:	; C string "" (used by jt[809])
 	include "src/f/09B968.asm"
 Tbl_BroodClaw_vtable:	; class descriptor of BROODCLAW: word name offset $6E, parent ACTOR, 26 method slots from +6, then the name (tools/classes.py)
 	incrom	$09B98C,$78
-	incrom	$09BA04,$F5A4
+Tbl_XCloneSetFormation:	; table read by BioBalls_SetFormation; 2A of 54 bytes used at runtime; read by BioBalls_SetFormation; jt[844] used by XClone_ActOpenBioBalls
+	incrom	$09BA04,$54
+Lvl_SavageA2Data:	; level data read by Level_AssignBlockSlots; 28C0 of 28CA bytes used at runtime; read by Level_AssignBlockSlots, Seg_LoadList; jt[845] used by SavageA2_LoadLevel, SavageA3_LoadLevel
+	incrom	$09BA58,$28CA
+Lvl_BroodClawData:	; level data read by Level_AssignBlockSlots; 89F of 8A0 bytes used at runtime; read by Level_AssignBlockSlots, Seg_LoadList; jt[846] used by sub_0C1258
+	incrom	$09E322,$8A0
+Map_BroodClawEni:	; Enigma-compressed tilemap (Eni_Decode); 1AA9 of 1E4A bytes used at runtime; read by Eni_ReadInline, Eni_Decode, Eni_Ops; jt[847] used by sub_0C1258
+	incrom	$09EBC2,$1E4A
+Map_BroodClawEni2:	; Enigma-compressed tilemap (Eni_Decode); 32 of 4A bytes used at runtime; read by Eni_ReadInline, Eni_Decode, Eni_Ops; jt[848] used by sub_0C1258
+	incrom	$0A0A0C,$4A
+Lvl_BroodClawSegs:	; floor-segment list (Seg_LoadList: 12/10-byte records until a 0 byte); 18A of 1A6 bytes used at runtime; read by Seg_LoadList, Eni_ReadInline, Level_Load; jt[849] used by sub_0C1258
+	incrom	$0A0A56,$1A6
+Lvl_SavageA2Segs:	; floor-segment list (Seg_LoadList: 12/10-byte records until a 0 byte); 4B3 of 4B4 bytes used at runtime; read by Seg_LoadList, Eni_ReadInline, Eni_Decode; jt[850] used by SavageA2_LoadLevel
+	incrom	$0A0BFC,$4B4
+Art_SavageA2Nem:	; Nemesis-style compressed 4bpp tiles (Nem_Decode; code table built from pairs by the caller); 633B of 65B4 bytes used at runtime; read by Nem_DecodeLoop, Eni_ReadInline, Eni_Decode; jt[851] used by SavageA2_LoadLevel, SavageA3_LoadLevel
+	incrom	$0A10B0,$65B4
+Art_SavageA2Nem2:	; Nemesis-style compressed 4bpp tiles (Nem_Decode; code table built from pairs by the caller); 52 of 6C bytes used at runtime; read by Nem_DecodeLoop, Eni_ReadInline, Eni_Decode; jt[852] used by SavageA2_LoadLevel
+	incrom	$0A7664,$6C
+Art_FloatBubbleSpr:	; sprite definition (type $18, raw 4bpp tiles): $24-byte header, $14-byte frame records, pieces, tiles; BD0 of BD0 bytes used at runtime; read by VDP_WriteWords, Spr_PreloadTiles; jt[853] used by FloatBubble_ClassInit
+	incrom	$0A76D0,$BD0
+Art_FloatBubbleExplodeSpr:	; sprite definition (type $18, raw 4bpp tiles): $24-byte header, $14-byte frame records, pieces, tiles; A20 of B24 bytes used at runtime; read by VDP_FlushDmaQueue; DMA to VRAM $9A40-A360; jt[854] used by FloatBubbleExplode_Init
+	incrom	$0A82A0,$B24
+Art_SavageA2Spr:	; sprite definition (type $18, raw 4bpp tiles): $24-byte header, $14-byte frame records, pieces, tiles; 2000 of 21E4 bytes used at runtime; read by VDP_FlushDmaQueue, VDP_WriteWords; DMA to VRAM $5300-5700; jt[855] used by SavageA2_InitLights
+	incrom	$0A8DC4,$21E4
 Tbl_BubbleManager_vtable:	; class descriptor of BUBBLEMANAGER: word name offset $82, parent XNPC, 31 method slots from +6, then the name (tools/classes.py)
 	incrom	$0AAFA8,$90
 	include "src/f/0AB038.asm"
@@ -1891,6 +2382,7 @@ Tbl_FloatBubbleExplode_vtable:	; class descriptor of FLOATBUBBLEEXPLODE: word na
 	include "src/f/0AC2DA.asm"
 	include "src/f/0AC2F0.asm"
 	include "src/f/0AC308.asm"
+Tbl_FloatBubbleExplodeAnim:	; animation script (byte flags, byte steps, ..., 2-byte steps from +6); 10 of 12 bytes used at runtime; read by Anim_ApplyStep, Anim_AdvanceByDistance; jt[882] used by FloatBubbleExplode_StateStart
 	incrom	$0AC3A0,$12
 Tbl_PerimeterDoor_vtable:	; class descriptor of PERIMETERDOOR: word name offset $72, parent ACTOR, 27 method slots from +6, then the name (tools/classes.py)
 	incrom	$0AC3B2,$80
@@ -1948,7 +2440,12 @@ Tbl_TrapDoor_vtable:	; class descriptor of TRAPDOOR: word name offset $86, paren
 	include "src/f/0ADE06.asm"
 	include "src/f/0ADE40.asm"
 	include "src/f/0ADE7A.asm"
-	incrom	$0ADEBA,$2432
+Lvl_SavageA3Segs:	; floor-segment list (Seg_LoadList: 12/10-byte records until a 0 byte); 557 of 558 bytes used at runtime; read by Seg_LoadList; jt[903] used by SavageA3_LoadLevel
+	incrom	$0ADEBA,$558
+Map_SavageA3Eni:	; Enigma-compressed tilemap (Eni_Decode); 1B7E of 1E6E bytes used at runtime; read by Eni_ReadInline, Eni_Decode, Actor_InitSpawnRec; jt[904] used by SavageA3_LoadLevel
+	incrom	$0AE412,$1E6E
+Map_SavageA3Eni2:	; Enigma-compressed tilemap (Eni_Decode); 52 of 6C bytes used at runtime; read by Eni_ReadInline, Eni_Decode, Eni_Ops; jt[905] used by SavageA3_LoadLevel
+	incrom	$0B0280,$6C
 	include "src/f/0B02EC.asm"
 	include "src/f/0B02F4.asm"
 	include "src/f/0B02FC.asm"
@@ -1962,7 +2459,16 @@ Tbl_TrapDoor_vtable:	; class descriptor of TRAPDOOR: word name offset $86, paren
 	include "src/f/0B0520.asm"
 	include "src/f/0B0528.asm"
 	include "src/f/0B0538.asm"
-	incrom	$0B0574,$5A96
+Lvl_SavageA4Segs:	; floor-segment list (Seg_LoadList: 12/10-byte records until a 0 byte); 3B of 3C bytes used at runtime; read by Seg_LoadList; jt[907] used by SavageA4_LoadLevel
+	incrom	$0B0574,$3C
+Art_SavageA4Nem:	; Nemesis-style compressed 4bpp tiles (Nem_Decode; code table built from pairs by the caller); 356A of 3578 bytes used at runtime; read by Nem_DecodeLoop; jt[908] used by SavageA4_LoadLevel
+	incrom	$0B05B0,$3578
+Art_SavageA4Nem2:	; Nemesis-style compressed 4bpp tiles (Nem_Decode; code table built from pairs by the caller); 4A of 68 bytes used at runtime; read by Nem_DecodeLoop; jt[909] used by SavageA4_LoadLevel
+	incrom	$0B3B28,$68
+Art_SavageA4Nem3:	; Nemesis-style compressed 4bpp tiles (Nem_Decode; code table built from pairs by the caller); 17A4 of 17AE bytes used at runtime; read by Nem_DecodeLoop, Eni_Decode, Eni_ReadInline; jt[910] used by SavageA4_LoadLevel
+	incrom	$0B3B90,$17AE
+Art_SavageA4Spr:	; sprite definition (type $18, raw 4bpp tiles): $24-byte header, $14-byte frame records, pieces, tiles; C00 of CCC bytes used at runtime; read by VDP_FlushDmaQueue, VDP_WriteWords; DMA to VRAM $5100-5300; jt[911] used by SavageA4_InitEffectSprite
+	incrom	$0B533E,$CCC
 	include "src/f/0B600A.asm"
 	include "src/f/0B602A.asm"
 	include "src/f/0B6086.asm"
@@ -1976,7 +2482,14 @@ Tbl_TrapDoor_vtable:	; class descriptor of TRAPDOOR: word name offset $86, paren
 	include "src/f/0B65A0.asm"
 	include "src/f/0B65C6.asm"
 	include "src/f/0B6632.asm"
-	incrom	$0B663A,$A2
+Tbl_SavageA4ComputeParallax:	; table read by Scroll_ComputeParallax; C of 12 bytes used at runtime; read by Scroll_ComputeParallax, Scroll_SetParallax; jt[913] used by SavageA4_RunScene
+	incrom	$0B663A,$12
+Pal_SavageA4Cycle:	; palette data read by Pal_CycleStep; 30 of 30 bytes used at runtime; read by Pal_CycleStep; jt[914] used by SavageA4_CyclePalettes
+	incrom	$0B664C,$30
+Pal_SavageA4Cycle2:	; palette data read by Pal_CycleStep; 30 of 30 bytes used at runtime; read by Pal_CycleStep; jt[915] used by SavageA4_CyclePalettes
+	incrom	$0B667C,$30
+Pal_SavageA4Cycle3:	; palette data read by Pal_CycleStep; 30 of 30 bytes used at runtime; read by Pal_CycleStep; jt[916] used by SavageA4_CyclePalettes
+	incrom	$0B66AC,$30
 	include "src/f/0B66DC.asm"
 	include "src/f/0B6740.asm"
 	include "src/f/0B674E.asm"
@@ -2035,11 +2548,45 @@ Tbl_BrainChild_vtable:	; class descriptor of BRAINCHILD: word name offset $82, p
 	incrom	$0B7C39,$1
 Tbl_ChildShip_vtable:	; class descriptor of CHILDSHIP: word name offset $82, parent XNPC, 31 method slots from +6, then the name (tools/classes.py)
 	incrom	$0B7C3A,$8C
-	incrom	$0B7CC6,$14
+Tbl_BrainChildAnim:	; animation script (byte flags, byte steps, ..., 2-byte steps from +6); 5 of 8 bytes used at runtime; read by Anim_ApplyStep, Anim_AdvanceByDistance; jt[942] used by BrainChild_Init
+	incrom	$0B7CC6,$8
+	incrom	$0B7CCE,$A
+Tbl_BrainBabyBioActPlayAnimC:	; table read by BabyBio_ActPlayAnimC; 2 of 2 bytes used at runtime; read by BabyBio_ActPlayAnimC; jt[944] used by BrainBabyBio_Init
+	incrom	$0B7CD8,$2
 	include "src/f/0B7CDA.asm"
-	incrom	$0B7CE6,$A
+	incrom	$0B7CE6,$8
+Tbl_ChildShipActDropRocket:	; table read by ChildShip_ActDropRocket; 2 of 2 bytes used at runtime; read by ChildShip_ActDropRocket; jt[945] used by ChildShip_Init
+	incrom	$0B7CEE,$2
 	include "src/f/0B7CF0.asm"
-	incrom	$0B7CF4,$13A
+	incrom	$0B7CF4,$14
+Tbl_BrainChildStateLand:	; table read by BrainChild_StateLand; 2 of E bytes used at runtime; read by BrainChild_StateLand; jt[946] used by BrainChild_Init
+	incrom	$0B7D08,$E
+Tbl_ChildShipShakeStep:	; table read by Cam_ShakeStep; 13 of 14 bytes used at runtime; read by Cam_ShakeStep; jt[947] used by ChildShip_StateCrash1, ChildShip_StateCrash2, ChildShip_StateCrash3
+	incrom	$0B7D16,$14
+Tbl_ChildShipUpdate:	; table read by ChildShip_Update; 16 of 30 bytes used at runtime; read by ChildShip_Update; jt[948] used by ChildShip_StateCrash, ChildShip_Update
+	incrom	$0B7D2A,$30
+Tbl_SavageA4FrameHook:	; table read by SavageA4_FrameHook; 10 of 10 bytes used at runtime; read by SavageA4_FrameHook; jt[949] used by SavageA4_FrameHook
+	incrom	$0B7D5A,$10
+Tbl_SavageA4FrameHook2:	; table read by SavageA4_FrameHook; 10 of 10 bytes used at runtime; read by SavageA4_FrameHook; jt[950] used by SavageA4_FrameHook
+	incrom	$0B7D6A,$10
+Tbl_SavageA4FrameHook3:	; table read by SavageA4_FrameHook; 10 of 10 bytes used at runtime; read by SavageA4_FrameHook; jt[951] used by SavageA4_FrameHook
+	incrom	$0B7D7A,$10
+Tbl_SavageA4FrameHook4:	; table read by SavageA4_FrameHook; 10 of 10 bytes used at runtime; read by SavageA4_FrameHook; jt[952] used by SavageA4_FrameHook
+	incrom	$0B7D8A,$10
+Tbl_SavageA4FrameHook5:	; table read by SavageA4_FrameHook; 10 of 10 bytes used at runtime; read by SavageA4_FrameHook; jt[953] used by SavageA4_FrameHook
+	incrom	$0B7D9A,$10
+Tbl_SavageA4FrameHook6:	; table read by SavageA4_FrameHook; 10 of 10 bytes used at runtime; read by SavageA4_FrameHook; jt[954] used by SavageA4_FrameHook
+	incrom	$0B7DAA,$10
+	incrom	$0B7DBA,$A
+Tbl_SavageBioAnim:	; animation script (byte flags, byte steps, ..., 2-byte steps from +6); 8 of A bytes used at runtime; read by Anim_ApplyStep, Anim_AdvanceByDistance, Anim_Advance; jt[956] used by SavageBio_ActAnimB, sub_0BC920
+	incrom	$0B7DC4,$A
+	incrom	$0B7DCE,$1E
+Tbl_SavageBioAnim2:	; animation script (byte flags, byte steps, ..., 2-byte steps from +6); C of E bytes used at runtime; read by Anim_ApplyStep, Anim_AdvanceByDistance, Anim_Advance; jt[960] used by SavageBio_ActReloadArt14
+	incrom	$0B7DEC,$E
+	incrom	$0B7DFA,$10
+Tbl_ChildShipAnim:	; animation script (byte flags, byte steps, ..., 2-byte steps from +6); 6 of 8 bytes used at runtime; read by Anim_ApplyStep, Anim_AdvanceByDistance, Anim_Advance; jt[962] used by sub_0BCE0E
+	incrom	$0B7E0A,$8
+	incrom	$0B7E12,$1C
 	include "src/f/0B7E2E.asm"
 Str_Empty_0B7E46:	; C string "" (used by jt[965])
 	incrom	$0B7E46,$1
@@ -2047,13 +2594,30 @@ Str_Empty_0B7E46:	; C string "" (used by jt[965])
 	include "src/f/0B7E48.asm"
 Str_Empty_0B7E54:	; C string "" (used by jt[966])
 	incrom	$0B7E54,$1
+Tbl_SavageBioStateExtend10:	; table read by SavageBio_StateExtend10; 1 of 1 bytes used at runtime; read by SavageBio_StateExtend10
 	incrom	$0B7E55,$1
 	include "src/f/0B7E56.asm"
-	incrom	$0B7E82,$2CA
+	incrom	$0B7E82,$F4
+Tbl_SavageBioDraw:	; table read by SavageBigBio_Draw; 50 of 70 bytes used at runtime; read by SavageBigBio_Draw; jt[967] used by SavageBio_ActExtendShort
+	incrom	$0B7F76,$70
+	incrom	$0B7FE6,$E0
+Tbl_SavageBigBioDraw:	; table read by SavageBigBio_Draw; 82 of 84 bytes used at runtime; read by SavageBigBio_Draw; jt[970] used by SavageBigBio_Draw, SavageBio_StateFireTip
+	incrom	$0B80C6,$84
+Tbl_SavageBioActClearAnim:	; table read by BioBalls_ActClearAnim; 2 of 2 bytes used at runtime; read by BioBalls_ActClearAnim; jt[971] used by sub_0BD128
+	incrom	$0B814A,$2
 	include "src/f/0B814C.asm"
-	incrom	$0B815C,$1C
+	incrom	$0B815C,$1A
+Tbl_SavageBioActClearDone:	; table read by BioBalls_ActClearDone; 2 of 2 bytes used at runtime; read by BioBalls_ActClearDone; jt[973] used by sub_0BCA7E
+	incrom	$0B8176,$2
 	include "src/f/0B8178.asm"
-	incrom	$0B818C,$2012
+Tbl_SavageBioMove:	; table read by BioBalls_Move; 40 of 84 bytes used at runtime; read by BioBalls_Move, BioBalls_SetFormation; jt[974] used by sub_0BC64A, sub_0BC71A, sub_0BCA7E
+	incrom	$0B818C,$84
+Tbl_SavageBioSetFormation:	; table read by BioBalls_SetFormation; 3A of 74 bytes used at runtime; read by BioBalls_SetFormation; jt[975] used by sub_0BD128
+	incrom	$0B8210,$74
+Art_BrainChildSpr:	; sprite definition (type $18, raw 4bpp tiles): $24-byte header, $14-byte frame records, pieces, tiles; 920 of 1700 bytes used at runtime; read by VDP_FlushDmaQueue; DMA to VRAM $AFA0-B3C0; jt[976] used by BrainChild_Init
+	incrom	$0B8284,$1700
+Art_ChildShipSpr:	; sprite definition (type $18, raw 4bpp tiles): $24-byte header, $14-byte frame records, pieces, tiles; 780 of 81A bytes used at runtime; read by VDP_FlushDmaQueue; DMA to VRAM $A820-AFA0; jt[977] used by ChildShip_Init
+	incrom	$0B9984,$81A
 	include "src/f/0BA19E.asm"
 	include "src/f/0BA1AC.asm"
 	include "src/f/0BA1B8.asm"
@@ -2142,7 +2706,24 @@ Tbl_SavageBigBio_vtable:	; class descriptor of SAVAGEBIGBIO: word name offset $8
 	incrom	$0BD39B,$1
 Tbl_SavageMediumBio_vtable:	; class descriptor of SAVAGEMEDIUMBIO: word name offset $82, parent SAVAGEBIOBASE, 31 method slots from +6, then the name (tools/classes.py)
 	incrom	$0BD39C,$92
-	incrom	$0BD42E,$F0
+Tbl_BarbarianTakeDamage_Hurt:	; table read by XNpc_TakeDamage_Hurt; 4 of 8 bytes used at runtime; read by XNpc_TakeDamage_Hurt, Barbarian_Init, XNpc_KnockbackDist; jt[1036] used by Barbarian_Init
+	incrom	$0BD42E,$8
+Tbl_SavageBioAnim3:	; animation script (byte flags, byte steps, ..., 2-byte steps from +6); 10 of 12 bytes used at runtime; read by Anim_ApplyStep, Anim_AdvanceByDistance; jt[1037] used by sub_0BDD52
+	incrom	$0BD436,$12
+Tbl_SavageBioAnim4:	; animation script (byte flags, byte steps, ..., 2-byte steps from +6); 10 of 12 bytes used at runtime; read by Anim_ApplyStep, Anim_AdvanceByDistance; jt[1038] used by loc_0BDC34, loc_0BDC4A, sub_0BDA66
+	incrom	$0BD448,$12
+Tbl_SavageBioAnim5:	; animation script (byte flags, byte steps, ..., 2-byte steps from +6); 2E of 60 bytes used at runtime; read by Anim_ApplyStep; jt[1039] used by sub_0BDAC4, sub_0BDB94, sub_0BDE82
+	incrom	$0BD45A,$60
+Tbl_SavageBioAnim6:	; animation script (byte flags, byte steps, ..., 2-byte steps from +6); 16 of 18 bytes used at runtime; read by Anim_ApplyStep, Anim_AdvanceByDistance, Anim_Advance; jt[1040] used by sub_0BE37E
+	incrom	$0BD4BA,$18
+Tbl_SavageBioAnim7:	; animation script (byte flags, byte steps, ..., 2-byte steps from +6); E of 10 bytes used at runtime; read by Anim_ApplyStep, Anim_AdvanceByDistance, Anim_Advance; jt[1041] used by sub_0BE3B4
+	incrom	$0BD4D2,$10
+Tbl_SavageBioAnim8:	; animation script (byte flags, byte steps, ..., 2-byte steps from +6); 12 of 14 bytes used at runtime; read by Anim_ApplyStep, Anim_AdvanceByDistance, Anim_Advance; jt[1042] used by sub_0BE3EA
+	incrom	$0BD4E2,$14
+Tbl_SavageBioAnim9:	; animation script (byte flags, byte steps, ..., 2-byte steps from +6); 12 of 14 bytes used at runtime; read by Anim_ApplyStep, Anim_AdvanceByDistance, Anim_Advance; jt[1043] used by sub_0BE420
+	incrom	$0BD4F6,$14
+Tbl_SavageBioAnim10:	; animation script (byte flags, byte steps, ..., 2-byte steps from +6); 12 of 14 bytes used at runtime; read by Anim_ApplyStep; jt[1044] used by sub_0BE456
+	incrom	$0BD50A,$14
 	include "src/f/0BD51E.asm"
 	include "src/f/0BD52C.asm"
 	include "src/f/0BD54A.asm"
@@ -2312,7 +2893,11 @@ Sw_0C099C:	; switch table of sub at $0C099C: 6 word offsets from Sw_0C099C-2
 	include "src/f/0C0C0C.asm"
 Tbl_SwampFly_vtable:	; class descriptor of SWAMPFLY: word name offset $82, parent BIONPC, 31 method slots from +6, then the name (tools/classes.py)
 	incrom	$0C0CEA,$8B
-	incrom	$0C0D75,$45
+	incrom	$0C0D75,$1
+Tbl_SwampFlyComputeParallax:	; table read by Scroll_ComputeParallax; 16 of 22 bytes used at runtime; read by Scroll_ComputeParallax, Scroll_SetParallax; jt[1114] used by sub_0C0E16
+	incrom	$0C0D76,$22
+Tbl_SwampFlyComputeParallax2:	; table read by Scroll_ComputeParallax; 16 of 22 bytes used at runtime; read by Scroll_ComputeParallax, Scroll_SetParallax; jt[1115] used by sub_0C12F6
+	incrom	$0C0D98,$22
 	include "src/f/0C0DBA.asm"
 	include "src/f/0C0DC2.asm"
 	include "src/f/0C0E16.asm"
@@ -2333,7 +2918,47 @@ Tbl_SwampFly_vtable:	; class descriptor of SWAMPFLY: word name offset $82, paren
 	include "src/f/0C1412.asm"
 	include "src/f/0C1478.asm"
 	include "src/f/0C14B4.asm"
-	incrom	$0C14E4,$1ADB0
+Lvl_Segs_0C14E4:	; floor-segment list (Seg_LoadList: 12/10-byte records until a 0 byte); 8F7 of 8F8 bytes used at runtime; read by Seg_LoadList; jt[1123] used by sub_0C0E54
+	incrom	$0C14E4,$8F8
+Art_Nem_0C1DDC:	; Nemesis-style compressed 4bpp tiles (Nem_Decode; code table built from pairs by the caller); 860D of 897A bytes used at runtime; read by Nem_DecodeLoop, Eni_Decode, Eni_ReadInline; jt[1124] used by sub_0C0E54, sub_0C1258
+	incrom	$0C1DDC,$897A
+Art_Nem_0CA756:	; Nemesis-style compressed 4bpp tiles (Nem_Decode; code table built from pairs by the caller); 2E of 46 bytes used at runtime; read by Nem_DecodeLoop, Eni_Decode, Eni_ReadInline; jt[1125] used by sub_0C0E54
+	incrom	$0CA756,$46
+Art_SpaceB1Nem:	; Nemesis-style compressed 4bpp tiles (Nem_Decode; code table built from pairs by the caller); 20C8 of 20E2 bytes used at runtime; read by Nem_DecodeLoop, Eni_Decode, Eni_ReadInline; jt[1126] used by SpaceB1_LoadLevel, sub_0C0E54, sub_0C1258
+	incrom	$0CA79C,$20E2
+Art_BarbarianSpr:	; sprite definition (type $18, raw 4bpp tiles): $24-byte header, $14-byte frame records, pieces, tiles; 3580 of 40B8 bytes used at runtime; read by VDP_FlushDmaQueue, Spr_EmitStreamClip; DMA to VRAM $92A0-B500; jt[1127] used by Barbarian_Init
+	incrom	$0CC87E,$40B8
+Art_LauncherSpr:	; sprite definition (type $18, raw 4bpp tiles): $24-byte header, $14-byte frame records, pieces, tiles; 434 of 434 bytes used at runtime; read by VDP_FlushDmaQueue, VDP_WriteWords; jt[1128] used by Launcher_ClassInit
+	incrom	$0D0936,$434
+Art_LauncherSpr2:	; sprite definition (type $18, raw 4bpp tiles): $24-byte header, $14-byte frame records, pieces, tiles; 60 of 60 bytes used at runtime; read by VDP_FlushDmaQueue, VDP_WriteWords; jt[1129] used by Launcher_ClassInit
+	incrom	$0D0D6A,$60
+Art_Spr_0D0DCA:	; sprite definition (type $19, Nemesis-compressed tiles): $24-byte header, $14-byte frame records, pieces, tiles; 413 of 414 bytes used at runtime; read by Nem_DecodeLoop, VDP_FlushDmaQueue, Spr_PreloadTiles; jt[1130] used by sub_0C0DC2
+	incrom	$0D0DCA,$414
+Art_SporeMineSpr:	; sprite definition (type $19, Nemesis-compressed tiles): $24-byte header, $14-byte frame records, pieces, tiles; 285 of 286 bytes used at runtime; read by VDP_WriteWords, Nem_DecodeLoop, Spr_PreloadTiles; jt[1131] used by SporeMine_ClassInit
+	incrom	$0D11DE,$286
+Tbl_SpikeBallVdp:	; words copied to the VDP data port by VDP_WriteWords; 466 of 466 bytes used at runtime; read by VDP_WriteWords, Nem_DecodeLoop; jt[1132] used by SpikeBall_ClassInit
+	incrom	$0D1464,$466
+	incrom	$0D18CA,$141C
+Art_SwampPlatformSpr:	; sprite definition (type $19, Nemesis-compressed tiles): $24-byte header, $14-byte frame records, pieces, tiles; 313 of 314 bytes used at runtime; read by Nem_DecodeLoop, Spr_PreloadTiles, Nem_BuildCodeTable; jt[1134] used by SwampPlatform_ClassInit
+	incrom	$0D2CE6,$314
+Lvl_SwampFlySegs:	; floor-segment list (Seg_LoadList: 12/10-byte records until a 0 byte); 240 of 2C8 bytes used at runtime; read by Seg_LoadList, VDP_FlushDmaQueue; DMA to VRAM $AB60-AD20; jt[1135] used by SwampFly_Init
+	incrom	$0D2FFA,$2C8
+Lvl_Segs_0D32C2:	; floor-segment list (Seg_LoadList: 12/10-byte records until a 0 byte); 6AF of 6B0 bytes used at runtime; read by Seg_LoadList, VDP_FlushDmaQueue; jt[1136] used by sub_0DC3DE
+	incrom	$0D32C2,$6B0
+Art_Nem_0D3972:	; Nemesis-style compressed 4bpp tiles (Nem_Decode; code table built from pairs by the caller); 6B90 of 6C36 bytes used at runtime; read by Nem_DecodeLoop, Eni_ReadInline, Eni_Decode; jt[1137] used by sub_0DC3DE
+	incrom	$0D3972,$6C36
+Art_Nem_0DA5A8:	; Nemesis-style compressed 4bpp tiles (Nem_Decode; code table built from pairs by the caller); 4A of 66 bytes used at runtime; read by Nem_DecodeLoop, Eni_ReadInline, Eni_Decode; jt[1138] used by sub_0DC3DE
+	incrom	$0DA5A8,$66
+Lvl_SentinelsB2Segs:	; floor-segment list (Seg_LoadList: 12/10-byte records until a 0 byte); 697 of 698 bytes used at runtime; read by Seg_LoadList; jt[1139] used by SentinelsB2_LoadLevel
+	incrom	$0DA60E,$698
+Art_SentinelsB1Nem:	; Nemesis-style compressed 4bpp tiles (Nem_Decode; code table built from pairs by the caller); 890 of A5C bytes used at runtime; read by Nem_DecodeLoop, Eni_Decode, Eni_ReadInline; jt[1140] used by SentinelsB1_LoadLevel, SentinelsB2_LoadLevel, sub_0DC3DE
+	incrom	$0DACA6,$A5C
+Art_SentinelsB2Nem:	; Nemesis-style compressed 4bpp tiles (Nem_Decode; code table built from pairs by the caller); 12 of 2A bytes used at runtime; read by Nem_DecodeLoop, Eni_Decode, Eni_ReadInline; jt[1141] used by SentinelsB2_LoadLevel
+	incrom	$0DB702,$2A
+Art_Spr_0DB72C:	; sprite definition (type $18, raw 4bpp tiles): $24-byte header, $14-byte frame records, pieces, tiles; 800 of 894 bytes used at runtime; read by VDP_FlushDmaQueue, VDP_WriteWords, Spr_PreloadTiles; DMA to VRAM $7F40-88C0; jt[1142] used by sub_0DC316
+	incrom	$0DB72C,$894
+Art_Spr_0DBFC0:	; sprite definition (type $19, Nemesis-compressed tiles): $24-byte header, $14-byte frame records, pieces, tiles; 2D3 of 2D4 bytes used at runtime; read by VDP_FlushDmaQueue, Nem_DecodeLoop, VDP_WriteWords; jt[1143] used by sub_0DC394
+	incrom	$0DBFC0,$2D4
 	include "src/f/0DC294.asm"
 Str_Empty_0DC2C4:	; C string "" (used by sub_0DC294)
 	incrom	$0DC2C4,$2
@@ -2385,7 +3010,10 @@ Tbl_Barrier_vtable:	; class descriptor of BARRIER: word name offset $6E, parent 
 	include "src/f/0DD060.asm"
 Tbl_Blast_vtable:	; class descriptor of BLAST: word name offset $76, parent ACTOR, 28 method slots from +6, then the name (tools/classes.py)
 	incrom	$0DD0E8,$7C
-	incrom	$0DD164,$492
+Art_BarrierSpr:	; sprite definition (type $19, Nemesis-compressed tiles): $24-byte header, $14-byte frame records, pieces, tiles; 44F of 450 bytes used at runtime; read by Spr_PreloadTiles, Nem_DecodeLoop; jt[1174] used by Barrier_ClassInit, Blast_ClassInit
+	incrom	$0DD164,$450
+Art_ControlBoxNem:	; Nemesis-style compressed 4bpp tiles (Nem_Decode; code table built from pairs by the caller); 42 of 42 bytes used at runtime; read by Nem_DecodeLoop, ControlBox_Draw, Nem_Decode; jt[1175] used by sub_0DD804
+	incrom	$0DD5B4,$42
 	include "src/f/0DD5F6.asm"
 	include "src/f/0DD604.asm"
 	include "src/f/0DD61A.asm"
@@ -2400,7 +3028,11 @@ Tbl_Blast_vtable:	; class descriptor of BLAST: word name offset $76, parent ACTO
 	include "src/f/0DD980.asm"
 Tbl_ControlBox_vtable:	; class descriptor of CONTROLBOX: word name offset $76, parent ACTOR, 28 method slots from +6, then the name (tools/classes.py)
 	incrom	$0DDA02,$81
-	incrom	$0DDA83,$435
+	incrom	$0DDA83,$1
+Art_ControlPanelSpr:	; sprite definition (type $19, Nemesis-compressed tiles): $24-byte header, $14-byte frame records, pieces, tiles; 3B1 of 3B2 bytes used at runtime; read by Nem_DecodeLoop, Spr_PreloadTiles, Nem_BuildCodeTable; jt[1185] used by sub_0DC394
+	incrom	$0DDA84,$3B2
+Art_ControlPanelNem:	; Nemesis-style compressed 4bpp tiles (Nem_Decode; code table built from pairs by the caller); 82 of 82 bytes used at runtime; read by Nem_DecodeLoop, ControlPanel_Draw; jt[1186] used by sub_0DE17A
+	incrom	$0DDE36,$82
 	include "src/f/0DDEB8.asm"
 	include "src/f/0DDEC6.asm"
 	include "src/f/0DDEDC.asm"
@@ -2441,7 +3073,9 @@ Tbl_ControlPanel_vtable:	; class descriptor of CONTROLPANEL: word name offset $7
 	include "src/f/0DE966.asm"
 Tbl_SentinelDoor_vtable:	; class descriptor of SENTINELDOOR: word name offset $6E, parent ACTOR, 26 method slots from +6, then the name (tools/classes.py)
 	incrom	$0DE9A0,$7B
-	incrom	$0DEA1B,$7E1
+	incrom	$0DEA1B,$1
+Art_SentinelDoorSpr:	; sprite definition (type $18, raw 4bpp tiles): $24-byte header, $14-byte frame records, pieces, tiles; 640 of 7E0 bytes used at runtime; read by VDP_FlushDmaQueue; DMA to VRAM $CE60-D9E0; jt[1204] used by SentinelDoor_Init
+	incrom	$0DEA1C,$7E0
 	include "src/f/0DF1FC.asm"
 	include "src/f/0DF20A.asm"
 	include "src/f/0DF220.asm"
@@ -2456,7 +3090,19 @@ Tbl_SentinelDoor_vtable:	; class descriptor of SENTINELDOOR: word name offset $6
 	include "src/f/0DF4D6.asm"
 Tbl_SentinelElevator_vtable:	; class descriptor of SENTINELELEVATOR: word name offset $6E, parent ACTOR, 26 method slots from +6, then the name (tools/classes.py)
 	incrom	$0DF556,$7F
-	incrom	$0DF5D5,$7CE1
+	incrom	$0DF5D5,$1
+Art_SentinelElevatorSpr:	; sprite definition (type $18, raw 4bpp tiles): $24-byte header, $14-byte frame records, pieces, tiles; 400 of 46C bytes used at runtime; read by VDP_FlushDmaQueue, Seg_LoadList; DMA to VRAM $D3A0-D9E0; jt[1211] used by SentinelElevator_Init
+	incrom	$0DF5D6,$46C
+Art_SentinelsA1Tiles:	; uncompressed 4bpp tiles DMA'd to VRAM; C9 of CA bytes used at runtime; read by VDP_FlushDmaQueue, Seg_LoadList; jt[1212] used by SentinelsA1_LoadLevel
+	incrom	$0DFA42,$CA
+Art_SentinelsA1Nem:	; Nemesis-style compressed 4bpp tiles (Nem_Decode; code table built from pairs by the caller); 320A of 3242 bytes used at runtime; read by Nem_DecodeLoop, Eni_Decode, Eni_ReadInline; jt[1213] used by SentinelsA1_LoadLevel
+	incrom	$0DFB0C,$3242
+Art_SentinelsA1Nem2:	; Nemesis-style compressed 4bpp tiles (Nem_Decode; code table built from pairs by the caller); 2E of 4E bytes used at runtime; read by Nem_DecodeLoop, Eni_Decode, Eni_ReadInline; jt[1214] used by SentinelsA1_LoadLevel
+	incrom	$0E2D4E,$4E
+Art_SentinelsA1Nem3:	; Nemesis-style compressed 4bpp tiles (Nem_Decode; code table built from pairs by the caller); 33EA of 33F4 bytes used at runtime; read by Nem_DecodeLoop, Eni_ReadInline, Eni_Decode; jt[1215] used by SentinelsA1_LoadLevel
+	incrom	$0E2D9C,$33F4
+Art_SentinelsA1Spr:	; sprite definition (type $18, raw 4bpp tiles): $24-byte header, $14-byte frame records, pieces, tiles; 1000 of 1126 bytes used at runtime; read by VDP_FlushDmaQueue, VDP_WriteWords; DMA to VRAM $3F40-4140; jt[1216] used by SentinelsA1_InitZapLights
+	incrom	$0E6190,$1126
 	include "src/f/0E72B6.asm"
 	include "src/f/0E7306.asm"
 	include "src/f/0E7582.asm"
@@ -2468,7 +3114,56 @@ Tbl_SentinelElevator_vtable:	; class descriptor of SENTINELELEVATOR: word name o
 	include "src/f/0E7A5E.asm"
 	include "src/f/0E7A6A.asm"
 	include "src/f/0E7A8C.asm"
-	incrom	$0E7A94,$5F6
+Tbl_CoreShieldsShakeStep:	; table read by Cam_ShakeStep; 14 of 14 bytes used at runtime; read by Cam_ShakeStep; jt[1218] used by CoreShields_StateAllDown, SentinelsB2_InstallHooks
+	incrom	$0E7A94,$14
+Tbl_HologramShakeStep:	; table read by Cam_ShakeStep; 53 of 54 bytes used at runtime; read by Cam_ShakeStep; jt[1219] used by Hologram_OpenExit
+	incrom	$0E7AA8,$54
+Art_SentinelsA1Spr2:	; sprite definition (type $00): $24-byte header, $14-byte frame records, pieces, tiles; 18 of 18 bytes used at runtime; read by Pal_CycleStep, Spr_PreloadTiles; jt[1220] used by SentinelsA1_CyclePalettes
+	incrom	$0E7AFC,$18
+Art_SentinelsA1Spr3:	; sprite definition (type $00): $24-byte header, $14-byte frame records, pieces, tiles; 28 of 28 bytes used at runtime; read by Pal_CycleStep, Spr_PreloadTiles; jt[1221] used by SentinelsA1_CyclePalettes
+	incrom	$0E7B14,$28
+Art_SentinelsA1Spr4:	; sprite definition (type $00): $24-byte header, $14-byte frame records, pieces, tiles; 10 of 10 bytes used at runtime; read by Pal_CycleStep, Spr_PreloadTiles, Nem_BuildCodeTable; jt[1222] used by SentinelsA1_CyclePalettes
+	incrom	$0E7B3C,$10
+Art_SentinelsA1Spr5:	; sprite definition (type $00): $24-byte header, $14-byte frame records, pieces, tiles; 14 of 14 bytes used at runtime; read by Pal_CycleStep, Spr_PreloadTiles; jt[1223] used by SentinelsA1_CyclePalettes
+	incrom	$0E7B4C,$14
+Art_SentinelsA1Spr6:	; sprite definition (type $00): $24-byte header, $14-byte frame records, pieces, tiles; 10 of 10 bytes used at runtime; read by Pal_CycleStep, Spr_PreloadTiles, Nem_BuildCodeTable; jt[1224] used by SentinelsA1_CyclePalettes
+	incrom	$0E7B60,$10
+Art_SentinelsA1Spr7:	; sprite definition (type $00): $24-byte header, $14-byte frame records, pieces, tiles; 26 of 26 bytes used at runtime; read by Pal_CycleStep, Spr_PreloadTiles; jt[1225] used by SentinelsA1_CyclePalettes
+	incrom	$0E7B70,$26
+Art_SentinelsA1Spr8:	; sprite definition (type $00): $24-byte header, $14-byte frame records, pieces, tiles; 14 of 14 bytes used at runtime; read by Pal_CycleStep, Spr_PreloadTiles; jt[1226] used by SentinelsA1_CyclePalettes
+	incrom	$0E7B96,$14
+Art_SentinelsA1Spr9:	; sprite definition (type $00): $24-byte header, $14-byte frame records, pieces, tiles; 14 of 14 bytes used at runtime; read by Pal_CycleStep, Spr_PreloadTiles; jt[1227] used by SentinelsA1_CyclePalettes
+	incrom	$0E7BAA,$14
+Art_SentinelsA1Spr10:	; sprite definition (type $00): $24-byte header, $14-byte frame records, pieces, tiles; 14 of 14 bytes used at runtime; read by Pal_CycleStep, Spr_PreloadTiles; jt[1228] used by SentinelsA1_CyclePalettes
+	incrom	$0E7BBE,$14
+Art_SentinelsA1Spr11:	; sprite definition (type $00): $24-byte header, $14-byte frame records, pieces, tiles; 14 of 14 bytes used at runtime; read by Pal_CycleStep, Spr_PreloadTiles; jt[1229] used by SentinelsA1_CyclePalettes
+	incrom	$0E7BD2,$14
+Art_SentinelsA1Spr12:	; sprite definition (type $00): $24-byte header, $14-byte frame records, pieces, tiles; 14 of 14 bytes used at runtime; read by Pal_CycleStep, Spr_PreloadTiles; jt[1230] used by SentinelsA1_CyclePalettes
+	incrom	$0E7BE6,$14
+Art_SentinelsA1Spr13:	; sprite definition (type $00): $24-byte header, $14-byte frame records, pieces, tiles; 14 of 14 bytes used at runtime; read by Pal_CycleStep, Spr_PreloadTiles; jt[1231] used by SentinelsA1_CyclePalettes
+	incrom	$0E7BFA,$14
+Art_SentinelsA1Spr14:	; sprite definition (type $00): $24-byte header, $14-byte frame records, pieces, tiles; 14 of 14 bytes used at runtime; read by Pal_CycleStep, Spr_PreloadTiles; jt[1232] used by SentinelsA1_CyclePalettes
+	incrom	$0E7C0E,$14
+Art_SentinelsA1Spr15:	; sprite definition (type $00): $24-byte header, $14-byte frame records, pieces, tiles; 14 of 14 bytes used at runtime; read by Pal_CycleStep, Spr_PreloadTiles; jt[1233] used by SentinelsA1_CyclePalettes
+	incrom	$0E7C22,$14
+Art_SentinelsA1Spr16:	; sprite definition (type $00): $24-byte header, $14-byte frame records, pieces, tiles; 14 of 14 bytes used at runtime; read by Pal_CycleStep, Spr_PreloadTiles; jt[1234] used by SentinelsA1_CyclePalettes
+	incrom	$0E7C36,$14
+Art_SentinelsA1Spr17:	; sprite definition (type $00): $24-byte header, $14-byte frame records, pieces, tiles; 14 of 14 bytes used at runtime; read by Pal_CycleStep, Spr_PreloadTiles; jt[1235] used by SentinelsA1_CyclePalettes
+	incrom	$0E7C4A,$14
+Art_SentinelsA1Spr18:	; sprite definition (type $00): $24-byte header, $14-byte frame records, pieces, tiles; 14 of 14 bytes used at runtime; read by Pal_CycleStep, Spr_PreloadTiles; jt[1236] used by SentinelsA1_CyclePalettes
+	incrom	$0E7C5E,$14
+Art_SentinelsA1Spr19:	; sprite definition (type $00): $24-byte header, $14-byte frame records, pieces, tiles; 14 of 14 bytes used at runtime; read by Pal_CycleStep, Spr_PreloadTiles; jt[1237] used by SentinelsA1_CyclePalettes
+	incrom	$0E7C72,$14
+Art_SentinelsA1Spr20:	; sprite definition (type $00): $24-byte header, $14-byte frame records, pieces, tiles; 14 of 14 bytes used at runtime; read by Pal_CycleStep, Spr_PreloadTiles; jt[1238] used by SentinelsA1_CyclePalettes
+	incrom	$0E7C86,$14
+Art_SentinelsA1Spr21:	; sprite definition (type $00): $24-byte header, $14-byte frame records, pieces, tiles; 14 of 14 bytes used at runtime; read by Pal_CycleStep, Spr_PreloadTiles; jt[1239] used by SentinelsA1_CyclePalettes
+	incrom	$0E7C9A,$14
+Art_SentinelsA1Spr22:	; sprite definition (type $00): $24-byte header, $14-byte frame records, pieces, tiles; 14 of 14 bytes used at runtime; read by Pal_CycleStep, Spr_PreloadTiles; jt[1240] used by SentinelsA1_CyclePalettes
+	incrom	$0E7CAE,$14
+Art_SentinelsA1Spr23:	; sprite definition (type $00): $24-byte header, $14-byte frame records, pieces, tiles; 14 of 14 bytes used at runtime; read by Pal_CycleStep, Spr_PreloadTiles; jt[1241] used by SentinelsA1_CyclePalettes
+	incrom	$0E7CC2,$14
+Art_SentinelsA1Spr24:	; sprite definition (type $19, Nemesis-compressed tiles): $24-byte header, $14-byte frame records, pieces, tiles; 3B3 of 3B4 bytes used at runtime; read by Nem_DecodeLoop, Pal_CycleStep, Spr_PreloadTiles; jt[1242] used by SentinelsA1_LoadResources
+	incrom	$0E7CD6,$3B4
 	include "src/f/0E808A.asm"
 	include "src/f/0E8098.asm"
 	include "src/f/0E80DE.asm"
@@ -2479,7 +3174,14 @@ Tbl_SentinelElevator_vtable:	; class descriptor of SENTINELELEVATOR: word name o
 	include "src/f/0E82E4.asm"
 Tbl_HoloBolt_vtable:	; class descriptor "HOLOBOLT": word $6E = name offset, long parent (ACTOR), 26 method pointers, then the class name string
 	incrom	$0E83AC,$78
-	incrom	$0E8424,$15B2
+Tbl_HoloBoltAnim:	; animation script (byte flags, byte steps, ..., 2-byte steps from +6); E of 10 bytes used at runtime; read by Anim_ApplyStep, Anim_AdvanceByDistance, Anim_Advance; jt[1248] used by HoloBolt_StateA
+	incrom	$0E8424,$10
+Tbl_HoloBoltAnim2:	; animation script (byte flags, byte steps, ..., 2-byte steps from +6); A of C bytes used at runtime; read by Anim_ApplyStep, Anim_AdvanceByDistance, Anim_Advance; jt[1249] used by HoloBolt_StateB
+	incrom	$0E8434,$C
+Art_HoloBoltSpr:	; sprite definition (type $00): $24-byte header, $14-byte frame records, pieces, tiles; C of E bytes used at runtime; read by Spr_PreloadTiles, Anim_ApplyStep, Anim_AdvanceByDistance; jt[1250] used by HoloBolt_StateC
+	incrom	$0E8440,$E
+Art_SentinelsA1Spr25:	; sprite definition (type $19, Nemesis-compressed tiles): $24-byte header, $14-byte frame records, pieces, tiles; 1587 of 1588 bytes used at runtime; read by Nem_DecodeLoop, Spr_PreloadTiles; jt[1251] used by SentinelsA1_LoadResources
+	incrom	$0E844E,$1588
 	include "src/f/0E99D6.asm"
 	include "src/f/0E99E4.asm"
 	include "src/f/0E99EC.asm"
@@ -2544,13 +3246,17 @@ Str_Empty_0EAEFC:	; C string "" (used by jt[1276])
 	include "src/f/0EAEFE.asm"
 Str_Empty_0EAF02:	; C string "" (used by jt[1277])
 	incrom	$0EAF02,$1
+Tbl_HologramSeqA_Pose0:	; table read by Hologram_SeqA_Pose0; 1 of 1 bytes used at runtime; read by Hologram_SeqA_Pose0
 	incrom	$0EAF03,$1
 	include "src/f/0EAF04.asm"
 Str_Empty_0EAF10:	; C string "" (used by jt[1278])
 	incrom	$0EAF10,$1
+Tbl_HologramActPose0:	; table read by Hologram_ActPose0; 1 of 1 bytes used at runtime; read by Hologram_ActPose0
 	incrom	$0EAF11,$1
 	include "src/f/0EAF12.asm"
-	incrom	$0EAF7A,$6E0
+	incrom	$0EAF7A,$98
+Art_SentinelsA1Spr26:	; sprite definition (type $19, Nemesis-compressed tiles): $24-byte header, $14-byte frame records, pieces, tiles; 647 of 648 bytes used at runtime; read by Nem_DecodeLoop, Spr_PreloadTiles; jt[1280] used by SentinelsA1_LoadResources
+	incrom	$0EB012,$648
 	include "src/f/0EB65A.asm"
 	include "src/f/0EB662.asm"
 	include "src/f/0EB670.asm"
@@ -2571,7 +3277,13 @@ Str_Empty_0EAF10:	; C string "" (used by jt[1278])
 	include "src/f/0EBDBC.asm"
 Tbl_CoreShields_vtable:	; class descriptor "CORESHIELDS": word $6E = name offset, long parent (ACTOR), 26 method pointers, then the class name string
 	incrom	$0EBE7E,$7A
-	incrom	$0EBEF8,$626
+Tbl_CoreShieldsDraw:	; table read by CoreShields_Draw; 40 of 50 bytes used at runtime; read by CoreShields_Draw; jt[1294] used by CoreShields_Draw
+	incrom	$0EBEF8,$50
+Tbl_CoreShieldsDraw2:	; table read by CoreShields_Draw; 40 of 50 bytes used at runtime; read by CoreShields_Draw, sub_13EA46; jt[1295] used by CoreShields_Draw
+	incrom	$0EBF48,$50
+	incrom	$0EBF98,$118
+Art_SentinelsA1Spr27:	; sprite definition (type $19, Nemesis-compressed tiles): $24-byte header, $14-byte frame records, pieces, tiles; 46D of 46E bytes used at runtime; read by Spr_PreloadTiles, Nem_DecodeLoop, Nem_BuildCodeTable; jt[1298] used by SentinelsA1_LoadResources
+	incrom	$0EC0B0,$46E
 	include "src/f/0EC51E.asm"
 	include "src/f/0EC526.asm"
 	include "src/f/0EC534.asm"
@@ -2592,10 +3304,16 @@ Tbl_CoreShields_vtable:	; class descriptor "CORESHIELDS": word $6E = name offset
 	include "src/f/0EC856.asm"
 Tbl_CoreElevator_vtable:	; class descriptor "COREELEVATOR": word $6E = name offset, long parent (ACTOR), 26 method pointers, then the class name string
 	incrom	$0EC98E,$7C
+Tbl_CoreElevatorAnim:	; animation script (byte flags, byte steps, ..., 2-byte steps from +6); 6 of 8 bytes used at runtime; read by Anim_ApplyStep, Anim_AdvanceByDistance, Anim_Advance; jt[1309] used by CoreElevator_Init
 	incrom	$0ECA0A,$8
 Tbl_CoreZap_vtable:	; class descriptor "COREZAP": word $6E = name offset, long parent (ACTOR), 26 method pointers, then the class name string
 	incrom	$0ECA12,$76
-	incrom	$0ECA88,$7874
+Lvl_SentinelsB1Segs:	; floor-segment list (Seg_LoadList: 12/10-byte records until a 0 byte); 697 of 698 bytes used at runtime; read by Seg_LoadList; jt[1311] used by SentinelsB1_LoadLevel
+	incrom	$0ECA88,$698
+Art_SentinelsB1Nem2:	; Nemesis-style compressed 4bpp tiles (Nem_Decode; code table built from pairs by the caller); 70E2 of 717A bytes used at runtime; read by Nem_DecodeLoop, Eni_ReadInline, Eni_Decode; jt[1312] used by SentinelsB1_LoadLevel, SentinelsB2_LoadLevel
+	incrom	$0ED120,$717A
+Art_SentinelsB1Nem3:	; Nemesis-style compressed 4bpp tiles (Nem_Decode; code table built from pairs by the caller); 4A of 62 bytes used at runtime; read by Nem_DecodeLoop, Eni_ReadInline, Eni_Decode; jt[1313] used by SentinelsB1_LoadLevel
+	incrom	$0F429A,$62
 	include "src/f/0F42FC.asm"
 	include "src/f/0F4314.asm"
 	include "src/f/0F4350.asm"
@@ -2615,7 +3333,20 @@ Tbl_CoreZap_vtable:	; class descriptor "COREZAP": word $6E = name offset, long p
 	include "src/f/0F4CBC.asm"
 	include "src/f/0F4CD0.asm"
 	include "src/f/0F4CD8.asm"
-	incrom	$0F4D00,$7A1A
+Art_SentinelsB2Spr:	; sprite definition (type $19, Nemesis-compressed tiles): $24-byte header, $14-byte frame records, pieces, tiles; 1FF of 200 bytes used at runtime; read by Spr_PreloadTiles, Nem_DecodeLoop; jt[1318] used by SentinelsB2_LoadDigits
+	incrom	$0F4D00,$200
+Lvl_SiberiaB1Segs:	; floor-segment list (Seg_LoadList: 12/10-byte records until a 0 byte); 292 of 29A bytes used at runtime; read by Seg_LoadList, Nem_DecodeLoop, Eni_Decode; jt[1319] used by SiberiaB1_LoadLevel
+	incrom	$0F4F00,$29A
+Lvl_SiberiaB1Segs2:	; floor-segment list (Seg_LoadList: 12/10-byte records until a 0 byte); 49F of 4A0 bytes used at runtime; read by Seg_LoadList, Nem_DecodeLoop, Eni_Decode; jt[1320] used by SiberiaB1_LoadLevel
+	incrom	$0F519A,$4A0
+Art_SiberiaB1Nem:	; Nemesis-style compressed 4bpp tiles (Nem_Decode; code table built from pairs by the caller); 5B58 of 5C9C bytes used at runtime; read by Nem_DecodeLoop, Eni_Decode, Eni_ReadInline; jt[1321] used by SiberiaB1_InitWind, SiberiaB1_LoadLevel
+	incrom	$0F563A,$5C9C
+Art_SiberiaB1Nem2:	; Nemesis-style compressed 4bpp tiles (Nem_Decode; code table built from pairs by the caller); 32 of 4C bytes used at runtime; read by Nem_DecodeLoop, Eni_Decode, Eni_ReadInline; jt[1322] used by SiberiaB1_LoadLevel
+	incrom	$0FB2D6,$4C
+Art_SiberiaB1Spr:	; sprite definition (type $18, raw 4bpp tiles): $24-byte header, $14-byte frame records, pieces, tiles; 800 of AB0 bytes used at runtime; read by VDP_FlushDmaQueue, VDP_WriteWords; DMA to VRAM $1380-1580; jt[1323] used by SiberiaB1_InitWindSprite
+	incrom	$0FB322,$AB0
+Art_SiberiaB1Spr2:	; sprite definition (type $18, raw 4bpp tiles): $24-byte header, $14-byte frame records, pieces, tiles; 948 of 948 bytes used at runtime; read by VDP_WriteWords, Spr_PreloadTiles; jt[1324] used by SiberiaB1_LoadResources
+	incrom	$0FBDD2,$948
 	include "src/f/0FC71A.asm"
 	include "src/f/0FC72E.asm"
 	include "src/f/0FC78A.asm"
@@ -2650,7 +3381,16 @@ Tbl_SiberiaB1PalCycle2:	; palette cycle for palette index $2D, same format (Sibe
 	incrom	$0FD796,$1A
 Tbl_SiberiaB1PalCycle3:	; palette cycle for palette index $2E, same format (SiberiaB1_CyclePalettes)
 	incrom	$0FD7B0,$1A
-	incrom	$0FD7CA,$9396
+Lvl_SpaceB1Segs:	; floor-segment list (Seg_LoadList: 12/10-byte records until a 0 byte); 6D1 of 6D2 bytes used at runtime; read by Seg_LoadList; jt[1330] used by SpaceB1_LoadLevel
+	incrom	$0FD7CA,$6D2
+Map_SpaceB1Eni:	; Enigma-compressed tilemap (Eni_Decode); 8119 of 835E bytes used at runtime; read by Eni_ReadInline, Nem_DecodeLoop, Eni_Decode; jt[1331] used by SpaceB1_LoadLevel
+	incrom	$0FDE9C,$835E
+Map_SpaceB1Eni2:	; Enigma-compressed tilemap (Eni_Decode); 3A of 52 bytes used at runtime; read by Eni_ReadInline, Nem_DecodeLoop, Eni_Decode; jt[1332] used by SpaceB1_LoadLevel
+	incrom	$1061FA,$52
+Art_SpaceB1Spr:	; sprite definition (type $12): $24-byte header, $14-byte frame records, pieces, tiles; 55A of 56C bytes used at runtime; read by Eni_ReadInline, VDP_WriteWords, Eni_Decode; jt[1333] used by SpaceB1_LoadLevel
+	incrom	$10624C,$56C
+Art_Platform1Spr:	; sprite definition (type $18, raw 4bpp tiles): $24-byte header, $14-byte frame records, pieces, tiles; 3A8 of 3A8 bytes used at runtime; read by Eni_ReadInline, VDP_WriteWords, Eni_Decode; jt[1334] used by Platform1_ClassInit, Platform1_Init
+	incrom	$1067B8,$3A8
 	include "src/f/106B60.asm"
 	include "src/f/106B68.asm"
 	include "src/f/106B76.asm"
@@ -2710,7 +3450,16 @@ Str_Empty_1077FE:	; C string "" (used by sub_1077BA)
 	include "src/f/1079D8.asm"
 Tbl_Switch_vtable:	; class descriptor "SWITCH": word $6E = name offset, long parent (ACTOR), 26 method pointers, then the class name string
 	incrom	$107A3E,$76
-	incrom	$107AB4,$3A7E
+Lvl_SpaceA1Segs:	; floor-segment list (Seg_LoadList: 12/10-byte records until a 0 byte); 3D of 3E bytes used at runtime; read by Seg_LoadList; jt[1350] used by SpaceA1_LoadLevel
+	incrom	$107AB4,$3E
+Art_SpaceA1Nem:	; Nemesis-style compressed 4bpp tiles (Nem_Decode; code table built from pairs by the caller); 2522 of 2538 bytes used at runtime; read by Nem_DecodeLoop; jt[1351] used by SpaceA1_LoadLevel
+	incrom	$107AF2,$2538
+Art_SpaceA1Nem2:	; Nemesis-style compressed 4bpp tiles (Nem_Decode; code table built from pairs by the caller); 12 of 2A bytes used at runtime; read by Nem_DecodeLoop; jt[1352] used by SpaceA1_LoadLevel
+	incrom	$10A02A,$2A
+Art_SpaceA1Nem3:	; Nemesis-style compressed 4bpp tiles (Nem_Decode; code table built from pairs by the caller); 14C6 of 14D0 bytes used at runtime; read by Nem_DecodeLoop; jt[1353] used by SpaceA1_LoadLevel
+	incrom	$10A054,$14D0
+Art_ElevatorNem:	; Nemesis-style compressed 4bpp tiles (Nem_Decode; code table built from pairs by the caller); 1 of E bytes used at runtime; read by Nem_DecodeLoop, Eni_ReadInline, Eni_Decode; jt[1354] used by Elevator_Update
+	incrom	$10B524,$E
 Tbl_Elevator_vtable:	; class descriptor "ELEVATOR": word $16 = name offset, long parent (none), 4 method pointers, then the class name string
 	incrom	$10B532,$20
 	include "src/f/10B552.asm"
@@ -2730,7 +3479,32 @@ Tbl_Elevator_vtable:	; class descriptor "ELEVATOR": word $16 = name offset, long
 	include "src/f/10BA6A.asm"
 	include "src/f/10BB62.asm"
 	include "src/f/10BB6E.asm"
-	incrom	$10BBD6,$558C
+Art_DeathbirdSpr:	; sprite definition (type $19, Nemesis-compressed tiles): $24-byte header, $14-byte frame records, pieces, tiles; 1CAF of 1CB0 bytes used at runtime; read by Nem_DecodeLoop, Spr_PreloadTiles; jt[1362] used by Deathbird_ClassInit
+	incrom	$10BBD6,$1CB0
+Art_DeathbirdSpr2:	; sprite definition (type $18, raw 4bpp tiles): $24-byte header, $14-byte frame records, pieces, tiles; 30C0 of 3582 bytes used at runtime; read by VDP_FlushDmaQueue; DMA to VRAM $ACE0-B480; jt[1363] used by Deathbird_Init
+	incrom	$10D886,$3582
+Art_DeathbirdSpr3:	; sprite definition (type $19, Nemesis-compressed tiles): $24-byte header, $14-byte frame records, pieces, tiles; 259 of 25A bytes used at runtime; read by Spr_PreloadTiles, Nem_DecodeLoop; jt[1364] used by Deathbird_ClassInit
+	incrom	$110E08,$25A
+Tbl_DeathbirdAnim:	; animation script (byte flags, byte steps, ..., 2-byte steps from +6); C of E bytes used at runtime; read by Anim_ApplyStep, Nem_DecodeLoop, Nem_Decode; jt[1365] used by Deathbird_SetMoveMode_Case2, Deathbird_SetMoveMode_Case4, Deathbird_SetMoveMode_Case5
+	incrom	$111062,$E
+Tbl_DeathbirdAnim2:	; animation script (byte flags, byte steps, ..., 2-byte steps from +6); 6 of 8 bytes used at runtime; read by Anim_ApplyStep, Anim_AdvanceByDistance, Anim_Advance; jt[1366] used by Deathbird_SetMoveMode_Case2
+	incrom	$111070,$8
+Tbl_DeathbirdAnim3:	; animation script (byte flags, byte steps, ..., 2-byte steps from +6); C of E bytes used at runtime; read by Anim_ApplyStep, Anim_AdvanceByDistance, Anim_Advance; jt[1367] used by Deathbird_StateThrowBurst
+	incrom	$111078,$E
+Tbl_DeathbirdAnim4:	; animation script (byte flags, byte steps, ..., 2-byte steps from +6); 5 of 8 bytes used at runtime; read by Anim_AdvanceByDistance, Anim_ApplyStep, Anim_Advance; jt[1368] used by Deathbird_SetMoveMode_Case7
+	incrom	$111086,$8
+Tbl_DeathbirdAnim5:	; animation script (byte flags, byte steps, ..., 2-byte steps from +6); C of E bytes used at runtime; read by Anim_ApplyStep, Anim_AdvanceByDistance, Anim_Advance; jt[1369] used by Deathbird_SetMoveMode_Case1
+	incrom	$11108E,$E
+Tbl_DeathbirdAnim6:	; animation script (byte flags, byte steps, ..., 2-byte steps from +6); A of C bytes used at runtime; read by Anim_ApplyStep, Anim_AdvanceByDistance, Anim_Advance; jt[1370] used by Deathbird_StateLandOnSwitch
+	incrom	$11109C,$C
+Tbl_DeathbirdAnim7:	; animation script (byte flags, byte steps, ..., 2-byte steps from +6); 6 of 8 bytes used at runtime; read by Anim_ApplyStep, Anim_AdvanceByDistance, Anim_Advance; jt[1371] used by Deathbird_StatePeck
+	incrom	$1110A8,$8
+Tbl_DeathbirdAnim8:	; animation script (byte flags, byte steps, ..., 2-byte steps from +6); 6 of 8 bytes used at runtime; read by Anim_ApplyStep, Anim_AdvanceByDistance, Anim_Advance; jt[1372] used by Deathbird_SetMoveMode_Case10
+	incrom	$1110B0,$8
+Tbl_DeathbirdStateChooseAttack:	; table read by Deathbird_StateChooseAttack; 5 of A bytes used at runtime; read by Deathbird_StateChooseAttack, Anim_ApplyStep; jt[1373] used by Deathbird_Init, Deathbird_StateChooseAttack
+	incrom	$1110B8,$A
+Tbl_DeathbirdStateSendHornets:	; table read by Deathbird_StateSendHornets; 9D of A0 bytes used at runtime; read by Deathbird_StateSendHornets; jt[1374] used by Deathbird_Init, Deathbird_StateSendHornets
+	incrom	$1110C2,$A0
 Tbl_Deathbird_vtable:	; class descriptor "DEATHBIRD": word $76 = name offset, long parent (ACTOR), 28 method pointers, then the class name string
 	incrom	$111162,$80
 	include "src/f/1111E2.asm"
@@ -2800,6 +3574,7 @@ Sw_11214E:	; switch table of sub at $11214E: 5 word offsets from Sw_11214E-2
 	include "src/f/112EA4.asm"
 	include "src/f/112F58.asm"
 	include "src/f/112F8E.asm"
+Tbl_DeathbirdVdp:	; words copied to the VDP data port by VDP_WriteWords; 18B of 1C8 bytes used at runtime; read by VDP_WriteWords; jt[1388] used by sub_15C306
 	incrom	$112FD8,$1C8
 Tbl_XPlayer_vtable:	; class descriptor "XPLAYER": word $F2 = name offset, long parent (ACTOR), 59 method pointers, then the class name string
 	incrom	$1131A0,$FA
@@ -2878,7 +3653,23 @@ Sw_11410E:	; switch table of sub at $11410E: 4 word offsets from Sw_11410E-2
 	include "src/f/114B90.asm"
 	include "src/f/114C4C.asm"
 	include "src/f/114D0A.asm"
-	incrom	$114E70,$26CC
+Tbl_XNpcTakeDamage_Hurt:	; table read by XNpc_TakeDamage_Hurt; 6 of 8 bytes used at runtime; read by XNpc_TakeDamage_Hurt, XNpc_Init, XNpc_KnockbackDist; jt[1417] used by XNpc_Init
+	incrom	$114E70,$8
+Tbl_MaintRobotTakeDamage_Hurt:	; table read by XNpc_TakeDamage_Hurt; 3 of 8 bytes used at runtime; read by XNpc_TakeDamage_Hurt, MaintRobot_Init; jt[1418] used by MaintRobot_Init, SwampFly_Init
+	incrom	$114E78,$8
+Art_XCloneSpr:	; sprite definition (type $01): $24-byte header, $14-byte frame records, pieces, tiles; 5 of 8 bytes used at runtime; read by XNpc_TakeDamage_Hurt, VDP_WriteWords, XClone_Init; jt[1419] used by XClone_Init
+	incrom	$114E80,$8
+Tbl_BioNpcVdp:	; words copied to the VDP data port by VDP_WriteWords; EE8 of EE8 bytes used at runtime; read by VDP_WriteWords; jt[1420] used by Scene_AllocCommonVram
+	incrom	$114E88,$EE8
+Art_PowerUpSpr:	; sprite definition (type $18, raw 4bpp tiles): $24-byte header, $14-byte frame records, pieces, tiles; CC0 of 1764 bytes used at runtime; read by VDP_FlushDmaQueue, Spr_EmitStreamClip, Spr_UploadFrame; DMA to VRAM $B3A0-DF00; jt[1421] used by PowerUp_Init
+	incrom	$115D70,$1764
+Tbl_SegmentMinusPowerUpUpdate:	; table read by PowerUp_Update; C of 16 bytes used at runtime; read by PowerUp_Update, Actor_Draw; jt[1422] used by SegmentMinusPowerUp_Init, SegmentPlusPowerUp_Init
+	incrom	$1174D4,$16
+Tbl_XPowerMinusPowerUpUpdate:	; table read by PowerUp_Update; C of 16 bytes used at runtime; read by PowerUp_Update, Actor_Draw, XPowerPlusPowerUp_Init; jt[1423] used by XPowerMinusPowerUp_Init, XPowerPlusPowerUp_Init
+	incrom	$1174EA,$16
+Tbl_MondoMinusPowerUpUpdate:	; table read by PowerUp_Update; 14 of 26 bytes used at runtime; read by PowerUp_Update; jt[1424] used by MondoMinusPowerUp_Init, MondoPlusPowerUp_Init
+	incrom	$117500,$26
+	incrom	$117526,$16
 	include "src/f/11753C.asm"
 	include "src/f/11754A.asm"
 	include "src/f/117608.asm"
@@ -2960,6 +3751,7 @@ Sw_11893C:	; switch table of sub at $11893C: 17 word offsets from Sw_11893C-2
 	include "src/f/118C2E.asm"
 Tbl_RThetaObject_vtable:	; class descriptor "RTHETAOBJECT": word $6E = name offset, long parent (ACTOR), 26 method pointers, then the class name string
 	incrom	$118C8E,$7C
+Tbl_GaussBulletUpdate:	; table read by GaussBullet_Update; 28 of 28 bytes used at runtime; read by GaussBullet_Update; jt[1481] used by GaussBullet_InitPool
 	incrom	$118D0A,$28
 Tbl_GaussBullet_vtable:	; class descriptor "GAUSSBULLET": word $E = name offset, long parent (none), 2 method pointers, then the class name string
 	incrom	$118D32,$1A
@@ -2971,6 +3763,7 @@ Tbl_GaussBullet_vtable:	; class descriptor "GAUSSBULLET": word $E = name offset,
 Str_Empty_11918E:	; C string "" (used by GaussBullet_InitPool)
 	incrom	$11918E,$2
 	include "src/f/119190.asm"
+Art_GaussBulletSpr:	; sprite definition (type $18, raw 4bpp tiles): $24-byte header, $14-byte frame records, pieces, tiles; 4A4 of 4A4 bytes used at runtime; read by VDP_WriteWords, Spr_PreloadTiles; jt[1487] used by GaussBullet_InitPool
 	incrom	$11928A,$4A4
 	include "src/f/11972E.asm"
 	include "src/f/119738.asm"
@@ -3012,44 +3805,89 @@ Tbl_Synchronizer_vtable:	; class descriptor "SYNCHRONIZER": word $2A = name offs
 	include "src/f/119EB4.asm"
 Tbl_SyncActor_vtable:	; class descriptor "SYNCHRONIZEDACTOR": word $7E = name offset, long parent (ACTOR), 30 method pointers, then the class name string
 	incrom	$119ECA,$90
-	incrom	$119F5A,$158C
+Art_BabyBioSpr:	; sprite definition (type $18, raw 4bpp tiles): $24-byte header, $14-byte frame records, pieces, tiles; 1180 of 13E0 bytes used at runtime; read by VDP_FlushDmaQueue; DMA to VRAM $9480-C500; jt[1515] used by BabyBio_Init, BrainChild_StateLand
+	incrom	$119F5A,$13E0
+Art_BabyBioSpr2:	; sprite definition (type $00): $24-byte header, $14-byte frame records, pieces, tiles; C of E bytes used at runtime; read by Anim_ApplyStep, VDP_FlushDmaQueue, Spr_EmitStreamClip; jt[1516] used by BabyBio_ActCrawl, BabyBio_Move
+	incrom	$11B33A,$E
+	incrom	$11B348,$1C
+Tbl_WallCrawlBioAnim:	; animation script (byte flags, byte steps, ..., 2-byte steps from +6); C of E bytes used at runtime; read by Anim_ApplyStep, WallCrawlBio_Move, Anim_Advance; jt[1519] used by WallCrawlBio_ActCrawlHorizontal
+	incrom	$11B364,$E
+	incrom	$11B372,$E
+Tbl_WallCrawlBioAnim2:	; animation script (byte flags, byte steps, ..., 2-byte steps from +6); C of E bytes used at runtime; read by Anim_ApplyStep, WallCrawlBio_Move, Anim_Advance; jt[1521] used by WallCrawlBio_ActCrawlVertical
+	incrom	$11B380,$E
+	incrom	$11B38E,$E
+Tbl_BabyBioAnim:	; animation script (byte flags, byte steps, ..., 2-byte steps from +6); 6 of 8 bytes used at runtime; read by Anim_ApplyStep, Anim_AdvanceByDistance, Anim_Advance; jt[1523] used by BabyBio_ActCrawl, BabyBio_ActPlayAnimB
+	incrom	$11B39C,$8
+Tbl_BabyBioAnim2:	; animation script (byte flags, byte steps, ..., 2-byte steps from +6); 5 of 8 bytes used at runtime; read by Anim_AdvanceByDistance, Anim_ApplyStep, Anim_Advance; jt[1524] used by BabyBio_ActPlayAnimA
+	incrom	$11B3A4,$8
+Tbl_BabyBioAnim3:	; animation script (byte flags, byte steps, ..., 2-byte steps from +6); 8 of A bytes used at runtime; read by Anim_ApplyStep, Anim_AdvanceByDistance, Anim_Advance; jt[1525] used by BabyBio_ActPlayAnimC
+	incrom	$11B3AC,$A
+Tbl_BabyBioMove:	; table read by BabyBio_Move; 8 of A bytes used at runtime; read by BabyBio_Move, Anim_ApplyStep, Anim_AdvanceByDistance; jt[1526] used by BabyBio_ActPlayAnimD
+	incrom	$11B3B6,$A
+Tbl_BabyBioMove2:	; table read by BabyBio_Move; 122 of 124 bytes used at runtime; read by BabyBio_Move; jt[1527] used by BabyBio_Init, BabyBio_Move, ChildShip_Init
+	incrom	$11B3C0,$124
+	incrom	$11B4E4,$2
 	include "src/f/11B4E6.asm"
-	incrom	$11B4EA,$1E
+	incrom	$11B4EA,$1C
+Tbl_BabySentinelBActWaitPlayerNear192:	; table read by BabyBio_ActWaitPlayerNear192; 2 of 2 bytes used at runtime; read by BabyBio_ActWaitPlayerNear192; jt[1529] used by BabySentinelB_Init
+	incrom	$11B506,$2
 	include "src/f/11B508.asm"
 	include "src/f/11B524.asm"
 Str_Empty_11B53C:	; C string "" (used by jt[1530])
 	incrom	$11B53C,$1
+Tbl_BabySentinelBActPlayAnimD:	; table read by BabyBio_ActPlayAnimD; 1 of 1 bytes used at runtime; read by BabyBio_ActPlayAnimD
 	incrom	$11B53D,$1
 	include "src/f/11B53E.asm"
 	include "src/f/11B552.asm"
 Str_Empty_11B55E:	; C string "" (used by jt[1531])
 	incrom	$11B55E,$1
+Tbl_BabySentinelBWaitCrawlLimit:	; table read by BabyBio_WaitCrawlLimit; 1 of 1 bytes used at runtime; read by BabyBio_WaitCrawlLimit
 	incrom	$11B55F,$1
 	include "src/f/11B560.asm"
-	incrom	$11B574,$4C
+	incrom	$11B574,$4A
+Tbl_BabyMoleManActPlayAnimC:	; table read by BabyBio_ActPlayAnimC; 2 of 2 bytes used at runtime; read by BabyBio_ActPlayAnimC; jt[1533] used by BabyMoleMan_Init_Default
+	incrom	$11B5BE,$2
 	include "src/f/11B5C0.asm"
-	incrom	$11B5D0,$2C
+	incrom	$11B5D0,$2A
+Tbl_BabyMoleManActPlayAnimC2:	; table read by BabyBio_ActPlayAnimC; 2 of 2 bytes used at runtime; read by BabyBio_ActPlayAnimC; jt[1535] used by BabyMoleMan_Init_Case1
+	incrom	$11B5FA,$2
 	include "src/f/11B5FC.asm"
-	incrom	$11B60C,$26
+	incrom	$11B60C,$24
+Tbl_FloatBioActNext:	; table read by BabyBio_ActNext; 2 of 2 bytes used at runtime; read by BabyBio_ActNext; jt[1538] used by FloatBio_Init_Case0
+	incrom	$11B630,$2
 	include "src/f/11B632.asm"
-	incrom	$11B656,$6
+	incrom	$11B656,$4
+Tbl_FloatBioActFacePlayer:	; table read by BabyBio_ActFacePlayer; 2 of 2 bytes used at runtime; read by BabyBio_ActFacePlayer; jt[1539] used by FloatBio_Init_Case1
+	incrom	$11B65A,$2
 	include "src/f/11B65C.asm"
 Str_Empty_11B66C:	; C string "" (used by jt[1540])
 	incrom	$11B66C,$1
+Tbl_FloatBioActPlayAnimC:	; table read by BabyBio_ActPlayAnimC; 1 of 1 bytes used at runtime; read by BabyBio_ActPlayAnimC
 	incrom	$11B66D,$1
 	include "src/f/11B66E.asm"
 	include "src/f/11B67E.asm"
 Str_Empty_11B686:	; C string "" (used by jt[1541])
 	incrom	$11B686,$1
+Tbl_FloatBioActPlayAnimC2:	; table read by BabyBio_ActPlayAnimC; 1 of 1 bytes used at runtime; read by BabyBio_ActPlayAnimC
 	incrom	$11B687,$1
 	include "src/f/11B688.asm"
-	incrom	$11B698,$A
+	incrom	$11B698,$8
+Tbl_WallCrawlBioActStopFrame11:	; table read by WallCrawlBio_ActStopFrame11; 2 of 2 bytes used at runtime; read by WallCrawlBio_ActStopFrame11; jt[1542] used by WallCrawlBio_Init
+	incrom	$11B6A0,$2
 	include "src/f/11B6A2.asm"
 Str_Empty_11B6AA:	; C string "" (used by jt[1543])
 	incrom	$11B6AA,$1
+Tbl_WallCrawlBioActStopFrame0:	; table read by WallCrawlBio_ActStopFrame0; 1 of 1 bytes used at runtime; read by WallCrawlBio_ActStopFrame0
 	incrom	$11B6AB,$1
 	include "src/f/11B6AC.asm"
-	incrom	$11B6B4,$20
+Tbl_BabyMoleManTakeDamage_Hurt:	; table read by XNpc_TakeDamage_Hurt; 6 of 8 bytes used at runtime; read by XNpc_TakeDamage_Hurt, XNpc_KnockbackDist, BabyMoleMan_Init; jt[1544] used by BabyMoleMan_Init, BabySentinelA_Init, WallCrawlBio_Init
+	incrom	$11B6B4,$8
+Tbl_BabySentinelBInit:	; table read by BabySentinelB_Init; 5 of 8 bytes used at runtime; read by BabySentinelB_Init, XNpc_TakeDamage_Hurt, XNpc_KnockbackDist; jt[1545] used by BabySentinelB_Init
+	incrom	$11B6BC,$8
+Tbl_FloatBioTakeDamage_Hurt:	; table read by XNpc_TakeDamage_Hurt; 5 of 8 bytes used at runtime; read by XNpc_TakeDamage_Hurt, FloatBio_Init, XNpc_KnockbackDist; jt[1546] used by FloatBio_Init
+	incrom	$11B6C4,$8
+Tbl_BabySentinelCTakeDamage_Hurt:	; table read by XNpc_TakeDamage_Hurt; 3 of 8 bytes used at runtime; read by XNpc_TakeDamage_Hurt, BabySentinelC_Init; jt[1547] used by BabySentinelC_Init
+	incrom	$11B6CC,$8
 Tbl_BioFlame_vtable:	; class descriptor "BIOFLAME": word $6E = name offset, long parent (ACTOR), 26 method pointers, then the class name string
 	incrom	$11B6D4,$78
 Tbl_BabyBio_vtable:	; class descriptor "BABYBIO": word $82 = name offset, long parent (BIONPC), 31 method pointers, then the class name string
@@ -3153,6 +3991,7 @@ Sw_11DACC:	; switch table of sub at $11DACC: 4 word offsets from Sw_11DACC-2
 	include "src/f/11DF44.asm"
 	include "src/f/11DF5A.asm"
 	include "src/f/11E176.asm"
+Art_BioBulletSpr:	; sprite definition (type $18, raw 4bpp tiles): $24-byte header, $14-byte frame records, pieces, tiles; 20 of 66 bytes used at runtime; read by VDP_FlushDmaQueue, Spr_UploadFrame, Spr_EmitStreamClip; DMA to VRAM $A180-A1A0; jt[1617] used by BioBullet_Init
 	incrom	$11E2FA,$66
 	include "src/f/11E360.asm"
 	include "src/f/11E36E.asm"
@@ -3163,7 +4002,11 @@ Sw_11DACC:	; switch table of sub at $11DACC: 4 word offsets from Sw_11DACC-2
 	include "src/f/11E618.asm"
 Tbl_BioBullet_vtable:	; class descriptor "BIOBULLET": word $6E = name offset, long parent (ACTOR), 26 method pointers, then the class name string
 	incrom	$11E6EC,$78
-	incrom	$11E764,$1A
+Tbl_XCloneAnim7:	; animation script (byte flags, byte steps, ..., 2-byte steps from +6); A of C bytes used at runtime; read by Anim_ApplyStep, Anim_AdvanceByDistance, Anim_Advance; jt[1625] used by BioBalls_StateAnimA, XClone_ActBecomeBalls, XClone_ActOpenBioBalls
+	incrom	$11E764,$C
+Tbl_BioBallsAnim:	; animation script (byte flags, byte steps, ..., 2-byte steps from +6); A of C bytes used at runtime; read by Anim_ApplyStep, Anim_AdvanceByDistance, Anim_Advance; jt[1626] used by BioBalls_StateAnimB, XClone_StatePodWaitOpen
+	incrom	$11E770,$C
+	incrom	$11E77C,$2
 	include "src/f/11E77E.asm"
 	incrom	$11E782,$28
 	include "src/f/11E7AA.asm"
@@ -3201,7 +4044,47 @@ Str_Empty_11F22A:	; C string "" (used by BioBalls_AllocBallList)
 	include "src/f/1203A4.asm"
 Tbl_BioBalls_vtable:	; class descriptor "BIOBALLS": word $6E = name offset, long parent (ACTOR), 26 method pointers, then the class name string
 	incrom	$1203AC,$78
-	incrom	$120424,$404
+Art_BioBallsSpr:	; sprite definition (type $18, raw 4bpp tiles): $24-byte header, $14-byte frame records, pieces, tiles; 180 of 1F8 bytes used at runtime; read by VDP_FlushDmaQueue; DMA to VRAM $A820-A8A0; jt[1659] used by BioBalls_Draw, BioBalls_Init
+	incrom	$120424,$1F8
+Tbl_Anim_12061C:	; animation script (byte flags, byte steps, ..., 2-byte steps from +6); 10 of 12 bytes used at runtime; read by Anim_ApplyStep, VDP_FlushDmaQueue, Anim_AdvanceByDistance; jt[1660] used by sub_0BCED6, sub_122F64
+	incrom	$12061C,$12
+Tbl_Anim_12062E:	; animation script (byte flags, byte steps, ..., 2-byte steps from +6); 10 of 12 bytes used at runtime; read by Anim_ApplyStep, Anim_AdvanceByDistance, Anim_Advance; jt[1661] used by sub_12123E
+	incrom	$12062E,$12
+Tbl_Anim_120640:	; animation script (byte flags, byte steps, ..., 2-byte steps from +6); 8 of A bytes used at runtime; read by Anim_ApplyStep, Anim_AdvanceByDistance, Anim_Advance; jt[1662] used by sub_0BD00A, sub_12102C
+	incrom	$120640,$A
+Tbl_Anim_12064A:	; animation script (byte flags, byte steps, ..., 2-byte steps from +6); 8 of A bytes used at runtime; read by Anim_ApplyStep, Anim_AdvanceByDistance, Anim_Advance; jt[1663] used by sub_121062
+	incrom	$12064A,$A
+Tbl_Anim_120654:	; animation script (byte flags, byte steps, ..., 2-byte steps from +6); 8 of A bytes used at runtime; read by Anim_ApplyStep, Anim_AdvanceByDistance, Anim_Advance; jt[1664] used by sub_121098
+	incrom	$120654,$A
+Tbl_Anim_12065E:	; animation script (byte flags, byte steps, ..., 2-byte steps from +6); A of C bytes used at runtime; read by Anim_ApplyStep, Anim_AdvanceByDistance, Anim_Advance; jt[1665] used by sub_12110E, sub_12123E
+	incrom	$12065E,$C
+Tbl_Anim_12066A:	; animation script (byte flags, byte steps, ..., 2-byte steps from +6); 8 of A bytes used at runtime; read by Anim_ApplyStep, Anim_AdvanceByDistance, Anim_Advance; jt[1666] used by sub_120B4A
+	incrom	$12066A,$A
+Tbl_Anim_120674:	; animation script (byte flags, byte steps, ..., 2-byte steps from +6); 8 of A bytes used at runtime; read by Anim_ApplyStep, Anim_AdvanceByDistance, Anim_Advance; jt[1667] used by sub_120C02
+	incrom	$120674,$A
+Tbl_Anim_12067E:	; animation script (byte flags, byte steps, ..., 2-byte steps from +6); 8 of A bytes used at runtime; read by Anim_ApplyStep, Anim_AdvanceByDistance, Anim_Advance; jt[1668] used by sub_120D32
+	incrom	$12067E,$A
+Tbl_Anim_120688:	; animation script (byte flags, byte steps, ..., 2-byte steps from +6); C of E bytes used at runtime; read by Anim_ApplyStep, Anim_AdvanceByDistance, Anim_Advance; jt[1669] used by sub_121408
+	incrom	$120688,$E
+Tbl_Anim_120696:	; animation script (byte flags, byte steps, ..., 2-byte steps from +6); C of E bytes used at runtime; read by Anim_ApplyStep, Anim_AdvanceByDistance, Anim_Advance; jt[1670] used by sub_121408
+	incrom	$120696,$E
+Tbl_BioSentinelInit:	; table read by BioSentinel_Init; 1 of 8 bytes used at runtime; read by BioSentinel_Init; jt[1671] used by BioSentinel_Init
+	incrom	$1206A4,$8
+Tbl_Anim_1206AC:	; animation script (byte flags, byte steps, ..., 2-byte steps from +6); E of 10 bytes used at runtime; read by Anim_ApplyStep, Anim_AdvanceByDistance; jt[1672] used by sub_12314C
+	incrom	$1206AC,$10
+	incrom	$1206BC,$E
+Tbl_Anim_1206CA:	; animation script (byte flags, byte steps, ..., 2-byte steps from +6); A of E bytes used at runtime; read by Anim_ApplyStep, Anim_AdvanceByDistance, Anim_Advance; jt[1674] used by sub_123346
+	incrom	$1206CA,$E
+	incrom	$1206D8,$E
+Tbl_Anim_1206E6:	; animation script (byte flags, byte steps, ..., 2-byte steps from +6); C of E bytes used at runtime; read by Anim_ApplyStep, Anim_AdvanceByDistance, Anim_Advance; jt[1676] used by sub_122024, sub_122438, sub_1231E0
+	incrom	$1206E6,$E
+Tbl_Anim_1206F4:	; animation script (byte flags, byte steps, ..., 2-byte steps from +6); C of E bytes used at runtime; read by Anim_ApplyStep; jt[1677] used by sub_122398
+	incrom	$1206F4,$E
+	incrom	$120702,$A4
+Tbl_BigBioDraw:	; table read by BigBio_Draw; 80 of 80 bytes used at runtime; read by BigBio_Draw, sub_122F64, BigBio_TakeDamage; jt[1680] used by BigBio_Draw, BigBio_TakeDamage, sub_122F64
+	incrom	$1207A6,$80
+Tbl_Draw_120826:	; table read by BigBio_Draw; 2 of 2 bytes used at runtime; read by BigBio_Draw, sub_122F64, BigBio_TakeDamage; jt[1681] used by sub_1231E0
+	incrom	$120826,$2
 	include "src/f/120828.asm"
 	incrom	$120830,$38
 	include "src/f/120868.asm"
@@ -3280,7 +4163,20 @@ Tbl_BioSentinel_vtable:	; class descriptor "BIOSENTINEL": word $82 = name offset
 	incrom	$1235F6,$8E
 Tbl_BigBio_vtable:	; class descriptor "BIGBIO": word $82 = name offset, long parent (BASICBIOSENTINEL), 31 method pointers, then the class name string
 	incrom	$123684,$8A
-	incrom	$12370E,$FF22
+Art_BasicBioSentinelSpr:	; sprite definition (type $18, raw 4bpp tiles): $24-byte header, $14-byte frame records, pieces, tiles; 4E60 of 5822 bytes used at runtime; read by VDP_FlushDmaQueue; DMA to VRAM $9A80-A960; jt[1708] used by BasicBioSentinel_SetFrame, BigBio_Init, SavageBioBase_SetFrame
+	incrom	$12370E,$5822
+Art_BasicBioSentinelSpr2:	; sprite definition (type $18, raw 4bpp tiles): $24-byte header, $14-byte frame records, pieces, tiles; 4360 of 4DAC bytes used at runtime; read by VDP_FlushDmaQueue; DMA to VRAM $9A80-BCC0; jt[1709] used by BasicBioSentinel_SetFrame, BioSentinel_Init, SavageBioBase_SetFrame
+	incrom	$128F30,$4DAC
+Art_BigBioSpr:	; sprite definition (type $19, Nemesis-compressed tiles): $24-byte header, $14-byte frame records, pieces, tiles; 159 of 15A bytes used at runtime; read by Nem_DecodeLoop, VDP_FlushDmaQueue, Spr_PreloadTiles; jt[1710] used by BigBio_ClassInit
+	incrom	$12DCDC,$15A
+Art_BasicBioSentinelSpr3:	; sprite definition (type $18, raw 4bpp tiles): $24-byte header, $14-byte frame records, pieces, tiles; 3A0 of 1E70 bytes used at runtime; read by VDP_FlushDmaQueue; DMA to VRAM $A820-ABC0; jt[1711] used by BasicBioSentinel_SetFrame, SavageBioBase_SetFrame, SavageMediumBio_Init
+	incrom	$12DE36,$1E70
+Art_SavageBioSpr:	; sprite definition (type $18, raw 4bpp tiles): $24-byte header, $14-byte frame records, pieces, tiles; 2080 of 2E42 bytes used at runtime; read by VDP_FlushDmaQueue, VDP_WriteWords; DMA to VRAM $AC60-BA80; jt[1712] used by BasicBioSentinel_SetFrame, SavageBigBio_Init, SavageBioBase_SetFrame
+	incrom	$12FCA6,$2E42
+Art_SavageA4Spr2:	; sprite definition (type $18, raw 4bpp tiles): $24-byte header, $14-byte frame records, pieces, tiles; 54C of 54C bytes used at runtime; read by VDP_FlushDmaQueue, VDP_WriteWords; jt[1713] used by SavageA4_LoadResources
+	incrom	$132AE8,$54C
+Art_BrainRocketSpr:	; sprite definition (type $18, raw 4bpp tiles): $24-byte header, $14-byte frame records, pieces, tiles; 120 of 5FC bytes used at runtime; read by VDP_FlushDmaQueue, Spr_UploadFrame, Obj_UpdateBoxes; DMA to VRAM $D6A0-D740; jt[1714] used by BrainRocket_Init
+	incrom	$133034,$5FC
 	include "src/f/133630.asm"
 	include "src/f/13363E.asm"
 	include "src/f/13364A.asm"
@@ -3305,8 +4201,16 @@ Tbl_BrainRocket_vtable:	; class descriptor "BRAINROCKET": word $6E = name offset
 	incrom	$133CFC,$7A
 Tbl_DropRocket_vtable:	; class descriptor "DROPROCKET": word $6E = name offset, long parent (BRAINROCKET), 26 method pointers, then the class name string
 	incrom	$133D76,$7A
-	incrom	$133DF0,$5A
+Tbl_BigAcBulletAnim2:	; animation script (byte flags, byte steps, ..., 2-byte steps from +6); A of C bytes used at runtime; read by Anim_ApplyStep, Anim_AdvanceByDistance, Anim_Advance; jt[1729] used by sub_133A40, sub_133C1A
+	incrom	$133DF0,$C
+	incrom	$133DFC,$18
+Tbl_BrainRocketShakeStep:	; table read by Cam_ShakeStep; D of E bytes used at runtime; read by Cam_ShakeStep; jt[1732] used by BrainRocket_Attack
+	incrom	$133E14,$E
+Tbl_BrainRocketShakeStep2:	; table read by Cam_ShakeStep; 13 of 14 bytes used at runtime; read by Cam_ShakeStep; jt[1733] used by BrainRocket_Update
+	incrom	$133E22,$14
+	incrom	$133E36,$14
 	include "src/f/133E4A.asm"
+Art_CloneA1Spr:	; sprite definition (type $19, Nemesis-compressed tiles): $24-byte header, $14-byte frame records, pieces, tiles; A3 of A4 bytes used at runtime; read by Spr_PreloadTiles, Nem_BuildCodeTable; jt[1736] used by CloneA1_LoadResources, CloneA2_LoadResources, SavageA2_LoadResources
 	incrom	$133E98,$A4
 	include "src/f/133F3C.asm"
 	include "src/f/133F4A.asm"
@@ -3318,7 +4222,10 @@ Tbl_DropRocket_vtable:	; class descriptor "DROPROCKET": word $6E = name offset, 
 	include "src/f/13420C.asm"
 Tbl_FireWall_vtable:	; class descriptor "FIREWALL": word $6E = name offset, long parent (ACTOR), 26 method pointers, then the class name string
 	incrom	$134214,$78
-	incrom	$13428C,$24E
+	incrom	$13428C,$F0
+Tbl_Anim_13437C:	; animation script (byte flags, byte steps, ..., 2-byte steps from +6); 8 of A bytes used at runtime; read by Anim_ApplyStep, Anim_AdvanceByDistance, Anim_Advance; jt[1748] used by loc_134BE6, sub_1351EA, sub_13536A
+	incrom	$13437C,$A
+	incrom	$134386,$154
 	include "src/f/1344DA.asm"
 Str_Empty_1344DE:	; C string "" (used by jt[1755])
 	incrom	$1344DE,$1
@@ -3374,7 +4281,21 @@ Sw_134934:	; switch table of sub at $134934: 8 word offsets from Sw_134934-2
 	include "src/f/135610.asm"
 	include "src/f/13570A.asm"
 	include "src/f/135794.asm"
-	incrom	$1357A4,$D10
+Art_FlyBroodSpr:	; sprite definition (type $19, Nemesis-compressed tiles): $24-byte header, $14-byte frame records, pieces, tiles; 2E9 of 2EA bytes used at runtime; read by Nem_DecodeLoop, Spr_PreloadTiles, Nem_BuildCodeTable; jt[1778] used by FlyBrood_ClassInit, XClone_LoadResources
+	incrom	$1357A4,$2EA
+Art_FlyBroodNem:	; Nemesis-style compressed 4bpp tiles (Nem_Decode; code table built from pairs by the caller); 1 of 374 bytes used at runtime; read by Nem_DecodeLoop, Nem_Decode, Nem_DecodeLoop_Inline; jt[1779] used by FlyBrood_Init
+	incrom	$135A8E,$374
+Art_HornetSpr:	; sprite definition (type $19, Nemesis-compressed tiles): $24-byte header, $14-byte frame records, pieces, tiles; 607 of 608 bytes used at runtime; read by Nem_DecodeLoop, Spr_PreloadTiles, Nem_BuildCodeTable; jt[1780] used by Hornet_ClassInit
+	incrom	$135E02,$608
+Art_HornetNem:	; Nemesis-style compressed 4bpp tiles (Nem_Decode; code table built from pairs by the caller); 8 of A bytes used at runtime; read by Nem_DecodeLoop, Anim_ApplyStep, Anim_AdvanceByDistance; jt[1781] used by Hornet_Init, sub_136CCA
+	incrom	$13640A,$A
+Tbl_HornetAnim:	; animation script (byte flags, byte steps, ..., 2-byte steps from +6); A of C bytes used at runtime; read by Anim_ApplyStep, Anim_AdvanceByDistance, Anim_Advance; jt[1782] used by sub_136BD4
+	incrom	$136414,$C
+Tbl_HornetAnim2:	; animation script (byte flags, byte steps, ..., 2-byte steps from +6); A of C bytes used at runtime; read by Anim_ApplyStep, sub_136598, Anim_AdvanceByDistance; jt[1783] used by sub_136C28
+	incrom	$136420,$C
+	incrom	$13642C,$80
+Tbl_HornetTakeDamage_Hurt:	; table read by XNpc_TakeDamage_Hurt; 7 of 8 bytes used at runtime; read by XNpc_TakeDamage_Hurt, XNpc_KnockbackDist, Hornet_Init; jt[1785] used by Hornet_Init
+	incrom	$1364AC,$8
 	include "src/f/1364B4.asm"
 	include "src/f/1364C2.asm"
 	include "src/f/1364CA.asm"
@@ -3420,6 +4341,7 @@ Sw_137142:	; switch table of sub at $137142: 4 word offsets from Sw_137142-2
 	include "src/f/13722C.asm"
 Tbl_Hornet_vtable:	; class descriptor "HORNET": word $82 = name offset, long parent (XNPC), 31 method pointers, then the class name string
 	incrom	$137252,$8A
+Art_HornetBulletSpr:	; sprite definition (type $19, Nemesis-compressed tiles): $24-byte header, $14-byte frame records, pieces, tiles; 63 of 64 bytes used at runtime; read by Spr_PreloadTiles, Nem_BuildCodeTable, Nem_DecodeLoop; jt[1796] used by HornetBullet_ClassInit
 	incrom	$1372DC,$64
 	include "src/f/137340.asm"
 	include "src/f/13734E.asm"
@@ -3430,6 +4352,7 @@ Tbl_Hornet_vtable:	; class descriptor "HORNET": word $82 = name offset, long par
 	include "src/f/1375DA.asm"
 Tbl_HornetBullet_vtable:	; class descriptor "HORNETBULLET": word $6E = name offset, long parent (ACTOR), 26 method pointers, then the class name string
 	incrom	$137708,$7C
+Art_LaserCannonSpr:	; sprite definition (type $18, raw 4bpp tiles): $24-byte header, $14-byte frame records, pieces, tiles; 7A0 of 9C6 bytes used at runtime; read by VDP_FlushDmaQueue, Spr_EmitStreamClip; DMA to VRAM $BE60-CD60; jt[1804] used by LaserCannon_Init
 	incrom	$137784,$9C6
 	include "src/f/13814A.asm"
 	include "src/f/138158.asm"
@@ -3450,7 +4373,12 @@ Tbl_HornetBullet_vtable:	; class descriptor "HORNETBULLET": word $6E = name offs
 	include "src/f/1385B8.asm"
 Tbl_LaserCannon_vtable:	; class descriptor "LASERCANNON": word $82 = name offset, long parent (XNPC), 31 method pointers, then the class name string
 	incrom	$1386B4,$8E
-	incrom	$138742,$24
+Tbl_Anim_138742:	; animation script (byte flags, byte steps, ..., 2-byte steps from +6); C of E bytes used at runtime; read by Anim_ApplyStep, Anim_AdvanceByDistance, Anim_Advance; jt[1812] used by sub_13846E
+	incrom	$138742,$E
+Tbl_Anim_138750:	; animation script (byte flags, byte steps, ..., 2-byte steps from +6); C of E bytes used at runtime; read by Anim_ApplyStep; jt[1813] used by sub_1384F4
+	incrom	$138750,$E
+Tbl_LaserCannonTakeDamage_Hurt:	; table read by XNpc_TakeDamage_Hurt; 4 of 8 bytes used at runtime; read by XNpc_TakeDamage_Hurt, LaserCannon_Init, XNpc_KnockbackDist; jt[1814] used by LaserCannon_Init
+	incrom	$13875E,$8
 	include "src/f/138766.asm"
 	include "src/f/13884A.asm"
 	include "src/f/138858.asm"
@@ -3488,7 +4416,18 @@ Tbl_MaintRobotFire_vtable:	; class descriptor "MAINTROBOTFIRE": word $6E = name 
 	incrom	$139180,$7E
 Tbl_MaintRobot_vtable:	; class descriptor "MAINTROBOT": word $82 = name offset, long parent (XNPC), 31 method pointers, then the class name string
 	incrom	$1391FE,$8E
-	incrom	$13928C,$14AA
+Tbl_MineAnim:	; animation script (byte flags, byte steps, ..., 2-byte steps from +6); 10 of 12 bytes used at runtime; read by Anim_ApplyStep, Anim_AdvanceByDistance, Anim_Advance; jt[1833] used by sub_138EA2, sub_139108
+	incrom	$13928C,$12
+Tbl_MineAnim2:	; animation script (byte flags, byte steps, ..., 2-byte steps from +6); 10 of 12 bytes used at runtime; read by Anim_ApplyStep, Anim_AdvanceByDistance, Anim_Advance; jt[1834] used by sub_138EDC
+	incrom	$13929E,$12
+Art_MaintRobotFireSpr:	; sprite definition (type $02): $24-byte header, $14-byte frame records, pieces, tiles; 12 of 14 bytes used at runtime; read by VDP_WriteWords, Anim_ApplyStep, Spr_PreloadTiles; jt[1835] used by MaintRobotFire_Init
+	incrom	$1392B0,$14
+Art_CloneA1Spr2:	; sprite definition (type $18, raw 4bpp tiles): $24-byte header, $14-byte frame records, pieces, tiles; A28 of A28 bytes used at runtime; read by VDP_WriteWords, Spr_PreloadTiles; DMA to VRAM $9A80-9F80; jt[1836] used by CloneA1_LoadResources, CloneA2_LoadResources, MaintRobot_Init
+	incrom	$1392C4,$A28
+Art_MaintRobotFireSpr2:	; sprite definition (type $18, raw 4bpp tiles): $24-byte header, $14-byte frame records, pieces, tiles; 540 of 6B2 bytes used at runtime; read by VDP_FlushDmaQueue, Spr_PreloadTiles; DMA to VRAM $CE60-D720; jt[1837] used by MaintRobotFire_Init
+	incrom	$139CEC,$6B2
+Art_MineNem:	; Nemesis-style compressed 4bpp tiles (Nem_Decode; code table built from pairs by the caller); 397 of 398 bytes used at runtime; read by Nem_DecodeLoop, VDP_FlushDmaQueue; jt[1838] used by Mine_ClassInit
+	incrom	$13A39E,$398
 	include "src/f/13A736.asm"
 	include "src/f/13A744.asm"
 	include "src/f/13A75A.asm"
@@ -3512,7 +4451,11 @@ Str_Empty_13A880:	; C string "" (used by sub_13A7EA)
 	include "src/f/13ADA6.asm"
 Tbl_Mine_vtable:	; class descriptor "MINE": word $6E = name offset, long parent (ACTOR), 26 method pointers, then the class name string
 	incrom	$13AF1A,$74
-	incrom	$13AF8E,$1C86
+	incrom	$13AF8E,$48
+Art_NinjaSpr:	; sprite definition (type $00): $24-byte header, $14-byte frame records, pieces, tiles; A of 12 bytes used at runtime; read by sub_13A8C4, sub_13AD6C, VDP_WriteWords; jt[1850] used by sub_13AD6C
+	incrom	$13AFD6,$12
+Art_NinjaSpr2:	; sprite definition (type $18, raw 4bpp tiles): $24-byte header, $14-byte frame records, pieces, tiles; 1C2C of 1C2C bytes used at runtime; read by VDP_WriteWords, Spr_PreloadTiles; DMA to VRAM $CE60-D4A0; jt[1851] used by Ninja_Init, SiberiaB1_LoadResources
+	incrom	$13AFE8,$1C2C
 	include "src/f/13CC14.asm"
 	include "src/f/13CC22.asm"
 	include "src/f/13CC2E.asm"
@@ -3536,14 +4479,26 @@ Tbl_Mine_vtable:	; class descriptor "MINE": word $6E = name offset, long parent 
 	include "src/f/13D7F6.asm"
 Tbl_Ninja_vtable:	; class descriptor "NINJA": word $82 = name offset, long parent (BIONPC), 31 method pointers, then the class name string
 	incrom	$13D7FE,$88
-	incrom	$13D886,$3C
+Tbl_NinjaAnim:	; animation script (byte flags, byte steps, ..., 2-byte steps from +6); 8 of A bytes used at runtime; read by Anim_ApplyStep, Anim_AdvanceByDistance, Anim_Advance; jt[1867] used by Ninja_Init, sub_13D60C, sub_13D6B6
+	incrom	$13D886,$A
+Tbl_Anim_13D890:	; animation script (byte flags, byte steps, ..., 2-byte steps from +6); A of C bytes used at runtime; read by Anim_ApplyStep, Anim_AdvanceByDistance, Anim_Advance; jt[1868] used by sub_13D4FE
+	incrom	$13D890,$C
+Tbl_Anim_13D89C:	; animation script (byte flags, byte steps, ..., 2-byte steps from +6); 6 of 8 bytes used at runtime; read by Anim_AdvanceByDistance, Anim_ApplyStep, Anim_Advance; jt[1869] used by sub_13D344
+	incrom	$13D89C,$8
+Tbl_NinjaAnim2:	; animation script (byte flags, byte steps, ..., 2-byte steps from +6); C of E bytes used at runtime; read by Anim_ApplyStep, Anim_AdvanceByDistance, Anim_Advance; jt[1870] used by Ninja_Move, sub_13D424
+	incrom	$13D8A4,$E
+Tbl_Anim_13D8B2:	; animation script (byte flags, byte steps, ..., 2-byte steps from +6); 8 of A bytes used at runtime; read by Anim_ApplyStep, Anim_AdvanceByDistance, Anim_Advance; jt[1871] used by sub_13D46A
+	incrom	$13D8B2,$A
+	incrom	$13D8BC,$6
 	include "src/f/13D8C2.asm"
 Str_Empty_13D8C6:	; C string "" (used by jt[1873])
 	incrom	$13D8C6,$1
 	incrom	$13D8C7,$1
 	include "src/f/13D8C8.asm"
 	include "src/f/13D8D0.asm"
-	incrom	$13D8E4,$12
+	incrom	$13D8E4,$A
+Tbl_NinjaTakeDamage_Hurt:	; table read by XNpc_TakeDamage_Hurt; 6 of 8 bytes used at runtime; read by XNpc_TakeDamage_Hurt, XNpc_KnockbackDist, Ninja_Init; jt[1875] used by Ninja_Init
+	incrom	$13D8EE,$8
 	include "src/f/13D8F6.asm"
 	include "src/f/13D954.asm"
 	include "src/f/13DA0C.asm"
@@ -3602,6 +4557,7 @@ Str_Empty_13F588:	; C string "" (used by sub_13F4D4)
 	incrom	$13F588,$2
 	include "src/f/13F58A.asm"
 	include "src/f/13F728.asm"
+Art_SpaceB1Spr2:	; sprite definition (type $19, Nemesis-compressed tiles): $24-byte header, $14-byte frame records, pieces, tiles; 141 of 142 bytes used at runtime; read by Nem_DecodeLoop, Spr_PreloadTiles, Nem_BuildCodeTable; jt[1898] used by SpaceB1_LoadResources
 	incrom	$13F946,$142
 	include "src/f/13FA88.asm"
 	include "src/f/13FA96.asm"
@@ -3616,7 +4572,11 @@ Str_Empty_13F588:	; C string "" (used by sub_13F4D4)
 	include "src/f/14004A.asm"
 	include "src/f/1400AA.asm"
 	include "src/f/1400D6.asm"
-	incrom	$1400DE,$15E2
+Tbl_SparkCallSlot5A:	; table read by ClassList_CallSlot5A; C of 74 bytes used at runtime; read by ClassList_CallSlot5A, ClassList_InitAll, ClassList_CallSlot62; jt[1906] used by Spark_Draw, Spark_Init
+	incrom	$1400DE,$74
+	incrom	$140152,$3C
+Art_Spr_14018E:	; sprite definition (type $19, Nemesis-compressed tiles): $24-byte header, $14-byte frame records, pieces, tiles; 1531 of 1532 bytes used at runtime; read by Nem_DecodeLoop, Spr_PreloadTiles; jt[1909] used by sub_1416CE
+	incrom	$14018E,$1532
 	include "src/f/1416C0.asm"
 	include "src/f/1416CE.asm"
 	include "src/f/1416EA.asm"
@@ -3636,7 +4596,16 @@ Str_Empty_13F588:	; C string "" (used by sub_13F4D4)
 	include "src/f/141F18.asm"
 	include "src/f/142008.asm"
 	include "src/f/14205E.asm"
-	incrom	$1420DE,$140
+	incrom	$1420DE,$88
+Lvl_Data_142166:	; level data read by Level_FrameLoop; 68 of 8C bytes used at runtime; read by Level_FrameLoop, Actor_Update, Actor_New; jt[1926] used by sub_141CCA, sub_141DA8
+	incrom	$142166,$8C
+Tbl_Anim_1421F2:	; animation script (byte flags, byte steps, ..., 2-byte steps from +6); 6 of 8 bytes used at runtime; read by Anim_ApplyStep, Anim_AdvanceByDistance, Anim_Advance; jt[1927] used by sub_1416EA
+	incrom	$1421F2,$8
+Tbl_Anim_1421FA:	; animation script (byte flags, byte steps, ..., 2-byte steps from +6); E of 10 bytes used at runtime; read by Anim_ApplyStep, Anim_AdvanceByDistance, Anim_Advance; jt[1928] used by sub_141DE8, sub_141F18, sub_142008
+	incrom	$1421FA,$10
+Tbl_Anim_14220A:	; animation script (byte flags, byte steps, ..., 2-byte steps from +6); 10 of 12 bytes used at runtime; read by Anim_ApplyStep, sub_141ADC; jt[1929] used by sub_141B3C
+	incrom	$14220A,$12
+	incrom	$14221C,$2
 	include "src/f/14221E.asm"
 Str_Empty_14222A:	; C string "" (used by jt[1931])
 	incrom	$14222A,$1
@@ -3646,6 +4615,7 @@ Str_Empty_142238:	; C string "" (used by jt[1932])
 	incrom	$142238,$1
 	incrom	$142239,$1
 	include "src/f/14223A.asm"
+Tbl_TakeDamage_Hurt_142246:	; table read by XNpc_TakeDamage_Hurt; 5 of 8 bytes used at runtime; read by XNpc_TakeDamage_Hurt, sub_1416EA, XNpc_KnockbackDist; jt[1933] used by sub_1416EA
 	incrom	$142246,$8
 	include "src/f/14224E.asm"
 	include "src/f/14225C.asm"
@@ -3701,7 +4671,27 @@ Sw_143082:	; switch table of sub at $143082: 9 word offsets from Sw_143082-2
 	include "src/f/1431D0.asm"
 	include "src/f/1431D6.asm"
 	include "src/f/14321A.asm"
-	incrom	$143224,$1550
+Lvl_Data_143224:	; level data read by Level_FrameLoop; 54 of 7E bytes used at runtime; read by Level_FrameLoop, sub_142B54, Actor_New; jt[1939] used by sub_142B54
+	incrom	$143224,$7E
+Tbl_Anim_1432A2:	; animation script (byte flags, byte steps, ..., 2-byte steps from +6); 8 of A bytes used at runtime; read by Anim_AdvanceByDistance, Anim_ApplyStep, Anim_Advance; jt[1940] used by sub_142446
+	incrom	$1432A2,$A
+Tbl_Anim_1432AC:	; animation script (byte flags, byte steps, ..., 2-byte steps from +6); 8 of A bytes used at runtime; read by Anim_ApplyStep, Anim_AdvanceByDistance, Anim_Advance; jt[1941] used by sub_142490, sub_142B54
+	incrom	$1432AC,$A
+Tbl_Anim_1432B6:	; animation script (byte flags, byte steps, ..., 2-byte steps from +6); 8 of A bytes used at runtime; read by Anim_ApplyStep, Anim_AdvanceByDistance, Anim_Advance; jt[1942] used by sub_1424DA
+	incrom	$1432B6,$A
+Tbl_Anim_1432C0:	; animation script (byte flags, byte steps, ..., 2-byte steps from +6); 3 of 10 bytes used at runtime; read by Anim_ApplyStep; jt[1943] used by sub_142322
+	incrom	$1432C0,$10
+Tbl_Anim_1432D0:	; animation script (byte flags, byte steps, ..., 2-byte steps from +6); 8 of A bytes used at runtime; read by Anim_ApplyStep, Anim_AdvanceByDistance, Anim_Advance; jt[1944] used by sub_142524
+	incrom	$1432D0,$A
+Tbl_Anim_1432DA:	; animation script (byte flags, byte steps, ..., 2-byte steps from +6); 8 of A bytes used at runtime; read by Anim_ApplyStep, Anim_AdvanceByDistance, Anim_Advance; jt[1945] used by sub_142562
+	incrom	$1432DA,$A
+Tbl_Anim_1432E4:	; animation script (byte flags, byte steps, ..., 2-byte steps from +6); 8 of A bytes used at runtime; read by Anim_ApplyStep, Anim_AdvanceByDistance, Anim_Advance; jt[1946] used by sub_1425A0
+	incrom	$1432E4,$A
+	incrom	$1432EE,$10
+Art_Spr_1432FE:	; sprite definition (type $18, raw 4bpp tiles): $24-byte header, $14-byte frame records, pieces, tiles; 1040 of 12D4 bytes used at runtime; read by VDP_FlushDmaQueue; DMA to VRAM $9A80-C9A0; jt[1948] used by sub_142B54
+	incrom	$1432FE,$12D4
+Art_Spr_1445D2:	; sprite definition (type $19, Nemesis-compressed tiles): $24-byte header, $14-byte frame records, pieces, tiles; 1A1 of 1A2 bytes used at runtime; read by Spr_PreloadTiles, Nem_DecodeLoop, Nem_BuildCodeTable; jt[1949] used by sub_142AE0
+	incrom	$1445D2,$1A2
 	include "src/f/144774.asm"
 	include "src/f/1449CC.asm"
 	include "src/f/1449DA.asm"
@@ -3713,7 +4703,19 @@ Sw_143082:	; switch table of sub at $143082: 9 word offsets from Sw_143082-2
 	include "src/f/144CF0.asm"
 	include "src/f/144D50.asm"
 	include "src/f/144D88.asm"
-	incrom	$144D90,$12E16
+Lvl_Data_144D90:	; level data read by Level_FrameLoop; 48 of 78 bytes used at runtime; read by Level_FrameLoop, sub_144AE2, Actor_New; jt[1959] used by sub_1449E6, sub_144C76, sub_144CAA
+	incrom	$144D90,$78
+	incrom	$144E08,$1EE
+Art_Spr_144FF6:	; sprite definition (type $18, raw 4bpp tiles): $24-byte header, $14-byte frame records, pieces, tiles; 400 of 86C bytes used at runtime; read by VDP_FlushDmaQueue; DMA to VRAM $D6A0-DAA0; jt[1964] used by sub_1449E6
+	incrom	$144FF6,$86C
+Art_EvilMagnetoSpr:	; sprite definition (type $18, raw 4bpp tiles): $24-byte header, $14-byte frame records, pieces, tiles; 57A0 of 82B4 bytes used at runtime; read by VDP_FlushDmaQueue; DMA to VRAM $7BA0-ABA0; jt[1965] used by EvilMagneto_Init, MagnetoBoss_Init, Magneto_SelectSpriteDef
+	incrom	$145862,$82B4
+Art_Spr_14DB16:	; sprite definition (type $18, raw 4bpp tiles): $24-byte header, $14-byte frame records, pieces, tiles; 1500 of 1E88 bytes used at runtime; read by VDP_FlushDmaQueue, Spr_EmitStreamClip, Spr_UploadFrame; DMA to VRAM $81C0-F7E0; jt[1966] used by Scene_AllocCommonVram, sub_1581CA
+	incrom	$14DB16,$1E88
+Art_MagnetoBossSpr2:	; sprite definition (type $18, raw 4bpp tiles): $24-byte header, $14-byte frame records, pieces, tiles; 29A0 of 334C bytes used at runtime; read by VDP_FlushDmaQueue; DMA to VRAM $7BA0-8AC0; jt[1967] used by MagnetoBoss_Init, Player_CalcMaxTiles, sub_1599CC
+	incrom	$14F99E,$334C
+Art_MagnetoBossSpr3:	; sprite definition (type $18, raw 4bpp tiles): $24-byte header, $14-byte frame records, pieces, tiles; 2720 of 4EBC bytes used at runtime; read by VDP_FlushDmaQueue, Spr_EmitStreamClip, Spr_UploadFrame; DMA to VRAM $7DA0-AAA0; jt[1968] used by MagnetoBoss_Init, Player_CalcMaxTiles, sub_1599CC
+	incrom	$152CEA,$4EBC
 	include "src/f/157BA6.asm"
 	include "src/f/157BB4.asm"
 	include "src/f/157BC2.asm"
@@ -3835,7 +4837,12 @@ Sw_15980C:	; switch table of sub at $15980C: 8 word offsets from Sw_15980C-2
 	include "src/f/1599CC.asm"
 	include "src/f/159A06.asm"
 	include "src/f/159A46.asm"
-	incrom	$159AB4,$418
+	incrom	$159AB4,$F4
+Tbl_ApocalypsePostLoadVram:	; table read by Scene_PostLoadVram; 20 of 20 bytes used at runtime; read by Scene_PostLoadVram; jt[1994] used by Apocalypse_ClassInit, Cerebro_Run, Failure_RunScene
+	incrom	$159BA8,$20
+Tbl_PostLoadVram_159BC8:	; table read by Scene_PostLoadVram; 20 of 20 bytes used at runtime; read by Scene_PostLoadVram; jt[1995] used by Scene_PostLoadVram
+	incrom	$159BC8,$20
+	incrom	$159BE8,$2E4
 	include "src/f/159ECC.asm"
 	include "src/f/159FB8.asm"
 	include "src/f/159FD6.asm"
@@ -3857,11 +4864,31 @@ Sw_15980C:	; switch table of sub at $15980C: 8 word offsets from Sw_15980C-2
 	include "src/f/15B0D0.asm"
 	include "src/f/15B0E6.asm"
 	include "src/f/15B18A.asm"
-	incrom	$15B1D6,$1026
+Tbl_Anim_15B1D6:	; animation script (byte flags, byte steps, ..., 2-byte steps from +6); C of E bytes used at runtime; read by Anim_ApplyStep, Anim_AdvanceByDistance, Anim_Advance; jt[2021] used by sub_0DCE88
+	incrom	$15B1D6,$E
+Tbl_Anim_15B1E4:	; animation script (byte flags, byte steps, ..., 2-byte steps from +6); 14 of 16 bytes used at runtime; read by Anim_ApplyStep, Anim_AdvanceByDistance, Anim_Advance; jt[2022] used by sub_0DCEBE
+	incrom	$15B1E4,$16
+Tbl_Anim_15B1FA:	; animation script (byte flags, byte steps, ..., 2-byte steps from +6); A of C bytes used at runtime; read by Anim_ApplyStep, Anim_AdvanceByDistance, Anim_Advance; jt[2023] used by sub_0DCF58
+	incrom	$15B1FA,$C
+	incrom	$15B206,$A
+Art_BioNpcSpr:	; sprite definition (type $0F): $24-byte header, $14-byte frame records, pieces, tiles; 10 of 10 bytes used at runtime; read by sub_15AE48, Spr_PreloadTiles, Nem_BuildCodeTable; jt[2025] used by BioNpc_DrawStunned, Blast_Draw
+	incrom	$15B210,$10
+Art_BlastSpr:	; sprite definition (type $19, Nemesis-compressed tiles): $24-byte header, $14-byte frame records, pieces, tiles; D3 of D4 bytes used at runtime; read by VDP_FlushDmaQueue, Spr_PreloadTiles, Nem_BuildCodeTable; jt[2026] used by Blast_ClassInit, sub_1B9D68
+	incrom	$15B220,$D4
+Art_HUDTiles:	; uncompressed 4bpp tiles DMA'd to VRAM; 400 of 400 bytes used at runtime; read by VDP_FlushDmaQueue, Nem_DecodeLoop; DMA to VRAM $FA00-FF00; jt[2027] used by HUD_Redraw
+	incrom	$15B2F4,$400
+Art_HUDTiles2:	; uncompressed 4bpp tiles DMA'd to VRAM; 500 of 500 bytes used at runtime; read by VDP_FlushDmaQueue; DMA to VRAM $FC80-10000; jt[2028] used by HUD_UpdateHealthBars
+	incrom	$15B6F4,$500
+Art_HUDTiles3:	; uncompressed 4bpp tiles DMA'd to VRAM; 500 of 500 bytes used at runtime; read by VDP_FlushDmaQueue; DMA to VRAM $FC00-10000; jt[2029] used by HUD_UpdateHealthBars
+	incrom	$15BBF4,$500
+Art_HUDTiles4:	; uncompressed 4bpp tiles DMA'd to VRAM; 108 of 108 bytes used at runtime; read by VDP_FlushDmaQueue; DMA to VRAM $FA00-FB40; jt[2030] used by HUD_Redraw
+	incrom	$15C0F4,$108
 	include "src/f/15C1FC.asm"
+Art_Tiles_15C21A:	; uncompressed 4bpp tiles DMA'd to VRAM; 8 of 8 bytes used at runtime; read by VDP_FlushDmaQueue; DMA to VRAM $FA00-FB40
 	incrom	$15C21A,$8
 	include "src/f/15C222.asm"
 	include "src/f/15C22E.asm"
+Art_Tiles_15C230:	; uncompressed 4bpp tiles DMA'd to VRAM; 4 of 6 bytes used at runtime; read by VDP_FlushDmaQueue; DMA to VRAM $FA00-FB40
 	incrom	$15C230,$6
 	include "src/f/15C236.asm"
 	incrom	$15C23E,$8
@@ -4019,7 +5046,36 @@ Str_Empty_1607E6:	; C string "" (used by sub_1607AA)
 	include "src/f/16136E.asm"
 	include "src/f/161744.asm"
 	include "src/f/161816.asm"
-	incrom	$1618BC,$2122A
+	incrom	$1618BC,$20DD4
+Art_Spr_182690:	; sprite definition (type $18, raw 4bpp tiles): $24-byte header, $14-byte frame records, pieces, tiles; 180 of 2A2 bytes used at runtime; read by VDP_FlushDmaQueue; DMA to VRAM $6940-9600; jt[2115] used by Scene_AllocCommonVram
+	incrom	$182690,$2A2
+Tbl_Anim_182932:	; animation script (byte flags, byte steps, ..., 2-byte steps from +6); 1E of 22 bytes used at runtime; read by Anim_ApplyStep, Anim_AdvanceByDistance; jt[2116] used by loc_06757C
+	incrom	$182932,$22
+Tbl_Anim_182954:	; animation script (byte flags, byte steps, ..., 2-byte steps from +6); 3E of 48 bytes used at runtime; read by Anim_ApplyStep, Anim_AdvanceByDistance, Anim_Advance; jt[2117] used by loc_06745C
+	incrom	$182954,$48
+Tbl_Anim_18299C:	; animation script (byte flags, byte steps, ..., 2-byte steps from +6); 8 of A bytes used at runtime; read by Anim_ApplyStep, Anim_AdvanceByDistance, Anim_Advance; jt[2118] used by sub_183136
+	incrom	$18299C,$A
+Tbl_Anim_1829A6:	; animation script (byte flags, byte steps, ..., 2-byte steps from +6); A of C bytes used at runtime; read by Anim_ApplyStep, Anim_AdvanceByDistance, Anim_Advance; jt[2119] used by sub_182F0C
+	incrom	$1829A6,$C
+Tbl_Anim_1829B2:	; animation script (byte flags, byte steps, ..., 2-byte steps from +6); A of C bytes used at runtime; read by Anim_ApplyStep, Anim_AdvanceByDistance, Anim_Advance; jt[2120] used by sub_1831D0
+	incrom	$1829B2,$C
+Tbl_Anim_1829BE:	; animation script (byte flags, byte steps, ..., 2-byte steps from +6); A of 12 bytes used at runtime; read by Anim_ApplyStep, Anim_AdvanceByDistance, Anim_Advance; jt[2121] used by sub_182DC2
+	incrom	$1829BE,$12
+Tbl_Anim_1829D0:	; animation script (byte flags, byte steps, ..., 2-byte steps from +6); 8 of A bytes used at runtime; read by Anim_ApplyStep, Anim_AdvanceByDistance, Anim_Advance; jt[2122] used by sub_1836C0
+	incrom	$1829D0,$A
+Tbl_Anim_1829DA:	; animation script (byte flags, byte steps, ..., 2-byte steps from +6); A of C bytes used at runtime; read by Anim_ApplyStep, Anim_AdvanceByDistance, Anim_Advance; jt[2123] used by sub_183630
+	incrom	$1829DA,$C
+Tbl_EvilBeastAnim:	; animation script (byte flags, byte steps, ..., 2-byte steps from +6); 8 of A bytes used at runtime; read by Anim_ApplyStep, Anim_AdvanceByDistance, Anim_Advance; jt[2124] used by EvilBeast_ActThrow, sub_183630
+	incrom	$1829E6,$A
+Tbl_EvilBeastAnim2:	; animation script (byte flags, byte steps, ..., 2-byte steps from +6); 6 of 8 bytes used at runtime; read by Anim_ApplyStep, Anim_AdvanceByDistance, Anim_Advance; jt[2125] used by EvilBeast_StateThrow, sub_1835C2
+	incrom	$1829F0,$8
+Tbl_Anim_1829F8:	; animation script (byte flags, byte steps, ..., 2-byte steps from +6); 8 of 1E bytes used at runtime; read by Anim_ApplyStep, Anim_AdvanceByDistance, Anim_Advance; jt[2126] used by sub_18393C
+	incrom	$1829F8,$1E
+	incrom	$182A16,$5E
+Tbl_ShakeStep_182A74:	; table read by Cam_ShakeStep; 1F of 20 bytes used at runtime; read by Cam_ShakeStep; jt[2128] used by sub_182F0C, sub_18323E
+	incrom	$182A74,$20
+Tbl_XCloneShakeStep:	; table read by Cam_ShakeStep; 51 of 52 bytes used at runtime; read by Cam_ShakeStep, BroodClaw_CamApplyShake; jt[2129] used by XClone_StateBallsReturn, sub_18323E
+	incrom	$182A94,$52
 	include "src/f/182AE6.asm"
 	include "src/f/182AF4.asm"
 	include "src/f/182B3C.asm"
@@ -4056,7 +5112,38 @@ Str_Empty_1607E6:	; C string "" (used by sub_1607AA)
 	include "src/f/184158.asm"
 	include "src/f/1841E4.asm"
 	include "src/f/1841F4.asm"
-	incrom	$1841FE,$12354
+Art_PlayerSpr:	; sprite definition (type $18, raw 4bpp tiles): $24-byte header, $14-byte frame records, pieces, tiles; 150 of 150 bytes used at runtime; read by VDP_WriteWords, VDP_FlushDmaQueue, Spr_PreloadTiles; DMA to VRAM $9160-A560; jt[2147] used by Player_CalcMaxTiles, XClone_LoadResources, sub_183FFE
+	incrom	$1841FE,$150
+Art_BeastSpr:	; sprite definition (type $18, raw 4bpp tiles): $24-byte header, $14-byte frame records, pieces, tiles; 7860 of 9BDE bytes used at runtime; read by VDP_FlushDmaQueue; DMA to VRAM $66A0-A8E0; jt[2148] used by Beast_SelectSpriteDef, EvilBeast_Init, sub_183FFE
+	incrom	$18434E,$9BDE
+Art_PlayerSpr2:	; sprite definition (type $18, raw 4bpp tiles): $24-byte header, $14-byte frame records, pieces, tiles; 74E0 of 8476 bytes used at runtime; read by VDP_FlushDmaQueue; DMA to VRAM $85E0-A220; jt[2149] used by Player_CalcMaxTiles, sub_184158
+	incrom	$18DF2C,$8476
+Tbl_BeastAnim:	; animation script (byte flags, byte steps, ..., 2-byte steps from +6); 1D of 22 bytes used at runtime; read by Anim_ApplyStep, Anim_AdvanceByDistance; jt[2150] used by loc_0675D6
+	incrom	$1963A2,$22
+Tbl_BeastAnim2:	; animation script (byte flags, byte steps, ..., 2-byte steps from +6); 8 of A bytes used at runtime; read by Anim_ApplyStep, Anim_AdvanceByDistance, Anim_Advance; jt[2151] used by sub_1969C2
+	incrom	$1963C4,$A
+Tbl_BeastAnim3:	; animation script (byte flags, byte steps, ..., 2-byte steps from +6); 8 of A bytes used at runtime; read by Anim_ApplyStep, Anim_AdvanceByDistance, Anim_Advance; jt[2152] used by sub_1969C2
+	incrom	$1963CE,$A
+Tbl_BeastAnim4:	; animation script (byte flags, byte steps, ..., 2-byte steps from +6); 8 of A bytes used at runtime; read by Anim_ApplyStep, Anim_AdvanceByDistance, Anim_Advance; jt[2153] used by sub_1969C2
+	incrom	$1963D8,$A
+Tbl_BeastAnim5:	; animation script (byte flags, byte steps, ..., 2-byte steps from +6); 8 of A bytes used at runtime; read by Anim_ApplyStep, Anim_AdvanceByDistance, Anim_Advance; jt[2154] used by sub_1969C2
+	incrom	$1963E2,$A
+	incrom	$1963EC,$24
+Tbl_BeastAnim6:	; animation script (byte flags, byte steps, ..., 2-byte steps from +6); 36 of 3E bytes used at runtime; read by Anim_ApplyStep, Anim_AdvanceByDistance, Anim_Advance; jt[2159] used by loc_067478
+	incrom	$196410,$3E
+Tbl_EvilWolverineAnim:	; animation script (byte flags, byte steps, ..., 2-byte steps from +6); 18 of 1A bytes used at runtime; read by Anim_ApplyStep, Anim_AdvanceByDistance, Anim_Advance; jt[2160] used by EvilWolverine_ActLeap, sub_1974EE, sub_1976D2
+	incrom	$19644E,$1A
+Tbl_BeastAnim7:	; animation script (byte flags, byte steps, ..., 2-byte steps from +6); 18 of 1A bytes used at runtime; read by Anim_ApplyStep; jt[2161] used by sub_1974EE, sub_1976D2
+	incrom	$196468,$1A
+Tbl_BeastAnim8:	; animation script (byte flags, byte steps, ..., 2-byte steps from +6); 12 of 14 bytes used at runtime; read by Anim_ApplyStep, Anim_AdvanceByDistance, Anim_Advance; jt[2162] used by sub_1969C2
+	incrom	$196482,$14
+Tbl_BeastAnim9:	; animation script (byte flags, byte steps, ..., 2-byte steps from +6); 12 of 16 bytes used at runtime; read by Anim_ApplyStep, Anim_AdvanceByDistance, Anim_Advance; jt[2163] used by sub_197412
+	incrom	$196496,$16
+Tbl_BeastAnim10:	; animation script (byte flags, byte steps, ..., 2-byte steps from +6); 12 of 14 bytes used at runtime; read by Anim_ApplyStep, Anim_AdvanceByDistance, Anim_Advance; jt[2164] used by sub_1975E6
+	incrom	$1964AC,$14
+Tbl_BeastAnim11:	; animation script (byte flags, byte steps, ..., 2-byte steps from +6); 1E of 34 bytes used at runtime; read by Anim_ApplyStep, Anim_AdvanceByDistance; jt[2165] used by sub_1975E6
+	incrom	$1964C0,$34
+	incrom	$1964F4,$5E
 	include "src/f/196552.asm"
 	include "src/f/196560.asm"
 	include "src/f/1965D2.asm"
@@ -4084,9 +5171,40 @@ Str_Empty_1607E6:	; C string "" (used by sub_1607AA)
 	include "src/f/197C22.asm"
 	include "src/f/197C32.asm"
 	include "src/f/197C3C.asm"
-	incrom	$197C44,$E472
+Art_EvilWolverineSpr:	; sprite definition (type $18, raw 4bpp tiles): $24-byte header, $14-byte frame records, pieces, tiles; 82C0 of BA10 bytes used at runtime; read by VDP_FlushDmaQueue; DMA to VRAM $66A0-9F00; jt[2180] used by EvilWolverine_Init, Player_CalcMaxTiles, Wolverine_SelectSpriteDef
+	incrom	$197C44,$BA10
+Art_PlayerSpr3:	; sprite definition (type $18, raw 4bpp tiles): $24-byte header, $14-byte frame records, pieces, tiles; 2060 of 28F2 bytes used at runtime; read by VDP_FlushDmaQueue, Spr_EmitStream; DMA to VRAM $66A0-9FE0; jt[2181] used by Player_CalcMaxTiles, sub_197B96
+	incrom	$1A3654,$28F2
+Tbl_Anim_1A5F46:	; animation script (byte flags, byte steps, ..., 2-byte steps from +6); 41 of 78 bytes used at runtime; read by Anim_ApplyStep, Anim_AdvanceByDistance, Anim_Advance; jt[2182] used by loc_0675B2
+	incrom	$1A5F46,$78
+Tbl_Anim_1A5FBE:	; animation script (byte flags, byte steps, ..., 2-byte steps from +6); E of 12 bytes used at runtime; read by Anim_ApplyStep, Anim_AdvanceByDistance, Anim_Advance; jt[2183] used by sub_1A62A2, sub_1A62D6, sub_1A6FDC
+	incrom	$1A5FBE,$12
+Tbl_Anim_1A5FD0:	; animation script (byte flags, byte steps, ..., 2-byte steps from +6); 8 of 12 bytes used at runtime; read by Anim_ApplyStep, Anim_AdvanceByDistance, Anim_Advance; jt[2184] used by sub_1A62D6, sub_1A6B36
+	incrom	$1A5FD0,$12
+Tbl_Anim_1A5FE2:	; animation script (byte flags, byte steps, ..., 2-byte steps from +6); 8 of A bytes used at runtime; read by Anim_AdvanceByDistance, Anim_ApplyStep, Anim_Advance; jt[2185] used by sub_1A65EC
+	incrom	$1A5FE2,$A
+Tbl_Anim_1A5FEC:	; animation script (byte flags, byte steps, ..., 2-byte steps from +6); 10 of 12 bytes used at runtime; read by Anim_ApplyStep, Anim_AdvanceByDistance, Anim_Advance; jt[2186] used by sub_1A651E, sub_1A6A5C, sub_1A6FDC
+	incrom	$1A5FEC,$12
+Tbl_Anim_1A5FFE:	; animation script (byte flags, byte steps, ..., 2-byte steps from +6); 8 of A bytes used at runtime; read by Anim_ApplyStep, Anim_AdvanceByDistance, Anim_Advance; jt[2187] used by sub_1A6C48
+	incrom	$1A5FFE,$A
+Tbl_Anim_1A6008:	; animation script (byte flags, byte steps, ..., 2-byte steps from +6); 14 of 16 bytes used at runtime; read by Anim_ApplyStep, Anim_AdvanceByDistance, Anim_Advance; jt[2188] used by sub_1A65EC
+	incrom	$1A6008,$16
+Tbl_Anim_1A601E:	; animation script (byte flags, byte steps, ..., 2-byte steps from +6); 38 of 42 bytes used at runtime; read by Anim_ApplyStep, Anim_AdvanceByDistance, Anim_Advance; jt[2189] used by loc_067478
+	incrom	$1A601E,$42
+Tbl_Anim_1A6060:	; animation script (byte flags, byte steps, ..., 2-byte steps from +6); 6 of 8 bytes used at runtime; read by Anim_ApplyStep, Anim_AdvanceByDistance, Anim_Advance; jt[2190] used by sub_1A72C6
+	incrom	$1A6060,$8
+Tbl_Anim_1A6068:	; animation script (byte flags, byte steps, ..., 2-byte steps from +6); 6 of 8 bytes used at runtime; read by Anim_ApplyStep, Anim_AdvanceByDistance, Anim_Advance; jt[2191] used by sub_1A72C6
+	incrom	$1A6068,$8
+Tbl_EvilNightcrawlerAnim:	; animation script (byte flags, byte steps, ..., 2-byte steps from +6); 14 of 16 bytes used at runtime; read by Anim_ApplyStep, Anim_AdvanceByDistance; jt[2192] used by EvilNightcrawler_ActTeleport, sub_1A757E
+	incrom	$1A6070,$16
+Tbl_Anim_1A6086:	; animation script (byte flags, byte steps, ..., 2-byte steps from +6); 14 of 16 bytes used at runtime; read by Anim_ApplyStep, Anim_AdvanceByDistance; jt[2193] used by sub_1A78BC
+	incrom	$1A6086,$16
+Tbl_EvilNightcrawlerAnim2:	; animation script (byte flags, byte steps, ..., 2-byte steps from +6); 18 of 1A bytes used at runtime; read by Anim_ApplyStep; jt[2194] used by EvilNightcrawler_StateTeleportIn, sub_1A78BC
+	incrom	$1A609C,$1A
 	include "src/f/1A60B6.asm"
-	incrom	$1A616A,$74
+Tbl_Anim_1A616A:	; animation script (byte flags, byte steps, ..., 2-byte steps from +6); 12 of 16 bytes used at runtime; read by Anim_ApplyStep, Anim_AdvanceByDistance, Anim_Advance
+	incrom	$1A616A,$16
+	incrom	$1A6180,$5E
 	include "src/f/1A61DE.asm"
 	include "src/f/1A61EC.asm"
 	include "src/f/1A621C.asm"
@@ -4125,7 +5243,37 @@ Str_Empty_1607E6:	; C string "" (used by sub_1607AA)
 	include "src/f/1A7CA4.asm"
 	include "src/f/1A7CAC.asm"
 	include "src/f/1A7CBC.asm"
-	incrom	$1A7CC6,$1139A
+Art_EvilNightcrawlerSpr:	; sprite definition (type $18, raw 4bpp tiles): $24-byte header, $14-byte frame records, pieces, tiles; 6F20 of 8D90 bytes used at runtime; read by VDP_FlushDmaQueue, Spr_EmitStream; DMA to VRAM $6CA0-A580; jt[2213] used by EvilNightcrawler_Init, Nightcrawler_SelectSpriteDef, Player_CalcMaxTiles
+	incrom	$1A7CC6,$8D90
+Art_PlayerSpr4:	; sprite definition (type $18, raw 4bpp tiles): $24-byte header, $14-byte frame records, pieces, tiles; 35C0 of 3EF4 bytes used at runtime; read by VDP_FlushDmaQueue; DMA to VRAM $7080-9D40; jt[2214] used by Player_CalcMaxTiles, sub_1A7BFE
+	incrom	$1B0A56,$3EF4
+Art_PlayerSpr5:	; sprite definition (type $18, raw 4bpp tiles): $24-byte header, $14-byte frame records, pieces, tiles; 3A40 of 4530 bytes used at runtime; read by VDP_FlushDmaQueue; DMA to VRAM $8620-A400; jt[2215] used by Player_CalcMaxTiles, sub_1A7BFE
+	incrom	$1B494A,$4530
+Tbl_NightcrawlerAnim:	; animation script (byte flags, byte steps, ..., 2-byte steps from +6); 14 of 16 bytes used at runtime; read by Anim_ApplyStep, Anim_AdvanceByDistance; jt[2216] used by loc_0675C4
+	incrom	$1B8E7A,$16
+Tbl_EvilPsylockeAnim:	; animation script (byte flags, byte steps, ..., 2-byte steps from +6); 1E of 34 bytes used at runtime; read by Anim_ApplyStep, Anim_AdvanceByDistance, Anim_Advance; jt[2217] used by EvilPsylocke_ActDash, sub_1B947C
+	incrom	$1B8E90,$34
+Tbl_NightcrawlerAnim2:	; animation script (byte flags, byte steps, ..., 2-byte steps from +6); 2E of 34 bytes used at runtime; read by Anim_ApplyStep, Anim_AdvanceByDistance; jt[2218] used by loc_067478
+	incrom	$1B8EC4,$34
+Tbl_NightcrawlerAnim3:	; animation script (byte flags, byte steps, ..., 2-byte steps from +6); 12 of 14 bytes used at runtime; read by Anim_ApplyStep, Anim_AdvanceByDistance; jt[2219] used by sub_1B9248
+	incrom	$1B8EF8,$14
+Tbl_NightcrawlerAnim4:	; animation script (byte flags, byte steps, ..., 2-byte steps from +6); E of 10 bytes used at runtime; read by Anim_ApplyStep, Anim_AdvanceByDistance, Anim_Advance; jt[2220] used by sub_1B90E0
+	incrom	$1B8F0C,$10
+Tbl_NightcrawlerAnim5:	; animation script (byte flags, byte steps, ..., 2-byte steps from +6); 18 of 1A bytes used at runtime; read by Anim_ApplyStep, Anim_AdvanceByDistance; jt[2221] used by sub_1B9C40
+	incrom	$1B8F1C,$1A
+Tbl_NightcrawlerAnim6:	; animation script (byte flags, byte steps, ..., 2-byte steps from +6); 18 of 1A bytes used at runtime; read by Anim_ApplyStep, Anim_AdvanceByDistance; jt[2222] used by sub_1B9C40
+	incrom	$1B8F36,$1A
+Tbl_NightcrawlerAnim7:	; animation script (byte flags, byte steps, ..., 2-byte steps from +6); 16 of 18 bytes used at runtime; read by Anim_ApplyStep; jt[2223] used by sub_1B9CC2
+	incrom	$1B8F50,$18
+Tbl_NightcrawlerAnim8:	; animation script (byte flags, byte steps, ..., 2-byte steps from +6); 24 of 28 bytes used at runtime; read by Anim_ApplyStep, Anim_AdvanceByDistance; jt[2224] used by sub_1B9CC2
+	incrom	$1B8F68,$28
+Tbl_NightcrawlerAnim9:	; animation script (byte flags, byte steps, ..., 2-byte steps from +6); 16 of 18 bytes used at runtime; read by Anim_ApplyStep, Anim_AdvanceByDistance, Anim_Advance; jt[2225] used by sub_1B9B6E
+	incrom	$1B8F90,$18
+Tbl_NightcrawlerAnim10:	; animation script (byte flags, byte steps, ..., 2-byte steps from +6); 16 of 18 bytes used at runtime; read by Anim_ApplyStep; jt[2226] used by sub_1B9B6E
+	incrom	$1B8FA8,$18
+Tbl_NightcrawlerAnim11:	; animation script (byte flags, byte steps, ..., 2-byte steps from +6); 10 of 16 bytes used at runtime; read by Anim_ApplyStep, Anim_AdvanceByDistance; jt[2227] used by sub_1B99C2
+	incrom	$1B8FC0,$16
+	incrom	$1B8FD6,$8A
 	include "src/f/1B9060.asm"
 	include "src/f/1B906E.asm"
 	include "src/f/1B90E0.asm"
@@ -4148,7 +5296,76 @@ Str_Empty_1607E6:	; C string "" (used by sub_1607AA)
 	include "src/f/1B9FE8.asm"
 	include "src/f/1BA006.asm"
 	include "src/f/1BA016.asm"
-	incrom	$1BA020,$13A1A
+Art_EvilPsylockeSpr:	; sprite definition (type $18, raw 4bpp tiles): $24-byte header, $14-byte frame records, pieces, tiles; 5020 of 6CD4 bytes used at runtime; read by VDP_FlushDmaQueue, Spr_RenderToBitmap_Loop; DMA to VRAM $6860-C660; jt[2245] used by EvilPsylocke_Init, Player_CalcMaxTiles, Psylocke_SelectSpriteDef
+	incrom	$1BA020,$6CD4
+Art_PlayerSpr6:	; sprite definition (type $18, raw 4bpp tiles): $24-byte header, $14-byte frame records, pieces, tiles; E00 of 2E8C bytes used at runtime; read by VDP_FlushDmaQueue, Spr_EmitStream; DMA to VRAM $8DE0-9300; jt[2246] used by Player_CalcMaxTiles, sub_1B9E78
+	incrom	$1C0CF4,$2E8C
+Art_PlayerSpr7:	; sprite definition (type $18, raw 4bpp tiles): $24-byte header, $14-byte frame records, pieces, tiles; 7100 of 9B66 bytes used at runtime; read by VDP_FlushDmaQueue; DMA to VRAM $6860-CA80; jt[2247] used by Player_CalcMaxTiles, sub_1B9E78
+	incrom	$1C3B80,$9B66
+Tbl_PsylockeAnim:	; animation script (byte flags, byte steps, ..., 2-byte steps from +6); E of 10 bytes used at runtime; read by Anim_ApplyStep, Anim_AdvanceByDistance, Anim_Advance; jt[2248] used by loc_0675E8
+	incrom	$1CD6E6,$10
+Tbl_PsylockeAnim2:	; animation script (byte flags, byte steps, ..., 2-byte steps from +6); 27 of 2C bytes used at runtime; read by Anim_ApplyStep; jt[2249] used by loc_067478
+	incrom	$1CD6F6,$2C
+Tbl_MagnetoBossAnim2:	; animation script (byte flags, byte steps, ..., 2-byte steps from +6); E of 10 bytes used at runtime; read by Anim_ApplyStep, Anim_AdvanceByDistance; jt[2250] used by MagnetoBoss_Update
+	incrom	$1CD722,$10
+Tbl_CloneA5Anim:	; animation script (byte flags, byte steps, ..., 2-byte steps from +6); E of 10 bytes used at runtime; read by Anim_ApplyStep; jt[2251] used by CloneA5_CamUpdate, sub_1CDB32, sub_1CDDA4
+	incrom	$1CD732,$10
+	incrom	$1CD742,$1A
+Tbl_PsylockeAnim3:	; animation script (byte flags, byte steps, ..., 2-byte steps from +6); 8 of A bytes used at runtime; read by Anim_AdvanceByDistance, Anim_ApplyStep, Anim_Advance; jt[2254] used by loc_159216, loc_15922A
+	incrom	$1CD75C,$A
+Tbl_PsylockeAnim4:	; animation script (byte flags, byte steps, ..., 2-byte steps from +6); E of 10 bytes used at runtime; read by Anim_ApplyStep, Anim_AdvanceByDistance, Anim_Advance; jt[2255] used by loc_1592A2, loc_1592B6
+	incrom	$1CD766,$10
+Tbl_PsylockeAnim5:	; animation script (byte flags, byte steps, ..., 2-byte steps from +6); 8 of A bytes used at runtime; read by Anim_ApplyStep, Anim_AdvanceByDistance, Anim_Advance; jt[2256] used by loc_159216, loc_159248
+	incrom	$1CD776,$A
+Tbl_PsylockeAnim6:	; animation script (byte flags, byte steps, ..., 2-byte steps from +6); E of 10 bytes used at runtime; read by Anim_ApplyStep; jt[2257] used by loc_1592A2, loc_1592D4
+	incrom	$1CD780,$10
+	incrom	$1CD790,$26
+Tbl_PsylockeAnim7:	; animation script (byte flags, byte steps, ..., 2-byte steps from +6); 8 of A bytes used at runtime; read by Anim_AdvanceByDistance, Anim_ApplyStep, Anim_Advance; jt[2261] used by sub_1CE2CE, sub_1CE902
+	incrom	$1CD7B6,$A
+Tbl_PsylockeAnim8:	; animation script (byte flags, byte steps, ..., 2-byte steps from +6); E of 10 bytes used at runtime; read by Anim_ApplyStep; jt[2262] used by sub_1CE22C, sub_1CE826
+	incrom	$1CD7C0,$10
+	incrom	$1CD7D0,$34
+Tbl_PsylockeAnim9:	; animation script (byte flags, byte steps, ..., 2-byte steps from +6); 8 of A bytes used at runtime; read by Anim_AdvanceByDistance, Anim_ApplyStep, Anim_Advance; jt[2267] used by loc_1590DA, loc_15910C
+	incrom	$1CD804,$A
+Tbl_PsylockeAnim10:	; animation script (byte flags, byte steps, ..., 2-byte steps from +6); E of 10 bytes used at runtime; read by Anim_ApplyStep, Anim_AdvanceByDistance, Anim_Advance; jt[2268] used by loc_159180, loc_1591B2
+	incrom	$1CD80E,$10
+Tbl_PsylockeAnim11:	; animation script (byte flags, byte steps, ..., 2-byte steps from +6); 8 of A bytes used at runtime; read by Anim_ApplyStep, Anim_AdvanceByDistance, Anim_Advance; jt[2269] used by loc_1590C6, loc_15910C
+	incrom	$1CD81E,$A
+Tbl_PsylockeAnim12:	; animation script (byte flags, byte steps, ..., 2-byte steps from +6); E of 10 bytes used at runtime; read by Anim_ApplyStep; jt[2270] used by loc_15916C, loc_1591B2
+	incrom	$1CD828,$10
+Tbl_PsylockeAnim13:	; animation script (byte flags, byte steps, ..., 2-byte steps from +6); 8 of A bytes used at runtime; read by Anim_ApplyStep, Anim_AdvanceByDistance, Anim_Advance; jt[2271] used by loc_1590C6, loc_159120
+	incrom	$1CD838,$A
+Tbl_PsylockeAnim14:	; animation script (byte flags, byte steps, ..., 2-byte steps from +6); E of 10 bytes used at runtime; read by Anim_ApplyStep; jt[2272] used by loc_15916C, loc_1591C6
+	incrom	$1CD842,$10
+Tbl_PsylockeAnim15:	; animation script (byte flags, byte steps, ..., 2-byte steps from +6); A of C bytes used at runtime; read by Anim_ApplyStep, Anim_AdvanceByDistance, Anim_Advance; jt[2273] used by sub_1CE34E
+	incrom	$1CD852,$C
+	incrom	$1CD85E,$24
+Tbl_PsylockeAnim16:	; animation script (byte flags, byte steps, ..., 2-byte steps from +6); 12 of 14 bytes used at runtime; read by Anim_ApplyStep, Anim_AdvanceByDistance, Anim_Advance; jt[2277] used by sub_0379CA
+	incrom	$1CD882,$14
+Tbl_PsylockeAnim17:	; animation script (byte flags, byte steps, ..., 2-byte steps from +6); 6 of 8 bytes used at runtime; read by Anim_ApplyStep, Anim_AdvanceByDistance, Anim_Advance; jt[2278] used by sub_037A00
+	incrom	$1CD896,$8
+Tbl_PsylockeAnim18:	; animation script (byte flags, byte steps, ..., 2-byte steps from +6); 8 of A bytes used at runtime; read by Anim_ApplyStep, Anim_AdvanceByDistance, Anim_Advance; jt[2279] used by sub_1580B2
+	incrom	$1CD89E,$A
+Tbl_PsylockeAnim19:	; animation script (byte flags, byte steps, ..., 2-byte steps from +6); 8 of A bytes used at runtime; read by Anim_ApplyStep, Anim_AdvanceByDistance, Anim_Advance; jt[2280] used by sub_1580B2
+	incrom	$1CD8A8,$A
+	incrom	$1CD8B2,$14
+Tbl_PsylockeAnim20:	; animation script (byte flags, byte steps, ..., 2-byte steps from +6); 8 of A bytes used at runtime; read by Anim_ApplyStep, Anim_AdvanceByDistance, Anim_Advance; jt[2283] used by sub_1580B2
+	incrom	$1CD8C6,$A
+Tbl_PsylockeAnim21:	; animation script (byte flags, byte steps, ..., 2-byte steps from +6); C of E bytes used at runtime; read by Anim_ApplyStep, Anim_AdvanceByDistance, Anim_Advance; jt[2284] used by sub_158E32, sub_158FE4
+	incrom	$1CD8D0,$E
+Tbl_PsylockeAnim22:	; animation script (byte flags, byte steps, ..., 2-byte steps from +6); 12 of 14 bytes used at runtime; read by Anim_ApplyStep, Anim_AdvanceByDistance, Anim_Advance; jt[2285] used by sub_158E78, sub_159030
+	incrom	$1CD8DE,$14
+Tbl_PsylockeAnim23:	; animation script (byte flags, byte steps, ..., 2-byte steps from +6); 34 of 36 bytes used at runtime; read by Anim_ApplyStep, sub_158536, sub_158992; jt[2286] used by sub_158F32
+	incrom	$1CD8F2,$36
+Tbl_PsylockeAnim24:	; animation script (byte flags, byte steps, ..., 2-byte steps from +6); 2E of 2E bytes used at runtime; read by Anim_ApplyStep, sub_158536, sub_158992; jt[2287,2288] used by sub_158474, sub_158536
+	incrom	$1CD928,$2E
+Tbl_PsylockeAnim25:	; animation script (byte flags, byte steps, ..., 2-byte steps from +6); 1A of 46 bytes used at runtime; read by Anim_ApplyStep, sub_158536, sub_158992; jt[2289,2290] used by sub_1583D6, sub_158992, sub_158C0E
+	incrom	$1CD956,$46
+	incrom	$1CD99C,$5E
+Art_PsylockeTiles:	; uncompressed 4bpp tiles DMA'd to VRAM; 20 of 20 bytes used at runtime; read by VDP_FlushDmaQueue; DMA to VRAM $8400-8420; jt[2292] used by sub_158536, sub_158992
+	incrom	$1CD9FA,$20
+Art_PsylockeTiles2:	; uncompressed 4bpp tiles DMA'd to VRAM; 20 of 20 bytes used at runtime; read by VDP_FlushDmaQueue; DMA to VRAM $83E0-8400; jt[2293] used by sub_158536, sub_158992
+	incrom	$1CDA1A,$20
 	include "src/f/1CDA3A.asm"
 	include "src/f/1CDA48.asm"
 	include "src/f/1CDB32.asm"
@@ -4177,7 +5394,41 @@ Str_Empty_1607E6:	; C string "" (used by sub_1607AA)
 	include "src/f/1CEC28.asm"
 	include "src/f/1CEC38.asm"
 	include "src/f/1CEC42.asm"
-	incrom	$1CEC4A,$324
+Tbl_Anim_1CEC4A:	; animation script (byte flags, byte steps, ..., 2-byte steps from +6); 10 of 12 bytes used at runtime; read by Anim_ApplyStep, Anim_AdvanceByDistance, Anim_Advance
+	incrom	$1CEC4A,$12
+Tbl_Anim_1CEC5C:	; animation script (byte flags, byte steps, ..., 2-byte steps from +6); 1A of 3A bytes used at runtime; read by Anim_ApplyStep, Anim_AdvanceByDistance, Anim_Advance; jt[2311] used by loc_06758E
+	incrom	$1CEC5C,$3A
+Tbl_Anim_1CEC96:	; animation script (byte flags, byte steps, ..., 2-byte steps from +6); 8 of A bytes used at runtime; read by Anim_ApplyStep, Anim_AdvanceByDistance, Anim_Advance; jt[2312] used by sub_1CEF7C
+	incrom	$1CEC96,$A
+Tbl_Anim_1CECA0:	; animation script (byte flags, byte steps, ..., 2-byte steps from +6); 8 of A bytes used at runtime; read by Anim_ApplyStep, Anim_AdvanceByDistance, Anim_Advance; jt[2313] used by sub_1CEF7C
+	incrom	$1CECA0,$A
+Tbl_Anim_1CECAA:	; animation script (byte flags, byte steps, ..., 2-byte steps from +6); 5 of A bytes used at runtime; read by Anim_ApplyStep, Anim_AdvanceByDistance; jt[2314] used by sub_1CEF7C
+	incrom	$1CECAA,$A
+Tbl_Anim_1CECB4:	; animation script (byte flags, byte steps, ..., 2-byte steps from +6); 8 of A bytes used at runtime; read by Anim_AdvanceByDistance, Anim_ApplyStep, Anim_Advance; jt[2315] used by sub_1CEF7C
+	incrom	$1CECB4,$A
+Tbl_Anim_1CECBE:	; animation script (byte flags, byte steps, ..., 2-byte steps from +6); 50 of 6C bytes used at runtime; read by Anim_ApplyStep, Anim_AdvanceByDistance; jt[2316] used by loc_067478
+	incrom	$1CECBE,$6C
+	incrom	$1CED2A,$40
+Tbl_Anim_1CED6A:	; animation script (byte flags, byte steps, ..., 2-byte steps from +6); 1E of 20 bytes used at runtime; read by Anim_ApplyStep; jt[2319] used by sub_1CFB56
+	incrom	$1CED6A,$20
+	incrom	$1CED8A,$20
+Tbl_Anim_1CEDAA:	; animation script (byte flags, byte steps, ..., 2-byte steps from +6); 1E of 20 bytes used at runtime; read by Anim_ApplyStep; jt[2321] used by sub_1D0058, sub_1D04C4
+	incrom	$1CEDAA,$20
+	incrom	$1CEDCA,$20
+Tbl_Anim_1CEDEA:	; animation script (byte flags, byte steps, ..., 2-byte steps from +6); E of 10 bytes used at runtime; read by Anim_ApplyStep, Anim_AdvanceByDistance; jt[2324] used by sub_1CFE26
+	incrom	$1CEDEA,$10
+	incrom	$1CEDFA,$20
+Tbl_Anim_1CEE1A:	; animation script (byte flags, byte steps, ..., 2-byte steps from +6); 5 of A bytes used at runtime; read by Anim_ApplyStep, Anim_AdvanceByDistance; jt[2327] used by sub_1CFB56
+	incrom	$1CEE1A,$A
+Tbl_Anim_1CEE24:	; animation script (byte flags, byte steps, ..., 2-byte steps from +6); 8 of A bytes used at runtime; read by Anim_ApplyStep, Anim_AdvanceByDistance, Anim_Advance; jt[2328] used by sub_1CFB56
+	incrom	$1CEE24,$A
+Tbl_Anim_1CEE2E:	; animation script (byte flags, byte steps, ..., 2-byte steps from +6); 8 of A bytes used at runtime; read by Anim_ApplyStep, Anim_AdvanceByDistance, Anim_Advance; jt[2329] used by sub_1CFB56
+	incrom	$1CEE2E,$A
+Tbl_Anim_1CEE38:	; animation script (byte flags, byte steps, ..., 2-byte steps from +6); 8 of A bytes used at runtime; read by Anim_ApplyStep, Anim_AdvanceByDistance, Anim_Advance; jt[2330] used by sub_1CFB56
+	incrom	$1CEE38,$A
+Tbl_Anim_1CEE42:	; animation script (byte flags, byte steps, ..., 2-byte steps from +6); 8 of 22 bytes used at runtime; read by Anim_ApplyStep, Anim_AdvanceByDistance, Anim_Advance; jt[2331] used by sub_1D0148
+	incrom	$1CEE42,$22
+	incrom	$1CEE64,$10A
 	include "src/f/1CEF6E.asm"
 	include "src/f/1CEF7C.asm"
 	include "src/f/1CF070.asm"
@@ -4227,7 +5478,16 @@ Sw_1CF432:	; switch table of sub at $1CF432: 4 word offsets from Sw_1CF432-2
 	include "src/f/1D073C.asm"
 	include "src/f/1D0744.asm"
 	include "src/f/1D0754.asm"
-	incrom	$1D075E,$10E96
+Art_EvilGambitSpr:	; sprite definition (type $18, raw 4bpp tiles): $24-byte header, $14-byte frame records, pieces, tiles; 4C00 of 64DC bytes used at runtime; read by VDP_FlushDmaQueue, Spr_RenderToBitmap_Loop; DMA to VRAM $7CC0-C700; jt[2352] used by EvilGambit_Init, Gambit_SelectSpriteDef, Player_CalcMaxTiles
+	incrom	$1D075E,$64DC
+Art_PlayerSpr8:	; sprite definition (type $18, raw 4bpp tiles): $24-byte header, $14-byte frame records, pieces, tiles; 36A0 of 4962 bytes used at runtime; read by VDP_FlushDmaQueue; DMA to VRAM $7CC0-C740; jt[2353] used by Player_CalcMaxTiles, sub_1D041E
+	incrom	$1D6C3A,$4962
+Art_PlayerSpr9:	; sprite definition (type $18, raw 4bpp tiles): $24-byte header, $14-byte frame records, pieces, tiles; 2880 of 5E6E bytes used at runtime; read by VDP_FlushDmaQueue, Spr_EmitStream; DMA to VRAM $7CC0-A2A0; jt[2354] used by Player_CalcMaxTiles, sub_1D041E
+	incrom	$1DB59C,$5E6E
+Art_GambitSpr:	; sprite definition (type $19, Nemesis-compressed tiles): $24-byte header, $14-byte frame records, pieces, tiles; 189 of 18A bytes used at runtime; read by Spr_PreloadTiles, Nem_DecodeLoop, VDP_FlushDmaQueue; jt[2355] used by sub_1D029E
+	incrom	$1E140A,$18A
+Art_GambitSpr2:	; sprite definition (type $18, raw 4bpp tiles): $24-byte header, $14-byte frame records, pieces, tiles; 60 of 60 bytes used at runtime; read by Nem_DecodeLoop, Spr_PreloadTiles, VDP_WriteWords; jt[2356] used by sub_1D029E
+	incrom	$1E1594,$60
 	include "src/f/1E15F4.asm"
 	include "src/f/1E1604.asm"
 	include "src/f/1E16BC.asm"
@@ -4239,7 +5499,29 @@ Sw_1CF432:	; switch table of sub at $1CF432: 4 word offsets from Sw_1CF432-2
 	incrom	$1E1902,$14
 	include "src/f/1E1916.asm"
 	include "src/f/1E1928.asm"
-	incrom	$1E19B8,$10F8
+Tbl_Anim_1E19B8:	; animation script (byte flags, byte steps, ..., 2-byte steps from +6); 10 of 12 bytes used at runtime; read by Anim_ApplyStep, Anim_AdvanceByDistance, Anim_Advance
+	incrom	$1E19B8,$12
+Tbl_Anim_1E19CA:	; animation script (byte flags, byte steps, ..., 2-byte steps from +6); 19C of 27E bytes used at runtime; read by Anim_ApplyStep; jt[2360] used by loc_06758E
+	incrom	$1E19CA,$27E
+Tbl_Anim_1E1C48:	; animation script (byte flags, byte steps, ..., 2-byte steps from +6); 13 of 18 bytes used at runtime; read by Anim_ApplyStep, Anim_AdvanceByDistance, Anim_Advance; jt[2361] used by sub_1E39B8
+	incrom	$1E1C48,$18
+Tbl_Anim_1E1C60:	; animation script (byte flags, byte steps, ..., 2-byte steps from +6); 2A of 30 bytes used at runtime; read by Anim_ApplyStep, Anim_AdvanceByDistance; jt[2362] used by loc_067478
+	incrom	$1E1C60,$30
+Tbl_Anim_1E1C90:	; animation script (byte flags, byte steps, ..., 2-byte steps from +6); C of E bytes used at runtime; read by Anim_ApplyStep, Anim_AdvanceByDistance, Anim_Advance; jt[2363] used by sub_1E3594
+	incrom	$1E1C90,$E
+Tbl_Anim_1E1C9E:	; animation script (byte flags, byte steps, ..., 2-byte steps from +6); C of E bytes used at runtime; read by Anim_ApplyStep, Anim_AdvanceByDistance, Anim_Advance; jt[2364] used by sub_1E3594
+	incrom	$1E1C9E,$E
+Tbl_Anim_1E1CAC:	; animation script (byte flags, byte steps, ..., 2-byte steps from +6); C of E bytes used at runtime; read by Anim_ApplyStep, Anim_AdvanceByDistance, Anim_Advance; jt[2365] used by sub_1E3594
+	incrom	$1E1CAC,$E
+Tbl_Anim_1E1CBA:	; animation script (byte flags, byte steps, ..., 2-byte steps from +6); C of E bytes used at runtime; read by Anim_ApplyStep, Anim_AdvanceByDistance, Anim_Advance; jt[2366] used by sub_1E3594
+	incrom	$1E1CBA,$E
+	incrom	$1E1CC8,$A
+Tbl_Anim_1E1CD2:	; animation script (byte flags, byte steps, ..., 2-byte steps from +6); 8 of A bytes used at runtime; read by Anim_ApplyStep, Anim_AdvanceByDistance, Anim_Advance; jt[2368] used by sub_1E3322
+	incrom	$1E1CD2,$A
+	incrom	$1E1CDC,$D58
+Tbl_Anim_1E2A34:	; animation script (byte flags, byte steps, ..., 2-byte steps from +6); A of 1E bytes used at runtime; read by Anim_ApplyStep, Anim_AdvanceByDistance, Anim_Advance; jt[2373] used by sub_1E2CFC, sub_1E3322
+	incrom	$1E2A34,$1E
+	incrom	$1E2A52,$5E
 	include "src/f/1E2AB0.asm"
 	include "src/f/1E2ABE.asm"
 	include "src/f/1E2B48.asm"
@@ -4274,7 +5556,14 @@ Sw_1CF432:	; switch table of sub at $1CF432: 4 word offsets from Sw_1CF432-2
 	include "src/f/1E3C52.asm"
 	include "src/f/1E3C5A.asm"
 	include "src/f/1E3C6A.asm"
-	incrom	$1E3C74,$C3E8
+Art_CyclopsSpr:	; sprite definition (type $18, raw 4bpp tiles): $24-byte header, $14-byte frame records, pieces, tiles; 8060 of A138 bytes used at runtime; read by VDP_FlushDmaQueue, Spr_RenderToBitmap_Loop; DMA to VRAM $6CA0-C8A0; jt[2404] used by Cyclops_SelectSpriteDef, EvilCyclops_Init, Player_CalcMaxTiles
+	incrom	$1E3C74,$A138
+Tbl_CyclopsVdp:	; words copied to the VDP data port by VDP_WriteWords; CD7 of D70 bytes used at runtime; read by VDP_WriteWords; jt[2405] used by sub_1E2CFC
+	incrom	$1EDDAC,$D70
+Tbl_CyclopsVdp2:	; words copied to the VDP data port by VDP_WriteWords; 58A of C58 bytes used at runtime; read by VDP_WriteWords; jt[2406] used by sub_1E2CFC
+	incrom	$1EEB1C,$C58
+Tbl_CyclopsVdp3:	; words copied to the VDP data port by VDP_WriteWords; 2F4 of 8E8 bytes used at runtime; read by VDP_WriteWords; jt[2407] used by sub_1E2CFC
+	incrom	$1EF774,$8E8
 	include "src/f/1F005C.asm"
 	include "src/f/1F00E8.asm"
 	include "src/f/1F00F6.asm"
