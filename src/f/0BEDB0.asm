@@ -1,11 +1,9 @@
 ; ---------------------------------------------------------------------------
-; SporeMine_ClassInit - vtable +$5E: per-level class setup for SPOREMINE: load its resources (SprDef_Add) into class globals
-; In:  8(a6) = 0, $C(a6) = long class index in the level class list
-; Evidence: slot +$5E of the SPOREMINE descriptor $0BF580; TAS frames 27879-29685 (2 frames active)
+; SporeMine_ClassInit - vtable +$5E: per-level class setup for SPOREMINE: create the spore pool and load the spore resources (-$3C22)
 ; ---------------------------------------------------------------------------
 SporeMine_ClassInit:
 	link.w	a6,#$0
-	jsr	sub_0BEE38(pc)
+	jsr	SporeMine_InitPool(pc)
 	moveq	#$3,d0
 	move.l	d0,-(a7)
 	lea.l	$237A(a5),a0

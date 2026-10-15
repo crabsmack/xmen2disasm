@@ -1,7 +1,6 @@
 ; ---------------------------------------------------------------------------
-; Launcher_Draw - vtable +$1A: draw a LAUNCHER
-; In:  8(a6) = this
-; Evidence: slot +$1A of the LAUNCHER descriptor $0BED0C; TAS frames 27947-30595 (708 frames active); calls parent ACTOR slot +$1A
+; Launcher_Draw - vtable +$1A: draw the launcher, then move and draw its shots; a shot that hits a player or a solid tile bursts
+; Evidence: Launcher_ShotHitsPlayer for both players; tile flag $4000; Explosion_Spawn debris; TAS 27947-30595
 ; ---------------------------------------------------------------------------
 Launcher_Draw:
 	link.w	a6,#$FFFE
@@ -74,7 +73,7 @@ loc_0BEAFA:
 	ext.l	d7
 	move.l	d7,-(a7)
 	pea.l	g_Player1(a5)
-	jsr	sub_0BE9F8(pc)
+	jsr	Launcher_ShotHitsPlayer(pc)
 	tst.b	d0
 	lea.l	$10(a7),a7
 	bne.s	loc_0BEB48
@@ -85,7 +84,7 @@ loc_0BEAFA:
 	ext.l	d7
 	move.l	d7,-(a7)
 	pea.l	g_Player2(a5)
-	jsr	sub_0BE9F8(pc)
+	jsr	Launcher_ShotHitsPlayer(pc)
 	tst.b	d0
 	lea.l	$10(a7),a7
 	beq.s	loc_0BEB62

@@ -1,7 +1,5 @@
 ; ---------------------------------------------------------------------------
-; SpikeBall_Init - vtable +$12 constructor: run the parent's Init, then set up a SPIKEBALL
-; In:  8(a6) = this, $C(a6) = long x, $10(a6) = long y (8 fraction bits), $14(a6) = spawn parameter
-; Evidence: slot +$12 of the SPIKEBALL descriptor $0BF820; TAS frames 27963-30467 (44 frames active); calls parent ACTOR slot +$12
+; SpikeBall_Init - vtable +$12 constructor: cycle mask (2^(placement +6, default 6) - 1), on-time (placement +8 or mask/4), phase (placement +$B)
 ; ---------------------------------------------------------------------------
 SpikeBall_Init:
 	link.w	a6,#$0
@@ -49,7 +47,7 @@ loc_0BF7F4:
 loc_0BF800:
 	move.b	d0,$8E(a4)
 	move.b	$B(a3),$8C(a4)
-	lea.l	sub_0BF606(pc),a0
+	lea.l	SpikeBall_StateCycle(pc),a0
 	move.l	a0,$64(a4)
 	move.l	a0,$5C(a4)
 	movem.l	-$8(a6),a3-a4

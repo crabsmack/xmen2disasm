@@ -1,7 +1,11 @@
 ; ---------------------------------------------------------------------------
-; sub_0BF606	[link-after-rts]
+; SpikeBall_StateCycle - SPIKEBALL state: spikes out (frame 1) for part of each cycle - ((counter - phase) & mask) < on-time
+; In:  8(a6) = this
+; Out: none
+; Evidence: phase +$8C, mask +$8D (2^n - 1), on-time +$8E from the placement; TAS 27965-30509
+; Found: link-after-rts
 ; ---------------------------------------------------------------------------
-sub_0BF606:
+SpikeBall_StateCycle:
 	link.w	a6,#$0
 	movem.l	d3/d7/a4,-(a7)
 	movea.l	$8(a6),a4

@@ -1,7 +1,11 @@
 ; ---------------------------------------------------------------------------
-; sub_0BE814	[link-after-rts]
+; Launcher_AddShot - LAUNCHER: put a shot in the first free slot, 10 px to the side and 16 px up, moving at vx
+; In:  8(a6) = this, $E(a6) = word vx
+; Out: none
+; Evidence: slots {long x, long y, word vx} at +$90..+$B8; caller Launcher_StateFire
+; Found: link-after-rts
 ; ---------------------------------------------------------------------------
-sub_0BE814:
+Launcher_AddShot:
 	link.w	a6,#$0
 	movem.l	d3/d7/a3-a4,-(a7)
 	move.w	$E(a6),d7

@@ -1,7 +1,11 @@
 ; ---------------------------------------------------------------------------
-; sub_0BEF12	[link-after-rts]
+; SporeMine_UpdatePool - SPOREMINE pool timer: run each spore - remove dead ones, release ones outside the active window back to their spawn records, call the record handler (+$18) when its delay runs out, step its animation
+; In:  none
+; Out: none
+; Evidence: TAS 27886-30595 every frame
+; Found: link-after-rts
 ; ---------------------------------------------------------------------------
-sub_0BEF12:
+SporeMine_UpdatePool:
 	link.w	a6,#$0
 	movem.l	d4-d7/a4,-(a7)
 	tst.b	-$38DE(a5)
@@ -19,7 +23,7 @@ loc_0BEF32:
 	tst.l	$18(a4)
 	bne.s	loc_0BEF4C
 	move.l	a4,-(a7)
-	jsr	sub_0BEED0(pc)
+	jsr	SporeMine_RemoveSpore(pc)
 	move.w	d7,d0
 	subq.w	#$1,d7
 	lea.l	-$26(a4),a4
@@ -52,7 +56,7 @@ loc_0BEF88:
 	movea.l	$8(a4),a0
 	move.b	#$1,$4(a0)
 	move.l	a4,-(a7)
-	jsr	sub_0BEED0(pc)
+	jsr	SporeMine_RemoveSpore(pc)
 	move.w	d7,d0
 	subq.w	#$1,d7
 	lea.l	-$26(a4),a4

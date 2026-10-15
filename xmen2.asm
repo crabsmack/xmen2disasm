@@ -2812,7 +2812,7 @@ Tbl_Launcher_vtable:	; class descriptor of LAUNCHER: word name offset $6E, paren
 	include "src/f/0BEDB0.asm"
 	include "src/f/0BEDD2.asm"
 	include "src/f/0BEE38.asm"
-Str_Empty_0BEECE:	; C string "" (used by sub_0BEE38)
+Str_Empty_0BEECE:	; C string "" (used by SporeMine_InitPool)
 	incrom	$0BEECE,$2
 	include "src/f/0BEED0.asm"
 	include "src/f/0BEF12.asm"
@@ -2842,7 +2842,7 @@ Tbl_SpikeBall_vtable:	; class descriptor of SPIKEBALL: word name offset $6E, par
 	include "src/f/0BF898.asm"
 	include "src/f/0BF8DC.asm"
 Sw_0BF8DC:	; switch table of sub at $0BF8DC: 5 word offsets from Sw_0BF8DC-2
-	dc.w	loc_0BF914-(Sw_0BF8DC-2), loc_0BF93A-(Sw_0BF8DC-2), loc_0BF95E-(Sw_0BF8DC-2), loc_0BF982-(Sw_0BF8DC-2)
+	dc.w	SavageJungle_PalPhaseUpdate_Case0-(Sw_0BF8DC-2), SavageJungle_PalPhaseUpdate_Case1-(Sw_0BF8DC-2), loc_0BF95E-(Sw_0BF8DC-2), loc_0BF982-(Sw_0BF8DC-2)
 	dc.w	loc_0BF9A6-(Sw_0BF8DC-2)
 	include "src/f/0BF914.asm"
 	include "src/f/0BF93A.asm"
@@ -2855,7 +2855,7 @@ Sw_0BF8DC:	; switch table of sub at $0BF8DC: 5 word offsets from Sw_0BF8DC-2
 	include "src/f/0BFADA.asm"
 	include "src/f/0BFB44.asm"
 Sw_0BFB44:	; switch table of sub at $0BFB44: 5 word offsets from Sw_0BFB44-2
-	dc.w	loc_0BFB9A-(Sw_0BFB44-2), loc_0BFBAE-(Sw_0BFB44-2), loc_0BFBDA-(Sw_0BFB44-2), loc_0BFC12-(Sw_0BFB44-2)
+	dc.w	SwampBubbles_Draw_Multi-(Sw_0BFB44-2), loc_0BFBAE-(Sw_0BFB44-2), loc_0BFBDA-(Sw_0BFB44-2), loc_0BFC12-(Sw_0BFB44-2)
 	dc.w	loc_0BFC60-(Sw_0BFB44-2)
 	include "src/f/0BFB9A.asm"
 	include "src/f/0BFC94.asm"

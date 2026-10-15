@@ -1,7 +1,11 @@
 ; ---------------------------------------------------------------------------
-; sub_0BF1FA	[link-after-rts]
+; SporeMine_RecFindTarget - spore handler: pick a player to watch (sub_1F6A32), then watch it for $3C frames
+; In:  8(a6) = spore record
+; Out: d0
+; Evidence: next SporeMine_RecWatch
+; Found: link-after-rts
 ; ---------------------------------------------------------------------------
-sub_0BF1FA:
+SporeMine_RecFindTarget:
 	link.w	a6,#$0
 	movem.l	a3-a4,-(a7)
 	movea.l	$8(a6),a4
@@ -13,7 +17,7 @@ sub_0BF1FA:
 	addq.w	#$4,a7
 	beq.s	loc_0BF22A
 	move.w	#$3C,$1E(a4)
-	lea.l	sub_0BF234(pc),a0
+	lea.l	SporeMine_RecWatch(pc),a0
 	move.l	a0,$18(a4)
 	clr.w	$1C(a4)
 loc_0BF22A:

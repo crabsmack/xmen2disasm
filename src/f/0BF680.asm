@@ -1,7 +1,5 @@
 ; ---------------------------------------------------------------------------
-; SpikeBall_Draw - vtable +$1A: draw a SPIKEBALL
-; In:  8(a6) = this
-; Evidence: slot +$1A of the SPIKEBALL descriptor $0BF820; TAS frames 27964-30508 (1309 frames active)
+; SpikeBall_Draw - vtable +$1A: one direct 32x32 sprite (frame 1 uses tiles +$10), flips from +$2E
 ; ---------------------------------------------------------------------------
 SpikeBall_Draw:
 	link.w	a6,#$0

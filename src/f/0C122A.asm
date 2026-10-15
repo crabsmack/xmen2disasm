@@ -15,6 +15,6 @@ loc_0C1244:
 	beq.s	loc_0C1250
 	jsr	sub_0C1412(pc)
 loc_0C1250:
-	jsr	$21FA(a5)	; -> sub_0BF8DC
+	jsr	$21FA(a5)	; -> SavageJungle_PalPhaseUpdate
 	unlk	a6
 	rts

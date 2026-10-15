@@ -1,7 +1,5 @@
 ; ---------------------------------------------------------------------------
-; SpikeBall_ClassInit - vtable +$5E: per-level class setup for SPIKEBALL: load its resources (SprDef_Add) into class globals
-; In:  8(a6) = 0, $C(a6) = long class index in the level class list
-; Evidence: slot +$5E of the SPIKEBALL descriptor $0BF820; TAS frames 27879-29685 (2 frames active)
+; SpikeBall_ClassInit - vtable +$5E: per-level class setup for SPIKEBALL: load its resource set (-$3C20)
 ; ---------------------------------------------------------------------------
 SpikeBall_ClassInit:
 	link.w	a6,#$0

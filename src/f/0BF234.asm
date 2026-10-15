@@ -1,7 +1,11 @@
 ; ---------------------------------------------------------------------------
-; sub_0BF234	[link-after-rts]
+; SporeMine_RecWatch - spore handler: arm when the watched player comes within +-$50 x / +-$28 y; otherwise re-pick after the timer
+; In:  8(a6) = spore record
+; Out: none
+; Evidence: TAS 27908-30535
+; Found: link-after-rts
 ; ---------------------------------------------------------------------------
-sub_0BF234:
+SporeMine_RecWatch:
 	link.w	a6,#$0
 	movem.l	d4-d7/a3-a4,-(a7)
 	movea.l	$8(a6),a4
@@ -32,14 +36,14 @@ sub_0BF234:
 	bgt.s	loc_0BF296
 	cmp.w	$6(a4),d7
 	blt.s	loc_0BF296
-	lea.l	sub_0BF2B2(pc),a0
+	lea.l	SporeMine_RecArm1(pc),a0
 	move.l	a0,$18(a4)
 	clr.w	$1C(a4)
 	bra.s	loc_0BF2A8
 loc_0BF296:
 	tst.w	$1E(a4)
 	bne.s	loc_0BF2A8
-	lea.l	sub_0BF1FA(pc),a0
+	lea.l	SporeMine_RecFindTarget(pc),a0
 	move.l	a0,$18(a4)
 	clr.w	$1C(a4)
 loc_0BF2A8:

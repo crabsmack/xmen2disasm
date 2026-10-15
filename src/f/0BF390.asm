@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_0BF390	[link-after-rts]
+; SporeMine_RecArm4 - spore handler: arming step 4 (animation jt[$23AA], sound $B9, $D frames)
+; In:  8(a6) = spore record
+; Out: none
+; Found: link-after-rts
 ; ---------------------------------------------------------------------------
-sub_0BF390:
+SporeMine_RecArm4:
 	link.w	a6,#$0
 	move.l	a4,-(a7)
 	movea.l	$8(a6),a4
@@ -16,7 +19,7 @@ sub_0BF390:
 	jsr	$5222(a5)	; -> Snd_Stop
 	pea.l	($B9).w
 	jsr	$521A(a5)	; -> Snd_Play
-	lea.l	sub_0BF3DA(pc),a0
+	lea.l	SporeMine_RecExplode(pc),a0
 	move.l	a0,$18(a4)
 	move.w	#$D,$1C(a4)
 	movea.l	-$4(a6),a4

@@ -22,7 +22,7 @@ sub_0C130A:
 	moveq	#$48,d0
 	move.l	d0,-(a7)
 	jsr	sub_0C1478(pc)
-	jsr	$21F2(a5)	; -> sub_0BF898
+	jsr	$21F2(a5)	; -> SavageJungle_InitPalPhases
 	jsr	sub_0C12DE(pc)
 	jsr	sub_0C0ED4(pc)
 	jsr	sub_0C12F6(pc)

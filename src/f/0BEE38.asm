@@ -1,7 +1,11 @@
 ; ---------------------------------------------------------------------------
-; sub_0BEE38	[link-after-rts]
+; SporeMine_InitPool - SPOREMINE: create the spore pool (20 records of $26 bytes), its update timer and its draw-list entry
+; In:  none
+; Out: none
+; Evidence: Mem_StackAlloc($2F8) -> -$3C28, count -$3C24 := 0; Timer_Create(SporeMine_UpdatePool, 0, 0, 1); DrawList_Add(SporeMine_DrawPool); TAS 27879-29685
+; Found: link-after-rts
 ; ---------------------------------------------------------------------------
-sub_0BEE38:
+SporeMine_InitPool:
 	link.w	a6,#$0
 	movem.l	d4-d7/a4,-(a7)
 	move.w	#$2F8,d7
@@ -25,7 +29,7 @@ sub_0BEE38:
 	moveq	#$0,d1
 	move.l	d1,-(a7)
 	move.l	d1,-(a7)
-	pea.l	sub_0BEF12(pc)
+	pea.l	SporeMine_UpdatePool(pc)
 	jsr	$4FD2(a5)	; -> Timer_Create
 	movea.l	d0,a4
 	move.l	a4,d0
@@ -58,7 +62,7 @@ loc_0BEEB2:
 	move.l	d0,-(a7)
 	moveq	#$0,d0
 	move.l	d0,-(a7)
-	pea.l	sub_0BF050(pc)
+	pea.l	SporeMine_DrawPool(pc)
 	jsr	$4F6A(a5)	; -> DrawList_Add
 	lea.l	$18(a7),a7
 	movem.l	-$14(a6),d4-d7/a4

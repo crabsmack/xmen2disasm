@@ -1,7 +1,5 @@
 ; ---------------------------------------------------------------------------
-; SwampBubbles_Deactivate - Deactivate
-; In:  8(a6) = this
-; Evidence: slot +$46 of the SWAMPBUBBLES descriptor $0BFCE4; never runs in the corpus; calls parent ACTOR slot +$46
+; SwampBubbles_Deactivate - vtable +$46: parent Deactivate, then remove itself
 ; ---------------------------------------------------------------------------
 SwampBubbles_Deactivate:
 	link.w	a6,#$0

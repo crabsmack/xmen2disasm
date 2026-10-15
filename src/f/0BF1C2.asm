@@ -1,7 +1,11 @@
 ; ---------------------------------------------------------------------------
-; sub_0BF1C2	[link-after-rts]
+; SporeMine_RecIdle - spore handler: idle animation $0BF54E, then look for a player
+; In:  8(a6) = spore record
+; Out: none
+; Evidence: TAS 27906-30491
+; Found: link-after-rts
 ; ---------------------------------------------------------------------------
-sub_0BF1C2:
+SporeMine_RecIdle:
 	link.w	a6,#$0
 	move.l	a4,-(a7)
 	movea.l	$8(a6),a4
@@ -12,7 +16,7 @@ sub_0BF1C2:
 	move.b	$7(a0),d0
 	move.w	d0,$E(a4)
 	clr.l	$14(a4)
-	lea.l	sub_0BF1FA(pc),a0
+	lea.l	SporeMine_RecFindTarget(pc),a0
 	move.l	a0,$18(a4)
 	clr.w	$1C(a4)
 	movea.l	-$4(a6),a4

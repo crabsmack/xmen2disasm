@@ -1,7 +1,6 @@
 ; ---------------------------------------------------------------------------
-; SwampFly_SpawnRecInView - vtable +$2A: is a SWAMPFLY spawn record inside the spawn window
-; In:  8(a6) = class descriptor, $C(a6) = spawn record
-; Evidence: slot +$2A of the SWAMPFLY descriptor $0C0CEA; TAS frames 27889-30595 (953 frames active)
+; SwampFly_SpawnRecInView - vtable +$2A: in phase 0 the normal window test; later phases spawn a fly only off screen and only if its record's phase (+$E) is below the current phase
+; Evidence: phase -$3C1C (SavageJungle_PalPhaseUpdate); TAS 27889-30595
 ; ---------------------------------------------------------------------------
 SwampFly_SpawnRecInView:
 	link.w	a6,#$0

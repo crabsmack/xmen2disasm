@@ -1,7 +1,11 @@
 ; ---------------------------------------------------------------------------
-; sub_0BFA8A	[link-after-rts]
+; SwampBubbles_StateIdle - SWAMPBUBBLES state: hidden frame $FF, idle
+; In:  8(a6) = this
+; Out: d0
+; Evidence: state set by SwampBubbles_Init
+; Found: link-after-rts
 ; ---------------------------------------------------------------------------
-sub_0BFA8A:
+SwampBubbles_StateIdle:
 	link.w	a6,#$0
 	move.l	a4,-(a7)
 	movea.l	$8(a6),a4
@@ -12,7 +16,7 @@ sub_0BFA8A:
 	jsr	(a1)
 	addq.w	#$8,a7
 	move.w	#$FF,$6C(a4)
-	lea.l	sub_0BFA8A(pc),a0
+	lea.l	SwampBubbles_StateIdle(pc),a0
 	move.l	a0,$5C(a4)
 	moveq	#$8,d0
 	and.w	$4(a4),d0

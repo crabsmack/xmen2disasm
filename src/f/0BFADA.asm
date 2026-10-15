@@ -27,7 +27,7 @@ SwampBubbles_Init:
 	move.b	d1,$2E(a4)
 	clr.w	$8C(a4)
 	move.b	#$1,$8E(a4)
-	lea.l	sub_0BFA8A(pc),a0
+	lea.l	SwampBubbles_StateIdle(pc),a0
 	move.l	a0,$64(a4)
 	move.l	a0,$5C(a4)
 	movea.l	-$4(a6),a4

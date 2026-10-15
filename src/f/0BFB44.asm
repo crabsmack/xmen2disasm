@@ -1,7 +1,6 @@
 ; ---------------------------------------------------------------------------
-; SwampBubbles_Draw - vtable +$1A: draw a SWAMPBUBBLES
-; In:  8(a6) = this
-; Evidence: slot +$1A of the SWAMPBUBBLES descriptor $0BFCE4; never runs in the corpus
+; SwampBubbles_Draw - vtable +$1A: draw +$8E (1-5) bubble sprites spaced $10-$20 px apart
+; Evidence: 5-case switch
 ; ---------------------------------------------------------------------------
 SwampBubbles_Draw:
 	link.w	a6,#$FFF8
@@ -21,9 +20,9 @@ SwampBubbles_Draw:
 	sub.l	d1,d5
 	move.b	$8E(a4),d0
 	subq.b	#$1,d0
-	bcs.w	loc_0BFC94
+	bcs.w	SwampBubbles_Draw_Done
 	cmpi.b	#$4,d0
-	bhi.w	loc_0BFC94
+	bhi.w	SwampBubbles_Draw_Done
 	moveq	#$0,d1
 	move.b	d0,d1
 	add.w	d1,d1

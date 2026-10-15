@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_0BEED0
+; SporeMine_RemoveSpore - SPOREMINE: remove a spore record (the last record is copied over it)
+; In:  8(a6) = record
+; Out: d0
+; Evidence: TAS 27946-30553
 ; ---------------------------------------------------------------------------
-sub_0BEED0:
+SporeMine_RemoveSpore:
 	link.w	a6,#$0
 	move.w	-$3C24(a5),d0
 	subq.w	#$1,-$3C24(a5)

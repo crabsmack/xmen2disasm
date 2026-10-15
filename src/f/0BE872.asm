@@ -1,12 +1,16 @@
 ; ---------------------------------------------------------------------------
-; sub_0BE872	[link-after-rts]
+; Launcher_StateStart - LAUNCHER first state: go to Launcher_StateFrame0
+; In:  8(a6) = this
+; Out: d0
+; Evidence: TAS 27948-30540
+; Found: link-after-rts
 ; ---------------------------------------------------------------------------
-sub_0BE872:
+Launcher_StateStart:
 	link.w	a6,#$0
 	move.l	a4,-(a7)
 	movea.l	$8(a6),a4
 	clr.w	$6C(a4)
-	lea.l	sub_0BE896(pc),a0
+	lea.l	Launcher_StateFrame0(pc),a0
 	move.l	a0,$5C(a4)
 	moveq	#$8,d0
 	and.w	$4(a4),d0

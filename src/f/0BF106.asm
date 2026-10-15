@@ -1,7 +1,11 @@
 ; ---------------------------------------------------------------------------
-; sub_0BF106	[link-after-rts]
+; SporeMine_AddSpore - SPOREMINE: add a spore at a placement's position (max 20)
+; In:  8(a6) = placement record
+; Out: d0 = record or 0
+; Evidence: handler SporeMine_RecIdle; TAS 27905-30491
+; Found: link-after-rts
 ; ---------------------------------------------------------------------------
-sub_0BF106:
+SporeMine_AddSpore:
 	link.w	a6,#$0
 	movem.l	a3-a4,-(a7)
 	movea.l	$8(a6),a3
@@ -31,7 +35,7 @@ sub_0BF106:
 	jsr	$4DB2(a5)	; -> Mem_Set
 	move.w	$2(a3),$4(a4)
 	move.w	$4(a3),$6(a4)
-	lea.l	sub_0BF1C2(pc),a0
+	lea.l	SporeMine_RecIdle(pc),a0
 	move.l	a0,$18(a4)
 	clr.w	$1C(a4)
 	moveq	#$0,d0

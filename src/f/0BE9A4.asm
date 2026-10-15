@@ -1,7 +1,5 @@
 ; ---------------------------------------------------------------------------
-; Launcher_ClassInit - vtable +$5E: per-level class setup for LAUNCHER: load its resources (SprDef_Add) into class globals
-; In:  8(a6) = 0, $C(a6) = long class index in the level class list
-; Evidence: slot +$5E of the LAUNCHER descriptor $0BED0C; TAS frames 27879-29685 (2 frames active)
+; Launcher_ClassInit - vtable +$5E: per-level class setup for LAUNCHER: load its two resource sets (-$3C2A, -$3C2C)
 ; ---------------------------------------------------------------------------
 Launcher_ClassInit:
 	link.w	a6,#$0

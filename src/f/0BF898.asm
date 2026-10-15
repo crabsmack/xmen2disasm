@@ -1,7 +1,11 @@
 ; ---------------------------------------------------------------------------
-; sub_0BF898	[jt 1082]
+; SavageJungle_InitPalPhases - Savage jungle: read the palette-phase script from the map header (word at header +$12); start phase 0 if its first word is 1
+; In:  none
+; Out: none
+; Evidence: -$3C1A = script + 2, -$3C1C/-$3C1E := 0, else none; TAS 29675
+; Found: jt 1082
 ; ---------------------------------------------------------------------------
-sub_0BF898:
+SavageJungle_InitPalPhases:
 	link.w	a6,#$0
 	movem.l	d7/a3-a4,-(a7)
 	movea.l	-$CB2(a5),a0

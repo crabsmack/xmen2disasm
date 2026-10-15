@@ -1,7 +1,8 @@
 ; ---------------------------------------------------------------------------
-; loc_0BF9C8
+; SavageJungle_PalPhaseUpdate_Done - tail of SavageJungle_PalPhaseUpdate: mark the palette dirty and reload the timer
+; Evidence: switch exit
 ; ---------------------------------------------------------------------------
-loc_0BF9C8:
+SavageJungle_PalPhaseUpdate_Done:
 	moveq	#$3C,d0
 	muls.w	-$3C1E(a5),d0
 	move.w	d0,-$3C1E(a5)

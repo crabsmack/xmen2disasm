@@ -1,7 +1,11 @@
 ; ---------------------------------------------------------------------------
-; sub_0BE9F8	[link-after-rts]
+; Launcher_ShotHitsPlayer - LAUNCHER: does a shot at (x, y) hit this player? If so the player takes damage from that side
+; In:  8(a6) = player, $E(a6) = word x, $12(a6) = word y, $14(a6) = side (9/10)
+; Out: d0 = 1 on a hit
+; Evidence: box test, +$6A = 0; slot +$26 TakeDamage(0, side, 1, x, y)
+; Found: link-after-rts
 ; ---------------------------------------------------------------------------
-sub_0BE9F8:
+Launcher_ShotHitsPlayer:
 	link.w	a6,#$0
 	movem.l	d6-d7/a4,-(a7)
 	move.w	$12(a6),d6

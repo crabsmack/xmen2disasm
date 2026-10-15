@@ -1,7 +1,11 @@
 ; ---------------------------------------------------------------------------
-; sub_0BF050	[link-after-rts]
+; SporeMine_DrawPool - SPOREMINE pool draw-list callback: one sprite per spore
+; In:  none
+; Out: none
+; Evidence: tiles from the class slot of -$3C22; TAS 27885-30595
+; Found: link-after-rts
 ; ---------------------------------------------------------------------------
-sub_0BF050:
+SporeMine_DrawPool:
 	link.w	a6,#$0
 	movem.l	d4-d7/a4,-(a7)
 	movea.l	-$3C28(a5),a4
