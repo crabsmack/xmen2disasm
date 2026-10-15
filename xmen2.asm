@@ -918,7 +918,7 @@ Str_Empty_03AD12:	; C string "" (used by RollingDiscs_ClassInit)
 	include "src/f/03AE1C.asm"
 Tbl_RollingDiscs_vtable:	; class descriptor of ROLLINGDISCS: word name offset $6E, parent ACTOR, 26 method slots from +6, then the name (tools/classes.py)
 	incrom	$03AE32,$7B
-Pad_RollingDiscs:	; $00 fill; never read in the corpus; between RollingDiscs_Nop66 and sub_0472CC
+Pad_RollingDiscs:	; $00 fill; never read in the corpus; between RollingDiscs_Nop66 and BaniMazaA2_InitDebrisBuf
 	incrom	$03AEAD,$1
 Art_BanimazaDoorSpr:	; sprite definition (type $19, Nemesis-compressed tiles): $24-byte header, $14-byte frame records, pieces, tiles; 839 of 83A bytes used at runtime; read by Nem_DecodeLoop, Spr_PreloadTiles; jt[285] used by BanimazaDoor_ClassInit, BanimazaDoor_Init
 	incrom	$03AEAE,$83A
@@ -987,45 +987,45 @@ Art_ApocalypseSpr:	; sprite definition (type $19, Nemesis-compressed tiles): $24
 	incrom	$04797A,$210E
 Art_ApocalypseSpr2:	; sprite definition (type $18, raw 4bpp tiles): $24-byte header, $14-byte frame records, pieces, tiles; 10A0 of 1674 bytes used at runtime; read by VDP_FlushDmaQueue; DMA to VRAM $D140-D960; jt[308] used by Apocalypse_Init, BeamScooter_Init
 	incrom	$049A88,$1674
-Tbl_BaniMazaA2Anim:	; animation script (byte flags, byte steps, ..., 2-byte steps from +6); A of C bytes used at runtime; read by Anim_ApplyStep, Anim_AdvanceByDistance, Anim_Advance; jt[309] used by sub_04C240
+Tbl_BaniMazaA2Anim:	; animation script (byte flags, byte steps, ..., 2-byte steps from +6); A of C bytes used at runtime; read by Anim_ApplyStep, Anim_AdvanceByDistance, Anim_Advance; jt[309] used by Apocalypse_StateDefeated
 	incrom	$04B0FC,$C
-Tbl_BaniMazaA2Anim2:	; animation script (byte flags, byte steps, ..., 2-byte steps from +6); 16 of 18 bytes used at runtime; read by Anim_ApplyStep, Anim_AdvanceByDistance; jt[310] used by sub_04C030
+Tbl_BaniMazaA2Anim2:	; animation script (byte flags, byte steps, ..., 2-byte steps from +6); 16 of 18 bytes used at runtime; read by Anim_ApplyStep, Anim_AdvanceByDistance; jt[310] used by Apocalypse_StateLunge
 	incrom	$04B108,$18
-Tbl_BaniMazaA2Anim3:	; animation script (byte flags, byte steps, ..., 2-byte steps from +6); 18 of 1A bytes used at runtime; read by Anim_ApplyStep; jt[311] used by sub_04C168
+Tbl_BaniMazaA2Anim3:	; animation script (byte flags, byte steps, ..., 2-byte steps from +6); 18 of 1A bytes used at runtime; read by Anim_ApplyStep; jt[311] used by Apocalypse_StateDrop
 	incrom	$04B120,$1A
-Tbl_BaniMazaA2Anim4:	; animation script (NOTES: Animation scripts); never read in the corpus; jt[312] used by sub_04C36C -> Obj_SetAnim
+Tbl_BaniMazaA2Anim4:	; animation script (NOTES: Animation scripts); never read in the corpus; jt[312] used by Apocalypse_StateHurt -> Obj_SetAnim
 	incrom	$04B13A,$A
 Tbl_ApocalypseInit:	; format not established; never read in the corpus; jt[313] used by Apocalypse_Init
 	incrom	$04B144,$40
 	incrom	$04B184,$2
 	include "src/f/04B186.asm"
-Tbl_AiScript_04B19E:	; word $0000 (2 bytes), not a string: reached only via jt[315] used by sub_04B6EA -> AiScript_Set (e.g. an empty list/script count)
+Tbl_AiScript_04B19E:	; word $0000 (2 bytes), not a string: reached only via jt[315] used by Apocalypse_ActStartMainScript -> AiScript_Set (e.g. an empty list/script count)
 	incrom	$04B19E,$1
 	incrom	$04B19F,$1
 	include "src/f/04B1A0.asm"
-Tbl_AiScript_04B1A4:	; word $0000 (2 bytes), not a string: reached only via jt[316] used by sub_04B848 -> AiScript_Set (e.g. an empty list/script count)
+Tbl_AiScript_04B1A4:	; word $0000 (2 bytes), not a string: reached only via jt[316] used by Apocalypse_StateBombsDone -> AiScript_Set (e.g. an empty list/script count)
 	incrom	$04B1A4,$1
 	incrom	$04B1A5,$1
 	include "src/f/04B1A6.asm"
 	include "src/f/04B1C2.asm"
-Tbl_ApocalypseAiScript:	; data handed to AiScript_Set (format not established); never read in the corpus; jt[317] used by sub_04B848 -> AiScript_Set
+Tbl_ApocalypseAiScript:	; data handed to AiScript_Set (format not established); never read in the corpus; jt[317] used by Apocalypse_StateBombsDone -> AiScript_Set
 	incrom	$04B1CE,$3A
-Tbl_ApocalypseAiScript2:	; data handed to AiScript_Set (format not established); never read in the corpus; jt[318] used by sub_04B848 -> AiScript_Set
+Tbl_ApocalypseAiScript2:	; data handed to AiScript_Set (format not established); never read in the corpus; jt[318] used by Apocalypse_StateBombsDone -> AiScript_Set
 	incrom	$04B208,$12
-Tbl_ApocalypseAiScript3:	; data handed to AiScript_Set (format not established); never read in the corpus; jt[319] used by loc_04BC9E -> AiScript_Set
+Tbl_ApocalypseAiScript3:	; data handed to AiScript_Set (format not established); never read in the corpus; jt[319] used by Apocalypse_ActPickScript_part1 -> AiScript_Set
 	incrom	$04B21A,$26
-Tbl_ApocalypseAiScript4:	; data handed to AiScript_Set (format not established); never read in the corpus; jt[320] used by loc_04BCB2 -> AiScript_Set
+Tbl_ApocalypseAiScript4:	; data handed to AiScript_Set (format not established); never read in the corpus; jt[320] used by Apocalypse_ActPickScript_part2 -> AiScript_Set
 	incrom	$04B240,$1E
-Tbl_ApocalypseAiScript5:	; data handed to AiScript_Set (format not established); never read in the corpus; jt[321] used by loc_04BCB2 -> AiScript_Set
+Tbl_ApocalypseAiScript5:	; data handed to AiScript_Set (format not established); never read in the corpus; jt[321] used by Apocalypse_ActPickScript_part2 -> AiScript_Set
 	incrom	$04B25E,$32
-Tbl_ApocalypseAiScript6:	; data handed to AiScript_Set (format not established); never read in the corpus; jt[322] used by loc_04BCB2 -> AiScript_Set
+Tbl_ApocalypseAiScript6:	; data handed to AiScript_Set (format not established); never read in the corpus; jt[322] used by Apocalypse_ActPickScript_part2 -> AiScript_Set
 	incrom	$04B290,$32
 	incrom	$04B2C2,$74
 	include "src/f/04B336.asm"
 	include "src/f/04B344.asm"
 Sw_04B344:	; switch table of sub at $04B344: 6 word offsets from Sw_04B344-2
-	dc.w	loc_04B374-(Sw_04B344-2), loc_04B37E-(Sw_04B344-2), loc_04B388-(Sw_04B344-2), loc_04B392-(Sw_04B344-2)
-	dc.w	loc_04B39C-(Sw_04B344-2), loc_04B3A6-(Sw_04B344-2)
+	dc.w	Apocalypse_SelectBombPattern_part1-(Sw_04B344-2), loc_04B37E-(Sw_04B344-2), loc_04B388-(Sw_04B344-2), loc_04B392-(Sw_04B344-2)
+	dc.w	loc_04B39C-(Sw_04B344-2), Apocalypse_SelectBombPattern_part2-(Sw_04B344-2)
 	include "src/f/04B374.asm"
 	include "src/f/04B3A6.asm"
 	include "src/f/04B3B0.asm"
@@ -1052,7 +1052,7 @@ Sw_04B344:	; switch table of sub at $04B344: 6 word offsets from Sw_04B344-2
 	include "src/f/04BC18.asm"
 	include "src/f/04BC74.asm"
 Sw_04BC74:	; switch table of sub at $04BC74: 4 word offsets from Sw_04BC74-2
-	dc.w	loc_04BC9E-(Sw_04BC74-2), loc_04BCB2-(Sw_04BC74-2), loc_04BCC6-(Sw_04BC74-2), loc_04BCDA-(Sw_04BC74-2)
+	dc.w	Apocalypse_ActPickScript_part1-(Sw_04BC74-2), Apocalypse_ActPickScript_part2-(Sw_04BC74-2), loc_04BCC6-(Sw_04BC74-2), loc_04BCDA-(Sw_04BC74-2)
 	include "src/f/04BC9E.asm"
 	include "src/f/04BCB2.asm"
 	include "src/f/04BCEC.asm"

@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_04BD22	[jt 340]
+; Apocalypse_ActNextScriptChoice - APOCALYPSE script action: cycle +$B1 through 0-3, then pick that script
+; In:  8(a6) = this
+; Out: d0 = +4 & 8
+; Evidence: next Apocalypse_ActPickScript
 ; ---------------------------------------------------------------------------
-sub_04BD22:
+Apocalypse_ActNextScriptChoice:
 	link.w	a6,#$0
 	move.l	a4,-(a7)
 	movea.l	$8(a6),a4
@@ -13,7 +16,7 @@ sub_04BD22:
 	clr.b	$B1(a4)
 loc_04BD40:
 	clr.w	$6C(a4)
-	lea.l	sub_04BC74(pc),a0
+	lea.l	Apocalypse_ActPickScript(pc),a0
 	move.l	a0,$5C(a4)
 	moveq	#$8,d0
 	and.w	$4(a4),d0

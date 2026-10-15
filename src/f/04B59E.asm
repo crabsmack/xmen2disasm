@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_04B59E	[link-after-rts]
+; Apocalypse_StateWaitEntrance - APOCALYPSE: when arrived stop sound $79 and motion, angle 180, next script step
+; In:  8(a6) = this
+; Out: none
+; Evidence: +$8C bit 4 clear = arrived; +$8E = $B4; script +$A4 / index +$A2
 ; ---------------------------------------------------------------------------
-sub_04B59E:
+Apocalypse_StateWaitEntrance:
 	link.w	a6,#$0
 	move.l	a4,-(a7)
 	movea.l	$8(a6),a4

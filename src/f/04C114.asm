@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_04C114	[link-after-rts]
+; Apocalypse_StateDropStart - APOCALYPSE: stop, face the target and drop onto it after 5 frames
+; In:  8(a6) = this
+; Out: d0 = +4 & 8
+; Evidence: next Apocalypse_StateDrop
 ; ---------------------------------------------------------------------------
-sub_04C114:
+Apocalypse_StateDropStart:
 	link.w	a6,#$0
 	move.l	a4,-(a7)
 	movea.l	$8(a6),a4
@@ -19,7 +22,7 @@ loc_04C140:
 	clr.l	$16(a4)
 	clr.w	$20(a4)
 	move.w	#$5,$6C(a4)
-	lea.l	sub_04C168(pc),a0
+	lea.l	Apocalypse_StateDrop(pc),a0
 	move.l	a0,$5C(a4)
 	moveq	#$8,d0
 	and.w	$4(a4),d0

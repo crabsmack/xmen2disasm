@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_04BD5A	[jt 341]
+; Apocalypse_ActGoLeft - APOCALYPSE script action: face left and move to (100, 140), then approach the player
+; In:  8(a6) = this
+; Out: none
+; Evidence: Apocalypse_MoveTo($6400, $8C00, +$9E); Apocalypse_StateApproach
 ; ---------------------------------------------------------------------------
-sub_04BD5A:
+Apocalypse_ActGoLeft:
 	link.w	a6,#$0
 	movem.l	d6-d7/a4,-(a7)
 	movea.l	$8(a6),a4
@@ -20,11 +23,11 @@ sub_04BD5A:
 	move.l	d7,-(a7)
 	move.l	d6,-(a7)
 	move.l	a4,-(a7)
-	jsr	sub_04B3CE(pc)
-	lea.l	sub_04BF52(pc),a0
+	jsr	Apocalypse_MoveTo(pc)
+	lea.l	Apocalypse_StateApproach(pc),a0
 	move.l	a0,$5C(a4)
 	move.l	a4,-(a7)
-	jsr	sub_04BF52(pc)
+	jsr	Apocalypse_StateApproach(pc)
 	lea.l	$1C(a7),a7
 	movem.l	-$C(a6),d6-d7/a4
 	unlk	a6

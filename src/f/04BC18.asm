@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_04BC18	[jt 339]
+; Apocalypse_ActSetMoveRates - APOCALYPSE script action: set its approach/lunge move shifts (+$9E = 4, +$9F = 3), next step
+; In:  8(a6) = this
+; Out: none
+; Evidence: +$9E is the shift for Apocalypse_ActGo*, +$9F for Apocalypse_StateLunge
 ; ---------------------------------------------------------------------------
-sub_04BC18:
+Apocalypse_ActSetMoveRates:
 	link.w	a6,#$0
 	move.l	a4,-(a7)
 	movea.l	$8(a6),a4

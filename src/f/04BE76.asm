@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_04BE76	[jt 344]
+; Apocalypse_ActGoNearPlayer - APOCALYPSE: target the nearest player and move to 130 px beside it (facing it) at height 140
+; In:  8(a6) = this
+; Out: none
+; Evidence: Player_Nearest -> +$96; Apocalypse_MoveTo(player x -/+ $8200, $8C00, +$9E); Apocalypse_StateApproach
 ; ---------------------------------------------------------------------------
-sub_04BE76:
+Apocalypse_ActGoNearPlayer:
 	link.w	a6,#$0
 	movem.l	d4-d7/a3-a4,-(a7)
 	movea.l	$8(a6),a4
@@ -37,11 +40,11 @@ loc_04BEBA:
 	move.l	d5,-(a7)
 	move.l	d4,-(a7)
 	move.l	a4,-(a7)
-	jsr	sub_04B3CE(pc)
-	lea.l	sub_04BF52(pc),a0
+	jsr	Apocalypse_MoveTo(pc)
+	lea.l	Apocalypse_StateApproach(pc),a0
 	move.l	a0,$5C(a4)
 	move.l	a4,-(a7)
-	jsr	sub_04BF52(pc)
+	jsr	Apocalypse_StateApproach(pc)
 	lea.l	$1C(a7),a7
 	movem.l	-$18(a6),d4-d7/a3-a4
 	unlk	a6

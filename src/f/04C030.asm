@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_04C030	[link-after-rts]
+; Apocalypse_StateLunge - APOCALYPSE: lunge 60 px forward and 80 px down with its attack animation and sound $E8
+; In:  8(a6) = this
+; Out: d0 = +4 & 8
+; Evidence: Obj_ChangeAnim jt $BD2; Apocalypse_MoveTo(x +/- $3C00, y + $5000, +$9F); next Apocalypse_StateLungeEnd when the animation ends
 ; ---------------------------------------------------------------------------
-sub_04C030:
+Apocalypse_StateLunge:
 	link.w	a6,#$0
 	movem.l	d6-d7/a4,-(a7)
 	movea.l	$8(a6),a4
@@ -32,10 +35,10 @@ loc_04C04E:
 	move.l	d7,-(a7)
 	move.l	d6,-(a7)
 	move.l	a4,-(a7)
-	jsr	sub_04B3CE(pc)
+	jsr	Apocalypse_MoveTo(pc)
 	lea.l	$20(a7),a7
 	move.w	#$FF,$6C(a4)
-	lea.l	sub_04C0B2(pc),a0
+	lea.l	Apocalypse_StateLungeEnd(pc),a0
 	move.l	a0,$5C(a4)
 	moveq	#$8,d0
 	and.w	$4(a4),d0

@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_04B6EA	[jt 332]
+; Apocalypse_ActStartMainScript - APOCALYPSE script action: switch to AI script jt $BFA and run it
+; In:  8(a6) = this
+; Out: none
+; Evidence: AiScript_Set(+$A2, jt $BFA)
 ; ---------------------------------------------------------------------------
-sub_04B6EA:
+Apocalypse_ActStartMainScript:
 	link.w	a6,#$0
 	move.l	a4,-(a7)
 	movea.l	$8(a6),a4

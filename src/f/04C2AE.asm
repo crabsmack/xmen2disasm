@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_04C2AE	[link-after-rts]
+; Apocalypse_StateDefeatedWait - APOCALYPSE defeated: when at the centre wait 120 frames
+; In:  8(a6) = this
+; Out: d0
+; Evidence: next Apocalypse_StateDefeatedRise
 ; ---------------------------------------------------------------------------
-sub_04C2AE:
+Apocalypse_StateDefeatedWait:
 	link.w	a6,#$0
 	move.l	a4,-(a7)
 	movea.l	$8(a6),a4
@@ -16,14 +19,14 @@ sub_04C2AE:
 	moveq	#$0,d0
 	move.l	d0,$44(a4)
 	move.w	#$78,$6C(a4)
-	lea.l	sub_04C306(pc),a0
+	lea.l	Apocalypse_StateDefeatedRise(pc),a0
 	move.l	a0,$5C(a4)
 	moveq	#$8,d0
 	and.w	$4(a4),d0
 	bra.s	loc_04C2FE
 loc_04C2EC:
 	clr.w	$6C(a4)
-	lea.l	sub_04C2AE(pc),a0
+	lea.l	Apocalypse_StateDefeatedWait(pc),a0
 	move.l	a0,$5C(a4)
 	moveq	#$8,d0
 	and.w	$4(a4),d0

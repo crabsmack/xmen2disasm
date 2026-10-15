@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_04B790	[link-after-rts]
+; Apocalypse_StateDropBombs - APOCALYPSE: while fewer than 6 bombs are alive drop the next bomb of the pattern after its delay; at the pattern end advance to the next pattern (0-5)
+; In:  8(a6) = this
+; Out: d0
+; Evidence: bomb count -$3B08; sub_04E94A(speed, param) spawns a bomb; next Apocalypse_StateBombsDone
 ; ---------------------------------------------------------------------------
-sub_04B790:
+Apocalypse_StateDropBombs:
 	link.w	a6,#$0
 	movem.l	d5-d7/a4,-(a7)
 	movea.l	$8(a6),a4
@@ -36,13 +39,13 @@ sub_04B790:
 	clr.b	$AE(a4)
 loc_04B7F0:
 	move.l	a4,-(a7)
-	jsr	sub_04B344(pc)
+	jsr	Apocalypse_SelectBombPattern(pc)
 	addq.w	#$4,a7
 loc_04B7F8:
 	tst.b	d6
 	beq.s	loc_04B810
 	clr.w	$6C(a4)
-	lea.l	sub_04B848(pc),a0
+	lea.l	Apocalypse_StateBombsDone(pc),a0
 	move.l	a0,$5C(a4)
 	moveq	#$8,d0
 	and.w	$4(a4),d0
@@ -53,15 +56,15 @@ loc_04B810:
 	moveq	#-$1,d1
 	cmp.l	d0,d1
 	bne.s	loc_04B82C
-	lea.l	sub_04B790(pc),a0
+	lea.l	Apocalypse_StateDropBombs(pc),a0
 	move.l	a0,$5C(a4)
 	move.l	a4,-(a7)
-	jsr	sub_04B790(pc)
+	jsr	Apocalypse_StateDropBombs(pc)
 	addq.w	#$4,a7
 	bra.s	loc_04B83E
 loc_04B82C:
 	move.w	d7,$6C(a4)
-	lea.l	sub_04B790(pc),a0
+	lea.l	Apocalypse_StateDropBombs(pc),a0
 	move.l	a0,$5C(a4)
 	moveq	#$8,d0
 	and.w	$4(a4),d0

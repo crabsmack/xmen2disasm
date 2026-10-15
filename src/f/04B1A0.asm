@@ -1,5 +1,8 @@
 ; ---------------------------------------------------------------------------
-; loc_04B1A0	[runtime: executed in tas]
+; Apocalypse_ScriptBomb - APOCALYPSE AI script entry: StartBombs
+; In:  a4 = this
+; Out: none
+; Evidence: jmp thunk
 ; ---------------------------------------------------------------------------
-loc_04B1A0:
-	jmp	$A8A(a5)	; -> sub_04B73A
+Apocalypse_ScriptBomb:
+	jmp	$A8A(a5)	; -> Apocalypse_ActStartBombs

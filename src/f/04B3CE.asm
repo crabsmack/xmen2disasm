@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_04B3CE	[link-after-rts]
+; Apocalypse_MoveTo - APOCALYPSE: start a damped move to (x, y): acceleration from the distance and current velocity, scaled by 2^shift
+; In:  8(a6) = this, $C(a6) = long x, $10(a6) = long y (8.8 px), $14(a6) = shift
+; Out: none
+; Evidence: +$1E/+$20 accel = ((target - pos)/2 >> (2s-1)) - (vel >> s); target +$9A/+$9C; +$8C |= $10 (moving, cleared by Apocalypse_Move on arrival); +$A0 = 1 << s; 9 callers
 ; ---------------------------------------------------------------------------
-sub_04B3CE:
+Apocalypse_MoveTo:
 	link.w	a6,#$FFF4
 	movem.l	d4-d7/a4,-(a7)
 	move.l	$10(a6),d4

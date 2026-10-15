@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_04C332	[link-after-rts]
+; Apocalypse_StateVanish - APOCALYPSE defeated: hide, kill itself and spawn the object at (-10, -40) that ends the fight
+; In:  8(a6) = this
+; Out: none
+; Evidence: slot $56 SetFrame($FF), slot $52 Kill, sub_04EAC8($F600, -$2800) (BEAMSCOOTER code)
 ; ---------------------------------------------------------------------------
-sub_04C332:
+Apocalypse_StateVanish:
 	link.w	a6,#$0
 	move.l	a4,-(a7)
 	movea.l	$8(a6),a4

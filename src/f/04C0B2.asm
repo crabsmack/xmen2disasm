@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_04C0B2	[link-after-rts]
+; Apocalypse_StateLungeEnd - APOCALYPSE: stop the lunge and run the next script step
+; In:  8(a6) = this
+; Out: none
+; Evidence: +$8C bit 4 cleared, velocity/accel 0
 ; ---------------------------------------------------------------------------
-sub_04C0B2:
+Apocalypse_StateLungeEnd:
 	link.w	a6,#$0
 	move.l	a4,-(a7)
 	movea.l	$8(a6),a4

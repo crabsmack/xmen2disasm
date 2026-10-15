@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_04BA9C	[link-after-rts]
+; Apocalypse_StateWaitArrive - APOCALYPSE: when the move has arrived run the next script step
+; In:  8(a6) = this
+; Out: none
+; Evidence: +$8C bit 4
 ; ---------------------------------------------------------------------------
-sub_04BA9C:
+Apocalypse_StateWaitArrive:
 	link.w	a6,#$0
 	move.l	a4,-(a7)
 	movea.l	$8(a6),a4

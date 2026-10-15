@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_04B73A	[jt 333]
+; Apocalypse_ActStartBombs - APOCALYPSE script action: speed up the bombs (+$AC += 2, max $180), set up the bomb class and start dropping the current pattern
+; In:  8(a6) = this
+; Out: d0 = +4 & 8
+; Evidence: sub_04DF52(+$B0, speed, +$AF) (APOCBOMB setup); Apocalypse_SelectBombPattern; next Apocalypse_StateDropBombs
 ; ---------------------------------------------------------------------------
-sub_04B73A:
+Apocalypse_ActStartBombs:
 	link.w	a6,#$0
 	move.l	a4,-(a7)
 	movea.l	$8(a6),a4
@@ -20,10 +23,10 @@ loc_04B750:
 	move.l	d0,-(a7)
 	jsr	$B8A(a5)	; -> sub_04DF52
 	move.l	a4,-(a7)
-	jsr	sub_04B344(pc)
+	jsr	Apocalypse_SelectBombPattern(pc)
 	lea.l	$10(a7),a7
 	clr.w	$6C(a4)
-	lea.l	sub_04B790(pc),a0
+	lea.l	Apocalypse_StateDropBombs(pc),a0
 	move.l	a0,$5C(a4)
 	moveq	#$8,d0
 	and.w	$4(a4),d0

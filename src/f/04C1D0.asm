@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_04C1D0	[link-after-rts]
+; Apocalypse_StateDropFall - APOCALYPSE: when below y 224 stop and run the next script step after 255 frames
+; In:  8(a6) = this
+; Out: none
+; Evidence: y px > $E0
 ; ---------------------------------------------------------------------------
-sub_04C1D0:
+Apocalypse_StateDropFall:
 	link.w	a6,#$0
 	movem.l	d7/a4,-(a7)
 	movea.l	$8(a6),a4

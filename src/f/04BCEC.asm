@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; loc_04BCEC
+; Apocalypse_ActPickScript_part3 - part 3 of Apocalypse_ActPickScript: code block split off by the code-flow tools (not a separate function)
+; In:  registers/frame of Apocalypse_ActPickScript
+; Out: continues in Apocalypse_ActPickScript
+; Evidence: only reached by branches from Apocalypse_ActPickScript; ends with rts
 ; ---------------------------------------------------------------------------
-loc_04BCEC:
+Apocalypse_ActPickScript_part3:
 	tst.l	$A4(a4)
 	bne.s	loc_04BCFE
 	move.l	$64(a4),$5C(a4)

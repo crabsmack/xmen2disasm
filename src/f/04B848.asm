@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_04B848	[link-after-rts]
+; Apocalypse_StateBombsDone - APOCALYPSE: when all bombs are gone, switch AI script by damage phase (-$3B0C = 3, 7 or 12) or run the next step after 60 frames
+; In:  8(a6) = this
+; Out: none
+; Evidence: AiScript_Set with jt $C02 / $C0A / $4B208
 ; ---------------------------------------------------------------------------
-sub_04B848:
+Apocalypse_StateBombsDone:
 	link.w	a6,#$0
 	move.l	a4,-(a7)
 	movea.l	$8(a6),a4

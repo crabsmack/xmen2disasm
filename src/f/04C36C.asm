@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_04C36C	[link-after-rts]
+; Apocalypse_StateHurt - APOCALYPSE hit: hurt pose, long invulnerability, sound $EB; if out of health go to the defeat, else get knocked back
+; In:  8(a6) = this
+; Out: d0
+; Evidence: frames 5/6 -> animation jt $BE2, else frame 7; +$6A = 1000; health +$68 <= 0 -> Apocalypse_StateDefeated after 20; else vx = -/+$800 and Apocalypse_StateKnockback
 ; ---------------------------------------------------------------------------
-sub_04C36C:
+Apocalypse_StateHurt:
 	link.w	a6,#$0
 	move.l	a4,-(a7)
 	movea.l	$8(a6),a4
@@ -43,7 +46,7 @@ loc_04C3AA:
 	addq.w	#$8,a7
 	bgt.s	loc_04C3FC
 	move.w	#$14,$6C(a4)
-	lea.l	sub_04C240(pc),a0
+	lea.l	Apocalypse_StateDefeated(pc),a0
 	move.l	a0,$5C(a4)
 	moveq	#$8,d0
 	and.w	$4(a4),d0
@@ -60,7 +63,7 @@ loc_04C412:
 	neg.w	d0
 	move.w	d0,$16(a4)
 	clr.w	$6C(a4)
-	lea.l	sub_04C432(pc),a0
+	lea.l	Apocalypse_StateKnockback(pc),a0
 	move.l	a0,$5C(a4)
 	moveq	#$8,d0
 	and.w	$4(a4),d0

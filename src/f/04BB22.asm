@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_04BB22	[jt 337]
+; Apocalypse_StateRotateTo0 - APOCALYPSE: keep turning (+$8C bit 0) until angle +$8E is 0, then the next step
+; In:  8(a6) = this
+; Out: none
+; Evidence: also used directly as a script entry
 ; ---------------------------------------------------------------------------
-sub_04BB22:
+Apocalypse_StateRotateTo0:
 	link.w	a6,#$0
 	move.l	a4,-(a7)
 	movea.l	$8(a6),a4
@@ -33,7 +36,7 @@ loc_04BB64:
 	bra.s	loc_04BB90
 loc_04BB7E:
 	clr.w	$6C(a4)
-	lea.l	sub_04BB22(pc),a0
+	lea.l	Apocalypse_StateRotateTo0(pc),a0
 	move.l	a0,$5C(a4)
 	moveq	#$8,d0
 	and.w	$4(a4),d0

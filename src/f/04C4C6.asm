@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_04C4C6	[link-after-rts]
+; Apocalypse_StateResumeScript - APOCALYPSE: continue its AI script at the current entry
+; In:  8(a6) = this
+; Out: none
+; Evidence: +$5C = script +$A4 entry +$A2
 ; ---------------------------------------------------------------------------
-sub_04C4C6:
+Apocalypse_StateResumeScript:
 	link.w	a6,#$0
 	move.l	a4,-(a7)
 	movea.l	$8(a6),a4

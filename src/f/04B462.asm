@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_04B462	[link-after-rts]
+; Apocalypse_StartJitter - APOCALYPSE: small random accelerations around its target (hover wobble)
+; In:  8(a6) = this
+; Out: none
+; Evidence: sub_15C222 random when more than 1 px away; +$A0 = -100
 ; ---------------------------------------------------------------------------
-sub_04B462:
+Apocalypse_StartJitter:
 	link.w	a6,#$FFFE
 	movem.l	d3-d7/a4,-(a7)
 	movea.l	$8(a6),a4

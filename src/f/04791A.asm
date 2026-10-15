@@ -15,7 +15,7 @@ BaniMazaA2_RunScene:
 	jsr	BaniMazaA2_ResetCounters(pc)
 	jsr	BaniMazaA2_InitSprite(pc)
 	move.l	a3,-(a7)
-	jsr	sub_0472CC(pc)
+	jsr	BaniMazaA2_InitDebrisBuf(pc)
 	addq.w	#$4,a7
 	moveq	#$1,d0
 	move.l	d0,-(a7)

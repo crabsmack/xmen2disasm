@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_04B654	[link-after-rts]
+; Apocalypse_StateFlyOffWait - APOCALYPSE: once above the screen park at (-10, -20) hidden, next script step
+; In:  8(a6) = this
+; Out: none
+; Evidence: slot $56 SetFrame($FF)
 ; ---------------------------------------------------------------------------
-sub_04B654:
+Apocalypse_StateFlyOffWait:
 	link.w	a6,#$0
 	move.l	a4,-(a7)
 	movea.l	$8(a6),a4

@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_0472E0	[link-after-rts]
+; BaniMazaA2_UpdateDebrisGroup - move and draw one debris group: 12 particles with gravity while its timer runs
+; In:  8(a6) = group (particles of 8 bytes: x, y, tile, signed dx, dy; +$84 timer)
+; Out: none
+; Evidence: timer -1 (-2 at half rate); sprites into the list at $FFE226 on alternate frames (counter -$3B18); called by BaniMazaA2_UpdateDebris
 ; ---------------------------------------------------------------------------
-sub_0472E0:
+BaniMazaA2_UpdateDebrisGroup:
 	link.w	a6,#$0
 	movem.l	d3/d7/a3-a4,-(a7)
 	movea.l	$8(a6),a3

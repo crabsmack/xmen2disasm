@@ -124,7 +124,7 @@ loc_04CAF2:
 	tst.w	$A0(a4)
 	bgt.s	loc_04CB18
 	move.l	a4,-(a7)
-	jsr	sub_04B462(pc)
+	jsr	Apocalypse_StartJitter(pc)
 	addq.w	#$4,a7
 	bra.s	loc_04CB1C
 loc_04CB18:

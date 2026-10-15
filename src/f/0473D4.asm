@@ -1,10 +1,10 @@
 ; ---------------------------------------------------------------------------
-; BaniMazaA2_UpdateParts - update the four $86-byte BaniMazaA2 records at -$3B14 with sub_0472E0
+; BaniMazaA2_UpdateDebris - update the four BaniMazaA2 debris groups
 ; In:  none
 ; Out: none
-; Evidence: called from BaniMazaA2_FrameHook when record +$84 is set; records on BaniMazaA2_RunScene's stack (sub_0472CC)
+; Evidence: BaniMazaA2_UpdateDebrisGroup on each $86-byte group from -$3B14; called from BaniMazaA2_FrameHook when the first group's timer is running
 ; ---------------------------------------------------------------------------
-BaniMazaA2_UpdateParts:
+BaniMazaA2_UpdateDebris:
 	link.w	a6,#$0
 	movem.l	d3/d7/a4,-(a7)
 	movea.l	-$3B14(a5),a4
@@ -12,7 +12,7 @@ BaniMazaA2_UpdateParts:
 loc_0473E2:
 	move.l	a4,-(a7)
 	lea.l	$86(a4),a4
-	jsr	sub_0472E0(pc)
+	jsr	BaniMazaA2_UpdateDebrisGroup(pc)
 	addq.w	#$4,a7
 	move.w	d7,d0
 	addq.w	#$1,d7

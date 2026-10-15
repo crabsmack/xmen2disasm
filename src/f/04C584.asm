@@ -22,7 +22,7 @@ Apocalypse_Init:
 	clr.w	$20(a4)
 	move.w	#$7000,$22(a4)
 	move.w	#$7000,$24(a4)
-	lea.l	sub_04C36C(pc),a0
+	lea.l	Apocalypse_StateHurt(pc),a0
 	move.l	a0,$60(a4)
 	move.w	-$3C74(a5),d0
 	ext.l	d0
@@ -96,7 +96,7 @@ Apocalypse_Init:
 	move.b	#$3,$B0(a4)
 	clr.b	$AE(a4)
 	move.l	a4,-(a7)
-	jsr	sub_04B344(pc)
+	jsr	Apocalypse_SelectBombPattern(pc)
 	clr.b	$B1(a4)
 	move.b	#$4,$9F(a4)
 	move.b	#$5,$9E(a4)

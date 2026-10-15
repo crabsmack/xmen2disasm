@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_04C168	[link-after-rts]
+; Apocalypse_StateDrop - APOCALYPSE: fall towards the target (vx +/-$100, vy $300) with animation jt $BDA and sound $E8
+; In:  8(a6) = this
+; Out: d0 = +4 & 8
+; Evidence: next Apocalypse_StateDropFall
 ; ---------------------------------------------------------------------------
-sub_04C168:
+Apocalypse_StateDrop:
 	link.w	a6,#$0
 	movem.l	d7/a4,-(a7)
 	movea.l	$8(a6),a4
@@ -26,7 +29,7 @@ loc_04C188:
 	jsr	$521A(a5)	; -> Snd_Play
 	lea.l	$10(a7),a7
 	clr.w	$6C(a4)
-	lea.l	sub_04C1D0(pc),a0
+	lea.l	Apocalypse_StateDropFall(pc),a0
 	move.l	a0,$5C(a4)
 	moveq	#$8,d0
 	and.w	$4(a4),d0

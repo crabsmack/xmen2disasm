@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_04BF52	[link-after-rts]
+; Apocalypse_StateApproach - APOCALYPSE: while moving, drop on the target if it passes below; on arrival lunge if the target is within 170 px, else approach it again
+; In:  8(a6) = this
+; Out: d0
+; Evidence: target box +$54..+$5A vs own x +/-35; next Apocalypse_StateDropStart / Apocalypse_StateLunge / Apocalypse_ActGoNearPlayer
 ; ---------------------------------------------------------------------------
-sub_04BF52:
+Apocalypse_StateApproach:
 	link.w	a6,#$FFF8
 	movem.l	d4-d7/a3-a4,-(a7)
 	movea.l	$8(a6),a4
@@ -12,19 +15,19 @@ sub_04BF52:
 	bne.s	loc_04BFA6
 	pea.l	($AA).w
 	move.l	a4,-(a7)
-	jsr	sub_04BEFA(pc)
+	jsr	Apocalypse_TargetWithin(pc)
 	tst.b	d0
 	addq.w	#$8,a7
 	beq.s	loc_04BF90
 	clr.w	$6C(a4)
-	lea.l	sub_04C030(pc),a0
+	lea.l	Apocalypse_StateLunge(pc),a0
 	move.l	a0,$5C(a4)
 	moveq	#$8,d0
 	and.w	$4(a4),d0
 	bra.w	loc_04C026
 loc_04BF90:
 	clr.w	$6C(a4)
-	lea.l	sub_04BE76(pc),a0
+	lea.l	Apocalypse_ActGoNearPlayer(pc),a0
 	move.l	a0,$5C(a4)
 	moveq	#$8,d0
 	and.w	$4(a4),d0
@@ -59,14 +62,14 @@ loc_04BFA6:
 	cmp.w	-$2(a6),d7
 	bgt.s	loc_04C014
 	clr.w	$6C(a4)
-	lea.l	sub_04C114(pc),a0
+	lea.l	Apocalypse_StateDropStart(pc),a0
 	move.l	a0,$5C(a4)
 	moveq	#$8,d0
 	and.w	$4(a4),d0
 	bra.s	loc_04C026
 loc_04C014:
 	clr.w	$6C(a4)
-	lea.l	sub_04BF52(pc),a0
+	lea.l	Apocalypse_StateApproach(pc),a0
 	move.l	a0,$5C(a4)
 	moveq	#$8,d0
 	and.w	$4(a4),d0

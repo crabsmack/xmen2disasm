@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_04BB98	[jt 338]
+; Apocalypse_StateRotateTo180 - APOCALYPSE: keep turning (+$8C bit 0) until angle +$8E is 180, then the next step
+; In:  8(a6) = this
+; Out: none
+; Evidence: script entry in Apocalypse_ScriptA/B/C
 ; ---------------------------------------------------------------------------
-sub_04BB98:
+Apocalypse_StateRotateTo180:
 	link.w	a6,#$0
 	move.l	a4,-(a7)
 	movea.l	$8(a6),a4
@@ -33,7 +36,7 @@ loc_04BBDC:
 	bra.s	loc_04BC08
 loc_04BBF6:
 	clr.w	$6C(a4)
-	lea.l	sub_04BB98(pc),a0
+	lea.l	Apocalypse_StateRotateTo180(pc),a0
 	move.l	a0,$5C(a4)
 	moveq	#$8,d0
 	and.w	$4(a4),d0

@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_04C432	[link-after-rts]
+; Apocalypse_StateKnockback - APOCALYPSE knockback: halve the speed each frame until below $30, then 60 frames of invulnerability and resume its script
+; In:  8(a6) = this
+; Out: d0
+; Evidence: +$6A = $3C; next Apocalypse_StateResumeScript after +$6E
 ; ---------------------------------------------------------------------------
-sub_04C432:
+Apocalypse_StateKnockback:
 	link.w	a6,#$0
 	movem.l	d3/a4,-(a7)
 	movea.l	$8(a6),a4
@@ -27,15 +30,15 @@ loc_04C458:
 	moveq	#-$1,d0
 	cmp.w	$6E(a4),d0
 	bne.s	loc_04C48A
-	lea.l	sub_04C4C6(pc),a0
+	lea.l	Apocalypse_StateResumeScript(pc),a0
 	move.l	a0,$5C(a4)
 	move.l	a4,-(a7)
-	jsr	sub_04C4C6(pc)
+	jsr	Apocalypse_StateResumeScript(pc)
 	addq.w	#$4,a7
 	bra.s	loc_04C4BC
 loc_04C48A:
 	move.w	$6E(a4),$6C(a4)
-	lea.l	sub_04C4C6(pc),a0
+	lea.l	Apocalypse_StateResumeScript(pc),a0
 	move.l	a0,$5C(a4)
 	moveq	#$8,d0
 	and.w	$4(a4),d0
@@ -45,7 +48,7 @@ loc_04C4A0:
 	asr.w	#$1,d0
 	move.w	d0,$16(a4)
 	clr.w	$6C(a4)
-	lea.l	sub_04C432(pc),a0
+	lea.l	Apocalypse_StateKnockback(pc),a0
 	move.l	a0,$5C(a4)
 	moveq	#$8,d0
 	and.w	$4(a4),d0

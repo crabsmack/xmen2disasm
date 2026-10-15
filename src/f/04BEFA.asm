@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_04BEFA	[link-after-rts]
+; Apocalypse_TargetWithin - is the target player (+$96) within N px horizontally
+; In:  8(a6) = this, $C(a6) = word distance
+; Out: d0 = 1/0
+; Evidence: used by Apocalypse_StateApproach with $AA
 ; ---------------------------------------------------------------------------
-sub_04BEFA:
+Apocalypse_TargetWithin:
 	link.w	a6,#$0
 	movem.l	d3/d5-d7/a3-a4,-(a7)
 	movea.l	$8(a6),a3

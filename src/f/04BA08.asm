@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_04BA08	[link-after-rts]
+; Apocalypse_StateOrbitStep - APOCALYPSE: move to the point at angle +$8E on a wide ellipse (x 256 - sin*175, y 133 + cos*10)
+; In:  8(a6) = this
+; Out: d0 = +4 & 8
+; Evidence: Math_SinDeg/Math_CosDeg; Apocalypse_MoveTo(..., 5); next Apocalypse_StateWaitArrive
 ; ---------------------------------------------------------------------------
-sub_04BA08:
+Apocalypse_StateOrbitStep:
 	link.w	a6,#$0
 	movem.l	d5-d7/a4,-(a7)
 	movea.l	$8(a6),a4
@@ -45,10 +48,10 @@ sub_04BA08:
 	move.l	d7,-(a7)
 	move.l	d6,-(a7)
 	move.l	a4,-(a7)
-	jsr	sub_04B3CE(pc)
+	jsr	Apocalypse_MoveTo(pc)
 	lea.l	$18(a7),a7
 	clr.w	$6C(a4)
-	lea.l	sub_04BA9C(pc),a0
+	lea.l	Apocalypse_StateWaitArrive(pc),a0
 	move.l	a0,$5C(a4)
 	moveq	#$8,d0
 	and.w	$4(a4),d0
