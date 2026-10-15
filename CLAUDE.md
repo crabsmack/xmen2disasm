@@ -7,6 +7,10 @@ AS (Sonic Retro's toolchain). Phase 1 of 2: when every criterion in
 [segagenesisrecomp](https://github.com/mstan/segagenesisrecomp)) starts from
 `build/recomp/` (see [docs/RECOMP_HANDOFF.md](docs/RECOMP_HANDOFF.md)).
 
+**Status (2026-10-14): phase 1 complete, 16/16 criteria pass.** Two proposed criterion
+changes await the user's decision (NOTES "Open questions"); phase 2 starts from
+[docs/RECOMP_HANDOFF.md](docs/RECOMP_HANDOFF.md).
+
 **Start of every session:** `uv run tools/setup.py` (idempotent: ROM, emulator,
 build, runs, Ghidra), then read `docs/PROGRESS.md` and the relevant parts of
 `docs/NOTES.md`.
@@ -59,6 +63,7 @@ labelled data.
 | `sublabel.py ADDR Name "comment"` | Label a piece inside an already-labelled blob (code then refers to it by name, not Parent+$off) |
 | `extend_thunks.py [--labelled]` | Append the still-raw `jmp d(a5)` steps of AI scripts (count word + thunk table) |
 | `unknowns.py` | Regenerate the NOTES "Unknown (S5)" list from the coverage report |
+| `fix_stale.py` | Replace sub_/loc_ names that no longer exist (after rebasing over others' renames) |
 | `coverage.py [--list N] [--convert]` | Runtime truth vs. disassembly; `--convert` turns runtime-proven code into source |
 | `convert.py ADDR... --evidence "..."` | Raw bytes -> verified code from evidence (also batch: `--entries-file`) |
 | `candidates.py` | Unverified jump-table entries that trace cleanly as code |
@@ -150,3 +155,18 @@ Changing a criterion needs the user's approval.
 - Every worker appends to `docs/NOTES.md`. That's how they share understanding.
 - The orchestrator runs `progress.py` between rounds, reassigns ranges and
   criteria, and launches the review agent (N4), which must not review its own names.
+
+What phase 1 learned running ~16 agents this way (2026-10-14):
+- **Rebuild after every rebase, before pushing.** A textually clean rebase can still leave
+  stale `sub_/loc_` names that another worker renamed meanwhile (main was broken twice
+  this way). `uv run tools/fix_stale.py` repairs them in code, comments and NOTES.
+- Gate pushes on `grep -q "^OK: byte-identical"`, not on "OK or FAIL appears".
+- The scratchpad directory is shared by all agents: prefix every temp file per worker.
+- `docs/PROGRESS.md` is rewritten by every `progress.py` run: discard it before rebasing
+  unless you mean to commit it. In a worktree without `emu/runs/tas` H2 fails locally;
+  don't commit that table.
+- Useful split: range workers for N1/N2 (about 2k tokens per function), then a dedicated
+  globals worker (N3), data-label and header-audit workers once ranges finish, and
+  reviewers last. Mass-generated headers (class-slot templates) and auto data labels were
+  the weak spots reviews found; audit them by rule (empty overrides, sprite type byte,
+  animation step counts) before reviewing.

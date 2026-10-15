@@ -78,7 +78,7 @@ _(module → functions, globals, data; add as you learn them)_
   **Update (w140):** the Z80 command ring is 64 bytes at Z80 `$1B40`, write index at `$0036`;
   a command is `$FF, cmd, args` (`Snd_PutCmd`/`Snd_PutByte`). Commands: `$10` `Snd_Play(id)`,
   `$12` `Snd_Stop(id)` (222/279 Stop calls are followed by Play of the same id = restart),
-  `$0C`/`$0D` `Snd_Pause`/`Snd_Resume` (Start-button pause, `sub_15CAA4`), `$16` `Snd_StopAll`,
+  `$0C`/`$0D` `Snd_Pause`/`Snd_Resume` (Start-button pause, `Pause_Check`), `$16` `Snd_StopAll`,
   `$1B` `Snd_SetParam(slot, value)`, `$20` unknown (`Music_Play` sends `$0A`), `$0B` + four
   24-bit ROM pointers at boot (`Snd_Init`). `-$18AC(a5)` = mute flag, set while demos play
   (`Game_PlayAttractDemo`) and around some init calls. `Music_Play(track)` keeps the track in `-$38D2`.
@@ -131,7 +131,7 @@ _(module → functions, globals, data; add as you learn them)_
   stands on in +$76 and its position along it in +$72 (`Seg_WouldLeaveEnd`).
   Lookup grid: word grid at `-$347C`, cell size shifts `-$347E`/`-$3480` (Level_Load args),
   size `-$3482`/`-$3484`; each cell = offset of a $FF-terminated segment-index list in the pool
-  at `-$3478` (`Seg_GridCell`, `Seg_FindAt`, `Seg_FindBelow`; built by `sub_1F84BE`).
+  at `-$3478` (`Seg_GridCell`, `Seg_FindAt`, `Seg_FindBelow`; built by `Seg_BuildGrid`).
 - **Scenes**: `Scene_Register(name, func)` fills `g_SceneTable`; `Scene_EndAfter(n)` sets the
   exit countdown `-$359A` that the scene loop decrements to 0.
 - **Players**: two player objects at `$FFE9B8` and `$FFEAA8` (`Player_Nearest`). Which is P1
@@ -221,7 +221,7 @@ _(module → functions, globals, data; add as you learn them)_
   (`Scene_PreLoadReset`, `Scene_PostLoadVram`). After a scene: health -> `g_P1Health`,
   0 = spend a life (`g_P1Lives`) or drop out. `g_SceneIndex = -1` -> attract demos
   (`Game_AttractDemo*`, demo input at `-$3A1E` read as (duration, buttons) pairs by
-  `sub_1F9DE8`; `-$3A1A` = demo active; `-$18AC` = 1 mutes sound during demos).
+  `Demo_ReadInput`; `-$3A1A` = demo active; `-$18AC` = 1 mutes sound during demos).
 - **VRAM**: word `-$3598` ($FFCC68) = next free VRAM tile; `Spr_Init` sets up a sprite slot
   and returns base + tiles needed; `VDP_QueueDma(src, vram addr, bytes)` = DMA to VRAM (immediate
   while word `-$1D48` = VDP reg 1 mirror has bit 6 (display) clear, else queued at `$FFFA5C`). Joypad bits: Up 1, Down 2, Left 4, Right 8, B $10, C $20, A $40,
@@ -246,7 +246,7 @@ _(module → functions, globals, data; add as you learn them)_
 - **Scene hooks** (w000): `-$388E` = per-frame scene hook (e.g. `AvalonB1_FrameHook`), the
   CAMERA object's +4 = per-frame camera hook (AvalonB1 chains five `AvalonB1_CamHook*` for its
   intro), `-$3AF8..-$3ADC` = 8 map-tile hook pointers (`AvalonB1_InstallTileHooks`),
-  `sub_15D7F8(x, y, tile, keep)` sets a map tile, `Pal_CycleStep` steps a palette cycle into
+  `Map_SetBlockFG(x, y, tile, keep)` sets a map tile, `Pal_CycleStep` steps a palette cycle into
   `g_PalBase`. **Offset tip**: Ghidra shows RAM addresses; A5 offset = address - $10200
   (`$FFC6CE` -> `-$3B32`), not address - $10000.
 - **Stage code layout** (w000, `$000000-$080000`): every stage has `<Stage>_RunScene` calling
@@ -602,11 +602,11 @@ None of these was read or DMA'd anywhere in the 75-run corpus, and no jump-table
 - `$13F360-$13F364` (4 B) after Pop_NopStatic, before Debris_SetFloorY: `00 ff 00 00`
 - `$13F366-$13F368` (2 B) after Pop_NopStatic, before Debris_SetFloorY: `0f ff`
 - `$13F46C-$13F470` (4 B) after Pop_NopStatic, before Debris_SetFloorY: `00 00 00 00` all $00
-- `$1420DE-$1420E0` (2 B) after sub_14205E, before loc_14221E: `00 82`
-- `$1420E4-$1420F0` (12 B) after sub_14205E, before loc_14221E: `00 14 16 c0 00 15 d9 3a`
-- `$1420F4-$142124` (48 B) after sub_14205E, before loc_14221E: `00 15 e3 d4 00 15 e5 5a`
-- `$142128-$142166` (62 B) after sub_14205E, before loc_14221E: `00 15 e7 fa 00 14 18 fa`
-- `$144FEE-$144FF2` (4 B) after sub_144D88, before FluxBomb_GetSize: `00 00 00 00` all $00
+- `$1420DE-$1420E0` (2 B) after TankLeft_ActDrive, before Tank_ScriptWaitDrive: `00 82`
+- `$1420E4-$1420F0` (12 B) after TankLeft_ActDrive, before Tank_ScriptWaitDrive: `00 14 16 c0 00 15 d9 3a`
+- `$1420F4-$142124` (48 B) after TankLeft_ActDrive, before Tank_ScriptWaitDrive: `00 15 e3 d4 00 15 e5 5a`
+- `$142128-$142166` (62 B) after TankLeft_ActDrive, before Tank_ScriptWaitDrive: `00 15 e7 fa 00 14 18 fa`
+- `$144FEE-$144FF2` (4 B) after ToxicCan_NopStatic, before FluxBomb_GetSize: `00 00 00 00` all $00
 - `$159AB4-$159AB6` (2 B) after Magneto_SetFrame, before Cam_ClampLookToPlayers: `00 6e`
 - `$159ABA-$159AC2` (8 B) after Magneto_SetFrame, before Cam_ClampLookToPlayers: `00 15 7b a6 00 15 d9 3a`
 - `$159ACA-$159ACE` (4 B) after Magneto_SetFrame, before Cam_ClampLookToPlayers: `00 15 e3 d4`
@@ -675,86 +675,86 @@ None of these was read or DMA'd anywhere in the 75-run corpus, and no jump-table
 - `$1CD9CB-$1CD9DA` (15 B) after Psylocke_SelectFrame, before Magneto_GetSize: `00 00 00 00 00 00 00 00` all $00
 - `$1CD9DC-$1CD9DE` (2 B) after Psylocke_SelectFrame, before Magneto_GetSize: `fd 34`
 - `$1CD9E4-$1CD9FA` (22 B) after Psylocke_SelectFrame, before Magneto_GetSize: `fe c2 fd 7e 00 00 00 00`
-- `$1CEE66-$1CEE68` (2 B) after Magneto_Reset, before sub_1CEF6E: `02 02`
-- `$1CEE6A-$1CEE6C` (2 B) after Magneto_Reset, before sub_1CEF6E: `02 02`
-- `$1CEE6E-$1CEE70` (2 B) after Magneto_Reset, before sub_1CEF6E: `00 00` all $00
-- `$1CEE7A-$1CEE7C` (2 B) after Magneto_Reset, before sub_1CEF6E: `00 00` all $00
-- `$1CEE89-$1CEE90` (7 B) after Magneto_Reset, before sub_1CEF6E: `00 1b 58 16 1d 17 06`
-- `$1CEE93-$1CEE94` (1 B) after Magneto_Reset, before sub_1CEF6E: `00` all $00
-- `$1CEE98-$1CEE9A` (2 B) after Magneto_Reset, before sub_1CEF6E: `fe b6`
-- `$1CEEA4-$1CEEA6` (2 B) after Magneto_Reset, before sub_1CEF6E: `fd e6`
-- `$1CEEA8-$1CEEAA` (2 B) after Magneto_Reset, before sub_1CEF6E: `fe 0a`
-- `$1CEEAC-$1CEEE2` (54 B) after Magneto_Reset, before sub_1CEF6E: `fe 0a fe 26 00 00 00 00`
-- `$1CEEEE-$1CEF02` (20 B) after Magneto_Reset, before sub_1CEF6E: `00 00 00 00 00 01 00 03`
-- `$1CEF0E-$1CEF32` (36 B) after Magneto_Reset, before sub_1CEF6E: `00 00 00 00 00 00 00 01`
-- `$1CEF3E-$1CEF6E` (48 B) after Magneto_Reset, before sub_1CEF6E: `00 00 00 00 00 01 00 03`
-- `$1E16CC-$1E16D4` (8 B) after loc_1E16BC, before loc_1E16D4: `70 00 72 14 74 14 60 0e`; decodes as code (`moveq #$0, d0` ...) but nothing references it: dead code?
-- `$1E1768-$1E176E` (6 B) after loc_1E16D4, before loc_1E176E: `3c 04 7e ff 60 04`; decodes as code (`move.w d4, d6` ...) but nothing references it: dead code?
-- `$1E1906-$1E1908` (2 B) after loc_1E177A, before loc_1E1916: `fd ca`
-- `$1E190E-$1E1912` (4 B) after loc_1E177A, before loc_1E1916: `fe 5c fe 5c`
-- `$1E1CFA-$1E1D04` (10 B) after sub_1E1928, before sub_1E2AB0: `00 02 00 01 00 00 00 3c`
-- `$1E1D08-$1E1D0A` (2 B) after sub_1E1928, before sub_1E2AB0: `00 00` all $00
-- `$1E1D10-$1E1D12` (2 B) after sub_1E1928, before sub_1E2AB0: `00 00` all $00
-- `$1E1D16-$1E1D1E` (8 B) after sub_1E1928, before sub_1E2AB0: `02 01 00 06 00 00 00 24`
-- `$1E1D3E-$1E1D46` (8 B) after sub_1E1928, before sub_1E2AB0: `ff ff ff ff ff ff ff ff` all $FF
-- `$1E1D66-$1E1D6E` (8 B) after sub_1E1928, before sub_1E2AB0: `ff ff ff ff ff ff ff ff` all $FF
-- `$1E1D9E-$1E1DA6` (8 B) after sub_1E1928, before sub_1E2AB0: `ff ff ff ff ff ff ff ff` all $FF
-- `$1E1DDE-$1E1EA6` (200 B) after sub_1E1928, before sub_1E2AB0: `ff ff ff ff ff ff ff ff`
-- `$1E1EEE-$1E20B6` (456 B) after sub_1E1928, before sub_1E2AB0: `ff ff ff ff ff ff ff ff`
-- `$1E212E-$1E21E6` (184 B) after sub_1E1928, before sub_1E2AB0: `00 62 ff 8f 05 8a 00 11`
-- `$1E221E-$1E22EE` (208 B) after sub_1E1928, before sub_1E2AB0: `00 51 00 4f 13 35 00 08`
-- `$1E236E-$1E237E` (16 B) after sub_1E1928, before sub_1E2AB0: `ff ff ff ff ff ff ff ff` all $FF
-- `$1E2386-$1E238A` (4 B) after sub_1E1928, before sub_1E2AB0: `29 09 f8 00`
-- `$1E238C-$1E2398` (12 B) after sub_1E1928, before sub_1E2AB0: `00 00 ff fd 00 d7 00 03`
-- `$1E23A0-$1E23A4` (4 B) after sub_1E1928, before sub_1E2AB0: `29 09 f8 00`
-- `$1E23A6-$1E23D4` (46 B) after sub_1E1928, before sub_1E2AB0: `00 00 ff f8 00 dc 00 08`
-- `$1E23D8-$1E23F4` (28 B) after sub_1E1928, before sub_1E2AB0: `ff de 09 ad fa 94 fa c4`
-- `$1E23FC-$1E2400` (4 B) after sub_1E1928, before sub_1E2AB0: `2c 0c 00 08`
-- `$1E2402-$1E2432` (48 B) after sub_1E1928, before sub_1E2AB0: `ff f8 ff 7e 00 08 00 00`
-- `$1E2434-$1E2498` (100 B) after sub_1E1928, before sub_1E2AB0: `ff de 13 b1 fc 18 fc 78`
-- `$1E24A0-$1E24A4` (4 B) after sub_1E1928, before sub_1E2AB0: `2f 09 f8 08`
-- `$1E24A6-$1E255E` (184 B) after sub_1E1928, before sub_1E2AB0: `fe 00 fe 00 00 00 00 00`
-- `$1E2560-$1E2562` (2 B) after sub_1E1928, before sub_1E2AB0: `ff 9e`
-- `$1E256A-$1E256E` (4 B) after sub_1E1928, before sub_1E2AB0: `32 09 f8 f8`
-- `$1E2570-$1E25E6` (118 B) after sub_1E1928, before sub_1E2AB0: `fe 00 fe 00 00 00 00 00`
-- `$1E25EE-$1E25F2` (4 B) after sub_1E1928, before sub_1E2AB0: `32 09 f8 f8`
-- `$1E25F4-$1E2628` (52 B) after sub_1E1928, before sub_1E2AB0: `fe 00 fe 00 00 00 00 00`
-- `$1E262A-$1E262C` (2 B) after sub_1E1928, before sub_1E2AB0: `ff 7c`
-- `$1E262E-$1E2684` (86 B) after sub_1E1928, before sub_1E2AB0: `09 ca f9 30 f9 60 05 00`
-- `$1E26E0-$1E26E6` (6 B) after sub_1E1928, before sub_1E2AB0: `ff aa ff c4 ff de`
-- `$1E26EE-$1E26F2` (4 B) after sub_1E1928, before sub_1E2AB0: `38 09 f8 00`
-- `$1E26F4-$1E2734` (64 B) after sub_1E1928, before sub_1E2AB0: `00 00 ff fd 00 d2 00 03`
-- `$1E2736-$1E2788` (82 B) after sub_1E1928, before sub_1E2AB0: `ff cc ff e6 06 a8 f7 34`
-- `$1E2A54-$1E2A56` (2 B) after sub_1E1928, before sub_1E2AB0: `02 02`
-- `$1E2A58-$1E2A59` (1 B) after sub_1E1928, before sub_1E2AB0: `02`
-- `$1E2A5C-$1E2A5E` (2 B) after sub_1E1928, before sub_1E2AB0: `00 00` all $00
-- `$1E2A68-$1E2A6A` (2 B) after sub_1E1928, before sub_1E2AB0: `00 00` all $00
-- `$1E2A77-$1E2A7E` (7 B) after sub_1E1928, before sub_1E2AB0: `00 03 e8 0e 10 1f 08`
-- `$1E2A81-$1E2A82` (1 B) after sub_1E1928, before sub_1E2AB0: `00` all $00
-- `$1E2A86-$1E2A88` (2 B) after sub_1E1928, before sub_1E2AB0: `f2 c4`
-- `$1E2A92-$1E2A94` (2 B) after sub_1E1928, before sub_1E2AB0: `ef 66`
-- `$1E2A96-$1E2A98` (2 B) after sub_1E1928, before sub_1E2AB0: `f1 e2`
-- `$1E2A9C-$1E2AAC` (16 B) after sub_1E1928, before sub_1E2AB0: `f1 da 00 00 00 00 00 00`
-- `$1E2AAE-$1E2AB0` (2 B) after sub_1E1928, before sub_1E2AB0: `ff f4`
+- `$1CEE66-$1CEE68` (2 B) after Magneto_Reset, before Gambit_GetSize: `02 02`
+- `$1CEE6A-$1CEE6C` (2 B) after Magneto_Reset, before Gambit_GetSize: `02 02`
+- `$1CEE6E-$1CEE70` (2 B) after Magneto_Reset, before Gambit_GetSize: `00 00` all $00
+- `$1CEE7A-$1CEE7C` (2 B) after Magneto_Reset, before Gambit_GetSize: `00 00` all $00
+- `$1CEE89-$1CEE90` (7 B) after Magneto_Reset, before Gambit_GetSize: `00 1b 58 16 1d 17 06`
+- `$1CEE93-$1CEE94` (1 B) after Magneto_Reset, before Gambit_GetSize: `00` all $00
+- `$1CEE98-$1CEE9A` (2 B) after Magneto_Reset, before Gambit_GetSize: `fe b6`
+- `$1CEEA4-$1CEEA6` (2 B) after Magneto_Reset, before Gambit_GetSize: `fd e6`
+- `$1CEEA8-$1CEEAA` (2 B) after Magneto_Reset, before Gambit_GetSize: `fe 0a`
+- `$1CEEAC-$1CEEE2` (54 B) after Magneto_Reset, before Gambit_GetSize: `fe 0a fe 26 00 00 00 00`
+- `$1CEEEE-$1CEF02` (20 B) after Magneto_Reset, before Gambit_GetSize: `00 00 00 00 00 01 00 03`
+- `$1CEF0E-$1CEF32` (36 B) after Magneto_Reset, before Gambit_GetSize: `00 00 00 00 00 00 00 01`
+- `$1CEF3E-$1CEF6E` (48 B) after Magneto_Reset, before Gambit_GetSize: `00 00 00 00 00 01 00 03`
+- `$1E16CC-$1E16D4` (8 B) after Cyclops_DrawBeam_StepLevel, before Cyclops_DrawBeam_StepDiag: `70 00 72 14 74 14 60 0e`; decodes as code (`moveq #$0, d0` ...) but nothing references it: dead code?
+- `$1E1768-$1E176E` (6 B) after Cyclops_DrawBeam_StepDiag, before Cyclops_DrawBeam_CutBoth: `3c 04 7e ff 60 04`; decodes as code (`move.w d4, d6` ...) but nothing references it: dead code?
+- `$1E1906-$1E1908` (2 B) after Cyclops_DrawBeam_Emit, before Cyclops_DrawBeam_None: `fd ca`
+- `$1E190E-$1E1912` (4 B) after Cyclops_DrawBeam_Emit, before Cyclops_DrawBeam_None: `fe 5c fe 5c`
+- `$1E1CFA-$1E1D04` (10 B) after Cyclops_BeamVBlankFlicker, before Cyclops_GetSize: `00 02 00 01 00 00 00 3c`
+- `$1E1D08-$1E1D0A` (2 B) after Cyclops_BeamVBlankFlicker, before Cyclops_GetSize: `00 00` all $00
+- `$1E1D10-$1E1D12` (2 B) after Cyclops_BeamVBlankFlicker, before Cyclops_GetSize: `00 00` all $00
+- `$1E1D16-$1E1D1E` (8 B) after Cyclops_BeamVBlankFlicker, before Cyclops_GetSize: `02 01 00 06 00 00 00 24`
+- `$1E1D3E-$1E1D46` (8 B) after Cyclops_BeamVBlankFlicker, before Cyclops_GetSize: `ff ff ff ff ff ff ff ff` all $FF
+- `$1E1D66-$1E1D6E` (8 B) after Cyclops_BeamVBlankFlicker, before Cyclops_GetSize: `ff ff ff ff ff ff ff ff` all $FF
+- `$1E1D9E-$1E1DA6` (8 B) after Cyclops_BeamVBlankFlicker, before Cyclops_GetSize: `ff ff ff ff ff ff ff ff` all $FF
+- `$1E1DDE-$1E1EA6` (200 B) after Cyclops_BeamVBlankFlicker, before Cyclops_GetSize: `ff ff ff ff ff ff ff ff`
+- `$1E1EEE-$1E20B6` (456 B) after Cyclops_BeamVBlankFlicker, before Cyclops_GetSize: `ff ff ff ff ff ff ff ff`
+- `$1E212E-$1E21E6` (184 B) after Cyclops_BeamVBlankFlicker, before Cyclops_GetSize: `00 62 ff 8f 05 8a 00 11`
+- `$1E221E-$1E22EE` (208 B) after Cyclops_BeamVBlankFlicker, before Cyclops_GetSize: `00 51 00 4f 13 35 00 08`
+- `$1E236E-$1E237E` (16 B) after Cyclops_BeamVBlankFlicker, before Cyclops_GetSize: `ff ff ff ff ff ff ff ff` all $FF
+- `$1E2386-$1E238A` (4 B) after Cyclops_BeamVBlankFlicker, before Cyclops_GetSize: `29 09 f8 00`
+- `$1E238C-$1E2398` (12 B) after Cyclops_BeamVBlankFlicker, before Cyclops_GetSize: `00 00 ff fd 00 d7 00 03`
+- `$1E23A0-$1E23A4` (4 B) after Cyclops_BeamVBlankFlicker, before Cyclops_GetSize: `29 09 f8 00`
+- `$1E23A6-$1E23D4` (46 B) after Cyclops_BeamVBlankFlicker, before Cyclops_GetSize: `00 00 ff f8 00 dc 00 08`
+- `$1E23D8-$1E23F4` (28 B) after Cyclops_BeamVBlankFlicker, before Cyclops_GetSize: `ff de 09 ad fa 94 fa c4`
+- `$1E23FC-$1E2400` (4 B) after Cyclops_BeamVBlankFlicker, before Cyclops_GetSize: `2c 0c 00 08`
+- `$1E2402-$1E2432` (48 B) after Cyclops_BeamVBlankFlicker, before Cyclops_GetSize: `ff f8 ff 7e 00 08 00 00`
+- `$1E2434-$1E2498` (100 B) after Cyclops_BeamVBlankFlicker, before Cyclops_GetSize: `ff de 13 b1 fc 18 fc 78`
+- `$1E24A0-$1E24A4` (4 B) after Cyclops_BeamVBlankFlicker, before Cyclops_GetSize: `2f 09 f8 08`
+- `$1E24A6-$1E255E` (184 B) after Cyclops_BeamVBlankFlicker, before Cyclops_GetSize: `fe 00 fe 00 00 00 00 00`
+- `$1E2560-$1E2562` (2 B) after Cyclops_BeamVBlankFlicker, before Cyclops_GetSize: `ff 9e`
+- `$1E256A-$1E256E` (4 B) after Cyclops_BeamVBlankFlicker, before Cyclops_GetSize: `32 09 f8 f8`
+- `$1E2570-$1E25E6` (118 B) after Cyclops_BeamVBlankFlicker, before Cyclops_GetSize: `fe 00 fe 00 00 00 00 00`
+- `$1E25EE-$1E25F2` (4 B) after Cyclops_BeamVBlankFlicker, before Cyclops_GetSize: `32 09 f8 f8`
+- `$1E25F4-$1E2628` (52 B) after Cyclops_BeamVBlankFlicker, before Cyclops_GetSize: `fe 00 fe 00 00 00 00 00`
+- `$1E262A-$1E262C` (2 B) after Cyclops_BeamVBlankFlicker, before Cyclops_GetSize: `ff 7c`
+- `$1E262E-$1E2684` (86 B) after Cyclops_BeamVBlankFlicker, before Cyclops_GetSize: `09 ca f9 30 f9 60 05 00`
+- `$1E26E0-$1E26E6` (6 B) after Cyclops_BeamVBlankFlicker, before Cyclops_GetSize: `ff aa ff c4 ff de`
+- `$1E26EE-$1E26F2` (4 B) after Cyclops_BeamVBlankFlicker, before Cyclops_GetSize: `38 09 f8 00`
+- `$1E26F4-$1E2734` (64 B) after Cyclops_BeamVBlankFlicker, before Cyclops_GetSize: `00 00 ff fd 00 d2 00 03`
+- `$1E2736-$1E2788` (82 B) after Cyclops_BeamVBlankFlicker, before Cyclops_GetSize: `ff cc ff e6 06 a8 f7 34`
+- `$1E2A54-$1E2A56` (2 B) after Cyclops_BeamVBlankFlicker, before Cyclops_GetSize: `02 02`
+- `$1E2A58-$1E2A59` (1 B) after Cyclops_BeamVBlankFlicker, before Cyclops_GetSize: `02`
+- `$1E2A5C-$1E2A5E` (2 B) after Cyclops_BeamVBlankFlicker, before Cyclops_GetSize: `00 00` all $00
+- `$1E2A68-$1E2A6A` (2 B) after Cyclops_BeamVBlankFlicker, before Cyclops_GetSize: `00 00` all $00
+- `$1E2A77-$1E2A7E` (7 B) after Cyclops_BeamVBlankFlicker, before Cyclops_GetSize: `00 03 e8 0e 10 1f 08`
+- `$1E2A81-$1E2A82` (1 B) after Cyclops_BeamVBlankFlicker, before Cyclops_GetSize: `00` all $00
+- `$1E2A86-$1E2A88` (2 B) after Cyclops_BeamVBlankFlicker, before Cyclops_GetSize: `f2 c4`
+- `$1E2A92-$1E2A94` (2 B) after Cyclops_BeamVBlankFlicker, before Cyclops_GetSize: `ef 66`
+- `$1E2A96-$1E2A98` (2 B) after Cyclops_BeamVBlankFlicker, before Cyclops_GetSize: `f1 e2`
+- `$1E2A9C-$1E2AAC` (16 B) after Cyclops_BeamVBlankFlicker, before Cyclops_GetSize: `f1 da 00 00 00 00 00 00`
+- `$1E2AAE-$1E2AB0` (2 B) after Cyclops_BeamVBlankFlicker, before Cyclops_GetSize: `ff f4`
 - `$1F4880-$1F4890` (16 B) after Irq_HBlankVector, before unk_Sys_1F4890: `48 e7 e0 c0 20 78 02 18`
 - `$1F48F6-$1F4900` (10 B) after Mem_Copy, before Mem_Set: `86 6d 65 6d 63 70 79 00`
-- `$1F4956-$1F4960` (10 B) after Mem_Set, before sub_1F4A1A: `86 6d 65 6d 73 65 74 00`
-- `$1F49A6-$1F49B0` (10 B) after Mem_Set, before sub_1F4A1A: `00 6e 00 00 00 00 00 15`
-- `$1F49BC-$1F49C0` (4 B) after Mem_Set, before sub_1F4A1A: `00 15 e3 d4`
-- `$1F49C4-$1F49C8` (4 B) after Mem_Set, before sub_1F4A1A: `00 15 e4 52`
-- `$1F49D0-$1F49D8` (8 B) after Mem_Set, before sub_1F4A1A: `00 15 db 26 00 15 db 8e`
-- `$1F49FC-$1F4A1A` (30 B) after Mem_Set, before sub_1F4A1A: `00 15 e4 10 00 15 d9 70`
-- `$1F6E40-$1F6E42` (2 B) after sub_1F6D76, before loc_1F6E42: `60 78`
-- `$1F70A0-$1F70A4` (4 B) after Seg_ComputeObjPos, before loc_1F70A4: `60 00 01 46`; decodes as code (`bra.w $1f71e8` ...) but nothing references it: dead code?
-- `$1F729E-$1F72A0` (2 B) after sub_1F71F2, before loc_1F72A0: `60 56`
-- `$1F7682-$1F7686` (4 B) after sub_1F7628, before loc_1F7686: `60 00 02 b2`; decodes as code (`bra.w $1f7936` ...) but nothing references it: dead code?
-- `$1F7844-$1F7848` (4 B) after loc_1F76D6, before loc_1F7848: `60 00 00 84`; decodes as code (`bra.w $1f78ca` ...) but nothing references it: dead code?
-- `$1F895C-$1F89A4` (72 B) after loc_1F883A, before loc_1F89A4: `0c 2c 00 02 00 15 6c 00`; decodes as code (`cmpi.b #$2, $15(a4)` ...) but nothing references it: dead code?
-- `$1F8AF8-$1F8AFA` (2 B) after loc_1F8AEE, before sub_1F8B42: `fd 3e`
-- `$1F8B02-$1F8B1C` (26 B) after loc_1F8AEE, before sub_1F8B42: `ff d2 ff d2 ff d2 ff d2`
-- `$1F8B24-$1F8B26` (2 B) after loc_1F8AEE, before sub_1F8B42: `fe 52`
-- `$1F8B28-$1F8B2A` (2 B) after loc_1F8AEE, before sub_1F8B42: `fe 52`
-- `$1F8B32-$1F8B3A` (8 B) after loc_1F8AEE, before sub_1F8B42: `fe 64 ff d2 fd b4 fd 42`
+- `$1F4956-$1F4960` (10 B) after Mem_Set, before Obj_FindFreeSlot: `86 6d 65 6d 73 65 74 00`
+- `$1F49A6-$1F49B0` (10 B) after Mem_Set, before Obj_FindFreeSlot: `00 6e 00 00 00 00 00 15`
+- `$1F49BC-$1F49C0` (4 B) after Mem_Set, before Obj_FindFreeSlot: `00 15 e3 d4`
+- `$1F49C4-$1F49C8` (4 B) after Mem_Set, before Obj_FindFreeSlot: `00 15 e4 52`
+- `$1F49D0-$1F49D8` (8 B) after Mem_Set, before Obj_FindFreeSlot: `00 15 db 26 00 15 db 8e`
+- `$1F49FC-$1F4A1A` (30 B) after Mem_Set, before Obj_FindFreeSlot: `00 15 e4 10 00 15 d9 70`
+- `$1F6E40-$1F6E42` (2 B) after Seg_ApplyObjPos, before Seg_ApplyObjPos_Cases: `60 78`
+- `$1F70A0-$1F70A4` (4 B) after Seg_ComputeObjPos, before Seg_ComputeObjPos_Cases: `60 00 01 46`; decodes as code (`bra.w $1f71e8` ...) but nothing references it: dead code?
+- `$1F729E-$1F72A0` (2 B) after Seg_ObjPosUnclamped, before Seg_ObjPosUnclamped_Horiz: `60 56`
+- `$1F7682-$1F7686` (4 B) after Seg_ApplyPushOut, before Seg_ApplyPushOut_Block: `60 00 02 b2`; decodes as code (`bra.w $1f7936` ...) but nothing references it: dead code?
+- `$1F7844-$1F7848` (4 B) after Seg_ApplyPushOut_Default, before Seg_ApplyPushOut_Walls: `60 00 00 84`; decodes as code (`bra.w $1f78ca` ...) but nothing references it: dead code?
+- `$1F895C-$1F89A4` (72 B) after Seg_CollideObj_Cases, before Seg_CollideObj_CeilFloor: `0c 2c 00 02 00 15 6c 00`; decodes as code (`cmpi.b #$2, $15(a4)` ...) but nothing references it: dead code?
+- `$1F8AF8-$1F8AFA` (2 B) after Seg_CollideObj_Ret, before Obj_CollideSegs: `fd 3e`
+- `$1F8B02-$1F8B1C` (26 B) after Seg_CollideObj_Ret, before Obj_CollideSegs: `ff d2 ff d2 ff d2 ff d2`
+- `$1F8B24-$1F8B26` (2 B) after Seg_CollideObj_Ret, before Obj_CollideSegs: `fe 52`
+- `$1F8B28-$1F8B2A` (2 B) after Seg_CollideObj_Ret, before Obj_CollideSegs: `fe 52`
+- `$1F8B32-$1F8B3A` (8 B) after Seg_CollideObj_Ret, before Obj_CollideSegs: `fe 64 ff d2 fd b4 fd 42`
 - `$1FE5B2-$1FE5B4` (2 B) after Snd_Stop, before unk_Snd_1FE5B4: `4e 71`
 - `$1FE5C4-$1FE5C6` (2 B) after unk_Snd_1FE5B4, before Snd_Pause: `4e 71`
 - `$1FE608-$1FE618` (16 B) after Snd_StopAll, before Snd_SendCmd2: `4e 71 4e ba fe aa 4a 2d`
@@ -768,3 +768,12 @@ None of these was read or DMA'd anywhere in the 75-run corpus, and no jump-table
   Verified on the select screen: exactly those seven. `options-menu` and `continue` name
   features the game does not have; their scenario files cover the nearest real paths
   (title/pause input; game over -> restart) and say so in their headers.
+- **Awaiting the user's decision (criterion changes need approval; proposed 2026-10-14):**
+  1. `REQUIRED_SCENARIOS` in progress.py: replace `options-menu` with `pause-cheats` (a
+     scenario entering every decoded pause cheat code, see "Data formats"; likely new code
+     coverage) and drop `continue` (`game-over` already covers the real post-game-over path).
+  2. progress.py S3 regex `\$([0-9A-F]+)\(pc` also matches symbolic `Label+$N(pc)` operands
+     (false positive). Proposed: a lookbehind `(?<![\w+])` so only bare numbers count.
+     Worked around for now with `tools/sublabel.py`.
+- Leftover worktree `.claude/worktrees/agent-a83ae8f0d3b976e9f`: only a regenerated
+  docs/PROGRESS.md change; safe to `git worktree remove --force` + delete its branch.

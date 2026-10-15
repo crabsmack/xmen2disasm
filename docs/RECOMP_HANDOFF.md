@@ -20,6 +20,34 @@ into RAM. `jmp d(a5)` thunk tables are entered at computed offsets. Objects disp
 virtual calls through vtables (`movea.l (a4),a0; movea.l $XX(a0),a1; jsr (a1)`). The
 vtables labelled `Tbl_*_vtable` in the disassembly are complete lists of those targets.
 
+## What phase 1 found that the recompiler must handle
+
+Phase 1 finished 2026-10-14 (all 16 criteria). Code reached only through computed control
+flow, which a static recompiler cannot discover by following branches:
+- **AI scripts** (56): a `Tbl_<Script>Len` count word followed by a table of
+  `jmp d(a5)` thunks; `AiScript_Set` installs a script and the runner jumps to entry k.
+  Every thunk is disassembled (static steps included), so each table entry is a seed.
+- **Switch tables** (93): `Sw_XXXXXX` tables of `dc.w loc_case-(Sw_XXXXXX-2)` after
+  `move.w Sw(pc,dN),dN / jmp Sw-2(pc,dN)`. Case targets are symbolic; ~70 case bodies the
+  corpus never takes were disassembled from the tables.
+- **`Scaler_RowBlocks`** ($1FC8FE): 80 copies of an 18-byte unrolled block entered by a
+  computed jump from the picture scaler's row loop.
+- **`Nem_PutRowRam`** ($15F572): the Nemesis decoder's RAM-output row writer, selected
+  through a register (mode 0); never used in the corpus.
+- **Jump-table entry 2612 = `Jt_NullTarget` (0)**: linked to nothing; its only user is dead
+  code in `Sys_InitHardware`. Don't treat it as a function.
+
+Keep the original behaviour, including bugs: `AvalonA4_ClearCameraZone` clears every
+camera-zone flag (`!mask` where `~mask` was meant) and `Tank_SetTrackLimits` builds its
+right limit from the wrong word. The comparison against the emulator only stays clean if
+these are reproduced.
+
+Data the game streams at runtime: sprite definitions (`Art_*Spr`, NOTES "Sprite
+definitions") upload frame tiles every frame via `Spr_UploadFrame` -> `VDP_FlushDmaQueue`
+DMA. The emulator logs where every DMA'd ROM byte went
+(`emu/coverage/*.dmadest.txt.gz`) and which routine read every data byte
+(`*.readers.txt.gz`), useful when a divergence involves graphics or tables.
+
 ## Reference traces for frame-by-frame comparison
 
 The phase-2 loop is: run the recompiled game and the reference emulator on the

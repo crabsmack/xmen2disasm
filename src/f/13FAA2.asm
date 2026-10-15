@@ -1,5 +1,5 @@
 ; ---------------------------------------------------------------------------
-; Spark_Init - SPARK constructor: parent Init, no y acceleration, states Spark_StateStart / hurt sub_1400AA, sprite g_SparkSprDef (palette 1), position from the placement entry, origin +$92/+$96 = the x/y arguments, damage 1, flags |= $88, +$42 = $10, max speed $128, rail id +$8B = placement byte 7, priority when p8 is set, +$8C = p$A (default $100), wobble step +$9A = 0 (class slot 3, +$12)
+; Spark_Init - SPARK constructor: parent Init, no y acceleration, states Spark_StateStart / hurt Spark_StateHit, sprite g_SparkSprDef (palette 1), position from the placement entry, origin +$92/+$96 = the x/y arguments, damage 1, flags |= $88, +$42 = $10, max speed $128, rail id +$8B = placement byte 7, priority when p8 is set, +$8C = p$A (default $100), wobble step +$9A = 0 (class slot 3, +$12)
 ; In:  8(a6) = this  $C/$10(a6) = x, y (16.16)  $14(a6) = placement entry (not null-checked)
 ; Out: none
 ; Evidence: method 3 of class descriptor $1400DE (name string "SPARK", parent ACTOR)
