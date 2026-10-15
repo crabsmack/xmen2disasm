@@ -98,7 +98,7 @@ loc_144BBA:
 	lea.l	$3D7A(a5),a0
 	move.l	$2(a0),-(a7)
 	move.l	a4,-(a7)
-	jsr	$3AF2(a5)	; -> sub_13EEFA
+	jsr	$3AF2(a5)	; -> ExplodeFx_Chain
 	lea.l	$14(a7),a7
 	bra.w	loc_144C6C
 loc_144BE0:

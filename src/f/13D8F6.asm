@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_13D8F6
+; ExplodeFx_Free - end a death-explosion effect: stop/free its timer, remove its draw-list entry, clear the object flags
+; In:  8(a6) = effect (the killed object's memory)
+; Out: none
+; Evidence: Timer_Stop/Timer_Free +8, DrawList_Remove(+6) when >= 0, +4 = 0, +$15 := saved +$C; called by the Burst/Trail/Bounce/Chain updates when no puff is left
 ; ---------------------------------------------------------------------------
-sub_13D8F6:
+ExplodeFx_Free:
 	link.w	a6,#$0
 	move.l	a4,-(a7)
 	movea.l	$8(a6),a4

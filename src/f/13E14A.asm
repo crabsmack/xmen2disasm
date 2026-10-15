@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_13E14A	[link-after-rts]
+; ExplodeFx_TrailDraw - draw-list hook of a trail: a 32x32 sprite for each dropped puff (not the head)
+; In:  8(a6) = effect
+; Out: none
+; Evidence: same sprite emit as ExplodeFx_BurstDraw for puffs 1..+$1F-1
 ; ---------------------------------------------------------------------------
-sub_13E14A:
+ExplodeFx_TrailDraw:
 	link.w	a6,#$FFFA
 	movem.l	d4-d7/a3-a4,-(a7)
 	movea.l	$8(a6),a3

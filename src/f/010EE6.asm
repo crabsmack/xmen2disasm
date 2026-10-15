@@ -2,7 +2,7 @@
 ; BigAcolyte_StateBurstWall - BIGACOLYTE burst: last growth step, debris at the wall cells, rewrite map columns $D7-$D9 rows $1B-$1E, sounds, then become a normal sprite
 ; In:  8(a6) = this
 ; Out: d0 = +4 & 8
-; Evidence: sub_13F58A debris for 3x4 cells; sub_15D858 map writes; sounds $DC/$34; next state BigAcolyte_StateBecomeSprite
+; Evidence: Debris_Spawn debris for 3x4 cells; sub_15D858 map writes; sounds $DC/$34; next state BigAcolyte_StateBecomeSprite
 ; ---------------------------------------------------------------------------
 BigAcolyte_StateBurstWall:
 	link.w	a6,#$0
@@ -38,7 +38,7 @@ loc_010F16:
 	move.l	d6,-(a7)
 	ext.l	d5
 	move.l	d5,-(a7)
-	jsr	$3B6A(a5)	; -> sub_13F58A
+	jsr	$3B6A(a5)	; -> Debris_Spawn
 	lea.l	$10(a7),a7
 	dbra	d7,loc_010F16
 	dbra	d4,loc_010F14

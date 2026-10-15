@@ -20,7 +20,7 @@ LaserCannon_OnDeath:
 	lea.l	$3B42(a5),a0
 	move.l	$2(a0),-(a7)
 	move.l	a4,-(a7)
-	jsr	$3AF2(a5)	; -> sub_13EEFA
+	jsr	$3AF2(a5)	; -> ExplodeFx_Chain
 	movea.l	-$4(a6),a4
 	unlk	a6
 	rts

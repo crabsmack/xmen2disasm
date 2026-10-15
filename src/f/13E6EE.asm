@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_13E6EE	[link-after-rts]
+; ExplodeFx_BounceDraw - draw-list hook of the bounce effect: a 32x32 sprite per moving puff
+; In:  8(a6) = effect
+; Out: none
+; Evidence: same sprite emit as ExplodeFx_BurstDraw, positions >> 3
 ; ---------------------------------------------------------------------------
-sub_13E6EE:
+ExplodeFx_BounceDraw:
 	link.w	a6,#$FFFC
 	movem.l	d4-d7/a3-a4,-(a7)
 	movea.l	$8(a6),a3

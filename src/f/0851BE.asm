@@ -2,7 +2,7 @@
 ; SmallBrood_StateExplode - SMALLBROOD state: explode - hurt players within +-$3C x / +-$28 y and die
 ; In:  8(a6) = this
 ; Out: none
-; Evidence: same blast as DropBomb_StateExplode (player slot +$26 with damage +$70), then sub_13DE36 (death effect type 1)
+; Evidence: same blast as DropBomb_StateExplode (player slot +$26 with damage +$70), then ExplodeFx_BurstMedium (death effect type 1)
 ; Found: link-after-rts
 ; ---------------------------------------------------------------------------
 SmallBrood_StateExplode:
@@ -125,7 +125,7 @@ loc_0852E4:
 	cmp.l	d7,d0
 	bgt.w	loc_085244
 	move.l	a3,-(a7)
-	jsr	$3ACA(a5)	; -> sub_13DE36
+	jsr	$3ACA(a5)	; -> ExplodeFx_BurstMedium
 	addq.w	#$4,a7
 	movem.l	-$26(a6),d3-d7/a3-a4
 	unlk	a6

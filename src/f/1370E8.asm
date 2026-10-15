@@ -23,7 +23,7 @@ Hornet_Explode:
 	bne.s	loc_137124
 	pea.l	($202).w
 	move.l	a4,-(a7)
-	jsr	$3AC2(a5)	; -> sub_13DCB8
+	jsr	$3AC2(a5)	; -> ExplodeFx_Burst
 	addq.w	#$8,a7
 	bra.s	loc_13713A
 loc_137124:

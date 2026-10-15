@@ -18,7 +18,7 @@ Pop_Init:
 	movea.l	$2(a0),a0
 	movea.l	$12(a0),a1
 	jsr	(a1)
-	lea.l	sub_13F0F0(pc),a0
+	lea.l	Pop_StateStart(pc),a0
 	move.l	a0,$64(a4)
 	move.l	a0,$5C(a4)
 	ori.w	#$80,$6(a4)

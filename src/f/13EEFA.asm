@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_13EEFA	[jt 1882]
+; ExplodeFx_Chain - kill an object and start a chain explosion along a path at its position (no repeats)
+; In:  8(a6) = object  $C(a6) = path  $13(a6) = byte damaging  $16(a6) = word dx  $1A(a6) = word dy
+; Out: none
+; Evidence: vtable +$52 Kill, ExplodeFx_ChainStart(..., x+dx, y+dy, damaging, path, 0); 8 callers incl. LaserCannon_OnDeath (Tbl_ExplodeFxSpiralPath), BigBio_StateDefeated, Pop types 4/5 (jt 1882)
 ; ---------------------------------------------------------------------------
-sub_13EEFA:
+ExplodeFx_Chain:
 	link.w	a6,#$FFFC
 	movem.l	d4-d7/a4,-(a7)
 	movea.l	$8(a6),a4
@@ -60,7 +63,7 @@ loc_13EF48:
 	move.b	d4,d1
 	move.l	d1,-(a7)
 	move.l	a4,-(a7)
-	jsr	sub_13E928(pc)
+	jsr	ExplodeFx_ChainStart(pc)
 	lea.l	$2C(a7),a7
 	movem.l	-$18(a6),d4-d7/a4
 	unlk	a6

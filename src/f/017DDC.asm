@@ -2,7 +2,7 @@
 ; FarAcolyte_StateDie - FARACOLYTE death state: effect at its box centre, then the standard death
 ; In:  8(a6) = this
 ; Out: none
-; Evidence: installed as +$60 (hurt/death handler) by FarAcolyte_Init; Explosion_Spawn(centre x, centre y, 0); sub_13DE36
+; Evidence: installed as +$60 (hurt/death handler) by FarAcolyte_Init; Explosion_Spawn(centre x, centre y, 0); ExplodeFx_BurstMedium
 ; ---------------------------------------------------------------------------
 FarAcolyte_StateDie:
 	link.w	a6,#$0
@@ -28,7 +28,7 @@ FarAcolyte_StateDie:
 	move.l	d6,-(a7)
 	jsr	$2DCA(a5)	; -> Explosion_Spawn
 	move.l	a4,-(a7)
-	jsr	$3ACA(a5)	; -> sub_13DE36
+	jsr	$3ACA(a5)	; -> ExplodeFx_BurstMedium
 	movem.l	-$C(a6),d6-d7/a4
 	unlk	a6
 	rts

@@ -33,12 +33,12 @@ ApocBomb_TakeDamage:
 	move.l	d0,-(a7)
 	move.l	a3,-(a7)
 	move.l	a4,-(a7)
-	jsr	$3AFA(a5)	; -> sub_13EFA0
+	jsr	$3AFA(a5)	; -> ExplodeFx_ChainRepeat
 	lea.l	$1C(a7),a7
 	bra.s	loc_04E8E8
 loc_04E8E0:
 	move.l	a4,-(a7)
-	jsr	$3AD2(a5)	; -> sub_13DE4A
+	jsr	$3AD2(a5)	; -> ExplodeFx_BurstSmall
 	addq.w	#$4,a7
 loc_04E8E8:
 	movem.l	-$8(a6),a3-a4

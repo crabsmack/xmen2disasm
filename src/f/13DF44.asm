@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_13DF44	[link-after-rts]
+; ExplodeFx_TrailPuffInit - initialise a trail puff at a position (same as ExplodeFx_BurstPuffInit)
+; In:  8(a6) = puff  $C(a6) = long x  $10(a6) = long y
+; Out: none
+; Evidence: same body as ExplodeFx_BurstPuffInit; caller ExplodeFx_Trail
 ; ---------------------------------------------------------------------------
-sub_13DF44:
+ExplodeFx_TrailPuffInit:
 	link.w	a6,#$0
 	move.l	a4,-(a7)
 	movea.l	$8(a6),a4

@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_13DCB8	[jt 1876]
+; ExplodeFx_Burst - kill an object and replace it with a burst of up to 10 explosion puffs flying out from preset offsets
+; In:  8(a6) = object  $E(a6) = word kind: low byte 2 small, 3 large, else medium; bit 8 -> puffs drop a segment power-up, bit 9 -> drop variant $F0
+; Out: d0 = last puff
+; Evidence: offset tables Tbl_ExplodeFxSmall/Medium/Large (jt 1889-1891; dy negated when v-flipped); vtable +$52 Kill, ExplodeFx_BurstStart, ExplodeFx_BurstPuffInit/Aim; callers ExplodeFx_BurstSmall/Medium, Hornet_Explode, ChildShip_StateDie
 ; ---------------------------------------------------------------------------
-sub_13DCB8:
+ExplodeFx_Burst:
 	link.w	a6,#$FFF6
 	movem.l	d3-d7/a3-a4,-(a7)
 	move.w	$E(a6),d7
@@ -71,7 +74,7 @@ loc_13DD3E:
 	move.b	-$5(a6),d0
 	move.l	d0,-(a7)
 	move.l	a4,-(a7)
-	jsr	sub_13D954(pc)
+	jsr	ExplodeFx_BurstStart(pc)
 	move.l	a4,d0
 	moveq	#$E,d1
 	add.l	d1,d0
@@ -95,7 +98,7 @@ loc_13DD7E:
 	add.l	d5,d0
 	move.l	d0,-(a7)
 	move.l	-$A(a6),-(a7)
-	jsr	sub_13DA50(pc)
+	jsr	ExplodeFx_BurstPuffInit(pc)
 	lea.l	$C(a7),a7
 	bra.s	loc_13DDDC
 loc_13DDB8:
@@ -111,7 +114,7 @@ loc_13DDB8:
 	add.l	d5,d0
 	move.l	d0,-(a7)
 	move.l	-$A(a6),-(a7)
-	jsr	sub_13DA50(pc)
+	jsr	ExplodeFx_BurstPuffInit(pc)
 	lea.l	$C(a7),a7
 loc_13DDDC:
 	cmpi.w	#$FF,d7
@@ -132,7 +135,7 @@ loc_13DE08:
 	move.l	d6,-(a7)
 	move.l	d5,-(a7)
 	move.l	-$A(a6),-(a7)
-	jsr	sub_13DA0C(pc)
+	jsr	ExplodeFx_BurstPuffAim(pc)
 	move.w	d4,d0
 	addq.w	#$1,d4
 	move.l	-$A(a6),d0

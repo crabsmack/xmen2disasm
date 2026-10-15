@@ -2,7 +2,7 @@
 ; BioBalls_SpawnPuff - spawn a short ACTOR effect (animation $11E782) at pixel (x, y), optionally mirrored
 ; In:  $A/$E(a6) = word x, y  $13(a6) = byte mirror
 ; Out: d0
-; Evidence: ACTOR New + sub_13EFA0; called when BioBalls_MotionRoll finishes
+; Evidence: ACTOR New + ExplodeFx_ChainRepeat; called when BioBalls_MotionRoll finishes
 ; ---------------------------------------------------------------------------
 BioBalls_SpawnPuff:
 	link.w	a6,#$0
@@ -43,7 +43,7 @@ loc_1200FA:
 	lea.l	$3302(a5),a0
 	move.l	$2(a0),-(a7)
 	move.l	a4,-(a7)
-	jsr	$3AFA(a5)	; -> sub_13EFA0
+	jsr	$3AFA(a5)	; -> ExplodeFx_ChainRepeat
 	lea.l	$18(a7),a7
 loc_12011C:
 	movea.l	-$4(a6),a4

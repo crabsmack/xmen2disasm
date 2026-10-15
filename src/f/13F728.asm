@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_13F728	[link-after-rts]
+; Debris_Update - per-frame timer of a debris pool: move the pieces, bounce them on the floor line, drop worn-out pieces, emit 16x16 sprites
+; In:  8(a6) = pool
+; Out: none
+; Evidence: piece {+0/+4 long x/y, +8 vx, +$A vy, +$E gravity, +$10 frame 0-2, +$11 bounce count, +$12 frame delay, +$13 flip bits}; below floor: mirror y, vx += vx/2, vy = -vy/4, bounce += 3, removed when bounce > limit or |vy| < $40 (last piece copied over it); sprite size 5, tile = slot base + (bounce + frame)*4
 ; ---------------------------------------------------------------------------
-sub_13F728:
+Debris_Update:
 	link.w	a6,#$FFF4
 	movem.l	d3-d7/a3-a4,-(a7)
 	movea.l	$8(a6),a3

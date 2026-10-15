@@ -2,7 +2,7 @@
 ; Hologram_Explode - hologram destroyed: explosion actor, pose $1B, mark segment +$A2, free its sprite tiles, re-enable XPower spawns
 ; In:  8(a6) = this
 ; Out: none
-; Evidence: ACTOR New + sub_13EFA0 explosion; Spr_InvalidateFrame loop and VRAM pointer $FFCC68 -= tiles; Hologram_SetXPowerSpawns(1)
+; Evidence: ACTOR New + ExplodeFx_ChainRepeat explosion; Spr_InvalidateFrame loop and VRAM pointer $FFCC68 -= tiles; Hologram_SetXPowerSpawns(1)
 ; ---------------------------------------------------------------------------
 Hologram_Explode:
 	link.w	a6,#$0
@@ -34,7 +34,7 @@ Hologram_Explode:
 	lea.l	$281A(a5),a0
 	move.l	$2(a0),-(a7)
 	move.l	a4,-(a7)
-	jsr	$3AFA(a5)	; -> sub_13EFA0
+	jsr	$3AFA(a5)	; -> ExplodeFx_ChainRepeat
 	lea.l	$18(a7),a7
 loc_0E9CBA:
 	moveq	#$1B,d0

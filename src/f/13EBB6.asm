@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_13EBB6	[link-after-rts]
+; ExplodeFx_ChainHit - ObjList_ForEachInBox callback of a damaging chain explosion: hurt the actor
+; In:  8(a6) = actor  $E(a6) = word x  $12(a6) = word y
+; Out: none
+; Evidence: actor vtable +$26 TakeDamage(actor, 0, 4 (or $C when actor byte +$15 >= 2), 1, x, y); caller ExplodeFx_ChainUpdate on g_HitListEnemyBody and g_HitListPlayerBody
 ; ---------------------------------------------------------------------------
-sub_13EBB6:
+ExplodeFx_ChainHit:
 	link.w	a6,#$0
 	movem.l	d6-d7/a4,-(a7)
 	move.w	$12(a6),d6

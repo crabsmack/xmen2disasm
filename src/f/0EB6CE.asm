@@ -2,7 +2,7 @@
 ; CoreShields_StateAllDown - CoreShields: all 8 shields are gone: camera shake, start the hologram's death, explosion
 ; In:  8(a6) = this
 ; Out: none
-; Evidence: g_CamShake, Hologram_BeginDying, sub_13EFA0 explosion; TAS frame 9083
+; Evidence: g_CamShake, Hologram_BeginDying, ExplodeFx_ChainRepeat explosion; TAS frame 9083
 ; ---------------------------------------------------------------------------
 CoreShields_StateAllDown:
 	link.w	a6,#$0
@@ -19,6 +19,6 @@ CoreShields_StateAllDown:
 	lea.l	$28AA(a5),a0
 	move.l	$2(a0),-(a7)
 	move.l	$8(a6),-(a7)
-	jsr	$3AFA(a5)	; -> sub_13EFA0
+	jsr	$3AFA(a5)	; -> ExplodeFx_ChainRepeat
 	unlk	a6
 	rts

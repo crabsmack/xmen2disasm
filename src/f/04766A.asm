@@ -1,8 +1,8 @@
 ; ---------------------------------------------------------------------------
-; unk_BaniMazaA2_04766A - BaniMazaA2 after the 12th destroyed bomb: spawn a root ACTOR at ($100,$100) with sub_13EFA0, freeze the background sprite and set a fixed palette line 0
+; unk_BaniMazaA2_04766A - BaniMazaA2 after the 12th destroyed bomb: spawn a root ACTOR at ($100,$100) with ExplodeFx_ChainRepeat, freeze the background sprite and set a fixed palette line 0
 ; In:  none
 ; Out: none
-; Evidence: called by ApocBomb_Explode when the count -$3B0C reaches 12; ACTOR +$0E New; sub_13EFA0(obj, jt $D62, 0, -16, -16, 3); 14 colours from jt $47284; -$3B0E = 1 stops BaniMazaA2_AnimSprite and the colour cycle. Visible effect not confirmed
+; Evidence: called by ApocBomb_Explode when the count -$3B0C reaches 12; ACTOR +$0E New; ExplodeFx_ChainRepeat(obj, jt $D62, 0, -16, -16, 3); 14 colours from jt $47284; -$3B0E = 1 stops BaniMazaA2_AnimSprite and the colour cycle. Visible effect not confirmed
 ; ---------------------------------------------------------------------------
 unk_BaniMazaA2_04766A:
 	link.w	a6,#$0
@@ -33,7 +33,7 @@ unk_BaniMazaA2_04766A:
 	move.l	d0,-(a7)
 	move.l	a4,-(a7)
 	move.l	a3,-(a7)
-	jsr	$3AFA(a5)	; -> sub_13EFA0
+	jsr	$3AFA(a5)	; -> ExplodeFx_ChainRepeat
 	lea.l	$18(a7),a7
 loc_0476C2:
 	moveq	#$0,d0

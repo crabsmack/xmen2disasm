@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_13F4D4	[jt 1896]
+; Debris_CreatePool - allocate a debris pool for n pieces, load its graphics and start its update timer
+; In:  8(a6) = word n  $C(a6) = sprite definition (0 = none)  $13(a6) = byte SprDef_Add arg
+; Out: d0 = pool
+; Evidence: Mem_StackAlloc(n*$14 + $C, Str_DebrisPoolTag); header {+0 byte used, +1 byte max, +2 floor 400, +4 SprDef_Add slot or -1, +6 timer, +$A bounce limit}; Timer_Create(Debris_Update, 0, pool, 1); Debris_SetBounceLimit(4); callers BigAcolyte_ActAppear, CloneA5_RunScene (jt 1896)
 ; ---------------------------------------------------------------------------
-sub_13F4D4:
+Debris_CreatePool:
 	link.w	a6,#$0
 	movem.l	d6-d7/a3-a4,-(a7)
 	movea.l	$C(a6),a3
@@ -13,7 +16,7 @@ sub_13F4D4:
 	lsl.l	#$2,d1
 	add.l	d0,d1
 	move.w	d1,d7
-	pea.l	Str_Empty_13F588(pc)
+	pea.l	Str_DebrisPoolTag(pc)
 	ext.l	d7
 	move.l	d7,d0
 	moveq	#$C,d1
@@ -44,7 +47,7 @@ loc_13F536:
 	move.l	a4,-(a7)
 	moveq	#$0,d1
 	move.l	d1,-(a7)
-	pea.l	sub_13F728(pc)
+	pea.l	Debris_Update(pc)
 	jsr	$4FD2(a5)	; -> Timer_Create
 	move.l	d0,$6(a4)
 	lea.l	$10(a7),a7
@@ -56,7 +59,7 @@ loc_13F55C:
 	moveq	#$4,d0
 	move.l	d0,-(a7)
 	move.l	a4,-(a7)
-	jsr	sub_13F498(pc)
+	jsr	Debris_SetBounceLimit(pc)
 	lea.l	$C(a4),a3
 	ext.l	d7
 	move.l	d7,-(a7)

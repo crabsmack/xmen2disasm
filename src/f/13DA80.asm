@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_13DA80	[link-after-rts]
+; ExplodeFx_BurstUpdate - per-frame timer of a burst: move the 10 puffs, step their 7-frame animation, drop power-ups from type 2/3 puffs, free the effect when all are done
+; In:  8(a6) = effect
+; Out: none
+; Evidence: puffs from +$E, $12 bytes each; frame advances every 6 ticks (1 or 2 per frame, g_TwoPlayerStep); after frame 6 type 2 -> SegmentPlusPowerUp_Spawn(x+16 px, y+16 px, 0), type 3 -> (..., $F0); none live -> ExplodeFx_Free
 ; ---------------------------------------------------------------------------
-sub_13DA80:
+ExplodeFx_BurstUpdate:
 	link.w	a6,#$0
 	movem.l	d4-d7/a3-a4,-(a7)
 	movea.l	$8(a6),a3
@@ -122,7 +125,7 @@ loc_13DBC2:
 	tst.b	d5
 	bne.s	loc_13DBCE
 	move.l	a3,-(a7)
-	jsr	sub_13D8F6(pc)
+	jsr	ExplodeFx_Free(pc)
 	addq.w	#$4,a7
 loc_13DBCE:
 	movem.l	-$18(a6),d4-d7/a3-a4

@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_13DE5E	[link-after-rts]
+; ExplodeFx_TrailStart - turn a killed object's memory into a trail effect (ExplodeFx_TrailUpdate timer, ExplodeFx_TrailDraw hook)
+; In:  same as ExplodeFx_BurstStart
+; Out: none
+; Evidence: same body as ExplodeFx_BurstStart with the trail update/draw; caller ExplodeFx_Trail
 ; ---------------------------------------------------------------------------
-sub_13DE5E:
+ExplodeFx_TrailStart:
 	link.w	a6,#$0
 	movem.l	d6-d7/a4,-(a7)
 	move.b	$17(a6),d7
@@ -34,7 +37,7 @@ loc_13DE90:
 	move.l	d0,-(a7)
 	move.l	a4,-(a7)
 	move.l	d0,-(a7)
-	pea.l	sub_13DF74(pc)
+	pea.l	ExplodeFx_TrailUpdate(pc)
 	jsr	$4FD2(a5)	; -> Timer_Create
 	move.l	d0,$8(a4)
 	lea.l	$24(a7),a7
@@ -65,7 +68,7 @@ loc_13DEF6:
 loc_13DEF8:
 	move.l	d0,-(a7)
 	move.l	a4,-(a7)
-	pea.l	sub_13E14A(pc)
+	pea.l	ExplodeFx_TrailDraw(pc)
 	jsr	$4F6A(a5)	; -> DrawList_Add
 	move.w	d0,$6(a4)
 	lea.l	$18(a7),a7

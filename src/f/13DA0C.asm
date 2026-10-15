@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_13DA0C	[link-after-rts]
+; ExplodeFx_BurstPuffAim - give a burst puff its outward velocity from the explosion centre plus gravity
+; In:  8(a6) = puff  $C(a6) = long centre x  $10(a6) = long centre y (8.8 fixed)
+; Out: none
+; Evidence: vx = (x - cx) >> 5, vy = (y - cy) >> 5, ax = (x - cx) >> 10, ay = $C; caller ExplodeFx_Burst for each puff
 ; ---------------------------------------------------------------------------
-sub_13DA0C:
+ExplodeFx_BurstPuffAim:
 	link.w	a6,#$0
 	movem.l	d7/a4,-(a7)
 	move.l	$C(a6),d7

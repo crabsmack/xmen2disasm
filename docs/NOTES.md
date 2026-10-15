@@ -312,6 +312,16 @@ _(module → functions, globals, data; add as you learn them)_
 - **Bosses in `$0E0000-$140000` (w0E0)**: HOLOGRAM (SentinelsA1 CoolantCore: poses via `Hologram_SetPose`,
   lifts = COREELEVATOR, CORESHIELDS fire COREZAPs), DEATHBIRD (SpaceA1 elevator: hornet waves, burst
   projectiles, can hit the lift switch), BIGBIO (SpaceB1 arena: 16 orbs at `$FFE774`, spit pool `$FFE770`).
+- **Death effects `ExplodeFx_*` ($13D8F6-$13EFA0, w0E0b)**: a dying object's own memory becomes the effect
+  (vtable +$52 Kill, then `Mem_Set(obj+4, 0, $BE)`, a Timer for the update and a DrawList entry for 32x32 puff
+  sprites from `g_FxTileBase`, 7 frames x 6 ticks, sound $38). Four kinds, chosen by `XNpc_Explode` from stats
+  byte 2 and by POP's type: Burst (10 puffs from `Tbl_ExplodeFxSmall/Medium/Large`; kind bits $100/$200 make puffs
+  drop a segment power-up), Trail (head puff leaves explosions behind), Bounce (puffs reflect off the screen
+  edges), Chain (path script `{dx, dy, ?, delay}` ended by a negative long, optional repeats, optionally hurts
+  both sides via `ExplodeFx_ChainHit`). POP = invisible placed actor that waits then plays one of these.
+  `Debris_*` ($13F474-$13F728): separate pools of bouncing 16x16 debris pieces (BroodBoss, XClone walls).
+  MINE actors only seed a 20-record pool (`Mine_PoolAdd`), not real objects. `$1400DE` (labelled
+  `Tbl_SparkCallSlot5A`) is the SPARK class descriptor (Spark_Init calls its parent Init through it).
 - **Hit lists (w140b)**: 50 nodes x $C `{next, prev, owner}` at `$FFEBB2` (`HitList_Init`/`HitList_Add`), four
   heads: `$FFEBA2` player attackers, `$FFEBA6` player bodies, `$FFEBAA` enemy attackers, `$FFEBAE` enemy
   bodies. `Actor_Activate` adds an object's attacker node (+$80, unless +6 flag 1) and body node (+$84,

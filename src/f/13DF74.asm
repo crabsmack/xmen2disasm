@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_13DF74	[link-after-rts]
+; ExplodeFx_TrailUpdate - per-frame timer of a trail: move the head puff and drop a new puff at its position every few steps; animate the dropped puffs
+; In:  8(a6) = effect
+; Out: none
+; Evidence: puff 0 = head: moves with velocity/acceleration, +$10 step count; when step >= 2 * puffs-so-far (+$11 of the head, < 10) copies its position into the next puff (+$1F = count) with the explosion sound; head off the view window ($FFCC3A-$FFCC40) stops; ExplodeFx_Free when nothing is live
 ; ---------------------------------------------------------------------------
-sub_13DF74:
+ExplodeFx_TrailUpdate:
 	link.w	a6,#$FFF6
 	movem.l	d4-d7/a3-a4,-(a7)
 	movea.l	$8(a6),a3
@@ -169,7 +172,7 @@ loc_13E132:
 	tst.b	-$5(a6)
 	bne.s	loc_13E140
 	move.l	a3,-(a7)
-	jsr	sub_13D8F6(pc)
+	jsr	ExplodeFx_Free(pc)
 	addq.w	#$4,a7
 loc_13E140:
 	movem.l	-$22(a6),d4-d7/a3-a4

@@ -2,7 +2,7 @@
 ; YoyoAcolyte_StateDie - YOYOACOLYTE death: sound $DB, effect at its box centre, clear the yoyo flags, standard death
 ; In:  8(a6) = this
 ; Out: none
-; Evidence: Explosion_Spawn(centre x, centre y, 0); sub_13DE36
+; Evidence: Explosion_Spawn(centre x, centre y, 0); ExplodeFx_BurstMedium
 ; ---------------------------------------------------------------------------
 YoyoAcolyte_StateDie:
 	link.w	a6,#$0
@@ -31,7 +31,7 @@ YoyoAcolyte_StateDie:
 	jsr	$2DCA(a5)	; -> Explosion_Spawn
 	clr.w	$B4(a4)
 	move.l	a4,-(a7)
-	jsr	$3ACA(a5)	; -> sub_13DE36
+	jsr	$3ACA(a5)	; -> ExplodeFx_BurstMedium
 	movem.l	-$C(a6),d6-d7/a4
 	unlk	a6
 	rts

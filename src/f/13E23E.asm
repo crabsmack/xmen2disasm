@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_13E23E	[link-after-rts]
+; ExplodeFx_Trail - kill an object and replace it with a trail of explosions left behind by a moving head puff
+; In:  8(a6) = object  $E(a6) = word vx  $12(a6) = word vy  $16(a6) = word ax  $1A(a6) = word ay
+; Out: d0 = misc
+; Evidence: vtable +$52 Kill, ExplodeFx_TrailStart, 10 x ExplodeFx_TrailPuffInit at the object, ExplodeFx_TrailSetHead on puff 0; caller ExplodeFx_TrailArc
 ; ---------------------------------------------------------------------------
-sub_13E23E:
+ExplodeFx_Trail:
 	link.w	a6,#$FFFC
 	movem.l	d4-d7/a3-a4,-(a7)
 	movea.l	$8(a6),a4
@@ -40,7 +43,7 @@ loc_13E278:
 	move.b	-$3(a6),d0
 	move.l	d0,-(a7)
 	move.l	a4,-(a7)
-	jsr	sub_13DE5E(pc)
+	jsr	ExplodeFx_TrailStart(pc)
 	movea.l	a4,a3
 	lea.l	$E(a3),a3
 	lea.l	$18(a7),a7
@@ -50,7 +53,7 @@ loc_13E2B4:
 	move.l	d6,-(a7)
 	move.l	d5,-(a7)
 	move.l	a3,-(a7)
-	jsr	sub_13DF44(pc)
+	jsr	ExplodeFx_TrailPuffInit(pc)
 	tst.w	d7
 	lea.l	$C(a7),a7
 	bne.s	loc_13E2FA
@@ -69,7 +72,7 @@ loc_13E2B4:
 	move.l	d6,-(a7)
 	move.l	d5,-(a7)
 	move.l	a3,-(a7)
-	jsr	sub_13DF16(pc)
+	jsr	ExplodeFx_TrailSetHead(pc)
 	lea.l	$1C(a7),a7
 loc_13E2FA:
 	move.w	d7,d0

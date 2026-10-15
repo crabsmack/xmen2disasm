@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_13FEB6	[link-after-rts]
+; Spark_StateStart - SPARK first state (Init's +$5C/+$64): start the animation, then either fly straight (type 1) or chase player 1
+; In:  8(a6) = this
+; Out: d0 = flags & 8
+; Evidence: Obj_SetAnim(jt data $140152); +$8B (spawn byte 7) = 1 -> sub_1F7DAE(this, 1000, -1), vx = vy = +$8C (spawn +$A, default $100), +$5C = sub_14004A; else +$8E = g_Player1, +$5C = Spark_StateStop
 ; ---------------------------------------------------------------------------
-sub_13FEB6:
+Spark_StateStart:
 	link.w	a6,#$0
 	move.l	a4,-(a7)
 	movea.l	$8(a6),a4
@@ -31,7 +34,7 @@ loc_13FF0A:
 	lea.l	g_Player1(a5),a0
 	move.l	a0,$8E(a4)
 	clr.w	$6C(a4)
-	lea.l	sub_13FF2C(pc),a0
+	lea.l	Spark_StateStop(pc),a0
 	move.l	a0,$5C(a4)
 	moveq	#$8,d0
 	and.w	$4(a4),d0

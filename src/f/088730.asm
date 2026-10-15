@@ -2,7 +2,7 @@
 ; CloneA5_RunScene - scene function for 'CloneA5 BroodBoss': load the boss arena and run it
 ; In:  none
 ; Out: none
-; Evidence: registered under that name (Scene_RegisterAll, jt 644); Level_Load with Tbl_BroodBossHall class list $08CD28; music $13; boss offsets -$3C44 = 0, -$3C48 = $3300; palette-cycle table from $088B1E; segment hooks CloneA5_SegHook16/15; Players_PlaceAtStart; effect pools via sub_13F4D4; palette line 0 = Pal_CloneA2Line0; scene hook CloneA5_FrameHook; Level_Run; TAS 49125
+; Evidence: registered under that name (Scene_RegisterAll, jt 644); Level_Load with Tbl_BroodBossHall class list $08CD28; music $13; boss offsets -$3C44 = 0, -$3C48 = $3300; palette-cycle table from $088B1E; segment hooks CloneA5_SegHook16/15; Players_PlaceAtStart; effect pools via Debris_CreatePool; palette line 0 = Pal_CloneA2Line0; scene hook CloneA5_FrameHook; Level_Run; TAS 49125
 ; Found: jt 644
 ; ---------------------------------------------------------------------------
 CloneA5_RunScene:
@@ -95,14 +95,14 @@ loc_08880A:
 	move.l	d0,-(a7)
 	moveq	#$12,d1
 	move.l	d1,-(a7)
-	jsr	$3B62(a5)	; -> sub_13F4D4
+	jsr	$3B62(a5)	; -> Debris_CreatePool
 	move.l	d0,-$3B1C(a5)
 	moveq	#$0,d0
 	move.l	d0,-(a7)
 	move.l	d0,-(a7)
 	moveq	#$12,d1
 	move.l	d1,-(a7)
-	jsr	$3B62(a5)	; -> sub_13F4D4
+	jsr	$3B62(a5)	; -> Debris_CreatePool
 	move.l	d0,-$3B14(a5)
 	clr.b	-$3894(a5)
 	move.w	g_Player1+$4(a5),d0

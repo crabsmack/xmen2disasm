@@ -2,7 +2,7 @@
 ; RetractFloor_StartRetract - RETRACTFLOOR slot +$6E (own virtual): mark it triggered and destroy every other active object within 60 px of its height
 ; In:  8(a6) = this
 ; Out: none
-; Evidence: tools/classes.py RETRACTFLOOR +$6E; +$8C |= 1; sub_13DE36 on objects in the active table
+; Evidence: tools/classes.py RETRACTFLOOR +$6E; +$8C |= 1; ExplodeFx_BurstMedium on objects in the active table
 ; ---------------------------------------------------------------------------
 RetractFloor_StartRetract:
 	link.w	a6,#$0
@@ -48,7 +48,7 @@ loc_026D5C:
 	cmpi.w	#$3C,d6
 	bge.s	loc_026D6C
 	move.l	a4,-(a7)
-	jsr	$3ACA(a5)	; -> sub_13DE36
+	jsr	$3ACA(a5)	; -> ExplodeFx_BurstMedium
 	addq.w	#$4,a7
 loc_026D6C:
 	addq.l	#$1,d7

@@ -31,7 +31,7 @@ ApocBomb_Attack:
 	move.w	-$3B08(a5),d0
 	subq.w	#$1,-$3B08(a5)
 	move.l	a4,-(a7)
-	jsr	$3AD2(a5)	; -> sub_13DE4A
+	jsr	$3AD2(a5)	; -> ExplodeFx_BurstSmall
 	movem.l	-$8(a6),a3-a4
 	unlk	a6
 	rts

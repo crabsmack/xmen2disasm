@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_13E928	[jt 1881]
+; ExplodeFx_ChainStart - turn a killed object's memory into a chain explosion that follows a path script, optionally hurting what it touches
+; In:  8(a6) = object  $F(a6) = layer  $17/$1B(a6) = priority / flag bytes  $1E(a6) = word x px  $22(a6) = word y px  $27(a6) = byte damaging  $28(a6) = path  $2E(a6) = word repeats (low byte) and repeat delay (high byte)
+; Out: none
+; Evidence: same set-up as ExplodeFx_BurstStart with ExplodeFx_ChainUpdate/ChainDraw; +$E/+$10 origin, +$18/+$1C path pointer/start, +$14 repeats, +$15 delay, +$16 bit 0 damaging, bit 1 h-flip, bit 2 v-flip
 ; ---------------------------------------------------------------------------
-sub_13E928:
+ExplodeFx_ChainStart:
 	link.w	a6,#$0
 	movem.l	d4-d7/a4,-(a7)
 	move.w	$2E(a6),d5
@@ -46,7 +49,7 @@ loc_13E978:
 	move.l	d0,-(a7)
 	move.l	a4,-(a7)
 	move.l	d0,-(a7)
-	pea.l	sub_13EC26(pc)
+	pea.l	ExplodeFx_ChainUpdate(pc)
 	jsr	$4FD2(a5)	; -> Timer_Create
 	move.l	d0,$8(a4)
 	lea.l	$24(a7),a7
@@ -77,7 +80,7 @@ loc_13E9DE:
 loc_13E9E0:
 	move.l	d0,-(a7)
 	move.l	a4,-(a7)
-	pea.l	sub_13EE20(pc)
+	pea.l	ExplodeFx_ChainDraw(pc)
 	jsr	$4F6A(a5)	; -> DrawList_Add
 	move.w	d0,$6(a4)
 	move.l	$28(a6),$18(a4)

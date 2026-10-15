@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_13EC26	[link-after-rts]
+; ExplodeFx_ChainUpdate - per-frame timer of a chain explosion: run the path delay, animate the live explosions, hit-test them when damaging, free when done or off screen
+; In:  8(a6) = effect
+; Out: none
+; Evidence: +$12 delay -> ExplodeFx_ChainStep; 27 slots, off-view slots die; damaging (+$16 bit 0) -> ObjList_ForEachInBox(32x32 box, enemy and player body lists, ExplodeFx_ChainHit); ExplodeFx_Free when the path is over or the origin left the view
 ; ---------------------------------------------------------------------------
-sub_13EC26:
+ExplodeFx_ChainUpdate:
 	link.w	a6,#$FFF8
 	movem.l	d4-d7/a3-a4,-(a7)
 	movea.l	$8(a6),a3
@@ -30,7 +33,7 @@ loc_13EC62:
 	tst.w	$12(a3)
 	bgt.s	loc_13EC76
 	move.l	a3,-(a7)
-	jsr	sub_13EA46(pc)
+	jsr	ExplodeFx_ChainStep(pc)
 	addq.w	#$4,a7
 loc_13EC76:
 	moveq	#$1B,d0
@@ -118,7 +121,7 @@ loc_13ED3C:
 	beq.s	loc_13EDB2
 	moveq	#$0,d0
 	move.l	d0,-(a7)
-	pea.l	sub_13EBB6(pc)
+	pea.l	ExplodeFx_ChainHit(pc)
 	move.l	g_HitListEnemyBody(a5),-(a7)
 	move.w	$2(a4),d1
 	ext.l	d1
@@ -138,7 +141,7 @@ loc_13ED3C:
 	jsr	$2DE2(a5)	; -> ObjList_ForEachInBox
 	moveq	#$0,d0
 	move.l	d0,-(a7)
-	pea.l	sub_13EBB6(pc)
+	pea.l	ExplodeFx_ChainHit(pc)
 	move.l	g_HitListPlayerBody(a5),-(a7)
 	move.w	$2(a4),d1
 	ext.l	d1
@@ -197,7 +200,7 @@ loc_13EE04:
 	beq.s	loc_13EE16
 loc_13EE0E:
 	move.l	a3,-(a7)
-	jsr	sub_13D8F6(pc)
+	jsr	ExplodeFx_Free(pc)
 	addq.w	#$4,a7
 loc_13EE16:
 	movem.l	-$20(a6),d4-d7/a3-a4

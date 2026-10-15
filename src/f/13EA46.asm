@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_13EA46	[link-after-rts]
+; ExplodeFx_ChainStep - spawn the next explosion(s) of a chain from its path script
+; In:  8(a6) = effect
+; Out: none
+; Evidence: path entries {word dx (negated when h-flipped), word dy (subtracted), word, word delay} ended by a negative long at +4; free slot of 27 ($6-byte {x, y, frame, live} from +$20) gets origin + offset; at the end restart from +$1C while +$14 repeats remain, waiting +$15; explosion sound with cooldown
 ; ---------------------------------------------------------------------------
-sub_13EA46:
+ExplodeFx_ChainStep:
 	link.w	a6,#$0
 	movem.l	d3/d6-d7/a3-a4,-(a7)
 	movea.l	$8(a6),a4

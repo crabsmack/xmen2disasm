@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_13E30E	[jt 1879]
+; ExplodeFx_TrailArc - death effect: trail whose head shoots vertically and curves toward the middle of the screen area
+; In:  8(a6) = object
+; Out: none
+; Evidence: ExplodeFx_Trail(obj, 0, vy, ax, ay): x px < $A0 -> ax = $200 else -$200; y px < $70 -> vy = $800, ay = -$20, else vy = -$800, ay = $20 (absolute pixel coordinates); XNpc_Explode stats byte 2 = 4, Pop type 2 (jt 1879)
 ; ---------------------------------------------------------------------------
-sub_13E30E:
+ExplodeFx_TrailArc:
 	link.w	a6,#$0
 	movem.l	d4-d7/a4,-(a7)
 	movea.l	$8(a6),a4
@@ -36,7 +39,7 @@ loc_13E34E:
 	ext.l	d4
 	move.l	d4,-(a7)
 	move.l	a4,-(a7)
-	jsr	sub_13E23E(pc)
+	jsr	ExplodeFx_Trail(pc)
 	movem.l	-$14(a6),d4-d7/a4
 	unlk	a6
 	rts

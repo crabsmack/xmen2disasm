@@ -1996,7 +1996,7 @@ Tbl_BroodClawCamApply:	; table read by CloneA5_CamApply; 9 of A bytes used at ru
 	incrom	$088B06,$A
 Tbl_BroodBossCamApply:	; table read by CloneA5_CamApply; D of E bytes used at runtime; read by CloneA5_CamApply; jt[661] used by BroodBoss_StateCharge, BroodBoss_StateChargeWall
 	incrom	$088B10,$E
-Tbl_CloneA5RunScene:	; table read by CloneA5_RunScene; 20 of 20 bytes used at runtime; read by CloneA5_RunScene, sub_13EA46; jt[662] used by CloneA5_RunScene
+Tbl_CloneA5RunScene:	; table read by CloneA5_RunScene; 20 of 20 bytes used at runtime; read by CloneA5_RunScene, ExplodeFx_ChainStep; jt[662] used by CloneA5_RunScene
 	incrom	$088B1E,$20
 	incrom	$088B3E,$60
 Tbl_BroodBossParts_vtable:	; class descriptor of BROODBOSSPARTS: word name offset $6E, parent ACTOR, 26 method slots from +6, then the name (tools/classes.py)
@@ -2276,7 +2276,7 @@ Tbl_XCloneAiScript:	; data handed to AiScript_Set (format not established); neve
 	incrom	$09A1E0,$36
 Tbl_XCloneInit:	; table read by XClone_Init; 2 of E bytes used at runtime; read by XClone_Init; jt[811] used by XClone_Init
 	incrom	$09A216,$E
-Tbl_XCloneTileHookReward:	; format not established; never read in the corpus; jt[812] used by XClone_TileHookReward -> sub_13EFA0
+Tbl_XCloneTileHookReward:	; format not established; never read in the corpus; jt[812] used by XClone_TileHookReward -> ExplodeFx_ChainRepeat
 	incrom	$09A224,$F0
 Tbl_XCloneActFacePlayer:	; table read by XClone_ActFacePlayer; 2 of 2 bytes used at runtime; read by XClone_ActFacePlayer; jt[813] used by XClone_Explode
 	incrom	$09A314,$2
@@ -2348,7 +2348,7 @@ Tbl_EvilWolverineActCloseBioBalls:	; table read by XClone_ActCloseBioBalls; 8 of
 	incrom	$09AB46,$E
 Tbl_XCloneBioBalls:	; data handed to BioBalls_StartPath (format not established); never read in the corpus; jt[830] used by XClone_ActBallsCollapse -> BioBalls_StartPath
 	incrom	$09AB54,$7C
-Tbl_XCloneImpact:	; format not established; never read in the corpus; jt[831] used by XClone_Impact -> sub_13EFA0, XClone_FrameHookCollapse -> sub_13EFA0
+Tbl_XCloneImpact:	; format not established; never read in the corpus; jt[831] used by XClone_Impact -> ExplodeFx_ChainRepeat, XClone_FrameHookCollapse -> ExplodeFx_ChainRepeat
 	incrom	$09ABD0,$48
 Tbl_XCloneImpact2:	; format not established; never read in the corpus; jt[832] used by XClone_Impact
 	incrom	$09AC18,$70
@@ -3429,7 +3429,7 @@ Tbl_CoreShields_vtable:	; class descriptor "CORESHIELDS": word $6E = name offset
 	incrom	$0EBE7E,$7A
 Tbl_CoreShieldsDraw:	; table read by CoreShields_Draw; 40 of 50 bytes used at runtime; read by CoreShields_Draw; jt[1294] used by CoreShields_Draw
 	incrom	$0EBEF8,$50
-Tbl_CoreShieldsDraw2:	; table read by CoreShields_Draw; 40 of 50 bytes used at runtime; read by CoreShields_Draw, sub_13EA46; jt[1295] used by CoreShields_Draw
+Tbl_CoreShieldsDraw2:	; table read by CoreShields_Draw; 40 of 50 bytes used at runtime; read by CoreShields_Draw, ExplodeFx_ChainStep; jt[1295] used by CoreShields_Draw
 	incrom	$0EBF48,$50
 	incrom	$0EBF98,$118
 Art_SentinelsA1Spr27:	; sprite definition (type $19, Nemesis-compressed tiles): $24-byte header, $14-byte frame records, pieces, tiles; 46D of 46E bytes used at runtime; read by Spr_PreloadTiles, Nem_DecodeLoop, Nem_BuildCodeTable; jt[1298] used by SentinelsA1_LoadResources
@@ -4745,8 +4745,8 @@ Tbl_NinjaTakeDamage_Hurt:	; table read by XNpc_TakeDamage_Hurt; 6 of 8 bytes use
 	include "src/f/13F0F0.asm"
 	include "src/f/13F114.asm"
 Sw_13F114:	; switch table of sub at $13F114: 6 word offsets from Sw_13F114-2
-	dc.w	loc_13F1AE-(Sw_13F114-2), loc_13F19A-(Sw_13F114-2), loc_13F186-(Sw_13F114-2), loc_13F172-(Sw_13F114-2)
-	dc.w	loc_13F15E-(Sw_13F114-2), loc_13F14A-(Sw_13F114-2)
+	dc.w	Pop_StateWait_CaseDefault-(Sw_13F114-2), loc_13F19A-(Sw_13F114-2), loc_13F186-(Sw_13F114-2), loc_13F172-(Sw_13F114-2)
+	dc.w	loc_13F15E-(Sw_13F114-2), Pop_StateWait_Case5-(Sw_13F114-2)
 	include "src/f/13F14A.asm"
 	include "src/f/13F1AE.asm"
 	include "src/f/13F1DC.asm"
@@ -4758,15 +4758,19 @@ Sw_13F114:	; switch table of sub at $13F114: 6 word offsets from Sw_13F114-2
 	include "src/f/13F282.asm"
 Tbl_Pop_vtable:	; class descriptor "POP": word $6E = name offset, long parent (ACTOR), 26 method pointers, then the class name string
 	incrom	$13F28A,$72
-	incrom	$13F2FC,$6C
-Tbl_13F368:	; format not established; never read in the corpus; jt[1891] used by sub_13DCB8
+Tbl_ExplodeFxSmall:	; burst puff offsets for ExplodeFx_Burst kind 2 (ExplodeFx_BurstSmall): 5 entries {word dx, word dy (negated when the object is v-flipped), word $FF, word 0} then 4095 x4 end (>= 1000 stops); jt[1889]
+	incrom	$13F2FC,$30
+Tbl_ExplodeFxMedium:	; burst puff offsets for ExplodeFx_Burst kind 1/default (ExplodeFx_BurstMedium, ExplodeFx_Bounce): 7 entries {dx, dy, $FF, 0}, then 4095,4095 end; jt[1890]
+	incrom	$13F32C,$3C
+Tbl_ExplodeFxLarge:	; burst puff offsets for ExplodeFx_Burst kind 3: 13 entries {word dx, word dy, word $FF, word 0} (only the first 10 are used), ended by 1024,1024; jt[1891]
 	incrom	$13F368,$6C
+Tbl_ExplodeFxSpiralPath:	; chain-explosion path (ExplodeFx_Chain from Pop_FxChainSpiral and LaserCannon_OnDeath): 19 entries {word dx, word dy (subtracted), word 0, word delay 4} spiralling outward, ended by 0,0,-1,-1 (negative long at +4); jt[1892]
 	incrom	$13F3D4,$A0
 	include "src/f/13F474.asm"
 	include "src/f/13F486.asm"
 	include "src/f/13F498.asm"
 	include "src/f/13F4D4.asm"
-Str_Empty_13F588:	; C string "" (used by sub_13F4D4)
+Str_DebrisPoolTag:	; empty C string: Mem_StackAlloc tag of a debris pool (Debris_CreatePool)
 	incrom	$13F588,$2
 	include "src/f/13F58A.asm"
 	include "src/f/13F728.asm"
@@ -4787,7 +4791,7 @@ Art_SpaceB1Spr2:	; sprite definition (type $19, Nemesis-compressed tiles): $24-b
 	include "src/f/1400D6.asm"
 Tbl_SparkCallSlot5A:	; table read by ClassList_CallSlot5A; C of 74 bytes used at runtime; read by ClassList_CallSlot5A, ClassList_InitAll, ClassList_CallSlot62; jt[1906] used by Spark_Draw, Spark_Init
 	incrom	$1400DE,$74
-Tbl_Anim_140152:	; animation script (NOTES: Animation scripts); never read in the corpus; jt[1907] used by sub_13FEB6 -> Obj_SetAnim
+Tbl_Anim_140152:	; animation script (NOTES: Animation scripts); never read in the corpus; jt[1907] used by Spark_StateStart -> Obj_SetAnim
 	incrom	$140152,$C
 Tbl_SparkMove:	; format not established; never read in the corpus; jt[1908] used by Spark_Move
 	incrom	$14015E,$30

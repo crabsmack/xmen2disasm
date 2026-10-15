@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_13F498	[jt 1895]
+; Debris_SetBounceLimit - set how many floor bounces a debris piece survives
+; In:  8(a6) = pool  $E(a6) = word bounces (min 1)
+; Out: none
+; Evidence: pool +$A = (n-1)*3 (each bounce adds 3 to a piece's +$11); callers Debris_CreatePool (4), BroodBoss_Init (jt 1895)
 ; ---------------------------------------------------------------------------
-sub_13F498:
+Debris_SetBounceLimit:
 	link.w	a6,#$0
 	movem.l	d3/d7,-(a7)
 	move.w	$E(a6),d7

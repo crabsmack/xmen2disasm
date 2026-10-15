@@ -2,7 +2,7 @@
 ; XClone_Impact - XCLONE: ground impact at (x, y) - screen shake jt[$1C22] and an impact effect actor
 ; In:  8(a6) = word x, $C(a6) = word y
 ; Out: d0
-; Evidence: g_CamShake := jt[$1C22]; plain ACTOR New at (x, y) with sub_13EFA0(effect, jt[$1C1A], 1, -$10, -$20, 0); caller XClone_StateChildLeap
+; Evidence: g_CamShake := jt[$1C22]; plain ACTOR New at (x, y) with ExplodeFx_ChainRepeat(effect, jt[$1C1A], 1, -$10, -$20, 0); caller XClone_StateChildLeap
 ; Found: link-after-rts
 ; ---------------------------------------------------------------------------
 XClone_Impact:
@@ -42,7 +42,7 @@ XClone_Impact:
 	lea.l	$1A1A(a5),a0
 	move.l	$2(a0),-(a7)
 	move.l	a4,-(a7)
-	jsr	$3AFA(a5)	; -> sub_13EFA0
+	jsr	$3AFA(a5)	; -> ExplodeFx_ChainRepeat
 	lea.l	$18(a7),a7
 loc_097082:
 	movea.l	-$4(a6),a4

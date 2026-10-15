@@ -71,7 +71,7 @@ loc_0994A4:
 	lea.l	$1982(a5),a0
 	move.l	$2(a0),-(a7)
 	move.l	a4,-(a7)
-	jsr	$3AFA(a5)	; -> sub_13EFA0
+	jsr	$3AFA(a5)	; -> ExplodeFx_ChainRepeat
 	lea.l	$18(a7),a7
 loc_09951C:
 	movem.l	-$C(a6),d6-d7/a4

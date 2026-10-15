@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_13EFA0	[jt 1883]
+; ExplodeFx_ChainRepeat - kill an object and start a chain explosion along a path, repeated n times
+; In:  8(a6) = object  $C(a6) = path  $13(a6) = byte damaging  $16(a6) = word dx  $1A(a6) = word dy  $1E(a6) = word repeats | delay << 8
+; Out: none
+; Evidence: like ExplodeFx_Chain with the repeat word; 11 callers incl. Hologram_Explode, BroodBoss_StateDeathFx, FireWall_StateSpawnFlame (jt 1883)
 ; ---------------------------------------------------------------------------
-sub_13EFA0:
+ExplodeFx_ChainRepeat:
 	link.w	a6,#$FFFC
 	movem.l	d4-d7/a4,-(a7)
 	movea.l	$8(a6),a4
@@ -61,7 +64,7 @@ loc_13EFEE:
 	move.b	d4,d0
 	move.l	d0,-(a7)
 	move.l	a4,-(a7)
-	jsr	sub_13E928(pc)
+	jsr	ExplodeFx_ChainStart(pc)
 	lea.l	$2C(a7),a7
 	movem.l	-$18(a6),d4-d7/a4
 	unlk	a6

@@ -6,6 +6,6 @@
 ; ---------------------------------------------------------------------------
 Tusk_Defeated_part3:
 	move.l	a4,-(a7)
-	jsr	$3AE2(a5)	; -> sub_13E808
+	jsr	$3AE2(a5)	; -> ExplodeFx_Bounce
 	addq.w	#$4,a7
 	bra.s	Tusk_Defeated_part5

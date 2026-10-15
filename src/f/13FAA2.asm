@@ -21,7 +21,7 @@ Spark_Init:
 	movea.l	$12(a0),a1
 	jsr	(a1)
 	clr.w	$20(a4)
-	lea.l	sub_13FEB6(pc),a0
+	lea.l	Spark_StateStart(pc),a0
 	move.l	a0,$64(a4)
 	move.l	a0,$5C(a4)
 	lea.l	sub_1400AA(pc),a0

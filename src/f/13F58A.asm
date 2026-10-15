@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_13F58A	[jt 1897]
+; Debris_Spawn - throw n debris pieces from a point with random velocities
+; In:  8(a6) = word x px  $A(a6) = word y px  $C(a6) = pool  $12(a6) = word n
+; Out: none
+; Evidence: per piece (until the pool is full): x/y <<8 +/- random $3FF, vx random +/-$7FF, vy random +/-$3FF, +$C = 2 with the sign of vx (not read by Debris_Update), gravity +$E = $20, random frame/bounce/flip bytes (RNG sub_1600AA); 7 callers incl. BroodBoss_SpawnDebris, XClone_TileHookOpenWall (jt 1897); TAS 13394-57449
 ; ---------------------------------------------------------------------------
-sub_13F58A:
+Debris_Spawn:
 	link.w	a6,#$FFE4
 	movem.l	d3-d7/a3-a4,-(a7)
 	move.w	$16(a6),d4

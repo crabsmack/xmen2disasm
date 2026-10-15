@@ -81,15 +81,15 @@ loc_0867C6:
 	ext.l	d7
 	move.l	d7,-(a7)
 	move.l	-$3B1C(a5),-(a7)
-	jsr	$3B4A(a5)	; -> sub_13F474
+	jsr	$3B4A(a5)	; -> Debris_SetFloorY
 	moveq	#$3,d0
 	move.l	d0,-(a7)
 	move.l	-$3B1C(a5),-(a7)
-	jsr	$3B5A(a5)	; -> sub_13F498
+	jsr	$3B5A(a5)	; -> Debris_SetBounceLimit
 	ext.l	d7
 	move.l	d7,-(a7)
 	move.l	-$3B14(a5),-(a7)
-	jsr	$3B4A(a5)	; -> sub_13F474
+	jsr	$3B4A(a5)	; -> Debris_SetFloorY
 	movea.l	$14(a6),a0
 	move.w	$6(a0),d7
 	beq.s	loc_0867FA

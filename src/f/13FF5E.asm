@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_13FF5E	[link-after-rts]
+; Spark_StateDart - SPARK state: dart toward a jittered point near its target (40 px above it) for 40 frames
+; In:  8(a6) = this
+; Out: d0 = flags & 8
+; Evidence: v = ((target + random >> 10) - pos) / 4 with y - $2800, halved until |vx|+|vy| <= $128 (max speed set in Spark_Init); +$6C = 40, +$5C = Spark_StateStop; target +$8E = g_Player1
 ; ---------------------------------------------------------------------------
-sub_13FF5E:
+Spark_StateDart:
 	link.w	a6,#$0
 	movem.l	d3/d5-d7/a4,-(a7)
 	movea.l	$8(a6),a4
@@ -88,7 +91,7 @@ loc_140022:
 	cmpi.l	#$128,d1
 	bgt.s	loc_13FFDA
 	move.w	#$28,$6C(a4)
-	lea.l	sub_13FF2C(pc),a0
+	lea.l	Spark_StateStop(pc),a0
 	move.l	a0,$5C(a4)
 	moveq	#$8,d0
 	and.w	$4(a4),d0

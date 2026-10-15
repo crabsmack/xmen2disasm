@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_13DBD8	[link-after-rts]
+; ExplodeFx_BurstDraw - draw-list hook of a burst: one 32x32 hardware sprite per live puff from the shared effect tiles
+; In:  8(a6) = effect
+; Out: none
+; Evidence: tile = g_FxTileBase + frame*16 | $2000 (| $8000 priority when +4 bit 0), size $F; skipped outside -32..$13F x, -32..$DF y
 ; ---------------------------------------------------------------------------
-sub_13DBD8:
+ExplodeFx_BurstDraw:
 	link.w	a6,#$FFFE
 	movem.l	d4-d7/a3-a4,-(a7)
 	movea.l	$8(a6),a3

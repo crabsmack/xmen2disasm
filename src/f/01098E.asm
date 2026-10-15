@@ -2,7 +2,7 @@
 ; BigAcolyte_ActAppear - BIGACOLYTE intro step 2: create the debris object, render the small big-acolyte picture into VRAM, next script step
 ; In:  8(a6) = this
 ; Out: none
-; Evidence: sub_13F4D4($24) -> -$3CDA; tile base +$34 from the sprite resource table; BigAcolyte_RenderScaled(jt $11A50 picture, scale 7x$B); +$A9 = 1; Tbl_BigAcolyteIntroScriptLen entry 1
+; Evidence: Debris_CreatePool($24) -> -$3CDA; tile base +$34 from the sprite resource table; BigAcolyte_RenderScaled(jt $11A50 picture, scale 7x$B); +$A9 = 1; Tbl_BigAcolyteIntroScriptLen entry 1
 ; ---------------------------------------------------------------------------
 BigAcolyte_ActAppear:
 	link.w	a6,#$FFD6
@@ -14,7 +14,7 @@ BigAcolyte_ActAppear:
 	move.l	d0,-(a7)
 	moveq	#$24,d1
 	move.l	d1,-(a7)
-	jsr	$3B62(a5)	; -> sub_13F4D4
+	jsr	$3B62(a5)	; -> Debris_CreatePool
 	move.l	d0,-$3CDA(a5)
 	moveq	#$0,d0
 	move.l	d0,-(a7)

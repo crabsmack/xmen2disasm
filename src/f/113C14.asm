@@ -29,22 +29,22 @@ XNpc_Explode:
 	subq.b	#$4,d0
 	bne.s	loc_113C70
 	move.l	a4,-(a7)
-	jsr	$3AE2(a5)	; -> sub_13E808
+	jsr	$3AE2(a5)	; -> ExplodeFx_Bounce
 	addq.w	#$4,a7
 	bra.s	loc_113C78
 loc_113C5C:
 	move.l	a4,-(a7)
-	jsr	$3ADA(a5)	; -> sub_13E30E
+	jsr	$3ADA(a5)	; -> ExplodeFx_TrailArc
 	addq.w	#$4,a7
 	bra.s	loc_113C78
 loc_113C66:
 	move.l	a4,-(a7)
-	jsr	$3ACA(a5)	; -> sub_13DE36
+	jsr	$3ACA(a5)	; -> ExplodeFx_BurstMedium
 	addq.w	#$4,a7
 	bra.s	loc_113C78
 loc_113C70:
 	move.l	a4,-(a7)
-	jsr	$3AD2(a5)	; -> sub_13DE4A
+	jsr	$3AD2(a5)	; -> ExplodeFx_BurstSmall
 	addq.w	#$4,a7
 loc_113C78:
 	movea.l	-$4(a6),a4

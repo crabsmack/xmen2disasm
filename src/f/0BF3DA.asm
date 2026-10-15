@@ -2,7 +2,7 @@
 ; SporeMine_RecExplode - spore handler: explode - debris, hurt players within +-$3C x / +-$28 y, explosion actor, record ends
 ; In:  8(a6) = spore record
 ; Out: d0
-; Evidence: slot +$26 TakeDamage(0, 4, 1, x, y); sub_13DE4A; TAS 28699-28725
+; Evidence: slot +$26 TakeDamage(0, 4, 1, x, y); ExplodeFx_BurstSmall; TAS 28699-28725
 ; Found: link-after-rts
 ; ---------------------------------------------------------------------------
 SporeMine_RecExplode:
@@ -138,7 +138,7 @@ loc_0BF4FE:
 	lea.l	$14(a7),a7
 	beq.s	loc_0BF544
 	move.l	a3,-(a7)
-	jsr	$3AD2(a5)	; -> sub_13DE4A
+	jsr	$3AD2(a5)	; -> ExplodeFx_BurstSmall
 	addq.w	#$4,a7
 loc_0BF544:
 	movem.l	-$2C(a6),d3-d7/a3-a4

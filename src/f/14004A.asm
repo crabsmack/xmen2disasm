@@ -21,7 +21,7 @@ sub_14004A:
 	lsl.l	#$8,d0
 	move.l	d0,$C(a4)
 	clr.w	$6C(a4)
-	lea.l	sub_13FEB6(pc),a0
+	lea.l	Spark_StateStart(pc),a0
 	move.l	a0,$5C(a4)
 	moveq	#$8,d0
 	and.w	$4(a4),d0

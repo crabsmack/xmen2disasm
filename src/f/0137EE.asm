@@ -2,7 +2,7 @@
 ; CapedAcolyte_StateKnockbackRun - CAPEDACOLYTE hurt state: fly back until the timer ends or it stops; then die (sound $38) if health <= 0, else return home
 ; In:  8(a6) = this
 ; Out: d0
-; Evidence: +$90 timer (-2 at half rate); +$68 health; sub_13DE36 on death; else accel cleared and CapedAcolyte_StateReturnHome
+; Evidence: +$90 timer (-2 at half rate); +$68 health; ExplodeFx_BurstMedium on death; else accel cleared and CapedAcolyte_StateReturnHome
 ; ---------------------------------------------------------------------------
 CapedAcolyte_StateKnockbackRun:
 	link.w	a6,#$0
@@ -45,7 +45,7 @@ loc_013840:
 	move.l	d0,-(a7)
 	jsr	$521A(a5)	; -> Snd_Play
 	move.l	a4,-(a7)
-	jsr	$3ACA(a5)	; -> sub_13DE36
+	jsr	$3ACA(a5)	; -> ExplodeFx_BurstMedium
 	lea.l	$C(a7),a7
 	bra.s	loc_0138CA
 loc_013862:

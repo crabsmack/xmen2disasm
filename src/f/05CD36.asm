@@ -6,5 +6,5 @@
 ; ---------------------------------------------------------------------------
 Tusk_Defeated_part4:
 	move.l	a4,-(a7)
-	jsr	$3ADA(a5)	; -> sub_13E30E
+	jsr	$3ADA(a5)	; -> ExplodeFx_TrailArc
 	addq.w	#$4,a7

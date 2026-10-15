@@ -59,7 +59,7 @@ loc_141BC4:
 	move.b	d4,d1
 	move.l	d1,-(a7)
 	move.l	a4,-(a7)
-	jsr	$3AEA(a5)	; -> sub_13E928
+	jsr	$3AEA(a5)	; -> ExplodeFx_ChainStart
 	clr.w	$68(a3)
 	move.w	#$2710,$6A(a3)
 	clr.w	$1E(a3)

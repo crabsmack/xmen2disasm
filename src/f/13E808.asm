@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_13E808	[jt 1880]
+; ExplodeFx_Bounce - death effect: kill an object and replace it with up to 5 groups of explosion puffs that bounce around the screen
+; In:  8(a6) = object
+; Out: d0 = misc
+; Evidence: vtable +$52 Kill, ExplodeFx_BounceStart, group offsets from Tbl_ExplodeFxMedium (jt 1890); XNpc_Explode stats byte 2 = 8, Pop type 1 (jt 1880)
 ; ---------------------------------------------------------------------------
-sub_13E808:
+ExplodeFx_Bounce:
 	link.w	a6,#$FFF8
 	movem.l	d3-d7/a3-a4,-(a7)
 	movea.l	$8(a6),a4
@@ -53,7 +56,7 @@ loc_13E860:
 	move.b	-$4(a6),d0
 	move.l	d0,-(a7)
 	move.l	a4,-(a7)
-	jsr	sub_13E36E(pc)
+	jsr	ExplodeFx_BounceStart(pc)
 	move.l	a4,d0
 	moveq	#$E,d1
 	add.l	d1,d0
@@ -77,7 +80,7 @@ loc_13E8A2:
 	add.l	d5,d0
 	move.l	d0,-(a7)
 	move.l	-$8(a6),-(a7)
-	jsr	sub_13E490(pc)
+	jsr	ExplodeFx_BounceGroupInit(pc)
 	lea.l	$C(a7),a7
 	bra.s	loc_13E8FA
 loc_13E8D6:
@@ -93,13 +96,13 @@ loc_13E8D6:
 	add.l	d5,d0
 	move.l	d0,-(a7)
 	move.l	-$8(a6),-(a7)
-	jsr	sub_13E490(pc)
+	jsr	ExplodeFx_BounceGroupInit(pc)
 	lea.l	$C(a7),a7
 loc_13E8FA:
 	move.l	d6,-(a7)
 	move.l	d5,-(a7)
 	move.l	-$8(a6),-(a7)
-	jsr	sub_13E426(pc)
+	jsr	ExplodeFx_BounceGroupAim(pc)
 	move.w	d7,d0
 	addq.w	#$1,d7
 	move.l	-$8(a6),d0

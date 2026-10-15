@@ -1,9 +1,12 @@
 ; ---------------------------------------------------------------------------
-; sub_13F1EC	[link-after-rts]
+; Pop_FxBurstSmall - POP state, type 3: become a small explosion burst
+; In:  8(a6) = this
+; Out: none
+; Evidence: ExplodeFx_BurstSmall(this)
 ; ---------------------------------------------------------------------------
-sub_13F1EC:
+Pop_FxBurstSmall:
 	link.w	a6,#$0
 	move.l	$8(a6),-(a7)
-	jsr	sub_13DE4A(pc)
+	jsr	ExplodeFx_BurstSmall(pc)
 	unlk	a6
 	rts

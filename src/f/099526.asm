@@ -111,7 +111,7 @@ loc_09962E:
 	ext.l	d6
 	move.l	d6,-(a7)
 	move.l	-$3B1C(a5),-(a7)
-	jsr	$3B4A(a5)	; -> sub_13F474
+	jsr	$3B4A(a5)	; -> Debris_SetFloorY
 	addq.w	#$8,a7
 loc_09963E:
 	moveq	#$19,d6
@@ -239,7 +239,7 @@ loc_09972A:
 	lsl.l	#$5,d1
 	add.l	d2,d1
 	move.l	d1,-(a7)
-	jsr	$3B6A(a5)	; -> sub_13F58A
+	jsr	$3B6A(a5)	; -> Debris_Spawn
 	ext.l	d5
 	movea.l	-$3A72(a5),a0
 	move.l	d5,d0
@@ -268,7 +268,7 @@ loc_09972A:
 	lsl.l	#$5,d1
 	add.l	d2,d1
 	move.l	d1,-(a7)
-	jsr	$3B6A(a5)	; -> sub_13F58A
+	jsr	$3B6A(a5)	; -> Debris_Spawn
 	ext.l	d5
 	movea.l	-$3A72(a5),a0
 	move.l	d5,d0

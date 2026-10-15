@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_13D954	[link-after-rts]
+; ExplodeFx_BurstStart - turn a killed object's memory into a burst effect: clear it, explosion sound, start ExplodeFx_BurstUpdate timer and ExplodeFx_BurstDraw hook
+; In:  8(a6) = object  $F(a6) = byte draw layer (+$42)  $10(a6) = (+$43, unused)  $17(a6) = byte priority (+$2E bit 2)  $1B(a6) = byte flag (+6 bit 3)
+; Out: none
+; Evidence: Mem_Set(+4, 0, $BE) keeping +$15 in +$C; +4 = $8010 | priority; Snd_Stop/Snd_Play($38), +$D sound cooldown 6; Timer_Create(ExplodeFx_BurstUpdate, 1, obj, 1); DrawList_Add(ExplodeFx_BurstDraw, obj, 0/4, layer, 0/8, 0) -> +6; caller ExplodeFx_Burst. The Trail/Bounce/Chain starts are copies with their own update/draw
 ; ---------------------------------------------------------------------------
-sub_13D954:
+ExplodeFx_BurstStart:
 	link.w	a6,#$0
 	movem.l	d6-d7/a4,-(a7)
 	move.b	$17(a6),d7
@@ -34,7 +37,7 @@ loc_13D986:
 	move.l	d0,-(a7)
 	move.l	a4,-(a7)
 	move.l	d0,-(a7)
-	pea.l	sub_13DA80(pc)
+	pea.l	ExplodeFx_BurstUpdate(pc)
 	jsr	$4FD2(a5)	; -> Timer_Create
 	move.l	d0,$8(a4)
 	lea.l	$24(a7),a7
@@ -65,7 +68,7 @@ loc_13D9EC:
 loc_13D9EE:
 	move.l	d0,-(a7)
 	move.l	a4,-(a7)
-	pea.l	sub_13DBD8(pc)
+	pea.l	ExplodeFx_BurstDraw(pc)
 	jsr	$4F6A(a5)	; -> DrawList_Add
 	move.w	d0,$6(a4)
 	lea.l	$18(a7),a7

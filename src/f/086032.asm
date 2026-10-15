@@ -2,7 +2,7 @@
 ; BroodBossWall_Update - BROODBOSSWALL Update (ICANDY slot +$12): keep a $C0-tall solid box and move with +$14; when destroyed, explode up the wall and remove itself
 ; In:  8(a6) = this
 ; Out: none
-; Evidence: +$43 = 0: creates the solid rectangle Seg_Create($14, 0, x-8, y-$C0, x+$10, y) -> +$44, x += +$14 and shifts the box; else frees the box (Seg_Free), 6 x sub_13F58A explosions every $20 px upward, sound $35, ICANDY +$1A; TAS 50319-50484
+; Evidence: +$43 = 0: creates the solid rectangle Seg_Create($14, 0, x-8, y-$C0, x+$10, y) -> +$44, x += +$14 and shifts the box; else frees the box (Seg_Free), 6 x Debris_Spawn explosions every $20 px upward, sound $35, ICANDY +$1A; TAS 50319-50484
 ; Found: jt 618
 ; ---------------------------------------------------------------------------
 BroodBossWall_Update:
@@ -32,7 +32,7 @@ loc_086068:
 	move.l	d6,-(a7)
 	ext.l	d5
 	move.l	d5,-(a7)
-	jsr	$3B6A(a5)	; -> sub_13F58A
+	jsr	$3B6A(a5)	; -> Debris_Spawn
 	lea.l	$10(a7),a7
 	move.w	d7,d0
 	addq.w	#$1,d7

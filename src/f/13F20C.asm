@@ -1,9 +1,12 @@
 ; ---------------------------------------------------------------------------
-; sub_13F20C	[link-after-rts]
+; Pop_FxTrailArc - POP state, type 2: become an explosion trail
+; In:  8(a6) = this
+; Out: none
+; Evidence: ExplodeFx_TrailArc(this)
 ; ---------------------------------------------------------------------------
-sub_13F20C:
+Pop_FxTrailArc:
 	link.w	a6,#$0
 	move.l	$8(a6),-(a7)
-	jsr	sub_13E30E(pc)
+	jsr	ExplodeFx_TrailArc(pc)
 	unlk	a6
 	rts

@@ -2,7 +2,7 @@
 ; FireWall_StateSpawnFlame - FIREWALL: spawn its flame effect (animation by type +$8E and side +$90)
 ; In:  8(a6) = this
 ; Out: d0 = flags & 8
-; Evidence: ACTOR New + sub_13EFA0, flame anims $134284-$134364
+; Evidence: ACTOR New + ExplodeFx_ChainRepeat, flame anims $134284-$134364
 ; ---------------------------------------------------------------------------
 FireWall_StateSpawnFlame:
 	link.w	a6,#$FFFC
@@ -71,7 +71,7 @@ loc_134190:
 	move.l	d0,-(a7)
 	move.l	a3,-(a7)
 	move.l	-$4(a6),-(a7)
-	jsr	$3AFA(a5)	; -> sub_13EFA0
+	jsr	$3AFA(a5)	; -> ExplodeFx_ChainRepeat
 	lea.l	$18(a7),a7
 loc_1341EA:
 	move.l	-$4(a6),$92(a4)

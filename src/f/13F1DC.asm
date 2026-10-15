@@ -1,9 +1,12 @@
 ; ---------------------------------------------------------------------------
-; sub_13F1DC	[link-after-rts]
+; Pop_FxBurstMedium - POP state, type 0: become a medium explosion burst
+; In:  8(a6) = this
+; Out: none
+; Evidence: ExplodeFx_BurstMedium(this)
 ; ---------------------------------------------------------------------------
-sub_13F1DC:
+Pop_FxBurstMedium:
 	link.w	a6,#$0
 	move.l	$8(a6),-(a7)
-	jsr	sub_13DE36(pc)
+	jsr	ExplodeFx_BurstMedium(pc)
 	unlk	a6
 	rts

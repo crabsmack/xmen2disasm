@@ -2,7 +2,7 @@
 ; SavageBio_StateDeathExplode - SAVAGE bio death: every 16 frames blow up one companion segment; when the timer ends, end the scene in $F0 frames and remove itself
 ; In:  8(a6) = this
 ; Out: d0
-; Evidence: plain ACTOR + sub_13DE36 at each segment; Scene_EndAfter($F0), -$3B20 := 0, slot +$52; TAS 34116-34355
+; Evidence: plain ACTOR + ExplodeFx_BurstMedium at each segment; Scene_EndAfter($F0), -$3B20 := 0, slot +$52; TAS 34116-34355
 ; Found: link-after-rts
 ; ---------------------------------------------------------------------------
 SavageBio_StateDeathExplode:
@@ -67,7 +67,7 @@ loc_0BCBC8:
 	lea.l	$14(a7),a7
 	beq.s	loc_0BCC44
 	move.l	-$4(a6),-(a7)
-	jsr	$3ACA(a5)	; -> sub_13DE36
+	jsr	$3ACA(a5)	; -> ExplodeFx_BurstMedium
 	addq.w	#$4,a7
 loc_0BCC44:
 	move.w	#$FFFF,(a3)

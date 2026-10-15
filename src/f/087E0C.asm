@@ -2,7 +2,7 @@
 ; BroodBoss_StateExplode - BROODBOSS death: three debris explosions around the boss, sounds $34 and $CF
 ; In:  8(a6) = this
 ; Out: d0
-; Evidence: sub_13F58A x3 (type 6) at (x, y), (x-$14, y-$18), (x+$14, y-$12); +$6C = 2; next BroodBoss_StateVanish; TAS 50709
+; Evidence: Debris_Spawn x3 (type 6) at (x, y), (x-$14, y-$18), (x+$14, y-$12); +$6C = 2; next BroodBoss_StateVanish; TAS 50709
 ; Found: link-after-rts
 ; ---------------------------------------------------------------------------
 BroodBoss_StateExplode:
@@ -22,7 +22,7 @@ BroodBoss_StateExplode:
 	move.w	d6,d1
 	ext.l	d1
 	move.l	d1,-(a7)
-	jsr	$3B6A(a5)	; -> sub_13F58A
+	jsr	$3B6A(a5)	; -> Debris_Spawn
 	moveq	#$6,d0
 	move.l	d0,-(a7)
 	move.l	-$3B14(a5),-(a7)
@@ -36,7 +36,7 @@ BroodBoss_StateExplode:
 	moveq	#-$14,d0
 	add.l	d0,d1
 	move.l	d1,-(a7)
-	jsr	$3B6A(a5)	; -> sub_13F58A
+	jsr	$3B6A(a5)	; -> Debris_Spawn
 	moveq	#$6,d0
 	move.l	d0,-(a7)
 	move.l	-$3B14(a5),-(a7)
@@ -50,7 +50,7 @@ BroodBoss_StateExplode:
 	moveq	#$14,d0
 	add.l	d0,d1
 	move.l	d1,-(a7)
-	jsr	$3B6A(a5)	; -> sub_13F58A
+	jsr	$3B6A(a5)	; -> Debris_Spawn
 	moveq	#$34,d0
 	move.l	d0,-(a7)
 	jsr	$5222(a5)	; -> Snd_Stop

@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_13EE20	[link-after-rts]
+; ExplodeFx_ChainDraw - draw-list hook of a chain explosion: a 32x32 sprite for each live slot
+; In:  8(a6) = effect
+; Out: none
+; Evidence: same sprite emit as ExplodeFx_BurstDraw over the 27 slots from +$20
 ; ---------------------------------------------------------------------------
-sub_13EE20:
+ExplodeFx_ChainDraw:
 	link.w	a6,#$FFFE
 	movem.l	d4-d7/a3-a4,-(a7)
 	movea.l	$8(a6),a3

@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_13DF16	[link-after-rts]
+; ExplodeFx_TrailSetHead - set the motion of a trail's head puff
+; In:  8(a6) = puff  $C/$10(a6) = (unused)  $16(a6) = word vx  $1A(a6) = word vy  $1E(a6) = word ax  $22(a6) = word ay
+; Out: none
+; Evidence: +8..+E := vx, vy, ax, ay; +$10 = 0 (step counter); caller ExplodeFx_Trail for puff 0
 ; ---------------------------------------------------------------------------
-sub_13DF16:
+ExplodeFx_TrailSetHead:
 	link.w	a6,#$0
 	move.l	a4,-(a7)
 	movea.l	$8(a6),a4

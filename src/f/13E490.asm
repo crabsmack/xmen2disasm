@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_13E490	[link-after-rts]
+; ExplodeFx_BounceGroupInit - initialise a bounce group: three puffs at one position, tick 15, one live
+; In:  8(a6) = group  $C(a6) = long x  $10(a6) = long y
+; Out: d0 = misc
+; Evidence: x/y >> 5 into all three slots, velocities 0, +$1E.. = $0F, +$21 = 1; caller ExplodeFx_Bounce
 ; ---------------------------------------------------------------------------
-sub_13E490:
+ExplodeFx_BounceGroupInit:
 	link.w	a6,#$0
 	movem.l	d3/d5-d7/a4,-(a7)
 	move.l	$10(a6),d5

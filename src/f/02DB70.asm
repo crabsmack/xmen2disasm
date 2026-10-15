@@ -6,11 +6,11 @@
 ; ---------------------------------------------------------------------------
 Exodus_TakeDamage_part2:
 	move.l	a4,-(a7)
-	jsr	$3ACA(a5)	; -> sub_13DE36
+	jsr	$3ACA(a5)	; -> ExplodeFx_BurstMedium
 	addq.w	#$4,a7
 	bra.s	loc_02DBC6
 loc_02DB7A:
 	move.l	a4,-(a7)
-	jsr	$3AD2(a5)	; -> sub_13DE4A
+	jsr	$3AD2(a5)	; -> ExplodeFx_BurstSmall
 	addq.w	#$4,a7
 	bra.s	loc_02DBC6

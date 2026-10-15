@@ -6,6 +6,6 @@
 ; ---------------------------------------------------------------------------
 Exodus_TakeDamage_part4:
 	move.l	a4,-(a7)
-	jsr	$3ADA(a5)	; -> sub_13E30E
+	jsr	$3ADA(a5)	; -> ExplodeFx_TrailArc
 	addq.w	#$4,a7
 	bra.s	loc_02DBC6

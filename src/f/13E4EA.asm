@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_13E4EA	[link-after-rts]
+; ExplodeFx_BounceUpdate - per-frame timer of the bounce effect: move up to 5 groups of 3 puffs, reflecting them off the screen edges, and release the next puff of a group as it animates
+; In:  8(a6) = effect
+; Out: none
+; Evidence: screen x outside 0..$120 negates vx, y outside 0..$C0 negates vy (bounce sound $38 with cooldown); +$21 grows to 3 as the frame progresses; ExplodeFx_Free when nothing moves
 ; ---------------------------------------------------------------------------
-sub_13E4EA:
+ExplodeFx_BounceUpdate:
 	link.w	a6,#$FFF6
 	movem.l	d4-d7/a3-a4,-(a7)
 	movea.l	$8(a6),a3
@@ -180,7 +183,7 @@ loc_13E6B0:
 	tst.b	-$6(a6)
 	bne.s	loc_13E6C0
 	move.l	a3,-(a7)
-	jsr	sub_13D8F6(pc)
+	jsr	ExplodeFx_Free(pc)
 	addq.w	#$4,a7
 	bra.s	loc_13E6E4
 loc_13E6C0:

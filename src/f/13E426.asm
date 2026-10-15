@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_13E426	[link-after-rts]
+; ExplodeFx_BounceGroupAim - give the three puffs of a bounce group byte velocities pointing away from the centre
+; In:  8(a6) = group ($22 bytes)  $C(a6) = long centre x  $10(a6) = long centre y
+; Out: d0 = misc
+; Evidence: group {+0 3 long x (<<3 units), +$C 3 long y, +$18 3 byte vx, +$1B 3 byte vy, +$1E 3 byte frame<<4 | tick, +$21 byte live count}; vx = (x*32 - cx) >> 7, vy = (y*32 - cy) >> 8; caller ExplodeFx_Bounce
 ; ---------------------------------------------------------------------------
-sub_13E426:
+ExplodeFx_BounceGroupAim:
 	link.w	a6,#$0
 	movem.l	d3/d5-d7/a3-a4,-(a7)
 	move.l	$10(a6),d5
