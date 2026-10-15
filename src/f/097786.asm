@@ -2,7 +2,7 @@
 ; XClone_ActAnim3C - XCLONE script action: play move-set animation +$3C (if the character has one) to its end
 ; In:  8(a6) = this
 ; Out: none
-; Evidence: sub_1F626A(this, set + word $3C), +$6C = $FF; skipped when the offset is 0; jt 757; TAS 57410
+; Evidence: Obj_SetAnim(this, set + word $3C), +$6C = $FF; skipped when the offset is 0; jt 757; TAS 57410
 ; Found: jt 757
 ; ---------------------------------------------------------------------------
 XClone_ActAnim3C:

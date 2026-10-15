@@ -2,7 +2,7 @@
 ; XClone_ActSound8F - XCLONE script action: stop all sounds and play sound $8F, next step
 ; In:  8(a6) = this
 ; Out: none
-; Evidence: sub_1FE5F2, Snd $8F; jt 728
+; Evidence: Snd_StopAll, Snd $8F; jt 728
 ; Found: jt 728
 ; ---------------------------------------------------------------------------
 XClone_ActSound8F:

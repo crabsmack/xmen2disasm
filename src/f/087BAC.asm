@@ -2,7 +2,7 @@
 ; BroodBoss_StateDeathStart - BROODBOSS state: death - animation, claw speed -$100
 ; In:  8(a6) = this
 ; Out: d0
-; Evidence: sub_1F626A(this, $088A2A); next BroodBoss_StateDeathSlide; TAS 50612
+; Evidence: Obj_SetAnim(this, $088A2A); next BroodBoss_StateDeathSlide; TAS 50612
 ; Found: link-after-rts
 ; ---------------------------------------------------------------------------
 BroodBoss_StateDeathStart:

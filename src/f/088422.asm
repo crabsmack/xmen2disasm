@@ -2,7 +2,7 @@
 ; CloneA5_AnimShockSprites - CloneA5: animate the two shockwave sprites while the boss shockwave is on
 ; In:  none
 ; Out: d0
-; Evidence: only when -$3B0C bit 2 (BroodBoss_StateShockOn); alternates frames 1/2 by the counter -$33A2; sub_1FB142 + sub_1FAD44 on $FFCC6A/$FFCC7E
+; Evidence: only when -$3B0C bit 2 (BroodBoss_StateShockOn); alternates frames 1/2 by the counter -$33A2; Spr_SetFrame + Spr_UploadFrame on $FFCC6A/$FFCC7E
 ; Found: link-after-rts
 ; ---------------------------------------------------------------------------
 CloneA5_AnimShockSprites:

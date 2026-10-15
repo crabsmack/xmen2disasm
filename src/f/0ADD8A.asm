@@ -1,5 +1,5 @@
 ; ---------------------------------------------------------------------------
-; TrapDoor_StateOpen - TRAPDOOR state: open - tiles +$98, drop the players through (sub_1F6530), disable the segment (bit 6, sub_0BD9F0)
+; TrapDoor_StateOpen - TRAPDOOR state: open - tiles +$98, drop the players through (Obj_Detach), disable the segment (bit 6, sub_0BD9F0)
 ; In:  8(a6) = this
 ; Out: d0
 ; Found: link-after-rts

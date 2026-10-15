@@ -2,7 +2,7 @@
 ; SavageA2_AnimLights - SavageA2: step the two light sprites through their 32-entry frame tables
 ; In:  none
 ; Out: none
-; Evidence: counter -$3B3C counts down from $20; frames from Tbl_SavageA2LightFrames1/2 minus 1; sub_1FB142 + sub_1FAD44; jt 892; TAS 30901-33097
+; Evidence: counter -$3B3C counts down from $20; frames from Tbl_SavageA2LightFrames1/2 minus 1; Spr_SetFrame + Spr_UploadFrame; jt 892; TAS 30901-33097
 ; Found: jt 892
 ; ---------------------------------------------------------------------------
 SavageA2_AnimLights:

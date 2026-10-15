@@ -2,7 +2,7 @@
 ; EvilBeam_Draw - EVILBEAM slot +$12 (draw-list callback): draw the beam sprite
 ; In:  8(a6) = this
 ; Out: none
-; Evidence: sub_1FB346(this+$10, x - g_CameraX, y - g_CameraY)
+; Evidence: Spr_Draw(this+$10, x - g_CameraX, y - g_CameraY)
 ; Found: jt 771
 ; ---------------------------------------------------------------------------
 EvilBeam_Draw:

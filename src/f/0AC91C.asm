@@ -2,7 +2,7 @@
 ; PerimeterDoor_StateStart - PERIMETERDOOR first state: drop its draw-list sprite, wait for the door to break
 ; In:  8(a6) = this
 ; Out: d0
-; Evidence: sub_1F9122(+$88); next PerimeterDoor_StateWaitBroken
+; Evidence: DrawList_Remove(+$88); next PerimeterDoor_StateWaitBroken
 ; Found: link-after-rts
 ; ---------------------------------------------------------------------------
 PerimeterDoor_StateStart:

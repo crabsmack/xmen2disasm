@@ -2,7 +2,7 @@
 ; LittleLeg_Draw - LITTLELEG slot +$12 (draw-list callback): draw the three leg sprites
 ; In:  8(a6) = this
 ; Out: none
-; Evidence: sub_1FB346 for the sprites at +$16, +$32 (+$1C, -4), +$4E (+$3A, -4) relative to +4/+6 minus g_CameraX/Y, when within $160 px; TAS 49292-51071
+; Evidence: Spr_Draw for the sprites at +$16, +$32 (+$1C, -4), +$4E (+$3A, -4) relative to +4/+6 minus g_CameraX/Y, when within $160 px; TAS 49292-51071
 ; Found: jt 614
 ; ---------------------------------------------------------------------------
 LittleLeg_Draw:

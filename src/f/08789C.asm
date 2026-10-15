@@ -2,7 +2,7 @@
 ; BroodBoss_ActScream - BROODBOSS script action: scream animation with sound $AE
 ; In:  8(a6) = this
 ; Out: d0
-; Evidence: sub_1F626A(this, $088A42), Snd $AE, +$6C = $FF; next BroodBoss_StateScream; jt 641
+; Evidence: Obj_SetAnim(this, $088A42), Snd $AE, +$6C = $FF; next BroodBoss_StateScream; jt 641
 ; Found: jt 641
 ; ---------------------------------------------------------------------------
 BroodBoss_ActScream:

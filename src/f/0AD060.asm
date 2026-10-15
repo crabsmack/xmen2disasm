@@ -2,7 +2,7 @@
 ; PerimeterDoor_StateWaitExit - PERIMETERDOOR state: when a player stands within 16 px of the opening, end the scene after 10 frames
 ; In:  8(a6) = this
 ; Out: d0
-; Evidence: sub_1F944E(10) (scene exit timer); next PerimeterDoor_StateDone; TAS 31892-33089
+; Evidence: Scene_EndAfter(10) (scene exit timer); next PerimeterDoor_StateDone; TAS 31892-33089
 ; Found: link-after-rts
 ; ---------------------------------------------------------------------------
 PerimeterDoor_StateWaitExit:

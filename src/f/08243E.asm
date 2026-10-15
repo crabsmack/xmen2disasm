@@ -2,7 +2,7 @@
 ; DropBomb_StateStart - DROPBOMB state: set the waiting animation, go to DropBomb_StateWaitInView
 ; In:  8(a6) = this
 ; Out: d0 = this+4 & 8
-; Evidence: first +$5C handler set by DropBomb_Init; sub_1F6296(this, Tbl_DropBombAnimWait); +$6C timer := 0
+; Evidence: first +$5C handler set by DropBomb_Init; Obj_ChangeAnim(this, Tbl_DropBombAnimWait); +$6C timer := 0
 ; Found: link-after-rts
 ; ---------------------------------------------------------------------------
 DropBomb_StateStart:

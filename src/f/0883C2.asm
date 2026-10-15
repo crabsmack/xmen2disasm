@@ -2,7 +2,7 @@
 ; CloneA5_InitShockSprites - CloneA5: set up the two shockwave effect sprites ($FFCC6A/$FFCC7E, art jt[$38F8])
 ; In:  none
 ; Out: none
-; Evidence: sub_1FB026(inst, 1, art, 0, 2, next VRAM tile -$3AB0, 1) twice, advancing -$3AB0; TAS 49257
+; Evidence: Spr_Init(inst, 1, art, 0, 2, next VRAM tile -$3AB0, 1) twice, advancing -$3AB0; TAS 49257
 ; Found: link-after-rts
 ; ---------------------------------------------------------------------------
 CloneA5_InitShockSprites:

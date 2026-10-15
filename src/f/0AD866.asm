@@ -1,5 +1,5 @@
 ; ---------------------------------------------------------------------------
-; SavageA2_LoadLevel - SavageA2: load the level (sub_1F98A8 with the Perimeter1 class list $0A7664) and set limits/parallax factors
+; SavageA2_LoadLevel - SavageA2: load the level (Level_Load with the Perimeter1 class list $0A7664) and set limits/parallax factors
 ; In:  none
 ; Out: none
 ; Evidence: max y -= $60; -$3496 := $140, -$3498 := $120; TAS 30752

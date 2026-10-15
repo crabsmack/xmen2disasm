@@ -1,5 +1,5 @@
 ; ---------------------------------------------------------------------------
-; BroodClaw_StateWaitMusic - BROODCLAW state (after the boss): park off the right edge until music $13 is over (sub_1FE644), then enter
+; BroodClaw_StateWaitMusic - BROODCLAW state (after the boss): park off the right edge until music $13 is over (Snd_ReadDriverByte), then enter
 ; In:  8(a6) = this
 ; Out: d0
 ; Evidence: x = g_CameraX + $1A2 (linked claw + $62); next BroodClaw_StateEnterView; TAS 51133-51930

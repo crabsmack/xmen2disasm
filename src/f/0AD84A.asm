@@ -2,7 +2,7 @@
 ; SavageA2_LoadResources - SavageA2: load its resource set into -$1A88
 ; In:  none
 ; Out: none
-; Evidence: sub_1F62C0(jt[$3E98], 3)
+; Evidence: SprDef_Add(jt[$3E98], 3)
 ; Found: link-after-rts
 ; ---------------------------------------------------------------------------
 SavageA2_LoadResources:

@@ -2,7 +2,7 @@
 ; CloneA5_RunScene - scene function for 'CloneA5 BroodBoss': load the boss arena and run it
 ; In:  none
 ; Out: none
-; Evidence: registered under that name (sub_0054C6, jt 644); sub_1F98A8 with Tbl_BroodBossHall class list $08CD28; music $13; boss offsets -$3C44 = 0, -$3C48 = $3300; palette-cycle table from $088B1E; segment hooks CloneA5_SegHook16/15; Players_PlaceAtStart; effect pools via sub_13F4D4; palette line 0 = Pal_CloneA2Line0; scene hook CloneA5_FrameHook; sub_1FA6FE; TAS 49125
+; Evidence: registered under that name (Scene_RegisterAll, jt 644); Level_Load with Tbl_BroodBossHall class list $08CD28; music $13; boss offsets -$3C44 = 0, -$3C48 = $3300; palette-cycle table from $088B1E; segment hooks CloneA5_SegHook16/15; Players_PlaceAtStart; effect pools via sub_13F4D4; palette line 0 = Pal_CloneA2Line0; scene hook CloneA5_FrameHook; Level_Run; TAS 49125
 ; Found: jt 644
 ; ---------------------------------------------------------------------------
 CloneA5_RunScene:

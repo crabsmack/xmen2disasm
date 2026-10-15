@@ -2,7 +2,7 @@
 ; DropBomb_StateDrop - DROPBOMB state: start falling (gravity +$20 = $3C, falling animation)
 ; In:  8(a6) = this
 ; Out: d0
-; Evidence: sets y acceleration +$20 = $3C, sub_1F6296(this, Tbl_DropBombAnimFall), handler := DropBomb_StateFall
+; Evidence: sets y acceleration +$20 = $3C, Obj_ChangeAnim(this, Tbl_DropBombAnimFall), handler := DropBomb_StateFall
 ; Found: link-after-rts
 ; ---------------------------------------------------------------------------
 DropBomb_StateDrop:

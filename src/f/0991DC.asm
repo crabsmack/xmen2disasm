@@ -1,5 +1,5 @@
 ; ---------------------------------------------------------------------------
-; XClone_LockArena_SetTheme - tail of XClone_LockArena: sub_1FE630($12, theme d7), sound $74, arena camera mode, lock flag, clone +$B0 = 1
+; XClone_LockArena_SetTheme - tail of XClone_LockArena: Snd_SetParam($12, theme d7), sound $74, arena camera mode, lock flag, clone +$B0 = 1
 ; In:  d7 = theme, a4 = clone
 ; Evidence: common exit of the switch Sw_09907A
 ; ---------------------------------------------------------------------------
