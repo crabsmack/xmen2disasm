@@ -1,5 +1,8 @@
 ; ---------------------------------------------------------------------------
-; Cyclops_AirSpecialUp	[jt 2396]
+; Cyclops_AirSpecialUp - CYCLOPS slot +$CA: Up+A in the air: same as Cyclops_AirSpecial
+; In:  8(a6) = player
+; Out: none
+; Evidence: +$5C = Cyclops_AirCharge
 ; ---------------------------------------------------------------------------
 Cyclops_AirSpecialUp:
 	link.w	a6,#$0

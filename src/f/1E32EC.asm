@@ -1,5 +1,8 @@
 ; ---------------------------------------------------------------------------
-; Cyclops_HardLanding	[jt 2391]
+; Cyclops_HardLanding - CYCLOPS slot +$EA: XPLAYER HardLanding, then Cyclops_StateHardLanding (a charged beam can fire on landing)
+; In:  8(a6) = player
+; Out: none
+; Evidence: parent +$EA via the CYCLOPS descriptor
 ; ---------------------------------------------------------------------------
 Cyclops_HardLanding:
 	link.w	a6,#$0

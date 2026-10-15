@@ -1,5 +1,8 @@
 ; ---------------------------------------------------------------------------
-; Cyclops_StateAirBeamBrake	[link-after-rts]
+; Cyclops_StateAirBeamBrake - after A is released in the air: ease vertical speed into [-$300, $100] by $100 a frame, then fire the air beam
+; In:  8(a6) = player
+; Out: d0
+; Evidence: grounded -> Cyclops_GroundAim; vy < -$300 += $100, > $100 -= $100, else gravity = record +$E and Cyclops_AirBeamAim (same shape as Gambit_StateAirThrowBrake)
 ; ---------------------------------------------------------------------------
 Cyclops_StateAirBeamBrake:
 	link.w	a6,#$0

@@ -1,5 +1,8 @@
 ; ---------------------------------------------------------------------------
-; Cyclops_TakeDamage	[jt 2400]
+; Cyclops_TakeDamage - CYCLOPS slot +$26: XPLAYER TakeDamage, then end a beam in progress
+; In:  8(a6) = player  then the TakeDamage args
+; Out: none
+; Evidence: parent +$26; +$BE != 0 -> Cyclops_EndBeam
 ; ---------------------------------------------------------------------------
 Cyclops_TakeDamage:
 	link.w	a6,#$0

@@ -1,5 +1,8 @@
 ; ---------------------------------------------------------------------------
-; Cyclops_StateGroundBeam	[link-after-rts]
+; Cyclops_StateGroundBeam - standing beam in progress: when the timer ends, end it and recover
+; In:  8(a6) = player
+; Out: none
+; Evidence: Cyclops_BeamTimeUp -> Cyclops_EndBeam, +$5C = XPlayer_AttackRecover, +$6C = 0
 ; ---------------------------------------------------------------------------
 Cyclops_StateGroundBeam:
 	link.w	a6,#$0

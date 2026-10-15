@@ -1,5 +1,8 @@
 ; ---------------------------------------------------------------------------
-; Cyclops_BeamTimeUp	[link-after-rts]
+; Cyclops_BeamTimeUp - has the beam timer +$A8 run out (then mark the beam inactive)
+; In:  8(a6) = player
+; Out: d0 = 1 when +$A8 < 1 (and +$E0 := 0), else 0
+; Evidence: used by the three beam states
 ; ---------------------------------------------------------------------------
 Cyclops_BeamTimeUp:
 	link.w	a6,#$0

@@ -1,5 +1,8 @@
 ; ---------------------------------------------------------------------------
-; Cyclops_StateCrouchBeam	[link-after-rts]
+; Cyclops_StateCrouchBeam - crouched beam in progress: when the timer ends, end it and recover crouched
+; In:  8(a6) = player
+; Out: none
+; Evidence: Cyclops_BeamTimeUp -> Cyclops_EndBeam, +$5C = XPlayer_CrouchAttackRecover, +$6C = 0
 ; ---------------------------------------------------------------------------
 Cyclops_StateCrouchBeam:
 	link.w	a6,#$0

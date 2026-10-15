@@ -1,5 +1,8 @@
 ; ---------------------------------------------------------------------------
-; Cyclops_ResetBeams	[jt 2389]
+; Cyclops_ResetBeams - at a scene end: if a live player is Cyclops with a beam out, end the beam and reset the beam flicker
+; In:  none
+; Out: d0 = player or 0
+; Evidence: called from Game_SceneLoop and Game_PlayAttractDemo; checks +4 & $C000 = $8000 and vtable = CYCLOPS for g_Player1 then g_Player2, +$BE != 0 -> Cyclops_EndBeam, Cyclops_ResetBeamFlicker
 ; ---------------------------------------------------------------------------
 Cyclops_ResetBeams:
 	link.w	a6,#$0

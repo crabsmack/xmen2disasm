@@ -1,5 +1,8 @@
 ; ---------------------------------------------------------------------------
-; Cyclops_Init	[jt 2398]
+; Cyclops_Init - CYCLOPS slot +$12: XPLAYER Init, Cyclops's record, states, gravity, body sprite, cleared beam fields
+; In:  8(a6) = player  $C(a6)/$10(a6) = x/y  $14(a6) = spawn param
+; Out: none
+; Evidence: +$90 &= ~$2000; byte $FFE958 (P1) / $FFE956 (P2) := 1; +$8C = record (jt -> $1E2A52); gravity record +$E; Spr_Init(+$2E, jt $4D42 sprite); +$CA = 0; Mem_Set(+$BC, 0, $26); +$C6 = $FF; +$C2 = $FFFF
 ; ---------------------------------------------------------------------------
 Cyclops_Init:
 	link.w	a6,#$0

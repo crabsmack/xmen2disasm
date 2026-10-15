@@ -1,5 +1,8 @@
 ; ---------------------------------------------------------------------------
-; Cyclops_AirCharge	[link-after-rts]
+; Cyclops_AirCharge - enter the air special hold state Cyclops_StateAirCharge
+; In:  8(a6) = player
+; Out: none
+; Evidence: +$5C = Cyclops_StateAirCharge; shared by the three air special slots
 ; ---------------------------------------------------------------------------
 Cyclops_AirCharge:
 	link.w	a6,#$0

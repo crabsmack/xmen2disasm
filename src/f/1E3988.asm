@@ -1,5 +1,8 @@
 ; ---------------------------------------------------------------------------
-; Cyclops_GroundAim	[link-after-rts]
+; Cyclops_GroundAim - stop, clear the animation and enter the standing aim state Cyclops_StateGroundAim
+; In:  8(a6) = player
+; Out: none
+; Evidence: ax = vx = 0, +$44 = 0, +$5C = Cyclops_StateGroundAim
 ; ---------------------------------------------------------------------------
 Cyclops_GroundAim:
 	link.w	a6,#$0

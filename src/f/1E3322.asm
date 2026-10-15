@@ -1,5 +1,8 @@
 ; ---------------------------------------------------------------------------
-; Cyclops_AirBeamAim	[link-after-rts]
+; Cyclops_AirBeamAim - fire the air beam in the d-pad direction (level, up, down, or a diagonal with Left/Right) and enter Cyclops_StateAirBeam
+; In:  8(a6) = player
+; Out: none
+; Evidence: Cyclops_StartBeam with jt records $4C6A level / $4C62 up / $4C52 up-diagonal / $4C5A down / $4C4A down-diagonal and matching animations
 ; ---------------------------------------------------------------------------
 Cyclops_AirBeamAim:
 	link.w	a6,#$0

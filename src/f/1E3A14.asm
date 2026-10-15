@@ -1,5 +1,8 @@
 ; ---------------------------------------------------------------------------
-; Cyclops_GroundSpecialUp	[jt 2393]
+; Cyclops_GroundSpecialUp - CYCLOPS slot +$E6: Up+A on the ground: same as Cyclops_GroundSpecial (the aim state reads Up)
+; In:  8(a6) = player
+; Out: none
+; Evidence: +$5C = Cyclops_GroundAim
 ; ---------------------------------------------------------------------------
 Cyclops_GroundSpecialUp:
 	link.w	a6,#$0

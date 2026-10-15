@@ -1,5 +1,8 @@
 ; ---------------------------------------------------------------------------
-; Cyclops_StateAirCharge	[link-after-rts]
+; Cyclops_StateAirCharge - air special held: steer in the air while A stays held; on release go to Cyclops_StateAirBeamBrake
+; In:  8(a6) = player
+; Out: d0
+; Evidence: grounded -> StateControl; calls +$8A AirSteer; A not held -> +$5C = Cyclops_StateAirBeamBrake
 ; ---------------------------------------------------------------------------
 Cyclops_StateAirCharge:
 	link.w	a6,#$0

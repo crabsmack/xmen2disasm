@@ -1,5 +1,8 @@
 ; ---------------------------------------------------------------------------
-; Cyclops_DrawBeam_Emit
+; Cyclops_DrawBeam_Emit - Cyclops_DrawBeam second half: write the beam's two piece lists into the sprite table, clipped by the cut length
+; In:  a6 frame of Cyclops_DrawBeam; d6/d7 = cut y/x
+; Out: none
+; Evidence: entered directly when the cut is already known; writes g_SpriteTable via g_SprWritePtr, stores counts in instance +$C/+$D and link indexes in $FFE990-$FFE99B, sets $FFE98E/$FFE993 = $FF
 ; ---------------------------------------------------------------------------
 Cyclops_DrawBeam_Emit:
 	move.w	d7,-$2(a6)

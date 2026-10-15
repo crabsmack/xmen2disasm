@@ -1,5 +1,8 @@
 ; ---------------------------------------------------------------------------
-; Cyclops_Draw	[jt 2399]
+; Cyclops_Draw - CYCLOPS slot +$1A: draw the optic beam, then the player (XPLAYER Draw), then hit-test the beam
+; In:  8(a6) = player
+; Out: none
+; Evidence: Cyclops_DrawBeam(this, +$BC), parent +$1A, Cyclops_BeamHitEnemies while +$E0
 ; ---------------------------------------------------------------------------
 Cyclops_Draw:
 	link.w	a6,#$0

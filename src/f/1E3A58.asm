@@ -1,5 +1,8 @@
 ; ---------------------------------------------------------------------------
-; Cyclops_AirSpecial	[jt 2395]
+; Cyclops_AirSpecial - CYCLOPS slot +$C6: A in the air: hold to charge, release to fire (Cyclops_AirCharge)
+; In:  8(a6) = player
+; Out: none
+; Evidence: +$5C = Cyclops_AirCharge; identical to the Up/Down variants
 ; ---------------------------------------------------------------------------
 Cyclops_AirSpecial:
 	link.w	a6,#$0

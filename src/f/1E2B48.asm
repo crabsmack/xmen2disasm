@@ -1,5 +1,8 @@
 ; ---------------------------------------------------------------------------
-; Cyclops_AirAttack	[jt 2387]
+; Cyclops_AirAttack - CYCLOPS slot +$C2: B in the air: flying kick, dashing 5 px/frame level toward a held Left/Right
+; In:  8(a6) = player
+; Out: d0
+; Evidence: gravity = record +$E, animation record +$30, Snd_Play(record +$2C); Left/Right: vx = -+$514, max $514, vy = 0; +$5C = XPlayer_StateAirAttack, +$6C = $FF
 ; ---------------------------------------------------------------------------
 Cyclops_AirAttack:
 	link.w	a6,#$0

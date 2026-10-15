@@ -391,7 +391,15 @@ _(module → functions, globals, data; add as you learn them)_
   -> `Gambit_UpdateCard` (sparkle trail: 1 sprite, 5 above 7 health). A aims while held, release throws
   (`Gambit_ThrowCards`: 1 card, 2 above 7 health, +1 with a full meter, angles from `Tbl_GambitThrowKinds`
   by kind +$C2). B in the air = a once-per-jump flying kick (`Gambit_AirKick`, +$90 bit 1 = used). Character
-  records: `Tbl_MagnetoCharRecord` `$1CD99C`, `Tbl_GambitCharRecord` `$1CEE64`.
+  records: `Tbl_MagnetoCharRecord` `$1CD99C`, `Tbl_GambitCharRecord` `$1CEE64`, `Tbl_CyclopsCharRecord` `$1E2A52`.
+- **CYCLOPS player (w1C0)** (`$1E2AB0-$1E3C52`, object $E2, beam drawer `$1E1604-$1E19B6`): A aims while held, release
+  fires the optic beam (`Cyclops_StartBeam(record, vflip)`): a sprite instance at +$BC (def +$BE: `Art_CyclopsBeam
+  Vert/Diag/LevelSpr`), beam record +$D0 (per-level word offsets, origin bytes, +9 attack type, +$C direction 0 level
+  1 up 2 down 3/4 diagonals, +$D length), active +$E0, 14-frame timer +$A8, strength +$70 = 1/2/4 by health > 7 and a
+  full meter. `Cyclops_Draw` draws it (cut at the first wall, `Tile_TestAt`) and hit-tests every enemy against its
+  sprite pieces. The beam has two piece lists; `Cyclops_BeamVBlankFlicker` (called by `VDP_FrameUpdate`) relinks one
+  sprite in VRAM each V-blank so they alternate (state bytes `$FFE98E-$FFE99B`). Scene end: `Cyclops_ResetBeams`.
+  Gambit and Cyclops Init set byte `$FFE958` (P1) / `$FFE956` (P2) = 1 (meaning unknown).
 
 ## Data formats
 

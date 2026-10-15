@@ -1,5 +1,8 @@
 ; ---------------------------------------------------------------------------
-; Cyclops_GroundSpecial	[jt 2392]
+; Cyclops_GroundSpecial - CYCLOPS slot +$DE: A on the ground: aim and fire the optic beam (Cyclops_GroundAim)
+; In:  8(a6) = player
+; Out: none
+; Evidence: +$5C = Cyclops_GroundAim; same body as Cyclops_GroundSpecialUp
 ; ---------------------------------------------------------------------------
 Cyclops_GroundSpecial:
 	link.w	a6,#$0

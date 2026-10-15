@@ -5896,6 +5896,7 @@ Tbl_1E2908:	; format not established; never read in the corpus; jt[2374] used by
 Tbl_Data_1E2A34:	; format not established: read by the animation code but its header is not a well-formed animation script (step count / flags out of range); A of 1E bytes used at runtime; read by Anim_ApplyStep, Anim_AdvanceByDistance, Anim_Advance; jt[2373] used by Cyclops_StartBeam, Cyclops_AirBeamAim
 	incrom	$1E2A34,$1E
 Tbl_EvilCyclopsLand:	; table read by XPlayer_Land; 39 of 5E bytes used at runtime; read by XPlayer_Land, Cyclops_Init, XPlayer_AirSteer; jt[2384] used by EvilCyclops_Init, PlayerSelect_PlayPickAnim_part2, Cyclops_Init
+Tbl_CyclopsCharRecord:	; Cyclops's character record (player +$8C; layout in NOTES 'XPLAYER slots': attack strengths, sounds, gravities, speeds, animation offsets); set by Cyclops_Init
 	incrom	$1E2A52,$5E
 	include "src/f/1E2AB0.asm"
 	include "src/f/1E2ABE.asm"
@@ -5933,11 +5934,11 @@ Tbl_EvilCyclopsLand:	; table read by XPlayer_Land; 39 of 5E bytes used at runtim
 	include "src/f/1E3C6A.asm"
 Art_CyclopsSpr:	; sprite definition (type $18, raw 4bpp tiles): $24-byte header, $14-byte frame records, pieces, tiles; 8060 of A138 bytes used at runtime; read by VDP_FlushDmaQueue, Spr_RenderToBitmap_Loop; DMA to VRAM $6CA0-C8A0; jt[2404] used by Cyclops_SelectSpriteDef, EvilCyclops_Init, Player_CalcMaxTiles
 	incrom	$1E3C74,$A138
-Tbl_CyclopsVdp:	; words copied to the VDP data port by VDP_WriteWords; CD7 of D70 bytes used at runtime; read by VDP_WriteWords; jt[2405] used by Cyclops_StartBeam
+Art_CyclopsBeamDiagSpr:	; sprite definition of the diagonal optic beam (Spr_Init in Cyclops_StartBeam, beam type 1); words copied to the VDP data port by VDP_WriteWords; CD7 of D70 bytes used at runtime; read by VDP_WriteWords; jt[2405] used by Cyclops_StartBeam
 	incrom	$1EDDAC,$D70
-Tbl_CyclopsVdp2:	; words copied to the VDP data port by VDP_WriteWords; 58A of C58 bytes used at runtime; read by VDP_WriteWords; jt[2406] used by Cyclops_StartBeam
+Art_CyclopsBeamLevelSpr:	; sprite definition of the level optic beam (Spr_Init in Cyclops_StartBeam, beam type 2); words copied to the VDP data port by VDP_WriteWords; 58A of C58 bytes used at runtime; read by VDP_WriteWords; jt[2406] used by Cyclops_StartBeam
 	incrom	$1EEB1C,$C58
-Tbl_CyclopsVdp3:	; words copied to the VDP data port by VDP_WriteWords; 2F4 of 8E8 bytes used at runtime; read by VDP_WriteWords; jt[2407] used by Cyclops_StartBeam
+Art_CyclopsBeamVertSpr:	; sprite definition of the vertical optic beam (Spr_Init in Cyclops_StartBeam, beam type 0); words copied to the VDP data port by VDP_WriteWords; 2F4 of 8E8 bytes used at runtime; read by VDP_WriteWords; jt[2407] used by Cyclops_StartBeam
 	incrom	$1EF774,$8E8
 	include "src/f/1F005C.asm"
 	include "src/f/1F00E8.asm"

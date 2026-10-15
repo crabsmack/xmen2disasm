@@ -1,5 +1,8 @@
 ; ---------------------------------------------------------------------------
-; Cyclops_EndBeam	[jt 2390]
+; Cyclops_EndBeam - switch the optic beam off: clear beam active, beam record and sprite, the meter-full flag, attack strength back to 2
+; In:  8(a6) = player
+; Out: none
+; Evidence: +$E0 = 0, +$D8 = 0 (cut length), +$BC bit 5 cleared, word +$A6 = 0, +$BE = 0, +$D0 = 0, +$90 &= ~$800, +$44 = 0, +$70 = 2; 7 callers (beam states, TakeDamage, scene end)
 ; ---------------------------------------------------------------------------
 Cyclops_EndBeam:
 	link.w	a6,#$0

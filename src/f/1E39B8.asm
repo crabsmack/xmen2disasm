@@ -1,5 +1,8 @@
 ; ---------------------------------------------------------------------------
-; Cyclops_CrouchAim	[link-after-rts]
+; Cyclops_CrouchAim - stop, crouch-aim animation, enter Cyclops_StateCrouchAim
+; In:  8(a6) = player
+; Out: none
+; Evidence: ax = vx = 0, animation Tbl_Anim_1E1C48, +$5C = Cyclops_StateCrouchAim
 ; ---------------------------------------------------------------------------
 Cyclops_CrouchAim:
 	link.w	a6,#$0

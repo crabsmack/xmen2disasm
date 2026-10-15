@@ -1,5 +1,8 @@
 ; ---------------------------------------------------------------------------
-; Cyclops_StateGroundAim	[link-after-rts]
+; Cyclops_StateGroundAim - standing beam aim: turn and aim with the d-pad while A is held (jump cancels); releasing A fires the beam
+; In:  8(a6) = player
+; Out: d0
+; Evidence: airborne -> StateControl; C press -> +$82 Jump; aim frames $29 level, $32 down, $2C up, $2F up-diagonal; on A release Cyclops_StartBeam(jt $4C9A level / $4C82 v-flipped down-diagonal / $4C92 up / $4C8A up-diagonal), +$5C = Cyclops_StateGroundBeam
 ; ---------------------------------------------------------------------------
 Cyclops_StateGroundAim:
 	link.w	a6,#$0

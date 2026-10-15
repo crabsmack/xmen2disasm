@@ -1,5 +1,8 @@
 ; ---------------------------------------------------------------------------
-; Cyclops_SetAirFrame	[jt 2386]
+; Cyclops_SetAirFrame - CYCLOPS slot +$7E: pick the airborne frame $F-$13 from the vertical speed
+; In:  8(a6) = player
+; Out: none
+; Evidence: vy < -$1FE frame $F, < $154 $10, < $200 $11, < $300 $12, else $13 via +$56 SetFrame
 ; ---------------------------------------------------------------------------
 Cyclops_SetAirFrame:
 	link.w	a6,#$0

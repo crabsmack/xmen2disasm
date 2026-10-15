@@ -1,5 +1,8 @@
 ; ---------------------------------------------------------------------------
-; Cyclops_BeamHitEnemies	[link-after-rts]
+; Cyclops_BeamHitEnemies - beam hit test: damage every enemy (not in hit cooldown) whose box overlaps one of the beam's sprite pieces
+; In:  8(a6) = player
+; Out: none
+; Evidence: counts +$CA; walks g_HitListEnemyBody; beam origin from +$D0 record x/y; piece list record +2 or +4 (counts +$C8/+$C9) alternating by +$CA parity; on overlap with box +$54..+$5A calls target +$26 TakeDamage(0, +$71, +$70, centre x, centre y); called from Cyclops_Draw while +$E0
 ; ---------------------------------------------------------------------------
 Cyclops_BeamHitEnemies:
 	link.w	a6,#$FFEA

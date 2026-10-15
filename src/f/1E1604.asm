@@ -1,5 +1,8 @@
 ; ---------------------------------------------------------------------------
-; Cyclops_DrawBeam	[jt 2358]
+; Cyclops_DrawBeam - draw Cyclops's optic beam as hardware sprites, cut short where a wall blocks it, as two alternating piece lists
+; In:  8(a6) = player  $C(a6) = beam sprite instance (player +$BC: +2 def, +8 attr, +$14 beam record, +$1C/+$1E cut length, +$24 active)
+; Out: none
+; Evidence: first frame probes the map along the beam (Tile_TestAt, Tbl_BeamStepCases steps 20 px level/vertical, 10 px diagonal, up to record +$D) and stores the cut (Tbl_BeamCutCases), setting +$90 bit $20 when blocked; then emits pieces of list +2 and list +4 clipped by the cut, recording sprite link indexes in $FFE98E-$FFE99B for Cyclops_BeamVBlankFlicker
 ; ---------------------------------------------------------------------------
 Cyclops_DrawBeam:
 	link.w	a6,#$FFE4

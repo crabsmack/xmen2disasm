@@ -1,5 +1,8 @@
 ; ---------------------------------------------------------------------------
-; Cyclops_DrawBeam_CutVertical	[targets of the beam-direction jump tables at $1E1902 (entry 2) and $1E190C (entries 1-2) in the Cyclops beam drawer Cyclops_DrawBeam; down-beam step and vertical cut cases]
+; Cyclops_DrawBeam_CutVertical - Cyclops_DrawBeam cut case for vertical beams: limit y only
+; In:  d4 = distance probed
+; Out: none
+; Evidence: Tbl_BeamCutCases entries 1-2: d6 = d4, d7 = -1 (x unlimited); not reached in the corpus
 ; ---------------------------------------------------------------------------
 Cyclops_DrawBeam_CutVertical:
 	move.w	d4,d6

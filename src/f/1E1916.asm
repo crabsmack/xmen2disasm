@@ -1,5 +1,8 @@
 ; ---------------------------------------------------------------------------
-; Cyclops_DrawBeam_None
+; Cyclops_DrawBeam_None - Cyclops_DrawBeam exit when no beam is active: clear the flicker request
+; In:  none
+; Out: none
+; Evidence: $FFE993 = 0; $FFE98E = $FF if $FFE98F still set
 ; ---------------------------------------------------------------------------
 Cyclops_DrawBeam_None:
 	sf.b	d0

@@ -1,5 +1,8 @@
 ; ---------------------------------------------------------------------------
-; Cyclops_StateAirBeam	[link-after-rts]
+; Cyclops_StateAirBeam - air beam in progress: on landing end it and aim on the ground; when the timer ends end it and return to control
+; In:  8(a6) = player
+; Out: d0
+; Evidence: grounded -> Cyclops_EndBeam, Cyclops_GroundAim; Cyclops_BeamTimeUp -> Cyclops_EndBeam, StateControl
 ; ---------------------------------------------------------------------------
 Cyclops_StateAirBeam:
 	link.w	a6,#$0

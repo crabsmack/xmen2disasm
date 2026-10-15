@@ -1,5 +1,8 @@
 ; ---------------------------------------------------------------------------
-; Cyclops_StartBeam	[link-after-rts]
+; Cyclops_StartBeam - fire the optic beam: pick its sprite by direction, strength 1/2/4 by health and meter, 14-frame timer, beam sprite and screen origin
+; In:  8(a6) = player  $C(a6) = beam record (jt data, 3 word offsets by level then x/y byte offsets, +9 attack type, +$C direction 0 level 1 up 2 down 3/4 diagonals, +$D length)  $13(a6) = byte: v-flip
+; Out: none
+; Evidence: vertical records -> +$BD = 0, Art_CyclopsBeamVertSpr; diagonal -> 1, Art_CyclopsBeamDiagSpr; else 2, Art_CyclopsBeamLevelSpr; Snd_Play($A1, or $A2 with a full meter); level = (health > $700) + meter full: +$70 = 1 << level, +$D0 = record + record[level]; +$E0 = 1, +$A8 = 14, +$71 = record +9; Spr_Init(+$BC, ...); +$C4 attr, +$D4/+$D6 origin in screen coords
 ; ---------------------------------------------------------------------------
 Cyclops_StartBeam:
 	link.w	a6,#$0

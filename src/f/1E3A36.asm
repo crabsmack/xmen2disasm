@@ -1,5 +1,8 @@
 ; ---------------------------------------------------------------------------
-; Cyclops_GroundSpecialDown	[jt 2394]
+; Cyclops_GroundSpecialDown - CYCLOPS slot +$E2: Down+A on the ground: crouched beam (Cyclops_CrouchAim)
+; In:  8(a6) = player
+; Out: none
+; Evidence: +$5C = Cyclops_CrouchAim
 ; ---------------------------------------------------------------------------
 Cyclops_GroundSpecialDown:
 	link.w	a6,#$0
