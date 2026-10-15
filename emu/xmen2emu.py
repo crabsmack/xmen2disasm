@@ -98,6 +98,9 @@ class BaseEmu:
     def readers(self) -> np.ndarray | None:
         return None
 
+    def dma_dest(self) -> np.ndarray | None:
+        return None
+
     def regs(self) -> dict:
         out = (C.c_uint * 18)()
         self.lib.xm_get_regs(out)
@@ -149,6 +152,9 @@ class BizEmu(BaseEmu):
         self._has_reader = hasattr(L, "xm_reader")  # cores built before the reader map lack it
         if self._has_reader:
             L.xm_reader.restype = C.c_void_p
+        self._has_dma_dest = hasattr(L, "xm_dma_dest")
+        if self._has_dma_dest:
+            L.xm_dma_dest.restype = C.c_void_p
         self._setup_trace()
 
     def _load(self, filename, buf, maxsize):
@@ -176,6 +182,13 @@ class BizEmu(BaseEmu):
 
     def dma_coverage(self) -> np.ndarray:
         return self._bits("xm_dma_total", 0x400000 // 8)
+
+    def dma_dest(self) -> np.ndarray | None:
+        """Per ROM byte: 0, or DMA | VDP code << 16 | VDP address of its first DMA (code bits 0-3:
+        1 = VRAM, 3 = CRAM, 5 = VSRAM)."""
+        if not self._has_dma_dest:
+            return None
+        return np.frombuffer(C.string_at(self.lib.xm_dma_dest(), 0x400000 * 4), dtype=np.uint32)
 
     def readers(self) -> np.ndarray | None:
         """Per ROM byte: 0, or READ|pc of the first instruction that read it as data, or
@@ -390,6 +403,26 @@ def write_readers(path: Path, rd: np.ndarray, entries: np.ndarray) -> None:
         g.write("".join(lines).encode())
 
 
+def write_dma_dest(path: Path, dd: np.ndarray) -> None:
+    """Where DMA'd ROM bytes went: `SRC LEN TARGET DEST` (hex) per run of source bytes copied to
+    consecutive VDP words, TARGET = VRAM / CRAM / VSRAM (or the raw code), DEST = VDP address of
+    the run's first word."""
+    nz = np.nonzero(dd)[0]
+    lines = []
+    if len(nz):
+        vals = dd[nz].astype(np.int64)
+        code = (vals >> 16) & 0x3F
+        dest = vals & 0xFFFF
+        key = (code << 32) | ((dest - (nz & ~1)) & 0xFFFFFFFF)
+        brk = np.nonzero((np.diff(nz) != 1) | (np.diff(key) != 0))[0] + 1
+        names = {1: "VRAM", 3: "CRAM", 5: "VSRAM"}
+        for s, e in zip(np.r_[0, brk], np.r_[brk, len(nz)]):
+            c = int(code[s])
+            lines.append(f"{int(nz[s]):06X} {int(e - s):X} {names.get(c & 0xF, f'code{c:X}')} {int(dest[s]):04X}\n")
+    with gzip.GzipFile(path, "wb", mtime=0) as g:
+        g.write("".join(lines).encode())
+
+
 def read_readers(path: Path) -> list[tuple[int, int, list[tuple[str, int, int, int]]]]:
     """[(start, length, [(kind 'R'|'D', func, pc, bytes), ...])] from a write_readers file."""
     out = []
@@ -447,6 +480,9 @@ class Recorder:
         rd = e.readers()
         if rd is not None:
             write_readers(cdir / f"{self.dir.name}.readers.txt.gz", rd, self.entries)
+        dd = e.dma_dest()
+        if dd is not None:
+            write_dma_dest(cdir / f"{self.dir.name}.dmadest.txt.gz", dd)
         funcs = {f"{a:06X}": {"first": self.first[a], "last": self.last[a], "frames": int(self.count[i])}
                  for i, a in enumerate(map(int, self.entries)) if a in self.first}
         (self.dir / "func_frames.json").write_text(json.dumps(funcs, indent=0), newline="\n")

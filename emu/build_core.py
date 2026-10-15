@@ -49,6 +49,22 @@ def fetch_biz() -> None:
     subprocess.run(g + ["checkout", "-q", "FETCH_HEAD"], check=True)
 
 
+def patch_biz() -> None:
+    """Let xm_biz.c see where each DMA word goes: call xm_dma_note(code, addr) (the VDP's private
+    code/address registers) right before BizHawk logs a DMA source word. Recording only; the
+    emulation is unchanged (the TAS stays frame-identical)."""
+    p = BIZ_SRC / "waterbox" / "gpgx" / "core" / "vdp_ctrl.c"
+    t = p.read_text(encoding="latin-1")
+    if "xm_dma_note" in t:
+        return
+    hook = "CDLog68k(source,eCDLog_Flags_DMASource);"
+    if hook not in t:
+        sys.exit("patch_biz: DMA logging call not found in vdp_ctrl.c")
+    t = t.replace(hook, "xm_dma_note(code, addr); " + hook)
+    t = t.replace("static uint8 code;", "extern void xm_dma_note(unsigned int code, unsigned int addr);\nstatic uint8 code;", 1)
+    p.write_text(t, encoding="latin-1", newline="\n")
+
+
 def build(src: Path, target: str) -> None:
     cmake = find_cmake()
     out = src / "_build"
@@ -67,6 +83,7 @@ def main() -> int:
     which = sys.argv[1:] or ["biz", "gpgx"]
     if "biz" in which:
         fetch_biz()
+        patch_biz()
         build(EMU / "bizcore", "xmen2_bizgpgx")
     if "gpgx" in which:
         if not (EMU / "gpgx" / "core").exists():

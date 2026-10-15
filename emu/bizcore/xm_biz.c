@@ -24,7 +24,9 @@ static unsigned char dma_total[ROM_SPAN / 8];
 static unsigned char ram_exec[0x10000 / 16];
 static unsigned long long instr_count;
 static unsigned int reader[ROM_SPAN];
+static unsigned int dma_dest[ROM_SPAN];  /* XM_DMA | VDP code << 16 | VDP address, first DMA of each byte */
 static unsigned int cur_pc;
+static unsigned int cur_dma;              /* VDP code/address of the DMA word being logged */
 #define XM_READ 0x01000000u
 #define XM_DMA 0x02000000u
 
@@ -56,6 +58,8 @@ static void xm_cdl(int32 addr, int32 addrtype, int32 flags)
     dma_total[addr >> 3] |= (unsigned char)(1u << (addr & 7));
     if (!reader[addr])
       reader[addr] = XM_DMA | cur_pc;
+    if (!dma_dest[addr])  /* both bytes of a word go to the same VDP word */
+      dma_dest[addr] = XM_DMA | cur_dma;
   }
 }
 
@@ -73,6 +77,7 @@ XM_EXPORT void xm_trace_reset(void)
   memset(dma_total, 0, sizeof dma_total);
   memset(ram_exec, 0, sizeof ram_exec);
   memset(reader, 0, sizeof reader);
+  memset(dma_dest, 0, sizeof dma_dest);
   instr_count = 0;
 }
 
@@ -83,6 +88,14 @@ XM_EXPORT unsigned char *xm_ram_total(void) { return ram_exec; }
 XM_EXPORT unsigned char *xm_data_total(void) { return data_total; }
 XM_EXPORT unsigned char *xm_dma_total(void) { return dma_total; }
 XM_EXPORT unsigned int *xm_reader(void) { return reader; }
+XM_EXPORT unsigned int *xm_dma_dest(void) { return dma_dest; }
+
+/* Called by the patched vdp_ctrl.c (emu/build_core.py patch_biz) before each DMA source word is
+   logged: code = VDP code register (bits 0-3: 1 VRAM, 3 CRAM, 5 VSRAM), addr = destination. */
+void xm_dma_note(unsigned int code, unsigned int addr)
+{
+  cur_dma = ((code & 0x3Fu) << 16) | (addr & 0xFFFFu);
+}
 XM_EXPORT unsigned int xm_bitmap_bytes(void) { return sizeof exec_total; }
 XM_EXPORT unsigned long long xm_instr_count(void) { return instr_count; }
 XM_EXPORT unsigned char *xm_work_ram(void) { return work_ram; }
