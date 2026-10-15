@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_06D9DE	[link-after-rts]
+; Brood_StateFireEnd - BROOD: back to idle, next step after 60 frames
+; In:  8(a6) = this
+; Out: none
+; Evidence: animation jt $6D0D8
 ; ---------------------------------------------------------------------------
-sub_06D9DE:
+Brood_StateFireEnd:
 	link.w	a6,#$0
 	move.l	a4,-(a7)
 	movea.l	$8(a6),a4

@@ -1,12 +1,15 @@
 ; ---------------------------------------------------------------------------
-; sub_077CBC	[link-after-rts]
+; LightBeam_StateIdle - LIGHTBEAM state: do nothing, re-arm every frame
+; In:  8(a6) = this
+; Out: d0 = +4 & 8
+; Evidence: installed by LightBeam_Init; +$5C = itself, +$6C = 0
 ; ---------------------------------------------------------------------------
-sub_077CBC:
+LightBeam_StateIdle:
 	link.w	a6,#$0
 	move.l	a4,-(a7)
 	movea.l	$8(a6),a4
 	clr.w	$6C(a4)
-	lea.l	sub_077CBC(pc),a0
+	lea.l	LightBeam_StateIdle(pc),a0
 	move.l	a0,$5C(a4)
 	moveq	#$8,d0
 	and.w	$4(a4),d0

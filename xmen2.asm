@@ -1615,21 +1615,21 @@ Snd_Credits:	; sound data; never read in the corpus; jt[500] used by Credits_Run
 	incrom	$069926,$736
 Tbl_ScalingActor_vtable:	; class descriptor of SCALINGACTOR: word name offset $6E, parent ACTOR, 26 method slots from +6, then the name (tools/classes.py)
 	incrom	$06A05C,$7B
-Pad_06A0D7:	; $00 fill; never read in the corpus; between CursorInput_Confirm and loc_06D126
+Pad_06A0D7:	; $00 fill; never read in the corpus; between CursorInput_Confirm and Brood_Script
 	incrom	$06A0D7,$1
 Tbl_BoxInputActor_vtable:	; class descriptor of BOXINPUTACTOR: word name offset $6E, parent ACTOR, 26 method slots from +6, then the name (tools/classes.py)
 	incrom	$06A0D8,$7C
 Art_BroodSpr:	; sprite definition (type $18, raw 4bpp tiles): $24-byte header, $14-byte frame records, pieces, tiles; 28A0 of 2F84 bytes used at runtime; read by VDP_FlushDmaQueue; DMA to VRAM $A1A0-C040; jt[503] used by Brood_Init
 	incrom	$06A154,$2F84
-Tbl_Anim_06D0D8:	; animation script (byte flags, byte steps, ..., 2-byte steps from +6); 8 of A bytes used at runtime; read by Anim_ApplyStep, VDP_FlushDmaQueue, Anim_AdvanceByDistance; jt[504] used by sub_06D69E, sub_06D9DE, sub_06DA42
+Tbl_Anim_06D0D8:	; animation script (byte flags, byte steps, ..., 2-byte steps from +6); 8 of A bytes used at runtime; read by Anim_ApplyStep, VDP_FlushDmaQueue, Anim_AdvanceByDistance; jt[504] used by Brood_ActIdle, Brood_StateFireEnd, Brood_ActCharge
 	incrom	$06D0D8,$A
-Tbl_Anim_06D0E2:	; animation script (NOTES: Animation scripts); never read in the corpus; jt[505] used by sub_06DDA0 -> Obj_ChangeAnim
+Tbl_Anim_06D0E2:	; animation script (NOTES: Animation scripts); never read in the corpus; jt[505] used by Brood_StateCornered -> Obj_ChangeAnim
 	incrom	$06D0E2,$E
-Tbl_Anim_06D0F0:	; animation script (byte flags, byte steps, ..., 2-byte steps from +6); C of E bytes used at runtime; read by Anim_ApplyStep, Anim_AdvanceByDistance, Anim_Advance; jt[506] used by sub_06D70E, sub_06DB86, sub_06DCDC
+Tbl_Anim_06D0F0:	; animation script (byte flags, byte steps, ..., 2-byte steps from +6); C of E bytes used at runtime; read by Anim_ApplyStep, Anim_AdvanceByDistance, Anim_Advance; jt[506] used by Brood_ActApproach, Brood_StateWalkToPlayer, Brood_StateRetreatStart
 	incrom	$06D0F0,$E
-Tbl_Anim_06D0FE:	; animation script (byte flags, byte steps, ..., 2-byte steps from +6); E of 10 bytes used at runtime; read by Anim_ApplyStep, Anim_AdvanceByDistance, Anim_Advance; jt[507] used by sub_06D92C
+Tbl_Anim_06D0FE:	; animation script (byte flags, byte steps, ..., 2-byte steps from +6); E of 10 bytes used at runtime; read by Anim_ApplyStep, Anim_AdvanceByDistance, Anim_Advance; jt[507] used by Brood_ActShoot
 	incrom	$06D0FE,$10
-Tbl_Anim_06D10E:	; animation script (byte flags, byte steps, ..., 2-byte steps from +6); 6 of 8 bytes used at runtime; read by Anim_ApplyStep, Anim_AdvanceByDistance, Anim_Advance; jt[508] used by sub_06D990
+Tbl_Anim_06D10E:	; animation script (byte flags, byte steps, ..., 2-byte steps from +6); 6 of 8 bytes used at runtime; read by Anim_ApplyStep, Anim_AdvanceByDistance, Anim_Advance; jt[508] used by Brood_StateFire
 	incrom	$06D10E,$8
 Tbl_BroodAiScript:	; data handed to AiScript_Set (format not established); never read in the corpus; jt[509] used by Brood_Init -> AiScript_Set
 	incrom	$06D116,$E
@@ -1670,9 +1670,9 @@ Art_CloneA1Nem2:	; Nemesis-style compressed 4bpp tiles (Nem_Decode; code table b
 	incrom	$074994,$5A
 Art_CloneA1Nem3:	; Nemesis-style compressed 4bpp tiles (Nem_Decode; code table built from pairs by the caller); 16A2 of 16AC bytes used at runtime; read by Nem_DecodeLoop, VDP_WriteWords, Eni_Decode; jt[526] used by CloneA1_LoadLevel
 	incrom	$0749EE,$16AC
-Art_LightBeamNem:	; Nemesis-style compressed 4bpp tiles (Nem_Decode; code table built from pairs by the caller); 4F0 of 4F0 bytes used at runtime; read by Nem_DecodeLoop, VDP_WriteWords, Eni_Decode; DMA to VRAM $B140-B5A0; jt[527] used by LightBeam_ClassInit, sub_077256
+Art_LightBeamNem:	; Nemesis-style compressed 4bpp tiles (Nem_Decode; code table built from pairs by the caller); 4F0 of 4F0 bytes used at runtime; read by Nem_DecodeLoop, VDP_WriteWords, Eni_Decode; DMA to VRAM $B140-B5A0; jt[527] used by LightBeam_ClassInit, CloneA1_AnimTilesTimer
 	incrom	$07609A,$4F0
-Tbl_CloneA1Vdp:	; words copied to the VDP data port by VDP_WriteWords; C00 of CCC bytes used at runtime; read by VDP_WriteWords, VDP_DmaToVram; DMA to VRAM $53E0-59E0; jt[528] used by CloneA1_InitSprites, sub_077256
+Tbl_CloneA1Vdp:	; words copied to the VDP data port by VDP_WriteWords; C00 of CCC bytes used at runtime; read by VDP_WriteWords, VDP_DmaToVram; DMA to VRAM $53E0-59E0; jt[528] used by CloneA1_InitSprites, CloneA1_AnimTilesTimer
 	incrom	$07658A,$CCC
 	include "src/f/077256.asm"
 Tbl_CloneA1ComputeParallax:	; table read by Scroll_ComputeParallax; 2A of 42 bytes used at runtime; read by Scroll_ComputeParallax, Scroll_SetParallax; jt[530] used by CloneA1_RunScene, LightBeam_Init

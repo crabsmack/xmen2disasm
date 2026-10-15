@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_06DDE0	[link-after-rts]
+; Brood_StateCorneredFlash - BROOD: toggle palette bit 1 every 4 frames until the timer ends
+; In:  8(a6) = this
+; Out: none
+; Evidence: +$2E bits 0-1; next Brood_StateBreakOut
 ; ---------------------------------------------------------------------------
-sub_06DDE0:
+Brood_StateCorneredFlash:
 	link.w	a6,#$0
 	movem.l	d7/a4,-(a7)
 	movea.l	$8(a6),a4
@@ -25,7 +28,7 @@ loc_06DE18:
 	tst.w	$6E(a4)
 	bne.s	loc_06DE30
 	clr.w	$6C(a4)
-	lea.l	sub_06DE3A(pc),a0
+	lea.l	Brood_StateBreakOut(pc),a0
 	move.l	a0,$5C(a4)
 	moveq	#$8,d0
 	and.w	$4(a4),d0

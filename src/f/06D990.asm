@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_06D990	[link-after-rts]
+; Brood_StateFire - BROOD: fire a shot from (10, -48) with the recoil animation
+; In:  8(a6) = this
+; Out: d0 = +4 & 8
+; Evidence: slot $82 (SmallBrood_Shoot) (this, 10, -48, 0); animation jt $1202; next Brood_StateFireEnd
 ; ---------------------------------------------------------------------------
-sub_06D990:
+Brood_StateFire:
 	link.w	a6,#$0
 	move.l	a4,-(a7)
 	movea.l	$8(a6),a4
@@ -21,7 +24,7 @@ sub_06D990:
 	jsr	$4E4A(a5)	; -> Obj_ChangeAnim
 	lea.l	$18(a7),a7
 	move.w	#$FF,$6C(a4)
-	lea.l	sub_06D9DE(pc),a0
+	lea.l	Brood_StateFireEnd(pc),a0
 	move.l	a0,$5C(a4)
 	moveq	#$8,d0
 	and.w	$4(a4),d0

@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_06DE90	[link-after-rts]
+; Brood_StateBreakOutRun - BROOD: keep flashing while running; then palette 1, stop, reload the cooldown and run the next step
+; In:  8(a6) = this
+; Out: none
+; Evidence: +$B0 = +$AE
 ; ---------------------------------------------------------------------------
-sub_06DE90:
+Brood_StateBreakOutRun:
 	link.w	a6,#$0
 	movem.l	d7/a4,-(a7)
 	movea.l	$8(a6),a4

@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_06DB86	[link-after-rts]
+; Brood_StateWalkToPlayer - BROOD: walk until a player is within 160 px horizontally and 50 px vertically (target -> +$9C, next step); at an x limit wait 20 frames and re-decide
+; In:  8(a6) = this
+; Out: d0
+; Evidence: player boxes +$4C..+$52; next Brood_StateLimitWait
 ; ---------------------------------------------------------------------------
-sub_06DB86:
+Brood_StateWalkToPlayer:
 	link.w	a6,#$FFFE
 	movem.l	d3-d7/a3-a4,-(a7)
 	movea.l	$8(a6),a4
@@ -100,7 +103,7 @@ loc_06DC80:
 	jsr	$4E4A(a5)	; -> Obj_ChangeAnim
 	addq.w	#$8,a7
 	clr.w	$6C(a4)
-	lea.l	sub_06DCB2(pc),a0
+	lea.l	Brood_StateLimitWait(pc),a0
 	move.l	a0,$5C(a4)
 	moveq	#$8,d0
 	and.w	$4(a4),d0

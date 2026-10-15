@@ -18,7 +18,7 @@ Brood_TakeDamage:
 loc_06D49A:
 	andi.b	#$EF,$2E(a4)
 loc_06D4A0:
-	lea.l	sub_06DA42(pc),a0
+	lea.l	Brood_ActCharge(pc),a0
 	move.l	a0,$5C(a4)
 	clr.w	$6C(a4)
 	move.w	$1E(a6),d0

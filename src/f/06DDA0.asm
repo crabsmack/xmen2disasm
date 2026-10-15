@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_06DDA0	[link-after-rts]
+; Brood_StateCornered - BROOD cornered: rage animation (jt $11EA), start flashing, 20 frames
+; In:  8(a6) = this
+; Out: d0 = +4 & 8
+; Evidence: +$B4 flash timer 4; next Brood_StateCorneredFlash
 ; ---------------------------------------------------------------------------
-sub_06DDA0:
+Brood_StateCornered:
 	link.w	a6,#$0
 	move.l	a4,-(a7)
 	movea.l	$8(a6),a4
@@ -13,7 +16,7 @@ sub_06DDA0:
 	move.w	#$14,$6E(a4)
 	addq.w	#$8,a7
 	clr.w	$6C(a4)
-	lea.l	sub_06DDE0(pc),a0
+	lea.l	Brood_StateCorneredFlash(pc),a0
 	move.l	a0,$5C(a4)
 	moveq	#$8,d0
 	and.w	$4(a4),d0

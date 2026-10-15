@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_06D70E	[jt 520]
+; Brood_ActApproach - BROOD script action: if not at its preferred distance +$AC (+/-4) from the nearest player and the cooldown allows, walk (speed +$A6) towards that distance
+; In:  8(a6) = this
+; Out: d0
+; Evidence: cooldown +$B0 reloaded from +$AE; walk animation jt $6D0F0; next Brood_StateApproach
 ; ---------------------------------------------------------------------------
-sub_06D70E:
+Brood_ActApproach:
 	link.w	a6,#$0
 	movem.l	d3/d7/a3-a4,-(a7)
 	movea.l	$8(a6),a4
@@ -106,7 +109,7 @@ loc_06D81C:
 	jsr	$4E4A(a5)	; -> Obj_ChangeAnim
 	addq.w	#$8,a7
 	clr.w	$6C(a4)
-	lea.l	sub_06D848(pc),a0
+	lea.l	Brood_StateApproach(pc),a0
 	move.l	a0,$5C(a4)
 	moveq	#$8,d0
 	and.w	$4(a4),d0

@@ -1,12 +1,15 @@
 ; ---------------------------------------------------------------------------
-; sub_06D4F6	[link-after-rts]
+; Brood_StateStart - BROOD initial state: go to Brood_StateLand
+; In:  8(a6) = this
+; Out: d0 = +4 & 8
+; Evidence: BROOD derives from SMALLBROOD (same pattern as SmallBrood_StateStart)
 ; ---------------------------------------------------------------------------
-sub_06D4F6:
+Brood_StateStart:
 	link.w	a6,#$0
 	move.l	a4,-(a7)
 	movea.l	$8(a6),a4
 	clr.w	$6C(a4)
-	lea.l	sub_06D51A(pc),a0
+	lea.l	Brood_StateLand(pc),a0
 	move.l	a0,$5C(a4)
 	moveq	#$8,d0
 	and.w	$4(a4),d0

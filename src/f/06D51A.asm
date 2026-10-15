@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_06D51A	[link-after-rts]
+; Brood_StateLand - BROOD: settle onto its floor inside its x range (+$A2..+$A4, y +$A8/+$AA), then run the next AI-script step
+; In:  8(a6) = this
+; Out: d0
+; Evidence: slot $56 SetFrame(0); clamps x/y; drifts with vy $100 until inside; script +$98 / index +$96
 ; ---------------------------------------------------------------------------
-sub_06D51A:
+Brood_StateLand:
 	link.w	a6,#$0
 	movem.l	d6-d7/a4,-(a7)
 	movea.l	$8(a6),a4
@@ -59,7 +62,7 @@ loc_06D598:
 loc_06D5BA:
 	move.w	#$100,$20(a4)
 	clr.w	$6C(a4)
-	lea.l	sub_06D51A(pc),a0
+	lea.l	Brood_StateLand(pc),a0
 	move.l	a0,$5C(a4)
 	moveq	#$8,d0
 	and.w	$4(a4),d0
@@ -79,7 +82,7 @@ loc_06D5D6:
 loc_06D5F8:
 	move.w	#$100,$20(a4)
 	clr.w	$6C(a4)
-	lea.l	sub_06D51A(pc),a0
+	lea.l	Brood_StateLand(pc),a0
 	move.l	a0,$5C(a4)
 	moveq	#$8,d0
 	and.w	$4(a4),d0
@@ -103,7 +106,7 @@ loc_06D628:
 loc_06D63C:
 	move.w	#$100,$20(a4)
 	clr.w	$6C(a4)
-	lea.l	sub_06D51A(pc),a0
+	lea.l	Brood_StateLand(pc),a0
 	move.l	a0,$5C(a4)
 	moveq	#$8,d0
 	and.w	$4(a4),d0

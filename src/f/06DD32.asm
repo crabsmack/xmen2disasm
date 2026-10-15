@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_06DD32	[link-after-rts]
+; Brood_StateRetreat - BROOD: when the retreat time ends stop and run the next step
+; In:  8(a6) = this
+; Out: none
+; Evidence: animation jt $6D0D8
 ; ---------------------------------------------------------------------------
-sub_06DD32:
+Brood_StateRetreat:
 	link.w	a6,#$0
 	move.l	a4,-(a7)
 	movea.l	$8(a6),a4

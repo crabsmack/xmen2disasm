@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_06D92C	[jt 521]
+; Brood_ActShoot - BROOD script action: stop facing the nearest player and play the wind-up (jt $6D0FE)
+; In:  8(a6) = this
+; Out: d0 = +4 & 8
+; Evidence: next Brood_StateFire when the animation ends
 ; ---------------------------------------------------------------------------
-sub_06D92C:
+Brood_ActShoot:
 	link.w	a6,#$0
 	movem.l	a3-a4,-(a7)
 	movea.l	$8(a6),a4
@@ -25,7 +28,7 @@ loc_06D95A:
 	jsr	$4E4A(a5)	; -> Obj_ChangeAnim
 	addq.w	#$8,a7
 	move.w	#$FF,$6C(a4)
-	lea.l	sub_06D990(pc),a0
+	lea.l	Brood_StateFire(pc),a0
 	move.l	a0,$5C(a4)
 	moveq	#$8,d0
 	and.w	$4(a4),d0

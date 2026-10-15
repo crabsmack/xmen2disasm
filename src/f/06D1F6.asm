@@ -20,9 +20,9 @@ Brood_Init:
 	jsr	(a1)
 	clr.w	$18(a4)
 	clr.w	$20(a4)
-	lea.l	sub_06D4F6(pc),a0
+	lea.l	Brood_StateStart(pc),a0
 	move.l	a0,$5C(a4)
-	lea.l	sub_06D4F6(pc),a0
+	lea.l	Brood_StateStart(pc),a0
 	move.l	a0,$64(a4)
 	ori.w	#$80,$6(a4)
 	lea.l	$FDA(a5),a0

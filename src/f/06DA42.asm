@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_06DA42	[jt 522]
+; Brood_ActCharge - BROOD script action: face the nearest player and walk at it; after being hit (+$B2 bit 0) dodge instead - break out if cornered within 11 px of a limit, else retreat
+; In:  8(a6) = this
+; Out: d0
+; Evidence: next Brood_StateWalkToPlayer / Brood_StateCornered / Brood_StateRetreatStart
 ; ---------------------------------------------------------------------------
-sub_06DA42:
+Brood_ActCharge:
 	link.w	a6,#$0
 	movem.l	d3/d5-d7/a3-a4,-(a7)
 	movea.l	$8(a6),a4
@@ -70,7 +73,7 @@ loc_06DAD4:
 	cmpi.w	#$A,d7
 	ble.s	loc_06DAFE
 	clr.w	$6C(a4)
-	lea.l	sub_06DCDC(pc),a0
+	lea.l	Brood_StateRetreatStart(pc),a0
 	move.l	a0,$5C(a4)
 	moveq	#$8,d0
 	and.w	$4(a4),d0
@@ -78,7 +81,7 @@ loc_06DAD4:
 loc_06DAFE:
 	move.w	#$32,$6A(a4)
 	clr.w	$6C(a4)
-	lea.l	sub_06DDA0(pc),a0
+	lea.l	Brood_StateCornered(pc),a0
 	move.l	a0,$5C(a4)
 	moveq	#$8,d0
 	and.w	$4(a4),d0
@@ -87,7 +90,7 @@ loc_06DB18:
 	cmpi.w	#$A,d6
 	ble.s	loc_06DB32
 	clr.w	$6C(a4)
-	lea.l	sub_06DCDC(pc),a0
+	lea.l	Brood_StateRetreatStart(pc),a0
 	move.l	a0,$5C(a4)
 	moveq	#$8,d0
 	and.w	$4(a4),d0
@@ -95,7 +98,7 @@ loc_06DB18:
 loc_06DB32:
 	move.w	#$32,$6A(a4)
 	clr.w	$6C(a4)
-	lea.l	sub_06DDA0(pc),a0
+	lea.l	Brood_StateCornered(pc),a0
 	move.l	a0,$5C(a4)
 	moveq	#$8,d0
 	and.w	$4(a4),d0
@@ -113,7 +116,7 @@ loc_06DB5E:
 	move.w	d0,$16(a4)
 loc_06DB6A:
 	clr.w	$6C(a4)
-	lea.l	sub_06DB86(pc),a0
+	lea.l	Brood_StateWalkToPlayer(pc),a0
 	move.l	a0,$5C(a4)
 	moveq	#$8,d0
 	and.w	$4(a4),d0

@@ -23,11 +23,11 @@ LightBeam_Init:
 	movea.l	$2(a0),a0
 	movea.l	$12(a0),a1
 	jsr	(a1)
-	lea.l	sub_077CBC(pc),a0
+	lea.l	LightBeam_StateIdle(pc),a0
 	move.l	a0,$5C(a4)
-	lea.l	sub_077CBC(pc),a0
+	lea.l	LightBeam_StateIdle(pc),a0
 	move.l	a0,$64(a4)
-	lea.l	sub_077CBC(pc),a0
+	lea.l	LightBeam_StateIdle(pc),a0
 	move.l	a0,$60(a4)
 	ori.w	#$50C3,$6(a4)
 	movea.l	$14(a6),a0

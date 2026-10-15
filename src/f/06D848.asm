@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_06D848	[link-after-rts]
+; Brood_StateApproach - BROOD: walk, turning at the x limits, until at the preferred distance, then the next step
+; In:  8(a6) = this
+; Out: d0
+; Evidence: limits +$A2/+$A4
 ; ---------------------------------------------------------------------------
-sub_06D848:
+Brood_StateApproach:
 	link.w	a6,#$0
 	movem.l	d3/d6-d7/a3-a4,-(a7)
 	movea.l	$8(a6),a4
@@ -79,7 +82,7 @@ loc_06D8F6:
 	bra.s	loc_06D922
 loc_06D910:
 	clr.w	$6C(a4)
-	lea.l	sub_06D848(pc),a0
+	lea.l	Brood_StateApproach(pc),a0
 	move.l	a0,$5C(a4)
 	moveq	#$8,d0
 	and.w	$4(a4),d0
