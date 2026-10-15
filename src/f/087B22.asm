@@ -10,7 +10,7 @@ BroodBoss_StateHurtEnd:
 	movem.l	d3/d7/a3-a4,-(a7)
 	cmpi.w	#$424,g_PalBase+$44(a5)
 	bne.s	loc_087B4E
-	lea.l	-$13A8(a5),a3
+	lea.l	g_BroodBossPalSave(a5),a3
 	lea.l	g_PalBase+$40(a5),a4
 	clr.b	d7
 	moveq	#$10,d3

@@ -9,7 +9,7 @@ CloneA2_StartCamera:
 	movem.l	d4-d7,-(a7)
 	moveq	#$1,d4
 	clr.b	d5
-	movea.l	-$1860(a5),a0
+	movea.l	g_P1StartRec(a5),a0
 	move.w	$2(a0),d7
 	move.w	$4(a0),d6
 	andi.w	#$FE00,d7

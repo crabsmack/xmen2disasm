@@ -15,7 +15,7 @@ loc_1F6BE4:
 	cmp.w	d7,d3
 	bgt.s	loc_1F6BE4
 	clr.w	g_SegFirstFree(a5)
-	clr.w	-$3472(a5)
+	clr.w	g_SegLevelCount(a5)
 	movem.l	-$C(a6),d3/d7/a4
 	unlk	a6
 	rts

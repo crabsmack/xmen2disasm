@@ -66,19 +66,19 @@ loc_088490:
 loc_088494:
 	ext.l	d6
 	move.l	d6,-(a7)
-	pea.l	-$3596(a5)
+	pea.l	g_SceneSprites(a5)
 	jsr	$507A(a5)	; -> Spr_SetFrame
 	moveq	#$0,d0
 	move.l	d0,-(a7)
-	pea.l	-$3596(a5)
+	pea.l	g_SceneSprites(a5)
 	jsr	$5062(a5)	; -> Spr_UploadFrame
 	ext.l	d7
 	move.l	d7,-(a7)
-	pea.l	-$3582(a5)
+	pea.l	g_SceneSprites+$14(a5)
 	jsr	$507A(a5)	; -> Spr_SetFrame
 	moveq	#$0,d0
 	move.l	d0,-(a7)
-	pea.l	-$3582(a5)
+	pea.l	g_SceneSprites+$14(a5)
 	jsr	$5062(a5)	; -> Spr_UploadFrame
 	lea.l	$20(a7),a7
 loc_0884C8:

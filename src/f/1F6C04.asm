@@ -134,7 +134,7 @@ loc_1F6D30:
 	bne.w	loc_1F6C34
 	tst.b	d7
 	bne.s	loc_1F6D3E
-	move.w	d5,-$3472(a5)
+	move.w	d5,g_SegLevelCount(a5)
 loc_1F6D3E:
 	move.w	d5,g_SegFirstFree(a5)
 	move.w	d5,d0

@@ -22,7 +22,7 @@ Seg_FindRight:
 	move.w	$A(a6),-$8(a6)
 	addq.w	#$8,a7
 loc_15AC9E:
-	movea.l	-$3478(a5),a0
+	movea.l	g_SegGridPool(a5),a0
 	move.w	-$E(a6),d0
 	lea.l	(a0,d0.w),a3
 	move.w	-$E(a6),-$C(a6)
@@ -85,7 +85,7 @@ loc_15AD3C:
 	move.b	d4,d0
 	cmpi.w	#$FF,d0
 	bne.w	loc_15ACB6
-	move.w	-$347E(a5),d0
+	move.w	g_SegGridShiftX(a5),d0
 	moveq	#$1,d1
 	lsl.l	d0,d1
 	add.w	d1,-$8(a6)

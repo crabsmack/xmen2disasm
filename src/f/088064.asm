@@ -2,7 +2,7 @@
 ; CloneA5_SegHook17 - CloneA5 floor-segment hook for type $17 (the boss body): in mode 3, a player overlapping the segment takes damage
 ; In:  8(a6) = word mode, $C(a6) = segment, $10(a6) = object
 ; Out: d0 = 1 when the object's box misses the segment
-; Evidence: stored at -$340E(a5) = g_SegTypeHooks[$17] by BroodBoss_StateWaitArrive (cleared by BroodBoss_Defeat); overlap with P1/P2 and +$6A = 0 -> slot +$26 TakeDamage(0, 5, 2, box centre); TAS 49566-49824
+; Evidence: stored at g_SegTypeHooks+$5C(a5) = g_SegTypeHooks[$17] by BroodBoss_StateWaitArrive (cleared by BroodBoss_Defeat); overlap with P1/P2 and +$6A = 0 -> slot +$26 TakeDamage(0, 5, 2, box centre); TAS 49566-49824
 ; Found: jt 643
 ; ---------------------------------------------------------------------------
 CloneA5_SegHook17:

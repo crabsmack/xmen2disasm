@@ -21,9 +21,9 @@ XClone_StartMakerMode:
 	jsr	$5032(a5)	; -> Mem_StackAlloc
 	move.l	d0,-$3B20(a5)
 	lea.l	XClone_SegHookArenaLocked(pc),a0
-	move.l	a0,-$3406(a5)
+	move.l	a0,g_SegTypeHooks+$64(a5)
 	lea.l	$1432(a5),a0
-	move.l	a0,-$3402(a5)
+	move.l	a0,g_SegTypeHooks+$68(a5)
 	jsr	$1312(a5)	; -> unk_CloneA5_085932
 	lea.l	XClone_FrameHook(pc),a0
 	move.l	a0,g_SceneFrameHook(a5)

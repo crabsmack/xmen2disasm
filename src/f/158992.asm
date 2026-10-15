@@ -30,9 +30,9 @@ loc_1589CE:
 	clr.b	$101(a0)
 	moveq	#$20,d0
 	move.l	d0,-(a7)
-	move.w	-$1A62(a5),d1
+	move.w	g_FluxBombSpr+$6(a5),d1
 	ext.l	d1
-	move.w	-$1A60(a5),d2
+	move.w	g_FluxBombSpr+$8(a5),d2
 	ext.l	d2
 	add.l	d1,d2
 	subq.l	#$1,d2
@@ -43,9 +43,9 @@ loc_1589CE:
 	jsr	$51DA(a5)	; -> VDP_QueueDma
 	moveq	#$20,d0
 	move.l	d0,-(a7)
-	move.w	-$1A62(a5),d1
+	move.w	g_FluxBombSpr+$6(a5),d1
 	ext.l	d1
-	move.w	-$1A60(a5),d2
+	move.w	g_FluxBombSpr+$8(a5),d2
 	ext.l	d2
 	add.l	d1,d2
 	subq.l	#$2,d2

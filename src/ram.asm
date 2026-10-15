@@ -353,3 +353,34 @@ g_DeactWinBottom = -$35C6	; word: active window bottom $13A (Actor_OutsideActive
 g_TileHooksOn = -$35C8	; byte: the scene installed map tile hooks in g_TileHooks (every *_InstallTileHooks sets 1, Level_Load clears); XPlayer_Update only probes hook tiles when set
 g_SolidMapIsBg = -$35CA	; byte: solid-tile probes by projectiles and flung enemies use the BG plane map instead of the FG (passed as !flag to sub_15CECC); SiberiaB1_InstallTileHooks sets, XClone_InstallTileHooks and Level_Load clear
 g_TileHooks = -$3AF8	; 8 ptrs: map tile hooks indexed by a block's hook type (block word bits 11-13), entries 1-7 called as (x, y, obj, -1, -1) by sub_15CECC/sub_15CB34; filled by each *_InstallTileHooks
+g_LevelFgMap = -$CAE	; ptr: FG map blob passed to Level_Load (header +2/+4 = width/height in cells); CloneA2_SetCameraLimitsToMap and SwampPlatform_Move read the map size from it
+g_LevelBgMap = -$CB2	; ptr: BG map blob passed to Level_Load (3rd argument); RollingDiscs_ClassInit and SavageJungle_InitPalPhases read a per-level list at the offset in its word +$12
+g_BroodBossPalSave = -$13A8	; 16 words: palette line 2 saved by BroodBoss_StateHurt before the hurt flash and restored by BroodBoss_StateHurtEnd
+g_HitSparkSpr = -$185C	; sprite instance (same layout as object +$2E) for the player hit spark: Spr_Init by Scene_AllocCommonVram, drawn by XPlayer_Draw, h-flip (bit 2) set by XPlayer_Attack from the attacker
+g_P1StartRec = -$1860	; ptr: player-1 start spawn record (XPlayer_InitSpawnRec, placement +6 != 2); Players_PlaceAtStart and CloneA2_StartCamera take the start x/y from +2/+4, then it is cleared
+g_P2StartRec = -$1864	; ptr: player-2 start spawn record (XPlayer_InitSpawnRec, placement +6 == 2; Players_PlaceAtStart)
+g_SprFlickerNew = -$1870	; 4 bytes {first sprite slot - 1, first slot, byte from the record +3, enable}: sprite-link splice built while emitting a sprite group (loc_1E177A, loc_1E1916; sub_1E15F4 clears); copied to g_SprFlickerCur in V-blank
+g_SprFlickerCur = -$186C	; 4 bytes: active copy of g_SprFlickerNew used by sub_1E1928 (from VDP_FrameUpdate) to rewrite one sprite's link word in VRAM, alternating between two links every V-blank so a sprite group flickers
+g_SprFlickerOn = -$1871	; byte: active splice enabled (copied from g_SprFlickerCur+3 by sub_1E1928; loc_1E1916 tests it)
+g_SprFlickerPending = -$1872	; byte: a new g_SprFlickerNew is ready (set by loc_1E177A/loc_1E1916, sub_1E15F4 clears the word); sub_1E1928 copies it when the frame was updated
+g_PsylockeFxSpr = -$18A6	; ptr: Psylocke's second sprite instance (player +$C6, psi effect), stored by Psylocke_Init; BioNpc_DrawStunned draws it over a stunned enemy
+g_P1HasMeter = -$18A8	; byte: player 1's character uses the second HUD meter (player +$9E): set by Nightcrawler_Init, Gambit_Init, sub_1E3ABE, cleared by XPlayer_Init; HUD_UpdateHealthBars and Level_FrameLoop draw it
+g_P2HasMeter = -$18AA	; byte: player 2's character uses the second HUD meter (same writers/readers as g_P1HasMeter)
+g_FluxBombSpr = -$1A68	; sprite instance (object +$2E layout) shared by FLUXBOMB: Spr_Init by Scene_AllocCommonVram, frame set by FluxBomb_SetFrame, drawn by FluxBomb_Draw; +6/+8 give the particle tiles
+g_TechWallGunRecs = -$1A6C	; ptr: 16 x 16-byte records allocated by TECHWALLGUN's ClassInit sub_142AE0 (Mem_StackAlloc); scanned by sub_14225C
+g_MinePoolCount = -$1A78	; word: mines in use in g_MinePool (Mine_InitPool clears; Mine_PoolAdd/Remove, Mine_PoolUpdate/Draw)
+g_MinePool = -$1A7C	; ptr: mine pool records allocated by Mine_InitPool (Mine_PoolAdd/Remove/Update/Draw)
+g_BigBioOrbs = -$1A8C	; ptr: BIGBIO's 16 orb records (BigBio_ClassInit allocates; BigBio_PlaceOrbs, BigBio_UpdateOrbRing, BigBio_State*, BigBio_Draw)
+g_BigBioSpitPool = -$1A90	; ptr: BIGBIO spit projectile pool (BigBio_ClassInit; BigBio_SpitSpawn/Free/UpdateAll)
+g_BigBioSpitCount = -$1A92	; word: spit projectiles in use (BigBio_ClassInit clears; BigBio_SpitSpawn/Free/UpdateAll)
+g_BioBallsList = -$1A98	; ptr: ball list shared by BIOBALLS objects {word count; records}, allocated by BioBalls_AllocBallList and copied to each object's +$92 (BioBalls_Init, UpdateBox, SetFormation)
+g_BioBallsSine = -$1C9C	; 128 longs: sine table built by BioBalls_AllocBallList, read by BioBalls_MotionOrbit/Ring/Helix
+g_SegHookTmp = -$346E	; ptr: the g_SegTypeHooks entry fetched before calling it (sub_1F6D76, sub_1F6EC4, Seg_ComputeObjPos, sub_1F71F2, sub_1F79A2)
+g_SegLevelCount = -$3472	; word: segments created from the level's FG list (Seg_LoadList; sub_1F6BD2 clears); sub_1F85B6 skips them when indexing the grid
+g_SegGridPool = -$3478	; ptr: pool of $FF-terminated segment-index lists, one per grid cell (sub_1F84BE builds it on the heap; Seg_FindAt/Below/Above/Left/Right, Boulder_FindFloorBelow, Ninja_FindSegInBox)
+g_SegGrid = -$347C	; ptr: word grid, per cell the offset of its list in g_SegGridPool (sub_1F84BE; Seg_GridCell, sub_1F85B6)
+g_SegGridShiftX = -$347E	; word: log2 of the segment grid cell width (Level_Load arg $3A; Seg_GridCell, Seg_FindLeft/Right)
+g_SegGridShiftY = -$3480	; word: log2 of the segment grid cell height (Level_Load arg $3E; Seg_GridCell, Seg_FindBelow/Above)
+g_SegGridW = -$3482	; word: segment grid width in cells (Level_Load; Seg_GridCell, sub_1F84BE, sub_1F85B6)
+g_SegGridH = -$3484	; word: segment grid height in cells (Level_Load; Seg_GridCell, sub_1F84BE, sub_1F85B6)
+g_SceneSprites = -$3596	; 12 x $14-byte sprite instances (object +$2E layout) for scene effects (lights, shock sprites, animated blocks), Spr_Init/Spr_Draw by the scenes' InitSprite(s)/Anim* functions

@@ -70,7 +70,7 @@ loc_121AB4:
 	moveq	#$B,d0
 	and.w	$A2(a3),d0
 	beq.w	loc_121CB6
-	movea.l	-$1A8C(a5),a4
+	movea.l	g_BigBioOrbs(a5),a4
 	moveq	#$8,d0
 	and.w	$A2(a3),d0
 	beq.w	loc_121B8E

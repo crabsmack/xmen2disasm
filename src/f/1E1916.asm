@@ -6,8 +6,8 @@
 ; ---------------------------------------------------------------------------
 Cyclops_DrawBeam_None:
 	sf.b	d0
-	move.b	d0,-$186D(a5)
-	tst.b	-$1871(a5)
+	move.b	d0,g_SprFlickerNew+$3(a5)
+	tst.b	g_SprFlickerOn(a5)
 	beq.s	loc_1E18F8
-	st.b	-$1872(a5)
+	st.b	g_SprFlickerPending(a5)
 	bra.s	loc_1E18F8

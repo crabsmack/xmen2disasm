@@ -15,7 +15,7 @@ BroodClaw_StateScroll:
 	tst.b	$90(a4)
 	bne.s	loc_09B4F2
 	moveq	#$0,d0
-	move.l	d0,-$340E(a5)
+	move.l	d0,g_SegTypeHooks+$5C(a5)
 	clr.w	$6C(a4)
 	lea.l	BroodClaw_StateMoveToDrop(pc),a0
 	move.l	a0,$5C(a4)

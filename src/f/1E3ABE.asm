@@ -22,10 +22,10 @@ Cyclops_Init:
 	cmpa.l	a4,a0
 	lea.l	$10(a7),a7
 	bne.s	loc_1E3B06
-	move.b	#$1,-$18A8(a5)
+	move.b	#$1,g_P1HasMeter(a5)
 	bra.s	loc_1E3B0C
 loc_1E3B06:
-	move.b	#$1,-$18AA(a5)
+	move.b	#$1,g_P2HasMeter(a5)
 loc_1E3B0C:
 	lea.l	$4AA2(a5),a0
 	move.l	$2(a0),$8C(a4)

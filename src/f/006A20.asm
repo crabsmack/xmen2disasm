@@ -38,7 +38,7 @@ Scene_AllocCommonVram:
 	lea.l	$423A(a5),a0
 	move.l	$2(a0),-(a7)
 	move.l	d1,-(a7)
-	pea.l	-$185C(a5)
+	pea.l	g_HitSparkSpr(a5)
 	jsr	$506A(a5)	; -> Spr_Init
 	move.w	d0,g_VramTileCursor(a5)
 	moveq	#$0,d0
@@ -53,7 +53,7 @@ Scene_AllocCommonVram:
 	lea.l	$3D92(a5),a0
 	move.l	$2(a0),-(a7)
 	move.l	d1,-(a7)
-	pea.l	-$1A68(a5)
+	pea.l	g_FluxBombSpr(a5)
 	jsr	$506A(a5)	; -> Spr_Init
 	move.w	d0,g_VramTileCursor(a5)
 	unlk	a6

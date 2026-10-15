@@ -4,20 +4,20 @@
 sub_1F84BE:
 	link.w	a6,#$FFF8
 	movem.l	d2-d3/d5-d7/a2-a4,-(a7)
-	move.l	g_HeapTop(a5),-$347C(a5)
-	movea.l	-$347C(a5),a3
-	move.w	-$3482(a5),d0
-	mulu.w	-$3484(a5),d0
+	move.l	g_HeapTop(a5),g_SegGrid(a5)
+	movea.l	g_SegGrid(a5),a3
+	move.w	g_SegGridW(a5),d0
+	mulu.w	g_SegGridH(a5),d0
 	add.l	d0,d0
 	add.l	d0,g_HeapTop(a5)
-	move.l	g_HeapTop(a5),-$3478(a5)
-	movea.l	-$3478(a5),a4
-	move.w	-$3484(a5),d6
+	move.l	g_HeapTop(a5),g_SegGridPool(a5)
+	movea.l	g_SegGridPool(a5),a4
+	move.w	g_SegGridH(a5),d6
 	bra.w	loc_1F859C
 loc_1F84F0:
 	moveq	#$0,d3
-	move.w	-$3480(a5),d1
-	move.w	-$3484(a5),d3
+	move.w	g_SegGridShiftY(a5),d1
+	move.w	g_SegGridH(a5),d3
 	sub.w	d6,d3
 	move.l	d3,d2
 	subq.w	#$1,d2
@@ -27,15 +27,15 @@ loc_1F84F0:
 	addi.w	#$80,d3
 	move.w	d2,-$6(a6)
 	move.w	d3,-$8(a6)
-	move.w	-$3482(a5),d7
+	move.w	g_SegGridW(a5),d7
 	bra.w	loc_1F8598
 loc_1F851C:
 	move.l	a4,d0
-	sub.l	-$3478(a5),d0
+	sub.l	g_SegGridPool(a5),d0
 	move.w	d0,(a3)+
 	moveq	#$0,d3
-	move.w	-$347E(a5),d1
-	move.w	-$3482(a5),d3
+	move.w	g_SegGridShiftX(a5),d1
+	move.w	g_SegGridW(a5),d3
 	sub.w	d7,d3
 	move.l	d3,d2
 	subq.w	#$1,d2

@@ -62,7 +62,7 @@ loc_11FD3E:
 	add.l	d2,d1
 	and.l	#$7F,d1
 	asl.w	#$2,d1
-	lea.l	-$1C9C(a5),a0
+	lea.l	g_BioBallsSine(a5),a0
 	move.l	(a0,d1.w),d1
 	bra.s	loc_11FD90
 loc_11FD76:
@@ -72,7 +72,7 @@ loc_11FD76:
 	add.l	d2,d1
 	and.l	#$7F,d1
 	asl.w	#$2,d1
-	lea.l	-$1C9C(a5),a0
+	lea.l	g_BioBallsSine(a5),a0
 	move.l	(a0,d1.w),d1
 	neg.l	d1
 loc_11FD90:

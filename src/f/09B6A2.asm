@@ -56,8 +56,8 @@ loc_09B726:
 	tst.b	d7
 	beq.s	loc_09B788
 	moveq	#$0,d0
-	move.l	d0,-$3416(a5)
-	move.l	d0,-$3402(a5)
+	move.l	d0,g_SegTypeHooks+$54(a5)
+	move.l	d0,g_SegTypeHooks+$68(a5)
 	clr.b	$90(a4)
 	clr.w	$16(a4)
 	move.l	d0,$92(a4)

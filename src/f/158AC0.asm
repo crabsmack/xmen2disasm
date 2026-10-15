@@ -8,7 +8,7 @@ FluxBomb_SetFrame:
 	link.w	a6,#$0
 	movem.l	d7/a4,-(a7)
 	move.w	$E(a6),d7
-	lea.l	-$1A68(a5),a4
+	lea.l	g_FluxBombSpr(a5),a4
 	move.b	d7,$1(a4)
 	cmpi.w	#$FF,d7
 	beq.s	loc_158AEA

@@ -7,7 +7,7 @@
 CloneA2_InstallHooks:
 	link.w	a6,#$0
 	lea.l	$3F22(a5),a0
-	move.l	a0,-$3402(a5)
+	move.l	a0,g_SegTypeHooks+$68(a5)
 	lea.l	CloneA2_FrameHook(pc),a0
 	move.l	a0,g_SceneFrameHook(a5)
 	jsr	CloneA2_LoadResources(pc)

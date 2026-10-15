@@ -84,7 +84,7 @@ loc_11E8A6:
 loc_11E8B6:
 	andi.b	#$FB,$2E(a4)
 loc_11E8BC:
-	move.l	-$1A98(a5),$92(a4)
+	move.l	g_BioBallsList(a5),$92(a4)
 	clr.w	$98(a4)
 	clr.b	$96(a4)
 	moveq	#$0,d0

@@ -61,7 +61,7 @@ XPlayer_Draw:
 	ext.l	d1
 	sub.l	d1,d0
 	move.l	d0,-(a7)
-	pea.l	-$185C(a5)
+	pea.l	g_HitSparkSpr(a5)
 	jsr	$508A(a5)	; -> Spr_Draw
 	lea.l	$C(a7),a7
 loc_1F1AE0:

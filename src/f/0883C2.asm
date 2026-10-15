@@ -20,7 +20,7 @@ CloneA5_InitShockSprites:
 	move.l	$2(a0),-(a7)
 	moveq	#$1,d0
 	move.l	d0,-(a7)
-	pea.l	-$3596(a5)
+	pea.l	g_SceneSprites(a5)
 	jsr	$506A(a5)	; -> Spr_Init
 	move.w	d0,g_BgTilesEnd(a5)
 	moveq	#$1,d0
@@ -36,7 +36,7 @@ CloneA5_InitShockSprites:
 	move.l	$2(a0),-(a7)
 	moveq	#$1,d0
 	move.l	d0,-(a7)
-	pea.l	-$3582(a5)
+	pea.l	g_SceneSprites+$14(a5)
 	jsr	$506A(a5)	; -> Spr_Init
 	move.w	d0,g_BgTilesEnd(a5)
 	unlk	a6

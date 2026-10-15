@@ -9,13 +9,13 @@ CloneA2_SetCameraLimitsToMap:
 	movem.l	d4-d7,-(a7)
 	clr.w	d4
 	clr.w	d5
-	movea.l	-$CAE(a5),a0
+	movea.l	g_LevelFgMap(a5),a0
 	moveq	#$0,d0
 	move.w	$2(a0),d0
 	lsl.l	#$3,d0
 	move.l	d0,d6
 	sub.l	#$140,d6
-	movea.l	-$CAE(a5),a0
+	movea.l	g_LevelFgMap(a5),a0
 	moveq	#$0,d0
 	move.w	$4(a0),d0
 	lsl.l	#$3,d0

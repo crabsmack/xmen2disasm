@@ -7,7 +7,7 @@
 SentinelsA1_StepZapLights:
 	link.w	a6,#$0
 	move.l	a4,-(a7)
-	lea.l	-$3596(a5),a4
+	lea.l	g_SceneSprites(a5),a4
 	tst.l	-$3B18(a5)
 	bgt.w	loc_0E7856
 	moveq	#$4,d0

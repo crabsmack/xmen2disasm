@@ -6,14 +6,14 @@
 ; ---------------------------------------------------------------------------
 BigBio_SpitFree:
 	link.w	a6,#$0
-	tst.w	-$1A92(a5)
+	tst.w	g_BigBioSpitCount(a5)
 	beq.s	loc_12165E
 	moveq	#$10,d0
 	move.l	d0,-(a7)
-	subq.w	#$1,-$1A92(a5)
-	move.w	-$1A92(a5),d1
+	subq.w	#$1,g_BigBioSpitCount(a5)
+	move.w	g_BigBioSpitCount(a5),d1
 	ext.l	d1
-	movea.l	-$1A90(a5),a0
+	movea.l	g_BigBioSpitPool(a5),a0
 	asl.l	#$4,d1
 	pea.l	(a0,d1.l)
 	move.l	$8(a6),-(a7)

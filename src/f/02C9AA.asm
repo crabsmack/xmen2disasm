@@ -29,11 +29,11 @@ loc_02C9EC:
 	ext.l	d0
 	addq.l	#$2,d0
 	move.l	d0,-(a7)
-	pea.l	-$3582(a5)
+	pea.l	g_SceneSprites+$14(a5)
 	jsr	$507A(a5)	; -> Spr_SetFrame
 	moveq	#$0,d0
 	move.l	d0,-(a7)
-	pea.l	-$3582(a5)
+	pea.l	g_SceneSprites+$14(a5)
 	jsr	$5062(a5)	; -> Spr_UploadFrame
 	lea.l	$10(a7),a7
 loc_02CA12:
@@ -50,11 +50,11 @@ loc_02CA2E:
 	ext.l	d0
 	addq.l	#$6,d0
 	move.l	d0,-(a7)
-	pea.l	-$356E(a5)
+	pea.l	g_SceneSprites+$28(a5)
 	jsr	$507A(a5)	; -> Spr_SetFrame
 	moveq	#$0,d0
 	move.l	d0,-(a7)
-	pea.l	-$356E(a5)
+	pea.l	g_SceneSprites+$28(a5)
 	jsr	$5062(a5)	; -> Spr_UploadFrame
 	lea.l	$10(a7),a7
 loc_02CA54:
@@ -71,11 +71,11 @@ loc_02CA70:
 	ext.l	d0
 	addq.l	#$2,d0
 	move.l	d0,-(a7)
-	pea.l	-$355A(a5)
+	pea.l	g_SceneSprites+$3C(a5)
 	jsr	$507A(a5)	; -> Spr_SetFrame
 	moveq	#$0,d0
 	move.l	d0,-(a7)
-	pea.l	-$355A(a5)
+	pea.l	g_SceneSprites+$3C(a5)
 	jsr	$5062(a5)	; -> Spr_UploadFrame
 	lea.l	$10(a7),a7
 loc_02CA96:
@@ -92,11 +92,11 @@ loc_02CAB2:
 	ext.l	d0
 	addq.l	#$6,d0
 	move.l	d0,-(a7)
-	pea.l	-$3546(a5)
+	pea.l	g_SceneSprites+$50(a5)
 	jsr	$507A(a5)	; -> Spr_SetFrame
 	moveq	#$0,d0
 	move.l	d0,-(a7)
-	pea.l	-$3546(a5)
+	pea.l	g_SceneSprites+$50(a5)
 	jsr	$5062(a5)	; -> Spr_UploadFrame
 	lea.l	$10(a7),a7
 loc_02CAD8:

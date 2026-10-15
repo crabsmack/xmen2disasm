@@ -22,9 +22,9 @@ loc_006BF6:
 	beq.s	loc_006C00
 	moveq	#$1,d4
 loc_006C00:
-	tst.l	-$1860(a5)
+	tst.l	g_P1StartRec(a5)
 	beq.s	loc_006C20
-	movea.l	-$1860(a5),a0
+	movea.l	g_P1StartRec(a5),a0
 	move.w	$2(a0),d0
 	ext.l	d0
 	move.l	d0,d7
@@ -32,20 +32,20 @@ loc_006C00:
 	ext.l	d0
 	move.l	d0,d6
 	moveq	#$0,d0
-	move.l	d0,-$1860(a5)
+	move.l	d0,g_P1StartRec(a5)
 loc_006C20:
-	tst.l	-$1864(a5)
+	tst.l	g_P2StartRec(a5)
 	beq.s	loc_006C48
-	movea.l	-$1860(a5),a0
+	movea.l	g_P1StartRec(a5),a0
 	move.w	$2(a0),d0
 	ext.l	d0
 	move.l	d0,$10(a6)
-	movea.l	-$1860(a5),a0
+	movea.l	g_P1StartRec(a5),a0
 	move.w	$4(a0),d0
 	ext.l	d0
 	move.l	d0,$14(a6)
 	moveq	#$0,d0
-	move.l	d0,-$1864(a5)
+	move.l	d0,g_P2StartRec(a5)
 loc_006C48:
 	tst.w	g_P1Health(a5)
 	beq.s	loc_006C9E

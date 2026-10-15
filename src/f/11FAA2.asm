@@ -43,7 +43,7 @@ loc_11FAF0:
 	add.l	d2,d1
 	and.l	#$7F,d1
 	asl.w	#$2,d1
-	lea.l	-$1C9C(a5),a0
+	lea.l	g_BioBallsSine(a5),a0
 	move.l	(a0,d1.w),d1
 	bra.s	loc_11FB42
 loc_11FB28:
@@ -53,7 +53,7 @@ loc_11FB28:
 	add.l	d2,d1
 	and.l	#$7F,d1
 	asl.w	#$2,d1
-	lea.l	-$1C9C(a5),a0
+	lea.l	g_BioBallsSine(a5),a0
 	move.l	(a0,d1.w),d1
 	neg.l	d1
 loc_11FB42:
@@ -76,14 +76,14 @@ loc_11FB42:
 	move.w	d4,d1
 	and.w	#$7F,d1
 	asl.w	#$2,d1
-	lea.l	-$1C9C(a5),a0
+	lea.l	g_BioBallsSine(a5),a0
 	move.l	(a0,d1.w),d1
 	bra.s	loc_11FB92
 loc_11FB80:
 	move.w	d4,d1
 	and.w	#$7F,d1
 	asl.w	#$2,d1
-	lea.l	-$1C9C(a5),a0
+	lea.l	g_BioBallsSine(a5),a0
 	move.l	(a0,d1.w),d1
 	neg.l	d1
 loc_11FB92:

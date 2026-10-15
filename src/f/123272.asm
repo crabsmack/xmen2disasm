@@ -8,7 +8,7 @@ BigBio_StateDying:
 	link.w	a6,#$FFFC
 	movem.l	d3/d6-d7/a3-a4,-(a7)
 	movea.l	$8(a6),a3
-	movea.l	-$1A8C(a5),a4
+	movea.l	g_BigBioOrbs(a5),a4
 	lea.l	$349A(a5),a0
 	move.l	$2(a0),-$4(a6)
 	moveq	#$10,d0

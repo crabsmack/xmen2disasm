@@ -40,7 +40,7 @@ SpaceB1_LoadLevel:
 	move.w	#$A84,g_PalBase(a5)
 	move.b	#$1,-$38B4(a5)
 	lea.l	SpaceB1_Seg28Handler(pc),a0
-	move.l	a0,-$33FA(a5)
+	move.l	a0,g_SegTypeHooks+$70(a5)
 	clr.b	g_BgWrapY(a5)
 	move.w	#$4D,g_BgScrollFactorY(a5)
 	move.w	#$4D,g_BgScrollFactorX(a5)

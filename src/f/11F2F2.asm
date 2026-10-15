@@ -15,9 +15,9 @@ BioBalls_SetFormation:
 	asr.l	#$8,d5
 	tst.l	$92(a0)
 	bne.s	loc_11F322
-	tst.l	-$1A98(a5)
+	tst.l	g_BioBallsList(a5)
 	beq.w	loc_11F3D8
-	move.l	-$1A98(a5),$92(a0)
+	move.l	g_BioBallsList(a5),$92(a0)
 loc_11F322:
 	movea.l	$8(a6),a0
 	movea.l	$92(a0),a0

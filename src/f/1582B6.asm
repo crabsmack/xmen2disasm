@@ -55,10 +55,10 @@ loc_15833A:
 	moveq	#$4,d0
 	and.b	g_Player1+$2E(a5),d0
 	beq.s	loc_15836A
-	ori.b	#$4,-$1A68(a5)
+	ori.b	#$4,g_FluxBombSpr(a5)
 	bra.s	loc_1583B8
 loc_15836A:
-	andi.b	#$FB,-$1A68(a5)
+	andi.b	#$FB,g_FluxBombSpr(a5)
 	bra.s	loc_1583B8
 loc_158372:
 	move.w	g_Player2+$4(a5),d0
@@ -72,19 +72,19 @@ loc_158372:
 	moveq	#$4,d0
 	and.b	g_Player2+$2E(a5),d0
 	beq.s	loc_15839A
-	ori.b	#$4,-$1A68(a5)
+	ori.b	#$4,g_FluxBombSpr(a5)
 	bra.s	loc_1583B8
 loc_15839A:
-	andi.b	#$FB,-$1A68(a5)
+	andi.b	#$FB,g_FluxBombSpr(a5)
 	bra.s	loc_1583B8
 loc_1583A2:
 	moveq	#$4,d0
 	and.b	g_Player1+$2E(a5),d0
 	beq.s	loc_1583B2
-	ori.b	#$4,-$1A68(a5)
+	ori.b	#$4,g_FluxBombSpr(a5)
 	bra.s	loc_1583B8
 loc_1583B2:
-	andi.b	#$FB,-$1A68(a5)
+	andi.b	#$FB,g_FluxBombSpr(a5)
 loc_1583B8:
 	moveq	#$0,d0
 	move.l	d0,$30(a4)

@@ -15,7 +15,7 @@ loc_13A8D6:
 	moveq	#$1,d0
 loc_13A8D8:
 	move.w	d0,d6
-	movea.l	-$1A7C(a5),a4
+	movea.l	g_MinePool(a5),a4
 	clr.w	d7
 	bra.w	loc_13A9E8
 loc_13A8E4:
@@ -119,7 +119,7 @@ loc_13A9E0:
 loc_13A9E8:
 	moveq	#$0,d0
 	move.w	d7,d0
-	move.w	-$1A78(a5),d1
+	move.w	g_MinePoolCount(a5),d1
 	ext.l	d1
 	cmp.l	d0,d1
 	bgt.w	loc_13A8E4

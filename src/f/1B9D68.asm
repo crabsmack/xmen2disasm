@@ -87,7 +87,7 @@ loc_1B9E26:
 	pea.l	$C6(a4)
 	jsr	$505A(a5)	; -> Spr_PreloadToHeap
 	lea.l	$C6(a4),a0
-	move.l	a0,-$18A6(a5)
+	move.l	a0,g_PsylockeFxSpr(a5)
 	lea.l	$50(a7),a7
 	movem.l	-$C(a6),d3/d7/a4
 	unlk	a6

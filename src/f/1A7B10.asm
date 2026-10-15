@@ -22,10 +22,10 @@ Nightcrawler_Init:
 	cmpa.l	a4,a0
 	lea.l	$10(a7),a7
 	bne.s	loc_1A7B58
-	move.b	#$1,-$18A8(a5)
+	move.b	#$1,g_P1HasMeter(a5)
 	bra.s	loc_1A7B5E
 loc_1A7B58:
-	move.b	#$1,-$18AA(a5)
+	move.b	#$1,g_P2HasMeter(a5)
 loc_1A7B5E:
 	move.l	a4,-(a7)
 	movea.l	(a4),a0

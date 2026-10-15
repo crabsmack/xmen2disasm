@@ -77,7 +77,7 @@ loc_1FA1CA:
 	move.w	#$A7E8,$4(a0)
 	movea.l	g_SprWritePtr(a5),a0
 	move.w	#$A5,$6(a0)
-	tst.b	-$18A8(a5)
+	tst.b	g_P1HasMeter(a5)
 	beq.s	loc_1FA252
 	lea.l	g_SpriteTable(a5),a0
 	movea.l	g_SprWritePtr(a5),a1
@@ -151,7 +151,7 @@ loc_1FA2CC:
 	move.w	#$A7D0,$4(a0)
 	movea.l	g_SprWritePtr(a5),a0
 	move.w	#$17A,$6(a0)
-	tst.b	-$18AA(a5)
+	tst.b	g_P2HasMeter(a5)
 	beq.s	loc_1FA356
 	lea.l	g_SpriteTable(a5),a0
 	movea.l	g_SprWritePtr(a5),a1

@@ -7,8 +7,8 @@
 SentinelsB1_InstallSegHooks:
 	link.w	a6,#$0
 	lea.l	$2942(a5),a0
-	move.l	a0,-$33FE(a5)
+	move.l	a0,g_SegTypeHooks+$6C(a5)
 	lea.l	$293A(a5),a0
-	move.l	a0,-$3402(a5)
+	move.l	a0,g_SegTypeHooks+$68(a5)
 	unlk	a6
 	rts

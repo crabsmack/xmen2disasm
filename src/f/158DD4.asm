@@ -36,7 +36,7 @@ loc_158DFE:
 	ext.l	d1
 	sub.l	d1,d0
 	move.l	d0,-(a7)
-	pea.l	-$1A68(a5)
+	pea.l	g_FluxBombSpr(a5)
 	jsr	$508A(a5)	; -> Spr_Draw
 	lea.l	$C(a7),a7
 	movea.l	-$4(a6),a4

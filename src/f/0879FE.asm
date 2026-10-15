@@ -8,7 +8,7 @@
 BroodBoss_StateHurt:
 	link.w	a6,#$0
 	movem.l	d3/d7/a3-a4,-(a7)
-	lea.l	-$13A8(a5),a3
+	lea.l	g_BroodBossPalSave(a5),a3
 	lea.l	g_PalBase+$40(a5),a4
 	movea.l	$8(a6),a0
 	ori.w	#$2,$6(a0)

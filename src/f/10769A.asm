@@ -69,7 +69,7 @@ loc_10770A:
 	lea.l	$10(a7),a7
 loc_107750:
 	lea.l	$3F1A(a5),a0
-	move.l	a0,-$33FE(a5)
+	move.l	a0,g_SegTypeHooks+$6C(a5)
 	clr.b	g_TwoPlayerStep(a5)
 	pea.l	SpaceB1_InitCamera(pc)
 	lea.l	$4DBA(a5),a0

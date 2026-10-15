@@ -14,9 +14,9 @@ BioBalls_UpdateBox:
 	asr.l	#$8,d6
 	tst.l	$92(a3)
 	bne.s	loc_11F258
-	tst.l	-$1A98(a5)
+	tst.l	g_BioBallsList(a5)
 	beq.w	loc_11F2E8
-	move.l	-$1A98(a5),$92(a3)
+	move.l	g_BioBallsList(a5),$92(a3)
 loc_11F258:
 	move.w	d7,$4E(a3)
 	move.w	d7,$52(a3)

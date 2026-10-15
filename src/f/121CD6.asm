@@ -7,7 +7,7 @@
 BigBio_PlaceOrbs:
 	link.w	a6,#$FFFC
 	movem.l	d3-d7/a3-a4,-(a7)
-	movea.l	-$1A8C(a5),a4
+	movea.l	g_BigBioOrbs(a5),a4
 	movea.l	$8(a6),a0
 	move.l	$8(a0),d0
 	asr.l	#$8,d0

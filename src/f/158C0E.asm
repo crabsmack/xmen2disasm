@@ -8,7 +8,7 @@ FluxBomb_DrawBurst:
 	link.w	a6,#$FFF8
 	movem.l	d3-d7/a3-a4,-(a7)
 	moveq	#$4,d0
-	or.b	-$1A68(a5),d0
+	or.b	g_FluxBombSpr(a5),d0
 	beq.s	loc_158C26
 	move.l	#$8000,d0
 	bra.s	loc_158C28
@@ -16,9 +16,9 @@ loc_158C26:
 	moveq	#$0,d0
 loc_158C28:
 	move.w	d0,d4
-	move.w	-$1A62(a5),d0
+	move.w	g_FluxBombSpr+$6(a5),d0
 	ext.l	d0
-	move.w	-$1A60(a5),d1
+	move.w	g_FluxBombSpr+$8(a5),d1
 	ext.l	d1
 	add.l	d0,d1
 	subq.l	#$1,d1
@@ -28,9 +28,9 @@ loc_158C28:
 	move.l	#$2000,d1
 	or.l	d0,d1
 	move.w	d1,-$8(a6)
-	move.w	-$1A62(a5),d0
+	move.w	g_FluxBombSpr+$6(a5),d0
 	ext.l	d0
-	move.w	-$1A60(a5),d1
+	move.w	g_FluxBombSpr+$8(a5),d1
 	ext.l	d1
 	add.l	d0,d1
 	subq.l	#$2,d1

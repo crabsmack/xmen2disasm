@@ -9,7 +9,7 @@ BigBio_SpitSpawn:
 	movem.l	d7/a3-a4,-(a7)
 	movea.l	$8(a6),a3
 	moveq	#$8,d0
-	cmp.w	-$1A92(a5),d0
+	cmp.w	g_BigBioSpitCount(a5),d0
 	ble.s	loc_12162A
 	tst.b	$B6(a3)
 	beq.s	loc_1215C6
@@ -20,10 +20,10 @@ loc_1215C6:
 loc_1215CA:
 	ext.l	d0
 	move.l	d0,d7
-	move.w	-$1A92(a5),d0
-	addq.w	#$1,-$1A92(a5)
+	move.w	g_BigBioSpitCount(a5),d0
+	addq.w	#$1,g_BigBioSpitCount(a5)
 	ext.l	d0
-	movea.l	-$1A90(a5),a0
+	movea.l	g_BigBioSpitPool(a5),a0
 	asl.l	#$4,d0
 	lea.l	(a0,d0.l),a4
 	move.l	d7,d0

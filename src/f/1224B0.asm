@@ -7,7 +7,7 @@
 BigBio_StateGatherOrbs:
 	link.w	a6,#$FFF6
 	movem.l	d3-d7/a3-a4,-(a7)
-	movea.l	-$1A8C(a5),a4
+	movea.l	g_BigBioOrbs(a5),a4
 	movea.l	$8(a6),a0
 	movea.l	$AC(a0),a3
 	moveq	#$1,d7

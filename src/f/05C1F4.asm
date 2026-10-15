@@ -7,6 +7,6 @@
 Tusk_LockArena:
 	link.w	a6,#$0
 	lea.l	Tusk_HookIsEvent3(pc),a0
-	move.l	a0,-$341A(a5)
+	move.l	a0,g_SegTypeHooks+$50(a5)
 	unlk	a6
 	rts

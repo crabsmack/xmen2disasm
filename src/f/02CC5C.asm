@@ -20,7 +20,7 @@ AvalonA3_InitSprites:
 	lea.l	$602(a5),a0
 	move.l	$2(a0),-(a7)
 	move.l	d0,-(a7)
-	pea.l	-$3582(a5)
+	pea.l	g_SceneSprites+$14(a5)
 	jsr	$506A(a5)	; -> Spr_Init
 	moveq	#$1,d0
 	move.l	d0,-(a7)
@@ -37,7 +37,7 @@ AvalonA3_InitSprites:
 	move.l	$2(a0),-(a7)
 	moveq	#$1,d0
 	move.l	d0,-(a7)
-	pea.l	-$356E(a5)
+	pea.l	g_SceneSprites+$28(a5)
 	jsr	$506A(a5)	; -> Spr_Init
 	moveq	#$1,d0
 	move.l	d0,-(a7)
@@ -54,7 +54,7 @@ AvalonA3_InitSprites:
 	move.l	$2(a0),-(a7)
 	moveq	#$1,d0
 	move.l	d0,-(a7)
-	pea.l	-$355A(a5)
+	pea.l	g_SceneSprites+$3C(a5)
 	jsr	$506A(a5)	; -> Spr_Init
 	moveq	#$1,d0
 	move.l	d0,-(a7)
@@ -71,7 +71,7 @@ AvalonA3_InitSprites:
 	move.l	$2(a0),-(a7)
 	moveq	#$1,d0
 	move.l	d0,-(a7)
-	pea.l	-$3546(a5)
+	pea.l	g_SceneSprites+$50(a5)
 	jsr	$506A(a5)	; -> Spr_Init
 	clr.w	-$3CBC(a5)
 	move.w	#$1,-$3CC0(a5)

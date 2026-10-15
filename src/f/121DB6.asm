@@ -8,7 +8,7 @@ BigBio_UpdateOrbRing:
 	link.w	a6,#$FFE8
 	movem.l	d3-d7/a3-a4,-(a7)
 	movea.l	$8(a6),a3
-	move.l	-$1A8C(a5),-$C(a6)
+	move.l	g_BigBioOrbs(a5),-$C(a6)
 	clr.w	d5
 	move.b	#$1,-$7(a6)
 	move.l	$8(a3),d4

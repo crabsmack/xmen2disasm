@@ -11,11 +11,11 @@ Mine_PoolAdd:
 	moveq	#$0,d0
 	movea.l	d0,a4
 	moveq	#$14,d1
-	cmp.w	-$1A78(a5),d1
+	cmp.w	g_MinePoolCount(a5),d1
 	ble.s	loc_13AB86
-	move.w	-$1A78(a5),d0
+	move.w	g_MinePoolCount(a5),d0
 	ext.l	d0
-	movea.l	-$1A7C(a5),a0
+	movea.l	g_MinePool(a5),a0
 	move.l	d0,d1
 	mulu.w	#$26,d0
 	swap	d1
@@ -24,8 +24,8 @@ Mine_PoolAdd:
 	clr.w	d1
 	add.l	d1,d0
 	lea.l	(a0,d0.l),a4
-	move.w	-$1A78(a5),d0
-	addq.w	#$1,-$1A78(a5)
+	move.w	g_MinePoolCount(a5),d0
+	addq.w	#$1,g_MinePoolCount(a5)
 	moveq	#$26,d0
 	move.l	d0,-(a7)
 	moveq	#$0,d1

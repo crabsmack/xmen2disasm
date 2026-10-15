@@ -15,7 +15,7 @@ Seg_FindAt:
 	move.l	d0,-(a7)
 	jsr	Seg_GridCell(pc)
 	move.w	d0,d5
-	movea.l	-$3478(a5),a0
+	movea.l	g_SegGridPool(a5),a0
 	lea.l	(a0,d5.w),a3
 	move.b	(a3),d5
 	moveq	#$0,d0

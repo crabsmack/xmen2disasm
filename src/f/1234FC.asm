@@ -12,12 +12,12 @@ BigBio_ClassInit:
 	moveq	#$60,d0
 	move.l	d0,-(a7)
 	jsr	$5032(a5)	; -> Mem_StackAlloc
-	move.l	d0,-$1A8C(a5)
+	move.l	d0,g_BigBioOrbs(a5)
 	pea.l	Tbl_BigBio(pc)
 	pea.l	($80).w
 	jsr	$5032(a5)	; -> Mem_StackAlloc
-	move.l	d0,-$1A90(a5)
-	clr.w	-$1A92(a5)
+	move.l	d0,g_BigBioSpitPool(a5)
+	clr.w	g_BigBioSpitCount(a5)
 	moveq	#$3,d0
 	move.l	d0,-(a7)
 	lea.l	$3592(a5),a0

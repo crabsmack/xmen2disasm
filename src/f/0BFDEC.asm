@@ -28,7 +28,7 @@ loc_0BFE1E:
 	sub.l	d7,d0
 	lsl.l	#$8,d0
 	move.l	d0,$C(a4)
-	movea.l	-$CAE(a5),a0
+	movea.l	g_LevelFgMap(a5),a0
 	moveq	#$0,d0
 	move.w	$4(a0),d0
 	lsl.l	#$3,d0
@@ -37,7 +37,7 @@ loc_0BFE1E:
 	lsl.l	#$8,d0
 	cmp.l	$C(a4),d0
 	bls.s	loc_0BFE62
-	movea.l	-$CAE(a5),a0
+	movea.l	g_LevelFgMap(a5),a0
 	moveq	#$0,d0
 	move.w	$4(a0),d0
 	lsl.l	#$3,d0

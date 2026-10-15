@@ -23,10 +23,10 @@ XPlayer_InitSpawnRec:
 	beq.s	loc_1F2200
 	subq.w	#$1,d0
 	bne.s	loc_1F2200
-	move.l	a4,-$1864(a5)
+	move.l	a4,g_P2StartRec(a5)
 	bra.s	loc_1F2204
 loc_1F2200:
-	move.l	a4,-$1860(a5)
+	move.l	a4,g_P1StartRec(a5)
 loc_1F2204:
 	movem.l	-$8(a6),a3-a4
 	unlk	a6

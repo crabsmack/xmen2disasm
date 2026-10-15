@@ -10,6 +10,6 @@ Barbarian_ClassInit:
 	jsr	Barbarian_Nop6A(pc)
 	addq.w	#$4,a7
 	lea.l	Barbarian_SegHook1A(pc),a0
-	move.l	a0,-$3402(a5)
+	move.l	a0,g_SegTypeHooks+$68(a5)
 	unlk	a6
 	rts

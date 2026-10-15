@@ -12,12 +12,12 @@ sub_1F85B6:
 	moveq	#$0,d5
 	bra.s	loc_1F85E8
 loc_1F85D4:
-	move.w	-$347E(a5),d1
+	move.w	g_SegGridShiftX(a5),d1
 	addq.w	#$1,d1
 	asr.w	d1,d5
-	cmp.w	-$3482(a5),d5
+	cmp.w	g_SegGridW(a5),d5
 	blt.s	loc_1F85E8
-	move.w	-$3482(a5),d5
+	move.w	g_SegGridW(a5),d5
 	subq.w	#$1,d5
 loc_1F85E8:
 	move.w	$4C(a4),d4
@@ -26,20 +26,20 @@ loc_1F85E8:
 	moveq	#$0,d4
 	bra.s	loc_1F860A
 loc_1F85F6:
-	move.w	-$3480(a5),d1
+	move.w	g_SegGridShiftY(a5),d1
 	addq.w	#$1,d1
 	asr.w	d1,d4
-	cmp.w	-$3484(a5),d4
+	cmp.w	g_SegGridH(a5),d4
 	blt.s	loc_1F860A
-	move.w	-$3484(a5),d4
+	move.w	g_SegGridH(a5),d4
 	subq.w	#$1,d4
 loc_1F860A:
-	mulu.w	-$3482(a5),d4
+	mulu.w	g_SegGridW(a5),d4
 	add.w	d5,d4
 	add.w	d4,d4
-	movea.l	-$347C(a5),a0
+	movea.l	g_SegGrid(a5),a0
 	move.w	(a0,d4.w),d7
-	movea.l	-$3478(a5),a1
+	movea.l	g_SegGridPool(a5),a1
 	adda.w	d7,a1
 	lea.l	g_Segs(a5),a0
 	move.l	a0,d7
@@ -90,7 +90,7 @@ loc_1F868E:
 	cmpi.b	#$FF,d6
 	bne.s	loc_1F8628
 	movea.l	d7,a3
-	move.w	-$3472(a5),d6
+	move.w	g_SegLevelCount(a5),d6
 	move.w	d6,d0
 	add.w	d0,d0
 	add.w	d0,d0

@@ -13,8 +13,8 @@ Level_Load:
 	jsr	$5182(a5)	; -> VDP_ClearVram
 	jsr	$518A(a5)	; -> VDP_ClearVsram
 	move.l	#$FF0000,g_HeapTop(a5)
-	move.l	$8(a6),-$CAE(a5)
-	move.l	$10(a6),-$CB2(a5)
+	move.l	$8(a6),g_LevelFgMap(a5)
+	move.l	$10(a6),g_LevelBgMap(a5)
 	move.b	#$1,g_MapStreamNarrow(a5)
 	clr.b	g_BgNarrow(a5)
 	clr.b	g_SolidMapIsBg(a5)
@@ -154,8 +154,8 @@ loc_1F9A32:
 	addq.l	#$1,d7
 	cmp.l	d7,d3
 	bgt.s	loc_1F9A32
-	move.w	$3A(a6),-$347E(a5)
-	move.w	$3E(a6),-$3480(a5)
+	move.w	$3A(a6),g_SegGridShiftX(a5)
+	move.w	$3E(a6),g_SegGridShiftY(a5)
 	tst.l	$18(a6)
 	beq.s	loc_1F9A90
 	move.l	$8(a6),d7
@@ -164,19 +164,19 @@ loc_1F9A32:
 	ext.l	d0
 	asl.l	#$3,d0
 	subq.l	#$1,d0
-	move.w	-$347E(a5),d1
+	move.w	g_SegGridShiftX(a5),d1
 	asr.l	d1,d0
 	addq.w	#$1,d0
-	move.w	d0,-$3482(a5)
+	move.w	d0,g_SegGridW(a5)
 	movea.l	d7,a0
 	move.w	$4(a0),d0
 	ext.l	d0
 	asl.l	#$3,d0
 	subq.l	#$1,d0
-	move.w	-$3480(a5),d1
+	move.w	g_SegGridShiftY(a5),d1
 	asr.l	d1,d0
 	addq.w	#$1,d0
-	move.w	d0,-$3484(a5)
+	move.w	d0,g_SegGridH(a5)
 	bra.s	loc_1F9AC4
 loc_1F9A90:
 	move.l	$10(a6),d7
@@ -185,19 +185,19 @@ loc_1F9A90:
 	ext.l	d0
 	asl.l	#$3,d0
 	subq.l	#$1,d0
-	move.w	-$347E(a5),d1
+	move.w	g_SegGridShiftX(a5),d1
 	asr.l	d1,d0
 	addq.w	#$1,d0
-	move.w	d0,-$3482(a5)
+	move.w	d0,g_SegGridW(a5)
 	movea.l	d7,a0
 	move.w	$4(a0),d0
 	ext.l	d0
 	asl.l	#$3,d0
 	subq.l	#$1,d0
-	move.w	-$3480(a5),d1
+	move.w	g_SegGridShiftY(a5),d1
 	asr.l	d1,d0
 	addq.w	#$1,d0
-	move.w	d0,-$3484(a5)
+	move.w	d0,g_SegGridH(a5)
 loc_1F9AC4:
 	jsr	$4ECA(a5)	; -> sub_1F6BD2
 	tst.l	$18(a6)

@@ -81,9 +81,9 @@ loc_08880A:
 	lea.l	-$304(a6),a0
 	move.l	a0,-$3B18(a5)
 	lea.l	CloneA5_SegHook16(pc),a0
-	move.l	a0,-$3412(a5)
+	move.l	a0,g_SegTypeHooks+$58(a5)
 	lea.l	CloneA5_SegHook15(pc),a0
-	move.l	a0,-$3416(a5)
+	move.l	a0,g_SegTypeHooks+$54(a5)
 	moveq	#$0,d0
 	move.l	d0,-(a7)
 	move.l	d0,-(a7)

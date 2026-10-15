@@ -20,7 +20,7 @@ SavageA4_InitEffectSprite:
 	move.l	$2(a0),-(a7)
 	moveq	#$1,d0
 	move.l	d0,-(a7)
-	pea.l	-$3596(a5)
+	pea.l	g_SceneSprites(a5)
 	jsr	$506A(a5)	; -> Spr_Init
 	clr.w	-$3B3A(a5)
 	clr.w	-$3B32(a5)

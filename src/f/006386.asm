@@ -64,7 +64,7 @@ loc_006414:
 	move.l	#$FF80,-(a7)
 	move.l	-$4(a6),-(a7)
 	jsr	$51DA(a5)	; -> VDP_QueueDma
-	tst.b	-$18A8(a5)
+	tst.b	g_P1HasMeter(a5)
 	lea.l	$C(a7),a7
 	beq.s	loc_00649C
 	move.w	$9E(a3),d7
@@ -151,7 +151,7 @@ loc_0064F2:
 	move.l	#$FC00,-(a7)
 	move.l	-$4(a6),-(a7)
 	jsr	$51DA(a5)	; -> VDP_QueueDma
-	tst.b	-$18AA(a5)
+	tst.b	g_P2HasMeter(a5)
 	lea.l	$C(a7),a7
 	beq.s	loc_00657A
 	move.w	$9E(a4),d7

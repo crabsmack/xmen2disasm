@@ -15,13 +15,13 @@ Mine_InitPool:
 	ext.l	d7
 	move.l	d7,-(a7)
 	jsr	$5032(a5)	; -> Mem_StackAlloc
-	move.l	d0,-$1A7C(a5)
-	clr.w	-$1A78(a5)
+	move.l	d0,g_MinePool(a5)
+	clr.w	g_MinePoolCount(a5)
 	ext.l	d7
 	move.l	d7,-(a7)
 	moveq	#$0,d0
 	move.l	d0,-(a7)
-	move.l	-$1A7C(a5),-(a7)
+	move.l	g_MinePool(a5),-(a7)
 	jsr	$4DB2(a5)	; -> Mem_Set
 	moveq	#$1,d0
 	move.l	d0,-(a7)

@@ -22,7 +22,7 @@ Seg_FindAbove:
 	move.w	$E(a6),-$8(a6)
 	addq.w	#$8,a7
 loc_15AA56:
-	movea.l	-$3478(a5),a0
+	movea.l	g_SegGridPool(a5),a0
 	move.w	-$E(a6),d0
 	lea.l	(a0,d0.w),a3
 	move.w	-$E(a6),-$C(a6)
@@ -85,7 +85,7 @@ loc_15AAF6:
 	move.b	d4,d0
 	cmpi.w	#$FF,d0
 	bne.w	loc_15AA6E
-	move.w	-$3480(a5),d0
+	move.w	g_SegGridShiftY(a5),d0
 	moveq	#$1,d1
 	lsl.l	d0,d1
 	sub.w	d1,-$8(a6)

@@ -9,7 +9,7 @@ sub_1F79A2:
 	ext.w	d0
 	asl.w	#$2,d0
 	lea.l	g_SegTypeHooks(a5),a0
-	move.l	(a0,d0.w),-$346E(a5)
+	move.l	(a0,d0.w),g_SegHookTmp(a5)
 	beq.s	loc_1F79DC
 	moveq	#$0,d0
 	move.l	d0,-(a7)
@@ -17,7 +17,7 @@ sub_1F79A2:
 	move.l	a4,-(a7)
 	moveq	#$4,d1
 	move.l	d1,-(a7)
-	movea.l	-$346E(a5),a0
+	movea.l	g_SegHookTmp(a5),a0
 	jsr	(a0)
 	tst.w	d0
 	lea.l	$10(a7),a7

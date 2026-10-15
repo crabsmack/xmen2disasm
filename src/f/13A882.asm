@@ -6,15 +6,15 @@
 ; ---------------------------------------------------------------------------
 Mine_PoolRemove:
 	link.w	a6,#$0
-	move.w	-$1A78(a5),d0
-	subq.w	#$1,-$1A78(a5)
-	tst.w	-$1A78(a5)
+	move.w	g_MinePoolCount(a5),d0
+	subq.w	#$1,g_MinePoolCount(a5)
+	tst.w	g_MinePoolCount(a5)
 	ble.s	loc_13A8C0
 	moveq	#$26,d0
 	move.l	d0,-(a7)
-	move.w	-$1A78(a5),d1
+	move.w	g_MinePoolCount(a5),d1
 	ext.l	d1
-	movea.l	-$1A7C(a5),a0
+	movea.l	g_MinePool(a5),a0
 	move.l	d1,d2
 	mulu.w	#$26,d1
 	swap	d2

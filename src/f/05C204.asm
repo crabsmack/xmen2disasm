@@ -9,7 +9,7 @@ Tusk_UnlockArena:
 	move.l	a4,-(a7)
 	movea.l	$8(a6),a4
 	lea.l	Tusk_HookReturn0(pc),a0
-	move.l	a0,-$341A(a5)
+	move.l	a0,g_SegTypeHooks+$50(a5)
 	movea.l	$90(a4),a0
 	clr.b	$2(a0)
 	movea.l	$94(a4),a0

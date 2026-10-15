@@ -8,12 +8,12 @@
 SavageJungle_InitPalPhases:
 	link.w	a6,#$0
 	movem.l	d7/a3-a4,-(a7)
-	movea.l	-$CB2(a5),a0
+	movea.l	g_LevelBgMap(a5),a0
 	moveq	#$0,d0
 	move.w	$12(a0),d0
 	tst.l	d0
 	movea.l	d0,a4
-	adda.l	-$CB2(a5),a4
+	adda.l	g_LevelBgMap(a5),a4
 	movea.l	a4,a3
 	addq.w	#$2,a3
 	move.w	(a4),d7

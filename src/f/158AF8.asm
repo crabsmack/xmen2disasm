@@ -25,25 +25,25 @@ FluxBomb_DrawImplode:
 	lsr.l	#$2,d0
 	btst	#$0,d0
 	beq.s	loc_158B4C
-	move.w	-$1A62(a5),d0
+	move.w	g_FluxBombSpr+$6(a5),d0
 	ext.l	d0
-	move.w	-$1A60(a5),d1
+	move.w	g_FluxBombSpr+$8(a5),d1
 	ext.l	d1
 	add.l	d0,d1
 	move.w	d1,d5
 	subq.w	#$1,d5
 	bra.s	loc_158B5E
 loc_158B4C:
-	move.w	-$1A62(a5),d0
+	move.w	g_FluxBombSpr+$6(a5),d0
 	ext.l	d0
-	move.w	-$1A60(a5),d1
+	move.w	g_FluxBombSpr+$8(a5),d1
 	ext.l	d1
 	add.l	d0,d1
 	move.w	d1,d5
 	subq.w	#$2,d5
 loc_158B5E:
 	moveq	#$4,d0
-	or.b	-$1A68(a5),d0
+	or.b	g_FluxBombSpr(a5),d0
 	beq.s	loc_158B7A
 	ext.l	d5
 	move.l	#$8000,d0

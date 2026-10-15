@@ -63,7 +63,7 @@ loc_11F6E8:
 	add.l	d6,d0
 	and.l	#$7F,d0
 	asl.w	#$2,d0
-	lea.l	-$1C9C(a5),a0
+	lea.l	g_BioBallsSine(a5),a0
 	move.l	(a0,d0.w),d0
 	bra.s	loc_11F754
 loc_11F738:
@@ -73,7 +73,7 @@ loc_11F738:
 	add.l	d6,d0
 	and.l	#$7F,d0
 	asl.w	#$2,d0
-	lea.l	-$1C9C(a5),a0
+	lea.l	g_BioBallsSine(a5),a0
 	move.l	(a0,d0.w),d0
 	neg.l	d0
 loc_11F754:
@@ -100,7 +100,7 @@ loc_11F754:
 	add.l	d1,d0
 	and.l	#$7F,d0
 	asl.w	#$2,d0
-	lea.l	-$1C9C(a5),a0
+	lea.l	g_BioBallsSine(a5),a0
 	move.l	(a0,d0.w),d0
 	bra.s	loc_11F7C2
 loc_11F7A2:
@@ -112,7 +112,7 @@ loc_11F7A2:
 	add.l	d1,d0
 	and.l	#$7F,d0
 	asl.w	#$2,d0
-	lea.l	-$1C9C(a5),a0
+	lea.l	g_BioBallsSine(a5),a0
 	move.l	(a0,d0.w),d0
 	neg.l	d0
 loc_11F7C2:
@@ -136,7 +136,7 @@ loc_11F7C2:
 	lsl.l	#$1,d1
 	and.l	#$7F,d1
 	asl.w	#$2,d1
-	lea.l	-$1C9C(a5),a0
+	lea.l	g_BioBallsSine(a5),a0
 	move.l	(a0,d1.w),d1
 	bra.s	loc_11F826
 loc_11F80C:
@@ -145,7 +145,7 @@ loc_11F80C:
 	lsl.l	#$1,d1
 	and.l	#$7F,d1
 	asl.w	#$2,d1
-	lea.l	-$1C9C(a5),a0
+	lea.l	g_BioBallsSine(a5),a0
 	move.l	(a0,d1.w),d1
 	neg.l	d1
 loc_11F826:
@@ -174,7 +174,7 @@ loc_11F83A:
 	add.l	d6,d0
 	and.l	#$7F,d0
 	asl.w	#$2,d0
-	lea.l	-$1C9C(a5),a0
+	lea.l	g_BioBallsSine(a5),a0
 	move.l	(a0,d0.w),d0
 	bra.s	loc_11F898
 loc_11F87C:
@@ -184,7 +184,7 @@ loc_11F87C:
 	add.l	d6,d0
 	and.l	#$7F,d0
 	asl.w	#$2,d0
-	lea.l	-$1C9C(a5),a0
+	lea.l	g_BioBallsSine(a5),a0
 	move.l	(a0,d0.w),d0
 	neg.l	d0
 loc_11F898:
@@ -211,7 +211,7 @@ loc_11F898:
 	add.l	d1,d0
 	and.l	#$7F,d0
 	asl.w	#$2,d0
-	lea.l	-$1C9C(a5),a0
+	lea.l	g_BioBallsSine(a5),a0
 	move.l	(a0,d0.w),d0
 	bra.s	loc_11F906
 loc_11F8E6:
@@ -223,7 +223,7 @@ loc_11F8E6:
 	add.l	d1,d0
 	and.l	#$7F,d0
 	asl.w	#$2,d0
-	lea.l	-$1C9C(a5),a0
+	lea.l	g_BioBallsSine(a5),a0
 	move.l	(a0,d0.w),d0
 	neg.l	d0
 loc_11F906:
@@ -245,14 +245,14 @@ loc_11F906:
 	move.w	$4(a3),d1
 	and.w	#$7F,d1
 	asl.w	#$2,d1
-	lea.l	-$1C9C(a5),a0
+	lea.l	g_BioBallsSine(a5),a0
 	move.l	(a0,d1.w),d1
 	bra.s	loc_11F95A
 loc_11F946:
 	move.w	$4(a3),d1
 	and.w	#$7F,d1
 	asl.w	#$2,d1
-	lea.l	-$1C9C(a5),a0
+	lea.l	g_BioBallsSine(a5),a0
 	move.l	(a0,d1.w),d1
 	neg.l	d1
 loc_11F95A:

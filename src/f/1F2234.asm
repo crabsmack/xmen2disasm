@@ -49,10 +49,10 @@ loc_1F229E:
 	cmpa.l	a4,a0
 	lea.l	$1C(a7),a7
 	bne.s	loc_1F22BC
-	clr.b	-$18A8(a5)
+	clr.b	g_P1HasMeter(a5)
 	bra.s	loc_1F22C0
 loc_1F22BC:
-	clr.b	-$18AA(a5)
+	clr.b	g_P2HasMeter(a5)
 loc_1F22C0:
 	clr.b	$70(a4)
 	clr.b	$9D(a4)

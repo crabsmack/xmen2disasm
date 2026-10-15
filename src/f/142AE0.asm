@@ -17,7 +17,7 @@ TechWallGun_ClassInit:
 	pea.l	Str_Empty_142B52(pc)
 	pea.l	($100).w
 	jsr	$5032(a5)	; -> Mem_StackAlloc
-	move.l	d0,-$1A6C(a5)
+	move.l	d0,g_TechWallGunRecs(a5)
 	movea.l	d0,a0
 	lea.l	(a0),a4
 	lea.l	$10(a7),a7
@@ -26,13 +26,13 @@ loc_142B18:
 	clr.b	$E(a4)
 	lea.l	$10(a4),a4
 loc_142B20:
-	movea.l	-$1A6C(a5),a0
+	movea.l	g_TechWallGunRecs(a5),a0
 	lea.l	$100(a0),a0
 	cmpa.l	a4,a0
 	bhi.s	loc_142B18
 	moveq	#$0,d0
 	move.l	d0,-(a7)
-	move.l	-$1A6C(a5),-(a7)
+	move.l	g_TechWallGunRecs(a5),-(a7)
 	move.l	d0,-(a7)
 	pea.l	TechWallGun_UpdateBullets(pc)
 	jsr	$4FD2(a5)	; -> Timer_Create

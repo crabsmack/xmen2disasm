@@ -48,7 +48,7 @@ loc_0879E2:
 	blt.s	loc_0879AC
 	andi.w	#$FFFE,-$3B0C(a5)
 	moveq	#$0,d0
-	move.l	d0,-$340E(a5)
+	move.l	d0,g_SegTypeHooks+$5C(a5)
 	movem.l	-$C(a6),d7/a3-a4
 	unlk	a6
 	rts

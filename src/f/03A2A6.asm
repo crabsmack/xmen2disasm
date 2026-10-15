@@ -22,7 +22,7 @@ BanimazaDoor_ClassInit:
 	jsr	$5032(a5)	; -> Mem_StackAlloc
 	move.l	d0,-$3C84(a5)
 	lea.l	BanimazaDoor_PushCallback(pc),a0
-	move.l	a0,-$33FA(a5)
+	move.l	a0,g_SegTypeHooks+$70(a5)
 	addq.w	#$8,a7
 	unlk	a6
 	rts

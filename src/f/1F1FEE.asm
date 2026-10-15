@@ -46,10 +46,10 @@ loc_1F2028:
 	moveq	#$4,d0
 	and.b	$2E(a4),d0
 	beq.s	loc_1F206E
-	ori.b	#$4,-$185C(a5)
+	ori.b	#$4,g_HitSparkSpr(a5)
 	bra.s	loc_1F2074
 loc_1F206E:
-	andi.b	#$FB,-$185C(a5)
+	andi.b	#$FB,g_HitSparkSpr(a5)
 loc_1F2074:
 	move.w	d6,$A0(a4)
 	move.w	d5,$A2(a4)

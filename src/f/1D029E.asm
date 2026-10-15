@@ -23,10 +23,10 @@ Gambit_Init:
 	cmpa.l	a4,a0
 	lea.l	$10(a7),a7
 	bne.s	loc_1D02EA
-	move.b	#$1,-$18A8(a5)
+	move.b	#$1,g_P1HasMeter(a5)
 	bra.s	loc_1D02F0
 loc_1D02EA:
-	move.b	#$1,-$18AA(a5)
+	move.b	#$1,g_P2HasMeter(a5)
 loc_1D02F0:
 	lea.l	$4902(a5),a0
 	move.l	$2(a0),$8C(a4)

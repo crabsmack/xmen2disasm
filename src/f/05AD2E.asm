@@ -78,7 +78,7 @@ loc_05ADEC:
 	move.w	d4,d0
 	addq.w	#$1,d4
 loc_05ADF0:
-	movea.l	-$3478(a5),a0
+	movea.l	g_SegGridPool(a5),a0
 	moveq	#$0,d0
 	move.b	(a0,d4.w),d0
 	move.w	d0,-$6(a6)

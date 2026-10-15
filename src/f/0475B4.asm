@@ -17,7 +17,7 @@ BaniMazaA2_InitSprite:
 	lea.l	$95A(a5),a0
 	move.l	$2(a0),-(a7)
 	move.l	d0,-(a7)
-	pea.l	-$3596(a5)
+	pea.l	g_SceneSprites(a5)
 	jsr	$506A(a5)	; -> Spr_Init
 	unlk	a6
 	rts

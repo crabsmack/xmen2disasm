@@ -7,7 +7,7 @@
 BigBio_SpitUpdateAll:
 	link.w	a6,#$FFEC
 	movem.l	d3-d7/a3-a4,-(a7)
-	tst.w	-$1A92(a5)
+	tst.w	g_BigBioSpitCount(a5)
 	beq.w	loc_1218E6
 	move.w	g_BigBioSprDef(a5),d0
 	ext.l	d0
@@ -18,7 +18,7 @@ BigBio_SpitUpdateAll:
 	lea.l	g_SpriteDefs(a5),a0
 	adda.w	d0,a0
 	move.l	a0,-$C(a6)
-	movea.l	-$1A90(a5),a3
+	movea.l	g_BigBioSpitPool(a5),a3
 	clr.w	-$8(a6)
 	bra.w	loc_1218DA
 loc_121696:
@@ -229,7 +229,7 @@ loc_1218CE:
 	lea.l	$10(a3),a3
 loc_1218DA:
 	move.w	-$8(a6),d0
-	cmp.w	-$1A92(a5),d0
+	cmp.w	g_BigBioSpitCount(a5),d0
 	blt.w	loc_121696
 loc_1218E6:
 	movem.l	-$30(a6),d3-d7/a3-a4

@@ -29,7 +29,7 @@ loc_03890A:
 	move.l	d0,d1
 loc_038912:
 	move.l	d1,-(a7)
-	pea.l	-$3596(a5)
+	pea.l	g_SceneSprites(a5)
 	jsr	BaniMazaA1_UploadBlockTiles(pc)
 	addq.w	#$8,a7
 loc_03891E:
@@ -55,7 +55,7 @@ loc_038950:
 	move.l	d0,d1
 loc_038958:
 	move.l	d1,-(a7)
-	pea.l	-$3546(a5)
+	pea.l	g_SceneSprites+$50(a5)
 	jsr	BaniMazaA1_UploadBlockTiles(pc)
 	addq.w	#$8,a7
 loc_038964:
@@ -81,7 +81,7 @@ loc_038996:
 	move.l	d0,d1
 loc_03899E:
 	move.l	d1,-(a7)
-	pea.l	-$34F6(a5)
+	pea.l	g_SceneSprites+$A0(a5)
 	jsr	BaniMazaA1_UploadBlockTiles(pc)
 	addq.w	#$8,a7
 loc_0389AA:

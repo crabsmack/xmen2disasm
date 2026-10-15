@@ -36,9 +36,9 @@ loc_09B5A8:
 	clr.w	$1E(a4)
 	clr.w	$16(a4)
 	lea.l	$143A(a5),a0
-	move.l	a0,-$340E(a5)
+	move.l	a0,g_SegTypeHooks+$5C(a5)
 	lea.l	$1432(a5),a0
-	move.l	a0,-$3402(a5)
+	move.l	a0,g_SegTypeHooks+$68(a5)
 	clr.w	$6C(a4)
 	lea.l	BroodClaw_StateStartScroll(pc),a0
 	move.l	a0,$5C(a4)

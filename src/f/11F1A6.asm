@@ -21,15 +21,15 @@ BioBalls_AllocBallList:
 	ext.l	d7
 	move.l	d7,-(a7)
 	jsr	$5032(a5)	; -> Mem_StackAlloc
-	move.l	d0,-$1A98(a5)
+	move.l	d0,g_BioBallsList(a5)
 	ext.l	d7
 	move.l	d7,-(a7)
 	pea.l	($FF).w
-	move.l	-$1A98(a5),-(a7)
+	move.l	g_BioBallsList(a5),-(a7)
 	jsr	$4DB2(a5)	; -> Mem_Set
-	movea.l	-$1A98(a5),a0
+	movea.l	g_BioBallsList(a5),a0
 	move.w	d6,(a0)
-	lea.l	-$1C9C(a5),a4
+	lea.l	g_BioBallsSine(a5),a4
 	clr.w	d7
 	lea.l	$14(a7),a7
 loc_11F1F6:
@@ -46,7 +46,7 @@ loc_11F1F6:
 	addq.w	#$4,a4
 	cmpi.w	#$80,d7
 	blt.s	loc_11F1F6
-	move.l	-$1A98(a5),d0
+	move.l	g_BioBallsList(a5),d0
 	movem.l	-$10(a6),d3/d6-d7/a4
 	unlk	a6
 	rts

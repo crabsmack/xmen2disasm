@@ -19,7 +19,7 @@ sub_1F80CA:
 	move.l	d0,-$4(a6)
 	addq.w	#$8,a7
 loc_1F8100:
-	movea.l	-$3478(a5),a0
+	movea.l	g_SegGridPool(a5),a0
 	move.w	-$A(a6),d0
 	lea.l	(a0,d0.w),a3
 	move.w	-$A(a6),-$8(a6)
@@ -178,7 +178,7 @@ loc_1F827C:
 	move.b	-$5(a6),d0
 	cmpi.w	#$FF,d0
 	bne.w	loc_1F811A
-	move.w	-$3480(a5),d0
+	move.w	g_SegGridShiftY(a5),d0
 	moveq	#$1,d1
 	lsl.l	d0,d1
 	add.w	d1,-$C(a6)

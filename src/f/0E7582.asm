@@ -21,7 +21,7 @@ SentinelsA1_InitZapLights:
 	move.l	a4,-(a7)
 	moveq	#$1,d0
 	move.l	d0,-(a7)
-	pea.l	-$3596(a5)
+	pea.l	g_SceneSprites(a5)
 	jsr	$506A(a5)	; -> Spr_Init
 	moveq	#$1,d0
 	move.l	d0,-(a7)
@@ -43,7 +43,7 @@ SentinelsA1_InitZapLights:
 	move.l	a4,-(a7)
 	moveq	#$1,d0
 	move.l	d0,-(a7)
-	pea.l	-$3582(a5)
+	pea.l	g_SceneSprites+$14(a5)
 	jsr	$506A(a5)	; -> Spr_Init
 	moveq	#$1,d0
 	move.l	d0,-(a7)
@@ -66,7 +66,7 @@ SentinelsA1_InitZapLights:
 	move.l	a4,-(a7)
 	moveq	#$1,d0
 	move.l	d0,-(a7)
-	pea.l	-$356E(a5)
+	pea.l	g_SceneSprites+$28(a5)
 	jsr	$506A(a5)	; -> Spr_Init
 	moveq	#$1,d0
 	move.l	d0,-(a7)
@@ -89,7 +89,7 @@ SentinelsA1_InitZapLights:
 	move.l	a4,-(a7)
 	moveq	#$1,d0
 	move.l	d0,-(a7)
-	pea.l	-$355A(a5)
+	pea.l	g_SceneSprites+$3C(a5)
 	jsr	$506A(a5)	; -> Spr_Init
 	moveq	#$1,d0
 	move.l	d0,-(a7)
@@ -112,7 +112,7 @@ SentinelsA1_InitZapLights:
 	move.l	a4,-(a7)
 	moveq	#$1,d0
 	move.l	d0,-(a7)
-	pea.l	-$3546(a5)
+	pea.l	g_SceneSprites+$50(a5)
 	jsr	$506A(a5)	; -> Spr_Init
 	moveq	#$1,d0
 	move.l	d0,-(a7)

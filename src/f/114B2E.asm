@@ -21,7 +21,7 @@ BioNpc_DrawStunned:
 	move.l	d0,-(a7)
 	moveq	#$1,d0
 	move.l	d0,-(a7)
-	move.l	-$18A6(a5),-(a7)
+	move.l	g_PsylockeFxSpr(a5),-(a7)
 	lea.l	$3F6A(a5),a0
 	move.l	$2(a0),-(a7)
 	move.l	a4,-(a7)

@@ -15,7 +15,7 @@ Ninja_FindSegInBox:
 	move.l	d0,-(a7)
 	jsr	$3EEA(a5)	; -> Seg_GridCell
 	move.w	d0,d7
-	movea.l	-$3478(a5),a0
+	movea.l	g_SegGridPool(a5),a0
 	lea.l	(a0,d7.w),a3
 	move.b	(a3),d7
 	moveq	#$0,d0

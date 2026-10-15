@@ -24,11 +24,11 @@ loc_0AD4AE:
 	subq.w	#$1,d0
 	ext.l	d0
 	move.l	d0,-(a7)
-	pea.l	-$3596(a5)
+	pea.l	g_SceneSprites(a5)
 	jsr	$507A(a5)	; -> Spr_SetFrame
 	moveq	#$0,d0
 	move.l	d0,-(a7)
-	pea.l	-$3596(a5)
+	pea.l	g_SceneSprites(a5)
 	jsr	$5062(a5)	; -> Spr_UploadFrame
 	move.w	-$3B3C(a5),d0
 	move.b	(a4,d0.w),d0
@@ -36,11 +36,11 @@ loc_0AD4AE:
 	subq.w	#$1,d0
 	ext.l	d0
 	move.l	d0,-(a7)
-	pea.l	-$3582(a5)
+	pea.l	g_SceneSprites+$14(a5)
 	jsr	$507A(a5)	; -> Spr_SetFrame
 	moveq	#$0,d0
 	move.l	d0,-(a7)
-	pea.l	-$3582(a5)
+	pea.l	g_SceneSprites+$14(a5)
 	jsr	$5062(a5)	; -> Spr_UploadFrame
 	lea.l	$20(a7),a7
 loc_0AD4FE:
