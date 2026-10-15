@@ -1,5 +1,5 @@
 ; ---------------------------------------------------------------------------
-; EvilMaker_Nop6A - vtable +$6A: empty hook for EVILMAKER
+; EvilMaker_Nop6A - vtable +$6A: empty hook for EVILMAKER (only calls the empty EvilMaker_NopStatic)
 ; In:  8(a6) = this
 ; Out: none
 ; Evidence: slot +$6A of the EVILMAKER descriptor $094BAC; never runs in the corpus

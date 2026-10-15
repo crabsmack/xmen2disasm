@@ -1,6 +1,7 @@
 ; ---------------------------------------------------------------------------
-; Blast_OutsideActiveWindow - vtable +$42: is a BLAST outside its active window
+; Blast_OutsideActiveWindow - never outside while latched onto a target (+$96 bit 0), otherwise the parent's test (BLAST override of slot +$42)
 ; In:  8(a6) = this
+; Out: d0 = 1 outside / 0 not
 ; Evidence: slot +$42 of the BLAST descriptor $0DD0E8; TAS frames 2783-7280 (1682 frames active); calls parent ACTOR slot +$42
 ; ---------------------------------------------------------------------------
 Blast_OutsideActiveWindow:

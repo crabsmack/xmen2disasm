@@ -1,5 +1,5 @@
 ; ---------------------------------------------------------------------------
-; EvilDrop_Nop6A - vtable +$6A: empty hook for EVILDROP
+; EvilDrop_Nop6A - vtable +$6A: empty hook for EVILDROP (only calls the empty EvilDrop_NopStatic)
 ; In:  8(a6) = this
 ; Out: none
 ; Evidence: slot +$6A of the EVILDROP descriptor $095126; never runs in the corpus

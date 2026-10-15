@@ -1,5 +1,5 @@
 ; ---------------------------------------------------------------------------
-; FloatBubble_Nop6A - vtable +$6A: empty hook for FLOATBUBBLE
+; FloatBubble_Nop6A - vtable +$6A: empty hook for FLOATBUBBLE (only calls the empty FloatBubble_NopStatic)
 ; In:  8(a6) = this
 ; Out: none
 ; Evidence: slot +$6A of the FLOATBUBBLE descriptor $0AB496; TAS frames 29684-32204 (3 frames active)
