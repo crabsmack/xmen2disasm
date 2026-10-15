@@ -1,8 +1,8 @@
 ; ---------------------------------------------------------------------------
-; AvalonA2_InstallEventHooks - install AvalonA2's two scene hooks at -$321A/-$3216
+; AvalonA2_InstallEventHooks - install AvalonA2's two scene hooks at -$341A/-$3416 ($FFCDE6/$FFCDEA)
 ; In:  none
 ; Out: none
-; Evidence: AvalonA2_HookReturn0 and AvalonA2_HookEndOnEvent3
+; Evidence: AvalonA2_HookReturn0 -> -$341A, AvalonA2_HookEndOnEvent3 -> -$3416
 ; ---------------------------------------------------------------------------
 AvalonA2_InstallEventHooks:
 	link.w	a6,#$0

@@ -1,0 +1,88 @@
+# Review 002 (2026-10-14, reviewer: N4 reviewer agent 2, sample seed 7702)
+reviewed: 80
+agree: 79
+open disputes: 0
+## Fixed
+- AvalonA2_InstallEventHooks (header): said the hooks go to -$321A/-$3216; the stores are to -$341A/-$3416 ($FFCDE6/$FFCDEA). Header corrected.
+## Disputes
+(none)
+## Agreed
+- BigAcolyte_ActGoTop
+- SavageA4_CyclePalettes
+- FlyBrood_MovePath
+- AvalonA3_EmptyStub1
+- Hornet_NopStatic
+- ThronePhone_StateCatch
+- BanimazaDoor_Nop66
+- EvilDrop_NopStatic
+- SavageBio_ActWait5
+- EvilCyclops_GetSize
+- BigAcolyte_ActGrow
+- Spr_RenderToBitmap_Loop
+- MagnetoBoss_StateZone4Approach
+- XClone_LockArena
+- LineSegKiller_NopStatic
+- Platform1_StateShuttle
+- XNpc_EndHurt
+- Hornet_SpawnForDeathbird_Finish
+- CapedAcolyte_OnHurt
+- Apocalypse_StateBombsDone
+- Hologram_Init
+- FloatBubble_StateStart
+- BaniMazaB2_InitPalette
+- XPlayer_DropThrough (tested byte is the player's own layer +$42, presumably copied from the floor's byte 2)
+- FloatBubble_GetSize
+- Hologram_ExplodeWhenReady
+- BigBio_StateStartMorph
+- Tusk_StateIntro
+- ICandy_SetAnim
+- Player_IsNcOrWolverine2
+- SavageA2_EmptyStub2
+- MagnetoBoss_CrackWall
+- Wolverine_GetSize
+- Beast_StateDive
+- Exodus_GetSize
+- XPlayer_AirSpecialDown
+- FloatBubble_Init
+- Apocalypse_SelectBombPattern
+- RollingDiscs_Nop66
+- VDP_WaitVBlank
+- Exodus_AtkBlast17 (evidence says Obj_ChangeAnim, the call is Obj_SetAnim; immaterial)
+- BabySentinelB_Script2
+- SpaceB1_EmptyStub
+- ShootAcolyte_StateAim
+- BigAcolyte_StateWaitYNext
+- Brood_GetSize
+- Apocalypse_Init
+- Cam_EndLookUp
+- Zapper_StateLoopAnim1
+- XClone_KillAndCount
+- CoreElevator_StateIdle
+- Cam_EaseAxis
+- Hornet_MoveDiveOnce
+- FlyBrood_ScriptB
+- Beast_SetFrameKeepCenterX
+- Ninja_Deactivate (templated header; the body picks sub_1F66F0 or the parent Deactivate by AI script, both of which do the described release)
+- SavageMediumBio_SetHome
+- PlayerSelect_CharSpriteDef_None
+- EvilDrop_GetSize
+- Cerebro_AnimatePalettes_CasesA
+- Spr_EmitPre
+- SentinelsD1_InitLight
+- Exodus_AtkBlast2
+- RollingDiscs_ClassInit (templated 'load its resources'; it actually builds the disc table from level data: count words, Mem_StackAlloc count*$14, per-disc pos/speed/flags)
+- BubbleManager_GetSize
+- SpaceB1_LoadLevel
+- BrainChild_GetSize
+- BabySentinelA_Script
+- SavageBio_NopStatic
+- Nem_PutRowMasked
+- ApocBomb_DrawShadow (module prefix; draws the players' shadows in the Apocalypse arena, not a bomb's)
+- BaniMazaB2_NopStatic
+- XClone_StateWaitPlayers
+- ChildShip_StateDie
+- Mine_Init
+- LaserCannon_ClassInit
+- PlayerSelect_CharFrameNum_Magneto
+- BioSentinel_StateFireLevel
+- XClone_Script4
