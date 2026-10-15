@@ -1,7 +1,11 @@
 ; ---------------------------------------------------------------------------
-; sub_0DC394	[jt 1149]
+; SentinelsD1_LoadResources - SentinelsD1: load its resource sets (-$3BFC, -$1A7E, -$3BFE) and reset -$1A74
+; In:  none
+; Out: none
+; Evidence: SprDef_Add x3; TAS 2498-5176
+; Found: jt 1149
 ; ---------------------------------------------------------------------------
-sub_0DC394:
+SentinelsD1_LoadResources:
 	link.w	a6,#$0
 	move.w	#$FFFF,-$1A74(a5)
 	moveq	#$0,d0

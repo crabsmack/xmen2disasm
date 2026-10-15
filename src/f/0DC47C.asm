@@ -1,13 +1,17 @@
 ; ---------------------------------------------------------------------------
-; sub_0DC47C	[link-after-rts]
+; SentinelsD1_InstallHooks - SentinelsD1: install the frame hook, load resources, light, flag bits, place the players
+; In:  none
+; Out: none
+; Evidence: g_SceneFrameHook := SentinelsD1_FrameHook; Players_PlaceAtStart(0,0,0,0); TAS 2498
+; Found: link-after-rts
 ; ---------------------------------------------------------------------------
-sub_0DC47C:
+SentinelsD1_InstallHooks:
 	link.w	a6,#$0
-	lea.l	sub_0DC350(pc),a0
+	lea.l	SentinelsD1_FrameHook(pc),a0
 	move.l	a0,g_SceneFrameHook(a5)
-	jsr	sub_0DC394(pc)
-	jsr	sub_0DC316(pc)
-	jsr	sub_0DC294(pc)
+	jsr	SentinelsD1_LoadResources(pc)
+	jsr	SentinelsD1_InitLight(pc)
+	jsr	SentinelsD1_InitFlagBits(pc)
 	moveq	#$0,d0
 	move.l	d0,-(a7)
 	move.l	d0,-(a7)

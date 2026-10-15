@@ -30,11 +30,11 @@ loc_0F47EC:
 	bls.s	loc_0F47CE
 	tst.b	g_PalFadeActive(a5)
 	bne.w	loc_0F4AE4
-	jsr	$23F2(a5)	; -> sub_0DC2CE
+	jsr	$23F2(a5)	; -> SentinelsD1_AnimLight
 	jsr	SentinelsB2_AlarmPalette(pc)
 	tst.b	g_TwoPlayerStep(a5)
 	beq.s	loc_0F4812
-	jsr	$23F2(a5)	; -> sub_0DC2CE
+	jsr	$23F2(a5)	; -> SentinelsD1_AnimLight
 	jsr	SentinelsB2_AlarmPalette(pc)
 loc_0F4812:
 	moveq	#$1,d0

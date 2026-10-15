@@ -1,7 +1,11 @@
 ; ---------------------------------------------------------------------------
-; sub_0DCFBC	[link-after-rts]
+; Blast_StateUnstick - BLAST state: clear flag bit 2, then remove itself
+; In:  8(a6) = this
+; Out: d0
+; Evidence: slot +$72 Blast_ClearFlags(2)
+; Found: link-after-rts
 ; ---------------------------------------------------------------------------
-sub_0DCFBC:
+Blast_StateUnstick:
 	link.w	a6,#$0
 	move.l	a4,-(a7)
 	movea.l	$8(a6),a4
@@ -13,7 +17,7 @@ sub_0DCFBC:
 	jsr	(a1)
 	addq.w	#$8,a7
 	clr.w	$6C(a4)
-	lea.l	sub_0DCFF0(pc),a0
+	lea.l	Blast_StateKill(pc),a0
 	move.l	a0,$5C(a4)
 	moveq	#$8,d0
 	and.w	$4(a4),d0

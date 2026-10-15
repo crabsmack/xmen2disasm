@@ -1,7 +1,11 @@
 ; ---------------------------------------------------------------------------
-; sub_0DC350	[link-after-rts]
+; SentinelsD1_FrameHook - SentinelsD1 per-frame scene hook: camera bound +$42 = 200, counter, light animation (twice with g_TwoPlayerStep)
+; In:  none
+; Out: d0
+; Evidence: installed by SentinelsD1_InstallHooks; TAS 2515-4894
+; Found: link-after-rts
 ; ---------------------------------------------------------------------------
-sub_0DC350:
+SentinelsD1_FrameHook:
 	link.w	a6,#$0
 	movea.l	g_Camera(a5),a0
 	move.w	#$C8,$42(a0)
@@ -9,7 +13,7 @@ sub_0DC350:
 	addq.l	#$1,g_FrameCounter(a5)
 	tst.b	g_PalFadeActive(a5)
 	bne.s	loc_0DC370
-	jsr	sub_0DC2CE(pc)
+	jsr	SentinelsD1_AnimLight(pc)
 loc_0DC370:
 	tst.b	g_TwoPlayerStep(a5)
 	beq.s	loc_0DC388
@@ -17,7 +21,7 @@ loc_0DC370:
 	addq.l	#$1,g_FrameCounter(a5)
 	tst.b	g_PalFadeActive(a5)
 	bne.s	loc_0DC388
-	jsr	sub_0DC2CE(pc)
+	jsr	SentinelsD1_AnimLight(pc)
 loc_0DC388:
 	unlk	a6
 	rts

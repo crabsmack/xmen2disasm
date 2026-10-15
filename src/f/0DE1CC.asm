@@ -19,7 +19,7 @@ sub_0DE1CC:
 	move.w	d0,$A(a4)
 	clr.l	$C(a4)
 	move.l	a4,-(a7)
-	jsr	$247A(a5)	; -> sub_0DCB2E
+	jsr	$247A(a5)	; -> Blast_Spawn
 	movem.l	-$18(a6),a3-a4
 	unlk	a6
 	rts

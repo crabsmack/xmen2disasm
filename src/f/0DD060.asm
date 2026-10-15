@@ -1,7 +1,11 @@
 ; ---------------------------------------------------------------------------
-; sub_0DD060	[link-after-rts]
+; Blast_StateZap - BLAST state: every 4 frames zap the latched target (slot +$26 TakeDamage(this, 7, 1)); stop when it dies or after $1E zaps
+; In:  8(a6) = this
+; Out: none
+; Evidence: clears the target's hit cooldown each time; end: Snd_Stop $D5, Blast_StateKill
+; Found: link-after-rts
 ; ---------------------------------------------------------------------------
-sub_0DD060:
+Blast_StateZap:
 	link.w	a6,#$0
 	movem.l	a3-a4,-(a7)
 	movea.l	$8(a6),a4
@@ -42,7 +46,7 @@ loc_0DD0BC:
 	jsr	$5222(a5)	; -> Snd_Stop
 	addq.w	#$4,a7
 	clr.w	$6C(a4)
-	lea.l	sub_0DCFF0(pc),a0
+	lea.l	Blast_StateKill(pc),a0
 	move.l	a0,$5C(a4)
 	moveq	#$8,d0
 	and.w	$4(a4),d0

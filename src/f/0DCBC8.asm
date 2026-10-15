@@ -20,9 +20,9 @@ Blast_Init:
 	jsr	(a1)
 	clr.w	$18(a3)
 	clr.w	$20(a3)
-	lea.l	sub_0DCE88(pc),a0
+	lea.l	Blast_StateStart(pc),a0
 	move.l	a0,$5C(a3)
-	lea.l	sub_0DCE88(pc),a0
+	lea.l	Blast_StateStart(pc),a0
 	move.l	a0,$64(a3)
 	ori.w	#$82,$6(a3)
 	move.w	-$3BF4(a5),d0

@@ -1,7 +1,11 @@
 ; ---------------------------------------------------------------------------
-; sub_0DC3DE	[link-after-rts]
+; SentinelsD1_LoadLevel - SentinelsD1: load the Exterior_1 level (Level_Load with its class list jt[$25B2]) and palette line 2
+; In:  none
+; Out: d0
+; Evidence: 16 words jt[$261A] -> g_PalBase+$40; parallax factors $C0/$80; TAS 2381
+; Found: link-after-rts
 ; ---------------------------------------------------------------------------
-sub_0DC3DE:
+SentinelsD1_LoadLevel:
 	link.w	a6,#$0
 	movem.l	d3/d7/a3-a4,-(a7)
 	lea.l	$23B2(a5),a0

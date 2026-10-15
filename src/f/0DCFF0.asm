@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_0DCFF0	[link-after-rts]
+; Blast_StateKill - BLAST state: remove itself (slot +$52)
+; In:  8(a6) = this
+; Out: none
+; Found: link-after-rts
 ; ---------------------------------------------------------------------------
-sub_0DCFF0:
+Blast_StateKill:
 	link.w	a6,#$0
 	move.l	a4,-(a7)
 	movea.l	$8(a6),a4

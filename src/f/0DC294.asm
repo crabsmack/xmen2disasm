@@ -1,7 +1,11 @@
 ; ---------------------------------------------------------------------------
-; sub_0DC294	[jt 1144]
+; SentinelsD1_InitFlagBits - SentinelsD1: allocate and clear 15 words of switch/door flag bits (-$3BFA)
+; In:  none
+; Out: none
+; Evidence: Mem_StackAlloc($1E); BLAST and CONTROL objects set/clear bits through pointers into it (Blast_SetFlags); TAS 2503-5181
+; Found: jt 1144
 ; ---------------------------------------------------------------------------
-sub_0DC294:
+SentinelsD1_InitFlagBits:
 	link.w	a6,#$0
 	movem.l	d7/a4,-(a7)
 	pea.l	Str_Empty_0DC2C4(pc)

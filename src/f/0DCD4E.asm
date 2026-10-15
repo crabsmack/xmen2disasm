@@ -41,7 +41,7 @@ Blast_Attack:
 	jsr	(a1)
 	move.l	a3,$90(a4)
 	ori.w	#$1,$96(a4)
-	lea.l	sub_0DD00C(pc),a0
+	lea.l	Blast_Latch(pc),a0
 	move.l	a0,$5C(a4)
 	clr.w	$6C(a4)
 	movem.l	-$8(a6),a3-a4

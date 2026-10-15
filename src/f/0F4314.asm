@@ -2,7 +2,7 @@
 ; SentinelsB1_FrameHook - SentinelsB1 per-frame hook: camera field +$42 = 200, count the frame, run the Sentinels palette animation (twice at half rate)
 ; In:  none
 ; Out: d0
-; Evidence: g_Camera+$42, g_FrameCounter, sub_0DC2CE unless g_PalFadeActive; TAS 5209-7290
+; Evidence: g_Camera+$42, g_FrameCounter, SentinelsD1_AnimLight unless g_PalFadeActive; TAS 5209-7290
 ; ---------------------------------------------------------------------------
 SentinelsB1_FrameHook:
 	link.w	a6,#$0
@@ -12,7 +12,7 @@ SentinelsB1_FrameHook:
 	addq.l	#$1,g_FrameCounter(a5)
 	tst.b	g_PalFadeActive(a5)
 	bne.s	loc_0F4334
-	jsr	$23F2(a5)	; -> sub_0DC2CE
+	jsr	$23F2(a5)	; -> SentinelsD1_AnimLight
 loc_0F4334:
 	tst.b	g_TwoPlayerStep(a5)
 	beq.s	loc_0F434C
@@ -20,7 +20,7 @@ loc_0F4334:
 	addq.l	#$1,g_FrameCounter(a5)
 	tst.b	g_PalFadeActive(a5)
 	bne.s	loc_0F434C
-	jsr	$23F2(a5)	; -> sub_0DC2CE
+	jsr	$23F2(a5)	; -> SentinelsD1_AnimLight
 loc_0F434C:
 	unlk	a6
 	rts

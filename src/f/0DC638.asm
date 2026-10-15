@@ -1,7 +1,7 @@
 ; ---------------------------------------------------------------------------
 ; Barrier_Init - vtable +$12 constructor: run the parent's Init, then set up a BARRIER
 ; In:  8(a6) = this, $C(a6) = long x, $10(a6) = long y (8 fraction bits), $14(a6) = spawn parameter
-; Evidence: slot +$12 of the BARRIER descriptor $0DCAAA; never runs in the corpus; calls parent ACTOR slot +$12; state handler(s) put in +$5C: sub_0DC7D0
+; Evidence: slot +$12 of the BARRIER descriptor $0DCAAA; never runs in the corpus; calls parent ACTOR slot +$12; state handler(s) put in +$5C: Barrier_StateStart
 ; ---------------------------------------------------------------------------
 Barrier_Init:
 	link.w	a6,#$0
@@ -22,9 +22,9 @@ Barrier_Init:
 	clr.w	$20(a4)
 	move.w	$2(a3),$10(a4)
 	move.w	$4(a3),$12(a4)
-	lea.l	sub_0DC7D0(pc),a0
+	lea.l	Barrier_StateStart(pc),a0
 	move.l	a0,$5C(a4)
-	lea.l	sub_0DC7D0(pc),a0
+	lea.l	Barrier_StateStart(pc),a0
 	move.l	a0,$64(a4)
 	ori.w	#$83,$6(a4)
 	move.w	-$3BF4(a5),d0

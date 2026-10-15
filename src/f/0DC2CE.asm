@@ -1,7 +1,11 @@
 ; ---------------------------------------------------------------------------
-; sub_0DC2CE	[jt 1146]
+; SentinelsD1_AnimLight - SentinelsD1: step the warning-light sprite through frames 3..0 every 5 frames
+; In:  none
+; Out: none
+; Evidence: sprite $FFCC6A, Spr_SetFrame + Spr_UploadFrame; TAS 2543-10022
+; Found: jt 1146
 ; ---------------------------------------------------------------------------
-sub_0DC2CE:
+SentinelsD1_AnimLight:
 	link.w	a6,#$0
 	tst.w	-$3B32(a5)
 	bne.s	loc_0DC30E

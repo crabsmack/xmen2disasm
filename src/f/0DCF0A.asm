@@ -1,7 +1,11 @@
 ; ---------------------------------------------------------------------------
-; sub_0DCF0A	[link-after-rts]
+; Blast_StateFly - BLAST state: fly until it hits something (sub_1F6420(this, 10)); then stick (if +$9C) or vanish
+; In:  8(a6) = this
+; Out: d0
+; Evidence: next Blast_StateStick or Blast_StateKill; TAS 2800-7237
+; Found: link-after-rts
 ; ---------------------------------------------------------------------------
-sub_0DCF0A:
+Blast_StateFly:
 	link.w	a6,#$0
 	move.l	a4,-(a7)
 	movea.l	$8(a6),a4
@@ -15,14 +19,14 @@ sub_0DCF0A:
 	tst.b	$9C(a4)
 	beq.s	loc_0DCF3E
 	clr.w	$6C(a4)
-	lea.l	sub_0DCF58(pc),a0
+	lea.l	Blast_StateStick(pc),a0
 	move.l	a0,$5C(a4)
 	moveq	#$8,d0
 	and.w	$4(a4),d0
 	bra.s	loc_0DCF50
 loc_0DCF3E:
 	clr.w	$6C(a4)
-	lea.l	sub_0DCFF0(pc),a0
+	lea.l	Blast_StateKill(pc),a0
 	move.l	a0,$5C(a4)
 	moveq	#$8,d0
 	and.w	$4(a4),d0

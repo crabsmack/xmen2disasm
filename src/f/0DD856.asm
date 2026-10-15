@@ -22,7 +22,7 @@ sub_0DD856:
 	move.b	$A3(a3),d0
 	move.w	d0,$E(a4)
 	move.l	a4,-(a7)
-	jsr	$247A(a5)	; -> sub_0DCB2E
+	jsr	$247A(a5)	; -> Blast_Spawn
 	movem.l	-$18(a6),a3-a4
 	unlk	a6
 	rts

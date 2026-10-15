@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_0DCE6A	[jt 1172]
+; Blast_ClearFlags - BLAST slot +$72: clear bits in the flag word it points at (+$8C)
+; In:  8(a6) = this, $E(a6) = word bits
+; Out: none
+; Found: jt 1172
 ; ---------------------------------------------------------------------------
-sub_0DCE6A:
+Blast_ClearFlags:
 	link.w	a6,#$0
 	move.l	a4,-(a7)
 	movea.l	$8(a6),a0

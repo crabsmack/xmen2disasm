@@ -1,7 +1,11 @@
 ; ---------------------------------------------------------------------------
-; sub_0DC9C4	[link-after-rts]
+; Barrier_Close - BARRIER: close - closing animation and a solid block (type $15) 32 px wide over its vertical range
+; In:  8(a6) = this
+; Out: none
+; Evidence: Obj_SetAnim(this, $15B206); +$96 = 1; Seg_Create($15, 0, x-16, +$94, x+16, +$92)
+; Found: link-after-rts
 ; ---------------------------------------------------------------------------
-sub_0DC9C4:
+Barrier_Close:
 	link.w	a6,#$0
 	movem.l	d4-d7/a3-a4,-(a7)
 	movea.l	$8(a6),a4

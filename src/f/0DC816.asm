@@ -1,7 +1,11 @@
 ; ---------------------------------------------------------------------------
-; sub_0DC816	[link-after-rts]
+; Barrier_StateWatch - BARRIER state: once a player is level with it note which side they came from, and close when every live player has passed $40 px beyond it
+; In:  8(a6) = this
+; Out: d0
+; Evidence: vertical range +$94..+$92, direction +$90 = +-1; then Barrier_Close and Barrier_StateIdle
+; Found: link-after-rts
 ; ---------------------------------------------------------------------------
-sub_0DC816:
+Barrier_StateWatch:
 	link.w	a6,#$0
 	movem.l	d5-d7/a3-a4,-(a7)
 	movea.l	$8(a6),a4
@@ -40,7 +44,7 @@ loc_0DC878:
 	tst.w	$90(a4)
 	bne.s	loc_0DC894
 	clr.w	$6C(a4)
-	lea.l	sub_0DC816(pc),a0
+	lea.l	Barrier_StateWatch(pc),a0
 	move.l	a0,$5C(a4)
 	moveq	#$8,d0
 	and.w	$4(a4),d0
@@ -135,17 +139,17 @@ loc_0DC964:
 	tst.b	d6
 	beq.s	loc_0DC984
 	move.l	a4,-(a7)
-	jsr	sub_0DC9C4(pc)
+	jsr	Barrier_Close(pc)
 	addq.w	#$4,a7
 	clr.w	$6C(a4)
-	lea.l	sub_0DC9A0(pc),a0
+	lea.l	Barrier_StateIdle(pc),a0
 	move.l	a0,$5C(a4)
 	moveq	#$8,d0
 	and.w	$4(a4),d0
 	bra.s	loc_0DC996
 loc_0DC984:
 	clr.w	$6C(a4)
-	lea.l	sub_0DC816(pc),a0
+	lea.l	Barrier_StateWatch(pc),a0
 	move.l	a0,$5C(a4)
 	moveq	#$8,d0
 	and.w	$4(a4),d0
