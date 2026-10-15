@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_10B6BE	[jt 1360]
+; SpaceElev_SwitchTileHit - SpaceA1 switch tile handler: when the lift is idle (or a DEATHBIRD hits it), flip the switch tile, play sound $38 and Elevator_Toggle
+; In:  $A(a6) = word tile x  $E(a6) = word tile y  $10(a6) = hitting actor or 0
+; Out: d0 = 0
+; Evidence: XORs $200 in the level map ($FFC77C), sub_15D7D8 redraw, vtable +$12 of g_Elevator; DEATHBIRD descriptor test
 ; ---------------------------------------------------------------------------
-sub_10B6BE:
+SpaceElev_SwitchTileHit:
 	link.w	a6,#$0
 	movem.l	d6-d7/a3-a4,-(a7)
 	move.w	$E(a6),d6

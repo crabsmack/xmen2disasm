@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_10B672	[jt 1359]
+; Elevator_Toggle - Elevator: reverse direction (acceleration -$40/+$40) unless the 26-frame cooldown runs
+; In:  8(a6) = this
+; Out: none
+; Evidence: method 3 of ELEVATOR; called through vtable +$12 by SpaceElev_SwitchTileHit
 ; ---------------------------------------------------------------------------
-sub_10B672:
+Elevator_Toggle:
 	link.w	a6,#$0
 	movem.l	d3/a4,-(a7)
 	movea.l	$8(a6),a4

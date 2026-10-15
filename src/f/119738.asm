@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_119738	[jt 1489]
+; BBoard_New - BBoard: allocate a board with N word entries (size from CalcSize) and Init it
+; In:  8(a6) = class descriptor  $E(a6) = word entry count
+; Out: d0 = board
+; Evidence: method 1 of BBOARD; Mem_StackAlloc ($1FA8DC); Switch_ClassInit calls it with 100 and keeps the board in $FFE55A
 ; ---------------------------------------------------------------------------
-sub_119738:
+BBoard_New:
 	link.w	a6,#$0
 	movem.l	d7/a3-a4,-(a7)
 	move.w	$E(a6),d7

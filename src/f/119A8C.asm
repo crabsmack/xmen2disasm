@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_119A8C	[link-after-rts]
+; Synchronizer_WaitMembers - Synchronizer state: if any member is back in its window go to ActivateMembers; if all spawn records are out of view go to DespawnMembers
+; In:  8(a6) = this
+; Out: none
+; Evidence: member vtable +$6E and +$76
 ; ---------------------------------------------------------------------------
-sub_119A8C:
+Synchronizer_WaitMembers:
 	link.w	a6,#$0
 	movem.l	d6-d7/a3-a4,-(a7)
 	movea.l	$8(a6),a3
@@ -20,7 +23,7 @@ loc_119A9E:
 	tst.b	d0
 	addq.w	#$4,a7
 	beq.s	loc_119AC2
-	lea.l	sub_119A46(pc),a0
+	lea.l	Synchronizer_ActivateMembers(pc),a0
 	move.l	a0,$2C(a3)
 	bra.s	loc_119AF6
 loc_119AC2:
@@ -56,7 +59,7 @@ loc_119AFA:
 	move.b	$36(a3),d0
 	cmp.w	d6,d0
 	bne.s	loc_119B16
-	lea.l	sub_1199B8(pc),a0
+	lea.l	Synchronizer_DespawnMembers(pc),a0
 	move.l	a0,$2C(a3)
 loc_119B16:
 	movem.l	-$10(a6),d6-d7/a3-a4

@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_119914	[jt 1496]
+; Synchronizer_SetFlag - Synchronizer: set bit $100 of its BBoard entry (+$37)
+; In:  8(a6) = this
+; Out: none
+; Evidence: method 4 of SYNCHRONIZER; board at $FFE55A; SyncActor_IsTriggered reads this bit
 ; ---------------------------------------------------------------------------
-sub_119914:
+Synchronizer_SetFlag:
 	link.w	a6,#$0
 	move.l	a4,-(a7)
 	movea.l	$8(a6),a0

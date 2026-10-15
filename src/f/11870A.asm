@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_11870A	[jt 1470]
+; ICandy_Draw - ICandy: place the sprite at its camera-relative position
+; In:  8(a6) = this
+; Out: none
+; Evidence: method 4 of ICANDY; sub_1FB346(this+$1C, x - camera x, y - camera y)
 ; ---------------------------------------------------------------------------
-sub_11870A:
+ICandy_Draw:
 	link.w	a6,#$0
 	movem.l	d6-d7/a4,-(a7)
 	movea.l	$8(a6),a4

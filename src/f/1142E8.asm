@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_1142E8	[jt 1412]
+; XNpc_KillOrExplode - XNPC OnDeath override: hit types $D-$F just Kill, anything else Explode
+; In:  8(a6) = this  $13(a6) = byte hit type
+; Out: none
+; Evidence: slot 27 (+$72) of SWAMPFLY and MAINTROBOT; vtable +$52 (Kill) / +$7E (Explode)
 ; ---------------------------------------------------------------------------
-sub_1142E8:
+XNpc_KillOrExplode:
 	link.w	a6,#$0
 	movem.l	d7/a4,-(a7)
 	move.b	$13(a6),d7

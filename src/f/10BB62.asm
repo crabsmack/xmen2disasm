@@ -1,8 +1,11 @@
 ; ---------------------------------------------------------------------------
-; sub_10BB62	[link-after-rts]
+; SpaceElev_CallEmptyHook - SpaceA1 elevator stage: first init step, calls an empty hook
+; In:  none
+; Out: none
+; Evidence: only caller SpaceElev_Main
 ; ---------------------------------------------------------------------------
-sub_10BB62:
+SpaceElev_CallEmptyHook:
 	link.w	a6,#$0
-	jsr	sub_10B57C(pc)
+	jsr	SpaceElev_EmptyHook(pc)
 	unlk	a6
 	rts

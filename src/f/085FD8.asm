@@ -21,7 +21,7 @@ sub_085FD8:
 	lea.l	$144A(a5),a0
 	move.l	$2(a0),-(a7)
 	move.l	a4,-(a7)
-	jsr	$2E3A(a5)	; -> sub_118874
+	jsr	$2E3A(a5)	; -> ICandy_SetAnim
 	move.b	#$6,$42(a4)
 	clr.b	$43(a4)
 	moveq	#$0,d0

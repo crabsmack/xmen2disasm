@@ -1,12 +1,15 @@
 ; ---------------------------------------------------------------------------
-; sub_10BA6A	[link-after-rts]
+; SpaceElev_Setup - SpaceA1: install the frame hook and switch-tile hook, prepare players, Init the elevator, create the camera with SpaceElev_CameraSetup
+; In:  none
+; Out: none
+; Evidence: sets $FFC972 = SpaceElev_FrameHook; Elevator_Init via vtable +$A; CAMERA class New (jt $4FBA)
 ; ---------------------------------------------------------------------------
-sub_10BA6A:
+SpaceElev_Setup:
 	link.w	a6,#$0
-	lea.l	sub_10B98A(pc),a0
+	lea.l	SpaceElev_FrameHook(pc),a0
 	move.l	a0,-$388E(a5)
-	jsr	sub_10B9C8(pc)
-	jsr	sub_10B76C(pc)
+	jsr	SpaceElev_EmptyHook2(pc)
+	jsr	SpaceElev_InstallTileHooks(pc)
 	moveq	#$0,d0
 	move.l	d0,-(a7)
 	move.l	d0,-(a7)
@@ -74,7 +77,7 @@ loc_10BB1C:
 	movea.l	(a0),a0
 	movea.l	$A(a0),a1
 	jsr	(a1)
-	pea.l	sub_10BA48(pc)
+	pea.l	SpaceElev_CameraSetup(pc)
 	lea.l	$4DBA(a5),a0
 	move.l	$2(a0),-(a7)
 	lea.l	$4DBA(a5),a0

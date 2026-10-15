@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_1197F2	[jt 1494]
+; Synchronizer_New - Synchronizer: take one of 4 pool slots (allocated on first use at $FFE55E) and Init it
+; In:  8(a6) = class descriptor  $C(a6) = member class descriptor  $13(a6) = byte board index
+; Out: d0 = synchronizer or 0
+; Evidence: method 1 of SYNCHRONIZER; in-use byte +$38; runs when synchronized platforms appear (TAS 35138-36498)
 ; ---------------------------------------------------------------------------
-sub_1197F2:
+Synchronizer_New:
 	link.w	a6,#$FFFC
 	movem.l	d3/d5-d7/a3-a4,-(a7)
 	move.b	$13(a6),d5

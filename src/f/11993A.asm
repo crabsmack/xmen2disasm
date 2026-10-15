@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_11993A	[jt 1497]
+; Synchronizer_ClearFlag - Synchronizer: clear bit $100 of its BBoard entry
+; In:  8(a6) = this
+; Out: none
+; Evidence: method 5 of SYNCHRONIZER
 ; ---------------------------------------------------------------------------
-sub_11993A:
+Synchronizer_ClearFlag:
 	link.w	a6,#$0
 	move.l	a4,-(a7)
 	movea.l	$8(a6),a0

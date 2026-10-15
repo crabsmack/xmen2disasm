@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_118874	[jt 1475]
+; ICandy_SetAnim - ICandy: start an animation record (pointer at +$32, step 0, frame byte +$1D from record +7)
+; In:  8(a6) = this  $C(a6) = animation record
+; Out: none
+; Evidence: fields match ICandy_Update's animation stepping; callers in BROODBOSS code ($085FD8, $087370)
 ; ---------------------------------------------------------------------------
-sub_118874:
+ICandy_SetAnim:
 	link.w	a6,#$0
 	movem.l	d7/a4,-(a7)
 	movea.l	$8(a6),a4

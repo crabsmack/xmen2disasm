@@ -1,10 +1,13 @@
 ; ---------------------------------------------------------------------------
-; sub_118430	[jt 1466]
+; ICandy_New - ICandy: take a pool slot, construct it (Init) and give it a sprite slot
+; In:  8(a6) = unused  $C(a6) = class descriptor  $10/$14(a6) = x, y (16.16)
+; Out: d0 = object or 0 when the pool is full
+; Evidence: method 1 of ICANDY; ICandy_PoolAlloc, vtable +$E (Init), sub_1F8FA2 result stored at +$3C
 ; ---------------------------------------------------------------------------
-sub_118430:
+ICandy_New:
 	link.w	a6,#$0
 	move.l	a4,-(a7)
-	jsr	sub_1187C2(pc)
+	jsr	ICandy_PoolAlloc(pc)
 	movea.l	d0,a4
 	move.l	a4,d0
 	beq.s	loc_1184A2

@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_119796	[jt 1491]
+; BBoard_Init - BBoard: store the entry count at +4 and zero every word entry from +6
+; In:  8(a6) = this  $E(a6) = word count
+; Out: none
+; Evidence: method 2 of BBOARD
 ; ---------------------------------------------------------------------------
-sub_119796:
+BBoard_Init:
 	link.w	a6,#$0
 	movem.l	d6-d7/a4,-(a7)
 	move.w	$E(a6),d6

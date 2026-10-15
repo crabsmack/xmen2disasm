@@ -46,7 +46,7 @@ sub_088730:
 	moveq	#$48,d1
 	move.l	d1,-(a7)
 	pea.l	-$2D0(a6)
-	jsr	$2E2A(a5)	; -> sub_118760
+	jsr	$2E2A(a5)	; -> ICandy_PoolInit
 	move.b	#$1,-$38B4(a5)
 	clr.w	-$3492(a5)
 	move.w	#$100,-$3494(a5)

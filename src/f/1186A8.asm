@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_1186A8	[jt 1469]
+; ICandy_Destroy - ICandy: release sprite/handle resources and return the pool slot
+; In:  8(a6) = this
+; Out: none
+; Evidence: method 5 of ICANDY; sub_1F9D1E/sub_1F9D38 on +$3E, sub_1F9122 on +$3C, ICandy_PoolFree
 ; ---------------------------------------------------------------------------
-sub_1186A8:
+ICandy_Destroy:
 	link.w	a6,#$0
 	move.l	a4,-(a7)
 	movea.l	$8(a6),a4
@@ -31,7 +34,7 @@ loc_1186DE:
 	addq.w	#$4,a7
 loc_1186FA:
 	move.l	a4,-(a7)
-	jsr	sub_118814(pc)
+	jsr	ICandy_PoolFree(pc)
 	addq.w	#$4,a7
 	movea.l	-$4(a6),a4
 	unlk	a6

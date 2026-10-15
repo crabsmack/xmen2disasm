@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_11998A	[jt 1500]
+; Synchronizer_Destroy - Synchronizer: ClearFlag, Free the pool slot, release the handle
+; In:  8(a6) = this
+; Out: none
+; Evidence: method 6 of SYNCHRONIZER; vtable +$1A and +$22; called at the end of Synchronizer_DespawnMembers
 ; ---------------------------------------------------------------------------
-sub_11998A:
+Synchronizer_Destroy:
 	link.w	a6,#$0
 	move.l	a4,-(a7)
 	movea.l	$8(a6),a4

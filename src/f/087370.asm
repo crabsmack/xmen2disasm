@@ -28,7 +28,7 @@ loc_08739E:
 	lea.l	$1452(a5),a0
 	move.l	$2(a0),-(a7)
 	move.l	$A2(a4),-(a7)
-	jsr	$2E3A(a5)	; -> sub_118874
+	jsr	$2E3A(a5)	; -> ICandy_SetAnim
 	movea.l	$A2(a4),a0
 	move.b	#$1,$1D(a0)
 	addq.w	#$8,a7

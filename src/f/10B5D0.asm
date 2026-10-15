@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_10B5D0	[jt 1358]
+; Elevator_Update - Elevator per frame: accelerate (speed clamped to +-$900), advance the position, arm the low-position callback, tick the toggle cooldown
+; In:  8(a6) = this
+; Out: none
+; Evidence: method 2 of ELEVATOR; called by SpaceElev_FrameHook every frame of SpaceA1 (TAS 37298-45094); writes $FFC95C
 ; ---------------------------------------------------------------------------
-sub_10B5D0:
+Elevator_Update:
 	link.w	a6,#$0
 	move.l	a4,-(a7)
 	movea.l	$8(a6),a4

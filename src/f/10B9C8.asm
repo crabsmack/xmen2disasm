@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_10B9C8	[link-after-rts]
+; SpaceElev_EmptyHook2 - SpaceA1: second empty hook
+; In:  none
+; Out: none
+; Evidence: body is link/unlk/rts; only caller SpaceElev_Setup
 ; ---------------------------------------------------------------------------
-sub_10B9C8:
+SpaceElev_EmptyHook2:
 	link.w	a6,#$0
 	unlk	a6
 	rts

@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_119E92	[jt 1512]
+; SyncActor_IsTriggered - SyncActor slot 29 (+$7A): is bit $100 set in the actor's BBoard entry (+$8B)
+; In:  8(a6) = this
+; Out: d0.w = $100 if set
+; Evidence: board $FFE55A; Synchronizer_SetFlag sets that bit
 ; ---------------------------------------------------------------------------
-sub_119E92:
+SyncActor_IsTriggered:
 	link.w	a6,#$0
 	movea.l	$8(a6),a0
 	moveq	#$0,d0

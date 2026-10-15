@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_119894	[jt 1495]
+; Synchronizer_Init - Synchronizer: register, clear the 10-member list, remember member class (+$30) and board index (+$37), start in GatherMembers, then SetFlag
+; In:  8(a6) = this  $C(a6) = member class descriptor  $13(a6) = byte board index
+; Out: d0 = result of SetFlag or 0
+; Evidence: method 2 of SYNCHRONIZER; +$2C state = Synchronizer_GatherMembers
 ; ---------------------------------------------------------------------------
-sub_119894:
+Synchronizer_Init:
 	link.w	a6,#$0
 	movem.l	d3/d7/a3-a4,-(a7)
 	movea.l	$8(a6),a4
@@ -32,7 +35,7 @@ loc_1198CC:
 	addq.w	#$1,d7
 	cmp.w	d7,d3
 	bgt.s	loc_1198CC
-	lea.l	sub_119BCA(pc),a0
+	lea.l	Synchronizer_GatherMembers(pc),a0
 	move.l	a0,$2C(a4)
 	clr.w	$34(a4)
 	move.l	$C(a6),$30(a4)

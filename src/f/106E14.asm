@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_106E14	[jt 1341]
+; Platform1_MemberInWindow - Platform1 slot 26: does the platform's path rectangle (+$76 record +8..+$E) overlap the activation window
+; In:  8(a6) = this
+; Out: d0.b = 1 if any part is in the window
+; Evidence: override of SyncActor slot 26; window $FFCC42-$FFCC48 vs camera; TAS 35138-37013
 ; ---------------------------------------------------------------------------
-sub_106E14:
+Platform1_MemberInWindow:
 	link.w	a6,#$FFFE
 	movem.l	d3-d7/a4,-(a7)
 	movea.l	$8(a6),a0

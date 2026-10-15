@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_119A46	[link-after-rts]
+; Synchronizer_ActivateMembers - Synchronizer state: Activate every member, then RunMembers
+; In:  8(a6) = this
+; Out: none
+; Evidence: member vtable +$3E
 ; ---------------------------------------------------------------------------
-sub_119A46:
+Synchronizer_ActivateMembers:
 	link.w	a6,#$0
 	movem.l	d7/a3-a4,-(a7)
 	movea.l	$8(a6),a3
@@ -24,7 +27,7 @@ loc_119A70:
 	move.b	$36(a3),d0
 	cmp.w	d7,d0
 	bgt.s	loc_119A56
-	lea.l	sub_119B66(pc),a0
+	lea.l	Synchronizer_RunMembers(pc),a0
 	move.l	a0,$2C(a3)
 	movem.l	-$C(a6),d7/a3-a4
 	unlk	a6

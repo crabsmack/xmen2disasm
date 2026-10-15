@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_119B66	[link-after-rts]
+; Synchronizer_RunMembers - Synchronizer state: Update every member; when all report MemberOutsideWindow go to DeactivateMembers
+; In:  8(a6) = this
+; Out: none
+; Evidence: member vtable +$4A Update and +$72; TAS 476 frames
 ; ---------------------------------------------------------------------------
-sub_119B66:
+Synchronizer_RunMembers:
 	link.w	a6,#$0
 	movem.l	d6-d7/a3-a4,-(a7)
 	movea.l	$8(a6),a3
@@ -38,7 +41,7 @@ loc_119BA4:
 	move.b	$36(a3),d0
 	cmp.w	d6,d0
 	bne.s	loc_119BC0
-	lea.l	sub_119B20(pc),a0
+	lea.l	Synchronizer_DeactivateMembers(pc),a0
 	move.l	a0,$2C(a3)
 loc_119BC0:
 	movem.l	-$10(a6),d6-d7/a3-a4

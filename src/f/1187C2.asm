@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_1187C2	[link-after-rts]
+; ICandy_PoolAlloc - return the first free ICandy pool slot (word +4 bit 15 clear) and mark it used
+; In:  none
+; Out: d0 = slot or 0
+; Evidence: pool base/stride/count globals $FFE54E/$FFE54C/$FFE552 set by ICandy_PoolInit; only caller ICandy_New
 ; ---------------------------------------------------------------------------
-sub_1187C2:
+ICandy_PoolAlloc:
 	link.w	a6,#$0
 	movem.l	d7/a4,-(a7)
 	moveq	#$0,d0

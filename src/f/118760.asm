@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_118760	[jt 1473]
+; ICandy_PoolInit - set up the ICandy pool: base, slot stride and count; clear every slot's flags (0 disables the pool)
+; In:  8(a6) = base  $E(a6) = word stride  $12(a6) = word count
+; Out: none
+; Evidence: writes $FFE54E/$FFE54C/$FFE552 read by ICandy_PoolAlloc; called from Scene_PreLoadReset and BROODBOSS setup
 ; ---------------------------------------------------------------------------
-sub_118760:
+ICandy_PoolInit:
 	link.w	a6,#$0
 	movem.l	d6-d7/a4,-(a7)
 	move.w	$E(a6),d6

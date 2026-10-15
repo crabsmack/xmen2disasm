@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_118D4C	[jt 1483]
+; GaussBullet_GetSize - GaussBullet: return object size $20
+; In:  none
+; Out: d0 = $20
+; Evidence: method 0 of class descriptor $118D32 ("GAUSSBULLET", 2 methods, no parent)
 ; ---------------------------------------------------------------------------
-sub_118D4C:
+GaussBullet_GetSize:
 	link.w	a6,#$0
 	moveq	#$20,d0
 	unlk	a6

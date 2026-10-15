@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_119E70	[jt 1511]
+; SyncActor_MemberSpawnRecOutOfView - SyncActor slot 28 (+$76): ACTOR's SpawnRecOutOfView test for the Synchronizer
+; In:  8(a6) = this  $C(a6) = spawn record
+; Out: d0.b = 1 if out of view
+; Evidence: calls parent +$32; caller Synchronizer_WaitMembers
 ; ---------------------------------------------------------------------------
-sub_119E70:
+SyncActor_MemberSpawnRecOutOfView:
 	link.w	a6,#$0
 	move.l	$C(a6),-(a7)
 	move.l	$8(a6),-(a7)

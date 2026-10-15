@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_10B58E	[jt 1357]
+; Elevator_Init - Elevator: set position (+4 long), speed (+8), acceleration (+$A); moving up, no cooldown
+; In:  8(a6) = this  $C(a6) = long position  $12(a6) = word speed  $16(a6) = word acceleration
+; Out: none
+; Evidence: method 1 of ELEVATOR; SpaceElev_Setup calls it with (0, 0, $40)
 ; ---------------------------------------------------------------------------
-sub_10B58E:
+Elevator_Init:
 	link.w	a6,#$0
 	movem.l	d7/a4,-(a7)
 	move.w	$12(a6),d7

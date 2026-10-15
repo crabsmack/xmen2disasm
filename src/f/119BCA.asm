@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_119BCA	[link-after-rts]
+; Synchronizer_GatherMembers - Synchronizer state: scan up to 10 spawn records per frame for the member class with this board index, spawn/activate them into the member list; at the end of the list go to RunMembers
+; In:  8(a6) = this
+; Out: none
+; Evidence: spawn records at $FFC924 (count $FFC928), class list $FFC900; vtable +$2E SpawnFromRec, +$3E Activate
 ; ---------------------------------------------------------------------------
-sub_119BCA:
+Synchronizer_GatherMembers:
 	link.w	a6,#$FFF4
 	movem.l	d3/d6-d7/a3-a4,-(a7)
 	movea.l	$8(a6),a3
@@ -24,7 +27,7 @@ loc_119BDC:
 	move.l	$A(a4),-$4(a6)
 	cmp.w	-$38D8(a5),d7
 	blt.s	loc_119C1A
-	lea.l	sub_119B66(pc),a0
+	lea.l	Synchronizer_RunMembers(pc),a0
 	move.l	a0,$2C(a3)
 	bra.w	loc_119CE2
 loc_119C1A:

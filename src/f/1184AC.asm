@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_1184AC	[jt 1467]
+; ICandy_Init - ICandy constructor: position, clear velocity/accel/animation, register with sub_1F9C92
+; In:  8(a6) = this  $C/$10(a6) = x, y (16.16)
+; Out: none
+; Evidence: method 2 of ICANDY; +8/+$C position, +$14/+$16 velocity, +$18/+$1A accel, handle at +$3E
 ; ---------------------------------------------------------------------------
-sub_1184AC:
+ICandy_Init:
 	link.w	a6,#$0
 	movem.l	d6-d7/a4,-(a7)
 	move.l	$10(a6),d6

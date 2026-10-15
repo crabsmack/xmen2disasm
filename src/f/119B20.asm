@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_119B20	[link-after-rts]
+; Synchronizer_DeactivateMembers - Synchronizer state: Deactivate every member, then WaitMembers
+; In:  8(a6) = this
+; Out: none
+; Evidence: member vtable +$46
 ; ---------------------------------------------------------------------------
-sub_119B20:
+Synchronizer_DeactivateMembers:
 	link.w	a6,#$0
 	movem.l	d7/a3-a4,-(a7)
 	movea.l	$8(a6),a3
@@ -24,7 +27,7 @@ loc_119B4A:
 	move.b	$36(a3),d0
 	cmp.w	d7,d0
 	bgt.s	loc_119B30
-	lea.l	sub_119A8C(pc),a0
+	lea.l	Synchronizer_WaitMembers(pc),a0
 	move.l	a0,$2C(a3)
 	movem.l	-$C(a6),d7/a3-a4
 	unlk	a6

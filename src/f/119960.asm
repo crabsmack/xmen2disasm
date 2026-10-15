@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_119960	[jt 1498]
+; Synchronizer_Run - Synchronizer per frame: call the state function at +$2C
+; In:  8(a6) = this
+; Out: none
+; Evidence: method 3 of SYNCHRONIZER; TAS 642 frames
 ; ---------------------------------------------------------------------------
-sub_119960:
+Synchronizer_Run:
 	link.w	a6,#$0
 	move.l	a4,-(a7)
 	movea.l	$8(a6),a4

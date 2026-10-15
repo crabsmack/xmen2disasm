@@ -1,13 +1,16 @@
 ; ---------------------------------------------------------------------------
-; sub_10BA48	[link-after-rts]
+; SpaceElev_CameraSetup - SpaceA1 camera init callback: set its update (+4) and apply (+$C) functions
+; In:  8(a6) = camera
+; Out: none
+; Evidence: passed to the CAMERA New by SpaceElev_Setup
 ; ---------------------------------------------------------------------------
-sub_10BA48:
+SpaceElev_CameraSetup:
 	link.w	a6,#$0
 	move.l	a4,-(a7)
 	movea.l	$8(a6),a4
-	lea.l	sub_10B840(pc),a0
+	lea.l	SpaceElev_CameraUpdate(pc),a0
 	move.l	a0,$4(a4)
-	lea.l	sub_10B7A0(pc),a0
+	lea.l	SpaceElev_CameraApply(pc),a0
 	move.l	a0,$C(a4)
 	movea.l	-$4(a6),a4
 	unlk	a6

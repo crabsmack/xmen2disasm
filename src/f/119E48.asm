@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_119E48	[jt 1509]
+; SyncActor_MemberOutsideWindow - SyncActor slot 27 (+$72): ACTOR's OutsideActiveWindow test for the Synchronizer
+; In:  8(a6) = this
+; Out: d0.b = 1 if outside
+; Evidence: calls parent +$42; caller Synchronizer_RunMembers
 ; ---------------------------------------------------------------------------
-sub_119E48:
+SyncActor_MemberOutsideWindow:
 	link.w	a6,#$0
 	move.l	$8(a6),-(a7)
 	lea.l	$2F72(a5),a0

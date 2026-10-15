@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_10B57C	[link-after-rts]
+; SpaceElev_EmptyHook - SpaceA1 elevator stage: empty hook
+; In:  none
+; Out: none
+; Evidence: body is link/unlk/rts; only caller SpaceElev_CallEmptyHook
 ; ---------------------------------------------------------------------------
-sub_10B57C:
+SpaceElev_EmptyHook:
 	link.w	a6,#$0
 	unlk	a6
 	rts

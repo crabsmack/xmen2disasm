@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_118550	[jt 1468]
+; ICandy_Update - ICandy per frame: destroy when outside the active window, else move (velocity + accel) and step the animation record at +$32
+; In:  8(a6) = this
+; Out: none
+; Evidence: method 3 of ICANDY; window bounds $FFCC3A-$FFCC40 vs camera $FFCD70/$FFCD72; calls vtable +$1A (ICandy_Destroy); runs twice per call at half rate (byte $FFC922)
 ; ---------------------------------------------------------------------------
-sub_118550:
+ICandy_Update:
 	link.w	a6,#$0
 	movem.l	d5-d7/a4,-(a7)
 	movea.l	$8(a6),a4

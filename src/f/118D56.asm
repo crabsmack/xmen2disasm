@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_118D56	[jt 1484]
+; GaussBullet_Nop0A - GaussBullet: empty method 1 (+$0A)
+; In:  none
+; Out: none
+; Evidence: method 1 of GAUSSBULLET; body is link/unlk/rts
 ; ---------------------------------------------------------------------------
-sub_118D56:
+GaussBullet_Nop0A:
 	link.w	a6,#$FFFC
 	movem.l	a3-a4,-(a7)
 	movea.l	$8(a6),a4

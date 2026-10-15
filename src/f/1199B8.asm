@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_1199B8	[link-after-rts]
+; Synchronizer_DespawnMembers - Synchronizer state: Despawn every member, reset its spawn record position from the placement entry, then destroy the synchronizer
+; In:  8(a6) = this
+; Out: none
+; Evidence: member vtable +$36, own vtable +$1E
 ; ---------------------------------------------------------------------------
-sub_1199B8:
+Synchronizer_DespawnMembers:
 	link.w	a6,#$FFFC
 	movem.l	d6-d7/a3-a4,-(a7)
 	clr.w	d7

@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_106EA8	[jt 1342]
+; Platform1_MemberOutsideWindow - Platform1 slot 27: is the path rectangle entirely outside the active window
+; In:  8(a6) = this
+; Out: d0.b = 1 if outside
+; Evidence: override of SyncActor slot 27; window $FFCC3A-$FFCC40
 ; ---------------------------------------------------------------------------
-sub_106EA8:
+Platform1_MemberOutsideWindow:
 	link.w	a6,#$FFFE
 	movem.l	d3-d7/a4,-(a7)
 	movea.l	$8(a6),a0
