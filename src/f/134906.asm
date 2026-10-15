@@ -1,5 +1,5 @@
 ; ---------------------------------------------------------------------------
-; FlyBrood_ClassInit - register g_FlyBroodSprDef from Art_FlyBroodSpr, except in the scene whose id is in byte -$3B5C ($FFC6A4) where FLYBROOD draws from raw art (static, class slot 22, +$5E; does not call the parent)
+; FlyBrood_ClassInit - register g_FlyBroodSprDef from Art_FlyBroodSpr, except when g_SceneIndex equals g_ScnUnused3B5C (a scene-id slot never filled, so scene 0), where FLYBROOD draws from raw art (static, class slot 22, +$5E; does not call the parent)
 ; In:  8(a6) = 0  $C(a6) = class index in the level class list
 ; Out: none
 ; Evidence: first calls the empty FlyBrood_EmptyStub; method 22 of class descriptor $134518 (name string "FLYBROOD", parent ACTOR)

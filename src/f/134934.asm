@@ -1,5 +1,5 @@
 ; ---------------------------------------------------------------------------
-; FlyBrood_Init - FLYBROOD constructor: parent Init, position from the placement entry, sprite (raw Art_FlyBroodNem in scene -$3B5C, else g_FlyBroodSprDef), flags |= $4080, state FlyBrood_ActRestartScript, hurt FlyBrood_StateHit, sprite priority from the live player, x limits +$92/+$94 = x -/+ 160, y floor +$98 = y-128, AI script by placement p8 (0-7; 4 enters from the nearer screen side and homes in), speed +$AA = p$A << 8 (default $200), +$A7 = (p$C != 0), animation (class slot 3, +$12)
+; FlyBrood_Init - FLYBROOD constructor: parent Init, position from the placement entry, sprite (raw Art_FlyBroodNem when g_SceneIndex = g_ScnUnused3B5C, else g_FlyBroodSprDef), flags |= $4080, state FlyBrood_ActRestartScript, hurt FlyBrood_StateHit, sprite priority from the live player, x limits +$92/+$94 = x -/+ 160, y floor +$98 = y-128, AI script by placement p8 (0-7; 4 enters from the nearer screen side and homes in), speed +$AA = p$A << 8 (default $200), +$A7 = (p$C != 0), animation (class slot 3, +$12)
 ; In:  8(a6) = this  $C/$10(a6) = x, y (16.16)  $14(a6) = placement entry (not null-checked)
 ; Out: none
 ; Evidence: method 3 of class descriptor $134518 (name string "FLYBROOD", parent ACTOR)
