@@ -1,7 +1,9 @@
 ; ---------------------------------------------------------------------------
-; loc_0991DC
+; XClone_LockArena_SetTheme - tail of XClone_LockArena: sub_1FE630($12, theme d7), sound $74, arena camera mode, lock flag, clone +$B0 = 1
+; In:  d7 = theme, a4 = clone
+; Evidence: common exit of the switch Sw_09907A
 ; ---------------------------------------------------------------------------
-loc_0991DC:
+XClone_LockArena_SetTheme:
 	ext.l	d7
 	move.l	d7,-(a7)
 	moveq	#$12,d0
@@ -14,7 +16,7 @@ loc_0991DC:
 	move.l	d0,-(a7)
 	jsr	$521A(a5)	; -> Snd_Play
 	move.l	g_Camera(a5),-(a7)
-	jsr	sub_099BBE(pc)
+	jsr	XClone_CamSetArenaMode(pc)
 	ori.w	#$1,-$3B08(a5)
 	clr.b	-$3894(a5)
 	move.b	#$1,$B0(a4)

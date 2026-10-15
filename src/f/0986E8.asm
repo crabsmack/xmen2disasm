@@ -1,7 +1,11 @@
 ; ---------------------------------------------------------------------------
-; sub_0986E8	[link-after-rts]
+; EvilNightcrawler_StateFall - EVILNIGHTCRAWLER state: fall using the Nightcrawler player's slot +$7E until reaching the floor, then land
+; In:  8(a6) = this
+; Out: d0
+; Evidence: calls NIGHTCRAWLER ($113496) slot +$7E while y < +$A6; next EvilNightcrawler_StateLand
+; Found: link-after-rts
 ; ---------------------------------------------------------------------------
-sub_0986E8:
+EvilNightcrawler_StateFall:
 	link.w	a6,#$0
 	movem.l	d7/a4,-(a7)
 	movea.l	$8(a6),a4
@@ -14,7 +18,7 @@ sub_0986E8:
 	lsl.l	#$8,d0
 	move.l	d0,$C(a4)
 	clr.w	$6C(a4)
-	lea.l	sub_098680(pc),a0
+	lea.l	EvilNightcrawler_StateLand(pc),a0
 	move.l	a0,$5C(a4)
 	moveq	#$8,d0
 	and.w	$4(a4),d0
@@ -27,7 +31,7 @@ loc_098720:
 	jsr	(a1)
 	addq.w	#$4,a7
 	clr.w	$6C(a4)
-	lea.l	sub_0986E8(pc),a0
+	lea.l	EvilNightcrawler_StateFall(pc),a0
 	move.l	a0,$5C(a4)
 	moveq	#$8,d0
 	and.w	$4(a4),d0

@@ -1,7 +1,11 @@
 ; ---------------------------------------------------------------------------
-; sub_099466	[link-after-rts]
+; XClone_TileHookReward - clone-maker tile hook [6]: after a clone is killed by its own character, flash a reward effect at the screen centre (once per $A0 frames)
+; In:  $10(a6) = object
+; Out: d0 = 0
+; Evidence: needs -$3B06 = 0 and bit (8 + Clone_CharTypeOf(obj)) of -$3B08 (set by XClone_TakeDamage); sets -$3B08 bit 2, -$3B06 = $A0, effect actor with $09A224; installed in $FFC720 by XClone_InstallTileHooks
+; Found: link-after-rts
 ; ---------------------------------------------------------------------------
-sub_099466:
+XClone_TileHookReward:
 	link.w	a6,#$0
 	movem.l	d6-d7/a4,-(a7)
 	clr.b	d7
@@ -11,7 +15,7 @@ sub_099466:
 	bra.w	loc_09951C
 loc_09947C:
 	move.l	$10(a6),-(a7)
-	jsr	sub_098CC8(pc)
+	jsr	Clone_CharTypeOf(pc)
 	move.w	d0,d6
 	move.w	-$3B08(a5),d0
 	ext.l	d0

@@ -1,7 +1,11 @@
 ; ---------------------------------------------------------------------------
-; sub_099BF0	[jt 795]
+; XClone_CamSetNormal - camera back to normal bounds ($60, $5A, $E0, $C0 via camera slot +$1E)
+; In:  8(a6) = camera
+; Out: none
+; Evidence: -$3892 := 1; jt 795; callers XClone_UnlockArena and others
+; Found: jt 795
 ; ---------------------------------------------------------------------------
-sub_099BF0:
+XClone_CamSetNormal:
 	link.w	a6,#$0
 	move.l	a4,-(a7)
 	movea.l	$8(a6),a4

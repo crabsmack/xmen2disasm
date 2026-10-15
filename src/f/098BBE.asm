@@ -1,7 +1,11 @@
 ; ---------------------------------------------------------------------------
-; sub_098BBE	[link-after-rts]
+; EvilWolverine_StateLeap - EVILWOLVERINE state: in the leap until the animation ends on the floor, then stop and run the next step
+; In:  8(a6) = this
+; Out: d0
+; Evidence: +$44 = 0 and y >= +$A6
+; Found: link-after-rts
 ; ---------------------------------------------------------------------------
-sub_098BBE:
+EvilWolverine_StateLeap:
 	link.w	a6,#$0
 	move.l	a4,-(a7)
 	movea.l	$8(a6),a4
@@ -14,7 +18,7 @@ sub_098BBE:
 	ble.s	loc_098BF0
 loc_098BDC:
 	clr.w	$6C(a4)
-	lea.l	sub_098BBE(pc),a0
+	lea.l	EvilWolverine_StateLeap(pc),a0
 	move.l	a0,$5C(a4)
 	moveq	#$8,d0
 	and.w	$4(a4),d0

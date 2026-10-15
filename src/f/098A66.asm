@@ -1,7 +1,11 @@
 ; ---------------------------------------------------------------------------
-; sub_098A66	[jt 786]
+; EvilPsylocke_ActDash - EVILPSYLOCKE script action: dash (speed $760 with deceleration, sound $C0, Psylocke dash animation)
+; In:  8(a6) = this
+; Out: d0
+; Evidence: vx = +-$760, accel = -vx/32; animation $1B8E90 (Psylocke player data); next EvilPsylocke_StateDashEnd; jt 786
+; Found: jt 786
 ; ---------------------------------------------------------------------------
-sub_098A66:
+EvilPsylocke_ActDash:
 	link.w	a6,#$0
 	move.l	a4,-(a7)
 	movea.l	$8(a6),a4
@@ -28,7 +32,7 @@ loc_098A86:
 	jsr	$4E42(a5)	; -> Obj_SetAnim
 	lea.l	$10(a7),a7
 	move.w	#$FF,$6C(a4)
-	lea.l	sub_098A0A(pc),a0
+	lea.l	EvilPsylocke_StateDashEnd(pc),a0
 	move.l	a0,$5C(a4)
 	moveq	#$8,d0
 	and.w	$4(a4),d0

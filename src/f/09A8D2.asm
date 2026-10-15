@@ -10,7 +10,7 @@ loc_09A8DA:
 loc_09A8DE:
 	jmp	$17C2(a5)	; -> XClone_ActStopAnim46
 loc_09A8E2:
-	jmp	$18B2(a5)	; -> sub_098A66
+	jmp	$18B2(a5)	; -> EvilPsylocke_ActDash
 loc_09A8E6:
 	jmp	$16F2(a5)	; -> XClone_ActStop
 loc_09A8EA:

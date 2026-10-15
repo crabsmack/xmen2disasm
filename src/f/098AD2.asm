@@ -1,7 +1,11 @@
 ; ---------------------------------------------------------------------------
-; sub_098AD2	[jt 787]
+; EvilPsylocke_ActBallsPath - EVILPSYLOCKE script action: send the BIOBALLS child along path jt[$1BF2] (motion sub_11FEE4)
+; In:  8(a6) = this
+; Out: d0
+; Evidence: same as EvilGambit_ActBallsPath with another path; jt 787
+; Found: jt 787
 ; ---------------------------------------------------------------------------
-sub_098AD2:
+EvilPsylocke_ActBallsPath:
 	link.w	a6,#$0
 	movem.l	a3-a4,-(a7)
 	movea.l	$8(a6),a4

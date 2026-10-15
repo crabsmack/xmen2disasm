@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_099C22	[link-after-rts]
+; XClone_SegHookArenaLocked - floor-segment hook for type $19: solid only while a clone arena is locked (-$3B08 bit 0)
+; Out: d0 = -$3B08 & 1
+; Evidence: installed in g_SegTypeHooks[$19] by XClone_StartMakerMode; TAS 52808-57383
+; Found: link-after-rts
 ; ---------------------------------------------------------------------------
-sub_099C22:
+XClone_SegHookArenaLocked:
 	link.w	a6,#$0
 	moveq	#$1,d1
 	and.w	-$3B08(a5),d1

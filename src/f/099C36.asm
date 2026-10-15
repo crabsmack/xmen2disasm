@@ -1,7 +1,11 @@
 ; ---------------------------------------------------------------------------
-; sub_099C36	[link-after-rts]
+; XClone_SetBgPalette - load one of three background palettes into palette line 2 (1 = $09A148, 2 = $09A168, 3 = $09A188)
+; In:  8(a6) = word: palette number
+; Out: none
+; Evidence: Mem_Copy(g_PalBase+$40, pal, $20), g_PalBaseDirty := 1; 7 callers
+; Found: link-after-rts
 ; ---------------------------------------------------------------------------
-sub_099C36:
+XClone_SetBgPalette:
 	link.w	a6,#$0
 	move.l	a4,-(a7)
 	move.w	$A(a6),d0

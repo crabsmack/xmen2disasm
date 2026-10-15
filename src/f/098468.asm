@@ -1,7 +1,11 @@
 ; ---------------------------------------------------------------------------
-; sub_098468	[link-after-rts]
+; EvilMagneto_StateBlast - EVILMAGNETO state: fire a magnetic blast in direction +$BA (sound $83 if none could be made), play the blast animation
+; In:  8(a6) = this
+; Out: d0
+; Evidence: sub_1595EE(x, y, dir, 0, 0, palette bit, 0) (Magneto player code), animation from sub_15926A(dir); next step after the animation
+; Found: link-after-rts
 ; ---------------------------------------------------------------------------
-sub_098468:
+EvilMagneto_StateBlast:
 	link.w	a6,#$0
 	movem.l	a3-a4,-(a7)
 	movea.l	$8(a6),a4

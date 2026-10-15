@@ -1,7 +1,11 @@
 ; ---------------------------------------------------------------------------
-; sub_09874E	[link-after-rts]
+; EvilNightcrawler_StateAppear - EVILNIGHTCRAWLER state: after reappearing, fall (gravity $C0) if in the air, else stand and run the next step
+; In:  8(a6) = this
+; Out: d0
+; Evidence: next EvilNightcrawler_StateFall or the next step
+; Found: link-after-rts
 ; ---------------------------------------------------------------------------
-sub_09874E:
+EvilNightcrawler_StateAppear:
 	link.w	a6,#$0
 	movem.l	d7/a4,-(a7)
 	movea.l	$8(a6),a4
@@ -13,7 +17,7 @@ sub_09874E:
 	moveq	#$0,d0
 	move.l	d0,$44(a4)
 	clr.w	$6C(a4)
-	lea.l	sub_0986E8(pc),a0
+	lea.l	EvilNightcrawler_StateFall(pc),a0
 	move.l	a0,$5C(a4)
 	moveq	#$8,d0
 	and.w	$4(a4),d0

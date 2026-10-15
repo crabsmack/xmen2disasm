@@ -1,7 +1,11 @@
 ; ---------------------------------------------------------------------------
-; sub_0988F6	[jt 783]
+; EvilNightcrawler_ActTeleport - EVILNIGHTCRAWLER script action: teleport - target the other player (or the only one), vanish with animation jt[$46A2]
+; In:  8(a6) = this
+; Out: d0
+; Evidence: target position into +$BA/+$BC; next EvilNightcrawler_StateTeleportOut; jt 783
+; Found: jt 783
 ; ---------------------------------------------------------------------------
-sub_0988F6:
+EvilNightcrawler_ActTeleport:
 	link.w	a6,#$0
 	movem.l	a3-a4,-(a7)
 	movea.l	$8(a6),a4
@@ -45,7 +49,7 @@ loc_09894E:
 	jsr	$4E42(a5)	; -> Obj_SetAnim
 	addq.w	#$8,a7
 	move.w	#$FF,$6C(a4)
-	lea.l	sub_098830(pc),a0
+	lea.l	EvilNightcrawler_StateTeleportOut(pc),a0
 	move.l	a0,$5C(a4)
 	moveq	#$8,d0
 	and.w	$4(a4),d0

@@ -1,7 +1,11 @@
 ; ---------------------------------------------------------------------------
-; sub_09989E	[link-after-rts]
+; XClone_MakerBufSize - size of the clone-maker buffer: EVILBEAM GetSize, at least $54
+; In:  none
+; Out: d0.w
+; Evidence: Tbl_EvilBeam_vtable slot +$06; callers XClone_StartMakerMode and XClone_UnlockArena
+; Found: link-after-rts
 ; ---------------------------------------------------------------------------
-sub_09989E:
+XClone_MakerBufSize:
 	link.w	a6,#$0
 	movem.l	d3/d6-d7,-(a7)
 	clr.w	d6

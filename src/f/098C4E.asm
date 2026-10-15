@@ -1,7 +1,11 @@
 ; ---------------------------------------------------------------------------
-; sub_098C4E	[jt 790]
+; EvilWolverine_ActLeap - EVILWOLVERINE script action: leap (vy -$300, gravity $3F, vx +-$396, sound $88)
+; In:  8(a6) = this
+; Out: d0
+; Evidence: sub_1F6530, animation jt[$45A2]; next EvilWolverine_StateLeap; jt 790
+; Found: jt 790
 ; ---------------------------------------------------------------------------
-sub_098C4E:
+EvilWolverine_ActLeap:
 	link.w	a6,#$0
 	move.l	a4,-(a7)
 	movea.l	$8(a6),a4
@@ -30,7 +34,7 @@ loc_098C86:
 	jsr	$4E42(a5)	; -> Obj_SetAnim
 	lea.l	$10(a7),a7
 	clr.w	$6C(a4)
-	lea.l	sub_098BBE(pc),a0
+	lea.l	EvilWolverine_StateLeap(pc),a0
 	move.l	a0,$5C(a4)
 	moveq	#$8,d0
 	and.w	$4(a4),d0

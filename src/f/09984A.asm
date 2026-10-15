@@ -1,7 +1,11 @@
 ; ---------------------------------------------------------------------------
-; sub_09984A	[link-after-rts]
+; XClone_FrameHook - scene hook in clone-maker mode: palette flicker (CloneA2_FlickerUpdate) and the reward timer -$3B06
+; In:  none
+; Out: none
+; Evidence: installed by XClone_StartMakerMode; TAS 52808-57465 every frame
+; Found: link-after-rts
 ; ---------------------------------------------------------------------------
-sub_09984A:
+XClone_FrameHook:
 	link.w	a6,#$0
 	move.l	g_FrameCounter(a5),d0
 	addq.l	#$1,g_FrameCounter(a5)

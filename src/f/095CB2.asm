@@ -2,7 +2,7 @@
 ; XClone_StateWaitPlayers - XCLONE first state: wait until every live player is inside the clone's arena, then start the entrance
 ; In:  8(a6) = this
 ; Out: d0
-; Evidence: player box centres within [+$A0+$40, +$A2-$40] x [+$A4+$18, +$A6-$18]; then sub_09907A(this) and XClone_StateDropPod; +$5C/+$64 from XClone_Init; TAS 53043-57262
+; Evidence: player box centres within [+$A0+$40, +$A2-$40] x [+$A4+$18, +$A6-$18]; then XClone_LockArena(this) and XClone_StateDropPod; +$5C/+$64 from XClone_Init; TAS 53043-57262
 ; Found: link-after-rts
 ; ---------------------------------------------------------------------------
 XClone_StateWaitPlayers:
@@ -94,7 +94,7 @@ loc_095DA0:
 	tst.b	d5
 	beq.s	loc_095DC0
 	move.l	a4,-(a7)
-	jsr	sub_09907A(pc)
+	jsr	XClone_LockArena(pc)
 	addq.w	#$4,a7
 	clr.w	$6C(a4)
 	lea.l	XClone_StateDropPod(pc),a0

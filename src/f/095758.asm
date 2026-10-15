@@ -1,6 +1,6 @@
 ; ---------------------------------------------------------------------------
 ; XClone_TakeDamage - vtable +$26: +$B8 += 60, parent TakeDamage; if the hit kills it and the attacker is the same character, set bit (8+type) in -$3B08; spark effect and sound $D8 at the hit point; hurt frame from the clone record
-; Evidence: sub_098CC8 on both; sub_13F58A(x, y, -$3B1C, size 6..16) + Snd $D8; SetFrame(record +$AC byte $28); TAS 53176-57449
+; Evidence: Clone_CharTypeOf on both; sub_13F58A(x, y, -$3B1C, size 6..16) + Snd $D8; SetFrame(record +$AC byte $28); TAS 53176-57449
 ; ---------------------------------------------------------------------------
 XClone_TakeDamage:
 	link.w	a6,#$FFFE
@@ -12,7 +12,7 @@ XClone_TakeDamage:
 	movea.l	$8(a6),a4
 	move.w	$A6(a4),-$2(a6)
 	move.l	a4,-(a7)
-	jsr	sub_098CC8(pc)
+	jsr	Clone_CharTypeOf(pc)
 	move.w	d0,d7
 	addi.b	#$3C,$B8(a4)
 	ext.l	d5
@@ -41,7 +41,7 @@ XClone_TakeDamage:
 	bgt.s	loc_0957E0
 loc_0957C8:
 	move.l	a3,-(a7)
-	jsr	sub_098CC8(pc)
+	jsr	Clone_CharTypeOf(pc)
 	cmp.w	d7,d0
 	addq.w	#$4,a7
 	bne.s	loc_0957E0

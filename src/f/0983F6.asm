@@ -30,7 +30,7 @@ EvilMagneto_Init:
 	jsr	$3ED2(a5)	; -> sub_15A6DE
 	moveq	#$2,d0
 	move.l	d0,-(a7)
-	jsr	sub_099C36(pc)
+	jsr	XClone_SetBgPalette(pc)
 	move.w	#$FFFF,$BA(a4)
 	movea.l	-$4(a6),a4
 	unlk	a6

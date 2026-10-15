@@ -1,6 +1,6 @@
 ; ---------------------------------------------------------------------------
 ; XClone_Kill - vtable +$52: kill the child, count the clone (-$3C40, not for type 4 Magneto), end the clone wave after 6
-; Evidence: sub_098CC8(this) != 4 -> -$3C40 += 1; +$B0 set -> sub_0993DC; -$3C40 > 5 -> sub_0993C0; then BIONPC Kill; TAS 52535-56844
+; Evidence: Clone_CharTypeOf(this) != 4 -> -$3C40 += 1; +$B0 set -> XClone_UnlockArena; -$3C40 > 5 -> XClone_EndWave; then BIONPC Kill; TAS 52535-56844
 ; ---------------------------------------------------------------------------
 XClone_Kill:
 	link.w	a6,#$0
@@ -18,7 +18,7 @@ XClone_Kill:
 	addq.w	#$4,a7
 loc_095534:
 	move.l	a4,-(a7)
-	jsr	sub_098CC8(pc)
+	jsr	Clone_CharTypeOf(pc)
 	move.w	d0,d7
 	cmpi.w	#$4,d7
 	addq.w	#$4,a7
@@ -29,13 +29,13 @@ loc_09554C:
 	tst.b	$B0(a4)
 	beq.s	loc_09555A
 	move.l	a4,-(a7)
-	jsr	sub_0993DC(pc)
+	jsr	XClone_UnlockArena(pc)
 	addq.w	#$4,a7
 loc_09555A:
 	moveq	#$6,d0
 	cmp.w	-$3C40(a5),d0
 	bgt.s	loc_095566
-	jsr	sub_0993C0(pc)
+	jsr	XClone_EndWave(pc)
 loc_095566:
 	move.l	a4,-(a7)
 	lea.l	$1902(a5),a0

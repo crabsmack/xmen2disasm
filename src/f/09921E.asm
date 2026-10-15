@@ -1,7 +1,11 @@
 ; ---------------------------------------------------------------------------
-; sub_09921E	[link-after-rts]
+; XClone_FrameHookCollapse - scene hook after the last clone: random falling debris and explosions around the camera with screen shakes
+; In:  none
+; Out: none
+; Evidence: installed by XClone_EndWave; random timers -$3B38/-$3B36 (sub_1600AA); plain ACTOR + sub_13EFA0(jt[$1C1A]) near the top of the view, g_CamShake := jt[$1C2A]; sub_13F58A(..., 10) explosions
+; Found: link-after-rts
 ; ---------------------------------------------------------------------------
-sub_09921E:
+XClone_FrameHookCollapse:
 	link.w	a6,#$FFF0
 	movem.l	d5-d7/a4,-(a7)
 	tst.b	-$38DE(a5)

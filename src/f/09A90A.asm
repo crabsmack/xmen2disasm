@@ -4,7 +4,7 @@
 loc_09A90A:
 	jmp	$1742(a5)	; -> XClone_ActBecomeBalls
 loc_09A90E:
-	jmp	$18BA(a5)	; -> sub_098AD2
+	jmp	$18BA(a5)	; -> EvilPsylocke_ActBallsPath
 loc_09A912:
 	jmp	$1722(a5)	; -> XClone_ActWait60
 loc_09A916:

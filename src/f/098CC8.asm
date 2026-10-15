@@ -1,7 +1,11 @@
 ; ---------------------------------------------------------------------------
-; sub_098CC8	[link-after-rts]
+; Clone_CharTypeOf - character type of an object: 1 Beast, 2 Cyclops, 3 Gambit, 4 Magneto, 5 Nightcrawler, 6 Psylocke, 7 Wolverine (player class or its evil clone), else 0
+; In:  8(a6) = object
+; Out: d0.w = type
+; Evidence: compares the vtable with the player classes ($11339A, $11398E, $113894, $11379A, $113496, $11359A, $11369A) and Tbl_Evil*_vtable; 6 callers
+; Found: link-after-rts
 ; ---------------------------------------------------------------------------
-sub_098CC8:
+Clone_CharTypeOf:
 	link.w	a6,#$0
 	movem.l	d7/a4,-(a7)
 	movea.l	$8(a6),a4

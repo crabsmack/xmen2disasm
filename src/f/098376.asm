@@ -1,7 +1,11 @@
 ; ---------------------------------------------------------------------------
-; sub_098376	[jt 777]
+; EvilGambit_ActBallsPath - EVILGAMBIT script action: send the BIOBALLS child along path $09A628 (motion sub_11FEE4)
+; In:  8(a6) = this
+; Out: d0
+; Evidence: child +$9A = $09A628, +$A2 = sub_11FEE4, +$A6 = 0; next step; jt 777 (after EvilGambit_Init)
+; Found: jt 777
 ; ---------------------------------------------------------------------------
-sub_098376:
+EvilGambit_ActBallsPath:
 	link.w	a6,#$0
 	movem.l	a3-a4,-(a7)
 	movea.l	$8(a6),a4

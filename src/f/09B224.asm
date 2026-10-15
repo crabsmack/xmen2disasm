@@ -177,7 +177,7 @@ loc_09B3BC:
 	movea.l	g_Camera(a5),a0
 	clr.w	$5C(a0)
 	move.l	g_Camera(a5),-(a7)
-	jsr	$18FA(a5)	; -> sub_099BF0
+	jsr	$18FA(a5)	; -> XClone_CamSetNormal
 	ori.w	#$80,-$3B0C(a5)
 	jsr	$3912(a5)	; -> sub_138968
 	addq.w	#$4,a7

@@ -1,7 +1,11 @@
 ; ---------------------------------------------------------------------------
-; sub_098680	[link-after-rts]
+; EvilNightcrawler_StateLand - EVILNIGHTCRAWLER state: landing pose (move-set +$46), next step after 6 frames
+; In:  8(a6) = this
+; Out: none
+; Evidence: end of the teleport sequence
+; Found: link-after-rts
 ; ---------------------------------------------------------------------------
-sub_098680:
+EvilNightcrawler_StateLand:
 	link.w	a6,#$0
 	move.l	a4,-(a7)
 	movea.l	$8(a6),a4

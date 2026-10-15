@@ -180,6 +180,19 @@ _(module → functions, globals, data; add as you learn them)_
   (`sub_088730`), SavageA2 Perimeter_1 (`sub_0AD91A`), SavageA3 Perimeter_2 (`sub_0B0538`),
   SavageA4 Chamber (`sub_0B65C6`), SavageC1 Jungle_1 (`sub_0C11CE`), SavageB1 Jungle_2
   (`sub_0C130A`), SentinelsD1 Exterior_1 (`sub_0DC4AA`).
+- **AI scripts (w080 range)**: SMALLBROOD, BROODBOSS, EVILMAKER, XCLONE... keep `{word count;
+  jmp d(a5) thunks}` scripts; every action ends with the same "next step" idiom (index += 1, wrap,
+  `+$5C` := script + 2 + 4*index, else `+$64`). Names: `<Class>_Act*` = script action (a jt entry),
+  `<Class>_State*` = internal state put in `+$5C`, `<Class>_ScrStep*` = the jmp thunks.
+- **Evil clones** (`XCLONE` and `EVIL*`, final Clone stages): `Clone_CharTypeOf` maps a player
+  class or its clone to 1 Beast, 2 Cyclops, 3 Gambit, 4 Magneto, 5 Nightcrawler, 6 Psylocke,
+  7 Wolverine (`XClone_SpawnByType` uses the same numbers). A clone waits for the players to
+  enter its arena (`XClone_LockArena`: camera clamp, arena walls = segment type $19 solid),
+  emerges from a pod (BIOBALLS object), runs its script; `+$AC` = the character's move-set record
+  (word offsets to animations). Killing a clone with the same character sets bit (8+type) of
+  `-$3B08`; `XClone_TileHookReward`/`XClone_TileHookOpenWall` then flash and blast open a wall
+  (map columns $5A-$5B) unless a player is Magneto. 6 kills (`-$3C40`) end the wave
+  (`XClone_EndWave`: collapse effects, `sub_1F944E(600)`).
 - **Players are confirmed** (w000): `g_Player1` = `$FFEAA8` (+$9D = 0), `g_Player2` = `$FFE9B8`
   (+$9D = 1; vtable 0 until P2 joins at TAS frame 49140). Objects are $F0 bytes. Player
   vtable = character class: jt `$2B9A` Beast, `$2BA2` Nightcrawler, `$2BAA` Psylocke, `$2BB2`

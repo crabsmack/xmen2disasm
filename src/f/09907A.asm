@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_09907A
+; XClone_LockArena - lock the arena around a clone: players flagged, camera clamped to the arena (XClone_CamSetArenaMode), clone theme by type
+; In:  8(a6) = clone
+; Out: none
+; Evidence: +6 |= $1000; players +$90 |= $200000; -$3B30 := clone if none; camera limits -$3B0A..-$3B10 from the arena and the current limits; g_Camera +$1C := XClone_CamSetArenaMode; sub_1FE5F2; switch on Clone_CharTypeOf -> sub_1FE630($12, n); sound $74; -$3B08 |= 1 (arena locked, XClone_SegHookArenaLocked); clone +$B0 = 1; caller XClone_StateWaitPlayers; TAS 53059-57262
 ; ---------------------------------------------------------------------------
-sub_09907A:
+XClone_LockArena:
 	link.w	a6,#$0
 	movem.l	d3-d7/a4,-(a7)
 	movea.l	$8(a6),a4
@@ -97,18 +100,18 @@ loc_099170:
 	move.w	d5,-$3B0C(a5)
 	move.w	d6,-$3B0E(a5)
 	move.w	d7,-$3B10(a5)
-	lea.l	sub_099BBE(pc),a0
+	lea.l	XClone_CamSetArenaMode(pc),a0
 	movea.l	g_Camera(a5),a1
 	move.l	a0,$1C(a1)
 	move.b	#$1,-$3892(a5)
 	jsr	$5242(a5)	; -> Snd_StopAll
 	move.l	a4,-(a7)
-	jsr	sub_098CC8(pc)
+	jsr	Clone_CharTypeOf(pc)
 	subq.w	#$1,d0
 	addq.w	#$4,a7
-	bmi.s	loc_0991DC
+	bmi.s	XClone_LockArena_SetTheme
 	cmpi.w	#$6,d0
-	bgt.s	loc_0991DC
+	bgt.s	XClone_LockArena_SetTheme
 	add.w	d0,d0
 	move.w	Sw_09907A(pc,d0.w),d0
 	jmp	Sw_09907A-2(pc,d0.w)

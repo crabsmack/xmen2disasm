@@ -1,7 +1,11 @@
 ; ---------------------------------------------------------------------------
-; sub_0998E6	[link-after-rts]
+; XClone_CamArenaUpdate - camera update while a clone arena is locked: follow the midpoint of the players and the clone, clamped to the arena
+; In:  8(a6) = camera
+; Out: d0
+; Evidence: installed as camera +8 by XClone_CamSetArenaMode; uses the dead zones +$3C/+$3E/+$40/+$42 and the limits -$3B0A..-$3B10 (+-6); TAS 53060-57465
+; Found: link-after-rts
 ; ---------------------------------------------------------------------------
-sub_0998E6:
+XClone_CamArenaUpdate:
 	link.w	a6,#$FFEC
 	movem.l	d3-d7/a4,-(a7)
 	movea.l	$8(a6),a4

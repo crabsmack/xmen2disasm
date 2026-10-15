@@ -1,7 +1,11 @@
 ; ---------------------------------------------------------------------------
-; sub_098A0A	[link-after-rts]
+; EvilPsylocke_StateDashEnd - EVILPSYLOCKE state: dash finished - stop, next step
+; In:  8(a6) = this
+; Out: none
+; Evidence: after EvilPsylocke_ActDash's animation
+; Found: link-after-rts
 ; ---------------------------------------------------------------------------
-sub_098A0A:
+EvilPsylocke_StateDashEnd:
 	link.w	a6,#$0
 	move.l	a4,-(a7)
 	movea.l	$8(a6),a4

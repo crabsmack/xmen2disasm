@@ -1,7 +1,9 @@
 ; ---------------------------------------------------------------------------
-; loc_098DF8	[static: switch-table case target (tools/switches.py: table after `move.w T(pc,dN.w),dN / jmp T-2(pc,dN.w)`, size from the cmpi bound)]
+; XClone_SpawnByType_Case1 - XClone_SpawnByType switch case 1: create an EVILBEAST
+; Evidence: first target of the switch table Sw_098DA8
+; Found: static: switch-table case target (tools/switches.py: table after `move.w T(pc,dN.w),dN / jmp T-2(pc,dN.w)`, size from the cmpi bound)
 ; ---------------------------------------------------------------------------
-loc_098DF8:
+XClone_SpawnByType_Case1:
 	move.l	a4,-(a7)
 	move.w	$4(a4),d0
 	ext.l	d0
@@ -21,7 +23,7 @@ loc_098DF8:
 	jsr	(a1)
 	movea.l	d0,a3
 	lea.l	$14(a7),a7
-	bra.w	loc_098F86
+	bra.w	XClone_SpawnByType_Done
 loc_098E32:
 	move.l	a4,-(a7)
 	move.w	$4(a4),d0
@@ -42,7 +44,7 @@ loc_098E32:
 	jsr	(a1)
 	movea.l	d0,a3
 	lea.l	$14(a7),a7
-	bra.w	loc_098F86
+	bra.w	XClone_SpawnByType_Done
 loc_098E6C:
 	move.l	a4,-(a7)
 	move.w	$4(a4),d0
@@ -63,7 +65,7 @@ loc_098E6C:
 	jsr	(a1)
 	movea.l	d0,a3
 	lea.l	$14(a7),a7
-	bra.w	loc_098F86
+	bra.w	XClone_SpawnByType_Done
 loc_098EA6:
 	move.l	a4,-(a7)
 	move.w	$4(a4),d0
@@ -84,7 +86,7 @@ loc_098EA6:
 	jsr	(a1)
 	movea.l	d0,a3
 	lea.l	$14(a7),a7
-	bra.w	loc_098F86
+	bra.w	XClone_SpawnByType_Done
 loc_098EE0:
 	move.l	a4,-(a7)
 	move.w	$4(a4),d0
@@ -105,7 +107,7 @@ loc_098EE0:
 	jsr	(a1)
 	movea.l	d0,a3
 	lea.l	$14(a7),a7
-	bra.s	loc_098F86
+	bra.s	XClone_SpawnByType_Done
 loc_098F18:
 	move.l	a4,-(a7)
 	move.w	$4(a4),d0
@@ -126,4 +128,4 @@ loc_098F18:
 	jsr	(a1)
 	movea.l	d0,a3
 	lea.l	$14(a7),a7
-	bra.s	loc_098F86
+	bra.s	XClone_SpawnByType_Done

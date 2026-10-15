@@ -1,7 +1,9 @@
 ; ---------------------------------------------------------------------------
-; loc_098F50	[runtime: executed in tas]
+; XClone_SpawnByType_Case7 - XClone_SpawnByType switch case 7: create an EVILWOLVERINE
+; Evidence: switch target
+; Found: runtime: executed in 1 run(s) (tas)
 ; ---------------------------------------------------------------------------
-loc_098F50:
+XClone_SpawnByType_Case7:
 	move.l	a4,-(a7)
 	move.w	$4(a4),d0
 	ext.l	d0

@@ -207,10 +207,10 @@
 088A92	; loc_088A92 - runtime: executed in tas
 088A96	; loc_088A96 - runtime: executed in tas
 094C26	; EvilMaker_ScrStepKill - runtime: executed in tas
-098F50	; loc_098F50 - runtime: executed in tas
-0991C2	; loc_0991C2 - runtime: executed in tas
+098F50	; XClone_SpawnByType_Case7 - runtime: executed in tas
+0991C2	; XClone_LockArena_Case1 - runtime: executed in tas
 0991C6	; loc_0991C6 - runtime: executed in tas
-0991CE	; loc_0991CE - runtime: executed in tas
+0991CE	; XClone_LockArena_Case3 - runtime: executed in tas
 0991D2	; loc_0991D2 - runtime: executed in tas
 0991D6	; loc_0991D6 - runtime: executed in tas
 0991DA	; loc_0991DA - runtime: executed in tas
@@ -760,13 +760,13 @@
 065D50	; loc_065D50 - static: switch-table case target (tools/switches.py: table after `move.w T(pc,dN.w),dN / jmp T-2(pc,dN.w)`, size from the cmpi bound)
 065D5C	; loc_065D5C - static: switch-table case target (tools/switches.py: table after `move.w T(pc,dN.w),dN / jmp T-2(pc,dN.w)`, size from the cmpi bound)
 065D68	; loc_065D68 - static: switch-table case target (tools/switches.py: table after `move.w T(pc,dN.w),dN / jmp T-2(pc,dN.w)`, size from the cmpi bound)
-098DF8	; loc_098DF8 - static: switch-table case target (tools/switches.py: table after `move.w T(pc,dN.w),dN / jmp T-2(pc,dN.w)`, size from the cmpi bound)
+098DF8	; XClone_SpawnByType_Case1 - static: switch-table case target (tools/switches.py: table after `move.w T(pc,dN.w),dN / jmp T-2(pc,dN.w)`, size from the cmpi bound)
 098E32	; loc_098E32 - static: switch-table case target (tools/switches.py: table after `move.w T(pc,dN.w),dN / jmp T-2(pc,dN.w)`, size from the cmpi bound)
 098E6C	; loc_098E6C - static: switch-table case target (tools/switches.py: table after `move.w T(pc,dN.w),dN / jmp T-2(pc,dN.w)`, size from the cmpi bound)
 098EA6	; loc_098EA6 - static: switch-table case target (tools/switches.py: table after `move.w T(pc,dN.w),dN / jmp T-2(pc,dN.w)`, size from the cmpi bound)
 098EE0	; loc_098EE0 - static: switch-table case target (tools/switches.py: table after `move.w T(pc,dN.w),dN / jmp T-2(pc,dN.w)`, size from the cmpi bound)
 098F18	; loc_098F18 - static: switch-table case target (tools/switches.py: table after `move.w T(pc,dN.w),dN / jmp T-2(pc,dN.w)`, size from the cmpi bound)
-0991CA	; loc_0991CA - static: switch-table case target (tools/switches.py: table after `move.w T(pc,dN.w),dN / jmp T-2(pc,dN.w)`, size from the cmpi bound)
+0991CA	; XClone_LockArena_Case4 - static: switch-table case target (tools/switches.py: table after `move.w T(pc,dN.w),dN / jmp T-2(pc,dN.w)`, size from the cmpi bound)
 0AB3B6	; loc_0AB3B6 - static: switch-table case target (tools/switches.py: table after `move.w T(pc,dN.w),dN / jmp T-2(pc,dN.w)`, size from the cmpi bound)
 0AB3C8	; loc_0AB3C8 - static: switch-table case target (tools/switches.py: table after `move.w T(pc,dN.w),dN / jmp T-2(pc,dN.w)`, size from the cmpi bound)
 0AB3DC	; loc_0AB3DC - static: switch-table case target (tools/switches.py: table after `move.w T(pc,dN.w),dN / jmp T-2(pc,dN.w)`, size from the cmpi bound)

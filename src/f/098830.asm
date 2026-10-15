@@ -1,7 +1,11 @@
 ; ---------------------------------------------------------------------------
-; sub_098830	[link-after-rts]
+; EvilNightcrawler_StateTeleportOut - EVILNIGHTCRAWLER state: invisible for (distance to the target)/8 frames, then reappear
+; In:  8(a6) = this
+; Out: d0
+; Evidence: frame $FF; +$6C = (|dx|+|dy|) >> 3; next EvilNightcrawler_StateTeleportIn
+; Found: link-after-rts
 ; ---------------------------------------------------------------------------
-sub_098830:
+EvilNightcrawler_StateTeleportOut:
 	link.w	a6,#$0
 	movem.l	d3/d5-d7/a4,-(a7)
 	movea.l	$8(a6),a4
@@ -67,15 +71,15 @@ loc_0988B8:
 	cmpi.w	#$FFFF,d6
 	addq.w	#$8,a7
 	bne.s	loc_0988DA
-	lea.l	sub_0987E2(pc),a0
+	lea.l	EvilNightcrawler_StateTeleportIn(pc),a0
 	move.l	a0,$5C(a4)
 	move.l	a4,-(a7)
-	jsr	sub_0987E2(pc)
+	jsr	EvilNightcrawler_StateTeleportIn(pc)
 	addq.w	#$4,a7
 	bra.s	loc_0988EC
 loc_0988DA:
 	move.w	d6,$6C(a4)
-	lea.l	sub_0987E2(pc),a0
+	lea.l	EvilNightcrawler_StateTeleportIn(pc),a0
 	move.l	a0,$5C(a4)
 	moveq	#$8,d0
 	and.w	$4(a4),d0

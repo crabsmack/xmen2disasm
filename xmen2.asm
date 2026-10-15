@@ -1641,8 +1641,8 @@ Tbl_EvilDrop_vtable:	; class descriptor of EVILDROP: word name offset $6E, paren
 	include "src/f/098CC8.asm"
 	include "src/f/098DA8.asm"
 Sw_098DA8:	; switch table of sub at $098DA8: 7 word offsets from Sw_098DA8-2
-	dc.w	loc_098DF8-(Sw_098DA8-2), loc_098E32-(Sw_098DA8-2), loc_098E6C-(Sw_098DA8-2), loc_098EA6-(Sw_098DA8-2)
-	dc.w	loc_098EE0-(Sw_098DA8-2), loc_098F18-(Sw_098DA8-2), loc_098F50-(Sw_098DA8-2)
+	dc.w	XClone_SpawnByType_Case1-(Sw_098DA8-2), loc_098E32-(Sw_098DA8-2), loc_098E6C-(Sw_098DA8-2), loc_098EA6-(Sw_098DA8-2)
+	dc.w	loc_098EE0-(Sw_098DA8-2), loc_098F18-(Sw_098DA8-2), XClone_SpawnByType_Case7-(Sw_098DA8-2)
 	include "src/f/098DF8.asm"
 	include "src/f/098F50.asm"
 	include "src/f/098F86.asm"
@@ -1653,7 +1653,7 @@ Str_Empty_099078:	; C string "" (used by XClone_StartMakerMode)
 	incrom	$099078,$2
 	include "src/f/09907A.asm"
 Sw_09907A:	; switch table of sub at $09907A: 7 word offsets from Sw_09907A-2
-	dc.w	loc_0991C2-(Sw_09907A-2), loc_0991D6-(Sw_09907A-2), loc_0991CE-(Sw_09907A-2), loc_0991CA-(Sw_09907A-2)
+	dc.w	XClone_LockArena_Case1-(Sw_09907A-2), loc_0991D6-(Sw_09907A-2), XClone_LockArena_Case3-(Sw_09907A-2), XClone_LockArena_Case4-(Sw_09907A-2)
 	dc.w	loc_0991C6-(Sw_09907A-2), loc_0991DA-(Sw_09907A-2), loc_0991D2-(Sw_09907A-2)
 	include "src/f/0991C2.asm"
 	include "src/f/0991CA.asm"

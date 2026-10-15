@@ -175,7 +175,7 @@ loc_088914:
 	bgt.s	loc_088914
 	clr.w	-$3B0C(a5)
 	clr.w	-$3B0E(a5)
-	jsr	CloneA5_CallSetup09980C(pc)
+	jsr	CloneA5_InitTileHooks(pc)
 	move.b	d0,-$35C8(a5)
 	jsr	CloneA5_InitCamera(pc)
 	lea.l	CloneA5_FrameHook(pc),a0

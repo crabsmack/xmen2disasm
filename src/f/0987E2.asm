@@ -1,7 +1,11 @@
 ; ---------------------------------------------------------------------------
-; sub_0987E2	[link-after-rts]
+; EvilNightcrawler_StateTeleportIn - EVILNIGHTCRAWLER state: reappear at the teleport target (+$BA/+$BC) with the arrival animation jt[$46B2]
+; In:  8(a6) = this
+; Out: d0
+; Evidence: next EvilNightcrawler_StateAppear
+; Found: link-after-rts
 ; ---------------------------------------------------------------------------
-sub_0987E2:
+EvilNightcrawler_StateTeleportIn:
 	link.w	a6,#$0
 	move.l	a4,-(a7)
 	movea.l	$8(a6),a4
@@ -19,7 +23,7 @@ sub_0987E2:
 	jsr	$4E42(a5)	; -> Obj_SetAnim
 	addq.w	#$8,a7
 	move.w	#$FF,$6C(a4)
-	lea.l	sub_09874E(pc),a0
+	lea.l	EvilNightcrawler_StateAppear(pc),a0
 	move.l	a0,$5C(a4)
 	moveq	#$8,d0
 	and.w	$4(a4),d0
