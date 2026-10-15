@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_15F1F8	[convert.py]
+; Map_StreamColumns - horizontal scrolling: draw the tile columns uncovered since the last frame for plane A and plane B
+; In:  none
+; Out: none
+; Evidence: drawn x $FFC736 toward camera x $FFC73E (Map_DrawColumnA), plane B $FFC732 toward $FFC73A (unless $FFC74C); wide-plane flags $FFEE10/$FFEE12 change the margin
 ; ---------------------------------------------------------------------------
-sub_15F1F8:
+Map_StreamColumns:
 	movem.l	d1-d7/a1-a4,-(a7)
 	movea.l	-$3A84(a5),a4
 	movea.l	-$3AA6(a5),a2
@@ -35,7 +38,7 @@ loc_15F246:
 	andi.w	#$3F,d7
 	tst.b	-$3AB2(a5)
 	bne.s	loc_15F25C
-	bsr.w	sub_15F0DC
+	bsr.w	Map_DrawColumnA
 loc_15F25C:
 	dbra	d0,loc_15F246
 	bra.s	loc_15F2BA
@@ -67,7 +70,7 @@ loc_15F296:
 loc_15F2A0:
 	tst.b	-$3AB2(a5)
 	bne.s	loc_15F2AA
-	bsr.w	sub_15F0DC
+	bsr.w	Map_DrawColumnA
 loc_15F2AA:
 	addq.w	#$8,-$3ACA(a5)
 	addq.w	#$1,d4
@@ -112,7 +115,7 @@ loc_15F314:
 	andi.w	#$3F,d7
 	tst.b	-$3AB2(a5)
 	bne.s	loc_15F32A
-	bsr.w	sub_15F16A
+	bsr.w	Map_DrawColumnB
 loc_15F32A:
 	dbra	d0,loc_15F314
 	bra.s	loc_15F376
@@ -137,7 +140,7 @@ loc_15F352:
 loc_15F35C:
 	tst.b	-$3AB2(a5)
 	bne.s	loc_15F366
-	bsr.w	sub_15F16A
+	bsr.w	Map_DrawColumnB
 loc_15F366:
 	addq.w	#$8,-$3ACE(a5)
 	addq.w	#$1,d4

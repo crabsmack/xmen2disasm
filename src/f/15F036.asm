@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_15F036
+; Map_PutColBlockB - column streaming helper for plane B
+; In:  as Map_PutColBlockA
+; Out: none
+; Evidence: command $40000000, attribute base $FFC794
 ; ---------------------------------------------------------------------------
-sub_15F036:
+Map_PutColBlockB:
 	movem.l	d0-d1/d5,-(a7)
 	cmpi.w	#$20,d6
 	blt.s	loc_15F05C

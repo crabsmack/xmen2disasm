@@ -2,7 +2,7 @@
 ; XNpc_StateDeathFlying - XNPC flung body: fly ballistically; explode on hitting a wall or falling below the landing line
 ; In:  8(a6) = this
 ; Out: d0
-; Evidence: sub_15CECC wall probe, vtable +$7E; TAS 915-57154
+; Evidence: Tile_TestAt wall probe, vtable +$7E; TAS 915-57154
 ; ---------------------------------------------------------------------------
 XNpc_StateDeathFlying:
 	link.w	a6,#$0
@@ -31,7 +31,7 @@ XNpc_StateDeathFlying:
 	move.l	d1,-(a7)
 	moveq	#$0,d1
 	move.l	d1,-(a7)
-	jsr	$3FC2(a5)	; -> sub_15CECC
+	jsr	$3FC2(a5)	; -> Tile_TestAt
 	tst.b	d0
 	lea.l	$18(a7),a7
 	beq.s	loc_1149DE
@@ -65,7 +65,7 @@ loc_1149DE:
 	move.l	d1,-(a7)
 	moveq	#$0,d1
 	move.l	d1,-(a7)
-	jsr	$3FC2(a5)	; -> sub_15CECC
+	jsr	$3FC2(a5)	; -> Tile_TestAt
 	tst.b	d0
 	lea.l	$18(a7),a7
 	beq.s	loc_114A32

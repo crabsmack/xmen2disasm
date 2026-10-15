@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_15FA7A	[jt 2084]
+; Intro_SegaLogoFlash - SEGA logo palette animation: sweep, flash and fade one palette line; a button skips the last phases
+; In:  8(a6) = callback run each frame, $C(a6) = word palette line
+; Out: none
+; Evidence: g_VBlankHook = Pal_Update while running; 8-colour windows from Tbl_SegaLogoFlash1-4 into g_PalBase line, g_PalBaseDirty; Intro_WaitFrame between steps; g_Pad1Raw|g_Pad2Raw & $F0 skips; only caller Cerebro_PlayIntro; TAS frame 1482 (SEGA logo)
 ; ---------------------------------------------------------------------------
-sub_15FA7A:
+Intro_SegaLogoFlash:
 	link.w	a6,#$FFFC
 	movem.l	d6-d7/a2-a4,-(a7)
 	move.l	g_VBlankHook(a5),-$4(a6)
@@ -18,7 +21,7 @@ sub_15FA7A:
 loc_15FAA6:
 	move.l	d0,(a0)+
 	dbra	d1,loc_15FAA6
-	lea.l	$15FBBE(pc),a3
+	lea.l	Tbl_SegaLogoFlash1(pc),a3
 loc_15FAB0:
 	movea.l	a3,a0
 	lea.l	$4(a4),a1
@@ -32,16 +35,16 @@ loc_15FAC2:
 	st.b	g_PalBaseDirty(a5)
 	moveq	#$3,d7
 loc_15FAC8:
-	bsr.w	sub_15FBAE
+	bsr.w	Intro_WaitFrame
 	dbra	d7,loc_15FAC8
 	addq.w	#$2,a3
 	tst.w	(a3)
 	bpl.s	loc_15FAB0
 	moveq	#$A,d7
 loc_15FAD8:
-	bsr.w	sub_15FBAE
+	bsr.w	Intro_WaitFrame
 	dbra	d7,loc_15FAD8
-	lea.l	$15FBEC(pc),a3
+	lea.l	Tbl_SegaLogoFlash2(pc),a3
 loc_15FAE4:
 	lea.l	$4(a4),a1
 	moveq	#$8,d6
@@ -56,15 +59,15 @@ loc_15FAFE:
 	st.b	g_PalBaseDirty(a5)
 	moveq	#$1,d7
 loc_15FB04:
-	bsr.w	sub_15FBAE
+	bsr.w	Intro_WaitFrame
 	dbra	d7,loc_15FB04
 	tst.w	(a3)
 	bpl.s	loc_15FAE4
 	moveq	#$6,d7
 loc_15FB12:
-	bsr.w	sub_15FBAE
+	bsr.w	Intro_WaitFrame
 	dbra	d7,loc_15FB12
-	lea.l	$15FC0A(pc),a3
+	lea.l	Tbl_SegaLogoFlash3(pc),a3
 loc_15FB1E:
 	movea.l	a3,a0
 	lea.l	$4(a4),a1
@@ -78,7 +81,7 @@ loc_15FB30:
 	st.b	g_PalBaseDirty(a5)
 	moveq	#$4,d7
 loc_15FB36:
-	bsr.w	sub_15FBAE
+	bsr.w	Intro_WaitFrame
 	move.w	g_Pad1Raw(a5),d0
 	or.w	g_Pad2Raw(a5),d0
 	andi.w	#$F0,d0
@@ -87,7 +90,7 @@ loc_15FB36:
 	addq.w	#$2,a3
 	tst.w	(a3)
 	bpl.s	loc_15FB1E
-	lea.l	$15FC26(pc),a3
+	lea.l	Tbl_SegaLogoFlash4(pc),a3
 loc_15FB56:
 	movea.l	a3,a0
 	lea.l	$4(a4),a1
@@ -101,7 +104,7 @@ loc_15FB68:
 	st.b	g_PalBaseDirty(a5)
 	moveq	#$4,d7
 loc_15FB6E:
-	bsr.w	sub_15FBAE
+	bsr.w	Intro_WaitFrame
 	move.w	g_Pad1Raw(a5),d0
 	or.w	g_Pad2Raw(a5),d0
 	andi.w	#$F0,d0
@@ -118,7 +121,7 @@ loc_15FB90:
 	move.l	d0,(a0)+
 	dbra	d1,loc_15FB90
 	st.b	g_PalBaseDirty(a5)
-	bsr.w	sub_15FBAE
+	bsr.w	Intro_WaitFrame
 	move.l	-$4(a6),g_VBlankHook(a5)
 	movem.l	-$18(a6),d6-d7/a2-a4
 	unlk	a6

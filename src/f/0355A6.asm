@@ -113,7 +113,7 @@ loc_0356A2:
 	move.l	d7,-(a7)
 	ext.l	d6
 	move.l	d6,-(a7)
-	jsr	$3FDA(a5)	; -> sub_15D7F8
+	jsr	$3FDA(a5)	; -> Map_SetBlockFG
 	lea.l	$10(a7),a7
 	move.l	d7,d0
 	addq.l	#$1,d7

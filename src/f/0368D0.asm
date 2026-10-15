@@ -66,7 +66,7 @@ loc_03695E:
 	move.l	d7,-(a7)
 	ext.l	d4
 	move.l	d4,-(a7)
-	jsr	$3FDA(a5)	; -> sub_15D7F8
+	jsr	$3FDA(a5)	; -> Map_SetBlockFG
 	move.l	d6,-(a7)
 	moveq	#$0,d0
 	move.l	d0,-(a7)

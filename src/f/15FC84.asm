@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_15FC84
+; Bitmap_Test - test bit n of a bitmap
+; In:  8(a6) = bitmap, $C(a6) = word n
+; Out: d0 = byte $FF set / 0
+; Evidence: byte n>>3 & 1 << (n & 7)
 ; ---------------------------------------------------------------------------
-sub_15FC84:
+Bitmap_Test:
 	movea.l	$4(a7),a0
 	move.w	$A(a7),d1
 	moveq	#$7,d0

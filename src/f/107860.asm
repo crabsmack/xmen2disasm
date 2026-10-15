@@ -2,7 +2,7 @@
 ; Switch_FindAndToggle - switch search timer: check 10 placements per frame; for the SWITCH at the tile toggle its BBoard flag $200, play sounds, flip the tile, then debounce
 ; In:  8(a6) = search state {ptr, end, x, y, frame}
 ; Out: none
-; Evidence: Tbl_Switch_vtable via g_ClassList; g_BBoard +6 + idx*2; Snd_Play $38 + $10 (on) / $16 (off); sub_15D7F8 tile +/-1; next Switch_DebounceWait
+; Evidence: Tbl_Switch_vtable via g_ClassList; g_BBoard +6 + idx*2; Snd_Play $38 + $10 (on) / $16 (off); Map_SetBlockFG tile +/-1; next Switch_DebounceWait
 ; ---------------------------------------------------------------------------
 Switch_FindAndToggle:
 	link.w	a6,#$FFFA
@@ -96,7 +96,7 @@ loc_107898:
 	move.l	d7,-(a7)
 	ext.l	d6
 	move.l	d6,-(a7)
-	jsr	$3FDA(a5)	; -> sub_15D7F8
+	jsr	$3FDA(a5)	; -> Map_SetBlockFG
 	lea.l	$18(a7),a7
 	bra.s	loc_1079B2
 loc_10796C:
@@ -123,7 +123,7 @@ loc_10796C:
 	move.l	d7,-(a7)
 	ext.l	d6
 	move.l	d6,-(a7)
-	jsr	$3FDA(a5)	; -> sub_15D7F8
+	jsr	$3FDA(a5)	; -> Map_SetBlockFG
 	lea.l	$18(a7),a7
 loc_1079B2:
 	move.w	-$35A0(a5),$C(a3)

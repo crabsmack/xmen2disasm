@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_15CECC	[jt 2036]
+; Tile_TestAt - test the map block at a point: hooked tile type in a mask (optionally running its hook) or the solid bit
+; In:  8(a6) = object, $C/$10(a6) = words x/y, $14(a6) = byte FG map, $18(a6) = word mask ($3800 hook types, $4000 solid), $1C(a6) = byte run hook
+; Out: d0 = 1 hit (also outside the map), 0 free
+; Evidence: cell = (x>>5, y>>5) in the FG ($FFC77C) or BG ($FFC778) map; hook table $FFC708; used by projectiles (MagneticGlob_Update, Magneto_SpawnShot, Beast_ShockwaveStep)
 ; ---------------------------------------------------------------------------
-sub_15CECC:
+Tile_TestAt:
 	link.w	a6,#$FFFA
 	movem.l	d4-d7/a3-a4,-(a7)
 	move.b	$17(a6),d6

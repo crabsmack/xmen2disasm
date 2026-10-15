@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_15CB34	[jt 2035]
+; Tile_RunHooksAtPoints - run the map-tile hooks under an object's frame hit points (or under its whole box when the frame flag says so)
+; In:  8(a6) = object, $C(a6) = point list (byte pairs, 0,0 end) or box, $10/$14(a6) = words x/y
+; Out: d0 = byte 1 if any hook ran
+; Evidence: points flipped by +$2E bits 4/3; 32-px map cells (FG $FFC77C/$FFC78E or BG when $FFCC36); tile bits $3800 -> hook table $FFC708; box mode once per hook type; called by XPlayer_Update
 ; ---------------------------------------------------------------------------
-sub_15CB34:
+Tile_RunHooksAtPoints:
 	link.w	a6,#$FFE4
 	movem.l	d4-d7/a3-a4,-(a7)
 	tst.b	-$35CA(a5)

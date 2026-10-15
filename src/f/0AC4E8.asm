@@ -2,7 +2,7 @@
 ; PerimeterDoor_TileHit - PERIMETERDOOR slot +$6E: one of its 3x3 tiles was hit - crack that tile, debris; after 9 hits make the opening solid-free and mark the tiles
 ; In:  8(a6) = this, $E(a6) = word column, $12(a6) = word row, $14(a6) = hitting object
 ; Out: none
-; Evidence: 10-frame cooldown +$6A; tile ids by scene (g_ScnSavageA2 set $38.. else $3A..) via sub_15D7F8; -$3C34 += 1; Explosion_Spawn/Explosion_SpawnSetTimerWord debris; at 9: Seg_Create(3, block, ...) and tile flags |= $1800; per-player 10-frame cooldown (+$6A) then sound $38; called through PerimeterDoor_TileHook; TAS 31741-33049
+; Evidence: 10-frame cooldown +$6A; tile ids by scene (g_ScnSavageA2 set $38.. else $3A..) via Map_SetBlockFG; -$3C34 += 1; Explosion_Spawn/Explosion_SpawnSetTimerWord debris; at 9: Seg_Create(3, block, ...) and tile flags |= $1800; per-player 10-frame cooldown (+$6A) then sound $38; called through PerimeterDoor_TileHook; TAS 31741-33049
 ; Found: jt 888
 ; ---------------------------------------------------------------------------
 PerimeterDoor_TileHit:
@@ -96,7 +96,7 @@ loc_0AC5DE:
 	move.l	d7,-(a7)
 	ext.l	d6
 	move.l	d6,-(a7)
-	jsr	$3FDA(a5)	; -> sub_15D7F8
+	jsr	$3FDA(a5)	; -> Map_SetBlockFG
 	move.w	-$3C34(a5),d0
 	addq.w	#$1,-$3C34(a5)
 	lea.l	$10(a7),a7
@@ -111,7 +111,7 @@ loc_0AC606:
 	move.l	d7,-(a7)
 	ext.l	d6
 	move.l	d6,-(a7)
-	jsr	$3FDA(a5)	; -> sub_15D7F8
+	jsr	$3FDA(a5)	; -> Map_SetBlockFG
 	move.w	-$3C34(a5),d0
 	addq.w	#$1,-$3C34(a5)
 	lea.l	$10(a7),a7
@@ -125,7 +125,7 @@ loc_0AC62E:
 	move.l	d7,-(a7)
 	ext.l	d6
 	move.l	d6,-(a7)
-	jsr	$3FDA(a5)	; -> sub_15D7F8
+	jsr	$3FDA(a5)	; -> Map_SetBlockFG
 	move.w	-$3C34(a5),d0
 	addq.w	#$1,-$3C34(a5)
 	lea.l	$10(a7),a7
@@ -158,7 +158,7 @@ loc_0AC67C:
 	move.l	d7,-(a7)
 	ext.l	d6
 	move.l	d6,-(a7)
-	jsr	$3FDA(a5)	; -> sub_15D7F8
+	jsr	$3FDA(a5)	; -> Map_SetBlockFG
 	move.w	-$3C34(a5),d0
 	addq.w	#$1,-$3C34(a5)
 	lea.l	$10(a7),a7
@@ -173,7 +173,7 @@ loc_0AC6A4:
 	move.l	d7,-(a7)
 	ext.l	d6
 	move.l	d6,-(a7)
-	jsr	$3FDA(a5)	; -> sub_15D7F8
+	jsr	$3FDA(a5)	; -> Map_SetBlockFG
 	move.w	-$3C34(a5),d0
 	addq.w	#$1,-$3C34(a5)
 	lea.l	$10(a7),a7
@@ -187,7 +187,7 @@ loc_0AC6CC:
 	move.l	d7,-(a7)
 	ext.l	d6
 	move.l	d6,-(a7)
-	jsr	$3FDA(a5)	; -> sub_15D7F8
+	jsr	$3FDA(a5)	; -> Map_SetBlockFG
 	move.w	-$3C34(a5),d0
 	addq.w	#$1,-$3C34(a5)
 	lea.l	$10(a7),a7
@@ -220,7 +220,7 @@ loc_0AC718:
 	move.l	d7,-(a7)
 	ext.l	d6
 	move.l	d6,-(a7)
-	jsr	$3FDA(a5)	; -> sub_15D7F8
+	jsr	$3FDA(a5)	; -> Map_SetBlockFG
 	move.w	-$3C34(a5),d0
 	addq.w	#$1,-$3C34(a5)
 	lea.l	$10(a7),a7
@@ -235,7 +235,7 @@ loc_0AC73E:
 	move.l	d7,-(a7)
 	ext.l	d6
 	move.l	d6,-(a7)
-	jsr	$3FDA(a5)	; -> sub_15D7F8
+	jsr	$3FDA(a5)	; -> Map_SetBlockFG
 	move.w	-$3C34(a5),d0
 	addq.w	#$1,-$3C34(a5)
 	lea.l	$10(a7),a7
@@ -250,7 +250,7 @@ loc_0AC764:
 	move.l	d7,-(a7)
 	ext.l	d6
 	move.l	d6,-(a7)
-	jsr	$3FDA(a5)	; -> sub_15D7F8
+	jsr	$3FDA(a5)	; -> Map_SetBlockFG
 	move.w	-$3C34(a5),d0
 	addq.w	#$1,-$3C34(a5)
 	lea.l	$10(a7),a7

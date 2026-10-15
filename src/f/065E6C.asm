@@ -78,7 +78,7 @@ loc_065F1E:
 	move.l	d0,-(a7)
 	moveq	#$0,d1
 	move.l	d1,-(a7)
-	jsr	$4142(a5)	; -> sub_15FA7A
+	jsr	$4142(a5)	; -> Intro_SegaLogoFlash
 	jsr	Cerebro_ClearScreen(pc)
 	clr.w	d7
 	lea.l	g_PalBase+$20(a5),a4

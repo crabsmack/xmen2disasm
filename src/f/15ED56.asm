@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_15ED56
+; Map_DrawRowA - draw one tile row of plane A across the visible width
+; In:  registers set up by Map_StreamRows
+; Out: none
+; Evidence: VRAM address = (d7 + d6*64)*2 | $60000003; Map_PutRowPartA, then Map_PutRowBlockA per block, trailing part
 ; ---------------------------------------------------------------------------
-sub_15ED56:
+Map_DrawRowA:
 	movem.l	d0/d4-d7,-(a7)
 	movea.l	a4,a3
 	move.w	d4,d0
@@ -29,7 +32,7 @@ sub_15ED56:
 	move.w	d4,-(a7)
 	moveq	#$4,d3
 	move.w	(a3)+,d2
-	bsr.w	sub_15EC0E
+	bsr.w	Map_PutRowPartA
 	addq.w	#$4,d7
 	sub.w	(a7),d7
 	moveq	#$9,d0
@@ -38,14 +41,14 @@ sub_15ED56:
 	moveq	#$E,d0
 loc_15EDAE:
 	move.w	(a3)+,d2
-	bsr.w	sub_15EAE2
+	bsr.w	Map_PutRowBlockA
 	addq.w	#$4,d7
 	dbra	d0,loc_15EDAE
 	move.w	(a7)+,d3
 	beq.s	loc_15EDC6
 	moveq	#$0,d4
 	move.w	(a3),d2
-	bsr.w	sub_15EC0E
+	bsr.w	Map_PutRowPartA
 loc_15EDC6:
 	movem.l	(a7)+,d0/d4-d7
 	rts

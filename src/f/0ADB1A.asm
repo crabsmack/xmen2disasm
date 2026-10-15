@@ -2,7 +2,7 @@
 ; TrapDoor_SetTiles - TRAPDOOR slot +$82: write one tile id across the trapdoor segment's columns at its row
 ; In:  8(a6) = this, $E(a6) = word tile
 ; Out: d0
-; Evidence: columns from the segment's x range (+8/+$C), row = y >> 13; sub_15D7F8; jt 902
+; Evidence: columns from the segment's x range (+8/+$C), row = y >> 13; Map_SetBlockFG; jt 902
 ; Found: jt 902
 ; ---------------------------------------------------------------------------
 TrapDoor_SetTiles:
@@ -35,7 +35,7 @@ loc_0ADB50:
 	ext.l	d6
 	move.l	d6,-(a7)
 	move.l	d7,-(a7)
-	jsr	$3FDA(a5)	; -> sub_15D7F8
+	jsr	$3FDA(a5)	; -> Map_SetBlockFG
 	lea.l	$10(a7),a7
 	move.l	d7,d0
 	addq.l	#$1,d7

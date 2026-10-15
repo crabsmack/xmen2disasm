@@ -2,7 +2,7 @@
 ; Level_LoadUsedTiles - load only the tiles a map's blocks actually use: mark used blocks and tiles, compact and renumber them, then Nemesis-decode with a tile mask
 ; In:  8(a6) = map   $C(a6) = tileset   $10(a6) = word: first VRAM tile   $14(a6) = block layout   $18(a6) = block definitions   $1C(a6) = byte: map-driven (else mark all)
 ; Out: d0 = word: number of tiles loaded
-; Evidence: bitmaps via sub_15FC70/sub_15FC9A/sub_15FCD8 and sub_1F5594; tileset +$E = {word tile rows, Nem code pairs, Nemesis data}: Nem_BuildCodeTable then Nem_Decode(mode 2 = masked, dest tile << 5)
+; Evidence: bitmaps via Bitmap_Set/Bitmap_FromTileWords/Tile_RemapWords and sub_1F5594; tileset +$E = {word tile rows, Nem code pairs, Nemesis data}: Nem_BuildCodeTable then Nem_Decode(mode 2 = masked, dest tile << 5)
 ; ---------------------------------------------------------------------------
 Level_LoadUsedTiles:
 	link.w	a6,#$EEFC
@@ -25,11 +25,11 @@ Level_LoadUsedTiles:
 	move.l	d4,-(a7)
 	move.l	$14(a6),-(a7)
 	move.l	a4,-(a7)
-	jsr	$415A(a5)	; -> sub_15FC9A
+	jsr	$415A(a5)	; -> Bitmap_FromTileWords
 	moveq	#$0,d0
 	move.l	d0,-(a7)
 	move.l	a4,-(a7)
-	jsr	$414A(a5)	; -> sub_15FC70
+	jsr	$414A(a5)	; -> Bitmap_Set
 	lea.l	$18(a7),a7
 	bra.s	loc_1F5680
 loc_1F5668:
@@ -39,7 +39,7 @@ loc_1F566C:
 	ext.l	d7
 	move.l	d7,-(a7)
 	move.l	a4,-(a7)
-	jsr	$414A(a5)	; -> sub_15FC70
+	jsr	$414A(a5)	; -> Bitmap_Set
 	addq.w	#$8,a7
 	move.w	d7,d0
 	addq.w	#$1,d7
@@ -63,7 +63,7 @@ loc_1F5680:
 	pea.l	($1FF).w
 	move.l	a3,-(a7)
 	move.l	$14(a6),-(a7)
-	jsr	$4162(a5)	; -> sub_15FCD8
+	jsr	$4162(a5)	; -> Tile_RemapWords
 	ext.l	d6
 	move.l	d6,d0
 	lsl.l	#$4,d0
@@ -81,11 +81,11 @@ loc_1F5680:
 	move.l	d4,-(a7)
 	move.l	$18(a6),-(a7)
 	move.l	a4,-(a7)
-	jsr	$415A(a5)	; -> sub_15FC9A
+	jsr	$415A(a5)	; -> Bitmap_FromTileWords
 	moveq	#$0,d0
 	move.l	d0,-(a7)
 	move.l	a4,-(a7)
-	jsr	$414A(a5)	; -> sub_15FC70
+	jsr	$414A(a5)	; -> Bitmap_Set
 	lea.l	$18(a7),a7
 	bra.s	loc_1F5708
 loc_1F56F0:
@@ -95,7 +95,7 @@ loc_1F56F4:
 	ext.l	d7
 	move.l	d7,-(a7)
 	move.l	a4,-(a7)
-	jsr	$414A(a5)	; -> sub_15FC70
+	jsr	$414A(a5)	; -> Bitmap_Set
 	addq.w	#$8,a7
 	move.w	d7,d0
 	addq.w	#$1,d7
@@ -119,7 +119,7 @@ loc_1F5708:
 	pea.l	($7FF).w
 	move.l	a3,-(a7)
 	move.l	$18(a6),-(a7)
-	jsr	$4162(a5)	; -> sub_15FCD8
+	jsr	$4162(a5)	; -> Tile_RemapWords
 	move.l	$C(a6),d4
 	movea.l	d4,a0
 	move.w	$E(a0),d0

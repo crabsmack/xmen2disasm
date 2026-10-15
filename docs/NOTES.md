@@ -372,6 +372,17 @@ _(module → functions, globals, data; add as you learn them)_
   up, left/right) and the held FLUXBOMB (`$FFE7AC`, 16-particle implode/burst, area damage + map-tile
   hooks), A in the air toggles hover. The EVILMAGNETO clone reuses the same spawners. "Strong" versions
   of most specials need health > $700.
+- **VRAM planes, correction (w140b)**: `VDP_InitRegs` sets reg 2 = $38 -> **plane A at $E000**, reg 4 = 0 ->
+  plane B at $0000, window $D000 (the "plane A $C000" above is wrong). Map streaming: FG map `$FFC77C` (row
+  table `$FFC78E`, block tiles `$FFC75A`, attrs `$FFC796`) -> plane A; BG map `$FFC778`/`$FFC78A`/`$FFC774`/
+  `$FFC794` -> plane B. `Map_StreamRows`/`Map_StreamColumns` chase camera targets `$FFC73C/$FFC73E` (A) and
+  `$FFC738/$FFC73A` (B, written by `Cam_SetPos`). Map cell word: bits 0-8 block, $200/$400 flips, $3800 tile
+  hook type (handlers at `$FFC708`, run by `Tile_RunHooksAtPoints`/`Tile_TestAt`), $4000 solid, $8000 priority.
+- **Pause and cheats (w140b)**: `Pause_Check` (Start) -> `Pause_Loop` running `Pause_HandleInput`. While paused,
+  button chords on pad 1 (latch & $7F: $21 C+Up, $22 C+Down, $24 C+Left, $28 C+Right, $11 B+Up, $12 B+Down,
+  $14 B+Left, $18 B+Right) either start a code sequence (`g_PauseCheatPtr`; another table when pad 2 holds
+  Left+Right) or, once unlocked (flags in word -$3C5E: $10 refill health, $20 99 lives, $40/$80 previous/next
+  scene, $100 players hit each other, $200 invincible, $400 previous/next stage group), apply the cheat.
 - **RNG (w140b)**: `Rand_Next` (`$1600AA`) XORs three lagged word tables (`Tbl_RandXor1-3`) with its history
   (-$7AA/-$7AC), indexes -$7B2/-$7B0/-$7AE; returns 0..$FFF. `Rand_Seed(word)`.
 

@@ -2,7 +2,7 @@
 ; BigAcolyte_StateBurstWall - BIGACOLYTE burst: last growth step, debris at the wall cells, rewrite map columns $D7-$D9 rows $1B-$1E, sounds, then become a normal sprite
 ; In:  8(a6) = this
 ; Out: d0 = +4 & 8
-; Evidence: Debris_Spawn debris for 3x4 cells; sub_15D858 map writes; sounds $DC/$34; next state BigAcolyte_StateBecomeSprite
+; Evidence: Debris_Spawn debris for 3x4 cells; Map_SetBlockFGFlip map writes; sounds $DC/$34; next state BigAcolyte_StateBecomeSprite
 ; ---------------------------------------------------------------------------
 BigAcolyte_StateBurstWall:
 	link.w	a6,#$0
@@ -61,7 +61,7 @@ loc_010F16:
 	moveq	#$1B,d0
 	move.l	d0,-(a7)
 	pea.l	($D7).w
-	jsr	$3FE2(a5)	; -> sub_15D858
+	jsr	$3FE2(a5)	; -> Map_SetBlockFGFlip
 	moveq	#$0,d0
 	move.l	d0,-(a7)
 	move.l	d0,-(a7)
@@ -81,7 +81,7 @@ loc_010F16:
 	moveq	#$1C,d0
 	move.l	d0,-(a7)
 	pea.l	($D7).w
-	jsr	$3FE2(a5)	; -> sub_15D858
+	jsr	$3FE2(a5)	; -> Map_SetBlockFGFlip
 	moveq	#$0,d0
 	move.l	d0,-(a7)
 	move.l	d0,-(a7)
@@ -101,7 +101,7 @@ loc_010F16:
 	moveq	#$1D,d0
 	move.l	d0,-(a7)
 	pea.l	($D7).w
-	jsr	$3FE2(a5)	; -> sub_15D858
+	jsr	$3FE2(a5)	; -> Map_SetBlockFGFlip
 	moveq	#$1,d0
 	move.l	d0,-(a7)
 	move.l	d0,-(a7)
@@ -122,7 +122,7 @@ loc_010F16:
 	moveq	#$1E,d0
 	move.l	d0,-(a7)
 	pea.l	($D7).w
-	jsr	$3FE2(a5)	; -> sub_15D858
+	jsr	$3FE2(a5)	; -> Map_SetBlockFGFlip
 	moveq	#$0,d0
 	move.l	d0,-(a7)
 	moveq	#$1,d1
@@ -143,7 +143,7 @@ loc_010F16:
 	moveq	#$1B,d0
 	move.l	d0,-(a7)
 	pea.l	($D8).w
-	jsr	$3FE2(a5)	; -> sub_15D858
+	jsr	$3FE2(a5)	; -> Map_SetBlockFGFlip
 	moveq	#$0,d0
 	move.l	d0,-(a7)
 	move.l	d0,-(a7)
@@ -163,7 +163,7 @@ loc_010F16:
 	moveq	#$1C,d0
 	move.l	d0,-(a7)
 	pea.l	($D8).w
-	jsr	$3FE2(a5)	; -> sub_15D858
+	jsr	$3FE2(a5)	; -> Map_SetBlockFGFlip
 	moveq	#$0,d0
 	move.l	d0,-(a7)
 	move.l	d0,-(a7)
@@ -183,7 +183,7 @@ loc_010F16:
 	moveq	#$1D,d0
 	move.l	d0,-(a7)
 	pea.l	($D8).w
-	jsr	$3FE2(a5)	; -> sub_15D858
+	jsr	$3FE2(a5)	; -> Map_SetBlockFGFlip
 	moveq	#$1,d0
 	move.l	d0,-(a7)
 	moveq	#$0,d1
@@ -204,7 +204,7 @@ loc_010F16:
 	moveq	#$1E,d0
 	move.l	d0,-(a7)
 	pea.l	($D8).w
-	jsr	$3FE2(a5)	; -> sub_15D858
+	jsr	$3FE2(a5)	; -> Map_SetBlockFGFlip
 	moveq	#$0,d0
 	move.l	d0,-(a7)
 	move.l	d0,-(a7)
@@ -224,7 +224,7 @@ loc_010F16:
 	moveq	#$1B,d0
 	move.l	d0,-(a7)
 	pea.l	($D9).w
-	jsr	$3FE2(a5)	; -> sub_15D858
+	jsr	$3FE2(a5)	; -> Map_SetBlockFGFlip
 	moveq	#$0,d0
 	move.l	d0,-(a7)
 	move.l	d0,-(a7)
@@ -244,7 +244,7 @@ loc_010F16:
 	moveq	#$1C,d0
 	move.l	d0,-(a7)
 	pea.l	($D9).w
-	jsr	$3FE2(a5)	; -> sub_15D858
+	jsr	$3FE2(a5)	; -> Map_SetBlockFGFlip
 	moveq	#$1,d0
 	move.l	d0,-(a7)
 	move.l	d0,-(a7)
@@ -265,7 +265,7 @@ loc_010F16:
 	moveq	#$1D,d0
 	move.l	d0,-(a7)
 	pea.l	($D9).w
-	jsr	$3FE2(a5)	; -> sub_15D858
+	jsr	$3FE2(a5)	; -> Map_SetBlockFGFlip
 	moveq	#$1,d0
 	move.l	d0,-(a7)
 	move.l	d0,-(a7)
@@ -286,7 +286,7 @@ loc_010F16:
 	moveq	#$1E,d0
 	move.l	d0,-(a7)
 	pea.l	($D9).w
-	jsr	$3FE2(a5)	; -> sub_15D858
+	jsr	$3FE2(a5)	; -> Map_SetBlockFGFlip
 	pea.l	($DC).w
 	jsr	$5222(a5)	; -> Snd_Stop
 	moveq	#$34,d0

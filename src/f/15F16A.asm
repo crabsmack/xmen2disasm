@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_15F16A
+; Map_DrawColumnB - draw one tile column of plane B
+; In:  registers set up by Map_StreamColumns
+; Out: none
+; Evidence: plane B version of Map_DrawColumnA
 ; ---------------------------------------------------------------------------
-sub_15F16A:
+Map_DrawColumnB:
 	movem.l	d0/d4-d7,-(a7)
 	move.w	#$8F80,($C00004).l
 	movea.l	a4,a3
@@ -34,7 +37,7 @@ sub_15F16A:
 	moveq	#$4,d3
 	move.w	(a3),d2
 	adda.w	d5,a3
-	bsr.w	sub_15F036
+	bsr.w	Map_PutColBlockB
 	addq.w	#$4,d6
 	sub.w	(a7),d6
 	moveq	#$6,d0
@@ -43,14 +46,14 @@ loc_15F1CC:
 	moveq	#$4,d3
 	move.w	(a3),d2
 	adda.w	d5,a3
-	bsr.w	sub_15F036
+	bsr.w	Map_PutColBlockB
 	addq.w	#$4,d6
 	dbra	d0,loc_15F1CC
 	move.w	(a7)+,d3
 	beq.s	loc_15F1EA
 	moveq	#$0,d4
 	move.w	(a3),d2
-	bsr.w	sub_15F036
+	bsr.w	Map_PutColBlockB
 loc_15F1EA:
 	move.w	#$8F02,($C00004).l
 	movem.l	(a7)+,d0/d4-d7

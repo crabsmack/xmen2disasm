@@ -2,7 +2,7 @@
 ; BigAcBullet_StateFly - BIGACBULLET flying state: on the first frame snap to owner + offset, then move with collision; kill itself on impact
 ; In:  8(a6) = this
 ; Out: none
-; Evidence: sub_15CECC(this, old x, old y, ..., $7800, 1) collision move; slot $52 Kill when it reports a hit
+; Evidence: Tile_TestAt(this, old x, old y, ..., $7800, 1) collision move; slot $52 Kill when it reports a hit
 ; ---------------------------------------------------------------------------
 BigAcBullet_StateFly:
 	link.w	a6,#$0
@@ -38,7 +38,7 @@ loc_01018C:
 	ext.l	d6
 	move.l	d6,-(a7)
 	move.l	a4,-(a7)
-	jsr	$3FC2(a5)	; -> sub_15CECC
+	jsr	$3FC2(a5)	; -> Tile_TestAt
 	tst.b	d0
 	lea.l	$18(a7),a7
 	beq.s	loc_0101C4

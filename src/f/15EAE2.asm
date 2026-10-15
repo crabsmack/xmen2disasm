@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_15EAE2
+; Map_PutRowBlockA - row streaming helper (register args): write the 4 tile words of one block row to plane A, wrapping at column 64
+; In:  d1 = row in block, d2 = map cell word, d6/d7 = VRAM row/column, a2 = block definitions
+; Out: d0/d1 kept
+; Evidence: VRAM command $60000003 (plane A at $E000) on wrap; flips $200/$400, priority bit, attribute base $FFC796; two longs to $C00000
 ; ---------------------------------------------------------------------------
-sub_15EAE2:
+Map_PutRowBlockA:
 	movem.l	d0-d1,-(a7)
 	cmpi.w	#$40,d7
 	blt.s	loc_15EB08

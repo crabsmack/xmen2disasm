@@ -2,7 +2,7 @@
 ; SiberiaB1_IceTileHit - SiberiaB1 breakable ice: a hit tile column cracks $6E -> $6F -> $70; at $70 it shatters (debris, segment removed, sound $35), else crack sound $33
 ; In:  $A(a6) = word tile x  $E(a6) = word tile y
 ; Out: d0 = 0
-; Evidence: level map $FFC778, sub_15D8CC redraw, SiberiaB1_SpawnDebris per tile, sub_1F8454/Seg_Free, actors on the segment dropped (Obj_Detach)
+; Evidence: level map $FFC778, Map_SetBlockBG redraw, SiberiaB1_SpawnDebris per tile, sub_1F8454/Seg_Free, actors on the segment dropped (Obj_Detach)
 ; ---------------------------------------------------------------------------
 SiberiaB1_IceTileHit:
 	link.w	a6,#$FFFE
@@ -119,7 +119,7 @@ loc_0FD35C:
 	move.l	d7,-(a7)
 	ext.l	d6
 	move.l	d6,-(a7)
-	jsr	$3FEA(a5)	; -> sub_15D8CC
+	jsr	$3FEA(a5)	; -> Map_SetBlockBG
 	lea.l	$10(a7),a7
 	move.w	d7,d0
 	subq.w	#$1,d7
@@ -192,7 +192,7 @@ loc_0FD414:
 	move.l	d7,-(a7)
 	ext.l	d6
 	move.l	d6,-(a7)
-	jsr	$3FEA(a5)	; -> sub_15D8CC
+	jsr	$3FEA(a5)	; -> Map_SetBlockBG
 	lea.l	$10(a7),a7
 	move.w	d7,d0
 	addq.w	#$1,d7

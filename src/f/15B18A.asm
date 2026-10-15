@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_15B18A	[jt 2020]
+; Spr_SetFromDef - point a sprite instance at a preloaded sprite definition record
+; In:  8(a6) = sprite instance, $C(a6) = byte definition index
+; Out: none
+; Evidence: record $14 bytes in g_SpriteDefs: +2 def pointer, +6/+8 words copied, palette bits 0-1; caller LittleLeg_New
 ; ---------------------------------------------------------------------------
-sub_15B18A:
+Spr_SetFromDef:
 	link.w	a6,#$0
 	movem.l	a3-a4,-(a7)
 	movea.l	$8(a6),a3

@@ -295,7 +295,7 @@ loc_1F193E:
 	move.l	d0,-(a7)
 	move.l	a3,-(a7)
 	move.l	a4,-(a7)
-	jsr	$3FBA(a5)	; -> sub_15CB34
+	jsr	$3FBA(a5)	; -> Tile_RunHooksAtPoints
 	tst.b	d0
 	lea.l	$10(a7),a7
 	bne.s	loc_1F192C

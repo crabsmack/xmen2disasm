@@ -36,7 +36,7 @@ BrainRocket_Update:
 	ext.l	d6
 	move.l	d6,-(a7)
 	move.l	a4,-(a7)
-	jsr	$3FC2(a5)	; -> sub_15CECC
+	jsr	$3FC2(a5)	; -> Tile_TestAt
 	tst.b	d0
 	lea.l	$18(a7),a7
 	beq.s	loc_1337B0

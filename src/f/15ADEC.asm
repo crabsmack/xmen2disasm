@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_15ADEC	[jt 2016]
+; SegHook_HurtPlayer - segment-type hook: touching this segment hurts a player (1 damage, type 4)
+; In:  8(a6) = word event (0 = touch), $C(a6) = segment, $10(a6) = object, $14(a6) = pointer flags
+; Out: d0 = 1 when handled
+; Evidence: like SegHook_HurtPlayerStop without blocking; CloneA2_InstallHooks stores its jt address in -$3402 (segment type $16 hook)
 ; ---------------------------------------------------------------------------
-sub_15ADEC:
+SegHook_HurtPlayer:
 	link.w	a6,#$0
 	move.l	a4,-(a7)
 	movea.l	$10(a6),a4

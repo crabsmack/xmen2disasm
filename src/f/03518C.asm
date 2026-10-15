@@ -2,7 +2,7 @@
 ; AvalonA4_SwitchTileHook - map tile hook: tile $84 at (x,y) becomes $89 with sound $1A
 ; In:  8(a6) = word column, $C(a6) = word row
 ; Out: d0 = 1
-; Evidence: installed in -$3AF4 by AvalonA4_InstallTileHooks; sub_15D7F8 set tile
+; Evidence: installed in -$3AF4 by AvalonA4_InstallTileHooks; Map_SetBlockFG set tile
 ; ---------------------------------------------------------------------------
 AvalonA4_SwitchTileHook:
 	link.w	a6,#$0
@@ -30,7 +30,7 @@ AvalonA4_SwitchTileHook:
 	move.l	d6,-(a7)
 	ext.l	d7
 	move.l	d7,-(a7)
-	jsr	$3FDA(a5)	; -> sub_15D7F8
+	jsr	$3FDA(a5)	; -> Map_SetBlockFG
 	moveq	#$1A,d0
 	move.l	d0,-(a7)
 	jsr	$5222(a5)	; -> Snd_Stop

@@ -114,7 +114,7 @@ loc_08680A:
 	move.w	$2(a0),d1
 	ext.l	d1
 	move.l	d1,-(a7)
-	jsr	$3F02(a5)	; -> sub_15AA20
+	jsr	$3F02(a5)	; -> Seg_FindAbove
 	movea.l	d0,a3
 	move.l	a3,d0
 	lea.l	$24(a7),a7
@@ -149,7 +149,7 @@ loc_086862:
 	move.w	$2(a0),d1
 	ext.l	d1
 	move.l	d1,-(a7)
-	jsr	$3F0A(a5)	; -> sub_15AB44
+	jsr	$3F0A(a5)	; -> Seg_FindLeft
 	movea.l	d0,a3
 	move.l	a3,d0
 	lea.l	$C(a7),a7

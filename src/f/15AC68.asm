@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_15AC68	[jt 2014]
+; Seg_FindRight - find the nearest in-use segment of a given type to the right of a point, scanning the grid rightward
+; In:  8(a6) = word x, $C(a6) = word y, $10(a6) = word segment type
+; Out: d0 = segment or 0
+; Evidence: mirror of Seg_FindLeft (left end > x)
 ; ---------------------------------------------------------------------------
-sub_15AC68:
+Seg_FindRight:
 	link.w	a6,#$FFF2
 	movem.l	d3-d7/a3-a4,-(a7)
 	move.w	$E(a6),d0

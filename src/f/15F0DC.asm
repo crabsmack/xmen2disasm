@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_15F0DC
+; Map_DrawColumnA - draw one tile column of plane A (switching VDP autoincrement to 128 and back)
+; In:  registers set up by Map_StreamColumns
+; Out: none
+; Evidence: $C00004 = $8F80, Map_PutColBlockA per block, $8F02
 ; ---------------------------------------------------------------------------
-sub_15F0DC:
+Map_DrawColumnA:
 	movem.l	d0/d4-d7,-(a7)
 	move.w	#$8F80,($C00004).l
 	movea.l	a4,a3
@@ -34,7 +37,7 @@ sub_15F0DC:
 	moveq	#$4,d3
 	move.w	(a3),d2
 	adda.w	d5,a3
-	bsr.w	sub_15EF90
+	bsr.w	Map_PutColBlockA
 	addq.w	#$4,d6
 	sub.w	(a7),d6
 	moveq	#$6,d0
@@ -43,14 +46,14 @@ loc_15F13E:
 	moveq	#$4,d3
 	move.w	(a3),d2
 	adda.w	d5,a3
-	bsr.w	sub_15EF90
+	bsr.w	Map_PutColBlockA
 	addq.w	#$4,d6
 	dbra	d0,loc_15F13E
 	move.w	(a7)+,d3
 	beq.s	loc_15F15C
 	moveq	#$0,d4
 	move.w	(a3),d2
-	bsr.w	sub_15EF90
+	bsr.w	Map_PutColBlockA
 loc_15F15C:
 	move.w	#$8F02,($C00004).l
 	movem.l	(a7)+,d0/d4-d7

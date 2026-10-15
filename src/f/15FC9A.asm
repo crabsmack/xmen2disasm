@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_15FC9A
+; Bitmap_FromTileWords - build a bitmap of the tile indexes used by a list of tile words
+; In:  8(a6) = bitmap, $C(a6) = tile words, $10(a6) = count, $14(a6) = word index mask
+; Out: none
+; Evidence: clears count/16 words, then sets bit (word & mask) for every non-zero index; caller Level_LoadUsedTiles
 ; ---------------------------------------------------------------------------
-sub_15FC9A:
+Bitmap_FromTileWords:
 	moveq	#$0,d0
 	movea.l	$4(a7),a0
 	move.l	$C(a7),d1

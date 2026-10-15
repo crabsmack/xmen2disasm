@@ -2,7 +2,7 @@
 ; Exodus_BreakFloorTiles - draw the broken left (1) or right (0) floor section: 4 map tiles in row $18, sound $E2
 ; In:  8(a6) = byte left flag
 ; Out: none
-; Evidence: columns 2-5 or 6-9; tiles $27, base -$3AA8 (+2 for right), +1, $28; sub_15D7D8 redraw
+; Evidence: columns 2-5 or 6-9; tiles $27, base -$3AA8 (+2 for right), +1, $28; Map_RefreshBlock redraw
 ; ---------------------------------------------------------------------------
 Exodus_BreakFloorTiles:
 	link.w	a6,#$0
@@ -38,7 +38,7 @@ loc_02DD14:
 	move.l	d6,-(a7)
 	ext.l	d7
 	move.l	d7,-(a7)
-	jsr	$3FD2(a5)	; -> sub_15D7D8
+	jsr	$3FD2(a5)	; -> Map_RefreshBlock
 	addq.w	#$1,d7
 	ext.l	d6
 	movea.l	-$3A72(a5),a0
@@ -56,7 +56,7 @@ loc_02DD14:
 	move.l	d6,-(a7)
 	ext.l	d7
 	move.l	d7,-(a7)
-	jsr	$3FD2(a5)	; -> sub_15D7D8
+	jsr	$3FD2(a5)	; -> Map_RefreshBlock
 	addq.w	#$1,d7
 	ext.l	d6
 	movea.l	-$3A72(a5),a0
@@ -76,7 +76,7 @@ loc_02DD14:
 	move.l	d6,-(a7)
 	ext.l	d7
 	move.l	d7,-(a7)
-	jsr	$3FD2(a5)	; -> sub_15D7D8
+	jsr	$3FD2(a5)	; -> Map_RefreshBlock
 	addq.w	#$1,d7
 	ext.l	d6
 	movea.l	-$3A72(a5),a0
@@ -94,7 +94,7 @@ loc_02DD14:
 	move.l	d6,-(a7)
 	ext.l	d7
 	move.l	d7,-(a7)
-	jsr	$3FD2(a5)	; -> sub_15D7D8
+	jsr	$3FD2(a5)	; -> Map_RefreshBlock
 	movem.l	-$10(a6),d5-d7/a4
 	unlk	a6
 	rts

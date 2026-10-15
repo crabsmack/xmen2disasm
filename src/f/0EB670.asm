@@ -2,7 +2,7 @@
 ; SentinelsA1_OpenExitTiles - SentinelsA1: change map tiles at (17-18, 22) to tile $ED and flag one passable/visible, then redraw
 ; In:  none
 ; Out: none
-; Evidence: sub_15D7F8(x, y, $ED, 0) twice, XOR/OR $200 in the level map, sub_15D7D8; called by Hologram_OpenExit
+; Evidence: Map_SetBlockFG(x, y, $ED, 0) twice, XOR/OR $200 in the level map, Map_RefreshBlock; called by Hologram_OpenExit
 ; ---------------------------------------------------------------------------
 SentinelsA1_OpenExitTiles:
 	link.w	a6,#$0
@@ -14,7 +14,7 @@ SentinelsA1_OpenExitTiles:
 	move.l	d1,-(a7)
 	moveq	#$11,d0
 	move.l	d0,-(a7)
-	jsr	$3FDA(a5)	; -> sub_15D7F8
+	jsr	$3FDA(a5)	; -> Map_SetBlockFG
 	moveq	#$0,d0
 	move.l	d0,-(a7)
 	pea.l	($ED).w
@@ -22,7 +22,7 @@ SentinelsA1_OpenExitTiles:
 	move.l	d1,-(a7)
 	moveq	#$12,d0
 	move.l	d0,-(a7)
-	jsr	$3FDA(a5)	; -> sub_15D7F8
+	jsr	$3FDA(a5)	; -> Map_SetBlockFG
 	movea.l	-$3A72(a5),a0
 	move.w	$2C(a0),d0
 	ext.l	d0
@@ -36,7 +36,7 @@ SentinelsA1_OpenExitTiles:
 	move.l	d0,-(a7)
 	moveq	#$12,d1
 	move.l	d1,-(a7)
-	jsr	$3FD2(a5)	; -> sub_15D7D8
+	jsr	$3FD2(a5)	; -> Map_RefreshBlock
 	movea.l	-$4(a6),a4
 	unlk	a6
 	rts

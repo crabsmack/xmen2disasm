@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_15FCD8
+; Tile_RemapWords - replace the index part of tile words through a lookup table
+; In:  8(a6) = tile words, $C(a6) = word table, $10(a6) = word index mask, $14(a6) = word count
+; Out: none
+; Evidence: w = (w & ~mask) | table[w & mask]; caller Level_LoadUsedTiles (compacts used tiles)
 ; ---------------------------------------------------------------------------
-sub_15FCD8:
+Tile_RemapWords:
 	movea.l	$4(a7),a0
 	movea.l	$8(a7),a1
 	move.w	$E(a7),d1

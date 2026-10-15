@@ -23,7 +23,7 @@ g_Pad1Pressed = -$3A26	; word: P1 buttons newly pressed this frame (Pad_Update; 
 g_Pad2Pressed = -$3A28	; word: P2 buttons newly pressed this frame (Pad_Update)
 g_Pad1Released = -$3A2A	; word: P1 buttons released this frame (Pad_Update)
 g_Pad2Released = -$3A2C	; word: P2 buttons released this frame (Pad_Update)
-g_Pad1Latch = -$3A2E	; word: P1 presses latched while held; game code clears bits to consume them (Pad_Update, sub_15CAA4)
+g_Pad1Latch = -$3A2E	; word: P1 presses latched while held; game code clears bits to consume them (Pad_Update, Pause_Check)
 g_Pad2Latch = -$3A30	; word: P2 presses latched while held (Pad_Update)
 g_Pad1Accum = -$3A32	; word: P1 buttons OR-accumulated since last cleared (Pad_Update)
 g_Pad2Accum = -$3A34	; word: P2 buttons OR-accumulated since last cleared (Pad_Update)
@@ -50,8 +50,8 @@ g_PalFadeTable = -$7C2	; ptr: fade component table, 8 bytes per level (Pal_Start
 g_PalWorkDirty = -$7C6	; byte: upload g_PalWork at the next V-blank (Pal_Update clears)
 g_PalBaseDirty = -$3A06	; byte: upload g_PalBase at the next V-blank (Pal_Update clears)
 g_VBlankCount = -$3A10	; long: V-interrupt counter (+1 in Irq_VBlank; zeroed in Sys_InitHardware)
-g_VBlankHook = -$3A14	; ptr: function called from Irq_VBlank every V-int when non-zero (Sys_InitHardware clears; sub_15FA7A saves/sets)
-g_VBlankGameHook = -$3A18	; ptr: game function called from Irq_VBlank unless bytes -$38C0/-$359E are set (sub_15B0D0, Cerebro_PlayIntro)
+g_VBlankHook = -$3A14	; ptr: function called from Irq_VBlank every V-int when non-zero (Sys_InitHardware clears; Intro_SegaLogoFlash saves/sets)
+g_VBlankGameHook = -$3A18	; ptr: game function called from Irq_VBlank unless bytes -$38C0/-$359E are set (Timer_SetVBlankHookCb, Cerebro_PlayIntro)
 g_FrameUpdated = -$3A0C	; byte: VDP_FrameUpdate ran this frame (VDP_WaitVBlank clears)
 g_HBlankCount = -$BC8	; word: H-interrupt counter (Irq_HBlank)
 g_ParallaxDesc = -$3A44	; ptr: current parallax descriptor (Scroll_SetParallax, Scroll_UpdateParallax)
@@ -116,7 +116,7 @@ g_Elevator = -$3BC4	; ptr: SpaceA1 ELEVATOR object, on SpaceA1_RunScene's stack 
 g_SpawnRecs = -$38DC	; ptr: spawn records, 14 bytes each (Spawn_InitRecords fills them via InitSpawnRec; level loop Level_FrameLoop)
 g_SpawnRecCount = -$38D8	; word: number of spawn records / placement entries (Level_Load, Spawn_InitRecords)
 g_PlacementList = -$38D6	; ptr: level placement entries, 16 bytes, word 0 = class index into g_ClassList (Level_Load, Spawn_InitRecords)
-g_PauseHandler = -$38FC	; ptr: called by the scene loop (Level_FrameLoop) when a player presses Start; Level_Load sets jt[$3FB2] = sub_15CAA4 (pause); Teleporter_StateTeleport swaps in Teleporter_NoPause
+g_PauseHandler = -$38FC	; ptr: called by the scene loop (Level_FrameLoop) when a player presses Start; Level_Load sets jt[$3FB2] = Pause_Check (pause); Teleporter_StateTeleport swaps in Teleporter_NoPause
 g_SegTypeHooks = -$346A	; array of long: per floor-segment-type callback (mode, segment, object, 0), indexed by the segment's type byte +1; ACTOR Move (Actor_Move) and the floor code call it when non-zero; scenes install their own (CloneA5_SegHook15/16/17 at -$3416/-$3412/-$340E)
 g_SceneFrameHook = -$388E	; ptr: per-frame scene hook installed by each scene's setup (CloneA2_FrameHook, CloneA5_FrameHook)
 g_PadMaskLeft = -$3B98	; word: pad bit used for Left (4, Game_InitButtonMasks; read by Platform1_SteerByPad)
@@ -187,8 +187,8 @@ g_PalCycleCursor = -$38CE	; ptr: next word of g_PalCycleScript (sub_1F9E46; Leve
 g_PalCycleDelay = -$38D0	; word: frames until the next g_PalCycleScript step (sub_1F9E46; Level_Load sets -1)
 g_LevelScrollHook = -$3A48	; ptr: per-frame scroll update called by Level_FrameLoop; Level_Load sets Scroll_UpdateParallax, BaniMazaA1_InitScroll sets RollingDiscs_UpdateScroll
 g_LevelPalHook = -$3A4C	; ptr: per-frame palette hook called by Level_FrameLoop after g_LevelScrollHook; Level_Load sets sub_1F9E46 (g_PalCycleScript player)
-g_PauseExit = -$1662	; byte: set to leave the pause loop (sub_15CA6C waits on it): a pause cheat changed the scene, or a player pressed a button (loc_15C5D6); cleared by the pause handler sub_15CAA4 and Level_Load
-g_PauseCheatPtr = -$1666	; ptr: position in a pause-screen button sequence: each new press (& $7F) must equal the next byte (sub_15C42A); sequences from jt data $E0A-$E62 (loc_15C5D6); 0 = none (sub_15CAA4 clears)
+g_PauseExit = -$1662	; byte: set to leave the pause loop (Pause_Loop waits on it): a pause cheat changed the scene, or a player pressed a button (Pause_HandleInput_EndCode); cleared by the pause handler Pause_Check and Level_Load
+g_PauseCheatPtr = -$1666	; ptr: position in a pause-screen button sequence: each new press (& $7F) must equal the next byte (Pause_HandleInput); sequences from jt data $E0A-$E62 (Pause_HandleInput_EndCode); 0 = none (Pause_Check clears)
 g_HScrollFreeTile = -$1D42	; word: first free VRAM tile after the H-scroll table: $7A1 by default (Scene_PreLoadReset), $7BE with a line-scroll parallax that fills $380 bytes (Scroll_SetParallax, BaniMazaA1_InitScroll)
 g_HScrollFreeCount = -$1D44	; word: number of free VRAM tiles from g_HScrollFreeTile to $800 ($5F default, $42 with line scroll; Scene_PreLoadReset, Scroll_SetParallax)
 g_VramTileLimit = -$1D46	; word: VRAM tile limit $700 for actor sprite graphics (Scene_PreLoadReset); Actor_Activate/MagnetoBoss_Activate compare the tile end from Spr_Init against it

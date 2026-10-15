@@ -2,7 +2,7 @@
 ; Player2_StartLife - give player 2 a new life: keep or randomly pick a character (not P1's), health $700, spend a life
 ; In:  none
 ; Out: d0 = 1 if started, 0 if -$3BBA is clear
-; Evidence: jt 6, mirror of Player1_StartLife using g_Player2, g_P2Health, g_P2CharIndex, g_P2Lives; caller sub_15CAA4
+; Evidence: jt 6, mirror of Player1_StartLife using g_Player2, g_P2Health, g_P2CharIndex, g_P2Lives; caller Pause_Check
 ; ---------------------------------------------------------------------------
 Player2_StartLife:
 	link.w	a6,#$0

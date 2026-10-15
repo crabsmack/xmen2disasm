@@ -2,7 +2,7 @@
 ; AvalonB2_AnimSprite - timer callback: flip the AvalonB2 sprite slot -$3596 between frames 0 and 1 and upload it
 ; In:  none
 ; Out: none
-; Evidence: Timer_Create(sub_15B0D0, $3C, AvalonB2_AnimSprite, 1) in AvalonB2_RunScene; Spr_SetFrame(slot, -$3A10 & 1), Spr_UploadFrame
+; Evidence: Timer_Create(Timer_SetVBlankHookCb, $3C, AvalonB2_AnimSprite, 1) in AvalonB2_RunScene; Spr_SetFrame(slot, -$3A10 & 1), Spr_UploadFrame
 ; ---------------------------------------------------------------------------
 AvalonB2_AnimSprite:
 	link.w	a6,#$0

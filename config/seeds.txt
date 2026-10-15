@@ -2,8 +2,8 @@
 # One hex address per line; `; note` records the evidence. convert.py appends here.
 077256	; CloneA1_AnimTilesTimer - jt[529]: A5-global load, single rts, clean trace
 0EAE8E	; Hologram_VBlankFlicker - jt entries: movem/tst prologue, ends in rts, clean trace
-15EE48	; sub_15EE48 - jt entries: movem/tst prologue, ends in rts, clean trace
-15F1F8	; sub_15F1F8 - jt entries: movem/tst prologue, ends in rts, clean trace
+15EE48	; Map_StreamRows - jt entries: movem/tst prologue, ends in rts, clean trace
+15F1F8	; Map_StreamColumns - jt entries: movem/tst prologue, ends in rts, clean trace
 1F4C56	; Actor_Move - jt entries: movem/tst prologue, ends in rts, clean trace
 0226B2	; AvalonB2_CamHook - runtime: executed in tas
 065DB6	; Cerebro_IntroPalHook - runtime: executed in tas
@@ -869,7 +869,7 @@
 1598A0	; loc_1598A0 - static: switch-table case target (tools/switches.py: table after `move.w T(pc,dN.w),dN / jmp T-2(pc,dN.w)`, size from the cmpi bound)
 1598B4	; loc_1598B4 - static: switch-table case target (tools/switches.py: table after `move.w T(pc,dN.w),dN / jmp T-2(pc,dN.w)`, size from the cmpi bound)
 1598DA	; Magneto_BombOrigin_Case8 - static: switch-table case target (tools/switches.py: table after `move.w T(pc,dN.w),dN / jmp T-2(pc,dN.w)`, size from the cmpi bound)
-15C49E	; loc_15C49E - static: switch-table case target (tools/switches.py: table after `move.w T(pc,dN.w),dN / jmp T-2(pc,dN.w)`, size from the cmpi bound)
+15C49E	; Pause_CheatUnlock - static: switch-table case target (tools/switches.py: table after `move.w T(pc,dN.w),dN / jmp T-2(pc,dN.w)`, size from the cmpi bound)
 15C4BA	; loc_15C4BA - static: switch-table case target (tools/switches.py: table after `move.w T(pc,dN.w),dN / jmp T-2(pc,dN.w)`, size from the cmpi bound)
 15C4E2	; loc_15C4E2 - static: switch-table case target (tools/switches.py: table after `move.w T(pc,dN.w),dN / jmp T-2(pc,dN.w)`, size from the cmpi bound)
 15C4FE	; loc_15C4FE - static: switch-table case target (tools/switches.py: table after `move.w T(pc,dN.w),dN / jmp T-2(pc,dN.w)`, size from the cmpi bound)

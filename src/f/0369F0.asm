@@ -2,7 +2,7 @@
 ; MagnetoBoss_CrackWall - crack the wall tiles of a column one stage ($8C -> $A9 -> $AA -> $AB -> $AC), or straight to $AC; sound 99
 ; In:  8(a6) = word column, $C(a6) = word first row, $10(a6) = word last row, $14(a6) = byte instant
 ; Out: d0 = 1 when the wall is fully cracked
-; Evidence: sub_15D7F8 per row; callers the intro states and MagnetoBoss_StateBreakWall
+; Evidence: Map_SetBlockFG per row; callers the intro states and MagnetoBoss_StateBreakWall
 ; ---------------------------------------------------------------------------
 MagnetoBoss_CrackWall:
 	link.w	a6,#$0
@@ -61,7 +61,7 @@ loc_036A80:
 	move.w	$A(a6),d1
 	ext.l	d1
 	move.l	d1,-(a7)
-	jsr	$3FDA(a5)	; -> sub_15D7F8
+	jsr	$3FDA(a5)	; -> Map_SetBlockFG
 	lea.l	$10(a7),a7
 	move.l	d6,d0
 	addq.l	#$1,d6

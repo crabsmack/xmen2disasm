@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_15C306	[link-after-rts]
+; Pause_LoadSprite - load the PAUSE text sprite tiles into VRAM tile $794
+; In:  none
+; Out: none
+; Evidence: Spr_Init(local instance, 1, def $112FD8, 0, 1, $794, 1); called by Pause_Check
 ; ---------------------------------------------------------------------------
-sub_15C306:
+Pause_LoadSprite:
 	link.w	a6,#$FFEC
 	moveq	#$1,d0
 	move.l	d0,-(a7)

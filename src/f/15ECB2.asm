@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_15ECB2
+; Map_PutRowPartB - row streaming helper: write part of a block row to plane B
+; In:  as Map_PutRowPartA
+; Out: none
+; Evidence: plane B / $FFC794 version
 ; ---------------------------------------------------------------------------
-sub_15ECB2:
+Map_PutRowPartB:
 	movem.l	d0-d1,-(a7)
 	cmpi.w	#$40,d7
 	blt.s	loc_15ECD8

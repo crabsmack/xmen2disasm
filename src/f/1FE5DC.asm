@@ -2,7 +2,7 @@
 ; Snd_Resume - resume sound after Snd_Pause (driver command $0D) unless muted
 ; In:  none
 ; Out: none
-; Evidence: sent by sub_15CAA4 after the pause loop ends
+; Evidence: sent by Pause_Check after the pause loop ends
 ; ---------------------------------------------------------------------------
 Snd_Resume:
 	jsr	Z80_BusAcquire(pc)

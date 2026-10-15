@@ -52,7 +52,7 @@ Tusk_Init:
 	move.l	d7,-(a7)
 	ext.l	d6
 	move.l	d6,-(a7)
-	jsr	$3F02(a5)	; -> sub_15AA20
+	jsr	$3F02(a5)	; -> Seg_FindAbove
 	move.l	d0,$90(a4)
 	pea.l	($3E8).w
 	ext.l	d7

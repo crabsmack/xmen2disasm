@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_15B0E6	[jt 2019]
+; Spr_ReloadDefs - run a sprite-definition loader with the VRAM tile cursor reset, then re-pack the VRAM tiles of live objects that sat above it
+; In:  8(a6) = loader function, $C(a6) = byte force re-pack
+; Out: none
+; Evidence: g_VramTileCursor = $FFC64C + $FFC64A, g_SpriteDefCount = 0, call loader; objects (not players) with tile base +$34 >= old cursor get new bases and Spr_InvalidateFrame; callers BigAcolyte_ActAppear, CloneA5_FrameHook, XClone_StartMakerMode
 ; ---------------------------------------------------------------------------
-sub_15B0E6:
+Spr_ReloadDefs:
 	link.w	a6,#$0
 	movem.l	d6-d7/a4,-(a7)
 	move.w	g_VramTileCursor(a5),d6

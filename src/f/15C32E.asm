@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_15C32E	[link-after-rts]
+; Pause_ShowText - put the two PAUSE text sprites at the head of the hardware sprite table
+; In:  none
+; Out: none
+; Evidence: g_SpriteTable entries 0/1: y $B4, sizes 5/$D, tiles $A794/$A798, x $100/$110; called by Pause_Check
 ; ---------------------------------------------------------------------------
-sub_15C32E:
+Pause_ShowText:
 	link.w	a6,#$0
 	movem.l	d5-d7,-(a7)
 	move.w	#$A0,d5

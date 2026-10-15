@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_15EDCC
+; Map_DrawRowB - draw one tile row of plane B across the visible width
+; In:  registers set up by Map_StreamRows
+; Out: none
+; Evidence: plane B version of Map_DrawRowA
 ; ---------------------------------------------------------------------------
-sub_15EDCC:
+Map_DrawRowB:
 	movem.l	d0/d4-d7,-(a7)
 	movea.l	a4,a3
 	move.w	d4,d0
@@ -29,7 +32,7 @@ sub_15EDCC:
 	move.w	d4,-(a7)
 	moveq	#$4,d3
 	move.w	(a3)+,d2
-	bsr.w	sub_15ECB2
+	bsr.w	Map_PutRowPartB
 	addq.w	#$4,d7
 	sub.w	(a7),d7
 	moveq	#$E,d0
@@ -40,14 +43,14 @@ sub_15EDCC:
 	moveq	#$9,d0
 loc_15EE2A:
 	move.w	(a3)+,d2
-	bsr.w	sub_15EB78
+	bsr.w	Map_PutRowBlockB
 	addq.w	#$4,d7
 	dbra	d0,loc_15EE2A
 	move.w	(a7)+,d3
 	beq.s	loc_15EE42
 	moveq	#$0,d4
 	move.w	(a3),d2
-	bsr.w	sub_15ECB2
+	bsr.w	Map_PutRowPartB
 loc_15EE42:
 	movem.l	(a7)+,d0/d4-d7
 	rts

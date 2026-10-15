@@ -163,7 +163,7 @@ loc_15801E:
 	ext.l	d5
 	move.l	d5,-(a7)
 	move.l	a4,-(a7)
-	jsr	$3FC2(a5)	; -> sub_15CECC
+	jsr	$3FC2(a5)	; -> Tile_TestAt
 	tst.b	d0
 	lea.l	$18(a7),a7
 	beq.s	loc_1580A8
@@ -192,7 +192,7 @@ loc_158056:
 	asr.l	#$8,d1
 	move.l	d1,-(a7)
 	move.l	d0,-(a7)
-	jsr	$3FC2(a5)	; -> sub_15CECC
+	jsr	$3FC2(a5)	; -> Tile_TestAt
 	tst.b	d0
 	lea.l	$18(a7),a7
 	bne.s	loc_158056

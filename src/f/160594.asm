@@ -2,7 +2,7 @@
 ; VDP_InitRegs - program every VDP register with the game's base mode (40-cell, planes, sprite/scroll tables, 64x32 planes)
 ; In:  none
 ; Out: none
-; Evidence: writes $8004, reg 1 shadow $8124 (g_VdpReg1), $8238 plane A $C000, $8334 window $D000, $8400, $8578 sprites $F000, $8D3D H-scroll $F400, $8F02 autoinc 2, $9011 64x32, g_VdpReg11
+; Evidence: $8004, reg 1 shadow $8124 (g_VdpReg1), $8238 plane A $E000, $8334 window $D000, $8400 plane B $0000, $8578 sprites $F000, $8D3D H-scroll $F400, $8F02 autoinc 2, $9011 64x32, g_VdpReg11
 ; ---------------------------------------------------------------------------
 VDP_InitRegs:
 	link.w	a6,#$0

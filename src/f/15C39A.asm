@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_15C39A	[link-after-rts]
+; Pause_LinkSprites - while paused, link the PAUSE sprites to the live players' sprites only (save the old link)
+; In:  none
+; Out: none
+; Evidence: $FFC5A6 = link byte $FFE231; link = 4 with both players alive, 2 with one
 ; ---------------------------------------------------------------------------
-sub_15C39A:
+Pause_LinkSprites:
 	link.w	a6,#$0
 	move.b	g_SpriteTable+$B(a5),d0
 	ext.w	d0

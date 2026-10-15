@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_15EB78
+; Map_PutRowBlockB - row streaming helper: like Map_PutRowBlockA for plane B
+; In:  d1, d2, d6/d7, a2 as Map_PutRowBlockA
+; Out: d0/d1 kept
+; Evidence: VRAM command $40000000 (plane B at $0000), attribute base $FFC794
 ; ---------------------------------------------------------------------------
-sub_15EB78:
+Map_PutRowBlockB:
 	movem.l	d0-d1,-(a7)
 	cmpi.w	#$40,d7
 	blt.s	loc_15EB9E

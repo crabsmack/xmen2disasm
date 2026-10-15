@@ -2,7 +2,7 @@
 ; BaniMazaA1_SwitchTileHook - map tile hook: a switch tile toggles (bit 9), redraws, moves the blocks of that row and plays sounds $DE/$E7; 40-frame cooldown
 ; In:  8(a6) = word column, $C(a6) = word row
 ; Out: d0 = 0
-; Evidence: cooldown -$3C94; sub_15D7D8 redraw; RollingDiscs_ReverseAtY(row*32); Snd_Play/Snd_Stop $DE, 3, $E7; installed in -$3AF4 by BaniMazaA1_InstallTileHooks
+; Evidence: cooldown -$3C94; Map_RefreshBlock redraw; RollingDiscs_ReverseAtY(row*32); Snd_Play/Snd_Stop $DE, 3, $E7; installed in -$3AF4 by BaniMazaA1_InstallTileHooks
 ; ---------------------------------------------------------------------------
 BaniMazaA1_SwitchTileHook:
 	link.w	a6,#$0
@@ -27,7 +27,7 @@ BaniMazaA1_SwitchTileHook:
 	move.l	d7,-(a7)
 	ext.l	d6
 	move.l	d6,-(a7)
-	jsr	$3FD2(a5)	; -> sub_15D7D8
+	jsr	$3FD2(a5)	; -> Map_RefreshBlock
 	ext.l	d7
 	move.l	d7,d0
 	lsl.l	#$5,d0

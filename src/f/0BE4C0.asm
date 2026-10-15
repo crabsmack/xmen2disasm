@@ -44,7 +44,7 @@ loc_0BE4FE:
 	move.l	d5,-(a7)
 	ext.l	d6
 	move.l	d6,-(a7)
-	jsr	$3FCA(a5)	; -> sub_15D00E
+	jsr	$3FCA(a5)	; -> Map_RedrawBlock
 	lea.l	$C(a7),a7
 	move.w	d7,d0
 	subq.w	#$1,d7

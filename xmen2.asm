@@ -1379,24 +1379,24 @@ Tbl_CerebroRenderToBitmap_Loop3:	; table read by Spr_RenderToBitmap_Loop; 180 of
 	incrom	$06364A,$180
 Tbl_CerebroRenderToBitmap_Loop4:	; table read by Spr_RenderToBitmap_Loop; 40C of 40C bytes used at runtime; read by Spr_RenderToBitmap_Loop, Nem_DecodeLoop, Mem_Copy; jt[444] used by Cerebro_PlayIntro
 	incrom	$0637CA,$40C
-Tbl_Cerebro:	; format not established; never read in the corpus; jt[445] used by loc_15C5D6
+Tbl_Cerebro:	; format not established; never read in the corpus; jt[445] used by Pause_HandleInput_EndCode
 	incrom	$063BD6,$4
-Tbl_Cerebro2:	; format not established; never read in the corpus; jt[446] used by loc_15C5D6
+Tbl_Cerebro2:	; format not established; never read in the corpus; jt[446] used by Pause_HandleInput_EndCode
 	incrom	$063BDA,$4
-Tbl_Cerebro3:	; format not established; never read in the corpus; jt[447] used by loc_15C5D6
+Tbl_Cerebro3:	; format not established; never read in the corpus; jt[447] used by Pause_HandleInput_EndCode
 	incrom	$063BDE,$4
-Tbl_Cerebro4:	; format not established; never read in the corpus; jt[448] used by loc_15C5D6
+Tbl_Cerebro4:	; format not established; never read in the corpus; jt[448] used by Pause_HandleInput_EndCode
 	incrom	$063BE2,$4
-Tbl_Cerebro5:	; format not established; never read in the corpus; jt[449] used by loc_15C5D6
+Tbl_Cerebro5:	; format not established; never read in the corpus; jt[449] used by Pause_HandleInput_EndCode
 	incrom	$063BE6,$4
-Tbl_Cerebro6:	; format not established; never read in the corpus; jt[450] used by loc_15C5D6
+Tbl_Cerebro6:	; format not established; never read in the corpus; jt[450] used by Pause_HandleInput_EndCode
 	incrom	$063BEA,$4
-Tbl_Cerebro7:	; format not established; never read in the corpus; jt[451] used by loc_15C5D6
+Tbl_Cerebro7:	; format not established; never read in the corpus; jt[451] used by Pause_HandleInput_EndCode
 	incrom	$063BEE,$8
-Tbl_Cerebro8:	; format not established; never read in the corpus; jt[452] used by loc_15C5D6
+Tbl_Cerebro8:	; format not established; never read in the corpus; jt[452] used by Pause_HandleInput_EndCode
 	incrom	$063BF6,$8
 	incrom	$063BFE,$8
-Tbl_Cerebro9:	; format not established; never read in the corpus; jt[454] used by loc_15C5D6
+Tbl_Cerebro9:	; format not established; never read in the corpus; jt[454] used by Pause_HandleInput_EndCode
 	incrom	$063C06,$A
 	incrom	$063C10,$12
 Art_FailureNem:	; Nemesis-style compressed 4bpp tiles (Nem_Decode; code table built from pairs by the caller); 38 of 38 bytes used at runtime; read by Nem_DecodeLoop, Nem_BuildCodeTable; jt[457] used by Failure_RunScene
@@ -3749,7 +3749,7 @@ Sw_11214E:	; switch table of sub at $11214E: 5 word offsets from Sw_11214E-2
 	include "src/f/112EA4.asm"
 	include "src/f/112F58.asm"
 	include "src/f/112F8E.asm"
-Tbl_DeathbirdVdp:	; words copied to the VDP data port by VDP_WriteWords; 18B of 1C8 bytes used at runtime; read by VDP_WriteWords; jt[1388] used by sub_15C306
+Tbl_DeathbirdVdp:	; words copied to the VDP data port by VDP_WriteWords; 18B of 1C8 bytes used at runtime; read by VDP_WriteWords; jt[1388] used by Pause_LoadSprite
 	incrom	$112FD8,$1C8
 Tbl_XPlayer_vtable:	; class descriptor "XPLAYER": word $F2 = name offset, long parent (ACTOR), 59 method pointers, then the class name string
 	incrom	$1131A0,$FA
@@ -5165,7 +5165,7 @@ Art_Tiles_15C230:	; uncompressed 4bpp tiles DMA'd to VRAM; 4 of 6 bytes used at 
 	include "src/f/15C41C.asm"
 	include "src/f/15C42A.asm"
 Sw_15C42A:	; switch table of sub at $15C42A: 9 word offsets from Sw_15C42A-2
-	dc.w	loc_15C49E-(Sw_15C42A-2), loc_15C4BA-(Sw_15C42A-2), loc_15C4E2-(Sw_15C42A-2), loc_15C4FE-(Sw_15C42A-2)
+	dc.w	Pause_CheatUnlock-(Sw_15C42A-2), loc_15C4BA-(Sw_15C42A-2), loc_15C4E2-(Sw_15C42A-2), loc_15C4FE-(Sw_15C42A-2)
 	dc.w	loc_15C51A-(Sw_15C42A-2), loc_15C564-(Sw_15C42A-2), loc_15C57E-(Sw_15C42A-2), loc_15C598-(Sw_15C42A-2)
 	dc.w	loc_15C5B2-(Sw_15C42A-2)
 	include "src/f/15C49E.asm"
@@ -5261,7 +5261,14 @@ Str_SpawnRecTag:	; empty C string: Mem_StackAlloc tag of the spawn records (Spaw
 	include "src/f/15FA2C.asm"
 	include "src/f/15FA7A.asm"
 	include "src/f/15FBAE.asm"
-	incrom	$15FBBE,$B2
+Tbl_SegaLogoFlash1:	; words: SEGA logo palette step colours (black, blue ramp up and down), $FFFF end; Intro_SegaLogoFlash phase 1, 4 frames per step
+	incrom	$15FBBE,$2E
+Tbl_SegaLogoFlash2:	; words: SEGA logo flash colours (blue-white-orange), $FFFF end; Intro_SegaLogoFlash phase 2, all 8 entries per step, $EEE also sets the entry before
+	incrom	$15FBEC,$1E
+Tbl_SegaLogoFlash3:	; words: SEGA logo fade colours (blue), $FFFF end; Intro_SegaLogoFlash phase 3, a button skips
+	incrom	$15FC0A,$1C
+Tbl_SegaLogoFlash4:	; words: SEGA logo sweep colours (blue ramp up and down), $FFFF end; Intro_SegaLogoFlash phase 4, a button skips
+	incrom	$15FC26,$4A
 	include "src/f/15FC70.asm"
 	include "src/f/15FC84.asm"
 	include "src/f/15FC9A.asm"
@@ -6385,7 +6392,7 @@ Tbl_ButtonConfigs:	; 6 control layouts x 8 bytes of joypad masks per action: a p
 	incrom	$1FDDD6,$30
 Tbl_SprSizeTiles:	; 16 bytes: tiles per hardware sprite size code 0-15 (w*h/64), read by Spr_UploadFrame / Spr_PreloadTiles (jt 2599 data)
 	incrom	$1FDE06,$10
-Tbl_SprSizeWidth:	; 16 bytes: pixel width per sprite size code (((s>>2)+1)*8); jt 2600 data (sub_15AE48, sub_1CF432)
+Tbl_SprSizeWidth:	; 16 bytes: pixel width per sprite size code (((s>>2)+1)*8); jt 2600 data (Spr_EmitFlicker, sub_1CF432)
 	incrom	$1FDE16,$10
 Tbl_SprSizeHeight:	; 16 bytes: pixel height per sprite size code (((s&3)+1)*8); jt 2601 data
 	incrom	$1FDE26,$10

@@ -2,7 +2,7 @@
 ; AvalonA2_ToggleTileHook - map tile hook: toggle tile bit 9 at (x,y), clear its palette/flip bits and redraw it (after RetractFloor_TriggerNearest on the row)
 ; In:  8(a6) = word column, $C(a6) = word row
 ; Out: d0 = 0
-; Evidence: installed in -$3AF0 by AvalonA2_InstallTileHooks; sub_15D7D8 redraws the cell
+; Evidence: installed in -$3AF0 by AvalonA2_InstallTileHooks; Map_RefreshBlock redraws the cell
 ; ---------------------------------------------------------------------------
 AvalonA2_ToggleTileHook:
 	link.w	a6,#$0
@@ -52,7 +52,7 @@ AvalonA2_ToggleTileHook:
 	move.l	d7,-(a7)
 	ext.l	d6
 	move.l	d6,-(a7)
-	jsr	$3FD2(a5)	; -> sub_15D7D8
+	jsr	$3FD2(a5)	; -> Map_RefreshBlock
 	moveq	#$0,d0
 	movem.l	-$10(a6),d5-d7/a4
 	unlk	a6

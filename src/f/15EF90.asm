@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_15EF90
+; Map_PutColBlockA - column streaming helper: write the 4 tile words of one block column to plane A (VRAM autoincrement 128)
+; In:  d1 = column in block, d2 = map cell, d3/d4, d6/d7, a2
+; Out: none
+; Evidence: wraps at row 32 with command $60000003; steps 4 words per tile down the block definition
 ; ---------------------------------------------------------------------------
-sub_15EF90:
+Map_PutColBlockA:
 	movem.l	d0-d1/d5,-(a7)
 	cmpi.w	#$20,d6
 	blt.s	loc_15EFB6

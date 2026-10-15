@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_15EC0E
+; Map_PutRowPartA - row streaming helper: write part of a block row (from tile d4 to d3) to plane A
+; In:  d1, d2, d3/d4 = end/start tile, d6/d7, a2
+; Out: none
+; Evidence: used for the partial blocks at both ends of a row; h-flip walks backwards
 ; ---------------------------------------------------------------------------
-sub_15EC0E:
+Map_PutRowPartA:
 	movem.l	d0-d1,-(a7)
 	cmpi.w	#$40,d7
 	blt.s	loc_15EC34

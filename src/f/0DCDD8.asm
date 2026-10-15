@@ -31,7 +31,7 @@ Blast_Draw:
 	lea.l	$3F6A(a5),a0
 	move.l	$2(a0),-(a7)
 	move.l	$90(a4),-(a7)
-	jsr	$3F2A(a5)	; -> sub_15AE48
+	jsr	$3F2A(a5)	; -> Spr_EmitFlicker
 	lea.l	$20(a7),a7
 	bra.s	loc_0DCE44
 loc_0DCE2E:

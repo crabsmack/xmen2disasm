@@ -19,7 +19,7 @@ BigAcolyte_ActAppear:
 	moveq	#$0,d0
 	move.l	d0,-(a7)
 	pea.l	BigAcolyte_LoadSprite(pc)
-	jsr	$3F3A(a5)	; -> sub_15B0E6
+	jsr	$3F3A(a5)	; -> Spr_ReloadDefs
 	movea.l	-$3CDA(a5),a0
 	move.w	#$400,$2(a0)
 	movea.l	-$3CDA(a5),a0

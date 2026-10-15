@@ -42,7 +42,7 @@ loc_1CF124:
 	move.l	d5,-(a7)
 	moveq	#$0,d1
 	move.l	d1,-(a7)
-	jsr	$3FC2(a5)	; -> sub_15CECC
+	jsr	$3FC2(a5)	; -> Tile_TestAt
 	tst.b	d0
 	lea.l	$18(a7),a7
 	beq.s	loc_1CF1AA
@@ -71,7 +71,7 @@ loc_1CF15E:
 	asr.l	#$8,d1
 	move.l	d1,-(a7)
 	move.l	d0,-(a7)
-	jsr	$3FC2(a5)	; -> sub_15CECC
+	jsr	$3FC2(a5)	; -> Tile_TestAt
 	tst.b	d0
 	lea.l	$18(a7),a7
 	bne.s	loc_1CF15E

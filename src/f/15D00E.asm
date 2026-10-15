@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_15D00E	[jt 2037]
+; Map_RedrawBlock - redraw one 32-px map block (4x4 tiles) into its plane in VRAM if it is on screen
+; In:  8(a6) = word block x, $C(a6) = word block y, $10(a6) = byte 0 FG (plane A) / 1 BG (plane B)
+; Out: none
+; Evidence: FG: map $FFC77C, tiles $FFC75A, attrs $FFC796; BG: $FFC778, $FFC774, $FFC794; clipped to the drawn row/column window $FFC730-$FFC736 and the camera
 ; ---------------------------------------------------------------------------
-sub_15D00E:
+Map_RedrawBlock:
 	link.w	a6,#$FFD0
 	movem.l	d3-d7/a4,-(a7)
 	move.w	$E(a6),d6

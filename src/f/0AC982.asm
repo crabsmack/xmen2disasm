@@ -2,7 +2,7 @@
 ; PerimeterDoor_StateCrumble - PERIMETERDOOR state: crumble - every 10 frames swap the 3x3 door tiles to the next broken set until open
 ; In:  8(a6) = this
 ; Out: d0
-; Evidence: reads the current tile at (+$90, +$8E) and writes the next set (per-scene tile ids) with sub_15D7F8; last set -> PerimeterDoor_StateWaitExit
+; Evidence: reads the current tile at (+$90, +$8E) and writes the next set (per-scene tile ids) with Map_SetBlockFG; last set -> PerimeterDoor_StateWaitExit
 ; Found: link-after-rts
 ; ---------------------------------------------------------------------------
 PerimeterDoor_StateCrumble:
@@ -195,7 +195,7 @@ loc_0ACBCA:
 	move.l	d7,-(a7)
 	ext.l	d6
 	move.l	d6,-(a7)
-	jsr	$3FDA(a5)	; -> sub_15D7F8
+	jsr	$3FDA(a5)	; -> Map_SetBlockFG
 	moveq	#$0,d0
 	move.l	d0,-(a7)
 	move.w	-$30(a6),d1
@@ -207,7 +207,7 @@ loc_0ACBCA:
 	move.l	d1,-(a7)
 	ext.l	d6
 	move.l	d6,-(a7)
-	jsr	$3FDA(a5)	; -> sub_15D7F8
+	jsr	$3FDA(a5)	; -> Map_SetBlockFG
 	moveq	#$0,d0
 	move.l	d0,-(a7)
 	move.w	-$18(a6),d1
@@ -219,7 +219,7 @@ loc_0ACBCA:
 	move.l	d1,-(a7)
 	ext.l	d6
 	move.l	d6,-(a7)
-	jsr	$3FDA(a5)	; -> sub_15D7F8
+	jsr	$3FDA(a5)	; -> Map_SetBlockFG
 	moveq	#$0,d0
 	move.l	d0,-(a7)
 	move.w	-$44(a6),d1
@@ -231,7 +231,7 @@ loc_0ACBCA:
 	move.l	d6,d1
 	addq.l	#$1,d1
 	move.l	d1,-(a7)
-	jsr	$3FDA(a5)	; -> sub_15D7F8
+	jsr	$3FDA(a5)	; -> Map_SetBlockFG
 	moveq	#$0,d0
 	move.l	d0,-(a7)
 	move.w	-$2E(a6),d1
@@ -245,7 +245,7 @@ loc_0ACBCA:
 	move.l	d6,d1
 	addq.l	#$1,d1
 	move.l	d1,-(a7)
-	jsr	$3FDA(a5)	; -> sub_15D7F8
+	jsr	$3FDA(a5)	; -> Map_SetBlockFG
 	moveq	#$0,d0
 	move.l	d0,-(a7)
 	move.w	-$16(a6),d1
@@ -259,7 +259,7 @@ loc_0ACBCA:
 	move.l	d6,d1
 	addq.l	#$1,d1
 	move.l	d1,-(a7)
-	jsr	$3FDA(a5)	; -> sub_15D7F8
+	jsr	$3FDA(a5)	; -> Map_SetBlockFG
 	moveq	#$0,d0
 	move.l	d0,-(a7)
 	move.w	-$42(a6),d1
@@ -271,7 +271,7 @@ loc_0ACBCA:
 	move.l	d6,d1
 	addq.l	#$2,d1
 	move.l	d1,-(a7)
-	jsr	$3FDA(a5)	; -> sub_15D7F8
+	jsr	$3FDA(a5)	; -> Map_SetBlockFG
 	moveq	#$0,d0
 	move.l	d0,-(a7)
 	move.w	-$2C(a6),d1
@@ -285,7 +285,7 @@ loc_0ACBCA:
 	move.l	d6,d1
 	addq.l	#$2,d1
 	move.l	d1,-(a7)
-	jsr	$3FDA(a5)	; -> sub_15D7F8
+	jsr	$3FDA(a5)	; -> Map_SetBlockFG
 	moveq	#$0,d0
 	move.l	d0,-(a7)
 	move.w	-$14(a6),d1
@@ -299,7 +299,7 @@ loc_0ACBCA:
 	move.l	d6,d1
 	addq.l	#$2,d1
 	move.l	d1,-(a7)
-	jsr	$3FDA(a5)	; -> sub_15D7F8
+	jsr	$3FDA(a5)	; -> Map_SetBlockFG
 	lea.l	$90(a7),a7
 	bra.w	loc_0AD042
 loc_0ACCE6:
@@ -315,7 +315,7 @@ loc_0ACCE6:
 	move.l	d7,-(a7)
 	ext.l	d6
 	move.l	d6,-(a7)
-	jsr	$3FDA(a5)	; -> sub_15D7F8
+	jsr	$3FDA(a5)	; -> Map_SetBlockFG
 	moveq	#$0,d0
 	move.l	d0,-(a7)
 	move.w	-$2A(a6),d1
@@ -327,7 +327,7 @@ loc_0ACCE6:
 	move.l	d1,-(a7)
 	ext.l	d6
 	move.l	d6,-(a7)
-	jsr	$3FDA(a5)	; -> sub_15D7F8
+	jsr	$3FDA(a5)	; -> Map_SetBlockFG
 	moveq	#$0,d0
 	move.l	d0,-(a7)
 	move.w	-$12(a6),d1
@@ -339,7 +339,7 @@ loc_0ACCE6:
 	move.l	d1,-(a7)
 	ext.l	d6
 	move.l	d6,-(a7)
-	jsr	$3FDA(a5)	; -> sub_15D7F8
+	jsr	$3FDA(a5)	; -> Map_SetBlockFG
 	moveq	#$0,d0
 	move.l	d0,-(a7)
 	move.w	-$3E(a6),d1
@@ -351,7 +351,7 @@ loc_0ACCE6:
 	move.l	d6,d1
 	addq.l	#$1,d1
 	move.l	d1,-(a7)
-	jsr	$3FDA(a5)	; -> sub_15D7F8
+	jsr	$3FDA(a5)	; -> Map_SetBlockFG
 	moveq	#$0,d0
 	move.l	d0,-(a7)
 	move.w	-$28(a6),d1
@@ -365,7 +365,7 @@ loc_0ACCE6:
 	move.l	d6,d1
 	addq.l	#$1,d1
 	move.l	d1,-(a7)
-	jsr	$3FDA(a5)	; -> sub_15D7F8
+	jsr	$3FDA(a5)	; -> Map_SetBlockFG
 	moveq	#$0,d0
 	move.l	d0,-(a7)
 	move.w	-$10(a6),d1
@@ -379,7 +379,7 @@ loc_0ACCE6:
 	move.l	d6,d1
 	addq.l	#$1,d1
 	move.l	d1,-(a7)
-	jsr	$3FDA(a5)	; -> sub_15D7F8
+	jsr	$3FDA(a5)	; -> Map_SetBlockFG
 	moveq	#$0,d0
 	move.l	d0,-(a7)
 	move.w	-$3C(a6),d1
@@ -391,7 +391,7 @@ loc_0ACCE6:
 	move.l	d6,d1
 	addq.l	#$2,d1
 	move.l	d1,-(a7)
-	jsr	$3FDA(a5)	; -> sub_15D7F8
+	jsr	$3FDA(a5)	; -> Map_SetBlockFG
 	moveq	#$0,d0
 	move.l	d0,-(a7)
 	move.w	-$26(a6),d1
@@ -405,7 +405,7 @@ loc_0ACCE6:
 	move.l	d6,d1
 	addq.l	#$2,d1
 	move.l	d1,-(a7)
-	jsr	$3FDA(a5)	; -> sub_15D7F8
+	jsr	$3FDA(a5)	; -> Map_SetBlockFG
 	moveq	#$0,d0
 	move.l	d0,-(a7)
 	move.w	-$E(a6),d1
@@ -419,7 +419,7 @@ loc_0ACCE6:
 	move.l	d6,d1
 	addq.l	#$2,d1
 	move.l	d1,-(a7)
-	jsr	$3FDA(a5)	; -> sub_15D7F8
+	jsr	$3FDA(a5)	; -> Map_SetBlockFG
 	lea.l	$90(a7),a7
 	bra.w	loc_0AD042
 loc_0ACE02:
@@ -434,7 +434,7 @@ loc_0ACE02:
 	move.l	d7,-(a7)
 	ext.l	d6
 	move.l	d6,-(a7)
-	jsr	$3FDA(a5)	; -> sub_15D7F8
+	jsr	$3FDA(a5)	; -> Map_SetBlockFG
 	moveq	#$0,d0
 	move.l	d0,-(a7)
 	move.w	-$24(a6),d1
@@ -446,7 +446,7 @@ loc_0ACE02:
 	move.l	d1,-(a7)
 	ext.l	d6
 	move.l	d6,-(a7)
-	jsr	$3FDA(a5)	; -> sub_15D7F8
+	jsr	$3FDA(a5)	; -> Map_SetBlockFG
 	moveq	#$0,d0
 	move.l	d0,-(a7)
 	move.w	-$C(a6),d1
@@ -458,7 +458,7 @@ loc_0ACE02:
 	move.l	d1,-(a7)
 	ext.l	d6
 	move.l	d6,-(a7)
-	jsr	$3FDA(a5)	; -> sub_15D7F8
+	jsr	$3FDA(a5)	; -> Map_SetBlockFG
 	moveq	#$0,d0
 	move.l	d0,-(a7)
 	move.w	-$3A(a6),d1
@@ -470,7 +470,7 @@ loc_0ACE02:
 	move.l	d6,d1
 	addq.l	#$1,d1
 	move.l	d1,-(a7)
-	jsr	$3FDA(a5)	; -> sub_15D7F8
+	jsr	$3FDA(a5)	; -> Map_SetBlockFG
 	moveq	#$0,d0
 	move.l	d0,-(a7)
 	move.w	-$22(a6),d1
@@ -484,7 +484,7 @@ loc_0ACE02:
 	move.l	d6,d1
 	addq.l	#$1,d1
 	move.l	d1,-(a7)
-	jsr	$3FDA(a5)	; -> sub_15D7F8
+	jsr	$3FDA(a5)	; -> Map_SetBlockFG
 	moveq	#$0,d0
 	move.l	d0,-(a7)
 	move.w	-$A(a6),d1
@@ -498,7 +498,7 @@ loc_0ACE02:
 	move.l	d6,d1
 	addq.l	#$1,d1
 	move.l	d1,-(a7)
-	jsr	$3FDA(a5)	; -> sub_15D7F8
+	jsr	$3FDA(a5)	; -> Map_SetBlockFG
 	moveq	#$0,d0
 	move.l	d0,-(a7)
 	move.w	-$38(a6),d1
@@ -510,7 +510,7 @@ loc_0ACE02:
 	move.l	d6,d1
 	addq.l	#$2,d1
 	move.l	d1,-(a7)
-	jsr	$3FDA(a5)	; -> sub_15D7F8
+	jsr	$3FDA(a5)	; -> Map_SetBlockFG
 	moveq	#$0,d0
 	move.l	d0,-(a7)
 	move.w	-$20(a6),d1
@@ -524,7 +524,7 @@ loc_0ACE02:
 	move.l	d6,d1
 	addq.l	#$2,d1
 	move.l	d1,-(a7)
-	jsr	$3FDA(a5)	; -> sub_15D7F8
+	jsr	$3FDA(a5)	; -> Map_SetBlockFG
 	moveq	#$0,d0
 	move.l	d0,-(a7)
 	move.w	-$8(a6),d1
@@ -538,7 +538,7 @@ loc_0ACE02:
 	move.l	d6,d1
 	addq.l	#$2,d1
 	move.l	d1,-(a7)
-	jsr	$3FDA(a5)	; -> sub_15D7F8
+	jsr	$3FDA(a5)	; -> Map_SetBlockFG
 	lea.l	$90(a7),a7
 	bra.w	loc_0AD042
 loc_0ACF1A:
@@ -553,7 +553,7 @@ loc_0ACF1A:
 	move.l	d7,-(a7)
 	ext.l	d6
 	move.l	d6,-(a7)
-	jsr	$3FDA(a5)	; -> sub_15D7F8
+	jsr	$3FDA(a5)	; -> Map_SetBlockFG
 	moveq	#$0,d0
 	move.l	d0,-(a7)
 	move.w	-$1E(a6),d1
@@ -565,7 +565,7 @@ loc_0ACF1A:
 	move.l	d1,-(a7)
 	ext.l	d6
 	move.l	d6,-(a7)
-	jsr	$3FDA(a5)	; -> sub_15D7F8
+	jsr	$3FDA(a5)	; -> Map_SetBlockFG
 	moveq	#$0,d0
 	move.l	d0,-(a7)
 	move.w	-$6(a6),d1
@@ -577,7 +577,7 @@ loc_0ACF1A:
 	move.l	d1,-(a7)
 	ext.l	d6
 	move.l	d6,-(a7)
-	jsr	$3FDA(a5)	; -> sub_15D7F8
+	jsr	$3FDA(a5)	; -> Map_SetBlockFG
 	moveq	#$0,d0
 	move.l	d0,-(a7)
 	move.w	-$34(a6),d1
@@ -589,7 +589,7 @@ loc_0ACF1A:
 	move.l	d6,d1
 	addq.l	#$1,d1
 	move.l	d1,-(a7)
-	jsr	$3FDA(a5)	; -> sub_15D7F8
+	jsr	$3FDA(a5)	; -> Map_SetBlockFG
 	moveq	#$0,d0
 	move.l	d0,-(a7)
 	move.w	-$1C(a6),d1
@@ -603,7 +603,7 @@ loc_0ACF1A:
 	move.l	d6,d1
 	addq.l	#$1,d1
 	move.l	d1,-(a7)
-	jsr	$3FDA(a5)	; -> sub_15D7F8
+	jsr	$3FDA(a5)	; -> Map_SetBlockFG
 	moveq	#$0,d0
 	move.l	d0,-(a7)
 	move.w	-$4(a6),d1
@@ -617,7 +617,7 @@ loc_0ACF1A:
 	move.l	d6,d1
 	addq.l	#$1,d1
 	move.l	d1,-(a7)
-	jsr	$3FDA(a5)	; -> sub_15D7F8
+	jsr	$3FDA(a5)	; -> Map_SetBlockFG
 	moveq	#$0,d0
 	move.l	d0,-(a7)
 	move.w	-$32(a6),d1
@@ -629,7 +629,7 @@ loc_0ACF1A:
 	move.l	d6,d1
 	addq.l	#$2,d1
 	move.l	d1,-(a7)
-	jsr	$3FDA(a5)	; -> sub_15D7F8
+	jsr	$3FDA(a5)	; -> Map_SetBlockFG
 	moveq	#$0,d0
 	move.l	d0,-(a7)
 	move.w	-$1A(a6),d1
@@ -643,7 +643,7 @@ loc_0ACF1A:
 	move.l	d6,d1
 	addq.l	#$2,d1
 	move.l	d1,-(a7)
-	jsr	$3FDA(a5)	; -> sub_15D7F8
+	jsr	$3FDA(a5)	; -> Map_SetBlockFG
 	moveq	#$0,d0
 	move.l	d0,-(a7)
 	move.w	-$2(a6),d1
@@ -657,7 +657,7 @@ loc_0ACF1A:
 	move.l	d6,d1
 	addq.l	#$2,d1
 	move.l	d1,-(a7)
-	jsr	$3FDA(a5)	; -> sub_15D7F8
+	jsr	$3FDA(a5)	; -> Map_SetBlockFG
 	lea.l	$90(a7),a7
 	clr.w	$6C(a4)
 	lea.l	PerimeterDoor_StateWaitExit(pc),a0

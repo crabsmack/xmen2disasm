@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_15D858	[jt 2040]
+; Map_SetBlockFGFlip - change a FG map cell's block and flip bits and redraw it
+; In:  8(a6) = word x, $C(a6) = word y, $10(a6) = word block, $14(a6) = byte keep hook bits, $18/$1C(a6) = bytes flip ($200/$400)
+; Out: none
+; Evidence: (old & $F800) | block | flips; Map_RedrawBlock(x, y, 0)
 ; ---------------------------------------------------------------------------
-sub_15D858:
+Map_SetBlockFGFlip:
 	link.w	a6,#$0
 	movem.l	d5-d7/a4,-(a7)
 	move.w	$E(a6),d5
@@ -40,7 +43,7 @@ loc_15D8B0:
 	move.l	d5,-(a7)
 	ext.l	d6
 	move.l	d6,-(a7)
-	jsr	sub_15D00E(pc)
+	jsr	Map_RedrawBlock(pc)
 	movem.l	-$10(a6),d5-d7/a4
 	unlk	a6
 	rts

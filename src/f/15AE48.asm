@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_15AE48	[jt 2017]
+; Spr_EmitFlicker - write an object's current frame pieces straight to the sprite table with optional flicker and per-frame flips (effects)
+; In:  8(a6) = object, $C(a6) = tile index table, $10(a6) = sprite instance (+6 VRAM base), $14(a6) = byte flicker on, $18(a6) = byte flicker mask, $1C(a6) = byte palette, $20(a6) = byte h-flip mask, $24(a6) = byte v-flip mask
+; Out: none
+; Evidence: frame record +$10 piece count (limited to 80 - g_SprIndex), +$12 piece list; flips toggled by g_VBlankCount & mask; Tbl_SprSizeHeight / width table for flipped offsets; callers BioNpc_DrawStunned, Blast_Draw
 ; ---------------------------------------------------------------------------
-sub_15AE48:
+Spr_EmitFlicker:
 	link.w	a6,#$FFE4
 	movem.l	d3-d7/a3-a4,-(a7)
 	movea.l	$8(a6),a3

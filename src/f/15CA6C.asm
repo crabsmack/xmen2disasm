@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_15CA6C	[link-after-rts]
+; Pause_Loop - paused: wait frame by frame running the pause input until a resume is requested
+; In:  none
+; Out: none
+; Evidence: clears the direction/button latch bits $F0, then loop {g_DmaFlushReq = 1, Pause_HandleInput, VDP_WaitVBlank} until g_PauseExit
 ; ---------------------------------------------------------------------------
-sub_15CA6C:
+Pause_Loop:
 	link.w	a6,#$0
 	move.w	#$FF0F,d0
 	and.w	g_Pad1Latch(a5),d0
@@ -12,7 +15,7 @@ sub_15CA6C:
 loc_15CA88:
 	clr.b	-$3A08(a5)
 	move.b	#$1,g_DmaFlushReq(a5)
-	jsr	sub_15C42A(pc)
+	jsr	Pause_HandleInput(pc)
 	jsr	$5112(a5)	; -> VDP_WaitVBlank
 	tst.b	g_PauseExit(a5)
 	beq.s	loc_15CA88

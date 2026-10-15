@@ -2,7 +2,7 @@
 ; AvalonB2_TileHook - map tile hook: turn tile $1A/$1B at (x,y) into tile $19
 ; In:  8(a6) = word column, $C(a6) = word row
 ; Out: d0 = 1
-; Evidence: same shape as AvalonB1_TileHook; sub_15D7F8 (set map tile); installed in -$3AF4 by AvalonB2_InstallTileHooks
+; Evidence: same shape as AvalonB1_TileHook; Map_SetBlockFG (set map tile); installed in -$3AF4 by AvalonB2_InstallTileHooks
 ; ---------------------------------------------------------------------------
 AvalonB2_TileHook:
 	link.w	a6,#$0
@@ -34,7 +34,7 @@ loc_022780:
 	move.l	d5,-(a7)
 	ext.l	d6
 	move.l	d6,-(a7)
-	jsr	$3FDA(a5)	; -> sub_15D7F8
+	jsr	$3FDA(a5)	; -> Map_SetBlockFG
 	lea.l	$10(a7),a7
 loc_022798:
 	moveq	#$1,d0

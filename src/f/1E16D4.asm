@@ -38,7 +38,7 @@ loc_1E1712:
 	ext.l	d0
 	move.l	d0,-(a7)
 	move.l	a3,-(a7)
-	jsr	$3FC2(a5)	; -> sub_15CECC
+	jsr	$3FC2(a5)	; -> Tile_TestAt
 	lea.l	$18(a7),a7
 	tst.b	d0
 	bne.s	loc_1E174A

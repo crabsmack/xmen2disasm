@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_15CAA4	[jt 2034]
+; Pause_Check - per-frame Start check: pause the game, or let a waiting player join with a life
+; In:  none
+; Out: d0
+; Evidence: needs the HUD sprite flag and no fade, a live player; Start by a live player -> Snd_Pause, Pause_LoadSprite/ShowText/LinkSprites/Loop/RestoreLink, Snd_Resume; Start by a dead player with lives -> Player1_StartLife / Player2_StartLife
 ; ---------------------------------------------------------------------------
-sub_15CAA4:
+Pause_Check:
 	link.w	a6,#$0
 	moveq	#$0,d0
 	move.l	d0,g_PauseCheatPtr(a5)
@@ -40,11 +43,11 @@ loc_15CAFE:
 	and.w	g_Pad1Latch(a5),d0
 	move.w	d0,g_Pad1Latch(a5)
 	jsr	$5232(a5)	; -> Snd_Pause
-	jsr	sub_15C306(pc)
-	jsr	sub_15C32E(pc)
-	jsr	sub_15C39A(pc)
-	jsr	sub_15CA6C(pc)
-	jsr	sub_15C41C(pc)
+	jsr	Pause_LoadSprite(pc)
+	jsr	Pause_ShowText(pc)
+	jsr	Pause_LinkSprites(pc)
+	jsr	Pause_Loop(pc)
+	jsr	Pause_RestoreLink(pc)
 	jsr	$523A(a5)	; -> Snd_Resume
 loc_15CB30:
 	unlk	a6

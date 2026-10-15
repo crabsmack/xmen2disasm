@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_15AD8A	[jt 2015]
+; SegHook_HurtPlayerStop - segment-type hook: touching this segment stops the object and hurts a player (1 damage, type 4)
+; In:  8(a6) = word event (0 = touch), $C(a6) = segment, $10(a6) = object, $14(a6) = pointer flags
+; Out: d0 = 0
+; Evidence: event 0: *flags &= ~8, obj +4 |= $100 (blocked); players without hit cooldown -> vtable +$26(obj, 0, 4, 1, 0, 0); installed in the segment hook table (-$3402 = type $16) by scene code
 ; ---------------------------------------------------------------------------
-sub_15AD8A:
+SegHook_HurtPlayerStop:
 	link.w	a6,#$0
 	move.l	a4,-(a7)
 	movea.l	$10(a6),a4

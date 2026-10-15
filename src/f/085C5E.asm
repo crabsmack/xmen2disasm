@@ -2,7 +2,7 @@
 ; LittleLeg_New - LITTLELEG slot +$0A: create a little-leg object at (x, y): three sprites, an update timer and a draw-list entry
 ; In:  8(a6) = unused, $C(a6) = word x, $10(a6) = word y
 ; Out: d0 = object (0 if out of memory)
-; Evidence: Mem_StackAlloc($68), Mem_Set, vtable Tbl_LittleLeg_vtable, x/y into +4/+8 and +6/+A, three sprite instances via sub_15B18A, walking on; Timer_Create(slot +$0E, 1, this, 1) -> +$62; DrawList_Add(slot +$12, ...) -> +$66; called by BroodBoss_StateSetup at (x+$6A, y-$24); TAS 49291
+; Evidence: Mem_StackAlloc($68), Mem_Set, vtable Tbl_LittleLeg_vtable, x/y into +4/+8 and +6/+A, three sprite instances via Spr_SetFromDef, walking on; Timer_Create(slot +$0E, 1, this, 1) -> +$62; DrawList_Add(slot +$12, ...) -> +$66; called by BroodBoss_StateSetup at (x+$6A, y-$24); TAS 49291
 ; Found: jt 612
 ; ---------------------------------------------------------------------------
 LittleLeg_New:
@@ -32,19 +32,19 @@ LittleLeg_New:
 	ext.l	d0
 	move.l	d0,-(a7)
 	pea.l	$16(a4)
-	jsr	$3F42(a5)	; -> sub_15B18A
+	jsr	$3F42(a5)	; -> Spr_SetFromDef
 	ori.b	#$4,$16(a4)
 	move.w	-$3B04(a5),d0
 	ext.l	d0
 	move.l	d0,-(a7)
 	pea.l	$32(a4)
-	jsr	$3F42(a5)	; -> sub_15B18A
+	jsr	$3F42(a5)	; -> Spr_SetFromDef
 	ori.b	#$4,$32(a4)
 	move.w	-$3B04(a5),d0
 	ext.l	d0
 	move.l	d0,-(a7)
 	pea.l	$4E(a4)
-	jsr	$3F42(a5)	; -> sub_15B18A
+	jsr	$3F42(a5)	; -> Spr_SetFromDef
 	ori.b	#$4,$4E(a4)
 	clr.b	$C(a4)
 	moveq	#$1,d0

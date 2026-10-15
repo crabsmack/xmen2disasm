@@ -11,7 +11,7 @@ sub_1F5594:
 loc_1F55A6:
 	move.l	d5,-(a7)
 	move.l	$8(a6),-(a7)
-	jsr	$4152(a5)	; -> sub_15FC84
+	jsr	$4152(a5)	; -> Bitmap_Test
 	tst.l	d0
 	addq.w	#$8,a7
 	beq.s	loc_1F55FC

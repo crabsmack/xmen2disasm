@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_15AA20	[jt 2012]
+; Seg_FindAbove - find the nearest in-use floor segment above a point (within a layer limit), scanning the segment grid upward
+; In:  8(a6) = word x, $C(a6) = word y, $10(a6) = word max layer
+; Out: d0 = segment or 0
+; Evidence: Seg_GridCell lists at $FFCD88; segment +0 bit 7 in use, +2 layer <= limit, x within x1..x2, lowest point above y; steps one grid row (1 << $FFCD80) up per pass; callers SmallBrood/Tusk/XClone/BroodBoss Init (ceiling limits)
 ; ---------------------------------------------------------------------------
-sub_15AA20:
+Seg_FindAbove:
 	link.w	a6,#$FFF2
 	movem.l	d3-d7/a3-a4,-(a7)
 	move.w	$E(a6),d0

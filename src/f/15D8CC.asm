@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_15D8CC	[jt 2041]
+; Map_SetBlockBG - change the block number of a BG map cell and redraw it
+; In:  8(a6) = word x, $C(a6) = word y, $10(a6) = word block, $14(a6) = byte keep hook bits
+; Out: none
+; Evidence: cell in $FFC778 via $FFC78A; Map_RedrawBlock(x, y, 1)
 ; ---------------------------------------------------------------------------
-sub_15D8CC:
+Map_SetBlockBG:
 	link.w	a6,#$0
 	movem.l	d5-d7/a4,-(a7)
 	move.w	$E(a6),d5
@@ -32,7 +35,7 @@ loc_15D910:
 	move.l	d5,-(a7)
 	ext.l	d6
 	move.l	d6,-(a7)
-	jsr	sub_15D00E(pc)
+	jsr	Map_RedrawBlock(pc)
 	movem.l	-$10(a6),d5-d7/a4
 	unlk	a6
 	rts

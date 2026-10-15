@@ -37,7 +37,7 @@ loc_03521A:
 	move.l	d6,-(a7)
 	ext.l	d7
 	move.l	d7,-(a7)
-	jsr	$3FDA(a5)	; -> sub_15D7F8
+	jsr	$3FDA(a5)	; -> Map_SetBlockFG
 	lea.l	$10(a7),a7
 	bra.w	loc_035304
 loc_03525E:
@@ -50,7 +50,7 @@ loc_03525E:
 	move.l	d6,-(a7)
 	ext.l	d7
 	move.l	d7,-(a7)
-	jsr	$3FDA(a5)	; -> sub_15D7F8
+	jsr	$3FDA(a5)	; -> Map_SetBlockFG
 	lea.l	$10(a7),a7
 	bra.w	loc_035304
 loc_035280:
@@ -63,7 +63,7 @@ loc_035280:
 	move.l	d6,-(a7)
 	ext.l	d7
 	move.l	d7,-(a7)
-	jsr	$3FDA(a5)	; -> sub_15D7F8
+	jsr	$3FDA(a5)	; -> Map_SetBlockFG
 	lea.l	$10(a7),a7
 	bra.s	loc_035304
 loc_0352A0:
@@ -76,7 +76,7 @@ loc_0352A0:
 	move.l	d6,-(a7)
 	ext.l	d7
 	move.l	d7,-(a7)
-	jsr	$3FDA(a5)	; -> sub_15D7F8
+	jsr	$3FDA(a5)	; -> Map_SetBlockFG
 	lea.l	$10(a7),a7
 	bra.s	loc_035304
 loc_0352C0:
@@ -107,7 +107,7 @@ loc_0352C0:
 	move.l	d6,-(a7)
 	ext.l	d7
 	move.l	d7,-(a7)
-	jsr	$3FDA(a5)	; -> sub_15D7F8
+	jsr	$3FDA(a5)	; -> Map_SetBlockFG
 	lea.l	$1C(a7),a7
 loc_035304:
 	moveq	#$1A,d0

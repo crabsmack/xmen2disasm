@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_15EE48	[convert.py]
+; Map_StreamRows - vertical scrolling: draw the tile rows uncovered since the last frame for plane A and (when enabled) plane B
+; In:  none
+; Out: none
+; Evidence: drawn y $FFC734 moves 8 px per row toward camera y $FFC73C (Map_DrawRowA); plane B $FFC730 toward $FFC738 when $FFC79C and not locked ($FFC74A); skipped rows while $FFC74E
 ; ---------------------------------------------------------------------------
-sub_15EE48:
+Map_StreamRows:
 	movem.l	d1-d7/a1-a4,-(a7)
 	movea.l	-$3A84(a5),a4
 	movea.l	-$3AA6(a5),a2
@@ -35,7 +38,7 @@ loc_15EE96:
 	andi.w	#$1F,d6
 	tst.b	-$3AB2(a5)
 	bne.s	loc_15EEAC
-	bsr.w	sub_15ED56
+	bsr.w	Map_DrawRowA
 loc_15EEAC:
 	dbra	d0,loc_15EE96
 	bra.s	loc_15EEEA
@@ -55,7 +58,7 @@ loc_15EEB2:
 loc_15EED0:
 	tst.b	-$3AB2(a5)
 	bne.s	loc_15EEDA
-	bsr.w	sub_15ED56
+	bsr.w	Map_DrawRowA
 loc_15EEDA:
 	addq.w	#$8,-$3ACC(a5)
 	addq.w	#$1,d5
@@ -100,7 +103,7 @@ loc_15EF44:
 	andi.w	#$1F,d6
 	tst.b	-$3AB2(a5)
 	bne.s	loc_15EF5A
-	bsr.w	sub_15EDCC
+	bsr.w	Map_DrawRowB
 loc_15EF5A:
 	dbra	d0,loc_15EF44
 	bra.s	loc_15EF8A
@@ -114,7 +117,7 @@ loc_15EF60:
 loc_15EF70:
 	tst.b	-$3AB2(a5)
 	bne.s	loc_15EF7A
-	bsr.w	sub_15EDCC
+	bsr.w	Map_DrawRowB
 loc_15EF7A:
 	addq.w	#$8,-$3AD0(a5)
 	addq.w	#$1,d5

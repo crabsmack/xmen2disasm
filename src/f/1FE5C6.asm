@@ -2,7 +2,7 @@
 ; Snd_Pause - pause sound output (driver command $0C) unless muted
 ; In:  none
 ; Out: none
-; Evidence: only caller sub_15CAA4 sends it when Start is pressed, before the pause-screen loop; Snd_Resume ($0D) follows
+; Evidence: only caller Pause_Check sends it when Start is pressed, before the pause-screen loop; Snd_Resume ($0D) follows
 ; ---------------------------------------------------------------------------
 Snd_Pause:
 	jsr	Z80_BusAcquire(pc)

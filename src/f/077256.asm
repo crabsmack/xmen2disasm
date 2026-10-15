@@ -2,7 +2,7 @@
 ; CloneA1_AnimTilesTimer - CloneA1 60-frame timer: swap two animated tile sets (alternating halves) and DMA-fill the unused half
 ; In:  none
 ; Out: none
-; Evidence: Timer_Create(sub_15B0D0, $3C, CloneA1_AnimTilesTimer, 1) in CloneA1_RunScene; VDP_DmaToVram from jt $7609A / $7658A data to tiles -$3B10 / -$3AAE; VDP DMA fill with auto-increment 1
+; Evidence: Timer_Create(Timer_SetVBlankHookCb, $3C, CloneA1_AnimTilesTimer, 1) in CloneA1_RunScene; VDP_DmaToVram from jt $7609A / $7658A data to tiles -$3B10 / -$3AAE; VDP DMA fill with auto-increment 1
 ; ---------------------------------------------------------------------------
 CloneA1_AnimTilesTimer:
 	move.l	g_VBlankCount(a5),d1

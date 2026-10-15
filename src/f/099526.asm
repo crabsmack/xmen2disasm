@@ -2,7 +2,7 @@
 ; XClone_TileHookOpenWall - clone-maker tile hook [3]: once the reward flag is set (and no player is Magneto), blast open the wall at map columns $5A-$5B rows $19-$1D
 ; In:  8(a6) = word column, $A(a6) = word row, $10(a6) = object
 ; Out: d0 = 0
-; Evidence: rewrites map tiles via sub_15D7F8/sub_15D858, explosions along x $B50/$B70, clears tile priority bits, sound $35, removes the solid block (sub_1F8454/Seg_Free); installed in $FFC714
+; Evidence: rewrites map tiles via Map_SetBlockFG/Map_SetBlockFGFlip, explosions along x $B50/$B70, clears tile priority bits, sound $35, removes the solid block (sub_1F8454/Seg_Free); installed in $FFC714
 ; Found: link-after-rts
 ; ---------------------------------------------------------------------------
 XClone_TileHookOpenWall:
@@ -123,7 +123,7 @@ loc_09963E:
 	move.l	d6,-(a7)
 	moveq	#$5A,d0
 	move.l	d0,-(a7)
-	jsr	$3FDA(a5)	; -> sub_15D7F8
+	jsr	$3FDA(a5)	; -> Map_SetBlockFG
 	moveq	#$0,d0
 	move.l	d0,-(a7)
 	moveq	#$4,d1
@@ -132,7 +132,7 @@ loc_09963E:
 	move.l	d6,-(a7)
 	moveq	#$5B,d0
 	move.l	d0,-(a7)
-	jsr	$3FDA(a5)	; -> sub_15D7F8
+	jsr	$3FDA(a5)	; -> Map_SetBlockFG
 	move.w	d6,d0
 	addq.w	#$1,d6
 	moveq	#$0,d0
@@ -143,7 +143,7 @@ loc_09963E:
 	move.l	d6,-(a7)
 	moveq	#$5A,d0
 	move.l	d0,-(a7)
-	jsr	$3FDA(a5)	; -> sub_15D7F8
+	jsr	$3FDA(a5)	; -> Map_SetBlockFG
 	moveq	#$0,d0
 	move.l	d0,-(a7)
 	moveq	#$4A,d1
@@ -152,7 +152,7 @@ loc_09963E:
 	move.l	d6,-(a7)
 	moveq	#$5B,d0
 	move.l	d0,-(a7)
-	jsr	$3FDA(a5)	; -> sub_15D7F8
+	jsr	$3FDA(a5)	; -> Map_SetBlockFG
 	move.w	d6,d0
 	addq.w	#$1,d6
 	moveq	#$0,d0
@@ -163,7 +163,7 @@ loc_09963E:
 	move.l	d6,-(a7)
 	moveq	#$5A,d0
 	move.l	d0,-(a7)
-	jsr	$3FDA(a5)	; -> sub_15D7F8
+	jsr	$3FDA(a5)	; -> Map_SetBlockFG
 	moveq	#$0,d0
 	move.l	d0,-(a7)
 	moveq	#$4B,d1
@@ -172,7 +172,7 @@ loc_09963E:
 	move.l	d6,-(a7)
 	moveq	#$5B,d0
 	move.l	d0,-(a7)
-	jsr	$3FDA(a5)	; -> sub_15D7F8
+	jsr	$3FDA(a5)	; -> Map_SetBlockFG
 	move.w	d6,d0
 	addq.w	#$1,d6
 	moveq	#$0,d0
@@ -183,7 +183,7 @@ loc_09963E:
 	move.l	d6,-(a7)
 	moveq	#$5A,d0
 	move.l	d0,-(a7)
-	jsr	$3FDA(a5)	; -> sub_15D7F8
+	jsr	$3FDA(a5)	; -> Map_SetBlockFG
 	moveq	#$0,d0
 	move.l	d0,-(a7)
 	moveq	#$4B,d1
@@ -192,7 +192,7 @@ loc_09963E:
 	move.l	d6,-(a7)
 	moveq	#$5B,d0
 	move.l	d0,-(a7)
-	jsr	$3FDA(a5)	; -> sub_15D7F8
+	jsr	$3FDA(a5)	; -> Map_SetBlockFG
 	move.w	d6,d0
 	addq.w	#$1,d6
 	moveq	#$1,d0
@@ -206,7 +206,7 @@ loc_09963E:
 	move.l	d6,-(a7)
 	moveq	#$5A,d0
 	move.l	d0,-(a7)
-	jsr	$3FE2(a5)	; -> sub_15D858
+	jsr	$3FE2(a5)	; -> Map_SetBlockFGFlip
 	moveq	#$1,d0
 	move.l	d0,-(a7)
 	moveq	#$0,d1
@@ -218,7 +218,7 @@ loc_09963E:
 	move.l	d6,-(a7)
 	moveq	#$5B,d0
 	move.l	d0,-(a7)
-	jsr	$3FE2(a5)	; -> sub_15D858
+	jsr	$3FE2(a5)	; -> Map_SetBlockFGFlip
 	clr.w	d6
 	lea.l	$B0(a7),a7
 loc_09972A:

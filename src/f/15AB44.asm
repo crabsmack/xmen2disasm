@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_15AB44	[jt 2013]
+; Seg_FindLeft - find the nearest in-use segment of a given type to the left of a point, scanning the grid leftward
+; In:  8(a6) = word x, $C(a6) = word y, $10(a6) = word segment type
+; Out: d0 = segment or 0
+; Evidence: segment +1 type == wanted type, +0 bit 7 in use, y within y1..y2, right end < x; grid column step 1 << $FFCD82
 ; ---------------------------------------------------------------------------
-sub_15AB44:
+Seg_FindLeft:
 	link.w	a6,#$FFF2
 	movem.l	d3-d7/a3-a4,-(a7)
 	move.w	$E(a6),d0
