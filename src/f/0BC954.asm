@@ -1,7 +1,11 @@
 ; ---------------------------------------------------------------------------
-; sub_0BC954	[link-after-rts]
+; SavageBio_StateToCentre - SAVAGE bio state: walk (speed $220) to within 15 px of the view centre, then stop and the next step
+; In:  8(a6) = this
+; Out: d0
+; Evidence: TAS 33905-33913
+; Found: link-after-rts
 ; ---------------------------------------------------------------------------
-sub_0BC954:
+SavageBio_StateToCentre:
 	link.w	a6,#$0
 	movem.l	d3/d6-d7/a4,-(a7)
 	movea.l	$8(a6),a4
@@ -75,7 +79,7 @@ loc_0BCA06:
 loc_0BCA0C:
 	move.w	d0,$16(a4)
 	clr.w	$6C(a4)
-	lea.l	sub_0BC954(pc),a0
+	lea.l	SavageBio_StateToCentre(pc),a0
 	move.l	a0,$5C(a4)
 	moveq	#$8,d0
 	and.w	$4(a4),d0

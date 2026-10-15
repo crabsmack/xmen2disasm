@@ -1,7 +1,11 @@
 ; ---------------------------------------------------------------------------
-; sub_0BCA7E	[jt 1021]
+; SavageBio_ActDie - SAVAGE bio script action: die - hide; with a companion, move it here and run its death script jt[$208A]; without, end the scene in $F0 frames
+; In:  8(a6) = this
+; Out: d0
+; Evidence: no companion: Scene_EndAfter($F0), -$3B20 := 0, sub_13EEFA(this, jt[$3D42], ...); TAS 33929
+; Found: jt 1021
 ; ---------------------------------------------------------------------------
-sub_0BCA7E:
+SavageBio_ActDie:
 	link.w	a6,#$0
 	movem.l	a3-a4,-(a7)
 	movea.l	$8(a6),a4
@@ -63,7 +67,7 @@ loc_0BCB22:
 	clr.w	$6C(a3)
 loc_0BCB3E:
 	clr.w	$6C(a4)
-	lea.l	sub_0BCA2C(pc),a0
+	lea.l	SavageBio_StateDeathWait(pc),a0
 	move.l	a0,$5C(a4)
 	moveq	#$8,d0
 	and.w	$4(a4),d0

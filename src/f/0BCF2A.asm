@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_0BCF2A	[link-after-rts]
+; SavageMediumBio_StateWalk - SAVAGEMEDIUMBIO state: walk until the timer +$6E runs out, then the next step
+; In:  8(a6) = this
+; Out: none
+; Found: link-after-rts
 ; ---------------------------------------------------------------------------
-sub_0BCF2A:
+SavageMediumBio_StateWalk:
 	link.w	a6,#$0
 	move.l	a4,-(a7)
 	movea.l	$8(a6),a4
@@ -31,7 +34,7 @@ loc_0BCF60:
 	bra.s	loc_0BCF8C
 loc_0BCF7A:
 	clr.w	$6C(a4)
-	lea.l	sub_0BCF2A(pc),a0
+	lea.l	SavageMediumBio_StateWalk(pc),a0
 	move.l	a0,$5C(a4)
 	moveq	#$8,d0
 	and.w	$4(a4),d0

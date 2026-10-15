@@ -1,7 +1,11 @@
 ; ---------------------------------------------------------------------------
-; sub_0BC4A0	[jt 1014]
+; SavageBio_ActFrame4F - SAVAGE bio script action: frame $4F with sound $F2, next step after 10 frames
+; In:  8(a6) = this
+; Out: none
+; Evidence: TAS 33665-33893
+; Found: jt 1014
 ; ---------------------------------------------------------------------------
-sub_0BC4A0:
+SavageBio_ActFrame4F:
 	link.w	a6,#$0
 	move.l	a4,-(a7)
 	movea.l	$8(a6),a4

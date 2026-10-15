@@ -1,7 +1,11 @@
 ; ---------------------------------------------------------------------------
-; sub_0BC58C	[link-after-rts]
+; SavageBio_StateWaitCrossing - SAVAGE bio state: when the BIOBALLS companion (+$B4) is done, hide it and reappear on the opposite surface (floor <-> ceiling, v-flip toggled)
+; In:  8(a6) = this
+; Out: d0
+; Evidence: y = +$A4 or +$A2 by the v-flip; next step
+; Found: link-after-rts
 ; ---------------------------------------------------------------------------
-sub_0BC58C:
+SavageBio_StateWaitCrossing:
 	link.w	a6,#$0
 	movem.l	d7/a4,-(a7)
 	movea.l	$8(a6),a4
@@ -62,7 +66,7 @@ loc_0BC614:
 	bra.s	loc_0BC640
 loc_0BC62E:
 	clr.w	$6C(a4)
-	lea.l	sub_0BC58C(pc),a0
+	lea.l	SavageBio_StateWaitCrossing(pc),a0
 	move.l	a0,$5C(a4)
 	moveq	#$8,d0
 	and.w	$4(a4),d0

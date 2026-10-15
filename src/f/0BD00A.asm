@@ -1,7 +1,11 @@
 ; ---------------------------------------------------------------------------
-; sub_0BD00A	[jt 1030]
+; SavageMediumBio_ActShoot - SAVAGEMEDIUMBIO script action: stop and play the shooting animation jt[$3612]
+; In:  8(a6) = this
+; Out: d0
+; Evidence: next SavageMediumBio_StateFire
+; Found: jt 1030
 ; ---------------------------------------------------------------------------
-sub_0BD00A:
+SavageMediumBio_ActShoot:
 	link.w	a6,#$0
 	move.l	a4,-(a7)
 	movea.l	$8(a6),a4
@@ -14,7 +18,7 @@ sub_0BD00A:
 	jsr	$4E42(a5)	; -> Obj_SetAnim
 	addq.w	#$8,a7
 	move.w	#$FF,$6C(a4)
-	lea.l	sub_0BD04C(pc),a0
+	lea.l	SavageMediumBio_StateFire(pc),a0
 	move.l	a0,$5C(a4)
 	moveq	#$8,d0
 	and.w	$4(a4),d0

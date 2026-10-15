@@ -1,7 +1,11 @@
 ; ---------------------------------------------------------------------------
-; sub_0BC1A8	[link-after-rts]
+; SavageBio_StateDashBrake - SAVAGE bio state: brake until slow (< 8) near the second target (+$AA) or at a range end, then stop and the next step
+; In:  8(a6) = this
+; Out: none
+; Evidence: TAS 33770-33792
+; Found: link-after-rts
 ; ---------------------------------------------------------------------------
-sub_0BC1A8:
+SavageBio_StateDashBrake:
 	link.w	a6,#$0
 	movem.l	d3/d7/a4,-(a7)
 	movea.l	$8(a6),a4
@@ -106,7 +110,7 @@ loc_0BC29C:
 	bra.s	loc_0BC2C8
 loc_0BC2B6:
 	clr.w	$6C(a4)
-	lea.l	sub_0BC1A8(pc),a0
+	lea.l	SavageBio_StateDashBrake(pc),a0
 	move.l	a0,$5C(a4)
 	moveq	#$8,d0
 	and.w	$4(a4),d0

@@ -1,7 +1,7 @@
 ; ---------------------------------------------------------------------------
 ; SavageMediumBio_Init - vtable +$12 constructor: run the parent's Init, then set up a SAVAGEMEDIUMBIO
 ; In:  8(a6) = this, $C(a6) = long x, $10(a6) = long y (8 fraction bits), $14(a6) = spawn parameter
-; Evidence: slot +$12 of the SAVAGEMEDIUMBIO descriptor $0BD39C; TAS frames 33558-33558 (1 frames active); calls parent SAVAGEBIOBASE slot +$12; state handler(s) put in +$5C: sub_0BCE0E
+; Evidence: slot +$12 of the SAVAGEMEDIUMBIO descriptor $0BD39C; TAS frames 33558-33558 (1 frames active); calls parent SAVAGEBIOBASE slot +$12; state handler(s) put in +$5C: SavageMediumBio_StateAppear
 ; ---------------------------------------------------------------------------
 SavageMediumBio_Init:
 	link.w	a6,#$0
@@ -29,9 +29,9 @@ SavageMediumBio_Init:
 	move.l	$2(a0),-(a7)
 	pea.l	$96(a4)
 	jsr	$3ED2(a5)	; -> AiScript_Set
-	lea.l	sub_0BCE0E(pc),a0
+	lea.l	SavageMediumBio_StateAppear(pc),a0
 	move.l	a0,$5C(a4)
-	lea.l	sub_0BCE0E(pc),a0
+	lea.l	SavageMediumBio_StateAppear(pc),a0
 	move.l	a0,$64(a4)
 	lea.l	$359A(a5),a0
 	move.l	$2(a0),$30(a4)

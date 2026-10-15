@@ -1,7 +1,11 @@
 ; ---------------------------------------------------------------------------
-; sub_0BC7A2	[link-after-rts]
+; SavageBioBalls_StateWait - BIOBALLS companion state: wait for the timer +$6E, then its next script step (+$8E/+$8C)
+; In:  8(a6) = the BIOBALLS object
+; Out: none
+; Evidence: TAS 33963-34114
+; Found: link-after-rts
 ; ---------------------------------------------------------------------------
-sub_0BC7A2:
+SavageBioBalls_StateWait:
 	link.w	a6,#$0
 	move.l	a4,-(a7)
 	movea.l	$8(a6),a4
@@ -31,7 +35,7 @@ loc_0BC7D8:
 	bra.s	loc_0BC804
 loc_0BC7F2:
 	clr.w	$6C(a4)
-	lea.l	sub_0BC7A2(pc),a0
+	lea.l	SavageBioBalls_StateWait(pc),a0
 	move.l	a0,$5C(a4)
 	moveq	#$8,d0
 	and.w	$4(a4),d0

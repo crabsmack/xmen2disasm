@@ -1,7 +1,11 @@
 ; ---------------------------------------------------------------------------
-; sub_0BCE56	[link-after-rts]
+; SavageMediumBio_StateReady - SAVAGEMEDIUMBIO state: join the hit and collision lists, frame 6, start the script after $3C frames
+; In:  8(a6) = this
+; Out: none
+; Evidence: TAS 33570
+; Found: link-after-rts
 ; ---------------------------------------------------------------------------
-sub_0BCE56:
+SavageMediumBio_StateReady:
 	link.w	a6,#$0
 	move.l	a4,-(a7)
 	movea.l	$8(a6),a4

@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_0BC2D2	[jt 1009]
+; SavageBio_ActFrame40 - SAVAGE bio script action: frame $40, next step
+; In:  8(a6) = this
+; Out: none
+; Found: jt 1009
 ; ---------------------------------------------------------------------------
-sub_0BC2D2:
+SavageBio_ActFrame40:
 	link.w	a6,#$0
 	move.l	a4,-(a7)
 	movea.l	$8(a6),a4

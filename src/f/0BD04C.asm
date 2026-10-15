@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_0BD04C	[link-after-rts]
+; SavageMediumBio_StateFire - SAVAGEMEDIUMBIO state: fire a shot from (+-$36, -+$34) (GaussBullet_Fire), sound $EE, next step
+; In:  8(a6) = this
+; Out: none
+; Found: link-after-rts
 ; ---------------------------------------------------------------------------
-sub_0BD04C:
+SavageMediumBio_StateFire:
 	link.w	a6,#$FFFC
 	movem.l	d4-d7/a4,-(a7)
 	movea.l	$8(a6),a4

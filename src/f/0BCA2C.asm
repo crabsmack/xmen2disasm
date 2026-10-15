@@ -1,7 +1,11 @@
 ; ---------------------------------------------------------------------------
-; sub_0BCA2C	[link-after-rts]
+; SavageBio_StateDeathWait - SAVAGE bio death: wait until the companion is done, then explode it piece by piece for $F0 frames
+; In:  8(a6) = this
+; Out: d0
+; Evidence: next SavageBio_StateDeathExplode; TAS 33930-34115
+; Found: link-after-rts
 ; ---------------------------------------------------------------------------
-sub_0BCA2C:
+SavageBio_StateDeathWait:
 	link.w	a6,#$0
 	movem.l	a3-a4,-(a7)
 	movea.l	$8(a6),a4
@@ -13,14 +17,14 @@ sub_0BCA2C:
 	beq.s	loc_0BCA62
 	move.w	#$F0,$6E(a4)
 	clr.w	$6C(a4)
-	lea.l	sub_0BCB92(pc),a0
+	lea.l	SavageBio_StateDeathExplode(pc),a0
 	move.l	a0,$5C(a4)
 	moveq	#$8,d0
 	and.w	$4(a4),d0
 	bra.s	loc_0BCA74
 loc_0BCA62:
 	clr.w	$6C(a4)
-	lea.l	sub_0BCA2C(pc),a0
+	lea.l	SavageBio_StateDeathWait(pc),a0
 	move.l	a0,$5C(a4)
 	moveq	#$8,d0
 	and.w	$4(a4),d0

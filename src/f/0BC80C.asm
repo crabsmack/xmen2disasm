@@ -1,7 +1,11 @@
 ; ---------------------------------------------------------------------------
-; sub_0BC80C	[jt 1018]
+; SavageBioBalls_ActMotion - BIOBALLS companion action: motion BioBalls_MotionRing ($600) for $96 frames
+; In:  8(a6) = the BIOBALLS object
+; Out: d0
+; Evidence: BioBalls_FillFromFirst; +$A0 = -$20; flag +$98 |= $100; next SavageBioBalls_StateWait; TAS 33962
+; Found: jt 1018
 ; ---------------------------------------------------------------------------
-sub_0BC80C:
+SavageBioBalls_ActMotion:
 	link.w	a6,#$0
 	move.l	a4,-(a7)
 	movea.l	$8(a6),a4
@@ -16,7 +20,7 @@ sub_0BC80C:
 	move.w	#$96,$6E(a4)
 	addq.w	#$4,a7
 	clr.w	$6C(a4)
-	lea.l	sub_0BC7A2(pc),a0
+	lea.l	SavageBioBalls_StateWait(pc),a0
 	move.l	a0,$5C(a4)
 	moveq	#$8,d0
 	and.w	$4(a4),d0

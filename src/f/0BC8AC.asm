@@ -1,7 +1,11 @@
 ; ---------------------------------------------------------------------------
-; sub_0BC8AC	[jt 1019]
+; SavageBio_ActCrossIfUp - SAVAGE bio script action: if above the floor (y < +$A2) cross to the other surface, else the next step
+; In:  8(a6) = this
+; Out: none
+; Evidence: -> SavageBio_StateCrossSurface; TAS 33892
+; Found: jt 1019
 ; ---------------------------------------------------------------------------
-sub_0BC8AC:
+SavageBio_ActCrossIfUp:
 	link.w	a6,#$0
 	movem.l	d7/a4,-(a7)
 	movea.l	$8(a6),a4
@@ -10,7 +14,7 @@ sub_0BC8AC:
 	cmp.w	$A2(a4),d7
 	bge.s	loc_0BC8D8
 	clr.w	$6C(a4)
-	lea.l	sub_0BC64A(pc),a0
+	lea.l	SavageBio_StateCrossSurface(pc),a0
 	move.l	a0,$5C(a4)
 	moveq	#$8,d0
 	and.w	$4(a4),d0

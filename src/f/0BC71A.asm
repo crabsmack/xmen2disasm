@@ -1,7 +1,11 @@
 ; ---------------------------------------------------------------------------
-; sub_0BC71A	[jt 1017]
+; SavageBioBalls_ActLeap - BIOBALLS companion action: leap $E0 px towards the other surface (animation jt[$2092], sound $EF)
+; In:  8(a6) = the BIOBALLS object
+; Out: d0
+; Evidence: BioBalls_StartPath(this, jt[$2092], flip flags, 0, +-$E0); state BioBalls_WaitPathDone
+; Found: jt 1017
 ; ---------------------------------------------------------------------------
-sub_0BC71A:
+SavageBioBalls_ActLeap:
 	link.w	a6,#$0
 	movem.l	d5-d7/a4,-(a7)
 	movea.l	$8(a6),a4

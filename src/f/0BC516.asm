@@ -1,7 +1,11 @@
 ; ---------------------------------------------------------------------------
-; sub_0BC516	[jt 1015]
+; SavageBio_ActFrame4FB - SAVAGE bio script action: frame $4F with sound $F2, next step after 10 frames (second copy)
+; In:  8(a6) = this
+; Out: none
+; Evidence: same body as SavageBio_ActFrame4F; TAS 33918
+; Found: jt 1015
 ; ---------------------------------------------------------------------------
-sub_0BC516:
+SavageBio_ActFrame4FB:
 	link.w	a6,#$0
 	move.l	a4,-(a7)
 	movea.l	$8(a6),a4

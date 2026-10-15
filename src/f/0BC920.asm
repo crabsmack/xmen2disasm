@@ -1,7 +1,11 @@
 ; ---------------------------------------------------------------------------
-; sub_0BC920	[jt 1020]
+; SavageBio_ActToCentre - SAVAGE bio script action: animation jt[$2002], then walk to the middle of the view
+; In:  8(a6) = this
+; Out: d0
+; Evidence: next SavageBio_StateToCentre; TAS 33904
+; Found: jt 1020
 ; ---------------------------------------------------------------------------
-sub_0BC920:
+SavageBio_ActToCentre:
 	link.w	a6,#$0
 	move.l	a4,-(a7)
 	movea.l	$8(a6),a4
@@ -11,7 +15,7 @@ sub_0BC920:
 	jsr	$4E42(a5)	; -> Obj_SetAnim
 	addq.w	#$8,a7
 	clr.w	$6C(a4)
-	lea.l	sub_0BC954(pc),a0
+	lea.l	SavageBio_StateToCentre(pc),a0
 	move.l	a0,$5C(a4)
 	moveq	#$8,d0
 	and.w	$4(a4),d0

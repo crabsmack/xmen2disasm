@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_0BCF94	[jt 1029]
+; SavageMediumBio_ActFacePlayer - SAVAGEMEDIUMBIO script action: face the nearest player, next step
+; In:  8(a6) = this
+; Out: none
+; Found: jt 1029
 ; ---------------------------------------------------------------------------
-sub_0BCF94:
+SavageMediumBio_ActFacePlayer:
 	link.w	a6,#$0
 	movem.l	a3-a4,-(a7)
 	movea.l	$8(a6),a4

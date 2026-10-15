@@ -1,5 +1,5 @@
 ; ---------------------------------------------------------------------------
-; BrainBabyBio_OnDeath - BRAINBABYBIO slot +$72 OnDeath: turn into a SAVAGEMEDIUMBIO (same facing, 20-frame invulnerability, sub_0BCDF0($18E, $140)) and remove itself
+; BrainBabyBio_OnDeath - BRAINBABYBIO slot +$72 OnDeath: turn into a SAVAGEMEDIUMBIO (same facing, 20-frame invulnerability, SavageMediumBio_SetHome($18E, $140)) and remove itself
 ; In:  8(a6) = this
 ; Out: none
 ; Evidence: Tbl_SavageMediumBio_vtable +$0E New at its position; slot +$52; jt 920; TAS 33558
@@ -33,7 +33,7 @@ loc_0B686C:
 	pea.l	($140).w
 	pea.l	($18E).w
 	move.l	a3,-(a7)
-	jsr	$203A(a5)	; -> sub_0BCDF0
+	jsr	$203A(a5)	; -> SavageMediumBio_SetHome
 	lea.l	$C(a7),a7
 loc_0B6884:
 	move.l	a4,-(a7)

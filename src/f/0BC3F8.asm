@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_0BC3F8	[jt 1012]
+; SavageBio_ActWait30 - SAVAGE bio script action: next step after $1E frames
+; In:  8(a6) = this
+; Out: none
+; Found: jt 1012
 ; ---------------------------------------------------------------------------
-sub_0BC3F8:
+SavageBio_ActWait30:
 	link.w	a6,#$0
 	move.l	a4,-(a7)
 	movea.l	$8(a6),a4

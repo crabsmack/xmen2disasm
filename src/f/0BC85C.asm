@@ -1,7 +1,11 @@
 ; ---------------------------------------------------------------------------
-; sub_0BC85C	[link-after-rts]
+; SavageBio_StateDying - SAVAGE bio state: dying - switch to the death script jt[$2042]
+; In:  8(a6) = this
+; Out: none
+; Evidence: set by SavageBigBio_TakeDamage at 0 health; TAS 33891
+; Found: link-after-rts
 ; ---------------------------------------------------------------------------
-sub_0BC85C:
+SavageBio_StateDying:
 	link.w	a6,#$0
 	move.l	a4,-(a7)
 	movea.l	$8(a6),a4

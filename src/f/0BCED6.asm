@@ -1,7 +1,11 @@
 ; ---------------------------------------------------------------------------
-; sub_0BCED6	[jt 1028]
+; SavageMediumBio_ActWalk - SAVAGEMEDIUMBIO script action: walk forward ($100, animation $12061C) for $3C frames
+; In:  8(a6) = this
+; Out: d0
+; Evidence: next SavageMediumBio_StateWalk
+; Found: jt 1028
 ; ---------------------------------------------------------------------------
-sub_0BCED6:
+SavageMediumBio_ActWalk:
 	link.w	a6,#$0
 	move.l	a4,-(a7)
 	movea.l	$8(a6),a4
@@ -21,7 +25,7 @@ loc_0BCF0A:
 	move.w	d0,$16(a4)
 	addq.w	#$8,a7
 	clr.w	$6C(a4)
-	lea.l	sub_0BCF2A(pc),a0
+	lea.l	SavageMediumBio_StateWalk(pc),a0
 	move.l	a0,$5C(a4)
 	moveq	#$8,d0
 	and.w	$4(a4),d0

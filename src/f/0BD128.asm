@@ -1,7 +1,11 @@
 ; ---------------------------------------------------------------------------
-; sub_0BD128	[link-after-rts]
+; SavageMediumBio_StateBurst - SAVAGEMEDIUMBIO state: burst into a BIOBALLS (animation $0B8210, script jt[$207A], sound $F2) and remove itself
+; In:  8(a6) = this
+; Out: none
+; Evidence: TAS 33580
+; Found: link-after-rts
 ; ---------------------------------------------------------------------------
-sub_0BD128:
+SavageMediumBio_StateBurst:
 	link.w	a6,#$0
 	movem.l	a3-a4,-(a7)
 	movea.l	$8(a6),a3

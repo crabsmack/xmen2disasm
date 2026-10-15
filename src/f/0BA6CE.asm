@@ -1,5 +1,5 @@
 ; ---------------------------------------------------------------------------
-; SavageBigBio_TakeDamage - vtable +$26: unless shielded (+$9C bit 0): health -= damage, 20-frame flash; at 0 stop, leave both lists and die (sub_0BC85C), else sound $D8; publish health in -$3B02
+; SavageBigBio_TakeDamage - vtable +$26: unless shielded (+$9C bit 0): health -= damage, 20-frame flash; at 0 stop, leave both lists and die (SavageBio_StateDying), else sound $D8; publish health in -$3B02
 ; Evidence: -$3B02 drives the SavageA4 palette stages (SavageA4_FrameHook); TAS 33684-33890
 ; ---------------------------------------------------------------------------
 SavageBigBio_TakeDamage:
@@ -18,7 +18,7 @@ SavageBigBio_TakeDamage:
 	clr.w	$1E(a4)
 	clr.l	$16(a4)
 	clr.w	$20(a4)
-	lea.l	sub_0BC85C(pc),a0
+	lea.l	SavageBio_StateDying(pc),a0
 	move.l	a0,$5C(a4)
 	ori.w	#$40,$6(a4)
 	move.w	#$14,$AC(a4)

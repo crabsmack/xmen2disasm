@@ -1,7 +1,11 @@
 ; ---------------------------------------------------------------------------
-; sub_0BC0C4	[link-after-rts]
+; SavageBio_StateDash - SAVAGE bio state: dash until within 15 px of the first target (+$A8), then brake
+; In:  8(a6) = this
+; Out: d0
+; Evidence: brake accel -+$18 -> SavageBio_StateDashBrake; stops at the range ends; TAS 33755-33769
+; Found: link-after-rts
 ; ---------------------------------------------------------------------------
-sub_0BC0C4:
+SavageBio_StateDash:
 	link.w	a6,#$0
 	movem.l	d3/d7/a4,-(a7)
 	movea.l	$8(a6),a4
@@ -44,7 +48,7 @@ loc_0BC118:
 	ext.w	d0
 	move.w	d0,$1E(a4)
 	clr.w	$6C(a4)
-	lea.l	sub_0BC1A8(pc),a0
+	lea.l	SavageBio_StateDashBrake(pc),a0
 	move.l	a0,$5C(a4)
 	moveq	#$8,d0
 	and.w	$4(a4),d0
@@ -82,7 +86,7 @@ loc_0BC172:
 	bra.s	loc_0BC19E
 loc_0BC18C:
 	clr.w	$6C(a4)
-	lea.l	sub_0BC0C4(pc),a0
+	lea.l	SavageBio_StateDash(pc),a0
 	move.l	a0,$5C(a4)
 	moveq	#$8,d0
 	and.w	$4(a4),d0

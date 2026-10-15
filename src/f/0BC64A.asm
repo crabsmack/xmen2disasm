@@ -1,7 +1,11 @@
 ; ---------------------------------------------------------------------------
-; sub_0BC64A	[jt 1016]
+; SavageBio_StateCrossSurface - SAVAGE bio state: hide and send the BIOBALLS companion across (same flips, animation jt[$2092], script $0B815C)
+; In:  8(a6) = this
+; Out: d0
+; Evidence: next SavageBio_StateWaitCrossing
+; Found: jt 1016
 ; ---------------------------------------------------------------------------
-sub_0BC64A:
+SavageBio_StateCrossSurface:
 	link.w	a6,#$0
 	movem.l	a3-a4,-(a7)
 	movea.l	$8(a6),a3
@@ -60,7 +64,7 @@ loc_0BC6E8:
 	jsr	(a1)
 	addq.w	#$8,a7
 	clr.w	$6C(a3)
-	lea.l	sub_0BC58C(pc),a0
+	lea.l	SavageBio_StateWaitCrossing(pc),a0
 	move.l	a0,$5C(a3)
 	moveq	#$8,d0
 	and.w	$4(a3),d0

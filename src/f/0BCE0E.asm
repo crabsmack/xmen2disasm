@@ -1,7 +1,11 @@
 ; ---------------------------------------------------------------------------
-; sub_0BCE0E	[link-after-rts]
+; SavageMediumBio_StateAppear - SAVAGEMEDIUMBIO first state: appear (sound $F2, animation jt[$2032])
+; In:  8(a6) = this
+; Out: d0
+; Evidence: next SavageMediumBio_StateReady; TAS 33560
+; Found: link-after-rts
 ; ---------------------------------------------------------------------------
-sub_0BCE0E:
+SavageMediumBio_StateAppear:
 	link.w	a6,#$0
 	move.l	a4,-(a7)
 	movea.l	$8(a6),a4
@@ -15,7 +19,7 @@ sub_0BCE0E:
 	jsr	$4E42(a5)	; -> Obj_SetAnim
 	lea.l	$10(a7),a7
 	move.w	#$FF,$6C(a4)
-	lea.l	sub_0BCE56(pc),a0
+	lea.l	SavageMediumBio_StateReady(pc),a0
 	move.l	a0,$5C(a4)
 	moveq	#$8,d0
 	and.w	$4(a4),d0

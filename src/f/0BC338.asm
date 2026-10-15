@@ -1,7 +1,11 @@
 ; ---------------------------------------------------------------------------
-; sub_0BC338	[jt 1010]
+; SavageBio_ActStop60 - SAVAGE bio script action: stop, next step after $3C frames
+; In:  8(a6) = this
+; Out: none
+; Evidence: TAS 33793
+; Found: jt 1010
 ; ---------------------------------------------------------------------------
-sub_0BC338:
+SavageBio_ActStop60:
 	link.w	a6,#$0
 	move.l	a4,-(a7)
 	movea.l	$8(a6),a4

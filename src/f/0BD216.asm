@@ -1,7 +1,11 @@
 ; ---------------------------------------------------------------------------
-; sub_0BD216	[jt 1032]
+; SavageBioBalls_ActBecomeBigBio - BIOBALLS companion action: turn into a SAVAGEBIGBIO here (same facing, 20-frame invulnerability) and remove itself
+; In:  8(a6) = the BIOBALLS object
+; Out: none
+; Evidence: Tbl_SavageBigBio_vtable +$0E New; TAS 33663
+; Found: jt 1032
 ; ---------------------------------------------------------------------------
-sub_0BD216:
+SavageBioBalls_ActBecomeBigBio:
 	link.w	a6,#$0
 	movem.l	a3-a4,-(a7)
 	movea.l	$8(a6),a4

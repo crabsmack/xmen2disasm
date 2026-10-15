@@ -1,7 +1,11 @@
 ; ---------------------------------------------------------------------------
-; sub_0BD1D8	[jt 1031]
+; SavageBioBalls_ActOpen - BIOBALLS companion action: opening animation jt[$2092], state BioBalls_WaitPathDone
+; In:  8(a6) = the BIOBALLS object
+; Out: d0
+; Evidence: TAS 33613
+; Found: jt 1031
 ; ---------------------------------------------------------------------------
-sub_0BD1D8:
+SavageBioBalls_ActOpen:
 	link.w	a6,#$0
 	move.l	a4,-(a7)
 	movea.l	$8(a6),a4
