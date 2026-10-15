@@ -1,7 +1,6 @@
 ; ---------------------------------------------------------------------------
-; BroodClaw_Init - vtable +$12 constructor: run the parent's Init, then set up a BROODCLAW
-; In:  8(a6) = this, $C(a6) = long x, $10(a6) = long y (8 fraction bits), $14(a6) = spawn parameter
-; Evidence: slot +$12 of the BROODCLAW descriptor $09B98C; TAS frames 49291-51133 (3 frames active); calls parent ACTOR slot +$12
+; BroodClaw_Init - vtable +$12 constructor: claw at the record position (y - $1C), sprite set -$3C4C, swing motion BroodClaw_Swing, swing length $32
+; Evidence: +$92 = BroodClaw_Swing, +$9A = $32, +$9C = 0 (swing offset), +$A0 = start x; state BroodClaw_StateWaitMusic; TAS 49291-51133
 ; ---------------------------------------------------------------------------
 BroodClaw_Init:
 	link.w	a6,#$0
@@ -38,12 +37,12 @@ BroodClaw_Init:
 	move.l	a4,-(a7)
 	jsr	$4E5A(a5)	; -> Obj_SetSpriteDef
 	ori.w	#$1082,$6(a4)
-	lea.l	sub_09B45E(pc),a0
+	lea.l	BroodClaw_StateWaitMusic(pc),a0
 	move.l	a0,$64(a4)
 	move.l	a0,$5C(a4)
 	clr.b	$8B(a4)
 	clr.b	$91(a4)
-	lea.l	sub_09B224(pc),a0
+	lea.l	BroodClaw_Swing(pc),a0
 	move.l	a0,$92(a4)
 	moveq	#$0,d0
 	move.l	d0,$96(a4)

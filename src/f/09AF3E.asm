@@ -1,7 +1,6 @@
 ; ---------------------------------------------------------------------------
-; BroodClaw_Draw - vtable +$1A: draw a BROODCLAW
-; In:  8(a6) = this
-; Evidence: slot +$1A of the BROODCLAW descriptor $09B98C; TAS frames 49292-52534 (2772 frames active)
+; BroodClaw_Draw - vtable +$1A: write the claw's four sprites from the layout in $092A92 straight into the sprite table
+; Evidence: visible within -$40..$180 of g_CameraX; TAS 49292-52534
 ; ---------------------------------------------------------------------------
 BroodClaw_Draw:
 	link.w	a6,#$FFFC

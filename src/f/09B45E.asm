@@ -1,7 +1,11 @@
 ; ---------------------------------------------------------------------------
-; sub_09B45E	[link-after-rts]
+; BroodClaw_StateWaitMusic - BROODCLAW state (after the boss): park off the right edge until music $13 is over (sub_1FE644), then enter
+; In:  8(a6) = this
+; Out: d0
+; Evidence: x = g_CameraX + $1A2 (linked claw + $62); next BroodClaw_StateEnterView; TAS 51133-51930
+; Found: link-after-rts
 ; ---------------------------------------------------------------------------
-sub_09B45E:
+BroodClaw_StateWaitMusic:
 	link.w	a6,#$0
 	move.l	a4,-(a7)
 	movea.l	$8(a6),a4
@@ -27,7 +31,7 @@ loc_09B494:
 	addq.w	#$4,a7
 	beq.s	loc_09B4B4
 	clr.w	$6C(a4)
-	lea.l	sub_09B55C(pc),a0
+	lea.l	BroodClaw_StateEnterView(pc),a0
 	move.l	a0,$5C(a4)
 	moveq	#$8,d0
 	and.w	$4(a4),d0

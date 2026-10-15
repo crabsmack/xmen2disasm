@@ -1,7 +1,6 @@
 ; ---------------------------------------------------------------------------
-; BroodClaw_Kill - vtable +$52: remove a BROODCLAW from play
-; In:  8(a6) = this
-; Evidence: slot +$52 of the BROODCLAW descriptor $09B98C; TAS frames 51072-52535 (3 frames active); calls parent ACTOR slot +$52
+; BroodClaw_Kill - vtable +$52: kill the linked claw (+$96) too
+; Evidence: TAS 51072-52535
 ; ---------------------------------------------------------------------------
 BroodClaw_Kill:
 	link.w	a6,#$0

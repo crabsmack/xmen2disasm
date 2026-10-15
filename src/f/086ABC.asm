@@ -27,7 +27,7 @@ BroodBoss_StateSetup:
 	moveq	#$1,d0
 	move.l	d0,-(a7)
 	pea.l	-$10(a6)
-	jsr	$1A42(a5)	; -> sub_09AD96
+	jsr	$1A42(a5)	; -> BroodClaw_Spawn
 	move.l	d0,$96(a4)
 	lea.l	$1C(a7),a7
 	beq.s	loc_086B42

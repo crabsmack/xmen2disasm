@@ -1,7 +1,11 @@
 ; ---------------------------------------------------------------------------
-; sub_09B60A	[link-after-rts]
+; BroodClaw_StateMoveToDrop - BROODCLAW state: move to x $6BE (speed $340), then drop the clone
+; In:  8(a6) = this
+; Out: d0
+; Evidence: next BroodClaw_StateDropClone; TAS 52127-52265
+; Found: link-after-rts
 ; ---------------------------------------------------------------------------
-sub_09B60A:
+BroodClaw_StateMoveToDrop:
 	link.w	a6,#$0
 	movem.l	d3/d6-d7/a4,-(a7)
 	movea.l	$8(a6),a4
@@ -35,7 +39,7 @@ loc_09B646:
 	clr.l	$16(a4)
 	clr.w	$20(a4)
 	clr.w	$6C(a4)
-	lea.l	sub_09B6A2(pc),a0
+	lea.l	BroodClaw_StateDropClone(pc),a0
 	move.l	a0,$5C(a4)
 	moveq	#$8,d0
 	and.w	$4(a4),d0
@@ -52,7 +56,7 @@ loc_09B67C:
 loc_09B682:
 	move.w	d0,$16(a4)
 	clr.w	$6C(a4)
-	lea.l	sub_09B60A(pc),a0
+	lea.l	BroodClaw_StateMoveToDrop(pc),a0
 	move.l	a0,$5C(a4)
 	moveq	#$8,d0
 	and.w	$4(a4),d0

@@ -1,7 +1,11 @@
 ; ---------------------------------------------------------------------------
-; sub_09AD96	[jt 836]
+; BroodClaw_Spawn - create a BROODCLAW from a spawn record; with pair = 1 create a second, linked claw (+$96 = the first, which idles)
+; In:  8(a6) = record {+2 x, +4 y}, $C(a6) = byte pair
+; Out: d0 = the (second) claw
+; Evidence: Tbl_BroodClaw_vtable +$0E New; first claw state BroodClaw_StateIdle, +$92 = 0; palette bit, priority 0, sub_1F91E8; jt 836; callers BroodBoss_StateSetup and BroodBoss_StateFinish
+; Found: jt 836
 ; ---------------------------------------------------------------------------
-sub_09AD96:
+BroodClaw_Spawn:
 	link.w	a6,#$FFFC
 	movem.l	a3-a4,-(a7)
 	movea.l	$8(a6),a3
@@ -30,7 +34,7 @@ sub_09AD96:
 	movea.l	a4,a0
 	moveq	#$0,d0
 	move.l	d0,$92(a0)
-	lea.l	sub_09B968(pc),a0
+	lea.l	BroodClaw_StateIdle(pc),a0
 	movea.l	-$4(a6),a1
 	move.l	a0,$64(a1)
 	movea.l	-$4(a6),a1

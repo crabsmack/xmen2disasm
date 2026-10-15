@@ -1,7 +1,9 @@
 ; ---------------------------------------------------------------------------
-; loc_09A35A	[runtime: executed in tas]
+; XClone_Script4 - AI-script jmp thunks (4 steps): XClone_ActAttack, XClone_ActTurn, XClone_ActAttack, XClone_ActMainScript
+; Evidence: 4-byte `jmp d(a5)` entries of a {word count; thunks} script, reached through +$5C (next-step idiom)
+; Found: runtime: executed in 1 run(s) (tas)
 ; ---------------------------------------------------------------------------
-loc_09A35A:
+XClone_Script4:
 	jmp	$17D2(a5)	; -> XClone_ActAttack
 loc_09A35E:
 	jmp	$17B2(a5)	; -> XClone_ActTurn

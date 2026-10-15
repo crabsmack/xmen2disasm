@@ -1,7 +1,11 @@
 ; ---------------------------------------------------------------------------
-; sub_09B224	[jt 841]
+; BroodClaw_Swing - BROODCLAW motion: swing out/in along +$9C by the speed +$16; while retracting push the boss offset (-$3C44) or the scroll step (-$3B02, mode +$90); set the arm frame; hand the camera over when the scroll reaches the arena edge
+; In:  8(a6) = this
+; Out: none
+; Evidence: arm frame byte -$3B10 by swing range; ends set +$8B, -$3B0C |= $10, g_CamShake := $088B06; x = home + offset - boss offset; with +$91 and mode 1 past -$3B20: camera +4 = sub_161816, +$C = BroodClaw_CamApplyShake, XClone_CamSetNormal, -$3B0C |= $80, sub_138968; TAS 49418-52266
+; Found: jt 841
 ; ---------------------------------------------------------------------------
-sub_09B224:
+BroodClaw_Swing:
 	link.w	a6,#$0
 	movem.l	d4-d7/a4,-(a7)
 	movea.l	$8(a6),a4
@@ -157,7 +161,7 @@ loc_09B3BC:
 	lea.l	$4212(a5),a0
 	movea.l	g_Camera(a5),a1
 	move.l	a0,$4(a1)
-	lea.l	sub_09B8A0(pc),a0
+	lea.l	BroodClaw_CamApplyShake(pc),a0
 	movea.l	g_Camera(a5),a1
 	move.l	a0,$C(a1)
 	movea.l	g_Camera(a5),a0

@@ -1,7 +1,6 @@
 ; ---------------------------------------------------------------------------
-; BroodClaw_Move - vtable +$4E: per-frame movement of a BROODCLAW
-; In:  8(a6) = this
-; Evidence: slot +$4E of the BROODCLAW descriptor $09B98C; TAS frames 49293-52535 (2589 frames active)
+; BroodClaw_Move - vtable +$4E: copy speed/mode to the linked claw (mirrored offset), reset the swing length, run the motion function +$92 n times
+; Evidence: TAS 49293-52535
 ; ---------------------------------------------------------------------------
 BroodClaw_Move:
 	link.w	a6,#$0

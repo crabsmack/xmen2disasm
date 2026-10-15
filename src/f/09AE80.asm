@@ -1,7 +1,6 @@
 ; ---------------------------------------------------------------------------
-; BroodClaw_Update - vtable +$4A: per-frame update of a BROODCLAW
-; In:  8(a6) = this
-; Evidence: slot +$4A of the BROODCLAW descriptor $09B98C; TAS frames 49293-52535 (2593 frames active)
+; BroodClaw_Update - vtable +$4A: move (slot +$4E), run the state machine and re-sort the collision box (no ACTOR deactivation)
+; Evidence: TAS 49293-52535 every frame
 ; ---------------------------------------------------------------------------
 BroodClaw_Update:
 	link.w	a6,#$0

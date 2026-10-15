@@ -2,7 +2,7 @@
 ; BroodBoss_StateChargeStart - BROODBOSS state: start charging (frame 6, claw speed -$A00, legs walking)
 ; In:  8(a6) = this
 ; Out: d0
-; Evidence: claw +$16 = -$A00, +$92 = sub_09B224; LittleLeg_SetWalking(1); next BroodBoss_StateCharge
+; Evidence: claw +$16 = -$A00, +$92 = BroodClaw_Swing; LittleLeg_SetWalking(1); next BroodBoss_StateCharge
 ; Found: link-after-rts
 ; ---------------------------------------------------------------------------
 BroodBoss_StateChargeStart:

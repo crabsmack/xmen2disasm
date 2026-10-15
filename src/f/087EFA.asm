@@ -2,7 +2,7 @@
 ; BroodBoss_StateClawOut - BROODBOSS death: move the claw at speed $100
 ; In:  8(a6) = this
 ; Out: d0
-; Evidence: claw +$16 = $100, +$92 = sub_09B224; next BroodBoss_StateRemoveParts; TAS 50751
+; Evidence: claw +$16 = $100, +$92 = BroodClaw_Swing; next BroodBoss_StateRemoveParts; TAS 50751
 ; Found: link-after-rts
 ; ---------------------------------------------------------------------------
 BroodBoss_StateClawOut:

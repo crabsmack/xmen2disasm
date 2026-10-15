@@ -1,7 +1,9 @@
 ; ---------------------------------------------------------------------------
-; loc_09A480	[runtime: executed in tas]
+; XClone_Script5 - AI-script jmp thunks (7 steps): XClone_ActFacePlayer, XClone_ActAnim3C, XClone_ActFacePlayer, XClone_ActAttack, XClone_ActTurn, XClone_ActWalkStep, XClone_ActWaitStopped
+; Evidence: 4-byte `jmp d(a5)` entries of a {word count; thunks} script, reached through +$5C (next-step idiom)
+; Found: runtime: executed in 1 run(s) (tas)
 ; ---------------------------------------------------------------------------
-loc_09A480:
+XClone_Script5:
 	jmp	$17BA(a5)	; -> XClone_ActFacePlayer
 loc_09A484:
 	jmp	$17CA(a5)	; -> XClone_ActAnim3C

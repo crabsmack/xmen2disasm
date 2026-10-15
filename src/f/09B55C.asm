@@ -1,7 +1,11 @@
 ; ---------------------------------------------------------------------------
-; sub_09B55C	[link-after-rts]
+; BroodClaw_StateEnterView - BROODCLAW state: move into the view (g_CameraX + $30..$144), then install the boss-body and type-$1A segment hooks
+; In:  8(a6) = this
+; Out: d0
+; Evidence: -$340E := CloneA5_SegHook17, -$3402 := CloneA5_SegHook16; next BroodClaw_StateStartScroll; TAS 51931-51951
+; Found: link-after-rts
 ; ---------------------------------------------------------------------------
-sub_09B55C:
+BroodClaw_StateEnterView:
 	link.w	a6,#$0
 	movem.l	d3/d6-d7/a4,-(a7)
 	movea.l	$8(a6),a4
@@ -36,7 +40,7 @@ loc_09B5A8:
 	lea.l	$1432(a5),a0
 	move.l	a0,-$3402(a5)
 	clr.w	$6C(a4)
-	lea.l	sub_09B50C(pc),a0
+	lea.l	BroodClaw_StateStartScroll(pc),a0
 	move.l	a0,$5C(a4)
 	moveq	#$8,d0
 	and.w	$4(a4),d0
@@ -53,7 +57,7 @@ loc_09B5E4:
 loc_09B5EA:
 	move.w	d0,$16(a4)
 	clr.w	$6C(a4)
-	lea.l	sub_09B55C(pc),a0
+	lea.l	BroodClaw_StateEnterView(pc),a0
 	move.l	a0,$5C(a4)
 	moveq	#$8,d0
 	and.w	$4(a4),d0

@@ -1,7 +1,11 @@
 ; ---------------------------------------------------------------------------
-; sub_09B50C	[link-after-rts]
+; BroodClaw_StateStartScroll - BROODCLAW state: start scrolling the scene (speed +-$340, mode 1, $50 frames)
+; In:  8(a6) = this
+; Out: d0
+; Evidence: next BroodClaw_StateScroll; TAS 51952
+; Found: link-after-rts
 ; ---------------------------------------------------------------------------
-sub_09B50C:
+BroodClaw_StateStartScroll:
 	link.w	a6,#$0
 	movem.l	d3/a4,-(a7)
 	movea.l	$8(a6),a4
@@ -18,7 +22,7 @@ loc_09B530:
 	move.b	#$1,$90(a4)
 	move.w	#$50,$6E(a4)
 	clr.w	$6C(a4)
-	lea.l	sub_09B4BC(pc),a0
+	lea.l	BroodClaw_StateScroll(pc),a0
 	move.l	a0,$5C(a4)
 	moveq	#$8,d0
 	and.w	$4(a4),d0

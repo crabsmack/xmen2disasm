@@ -2,7 +2,7 @@
 ; Snd_ReadDriverByte - read byte N of the Z80 driver status area ($A01B22+N) unless muted
 ; In:  8(a6) = long: index (low byte)
 ; Out: d0 = byte read (unchanged if muted)
-; Evidence: SR masked, Z80_BusRequest, reads $A01B22+idx, Z80_BusFree; one caller sub_09B45E (TAS frames 51133-51930)
+; Evidence: SR masked, Z80_BusRequest, reads $A01B22+idx, Z80_BusFree; one caller BroodClaw_StateWaitMusic (TAS frames 51133-51930)
 ; ---------------------------------------------------------------------------
 Snd_ReadDriverByte:
 	tst.b	g_SndMute(a5)
