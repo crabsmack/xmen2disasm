@@ -1,8 +1,11 @@
 ; ---------------------------------------------------------------------------
-; loc_11B560	[runtime: executed in tas]
+; BabySentinelC_Script2 - BABYSENTINELC AI script (table $11B55E, 12 entries; rest undisassembled)
+; In:  jmp thunks
+; Out: -
+; Evidence: jt $2FFA in BabySentinelC_Init (else branch)
 ; ---------------------------------------------------------------------------
-loc_11B560:
-	jmp	$31E2(a5)	; -> sub_11D55C
+BabySentinelC_Script2:
+	jmp	$31E2(a5)	; -> BabyBio_ActCrawl
 loc_11B564:
 	jmp	$314A(a5)	; -> BabyBio_ActFacePlayer
 loc_11B568:

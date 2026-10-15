@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; loc_11DB64	[runtime: executed in tas]
+; FloatBio_Init_Case1 - FloatBio_Init cases 1-3: vertical range from the spawn record (default +-48) with script FloatBio_Script1, or scripts 2/3
+; In:  inside FloatBio_Init (a3 = spawn record)
+; Out: -
+; Evidence: Sw_11DACC targets; +$B2/+$B0 top/bottom; jt $3042/$304A/$303A
 ; ---------------------------------------------------------------------------
-loc_11DB64:
+FloatBio_Init_Case1:
 	move.w	$6(a3),d7
 	beq.s	loc_11DB80
 	tst.w	d7
@@ -46,14 +49,14 @@ loc_11DBAA:
 	pea.l	$96(a4)
 	jsr	$3ED2(a5)	; -> AiScript_Set
 	addq.w	#$8,a7
-	bra.s	loc_11DBFA
+	bra.s	FloatBio_Init_Tail
 loc_11DBC6:
 	lea.l	$304A(a5),a0
 	move.l	$2(a0),-(a7)
 	pea.l	$96(a4)
 	jsr	$3ED2(a5)	; -> AiScript_Set
 	addq.w	#$8,a7
-	bra.s	loc_11DBFA
+	bra.s	FloatBio_Init_Tail
 loc_11DBDA:
 	move.l	a3,d0
 	beq.s	loc_11DBE8

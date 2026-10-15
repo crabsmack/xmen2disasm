@@ -1,5 +1,8 @@
 ; ---------------------------------------------------------------------------
-; loc_11B4E6	[runtime: executed in tas]
+; BabySentinelA_Script - BABYSENTINELA AI script thunks (table $11B4E4, 8 entries; partly undisassembled)
+; In:  jmp thunks
+; Out: -
+; Evidence: AiScript_Set(+$96, jt $2FE2) in BabySentinelA_Init
 ; ---------------------------------------------------------------------------
-loc_11B4E6:
-	jmp	$31E2(a5)	; -> sub_11D55C
+BabySentinelA_Script:
+	jmp	$31E2(a5)	; -> BabyBio_ActCrawl

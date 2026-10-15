@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_11DE38	[link-after-rts]
+; WallCrawlBio_WaitReachHLimit - WALLCRAWLBIO: wait until x reaches a horizontal limit, then next entry
+; In:  8(a6) = this
+; Out: none
+; Evidence: set by WallCrawlBio_ActCrawlHorizontal
 ; ---------------------------------------------------------------------------
-sub_11DE38:
+WallCrawlBio_WaitReachHLimit:
 	link.w	a6,#$0
 	movem.l	d7/a4,-(a7)
 	movea.l	$8(a6),a4

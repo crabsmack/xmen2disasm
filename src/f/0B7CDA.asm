@@ -6,4 +6,4 @@ loc_0B7CDA:
 loc_0B7CDE:
 	jmp	$314A(a5)	; -> BabyBio_ActFacePlayer
 loc_0B7CE2:
-	jmp	$31CA(a5)	; -> sub_11D3F2
+	jmp	$31CA(a5)	; -> BabyBio_ActStartFiring

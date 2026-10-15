@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_11D422	[jt 1590]
+; BabyBio_ActAttachFlame - BABYBIO script action: create a BIOFLAME attached at (15,-28) facing the same way, keep it in +$A8, next entry
+; In:  8(a6) = this
+; Out: d0
+; Evidence: class New via jt $3082 (Tbl_BioFlame_vtable); flame +$8C = owner, +$90/+$92 offset
 ; ---------------------------------------------------------------------------
-sub_11D422:
+BabyBio_ActAttachFlame:
 	link.w	a6,#$0
 	movem.l	d6-d7/a3-a4,-(a7)
 	movea.l	$8(a6),a4

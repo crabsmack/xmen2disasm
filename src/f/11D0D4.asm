@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_11D0D4	[jt 1586]
+; BabyBio_ActStartWalk - BABYBIO script action: turn away from the limit it stands on and walk at speed +$B4, then BabyBio_ActWalkUntilPlayerAhead
+; In:  8(a6) = this
+; Out: d0 = flags & 8
+; Evidence: limits +$AC/+$AE; TAS 45427-57394
 ; ---------------------------------------------------------------------------
-sub_11D0D4:
+BabyBio_ActStartWalk:
 	link.w	a6,#$0
 	movem.l	d3/d7/a4,-(a7)
 	movea.l	$8(a6),a4

@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_11DD92	[jt 1612]
+; WallCrawlBio_ActCrawlVertical - WALLCRAWLBIO script action: crawl up/down the wall at speed $80 (v-flip by direction, animation by placement type 1-3)
+; In:  8(a6) = this
+; Out: d0 = flags & 8
+; Evidence: placement word +$A via g_PlacementList and +$14 index; Obj_SetAnim
 ; ---------------------------------------------------------------------------
-sub_11DD92:
+WallCrawlBio_ActCrawlVertical:
 	link.w	a6,#$0
 	movem.l	d7/a3-a4,-(a7)
 	movea.l	$8(a6),a4
@@ -48,7 +51,7 @@ loc_11DE08:
 	move.w	#$FF80,$18(a4)
 loc_11DE1C:
 	clr.w	$6C(a4)
-	lea.l	sub_11DD2C(pc),a0
+	lea.l	WallCrawlBio_WaitReachVLimit(pc),a0
 	move.l	a0,$5C(a4)
 	moveq	#$8,d0
 	and.w	$4(a4),d0

@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_11D210	[jt 1588]
+; BabyBio_ActWalkForward - BABYBIO script action: walk at speed +$B4 in the facing direction (stand if both limits are equal), next entry
+; In:  8(a6) = this
+; Out: none
+; Evidence: +$2E bit 4 = facing left
 ; ---------------------------------------------------------------------------
-sub_11D210:
+BabyBio_ActWalkForward:
 	link.w	a6,#$0
 	movem.l	d3/d7/a4,-(a7)
 	movea.l	$8(a6),a4

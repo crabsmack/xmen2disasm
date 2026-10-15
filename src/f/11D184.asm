@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_11D184	[jt 1587]
+; BabyBio_WaitStopOrLimit - BABYBIO: wait until it has stopped or reached a horizontal limit, then stop and go to the next script entry
+; In:  8(a6) = this
+; Out: none
+; Evidence: loops on itself
 ; ---------------------------------------------------------------------------
-sub_11D184:
+BabyBio_WaitStopOrLimit:
 	link.w	a6,#$0
 	movem.l	d7/a4,-(a7)
 	movea.l	$8(a6),a4
@@ -41,7 +44,7 @@ loc_11D1DA:
 	bra.s	loc_11D206
 loc_11D1F4:
 	clr.w	$6C(a4)
-	lea.l	sub_11D184(pc),a0
+	lea.l	BabyBio_WaitStopOrLimit(pc),a0
 	move.l	a0,$5C(a4)
 	moveq	#$8,d0
 	and.w	$4(a4),d0

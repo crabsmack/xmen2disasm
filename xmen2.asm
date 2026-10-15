@@ -3123,7 +3123,7 @@ Sw_11C662:	; switch table of sub at $11C662: 4 word offsets from Sw_11C662-2
 	include "src/f/11D930.asm"
 	include "src/f/11D946.asm"
 Sw_11D946:	; switch table of sub at $11D946: 4 word offsets from Sw_11D946-2
-	dc.w	loc_11D9BC-(Sw_11D946-2), loc_11D9D0-(Sw_11D946-2), loc_11D9E4-(Sw_11D946-2), loc_11D9F8-(Sw_11D946-2)
+	dc.w	BabyMoleMan_Init_Case0-(Sw_11D946-2), BabyMoleMan_Init_Case1-(Sw_11D946-2), BabyMoleMan_Init_Case2-(Sw_11D946-2), loc_11D9F8-(Sw_11D946-2)
 	include "src/f/11D9BC.asm"
 	include "src/f/11D9D0.asm"
 	include "src/f/11D9E4.asm"
@@ -3133,7 +3133,7 @@ Sw_11D946:	; switch table of sub at $11D946: 4 word offsets from Sw_11D946-2
 	include "src/f/11DAB6.asm"
 	include "src/f/11DACC.asm"
 Sw_11DACC:	; switch table of sub at $11DACC: 4 word offsets from Sw_11DACC-2
-	dc.w	loc_11DB4E-(Sw_11DACC-2), loc_11DB64-(Sw_11DACC-2), loc_11DBC6-(Sw_11DACC-2), loc_11DBDA-(Sw_11DACC-2)
+	dc.w	FloatBio_Init_Case0-(Sw_11DACC-2), FloatBio_Init_Case1-(Sw_11DACC-2), loc_11DBC6-(Sw_11DACC-2), loc_11DBDA-(Sw_11DACC-2)
 	include "src/f/11DB4E.asm"
 	include "src/f/11DB64.asm"
 	include "src/f/11DBFA.asm"

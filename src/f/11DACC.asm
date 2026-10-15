@@ -34,7 +34,7 @@ FloatBio_Init:
 	move.b	$BE(a4),d0
 	cmpi.b	#$3,d0
 	lea.l	$10(a7),a7
-	bhi.s	loc_11DB4E
+	bhi.s	FloatBio_Init_Case0
 	moveq	#$0,d1
 	move.b	d0,d1
 	add.w	d1,d1

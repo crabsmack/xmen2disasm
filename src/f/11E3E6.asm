@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_11E3E6	[link-after-rts]
+; BioBullet_HitActor - BIOBULLET hit callback: 1 damage with hit type 8, stop the scan
+; In:  8(a6) = actor  $A/$E(a6) = word x, y
+; Out: d0 = 1
+; Evidence: actor vtable +$26; used with ObjList_ForEachInBox by BioBullet_Update
 ; ---------------------------------------------------------------------------
-sub_11E3E6:
+BioBullet_HitActor:
 	link.w	a6,#$0
 	move.l	a4,-(a7)
 	movea.l	$8(a6),a4

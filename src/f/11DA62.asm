@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_11DA62	[jt 1606]
+; FloatBio_ActWaitParam - FLOATBIO script action: next entry after the delay +$BC
+; In:  8(a6) = this
+; Out: none
+; Evidence: TAS 32307-32797
 ; ---------------------------------------------------------------------------
-sub_11DA62:
+FloatBio_ActWaitParam:
 	link.w	a6,#$0
 	move.l	a4,-(a7)
 	movea.l	$8(a6),a4

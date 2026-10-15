@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_11DE9E	[jt 1613]
+; WallCrawlBio_ActCrawlHorizontal - WALLCRAWLBIO script action: crawl left/right at speed $80 (animation by placement type)
+; In:  8(a6) = this
+; Out: d0 = flags & 8
+; Evidence: Obj_SetAnim jt $318A/$3192/$319A
 ; ---------------------------------------------------------------------------
-sub_11DE9E:
+WallCrawlBio_ActCrawlHorizontal:
 	link.w	a6,#$0
 	movem.l	d7/a3-a4,-(a7)
 	movea.l	$8(a6),a4
@@ -48,7 +51,7 @@ loc_11DF14:
 	move.w	#$FF80,$16(a4)
 loc_11DF28:
 	clr.w	$6C(a4)
-	lea.l	sub_11DE38(pc),a0
+	lea.l	WallCrawlBio_WaitReachHLimit(pc),a0
 	move.l	a0,$5C(a4)
 	moveq	#$8,d0
 	and.w	$4(a4),d0

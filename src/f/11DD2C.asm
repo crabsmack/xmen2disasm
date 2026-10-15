@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_11DD2C	[link-after-rts]
+; WallCrawlBio_WaitReachVLimit - WALLCRAWLBIO: wait until y reaches a limit (+$AC/+$AE hold the y range for wall crawlers), then next entry
+; In:  8(a6) = this
+; Out: none
+; Evidence: set by WallCrawlBio_ActCrawlVertical
 ; ---------------------------------------------------------------------------
-sub_11DD2C:
+WallCrawlBio_WaitReachVLimit:
 	link.w	a6,#$0
 	movem.l	d7/a4,-(a7)
 	movea.l	$8(a6),a4

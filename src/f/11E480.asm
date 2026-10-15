@@ -115,7 +115,7 @@ loc_11E590:
 	moveq	#$0,d0
 	move.l	d0,-(a7)
 	move.l	d0,-(a7)
-	pea.l	sub_11E3E6(pc)
+	pea.l	BioBullet_HitActor(pc)
 	move.l	-$165A(a5),-(a7)
 	ext.l	d7
 	move.l	d7,-(a7)

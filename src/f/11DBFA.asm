@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; loc_11DBFA
+; FloatBio_Init_Tail - FloatBio_Init common tail: start the chosen script at entry 0
+; In:  inside FloatBio_Init
+; Out: -
+; Evidence: 2 branch sources
 ; ---------------------------------------------------------------------------
-loc_11DBFA:
+FloatBio_Init_Tail:
 	tst.l	$98(a4)
 	bne.s	loc_11DC0C
 	move.l	$64(a4),$5C(a4)

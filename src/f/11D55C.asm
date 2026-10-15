@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_11D55C	[jt 1592]
+; BabyBio_ActCrawl - BABYBIO script action: crawl (animation $11B33A, speed $80) to the other horizontal limit, or idle 60 frames if the limits are equal
+; In:  8(a6) = this
+; Out: d0
+; Evidence: BabyBio_Move lunges +$700 on frame 3 of this animation; next BabyBio_WaitCrawlLimit; TAS 53684-54559
 ; ---------------------------------------------------------------------------
-sub_11D55C:
+BabyBio_ActCrawl:
 	link.w	a6,#$0
 	movem.l	d7/a4,-(a7)
 	movea.l	$8(a6),a4
@@ -66,7 +69,7 @@ loc_11D624:
 	move.w	#$FF80,$16(a4)
 loc_11D62A:
 	clr.w	$6C(a4)
-	lea.l	sub_11D646(pc),a0
+	lea.l	BabyBio_WaitCrawlLimit(pc),a0
 	move.l	a0,$5C(a4)
 	moveq	#$8,d0
 	and.w	$4(a4),d0

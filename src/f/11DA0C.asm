@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; loc_11DA0C
+; BabyMoleMan_Init_Default - BabyMoleMan_Init default: AI script BabyMoleMan_ScriptDefault ($11B5BE), start it
+; In:  inside BabyMoleMan_Init
+; Out: -
+; Evidence: jt $300A; TAS 30933-54514
 ; ---------------------------------------------------------------------------
-loc_11DA0C:
+BabyMoleMan_Init_Default:
 	lea.l	$300A(a5),a0
 	move.l	$2(a0),-(a7)
 	pea.l	$96(a4)

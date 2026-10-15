@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_11D4F0	[jt 1591]
+; BabyBio_ActDropFlame - BABYBIO script action: kill the attached BIOFLAME, next entry
+; In:  8(a6) = this
+; Out: none
+; Evidence: +$A8 vtable +$52 Kill
 ; ---------------------------------------------------------------------------
-sub_11D4F0:
+BabyBio_ActDropFlame:
 	link.w	a6,#$0
 	move.l	a4,-(a7)
 	movea.l	$8(a6),a4

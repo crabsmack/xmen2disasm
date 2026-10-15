@@ -31,9 +31,9 @@ BabyMoleMan_Init:
 	move.b	$BB(a4),d0
 	subq.b	#$1,d0
 	lea.l	$10(a7),a7
-	bcs.s	loc_11DA0C
+	bcs.s	BabyMoleMan_Init_Default
 	cmpi.b	#$3,d0
-	bhi.s	loc_11DA0C
+	bhi.s	BabyMoleMan_Init_Default
 	moveq	#$0,d1
 	move.b	d0,d1
 	add.w	d1,d1

@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_11D646	[link-after-rts]
+; BabyBio_WaitCrawlLimit - BABYBIO: wait until the crawl reaches a horizontal limit, then next entry
+; In:  8(a6) = this
+; Out: none
+; Evidence: TAS 53685-55128
 ; ---------------------------------------------------------------------------
-sub_11D646:
+BabyBio_WaitCrawlLimit:
 	link.w	a6,#$0
 	movem.l	d7/a4,-(a7)
 	movea.l	$8(a6),a4
@@ -36,7 +39,7 @@ loc_11D68A:
 	bra.s	loc_11D6B6
 loc_11D6A4:
 	clr.w	$6C(a4)
-	lea.l	sub_11D646(pc),a0
+	lea.l	BabyBio_WaitCrawlLimit(pc),a0
 	move.l	a0,$5C(a4)
 	moveq	#$8,d0
 	and.w	$4(a4),d0

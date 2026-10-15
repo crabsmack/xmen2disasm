@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_11DC40	[jt 1610]
+; WallCrawlBio_ActStopFrame0 - WALLCRAWLBIO script action: stop, frame 0, next entry after +$BE
+; In:  8(a6) = this
+; Out: none
+; Evidence: vtable +$56 SetFrame(0)
 ; ---------------------------------------------------------------------------
-sub_11DC40:
+WallCrawlBio_ActStopFrame0:
 	link.w	a6,#$0
 	move.l	a4,-(a7)
 	movea.l	$8(a6),a4

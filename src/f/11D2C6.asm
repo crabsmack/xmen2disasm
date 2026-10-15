@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_11D2C6	[link-after-rts]
+; BabyBio_ActFireLoop - BABYBIO firing: when on screen fire a GaussBullet from the muzzle (13,-31, mirrored), every 16 frames, +$B9 shots, then next entry after +$B6
+; In:  8(a6) = this
+; Out: d0
+; Evidence: GaussBullet_Fire(.., this, dx, dy, flags | 2); TAS 30939-57271
 ; ---------------------------------------------------------------------------
-sub_11D2C6:
+BabyBio_ActFireLoop:
 	link.w	a6,#$FFFC
 	movem.l	d4-d7/a4,-(a7)
 	movea.l	$8(a6),a4
@@ -101,7 +104,7 @@ loc_11D3B4:
 	bra.s	loc_11D3E8
 loc_11D3D4:
 	move.w	#$10,$6C(a4)
-	lea.l	sub_11D2C6(pc),a0
+	lea.l	BabyBio_ActFireLoop(pc),a0
 	move.l	a0,$5C(a4)
 	moveq	#$8,d0
 	and.w	$4(a4),d0

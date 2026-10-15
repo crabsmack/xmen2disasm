@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; loc_11D9BC	[static: switch-table case target (tools/switches.py: table after `move.w T(pc,dN.w),dN / jmp T-2(pc,dN.w)`, size from the cmpi bound)]
+; BabyMoleMan_Init_Case0 - BabyMoleMan_Init case 0: AI script at $11B5D0
+; In:  inside BabyMoleMan_Init (a4 = this)
+; Out: -
+; Evidence: Sw_11D946 target; AiScript_Set(+$96, jt $3012)
 ; ---------------------------------------------------------------------------
-loc_11D9BC:
+BabyMoleMan_Init_Case0:
 	lea.l	$3012(a5),a0
 	move.l	$2(a0),-(a7)
 	pea.l	$96(a4)

@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; loc_11D9D0	[runtime: executed in tas]
+; BabyMoleMan_Init_Case1 - BabyMoleMan_Init case 1: AI script BabyMoleMan_Script1 ($11B5FA)
+; In:  inside BabyMoleMan_Init
+; Out: -
+; Evidence: Sw_11D946 target; jt $301A
 ; ---------------------------------------------------------------------------
-loc_11D9D0:
+BabyMoleMan_Init_Case1:
 	lea.l	$301A(a5),a0
 	move.l	$2(a0),-(a7)
 	pea.l	$96(a4)
