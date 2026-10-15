@@ -1,7 +1,9 @@
 ; ---------------------------------------------------------------------------
-; sub_095250	[jt 713]
+; XClone_Init - vtable +$12 constructor: run the parent's Init, then set up a XCLONE
+; In:  8(a6) = this, $C(a6) = long x, $10(a6) = long y (8 fraction bits), $14(a6) = spawn parameter
+; Evidence: slot +$12 of the XCLONE descriptor $099C90; TAS frames 52266-57222 (8 frames active); calls parent BIONPC slot +$12; state handler(s) put in +$5C: sub_095CB2
 ; ---------------------------------------------------------------------------
-sub_095250:
+XClone_Init:
 	link.w	a6,#$0
 	movem.l	d3/d6-d7/a3-a4,-(a7)
 	movea.l	$14(a6),a3

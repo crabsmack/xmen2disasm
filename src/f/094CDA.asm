@@ -1,8 +1,11 @@
 ; ---------------------------------------------------------------------------
-; sub_094CDA	[jt 700]
+; EvilDrop_Nop6A - vtable +$6A: empty hook for EVILDROP
+; In:  8(a6) = this
+; Out: none
+; Evidence: slot +$6A of the EVILDROP descriptor $095126; never runs in the corpus
 ; ---------------------------------------------------------------------------
-sub_094CDA:
+EvilDrop_Nop6A:
 	link.w	a6,#$0
-	jsr	sub_09511E(pc)
+	jsr	EvilDrop_NopStatic(pc)
 	unlk	a6
 	rts

@@ -1,7 +1,9 @@
 ; ---------------------------------------------------------------------------
-; sub_0AC01E	[jt 874]
+; FloatBubble_Init - vtable +$12 constructor: run the parent's Init, then set up a FLOATBUBBLE
+; In:  8(a6) = this, $C(a6) = long x, $10(a6) = long y (8 fraction bits), $14(a6) = spawn parameter
+; Evidence: slot +$12 of the FLOATBUBBLE descriptor $0AB496; TAS frames 29719-31581 (13 frames active); calls parent ACTOR slot +$12
 ; ---------------------------------------------------------------------------
-sub_0AC01E:
+FloatBubble_Init:
 	link.w	a6,#$0
 	movem.l	d3/d5-d7/a3-a4,-(a7)
 	move.l	$10(a6),d5

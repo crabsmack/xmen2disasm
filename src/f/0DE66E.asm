@@ -1,7 +1,9 @@
 ; ---------------------------------------------------------------------------
-; sub_0DE66E	[jt 1202]
+; SentinelDoor_Despawn - vtable +$36: a SENTINELDOOR leaves play (written back to its spawn record)
+; In:  8(a6) = this
+; Evidence: slot +$36 of the SENTINELDOOR descriptor $0DE9A0; TAS frames 2904-7103 (17 frames active); calls parent ACTOR slot +$36
 ; ---------------------------------------------------------------------------
-sub_0DE66E:
+SentinelDoor_Despawn:
 	link.w	a6,#$0
 	move.l	a4,-(a7)
 	movea.l	$8(a6),a4

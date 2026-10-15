@@ -1,7 +1,9 @@
 ; ---------------------------------------------------------------------------
-; sub_0C0BAC	[jt 1111]
+; SwampFly_Draw - vtable +$1A: draw a SWAMPFLY
+; In:  8(a6) = this
+; Evidence: slot +$1A of the SWAMPFLY descriptor $0C0CEA; TAS frames 27912-30560 (660 frames active)
 ; ---------------------------------------------------------------------------
-sub_0C0BAC:
+SwampFly_Draw:
 	link.w	a6,#$0
 	movem.l	d5-d7/a4,-(a7)
 	movea.l	$8(a6),a4

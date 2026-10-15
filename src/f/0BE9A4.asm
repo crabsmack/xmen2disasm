@@ -1,10 +1,12 @@
 ; ---------------------------------------------------------------------------
-; sub_0BE9A4	[jt 1058]
+; Launcher_ClassInit - vtable +$5E: per-level class setup for LAUNCHER: load its resources (sub_1F62C0) into class globals
+; In:  8(a6) = 0, $C(a6) = long class index in the level class list
+; Evidence: slot +$5E of the LAUNCHER descriptor $0BED0C; TAS frames 27879-29685 (2 frames active)
 ; ---------------------------------------------------------------------------
-sub_0BE9A4:
+Launcher_ClassInit:
 	link.w	a6,#$0
 	move.l	$8(a6),-(a7)
-	jsr	sub_0BE99C(pc)
+	jsr	Launcher_Nop6A(pc)
 	moveq	#$0,d0
 	move.l	d0,-(a7)
 	lea.l	$2362(a5),a0

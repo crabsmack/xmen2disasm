@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_0861F4	[jt 620]
+; BroodBossArm_GetSize - vtable +$06: return sizeof(BROODBOSSARM) = $90 bytes
+; In:  none
+; Out: d0 = $90
+; Evidence: slot +$6 of the BROODBOSSARM descriptor $088C74; never runs in the corpus
 ; ---------------------------------------------------------------------------
-sub_0861F4:
+BroodBossArm_GetSize:
 	link.w	a6,#$0
 	move.l	#$90,d0
 	unlk	a6

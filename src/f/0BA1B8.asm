@@ -1,7 +1,9 @@
 ; ---------------------------------------------------------------------------
-; sub_0BA1B8	[jt 980]
+; SavageBioBase_Init - vtable +$12 constructor: run the parent's Init, then set up a SAVAGEBIOBASE
+; In:  8(a6) = this, $C(a6) = long x, $10(a6) = long y (8 fraction bits), $14(a6) = spawn parameter
+; Evidence: slot +$12 of the SAVAGEBIOBASE descriptor $0BD27C; TAS frames 33558-33663 (2 frames active); calls parent BIONPC slot +$12
 ; ---------------------------------------------------------------------------
-sub_0BA1B8:
+SavageBioBase_Init:
 	link.w	a6,#$FFF0
 	movem.l	d6-d7/a3-a4,-(a7)
 	move.l	$10(a6),d6

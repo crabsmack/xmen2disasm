@@ -1,7 +1,9 @@
 ; ---------------------------------------------------------------------------
-; sub_0DCD4E	[jt 1169]
+; Blast_Attack - vtable +$22: a BLAST hits a target object
+; In:  8(a6) = this, $C(a6) = target object, then hit parameters (see ACTOR +$22 $15E630)
+; Evidence: slot +$22 of the BLAST descriptor $0DD0E8; runs in corpus run fuzz-03600-s2 (not the TAS); calls parent ACTOR slot +$22
 ; ---------------------------------------------------------------------------
-sub_0DCD4E:
+Blast_Attack:
 	link.w	a6,#$0
 	movem.l	a3-a4,-(a7)
 	movea.l	$C(a6),a3

@@ -1,7 +1,9 @@
 ; ---------------------------------------------------------------------------
-; sub_09B1AC	[jt 840]
+; BroodClaw_Move - vtable +$4E: per-frame movement of a BROODCLAW
+; In:  8(a6) = this
+; Evidence: slot +$4E of the BROODCLAW descriptor $09B98C; TAS frames 49293-52535 (2589 frames active)
 ; ---------------------------------------------------------------------------
-sub_09B1AC:
+BroodClaw_Move:
 	link.w	a6,#$0
 	movem.l	d7/a3-a4,-(a7)
 	move.w	$E(a6),d7

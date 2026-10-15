@@ -1,7 +1,9 @@
 ; ---------------------------------------------------------------------------
-; sub_0BCC78	[jt 1023]
+; SavageMediumBio_ClassInit - vtable +$5E: per-level class setup for SAVAGEMEDIUMBIO
+; In:  8(a6) = 0, $C(a6) = long class index in the level class list
+; Evidence: slot +$5E of the SAVAGEMEDIUMBIO descriptor $0BD39C; TAS frames 33387-33387 (1 frames active); calls parent SAVAGEBIOBASE slot +$5E
 ; ---------------------------------------------------------------------------
-sub_0BCC78:
+SavageMediumBio_ClassInit:
 	link.w	a6,#$0
 	move.l	$8(a6),-(a7)
 	lea.l	$207A(a5),a0

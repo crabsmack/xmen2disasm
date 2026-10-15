@@ -1,7 +1,9 @@
 ; ---------------------------------------------------------------------------
-; sub_0BE602	[jt 1052]
+; Barbarian_TakeDamage - vtable +$26: a BARBARIAN is hit (attacker, damage)
+; In:  8(a6) = this, $C(a6) = attacker, then hit parameters (see ACTOR +$26 $15E680)
+; Evidence: slot +$26 of the BARBARIAN descriptor $0BE74E; TAS frames 28004-33017 (11 frames active); calls parent BIONPC slot +$26
 ; ---------------------------------------------------------------------------
-sub_0BE602:
+Barbarian_TakeDamage:
 	link.w	a6,#$0
 	move.l	a4,-(a7)
 	movea.l	$8(a6),a4

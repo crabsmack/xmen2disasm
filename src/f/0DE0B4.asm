@@ -1,7 +1,9 @@
 ; ---------------------------------------------------------------------------
-; sub_0DE0B4	[jt 1192]
+; ControlPanel_Draw - vtable +$1A: draw a CONTROLPANEL
+; In:  8(a6) = this
+; Evidence: slot +$1A of the CONTROLPANEL descriptor $0DE48E; TAS frames 2712-6946 (1135 frames active); calls parent ACTOR slot +$1A
 ; ---------------------------------------------------------------------------
-sub_0DE0B4:
+ControlPanel_Draw:
 	link.w	a6,#$FFFC
 	movem.l	d6-d7/a3-a4,-(a7)
 	movea.l	$8(a6),a3

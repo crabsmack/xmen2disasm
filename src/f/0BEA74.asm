@@ -1,7 +1,9 @@
 ; ---------------------------------------------------------------------------
-; sub_0BEA74	[jt 1060]
+; Launcher_Draw - vtable +$1A: draw a LAUNCHER
+; In:  8(a6) = this
+; Evidence: slot +$1A of the LAUNCHER descriptor $0BED0C; TAS frames 27947-30595 (708 frames active); calls parent ACTOR slot +$1A
 ; ---------------------------------------------------------------------------
-sub_0BEA74:
+Launcher_Draw:
 	link.w	a6,#$FFFE
 	movem.l	d3-d7/a3-a4,-(a7)
 	movea.l	$8(a6),a3

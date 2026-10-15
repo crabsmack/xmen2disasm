@@ -1,7 +1,9 @@
 ; ---------------------------------------------------------------------------
-; sub_0BE594	[jt 1050]
+; Barbarian_Move - vtable +$4E: per-frame movement of a BARBARIAN
+; In:  8(a6) = this
+; Evidence: slot +$4E of the BARBARIAN descriptor $0BE74E; TAS frames 28050-33062 (183 frames active)
 ; ---------------------------------------------------------------------------
-sub_0BE594:
+Barbarian_Move:
 	link.w	a6,#$0
 	movem.l	d7/a4,-(a7)
 	move.w	$E(a6),d7

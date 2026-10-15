@@ -1,7 +1,9 @@
 ; ---------------------------------------------------------------------------
-; sub_0BA258	[jt 981]
+; SavageBioBase_Move - vtable +$4E: per-frame movement of a SAVAGEBIOBASE
+; In:  8(a6) = this
+; Evidence: slot +$4E of the SAVAGEBIOBASE descriptor $0BD27C; TAS frames 33560-34355 (704 frames active)
 ; ---------------------------------------------------------------------------
-sub_0BA258:
+SavageBioBase_Move:
 	link.w	a6,#$0
 	movem.l	d3/d6-d7/a4,-(a7)
 	movea.l	$8(a6),a4

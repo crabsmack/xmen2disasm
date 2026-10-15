@@ -1,7 +1,9 @@
 ; ---------------------------------------------------------------------------
-; sub_09899E	[jt 785]
+; EvilPsylocke_Init - vtable +$12 constructor: run the parent's Init, then set up a EVILPSYLOCKE
+; In:  8(a6) = this, $C(a6) = long x, $10(a6) = long y (8 fraction bits), $14(a6) = spawn parameter
+; Evidence: slot +$12 of the EVILPSYLOCKE descriptor $09A020; TAS frames 53812-53812 (1 frames active); calls parent XCLONE slot +$12
 ; ---------------------------------------------------------------------------
-sub_09899E:
+EvilPsylocke_Init:
 	link.w	a6,#$0
 	move.l	a4,-(a7)
 	movea.l	$8(a6),a4

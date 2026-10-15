@@ -1,7 +1,9 @@
 ; ---------------------------------------------------------------------------
-; sub_0841C4	[jt 585]
+; SmallBrood_Init - vtable +$12 constructor: run the parent's Init, then set up a SMALLBROOD
+; In:  8(a6) = this, $C(a6) = long x, $10(a6) = long y (8 fraction bits), $14(a6) = spawn parameter
+; Evidence: slot +$12 of the SMALLBROOD descriptor $0840FE; TAS frames 46166-57101 (35 frames active); calls parent BIONPC slot +$12; state handler(s) put in +$5C: sub_08468E
 ; ---------------------------------------------------------------------------
-sub_0841C4:
+SmallBrood_Init:
 	link.w	a6,#$FFFC
 	movem.l	d3/d5-d7/a3-a4,-(a7)
 	movea.l	$14(a6),a3

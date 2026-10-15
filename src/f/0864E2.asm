@@ -1,7 +1,9 @@
 ; ---------------------------------------------------------------------------
-; sub_0864E2	[jt 625]
+; BroodBossDamage_Draw - vtable +$1A: draw a BROODBOSSDAMAGE
+; In:  8(a6) = this
+; Evidence: slot +$1A of the BROODBOSSDAMAGE descriptor $088CF0; TAS frames 49417-50570 (580 frames active)
 ; ---------------------------------------------------------------------------
-sub_0864E2:
+BroodBossDamage_Draw:
 	link.w	a6,#$0
 	unlk	a6
 	rts

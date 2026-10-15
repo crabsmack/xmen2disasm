@@ -1,8 +1,11 @@
 ; ---------------------------------------------------------------------------
-; sub_09522C	[jt 711]
+; XClone_Nop6A - vtable +$6A: empty hook for XCLONE
+; In:  8(a6) = this
+; Out: none
+; Evidence: slot +$6A of the XCLONE descriptor $099C90; never runs in the corpus
 ; ---------------------------------------------------------------------------
-sub_09522C:
+XClone_Nop6A:
 	link.w	a6,#$0
-	jsr	sub_099C88(pc)
+	jsr	XClone_NopStatic(pc)
 	unlk	a6
 	rts

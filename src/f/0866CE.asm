@@ -1,7 +1,9 @@
 ; ---------------------------------------------------------------------------
-; sub_0866CE	[jt 628]
+; BroodBoss_Init - vtable +$12 constructor: run the parent's Init, then set up a BROODBOSS
+; In:  8(a6) = this, $C(a6) = long x, $10(a6) = long y (8 fraction bits), $14(a6) = spawn parameter
+; Evidence: slot +$12 of the BROODBOSS descriptor $088D6E; TAS frames 49283-49283 (1 frames active); calls parent BROODBOSSPARTS slot +$12
 ; ---------------------------------------------------------------------------
-sub_0866CE:
+BroodBoss_Init:
 	link.w	a6,#$0
 	movem.l	d3/d6-d7/a3-a4,-(a7)
 	movea.l	$8(a6),a4

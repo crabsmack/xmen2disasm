@@ -1,7 +1,9 @@
 ; ---------------------------------------------------------------------------
-; sub_0DCD18	[jt 1168]
+; Blast_OutsideActiveWindow - vtable +$42: is a BLAST outside its active window
+; In:  8(a6) = this
+; Evidence: slot +$42 of the BLAST descriptor $0DD0E8; TAS frames 2783-7280 (1682 frames active); calls parent ACTOR slot +$42
 ; ---------------------------------------------------------------------------
-sub_0DCD18:
+Blast_OutsideActiveWindow:
 	link.w	a6,#$0
 	move.l	a4,-(a7)
 	movea.l	$8(a6),a4

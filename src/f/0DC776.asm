@@ -1,7 +1,9 @@
 ; ---------------------------------------------------------------------------
-; sub_0DC776	[jt 1159]
+; Barrier_Despawn - vtable +$36: a BARRIER leaves play (written back to its spawn record)
+; In:  8(a6) = this
+; Evidence: slot +$36 of the BARRIER descriptor $0DCAAA; never runs in the corpus
 ; ---------------------------------------------------------------------------
-sub_0DC776:
+Barrier_Despawn:
 	link.w	a6,#$0
 	movem.l	a3-a4,-(a7)
 	movea.l	$C(a6),a3

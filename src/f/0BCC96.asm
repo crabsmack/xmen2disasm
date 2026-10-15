@@ -1,7 +1,9 @@
 ; ---------------------------------------------------------------------------
-; sub_0BCC96	[jt 1024]
+; SavageMediumBio_Init - vtable +$12 constructor: run the parent's Init, then set up a SAVAGEMEDIUMBIO
+; In:  8(a6) = this, $C(a6) = long x, $10(a6) = long y (8 fraction bits), $14(a6) = spawn parameter
+; Evidence: slot +$12 of the SAVAGEMEDIUMBIO descriptor $0BD39C; TAS frames 33558-33558 (1 frames active); calls parent SAVAGEBIOBASE slot +$12; state handler(s) put in +$5C: sub_0BCE0E
 ; ---------------------------------------------------------------------------
-sub_0BCC96:
+SavageMediumBio_Init:
 	link.w	a6,#$0
 	move.l	a4,-(a7)
 	movea.l	$8(a6),a4

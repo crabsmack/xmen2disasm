@@ -1,7 +1,9 @@
 ; ---------------------------------------------------------------------------
-; sub_0BA4A2	[jt 983]
+; SavageBioBase_SetFrame - vtable +$56: set a SAVAGEBIOBASE's animation frame
+; In:  8(a6) = this
+; Evidence: slot +$56 of the SAVAGEBIOBASE descriptor $0BD27C; TAS frames 33558-33929 (45 frames active)
 ; ---------------------------------------------------------------------------
-sub_0BA4A2:
+SavageBioBase_SetFrame:
 	link.w	a6,#$FFFC
 	movem.l	d7/a3-a4,-(a7)
 	movea.l	$8(a6),a3

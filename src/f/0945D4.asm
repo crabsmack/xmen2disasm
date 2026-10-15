@@ -1,8 +1,11 @@
 ; ---------------------------------------------------------------------------
-; sub_0945D4	[jt 684]
+; EvilMaker_Nop6A - vtable +$6A: empty hook for EVILMAKER
+; In:  8(a6) = this
+; Out: none
+; Evidence: slot +$6A of the EVILMAKER descriptor $094BAC; never runs in the corpus
 ; ---------------------------------------------------------------------------
-sub_0945D4:
+EvilMaker_Nop6A:
 	link.w	a6,#$0
-	jsr	sub_094BA4(pc)
+	jsr	EvilMaker_NopStatic(pc)
 	unlk	a6
 	rts

@@ -1,11 +1,13 @@
 ; ---------------------------------------------------------------------------
-; sub_0ABB64	[jt 867]
+; FloatBubble_ClassInit - vtable +$5E: per-level class setup for FLOATBUBBLE: load its resources (sub_1F62C0) into class globals
+; In:  8(a6) = 0, $C(a6) = long class index in the level class list
+; Evidence: slot +$5E of the FLOATBUBBLE descriptor $0AB496; TAS frames 29684-32204 (3 frames active)
 ; ---------------------------------------------------------------------------
-sub_0ABB64:
+FloatBubble_ClassInit:
 	link.w	a6,#$0
 	movem.l	d3/d7,-(a7)
 	move.l	$8(a6),-(a7)
-	jsr	sub_0ABB42(pc)
+	jsr	FloatBubble_Nop6A(pc)
 	moveq	#$1,d3
 	moveq	#$0,d0
 	move.b	-$3B5A(a5),d0

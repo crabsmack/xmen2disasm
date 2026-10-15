@@ -1,7 +1,9 @@
 ; ---------------------------------------------------------------------------
-; sub_0AC46E	[jt 887]
+; PerimeterDoor_Init - vtable +$12 constructor: run the parent's Init, then set up a PERIMETERDOOR
+; In:  8(a6) = this, $C(a6) = long x, $10(a6) = long y (8 fraction bits), $14(a6) = spawn parameter
+; Evidence: slot +$12 of the PERIMETERDOOR descriptor $0AC3B2; TAS frames 31695-32936 (2 frames active); calls parent ACTOR slot +$12; state handler(s) put in +$5C: sub_0AC91C
 ; ---------------------------------------------------------------------------
-sub_0AC46E:
+PerimeterDoor_Init:
 	link.w	a6,#$0
 	movem.l	a3-a4,-(a7)
 	movea.l	$14(a6),a3

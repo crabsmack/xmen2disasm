@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_0DDEB8	[jt 1187]
+; ControlPanel_GetSize - vtable +$06: return sizeof(CONTROLPANEL) = $A4 bytes
+; In:  none
+; Out: d0 = $A4
+; Evidence: slot +$6 of the CONTROLPANEL descriptor $0DE48E; never runs in the corpus
 ; ---------------------------------------------------------------------------
-sub_0DDEB8:
+ControlPanel_GetSize:
 	link.w	a6,#$0
 	move.l	#$A4,d0
 	unlk	a6

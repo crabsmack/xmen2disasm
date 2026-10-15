@@ -1,7 +1,9 @@
 ; ---------------------------------------------------------------------------
-; sub_0ABEDA	[jt 872]
+; FloatBubble_Attack - vtable +$22: a FLOATBUBBLE hits a target object
+; In:  8(a6) = this, $C(a6) = target object, then hit parameters (see ACTOR +$22 $15E630)
+; Evidence: slot +$22 of the FLOATBUBBLE descriptor $0AB496; never runs in the corpus; calls parent ACTOR slot +$22
 ; ---------------------------------------------------------------------------
-sub_0ABEDA:
+FloatBubble_Attack:
 	link.w	a6,#$0
 	move.l	a4,-(a7)
 	movea.l	$8(a6),a4

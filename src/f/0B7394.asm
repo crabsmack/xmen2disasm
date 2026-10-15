@@ -1,7 +1,9 @@
 ; ---------------------------------------------------------------------------
-; sub_0B7394	[jt 933]
+; ChildShip_TakeDamage - vtable +$26: a CHILDSHIP is hit (attacker, damage)
+; In:  8(a6) = this, $C(a6) = attacker, then hit parameters (see ACTOR +$26 $15E680)
+; Evidence: slot +$26 of the CHILDSHIP descriptor $0B7C3A; TAS frames 33414-33436 (2 frames active)
 ; ---------------------------------------------------------------------------
-sub_0B7394:
+ChildShip_TakeDamage:
 	link.w	a6,#$0
 	movem.l	d7/a4,-(a7)
 	move.b	$17(a6),d7

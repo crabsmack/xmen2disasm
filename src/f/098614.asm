@@ -1,7 +1,9 @@
 ; ---------------------------------------------------------------------------
-; sub_098614	[jt 782]
+; EvilNightcrawler_Init - vtable +$12 constructor: run the parent's Init, then set up a EVILNIGHTCRAWLER
+; In:  8(a6) = this, $C(a6) = long x, $10(a6) = long y (8 fraction bits), $14(a6) = spawn parameter
+; Evidence: slot +$12 of the EVILNIGHTCRAWLER descriptor $099F88; TAS frames 56384-56384 (1 frames active); calls parent XCLONE slot +$12
 ; ---------------------------------------------------------------------------
-sub_098614:
+EvilNightcrawler_Init:
 	link.w	a6,#$0
 	move.l	a4,-(a7)
 	movea.l	$8(a6),a4

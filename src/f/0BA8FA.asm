@@ -1,7 +1,9 @@
 ; ---------------------------------------------------------------------------
-; sub_0BA8FA	[jt 990]
+; SavageBigBio_Draw - vtable +$1A: draw a SAVAGEBIGBIO
+; In:  8(a6) = this
+; Evidence: slot +$1A of the SAVAGEBIGBIO descriptor $0BD30C; TAS frames 33663-34354 (688 frames active); calls parent SAVAGEBIOBASE slot +$1A
 ; ---------------------------------------------------------------------------
-sub_0BA8FA:
+SavageBigBio_Draw:
 	link.w	a6,#$FFF8
 	movem.l	d3-d7/a3-a4,-(a7)
 	movea.l	$8(a6),a0

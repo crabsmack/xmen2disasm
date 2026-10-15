@@ -1,7 +1,9 @@
 ; ---------------------------------------------------------------------------
-; sub_0954C8	[jt 714]
+; XClone_Deactivate - Deactivate
+; In:  8(a6) = this
+; Evidence: slot +$46 of the XCLONE descriptor $099C90; TAS frames 52535-56844 (7 frames active); calls parent BIONPC slot +$46
 ; ---------------------------------------------------------------------------
-sub_0954C8:
+XClone_Deactivate:
 	link.w	a6,#$0
 	move.l	a4,-(a7)
 	movea.l	$8(a6),a4

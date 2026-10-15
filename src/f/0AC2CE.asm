@@ -1,8 +1,11 @@
 ; ---------------------------------------------------------------------------
-; sub_0AC2CE	[jt 878]
+; FloatBubbleExplode_Nop6A - vtable +$6A: empty hook for FLOATBUBBLEEXPLODE
+; In:  8(a6) = this
+; Out: none
+; Evidence: slot +$6A of the FLOATBUBBLEEXPLODE descriptor $0AC1B8; never runs in the corpus
 ; ---------------------------------------------------------------------------
-sub_0AC2CE:
+FloatBubbleExplode_Nop6A:
 	link.w	a6,#$0
-	jsr	sub_0AC248(pc)
+	jsr	FloatBubbleExplode_NopStatic(pc)
 	unlk	a6
 	rts

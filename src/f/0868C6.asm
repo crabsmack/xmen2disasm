@@ -1,7 +1,9 @@
 ; ---------------------------------------------------------------------------
-; sub_0868C6	[jt 629]
+; BroodBoss_SpawnRecInView - vtable +$2A: is a BROODBOSS spawn record inside the spawn window
+; In:  8(a6) = class descriptor, $C(a6) = spawn record
+; Evidence: slot +$2A of the BROODBOSS descriptor $088D6E; TAS frames 51133-51133 (1 frames active)
 ; ---------------------------------------------------------------------------
-sub_0868C6:
+BroodBoss_SpawnRecInView:
 	link.w	a6,#$0
 	move.l	a4,-(a7)
 	movea.l	$C(a6),a4

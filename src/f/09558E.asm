@@ -1,7 +1,9 @@
 ; ---------------------------------------------------------------------------
-; sub_09558E	[jt 717]
+; XClone_Update - vtable +$4A: per-frame update of a XCLONE
+; In:  8(a6) = this
+; Evidence: slot +$4A of the XCLONE descriptor $099C90; TAS frames 52266-57465 (2722 frames active); calls parent BIONPC slot +$4A
 ; ---------------------------------------------------------------------------
-sub_09558E:
+XClone_Update:
 	link.w	a6,#$0
 	move.l	a4,-(a7)
 	movea.l	$8(a6),a4

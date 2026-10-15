@@ -1,7 +1,9 @@
 ; ---------------------------------------------------------------------------
-; sub_0BFDB8	[jt 1095]
+; SwampPlatform_ClassInit - vtable +$5E: per-level class setup for SWAMPPLATFORM: load its resources (sub_1F62C0) into class globals
+; In:  8(a6) = 0, $C(a6) = long class index in the level class list
+; Evidence: slot +$5E of the SWAMPPLATFORM descriptor $0C005A; TAS frames 27881-29687 (2 frames active)
 ; ---------------------------------------------------------------------------
-sub_0BFDB8:
+SwampPlatform_ClassInit:
 	link.w	a6,#$0
 	moveq	#$3,d0
 	move.l	d0,-(a7)

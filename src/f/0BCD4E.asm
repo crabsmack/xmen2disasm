@@ -1,7 +1,9 @@
 ; ---------------------------------------------------------------------------
-; sub_0BCD4E	[jt 1025]
+; SavageMediumBio_TakeDamage - vtable +$26: a SAVAGEMEDIUMBIO is hit (attacker, damage)
+; In:  8(a6) = this, $C(a6) = attacker, then hit parameters (see ACTOR +$26 $15E680)
+; Evidence: slot +$26 of the SAVAGEMEDIUMBIO descriptor $0BD39C; TAS frames 33579-33579 (1 frames active)
 ; ---------------------------------------------------------------------------
-sub_0BCD4E:
+SavageMediumBio_TakeDamage:
 	link.w	a6,#$0
 	move.w	$1E(a6),d0
 	ext.l	d0

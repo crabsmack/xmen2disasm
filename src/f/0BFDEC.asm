@@ -1,7 +1,9 @@
 ; ---------------------------------------------------------------------------
-; sub_0BFDEC	[jt 1097]
+; SwampPlatform_Move - vtable +$4E: per-frame movement of a SWAMPPLATFORM
+; In:  8(a6) = this
+; Evidence: slot +$4E of the SWAMPPLATFORM descriptor $0C005A; TAS frames 28316-30469 (422 frames active)
 ; ---------------------------------------------------------------------------
-sub_0BFDEC:
+SwampPlatform_Move:
 	link.w	a6,#$0
 	movem.l	d7/a4,-(a7)
 	movea.l	$8(a6),a4

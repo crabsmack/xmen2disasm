@@ -1,7 +1,9 @@
 ; ---------------------------------------------------------------------------
-; sub_0DE54A	[jt 1201]
+; SentinelDoor_Init - vtable +$12 constructor: run the parent's Init, then set up a SENTINELDOOR
+; In:  8(a6) = this, $C(a6) = long x, $10(a6) = long y (8 fraction bits), $14(a6) = spawn parameter
+; Evidence: slot +$12 of the SENTINELDOOR descriptor $0DE9A0; TAS frames 2715-7112 (20 frames active); calls parent ACTOR slot +$12; state handler(s) put in +$5C: sub_0DE6A6
 ; ---------------------------------------------------------------------------
-sub_0DE54A:
+SentinelDoor_Init:
 	link.w	a6,#$FFF0
 	movem.l	d4-d7/a3-a4,-(a7)
 	move.l	$10(a6),d4

@@ -1,7 +1,9 @@
 ; ---------------------------------------------------------------------------
-; sub_0BFB44	[jt 1089]
+; SwampBubbles_Draw - vtable +$1A: draw a SWAMPBUBBLES
+; In:  8(a6) = this
+; Evidence: slot +$1A of the SWAMPBUBBLES descriptor $0BFCE4; never runs in the corpus
 ; ---------------------------------------------------------------------------
-sub_0BFB44:
+SwampBubbles_Draw:
 	link.w	a6,#$FFF8
 	movem.l	d4-d7/a4,-(a7)
 	movea.l	$8(a6),a4

@@ -1,7 +1,9 @@
 ; ---------------------------------------------------------------------------
-; sub_085410	[jt 600]
+; TeleportReceiver_InitSpawnRec - vtable +$0A: initialise a TELEPORTRECEIVER spawn record from level data
+; In:  8(a6) = class descriptor, $C(a6) = spawn record
+; Evidence: slot +$A of the TELEPORTRECEIVER descriptor $085300; TAS frames 47898-47898 (1 frames active); calls parent ACTOR slot +$A
 ; ---------------------------------------------------------------------------
-sub_085410:
+TeleportReceiver_InitSpawnRec:
 	link.w	a6,#$0
 	movem.l	a3-a4,-(a7)
 	movea.l	$8(a6),a4

@@ -1,7 +1,9 @@
 ; ---------------------------------------------------------------------------
-; sub_0DCDD8	[jt 1170]
+; Blast_Draw - vtable +$1A: draw a BLAST
+; In:  8(a6) = this
+; Evidence: slot +$1A of the BLAST descriptor $0DD0E8; TAS frames 2782-7280 (1786 frames active); calls parent ACTOR slot +$1A
 ; ---------------------------------------------------------------------------
-sub_0DCDD8:
+Blast_Draw:
 	link.w	a6,#$0
 	movem.l	d3/a4,-(a7)
 	movea.l	$8(a6),a4

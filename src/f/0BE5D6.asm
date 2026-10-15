@@ -1,7 +1,9 @@
 ; ---------------------------------------------------------------------------
-; sub_0BE5D6	[jt 1051]
+; Barbarian_Draw - vtable +$1A: draw a BARBARIAN
+; In:  8(a6) = this
+; Evidence: slot +$1A of the BARBARIAN descriptor $0BE74E; TAS frames 27992-33098 (1755 frames active); calls parent BIONPC slot +$1A
 ; ---------------------------------------------------------------------------
-sub_0BE5D6:
+Barbarian_Draw:
 	link.w	a6,#$0
 	movem.l	d7/a3-a4,-(a7)
 	movea.l	$8(a6),a3

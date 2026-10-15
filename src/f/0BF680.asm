@@ -1,7 +1,9 @@
 ; ---------------------------------------------------------------------------
-; sub_0BF680	[jt 1078]
+; SpikeBall_Draw - vtable +$1A: draw a SPIKEBALL
+; In:  8(a6) = this
+; Evidence: slot +$1A of the SPIKEBALL descriptor $0BF820; TAS frames 27964-30508 (1309 frames active)
 ; ---------------------------------------------------------------------------
-sub_0BF680:
+SpikeBall_Draw:
 	link.w	a6,#$0
 	movem.l	d4-d7/a4,-(a7)
 	movea.l	$8(a6),a4

@@ -1,7 +1,9 @@
 ; ---------------------------------------------------------------------------
-; sub_08627E	[jt 622]
+; BroodBossArm_Draw - vtable +$1A: draw a BROODBOSSARM
+; In:  8(a6) = this
+; Evidence: slot +$1A of the BROODBOSSARM descriptor $088C74; TAS frames 49292-51071 (1131 frames active); calls parent BROODBOSSPARTS slot +$1A
 ; ---------------------------------------------------------------------------
-sub_08627E:
+BroodBossArm_Draw:
 	link.w	a6,#$0
 	move.l	a4,-(a7)
 	movea.l	$8(a6),a4

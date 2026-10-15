@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_0DDEC6	[jt 1188]
+; ControlPanel_Nop66 - vtable +$66: empty (loads `this` into a4 and returns; every class has this body)
+; In:  8(a6) = this
+; Out: none
+; Evidence: slot +$66 of the CONTROLPANEL descriptor $0DE48E; never runs in the corpus
 ; ---------------------------------------------------------------------------
-sub_0DDEC6:
+ControlPanel_Nop66:
 	link.w	a6,#$FFFC
 	movem.l	a3-a4,-(a7)
 	movea.l	$8(a6),a4

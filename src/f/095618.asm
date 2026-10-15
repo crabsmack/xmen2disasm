@@ -1,7 +1,9 @@
 ; ---------------------------------------------------------------------------
-; sub_095618	[jt 718]
+; XClone_Move - vtable +$4E: per-frame movement of a XCLONE
+; In:  8(a6) = this
+; Evidence: slot +$4E of the XCLONE descriptor $099C90; TAS frames 52266-57465 (2602 frames active)
 ; ---------------------------------------------------------------------------
-sub_095618:
+XClone_Move:
 	link.w	a6,#$0
 	movem.l	d5-d7/a4,-(a7)
 	move.w	$E(a6),d5

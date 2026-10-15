@@ -1,7 +1,9 @@
 ; ---------------------------------------------------------------------------
-; sub_0BFE6C	[jt 1098]
+; SwampPlatform_Draw - vtable +$1A: draw a SWAMPPLATFORM
+; In:  8(a6) = this
+; Evidence: slot +$1A of the SWAMPPLATFORM descriptor $0C005A; TAS frames 28315-30468 (422 frames active)
 ; ---------------------------------------------------------------------------
-sub_0BFE6C:
+SwampPlatform_Draw:
 	link.w	a6,#$0
 	movem.l	d5-d7/a4,-(a7)
 	movea.l	$8(a6),a4

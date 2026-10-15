@@ -1,7 +1,9 @@
 ; ---------------------------------------------------------------------------
-; sub_0ABC56	[jt 870]
+; FloatBubble_Move - vtable +$4E: per-frame movement of a FLOATBUBBLE
+; In:  8(a6) = this
+; Evidence: slot +$4E of the FLOATBUBBLE descriptor $0AB496; TAS frames 29721-31625 (289 frames active)
 ; ---------------------------------------------------------------------------
-sub_0ABC56:
+FloatBubble_Move:
 	link.w	a6,#$0
 	movem.l	d3/d6-d7/a4,-(a7)
 	movea.l	$8(a6),a4

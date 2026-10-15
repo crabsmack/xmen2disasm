@@ -1,7 +1,9 @@
 ; ---------------------------------------------------------------------------
-; sub_0DD75A	[jt 1181]
+; ControlBox_Draw - vtable +$1A: draw a CONTROLBOX
+; In:  8(a6) = this
+; Evidence: slot +$1A of the CONTROLBOX descriptor $0DDA02; TAS frames 2523-7268 (2540 frames active); calls parent ACTOR slot +$1A
 ; ---------------------------------------------------------------------------
-sub_0DD75A:
+ControlBox_Draw:
 	link.w	a6,#$FFFC
 	movem.l	d6-d7/a3-a4,-(a7)
 	movea.l	$8(a6),a3

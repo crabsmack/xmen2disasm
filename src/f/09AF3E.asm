@@ -1,7 +1,9 @@
 ; ---------------------------------------------------------------------------
-; sub_09AF3E	[jt 838]
+; BroodClaw_Draw - vtable +$1A: draw a BROODCLAW
+; In:  8(a6) = this
+; Evidence: slot +$1A of the BROODCLAW descriptor $09B98C; TAS frames 49292-52534 (2772 frames active)
 ; ---------------------------------------------------------------------------
-sub_09AF3E:
+BroodClaw_Draw:
 	link.w	a6,#$FFFC
 	movem.l	d5-d7/a3-a4,-(a7)
 	movea.l	$8(a6),a3

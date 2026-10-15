@@ -1,7 +1,9 @@
 ; ---------------------------------------------------------------------------
-; sub_0868F0	[jt 630]
+; BroodBoss_Update - vtable +$4A: per-frame update of a BROODBOSS
+; In:  8(a6) = this
+; Evidence: slot +$4A of the BROODBOSS descriptor $088D6E; TAS frames 49291-51132 (1087 frames active); calls parent BROODBOSSPARTS slot +$4A
 ; ---------------------------------------------------------------------------
-sub_0868F0:
+BroodBoss_Update:
 	link.w	a6,#$0
 	movem.l	d6-d7/a4,-(a7)
 	movea.l	$8(a6),a4

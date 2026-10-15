@@ -1,7 +1,9 @@
 ; ---------------------------------------------------------------------------
-; sub_0BA6CE	[jt 987]
+; SavageBigBio_TakeDamage - vtable +$26: a SAVAGEBIGBIO is hit (attacker, damage)
+; In:  8(a6) = this, $C(a6) = attacker, then hit parameters (see ACTOR +$26 $15E680)
+; Evidence: slot +$26 of the SAVAGEBIGBIO descriptor $0BD30C; TAS frames 33684-33890 (7 frames active)
 ; ---------------------------------------------------------------------------
-sub_0BA6CE:
+SavageBigBio_TakeDamage:
 	link.w	a6,#$0
 	move.l	a4,-(a7)
 	movea.l	$8(a6),a4

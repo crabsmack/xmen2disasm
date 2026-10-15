@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_0B68FC	[jt 921]
+; BrainChild_GetSize - vtable +$06: return sizeof(BRAINCHILD) = $A6 bytes
+; In:  none
+; Out: d0 = $A6
+; Evidence: slot +$6 of the BRAINCHILD descriptor $0B7BAC; never runs in the corpus
 ; ---------------------------------------------------------------------------
-sub_0B68FC:
+BrainChild_GetSize:
 	link.w	a6,#$0
 	move.l	#$A6,d0
 	unlk	a6

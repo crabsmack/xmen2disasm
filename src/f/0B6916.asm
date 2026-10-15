@@ -1,7 +1,9 @@
 ; ---------------------------------------------------------------------------
-; sub_0B6916	[jt 923]
+; BrainChild_Init - vtable +$12 constructor: run the parent's Init, then set up a BRAINCHILD
+; In:  8(a6) = this, $C(a6) = long x, $10(a6) = long y (8 fraction bits), $14(a6) = spawn parameter
+; Evidence: slot +$12 of the BRAINCHILD descriptor $0B7BAC; TAS frames 33489-33489 (1 frames active); calls parent BIONPC slot +$12
 ; ---------------------------------------------------------------------------
-sub_0B6916:
+BrainChild_Init:
 	link.w	a6,#$0
 	move.l	a4,-(a7)
 	movea.l	$8(a6),a4

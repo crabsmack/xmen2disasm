@@ -1,7 +1,9 @@
 ; ---------------------------------------------------------------------------
-; sub_084500	[jt 586]
+; SmallBrood_Update - vtable +$4A: per-frame update of a SMALLBROOD
+; In:  8(a6) = this
+; Evidence: slot +$4A of the SMALLBROOD descriptor $0840FE; TAS frames 46167-57154 (1406 frames active); calls parent BIONPC slot +$4A
 ; ---------------------------------------------------------------------------
-sub_084500:
+SmallBrood_Update:
 	link.w	a6,#$0
 	move.l	a4,-(a7)
 	movea.l	$8(a6),a4

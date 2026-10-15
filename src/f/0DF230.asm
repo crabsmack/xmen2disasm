@@ -1,7 +1,9 @@
 ; ---------------------------------------------------------------------------
-; sub_0DF230	[jt 1209]
+; SentinelElevator_Init - vtable +$12 constructor: run the parent's Init, then set up a SENTINELELEVATOR
+; In:  8(a6) = this, $C(a6) = long x, $10(a6) = long y (8 fraction bits), $14(a6) = spawn parameter
+; Evidence: slot +$12 of the SENTINELELEVATOR descriptor $0DF556; TAS frames 4818-9969 (3 frames active); calls parent ACTOR slot +$12; state handler(s) put in +$5C: sub_0DF34C, sub_0DF38E
 ; ---------------------------------------------------------------------------
-sub_0DF230:
+SentinelElevator_Init:
 	link.w	a6,#$0
 	movem.l	d7/a3-a4,-(a7)
 	movea.l	$14(a6),a3

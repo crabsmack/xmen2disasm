@@ -1,8 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_094CE6	[jt 701]
+; EvilDrop_ClassInit - vtable +$5E: per-level class setup for EVILDROP
+; In:  8(a6) = 0, $C(a6) = long class index in the level class list
+; Evidence: slot +$5E of the EVILDROP descriptor $095126; TAS frames 49269-49269 (1 frames active)
 ; ---------------------------------------------------------------------------
-sub_094CE6:
+EvilDrop_ClassInit:
 	link.w	a6,#$0
-	jsr	sub_09511E(pc)
+	jsr	EvilDrop_NopStatic(pc)
 	unlk	a6
 	rts

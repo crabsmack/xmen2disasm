@@ -1,7 +1,9 @@
 ; ---------------------------------------------------------------------------
-; sub_0DC59C	[jt 1154]
+; ClosedBarrier_Update - vtable +$4A: per-frame update of a CLOSEDBARRIER
+; In:  8(a6) = this
+; Evidence: slot +$4A of the CLOSEDBARRIER descriptor $0DCA2E; never runs in the corpus
 ; ---------------------------------------------------------------------------
-sub_0DC59C:
+ClosedBarrier_Update:
 	link.w	a6,#$0
 	movem.l	d7/a4,-(a7)
 	movea.l	$8(a6),a4

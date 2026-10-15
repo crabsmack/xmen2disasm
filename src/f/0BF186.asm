@@ -1,7 +1,9 @@
 ; ---------------------------------------------------------------------------
-; sub_0BF186	[jt 1068]
+; SporeMine_SpawnFromRec - vtable +$2E: create a SPOREMINE from its spawn record
+; In:  8(a6) = class descriptor, $C(a6) = spawn record
+; Evidence: slot +$2E of the SPOREMINE descriptor $0BF580; TAS frames 27905-30491 (69 frames active)
 ; ---------------------------------------------------------------------------
-sub_0BF186:
+SporeMine_SpawnFromRec:
 	link.w	a6,#$0
 	movem.l	a3-a4,-(a7)
 	movea.l	$C(a6),a4

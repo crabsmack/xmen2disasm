@@ -1,7 +1,9 @@
 ; ---------------------------------------------------------------------------
-; sub_0B6A00	[jt 924]
+; BrainChild_Move - vtable +$4E: per-frame movement of a BRAINCHILD
+; In:  8(a6) = this
+; Evidence: slot +$4E of the BRAINCHILD descriptor $0B7BAC; TAS frames 33490-33537 (48 frames active)
 ; ---------------------------------------------------------------------------
-sub_0B6A00:
+BrainChild_Move:
 	link.w	a6,#$0
 	movem.l	d3/d6-d7/a4,-(a7)
 	movea.l	$8(a6),a4

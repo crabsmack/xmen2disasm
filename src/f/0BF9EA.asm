@@ -1,7 +1,9 @@
 ; ---------------------------------------------------------------------------
-; sub_0BF9EA	[jt 1084]
+; SwampFly_SpawnRecInView - vtable +$2A: is a SWAMPFLY spawn record inside the spawn window
+; In:  8(a6) = class descriptor, $C(a6) = spawn record
+; Evidence: slot +$2A of the SWAMPFLY descriptor $0C0CEA; TAS frames 27889-30595 (953 frames active)
 ; ---------------------------------------------------------------------------
-sub_0BF9EA:
+SwampFly_SpawnRecInView:
 	link.w	a6,#$0
 	movem.l	d3/a3-a4,-(a7)
 	movea.l	$8(a6),a3

@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_0BE9E2	[jt 1059]
+; Launcher_Nop66 - vtable +$66: empty (loads `this` into a4 and returns; every class has this body)
+; In:  8(a6) = this
+; Out: none
+; Evidence: slot +$66 of the LAUNCHER descriptor $0BED0C; never runs in the corpus
 ; ---------------------------------------------------------------------------
-sub_0BE9E2:
+Launcher_Nop66:
 	link.w	a6,#$FFFC
 	movem.l	a3-a4,-(a7)
 	movea.l	$8(a6),a4

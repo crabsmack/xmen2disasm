@@ -1,7 +1,9 @@
 ; ---------------------------------------------------------------------------
-; sub_0BFCB4	[jt 1091]
+; SwampBubbles_Deactivate - Deactivate
+; In:  8(a6) = this
+; Evidence: slot +$46 of the SWAMPBUBBLES descriptor $0BFCE4; never runs in the corpus; calls parent ACTOR slot +$46
 ; ---------------------------------------------------------------------------
-sub_0BFCB4:
+SwampBubbles_Deactivate:
 	link.w	a6,#$0
 	move.l	a4,-(a7)
 	movea.l	$8(a6),a4

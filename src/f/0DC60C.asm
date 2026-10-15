@@ -1,8 +1,11 @@
 ; ---------------------------------------------------------------------------
-; sub_0DC60C	[jt 1156]
+; Barrier_Nop6A - vtable +$6A: empty hook for BARRIER
+; In:  8(a6) = this
+; Out: none
+; Evidence: slot +$6A of the BARRIER descriptor $0DCAAA; never runs in the corpus
 ; ---------------------------------------------------------------------------
-sub_0DC60C:
+Barrier_Nop6A:
 	link.w	a6,#$0
-	jsr	sub_0DCA26(pc)
+	jsr	Barrier_NopStatic(pc)
 	unlk	a6
 	rts

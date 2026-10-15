@@ -1,7 +1,9 @@
 ; ---------------------------------------------------------------------------
-; sub_09550C	[jt 715]
+; XClone_Kill - vtable +$52: remove a XCLONE from play
+; In:  8(a6) = this
+; Evidence: slot +$52 of the XCLONE descriptor $099C90; TAS frames 52535-56844 (7 frames active); calls parent BIONPC slot +$52
 ; ---------------------------------------------------------------------------
-sub_09550C:
+XClone_Kill:
 	link.w	a6,#$0
 	movem.l	d7/a4,-(a7)
 	movea.l	$8(a6),a4

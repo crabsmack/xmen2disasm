@@ -1,7 +1,9 @@
 ; ---------------------------------------------------------------------------
-; sub_0B7298	[jt 932]
+; ChildShip_Move - vtable +$4E: per-frame movement of a CHILDSHIP
+; In:  8(a6) = this
+; Evidence: slot +$4E of the CHILDSHIP descriptor $0B7C3A; TAS frames 33389-33550 (155 frames active)
 ; ---------------------------------------------------------------------------
-sub_0B7298:
+ChildShip_Move:
 	link.w	a6,#$0
 	movem.l	d5-d7/a4,-(a7)
 	move.w	$E(a6),d5

@@ -1,7 +1,9 @@
 ; ---------------------------------------------------------------------------
-; sub_0ABF3A	[jt 873]
+; FloatBubble_Draw - vtable +$1A: draw a FLOATBUBBLE
+; In:  8(a6) = this
+; Evidence: slot +$1A of the FLOATBUBBLE descriptor $0AB496; TAS frames 29720-31625 (301 frames active); calls parent ACTOR slot +$1A
 ; ---------------------------------------------------------------------------
-sub_0ABF3A:
+FloatBubble_Draw:
 	link.w	a6,#$0
 	movem.l	d3-d7/a4,-(a7)
 	movea.l	$8(a6),a4

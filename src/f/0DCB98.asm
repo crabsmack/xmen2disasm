@@ -1,7 +1,9 @@
 ; ---------------------------------------------------------------------------
-; sub_0DCB98	[jt 1166]
+; Blast_ClassInit - vtable +$5E: per-level class setup for BLAST: load its resources (sub_1F62C0) into class globals
+; In:  8(a6) = 0, $C(a6) = long class index in the level class list
+; Evidence: slot +$5E of the BLAST descriptor $0DD0E8; TAS frames 2509-5203 (2 frames active)
 ; ---------------------------------------------------------------------------
-sub_0DCB98:
+Blast_ClassInit:
 	link.w	a6,#$0
 	moveq	#$0,d0
 	move.l	d0,-(a7)

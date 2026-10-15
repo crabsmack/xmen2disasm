@@ -1,7 +1,9 @@
 ; ---------------------------------------------------------------------------
-; sub_0B71F4	[jt 931]
+; ChildShip_Update - vtable +$4A: per-frame update of a CHILDSHIP
+; In:  8(a6) = this
+; Evidence: slot +$4A of the CHILDSHIP descriptor $0B7C3A; TAS frames 33389-33550 (154 frames active); calls parent XNPC slot +$4A
 ; ---------------------------------------------------------------------------
-sub_0B71F4:
+ChildShip_Update:
 	link.w	a6,#$0
 	movem.l	d5-d7/a4,-(a7)
 	movea.l	$8(a6),a4

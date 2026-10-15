@@ -1,7 +1,9 @@
 ; ---------------------------------------------------------------------------
-; sub_0BEDB0	[jt 1066]
+; SporeMine_ClassInit - vtable +$5E: per-level class setup for SPOREMINE: load its resources (sub_1F62C0) into class globals
+; In:  8(a6) = 0, $C(a6) = long class index in the level class list
+; Evidence: slot +$5E of the SPOREMINE descriptor $0BF580; TAS frames 27879-29685 (2 frames active)
 ; ---------------------------------------------------------------------------
-sub_0BEDB0:
+SporeMine_ClassInit:
 	link.w	a6,#$0
 	jsr	sub_0BEE38(pc)
 	moveq	#$3,d0

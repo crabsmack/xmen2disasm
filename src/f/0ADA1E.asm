@@ -1,7 +1,9 @@
 ; ---------------------------------------------------------------------------
-; sub_0ADA1E	[jt 901]
+; TrapDoor_Init - vtable +$12 constructor: run the parent's Init, then set up a TRAPDOOR
+; In:  8(a6) = this, $C(a6) = long x, $10(a6) = long y (8 fraction bits), $14(a6) = spawn parameter
+; Evidence: slot +$12 of the TRAPDOOR descriptor $0AD956; TAS frames 30954-32834 (24 frames active); calls parent XNPC slot +$12
 ; ---------------------------------------------------------------------------
-sub_0ADA1E:
+TrapDoor_Init:
 	link.w	a6,#$0
 	movem.l	d4-d7/a3-a4,-(a7)
 	movea.l	$14(a6),a4

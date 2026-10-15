@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_0DF1FC	[jt 1205]
+; SentinelElevator_GetSize - vtable +$06: return sizeof(SENTINELELEVATOR) = $9E bytes
+; In:  none
+; Out: d0 = $9E
+; Evidence: slot +$6 of the SENTINELELEVATOR descriptor $0DF556; never runs in the corpus
 ; ---------------------------------------------------------------------------
-sub_0DF1FC:
+SentinelElevator_GetSize:
 	link.w	a6,#$0
 	move.l	#$9E,d0
 	unlk	a6

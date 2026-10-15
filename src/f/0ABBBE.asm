@@ -1,7 +1,9 @@
 ; ---------------------------------------------------------------------------
-; sub_0ABBBE	[jt 868]
+; FloatBubble_OutsideActiveWindow - vtable +$42: is a FLOATBUBBLE outside its active window
+; In:  8(a6) = this
+; Evidence: slot +$42 of the FLOATBUBBLE descriptor $0AB496; TAS frames 29721-31626 (299 frames active)
 ; ---------------------------------------------------------------------------
-sub_0ABBBE:
+FloatBubble_OutsideActiveWindow:
 	link.w	a6,#$0
 	movem.l	d3/d7/a4,-(a7)
 	movea.l	$8(a6),a4
