@@ -1,5 +1,5 @@
 ; ---------------------------------------------------------------------------
-; Ninja_Init - NINJA constructor: parent (BIONPC) Init, position from the placement entry, stats jt $3CBA but health 1, sprite (raw jt $3BFA when g_NinjaSprDef2 is -1), AI script jt $3CA2, state Ninja_StateNextStep, flags |= $80, sprite priority from the live player, stand on the nearest type-$3E9 floor segment (Seg_FindNearestOfType, sub_1F6B56), detach, no motion, animation jt $3C7A, patrol bounds +$9C/+$9E from Ninja_CalcPatrolBounds(p6, default 160), +$A0 = p$C (90), +$A2 = p$E (-1) (class slot 3, +$12)
+; Ninja_Init - NINJA constructor: parent (BIONPC) Init, position from the placement entry, stats jt $3CBA but health 1, sprite (raw jt $3BFA when g_NinjaSprDef2 is -1), AI script jt $3CA2, state Ninja_StateNextStep, flags |= $80, sprite priority from the live player, stand on the nearest type-$3E9 floor segment (Seg_FindNearestOfType, Obj_StandOnSeg), detach, no motion, animation jt $3C7A, patrol bounds +$9C/+$9E from Ninja_CalcPatrolBounds(p6, default 160), +$A0 = p$C (90), +$A2 = p$E (-1) (class slot 3, +$12)
 ; In:  8(a6) = this  $C/$10(a6) = x, y (16.16)  $14(a6) = placement entry (not null-checked)
 ; Out: none
 ; Evidence: method 3 of class descriptor $13D7FE (name string "NINJA", parent BIONPC)

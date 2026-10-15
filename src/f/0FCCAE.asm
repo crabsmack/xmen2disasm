@@ -1,8 +1,8 @@
 ; ---------------------------------------------------------------------------
-; SiberiaB1_FrameHook - SiberiaB1 per-frame hook: wind and wind sprite, palette cycles, stop P1 sounds when P2 joins, demo timer (timeout -> LogoAndDemo, any button cancels)
+; SiberiaB1_FrameHook - SiberiaB1 per-frame hook: wind and wind sprite, palette cycles; during the opening (g_SiberiaIntro) restart the stage music for two players when P2 joins; demo timer (timeout -> LogoAndDemo, any button cancels)
 ; In:  none
 ; Out: none
-; Evidence: g_ScnLogoAndDemo -> g_SceneIndex when $FFC6F6 reaches 0; g_Pad1Raw|g_Pad2Raw; TAS 165-1356
+; Evidence: P2 live while g_SiberiaIntro: Snd_Stop tracks $27-$2F, Music_SetPlayerParams, Music_PlayStage($27), intro cleared (also when P1 x > $360); g_ScnLogoAndDemo -> g_SceneIndex when g_SceneVar3B0A reaches 0; g_Pad1Raw|g_Pad2Raw; TAS 165-1356
 ; ---------------------------------------------------------------------------
 SiberiaB1_FrameHook:
 	link.w	a6,#$0

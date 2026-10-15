@@ -1,0 +1,110 @@
+# Review 004 (2026-10-14, reviewer: N4 final reviewer agent, sample seed 31337)
+reviewed: 100
+agree: 98
+open disputes: 0
+
+Sample: `uv run tools/xref.py --sample 200 --seed 31337`, the first 100 names not in review-001..003 and not `unk_`. For each one I read the asm and header, `xref.py NAME` (callers, globals incl. struct fields, runtime) and Ghidra pseudo-C, and checked the A5 globals it touches against how it uses them. No function name was wrong. Two headers were fixed. The recurring minor issue: Evidence lines still give raw offsets (`-$3C5E`, `-$3C44`) or raw jt addresses for globals and tables named since then. The behaviour text is right; these are listed in the notes below and were not counted against the names.
+## Fixed
+- Ninja_Init (header): the floor-snap step cited `sub_1F6B56`, a label that no longer exists; the call is Obj_StandOnSeg (src/f/1F6B56.asm). Mechanical fix, meaning unchanged. Name kept.
+- SiberiaB1_FrameHook (header): "stop P1 sounds when P2 joins" guessed at what the Snd_Stop($27..$2F) block is. It runs only while g_SiberiaIntro is set and P2 is live, and after the stops it calls Music_SetPlayerParams and Music_PlayStage($27), so it restarts the stage music with the new player parameters (Music_SetPlayerParams passes the player count and characters to the driver). Header now says that and notes the intro also ends when P1 passes x $360; In/Out kept. Name kept.
+## Disputes
+(none)
+## Agreed
+- SiberiaB1_DebrisUpdate
+- Mine_StateStart
+- BoxInputActor_Move
+- Eni_ReadInline
+- BabyBio_ActPlayAnimC
+- Brood_StateBreakOutRun (the run speed +/-$1A0 is set by its caller Brood_StateBreakOut)
+- XClone_LockArena_Case4
+- EvilNightcrawler_GetSize
+- BeamScooter_NopStatic
+- Hornet_StatePickPattern_CaseDefault
+- RetractFloor_Nop66
+- Exodus_NextPattern_part1
+- TechWallGun_Fire_Case4
+- Exodus_StateWaitLanded
+- BioNpc_UpdateStunned
+- Actor_StateHurt
+- Cyclops_GroundSpecialDown (slot +$E2 = ground A + Down per the NOTES XPLAYER slot map)
+- PlayerSelect_PlayIdleAnim_part6
+- Map_SetBlockFGFlip
+- SmallBrood_ActWalk
+- Scaler_BuildStepTables (uses unnamed scene-local -$BFA (row count source), not shared)
+- XNpc_Move
+- Apocalypse_ActGoCentre
+- SmallBrood_StateApproach
+- BioSentinel_StateDropFlip
+- MagnetoBoss_Zone0Setup
+- TechWallGun_UpdateBullets
+- BrainRocket_Move
+- MaintRobot_TargetInRange
+- BioSentinel_TakeDamage (types $D-$F = Psylocke psi damage per NOTES)
+- EvilWolverine_Init
+- FinalText_RunScene (evidence cites `-$3C5E`, now g_ProgressFlags)
+- XPlayer_PushingTetherEdge
+- BroodBoss_StateChargeWall ("jt[$16CA]" is the jt entry's absolute address (jt offset $14CA))
+- PlayerSelect_CheckDone
+- BioFlame_Init
+- Blast_StateLaunch
+- Wolverine_AirSpecial
+- SiberiaB1_InstallHooks (really the level setup, but `<Level>_InstallHooks` is the project-wide convention and the header lists everything)
+- Exodus_InitSpawnRec
+- FarAcolyte_StateWaitPlayer
+- BabyBio_ActStopWait30
+- XPlayer_StartFloatFall
+- Switch_ClassInit
+- WallCrawlBio_GetSize
+- Launcher_StateFire
+- FloatBubble_Nop6A
+- SpikeBall_ClassInit (header has no In/Out lines; "resource set" = SprDef_Add(Tbl_SpikeBallVdp, 3) -> g_SpikeBallSprDef)
+- Switch_TileHit
+- GaussBullet_GetSize
+- BaniMazaA2_InitDebrisBuf
+- Nightcrawler_AirAttack
+- MondoPlusPowerUp_GetSize
+- Barbarian_StateAttackEnd
+- Gambit_ThrowCards
+- Magneto_ShotAnim_Case4
+- SentinelsB2_InstallSegHooks
+- ChildShip_StateKnockback
+- Magneto_AirShotEndAnim
+- TrapDoor_StateOpenWide
+- Actor_Deactivate
+- Tuskette_StateExitFall
+- BigAcolyte_StateShootAnim
+- Seg_CollideObj_Cases
+- CloneA2_BgPalTimer_Copy
+- BabyBio_ActStopWaitParam
+- Actor_InitSpawnRec
+- AvalonB2_CamHook (CAMERA +4 per-frame hook per NOTES)
+- Obj_SetSpriteDef
+- SyncActor_MemberInWindow
+- Collide_RunAll
+- BroodBoss_StateCharge (evidence still says `-$3C44` for g_BroodBossOffsetX; "push back" = claw swing + BroodBoss_StateRetreat)
+- Blast_StateZap
+- RetractFloor_StateKill
+- AvalonA4_ClearCameraZone_case0
+- ChildShip_OnHurt
+- Exodus_StateSwoopBlast (evidence says Obj_ChangeAnim jt $2DF88; the call is Obj_SetAnim(Tbl_ExodusAnim6). Behaviour line correct)
+- SentinelElevator_StateStart
+- CoreZap_Update
+- Boulder_Update
+- Z80_LoadDriver
+- SavageBigBio_ClassInit
+- FloatBio_Nop66
+- BanimazaDoor_StateShattered
+- Mine_StateArm2
+- Wolverine_SelectFrame
+- Barbarian_StateTryLeap
+- XClone_ActBallsToFloor
+- ControlPanel_ClassInit
+- Cyclops_ResetBeams
+- Cam_SetMinXBlocks
+- LaserCannon_StateFire
+- SavageMediumBio_OnDeath
+- BabyBio_ActMoveVertical
+- Elevator_Init
+- SavageBioBalls_StateWait
+- MagnetoBoss_Zone2Hover
+- BabyBio_ActPlayAnimB
