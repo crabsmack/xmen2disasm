@@ -6,6 +6,6 @@ sub_0FCC6A:
 	clr.b	-$13F0(a5)
 	move.b	#$1,-$13EE(a5)
 	move.b	#$1,-$3BBA(a5)
-	jsr	$7A(a5)	; -> sub_006B2C
+	jsr	$7A(a5)	; -> Scene_PreLoadReset
 	unlk	a6
 	rts

@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_006A20	[link-after-rts]
+; Scene_AllocCommonVram - allocate VRAM tiles for the common sprite sets loaded with every scene
+; In:  none
+; Out: none (advances next-free-tile word -$3398)
+; Evidence: saves -$3398 into -$39B8, then sub_1FB026/sub_1FAD08 for one temporary and two persistent slots ($FFE9A4, $FFE798); called from Scene_PostLoadVram; what the sprite sets show is not confirmed
 ; ---------------------------------------------------------------------------
-sub_006A20:
+Scene_AllocCommonVram:
 	link.w	a6,#$FFEC
 	move.w	-$3598(a5),-$3BB8(a5)
 	moveq	#$0,d0

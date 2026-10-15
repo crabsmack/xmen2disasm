@@ -1,14 +1,17 @@
 ; ---------------------------------------------------------------------------
-; sub_006242	[jt 5]
+; Player1_StartLife - give player 1 a new life: keep or randomly pick a character (not P2's), health $700, spend a life
+; In:  none
+; Out: d0 = 1 if started, 0 if -$3BBA is clear
+; Evidence: jt 5, called from Siberia init sub_0FD614 and sub_15CAA4; random = sub_1600AA % 6 (sub_15C246); switch on index to Player1_Set*; stores g_P1CharIndex, decrements g_P1Lives (TAS RAM 9 -> 8 at frame 180)
 ; ---------------------------------------------------------------------------
-sub_006242:
+Player1_StartLife:
 	link.w	a6,#$0
 	movem.l	d6-d7,-(a7)
 	move.l	g_Player1(a5),-(a7)
-	jsr	sub_0061D0(pc)
+	jsr	Player_CharIndexOf(pc)
 	move.w	d0,d7
 	move.l	g_Player2(a5),-(a7)
-	jsr	sub_0061D0(pc)
+	jsr	Player_CharIndexOf(pc)
 	move.w	d0,d6
 	tst.b	-$3BBA(a5)
 	addq.w	#$8,a7
@@ -32,9 +35,9 @@ loc_006270:
 loc_006288:
 	move.w	#$700,g_P1Health(a5)
 	move.w	d7,d0
-	bmi.s	loc_0062CC
+	bmi.s	Player1_StartLife_Wolverine
 	cmpi.w	#$5,d0
-	bgt.s	loc_0062CC
+	bgt.s	Player1_StartLife_Wolverine
 	add.w	d0,d0
 	move.w	$62A2(pc,d0.w),d0
 	jmp	$62A0(pc,d0.w)

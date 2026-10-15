@@ -29,7 +29,7 @@ loc_1FA744:
 	move.w	-$1D48(a5),($C00004).l
 	tst.b	-$38B4(a5)
 	beq.s	loc_1FA764
-	jsr	$62(a5)	; -> sub_006584
+	jsr	$62(a5)	; -> HUD_Redraw
 loc_1FA764:
 	move.w	#$9100,($C00004).l
 	move.w	#$929C,($C00004).l

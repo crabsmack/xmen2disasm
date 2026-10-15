@@ -21,7 +21,7 @@ loc_15CAC6:
 	bgt.s	loc_15CAE2
 	tst.w	g_P1Lives(a5)
 	beq.s	loc_15CB30
-	jsr	$4A(a5)	; -> sub_006242
+	jsr	$4A(a5)	; -> Player1_StartLife
 	bra.s	loc_15CB30
 loc_15CAE2:
 	move.w	#$80,d0
@@ -31,7 +31,7 @@ loc_15CAE2:
 	bgt.s	loc_15CAFE
 	tst.w	g_P2Lives(a5)
 	beq.s	loc_15CB30
-	jsr	$52(a5)	; -> sub_0062E4
+	jsr	$52(a5)	; -> Player2_StartLife
 	bra.s	loc_15CB30
 loc_15CAFE:
 	clr.b	-$1662(a5)

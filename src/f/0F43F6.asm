@@ -14,7 +14,7 @@ sub_0F43F6:
 	move.l	d0,-(a7)
 	move.l	d0,-(a7)
 	move.l	d0,-(a7)
-	jsr	$8A(a5)	; -> sub_006BD0
+	jsr	$8A(a5)	; -> Players_PlaceAtStart
 	jsr	$2E8A(a5)	; -> sub_1190D6
 	unlk	a6
 	rts

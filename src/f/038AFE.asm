@@ -7,7 +7,7 @@ sub_038AFE:
 	move.l	#$38410,-(a7)
 	pea.l	($7000).w
 	move.l	#$38400,-(a7)
-	jsr	$8A(a5)	; -> sub_006BD0
+	jsr	$8A(a5)	; -> Players_PlaceAtStart
 	move.w	-$1754(a5),d0
 	ext.l	d0
 	move.w	#$C000,d1

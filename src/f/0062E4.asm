@@ -1,14 +1,17 @@
 ; ---------------------------------------------------------------------------
-; sub_0062E4	[jt 6]
+; Player2_StartLife - give player 2 a new life: keep or randomly pick a character (not P1's), health $700, spend a life
+; In:  none
+; Out: d0 = 1 if started, 0 if -$3BBA is clear
+; Evidence: jt 6, mirror of Player1_StartLife using g_Player2, g_P2Health, g_P2CharIndex, g_P2Lives; caller sub_15CAA4
 ; ---------------------------------------------------------------------------
-sub_0062E4:
+Player2_StartLife:
 	link.w	a6,#$0
 	movem.l	d6-d7,-(a7)
 	move.l	g_Player1(a5),-(a7)
-	jsr	sub_0061D0(pc)
+	jsr	Player_CharIndexOf(pc)
 	move.w	d0,d6
 	move.l	g_Player2(a5),-(a7)
-	jsr	sub_0061D0(pc)
+	jsr	Player_CharIndexOf(pc)
 	move.w	d0,d7
 	tst.b	-$3BBA(a5)
 	addq.w	#$8,a7
@@ -32,9 +35,9 @@ loc_006312:
 loc_00632A:
 	move.w	#$700,g_P2Health(a5)
 	move.w	d7,d0
-	bmi.s	loc_00636E
+	bmi.s	Player2_StartLife_Wolverine
 	cmpi.w	#$5,d0
-	bgt.s	loc_00636E
+	bgt.s	Player2_StartLife_Wolverine
 	add.w	d0,d0
 	move.w	$6344(pc,d0.w),d0
 	jmp	$6342(pc,d0.w)

@@ -8,6 +8,6 @@ sub_0B050A:
 	move.l	d0,-(a7)
 	move.l	d0,-(a7)
 	move.l	d0,-(a7)
-	jsr	$8A(a5)	; -> sub_006BD0
+	jsr	$8A(a5)	; -> Players_PlaceAtStart
 	unlk	a6
 	rts

@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_005466	[irq hook $21C]
+; Game_Main - main program: init hardware/sound/scenes, then run Game_SceneLoop forever
+; In:  none
+; Out: never returns
+; Evidence: irq hook $21C entry; waits VDP status, reads 7 settings bytes via sub_1FDD26 into -$3A40, calls init sub_1F9850, then loops Game_SceneLoop with demo flag cleared
 ; ---------------------------------------------------------------------------
-sub_005466:
+Game_Main:
 	link.w	a6,#$0
 	movem.l	d3/d7,-(a7)
 	jsr	$418A(a5)	; -> sub_160550
@@ -31,5 +34,5 @@ loc_005486:
 	jsr	$4FC2(a5)	; -> sub_1F9850
 loc_0054BC:
 	clr.b	-$3A1A(a5)
-	jsr	sub_005CC6(pc)
+	jsr	Game_SceneLoop(pc)
 	bra.s	loc_0054BC

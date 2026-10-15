@@ -23,7 +23,7 @@ loc_0FD62C:
 	add.l	d7,d0
 	move.l	d0,-(a7)
 	jsr	$4182(a5)	; -> sub_160512
-	jsr	$4A(a5)	; -> sub_006242
+	jsr	$4A(a5)	; -> Player1_StartLife
 	move.w	#$4B0,-$3B0A(a5)
 	addq.w	#$4,a7
 	bra.s	loc_0FD666
@@ -40,7 +40,7 @@ loc_0FD672:
 	move.l	d0,-(a7)
 	move.l	d0,-(a7)
 	move.l	d0,-(a7)
-	jsr	$8A(a5)	; -> sub_006BD0
+	jsr	$8A(a5)	; -> Players_PlaceAtStart
 	jsr	sub_0FCDEE(pc)
 	jsr	sub_0FD50A(pc)
 	jsr	sub_0FC71A(pc)

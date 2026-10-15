@@ -8,7 +8,7 @@ Boot_StartApp:
 	lea.l	($200).w,a5
 	tst.w	($A10008).l
 	bne.s	loc_1F484E
-	jsr	$2A(a5)	; -> sub_005458
+	jsr	$2A(a5)	; -> unk_Boot_005458
 loc_1F484E:
 	move.l	($21C).w,-(a7)
 	rts

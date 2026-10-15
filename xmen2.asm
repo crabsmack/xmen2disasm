@@ -18,13 +18,13 @@
 	include "src/f/005466.asm"
 	include "src/f/0054C6.asm"
 	incrom	$0057DE,$43E
-Str_CerebroScreenPlayerSelect:	; C string, resource name looked up by sub_0054C6
+Str_CerebroScreenPlayerSelect:	; C string, resource name looked up by Scene_RegisterAll
 	incrom	$005C1C,$1C
-Str_SentinelsD1Exterior1:	; C string, resource name looked up by sub_0054C6
+Str_SentinelsD1Exterior1:	; C string, resource name looked up by Scene_RegisterAll
 	incrom	$005C38,$18
-Str_CerebroScreenSentinels:	; C string, resource name looked up by sub_0054C6
+Str_CerebroScreenSentinels:	; C string, resource name looked up by Scene_RegisterAll
 	incrom	$005C50,$18
-Str_SiberiaB1Blizzard:	; C string, resource name looked up by sub_0054C6
+Str_SiberiaB1Blizzard:	; C string, resource name looked up by Scene_RegisterAll
 	incrom	$005C68,$14
 	include "src/f/005C7C.asm"
 	include "src/f/005CC6.asm"

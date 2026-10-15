@@ -129,6 +129,26 @@ _(module → functions, globals, data; add as you learn them)_
   `CloneA2NGClassList` (`$081826`), `BroodBossHallFGClassList`, `Jungle1NGClassList`.
   Naming convention for overrides: `<Class>_<Slot>` in CamelCase (`DropBomb_Init`,
   `XClone_Update`); no-op overrides `<Class>_Nop66` / `_Nop6A`.
+- **Players are confirmed** (w000): `g_Player1` = `$FFEAA8` (+$9D = 0), `g_Player2` = `$FFE9B8`
+  (+$9D = 1; vtable 0 until P2 joins at TAS frame 49140). Objects are $F0 bytes. Player
+  vtable = character class: jt `$2B9A` Beast, `$2BA2` Nightcrawler, `$2BAA` Psylocke, `$2BB2`
+  Wolverine, `$2BBA` Magneto, `$2BC2` Gambit, `$2BCA` Cyclops (`lea jt(a5),a0 / move.l 2(a0)`
+  reads the jt target = class pointer). Character index (`Player_CharIndexOf`,
+  `g_P1CharIndex`): 0 Beast, 1 Cyclops, 2 Gambit, 3 Nightcrawler, 4 Psylocke, 5 Wolverine,
+  6 Magneto (TAS RAM vs screenshots). Player fields: +$68 word health ($700 on a new life,
+  HUD bars = (h-1)>>8 + 1, max 9), +$9E word second HUD meter. Player code uses the ACTOR
+  slots above: +$12 Init(x<<8, y<<8, 0) to place, +$3E Activate, +$52 Kill.
+- **Game flow code** (w000): `Game_Main` -> `Game_SceneLoop` runs `g_SceneTable[g_SceneIndex]`
+  (8-byte {name, fn}, filled by `Scene_RegisterAll` via `sub_1F9464`). Scene load
+  (`sub_1F98A8`, called by every stage init) calls hook `-$38E8` first and `-$38EC` last
+  (`Scene_PreLoadReset`, `Scene_PostLoadVram`). After a scene: health -> `g_P1Health`,
+  0 = spend a life (`g_P1Lives`) or drop out. `g_SceneIndex = -1` -> attract demos
+  (`Game_AttractDemo*`, demo input at `-$3A1E` read as (duration, buttons) pairs by
+  `sub_1F9DE8`; `-$3A1A` = demo active; `-$18AC` = 1 mutes sound during demos).
+- **VRAM**: word `-$3398` ($FFCC68) = next free VRAM tile; `sub_1FB026` sets up a sprite slot
+  and returns base + tiles needed; `sub_1FE17A(src, vram addr, bytes)` = DMA to VRAM (immediate
+  while word `-$1D48` = VDP reg 1 mirror has bit 6 (display) clear, else queued at `$FFFA5C`). Joypad bits: Up 1, Down 2, Left 4, Right 8, B $10, C $20, A $40,
+  Start $80, Z $100, Y $200, X $400, Mode $800 (`Game_InitButtonMasks`).
 
 ## Data formats
 

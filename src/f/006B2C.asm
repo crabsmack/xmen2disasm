@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_006B2C	[jt 11]
+; Scene_PreLoadReset - scene-load pre hook: clear the ten 14-byte slots at $FFE4C0 and the table set by sub_118760, reset a few scene values
+; In:  none
+; Out: none
+; Evidence: installed in -$38E8 by Game_SceneLoop, called at the start of scene load sub_1F98A8; sub_118042 + sub_118760(0,0,0); e4be=$7A1, e4bc=$5F, e4ba=$700 (meaning unknown)
 ; ---------------------------------------------------------------------------
-sub_006B2C:
+Scene_PreLoadReset:
 	link.w	a6,#$0
 	jsr	$2DC2(a5)	; -> sub_118042
 	moveq	#$0,d0

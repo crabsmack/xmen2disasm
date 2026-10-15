@@ -84,11 +84,11 @@ Header:
 ; $200: A5-world application parameters; $210-$21C are the interrupt hook
 ; pointers read by the vector stubs (`movea.l $214.w,a0 / jsr (a0)`).
 A5Params:
-	dc.l	sub_005458	; $200
+	dc.l	unk_Boot_005458	; $200
 	dc.l	$001FFED4	; $204
 	dc.l	$00FFC518	; $208
 	dc.l	$00000000	; $20C
 	dc.l	Irq_VBlank	; $210
 	dc.l	Irq_HBlank	; $214
 	dc.l	$00000000	; $218
-	dc.l	sub_005466	; $21C
+	dc.l	Game_Main	; $21C

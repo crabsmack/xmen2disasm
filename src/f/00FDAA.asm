@@ -46,7 +46,7 @@ sub_00FDAA:
 	move.l	d0,-(a7)
 	move.l	d0,-(a7)
 	move.l	d0,-(a7)
-	jsr	$8A(a5)	; -> sub_006BD0
+	jsr	$8A(a5)	; -> Players_PlaceAtStart
 	jsr	sub_00FD44(pc)
 	lea.l	sub_00FD78(pc),a0
 	move.l	a0,-$388E(a5)

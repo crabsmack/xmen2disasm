@@ -85,7 +85,7 @@ loc_08880A:
 	move.l	d0,-(a7)
 	move.l	d0,-(a7)
 	move.l	d0,-(a7)
-	jsr	$8A(a5)	; -> sub_006BD0
+	jsr	$8A(a5)	; -> Players_PlaceAtStart
 	moveq	#$0,d0
 	move.l	d0,-(a7)
 	move.l	d0,-(a7)

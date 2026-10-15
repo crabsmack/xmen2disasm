@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_006386	[jt 7]
+; HUD_UpdateHealthBars - draw both players' health meters (and a second meter from player +$9E) into VRAM
+; In:  none
+; Out: none
+; Evidence: health +$68 -> bars = (h-1)>>8 + 1 capped at 9, blinking via g_FrameCounter bit 4 when <= 2; 128-byte tile strips DMAed with sub_1FE17A to VRAM $FF80/$FF00 (P1) and $FC00/$FC80 (P2); full redraw via HUD_Redraw when -$38E2 != -$38E0; TAS frames 148-57445
 ; ---------------------------------------------------------------------------
-sub_006386:
+HUD_UpdateHealthBars:
 	link.w	a6,#$FFF4
 	movem.l	d3/d6-d7/a3-a4,-(a7)
 	lea.l	$3F8A(a5),a0
@@ -13,7 +16,7 @@ sub_006386:
 	cmp.b	-$38E0(a5),d0
 	beq.s	loc_0063BE
 	move.b	-$38E0(a5),-$38E2(a5)
-	jsr	sub_006584(pc)
+	jsr	HUD_Redraw(pc)
 	bra.w	loc_00657A
 loc_0063BE:
 	move.w	-$1754(a5),d0

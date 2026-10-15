@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_005CC6	[link-after-rts]
+; Game_SceneLoop - run scenes in sequence (Cerebro, select, stages), handle deaths, lives and game over; when the sequence ends, play the 4 attract demos
+; In:  none
+; Out: none
+; Evidence: calls g_SceneTable[g_SceneIndex].fn with Scene_PreLoadReset/Scene_PostLoadVram as load hooks; afterwards copies player +$68 health to g_P1Health/g_P2Health, spends a life or drops the player; g_SceneIndex = -1 -> switch on -$3B90 to Game_AttractDemo*; TAS RAM: g_SceneIndex steps 0,1,2...
 ; ---------------------------------------------------------------------------
-sub_005CC6:
+Game_SceneLoop:
 	link.w	a6,#$0
 	movem.l	d3/d5-d7/a3-a4,-(a7)
 	moveq	#$0,d0
@@ -11,18 +14,18 @@ sub_005CC6:
 	clr.b	-$38C4(a5)
 	move.w	#$3,-$38AC(a5)
 	clr.w	-$3B00(a5)
-	jsr	sub_0054C6(pc)
+	jsr	Scene_RegisterAll(pc)
 	move.w	#$FFFF,-$3B92(a5)
-	jsr	sub_005C7C(pc)
+	jsr	Game_ResetPlayers(pc)
 loc_005CF8:
 	move.w	g_SceneIndex(a5),d0
 	asl.w	#$3,d0
 	lea.l	g_SceneTable(a5),a0
 	tst.l	$4(a0,d0.w)
 	beq.s	loc_005D2C
-	lea.l	sub_006B2C(pc),a0
+	lea.l	Scene_PreLoadReset(pc),a0
 	move.l	a0,-$38E8(a5)
-	lea.l	sub_006B64(pc),a0
+	lea.l	Scene_PostLoadVram(pc),a0
 	move.l	a0,-$38EC(a5)
 	move.w	g_SceneIndex(a5),d0
 	asl.w	#$3,d0
@@ -107,7 +110,7 @@ loc_005DDE:
 	move.b	-$3B86(a5),d0
 	cmp.w	g_SceneIndex(a5),d0
 	bge.w	loc_005F10
-	jsr	sub_005C7C(pc)
+	jsr	Game_ResetPlayers(pc)
 	bra.w	loc_005F10
 loc_005DF8:
 	tst.w	g_P1Health(a5)
@@ -130,9 +133,9 @@ loc_005E26:
 	cmp.w	g_SceneIndex(a5),d0
 	bne.w	loc_005F10
 	move.w	-$3B90(a5),d0
-	bmi.s	loc_005E4E
+	bmi.s	Game_AttractDemoNightcrawler
 	cmpi.w	#$3,d0
-	bgt.s	loc_005E4E
+	bgt.s	Game_AttractDemoNightcrawler
 	add.w	d0,d0
 	move.w	$5E46(pc,d0.w),d0
 	jmp	$5E44(pc,d0.w)

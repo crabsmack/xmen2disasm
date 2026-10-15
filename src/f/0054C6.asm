@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_0054C6
+; Scene_RegisterAll - register every scene (Cerebro screens and stage parts) by name + entry function, storing the returned scene ids
+; In:  none
+; Out: none (byte globals -$3B70..-$3B4C etc. = scene ids)
+; Evidence: calls sub_1F9464(name, fn) ~50 times with Str_SiberiaB1Blizzard, Str_CerebroScreenPlayerSelect...; sub_1F9464 appends {name, fn} to g_SceneTable and returns the index
 ; ---------------------------------------------------------------------------
-sub_0054C6:
+Scene_RegisterAll:
 	link.w	a6,#$0
 	pea.l	$298A(a5)
 	pea.l	Str_SiberiaB1Blizzard(pc)

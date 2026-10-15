@@ -121,7 +121,7 @@ loc_067162:
 loc_067166:
 	tst.b	-$3A02(a5)
 	bne.s	loc_067162
-	jsr	$32(a5)	; -> sub_005C7C
+	jsr	$32(a5)	; -> Game_ResetPlayers
 	clr.w	-$3C5E(a5)
 	movem.l	-$58(a6),d3/d5-d7/a3-a4
 	unlk	a6

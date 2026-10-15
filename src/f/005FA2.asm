@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_005FA2	[link-after-rts]
+; Player_SetCharacter - set a player object's character class (vtable) and place it near the other player or the camera
+; In:  8(a6) = class vtable, $C(a6) = player object (g_Player1/g_Player2)
+; Out: none
+; Evidence: position: own x/y if alive (after vtable $52), else partner's, else camera -$348E/-$3490 + ($A0,$6E); if -$38BE: vtable $12 (set position), health +$68 = $700, vtable $3E; +$9D = 0 for g_Player1, 1 for g_Player2
 ; ---------------------------------------------------------------------------
-sub_005FA2:
+Player_SetCharacter:
 	link.w	a6,#$0
 	movem.l	d3/d6-d7/a3-a4,-(a7)
 	movea.l	$C(a6),a4

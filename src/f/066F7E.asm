@@ -12,7 +12,7 @@ sub_066F7E:
 	moveq	#$2,d0
 	and.w	-$3C5E(a5),d0
 	beq.s	loc_066FAA
-	jsr	$32(a5)	; -> sub_005C7C
+	jsr	$32(a5)	; -> Game_ResetPlayers
 	bra.s	loc_066FB6
 loc_066FAA:
 	move.w	#$FFFF,g_SceneIndex(a5)

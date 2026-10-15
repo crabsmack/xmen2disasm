@@ -19,7 +19,7 @@ sub_066FDE:
 	addq.w	#$8,a7
 loc_067010:
 	jsr	sub_066B26(pc)
-	jsr	$32(a5)	; -> sub_005C7C
+	jsr	$32(a5)	; -> Game_ResetPlayers
 	clr.w	-$3C5E(a5)
 	unlk	a6
 	rts

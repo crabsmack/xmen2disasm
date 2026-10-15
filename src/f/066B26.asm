@@ -217,7 +217,7 @@ loc_066DB4:
 	tst.w	g_P1Health(a5)
 	beq.s	loc_066E0C
 	move.l	g_Player1(a5),-(a7)
-	jsr	$42(a5)	; -> sub_0061D0
+	jsr	$42(a5)	; -> Player_CharIndexOf
 	move.w	d0,d7
 	addq.w	#$4,a7
 loc_066E0C:
@@ -225,7 +225,7 @@ loc_066E0C:
 	tst.w	g_P2Health(a5)
 	beq.s	loc_066E20
 	move.l	g_Player2(a5),-(a7)
-	jsr	$42(a5)	; -> sub_0061D0
+	jsr	$42(a5)	; -> Player_CharIndexOf
 	move.w	d0,d6
 	addq.w	#$4,a7
 loc_066E20:

@@ -10,6 +10,6 @@ sub_0FCC86:
 	movea.l	-$3A50(a5),a0
 	jsr	(a0)
 	jsr	$4DA2(a5)	; -> Irq_Enable
-	jsr	$82(a5)	; -> sub_006B64
+	jsr	$82(a5)	; -> Scene_PostLoadVram
 	unlk	a6
 	rts

@@ -13,7 +13,7 @@ sub_0F4C72:
 	pea.l	($9A6).w
 	pea.l	($144).w
 	pea.l	($9B0).w
-	jsr	$8A(a5)	; -> sub_006BD0
+	jsr	$8A(a5)	; -> Players_PlaceAtStart
 	move.w	#$546,-$3B02(a5)
 	clr.w	-$3B08(a5)
 	lea.l	$2632(a5),a0

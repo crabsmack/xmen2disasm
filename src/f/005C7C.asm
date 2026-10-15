@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_005C7C	[jt 2]
+; Game_ResetPlayers - new game: both players out (no character, health 0), 9 lives each, scene = first stage
+; In:  none
+; Out: none
+; Evidence: sets g_P1Lives/g_P2Lives = 9, g_P1CharIndex/g_P2CharIndex = $FF, clears both player vtables/flags, g_SceneIndex = Siberia scene id (-$3B70); TAS RAM: lives 9 at frame 60
 ; ---------------------------------------------------------------------------
-sub_005C7C:
+Game_ResetPlayers:
 	link.w	a6,#$0
 	clr.w	g_P1Health(a5)
 	dc.w	$1B7C,$FFFF,$C444	; insn: move.b #$ff, -$3bbc(a5)

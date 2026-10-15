@@ -13,7 +13,7 @@ sub_10769A:
 	move.l	d0,-(a7)
 	move.l	d0,-(a7)
 	move.l	d0,-(a7)
-	jsr	$8A(a5)	; -> sub_006BD0
+	jsr	$8A(a5)	; -> Players_PlaceAtStart
 	move.w	-$1754(a5),d0
 	ext.l	d0
 	move.w	#$C000,d1

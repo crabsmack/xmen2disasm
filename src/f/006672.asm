@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_006672	[link-after-rts]
+; Player_CalcMaxTiles - compute the largest VRAM tile count any playable character's sprite set needs
+; In:  none
+; Out: d0.w = max tiles
+; Evidence: calls sub_1FB026 (sprite slot setup; with frame -1 it returns base + max tiles over all frames) for 16 sprite definitions with small per-set extras, keeps the max; result stored in -$39B6 by Game_InitButtonMasks and used by Scene_PostLoadVram to size each player's VRAM area
 ; ---------------------------------------------------------------------------
-sub_006672:
+Player_CalcMaxTiles:
 	link.w	a6,#$FFEC
 	movem.l	d3/d5-d7,-(a7)
 	clr.w	d6

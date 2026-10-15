@@ -1,16 +1,19 @@
 ; ---------------------------------------------------------------------------
-; loc_005EB8
+; Game_PlayAttractDemo - common tail of the attract demos: set P1 class, health $900, demo input pointer, run the scene with sound muted, then reset players
+; In:  d7 = scene id, a3 = demo input data, a4 = character class (from Game_AttractDemo*)
+; Out: none (returns into Game_SceneLoop)
+; Evidence: sets -$3A1E = demo input pointer (read in (duration, buttons) pairs by sub_1F9DE8) and -$3A1A = 1 (demo active); -$18AC = 1 during the scene (sound commands suppressed); idle run plays demos after the title
 ; ---------------------------------------------------------------------------
-loc_005EB8:
+Game_PlayAttractDemo:
 	addq.w	#$1,-$3B90(a5)
 	move.l	a4,g_Player1(a5)
 	move.w	#$900,g_P1Health(a5)
 	move.l	a3,-$3A1E(a5)
 	move.b	#$1,-$3A1A(a5)
 	move.w	d7,g_SceneIndex(a5)
-	lea.l	sub_006B2C(pc),a0
+	lea.l	Scene_PreLoadReset(pc),a0
 	move.l	a0,-$38E8(a5)
-	lea.l	sub_006B64(pc),a0
+	lea.l	Scene_PostLoadVram(pc),a0
 	move.l	a0,-$38EC(a5)
 	move.b	#$1,-$18AC(a5)
 	move.l	d7,d0
@@ -24,7 +27,7 @@ loc_005EB8:
 	beq.s	loc_005F0C
 	ori.w	#$2,-$3C5E(a5)
 loc_005F0C:
-	jsr	sub_005C7C(pc)
+	jsr	Game_ResetPlayers(pc)
 loc_005F10:
 	clr.b	-$38C2(a5)
 	bra.w	loc_005CF8

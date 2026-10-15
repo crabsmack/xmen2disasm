@@ -47,7 +47,7 @@ sub_0227E0:
 	move.l	d0,-(a7)
 	move.l	d0,-(a7)
 	move.l	d0,-(a7)
-	jsr	$8A(a5)	; -> sub_006BD0
+	jsr	$8A(a5)	; -> Players_PlaceAtStart
 	jsr	sub_0227D8(pc)
 	jsr	sub_0227A4(pc)
 	jsr	sub_022716(pc)

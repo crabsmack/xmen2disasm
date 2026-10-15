@@ -37,7 +37,7 @@ loc_1FA168:
 	beq.w	loc_1FA480
 	tst.b	-$38B2(a5)
 	beq.s	loc_1FA190
-	jsr	$5A(a5)	; -> sub_006386
+	jsr	$5A(a5)	; -> HUD_UpdateHealthBars
 loc_1FA190:
 	lea.l	g_Player1(a5),a0
 	move.l	a0,-$4(a6)
@@ -55,7 +55,7 @@ loc_1FA190:
 	moveq	#$E,d0
 	and.l	g_FrameCounter(a5),d0
 	bne.s	loc_1FA1CA
-	jsr	$5A(a5)	; -> sub_006386
+	jsr	$5A(a5)	; -> HUD_UpdateHealthBars
 loc_1FA1CA:
 	lea.l	-$1FDA(a5),a0
 	movea.l	-$1FE6(a5),a1
@@ -129,7 +129,7 @@ loc_1FA292:
 	moveq	#$E,d0
 	and.l	g_FrameCounter(a5),d0
 	bne.s	loc_1FA2CC
-	jsr	$5A(a5)	; -> sub_006386
+	jsr	$5A(a5)	; -> HUD_UpdateHealthBars
 loc_1FA2CC:
 	lea.l	-$1FDA(a5),a0
 	movea.l	-$1FE6(a5),a1

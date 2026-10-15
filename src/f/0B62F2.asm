@@ -13,6 +13,6 @@ sub_0B62F2:
 	move.l	d0,-(a7)
 	pea.l	($180).w
 	pea.l	($140).w
-	jsr	$8A(a5)	; -> sub_006BD0
+	jsr	$8A(a5)	; -> Players_PlaceAtStart
 	unlk	a6
 	rts
