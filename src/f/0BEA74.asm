@@ -32,7 +32,7 @@ loc_0BEAC6:
 	tst.l	(a4)
 	beq.w	loc_0BEC52
 	moveq	#$1,d3
-	tst.b	-$38DE(a5)
+	tst.b	g_TwoPlayerStep(a5)
 	bne.s	loc_0BEADC
 	tst.b	-$3A08(a5)
 	bne.s	loc_0BEADC

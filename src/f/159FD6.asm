@@ -15,7 +15,7 @@ Pal_CycleStep:
 	move.b	$1(a0),d7
 	movea.l	$8(a6),a0
 	subq.w	#$1,(a0)
-	tst.b	-$38DE(a5)
+	tst.b	g_TwoPlayerStep(a5)
 	beq.s	loc_15A008
 	movea.l	$8(a6),a0
 	subq.w	#$1,(a0)

@@ -59,7 +59,7 @@ loc_1185B8:
 	add.w	d0,$14(a4)
 	move.w	$1A(a4),d0
 	add.w	d0,$16(a4)
-	tst.b	-$38DE(a5)
+	tst.b	g_TwoPlayerStep(a5)
 	beq.s	loc_118606
 	move.w	$14(a4),d0
 	ext.l	d0
@@ -81,7 +81,7 @@ loc_118606:
 	addq.w	#$4,a7
 	bra.w	loc_11869E
 loc_11861C:
-	tst.b	-$38DE(a5)
+	tst.b	g_TwoPlayerStep(a5)
 	beq.s	loc_118626
 	moveq	#$2,d0
 	bra.s	loc_118628

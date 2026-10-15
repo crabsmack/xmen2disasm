@@ -36,7 +36,7 @@ sub_196686:
 	move.l	d7,d2
 	or.l	d1,d2
 	move.w	d2,$C0(a4)
-	move.b	#$1,-$3892(a5)
+	move.b	#$1,g_CamModeSwitched(a5)
 	tst.b	$C2(a4)
 	addq.w	#$8,a7
 	bne.s	loc_196702

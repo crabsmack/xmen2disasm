@@ -30,7 +30,7 @@ loc_1A6C88:
 	move.w	$E(a0),$20(a4)
 	moveq	#$0,d0
 	move.l	d0,$44(a4)
-	move.b	#$1,-$3892(a5)
+	move.b	#$1,g_CamModeSwitched(a5)
 	andi.w	#$DFFF,$6(a4)
 	moveq	#$0,d1
 	move.w	$C0(a4),d1
@@ -100,7 +100,7 @@ loc_1A6D06:
 	move.l	d7,d1
 	or.l	d0,d1
 	move.w	d1,$C0(a4)
-	move.b	#$1,-$3892(a5)
+	move.b	#$1,g_CamModeSwitched(a5)
 	pea.l	($8D).w
 	move.l	a4,-(a7)
 	movea.l	(a4),a0
@@ -178,7 +178,7 @@ loc_1A6E12:
 	move.l	$2(a0),-(a7)
 	move.l	a4,-(a7)
 	jsr	$4E42(a5)	; -> Obj_SetAnim
-	move.b	#$1,-$3892(a5)
+	move.b	#$1,g_CamModeSwitched(a5)
 	addq.w	#$8,a7
 	clr.w	$6C(a4)
 	lea.l	sub_1A6A5C(pc),a0
@@ -250,7 +250,7 @@ loc_1A6EF6:
 	move.l	$2(a0),-(a7)
 	move.l	a4,-(a7)
 	jsr	$4E42(a5)	; -> Obj_SetAnim
-	move.b	#$1,-$3892(a5)
+	move.b	#$1,g_CamModeSwitched(a5)
 	addq.w	#$8,a7
 	clr.w	$6C(a4)
 	lea.l	sub_1A6A5C(pc),a0

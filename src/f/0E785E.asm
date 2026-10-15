@@ -7,7 +7,7 @@
 SentinelsA1_FrameHook:
 	link.w	a6,#$0
 	move.l	d7,-(a7)
-	tst.b	-$38DE(a5)
+	tst.b	g_TwoPlayerStep(a5)
 	beq.s	loc_0E786E
 	moveq	#$2,d0
 	bra.s	loc_0E7870

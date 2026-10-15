@@ -63,38 +63,38 @@ loc_1F57D4:
 	moveq	#$28,d1
 	sub.l	d1,d0
 	lsl.l	#$3,d0
-	move.w	d0,-$3A8E(a5)
-	clr.w	-$3A90(a5)
+	move.w	d0,g_CamMaxX(a5)
+	clr.w	g_CamMinX(a5)
 	move.l	d4,d0
 	moveq	#$1C,d1
 	sub.l	d1,d0
 	lsl.l	#$3,d0
-	move.w	d0,-$3A92(a5)
-	clr.w	-$3A94(a5)
-	move.w	-$3A8E(a5),-$3A96(a5)
+	move.w	d0,g_CamMaxY(a5)
+	clr.w	g_CamMinY(a5)
+	move.w	g_CamMaxX(a5),-$3A96(a5)
 	clr.w	-$3A98(a5)
-	move.w	-$3A92(a5),-$3A9A(a5)
+	move.w	g_CamMaxY(a5),-$3A9A(a5)
 	clr.w	-$3A9C(a5)
 loc_1F5854:
 	move.w	g_CameraX(a5),d0
-	cmp.w	-$3A8E(a5),d0
+	cmp.w	g_CamMaxX(a5),d0
 	ble.s	loc_1F5864
-	move.w	-$3A8E(a5),g_CameraX(a5)
+	move.w	g_CamMaxX(a5),g_CameraX(a5)
 loc_1F5864:
 	move.w	g_CameraX(a5),d0
-	cmp.w	-$3A90(a5),d0
+	cmp.w	g_CamMinX(a5),d0
 	bge.s	loc_1F5874
-	move.w	-$3A90(a5),g_CameraX(a5)
+	move.w	g_CamMinX(a5),g_CameraX(a5)
 loc_1F5874:
 	move.w	g_CameraY(a5),d0
-	cmp.w	-$3A92(a5),d0
+	cmp.w	g_CamMaxY(a5),d0
 	ble.s	loc_1F5884
-	move.w	-$3A92(a5),g_CameraY(a5)
+	move.w	g_CamMaxY(a5),g_CameraY(a5)
 loc_1F5884:
 	move.w	g_CameraY(a5),d0
-	cmp.w	-$3A94(a5),d0
+	cmp.w	g_CamMinY(a5),d0
 	bge.s	loc_1F5894
-	move.w	-$3A94(a5),g_CameraY(a5)
+	move.w	g_CamMinY(a5),g_CameraY(a5)
 loc_1F5894:
 	lea.l	sub_1F60E4(pc),a0
 	cmpa.l	-$38F8(a5),a0

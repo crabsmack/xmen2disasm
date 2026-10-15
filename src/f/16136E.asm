@@ -12,7 +12,7 @@ Cam_TrackPlayer:
 	moveq	#$0,d0
 	move.l	d0,-$8(a6)
 	moveq	#$0,d1
-	move.b	-$38DE(a5),d1
+	move.b	g_TwoPlayerStep(a5),d1
 	addq.w	#$1,d1
 	move.w	d1,-$4(a6)
 	clr.b	d5
@@ -20,7 +20,7 @@ Cam_TrackPlayer:
 	move.l	a3,d1
 	beq.w	loc_16173A
 	moveq	#$0,d0
-	move.b	-$38E0(a5),d0
+	move.b	g_PlayersAlive(a5),d0
 	cmpi.w	#$2,d0
 	bne.s	loc_1613E4
 	pea.l	($C0).w
@@ -32,7 +32,7 @@ Cam_TrackPlayer:
 	movea.l	(a4),a0
 	movea.l	$1A(a0),a1
 	jsr	(a1)
-	move.b	#$1,-$3892(a5)
+	move.b	#$1,g_CamModeSwitched(a5)
 	move.l	$1C(a4),-$E(a6)
 	lea.l	$14(a7),a7
 	beq.w	loc_16173A
@@ -325,21 +325,21 @@ loc_1616D0:
 	bne.w	loc_1613F8
 	move.w	$30(a4),d6
 	move.w	$32(a4),d4
-	cmp.w	-$3A8E(a5),d6
+	cmp.w	g_CamMaxX(a5),d6
 	ble.s	loc_1616F2
-	move.w	-$3A8E(a5),$30(a4)
+	move.w	g_CamMaxX(a5),$30(a4)
 loc_1616F2:
-	cmp.w	-$3A90(a5),d6
+	cmp.w	g_CamMinX(a5),d6
 	bge.s	loc_1616FE
-	move.w	-$3A90(a5),$30(a4)
+	move.w	g_CamMinX(a5),$30(a4)
 loc_1616FE:
-	cmp.w	-$3A92(a5),d4
+	cmp.w	g_CamMaxY(a5),d4
 	ble.s	loc_16170A
-	move.w	-$3A92(a5),$32(a4)
+	move.w	g_CamMaxY(a5),$32(a4)
 loc_16170A:
-	cmp.w	-$3A94(a5),d4
+	cmp.w	g_CamMinY(a5),d4
 	bge.s	loc_161716
-	move.w	-$3A94(a5),$32(a4)
+	move.w	g_CamMinY(a5),$32(a4)
 loc_161716:
 	tst.b	-$1(a6)
 	beq.s	loc_161724

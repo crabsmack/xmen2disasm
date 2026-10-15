@@ -21,7 +21,7 @@ sub_1F2376:
 loc_1F23AE:
 	move.l	a4,-(a7)
 	jsr	$4E7A(a5)	; -> Obj_Detach
-	move.b	#$1,-$3892(a5)
+	move.b	#$1,g_CamModeSwitched(a5)
 	ori.l	#$8,$90(a4)
 	moveq	#$0,d0
 	move.l	d0,$44(a4)

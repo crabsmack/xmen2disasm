@@ -8,7 +8,7 @@ HoloBolt_Update:
 	link.w	a6,#$0
 	movem.l	d5-d7/a4,-(a7)
 	movea.l	$8(a6),a4
-	tst.b	-$38DE(a5)
+	tst.b	g_TwoPlayerStep(a5)
 	beq.s	loc_0E81B4
 	moveq	#$2,d0
 	bra.s	loc_0E81B6
@@ -59,7 +59,7 @@ loc_0E8212:
 	subq.w	#$1,d7
 	bne.s	loc_0E8212
 loc_0E822A:
-	tst.b	-$38DE(a5)
+	tst.b	g_TwoPlayerStep(a5)
 	beq.s	loc_0E8234
 	moveq	#$2,d0
 	bra.s	loc_0E8236

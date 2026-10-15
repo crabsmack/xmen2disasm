@@ -7,7 +7,7 @@
 Actor_Move:
 	movem.l	d4-d7/a3-a4,-(a7)
 	movea.l	$1C(a7),a3
-	move.b	-$38DE(a5),d4
+	move.b	g_TwoPlayerStep(a5),d4
 	andi.w	#$FE7F,$4(a3)
 	move.w	$16(a3),d0
 	move.w	$18(a3),d1

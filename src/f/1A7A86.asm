@@ -23,7 +23,7 @@ loc_1A7ABA:
 	moveq	#$20,d0
 	cmp.w	$9E(a4),d0
 	ble.s	loc_1A7ADE
-	tst.b	-$38DE(a5)
+	tst.b	g_TwoPlayerStep(a5)
 	beq.s	loc_1A7ACE
 	moveq	#$4,d0
 	bra.s	loc_1A7AD0

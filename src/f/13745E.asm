@@ -28,7 +28,7 @@ loc_13748A:
 	move.w	$18(a3),d0
 	ext.l	d0
 	add.l	d0,$C(a3)
-	tst.b	-$38DE(a5)
+	tst.b	g_TwoPlayerStep(a5)
 	beq.s	loc_1374B8
 	move.w	$16(a3),d0
 	ext.l	d0

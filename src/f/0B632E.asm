@@ -14,7 +14,7 @@ SavageA4_CamUpdate:
 	move.w	$40(a4),-$C(a6)
 	move.w	$42(a4),-$A(a6)
 	moveq	#$0,d0
-	move.b	-$38E0(a5),d0
+	move.b	g_PlayersAlive(a5),d0
 	cmpi.w	#$2,d0
 	bne.s	loc_0B63D2
 	move.l	-$1750(a5),d0

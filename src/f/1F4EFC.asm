@@ -124,129 +124,129 @@ loc_1F5096:
 	cmp.w	d7,d3
 	bgt.s	loc_1F5096
 loc_1F50AE:
-	move.w	-$3A90(a5),d0
+	move.w	g_CamMinX(a5),d0
 	cmp.w	-$3A98(a5),d0
 	beq.s	loc_1F510A
-	move.w	-$3A90(a5),d0
+	move.w	g_CamMinX(a5),d0
 	cmp.w	-$3A98(a5),d0
 	ble.s	loc_1F50DE
-	move.w	-$3A90(a5),d0
+	move.w	g_CamMinX(a5),d0
 	cmp.w	g_CameraX(a5),d0
 	bne.s	loc_1F50D6
-	move.w	-$3A90(a5),d0
-	subq.w	#$1,-$3A90(a5)
+	move.w	g_CamMinX(a5),d0
+	subq.w	#$1,g_CamMinX(a5)
 	bra.s	loc_1F510A
 loc_1F50D6:
-	move.w	-$3A98(a5),-$3A90(a5)
+	move.w	-$3A98(a5),g_CamMinX(a5)
 	bra.s	loc_1F510A
 loc_1F50DE:
-	move.w	-$3A90(a5),d0
+	move.w	g_CamMinX(a5),d0
 	cmp.w	g_CameraX(a5),d0
 	bne.s	loc_1F50F2
-	move.w	-$3A90(a5),d0
-	addq.w	#$1,-$3A90(a5)
+	move.w	g_CamMinX(a5),d0
+	addq.w	#$1,g_CamMinX(a5)
 	bra.s	loc_1F510A
 loc_1F50F2:
 	move.w	g_CameraX(a5),d0
 	cmp.w	-$3A98(a5),d0
 	ble.s	loc_1F5104
-	move.w	-$3A98(a5),-$3A90(a5)
+	move.w	-$3A98(a5),g_CamMinX(a5)
 	bra.s	loc_1F510A
 loc_1F5104:
-	move.w	g_CameraX(a5),-$3A90(a5)
+	move.w	g_CameraX(a5),g_CamMinX(a5)
 loc_1F510A:
-	move.w	-$3A8E(a5),d0
+	move.w	g_CamMaxX(a5),d0
 	cmp.w	-$3A96(a5),d0
 	beq.s	loc_1F5166
-	move.w	-$3A8E(a5),d0
+	move.w	g_CamMaxX(a5),d0
 	cmp.w	-$3A96(a5),d0
 	bge.s	loc_1F513A
-	move.w	-$3A8E(a5),d0
+	move.w	g_CamMaxX(a5),d0
 	cmp.w	g_CameraX(a5),d0
 	bne.s	loc_1F5132
-	move.w	-$3A8E(a5),d0
-	addq.w	#$1,-$3A8E(a5)
+	move.w	g_CamMaxX(a5),d0
+	addq.w	#$1,g_CamMaxX(a5)
 	bra.s	loc_1F5166
 loc_1F5132:
-	move.w	-$3A96(a5),-$3A8E(a5)
+	move.w	-$3A96(a5),g_CamMaxX(a5)
 	bra.s	loc_1F5166
 loc_1F513A:
-	move.w	-$3A8E(a5),d0
+	move.w	g_CamMaxX(a5),d0
 	cmp.w	g_CameraX(a5),d0
 	bne.s	loc_1F514E
-	move.w	-$3A8E(a5),d0
-	subq.w	#$1,-$3A8E(a5)
+	move.w	g_CamMaxX(a5),d0
+	subq.w	#$1,g_CamMaxX(a5)
 	bra.s	loc_1F5166
 loc_1F514E:
 	move.w	g_CameraX(a5),d0
 	cmp.w	-$3A96(a5),d0
 	bge.s	loc_1F5160
-	move.w	-$3A96(a5),-$3A8E(a5)
+	move.w	-$3A96(a5),g_CamMaxX(a5)
 	bra.s	loc_1F5166
 loc_1F5160:
-	move.w	g_CameraX(a5),-$3A8E(a5)
+	move.w	g_CameraX(a5),g_CamMaxX(a5)
 loc_1F5166:
-	move.w	-$3A94(a5),d0
+	move.w	g_CamMinY(a5),d0
 	cmp.w	-$3A9C(a5),d0
 	beq.s	loc_1F51C2
-	move.w	-$3A94(a5),d0
+	move.w	g_CamMinY(a5),d0
 	cmp.w	-$3A9C(a5),d0
 	ble.s	loc_1F5196
-	move.w	-$3A94(a5),d0
+	move.w	g_CamMinY(a5),d0
 	cmp.w	g_CameraY(a5),d0
 	bne.s	loc_1F518E
-	move.w	-$3A94(a5),d0
-	subq.w	#$1,-$3A94(a5)
+	move.w	g_CamMinY(a5),d0
+	subq.w	#$1,g_CamMinY(a5)
 	bra.s	loc_1F51C2
 loc_1F518E:
-	move.w	-$3A9C(a5),-$3A94(a5)
+	move.w	-$3A9C(a5),g_CamMinY(a5)
 	bra.s	loc_1F51C2
 loc_1F5196:
-	move.w	-$3A94(a5),d0
+	move.w	g_CamMinY(a5),d0
 	cmp.w	g_CameraY(a5),d0
 	bne.s	loc_1F51AA
-	move.w	-$3A94(a5),d0
-	addq.w	#$1,-$3A94(a5)
+	move.w	g_CamMinY(a5),d0
+	addq.w	#$1,g_CamMinY(a5)
 	bra.s	loc_1F51C2
 loc_1F51AA:
 	move.w	g_CameraY(a5),d0
 	cmp.w	-$3A9C(a5),d0
 	ble.s	loc_1F51BC
-	move.w	-$3A9C(a5),-$3A94(a5)
+	move.w	-$3A9C(a5),g_CamMinY(a5)
 	bra.s	loc_1F51C2
 loc_1F51BC:
-	move.w	g_CameraY(a5),-$3A94(a5)
+	move.w	g_CameraY(a5),g_CamMinY(a5)
 loc_1F51C2:
-	move.w	-$3A92(a5),d0
+	move.w	g_CamMaxY(a5),d0
 	cmp.w	-$3A9A(a5),d0
 	beq.s	loc_1F521E
-	move.w	-$3A92(a5),d0
+	move.w	g_CamMaxY(a5),d0
 	cmp.w	-$3A9A(a5),d0
 	bge.s	loc_1F51F2
-	move.w	-$3A92(a5),d0
+	move.w	g_CamMaxY(a5),d0
 	cmp.w	g_CameraY(a5),d0
 	bne.s	loc_1F51EA
-	move.w	-$3A92(a5),d0
-	addq.w	#$1,-$3A92(a5)
+	move.w	g_CamMaxY(a5),d0
+	addq.w	#$1,g_CamMaxY(a5)
 	bra.s	loc_1F521E
 loc_1F51EA:
-	move.w	-$3A9A(a5),-$3A92(a5)
+	move.w	-$3A9A(a5),g_CamMaxY(a5)
 	bra.s	loc_1F521E
 loc_1F51F2:
-	move.w	-$3A92(a5),d0
+	move.w	g_CamMaxY(a5),d0
 	cmp.w	g_CameraY(a5),d0
 	bne.s	loc_1F5206
-	move.w	-$3A92(a5),d0
-	subq.w	#$1,-$3A92(a5)
+	move.w	g_CamMaxY(a5),d0
+	subq.w	#$1,g_CamMaxY(a5)
 	bra.s	loc_1F521E
 loc_1F5206:
 	move.w	g_CameraY(a5),d0
 	cmp.w	-$3A9A(a5),d0
 	bge.s	loc_1F5218
-	move.w	-$3A9A(a5),-$3A92(a5)
+	move.w	-$3A9A(a5),g_CamMaxY(a5)
 	bra.s	loc_1F521E
 loc_1F5218:
-	move.w	g_CameraY(a5),-$3A92(a5)
+	move.w	g_CameraY(a5),g_CamMaxY(a5)
 loc_1F521E:
 	movem.l	-$8(a6),d3/d7
 	unlk	a6

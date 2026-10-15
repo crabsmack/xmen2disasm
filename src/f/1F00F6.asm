@@ -51,7 +51,7 @@ loc_1F0166:
 	sub.l	d0,d1
 	lsl.l	#$8,d1
 	add.l	d1,$C(a4)
-	move.b	#$1,-$3892(a5)
+	move.b	#$1,g_CamModeSwitched(a5)
 	movem.l	-$C(a6),d6-d7/a4
 	unlk	a6
 	rts

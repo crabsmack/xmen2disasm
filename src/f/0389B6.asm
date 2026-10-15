@@ -7,7 +7,7 @@
 BaniMazaA1_FrameHook:
 	link.w	a6,#$0
 	movem.l	d3/d7,-(a7)
-	tst.b	-$38DE(a5)
+	tst.b	g_TwoPlayerStep(a5)
 	beq.s	loc_0389C8
 	moveq	#$2,d0
 	bra.s	loc_0389CA

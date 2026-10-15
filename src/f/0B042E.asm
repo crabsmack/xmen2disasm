@@ -14,7 +14,7 @@ SavageA3_FrameHook:
 	bne.s	loc_0B0448
 	jsr	SavageA3_FrameStub(pc)
 loc_0B0448:
-	tst.b	-$38DE(a5)
+	tst.b	g_TwoPlayerStep(a5)
 	beq.s	loc_0B0464
 	move.l	g_FrameCounter(a5),d0
 	addq.l	#$1,g_FrameCounter(a5)

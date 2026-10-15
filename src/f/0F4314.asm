@@ -14,7 +14,7 @@ SentinelsB1_FrameHook:
 	bne.s	loc_0F4334
 	jsr	$23F2(a5)	; -> sub_0DC2CE
 loc_0F4334:
-	tst.b	-$38DE(a5)
+	tst.b	g_TwoPlayerStep(a5)
 	beq.s	loc_0F434C
 	move.l	g_FrameCounter(a5),d0
 	addq.l	#$1,g_FrameCounter(a5)

@@ -162,7 +162,7 @@ loc_1CF568:
 	move.w	$A(a4),d0
 	ext.l	d0
 	add.l	d0,$4(a4)
-	tst.b	-$38DE(a5)
+	tst.b	g_TwoPlayerStep(a5)
 	beq.s	loc_1CF622
 	move.w	$8(a4),d0
 	ext.l	d0
@@ -213,7 +213,7 @@ loc_1CF63A:
 	move.w	$A(a4),d0
 	ext.l	d0
 	add.l	d0,$4(a4)
-	tst.b	-$38DE(a5)
+	tst.b	g_TwoPlayerStep(a5)
 	beq.s	loc_1CF6A2
 	move.w	$8(a4),d0
 	ext.l	d0

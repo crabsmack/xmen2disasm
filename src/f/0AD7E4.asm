@@ -7,7 +7,7 @@
 ; ---------------------------------------------------------------------------
 SavageA2_InitFlood:
 	link.w	a6,#$0
-	move.w	-$3A92(a5),d0
+	move.w	g_CamMaxY(a5),d0
 	ext.l	d0
 	add.l	#$E0,d0
 	lsl.l	#$8,d0

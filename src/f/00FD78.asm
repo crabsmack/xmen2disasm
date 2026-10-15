@@ -10,7 +10,7 @@ AvalonB1_FrameHook:
 	addq.l	#$1,g_FrameCounter(a5)
 	move.w	-$3B32(a5),d0
 	addq.w	#$1,-$3B32(a5)
-	tst.b	-$38DE(a5)
+	tst.b	g_TwoPlayerStep(a5)
 	beq.s	loc_00FDA2
 	move.l	g_FrameCounter(a5),d0
 	addq.l	#$1,g_FrameCounter(a5)

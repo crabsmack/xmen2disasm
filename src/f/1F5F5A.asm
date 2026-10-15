@@ -7,7 +7,7 @@ sub_1F5F5A:
 	ext.l	d0
 	lsl.l	#$5,d0
 	sub.w	#$140,d0
-	move.w	d0,-$3A8E(a5)
-	move.w	-$3A8E(a5),-$3A96(a5)
+	move.w	d0,g_CamMaxX(a5)
+	move.w	g_CamMaxX(a5),-$3A96(a5)
 	unlk	a6
 	rts

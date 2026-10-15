@@ -55,8 +55,8 @@ SentinelsA1_LoadLevel:
 	clr.w	-$34A0(a5)
 	clr.w	-$349A(a5)
 	clr.w	-$349C(a5)
-	clr.b	-$38DE(a5)
-	move.b	#$1,-$38DE(a5)
+	clr.b	g_TwoPlayerStep(a5)
+	move.b	#$1,g_TwoPlayerStep(a5)
 	movem.l	-$10(a6),d4-d7
 	unlk	a6
 	rts

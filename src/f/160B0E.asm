@@ -11,9 +11,9 @@ Cam_EaseOffset:
 	move.w	$46(a4),d6
 	move.w	$2C(a4),d5
 	move.w	$2E(a4),d7
-	tst.b	-$3892(a5)
+	tst.b	g_CamModeSwitched(a5)
 	beq.s	loc_160B44
-	clr.b	-$3892(a5)
+	clr.b	g_CamModeSwitched(a5)
 	move.w	$36(a4),d0
 	sub.w	$30(a4),d0
 	add.w	d0,d5
@@ -55,7 +55,7 @@ loc_160B7A:
 	clr.w	d7
 loc_160B7C:
 	moveq	#$0,d0
-	move.b	-$38E0(a5),d0
+	move.b	g_PlayersAlive(a5),d0
 	cmpi.w	#$2,d0
 	bne.s	loc_160BA2
 	cmp.w	d7,d6

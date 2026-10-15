@@ -41,6 +41,6 @@ CloneA1_LoadLevel:
 	move.w	#$100,-$3498(a5)
 	clr.w	-$3496(a5)
 	move.b	#$1,-$38B4(a5)
-	clr.b	-$38DE(a5)
+	clr.b	g_TwoPlayerStep(a5)
 	unlk	a6
 	rts

@@ -79,7 +79,7 @@ loc_13E59A:
 	ext.w	d1
 	ext.l	d1
 	add.l	d1,$C(a4,d0.l)
-	tst.b	-$38DE(a5)
+	tst.b	g_TwoPlayerStep(a5)
 	beq.s	loc_13E5E8
 	ext.l	d5
 	move.l	d5,d0
@@ -108,7 +108,7 @@ loc_13E5E8:
 	moveq	#$0,d4
 	move.b	d0,d4
 	tst.l	d4
-	tst.b	-$38DE(a5)
+	tst.b	g_TwoPlayerStep(a5)
 	beq.s	loc_13E610
 	moveq	#$2,d0
 	bra.s	loc_13E612

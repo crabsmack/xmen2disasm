@@ -8,7 +8,7 @@ FlyBrood_Update:
 	link.w	a6,#$0
 	movem.l	d7/a4,-(a7)
 	movea.l	$8(a6),a4
-	tst.b	-$38DE(a5)
+	tst.b	g_TwoPlayerStep(a5)
 	beq.s	loc_134D7A
 	moveq	#$2,d0
 	bra.s	loc_134D7C

@@ -49,7 +49,7 @@ loc_1F248A:
 	bne.s	loc_1F24AC
 	cmpi.w	#$100,$16(a4)
 	ble.s	loc_1F24AC
-	move.b	-$38DE(a5),d0
+	move.b	g_TwoPlayerStep(a5),d0
 	moveq	#$40,d1
 	lsl.l	d0,d1
 	sub.w	d1,$16(a4)
@@ -60,7 +60,7 @@ loc_1F24AC:
 	beq.s	loc_1F24CA
 	cmpi.w	#$FF00,$16(a4)
 	bge.s	loc_1F24CA
-	move.b	-$38DE(a5),d0
+	move.b	g_TwoPlayerStep(a5),d0
 	moveq	#$40,d1
 	lsl.l	d0,d1
 	add.w	d1,$16(a4)

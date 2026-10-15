@@ -17,7 +17,7 @@ BioNpc_UpdateStunned:
 	tst.l	d0
 	bls.w	loc_114D00
 	moveq	#$0,d0
-	move.b	-$38DE(a5),d0
+	move.b	g_TwoPlayerStep(a5),d0
 	addq.w	#$1,d0
 	ext.l	d0
 	move.l	d0,-(a7)

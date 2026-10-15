@@ -4,7 +4,7 @@
 sub_13A8C4:
 	link.w	a6,#$0
 	movem.l	d4-d7/a4,-(a7)
-	tst.b	-$38DE(a5)
+	tst.b	g_TwoPlayerStep(a5)
 	beq.s	loc_13A8D6
 	moveq	#$2,d0
 	bra.s	loc_13A8D8

@@ -78,7 +78,7 @@ loc_097208:
 	asr.l	#$4,d7
 	add.l	d6,$8(a3)
 	add.l	d7,$C(a3)
-	tst.b	-$38DE(a5)
+	tst.b	g_TwoPlayerStep(a5)
 	beq.s	loc_097222
 	add.l	d6,$8(a3)
 	add.l	d7,$C(a3)

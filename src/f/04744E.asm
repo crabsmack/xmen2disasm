@@ -7,7 +7,7 @@
 BaniMazaA2_AnimatePalettes:
 	link.w	a6,#$0
 	movem.l	a3-a4,-(a7)
-	tst.b	-$38DE(a5)
+	tst.b	g_TwoPlayerStep(a5)
 	beq.s	loc_04746A
 	subq.w	#$2,-$3B32(a5)
 	subq.w	#$2,-$3B34(a5)

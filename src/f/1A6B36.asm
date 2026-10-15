@@ -6,7 +6,7 @@ sub_1A6B36:
 	movem.l	d3/d7/a4,-(a7)
 	movea.l	$8(a6),a4
 	move.w	$4C(a4),d7
-	move.b	#$1,-$3892(a5)
+	move.b	#$1,g_CamModeSwitched(a5)
 	ori.w	#$2000,$6(a4)
 	ori.b	#$8,$2E(a4)
 	lea.l	$4462(a5),a0

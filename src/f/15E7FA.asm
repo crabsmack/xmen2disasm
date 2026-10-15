@@ -34,7 +34,7 @@ loc_15E834:
 	and.w	d0,d1
 	beq.w	loc_15EA6E
 loc_15E844:
-	tst.b	-$38DE(a5)
+	tst.b	g_TwoPlayerStep(a5)
 	beq.s	loc_15E84E
 	moveq	#$2,d6
 	bra.s	loc_15E850

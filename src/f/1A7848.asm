@@ -16,7 +16,7 @@ loc_1A785E:
 	jsr	$44BA(a5)	; -> sub_1A60B6
 	move.b	d0,d7
 	moveq	#$0,d0
-	move.b	-$38DE(a5),d0
+	move.b	g_TwoPlayerStep(a5),d0
 	addq.w	#$1,d0
 	add.w	d0,$12(a4)
 	addq.w	#$4,a7

@@ -53,7 +53,7 @@ loc_157F20:
 	addq.w	#$4,a7
 	bra.w	loc_1580A8
 loc_157F42:
-	tst.b	-$38DE(a5)
+	tst.b	g_TwoPlayerStep(a5)
 	beq.s	loc_157F4C
 	moveq	#$2,d6
 	bra.s	loc_157F4E

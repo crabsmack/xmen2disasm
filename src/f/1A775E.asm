@@ -14,7 +14,7 @@ sub_1A775E:
 	move.w	#$3C,$6A(a4)
 	move.l	g_Camera(a5),-(a7)
 	jsr	$3EA2(a5)	; -> sub_159ECC
-	tst.b	-$38DE(a5)
+	tst.b	g_TwoPlayerStep(a5)
 	beq.s	loc_1A7792
 	moveq	#$4,d0
 	bra.s	loc_1A7794

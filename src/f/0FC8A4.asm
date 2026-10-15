@@ -33,14 +33,14 @@ SiberiaB1_InitWind:
 	lsl.l	#$3,d0
 	sub.w	#$140,d0
 	move.w	d0,-$3A96(a5)
-	move.w	d0,-$3A8E(a5)
+	move.w	d0,g_CamMaxX(a5)
 	movea.l	d7,a0
 	move.w	$4(a0),d0
 	ext.l	d0
 	lsl.l	#$3,d0
 	sub.w	#$E0,d0
 	move.w	d0,-$3A9A(a5)
-	move.w	d0,-$3A92(a5)
+	move.w	d0,g_CamMaxY(a5)
 	move.w	#$A8A,-$392E(a5)
 	move.w	#$EEE,-$392C(a5)
 	move.w	#$CCC,-$392A(a5)

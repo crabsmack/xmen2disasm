@@ -86,7 +86,7 @@ loc_114614:
 	shi.b	d3
 	neg.b	d3
 	beq.s	loc_114632
-	tst.b	-$38DE(a5)
+	tst.b	g_TwoPlayerStep(a5)
 	beq.s	loc_11462E
 	moveq	#$2,d0
 	bra.s	loc_114648
@@ -111,7 +111,7 @@ loc_114648:
 	add.l	d0,$8(a4)
 	move.w	$1C(a4),d0
 	add.w	d0,$1A(a4)
-	tst.b	-$38DE(a5)
+	tst.b	g_TwoPlayerStep(a5)
 	beq.s	loc_114676
 	move.w	$1A(a4),d0
 	ext.l	d0

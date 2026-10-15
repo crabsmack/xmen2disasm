@@ -13,7 +13,7 @@ SpaceA1_FrameHook:
 	movea.l	(a0),a0
 	movea.l	$E(a0),a1
 	jsr	(a1)
-	tst.b	-$38DE(a5)
+	tst.b	g_TwoPlayerStep(a5)
 	addq.w	#$4,a7
 	beq.s	loc_10B9C4
 	move.l	g_FrameCounter(a5),d0

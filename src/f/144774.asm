@@ -22,7 +22,7 @@ sub_144774:
 	move.l	a0,-$4(a6)
 	sub.w	g_CameraX(a5),d6
 	sub.w	g_CameraY(a5),d5
-	tst.b	-$38DE(a5)
+	tst.b	g_TwoPlayerStep(a5)
 	beq.s	loc_1447CC
 	movea.l	$10(a6),a0
 	addq.w	#$2,(a0)

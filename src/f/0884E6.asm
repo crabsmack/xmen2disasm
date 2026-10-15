@@ -39,7 +39,7 @@ loc_088526:
 	jsr	$3EB2(a5)	; -> Pal_CycleStep
 	lea.l	$14(a7),a7
 loc_08854E:
-	tst.b	-$38DE(a5)
+	tst.b	g_TwoPlayerStep(a5)
 	beq.s	loc_088584
 	move.l	g_FrameCounter(a5),d0
 	addq.l	#$1,g_FrameCounter(a5)

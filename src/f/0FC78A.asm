@@ -22,24 +22,24 @@ SiberiaB1_CamApply:
 	move.w	d4,g_CameraX(a5)
 	move.w	d5,g_CameraY(a5)
 	move.w	g_CameraX(a5),d0
-	cmp.w	-$3A8E(a5),d0
+	cmp.w	g_CamMaxX(a5),d0
 	ble.s	loc_0FC7D2
-	move.w	-$3A8E(a5),g_CameraX(a5)
+	move.w	g_CamMaxX(a5),g_CameraX(a5)
 loc_0FC7D2:
 	move.w	g_CameraX(a5),d0
-	cmp.w	-$3A90(a5),d0
+	cmp.w	g_CamMinX(a5),d0
 	bge.s	loc_0FC7E2
-	move.w	-$3A90(a5),g_CameraX(a5)
+	move.w	g_CamMinX(a5),g_CameraX(a5)
 loc_0FC7E2:
 	move.w	g_CameraY(a5),d0
-	cmp.w	-$3A92(a5),d0
+	cmp.w	g_CamMaxY(a5),d0
 	ble.s	loc_0FC7F2
-	move.w	-$3A92(a5),g_CameraY(a5)
+	move.w	g_CamMaxY(a5),g_CameraY(a5)
 loc_0FC7F2:
 	move.w	g_CameraY(a5),d0
-	cmp.w	-$3A94(a5),d0
+	cmp.w	g_CamMinY(a5),d0
 	bge.s	loc_0FC802
-	move.w	-$3A94(a5),g_CameraY(a5)
+	move.w	g_CamMinY(a5),g_CameraY(a5)
 loc_0FC802:
 	move.w	-$3ABC(a5),d0
 	add.w	d0,-$3AC2(a5)

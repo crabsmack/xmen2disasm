@@ -83,7 +83,7 @@ loc_160F0A:
 	move.l	a0,$10(a4)
 	clr.l	$2C(a4)
 	clr.w	$5C(a4)
-	clr.b	-$3892(a5)
+	clr.b	g_CamModeSwitched(a5)
 loc_160F2C:
 	movem.l	-$18(a6),d3-d7/a4
 	unlk	a6

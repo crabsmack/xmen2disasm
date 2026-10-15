@@ -6,7 +6,7 @@ SavageBioBase_Update:
 	link.w	a6,#$0
 	movem.l	d5-d7/a4,-(a7)
 	movea.l	$8(a6),a4
-	tst.b	-$38DE(a5)
+	tst.b	g_TwoPlayerStep(a5)
 	beq.s	loc_0BA374
 	moveq	#$2,d7
 	bra.s	loc_0BA376
@@ -108,7 +108,7 @@ loc_0BA46A:
 loc_0BA474:
 	tst.w	$AC(a4)
 	ble.s	loc_0BA498
-	tst.b	-$38DE(a5)
+	tst.b	g_TwoPlayerStep(a5)
 	beq.s	loc_0BA484
 	moveq	#$2,d0
 	bra.s	loc_0BA486

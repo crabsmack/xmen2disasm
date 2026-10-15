@@ -39,7 +39,7 @@ loc_1B9A1A:
 	movea.l	$8C(a4),a0
 	move.w	$12(a0),$22(a4)
 	move.w	$E(a0),$20(a4)
-	clr.b	-$3892(a5)
+	clr.b	g_CamModeSwitched(a5)
 	moveq	#$0,d0
 	move.w	$C0(a4),d0
 	moveq	#-$4,d1

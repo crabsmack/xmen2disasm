@@ -33,12 +33,12 @@ loc_0990CC:
 	bne.s	loc_0990D6
 	move.l	a4,-$3B30(a5)
 loc_0990D6:
-	move.w	-$3A90(a5),d0
+	move.w	g_CamMinX(a5),d0
 	cmp.w	-$3B2C(a5),d0
 	sgt.b	d3
 	neg.b	d3
 	beq.s	loc_0990EA
-	move.w	-$3A90(a5),d0
+	move.w	g_CamMinX(a5),d0
 	bra.s	loc_0990EE
 loc_0990EA:
 	move.w	-$3B2C(a5),d0
@@ -48,13 +48,13 @@ loc_0990EE:
 	ext.l	d0
 	moveq	#$20,d1
 	sub.l	d1,d0
-	move.w	-$3A94(a5),d2
+	move.w	g_CamMinY(a5),d2
 	ext.l	d2
 	cmp.l	d2,d0
 	slt.b	d3
 	neg.b	d3
 	beq.s	loc_099110
-	move.w	-$3A94(a5),d0
+	move.w	g_CamMinY(a5),d0
 	ext.l	d0
 	bra.s	loc_099118
 loc_099110:
@@ -65,13 +65,13 @@ loc_099118:
 	move.w	-$3B2A(a5),d0
 	ext.l	d0
 	sub.l	#$140,d0
-	move.w	-$3A8E(a5),d1
+	move.w	g_CamMaxX(a5),d1
 	ext.l	d1
 	cmp.l	d1,d0
 	sgt.b	d3
 	neg.b	d3
 	beq.s	loc_09913C
-	move.w	-$3A8E(a5),d0
+	move.w	g_CamMaxX(a5),d0
 	ext.l	d0
 	bra.s	loc_099144
 loc_09913C:
@@ -82,13 +82,13 @@ loc_099144:
 	move.w	$A6(a4),d0
 	ext.l	d0
 	add.l	#$FFFFFF40,d0
-	move.w	-$3A92(a5),d1
+	move.w	g_CamMaxY(a5),d1
 	ext.l	d1
 	cmp.l	d1,d0
 	sgt.b	d3
 	neg.b	d3
 	beq.s	loc_099168
-	move.w	-$3A92(a5),d0
+	move.w	g_CamMaxY(a5),d0
 	ext.l	d0
 	bra.s	loc_099170
 loc_099168:
@@ -103,7 +103,7 @@ loc_099170:
 	lea.l	XClone_CamSetArenaMode(pc),a0
 	movea.l	g_Camera(a5),a1
 	move.l	a0,$1C(a1)
-	move.b	#$1,-$3892(a5)
+	move.b	#$1,g_CamModeSwitched(a5)
 	jsr	$5242(a5)	; -> Snd_StopAll
 	move.l	a4,-(a7)
 	jsr	Clone_CharTypeOf(pc)

@@ -42,7 +42,7 @@ AvalonA4_LoadLevel:
 	move.l	d0,-(a7)
 	jsr	$521A(a5)	; -> Snd_Play
 	clr.w	g_PalBase(a5)
-	clr.b	-$38DE(a5)
+	clr.b	g_TwoPlayerStep(a5)
 	move.w	#$7F,-$3498(a5)
 	move.w	#$A0,-$3496(a5)
 	unlk	a6

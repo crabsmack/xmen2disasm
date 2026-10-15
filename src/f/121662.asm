@@ -43,7 +43,7 @@ loc_1216C4:
 	move.w	$C(a3),d0
 	ext.l	d0
 	add.l	d0,$4(a3)
-	tst.b	-$38DE(a5)
+	tst.b	g_TwoPlayerStep(a5)
 	beq.s	loc_1216EA
 	move.l	-$4(a6),d0
 	add.l	d0,(a3)

@@ -9,7 +9,7 @@ SentinelsB2_FrameHook:
 	movem.l	d3/d5-d7/a3-a4,-(a7)
 	move.l	g_FrameCounter(a5),d0
 	addq.l	#$1,g_FrameCounter(a5)
-	tst.b	-$38DE(a5)
+	tst.b	g_TwoPlayerStep(a5)
 	beq.s	loc_0F47EC
 	move.l	g_FrameCounter(a5),d0
 	addq.l	#$1,g_FrameCounter(a5)
@@ -32,7 +32,7 @@ loc_0F47EC:
 	bne.w	loc_0F4AE4
 	jsr	$23F2(a5)	; -> sub_0DC2CE
 	jsr	SentinelsB2_AlarmPalette(pc)
-	tst.b	-$38DE(a5)
+	tst.b	g_TwoPlayerStep(a5)
 	beq.s	loc_0F4812
 	jsr	$23F2(a5)	; -> sub_0DC2CE
 	jsr	SentinelsB2_AlarmPalette(pc)

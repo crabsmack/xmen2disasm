@@ -42,7 +42,7 @@ loc_183064:
 	and.w	$4(a4),d1
 	beq.s	loc_183090
 	subi.l	#$F00,$C(a4)
-	move.b	#$1,-$3892(a5)
+	move.b	#$1,g_CamModeSwitched(a5)
 loc_183090:
 	movea.l	(a4),a0
 	move.l	$A6(a0),$5C(a4)

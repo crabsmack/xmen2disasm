@@ -17,7 +17,7 @@ CoreShields_Update:
 	tst.w	$9A(a4)
 	addq.w	#$4,a7
 	ble.s	loc_0EB810
-	tst.b	-$38DE(a5)
+	tst.b	g_TwoPlayerStep(a5)
 	beq.s	loc_0EB808
 	moveq	#$2,d0
 	bra.s	loc_0EB80A

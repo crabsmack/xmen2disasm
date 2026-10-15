@@ -85,7 +85,7 @@ loc_1F08F6:
 	lsl.l	#$8,d0
 	move.l	d0,$C(a4)
 loc_1F090E:
-	move.b	#$1,-$3892(a5)
+	move.b	#$1,g_CamModeSwitched(a5)
 	movea.l	(a4),a0
 	move.l	$9E(a0),$5C(a4)
 	move.l	a4,-(a7)

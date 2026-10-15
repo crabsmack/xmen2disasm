@@ -56,7 +56,7 @@ loc_0C0AAE:
 	move.b	$AF(a3),d0
 	tst.l	d0
 	bcc.s	loc_0C0B04
-	move.b	-$38DE(a5),d0
+	move.b	g_TwoPlayerStep(a5),d0
 	move.b	$AF(a3),d1
 	lsr.b	d0,d1
 	moveq	#$0,d0
@@ -68,7 +68,7 @@ loc_0C0B04:
 	moveq	#$0,d0
 	move.b	$AF(a3),d0
 	tst.l	d0
-	tst.b	-$38DE(a5)
+	tst.b	g_TwoPlayerStep(a5)
 	beq.s	loc_0C0B1A
 	moveq	#$0,d1
 	bra.s	loc_0C0B1C
@@ -89,7 +89,7 @@ loc_0C0B36:
 	moveq	#$0,d0
 	move.b	$AF(a3),d0
 	tst.l	d0
-	tst.b	-$38DE(a5)
+	tst.b	g_TwoPlayerStep(a5)
 	beq.s	loc_0C0B48
 	moveq	#$0,d1
 	bra.s	loc_0C0B4A

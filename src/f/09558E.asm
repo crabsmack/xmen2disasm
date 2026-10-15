@@ -18,7 +18,7 @@ XClone_Update:
 	bne.s	loc_095610
 	tst.b	$B6(a4)
 	ble.s	loc_0955D8
-	tst.b	-$38DE(a5)
+	tst.b	g_TwoPlayerStep(a5)
 	beq.s	loc_0955C6
 	moveq	#$2,d0
 	bra.s	loc_0955C8
@@ -32,7 +32,7 @@ loc_0955C8:
 loc_0955D8:
 	tst.b	$B7(a4)
 	ble.s	loc_0955EE
-	tst.b	-$38DE(a5)
+	tst.b	g_TwoPlayerStep(a5)
 	beq.s	loc_0955E8
 	moveq	#$2,d0
 	bra.s	loc_0955EA
@@ -43,7 +43,7 @@ loc_0955EA:
 loc_0955EE:
 	tst.b	$B8(a4)
 	ble.s	loc_095604
-	tst.b	-$38DE(a5)
+	tst.b	g_TwoPlayerStep(a5)
 	beq.s	loc_0955FE
 	moveq	#$2,d0
 	bra.s	loc_095600

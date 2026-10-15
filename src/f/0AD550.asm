@@ -60,7 +60,7 @@ loc_0AD5C4:
 	ble.w	loc_0AD660
 	tst.b	d7
 	beq.s	loc_0AD5FC
-	tst.b	-$38DE(a5)
+	tst.b	g_TwoPlayerStep(a5)
 	beq.s	loc_0AD5E4
 	move.l	#$400,d0
 	bra.s	loc_0AD5EA
@@ -78,7 +78,7 @@ loc_0AD5FC:
 	move.b	g_ScnSavageA2(a5),d0
 	cmp.w	g_SceneIndex(a5),d0
 	bne.s	loc_0AD62E
-	tst.b	-$38DE(a5)
+	tst.b	g_TwoPlayerStep(a5)
 	beq.s	loc_0AD616
 	move.l	#$100,d0
 	bra.s	loc_0AD61C
@@ -92,7 +92,7 @@ loc_0AD61C:
 	move.w	d0,-$38BC(a5)
 	bra.s	loc_0AD652
 loc_0AD62E:
-	tst.b	-$38DE(a5)
+	tst.b	g_TwoPlayerStep(a5)
 	beq.s	loc_0AD63C
 	move.l	#$200,d0
 	bra.s	loc_0AD642

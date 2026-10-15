@@ -47,7 +47,7 @@ AvalonA3_LoadLevel:
 	move.b	#$1,-$38B4(a5)
 	move.w	#$7F,-$3498(a5)
 	move.w	#$DC,-$3496(a5)
-	clr.b	-$38DE(a5)
+	clr.b	g_TwoPlayerStep(a5)
 	lea.l	$50A(a5),a0
 	movea.l	$2(a0),a3
 	lea.l	-$3940(a5),a4

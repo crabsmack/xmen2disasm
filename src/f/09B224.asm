@@ -173,7 +173,7 @@ loc_09B3BC:
 	move.w	g_CameraX(a5),$30(a0)
 	movea.l	g_Camera(a5),a0
 	move.w	g_CameraY(a5),$32(a0)
-	move.b	#$1,-$3892(a5)
+	move.b	#$1,g_CamModeSwitched(a5)
 	movea.l	g_Camera(a5),a0
 	clr.w	$2C(a0)
 	movea.l	g_Camera(a5),a0

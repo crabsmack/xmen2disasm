@@ -17,7 +17,7 @@ sub_035BE8:
 	move.l	#$8000,d1
 	or.l	d0,d1
 	move.w	d1,-$6(a6)
-	tst.b	-$38DE(a5)
+	tst.b	g_TwoPlayerStep(a5)
 	beq.s	loc_035C22
 	moveq	#$2,d0
 	bra.s	loc_035C24
@@ -98,7 +98,7 @@ loc_035CC4:
 	cmpi.l	#$F0,d7
 	bge.w	loc_035D96
 	move.b	#$1,-$1(a6)
-	tst.b	-$38DE(a5)
+	tst.b	g_TwoPlayerStep(a5)
 	bne.w	loc_035D9A
 	moveq	#$1,d0
 	and.l	g_FrameCounter(a5),d0

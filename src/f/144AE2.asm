@@ -5,7 +5,7 @@ sub_144AE2:
 	link.w	a6,#$0
 	movem.l	d3/d5-d7/a3-a4,-(a7)
 	movea.l	$8(a6),a4
-	tst.b	-$38DE(a5)
+	tst.b	g_TwoPlayerStep(a5)
 	beq.s	loc_144AF8
 	moveq	#$2,d0
 	bra.s	loc_144AFA

@@ -9,7 +9,7 @@ XClone_CamSetNormal:
 	link.w	a6,#$0
 	move.l	a4,-(a7)
 	movea.l	$8(a6),a4
-	move.b	#$1,-$3892(a5)
+	move.b	#$1,g_CamModeSwitched(a5)
 	pea.l	($C0).w
 	pea.l	($E0).w
 	moveq	#$5A,d0

@@ -49,7 +49,7 @@ loc_022AC2:
 	addq.l	#$1,d7
 	cmp.l	d7,d3
 	bgt.s	loc_022AC2
-	clr.b	-$38DE(a5)
+	clr.b	g_TwoPlayerStep(a5)
 	movem.l	-$10(a6),d3/d7/a3-a4
 	unlk	a6
 	rts

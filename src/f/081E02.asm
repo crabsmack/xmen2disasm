@@ -60,7 +60,7 @@ loc_081E88:
 	cmp.l	d7,d3
 	bgt.s	loc_081E88
 	move.b	#$1,-$38B4(a5)
-	clr.b	-$38DE(a5)
+	clr.b	g_TwoPlayerStep(a5)
 	movem.l	-$10(a6),d3/d7/a3-a4
 	unlk	a6
 	rts

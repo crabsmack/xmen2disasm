@@ -20,7 +20,7 @@ ApocBomb_Update:
 	move.l	$8C(a4),d5
 	asr.l	#$8,d5
 	clr.b	-$1(a6)
-	tst.b	-$38DE(a5)
+	tst.b	g_TwoPlayerStep(a5)
 	beq.s	loc_04E27A
 	move.w	#$2,-$8(a6)
 	bra.s	loc_04E280

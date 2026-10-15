@@ -87,7 +87,7 @@ loc_00FAF4:
 loc_00FB18:
 	move.w	g_CameraX(a5),$30(a4)
 	move.w	g_CameraX(a5),d6
-	tst.b	-$38DE(a5)
+	tst.b	g_TwoPlayerStep(a5)
 	beq.s	loc_00FB2C
 	moveq	#$4,d0
 	bra.s	loc_00FB2E

@@ -57,13 +57,13 @@ CloneA2_SetCameraZone:
 	move.l	d0,d6
 	sub.l	#$E0,d6
 	move.w	-$2(a6),-$3A98(a5)
-	move.w	-$2(a6),-$3A90(a5)
+	move.w	-$2(a6),g_CamMinX(a5)
 	move.w	d4,-$3A9C(a5)
-	move.w	d4,-$3A94(a5)
+	move.w	d4,g_CamMinY(a5)
 	move.w	d5,-$3A96(a5)
-	move.w	d5,-$3A8E(a5)
+	move.w	d5,g_CamMaxX(a5)
 	move.w	d6,-$3A9A(a5)
-	move.w	d6,-$3A92(a5)
+	move.w	d6,g_CamMaxY(a5)
 	move.w	d7,-$3B06(a5)
 	clr.w	-$3B08(a5)
 	movem.l	-$16(a6),d4-d7/a4

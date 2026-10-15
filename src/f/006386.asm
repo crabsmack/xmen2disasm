@@ -13,9 +13,9 @@ HUD_UpdateHealthBars:
 	move.l	$2(a0),-$8(a6)
 	clr.b	g_HudDirty(a5)
 	move.b	-$38E2(a5),d0
-	cmp.b	-$38E0(a5),d0
+	cmp.b	g_PlayersAlive(a5),d0
 	beq.s	loc_0063BE
-	move.b	-$38E0(a5),-$38E2(a5)
+	move.b	g_PlayersAlive(a5),-$38E2(a5)
 	jsr	HUD_Redraw(pc)
 	bra.w	loc_00657A
 loc_0063BE:

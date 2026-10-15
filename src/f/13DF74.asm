@@ -127,7 +127,7 @@ loc_13E0B0:
 	moveq	#$0,d1
 	move.b	d0,d1
 	move.w	d1,-$2(a6)
-	tst.b	-$38DE(a5)
+	tst.b	g_TwoPlayerStep(a5)
 	beq.s	loc_13E0DA
 	moveq	#$2,d0
 	bra.s	loc_13E0DC

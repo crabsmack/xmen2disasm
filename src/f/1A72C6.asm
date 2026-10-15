@@ -25,7 +25,7 @@ loc_1A72F0:
 	move.w	#$6,$6E(a4)
 	ori.l	#$2,$90(a4)
 	ori.l	#$1,$90(a4)
-	move.b	#$1,-$3892(a5)
+	move.b	#$1,g_CamModeSwitched(a5)
 	tst.b	$9D(a4)
 	seq.b	d3
 	neg.b	d3

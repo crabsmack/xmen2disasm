@@ -9,24 +9,24 @@ AvalonB1_ScrollCameraTo:
 	move.w	$A(a6),g_CameraX(a5)
 	move.w	$E(a6),g_CameraY(a5)
 	move.w	g_CameraX(a5),d0
-	cmp.w	-$3A8E(a5),d0
+	cmp.w	g_CamMaxX(a5),d0
 	ble.s	loc_00FC32
-	move.w	-$3A8E(a5),g_CameraX(a5)
+	move.w	g_CamMaxX(a5),g_CameraX(a5)
 loc_00FC32:
 	move.w	g_CameraX(a5),d0
-	cmp.w	-$3A90(a5),d0
+	cmp.w	g_CamMinX(a5),d0
 	bge.s	loc_00FC42
-	move.w	-$3A90(a5),g_CameraX(a5)
+	move.w	g_CamMinX(a5),g_CameraX(a5)
 loc_00FC42:
 	move.w	g_CameraY(a5),d0
-	cmp.w	-$3A92(a5),d0
+	cmp.w	g_CamMaxY(a5),d0
 	ble.s	loc_00FC52
-	move.w	-$3A92(a5),g_CameraY(a5)
+	move.w	g_CamMaxY(a5),g_CameraY(a5)
 loc_00FC52:
 	move.w	g_CameraY(a5),d0
-	cmp.w	-$3A94(a5),d0
+	cmp.w	g_CamMinY(a5),d0
 	bge.s	loc_00FC62
-	move.w	-$3A94(a5),g_CameraY(a5)
+	move.w	g_CamMinY(a5),g_CameraY(a5)
 loc_00FC62:
 	move.w	g_CameraX(a5),-$3AC2(a5)
 	move.w	g_CameraY(a5),-$3AC4(a5)

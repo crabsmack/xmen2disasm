@@ -7,7 +7,7 @@ sub_0472E0:
 	movea.l	$8(a6),a3
 	tst.w	$84(a3)
 	ble.w	loc_0473CA
-	tst.b	-$38DE(a5)
+	tst.b	g_TwoPlayerStep(a5)
 	beq.s	loc_0472FE
 	moveq	#$2,d0
 	bra.s	loc_047300
@@ -67,7 +67,7 @@ loc_047374:
 	addq.w	#$1,d7
 	cmp.w	d7,d3
 	bgt.w	loc_04730C
-	tst.b	-$38DE(a5)
+	tst.b	g_TwoPlayerStep(a5)
 	beq.s	loc_0473CA
 	lea.l	(a3),a4
 	clr.w	d7

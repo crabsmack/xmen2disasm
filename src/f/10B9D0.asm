@@ -40,6 +40,6 @@ SpaceA1_LoadLevel:
 	clr.b	-$3AB4(a5)
 	clr.w	-$3498(a5)
 	move.w	#$100,-$3496(a5)
-	clr.b	-$38DE(a5)
+	clr.b	g_TwoPlayerStep(a5)
 	unlk	a6
 	rts

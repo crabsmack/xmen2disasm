@@ -8,7 +8,7 @@ sub_1A6FDC:
 	movea.l	$BC(a4),a3
 	andi.l	#$FFFFFFFD,$90(a4)
 	andi.l	#$FFFFFFFB,$90(a4)
-	move.b	#$1,-$3892(a5)
+	move.b	#$1,g_CamModeSwitched(a5)
 	clr.l	$A6(a4)
 	clr.w	$1E(a4)
 	clr.l	$16(a4)

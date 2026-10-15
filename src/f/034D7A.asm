@@ -6,7 +6,7 @@ sub_034D7A:
 	move.l	a4,-(a7)
 	move.w	-$3B32(a5),d0
 	subq.w	#$1,-$3B32(a5)
-	tst.b	-$38DE(a5)
+	tst.b	g_TwoPlayerStep(a5)
 	beq.s	loc_034D96
 	move.w	-$3B32(a5),d0
 	subq.w	#$1,-$3B32(a5)

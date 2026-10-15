@@ -24,7 +24,7 @@ loc_1F215A:
 loc_1F2162:
 	beq.s	loc_1F218E
 	move.b	#$1,g_HudDirty(a5)
-	tst.b	-$38DE(a5)
+	tst.b	g_TwoPlayerStep(a5)
 	beq.s	loc_1F2174
 	moveq	#$2,d0
 	bra.s	loc_1F2176

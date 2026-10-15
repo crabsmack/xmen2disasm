@@ -13,7 +13,7 @@ Cam_TrackBoth:
 	move.w	$40(a4),-$6(a6)
 	move.w	$42(a4),-$4(a6)
 	moveq	#$0,d0
-	move.b	-$38E0(a5),d0
+	move.b	g_PlayersAlive(a5),d0
 	cmpi.w	#$1,d0
 	bne.s	loc_1610A4
 	pea.l	($C0).w
@@ -26,7 +26,7 @@ Cam_TrackBoth:
 	movea.l	(a4),a0
 	movea.l	$1E(a0),a1
 	jsr	(a1)
-	move.b	#$1,-$3892(a5)
+	move.b	#$1,g_CamModeSwitched(a5)
 	movea.l	$1C(a4),a3
 	move.l	a3,d0
 	lea.l	$14(a7),a7

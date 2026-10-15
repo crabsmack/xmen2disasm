@@ -10,7 +10,7 @@ BroodBoss_StateDeathFx:
 	movem.l	d7/a3-a4,-(a7)
 	movea.l	$8(a6),a4
 	move.w	#$A0,d7
-	tst.b	-$38DE(a5)
+	tst.b	g_TwoPlayerStep(a5)
 	beq.s	loc_087D02
 	lsl.w	#$1,d7
 loc_087D02:

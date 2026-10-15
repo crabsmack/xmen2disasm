@@ -70,7 +70,7 @@ loc_10770A:
 loc_107750:
 	lea.l	$3F1A(a5),a0
 	move.l	a0,-$33FE(a5)
-	clr.b	-$38DE(a5)
+	clr.b	g_TwoPlayerStep(a5)
 	pea.l	SpaceB1_InitCamera(pc)
 	lea.l	$4DBA(a5),a0
 	move.l	$2(a0),-(a7)

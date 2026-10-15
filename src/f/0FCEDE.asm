@@ -19,7 +19,7 @@ loc_0FCEF0:
 	add.l	d0,$4(a4)
 	move.w	$E(a4),d0
 	add.w	d0,$A(a4)
-	tst.b	-$38DE(a5)
+	tst.b	g_TwoPlayerStep(a5)
 	beq.s	loc_0FCF2A
 	move.w	$8(a4),d0
 	ext.l	d0

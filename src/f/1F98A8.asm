@@ -262,7 +262,7 @@ loc_1F9B58:
 	move.w	#$A0,-$389C(a5)
 	moveq	#$0,d0
 	move.l	d0,g_Camera(a5)
-	clr.b	-$3892(a5)
+	clr.b	g_CamModeSwitched(a5)
 	move.l	d0,g_ParallaxDesc(a5)
 	lea.l	$510A(a5),a0
 	move.l	a0,-$3A48(a5)
@@ -272,7 +272,7 @@ loc_1F9B58:
 	move.l	d0,-$38CE(a5)
 	move.w	#$FFFF,-$38D0(a5)
 	move.l	d0,g_FrameCounter(a5)
-	move.b	#$1,-$38DE(a5)
+	move.b	#$1,g_TwoPlayerStep(a5)
 	clr.b	-$38B8(a5)
 	lea.l	$4EFA(a5),a0
 	move.l	a0,-$3488(a5)

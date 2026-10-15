@@ -6,7 +6,7 @@ sub_1A651E:
 	movem.l	d3/d7/a4,-(a7)
 	movea.l	$8(a6),a4
 	move.w	$4C(a4),d7
-	move.b	#$1,-$3892(a5)
+	move.b	#$1,g_CamModeSwitched(a5)
 	lea.l	$4472(a5),a0
 	move.l	$2(a0),-(a7)
 	move.l	a4,-(a7)

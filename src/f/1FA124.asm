@@ -8,7 +8,7 @@ Level_FrameLoop:
 	link.w	a6,#$FFF4
 	movem.l	d3/d5-d7/a3-a4,-(a7)
 loc_1FA12C:
-	clr.b	-$38E0(a5)
+	clr.b	g_PlayersAlive(a5)
 	move.w	-$1754(a5),d0
 	ext.l	d0
 	move.w	#$C000,d1
@@ -17,7 +17,7 @@ loc_1FA12C:
 	move.w	d1,d0
 	cmpi.l	#$8000,d0
 	bne.s	loc_1FA14C
-	addq.b	#$1,-$38E0(a5)
+	addq.b	#$1,g_PlayersAlive(a5)
 loc_1FA14C:
 	move.w	-$1844(a5),d0
 	ext.l	d0
@@ -27,14 +27,14 @@ loc_1FA14C:
 	move.w	d1,d0
 	cmpi.l	#$8000,d0
 	bne.s	loc_1FA168
-	addq.b	#$1,-$38E0(a5)
+	addq.b	#$1,g_PlayersAlive(a5)
 loc_1FA168:
 	moveq	#$0,d0
-	move.b	-$38E0(a5),d0
+	move.b	g_PlayersAlive(a5),d0
 	cmpi.w	#$2,d0
 	seq.b	d3
 	neg.b	d3
-	move.b	d3,-$38DE(a5)
+	move.b	d3,g_TwoPlayerStep(a5)
 	jsr	$504A(a5)	; -> Spr_BeginFrame
 	tst.b	-$38B4(a5)
 	beq.w	loc_1FA480
@@ -472,7 +472,7 @@ loc_1FA696:
 loc_1FA6AE:
 	tst.b	-$38C2(a5)
 	bne.s	loc_1FA6F4
-	tst.b	-$38DE(a5)
+	tst.b	g_TwoPlayerStep(a5)
 	beq.s	loc_1FA6C6
 	tst.b	-$38E4(a5)
 	bne.s	loc_1FA6C6
@@ -485,7 +485,7 @@ loc_1FA6C6:
 	bne.w	loc_1FA12C
 	tst.w	g_SceneExitTimer(a5)
 	ble.w	loc_1FA12C
-	tst.b	-$38DE(a5)
+	tst.b	g_TwoPlayerStep(a5)
 	beq.s	loc_1FA6E4
 	moveq	#$2,d0
 	bra.s	loc_1FA6E6

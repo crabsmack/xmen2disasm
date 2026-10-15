@@ -12,7 +12,7 @@ CloneA1_FrameHook:
 	bne.s	loc_077560
 	jsr	CloneA1_CyclePalettes(pc)
 loc_077560:
-	tst.b	-$38DE(a5)
+	tst.b	g_TwoPlayerStep(a5)
 	beq.s	loc_077578
 	move.l	g_FrameCounter(a5),d0
 	addq.l	#$1,g_FrameCounter(a5)

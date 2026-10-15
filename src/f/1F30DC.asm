@@ -50,7 +50,7 @@ loc_1F3152:
 	jsr	$521A(a5)	; -> Snd_Play
 	addq.w	#$8,a7
 loc_1F3178:
-	move.b	#$1,-$3892(a5)
+	move.b	#$1,g_CamModeSwitched(a5)
 	tst.b	$9D(a4)
 	seq.b	d3
 	neg.b	d3

@@ -115,7 +115,7 @@ loc_1A66BC:
 	clr.w	$1E(a4)
 	clr.l	$16(a4)
 	clr.w	$20(a4)
-	move.b	#$1,-$3892(a5)
+	move.b	#$1,g_CamModeSwitched(a5)
 	moveq	#$10,d0
 	and.b	$2E(a4),d0
 	beq.s	loc_1A677E

@@ -114,7 +114,7 @@ loc_11839E:
 	jsr	ObjList_ForEachInBox(pc)
 	lea.l	$38(a7),a7
 loc_11840C:
-	tst.b	-$38DE(a5)
+	tst.b	g_TwoPlayerStep(a5)
 	beq.s	loc_118416
 	moveq	#$2,d0
 	bra.s	loc_118418

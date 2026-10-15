@@ -43,7 +43,7 @@ sub_1F1A2E:
 	tst.w	$A4(a4)
 	beq.s	loc_1F1AE0
 	moveq	#$0,d0
-	move.b	-$38DE(a5),d0
+	move.b	g_TwoPlayerStep(a5),d0
 	addq.w	#$1,d0
 	sub.w	d0,$A4(a4)
 	move.w	$A2(a4),d0

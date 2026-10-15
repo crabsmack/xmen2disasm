@@ -11,7 +11,7 @@ CloneA5_AnimShockSprites:
 	moveq	#$2,d0
 	and.w	-$3B0C(a5),d0
 	beq.w	loc_0884C8
-	tst.b	-$38DE(a5)
+	tst.b	g_TwoPlayerStep(a5)
 	beq.s	loc_088470
 	moveq	#$3,d0
 	and.l	g_FrameCounter(a5),d0

@@ -12,7 +12,7 @@ AvalonA4_FrameHook:
 	bne.s	loc_035766
 	jsr	sub_034D7A(pc)
 loc_035766:
-	tst.b	-$38DE(a5)
+	tst.b	g_TwoPlayerStep(a5)
 	beq.s	loc_03577E
 	move.l	g_FrameCounter(a5),d0
 	addq.l	#$1,g_FrameCounter(a5)

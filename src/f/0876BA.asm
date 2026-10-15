@@ -10,7 +10,7 @@ BroodBoss_StateRecoilReturn:
 	movem.l	d7/a4,-(a7)
 	movea.l	$8(a6),a4
 	moveq	#$3,d7
-	tst.b	-$38DE(a5)
+	tst.b	g_TwoPlayerStep(a5)
 	beq.s	loc_0876D0
 	lsl.w	#$1,d7
 loc_0876D0:

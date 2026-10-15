@@ -41,7 +41,7 @@ BaniMazaA2_LoadLevel:
 	move.w	#$100,-$3498(a5)
 	move.w	#$100,-$3496(a5)
 	move.b	#$1,-$38B4(a5)
-	clr.b	-$38DE(a5)
+	clr.b	g_TwoPlayerStep(a5)
 	lea.l	BaniMazaA2_FrameHook(pc),a0
 	move.l	a0,g_SceneFrameHook(a5)
 	lea.l	BaniMazaA2_DrawHook(pc),a0

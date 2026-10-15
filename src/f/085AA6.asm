@@ -8,7 +8,7 @@ BroodBossParts_Update:
 	movea.l	$8(a6),a4
 	move.l	$8(a4),d5
 	move.l	$C(a4),d6
-	tst.b	-$38DE(a5)
+	tst.b	g_TwoPlayerStep(a5)
 	beq.s	loc_085AC4
 	moveq	#$2,d0
 	bra.s	loc_085AC6

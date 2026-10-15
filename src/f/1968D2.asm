@@ -5,7 +5,7 @@ sub_1968D2:
 	link.w	a6,#$0
 	movem.l	d7/a4,-(a7)
 	movea.l	$8(a6),a4
-	move.b	#$1,-$3892(a5)
+	move.b	#$1,g_CamModeSwitched(a5)
 	clr.w	$1E(a4)
 	clr.l	$16(a4)
 	clr.w	$20(a4)

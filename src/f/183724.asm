@@ -48,7 +48,7 @@ sub_183724:
 	move.l	d7,d0
 	sub.l	d5,d0
 	sub.l	d0,$C(a4)
-	move.b	#$1,-$3892(a5)
+	move.b	#$1,g_CamModeSwitched(a5)
 	movem.l	-$14(a6),d4-d7/a4
 	unlk	a6
 	rts

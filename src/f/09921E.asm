@@ -8,7 +8,7 @@
 XClone_FrameHookCollapse:
 	link.w	a6,#$FFF0
 	movem.l	d5-d7/a4,-(a7)
-	tst.b	-$38DE(a5)
+	tst.b	g_TwoPlayerStep(a5)
 	beq.s	loc_099230
 	moveq	#$2,d0
 	bra.s	loc_099232

@@ -20,7 +20,7 @@ loc_1969EE:
 	beq.w	loc_196ACE
 	moveq	#$0,d0
 	move.l	d0,$44(a4)
-	move.b	#$1,-$3892(a5)
+	move.b	#$1,g_CamModeSwitched(a5)
 	moveq	#$31,d0
 	move.l	d0,-(a7)
 	move.l	a4,-(a7)

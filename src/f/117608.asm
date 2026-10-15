@@ -23,7 +23,7 @@ PowerUp_Update:
 	ext.l	d0
 	move.l	d6,d7
 	sub.l	d0,d7
-	tst.b	-$38DE(a5)
+	tst.b	g_TwoPlayerStep(a5)
 	beq.s	loc_117646
 	moveq	#$2,d0
 	bra.s	loc_117648

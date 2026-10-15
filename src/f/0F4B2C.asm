@@ -83,6 +83,6 @@ loc_0F4BB0:
 	move.w	#$E,-$3922(a5)
 	move.w	#$C0,-$3498(a5)
 	move.w	#$80,-$3496(a5)
-	clr.b	-$38DE(a5)
+	clr.b	g_TwoPlayerStep(a5)
 	unlk	a6
 	rts

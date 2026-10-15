@@ -6,7 +6,7 @@ sub_158A60:
 	movem.l	d7/a4,-(a7)
 	movea.l	$8(a6),a4
 	moveq	#$0,d0
-	move.b	-$38DE(a5),d0
+	move.b	g_TwoPlayerStep(a5),d0
 	move.w	d0,d7
 	addq.w	#$1,d7
 	bra.s	loc_158A98

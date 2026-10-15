@@ -41,7 +41,7 @@ sub_197A3C:
 	addq.w	#$8,a7
 	bra.s	loc_197AC0
 loc_197AAE:
-	tst.b	-$38DE(a5)
+	tst.b	g_TwoPlayerStep(a5)
 	beq.s	loc_197AB8
 	moveq	#$2,d0
 	bra.s	loc_197ABA

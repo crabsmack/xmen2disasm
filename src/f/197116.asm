@@ -34,7 +34,7 @@ loc_197158:
 	moveq	#$63,d0
 	move.l	d0,-(a7)
 	jsr	$521A(a5)	; -> Snd_Play
-	move.b	#$1,-$3892(a5)
+	move.b	#$1,g_CamModeSwitched(a5)
 	clr.l	$A6(a4)
 	clr.w	$1E(a4)
 	clr.l	$16(a4)

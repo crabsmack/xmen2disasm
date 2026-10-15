@@ -12,24 +12,24 @@ Cam_SetPos:
 	move.w	$A(a6),g_CameraX(a5)
 	move.w	$E(a6),g_CameraY(a5)
 	move.w	g_CameraX(a5),d0
-	cmp.w	-$3A8E(a5),d0
+	cmp.w	g_CamMaxX(a5),d0
 	ble.s	loc_1F5FA4
-	move.w	-$3A8E(a5),g_CameraX(a5)
+	move.w	g_CamMaxX(a5),g_CameraX(a5)
 loc_1F5FA4:
 	move.w	g_CameraX(a5),d0
-	cmp.w	-$3A90(a5),d0
+	cmp.w	g_CamMinX(a5),d0
 	bge.s	loc_1F5FB4
-	move.w	-$3A90(a5),g_CameraX(a5)
+	move.w	g_CamMinX(a5),g_CameraX(a5)
 loc_1F5FB4:
 	move.w	g_CameraY(a5),d0
-	cmp.w	-$3A92(a5),d0
+	cmp.w	g_CamMaxY(a5),d0
 	ble.s	loc_1F5FC4
-	move.w	-$3A92(a5),g_CameraY(a5)
+	move.w	g_CamMaxY(a5),g_CameraY(a5)
 loc_1F5FC4:
 	move.w	g_CameraY(a5),d0
-	cmp.w	-$3A94(a5),d0
+	cmp.w	g_CamMinY(a5),d0
 	bge.s	loc_1F5FD4
-	move.w	-$3A94(a5),g_CameraY(a5)
+	move.w	g_CamMinY(a5),g_CameraY(a5)
 loc_1F5FD4:
 	tst.b	-$3AB8(a5)
 	bne.s	loc_1F5FF4

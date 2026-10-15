@@ -24,7 +24,7 @@ SavageA4_FrameHook:
 	bne.s	loc_0B6152
 	jsr	SavageA4_CyclePalettes(pc)
 loc_0B6152:
-	tst.b	-$38DE(a5)
+	tst.b	g_TwoPlayerStep(a5)
 	beq.s	loc_0B616E
 	move.l	g_FrameCounter(a5),d0
 	addq.l	#$1,g_FrameCounter(a5)

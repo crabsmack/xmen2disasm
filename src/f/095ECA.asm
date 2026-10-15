@@ -41,7 +41,7 @@ loc_095F18:
 	add.w	d0,$16(a4)
 	move.w	$20(a4),d0
 	add.w	d0,$18(a4)
-	tst.b	-$38DE(a5)
+	tst.b	g_TwoPlayerStep(a5)
 	beq.s	loc_095F66
 	move.w	$16(a4),d0
 	ext.l	d0

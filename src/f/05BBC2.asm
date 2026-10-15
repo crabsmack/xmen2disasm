@@ -17,7 +17,7 @@ Boulder_Update:
 	tst.l	$B8(a4)
 	addq.w	#$4,a7
 	beq.w	loc_05BC6E
-	tst.b	-$38DE(a5)
+	tst.b	g_TwoPlayerStep(a5)
 	beq.s	loc_05BBF6
 	moveq	#$2,d0
 	bra.s	loc_05BBF8

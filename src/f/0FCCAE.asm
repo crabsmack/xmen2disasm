@@ -24,7 +24,7 @@ loc_0FCCD6:
 	bne.s	loc_0FCCE8
 	jsr	SiberiaB1_CyclePalettes(pc)
 loc_0FCCE8:
-	tst.b	-$38DE(a5)
+	tst.b	g_TwoPlayerStep(a5)
 	beq.s	loc_0FCD24
 	move.l	g_FrameCounter(a5),d0
 	addq.l	#$1,g_FrameCounter(a5)

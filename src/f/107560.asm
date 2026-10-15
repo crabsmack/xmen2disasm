@@ -12,7 +12,7 @@ SpaceB1_FrameHook:
 	bne.s	loc_107576
 	jsr	SpaceB1_CyclePalettes(pc)
 loc_107576:
-	tst.b	-$38DE(a5)
+	tst.b	g_TwoPlayerStep(a5)
 	beq.s	loc_10758E
 	move.l	g_FrameCounter(a5),d0
 	addq.l	#$1,g_FrameCounter(a5)

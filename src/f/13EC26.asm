@@ -15,7 +15,7 @@ sub_13EC26:
 loc_13EC4A:
 	tst.w	$12(a3)
 	ble.s	loc_13EC62
-	tst.b	-$38DE(a5)
+	tst.b	g_TwoPlayerStep(a5)
 	beq.s	loc_13EC5A
 	moveq	#$2,d0
 	bra.s	loc_13EC5C
@@ -79,7 +79,7 @@ loc_13ECCA:
 	moveq	#$0,d1
 	move.b	d0,d1
 	move.w	d1,-$2(a6)
-	tst.b	-$38DE(a5)
+	tst.b	g_TwoPlayerStep(a5)
 	beq.s	loc_13ECF4
 	moveq	#$2,d0
 	bra.s	loc_13ECF6

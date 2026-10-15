@@ -44,7 +44,7 @@ AvalonB2_RunScene:
 	move.b	#$1,-$38B4(a5)
 	lea.l	AvalonB2_FrameHook(pc),a0
 	move.l	a0,g_SceneFrameHook(a5)
-	clr.b	-$38DE(a5)
+	clr.b	g_TwoPlayerStep(a5)
 	moveq	#$0,d0
 	move.l	d0,-(a7)
 	move.l	d0,-(a7)

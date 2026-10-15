@@ -45,7 +45,7 @@ loc_11481C:
 	add.l	d0,$8(a4)
 	move.w	$1C(a4),d0
 	add.w	d0,$1A(a4)
-	tst.b	-$38DE(a5)
+	tst.b	g_TwoPlayerStep(a5)
 	beq.s	loc_114846
 	move.w	$1A(a4),d0
 	ext.l	d0

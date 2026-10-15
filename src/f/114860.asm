@@ -13,7 +13,7 @@ XNpc_StateKnockBExpire:
 	move.w	$1A(a4),d0
 	ext.l	d0
 	add.l	d0,$8(a4)
-	tst.b	-$38DE(a5)
+	tst.b	g_TwoPlayerStep(a5)
 	beq.s	loc_11488A
 	move.w	$1A(a4),d0
 	ext.l	d0

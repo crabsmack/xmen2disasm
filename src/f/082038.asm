@@ -15,7 +15,7 @@ CloneA2_CamAltTimer:
 	movea.l	(a0),a0
 	movea.l	$3A(a0),a1
 	jsr	(a1)
-	move.b	#$1,-$3892(a5)
+	move.b	#$1,g_CamModeSwitched(a5)
 	move.l	$8(a6),-(a7)
 	jsr	$4FEA(a5)	; -> Timer_Free
 loc_082066:

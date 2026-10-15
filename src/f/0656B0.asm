@@ -416,7 +416,7 @@ loc_065BBE:
 	jsr	$5052(a5)	; -> Spr_EndFrame
 	move.b	#$1,g_DmaFlushReq(a5)
 	jsr	PlayerSelect_CheckDone(pc)
-	tst.b	-$38DE(a5)
+	tst.b	g_TwoPlayerStep(a5)
 	beq.s	loc_065BDE
 	tst.b	-$38E4(a5)
 	bne.s	loc_065BDE
@@ -429,7 +429,7 @@ loc_065BDE:
 	bne.w	loc_0658C6
 	tst.w	g_SceneExitTimer(a5)
 	ble.w	loc_0658C6
-	tst.b	-$38DE(a5)
+	tst.b	g_TwoPlayerStep(a5)
 	beq.s	loc_065BFC
 	moveq	#$2,d0
 	bra.s	loc_065BFE

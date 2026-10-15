@@ -48,7 +48,7 @@ Apocalypse_Move:
 	add.l	#$85,d0
 	lsl.l	#$8,d0
 	move.l	d0,$C(a4)
-	tst.b	-$38DE(a5)
+	tst.b	g_TwoPlayerStep(a5)
 	beq.s	loc_04CA62
 	move.w	$90(a4),d0
 	ext.l	d0

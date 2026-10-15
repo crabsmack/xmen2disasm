@@ -10,7 +10,7 @@ EvilBeam_Update:
 	movem.l	d6-d7/a4,-(a7)
 	movea.l	$8(a6),a4
 	moveq	#$1,d7
-	tst.b	-$38DE(a5)
+	tst.b	g_TwoPlayerStep(a5)
 	beq.s	loc_098084
 	moveq	#$2,d0
 	bra.s	loc_098086
@@ -20,7 +20,7 @@ loc_098086:
 	move.w	d0,d6
 	tst.l	$8(a4)
 	beq.w	loc_09811A
-	tst.b	-$38DE(a5)
+	tst.b	g_TwoPlayerStep(a5)
 	beq.s	loc_09809A
 	moveq	#$2,d0
 	bra.s	loc_09809C

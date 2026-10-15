@@ -11,7 +11,7 @@ sub_0DC350:
 	bne.s	loc_0DC370
 	jsr	sub_0DC2CE(pc)
 loc_0DC370:
-	tst.b	-$38DE(a5)
+	tst.b	g_TwoPlayerStep(a5)
 	beq.s	loc_0DC388
 	move.l	g_FrameCounter(a5),d0
 	addq.l	#$1,g_FrameCounter(a5)

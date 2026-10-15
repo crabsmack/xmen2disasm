@@ -180,7 +180,7 @@ loc_088914:
 	jsr	CloneA5_InitCamera(pc)
 	lea.l	CloneA5_FrameHook(pc),a0
 	move.l	a0,g_SceneFrameHook(a5)
-	clr.b	-$38DE(a5)
+	clr.b	g_TwoPlayerStep(a5)
 	jsr	$5002(a5)	; -> Level_Run
 	movem.l	-$314(a6),d3/d7/a3-a4
 	unlk	a6

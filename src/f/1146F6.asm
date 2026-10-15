@@ -20,7 +20,7 @@ XNpc_StateKnockBShake:
 	shi.b	d3
 	neg.b	d3
 	beq.s	loc_114730
-	tst.b	-$38DE(a5)
+	tst.b	g_TwoPlayerStep(a5)
 	beq.s	loc_11472C
 	moveq	#$2,d0
 	bra.s	loc_114746

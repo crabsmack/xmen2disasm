@@ -28,7 +28,7 @@ loc_197438:
 	move.w	#$860,$24(a4)
 	move.w	#$6,$6E(a4)
 	ori.l	#$2,$90(a4)
-	move.b	#$1,-$3892(a5)
+	move.b	#$1,g_CamModeSwitched(a5)
 	lea.l	$10(a7),a7
 	clr.w	$6C(a4)
 	lea.l	sub_197348(pc),a0

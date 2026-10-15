@@ -188,7 +188,7 @@ loc_142E80:
 	moveq	#$40,d1
 	and.b	d0,d1
 	beq.w	loc_142F70
-	tst.b	-$38DE(a5)
+	tst.b	g_TwoPlayerStep(a5)
 	seq.b	d3
 	neg.b	d3
 	beq.s	loc_142EA6

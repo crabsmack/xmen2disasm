@@ -45,7 +45,7 @@ loc_00F8EE:
 	clr.w	-$1828(a5)
 loc_00F912:
 	move.w	g_CameraX(a5),d6
-	tst.b	-$38DE(a5)
+	tst.b	g_TwoPlayerStep(a5)
 	beq.s	loc_00F920
 	moveq	#$4,d0
 	bra.s	loc_00F922
