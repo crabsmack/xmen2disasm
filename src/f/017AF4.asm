@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_017AF4	[link-after-rts]
+; FarAcolyte_StateWaitOnScreen - FARACOLYTE first state: invisible until within 120 px (x) and 100 px (y) of the screen centre, then appear
+; In:  8(a6) = this
+; Out: d0
+; Evidence: set as +$64 default state by FarAcolyte_Init; frame $FF (slot $56); centre = g_CameraX + $A0, g_CameraY + $70; then FarAcolyte_StateAppear
 ; ---------------------------------------------------------------------------
-sub_017AF4:
+FarAcolyte_StateWaitOnScreen:
 	link.w	a6,#$0
 	movem.l	d3/d6-d7/a4,-(a7)
 	movea.l	$8(a6),a4
@@ -71,7 +74,7 @@ loc_017B82:
 	move.l	d0,$B8(a4)
 	andi.w	#$BFFF,$6(a4)
 	clr.w	$6C(a4)
-	lea.l	sub_017BB6(pc),a0
+	lea.l	FarAcolyte_StateAppear(pc),a0
 	move.l	a0,$5C(a4)
 	moveq	#$8,d0
 	and.w	$4(a4),d0

@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_0139BE	[jt 71]
+; CapedAcolyte_ActFacePlayer - CAPEDACOLYTE script action: face the nearest player, next step after 10 frames
+; In:  8(a6) = this
+; Out: d0
+; Evidence: Player_Nearest; +$2E bit 4 = h-flip
 ; ---------------------------------------------------------------------------
-sub_0139BE:
+CapedAcolyte_ActFacePlayer:
 	link.w	a6,#$0
 	movem.l	a3-a4,-(a7)
 	movea.l	$8(a6),a4

@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_0179F8	[jt 97]
+; FarAcolyte_StartBolt - FARACOLYTE slot +$76: launch the bolt from its hand (+/-3, -32) towards the orb
+; In:  8(a6) = this
+; Out: none
+; Evidence: bolt x/y +$A4/+$A8, velocity +$AC/+$AE = (orb - bolt) / 16, frame +$B0 = 0, timer +$B2 = 4, flags +$92 |= 4; called by FarAcolyte_StateCast
 ; ---------------------------------------------------------------------------
-sub_0179F8:
+FarAcolyte_StartBolt:
 	link.w	a6,#$FFFC
 	movem.l	d3/a3-a4,-(a7)
 	movea.l	$8(a6),a3

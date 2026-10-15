@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_017D2C	[link-after-rts]
+; FarAcolyte_StateCastEnd - FARACOLYTE: back to frame 0, then follow the bolt
+; In:  8(a6) = this
+; Out: d0 = +4 & 8
+; Evidence: slot $56 SetFrame(0); next FarAcolyte_StateBoltFly
 ; ---------------------------------------------------------------------------
-sub_017D2C:
+FarAcolyte_StateCastEnd:
 	link.w	a6,#$0
 	move.l	a4,-(a7)
 	movea.l	$8(a6),a4
@@ -13,7 +16,7 @@ sub_017D2C:
 	jsr	(a1)
 	addq.w	#$8,a7
 	clr.w	$6C(a4)
-	lea.l	sub_017D60(pc),a0
+	lea.l	FarAcolyte_StateBoltFly(pc),a0
 	move.l	a0,$5C(a4)
 	moveq	#$8,d0
 	and.w	$4(a4),d0

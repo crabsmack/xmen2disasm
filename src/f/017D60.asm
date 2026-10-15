@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_017D60	[link-after-rts]
+; FarAcolyte_StateBoltFly - FARACOLYTE: move the bolt; when it reaches the orb clear the effects, explode at the orb, wait again
+; In:  8(a6) = this
+; Out: d0
+; Evidence: slot $7A FarAcolyte_MoveBolt; sub_1181AC(orb x, orb y, 1, 0, 4) explosion; flags +$92 &= ~7
 ; ---------------------------------------------------------------------------
-sub_017D60:
+FarAcolyte_StateBoltFly:
 	link.w	a6,#$0
 	movem.l	d6-d7/a3-a4,-(a7)
 	movea.l	$8(a6),a4
@@ -29,15 +32,15 @@ sub_017D60:
 	cmp.w	$90(a4),d0
 	lea.l	$14(a7),a7
 	bne.s	loc_017DBE
-	lea.l	sub_017BEC(pc),a0
+	lea.l	FarAcolyte_StateWaitPlayer(pc),a0
 	move.l	a0,$5C(a4)
 	move.l	a4,-(a7)
-	jsr	sub_017BEC(pc)
+	jsr	FarAcolyte_StateWaitPlayer(pc)
 	addq.w	#$4,a7
 	bra.s	loc_017DD2
 loc_017DBE:
 	move.w	$90(a4),$6C(a4)
-	lea.l	sub_017BEC(pc),a0
+	lea.l	FarAcolyte_StateWaitPlayer(pc),a0
 	move.l	a0,$5C(a4)
 	moveq	#$8,d0
 	and.w	$4(a4),d0

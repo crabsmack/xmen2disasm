@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_013A86	[link-after-rts]
+; CapedAcolyte_StateShoot - CAPEDACOLYTE: fire one shot from the muzzle of the current pose, every +$AC frames until the burst count +$AE runs out; then next step after 26
+; In:  8(a6) = this
+; Out: d0
+; Evidence: sub_119190(x+dx, y+dy, this, dx, dy, flags); pose anim jt $492 -> (30,-50), jt $49A -> (18,-34) +flag 1; mirrored when h-flipped
 ; ---------------------------------------------------------------------------
-sub_013A86:
+CapedAcolyte_StateShoot:
 	link.w	a6,#$FFFC
 	movem.l	d4-d7/a4,-(a7)
 	movea.l	$8(a6),a4
@@ -69,15 +72,15 @@ loc_013B2C:
 	moveq	#-$1,d0
 	cmp.w	$AC(a4),d0
 	bne.s	loc_013B4C
-	lea.l	sub_013A86(pc),a0
+	lea.l	CapedAcolyte_StateShoot(pc),a0
 	move.l	a0,$5C(a4)
 	move.l	a4,-(a7)
-	jsr	sub_013A86(pc)
+	jsr	CapedAcolyte_StateShoot(pc)
 	addq.w	#$4,a7
 	bra.s	loc_013BA4
 loc_013B4C:
 	move.w	$AC(a4),$6C(a4)
-	lea.l	sub_013A86(pc),a0
+	lea.l	CapedAcolyte_StateShoot(pc),a0
 	move.l	a0,$5C(a4)
 	moveq	#$8,d0
 	and.w	$4(a4),d0

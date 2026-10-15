@@ -1,13 +1,16 @@
 ; ---------------------------------------------------------------------------
-; sub_0184A4	[jt 110]
+; ShootAcolyte_ActShootBurst - SHOOTACOLYTE script action: start a burst of +$A4 shots
+; In:  8(a6) = this
+; Out: d0 = +4 & 8
+; Evidence: +$A2 = +$A4; next ShootAcolyte_StateAim
 ; ---------------------------------------------------------------------------
-sub_0184A4:
+ShootAcolyte_ActShootBurst:
 	link.w	a6,#$0
 	move.l	a4,-(a7)
 	movea.l	$8(a6),a4
 	move.w	$A4(a4),$A2(a4)
 	clr.w	$6C(a4)
-	lea.l	sub_0184CE(pc),a0
+	lea.l	ShootAcolyte_StateAim(pc),a0
 	move.l	a0,$5C(a4)
 	moveq	#$8,d0
 	and.w	$4(a4),d0

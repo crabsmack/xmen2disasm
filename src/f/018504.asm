@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_018504	[link-after-rts]
+; ShootAcolyte_StateFire - SHOOTACOLYTE: fire one shot from (+/-33, -49) with sound $B0 and the recoil animation
+; In:  8(a6) = this
+; Out: d0 = +4 & 8
+; Evidence: sub_119190(x, y, this, dx, -$31, flags | 10); animation jt $5B2; +$A2 -= 1; next ShootAcolyte_StateNextShot
 ; ---------------------------------------------------------------------------
-sub_018504:
+ShootAcolyte_StateFire:
 	link.w	a6,#$FFFC
 	movem.l	d4-d7/a3-a4,-(a7)
 	movea.l	$8(a6),a4
@@ -58,7 +61,7 @@ loc_01855A:
 	subq.w	#$1,$A2(a4)
 	lea.l	$20(a7),a7
 	move.w	#$FF,$6C(a4)
-	lea.l	sub_0185BE(pc),a0
+	lea.l	ShootAcolyte_StateNextShot(pc),a0
 	move.l	a0,$5C(a4)
 	moveq	#$8,d0
 	and.w	$4(a4),d0

@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_018344	[link-after-rts]
+; ShootAcolyte_StateWalkToPlayer - SHOOTACOLYTE: walk (speed $220) to 96 px from the nearest player, inside its x range +$AA..+$AE; stop when close, at a range end or out of time, then next step after 10
+; In:  8(a6) = this
+; Out: d0
+; Evidence: walk animation jt $186D4 (sub_1F6296); velocity +$16
 ; ---------------------------------------------------------------------------
-sub_018344:
+ShootAcolyte_StateWalkToPlayer:
 	link.w	a6,#$0
 	movem.l	d3/d5-d7/a3-a4,-(a7)
 	movea.l	$8(a6),a4
@@ -134,7 +137,7 @@ loc_018482:
 	move.w	d0,$16(a4)
 	addq.w	#$8,a7
 	clr.w	$6C(a4)
-	lea.l	sub_018344(pc),a0
+	lea.l	ShootAcolyte_StateWalkToPlayer(pc),a0
 	move.l	a0,$5C(a4)
 	moveq	#$8,d0
 	and.w	$4(a4),d0

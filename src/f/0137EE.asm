@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_0137EE	[link-after-rts]
+; CapedAcolyte_StateKnockbackRun - CAPEDACOLYTE hurt state: fly back until the timer ends or it stops; then die (sound $38) if health <= 0, else return home
+; In:  8(a6) = this
+; Out: d0
+; Evidence: +$90 timer (-2 at half rate); +$68 health; sub_13DE36 on death; else accel cleared and CapedAcolyte_StateReturnHome
 ; ---------------------------------------------------------------------------
-sub_0137EE:
+CapedAcolyte_StateKnockbackRun:
 	link.w	a6,#$0
 	movem.l	d3/a4,-(a7)
 	movea.l	$8(a6),a4
@@ -49,7 +52,7 @@ loc_013862:
 	clr.l	$1E(a4)
 	andi.w	#$FFFB,$4(a4)
 	clr.w	$6C(a4)
-	lea.l	sub_0138D4(pc),a0
+	lea.l	CapedAcolyte_StateReturnHome(pc),a0
 	move.l	a0,$5C(a4)
 	moveq	#$8,d0
 	and.w	$4(a4),d0
@@ -82,7 +85,7 @@ loc_0138B2:
 loc_0138B4:
 	sub.b	d0,$90(a4)
 	clr.w	$6C(a4)
-	lea.l	sub_0137EE(pc),a0
+	lea.l	CapedAcolyte_StateKnockbackRun(pc),a0
 	move.l	a0,$5C(a4)
 	moveq	#$8,d0
 	and.w	$4(a4),d0

@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_0185BE	[link-after-rts]
+; ShootAcolyte_StateNextShot - SHOOTACOLYTE: aim again after +$A6 frames while shots remain, else the next script step
+; In:  8(a6) = this
+; Out: none
+; Evidence: +$A2 shots left; +$A6 = -1 means at once
 ; ---------------------------------------------------------------------------
-sub_0185BE:
+ShootAcolyte_StateNextShot:
 	link.w	a6,#$0
 	move.l	a4,-(a7)
 	movea.l	$8(a6),a4
@@ -33,15 +36,15 @@ loc_01860E:
 	moveq	#-$1,d0
 	cmp.w	$A6(a4),d0
 	bne.s	loc_018628
-	lea.l	sub_0184CE(pc),a0
+	lea.l	ShootAcolyte_StateAim(pc),a0
 	move.l	a0,$5C(a4)
 	move.l	a4,-(a7)
-	jsr	sub_0184CE(pc)
+	jsr	ShootAcolyte_StateAim(pc)
 	addq.w	#$4,a7
 	bra.s	loc_01863C
 loc_018628:
 	move.w	$A6(a4),$6C(a4)
-	lea.l	sub_0184CE(pc),a0
+	lea.l	ShootAcolyte_StateAim(pc),a0
 	move.l	a0,$5C(a4)
 	moveq	#$8,d0
 	and.w	$4(a4),d0

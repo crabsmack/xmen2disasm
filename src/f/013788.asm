@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; loc_013788
+; CapedAcolyte_OnHurt_SetDecel - tail of CapedAcolyte_OnHurt: set the deceleration opposite to the knockback velocity
+; In:  a4 = this
+; Out: none
+; Evidence: +$1E = -$8E / +$8E by the sign of +$16 / +$18
 ; ---------------------------------------------------------------------------
-loc_013788:
+CapedAcolyte_OnHurt_SetDecel:
 	tst.w	$16(a4)
 	ble.s	loc_013796
 	move.w	#$FF72,$1E(a4)

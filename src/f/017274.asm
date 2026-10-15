@@ -30,11 +30,11 @@ FarAcolyte_Init:
 	move.l	d0,$BC(a4)
 	clr.w	$18(a4)
 	clr.w	$20(a4)
-	lea.l	sub_017AF4(pc),a0
+	lea.l	FarAcolyte_StateWaitOnScreen(pc),a0
 	move.l	a0,$5C(a4)
-	lea.l	sub_017AF4(pc),a0
+	lea.l	FarAcolyte_StateWaitOnScreen(pc),a0
 	move.l	a0,$64(a4)
-	lea.l	sub_017DDC(pc),a0
+	lea.l	FarAcolyte_StateDie(pc),a0
 	move.l	a0,$60(a4)
 	ori.w	#$4082,$6(a4)
 	lea.l	$2C2(a5),a0

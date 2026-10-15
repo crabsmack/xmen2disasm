@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_0138D4	[link-after-rts]
+; CapedAcolyte_StateReturnHome - CAPEDACOLYTE: fly back vertically to its home y; when within 4 px stop and end the hurt state
+; In:  8(a6) = this
+; Out: none
+; Evidence: home y +$A0; velocity +$18 = +/-$180; slot +$76 (CapedAcolyte_EndHurt) on arrival
 ; ---------------------------------------------------------------------------
-sub_0138D4:
+CapedAcolyte_StateReturnHome:
 	link.w	a6,#$0
 	movem.l	d3/d6-d7/a4,-(a7)
 	movea.l	$8(a6),a4

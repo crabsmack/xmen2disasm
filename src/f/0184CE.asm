@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_0184CE	[link-after-rts]
+; ShootAcolyte_StateAim - SHOOTACOLYTE: play the aiming animation (jt $186E6), then fire
+; In:  8(a6) = this
+; Out: d0 = +4 & 8
+; Evidence: sub_1F626A; delay $FF = until the animation ends; next ShootAcolyte_StateFire
 ; ---------------------------------------------------------------------------
-sub_0184CE:
+ShootAcolyte_StateAim:
 	link.w	a6,#$0
 	move.l	a4,-(a7)
 	movea.l	$8(a6),a4
@@ -11,7 +14,7 @@ sub_0184CE:
 	jsr	$4E42(a5)	; -> Obj_SetAnim
 	addq.w	#$8,a7
 	move.w	#$FF,$6C(a4)
-	lea.l	sub_018504(pc),a0
+	lea.l	ShootAcolyte_StateFire(pc),a0
 	move.l	a0,$5C(a4)
 	moveq	#$8,d0
 	and.w	$4(a4),d0

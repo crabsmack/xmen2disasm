@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_01823C	[jt 107]
+; ShootAcolyte_ActWait30 - SHOOTACOLYTE script action: next script step after 30 frames
+; In:  8(a6) = this
+; Out: none
+; Evidence: last entry of ShootAcolyte_Script (jmp at ShootAcolyte_ScriptEnd)
 ; ---------------------------------------------------------------------------
-sub_01823C:
+ShootAcolyte_ActWait30:
 	link.w	a6,#$0
 	move.l	a4,-(a7)
 	movea.l	$8(a6),a4

@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_017CEA	[link-after-rts]
+; FarAcolyte_StateCast - FARACOLYTE: casting frame 1, launch the bolt, 4 frames
+; In:  8(a6) = this
+; Out: d0 = +4 & 8
+; Evidence: slot $56 SetFrame(1), slot $76 FarAcolyte_StartBolt; next FarAcolyte_StateCastEnd
 ; ---------------------------------------------------------------------------
-sub_017CEA:
+FarAcolyte_StateCast:
 	link.w	a6,#$0
 	move.l	a4,-(a7)
 	movea.l	$8(a6),a4
@@ -17,7 +20,7 @@ sub_017CEA:
 	jsr	(a1)
 	lea.l	$C(a7),a7
 	move.w	#$4,$6C(a4)
-	lea.l	sub_017D2C(pc),a0
+	lea.l	FarAcolyte_StateCastEnd(pc),a0
 	move.l	a0,$5C(a4)
 	moveq	#$8,d0
 	and.w	$4(a4),d0

@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_013BAE	[link-after-rts]
+; CapedAcolyte_StateHoverNearPlayer - CAPEDACOLYTE: for +$6E frames fly towards a point 100 px beside and 60 px above the nearest player (inside x range +$A4..+$A6), facing it; then next step
+; In:  8(a6) = this
+; Out: none
+; Evidence: Player_Nearest; velocity = (target - home) * 256 >> 5; home x/y +$9C/+$A0
 ; ---------------------------------------------------------------------------
-sub_013BAE:
+CapedAcolyte_StateHoverNearPlayer:
 	link.w	a6,#$FFFC
 	movem.l	d3-d7/a3-a4,-(a7)
 	movea.l	$8(a6),a4
@@ -142,7 +145,7 @@ loc_013CEA:
 	asr.l	#$5,d0
 	move.w	d0,$18(a4)
 	clr.w	$6C(a4)
-	lea.l	sub_013BAE(pc),a0
+	lea.l	CapedAcolyte_StateHoverNearPlayer(pc),a0
 	move.l	a0,$5C(a4)
 	moveq	#$8,d0
 	and.w	$4(a4),d0

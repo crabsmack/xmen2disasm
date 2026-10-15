@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_017BB6	[link-after-rts]
+; FarAcolyte_StateAppear - FARACOLYTE: show frame 0 and wait 60 frames
+; In:  8(a6) = this
+; Out: d0 = +4 & 8
+; Evidence: slot $56 SetFrame(0); next FarAcolyte_StateWaitPlayer
 ; ---------------------------------------------------------------------------
-sub_017BB6:
+FarAcolyte_StateAppear:
 	link.w	a6,#$0
 	move.l	a4,-(a7)
 	movea.l	$8(a6),a4
@@ -13,7 +16,7 @@ sub_017BB6:
 	jsr	(a1)
 	addq.w	#$8,a7
 	move.w	#$3C,$6C(a4)
-	lea.l	sub_017BEC(pc),a0
+	lea.l	FarAcolyte_StateWaitPlayer(pc),a0
 	move.l	a0,$5C(a4)
 	moveq	#$8,d0
 	and.w	$4(a4),d0

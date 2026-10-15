@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_01830A	[jt 109]
+; ShootAcolyte_ActWalk - SHOOTACOLYTE script action: frame 0, walk towards the player for up to +$B0 frames
+; In:  8(a6) = this
+; Out: d0 = +4 & 8
+; Evidence: slot $56 SetFrame(0); +$6E = +$B0; next ShootAcolyte_StateWalkToPlayer
 ; ---------------------------------------------------------------------------
-sub_01830A:
+ShootAcolyte_ActWalk:
 	link.w	a6,#$0
 	move.l	a4,-(a7)
 	movea.l	$8(a6),a4
@@ -14,7 +17,7 @@ sub_01830A:
 	move.w	$B0(a4),$6E(a4)
 	addq.w	#$8,a7
 	clr.w	$6C(a4)
-	lea.l	sub_018344(pc),a0
+	lea.l	ShootAcolyte_StateWalkToPlayer(pc),a0
 	move.l	a0,$5C(a4)
 	moveq	#$8,d0
 	and.w	$4(a4),d0

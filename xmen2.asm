@@ -249,7 +249,7 @@ Tbl_BigAcolyteFightScriptLen:	; word $14: entry count of the BIGACOLYTE fight AI
 	include "src/f/0136F0.asm"
 	include "src/f/013722.asm"
 Sw_013722:	; switch table of sub at $013722: 4 word offsets from Sw_013722-2
-	dc.w	loc_01377A-(Sw_013722-2), loc_013782-(Sw_013722-2), loc_013772-(Sw_013722-2), loc_01376A-(Sw_013722-2)
+	dc.w	loc_01377A-(Sw_013722-2), CapedAcolyte_OnHurt_KnockRight-(Sw_013722-2), loc_013772-(Sw_013722-2), CapedAcolyte_OnHurt_KnockY-(Sw_013722-2)
 	include "src/f/01376A.asm"
 	include "src/f/013782.asm"
 	include "src/f/013788.asm"
@@ -266,9 +266,11 @@ Sw_013722:	; switch table of sub at $013722: 4 word offsets from Sw_013722-2
 	include "src/f/013DB0.asm"
 Tbl_CapedAcolyte_vtable:	; class descriptor of CAPEDACOLYTE: word name offset $82, parent BIONPC, 31 method slots from +6, then the name (tools/classes.py)
 	incrom	$013E10,$8F
-	incrom	$013E9F,$27
+	incrom	$013E9F,$25
+Tbl_CapedAcolyteIntroScriptLen:	; word 3: entry count of the CAPEDACOLYTE intro AI script (3 jmp thunks follow at CapedAcolyte_IntroScript)
+	incrom	$013EC4,$2
 	include "src/f/013EC6.asm"
-Str_Empty_013ED2:	; C string "" (used by jt[81])
+Tbl_CapedAcolyteMainScriptLen:	; word 5: entry count of the CAPEDACOLYTE main AI script (jt[81]); 5 jmp thunks follow at CapedAcolyte_MainScript
 	incrom	$013ED2,$1
 	incrom	$013ED3,$1
 	include "src/f/013ED4.asm"
@@ -314,7 +316,9 @@ Tbl_FarAcolyte_vtable:	; class descriptor of FARACOLYTE: word name offset $7E, p
 	include "src/f/0185BE.asm"
 Tbl_ShootAcolyte_vtable:	; class descriptor of SHOOTACOLYTE: word name offset $82, parent BIONPC, 31 method slots from +6, then the name (tools/classes.py)
 	incrom	$018644,$8F
-	incrom	$0186D3,$27
+	incrom	$0186D3,$25
+Tbl_ShootAcolyteScriptLen:	; word 4: entry count of the SHOOTACOLYTE AI script (jmp thunks follow at ShootAcolyte_Script)
+	incrom	$0186F8,$2
 	include "src/f/0186FA.asm"
 	include "src/f/018706.asm"
 	incrom	$01870A,$2398

@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_0178C6	[jt 95]
+; FarAcolyte_StartOrb - FARACOLYTE slot +$6E (own virtual): start the homing orb 3 px right of and 32 px above itself
+; In:  8(a6) = this
+; Out: none
+; Evidence: tools/classes.py FARACOLYTE +$6E (class derives from ACTOR); orb x/y +$94/+$98, velocity +$9C/+$9E = 0, flags +$92 |= 1, &= ~2; called by FarAcolyte_StateWaitPlayer
 ; ---------------------------------------------------------------------------
-sub_0178C6:
+FarAcolyte_StartOrb:
 	link.w	a6,#$0
 	movem.l	a3-a4,-(a7)
 	movea.l	$8(a6),a3

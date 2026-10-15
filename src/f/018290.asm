@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_018290	[jt 108]
+; ShootAcolyte_ActFacePlayer - SHOOTACOLYTE script action: face the nearest player, next step after 20 frames
+; In:  8(a6) = this
+; Out: none
+; Evidence: Player_Nearest; +$2E bit 4 = h-flip
 ; ---------------------------------------------------------------------------
-sub_018290:
+ShootAcolyte_ActFacePlayer:
 	link.w	a6,#$0
 	movem.l	a3-a4,-(a7)
 	movea.l	$8(a6),a4

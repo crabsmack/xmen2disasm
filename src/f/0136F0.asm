@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_0136F0	[jt 68]
+; CapedAcolyte_EndHurt - CAPEDACOLYTE slot +$76 (XNPC EndHurt): run the parent's EndHurt, then remember the current position as home
+; In:  8(a6) = this
+; Out: none
+; Evidence: tools/classes.py CAPEDACOLYTE +$76; parent via Tbl_CapedAcolyte_vtable +2; +$9C/+$A0 = x/y
 ; ---------------------------------------------------------------------------
-sub_0136F0:
+CapedAcolyte_EndHurt:
 	link.w	a6,#$0
 	move.l	a4,-(a7)
 	movea.l	$8(a6),a4

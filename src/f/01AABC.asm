@@ -28,7 +28,7 @@ Tower_Init:
 	moveq	#$1,d1
 	or.b	d0,d1
 	move.b	d1,$2E(a4)
-	lea.l	sub_01AB96(pc),a0
+	lea.l	Tower_StateIdle(pc),a0
 	move.l	a0,$64(a4)
 	move.l	a0,$5C(a4)
 	ori.w	#$83,$6(a4)

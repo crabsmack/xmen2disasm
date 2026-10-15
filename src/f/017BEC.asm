@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_017BEC	[link-after-rts]
+; FarAcolyte_StateWaitPlayer - FARACOLYTE: wait until the nearest player's x is inside +$8C..+$8E, then start the orb and chase for up to 120 frames
+; In:  8(a6) = this
+; Out: d0
+; Evidence: slot $6E FarAcolyte_StartOrb; +$6E = $78; next FarAcolyte_StateOrbChase
 ; ---------------------------------------------------------------------------
-sub_017BEC:
+FarAcolyte_StateWaitPlayer:
 	link.w	a6,#$0
 	movem.l	d7/a3-a4,-(a7)
 	movea.l	$8(a6),a4
@@ -21,7 +24,7 @@ sub_017BEC:
 	ble.s	loc_017C32
 loc_017C1E:
 	clr.w	$6C(a4)
-	lea.l	sub_017BEC(pc),a0
+	lea.l	FarAcolyte_StateWaitPlayer(pc),a0
 	move.l	a0,$5C(a4)
 	moveq	#$8,d0
 	and.w	$4(a4),d0
@@ -34,7 +37,7 @@ loc_017C32:
 	move.w	#$78,$6E(a4)
 	addq.w	#$4,a7
 	clr.w	$6C(a4)
-	lea.l	sub_017C60(pc),a0
+	lea.l	FarAcolyte_StateOrbChase(pc),a0
 	move.l	a0,$5C(a4)
 	moveq	#$8,d0
 	and.w	$4(a4),d0

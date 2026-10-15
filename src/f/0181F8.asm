@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_0181F8	[link-after-rts]
+; ShootAcolyte_ActRestartScript - SHOOTACOLYTE script action: restart its AI script from entry 0 after 30 frames
+; In:  8(a6) = this
+; Out: none
+; Evidence: +$96 index = 0, +$6C = $1E; script +$98, default +$64
 ; ---------------------------------------------------------------------------
-sub_0181F8:
+ShootAcolyte_ActRestartScript:
 	link.w	a6,#$0
 	move.l	a4,-(a7)
 	movea.l	$8(a6),a4

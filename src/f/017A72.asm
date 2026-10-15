@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_017A72	[jt 98]
+; FarAcolyte_MoveBolt - FARACOLYTE slot +$7A: move the bolt and step its animation (frames 0-6, every 4 frames)
+; In:  8(a6) = this
+; Out: d0 = 1 when within 10 px of the orb
+; Evidence: called by FarAcolyte_StateBoltFly
 ; ---------------------------------------------------------------------------
-sub_017A72:
+FarAcolyte_MoveBolt:
 	link.w	a6,#$0
 	movem.l	d3/d6-d7/a3-a4,-(a7)
 	movea.l	$8(a6),a0

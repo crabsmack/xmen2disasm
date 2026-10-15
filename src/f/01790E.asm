@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_01790E	[jt 96]
+; FarAcolyte_MoveOrb - FARACOLYTE slot +$72: move the orb 1/16 of the way to the nearest player's box centre (x clamped to +$8C..+$8E)
+; In:  8(a6) = this
+; Out: d0 = 1 when the orb is within 16 px
+; Evidence: Player_Nearest box +$4C..+$52; called by FarAcolyte_StateOrbChase
 ; ---------------------------------------------------------------------------
-sub_01790E:
+FarAcolyte_MoveOrb:
 	link.w	a6,#$FFF4
 	movem.l	d3-d7/a3-a4,-(a7)
 	movea.l	$8(a6),a3

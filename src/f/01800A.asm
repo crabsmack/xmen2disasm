@@ -24,9 +24,9 @@ ShootAcolyte_Init:
 	move.l	$2(a0),-(a7)
 	pea.l	$96(a4)
 	jsr	$3ED2(a5)	; -> AiScript_Set
-	lea.l	sub_0181F8(pc),a0
+	lea.l	ShootAcolyte_ActRestartScript(pc),a0
 	move.l	a0,$5C(a4)
-	lea.l	sub_0181F8(pc),a0
+	lea.l	ShootAcolyte_ActRestartScript(pc),a0
 	move.l	a0,$64(a4)
 	lea.l	$3C2(a5),a0
 	movea.l	$2(a0),a0

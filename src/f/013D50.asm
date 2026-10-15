@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_013D50	[jt 74]
+; CapedAcolyte_ActAnimHigh - CAPEDACOLYTE script action: set animation jt $492 (shots leave from 30,-50), next step
+; In:  8(a6) = this
+; Out: none
+; Evidence: sub_1F6296(this, jt $492); CapedAcolyte_StateShoot keys the muzzle offset on it
 ; ---------------------------------------------------------------------------
-sub_013D50:
+CapedAcolyte_ActAnimHigh:
 	link.w	a6,#$0
 	move.l	a4,-(a7)
 	movea.l	$8(a6),a4
