@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_0100D4	[link-after-rts]
+; BigAcBullet_StateLaunch - BIGACBULLET first state: shot sound $EE, face and fly left or right at speed $1000, then BigAcBullet_StateFly
+; In:  8(a6) = this
+; Out: d0 = +4 & 8
+; Evidence: direction > $5A sets the h-flip; velocity +$16 = +/-$1000; sub_1F626A animation jt $3E2
 ; ---------------------------------------------------------------------------
-sub_0100D4:
+BigAcBullet_StateLaunch:
 	link.w	a6,#$0
 	move.l	a4,-(a7)
 	movea.l	$8(a6),a4
@@ -34,7 +37,7 @@ loc_010122:
 	jsr	$4E42(a5)	; -> Obj_SetAnim
 	addq.w	#$8,a7
 	clr.w	$6C(a4)
-	lea.l	sub_01014C(pc),a0
+	lea.l	BigAcBullet_StateFly(pc),a0
 	move.l	a0,$5C(a4)
 	moveq	#$8,d0
 	and.w	$4(a4),d0

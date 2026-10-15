@@ -1,5 +1,8 @@
 ; ---------------------------------------------------------------------------
-; loc_011A00	[runtime: executed in tas]
+; BigAcolyte_FightScript - BIGACOLYTE fight AI script: 20 jmp thunks to the BigAcolyte_Act* actions
+; In:  a4 = this
+; Out: none
+; Evidence: preceded by Tbl_BigAcolyteFightScriptLen ($14); installed by BigAcolyte_ActStartFight
 ; ---------------------------------------------------------------------------
-loc_011A00:
-	jmp	$182(a5)	; -> sub_0115EA
+BigAcolyte_FightScript:
+	jmp	$182(a5)	; -> BigAcolyte_ActRise1

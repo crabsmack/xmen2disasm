@@ -18,7 +18,7 @@ BigAcBullet_Init:
 	movea.l	$12(a0),a1
 	jsr	(a1)
 	clr.w	$20(a4)
-	lea.l	sub_0100D4(pc),a0
+	lea.l	BigAcBullet_StateLaunch(pc),a0
 	move.l	a0,$64(a4)
 	move.l	a0,$5C(a4)
 	lea.l	$20A(a5),a0

@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_0108CE	[link-after-rts]
+; BigAcolyte_SetTargetY - start moving a BIGACOLYTE vertically towards y (accel +/-$60), or mark it arrived
+; In:  8(a6) = this, $C(a6) = word target y px
+; Out: none
+; Evidence: +$A2 target, +$20 vertical accel, +$A7 arrived flag (+$6E = 9 when already there); +$A8 cleared
 ; ---------------------------------------------------------------------------
-sub_0108CE:
+BigAcolyte_SetTargetY:
 	link.w	a6,#$0
 	movem.l	d6-d7/a4,-(a7)
 	move.w	$E(a6),d7

@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_010E26	[jt 41]
+; BigAcolyte_ActGrow - BIGACOLYTE intro step 4: grow the rendered picture 2x3 px per frame (moving up-left) until width $39, then burst out
+; In:  8(a6) = this
+; Out: d0 = +4 & 8
+; Evidence: scale record -$CA2 +$10/+$12 += 2/3; sound $DC at the start; BigAcolyte_RenderScaled each frame; then BigAcolyte_StateBurstWall
 ; ---------------------------------------------------------------------------
-sub_010E26:
+BigAcolyte_ActGrow:
 	link.w	a6,#$0
 	move.l	a4,-(a7)
 	movea.l	$8(a6),a4
@@ -34,10 +37,10 @@ loc_010E62:
 	move.l	d1,-(a7)
 	move.l	a0,-(a7)
 	move.l	-$C9A(a5),-(a7)
-	jsr	sub_00FEF6(pc)
+	jsr	BigAcolyte_RenderScaled(pc)
 	lea.l	$10(a7),a7
 	clr.w	$6C(a4)
-	lea.l	sub_010E26(pc),a0
+	lea.l	BigAcolyte_ActGrow(pc),a0
 	move.l	a0,$5C(a4)
 	moveq	#$8,d0
 	and.w	$4(a4),d0
@@ -51,10 +54,10 @@ loc_010EAE:
 	move.l	d1,-(a7)
 	move.l	-$CA2(a5),-(a7)
 	move.l	-$C9A(a5),-(a7)
-	jsr	sub_00FEF6(pc)
+	jsr	BigAcolyte_RenderScaled(pc)
 	lea.l	$10(a7),a7
 	clr.w	$6C(a4)
-	lea.l	sub_010EE6(pc),a0
+	lea.l	BigAcolyte_StateBurstWall(pc),a0
 	move.l	a0,$5C(a4)
 	moveq	#$8,d0
 	and.w	$4(a4),d0

@@ -73,7 +73,7 @@ loc_0108A4:
 	clr.w	$68(a4)
 	move.w	#$7FFF,$6A(a4)
 	clr.w	$6C(a4)
-	lea.l	sub_010B00(pc),a0
+	lea.l	BigAcolyte_DieEndScene(pc),a0
 	move.l	a0,$64(a4)
 	move.l	a0,$5C(a4)
 loc_0108C4:

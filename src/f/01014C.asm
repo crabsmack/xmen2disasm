@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_01014C	[link-after-rts]
+; BigAcBullet_StateFly - BIGACBULLET flying state: on the first frame snap to owner + offset, then move with collision; kill itself on impact
+; In:  8(a6) = this
+; Out: none
+; Evidence: sub_15CECC(this, old x, old y, ..., $7800, 1) collision move; slot $52 Kill when it reports a hit
 ; ---------------------------------------------------------------------------
-sub_01014C:
+BigAcBullet_StateFly:
 	link.w	a6,#$0
 	movem.l	d3/d6-d7/a4,-(a7)
 	movea.l	$8(a6),a4

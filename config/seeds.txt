@@ -8,13 +8,13 @@
 0226B2	; AvalonB2_CamHook - runtime: executed in tas
 065DB6	; Cerebro_IntroPalHook - runtime: executed in tas
 0062C0	; Player1_StartLife_Nightcrawler - runtime: executed in tas
-0119E6	; loc_0119E6 - runtime: executed in tas
+0119E6	; BigAcolyte_IntroScript - runtime: executed in tas
 0119EA	; loc_0119EA - runtime: executed in tas
 0119EE	; loc_0119EE - runtime: executed in tas
 0119F2	; loc_0119F2 - runtime: executed in tas
 0119F6	; loc_0119F6 - runtime: executed in tas
 0119FA	; loc_0119FA - runtime: executed in tas
-011A00	; loc_011A00 - runtime: executed in tas
+011A00	; BigAcolyte_FightScript - runtime: executed in tas
 013782	; loc_013782 - runtime: executed in tas
 013EC6	; loc_013EC6 - runtime: executed in tas
 013ECA	; loc_013ECA - runtime: executed in tas

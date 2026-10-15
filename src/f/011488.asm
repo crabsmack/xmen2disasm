@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_011488	[link-after-rts]
+; BigAcolyte_StateShoot - BIGACOLYTE: fire a BIGACBULLET from (+/-50, -46); keep shooting every 3 frames until at the target height, then next step (or the low-players check at level 1)
+; In:  8(a6) = this
+; Out: d0
+; Evidence: BIGACBULLET (jt $118BE) +$0E New + BigAcBullet_Attach; +$A0 == 1 -> BigAcolyte_StateCheckPlayersLow
 ; ---------------------------------------------------------------------------
-sub_011488:
+BigAcolyte_StateShoot:
 	link.w	a6,#$0
 	movem.l	d3/d5-d7/a3-a4,-(a7)
 	movea.l	$8(a6),a4
@@ -51,7 +54,7 @@ loc_0114BE:
 	move.l	d5,-(a7)
 	move.l	a4,-(a7)
 	move.l	a3,-(a7)
-	jsr	sub_010098(pc)
+	jsr	BigAcBullet_Attach(pc)
 	lea.l	$14(a7),a7
 loc_011508:
 	lea.l	$1D2(a5),a0
@@ -65,7 +68,7 @@ loc_011508:
 	cmp.w	$A0(a4),d0
 	bne.s	loc_01153A
 	clr.w	$6C(a4)
-	lea.l	sub_01163C(pc),a0
+	lea.l	BigAcolyte_StateCheckPlayersLow(pc),a0
 	move.l	a0,$5C(a4)
 	moveq	#$8,d0
 	and.w	$4(a4),d0
@@ -95,7 +98,7 @@ loc_011560:
 	bra.s	loc_01158E
 loc_01157A:
 	move.w	#$3,$6C(a4)
-	lea.l	sub_011452(pc),a0
+	lea.l	BigAcolyte_StateShootAnim(pc),a0
 	move.l	a0,$5C(a4)
 	moveq	#$8,d0
 	and.w	$4(a4),d0

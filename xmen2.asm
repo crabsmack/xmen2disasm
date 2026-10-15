@@ -180,7 +180,7 @@ Sw_0062E4:	; switch table of sub at $0062E4: 6 word offsets from Sw_0062E4-2
 	include "src/f/00FDAA.asm"
 	incrom	$00FE78,$7E
 	include "src/f/00FEF6.asm"
-Str_Empty_00FFAC:	; C string "" (used by sub_00FEF6)
+Str_Empty_00FFAC:	; C string "" (used by BigAcolyte_RenderScaled)
 	incrom	$00FFAC,$2
 	include "src/f/00FFAE.asm"
 	include "src/f/00FFBC.asm"
@@ -227,9 +227,15 @@ Str_Empty_00FFAC:	; C string "" (used by sub_00FEF6)
 	include "src/f/01180E.asm"
 	include "src/f/011862.asm"
 	include "src/f/0118B6.asm"
-	incrom	$0118BE,$128
+Tbl_BigAcBullet_vtable:	; class descriptor of BIGACBULLET: word name offset $6E, parent ACTOR, 26 method slots from +6, then the name (tools/classes.py)
+	incrom	$0118BE,$7A
+Tbl_BigAcolyte_vtable:	; class descriptor of BIGACOLYTE: word name offset $82, parent BIONPC, 31 method slots from +6, then the name (tools/classes.py)
+	incrom	$011938,$8D
+	incrom	$0119C5,$1F
+Tbl_BigAcolyteIntroScriptLen:	; word 6: entry count of the BIGACOLYTE intro AI script (6 jmp thunks follow at BigAcolyte_IntroScript)
+	incrom	$0119E4,$2
 	include "src/f/0119E6.asm"
-Str_Empty_0119FE:	; C string "" (used by jt[58])
+Tbl_BigAcolyteFightScriptLen:	; word $14: entry count of the BIGACOLYTE fight AI script (jt[58]); 20 jmp thunks follow at BigAcolyte_FightScript
 	incrom	$0119FE,$1
 	incrom	$0119FF,$1
 	include "src/f/011A00.asm"
@@ -258,7 +264,9 @@ Sw_013722:	; switch table of sub at $013722: 4 word offsets from Sw_013722-2
 	include "src/f/013D26.asm"
 	include "src/f/013D50.asm"
 	include "src/f/013DB0.asm"
-	incrom	$013E10,$B6
+Tbl_CapedAcolyte_vtable:	; class descriptor of CAPEDACOLYTE: word name offset $82, parent BIONPC, 31 method slots from +6, then the name (tools/classes.py)
+	incrom	$013E10,$8F
+	incrom	$013E9F,$27
 	include "src/f/013EC6.asm"
 Str_Empty_013ED2:	; C string "" (used by jt[81])
 	incrom	$013ED2,$1
@@ -286,7 +294,9 @@ Str_Empty_013ED2:	; C string "" (used by jt[81])
 	include "src/f/017D2C.asm"
 	include "src/f/017D60.asm"
 	include "src/f/017DDC.asm"
-	incrom	$017E28,$1AE
+Tbl_FarAcolyte_vtable:	; class descriptor of FARACOLYTE: word name offset $7E, parent ACTOR, 30 method slots from +6, then the name (tools/classes.py)
+	incrom	$017E28,$89
+	incrom	$017EB1,$125
 	include "src/f/017FD6.asm"
 	include "src/f/017FE4.asm"
 	include "src/f/017FFA.asm"
@@ -302,7 +312,9 @@ Str_Empty_013ED2:	; C string "" (used by jt[81])
 	include "src/f/0184CE.asm"
 	include "src/f/018504.asm"
 	include "src/f/0185BE.asm"
-	incrom	$018644,$B6
+Tbl_ShootAcolyte_vtable:	; class descriptor of SHOOTACOLYTE: word name offset $82, parent BIONPC, 31 method slots from +6, then the name (tools/classes.py)
+	incrom	$018644,$8F
+	incrom	$0186D3,$27
 	include "src/f/0186FA.asm"
 	include "src/f/018706.asm"
 	incrom	$01870A,$2398
@@ -311,7 +323,9 @@ Str_Empty_013ED2:	; C string "" (used by jt[81])
 	include "src/f/01AABC.asm"
 	include "src/f/01AB96.asm"
 	include "src/f/01ABBC.asm"
-	incrom	$01ABC4,$1434
+Tbl_Tower_vtable:	; class descriptor of TOWER: word name offset $6E, parent ACTOR, 26 method slots from +6, then the name (tools/classes.py)
+	incrom	$01ABC4,$74
+	incrom	$01AC38,$13C0
 	include "src/f/01BFF8.asm"
 	include "src/f/01C006.asm"
 	include "src/f/01C01C.asm"
@@ -339,7 +353,9 @@ Sw_01C042:	; switch table of sub at $01C042: 5 word offsets from Sw_01C042-2
 	include "src/f/01C886.asm"
 	include "src/f/01C8BA.asm"
 	include "src/f/01C94A.asm"
-	incrom	$01C9A2,$AE
+Tbl_YoyoAcolyte_vtable:	; class descriptor of YOYOACOLYTE: word name offset $86, parent BIONPC, 32 method slots from +6, then the name (tools/classes.py)
+	incrom	$01C9A2,$92
+	incrom	$01CA34,$1C
 	include "src/f/01CA50.asm"
 Str_Empty_01CA58:	; C string "" (used by jt[143])
 	incrom	$01CA58,$1
@@ -397,7 +413,9 @@ Str_Empty_01CA6C:	; C string "" (used by jt[145])
 	include "src/f/026E10.asm"
 	include "src/f/026ED8.asm"
 	include "src/f/026F2E.asm"
-	incrom	$026F4A,$2E6
+Tbl_RetractFloor_vtable:	; class descriptor of RETRACTFLOOR: word name offset $72, parent ACTOR, 27 method slots from +6, then the name (tools/classes.py)
+	incrom	$026F4A,$7F
+	incrom	$026FC9,$267
 	include "src/f/027230.asm"
 	include "src/f/02723E.asm"
 	include "src/f/027254.asm"
@@ -406,7 +424,9 @@ Str_Empty_01CA6C:	; C string "" (used by jt[145])
 	include "src/f/027352.asm"
 	include "src/f/027388.asm"
 	include "src/f/0273BE.asm"
-	incrom	$0273F4,$550E
+Tbl_Zapper_vtable:	; class descriptor of ZAPPER: word name offset $6E, parent ACTOR, 26 method slots from +6, then the name (tools/classes.py)
+	incrom	$0273F4,$75
+	incrom	$027469,$5499
 	include "src/f/02C902.asm"
 	include "src/f/02C90A.asm"
 	include "src/f/02C9AA.asm"
@@ -484,7 +504,9 @@ Sw_02DADE:	; switch table of sub at $02DADE: 5 word offsets from Sw_02DADE-2
 	include "src/f/02DC9E.asm"
 	include "src/f/02DCE4.asm"
 	include "src/f/02DDDC.asm"
-	incrom	$02DEB4,$E2
+Tbl_Exodus_vtable:	; class descriptor of EXODUS: word name offset $6E, parent ACTOR, 26 method slots from +6, then the name (tools/classes.py)
+	incrom	$02DEB4,$75
+	incrom	$02DF29,$6D
 	include "src/f/02DF96.asm"
 	include "src/f/02DFA4.asm"
 	include "src/f/02DFD8.asm"
@@ -512,7 +534,9 @@ Sw_02DFD8:	; switch table of sub at $02DFD8: 7 word offsets from Sw_02DFD8-2
 	include "src/f/02E492.asm"
 	include "src/f/02E4A8.asm"
 	include "src/f/02E526.asm"
-	incrom	$02E566,$67E8
+Tbl_ExodusBlast_vtable:	; class descriptor of EXODUSBLAST: word name offset $82, parent XNPC, 31 method slots from +6, then the name (tools/classes.py)
+	incrom	$02E566,$8E
+	incrom	$02E5F4,$675A
 	include "src/f/034D4E.asm"
 	include "src/f/034D56.asm"
 	include "src/f/034D7A.asm"
@@ -571,7 +595,9 @@ Sw_0358D8:	; switch table of sub at $0358D8: 6 word offsets from Sw_0358D8-2
 	include "src/f/035A7E.asm"
 	include "src/f/035A86.asm"
 	include "src/f/035A9E.asm"
-	incrom	$035AC6,$114
+	incrom	$035AC6,$96
+Tbl_MagnetoBoss_vtable:	; class descriptor of MAGNETOBOSS: word name offset $72, parent ACTOR, 27 method slots from +6, then the name (tools/classes.py)
+	incrom	$035B5C,$7E
 	include "src/f/035BDA.asm"
 	include "src/f/035BE8.asm"
 	include "src/f/035DC2.asm"
@@ -635,6 +661,7 @@ Sw_03645C:	; switch table of sub at $03645C: 4 word offsets from Sw_03645C-2
 	include "src/f/03799C.asm"
 	include "src/f/0379CA.asm"
 	include "src/f/037A00.asm"
+Tbl_ThronePhone_vtable:	; class descriptor of THRONEPHONE: word name offset $72, parent ACTOR, 27 method slots from +6, then the name (tools/classes.py)
 	incrom	$037A18,$7E
 	include "src/f/037A96.asm"
 	include "src/f/037AA4.asm"
@@ -700,7 +727,9 @@ Sw_03A4EE:	; switch table of sub at $03A4EE: 4 word offsets from Sw_03A4EE-2
 	include "src/f/03A69A.asm"
 	include "src/f/03A714.asm"
 	include "src/f/03A72A.asm"
-	incrom	$03A7F0,$7C
+Tbl_BanimazaDoor_vtable:	; class descriptor of BANIMAZADOOR: word name offset $6E, parent ACTOR, 26 method slots from +6, then the name (tools/classes.py)
+	incrom	$03A7F0,$7B
+	incrom	$03A86B,$1
 	include "src/f/03A86C.asm"
 	include "src/f/03A87A.asm"
 	include "src/f/03A882.asm"
@@ -714,7 +743,9 @@ Str_Empty_03AD12:	; C string "" (used by sub_03AC3E)
 	include "src/f/03ADEE.asm"
 	include "src/f/03AE14.asm"
 	include "src/f/03AE1C.asm"
-	incrom	$03AE32,$C49A
+Tbl_RollingDiscs_vtable:	; class descriptor of ROLLINGDISCS: word name offset $6E, parent ACTOR, 26 method slots from +6, then the name (tools/classes.py)
+	incrom	$03AE32,$7B
+	incrom	$03AEAD,$C41F
 	include "src/f/0472CC.asm"
 	include "src/f/0472E0.asm"
 	include "src/f/0473D4.asm"
@@ -819,7 +850,9 @@ Str_Empty_04C582:	; C string "" (used by sub_04C526)
 	include "src/f/04CC42.asm"
 	include "src/f/04CCA0.asm"
 	include "src/f/04CD3A.asm"
-	incrom	$04CDA4,$1176
+Tbl_Apocalypse_vtable:	; class descriptor of APOCALYPSE: word name offset $6E, parent ACTOR, 26 method slots from +6, then the name (tools/classes.py)
+	incrom	$04CDA4,$79
+	incrom	$04CE1D,$10FD
 	include "src/f/04DF1A.asm"
 	include "src/f/04DF28.asm"
 	include "src/f/04DF30.asm"
@@ -843,7 +876,9 @@ Sw_04E94A:	; switch table of sub at $04E94A: 4 word offsets from Sw_04E94A-2
 	include "src/f/04E9C8.asm"
 	include "src/f/04E9D0.asm"
 	include "src/f/04E9EA.asm"
-	incrom	$04EA42,$78
+Tbl_ApocBomb_vtable:	; class descriptor of APOCBOMB: word name offset $6E, parent ACTOR, 26 method slots from +6, then the name (tools/classes.py)
+	incrom	$04EA42,$77
+	incrom	$04EAB9,$1
 	include "src/f/04EABA.asm"
 	include "src/f/04EAC8.asm"
 	include "src/f/04EAF4.asm"
@@ -853,7 +888,9 @@ Sw_04E94A:	; switch table of sub at $04E94A: 4 word offsets from Sw_04E94A-2
 	include "src/f/04EC64.asm"
 	include "src/f/04EC70.asm"
 	include "src/f/04EC7C.asm"
-	incrom	$04ECEC,$BBF8
+Tbl_BeamScooter_vtable:	; class descriptor of BEAMSCOOTER: word name offset $6E, parent ACTOR, 26 method slots from +6, then the name (tools/classes.py)
+	incrom	$04ECEC,$7A
+	incrom	$04ED66,$BB7E
 	include "src/f/05A8E4.asm"
 	include "src/f/05A8F8.asm"
 	include "src/f/05A938.asm"
@@ -894,7 +931,9 @@ Str_Empty_05BB84:	; C string "" (used by sub_05BB0E)
 	include "src/f/05BD92.asm"
 	include "src/f/05BF4A.asm"
 	include "src/f/05C07C.asm"
-	incrom	$05C0DE,$92
+Tbl_Boulder_vtable:	; class descriptor of BOULDER: word name offset $6E, parent ACTOR, 26 method slots from +6, then the name (tools/classes.py)
+	incrom	$05C0DE,$76
+	incrom	$05C154,$1C
 	include "src/f/05C170.asm"
 	include "src/f/05C17E.asm"
 	include "src/f/05C19C.asm"
@@ -949,7 +988,9 @@ Sw_05CCDA:	; switch table of sub at $05CCDA: 5 word offsets from Sw_05CCDA-2
 	include "src/f/05CE28.asm"
 	include "src/f/05CE3A.asm"
 	include "src/f/05CF68.asm"
-	incrom	$05D03A,$74
+Tbl_Tusk_vtable:	; class descriptor of TUSK: word name offset $6E, parent ACTOR, 26 method slots from +6, then the name (tools/classes.py)
+	incrom	$05D03A,$73
+	incrom	$05D0AD,$1
 	include "src/f/05D0AE.asm"
 	include "src/f/05D0BC.asm"
 	include "src/f/05D11C.asm"
@@ -1007,7 +1048,9 @@ Sw_05DDBE:	; switch table of sub at $05DDBE: 8 word offsets from Sw_05DDBE-2
 	include "src/f/05DF6E.asm"
 	include "src/f/05DF84.asm"
 	include "src/f/05E038.asm"
-	incrom	$05E04E,$6486
+Tbl_Tuskette_vtable:	; class descriptor of TUSKETTE: word name offset $82, parent BIONPC, 31 method slots from +6, then the name (tools/classes.py)
+	incrom	$05E04E,$8B
+	incrom	$05E0D9,$63FB
 	include "src/f/0644D4.asm"
 	include "src/f/06451E.asm"
 	include "src/f/064588.asm"
@@ -1193,9 +1236,17 @@ Str_Selected_06824E:	; C string "SELECTED   " (used by sub_068126)
 	incrom	$06825A,$160C
 Str_XMenAndAllRelated:	; C string "@@@@X-MEN, AND ALL RELATED@@@@" (used by jt[499])
 	incrom	$069866,$20
-	incrom	$069886,$38A0
+	incrom	$069886,$7D6
+Tbl_ScalingActor_vtable:	; class descriptor of SCALINGACTOR: word name offset $6E, parent ACTOR, 26 method slots from +6, then the name (tools/classes.py)
+	incrom	$06A05C,$7B
+	incrom	$06A0D7,$1
+Tbl_BoxInputActor_vtable:	; class descriptor of BOXINPUTACTOR: word name offset $6E, parent ACTOR, 26 method slots from +6, then the name (tools/classes.py)
+	incrom	$06A0D8,$7C
+	incrom	$06A154,$2FD2
 	include "src/f/06D126.asm"
-	incrom	$06D12E,$94
+	incrom	$06D12E,$8
+Tbl_Brood_vtable:	; class descriptor of BROOD: word name offset $86, parent SMALLBROOD, 32 method slots from +6, then the name (tools/classes.py)
+	incrom	$06D136,$8C
 	include "src/f/06D1C2.asm"
 	include "src/f/06D1D0.asm"
 	include "src/f/06D1E6.asm"
@@ -1232,6 +1283,7 @@ Str_XMenAndAllRelated:	; C string "@@@@X-MEN, AND ALL RELATED@@@@" (used by jt[4
 	include "src/f/077624.asm"
 	include "src/f/0776DA.asm"
 	include "src/f/0776E2.asm"
+Tbl_LightBeam_vtable:	; class descriptor of LIGHTBEAM: word name offset $6E, parent ACTOR, 26 method slots from +6, then the name (tools/classes.py)
 	incrom	$07773C,$78
 	include "src/f/0777B4.asm"
 	include "src/f/0777C2.asm"

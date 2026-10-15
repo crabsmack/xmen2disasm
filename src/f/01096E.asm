@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_01096E	[link-after-rts]
+; BigAcolyte_LoadSprite - level-load callback: add the BIGACOLYTE debris sprite definition and store its id
+; In:  none
+; Out: none
+; Evidence: SprDef_Add(jt $21F3E, 0) -> word at (-$3CDA)+4; registered with sub_15B0E6 by BigAcolyte_ActAppear
 ; ---------------------------------------------------------------------------
-sub_01096E:
+BigAcolyte_LoadSprite:
 	link.w	a6,#$0
 	moveq	#$0,d0
 	move.l	d0,-(a7)

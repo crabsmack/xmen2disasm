@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_010B00	[link-after-rts]
+; BigAcolyte_DieEndScene - BIGACOLYTE death: end the scene after 200 frames and spawn its death effect
+; In:  8(a6) = this
+; Out: none
+; Evidence: g_SceneExitTimer = 200; sub_13EEFA(this, jt $3D42, 0, 0, height); called from BigAcolyte_TakeDamage and BigAcolyte_OutsideActiveWindow (same body as BigAcolyte_OnDeath)
 ; ---------------------------------------------------------------------------
-sub_010B00:
+BigAcolyte_DieEndScene:
 	link.w	a6,#$0
 	move.l	a4,-(a7)
 	movea.l	$8(a6),a4

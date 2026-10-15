@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_01098E	[jt 38]
+; BigAcolyte_ActAppear - BIGACOLYTE intro step 2: create the debris object, render the small big-acolyte picture into VRAM, next script step
+; In:  8(a6) = this
+; Out: none
+; Evidence: sub_13F4D4($24) -> -$3CDA; tile base +$34 from the sprite resource table; BigAcolyte_RenderScaled(jt $11A50 picture, scale 7x$B); +$A9 = 1; Tbl_BigAcolyteIntroScriptLen entry 1
 ; ---------------------------------------------------------------------------
-sub_01098E:
+BigAcolyte_ActAppear:
 	link.w	a6,#$FFD6
 	movem.l	d7/a3-a4,-(a7)
 	movea.l	$8(a6),a4
@@ -15,7 +18,7 @@ sub_01098E:
 	move.l	d0,-$3CDA(a5)
 	moveq	#$0,d0
 	move.l	d0,-(a7)
-	pea.l	sub_01096E(pc)
+	pea.l	BigAcolyte_LoadSprite(pc)
 	jsr	$3F3A(a5)	; -> sub_15B0E6
 	movea.l	-$3CDA(a5),a0
 	move.w	#$400,$2(a0)
@@ -84,7 +87,7 @@ loc_010A32:
 	move.l	d1,-(a7)
 	pea.l	-$26(a6)
 	move.l	a3,-(a7)
-	jsr	sub_00FEF6(pc)
+	jsr	BigAcolyte_RenderScaled(pc)
 	move.b	#$1,$A9(a4)
 	tst.l	$98(a4)
 	lea.l	$10(a7),a7

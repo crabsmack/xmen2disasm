@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_01134E	[jt 42]
+; BigAcolyte_ActStartFight - BIGACOLYTE intro last step: stop sound $34, switch to the fight script (Tbl_BigAcolyteFightScriptLen) and start it
+; In:  8(a6) = this
+; Out: none
+; Evidence: sub_15A6DE(+$96, jt $3F2) installs the new script; index 0
 ; ---------------------------------------------------------------------------
-sub_01134E:
+BigAcolyte_ActStartFight:
 	link.w	a6,#$0
 	move.l	a4,-(a7)
 	movea.l	$8(a6),a4

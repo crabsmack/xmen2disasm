@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_010DB2	[link-after-rts]
+; BigAcolyte_StateWaitArrive - BIGACOLYTE state: wait until both target flags are set, then the next script step after 120 frames
+; In:  8(a6) = this
+; Out: none
+; Evidence: +$A6 and +$A7 arrived flags; script +$98 / index +$96, default +$64
 ; ---------------------------------------------------------------------------
-sub_010DB2:
+BigAcolyte_StateWaitArrive:
 	link.w	a6,#$0
 	move.l	a4,-(a7)
 	movea.l	$8(a6),a4
@@ -33,7 +36,7 @@ loc_010DF0:
 	bra.s	loc_010E1E
 loc_010E0C:
 	clr.w	$6C(a4)
-	lea.l	sub_010DB2(pc),a0
+	lea.l	BigAcolyte_StateWaitArrive(pc),a0
 	move.l	a0,$5C(a4)
 	moveq	#$8,d0
 	and.w	$4(a4),d0

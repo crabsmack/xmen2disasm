@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_011238	[link-after-rts]
+; BigAcolyte_StateBecomeSprite - BIGACOLYTE: switch from the rendered picture to its normal sprite, draw layer 1, face left, start moving to x $1B49
+; In:  8(a6) = this
+; Out: d0 = +4 & 8
+; Evidence: Spr_Init on its own sprite fields; +$A9 = 0; DrawList_SetPriority(+$88, 1); x += $12 px, y += $11 px; animation jt $119C6; next BigAcolyte_StateJoinList
 ; ---------------------------------------------------------------------------
-sub_011238:
+BigAcolyte_StateBecomeSprite:
 	link.w	a6,#$0
 	move.l	a4,-(a7)
 	movea.l	$8(a6),a4
@@ -47,10 +50,10 @@ sub_011238:
 	jsr	$4E42(a5)	; -> Obj_SetAnim
 	pea.l	($1B49).w
 	move.l	a4,-(a7)
-	jsr	sub_01091E(pc)
+	jsr	BigAcolyte_SetTargetX(pc)
 	lea.l	$3C(a7),a7
 	clr.w	$6C(a4)
-	lea.l	sub_0112E8(pc),a0
+	lea.l	BigAcolyte_StateJoinList(pc),a0
 	move.l	a0,$5C(a4)
 	moveq	#$8,d0
 	and.w	$4(a4),d0

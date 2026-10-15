@@ -16,7 +16,7 @@ BigAcolyte_OutsideActiveWindow:
 	moveq	#$0,d0
 	bra.s	loc_0103E6
 loc_0103D6:
-	lea.l	sub_010B00(pc),a0
+	lea.l	BigAcolyte_DieEndScene(pc),a0
 	cmpa.l	$5C(a4),a0
 	seq.b	d3
 	neg.b	d3

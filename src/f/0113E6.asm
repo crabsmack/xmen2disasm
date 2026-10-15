@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_0113E6	[link-after-rts]
+; BigAcolyte_StateWaitYNext - BIGACOLYTE state: poll every 4 frames until the vertical target is reached, then the next script step
+; In:  8(a6) = this
+; Out: none
+; Evidence: +$A7 arrived -> script +$98 next entry
 ; ---------------------------------------------------------------------------
-sub_0113E6:
+BigAcolyte_StateWaitYNext:
 	link.w	a6,#$0
 	move.l	a4,-(a7)
 	movea.l	$8(a6),a4
@@ -31,7 +34,7 @@ loc_01141C:
 	bra.s	loc_01144A
 loc_011436:
 	move.w	#$4,$6C(a4)
-	lea.l	sub_0113E6(pc),a0
+	lea.l	BigAcolyte_StateWaitYNext(pc),a0
 	move.l	a0,$5C(a4)
 	moveq	#$8,d0
 	and.w	$4(a4),d0

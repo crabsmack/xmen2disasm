@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_01163C	[link-after-rts]
+; BigAcolyte_StateCheckPlayersLow - BIGACOLYTE: if a player is below y $3F3 keep shooting (after 15 frames), else the next script step
+; In:  8(a6) = this
+; Out: d0
+; Evidence: tests g_Player1/g_Player2 y (+$C) >> 8
 ; ---------------------------------------------------------------------------
-sub_01163C:
+BigAcolyte_StateCheckPlayersLow:
 	link.w	a6,#$0
 	movem.l	d6-d7/a4,-(a7)
 	movea.l	$8(a6),a4
@@ -41,7 +44,7 @@ loc_01169C:
 	beq.s	loc_0116BA
 loc_0116A4:
 	move.w	#$F,$6C(a4)
-	lea.l	sub_011452(pc),a0
+	lea.l	BigAcolyte_StateShootAnim(pc),a0
 	move.l	a0,$5C(a4)
 	moveq	#$8,d0
 	and.w	$4(a4),d0

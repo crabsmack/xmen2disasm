@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_011862	[jt 51]
+; BigAcolyte_ActWait60 - BIGACOLYTE script action: run the next script step after 60 frames
+; In:  8(a6) = this
+; Out: none
+; Evidence: +$6C = $3C with +$5C = next script entry
 ; ---------------------------------------------------------------------------
-sub_011862:
+BigAcolyte_ActWait60:
 	link.w	a6,#$0
 	move.l	a4,-(a7)
 	movea.l	$8(a6),a4
