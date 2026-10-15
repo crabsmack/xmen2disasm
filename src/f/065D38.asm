@@ -2,7 +2,7 @@
 ; PlayerSelect_Run_P2Gambit - PlayerSelect_Run: P2 chose Gambit, Nightcrawler, Psylocke, Wolverine or Magneto
 ; In:  none
 ; Out: none
-; Evidence: Sw_065CBC entries 2-6 (loc_065D38..loc_065D68)
+; Evidence: Sw_065CBC entries 2-6 (PlayerSelect_Run_P2Gambit..loc_065D68)
 ; ---------------------------------------------------------------------------
 PlayerSelect_Run_P2Gambit:
 	lea.l	$2BC2(a5),a0

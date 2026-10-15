@@ -2,7 +2,7 @@
 ; SiberiaB1_ResetPalCycles - SiberiaB1: zero the palette-cycle counters
 ; In:  none
 ; Out: none
-; Evidence: counters passed to sub_159FD6
+; Evidence: counters passed to Pal_CycleStep
 ; ---------------------------------------------------------------------------
 SiberiaB1_ResetPalCycles:
 	link.w	a6,#$0

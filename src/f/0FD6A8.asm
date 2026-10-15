@@ -2,7 +2,7 @@
 ; SiberiaB1_RunScene - scene "SiberiaB1 Blizzard" (first stage and power-on demo): set load hooks, load, start music $27, run the level loop
 ; In:  none
 ; Out: none
-; Evidence: registered by Scene_RegisterAll (jt of sub_0FD6A8); g_MusicTrack = $27; TAS frame 7
+; Evidence: registered by Scene_RegisterAll (jt of SiberiaB1_RunScene); g_MusicTrack = $27; TAS frame 7
 ; ---------------------------------------------------------------------------
 SiberiaB1_RunScene:
 	link.w	a6,#$0

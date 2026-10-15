@@ -2,7 +2,7 @@
 ; XPlayer_FreezeStanding - XPLAYER slot +$7A: freeze the player in its standing pose, motionless and invulnerable (scripted scenes)
 ; In:  8(a6) = player
 ; Out: none
-; Evidence: +6 |= $4000 (no Move), Obj_SetAnim(char +$42 stand), state XPlayer_StateFrozen, +$6A = 20000; called on both players by sub_04EB8A
+; Evidence: +6 |= $4000 (no Move), Obj_SetAnim(char +$42 stand), state XPlayer_StateFrozen, +$6A = 20000; called on both players by BeamScooter_StatePickUp
 ; ---------------------------------------------------------------------------
 XPlayer_FreezeStanding:
 	link.w	a6,#$0

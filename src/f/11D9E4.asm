@@ -2,7 +2,7 @@
 ; BabyMoleMan_Init_Case2 - BabyMoleMan_Init cases 2-3: AI scripts at $11B60C / $11B61E
 ; In:  inside BabyMoleMan_Init
 ; Out: -
-; Evidence: Sw_11D946 targets loc_11D9E4/loc_11D9F8
+; Evidence: Sw_11D946 targets BabyMoleMan_Init_Case2/loc_11D9F8
 ; ---------------------------------------------------------------------------
 BabyMoleMan_Init_Case2:
 	lea.l	$3022(a5),a0

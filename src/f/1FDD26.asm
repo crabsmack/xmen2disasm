@@ -2,7 +2,7 @@
 ; Pad_ConfigButtonMask - joypad mask for action N in the current control layout
 ; In:  8(a6) = word: action index 0-7
 ; Out: d0 = word: mask (sign-extended byte)
-; Evidence: Tbl_ButtonConfigs[layout * 8 + action] with layout word -$38A6(a5); Game_Main (sub_005466) fills the byte array -$3A40 with it at TAS frame 4
+; Evidence: Tbl_ButtonConfigs[layout * 8 + action] with layout word -$38A6(a5); Game_Main (Game_Main) fills the byte array -$3A40 with it at TAS frame 4
 ; ---------------------------------------------------------------------------
 Pad_ConfigButtonMask:
 	link.w	a6,#$0

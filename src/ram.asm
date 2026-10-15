@@ -147,8 +147,8 @@ g_ShiftDX = -$CA8	; word: x delta applied by Obj_ShiftTree (set by Spr_PlaceAtta
 g_ShiftDY = -$CAA	; word: y delta applied by Obj_ShiftTree (set by Spr_PlaceAttached)
 g_LevelFrame = -$3A24	; word: level frame counter (+1 per Level_FrameLoop frame, cleared by Level_Run; bit 0 = blink phase in Actor_Draw; demo timing)
 g_ClassData = -$10F4	; ptr: per-class pointer array, one long per class in g_ClassList (ClassList_InitAll)
-g_HudDirty = -$38B2	; byte: 1 = redraw the HUD (set by power-ups and health changes, e.g. PowerUp_Collect, XPlayer_AddHealth; the level loop calls sub_006386 while set, which clears it)
-g_FxTileBase = -$3BB8	; word: first VRAM tile of the shared effect graphics (set from g_VramTileCursor in sub_006A20; used by Explosion_Update and NINJA effects)
+g_HudDirty = -$38B2	; byte: 1 = redraw the HUD (set by power-ups and health changes, e.g. PowerUp_Collect, XPlayer_AddHealth; the level loop calls HUD_UpdateHealthBars while set, which clears it)
+g_FxTileBase = -$3BB8	; word: first VRAM tile of the shared effect graphics (set from g_VramTileCursor in Scene_AllocCommonVram; used by Explosion_Update and NINJA effects)
 g_GaussPool = -$1CAC	; ptr: GAUSSBULLET pool {word count, word max 6, long anim table, 32-byte records} (GaussBullet_InitPool)
 g_GaussSprDef = -$1CA8	; word: sprite-definition slot of the gauss bullet graphics (GaussBullet_InitPool, GaussBullet_Update)
 g_Explosions = -$1D40	; 10 x 14-byte explosion slots {word x, word y, byte step, byte delay, long timer, word attr, word damage} (Explosion_SpawnEx)
@@ -164,7 +164,7 @@ g_CamMaxX = -$3A8E	; word: camera x upper clamp (Cam_SetPos, Cam_TrackPlayer)
 g_CamMinY = -$3A94	; word: camera y lower clamp (Cam_SetPos, Cam_TrackPlayer)
 g_CamMaxY = -$3A92	; word: camera y upper clamp (Cam_SetPos, Cam_TrackPlayer)
 g_CamModeSwitched = -$3892	; byte: set when the camera changes tracking mode or target; Cam_EaseOffset absorbs the position jump and clears it
-g_SceneDrawHook = -$38F4	; ptr: per-frame scene draw hook called by the level loop (sub_1FA124) before Spr_EndFrame; sub_1F98A8 defaults it to jt[$4F82]; scenes swap in their own (Water_DrawHook, BaniMazaA2_DrawHook) which end with DrawList_DrawAll
+g_SceneDrawHook = -$38F4	; ptr: per-frame scene draw hook called by the level loop (Level_FrameLoop) before Spr_EndFrame; Level_Load defaults it to jt[$4F82]; scenes swap in their own (Water_DrawHook, BaniMazaA2_DrawHook) which end with DrawList_DrawAll
 g_ExtIntMode = -$202	; byte ($FFFFFE): when set Sys_InitHardware enables external interrupts (VDP reg 11 = $8B08 instead of $8B00, port 3 control $A1000D = $80); Game_Main clears it at boot, so normally 0
 g_RandPrev2 = -$7AA	; word: Rand_Next output before the last one (gets the old g_RandPrev each call; Rand_Seed zeroes it); XORed into the next value
 g_RandPrev = -$7AC	; word: last Rand_Next output (Rand_Seed stores the seed here)
@@ -187,8 +187,8 @@ g_PalCycleCursor = -$38CE	; ptr: next word of g_PalCycleScript (sub_1F9E46; Leve
 g_PalCycleDelay = -$38D0	; word: frames until the next g_PalCycleScript step (sub_1F9E46; Level_Load sets -1)
 g_LevelScrollHook = -$3A48	; ptr: per-frame scroll update called by Level_FrameLoop; Level_Load sets Scroll_UpdateParallax, BaniMazaA1_InitScroll sets RollingDiscs_UpdateScroll
 g_LevelPalHook = -$3A4C	; ptr: per-frame palette hook called by Level_FrameLoop after g_LevelScrollHook; Level_Load sets sub_1F9E46 (g_PalCycleScript player)
-g_PauseExit = -$1662	; byte: set to leave the pause loop (sub_15CA6C waits on it): a pause cheat changed the scene, or a player pressed a button (sub_15C5D6); cleared by the pause handler sub_15CAA4 and Level_Load
-g_PauseCheatPtr = -$1666	; ptr: position in a pause-screen button sequence: each new press (& $7F) must equal the next byte (sub_15C42A); sequences from jt data $E0A-$E62 (sub_15C5D6); 0 = none (sub_15CAA4 clears)
+g_PauseExit = -$1662	; byte: set to leave the pause loop (sub_15CA6C waits on it): a pause cheat changed the scene, or a player pressed a button (loc_15C5D6); cleared by the pause handler sub_15CAA4 and Level_Load
+g_PauseCheatPtr = -$1666	; ptr: position in a pause-screen button sequence: each new press (& $7F) must equal the next byte (sub_15C42A); sequences from jt data $E0A-$E62 (loc_15C5D6); 0 = none (sub_15CAA4 clears)
 g_HScrollFreeTile = -$1D42	; word: first free VRAM tile after the H-scroll table: $7A1 by default (Scene_PreLoadReset), $7BE with a line-scroll parallax that fills $380 bytes (Scroll_SetParallax, BaniMazaA1_InitScroll)
 g_HScrollFreeCount = -$1D44	; word: number of free VRAM tiles from g_HScrollFreeTile to $800 ($5F default, $42 with line scroll; Scene_PreLoadReset, Scroll_SetParallax)
 g_VramTileLimit = -$1D46	; word: VRAM tile limit $700 for actor sprite graphics (Scene_PreLoadReset); Actor_Activate/MagnetoBoss_Activate compare the tile end from Spr_Init against it

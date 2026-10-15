@@ -1,5 +1,5 @@
 ; ---------------------------------------------------------------------------
-; ICandy_Init - ICandy constructor: position, clear velocity/accel/animation, register with sub_1F9C92
+; ICandy_Init - ICandy constructor: position, clear velocity/accel/animation, register with Timer_Create
 ; In:  8(a6) = this  $C/$10(a6) = x, y (16.16)
 ; Out: none
 ; Evidence: method 2 of ICANDY; +8/+$C position, +$14/+$16 velocity, +$18/+$1A accel, handle at +$3E

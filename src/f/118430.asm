@@ -2,7 +2,7 @@
 ; ICandy_New - ICandy: take a pool slot, construct it (Init) and give it a sprite slot
 ; In:  8(a6) = unused  $C(a6) = class descriptor  $10/$14(a6) = x, y (16.16)
 ; Out: d0 = object or 0 when the pool is full
-; Evidence: method 1 of ICANDY; ICandy_PoolAlloc, vtable +$E (Init), sub_1F8FA2 result stored at +$3C
+; Evidence: method 1 of ICANDY; ICandy_PoolAlloc, vtable +$E (Init), DrawList_Add result stored at +$3C
 ; ---------------------------------------------------------------------------
 ICandy_New:
 	link.w	a6,#$0

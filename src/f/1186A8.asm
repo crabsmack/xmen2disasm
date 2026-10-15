@@ -2,7 +2,7 @@
 ; ICandy_Destroy - ICandy: release sprite/handle resources and return the pool slot
 ; In:  8(a6) = this
 ; Out: none
-; Evidence: method 5 of ICANDY; sub_1F9D1E/sub_1F9D38 on +$3E, sub_1F9122 on +$3C, ICandy_PoolFree
+; Evidence: method 5 of ICANDY; Timer_Stop/Timer_Free on +$3E, DrawList_Remove on +$3C, ICandy_PoolFree
 ; ---------------------------------------------------------------------------
 ICandy_Destroy:
 	link.w	a6,#$0

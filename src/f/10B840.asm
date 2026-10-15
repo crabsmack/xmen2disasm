@@ -2,7 +2,7 @@
 ; SpaceA1_CamUpdate - SpaceA1 camera update: scroll with the elevator, stop the lift at the ends of the shaft (sound $35, end-of-stage timer 30)
 ; In:  8(a6) = camera
 ; Out: none
-; Evidence: reads g_Elevator ($FFC63C) +4/+8/+$10/+$11; sub_1F944E(30); TAS every frame 37298-45095
+; Evidence: reads g_Elevator ($FFC63C) +4/+8/+$10/+$11; Scene_EndAfter(30); TAS every frame 37298-45095
 ; ---------------------------------------------------------------------------
 SpaceA1_CamUpdate:
 	link.w	a6,#$0

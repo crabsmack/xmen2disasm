@@ -2,7 +2,7 @@
 ; Deathbird_SetMoveMode_Case2 - Deathbird_SetMoveMode cases 2-3: circle (polar flight set-up) / hover animation
 ; In:  inside Deathbird_SetMoveMode
 ; Out: -
-; Evidence: Sw_1117A0 targets loc_111842/loc_1118B2
+; Evidence: Sw_1117A0 targets Deathbird_SetMoveMode_Case2/loc_1118B2
 ; ---------------------------------------------------------------------------
 Deathbird_SetMoveMode_Case2:
 	clr.w	$1E(a4)

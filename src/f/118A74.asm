@@ -2,7 +2,7 @@
 ; RThetaObject_Move_Case0 - RThetaObject_Move speed cases 0-1 and the shared tail (half/quarter bits, apply velocity)
 ; In:  inside RThetaObject_Move
 ; Out: -
-; Evidence: Sw_11893C targets loc_118A74/118A7C
+; Evidence: Sw_11893C targets RThetaObject_Move_Case0/118A7C
 ; ---------------------------------------------------------------------------
 RThetaObject_Move_Case0:
 	clr.l	$16(a4)

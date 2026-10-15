@@ -11,18 +11,18 @@ loc_1FDB76:
 	ext.l	d6
 	move.l	d6,-(a7)
 	pea.l	($1000).w
-	jsr	$4E3A(a5)	; -> sub_1F6258
+	jsr	$4E3A(a5)	; -> Math_MulFix8
 	move.l	d0,-$A(a6)
 	ext.l	d5
 	move.l	d5,-(a7)
 	pea.l	($1000).w
-	jsr	$4E3A(a5)	; -> sub_1F6258
+	jsr	$4E3A(a5)	; -> Math_MulFix8
 	move.l	-$A(a6),d1
 	sub.l	d0,d1
 	ext.l	d4
 	move.l	d1,d0
 	move.l	d4,d1
-	jsr	$3FA2(a5)	; -> sub_15C222
+	jsr	$3FA2(a5)	; -> Math_LDivS
 	move.l	d7,d1
 	asl.w	#$2,d1
 	move.l	d0,(a3,d1.w)

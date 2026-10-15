@@ -2,7 +2,7 @@
 ; Deathbird_MovePolar_Case0 - Deathbird_MovePolar switch cases 0-2: speed multiplier 0, 1 or 2
 ; In:  inside Deathbird_MovePolar
 ; Out: -
-; Evidence: Sw_1111EA targets loc_1112FE/11130E/11131E
+; Evidence: Sw_1111EA targets Deathbird_MovePolar_Case0/11130E/11131E
 ; ---------------------------------------------------------------------------
 Deathbird_MovePolar_Case0:
 	movea.l	$28(a6),a0

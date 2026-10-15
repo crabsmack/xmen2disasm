@@ -660,7 +660,7 @@ JumpTable:
 	jtentry	Tbl_BroodBossAnim7	; [656] jsr $14A2(a5)
 	jtentry	Tbl_BroodBossAnim8	; [657] jsr $14AA(a5)
 	jtentry	Tbl_BroodBossAnim9	; [658] jsr $14B2(a5)
-	jtentry	Tbl_BroodBossActClaw	; [659] jsr $14BA(a5)
+	jtentry	Tbl_BroodBossScriptLen	; [659] jsr $14BA(a5)
 	jtentry	Tbl_BroodClawCamApply	; [660] jsr $14C2(a5)
 	jtentry	Tbl_BroodBossCamApply	; [661] jsr $14CA(a5)
 	jtentry	Tbl_CloneA5RunScene	; [662] jsr $14D2(a5)

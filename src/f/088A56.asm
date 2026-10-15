@@ -1,6 +1,6 @@
 ; ---------------------------------------------------------------------------
 ; BroodBoss_ScrStepClaw - BROODBOSS AI script, steps 0-16 (first step jmp BroodBoss_ActClaw)
-; Evidence: jmp d(a5) thunks of the 44-entry script {word $2C @ $088A54; thunks}, continued in the next file; jt[659] ($14BA(a5), Tbl_BroodBossActClaw = the count word) is set by BroodBoss_Init
+; Evidence: jmp d(a5) thunks of the 44-entry script {word $2C @ $088A54; thunks}, continued in the next file; jt[659] ($14BA(a5), Tbl_BroodBossScriptLen = the count word) is set by BroodBoss_Init
 ; Found: runtime: executed in 1 run(s) (1 run(s) (tas))
 ; ---------------------------------------------------------------------------
 BroodBoss_ScrStepClaw:

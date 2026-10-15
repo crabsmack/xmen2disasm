@@ -1988,7 +1988,7 @@ Tbl_BroodBossAnim8:	; animation script (byte flags, byte steps, ..., 2-byte step
 	incrom	$088A38,$A
 Tbl_BroodBossAnim9:	; animation script (byte flags, byte steps, ..., 2-byte steps from +6); 10 of 12 bytes used at runtime; read by Anim_ApplyStep, Anim_AdvanceByDistance, BroodBoss_ActClaw; jt[658] used by BroodBoss_ActScream
 	incrom	$088A42,$12
-Tbl_BroodBossActClaw:	; table read by BroodBoss_ActClaw; 2 of 2 bytes used at runtime; read by BroodBoss_ActClaw, Anim_ApplyStep; jt[659] used by BroodBoss_Init
+Tbl_BroodBossScriptLen:	; word $2C = 44: step count of the BROODBOSS AI script that follows (BroodBoss_ScrStepClaw...); handed to AiScript_Set via jt[659] by BroodBoss_Init (review 002)
 	incrom	$088A54,$2
 	include "src/f/088A56.asm"
 	include "src/f/088A9A.asm"
@@ -2352,7 +2352,7 @@ Tbl_XCloneImpact:	; format not established; never read in the corpus; jt[831] us
 	incrom	$09ABD0,$48
 Tbl_XCloneImpact2:	; format not established; never read in the corpus; jt[832] used by XClone_Impact
 	incrom	$09AC18,$70
-Tbl_XCloneFrameHookCollapse:	; format not established; never read in the corpus; jt[833] used by XClone_FrameHookCollapse -> sub_1600AA
+Tbl_XCloneFrameHookCollapse:	; format not established; never read in the corpus; jt[833] used by XClone_FrameHookCollapse -> Rand_Next
 	incrom	$09AC88,$46
 	include "src/f/09ACCE.asm"
 	include "src/f/09ACDC.asm"

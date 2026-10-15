@@ -2,7 +2,7 @@
 ; SiberiaB1_LoadLevel - SiberiaB1: load the stage through the scene loader, 1:1 scroll ratios
 ; In:  none
 ; Out: none
-; Evidence: sub_1F98A8 with thunks $0F4F00/$0F563A/$0F519A
+; Evidence: Level_Load with thunks $0F4F00/$0F563A/$0F519A
 ; ---------------------------------------------------------------------------
 SiberiaB1_LoadLevel:
 	link.w	a6,#$0

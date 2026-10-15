@@ -2,7 +2,7 @@
 ; SentinelsA1_StepZapLights - SentinelsA1: every 4 frames advance each active light through frames 0-7; each light starts when the previous reaches frame 4
 ; In:  none
 ; Out: none
-; Evidence: Spr_SetFrame/sub_1FAD44 on $FFCC6A..$FFCCBA; timer $FFC6E8; chained counters $FFC6FE..$FFC6F6
+; Evidence: Spr_SetFrame/Spr_UploadFrame on $FFCC6A..$FFCCBA; timer $FFC6E8; chained counters $FFC6FE..$FFC6F6
 ; ---------------------------------------------------------------------------
 SentinelsA1_StepZapLights:
 	link.w	a6,#$0

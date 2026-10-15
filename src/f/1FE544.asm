@@ -2,7 +2,7 @@
 ; Snd_Init - load and start the Z80 sound driver and pass it four 24-bit data pointers
 ; In:  8(a6), $C(a6), $10(a6), $14(a6) = long: ROM addresses of sound data tables
 ; Out: none
-; Evidence: Z80_LoadDriver, Z80_ResetRun, then bytes $FF,$0B and four Snd_SendAddr24; called once from sub_006636 at TAS frame 5
+; Evidence: Z80_LoadDriver, Z80_ResetRun, then bytes $FF,$0B and four Snd_SendAddr24; called once from Game_Init at TAS frame 5
 ; ---------------------------------------------------------------------------
 Snd_Init:
 	link.w	a6,#$0

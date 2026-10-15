@@ -2,7 +2,7 @@
 ; Deathbird_StateLandOnSwitch - Deathbird: land beside the switch (snap to the floor segment at (240,368)), peck animation
 ; In:  8(a6) = this
 ; Out: d0 = flags & 8
-; Evidence: sub_15A8FE floor lookup, x = 200 or 280, Obj_ChangeAnim jt $2CF2, wait 255
+; Evidence: Seg_FindBelow floor lookup, x = 200 or 280, Obj_ChangeAnim jt $2CF2, wait 255
 ; ---------------------------------------------------------------------------
 Deathbird_StateLandOnSwitch:
 	link.w	a6,#$0

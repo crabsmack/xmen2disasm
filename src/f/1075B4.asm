@@ -2,7 +2,7 @@
 ; SpaceB1_LoadLevel - SpaceB1: load the stage through the scene loader, set scroll ratios/offsets, install the type-28 segment handler
 ; In:  none
 ; Out: none
-; Evidence: sub_1F98A8 with thunks $0FDE9C/$10624C/$0CA79C/$0FD7CA/$1061FA; $FFCE06 = SpaceB1_Seg28Handler
+; Evidence: Level_Load with thunks $0FDE9C/$10624C/$0CA79C/$0FD7CA/$1061FA; $FFCE06 = SpaceB1_Seg28Handler
 ; ---------------------------------------------------------------------------
 SpaceB1_LoadLevel:
 	link.w	a6,#$0

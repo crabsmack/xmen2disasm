@@ -2,7 +2,7 @@
 ; Deathbird_SetMoveMode_Case7 - Deathbird_SetMoveMode cases 7-8: enter low from a side / dive
 ; In:  inside Deathbird_SetMoveMode
 ; Out: -
-; Evidence: Sw_1117A0 targets loc_111A00/loc_111A9A
+; Evidence: Sw_1117A0 targets Deathbird_SetMoveMode_Case7/loc_111A9A
 ; ---------------------------------------------------------------------------
 Deathbird_SetMoveMode_Case7:
 	clr.w	$1E(a4)

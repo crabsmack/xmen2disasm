@@ -2,7 +2,7 @@
 ; SentinelsA1_RunScene - scene "SentinelsA1 CoolantCore": load the level, install hooks, run the level loop
 ; In:  none
 ; Out: none
-; Evidence: registered by Scene_RegisterAll (jt of sub_0E7A6A); calls Level_Run (level main loop); TAS frame 7448 once (Hologram boss room, screenshots f007800-f009000)
+; Evidence: registered by Scene_RegisterAll (jt of SentinelsA1_RunScene); calls Level_Run (level main loop); TAS frame 7448 once (Hologram boss room, screenshots f007800-f009000)
 ; ---------------------------------------------------------------------------
 SentinelsA1_RunScene:
 	link.w	a6,#$0

@@ -2,7 +2,7 @@
 ; Deathbird_SetMoveMode_Case5 - Deathbird_SetMoveMode cases 5-6: enter from a top corner / choose the next entry side while off screen
 ; In:  inside Deathbird_SetMoveMode
 ; Out: -
-; Evidence: Sw_1117A0 targets loc_111920/loc_1119B2
+; Evidence: Sw_1117A0 targets Deathbird_SetMoveMode_Case5/loc_1119B2
 ; ---------------------------------------------------------------------------
 Deathbird_SetMoveMode_Case5:
 	clr.w	$1E(a4)

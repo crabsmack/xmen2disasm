@@ -2,7 +2,7 @@
 ; HoloBolt_StateA - HoloBolt first state: set animation $0E8424, then StateB after 255 frames
 ; In:  8(a6) = this
 ; Out: d0 = flags & 8
-; Evidence: Obj_SetAnim (sub_1F626A); +$5C/+$6C state machine; TAS 8153-9001
+; Evidence: Obj_SetAnim (Obj_SetAnim); +$5C/+$6C state machine; TAS 8153-9001
 ; ---------------------------------------------------------------------------
 HoloBolt_StateA:
 	link.w	a6,#$0
