@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_0ADE7A	[link-after-rts]
+; TrapDoor_StateClosed - TRAPDOOR state: closed - tiles +$94, re-enable the segment, re-arm
+; In:  8(a6) = this
+; Out: d0
+; Found: link-after-rts
 ; ---------------------------------------------------------------------------
-sub_0ADE7A:
+TrapDoor_StateClosed:
 	link.w	a6,#$0
 	move.l	a4,-(a7)
 	movea.l	$8(a6),a4
@@ -16,7 +19,7 @@ sub_0ADE7A:
 	andi.b	#$BF,(a0)
 	addq.w	#$8,a7
 	clr.w	$6C(a4)
-	lea.l	sub_0ADBBE(pc),a0
+	lea.l	TrapDoor_StateArm(pc),a0
 	move.l	a0,$5C(a4)
 	moveq	#$8,d0
 	and.w	$4(a4),d0

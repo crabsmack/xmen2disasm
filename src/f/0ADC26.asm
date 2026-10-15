@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_0ADC26	[link-after-rts]
+; TrapDoor_StateSag - TRAPDOOR state: sag - tiles +$96, segment and standing players 2 px down, $19 frames
+; In:  8(a6) = this
+; Out: d0
+; Found: link-after-rts
 ; ---------------------------------------------------------------------------
-sub_0ADC26:
+TrapDoor_StateSag:
 	link.w	a6,#$0
 	move.l	a4,-(a7)
 	movea.l	$8(a6),a4
@@ -50,7 +53,7 @@ loc_0ADC88:
 	addq.w	#$4,a7
 loc_0ADCBC:
 	move.w	#$19,$6C(a4)
-	lea.l	sub_0ADCD8(pc),a0
+	lea.l	TrapDoor_StateSpring(pc),a0
 	move.l	a0,$5C(a4)
 	moveq	#$8,d0
 	and.w	$4(a4),d0

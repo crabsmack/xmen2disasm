@@ -1906,7 +1906,12 @@ Tbl_PerimeterDoor_vtable:	; class descriptor of PERIMETERDOOR: word name offset 
 	include "src/f/0AD3E8.asm"
 	include "src/f/0AD420.asm"
 	include "src/f/0AD486.asm"
-	incrom	$0AD50C,$44
+Tbl_SavageA2LightFrames2:	; 32 bytes: frame+1 of the second light sprite per step, read backwards (SavageA2_AnimLights)
+	incrom	$0AD50C,$20
+	incrom	$0AD52C,$2
+Tbl_SavageA2LightFrames1:	; 32 bytes: frame+1 of the first light sprite per step, read backwards (SavageA2_AnimLights)
+	incrom	$0AD52E,$20
+	incrom	$0AD54E,$2
 	include "src/f/0AD550.asm"
 	include "src/f/0AD674.asm"
 	include "src/f/0AD790.asm"

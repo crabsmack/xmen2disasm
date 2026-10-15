@@ -1,7 +1,11 @@
 ; ---------------------------------------------------------------------------
-; sub_0AD674	[jt 894]
+; SavageA2_CamApply - SavageA2 camera apply hook: clamp the camera to the limits, parallax scroll values, flood-line raster position
+; In:  8(a6) = camera
+; Out: none
+; Evidence: -$3AC8 = $100 - (flood - g_CameraY); scroll hooks -$3A54/-$3A50 with interrupts off; installed at camera +$C; jt 894; TAS 30901-33098
+; Found: jt 894
 ; ---------------------------------------------------------------------------
-sub_0AD674:
+SavageA2_CamApply:
 	link.w	a6,#$0
 	movem.l	d5-d7/a4,-(a7)
 	movea.l	$8(a6),a4

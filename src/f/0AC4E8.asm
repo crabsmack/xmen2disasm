@@ -1,7 +1,11 @@
 ; ---------------------------------------------------------------------------
-; sub_0AC4E8	[jt 888]
+; PerimeterDoor_TileHit - PERIMETERDOOR slot +$6E: one of its 3x3 tiles was hit - crack that tile, debris; after 9 hits make the opening solid-free and mark the tiles
+; In:  8(a6) = this, $E(a6) = word column, $12(a6) = word row, $14(a6) = hitting object
+; Out: none
+; Evidence: 10-frame cooldown +$6A; tile ids by scene (g_ScnSavageA2 set $38.. else $3A..) via sub_15D7F8; -$3C34 += 1; sub_118136/sub_118166 debris; at 9: sub_1F7C6A(3, block, ...) and tile flags |= $1800; per-player 10-frame cooldown (+$6A) then sound $38; called through PerimeterDoor_TileHook; TAS 31741-33049
+; Found: jt 888
 ; ---------------------------------------------------------------------------
-sub_0AC4E8:
+PerimeterDoor_TileHit:
 	link.w	a6,#$FFEE
 	movem.l	d4-d7/a3-a4,-(a7)
 	movea.l	$14(a6),a3

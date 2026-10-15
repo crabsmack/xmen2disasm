@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_0ADCD8	[link-after-rts]
+; TrapDoor_StateSpring - TRAPDOOR state: spring back - tiles +$94, segment and players 2 px up, 5 frames
+; In:  8(a6) = this
+; Out: d0
+; Found: link-after-rts
 ; ---------------------------------------------------------------------------
-sub_0ADCD8:
+TrapDoor_StateSpring:
 	link.w	a6,#$0
 	move.l	a4,-(a7)
 	movea.l	$8(a6),a4
@@ -50,7 +53,7 @@ loc_0ADD3A:
 	addq.w	#$4,a7
 loc_0ADD6E:
 	move.w	#$5,$6C(a4)
-	lea.l	sub_0ADD8A(pc),a0
+	lea.l	TrapDoor_StateOpen(pc),a0
 	move.l	a0,$5C(a4)
 	moveq	#$8,d0
 	and.w	$4(a4),d0

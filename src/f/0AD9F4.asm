@@ -1,7 +1,9 @@
 ; ---------------------------------------------------------------------------
-; sub_0AD9F4	[link-after-rts]
+; TrapDoor_NopStatic - empty non-virtual helper (called from TrapDoor_ClassInit)
+; Out: none
+; Found: link-after-rts
 ; ---------------------------------------------------------------------------
-sub_0AD9F4:
+TrapDoor_NopStatic:
 	link.w	a6,#$0
 	unlk	a6
 	rts

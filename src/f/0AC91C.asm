@@ -1,7 +1,11 @@
 ; ---------------------------------------------------------------------------
-; sub_0AC91C	[link-after-rts]
+; PerimeterDoor_StateStart - PERIMETERDOOR first state: drop its draw-list sprite, wait for the door to break
+; In:  8(a6) = this
+; Out: d0
+; Evidence: sub_1F9122(+$88); next PerimeterDoor_StateWaitBroken
+; Found: link-after-rts
 ; ---------------------------------------------------------------------------
-sub_0AC91C:
+PerimeterDoor_StateStart:
 	link.w	a6,#$0
 	move.l	a4,-(a7)
 	movea.l	$8(a6),a4
@@ -15,7 +19,7 @@ sub_0AC91C:
 	addq.w	#$4,a7
 loc_0AC93C:
 	clr.w	$6C(a4)
-	lea.l	sub_0AC956(pc),a0
+	lea.l	PerimeterDoor_StateWaitBroken(pc),a0
 	move.l	a0,$5C(a4)
 	moveq	#$8,d0
 	and.w	$4(a4),d0

@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_0AD8EC	[link-after-rts]
+; SavageA2_PlacePlayers - SavageA2: place the players (Players_PlaceAtStart(0,0,0,0))
+; In:  none
+; Out: none
+; Found: link-after-rts
 ; ---------------------------------------------------------------------------
-sub_0AD8EC:
+SavageA2_PlacePlayers:
 	link.w	a6,#$0
 	moveq	#$0,d0
 	move.l	d0,-(a7)

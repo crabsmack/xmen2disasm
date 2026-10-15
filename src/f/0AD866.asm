@@ -1,7 +1,11 @@
 ; ---------------------------------------------------------------------------
-; sub_0AD866	[link-after-rts]
+; SavageA2_LoadLevel - SavageA2: load the level (sub_1F98A8 with the Perimeter1 class list $0A7664) and set limits/parallax factors
+; In:  none
+; Out: none
+; Evidence: max y -= $60; -$3496 := $140, -$3498 := $120; TAS 30752
+; Found: link-after-rts
 ; ---------------------------------------------------------------------------
-sub_0AD866:
+SavageA2_LoadLevel:
 	link.w	a6,#$0
 	lea.l	$1AC2(a5),a0
 	move.l	$2(a0),-(a7)

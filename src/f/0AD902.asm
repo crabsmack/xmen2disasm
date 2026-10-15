@@ -1,7 +1,9 @@
 ; ---------------------------------------------------------------------------
-; sub_0AD902	[link-after-rts]
+; SavageA2_EmptyStub1 - empty function (first SavageA2 setup stub)
+; Out: none
+; Found: link-after-rts
 ; ---------------------------------------------------------------------------
-sub_0AD902:
+SavageA2_EmptyStub1:
 	link.w	a6,#$0
 	unlk	a6
 	rts

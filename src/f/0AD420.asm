@@ -1,7 +1,11 @@
 ; ---------------------------------------------------------------------------
-; sub_0AD420	[jt 891]
+; SavageA2_InitLights - SavageA2: set up the two warning-light sprites ($FFCC6A/$FFCC7E, art $0A8DC4)
+; In:  none
+; Out: none
+; Evidence: -$3B34 := 1, -$3B3C := 0; sub_1FB026 x2 at VRAM -$3AB0 and +$10; jt 891
+; Found: jt 891
 ; ---------------------------------------------------------------------------
-sub_0AD420:
+SavageA2_InitLights:
 	link.w	a6,#$0
 	move.w	#$1,-$3B34(a5)
 	clr.w	-$3B3C(a5)

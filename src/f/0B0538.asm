@@ -7,11 +7,11 @@ sub_0B0538:
 	jsr	sub_0B0484(pc)
 	jsr	sub_0B050A(pc)
 	jsr	sub_0B03A2(pc)
-	jsr	$1BFA(a5)	; -> sub_0AD420
+	jsr	$1BFA(a5)	; -> SavageA2_InitLights
 	jsr	sub_0B0468(pc)
 	jsr	sub_0B02EC(pc)
 	jsr	sub_0B0408(pc)
-	jsr	$1C1A(a5)	; -> sub_0AD7E4
+	jsr	$1C1A(a5)	; -> SavageA2_InitFlood
 	jsr	sub_0B0528(pc)
 	jsr	$2E8A(a5)	; -> GaussBullet_InitPool
 	jsr	$5002(a5)	; -> Level_Run

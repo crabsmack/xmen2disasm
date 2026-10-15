@@ -1,7 +1,11 @@
 ; ---------------------------------------------------------------------------
-; sub_0AD060	[link-after-rts]
+; PerimeterDoor_StateWaitExit - PERIMETERDOOR state: when a player stands within 16 px of the opening, end the scene after 10 frames
+; In:  8(a6) = this
+; Out: d0
+; Evidence: sub_1F944E(10) (scene exit timer); next PerimeterDoor_StateDone; TAS 31892-33089
+; Found: link-after-rts
 ; ---------------------------------------------------------------------------
-sub_0AD060:
+PerimeterDoor_StateWaitExit:
 	link.w	a6,#$0
 	movem.l	d3-d7/a4,-(a7)
 	movea.l	$8(a6),a4
@@ -86,7 +90,7 @@ loc_0AD140:
 	jsr	$4F8A(a5)	; -> Scene_EndAfter
 	addq.w	#$4,a7
 	clr.w	$6C(a4)
-	lea.l	sub_0AD166(pc),a0
+	lea.l	PerimeterDoor_StateDone(pc),a0
 	move.l	a0,$5C(a4)
 	moveq	#$8,d0
 	and.w	$4(a4),d0

@@ -1,7 +1,6 @@
 ; ---------------------------------------------------------------------------
-; TrapDoor_Init - vtable +$12 constructor: run the parent's Init, then set up a TRAPDOOR
-; In:  8(a6) = this, $C(a6) = long x, $10(a6) = long y (8 fraction bits), $14(a6) = spawn parameter
-; Evidence: slot +$12 of the TRAPDOOR descriptor $0AD956; TAS frames 30954-32834 (24 frames active); calls parent XNPC slot +$12
+; TrapDoor_Init - vtable +$12 constructor: find the type-$13 floor segment under it (+$9C) and pick the tile ids for this scene
+; Evidence: tiles +$94..+$9A = $7F/$80.. (g_ScnSavageA2) or $82/$83..; all states TrapDoor_StateStart; TAS 30954-32834
 ; ---------------------------------------------------------------------------
 TrapDoor_Init:
 	link.w	a6,#$0
@@ -21,11 +20,11 @@ TrapDoor_Init:
 	clr.l	$16(a3)
 	clr.w	$20(a3)
 	ori.w	#$4083,$6(a3)
-	lea.l	sub_0ADB7E(pc),a0
+	lea.l	TrapDoor_StateStart(pc),a0
 	move.l	a0,$5C(a3)
-	lea.l	sub_0ADB7E(pc),a0
+	lea.l	TrapDoor_StateStart(pc),a0
 	move.l	a0,$64(a3)
-	lea.l	sub_0ADB7E(pc),a0
+	lea.l	TrapDoor_StateStart(pc),a0
 	move.l	a0,$60(a3)
 	moveq	#$0,d0
 	move.l	d0,$9C(a3)

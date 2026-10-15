@@ -1,7 +1,11 @@
 ; ---------------------------------------------------------------------------
-; sub_0AD550	[jt 893]
+; SavageA2_CamUpdateFlood - SavageA2 camera update hook: after a delay raise the flood line -$38BC (fast, then slower), then the default camera update
+; In:  8(a6) = camera
+; Out: none
+; Evidence: delay $78/$1E0 frames (counter -$33A2) by scene; level long -$3C32 -= $200/$400 then $80-$100 per frame; -$3C12/-$3C10 = level + 1; sub_161816(camera); installed at camera +4; jt 893
+; Found: jt 893
 ; ---------------------------------------------------------------------------
-sub_0AD550:
+SavageA2_CamUpdateFlood:
 	link.w	a6,#$0
 	movem.l	d3/d6-d7,-(a7)
 	moveq	#$0,d0

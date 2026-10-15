@@ -1,7 +1,11 @@
 ; ---------------------------------------------------------------------------
-; sub_0ADB1A	[jt 902]
+; TrapDoor_SetTiles - TRAPDOOR slot +$82: write one tile id across the trapdoor segment's columns at its row
+; In:  8(a6) = this, $E(a6) = word tile
+; Out: d0
+; Evidence: columns from the segment's x range (+8/+$C), row = y >> 13; sub_15D7F8; jt 902
+; Found: jt 902
 ; ---------------------------------------------------------------------------
-sub_0ADB1A:
+TrapDoor_SetTiles:
 	link.w	a6,#$0
 	movem.l	d4-d7/a4,-(a7)
 	movea.l	$8(a6),a4

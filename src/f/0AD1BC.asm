@@ -1,7 +1,11 @@
 ; ---------------------------------------------------------------------------
-; sub_0AD1BC	[jt 890]
+; SavageA2_SetBlockTiles - SavageA2: rewrite the tiles of the solid block at a tile (and optionally remove the block, dropping anything standing on it)
+; In:  8(a6) = column, $A(a6) = row, $C(a6) = word tile, $F(a6) = byte remove, $12(a6) = word edge tile
+; Out: d0 = 0
+; Evidence: sub_1F8454($14, col, row) finds the block; remove: sub_1F6530 on objects whose floor +$76 is it, sub_1F7CFE, tile & $47FF; writes the tile over the block area (edge column gets the edge tile, with sub_118136 debris) and redraws (sub_15D00E); jt 890
+; Found: jt 890
 ; ---------------------------------------------------------------------------
-sub_0AD1BC:
+SavageA2_SetBlockTiles:
 	link.w	a6,#$FFF0
 	movem.l	d4-d7/a3-a4,-(a7)
 	move.b	$17(a6),d4

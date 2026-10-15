@@ -61,7 +61,7 @@ loc_0B0362:
 	move.l	d1,-(a7)
 	ext.l	d4
 	move.l	d4,-(a7)
-	jsr	$1BF2(a5)	; -> sub_0AD1BC
+	jsr	$1BF2(a5)	; -> SavageA2_SetBlockTiles
 	lea.l	$14(a7),a7
 	movem.l	-$14(a6),d3-d7
 	unlk	a6

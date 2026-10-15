@@ -1,7 +1,11 @@
 ; ---------------------------------------------------------------------------
-; sub_0ADB7E	[link-after-rts]
+; TrapDoor_StateStart - TRAPDOOR first state: drop its draw-list sprite
+; In:  8(a6) = this
+; Out: d0
+; Evidence: next TrapDoor_StateArm
+; Found: link-after-rts
 ; ---------------------------------------------------------------------------
-sub_0ADB7E:
+TrapDoor_StateStart:
 	link.w	a6,#$0
 	move.l	a4,-(a7)
 	movea.l	$8(a6),a4
@@ -16,7 +20,7 @@ sub_0ADB7E:
 	addq.w	#$4,a7
 loc_0ADBA4:
 	clr.w	$6C(a4)
-	lea.l	sub_0ADBBE(pc),a0
+	lea.l	TrapDoor_StateArm(pc),a0
 	move.l	a0,$5C(a4)
 	moveq	#$8,d0
 	and.w	$4(a4),d0

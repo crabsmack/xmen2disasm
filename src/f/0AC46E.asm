@@ -1,7 +1,6 @@
 ; ---------------------------------------------------------------------------
-; PerimeterDoor_Init - vtable +$12 constructor: run the parent's Init, then set up a PERIMETERDOOR
-; In:  8(a6) = this, $C(a6) = long x, $10(a6) = long y (8 fraction bits), $14(a6) = spawn parameter
-; Evidence: slot +$12 of the PERIMETERDOOR descriptor $0AC3B2; TAS frames 31695-32936 (2 frames active); calls parent ACTOR slot +$12; state handler(s) put in +$5C: sub_0AC91C
+; PerimeterDoor_Init - vtable +$12 constructor: door at tile (x/32 - 1, y/32 - 1), solid-block id from placement +6; register as the scene's door (-$3C38)
+; Evidence: +$90/+$8E tile column/row, +$8C block id; first state PerimeterDoor_StateStart; TAS 31695-32936
 ; ---------------------------------------------------------------------------
 PerimeterDoor_Init:
 	link.w	a6,#$0
@@ -21,9 +20,9 @@ PerimeterDoor_Init:
 	move.l	d0,$30(a4)
 	ori.w	#$5083,$6(a4)
 	clr.w	$20(a4)
-	lea.l	sub_0AC91C(pc),a0
+	lea.l	PerimeterDoor_StateStart(pc),a0
 	move.l	a0,$5C(a4)
-	lea.l	sub_0AC91C(pc),a0
+	lea.l	PerimeterDoor_StateStart(pc),a0
 	move.l	a0,$64(a4)
 	move.w	$4(a3),d1
 	asr.w	#$5,d1

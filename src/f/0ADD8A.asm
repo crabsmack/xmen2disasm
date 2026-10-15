@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_0ADD8A	[link-after-rts]
+; TrapDoor_StateOpen - TRAPDOOR state: open - tiles +$98, drop the players through (sub_1F6530), disable the segment (bit 6, sub_0BD9F0)
+; In:  8(a6) = this
+; Out: d0
+; Found: link-after-rts
 ; ---------------------------------------------------------------------------
-sub_0ADD8A:
+TrapDoor_StateOpen:
 	link.w	a6,#$0
 	move.l	a4,-(a7)
 	movea.l	$8(a6),a4
@@ -35,7 +38,7 @@ loc_0ADDE0:
 	jsr	$20D2(a5)	; -> sub_0BD9F0
 	addq.w	#$4,a7
 	move.w	#$8,$6C(a4)
-	lea.l	sub_0ADE06(pc),a0
+	lea.l	TrapDoor_StateOpenWide(pc),a0
 	move.l	a0,$5C(a4)
 	moveq	#$8,d0
 	and.w	$4(a4),d0

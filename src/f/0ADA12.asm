@@ -5,6 +5,6 @@
 ; ---------------------------------------------------------------------------
 TrapDoor_ClassInit:
 	link.w	a6,#$0
-	jsr	sub_0AD9F4(pc)
+	jsr	TrapDoor_NopStatic(pc)
 	unlk	a6
 	rts

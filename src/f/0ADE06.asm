@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_0ADE06	[link-after-rts]
+; TrapDoor_StateOpenWide - TRAPDOOR state: fully open - tiles +$9A for 10 frames
+; In:  8(a6) = this
+; Out: d0
+; Found: link-after-rts
 ; ---------------------------------------------------------------------------
-sub_0ADE06:
+TrapDoor_StateOpenWide:
 	link.w	a6,#$0
 	move.l	a4,-(a7)
 	movea.l	$8(a6),a4
@@ -14,7 +17,7 @@ sub_0ADE06:
 	jsr	(a1)
 	addq.w	#$8,a7
 	move.w	#$A,$6C(a4)
-	lea.l	sub_0ADE40(pc),a0
+	lea.l	TrapDoor_StateClosing(pc),a0
 	move.l	a0,$5C(a4)
 	moveq	#$8,d0
 	and.w	$4(a4),d0
