@@ -7,7 +7,7 @@ sub_1F6A32:
 	movea.l	$8(a6),a4
 	move.l	$8(a4),d4
 	move.l	$C(a4),d5
-	move.w	-$1754(a5),d0
+	move.w	g_Player1+$4(a5),d0
 	ext.l	d0
 	move.w	#$C000,d1
 	and.w	d0,d1
@@ -15,7 +15,7 @@ sub_1F6A32:
 	move.w	d1,d0
 	cmpi.l	#$8000,d0
 	beq.s	loc_1F6A86
-	move.w	-$1844(a5),d0
+	move.w	g_Player2+$4(a5),d0
 	ext.l	d0
 	move.w	#$C000,d1
 	and.w	d0,d1
@@ -30,7 +30,7 @@ loc_1F6A7C:
 	move.l	a0,d0
 	bra.w	loc_1F6B4C
 loc_1F6A86:
-	move.w	-$1844(a5),d0
+	move.w	g_Player2+$4(a5),d0
 	ext.l	d0
 	move.w	#$C000,d1
 	and.w	d0,d1
@@ -38,7 +38,7 @@ loc_1F6A86:
 	move.w	d1,d0
 	cmpi.l	#$8000,d0
 	beq.s	loc_1F6AC6
-	move.w	-$1754(a5),d0
+	move.w	g_Player1+$4(a5),d0
 	ext.l	d0
 	move.w	#$C000,d1
 	and.w	d0,d1
@@ -54,10 +54,10 @@ loc_1F6ABC:
 	bra.w	loc_1F6B4C
 loc_1F6AC6:
 	move.l	d4,-$8(a6)
-	move.l	-$1750(a5),d6
+	move.l	g_Player1+$8(a5),d6
 	sub.l	-$8(a6),d6
 	move.l	d5,-$4(a6)
-	move.l	-$174C(a5),d7
+	move.l	g_Player1+$C(a5),d7
 	sub.l	-$4(a6),d7
 	tst.l	d6
 	sge.b	d3
@@ -81,9 +81,9 @@ loc_1F6AFA:
 loc_1F6AFE:
 	add.l	d0,d1
 	move.l	d1,-$C(a6)
-	move.l	-$1840(a5),d6
+	move.l	g_Player2+$8(a5),d6
 	sub.l	-$8(a6),d6
-	move.l	-$183C(a5),d7
+	move.l	g_Player2+$C(a5),d7
 	sub.l	-$4(a6),d7
 	tst.l	d6
 	sge.b	d3

@@ -8,7 +8,7 @@ RollingDiscs_UpdateScroll:
 	link.w	a6,#$FFE0
 	movem.l	d3-d7/a3-a4,-(a7)
 	moveq	#$0,d3
-	move.w	-$1754(a5),d0
+	move.w	g_Player1+$4(a5),d0
 	ext.l	d0
 	move.w	#$C000,d1
 	and.w	d0,d1
@@ -16,7 +16,7 @@ RollingDiscs_UpdateScroll:
 	move.w	d1,d0
 	cmpi.l	#$8000,d0
 	bne.s	loc_03A8AC
-	tst.w	-$16EE(a5)
+	tst.w	g_Player1+$6A(a5)
 	bne.s	loc_03A8AC
 	moveq	#$1,d3
 loc_03A8AC:
@@ -31,7 +31,7 @@ loc_03A8BA:
 loc_03A8BC:
 	move.l	d0,-$8(a6)
 	moveq	#$0,d3
-	move.w	-$1844(a5),d0
+	move.w	g_Player2+$4(a5),d0
 	ext.l	d0
 	move.w	#$C000,d1
 	and.w	d0,d1
@@ -39,7 +39,7 @@ loc_03A8BC:
 	move.w	d1,d0
 	cmpi.l	#$8000,d0
 	bne.s	loc_03A8E2
-	tst.w	-$17DE(a5)
+	tst.w	g_Player2+$6A(a5)
 	bne.s	loc_03A8E2
 	moveq	#$1,d3
 loc_03A8E2:

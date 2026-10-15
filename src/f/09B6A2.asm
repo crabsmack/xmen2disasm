@@ -113,7 +113,7 @@ loc_09B7A2:
 	tst.l	$96(a4)
 	lea.l	$C(a7),a7
 	beq.s	loc_09B7FE
-	move.w	-$1844(a5),d0
+	move.w	g_Player2+$4(a5),d0
 	ext.l	d0
 	move.w	#$C000,d1
 	and.w	d0,d1
@@ -127,7 +127,7 @@ loc_09B7F8:
 	lea.l	g_Player1(a5),a3
 	bra.s	loc_09B820
 loc_09B7FE:
-	move.w	-$1754(a5),d0
+	move.w	g_Player1+$4(a5),d0
 	ext.l	d0
 	move.w	#$C000,d1
 	and.w	d0,d1

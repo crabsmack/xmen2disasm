@@ -38,7 +38,7 @@ loc_00F996:
 	move.l	a0,$4(a1)
 	move.b	#$1,-$38B4(a5)
 loc_00F9AC:
-	move.w	-$1754(a5),d0
+	move.w	g_Player1+$4(a5),d0
 	ext.l	d0
 	move.w	#$C000,d1
 	and.w	d0,d1
@@ -46,11 +46,11 @@ loc_00F9AC:
 	move.w	d1,d0
 	cmpi.l	#$8000,d0
 	bne.s	loc_00F9D0
-	clr.w	-$173A(a5)
-	clr.l	-$1742(a5)
-	clr.w	-$1738(a5)
+	clr.w	g_Player1+$1E(a5)
+	clr.l	g_Player1+$16(a5)
+	clr.w	g_Player1+$20(a5)
 loc_00F9D0:
-	move.w	-$1844(a5),d0
+	move.w	g_Player2+$4(a5),d0
 	ext.l	d0
 	move.w	#$C000,d1
 	and.w	d0,d1
@@ -58,9 +58,9 @@ loc_00F9D0:
 	move.w	d1,d0
 	cmpi.l	#$8000,d0
 	bne.s	loc_00F9F4
-	clr.w	-$182A(a5)
-	clr.l	-$1832(a5)
-	clr.w	-$1828(a5)
+	clr.w	g_Player2+$1E(a5)
+	clr.l	g_Player2+$16(a5)
+	clr.w	g_Player2+$20(a5)
 loc_00F9F4:
 	move.w	g_CameraX(a5),d6
 	tst.b	g_TwoPlayerStep(a5)

@@ -6,7 +6,7 @@
 ; ---------------------------------------------------------------------------
 unk_Player_005F18:
 	link.w	a6,#$0
-	move.w	-$1754(a5),d0
+	move.w	g_Player1+$4(a5),d0
 	ext.l	d0
 	move.w	#$C000,d1
 	and.w	d0,d1
@@ -14,7 +14,7 @@ unk_Player_005F18:
 	move.w	d1,d0
 	cmpi.l	#$8000,d0
 	bne.s	loc_005F9E
-	move.w	-$1844(a5),d0
+	move.w	g_Player2+$4(a5),d0
 	ext.l	d0
 	move.w	#$C000,d1
 	and.w	d0,d1
@@ -41,10 +41,10 @@ unk_Player_005F18:
 	jsr	$4062(a5)	; -> HitList_Add
 	move.l	d0,-$17C4(a5)
 	moveq	#-$4,d0
-	and.b	-$181A(a5),d0
+	and.b	g_Player2+$2E(a5),d0
 	moveq	#$3,d1
 	or.b	d0,d1
-	move.b	d1,-$181A(a5)
+	move.b	d1,g_Player2+$2E(a5)
 loc_005F9E:
 	unlk	a6
 	rts

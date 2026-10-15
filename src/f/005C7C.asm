@@ -10,12 +10,12 @@ Game_ResetPlayers:
 	dc.w	$1B7C,$FFFF,$C444	; insn: move.b #$ff, -$3bbc(a5)
 	moveq	#$0,d0
 	move.l	d0,g_Player1(a5)
-	clr.w	-$1754(a5)
+	clr.w	g_Player1+$4(a5)
 	move.w	#$9,g_P1Lives(a5)
 	clr.w	g_P2Health(a5)
 	dc.w	$1B7C,$FFFF,$C445	; insn: move.b #$ff, -$3bbb(a5)
 	move.l	d0,g_Player2(a5)
-	clr.w	-$1844(a5)
+	clr.w	g_Player2+$4(a5)
 	move.w	#$9,g_P2Lives(a5)
 	moveq	#$0,d1
 	move.b	g_ScnSiberiaB1(a5),d1

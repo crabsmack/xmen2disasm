@@ -16,7 +16,7 @@ AvalonB1_CamHookFinish:
 	moveq	#$60,d0
 	cmp.w	g_CameraY(a5),d0
 	blt.w	loc_00FAD0
-	move.w	-$1754(a5),d0
+	move.w	g_Player1+$4(a5),d0
 	ext.l	d0
 	move.w	#$C000,d1
 	and.w	d0,d1
@@ -25,11 +25,11 @@ AvalonB1_CamHookFinish:
 	cmpi.l	#$8000,d0
 	bne.s	loc_00FA70
 	move.w	#$1000,d0
-	and.w	-$1754(a5),d0
+	and.w	g_Player1+$4(a5),d0
 	beq.s	loc_00FA70
 	clr.b	d7
 loc_00FA70:
-	move.w	-$1844(a5),d0
+	move.w	g_Player2+$4(a5),d0
 	ext.l	d0
 	move.w	#$C000,d1
 	and.w	d0,d1
@@ -38,7 +38,7 @@ loc_00FA70:
 	cmpi.l	#$8000,d0
 	bne.s	loc_00FA94
 	move.w	#$1000,d0
-	and.w	-$1844(a5),d0
+	and.w	g_Player2+$4(a5),d0
 	beq.s	loc_00FA94
 	clr.b	d7
 loc_00FA94:
@@ -61,7 +61,7 @@ loc_00FA94:
 	lea.l	$C(a7),a7
 	bra.s	loc_00FB4A
 loc_00FAD0:
-	move.w	-$1754(a5),d0
+	move.w	g_Player1+$4(a5),d0
 	ext.l	d0
 	move.w	#$C000,d1
 	and.w	d0,d1
@@ -69,11 +69,11 @@ loc_00FAD0:
 	move.w	d1,d0
 	cmpi.l	#$8000,d0
 	bne.s	loc_00FAF4
-	clr.w	-$173A(a5)
-	clr.l	-$1742(a5)
-	clr.w	-$1738(a5)
+	clr.w	g_Player1+$1E(a5)
+	clr.l	g_Player1+$16(a5)
+	clr.w	g_Player1+$20(a5)
 loc_00FAF4:
-	move.w	-$1844(a5),d0
+	move.w	g_Player2+$4(a5),d0
 	ext.l	d0
 	move.w	#$C000,d1
 	and.w	d0,d1
@@ -81,9 +81,9 @@ loc_00FAF4:
 	move.w	d1,d0
 	cmpi.l	#$8000,d0
 	bne.s	loc_00FB18
-	clr.w	-$182A(a5)
-	clr.l	-$1832(a5)
-	clr.w	-$1828(a5)
+	clr.w	g_Player2+$1E(a5)
+	clr.l	g_Player2+$16(a5)
+	clr.w	g_Player2+$20(a5)
 loc_00FB18:
 	move.w	g_CameraX(a5),$30(a4)
 	move.w	g_CameraX(a5),d6

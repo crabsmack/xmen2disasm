@@ -28,7 +28,7 @@ EvilMaker_Init:
 	lea.l	EvilMaker_StateWaitKills(pc),a0
 	move.l	a0,$64(a4)
 	ori.w	#$5083,$6(a4)
-	move.w	-$1754(a5),d0
+	move.w	g_Player1+$4(a5),d0
 	ext.l	d0
 	move.w	#$C000,d1
 	and.w	d0,d1
@@ -37,7 +37,7 @@ EvilMaker_Init:
 	cmpi.l	#$8000,d0
 	bne.s	loc_09466C
 	moveq	#$4,d0
-	and.b	-$172A(a5),d0
+	and.b	g_Player1+$2E(a5),d0
 	beq.s	loc_094664
 	ori.b	#$4,$2E(a4)
 	bra.s	loc_0946B2
@@ -45,7 +45,7 @@ loc_094664:
 	andi.b	#$FB,$2E(a4)
 	bra.s	loc_0946B2
 loc_09466C:
-	move.w	-$1844(a5),d0
+	move.w	g_Player2+$4(a5),d0
 	ext.l	d0
 	move.w	#$C000,d1
 	and.w	d0,d1
@@ -54,7 +54,7 @@ loc_09466C:
 	cmpi.l	#$8000,d0
 	bne.s	loc_09469C
 	moveq	#$4,d0
-	and.b	-$181A(a5),d0
+	and.b	g_Player2+$2E(a5),d0
 	beq.s	loc_094694
 	ori.b	#$4,$2E(a4)
 	bra.s	loc_0946B2
@@ -63,7 +63,7 @@ loc_094694:
 	bra.s	loc_0946B2
 loc_09469C:
 	moveq	#$4,d0
-	and.b	-$172A(a5),d0
+	and.b	g_Player1+$2E(a5),d0
 	beq.s	loc_0946AC
 	ori.b	#$4,$2E(a4)
 	bra.s	loc_0946B2

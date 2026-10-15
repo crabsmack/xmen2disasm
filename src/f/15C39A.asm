@@ -7,7 +7,7 @@ sub_15C39A:
 	ext.w	d0
 	move.w	d0,-$3C5A(a5)
 	beq.s	loc_15C418
-	move.w	-$1754(a5),d0
+	move.w	g_Player1+$4(a5),d0
 	ext.l	d0
 	move.w	#$C000,d1
 	and.w	d0,d1
@@ -15,7 +15,7 @@ sub_15C39A:
 	move.w	d1,d0
 	cmpi.l	#$8000,d0
 	bne.s	loc_15C3E2
-	move.w	-$1844(a5),d0
+	move.w	g_Player2+$4(a5),d0
 	ext.l	d0
 	move.w	#$C000,d1
 	and.w	d0,d1
@@ -26,7 +26,7 @@ sub_15C39A:
 	move.b	#$4,-$1FCF(a5)
 	bra.s	loc_15C418
 loc_15C3E2:
-	move.w	-$1754(a5),d0
+	move.w	g_Player1+$4(a5),d0
 	ext.l	d0
 	move.w	#$C000,d1
 	and.w	d0,d1
@@ -34,7 +34,7 @@ loc_15C3E2:
 	move.w	d1,d0
 	cmpi.l	#$8000,d0
 	beq.s	loc_15C412
-	move.w	-$1844(a5),d0
+	move.w	g_Player2+$4(a5),d0
 	ext.l	d0
 	move.w	#$C000,d1
 	and.w	d0,d1

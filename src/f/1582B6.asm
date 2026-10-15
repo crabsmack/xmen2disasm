@@ -41,7 +41,7 @@ loc_158324:
 loc_15833A:
 	clr.b	$100(a4)
 	clr.b	$FF(a4)
-	move.w	-$1754(a5),d0
+	move.w	g_Player1+$4(a5),d0
 	ext.l	d0
 	move.w	#$C000,d1
 	and.w	d0,d1
@@ -50,7 +50,7 @@ loc_15833A:
 	cmpi.l	#$8000,d0
 	bne.s	loc_158372
 	moveq	#$4,d0
-	and.b	-$172A(a5),d0
+	and.b	g_Player1+$2E(a5),d0
 	beq.s	loc_15836A
 	ori.b	#$4,-$1A68(a5)
 	bra.s	loc_1583B8
@@ -58,7 +58,7 @@ loc_15836A:
 	andi.b	#$FB,-$1A68(a5)
 	bra.s	loc_1583B8
 loc_158372:
-	move.w	-$1844(a5),d0
+	move.w	g_Player2+$4(a5),d0
 	ext.l	d0
 	move.w	#$C000,d1
 	and.w	d0,d1
@@ -67,7 +67,7 @@ loc_158372:
 	cmpi.l	#$8000,d0
 	bne.s	loc_1583A2
 	moveq	#$4,d0
-	and.b	-$181A(a5),d0
+	and.b	g_Player2+$2E(a5),d0
 	beq.s	loc_15839A
 	ori.b	#$4,-$1A68(a5)
 	bra.s	loc_1583B8
@@ -76,7 +76,7 @@ loc_15839A:
 	bra.s	loc_1583B8
 loc_1583A2:
 	moveq	#$4,d0
-	and.b	-$172A(a5),d0
+	and.b	g_Player1+$2E(a5),d0
 	beq.s	loc_1583B2
 	ori.b	#$4,-$1A68(a5)
 	bra.s	loc_1583B8

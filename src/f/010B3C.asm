@@ -12,7 +12,7 @@ BigAcolyte_ActWaitPlayers:
 	clr.b	d6
 	clr.b	-$1(a6)
 	clr.b	d4
-	move.w	-$1754(a5),d0
+	move.w	g_Player1+$4(a5),d0
 	ext.l	d0
 	move.w	#$C000,d1
 	and.w	d0,d1
@@ -20,25 +20,25 @@ BigAcolyte_ActWaitPlayers:
 	move.w	d1,d0
 	cmpi.l	#$8000,d0
 	bne.w	loc_010BFA
-	move.l	-$1750(a5),d7
+	move.l	g_Player1+$8(a5),d7
 	asr.l	#$8,d7
 	cmpi.w	#$19C0,d7
 	ble.s	loc_010BAE
 	moveq	#$4,d0
-	and.b	-$172A(a5),d0
+	and.b	g_Player1+$2E(a5),d0
 	bne.s	loc_010BAE
-	ori.b	#$4,-$172A(a5)
+	ori.b	#$4,g_Player1+$2E(a5)
 	moveq	#$8,d0
-	and.w	-$1752(a5),d0
+	and.w	g_Player1+$6(a5),d0
 	moveq	#$0,d1
 	move.w	d0,d1
 	move.l	d1,-(a7)
 	moveq	#$0,d0
-	move.b	-$1716(a5),d0
+	move.b	g_Player1+$42(a5),d0
 	move.l	d0,-(a7)
 	moveq	#$1,d0
 	move.l	d0,-(a7)
-	move.w	-$16D0(a5),d1
+	move.w	g_Player1+$88(a5),d1
 	ext.l	d1
 	move.l	d1,-(a7)
 	jsr	$4F7A(a5)	; -> DrawList_SetPriority
@@ -47,20 +47,20 @@ loc_010BAE:
 	cmpi.w	#$1900,d7
 	bge.s	loc_010BF0
 	moveq	#$4,d0
-	and.b	-$172A(a5),d0
+	and.b	g_Player1+$2E(a5),d0
 	beq.s	loc_010BEA
-	andi.b	#$FB,-$172A(a5)
+	andi.b	#$FB,g_Player1+$2E(a5)
 	moveq	#$8,d0
-	and.w	-$1752(a5),d0
+	and.w	g_Player1+$6(a5),d0
 	moveq	#$0,d1
 	move.w	d0,d1
 	move.l	d1,-(a7)
 	moveq	#$0,d0
-	move.b	-$1716(a5),d0
+	move.b	g_Player1+$42(a5),d0
 	move.l	d0,-(a7)
 	moveq	#$0,d0
 	move.l	d0,-(a7)
-	move.w	-$16D0(a5),d1
+	move.w	g_Player1+$88(a5),d1
 	ext.l	d1
 	move.l	d1,-(a7)
 	jsr	$4F7A(a5)	; -> DrawList_SetPriority
@@ -76,7 +76,7 @@ loc_010BFA:
 	moveq	#$1,d5
 	move.b	#$1,-$1(a6)
 loc_010C02:
-	move.w	-$1844(a5),d0
+	move.w	g_Player2+$4(a5),d0
 	ext.l	d0
 	move.w	#$C000,d1
 	and.w	d0,d1
@@ -84,25 +84,25 @@ loc_010C02:
 	move.w	d1,d0
 	cmpi.l	#$8000,d0
 	bne.w	loc_010CA6
-	move.l	-$1840(a5),d7
+	move.l	g_Player2+$8(a5),d7
 	asr.l	#$8,d7
 	cmpi.w	#$19C0,d7
 	ble.s	loc_010C5E
 	moveq	#$4,d0
-	and.b	-$181A(a5),d0
+	and.b	g_Player2+$2E(a5),d0
 	bne.s	loc_010C5E
-	ori.b	#$4,-$181A(a5)
+	ori.b	#$4,g_Player2+$2E(a5)
 	moveq	#$8,d0
-	and.w	-$1842(a5),d0
+	and.w	g_Player2+$6(a5),d0
 	moveq	#$0,d1
 	move.w	d0,d1
 	move.l	d1,-(a7)
 	moveq	#$0,d0
-	move.b	-$1806(a5),d0
+	move.b	g_Player2+$42(a5),d0
 	move.l	d0,-(a7)
 	moveq	#$1,d0
 	move.l	d0,-(a7)
-	move.w	-$17C0(a5),d1
+	move.w	g_Player2+$88(a5),d1
 	ext.l	d1
 	move.l	d1,-(a7)
 	jsr	$4F7A(a5)	; -> DrawList_SetPriority
@@ -111,20 +111,20 @@ loc_010C5E:
 	cmpi.w	#$1900,d7
 	bge.s	loc_010C9C
 	moveq	#$4,d0
-	and.b	-$181A(a5),d0
+	and.b	g_Player2+$2E(a5),d0
 	beq.s	loc_010C9A
-	andi.b	#$FB,-$181A(a5)
+	andi.b	#$FB,g_Player2+$2E(a5)
 	moveq	#$8,d0
-	and.w	-$1842(a5),d0
+	and.w	g_Player2+$6(a5),d0
 	moveq	#$0,d1
 	move.w	d0,d1
 	move.l	d1,-(a7)
 	moveq	#$0,d0
-	move.b	-$1806(a5),d0
+	move.b	g_Player2+$42(a5),d0
 	move.l	d0,-(a7)
 	moveq	#$0,d0
 	move.l	d0,-(a7)
-	move.w	-$17C0(a5),d1
+	move.w	g_Player2+$88(a5),d1
 	ext.l	d1
 	move.l	d1,-(a7)
 	jsr	$4F7A(a5)	; -> DrawList_SetPriority

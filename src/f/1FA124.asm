@@ -9,7 +9,7 @@ Level_FrameLoop:
 	movem.l	d3/d5-d7/a3-a4,-(a7)
 loc_1FA12C:
 	clr.b	g_PlayersAlive(a5)
-	move.w	-$1754(a5),d0
+	move.w	g_Player1+$4(a5),d0
 	ext.l	d0
 	move.w	#$C000,d1
 	and.w	d0,d1
@@ -19,7 +19,7 @@ loc_1FA12C:
 	bne.s	loc_1FA14C
 	addq.b	#$1,g_PlayersAlive(a5)
 loc_1FA14C:
-	move.w	-$1844(a5),d0
+	move.w	g_Player2+$4(a5),d0
 	ext.l	d0
 	move.w	#$C000,d1
 	and.w	d0,d1

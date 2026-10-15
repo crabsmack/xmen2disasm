@@ -23,7 +23,7 @@ HoloBolt_Init:
 	move.l	d0,-(a7)
 	move.l	a4,-(a7)
 	jsr	$4E5A(a5)	; -> Obj_SetSpriteDef
-	move.w	-$1754(a5),d0
+	move.w	g_Player1+$4(a5),d0
 	ext.l	d0
 	move.w	#$C000,d1
 	and.w	d0,d1
@@ -32,7 +32,7 @@ HoloBolt_Init:
 	cmpi.l	#$8000,d0
 	bne.s	loc_0E8352
 	moveq	#$4,d0
-	and.b	-$172A(a5),d0
+	and.b	g_Player1+$2E(a5),d0
 	beq.s	loc_0E834A
 	ori.b	#$4,$2E(a4)
 	bra.s	loc_0E8398
@@ -40,7 +40,7 @@ loc_0E834A:
 	andi.b	#$FB,$2E(a4)
 	bra.s	loc_0E8398
 loc_0E8352:
-	move.w	-$1844(a5),d0
+	move.w	g_Player2+$4(a5),d0
 	ext.l	d0
 	move.w	#$C000,d1
 	and.w	d0,d1
@@ -49,7 +49,7 @@ loc_0E8352:
 	cmpi.l	#$8000,d0
 	bne.s	loc_0E8382
 	moveq	#$4,d0
-	and.b	-$181A(a5),d0
+	and.b	g_Player2+$2E(a5),d0
 	beq.s	loc_0E837A
 	ori.b	#$4,$2E(a4)
 	bra.s	loc_0E8398
@@ -58,7 +58,7 @@ loc_0E837A:
 	bra.s	loc_0E8398
 loc_0E8382:
 	moveq	#$4,d0
-	and.b	-$172A(a5),d0
+	and.b	g_Player1+$2E(a5),d0
 	beq.s	loc_0E8392
 	ori.b	#$4,$2E(a4)
 	bra.s	loc_0E8398

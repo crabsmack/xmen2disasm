@@ -7,7 +7,7 @@
 BaniMazaA2_DrawHook:
 	link.w	a6,#$0
 	jsr	$4F82(a5)	; -> DrawList_DrawAll
-	move.w	-$1754(a5),d0
+	move.w	g_Player1+$4(a5),d0
 	ext.l	d0
 	move.w	#$C000,d1
 	and.w	d0,d1
@@ -19,7 +19,7 @@ BaniMazaA2_DrawHook:
 	jsr	$BBA(a5)	; -> ApocBomb_DrawShadow
 	addq.w	#$4,a7
 loc_04780E:
-	move.w	-$1844(a5),d0
+	move.w	g_Player2+$4(a5),d0
 	ext.l	d0
 	move.w	#$C000,d1
 	and.w	d0,d1

@@ -70,7 +70,7 @@ loc_006C48:
 loc_006C7E:
 	move.w	g_P1Health(a5),d0
 loc_006C82:
-	move.w	d0,-$16F0(a5)
+	move.w	d0,g_Player1+$68(a5)
 	pea.l	g_Player1(a5)
 	movea.l	g_Player1(a5),a0
 	movea.l	$3E(a0),a1
@@ -79,8 +79,8 @@ loc_006C82:
 	lea.l	$14(a7),a7
 	bra.s	loc_006CA6
 loc_006C9E:
-	clr.w	-$1754(a5)
-	clr.w	-$16F0(a5)
+	clr.w	g_Player1+$4(a5)
+	clr.w	g_Player1+$68(a5)
 loc_006CA6:
 	tst.w	g_P2Health(a5)
 	beq.s	loc_006D02
@@ -107,7 +107,7 @@ loc_006CA6:
 loc_006CE0:
 	move.w	g_P2Health(a5),d0
 loc_006CE4:
-	move.w	d0,-$17E0(a5)
+	move.w	d0,g_Player2+$68(a5)
 	pea.l	g_Player2(a5)
 	movea.l	g_Player2(a5),a0
 	movea.l	$3E(a0),a1
@@ -116,8 +116,8 @@ loc_006CE4:
 	lea.l	$14(a7),a7
 	bra.s	loc_006D0A
 loc_006D02:
-	clr.w	-$1844(a5)
-	clr.w	-$17E0(a5)
+	clr.w	g_Player2+$4(a5)
+	clr.w	g_Player2+$68(a5)
 loc_006D0A:
 	move.b	#$1,g_HudDirty(a5)
 	tst.b	d5

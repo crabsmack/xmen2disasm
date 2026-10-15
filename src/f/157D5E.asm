@@ -26,7 +26,7 @@ sub_157D5E:
 	jsr	$506A(a5)	; -> Spr_Init
 	lea.l	$1C(a7),a7
 loc_157D9E:
-	move.w	-$1754(a5),d0
+	move.w	g_Player1+$4(a5),d0
 	ext.l	d0
 	move.w	#$C000,d1
 	and.w	d0,d1
@@ -35,7 +35,7 @@ loc_157D9E:
 	cmpi.l	#$8000,d0
 	bne.s	loc_157DCE
 	moveq	#$4,d0
-	and.b	-$172A(a5),d0
+	and.b	g_Player1+$2E(a5),d0
 	beq.s	loc_157DC6
 	ori.b	#$4,$2E(a4)
 	bra.s	loc_157E14
@@ -43,7 +43,7 @@ loc_157DC6:
 	andi.b	#$FB,$2E(a4)
 	bra.s	loc_157E14
 loc_157DCE:
-	move.w	-$1844(a5),d0
+	move.w	g_Player2+$4(a5),d0
 	ext.l	d0
 	move.w	#$C000,d1
 	and.w	d0,d1
@@ -52,7 +52,7 @@ loc_157DCE:
 	cmpi.l	#$8000,d0
 	bne.s	loc_157DFE
 	moveq	#$4,d0
-	and.b	-$181A(a5),d0
+	and.b	g_Player2+$2E(a5),d0
 	beq.s	loc_157DF6
 	ori.b	#$4,$2E(a4)
 	bra.s	loc_157E14
@@ -61,7 +61,7 @@ loc_157DF6:
 	bra.s	loc_157E14
 loc_157DFE:
 	moveq	#$4,d0
-	and.b	-$172A(a5),d0
+	and.b	g_Player1+$2E(a5),d0
 	beq.s	loc_157E0E
 	ori.b	#$4,$2E(a4)
 	bra.s	loc_157E14

@@ -9,7 +9,7 @@ XClone_LockArena:
 	movem.l	d3-d7/a4,-(a7)
 	movea.l	$8(a6),a4
 	ori.w	#$1000,$6(a4)
-	move.w	-$1754(a5),d0
+	move.w	g_Player1+$4(a5),d0
 	ext.l	d0
 	move.w	#$C000,d1
 	and.w	d0,d1
@@ -17,9 +17,9 @@ XClone_LockArena:
 	move.w	d1,d0
 	cmpi.l	#$8000,d0
 	bne.s	loc_0990AC
-	ori.l	#$200000,-$16C8(a5)
+	ori.l	#$200000,g_Player1+$90(a5)
 loc_0990AC:
-	move.w	-$1844(a5),d0
+	move.w	g_Player2+$4(a5),d0
 	ext.l	d0
 	move.w	#$C000,d1
 	and.w	d0,d1
@@ -27,7 +27,7 @@ loc_0990AC:
 	move.w	d1,d0
 	cmpi.l	#$8000,d0
 	bne.s	loc_0990CC
-	ori.l	#$200000,-$17B8(a5)
+	ori.l	#$200000,g_Player2+$90(a5)
 loc_0990CC:
 	tst.l	-$3B30(a5)
 	bne.s	loc_0990D6

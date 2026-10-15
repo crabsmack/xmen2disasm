@@ -10,7 +10,7 @@ Player_Nearest:
 	movea.l	$8(a6),a4
 	move.l	$8(a4),d4
 	move.l	$C(a4),d5
-	move.w	-$1754(a5),d0
+	move.w	g_Player1+$4(a5),d0
 	ext.l	d0
 	move.w	#$C000,d1
 	and.w	d0,d1
@@ -22,7 +22,7 @@ Player_Nearest:
 	move.l	a0,d0
 	bra.w	loc_1F6A28
 loc_1F6980:
-	move.w	-$1844(a5),d0
+	move.w	g_Player2+$4(a5),d0
 	ext.l	d0
 	move.w	#$C000,d1
 	and.w	d0,d1
@@ -35,10 +35,10 @@ loc_1F6980:
 	bra.w	loc_1F6A28
 loc_1F69A2:
 	move.l	d4,-$8(a6)
-	move.l	-$1750(a5),d6
+	move.l	g_Player1+$8(a5),d6
 	sub.l	-$8(a6),d6
 	move.l	d5,-$4(a6)
-	move.l	-$174C(a5),d7
+	move.l	g_Player1+$C(a5),d7
 	sub.l	-$4(a6),d7
 	tst.l	d6
 	sge.b	d3
@@ -62,9 +62,9 @@ loc_1F69D6:
 loc_1F69DA:
 	add.l	d0,d1
 	move.l	d1,-$C(a6)
-	move.l	-$1840(a5),d6
+	move.l	g_Player2+$8(a5),d6
 	sub.l	-$8(a6),d6
-	move.l	-$183C(a5),d7
+	move.l	g_Player2+$C(a5),d7
 	sub.l	-$4(a6),d7
 	tst.l	d6
 	sge.b	d3

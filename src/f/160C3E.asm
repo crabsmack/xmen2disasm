@@ -35,7 +35,7 @@ loc_160C7E:
 	tst.w	$5C(a4)
 	blt.s	loc_160CFC
 	move.l	#$98967F,d7
-	move.w	-$1754(a5),d0
+	move.w	g_Player1+$4(a5),d0
 	ext.l	d0
 	move.w	#$C000,d1
 	and.w	d0,d1
@@ -43,9 +43,9 @@ loc_160C7E:
 	move.w	d1,d0
 	cmpi.l	#$8000,d0
 	bne.s	loc_160CAE
-	move.l	-$174C(a5),d7
+	move.l	g_Player1+$C(a5),d7
 loc_160CAE:
-	move.w	-$1844(a5),d0
+	move.w	g_Player2+$4(a5),d0
 	ext.l	d0
 	move.w	#$C000,d1
 	and.w	d0,d1
@@ -53,14 +53,14 @@ loc_160CAE:
 	move.w	d1,d0
 	cmpi.l	#$8000,d0
 	bne.s	loc_160CDA
-	cmp.l	-$183C(a5),d7
+	cmp.l	g_Player2+$C(a5),d7
 	slt.b	d3
 	neg.b	d3
 	beq.s	loc_160CD4
 	move.l	d7,d0
 	bra.s	loc_160CD8
 loc_160CD4:
-	move.l	-$183C(a5),d0
+	move.l	g_Player2+$C(a5),d0
 loc_160CD8:
 	move.l	d0,d7
 loc_160CDA:

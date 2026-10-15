@@ -12,7 +12,7 @@ BaniMazaB2_PlacePlayers:
 	move.l	d0,-(a7)
 	move.l	d0,-(a7)
 	jsr	$8A(a5)	; -> Players_PlaceAtStart
-	move.w	-$1754(a5),d0
+	move.w	g_Player1+$4(a5),d0
 	ext.l	d0
 	move.w	#$C000,d1
 	and.w	d0,d1
@@ -20,9 +20,9 @@ BaniMazaB2_PlacePlayers:
 	move.w	d1,d0
 	cmpi.l	#$8000,d0
 	bne.s	loc_05AC54
-	ori.b	#$4,-$172A(a5)
+	ori.b	#$4,g_Player1+$2E(a5)
 loc_05AC54:
-	move.w	-$1844(a5),d0
+	move.w	g_Player2+$4(a5),d0
 	ext.l	d0
 	move.w	#$C000,d1
 	and.w	d0,d1
@@ -30,7 +30,7 @@ loc_05AC54:
 	move.w	d1,d0
 	cmpi.l	#$8000,d0
 	bne.s	loc_05AC72
-	ori.b	#$4,-$181A(a5)
+	ori.b	#$4,g_Player2+$2E(a5)
 loc_05AC72:
 	unlk	a6
 	rts

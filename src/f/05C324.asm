@@ -14,7 +14,7 @@ sub_05C324:
 	tst.b	d0
 	lea.l	$C(a7),a7
 	beq.s	loc_05C37C
-	move.w	-$1844(a5),d0
+	move.w	g_Player2+$4(a5),d0
 	ext.l	d0
 	move.w	#$C000,d1
 	and.w	d0,d1
@@ -38,7 +38,7 @@ loc_05C37C:
 	tst.b	d0
 	addq.w	#$8,a7
 	beq.s	loc_05C3BA
-	move.w	-$1754(a5),d0
+	move.w	g_Player1+$4(a5),d0
 	ext.l	d0
 	move.w	#$C000,d1
 	and.w	d0,d1

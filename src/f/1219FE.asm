@@ -49,7 +49,7 @@ loc_121A66:
 	bgt.s	loc_121A66
 	move.b	#$1,g_PalBaseDirty(a5)
 loc_121A7E:
-	move.w	-$1754(a5),d0
+	move.w	g_Player1+$4(a5),d0
 	ext.l	d0
 	move.w	#$C000,d1
 	and.w	d0,d1
@@ -57,7 +57,7 @@ loc_121A7E:
 	move.w	d1,d0
 	cmpi.l	#$8000,d0
 	beq.s	loc_121AB4
-	move.w	-$1844(a5),d0
+	move.w	g_Player2+$4(a5),d0
 	ext.l	d0
 	move.w	#$C000,d1
 	and.w	d0,d1

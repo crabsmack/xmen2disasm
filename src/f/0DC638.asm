@@ -37,7 +37,7 @@ Barrier_Init:
 	moveq	#$0,d1
 	or.b	d0,d1
 	move.b	d1,$2E(a4)
-	move.w	-$1754(a5),d0
+	move.w	g_Player1+$4(a5),d0
 	ext.l	d0
 	move.w	#$C000,d1
 	and.w	d0,d1
@@ -47,7 +47,7 @@ Barrier_Init:
 	lea.l	$18(a7),a7
 	bne.s	loc_0DC6E4
 	moveq	#$4,d0
-	and.b	-$172A(a5),d0
+	and.b	g_Player1+$2E(a5),d0
 	beq.s	loc_0DC6DC
 	ori.b	#$4,$2E(a4)
 	bra.s	loc_0DC72A
@@ -55,7 +55,7 @@ loc_0DC6DC:
 	andi.b	#$FB,$2E(a4)
 	bra.s	loc_0DC72A
 loc_0DC6E4:
-	move.w	-$1844(a5),d0
+	move.w	g_Player2+$4(a5),d0
 	ext.l	d0
 	move.w	#$C000,d1
 	and.w	d0,d1
@@ -64,7 +64,7 @@ loc_0DC6E4:
 	cmpi.l	#$8000,d0
 	bne.s	loc_0DC714
 	moveq	#$4,d0
-	and.b	-$181A(a5),d0
+	and.b	g_Player2+$2E(a5),d0
 	beq.s	loc_0DC70C
 	ori.b	#$4,$2E(a4)
 	bra.s	loc_0DC72A
@@ -73,7 +73,7 @@ loc_0DC70C:
 	bra.s	loc_0DC72A
 loc_0DC714:
 	moveq	#$4,d0
-	and.b	-$172A(a5),d0
+	and.b	g_Player1+$2E(a5),d0
 	beq.s	loc_0DC724
 	ori.b	#$4,$2E(a4)
 	bra.s	loc_0DC72A

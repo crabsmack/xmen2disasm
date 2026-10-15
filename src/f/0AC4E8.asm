@@ -379,7 +379,7 @@ loc_0AC89E:
 	move.w	-$3C34(a5),d0
 	addq.w	#$1,-$3C34(a5)
 loc_0AC8A6:
-	move.w	-$1754(a5),d0
+	move.w	g_Player1+$4(a5),d0
 	ext.l	d0
 	move.w	#$C000,d1
 	and.w	d0,d1
@@ -390,12 +390,12 @@ loc_0AC8A6:
 	lea.l	g_Player1(a5),a0
 	cmpa.l	a3,a0
 	bne.s	loc_0AC8D4
-	tst.w	-$16EE(a5)
+	tst.w	g_Player1+$6A(a5)
 	bgt.s	loc_0AC912
-	move.w	#$A,-$16EE(a5)
+	move.w	#$A,g_Player1+$6A(a5)
 	bra.s	loc_0AC900
 loc_0AC8D4:
-	move.w	-$1844(a5),d0
+	move.w	g_Player2+$4(a5),d0
 	ext.l	d0
 	move.w	#$C000,d1
 	and.w	d0,d1
@@ -406,9 +406,9 @@ loc_0AC8D4:
 	lea.l	g_Player2(a5),a0
 	cmpa.l	a3,a0
 	bne.s	loc_0AC900
-	tst.w	-$17DE(a5)
+	tst.w	g_Player2+$6A(a5)
 	bgt.s	loc_0AC912
-	move.w	#$A,-$17DE(a5)
+	move.w	#$A,g_Player2+$6A(a5)
 loc_0AC900:
 	moveq	#$38,d0
 	move.l	d0,-(a7)

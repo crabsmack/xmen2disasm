@@ -50,7 +50,7 @@ loc_0DC878:
 	and.w	$4(a4),d0
 	bra.w	loc_0DC996
 loc_0DC894:
-	move.w	-$1754(a5),d0
+	move.w	g_Player1+$4(a5),d0
 	ext.l	d0
 	move.w	#$C000,d1
 	and.w	d0,d1
@@ -60,7 +60,7 @@ loc_0DC894:
 	bne.s	loc_0DC8FC
 	move.w	-$170A(a5),d0
 	ext.l	d0
-	move.w	-$1706(a5),d1
+	move.w	g_Player1+$52(a5),d1
 	ext.l	d1
 	add.l	d0,d1
 	move.l	d1,d7
@@ -93,7 +93,7 @@ loc_0DC8EA:
 	ble.s	loc_0DC8FC
 	clr.b	d6
 loc_0DC8FC:
-	move.w	-$1844(a5),d0
+	move.w	g_Player2+$4(a5),d0
 	ext.l	d0
 	move.w	#$C000,d1
 	and.w	d0,d1
@@ -103,7 +103,7 @@ loc_0DC8FC:
 	bne.s	loc_0DC964
 	move.w	-$17FA(a5),d0
 	ext.l	d0
-	move.w	-$17F6(a5),d1
+	move.w	g_Player2+$52(a5),d1
 	ext.l	d1
 	add.l	d0,d1
 	move.l	d1,d7

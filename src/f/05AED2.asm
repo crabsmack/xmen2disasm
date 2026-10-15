@@ -13,7 +13,7 @@ sub_05AED2:
 	move.w	d0,-$12(a6)
 	move.l	$8(a6),d6
 	add.l	#$1C000,d6
-	move.w	-$1754(a5),d0
+	move.w	g_Player1+$4(a5),d0
 	ext.l	d0
 	move.w	#$C000,d2
 	and.w	d0,d2
@@ -23,7 +23,7 @@ sub_05AED2:
 	seq.b	d3
 	neg.b	d3
 	move.b	d3,d4
-	move.w	-$1844(a5),d0
+	move.w	g_Player2+$4(a5),d0
 	ext.l	d0
 	move.w	#$C000,d2
 	and.w	d0,d2
@@ -37,15 +37,15 @@ sub_05AED2:
 	beq.s	loc_05AF7E
 	tst.b	d5
 	beq.s	loc_05AF7E
-	move.l	-$174C(a5),d0
-	cmp.l	-$183C(a5),d0
+	move.l	g_Player1+$C(a5),d0
+	cmp.l	g_Player2+$C(a5),d0
 	slt.b	d3
 	neg.b	d3
 	beq.s	loc_05AF4E
-	move.l	-$174C(a5),d0
+	move.l	g_Player1+$C(a5),d0
 	bra.s	loc_05AF52
 loc_05AF4E:
-	move.l	-$183C(a5),d0
+	move.l	g_Player2+$C(a5),d0
 loc_05AF52:
 	cmp.l	d0,d6
 	bgt.w	loc_05B00C
@@ -53,35 +53,35 @@ loc_05AF52:
 	btst	#$0,d0
 	beq.s	loc_05AF70
 	moveq	#$F,d0
-	muls.w	-$1742(a5),d0
+	muls.w	g_Player1+$16(a5),d0
 	move.l	d0,d7
-	add.l	-$1750(a5),d7
+	add.l	g_Player1+$8(a5),d7
 	bra.s	loc_05AFAE
 loc_05AF70:
 	moveq	#$F,d0
-	muls.w	-$1832(a5),d0
+	muls.w	g_Player2+$16(a5),d0
 	move.l	d0,d7
-	add.l	-$1840(a5),d7
+	add.l	g_Player2+$8(a5),d7
 	bra.s	loc_05AFAE
 loc_05AF7E:
 	tst.b	d4
 	beq.s	loc_05AF98
-	cmp.l	-$174C(a5),d6
+	cmp.l	g_Player1+$C(a5),d6
 	bgt.w	loc_05B00C
 	moveq	#$F,d0
-	muls.w	-$1742(a5),d0
+	muls.w	g_Player1+$16(a5),d0
 	move.l	d0,d7
-	add.l	-$1750(a5),d7
+	add.l	g_Player1+$8(a5),d7
 	bra.s	loc_05AFAE
 loc_05AF98:
 	tst.b	d5
 	beq.s	loc_05AFAE
-	cmp.l	-$183C(a5),d6
+	cmp.l	g_Player2+$C(a5),d6
 	bgt.s	loc_05B00C
 	moveq	#$F,d0
-	muls.w	-$1832(a5),d0
+	muls.w	g_Player2+$16(a5),d0
 	move.l	d0,d7
-	add.l	-$1840(a5),d7
+	add.l	g_Player2+$8(a5),d7
 loc_05AFAE:
 	clr.w	-$A(a6)
 	pea.l	-$10(a6)

@@ -234,8 +234,8 @@ loc_066E0C:
 loc_066E20:
 	move.b	d7,g_P1CharIndex(a5)
 	move.b	d6,g_P2CharIndex(a5)
-	clr.w	-$1754(a5)
-	clr.w	-$1844(a5)
+	clr.w	g_Player1+$4(a5)
+	clr.w	g_Player2+$4(a5)
 	jsr	PlayerSelect_Run(pc)
 	jsr	$5242(a5)	; -> Snd_StopAll
 loc_066E38:
@@ -257,8 +257,8 @@ loc_066E60:
 	tst.b	g_PalFadeActive(a5)
 	bne.s	loc_066E5C
 	jsr	$5112(a5)	; -> VDP_WaitVBlank
-	move.w	g_P1Health(a5),-$16F0(a5)
-	move.w	g_P2Health(a5),-$17E0(a5)
+	move.w	g_P1Health(a5),g_Player1+$68(a5)
+	move.w	g_P2Health(a5),g_Player2+$68(a5)
 	movem.l	-$14(a6),d3/d6-d7/a3-a4
 	unlk	a6
 	rts

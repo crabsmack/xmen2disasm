@@ -454,7 +454,7 @@ loc_065C30:
 	movea.l	-$3B28(a5),a0
 	move.b	$3C(a0),g_P1CharIndex(a5)
 loc_065C3A:
-	move.w	#$C000,-$1754(a5)
+	move.w	#$C000,g_Player1+$4(a5)
 	move.b	g_P1CharIndex(a5),d0
 	bmi.s	PlayerSelect_Run_SetP2
 	cmpi.b	#$6,d0

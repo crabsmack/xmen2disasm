@@ -63,7 +63,7 @@ loc_013406:
 	clr.w	$6C(a4)
 loc_013422:
 	ori.w	#$80,$6(a4)
-	move.w	-$1754(a5),d0
+	move.w	g_Player1+$4(a5),d0
 	ext.l	d0
 	move.w	#$C000,d1
 	and.w	d0,d1
@@ -72,7 +72,7 @@ loc_013422:
 	cmpi.l	#$8000,d0
 	bne.s	loc_013458
 	moveq	#$4,d0
-	and.b	-$172A(a5),d0
+	and.b	g_Player1+$2E(a5),d0
 	beq.s	loc_013450
 	ori.b	#$4,$2E(a4)
 	bra.s	loc_01349E
@@ -80,7 +80,7 @@ loc_013450:
 	andi.b	#$FB,$2E(a4)
 	bra.s	loc_01349E
 loc_013458:
-	move.w	-$1844(a5),d0
+	move.w	g_Player2+$4(a5),d0
 	ext.l	d0
 	move.w	#$C000,d1
 	and.w	d0,d1
@@ -89,7 +89,7 @@ loc_013458:
 	cmpi.l	#$8000,d0
 	bne.s	loc_013488
 	moveq	#$4,d0
-	and.b	-$181A(a5),d0
+	and.b	g_Player2+$2E(a5),d0
 	beq.s	loc_013480
 	ori.b	#$4,$2E(a4)
 	bra.s	loc_01349E
@@ -98,7 +98,7 @@ loc_013480:
 	bra.s	loc_01349E
 loc_013488:
 	moveq	#$4,d0
-	and.b	-$172A(a5),d0
+	and.b	g_Player1+$2E(a5),d0
 	beq.s	loc_013498
 	ori.b	#$4,$2E(a4)
 	bra.s	loc_01349E

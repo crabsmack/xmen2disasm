@@ -15,7 +15,7 @@ TrapDoor_StateOpen:
 	movea.l	(a4),a0
 	movea.l	$82(a0),a1
 	jsr	(a1)
-	move.l	-$16E2(a5),d0
+	move.l	g_Player1+$76(a5),d0
 	cmp.l	$9C(a4),d0
 	addq.w	#$8,a7
 	bne.s	loc_0ADDC4
@@ -25,7 +25,7 @@ TrapDoor_StateOpen:
 	ori.b	#$40,(a0)
 	addq.w	#$4,a7
 loc_0ADDC4:
-	move.l	-$17D2(a5),d0
+	move.l	g_Player2+$76(a5),d0
 	cmp.l	$9C(a4),d0
 	bne.s	loc_0ADDE0
 	pea.l	g_Player2(a5)

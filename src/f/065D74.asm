@@ -7,7 +7,7 @@
 PlayerSelect_Run_P2None:
 	moveq	#$0,d0
 	move.l	d0,g_Player2(a5)
-	clr.w	-$1844(a5)
+	clr.w	g_Player2+$4(a5)
 	dc.w	$1B7C,$FFFF,$C445	; insn: move.b #$ff, -$3bbb(a5)
 	movem.l	-$9E(a6),d4-d7/a3-a4
 	unlk	a6

@@ -10,67 +10,67 @@ PerimeterDoor_StateWaitExit:
 	movem.l	d3-d7/a4,-(a7)
 	movea.l	$8(a6),a4
 	move.l	$8(a4),d0
-	sub.l	-$1750(a5),d0
+	sub.l	g_Player1+$8(a5),d0
 	sge.b	d3
 	neg.b	d3
 	beq.s	loc_0AD084
 	move.l	$8(a4),d0
-	sub.l	-$1750(a5),d0
+	sub.l	g_Player1+$8(a5),d0
 	bra.s	loc_0AD08E
 loc_0AD084:
 	move.l	$8(a4),d0
-	sub.l	-$1750(a5),d0
+	sub.l	g_Player1+$8(a5),d0
 	neg.l	d0
 loc_0AD08E:
 	move.l	d0,d4
 	asr.l	#$8,d4
 	move.l	$C(a4),d0
 	add.l	#$3000,d0
-	sub.l	-$174C(a5),d0
+	sub.l	g_Player1+$C(a5),d0
 	sge.b	d3
 	neg.b	d3
 	beq.s	loc_0AD0B6
 	move.l	$C(a4),d0
 	add.l	#$3000,d0
-	sub.l	-$174C(a5),d0
+	sub.l	g_Player1+$C(a5),d0
 	bra.s	loc_0AD0C6
 loc_0AD0B6:
 	move.l	$C(a4),d0
 	add.l	#$3000,d0
-	sub.l	-$174C(a5),d0
+	sub.l	g_Player1+$C(a5),d0
 	neg.l	d0
 loc_0AD0C6:
 	move.l	d0,d5
 	asr.l	#$8,d5
 	move.l	$8(a4),d0
-	sub.l	-$1840(a5),d0
+	sub.l	g_Player2+$8(a5),d0
 	sge.b	d3
 	neg.b	d3
 	beq.s	loc_0AD0E2
 	move.l	$8(a4),d0
-	sub.l	-$1840(a5),d0
+	sub.l	g_Player2+$8(a5),d0
 	bra.s	loc_0AD0EC
 loc_0AD0E2:
 	move.l	$8(a4),d0
-	sub.l	-$1840(a5),d0
+	sub.l	g_Player2+$8(a5),d0
 	neg.l	d0
 loc_0AD0EC:
 	move.l	d0,d6
 	asr.l	#$8,d6
 	move.l	$C(a4),d0
 	add.l	#$3000,d0
-	sub.l	-$183C(a5),d0
+	sub.l	g_Player2+$C(a5),d0
 	sge.b	d3
 	neg.b	d3
 	beq.s	loc_0AD114
 	move.l	$C(a4),d0
 	add.l	#$3000,d0
-	sub.l	-$183C(a5),d0
+	sub.l	g_Player2+$C(a5),d0
 	bra.s	loc_0AD124
 loc_0AD114:
 	move.l	$C(a4),d0
 	add.l	#$3000,d0
-	sub.l	-$183C(a5),d0
+	sub.l	g_Player2+$C(a5),d0
 	neg.l	d0
 loc_0AD124:
 	move.l	d0,d7

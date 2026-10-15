@@ -47,7 +47,7 @@ XClone_Init:
 	moveq	#$2,d1
 	or.b	d0,d1
 	move.b	d1,$2E(a4)
-	move.w	-$1754(a5),d0
+	move.w	g_Player1+$4(a5),d0
 	ext.l	d0
 	move.w	#$C000,d1
 	and.w	d0,d1
@@ -57,7 +57,7 @@ XClone_Init:
 	lea.l	$18(a7),a7
 	bne.s	loc_095326
 	moveq	#$4,d0
-	and.b	-$172A(a5),d0
+	and.b	g_Player1+$2E(a5),d0
 	beq.s	loc_09531E
 	ori.b	#$4,$2E(a4)
 	bra.s	loc_09536C
@@ -65,7 +65,7 @@ loc_09531E:
 	andi.b	#$FB,$2E(a4)
 	bra.s	loc_09536C
 loc_095326:
-	move.w	-$1844(a5),d0
+	move.w	g_Player2+$4(a5),d0
 	ext.l	d0
 	move.w	#$C000,d1
 	and.w	d0,d1
@@ -74,7 +74,7 @@ loc_095326:
 	cmpi.l	#$8000,d0
 	bne.s	loc_095356
 	moveq	#$4,d0
-	and.b	-$181A(a5),d0
+	and.b	g_Player2+$2E(a5),d0
 	beq.s	loc_09534E
 	ori.b	#$4,$2E(a4)
 	bra.s	loc_09536C
@@ -83,7 +83,7 @@ loc_09534E:
 	bra.s	loc_09536C
 loc_095356:
 	moveq	#$4,d0
-	and.b	-$172A(a5),d0
+	and.b	g_Player1+$2E(a5),d0
 	beq.s	loc_095366
 	ori.b	#$4,$2E(a4)
 	bra.s	loc_09536C

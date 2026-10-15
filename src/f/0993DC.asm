@@ -12,7 +12,7 @@ XClone_UnlockArena:
 	tst.b	$B0(a4)
 	beq.s	loc_09945E
 	clr.b	$B0(a4)
-	move.w	-$1754(a5),d0
+	move.w	g_Player1+$4(a5),d0
 	ext.l	d0
 	move.w	#$C000,d1
 	and.w	d0,d1
@@ -20,9 +20,9 @@ XClone_UnlockArena:
 	move.w	d1,d0
 	cmpi.l	#$8000,d0
 	bne.s	loc_099410
-	andi.l	#$FFDFFFFF,-$16C8(a5)
+	andi.l	#$FFDFFFFF,g_Player1+$90(a5)
 loc_099410:
-	move.w	-$1844(a5),d0
+	move.w	g_Player2+$4(a5),d0
 	ext.l	d0
 	move.w	#$C000,d1
 	and.w	d0,d1
@@ -30,7 +30,7 @@ loc_099410:
 	move.w	d1,d0
 	cmpi.l	#$8000,d0
 	bne.s	loc_099430
-	andi.l	#$FFDFFFFF,-$17B8(a5)
+	andi.l	#$FFDFFFFF,g_Player2+$90(a5)
 loc_099430:
 	move.b	#$1,-$3894(a5)
 	movea.l	g_Camera(a5),a0

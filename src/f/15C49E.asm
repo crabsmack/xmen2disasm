@@ -50,7 +50,7 @@ loc_15C51A:
 	moveq	#$37,d0
 	move.l	d0,-(a7)
 	jsr	$521A(a5)	; -> sub_1FE584
-	move.w	-$1754(a5),d0
+	move.w	g_Player1+$4(a5),d0
 	ext.l	d0
 	move.w	#$C000,d1
 	and.w	d0,d1
@@ -59,7 +59,7 @@ loc_15C51A:
 	cmpi.l	#$8000,d0
 	addq.w	#$8,a7
 	bne.w	loc_15C5D6
-	move.w	-$1844(a5),d0
+	move.w	g_Player2+$4(a5),d0
 	ext.l	d0
 	move.w	#$C000,d1
 	and.w	d0,d1

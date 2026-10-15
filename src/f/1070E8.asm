@@ -24,7 +24,7 @@ Platform1_StateRide:
 	bra.s	loc_1071A0
 loc_107126:
 	moveq	#$0,d3
-	move.w	-$1754(a5),d0
+	move.w	g_Player1+$4(a5),d0
 	ext.l	d0
 	move.w	#$C000,d1
 	and.w	d0,d1
@@ -32,14 +32,14 @@ loc_107126:
 	move.w	d1,d0
 	cmpi.l	#$8000,d0
 	bne.s	loc_10714C
-	move.l	-$16E2(a5),d0
+	move.l	g_Player1+$76(a5),d0
 	cmp.l	$8C(a4),d0
 	bne.s	loc_10714C
 	moveq	#$1,d3
 loc_10714C:
 	move.b	d3,d6
 	moveq	#$0,d3
-	move.w	-$1844(a5),d0
+	move.w	g_Player2+$4(a5),d0
 	ext.l	d0
 	move.w	#$C000,d1
 	and.w	d0,d1
@@ -47,7 +47,7 @@ loc_10714C:
 	move.w	d1,d0
 	cmpi.l	#$8000,d0
 	bne.s	loc_107174
-	move.l	-$17D2(a5),d0
+	move.l	g_Player2+$76(a5),d0
 	cmp.l	$8C(a4),d0
 	bne.s	loc_107174
 	moveq	#$1,d3

@@ -27,7 +27,7 @@ CoreElevator_Init:
 	move.l	a0,$64(a4)
 	move.l	a0,$5C(a4)
 	ori.w	#$5283,$6(a4)
-	move.w	-$1754(a5),d0
+	move.w	g_Player1+$4(a5),d0
 	ext.l	d0
 	move.w	#$C000,d1
 	and.w	d0,d1
@@ -37,7 +37,7 @@ CoreElevator_Init:
 	lea.l	$18(a7),a7
 	bne.s	loc_0EC8D8
 	moveq	#$4,d0
-	and.b	-$172A(a5),d0
+	and.b	g_Player1+$2E(a5),d0
 	beq.s	loc_0EC8D0
 	ori.b	#$4,$2E(a4)
 	bra.s	loc_0EC91E
@@ -45,7 +45,7 @@ loc_0EC8D0:
 	andi.b	#$FB,$2E(a4)
 	bra.s	loc_0EC91E
 loc_0EC8D8:
-	move.w	-$1844(a5),d0
+	move.w	g_Player2+$4(a5),d0
 	ext.l	d0
 	move.w	#$C000,d1
 	and.w	d0,d1
@@ -54,7 +54,7 @@ loc_0EC8D8:
 	cmpi.l	#$8000,d0
 	bne.s	loc_0EC908
 	moveq	#$4,d0
-	and.b	-$181A(a5),d0
+	and.b	g_Player2+$2E(a5),d0
 	beq.s	loc_0EC900
 	ori.b	#$4,$2E(a4)
 	bra.s	loc_0EC91E
@@ -63,7 +63,7 @@ loc_0EC900:
 	bra.s	loc_0EC91E
 loc_0EC908:
 	moveq	#$4,d0
-	and.b	-$172A(a5),d0
+	and.b	g_Player1+$2E(a5),d0
 	beq.s	loc_0EC918
 	ori.b	#$4,$2E(a4)
 	bra.s	loc_0EC91E

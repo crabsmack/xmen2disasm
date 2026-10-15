@@ -36,34 +36,34 @@ Cam_TrackBoth:
 	addq.w	#$4,a7
 	bra.w	loc_161184
 loc_1610A4:
-	move.l	-$1750(a5),d0
-	cmp.l	-$1840(a5),d0
+	move.l	g_Player1+$8(a5),d0
+	cmp.l	g_Player2+$8(a5),d0
 	bge.s	loc_1610C0
-	move.l	-$1750(a5),d0
+	move.l	g_Player1+$8(a5),d0
 	asr.l	#$8,d0
 	move.w	d0,-$2(a6)
-	move.l	-$1840(a5),d4
+	move.l	g_Player2+$8(a5),d4
 	asr.l	#$8,d4
 	bra.s	loc_1610D0
 loc_1610C0:
-	move.l	-$1840(a5),d0
+	move.l	g_Player2+$8(a5),d0
 	asr.l	#$8,d0
 	move.w	d0,-$2(a6)
-	move.l	-$1750(a5),d4
+	move.l	g_Player1+$8(a5),d4
 	asr.l	#$8,d4
 loc_1610D0:
-	move.l	-$174C(a5),d0
-	cmp.l	-$183C(a5),d0
+	move.l	g_Player1+$C(a5),d0
+	cmp.l	g_Player2+$C(a5),d0
 	bge.s	loc_1610E8
-	move.l	-$174C(a5),d6
+	move.l	g_Player1+$C(a5),d6
 	asr.l	#$8,d6
-	move.l	-$183C(a5),d5
+	move.l	g_Player2+$C(a5),d5
 	asr.l	#$8,d5
 	bra.s	loc_1610F4
 loc_1610E8:
-	move.l	-$183C(a5),d6
+	move.l	g_Player2+$C(a5),d6
 	asr.l	#$8,d6
-	move.l	-$174C(a5),d5
+	move.l	g_Player1+$C(a5),d5
 	asr.l	#$8,d5
 loc_1610F4:
 	move.w	-$2(a6),d0

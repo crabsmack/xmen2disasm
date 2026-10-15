@@ -29,7 +29,7 @@ PowerUp_Init:
 	moveq	#$1,d1
 	or.b	d0,d1
 	move.b	d1,$2E(a4)
-	move.w	-$1754(a5),d0
+	move.w	g_Player1+$4(a5),d0
 	ext.l	d0
 	move.w	#$C000,d1
 	and.w	d0,d1

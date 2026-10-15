@@ -18,7 +18,7 @@ Cam_FollowPlayer:
 	move.w	$1A(a6),$42(a4)
 	move.w	#$40,$62(a4)
 	move.w	#$E0,$64(a4)
-	move.w	-$1754(a5),d0
+	move.w	g_Player1+$4(a5),d0
 	ext.l	d0
 	move.w	#$C000,d1
 	and.w	d0,d1
@@ -32,7 +32,7 @@ Cam_FollowPlayer:
 	move.l	a0,d0
 	bra.s	loc_160AA2
 loc_160A7C:
-	move.w	-$1844(a5),d0
+	move.w	g_Player2+$4(a5),d0
 	ext.l	d0
 	move.w	#$C000,d1
 	and.w	d0,d1

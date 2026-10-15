@@ -10,7 +10,7 @@ BigAcolyte_StateCheckPlayersLow:
 	movea.l	$8(a6),a4
 	clr.b	d6
 	clr.b	d7
-	move.w	-$1754(a5),d0
+	move.w	g_Player1+$4(a5),d0
 	ext.l	d0
 	move.w	#$C000,d1
 	and.w	d0,d1
@@ -18,13 +18,13 @@ BigAcolyte_StateCheckPlayersLow:
 	move.w	d1,d0
 	cmpi.l	#$8000,d0
 	bne.s	loc_011674
-	move.l	-$174C(a5),d0
+	move.l	g_Player1+$C(a5),d0
 	asr.l	#$8,d0
 	cmpi.l	#$3F4,d0
 	blt.s	loc_011674
 	moveq	#$1,d6
 loc_011674:
-	move.w	-$1844(a5),d0
+	move.w	g_Player2+$4(a5),d0
 	ext.l	d0
 	move.w	#$C000,d1
 	and.w	d0,d1
@@ -32,7 +32,7 @@ loc_011674:
 	move.w	d1,d0
 	cmpi.l	#$8000,d0
 	bne.s	loc_01169C
-	move.l	-$183C(a5),d0
+	move.l	g_Player2+$C(a5),d0
 	asr.l	#$8,d0
 	cmpi.l	#$3F4,d0
 	blt.s	loc_01169C

@@ -18,7 +18,7 @@ AvalonB1_CamHookWait60:
 	movea.l	g_Camera(a5),a1
 	move.l	a0,$4(a1)
 loc_00F836:
-	move.w	-$1754(a5),d0
+	move.w	g_Player1+$4(a5),d0
 	ext.l	d0
 	move.w	#$C000,d1
 	and.w	d0,d1
@@ -26,11 +26,11 @@ loc_00F836:
 	move.w	d1,d0
 	cmpi.l	#$8000,d0
 	bne.s	loc_00F85A
-	clr.w	-$173A(a5)
-	clr.l	-$1742(a5)
-	clr.w	-$1738(a5)
+	clr.w	g_Player1+$1E(a5)
+	clr.l	g_Player1+$16(a5)
+	clr.w	g_Player1+$20(a5)
 loc_00F85A:
-	move.w	-$1844(a5),d0
+	move.w	g_Player2+$4(a5),d0
 	ext.l	d0
 	move.w	#$C000,d1
 	and.w	d0,d1
@@ -38,9 +38,9 @@ loc_00F85A:
 	move.w	d1,d0
 	cmpi.l	#$8000,d0
 	bne.s	loc_00F87E
-	clr.w	-$182A(a5)
-	clr.l	-$1832(a5)
-	clr.w	-$1828(a5)
+	clr.w	g_Player2+$1E(a5)
+	clr.l	g_Player2+$16(a5)
+	clr.w	g_Player2+$20(a5)
 loc_00F87E:
 	move.w	g_CameraY(a5),d0
 	ext.l	d0

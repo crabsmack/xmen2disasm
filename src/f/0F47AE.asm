@@ -262,8 +262,8 @@ loc_0F4A86:
 	move.w	#$3C,g_PalFadeTimer(a5)
 	move.w	#$8,g_PalFadeDelay(a5)
 	move.w	#$78,g_SceneExitTimer(a5)
-	clr.w	-$16F0(a5)
-	clr.w	-$17E0(a5)
+	clr.w	g_Player1+$68(a5)
+	clr.w	g_Player2+$68(a5)
 	lea.l	$C(a7),a7
 	bra.s	loc_0F4AE4
 loc_0F4AC2:

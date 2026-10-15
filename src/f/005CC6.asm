@@ -37,12 +37,12 @@ loc_005D2C:
 	moveq	#-$1,d0
 	cmp.b	g_P1CharIndex(a5),d0
 	beq.s	loc_005D3A
-	move.w	-$16F0(a5),g_P1Health(a5)
+	move.w	g_Player1+$68(a5),g_P1Health(a5)
 loc_005D3A:
 	moveq	#-$1,d0
 	cmp.b	g_P2CharIndex(a5),d0
 	beq.s	loc_005D48
-	move.w	-$17E0(a5),g_P2Health(a5)
+	move.w	g_Player2+$68(a5),g_P2Health(a5)
 loc_005D48:
 	tst.w	g_P1Health(a5)
 	sgt.b	d3
@@ -79,7 +79,7 @@ loc_005D8A:
 	dc.w	$1B7C,$FFFF,$C444	; insn: move.b #$ff, -$3bbc(a5)
 	moveq	#$0,d0
 	move.l	d0,g_Player1(a5)
-	clr.w	-$1754(a5)
+	clr.w	g_Player1+$4(a5)
 loc_005D9E:
 	tst.b	d6
 	beq.s	loc_005DD0
@@ -96,7 +96,7 @@ loc_005DBC:
 	dc.w	$1B7C,$FFFF,$C445	; insn: move.b #$ff, -$3bbb(a5)
 	moveq	#$0,d0
 	move.l	d0,g_Player2(a5)
-	clr.w	-$1844(a5)
+	clr.w	g_Player2+$4(a5)
 loc_005DD0:
 	tst.b	-$38C2(a5)
 	bne.s	loc_005E26

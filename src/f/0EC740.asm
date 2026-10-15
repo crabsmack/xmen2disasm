@@ -17,7 +17,7 @@ CoreElevator_CarriesAllPlayers:
 	add.l	d1,d0
 	lea.l	g_Segs(a5),a0
 	lea.l	(a0,d0.w),a4
-	move.w	-$1754(a5),d0
+	move.w	g_Player1+$4(a5),d0
 	ext.l	d0
 	move.w	#$C000,d1
 	and.w	d0,d1
@@ -25,12 +25,12 @@ CoreElevator_CarriesAllPlayers:
 	move.w	d1,d0
 	cmpi.l	#$8000,d0
 	bne.s	loc_0EC784
-	cmpa.l	-$16E2(a5),a4
+	cmpa.l	g_Player1+$76(a5),a4
 	beq.s	loc_0EC784
 	moveq	#$0,d0
 	bra.s	loc_0EC7A8
 loc_0EC784:
-	move.w	-$1844(a5),d0
+	move.w	g_Player2+$4(a5),d0
 	ext.l	d0
 	move.w	#$C000,d1
 	and.w	d0,d1
@@ -38,7 +38,7 @@ loc_0EC784:
 	move.w	d1,d0
 	cmpi.l	#$8000,d0
 	bne.s	loc_0EC7A6
-	cmpa.l	-$17D2(a5),a4
+	cmpa.l	g_Player2+$76(a5),a4
 	beq.s	loc_0EC7A6
 	moveq	#$0,d0
 	bra.s	loc_0EC7A8

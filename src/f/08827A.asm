@@ -13,7 +13,7 @@ CloneA5_CamUpdate:
 	move.w	-$34A0(a5),d7
 	tst.w	-$3B02(a5)
 	beq.w	loc_088382
-	move.w	-$1754(a5),d0
+	move.w	g_Player1+$4(a5),d0
 	ext.l	d0
 	move.w	#$C000,d1
 	and.w	d0,d1
@@ -22,7 +22,7 @@ CloneA5_CamUpdate:
 	cmpi.l	#$8000,d0
 	bne.s	loc_0882B8
 	move.w	#$1000,d0
-	and.w	-$1754(a5),d0
+	and.w	g_Player1+$4(a5),d0
 	beq.s	loc_0882D4
 loc_0882B8:
 	lea.l	$2BBA(a5),a0
@@ -37,7 +37,7 @@ loc_0882D4:
 	move.w	g_CameraX(a5),d0
 	ext.l	d0
 	add.l	#$140,d0
-	move.w	-$1706(a5),d1
+	move.w	g_Player1+$52(a5),d1
 	ext.l	d1
 	cmp.l	d1,d0
 	ble.s	loc_08830C
@@ -48,12 +48,12 @@ loc_0882D4:
 	move.w	-$3B02(a5),d0
 	ext.l	d0
 	lsl.l	#$8,d0
-	sub.l	d0,-$1750(a5)
+	sub.l	d0,g_Player1+$8(a5)
 	pea.l	g_Player1(a5)
 	jsr	$4DD2(a5)	; -> Obj_UpdateBoxes
 	addq.w	#$4,a7
 loc_08830C:
-	move.w	-$1844(a5),d0
+	move.w	g_Player2+$4(a5),d0
 	ext.l	d0
 	move.w	#$C000,d1
 	and.w	d0,d1
@@ -62,7 +62,7 @@ loc_08830C:
 	cmpi.l	#$8000,d0
 	bne.s	loc_08832E
 	move.w	#$1000,d0
-	and.w	-$1844(a5),d0
+	and.w	g_Player2+$4(a5),d0
 	beq.s	loc_08834A
 loc_08832E:
 	lea.l	$2BBA(a5),a0
@@ -77,7 +77,7 @@ loc_08834A:
 	move.w	g_CameraX(a5),d0
 	ext.l	d0
 	add.l	#$140,d0
-	move.w	-$17F6(a5),d1
+	move.w	g_Player2+$52(a5),d1
 	ext.l	d1
 	cmp.l	d1,d0
 	ble.s	loc_088382
@@ -88,7 +88,7 @@ loc_08834A:
 	move.w	-$3B02(a5),d0
 	ext.l	d0
 	lsl.l	#$8,d0
-	sub.l	d0,-$1840(a5)
+	sub.l	d0,g_Player2+$8(a5)
 	pea.l	g_Player2(a5)
 	jsr	$4DD2(a5)	; -> Obj_UpdateBoxes
 	addq.w	#$4,a7

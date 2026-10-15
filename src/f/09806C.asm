@@ -81,7 +81,7 @@ loc_09811A:
 	addq.w	#$4,a7
 	bra.w	loc_0981F2
 loc_09812E:
-	move.w	-$1754(a5),d0
+	move.w	g_Player1+$4(a5),d0
 	ext.l	d0
 	move.w	#$C000,d1
 	and.w	d0,d1
@@ -90,14 +90,14 @@ loc_09812E:
 	cmpi.l	#$8000,d0
 	bne.s	loc_098190
 	move.w	$4(a4),d0
-	cmp.w	-$1702(a5),d0
+	cmp.w	g_Player1+$56(a5),d0
 	blt.s	loc_098190
 	move.w	$4(a4),d0
-	cmp.w	-$16FE(a5),d0
+	cmp.w	g_Player1+$5A(a5),d0
 	bgt.s	loc_098190
-	cmp.w	-$1704(a5),d7
+	cmp.w	g_Player1+$54(a5),d7
 	blt.s	loc_098190
-	cmp.w	-$1700(a5),d7
+	cmp.w	g_Player1+$58(a5),d7
 	bgt.s	loc_098190
 	ext.l	d7
 	move.l	d7,-(a7)
@@ -116,7 +116,7 @@ loc_09812E:
 	jsr	(a1)
 	lea.l	$18(a7),a7
 loc_098190:
-	move.w	-$1844(a5),d0
+	move.w	g_Player2+$4(a5),d0
 	ext.l	d0
 	move.w	#$C000,d1
 	and.w	d0,d1
@@ -125,14 +125,14 @@ loc_098190:
 	cmpi.l	#$8000,d0
 	bne.s	loc_0981F2
 	move.w	$4(a4),d0
-	cmp.w	-$17F2(a5),d0
+	cmp.w	g_Player2+$56(a5),d0
 	blt.s	loc_0981F2
 	move.w	$4(a4),d0
-	cmp.w	-$17EE(a5),d0
+	cmp.w	g_Player2+$5A(a5),d0
 	bgt.s	loc_0981F2
-	cmp.w	-$17F4(a5),d7
+	cmp.w	g_Player2+$54(a5),d7
 	blt.s	loc_0981F2
-	cmp.w	-$17F0(a5),d7
+	cmp.w	g_Player2+$58(a5),d7
 	bgt.s	loc_0981F2
 	ext.l	d7
 	move.l	d7,-(a7)

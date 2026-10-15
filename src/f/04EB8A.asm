@@ -10,7 +10,7 @@ BeamScooter_StatePickUp:
 	movea.l	$8(a6),a4
 	clr.b	d6
 	clr.b	d7
-	move.w	-$1754(a5),d0
+	move.w	g_Player1+$4(a5),d0
 	ext.l	d0
 	move.w	#$C000,d1
 	and.w	d0,d1
@@ -18,11 +18,11 @@ BeamScooter_StatePickUp:
 	move.w	d1,d0
 	cmpi.l	#$8000,d0
 	bne.s	loc_04EBBA
-	tst.w	-$16F0(a5)
+	tst.w	g_Player1+$68(a5)
 	ble.s	loc_04EBBA
 	moveq	#$1,d6
 loc_04EBBA:
-	move.w	-$1844(a5),d0
+	move.w	g_Player2+$4(a5),d0
 	ext.l	d0
 	move.w	#$C000,d1
 	and.w	d0,d1
@@ -30,7 +30,7 @@ loc_04EBBA:
 	move.w	d1,d0
 	cmpi.l	#$8000,d0
 	bne.s	loc_04EBDA
-	tst.w	-$17E0(a5)
+	tst.w	g_Player2+$68(a5)
 	ble.s	loc_04EBDA
 	moveq	#$1,d7
 loc_04EBDA:

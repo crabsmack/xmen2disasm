@@ -19,7 +19,7 @@ TrapDoor_StateSpring:
 	subq.w	#$2,$A(a0)
 	movea.l	$9C(a4),a0
 	subq.w	#$2,$E(a0)
-	move.w	-$1754(a5),d0
+	move.w	g_Player1+$4(a5),d0
 	ext.l	d0
 	move.w	#$C000,d1
 	and.w	d0,d1
@@ -28,15 +28,15 @@ TrapDoor_StateSpring:
 	cmpi.l	#$8000,d0
 	addq.w	#$8,a7
 	bne.s	loc_0ADD3A
-	move.l	-$16E2(a5),d0
+	move.l	g_Player1+$76(a5),d0
 	cmp.l	$9C(a4),d0
 	bne.s	loc_0ADD3A
-	subi.l	#$200,-$174C(a5)
+	subi.l	#$200,g_Player1+$C(a5)
 	pea.l	g_Player1(a5)
 	jsr	$4DD2(a5)	; -> Obj_UpdateBoxes
 	addq.w	#$4,a7
 loc_0ADD3A:
-	move.w	-$1844(a5),d0
+	move.w	g_Player2+$4(a5),d0
 	ext.l	d0
 	move.w	#$C000,d1
 	and.w	d0,d1
@@ -44,10 +44,10 @@ loc_0ADD3A:
 	move.w	d1,d0
 	cmpi.l	#$8000,d0
 	bne.s	loc_0ADD6E
-	move.l	-$17D2(a5),d0
+	move.l	g_Player2+$76(a5),d0
 	cmp.l	$9C(a4),d0
 	bne.s	loc_0ADD6E
-	subi.l	#$200,-$183C(a5)
+	subi.l	#$200,g_Player2+$C(a5)
 	pea.l	g_Player2(a5)
 	jsr	$4DD2(a5)	; -> Obj_UpdateBoxes
 	addq.w	#$4,a7

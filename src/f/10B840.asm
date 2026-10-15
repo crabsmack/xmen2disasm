@@ -63,7 +63,7 @@ loc_10B8C4:
 	moveq	#$35,d0
 	move.l	d0,-(a7)
 	jsr	$521A(a5)	; -> Snd_Play
-	move.w	-$1754(a5),d0
+	move.w	g_Player1+$4(a5),d0
 	ext.l	d0
 	move.w	#$C000,d1
 	and.w	d0,d1
@@ -72,9 +72,9 @@ loc_10B8C4:
 	cmpi.l	#$8000,d0
 	addq.w	#$8,a7
 	bne.s	loc_10B912
-	clr.w	-$16F0(a5)
+	clr.w	g_Player1+$68(a5)
 loc_10B912:
-	move.w	-$1844(a5),d0
+	move.w	g_Player2+$4(a5),d0
 	ext.l	d0
 	move.w	#$C000,d1
 	and.w	d0,d1
@@ -82,7 +82,7 @@ loc_10B912:
 	move.w	d1,d0
 	cmpi.l	#$8000,d0
 	bne.s	loc_10B92E
-	clr.w	-$17E0(a5)
+	clr.w	g_Player2+$68(a5)
 loc_10B92E:
 	moveq	#$1E,d0
 	move.l	d0,-(a7)
@@ -93,7 +93,7 @@ loc_10B938:
 	movea.l	$C(a4),a0
 	jsr	(a0)
 	moveq	#$1,d3
-	move.w	-$1754(a5),d0
+	move.w	g_Player1+$4(a5),d0
 	ext.l	d0
 	move.w	#$C000,d1
 	and.w	d0,d1
@@ -102,7 +102,7 @@ loc_10B938:
 	cmpi.l	#$8000,d0
 	addq.w	#$4,a7
 	beq.s	loc_10B97C
-	move.w	-$1844(a5),d0
+	move.w	g_Player2+$4(a5),d0
 	ext.l	d0
 	move.w	#$C000,d1
 	and.w	d0,d1

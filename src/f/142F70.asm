@@ -34,7 +34,7 @@ loc_142FB6:
 	beq.s	loc_142FC2
 	ori.l	#$1000,d7
 loc_142FC2:
-	move.w	-$1754(a5),d0
+	move.w	g_Player1+$4(a5),d0
 	ext.l	d0
 	move.w	#$C000,d1
 	and.w	d0,d1

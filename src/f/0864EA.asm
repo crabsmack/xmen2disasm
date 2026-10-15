@@ -25,7 +25,7 @@ BroodBossDamage_Update:
 	asr.l	#$8,d5
 	move.l	$C(a3),d6
 	asr.l	#$8,d6
-	move.w	-$1754(a5),d0
+	move.w	g_Player1+$4(a5),d0
 	ext.l	d0
 	move.w	#$C000,d1
 	and.w	d0,d1
@@ -33,7 +33,7 @@ BroodBossDamage_Update:
 	move.w	d1,d0
 	cmpi.l	#$8000,d0
 	bne.w	loc_0865DE
-	tst.w	-$16EE(a5)
+	tst.w	g_Player1+$6A(a5)
 	bne.w	loc_0865DE
 	clr.w	d7
 	bra.s	loc_0865CE
@@ -42,7 +42,7 @@ loc_086554:
 	move.w	$4(a4),d0
 	ext.l	d0
 	add.l	d5,d0
-	move.w	-$1702(a5),d1
+	move.w	g_Player1+$56(a5),d1
 	ext.l	d1
 	cmp.l	d1,d0
 	blt.s	loc_0865C8
@@ -50,7 +50,7 @@ loc_086554:
 	move.w	(a4),d0
 	ext.l	d0
 	add.l	d5,d0
-	move.w	-$16FE(a5),d1
+	move.w	g_Player1+$5A(a5),d1
 	ext.l	d1
 	cmp.l	d1,d0
 	bgt.s	loc_0865C8
@@ -58,7 +58,7 @@ loc_086554:
 	move.w	$6(a4),d0
 	ext.l	d0
 	add.l	d6,d0
-	move.w	-$1704(a5),d1
+	move.w	g_Player1+$54(a5),d1
 	ext.l	d1
 	cmp.l	d1,d0
 	blt.s	loc_0865C8
@@ -66,7 +66,7 @@ loc_086554:
 	move.w	$2(a4),d0
 	ext.l	d0
 	add.l	d6,d0
-	move.w	-$1700(a5),d1
+	move.w	g_Player1+$58(a5),d1
 	ext.l	d1
 	cmp.l	d1,d0
 	bgt.s	loc_0865C8
@@ -98,7 +98,7 @@ loc_0865CE:
 	bgt.w	loc_086554
 loc_0865DE:
 	movea.l	$92(a3),a4
-	move.w	-$1844(a5),d0
+	move.w	g_Player2+$4(a5),d0
 	ext.l	d0
 	move.w	#$C000,d1
 	and.w	d0,d1
@@ -106,7 +106,7 @@ loc_0865DE:
 	move.w	d1,d0
 	cmpi.l	#$8000,d0
 	bne.w	loc_086692
-	tst.w	-$17DE(a5)
+	tst.w	g_Player2+$6A(a5)
 	bne.w	loc_086692
 	clr.w	d7
 	bra.s	loc_086682
@@ -115,7 +115,7 @@ loc_086608:
 	move.w	$4(a4),d0
 	ext.l	d0
 	add.l	d5,d0
-	move.w	-$17F2(a5),d1
+	move.w	g_Player2+$56(a5),d1
 	ext.l	d1
 	cmp.l	d1,d0
 	blt.s	loc_08667C
@@ -123,7 +123,7 @@ loc_086608:
 	move.w	(a4),d0
 	ext.l	d0
 	add.l	d5,d0
-	move.w	-$17EE(a5),d1
+	move.w	g_Player2+$5A(a5),d1
 	ext.l	d1
 	cmp.l	d1,d0
 	bgt.s	loc_08667C
@@ -131,7 +131,7 @@ loc_086608:
 	move.w	$6(a4),d0
 	ext.l	d0
 	add.l	d6,d0
-	move.w	-$17F4(a5),d1
+	move.w	g_Player2+$54(a5),d1
 	ext.l	d1
 	cmp.l	d1,d0
 	blt.s	loc_08667C
@@ -139,7 +139,7 @@ loc_086608:
 	move.w	$2(a4),d0
 	ext.l	d0
 	add.l	d6,d0
-	move.w	-$17F0(a5),d1
+	move.w	g_Player2+$58(a5),d1
 	ext.l	d1
 	cmp.l	d1,d0
 	bgt.s	loc_08667C

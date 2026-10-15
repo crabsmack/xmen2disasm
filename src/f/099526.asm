@@ -27,7 +27,7 @@ XClone_TileHookOpenWall:
 	moveq	#$2,d0
 	and.w	-$3B08(a5),d0
 	beq.w	loc_099802
-	move.w	-$1754(a5),d0
+	move.w	g_Player1+$4(a5),d0
 	ext.l	d0
 	move.w	#$C000,d1
 	and.w	d0,d1
@@ -42,7 +42,7 @@ XClone_TileHookOpenWall:
 	move.w	d6,d0
 	addq.w	#$1,d6
 loc_099590:
-	move.w	-$1844(a5),d0
+	move.w	g_Player2+$4(a5),d0
 	ext.l	d0
 	move.w	#$C000,d1
 	and.w	d0,d1

@@ -26,7 +26,7 @@ FireWall_Init:
 	lea.l	FireWall_StateWaitOnScreen(pc),a0
 	move.l	a0,$64(a4)
 	ori.w	#$83,$6(a4)
-	move.w	-$1754(a5),d0
+	move.w	g_Player1+$4(a5),d0
 	ext.l	d0
 	move.w	#$C000,d1
 	and.w	d0,d1
@@ -36,7 +36,7 @@ FireWall_Init:
 	lea.l	$10(a7),a7
 	bne.s	loc_133FE6
 	moveq	#$4,d0
-	and.b	-$172A(a5),d0
+	and.b	g_Player1+$2E(a5),d0
 	beq.s	loc_133FDE
 	ori.b	#$4,$2E(a4)
 	bra.s	loc_13402C
@@ -44,7 +44,7 @@ loc_133FDE:
 	andi.b	#$FB,$2E(a4)
 	bra.s	loc_13402C
 loc_133FE6:
-	move.w	-$1844(a5),d0
+	move.w	g_Player2+$4(a5),d0
 	ext.l	d0
 	move.w	#$C000,d1
 	and.w	d0,d1
@@ -53,7 +53,7 @@ loc_133FE6:
 	cmpi.l	#$8000,d0
 	bne.s	loc_134016
 	moveq	#$4,d0
-	and.b	-$181A(a5),d0
+	and.b	g_Player2+$2E(a5),d0
 	beq.s	loc_13400E
 	ori.b	#$4,$2E(a4)
 	bra.s	loc_13402C
@@ -62,7 +62,7 @@ loc_13400E:
 	bra.s	loc_13402C
 loc_134016:
 	moveq	#$4,d0
-	and.b	-$172A(a5),d0
+	and.b	g_Player1+$2E(a5),d0
 	beq.s	loc_134026
 	ori.b	#$4,$2E(a4)
 	bra.s	loc_13402C

@@ -17,7 +17,7 @@ XClone_ActKeepDistance:
 	move.w	d0,-$2(a6)
 	move.l	$8(a4),d7
 	asr.l	#$8,d7
-	move.w	-$1754(a5),d0
+	move.w	g_Player1+$4(a5),d0
 	ext.l	d0
 	move.w	#$C000,d1
 	and.w	d0,d1
@@ -26,7 +26,7 @@ XClone_ActKeepDistance:
 	cmpi.l	#$8000,d0
 	addq.w	#$4,a7
 	bne.w	loc_097B88
-	move.w	-$1844(a5),d0
+	move.w	g_Player2+$4(a5),d0
 	ext.l	d0
 	move.w	#$C000,d1
 	and.w	d0,d1
@@ -34,7 +34,7 @@ XClone_ActKeepDistance:
 	move.w	d1,d0
 	cmpi.l	#$8000,d0
 	bne.w	loc_097B88
-	move.l	-$1750(a5),d0
+	move.l	g_Player1+$8(a5),d0
 	asr.l	#$8,d0
 	move.w	d0,d4
 	sub.w	d7,d4
@@ -51,7 +51,7 @@ loc_097B14:
 	neg.l	d0
 loc_097B1A:
 	move.w	d0,d4
-	move.l	-$1840(a5),d0
+	move.l	g_Player2+$8(a5),d0
 	asr.l	#$8,d0
 	move.w	d0,d5
 	sub.w	d7,d5
@@ -72,19 +72,19 @@ loc_097B3A:
 	bge.s	loc_097B88
 	cmp.w	$B4(a4),d5
 	bge.s	loc_097B88
-	move.l	-$1750(a5),d0
+	move.l	g_Player1+$8(a5),d0
 	cmp.l	$8(a4),d0
 	bge.s	loc_097B66
-	move.l	-$1840(a5),d0
+	move.l	g_Player2+$8(a5),d0
 	cmp.l	$8(a4),d0
 	bge.s	loc_097B66
 	ori.b	#$10,$2E(a4)
 	bra.w	loc_097C0E
 loc_097B66:
-	move.l	-$1750(a5),d0
+	move.l	g_Player1+$8(a5),d0
 	cmp.l	$8(a4),d0
 	ble.w	loc_097C0E
-	move.l	-$1840(a5),d0
+	move.l	g_Player2+$8(a5),d0
 	cmp.l	$8(a4),d0
 	ble.w	loc_097C0E
 	andi.b	#$EF,$2E(a4)

@@ -13,7 +13,7 @@ XClone_CamArenaUpdate:
 	move.w	$3E(a4),-$E(a6)
 	move.w	$40(a4),-$C(a6)
 	move.w	$42(a4),-$A(a6)
-	move.w	-$1754(a5),d0
+	move.w	g_Player1+$4(a5),d0
 	ext.l	d0
 	move.w	#$C000,d1
 	and.w	d0,d1
@@ -21,7 +21,7 @@ XClone_CamArenaUpdate:
 	move.w	d1,d0
 	cmpi.l	#$8000,d0
 	bne.w	loc_0999B0
-	move.w	-$1844(a5),d0
+	move.w	g_Player2+$4(a5),d0
 	ext.l	d0
 	move.w	#$C000,d1
 	and.w	d0,d1
@@ -29,57 +29,57 @@ XClone_CamArenaUpdate:
 	move.w	d1,d0
 	cmpi.l	#$8000,d0
 	bne.s	loc_0999B0
-	move.l	-$1750(a5),d0
-	cmp.l	-$1840(a5),d0
+	move.l	g_Player1+$8(a5),d0
+	cmp.l	g_Player2+$8(a5),d0
 	slt.b	d3
 	neg.b	d3
 	beq.s	loc_099950
-	move.l	-$1750(a5),d0
+	move.l	g_Player1+$8(a5),d0
 	bra.s	loc_099954
 loc_099950:
-	move.l	-$1840(a5),d0
+	move.l	g_Player2+$8(a5),d0
 loc_099954:
 	move.l	d0,d6
 	asr.l	#$8,d6
-	move.l	-$174C(a5),d0
-	cmp.l	-$183C(a5),d0
+	move.l	g_Player1+$C(a5),d0
+	cmp.l	g_Player2+$C(a5),d0
 	slt.b	d3
 	neg.b	d3
 	beq.s	loc_09996C
-	move.l	-$174C(a5),d0
+	move.l	g_Player1+$C(a5),d0
 	bra.s	loc_099970
 loc_09996C:
-	move.l	-$183C(a5),d0
+	move.l	g_Player2+$C(a5),d0
 loc_099970:
 	move.l	d0,d5
 	asr.l	#$8,d5
-	move.l	-$1750(a5),d0
-	cmp.l	-$1840(a5),d0
+	move.l	g_Player1+$8(a5),d0
+	cmp.l	g_Player2+$8(a5),d0
 	sgt.b	d3
 	neg.b	d3
 	beq.s	loc_099988
-	move.l	-$1750(a5),d0
+	move.l	g_Player1+$8(a5),d0
 	bra.s	loc_09998C
 loc_099988:
-	move.l	-$1840(a5),d0
+	move.l	g_Player2+$8(a5),d0
 loc_09998C:
 	move.l	d0,d7
 	asr.l	#$8,d7
-	move.l	-$174C(a5),d0
-	cmp.l	-$183C(a5),d0
+	move.l	g_Player1+$C(a5),d0
+	cmp.l	g_Player2+$C(a5),d0
 	sgt.b	d3
 	neg.b	d3
 	beq.s	loc_0999A4
-	move.l	-$174C(a5),d0
+	move.l	g_Player1+$C(a5),d0
 	bra.s	loc_0999A8
 loc_0999A4:
-	move.l	-$183C(a5),d0
+	move.l	g_Player2+$C(a5),d0
 loc_0999A8:
 	move.l	d0,d4
 	asr.l	#$8,d4
 	bra.w	loc_099A40
 loc_0999B0:
-	move.w	-$1754(a5),d0
+	move.w	g_Player1+$4(a5),d0
 	ext.l	d0
 	move.w	#$C000,d1
 	and.w	d0,d1
@@ -87,17 +87,17 @@ loc_0999B0:
 	move.w	d1,d0
 	cmpi.l	#$8000,d0
 	bne.s	loc_0999E2
-	move.l	-$1750(a5),d6
+	move.l	g_Player1+$8(a5),d6
 	asr.l	#$8,d6
-	move.l	-$1750(a5),d7
+	move.l	g_Player1+$8(a5),d7
 	asr.l	#$8,d7
-	move.l	-$174C(a5),d5
+	move.l	g_Player1+$C(a5),d5
 	asr.l	#$8,d5
-	move.l	-$174C(a5),d4
+	move.l	g_Player1+$C(a5),d4
 	asr.l	#$8,d4
 	bra.s	loc_099A40
 loc_0999E2:
-	move.w	-$1844(a5),d0
+	move.w	g_Player2+$4(a5),d0
 	ext.l	d0
 	move.w	#$C000,d1
 	and.w	d0,d1
@@ -105,13 +105,13 @@ loc_0999E2:
 	move.w	d1,d0
 	cmpi.l	#$8000,d0
 	bne.s	loc_099A14
-	move.l	-$1840(a5),d6
+	move.l	g_Player2+$8(a5),d6
 	asr.l	#$8,d6
-	move.l	-$1840(a5),d7
+	move.l	g_Player2+$8(a5),d7
 	asr.l	#$8,d7
-	move.l	-$183C(a5),d5
+	move.l	g_Player2+$C(a5),d5
 	asr.l	#$8,d5
-	move.l	-$183C(a5),d4
+	move.l	g_Player2+$C(a5),d4
 	asr.l	#$8,d4
 	bra.s	loc_099A40
 loc_099A14:

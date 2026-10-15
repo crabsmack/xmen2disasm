@@ -9,10 +9,10 @@ TrapDoor_StateWaitPlayer:
 	link.w	a6,#$0
 	move.l	a4,-(a7)
 	movea.l	$8(a6),a4
-	move.l	-$16E2(a5),d0
+	move.l	g_Player1+$76(a5),d0
 	cmp.l	$9C(a4),d0
 	beq.s	loc_0ADC06
-	move.l	-$17D2(a5),d0
+	move.l	g_Player2+$76(a5),d0
 	cmp.l	$9C(a4),d0
 	bne.s	loc_0ADC1E
 loc_0ADC06:

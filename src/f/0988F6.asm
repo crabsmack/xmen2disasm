@@ -12,7 +12,7 @@ EvilNightcrawler_ActTeleport:
 	move.l	a4,-(a7)
 	jsr	$4EAA(a5)	; -> Player_Nearest
 	movea.l	d0,a3
-	move.w	-$1754(a5),d0
+	move.w	g_Player1+$4(a5),d0
 	ext.l	d0
 	move.w	#$C000,d1
 	and.w	d0,d1
@@ -21,7 +21,7 @@ EvilNightcrawler_ActTeleport:
 	cmpi.l	#$8000,d0
 	addq.w	#$4,a7
 	bne.s	loc_09894E
-	move.w	-$1844(a5),d0
+	move.w	g_Player2+$4(a5),d0
 	ext.l	d0
 	move.w	#$C000,d1
 	and.w	d0,d1

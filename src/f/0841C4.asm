@@ -31,7 +31,7 @@ SmallBrood_Init:
 	moveq	#$3,d1
 	or.b	d0,d1
 	move.b	d1,$2E(a4)
-	move.w	-$1754(a5),d0
+	move.w	g_Player1+$4(a5),d0
 	ext.l	d0
 	move.w	#$C000,d1
 	and.w	d0,d1
@@ -41,7 +41,7 @@ SmallBrood_Init:
 	lea.l	$10(a7),a7
 	bne.s	loc_08425C
 	moveq	#$4,d0
-	and.b	-$172A(a5),d0
+	and.b	g_Player1+$2E(a5),d0
 	beq.s	loc_084254
 	ori.b	#$4,$2E(a4)
 	bra.s	loc_0842A2
@@ -49,7 +49,7 @@ loc_084254:
 	andi.b	#$FB,$2E(a4)
 	bra.s	loc_0842A2
 loc_08425C:
-	move.w	-$1844(a5),d0
+	move.w	g_Player2+$4(a5),d0
 	ext.l	d0
 	move.w	#$C000,d1
 	and.w	d0,d1
@@ -58,7 +58,7 @@ loc_08425C:
 	cmpi.l	#$8000,d0
 	bne.s	loc_08428C
 	moveq	#$4,d0
-	and.b	-$181A(a5),d0
+	and.b	g_Player2+$2E(a5),d0
 	beq.s	loc_084284
 	ori.b	#$4,$2E(a4)
 	bra.s	loc_0842A2
@@ -67,7 +67,7 @@ loc_084284:
 	bra.s	loc_0842A2
 loc_08428C:
 	moveq	#$4,d0
-	and.b	-$172A(a5),d0
+	and.b	g_Player1+$2E(a5),d0
 	beq.s	loc_08429C
 	ori.b	#$4,$2E(a4)
 	bra.s	loc_0842A2

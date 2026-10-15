@@ -19,7 +19,7 @@ HUD_UpdateHealthBars:
 	jsr	HUD_Redraw(pc)
 	bra.w	loc_00657A
 loc_0063BE:
-	move.w	-$1754(a5),d0
+	move.w	g_Player1+$4(a5),d0
 	ext.l	d0
 	move.w	#$C000,d1
 	and.w	d0,d1
@@ -106,7 +106,7 @@ loc_006478:
 	jsr	$51DA(a5)	; -> VDP_QueueDma
 	lea.l	$C(a7),a7
 loc_00649C:
-	move.w	-$1844(a5),d0
+	move.w	g_Player2+$4(a5),d0
 	ext.l	d0
 	move.w	#$C000,d1
 	and.w	d0,d1

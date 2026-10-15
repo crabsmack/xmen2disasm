@@ -6,7 +6,7 @@
 ; ---------------------------------------------------------------------------
 SpaceB1_InitCamera:
 	link.w	a6,#$0
-	move.w	-$1754(a5),d0
+	move.w	g_Player1+$4(a5),d0
 	ext.l	d0
 	move.w	#$C000,d1
 	and.w	d0,d1
@@ -14,7 +14,7 @@ SpaceB1_InitCamera:
 	move.w	d1,d0
 	cmpi.l	#$8000,d0
 	bne.s	loc_10768C
-	move.w	-$1844(a5),d0
+	move.w	g_Player2+$4(a5),d0
 	ext.l	d0
 	move.w	#$C000,d1
 	and.w	d0,d1

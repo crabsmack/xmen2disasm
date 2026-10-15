@@ -29,7 +29,7 @@ sub_1449E6:
 	clr.w	$1E(a4)
 	clr.l	$16(a4)
 	clr.w	$20(a4)
-	move.w	-$1754(a5),d0
+	move.w	g_Player1+$4(a5),d0
 	ext.l	d0
 	move.w	#$C000,d1
 	and.w	d0,d1
@@ -38,7 +38,7 @@ sub_1449E6:
 	cmpi.l	#$8000,d0
 	bne.s	loc_144A80
 	moveq	#$4,d0
-	and.b	-$172A(a5),d0
+	and.b	g_Player1+$2E(a5),d0
 	beq.s	loc_144A78
 	ori.b	#$4,$2E(a4)
 	bra.s	loc_144AC6
@@ -46,7 +46,7 @@ loc_144A78:
 	andi.b	#$FB,$2E(a4)
 	bra.s	loc_144AC6
 loc_144A80:
-	move.w	-$1844(a5),d0
+	move.w	g_Player2+$4(a5),d0
 	ext.l	d0
 	move.w	#$C000,d1
 	and.w	d0,d1
@@ -55,7 +55,7 @@ loc_144A80:
 	cmpi.l	#$8000,d0
 	bne.s	loc_144AB0
 	moveq	#$4,d0
-	and.b	-$181A(a5),d0
+	and.b	g_Player2+$2E(a5),d0
 	beq.s	loc_144AA8
 	ori.b	#$4,$2E(a4)
 	bra.s	loc_144AC6
@@ -64,7 +64,7 @@ loc_144AA8:
 	bra.s	loc_144AC6
 loc_144AB0:
 	moveq	#$4,d0
-	and.b	-$172A(a5),d0
+	and.b	g_Player1+$2E(a5),d0
 	beq.s	loc_144AC0
 	ori.b	#$4,$2E(a4)
 	bra.s	loc_144AC6

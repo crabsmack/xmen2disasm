@@ -17,7 +17,7 @@ CloneA5_InitCamera:
 	jsr	(a1)
 	move.l	d0,g_Camera(a5)
 	movea.l	d0,a4
-	move.w	-$1754(a5),d0
+	move.w	g_Player1+$4(a5),d0
 	ext.l	d0
 	move.w	#$C000,d1
 	and.w	d0,d1
@@ -26,7 +26,7 @@ CloneA5_InitCamera:
 	cmpi.l	#$8000,d0
 	addq.w	#$8,a7
 	bne.s	loc_088722
-	move.w	-$1844(a5),d0
+	move.w	g_Player2+$4(a5),d0
 	ext.l	d0
 	move.w	#$C000,d1
 	and.w	d0,d1

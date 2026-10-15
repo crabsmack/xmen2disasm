@@ -10,7 +10,7 @@ BigBio_StateWaitPlayers:
 	movea.l	$8(a6),a4
 	clr.b	d5
 	clr.b	d6
-	move.w	-$1754(a5),d0
+	move.w	g_Player1+$4(a5),d0
 	ext.l	d0
 	move.w	#$C000,d1
 	and.w	d0,d1
@@ -18,7 +18,7 @@ BigBio_StateWaitPlayers:
 	move.w	d1,d0
 	cmpi.l	#$8000,d0
 	bne.s	loc_122FA8
-	move.l	-$1750(a5),d7
+	move.l	g_Player1+$8(a5),d7
 	asr.l	#$8,d7
 	ext.l	d7
 	move.w	$B0(a4),d0
@@ -31,7 +31,7 @@ BigBio_StateWaitPlayers:
 loc_122FA8:
 	moveq	#$1,d5
 loc_122FAA:
-	move.w	-$1844(a5),d0
+	move.w	g_Player2+$4(a5),d0
 	ext.l	d0
 	move.w	#$C000,d1
 	and.w	d0,d1
@@ -39,7 +39,7 @@ loc_122FAA:
 	move.w	d1,d0
 	cmpi.l	#$8000,d0
 	bne.s	loc_122FDE
-	move.l	-$1840(a5),d7
+	move.l	g_Player2+$8(a5),d7
 	asr.l	#$8,d7
 	ext.l	d7
 	move.w	$B0(a4),d0

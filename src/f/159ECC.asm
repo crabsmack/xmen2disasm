@@ -12,7 +12,7 @@ sub_159ECC:
 	move.w	$5C(a0),d6
 	beq.w	loc_159FAE
 	ori.w	#$10,$4A(a4)
-	move.w	-$1754(a5),d0
+	move.w	g_Player1+$4(a5),d0
 	ext.l	d0
 	move.w	#$C000,d1
 	and.w	d0,d1
@@ -20,10 +20,10 @@ sub_159ECC:
 	move.w	d1,d0
 	cmpi.l	#$8000,d0
 	bne.s	loc_159F1A
-	move.l	-$174C(a5),d4
-	move.l	-$174C(a5),d5
+	move.l	g_Player1+$C(a5),d4
+	move.l	g_Player1+$C(a5),d5
 loc_159F1A:
-	move.w	-$1844(a5),d0
+	move.w	g_Player2+$4(a5),d0
 	ext.l	d0
 	move.w	#$C000,d1
 	and.w	d0,d1
@@ -31,24 +31,24 @@ loc_159F1A:
 	move.w	d1,d0
 	cmpi.l	#$8000,d0
 	bne.s	loc_159F5A
-	cmp.l	-$183C(a5),d4
+	cmp.l	g_Player2+$C(a5),d4
 	slt.b	d3
 	neg.b	d3
 	beq.s	loc_159F40
 	move.l	d4,d0
 	bra.s	loc_159F44
 loc_159F40:
-	move.l	-$183C(a5),d0
+	move.l	g_Player2+$C(a5),d0
 loc_159F44:
 	move.l	d0,d4
-	cmp.l	-$183C(a5),d5
+	cmp.l	g_Player2+$C(a5),d5
 	sgt.b	d3
 	neg.b	d3
 	beq.s	loc_159F54
 	move.l	d5,d0
 	bra.s	loc_159F58
 loc_159F54:
-	move.l	-$183C(a5),d0
+	move.l	g_Player2+$C(a5),d0
 loc_159F58:
 	move.l	d0,d5
 loc_159F5A:

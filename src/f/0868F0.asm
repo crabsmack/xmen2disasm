@@ -55,7 +55,7 @@ loc_086988:
 	moveq	#$2,d0
 	and.w	-$3B0C(a5),d0
 	beq.w	loc_086AB2
-	move.w	-$1754(a5),d0
+	move.w	g_Player1+$4(a5),d0
 	ext.l	d0
 	move.w	#$C000,d1
 	and.w	d0,d1
@@ -63,30 +63,30 @@ loc_086988:
 	move.w	d1,d0
 	cmpi.l	#$8000,d0
 	bne.s	loc_086A22
-	tst.w	-$16EE(a5)
+	tst.w	g_Player1+$6A(a5)
 	bne.s	loc_086A22
 	move.w	g_CameraX(a5),d0
-	cmp.w	-$16FE(a5),d0
+	cmp.w	g_Player1+$5A(a5),d0
 	bgt.s	loc_086A22
 	move.w	g_CameraX(a5),d0
 	ext.l	d0
 	add.l	#$140,d0
-	move.w	-$1702(a5),d1
+	move.w	g_Player1+$56(a5),d1
 	ext.l	d1
 	cmp.l	d0,d1
 	bgt.s	loc_086A22
-	cmpi.w	#$62D,-$1700(a5)
+	cmpi.w	#$62D,g_Player1+$58(a5)
 	blt.s	loc_086A22
-	cmpi.w	#$631,-$1704(a5)
+	cmpi.w	#$631,g_Player1+$54(a5)
 	bgt.s	loc_086A22
-	move.w	-$16FE(a5),d0
+	move.w	g_Player1+$5A(a5),d0
 	ext.l	d0
-	move.w	-$1702(a5),d1
+	move.w	g_Player1+$56(a5),d1
 	ext.l	d1
 	sub.l	d1,d0
 	asr.l	#$1,d0
 	move.w	d0,d6
-	add.w	-$1702(a5),d6
+	add.w	g_Player1+$56(a5),d6
 	move.w	#$62D,d7
 	ext.l	d7
 	move.l	d7,-(a7)
@@ -105,7 +105,7 @@ loc_086988:
 	jsr	(a1)
 	lea.l	$18(a7),a7
 loc_086A22:
-	move.w	-$1844(a5),d0
+	move.w	g_Player2+$4(a5),d0
 	ext.l	d0
 	move.w	#$C000,d1
 	and.w	d0,d1
@@ -113,30 +113,30 @@ loc_086A22:
 	move.w	d1,d0
 	cmpi.l	#$8000,d0
 	bne.s	loc_086AB2
-	tst.w	-$17DE(a5)
+	tst.w	g_Player2+$6A(a5)
 	bne.s	loc_086AB2
 	move.w	g_CameraX(a5),d0
-	cmp.w	-$17EE(a5),d0
+	cmp.w	g_Player2+$5A(a5),d0
 	bgt.s	loc_086AB2
 	move.w	g_CameraX(a5),d0
 	ext.l	d0
 	add.l	#$140,d0
-	move.w	-$17F2(a5),d1
+	move.w	g_Player2+$56(a5),d1
 	ext.l	d1
 	cmp.l	d0,d1
 	bgt.s	loc_086AB2
-	cmpi.w	#$62D,-$17F0(a5)
+	cmpi.w	#$62D,g_Player2+$58(a5)
 	blt.s	loc_086AB2
-	cmpi.w	#$631,-$17F4(a5)
+	cmpi.w	#$631,g_Player2+$54(a5)
 	bgt.s	loc_086AB2
-	move.w	-$17EE(a5),d0
+	move.w	g_Player2+$5A(a5),d0
 	ext.l	d0
-	move.w	-$17F2(a5),d1
+	move.w	g_Player2+$56(a5),d1
 	ext.l	d1
 	sub.l	d1,d0
 	asr.l	#$1,d0
 	move.w	d0,d6
-	add.w	-$17F2(a5),d6
+	add.w	g_Player2+$56(a5),d6
 	move.w	#$62D,d7
 	ext.l	d7
 	move.l	d7,-(a7)

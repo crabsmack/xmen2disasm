@@ -7,7 +7,7 @@
 PlayerSelect_Run_SetP2:
 	moveq	#$0,d0
 	move.l	d0,g_Player1(a5)
-	clr.w	-$1754(a5)
+	clr.w	g_Player1+$4(a5)
 	dc.w	$1B7C,$FFFF,$C444	; insn: move.b #$ff, -$3bbc(a5)
 	movea.l	-$3B2C(a5),a0
 	move.b	g_P2CharIndex(a5),d0
@@ -21,7 +21,7 @@ loc_065CE8:
 	movea.l	-$3B2C(a5),a0
 	move.b	$3C(a0),g_P2CharIndex(a5)
 loc_065CF2:
-	move.w	#$C000,-$1844(a5)
+	move.w	#$C000,g_Player2+$4(a5)
 	move.b	g_P2CharIndex(a5),d0
 	bmi.s	PlayerSelect_Run_P2None
 	cmpi.b	#$6,d0

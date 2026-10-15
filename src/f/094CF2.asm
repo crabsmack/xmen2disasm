@@ -55,7 +55,7 @@ EvilDrop_Init:
 	move.w	#$FFFF,(a3)
 	move.w	#$FFFF,$2(a3)
 loc_094DA6:
-	move.w	-$1754(a5),d0
+	move.w	g_Player1+$4(a5),d0
 	ext.l	d0
 	move.w	#$C000,d1
 	and.w	d0,d1
@@ -64,7 +64,7 @@ loc_094DA6:
 	cmpi.l	#$8000,d0
 	bne.s	loc_094DD6
 	moveq	#$4,d0
-	and.b	-$172A(a5),d0
+	and.b	g_Player1+$2E(a5),d0
 	beq.s	loc_094DCE
 	ori.b	#$4,$2E(a4)
 	bra.s	loc_094E1C
@@ -72,7 +72,7 @@ loc_094DCE:
 	andi.b	#$FB,$2E(a4)
 	bra.s	loc_094E1C
 loc_094DD6:
-	move.w	-$1844(a5),d0
+	move.w	g_Player2+$4(a5),d0
 	ext.l	d0
 	move.w	#$C000,d1
 	and.w	d0,d1
@@ -81,7 +81,7 @@ loc_094DD6:
 	cmpi.l	#$8000,d0
 	bne.s	loc_094E06
 	moveq	#$4,d0
-	and.b	-$181A(a5),d0
+	and.b	g_Player2+$2E(a5),d0
 	beq.s	loc_094DFE
 	ori.b	#$4,$2E(a4)
 	bra.s	loc_094E1C
@@ -90,7 +90,7 @@ loc_094DFE:
 	bra.s	loc_094E1C
 loc_094E06:
 	moveq	#$4,d0
-	and.b	-$172A(a5),d0
+	and.b	g_Player1+$2E(a5),d0
 	beq.s	loc_094E16
 	ori.b	#$4,$2E(a4)
 	bra.s	loc_094E1C

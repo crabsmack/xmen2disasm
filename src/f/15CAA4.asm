@@ -9,15 +9,15 @@ sub_15CAA4:
 	beq.s	loc_15CB30
 	tst.b	g_PalFadeActive(a5)
 	bne.s	loc_15CB30
-	tst.w	-$16F0(a5)
+	tst.w	g_Player1+$68(a5)
 	bgt.s	loc_15CAC6
-	tst.w	-$17E0(a5)
+	tst.w	g_Player2+$68(a5)
 	ble.s	loc_15CB30
 loc_15CAC6:
 	move.w	#$80,d0
 	and.w	g_Pad1Pressed(a5),d0
 	beq.s	loc_15CAE2
-	tst.w	-$16F0(a5)
+	tst.w	g_Player1+$68(a5)
 	bgt.s	loc_15CAE2
 	tst.w	g_P1Lives(a5)
 	beq.s	loc_15CB30
@@ -27,7 +27,7 @@ loc_15CAE2:
 	move.w	#$80,d0
 	and.w	g_Pad2Pressed(a5),d0
 	beq.s	loc_15CAFE
-	tst.w	-$17E0(a5)
+	tst.w	g_Player2+$68(a5)
 	bgt.s	loc_15CAFE
 	tst.w	g_P2Lives(a5)
 	beq.s	loc_15CB30

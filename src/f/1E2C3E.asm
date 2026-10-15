@@ -6,7 +6,7 @@ sub_1E2C3E:
 	move.l	a4,-(a7)
 	moveq	#$0,d0
 	movea.l	d0,a4
-	move.w	-$1754(a5),d1
+	move.w	g_Player1+$4(a5),d1
 	ext.l	d1
 	move.w	#$C000,d2
 	and.w	d1,d2
@@ -21,7 +21,7 @@ sub_1E2C3E:
 	lea.l	g_Player1(a5),a4
 	bra.s	loc_1E2C9E
 loc_1E2C74:
-	move.w	-$1844(a5),d0
+	move.w	g_Player2+$4(a5),d0
 	ext.l	d0
 	move.w	#$C000,d1
 	and.w	d0,d1

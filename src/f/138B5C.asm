@@ -107,7 +107,7 @@ loc_138C6C:
 	move.w	$9C(a4),$16(a4)
 	moveq	#$0,d0
 	move.l	d0,$94(a4)
-	move.w	-$1754(a5),d1
+	move.w	g_Player1+$4(a5),d1
 	ext.l	d1
 	move.w	#$C000,d2
 	and.w	d1,d2

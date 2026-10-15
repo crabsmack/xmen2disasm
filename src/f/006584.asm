@@ -11,7 +11,7 @@ HUD_Redraw:
 	movea.l	$2(a0),a4
 	lea.l	$3F92(a5),a0
 	movea.l	$2(a0),a3
-	move.w	-$1754(a5),d0
+	move.w	g_Player1+$4(a5),d0
 	ext.l	d0
 	move.w	#$C000,d1
 	and.w	d0,d1
@@ -32,7 +32,7 @@ loc_0065CA:
 	jsr	$51DA(a5)	; -> VDP_QueueDma
 	lea.l	$C(a7),a7
 loc_0065DE:
-	move.w	-$1844(a5),d0
+	move.w	g_Player2+$4(a5),d0
 	ext.l	d0
 	move.w	#$C000,d1
 	and.w	d0,d1

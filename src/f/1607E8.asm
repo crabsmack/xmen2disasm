@@ -40,7 +40,7 @@ Cam_Init:
 	clr.l	$38(a4)
 	movea.l	d0,a3
 	clr.w	d7
-	move.w	-$1754(a5),d1
+	move.w	g_Player1+$4(a5),d1
 	ext.l	d1
 	move.w	#$C000,d2
 	and.w	d1,d2
@@ -51,7 +51,7 @@ Cam_Init:
 	move.w	d7,d0
 	addq.w	#$1,d7
 loc_1608A4:
-	move.w	-$1844(a5),d0
+	move.w	g_Player2+$4(a5),d0
 	ext.l	d0
 	move.w	#$C000,d1
 	and.w	d0,d1

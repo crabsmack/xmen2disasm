@@ -47,13 +47,13 @@ loc_0FCD1C:
 loc_0FCD24:
 	tst.b	-$3BBA(a5)
 	beq.s	loc_0FCDA0
-	move.l	-$1750(a5),d0
+	move.l	g_Player1+$8(a5),d0
 	asr.l	#$8,d0
 	cmpi.l	#$360,d0
 	ble.s	loc_0FCD3C
 	clr.b	-$3BBA(a5)
 loc_0FCD3C:
-	move.w	-$1844(a5),d0
+	move.w	g_Player2+$4(a5),d0
 	ext.l	d0
 	move.w	#$C000,d1
 	and.w	d0,d1

@@ -56,7 +56,7 @@ loc_11C1CC:
 	moveq	#$1,d1
 	or.b	d0,d1
 	move.b	d1,$2E(a4)
-	move.w	-$1754(a5),d0
+	move.w	g_Player1+$4(a5),d0
 	ext.l	d0
 	move.w	#$C000,d1
 	and.w	d0,d1
@@ -65,7 +65,7 @@ loc_11C1CC:
 	cmpi.l	#$8000,d0
 	bne.s	loc_11C26E
 	moveq	#$4,d0
-	and.b	-$172A(a5),d0
+	and.b	g_Player1+$2E(a5),d0
 	beq.s	loc_11C266
 	ori.b	#$4,$2E(a4)
 	bra.s	loc_11C2B4
@@ -73,7 +73,7 @@ loc_11C266:
 	andi.b	#$FB,$2E(a4)
 	bra.s	loc_11C2B4
 loc_11C26E:
-	move.w	-$1844(a5),d0
+	move.w	g_Player2+$4(a5),d0
 	ext.l	d0
 	move.w	#$C000,d1
 	and.w	d0,d1
@@ -82,7 +82,7 @@ loc_11C26E:
 	cmpi.l	#$8000,d0
 	bne.s	loc_11C29E
 	moveq	#$4,d0
-	and.b	-$181A(a5),d0
+	and.b	g_Player2+$2E(a5),d0
 	beq.s	loc_11C296
 	ori.b	#$4,$2E(a4)
 	bra.s	loc_11C2B4
@@ -91,7 +91,7 @@ loc_11C296:
 	bra.s	loc_11C2B4
 loc_11C29E:
 	moveq	#$4,d0
-	and.b	-$172A(a5),d0
+	and.b	g_Player1+$2E(a5),d0
 	beq.s	loc_11C2AE
 	ori.b	#$4,$2E(a4)
 	bra.s	loc_11C2B4
