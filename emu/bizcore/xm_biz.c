@@ -10,6 +10,7 @@
  *                             (XM_READ | pc) or, for DMA, the instruction executing when the
  *                             DMA ran (XM_DMA | pc): who uses each data span
  */
+#include <stdlib.h>
 #include <string.h>
 #include "callbacks.h"
 #include "shared.h"
@@ -30,11 +31,60 @@ static unsigned int cur_dma;              /* VDP code/address of the DMA word be
 #define XM_READ 0x01000000u
 #define XM_DMA 0x02000000u
 
+/* Per-instruction cycle trace (phase 2 first-divergence work): while armed, every instruction
+   start appends {pc, m68k.cycles (master clocks since frame start), sr, a7}; xm_ctrace_mark adds
+   a frame marker {0xFFFFFFFF, frame}. Read back with xm_ctrace_buf / xm_ctrace_len.
+   rh = word-wise FNV-1a over D0-D7/A0-A7, so the first wrong register value shows. */
+typedef struct { unsigned pc, cyc, sr, a7, rh; } XmCtrace;
+static XmCtrace *ctrace;
+static unsigned ctrace_len, ctrace_cap;
+
+XM_EXPORT int xm_ctrace_arm(unsigned cap)
+{
+  free(ctrace);
+  ctrace = cap ? (XmCtrace *)malloc((size_t)cap * sizeof *ctrace) : NULL;
+  ctrace_cap = ctrace ? cap : 0;
+  ctrace_len = 0;
+  return ctrace != NULL || !cap;
+}
+XM_EXPORT void xm_ctrace_mark(unsigned frame)
+{
+  if (ctrace_len < ctrace_cap) {
+    XmCtrace *e = &ctrace[ctrace_len++];
+    e->pc = 0xFFFFFFFFu; e->cyc = frame; e->sr = 0; e->a7 = 0; e->rh = 0;
+  }
+}
+/* Register probe: every execution of probe_pc (while armed) records frame-relative cycles and
+   D0-D7/A0-A7, up to 256 hits; xm_rprobe_buf returns 18 words per hit (cyc, sr, dar[16]). */
+static unsigned probe_pc = 0xFFFFFFFFu, probe_len;
+static unsigned probe_buf[256 * 18];
+XM_EXPORT void xm_rprobe_arm(unsigned pc) { probe_pc = pc; probe_len = 0; }
+XM_EXPORT unsigned *xm_rprobe_buf(void) { return probe_buf; }
+XM_EXPORT unsigned xm_rprobe_len(void) { return probe_len; }
+
+XM_EXPORT XmCtrace *xm_ctrace_buf(void) { return ctrace; }
+XM_EXPORT unsigned xm_ctrace_len(void) { return ctrace_len; }
+
 static void xm_exec(unsigned addr)
 {
   addr &= 0xFFFFFFu;
   cur_pc = addr;
   instr_count++;
+  if (ctrace_len < ctrace_cap) {
+    XmCtrace *e = &ctrace[ctrace_len++];
+    e->pc = addr; e->cyc = m68k.cycles;
+    e->sr = m68k_get_reg(M68K_REG_SR); e->a7 = m68k_get_reg(M68K_REG_A7);
+    {
+      unsigned h = 2166136261u, i;
+      for (i = 0; i < 16; i++) h = (h ^ m68k.dar[i]) * 16777619u;
+      e->rh = h;
+    }
+  }
+  if (addr == probe_pc && probe_len < 256) {
+    unsigned *p = &probe_buf[probe_len++ * 18], i;
+    p[0] = m68k.cycles; p[1] = m68k_get_reg(M68K_REG_SR);
+    for (i = 0; i < 16; i++) p[2 + i] = m68k.dar[i];
+  }
   if (addr < ROM_SPAN) {
     unsigned bit = addr >> 1;
     exec_total[bit >> 3] |= (unsigned char)(1u << (bit & 7));
