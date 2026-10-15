@@ -1265,7 +1265,7 @@ Tbl_CloneA2QuakeScript:	; camera shake script: byte pairs (dx, dy) added to the 
 	include "src/f/081BC2.asm"
 	include "src/f/081BE6.asm"
 Sw_081BE6:	; switch table of sub at $081BE6: 6 word offsets from Sw_081BE6-2
-	dc.w	loc_081C7E-(Sw_081BE6-2), loc_081C86-(Sw_081BE6-2), loc_081C8E-(Sw_081BE6-2), loc_081C96-(Sw_081BE6-2)
+	dc.w	CloneA2_FlickerUpdate_Color15Case0-(Sw_081BE6-2), loc_081C86-(Sw_081BE6-2), loc_081C8E-(Sw_081BE6-2), loc_081C96-(Sw_081BE6-2)
 	dc.w	loc_081C9E-(Sw_081BE6-2), loc_081CA6-(Sw_081BE6-2)
 	include "src/f/081C7E.asm"
 	include "src/f/081CAC.asm"
@@ -1284,7 +1284,7 @@ Tbl_CloneA2FlickerPattern:	; 26 bytes, 1 or 2: colour choice per flicker step, r
 	include "src/f/081F5A.asm"
 	include "src/f/081F62.asm"
 Sw_081F62:	; switch table of sub at $081F62: 4 word offsets from Sw_081F62-2
-	dc.w	loc_081FB4-(Sw_081F62-2), loc_081FBE-(Sw_081F62-2), loc_081FC8-(Sw_081F62-2), loc_081FD2-(Sw_081F62-2)
+	dc.w	CloneA2_BgPalTimer_Case0-(Sw_081F62-2), loc_081FBE-(Sw_081F62-2), loc_081FC8-(Sw_081F62-2), loc_081FD2-(Sw_081F62-2)
 	include "src/f/081FB4.asm"
 	include "src/f/081FDA.asm"
 	include "src/f/081FFE.asm"
