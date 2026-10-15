@@ -1,8 +1,8 @@
 ; ---------------------------------------------------------------------------
-; BioSentinel_Deactivate - BioSentinel: deactivate: release sprite/collision resources, leave object lists (class slot 16, +$46)
+; BioSentinel_Deactivate - parent Deactivate; a one-shot sentinel (variant +$96 = 1) is then removed for good: flags cleared, timer freed, and its spawn record released without re-arming, so it never respawns (BIOSENTINEL override of slot 16, +$46)
 ; In:  8(a6) = this
 ; Out: none
-; Evidence: method 16 of class descriptor $1235F6 (name string "BIOSENTINEL", parent BASICBIOSENTINEL)
+; Evidence: g_SpawnRecs + index*14: +4 &= ~2, +5 = $FF; method 16 of class descriptor $1235F6 (name string "BIOSENTINEL", parent BASICBIOSENTINEL)
 ; ---------------------------------------------------------------------------
 BioSentinel_Deactivate:
 	link.w	a6,#$0

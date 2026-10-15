@@ -1,6 +1,6 @@
 ; ---------------------------------------------------------------------------
-; BabySentinelC_Init - BabySentinelC: constructor: chain to the parent Init, then set this class's fields (class slot 3, +$12)
-; In:  8(a6) = this  $C/$10(a6) = x, y (16.16)  $14(a6) = spawn record or 0
+; BabySentinelC_Init - BABYBIO Init, then palette 1, stats jt $327A (health = byte 2), frame $FF, AI script by variant +$BB (1: jt $3202, else jt $31FA), start at the script's first step (class slot 3, +$12)
+; In:  8(a6) = this  $C/$10(a6) = x, y (16.16)  $14(a6) = placement entry or 0
 ; Out: none
 ; Evidence: method 3 of class descriptor $11B8F6 (name string "BABYSENTINELC", parent BABYBIO)
 ; ---------------------------------------------------------------------------

@@ -1,6 +1,6 @@
 ; ---------------------------------------------------------------------------
-; LaserCannon_Init - LaserCannon: constructor: chain to the parent Init, then set this class's fields (class slot 3, +$12)
-; In:  8(a6) = this  $C/$10(a6) = x, y (16.16)  $14(a6) = spawn record or 0
+; LaserCannon_Init - LASERCANNON constructor: parent (XNPC) Init, no vertical motion, stats jt $3AD2 (health = byte 2), state LaserCannon_StateStart, flags |= $4081, sprite Art_LaserCannonSpr (palette 3), h-flip unless placement p6, +$9E = p8 (default 90), +$9C/+$9A = p$A (default 3), +$A0 = p$C (default 40), +$A2 = (p$E != 0) (class slot 3, +$12)
+; In:  8(a6) = this  $C/$10(a6) = x, y (16.16)  $14(a6) = placement entry or 0 (a zeroed entry is used then)
 ; Out: none
 ; Evidence: method 3 of class descriptor $1386B4 (name string "LASERCANNON", parent XNPC)
 ; ---------------------------------------------------------------------------

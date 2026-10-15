@@ -1,7 +1,7 @@
 ; ---------------------------------------------------------------------------
-; Spark_Update - Spark: per-frame update: range checks, Move, run the state function at +$5C after the +$6C delay (class slot 17, +$4A)
+; Spark_Update - spark per-frame update, a replacement of ACTOR Update: off camera -> Deactivate (and Kill if its health is gone); else Move while health > 0, advance the animation by distance, run the state at +$5C after the +$6C delay and refresh the boxes (class slot 17, +$4A; does not call the parent)
 ; In:  8(a6) = this
-; Out: none
+; Out: d0 = garbage
 ; Evidence: method 17 of class descriptor $1400DE (name string "SPARK", parent ACTOR)
 ; ---------------------------------------------------------------------------
 Spark_Update:

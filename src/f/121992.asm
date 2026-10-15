@@ -1,8 +1,8 @@
 ; ---------------------------------------------------------------------------
-; BigBio_InActivateWindow - BigBio: may this inactive object activate now (camera range test) (class slot 13, +$3A)
+; BigBio_InActivateWindow - activate unless a live player is more than 16 px below the boss (BIGBIO override of slot 13, +$3A; no camera test)
 ; In:  8(a6) = this
 ; Out: d0.b = 1 to activate
-; Evidence: method 13 of class descriptor $123684 (name string "BIGBIO", parent BASICBIOSENTINEL)
+; Evidence: returns 0 when obj y + $1000 < player y for P1 or P2 alive; method 13 of class descriptor $123684 (name string "BIGBIO", parent BASICBIOSENTINEL)
 ; ---------------------------------------------------------------------------
 BigBio_InActivateWindow:
 	link.w	a6,#$0

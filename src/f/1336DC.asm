@@ -1,7 +1,7 @@
 ; ---------------------------------------------------------------------------
-; BrainRocket_Update - BrainRocket: per-frame update: range checks, Move, run the state function at +$5C after the +$6C delay (class slot 17, +$4A)
+; BrainRocket_Update - ACTOR Update, then if still alive test the map block at the previous position (Tile_TestAt, mask $4800): on a hit shake the camera (vertical shake for headings 90/270), explode at the box centre, Kill, sound $38 (BRAINROCKET override of slot 17, +$4A)
 ; In:  8(a6) = this
-; Out: none
+; Out: d0 = garbage
 ; Evidence: method 17 of class descriptor $133CFC (name string "BRAINROCKET", parent ACTOR)
 ; ---------------------------------------------------------------------------
 BrainRocket_Update:

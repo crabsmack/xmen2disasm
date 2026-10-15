@@ -1,5 +1,5 @@
 ; ---------------------------------------------------------------------------
-; Ninja_Deactivate - Ninja: deactivate: release sprite/collision resources, leave object lists (class slot 16, +$46)
+; Ninja_Deactivate - a ninja running its leave script (Tbl_NinjaLeaveScript) is removed for good (Actor_DeactivateFree); otherwise the parent Deactivate (NINJA override of slot 16, +$46)
 ; In:  8(a6) = this
 ; Out: none
 ; Evidence: method 16 of class descriptor $13D7FE (name string "NINJA", parent BIONPC)

@@ -1,6 +1,6 @@
 ; ---------------------------------------------------------------------------
-; LineSegKiller_Init - LineSegKiller: constructor: chain to the parent Init, then set this class's fields (class slot 3, +$12)
-; In:  8(a6) = this  $C/$10(a6) = x, y (16.16)  $14(a6) = spawn record or 0
+; LineSegKiller_Init - LINESEGKILLER constructor: parent Init, no motion, flags |= $83, box corner +$8C = x + placement p6 / +$8E = y + p8 (default 128 each), +$90 = p$A (default 1001 = segment type $3E9) (class slot 3, +$12)
+; In:  8(a6) = this  $C/$10(a6) = x, y (16.16)  $14(a6) = placement entry (not null-checked)
 ; Out: none
 ; Evidence: method 3 of class descriptor $1389CA (name string "LINESEGKILLER", parent ACTOR)
 ; ---------------------------------------------------------------------------

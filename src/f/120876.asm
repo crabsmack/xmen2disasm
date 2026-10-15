@@ -1,5 +1,5 @@
 ; ---------------------------------------------------------------------------
-; BasicBioSentinel_SetFrame - BasicBioSentinel: set the animation frame byte +$2F (class slot 20, +$56)
+; BasicBioSentinel_SetFrame - set a frame from one of four sprite banks: 0-$3F Art_BasicBioSentinelSpr2, $40-$5F Art_SavageBioSpr, $60-$7F Art_BasicBioSentinelSpr3, $80+ Art_BasicBioSentinelSpr ($FF = none), flagging a re-upload when the bank or frame changes (class slot 20, +$56; does not call the parent)
 ; In:  8(a6) = this  $F(a6) = byte frame index ($FF = none)
 ; Out: none
 ; Evidence: method 20 of class descriptor $123562 (name string "BASICBIOSENTINEL", parent BIONPC)

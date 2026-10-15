@@ -1,5 +1,5 @@
 ; ---------------------------------------------------------------------------
-; Hornet_Explode - Hornet: XNPC hook: death explosion/effect chosen by the stats record (class slot 30, +$7E)
+; Hornet_Explode - sound $38, then in mode +$9E = 3 ExplodeFx_Burst(this, $202) (puffs that drop a power-up), else the XNPC Explode (HORNET override of slot 30, +$7E)
 ; In:  8(a6) = this
 ; Out: none
 ; Evidence: method 30 of class descriptor $137252 (name string "HORNET", parent XNPC)

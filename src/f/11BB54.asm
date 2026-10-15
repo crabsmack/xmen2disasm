@@ -1,5 +1,5 @@
 ; ---------------------------------------------------------------------------
-; BioFlame_Init - BIOFLAME constructor: parent Init, position from the placement entry (else from x/y), sprite def g_BioFlameSprDef (palette 1), flags |= $83, facing from the live player, no motion, owner +$8C and offsets +$90/+$92 = 0, the three flame offsets +$94/+$96/+$98 = 0/10/20 (class slot 3, +$12)
+; BioFlame_Init - BIOFLAME constructor: parent Init, position from the placement entry (else from x/y), sprite def g_BioFlameSprDef (palette 1), flags |= $83, sprite priority (+$2E bit 2) from the live player, no motion, owner +$8C and offsets +$90/+$92 = 0, the three flame offsets +$94/+$96/+$98 = 0/10/20 (class slot 3, +$12)
 ; In:  8(a6) = this  $C/$10(a6) = x, y (16.16)  $14(a6) = placement entry or 0
 ; Out: none
 ; Evidence: method 3 of class descriptor $11B6D4 (name string "BIOFLAME", parent ACTOR)

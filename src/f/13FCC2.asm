@@ -1,5 +1,5 @@
 ; ---------------------------------------------------------------------------
-; Spark_Draw - Spark: position/draw the object's sprite relative to the camera (class slot 5, +$1A)
+; Spark_Draw - a type-$20 sprite def is drawn as one raw hardware sprite (4 tiles per frame, priority from +$2E bit 2); any other uses the parent Draw (SPARK override of slot 5, +$1A)
 ; In:  8(a6) = this
 ; Out: none
 ; Evidence: method 5 of class descriptor $1400DE (name string "SPARK", parent ACTOR)

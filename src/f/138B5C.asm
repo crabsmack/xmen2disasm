@@ -1,6 +1,6 @@
 ; ---------------------------------------------------------------------------
-; MaintRobot_Init - MaintRobot: constructor: chain to the parent Init, then set this class's fields (class slot 3, +$12)
-; In:  8(a6) = this  $C/$10(a6) = x, y (16.16)  $14(a6) = spawn record or 0
+; MaintRobot_Init - MAINTROBOT constructor: parent (XNPC) Init, position from the placement entry, no y acceleration, state MaintRobot_StateResume, sprite (raw jt $3B82 when g_MaintRobotSprDef is -1), flags |= $80, stats Tbl_MaintRobotTakeDamage_Hurt, +$42 = $10, speed +$9C/+$9A and x velocity = p6 << 8 (default $200), +$9E = p8 (60), +$A0 = p$A (2), +$A2 = p$C (20), +$A7 = p$E, sprite priority from the live player, then sub_1F6B9C (class slot 3, +$12)
+; In:  8(a6) = this  $C/$10(a6) = x, y (16.16)  $14(a6) = placement entry (not null-checked)
 ; Out: none
 ; Evidence: method 3 of class descriptor $1391FE (name string "MAINTROBOT", parent XNPC)
 ; ---------------------------------------------------------------------------

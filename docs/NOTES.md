@@ -284,6 +284,12 @@ _(module → functions, globals, data; add as you learn them)_
   cooldown (10 after a hit), ~~+$7C collision handle~~ +$7C per-object Timer (`Timer_Create(class
   Update, 1, this, 1)` in ACTOR Init). XNPC (size $94): +$8C pointer to a stats record
   (byte 0 attack damage, 1 hurt sound, 2 health/death type, 7 hurt frame).
+- **Override facts (header audit hdr2, $0E0000-$1C0000)**: the 4th Init argument is the 16-byte placement
+  entry (spawn record +$A; word +2/+4 x/y, +6.. params), not the spawn record. Spawn record byte +4: bit 0
+  waiting, bit 1 live, bit 3 = spawn at once without the +$2A in-view test (Hologram/CoreElevator
+  InitSpawnRec), 0 = never spawned by the pass (Switch). Sprite byte +$2E bit 2 = hardware priority ($8000;
+  most Inits copy it from the live player), bit 4 = h-flip. Many Update overrides (bullets, sparks,
+  power-ups) replace ACTOR Update entirely; read the code before trusting a slot name.
 - **AI scripts**: many enemies keep a script `{word index; long table}` (HOLOGRAM `+$8C/+$8E`, BABYBIO
   `+$96/+$98`), set by `AiScript_Set(&script, table)`. Table = word count, then 4-byte `jmp d(a5)`
   thunks (`Hologram_ScriptAttack`, `BabySentinelB_Script2`...); the jump table exports the table start. An action

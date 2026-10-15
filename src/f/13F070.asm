@@ -1,6 +1,6 @@
 ; ---------------------------------------------------------------------------
-; Pop_Init - Pop: constructor: chain to the parent Init, then set this class's fields (class slot 3, +$12)
-; In:  8(a6) = this  $C/$10(a6) = x, y (16.16)  $14(a6) = spawn record or 0
+; Pop_Init - POP constructor: parent Init, state Pop_StateStart, flags |= $80, no motion, type +$8C = placement p6, delay +$6E = p8 (default 60), frame $FF (class slot 3, +$12)
+; In:  8(a6) = this  $C/$10(a6) = x, y (16.16)  $14(a6) = placement entry (not null-checked)
 ; Out: none
 ; Evidence: method 3 of class descriptor $13F28A (name string "POP", parent ACTOR)
 ; ---------------------------------------------------------------------------

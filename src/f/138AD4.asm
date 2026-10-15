@@ -1,5 +1,5 @@
 ; ---------------------------------------------------------------------------
-; MaintRobotFire_Update - MaintRobotFire: per-frame update: range checks, Move, run the state function at +$5C after the +$6C delay (class slot 17, +$4A)
+; MaintRobotFire_Update - flame per-frame update, a full replacement of ACTOR Update: advance the animation (no movement), Kill when the animation has ended (+$44 = 0), else refresh the boxes (class slot 17, +$4A; does not call the parent)
 ; In:  8(a6) = this
 ; Out: none
 ; Evidence: method 17 of class descriptor $139180 (name string "MAINTROBOTFIRE", parent ACTOR)

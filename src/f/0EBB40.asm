@@ -1,5 +1,5 @@
 ; ---------------------------------------------------------------------------
-; CoreShields_Init - CoreShields constructor: parent Init, sprite def, state CoreShields_StateStart, flags |= $81, +$2E bit 2, no motion, clear the cooldown, rotation and the 8 panel bytes, +$8C from placement params +6/+8 (defaults 40/180; the second overwrites the first), body box from the position, and fill the 10-word table at $FFC8E4 (class slot 3, +$12)
+; CoreShields_Init - CoreShields constructor: parent Init, sprite def, state CoreShields_StateStart, flags |= $81, high sprite priority (+$2E bit 2), no motion, clear the cooldown, rotation and the 8 panel bytes, +$8C from placement params +6/+8 (defaults 40/180; the second overwrites the first), body box from the position, and fill the 10-word table at $FFC8E4 (class slot 3, +$12)
 ; In:  8(a6) = this  $C/$10(a6) = x, y (16.16)  $14(a6) = placement entry (not null-checked)
 ; Out: none
 ; Evidence: Mem_Set(this+$92, 0, 8); box (x-$35, y-$25)..(x-5, y-4) in +$4C..+$5A; method 3 of class descriptor $0EBE7E (name string "CORESHIELDS", parent ACTOR)

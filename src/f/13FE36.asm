@@ -1,6 +1,6 @@
 ; ---------------------------------------------------------------------------
-; Spark_Attack - Spark: hit another actor: call its TakeHit and start this object's hit cooldown (class slot 7, +$22)
-; In:  8(a6) = this  $C(a6) = target actor  then hit type, damage, extra words
+; Spark_Attack - hit the target (its TakeDamage), explode at the box centre and Kill the spark (SPARK override of slot 7, +$22; no hit cooldown)
+; In:  8(a6) = this  $C(a6) = target actor  $13(a6) = byte hit type  $17(a6) = byte damage  $1A/$1E(a6) = words passed on
 ; Out: none
 ; Evidence: method 7 of class descriptor $1400DE (name string "SPARK", parent ACTOR)
 ; ---------------------------------------------------------------------------

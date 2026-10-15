@@ -1,5 +1,5 @@
 ; ---------------------------------------------------------------------------
-; LineSegKiller_Deactivate - LineSegKiller: deactivate: release sprite/collision resources, leave object lists (class slot 16, +$46)
+; LineSegKiller_Deactivate - only sets +4 bit $4000: no ACTOR Deactivate, so it keeps its resources (LINESEGKILLER override of slot 16, +$46)
 ; In:  8(a6) = this
 ; Out: none
 ; Evidence: method 16 of class descriptor $1389CA (name string "LINESEGKILLER", parent ACTOR)

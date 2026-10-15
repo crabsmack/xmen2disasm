@@ -1,7 +1,7 @@
 ; ---------------------------------------------------------------------------
-; BigBio_TakeDamage - BigBio: receive a hit from an attacker: damage, hurt state, invulnerability timer (class slot 8, +$26)
+; BigBio_TakeDamage - ignored in modes +$A2 bits 0/3; else health -= damage, cooldown 20, body palette by health (above 50 / 31-50); at 0 stop, blink and BigBio_StateDefeated after 20 frames, else save the state, blink and BigBio_ResumeAfterHit after 20 frames (BIGBIO override of slot 8, +$26; does not call the parent)
 ; In:  8(a6) = this  $C(a6) = attacker  $13(a6) = byte hit type  $17(a6) = byte damage  $1A/$1E(a6) = words
-; Out: none
+; Out: d0 = garbage
 ; Evidence: method 8 of class descriptor $123684 (name string "BIGBIO", parent BASICBIOSENTINEL)
 ; ---------------------------------------------------------------------------
 BigBio_TakeDamage:

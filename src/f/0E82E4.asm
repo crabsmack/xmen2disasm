@@ -1,5 +1,5 @@
 ; ---------------------------------------------------------------------------
-; HoloBolt_Init - HoloBolt constructor: parent Init, flags |= $5082, sprite def g_HoloBoltSprDef, facing (+$2E bit 2) copied from the live player (P1, else P2), default and current state HoloBolt_StateAppear (class slot 3, +$12)
+; HoloBolt_Init - HoloBolt constructor: parent Init, flags |= $5082, sprite def g_HoloBoltSprDef, sprite priority (+$2E bit 2) copied from the live player (P1, else P2), default and current state HoloBolt_StateAppear (class slot 3, +$12)
 ; In:  8(a6) = this  $C/$10(a6) = x, y (16.16)  $14(a6) = placement entry or 0
 ; Out: none
 ; Evidence: method 3 of class descriptor $0E83AC (name string "HOLOBOLT", parent ACTOR); player +4 & $C000 == $8000 = alive test

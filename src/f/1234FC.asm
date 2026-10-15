@@ -1,5 +1,5 @@
 ; ---------------------------------------------------------------------------
-; BigBio_ClassInit - BigBio: per-class hook run at level start before the spawn pass (static, class slot 22, +$5E; ClassList_InitAll)
+; BigBio_ClassInit - allocate the 16-orb buffer ($FFE774, 96 bytes) and the spit pool ($FFE770, 128 bytes, count $FFE76E = 0), register g_BigBioSprDef from Art_BigBioSpr and start the BigBio_SpitUpdateAll timer (static, class slot 22, +$5E; does not call the parent)
 ; In:  8(a6) = 0  $C(a6) = class index in the level class list
 ; Out: none
 ; Evidence: method 22 of class descriptor $123684 (name string "BIGBIO", parent BASICBIOSENTINEL)

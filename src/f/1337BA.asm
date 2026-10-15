@@ -1,5 +1,5 @@
 ; ---------------------------------------------------------------------------
-; BrainRocket_Move - BrainRocket: apply velocity (+$16/+$18), acceleration (+$1E/+$20) and speed limits (class slot 18, +$4E)
+; BrainRocket_Move - position += velocity, velocity += acceleration, once per frame step; no speed limits (BRAINROCKET override of slot 18, +$4E; does not call the parent)
 ; In:  8(a6) = this  $C(a6) = word frame step (1, or 2 when the game runs at half rate)
 ; Out: none
 ; Evidence: method 18 of class descriptor $133CFC (name string "BRAINROCKET", parent ACTOR)

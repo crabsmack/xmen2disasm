@@ -1,5 +1,5 @@
 ; ---------------------------------------------------------------------------
-; LineSegKiller_Kill - LineSegKiller: remove the object (health ran out or explicit kill) (class slot 19, +$52)
+; LineSegKiller_Kill - remove the type-$3E9 floor segments in its box (LineSegKiller_RemoveSegsInBox(x, y, +$8C, +$8E)), then the parent Kill (LINESEGKILLER override of slot 19, +$52)
 ; In:  8(a6) = this
 ; Out: none
 ; Evidence: method 19 of class descriptor $1389CA (name string "LINESEGKILLER", parent ACTOR)

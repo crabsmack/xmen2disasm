@@ -1,5 +1,5 @@
 ; ---------------------------------------------------------------------------
-; Mine_ClassInit - Mine: per-class hook run at level start before the spawn pass (static, class slot 22, +$5E; ClassList_InitAll)
+; Mine_ClassInit - set up the mine pool (Mine_InitPool) and register g_MineSprDef from Art_MineNem (static, class slot 22, +$5E; does not call the parent)
 ; In:  8(a6) = 0  $C(a6) = class index in the level class list
 ; Out: none
 ; Evidence: method 22 of class descriptor $13AF1A (name string "MINE", parent ACTOR)

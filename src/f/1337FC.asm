@@ -1,5 +1,5 @@
 ; ---------------------------------------------------------------------------
-; BrainRocket_OutsideActiveWindow - BrainRocket: is the active object out of range and due to deactivate (class slot 15, +$42)
+; BrainRocket_OutsideActiveWindow - is the rocket outside the camera bounds ($FFCC3A-$FFCC40) widened by the margins +$92 (x) / +$94 (y) (BRAINROCKET override of slot 15, +$42; replaces ACTOR's window test)
 ; In:  8(a6) = this
 ; Out: d0.b = 1 to deactivate
 ; Evidence: method 15 of class descriptor $133CFC (name string "BRAINROCKET", parent ACTOR)

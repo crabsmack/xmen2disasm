@@ -1,7 +1,7 @@
 ; ---------------------------------------------------------------------------
-; Mine_SpawnFromRec - Mine: create the object for a spawn record (static, class slot 10, +$2E)
-; In:  8(a6) = spawn record (class ptr at +0)  $C(a6) = spawn record
-; Out: d0 = object or 0
+; Mine_SpawnFromRec - instead of creating an object, add the record's placement to the mine pool (Mine_PoolAdd), link the pool entry to the record and mark the record live with no object; always returns 0 (MINE override of slot 10 SpawnFromRec, +$2E)
+; In:  8(a6) = class descriptor  $C(a6) = spawn record
+; Out: d0 = 0
 ; Evidence: method 10 of class descriptor $13AF1A (name string "MINE", parent ACTOR)
 ; ---------------------------------------------------------------------------
 Mine_SpawnFromRec:

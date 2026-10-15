@@ -1,6 +1,6 @@
 ; ---------------------------------------------------------------------------
-; Hornet_Init - Hornet: constructor: chain to the parent Init, then set this class's fields (class slot 3, +$12)
-; In:  8(a6) = this  $C/$10(a6) = x, y (16.16)  $14(a6) = spawn record or 0
+; Hornet_Init - HORNET constructor: position from the placement entry, parent (XNPC) Init, no motion, stats Tbl_HornetTakeDamage_Hurt (health = byte 2), state Hornet_StateAttackDelay, sprite g_HornetSprDef (palette 3), damage byte +$70 = 1, flags |= $80, motion function +$94 = Hornet_MoveStartSwing, swing params from placement p6..p$E (+$AA 64, +$AC 2, +$A6 60, +$A4 1, +$A2 10 by default), lifetime +$B6 = 480, sprite priority from the live player, Tbl_HornetAnimIdle (class slot 3, +$12)
+; In:  8(a6) = this  $C/$10(a6) = x, y (16.16)  $14(a6) = placement entry (dereferenced for the params without a null check)
 ; Out: none
 ; Evidence: method 3 of class descriptor $137252 (name string "HORNET", parent XNPC)
 ; ---------------------------------------------------------------------------

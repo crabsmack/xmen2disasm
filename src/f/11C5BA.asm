@@ -1,7 +1,7 @@
 ; ---------------------------------------------------------------------------
-; BabyBio_TakeDamage - BabyBio: receive a hit from an attacker: damage, hurt state, invulnerability timer (class slot 8, +$26)
+; BabyBio_TakeDamage - parent (BIONPC) TakeDamage, then (unless +4 bit $10 is set) Kill the attached child object +$A8 (BABYBIO override of slot 8, +$26)
 ; In:  8(a6) = this  $C(a6) = attacker  $13(a6) = byte hit type  $17(a6) = byte damage  $1A/$1E(a6) = words
-; Out: none
+; Out: d0 = garbage
 ; Evidence: method 8 of class descriptor $11B74C (name string "BABYBIO", parent BIONPC)
 ; ---------------------------------------------------------------------------
 BabyBio_TakeDamage:

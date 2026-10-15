@@ -1,7 +1,7 @@
 ; ---------------------------------------------------------------------------
-; Hornet_Update - Hornet: per-frame update: range checks, Move, run the state function at +$5C after the +$6C delay (class slot 17, +$4A)
+; Hornet_Update - XNPC/ACTOR Update, then count down the lifetime +$B6 and, when it runs out, set bit 2 of +$A0 (time to leave) (HORNET override of slot 17, +$4A)
 ; In:  8(a6) = this
-; Out: none
+; Out: d0 = garbage
 ; Evidence: method 17 of class descriptor $137252 (name string "HORNET", parent XNPC)
 ; ---------------------------------------------------------------------------
 Hornet_Update:

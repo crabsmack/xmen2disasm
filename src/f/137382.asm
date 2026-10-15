@@ -1,7 +1,7 @@
 ; ---------------------------------------------------------------------------
-; HornetBullet_Init - HornetBullet: constructor: chain to the parent Init, then set this class's fields (class slot 3, +$12)
-; In:  8(a6) = this  $C/$10(a6) = x, y (16.16)  $14(a6) = spawn record or 0
-; Out: none
+; HornetBullet_Init - HORNETBULLET constructor: parent Init, no motion (the shooter sets it), sprite g_HornetBulletSprDef (palette 1), damage byte +$70 = 1, flags |= $4082, sprite priority from the live player (class slot 3, +$12)
+; In:  8(a6) = this  $C/$10(a6) = x, y (16.16)  $14(a6) = placement entry or 0
+; Out: d0 = garbage
 ; Evidence: method 3 of class descriptor $137708 (name string "HORNETBULLET", parent ACTOR)
 ; ---------------------------------------------------------------------------
 HornetBullet_Init:

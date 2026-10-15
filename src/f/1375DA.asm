@@ -1,5 +1,5 @@
 ; ---------------------------------------------------------------------------
-; HornetBullet_Draw - HornetBullet: position/draw the object's sprite relative to the camera (class slot 5, +$1A)
+; HornetBullet_Draw - draw one hardware sprite at the bullet (palette 1, priority, h-flipped while moving left), honouring the attach offsets; skipped off screen (class slot 5, +$1A; does not call the parent)
 ; In:  8(a6) = this
 ; Out: none
 ; Evidence: method 5 of class descriptor $137708 (name string "HORNETBULLET", parent ACTOR)

@@ -1,6 +1,6 @@
 ; ---------------------------------------------------------------------------
-; BrainRocket_Attack - BrainRocket: hit another actor: call its TakeHit and start this object's hit cooldown (class slot 7, +$22)
-; In:  8(a6) = this  $C(a6) = target actor  then hit type, damage, extra words
+; BrainRocket_Attack - hit the target (its TakeDamage), then blow up: camera shake (vertical for headings 90/270, else Tbl_BrainRocketShakeStep), explosion at the box centre, Kill, sound $38 (BRAINROCKET override of slot 7, +$22; no hit cooldown)
+; In:  8(a6) = this  $C(a6) = target actor  $13(a6) = byte hit type  $17(a6) = byte damage  $1A/$1E(a6) = words passed on
 ; Out: none
 ; Evidence: method 7 of class descriptor $133CFC (name string "BRAINROCKET", parent ACTOR)
 ; ---------------------------------------------------------------------------

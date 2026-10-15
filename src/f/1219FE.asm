@@ -1,8 +1,8 @@
 ; ---------------------------------------------------------------------------
-; BigBio_Draw - BigBio: position/draw the object's sprite relative to the camera (class slot 5, +$1A)
+; BigBio_Draw - draw the boss: below 16 health flash palette line $FFC8E0 every 8 frames; end the scene when no player is alive; mode +$A2: normal = parent Draw, bit 1/2 = frame $64/$65 drawn on each of the 16 orbs ($FFE774), bit 3 = the orbs with g_BigBioSprDef tiles (BIGBIO override of slot 5, +$1A)
 ; In:  8(a6) = this
-; Out: none
-; Evidence: method 5 of class descriptor $123684 (name string "BIGBIO", parent BASICBIOSENTINEL)
+; Out: d0 = garbage
+; Evidence: palette rows from jt $36A2 +$40/+$60; g_SceneExitTimer = 1; method 5 of class descriptor $123684 (name string "BIGBIO", parent BASICBIOSENTINEL)
 ; ---------------------------------------------------------------------------
 BigBio_Draw:
 	link.w	a6,#$FFF4

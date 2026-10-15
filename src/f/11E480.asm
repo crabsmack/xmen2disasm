@@ -1,8 +1,8 @@
 ; ---------------------------------------------------------------------------
-; BioBullet_Update - BioBullet: per-frame update: range checks, Move, run the state function at +$5C after the +$6C delay (class slot 17, +$4A)
+; BioBullet_Update - bullet per-frame update, a full replacement of ACTOR Update: Kill when off camera; else move with velocity and acceleration (twice at half rate); explode and Kill when it leaves the map or enters a solid cell (bit $4000), or when it hits a player body (BioBullet_HitActor) (class slot 17, +$4A; does not call the parent)
 ; In:  8(a6) = this
 ; Out: none
-; Evidence: method 17 of class descriptor $11E6EC (name string "BIOBULLET", parent ACTOR)
+; Evidence: map cell = row table $FFC78E + column, cells at $FFC77C; ObjList_ForEachAtPoint(x, y, g_HitListPlayerBody, BioBullet_HitActor); Explosion_Spawn; method 17 of class descriptor $11E6EC (name string "BIOBULLET", parent ACTOR)
 ; ---------------------------------------------------------------------------
 BioBullet_Update:
 	link.w	a6,#$0

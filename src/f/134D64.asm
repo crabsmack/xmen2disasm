@@ -1,7 +1,7 @@
 ; ---------------------------------------------------------------------------
-; FlyBrood_Update - FlyBrood: per-frame update: range checks, Move, run the state function at +$5C after the +$6C delay (class slot 17, +$4A)
+; FlyBrood_Update - ACTOR Update, then while alive run the path-motion function +$9E (if any) and clamp: x to +$92..+$94 when +$B0 bit 0, y to at least +$98 when bit 1 (stopping that axis) (FLYBROOD override of slot 17, +$4A)
 ; In:  8(a6) = this
-; Out: none
+; Out: d0 = garbage
 ; Evidence: method 17 of class descriptor $134518 (name string "FLYBROOD", parent ACTOR)
 ; ---------------------------------------------------------------------------
 FlyBrood_Update:

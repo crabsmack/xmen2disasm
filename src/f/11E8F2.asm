@@ -1,7 +1,7 @@
 ; ---------------------------------------------------------------------------
-; BioBalls_Update - BioBalls: per-frame update: range checks, Move, run the state function at +$5C after the +$6C delay (class slot 17, +$4A)
+; BioBalls_Update - BIOBALLS per-frame update, a slimmed replacement of ACTOR Update: Move (unless flag $4000), advance the animation by distance (unless hurt), count down +$6E, run the state at +$5C when the +$6C delay is out, then refresh the box with BioBalls_UpdateBox when +$98 bit $400 is set (class slot 17, +$4A; does not call the parent)
 ; In:  8(a6) = this
-; Out: none
+; Out: d0 = garbage
 ; Evidence: method 17 of class descriptor $1203AC (name string "BIOBALLS", parent ACTOR)
 ; ---------------------------------------------------------------------------
 BioBalls_Update:

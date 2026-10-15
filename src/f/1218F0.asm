@@ -1,6 +1,6 @@
 ; ---------------------------------------------------------------------------
-; BigBio_Init - BigBio: constructor: chain to the parent Init, then set this class's fields (class slot 3, +$12)
-; In:  8(a6) = this  $C/$10(a6) = x, y (16.16)  $14(a6) = spawn record or 0
+; BigBio_Init - BIGBIO constructor: parent Init, no motion, health 50, mode bits +$A2 = 0, state BigBio_StateStart, flags |= $80, sprite Art_BasicBioSentinelSpr (palette 3), high sprite priority when placement param +6 is set, +$B0 = placement x, +$B6 = 1, +$AC = 0 (class slot 3, +$12)
+; In:  8(a6) = this  $C/$10(a6) = x, y (16.16)  $14(a6) = placement entry (not null-checked)
 ; Out: none
 ; Evidence: method 3 of class descriptor $123684 (name string "BIGBIO", parent BASICBIOSENTINEL)
 ; ---------------------------------------------------------------------------

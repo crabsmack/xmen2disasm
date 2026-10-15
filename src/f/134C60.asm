@@ -1,5 +1,5 @@
 ; ---------------------------------------------------------------------------
-; FlyBrood_Draw - FlyBrood: position/draw the object's sprite relative to the camera (class slot 5, +$1A)
+; FlyBrood_Draw - in scene -$3B5C the parent Draw; elsewhere one hardware sprite (12 tiles per frame from g_FlyBroodSprDef, palette 1, h-flip from +$2E bit 4, priority from bit 2) (FLYBROOD override of slot 5, +$1A)
 ; In:  8(a6) = this
 ; Out: none
 ; Evidence: method 5 of class descriptor $134518 (name string "FLYBROOD", parent ACTOR)

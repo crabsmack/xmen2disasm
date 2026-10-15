@@ -1,8 +1,8 @@
 ; ---------------------------------------------------------------------------
-; FlyBrood_ClassInit - FlyBrood: per-class hook run at level start before the spawn pass (static, class slot 22, +$5E; ClassList_InitAll)
+; FlyBrood_ClassInit - register g_FlyBroodSprDef from Art_FlyBroodSpr, except in the scene whose id is in byte -$3B5C ($FFC6A4) where FLYBROOD draws from raw art (static, class slot 22, +$5E; does not call the parent)
 ; In:  8(a6) = 0  $C(a6) = class index in the level class list
 ; Out: none
-; Evidence: method 22 of class descriptor $134518 (name string "FLYBROOD", parent ACTOR)
+; Evidence: first calls the empty FlyBrood_EmptyStub; method 22 of class descriptor $134518 (name string "FLYBROOD", parent ACTOR)
 ; ---------------------------------------------------------------------------
 FlyBrood_ClassInit:
 	link.w	a6,#$0

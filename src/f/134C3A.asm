@@ -1,7 +1,7 @@
 ; ---------------------------------------------------------------------------
-; FlyBrood_Deactivate - FlyBrood: deactivate: release sprite/collision resources, leave object lists (class slot 16, +$46)
+; FlyBrood_Deactivate - parent Deactivate, then decrement the live FLYBROOD count $FFE77A (FLYBROOD override of slot 16, +$46)
 ; In:  8(a6) = this
-; Out: none
+; Out: d0 = old count (unused)
 ; Evidence: method 16 of class descriptor $134518 (name string "FLYBROOD", parent ACTOR)
 ; ---------------------------------------------------------------------------
 FlyBrood_Deactivate:

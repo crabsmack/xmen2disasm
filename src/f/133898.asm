@@ -1,5 +1,5 @@
 ; ---------------------------------------------------------------------------
-; BrainRocket_Deactivate - BrainRocket: deactivate: release sprite/collision resources, leave object lists (class slot 16, +$46)
+; BrainRocket_Deactivate - deactivate for good with Actor_DeactivateFree (ACTOR Deactivate, clear flags, free the timer, release the spawn record) (BRAINROCKET override of slot 16, +$46)
 ; In:  8(a6) = this
 ; Out: none
 ; Evidence: method 16 of class descriptor $133CFC (name string "BRAINROCKET", parent ACTOR)

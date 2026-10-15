@@ -1,6 +1,6 @@
 ; ---------------------------------------------------------------------------
-; BigAcBullet_Attack - BigAcBullet: hit another actor: call its TakeHit and start this object's hit cooldown (class slot 7, +$22)
-; In:  8(a6) = this  $C(a6) = target actor  then hit type, damage, extra words
+; BigAcBullet_Attack - hit the target with its TakeDamage as hit type 8 (whatever type was passed), then Kill the bullet (BIGACBULLET override of slot 7, +$22; no hit cooldown)
+; In:  8(a6) = this  $C(a6) = target actor  $13(a6) = byte hit type (ignored)  $17(a6) = byte damage  $1A/$1E(a6) = words passed on
 ; Out: none
 ; Evidence: method 7 of class descriptor $0118BE (name string "BIGACBULLET", parent ACTOR)
 ; ---------------------------------------------------------------------------

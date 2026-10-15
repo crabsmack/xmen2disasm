@@ -1,5 +1,5 @@
 ; ---------------------------------------------------------------------------
-; BioBullet_Draw - BioBullet: position/draw the object's sprite relative to the camera (class slot 5, +$1A)
+; BioBullet_Draw - draw frame 0 through Spr_Draw, or (+$2E bit 5 set) a single raw hardware sprite at the bullet's screen position (class slot 5, +$1A; does not call the parent)
 ; In:  8(a6) = this
 ; Out: none
 ; Evidence: method 5 of class descriptor $11E6EC (name string "BIOBULLET", parent ACTOR)

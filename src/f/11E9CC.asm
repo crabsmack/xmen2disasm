@@ -1,8 +1,8 @@
 ; ---------------------------------------------------------------------------
-; BioBalls_Draw - BioBalls: position/draw the object's sprite relative to the camera (class slot 5, +$1A)
+; BioBalls_Draw - draw every ball of the list +$92 ({x, y, flags} records) as a hardware sprite when on screen (uploading the frame when it changed); in layered mode (+$98 bit 0) the flagged balls first, then the rest (class slot 5, +$1A; does not call the parent)
 ; In:  8(a6) = this
 ; Out: none
-; Evidence: method 5 of class descriptor $1203AC (name string "BIOBALLS", parent ACTOR)
+; Evidence: list = {word count; 6-byte balls} ended early by a negative x and y; writes g_SpriteTable directly; method 5 of class descriptor $1203AC (name string "BIOBALLS", parent ACTOR)
 ; ---------------------------------------------------------------------------
 BioBalls_Draw:
 	link.w	a6,#$0

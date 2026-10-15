@@ -1,5 +1,5 @@
 ; ---------------------------------------------------------------------------
-; BabyBio_EndHurt - BabyBio: XNPC hook: leave the hurt state and resume the saved state (class slot 28, +$76)
+; BabyBio_EndHurt - parent EndHurt (resume the saved state), then reset the home position +$9C/+$A0 to where the knockback left it (BABYBIO override of slot 28, +$76)
 ; In:  8(a6) = this
 ; Out: none
 ; Evidence: method 28 of class descriptor $11B74C (name string "BABYBIO", parent BIONPC)

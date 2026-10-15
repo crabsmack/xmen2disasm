@@ -1,6 +1,6 @@
 ; ---------------------------------------------------------------------------
-; FireWall_Init - FireWall: constructor: chain to the parent Init, then set this class's fields (class slot 3, +$12)
-; In:  8(a6) = this  $C/$10(a6) = x, y (16.16)  $14(a6) = spawn record or 0
+; FireWall_Init - FIREWALL constructor: parent Init, no motion, state FireWall_StateWaitOnScreen, flags |= $83, sprite priority from the live player, +$8C = placement p6 (default 120), +$8E = p8 (0-2, else 0), +$90 = (p$A == 0), +$92 = 0 (class slot 3, +$12)
+; In:  8(a6) = this  $C/$10(a6) = x, y (16.16)  $14(a6) = placement entry (not null-checked)
 ; Out: none
 ; Evidence: method 3 of class descriptor $134214 (name string "FIREWALL", parent ACTOR)
 ; ---------------------------------------------------------------------------

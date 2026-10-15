@@ -1,8 +1,8 @@
 ; ---------------------------------------------------------------------------
-; BioBalls_Move - BioBalls: apply velocity (+$16/+$18), acceleration (+$1E/+$20) and speed limits (class slot 18, +$4E)
+; BioBalls_Move - move the balls, not the object: run the motion function +$A2 (BioBalls_Motion*) first; unless it returns nonzero, ease each ball toward its slot in the formation table +$9A (anchor = position + +$9E/+$A0, mirrored by +$98 bits 1/2) by at most 5 px per axis per step, clearing +$9A once all have arrived (BIOBALLS override of slot 18 Move)
 ; In:  8(a6) = this  $C(a6) = word frame step (1, or 2 when the game runs at half rate)
 ; Out: none
-; Evidence: method 18 of class descriptor $1203AC (name string "BIOBALLS", parent ACTOR)
+; Evidence: formation entries 8 bytes, restart at a value > 999; method 18 of class descriptor $1203AC (name string "BIOBALLS", parent ACTOR)
 ; ---------------------------------------------------------------------------
 BioBalls_Move:
 	link.w	a6,#$FFF6

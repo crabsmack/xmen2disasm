@@ -1,5 +1,5 @@
 ; ---------------------------------------------------------------------------
-; Platform1_Init - Platform1 constructor: parent Init, no motion, state Platform1_StateStart, sprite (raw Art_Platform1Spr when g_Platform1SprDef is -1), facing from the live player, frame from placement param +8 (0->2, 1->0, 2->1), flags |= $283, speed +$94 = param +$C << 8 (default $200), start mode from param +$E (0 run; 1/2 paused at an end, +$6E = 10) (class slot 3, +$12)
+; Platform1_Init - Platform1 constructor: parent Init, no motion, state Platform1_StateStart, sprite (raw Art_Platform1Spr when g_Platform1SprDef is -1), sprite priority (+$2E bit 2) from the live player, frame from placement param +8 (0->2, 1->0, 2->1), flags |= $283, speed +$94 = param +$C << 8 (default $200), start mode from param +$E (0 run; 1/2 paused at an end, +$6E = 10) (class slot 3, +$12)
 ; In:  8(a6) = this  $C/$10(a6) = x, y (16.16)  $14(a6) = placement entry (not null-checked)
 ; Out: d0 = garbage
 ; Evidence: switch on placement +8 continues in Platform1_Init_Common; mode bits 0-1 of word +$90; method 3 of class descriptor $1072E8 (name string "PLATFORM1", parent SYNCHRONIZEDACTOR)

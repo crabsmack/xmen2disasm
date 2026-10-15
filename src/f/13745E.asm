@@ -1,8 +1,8 @@
 ; ---------------------------------------------------------------------------
-; HornetBullet_Update - HornetBullet: per-frame update: range checks, Move, run the state function at +$5C after the +$6C delay (class slot 17, +$4A)
+; HornetBullet_Update - bullet per-frame update, a full replacement of ACTOR Update: Kill when off screen (+$42) or when it leaves the map or enters a solid cell; else move by velocity (twice at half rate, no acceleration) and, unless the scene is ending, Attack (+$22) each live player with no hit cooldown whose hurt box contains it (class slot 17, +$4A; does not call the parent)
 ; In:  8(a6) = this
 ; Out: none
-; Evidence: method 17 of class descriptor $137708 (name string "HORNETBULLET", parent ACTOR)
+; Evidence: player box +$54..+$5A, cooldown +$6A; map cells $FFC77C via row table $FFC78E; method 17 of class descriptor $137708 (name string "HORNETBULLET", parent ACTOR)
 ; ---------------------------------------------------------------------------
 HornetBullet_Update:
 	link.w	a6,#$0

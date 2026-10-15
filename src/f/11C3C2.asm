@@ -1,8 +1,8 @@
 ; ---------------------------------------------------------------------------
-; BabyBio_Move - BabyBio: apply velocity (+$16/+$18), acceleration (+$1E/+$20) and speed limits (class slot 18, +$4E)
+; BabyBio_Move - patrol movement on the home position +$9C/+$A0: during the hop animation (Tbl_BabyBioAnim5) jump 7 px in the velocity direction on its last step, else the parent Move; clamp to the patrol limits (+$AC/+$AE; an open edge switches to BabyBio_StateFallOff) and to y +$B2..+$B0; on bob frames 5/6/8/9 add the next offset of the bob table +$A4 (Tbl_BabyBioMove2) to the shown position (BABYBIO override of slot 18 Move)
 ; In:  8(a6) = this  $C(a6) = word frame step (1, or 2 when the game runs at half rate)
 ; Out: none
-; Evidence: method 18 of class descriptor $11B74C (name string "BABYBIO", parent BIONPC)
+; Evidence: parent +$4E only on the non-hop path; wall flags +$B7/+$B8 from BabyBio_Init; method 18 of class descriptor $11B74C (name string "BABYBIO", parent BIONPC)
 ; ---------------------------------------------------------------------------
 BabyBio_Move:
 	link.w	a6,#$0

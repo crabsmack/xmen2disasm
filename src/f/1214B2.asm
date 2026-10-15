@@ -1,5 +1,5 @@
 ; ---------------------------------------------------------------------------
-; BioSentinel_TakeDamage - BioSentinel: receive a hit from an attacker: damage, hurt state, invulnerability timer (class slot 8, +$26)
+; BioSentinel_TakeDamage - hits only count while vulnerable (+$A6 set): psychic hits (types $D-$F) go to the parent (stun); others play sound 99, health -= damage, face away from the hit (type 9/10), cooldown 40 and switch at once to the hurt state +$60 (BIOSENTINEL override of slot 8, +$26; no OnHurt/OnDeath)
 ; In:  8(a6) = this  $C(a6) = attacker  $13(a6) = byte hit type  $17(a6) = byte damage  $1A/$1E(a6) = words
 ; Out: none
 ; Evidence: method 8 of class descriptor $1235F6 (name string "BIOSENTINEL", parent BASICBIOSENTINEL)

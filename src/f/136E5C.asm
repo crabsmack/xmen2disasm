@@ -1,8 +1,8 @@
 ; ---------------------------------------------------------------------------
-; Hornet_ClassInit - Hornet: per-class hook run at level start before the spawn pass (static, class slot 22, +$5E; ClassList_InitAll)
+; Hornet_ClassInit - register g_HornetSprDef from Art_HornetSpr (static, class slot 22, +$5E; does not call the parent)
 ; In:  8(a6) = 0  $C(a6) = class index in the level class list
 ; Out: none
-; Evidence: method 22 of class descriptor $137252 (name string "HORNET", parent XNPC)
+; Evidence: first calls the empty Hornet_NopStatic; method 22 of class descriptor $137252 (name string "HORNET", parent XNPC)
 ; ---------------------------------------------------------------------------
 Hornet_ClassInit:
 	link.w	a6,#$0

@@ -1,5 +1,5 @@
 ; ---------------------------------------------------------------------------
-; CoreElevator_Init - CoreElevator constructor: parent Init, sprite def, state CoreElevator_StateIdle, flags |= $5283, facing copied from the live player, no motion, Tbl_CoreElevatorAnim, boxes; travel limits +$8E top / +$8C bottom = placement params +8/+$A (default y-$60 / y+$60), speed +$90 = param +$C (default $200) (class slot 3, +$12)
+; CoreElevator_Init - CoreElevator constructor: parent Init, sprite def, state CoreElevator_StateIdle, flags |= $5283, sprite priority (+$2E bit 2) copied from the live player, no motion, Tbl_CoreElevatorAnim, boxes; travel limits +$8E top / +$8C bottom = placement params +8/+$A (default y-$60 / y+$60), speed +$90 = param +$C (default $200) (class slot 3, +$12)
 ; In:  8(a6) = this  $C/$10(a6) = x, y (16.16)  $14(a6) = placement entry (not null-checked)
 ; Out: none
 ; Evidence: Obj_SetAnim, Obj_UpdateBoxes; placement +4 = y; method 3 of class descriptor $0EC98E (name string "COREELEVATOR", parent ACTOR)

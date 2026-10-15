@@ -1,5 +1,5 @@
 ; ---------------------------------------------------------------------------
-; BabyBio_Deactivate - BabyBio: deactivate: release sprite/collision resources, leave object lists (class slot 16, +$46)
+; BabyBio_Deactivate - Kill the attached child object +$A8 (if any), then the parent Deactivate (BABYBIO override of slot 16, +$46)
 ; In:  8(a6) = this
 ; Out: none
 ; Evidence: method 16 of class descriptor $11B74C (name string "BABYBIO", parent BIONPC)
