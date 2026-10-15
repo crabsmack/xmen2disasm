@@ -1,8 +1,16 @@
-# Phase 4: decompilation (definition of done, DRAFT)
+# Phase 4: decompilation (definition of done)
 
-**Status: draft, revised 2026-10-15 with what phases 2 and 3 learned; waiting for the user's
-approval (D0).** Until D0 passes, `uv run tools/phase.py 4` stops at D0;
-`uv run tools/phase.py 4 --draft` measures the rest anyway (and never exits 0).
+approved: 2026-10-15
+
+**Status: criteria approved by the user 2026-10-15** (revised the same day with what phases 2
+and 3 learned). The user approved these decisions with them:
+1. Whole-game equality is checked at sync points, in an untimed stepped runner that replays
+   interrupts and hardware reads, not at hardware frame ends.
+2. One C source per function: MPW C 3.3 compiles it for byte matching, and the PC compiles it
+   as C++ over big-endian wrapper types.
+3. Partially executed functions are verified by a byte match **or** by `verify` with 0
+   uncovered instructions (synthetic cases allowed). Never-executed functions must match.
+4. D8: the user plays the hand-C build before phase 4 counts as complete.
 
 Goal: every one of the 3,620 functions exists as **hand-written, readable C** in
 `XMen2Recomp`, the game runs with **no generated code** for game functions, and the result is
@@ -50,7 +58,7 @@ work: `uv run tools/decomp_queue.py`. Per-function procedure: skill `/decomp-fun
 
 | ID | Criterion | Check |
 |---|---|---|
-| D0 | Criteria approved | this file has a line `approved: YYYY-MM-DD` (user's word only) and no longer says DRAFT |
+| D0 | Criteria approved | this file has a line `approved: YYYY-MM-DD` (user's word only) and the capitalised draft marker is gone from the title |
 | D1 | Sync reference | `xmen2check.py trace --mode recomp --sync` (the timed runner, all generated code) still equals the gpgx reference on every frame of the TAS and every corpus run (P2's K6/K8, 0 misses, 0 interpreter instructions), and every run also wrote `sync.csv` (≥1 row) and the replay log |
 | D2 | Stepped runner equals it | `xmen2check.py trace --mode stepped --replay REFDIR`: the untimed runner, with hand C wherever it exists and generated code (emitted without exact timing) elsewhere, equals the D1 `sync.csv` at every sync point of the TAS and every corpus run, with 0 misses and 0 interpreter instructions. This passes with zero hand C first (it proves the harness) and stays green as C lands (regression gate) |
 | D3 | Types declared | `xmen2check.py types --json`: a struct for every class `tools/classes.py` finds (142), and every global in `build/recomp/ram_globals.csv` declared under its disassembly name |

@@ -9,7 +9,7 @@ criterion passes:
 | 1 | Byte-matching disassembly, everything named | this repo | [DONE.md](DONE.md) | `uv run tools/progress.py` |
 | 2 | Static recompilation: native PC game, frame-identical to the emulator | new repo `XMen2Recomp` | [phases/P2-recomp.md](phases/P2-recomp.md) | `uv run tools/phase.py 2` |
 | 3 | Identify the original compiler (or prove we can't) | this repo | [phases/P3-compiler.md](phases/P3-compiler.md) | `uv run tools/phase.py 3` |
-| 4 | Decompilation: hand-written C replaces every generated function | `XMen2Recomp` | [phases/P4-decomp.md](phases/P4-decomp.md) (draft) | `uv run tools/phase.py 4` |
+| 4 | Decompilation: hand-written C replaces every generated function | `XMen2Recomp` | [phases/P4-decomp.md](phases/P4-decomp.md) | `uv run tools/phase.py 4` |
 | 5 | Port: native memory and platform layer, no 68000 left | `XMen2Recomp` | [phases/P5-port.md](phases/P5-port.md) (draft) | `uv run tools/phase.py 5` |
 
 Status: phase 1 complete (2026-10-14); phase 3 complete (2026-10-15: MPW C 3.3, policy
@@ -38,8 +38,7 @@ recorded result of every phase (from `docs/progress/`).
 
 Phases 4 and 5 are **drafts**: each starts with a kickoff criterion (`D0`/`P0`) where the
 agent revises the criteria with what phases 2-3 taught and the user approves them. Phase 4's
-revision (2026-10-15) is written and waits for that approval; `uv run tools/phase.py 4 --draft`
-measures it meanwhile.
+revision was approved 2026-10-15; phase 5 is still a draft.
 
 ## Working a phase autonomously
 
@@ -69,3 +68,7 @@ phase doc with the date.
 - 2026-10-15 (user): phase 3 may download archived copies of discontinued toolchains
   (THINK C, Symantec C++, CodeWarrior) as well as Apple's free MPW. Toolchains are never
   committed; they live outside the repos (see P3).
+- 2026-10-15 (user): phase 4 criteria approved. The whole game is compared at sync points
+  (untimed stepped runner with replay), one C source serves both MPW matching and the PC,
+  partially executed functions may be verified by `verify` plus synthetic cases, and the user
+  plays the hand-C build (D8). Details: P4-decomp.md.

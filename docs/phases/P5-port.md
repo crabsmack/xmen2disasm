@@ -18,7 +18,7 @@ Note for P0: native code has no instruction timing, so P2 below should compare a
 
 | ID | Criterion | Check |
 |---|---|---|
-| P0 | Criteria approved | this file has a line `approved: YYYY-MM-DD` (user's word only) and no longer says DRAFT |
+| P0 | Criteria approved | this file has a line `approved: YYYY-MM-DD` (user's word only) and the capitalised draft marker is gone from the title |
 | P1 | Native state | `xmen2check.py lint --native --json`: 0 emulated-RAM accesses in `game/` (all state in native structs/globals) |
 | P2 | Equivalence through export | P2's K6 + K8 traces with `--mode native`: the state exporter (native state → 68000 work-RAM/VRAM/CRAM/VSRAM image) equals the reference every frame |
 | P3 | No 68000 left | `xmen2check.py build --native --json`: the native target links without the 68K core, interpreter or any generated C (symbols checked in the link map) |
