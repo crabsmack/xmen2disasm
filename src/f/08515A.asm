@@ -1,7 +1,11 @@
 ; ---------------------------------------------------------------------------
-; sub_08515A	[link-after-rts]
+; SmallBrood_StateFlash - SMALLBROOD state: flash (toggle the palette bit every 4 frames) until the fuse +$6E runs out, then explode
+; In:  8(a6) = this
+; Out: d0
+; Evidence: +$2E bits 0-1 ^= 2, +$6C = 4; +$6E == 0 -> SmallBrood_StateExplode
+; Found: link-after-rts
 ; ---------------------------------------------------------------------------
-sub_08515A:
+SmallBrood_StateFlash:
 	link.w	a6,#$0
 	movem.l	d7/a4,-(a7)
 	movea.l	$8(a6),a4
@@ -21,14 +25,14 @@ sub_08515A:
 	tst.w	$6E(a4)
 	bne.s	loc_0851A0
 	clr.w	$6C(a4)
-	lea.l	sub_0851BE(pc),a0
+	lea.l	SmallBrood_StateExplode(pc),a0
 	move.l	a0,$5C(a4)
 	moveq	#$8,d0
 	and.w	$4(a4),d0
 	bra.s	loc_0851B4
 loc_0851A0:
 	move.w	#$4,$6C(a4)
-	lea.l	sub_08515A(pc),a0
+	lea.l	SmallBrood_StateFlash(pc),a0
 	move.l	a0,$5C(a4)
 	moveq	#$8,d0
 	and.w	$4(a4),d0

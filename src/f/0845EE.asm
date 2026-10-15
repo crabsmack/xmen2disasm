@@ -1,7 +1,11 @@
 ; ---------------------------------------------------------------------------
-; sub_0845EE	[jt 588]
+; SmallBrood_Shoot - SMALLBROOD slot +$82: fire a shot from offset (dx, dy), mirrored by the sprite flips
+; In:  8(a6) = this, $C(a6) = word dx, $10(a6) = word dy, $14(a6) = byte: 1 = shot belongs to this object
+; Out: none
+; Evidence: sub_119190(x + dx*256, y + dy*256, owner, dx, dy, flags) allocates a shot in the pool at $FFE554 (speed $C00, sound $ED); h-flip (+$2E bit 4) negates dx and sets $800, v-flip (bit 3) negates dy; called by SmallBrood_StateFire with ($12, -$1C, 0); jt 588
+; Found: jt 588
 ; ---------------------------------------------------------------------------
-sub_0845EE:
+SmallBrood_Shoot:
 	link.w	a6,#$FFFC
 	movem.l	d4-d7/a3-a4,-(a7)
 	move.w	$12(a6),d6

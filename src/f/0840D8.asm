@@ -1,7 +1,9 @@
 ; ---------------------------------------------------------------------------
-; loc_0840D8	[runtime: executed in tas]
+; SmallBrood_ScrStepApproach - SMALLBROOD AI-script step: jmp SmallBrood_ActApproach (next entry jmp SmallBrood_ActShoot)
+; Evidence: script thunks; reached through +$5C
+; Found: runtime: executed in 1 run(s) (tas)
 ; ---------------------------------------------------------------------------
-loc_0840D8:
-	jmp	$1292(a5)	; -> sub_0848CA
+SmallBrood_ScrStepApproach:
+	jmp	$1292(a5)	; -> SmallBrood_ActApproach
 loc_0840DC:
-	jmp	$12AA(a5)	; -> sub_084C62
+	jmp	$12AA(a5)	; -> SmallBrood_ActShoot

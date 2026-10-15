@@ -1,7 +1,11 @@
 ; ---------------------------------------------------------------------------
-; sub_08503E	[jt 596]
+; SmallBrood_ActKamikaze - SMALLBROOD script action: run to the far end of the x range, then arm and explode (SmallBrood_StateArmed)
+; In:  8(a6) = this
+; Out: d0
+; Evidence: direction from +$B2 bit 0; at x == +$A4 (or +$A2 when running left) clears the animation, sets +6 bit $1000 and state SmallBrood_StateArmed; jt 596; TAS 46169-48756
+; Found: jt 596
 ; ---------------------------------------------------------------------------
-sub_08503E:
+SmallBrood_ActKamikaze:
 	link.w	a6,#$0
 	movem.l	d6-d7/a4,-(a7)
 	movea.l	$8(a6),a4
@@ -46,7 +50,7 @@ loc_085094:
 	ori.w	#$1000,$6(a4)
 	addq.w	#$8,a7
 	clr.w	$6C(a4)
-	lea.l	sub_085130(pc),a0
+	lea.l	SmallBrood_StateArmed(pc),a0
 	move.l	a0,$5C(a4)
 	moveq	#$8,d0
 	and.w	$4(a4),d0

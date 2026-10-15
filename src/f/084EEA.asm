@@ -1,7 +1,11 @@
 ; ---------------------------------------------------------------------------
-; sub_084EEA	[jt 595]
+; SmallBrood_ActWaitCooldown - SMALLBROOD script action: frame 0, wait until the cooldown +$B0 runs out, then reload it and run the next step
+; In:  8(a6) = this
+; Out: none
+; Evidence: jt 595; keeps itself as the state until +$B0 = 0
+; Found: jt 595
 ; ---------------------------------------------------------------------------
-sub_084EEA:
+SmallBrood_ActWaitCooldown:
 	link.w	a6,#$FFFE
 	movem.l	d4-d7/a3-a4,-(a7)
 	movea.l	$8(a6),a4

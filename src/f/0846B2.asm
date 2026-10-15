@@ -1,7 +1,11 @@
 ; ---------------------------------------------------------------------------
-; sub_0846B2	[link-after-rts]
+; SmallBrood_StateLand - SMALLBROOD state: settle onto the floor or ceiling inside its x range, then run the next AI-script step
+; In:  8(a6) = this
+; Out: d0
+; Evidence: when y is the floor (+$A8) or ceiling (+$AA) and x in [+$A2, +$A4]: v-flip on the ceiling, next script step (+$98/+$96, else +$64); otherwise clamps x/y and falls with gravity +$20 = $100; TAS 46554-57115
+; Found: link-after-rts
 ; ---------------------------------------------------------------------------
-sub_0846B2:
+SmallBrood_StateLand:
 	link.w	a6,#$0
 	movem.l	d6-d7/a4,-(a7)
 	movea.l	$8(a6),a4
@@ -69,7 +73,7 @@ loc_08474A:
 loc_08476C:
 	move.w	#$100,$20(a4)
 	clr.w	$6C(a4)
-	lea.l	sub_0846B2(pc),a0
+	lea.l	SmallBrood_StateLand(pc),a0
 	move.l	a0,$5C(a4)
 	moveq	#$8,d0
 	and.w	$4(a4),d0
@@ -89,7 +93,7 @@ loc_084788:
 loc_0847AA:
 	move.w	#$100,$20(a4)
 	clr.w	$6C(a4)
-	lea.l	sub_0846B2(pc),a0
+	lea.l	SmallBrood_StateLand(pc),a0
 	move.l	a0,$5C(a4)
 	moveq	#$8,d0
 	and.w	$4(a4),d0
@@ -113,7 +117,7 @@ loc_0847DA:
 loc_0847EE:
 	move.w	#$100,$20(a4)
 	clr.w	$6C(a4)
-	lea.l	sub_0846B2(pc),a0
+	lea.l	SmallBrood_StateLand(pc),a0
 	move.l	a0,$5C(a4)
 	moveq	#$8,d0
 	and.w	$4(a4),d0

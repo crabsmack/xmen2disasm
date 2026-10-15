@@ -1,7 +1,11 @@
 ; ---------------------------------------------------------------------------
-; sub_0851BE	[link-after-rts]
+; SmallBrood_StateExplode - SMALLBROOD state: explode - hurt players within +-$3C x / +-$28 y and die
+; In:  8(a6) = this
+; Out: none
+; Evidence: same blast as DropBomb_StateExplode (player slot +$26 with damage +$70), then sub_13DE36 (death effect type 1)
+; Found: link-after-rts
 ; ---------------------------------------------------------------------------
-sub_0851BE:
+SmallBrood_StateExplode:
 	link.w	a6,#$FFF6
 	movem.l	d3-d7/a3-a4,-(a7)
 	movea.l	$8(a6),a3

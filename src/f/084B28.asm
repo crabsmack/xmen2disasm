@@ -1,7 +1,11 @@
 ; ---------------------------------------------------------------------------
-; sub_084B28	[jt 592]
+; SmallBrood_ActChase - SMALLBROOD script action: walk towards the nearest player (state SmallBrood_StateChase)
+; In:  8(a6) = this
+; Out: d0
+; Evidence: faces Player_Nearest, vx = +-(+$A6); jt 592; never runs in the corpus
+; Found: jt 592
 ; ---------------------------------------------------------------------------
-sub_084B28:
+SmallBrood_ActChase:
 	link.w	a6,#$0
 	movem.l	a3-a4,-(a7)
 	movea.l	$8(a6),a4
@@ -28,7 +32,7 @@ loc_084B68:
 	jsr	$4E4A(a5)	; -> sub_1F6296
 	addq.w	#$8,a7
 	clr.w	$6C(a4)
-	lea.l	sub_084B94(pc),a0
+	lea.l	SmallBrood_StateChase(pc),a0
 	move.l	a0,$5C(a4)
 	moveq	#$8,d0
 	and.w	$4(a4),d0

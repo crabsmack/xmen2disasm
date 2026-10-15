@@ -1,7 +1,7 @@
 ; ---------------------------------------------------------------------------
 ; SmallBrood_Init - vtable +$12 constructor: run the parent's Init, then set up a SMALLBROOD
 ; In:  8(a6) = this, $C(a6) = long x, $10(a6) = long y (8 fraction bits), $14(a6) = spawn parameter
-; Evidence: slot +$12 of the SMALLBROOD descriptor $0840FE; TAS frames 46166-57101 (35 frames active); calls parent BIONPC slot +$12; state handler(s) put in +$5C: sub_08468E
+; Evidence: slot +$12 of the SMALLBROOD descriptor $0840FE; TAS frames 46166-57101 (35 frames active); calls parent BIONPC slot +$12; state handler(s) put in +$5C: SmallBrood_StateStart
 ; ---------------------------------------------------------------------------
 SmallBrood_Init:
 	link.w	a6,#$FFFC
@@ -19,9 +19,9 @@ SmallBrood_Init:
 	jsr	(a1)
 	clr.w	$18(a4)
 	clr.w	$20(a4)
-	lea.l	sub_08468E(pc),a0
+	lea.l	SmallBrood_StateStart(pc),a0
 	move.l	a0,$5C(a4)
-	lea.l	sub_08468E(pc),a0
+	lea.l	SmallBrood_StateStart(pc),a0
 	move.l	a0,$64(a4)
 	ori.w	#$80,$6(a4)
 	lea.l	$11DA(a5),a0
@@ -195,9 +195,9 @@ loc_084382:
 	move.w	d0,d7
 loc_08439C:
 	move.w	d7,d0
-	bmi.s	loc_0843B8
+	bmi.s	SmallBrood_Init_CaseDefault
 	cmpi.w	#$3,d0
-	bgt.s	loc_0843B8
+	bgt.s	SmallBrood_Init_CaseDefault
 	add.w	d0,d0
 	move.w	Sw_0841C4(pc,d0.w),d0
 	jmp	Sw_0841C4-2(pc,d0.w)

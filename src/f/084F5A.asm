@@ -1,7 +1,11 @@
 ; ---------------------------------------------------------------------------
-; sub_084F5A	[link-after-rts]
+; SmallBrood_StateWaitForPlayer - SMALLBROOD state: idle until a player comes within +-$D4 x / +-$50 y, then start the AI script
+; In:  8(a6) = this
+; Out: none
+; Evidence: checks both player objects ($FFEAA8/$FFE9B8) alive; starts script step 0 (or +$64); set by SmallBrood_Init case 1; TAS 46167-48690
+; Found: link-after-rts
 ; ---------------------------------------------------------------------------
-sub_084F5A:
+SmallBrood_StateWaitForPlayer:
 	link.w	a6,#$FFFE
 	movem.l	d3-d7/a3-a4,-(a7)
 	movea.l	$8(a6),a4

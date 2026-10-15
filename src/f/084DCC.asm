@@ -1,7 +1,11 @@
 ; ---------------------------------------------------------------------------
-; sub_084DCC	[link-after-rts]
+; SmallBrood_StateJumpFlip - SMALLBROOD state: mid-jump, mirror y about the box centre and toggle the v-flip
+; In:  8(a6) = this
+; Out: d0
+; Evidence: y -= 2 * (y - box centre), +$2E ^= 8, animation, state SmallBrood_StateJumpUntilSurface
+; Found: link-after-rts
 ; ---------------------------------------------------------------------------
-sub_084DCC:
+SmallBrood_StateJumpFlip:
 	link.w	a6,#$0
 	movem.l	d7/a4,-(a7)
 	movea.l	$8(a6),a4
@@ -23,7 +27,7 @@ sub_084DCC:
 	jsr	$4E4A(a5)	; -> sub_1F6296
 	addq.w	#$8,a7
 	move.w	#$FF,$6C(a4)
-	lea.l	sub_084E2A(pc),a0
+	lea.l	SmallBrood_StateJumpUntilSurface(pc),a0
 	move.l	a0,$5C(a4)
 	moveq	#$8,d0
 	and.w	$4(a4),d0

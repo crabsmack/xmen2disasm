@@ -1,7 +1,8 @@
 ; ---------------------------------------------------------------------------
-; loc_084420
+; SmallBrood_Init_SetYLimits - tail of SmallBrood_Init: floor (+$A8) and ceiling (+$AA) y limits, +$AC = $50, frame $FF
+; Evidence: with spawn +$E = 0 floor = spawn y, ceiling = y-1; else floor below / ceiling above from sub_15A8FE / sub_15AA20 (default ceiling = floor - $A0); then slot +$56 SetFrame($FF)
 ; ---------------------------------------------------------------------------
-loc_084420:
+SmallBrood_Init_SetYLimits:
 	tst.w	$E(a3)
 	beq.w	loc_0844D0
 	move.w	$2(a3),d6

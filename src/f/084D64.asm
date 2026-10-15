@@ -1,7 +1,11 @@
 ; ---------------------------------------------------------------------------
-; sub_084D64	[jt 594]
+; SmallBrood_ActJump - SMALLBROOD script action: jump from the floor to the ceiling or back
+; In:  8(a6) = this
+; Out: d0
+; Evidence: on the floor (+$A8): vy = -$400, else vy = $400 and v-flip; animation, +$6C = $FF, state SmallBrood_StateJumpFlip; jt 594; TAS 53664-57134
+; Found: jt 594
 ; ---------------------------------------------------------------------------
-sub_084D64:
+SmallBrood_ActJump:
 	link.w	a6,#$0
 	movem.l	d7/a4,-(a7)
 	movea.l	$8(a6),a4
@@ -24,7 +28,7 @@ loc_084D9E:
 	jsr	$4E4A(a5)	; -> sub_1F6296
 	addq.w	#$8,a7
 	move.w	#$FF,$6C(a4)
-	lea.l	sub_084DCC(pc),a0
+	lea.l	SmallBrood_StateJumpFlip(pc),a0
 	move.l	a0,$5C(a4)
 	moveq	#$8,d0
 	and.w	$4(a4),d0

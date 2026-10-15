@@ -1,7 +1,11 @@
 ; ---------------------------------------------------------------------------
-; sub_084E8A	[link-after-rts]
+; SmallBrood_StateLanded - SMALLBROOD state: landed - frame 0, run the next AI-script step
+; In:  8(a6) = this
+; Out: none
+; Evidence: SetFrame(0) then the next-step idiom
+; Found: link-after-rts
 ; ---------------------------------------------------------------------------
-sub_084E8A:
+SmallBrood_StateLanded:
 	link.w	a6,#$0
 	move.l	a4,-(a7)
 	movea.l	$8(a6),a4

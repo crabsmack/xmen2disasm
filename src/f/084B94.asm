@@ -1,7 +1,11 @@
 ; ---------------------------------------------------------------------------
-; sub_084B94	[link-after-rts]
+; SmallBrood_StateChase - SMALLBROOD state: walk (turning at the x limits) until within 4 px of the nearest player's x, then the next step
+; In:  8(a6) = this
+; Out: d0
+; Evidence: same shape as SmallBrood_StateApproach with |dx| < 4
+; Found: link-after-rts
 ; ---------------------------------------------------------------------------
-sub_084B94:
+SmallBrood_StateChase:
 	link.w	a6,#$0
 	movem.l	d3/d6-d7/a3-a4,-(a7)
 	movea.l	$8(a6),a4
@@ -69,7 +73,7 @@ loc_084C2C:
 	bra.s	loc_084C58
 loc_084C46:
 	clr.w	$6C(a4)
-	lea.l	sub_084B94(pc),a0
+	lea.l	SmallBrood_StateChase(pc),a0
 	move.l	a0,$5C(a4)
 	moveq	#$8,d0
 	and.w	$4(a4),d0

@@ -1,7 +1,11 @@
 ; ---------------------------------------------------------------------------
-; sub_084854	[jt 589]
+; SmallBrood_ActIdle - SMALLBROOD script action: stand still on frame 0 for $3C frames, then the next step
+; In:  8(a6) = this
+; Out: none
+; Evidence: jt 589 (script action table); clears anim +$44, speed/accel; +$6C = $3C
+; Found: jt 589
 ; ---------------------------------------------------------------------------
-sub_084854:
+SmallBrood_ActIdle:
 	link.w	a6,#$0
 	move.l	a4,-(a7)
 	movea.l	$8(a6),a4

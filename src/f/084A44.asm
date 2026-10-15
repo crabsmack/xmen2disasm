@@ -1,7 +1,11 @@
 ; ---------------------------------------------------------------------------
-; sub_084A44	[link-after-rts]
+; SmallBrood_StateApproach - SMALLBROOD state: walk, turning at the x limits, until at the preferred distance from the nearest player, then the next step
+; In:  8(a6) = this
+; Out: d0
+; Evidence: x == +$A2 -> face right, x == +$A4 -> face left; |dx to Player_Nearest| within +$AC +-4 ends it; TAS 46602-57133 (526 frames)
+; Found: link-after-rts
 ; ---------------------------------------------------------------------------
-sub_084A44:
+SmallBrood_StateApproach:
 	link.w	a6,#$0
 	movem.l	d3/d6-d7/a3-a4,-(a7)
 	movea.l	$8(a6),a4
@@ -79,7 +83,7 @@ loc_084AF2:
 	bra.s	loc_084B1E
 loc_084B0C:
 	clr.w	$6C(a4)
-	lea.l	sub_084A44(pc),a0
+	lea.l	SmallBrood_StateApproach(pc),a0
 	move.l	a0,$5C(a4)
 	moveq	#$8,d0
 	and.w	$4(a4),d0

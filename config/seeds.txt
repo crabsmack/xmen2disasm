@@ -181,12 +181,12 @@
 081FBE	; loc_081FBE - runtime: executed in tas
 081FC8	; loc_081FC8 - runtime: executed in tas
 081FD2	; loc_081FD2 - runtime: executed in tas
-0840CE	; loc_0840CE - runtime: executed in tas
-0840D8	; loc_0840D8 - runtime: executed in tas
+0840CE	; SmallBrood_ScrStepKamikaze - runtime: executed in tas
+0840D8	; SmallBrood_ScrStepApproach - runtime: executed in tas
 0840DC	; loc_0840DC - runtime: executed in tas
-0840E6	; loc_0840E6 - runtime: executed in tas
+0840E6	; SmallBrood_ScrStepWalk - runtime: executed in tas
 0840EA	; loc_0840EA - runtime: executed in tas
-0843CC	; loc_0843CC - runtime: executed in tas
+0843CC	; SmallBrood_Init_Case1 - runtime: executed in tas
 0843FA	; loc_0843FA - runtime: executed in tas
 08440E	; loc_08440E - runtime: executed in tas
 088A56	; loc_088A56 - runtime: executed in tas

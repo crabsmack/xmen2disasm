@@ -1,7 +1,11 @@
 ; ---------------------------------------------------------------------------
-; sub_084CC6	[link-after-rts]
+; SmallBrood_StateFire - SMALLBROOD state: fire the shot (slot +$82 at offset $12, -$1C) and play the recoil animation
+; In:  8(a6) = this
+; Out: d0
+; Evidence: calls SmallBrood_Shoot(this, $12, -$1C, 0), animation, then SmallBrood_StateNextStep; TAS 46564-55211
+; Found: link-after-rts
 ; ---------------------------------------------------------------------------
-sub_084CC6:
+SmallBrood_StateFire:
 	link.w	a6,#$0
 	move.l	a4,-(a7)
 	movea.l	$8(a6),a4
@@ -21,7 +25,7 @@ sub_084CC6:
 	jsr	$4E4A(a5)	; -> sub_1F6296
 	lea.l	$18(a7),a7
 	move.w	#$FF,$6C(a4)
-	lea.l	sub_084D14(pc),a0
+	lea.l	SmallBrood_StateNextStep(pc),a0
 	move.l	a0,$5C(a4)
 	moveq	#$8,d0
 	and.w	$4(a4),d0

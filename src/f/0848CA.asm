@@ -1,7 +1,11 @@
 ; ---------------------------------------------------------------------------
-; sub_0848CA	[jt 590]
+; SmallBrood_ActApproach - SMALLBROOD script action: walk towards the nearest player unless already at its preferred distance +$AC
+; In:  8(a6) = this
+; Out: d0
+; Evidence: Player_Nearest; |dx| outside +$AC +-4: face the player, vx = +-(+$A6), walk animation, state SmallBrood_StateApproach; else SmallBrood_StateWaitCooldown; jt 590; TAS 46600-55215
+; Found: jt 590
 ; ---------------------------------------------------------------------------
-sub_0848CA:
+SmallBrood_ActApproach:
 	link.w	a6,#$0
 	movem.l	d3/d7/a3-a4,-(a7)
 	movea.l	$8(a6),a4
@@ -39,7 +43,7 @@ loc_0848FE:
 	cmp.l	d7,d0
 	blt.s	loc_084932
 	clr.w	$6C(a4)
-	lea.l	sub_084988(pc),a0
+	lea.l	SmallBrood_StateWaitCooldown(pc),a0
 	move.l	a0,$5C(a4)
 	moveq	#$8,d0
 	and.w	$4(a4),d0
@@ -64,7 +68,7 @@ loc_08495C:
 	jsr	$4E4A(a5)	; -> sub_1F6296
 	addq.w	#$8,a7
 	clr.w	$6C(a4)
-	lea.l	sub_084A44(pc),a0
+	lea.l	SmallBrood_StateApproach(pc),a0
 	move.l	a0,$5C(a4)
 	moveq	#$8,d0
 	and.w	$4(a4),d0

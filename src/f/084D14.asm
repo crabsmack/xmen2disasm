@@ -1,7 +1,11 @@
 ; ---------------------------------------------------------------------------
-; sub_084D14	[link-after-rts]
+; SmallBrood_StateNextStep - SMALLBROOD state: advance to the next AI-script step (+$98 script, +$96 index; default +$64)
+; In:  8(a6) = this
+; Out: none
+; Evidence: the idiom every action ends with, as its own state
+; Found: link-after-rts
 ; ---------------------------------------------------------------------------
-sub_084D14:
+SmallBrood_StateNextStep:
 	link.w	a6,#$0
 	move.l	a4,-(a7)
 	movea.l	$8(a6),a4

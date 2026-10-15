@@ -1,12 +1,16 @@
 ; ---------------------------------------------------------------------------
-; sub_08468E	[link-after-rts]
+; SmallBrood_StateStart - SMALLBROOD initial state: go to SmallBrood_StateLand
+; In:  8(a6) = this
+; Out: d0
+; Evidence: +$5C/+$64 default set by SmallBrood_Init; TAS 46553-57104
+; Found: link-after-rts
 ; ---------------------------------------------------------------------------
-sub_08468E:
+SmallBrood_StateStart:
 	link.w	a6,#$0
 	move.l	a4,-(a7)
 	movea.l	$8(a6),a4
 	clr.w	$6C(a4)
-	lea.l	sub_0846B2(pc),a0
+	lea.l	SmallBrood_StateLand(pc),a0
 	move.l	a0,$5C(a4)
 	moveq	#$8,d0
 	and.w	$4(a4),d0

@@ -1,7 +1,11 @@
 ; ---------------------------------------------------------------------------
-; sub_084988	[link-after-rts]
+; SmallBrood_StateWaitCooldown - SMALLBROOD state: idle animation until the cooldown +$B0 is 0, then reload it from +$AE and run the next step
+; In:  8(a6) = this
+; Out: none
+; Evidence: +$B0 counts down in SmallBrood_Update; +$AE from spawn param +$C (default $5A)
+; Found: link-after-rts
 ; ---------------------------------------------------------------------------
-sub_084988:
+SmallBrood_StateWaitCooldown:
 	link.w	a6,#$0
 	move.l	a4,-(a7)
 	movea.l	$8(a6),a4

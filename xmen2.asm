@@ -1329,7 +1329,7 @@ Tbl_SmallBrood_vtable:	; class descriptor of SMALLBROOD: word name offset $86, p
 	include "src/f/0841BC.asm"
 	include "src/f/0841C4.asm"
 Sw_0841C4:	; switch table of sub at $0841C4: 4 word offsets from Sw_0841C4-2
-	dc.w	loc_0843B8-(Sw_0841C4-2), loc_0843CC-(Sw_0841C4-2), loc_0843FA-(Sw_0841C4-2), loc_08440E-(Sw_0841C4-2)
+	dc.w	SmallBrood_Init_CaseDefault-(Sw_0841C4-2), SmallBrood_Init_Case1-(Sw_0841C4-2), loc_0843FA-(Sw_0841C4-2), loc_08440E-(Sw_0841C4-2)
 	include "src/f/0843B8.asm"
 	include "src/f/0843CC.asm"
 	include "src/f/084420.asm"

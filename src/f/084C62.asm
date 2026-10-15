@@ -1,7 +1,11 @@
 ; ---------------------------------------------------------------------------
-; sub_084C62	[jt 593]
+; SmallBrood_ActShoot - SMALLBROOD script action: stop facing the nearest player and play the shoot wind-up (then SmallBrood_StateFire)
+; In:  8(a6) = this
+; Out: d0
+; Evidence: clears vx/accel, animation jt[570], +$6C = $FF (wait for the animation), state SmallBrood_StateFire; jt 593
+; Found: jt 593
 ; ---------------------------------------------------------------------------
-sub_084C62:
+SmallBrood_ActShoot:
 	link.w	a6,#$0
 	movem.l	a3-a4,-(a7)
 	movea.l	$8(a6),a4
@@ -25,7 +29,7 @@ loc_084C90:
 	jsr	$4E4A(a5)	; -> sub_1F6296
 	addq.w	#$8,a7
 	move.w	#$FF,$6C(a4)
-	lea.l	sub_084CC6(pc),a0
+	lea.l	SmallBrood_StateFire(pc),a0
 	move.l	a0,$5C(a4)
 	moveq	#$8,d0
 	and.w	$4(a4),d0
