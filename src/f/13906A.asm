@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; loc_13906A	[runtime: executed in tas]
+; MaintRobot_StateChase_Case3 - segment type $24 case of MaintRobot_StateChase: move toward the player in y (reversed sign)
+; In:  a3 = player  a4 = this  d7 = speed
+; Out: none
+; Evidence: switch table Sw_138F1E entry 3, compares y-$30 with the player box +/-$10
 ; ---------------------------------------------------------------------------
-loc_13906A:
+MaintRobot_StateChase_Case3:
 	move.l	$C(a4),d0
 	asr.l	#$8,d0
 	move.l	d0,d6

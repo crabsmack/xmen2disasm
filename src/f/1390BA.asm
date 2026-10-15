@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_1390BA	[link-after-rts]
+; MaintRobot_StatePatrol - MaintRobot state (patrol mode, spawn word +$E set): walk back and forth reversing at walls until the cooldown ends, then stop to fire
+; In:  8(a6) = this
+; Out: d0 = flags & 8 or misc
+; Evidence: +$6E < 1 -> save speed in +$9A, MaintRobot_StateStop; else flags bit $100 (blocked) -> clear it and negate +$16
 ; ---------------------------------------------------------------------------
-sub_1390BA:
+MaintRobot_StatePatrol:
 	link.w	a6,#$0
 	move.l	a4,-(a7)
 	movea.l	$8(a6),a4
@@ -9,7 +12,7 @@ sub_1390BA:
 	bgt.s	loc_1390E4
 	move.w	$16(a4),$9A(a4)
 	clr.w	$6C(a4)
-	lea.l	sub_138EDC(pc),a0
+	lea.l	MaintRobot_StateStop(pc),a0
 	move.l	a0,$5C(a4)
 	moveq	#$8,d0
 	and.w	$4(a4),d0

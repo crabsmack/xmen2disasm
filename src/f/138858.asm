@@ -6,6 +6,6 @@
 ; ---------------------------------------------------------------------------
 LineSegKiller_ClassInit:
 	link.w	a6,#$0
-	jsr	sub_1389C2(pc)
+	jsr	LineSegKiller_NopStatic(pc)
 	unlk	a6
 	rts

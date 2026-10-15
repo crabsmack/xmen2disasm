@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_138DA8	[link-after-rts]
+; MaintRobot_TargetInRange - test whether a player box is within the maintenance robot's attack range (robot must be in the screen band y-camera $40-$E0)
+; In:  8(a6) = this  $C(a6) = player
+; Out: d0.b = 1 in range, 0 not
+; Evidence: range x +/-$C0 px; on segment types $21/$22 (+$76 segment +1) the player box must overlap y-$50..y+$20, on other types y-$30 must fall inside the player's box +/-$10; uses g_CameraY; caller MaintRobot_StateChase
 ; ---------------------------------------------------------------------------
-sub_138DA8:
+MaintRobot_TargetInRange:
 	link.w	a6,#$FFFE
 	movem.l	d3-d7/a3-a4,-(a7)
 	movea.l	$8(a6),a3

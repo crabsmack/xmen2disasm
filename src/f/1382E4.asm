@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_1382E4	[link-after-rts]
+; LaserCannon_StateIdle - LaserCannon state: show the rest frame and look for a target
+; In:  8(a6) = this
+; Out: d0 = flags & 8
+; Evidence: vtable +$56 SetFrame(0), +$5C = LaserCannon_StatePickTarget; reached again after every reload
 ; ---------------------------------------------------------------------------
-sub_1382E4:
+LaserCannon_StateIdle:
 	link.w	a6,#$0
 	move.l	a4,-(a7)
 	movea.l	$8(a6),a4
@@ -13,7 +16,7 @@ sub_1382E4:
 	jsr	(a1)
 	addq.w	#$8,a7
 	clr.w	$6C(a4)
-	lea.l	sub_138318(pc),a0
+	lea.l	LaserCannon_StatePickTarget(pc),a0
 	move.l	a0,$5C(a4)
 	moveq	#$8,d0
 	and.w	$4(a4),d0

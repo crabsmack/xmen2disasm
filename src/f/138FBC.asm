@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; loc_138FBC	[runtime: executed in tas]
+; MaintRobot_StateChase_Case0 - segment type $21 case of MaintRobot_StateChase: move toward the player in x (right = +speed); also holds case 2 (loc_138FF0, type $23: by y)
+; In:  a3 = player  a4 = this  d7 = speed
+; Out: none
+; Evidence: switch table Sw_138F1E entries 0 and 2
 ; ---------------------------------------------------------------------------
-loc_138FBC:
+MaintRobot_StateChase_Case0:
 	move.w	$4E(a3),d0
 	cmp.w	$52(a4),d0
 	sgt.b	d3
@@ -24,7 +27,7 @@ loc_138FE6:
 	moveq	#$0,d0
 loc_138FE8:
 	move.w	d0,$16(a4)
-	bra.w	loc_1390B0
+	bra.w	MaintRobot_StateChase_End
 loc_138FF0:
 	move.l	$C(a4),d0
 	asr.l	#$8,d0
@@ -61,4 +64,4 @@ loc_139030:
 	move.l	d0,d1
 loc_139032:
 	move.w	d1,$16(a4)
-	bra.s	loc_1390B0
+	bra.s	MaintRobot_StateChase_End

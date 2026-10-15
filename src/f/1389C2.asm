@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_1389C2	[link-after-rts]
+; LineSegKiller_NopStatic - empty non-virtual helper called from LINESEGKILLER's ClassInit
+; In:  none
+; Out: none
+; Evidence: body is link/unlk/rts; caller LineSegKiller_ClassInit
 ; ---------------------------------------------------------------------------
-sub_1389C2:
+LineSegKiller_NopStatic:
 	link.w	a6,#$0
 	unlk	a6
 	rts

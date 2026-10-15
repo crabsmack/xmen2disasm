@@ -6,6 +6,6 @@
 ; ---------------------------------------------------------------------------
 MaintRobot_ClassInit:
 	link.w	a6,#$0
-	jsr	sub_139178(pc)
+	jsr	MaintRobot_NopStatic(pc)
 	unlk	a6
 	rts

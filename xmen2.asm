@@ -4574,9 +4574,9 @@ Art_LaserCannonSpr:	; sprite definition (type $18, raw 4bpp tiles): $24-byte hea
 	include "src/f/1385B8.asm"
 Tbl_LaserCannon_vtable:	; class descriptor "LASERCANNON": word $82 = name offset, long parent (XNPC), 31 method pointers, then the class name string
 	incrom	$1386B4,$8E
-Tbl_Anim_138742:	; animation script (byte flags, byte steps, ..., 2-byte steps from +6); C of E bytes used at runtime; read by Anim_ApplyStep, Anim_AdvanceByDistance, Anim_Advance; jt[1812] used by sub_13846E
+Tbl_LaserCannonAnimExtend:	; animation script (byte flags, byte steps, ..., 2-byte steps from +6): frames 0,1,2,3 played before each burst (LaserCannon_StateExtend); jt[1812]
 	incrom	$138742,$E
-Tbl_Anim_138750:	; animation script (byte flags, byte steps, ..., 2-byte steps from +6); C of E bytes used at runtime; read by Anim_ApplyStep; jt[1813] used by sub_1384F4
+Tbl_LaserCannonAnimRetract:	; animation script (byte flags, byte steps, ..., 2-byte steps from +6): frames 3,2,1,0 played after the burst (LaserCannon_StateRetract); jt[1813]
 	incrom	$138750,$E
 Tbl_LaserCannonTakeDamage_Hurt:	; table read by XNpc_TakeDamage_Hurt; 4 of 8 bytes used at runtime; read by XNpc_TakeDamage_Hurt, LaserCannon_Init, XNpc_KnockbackDist; jt[1814] used by LaserCannon_Init
 	incrom	$13875E,$8
@@ -4604,7 +4604,7 @@ Tbl_LineSegKiller_vtable:	; class descriptor "LINESEGKILLER": word $6E = name of
 	include "src/f/138EDC.asm"
 	include "src/f/138F1E.asm"
 Sw_138F1E:	; switch table of sub at $138F1E: 4 word offsets from Sw_138F1E-2
-	dc.w	loc_138FBC-(Sw_138F1E-2), loc_139038-(Sw_138F1E-2), loc_138FF0-(Sw_138F1E-2), loc_13906A-(Sw_138F1E-2)
+	dc.w	MaintRobot_StateChase_Case0-(Sw_138F1E-2), MaintRobot_StateChase_Case1-(Sw_138F1E-2), loc_138FF0-(Sw_138F1E-2), MaintRobot_StateChase_Case3-(Sw_138F1E-2)
 	include "src/f/138FBC.asm"
 	include "src/f/139038.asm"
 	include "src/f/13906A.asm"
@@ -4617,13 +4617,13 @@ Tbl_MaintRobotFire_vtable:	; class descriptor "MAINTROBOTFIRE": word $6E = name 
 	incrom	$139180,$7E
 Tbl_MaintRobot_vtable:	; class descriptor "MAINTROBOT": word $82 = name offset, long parent (XNPC), 31 method pointers, then the class name string
 	incrom	$1391FE,$8E
-Tbl_MineAnim:	; animation script (byte flags, byte steps, ..., 2-byte steps from +6); 10 of 12 bytes used at runtime; read by Anim_ApplyStep, Anim_AdvanceByDistance, Anim_Advance; jt[1833] used by sub_138EA2, sub_139108
+Tbl_MaintRobotAnimMove:	; animation script (byte flags, byte steps, ..., 2-byte steps from +6): frames 0-5, +2 word $A; MAINTROBOT while chasing/patrolling and firing (MaintRobot_StateResume, MaintRobot_StateStartVolley); jt[1833]
 	incrom	$13928C,$12
-Tbl_MineAnim2:	; animation script (byte flags, byte steps, ..., 2-byte steps from +6); 10 of 12 bytes used at runtime; read by Anim_ApplyStep, Anim_AdvanceByDistance, Anim_Advance; jt[1834] used by sub_138EDC
+Tbl_MaintRobotAnimStop:	; animation script (byte flags, byte steps, ..., 2-byte steps from +6): frames 0-5, +2 word 0; MAINTROBOT halting before a volley (MaintRobot_StateStop); jt[1834]
 	incrom	$13929E,$12
-Art_MaintRobotFireSpr:	; sprite definition (type $02): $24-byte header, $14-byte frame records, pieces, tiles; 12 of 14 bytes used at runtime; read by VDP_WriteWords, Anim_ApplyStep, Spr_PreloadTiles; jt[1835] used by MaintRobotFire_Init
+Tbl_MaintRobotFireAnim:	; animation script (flags 2, 7 steps: frames 0,1,2,4,5,6,7): MAINTROBOTFIRE burst, Obj_SetAnim in MaintRobotFire_Init; the object Kills itself when it ends; jt[1835]
 	incrom	$1392B0,$14
-Art_CloneA1Spr2:	; sprite definition (type $18, raw 4bpp tiles): $24-byte header, $14-byte frame records, pieces, tiles; A28 of A28 bytes used at runtime; read by VDP_WriteWords, Spr_PreloadTiles; DMA to VRAM $9A80-9F80; jt[1836] used by CloneA1_LoadResources, CloneA2_LoadResources, MaintRobot_Init
+Art_MaintRobotSpr:	; sprite definition (type $18, raw 4bpp tiles) of MAINTROBOT: preloaded by CloneA1/CloneA2_LoadResources into -$1A7E, MaintRobot_Init uses the slot or this def directly; DMA to VRAM $9A80-9F80; jt[1836]
 	incrom	$1392C4,$A28
 Art_MaintRobotFireSpr2:	; sprite definition (type $18, raw 4bpp tiles): $24-byte header, $14-byte frame records, pieces, tiles; 540 of 6B2 bytes used at runtime; read by VDP_FlushDmaQueue, Spr_PreloadTiles; DMA to VRAM $CE60-D720; jt[1837] used by MaintRobotFire_Init
 	incrom	$139CEC,$6B2

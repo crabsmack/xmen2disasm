@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_138CD6	[link-after-rts]
+; MaintRobot_StateFire - MaintRobot state: spawn one MAINTROBOTFIRE burst toward the nearest player per call until the volley count +$A4 runs out, then resume moving
+; In:  8(a6) = this
+; Out: d0 = flags & 8 or misc
+; Evidence: +$A4 = 0 -> +$5C = MaintRobot_StateResume; else MAINTROBOTFIRE New at x +/-$13 px, y -$2F px (h-flip when the player is left), Snd_Stop/Snd_Play($D2), +$6C = +$A2, +$A4 -= 1
 ; ---------------------------------------------------------------------------
-sub_138CD6:
+MaintRobot_StateFire:
 	link.w	a6,#$0
 	movem.l	d3/d6-d7/a3-a4,-(a7)
 	movea.l	$8(a6),a4
@@ -26,7 +29,7 @@ loc_138D10:
 	addq.w	#$4,a7
 	bne.s	loc_138D2E
 	clr.w	$6C(a4)
-	lea.l	sub_139108(pc),a0
+	lea.l	MaintRobot_StateResume(pc),a0
 	move.l	a0,$5C(a4)
 	moveq	#$8,d0
 	and.w	$4(a4),d0

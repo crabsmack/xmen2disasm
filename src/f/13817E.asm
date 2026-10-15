@@ -26,9 +26,9 @@ LaserCannon_Init:
 	moveq	#$0,d0
 	move.b	$2(a0),d0
 	move.w	d0,$68(a4)
-	lea.l	sub_1382BA(pc),a0
+	lea.l	LaserCannon_StateStart(pc),a0
 	move.l	a0,$5C(a4)
-	lea.l	sub_1382BA(pc),a0
+	lea.l	LaserCannon_StateStart(pc),a0
 	move.l	a0,$64(a4)
 	ori.w	#$4081,$6(a4)
 	lea.l	$3882(a5),a0

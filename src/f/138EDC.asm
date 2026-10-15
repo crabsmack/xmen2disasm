@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_138EDC	[link-after-rts]
+; MaintRobot_StateStop - MaintRobot state: stop moving and pause 30 frames before a volley
+; In:  8(a6) = this
+; Out: d0 = flags & 8
+; Evidence: velocity/acceleration cleared, Obj_SetAnim(Tbl_MaintRobotAnimStop), +$6C = 30, +$5C = MaintRobot_StateStartVolley
 ; ---------------------------------------------------------------------------
-sub_138EDC:
+MaintRobot_StateStop:
 	link.w	a6,#$0
 	move.l	a4,-(a7)
 	movea.l	$8(a6),a4
@@ -14,7 +17,7 @@ sub_138EDC:
 	jsr	$4E42(a5)	; -> Obj_SetAnim
 	addq.w	#$8,a7
 	move.w	#$1E,$6C(a4)
-	lea.l	sub_138EA2(pc),a0
+	lea.l	MaintRobot_StateStartVolley(pc),a0
 	move.l	a0,$5C(a4)
 	moveq	#$8,d0
 	and.w	$4(a4),d0

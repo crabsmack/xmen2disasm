@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; loc_139038	[static: switch-table case target (tools/switches.py: table after `move.w T(pc,dN.w),dN / jmp T-2(pc,dN.w)`, size from the cmpi bound)]
+; MaintRobot_StateChase_Case1 - segment type $22 case of MaintRobot_StateChase: move toward the player in x with the sign reversed
+; In:  a3 = player  a4 = this  d7 = speed
+; Out: none
+; Evidence: switch table Sw_138F1E entry 1 (+$16 = -speed when the player is right)
 ; ---------------------------------------------------------------------------
-loc_139038:
+MaintRobot_StateChase_Case1:
 	move.w	$4E(a3),d0
 	cmp.w	$52(a4),d0
 	sgt.b	d3
@@ -25,4 +28,4 @@ loc_139062:
 	ext.l	d0
 loc_139064:
 	move.w	d0,$16(a4)
-	bra.s	loc_1390B0
+	bra.s	MaintRobot_StateChase_End

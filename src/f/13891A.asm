@@ -21,7 +21,7 @@ LineSegKiller_Kill:
 	asr.l	#$8,d0
 	move.l	d0,-(a7)
 	pea.l	($3E9).w
-	jsr	sub_138766(pc)
+	jsr	LineSegKiller_RemoveSegsInBox(pc)
 	move.l	a4,-(a7)
 	lea.l	$391A(a5),a0
 	movea.l	$2(a0),a0

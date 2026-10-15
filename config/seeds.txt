@@ -468,9 +468,9 @@
 136DF0	; loc_136DF0 - runtime: executed in tas
 1371D8	; Hornet_SpawnForDeathbird_Case2 - runtime: executed in tas
 137200	; loc_137200 - runtime: executed in tas
-138FBC	; loc_138FBC - runtime: executed in tas
+138FBC	; MaintRobot_StateChase_Case0 - runtime: executed in tas
 138FF0	; loc_138FF0 - runtime: executed in tas
-13906A	; loc_13906A - runtime: executed in tas
+13906A	; MaintRobot_StateChase_Case3 - runtime: executed in tas
 13D8C2	; loc_13D8C2 - runtime: executed in tas
 13D8C8	; loc_13D8C8 - runtime: executed in tas
 13D8CC	; loc_13D8CC - runtime: executed in tas
@@ -821,7 +821,7 @@
 134BA6	; loc_134BA6 - static: switch-table case target (tools/switches.py: table after `move.w T(pc,dN.w),dN / jmp T-2(pc,dN.w)`, size from the cmpi bound)
 134BBA	; loc_134BBA - static: switch-table case target (tools/switches.py: table after `move.w T(pc,dN.w),dN / jmp T-2(pc,dN.w)`, size from the cmpi bound)
 134BCE	; loc_134BCE - static: switch-table case target (tools/switches.py: table after `move.w T(pc,dN.w),dN / jmp T-2(pc,dN.w)`, size from the cmpi bound)
-139038	; loc_139038 - static: switch-table case target (tools/switches.py: table after `move.w T(pc,dN.w),dN / jmp T-2(pc,dN.w)`, size from the cmpi bound)
+139038	; MaintRobot_StateChase_Case1 - static: switch-table case target (tools/switches.py: table after `move.w T(pc,dN.w),dN / jmp T-2(pc,dN.w)`, size from the cmpi bound)
 13F14A	; loc_13F14A - static: switch-table case target (tools/switches.py: table after `move.w T(pc,dN.w),dN / jmp T-2(pc,dN.w)`, size from the cmpi bound)
 13F15E	; loc_13F15E - static: switch-table case target (tools/switches.py: table after `move.w T(pc,dN.w),dN / jmp T-2(pc,dN.w)`, size from the cmpi bound)
 13F172	; loc_13F172 - static: switch-table case target (tools/switches.py: table after `move.w T(pc,dN.w),dN / jmp T-2(pc,dN.w)`, size from the cmpi bound)

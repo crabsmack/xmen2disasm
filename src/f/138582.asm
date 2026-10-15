@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_138582	[link-after-rts]
+; LaserCannon_StateAim - LaserCannon state: show the aim frame for 2 frames before a shot
+; In:  8(a6) = this
+; Out: d0 = flags & 8
+; Evidence: SetFrame(4), +$6C = 2, +$5C = LaserCannon_StateFire
 ; ---------------------------------------------------------------------------
-sub_138582:
+LaserCannon_StateAim:
 	link.w	a6,#$0
 	move.l	a4,-(a7)
 	movea.l	$8(a6),a4
@@ -13,7 +16,7 @@ sub_138582:
 	jsr	(a1)
 	addq.w	#$8,a7
 	move.w	#$2,$6C(a4)
-	lea.l	sub_1385B8(pc),a0
+	lea.l	LaserCannon_StateFire(pc),a0
 	move.l	a0,$5C(a4)
 	moveq	#$8,d0
 	and.w	$4(a4),d0

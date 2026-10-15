@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_139178	[link-after-rts]
+; MaintRobot_NopStatic - empty non-virtual helper called from MAINTROBOT's ClassInit
+; In:  none
+; Out: none
+; Evidence: body is link/unlk/rts; caller MaintRobot_ClassInit
 ; ---------------------------------------------------------------------------
-sub_139178:
+MaintRobot_NopStatic:
 	link.w	a6,#$0
 	unlk	a6
 	rts

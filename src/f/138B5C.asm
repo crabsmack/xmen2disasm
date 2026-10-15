@@ -27,7 +27,7 @@ MaintRobot_Init:
 	lsl.l	#$8,d0
 	move.l	d0,$C(a4)
 	clr.w	$20(a4)
-	lea.l	sub_139108(pc),a0
+	lea.l	MaintRobot_StateResume(pc),a0
 	move.l	a0,$64(a4)
 	move.l	a0,$5C(a4)
 	moveq	#-$1,d0

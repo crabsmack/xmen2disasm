@@ -1,7 +1,10 @@
 ; ---------------------------------------------------------------------------
-; sub_138968	[jt 1822]
+; LineSegKiller_KillAll - Kill every live LINESEGKILLER object (each removes its segments as it dies)
+; In:  none
+; Out: none
+; Evidence: scans g_ObjTable for objects with flag $8000 and descriptor Tbl_LineSegKiller_vtable, calls vtable +$52 Kill; only caller BroodClaw_Swing (jt 1822), TAS frame 52125
 ; ---------------------------------------------------------------------------
-sub_138968:
+LineSegKiller_KillAll:
 	link.w	a6,#$0
 	movem.l	d7/a4,-(a7)
 	clr.w	d7
