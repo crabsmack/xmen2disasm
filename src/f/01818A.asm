@@ -1,6 +1,6 @@
 ; ---------------------------------------------------------------------------
-; ShootAcolyte_Move - vtable +$4E: per-frame movement of a SHOOTACOLYTE
-; In:  8(a6) = this (SHOOTACOLYTE object)
+; ShootAcolyte_Move - parent Move, then clamp x to the patrol limits +$AA..+$AE (stopping horizontal motion at a limit) (SHOOTACOLYTE override of slot +$4E Move)
+; In:  8(a6) = this (SHOOTACOLYTE object), $E(a6) = word step count
 ; Out: none
 ; Evidence: class descriptor SHOOTACOLYTE slot +$4E (tools/classes.py); TAS frames 11790-12957 (586 active)
 ; ---------------------------------------------------------------------------

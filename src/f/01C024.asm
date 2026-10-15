@@ -1,8 +1,8 @@
 ; ---------------------------------------------------------------------------
-; YoyoAcolyte_ClassInit - vtable +$5E: per-level class setup for YOYOACOLYTE (load its resources)
+; YoyoAcolyte_ClassInit - per-level class setup: SprDef_Add the yoyo sprite set jt $4CA into -$3CD2 (YOYOACOLYTE override of slot +$5E ClassInit)
 ; In:  8(a6) = this, $C(a6) = class index
 ; Out: none
-; Evidence: class descriptor YOYOACOLYTE slot +$5E (tools/classes.py); TAS frames 11770-14117 (2 active)
+; Evidence: class descriptor YOYOACOLYTE slot +$5E (tools/classes.py); YoyoAcolyte_Draw draws the yoyo from -$3CD2; TAS frames 11770-14117 (2 active)
 ; ---------------------------------------------------------------------------
 YoyoAcolyte_ClassInit:
 	link.w	a6,#$0

@@ -1,5 +1,5 @@
 ; ---------------------------------------------------------------------------
-; Exodus_Update - vtable +$4A: per-frame update of a EXODUS
+; Exodus_Update - parent Update, then count down +$AB (at 0 leave the enemy body hit list) and the blink timer +$A7 (at 0 clear flag $40), run Exodus_HurtOnHotTiles for both players, and if it left the arena (x 0-$180, y 0-$380) stop, snap back to its pixel position and restart with Exodus_StateDescend (EXODUS override of slot +$4A Update)
 ; In:  8(a6) = this (EXODUS object)
 ; Out: none
 ; Evidence: class descriptor EXODUS slot +$4A (tools/classes.py); TAS frames 17200-18215 (893 active)

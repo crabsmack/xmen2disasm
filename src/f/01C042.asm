@@ -1,8 +1,8 @@
 ; ---------------------------------------------------------------------------
-; YoyoAcolyte_Init - vtable +$12 constructor: run the parent's Init(x, y, param), then set up a YOYOACOLYTE
-; In:  8(a6) = this (YOYOACOLYTE object)
+; YoyoAcolyte_Init - parent Init, then no vertical speed, stats jt $4BA (+$8C, health), anchor = placement, states YoyoAcolyte_ActIdle100 (+$5C/+$64) and YoyoAcolyte_StateDie (hurt), flags |= $4082, sprite set jt $4C2, no yoyo (+$B4 = 0, record +$A0 cleared); without a placement uses a default one; then picks the AI script by placement +$A (0-4) through Sw_01C042 (YOYOACOLYTE override of slot +$12 Init)
+; In:  8(a6) = this (YOYOACOLYTE object), $C(a6)/$10(a6) = x/y (8.8 fixed), $14(a6) = placement entry or null
 ; Out: none
-; Evidence: class descriptor YOYOACOLYTE slot +$12 (tools/classes.py); TAS frames 12178-16673 (32 active)
+; Evidence: class descriptor YOYOACOLYTE slot +$12 (tools/classes.py); switch cases YoyoAcolyte_Init_Script0/_Script1to4; TAS frames 12178-16673 (32 active)
 ; ---------------------------------------------------------------------------
 YoyoAcolyte_Init:
 	link.w	a6,#$FFEC

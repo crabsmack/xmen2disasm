@@ -1,6 +1,6 @@
 ; ---------------------------------------------------------------------------
-; RollingDiscs_Init - vtable +$12 constructor: run the parent's Init(x, y, param), then set up a ROLLINGDISCS
-; In:  8(a6) = this (ROLLINGDISCS object)
+; RollingDiscs_Init - parent Init, then register in -$3C78, flags |= $1082, no vertical speed, pixel position = placement, damage 10, health 2, x speed = placement +6 or $200 (max speed = its size), disc table -$3C7E into +$8C, state RollingDiscs_InitStub (+$5C/+$64) (ROLLINGDISCS override of slot +$12 Init)
+; In:  8(a6) = this (ROLLINGDISCS object), $C(a6)/$10(a6) = x/y (8.8 fixed), $14(a6) = placement entry
 ; Out: none
 ; Evidence: class descriptor ROLLINGDISCS slot +$12 (tools/classes.py); not reached by the TAS
 ; ---------------------------------------------------------------------------

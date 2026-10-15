@@ -1,5 +1,5 @@
 ; ---------------------------------------------------------------------------
-; Zapper_ClassInit - vtable +$5E: per-level class setup for ZAPPER (load its resources)
+; Zapper_ClassInit - per-level class setup: SprDef_Add sprite set jt $58A into -$3CCC (ZAPPER override of slot +$5E ClassInit)
 ; In:  8(a6) = this, $C(a6) = class index
 ; Out: none
 ; Evidence: class descriptor ZAPPER slot +$5E (tools/classes.py); TAS frames 14120-14120 (1 active)

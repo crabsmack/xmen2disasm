@@ -1,8 +1,8 @@
 ; ---------------------------------------------------------------------------
-; BanimazaDoor_Draw - vtable +$1A: draw a BANIMAZADOOR
+; BanimazaDoor_Draw - while solid (+$A0) keep its floor segment (g_Segs[+$7A]) and both boxes on the column x-5..x+$25, top +$12 to its y; then draw by state +$9A (Sw_03A4EE): states 0-2 the column (BanimazaDoor_DrawColumn), 3 the shatter debris (BanimazaDoor_DrawDebris) (BANIMAZADOOR override of slot +$1A Draw; does not call the parent)
 ; In:  8(a6) = this (BANIMAZADOOR object)
 ; Out: none
-; Evidence: class descriptor BANIMAZADOOR slot +$1A (tools/classes.py); TAS frames 23673-23742 (41 active)
+; Evidence: class descriptor BANIMAZADOOR slot +$1A (tools/classes.py); BanimazaDoor_Draw_part1/2; TAS frames 23673-23742 (41 active)
 ; ---------------------------------------------------------------------------
 BanimazaDoor_Draw:
 	link.w	a6,#$0

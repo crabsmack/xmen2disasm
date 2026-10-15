@@ -1,6 +1,6 @@
 ; ---------------------------------------------------------------------------
-; BanimazaDoor_TakeDamage - vtable +$26: a BANIMAZADOOR takes a hit
-; In:  8(a6) = this (BANIMAZADOOR object)
+; BanimazaDoor_TakeDamage - 20-frame hit cooldown, remember the attacker (+$92) and hit point (+$96 x+16, +$98 mid height), health -= damage; still standing -> draw state 2, else health 4, draw state 3, 200-frame cooldown and state BanimazaDoor_Shatter (BANIMAZADOOR override of slot +$26 TakeDamage; does not call the parent)
+; In:  8(a6) = this (BANIMAZADOOR object), $C(a6) = attacker, $17(a6) = byte damage
 ; Out: none
 ; Evidence: class descriptor BANIMAZADOOR slot +$26 (tools/classes.py); not reached by the TAS
 ; ---------------------------------------------------------------------------

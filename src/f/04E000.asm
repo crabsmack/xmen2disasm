@@ -1,6 +1,6 @@
 ; ---------------------------------------------------------------------------
-; ApocBomb_Init - vtable +$12 constructor: run the parent's Init(x, y, param), then set up a APOCBOMB
-; In:  8(a6) = this (APOCBOMB object)
+; ApocBomb_Init - parent Init, then no motion, sprite set -$3C6E (palette 2), damage 1, flags |= $1082, dropping (+$92 = 1), frame layout table jt $B4A (+$A0), orbit angle +$8C = 180 (8.8) at speed -$3C70, bounce/pass counters cleared, live-bomb count -$3B08 += 1, frame 4 (APOCBOMB override of slot +$12 Init)
+; In:  8(a6) = this (APOCBOMB object), $C(a6)/$10(a6) = x/y (8.8 fixed), $14(a6) = spawn param
 ; Out: none
 ; Evidence: class descriptor APOCBOMB slot +$12 (tools/classes.py); TAS frames 24409-25804 (13 active)
 ; ---------------------------------------------------------------------------

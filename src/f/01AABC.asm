@@ -1,6 +1,6 @@
 ; ---------------------------------------------------------------------------
-; Tower_Init - vtable +$12 constructor: run the parent's Init(x, y, param), then set up a TOWER
-; In:  8(a6) = this (TOWER object)
+; Tower_Init - parent Init, then no motion, sprite set jt $40A, state Tower_StateIdle (+$5C/+$64), flags |= $83, position = placement; animation jt $3F2 without a placement, else jt $402 (placement +6 = 2) or jt $3FA, raised $27 px (TOWER override of slot +$12 Init)
+; In:  8(a6) = this (TOWER object), $C(a6)/$10(a6) = x/y (8.8 fixed), $14(a6) = placement entry or null
 ; Out: none
 ; Evidence: class descriptor TOWER slot +$12 (tools/classes.py); TAS frames 10621-12742 (10 active)
 ; ---------------------------------------------------------------------------

@@ -1,5 +1,5 @@
 ; ---------------------------------------------------------------------------
-; BigAcolyte_Activate - vtable +$3E: activate a BIGACOLYTE (entered the active window)
+; BigAcolyte_Activate - run the parent Activate with the sprite pointer +$30 hidden (so no sprite is set up), then restore it and set frames +$2F/+$38 to $FF (BIGACOLYTE override of slot +$3E Activate)
 ; In:  8(a6) = this (BIGACOLYTE object)
 ; Out: none
 ; Evidence: class descriptor BIGACOLYTE slot +$3E (tools/classes.py); TAS frames 13007-13007 (1 active)

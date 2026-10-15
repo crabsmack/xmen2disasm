@@ -1,6 +1,6 @@
 ; ---------------------------------------------------------------------------
-; Apocalypse_TakeDamage - vtable +$26: a APOCALYPSE takes a hit
-; In:  8(a6) = this (APOCALYPSE object)
+; Apocalypse_TakeDamage - while circling (+$8C bit 0) only flinch: frame 7, sound $EB, 60-frame cooldown, no health loss; otherwise switch to the hurt state (+$60) if set, 10-frame cooldown, health -= damage (APOCALYPSE override of slot +$26 TakeDamage; does not call the parent)
+; In:  8(a6) = this (APOCALYPSE object), $C(a6) = attacker, $17(a6) = byte damage
 ; Out: none
 ; Evidence: class descriptor APOCALYPSE slot +$26 (tools/classes.py); TAS frames 26561-27030 (8 active)
 ; ---------------------------------------------------------------------------

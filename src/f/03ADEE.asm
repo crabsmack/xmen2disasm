@@ -1,6 +1,6 @@
 ; ---------------------------------------------------------------------------
-; RollingDiscs_Move - vtable +$4E: per-frame movement of a ROLLINGDISCS
-; In:  8(a6) = this (ROLLINGDISCS object)
+; RollingDiscs_Move - only calls the parent Move (ROLLINGDISCS override of slot +$4E Move; adds nothing)
+; In:  8(a6) = this (ROLLINGDISCS object), $E(a6) = word step count
 ; Out: none
 ; Evidence: class descriptor ROLLINGDISCS slot +$4E (tools/classes.py); not reached by the TAS
 ; ---------------------------------------------------------------------------

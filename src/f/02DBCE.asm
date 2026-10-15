@@ -1,6 +1,6 @@
 ; ---------------------------------------------------------------------------
-; Exodus_Init - vtable +$12 constructor: run the parent's Init(x, y, param), then set up a EXODUS
-; In:  8(a6) = this (EXODUS object)
+; Exodus_Init - register as the scene's EXODUS (-$3CB8), parent Init, then flags |= $3182, sprite set -$3CB4 (palette 1), state Exodus_StateStart (+$5C/+$64), health 30, base position (+$8C/+$90) = position, attack parameters +$A0 = 3, +$A1 = 6, death-effect kind +$A6 = 3, +$A8 = 1, motion flags +$AC = 0 (EXODUS override of slot +$12 Init)
+; In:  8(a6) = this (EXODUS object), $C(a6)/$10(a6) = x/y (8.8 fixed), $14(a6) = spawn param
 ; Out: none
 ; Evidence: class descriptor EXODUS slot +$12 (tools/classes.py); TAS frames 17199-17199 (1 active)
 ; ---------------------------------------------------------------------------

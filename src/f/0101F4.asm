@@ -1,6 +1,6 @@
 ; ---------------------------------------------------------------------------
-; BigAcolyte_Init - vtable +$12 constructor: run the parent's Init(x, y, param), then set up a BIGACOLYTE
-; In:  8(a6) = this (BIGACOLYTE object)
+; BigAcolyte_Init - parent Init, then health 24, sprite set jt $202, AI script jt $1EA into +$96 (first step or the default state), flags |= $1082, face the way the live player (P1, else P2) faces, max speed +-$280, both axes 'arrived' (+$A6/+$A7 = 1), timer +$6E = 1000 (BIGACOLYTE override of slot +$12 Init)
+; In:  8(a6) = this (BIGACOLYTE object), $C(a6)/$10(a6) = x/y (8.8 fixed), $14(a6) = spawn param
 ; Out: none
 ; Evidence: class descriptor BIGACOLYTE slot +$12 (tools/classes.py); TAS frames 13007-13007 (1 active)
 ; ---------------------------------------------------------------------------

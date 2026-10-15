@@ -1,6 +1,6 @@
 ; ---------------------------------------------------------------------------
-; CapedAcolyte_Init - vtable +$12 constructor: run the parent's Init(x, y, param), then set up a CAPEDACOLYTE
-; In:  8(a6) = this (CAPEDACOLYTE object)
+; CapedAcolyte_Init - parent Init, then home position +$9C/+$A0 = placement, stats jt $2B2 (+$8C, health = stats byte 2), sprite set jt $2BA, AI script jt $2A2 (+$96), flags |= $80, face like the live player, animation jt $28A, hover-offset table jt $342 (+$B4); x range +$A4..+$A6 = x -/+ (placement +6 or $40), y range +$AA..+$A8 = y - (placement +8 or $60)..y, +$B2/+$B0/+$AC from placement +$A/+$C/+$E (defaults $78/2/$14) (CAPEDACOLYTE override of slot +$12 Init)
+; In:  8(a6) = this (CAPEDACOLYTE object), $C(a6)/$10(a6) = x/y (8.8 fixed), $14(a6) = placement entry
 ; Out: none
 ; Evidence: class descriptor CAPEDACOLYTE slot +$12 (tools/classes.py); TAS frames 10847-11399 (6 active)
 ; ---------------------------------------------------------------------------

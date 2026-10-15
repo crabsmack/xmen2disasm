@@ -1,5 +1,5 @@
 ; ---------------------------------------------------------------------------
-; ThronePhone_ClassInit - vtable +$5E: per-level class setup for THRONEPHONE (load its resources)
+; ThronePhone_ClassInit - per-level class setup: SprDef_Add sprite set jt $81A into -$3CAA (THRONEPHONE override of slot +$5E ClassInit)
 ; In:  8(a6) = this, $C(a6) = class index
 ; Out: none
 ; Evidence: class descriptor THRONEPHONE slot +$5E (tools/classes.py); TAS frames 18540-18540 (1 active)

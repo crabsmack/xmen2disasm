@@ -1,7 +1,7 @@
 ; ---------------------------------------------------------------------------
-; BanimazaDoor_InActivateWindow - vtable +$3A: is a BANIMAZADOOR inside the active window
+; BanimazaDoor_InActivateWindow - true when its camera-relative x is within -$20..$160 and y+$40 within -$20..$100 (BANIMAZADOOR override of slot +$3A; own window from its pixel position)
 ; In:  8(a6) = this (BANIMAZADOOR object)
-; Out: none
+; Out: d0 = 1 inside / 0 not
 ; Evidence: class descriptor BANIMAZADOOR slot +$3A (tools/classes.py); TAS frames 23236-23786 (277 active)
 ; ---------------------------------------------------------------------------
 BanimazaDoor_InActivateWindow:

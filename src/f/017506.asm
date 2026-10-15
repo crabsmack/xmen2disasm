@@ -1,5 +1,5 @@
 ; ---------------------------------------------------------------------------
-; FarAcolyte_Draw - vtable +$1A: draw a FARACOLYTE
+; FarAcolyte_Draw - draw the orb while +$92 bit 0 (two mirrored hardware sprites from sprite set -$3CD6, palette flickering when bit 1), the bolt while bit 2 (Spr_SetFrame/Spr_Draw with -$3CD4 at +$A4), then itself with the parent Draw (FARACOLYTE override of slot +$1A Draw)
 ; In:  8(a6) = this (FARACOLYTE object)
 ; Out: none
 ; Evidence: class descriptor FARACOLYTE slot +$1A (tools/classes.py); TAS frames 10707-12962 (511 active)

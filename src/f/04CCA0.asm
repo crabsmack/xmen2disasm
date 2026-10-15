@@ -1,5 +1,5 @@
 ; ---------------------------------------------------------------------------
-; Apocalypse_Deactivate - vtable +$46: deactivate a APOCALYPSE
+; Apocalypse_Deactivate - parent Deactivate, then free the second sprite's VRAM tiles: every live object whose tiles sit above them is invalidated and shifted down, g_VramTileCursor -= size, second-sprite frames := $FF (APOCALYPSE override of slot +$46 Deactivate)
 ; In:  8(a6) = this (APOCALYPSE object)
 ; Out: none
 ; Evidence: class descriptor APOCALYPSE slot +$46 (tools/classes.py); TAS frames 27245-27245 (1 active)

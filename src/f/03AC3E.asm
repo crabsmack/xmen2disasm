@@ -1,5 +1,5 @@
 ; ---------------------------------------------------------------------------
-; RollingDiscs_ClassInit - vtable +$5E: per-level class setup for ROLLINGDISCS (load its resources)
+; RollingDiscs_ClassInit - per-level class setup: RollingDiscs_NopStatic, then read the level's disc list (level header -$CB2 +$12): count -> -$3C7A, Mem_StackAlloc count x $14 into -$3C7E and convert each 16-byte entry into a 20-byte record (pixel and 8.8 x/y, speed and |speed|, +8 word, +$B byte, flag = entry +$E is 0); clear -$3C80 (ROLLINGDISCS override of slot +$5E ClassInit)
 ; In:  8(a6) = this, $C(a6) = class index
 ; Out: none
 ; Evidence: class descriptor ROLLINGDISCS slot +$5E (tools/classes.py); TAS frames 22435-22435 (1 active)

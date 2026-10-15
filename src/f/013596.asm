@@ -1,6 +1,6 @@
 ; ---------------------------------------------------------------------------
-; CapedAcolyte_Move - vtable +$4E: per-frame movement of a CAPEDACOLYTE
-; In:  8(a6) = this (CAPEDACOLYTE object)
+; CapedAcolyte_Move - n times add the velocity to the home position (+$9C/+$A0), clamp it to the x range +$A4..+$A6 and y range +$AA..+$A8 (stopping that axis), then position = home + the next hover offset from table jt $342 (wraps at the $6400 end word) (CAPEDACOLYTE override of slot +$4E Move; no acceleration)
+; In:  8(a6) = this (CAPEDACOLYTE object), $E(a6) = word step count
 ; Out: none
 ; Evidence: class descriptor CAPEDACOLYTE slot +$4E (tools/classes.py); TAS frames 10849-11459 (283 active)
 ; ---------------------------------------------------------------------------

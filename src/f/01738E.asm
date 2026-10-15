@@ -1,7 +1,7 @@
 ; ---------------------------------------------------------------------------
-; FarAcolyte_OutsideActiveWindow - vtable +$42: a FARACOLYTE is outside the active window
+; FarAcolyte_OutsideActiveWindow - with no orb or bolt out (+$92 & 5 = 0) the parent's test; otherwise outside only when the box spanning itself and its orb/bolt lies outside the active window (-$35C6..-$35C0) (FARACOLYTE override of slot +$42)
 ; In:  8(a6) = this (FARACOLYTE object)
-; Out: none
+; Out: d0 = 1 outside / 0 not
 ; Evidence: class descriptor FARACOLYTE slot +$42 (tools/classes.py); TAS frames 10708-12963 (463 active)
 ; ---------------------------------------------------------------------------
 FarAcolyte_OutsideActiveWindow:

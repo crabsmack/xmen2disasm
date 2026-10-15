@@ -1,5 +1,5 @@
 ; ---------------------------------------------------------------------------
-; BigAcBullet_Update - vtable +$4A: per-frame update of a BIGACBULLET
+; BigAcBullet_Update - parent Update, then if anchored to an object (+$8E) pin the position to that object's x/y plus the offsets +$92/+$96 (BIGACBULLET override of slot +$4A Update)
 ; In:  8(a6) = this (BIGACBULLET object)
 ; Out: none
 ; Evidence: class descriptor BIGACBULLET slot +$4A (tools/classes.py); TAS frames 13510-13673 (161 active)

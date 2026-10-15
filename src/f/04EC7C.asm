@@ -1,6 +1,6 @@
 ; ---------------------------------------------------------------------------
-; BeamScooter_Init - vtable +$12 constructor: run the parent's Init(x, y, param), then set up a BEAMSCOOTER
-; In:  8(a6) = this (BEAMSCOOTER object)
+; BeamScooter_Init - parent Init, then no motion, sprite def jt $9C2 (palette 3, the same set as Apocalypse's second sprite), flags |= $1283, flip bit 2, +$42 = 2, state BeamScooter_StateEnter (BEAMSCOOTER override of slot +$12 Init)
+; In:  8(a6) = this (BEAMSCOOTER object), $C(a6)/$10(a6) = x/y (8.8 fixed), $14(a6) = spawn param
 ; Out: none
 ; Evidence: class descriptor BEAMSCOOTER slot +$12 (tools/classes.py); TAS frames 27245-27245 (1 active)
 ; ---------------------------------------------------------------------------

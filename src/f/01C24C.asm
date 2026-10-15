@@ -1,7 +1,7 @@
 ; ---------------------------------------------------------------------------
-; YoyoAcolyte_OutsideActiveWindow - vtable +$42: a YOYOACOLYTE is outside the active window
+; YoyoAcolyte_OutsideActiveWindow - never outside while the yoyo is out (+$B4 bit 0), otherwise the parent's test (YOYOACOLYTE override of slot +$42)
 ; In:  8(a6) = this (YOYOACOLYTE object)
-; Out: none
+; Out: d0 = 1 outside / 0 not
 ; Evidence: class descriptor YOYOACOLYTE slot +$42 (tools/classes.py); TAS frames 12185-16731 (1166 active)
 ; ---------------------------------------------------------------------------
 YoyoAcolyte_OutsideActiveWindow:

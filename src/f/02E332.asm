@@ -1,5 +1,5 @@
 ; ---------------------------------------------------------------------------
-; ExodusBlast_Draw - vtable +$1A: draw a EXODUSBLAST
+; ExodusBlast_Draw - nothing until a kind (+$98) is set; then the parent Draw plus, while it moves (step +$94/+$96), up to 4 trail copies (frames +4/+8/+$C) spaced one step apart, stopping before the start point (+$10/+$12) (EXODUSBLAST override of slot +$1A Draw)
 ; In:  8(a6) = this (EXODUSBLAST object)
 ; Out: none
 ; Evidence: class descriptor EXODUSBLAST slot +$1A (tools/classes.py); TAS frames 17302-18255 (257 active)

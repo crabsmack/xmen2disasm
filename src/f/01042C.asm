@@ -1,6 +1,6 @@
 ; ---------------------------------------------------------------------------
-; BigAcolyte_Move - vtable +$4E: per-frame movement of a BIGACOLYTE
-; In:  8(a6) = this (BIGACOLYTE object)
+; BigAcolyte_Move - n times: glide each axis toward the target point (x +$A4, y +$A2) with speed clamped to +$24/+$28 and braking (accel -v/8) near it, snap and set the axis 'arrived' flag (+$A6/+$A7, +$6E = 9); once both arrived and +$6E ran out, hover with a sine bob (+$A8, angle +$9C) (BIGACOLYTE override of slot +$4E Move; replaces it)
+; In:  8(a6) = this (BIGACOLYTE object), $E(a6) = word step count
 ; Out: none
 ; Evidence: class descriptor BIGACOLYTE slot +$4E (tools/classes.py); TAS frames 13008-13659 (617 active)
 ; ---------------------------------------------------------------------------

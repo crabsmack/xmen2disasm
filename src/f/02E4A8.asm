@@ -1,6 +1,6 @@
 ; ---------------------------------------------------------------------------
-; ExodusBlast_Init - vtable +$12 constructor: run the parent's Init(x, y, param), then set up a EXODUSBLAST
-; In:  8(a6) = this (EXODUSBLAST object)
+; ExodusBlast_Init - parent Init, then flags |= $7082, sprite set -$3CB2 (flip bit 2, palette 1), state ExodusBlast_StateStart (+$5C/+$64), +$42 -= 2, no step (+$94/+$96 = 0) and no kind (+$98 = 0) (EXODUSBLAST override of slot +$12 Init)
+; In:  8(a6) = this (EXODUSBLAST object), $C(a6)/$10(a6) = x/y (8.8 fixed), $14(a6) = spawn param
 ; Out: none
 ; Evidence: class descriptor EXODUSBLAST slot +$12 (tools/classes.py); TAS frames 17302-18215 (6 active)
 ; ---------------------------------------------------------------------------

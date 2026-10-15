@@ -1,6 +1,6 @@
 ; ---------------------------------------------------------------------------
-; BigAcolyte_TakeDamage - vtable +$26: a BIGACOLYTE takes a hit
-; In:  8(a6) = this (BIGACOLYTE object)
+; BigAcolyte_TakeDamage - unless in hit cooldown: sound $D8, max speed = $280 + $1C per point lost, health -= damage; hit types $D-$F (not in picture mode) go to the parent TakeDamage, else a 40-frame blinking cooldown; at 0 health switch to BigAcolyte_DieEndScene (BIGACOLYTE override of slot +$26 TakeDamage)
+; In:  8(a6) = this (BIGACOLYTE object), $C(a6) = attacker, $13(a6) = byte hit type, $17(a6) = byte damage, $1A/$1E(a6) = hit point
 ; Out: none
 ; Evidence: class descriptor BIGACOLYTE slot +$26 (tools/classes.py); TAS frames 13401-13657 (7 active)
 ; ---------------------------------------------------------------------------

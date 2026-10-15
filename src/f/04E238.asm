@@ -1,5 +1,5 @@
 ; ---------------------------------------------------------------------------
-; ApocBomb_Update - vtable +$4A: per-frame update of a APOCBOMB
+; ApocBomb_Update - own per-frame update (no parent Update, no state handler): Move 1 or 2 steps; expired (+$92 bit 2) -> live count -1 and ExplodeFx_BurstSmall; else frame 0-4, draw priority and shadow frame (+$A4) by orbit angle (depth), +5 frames and a cooldown when +$98 bit 4, h-flip on the left half, SetFrame/DrawList_SetPriority on change, Obj_UpdateBoxes (APOCBOMB override of slot +$4A Update)
 ; In:  8(a6) = this (APOCBOMB object)
 ; Out: none
 ; Evidence: class descriptor APOCBOMB slot +$4A (tools/classes.py); TAS frames 24410-26319 (1722 active)

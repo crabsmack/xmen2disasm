@@ -1,5 +1,5 @@
 ; ---------------------------------------------------------------------------
-; YoyoAcolyte_Update - vtable +$4A: per-frame update of a YOYOACOLYTE
+; YoyoAcolyte_Update - parent Update, then while the yoyo is out (+$B4 bit 0) and +4 bit $10 is clear, set +$B4 bit 1 once the yoyo is back within 40 px (72 when flipped) of the hand (YOYOACOLYTE override of slot +$4A Update)
 ; In:  8(a6) = this (YOYOACOLYTE object)
 ; Out: none
 ; Evidence: class descriptor YOYOACOLYTE slot +$4A (tools/classes.py); TAS frames 12185-16731 (1160 active)

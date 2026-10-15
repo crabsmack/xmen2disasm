@@ -1,7 +1,7 @@
 ; ---------------------------------------------------------------------------
-; BanimazaDoor_OutsideActiveWindow - vtable +$42: a BANIMAZADOOR is outside the active window
+; BanimazaDoor_OutsideActiveWindow - never outside while flag $1000 is set; otherwise outside when its camera-relative x leaves -$40..$180 or y+$40 leaves -$40..$120 (BANIMAZADOOR override of slot +$42)
 ; In:  8(a6) = this (BANIMAZADOOR object)
-; Out: none
+; Out: d0 = 1 outside / 0 not
 ; Evidence: class descriptor BANIMAZADOOR slot +$42 (tools/classes.py); TAS frames 23674-23743 (41 active)
 ; ---------------------------------------------------------------------------
 BanimazaDoor_OutsideActiveWindow:

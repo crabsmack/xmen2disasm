@@ -1,6 +1,6 @@
 ; ---------------------------------------------------------------------------
-; ThronePhone_Init - vtable +$12 constructor: run the parent's Init(x, y, param), then set up a THRONEPHONE
-; In:  8(a6) = this (THRONEPHONE object)
+; ThronePhone_Init - parent Init, then no vertical speed, state ThronePhone_StateInit (+$5C/+$64), flags |= $5083, sprite set -$3CAA (palette 0), clear +$8C/+$90/+$98/+$A0 and mode +$92, then ThronePhone_SetMode(0) through its slot +$6E (THRONEPHONE override of slot +$12 Init)
+; In:  8(a6) = this (THRONEPHONE object), $C(a6)/$10(a6) = x/y (8.8 fixed), $14(a6) = spawn param
 ; Out: none
 ; Evidence: class descriptor THRONEPHONE slot +$12 (tools/classes.py); TAS frames 19372-19372 (1 active)
 ; ---------------------------------------------------------------------------

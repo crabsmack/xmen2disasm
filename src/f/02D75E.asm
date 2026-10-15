@@ -1,8 +1,8 @@
 ; ---------------------------------------------------------------------------
-; Exodus_InitSpawnRec - vtable +$0A: set up the spawn record of a EXODUS
-; In:  8(a6) = this (EXODUS object)
+; Exodus_InitSpawnRec - parent InitSpawnRec, then set flag bit 3 ($08) in the record's byte +4 (EXODUS override of slot +$0A InitSpawnRec)
+; In:  8(a6) = spawn record, $C(a6) = placement entry
 ; Out: none
-; Evidence: class descriptor EXODUS slot +$0A (tools/classes.py); TAS frames 17145-17145 (1 active)
+; Evidence: class descriptor EXODUS slot +$0A (tools/classes.py); same body as Tusk_InitSpawnRec; TAS frames 17145-17145 (1 active)
 ; ---------------------------------------------------------------------------
 Exodus_InitSpawnRec:
 	link.w	a6,#$0

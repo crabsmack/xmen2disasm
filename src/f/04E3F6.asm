@@ -1,5 +1,5 @@
 ; ---------------------------------------------------------------------------
-; ApocBomb_Draw - vtable +$1A: draw a APOCBOMB
+; ApocBomb_Draw - unless frame $FF write two hardware sprites from the frame layout table +$A0 (size, x/y offset, tile): the bomb at its position and its shadow (frame +$A4) at the ground y +$A6 (APOCBOMB override of slot +$1A Draw; does not call the parent)
 ; In:  8(a6) = this (APOCBOMB object)
 ; Out: none
 ; Evidence: class descriptor APOCBOMB slot +$1A (tools/classes.py); TAS frames 24409-26318 (1722 active)

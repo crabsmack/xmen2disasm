@@ -1,8 +1,8 @@
 ; ---------------------------------------------------------------------------
-; FarAcolyte_ClassInit - vtable +$5E: per-level class setup for FARACOLYTE (load its resources)
+; FarAcolyte_ClassInit - per-level class setup: SprDef_Add the bolt sprite set jt $2CA (-> -$3CD4) and the orb sprite set jt $2D2 (-> -$3CD6) (FARACOLYTE override of slot +$5E ClassInit)
 ; In:  8(a6) = this, $C(a6) = class index
 ; Out: none
-; Evidence: class descriptor FARACOLYTE slot +$5E (tools/classes.py); TAS frames 10312-11766 (2 active)
+; Evidence: class descriptor FARACOLYTE slot +$5E (tools/classes.py); FarAcolyte_Draw uses -$3CD6 for the orb (+$92 bit 0) and -$3CD4 for the bolt (bit 2); TAS frames 10312-11766 (2 active)
 ; ---------------------------------------------------------------------------
 FarAcolyte_ClassInit:
 	link.w	a6,#$0

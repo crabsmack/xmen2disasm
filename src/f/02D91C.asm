@@ -1,5 +1,5 @@
 ; ---------------------------------------------------------------------------
-; Exodus_Draw - vtable +$1A: draw a EXODUS
+; Exodus_Draw - only the parent Draw (computes camera-relative coordinates first but does not use them) (EXODUS override of slot +$1A Draw)
 ; In:  8(a6) = this (EXODUS object)
 ; Out: none
 ; Evidence: class descriptor EXODUS slot +$1A (tools/classes.py); TAS frames 17199-18215 (1014 active)

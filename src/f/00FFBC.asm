@@ -1,6 +1,6 @@
 ; ---------------------------------------------------------------------------
-; BigAcBullet_Init - vtable +$12 constructor: run the parent's Init(x, y, param), then set up a BIGACBULLET
-; In:  8(a6) = this (BIGACBULLET object)
+; BigAcBullet_Init - parent Init, then no gravity, state BigAcBullet_StateLaunch (+$5C/+$64), sprite set jt $20A, flags |= $AA, max/min speed $1000/$F000, no anchor (+$8E = 0, offsets +$92/+$96 = 0), frame $FF (BIGACBULLET override of slot +$12 Init)
+; In:  8(a6) = this (BIGACBULLET object), $C(a6)/$10(a6) = x/y (8.8 fixed), $14(a6) = spawn param
 ; Out: none
 ; Evidence: class descriptor BIGACBULLET slot +$12 (tools/classes.py); TAS frames 13509-13648 (7 active)
 ; ---------------------------------------------------------------------------

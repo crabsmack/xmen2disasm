@@ -1,8 +1,8 @@
 ; ---------------------------------------------------------------------------
-; MagnetoBoss_TakeDamage - vtable +$26: a MAGNETOBOSS takes a hit
-; In:  8(a6) = this (MAGNETOBOSS object)
+; MagnetoBoss_TakeDamage - 30-frame hit cooldown, health -= damage but never below 10 (hits cannot kill it), in mode 4 push the target x +$A2 by 16 x damage away from the hit side (types 9/10), sound $7D, hurt animation jt $73A (MAGNETOBOSS override of slot +$26 TakeDamage; does not call the parent)
+; In:  8(a6) = this (MAGNETOBOSS object), $C(a6) = attacker, $13(a6) = byte hit type, $17(a6) = byte damage
 ; Out: none
-; Evidence: class descriptor MAGNETOBOSS slot +$26 (tools/classes.py); TAS frames 19437-19469 (2 active)
+; Evidence: class descriptor MAGNETOBOSS slot +$26 (tools/classes.py); NOTES: MAGNETOBOSS is captured by THRONEPHONE, not killed; TAS frames 19437-19469 (2 active)
 ; ---------------------------------------------------------------------------
 MagnetoBoss_TakeDamage:
 	link.w	a6,#$0

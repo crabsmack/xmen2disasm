@@ -1,5 +1,5 @@
 ; ---------------------------------------------------------------------------
-; MagnetoBoss_ClassInit - vtable +$5E: per-level class setup for MAGNETOBOSS (load its resources)
+; MagnetoBoss_ClassInit - per-level class setup: SprDef_Add sprite set jt $822 into -$3CAC, keep the class index in -$3CAE and Mem_StackAlloc a $800-byte buffer into g_ClassData[class index] (MAGNETOBOSS override of slot +$5E ClassInit)
 ; In:  8(a6) = this, $C(a6) = class index
 ; Out: none
 ; Evidence: class descriptor MAGNETOBOSS slot +$5E (tools/classes.py); TAS frames 18539-18539 (1 active)

@@ -1,5 +1,5 @@
 ; ---------------------------------------------------------------------------
-; Exodus_ClassInit - vtable +$5E: per-level class setup for EXODUS (load its resources)
+; Exodus_ClassInit - per-level class setup: call Exodus_NopStatic, then SprDef_Add sprite set jt $5F2 into -$3CB4 (EXODUS override of slot +$5E ClassInit)
 ; In:  8(a6) = this, $C(a6) = class index
 ; Out: none
 ; Evidence: class descriptor EXODUS slot +$5E (tools/classes.py); TAS frames 17148-17148 (1 active)

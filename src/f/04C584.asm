@@ -1,6 +1,6 @@
 ; ---------------------------------------------------------------------------
-; Apocalypse_Init - vtable +$12 constructor: run the parent's Init(x, y, param), then set up a APOCALYPSE
-; In:  8(a6) = this (APOCALYPSE object)
+; Apocalypse_Init - parent Init, then no motion, max speeds $7000, hurt state Apocalypse_StateHurt, sprite set -$3C74 (palette 3), damage 1, flags |= $1180, health 60, circle angle +$8E = 180 step +$90 = 2; second sprite (record -$3B1C in +$92, sprite def jt $9C2, own VRAM tiles); start at ($F6, -$14); Apocalypse_SelectBombPattern; wave table jt $9EA (+$B2, shift 7, phase 8); frame $FF; AI script jt $9F2 (+$A2) (APOCALYPSE override of slot +$12 Init)
+; In:  8(a6) = this (APOCALYPSE object), $C(a6)/$10(a6) = x/y (8.8 fixed), $14(a6) = spawn param
 ; Out: none
 ; Evidence: class descriptor APOCALYPSE slot +$12 (tools/classes.py); TAS frames 24086-24086 (1 active)
 ; ---------------------------------------------------------------------------

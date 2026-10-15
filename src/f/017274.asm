@@ -1,6 +1,6 @@
 ; ---------------------------------------------------------------------------
-; FarAcolyte_Init - vtable +$12 constructor: run the parent's Init(x, y, param), then set up a FARACOLYTE
-; In:  8(a6) = this (FARACOLYTE object)
+; FarAcolyte_Init - parent Init, then anchor = placement pixel position (+$10/+$12, home +$B8/+$BC), no vertical speed, states FarAcolyte_StateWaitOnScreen (+$5C/+$64) and FarAcolyte_StateDie (hurt +$60), flags |= $4082, sprite set jt $2C2, no orb/bolt (+$92 = 0, records +$94/+$A4 cleared), x range +$8C..+$8E = x -/+ (placement +6 or $60), +$90 = placement +8 or $78, hover table jt $342 (FARACOLYTE override of slot +$12 Init)
+; In:  8(a6) = this (FARACOLYTE object), $C(a6)/$10(a6) = x/y (8.8 fixed), $14(a6) = placement entry
 ; Out: none
 ; Evidence: class descriptor FARACOLYTE slot +$12 (tools/classes.py); TAS frames 10665-12919 (9 active)
 ; ---------------------------------------------------------------------------

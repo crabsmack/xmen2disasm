@@ -1,5 +1,5 @@
 ; ---------------------------------------------------------------------------
-; RollingDiscs_Update - vtable +$4A: per-frame update of a ROLLINGDISCS
+; RollingDiscs_Update - only calls the parent Update (ROLLINGDISCS override of slot +$4A Update; adds nothing)
 ; In:  8(a6) = this (ROLLINGDISCS object)
 ; Out: none
 ; Evidence: class descriptor ROLLINGDISCS slot +$4A (tools/classes.py); not reached by the TAS

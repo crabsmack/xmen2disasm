@@ -1,6 +1,6 @@
 ; ---------------------------------------------------------------------------
-; Apocalypse_Move - vtable +$4E: per-frame movement of a APOCALYPSE
-; In:  8(a6) = this (APOCALYPSE object)
+; Apocalypse_Move - circling (+$8C bit 0): place on the ellipse x = $100 - $AF*sin(a), y = $85 + 10*cos(a), advance a (+$8E) by +$90 (doubled in two-player step) and pick frame 0/$81/$82/$83 by angle; else n times: moving to +$9A/+$9C (bit 4) with jitter countdown +$A0 (Apocalypse_StartJitter) and stop within 16 px, integrate velocity and acceleration, plus wave offsets from +$B2 when bit 6 (APOCALYPSE override of slot +$4E Move; replaces it)
+; In:  8(a6) = this (APOCALYPSE object), $E(a6) = word step count
 ; Out: none
 ; Evidence: class descriptor APOCALYPSE slot +$4E (tools/classes.py); TAS frames 24088-27245 (3157 active)
 ; ---------------------------------------------------------------------------

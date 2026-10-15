@@ -1,5 +1,5 @@
 ; ---------------------------------------------------------------------------
-; Exodus_Move - vtable +$4E: per-frame movement of a EXODUS
+; Exodus_Move - motion by the flags in +$AC: bit 1 x and bit 0 y integrate velocity into base positions (+$8C/+$90, accel clamped to +-max +$22/+$24); bit 2/bit 3 add a sine sway to x/y (angles +$98/+$9A, steps +$9C/+$9D, amplitude shifts +$9E/+$9F); no flags = base := position (EXODUS override of slot +$4E Move; replaces it; note: a negative x angle wraps +$9A, not +$98)
 ; In:  8(a6) = this (EXODUS object)
 ; Out: none
 ; Evidence: class descriptor EXODUS slot +$4E (tools/classes.py); TAS frames 17200-18216 (901 active)

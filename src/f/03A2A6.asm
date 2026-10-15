@@ -1,5 +1,5 @@
 ; ---------------------------------------------------------------------------
-; BanimazaDoor_ClassInit - vtable +$5E: per-level class setup for BANIMAZADOOR (load its resources)
+; BanimazaDoor_ClassInit - per-level class setup: Rand_Seed(99999), BanimazaDoor_NopStatic, SprDef_Add sprite set jt $90A into -$3C86, Mem_StackAlloc $120 bytes into -$3C84 and install BanimazaDoor_PushCallback in -$33FA (BANIMAZADOOR override of slot +$5E ClassInit)
 ; In:  8(a6) = this, $C(a6) = class index
 ; Out: none
 ; Evidence: class descriptor BANIMAZADOOR slot +$5E (tools/classes.py); TAS frames 22429-22429 (1 active)

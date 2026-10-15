@@ -1,8 +1,8 @@
 ; ---------------------------------------------------------------------------
-; MagnetoBoss_Move - vtable +$4E: per-frame movement of a MAGNETOBOSS
-; In:  8(a6) = this (MAGNETOBOSS object)
+; MagnetoBoss_Move - parent Move; if +$9B bit 0 add n orbit offsets from the 32-entry wave table +$94 (x phase +$98, y phase +$98 + +$9A, shift +$99); then by mode +$B2 (1-4, Sw_03645C) set the velocity: toward a point beside the target player (+$8C, offset +$9E, y clamped to +$A6..+$A8 when bit 1) over 30/55 steps, or toward the point +$A2/+$A4 (stops, mode 0, within 12 px) (MAGNETOBOSS override of slot +$4E Move)
+; In:  8(a6) = this (MAGNETOBOSS object), $E(a6) = word step count
 ; Out: none
-; Evidence: class descriptor MAGNETOBOSS slot +$4E (tools/classes.py); TAS frames 18543-19488 (818 active)
+; Evidence: class descriptor MAGNETOBOSS slot +$4E (tools/classes.py); MagnetoBoss_Move_part1/2; TAS frames 18543-19488 (818 active)
 ; ---------------------------------------------------------------------------
 MagnetoBoss_Move:
 	link.w	a6,#$FFFC

@@ -1,6 +1,6 @@
 ; ---------------------------------------------------------------------------
-; ShootAcolyte_Init - vtable +$12 constructor: run the parent's Init(x, y, param), then set up a SHOOTACOLYTE
-; In:  8(a6) = this (SHOOTACOLYTE object)
+; ShootAcolyte_Init - parent Init, then no vertical speed, AI script jt $3BA (+$96), state ShootAcolyte_ActRestartScript (+$5C/+$64), stats jt $3C2 (health), flags |= $80, sprite set jt $3CA; patrol limits from the placement (or defaults): left +$AA = x - |+6| ($60), right +$AE = x + |+8| ($60) with direction flags +$A8/+$AC, +$B0 = +$A ($3C), +$A4/+$A2 = +$C (2), +$A6 = +$E ($3C) (SHOOTACOLYTE override of slot +$12 Init)
+; In:  8(a6) = this (SHOOTACOLYTE object), $C(a6)/$10(a6) = x/y (8.8 fixed), $14(a6) = placement entry or null
 ; Out: none
 ; Evidence: class descriptor SHOOTACOLYTE slot +$12 (tools/classes.py); TAS frames 11789-12906 (14 active)
 ; ---------------------------------------------------------------------------

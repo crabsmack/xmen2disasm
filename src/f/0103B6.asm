@@ -1,7 +1,7 @@
 ; ---------------------------------------------------------------------------
-; BigAcolyte_OutsideActiveWindow - vtable +$42: a BIGACOLYTE is outside the active window
+; BigAcolyte_OutsideActiveWindow - never outside while active (flag $1000) and alive; otherwise outside unless its state is BigAcolyte_DieEndScene (BIGACOLYTE override of slot +$42; no screen-bounds test)
 ; In:  8(a6) = this (BIGACOLYTE object)
-; Out: none
+; Out: d0 = 1 outside / 0 not
 ; Evidence: class descriptor BIGACOLYTE slot +$42 (tools/classes.py); TAS frames 13008-13659 (617 active)
 ; ---------------------------------------------------------------------------
 BigAcolyte_OutsideActiveWindow:

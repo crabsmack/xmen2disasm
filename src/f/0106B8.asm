@@ -1,5 +1,5 @@
 ; ---------------------------------------------------------------------------
-; BigAcolyte_Draw - vtable +$1A: draw a BIGACOLYTE
+; BigAcolyte_Draw - hit-flash blink like ACTOR Draw; while +$A9 is set draw the scaled picture (sub_1FD520 at the camera-relative box top-left with its flips), otherwise Spr_Draw at the camera-relative position (BIGACOLYTE override of slot +$1A Draw)
 ; In:  8(a6) = this (BIGACOLYTE object)
 ; Out: none
 ; Evidence: class descriptor BIGACOLYTE slot +$1A (tools/classes.py); TAS frames 13007-13657 (617 active)

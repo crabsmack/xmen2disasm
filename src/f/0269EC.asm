@@ -1,5 +1,5 @@
 ; ---------------------------------------------------------------------------
-; RetractFloor_ClassInit - vtable +$5E: per-level class setup for RETRACTFLOOR (load its resources)
+; RetractFloor_ClassInit - per-level class setup: SprDef_Add sprite set jt $53A into -$3CCE (RETRACTFLOOR override of slot +$5E ClassInit)
 ; In:  8(a6) = this, $C(a6) = class index
 ; Out: none
 ; Evidence: class descriptor RETRACTFLOOR slot +$5E (tools/classes.py); TAS frames 14116-14116 (1 active)

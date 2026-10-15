@@ -1,8 +1,8 @@
 ; ---------------------------------------------------------------------------
-; Exodus_TakeDamage - vtable +$26: a EXODUS takes a hit
-; In:  8(a6) = this (EXODUS object)
+; Exodus_TakeDamage - 90-frame blinking cooldown, sound $D8, health -= damage (floor 0); at 0 (no exit pending) Scene_EndAfter(40) and the death effect picked by +$A6 (Kill, ExplodeFx_BurstMedium/BurstSmall/Bounce/TrailArc); otherwise at health <= 10 / <= 20 switch once to Exodus_AtkSwoopB / Exodus_AtkSwoopA (EXODUS override of slot +$26 TakeDamage; does not call the parent)
+; In:  8(a6) = this (EXODUS object), $C(a6) = attacker, $17(a6) = byte damage
 ; Out: none
-; Evidence: class descriptor EXODUS slot +$26 (tools/classes.py); TAS frames 17303-18216 (4 active)
+; Evidence: class descriptor EXODUS slot +$26 (tools/classes.py); switch Sw_02DADE and Exodus_TakeDamage_part1-5; TAS frames 17303-18216 (4 active)
 ; ---------------------------------------------------------------------------
 Exodus_TakeDamage:
 	link.w	a6,#$0

@@ -1,5 +1,5 @@
 ; ---------------------------------------------------------------------------
-; Apocalypse_Update - vtable +$4A: per-frame update of a APOCALYPSE
+; Apocalypse_Update - parent Update, then while the body frame is $FF collapse its second box (+$54..+$5A) to an empty one at its position (APOCALYPSE override of slot +$4A Update)
 ; In:  8(a6) = this (APOCALYPSE object)
 ; Out: none
 ; Evidence: class descriptor APOCALYPSE slot +$4A (tools/classes.py); TAS frames 24088-27245 (3157 active)

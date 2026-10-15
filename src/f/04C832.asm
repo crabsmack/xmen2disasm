@@ -1,5 +1,5 @@
 ; ---------------------------------------------------------------------------
-; Apocalypse_Draw - vtable +$1A: draw a APOCALYPSE
+; Apocalypse_Draw - copy the body's h-flip to the second sprite, then Spr_Draw the body (+$2E) and the second sprite (+$92) at the camera-relative position, each unless its frame is $FF (APOCALYPSE override of slot +$1A Draw; no hit blink, does not call the parent)
 ; In:  8(a6) = this (APOCALYPSE object)
 ; Out: none
 ; Evidence: class descriptor APOCALYPSE slot +$1A (tools/classes.py); TAS frames 24087-27244 (3157 active)

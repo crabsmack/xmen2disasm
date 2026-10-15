@@ -1,6 +1,6 @@
 ; ---------------------------------------------------------------------------
-; Apocalypse_SetFrame - vtable +$56: set the animation frame of a APOCALYPSE
-; In:  8(a6) = this (APOCALYPSE object)
+; Apocalypse_SetFrame - frame $FF hides both sprites; $80+n shows frame n of the second sprite (+$92) and hides the body (second-sprite flag bit 2 cleared for $81-$83 unless +$8C bit 5); below $80 shows body frame n with second-sprite frame 0; a repeated frame sets the second sprite's 'unchanged' bit 5, else flags a redraw (+4 |= 8) (APOCALYPSE override of slot +$56 SetFrame; does not call the parent)
+; In:  8(a6) = this (APOCALYPSE object), $E(a6) = word frame
 ; Out: none
 ; Evidence: class descriptor APOCALYPSE slot +$56 (tools/classes.py); TAS frames 24086-27245 (316 active)
 ; ---------------------------------------------------------------------------

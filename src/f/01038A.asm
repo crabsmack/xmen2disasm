@@ -1,5 +1,5 @@
 ; ---------------------------------------------------------------------------
-; BigAcolyte_Deactivate - vtable +$46: deactivate a BIGACOLYTE
+; BigAcolyte_Deactivate - parent Deactivate, then release the camera (camera slot +$3A UnlockAxes) (BIGACOLYTE override of slot +$46 Deactivate)
 ; In:  8(a6) = this (BIGACOLYTE object)
 ; Out: none
 ; Evidence: class descriptor BIGACOLYTE slot +$46 (tools/classes.py); TAS frames 13659-13659 (1 active)

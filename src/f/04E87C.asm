@@ -1,6 +1,6 @@
 ; ---------------------------------------------------------------------------
-; ApocBomb_TakeDamage - vtable +$26: a APOCBOMB takes a hit
-; In:  8(a6) = this (APOCBOMB object)
+; ApocBomb_TakeDamage - any hit destroys it: frame $FF, live-bomb count -$3B08 -1; the special bomb (+$98 = $10) runs ApocBomb_Explode and an ExplodeFx_ChainRepeat (path jt $B5A), others ExplodeFx_BurstSmall (APOCBOMB override of slot +$26 TakeDamage; no health, does not call the parent)
+; In:  8(a6) = this (APOCBOMB object), $C(a6) = attacker
 ; Out: none
 ; Evidence: class descriptor APOCBOMB slot +$26 (tools/classes.py); TAS frames 24849-25910 (3 active)
 ; ---------------------------------------------------------------------------

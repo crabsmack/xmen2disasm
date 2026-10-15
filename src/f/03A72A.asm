@@ -1,6 +1,6 @@
 ; ---------------------------------------------------------------------------
-; BanimazaDoor_Init - vtable +$12 constructor: run the parent's Init(x, y, param), then set up a BANIMAZADOOR
-; In:  8(a6) = this (BANIMAZADOOR object)
+; BanimazaDoor_Init - parent Init, then y from the placement, flags |= $4283 (+4 |= 4), sprite set -$3C86 (tile base -> +$9C), damage 1, health 4, sprite def jt $90A, debris buffer -$3C84 (+$8C, 16 pieces +$90), no attacker, +$9E = 90, draw state 0, not solid, state BanimazaDoor_StateReset (BANIMAZADOOR override of slot +$12 Init)
+; In:  8(a6) = this (BANIMAZADOOR object), $C(a6)/$10(a6) = x/y (8.8 fixed), $14(a6) = placement entry
 ; Out: none
 ; Evidence: class descriptor BANIMAZADOOR slot +$12 (tools/classes.py); TAS frames 23235-23683 (3 active)
 ; ---------------------------------------------------------------------------

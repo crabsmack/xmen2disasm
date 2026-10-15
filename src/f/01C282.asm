@@ -1,5 +1,5 @@
 ; ---------------------------------------------------------------------------
-; YoyoAcolyte_Draw - vtable +$1A: draw a YOYOACOLYTE
+; YoyoAcolyte_Draw - while the yoyo is out and it is alive: draw the yoyo (one 32x32 hardware sprite from -$3CD2, 4-frame spin) at its offset (+$A0/+$A4), step the yoyo's velocity/acceleration, and hurt each live player touching its 26-px box (TakeDamage type 9/10 by side, damage +$70); then the parent Draw (YOYOACOLYTE override of slot +$1A Draw)
 ; In:  8(a6) = this (YOYOACOLYTE object)
 ; Out: none
 ; Evidence: class descriptor YOYOACOLYTE slot +$1A (tools/classes.py); TAS frames 12184-16730 (1179 active)

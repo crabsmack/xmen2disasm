@@ -1,5 +1,5 @@
 ; ---------------------------------------------------------------------------
-; MagnetoBoss_Activate - vtable +$3E: activate a MAGNETOBOSS (entered the active window)
+; MagnetoBoss_Activate - own version of Activate: Spr_Init its sprite into its reserved VRAM (+$B0) keeping flips/frame; if it fits (or the sprite def is type $20) clear +4 flags $4800, start its timer, join the attacker/body hit lists by the +6 flags and DrawList_Add its Draw (MAGNETOBOSS override of slot +$3E Activate; does not call the parent)
 ; In:  8(a6) = this (MAGNETOBOSS object)
 ; Out: none
 ; Evidence: class descriptor MAGNETOBOSS slot +$3E (tools/classes.py); TAS frames 18543-18543 (1 active)

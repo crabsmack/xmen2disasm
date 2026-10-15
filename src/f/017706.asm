@@ -1,6 +1,6 @@
 ; ---------------------------------------------------------------------------
-; FarAcolyte_Move - vtable +$4E: per-frame movement of a FARACOLYTE
-; In:  8(a6) = this (FARACOLYTE object)
+; FarAcolyte_Move - while the orb is out keep the home point (+$B8/+$BC) offset from the anchor (+$10/+$12) by half its distance to the orb's launch point (recoil), otherwise ease home back to the anchor by 1/16 per call; position = home, face the anchor, then add n hover offsets from table jt $342 (FARACOLYTE override of slot +$4E Move; no velocity)
+; In:  8(a6) = this (FARACOLYTE object), $E(a6) = word step count
 ; Out: none
 ; Evidence: class descriptor FARACOLYTE slot +$4E (tools/classes.py); TAS frames 10827-12963 (307 active)
 ; ---------------------------------------------------------------------------
