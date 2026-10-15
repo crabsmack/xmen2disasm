@@ -129,5 +129,5 @@ loc_134A48:
 	cmpi.w	#$7,d1
 	bgt.s	loc_134AE4
 	add.w	d1,d1
-	move.w	$134AD4(pc,d1.w),d1
-	jmp	$134AD2(pc,d1.w)
+	move.w	Sw_134934(pc,d1.w),d1
+	jmp	Sw_134934-2(pc,d1.w)

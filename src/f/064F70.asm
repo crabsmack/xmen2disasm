@@ -325,5 +325,5 @@ loc_06530A:
 	cmpi.w	#$3,d0
 	bgt.s	loc_065374
 	add.w	d0,d0
-	move.w	$6531E(pc,d0.w),d0
-	jmp	$6531C(pc,d0.w)
+	move.w	Sw_064F70(pc,d0.w),d0
+	jmp	Sw_064F70-2(pc,d0.w)

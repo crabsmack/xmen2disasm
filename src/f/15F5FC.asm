@@ -40,4 +40,4 @@ loc_15F650:
 	andi.w	#$F,d2
 	lsr.w	#$4,d1
 	add.w	d1,d1
-	jmp	$15F65C(pc,d1.w)
+	jmp	loc_15F65C(pc,d1.w)

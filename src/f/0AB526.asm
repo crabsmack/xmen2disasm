@@ -10,5 +10,5 @@ sub_0AB526:
 	cmpi.w	#$7,d0
 	bgt.w	loc_0AB750
 	add.w	d0,d0
-	move.w	$AB54C(pc,d0.w),d0
-	jmp	$AB54A(pc,d0.w)
+	move.w	Sw_0AB526(pc,d0.w),d0
+	jmp	Sw_0AB526-2(pc,d0.w)

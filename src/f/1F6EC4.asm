@@ -44,5 +44,5 @@ loc_1F6F18:
 	moveq	#$0,d1
 	move.b	d0,d1
 	add.w	d1,d1
-	move.w	$1F6F3C(pc,d1.w),d1
-	jmp	$1F6F3A(pc,d1.w)
+	move.w	Sw_1F6EC4(pc,d1.w),d1
+	jmp	Sw_1F6EC4-2(pc,d1.w)

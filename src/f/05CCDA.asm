@@ -11,5 +11,5 @@ sub_05CCDA:
 	cmpi.l	#$4,d0
 	bgt.s	loc_05CD0A
 	add.l	d0,d0
-	move.w	$5CD00(pc,d0.l),d0
-	jmp	$5CCFE(pc,d0.w)
+	move.w	Sw_05CCDA(pc,d0.l),d0
+	jmp	Sw_05CCDA-2(pc,d0.w)

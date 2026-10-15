@@ -12,5 +12,5 @@ sub_06489A:
 	moveq	#$0,d1
 	move.b	d0,d1
 	add.w	d1,d1
-	move.w	$648BE(pc,d1.w),d1
-	jmp	$648BC(pc,d1.w)
+	move.w	Sw_06489A(pc,d1.w),d1
+	jmp	Sw_06489A-2(pc,d1.w)

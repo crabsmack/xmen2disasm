@@ -277,5 +277,5 @@ loc_1CF6F4:
 	moveq	#$3,d1
 	and.l	d0,d1
 	add.l	d1,d1
-	move.w	$1CF746(pc,d1.l),d1
-	jmp	$1CF744(pc,d1.w)
+	move.w	Sw_1CF432(pc,d1.l),d1
+	jmp	Sw_1CF432-2(pc,d1.w)

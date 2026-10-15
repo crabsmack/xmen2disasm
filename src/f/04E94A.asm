@@ -34,5 +34,5 @@ sub_04E94A:
 	cmpi.w	#$3,d0
 	bgt.s	loc_04E9C2
 	add.w	d0,d0
-	move.w	$4E9BA(pc,d0.w),d0
-	jmp	$4E9B8(pc,d0.w)
+	move.w	Sw_04E94A(pc,d0.w),d0
+	jmp	Sw_04E94A-2(pc,d0.w)

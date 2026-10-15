@@ -214,12 +214,29 @@ _(module → functions, globals, data; add as you learn them)_
 
 ## Data formats
 
-- Graphics compression: Burt Sloane nibble Huffman (`huffsloane` in
-  [sega2asm](https://github.com/hansbonini/sega2asm)). Unverified for this ROM.
+- ~~Graphics compression: Burt Sloane nibble Huffman (`huffsloane` in
+  [sega2asm](https://github.com/hansbonini/sega2asm)). Unverified for this ROM.~~
+  The decompressor loop at `$15F3F0-$15F5xx` has the shape of **Nemesis** (Sega's tile
+  compression, Sonic 1/2 `NemDec`): 8-bit code lookup into a table at `a1`, codes `$FC`+ =
+  inline-data escape (`cmpi.w #$FC,d1`), bit buffer d5/d6 refilled a byte at a time.
+  Header/code-table format not yet checked against Nemesis. Other heavy ROM readers in
+  the TAS: `$15F5FC`, `$15F6F0`, `$15F65C` (a second decoder family?), `$1FAD44`, `$1FBB5E`.
 
 ## Code read as data (R5)
 
 _(for each `code_as_data` span: `$XXXXXX` - who reads it and why; or "fixed: ...")_
+
+All nine are the same harmless read-ahead, not mis-disassembly: each is the first 1-2 bytes
+of a function (a `link.w` opcode) that directly follows a **Nemesis-compressed blob**. The
+decompressor's bit reader (`$15F3F0`, read at `$15F414`: `move.b (a0)+,d5` refills whenever
+fewer than 9 bits remain) always fetches 1-2 bytes past the end of the stream. Evidence:
+the emulator reader logs (`emu/coverage/*.readers.txt.gz`) show each span read only by
+`$15F3F0`/`$15F37C`/`$15F540`, as the tail of a longer data span ending right there.
+- `$017218` (blob `$0171E8`), `$0268FE` (blob `$026884`), `$027230` (blob `$0271D4`),
+  `$0644D4` (blob `$063D7C`), `$0E99D6` (blob `$0E87E2`), `$133F3C` (blob `$133F28`),
+  `$13FA88` (blob `$13F9F4`), `$1416C0` (blob `$140B12`), `$144774` (blob `$1446C8`).
+  The jt entries for `$017218`, `$0268FE`, `$133F3C` are tiny `return constant` functions
+  (never executed in the corpus) that happen to sit after compressed art.
 
 ## Unknown (S5)
 

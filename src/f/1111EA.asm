@@ -94,5 +94,5 @@ loc_11129A:
 	cmpi.w	#$10,d0
 	bgt.w	loc_1114FC
 	add.w	d0,d0
-	move.w	$1112DC(pc,d0.w),d0
-	jmp	$1112DA(pc,d0.w)
+	move.w	Sw_1111EA(pc,d0.w),d0
+	jmp	Sw_1111EA-2(pc,d0.w)

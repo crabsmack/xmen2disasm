@@ -86,5 +86,5 @@ loc_0AC05C:
 	cmpi.w	#$4,d0
 	bgt.s	loc_0AC132
 	add.w	d0,d0
-	move.w	$AC128(pc,d0.w),d0
-	jmp	$AC126(pc,d0.w)
+	move.w	Sw_0AC01E(pc,d0.w),d0
+	jmp	Sw_0AC01E-2(pc,d0.w)

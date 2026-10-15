@@ -11,5 +11,5 @@ sub_0AB370:
 	cmpi.w	#$5,d0
 	bgt.w	loc_0AB416
 	add.w	d0,d0
-	move.w	$AB396(pc,d0.w),d0
-	jmp	$AB394(pc,d0.w)
+	move.w	Sw_0AB370(pc,d0.w),d0
+	jmp	Sw_0AB370-2(pc,d0.w)

@@ -26,5 +26,5 @@ CloneA2_BgPalTimer:
 	cmpi.w	#$3,d0
 	bgt.s	CloneA2_BgPalTimer_Copy
 	add.w	d0,d0
-	move.w	$81FAC(pc,d0.w),d0
-	jmp	$81FAA(pc,d0.w)
+	move.w	Sw_081F62(pc,d0.w),d0
+	jmp	Sw_081F62-2(pc,d0.w)

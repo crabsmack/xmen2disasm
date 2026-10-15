@@ -15,5 +15,5 @@ sub_15980C:
 	moveq	#$0,d1
 	move.b	d0,d1
 	add.w	d1,d1
-	move.w	$15983E(pc,d1.w),d1
-	jmp	$15983C(pc,d1.w)
+	move.w	Sw_15980C(pc,d1.w),d1
+	jmp	Sw_15980C-2(pc,d1.w)

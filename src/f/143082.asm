@@ -24,5 +24,5 @@ sub_143082:
 	cmpi.w	#$8,d0
 	bgt.w	loc_1431D0
 	add.w	d0,d0
-	move.w	$1430D2(pc,d0.w),d0
-	jmp	$1430D0(pc,d0.w)
+	move.w	Sw_143082(pc,d0.w),d0
+	jmp	Sw_143082-2(pc,d0.w)

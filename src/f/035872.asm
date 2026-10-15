@@ -9,5 +9,5 @@ sub_035872:
 	cmpi.w	#$5,d0
 	bgt.s	loc_0358B2
 	add.w	d0,d0
-	move.w	$35890(pc,d0.w),d0
-	jmp	$3588E(pc,d0.w)
+	move.w	Sw_035872(pc,d0.w),d0
+	jmp	Sw_035872-2(pc,d0.w)

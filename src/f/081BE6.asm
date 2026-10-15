@@ -44,5 +44,5 @@ loc_081C58:
 	cmpi.w	#$5,d0
 	bgt.s	CloneA2_FlickerUpdate_SetColor15
 	add.w	d0,d0
-	move.w	$81C72(pc,d0.w),d0
-	jmp	$81C70(pc,d0.w)
+	move.w	Sw_081BE6(pc,d0.w),d0
+	jmp	Sw_081BE6-2(pc,d0.w)

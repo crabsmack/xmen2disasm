@@ -37,5 +37,5 @@ BabyMoleMan_Init:
 	moveq	#$0,d1
 	move.b	d0,d1
 	add.w	d1,d1
-	move.w	$11D9B4(pc,d1.w),d1
-	jmp	$11D9B2(pc,d1.w)
+	move.w	Sw_11D946(pc,d1.w),d1
+	jmp	Sw_11D946-2(pc,d1.w)

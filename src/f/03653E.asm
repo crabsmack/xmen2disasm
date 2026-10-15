@@ -5,6 +5,7 @@ loc_03653E:
 	move.l	d7,d0
 	neg.l	d0
 	move.l	d0,d7
+loc_036544:
 	movea.l	$8C(a4),a3
 	move.l	a3,d0
 	beq.w	loc_0366E6

@@ -19,5 +19,5 @@ sub_02DFD8:
 	moveq	#$0,d1
 	move.b	d0,d1
 	add.w	d1,d1
-	move.w	$2E018(pc,d1.w),d1
-	jmp	$2E016(pc,d1.w)
+	move.w	Sw_02DFD8(pc,d1.w),d1
+	jmp	Sw_02DFD8-2(pc,d1.w)

@@ -28,7 +28,8 @@ Str_SiberiaB1Blizzard:	; C string, resource name looked up by Scene_RegisterAll
 	incrom	$005C68,$14
 	include "src/f/005C7C.asm"
 	include "src/f/005CC6.asm"
-	incrom	$005E46,$8
+Sw_005CC6:	; switch table of sub at $005CC6: 4 word offsets from Sw_005CC6-2
+	dc.w	loc_005E52-(Sw_005CC6-2), loc_005E6C-(Sw_005CC6-2), loc_005E86-(Sw_005CC6-2), loc_005EA0-(Sw_005CC6-2)
 	include "src/f/005E4E.asm"
 	include "src/f/005E6C.asm"
 	include "src/f/005EB8.asm"
@@ -48,14 +49,19 @@ Str_SiberiaB1Blizzard:	; C string, resource name looked up by Scene_RegisterAll
 	include "src/f/0061B8.asm"
 	include "src/f/0061D0.asm"
 	include "src/f/006242.asm"
-	incrom	$0062A2,$C
+Sw_006242:	; switch table of sub at $006242: 6 word offsets from Sw_006242-2
+	dc.w	loc_0062AE-(Sw_006242-2), loc_0062B4-(Sw_006242-2), loc_0062BA-(Sw_006242-2), loc_0062C0-(Sw_006242-2)
+	dc.w	loc_0062C6-(Sw_006242-2), loc_0062CC-(Sw_006242-2)
 	include "src/f/0062AE.asm"
-	incrom	$0062BA,$6
+	include "src/f/0062BA.asm"
 	include "src/f/0062C0.asm"
 	include "src/f/0062C6.asm"
 	include "src/f/0062CC.asm"
 	include "src/f/0062E4.asm"
-	incrom	$006344,$24
+Sw_0062E4:	; switch table of sub at $0062E4: 6 word offsets from Sw_0062E4-2
+	dc.w	loc_006350-(Sw_0062E4-2), loc_006356-(Sw_0062E4-2), loc_00635C-(Sw_0062E4-2), loc_006362-(Sw_0062E4-2)
+	dc.w	loc_006368-(Sw_0062E4-2), loc_00636E-(Sw_0062E4-2)
+	include "src/f/006350.asm"
 	include "src/f/006368.asm"
 	include "src/f/00636E.asm"
 	include "src/f/006386.asm"
@@ -144,7 +150,9 @@ Str_SiberiaB1Blizzard:	; C string, resource name looked up by Scene_RegisterAll
 	include "src/f/013698.asm"
 	include "src/f/0136F0.asm"
 	include "src/f/013722.asm"
-	incrom	$013762,$20
+Sw_013722:	; switch table of sub at $013722: 4 word offsets from Sw_013722-2
+	dc.w	loc_01377A-(Sw_013722-2), loc_013782-(Sw_013722-2), loc_013772-(Sw_013722-2), loc_01376A-(Sw_013722-2)
+	include "src/f/01376A.asm"
 	include "src/f/013782.asm"
 	include "src/f/013788.asm"
 	include "src/f/0137C4.asm"
@@ -215,7 +223,9 @@ Str_SiberiaB1Blizzard:	; C string, resource name looked up by Scene_RegisterAll
 	include "src/f/01C01C.asm"
 	include "src/f/01C024.asm"
 	include "src/f/01C042.asm"
-	incrom	$01C16C,$A
+Sw_01C042:	; switch table of sub at $01C042: 5 word offsets from Sw_01C042-2
+	dc.w	loc_01C176-(Sw_01C042-2), loc_01C182-(Sw_01C042-2), loc_01C18E-(Sw_01C042-2), loc_01C19A-(Sw_01C042-2)
+	dc.w	loc_01C1A6-(Sw_01C042-2)
 	include "src/f/01C176.asm"
 	include "src/f/01C182.asm"
 	include "src/f/01C1B0.asm"
@@ -315,12 +325,23 @@ Str_SiberiaB1Blizzard:	; C string, resource name looked up by Scene_RegisterAll
 	include "src/f/02CDCA.asm"
 	include "src/f/02CE1A.asm"
 	include "src/f/02CE52.asm"
-	incrom	$02CE86,$E
+Sw_02CE52:	; switch table of sub at $02CE52: 6 word offsets from Sw_02CE52-2
+	dc.w	loc_02CEF6-(Sw_02CE52-2), loc_02CE94-(Sw_02CE52-2), loc_02CEA8-(Sw_02CE52-2), loc_02CEBC-(Sw_02CE52-2)
+	dc.w	loc_02CED0-(Sw_02CE52-2), loc_02CEE4-(Sw_02CE52-2)
+	incrom	$02CE92,$2
 	include "src/f/02CE94.asm"
 	include "src/f/02CEBC.asm"
 	include "src/f/02CEF6.asm"
 	include "src/f/02CF04.asm"
-	incrom	$02CF28,$CC
+Sw_02CF04:	; switch table of sub at $02CF04: 6 word offsets from Sw_02CF04-2
+	dc.w	loc_02CF34-(Sw_02CF04-2), loc_02CFF4-(Sw_02CF04-2), loc_02D024-(Sw_02CF04-2), loc_02D06E-(Sw_02CF04-2)
+	dc.w	loc_02D0B8-(Sw_02CF04-2), loc_02D0FC-(Sw_02CF04-2)
+	include "src/f/02CF34.asm"
+Sw_02CF34:	; switch table of sub at $02CF34: 6 word offsets from Sw_02CF34-2
+	dc.w	loc_02CF64-(Sw_02CF34-2), loc_02CF7A-(Sw_02CF34-2), loc_02CF90-(Sw_02CF34-2), loc_02CFA6-(Sw_02CF34-2)
+	dc.w	loc_02CFBC-(Sw_02CF34-2), loc_02CFD2-(Sw_02CF34-2)
+	include "src/f/02CF64.asm"
+	include "src/f/02CFE8.asm"
 	include "src/f/02CFF4.asm"
 	include "src/f/02D0B8.asm"
 	include "src/f/02D13E.asm"
@@ -350,11 +371,13 @@ Str_SiberiaB1Blizzard:	; C string, resource name looked up by Scene_RegisterAll
 	include "src/f/02D96C.asm"
 	include "src/f/02DA16.asm"
 	include "src/f/02DADE.asm"
-	incrom	$02DB58,$A
+Sw_02DADE:	; switch table of sub at $02DADE: 5 word offsets from Sw_02DADE-2
+	dc.w	loc_02DB62-(Sw_02DADE-2), loc_02DB70-(Sw_02DADE-2), loc_02DB7A-(Sw_02DADE-2), loc_02DB84-(Sw_02DADE-2)
+	dc.w	loc_02DB8E-(Sw_02DADE-2)
 	include "src/f/02DB62.asm"
-	incrom	$02DB70,$14
+	include "src/f/02DB70.asm"
 	include "src/f/02DB84.asm"
-	incrom	$02DB8E,$A
+	include "src/f/02DB8E.asm"
 	include "src/f/02DB98.asm"
 	include "src/f/02DBCE.asm"
 	include "src/f/02DC80.asm"
@@ -365,7 +388,9 @@ Str_SiberiaB1Blizzard:	; C string, resource name looked up by Scene_RegisterAll
 	include "src/f/02DF96.asm"
 	include "src/f/02DFA4.asm"
 	include "src/f/02DFD8.asm"
-	incrom	$02E018,$E
+Sw_02DFD8:	; switch table of sub at $02DFD8: 7 word offsets from Sw_02DFD8-2
+	dc.w	loc_02E026-(Sw_02DFD8-2), loc_02E03A-(Sw_02DFD8-2), loc_02E04E-(Sw_02DFD8-2), loc_02E062-(Sw_02DFD8-2)
+	dc.w	loc_02E076-(Sw_02DFD8-2), loc_02E08A-(Sw_02DFD8-2), loc_02E09E-(Sw_02DFD8-2)
 	include "src/f/02E026.asm"
 	include "src/f/02E04E.asm"
 	include "src/f/02E062.asm"
@@ -391,13 +416,21 @@ Str_SiberiaB1Blizzard:	; C string, resource name looked up by Scene_RegisterAll
 	include "src/f/034D4E.asm"
 	include "src/f/034D56.asm"
 	include "src/f/034D7A.asm"
-	incrom	$034DEC,$C
+Sw_034D7A:	; switch table of sub at $034D7A: 6 word offsets from Sw_034D7A-2
+	dc.w	loc_034DF8-(Sw_034D7A-2), loc_034E14-(Sw_034D7A-2), loc_034E30-(Sw_034D7A-2), loc_034E4C-(Sw_034D7A-2)
+	dc.w	loc_034E68-(Sw_034D7A-2), loc_034E84-(Sw_034D7A-2)
 	include "src/f/034DF8.asm"
 	include "src/f/034EA0.asm"
-	incrom	$034EBA,$C
+Sw_034EA0:	; switch table of sub at $034EA0: 6 word offsets from Sw_034EA0-2
+	dc.w	loc_034EC6-(Sw_034EA0-2), loc_034EE2-(Sw_034EA0-2), loc_034EFC-(Sw_034EA0-2), loc_034F16-(Sw_034EA0-2)
+	dc.w	loc_034F30-(Sw_034EA0-2), loc_034F4A-(Sw_034EA0-2)
 	include "src/f/034EC6.asm"
 	include "src/f/034F62.asm"
-	incrom	$034FBE,$1E
+Sw_034F62:	; switch table of sub at $034F62: 15 word offsets from Sw_034F62-2
+	dc.w	loc_034FDC-(Sw_034F62-2), loc_034FF8-(Sw_034F62-2), loc_035014-(Sw_034F62-2), loc_035030-(Sw_034F62-2)
+	dc.w	loc_03504C-(Sw_034F62-2), loc_035068-(Sw_034F62-2), loc_035084-(Sw_034F62-2), loc_0350A0-(Sw_034F62-2)
+	dc.w	loc_0350BC-(Sw_034F62-2), loc_0350D8-(Sw_034F62-2), loc_0350F4-(Sw_034F62-2), loc_03510E-(Sw_034F62-2)
+	dc.w	loc_035128-(Sw_034F62-2), loc_035142-(Sw_034F62-2), loc_03515C-(Sw_034F62-2)
 	include "src/f/034FDC.asm"
 	include "src/f/035174.asm"
 	include "src/f/03518C.asm"
@@ -411,16 +444,20 @@ Str_SiberiaB1Blizzard:	; C string, resource name looked up by Scene_RegisterAll
 	include "src/f/03582E.asm"
 	include "src/f/03585C.asm"
 	include "src/f/035872.asm"
-	incrom	$035890,$C
+Sw_035872:	; switch table of sub at $035872: 6 word offsets from Sw_035872-2
+	dc.w	loc_03589C-(Sw_035872-2), loc_0358A0-(Sw_035872-2), loc_0358A4-(Sw_035872-2), loc_0358A8-(Sw_035872-2)
+	dc.w	loc_0358AC-(Sw_035872-2), loc_0358B0-(Sw_035872-2)
 	include "src/f/03589C.asm"
-	incrom	$0358A8,$4
+	include "src/f/0358A8.asm"
 	include "src/f/0358AC.asm"
-	incrom	$0358B0,$2
+	include "src/f/0358B0.asm"
 	include "src/f/0358B2.asm"
 	include "src/f/0358D8.asm"
-	incrom	$03594A,$C
+Sw_0358D8:	; switch table of sub at $0358D8: 6 word offsets from Sw_0358D8-2
+	dc.w	loc_035956-(Sw_0358D8-2), loc_03595A-(Sw_0358D8-2), loc_03595E-(Sw_0358D8-2), loc_035962-(Sw_0358D8-2)
+	dc.w	loc_035966-(Sw_0358D8-2), loc_03596A-(Sw_0358D8-2)
 	include "src/f/035956.asm"
-	incrom	$035962,$4
+	include "src/f/035962.asm"
 	include "src/f/035966.asm"
 	include "src/f/03596C.asm"
 	include "src/f/03597A.asm"
@@ -446,7 +483,9 @@ Str_SiberiaB1Blizzard:	; C string, resource name looked up by Scene_RegisterAll
 	include "src/f/03628E.asm"
 	include "src/f/0363A2.asm"
 	include "src/f/03645C.asm"
-	incrom	$036532,$C
+Sw_03645C:	; switch table of sub at $03645C: 4 word offsets from Sw_03645C-2
+	dc.w	loc_0365FA-(Sw_03645C-2), loc_036544-(Sw_03645C-2), loc_03653E-(Sw_03645C-2), loc_0366B2-(Sw_03645C-2)
+	incrom	$03653A,$4
 	include "src/f/03653E.asm"
 	include "src/f/0366E6.asm"
 	include "src/f/036730.asm"
@@ -518,7 +557,9 @@ Str_SiberiaB1Blizzard:	; C string, resource name looked up by Scene_RegisterAll
 	include "src/f/038838.asm"
 	include "src/f/0388D4.asm"
 	include "src/f/0389B6.asm"
-	incrom	$0389FE,$10
+Sw_0389B6:	; switch table of sub at $0389B6: 8 word offsets from Sw_0389B6-2
+	dc.w	loc_038A0E-(Sw_0389B6-2), loc_038A16-(Sw_0389B6-2), loc_038A1E-(Sw_0389B6-2), loc_038A26-(Sw_0389B6-2)
+	dc.w	loc_038A2E-(Sw_0389B6-2), loc_038A36-(Sw_0389B6-2), loc_038A3E-(Sw_0389B6-2), loc_038A46-(Sw_0389B6-2)
 	include "src/f/038A0E.asm"
 	include "src/f/038A58.asm"
 	include "src/f/038A6C.asm"
@@ -547,7 +588,9 @@ Str_SiberiaB1Blizzard:	; C string, resource name looked up by Scene_RegisterAll
 	incrom	$03A2F2,$2
 	include "src/f/03A2F4.asm"
 	include "src/f/03A4EE.asm"
-	incrom	$03A57A,$A
+Sw_03A4EE:	; switch table of sub at $03A4EE: 4 word offsets from Sw_03A4EE-2
+	dc.w	loc_03A5B4-(Sw_03A4EE-2), loc_03A584-(Sw_03A4EE-2), loc_03A58E-(Sw_03A4EE-2), loc_03A598-(Sw_03A4EE-2)
+	incrom	$03A582,$2
 	include "src/f/03A584.asm"
 	include "src/f/03A5B4.asm"
 	include "src/f/03A5BE.asm"
@@ -575,10 +618,12 @@ Str_SiberiaB1Blizzard:	; C string, resource name looked up by Scene_RegisterAll
 	include "src/f/047402.asm"
 	include "src/f/04740A.asm"
 	include "src/f/04744E.asm"
-	incrom	$047554,$A
+Sw_04744E:	; switch table of sub at $04744E: 5 word offsets from Sw_04744E-2
+	dc.w	loc_04755E-(Sw_04744E-2), loc_047568-(Sw_04744E-2), loc_047572-(Sw_04744E-2), loc_04757C-(Sw_04744E-2)
+	dc.w	loc_047586-(Sw_04744E-2)
 	include "src/f/04755E.asm"
 	include "src/f/047572.asm"
-	incrom	$04757C,$A
+	include "src/f/04757C.asm"
 	include "src/f/047586.asm"
 	include "src/f/0475B4.asm"
 	include "src/f/0475E0.asm"
@@ -602,7 +647,9 @@ Str_SiberiaB1Blizzard:	; C string, resource name looked up by Scene_RegisterAll
 	incrom	$04B1CE,$168
 	include "src/f/04B336.asm"
 	include "src/f/04B344.asm"
-	incrom	$04B368,$C
+Sw_04B344:	; switch table of sub at $04B344: 6 word offsets from Sw_04B344-2
+	dc.w	loc_04B374-(Sw_04B344-2), loc_04B37E-(Sw_04B344-2), loc_04B388-(Sw_04B344-2), loc_04B392-(Sw_04B344-2)
+	dc.w	loc_04B39C-(Sw_04B344-2), loc_04B3A6-(Sw_04B344-2)
 	include "src/f/04B374.asm"
 	include "src/f/04B3A6.asm"
 	include "src/f/04B3B0.asm"
@@ -628,9 +675,10 @@ Str_SiberiaB1Blizzard:	; C string, resource name looked up by Scene_RegisterAll
 	include "src/f/04BC10.asm"
 	include "src/f/04BC18.asm"
 	include "src/f/04BC74.asm"
-	incrom	$04BC96,$8
+Sw_04BC74:	; switch table of sub at $04BC74: 4 word offsets from Sw_04BC74-2
+	dc.w	loc_04BC9E-(Sw_04BC74-2), loc_04BCB2-(Sw_04BC74-2), loc_04BCC6-(Sw_04BC74-2), loc_04BCDA-(Sw_04BC74-2)
 	include "src/f/04BC9E.asm"
-	incrom	$04BCB2,$3A
+	include "src/f/04BCB2.asm"
 	include "src/f/04BCEC.asm"
 	include "src/f/04BD22.asm"
 	include "src/f/04BD5A.asm"
@@ -681,10 +729,11 @@ Str_SiberiaB1Blizzard:	; C string, resource name looked up by Scene_RegisterAll
 	include "src/f/04E87C.asm"
 	include "src/f/04E8F2.asm"
 	include "src/f/04E94A.asm"
-	incrom	$04E9BA,$8
+Sw_04E94A:	; switch table of sub at $04E94A: 4 word offsets from Sw_04E94A-2
+	dc.w	loc_04E9C2-(Sw_04E94A-2), loc_04E9C8-(Sw_04E94A-2), loc_04E9D0-(Sw_04E94A-2), loc_04E9DE-(Sw_04E94A-2)
 	include "src/f/04E9C2.asm"
 	include "src/f/04E9C8.asm"
-	incrom	$04E9D0,$1A
+	include "src/f/04E9D0.asm"
 	include "src/f/04E9EA.asm"
 	incrom	$04EA42,$78
 	include "src/f/04EABA.asm"
@@ -751,7 +800,10 @@ Str_SiberiaB1Blizzard:	; C string, resource name looked up by Scene_RegisterAll
 	include "src/f/05C3EE.asm"
 	include "src/f/05C41A.asm"
 	include "src/f/05C4A0.asm"
-	incrom	$05C524,$14
+Sw_05C4A0:	; switch table of sub at $05C4A0: 10 word offsets from Sw_05C4A0-2
+	dc.w	loc_05C53C-(Sw_05C4A0-2), loc_05C548-(Sw_05C4A0-2), loc_05C554-(Sw_05C4A0-2), loc_05C566-(Sw_05C4A0-2)
+	dc.w	loc_05C572-(Sw_05C4A0-2), loc_05C57E-(Sw_05C4A0-2), loc_05C590-(Sw_05C4A0-2), loc_05C59C-(Sw_05C4A0-2)
+	dc.w	loc_05C5AE-(Sw_05C4A0-2), loc_05C5BA-(Sw_05C4A0-2)
 	include "src/f/05C538.asm"
 	include "src/f/05C548.asm"
 	include "src/f/05C5C4.asm"
@@ -773,11 +825,13 @@ Str_SiberiaB1Blizzard:	; C string, resource name looked up by Scene_RegisterAll
 	include "src/f/05CC3A.asm"
 	include "src/f/05CC92.asm"
 	include "src/f/05CCDA.asm"
-	incrom	$05CD00,$A
+Sw_05CCDA:	; switch table of sub at $05CCDA: 5 word offsets from Sw_05CCDA-2
+	dc.w	loc_05CD0A-(Sw_05CCDA-2), loc_05CD18-(Sw_05CCDA-2), loc_05CD22-(Sw_05CCDA-2), loc_05CD2C-(Sw_05CCDA-2)
+	dc.w	loc_05CD36-(Sw_05CCDA-2)
 	include "src/f/05CD0A.asm"
-	incrom	$05CD18,$14
+	include "src/f/05CD18.asm"
 	include "src/f/05CD2C.asm"
-	incrom	$05CD36,$8
+	include "src/f/05CD36.asm"
 	include "src/f/05CD3E.asm"
 	include "src/f/05CD46.asm"
 	include "src/f/05CD4E.asm"
@@ -835,23 +889,30 @@ Str_SiberiaB1Blizzard:	; C string, resource name looked up by Scene_RegisterAll
 	include "src/f/05DD66.asm"
 	include "src/f/05DD7C.asm"
 	include "src/f/05DDBE.asm"
-	incrom	$05DEF6,$20
+Sw_05DDBE:	; switch table of sub at $05DDBE: 8 word offsets from Sw_05DDBE-2
+	dc.w	loc_05DF06-(Sw_05DDBE-2), loc_05DF16-(Sw_05DDBE-2), loc_05DF26-(Sw_05DDBE-2), loc_05DF4A-(Sw_05DDBE-2)
+	dc.w	loc_05DF6E-(Sw_05DDBE-2), loc_05DF84-(Sw_05DDBE-2), loc_05DF94-(Sw_05DDBE-2), loc_05DFF4-(Sw_05DDBE-2)
+	include "src/f/05DF06.asm"
 	include "src/f/05DF16.asm"
 	include "src/f/05DF26.asm"
 	include "src/f/05DF6E.asm"
-	incrom	$05DF84,$B4
+	include "src/f/05DF84.asm"
 	include "src/f/05E038.asm"
 	incrom	$05E04E,$6486
 	include "src/f/0644D4.asm"
 	include "src/f/06451E.asm"
 	include "src/f/064588.asm"
 	include "src/f/064638.asm"
-	incrom	$064666,$E
+Sw_064638:	; switch table of sub at $064638: 7 word offsets from Sw_064638-2
+	dc.w	loc_064674-(Sw_064638-2), loc_064682-(Sw_064638-2), loc_064690-(Sw_064638-2), loc_06469E-(Sw_064638-2)
+	dc.w	loc_0646AC-(Sw_064638-2), loc_0646BA-(Sw_064638-2), loc_0646C8-(Sw_064638-2)
 	include "src/f/064674.asm"
 	include "src/f/0646D6.asm"
 	incrom	$0647CC,$4
 	include "src/f/0647D0.asm"
-	incrom	$0647F8,$E
+Sw_0647D0:	; switch table of sub at $0647D0: 7 word offsets from Sw_0647D0-2
+	dc.w	loc_064806-(Sw_0647D0-2), loc_064814-(Sw_0647D0-2), loc_064822-(Sw_0647D0-2), loc_064830-(Sw_0647D0-2)
+	dc.w	loc_06483E-(Sw_0647D0-2), loc_06484C-(Sw_0647D0-2), loc_06485A-(Sw_0647D0-2)
 	include "src/f/064806.asm"
 	include "src/f/064814.asm"
 	include "src/f/064830.asm"
@@ -860,7 +921,9 @@ Str_SiberiaB1Blizzard:	; C string, resource name looked up by Scene_RegisterAll
 	include "src/f/06485A.asm"
 	include "src/f/064868.asm"
 	include "src/f/06489A.asm"
-	incrom	$0648BE,$E
+Sw_06489A:	; switch table of sub at $06489A: 7 word offsets from Sw_06489A-2
+	dc.w	loc_0648CC-(Sw_06489A-2), loc_0648D4-(Sw_06489A-2), loc_0648DC-(Sw_06489A-2), loc_0648E4-(Sw_06489A-2)
+	dc.w	loc_0648EC-(Sw_06489A-2), loc_0648F4-(Sw_06489A-2), loc_0648FC-(Sw_06489A-2)
 	include "src/f/0648CC.asm"
 	include "src/f/0648D4.asm"
 	include "src/f/0648E4.asm"
@@ -869,7 +932,9 @@ Str_SiberiaB1Blizzard:	; C string, resource name looked up by Scene_RegisterAll
 	include "src/f/0648FC.asm"
 	include "src/f/064904.asm"
 	include "src/f/064912.asm"
-	incrom	$064936,$E
+Sw_064912:	; switch table of sub at $064912: 7 word offsets from Sw_064912-2
+	dc.w	loc_064944-(Sw_064912-2), loc_06494C-(Sw_064912-2), loc_064954-(Sw_064912-2), loc_06495C-(Sw_064912-2)
+	dc.w	loc_064964-(Sw_064912-2), loc_06496C-(Sw_064912-2), loc_064974-(Sw_064912-2)
 	include "src/f/064944.asm"
 	include "src/f/06494C.asm"
 	include "src/f/06495C.asm"
@@ -885,16 +950,21 @@ Str_SiberiaB1Blizzard:	; C string, resource name looked up by Scene_RegisterAll
 	include "src/f/064BF0.asm"
 	include "src/f/064C66.asm"
 	include "src/f/064CA2.asm"
-	incrom	$064CE2,$10
+Sw_064CA2:	; switch table of sub at $064CA2: 8 word offsets from Sw_064CA2-2
+	dc.w	loc_064CF2-(Sw_064CA2-2), loc_064D14-(Sw_064CA2-2), loc_064D30-(Sw_064CA2-2), loc_064D4C-(Sw_064CA2-2)
+	dc.w	loc_064D66-(Sw_064CA2-2), loc_064D80-(Sw_064CA2-2), loc_064D9A-(Sw_064CA2-2), loc_064DB4-(Sw_064CA2-2)
 	include "src/f/064CF2.asm"
 	include "src/f/064DD2.asm"
-	incrom	$064E04,$10
+Sw_064DD2:	; switch table of sub at $064DD2: 8 word offsets from Sw_064DD2-2
+	dc.w	loc_064E14-(Sw_064DD2-2), loc_064E22-(Sw_064DD2-2), loc_064E30-(Sw_064DD2-2), loc_064E3E-(Sw_064DD2-2)
+	dc.w	loc_064E4C-(Sw_064DD2-2), loc_064E5A-(Sw_064DD2-2), loc_064E68-(Sw_064DD2-2), loc_064E76-(Sw_064DD2-2)
 	include "src/f/064E14.asm"
 	include "src/f/064E82.asm"
 	include "src/f/064E9C.asm"
 	include "src/f/064EDE.asm"
 	include "src/f/064F70.asm"
-	incrom	$06531E,$8
+Sw_064F70:	; switch table of sub at $064F70: 4 word offsets from Sw_064F70-2
+	dc.w	loc_065326-(Sw_064F70-2), loc_06533A-(Sw_064F70-2), loc_06534E-(Sw_064F70-2), loc_065362-(Sw_064F70-2)
 	include "src/f/065326.asm"
 	include "src/f/065374.asm"
 	include "src/f/06539C.asm"
@@ -902,13 +972,17 @@ Str_SiberiaB1Blizzard:	; C string, resource name looked up by Scene_RegisterAll
 	include "src/f/065494.asm"
 	include "src/f/0654F4.asm"
 	include "src/f/065532.asm"
-	incrom	$0655B8,$C
+Sw_065532:	; switch table of sub at $065532: 6 word offsets from Sw_065532-2
+	dc.w	loc_0655C4-(Sw_065532-2), loc_0655E4-(Sw_065532-2), loc_065612-(Sw_065532-2), loc_06563A-(Sw_065532-2)
+	dc.w	loc_065662-(Sw_065532-2), loc_065672-(Sw_065532-2)
 	include "src/f/0655C4.asm"
 	include "src/f/06563A.asm"
-	incrom	$065662,$20
+	include "src/f/065662.asm"
 	include "src/f/065682.asm"
 	include "src/f/0656B0.asm"
-	incrom	$065C5A,$E
+Sw_0656B0:	; switch table of sub at $0656B0: 7 word offsets from Sw_0656B0-2
+	dc.w	loc_065C68-(Sw_0656B0-2), loc_065C74-(Sw_0656B0-2), loc_065C80-(Sw_0656B0-2), loc_065C8C-(Sw_0656B0-2)
+	dc.w	loc_065C98-(Sw_0656B0-2), loc_065CA4-(Sw_0656B0-2), loc_065CB0-(Sw_0656B0-2)
 	include "src/f/065C68.asm"
 	include "src/f/065C74.asm"
 	include "src/f/065C8C.asm"
@@ -916,10 +990,12 @@ Str_SiberiaB1Blizzard:	; C string, resource name looked up by Scene_RegisterAll
 	include "src/f/065CA4.asm"
 	include "src/f/065CB0.asm"
 	include "src/f/065CBC.asm"
-	incrom	$065D12,$E
+Sw_065CBC:	; switch table of sub at $065CBC: 7 word offsets from Sw_065CBC-2
+	dc.w	loc_065D20-(Sw_065CBC-2), loc_065D2C-(Sw_065CBC-2), loc_065D38-(Sw_065CBC-2), loc_065D44-(Sw_065CBC-2)
+	dc.w	loc_065D50-(Sw_065CBC-2), loc_065D5C-(Sw_065CBC-2), loc_065D68-(Sw_065CBC-2)
 	include "src/f/065D20.asm"
 	include "src/f/065D2C.asm"
-	incrom	$065D38,$3C
+	include "src/f/065D38.asm"
 	include "src/f/065D74.asm"
 	incrom	$065D8E,$28
 	include "src/f/065DB6.asm"
@@ -944,18 +1020,24 @@ Str_SiberiaB1Blizzard:	; C string, resource name looked up by Scene_RegisterAll
 	include "src/f/06724E.asm"
 	include "src/f/06726C.asm"
 	include "src/f/0672CE.asm"
-	incrom	$0672FE,$E
+Sw_0672CE:	; switch table of sub at $0672CE: 7 word offsets from Sw_0672CE-2
+	dc.w	loc_06730C-(Sw_0672CE-2), loc_06731A-(Sw_0672CE-2), loc_067328-(Sw_0672CE-2), loc_067336-(Sw_0672CE-2)
+	dc.w	loc_067344-(Sw_0672CE-2), loc_067352-(Sw_0672CE-2), loc_067360-(Sw_0672CE-2)
 	include "src/f/06730C.asm"
 	include "src/f/067360.asm"
 	include "src/f/06736C.asm"
 	include "src/f/067376.asm"
 	include "src/f/067420.asm"
-	incrom	$06744E,$E
+Sw_067420:	; switch table of sub at $067420: 7 word offsets from Sw_067420-2
+	dc.w	loc_06745C-(Sw_067420-2), loc_067478-(Sw_067420-2), loc_067492-(Sw_067420-2), loc_0674AC-(Sw_067420-2)
+	dc.w	loc_0674C6-(Sw_067420-2), loc_0674E0-(Sw_067420-2), loc_0674FA-(Sw_067420-2)
 	include "src/f/06745C.asm"
 	include "src/f/067478.asm"
 	include "src/f/06750E.asm"
 	include "src/f/067542.asm"
-	incrom	$06756E,$E
+Sw_067542:	; switch table of sub at $067542: 7 word offsets from Sw_067542-2
+	dc.w	loc_06757C-(Sw_067542-2), loc_06758E-(Sw_067542-2), loc_0675A0-(Sw_067542-2), loc_0675B2-(Sw_067542-2)
+	dc.w	loc_0675C4-(Sw_067542-2), loc_0675D6-(Sw_067542-2), loc_0675E8-(Sw_067542-2)
 	include "src/f/06757C.asm"
 	include "src/f/06758E.asm"
 	include "src/f/0675B2.asm"
@@ -1053,7 +1135,9 @@ Tbl_CloneA2QuakeScript:	; camera shake script: byte pairs (dx, dy) added to the 
 	include "src/f/081BBA.asm"
 	include "src/f/081BC2.asm"
 	include "src/f/081BE6.asm"
-	incrom	$081C72,$C
+Sw_081BE6:	; switch table of sub at $081BE6: 6 word offsets from Sw_081BE6-2
+	dc.w	loc_081C7E-(Sw_081BE6-2), loc_081C86-(Sw_081BE6-2), loc_081C8E-(Sw_081BE6-2), loc_081C96-(Sw_081BE6-2)
+	dc.w	loc_081C9E-(Sw_081BE6-2), loc_081CA6-(Sw_081BE6-2)
 	include "src/f/081C7E.asm"
 	include "src/f/081CAC.asm"
 Tbl_CloneA2FlickerPattern:	; 26 bytes, 1 or 2: colour choice per flicker step, read backwards (CloneA2_FlickerUpdate)
@@ -1070,7 +1154,8 @@ Tbl_CloneA2FlickerPattern:	; 26 bytes, 1 or 2: colour choice per flicker step, r
 	include "src/f/081F28.asm"
 	include "src/f/081F5A.asm"
 	include "src/f/081F62.asm"
-	incrom	$081FAC,$8
+Sw_081F62:	; switch table of sub at $081F62: 4 word offsets from Sw_081F62-2
+	dc.w	loc_081FB4-(Sw_081F62-2), loc_081FBE-(Sw_081F62-2), loc_081FC8-(Sw_081F62-2), loc_081FD2-(Sw_081F62-2)
 	include "src/f/081FB4.asm"
 	include "src/f/081FDA.asm"
 	include "src/f/081FFE.asm"
@@ -1105,7 +1190,8 @@ Tbl_CloneA2FlickerPattern:	; 26 bytes, 1 or 2: colour choice per flicker step, r
 	include "src/f/0841B4.asm"
 	include "src/f/0841BC.asm"
 	include "src/f/0841C4.asm"
-	incrom	$0843B0,$8
+Sw_0841C4:	; switch table of sub at $0841C4: 4 word offsets from Sw_0841C4-2
+	dc.w	loc_0843B8-(Sw_0841C4-2), loc_0843CC-(Sw_0841C4-2), loc_0843FA-(Sw_0841C4-2), loc_08440E-(Sw_0841C4-2)
 	include "src/f/0843B8.asm"
 	include "src/f/0843CC.asm"
 	include "src/f/084420.asm"
@@ -1389,7 +1475,10 @@ Tbl_CloneA2FlickerPattern:	; 26 bytes, 1 or 2: colour choice per flicker step, r
 	include "src/f/098C4E.asm"
 	include "src/f/098CC8.asm"
 	include "src/f/098DA8.asm"
-	incrom	$098DEA,$166
+Sw_098DA8:	; switch table of sub at $098DA8: 7 word offsets from Sw_098DA8-2
+	dc.w	loc_098DF8-(Sw_098DA8-2), loc_098E32-(Sw_098DA8-2), loc_098E6C-(Sw_098DA8-2), loc_098EA6-(Sw_098DA8-2)
+	dc.w	loc_098EE0-(Sw_098DA8-2), loc_098F18-(Sw_098DA8-2), loc_098F50-(Sw_098DA8-2)
+	include "src/f/098DF8.asm"
 	include "src/f/098F50.asm"
 	include "src/f/098F86.asm"
 	include "src/f/098F92.asm"
@@ -1397,9 +1486,11 @@ Tbl_CloneA2FlickerPattern:	; 26 bytes, 1 or 2: colour choice per flicker step, r
 	include "src/f/099016.asm"
 	incrom	$099078,$2
 	include "src/f/09907A.asm"
-	incrom	$0991B4,$E
+Sw_09907A:	; switch table of sub at $09907A: 7 word offsets from Sw_09907A-2
+	dc.w	loc_0991C2-(Sw_09907A-2), loc_0991D6-(Sw_09907A-2), loc_0991CE-(Sw_09907A-2), loc_0991CA-(Sw_09907A-2)
+	dc.w	loc_0991C6-(Sw_09907A-2), loc_0991DA-(Sw_09907A-2), loc_0991D2-(Sw_09907A-2)
 	include "src/f/0991C2.asm"
-	incrom	$0991CA,$4
+	include "src/f/0991CA.asm"
 	include "src/f/0991CE.asm"
 	include "src/f/0991DC.asm"
 	include "src/f/09921E.asm"
@@ -1476,9 +1567,12 @@ Tbl_CloneA2FlickerPattern:	; 26 bytes, 1 or 2: colour choice per flicker step, r
 	include "src/f/0AB30C.asm"
 	include "src/f/0AB350.asm"
 	include "src/f/0AB370.asm"
-	incrom	$0AB396,$E
+Sw_0AB370:	; switch table of sub at $0AB370: 6 word offsets from Sw_0AB370-2
+	dc.w	loc_0AB3A4-(Sw_0AB370-2), loc_0AB3B6-(Sw_0AB370-2), loc_0AB3C8-(Sw_0AB370-2), loc_0AB3DC-(Sw_0AB370-2)
+	dc.w	loc_0AB3F0-(Sw_0AB370-2), loc_0AB404-(Sw_0AB370-2)
+	incrom	$0AB3A2,$2
 	include "src/f/0AB3A4.asm"
-	incrom	$0AB3B6,$60
+	include "src/f/0AB3B6.asm"
 	include "src/f/0AB416.asm"
 	include "src/f/0AB41E.asm"
 	include "src/f/0AB46C.asm"
@@ -1486,13 +1580,15 @@ Tbl_CloneA2FlickerPattern:	; 26 bytes, 1 or 2: colour choice per flicker step, r
 	include "src/f/0AB510.asm"
 	include "src/f/0AB51E.asm"
 	include "src/f/0AB526.asm"
-	incrom	$0AB54C,$10
+Sw_0AB526:	; switch table of sub at $0AB526: 8 word offsets from Sw_0AB526-2
+	dc.w	loc_0AB55C-(Sw_0AB526-2), loc_0AB706-(Sw_0AB526-2), loc_0AB6D8-(Sw_0AB526-2), loc_0AB68E-(Sw_0AB526-2)
+	dc.w	loc_0AB65E-(Sw_0AB526-2), loc_0AB610-(Sw_0AB526-2), loc_0AB5DE-(Sw_0AB526-2), loc_0AB58E-(Sw_0AB526-2)
 	include "src/f/0AB55C.asm"
-	incrom	$0AB5DE,$80
+	include "src/f/0AB5DE.asm"
 	include "src/f/0AB65E.asm"
-	incrom	$0AB68E,$4A
+	include "src/f/0AB68E.asm"
 	include "src/f/0AB6D8.asm"
-	incrom	$0AB706,$4A
+	include "src/f/0AB706.asm"
 	include "src/f/0AB750.asm"
 	include "src/f/0AB75A.asm"
 	include "src/f/0AB7A8.asm"
@@ -1522,10 +1618,12 @@ Tbl_CloneA2FlickerPattern:	; 26 bytes, 1 or 2: colour choice per flicker step, r
 	include "src/f/0ABEDA.asm"
 	include "src/f/0ABF3A.asm"
 	include "src/f/0AC01E.asm"
-	incrom	$0AC128,$A
+Sw_0AC01E:	; switch table of sub at $0AC01E: 5 word offsets from Sw_0AC01E-2
+	dc.w	loc_0AC132-(Sw_0AC01E-2), loc_0AC138-(Sw_0AC01E-2), loc_0AC13E-(Sw_0AC01E-2), loc_0AC144-(Sw_0AC01E-2)
+	dc.w	loc_0AC14A-(Sw_0AC01E-2)
 	include "src/f/0AC132.asm"
 	include "src/f/0AC138.asm"
-	incrom	$0AC14A,$4
+	include "src/f/0AC14A.asm"
 	include "src/f/0AC14E.asm"
 	incrom	$0AC1B8,$82
 	include "src/f/0AC23A.asm"
@@ -1643,9 +1741,11 @@ Tbl_CloneA2FlickerPattern:	; 26 bytes, 1 or 2: colour choice per flicker step, r
 	include "src/f/0B7298.asm"
 	include "src/f/0B7394.asm"
 	include "src/f/0B7436.asm"
-	incrom	$0B746A,$18
+Sw_0B7436:	; switch table of sub at $0B7436: 4 word offsets from Sw_0B7436-2
+	dc.w	loc_0B7482-(Sw_0B7436-2), loc_0B748A-(Sw_0B7436-2), loc_0B747A-(Sw_0B7436-2), loc_0B7472-(Sw_0B7436-2)
+	include "src/f/0B7472.asm"
 	include "src/f/0B7482.asm"
-	incrom	$0B748A,$6
+	include "src/f/0B748A.asm"
 	include "src/f/0B7490.asm"
 	include "src/f/0B74CC.asm"
 	include "src/f/0B74F6.asm"
@@ -1774,7 +1874,8 @@ Tbl_CloneA2FlickerPattern:	; 26 bytes, 1 or 2: colour choice per flicker step, r
 	include "src/f/0BDB4C.asm"
 	include "src/f/0BDB94.asm"
 	include "src/f/0BDBE2.asm"
-	incrom	$0BDC2C,$8
+Sw_0BDBE2:	; switch table of sub at $0BDBE2: 4 word offsets from Sw_0BDBE2-2
+	dc.w	loc_0BDC38-(Sw_0BDBE2-2), loc_0BDC4A-(Sw_0BDBE2-2), loc_0BDC5C-(Sw_0BDBE2-2), loc_0BDC6E-(Sw_0BDBE2-2)
 	include "src/f/0BDC34.asm"
 	include "src/f/0BDC4A.asm"
 	include "src/f/0BDC7E.asm"
@@ -1800,7 +1901,9 @@ Tbl_CloneA2FlickerPattern:	; 26 bytes, 1 or 2: colour choice per flicker step, r
 	include "src/f/0BE22A.asm"
 	include "src/f/0BE29A.asm"
 	include "src/f/0BE2CE.asm"
-	incrom	$0BE306,$A
+Sw_0BE2CE:	; switch table of sub at $0BE2CE: 5 word offsets from Sw_0BE2CE-2
+	dc.w	loc_0BE314-(Sw_0BE2CE-2), loc_0BE328-(Sw_0BE2CE-2), loc_0BE33C-(Sw_0BE2CE-2), loc_0BE350-(Sw_0BE2CE-2)
+	dc.w	loc_0BE364-(Sw_0BE2CE-2)
 	include "src/f/0BE310.asm"
 	include "src/f/0BE328.asm"
 	include "src/f/0BE364.asm"
@@ -1866,9 +1969,11 @@ Tbl_CloneA2FlickerPattern:	; 26 bytes, 1 or 2: colour choice per flicker step, r
 	incrom	$0BF820,$78
 	include "src/f/0BF898.asm"
 	include "src/f/0BF8DC.asm"
-	incrom	$0BF90A,$A
+Sw_0BF8DC:	; switch table of sub at $0BF8DC: 5 word offsets from Sw_0BF8DC-2
+	dc.w	loc_0BF914-(Sw_0BF8DC-2), loc_0BF93A-(Sw_0BF8DC-2), loc_0BF95E-(Sw_0BF8DC-2), loc_0BF982-(Sw_0BF8DC-2)
+	dc.w	loc_0BF9A6-(Sw_0BF8DC-2)
 	include "src/f/0BF914.asm"
-	incrom	$0BF93A,$8E
+	include "src/f/0BF93A.asm"
 	include "src/f/0BF9C8.asm"
 	include "src/f/0BF9EA.asm"
 	include "src/f/0BFA7C.asm"
@@ -1877,7 +1982,10 @@ Tbl_CloneA2FlickerPattern:	; 26 bytes, 1 or 2: colour choice per flicker step, r
 	include "src/f/0BFAC8.asm"
 	include "src/f/0BFADA.asm"
 	include "src/f/0BFB44.asm"
-	incrom	$0BFB90,$104
+Sw_0BFB44:	; switch table of sub at $0BFB44: 5 word offsets from Sw_0BFB44-2
+	dc.w	loc_0BFB9A-(Sw_0BFB44-2), loc_0BFBAE-(Sw_0BFB44-2), loc_0BFBDA-(Sw_0BFB44-2), loc_0BFC12-(Sw_0BFB44-2)
+	dc.w	loc_0BFC60-(Sw_0BFB44-2)
+	include "src/f/0BFB9A.asm"
 	include "src/f/0BFC94.asm"
 	include "src/f/0BFC9E.asm"
 	include "src/f/0BFCB4.asm"
@@ -1894,10 +2002,12 @@ Tbl_CloneA2FlickerPattern:	; 26 bytes, 1 or 2: colour choice per flicker step, r
 	include "src/f/0C095A.asm"
 	include "src/f/0C0968.asm"
 	include "src/f/0C099C.asm"
-	incrom	$0C09CA,$C
+Sw_0C099C:	; switch table of sub at $0C099C: 6 word offsets from Sw_0C099C-2
+	dc.w	loc_0C09D6-(Sw_0C099C-2), loc_0C09E2-(Sw_0C099C-2), loc_0C09EE-(Sw_0C099C-2), loc_0C09FA-(Sw_0C099C-2)
+	dc.w	loc_0C0A06-(Sw_0C099C-2), loc_0C0A12-(Sw_0C099C-2)
 	include "src/f/0C09D6.asm"
 	include "src/f/0C09E2.asm"
-	incrom	$0C0A12,$A
+	include "src/f/0C0A12.asm"
 	include "src/f/0C0A1C.asm"
 	include "src/f/0C0A52.asm"
 	include "src/f/0C0B7C.asm"
@@ -2221,14 +2331,18 @@ Tbl_CoreZap_vtable:	; class descriptor "COREZAP": word $6E = name offset, long p
 	include "src/f/106B8C.asm"
 	include "src/f/106BCE.asm"
 	include "src/f/106BF0.asm"
-	incrom	$106CC0,$2C
+Sw_106BF0:	; switch table of sub at $106BF0: 4 word offsets from Sw_106BF0-2
+	dc.w	loc_106CC8-(Sw_106BF0-2), loc_106CDA-(Sw_106BF0-2), loc_106CEC-(Sw_106BF0-2), loc_106CFE-(Sw_106BF0-2)
+	include "src/f/106CC8.asm"
 	include "src/f/106CEC.asm"
 	include "src/f/106CFE.asm"
 	include "src/f/106DC0.asm"
 	include "src/f/106E14.asm"
 	include "src/f/106EA8.asm"
 	include "src/f/106F42.asm"
-	incrom	$106F94,$FE
+Sw_106F42:	; switch table of sub at $106F42: 4 word offsets from Sw_106F42-2
+	dc.w	loc_106F9C-(Sw_106F42-2), loc_107044-(Sw_106F42-2), loc_106FF0-(Sw_106F42-2), loc_107092-(Sw_106F42-2)
+	include "src/f/106F9C.asm"
 	include "src/f/107092.asm"
 	include "src/f/1070E8.asm"
 	include "src/f/1071AA.asm"
@@ -2239,10 +2353,16 @@ Tbl_Platform1_vtable:	; class descriptor "PLATFORM1": word $7E = name offset, lo
 	include "src/f/107370.asm"
 	include "src/f/107378.asm"
 	include "src/f/1073A8.asm"
-	incrom	$1073E4,$1C
+Sw_1073A8:	; switch table of sub at $1073A8: 14 word offsets from Sw_1073A8-2
+	dc.w	loc_107400-(Sw_1073A8-2), loc_107408-(Sw_1073A8-2), loc_107410-(Sw_1073A8-2), loc_107418-(Sw_1073A8-2)
+	dc.w	loc_107420-(Sw_1073A8-2), loc_107428-(Sw_1073A8-2), loc_107430-(Sw_1073A8-2), loc_107438-(Sw_1073A8-2)
+	dc.w	loc_10743E-(Sw_1073A8-2), loc_107446-(Sw_1073A8-2), loc_10744E-(Sw_1073A8-2), loc_107456-(Sw_1073A8-2)
+	dc.w	loc_10745E-(Sw_1073A8-2), loc_107466-(Sw_1073A8-2)
 	include "src/f/107400.asm"
 	include "src/f/10746C.asm"
-	incrom	$1074A8,$10
+Sw_10746C:	; switch table of sub at $10746C: 8 word offsets from Sw_10746C-2
+	dc.w	loc_1074B8-(Sw_10746C-2), loc_1074C0-(Sw_10746C-2), loc_1074C8-(Sw_10746C-2), loc_1074D0-(Sw_10746C-2)
+	dc.w	loc_1074D8-(Sw_10746C-2), loc_1074DE-(Sw_10746C-2), loc_1074E6-(Sw_10746C-2), loc_1074EE-(Sw_10746C-2)
 	include "src/f/1074B8.asm"
 	include "src/f/1074F4.asm"
 	include "src/f/10750C.asm"
@@ -2288,9 +2408,15 @@ Tbl_Deathbird_vtable:	; class descriptor "DEATHBIRD": word $76 = name offset, lo
 	incrom	$111162,$80
 	include "src/f/1111E2.asm"
 	include "src/f/1111EA.asm"
-	incrom	$1112DC,$5A
+Sw_1111EA:	; switch table of sub at $1111EA: 17 word offsets from Sw_1111EA-2
+	dc.w	loc_1112FE-(Sw_1111EA-2), loc_11130E-(Sw_1111EA-2), loc_11131E-(Sw_1111EA-2), loc_111336-(Sw_1111EA-2)
+	dc.w	loc_111352-(Sw_1111EA-2), loc_11136A-(Sw_1111EA-2), loc_111386-(Sw_1111EA-2), loc_1113AA-(Sw_1111EA-2)
+	dc.w	loc_1113D2-(Sw_1111EA-2), loc_1113EA-(Sw_1111EA-2), loc_111406-(Sw_1111EA-2), loc_11142A-(Sw_1111EA-2)
+	dc.w	loc_111452-(Sw_1111EA-2), loc_111476-(Sw_1111EA-2), loc_11149C-(Sw_1111EA-2), loc_1114CA-(Sw_1111EA-2)
+	dc.w	loc_1114FC-(Sw_1111EA-2)
+	include "src/f/1112FE.asm"
 	include "src/f/111336.asm"
-	incrom	$111352,$1AA
+	include "src/f/111352.asm"
 	include "src/f/1114FC.asm"
 	include "src/f/11157A.asm"
 	include "src/f/111588.asm"
@@ -2299,7 +2425,10 @@ Tbl_Deathbird_vtable:	; class descriptor "DEATHBIRD": word $76 = name offset, lo
 	include "src/f/111790.asm"
 	include "src/f/111798.asm"
 	include "src/f/1117A0.asm"
-	incrom	$1117C6,$16
+Sw_1117A0:	; switch table of sub at $1117A0: 11 word offsets from Sw_1117A0-2
+	dc.w	loc_1117DC-(Sw_1117A0-2), loc_1117F0-(Sw_1117A0-2), loc_111842-(Sw_1117A0-2), loc_1118B2-(Sw_1117A0-2)
+	dc.w	loc_1118D8-(Sw_1117A0-2), loc_111920-(Sw_1117A0-2), loc_1119B2-(Sw_1117A0-2), loc_111A00-(Sw_1117A0-2)
+	dc.w	loc_111A9A-(Sw_1117A0-2), loc_111ABA-(Sw_1117A0-2), loc_111B50-(Sw_1117A0-2)
 	include "src/f/1117DC.asm"
 	include "src/f/1117F0.asm"
 	include "src/f/111842.asm"
@@ -2315,7 +2444,10 @@ Tbl_Deathbird_vtable:	; class descriptor "DEATHBIRD": word $76 = name offset, lo
 	include "src/f/111E44.asm"
 	include "src/f/112016.asm"
 	include "src/f/11214E.asm"
-	incrom	$112178,$E
+Sw_11214E:	; switch table of sub at $11214E: 5 word offsets from Sw_11214E-2
+	dc.w	loc_112330-(Sw_11214E-2), loc_112330-(Sw_11214E-2), loc_112330-(Sw_11214E-2), loc_1121C6-(Sw_11214E-2)
+	dc.w	loc_112186-(Sw_11214E-2)
+	incrom	$112182,$4
 	include "src/f/112186.asm"
 	include "src/f/1121C6.asm"
 	include "src/f/112330.asm"
@@ -2371,7 +2503,11 @@ Tbl_BioNpc_vtable:	; class descriptor "BIONPC": word $82 = name offset, long par
 	include "src/f/113CA6.asm"
 	include "src/f/113D0E.asm"
 	include "src/f/113D20.asm"
-	incrom	$113D4E,$16
+Sw_113D20:	; switch table of sub at $113D20: 9 word offsets from Sw_113D20-2
+	dc.w	loc_113D60-(Sw_113D20-2), loc_113D64-(Sw_113D20-2), loc_113D64-(Sw_113D20-2), loc_113D64-(Sw_113D20-2)
+	dc.w	loc_113D64-(Sw_113D20-2), loc_113DA0-(Sw_113D20-2), loc_113DA0-(Sw_113D20-2), loc_113DA0-(Sw_113D20-2)
+	dc.w	loc_113DA0-(Sw_113D20-2)
+	include "src/f/113D60.asm"
 	include "src/f/113D64.asm"
 	include "src/f/113DA0.asm"
 	include "src/f/113E76.asm"
@@ -2380,11 +2516,13 @@ Tbl_BioNpc_vtable:	; class descriptor "BIONPC": word $82 = name offset, long par
 	include "src/f/113EFE.asm"
 	include "src/f/113F38.asm"
 	include "src/f/113F5C.asm"
-	incrom	$113FF4,$8
+Sw_113F5C:	; switch table of sub at $113F5C: 4 word offsets from Sw_113F5C-2
+	dc.w	loc_114008-(Sw_113F5C-2), loc_114088-(Sw_113F5C-2), loc_113FFC-(Sw_113F5C-2), loc_113FFC-(Sw_113F5C-2)
 	include "src/f/113FFC.asm"
 	include "src/f/114100.asm"
 	include "src/f/11410E.asm"
-	incrom	$1141BE,$8
+Sw_11410E:	; switch table of sub at $11410E: 4 word offsets from Sw_11410E-2
+	dc.w	loc_1141D2-(Sw_11410E-2), loc_114256-(Sw_11410E-2), loc_1141C6-(Sw_11410E-2), loc_1141C6-(Sw_11410E-2)
 	include "src/f/1141C6.asm"
 	include "src/f/1142D2.asm"
 	include "src/f/1142E0.asm"
@@ -2482,7 +2620,13 @@ Tbl_ICandy_vtable:	; class descriptor "ICANDY": word $26 = name offset, long par
 	include "src/f/1188DA.asm"
 	include "src/f/1188E8.asm"
 	include "src/f/11893C.asm"
-	incrom	$118A52,$36
+Sw_11893C:	; switch table of sub at $11893C: 17 word offsets from Sw_11893C-2
+	dc.w	loc_118A74-(Sw_11893C-2), loc_118A7C-(Sw_11893C-2), loc_118A88-(Sw_11893C-2), loc_118A9C-(Sw_11893C-2)
+	dc.w	loc_118AB4-(Sw_11893C-2), loc_118AC8-(Sw_11893C-2), loc_118AE0-(Sw_11893C-2), loc_118B00-(Sw_11893C-2)
+	dc.w	loc_118B24-(Sw_11893C-2), loc_118B38-(Sw_11893C-2), loc_118B50-(Sw_11893C-2), loc_118B70-(Sw_11893C-2)
+	dc.w	loc_118B94-(Sw_11893C-2), loc_118BB4-(Sw_11893C-2), loc_118BD6-(Sw_11893C-2), loc_118C00-(Sw_11893C-2)
+	dc.w	loc_118C2E-(Sw_11893C-2)
+	include "src/f/118A74.asm"
 	include "src/f/118A88.asm"
 	include "src/f/118AB4.asm"
 	include "src/f/118C2E.asm"
@@ -2597,9 +2741,10 @@ Tbl_WallCrawlBio_vtable:	; class descriptor "WALLCRAWLBIO": word $82 = name offs
 	include "src/f/11C5BA.asm"
 	include "src/f/11C630.asm"
 	include "src/f/11C662.asm"
-	incrom	$11C68C,$8
+Sw_11C662:	; switch table of sub at $11C662: 4 word offsets from Sw_11C662-2
+	dc.w	loc_11C694-(Sw_11C662-2), loc_11C6A8-(Sw_11C662-2), loc_11C6BC-(Sw_11C662-2), loc_11C6BC-(Sw_11C662-2)
 	include "src/f/11C694.asm"
-	incrom	$11C6BC,$8
+	include "src/f/11C6BC.asm"
 	include "src/f/11C6C4.asm"
 	include "src/f/11C6CE.asm"
 	include "src/f/11C71C.asm"
@@ -2642,15 +2787,18 @@ Tbl_WallCrawlBio_vtable:	; class descriptor "WALLCRAWLBIO": word $82 = name offs
 	include "src/f/11D922.asm"
 	include "src/f/11D930.asm"
 	include "src/f/11D946.asm"
-	incrom	$11D9B4,$1C
+Sw_11D946:	; switch table of sub at $11D946: 4 word offsets from Sw_11D946-2
+	dc.w	loc_11D9BC-(Sw_11D946-2), loc_11D9D0-(Sw_11D946-2), loc_11D9E4-(Sw_11D946-2), loc_11D9F8-(Sw_11D946-2)
+	include "src/f/11D9BC.asm"
 	include "src/f/11D9D0.asm"
-	incrom	$11D9E4,$28
+	include "src/f/11D9E4.asm"
 	include "src/f/11DA0C.asm"
 	include "src/f/11DA54.asm"
 	include "src/f/11DA62.asm"
 	include "src/f/11DAB6.asm"
 	include "src/f/11DACC.asm"
-	incrom	$11DB46,$8
+Sw_11DACC:	; switch table of sub at $11DACC: 4 word offsets from Sw_11DACC-2
+	dc.w	loc_11DB4E-(Sw_11DACC-2), loc_11DB64-(Sw_11DACC-2), loc_11DBC6-(Sw_11DACC-2), loc_11DBDA-(Sw_11DACC-2)
 	include "src/f/11DB4E.asm"
 	include "src/f/11DB64.asm"
 	include "src/f/11DBFA.asm"
@@ -2850,10 +2998,12 @@ Tbl_FlyBrood_vtable:	; class descriptor "FLYBROOD": word $6E = name offset, long
 	include "src/f/1348F0.asm"
 	include "src/f/134906.asm"
 	include "src/f/134934.asm"
-	incrom	$134AD4,$10
+Sw_134934:	; switch table of sub at $134934: 8 word offsets from Sw_134934-2
+	dc.w	loc_134AE4-(Sw_134934-2), loc_134AFA-(Sw_134934-2), loc_134B10-(Sw_134934-2), loc_134B26-(Sw_134934-2)
+	dc.w	loc_134B42-(Sw_134934-2), loc_134BA6-(Sw_134934-2), loc_134BBA-(Sw_134934-2), loc_134BCE-(Sw_134934-2)
 	include "src/f/134AE4.asm"
 	include "src/f/134AFA.asm"
-	incrom	$134B42,$A4
+	include "src/f/134B42.asm"
 	include "src/f/134BE6.asm"
 	include "src/f/134C3A.asm"
 	include "src/f/134C60.asm"
@@ -2902,7 +3052,8 @@ Tbl_FlyBrood_vtable:	; class descriptor "FLYBROOD": word $6E = name offset, long
 	include "src/f/136D1A.asm"
 	include "src/f/136D44.asm"
 	include "src/f/136D86.asm"
-	incrom	$136DA6,$8
+Sw_136D86:	; switch table of sub at $136D86: 4 word offsets from Sw_136D86-2
+	dc.w	loc_136DAE-(Sw_136D86-2), loc_136DC4-(Sw_136D86-2), loc_136DDA-(Sw_136D86-2), loc_136DF0-(Sw_136D86-2)
 	include "src/f/136DAE.asm"
 	include "src/f/136DC4.asm"
 	include "src/f/136E04.asm"
@@ -2914,7 +3065,8 @@ Tbl_FlyBrood_vtable:	; class descriptor "FLYBROOD": word $6E = name offset, long
 	include "src/f/13709E.asm"
 	include "src/f/1370E8.asm"
 	include "src/f/137142.asm"
-	incrom	$1371C0,$8
+Sw_137142:	; switch table of sub at $137142: 4 word offsets from Sw_137142-2
+	dc.w	loc_1371C8-(Sw_137142-2), loc_1371C8-(Sw_137142-2), loc_1371D8-(Sw_137142-2), loc_137200-(Sw_137142-2)
 	include "src/f/1371C8.asm"
 	include "src/f/1371D8.asm"
 	include "src/f/13722C.asm"
@@ -2974,9 +3126,10 @@ Tbl_LineSegKiller_vtable:	; class descriptor "LINESEGKILLER": word $6E = name of
 	include "src/f/138EA2.asm"
 	include "src/f/138EDC.asm"
 	include "src/f/138F1E.asm"
-	incrom	$138FB4,$8
+Sw_138F1E:	; switch table of sub at $138F1E: 4 word offsets from Sw_138F1E-2
+	dc.w	loc_138FBC-(Sw_138F1E-2), loc_139038-(Sw_138F1E-2), loc_138FF0-(Sw_138F1E-2), loc_13906A-(Sw_138F1E-2)
 	include "src/f/138FBC.asm"
-	incrom	$139038,$32
+	include "src/f/139038.asm"
 	include "src/f/13906A.asm"
 	include "src/f/1390B0.asm"
 	include "src/f/1390BA.asm"
@@ -3075,7 +3228,10 @@ Tbl_Ninja_vtable:	; class descriptor "NINJA": word $82 = name offset, long paren
 	include "src/f/13F070.asm"
 	include "src/f/13F0F0.asm"
 	include "src/f/13F114.asm"
-	incrom	$13F13E,$70
+Sw_13F114:	; switch table of sub at $13F114: 6 word offsets from Sw_13F114-2
+	dc.w	loc_13F1AE-(Sw_13F114-2), loc_13F19A-(Sw_13F114-2), loc_13F186-(Sw_13F114-2), loc_13F172-(Sw_13F114-2)
+	dc.w	loc_13F15E-(Sw_13F114-2), loc_13F14A-(Sw_13F114-2)
+	include "src/f/13F14A.asm"
 	include "src/f/13F1AE.asm"
 	include "src/f/13F1DC.asm"
 	include "src/f/13F1EC.asm"
@@ -3164,18 +3320,24 @@ Tbl_Pop_vtable:	; class descriptor "POP": word $6E = name offset, long parent (A
 	incrom	$142B52,$2
 	include "src/f/142B54.asm"
 	include "src/f/142CD6.asm"
-	incrom	$142EFA,$12
+Sw_142CD6:	; switch table of sub at $142CD6: 9 word offsets from Sw_142CD6-2
+	dc.w	loc_142F0C-(Sw_142CD6-2), loc_142F14-(Sw_142CD6-2), loc_142F1C-(Sw_142CD6-2), loc_142F2A-(Sw_142CD6-2)
+	dc.w	loc_142F38-(Sw_142CD6-2), loc_142F46-(Sw_142CD6-2), loc_142F54-(Sw_142CD6-2), loc_142F5C-(Sw_142CD6-2)
+	dc.w	loc_142F64-(Sw_142CD6-2)
 	include "src/f/142F0C.asm"
-	incrom	$142F2A,$E
+	include "src/f/142F2A.asm"
 	include "src/f/142F38.asm"
 	include "src/f/142F5C.asm"
 	include "src/f/142F64.asm"
 	include "src/f/142F70.asm"
 	include "src/f/14304E.asm"
 	include "src/f/143082.asm"
-	incrom	$1430D2,$12
+Sw_143082:	; switch table of sub at $143082: 9 word offsets from Sw_143082-2
+	dc.w	loc_1430E4-(Sw_143082-2), loc_143100-(Sw_143082-2), loc_14311A-(Sw_143082-2), loc_143136-(Sw_143082-2)
+	dc.w	loc_143152-(Sw_143082-2), loc_14316A-(Sw_143082-2), loc_143184-(Sw_143082-2), loc_14319E-(Sw_143082-2)
+	dc.w	loc_1431B6-(Sw_143082-2)
 	include "src/f/1430E4.asm"
-	incrom	$143136,$1C
+	include "src/f/143136.asm"
 	include "src/f/143152.asm"
 	include "src/f/14319E.asm"
 	include "src/f/1431B6.asm"
@@ -3230,63 +3392,87 @@ Tbl_Pop_vtable:	; class descriptor "POP": word $6E = name offset, long parent (A
 	include "src/f/158FE4.asm"
 	include "src/f/159030.asm"
 	include "src/f/159092.asm"
-	incrom	$1590B2,$28
+Sw_159092:	; switch table of sub at $159092: 10 word offsets from Sw_159092-2
+	dc.w	loc_1590C6-(Sw_159092-2), loc_1590D0-(Sw_159092-2), loc_1590DA-(Sw_159092-2), loc_1590E4-(Sw_159092-2)
+	dc.w	loc_1590EE-(Sw_159092-2), loc_1590F8-(Sw_159092-2), loc_159102-(Sw_159092-2), loc_15910C-(Sw_159092-2)
+	dc.w	loc_159116-(Sw_159092-2), loc_159120-(Sw_159092-2)
+	include "src/f/1590C6.asm"
 	include "src/f/1590DA.asm"
-	incrom	$1590E4,$28
+	include "src/f/1590E4.asm"
 	include "src/f/15910C.asm"
 	include "src/f/159120.asm"
 	include "src/f/15912A.asm"
 	include "src/f/15912E.asm"
 	include "src/f/159130.asm"
 	include "src/f/159138.asm"
-	incrom	$159158,$28
+Sw_159138:	; switch table of sub at $159138: 10 word offsets from Sw_159138-2
+	dc.w	loc_15916C-(Sw_159138-2), loc_159176-(Sw_159138-2), loc_159180-(Sw_159138-2), loc_15918A-(Sw_159138-2)
+	dc.w	loc_159194-(Sw_159138-2), loc_15919E-(Sw_159138-2), loc_1591A8-(Sw_159138-2), loc_1591B2-(Sw_159138-2)
+	dc.w	loc_1591BC-(Sw_159138-2), loc_1591C6-(Sw_159138-2)
+	include "src/f/15916C.asm"
 	include "src/f/159180.asm"
-	incrom	$15918A,$28
+	include "src/f/15918A.asm"
 	include "src/f/1591B2.asm"
 	include "src/f/1591C6.asm"
 	include "src/f/1591D0.asm"
 	include "src/f/1591D4.asm"
 	include "src/f/1591D6.asm"
 	include "src/f/1591DE.asm"
-	incrom	$1591FC,$1A
+Sw_1591DE:	; switch table of sub at $1591DE: 8 word offsets from Sw_1591DE-2
+	dc.w	loc_15920C-(Sw_1591DE-2), loc_159216-(Sw_1591DE-2), loc_159220-(Sw_1591DE-2), loc_15922A-(Sw_1591DE-2)
+	dc.w	loc_159234-(Sw_1591DE-2), loc_15923E-(Sw_1591DE-2), loc_159248-(Sw_1591DE-2), loc_159252-(Sw_1591DE-2)
+	include "src/f/15920C.asm"
 	include "src/f/159216.asm"
-	incrom	$15922A,$1E
+	include "src/f/15922A.asm"
 	include "src/f/159248.asm"
-	incrom	$159252,$A
+	include "src/f/159252.asm"
 	include "src/f/15925C.asm"
 	include "src/f/159260.asm"
 	include "src/f/159262.asm"
 	include "src/f/15926A.asm"
-	incrom	$159288,$1A
+Sw_15926A:	; switch table of sub at $15926A: 8 word offsets from Sw_15926A-2
+	dc.w	loc_159298-(Sw_15926A-2), loc_1592A2-(Sw_15926A-2), loc_1592AC-(Sw_15926A-2), loc_1592B6-(Sw_15926A-2)
+	dc.w	loc_1592C0-(Sw_15926A-2), loc_1592CA-(Sw_15926A-2), loc_1592D4-(Sw_15926A-2), loc_1592DE-(Sw_15926A-2)
+	include "src/f/159298.asm"
 	include "src/f/1592A2.asm"
-	incrom	$1592B6,$1E
+	include "src/f/1592B6.asm"
 	include "src/f/1592D4.asm"
-	incrom	$1592DE,$A
+	include "src/f/1592DE.asm"
 	include "src/f/1592E8.asm"
 	include "src/f/1592EC.asm"
 	include "src/f/1592EE.asm"
 	include "src/f/1592F6.asm"
 	include "src/f/159354.asm"
-	incrom	$159384,$32
+Sw_159354:	; switch table of sub at $159354: 10 word offsets from Sw_159354-2
+	dc.w	loc_159398-(Sw_159354-2), loc_1593D4-(Sw_159354-2), loc_1593F2-(Sw_159354-2), loc_159410-(Sw_159354-2)
+	dc.w	loc_15942E-(Sw_159354-2), loc_15944A-(Sw_159354-2), loc_159466-(Sw_159354-2), loc_159482-(Sw_159354-2)
+	dc.w	loc_15949C-(Sw_159354-2), loc_1593B6-(Sw_159354-2)
+	include "src/f/159398.asm"
 	include "src/f/1593B6.asm"
-	incrom	$1593D4,$1E
+	include "src/f/1593D4.asm"
 	include "src/f/1593F2.asm"
-	incrom	$159410,$72
+	include "src/f/159410.asm"
 	include "src/f/159482.asm"
 	include "src/f/1594B6.asm"
 	include "src/f/1594C0.asm"
-	incrom	$1594F2,$BE
+Sw_1594C0:	; switch table of sub at $1594C0: 8 word offsets from Sw_1594C0-2
+	dc.w	loc_159502-(Sw_1594C0-2), loc_159520-(Sw_1594C0-2), loc_15953E-(Sw_1594C0-2), loc_15955C-(Sw_1594C0-2)
+	dc.w	loc_159578-(Sw_1594C0-2), loc_159594-(Sw_1594C0-2), loc_1595B0-(Sw_1594C0-2), loc_1595CA-(Sw_1594C0-2)
+	include "src/f/159502.asm"
 	include "src/f/1595B0.asm"
-	incrom	$1595CA,$1A
+	include "src/f/1595CA.asm"
 	include "src/f/1595E4.asm"
 	include "src/f/1595EE.asm"
 	include "src/f/1597BE.asm"
 	include "src/f/15980C.asm"
-	incrom	$15983E,$26
+Sw_15980C:	; switch table of sub at $15980C: 8 word offsets from Sw_15980C-2
+	dc.w	loc_15984E-(Sw_15980C-2), loc_159864-(Sw_15980C-2), loc_159878-(Sw_15980C-2), loc_15988C-(Sw_15980C-2)
+	dc.w	loc_1598A0-(Sw_15980C-2), loc_1598B4-(Sw_15980C-2), loc_1598C8-(Sw_15980C-2), loc_1598DA-(Sw_15980C-2)
+	include "src/f/15984E.asm"
 	include "src/f/159864.asm"
-	incrom	$15988C,$3C
+	include "src/f/15988C.asm"
 	include "src/f/1598C8.asm"
-	incrom	$1598DA,$12
+	include "src/f/1598DA.asm"
 	include "src/f/1598EC.asm"
 	include "src/f/1598F6.asm"
 	include "src/f/1599CC.asm"
@@ -3333,7 +3519,11 @@ Tbl_Pop_vtable:	; class descriptor "POP": word $6E = name offset, long parent (A
 	include "src/f/15C39A.asm"
 	include "src/f/15C41C.asm"
 	include "src/f/15C42A.asm"
-	incrom	$15C48C,$14A
+Sw_15C42A:	; switch table of sub at $15C42A: 9 word offsets from Sw_15C42A-2
+	dc.w	loc_15C49E-(Sw_15C42A-2), loc_15C4BA-(Sw_15C42A-2), loc_15C4E2-(Sw_15C42A-2), loc_15C4FE-(Sw_15C42A-2)
+	dc.w	loc_15C51A-(Sw_15C42A-2), loc_15C564-(Sw_15C42A-2), loc_15C57E-(Sw_15C42A-2), loc_15C598-(Sw_15C42A-2)
+	dc.w	loc_15C5B2-(Sw_15C42A-2)
+	include "src/f/15C49E.asm"
 	include "src/f/15C5D6.asm"
 	include "src/f/15CA6C.asm"
 	include "src/f/15CAA4.asm"
@@ -3629,12 +3819,15 @@ Tbl_Pop_vtable:	; class descriptor "POP": word $6E = name offset, long parent (A
 	include "src/f/1CF1B6.asm"
 	include "src/f/1CF1EC.asm"
 	include "src/f/1CF36E.asm"
-	incrom	$1CF3A4,$A
+Sw_1CF36E:	; switch table of sub at $1CF36E: 5 word offsets from Sw_1CF36E-2
+	dc.w	loc_1CF3AE-(Sw_1CF36E-2), loc_1CF3C0-(Sw_1CF36E-2), loc_1CF3C4-(Sw_1CF36E-2), loc_1CF3C8-(Sw_1CF36E-2)
+	dc.w	loc_1CF3DE-(Sw_1CF36E-2)
 	include "src/f/1CF3AE.asm"
-	incrom	$1CF3C0,$22
+	include "src/f/1CF3C0.asm"
 	include "src/f/1CF3E2.asm"
 	include "src/f/1CF432.asm"
-	incrom	$1CF746,$8
+Sw_1CF432:	; switch table of sub at $1CF432: 4 word offsets from Sw_1CF432-2
+	dc.w	loc_1CF74E-(Sw_1CF432-2), loc_1CF752-(Sw_1CF432-2), loc_1CF758-(Sw_1CF432-2), loc_1CF75C-(Sw_1CF432-2)
 	include "src/f/1CF74E.asm"
 	include "src/f/1CF7E6.asm"
 	include "src/f/1CF7FA.asm"
@@ -3809,7 +4002,8 @@ Tbl_Pop_vtable:	; class descriptor "POP": word $6E = name offset, long parent (A
 	include "src/f/1F3D36.asm"
 	include "src/f/1F3DB4.asm"
 	include "src/f/1F3EC0.asm"
-	incrom	$1F3FC4,$8
+Sw_1F3EC0:	; switch table of sub at $1F3EC0: 4 word offsets from Sw_1F3EC0-2
+	dc.w	loc_1F3FCC-(Sw_1F3EC0-2), loc_1F3FDE-(Sw_1F3EC0-2), loc_1F3FD2-(Sw_1F3EC0-2), loc_1F3FD2-(Sw_1F3EC0-2)
 	include "src/f/1F3FCC.asm"
 	include "src/f/1F401C.asm"
 	include "src/f/1F4136.asm"
@@ -3888,40 +4082,100 @@ Tbl_A5WorldInfo:	; 20 bytes: longs $3CE6 (size of the A5 globals area below $200
 	include "src/f/1F6C04.asm"
 	incrom	$1F6D74,$2
 	include "src/f/1F6D76.asm"
-	incrom	$1F6DF8,$4A
+Sw_1F6D76:	; switch table of sub at $1F6D76: 36 word offsets from Sw_1F6D76-2
+	dc.w	loc_1F6E5A-(Sw_1F6D76-2), loc_1F6E78-(Sw_1F6D76-2), loc_1F6E42-(Sw_1F6D76-2), loc_1F6E4C-(Sw_1F6D76-2)
+	dc.w	loc_1F6EBA-(Sw_1F6D76-2), loc_1F6EBA-(Sw_1F6D76-2), loc_1F6EBA-(Sw_1F6D76-2), loc_1F6EBA-(Sw_1F6D76-2)
+	dc.w	loc_1F6EBA-(Sw_1F6D76-2), loc_1F6EBA-(Sw_1F6D76-2), loc_1F6EBA-(Sw_1F6D76-2), loc_1F6EBA-(Sw_1F6D76-2)
+	dc.w	loc_1F6EBA-(Sw_1F6D76-2), loc_1F6E42-(Sw_1F6D76-2), loc_1F6E42-(Sw_1F6D76-2), loc_1F6EA6-(Sw_1F6D76-2)
+	dc.w	loc_1F6EA6-(Sw_1F6D76-2), loc_1F6EA6-(Sw_1F6D76-2), loc_1F6E48-(Sw_1F6D76-2), loc_1F6E48-(Sw_1F6D76-2)
+	dc.w	loc_1F6E48-(Sw_1F6D76-2), loc_1F6E48-(Sw_1F6D76-2), loc_1F6E48-(Sw_1F6D76-2), loc_1F6E48-(Sw_1F6D76-2)
+	dc.w	loc_1F6E48-(Sw_1F6D76-2), loc_1F6E48-(Sw_1F6D76-2), loc_1F6E48-(Sw_1F6D76-2), loc_1F6E48-(Sw_1F6D76-2)
+	dc.w	loc_1F6EA6-(Sw_1F6D76-2), loc_1F6EA6-(Sw_1F6D76-2), loc_1F6EA6-(Sw_1F6D76-2), loc_1F6EA6-(Sw_1F6D76-2)
+	dc.w	loc_1F6E42-(Sw_1F6D76-2), loc_1F6E4C-(Sw_1F6D76-2), loc_1F6E78-(Sw_1F6D76-2), loc_1F6E5A-(Sw_1F6D76-2)
+	incrom	$1F6E40,$2
 	include "src/f/1F6E42.asm"
 	include "src/f/1F6EA6.asm"
 	include "src/f/1F6EC4.asm"
-	incrom	$1F6F3C,$44
+Sw_1F6EC4:	; switch table of sub at $1F6EC4: 34 word offsets from Sw_1F6EC4-2
+	dc.w	loc_1F6FC4-(Sw_1F6EC4-2), loc_1F6FAC-(Sw_1F6EC4-2), loc_1F6F80-(Sw_1F6EC4-2), loc_1F6FDA-(Sw_1F6EC4-2)
+	dc.w	loc_1F6FEA-(Sw_1F6EC4-2), loc_1F6FEA-(Sw_1F6EC4-2), loc_1F6FEA-(Sw_1F6EC4-2), loc_1F6FEA-(Sw_1F6EC4-2)
+	dc.w	loc_1F6FEA-(Sw_1F6EC4-2), loc_1F6FEA-(Sw_1F6EC4-2), loc_1F6FEA-(Sw_1F6EC4-2), loc_1F6FEA-(Sw_1F6EC4-2)
+	dc.w	loc_1F6FEA-(Sw_1F6EC4-2), loc_1F6F80-(Sw_1F6EC4-2), loc_1F6F80-(Sw_1F6EC4-2), loc_1F6FDA-(Sw_1F6EC4-2)
+	dc.w	loc_1F6FDA-(Sw_1F6EC4-2), loc_1F6FDA-(Sw_1F6EC4-2), loc_1F6FD6-(Sw_1F6EC4-2), loc_1F6FD6-(Sw_1F6EC4-2)
+	dc.w	loc_1F6FD6-(Sw_1F6EC4-2), loc_1F6FD6-(Sw_1F6EC4-2), loc_1F6FD6-(Sw_1F6EC4-2), loc_1F6FD6-(Sw_1F6EC4-2)
+	dc.w	loc_1F6FD6-(Sw_1F6EC4-2), loc_1F6FD6-(Sw_1F6EC4-2), loc_1F6FD6-(Sw_1F6EC4-2), loc_1F6FD6-(Sw_1F6EC4-2)
+	dc.w	loc_1F6FDA-(Sw_1F6EC4-2), loc_1F6FDA-(Sw_1F6EC4-2), loc_1F6FDA-(Sw_1F6EC4-2), loc_1F6FDA-(Sw_1F6EC4-2)
+	dc.w	loc_1F6F80-(Sw_1F6EC4-2), loc_1F6F92-(Sw_1F6EC4-2)
 	include "src/f/1F6F80.asm"
-	incrom	$1F6F92,$44
+	include "src/f/1F6F92.asm"
 	include "src/f/1F6FD6.asm"
 	include "src/f/1F6FDA.asm"
 	include "src/f/1F6FF4.asm"
-	incrom	$1F7058,$4C
+Sw_1F6FF4:	; switch table of sub at $1F6FF4: 36 word offsets from Sw_1F6FF4-2
+	dc.w	loc_1F714E-(Sw_1F6FF4-2), loc_1F719C-(Sw_1F6FF4-2), loc_1F70A4-(Sw_1F6FF4-2), loc_1F70FE-(Sw_1F6FF4-2)
+	dc.w	loc_1F71E8-(Sw_1F6FF4-2), loc_1F71E8-(Sw_1F6FF4-2), loc_1F71E8-(Sw_1F6FF4-2), loc_1F71E8-(Sw_1F6FF4-2)
+	dc.w	loc_1F71E8-(Sw_1F6FF4-2), loc_1F71E8-(Sw_1F6FF4-2), loc_1F71E8-(Sw_1F6FF4-2), loc_1F71E8-(Sw_1F6FF4-2)
+	dc.w	loc_1F71E8-(Sw_1F6FF4-2), loc_1F70A4-(Sw_1F6FF4-2), loc_1F70A4-(Sw_1F6FF4-2), loc_1F71E8-(Sw_1F6FF4-2)
+	dc.w	loc_1F71E8-(Sw_1F6FF4-2), loc_1F71E8-(Sw_1F6FF4-2), loc_1F70A4-(Sw_1F6FF4-2), loc_1F70A4-(Sw_1F6FF4-2)
+	dc.w	loc_1F70A4-(Sw_1F6FF4-2), loc_1F70A4-(Sw_1F6FF4-2), loc_1F70A4-(Sw_1F6FF4-2), loc_1F70A4-(Sw_1F6FF4-2)
+	dc.w	loc_1F70A4-(Sw_1F6FF4-2), loc_1F70A4-(Sw_1F6FF4-2), loc_1F70A4-(Sw_1F6FF4-2), loc_1F70A4-(Sw_1F6FF4-2)
+	dc.w	loc_1F71E8-(Sw_1F6FF4-2), loc_1F71E8-(Sw_1F6FF4-2), loc_1F71E8-(Sw_1F6FF4-2), loc_1F71E8-(Sw_1F6FF4-2)
+	dc.w	loc_1F70A4-(Sw_1F6FF4-2), loc_1F70FE-(Sw_1F6FF4-2), loc_1F719C-(Sw_1F6FF4-2), loc_1F714E-(Sw_1F6FF4-2)
+	incrom	$1F70A0,$4
 	include "src/f/1F70A4.asm"
 	include "src/f/1F71E8.asm"
 	include "src/f/1F71F2.asm"
-	incrom	$1F7256,$4A
+Sw_1F71F2:	; switch table of sub at $1F71F2: 36 word offsets from Sw_1F71F2-2
+	dc.w	loc_1F72CC-(Sw_1F71F2-2), loc_1F72E2-(Sw_1F71F2-2), loc_1F72A0-(Sw_1F71F2-2), loc_1F72B6-(Sw_1F71F2-2)
+	dc.w	loc_1F72F6-(Sw_1F71F2-2), loc_1F72F6-(Sw_1F71F2-2), loc_1F72F6-(Sw_1F71F2-2), loc_1F72F6-(Sw_1F71F2-2)
+	dc.w	loc_1F72F6-(Sw_1F71F2-2), loc_1F72F6-(Sw_1F71F2-2), loc_1F72F6-(Sw_1F71F2-2), loc_1F72F6-(Sw_1F71F2-2)
+	dc.w	loc_1F72F6-(Sw_1F71F2-2), loc_1F72A0-(Sw_1F71F2-2), loc_1F72A0-(Sw_1F71F2-2), loc_1F72F6-(Sw_1F71F2-2)
+	dc.w	loc_1F72F6-(Sw_1F71F2-2), loc_1F72F6-(Sw_1F71F2-2), loc_1F72A0-(Sw_1F71F2-2), loc_1F72A0-(Sw_1F71F2-2)
+	dc.w	loc_1F72A0-(Sw_1F71F2-2), loc_1F72A0-(Sw_1F71F2-2), loc_1F72A0-(Sw_1F71F2-2), loc_1F72A0-(Sw_1F71F2-2)
+	dc.w	loc_1F72A0-(Sw_1F71F2-2), loc_1F72A0-(Sw_1F71F2-2), loc_1F72A0-(Sw_1F71F2-2), loc_1F72A0-(Sw_1F71F2-2)
+	dc.w	loc_1F72F6-(Sw_1F71F2-2), loc_1F72F6-(Sw_1F71F2-2), loc_1F72F6-(Sw_1F71F2-2), loc_1F72F6-(Sw_1F71F2-2)
+	dc.w	loc_1F72A0-(Sw_1F71F2-2), loc_1F72B6-(Sw_1F71F2-2), loc_1F72E2-(Sw_1F71F2-2), loc_1F72CC-(Sw_1F71F2-2)
+	incrom	$1F729E,$2
 	include "src/f/1F72A0.asm"
-	incrom	$1F72B6,$40
+	include "src/f/1F72B6.asm"
 	include "src/f/1F72F6.asm"
 	include "src/f/1F7300.asm"
 	include "src/f/1F7628.asm"
-	incrom	$1F7662,$24
+Sw_1F7628:	; switch table of sub at $1F7628: 16 word offsets from Sw_1F7628-2
+	dc.w	loc_1F7936-(Sw_1F7628-2), loc_1F76D6-(Sw_1F7628-2), loc_1F76D6-(Sw_1F7628-2), loc_1F76D6-(Sw_1F7628-2)
+	dc.w	loc_1F76D6-(Sw_1F7628-2), loc_1F7686-(Sw_1F7628-2), loc_1F7686-(Sw_1F7628-2), loc_1F7686-(Sw_1F7628-2)
+	dc.w	loc_1F7686-(Sw_1F7628-2), loc_1F7686-(Sw_1F7628-2), loc_1F7686-(Sw_1F7628-2), loc_1F7686-(Sw_1F7628-2)
+	dc.w	loc_1F7686-(Sw_1F7628-2), loc_1F7686-(Sw_1F7628-2), loc_1F7686-(Sw_1F7628-2), loc_1F7936-(Sw_1F7628-2)
+	incrom	$1F7682,$4
 	include "src/f/1F7686.asm"
 	include "src/f/1F76D6.asm"
-	incrom	$1F7804,$C6
+Sw_1F76D6:	; switch table of sub at $1F76D6: 32 word offsets from Sw_1F76D6-2
+	dc.w	loc_1F7874-(Sw_1F76D6-2), loc_1F78A0-(Sw_1F76D6-2), loc_1F78CA-(Sw_1F76D6-2), loc_1F7848-(Sw_1F76D6-2)
+	dc.w	loc_1F78CA-(Sw_1F76D6-2), loc_1F78CA-(Sw_1F76D6-2), loc_1F78CA-(Sw_1F76D6-2), loc_1F78CA-(Sw_1F76D6-2)
+	dc.w	loc_1F78CA-(Sw_1F76D6-2), loc_1F78CA-(Sw_1F76D6-2), loc_1F78CA-(Sw_1F76D6-2), loc_1F78CA-(Sw_1F76D6-2)
+	dc.w	loc_1F78CA-(Sw_1F76D6-2), loc_1F78CA-(Sw_1F76D6-2), loc_1F78CA-(Sw_1F76D6-2), loc_1F78CA-(Sw_1F76D6-2)
+	dc.w	loc_1F78CA-(Sw_1F76D6-2), loc_1F78CA-(Sw_1F76D6-2), loc_1F78CA-(Sw_1F76D6-2), loc_1F78CA-(Sw_1F76D6-2)
+	dc.w	loc_1F78CA-(Sw_1F76D6-2), loc_1F78CA-(Sw_1F76D6-2), loc_1F78CA-(Sw_1F76D6-2), loc_1F78CA-(Sw_1F76D6-2)
+	dc.w	loc_1F78CA-(Sw_1F76D6-2), loc_1F78CA-(Sw_1F76D6-2), loc_1F78CA-(Sw_1F76D6-2), loc_1F78CA-(Sw_1F76D6-2)
+	dc.w	loc_1F78CA-(Sw_1F76D6-2), loc_1F78CA-(Sw_1F76D6-2), loc_1F78A0-(Sw_1F76D6-2), loc_1F7874-(Sw_1F76D6-2)
+	incrom	$1F7844,$4
+	include "src/f/1F7848.asm"
 	include "src/f/1F78CA.asm"
 	include "src/f/1F7940.asm"
 	include "src/f/1F7956.asm"
 	include "src/f/1F79A2.asm"
-	incrom	$1F7A68,$14
+Sw_1F79A2:	; switch table of sub at $1F79A2: 10 word offsets from Sw_1F79A2-2
+	dc.w	loc_1F7A7C-(Sw_1F79A2-2), loc_1F7A7C-(Sw_1F79A2-2), loc_1F7A7C-(Sw_1F79A2-2), loc_1F7A7C-(Sw_1F79A2-2)
+	dc.w	loc_1F7A7C-(Sw_1F79A2-2), loc_1F7A7C-(Sw_1F79A2-2), loc_1F7A7C-(Sw_1F79A2-2), loc_1F7A7C-(Sw_1F79A2-2)
+	dc.w	loc_1F7A7C-(Sw_1F79A2-2), loc_1F7A7C-(Sw_1F79A2-2)
 	include "src/f/1F7A7C.asm"
 	include "src/f/1F7A82.asm"
 	include "src/f/1F7A9E.asm"
 	include "src/f/1F7AF8.asm"
-	incrom	$1F7B22,$14
+Sw_1F7AF8:	; switch table of sub at $1F7AF8: 10 word offsets from Sw_1F7AF8-2
+	dc.w	loc_1F7B36-(Sw_1F7AF8-2), loc_1F7B36-(Sw_1F7AF8-2), loc_1F7B36-(Sw_1F7AF8-2), loc_1F7B36-(Sw_1F7AF8-2)
+	dc.w	loc_1F7B36-(Sw_1F7AF8-2), loc_1F7B36-(Sw_1F7AF8-2), loc_1F7B36-(Sw_1F7AF8-2), loc_1F7B36-(Sw_1F7AF8-2)
+	dc.w	loc_1F7B36-(Sw_1F7AF8-2), loc_1F7B36-(Sw_1F7AF8-2)
 	include "src/f/1F7B36.asm"
 	include "src/f/1F7B3C.asm"
 	include "src/f/1F7BB6.asm"
@@ -4048,11 +4302,12 @@ Str_EmptyTag:	; empty C string: allocation tag used by sub_1FAD08 for its Mem_St
 	include "src/f/1FD9E8.asm"
 	include "src/f/1FDA56.asm"
 	include "src/f/1FDAEC.asm"
-	incrom	$1FDB62,$8
+Sw_1FDAEC:	; switch table of sub at $1FDAEC: 4 word offsets from Sw_1FDAEC-2
+	dc.w	loc_1FDB6A-(Sw_1FDAEC-2), loc_1FDB76-(Sw_1FDAEC-2), loc_1FDBC4-(Sw_1FDAEC-2), loc_1FDBD0-(Sw_1FDAEC-2)
 	include "src/f/1FDB6A.asm"
-	incrom	$1FDB76,$4E
+	include "src/f/1FDB76.asm"
 	include "src/f/1FDBC4.asm"
-	incrom	$1FDBD0,$C
+	include "src/f/1FDBD0.asm"
 	include "src/f/1FDBDC.asm"
 	include "src/f/1FDC18.asm"
 	include "src/f/1FDC5C.asm"

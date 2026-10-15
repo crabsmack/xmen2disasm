@@ -39,5 +39,5 @@ loc_065596:
 	moveq	#$0,d1
 	move.b	d0,d1
 	add.w	d1,d1
-	move.w	$655B8(pc,d1.w),d1
-	jmp	$655B6(pc,d1.w)
+	move.w	Sw_065532(pc,d1.w),d1
+	jmp	Sw_065532-2(pc,d1.w)

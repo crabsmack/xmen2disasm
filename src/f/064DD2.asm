@@ -14,5 +14,5 @@ loc_064DD8:
 	cmpi.w	#$7,d0
 	bgt.w	loc_064E82
 	add.w	d0,d0
-	move.w	$64E04(pc,d0.w),d0
-	jmp	$64E02(pc,d0.w)
+	move.w	Sw_064DD2(pc,d0.w),d0
+	jmp	Sw_064DD2-2(pc,d0.w)

@@ -17,5 +17,5 @@ sub_0BE2CE:
 	moveq	#$0,d1
 	move.b	d0,d1
 	add.w	d1,d1
-	move.w	$BE306(pc,d1.w),d1
-	jmp	$BE304(pc,d1.w)
+	move.w	Sw_0BE2CE(pc,d1.w),d1
+	jmp	Sw_0BE2CE-2(pc,d1.w)

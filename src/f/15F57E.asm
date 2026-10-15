@@ -3,6 +3,7 @@
 ; ---------------------------------------------------------------------------
 loc_15F57E:
 	move.l	d4,(a4)
+loc_15F580:
 	subq.w	#$1,d2
 	beq.s	loc_15F58C
 	subq.w	#$1,-$3B04(a5)
@@ -29,7 +30,7 @@ loc_15F590:
 	lea.l	loc_15F57E(pc),a3
 	bra.s	loc_15F5C4
 loc_15F5C0:
-	lea.l	$15F580(pc),a3
+	lea.l	loc_15F580(pc),a3
 loc_15F5C4:
 	movem.l	(a7)+,d0-d1/a0
 	rts

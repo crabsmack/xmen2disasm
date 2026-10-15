@@ -47,5 +47,5 @@ loc_138F8E:
 	moveq	#$0,d1
 	move.b	d0,d1
 	add.w	d1,d1
-	move.w	$138FB4(pc,d1.w),d1
-	jmp	$138FB2(pc,d1.w)
+	move.w	Sw_138F1E(pc,d1.w),d1
+	jmp	Sw_138F1E-2(pc,d1.w)

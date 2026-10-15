@@ -13,5 +13,5 @@ sub_0BF8DC:
 	cmpi.w	#$4,d0
 	bgt.w	loc_0BF9C8
 	add.w	d0,d0
-	move.w	$BF90A(pc,d0.w),d0
-	jmp	$BF908(pc,d0.w)
+	move.w	Sw_0BF8DC(pc,d0.w),d0
+	jmp	Sw_0BF8DC-2(pc,d0.w)

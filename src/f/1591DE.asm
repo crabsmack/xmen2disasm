@@ -10,5 +10,5 @@ sub_1591DE:
 	cmpi.w	#$7,d0
 	bgt.s	loc_15925C
 	add.w	d0,d0
-	move.w	$1591FC(pc,d0.w),d0
-	jmp	$1591FA(pc,d0.w)
+	move.w	Sw_1591DE(pc,d0.w),d0
+	jmp	Sw_1591DE-2(pc,d0.w)

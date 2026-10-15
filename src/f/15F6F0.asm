@@ -22,7 +22,8 @@ loc_15F6FC:
 	move.b	(a0)+,d5
 loc_15F714:
 	add.w	d0,d0
-	and.w	$15F71E(pc,d0.w),d1
+	and.w	loc_15F71E(pc,d0.w),d1
 	add.w	d3,d1
 	add.w	a3,d1
+loc_15F71E:
 	rts

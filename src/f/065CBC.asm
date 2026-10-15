@@ -26,5 +26,5 @@ loc_065CF2:
 	moveq	#$0,d1
 	move.b	d0,d1
 	add.w	d1,d1
-	move.w	$65D12(pc,d1.w),d1
-	jmp	$65D10(pc,d1.w)
+	move.w	Sw_065CBC(pc,d1.w),d1
+	jmp	Sw_065CBC-2(pc,d1.w)

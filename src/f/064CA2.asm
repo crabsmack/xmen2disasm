@@ -16,5 +16,5 @@ sub_064CA2:
 	cmpi.w	#$7,d0
 	bgt.w	loc_064DD2
 	add.w	d0,d0
-	move.w	$64CE2(pc,d0.w),d0
-	jmp	$64CE0(pc,d0.w)
+	move.w	Sw_064CA2(pc,d0.w),d0
+	jmp	Sw_064CA2-2(pc,d0.w)

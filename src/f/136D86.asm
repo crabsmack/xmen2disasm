@@ -10,5 +10,5 @@ sub_136D86:
 	cmpi.w	#$3,d0
 	bgt.s	loc_136DAE
 	add.w	d0,d0
-	move.w	$136DA6(pc,d0.w),d0
-	jmp	$136DA4(pc,d0.w)
+	move.w	Sw_136D86(pc,d0.w),d0
+	jmp	Sw_136D86-2(pc,d0.w)

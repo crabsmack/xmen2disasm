@@ -103,5 +103,5 @@ loc_05DEDC:
 	moveq	#$0,d1
 	move.b	d0,d1
 	add.w	d1,d1
-	move.w	$5DEF6(pc,d1.w),d1
-	jmp	$5DEF4(pc,d1.w)
+	move.w	Sw_05DDBE(pc,d1.w),d1
+	jmp	Sw_05DDBE-2(pc,d1.w)

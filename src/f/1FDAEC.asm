@@ -40,5 +40,5 @@ loc_1FDB46:
 	moveq	#$0,d1
 	move.b	d0,d1
 	add.w	d1,d1
-	move.w	$1FDB62(pc,d1.w),d1
-	jmp	$1FDB60(pc,d1.w)
+	move.w	Sw_1FDAEC(pc,d1.w),d1
+	jmp	Sw_1FDAEC-2(pc,d1.w)

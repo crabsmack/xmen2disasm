@@ -6,6 +6,7 @@
 ; ---------------------------------------------------------------------------
 Game_AttractDemoNightcrawler:
 	clr.w	-$3B90(a5)
+loc_005E52:
 	moveq	#$0,d7
 	move.b	-$3B56(a5),d7
 	tst.l	d7

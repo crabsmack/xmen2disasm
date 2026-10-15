@@ -11,5 +11,5 @@ sub_02CF04:
 	moveq	#$0,d1
 	move.b	d0,d1
 	add.w	d1,d1
-	move.w	$2CF28(pc,d1.w),d1
-	jmp	$2CF26(pc,d1.w)
+	move.w	Sw_02CF04(pc,d1.w),d1
+	jmp	Sw_02CF04-2(pc,d1.w)

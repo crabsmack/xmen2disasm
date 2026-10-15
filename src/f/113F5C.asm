@@ -57,5 +57,5 @@ loc_113FC6:
 	moveq	#$0,d1
 	move.b	d0,d1
 	add.w	d1,d1
-	move.w	$113FF4(pc,d1.w),d1
-	jmp	$113FF2(pc,d1.w)
+	move.w	Sw_113F5C(pc,d1.w),d1
+	jmp	Sw_113F5C-2(pc,d1.w)

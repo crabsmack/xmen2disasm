@@ -18,5 +18,5 @@ XNpc_TakeDamage:
 	moveq	#$0,d1
 	move.b	d0,d1
 	add.w	d1,d1
-	move.w	$113D4E(pc,d1.w),d1
-	jmp	$113D4C(pc,d1.w)
+	move.w	Sw_113D20(pc,d1.w),d1
+	jmp	Sw_113D20-2(pc,d1.w)

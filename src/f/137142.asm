@@ -38,5 +38,5 @@ loc_13719E:
 	cmpi.w	#$3,d0
 	bgt.s	loc_1371C8
 	add.w	d0,d0
-	move.w	$1371C0(pc,d0.w),d0
-	jmp	$1371BE(pc,d0.w)
+	move.w	Sw_137142(pc,d0.w),d0
+	jmp	Sw_137142-2(pc,d0.w)

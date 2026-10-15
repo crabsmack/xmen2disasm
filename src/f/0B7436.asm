@@ -16,5 +16,5 @@ sub_0B7436:
 	moveq	#$0,d1
 	move.b	d0,d1
 	add.w	d1,d1
-	move.w	$B746A(pc,d1.w),d1
-	jmp	$B7468(pc,d1.w)
+	move.w	Sw_0B7436(pc,d1.w),d1
+	jmp	Sw_0B7436-2(pc,d1.w)

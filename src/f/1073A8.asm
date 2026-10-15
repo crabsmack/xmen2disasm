@@ -15,5 +15,5 @@ sub_1073A8:
 	cmpi.w	#$D,d0
 	bgt.w	loc_10746C
 	add.w	d0,d0
-	move.w	$1073E4(pc,d0.w),d0
-	jmp	$1073E2(pc,d0.w)
+	move.w	Sw_1073A8(pc,d0.w),d0
+	jmp	Sw_1073A8-2(pc,d0.w)

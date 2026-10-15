@@ -16,5 +16,5 @@ BabyBio_Query7A:
 	moveq	#$0,d1
 	move.b	d0,d1
 	add.w	d1,d1
-	move.w	$11C68C(pc,d1.w),d1
-	jmp	$11C68A(pc,d1.w)
+	move.w	Sw_11C662(pc,d1.w),d1
+	jmp	Sw_11C662-2(pc,d1.w)

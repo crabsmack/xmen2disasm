@@ -137,5 +137,5 @@ loc_005E26:
 	cmpi.w	#$3,d0
 	bgt.s	Game_AttractDemoNightcrawler
 	add.w	d0,d0
-	move.w	$5E46(pc,d0.w),d0
-	jmp	$5E44(pc,d0.w)
+	move.w	Sw_005CC6(pc,d0.w),d0
+	jmp	Sw_005CC6-2(pc,d0.w)

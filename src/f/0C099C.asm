@@ -15,5 +15,5 @@ sub_0C099C:
 	moveq	#$0,d1
 	move.b	d0,d1
 	add.w	d1,d1
-	move.w	$C09CA(pc,d1.w),d1
-	jmp	$C09C8(pc,d1.w)
+	move.w	Sw_0C099C(pc,d1.w),d1
+	jmp	Sw_0C099C-2(pc,d1.w)

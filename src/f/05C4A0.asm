@@ -46,5 +46,5 @@ loc_05C500:
 	moveq	#$0,d1
 	move.b	d0,d1
 	add.w	d1,d1
-	move.w	$5C524(pc,d1.w),d1
-	jmp	$5C522(pc,d1.w)
+	move.w	Sw_05C4A0(pc,d1.w),d1
+	jmp	Sw_05C4A0-2(pc,d1.w)

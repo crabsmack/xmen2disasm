@@ -92,5 +92,5 @@ loc_118A0C:
 	cmpi.w	#$10,d0
 	bgt.w	loc_118C2E
 	add.w	d0,d0
-	move.w	$118A52(pc,d0.w),d0
-	jmp	$118A50(pc,d0.w)
+	move.w	Sw_11893C(pc,d0.w),d0
+	jmp	Sw_11893C-2(pc,d0.w)

@@ -199,5 +199,5 @@ loc_08439C:
 	cmpi.w	#$3,d0
 	bgt.s	loc_0843B8
 	add.w	d0,d0
-	move.w	$843B0(pc,d0.w),d0
-	jmp	$843AE(pc,d0.w)
+	move.w	Sw_0841C4(pc,d0.w),d0
+	jmp	Sw_0841C4-2(pc,d0.w)

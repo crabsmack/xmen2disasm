@@ -73,5 +73,5 @@ loc_106CAA:
 	cmpi.w	#$3,d0
 	bgt.s	loc_106CFE
 	add.w	d0,d0
-	move.w	$106CC0(pc,d0.w),d0
-	jmp	$106CBE(pc,d0.w)
+	move.w	Sw_106BF0(pc,d0.w),d0
+	jmp	Sw_106BF0-2(pc,d0.w)

@@ -16,5 +16,5 @@ sub_02CE52:
 	moveq	#$0,d1
 	move.b	d0,d1
 	add.w	d1,d1
-	move.w	$2CE86(pc,d1.w),d1
-	jmp	$2CE84(pc,d1.w)
+	move.w	Sw_02CE52(pc,d1.w),d1
+	jmp	Sw_02CE52-2(pc,d1.w)

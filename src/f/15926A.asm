@@ -10,5 +10,5 @@ sub_15926A:
 	cmpi.w	#$7,d0
 	bgt.s	loc_1592E8
 	add.w	d0,d0
-	move.w	$159288(pc,d0.w),d0
-	jmp	$159286(pc,d0.w)
+	move.w	Sw_15926A(pc,d0.w),d0
+	jmp	Sw_15926A-2(pc,d0.w)

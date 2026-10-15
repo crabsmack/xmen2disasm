@@ -22,5 +22,5 @@ loc_098DD0:
 	cmpi.w	#$6,d0
 	bgt.w	loc_098F86
 	add.w	d0,d0
-	move.w	$98DEA(pc,d0.w),d0
-	jmp	$98DE8(pc,d0.w)
+	move.w	Sw_098DA8(pc,d0.w),d0
+	jmp	Sw_098DA8-2(pc,d0.w)

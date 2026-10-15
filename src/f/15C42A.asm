@@ -28,5 +28,5 @@ sub_15C42A:
 	cmpi.w	#$8,d0
 	bgt.w	loc_15C5D6
 	add.w	d0,d0
-	move.w	$15C48C(pc,d0.w),d0
-	jmp	$15C48A(pc,d0.w)
+	move.w	Sw_15C42A(pc,d0.w),d0
+	jmp	Sw_15C42A-2(pc,d0.w)

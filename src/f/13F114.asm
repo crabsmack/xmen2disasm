@@ -12,5 +12,5 @@ sub_13F114:
 	cmpi.w	#$5,d0
 	bgt.s	loc_13F1AE
 	add.w	d0,d0
-	move.w	$13F13E(pc,d0.w),d0
-	jmp	$13F13C(pc,d0.w)
+	move.w	Sw_13F114(pc,d0.w),d0
+	jmp	Sw_13F114-2(pc,d0.w)

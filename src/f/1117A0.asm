@@ -10,5 +10,5 @@ sub_1117A0:
 	cmpi.w	#$A,d0
 	bgt.w	loc_111B9A
 	add.w	d0,d0
-	move.w	$1117C6(pc,d0.w),d0
-	jmp	$1117C4(pc,d0.w)
+	move.w	Sw_1117A0(pc,d0.w),d0
+	jmp	Sw_1117A0-2(pc,d0.w)

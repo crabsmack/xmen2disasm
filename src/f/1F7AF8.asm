@@ -13,5 +13,5 @@ sub_1F7AF8:
 	moveq	#$0,d1
 	move.b	d0,d1
 	add.w	d1,d1
-	move.w	$1F7B22(pc,d1.w),d1
-	jmp	$1F7B20(pc,d1.w)
+	move.w	Sw_1F7AF8(pc,d1.w),d1
+	jmp	Sw_1F7AF8-2(pc,d1.w)

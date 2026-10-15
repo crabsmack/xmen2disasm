@@ -161,7 +161,7 @@ def convert_missed(missed: list[int], runs: list[str]) -> int:
                                         (ins.mnemonic == "movem.l" and ins.op_str.endswith("-(a7)")))
         (subs if prologue else locs).append(s)
     locs += [a for a in missed if a not in set(subs) | set(locs)]
-    evidence = f"runtime: executed in {'+'.join(runs)}"
+    evidence = f"runtime: executed in the corpus (union of {len(runs)} runs; coverage.py)"
     rc = 0
     for kind, entries in (("sub", subs), ("loc", sorted(locs))):
         if not entries:

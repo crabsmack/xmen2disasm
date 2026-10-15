@@ -26,5 +26,5 @@ loc_034F90:
 	cmpi.w	#$E,d0
 	bgt.w	loc_035174
 	add.w	d0,d0
-	move.w	$34FBE(pc,d0.w),d0
-	jmp	$34FBC(pc,d0.w)
+	move.w	Sw_034F62(pc,d0.w),d0
+	jmp	Sw_034F62-2(pc,d0.w)

@@ -28,5 +28,5 @@ loc_0389E2:
 	moveq	#$7,d1
 	and.l	d0,d1
 	add.l	d1,d1
-	move.w	$389FE(pc,d1.l),d1
-	jmp	$389FC(pc,d1.w)
+	move.w	Sw_0389B6(pc,d1.l),d1
+	jmp	Sw_0389B6-2(pc,d1.w)

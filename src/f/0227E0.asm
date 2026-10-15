@@ -51,7 +51,7 @@ sub_0227E0:
 	jsr	sub_0227D8(pc)
 	jsr	sub_0227A4(pc)
 	jsr	sub_022716(pc)
-	pea.l	$226B2(pc)
+	pea.l	sub_0226B2(pc)
 	lea.l	$4DBA(a5),a0
 	move.l	$2(a0),-(a7)
 	lea.l	$4DBA(a5),a0

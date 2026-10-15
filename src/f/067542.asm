@@ -13,5 +13,5 @@ sub_067542:
 	moveq	#$0,d1
 	move.b	d0,d1
 	add.w	d1,d1
-	move.w	$6756E(pc,d1.w),d1
-	jmp	$6756C(pc,d1.w)
+	move.w	Sw_067542(pc,d1.w),d1
+	jmp	Sw_067542-2(pc,d1.w)

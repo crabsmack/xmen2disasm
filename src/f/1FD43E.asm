@@ -29,6 +29,7 @@ loc_1FD45E:
 	move.l	a4,-$BF8(a5)
 	subq.w	#$1,-$C28(a5)
 	beq.w	loc_1FD50E
+loc_1FD480:
 	dbra	d7,loc_1FC8A0
 	tst.b	-$C7C(a5)
 	beq.s	loc_1FD500
@@ -86,7 +87,7 @@ loc_1FD50A:
 	rts
 loc_1FD50E:
 	movem.l	d0-d7/a0-a4,-$C60(a5)
-	lea.l	$1FD480(pc),a0
+	lea.l	loc_1FD480(pc),a0
 	move.l	a0,-$C2C(a5)
 	moveq	#$1,d0
 	rts

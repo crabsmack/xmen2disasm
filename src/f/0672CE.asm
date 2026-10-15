@@ -17,5 +17,5 @@ ScalingActor_SetFrame:
 	moveq	#$0,d1
 	move.b	d0,d1
 	add.w	d1,d1
-	move.w	$672FE(pc,d1.w),d1
-	jmp	$672FC(pc,d1.w)
+	move.w	Sw_0672CE(pc,d1.w),d1
+	jmp	Sw_0672CE-2(pc,d1.w)

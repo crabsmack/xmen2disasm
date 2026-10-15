@@ -7,5 +7,5 @@ loc_034EA0:
 	cmpi.w	#$5,d0
 	bgt.w	loc_034F62
 	add.w	d0,d0
-	move.w	$34EBA(pc,d0.w),d0
-	jmp	$34EB8(pc,d0.w)
+	move.w	Sw_034EA0(pc,d0.w),d0
+	jmp	Sw_034EA0-2(pc,d0.w)

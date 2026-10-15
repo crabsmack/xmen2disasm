@@ -45,5 +45,5 @@ loc_0358F4:
 	cmpi.w	#$5,d0
 	bgt.s	loc_03596C
 	add.w	d0,d0
-	move.w	$3594A(pc,d0.w),d0
-	jmp	$35948(pc,d0.w)
+	move.w	Sw_0358D8(pc,d0.w),d0
+	jmp	Sw_0358D8-2(pc,d0.w)

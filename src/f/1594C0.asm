@@ -15,5 +15,5 @@ sub_1594C0:
 	moveq	#$0,d1
 	move.b	d0,d1
 	add.w	d1,d1
-	move.w	$1594F2(pc,d1.w),d1
-	jmp	$1594F0(pc,d1.w)
+	move.w	Sw_1594C0(pc,d1.w),d1
+	jmp	Sw_1594C0-2(pc,d1.w)

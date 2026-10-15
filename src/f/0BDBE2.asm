@@ -23,5 +23,5 @@ loc_0BDC10:
 	moveq	#$0,d1
 	move.b	d0,d1
 	add.w	d1,d1
-	move.w	$BDC2C(pc,d1.w),d1
-	jmp	$BDC2A(pc,d1.w)
+	move.w	Sw_0BDBE2(pc,d1.w),d1
+	jmp	Sw_0BDBE2-2(pc,d1.w)

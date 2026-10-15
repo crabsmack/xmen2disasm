@@ -39,5 +39,5 @@ loc_006288:
 	cmpi.w	#$5,d0
 	bgt.s	Player1_StartLife_Wolverine
 	add.w	d0,d0
-	move.w	$62A2(pc,d0.w),d0
-	jmp	$62A0(pc,d0.w)
+	move.w	Sw_006242(pc,d0.w),d0
+	jmp	Sw_006242-2(pc,d0.w)

@@ -15,5 +15,5 @@ Deathbird_Move:
 	moveq	#$0,d1
 	move.b	d0,d1
 	add.w	d1,d1
-	move.w	$112178(pc,d1.w),d1
-	jmp	$112176(pc,d1.w)
+	move.w	Sw_11214E(pc,d1.w),d1
+	jmp	Sw_11214E-2(pc,d1.w)

@@ -16,5 +16,5 @@ sub_1F7628:
 	moveq	#$0,d1
 	move.b	d0,d1
 	add.w	d1,d1
-	move.w	$1F7662(pc,d1.w),d1
-	jmp	$1F7660(pc,d1.w)
+	move.w	Sw_1F7628(pc,d1.w),d1
+	jmp	Sw_1F7628-2(pc,d1.w)

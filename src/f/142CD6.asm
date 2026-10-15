@@ -221,5 +221,5 @@ loc_142EA8:
 	moveq	#$0,d1
 	move.b	d0,d1
 	add.w	d1,d1
-	move.w	$142EFA(pc,d1.w),d1
-	jmp	$142EF8(pc,d1.w)
+	move.w	Sw_142CD6(pc,d1.w),d1
+	jmp	Sw_142CD6-2(pc,d1.w)
