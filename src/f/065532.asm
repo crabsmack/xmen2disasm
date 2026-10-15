@@ -8,7 +8,7 @@ Cerebro_RunTextScript:
 	link.w	a6,#$0
 	movem.l	d5-d7/a3-a4,-(a7)
 	clr.b	g_DemoSkipped(a5)
-	move.w	#$2,-$3B02(a5)
+	move.w	#$2,g_SceneVar3B02(a5)
 	jsr	$504A(a5)	; -> Spr_BeginFrame
 	lea.l	g_SpriteTable(a5),a0
 	movea.l	g_SprWritePtr(a5),a1
@@ -29,7 +29,7 @@ Cerebro_RunTextScript:
 	move.w	#$1C,$6(a0)
 	jsr	$5052(a5)	; -> Spr_EndFrame
 	move.b	#$1,g_DmaFlushReq(a5)
-	movea.l	-$3B14(a5),a4
+	movea.l	g_SceneVar3B14(a5),a4
 	bra.w	loc_06569A
 loc_065596:
 	move.b	(a4),d6

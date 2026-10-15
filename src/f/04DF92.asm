@@ -21,14 +21,14 @@ ApocBomb_StartAccelTimer:
 	move.l	a4,$10(a4)
 	move.l	a4,-(a7)
 	jsr	$4FDA(a5)	; -> Timer_Start
-	move.l	a4,-$3B20(a5)
+	move.l	a4,g_SceneVar3B20(a5)
 	clr.w	g_ApocBombSpeed(a5)
 	clr.w	g_ApocBombAccel(a5)
 	addq.w	#$4,a7
 	bra.s	loc_04DFD4
 loc_04DFCE:
 	moveq	#$0,d0
-	move.l	d0,-$3B20(a5)
+	move.l	d0,g_SceneVar3B20(a5)
 loc_04DFD4:
 	movea.l	-$4(a6),a4
 	unlk	a6

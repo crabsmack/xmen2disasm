@@ -17,8 +17,8 @@ SentinelsB2_InstallHooks:
 	pea.l	($144).w
 	pea.l	($9B0).w
 	jsr	$8A(a5)	; -> Players_PlaceAtStart
-	move.w	#$546,-$3B02(a5)
-	clr.w	-$3B08(a5)
+	move.w	#$546,g_SceneVar3B02(a5)
+	clr.w	g_SceneVar3B08(a5)
 	lea.l	$2632(a5),a0
 	move.l	$2(a0),g_CamShake(a5)
 	unlk	a6

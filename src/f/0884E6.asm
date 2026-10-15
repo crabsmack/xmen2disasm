@@ -8,9 +8,9 @@
 CloneA5_FrameHook:
 	link.w	a6,#$0
 	moveq	#$20,d0
-	and.w	-$3B0C(a5),d0
+	and.w	g_SceneVar3B0C(a5),d0
 	bne.s	loc_08850A
-	ori.w	#$20,-$3B0C(a5)
+	ori.w	#$20,g_SceneVar3B0C(a5)
 	moveq	#$1,d0
 	move.l	d0,-(a7)
 	pea.l	CloneA5_LoadResources(pc)
@@ -23,7 +23,7 @@ loc_08850A:
 	jsr	CloneA5_AnimShockSprites(pc)
 	tst.b	g_BroodBossHealthBar(a5)
 	beq.s	loc_088526
-	movea.l	-$3B18(a5),a0
+	movea.l	g_SceneVar3B18(a5),a0
 	move.b	g_BroodBossHealthBar(a5),$4(a0)
 loc_088526:
 	tst.b	g_PalFadeActive(a5)
@@ -32,7 +32,7 @@ loc_088526:
 	beq.s	loc_08854E
 	moveq	#$1,d0
 	move.l	d0,-(a7)
-	move.l	-$3B18(a5),-(a7)
+	move.l	g_SceneVar3B18(a5),-(a7)
 	pea.l	g_CloneA5PalCycles(a5)
 	pea.l	g_CloneA5PalCycles+$2(a5)
 	pea.l	g_CloneA5PalCycles+$4(a5)
@@ -50,7 +50,7 @@ loc_08854E:
 	beq.s	loc_088584
 	moveq	#$1,d0
 	move.l	d0,-(a7)
-	move.l	-$3B18(a5),-(a7)
+	move.l	g_SceneVar3B18(a5),-(a7)
 	pea.l	g_CloneA5PalCycles(a5)
 	pea.l	g_CloneA5PalCycles+$2(a5)
 	pea.l	g_CloneA5PalCycles+$4(a5)

@@ -24,20 +24,20 @@ BroodClaw_Swing:
 	beq.s	loc_09B292
 	cmpi.l	#$2400,$9C(a4)
 	ble.s	loc_09B26A
-	move.w	#$4,-$3B10(a5)
+	move.w	#$4,g_SceneVar3B10(a5)
 	bra.s	loc_09B292
 loc_09B26A:
 	cmpi.l	#$1800,$9C(a4)
 	ble.s	loc_09B27A
-	clr.w	-$3B10(a5)
+	clr.w	g_SceneVar3B10(a5)
 	bra.s	loc_09B292
 loc_09B27A:
 	cmpi.l	#$A00,$9C(a4)
 	ble.s	loc_09B28C
-	move.w	#$1,-$3B10(a5)
+	move.w	#$1,g_SceneVar3B10(a5)
 	bra.s	loc_09B292
 loc_09B28C:
-	move.w	#$2,-$3B10(a5)
+	move.w	#$2,g_SceneVar3B10(a5)
 loc_09B292:
 	move.l	$9C(a4),d0
 	asr.l	#$8,d0
@@ -60,7 +60,7 @@ loc_09B292:
 	beq.w	loc_09B388
 loc_09B2C4:
 	move.b	#$1,$8B(a4)
-	ori.w	#$10,-$3B0C(a5)
+	ori.w	#$10,g_SceneVar3B0C(a5)
 	moveq	#$1,d6
 	clr.w	d7
 	tst.l	$9C(a4)
@@ -84,7 +84,7 @@ loc_09B2F4:
 	beq.s	loc_09B316
 	move.w	$16(a4),d0
 	asr.w	#$8,d0
-	add.w	d0,-$3B02(a5)
+	add.w	d0,g_SceneVar3B02(a5)
 	bra.s	loc_09B324
 loc_09B316:
 	move.w	#$FF00,d0
@@ -96,15 +96,15 @@ loc_09B324:
 	beq.s	loc_09B354
 	cmpi.l	#$D00,$9C(a4)
 	bge.s	loc_09B33C
-	move.w	#$2,-$3B10(a5)
+	move.w	#$2,g_SceneVar3B10(a5)
 	bra.s	loc_09B354
 loc_09B33C:
 	cmpi.l	#$2200,$9C(a4)
 	bge.s	loc_09B34E
-	move.w	#$3,-$3B10(a5)
+	move.w	#$3,g_SceneVar3B10(a5)
 	bra.s	loc_09B354
 loc_09B34E:
-	move.w	#$4,-$3B10(a5)
+	move.w	#$4,g_SceneVar3B10(a5)
 loc_09B354:
 	tst.l	$9C(a4)
 	ble.s	loc_09B368
@@ -153,7 +153,7 @@ loc_09B3BC:
 	asr.w	#$8,d1
 	ext.l	d1
 	add.l	d0,d1
-	cmp.l	-$3B20(a5),d1
+	cmp.l	g_SceneVar3B20(a5),d1
 	bge.s	loc_09B454
 	tst.b	$90(a4)
 	beq.s	loc_09B454
@@ -182,7 +182,7 @@ loc_09B3BC:
 	clr.w	$5C(a0)
 	move.l	g_Camera(a5),-(a7)
 	jsr	$18FA(a5)	; -> XClone_CamSetNormal
-	ori.w	#$80,-$3B0C(a5)
+	ori.w	#$80,g_SceneVar3B0C(a5)
 	jsr	$3912(a5)	; -> LineSegKiller_KillAll
 	addq.w	#$4,a7
 loc_09B454:

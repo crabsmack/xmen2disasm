@@ -13,7 +13,7 @@ BaniMazaA2_FrameHook:
 	move.l	g_FrameCounter(a5),d0
 	addq.l	#$1,g_FrameCounter(a5)
 loc_0477CE:
-	movea.l	-$3B14(a5),a0
+	movea.l	g_SceneVar3B14(a5),a0
 	tst.w	$84(a0)
 	beq.s	loc_0477DC
 	jsr	BaniMazaA2_UpdateDebris(pc)

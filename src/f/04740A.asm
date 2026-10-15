@@ -6,17 +6,17 @@
 ; ---------------------------------------------------------------------------
 BaniMazaA2_ResetCounters:
 	link.w	a6,#$0
-	clr.w	-$3B0C(a5)
-	clr.w	-$3B0E(a5)
-	move.w	#$2,-$3B02(a5)
-	move.w	-$3B02(a5),-$3B32(a5)
-	clr.w	-$3B3A(a5)
-	move.w	#$4,-$3B34(a5)
-	clr.w	-$3B3C(a5)
-	clr.w	-$3B06(a5)
-	move.w	#$1,-$3B0A(a5)
-	move.w	#$6,-$3B38(a5)
-	move.w	-$3B38(a5),-$3B36(a5)
-	clr.w	-$3B3E(a5)
+	clr.w	g_SceneVar3B0C(a5)
+	clr.w	g_SceneVar3B0E(a5)
+	move.w	#$2,g_SceneVar3B02(a5)
+	move.w	g_SceneVar3B02(a5),g_SceneVar3B32(a5)
+	clr.w	g_SceneVar3B3A(a5)
+	move.w	#$4,g_SceneVar3B34(a5)
+	clr.w	g_SceneVar3B3C(a5)
+	clr.w	g_SceneVar3B06(a5)
+	move.w	#$1,g_SceneVar3B0A(a5)
+	move.w	#$6,g_SceneVar3B38(a5)
+	move.w	g_SceneVar3B38(a5),g_SceneVar3B36(a5)
+	clr.w	g_SceneVar3B3E(a5)
 	unlk	a6
 	rts

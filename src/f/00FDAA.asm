@@ -8,7 +8,7 @@ AvalonB1_RunScene:
 	link.w	a6,#$FFE0
 	move.l	a4,-(a7)
 	lea.l	-$20(a6),a4
-	move.l	a4,-$3B14(a5)
+	move.l	a4,g_SceneVar3B14(a5)
 	lea.l	$AA(a5),a0
 	move.l	$2(a0),-(a7)
 	moveq	#$0,d0

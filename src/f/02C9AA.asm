@@ -8,14 +8,14 @@ AvalonA3_FrameHook:
 	link.w	a6,#$0
 	move.l	g_FrameCounter(a5),d0
 	addq.l	#$1,g_FrameCounter(a5)
-	move.w	-$3B06(a5),d0
-	subq.w	#$1,-$3B06(a5)
+	move.w	g_SceneVar3B06(a5),d0
+	subq.w	#$1,g_SceneVar3B06(a5)
 	tst.b	g_TwoPlayerStep(a5)
 	beq.s	loc_02C9D4
 	move.l	g_FrameCounter(a5),d0
 	addq.l	#$1,g_FrameCounter(a5)
-	move.w	-$3B06(a5),d0
-	subq.w	#$1,-$3B06(a5)
+	move.w	g_SceneVar3B06(a5),d0
+	subq.w	#$1,g_SceneVar3B06(a5)
 loc_02C9D4:
 	tst.w	g_AvalonA3SprDelays+$C(a5)
 	bne.s	loc_02CA12

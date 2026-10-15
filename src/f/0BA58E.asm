@@ -15,15 +15,15 @@ SavageBigBio_Init:
 	movea.l	$2(a0),a0
 	movea.l	$12(a0),a1
 	jsr	(a1)
-	clr.w	-$3B06(a5)
+	clr.w	g_SceneVar3B06(a5)
 	moveq	#$0,d0
-	move.l	d0,-$3B18(a5)
-	move.l	d0,-$3B1C(a5)
+	move.l	d0,g_SceneVar3B18(a5)
+	move.l	d0,g_SceneVar3B1C(a5)
 	addi.w	#$30,$9E(a4)
 	subi.w	#$30,$A0(a4)
-	movea.l	-$3B14(a5),a0
+	movea.l	g_SceneVar3B14(a5),a0
 	move.b	-$3B01(a5),$2(a0)
-	movea.l	-$3B14(a5),a0
+	movea.l	g_SceneVar3B14(a5),a0
 	move.l	a0,$8C(a4)
 	moveq	#$0,d1
 	move.b	$2(a0),d1
@@ -59,7 +59,7 @@ loc_0BA630:
 	moveq	#$0,d0
 	move.l	d0,$B0(a4)
 	clr.w	$AE(a4)
-	move.l	#$580,-$3B24(a5)
+	move.l	#$580,g_SceneVar3B24(a5)
 	pea.l	($FF).w
 	move.l	a4,-(a7)
 	movea.l	(a4),a0

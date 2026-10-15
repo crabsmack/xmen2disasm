@@ -9,7 +9,7 @@ BaniMazaA2_SetPaletteStep:
 	movem.l	d7/a4,-(a7)
 	lea.l	$98A(a5),a0
 	movea.l	$2(a0),a4
-	move.w	-$3B0C(a5),d0
+	move.w	g_SceneVar3B0C(a5),d0
 	ext.l	d0
 	subq.l	#$1,d0
 	lsl.l	#$2,d0
@@ -30,12 +30,12 @@ loc_04762E:
 	bne.s	loc_04762E
 	move.b	#$1,g_PalBaseDirty(a5)
 	moveq	#$1,d0
-	and.w	-$3B0C(a5),d0
+	and.w	g_SceneVar3B0C(a5),d0
 	beq.s	loc_047660
 	moveq	#$1,d0
-	cmp.w	-$3B38(a5),d0
+	cmp.w	g_SceneVar3B38(a5),d0
 	bge.s	loc_047660
-	subq.w	#$1,-$3B38(a5)
+	subq.w	#$1,g_SceneVar3B38(a5)
 loc_047660:
 	movem.l	-$8(a6),d7/a4
 	unlk	a6

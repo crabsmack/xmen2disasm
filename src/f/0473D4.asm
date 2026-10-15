@@ -7,7 +7,7 @@
 BaniMazaA2_UpdateDebris:
 	link.w	a6,#$0
 	movem.l	d3/d7/a4,-(a7)
-	movea.l	-$3B14(a5),a4
+	movea.l	g_SceneVar3B14(a5),a4
 	clr.w	d7
 loc_0473E2:
 	move.l	a4,-(a7)

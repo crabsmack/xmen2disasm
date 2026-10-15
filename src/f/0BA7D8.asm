@@ -42,7 +42,7 @@ SavageBigBio_TentacleHit:
 	cmp.l	d0,d2
 	bgt.s	loc_0BA85A
 	move.w	$E(a6),d0
-	or.w	d0,-$3B06(a5)
+	or.w	d0,g_SceneVar3B06(a5)
 	ext.l	d7
 	move.l	d7,d0
 	addq.l	#$8,d0

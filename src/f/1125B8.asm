@@ -19,7 +19,7 @@ Deathbird_StateHurt:
 	jsr	$406A(a5)	; -> List_Unlink
 	moveq	#$0,d0
 	move.l	d0,$80(a4)
-	move.w	#$C,-$3B06(a5)
+	move.w	#$C,g_SceneVar3B06(a5)
 	tst.w	$68(a4)
 	lea.l	$10(a7),a7
 	bgt.s	loc_112628

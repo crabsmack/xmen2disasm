@@ -34,7 +34,7 @@ loc_0B6152:
 	jsr	SavageA4_CyclePalettes(pc)
 loc_0B616E:
 	moveq	#$8,d0
-	cmp.w	-$3B02(a5),d0
+	cmp.w	g_SceneVar3B02(a5),d0
 	blt.s	loc_0B6192
 	move.l	g_FrameCounter(a5),d0
 	btst	#$0,d0
@@ -46,51 +46,51 @@ loc_0B618A:
 	lea.l	$1DD2(a5),a0
 	movea.l	$2(a0),a4
 loc_0B6192:
-	move.w	-$3B02(a5),d0
-	cmp.w	-$3B04(a5),d0
+	move.w	g_SceneVar3B02(a5),d0
+	cmp.w	g_SceneVar3B04(a5),d0
 	beq.w	loc_0B6224
 	moveq	#$10,d0
-	cmp.w	-$3B02(a5),d0
+	cmp.w	g_SceneVar3B02(a5),d0
 	blt.s	loc_0B61C0
 	moveq	#$10,d0
-	cmp.w	-$3B04(a5),d0
+	cmp.w	g_SceneVar3B04(a5),d0
 	bge.s	loc_0B61C0
 	lea.l	$1DDA(a5),a0
 	movea.l	$2(a0),a4
-	addi.l	#$80,-$3B24(a5)
+	addi.l	#$80,g_SceneVar3B24(a5)
 	bra.s	loc_0B6224
 loc_0B61C0:
 	moveq	#$18,d0
-	cmp.w	-$3B02(a5),d0
+	cmp.w	g_SceneVar3B02(a5),d0
 	blt.s	loc_0B61E2
 	moveq	#$18,d0
-	cmp.w	-$3B04(a5),d0
+	cmp.w	g_SceneVar3B04(a5),d0
 	bge.s	loc_0B61E2
 	lea.l	$1DE2(a5),a0
 	movea.l	$2(a0),a4
-	addi.l	#$80,-$3B24(a5)
+	addi.l	#$80,g_SceneVar3B24(a5)
 	bra.s	loc_0B6224
 loc_0B61E2:
 	moveq	#$20,d0
-	cmp.w	-$3B02(a5),d0
+	cmp.w	g_SceneVar3B02(a5),d0
 	blt.s	loc_0B6204
 	moveq	#$20,d0
-	cmp.w	-$3B04(a5),d0
+	cmp.w	g_SceneVar3B04(a5),d0
 	bge.s	loc_0B6204
 	lea.l	$1DEA(a5),a0
 	movea.l	$2(a0),a4
-	addi.l	#$80,-$3B24(a5)
+	addi.l	#$80,g_SceneVar3B24(a5)
 	bra.s	loc_0B6224
 loc_0B6204:
 	moveq	#$28,d0
-	cmp.w	-$3B02(a5),d0
+	cmp.w	g_SceneVar3B02(a5),d0
 	blt.s	loc_0B6224
 	moveq	#$28,d0
-	cmp.w	-$3B04(a5),d0
+	cmp.w	g_SceneVar3B04(a5),d0
 	bge.s	loc_0B6224
 	lea.l	$1DF2(a5),a0
 	movea.l	$2(a0),a4
-	addi.l	#$80,-$3B24(a5)
+	addi.l	#$80,g_SceneVar3B24(a5)
 loc_0B6224:
 	move.l	a4,d0
 	beq.s	loc_0B6242
@@ -105,7 +105,7 @@ loc_0B6224:
 	move.w	(a4)+,(a3)+
 	move.b	#$1,g_PalBaseDirty(a5)
 loc_0B6242:
-	move.w	-$3B02(a5),-$3B04(a5)
+	move.w	g_SceneVar3B02(a5),g_SceneVar3B04(a5)
 	movem.l	-$8(a6),a3-a4
 	unlk	a6
 	rts

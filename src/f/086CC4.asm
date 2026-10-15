@@ -27,7 +27,7 @@ loc_086CFE:
 	moveq	#$5,d1
 	cmp.l	d0,d1
 	ble.s	loc_086D42
-	ori.w	#$1,-$3B0C(a5)
+	ori.w	#$1,g_SceneVar3B0C(a5)
 	lea.l	CloneA5_SegHook17(pc),a0
 	move.l	a0,g_SegTypeHooks+$5C(a5)
 	tst.l	$92(a4)

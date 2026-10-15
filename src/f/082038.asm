@@ -6,7 +6,7 @@
 ; ---------------------------------------------------------------------------
 CloneA2_CamAltTimer:
 	link.w	a6,#$0
-	tst.w	-$3AFA(a5)
+	tst.w	g_FloatFallSpeed(a5)
 	bne.s	loc_082066
 	move.l	g_Camera(a5),-(a7)
 	jsr	CloneA2_CamHookNormal(pc)

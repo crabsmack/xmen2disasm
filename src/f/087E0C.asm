@@ -15,7 +15,7 @@ BroodBoss_StateExplode:
 	asr.l	#$8,d7
 	moveq	#$6,d0
 	move.l	d0,-(a7)
-	move.l	-$3B14(a5),-(a7)
+	move.l	g_SceneVar3B14(a5),-(a7)
 	move.w	d7,d1
 	ext.l	d1
 	move.l	d1,-(a7)
@@ -25,7 +25,7 @@ BroodBoss_StateExplode:
 	jsr	$3B6A(a5)	; -> Debris_Spawn
 	moveq	#$6,d0
 	move.l	d0,-(a7)
-	move.l	-$3B14(a5),-(a7)
+	move.l	g_SceneVar3B14(a5),-(a7)
 	ext.l	d7
 	move.l	d7,d1
 	moveq	#-$18,d2
@@ -39,7 +39,7 @@ BroodBoss_StateExplode:
 	jsr	$3B6A(a5)	; -> Debris_Spawn
 	moveq	#$6,d0
 	move.l	d0,-(a7)
-	move.l	-$3B14(a5),-(a7)
+	move.l	g_SceneVar3B14(a5),-(a7)
 	ext.l	d7
 	move.l	d7,d1
 	moveq	#-$12,d2

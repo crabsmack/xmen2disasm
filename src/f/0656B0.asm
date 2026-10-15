@@ -8,9 +8,9 @@ PlayerSelect_Run:
 	link.w	a6,#$FF7A
 	movem.l	d4-d7/a3-a4,-(a7)
 	lea.l	-$84(a6),a0
-	move.l	a0,-$3B28(a5)
+	move.l	a0,g_SceneVar3B28(a5)
 	lea.l	-$42(a6),a0
-	move.l	a0,-$3B2C(a5)
+	move.l	a0,g_SceneVar3B2C(a5)
 	moveq	#$0,d0
 	move.b	g_ScnCerebroBaniMaza(a5),d0
 	cmp.w	g_SceneIndex(a5),d0
@@ -52,9 +52,9 @@ loc_065710:
 loc_06572E:
 	moveq	#$0,d0
 	move.b	(a3),d0
-	move.w	d0,-$3B0E(a5)
+	move.w	d0,g_SceneVar3B0E(a5)
 	addq.w	#$2,a3
-	move.l	a3,-$3B30(a5)
+	move.l	a3,g_SceneVar3B30(a5)
 	move.b	#$1,-$45(a6)
 	move.b	g_P1CharIndex(a5),-$48(a6)
 	dc.w	$1D7C,$FFFF,$FFB9	; insn: move.b #$ff, -$47(a6)
@@ -86,7 +86,7 @@ loc_06572E:
 	move.w	g_VramTileCursor(a5),-$38(a6)
 	move.w	#$1,-$36(a6)
 	add.w	d4,g_VramTileCursor(a5)
-	move.w	#$7,-$3B02(a5)
+	move.w	#$7,g_SceneVar3B02(a5)
 	pea.l	-$84(a6)
 	moveq	#$0,d0
 	move.l	d0,-(a7)
@@ -142,8 +142,8 @@ loc_06572E:
 	cmp.b	g_P1CharIndex(a5),d0
 	beq.s	loc_065894
 loc_06587A:
-	move.w	#$5,-$3B04(a5)
-	move.w	#$16,-$3B06(a5)
+	move.w	#$5,g_SceneVar3B04(a5)
+	move.w	#$16,g_SceneVar3B06(a5)
 	moveq	#$2,d0
 	move.l	d0,-(a7)
 	pea.l	Str_PressStart_065DAA(pc)
@@ -156,8 +156,8 @@ loc_065894:
 	cmp.b	g_P2CharIndex(a5),d0
 	beq.s	loc_0658BC
 loc_0658A2:
-	move.w	#$18,-$3B04(a5)
-	move.w	#$16,-$3B06(a5)
+	move.w	#$18,g_SceneVar3B04(a5)
+	move.w	#$16,g_SceneVar3B06(a5)
 	moveq	#$3,d0
 	move.l	d0,-(a7)
 	pea.l	Str_PressStart(pc)
@@ -197,7 +197,7 @@ loc_065922:
 	movea.l	g_SceneDrawHook(a5),a0
 	jsr	(a0)
 	jsr	PlayerSelect_DrawFrames(pc)
-	movea.l	-$3B28(a5),a0
+	movea.l	g_SceneVar3B28(a5),a0
 	moveq	#-$1,d0
 	cmp.b	$3C(a0),d0
 	beq.w	loc_065A76
@@ -306,7 +306,7 @@ loc_065A1C:
 	movea.l	g_SprWritePtr(a5),a0
 	move.w	d0,$6(a0)
 loc_065A76:
-	movea.l	-$3B2C(a5),a0
+	movea.l	g_SceneVar3B2C(a5),a0
 	moveq	#-$1,d0
 	cmp.b	$3C(a0),d0
 	beq.w	loc_065BBE
@@ -442,7 +442,7 @@ loc_065BFE:
 	bgt.w	loc_0658C6
 	jsr	$5012(a5)	; -> ClassList_CallSlot62
 	clr.b	g_InLevelLoop(a5)
-	movea.l	-$3B28(a5),a0
+	movea.l	g_SceneVar3B28(a5),a0
 	move.b	g_P1CharIndex(a5),d0
 	cmp.b	$3C(a0),d0
 	beq.s	loc_065C3A
@@ -451,7 +451,7 @@ loc_065BFE:
 	bne.s	loc_065C30
 	move.w	#$700,g_P1Health(a5)
 loc_065C30:
-	movea.l	-$3B28(a5),a0
+	movea.l	g_SceneVar3B28(a5),a0
 	move.b	$3C(a0),g_P1CharIndex(a5)
 loc_065C3A:
 	move.w	#$C000,g_Player1+$4(a5)

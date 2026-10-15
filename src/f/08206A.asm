@@ -15,7 +15,7 @@ CloneA2_StartCamAltMode:
 	pea.l	CloneA2_CamAltTimer(pc)
 	jsr	$4FD2(a5)	; -> Timer_Create
 	movea.l	d0,a4
-	move.w	#$300,-$3AFA(a5)
+	move.w	#$300,g_FloatFallSpeed(a5)
 	move.l	a4,d0
 	lea.l	$10(a7),a7
 	beq.s	loc_0820A6

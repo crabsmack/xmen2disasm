@@ -19,7 +19,7 @@ Cerebro_TextOpPrint:
 loc_06569A:
 	tst.b	(a4)
 	bne.w	loc_065596
-	move.w	#$FFFF,-$3B02(a5)
+	move.w	#$FFFF,g_SceneVar3B02(a5)
 	movem.l	-$14(a6),d5-d7/a3-a4
 	unlk	a6
 	rts

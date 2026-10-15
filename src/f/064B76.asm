@@ -15,12 +15,12 @@ PlayerSelect_PrevFreeChar:
 	moveq	#$0,d3
 	bra.s	loc_064BB2
 loc_064B90:
-	movea.l	-$3B28(a5),a0
+	movea.l	g_SceneVar3B28(a5),a0
 	move.b	$3C(a0),d0
 	ext.w	d0
 	cmp.w	d7,d0
 	beq.s	loc_064BB0
-	movea.l	-$3B2C(a5),a0
+	movea.l	g_SceneVar3B2C(a5),a0
 	move.b	$3C(a0),d0
 	ext.w	d0
 	cmp.w	d7,d0
@@ -32,16 +32,16 @@ loc_064BB0:
 loc_064BB2:
 	cmp.w	d7,d3
 	ble.s	loc_064B90
-	move.w	-$3B0E(a5),d7
+	move.w	g_SceneVar3B0E(a5),d7
 	subq.w	#$1,d7
 	bra.s	loc_064BE0
 loc_064BBE:
-	movea.l	-$3B28(a5),a0
+	movea.l	g_SceneVar3B28(a5),a0
 	move.b	$3C(a0),d0
 	ext.w	d0
 	cmp.w	d7,d0
 	beq.s	loc_064BDE
-	movea.l	-$3B2C(a5),a0
+	movea.l	g_SceneVar3B2C(a5),a0
 	move.b	$3C(a0),d0
 	ext.w	d0
 	cmp.w	d7,d0

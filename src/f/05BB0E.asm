@@ -35,8 +35,8 @@ Boulder_ClassInit:
 	move.l	d0,-(a7)
 	jsr	Boulder_InitDebrisPool(pc)
 	lea.l	$20(a7),a7
-	clr.w	-$3B32(a5)
-	clr.w	-$3B04(a5)
+	clr.w	g_SceneVar3B32(a5)
+	clr.w	g_SceneVar3B04(a5)
 	move.l	-$4(a6),d7
 	unlk	a6
 	rts

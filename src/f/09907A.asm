@@ -29,19 +29,19 @@ loc_0990AC:
 	bne.s	loc_0990CC
 	ori.l	#$200000,g_Player2+$90(a5)
 loc_0990CC:
-	tst.l	-$3B30(a5)
+	tst.l	g_SceneVar3B30(a5)
 	bne.s	loc_0990D6
-	move.l	a4,-$3B30(a5)
+	move.l	a4,g_SceneVar3B30(a5)
 loc_0990D6:
 	move.w	g_CamMinX(a5),d0
-	cmp.w	-$3B2C(a5),d0
+	cmp.w	g_SceneVar3B2C(a5),d0
 	sgt.b	d3
 	neg.b	d3
 	beq.s	loc_0990EA
 	move.w	g_CamMinX(a5),d0
 	bra.s	loc_0990EE
 loc_0990EA:
-	move.w	-$3B2C(a5),d0
+	move.w	g_SceneVar3B2C(a5),d0
 loc_0990EE:
 	move.w	d0,d4
 	move.w	$A4(a4),d0
@@ -62,7 +62,7 @@ loc_099110:
 	sub.w	#$20,d0
 loc_099118:
 	move.w	d0,d5
-	move.w	-$3B2A(a5),d0
+	move.w	g_SceneVar3B2A(a5),d0
 	ext.l	d0
 	sub.l	#$140,d0
 	move.w	g_CamMaxX(a5),d1
@@ -75,7 +75,7 @@ loc_099118:
 	ext.l	d0
 	bra.s	loc_099144
 loc_09913C:
-	move.w	-$3B2A(a5),d0
+	move.w	g_SceneVar3B2A(a5),d0
 	sub.w	#$140,d0
 loc_099144:
 	move.w	d0,d6
@@ -96,10 +96,10 @@ loc_099168:
 	add.w	#$FF40,d0
 loc_099170:
 	move.w	d0,d7
-	move.w	d4,-$3B0A(a5)
-	move.w	d5,-$3B0C(a5)
-	move.w	d6,-$3B0E(a5)
-	move.w	d7,-$3B10(a5)
+	move.w	d4,g_SceneVar3B0A(a5)
+	move.w	d5,g_SceneVar3B0C(a5)
+	move.w	d6,g_SceneVar3B0E(a5)
+	move.w	d7,g_SceneVar3B10(a5)
 	lea.l	XClone_CamSetArenaMode(pc),a0
 	movea.l	g_Camera(a5),a1
 	move.l	a0,$1C(a1)

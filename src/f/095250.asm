@@ -175,12 +175,12 @@ loc_095412:
 loc_095446:
 	move.w	$C(a3),d0
 loc_09544A:
-	move.w	d0,-$3B2C(a5)
+	move.w	d0,g_SceneVar3B2C(a5)
 	bra.s	loc_09545A
 loc_095450:
 	move.w	d7,d0
 	sub.w	#$A0,d0
-	move.w	d0,-$3B2C(a5)
+	move.w	d0,g_SceneVar3B2C(a5)
 loc_09545A:
 	moveq	#$19,d0
 	move.l	d0,-(a7)
@@ -206,12 +206,12 @@ loc_09545A:
 loc_09548E:
 	move.w	$C(a3),d0
 loc_095492:
-	move.w	d0,-$3B2A(a5)
+	move.w	d0,g_SceneVar3B2A(a5)
 	bra.s	loc_0954A2
 loc_095498:
 	move.w	d7,d0
 	add.w	#$A0,d0
-	move.w	d0,-$3B2A(a5)
+	move.w	d0,g_SceneVar3B2A(a5)
 loc_0954A2:
 	clr.b	$B7(a4)
 	clr.b	$B8(a4)

@@ -14,12 +14,12 @@ PlayerSelect_NextFreeChar:
 	addq.w	#$1,d7
 	bra.s	loc_064C2A
 loc_064C08:
-	movea.l	-$3B28(a5),a0
+	movea.l	g_SceneVar3B28(a5),a0
 	move.b	$3C(a0),d0
 	ext.w	d0
 	cmp.w	d7,d0
 	beq.s	loc_064C28
-	movea.l	-$3B2C(a5),a0
+	movea.l	g_SceneVar3B2C(a5),a0
 	move.b	$3C(a0),d0
 	ext.w	d0
 	cmp.w	d7,d0
@@ -29,17 +29,17 @@ loc_064C08:
 loc_064C28:
 	addq.w	#$1,d7
 loc_064C2A:
-	cmp.w	-$3B0E(a5),d7
+	cmp.w	g_SceneVar3B0E(a5),d7
 	blt.s	loc_064C08
 	clr.w	d7
 	bra.s	loc_064C56
 loc_064C34:
-	movea.l	-$3B28(a5),a0
+	movea.l	g_SceneVar3B28(a5),a0
 	move.b	$3C(a0),d0
 	ext.w	d0
 	cmp.w	d7,d0
 	beq.s	loc_064C54
-	movea.l	-$3B2C(a5),a0
+	movea.l	g_SceneVar3B2C(a5),a0
 	move.b	$3C(a0),d0
 	ext.w	d0
 	cmp.w	d7,d0

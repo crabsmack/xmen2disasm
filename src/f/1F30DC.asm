@@ -8,7 +8,7 @@ XPlayer_Land:
 	link.w	a6,#$0
 	movem.l	d3/a4,-(a7)
 	movea.l	$8(a6),a4
-	clr.w	-$3AFA(a5)
+	clr.w	g_FloatFallSpeed(a5)
 	movea.l	$8C(a4),a0
 	move.w	$18(a0),$24(a4)
 	ori.l	#$200,$90(a4)

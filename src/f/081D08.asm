@@ -9,11 +9,11 @@ CloneA2_FrameHook:
 	movem.l	d6-d7/a4,-(a7)
 	move.l	g_FrameCounter(a5),d0
 	addq.l	#$1,g_FrameCounter(a5)
-	tst.w	-$3B08(a5)
+	tst.w	g_SceneVar3B08(a5)
 	bne.s	loc_081D9A
 	lea.l	$1152(a5),a0
 	movea.l	$2(a0),a4
-	move.w	-$3B06(a5),d0
+	move.w	g_SceneVar3B06(a5),d0
 	ext.l	d0
 	move.l	d0,d1
 	mulu.w	#$C,d0
@@ -23,7 +23,7 @@ CloneA2_FrameHook:
 	clr.w	d1
 	add.l	d1,d0
 	move.w	$8(a4,d0.l),d6
-	move.w	-$3B06(a5),d0
+	move.w	g_SceneVar3B06(a5),d0
 	ext.l	d0
 	move.l	d0,d1
 	mulu.w	#$C,d0
@@ -57,7 +57,7 @@ CloneA2_FrameHook:
 loc_081D9A:
 	tst.b	g_PalFadeActive(a5)
 	bne.s	loc_081DAA
-	tst.w	-$3B04(a5)
+	tst.w	g_SceneVar3B04(a5)
 	bne.s	loc_081DAA
 	jsr	CloneA2_FlickerUpdate(pc)
 loc_081DAA:
@@ -67,7 +67,7 @@ loc_081DAA:
 	addq.l	#$1,g_FrameCounter(a5)
 	tst.b	g_PalFadeActive(a5)
 	bne.s	loc_081DC8
-	tst.w	-$3B04(a5)
+	tst.w	g_SceneVar3B04(a5)
 	bne.s	loc_081DC8
 	jsr	CloneA2_FlickerUpdate(pc)
 loc_081DC8:

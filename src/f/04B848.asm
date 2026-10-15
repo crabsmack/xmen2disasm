@@ -8,10 +8,10 @@ Apocalypse_StateBombsDone:
 	link.w	a6,#$0
 	move.l	a4,-(a7)
 	movea.l	$8(a6),a4
-	tst.w	-$3B08(a5)
+	tst.w	g_SceneVar3B08(a5)
 	bne.w	loc_04B98E
 	moveq	#$3,d0
-	cmp.w	-$3B0C(a5),d0
+	cmp.w	g_SceneVar3B0C(a5),d0
 	bne.s	loc_04B8AC
 	lea.l	$A02(a5),a0
 	move.l	$2(a0),-(a7)
@@ -36,7 +36,7 @@ loc_04B88A:
 	bra.w	loc_04B98E
 loc_04B8AC:
 	moveq	#$7,d0
-	cmp.w	-$3B0C(a5),d0
+	cmp.w	g_SceneVar3B0C(a5),d0
 	bne.s	loc_04B8FE
 	lea.l	$A0A(a5),a0
 	move.l	$2(a0),-(a7)
@@ -61,7 +61,7 @@ loc_04B8DC:
 	bra.w	loc_04B98E
 loc_04B8FE:
 	moveq	#$C,d0
-	cmp.w	-$3B0C(a5),d0
+	cmp.w	g_SceneVar3B0C(a5),d0
 	bne.s	loc_04B94C
 	lea.l	$A12(a5),a0
 	move.l	$2(a0),-(a7)

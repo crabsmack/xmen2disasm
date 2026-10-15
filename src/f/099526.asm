@@ -25,7 +25,7 @@ XClone_TileHookOpenWall:
 	clr.w	d6
 	clr.b	d4
 	moveq	#$2,d0
-	and.w	-$3B08(a5),d0
+	and.w	g_SceneVar3B08(a5),d0
 	beq.w	loc_099802
 	move.w	g_Player1+$4(a5),d0
 	ext.l	d0
@@ -60,7 +60,7 @@ loc_0995BA:
 	move.l	$10(a6),-(a7)
 	jsr	Clone_CharTypeOf(pc)
 	move.w	d0,-$2(a6)
-	move.w	-$3B08(a5),d0
+	move.w	g_SceneVar3B08(a5),d0
 	ext.l	d0
 	move.b	-$1(a6),d1
 	addq.b	#$8,d1
@@ -110,7 +110,7 @@ loc_09962E:
 	move.w	d0,d6
 	ext.l	d6
 	move.l	d6,-(a7)
-	move.l	-$3B1C(a5),-(a7)
+	move.l	g_SceneVar3B1C(a5),-(a7)
 	jsr	$3B4A(a5)	; -> Debris_SetFloorY
 	addq.w	#$8,a7
 loc_09963E:
@@ -227,7 +227,7 @@ loc_09972A:
 	add.w	#$1A,d5
 	moveq	#$3,d0
 	move.l	d0,-(a7)
-	move.l	-$3B1C(a5),-(a7)
+	move.l	g_SceneVar3B1C(a5),-(a7)
 	ext.l	d5
 	move.l	d5,d1
 	lsl.l	#$5,d1
@@ -256,7 +256,7 @@ loc_09972A:
 	addq.w	#$1,d7
 	moveq	#$3,d0
 	move.l	d0,-(a7)
-	move.l	-$3B1C(a5),-(a7)
+	move.l	g_SceneVar3B1C(a5),-(a7)
 	ext.l	d5
 	move.l	d5,d1
 	lsl.l	#$5,d1

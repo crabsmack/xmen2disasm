@@ -27,16 +27,16 @@ loc_0FD62C:
 	move.l	d0,-(a7)
 	jsr	$4182(a5)	; -> Rand_Seed
 	jsr	$4A(a5)	; -> Player1_StartLife
-	move.w	#$4B0,-$3B0A(a5)
+	move.w	#$4B0,g_SceneVar3B0A(a5)
 	addq.w	#$4,a7
 	bra.s	loc_0FD666
 loc_0FD662:
-	clr.w	-$3B0A(a5)
+	clr.w	g_SceneVar3B0A(a5)
 loc_0FD666:
 	moveq	#$2,d0
 	and.w	g_ProgressFlags(a5),d0
 	beq.s	loc_0FD672
-	clr.w	-$3B0A(a5)
+	clr.w	g_SceneVar3B0A(a5)
 loc_0FD672:
 	moveq	#$0,d0
 	move.l	d0,-(a7)

@@ -8,7 +8,7 @@ RetractFloor_StateWait:
 	link.w	a6,#$0
 	move.l	a4,-(a7)
 	movea.l	$8(a6),a4
-	tst.w	-$3AFA(a5)
+	tst.w	g_FloatFallSpeed(a5)
 	bne.s	loc_026DD6
 	movea.l	g_Camera(a5),a0
 	move.w	#$64,$40(a0)

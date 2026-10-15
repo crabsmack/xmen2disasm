@@ -6,11 +6,11 @@
 ; ---------------------------------------------------------------------------
 CloneA1_ResetPalCycle:
 	link.w	a6,#$0
-	clr.w	-$3B32(a5)
-	clr.w	-$3B42(a5)
-	clr.w	-$3B3A(a5)
-	clr.w	-$3B34(a5)
-	clr.w	-$3B44(a5)
-	clr.w	-$3B3C(a5)
+	clr.w	g_SceneVar3B32(a5)
+	clr.w	g_SceneVar3B42(a5)
+	clr.w	g_SceneVar3B3A(a5)
+	clr.w	g_SceneVar3B34(a5)
+	clr.w	g_SceneVar3B44(a5)
+	clr.w	g_SceneVar3B3C(a5)
 	unlk	a6
 	rts

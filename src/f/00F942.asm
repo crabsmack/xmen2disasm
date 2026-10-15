@@ -12,27 +12,27 @@ AvalonB1_CamHookFadeIn:
 	clr.w	g_Pad1Latch(a5)
 	clr.w	g_Pad2Latch(a5)
 	moveq	#$6,d0
-	cmp.w	-$3B32(a5),d0
+	cmp.w	g_SceneVar3B32(a5),d0
 	bgt.s	loc_00F9AC
-	clr.w	-$3B32(a5)
+	clr.w	g_SceneVar3B32(a5)
 	lea.l	$CA(a5),a0
 	movea.l	$2(a0),a4
-	move.w	-$3B3A(a5),d0
+	move.w	g_SceneVar3B3A(a5),d0
 	ext.l	d0
 	lsl.l	#$3,d0
 	tst.b	(a4,d0.l)
 	blt.s	loc_00F996
 	move.l	a4,-(a7)
-	move.w	-$3B3A(a5),d0
+	move.w	g_SceneVar3B3A(a5),d0
 	ext.l	d0
 	move.l	d0,-(a7)
 	jsr	AvalonB1_PalFadeStep(pc)
-	move.w	-$3B3A(a5),d0
-	addq.w	#$1,-$3B3A(a5)
+	move.w	g_SceneVar3B3A(a5),d0
+	addq.w	#$1,g_SceneVar3B3A(a5)
 	addq.w	#$8,a7
 	bra.s	loc_00F9AC
 loc_00F996:
-	clr.w	-$3B32(a5)
+	clr.w	g_SceneVar3B32(a5)
 	lea.l	AvalonB1_CamHookFinish(pc),a0
 	movea.l	g_Camera(a5),a1
 	move.l	a0,$4(a1)

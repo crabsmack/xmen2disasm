@@ -14,7 +14,7 @@ PlayerSelect_DrawFrame:
 	cmpi.w	#$7,d7
 	bge.s	loc_064A1E
 	muls.w	#$C,d7
-	move.w	-$3B10(a5),d0
+	move.w	g_SceneVar3B10(a5),d0
 	ext.l	d0
 	ext.l	d7
 	add.l	d7,d0
@@ -59,7 +59,7 @@ loc_064A1E:
 	ext.l	d7
 	asl.l	#$4,d7
 	addi.w	#$54,d7
-	move.w	-$3B10(a5),d0
+	move.w	g_SceneVar3B10(a5),d0
 	ext.l	d0
 	ext.l	d7
 	add.l	d7,d0

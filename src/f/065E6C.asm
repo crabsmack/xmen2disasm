@@ -9,8 +9,8 @@ Cerebro_PlayIntro:
 	movem.l	d3-d7/a3-a4,-(a7)
 	lea.l	-$1A6(a6),a3
 	move.w	g_VramTileCursor(a5),-$16(a6)
-	move.w	#$1,-$3B02(a5)
-	move.w	#$2710,-$3B0C(a5)
+	move.w	#$1,g_SceneVar3B02(a5)
+	move.w	#$2710,g_SceneVar3B0C(a5)
 	lea.l	Cerebro_IntroPalHook(pc),a0
 	move.l	a0,g_VBlankGameHook(a5)
 	jsr	$50A2(a5)	; -> Scaler_InitParams
@@ -182,39 +182,39 @@ loc_066034:
 	move.w	#$CC,g_PalBase+$7E(a5)
 	move.w	#$AA,g_PalBase+$7C(a5)
 	move.b	#$1,g_PalBaseDirty(a5)
-	move.w	g_TextWinLeft(a5),-$3B04(a5)
+	move.w	g_TextWinLeft(a5),g_SceneVar3B04(a5)
 	move.w	g_TextWinTop(a5),d0
 	addq.w	#$4,d0
-	move.w	d0,-$3B06(a5)
+	move.w	d0,g_SceneVar3B06(a5)
 	moveq	#$0,d0
 	move.l	d0,-(a7)
 	move.l	-$1F0(a6),-(a7)
 	jsr	Cerebro_PrintText(pc)
-	addq.w	#$1,-$3B06(a5)
+	addq.w	#$1,g_SceneVar3B06(a5)
 	addi.l	#$20,-$1F0(a6)
 	moveq	#$0,d0
 	move.l	d0,-(a7)
 	move.l	-$1F0(a6),-(a7)
 	jsr	Cerebro_PrintText(pc)
-	addq.w	#$1,-$3B06(a5)
+	addq.w	#$1,g_SceneVar3B06(a5)
 	addi.l	#$20,-$1F0(a6)
 	moveq	#$0,d0
 	move.l	d0,-(a7)
 	move.l	-$1F0(a6),-(a7)
 	jsr	Cerebro_PrintText(pc)
-	addq.w	#$1,-$3B06(a5)
+	addq.w	#$1,g_SceneVar3B06(a5)
 	addi.l	#$20,-$1F0(a6)
 	moveq	#$0,d0
 	move.l	d0,-(a7)
 	move.l	-$1F0(a6),-(a7)
 	jsr	Cerebro_PrintText(pc)
-	addq.w	#$3,-$3B06(a5)
+	addq.w	#$3,g_SceneVar3B06(a5)
 	addi.l	#$20,-$1F0(a6)
 	moveq	#$0,d0
 	move.l	d0,-(a7)
 	move.l	-$1F0(a6),-(a7)
 	jsr	Cerebro_PrintText(pc)
-	addq.w	#$1,-$3B06(a5)
+	addq.w	#$1,g_SceneVar3B06(a5)
 	addi.l	#$20,-$1F0(a6)
 	moveq	#$0,d0
 	move.l	d0,-(a7)
@@ -415,7 +415,7 @@ loc_0661FC:
 	swap	d0
 	clr.w	d0
 	move.l	d0,-$1CE(a6)
-	move.w	#$112,-$3B0C(a5)
+	move.w	#$112,g_SceneVar3B0C(a5)
 	lea.l	$14(a7),a7
 	bra.w	loc_06644C
 loc_066348:
@@ -479,7 +479,7 @@ loc_066348:
 	move.w	#$C0,(a0)
 	movea.l	g_SprWritePtr(a5),a0
 	move.b	#$4,$2(a0)
-	move.w	-$3B10(a5),d0
+	move.w	g_SceneVar3B10(a5),d0
 	add.w	#$2074,d0
 	movea.l	g_SprWritePtr(a5),a0
 	move.w	d0,$4(a0)
@@ -649,7 +649,7 @@ loc_0665EE:
 	move.w	#$C0,(a0)
 	movea.l	g_SprWritePtr(a5),a0
 	move.b	#$4,$2(a0)
-	move.w	-$3B10(a5),d0
+	move.w	g_SceneVar3B10(a5),d0
 	add.w	#$2074,d0
 	movea.l	g_SprWritePtr(a5),a0
 	move.w	d0,$4(a0)
@@ -787,7 +787,7 @@ loc_0667A0:
 	move.w	#$C0,(a0)
 	movea.l	g_SprWritePtr(a5),a0
 	move.b	#$4,$2(a0)
-	move.w	-$3B10(a5),d0
+	move.w	g_SceneVar3B10(a5),d0
 	add.w	#$2074,d0
 	movea.l	g_SprWritePtr(a5),a0
 	move.w	d0,$4(a0)
@@ -841,10 +841,10 @@ loc_066870:
 	move.b	#$1,g_PalBaseDirty(a5)
 	move.w	g_TextWinLeft(a5),d0
 	addq.w	#$1,d0
-	move.w	d0,-$3B04(a5)
+	move.w	d0,g_SceneVar3B04(a5)
 	move.w	g_TextWinBottom(a5),d0
 	subq.w	#$1,d0
-	move.w	d0,-$3B06(a5)
+	move.w	d0,g_SceneVar3B06(a5)
 	moveq	#$0,d0
 	move.l	d0,-(a7)
 	pea.l	Str_DevelopedByHeadgamesInc(pc)
@@ -884,7 +884,7 @@ loc_0668D0:
 	move.w	#$C0,(a0)
 	movea.l	g_SprWritePtr(a5),a0
 	move.b	#$4,$2(a0)
-	move.w	-$3B10(a5),d0
+	move.w	g_SceneVar3B10(a5),d0
 	add.w	#$2074,d0
 	movea.l	g_SprWritePtr(a5),a0
 	move.w	d0,$4(a0)

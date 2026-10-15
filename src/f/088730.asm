@@ -62,7 +62,7 @@ CloneA5_RunScene:
 	clr.w	g_BgScrollBaseY(a5)
 	jsr	CloneA5_ResetPalCycle(pc)
 	lea.l	-$304(a6),a0
-	move.l	a0,-$3B18(a5)
+	move.l	a0,g_SceneVar3B18(a5)
 	move.b	#$5,g_BroodBossHealthBar(a5)
 	moveq	#$33,d7
 	lea.l	$14D2(a5),a0
@@ -70,8 +70,8 @@ CloneA5_RunScene:
 	lea.l	$54(a7),a7
 	bra.s	loc_08880A
 loc_088800:
-	movea.l	-$3B18(a5),a0
-	addq.l	#$1,-$3B18(a5)
+	movea.l	g_SceneVar3B18(a5),a0
+	addq.l	#$1,g_SceneVar3B18(a5)
 	move.b	(a4)+,(a0)
 loc_08880A:
 	move.w	d7,d0
@@ -79,7 +79,7 @@ loc_08880A:
 	tst.w	d0
 	bge.s	loc_088800
 	lea.l	-$304(a6),a0
-	move.l	a0,-$3B18(a5)
+	move.l	a0,g_SceneVar3B18(a5)
 	lea.l	CloneA5_SegHook16(pc),a0
 	move.l	a0,g_SegTypeHooks+$58(a5)
 	lea.l	CloneA5_SegHook15(pc),a0
@@ -96,14 +96,14 @@ loc_08880A:
 	moveq	#$12,d1
 	move.l	d1,-(a7)
 	jsr	$3B62(a5)	; -> Debris_CreatePool
-	move.l	d0,-$3B1C(a5)
+	move.l	d0,g_SceneVar3B1C(a5)
 	moveq	#$0,d0
 	move.l	d0,-(a7)
 	move.l	d0,-(a7)
 	moveq	#$12,d1
 	move.l	d1,-(a7)
 	jsr	$3B62(a5)	; -> Debris_CreatePool
-	move.l	d0,-$3B14(a5)
+	move.l	d0,g_SceneVar3B14(a5)
 	clr.b	g_SpawnEnabled(a5)
 	move.w	g_Player1+$4(a5),d0
 	ext.l	d0
@@ -173,8 +173,8 @@ loc_088914:
 	addq.l	#$1,d7
 	cmp.l	d7,d3
 	bgt.s	loc_088914
-	clr.w	-$3B0C(a5)
-	clr.w	-$3B0E(a5)
+	clr.w	g_SceneVar3B0C(a5)
+	clr.w	g_SceneVar3B0E(a5)
 	jsr	CloneA5_InitTileHooks(pc)
 	move.b	d0,g_TileHooksOn(a5)
 	jsr	CloneA5_InitCamera(pc)

@@ -8,7 +8,7 @@
 SavageA4_RunScene:
 	link.w	a6,#$FFF8
 	lea.l	-$8(a6),a0
-	move.l	a0,-$3B14(a5)
+	move.l	a0,g_SceneVar3B14(a5)
 	jsr	$1CCA(a5)	; -> SavageA4_InitBossStages
 	jsr	SavageA4_CallEmptyStub(pc)
 	jsr	SavageA4_LoadLevel(pc)
@@ -18,7 +18,7 @@ SavageA4_RunScene:
 	move.l	$2(a0),-(a7)
 	jsr	$5102(a5)	; -> Scroll_SetParallax
 	moveq	#$0,d0
-	move.l	d0,-$3B20(a5)
+	move.l	d0,g_SceneVar3B20(a5)
 	pea.l	SavageA4_CamSetHooks(pc)
 	lea.l	$4DBA(a5),a0
 	move.l	$2(a0),-(a7)

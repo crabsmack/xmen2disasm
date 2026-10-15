@@ -7,12 +7,12 @@
 Cerebro_AnimatePalettes_StepB:
 	move.b	#$1,g_PalBaseDirty(a5)
 loc_064DD8:
-	addq.w	#$1,-$3B32(a5)
+	addq.w	#$1,g_SceneVar3B32(a5)
 	moveq	#$3,d0
-	cmp.w	-$3B32(a5),d0
+	cmp.w	g_SceneVar3B32(a5),d0
 	bge.w	loc_064E98
-	clr.w	-$3B32(a5)
-	move.w	-$3B3A(a5),d0
+	clr.w	g_SceneVar3B32(a5)
+	move.w	g_SceneVar3B3A(a5),d0
 	bmi.w	Cerebro_AnimatePalettes_EndB
 	cmpi.w	#$7,d0
 	bgt.w	Cerebro_AnimatePalettes_EndB

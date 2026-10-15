@@ -8,8 +8,8 @@ SiberiaB1_DebrisInit:
 	link.w	a6,#$0
 	movem.l	d3/d7/a4,-(a7)
 	movea.l	$8(a6),a4
-	clr.w	-$3B10(a5)
-	move.l	a4,-$3B24(a5)
+	clr.w	g_SceneVar3B10(a5)
+	move.l	a4,g_SceneVar3B24(a5)
 	clr.w	d7
 	moveq	#$30,d3
 loc_0FCE4A:

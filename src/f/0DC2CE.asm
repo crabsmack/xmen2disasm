@@ -7,15 +7,15 @@
 ; ---------------------------------------------------------------------------
 SentinelsD1_AnimLight:
 	link.w	a6,#$0
-	tst.w	-$3B32(a5)
+	tst.w	g_SceneVar3B32(a5)
 	bne.s	loc_0DC30E
-	move.w	#$5,-$3B32(a5)
-	tst.w	-$3B3A(a5)
+	move.w	#$5,g_SceneVar3B32(a5)
+	tst.w	g_SceneVar3B3A(a5)
 	bne.s	loc_0DC2EA
-	move.w	#$4,-$3B3A(a5)
+	move.w	#$4,g_SceneVar3B3A(a5)
 loc_0DC2EA:
-	subq.w	#$1,-$3B3A(a5)
-	move.w	-$3B3A(a5),d0
+	subq.w	#$1,g_SceneVar3B3A(a5)
+	move.w	g_SceneVar3B3A(a5),d0
 	ext.l	d0
 	move.l	d0,-(a7)
 	pea.l	g_SceneSprites(a5)
@@ -26,6 +26,6 @@ loc_0DC2EA:
 	jsr	$5062(a5)	; -> Spr_UploadFrame
 	lea.l	$10(a7),a7
 loc_0DC30E:
-	subq.w	#$1,-$3B32(a5)
+	subq.w	#$1,g_SceneVar3B32(a5)
 	unlk	a6
 	rts

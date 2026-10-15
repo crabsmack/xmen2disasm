@@ -8,10 +8,10 @@ Failure_RunScene:
 	link.w	a6,#$FFC0
 	movem.l	d3/d5-d7/a3-a4,-(a7)
 	lea.l	-$38(a6),a3
-	clr.w	-$3B0C(a5)
-	clr.w	-$3B0A(a5)
+	clr.w	g_SceneVar3B0C(a5)
+	clr.w	g_SceneVar3B0A(a5)
 	lea.l	$FB2(a5),a0
-	move.l	$2(a0),-$3B14(a5)
+	move.l	$2(a0),g_SceneVar3B14(a5)
 	jsr	Cerebro_Run(pc)
 	jsr	Cerebro_ClearScreen(pc)
 	clr.w	g_TextWinTop(a5)

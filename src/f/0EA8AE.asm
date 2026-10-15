@@ -9,7 +9,7 @@ Hologram_Draw:
 	movem.l	d4-d7/a4,-(a7)
 	movea.l	$8(a6),a4
 	moveq	#$1B,d0
-	cmp.l	-$3B14(a5),d0
+	cmp.l	g_SceneVar3B14(a5),d0
 	beq.w	loc_0EAD0A
 	movea.l	g_SprWritePtr(a5),a0
 	move.b	$3(a0),d0
@@ -42,7 +42,7 @@ loc_0EA90E:
 	move.b	#$1,g_HoloFlickerArmed(a5)
 	bra.w	loc_0EAD0A
 loc_0EA91C:
-	move.l	-$3B14(a5),d0
+	move.l	g_SceneVar3B14(a5),d0
 	move.l	d0,-$C(a6)
 	lsl.l	#$3,d0
 	move.l	-$C(a6),d1
@@ -72,7 +72,7 @@ loc_0EA91C:
 	add.w	#$80,d0
 	movea.l	g_SprWritePtr(a5),a0
 	move.w	d0,$6(a0)
-	move.l	-$3B14(a5),d0
+	move.l	g_SceneVar3B14(a5),d0
 	move.l	d0,-$8(a6)
 	lsl.l	#$3,d0
 	move.l	-$8(a6),d1
@@ -103,7 +103,7 @@ loc_0EA91C:
 	add.w	#$80,d0
 	movea.l	g_SprWritePtr(a5),a0
 	move.w	d0,$6(a0)
-	move.l	-$3B14(a5),d0
+	move.l	g_SceneVar3B14(a5),d0
 	move.l	d0,-$4(a6)
 	lsl.l	#$3,d0
 	move.l	-$4(a6),d1
@@ -135,9 +135,9 @@ loc_0EA91C:
 	movea.l	g_SprWritePtr(a5),a0
 	move.w	d0,$6(a0)
 	moveq	#$4,d0
-	cmp.l	-$3B14(a5),d0
+	cmp.l	g_SceneVar3B14(a5),d0
 	blt.w	loc_0EAB8C
-	move.l	-$3B14(a5),d0
+	move.l	g_SceneVar3B14(a5),d0
 	move.l	d0,-$18(a6)
 	lsl.l	#$3,d0
 	move.l	-$18(a6),d1
@@ -169,7 +169,7 @@ loc_0EA91C:
 	add.w	#$98,d0
 	movea.l	g_SprWritePtr(a5),a0
 	move.w	d0,$6(a0)
-	move.l	-$3B14(a5),d0
+	move.l	g_SceneVar3B14(a5),d0
 	move.l	d0,-$14(a6)
 	lsl.l	#$3,d0
 	move.l	-$14(a6),d1
@@ -202,7 +202,7 @@ loc_0EA91C:
 	add.w	#$98,d0
 	movea.l	g_SprWritePtr(a5),a0
 	move.w	d0,$6(a0)
-	move.l	-$3B14(a5),d0
+	move.l	g_SceneVar3B14(a5),d0
 	move.l	d0,-$10(a6)
 	lsl.l	#$3,d0
 	move.l	-$10(a6),d1
@@ -237,7 +237,7 @@ loc_0EA91C:
 	move.w	d0,$6(a0)
 	bra.w	loc_0EACBE
 loc_0EAB8C:
-	move.l	-$3B14(a5),d0
+	move.l	g_SceneVar3B14(a5),d0
 	subq.l	#$5,d0
 	move.l	d0,-$18(a6)
 	lsl.l	#$3,d0
@@ -269,7 +269,7 @@ loc_0EAB8C:
 	add.w	#$98,d0
 	movea.l	g_SprWritePtr(a5),a0
 	move.w	d0,$6(a0)
-	move.l	-$3B14(a5),d0
+	move.l	g_SceneVar3B14(a5),d0
 	subq.l	#$5,d0
 	move.l	d0,-$14(a6)
 	lsl.l	#$3,d0
@@ -301,7 +301,7 @@ loc_0EAB8C:
 	add.w	#$98,d0
 	movea.l	g_SprWritePtr(a5),a0
 	move.w	d0,$6(a0)
-	move.l	-$3B14(a5),d0
+	move.l	g_SceneVar3B14(a5),d0
 	subq.l	#$5,d0
 	move.l	d0,-$10(a6)
 	lsl.l	#$3,d0

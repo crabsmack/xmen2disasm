@@ -23,7 +23,7 @@ loc_047300:
 	moveq	#$4,d7
 	moveq	#$10,d3
 loc_04730C:
-	move.l	-$3B18(a5),d0
+	move.l	g_SceneVar3B18(a5),d0
 	btst	#$0,d0
 	beq.s	loc_047374
 	lea.l	g_SpriteTable(a5),a0
@@ -56,8 +56,8 @@ loc_04730C:
 	movea.l	g_SprWritePtr(a5),a0
 	move.w	d0,$6(a0)
 loc_047374:
-	move.l	-$3B18(a5),d0
-	addq.l	#$1,-$3B18(a5)
+	move.l	g_SceneVar3B18(a5),d0
+	addq.l	#$1,g_SceneVar3B18(a5)
 	move.b	$6(a4),d0
 	ext.w	d0
 	add.w	d0,(a4)

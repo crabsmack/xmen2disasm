@@ -30,6 +30,6 @@ SiberiaB1_InitWindSprite:
 	move.l	d2,-(a7)
 	move.l	g_FgBlockDefs(a5),-(a7)
 	jsr	$4E12(a5)	; -> Map_SetRowPalette
-	clr.w	-$3B3A(a5)
+	clr.w	g_SceneVar3B3A(a5)
 	unlk	a6
 	rts

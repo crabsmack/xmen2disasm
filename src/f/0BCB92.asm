@@ -15,7 +15,7 @@ SavageBio_StateDeathExplode:
 	pea.l	($F0).w
 	jsr	$4F8A(a5)	; -> Scene_EndAfter
 	moveq	#$0,d0
-	move.l	d0,-$3B20(a5)
+	move.l	d0,g_SceneVar3B20(a5)
 	move.l	a4,-(a7)
 	movea.l	(a4),a0
 	movea.l	$52(a0),a1

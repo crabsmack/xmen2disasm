@@ -6,10 +6,10 @@
 ; ---------------------------------------------------------------------------
 CerebroSentinels_RunScene:
 	link.w	a6,#$0
-	move.w	#$1,-$3B0C(a5)
-	move.w	#$1,-$3B0A(a5)
+	move.w	#$1,g_SceneVar3B0C(a5)
+	move.w	#$1,g_SceneVar3B0A(a5)
 	lea.l	$F82(a5),a0
-	move.l	$2(a0),-$3B14(a5)
+	move.l	$2(a0),g_SceneVar3B14(a5)
 	jsr	Cerebro_Run(pc)
 	ori.w	#$2,g_ProgressFlags(a5)
 	unlk	a6

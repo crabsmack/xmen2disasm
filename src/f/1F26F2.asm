@@ -8,7 +8,7 @@ XPlayer_StartFloatFall:
 	link.w	a6,#$0
 	move.l	a4,-(a7)
 	movea.l	$8(a6),a4
-	move.w	-$3AFA(a5),$24(a4)
+	move.w	g_FloatFallSpeed(a5),$24(a4)
 	movea.l	$8C(a4),a0
 	movea.l	a0,a1
 	adda.w	$5A(a1),a0

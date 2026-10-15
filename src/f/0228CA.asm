@@ -6,7 +6,7 @@
 ; ---------------------------------------------------------------------------
 AvalonA2_ResetCounters:
 	link.w	a6,#$0
-	move.w	#$1,-$3B32(a5)
-	clr.w	-$3B3A(a5)
+	move.w	#$1,g_SceneVar3B32(a5)
+	clr.w	g_SceneVar3B3A(a5)
 	unlk	a6
 	rts

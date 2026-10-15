@@ -7,7 +7,7 @@
 Boulder_SpawnerTick:
 	link.w	a6,#$FFEE
 	movem.l	d3-d7,-(a7)
-	tst.w	-$3B32(a5)
+	tst.w	g_SceneVar3B32(a5)
 	bgt.w	loc_05AFF6
 	move.w	g_CameraY(a5),d0
 	ext.l	d0
@@ -52,7 +52,7 @@ loc_05AF4E:
 loc_05AF52:
 	cmp.l	d0,d6
 	bgt.w	loc_05B00C
-	move.w	-$3B04(a5),d0
+	move.w	g_SceneVar3B04(a5),d0
 	btst	#$0,d0
 	beq.s	loc_05AF70
 	moveq	#$F,d0
@@ -101,20 +101,20 @@ loc_05AFAE:
 	movea.l	$2(a0),a0
 	movea.l	$E(a0),a1
 	jsr	(a1)
-	pea.l	-$3B32(a5)
-	pea.l	-$3B04(a5)
+	pea.l	g_SceneVar3B32(a5)
+	pea.l	g_SceneVar3B04(a5)
 	lea.l	$C92(a5),a0
 	move.l	$2(a0),-(a7)
 	jsr	$CA2(a5)	; -> Seq_NextWrap
 	lea.l	$20(a7),a7
 	bra.s	loc_05B00C
 loc_05AFF6:
-	move.w	-$3B32(a5),d0
-	subq.w	#$1,-$3B32(a5)
+	move.w	g_SceneVar3B32(a5),d0
+	subq.w	#$1,g_SceneVar3B32(a5)
 	tst.b	g_TwoPlayerStep(a5)
 	beq.s	loc_05B00C
-	move.w	-$3B32(a5),d0
-	subq.w	#$1,-$3B32(a5)
+	move.w	g_SceneVar3B32(a5),d0
+	subq.w	#$1,g_SceneVar3B32(a5)
 loc_05B00C:
 	movem.l	-$26(a6),d3-d7
 	unlk	a6

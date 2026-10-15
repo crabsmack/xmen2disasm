@@ -49,7 +49,7 @@ loc_0957C8:
 	addq.b	#$8,d0
 	moveq	#$1,d1
 	lsl.l	d0,d1
-	or.w	d1,-$3B08(a5)
+	or.w	d1,g_SceneVar3B08(a5)
 loc_0957E0:
 	tst.w	d6
 	ble.s	loc_09584C
@@ -81,7 +81,7 @@ loc_095812:
 	move.w	d0,d7
 	ext.l	d7
 	move.l	d7,-(a7)
-	move.l	-$3B1C(a5),-(a7)
+	move.l	g_SceneVar3B1C(a5),-(a7)
 	ext.l	d5
 	move.l	d5,-(a7)
 	ext.l	d6
@@ -94,7 +94,7 @@ loc_095812:
 	move.w	-$2(a6),d0
 	ext.l	d0
 	move.l	d0,-(a7)
-	move.l	-$3B1C(a5),-(a7)
+	move.l	g_SceneVar3B1C(a5),-(a7)
 	jsr	$3B4A(a5)	; -> Debris_SetFloorY
 	lea.l	$20(a7),a7
 loc_09584C:

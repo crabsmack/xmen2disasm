@@ -6,7 +6,7 @@
 ; ---------------------------------------------------------------------------
 AvalonA4_InstallEventHooks:
 	link.w	a6,#$0
-	clr.w	-$3B02(a5)
+	clr.w	g_SceneVar3B02(a5)
 	lea.l	AvalonA4_EventZoneFree0(pc),a0
 	move.l	a0,g_SegTypeHooks+$54(a5)
 	lea.l	AvalonA4_EventZoneFree1(pc),a0

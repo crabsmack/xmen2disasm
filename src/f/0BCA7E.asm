@@ -76,7 +76,7 @@ loc_0BCB52:
 	pea.l	($F0).w
 	jsr	$4F8A(a5)	; -> Scene_EndAfter
 	moveq	#$0,d0
-	move.l	d0,-$3B20(a5)
+	move.l	d0,g_SceneVar3B20(a5)
 	move.w	$4C(a4),d0
 	ext.l	d0
 	move.l	$C(a4),d1

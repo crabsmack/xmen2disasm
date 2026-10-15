@@ -16,14 +16,14 @@ SentinelsB2_FrameHook:
 	bra.s	loc_0F47EC
 loc_0F47CE:
 	subq.l	#$6,g_FrameCounter(a5)
-	subq.w	#$1,-$3B02(a5)
-	tst.w	-$3B02(a5)
+	subq.w	#$1,g_SceneVar3B02(a5)
+	tst.w	g_SceneVar3B02(a5)
 	bge.s	loc_0F47E0
-	clr.w	-$3B02(a5)
+	clr.w	g_SceneVar3B02(a5)
 loc_0F47E0:
-	tst.w	-$3B08(a5)
+	tst.w	g_SceneVar3B08(a5)
 	bne.s	loc_0F47EC
-	move.w	#$1,-$3B08(a5)
+	move.w	#$1,g_SceneVar3B08(a5)
 loc_0F47EC:
 	moveq	#$6,d0
 	cmp.l	g_FrameCounter(a5),d0
@@ -38,10 +38,10 @@ loc_0F47EC:
 	jsr	SentinelsB2_AlarmPalette(pc)
 loc_0F4812:
 	moveq	#$1,d0
-	cmp.w	-$3B08(a5),d0
+	cmp.w	g_SceneVar3B08(a5),d0
 	bne.w	loc_0F4A32
 	clr.b	d5
-	move.w	-$3B02(a5),d6
+	move.w	g_SceneVar3B02(a5),d6
 	move.w	d6,d0
 	ext.l	d0
 	divs.w	#$3E8,d0
@@ -56,7 +56,7 @@ loc_0F4812:
 	tst.b	d5
 	beq.s	loc_0F489A
 loc_0F4840:
-	move.w	-$3B06(a5),d0
+	move.w	g_SceneVar3B06(a5),d0
 	ext.l	d0
 	ext.l	d7
 	add.l	d7,d0
@@ -98,7 +98,7 @@ loc_0F489A:
 	tst.b	d5
 	beq.s	loc_0F490E
 loc_0F48B6:
-	move.w	-$3B06(a5),d0
+	move.w	g_SceneVar3B06(a5),d0
 	ext.l	d0
 	ext.l	d7
 	add.l	d7,d0
@@ -138,7 +138,7 @@ loc_0F490E:
 	move.w	d6,d0
 	sub.w	d1,d0
 	move.w	d0,d6
-	move.w	-$3B06(a5),d0
+	move.w	g_SceneVar3B06(a5),d0
 	ext.l	d0
 	ext.l	d7
 	add.l	d7,d0
@@ -164,7 +164,7 @@ loc_0F490E:
 	move.w	d7,$4(a0)
 	movea.l	g_SprWritePtr(a5),a0
 	move.w	#$126,$6(a0)
-	move.w	-$3B06(a5),d0
+	move.w	g_SceneVar3B06(a5),d0
 	ext.l	d0
 	moveq	#$A,d1
 	add.l	d1,d0
@@ -190,7 +190,7 @@ loc_0F490E:
 	movea.l	g_SprWritePtr(a5),a0
 	move.w	#$12D,$6(a0)
 	move.w	d6,d7
-	move.w	-$3B06(a5),d0
+	move.w	g_SceneVar3B06(a5),d0
 	ext.l	d0
 	ext.l	d7
 	add.l	d7,d0
@@ -217,9 +217,9 @@ loc_0F490E:
 	movea.l	g_SprWritePtr(a5),a0
 	move.w	#$134,$6(a0)
 loc_0F4A32:
-	tst.w	-$3B02(a5)
+	tst.w	g_SceneVar3B02(a5)
 	bne.w	loc_0F4AE4
-	move.w	-$3B08(a5),d0
+	move.w	g_SceneVar3B08(a5),d0
 	subq.w	#$1,d0
 	beq.s	loc_0F4A4E
 	subq.w	#$1,d0
@@ -228,7 +228,7 @@ loc_0F4A32:
 	beq.s	loc_0F4AC2
 	bra.w	loc_0F4AE4
 loc_0F4A4E:
-	move.w	#$2,-$3B08(a5)
+	move.w	#$2,g_SceneVar3B08(a5)
 	lea.l	$514A(a5),a0
 	move.l	$2(a0),-(a7)
 	moveq	#-$1,d0
@@ -239,7 +239,7 @@ loc_0F4A4E:
 	lea.l	$C(a7),a7
 	bra.s	loc_0F4AE4
 loc_0F4A6E:
-	move.w	#$3,-$3B08(a5)
+	move.w	#$3,g_SceneVar3B08(a5)
 	clr.w	d7
 	lea.l	g_PalBase(a5),a3
 	moveq	#$40,d3

@@ -14,7 +14,7 @@ loc_00FB60:
 	add.w	d0,d0
 	lea.l	g_PalBase(a5),a0
 	ext.l	d7
-	movea.l	-$3B14(a5),a1
+	movea.l	g_SceneVar3B14(a5),a1
 	move.l	d7,d1
 	add.l	d1,d1
 	move.w	(a0,d0.w),(a1,d1.l)
@@ -22,8 +22,8 @@ loc_00FB60:
 	addq.w	#$1,d7
 	cmp.w	d7,d3
 	bgt.s	loc_00FB60
-	clr.w	-$3B3A(a5)
-	clr.w	-$3B32(a5)
+	clr.w	g_SceneVar3B3A(a5)
+	clr.w	g_SceneVar3B32(a5)
 	moveq	#$0,d0
 	move.l	d0,-(a7)
 	lea.l	$4DBA(a5),a0

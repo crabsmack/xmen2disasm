@@ -12,7 +12,7 @@ loc_065376:
 loc_06537A:
 	move.l	a3,d0
 	sub.w	$A(a6),d0
-	add.w	d0,-$3B04(a5)
+	add.w	d0,g_SceneVar3B04(a5)
 	move.l	a3,$8(a6)
 loc_065388:
 	movea.l	$8(a6),a0

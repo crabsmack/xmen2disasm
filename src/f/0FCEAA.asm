@@ -6,14 +6,14 @@
 ; ---------------------------------------------------------------------------
 SiberiaB1_DebrisFree:
 	link.w	a6,#$0
-	tst.w	-$3B10(a5)
+	tst.w	g_SceneVar3B10(a5)
 	beq.s	loc_0FCEDA
 	moveq	#$14,d0
 	move.l	d0,-(a7)
-	subq.w	#$1,-$3B10(a5)
-	move.w	-$3B10(a5),d1
+	subq.w	#$1,g_SceneVar3B10(a5)
+	move.w	g_SceneVar3B10(a5),d1
 	ext.l	d1
-	movea.l	-$3B24(a5),a0
+	movea.l	g_SceneVar3B24(a5),a0
 	lsl.l	#$2,d1
 	move.l	d1,d2
 	lsl.l	#$2,d1

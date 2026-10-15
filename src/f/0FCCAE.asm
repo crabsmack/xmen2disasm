@@ -8,15 +8,15 @@ SiberiaB1_FrameHook:
 	link.w	a6,#$0
 	move.l	g_FrameCounter(a5),d0
 	addq.l	#$1,g_FrameCounter(a5)
-	tst.w	-$3B08(a5)
+	tst.w	g_SceneVar3B08(a5)
 	ble.s	loc_0FCCC8
-	move.w	-$3B08(a5),d0
-	subq.w	#$1,-$3B08(a5)
+	move.w	g_SceneVar3B08(a5),d0
+	subq.w	#$1,g_SceneVar3B08(a5)
 loc_0FCCC8:
-	tst.w	-$3B32(a5)
+	tst.w	g_SceneVar3B32(a5)
 	ble.s	loc_0FCCD6
-	move.w	-$3B32(a5),d0
-	subq.w	#$1,-$3B32(a5)
+	move.w	g_SceneVar3B32(a5),d0
+	subq.w	#$1,g_SceneVar3B32(a5)
 loc_0FCCD6:
 	jsr	SiberiaB1_UpdateWindSprite(pc)
 	jsr	SiberiaB1_StepWind(pc)
@@ -28,15 +28,15 @@ loc_0FCCE8:
 	beq.s	loc_0FCD24
 	move.l	g_FrameCounter(a5),d0
 	addq.l	#$1,g_FrameCounter(a5)
-	tst.w	-$3B08(a5)
+	tst.w	g_SceneVar3B08(a5)
 	ble.s	loc_0FCD04
-	move.w	-$3B08(a5),d0
-	subq.w	#$1,-$3B08(a5)
+	move.w	g_SceneVar3B08(a5),d0
+	subq.w	#$1,g_SceneVar3B08(a5)
 loc_0FCD04:
-	tst.w	-$3B32(a5)
+	tst.w	g_SceneVar3B32(a5)
 	ble.s	loc_0FCD12
-	move.w	-$3B32(a5),d0
-	subq.w	#$1,-$3B32(a5)
+	move.w	g_SceneVar3B32(a5),d0
+	subq.w	#$1,g_SceneVar3B32(a5)
 loc_0FCD12:
 	tst.b	g_PalFadeActive(a5)
 	bne.s	loc_0FCD1C
@@ -89,10 +89,10 @@ loc_0FCD3C:
 	clr.b	g_SiberiaIntro(a5)
 	lea.l	$20(a7),a7
 loc_0FCDA0:
-	tst.w	-$3B0A(a5)
+	tst.w	g_SceneVar3B0A(a5)
 	beq.s	loc_0FCDEA
-	subq.w	#$1,-$3B0A(a5)
-	tst.w	-$3B0A(a5)
+	subq.w	#$1,g_SceneVar3B0A(a5)
+	tst.w	g_SceneVar3B0A(a5)
 	bne.s	loc_0FCDC6
 	move.w	#$1,g_SceneExitTimer(a5)
 	moveq	#$0,d0
@@ -105,7 +105,7 @@ loc_0FCDC6:
 	move.w	#$FF,d1
 	and.w	d0,d1
 	beq.s	loc_0FCDEA
-	clr.w	-$3B0A(a5)
+	clr.w	g_SceneVar3B0A(a5)
 	move.w	g_ProgressFlags(a5),d0
 	btst	#$0,d0
 	beq.s	loc_0FCDEA

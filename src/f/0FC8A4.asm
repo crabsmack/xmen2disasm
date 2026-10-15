@@ -8,14 +8,14 @@ SiberiaB1_InitWind:
 	link.w	a6,#$0
 	movem.l	d7/a4,-(a7)
 	move.b	#$1,g_BgOffsetOn(a5)
-	clr.w	-$3B48(a5)
-	clr.w	-$3B40(a5)
-	move.w	#$600,-$3B06(a5)
-	move.w	#$1E,-$3B04(a5)
+	clr.w	g_SceneVar3B48(a5)
+	clr.w	g_SceneVar3B40(a5)
+	move.w	#$600,g_SceneVar3B06(a5)
+	move.w	#$1E,g_SceneVar3B04(a5)
 	lea.l	$2992(a5),a0
-	move.l	$2(a0),-$3B14(a5)
-	clr.w	-$3B08(a5)
-	clr.w	-$3B32(a5)
+	move.l	$2(a0),g_SceneVar3B14(a5)
+	clr.w	g_SceneVar3B08(a5)
+	clr.w	g_SceneVar3B32(a5)
 	pea.l	SiberiaB1_InitCamera(pc)
 	lea.l	$4DBA(a5),a0
 	move.l	$2(a0),-(a7)

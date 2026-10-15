@@ -29,8 +29,8 @@ loc_04C542:
 	moveq	#$14,d0
 	move.l	d0,-(a7)
 	jsr	$5032(a5)	; -> Mem_StackAlloc
-	move.l	d0,-$3B1C(a5)
-	clr.w	-$3B08(a5)
+	move.l	d0,g_SceneVar3B1C(a5)
+	clr.w	g_SceneVar3B08(a5)
 	lea.l	$10(a7),a7
 	movem.l	-$10(a6),d3/d7/a3-a4
 	unlk	a6

@@ -28,8 +28,8 @@ ApocBomb_Attack:
 	movea.l	(a3),a0
 	movea.l	$26(a0),a1
 	jsr	(a1)
-	move.w	-$3B08(a5),d0
-	subq.w	#$1,-$3B08(a5)
+	move.w	g_SceneVar3B08(a5),d0
+	subq.w	#$1,g_SceneVar3B08(a5)
 	move.l	a4,-(a7)
 	jsr	$3AD2(a5)	; -> ExplodeFx_BurstSmall
 	movem.l	-$8(a6),a3-a4

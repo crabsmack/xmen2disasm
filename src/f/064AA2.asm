@@ -7,7 +7,7 @@
 PlayerSelect_DrawFrames:
 	link.w	a6,#$0
 	movem.l	d7/a4,-(a7)
-	movea.l	-$3B30(a5),a4
+	movea.l	g_SceneVar3B30(a5),a4
 	clr.w	d7
 	bra.s	loc_064ADC
 loc_064AB2:
@@ -30,7 +30,7 @@ loc_064AB2:
 	addq.w	#$1,d7
 	addq.w	#$2,a4
 loc_064ADC:
-	cmp.w	-$3B0E(a5),d7
+	cmp.w	g_SceneVar3B0E(a5),d7
 	blt.s	loc_064AB2
 	movem.l	-$8(a6),d7/a4
 	unlk	a6

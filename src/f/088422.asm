@@ -9,7 +9,7 @@ CloneA5_AnimShockSprites:
 	link.w	a6,#$0
 	movem.l	d3/d6-d7,-(a7)
 	moveq	#$2,d0
-	and.w	-$3B0C(a5),d0
+	and.w	g_SceneVar3B0C(a5),d0
 	beq.w	loc_0884C8
 	tst.b	g_TwoPlayerStep(a5)
 	beq.s	loc_088470

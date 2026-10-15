@@ -13,7 +13,7 @@ Cerebro_TextOpFadeOut:
 	move.l	d1,-(a7)
 	jsr	$50F2(a5)	; -> Pal_StartFade
 	move.w	(a4)+,g_PalFadeDelay(a5)
-	move.w	#$3,-$3B02(a5)
+	move.w	#$3,g_SceneVar3B02(a5)
 	clr.b	g_PalBaseDirty(a5)
 	lea.l	$C(a7),a7
 	bra.s	loc_06569A

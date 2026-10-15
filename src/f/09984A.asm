@@ -21,7 +21,7 @@ loc_099860:
 	bne.s	loc_099878
 	jsr	$116A(a5)	; -> CloneA2_FlickerUpdate
 loc_099878:
-	tst.w	-$3B06(a5)
+	tst.w	g_SceneVar3B06(a5)
 	ble.s	loc_099890
 	tst.b	g_TwoPlayerStep(a5)
 	beq.s	loc_099888
@@ -31,11 +31,11 @@ loc_099888:
 	moveq	#$1,d0
 loc_09988A:
 	ext.w	d0
-	sub.w	d0,-$3B06(a5)
+	sub.w	d0,g_SceneVar3B06(a5)
 loc_099890:
-	tst.w	-$3B06(a5)
+	tst.w	g_SceneVar3B06(a5)
 	bge.s	loc_09989A
-	clr.w	-$3B06(a5)
+	clr.w	g_SceneVar3B06(a5)
 loc_09989A:
 	unlk	a6
 	rts

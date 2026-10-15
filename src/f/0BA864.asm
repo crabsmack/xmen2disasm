@@ -10,16 +10,16 @@ SavageBigBio_Update:
 	movea.l	$2(a0),a0
 	movea.l	$4A(a0),a1
 	jsr	(a1)
-	move.w	-$3B06(a5),d0
+	move.w	g_SceneVar3B06(a5),d0
 	btst	#$0,d0
 	addq.w	#$4,a7
 	beq.s	loc_0BA8BE
-	move.l	-$3B18(a5),d0
+	move.l	g_SceneVar3B18(a5),d0
 	swap	d0
 	ext.l	d0
 	move.l	d0,-(a7)
 	move.l	#$FFFF,d0
-	and.l	-$3B18(a5),d0
+	and.l	g_SceneVar3B18(a5),d0
 	move.l	d0,-(a7)
 	moveq	#$1,d0
 	move.l	d0,-(a7)
@@ -34,14 +34,14 @@ SavageBigBio_Update:
 	lea.l	$18(a7),a7
 loc_0BA8BE:
 	moveq	#$2,d0
-	and.w	-$3B06(a5),d0
+	and.w	g_SceneVar3B06(a5),d0
 	beq.s	loc_0BA8F6
-	move.l	-$3B1C(a5),d0
+	move.l	g_SceneVar3B1C(a5),d0
 	swap	d0
 	ext.l	d0
 	move.l	d0,-(a7)
 	move.l	#$FFFF,d0
-	and.l	-$3B1C(a5),d0
+	and.l	g_SceneVar3B1C(a5),d0
 	move.l	d0,-(a7)
 	moveq	#$1,d0
 	move.l	d0,-(a7)

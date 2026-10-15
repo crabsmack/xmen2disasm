@@ -7,18 +7,18 @@
 SentinelsB2_AlarmPalette:
 	link.w	a6,#$0
 	move.l	d7,-(a7)
-	move.w	-$3B38(a5),d0
+	move.w	g_SceneVar3B38(a5),d0
 	ext.l	d0
 	move.l	d0,d7
 	tst.b	g_PalFadeActive(a5)
 	bne.w	loc_0F47A6
-	tst.w	-$3B02(a5)
+	tst.w	g_SceneVar3B02(a5)
 	beq.w	loc_0F47A6
-	addq.w	#$1,-$3B38(a5)
+	addq.w	#$1,g_SceneVar3B38(a5)
 	moveq	#$18,d0
-	cmp.w	-$3B38(a5),d0
+	cmp.w	g_SceneVar3B38(a5),d0
 	bge.s	loc_0F45A4
-	clr.w	-$3B38(a5)
+	clr.w	g_SceneVar3B38(a5)
 loc_0F45A4:
 	tst.l	d7
 	bne.w	loc_0F465C

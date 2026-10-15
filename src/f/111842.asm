@@ -13,18 +13,18 @@ Deathbird_SetMoveMode_Case2:
 	bne.s	loc_111878
 	move.w	#$350,$8C(a4)
 	clr.w	$8E(a4)
-	move.l	#$13100,-$3B20(a5)
-	move.l	#$500,-$3B24(a5)
+	move.l	#$13100,g_SceneVar3B20(a5)
+	move.l	#$500,g_SceneVar3B24(a5)
 	moveq	#$0,d0
-	move.l	d0,-$3B28(a5)
+	move.l	d0,g_SceneVar3B28(a5)
 	bra.s	loc_111898
 loc_111878:
 	move.w	#$350,$8C(a4)
 	clr.w	$8E(a4)
-	move.l	#$EB00,-$3B20(a5)
-	move.l	#$FFFFFB00,-$3B24(a5)
+	move.l	#$EB00,g_SceneVar3B20(a5)
+	move.l	#$FFFFFB00,g_SceneVar3B24(a5)
 	moveq	#$0,d0
-	move.l	d0,-$3B28(a5)
+	move.l	d0,g_SceneVar3B28(a5)
 loc_111898:
 	move.b	#$4,$AE(a4)
 	lea.l	$2AD2(a5),a0

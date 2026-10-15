@@ -15,7 +15,7 @@ BroodBoss_SpawnDebris:
 	asr.l	#$8,d7
 	moveq	#$6,d0
 	move.l	d0,-(a7)
-	move.l	-$3B14(a5),-(a7)
+	move.l	g_SceneVar3B14(a5),-(a7)
 	move.w	d7,d1
 	ext.l	d1
 	move.l	d1,-(a7)

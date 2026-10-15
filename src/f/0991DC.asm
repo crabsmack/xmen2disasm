@@ -17,7 +17,7 @@ XClone_LockArena_SetTheme:
 	jsr	$521A(a5)	; -> Snd_Play
 	move.l	g_Camera(a5),-(a7)
 	jsr	XClone_CamSetArenaMode(pc)
-	ori.w	#$1,-$3B08(a5)
+	ori.w	#$1,g_SceneVar3B08(a5)
 	clr.b	g_SpawnEnabled(a5)
 	move.b	#$1,$B0(a4)
 	lea.l	$14(a7),a7

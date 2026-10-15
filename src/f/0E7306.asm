@@ -10,41 +10,41 @@ SentinelsA1_CyclePalettes:
 	move.l	d0,-(a7)
 	lea.l	$2642(a5),a0
 	move.l	$2(a0),-(a7)
-	pea.l	-$3B3A(a5)
-	pea.l	-$3B42(a5)
-	pea.l	-$3B32(a5)
+	pea.l	g_SceneVar3B3A(a5)
+	pea.l	g_SceneVar3B42(a5)
+	pea.l	g_SceneVar3B32(a5)
 	jsr	$3EB2(a5)	; -> Pal_CycleStep
 	moveq	#$1,d0
 	move.l	d0,-(a7)
 	lea.l	$264A(a5),a0
 	move.l	$2(a0),-(a7)
-	pea.l	-$3B3C(a5)
-	pea.l	-$3B44(a5)
-	pea.l	-$3B34(a5)
+	pea.l	g_SceneVar3B3C(a5)
+	pea.l	g_SceneVar3B44(a5)
+	pea.l	g_SceneVar3B34(a5)
 	jsr	$3EB2(a5)	; -> Pal_CycleStep
 	moveq	#$0,d0
 	move.l	d0,-(a7)
 	lea.l	$2652(a5),a0
 	move.l	$2(a0),-(a7)
-	pea.l	-$3B3E(a5)
-	pea.l	-$3B46(a5)
-	pea.l	-$3B36(a5)
+	pea.l	g_SceneVar3B3E(a5)
+	pea.l	g_SceneVar3B46(a5)
+	pea.l	g_SceneVar3B36(a5)
 	jsr	$3EB2(a5)	; -> Pal_CycleStep
 	moveq	#$1,d0
 	move.l	d0,-(a7)
 	lea.l	$2662(a5),a0
 	move.l	$2(a0),-(a7)
-	pea.l	-$3B3E(a5)
-	pea.l	-$3B46(a5)
-	pea.l	-$3B36(a5)
+	pea.l	g_SceneVar3B3E(a5)
+	pea.l	g_SceneVar3B46(a5)
+	pea.l	g_SceneVar3B36(a5)
 	jsr	$3EB2(a5)	; -> Pal_CycleStep
 	moveq	#$1,d0
 	move.l	d0,-(a7)
 	lea.l	$265A(a5),a0
 	move.l	$2(a0),-(a7)
-	pea.l	-$3B40(a5)
-	pea.l	-$3B48(a5)
-	pea.l	-$3B38(a5)
+	pea.l	g_SceneVar3B40(a5)
+	pea.l	g_SceneVar3B48(a5)
+	pea.l	g_SceneVar3B38(a5)
 	jsr	$3EB2(a5)	; -> Pal_CycleStep
 	moveq	#$1,d0
 	move.l	d0,-(a7)

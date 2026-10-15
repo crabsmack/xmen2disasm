@@ -15,7 +15,7 @@ SentinelsB_ExitSeg:
 	move.b	g_ScnSentinelsB2(a5),d0
 	cmp.w	g_SceneIndex(a5),d0
 	bne.s	loc_0F4514
-	tst.w	-$3B02(a5)
+	tst.w	g_SceneVar3B02(a5)
 	beq.s	loc_0F451A
 	move.w	#$5,g_SceneExitTimer(a5)
 	bra.s	loc_0F451A

@@ -30,17 +30,17 @@ Deathbird_StateChooseAttack:
 	and.w	$4(a4),d0
 	bra.w	loc_112B24
 loc_112A7A:
-	movea.l	-$3B14(a5),a0
+	movea.l	g_SceneVar3B14(a5),a0
 	moveq	#-$1,d0
 	cmp.b	(a0),d0
 	bne.s	loc_112A8E
 	lea.l	$2B0A(a5),a0
-	move.l	$2(a0),-$3B14(a5)
+	move.l	$2(a0),g_SceneVar3B14(a5)
 loc_112A8E:
-	movea.l	-$3B14(a5),a0
+	movea.l	g_SceneVar3B14(a5),a0
 	move.b	(a0),d7
 	move.l	a0,d0
-	addq.l	#$1,-$3B14(a5)
+	addq.l	#$1,g_SceneVar3B14(a5)
 	move.b	d7,d0
 	subq.b	#$1,d0
 	beq.s	loc_112AA6

@@ -176,7 +176,8 @@ _(module → functions, globals, data; add as you learn them)_
   g_MusicTrack), `Level_Run` (scene loop), `Music_StopStage`. Scene-local globals in
   `$FFC6C4-$FFC706` (`-$3B3C..-$3AFA`) are reused with different meanings by each scene:
   ~~don't give them global names~~ (N3 still needs a name for each; the globals worker owns them:
-  use a neutral scene-scratch name and list the per-scene uses in the ram.asm comment). Per-frame helpers are `Timer_Create(fn, 1, arg, 0)` + `Timer_Start`,
+  use a neutral scene-scratch name and list the per-scene uses in the ram.asm comment; done: `g_SceneVarXXXX`,
+  range actually `$FFC6B8-$FFC704`, see "Globals" below). Per-frame helpers are `Timer_Create(fn, 1, arg, 0)` + `Timer_Start`,
   ended by `Timer_Free`. Camera limits: words
   `-$3A98/-$3A9C` min x/y, `-$3A96/-$3A9A` max x/y (`CloneA2_SetCameraZone`). Screen shake:
   `g_CamShake` script.
@@ -405,7 +406,9 @@ _(module → functions, globals, data; add as you learn them)_
   full meter. `Cyclops_Draw` draws it (cut at the first wall, `Tile_TestAt`) and hit-tests every enemy against its
   sprite pieces. The beam has two piece lists; `Cyclops_BeamVBlankFlicker` (called by `VDP_FrameUpdate`) relinks one
   sprite in VRAM each V-blank so they alternate (state bytes `$FFE98E-$FFE99B`). Scene end: `Cyclops_ResetBeams`.
-  Gambit and Cyclops Init set byte `$FFE958` (P1) / `$FFE956` (P2) = 1 (meaning unknown).
+  Gambit and Cyclops Init set byte `$FFE958` (P1) / `$FFE956` (P2) = 1 ~~(meaning unknown)~~ (globals worker:
+  `g_P1HasMeter`/`g_P2HasMeter`; Nightcrawler_Init sets them too, XPlayer_Init clears, and HUD_UpdateHealthBars
+  draws the second meter from player +$9E only while set). The beam flicker state is `g_BeamFlickerNew/Cur/On/Pending`.
 - **Object vs floor-segment collision (w1C0)**: `Obj_CollideSegs(obj)` (from `Actor_Update`, `XPlayer_Move`) gathers
   contacts (`Seg_GatherNearObj`: grid-cell lists from `Seg_BuildGrid` + all object-owned segments), tests each with
   `Seg_CollideObj` (`Tbl_SegCollideCases` by type: 1/$20 left wall, 2/$12/$1F right wall ($12 = scene exit), 3/$E/$F
@@ -419,6 +422,25 @@ _(module → functions, globals, data; add as you learn them)_
   after each yield) -> `Scaler_EmitSprites` shows the result as a sprite grid. The row loop is 160 unrolled 18-byte
   blocks (`Scaler_RowBlocks` `$1FC8FE` + `Scaler_RowBlocksLast80` `$1FCE9E`) entered at (160 - width/2)*18; the
   first 80 (formerly `Tbl_1FC8FE`) only run for rows wider than 160 px, which the corpus never does.
+- **Globals (N3, globals worker)**: every A5 global used by 2+ functions now has a name in `src/ram.asm`.
+  Fields of named blocks are written `base+$off(a5)` instead of getting their own equate: the player objects
+  (`g_Player1+$68(a5)` = P1 health field, +$4 flags, +$8/+$C x/y, +$2E sprite flags, +$76 segment...), the base
+  palette (`g_PalBase+$40` = line 2), `g_SpriteTable+$B`, the scaler parameter block `g_ScalerParams+$C`,
+  the tile hook table `g_TileHooks+4n` (index = block hook type 1-7), the segment type hooks
+  `g_SegTypeHooks+4n`, `g_SceneSprites+$14n` (12 scene-effect sprite instances), palette-cycle counter blocks
+  (`g_AvalonB1PalCycles`, `g_SentinelsA1PalCycles`, `g_CloneA5PalCycles`, `g_AvalonA3SprDelays`), sprite
+  instances (`g_FluxBombSpr+6`). `tools/xref.py` only lists bare `g_Name(a5)` operands as globals.
+  Main blocks: map/scroll state from Level_LoadMaps/Cam_SetPos (`g_FgBlockMap`/`g_FgRowTable`/`g_FgBlockDefs`,
+  BG equivalents, `g_Fg/BgScrollX/Y`, parallax `g_Bg/FgScrollFactor*`/`Base*`, streaming hooks `g_MapRowHook`/
+  `g_MapColHook`, camera limit targets `g_CamMin/MaxX/YTarget` that VDP_UpdateScroll eases g_CamMin/Max toward);
+  four object windows set by Level_Load (`g_SpawnWin*`, `g_DespawnWin*`, `g_ActWin*`, `g_DeactWin*`, relative
+  to the camera); the spawn-record scan (`g_SpawnScan*`, `g_SpawnScanPerFrame` = 5); the palette-cycle script
+  player `Pal_RunCycleScript` (`g_PalCycleScript/Cursor/Delay`); segment grid (`g_SegGrid*`); the picture
+  scaler (`g_Scaler*`, resumable: `g_ScalerRegSave`/`g_ScalerResumePC`); per-class sprite-definition slots
+  `g_<Class>SprDef` (SprDef_Add result stored by ClassInit/LoadResources). `$FFC6B8-$FFC704` is the scene-local
+  scratch union: named `g_SceneVarXXXX` with each scene's use listed in the ram.asm comment (note `Nem_Decode`
+  also uses `g_SceneVar3B04`/`3B06` as counters, so they only hold scene values between decodes); the one
+  exception is `g_FloatFallSpeed` (-$3AFA), which player code reads in every scene.
 
 ## Data formats
 

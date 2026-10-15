@@ -22,7 +22,7 @@ Deathbird_StateSendHornets:
 	ble.w	loc_1129D4
 	lea.l	-$16(a6),a0
 	move.l	a0,-$6(a6)
-	movea.l	-$3B1C(a5),a3
+	movea.l	g_SceneVar3B1C(a5),a3
 	move.b	(a3),-$1(a6)
 	move.b	$1(a3),d4
 	move.b	$2(a3),d5
@@ -77,7 +77,7 @@ loc_112960:
 	lea.l	$2B12(a5),a0
 	movea.l	$2(a0),a3
 loc_1129D0:
-	move.l	a3,-$3B1C(a5)
+	move.l	a3,g_SceneVar3B1C(a5)
 loc_1129D4:
 	clr.w	$6C(a4)
 	lea.l	Deathbird_StateSendHornets(pc),a0

@@ -29,10 +29,10 @@ loc_0679B2:
 	bra.s	loc_067A4C
 loc_0679D0:
 	moveq	#$1,d3
-	movea.l	-$3B28(a5),a0
+	movea.l	g_SceneVar3B28(a5),a0
 	tst.b	$34(a0)
 	bne.s	loc_0679E8
-	movea.l	-$3B2C(a5),a0
+	movea.l	g_SceneVar3B2C(a5),a0
 	tst.b	$34(a0)
 	bne.s	loc_0679E8
 	moveq	#$0,d3

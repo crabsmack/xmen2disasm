@@ -8,7 +8,7 @@ BroodBossArm_Draw:
 	movea.l	$8(a6),a4
 	moveq	#$0,d0
 	move.b	$2F(a4),d0
-	cmp.w	-$3B10(a5),d0
+	cmp.w	g_SceneVar3B10(a5),d0
 	beq.s	loc_0862A0
 	andi.b	#$DF,$2E(a4)
 	move.b	-$3B0F(a5),$2F(a4)

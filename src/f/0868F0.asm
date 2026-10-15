@@ -19,9 +19,9 @@ BroodBoss_Update:
 	addq.w	#$4,a7
 	bne.w	loc_086AB2
 	moveq	#$40,d0
-	and.w	-$3B0C(a5),d0
+	and.w	g_SceneVar3B0C(a5),d0
 	moveq	#$10,d0
-	and.w	-$3B0C(a5),d0
+	and.w	g_SceneVar3B0C(a5),d0
 	beq.s	loc_08694E
 	subi.l	#$200,g_BroodBossOffsetY(a5)
 	move.l	g_BroodBossOffsetY(a5),d0
@@ -29,7 +29,7 @@ BroodBoss_Update:
 	moveq	#$2B,d1
 	cmp.l	d0,d1
 	ble.s	loc_086976
-	andi.w	#$FFEF,-$3B0C(a5)
+	andi.w	#$FFEF,g_SceneVar3B0C(a5)
 	move.l	#$2B00,g_BroodBossOffsetY(a5)
 	bra.s	loc_086976
 loc_08694E:
@@ -54,7 +54,7 @@ loc_086976:
 	move.b	d0,g_BroodBossHealthBar(a5)
 loc_086988:
 	moveq	#$2,d0
-	and.w	-$3B0C(a5),d0
+	and.w	g_SceneVar3B0C(a5),d0
 	beq.w	loc_086AB2
 	move.w	g_Player1+$4(a5),d0
 	ext.l	d0

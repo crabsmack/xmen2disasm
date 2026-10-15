@@ -8,9 +8,9 @@ AvalonA4_ResetEffectCounters:
 	link.w	a6,#$0
 	jsr	AvalonA4_NopStatic(pc)
 	clr.b	g_AvalonA4PalStep(a5)
-	move.w	#$5,-$3B32(a5)
-	clr.w	-$3B3A(a5)
-	move.w	#$4,-$3B34(a5)
-	clr.w	-$3B3C(a5)
+	move.w	#$5,g_SceneVar3B32(a5)
+	clr.w	g_SceneVar3B3A(a5)
+	move.w	#$4,g_SceneVar3B34(a5)
+	clr.w	g_SceneVar3B3C(a5)
 	unlk	a6
 	rts

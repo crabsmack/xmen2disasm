@@ -70,15 +70,15 @@ Deathbird_Init:
 	lsl.l	#$8,d0
 	move.l	d0,$C(a4)
 	lea.l	$2B0A(a5),a0
-	move.l	$2(a0),-$3B14(a5)
+	move.l	$2(a0),g_SceneVar3B14(a5)
 	move.w	#$C,$68(a4)
 	clr.w	$20(a4)
 	clr.l	$8C(a4)
 	move.w	#$1000,$90(a4)
 	moveq	#$0,d0
-	move.l	d0,-$3B20(a5)
-	move.l	d0,-$3B24(a5)
-	move.l	d0,-$3B28(a5)
+	move.l	d0,g_SceneVar3B20(a5)
+	move.l	d0,g_SceneVar3B24(a5)
+	move.l	d0,g_SceneVar3B28(a5)
 	move.b	#$1,$AE(a4)
 	move.l	d6,$92(a4)
 	move.l	d5,$96(a4)
@@ -93,7 +93,7 @@ Deathbird_Init:
 	jsr	$4FD2(a5)	; -> Timer_Create
 	move.l	d0,$9E(a4)
 	move.l	g_SpaceA1Buf(a5),$9A(a4)
-	movea.l	-$3B18(a5),a0
+	movea.l	g_SceneVar3B18(a5),a0
 	move.l	a0,$B0(a4)
 	move.b	#$5,(a0)
 	movea.l	$B0(a4),a0
@@ -121,9 +121,9 @@ Deathbird_Init:
 	addi.w	#$3D,g_VramTileCursor(a5)
 	clr.b	$B4(a4)
 	move.w	#$78,g_HornetWaveTimer(a5)
-	move.w	#$D,-$3B02(a5)
+	move.w	#$D,g_SceneVar3B02(a5)
 	lea.l	$2B12(a5),a0
-	move.l	$2(a0),-$3B1C(a5)
+	move.l	$2(a0),g_SceneVar3B1C(a5)
 	pea.l	($FF).w
 	move.l	a4,-(a7)
 	movea.l	(a4),a0

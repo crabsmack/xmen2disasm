@@ -5,11 +5,11 @@
 ; Evidence: common exit of the Sw_064DD2 cases; sets g_PalBaseDirty
 ; ---------------------------------------------------------------------------
 Cerebro_AnimatePalettes_EndB:
-	addq.w	#$1,-$3B3A(a5)
+	addq.w	#$1,g_SceneVar3B3A(a5)
 	moveq	#$7,d0
-	cmp.w	-$3B3A(a5),d0
+	cmp.w	g_SceneVar3B3A(a5),d0
 	bge.s	loc_064E92
-	clr.w	-$3B3A(a5)
+	clr.w	g_SceneVar3B3A(a5)
 loc_064E92:
 	move.b	#$1,g_PalBaseDirty(a5)
 loc_064E98:

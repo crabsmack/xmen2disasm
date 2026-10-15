@@ -21,7 +21,7 @@ Cerebro_LoadSpriteTiles:
 	add.l	d1,d0
 	lea.l	g_SpriteDefs(a5),a0
 	lea.l	(a0,d0.w),a4
-	move.w	$6(a4),-$3B10(a5)
+	move.w	$6(a4),g_SceneVar3B10(a5)
 	movem.l	-$8(a6),d7/a4
 	unlk	a6
 	rts

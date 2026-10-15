@@ -12,6 +12,6 @@ CloneA2_StartQuake:
 	jsr	$5222(a5)	; -> Snd_Stop
 	pea.l	($91).w
 	jsr	$521A(a5)	; -> Snd_Play
-	move.w	#$1,-$3B08(a5)
+	move.w	#$1,g_SceneVar3B08(a5)
 	unlk	a6
 	rts

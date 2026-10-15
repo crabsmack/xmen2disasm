@@ -11,7 +11,7 @@ CloneA5_SegHook15:
 	cmp.w	$A(a6),d0
 	bne.s	loc_08805E
 	move.w	#$80,d0
-	and.w	-$3B0C(a5),d0
+	and.w	g_SceneVar3B0C(a5),d0
 	beq.s	loc_08805E
 	moveq	#$1,d0
 	bra.s	loc_088060

@@ -49,8 +49,8 @@ loc_065470:
 loc_065478:
 	cmp.w	g_TextWinBottom(a5),d6
 	ble.s	loc_06540E
-	move.w	g_TextWinTop(a5),-$3B04(a5)
-	move.w	g_TextWinLeft(a5),-$3B06(a5)
+	move.w	g_TextWinTop(a5),g_SceneVar3B04(a5)
+	move.w	g_TextWinLeft(a5),g_SceneVar3B06(a5)
 	movem.l	-$8(a6),d6-d7
 	unlk	a6
 	rts

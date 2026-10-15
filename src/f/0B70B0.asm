@@ -15,7 +15,7 @@ ChildShip_Init:
 	movea.l	$2(a0),a0
 	movea.l	$12(a0),a1
 	jsr	(a1)
-	movea.l	-$3B14(a5),a0
+	movea.l	g_SceneVar3B14(a5),a0
 	move.l	a0,$8C(a4)
 	moveq	#$0,d0
 	move.b	$2(a0),d0
@@ -86,7 +86,7 @@ loc_0B71B2:
 	moveq	#$42,d0
 	move.l	d0,-(a7)
 	jsr	$521A(a5)	; -> Snd_Play
-	move.l	a4,-$3B20(a5)
+	move.l	a4,g_SceneVar3B20(a5)
 	lea.l	$2FDA(a5),a0
 	move.l	$2(a0),$AA(a4)
 	addq.w	#$8,a7

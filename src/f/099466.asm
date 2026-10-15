@@ -9,7 +9,7 @@ XClone_TileHookReward:
 	link.w	a6,#$0
 	movem.l	d6-d7/a4,-(a7)
 	clr.b	d7
-	tst.w	-$3B06(a5)
+	tst.w	g_SceneVar3B06(a5)
 	ble.s	loc_09947C
 	moveq	#$0,d0
 	bra.w	loc_09951C
@@ -17,7 +17,7 @@ loc_09947C:
 	move.l	$10(a6),-(a7)
 	jsr	Clone_CharTypeOf(pc)
 	move.w	d0,d6
-	move.w	-$3B08(a5),d0
+	move.w	g_SceneVar3B08(a5),d0
 	ext.l	d0
 	move.b	d6,d1
 	addq.b	#$8,d1
@@ -33,8 +33,8 @@ loc_09949C:
 	moveq	#$0,d0
 	bra.s	loc_09951C
 loc_0994A4:
-	ori.w	#$2,-$3B08(a5)
-	move.w	#$A0,-$3B06(a5)
+	ori.w	#$2,g_SceneVar3B08(a5)
+	move.w	#$A0,g_SceneVar3B06(a5)
 	moveq	#$1,d7
 	moveq	#$0,d0
 	move.l	d0,-(a7)

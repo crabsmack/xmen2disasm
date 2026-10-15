@@ -11,7 +11,7 @@ AvalonB1_PalFadeStep:
 	move.w	$A(a6),d0
 	lsl.w	#$3,d0
 	move.w	d0,$A(a6)
-	movea.l	-$3B14(a5),a3
+	movea.l	g_SceneVar3B14(a5),a3
 	lea.l	g_PalBase(a5),a4
 	clr.w	d7
 	moveq	#$10,d3

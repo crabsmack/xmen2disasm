@@ -14,8 +14,8 @@ Nem_Decode:
 	cmpi.b	#$1,d0
 	beq.s	loc_15F3AA
 	lea.l	Nem_PutRowMasked(pc),a3
-	move.w	#$8,-$3B04(a5)
-	move.w	#$0,-$3B06(a5)
+	move.w	#$8,g_SceneVar3B04(a5)
+	move.w	#$0,g_SceneVar3B06(a5)
 	bra.s	loc_15F3AE
 loc_15F3AA:
 	lea.l	Nem_PutRowVdp(pc),a3

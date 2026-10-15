@@ -8,12 +8,12 @@ PlayerSelect_PlaceCursor:
 	link.w	a6,#$0
 	movem.l	a3-a4,-(a7)
 	movea.l	$8(a6),a4
-	movea.l	-$3B30(a5),a3
+	movea.l	g_SceneVar3B30(a5),a3
 	tst.b	$3C(a4)
 	blt.s	loc_064B0E
 	move.b	$3C(a4),d0
 	ext.w	d0
-	cmp.w	-$3B0E(a5),d0
+	cmp.w	g_SceneVar3B0E(a5),d0
 	blt.s	loc_064B22
 loc_064B0E:
 	move.w	#$FF38,$36(a4)

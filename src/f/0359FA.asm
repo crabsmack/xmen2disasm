@@ -10,7 +10,7 @@ AvalonA4_EventZoneFree4:
 	cmp.w	$A(a6),d0
 	bne.s	loc_035A14
 	moveq	#$10,d1
-	and.w	-$3B02(a5),d1
+	and.w	g_SceneVar3B02(a5),d1
 	seq.b	d0
 	andi.w	#$1,d0
 	bra.s	loc_035A16

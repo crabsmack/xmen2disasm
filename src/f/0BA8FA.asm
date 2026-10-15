@@ -13,10 +13,10 @@ SavageBigBio_Draw:
 	asr.l	#$8,d0
 	move.w	d0,-$6(a6)
 	clr.b	-$1(a6)
-	clr.w	-$3B06(a5)
+	clr.w	g_SceneVar3B06(a5)
 	moveq	#$0,d0
-	move.l	d0,-$3B18(a5)
-	move.l	d0,-$3B1C(a5)
+	move.l	d0,g_SceneVar3B18(a5)
+	move.l	d0,g_SceneVar3B1C(a5)
 	movea.l	$8(a6),a0
 	moveq	#$40,d1
 	and.w	$6(a0),d1
@@ -177,7 +177,7 @@ loc_0BAADE:
 	move.l	d6,-(a7)
 	ext.l	d5
 	move.l	d5,-(a7)
-	pea.l	-$3B18(a5)
+	pea.l	g_SceneVar3B18(a5)
 	moveq	#$1,d0
 	move.l	d0,-(a7)
 	pea.l	g_Player1(a5)
@@ -186,7 +186,7 @@ loc_0BAADE:
 	move.l	d6,-(a7)
 	ext.l	d5
 	move.l	d5,-(a7)
-	pea.l	-$3B1C(a5)
+	pea.l	g_SceneVar3B1C(a5)
 	moveq	#$2,d0
 	move.l	d0,-(a7)
 	pea.l	g_Player2(a5)
@@ -252,7 +252,7 @@ loc_0BABBA:
 	move.l	d6,-(a7)
 	ext.l	d5
 	move.l	d5,-(a7)
-	pea.l	-$3B18(a5)
+	pea.l	g_SceneVar3B18(a5)
 	moveq	#$1,d0
 	move.l	d0,-(a7)
 	pea.l	g_Player1(a5)
@@ -261,7 +261,7 @@ loc_0BABBA:
 	move.l	d6,-(a7)
 	ext.l	d5
 	move.l	d5,-(a7)
-	pea.l	-$3B1C(a5)
+	pea.l	g_SceneVar3B1C(a5)
 	moveq	#$2,d0
 	move.l	d0,-(a7)
 	pea.l	g_Player2(a5)
@@ -362,7 +362,7 @@ loc_0BACEE:
 	move.l	d6,-(a7)
 	ext.l	d5
 	move.l	d5,-(a7)
-	pea.l	-$3B18(a5)
+	pea.l	g_SceneVar3B18(a5)
 	moveq	#$1,d0
 	move.l	d0,-(a7)
 	pea.l	g_Player1(a5)
@@ -371,7 +371,7 @@ loc_0BACEE:
 	move.l	d6,-(a7)
 	ext.l	d5
 	move.l	d5,-(a7)
-	pea.l	-$3B1C(a5)
+	pea.l	g_SceneVar3B1C(a5)
 	moveq	#$2,d0
 	move.l	d0,-(a7)
 	pea.l	g_Player2(a5)
@@ -481,7 +481,7 @@ loc_0BAE36:
 	move.l	d6,-(a7)
 	ext.l	d5
 	move.l	d5,-(a7)
-	pea.l	-$3B18(a5)
+	pea.l	g_SceneVar3B18(a5)
 	moveq	#$1,d0
 	move.l	d0,-(a7)
 	pea.l	g_Player1(a5)
@@ -490,7 +490,7 @@ loc_0BAE36:
 	move.l	d6,-(a7)
 	ext.l	d5
 	move.l	d5,-(a7)
-	pea.l	-$3B1C(a5)
+	pea.l	g_SceneVar3B1C(a5)
 	moveq	#$2,d0
 	move.l	d0,-(a7)
 	pea.l	g_Player2(a5)

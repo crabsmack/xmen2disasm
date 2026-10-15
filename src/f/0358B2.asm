@@ -9,7 +9,7 @@ AvalonA4_ClearCameraZone_apply:
 	seq.b	d3
 	neg.b	d3
 	ext.w	d3
-	and.w	d3,-$3B02(a5)
+	and.w	d3,g_SceneVar3B02(a5)
 	movea.l	g_Camera(a5),a0
 	move.l	a0,-(a7)
 	movea.l	(a0),a0

@@ -6,10 +6,10 @@
 ; ---------------------------------------------------------------------------
 Credits_RunScene:
 	link.w	a6,#$0
-	clr.w	-$3B0C(a5)
-	clr.w	-$3B0A(a5)
+	clr.w	g_SceneVar3B0C(a5)
+	clr.w	g_SceneVar3B0A(a5)
 	lea.l	$FC2(a5),a0
-	move.l	$2(a0),-$3B14(a5)
+	move.l	$2(a0),g_SceneVar3B14(a5)
 	move.w	#$4000,d0
 	and.w	g_ProgressFlags(a5),d0
 	bne.s	loc_067010

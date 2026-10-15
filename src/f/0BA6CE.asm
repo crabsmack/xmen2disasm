@@ -45,7 +45,7 @@ loc_0BA750:
 	move.w	#$14,$AC(a4)
 	addq.w	#$8,a7
 loc_0BA76E:
-	move.w	$68(a4),-$3B02(a5)
+	move.w	$68(a4),g_SceneVar3B02(a5)
 loc_0BA774:
 	movea.l	-$4(a6),a4
 	unlk	a6

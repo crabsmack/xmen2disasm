@@ -8,12 +8,12 @@ SpaceB1_CyclePalettes:
 	link.w	a6,#$0
 	move.l	a4,-(a7)
 	lea.l	g_PalBase(a5),a4
-	subq.w	#$1,-$3B34(a5)
-	tst.w	-$3B34(a5)
+	subq.w	#$1,g_SceneVar3B34(a5)
+	tst.w	g_SceneVar3B34(a5)
 	bge.w	loc_10747C
-	move.w	#$3,-$3B34(a5)
+	move.w	#$3,g_SceneVar3B34(a5)
 	move.b	#$1,g_PalBaseDirty(a5)
-	move.w	-$3B3C(a5),d0
+	move.w	g_SceneVar3B3C(a5),d0
 	bmi.w	SpaceB1_CyclePalettes_NextA
 	cmpi.w	#$D,d0
 	bgt.w	SpaceB1_CyclePalettes_NextA

@@ -11,7 +11,7 @@ AvalonB1_RestorePalette:
 	moveq	#$0,d7
 	moveq	#$10,d3
 loc_00F620:
-	movea.l	-$3B14(a5),a0
+	movea.l	g_SceneVar3B14(a5),a0
 	move.l	d7,d0
 	add.l	d0,d0
 	move.l	d7,d1

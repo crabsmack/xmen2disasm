@@ -32,7 +32,7 @@ CoreShields_FireZap:
 	jsr	$5222(a5)	; -> Snd_Stop
 	pea.l	($CD).w
 	jsr	$521A(a5)	; -> Snd_Play
-	clr.w	-$3B02(a5)
+	clr.w	g_SceneVar3B02(a5)
 	addq.w	#$8,a7
 loc_0EBCE2:
 	move.l	a4,d0

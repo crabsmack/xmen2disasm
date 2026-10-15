@@ -7,8 +7,8 @@
 ; ---------------------------------------------------------------------------
 SavageA2_InitLights:
 	link.w	a6,#$0
-	move.w	#$1,-$3B34(a5)
-	clr.w	-$3B3C(a5)
+	move.w	#$1,g_SceneVar3B34(a5)
+	clr.w	g_SceneVar3B3C(a5)
 	moveq	#$1,d0
 	move.l	d0,-(a7)
 	move.w	g_BgTilesEnd(a5),d1

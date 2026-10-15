@@ -7,7 +7,7 @@
 SiberiaB1_DebrisUpdate:
 	link.w	a6,#$0
 	movem.l	d3-d7/a3-a4,-(a7)
-	movea.l	-$3B24(a5),a4
+	movea.l	g_SceneVar3B24(a5),a4
 	clr.w	d4
 	bra.w	loc_0FD0CE
 loc_0FCEF0:
@@ -36,15 +36,15 @@ loc_0FCF2A:
 	asr.l	#$8,d7
 	moveq	#$0,d0
 	move.w	d7,d0
-	move.w	-$3B0C(a5),d1
+	move.w	g_SceneVar3B0C(a5),d1
 	ext.l	d1
 	cmp.l	d0,d1
 	bge.s	loc_0FCFBE
-	move.w	-$3B0C(a5),d0
+	move.w	g_SceneVar3B0C(a5),d0
 	ext.l	d0
 	moveq	#$0,d1
 	move.w	d7,d1
-	move.w	-$3B0C(a5),d2
+	move.w	g_SceneVar3B0C(a5),d2
 	ext.l	d2
 	sub.l	d2,d1
 	sub.l	d1,d0
@@ -134,7 +134,7 @@ loc_0FCFEC:
 	move.w	d7,d0
 	cmpi.w	#$FE,d0
 	bcc.w	loc_0FD0C6
-	move.w	-$3B0E(a5),d0
+	move.w	g_SceneVar3B0E(a5),d0
 	ext.l	d0
 	lsl.l	#$2,d0
 	move.l	d0,d1
@@ -189,7 +189,7 @@ loc_0FD0C6:
 	addq.w	#$1,d4
 	lea.l	$14(a4),a4
 loc_0FD0CE:
-	cmp.w	-$3B10(a5),d4
+	cmp.w	g_SceneVar3B10(a5),d4
 	blt.w	loc_0FCEF0
 	movem.l	-$1C(a6),d3-d7/a3-a4
 	unlk	a6

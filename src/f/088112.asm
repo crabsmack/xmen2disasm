@@ -16,14 +16,14 @@ CloneA5_CamApply:
 	move.w	d6,g_CameraX(a5)
 	move.w	d7,g_CameraY(a5)
 	move.w	g_CameraX(a5),d0
-	cmp.w	-$3B24(a5),d0
+	cmp.w	g_SceneVar3B24(a5),d0
 	beq.s	loc_088146
-	move.w	-$3B24(a5),g_CameraX(a5)
+	move.w	g_SceneVar3B24(a5),g_CameraX(a5)
 loc_088146:
 	move.w	g_CameraY(a5),d0
-	cmp.w	-$3B22(a5),d0
+	cmp.w	g_SceneVar3B22(a5),d0
 	beq.s	loc_088156
-	move.w	-$3B22(a5),g_CameraY(a5)
+	move.w	g_SceneVar3B22(a5),g_CameraY(a5)
 loc_088156:
 	tst.l	g_CamShake(a5)
 	beq.s	loc_0881D2
@@ -80,7 +80,7 @@ loc_0881D2:
 	move.l	g_BroodBossOffsetY(a5),d0
 	asr.l	#$8,d0
 	move.w	d0,g_BgScrollBaseY(a5)
-	move.w	-$3B02(a5),d0
+	move.w	g_SceneVar3B02(a5),d0
 	add.w	d0,g_FgScrollX(a5)
 	move.w	g_FgScrollFactorY(a5),d0
 	muls.w	g_CameraY(a5),d0
@@ -97,13 +97,13 @@ loc_0881D2:
 	asr.l	#$8,d0
 	add.w	g_BgScrollBaseY(a5),d0
 	move.w	d0,g_BgScrollY(a5)
-	clr.w	-$3B02(a5)
+	clr.w	g_SceneVar3B02(a5)
 	move.w	g_CloneA5CamFlags(a5),d0
 	btst	#$0,d0
 	beq.s	loc_088250
 	move.w	g_FgScrollX(a5),d0
 	ext.l	d0
-	cmp.l	-$3B20(a5),d0
+	cmp.l	g_SceneVar3B20(a5),d0
 	bge.s	loc_088250
 	addi.w	#$3C0,g_FgScrollX(a5)
 	addi.w	#$3C0,g_FgStreamX(a5)

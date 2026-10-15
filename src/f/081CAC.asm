@@ -7,7 +7,7 @@ CloneA2_FlickerUpdate_SetColor15:
 	move.w	d7,g_PalBase+$1E(a5)
 	move.b	#$1,g_PalBaseDirty(a5)
 loc_081CB6:
-	subq.w	#$1,-$3B34(a5)
+	subq.w	#$1,g_SceneVar3B34(a5)
 	movem.l	-$8(a6),d7/a4
 	unlk	a6
 	rts

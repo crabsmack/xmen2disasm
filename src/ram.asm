@@ -268,20 +268,20 @@ g_RetractFloorSprDef = -$3CCE	; word: sprite-definition slot of Art_RetractFloor
 g_YoyoAcolyteSprDef2 = -$3CD2	; word: sprite-definition slot of the data at jt[149] (labelled Lvl_YoyoAcolyteSegs) (YoyoAcolyte_ClassInit via SprDef_Add; YoyoAcolyte_Draw)
 g_FarAcolyteSprDef2 = -$3CD4	; word: sprite-definition slot of Art_FarAcolyteSpr2 (FarAcolyte_ClassInit via SprDef_Add; FarAcolyte_Draw)
 g_FarAcolyteSprDef3 = -$3CD6	; word: sprite-definition slot of Art_FarAcolyteSpr3 (FarAcolyte_ClassInit via SprDef_Add; FarAcolyte_Draw)
-g_MapRowHook = -$3A50	; ptr: map row streaming routine, sub_15EE48 by default (Level_LoadMaps); called by Cam_SetPos/Cam_SetPosScaled after a camera move and once by Level_LoadMaps to draw the first screen; scenes' CamApply hooks call it too
-g_MapColHook = -$3A54	; ptr: map column streaming routine, sub_15F1F8 by default (Level_LoadMaps); called by Cam_SetPos/Cam_SetPosScaled before g_MapRowHook
+g_MapRowHook = -$3A50	; ptr: map row streaming routine, Map_StreamRows by default (Level_LoadMaps); called by Cam_SetPos/Cam_SetPosScaled after a camera move and once by Level_LoadMaps to draw the first screen; scenes' CamApply hooks call it too
+g_MapColHook = -$3A54	; ptr: map column streaming routine, Map_StreamColumns by default (Level_LoadMaps); called by Cam_SetPos/Cam_SetPosScaled before g_MapRowHook
 g_FgScrollDirty = -$3A56	; byte: upload plane A H/V scroll at the next V-blank (set by Cam_SetPos and scene CamApply hooks; VDP_UpdateScroll clears)
 g_BgScrollDirty = -$3A58	; byte: upload plane B H/V scroll at the next V-blank (Cam_SetPos copies g_BgMapPresent; VDP_UpdateScroll clears)
 g_ColumnVsReq = -$3A5A	; byte: request a full H-scroll + 40-column VSRAM upload (Scroll_RequestColumnVs sets, VDP_UpdateScroll clears)
 g_VsramReq = -$3A5C	; byte: request a VSRAM upload of both plane y scrolls (Scroll_RequestVsram sets, VDP_UpdateScroll clears)
-g_FgMapExtraW = -$3A5E	; word: (FG map width in cells - 64) * 8 = pixels beyond one 64-cell plane (Level_LoadMaps; column streaming sub_15F1F8)
-g_FgMapExtraH = -$3A60	; word: (FG map height in cells - 32) * 8 (Level_LoadMaps; row streaming sub_15EE48)
+g_FgMapExtraW = -$3A5E	; word: (FG map width in cells - 64) * 8 = pixels beyond one 64-cell plane (Level_LoadMaps; column streaming Map_StreamColumns)
+g_FgMapExtraH = -$3A60	; word: (FG map height in cells - 32) * 8 (Level_LoadMaps; row streaming Map_StreamRows)
 g_FgMapPresent = -$3A62	; byte: a FG (plane A) map was given to Level_LoadMaps (Scroll_Init clears)
 g_BgMapPresent = -$3A64	; byte: a BG (plane B) map is loaded (Level_LoadMaps); copied into g_BgScrollDirty by Cam_SetPos and the scene CamApply hooks; tested by the streaming routines
-g_FgTileAttr = -$3A6A	; word: tile-attribute base ORed into plane A map words: first map tile, $8000 when the FG has priority (Level_LoadMaps; sub_15EAE2/EC0E/EF90, sub_15D00E)
-g_BgTileAttr = -$3A6C	; word: tile-attribute base for plane B map words: first BG tile, +$8000 priority, +$4000 palette line (Level_LoadMaps; sub_15EB78/ECB2/F036)
-g_FgMapW = -$3A6E	; word: FG map width in 32-px blocks (Level_LoadMaps: map +2 >> 2); bounds for tile queries (sub_15CECC, bullets, Launcher_Draw)
-g_FgRowTable = -$3A72	; ptr: FG row offset table, one word per block row = row * g_FgMapW (Level_LoadMaps, heap); index into g_FgBlockMap (tile hooks, sub_15CECC, sub_15D7F8)
+g_FgTileAttr = -$3A6A	; word: tile-attribute base ORed into plane A map words: first map tile, $8000 when the FG has priority (Level_LoadMaps; Map_PutRowBlockA/EC0E/EF90, Map_RedrawBlock)
+g_BgTileAttr = -$3A6C	; word: tile-attribute base for plane B map words: first BG tile, +$8000 priority, +$4000 palette line (Level_LoadMaps; Map_PutRowBlockB/ECB2/F036)
+g_FgMapW = -$3A6E	; word: FG map width in 32-px blocks (Level_LoadMaps: map +2 >> 2); bounds for tile queries (Tile_TestAt, bullets, Launcher_Draw)
+g_FgRowTable = -$3A72	; ptr: FG row offset table, one word per block row = row * g_FgMapW (Level_LoadMaps, heap); index into g_FgBlockMap (tile hooks, Tile_TestAt, Map_SetBlockFG)
 g_BgRowTable = -$3A76	; ptr: BG row offset table, one word per block row (Level_LoadMaps, tag Str_RowTableTags); index into g_BgBlockMap
 g_FgMapH = -$3A78	; word: FG map height in 32-px blocks (Level_LoadMaps: map +4 >> 2)
 g_BgMapW = -$3A7A	; word: BG map width in 32-px blocks (Level_LoadMaps); < 16 sets g_BgNarrow
@@ -296,7 +296,7 @@ g_UsedBlockCount = -$3AAC	; word: block count returned by Level_CompactUsedItems
 g_FgTilesEnd = -$3AAE	; word: first VRAM tile after the FG map tiles (Level_LoadMaps); scene effect sprites put their tiles here (AvalonB2/AvalonA3/CloneA1/SentinelsD1/SiberiaB1 InitSprite(s))
 g_BgTilesEnd = -$3AB0	; word: first VRAM tile after the BG map tiles (Level_LoadMaps; BaniMazaA1_InitSprites, CloneA5_InitShockSprites, SavageA2_InitLights)
 g_MapTilesEnd = -$3A9E	; word: first free VRAM tile after all map tiles (Level_LoadMaps; Scroll_Init 1); Level_Load copies it to g_VramTileCursor
-g_MapDrawOff = -$3AB2	; byte: when set the streaming routines skip writing map columns/rows (sub_15EE48, sub_15F1F8); only Scroll_Init writes it (clear)
+g_MapDrawOff = -$3AB2	; byte: when set the streaming routines skip writing map columns/rows (Map_StreamRows, Map_StreamColumns); only Scroll_Init writes it (clear)
 g_BgWrapX = -$3AB4	; byte: wrap the plane B x scroll to 512 px (Level_LoadMaps arg; BaniMazaA1/SavageC1/SavageB1_LoadLevel set 1, SpaceA1 clears; Cam_SetPos, streaming)
 g_BgWrapY = -$3AB6	; byte: wrap the plane B y scroll to 256 px (Level_LoadMaps arg; stages clear it; Cam_SetPos, streaming)
 g_BgOffsetOn = -$3AB8	; byte: add g_BgOffsetX/Y to the computed plane B position (SiberiaB1_InitWind sets; Cam_SetPos, Cam_SetPosScaled)
@@ -309,10 +309,10 @@ g_FgScrollX = -$3AC2	; word: plane A scroll x (= g_CameraX via factor/base; writ
 g_FgScrollY = -$3AC4	; word: plane A scroll y (VSRAM 0) (Cam_SetPos, Level_LoadMaps, VDP_UpdateScroll)
 g_BgScrollX = -$3AC6	; word: plane B scroll x = g_CameraX * g_BgScrollFactorX >> 8 (+ offsets), H-scroll $F402 (Cam_SetPos, VDP_UpdateScroll)
 g_BgScrollY = -$3AC8	; word: plane B scroll y = g_BgScrollBaseY + g_CameraY * g_BgScrollFactorY >> 8, VSRAM 2 (Cam_SetPos, VDP_UpdateScroll)
-g_FgStreamX = -$3ACA	; word: plane A map streaming x: pixel column the written columns reach, 32-aligned - $60 at load, steps by 8 (Level_LoadMaps, sub_15F1F8, sub_15D00E)
-g_FgStreamY = -$3ACC	; word: plane A map streaming y: row edge, 8-aligned - 8 at load, + $E0/$100 (Level_LoadMaps, sub_15EE48, sub_15D00E)
-g_BgStreamX = -$3ACE	; word: plane B map streaming x (Level_LoadMaps, sub_15F1F8)
-g_BgStreamY = -$3AD0	; word: plane B map streaming y (Level_LoadMaps, sub_15EE48)
+g_FgStreamX = -$3ACA	; word: plane A map streaming x: pixel column the written columns reach, 32-aligned - $60 at load, steps by 8 (Level_LoadMaps, Map_StreamColumns, Map_RedrawBlock)
+g_FgStreamY = -$3ACC	; word: plane A map streaming y: row edge, 8-aligned - 8 at load, + $E0/$100 (Level_LoadMaps, Map_StreamRows, Map_RedrawBlock)
+g_BgStreamX = -$3ACE	; word: plane B map streaming x (Level_LoadMaps, Map_StreamColumns)
+g_BgStreamY = -$3AD0	; word: plane B map streaming y (Level_LoadMaps, Map_StreamRows)
 g_FgScrollAdjX = -$3AD2	; word: added to g_FgScrollX when uploaded (VDP_UpdateScroll; CloneA5_CamApply moves it by $3C0)
 g_FgScrollAdjY = -$3AD4	; word: added to g_FgScrollY when uploaded (VDP_UpdateScroll; Scroll_ComputeParallax)
 g_BgScrollAdjX = -$3AD6	; word: added to g_BgScrollX when uploaded (VDP_UpdateScroll)
@@ -332,8 +332,8 @@ g_CamMaxXTarget = -$3A96	; word: target for g_CamMaxX, which VDP_UpdateScroll ea
 g_CamMinXTarget = -$3A98	; word: target for g_CamMinX, eased by VDP_UpdateScroll (CloneA2_SetCameraZone, Cam_SetMinXBlocks)
 g_CamMaxYTarget = -$3A9A	; word: target for g_CamMaxY, eased by VDP_UpdateScroll (Level_LoadMaps: (map height - 28 cells) * 8; AvalonA2_RaiseCameraFloor, scene zones)
 g_CamMinYTarget = -$3A9C	; word: target for g_CamMinY, eased by VDP_UpdateScroll (AvalonA4_CamHook, CloneA2_SetCameraZone)
-g_BgNarrow = -$13EE	; byte: BG map narrower than 16 blocks, so it is repeated horizontally (Level_LoadMaps; SiberiaB1_PreLoad sets; streaming sub_15D00E/sub_15EDCC/sub_15F1F8)
-g_MapStreamNarrow = -$13F0	; byte: 1 (Level_Load) = normal map streaming margin (10 blocks, 24 px); AvalonB1_InitCamera and SiberiaB1_PreLoad/PostLoad clear it for a wide one (15 blocks, $B8 px) (sub_15D00E, sub_15ED56, sub_15F1F8)
+g_BgNarrow = -$13EE	; byte: BG map narrower than 16 blocks, so it is repeated horizontally (Level_LoadMaps; SiberiaB1_PreLoad sets; streaming Map_RedrawBlock/Map_DrawRowB/Map_StreamColumns)
+g_MapStreamNarrow = -$13F0	; byte: 1 (Level_Load) = normal map streaming margin (10 blocks, 24 px); AvalonB1_InitCamera and SiberiaB1_PreLoad/PostLoad clear it for a wide one (15 blocks, $B8 px) (Map_RedrawBlock, Map_DrawRowA, Map_StreamColumns)
 g_SpawnWinTop = -$35A4	; word: spawn-in-view window top, relative to g_CameraY (-$80, Level_Load; Actor_SpawnRecInView)
 g_SpawnWinLeft = -$35A6	; word: spawn-in-view window left, relative to g_CameraX (-$80; Actor_SpawnRecInView)
 g_SpawnWinRight = -$35A8	; word: spawn-in-view window right ($1C0; Actor_SpawnRecInView)
@@ -351,23 +351,23 @@ g_DeactWinRight = -$35C2	; word: active window right $1A4 (Actor_OutsideActiveWi
 g_DeactWinTop = -$35C4	; word: active window top -$32 (Actor_OutsideActiveWindow and others)
 g_DeactWinBottom = -$35C6	; word: active window bottom $13A (Actor_OutsideActiveWindow and others)
 g_TileHooksOn = -$35C8	; byte: the scene installed map tile hooks in g_TileHooks (every *_InstallTileHooks sets 1, Level_Load clears); XPlayer_Update only probes hook tiles when set
-g_SolidMapIsBg = -$35CA	; byte: solid-tile probes by projectiles and flung enemies use the BG plane map instead of the FG (passed as !flag to sub_15CECC); SiberiaB1_InstallTileHooks sets, XClone_InstallTileHooks and Level_Load clear
-g_TileHooks = -$3AF8	; 8 ptrs: map tile hooks indexed by a block's hook type (block word bits 11-13), entries 1-7 called as (x, y, obj, -1, -1) by sub_15CECC/sub_15CB34; filled by each *_InstallTileHooks
+g_SolidMapIsBg = -$35CA	; byte: solid-tile probes by projectiles and flung enemies use the BG plane map instead of the FG (passed as !flag to Tile_TestAt); SiberiaB1_InstallTileHooks sets, XClone_InstallTileHooks and Level_Load clear
+g_TileHooks = -$3AF8	; 8 ptrs: map tile hooks indexed by a block's hook type (block word bits 11-13), entries 1-7 called as (x, y, obj, -1, -1) by Tile_TestAt/Tile_RunHooksAtPoints; filled by each *_InstallTileHooks
 g_LevelFgMap = -$CAE	; ptr: FG map blob passed to Level_Load (header +2/+4 = width/height in cells); CloneA2_SetCameraLimitsToMap and SwampPlatform_Move read the map size from it
 g_LevelBgMap = -$CB2	; ptr: BG map blob passed to Level_Load (3rd argument); RollingDiscs_ClassInit and SavageJungle_InitPalPhases read a per-level list at the offset in its word +$12
 g_BroodBossPalSave = -$13A8	; 16 words: palette line 2 saved by BroodBoss_StateHurt before the hurt flash and restored by BroodBoss_StateHurtEnd
 g_HitSparkSpr = -$185C	; sprite instance (same layout as object +$2E) for the player hit spark: Spr_Init by Scene_AllocCommonVram, drawn by XPlayer_Draw, h-flip (bit 2) set by XPlayer_Attack from the attacker
 g_P1StartRec = -$1860	; ptr: player-1 start spawn record (XPlayer_InitSpawnRec, placement +6 != 2); Players_PlaceAtStart and CloneA2_StartCamera take the start x/y from +2/+4, then it is cleared
 g_P2StartRec = -$1864	; ptr: player-2 start spawn record (XPlayer_InitSpawnRec, placement +6 == 2; Players_PlaceAtStart)
-g_SprFlickerNew = -$1870	; 4 bytes {first sprite slot - 1, first slot, byte from the record +3, enable}: sprite-link splice built while emitting a sprite group (loc_1E177A, loc_1E1916; sub_1E15F4 clears); copied to g_SprFlickerCur in V-blank
-g_SprFlickerCur = -$186C	; 4 bytes: active copy of g_SprFlickerNew used by sub_1E1928 (from VDP_FrameUpdate) to rewrite one sprite's link word in VRAM, alternating between two links every V-blank so a sprite group flickers
-g_SprFlickerOn = -$1871	; byte: active splice enabled (copied from g_SprFlickerCur+3 by sub_1E1928; loc_1E1916 tests it)
-g_SprFlickerPending = -$1872	; byte: a new g_SprFlickerNew is ready (set by loc_1E177A/loc_1E1916, sub_1E15F4 clears the word); sub_1E1928 copies it when the frame was updated
+g_BeamFlickerNew = -$1870	; 4 bytes {first sprite slot - 1, first slot, byte from the record +3, enable}: sprite-link splice built while emitting a sprite group (Cyclops_DrawBeam_Emit, Cyclops_DrawBeam_None; Cyclops_ResetBeamFlicker clears); copied to g_BeamFlickerCur in V-blank
+g_BeamFlickerCur = -$186C	; 4 bytes: active copy of g_BeamFlickerNew used by Cyclops_BeamVBlankFlicker (from VDP_FrameUpdate) to rewrite one sprite's link word in VRAM, alternating between two links every V-blank so a sprite group flickers
+g_BeamFlickerOn = -$1871	; byte: active splice enabled (copied from g_BeamFlickerCur+3 by Cyclops_BeamVBlankFlicker; Cyclops_DrawBeam_None tests it)
+g_BeamFlickerPending = -$1872	; byte: a new g_BeamFlickerNew is ready (set by Cyclops_DrawBeam_Emit/Cyclops_DrawBeam_None, Cyclops_ResetBeamFlicker clears the word); Cyclops_BeamVBlankFlicker copies it when the frame was updated
 g_PsylockeFxSpr = -$18A6	; ptr: Psylocke's second sprite instance (player +$C6, psi effect), stored by Psylocke_Init; BioNpc_DrawStunned draws it over a stunned enemy
-g_P1HasMeter = -$18A8	; byte: player 1's character uses the second HUD meter (player +$9E): set by Nightcrawler_Init, Gambit_Init, sub_1E3ABE, cleared by XPlayer_Init; HUD_UpdateHealthBars and Level_FrameLoop draw it
+g_P1HasMeter = -$18A8	; byte: player 1's character uses the second HUD meter (player +$9E): set by Nightcrawler_Init, Gambit_Init, Cyclops_Init, cleared by XPlayer_Init; HUD_UpdateHealthBars and Level_FrameLoop draw it
 g_P2HasMeter = -$18AA	; byte: player 2's character uses the second HUD meter (same writers/readers as g_P1HasMeter)
 g_FluxBombSpr = -$1A68	; sprite instance (object +$2E layout) shared by FLUXBOMB: Spr_Init by Scene_AllocCommonVram, frame set by FluxBomb_SetFrame, drawn by FluxBomb_Draw; +6/+8 give the particle tiles
-g_TechWallGunRecs = -$1A6C	; ptr: 16 x 16-byte records allocated by TECHWALLGUN's ClassInit sub_142AE0 (Mem_StackAlloc); scanned by sub_14225C
+g_TechWallGunRecs = -$1A6C	; ptr: 16 x 16-byte records allocated by TECHWALLGUN's ClassInit TechWallGun_ClassInit (Mem_StackAlloc); scanned by TechWallGun_FindFreeBullet
 g_MinePoolCount = -$1A78	; word: mines in use in g_MinePool (Mine_InitPool clears; Mine_PoolAdd/Remove, Mine_PoolUpdate/Draw)
 g_MinePool = -$1A7C	; ptr: mine pool records allocated by Mine_InitPool (Mine_PoolAdd/Remove/Update/Draw)
 g_BigBioOrbs = -$1A8C	; ptr: BIGBIO's 16 orb records (BigBio_ClassInit allocates; BigBio_PlaceOrbs, BigBio_UpdateOrbRing, BigBio_State*, BigBio_Draw)
@@ -375,8 +375,8 @@ g_BigBioSpitPool = -$1A90	; ptr: BIGBIO spit projectile pool (BigBio_ClassInit; 
 g_BigBioSpitCount = -$1A92	; word: spit projectiles in use (BigBio_ClassInit clears; BigBio_SpitSpawn/Free/UpdateAll)
 g_BioBallsList = -$1A98	; ptr: ball list shared by BIOBALLS objects {word count; records}, allocated by BioBalls_AllocBallList and copied to each object's +$92 (BioBalls_Init, UpdateBox, SetFormation)
 g_BioBallsSine = -$1C9C	; 128 longs: sine table built by BioBalls_AllocBallList, read by BioBalls_MotionOrbit/Ring/Helix
-g_SegHookTmp = -$346E	; ptr: the g_SegTypeHooks entry fetched before calling it (sub_1F6D76, sub_1F6EC4, Seg_ComputeObjPos, sub_1F71F2, Seg_ComputeLength)
-g_SegLevelCount = -$3472	; word: segments created from the level's FG list (Seg_LoadList; sub_1F6BD2 clears); Seg_GatherNearObj skips them when indexing the grid
+g_SegHookTmp = -$346E	; ptr: the g_SegTypeHooks entry fetched before calling it (Seg_ApplyObjPos, Seg_AlignObjVelocity, Seg_ComputeObjPos, Seg_ObjPosUnclamped, Seg_ComputeLength)
+g_SegLevelCount = -$3472	; word: segments created from the level's FG list (Seg_LoadList; Seg_ClearAll clears); Seg_GatherNearObj skips them when indexing the grid
 g_SegGridPool = -$3478	; ptr: pool of $FF-terminated segment-index lists, one per grid cell (Seg_BuildGrid builds it on the heap; Seg_FindAt/Below/Above/Left/Right, Boulder_FindFloorBelow, Ninja_FindSegInBox)
 g_SegGrid = -$347C	; ptr: word grid, per cell the offset of its list in g_SegGridPool (Seg_BuildGrid; Seg_GridCell, Seg_GatherNearObj)
 g_SegGridShiftX = -$347E	; word: log2 of the segment grid cell width (Level_Load arg $3A; Seg_GridCell, Seg_FindLeft/Right)
@@ -401,14 +401,14 @@ g_WaterSplashSpr = -$3C0E	; ptr: splash sprite record from SprDef_Add in Water_I
 g_WaterHurts = -$3C14	; byte: players below the water surface take damage (Water_Init sets; Water_DrawHook)
 g_InLevelLoop = -$38BE	; byte: set while a frame loop runs its classes (Level_Run and PlayerSelect_Run around ClassList_InitAll..ClassList_CallSlot62; Game_Main clears); Player_SetCharacter places a joining player differently when set
 g_SceneIndexSet = -$38C2	; byte: g_SceneIndex was set explicitly (Game_ResetPlayers, LogoAndDemo_RunScene, PlayerSelect_RunScene resume, pause scene skips, SiberiaB1 demo timeout): Game_SceneLoop skips its advance/death handling, Level_FrameLoop stops; cleared by Level_Run, Cerebro_Run, Game_PlayAttractDemo
-g_SegFlag38C4 = -$38C4	; byte: alternate floor-segment handling in Actor_Move and sub_1F79A2 when set; only cleared (Game_SceneLoop), no setter found, meaning unclear
+g_SegFlag38C4 = -$38C4	; byte: alternate floor-segment handling in Actor_Move and Seg_ComputeLength when set; only cleared (Game_SceneLoop), no setter found, meaning unclear
 g_DemoSkipped = -$38C6	; byte: a demo was ended with Start (Level_FrameLoop); Game_PlayAttractDemo then sets progress flag 2; cleared by Level_Run, Cerebro_RunTextScript
 g_LevelFreeze = -$38E4	; byte: when set the level loops skip spawning, updates, timers and scroll and never end (Level_FrameLoop, PlayerSelect_Run); no setter found (debug?)
 g_ScenePreLoadHook = -$38E8	; ptr: called first by Level_Load; Scene_PreLoadReset by default (Game_SceneLoop, Game_PlayAttractDemo), SiberiaB1_PreLoad for the first stage
 g_ScenePostLoadHook = -$38EC	; ptr: called last by Level_Load; Scene_PostLoadVram by default, SiberiaB1_PostLoad for the first stage
 g_FrameTick = -$3A08	; byte: set by VDP_FrameUpdate every V-blank; the level loops clear it at frame start and in two-player half-rate mode spin until it is set again (Level_FrameLoop, PlayerSelect_Run, Cerebro_PlayIntro)
-g_VBlankFrameDone = -$3A0A	; byte: VDP_FrameUpdate ran in this V-blank (Irq_VBlank clears it first); the V-blank hooks Hologram_VBlankFlicker and sub_1E1928 act only when set
-g_DemoStepFrame = -$3A22	; word: g_LevelFrame at the last demo input step (sub_1F9DE8); Level_Run and Cerebro_Run clear it
+g_VBlankFrameDone = -$3A0A	; byte: VDP_FrameUpdate ran in this V-blank (Irq_VBlank clears it first); the V-blank hooks Hologram_VBlankFlicker and Cyclops_BeamVBlankFlicker act only when set
+g_DemoStepFrame = -$3A22	; word: g_LevelFrame at the last demo input step (Demo_ReadInput); Level_Run and Cerebro_Run clear it
 g_ScnUnused3B5C = -$3B5C	; byte: scene-id slot between g_ScnSavageC1 and g_ScnSavageB1 that Scene_RegisterAll never fills (0 throughout the TAS); FLYBROOD code takes its alternate art/animation path when g_SceneIndex equals it (FlyBrood_ClassInit, _Init, _Draw, _Act*)
 g_ResumeSceneIndex = -$3B92	; word: scene to resume after the death player-select screen: Game_SceneLoop saves g_SceneIndex here, PlayerSelect_RunScene restores it and sets -1 (= none)
 g_P1VramTile = -$3BB2	; word: first VRAM tile reserved for player 1's sprite graphics (Scene_PostLoadVram = g_VramTileCursor); the character Inits use it when this == g_Player1
@@ -467,3 +467,34 @@ g_AvalonA3SprDelays = -$3CC8	; 4 words at stride 4: AvalonA3 effect-sprite frame
 g_RetractFloorDepth = -$3CD0	; word: AvalonA2 retracting floor value: $300 at AvalonA2_PlacePlayers, RetractFloor_StateWait adds $10 up to $500; copied into -$3AFA
 g_BigAcolyteDebris = -$3CDA	; ptr: debris pool from Debris_CreatePool in BigAcolyte_ActAppear (+2 = $400, +4 = sprite definition from BigAcolyte_LoadSprite); used by BigAcolyte_StateBurstWall
 g_AvalonB1PalCycles = -$3CE6	; 6 words: AvalonB1 palette-cycle step counters passed by address (AvalonB1_CyclePalettes; AvalonB1_RunScene clears)
+g_FloatFallSpeed = -$3AFA	; word: when non-zero an airborne player enters the slow-fall state with this max fall speed (XPlayer_StateControl, XPlayer_StartFloatFall; cleared by XPlayer_StateFloatFall/Land and Scene_PreLoadReset); AvalonA2's retracting floor sets it from g_RetractFloorDepth; CloneA2 reuses it as a $300-frame camera timer (CloneA2_StartCamAltMode, CloneA2_CamAltTimer)
+g_SceneVar3B02 = -$3B02	; word, scene-local: Cerebro text state (Cerebro_RunTextScript 2, TextOpFadeOut 3, TextOpPrint -1; Cerebro_FrameHook/PrintText), AvalonA4 camera-zone event bits (AvalonA4_EventZoneFree*, Set/ClearCameraZone), CloneA2 background palette timer, SentinelsA1 zap-light index, SentinelsB2 alarm countdown ($546), SavageA4 boss stage threshold, Deathbird burst counter ($D), BaniMazaA2 palette reload
+g_SceneVar3B04 = -$3B04	; word, scene-local: Cerebro text cursor column (Cerebro_PrintText, TextOpSetCursor, ClearTextWindow), SiberiaB1 wind value, SentinelsA1 zap index, Teleporter fade flag, Deathbird/CloneA5 sprite-definition slot, XClone maker state; also Nem_Decode's bit counter (so only valid between decodes)
+g_SceneVar3B06 = -$3B06	; word, scene-local: Cerebro text cursor row (Cerebro_PrintText, TextOpSetCursor), SiberiaB1 wind strength ($600), XClone collapse/reward timers ($A0), SavageBigBio tentacle-hit bits, Deathbird hurt-flash timer ($C), SentinelsB2 digit value, AvalonA3 timer; also Nem_Decode's row counter
+g_SceneVar3B08 = -$3B08	; word, scene-local: XClone arena flags (bit 0 locked, bit 1 reward given, bit 8+type = clone beaten by the same character), APOCALYPSE live-bomb count, CloneA2 quake flag, SentinelsB2 escape phase 1-3, SiberiaB1 wind gust timer, SentinelsA1 zap index, CloneA5 sprite slot
+g_SceneVar3B0A = -$3B0A	; word, scene-local: Cerebro screens = 1 to run the player select after the text (Cerebro*_RunScene, Cerebro_Run), SiberiaB1 demo timeout ($4B0 frames, SiberiaB1_InstallHooks/FrameHook), XClone arena camera limit, SentinelsA1 zap index, BaniMazaA2 palette flag
+g_SceneVar3B0C = -$3B0C	; word, scene-local: Cerebro intro palette frame counter / play-intro flag (Cerebro_IntroPalHook, Cerebro_PlayIntro, Cerebro*_RunScene), BROODBOSS state bits (1 arrived, 2 shock on, $10/$80 claw, $20, $40 hit wall; BroodBoss_*, CloneA5_*), XClone arena limit, SiberiaB1 ice debris value, BaniMazaA2 palette step
+g_SceneVar3B0E = -$3B0E	; word, scene-local: player select = number of selectable characters (PlayerSelect_Run; Prev/Next/FirstFreeChar, PlaceCursor, DrawFrames), SiberiaB1 debris sprite slot, XClone arena limit, BaniMazaA2 sprite flag
+g_SceneVar3B10 = -$3B10	; word, scene-local: SiberiaB1 debris count (SiberiaB1_DebrisInit/Alloc/Free/Update), BroodClaw swing phase 0-4, Cerebro sprite tile base (Cerebro_LoadSpriteTiles, PlayerSelect_DrawFrame), LightBeam/BroodBoss values, XClone arena limit
+g_SceneVar3B14 = -$3B14	; long, scene-local: Cerebro text script pointer (set by each Cerebro*_RunScene, read by Cerebro_RunTextScript), Hologram current pose, SiberiaB1 wind script, Deathbird attack script, AvalonB1/AvalonA3 saved palette pointer, BroodBoss/CloneA5 debris pool, SavageA4 boss stage table, BaniMazaA2 debris buffer
+g_SceneVar3B18 = -$3B18	; long, scene-local: CloneA5 boss-parts object on CloneA5_RunScene's stack (CloneA5_FrameHook writes the health bar into +4), SavageBigBio hit mask, SentinelsA1 zap countdown, Deathbird data block, AvalonA3 second palette pointer, BaniMazaA2 debris group
+g_SceneVar3B1C = -$3B1C	; long, scene-local: data pointer for Apocalypse, XClone, BroodBoss and CloneA5 resources, SavageBigBio second hit mask, Deathbird hornet schedule
+g_SceneVar3B20 = -$3B20	; long, scene-local: boss object pointer (BroodBoss_Init, SavageA4_RunScene, SentinelsA1_RunScene, Deathbird_Init, Savage bio bosses), Deathbird polar radius, ApocBomb speed timer, XClone maker
+g_SceneVar3B22 = -$3B22	; word, scene-local: CloneA5 camera y lock (BroodBoss_Init; CloneA5_CamApply), SavageBigBio speed
+g_SceneVar3B24 = -$3B24	; long, scene-local: CloneA5 camera x lock (word; BroodBoss_Init, CloneA5_CamApply), SavageBigBio position, SiberiaB1 debris pool, Deathbird polar angle
+g_SceneVar3B28 = -$3B28	; long, scene-local: player select P1 cursor object (+$3C character, +$3D saved, +$40 confirmed; PlayerSelect_*, CursorInput_*), Deathbird polar parameter, SiberiaB1 tile-hook buffer
+g_SceneVar3B2A = -$3B2A	; word, scene-local: XClone arena camera value (XClone_Init, XClone_LockArena)
+g_SceneVar3B2C = -$3B2C	; long, scene-local: player select P2 cursor object (PlayerSelect_*, CursorInput_*); word: XClone arena camera value (XClone_Init, XClone_LockArena)
+g_SceneVar3B30 = -$3B30	; long, scene-local: player select portrait-frame object (PlayerSelect_DrawFrames/PlaceCursor), XClone current maker/balls object (XClone_LockArena, ActLeaveBalls, ActBecomeBalls)
+g_SceneVar3B32 = -$3B32	; word, scene-local: frame timer or palette-cycle counter: AvalonB1 camera-hook wait timer, AvalonB1/SiberiaB1 frame hook counters, palette cycle counters passed by address (CloneA1/SentinelsA1_CyclePalettes), CloneA2 flicker, SentinelsD1/SavageA4 light animation, Boulder spawner
+g_SceneVar3B34 = -$3B34	; word, scene-local palette-cycle / effect counter (SavageA4/SentinelsA1/SiberiaB1/SpaceB1/CloneA1 cycles, CloneA2 flicker, SavageA2 lights, AvalonA4/BaniMazaA2 palette animation)
+g_SceneVar3B36 = -$3B36	; word, scene-local palette-cycle / effect counter (SpaceB1, SentinelsA1, SavageA4 cycles, XClone collapse, BaniMazaA2, Cerebro)
+g_SceneVar3B38 = -$3B38	; word, scene-local counter (SentinelsB2 alarm step, Cerebro palette animation, SentinelsA1/SpaceB1 cycles, XClone collapse, BaniMazaA2 palette step)
+g_SceneVar3B3A = -$3B3A	; word, scene-local animation counter (AvalonB1 fade step, AvalonA4/BaniMazaA2/Cerebro palette animation, CloneA1/SentinelsA1 cycles, CloneA2 flicker, SentinelsD1 light, SavageA4 effect sprite, SiberiaB1 wind sprite)
+g_SceneVar3B3C = -$3B3C	; word, scene-local palette-cycle / effect counter (SavageA4/SentinelsA1/SiberiaB1/SpaceB1/CloneA1 cycles, CloneA2 flicker, SavageA2 lights, AvalonA4/BaniMazaA2 palette animation)
+g_SceneVar3B3E = -$3B3E	; word, scene-local palette-cycle counter (SpaceB1, SentinelsA1, SavageA4 cycles, BaniMazaA2 palette animation)
+g_SceneVar3B40 = -$3B40	; word, scene-local: SiberiaB1 wind value, Cerebro palette animation step, SentinelsA1 cycle counter, SentinelsB2 alarm
+g_SceneVar3B42 = -$3B42	; word, scene-local palette-cycle counter (CloneA1, SentinelsA1)
+g_SceneVar3B44 = -$3B44	; word, scene-local palette-cycle counter (CloneA1, SavageA4, SentinelsA1, SiberiaB1; Cerebro_Run 1)
+g_SceneVar3B46 = -$3B46	; word, scene-local palette-cycle counter (SavageA4, SentinelsA1; Cerebro_Run 1)
+g_SceneVar3B48 = -$3B48	; word, scene-local: Cerebro palette animation direction (+1/-1), SentinelsA1 cycle counter, SentinelsB2 alarm, SiberiaB1 wind

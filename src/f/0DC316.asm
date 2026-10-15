@@ -8,8 +8,8 @@
 SentinelsD1_InitLight:
 	link.w	a6,#$0
 	jsr	SentinelsD1_EmptyStub(pc)
-	move.w	#$5,-$3B32(a5)
-	clr.w	-$3B3A(a5)
+	move.w	#$5,g_SceneVar3B32(a5)
+	clr.w	g_SceneVar3B3A(a5)
 	moveq	#$1,d0
 	move.l	d0,-(a7)
 	move.w	g_FgTilesEnd(a5),d1

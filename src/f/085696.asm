@@ -103,7 +103,7 @@ loc_08575E:
 	movea.l	(a0),a0
 	movea.l	$36(a0),a1
 	jsr	(a1)
-	move.w	#$1,-$3B04(a5)
+	move.w	#$1,g_SceneVar3B04(a5)
 	lea.l	Teleporter_NoPause(pc),a0
 	move.l	a0,g_PauseHandler(a5)
 	moveq	#$1,d0

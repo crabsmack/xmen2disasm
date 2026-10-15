@@ -21,7 +21,7 @@ CloneA2_StartBgPalTimer:
 	move.l	a4,$10(a4)
 	move.l	a4,-(a7)
 	jsr	$4FDA(a5)	; -> Timer_Start
-	clr.w	-$3B02(a5)
+	clr.w	g_SceneVar3B02(a5)
 	addq.w	#$4,a7
 loc_082030:
 	movea.l	-$4(a6),a4

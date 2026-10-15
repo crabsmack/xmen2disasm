@@ -7,7 +7,7 @@
 XClone_SegHookArenaLocked:
 	link.w	a6,#$0
 	moveq	#$1,d1
-	and.w	-$3B08(a5),d1
+	and.w	g_SceneVar3B08(a5),d1
 	seq.b	d0
 	andi.w	#$1,d0
 	unlk	a6

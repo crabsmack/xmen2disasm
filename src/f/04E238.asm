@@ -38,8 +38,8 @@ loc_04E280:
 	and.w	$92(a4),d0
 	addq.w	#$8,a7
 	beq.s	loc_04E2B0
-	move.w	-$3B08(a5),d0
-	subq.w	#$1,-$3B08(a5)
+	move.w	g_SceneVar3B08(a5),d0
+	subq.w	#$1,g_SceneVar3B08(a5)
 	move.l	a4,-(a7)
 	jsr	$3AD2(a5)	; -> ExplodeFx_BurstSmall
 	addq.w	#$4,a7

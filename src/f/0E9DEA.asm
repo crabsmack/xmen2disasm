@@ -16,7 +16,7 @@ Hologram_WaitLowerLiftBoarded:
 	move.l	$9A(a4),-(a7)
 	jsr	$28CA(a5)	; -> CoreElevator_SendDown
 	moveq	#$1B,d0
-	move.l	d0,-$3B14(a5)
+	move.l	d0,g_SceneVar3B14(a5)
 	moveq	#$0,d0
 	move.l	d0,-(a7)
 	jsr	Hologram_SetPose(pc)

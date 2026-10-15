@@ -27,7 +27,7 @@ loc_08605A:
 loc_086068:
 	moveq	#$3,d0
 	move.l	d0,-(a7)
-	move.l	-$3B1C(a5),-(a7)
+	move.l	g_SceneVar3B1C(a5),-(a7)
 	ext.l	d6
 	move.l	d6,-(a7)
 	ext.l	d5

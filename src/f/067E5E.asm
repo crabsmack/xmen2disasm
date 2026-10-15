@@ -9,10 +9,10 @@ CursorInput_StatePoll:
 	movem.l	d3/d7/a3-a4,-(a7)
 	movea.l	$8(a6),a3
 	moveq	#$1,d3
-	movea.l	-$3B28(a5),a0
+	movea.l	g_SceneVar3B28(a5),a0
 	tst.b	$34(a0)
 	bne.s	loc_067E82
-	movea.l	-$3B2C(a5),a0
+	movea.l	g_SceneVar3B2C(a5),a0
 	tst.b	$34(a0)
 	bne.s	loc_067E82
 	moveq	#$0,d3

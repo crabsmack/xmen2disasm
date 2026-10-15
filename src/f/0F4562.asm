@@ -6,8 +6,8 @@
 ; ---------------------------------------------------------------------------
 SentinelsB2_ResetAlarm:
 	link.w	a6,#$0
-	clr.w	-$3B38(a5)
-	clr.w	-$3B48(a5)
-	clr.w	-$3B40(a5)
+	clr.w	g_SceneVar3B38(a5)
+	clr.w	g_SceneVar3B48(a5)
+	clr.w	g_SceneVar3B40(a5)
 	unlk	a6
 	rts

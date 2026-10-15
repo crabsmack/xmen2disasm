@@ -18,6 +18,6 @@ Scene_PreLoadReset:
 	moveq	#$0,d0
 	move.l	d0,g_BBoard(a5)
 	move.l	d0,g_SyncPool(a5)
-	clr.w	-$3AFA(a5)
+	clr.w	g_FloatFallSpeed(a5)
 	unlk	a6
 	rts

@@ -6,7 +6,7 @@
 ; ---------------------------------------------------------------------------
 Cyclops_ResetBeamFlicker:
 	moveq	#$0,d0
-	move.w	d0,g_SprFlickerPending(a5)
-	move.l	d0,g_SprFlickerCur(a5)
-	move.l	d0,g_SprFlickerNew(a5)
+	move.w	d0,g_BeamFlickerPending(a5)
+	move.l	d0,g_BeamFlickerCur(a5)
+	move.l	d0,g_BeamFlickerNew(a5)
 	rts

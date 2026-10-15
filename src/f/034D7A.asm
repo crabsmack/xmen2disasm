@@ -7,18 +7,18 @@
 AvalonA4_AnimatePalettes:
 	link.w	a6,#$0
 	move.l	a4,-(a7)
-	move.w	-$3B32(a5),d0
-	subq.w	#$1,-$3B32(a5)
+	move.w	g_SceneVar3B32(a5),d0
+	subq.w	#$1,g_SceneVar3B32(a5)
 	tst.b	g_TwoPlayerStep(a5)
 	beq.s	loc_034D96
-	move.w	-$3B32(a5),d0
-	subq.w	#$1,-$3B32(a5)
+	move.w	g_SceneVar3B32(a5),d0
+	subq.w	#$1,g_SceneVar3B32(a5)
 loc_034D96:
-	tst.w	-$3B32(a5)
+	tst.w	g_SceneVar3B32(a5)
 	bgt.w	loc_034F7A
 	lea.l	$71A(a5),a0
 	movea.l	$2(a0),a4
-	move.w	#$5,-$3B32(a5)
+	move.w	#$5,g_SceneVar3B32(a5)
 	move.b	#$1,g_PalBaseDirty(a5)
 	move.b	g_AvalonA4PalStep(a5),d0
 	cmp.b	(a4),d0
@@ -32,7 +32,7 @@ loc_034DBE:
 	movea.l	d0,a0
 	tst.b	$1(a0)
 	beq.w	AvalonA4_AnimatePalettes_part2
-	move.w	-$3B3A(a5),d0
+	move.w	g_SceneVar3B3A(a5),d0
 	bmi.w	AvalonA4_AnimatePalettes_part4
 	cmpi.w	#$5,d0
 	bgt.w	AvalonA4_AnimatePalettes_part4

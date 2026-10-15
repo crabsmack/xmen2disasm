@@ -28,19 +28,19 @@ LittleLeg_New:
 	move.w	$E(a6),$4(a4)
 	move.w	$12(a6),$A(a4)
 	move.w	$12(a6),$6(a4)
-	move.w	-$3B04(a5),d0
+	move.w	g_SceneVar3B04(a5),d0
 	ext.l	d0
 	move.l	d0,-(a7)
 	pea.l	$16(a4)
 	jsr	$3F42(a5)	; -> Spr_SetFromDef
 	ori.b	#$4,$16(a4)
-	move.w	-$3B04(a5),d0
+	move.w	g_SceneVar3B04(a5),d0
 	ext.l	d0
 	move.l	d0,-(a7)
 	pea.l	$32(a4)
 	jsr	$3F42(a5)	; -> Spr_SetFromDef
 	ori.b	#$4,$32(a4)
-	move.w	-$3B04(a5),d0
+	move.w	g_SceneVar3B04(a5),d0
 	ext.l	d0
 	move.l	d0,-(a7)
 	pea.l	$4E(a4)

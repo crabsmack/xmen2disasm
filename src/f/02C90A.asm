@@ -40,14 +40,14 @@ loc_02C968:
 	moveq	#$0,d7
 	moveq	#$D,d3
 loc_02C96C:
-	movea.l	-$3B14(a5),a0
+	movea.l	g_SceneVar3B14(a5),a0
 	move.l	d7,d0
 	add.l	d0,d0
 	move.l	d7,d1
 	add.w	d1,d1
 	lea.l	g_PalBase(a5),a1
 	move.w	(a0,d0.l),(a1,d1.w)
-	movea.l	-$3B18(a5),a0
+	movea.l	g_SceneVar3B18(a5),a0
 	move.l	d7,d0
 	add.l	d0,d0
 	move.l	d7,d1

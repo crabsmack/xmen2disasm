@@ -55,21 +55,21 @@ loc_066B48:
 	move.l	a0,g_SceneFrameHook(a5)
 	clr.b	g_TwoPlayerStep(a5)
 	jsr	Cerebro_SetupPalCycles(pc)
-	move.w	#$2,-$3B34(a5)
-	clr.w	-$3B3C(a5)
-	move.w	#$1,-$3B44(a5)
-	move.w	#$2,-$3B36(a5)
-	clr.w	-$3B3E(a5)
-	move.w	#$1,-$3B46(a5)
-	move.w	#$2,-$3B38(a5)
-	clr.w	-$3B40(a5)
-	move.w	#$1,-$3B48(a5)
+	move.w	#$2,g_SceneVar3B34(a5)
+	clr.w	g_SceneVar3B3C(a5)
+	move.w	#$1,g_SceneVar3B44(a5)
+	move.w	#$2,g_SceneVar3B36(a5)
+	clr.w	g_SceneVar3B3E(a5)
+	move.w	#$1,g_SceneVar3B46(a5)
+	move.w	#$2,g_SceneVar3B38(a5)
+	clr.w	g_SceneVar3B40(a5)
+	move.w	#$1,g_SceneVar3B48(a5)
 	move.w	#$3,g_TextWinTop(a5)
 	move.w	#$5,g_TextWinLeft(a5)
 	move.w	#$16,g_TextWinBottom(a5)
 	move.w	#$22,g_TextWinRight(a5)
-	move.w	g_TextWinTop(a5),-$3B04(a5)
-	move.w	g_TextWinLeft(a5),-$3B06(a5)
+	move.w	g_TextWinTop(a5),g_SceneVar3B04(a5)
+	move.w	g_TextWinLeft(a5),g_SceneVar3B06(a5)
 	clr.w	g_SceneExitTimer(a5)
 	moveq	#$0,d0
 	move.l	d0,g_VBlankCount(a5)
@@ -114,7 +114,7 @@ loc_066CA2:
 	beq.s	loc_066CB2
 	jsr	Cerebro_ClearScreen(pc)
 loc_066CB2:
-	tst.w	-$3B0C(a5)
+	tst.w	g_SceneVar3B0C(a5)
 	beq.s	loc_066D24
 	bra.s	loc_066CBE
 loc_066CBA:
@@ -124,9 +124,9 @@ loc_066CBE:
 	bne.s	loc_066CBA
 	jsr	Cerebro_ClearScreen(pc)
 	jsr	Cerebro_PlayIntro(pc)
-	tst.l	-$3B14(a5)
+	tst.l	g_SceneVar3B14(a5)
 	bne.s	loc_066CD8
-	tst.w	-$3B0A(a5)
+	tst.w	g_SceneVar3B0A(a5)
 	beq.s	loc_066D24
 loc_066CD8:
 	clr.w	d7
@@ -159,7 +159,7 @@ loc_066D16:
 	bgt.s	loc_066D16
 	jsr	Cerebro_SetupPalCycles(pc)
 loc_066D24:
-	tst.l	-$3B14(a5)
+	tst.l	g_SceneVar3B14(a5)
 	beq.s	loc_066D90
 	cmpi.w	#$FFFF,d6
 	beq.s	loc_066D4C
@@ -189,7 +189,7 @@ loc_066D4C:
 	move.b	#$1,g_PalBaseDirty(a5)
 	jsr	Cerebro_RunTextScript(pc)
 loc_066D90:
-	tst.w	-$3B0A(a5)
+	tst.w	g_SceneVar3B0A(a5)
 	beq.w	loc_066E38
 	jsr	$5242(a5)	; -> Snd_StopAll
 	moveq	#$8,d0

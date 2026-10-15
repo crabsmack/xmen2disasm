@@ -8,13 +8,13 @@ Cerebro_AnimatePalettes:
 	link.w	a6,#$0
 	tst.b	g_PalFadeActive(a5)
 	bne.w	loc_064E98
-	subq.w	#$1,-$3B38(a5)
-	tst.w	-$3B38(a5)
+	subq.w	#$1,g_SceneVar3B38(a5)
+	tst.w	g_SceneVar3B38(a5)
 	bge.w	loc_064DD8
-	move.w	#$3,-$3B38(a5)
-	move.w	-$3B48(a5),d0
-	add.w	d0,-$3B40(a5)
-	move.w	-$3B40(a5),d0
+	move.w	#$3,g_SceneVar3B38(a5)
+	move.w	g_SceneVar3B48(a5),d0
+	add.w	d0,g_SceneVar3B40(a5)
+	move.w	g_SceneVar3B40(a5),d0
 	bmi.w	Cerebro_AnimatePalettes_StepB
 	cmpi.w	#$7,d0
 	bgt.w	Cerebro_AnimatePalettes_StepB

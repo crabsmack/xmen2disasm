@@ -18,23 +18,23 @@ loc_099232:
 	move.w	d0,d7
 	ext.l	d7
 	add.l	d7,g_FrameCounter(a5)
-	tst.w	-$3B06(a5)
+	tst.w	g_SceneVar3B06(a5)
 	ble.s	loc_099244
-	sub.w	d7,-$3B06(a5)
+	sub.w	d7,g_SceneVar3B06(a5)
 loc_099244:
-	tst.w	-$3B06(a5)
+	tst.w	g_SceneVar3B06(a5)
 	bge.s	loc_09924E
-	clr.w	-$3B06(a5)
+	clr.w	g_SceneVar3B06(a5)
 loc_09924E:
-	tst.w	-$3B36(a5)
+	tst.w	g_SceneVar3B36(a5)
 	ble.s	loc_099258
-	sub.w	d7,-$3B36(a5)
+	sub.w	d7,g_SceneVar3B36(a5)
 loc_099258:
-	tst.w	-$3B38(a5)
+	tst.w	g_SceneVar3B38(a5)
 	ble.s	loc_099262
-	sub.w	d7,-$3B38(a5)
+	sub.w	d7,g_SceneVar3B38(a5)
 loc_099262:
-	tst.w	-$3B38(a5)
+	tst.w	g_SceneVar3B38(a5)
 	bgt.w	loc_09936E
 	jsr	$417A(a5)	; -> Rand_Next
 	moveq	#$0,d1
@@ -58,7 +58,7 @@ loc_099262:
 	and.w	d1,d0
 	move.l	-$8(a6),d1
 	add.w	d1,d0
-	move.w	d0,-$3B38(a5)
+	move.w	d0,g_SceneVar3B38(a5)
 	move.w	g_CameraX(a5),d6
 	add.w	#$A0,d6
 	move.w	g_CameraY(a5),d5
@@ -131,7 +131,7 @@ loc_099364:
 	lea.l	$1A2A(a5),a0
 	move.l	$2(a0),g_CamShake(a5)
 loc_09936E:
-	tst.w	-$3B36(a5)
+	tst.w	g_SceneVar3B36(a5)
 	bgt.s	loc_0993B6
 	jsr	$417A(a5)	; -> Rand_Next
 	moveq	#$0,d1
@@ -139,7 +139,7 @@ loc_09936E:
 	moveq	#$1F,d0
 	and.w	d1,d0
 	add.w	#$3C,d0
-	move.w	d0,-$3B36(a5)
+	move.w	d0,g_SceneVar3B36(a5)
 	jsr	$417A(a5)	; -> Rand_Next
 	moveq	#$0,d1
 	move.w	d0,d1
@@ -150,7 +150,7 @@ loc_09936E:
 	move.w	g_CameraY(a5),d7
 	moveq	#$A,d0
 	move.l	d0,-(a7)
-	move.l	-$3B1C(a5),-(a7)
+	move.l	g_SceneVar3B1C(a5),-(a7)
 	ext.l	d7
 	move.l	d7,-(a7)
 	ext.l	d6

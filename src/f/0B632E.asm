@@ -103,15 +103,15 @@ loc_0B6404:
 	asr.l	#$8,d4
 	bra.s	loc_0B6462
 loc_0B6436:
-	tst.l	-$3B20(a5)
+	tst.l	g_SceneVar3B20(a5)
 	beq.w	loc_0B6596
-	movea.l	-$3B20(a5),a0
+	movea.l	g_SceneVar3B20(a5),a0
 	move.l	$8(a0),d0
 	asr.l	#$8,d0
 	move.w	d0,d6
 	move.w	d6,d7
 	move.w	d7,-$14(a6)
-	movea.l	-$3B20(a5),a0
+	movea.l	g_SceneVar3B20(a5),a0
 	move.l	$C(a0),d0
 	asr.l	#$8,d0
 	move.w	d0,d5
@@ -120,9 +120,9 @@ loc_0B6436:
 loc_0B6462:
 	move.w	d5,-$4(a6)
 	move.w	d4,-$2(a6)
-	tst.l	-$3B20(a5)
+	tst.l	g_SceneVar3B20(a5)
 	beq.s	loc_0B64A6
-	movea.l	-$3B20(a5),a0
+	movea.l	g_SceneVar3B20(a5),a0
 	move.l	$8(a0),d4
 	asr.l	#$8,d4
 	move.l	$C(a0),d5

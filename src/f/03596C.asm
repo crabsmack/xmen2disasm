@@ -5,7 +5,7 @@
 ; Evidence: common exit of the Sw_0358D8 cases
 ; ---------------------------------------------------------------------------
 AvalonA4_SetCameraZone_apply:
-	or.w	d7,-$3B02(a5)
+	or.w	d7,g_SceneVar3B02(a5)
 	movem.l	-$10(a6),d3/d5-d7
 	unlk	a6
 	rts

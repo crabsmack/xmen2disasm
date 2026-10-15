@@ -13,9 +13,9 @@ Cyclops_DrawBeam_Emit:
 loc_1E178E:
 	movea.l	g_SprWritePtr(a5),a2
 	move.b	$3(a2),d0
-	move.b	d0,g_SprFlickerNew+$1(a5)
+	move.b	d0,g_BeamFlickerNew+$1(a5)
 	subq.b	#$1,d0
-	move.b	d0,g_SprFlickerNew(a5)
+	move.b	d0,g_BeamFlickerNew(a5)
 	movea.l	$C(a6),a0
 	movea.l	$14(a0),a4
 	move.b	$6(a4),d0
@@ -105,7 +105,7 @@ loc_1E188C:
 	bne.s	loc_1E18BA
 	st.b	-$18(a6)
 	move.b	d2,$C(a1)
-	move.b	$3(a2),g_SprFlickerNew+$2(a5)
+	move.b	$3(a2),g_BeamFlickerNew+$2(a5)
 	movea.l	$14(a1),a4
 	move.b	$7(a4),d0
 	ext.w	d0
@@ -131,8 +131,8 @@ loc_1E18BA:
 	move.w	d6,$6(a2)
 loc_1E18EE:
 	st.b	d0
-	move.b	d0,g_SprFlickerNew+$3(a5)
-	move.b	d0,g_SprFlickerPending(a5)
+	move.b	d0,g_BeamFlickerNew+$3(a5)
+	move.b	d0,g_BeamFlickerPending(a5)
 loc_1E18F8:
 	movem.l	-$40(a6),d2-d7/a2-a4
 	unlk	a6

@@ -11,7 +11,7 @@ Apocalypse_StateDropBombs:
 	clr.b	d6
 	clr.w	d7
 	moveq	#$5,d0
-	cmp.w	-$3B08(a5),d0
+	cmp.w	g_SceneVar3B08(a5),d0
 	blt.s	loc_04B810
 	movea.l	$A8(a4),a0
 	move.w	(a0),d5

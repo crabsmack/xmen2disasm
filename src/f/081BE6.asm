@@ -8,15 +8,15 @@ CloneA2_FlickerUpdate:
 	link.w	a6,#$0
 	movem.l	d7/a4,-(a7)
 	lea.l	Tbl_CloneA2FlickerPattern(pc),a4
-	tst.w	-$3B32(a5)
+	tst.w	g_SceneVar3B32(a5)
 	bne.s	loc_081C3C
-	move.w	#$2,-$3B32(a5)
-	tst.w	-$3B3A(a5)
+	move.w	#$2,g_SceneVar3B32(a5)
+	tst.w	g_SceneVar3B3A(a5)
 	bne.s	loc_081C0A
-	move.w	#$1A,-$3B3A(a5)
+	move.w	#$1A,g_SceneVar3B3A(a5)
 loc_081C0A:
-	subq.w	#$1,-$3B3A(a5)
-	move.w	-$3B3A(a5),d0
+	subq.w	#$1,g_SceneVar3B3A(a5)
+	move.w	g_SceneVar3B3A(a5),d0
 	move.b	(a4,d0.w),d0
 	subq.b	#$1,d0
 	move.b	d0,d7
@@ -30,16 +30,16 @@ loc_081C2A:
 loc_081C36:
 	move.b	#$1,g_PalBaseDirty(a5)
 loc_081C3C:
-	subq.w	#$1,-$3B32(a5)
-	tst.w	-$3B34(a5)
+	subq.w	#$1,g_SceneVar3B32(a5)
+	tst.w	g_SceneVar3B34(a5)
 	bne.s	loc_081CB6
-	move.w	#$9,-$3B34(a5)
-	tst.w	-$3B3C(a5)
+	move.w	#$9,g_SceneVar3B34(a5)
+	tst.w	g_SceneVar3B3C(a5)
 	bne.s	loc_081C58
-	move.w	#$6,-$3B3C(a5)
+	move.w	#$6,g_SceneVar3B3C(a5)
 loc_081C58:
-	subq.w	#$1,-$3B3C(a5)
-	move.w	-$3B3C(a5),d0
+	subq.w	#$1,g_SceneVar3B3C(a5)
+	move.w	g_SceneVar3B3C(a5),d0
 	bmi.s	CloneA2_FlickerUpdate_SetColor15
 	cmpi.w	#$5,d0
 	bgt.s	CloneA2_FlickerUpdate_SetColor15

@@ -7,7 +7,7 @@
 ApocBomb_SetSpeed:
 	link.w	a6,#$0
 	move.l	a4,-(a7)
-	movea.l	-$3B20(a5),a4
+	movea.l	g_SceneVar3B20(a5),a4
 	move.l	a4,d0
 	beq.s	loc_04DF66
 	move.w	$A(a6),$2(a4)

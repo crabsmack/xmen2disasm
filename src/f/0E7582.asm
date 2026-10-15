@@ -123,11 +123,11 @@ SentinelsA1_InitZapLights:
 	move.l	d2,-(a7)
 	move.l	g_FgBlockDefs(a5),-(a7)
 	jsr	$4E12(a5)	; -> Map_SetRowPalette
-	move.w	#$FFFF,-$3B02(a5)
-	move.w	#$FFFF,-$3B04(a5)
-	move.w	#$FFFF,-$3B06(a5)
-	move.w	#$FFFF,-$3B08(a5)
-	move.w	#$FFFF,-$3B0A(a5)
+	move.w	#$FFFF,g_SceneVar3B02(a5)
+	move.w	#$FFFF,g_SceneVar3B04(a5)
+	move.w	#$FFFF,g_SceneVar3B06(a5)
+	move.w	#$FFFF,g_SceneVar3B08(a5)
+	move.w	#$FFFF,g_SceneVar3B0A(a5)
 	movem.l	-$8(a6),d7/a4
 	unlk	a6
 	rts

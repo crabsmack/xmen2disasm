@@ -19,8 +19,8 @@ Deathbird_StateHurtFlash:
 	jsr	(a1)
 	addq.w	#$8,a7
 loc_11268A:
-	subq.w	#$1,-$3B06(a5)
-	tst.w	-$3B06(a5)
+	subq.w	#$1,g_SceneVar3B06(a5)
+	tst.w	g_SceneVar3B06(a5)
 	bge.s	loc_112700
 	move.w	#$2,g_PalBase+$44(a5)
 	move.w	#$22,g_PalBase+$46(a5)

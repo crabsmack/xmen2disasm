@@ -9,7 +9,7 @@ BroodBoss_StateShockOn:
 	link.w	a6,#$0
 	move.l	a4,-(a7)
 	movea.l	$8(a6),a4
-	ori.w	#$2,-$3B0C(a5)
+	ori.w	#$2,g_SceneVar3B0C(a5)
 	pea.l	($F5).w
 	jsr	$5222(a5)	; -> Snd_Stop
 	pea.l	($F5).w

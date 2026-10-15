@@ -24,7 +24,7 @@ loc_0878FA:
 	addq.w	#$8,a7
 	ble.s	loc_08792E
 	sub.w	d7,$8E(a4)
-	andi.w	#$FFBF,-$3B0C(a5)
+	andi.w	#$FFBF,g_SceneVar3B0C(a5)
 	clr.w	$6C(a4)
 	lea.l	BroodBoss_StateScream(pc),a0
 	move.l	a0,$5C(a4)

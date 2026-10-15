@@ -15,14 +15,14 @@ Cerebro_FrameHook:
 loc_064EB6:
 	jsr	$50FA(a5)	; -> Pad_Update
 	moveq	#$2,d0
-	cmp.w	-$3B02(a5),d0
+	cmp.w	g_SceneVar3B02(a5),d0
 	bne.s	loc_064ED6
 	move.w	g_Pad2Pressed(a5),d0
 	or.w	g_Pad1Pressed(a5),d0
 	move.w	#$F0,d1
 	and.w	d0,d1
 	beq.s	loc_064ED6
-	clr.w	-$3B02(a5)
+	clr.w	g_SceneVar3B02(a5)
 loc_064ED6:
 	jsr	Cerebro_AnimatePalettes(pc)
 	unlk	a6

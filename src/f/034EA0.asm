@@ -5,7 +5,7 @@
 ; Evidence: only reached by branches from AvalonA4_AnimatePalettes
 ; ---------------------------------------------------------------------------
 AvalonA4_AnimatePalettes_part2:
-	move.w	-$3B3A(a5),d0
+	move.w	g_SceneVar3B3A(a5),d0
 	bmi.w	AvalonA4_AnimatePalettes_part4
 	cmpi.w	#$5,d0
 	bgt.w	AvalonA4_AnimatePalettes_part4

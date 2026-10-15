@@ -65,7 +65,7 @@ loc_0FD2A8:
 loc_0FD2EA:
 	move.w	$E(a3),d0
 loc_0FD2EE:
-	move.w	d0,-$3B0C(a5)
+	move.w	d0,g_SceneVar3B0C(a5)
 loc_0FD2F2:
 	move.w	$E(a6),d7
 	subq.w	#$1,d7

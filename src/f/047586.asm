@@ -7,7 +7,7 @@
 BaniMazaA2_AnimatePalettes_copy:
 	lea.l	$982(a5),a0
 	movea.l	$2(a0),a4
-	move.w	-$3B3A(a5),d0
+	move.w	g_SceneVar3B3A(a5),d0
 	ext.l	d0
 	add.l	d0,d0
 	adda.l	d0,a4

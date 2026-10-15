@@ -38,11 +38,11 @@ loc_099430:
 	move.l	d0,$1C(a0)
 	move.l	g_Camera(a5),-(a7)
 	jsr	XClone_CamSetNormal(pc)
-	andi.w	#$FFFE,-$3B08(a5)
+	andi.w	#$FFFE,g_SceneVar3B08(a5)
 	moveq	#$0,d0
-	move.l	d0,-$3B30(a5)
+	move.l	d0,g_SceneVar3B30(a5)
 	jsr	XClone_MakerBufSize(pc)
-	move.w	d0,-$3B04(a5)
+	move.w	d0,g_SceneVar3B04(a5)
 	addq.w	#$4,a7
 loc_09945E:
 	movea.l	-$4(a6),a4

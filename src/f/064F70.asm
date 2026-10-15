@@ -43,7 +43,7 @@ loc_064FF2:
 	moveq	#$3,d5
 	bra.w	loc_065388
 loc_065000:
-	tst.w	-$3B02(a5)
+	tst.w	g_SceneVar3B02(a5)
 	bne.s	loc_065026
 	cmpi.w	#$5,d4
 	beq.s	loc_065012
@@ -65,13 +65,13 @@ loc_065026:
 	moveq	#$D,d0
 	cmp.b	(a0),d0
 	bne.s	loc_065054
-	move.w	-$3B06(a5),d0
+	move.w	g_SceneVar3B06(a5),d0
 	cmp.w	g_TextWinBottom(a5),d0
 	bge.s	loc_065042
-	move.w	-$3B06(a5),d0
-	addq.w	#$1,-$3B06(a5)
+	move.w	g_SceneVar3B06(a5),d0
+	addq.w	#$1,g_SceneVar3B06(a5)
 loc_065042:
-	move.w	g_TextWinLeft(a5),-$3B04(a5)
+	move.w	g_TextWinLeft(a5),g_SceneVar3B04(a5)
 	move.l	$8(a6),d0
 	addq.l	#$1,$8(a6)
 	bra.w	loc_065388
@@ -107,7 +107,7 @@ loc_065074:
 	tst.b	(a3)
 	bne.s	loc_065072
 loc_06508A:
-	move.w	-$3B04(a5),d0
+	move.w	g_SceneVar3B04(a5),d0
 	ext.l	d0
 	move.l	a3,d1
 	sub.l	$8(a6),d1
@@ -117,13 +117,13 @@ loc_06508A:
 	ext.l	d0
 	cmp.l	d1,d0
 	bge.s	loc_0650C0
-	move.w	-$3B06(a5),d0
+	move.w	g_SceneVar3B06(a5),d0
 	cmp.w	g_TextWinBottom(a5),d0
 	bge.s	loc_0650B6
-	move.w	-$3B06(a5),d0
-	addq.w	#$1,-$3B06(a5)
+	move.w	g_SceneVar3B06(a5),d0
+	addq.w	#$1,g_SceneVar3B06(a5)
 loc_0650B6:
-	move.w	g_TextWinLeft(a5),-$3B04(a5)
+	move.w	g_TextWinLeft(a5),g_SceneVar3B04(a5)
 	move.l	a4,$8(a6)
 loc_0650C0:
 	cmpi.w	#$6,d4
@@ -131,11 +131,11 @@ loc_0650C0:
 	cmpi.w	#$7,d4
 	bne.w	loc_0651FA
 loc_0650CE:
-	move.w	-$3B04(a5),d6
+	move.w	g_SceneVar3B04(a5),d6
 	movea.l	$8(a6),a4
 	bra.w	loc_0651F0
 loc_0650DA:
-	move.w	-$3B06(a5),d0
+	move.w	g_SceneVar3B06(a5),d0
 	ext.l	d0
 	lsl.l	#$7,d0
 	add.l	#$E000,d0
@@ -148,7 +148,7 @@ loc_0650DA:
 	swap	d0
 	clr.w	d0
 	add.l	#$40000000,d0
-	move.w	-$3B06(a5),d1
+	move.w	g_SceneVar3B06(a5),d1
 	ext.l	d1
 	lsl.l	#$7,d1
 	add.l	#$E000,d1
@@ -181,7 +181,7 @@ loc_065140:
 	addq.w	#$1,d7
 	cmpi.w	#$6,d7
 	blt.s	loc_065140
-	move.w	-$3B06(a5),d0
+	move.w	g_SceneVar3B06(a5),d0
 	ext.l	d0
 	lsl.l	#$7,d0
 	add.l	#$E000,d0
@@ -194,7 +194,7 @@ loc_065140:
 	swap	d0
 	clr.w	d0
 	add.l	#$40000000,d0
-	move.w	-$3B06(a5),d1
+	move.w	g_SceneVar3B06(a5),d1
 	ext.l	d1
 	lsl.l	#$7,d1
 	add.l	#$E000,d1
@@ -237,11 +237,11 @@ loc_0651FA:
 	cmpi.w	#$5,d4
 	bne.w	loc_0652AE
 loc_065208:
-	move.w	-$3B06(a5),d0
+	move.w	g_SceneVar3B06(a5),d0
 	ext.l	d0
 	lsl.l	#$7,d0
 	add.l	#$E000,d0
-	move.w	-$3B04(a5),d1
+	move.w	g_SceneVar3B04(a5),d1
 	ext.l	d1
 	lsl.l	#$1,d1
 	add.l	d0,d1
@@ -250,11 +250,11 @@ loc_065208:
 	swap	d0
 	clr.w	d0
 	add.l	#$40000000,d0
-	move.w	-$3B06(a5),d1
+	move.w	g_SceneVar3B06(a5),d1
 	ext.l	d1
 	lsl.l	#$7,d1
 	add.l	#$E000,d1
-	move.w	-$3B04(a5),d2
+	move.w	g_SceneVar3B04(a5),d2
 	ext.l	d2
 	lsl.l	#$1,d2
 	add.l	d1,d2
@@ -293,11 +293,11 @@ loc_06527E:
 	cmpi.w	#$6,d7
 	blt.s	loc_06527E
 loc_0652AE:
-	move.w	-$3B06(a5),d0
+	move.w	g_SceneVar3B06(a5),d0
 	ext.l	d0
 	lsl.l	#$7,d0
 	add.l	#$E000,d0
-	move.w	-$3B04(a5),d1
+	move.w	g_SceneVar3B04(a5),d1
 	ext.l	d1
 	lsl.l	#$1,d1
 	add.l	d0,d1
@@ -306,11 +306,11 @@ loc_0652AE:
 	swap	d0
 	clr.w	d0
 	add.l	#$40000000,d0
-	move.w	-$3B06(a5),d1
+	move.w	g_SceneVar3B06(a5),d1
 	ext.l	d1
 	lsl.l	#$7,d1
 	add.l	#$E000,d1
-	move.w	-$3B04(a5),d2
+	move.w	g_SceneVar3B04(a5),d2
 	ext.l	d2
 	lsl.l	#$1,d2
 	add.l	d1,d2

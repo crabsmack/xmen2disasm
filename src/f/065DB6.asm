@@ -8,14 +8,14 @@ Cerebro_IntroPalHook:
 	link.w	a6,#$0
 	movem.l	d3/d7/a3-a4,-(a7)
 	jsr	Cerebro_AnimatePalettes(pc)
-	subq.w	#$1,-$3B0C(a5)
-	cmpi.w	#$C9,-$3B0C(a5)
+	subq.w	#$1,g_SceneVar3B0C(a5)
+	cmpi.w	#$C9,g_SceneVar3B0C(a5)
 	bgt.s	loc_065E12
-	cmpi.w	#$A9,-$3B0C(a5)
+	cmpi.w	#$A9,g_SceneVar3B0C(a5)
 	blt.s	loc_065E12
 	lea.l	$F5A(a5),a0
 	movea.l	$2(a0),a3
-	move.w	-$3B0C(a5),d0
+	move.w	g_SceneVar3B0C(a5),d0
 	ext.l	d0
 	move.l	#$C9,d1
 	sub.l	d0,d1
@@ -37,14 +37,14 @@ loc_065E02:
 	move.b	#$1,g_PalBaseDirty(a5)
 loc_065E12:
 	moveq	#$2C,d0
-	cmp.w	-$3B0C(a5),d0
+	cmp.w	g_SceneVar3B0C(a5),d0
 	blt.s	loc_065E62
 	moveq	#$14,d0
-	cmp.w	-$3B0C(a5),d0
+	cmp.w	g_SceneVar3B0C(a5),d0
 	bgt.s	loc_065E62
 	lea.l	$F6A(a5),a0
 	movea.l	$2(a0),a4
-	move.w	-$3B0C(a5),d0
+	move.w	g_SceneVar3B0C(a5),d0
 	ext.l	d0
 	moveq	#$2C,d1
 	sub.l	d0,d1

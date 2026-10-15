@@ -13,8 +13,8 @@ ApocBomb_TakeDamage:
 	movea.l	(a4),a0
 	movea.l	$56(a0),a1
 	jsr	(a1)
-	move.w	-$3B08(a5),d0
-	subq.w	#$1,-$3B08(a5)
+	move.w	g_SceneVar3B08(a5),d0
+	subq.w	#$1,g_SceneVar3B08(a5)
 	moveq	#$10,d0
 	cmp.w	$98(a4),d0
 	addq.w	#$8,a7

@@ -38,7 +38,7 @@ loc_1F0ACE:
 	addq.w	#$4,a7
 	bra.w	loc_1F1368
 loc_1F0AF4:
-	tst.w	-$3AFA(a5)
+	tst.w	g_FloatFallSpeed(a5)
 	beq.s	loc_1F0B18
 	move.w	#$1000,d0
 	and.w	$4(a4),d0

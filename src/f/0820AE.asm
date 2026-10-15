@@ -64,8 +64,8 @@ CloneA2_SetCameraZone:
 	move.w	d5,g_CamMaxX(a5)
 	move.w	d6,g_CamMaxYTarget(a5)
 	move.w	d6,g_CamMaxY(a5)
-	move.w	d7,-$3B06(a5)
-	clr.w	-$3B08(a5)
+	move.w	d7,g_SceneVar3B06(a5)
+	clr.w	g_SceneVar3B08(a5)
 	movem.l	-$16(a6),d4-d7/a4
 	unlk	a6
 	rts

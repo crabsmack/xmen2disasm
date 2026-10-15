@@ -11,7 +11,7 @@ Teleporter_StateWaitFade:
 	movea.l	$8(a6),a4
 	tst.b	g_PalFadeActive(a5)
 	bne.s	loc_08592A
-	clr.w	-$3B04(a5)
+	clr.w	g_SceneVar3B04(a5)
 	lea.l	$3FB2(a5),a0
 	move.l	a0,g_PauseHandler(a5)
 	andi.w	#$EFFF,$6(a4)

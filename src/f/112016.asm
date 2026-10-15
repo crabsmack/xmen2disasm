@@ -91,20 +91,20 @@ loc_1120EE:
 	add.w	d7,d0
 	move.w	d0,$54(a4)
 loc_112106:
-	tst.w	-$3B02(a5)
+	tst.w	g_SceneVar3B02(a5)
 	beq.s	loc_11211A
-	subq.w	#$1,-$3B02(a5)
-	tst.w	-$3B02(a5)
+	subq.w	#$1,g_SceneVar3B02(a5)
+	tst.w	g_SceneVar3B02(a5)
 	bgt.s	loc_11211A
-	clr.w	-$3B02(a5)
+	clr.w	g_SceneVar3B02(a5)
 loc_11211A:
-	tst.w	-$3B02(a5)
+	tst.w	g_SceneVar3B02(a5)
 	bne.s	loc_112144
 	moveq	#$0,d0
 	move.b	$2F(a4),d0
 	cmpi.w	#$1,d0
 	bne.s	loc_112144
-	move.w	#$D,-$3B02(a5)
+	move.w	#$D,g_SceneVar3B02(a5)
 	pea.l	($A9).w
 	jsr	$5222(a5)	; -> Snd_Stop
 	pea.l	($A9).w

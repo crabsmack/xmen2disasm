@@ -40,7 +40,7 @@ BroodBoss_Init:
 	move.w	#$18,$68(a4)
 	moveq	#$0,d0
 	move.l	d0,$96(a4)
-	move.w	#$FF,-$3B10(a5)
+	move.w	#$FF,g_SceneVar3B10(a5)
 	move.l	d0,$9E(a4)
 	move.l	d0,$A2(a4)
 	lea.l	$14BA(a5),a0
@@ -81,15 +81,15 @@ loc_0867C0:
 loc_0867C6:
 	ext.l	d7
 	move.l	d7,-(a7)
-	move.l	-$3B1C(a5),-(a7)
+	move.l	g_SceneVar3B1C(a5),-(a7)
 	jsr	$3B4A(a5)	; -> Debris_SetFloorY
 	moveq	#$3,d0
 	move.l	d0,-(a7)
-	move.l	-$3B1C(a5),-(a7)
+	move.l	g_SceneVar3B1C(a5),-(a7)
 	jsr	$3B5A(a5)	; -> Debris_SetBounceLimit
 	ext.l	d7
 	move.l	d7,-(a7)
-	move.l	-$3B14(a5),-(a7)
+	move.l	g_SceneVar3B14(a5),-(a7)
 	jsr	$3B4A(a5)	; -> Debris_SetFloorY
 	movea.l	$14(a6),a0
 	move.w	$6(a0),d7
@@ -103,7 +103,7 @@ loc_0867FA:
 	ext.l	d0
 	sub.l	#$220,d0
 loc_08680A:
-	move.l	d0,-$3B20(a5)
+	move.l	d0,g_SceneVar3B20(a5)
 	moveq	#$0,d0
 	move.l	d0,-(a7)
 	movea.l	$14(a6),a0
@@ -138,7 +138,7 @@ loc_086856:
 	move.w	$4(a0),d7
 	sub.w	#$70,d7
 loc_086862:
-	move.w	d7,-$3B22(a5)
+	move.w	d7,g_SceneVar3B22(a5)
 	moveq	#$14,d0
 	move.l	d0,-(a7)
 	movea.l	$14(a6),a0
@@ -172,7 +172,7 @@ loc_0868AC:
 	move.w	$2(a0),d7
 	sub.w	#$220,d7
 loc_0868B8:
-	move.w	d7,-$3B24(a5)
+	move.w	d7,g_SceneVar3B24(a5)
 	movem.l	-$14(a6),d3/d6-d7/a3-a4
 	unlk	a6
 	rts

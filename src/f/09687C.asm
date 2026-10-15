@@ -38,7 +38,7 @@ loc_0968AA:
 loc_0968D4:
 	move.l	a3,d0
 	beq.w	loc_09697C
-	move.l	a3,-$3B30(a5)
+	move.l	a3,g_SceneVar3B30(a5)
 	pea.l	($F2).w
 	jsr	$5222(a5)	; -> Snd_Stop
 	pea.l	($F2).w

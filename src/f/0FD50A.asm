@@ -31,7 +31,7 @@ SiberiaB1_InstallTileHooks:
 	move.l	d1,-(a7)
 	pea.l	SiberiaB1_DebrisUpdate(pc)
 	jsr	$4FD2(a5)	; -> Timer_Create
-	move.l	d0,-$3B28(a5)
+	move.l	d0,g_SceneVar3B28(a5)
 	move.l	d0,-(a7)
 	jsr	$4FDA(a5)	; -> Timer_Start
 	unlk	a6

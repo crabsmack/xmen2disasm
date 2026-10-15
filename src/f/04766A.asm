@@ -58,7 +58,7 @@ loc_0476EA:
 	cmp.l	d7,d3
 	bgt.s	loc_0476EA
 	move.b	#$1,g_PalBaseDirty(a5)
-	move.w	#$1,-$3B0E(a5)
+	move.w	#$1,g_SceneVar3B0E(a5)
 	movem.l	-$10(a6),d3/d7/a3-a4
 	unlk	a6
 	rts

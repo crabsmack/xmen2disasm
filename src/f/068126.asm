@@ -21,13 +21,13 @@ CursorInput_Confirm:
 	move.b	$3F(a4),d0
 	cmpi.w	#$1,d0
 	bne.s	loc_0681BC
-	movea.l	-$3B28(a5),a0
+	movea.l	g_SceneVar3B28(a5),a0
 	moveq	#-$1,d0
 	cmp.b	$3C(a0),d0
 	beq.s	loc_06819A
 	move.b	#$1,$40(a4)
-	move.w	#$5,-$3B04(a5)
-	move.w	#$16,-$3B06(a5)
+	move.w	#$5,g_SceneVar3B04(a5)
+	move.w	#$16,g_SceneVar3B06(a5)
 	moveq	#$0,d0
 	move.l	d0,-(a7)
 	pea.l	Str_Selected_06824E(pc)
@@ -46,13 +46,13 @@ loc_06819A:
 	move.b	d7,$3D(a4)
 	bra.s	loc_06820A
 loc_0681BC:
-	movea.l	-$3B2C(a5),a0
+	movea.l	g_SceneVar3B2C(a5),a0
 	moveq	#-$1,d0
 	cmp.b	$3C(a0),d0
 	beq.s	loc_0681EA
 	move.b	#$1,$40(a4)
-	move.w	#$18,-$3B04(a5)
-	move.w	#$16,-$3B06(a5)
+	move.w	#$18,g_SceneVar3B04(a5)
+	move.w	#$16,g_SceneVar3B06(a5)
 	moveq	#$1,d0
 	move.l	d0,-(a7)
 	pea.l	Str_Selected(pc)

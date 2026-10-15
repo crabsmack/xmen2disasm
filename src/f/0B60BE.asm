@@ -16,10 +16,10 @@ loc_0B60CE:
 	moveq	#$1,d0
 loc_0B60D0:
 	move.w	d0,d7
-	sub.w	d7,-$3B32(a5)
-	tst.w	-$3B32(a5)
+	sub.w	d7,g_SceneVar3B32(a5)
+	tst.w	g_SceneVar3B32(a5)
 	bgt.s	loc_0B6116
-	move.w	-$3B3A(a5),d0
+	move.w	g_SceneVar3B3A(a5),d0
 	ext.l	d0
 	move.l	d0,-(a7)
 	pea.l	g_SceneSprites(a5)
@@ -28,15 +28,15 @@ loc_0B60D0:
 	move.l	d0,-(a7)
 	pea.l	g_SceneSprites(a5)
 	jsr	$5062(a5)	; -> Spr_UploadFrame
-	move.w	-$3B3A(a5),d0
-	addq.w	#$1,-$3B3A(a5)
+	move.w	g_SceneVar3B3A(a5),d0
+	addq.w	#$1,g_SceneVar3B3A(a5)
 	moveq	#$5,d0
-	cmp.w	-$3B3A(a5),d0
+	cmp.w	g_SceneVar3B3A(a5),d0
 	lea.l	$10(a7),a7
 	bge.s	loc_0B6110
-	clr.w	-$3B3A(a5)
+	clr.w	g_SceneVar3B3A(a5)
 loc_0B6110:
-	move.w	#$4,-$3B32(a5)
+	move.w	#$4,g_SceneVar3B32(a5)
 loc_0B6116:
 	move.l	-$4(a6),d7
 	unlk	a6

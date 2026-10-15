@@ -11,7 +11,7 @@ CloneA5_CamUpdate:
 	movea.l	$8(a6),a4
 	move.w	g_BgScrollBaseX(a5),d7
 	move.w	g_BgScrollBaseY(a5),d7
-	tst.w	-$3B02(a5)
+	tst.w	g_SceneVar3B02(a5)
 	beq.w	loc_088382
 	move.w	g_Player1+$4(a5),d0
 	ext.l	d0
@@ -41,11 +41,11 @@ loc_0882D4:
 	ext.l	d1
 	cmp.l	d1,d0
 	ble.s	loc_08830C
-	move.w	-$3B02(a5),d0
+	move.w	g_SceneVar3B02(a5),d0
 	ext.l	d0
 	lsl.l	#$8,d0
 	sub.l	d0,g_Player1+$72(a5)
-	move.w	-$3B02(a5),d0
+	move.w	g_SceneVar3B02(a5),d0
 	ext.l	d0
 	lsl.l	#$8,d0
 	sub.l	d0,g_Player1+$8(a5)
@@ -81,11 +81,11 @@ loc_08834A:
 	ext.l	d1
 	cmp.l	d1,d0
 	ble.s	loc_088382
-	move.w	-$3B02(a5),d0
+	move.w	g_SceneVar3B02(a5),d0
 	ext.l	d0
 	lsl.l	#$8,d0
 	sub.l	d0,g_Player2+$72(a5)
-	move.w	-$3B02(a5),d0
+	move.w	g_SceneVar3B02(a5),d0
 	ext.l	d0
 	lsl.l	#$8,d0
 	sub.l	d0,g_Player2+$8(a5)

@@ -42,8 +42,8 @@ ApocBomb_Init:
 	move.l	d0,$9A(a4)
 	clr.w	$9E(a4)
 	clr.l	$94(a4)
-	move.w	-$3B08(a5),d1
-	addq.w	#$1,-$3B08(a5)
+	move.w	g_SceneVar3B08(a5),d1
+	addq.w	#$1,g_SceneVar3B08(a5)
 	moveq	#$4,d0
 	move.l	d0,-(a7)
 	move.l	a4,-(a7)

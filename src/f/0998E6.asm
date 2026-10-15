@@ -115,15 +115,15 @@ loc_0999E2:
 	asr.l	#$8,d4
 	bra.s	loc_099A40
 loc_099A14:
-	tst.l	-$3B30(a5)
+	tst.l	g_SceneVar3B30(a5)
 	beq.w	loc_099BB4
-	movea.l	-$3B30(a5),a0
+	movea.l	g_SceneVar3B30(a5),a0
 	move.l	$8(a0),d0
 	asr.l	#$8,d0
 	move.w	d0,d6
 	move.w	d6,d7
 	move.w	d7,-$14(a6)
-	movea.l	-$3B30(a5),a0
+	movea.l	g_SceneVar3B30(a5),a0
 	move.l	$C(a0),d0
 	asr.l	#$8,d0
 	move.w	d0,d5
@@ -132,9 +132,9 @@ loc_099A14:
 loc_099A40:
 	move.w	d5,-$4(a6)
 	move.w	d4,-$2(a6)
-	tst.l	-$3B30(a5)
+	tst.l	g_SceneVar3B30(a5)
 	beq.s	loc_099A84
-	movea.l	-$3B30(a5),a0
+	movea.l	g_SceneVar3B30(a5),a0
 	move.l	$8(a0),d4
 	asr.l	#$8,d4
 	move.l	$C(a0),d5
@@ -258,13 +258,13 @@ loc_099B50:
 	sub.w	-$C(a6),d0
 	move.w	d0,$32(a4)
 loc_099B74:
-	move.w	-$3B0A(a5),d7
+	move.w	g_SceneVar3B0A(a5),d7
 	addq.w	#$6,d7
-	move.w	-$3B0C(a5),d4
+	move.w	g_SceneVar3B0C(a5),d4
 	addq.w	#$6,d4
-	move.w	-$3B0E(a5),d6
+	move.w	g_SceneVar3B0E(a5),d6
 	subq.w	#$6,d6
-	move.w	-$3B10(a5),d5
+	move.w	g_SceneVar3B10(a5),d5
 	subq.w	#$6,d5
 	cmp.w	$30(a4),d6
 	bge.s	loc_099B96

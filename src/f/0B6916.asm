@@ -28,9 +28,9 @@ BrainChild_Init:
 	move.w	#$220,$98(a4)
 	move.w	#$60,$9C(a4)
 	move.w	#$140,$9A(a4)
-	movea.l	-$3B14(a5),a0
+	movea.l	g_SceneVar3B14(a5),a0
 	move.b	#$4,$2(a0)
-	movea.l	-$3B14(a5),a0
+	movea.l	g_SceneVar3B14(a5),a0
 	move.l	a0,$8C(a4)
 	moveq	#$0,d0
 	move.b	$2(a0),d0
@@ -62,7 +62,7 @@ BrainChild_Init:
 	moveq	#$45,d0
 	move.l	d0,-(a7)
 	jsr	$521A(a5)	; -> Snd_Play
-	move.l	a4,-$3B20(a5)
+	move.l	a4,g_SceneVar3B20(a5)
 	movea.l	-$4(a6),a4
 	unlk	a6
 	rts

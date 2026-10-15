@@ -28,7 +28,7 @@ XClone_ActLeaveBalls:
 	move.l	a0,-(a7)
 	move.l	a4,-(a7)
 	jsr	$4E4A(a5)	; -> Obj_ChangeAnim
-	move.l	a4,-$3B30(a5)
+	move.l	a4,g_SceneVar3B30(a5)
 	andi.w	#$FFFD,$6(a4)
 	pea.l	g_HitListEnemyBody(a5)
 	move.l	a4,-(a7)

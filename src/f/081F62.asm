@@ -7,21 +7,21 @@
 CloneA2_BgPalTimer:
 	link.w	a6,#$0
 	movem.l	d3/d7/a3-a4,-(a7)
-	tst.w	-$3B04(a5)
+	tst.w	g_SceneVar3B04(a5)
 	bne.w	loc_081FF4
 	tst.b	g_PalFadeActive(a5)
 	bne.s	loc_081FF4
 	tst.b	g_PalFadeActive(a5)
 	bne.s	loc_081FF4
-	move.w	-$3B02(a5),d7
+	move.w	g_SceneVar3B02(a5),d7
 	move.w	g_CameraY(a5),d0
 	asr.w	#$4,d0
 	moveq	#$3,d1
 	and.w	d0,d1
-	move.w	d1,-$3B02(a5)
-	cmp.w	-$3B02(a5),d7
+	move.w	d1,g_SceneVar3B02(a5)
+	cmp.w	g_SceneVar3B02(a5),d7
 	beq.s	loc_081FF4
-	move.w	-$3B02(a5),d0
+	move.w	g_SceneVar3B02(a5),d0
 	bmi.s	CloneA2_BgPalTimer_Copy
 	cmpi.w	#$3,d0
 	bgt.s	CloneA2_BgPalTimer_Copy

@@ -18,7 +18,7 @@ XClone_LoadResources:
 	lea.l	$1542(a5),a0
 	move.l	$2(a0),-(a7)
 	jsr	$4E52(a5)	; -> SprDef_Add
-	movea.l	-$3B1C(a5),a0
+	movea.l	g_SceneVar3B1C(a5),a0
 	move.w	d0,$4(a0)
 	moveq	#$1,d0
 	move.l	d0,-(a7)

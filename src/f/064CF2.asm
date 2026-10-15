@@ -9,7 +9,7 @@ Cerebro_AnimatePalettes_CasesA:
 	move.w	#$40,g_PalBase+$74(a5)
 	move.w	#$6,g_PalBase+$72(a5)
 	move.w	#$4,g_PalBase+$70(a5)
-	move.w	#$1,-$3B48(a5)
+	move.w	#$1,g_SceneVar3B48(a5)
 	bra.w	Cerebro_AnimatePalettes_StepB
 loc_064D14:
 	move.w	#$60,g_PalBase+$76(a5)
@@ -52,4 +52,4 @@ loc_064DB4:
 	move.w	#$C0,g_PalBase+$74(a5)
 	move.w	#$C,g_PalBase+$72(a5)
 	move.w	#$C,g_PalBase+$70(a5)
-	move.w	#$FFFF,-$3B48(a5)
+	move.w	#$FFFF,g_SceneVar3B48(a5)

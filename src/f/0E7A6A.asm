@@ -11,7 +11,7 @@ SentinelsA1_RunScene:
 	jsr	SentinelsA1_InstallHooks(pc)
 	jsr	SentinelsA1_CallEmptyStub(pc)
 	moveq	#$0,d0
-	move.l	d0,-$3B20(a5)
+	move.l	d0,g_SceneVar3B20(a5)
 	jsr	$5002(a5)	; -> Level_Run
 	unlk	a6
 	rts

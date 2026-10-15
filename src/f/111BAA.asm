@@ -8,7 +8,7 @@ Deathbird_UpdateBurst:
 	link.w	a6,#$FFEC
 	movem.l	d3-d7/a3-a4,-(a7)
 	movea.l	$8(a6),a3
-	move.w	-$3B04(a5),d0
+	move.w	g_SceneVar3B04(a5),d0
 	ext.l	d0
 	lsl.l	#$2,d0
 	move.l	d0,d1

@@ -40,7 +40,7 @@ loc_0BA1F4:
 	move.w	#$60,$A4(a4)
 	move.w	#$140,$A2(a4)
 	clr.w	$AC(a4)
-	move.l	a4,-$3B20(a5)
+	move.l	a4,g_SceneVar3B20(a5)
 	clr.w	$9C(a4)
 	clr.w	$A6(a4)
 	moveq	#$0,d0

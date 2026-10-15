@@ -8,18 +8,18 @@
 XClone_StartMakerMode:
 	link.w	a6,#$0
 	moveq	#$0,d0
-	move.l	d0,-$3B30(a5)
+	move.l	d0,g_SceneVar3B30(a5)
 	clr.w	g_CloneWaveKills(a5)
-	clr.w	-$3B06(a5)
-	clr.w	-$3B08(a5)
+	clr.w	g_SceneVar3B06(a5)
+	clr.w	g_SceneVar3B08(a5)
 	jsr	XClone_MakerBufSize(pc)
-	move.w	d0,-$3B04(a5)
+	move.w	d0,g_SceneVar3B04(a5)
 	pea.l	Str_Empty_099078(pc)
-	move.w	-$3B04(a5),d0
+	move.w	g_SceneVar3B04(a5),d0
 	ext.l	d0
 	move.l	d0,-(a7)
 	jsr	$5032(a5)	; -> Mem_StackAlloc
-	move.l	d0,-$3B20(a5)
+	move.l	d0,g_SceneVar3B20(a5)
 	lea.l	XClone_SegHookArenaLocked(pc),a0
 	move.l	a0,g_SegTypeHooks+$64(a5)
 	lea.l	$1432(a5),a0

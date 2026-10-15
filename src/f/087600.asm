@@ -24,7 +24,7 @@ loc_087620:
 	jsr	(a1)
 	move.l	a4,-(a7)
 	jsr	BroodBoss_SpawnDebris(pc)
-	ori.w	#$40,-$3B0C(a5)
+	ori.w	#$40,g_SceneVar3B0C(a5)
 	addi.w	#$A,$8E(a4)
 	lea.l	$C(a7),a7
 	clr.w	$6C(a4)

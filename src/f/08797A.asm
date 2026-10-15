@@ -46,7 +46,7 @@ loc_0879D2:
 loc_0879E2:
 	cmp.w	g_ObjCount(a5),d7
 	blt.s	loc_0879AC
-	andi.w	#$FFFE,-$3B0C(a5)
+	andi.w	#$FFFE,g_SceneVar3B0C(a5)
 	moveq	#$0,d0
 	move.l	d0,g_SegTypeHooks+$5C(a5)
 	movem.l	-$C(a6),d7/a3-a4

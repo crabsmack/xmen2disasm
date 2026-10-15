@@ -10,12 +10,12 @@ PlayerSelect_FirstFreeChar:
 	clr.w	d7
 	bra.s	loc_064C92
 loc_064C70:
-	movea.l	-$3B28(a5),a0
+	movea.l	g_SceneVar3B28(a5),a0
 	move.b	$3C(a0),d0
 	ext.w	d0
 	cmp.w	d7,d0
 	beq.s	loc_064C90
-	movea.l	-$3B2C(a5),a0
+	movea.l	g_SceneVar3B2C(a5),a0
 	move.b	$3C(a0),d0
 	ext.w	d0
 	cmp.w	d7,d0
@@ -25,7 +25,7 @@ loc_064C70:
 loc_064C90:
 	addq.w	#$1,d7
 loc_064C92:
-	cmp.w	-$3B0E(a5),d7
+	cmp.w	g_SceneVar3B0E(a5),d7
 	blt.s	loc_064C70
 	moveq	#-$1,d0
 loc_064C9A:

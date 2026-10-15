@@ -7,7 +7,7 @@
 BaniMazaA2_InitDebrisBuf:
 	link.w	a6,#$0
 	movea.l	$8(a6),a0
-	move.l	a0,-$3B14(a5)
+	move.l	a0,g_SceneVar3B14(a5)
 	clr.w	$84(a0)
 	unlk	a6
 	rts

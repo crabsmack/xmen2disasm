@@ -41,7 +41,7 @@ Apocalypse_Init:
 	clr.w	$8C(a4)
 	move.w	#$B4,$8E(a4)
 	move.w	#$2,$90(a4)
-	movea.l	-$3B1C(a5),a0
+	movea.l	g_SceneVar3B1C(a5),a0
 	move.l	a0,$92(a4)
 	move.b	#$3,(a0)
 	movea.l	$92(a4),a0

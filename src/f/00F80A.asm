@@ -11,9 +11,9 @@ AvalonB1_CamHookWait60:
 	clr.w	g_Pad1Latch(a5)
 	clr.w	g_Pad2Latch(a5)
 	moveq	#$3C,d0
-	cmp.w	-$3B32(a5),d0
+	cmp.w	g_SceneVar3B32(a5),d0
 	bgt.s	loc_00F836
-	clr.w	-$3B32(a5)
+	clr.w	g_SceneVar3B32(a5)
 	lea.l	AvalonB1_CamHookScroll120(pc),a0
 	movea.l	g_Camera(a5),a1
 	move.l	a0,$4(a1)

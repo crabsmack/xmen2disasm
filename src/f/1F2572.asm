@@ -12,7 +12,7 @@ XPlayer_StateFloatFall:
 	move.w	#$1000,d0
 	and.w	$4(a4),d0
 	bne.s	loc_1F25AE
-	clr.w	-$3AFA(a5)
+	clr.w	g_FloatFallSpeed(a5)
 	movea.l	$8C(a4),a0
 	move.w	$18(a0),$24(a4)
 	movea.l	(a4),a0

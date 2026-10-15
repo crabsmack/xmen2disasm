@@ -11,7 +11,7 @@ CloneA1_AnimTilesTimer:
 	lea.l	$109A(a5),a0
 	movea.l	$2(a0),a0
 	lea.l	$410(a0),a0
-	move.w	-$3B10(a5),d0
+	move.w	g_SceneVar3B10(a5),d0
 	lsl.w	#$5,d0
 	addi.w	#$380,d0
 	pea.l	($E0).w
@@ -29,7 +29,7 @@ CloneA1_AnimTilesTimer:
 	move.l	a0,-(a7)
 	jsr	$51D2(a5)	; -> VDP_DmaToVram
 	lea.l	$C(a7),a7
-	move.w	-$3B10(a5),d0
+	move.w	g_SceneVar3B10(a5),d0
 	lsl.w	#$5,d0
 	move.w	#$380,d1
 	bra.s	loc_077306
@@ -37,7 +37,7 @@ loc_0772B4:
 	lea.l	$109A(a5),a0
 	movea.l	$2(a0),a0
 	lea.l	$90(a0),a0
-	move.w	-$3B10(a5),d0
+	move.w	g_SceneVar3B10(a5),d0
 	lsl.w	#$5,d0
 	pea.l	($380).w
 	move.l	d0,-(a7)
@@ -54,7 +54,7 @@ loc_0772B4:
 	move.l	a0,-(a7)
 	jsr	$51D2(a5)	; -> VDP_DmaToVram
 	lea.l	$C(a7),a7
-	move.w	-$3B10(a5),d0
+	move.w	g_SceneVar3B10(a5),d0
 	lsl.w	#$5,d0
 	addi.w	#$380,d0
 	move.w	#$E0,d1
