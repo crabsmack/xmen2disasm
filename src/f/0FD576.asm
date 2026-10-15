@@ -48,12 +48,12 @@ SiberiaB1_LoadLevel:
 	move.l	$2(a0),-(a7)
 	jsr	$4FCA(a5)	; -> Level_Load
 	move.b	#$1,-$38B4(a5)
-	move.w	#$100,-$3496(a5)
-	move.w	#$100,-$3498(a5)
-	clr.w	-$349E(a5)
-	clr.w	-$34A0(a5)
-	clr.w	-$349A(a5)
-	clr.w	-$349C(a5)
+	move.w	#$100,g_BgScrollFactorX(a5)
+	move.w	#$100,g_BgScrollFactorY(a5)
+	clr.w	g_FgScrollBaseY(a5)
+	clr.w	g_BgScrollBaseY(a5)
+	clr.w	g_FgScrollBaseX(a5)
+	clr.w	g_BgScrollBaseX(a5)
 	movem.l	-$10(a6),d4-d7
 	unlk	a6
 	rts

@@ -22,7 +22,7 @@ loc_1E16EA:
 	add.w	g_CameraX(a5),d7
 	add.w	g_CameraY(a5),d6
 	moveq	#$0,d3
-	move.b	-$35CA(a5),d3
+	move.b	g_SolidMapIsBg(a5),d3
 	seq.b	d3
 	moveq	#$0,d5
 	moveq	#$0,d4

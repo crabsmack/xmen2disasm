@@ -11,7 +11,7 @@ SavageA2_InitLights:
 	clr.w	-$3B3C(a5)
 	moveq	#$1,d0
 	move.l	d0,-(a7)
-	move.w	-$3AB0(a5),d1
+	move.w	g_BgTilesEnd(a5),d1
 	ext.l	d1
 	move.l	d1,-(a7)
 	moveq	#$2,d1
@@ -26,7 +26,7 @@ SavageA2_InitLights:
 	jsr	$506A(a5)	; -> Spr_Init
 	moveq	#$1,d0
 	move.l	d0,-(a7)
-	move.w	-$3AB0(a5),d1
+	move.w	g_BgTilesEnd(a5),d1
 	ext.l	d1
 	moveq	#$10,d2
 	add.l	d2,d1

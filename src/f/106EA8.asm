@@ -46,13 +46,13 @@ loc_106F06:
 	move.w	-$2(a6),d7
 loc_106F14:
 	moveq	#$0,d3
-	cmp.w	-$35C2(a5),d4
+	cmp.w	g_DeactWinRight(a5),d4
 	bgt.s	loc_106F30
-	cmp.w	-$35C0(a5),d6
+	cmp.w	g_DeactWinLeft(a5),d6
 	blt.s	loc_106F30
-	cmp.w	-$35C6(a5),d5
+	cmp.w	g_DeactWinBottom(a5),d5
 	bgt.s	loc_106F30
-	cmp.w	-$35C4(a5),d7
+	cmp.w	g_DeactWinTop(a5),d7
 	blt.s	loc_106F30
 	moveq	#$1,d3
 loc_106F30:

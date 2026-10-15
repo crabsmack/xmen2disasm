@@ -58,7 +58,7 @@ loc_1F5680:
 	move.l	a4,-(a7)
 	jsr	sub_1F5594(pc)
 	move.w	d0,d6
-	move.w	d0,-$3AAC(a5)
+	move.w	d0,g_UsedBlockCount(a5)
 	move.l	d4,-(a7)
 	pea.l	($1FF).w
 	move.l	a3,-(a7)

@@ -12,7 +12,7 @@ Map_DrawColumnB:
 	asr.w	#$2,d0
 	add.w	d0,d0
 	adda.w	d0,a3
-	movea.l	-$3A76(a5),a0
+	movea.l	g_BgRowTable(a5),a0
 	move.w	d5,d0
 	asr.w	#$2,d0
 	add.w	d0,d0
@@ -23,7 +23,7 @@ Map_DrawColumnB:
 	and.w	d4,d1
 	move.w	d5,d4
 	andi.w	#$3,d4
-	move.w	-$3A7A(a5),d5
+	move.w	g_BgMapW(a5),d5
 	add.w	d5,d5
 	moveq	#$0,d0
 	move.w	d6,d0

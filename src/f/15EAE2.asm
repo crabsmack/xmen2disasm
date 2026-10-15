@@ -30,7 +30,7 @@ loc_15EB08:
 loc_15EB1E:
 	lsl.w	d0,d1
 	adda.w	d1,a1
-	move.w	-$3A6A(a5),d5
+	move.w	g_FgTileAttr(a5),d5
 	move.w	d5,d0
 	andi.w	#$E000,d0
 	andi.w	#$7FF,d5

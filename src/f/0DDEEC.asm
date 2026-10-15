@@ -137,14 +137,14 @@ loc_0DE06A:
 	move.l	d1,d6
 	subq.l	#$1,d6
 	ext.l	d6
-	movea.l	-$3A72(a5),a0
+	movea.l	g_FgRowTable(a5),a0
 	move.l	d6,d0
 	add.l	d0,d0
 	move.w	(a0,d0.l),d0
 	ext.l	d0
 	ext.l	d5
 	add.l	d5,d0
-	movea.l	-$3A84(a5),a0
+	movea.l	g_FgBlockMap(a5),a0
 	add.l	d0,d0
 	move.w	(a0,d0.l),d7
 	move.w	#$200,d0

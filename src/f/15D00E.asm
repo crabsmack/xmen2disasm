@@ -20,7 +20,7 @@ Map_RedrawBlock:
 	tst.b	$13(a6)
 	beq.w	loc_15D192
 	move.w	g_CameraX(a5),-$2C(a6)
-	tst.b	-$13EE(a5)
+	tst.b	g_BgNarrow(a5)
 	beq.s	loc_15D04A
 	moveq	#$20,d0
 	bra.s	loc_15D050
@@ -37,17 +37,17 @@ loc_15D050:
 	add.w	#$140,d0
 	move.w	-$2A(a6),d7
 	add.w	d0,d7
-	move.w	-$3A6C(a5),-$A(a6)
+	move.w	g_BgTileAttr(a5),-$A(a6)
 	clr.w	-$8(a6)
-	move.w	-$3AD6(a5),d0
+	move.w	g_BgScrollAdjX(a5),d0
 	asr.w	#$3,d0
 	move.w	d0,-$6(a6)
-	move.w	-$3AD8(a5),d0
+	move.w	g_BgScrollAdjY(a5),d0
 	asr.w	#$3,d0
 	move.w	d0,-$4(a6)
 	moveq	#$0,d0
 	move.w	-$22(a6),d0
-	move.w	-$3AD0(a5),d1
+	move.w	g_BgStreamY(a5),d1
 	asr.w	#$3,d1
 	ext.l	d1
 	cmp.l	d0,d1
@@ -59,7 +59,7 @@ loc_15D050:
 	tst.l	d0
 	bra.s	loc_15D0B8
 loc_15D0B0:
-	move.w	-$3AD0(a5),d0
+	move.w	g_BgStreamY(a5),d0
 	asr.w	#$3,d0
 	ext.l	d0
 loc_15D0B8:
@@ -67,7 +67,7 @@ loc_15D0B8:
 	moveq	#$0,d0
 	move.w	-$22(a6),d0
 	addq.l	#$3,d0
-	move.w	-$3AD0(a5),d1
+	move.w	g_BgStreamY(a5),d1
 	asr.w	#$3,d1
 	ext.l	d1
 	moveq	#$1F,d2
@@ -80,7 +80,7 @@ loc_15D0B8:
 	addq.w	#$3,d0
 	bra.s	loc_15D0F0
 loc_15D0E0:
-	move.w	-$3AD0(a5),d0
+	move.w	g_BgStreamY(a5),d0
 	asr.w	#$3,d0
 	add.w	#$1F,d0
 	moveq	#$0,d1
@@ -90,7 +90,7 @@ loc_15D0F0:
 	move.w	d0,-$16(a6)
 	moveq	#$0,d0
 	move.w	-$24(a6),d0
-	move.w	-$3ACE(a5),d1
+	move.w	g_BgStreamX(a5),d1
 	asr.w	#$3,d1
 	ext.l	d1
 	cmp.l	d0,d1
@@ -102,7 +102,7 @@ loc_15D0F0:
 	tst.l	d0
 	bra.s	loc_15D11C
 loc_15D114:
-	move.w	-$3ACE(a5),d0
+	move.w	g_BgStreamX(a5),d0
 	asr.w	#$3,d0
 	ext.l	d0
 loc_15D11C:
@@ -110,7 +110,7 @@ loc_15D11C:
 	moveq	#$0,d0
 	move.w	-$24(a6),d0
 	addq.l	#$3,d0
-	move.w	-$3ACE(a5),d1
+	move.w	g_BgStreamX(a5),d1
 	asr.w	#$3,d1
 	ext.l	d1
 	moveq	#$3F,d2
@@ -123,7 +123,7 @@ loc_15D11C:
 	addq.w	#$3,d0
 	bra.s	loc_15D154
 loc_15D144:
-	move.w	-$3ACE(a5),d0
+	move.w	g_BgStreamX(a5),d0
 	asr.w	#$3,d0
 	add.w	#$3F,d0
 	moveq	#$0,d1
@@ -132,14 +132,14 @@ loc_15D144:
 loc_15D154:
 	move.w	d0,-$1C(a6)
 	ext.l	d6
-	movea.l	-$3A76(a5),a0
+	movea.l	g_BgRowTable(a5),a0
 	move.l	d6,d0
 	add.l	d0,d0
 	move.w	(a0,d0.l),d0
 	ext.l	d0
 	ext.l	d5
 	add.l	d5,d0
-	movea.l	-$3A88(a5),a0
+	movea.l	g_BgBlockMap(a5),a0
 	add.l	d0,d0
 	move.w	(a0,d0.l),d4
 	moveq	#$0,d0
@@ -151,11 +151,11 @@ loc_15D154:
 	lsl.l	#$4,d0
 	add.l	d0,d0
 	movea.l	d0,a4
-	adda.l	-$3A8C(a5),a4
+	adda.l	g_BgBlockDefs(a5),a4
 	bra.w	loc_15D2E8
 loc_15D192:
 	move.w	g_CameraX(a5),-$2C(a6)
-	tst.b	-$13F0(a5)
+	tst.b	g_MapStreamNarrow(a5)
 	beq.s	loc_15D1A2
 	moveq	#$20,d0
 	bra.s	loc_15D1A8
@@ -172,17 +172,17 @@ loc_15D1A8:
 	add.w	#$140,d0
 	move.w	-$2A(a6),d7
 	add.w	d0,d7
-	move.w	-$3A6A(a5),-$A(a6)
+	move.w	g_FgTileAttr(a5),-$A(a6)
 	move.w	#$E000,-$8(a6)
-	move.w	-$3AD2(a5),d0
+	move.w	g_FgScrollAdjX(a5),d0
 	asr.w	#$3,d0
 	move.w	d0,-$6(a6)
-	move.w	-$3AD4(a5),d0
+	move.w	g_FgScrollAdjY(a5),d0
 	asr.w	#$3,d0
 	move.w	d0,-$4(a6)
 	moveq	#$0,d0
 	move.w	-$22(a6),d0
-	move.w	-$3ACC(a5),d1
+	move.w	g_FgStreamY(a5),d1
 	asr.w	#$3,d1
 	ext.l	d1
 	cmp.l	d0,d1
@@ -194,7 +194,7 @@ loc_15D1A8:
 	tst.l	d0
 	bra.s	loc_15D212
 loc_15D20A:
-	move.w	-$3ACC(a5),d0
+	move.w	g_FgStreamY(a5),d0
 	asr.w	#$3,d0
 	ext.l	d0
 loc_15D212:
@@ -202,7 +202,7 @@ loc_15D212:
 	moveq	#$0,d0
 	move.w	-$22(a6),d0
 	addq.l	#$3,d0
-	move.w	-$3ACC(a5),d1
+	move.w	g_FgStreamY(a5),d1
 	asr.w	#$3,d1
 	ext.l	d1
 	moveq	#$1F,d2
@@ -215,7 +215,7 @@ loc_15D212:
 	addq.w	#$3,d0
 	bra.s	loc_15D24A
 loc_15D23A:
-	move.w	-$3ACC(a5),d0
+	move.w	g_FgStreamY(a5),d0
 	asr.w	#$3,d0
 	add.w	#$1F,d0
 	moveq	#$0,d1
@@ -225,7 +225,7 @@ loc_15D24A:
 	move.w	d0,-$16(a6)
 	moveq	#$0,d0
 	move.w	-$24(a6),d0
-	move.w	-$3ACA(a5),d1
+	move.w	g_FgStreamX(a5),d1
 	asr.w	#$3,d1
 	ext.l	d1
 	cmp.l	d0,d1
@@ -237,7 +237,7 @@ loc_15D24A:
 	tst.l	d0
 	bra.s	loc_15D276
 loc_15D26E:
-	move.w	-$3ACA(a5),d0
+	move.w	g_FgStreamX(a5),d0
 	asr.w	#$3,d0
 	ext.l	d0
 loc_15D276:
@@ -245,7 +245,7 @@ loc_15D276:
 	moveq	#$0,d0
 	move.w	-$24(a6),d0
 	addq.l	#$3,d0
-	move.w	-$3ACA(a5),d1
+	move.w	g_FgStreamX(a5),d1
 	asr.w	#$3,d1
 	ext.l	d1
 	moveq	#$3F,d2
@@ -258,7 +258,7 @@ loc_15D276:
 	addq.w	#$3,d0
 	bra.s	loc_15D2AE
 loc_15D29E:
-	move.w	-$3ACA(a5),d0
+	move.w	g_FgStreamX(a5),d0
 	asr.w	#$3,d0
 	add.w	#$3F,d0
 	moveq	#$0,d1
@@ -267,14 +267,14 @@ loc_15D29E:
 loc_15D2AE:
 	move.w	d0,-$1C(a6)
 	ext.l	d6
-	movea.l	-$3A72(a5),a0
+	movea.l	g_FgRowTable(a5),a0
 	move.l	d6,d0
 	add.l	d0,d0
 	move.w	(a0,d0.l),d0
 	ext.l	d0
 	ext.l	d5
 	add.l	d5,d0
-	movea.l	-$3A84(a5),a0
+	movea.l	g_FgBlockMap(a5),a0
 	add.l	d0,d0
 	move.w	(a0,d0.l),d4
 	moveq	#$0,d0
@@ -286,7 +286,7 @@ loc_15D2AE:
 	lsl.l	#$4,d0
 	add.l	d0,d0
 	movea.l	d0,a4
-	adda.l	-$3AA6(a5),a4
+	adda.l	g_FgBlockDefs(a5),a4
 loc_15D2E8:
 	ext.l	d5
 	move.l	d5,d0

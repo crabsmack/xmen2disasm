@@ -158,7 +158,7 @@ loc_036244:
 	movea.l	(a4),a0
 	movea.l	$56(a0),a1
 	jsr	(a1)
-	move.l	a4,-$3AFE(a5)
+	move.l	a4,g_BgLockObj(a5)
 	lea.l	MagnetoBoss_StateIntroStart(pc),a0
 	move.l	a0,$5C(a4)
 	lea.l	MagnetoBoss_StateIntroStart(pc),a0

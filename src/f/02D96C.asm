@@ -29,21 +29,21 @@ Exodus_HurtOnHotTiles:
 	move.l	d0,d6
 	asr.l	d1,d6
 	ext.l	d6
-	movea.l	-$3A72(a5),a0
+	movea.l	g_FgRowTable(a5),a0
 	move.l	d6,d0
 	add.l	d0,d0
 	move.w	(a0,d0.l),d0
 	ext.l	d0
 	ext.l	d5
 	add.l	d5,d0
-	movea.l	-$3A84(a5),a0
+	movea.l	g_FgBlockMap(a5),a0
 	add.l	d0,d0
 	move.w	#$1FF,d7
 	and.w	(a0,d0.l),d7
-	cmp.w	-$3AA8(a5),d7
+	cmp.w	g_FgBlockCount(a5),d7
 	blt.s	loc_02DA0C
 	ext.l	d7
-	move.w	-$3AA8(a5),d0
+	move.w	g_FgBlockCount(a5),d0
 	ext.l	d0
 	addq.l	#$4,d0
 	cmp.l	d7,d0

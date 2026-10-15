@@ -147,7 +147,7 @@ loc_09B388:
 loc_09B3BC:
 	tst.b	$91(a4)
 	beq.w	loc_09B454
-	move.w	-$3AC2(a5),d0
+	move.w	g_FgScrollX(a5),d0
 	ext.l	d0
 	move.w	$16(a4),d1
 	asr.w	#$8,d1

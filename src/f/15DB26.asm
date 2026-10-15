@@ -14,11 +14,11 @@ Actor_SpawnRecInView:
 	ext.l	d1
 	move.l	d0,d7
 	sub.l	d1,d7
-	move.w	-$35A6(a5),d0
+	move.w	g_SpawnWinLeft(a5),d0
 	ext.l	d0
 	cmp.l	d7,d0
 	bgt.s	loc_15DB56
-	move.w	-$35A8(a5),d0
+	move.w	g_SpawnWinRight(a5),d0
 	ext.l	d0
 	cmp.l	d7,d0
 	bge.s	loc_15DB5A
@@ -32,11 +32,11 @@ loc_15DB5A:
 	ext.l	d1
 	move.l	d0,d7
 	sub.l	d1,d7
-	move.w	-$35A4(a5),d0
+	move.w	g_SpawnWinTop(a5),d0
 	ext.l	d0
 	cmp.l	d7,d0
 	bgt.s	loc_15DB7E
-	move.w	-$35AA(a5),d0
+	move.w	g_SpawnWinBottom(a5),d0
 	ext.l	d0
 	cmp.l	d7,d0
 	bge.s	loc_15DB82

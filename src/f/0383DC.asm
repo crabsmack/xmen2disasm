@@ -36,9 +36,9 @@ BaniMazaA1_LoadLevel:
 	lea.l	$922(a5),a0
 	move.l	$2(a0),-(a7)
 	jsr	$4FCA(a5)	; -> Level_Load
-	move.w	#$100,-$3498(a5)
-	move.w	#$100,-$3496(a5)
-	move.b	#$1,-$3AB4(a5)
+	move.w	#$100,g_BgScrollFactorY(a5)
+	move.w	#$100,g_BgScrollFactorX(a5)
+	move.b	#$1,g_BgWrapX(a5)
 	move.b	#$1,g_TwoPlayerStep(a5)
 	clr.b	g_TwoPlayerStep(a5)
 	move.b	#$1,-$38B4(a5)

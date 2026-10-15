@@ -105,14 +105,14 @@ loc_0BEB62:
 	blt.s	loc_0BEB86
 	move.w	d7,d0
 	asr.w	#$5,d0
-	cmp.w	-$3A6E(a5),d0
+	cmp.w	g_FgMapW(a5),d0
 	bge.s	loc_0BEB86
 	move.w	d6,d0
 	asr.w	#$5,d0
 	blt.s	loc_0BEB86
 	move.w	d6,d0
 	asr.w	#$5,d0
-	cmp.w	-$3A78(a5),d0
+	cmp.w	g_FgMapH(a5),d0
 	bge.s	loc_0BEB86
 	moveq	#$1,d3
 loc_0BEB86:
@@ -121,7 +121,7 @@ loc_0BEB86:
 	move.w	d6,d0
 	asr.w	#$5,d0
 	ext.l	d0
-	movea.l	-$3A72(a5),a0
+	movea.l	g_FgRowTable(a5),a0
 	add.l	d0,d0
 	move.w	(a0,d0.l),d0
 	ext.l	d0
@@ -129,7 +129,7 @@ loc_0BEB86:
 	asr.w	#$5,d1
 	ext.l	d1
 	add.l	d0,d1
-	movea.l	-$3A84(a5),a0
+	movea.l	g_FgBlockMap(a5),a0
 	add.l	d1,d1
 	move.w	#$4000,d0
 	and.w	(a0,d1.l),d0

@@ -47,7 +47,7 @@ loc_1374B8:
 	blt.s	loc_1374F0
 	move.l	d5,d0
 	asr.l	#$5,d0
-	move.w	-$3A6E(a5),d1
+	move.w	g_FgMapW(a5),d1
 	ext.l	d1
 	cmp.l	d0,d1
 	ble.s	loc_1374F0
@@ -56,7 +56,7 @@ loc_1374B8:
 	blt.s	loc_1374F0
 	move.l	d6,d0
 	asr.l	#$5,d0
-	move.w	-$3A78(a5),d1
+	move.w	g_FgMapH(a5),d1
 	ext.l	d1
 	cmp.l	d0,d1
 	ble.s	loc_1374F0
@@ -66,14 +66,14 @@ loc_1374F0:
 	beq.s	loc_137522
 	move.l	d6,d0
 	asr.l	#$5,d0
-	movea.l	-$3A72(a5),a0
+	movea.l	g_FgRowTable(a5),a0
 	add.l	d0,d0
 	move.w	(a0,d0.l),d0
 	ext.l	d0
 	move.l	d5,d1
 	asr.l	#$5,d1
 	add.l	d0,d1
-	movea.l	-$3A84(a5),a0
+	movea.l	g_FgBlockMap(a5),a0
 	add.l	d1,d1
 	move.w	#$4000,d0
 	and.w	(a0,d1.l),d0

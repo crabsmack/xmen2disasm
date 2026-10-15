@@ -21,22 +21,22 @@ ICandy_Update:
 	move.l	d0,d7
 	sub.l	d1,d7
 	clr.b	d5
-	cmp.w	-$35C2(a5),d6
+	cmp.w	g_DeactWinRight(a5),d6
 	ble.s	loc_118588
 	moveq	#$1,d5
 	bra.s	loc_1185A4
 loc_118588:
-	cmp.w	-$35C0(a5),d6
+	cmp.w	g_DeactWinLeft(a5),d6
 	bge.s	loc_118592
 	moveq	#$1,d5
 	bra.s	loc_1185A4
 loc_118592:
-	cmp.w	-$35C6(a5),d7
+	cmp.w	g_DeactWinBottom(a5),d7
 	ble.s	loc_11859C
 	moveq	#$1,d5
 	bra.s	loc_1185A4
 loc_11859C:
-	cmp.w	-$35C4(a5),d7
+	cmp.w	g_DeactWinTop(a5),d7
 	bge.s	loc_1185A4
 	moveq	#$1,d5
 loc_1185A4:

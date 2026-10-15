@@ -8,7 +8,7 @@ ThronePhone_StateInit:
 	link.w	a6,#$0
 	move.l	a4,-(a7)
 	movea.l	$8(a6),a4
-	move.l	-$3AFE(a5),$8C(a4)
+	move.l	g_BgLockObj(a5),$8C(a4)
 	clr.w	$6C(a4)
 	lea.l	ThronePhone_StateWaitMagneto(pc),a0
 	move.l	a0,$5C(a4)

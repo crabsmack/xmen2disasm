@@ -9,18 +9,18 @@ Tile_TestAt:
 	movem.l	d4-d7/a3-a4,-(a7)
 	move.b	$17(a6),d6
 	beq.s	loc_15CEE0
-	move.w	-$3A6E(a5),d0
+	move.w	g_FgMapW(a5),d0
 	bra.s	loc_15CEE4
 loc_15CEE0:
-	move.w	-$3A7A(a5),d0
+	move.w	g_BgMapW(a5),d0
 loc_15CEE4:
 	move.w	d0,-$4(a6)
 	tst.b	d6
 	beq.s	loc_15CEF2
-	move.w	-$3A78(a5),d0
+	move.w	g_FgMapH(a5),d0
 	bra.s	loc_15CEF6
 loc_15CEF2:
-	move.w	-$3A7C(a5),d0
+	move.w	g_BgMapH(a5),d0
 loc_15CEF6:
 	move.w	d0,d7
 	move.w	$E(a6),d0
@@ -41,7 +41,7 @@ loc_15CEF6:
 	tst.b	d6
 	beq.s	loc_15CF52
 	ext.l	d4
-	movea.l	-$3A72(a5),a0
+	movea.l	g_FgRowTable(a5),a0
 	move.l	d4,d0
 	add.l	d0,d0
 	move.w	(a0,d0.l),d0
@@ -49,14 +49,14 @@ loc_15CEF6:
 	move.w	-$2(a6),d1
 	ext.l	d1
 	add.l	d0,d1
-	movea.l	-$3A84(a5),a0
+	movea.l	g_FgBlockMap(a5),a0
 	add.l	d1,d1
 	adda.l	d1,a0
 	move.l	a0,d0
 	bra.s	loc_15CF74
 loc_15CF52:
 	ext.l	d4
-	movea.l	-$3A76(a5),a0
+	movea.l	g_BgRowTable(a5),a0
 	move.l	d4,d0
 	add.l	d0,d0
 	move.w	(a0,d0.l),d0
@@ -64,7 +64,7 @@ loc_15CF52:
 	move.w	-$2(a6),d1
 	ext.l	d1
 	add.l	d0,d1
-	movea.l	-$3A88(a5),a0
+	movea.l	g_BgBlockMap(a5),a0
 	add.l	d1,d1
 	adda.l	d1,a0
 	move.l	a0,d0
@@ -93,7 +93,7 @@ loc_15CF74:
 	bne.s	loc_15CFE4
 	move.l	d7,d0
 	asl.w	#$2,d0
-	lea.l	-$3AF8(a5),a0
+	lea.l	g_TileHooks(a5),a0
 	movea.l	(a0,d0.w),a4
 	move.l	a4,d0
 	beq.s	loc_15CFE4

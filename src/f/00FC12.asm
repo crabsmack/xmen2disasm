@@ -28,20 +28,20 @@ loc_00FC52:
 	bge.s	loc_00FC62
 	move.w	g_CamMinY(a5),g_CameraY(a5)
 loc_00FC62:
-	move.w	g_CameraX(a5),-$3AC2(a5)
-	move.w	g_CameraY(a5),-$3AC4(a5)
-	tst.b	-$3AC0(a5)
+	move.w	g_CameraX(a5),g_FgScrollX(a5)
+	move.w	g_CameraY(a5),g_FgScrollY(a5)
+	tst.b	g_ScrollResync(a5)
 	beq.s	loc_00FC7A
-	addi.w	#$100,-$3ACC(a5)
+	addi.w	#$100,g_FgStreamY(a5)
 loc_00FC7A:
-	clr.b	-$3AC0(a5)
+	clr.b	g_ScrollResync(a5)
 	jsr	$4D9A(a5)	; -> Irq_Disable
-	movea.l	-$3A54(a5),a0
+	movea.l	g_MapColHook(a5),a0
 	jsr	(a0)
-	movea.l	-$3A50(a5),a0
+	movea.l	g_MapRowHook(a5),a0
 	jsr	(a0)
 	jsr	$4DA2(a5)	; -> Irq_Enable
-	move.b	#$1,-$3A56(a5)
-	move.b	-$3A64(a5),-$3A58(a5)
+	move.b	#$1,g_FgScrollDirty(a5)
+	move.b	g_BgMapPresent(a5),g_BgScrollDirty(a5)
 	unlk	a6
 	rts

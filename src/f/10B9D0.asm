@@ -37,9 +37,9 @@ SpaceA1_LoadLevel:
 	jsr	$4FCA(a5)	; -> Level_Load
 	clr.w	g_PalBase(a5)
 	move.b	#$1,-$38B4(a5)
-	clr.b	-$3AB4(a5)
-	clr.w	-$3498(a5)
-	move.w	#$100,-$3496(a5)
+	clr.b	g_BgWrapX(a5)
+	clr.w	g_BgScrollFactorY(a5)
+	move.w	#$100,g_BgScrollFactorX(a5)
 	clr.b	g_TwoPlayerStep(a5)
 	unlk	a6
 	rts

@@ -52,14 +52,14 @@ CloneA5_RunScene:
 	pea.l	-$2D0(a6)
 	jsr	$2E2A(a5)	; -> ICandy_PoolInit
 	move.b	#$1,-$38B4(a5)
-	clr.w	-$3492(a5)
-	move.w	#$100,-$3494(a5)
-	clr.w	-$3496(a5)
-	clr.w	-$3498(a5)
+	clr.w	g_FgScrollFactorX(a5)
+	move.w	#$100,g_FgScrollFactorY(a5)
+	clr.w	g_BgScrollFactorX(a5)
+	clr.w	g_BgScrollFactorY(a5)
 	moveq	#$0,d0
 	move.l	d0,-$3C44(a5)
 	move.l	#$3300,-$3C48(a5)
-	clr.w	-$34A0(a5)
+	clr.w	g_BgScrollBaseY(a5)
 	jsr	CloneA5_ResetPalCycle(pc)
 	lea.l	-$304(a6),a0
 	move.l	a0,-$3B18(a5)
@@ -176,7 +176,7 @@ loc_088914:
 	clr.w	-$3B0C(a5)
 	clr.w	-$3B0E(a5)
 	jsr	CloneA5_InitTileHooks(pc)
-	move.b	d0,-$35C8(a5)
+	move.b	d0,g_TileHooksOn(a5)
 	jsr	CloneA5_InitCamera(pc)
 	lea.l	CloneA5_FrameHook(pc),a0
 	move.l	a0,g_SceneFrameHook(a5)

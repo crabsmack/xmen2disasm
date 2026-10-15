@@ -17,14 +17,14 @@ loc_0BE4D6:
 	move.w	g_CameraX(a5),d6
 	asr.w	#$5,d6
 	ext.l	d5
-	movea.l	-$3A72(a5),a0
+	movea.l	g_FgRowTable(a5),a0
 	move.l	d5,d0
 	add.l	d0,d0
 	move.w	(a0,d0.l),d0
 	ext.l	d0
 	ext.l	d6
 	add.l	d6,d0
-	movea.l	-$3A84(a5),a0
+	movea.l	g_FgBlockMap(a5),a0
 	add.l	d0,d0
 	lea.l	(a0,d0.l),a4
 	moveq	#$B,d7

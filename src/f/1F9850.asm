@@ -12,7 +12,7 @@ Sys_InitGameVideo:
 	clr.b	g_PalFadeActive(a5)
 	clr.b	g_DmaFlushReq(a5)
 	move.w	#$4,g_PalFadeDelay(a5)
-	clr.b	-$3ABA(a5)
+	clr.b	g_BgLockToObj(a5)
 	move.w	#$9001,($C00004).l
 	clr.w	d7
 	moveq	#$40,d3

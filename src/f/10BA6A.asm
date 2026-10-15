@@ -86,6 +86,6 @@ loc_10BB1C:
 	jsr	(a1)
 	move.l	d0,g_Camera(a5)
 	subi.w	#$10,g_CamMaxY(a5)
-	move.w	g_CamMaxY(a5),-$3A9A(a5)
+	move.w	g_CamMaxY(a5),g_CamMaxYTarget(a5)
 	unlk	a6
 	rts

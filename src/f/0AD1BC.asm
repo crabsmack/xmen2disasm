@@ -91,14 +91,14 @@ loc_0AD292:
 	bra.w	loc_0AD322
 loc_0AD29A:
 	ext.l	d7
-	movea.l	-$3A72(a5),a0
+	movea.l	g_FgRowTable(a5),a0
 	move.l	d7,d0
 	add.l	d0,d0
 	move.w	(a0,d0.l),d0
 	ext.l	d0
 	ext.l	d6
 	add.l	d6,d0
-	movea.l	-$3A84(a5),a0
+	movea.l	g_FgBlockMap(a5),a0
 	add.l	d0,d0
 	lea.l	(a0,d0.l),a4
 	tst.b	d4

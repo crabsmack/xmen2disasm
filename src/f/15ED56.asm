@@ -11,7 +11,7 @@ Map_DrawRowA:
 	asr.w	#$2,d0
 	add.w	d0,d0
 	adda.w	d0,a3
-	movea.l	-$3A72(a5),a0
+	movea.l	g_FgRowTable(a5),a0
 	move.w	d5,d0
 	asr.w	#$2,d0
 	add.w	d0,d0
@@ -36,7 +36,7 @@ Map_DrawRowA:
 	addq.w	#$4,d7
 	sub.w	(a7),d7
 	moveq	#$9,d0
-	tst.b	-$13F0(a5)
+	tst.b	g_MapStreamNarrow(a5)
 	bne.s	loc_15EDAE
 	moveq	#$E,d0
 loc_15EDAE:

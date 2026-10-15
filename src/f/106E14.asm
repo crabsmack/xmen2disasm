@@ -46,13 +46,13 @@ loc_106E72:
 	move.w	-$2(a6),d7
 loc_106E80:
 	moveq	#$0,d3
-	cmp.w	-$35BA(a5),d4
+	cmp.w	g_ActWinRight(a5),d4
 	bgt.s	loc_106E9C
-	cmp.w	-$35B8(a5),d6
+	cmp.w	g_ActWinLeft(a5),d6
 	blt.s	loc_106E9C
-	cmp.w	-$35BE(a5),d5
+	cmp.w	g_ActWinBottom(a5),d5
 	bgt.s	loc_106E9C
-	cmp.w	-$35BC(a5),d7
+	cmp.w	g_ActWinTop(a5),d7
 	blt.s	loc_106E9C
 	moveq	#$1,d3
 loc_106E9C:

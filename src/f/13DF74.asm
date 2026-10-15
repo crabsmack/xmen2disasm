@@ -35,22 +35,22 @@ loc_13DF9A:
 	asr.l	#$8,d0
 	move.w	d0,d7
 	sub.w	g_CameraY(a5),d7
-	cmp.w	-$35C2(a5),d6
+	cmp.w	g_DeactWinRight(a5),d6
 	ble.s	loc_13DFD8
 	moveq	#$1,d5
 	bra.s	loc_13DFF4
 loc_13DFD8:
-	cmp.w	-$35C0(a5),d6
+	cmp.w	g_DeactWinLeft(a5),d6
 	bge.s	loc_13DFE2
 	moveq	#$1,d5
 	bra.s	loc_13DFF4
 loc_13DFE2:
-	cmp.w	-$35C6(a5),d7
+	cmp.w	g_DeactWinBottom(a5),d7
 	ble.s	loc_13DFEC
 	moveq	#$1,d5
 	bra.s	loc_13DFF4
 loc_13DFEC:
-	cmp.w	-$35C4(a5),d7
+	cmp.w	g_DeactWinTop(a5),d7
 	bge.s	loc_13DFF4
 	moveq	#$1,d5
 loc_13DFF4:

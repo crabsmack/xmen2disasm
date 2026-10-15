@@ -8,7 +8,7 @@ BaniMazaA2_InitSprite:
 	link.w	a6,#$0
 	moveq	#$1,d0
 	move.l	d0,-(a7)
-	move.w	-$3AAE(a5),d1
+	move.w	g_FgTilesEnd(a5),d1
 	ext.l	d1
 	move.l	d1,-(a7)
 	moveq	#$0,d1

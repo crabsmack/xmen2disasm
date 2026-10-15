@@ -13,14 +13,14 @@ PerimeterDoor_TileHit:
 	movea.l	$8(a6),a4
 	move.w	$12(a6),d7
 	ext.l	d7
-	movea.l	-$3A72(a5),a0
+	movea.l	g_FgRowTable(a5),a0
 	move.l	d7,d0
 	add.l	d0,d0
 	move.w	(a0,d0.l),d0
 	ext.l	d0
 	ext.l	d6
 	add.l	d6,d0
-	movea.l	-$3A84(a5),a0
+	movea.l	g_FgBlockMap(a5),a0
 	add.l	d0,d0
 	move.w	#$1FF,d4
 	and.w	(a0,d0.l),d4
@@ -346,14 +346,14 @@ loc_0AC852:
 	bra.s	loc_0AC87C
 loc_0AC858:
 	ext.l	d7
-	movea.l	-$3A72(a5),a0
+	movea.l	g_FgRowTable(a5),a0
 	move.l	d7,d0
 	add.l	d0,d0
 	move.w	(a0,d0.l),d0
 	ext.l	d0
 	ext.l	d6
 	add.l	d6,d0
-	movea.l	-$3A84(a5),a0
+	movea.l	g_FgBlockMap(a5),a0
 	add.l	d0,d0
 	ori.w	#$1800,(a0,d0.l)
 	move.w	d7,d0

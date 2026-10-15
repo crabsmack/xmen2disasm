@@ -48,24 +48,24 @@ loc_0AD6E8:
 	bge.s	loc_0AD6F8
 	move.w	g_CamMinY(a5),g_CameraY(a5)
 loc_0AD6F8:
-	move.w	-$3492(a5),d0
+	move.w	g_FgScrollFactorX(a5),d0
 	muls.w	g_CameraX(a5),d0
 	asr.l	#$8,d0
-	add.w	-$349A(a5),d0
-	move.w	d0,-$3AC2(a5)
-	move.w	-$3494(a5),d0
+	add.w	g_FgScrollBaseX(a5),d0
+	move.w	d0,g_FgScrollX(a5)
+	move.w	g_FgScrollFactorY(a5),d0
 	muls.w	g_CameraY(a5),d0
 	asr.l	#$8,d0
-	add.w	-$349E(a5),d0
-	move.w	d0,-$3AC4(a5)
-	move.w	-$3496(a5),d0
+	add.w	g_FgScrollBaseY(a5),d0
+	move.w	d0,g_FgScrollY(a5)
+	move.w	g_BgScrollFactorX(a5),d0
 	ext.l	d0
 	move.l	d0,-(a7)
 	move.w	g_CameraX(a5),d0
 	ext.l	d0
 	move.l	d0,-(a7)
 	jsr	$4E3A(a5)	; -> Math_MulFix8
-	move.w	d0,-$3AC6(a5)
+	move.w	d0,g_BgScrollX(a5)
 	move.w	-$38BC(a5),d0
 	ext.l	d0
 	move.w	g_CameraY(a5),d1
@@ -73,24 +73,24 @@ loc_0AD6F8:
 	sub.l	d1,d0
 	move.w	#$100,d1
 	sub.w	d0,d1
-	move.w	d1,-$3AC8(a5)
-	tst.b	-$3AB4(a5)
+	move.w	d1,g_BgScrollY(a5)
+	tst.b	g_BgWrapX(a5)
 	addq.w	#$8,a7
 	beq.s	loc_0AD75A
-	andi.w	#$1FF,-$3AC6(a5)
+	andi.w	#$1FF,g_BgScrollX(a5)
 loc_0AD75A:
-	tst.b	-$3AB6(a5)
+	tst.b	g_BgWrapY(a5)
 	beq.s	loc_0AD766
-	andi.w	#$FF,-$3AC8(a5)
+	andi.w	#$FF,g_BgScrollY(a5)
 loc_0AD766:
 	jsr	$4D9A(a5)	; -> Irq_Disable
-	movea.l	-$3A54(a5),a0
+	movea.l	g_MapColHook(a5),a0
 	jsr	(a0)
-	movea.l	-$3A50(a5),a0
+	movea.l	g_MapRowHook(a5),a0
 	jsr	(a0)
 	jsr	$4DA2(a5)	; -> Irq_Enable
-	move.b	#$1,-$3A56(a5)
-	move.b	-$3A64(a5),-$3A58(a5)
+	move.b	#$1,g_FgScrollDirty(a5)
+	move.b	g_BgMapPresent(a5),g_BgScrollDirty(a5)
 	movem.l	-$10(a6),d5-d7/a4
 	unlk	a6
 	rts

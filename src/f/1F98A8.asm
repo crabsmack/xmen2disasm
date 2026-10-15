@@ -15,9 +15,9 @@ Level_Load:
 	move.l	#$FF0000,g_HeapTop(a5)
 	move.l	$8(a6),-$CAE(a5)
 	move.l	$10(a6),-$CB2(a5)
-	move.b	#$1,-$13F0(a5)
-	clr.b	-$13EE(a5)
-	clr.b	-$35CA(a5)
+	move.b	#$1,g_MapStreamNarrow(a5)
+	clr.b	g_BgNarrow(a5)
+	clr.b	g_SolidMapIsBg(a5)
 	clr.b	-$3BBA(a5)
 	movea.l	-$38E8(a5),a0
 	jsr	(a0)
@@ -124,7 +124,7 @@ loc_1F99B6:
 	jsr	$4E1A(a5)	; -> Level_LoadMaps
 	moveq	#$0,d0
 	move.l	d0,g_CamShake(a5)
-	move.w	-$3A9E(a5),g_VramTileCursor(a5)
+	move.w	g_MapTilesEnd(a5),g_VramTileCursor(a5)
 	move.w	#$2,-$388A(a5)
 	moveq	#$0,d7
 	moveq	#$25,d3
@@ -240,26 +240,26 @@ loc_1F9B0E:
 	jsr	$4FB2(a5)	; -> Scene_ClearActivateHook
 	jsr	ClassList_CallSlot5A(pc)
 	move.b	#$1,-$38B4(a5)
-	clr.b	-$3ABA(a5)
+	clr.b	g_BgLockToObj(a5)
 	move.b	#$1,-$3890(a5)
 	move.b	#$1,-$3894(a5)
 	clr.w	-$3896(a5)
 	moveq	#$0,d0
 	move.l	d0,-$38A0(a5)
-	clr.b	-$35C8(a5)
+	clr.b	g_TileHooksOn(a5)
 	clr.w	d7
 	moveq	#$8,d3
 loc_1F9B58:
 	move.l	d7,d0
 	asl.w	#$2,d0
-	lea.l	-$3AF8(a5),a0
+	lea.l	g_TileHooks(a5),a0
 	moveq	#$0,d1
 	move.l	d1,(a0,d0.w)
 	move.w	d7,d0
 	addq.w	#$1,d7
 	cmp.w	d7,d3
 	bgt.s	loc_1F9B58
-	move.w	#$A0,-$389C(a5)
+	move.w	#$A0,g_StartCamOffsetX(a5)
 	moveq	#$0,d0
 	move.l	d0,g_Camera(a5)
 	clr.b	g_CamModeSwitched(a5)
@@ -282,22 +282,22 @@ loc_1F9B58:
 	move.l	a0,g_SceneDrawHook(a5)
 	jsr	$4F62(a5)	; -> DrawList_Init
 	move.b	d0,d7
-	move.w	#$FF80,-$35A6(a5)
-	move.w	#$1C0,-$35A8(a5)
-	move.w	#$FF80,-$35A4(a5)
-	move.w	#$160,-$35AA(a5)
-	move.w	#$FF00,-$35AE(a5)
-	move.w	#$240,-$35B0(a5)
-	move.w	#$FF00,-$35AC(a5)
-	move.w	#$1E0,-$35B2(a5)
-	move.w	#$FF9C,-$35C0(a5)
-	move.w	#$1A4,-$35C2(a5)
-	move.w	#$FFCE,-$35C4(a5)
-	move.w	#$13A,-$35C6(a5)
-	move.w	#$FFA6,-$35B8(a5)
-	move.w	#$19A,-$35BA(a5)
-	move.w	#$FFD8,-$35BC(a5)
-	move.w	#$130,-$35BE(a5)
+	move.w	#$FF80,g_SpawnWinLeft(a5)
+	move.w	#$1C0,g_SpawnWinRight(a5)
+	move.w	#$FF80,g_SpawnWinTop(a5)
+	move.w	#$160,g_SpawnWinBottom(a5)
+	move.w	#$FF00,g_DespawnWinLeft(a5)
+	move.w	#$240,g_DespawnWinRight(a5)
+	move.w	#$FF00,g_DespawnWinTop(a5)
+	move.w	#$1E0,g_DespawnWinBottom(a5)
+	move.w	#$FF9C,g_DeactWinLeft(a5)
+	move.w	#$1A4,g_DeactWinRight(a5)
+	move.w	#$FFCE,g_DeactWinTop(a5)
+	move.w	#$13A,g_DeactWinBottom(a5)
+	move.w	#$FFA6,g_ActWinLeft(a5)
+	move.w	#$19A,g_ActWinRight(a5)
+	move.w	#$FFD8,g_ActWinTop(a5)
+	move.w	#$130,g_ActWinBottom(a5)
 	clr.b	-$38BA(a5)
 	moveq	#$0,d0
 	move.l	d0,g_ScalerWork(a5)

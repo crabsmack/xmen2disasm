@@ -10,7 +10,7 @@ BaniMazaA1_InitSprites:
 	moveq	#$2,d6
 	moveq	#$1,d0
 	move.l	d0,-(a7)
-	move.w	-$3AB0(a5),d1
+	move.w	g_BgTilesEnd(a5),d1
 	ext.l	d1
 	move.l	d1,-(a7)
 	ext.l	d6
@@ -24,7 +24,7 @@ BaniMazaA1_InitSprites:
 	jsr	$506A(a5)	; -> Spr_Init
 	moveq	#$1,d0
 	move.l	d0,-(a7)
-	move.w	-$3AB0(a5),d1
+	move.w	g_BgTilesEnd(a5),d1
 	ext.l	d1
 	moveq	#$10,d2
 	add.l	d2,d1
@@ -41,7 +41,7 @@ BaniMazaA1_InitSprites:
 	jsr	$506A(a5)	; -> Spr_Init
 	moveq	#$1,d0
 	move.l	d0,-(a7)
-	move.w	-$3AB0(a5),d1
+	move.w	g_BgTilesEnd(a5),d1
 	ext.l	d1
 	moveq	#$20,d2
 	add.l	d2,d1
@@ -58,7 +58,7 @@ BaniMazaA1_InitSprites:
 	jsr	$506A(a5)	; -> Spr_Init
 	moveq	#$1,d0
 	move.l	d0,-(a7)
-	move.w	-$3AB0(a5),d1
+	move.w	g_BgTilesEnd(a5),d1
 	ext.l	d1
 	moveq	#$30,d2
 	add.l	d2,d1
@@ -76,7 +76,7 @@ BaniMazaA1_InitSprites:
 	lea.l	$70(a7),a7
 	moveq	#$1,d0
 	move.l	d0,-(a7)
-	move.w	-$3AB0(a5),d1
+	move.w	g_BgTilesEnd(a5),d1
 	ext.l	d1
 	moveq	#$40,d2
 	add.l	d2,d1
@@ -93,7 +93,7 @@ BaniMazaA1_InitSprites:
 	jsr	$506A(a5)	; -> Spr_Init
 	moveq	#$1,d0
 	move.l	d0,-(a7)
-	move.w	-$3AB0(a5),d1
+	move.w	g_BgTilesEnd(a5),d1
 	ext.l	d1
 	moveq	#$50,d2
 	add.l	d2,d1
@@ -110,7 +110,7 @@ BaniMazaA1_InitSprites:
 	jsr	$506A(a5)	; -> Spr_Init
 	moveq	#$1,d0
 	move.l	d0,-(a7)
-	move.w	-$3AB0(a5),d1
+	move.w	g_BgTilesEnd(a5),d1
 	ext.l	d1
 	moveq	#$60,d2
 	add.l	d2,d1
@@ -127,7 +127,7 @@ BaniMazaA1_InitSprites:
 	jsr	$506A(a5)	; -> Spr_Init
 	moveq	#$1,d0
 	move.l	d0,-(a7)
-	move.w	-$3AB0(a5),d1
+	move.w	g_BgTilesEnd(a5),d1
 	ext.l	d1
 	moveq	#$70,d2
 	add.l	d2,d1
@@ -145,7 +145,7 @@ BaniMazaA1_InitSprites:
 	lea.l	$70(a7),a7
 	moveq	#$1,d0
 	move.l	d0,-(a7)
-	move.w	-$3AB0(a5),d1
+	move.w	g_BgTilesEnd(a5),d1
 	ext.l	d1
 	add.l	#$80,d1
 	move.l	d1,-(a7)
@@ -160,7 +160,7 @@ BaniMazaA1_InitSprites:
 	jsr	$506A(a5)	; -> Spr_Init
 	moveq	#$1,d0
 	move.l	d0,-(a7)
-	move.w	-$3AB0(a5),d1
+	move.w	g_BgTilesEnd(a5),d1
 	ext.l	d1
 	add.l	#$90,d1
 	move.l	d1,-(a7)
@@ -175,7 +175,7 @@ BaniMazaA1_InitSprites:
 	jsr	$506A(a5)	; -> Spr_Init
 	moveq	#$1,d0
 	move.l	d0,-(a7)
-	move.w	-$3AB0(a5),d1
+	move.w	g_BgTilesEnd(a5),d1
 	ext.l	d1
 	add.l	#$A0,d1
 	move.l	d1,-(a7)
@@ -190,7 +190,7 @@ BaniMazaA1_InitSprites:
 	jsr	$506A(a5)	; -> Spr_Init
 	moveq	#$1,d0
 	move.l	d0,-(a7)
-	move.w	-$3AB0(a5),d1
+	move.w	g_BgTilesEnd(a5),d1
 	ext.l	d1
 	add.l	#$B0,d1
 	move.l	d1,-(a7)
@@ -233,14 +233,14 @@ loc_0386B6:
 	moveq	#$1,d6
 	bra.s	loc_038734
 loc_0386CA:
-	move.w	-$3AAA(a5),d0
+	move.w	g_BgBlockCount(a5),d0
 	ext.l	d0
 	add.l	d6,d0
 	subq.l	#$1,d0
 	lsl.l	#$4,d0
 	add.l	d0,d0
 	movea.l	d0,a4
-	adda.l	-$3A8C(a5),a4
+	adda.l	g_BgBlockDefs(a5),a4
 	moveq	#$0,d7
 loc_0386E0:
 	move.l	d7,d0

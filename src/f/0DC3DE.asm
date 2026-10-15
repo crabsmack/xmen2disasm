@@ -51,8 +51,8 @@ loc_0DC452:
 	cmp.l	d7,d3
 	bgt.s	loc_0DC452
 	move.b	#$1,-$38B4(a5)
-	move.w	#$C0,-$3498(a5)
-	move.w	#$80,-$3496(a5)
+	move.w	#$C0,g_BgScrollFactorY(a5)
+	move.w	#$80,g_BgScrollFactorX(a5)
 	clr.b	g_TwoPlayerStep(a5)
 	movem.l	-$10(a6),d3/d7/a3-a4
 	unlk	a6

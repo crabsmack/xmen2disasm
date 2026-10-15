@@ -39,8 +39,8 @@ AvalonB2_RunScene:
 	lea.l	$4DA(a5),a0
 	move.l	$2(a0),-(a7)
 	jsr	$4FCA(a5)	; -> Level_Load
-	clr.w	-$3496(a5)
-	clr.w	-$3498(a5)
+	clr.w	g_BgScrollFactorX(a5)
+	clr.w	g_BgScrollFactorY(a5)
 	move.b	#$1,-$38B4(a5)
 	lea.l	AvalonB2_FrameHook(pc),a0
 	move.l	a0,g_SceneFrameHook(a5)

@@ -11,13 +11,13 @@ SavageA3_TileHookCrack:
 	move.w	$A(a6),d4
 	move.w	$E(a6),d0
 	ext.l	d0
-	movea.l	-$3A72(a5),a0
+	movea.l	g_FgRowTable(a5),a0
 	add.l	d0,d0
 	move.w	(a0,d0.l),d0
 	ext.l	d0
 	ext.l	d4
 	add.l	d4,d0
-	movea.l	-$3A84(a5),a0
+	movea.l	g_FgBlockMap(a5),a0
 	add.l	d0,d0
 	move.w	(a0,d0.l),d5
 	move.w	#$1FF,d7

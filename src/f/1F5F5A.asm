@@ -8,6 +8,6 @@ sub_1F5F5A:
 	lsl.l	#$5,d0
 	sub.w	#$140,d0
 	move.w	d0,g_CamMaxX(a5)
-	move.w	g_CamMaxX(a5),-$3A96(a5)
+	move.w	g_CamMaxX(a5),g_CamMaxXTarget(a5)
 	unlk	a6
 	rts

@@ -8,7 +8,7 @@ SiberiaB1_InitWindSprite:
 	link.w	a6,#$0
 	moveq	#$1,d0
 	move.l	d0,-(a7)
-	move.w	-$3AAE(a5),d1
+	move.w	g_FgTilesEnd(a5),d1
 	ext.l	d1
 	move.l	d1,-(a7)
 	moveq	#$2,d1
@@ -25,10 +25,10 @@ SiberiaB1_InitWindSprite:
 	move.l	d0,-(a7)
 	moveq	#$1,d1
 	move.l	d1,-(a7)
-	move.w	-$3AA8(a5),d2
+	move.w	g_FgBlockCount(a5),d2
 	ext.l	d2
 	move.l	d2,-(a7)
-	move.l	-$3AA6(a5),-(a7)
+	move.l	g_FgBlockDefs(a5),-(a7)
 	jsr	$4E12(a5)	; -> Map_SetRowPalette
 	clr.w	-$3B3A(a5)
 	unlk	a6

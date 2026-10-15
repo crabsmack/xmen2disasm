@@ -36,11 +36,11 @@ SavageB1_LoadLevel:
 	lea.l	$1A9A(a5),a0
 	move.l	$2(a0),-(a7)
 	jsr	$4FCA(a5)	; -> Level_Load
-	move.w	#$100,-$3498(a5)
-	move.w	#$8C,-$3496(a5)
-	clr.w	-$34A0(a5)
-	move.b	#$1,-$3AB4(a5)
-	clr.b	-$3AB6(a5)
+	move.w	#$100,g_BgScrollFactorY(a5)
+	move.w	#$8C,g_BgScrollFactorX(a5)
+	clr.w	g_BgScrollBaseY(a5)
+	move.b	#$1,g_BgWrapX(a5)
+	clr.b	g_BgWrapY(a5)
 	move.b	#$1,g_TwoPlayerStep(a5)
 	clr.b	g_TwoPlayerStep(a5)
 	move.b	#$1,-$38B4(a5)

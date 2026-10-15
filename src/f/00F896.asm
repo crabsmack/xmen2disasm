@@ -15,7 +15,7 @@ AvalonB1_CamHookScroll120:
 	cmp.w	-$3B32(a5),d0
 	bgt.s	loc_00F8CA
 	clr.w	-$3B32(a5)
-	clr.w	-$3AC8(a5)
+	clr.w	g_BgScrollY(a5)
 	lea.l	AvalonB1_CamHookFadeIn(pc),a0
 	movea.l	g_Camera(a5),a1
 	move.l	a0,$4(a1)

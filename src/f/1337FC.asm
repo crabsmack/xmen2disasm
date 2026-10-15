@@ -21,7 +21,7 @@ BrainRocket_OutsideActiveWindow:
 	move.l	d0,d7
 	sub.l	d1,d7
 	ext.l	d6
-	move.w	-$35C2(a5),d0
+	move.w	g_DeactWinRight(a5),d0
 	ext.l	d0
 	move.w	$92(a4),d1
 	ext.l	d1
@@ -32,7 +32,7 @@ BrainRocket_OutsideActiveWindow:
 	bra.s	loc_13388E
 loc_133840:
 	ext.l	d6
-	move.w	-$35C0(a5),d0
+	move.w	g_DeactWinLeft(a5),d0
 	ext.l	d0
 	move.w	$92(a4),d1
 	ext.l	d1
@@ -43,7 +43,7 @@ loc_133840:
 	bra.s	loc_13388E
 loc_133858:
 	ext.l	d7
-	move.w	-$35C6(a5),d0
+	move.w	g_DeactWinBottom(a5),d0
 	ext.l	d0
 	move.w	$94(a4),d1
 	ext.l	d1
@@ -54,7 +54,7 @@ loc_133858:
 	bra.s	loc_13388E
 loc_133870:
 	ext.l	d7
-	move.w	-$35C4(a5),d1
+	move.w	g_DeactWinTop(a5),d1
 	ext.l	d1
 	move.w	$94(a4),d2
 	ext.l	d2

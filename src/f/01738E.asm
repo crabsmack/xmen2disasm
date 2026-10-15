@@ -141,14 +141,14 @@ loc_0174C4:
 	move.w	g_CameraY(a5),d0
 	sub.w	d0,-$2(a6)
 	sub.w	g_CameraY(a5),d6
-	cmp.w	-$35C2(a5),d4
+	cmp.w	g_DeactWinRight(a5),d4
 	bgt.s	loc_0174FA
-	cmp.w	-$35C0(a5),d5
+	cmp.w	g_DeactWinLeft(a5),d5
 	blt.s	loc_0174FA
 	move.w	-$2(a6),d0
-	cmp.w	-$35C6(a5),d0
+	cmp.w	g_DeactWinBottom(a5),d0
 	bgt.s	loc_0174FA
-	cmp.w	-$35C4(a5),d6
+	cmp.w	g_DeactWinTop(a5),d6
 	blt.s	loc_0174FA
 	moveq	#$0,d0
 	bra.s	loc_0174FC

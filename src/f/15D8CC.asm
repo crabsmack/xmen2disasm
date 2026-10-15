@@ -10,14 +10,14 @@ Map_SetBlockBG:
 	move.w	$E(a6),d5
 	move.w	$A(a6),d6
 	ext.l	d5
-	movea.l	-$3A76(a5),a0
+	movea.l	g_BgRowTable(a5),a0
 	move.l	d5,d0
 	add.l	d0,d0
 	move.w	(a0,d0.l),d0
 	ext.l	d0
 	ext.l	d6
 	add.l	d6,d0
-	movea.l	-$3A88(a5),a0
+	movea.l	g_BgBlockMap(a5),a0
 	add.l	d0,d0
 	lea.l	(a0,d0.l),a4
 	move.w	#$FE00,d0

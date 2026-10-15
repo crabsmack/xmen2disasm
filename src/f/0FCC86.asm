@@ -7,10 +7,10 @@
 SiberiaB1_PostLoad:
 	link.w	a6,#$0
 	jsr	SiberiaB1_InitWindSprite(pc)
-	addi.w	#$100,-$3ACC(a5)
-	clr.b	-$13F0(a5)
+	addi.w	#$100,g_FgStreamY(a5)
+	clr.b	g_MapStreamNarrow(a5)
 	jsr	$4D9A(a5)	; -> Irq_Disable
-	movea.l	-$3A50(a5),a0
+	movea.l	g_MapRowHook(a5),a0
 	jsr	(a0)
 	jsr	$4DA2(a5)	; -> Irq_Enable
 	jsr	$82(a5)	; -> Scene_PostLoadVram

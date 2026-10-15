@@ -17,14 +17,14 @@ AvalonA4_GlobCrackBlockHook:
 	bra.w	loc_035318
 loc_03521A:
 	ext.l	d6
-	movea.l	-$3A72(a5),a0
+	movea.l	g_FgRowTable(a5),a0
 	move.l	d6,d0
 	add.l	d0,d0
 	move.w	(a0,d0.l),d0
 	ext.l	d0
 	ext.l	d7
 	add.l	d7,d0
-	movea.l	-$3A84(a5),a0
+	movea.l	g_FgBlockMap(a5),a0
 	add.l	d0,d0
 	move.w	#$1FF,d5
 	and.w	(a0,d0.l),d5

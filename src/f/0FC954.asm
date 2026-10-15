@@ -205,11 +205,11 @@ loc_0FCB1E:
 	asr.w	#$8,d4
 	tst.l	d4
 	addq.w	#$8,a7
-	move.w	d7,-$3ABC(a5)
+	move.w	d7,g_BgOffsetX(a5)
 	ext.l	d4
 	move.l	d4,d0
 	neg.l	d0
-	move.w	d0,-$3ABE(a5)
+	move.w	d0,g_BgOffsetY(a5)
 loc_0FCB84:
 	movem.l	-$1C(a6),d3-d7
 	unlk	a6

@@ -21,13 +21,13 @@ CloneA2_SetCameraLimitsToMap:
 	lsl.l	#$3,d0
 	move.l	d0,d7
 	sub.l	#$E0,d7
-	move.w	d4,-$3A98(a5)
+	move.w	d4,g_CamMinXTarget(a5)
 	move.w	d4,g_CamMinX(a5)
-	move.w	d5,-$3A9C(a5)
+	move.w	d5,g_CamMinYTarget(a5)
 	move.w	d5,g_CamMinY(a5)
-	move.w	d6,-$3A96(a5)
+	move.w	d6,g_CamMaxXTarget(a5)
 	move.w	d6,g_CamMaxX(a5)
-	move.w	d7,-$3A9A(a5)
+	move.w	d7,g_CamMaxYTarget(a5)
 	move.w	d7,g_CamMaxY(a5)
 	movem.l	-$10(a6),d4-d7
 	unlk	a6

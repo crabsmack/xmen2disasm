@@ -30,13 +30,13 @@ loc_0355DC:
 	beq.w	loc_035704
 	move.w	$E(a6),d0
 	ext.l	d0
-	movea.l	-$3A72(a5),a0
+	movea.l	g_FgRowTable(a5),a0
 	add.l	d0,d0
 	move.w	(a0,d0.l),d0
 	ext.l	d0
 	ext.l	d6
 	add.l	d6,d0
-	movea.l	-$3A84(a5),a0
+	movea.l	g_FgBlockMap(a5),a0
 	add.l	d0,d0
 	move.w	#$1FF,d7
 	and.w	(a0,d0.l),d7

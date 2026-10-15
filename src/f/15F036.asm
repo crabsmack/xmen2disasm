@@ -32,7 +32,7 @@ loc_15F072:
 	adda.w	d1,a1
 	move.w	d4,d1
 	sub.w	d4,d3
-	move.w	-$3A6C(a5),d5
+	move.w	g_BgTileAttr(a5),d5
 	move.w	d5,d0
 	andi.w	#$E000,d0
 	andi.w	#$7FF,d5

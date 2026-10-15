@@ -33,7 +33,7 @@ loc_1CF124:
 	moveq	#$1,d0
 	move.l	d0,-(a7)
 	pea.l	($7800).w
-	tst.b	-$35CA(a5)
+	tst.b	g_SolidMapIsBg(a5)
 	seq.b	d3
 	neg.b	d3
 	ext.w	d3
@@ -61,7 +61,7 @@ loc_1CF15E:
 	moveq	#$0,d0
 	move.l	d0,-(a7)
 	pea.l	($7800).w
-	tst.b	-$35CA(a5)
+	tst.b	g_SolidMapIsBg(a5)
 	seq.b	d3
 	neg.b	d3
 	ext.w	d3

@@ -7,20 +7,20 @@
 Tile_RunHooksAtPoints:
 	link.w	a6,#$FFE4
 	movem.l	d4-d7/a3-a4,-(a7)
-	tst.b	-$35CA(a5)
+	tst.b	g_SolidMapIsBg(a5)
 	beq.s	loc_15CB48
-	move.w	-$3A7A(a5),d0
+	move.w	g_BgMapW(a5),d0
 	bra.s	loc_15CB4C
 loc_15CB48:
-	move.w	-$3A6E(a5),d0
+	move.w	g_FgMapW(a5),d0
 loc_15CB4C:
 	move.w	d0,-$10(a6)
-	tst.b	-$35CA(a5)
+	tst.b	g_SolidMapIsBg(a5)
 	beq.s	loc_15CB5C
-	move.w	-$3A7C(a5),d0
+	move.w	g_BgMapH(a5),d0
 	bra.s	loc_15CB60
 loc_15CB5C:
-	move.w	-$3A78(a5),d0
+	move.w	g_FgMapH(a5),d0
 loc_15CB60:
 	move.w	d0,-$E(a6)
 	movea.l	$8(a6),a0
@@ -183,17 +183,17 @@ loc_15CCE4:
 	blt.w	loc_15CD92
 	cmp.w	-$E(a6),d7
 	bge.w	loc_15CD92
-	tst.b	-$35CA(a5)
+	tst.b	g_SolidMapIsBg(a5)
 	beq.s	loc_15CD2E
 	ext.l	d7
-	movea.l	-$3A76(a5),a0
+	movea.l	g_BgRowTable(a5),a0
 	move.l	d7,d0
 	add.l	d0,d0
 	move.w	(a0,d0.l),d0
 	ext.l	d0
 	ext.l	d6
 	add.l	d6,d0
-	movea.l	-$3A88(a5),a0
+	movea.l	g_BgBlockMap(a5),a0
 	add.l	d0,d0
 	move.w	#$3800,d1
 	and.w	(a0,d0.l),d1
@@ -202,14 +202,14 @@ loc_15CCE4:
 	bra.s	loc_15CD54
 loc_15CD2E:
 	ext.l	d7
-	movea.l	-$3A72(a5),a0
+	movea.l	g_FgRowTable(a5),a0
 	move.l	d7,d0
 	add.l	d0,d0
 	move.w	(a0,d0.l),d0
 	ext.l	d0
 	ext.l	d6
 	add.l	d6,d0
-	movea.l	-$3A84(a5),a0
+	movea.l	g_FgBlockMap(a5),a0
 	add.l	d0,d0
 	move.w	#$3800,d1
 	and.w	(a0,d0.l),d1
@@ -220,7 +220,7 @@ loc_15CD54:
 	beq.s	loc_15CD92
 	move.l	d5,d0
 	asl.w	#$2,d0
-	lea.l	-$3AF8(a5),a0
+	lea.l	g_TileHooks(a5),a0
 	movea.l	(a0,d0.w),a4
 	move.l	a4,d0
 	beq.s	loc_15CD92
@@ -302,17 +302,17 @@ loc_15CDF6:
 	blt.s	loc_15CDAC
 	cmp.w	-$E(a6),d7
 	bge.s	loc_15CDAC
-	tst.b	-$35CA(a5)
+	tst.b	g_SolidMapIsBg(a5)
 	beq.s	loc_15CE58
 	ext.l	d7
-	movea.l	-$3A76(a5),a0
+	movea.l	g_BgRowTable(a5),a0
 	move.l	d7,d0
 	add.l	d0,d0
 	move.w	(a0,d0.l),d0
 	ext.l	d0
 	ext.l	d6
 	add.l	d6,d0
-	movea.l	-$3A88(a5),a0
+	movea.l	g_BgBlockMap(a5),a0
 	add.l	d0,d0
 	move.w	#$3800,d1
 	and.w	(a0,d0.l),d1
@@ -321,14 +321,14 @@ loc_15CDF6:
 	bra.s	loc_15CE7E
 loc_15CE58:
 	ext.l	d7
-	movea.l	-$3A72(a5),a0
+	movea.l	g_FgRowTable(a5),a0
 	move.l	d7,d0
 	add.l	d0,d0
 	move.w	(a0,d0.l),d0
 	ext.l	d0
 	ext.l	d6
 	add.l	d6,d0
-	movea.l	-$3A84(a5),a0
+	movea.l	g_FgBlockMap(a5),a0
 	add.l	d0,d0
 	move.w	#$3800,d1
 	and.w	(a0,d0.l),d1
@@ -339,7 +339,7 @@ loc_15CE7E:
 	beq.w	loc_15CDAC
 	move.l	d5,d0
 	asl.w	#$2,d0
-	lea.l	-$3AF8(a5),a0
+	lea.l	g_TileHooks(a5),a0
 	movea.l	(a0,d0.w),a3
 	move.l	a3,d0
 	beq.w	loc_15CDAC

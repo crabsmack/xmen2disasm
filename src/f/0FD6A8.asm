@@ -21,7 +21,7 @@ SiberiaB1_RunScene:
 	jsr	SiberiaB1_LoadLevel(pc)
 	jsr	SiberiaB1_InstallHooks(pc)
 	jsr	SiberiaB1_CallEmptyStub(pc)
-	move.b	#$1,-$3ABA(a5)
+	move.b	#$1,g_BgLockToObj(a5)
 	clr.b	g_PalBaseDirty(a5)
 	jsr	$2322(a5)	; -> Music_SetPlayerParams
 	move.w	#$27,g_MusicTrack(a5)

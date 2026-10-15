@@ -9,7 +9,7 @@ AvalonA4_CamHook:
 	movem.l	d7/a4,-(a7)
 	movea.l	$8(a6),a4
 	moveq	#$20,d7
-	move.w	d7,-$3A9C(a5)
+	move.w	d7,g_CamMinYTarget(a5)
 	move.w	d7,g_CamMinY(a5)
 	move.w	#$D8,$64(a4)
 	move.w	#$D8,$42(a4)

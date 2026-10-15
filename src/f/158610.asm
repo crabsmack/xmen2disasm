@@ -170,31 +170,31 @@ loc_1587A2:
 	blt.w	loc_15884C
 	cmp.w	-$12(a6),d7
 	bgt.w	loc_15884C
-	tst.b	-$35CA(a5)
+	tst.b	g_SolidMapIsBg(a5)
 	beq.s	loc_1587E8
 	ext.l	d7
-	movea.l	-$3A76(a5),a0
+	movea.l	g_BgRowTable(a5),a0
 	move.l	d7,d0
 	add.l	d0,d0
 	move.w	(a0,d0.l),d0
 	ext.l	d0
 	ext.l	d6
 	add.l	d6,d0
-	movea.l	-$3A88(a5),a0
+	movea.l	g_BgBlockMap(a5),a0
 	add.l	d0,d0
 	adda.l	d0,a0
 	move.l	a0,d0
 	bra.s	loc_158806
 loc_1587E8:
 	ext.l	d7
-	movea.l	-$3A72(a5),a0
+	movea.l	g_FgRowTable(a5),a0
 	move.l	d7,d0
 	add.l	d0,d0
 	move.w	(a0,d0.l),d0
 	ext.l	d0
 	ext.l	d6
 	add.l	d6,d0
-	movea.l	-$3A84(a5),a0
+	movea.l	g_FgBlockMap(a5),a0
 	add.l	d0,d0
 	adda.l	d0,a0
 	move.l	a0,d0
@@ -209,7 +209,7 @@ loc_158806:
 	beq.s	loc_15884C
 	move.l	d5,d0
 	asl.w	#$2,d0
-	lea.l	-$3AF8(a5),a0
+	lea.l	g_TileHooks(a5),a0
 	movea.l	(a0,d0.w),a3
 	move.l	a3,d0
 	beq.s	loc_15884C

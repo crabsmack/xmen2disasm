@@ -13,7 +13,7 @@ MagnetoBoss_CrackWall:
 	move.l	d0,d6
 	bra.w	loc_036A9C
 loc_036A06:
-	movea.l	-$3A72(a5),a0
+	movea.l	g_FgRowTable(a5),a0
 	move.l	d6,d0
 	add.l	d0,d0
 	move.w	(a0,d0.l),d0
@@ -21,7 +21,7 @@ loc_036A06:
 	move.w	$A(a6),d1
 	ext.l	d1
 	add.l	d0,d1
-	movea.l	-$3A84(a5),a0
+	movea.l	g_FgBlockMap(a5),a0
 	add.l	d1,d1
 	move.w	#$1FF,d0
 	and.w	(a0,d1.l),d0

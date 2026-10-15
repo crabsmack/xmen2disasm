@@ -22,7 +22,7 @@ CloneA1_AnimTilesTimer:
 	lea.l	$10A2(a5),a0
 	movea.l	$2(a0),a0
 	lea.l	$CC(a0),a0
-	move.w	-$3AAE(a5),d0
+	move.w	g_FgTilesEnd(a5),d0
 	lsl.w	#$5,d0
 	pea.l	($600).w
 	move.l	d0,-(a7)
@@ -47,7 +47,7 @@ loc_0772B4:
 	lea.l	$10A2(a5),a0
 	movea.l	$2(a0),a0
 	lea.l	$6CC(a0),a0
-	move.w	-$3AAE(a5),d0
+	move.w	g_FgTilesEnd(a5),d0
 	lsl.w	#$5,d0
 	pea.l	($600).w
 	move.l	d0,-(a7)

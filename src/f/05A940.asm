@@ -10,14 +10,14 @@ BaniMazaB2_CrackFloorHook:
 	move.w	$A(a6),d6
 	move.w	$E(a6),d5
 	ext.l	d5
-	movea.l	-$3A72(a5),a0
+	movea.l	g_FgRowTable(a5),a0
 	move.l	d5,d0
 	add.l	d0,d0
 	move.w	(a0,d0.l),d0
 	ext.l	d0
 	ext.l	d6
 	add.l	d6,d0
-	movea.l	-$3A84(a5),a0
+	movea.l	g_FgBlockMap(a5),a0
 	add.l	d0,d0
 	move.w	#$1FF,d7
 	and.w	(a0,d0.l),d7
@@ -133,13 +133,13 @@ loc_05AA4A:
 	move.l	d6,-(a7)
 	jsr	$3FDA(a5)	; -> Map_SetBlockFG
 	ext.l	d5
-	movea.l	-$3A72(a5),a0
+	movea.l	g_FgRowTable(a5),a0
 	move.l	d5,d0
 	add.l	d0,d0
 	move.w	(a0,d0.l),d0
 	ext.l	d0
 	add.l	d6,d0
-	movea.l	-$3A84(a5),a0
+	movea.l	g_FgBlockMap(a5),a0
 	add.l	d0,d0
 	andi.w	#$C7FF,(a0,d0.l)
 	moveq	#$0,d7

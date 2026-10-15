@@ -43,7 +43,7 @@ AvalonA4_LoadLevel:
 	jsr	$521A(a5)	; -> Snd_Play
 	clr.w	g_PalBase(a5)
 	clr.b	g_TwoPlayerStep(a5)
-	move.w	#$7F,-$3498(a5)
-	move.w	#$A0,-$3496(a5)
+	move.w	#$7F,g_BgScrollFactorY(a5)
+	move.w	#$A0,g_BgScrollFactorX(a5)
 	unlk	a6
 	rts

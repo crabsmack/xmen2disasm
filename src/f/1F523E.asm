@@ -6,8 +6,8 @@
 ; ---------------------------------------------------------------------------
 Scroll_RequestColumnVs:
 	link.w	a6,#$0
-	clr.b	-$3A56(a5)
-	clr.b	-$3A58(a5)
-	move.b	#$1,-$3A5A(a5)
+	clr.b	g_FgScrollDirty(a5)
+	clr.b	g_BgScrollDirty(a5)
+	move.b	#$1,g_ColumnVsReq(a5)
 	unlk	a6
 	rts

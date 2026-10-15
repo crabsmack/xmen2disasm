@@ -41,12 +41,12 @@ loc_15A756:
 	move.w	#$800,d0
 	and.w	$6(a4),d0
 	bne.s	loc_15A774
-	cmp.w	-$35BA(a5),d4
+	cmp.w	g_ActWinRight(a5),d4
 	ble.s	loc_15A76A
 	moveq	#$0,d0
 	bra.s	loc_15A792
 loc_15A76A:
-	cmp.w	-$35B8(a5),d5
+	cmp.w	g_ActWinLeft(a5),d5
 	bge.s	loc_15A774
 	moveq	#$0,d0
 	bra.s	loc_15A792
@@ -54,12 +54,12 @@ loc_15A774:
 	moveq	#$20,d0
 	and.w	$6(a4),d0
 	bne.s	loc_15A790
-	cmp.w	-$35BE(a5),d6
+	cmp.w	g_ActWinBottom(a5),d6
 	ble.s	loc_15A786
 	moveq	#$0,d0
 	bra.s	loc_15A792
 loc_15A786:
-	cmp.w	-$35BC(a5),d7
+	cmp.w	g_ActWinTop(a5),d7
 	bge.s	loc_15A790
 	moveq	#$0,d0
 	bra.s	loc_15A792

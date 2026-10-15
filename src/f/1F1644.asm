@@ -273,7 +273,7 @@ loc_1F190C:
 loc_1F1918:
 	move.l	a3,d0
 	beq.s	loc_1F1964
-	tst.b	-$35C8(a5)
+	tst.b	g_TileHooksOn(a5)
 	beq.s	loc_1F1964
 	moveq	#$20,d0
 	and.l	$90(a4),d0

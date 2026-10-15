@@ -35,10 +35,10 @@ BaniMazaB2_LoadLevel:
 	lea.l	$C42(a5),a0
 	move.l	$2(a0),-(a7)
 	jsr	$4FCA(a5)	; -> Level_Load
-	clr.w	-$3498(a5)
-	clr.w	-$3496(a5)
-	move.w	#$B8,-$3898(a5)
-	move.w	#$C0,-$389A(a5)
+	clr.w	g_BgScrollFactorY(a5)
+	clr.w	g_BgScrollFactorX(a5)
+	move.w	#$B8,g_LevelLoadWord3898(a5)
+	move.w	#$C0,g_StartCamOffsetY(a5)
 	move.b	#$1,-$38B4(a5)
 	clr.b	g_TwoPlayerStep(a5)
 	unlk	a6

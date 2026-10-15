@@ -62,7 +62,7 @@ loc_161874:
 	move.w	d1,d0
 	cmpi.l	#$8000,d0
 	beq.s	loc_1618AE
-	tst.b	-$3ABA(a5)
+	tst.b	g_BgLockToObj(a5)
 	bne.s	loc_1618AE
 	moveq	#$0,d3
 loc_1618AE:

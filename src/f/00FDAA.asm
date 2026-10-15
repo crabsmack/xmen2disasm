@@ -42,8 +42,8 @@ AvalonB1_RunScene:
 	move.l	$2(a0),-(a7)
 	jsr	$4FCA(a5)	; -> Level_Load
 	move.b	#$1,-$38B4(a5)
-	clr.w	-$3496(a5)
-	clr.w	-$3498(a5)
+	clr.w	g_BgScrollFactorX(a5)
+	clr.w	g_BgScrollFactorY(a5)
 	moveq	#$0,d0
 	move.l	d0,-(a7)
 	move.l	d0,-(a7)

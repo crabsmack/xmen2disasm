@@ -10,7 +10,7 @@ AvalonA3_InitSprites:
 	clr.w	d7
 	moveq	#$1,d0
 	move.l	d0,-(a7)
-	move.w	-$3AAE(a5),d1
+	move.w	g_FgTilesEnd(a5),d1
 	ext.l	d1
 	move.l	d1,-(a7)
 	ext.l	d7
@@ -24,7 +24,7 @@ AvalonA3_InitSprites:
 	jsr	$506A(a5)	; -> Spr_Init
 	moveq	#$1,d0
 	move.l	d0,-(a7)
-	move.w	-$3AAE(a5),d1
+	move.w	g_FgTilesEnd(a5),d1
 	ext.l	d1
 	moveq	#$10,d2
 	add.l	d2,d1
@@ -41,7 +41,7 @@ AvalonA3_InitSprites:
 	jsr	$506A(a5)	; -> Spr_Init
 	moveq	#$1,d0
 	move.l	d0,-(a7)
-	move.w	-$3AAE(a5),d1
+	move.w	g_FgTilesEnd(a5),d1
 	ext.l	d1
 	moveq	#$20,d2
 	add.l	d2,d1
@@ -58,7 +58,7 @@ AvalonA3_InitSprites:
 	jsr	$506A(a5)	; -> Spr_Init
 	moveq	#$1,d0
 	move.l	d0,-(a7)
-	move.w	-$3AAE(a5),d1
+	move.w	g_FgTilesEnd(a5),d1
 	ext.l	d1
 	moveq	#$30,d2
 	add.l	d2,d1

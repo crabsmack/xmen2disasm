@@ -41,14 +41,14 @@ loc_107898:
 	cmp.w	d0,d7
 	bne.w	loc_1079C6
 	ext.l	d7
-	movea.l	-$3A72(a5),a0
+	movea.l	g_FgRowTable(a5),a0
 	move.l	d7,d0
 	add.l	d0,d0
 	move.w	(a0,d0.l),d0
 	ext.l	d0
 	ext.l	d6
 	add.l	d6,d0
-	movea.l	-$3A84(a5),a0
+	movea.l	g_FgBlockMap(a5),a0
 	add.l	d0,d0
 	move.w	#$1FF,d1
 	and.w	(a0,d0.l),d1

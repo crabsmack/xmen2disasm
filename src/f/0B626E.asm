@@ -38,12 +38,12 @@ SavageA4_LoadLevel:
 	move.l	$2(a0),-(a7)
 	jsr	$4FCA(a5)	; -> Level_Load
 	move.b	#$1,-$38B4(a5)
-	clr.b	-$3AB6(a5)
-	clr.w	-$3496(a5)
-	move.w	#$100,-$3498(a5)
-	clr.w	-$349E(a5)
-	move.w	#$64,-$34A0(a5)
-	clr.w	-$349A(a5)
-	clr.w	-$349C(a5)
+	clr.b	g_BgWrapY(a5)
+	clr.w	g_BgScrollFactorX(a5)
+	move.w	#$100,g_BgScrollFactorY(a5)
+	clr.w	g_FgScrollBaseY(a5)
+	move.w	#$64,g_BgScrollBaseY(a5)
+	clr.w	g_FgScrollBaseX(a5)
+	clr.w	g_BgScrollBaseX(a5)
 	unlk	a6
 	rts

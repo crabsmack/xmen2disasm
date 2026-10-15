@@ -18,7 +18,7 @@ loc_15FD16:
 	addq.w	#$2,a4
 	cmpi.b	#$32,-$2(a4)
 	beq.s	loc_15FD50
-	move.w	-$3AC8(a5),d6
+	move.w	g_BgScrollY(a5),d6
 loc_15FD38:
 	sub.w	$2(a4),d6
 	bmi.s	loc_15FD4C
@@ -60,13 +60,13 @@ loc_15FD9C:
 	move.w	d4,d3
 	sub.w	d5,d3
 	move.w	$4(a4),d1
-	move.w	-$3AC2(a5),d0
+	move.w	g_FgScrollX(a5),d0
 	mulu.w	d1,d0
 	lsr.l	#$8,d0
 	neg.w	d0
 	andi.w	#$1FF,d0
 	swap	d0
-	move.w	-$3AC2(a5),d0
+	move.w	g_FgScrollX(a5),d0
 	neg.w	d0
 	andi.w	#$1FF,d0
 	swap	d0
@@ -95,15 +95,15 @@ loc_15FDE4:
 loc_15FDEC:
 	move.w	$2(a4),d3
 	move.w	$4(a4),d1
-	move.w	-$3AC4(a5),d0
+	move.w	g_FgScrollY(a5),d0
 	mulu.w	d1,d0
 	lsr.l	#$8,d0
-	move.w	-$34A0(a5),d1
+	move.w	g_BgScrollBaseY(a5),d1
 	ext.l	d1
 	add.l	d1,d0
 	swap	d0
-	move.w	-$3AC4(a5),d0
-	add.w	-$3AD4(a5),d0
+	move.w	g_FgScrollY(a5),d0
+	add.w	g_FgScrollAdjY(a5),d0
 	andi.w	#$FF,d0
 	swap	d0
 	subq.w	#$1,d3
@@ -126,12 +126,12 @@ loc_15FE30:
 loc_15FE3A:
 	sub.w	d2,d3
 	move.w	$4(a4),d1
-	move.w	-$3AC2(a5),d0
+	move.w	g_FgScrollX(a5),d0
 	mulu.w	d1,d0
 	lsr.l	#$8,d0
 	move.w	d0,d4
 	move.l	(a3),d5
-	move.w	-$3AC2(a5),d0
+	move.w	g_FgScrollX(a5),d0
 	muls.w	d0,d5
 	asl.l	#$8,d4
 	asl.l	#$4,d4
@@ -147,7 +147,7 @@ loc_15FE3A:
 	muls.w	d6,d0
 	add.l	d0,d4
 loc_15FE6C:
-	move.w	-$3AC2(a5),d0
+	move.w	g_FgScrollX(a5),d0
 	neg.w	d0
 	andi.w	#$1FF,d0
 	swap	d0
@@ -183,12 +183,12 @@ loc_15FEB8:
 	sub.w	d5,d3
 	move.b	$7(a4),d1
 	ext.w	d1
-	move.w	-$3AC2(a5),d0
+	move.w	g_FgScrollX(a5),d0
 	mulu.w	d1,d0
 	lsr.l	#$8,d0
 	move.w	d0,d2
 	asl.w	#$6,d2
-	move.w	-$3AC2(a5),d0
+	move.w	g_FgScrollX(a5),d0
 	neg.w	d0
 	andi.w	#$1FF,d0
 	swap	d0
@@ -218,8 +218,8 @@ loc_15FF0C:
 	move.w	d0,(a3)
 	asr.w	#$6,d0
 	swap	d0
-	move.w	-$3AC4(a5),d0
-	add.w	-$3AD4(a5),d0
+	move.w	g_FgScrollY(a5),d0
+	add.w	g_FgScrollAdjY(a5),d0
 	andi.w	#$FF,d0
 	swap	d0
 	subq.w	#$1,d3
@@ -245,11 +245,11 @@ loc_15FF56:
 	move.w	d4,d3
 	sub.w	d5,d3
 	move.w	$4(a4),d1
-	move.w	-$3AC2(a5),d0
+	move.w	g_FgScrollX(a5),d0
 	mulu.w	d1,d0
 	lsr.l	#$8,d0
 	move.w	d0,d2
-	move.w	-$3AC2(a5),d0
+	move.w	g_FgScrollX(a5),d0
 	neg.w	d0
 	andi.w	#$1FF,d0
 	swap	d0
@@ -324,7 +324,7 @@ loc_15FFF8:
 	lsr.l	#$8,d0
 	move.w	d0,d2
 	asl.w	#$6,d2
-	move.w	-$3AC2(a5),d0
+	move.w	g_FgScrollX(a5),d0
 	neg.w	d0
 	andi.w	#$1FF,d0
 	swap	d0
@@ -354,8 +354,8 @@ loc_160048:
 	move.w	d0,(a3)
 	asr.w	#$6,d0
 	swap	d0
-	move.w	-$3AC4(a5),d0
-	add.w	-$3AD4(a5),d0
+	move.w	g_FgScrollY(a5),d0
+	add.w	g_FgScrollAdjY(a5),d0
 	andi.w	#$FF,d0
 	swap	d0
 	subq.w	#$1,d3

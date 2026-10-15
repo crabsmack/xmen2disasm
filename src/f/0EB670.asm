@@ -23,12 +23,12 @@ SentinelsA1_OpenExitTiles:
 	moveq	#$12,d0
 	move.l	d0,-(a7)
 	jsr	$3FDA(a5)	; -> Map_SetBlockFG
-	movea.l	-$3A72(a5),a0
+	movea.l	g_FgRowTable(a5),a0
 	move.w	$2C(a0),d0
 	ext.l	d0
 	moveq	#$12,d1
 	add.l	d1,d0
-	movea.l	-$3A84(a5),a0
+	movea.l	g_FgBlockMap(a5),a0
 	add.l	d0,d0
 	lea.l	(a0,d0.l),a4
 	ori.w	#$200,(a4)

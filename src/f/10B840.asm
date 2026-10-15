@@ -31,7 +31,7 @@ loc_10B872:
 	bne.w	loc_10B938
 	move.w	$8(a0),d0
 	asr.w	#$8,d0
-	sub.w	d0,-$3AC8(a5)
+	sub.w	d0,g_BgScrollY(a5)
 	movea.l	g_Elevator(a5),a0
 	tst.b	$10(a0)
 	beq.s	loc_10B8C4
@@ -110,7 +110,7 @@ loc_10B938:
 	move.w	d1,d0
 	cmpi.l	#$8000,d0
 	beq.s	loc_10B97C
-	tst.b	-$3ABA(a5)
+	tst.b	g_BgLockToObj(a5)
 	bne.s	loc_10B97C
 	moveq	#$0,d3
 loc_10B97C:

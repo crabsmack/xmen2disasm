@@ -19,12 +19,12 @@ Tusk_StateStartFight:
 	sub.l	d0,d7
 	move.w	d6,d1
 	sub.w	#$32,d1
-	move.w	d1,-$3A98(a5)
+	move.w	d1,g_CamMinXTarget(a5)
 	move.w	d6,d1
 	add.w	#$32,d1
-	move.w	d1,-$3A96(a5)
-	move.w	d7,-$3A9C(a5)
-	move.w	d7,-$3A9A(a5)
+	move.w	d1,g_CamMaxXTarget(a5)
+	move.w	d7,g_CamMinYTarget(a5)
+	move.w	d7,g_CamMaxYTarget(a5)
 	move.l	a4,-(a7)
 	jsr	Tusk_UnlockArena(pc)
 	jsr	$5242(a5)	; -> Snd_StopAll

@@ -17,8 +17,8 @@ SiberiaB1_CamApply:
 	add.l	d0,d1
 	move.w	$5C(a4),d5
 	add.w	d1,d5
-	move.w	-$3AC6(a5),d6
-	move.w	-$3AC8(a5),d7
+	move.w	g_BgScrollX(a5),d6
+	move.w	g_BgScrollY(a5),d7
 	move.w	d4,g_CameraX(a5)
 	move.w	d5,g_CameraY(a5)
 	move.w	g_CameraX(a5),d0
@@ -41,41 +41,41 @@ loc_0FC7F2:
 	bge.s	loc_0FC802
 	move.w	g_CamMinY(a5),g_CameraY(a5)
 loc_0FC802:
-	move.w	-$3ABC(a5),d0
-	add.w	d0,-$3AC2(a5)
-	move.w	-$3ABE(a5),d0
-	add.w	d0,-$3AC4(a5)
-	move.w	-$3496(a5),d0
+	move.w	g_BgOffsetX(a5),d0
+	add.w	d0,g_FgScrollX(a5)
+	move.w	g_BgOffsetY(a5),d0
+	add.w	d0,g_FgScrollY(a5)
+	move.w	g_BgScrollFactorX(a5),d0
 	muls.w	g_CameraX(a5),d0
 	asr.l	#$8,d0
-	add.w	-$349C(a5),d0
-	move.w	d0,-$3AC6(a5)
-	move.w	-$3498(a5),d0
+	add.w	g_BgScrollBaseX(a5),d0
+	move.w	d0,g_BgScrollX(a5)
+	move.w	g_BgScrollFactorY(a5),d0
 	muls.w	g_CameraY(a5),d0
 	asr.l	#$8,d0
-	add.w	-$34A0(a5),d0
-	move.w	d0,-$3AC8(a5)
-	move.w	-$3AC6(a5),d0
+	add.w	g_BgScrollBaseY(a5),d0
+	move.w	d0,g_BgScrollY(a5)
+	move.w	g_BgScrollX(a5),d0
 	sub.w	d6,d0
-	add.w	d0,-$3AC2(a5)
-	move.w	-$3AC8(a5),d0
+	add.w	d0,g_FgScrollX(a5)
+	move.w	g_BgScrollY(a5),d0
 	sub.w	d7,d0
-	add.w	d0,-$3AC4(a5)
-	tst.b	-$3AC0(a5)
+	add.w	d0,g_FgScrollY(a5)
+	tst.b	g_ScrollResync(a5)
 	beq.s	loc_0FC856
-	addi.w	#$100,-$3AD0(a5)
+	addi.w	#$100,g_BgStreamY(a5)
 loc_0FC856:
-	clr.b	-$3AC0(a5)
-	andi.w	#$1FF,-$3AC2(a5)
-	andi.w	#$FF,-$3AC4(a5)
+	clr.b	g_ScrollResync(a5)
+	andi.w	#$1FF,g_FgScrollX(a5)
+	andi.w	#$FF,g_FgScrollY(a5)
 	jsr	$4D9A(a5)	; -> Irq_Disable
-	movea.l	-$3A54(a5),a0
+	movea.l	g_MapColHook(a5),a0
 	jsr	(a0)
-	movea.l	-$3A50(a5),a0
+	movea.l	g_MapRowHook(a5),a0
 	jsr	(a0)
 	jsr	$4DA2(a5)	; -> Irq_Enable
-	move.b	#$1,-$3A58(a5)
-	move.b	-$3A64(a5),-$3A56(a5)
+	move.b	#$1,g_BgScrollDirty(a5)
+	move.b	g_BgMapPresent(a5),g_FgScrollDirty(a5)
 	movem.l	-$14(a6),d4-d7/a4
 	unlk	a6
 	rts

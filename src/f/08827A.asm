@@ -9,8 +9,8 @@ CloneA5_CamUpdate:
 	link.w	a6,#$0
 	movem.l	d7/a3-a4,-(a7)
 	movea.l	$8(a6),a4
-	move.w	-$349C(a5),d7
-	move.w	-$34A0(a5),d7
+	move.w	g_BgScrollBaseX(a5),d7
+	move.w	g_BgScrollBaseY(a5),d7
 	tst.w	-$3B02(a5)
 	beq.w	loc_088382
 	move.w	g_Player1+$4(a5),d0

@@ -10,14 +10,14 @@ AvalonA2_ToggleTileHook:
 	move.w	$A(a6),d6
 	move.w	$E(a6),d7
 	ext.l	d7
-	movea.l	-$3A72(a5),a0
+	movea.l	g_FgRowTable(a5),a0
 	move.l	d7,d0
 	add.l	d0,d0
 	move.w	(a0,d0.l),d0
 	ext.l	d0
 	ext.l	d6
 	add.l	d6,d0
-	movea.l	-$3A84(a5),a0
+	movea.l	g_FgBlockMap(a5),a0
 	add.l	d0,d0
 	lea.l	(a0,d0.l),a4
 	ext.l	d6
@@ -38,14 +38,14 @@ AvalonA2_ToggleTileHook:
 	jsr	$54A(a5)	; -> RetractFloor_TriggerNearest
 	eori.w	#$200,(a4)
 	ext.l	d7
-	movea.l	-$3A72(a5),a0
+	movea.l	g_FgRowTable(a5),a0
 	move.l	d7,d0
 	add.l	d0,d0
 	move.w	(a0,d0.l),d0
 	ext.l	d0
 	ext.l	d6
 	add.l	d6,d0
-	movea.l	-$3A84(a5),a0
+	movea.l	g_FgBlockMap(a5),a0
 	add.l	d0,d0
 	andi.w	#$C7FF,(a0,d0.l)
 	ext.l	d7

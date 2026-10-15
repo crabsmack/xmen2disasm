@@ -46,12 +46,12 @@ loc_010F16:
 	move.l	d0,-(a7)
 	move.l	d0,-(a7)
 	move.l	d0,-(a7)
-	movea.l	-$3A72(a5),a0
+	movea.l	g_FgRowTable(a5),a0
 	move.w	$40(a0),d1
 	ext.l	d1
 	moveq	#$11,d2
 	add.l	d2,d1
-	movea.l	-$3A84(a5),a0
+	movea.l	g_FgBlockMap(a5),a0
 	add.l	d1,d1
 	move.w	#$1FF,d3
 	and.w	(a0,d1.l),d3
@@ -66,12 +66,12 @@ loc_010F16:
 	move.l	d0,-(a7)
 	move.l	d0,-(a7)
 	move.l	d0,-(a7)
-	movea.l	-$3A72(a5),a0
+	movea.l	g_FgRowTable(a5),a0
 	move.w	$40(a0),d1
 	ext.l	d1
 	moveq	#$15,d2
 	add.l	d2,d1
-	movea.l	-$3A84(a5),a0
+	movea.l	g_FgBlockMap(a5),a0
 	add.l	d1,d1
 	move.w	#$1FF,d3
 	and.w	(a0,d1.l),d3
@@ -86,12 +86,12 @@ loc_010F16:
 	move.l	d0,-(a7)
 	move.l	d0,-(a7)
 	move.l	d0,-(a7)
-	movea.l	-$3A72(a5),a0
+	movea.l	g_FgRowTable(a5),a0
 	move.w	$40(a0),d1
 	ext.l	d1
 	moveq	#$16,d2
 	add.l	d2,d1
-	movea.l	-$3A84(a5),a0
+	movea.l	g_FgBlockMap(a5),a0
 	add.l	d1,d1
 	move.w	#$1FF,d3
 	and.w	(a0,d1.l),d3
@@ -107,12 +107,12 @@ loc_010F16:
 	move.l	d0,-(a7)
 	moveq	#$0,d1
 	move.l	d1,-(a7)
-	movea.l	-$3A72(a5),a0
+	movea.l	g_FgRowTable(a5),a0
 	move.w	$40(a0),d2
 	ext.l	d2
 	moveq	#$12,d0
 	add.l	d0,d2
-	movea.l	-$3A84(a5),a0
+	movea.l	g_FgBlockMap(a5),a0
 	add.l	d2,d2
 	move.w	#$1FF,d3
 	and.w	(a0,d2.l),d3
@@ -128,12 +128,12 @@ loc_010F16:
 	moveq	#$1,d1
 	move.l	d1,-(a7)
 	move.l	d0,-(a7)
-	movea.l	-$3A72(a5),a0
+	movea.l	g_FgRowTable(a5),a0
 	move.w	$40(a0),d2
 	ext.l	d2
 	moveq	#$13,d0
 	add.l	d0,d2
-	movea.l	-$3A84(a5),a0
+	movea.l	g_FgBlockMap(a5),a0
 	add.l	d2,d2
 	move.w	#$1FF,d3
 	and.w	(a0,d2.l),d3
@@ -148,12 +148,12 @@ loc_010F16:
 	move.l	d0,-(a7)
 	move.l	d0,-(a7)
 	move.l	d0,-(a7)
-	movea.l	-$3A72(a5),a0
+	movea.l	g_FgRowTable(a5),a0
 	move.w	$40(a0),d1
 	ext.l	d1
 	moveq	#$18,d2
 	add.l	d2,d1
-	movea.l	-$3A84(a5),a0
+	movea.l	g_FgBlockMap(a5),a0
 	add.l	d1,d1
 	move.w	#$1FF,d3
 	and.w	(a0,d1.l),d3
@@ -168,12 +168,12 @@ loc_010F16:
 	move.l	d0,-(a7)
 	move.l	d0,-(a7)
 	move.l	d0,-(a7)
-	movea.l	-$3A72(a5),a0
+	movea.l	g_FgRowTable(a5),a0
 	move.w	$40(a0),d1
 	ext.l	d1
 	moveq	#$18,d2
 	add.l	d2,d1
-	movea.l	-$3A84(a5),a0
+	movea.l	g_FgBlockMap(a5),a0
 	add.l	d1,d1
 	move.w	#$1FF,d3
 	and.w	(a0,d1.l),d3
@@ -189,12 +189,12 @@ loc_010F16:
 	moveq	#$0,d1
 	move.l	d1,-(a7)
 	move.l	d1,-(a7)
-	movea.l	-$3A72(a5),a0
+	movea.l	g_FgRowTable(a5),a0
 	move.w	$40(a0),d2
 	ext.l	d2
 	moveq	#$14,d0
 	add.l	d0,d2
-	movea.l	-$3A84(a5),a0
+	movea.l	g_FgBlockMap(a5),a0
 	add.l	d2,d2
 	move.w	#$1FF,d3
 	and.w	(a0,d2.l),d3
@@ -209,12 +209,12 @@ loc_010F16:
 	move.l	d0,-(a7)
 	move.l	d0,-(a7)
 	move.l	d0,-(a7)
-	movea.l	-$3A72(a5),a0
+	movea.l	g_FgRowTable(a5),a0
 	move.w	$40(a0),d1
 	ext.l	d1
 	moveq	#$12,d2
 	add.l	d2,d1
-	movea.l	-$3A84(a5),a0
+	movea.l	g_FgBlockMap(a5),a0
 	add.l	d1,d1
 	move.w	#$1FF,d3
 	and.w	(a0,d1.l),d3
@@ -229,12 +229,12 @@ loc_010F16:
 	move.l	d0,-(a7)
 	move.l	d0,-(a7)
 	move.l	d0,-(a7)
-	movea.l	-$3A72(a5),a0
+	movea.l	g_FgRowTable(a5),a0
 	move.w	$40(a0),d1
 	ext.l	d1
 	moveq	#$17,d2
 	add.l	d2,d1
-	movea.l	-$3A84(a5),a0
+	movea.l	g_FgBlockMap(a5),a0
 	add.l	d1,d1
 	move.w	#$1FF,d3
 	and.w	(a0,d1.l),d3
@@ -250,12 +250,12 @@ loc_010F16:
 	move.l	d0,-(a7)
 	moveq	#$0,d1
 	move.l	d1,-(a7)
-	movea.l	-$3A72(a5),a0
+	movea.l	g_FgRowTable(a5),a0
 	move.w	$40(a0),d2
 	ext.l	d2
 	moveq	#$15,d0
 	add.l	d0,d2
-	movea.l	-$3A84(a5),a0
+	movea.l	g_FgBlockMap(a5),a0
 	add.l	d2,d2
 	move.w	#$1FF,d3
 	and.w	(a0,d2.l),d3
@@ -271,12 +271,12 @@ loc_010F16:
 	move.l	d0,-(a7)
 	moveq	#$0,d1
 	move.l	d1,-(a7)
-	movea.l	-$3A72(a5),a0
+	movea.l	g_FgRowTable(a5),a0
 	move.w	$40(a0),d2
 	ext.l	d2
 	moveq	#$11,d0
 	add.l	d0,d2
-	movea.l	-$3A84(a5),a0
+	movea.l	g_FgBlockMap(a5),a0
 	add.l	d2,d2
 	move.w	#$1FF,d3
 	and.w	(a0,d2.l),d3

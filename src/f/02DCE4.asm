@@ -15,22 +15,22 @@ Exodus_BreakFloorTiles:
 	tst.b	$B(a6)
 	beq.s	loc_02DD0C
 	moveq	#$2,d7
-	move.w	-$3AA8(a5),d5
+	move.w	g_FgBlockCount(a5),d5
 	bra.s	loc_02DD14
 loc_02DD0C:
 	moveq	#$6,d7
-	move.w	-$3AA8(a5),d5
+	move.w	g_FgBlockCount(a5),d5
 	addq.w	#$2,d5
 loc_02DD14:
 	ext.l	d6
-	movea.l	-$3A72(a5),a0
+	movea.l	g_FgRowTable(a5),a0
 	move.l	d6,d0
 	add.l	d0,d0
 	move.w	(a0,d0.l),d0
 	ext.l	d0
 	ext.l	d7
 	add.l	d7,d0
-	movea.l	-$3A84(a5),a0
+	movea.l	g_FgBlockMap(a5),a0
 	add.l	d0,d0
 	lea.l	(a0,d0.l),a4
 	move.w	#$27,(a4)
@@ -41,14 +41,14 @@ loc_02DD14:
 	jsr	$3FD2(a5)	; -> Map_RefreshBlock
 	addq.w	#$1,d7
 	ext.l	d6
-	movea.l	-$3A72(a5),a0
+	movea.l	g_FgRowTable(a5),a0
 	move.l	d6,d0
 	add.l	d0,d0
 	move.w	(a0,d0.l),d0
 	ext.l	d0
 	ext.l	d7
 	add.l	d7,d0
-	movea.l	-$3A84(a5),a0
+	movea.l	g_FgBlockMap(a5),a0
 	add.l	d0,d0
 	lea.l	(a0,d0.l),a4
 	move.w	d5,(a4)
@@ -59,14 +59,14 @@ loc_02DD14:
 	jsr	$3FD2(a5)	; -> Map_RefreshBlock
 	addq.w	#$1,d7
 	ext.l	d6
-	movea.l	-$3A72(a5),a0
+	movea.l	g_FgRowTable(a5),a0
 	move.l	d6,d0
 	add.l	d0,d0
 	move.w	(a0,d0.l),d0
 	ext.l	d0
 	ext.l	d7
 	add.l	d7,d0
-	movea.l	-$3A84(a5),a0
+	movea.l	g_FgBlockMap(a5),a0
 	add.l	d0,d0
 	lea.l	(a0,d0.l),a4
 	move.w	d5,d0
@@ -79,14 +79,14 @@ loc_02DD14:
 	jsr	$3FD2(a5)	; -> Map_RefreshBlock
 	addq.w	#$1,d7
 	ext.l	d6
-	movea.l	-$3A72(a5),a0
+	movea.l	g_FgRowTable(a5),a0
 	move.l	d6,d0
 	add.l	d0,d0
 	move.w	(a0,d0.l),d0
 	ext.l	d0
 	ext.l	d7
 	add.l	d7,d0
-	movea.l	-$3A84(a5),a0
+	movea.l	g_FgBlockMap(a5),a0
 	add.l	d0,d0
 	lea.l	(a0,d0.l),a4
 	move.w	#$28,(a4)

@@ -11,7 +11,7 @@ Map_DrawRowB:
 	asr.w	#$2,d0
 	add.w	d0,d0
 	adda.w	d0,a3
-	movea.l	-$3A76(a5),a0
+	movea.l	g_BgRowTable(a5),a0
 	move.w	d5,d0
 	asr.w	#$2,d0
 	add.w	d0,d0
@@ -36,9 +36,9 @@ Map_DrawRowB:
 	addq.w	#$4,d7
 	sub.w	(a7),d7
 	moveq	#$E,d0
-	tst.b	-$3AB4(a5)
+	tst.b	g_BgWrapX(a5)
 	bne.s	loc_15EE2A
-	tst.b	-$13EE(a5)
+	tst.b	g_BgNarrow(a5)
 	beq.s	loc_15EE2A
 	moveq	#$9,d0
 loc_15EE2A:

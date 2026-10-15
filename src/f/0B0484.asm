@@ -39,10 +39,10 @@ SavageA3_LoadLevel:
 	clr.w	g_PalBase(a5)
 	move.b	#$1,-$38B4(a5)
 	clr.b	g_TwoPlayerStep(a5)
-	clr.b	-$3AB6(a5)
+	clr.b	g_BgWrapY(a5)
 	subi.w	#$60,g_CamMaxY(a5)
-	move.w	g_CamMaxY(a5),-$3A9A(a5)
-	move.w	#$140,-$3496(a5)
-	move.w	#$120,-$3498(a5)
+	move.w	g_CamMaxY(a5),g_CamMaxYTarget(a5)
+	move.w	#$140,g_BgScrollFactorX(a5)
+	move.w	#$120,g_BgScrollFactorY(a5)
 	unlk	a6
 	rts

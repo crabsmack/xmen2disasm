@@ -14,12 +14,12 @@ BioBullet_OutsideActiveWindow:
 	ext.l	d1
 	move.l	d0,d7
 	sub.l	d1,d7
-	cmp.w	-$35C2(a5),d7
+	cmp.w	g_DeactWinRight(a5),d7
 	ble.s	loc_11E446
 	moveq	#$1,d0
 	bra.s	loc_11E476
 loc_11E446:
-	cmp.w	-$35C0(a5),d7
+	cmp.w	g_DeactWinLeft(a5),d7
 	bge.s	loc_11E450
 	moveq	#$1,d0
 	bra.s	loc_11E476
@@ -28,12 +28,12 @@ loc_11E450:
 	asr.l	#$8,d0
 	move.w	d0,d7
 	sub.w	g_CameraY(a5),d7
-	cmp.w	-$35C6(a5),d7
+	cmp.w	g_DeactWinBottom(a5),d7
 	ble.s	loc_11E466
 	moveq	#$1,d0
 	bra.s	loc_11E476
 loc_11E466:
-	cmp.w	-$35C4(a5),d7
+	cmp.w	g_DeactWinTop(a5),d7
 	slt.b	d3
 	neg.b	d3
 	subq.b	#$1,d3

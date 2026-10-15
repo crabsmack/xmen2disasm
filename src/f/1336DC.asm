@@ -25,7 +25,7 @@ BrainRocket_Update:
 	moveq	#$1,d0
 	move.l	d0,-(a7)
 	pea.l	($4800).w
-	tst.b	-$35CA(a5)
+	tst.b	g_SolidMapIsBg(a5)
 	seq.b	d3
 	neg.b	d3
 	ext.w	d3

@@ -37,8 +37,8 @@ loc_00FB60:
 	movea.l	g_Camera(a5),a1
 	move.l	a0,$4(a1)
 	move.w	#$430,g_CameraY(a5)
-	move.w	g_CameraY(a5),-$3AC4(a5)
-	move.w	#$E0,-$3AC8(a5)
+	move.w	g_CameraY(a5),g_FgScrollY(a5)
+	move.w	#$E0,g_BgScrollY(a5)
 	lea.l	g_PalBase(a5),a4
 	clr.w	d7
 	moveq	#$10,d3
@@ -59,10 +59,10 @@ loc_00FBE0:
 	cmp.w	d7,d3
 	bgt.s	loc_00FBE0
 	move.b	#$1,g_PalBaseDirty(a5)
-	addi.w	#$100,-$3ACC(a5)
-	clr.b	-$13F0(a5)
+	addi.w	#$100,g_FgStreamY(a5)
+	clr.b	g_MapStreamNarrow(a5)
 	jsr	$4D9A(a5)	; -> Irq_Disable
-	movea.l	-$3A50(a5),a0
+	movea.l	g_MapRowHook(a5),a0
 	jsr	(a0)
 	jsr	$4DA2(a5)	; -> Irq_Enable
 	movem.l	-$C(a6),d3/d7/a4

@@ -35,7 +35,7 @@ CloneA5_InitCamera:
 	cmpi.l	#$8000,d0
 	bne.s	loc_088722
 	clr.w	-$3C4E(a5)
-	move.w	#$7D8,-$3AC2(a5)
+	move.w	#$7D8,g_FgScrollX(a5)
 	move.w	#$7F0,$30(a4)
 	move.w	#$598,$32(a4)
 	move.l	a4,-(a7)

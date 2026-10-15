@@ -7,7 +7,7 @@
 SiberiaB1_InitWind:
 	link.w	a6,#$0
 	movem.l	d7/a4,-(a7)
-	move.b	#$1,-$3AB8(a5)
+	move.b	#$1,g_BgOffsetOn(a5)
 	clr.w	-$3B48(a5)
 	clr.w	-$3B40(a5)
 	move.w	#$600,-$3B06(a5)
@@ -32,14 +32,14 @@ SiberiaB1_InitWind:
 	ext.l	d0
 	lsl.l	#$3,d0
 	sub.w	#$140,d0
-	move.w	d0,-$3A96(a5)
+	move.w	d0,g_CamMaxXTarget(a5)
 	move.w	d0,g_CamMaxX(a5)
 	movea.l	d7,a0
 	move.w	$4(a0),d0
 	ext.l	d0
 	lsl.l	#$3,d0
 	sub.w	#$E0,d0
-	move.w	d0,-$3A9A(a5)
+	move.w	d0,g_CamMaxYTarget(a5)
 	move.w	d0,g_CamMaxY(a5)
 	move.w	#$A8A,g_PalBase+$52(a5)
 	move.w	#$EEE,g_PalBase+$54(a5)

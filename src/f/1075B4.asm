@@ -41,14 +41,14 @@ SpaceB1_LoadLevel:
 	move.b	#$1,-$38B4(a5)
 	lea.l	SpaceB1_Seg28Handler(pc),a0
 	move.l	a0,-$33FA(a5)
-	clr.b	-$3AB6(a5)
-	move.w	#$4D,-$3498(a5)
-	move.w	#$4D,-$3496(a5)
-	move.w	#$1960,-$349E(a5)
-	move.w	#$7A0,-$34A0(a5)
-	clr.w	-$349A(a5)
-	clr.w	-$349C(a5)
-	move.w	#$82,-$3898(a5)
-	move.w	#$BE,-$389A(a5)
+	clr.b	g_BgWrapY(a5)
+	move.w	#$4D,g_BgScrollFactorY(a5)
+	move.w	#$4D,g_BgScrollFactorX(a5)
+	move.w	#$1960,g_FgScrollBaseY(a5)
+	move.w	#$7A0,g_BgScrollBaseY(a5)
+	clr.w	g_FgScrollBaseX(a5)
+	clr.w	g_BgScrollBaseX(a5)
+	move.w	#$82,g_LevelLoadWord3898(a5)
+	move.w	#$BE,g_StartCamOffsetY(a5)
 	unlk	a6
 	rts

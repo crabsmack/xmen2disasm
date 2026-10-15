@@ -45,8 +45,8 @@ AvalonA3_LoadLevel:
 	move.l	d0,-(a7)
 	jsr	$521A(a5)	; -> Snd_Play
 	move.b	#$1,-$38B4(a5)
-	move.w	#$7F,-$3498(a5)
-	move.w	#$DC,-$3496(a5)
+	move.w	#$7F,g_BgScrollFactorY(a5)
+	move.w	#$DC,g_BgScrollFactorX(a5)
 	clr.b	g_TwoPlayerStep(a5)
 	lea.l	$50A(a5),a0
 	movea.l	$2(a0),a3
@@ -61,7 +61,7 @@ loc_02CB8A:
 	cmp.l	d7,d3
 	bgt.s	loc_02CB8A
 	clr.w	g_PalBase(a5)
-	subi.w	#$20,-$3A9A(a5)
+	subi.w	#$20,g_CamMaxYTarget(a5)
 	movem.l	-$10(a6),d3/d7/a3-a4
 	unlk	a6
 	rts

@@ -14,23 +14,23 @@ MagnetoBoss_StateZone1:
 	move.l	$8(a3),d7
 	asr.l	#$8,d7
 	move.b	$B2(a4),d6
-	movea.l	-$3A72(a5),a0
+	movea.l	g_FgRowTable(a5),a0
 	move.w	$10(a0),d0
 	ext.l	d0
 	moveq	#$16,d1
 	add.l	d1,d0
-	movea.l	-$3A84(a5),a0
+	movea.l	g_FgBlockMap(a5),a0
 	add.l	d0,d0
 	move.w	#$3800,d2
 	and.w	(a0,d0.l),d2
 	moveq	#$B,d0
 	move.w	d2,d4
 	lsr.w	d0,d4
-	movea.l	-$3A72(a5),a0
+	movea.l	g_FgRowTable(a5),a0
 	move.w	$12(a0),d0
 	ext.l	d0
 	add.l	d1,d0
-	movea.l	-$3A84(a5),a0
+	movea.l	g_FgBlockMap(a5),a0
 	add.l	d0,d0
 	move.w	#$3800,d2
 	and.w	(a0,d0.l),d2

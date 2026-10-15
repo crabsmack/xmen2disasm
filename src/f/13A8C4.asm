@@ -33,19 +33,19 @@ loc_13A8FE:
 	sub.w	g_CameraX(a5),d4
 	move.w	$6(a4),d5
 	sub.w	g_CameraY(a5),d5
-	cmp.w	-$35C0(a5),d4
+	cmp.w	g_DeactWinLeft(a5),d4
 	blt.s	loc_13A93A
 	ext.l	d4
-	move.w	-$35C2(a5),d0
+	move.w	g_DeactWinRight(a5),d0
 	ext.l	d0
 	moveq	#$20,d1
 	add.l	d1,d0
 	cmp.l	d4,d0
 	blt.s	loc_13A93A
-	cmp.w	-$35C4(a5),d5
+	cmp.w	g_DeactWinTop(a5),d5
 	blt.s	loc_13A93A
 	ext.l	d5
-	move.w	-$35C6(a5),d0
+	move.w	g_DeactWinBottom(a5),d0
 	ext.l	d0
 	moveq	#$20,d1
 	add.l	d1,d0

@@ -28,13 +28,13 @@ loc_0E81B6:
 	ext.l	d1
 	move.l	d0,d6
 	sub.l	d1,d6
-	cmp.w	-$35C2(a5),d5
+	cmp.w	g_DeactWinRight(a5),d5
 	bgt.s	loc_0E81F0
-	cmp.w	-$35C0(a5),d5
+	cmp.w	g_DeactWinLeft(a5),d5
 	blt.s	loc_0E81F0
-	cmp.w	-$35C6(a5),d6
+	cmp.w	g_DeactWinBottom(a5),d6
 	bgt.s	loc_0E81F0
-	cmp.w	-$35C4(a5),d6
+	cmp.w	g_DeactWinTop(a5),d6
 	bge.s	loc_0E8200
 loc_0E81F0:
 	move.l	a4,-(a7)

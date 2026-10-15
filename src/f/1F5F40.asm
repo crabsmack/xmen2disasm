@@ -7,6 +7,6 @@ sub_1F5F40:
 	ext.l	d0
 	lsl.l	#$5,d0
 	move.w	d0,g_CamMinX(a5)
-	move.w	g_CamMinX(a5),-$3A98(a5)
+	move.w	g_CamMinX(a5),g_CamMinXTarget(a5)
 	unlk	a6
 	rts

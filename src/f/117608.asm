@@ -44,14 +44,14 @@ loc_117648:
 	bra.w	loc_1177A0
 loc_11766A:
 	move.w	-$2(a6),d0
-	cmp.w	-$35C2(a5),d0
+	cmp.w	g_DeactWinRight(a5),d0
 	bgt.s	loc_11768A
 	move.w	-$2(a6),d0
-	cmp.w	-$35C0(a5),d0
+	cmp.w	g_DeactWinLeft(a5),d0
 	blt.s	loc_11768A
-	cmp.w	-$35C6(a5),d7
+	cmp.w	g_DeactWinBottom(a5),d7
 	bgt.s	loc_11768A
-	cmp.w	-$35C4(a5),d7
+	cmp.w	g_DeactWinTop(a5),d7
 	bge.s	loc_1176A6
 loc_11768A:
 	move.l	a3,-(a7)

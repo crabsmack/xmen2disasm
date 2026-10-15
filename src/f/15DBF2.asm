@@ -35,22 +35,22 @@ loc_15DC20:
 	ext.l	d1
 	move.l	d0,d7
 	sub.l	d1,d7
-	cmp.w	-$35AE(a5),d6
+	cmp.w	g_DespawnWinLeft(a5),d6
 	bge.s	loc_15DC4A
 	moveq	#$1,d0
 	bra.s	loc_15DC6E
 loc_15DC4A:
-	cmp.w	-$35B0(a5),d6
+	cmp.w	g_DespawnWinRight(a5),d6
 	ble.s	loc_15DC54
 	moveq	#$1,d0
 	bra.s	loc_15DC6E
 loc_15DC54:
-	cmp.w	-$35AC(a5),d7
+	cmp.w	g_DespawnWinTop(a5),d7
 	bge.s	loc_15DC5E
 	moveq	#$1,d0
 	bra.s	loc_15DC6E
 loc_15DC5E:
-	cmp.w	-$35B2(a5),d7
+	cmp.w	g_DespawnWinBottom(a5),d7
 	sgt.b	d3
 	neg.b	d3
 	subq.b	#$1,d3

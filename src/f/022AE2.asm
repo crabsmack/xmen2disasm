@@ -7,6 +7,6 @@
 AvalonA2_RaiseCameraFloor:
 	link.w	a6,#$0
 	subi.w	#$C0,g_CamMaxY(a5)
-	move.w	g_CamMaxY(a5),-$3A9A(a5)
+	move.w	g_CamMaxY(a5),g_CamMaxYTarget(a5)
 	unlk	a6
 	rts

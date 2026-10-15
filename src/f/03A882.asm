@@ -54,7 +54,7 @@ loc_03A8F0:
 loc_03A8F2:
 	move.l	d0,-$4(a6)
 	lea.l	g_HScrollBuf(a5),a3
-	move.w	-$3AC2(a5),d0
+	move.w	g_FgScrollX(a5),d0
 	ext.l	d0
 	neg.l	d0
 	move.l	d0,d4

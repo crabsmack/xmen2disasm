@@ -32,12 +32,12 @@ loc_15E1BC:
 	ext.l	d1
 	move.l	d0,d7
 	sub.l	d1,d7
-	cmp.w	-$35C2(a5),d7
+	cmp.w	g_DeactWinRight(a5),d7
 	ble.s	loc_15E1E0
 	moveq	#$1,d0
 	bra.s	loc_15E218
 loc_15E1E0:
-	cmp.w	-$35C0(a5),d7
+	cmp.w	g_DeactWinLeft(a5),d7
 	bge.s	loc_15E1EA
 	moveq	#$1,d0
 	bra.s	loc_15E218
@@ -51,12 +51,12 @@ loc_15E1EA:
 	ext.l	d1
 	move.l	d0,d7
 	sub.l	d1,d7
-	cmp.w	-$35C6(a5),d7
+	cmp.w	g_DeactWinBottom(a5),d7
 	ble.s	loc_15E20C
 	moveq	#$1,d0
 	bra.s	loc_15E218
 loc_15E20C:
-	cmp.w	-$35C4(a5),d7
+	cmp.w	g_DeactWinTop(a5),d7
 	bge.s	loc_15E216
 	moveq	#$1,d0
 	bra.s	loc_15E218

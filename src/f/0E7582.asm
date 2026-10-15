@@ -9,7 +9,7 @@ SentinelsA1_InitZapLights:
 	movem.l	d7/a4,-(a7)
 	lea.l	$2622(a5),a0
 	movea.l	$2(a0),a4
-	move.w	-$3AAE(a5),d7
+	move.w	g_FgTilesEnd(a5),d7
 	moveq	#$1,d0
 	move.l	d0,-(a7)
 	ext.l	d7
@@ -26,10 +26,10 @@ SentinelsA1_InitZapLights:
 	moveq	#$1,d0
 	move.l	d0,-(a7)
 	move.l	d0,-(a7)
-	move.w	-$3AA8(a5),d1
+	move.w	g_FgBlockCount(a5),d1
 	ext.l	d1
 	move.l	d1,-(a7)
-	move.l	-$3AA6(a5),-(a7)
+	move.l	g_FgBlockDefs(a5),-(a7)
 	jsr	$4E12(a5)	; -> Map_SetRowPalette
 	addi.w	#$10,d7
 	moveq	#$1,d0
@@ -49,10 +49,10 @@ SentinelsA1_InitZapLights:
 	move.l	d0,-(a7)
 	moveq	#$2,d1
 	move.l	d1,-(a7)
-	move.w	-$3AA8(a5),d2
+	move.w	g_FgBlockCount(a5),d2
 	ext.l	d2
 	move.l	d2,-(a7)
-	move.l	-$3AA6(a5),-(a7)
+	move.l	g_FgBlockDefs(a5),-(a7)
 	jsr	$4E12(a5)	; -> Map_SetRowPalette
 	addi.w	#$10,d7
 	moveq	#$1,d0
@@ -72,10 +72,10 @@ SentinelsA1_InitZapLights:
 	move.l	d0,-(a7)
 	moveq	#$3,d1
 	move.l	d1,-(a7)
-	move.w	-$3AA8(a5),d2
+	move.w	g_FgBlockCount(a5),d2
 	ext.l	d2
 	move.l	d2,-(a7)
-	move.l	-$3AA6(a5),-(a7)
+	move.l	g_FgBlockDefs(a5),-(a7)
 	jsr	$4E12(a5)	; -> Map_SetRowPalette
 	addi.w	#$10,d7
 	moveq	#$1,d0
@@ -95,10 +95,10 @@ SentinelsA1_InitZapLights:
 	move.l	d0,-(a7)
 	moveq	#$4,d1
 	move.l	d1,-(a7)
-	move.w	-$3AA8(a5),d2
+	move.w	g_FgBlockCount(a5),d2
 	ext.l	d2
 	move.l	d2,-(a7)
-	move.l	-$3AA6(a5),-(a7)
+	move.l	g_FgBlockDefs(a5),-(a7)
 	jsr	$4E12(a5)	; -> Map_SetRowPalette
 	addi.w	#$10,d7
 	moveq	#$1,d0
@@ -118,10 +118,10 @@ SentinelsA1_InitZapLights:
 	move.l	d0,-(a7)
 	moveq	#$5,d1
 	move.l	d1,-(a7)
-	move.w	-$3AA8(a5),d2
+	move.w	g_FgBlockCount(a5),d2
 	ext.l	d2
 	move.l	d2,-(a7)
-	move.l	-$3AA6(a5),-(a7)
+	move.l	g_FgBlockDefs(a5),-(a7)
 	jsr	$4E12(a5)	; -> Map_SetRowPalette
 	move.w	#$FFFF,-$3B02(a5)
 	move.w	#$FFFF,-$3B04(a5)
