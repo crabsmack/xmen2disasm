@@ -51,7 +51,16 @@ def main() -> None:
         if re.search(r"git\s+add\b.*(-f|--force)", cmd) and re.search(r"\.(bin|smd|gen)\b", cmd):
             block("never commit the ROM.")
         if re.search(r"\bgit\b[^|;&]*\bcommit\b", cmd):
-            r = subprocess.run(["uv", "run", "tools/build.py", "--quiet"], cwd=ROOT,
+            # Build the checkout the command runs in (a worktree), not the one holding this hook:
+            # otherwise worktree commits are never checked and parallel workers race in one build/.
+            root = ROOT
+            cwd = data.get("cwd")
+            if cwd:
+                top = subprocess.run(["git", "rev-parse", "--show-toplevel"], cwd=cwd,
+                                     capture_output=True, text=True)
+                if top.returncode == 0 and (Path(top.stdout.strip()) / "tools" / "build.py").exists():
+                    root = Path(top.stdout.strip())
+            r = subprocess.run(["uv", "run", "tools/build.py", "--quiet"], cwd=root,
                                capture_output=True, text=True, timeout=600)
             if r.returncode != 0:
                 block("tree does not build byte-identical; fix before committing:\n" + (r.stdout + r.stderr)[-2000:])
