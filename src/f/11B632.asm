@@ -22,3 +22,4 @@ loc_11B64E:
 	jmp	$3172(a5)	; -> BabyBio_ActStopWait30
 loc_11B652:
 	jmp	$3152(a5)	; -> BabyBio_ActPlayAnimA
+	jmp	$317A(a5)	; -> BabyBio_ActPlayAnimB

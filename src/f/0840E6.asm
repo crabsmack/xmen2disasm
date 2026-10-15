@@ -7,3 +7,7 @@ SmallBrood_ScrStepWalk:
 	jmp	$129A(a5)	; -> SmallBrood_ActWalk
 loc_0840EA:
 	jmp	$12B2(a5)	; -> SmallBrood_ActJump
+	jmp	$12A2(a5)	; -> SmallBrood_ActChase
+	jmp	$128A(a5)	; -> SmallBrood_ActIdle
+	jmp	$12B2(a5)	; -> SmallBrood_ActJump
+	jmp	$129A(a5)	; -> SmallBrood_ActWalk

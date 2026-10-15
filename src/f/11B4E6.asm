@@ -6,3 +6,10 @@
 ; ---------------------------------------------------------------------------
 BabySentinelA_Script:
 	jmp	$31E2(a5)	; -> BabyBio_ActCrawl
+	jmp	$314A(a5)	; -> BabyBio_ActFacePlayer
+	jmp	$3152(a5)	; -> BabyBio_ActPlayAnimA
+	jmp	$3182(a5)	; -> BabyBio_ActPlayAnimC
+	jmp	$3172(a5)	; -> BabyBio_ActStopWait30
+	jmp	$31CA(a5)	; -> BabyBio_ActStartFiring
+	jmp	$3172(a5)	; -> BabyBio_ActStopWait30
+	jmp	$3152(a5)	; -> BabyBio_ActPlayAnimA

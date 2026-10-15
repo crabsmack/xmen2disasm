@@ -39,3 +39,12 @@ loc_088ADA:
 	jmp	$13EA(a5)	; -> BroodBoss_ActClaw
 loc_088ADE:
 	jmp	$13DA(a5)	; -> BroodBoss_ActWait60
+	jmp	$13DA(a5)	; -> BroodBoss_ActWait60
+	jmp	$13DA(a5)	; -> BroodBoss_ActWait60
+	jmp	$1402(a5)	; -> BroodBoss_ActStomp
+	jmp	$13DA(a5)	; -> BroodBoss_ActWait60
+	jmp	$1412(a5)	; -> BroodBoss_ActBringWall
+	jmp	$141A(a5)	; -> BroodBoss_ActChargeWall
+	jmp	$1422(a5)	; -> BroodBoss_ActAdvance
+	jmp	$142A(a5)	; -> BroodBoss_ActScream
+	jmp	$13E2(a5)	; -> BroodBoss_ActWait30

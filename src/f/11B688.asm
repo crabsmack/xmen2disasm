@@ -12,3 +12,5 @@ loc_11B690:
 	jmp	$3172(a5)	; -> BabyBio_ActStopWait30
 loc_11B694:
 	jmp	$31CA(a5)	; -> BabyBio_ActStartFiring
+	jmp	$31AA(a5)	; -> BabyBio_ActMoveHorizontal
+	jmp	$3172(a5)	; -> BabyBio_ActStopWait30

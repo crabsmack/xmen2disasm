@@ -14,3 +14,4 @@ loc_01CA7A:
 	jmp	$45A(a5)	; -> YoyoAcolyte_ActIdle
 loc_01CA7E:
 	jmp	$472(a5)	; -> YoyoAcolyte_ActThrowLow
+	jmp	$45A(a5)	; -> YoyoAcolyte_ActIdle

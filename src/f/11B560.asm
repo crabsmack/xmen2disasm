@@ -14,3 +14,10 @@ loc_11B56C:
 	jmp	$318A(a5)	; -> BabyBio_ActPlayAnimD
 loc_11B570:
 	jmp	$3172(a5)	; -> BabyBio_ActStopWait30
+	jmp	$31C2(a5)	; -> BabyBio_ActWalkForward
+	jmp	$31D2(a5)	; -> BabyBio_ActAttachFlame
+	jmp	$315A(a5)	; -> BabyBio_ActWaitParam
+	jmp	$31DA(a5)	; -> BabyBio_ActDropFlame
+	jmp	$31BA(a5)	; -> BabyBio_WaitStopOrLimit
+	jmp	$3172(a5)	; -> BabyBio_ActStopWait30
+	jmp	$3152(a5)	; -> BabyBio_ActPlayAnimA

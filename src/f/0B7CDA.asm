@@ -9,3 +9,5 @@ loc_0B7CDE:
 	jmp	$314A(a5)	; -> BabyBio_ActFacePlayer
 loc_0B7CE2:
 	jmp	$31CA(a5)	; -> BabyBio_ActStartFiring
+	jmp	$31CA(a5)	; -> BabyBio_ActStartFiring
+	jmp	$3172(a5)	; -> BabyBio_ActStopWait30

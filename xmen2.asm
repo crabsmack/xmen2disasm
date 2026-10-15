@@ -260,7 +260,7 @@ Tbl_BigAcolyteFightScriptLen:	; word $14: entry count of the BIGACOLYTE fight AI
 	incrom	$0119FE,$1
 	incrom	$0119FF,$1
 	include "src/f/011A00.asm"
-	incrom	$011A04,$672
+	incrom	$011A50,$626
 Art_BigAcolyteSpr:	; sprite definition (type $18, raw 4bpp tiles): $24-byte header, $14-byte frame records, pieces, tiles; F00 of 1024 bytes used at runtime; read by VDP_FlushDmaQueue; DMA to VRAM $ACE0-B600; jt[60] used by BigAcolyte_Init
 	incrom	$012076,$1024
 Art_BigAcBulletSpr:	; sprite definition (type $18, raw 4bpp tiles): $24-byte header, $14-byte frame records, pieces, tiles; 240 of 2A8 bytes used at runtime; read by VDP_FlushDmaQueue; DMA to VRAM $BFE0-C100; jt[61] used by BigAcBullet_Init
@@ -443,7 +443,6 @@ Tbl_YoyoAcolyteScriptMixALen:	; word 6: entry count of a YOYOACOLYTE AI script (
 Tbl_YoyoAcolyteStateYoyoOut3:	; table read by YoyoAcolyte_StateYoyoOut; 1 of 1 bytes used at runtime; read by YoyoAcolyte_StateYoyoOut
 	incrom	$01CA6D,$1
 	include "src/f/01CA6E.asm"
-	incrom	$01CA82,$4
 Tbl_YoyoAcolyteStateYoyoOut4:	; table read by YoyoAcolyte_StateYoyoOut; 2 of 2 bytes used at runtime; read by YoyoAcolyte_StateYoyoOut; jt[146] used by YoyoAcolyte_Init_Script1to4
 	incrom	$01CA86,$2
 	include "src/f/01CA88.asm"
@@ -1802,14 +1801,12 @@ Tbl_SmallBroodAiScript:	; data handed to AiScript_Set (format not established); 
 Tbl_SmallBroodAiScript2:	; data handed to AiScript_Set (format not established); never read in the corpus; jt[577] used by SmallBrood_Init_Case1 -> AiScript_Set
 	incrom	$0840CC,$2
 	include "src/f/0840CE.asm"
-	incrom	$0840D2,$4
 Tbl_SmallBroodStateLand:	; table read by SmallBrood_StateLand; 2 of 2 bytes used at runtime; read by SmallBrood_StateLand; jt[578] used by SmallBrood_Init_Case1
 	incrom	$0840D6,$2
 	include "src/f/0840D8.asm"
 Tbl_SmallBroodStateLand2:	; table read by SmallBrood_StateLand; 2 of 6 bytes used at runtime; read by SmallBrood_StateLand; jt[579] used by SmallBrood_Init_Case1
 	incrom	$0840E0,$6
 	include "src/f/0840E6.asm"
-	incrom	$0840EE,$10
 Tbl_SmallBrood_vtable:	; class descriptor of SMALLBROOD: word name offset $86, parent BIONPC, 32 method slots from +6, then the name (tools/classes.py)
 	incrom	$0840FE,$91
 Pad_SmallBrood:	; $00 fill; never read in the corpus; between SmallBrood_ScrStepWalk and SmallBrood_GetSize
@@ -1995,7 +1992,6 @@ Tbl_BroodBossActClaw:	; table read by BroodBoss_ActClaw; 2 of 2 bytes used at ru
 	incrom	$088A54,$2
 	include "src/f/088A56.asm"
 	include "src/f/088A9A.asm"
-	incrom	$088AE2,$24
 Tbl_BroodClawCamApply:	; table read by CloneA5_CamApply; 9 of A bytes used at runtime; read by CloneA5_CamApply; jt[660] used by BroodClaw_Swing
 	incrom	$088B06,$A
 Tbl_BroodBossCamApply:	; table read by CloneA5_CamApply; D of E bytes used at runtime; read by CloneA5_CamApply; jt[661] used by BroodBoss_StateCharge, BroodBoss_StateChargeWall
@@ -2065,7 +2061,6 @@ Tbl_EvilMaker_vtable:	; class descriptor of EVILMAKER: word name offset $6E, par
 Tbl_EvilMakerAiScript:	; data handed to AiScript_Set (format not established); never read in the corpus; jt[697] used by EvilMaker_Init -> AiScript_Set
 	incrom	$094C24,$2
 	include "src/f/094C26.asm"
-	incrom	$094C2A,$58
 	include "src/f/094C82.asm"
 	include "src/f/094C90.asm"
 	include "src/f/094CDA.asm"
@@ -2668,11 +2663,9 @@ Tbl_BrainChildAnim2:	; animation script (NOTES: Animation scripts); never read i
 Tbl_BrainBabyBioActPlayAnimC:	; table read by BabyBio_ActPlayAnimC; 2 of 2 bytes used at runtime; read by BabyBio_ActPlayAnimC; jt[944] used by BrainBabyBio_Init
 	incrom	$0B7CD8,$2
 	include "src/f/0B7CDA.asm"
-	incrom	$0B7CE6,$8
 Tbl_ChildShipActDropRocket:	; table read by ChildShip_ActDropRocket; 2 of 2 bytes used at runtime; read by ChildShip_ActDropRocket; jt[945] used by ChildShip_Init
 	incrom	$0B7CEE,$2
 	include "src/f/0B7CF0.asm"
-	incrom	$0B7CF4,$14
 Tbl_BrainChildStateLand:	; table read by BrainChild_StateLand; 2 of E bytes used at runtime; read by BrainChild_StateLand; jt[946] used by BrainChild_Init
 	incrom	$0B7D08,$E
 Tbl_ChildShipShakeStep:	; table read by Cam_ShakeStep; 13 of 14 bytes used at runtime; read by Cam_ShakeStep; jt[947] used by ChildShip_StateCrash1, ChildShip_StateCrash2, ChildShip_StateCrash3
@@ -2709,10 +2702,12 @@ Tbl_ChildShipAnim:	; animation script (byte flags, byte steps, ..., 2-byte steps
 	incrom	$0B7E0A,$8
 Tbl_SavageMediumBioAiScript:	; data handed to AiScript_Set (format not established); never read in the corpus; jt[963] used by SavageMediumBio_Init -> AiScript_Set
 	incrom	$0B7E12,$1A
+Tbl_SavageBioActCrossIfUp:	; table read by SavageBio_ActCrossIfUp; 2 of 2 bytes used at runtime; read by SavageBio_ActCrossIfUp; jt[964] used by SavageBio_StateDying
 	incrom	$0B7E2C,$2
 	include "src/f/0B7E2E.asm"
 Tbl_SavageBigBioAiScript_0B7E46:	; word $0000 (2 bytes), not a string: reached only via jt[965] used by SavageBigBio_Init -> AiScript_Set (e.g. an empty list/script count)
 	incrom	$0B7E46,$1
+Tbl_SavageBioActFrame4F:	; table read by SavageBio_ActFrame4F; 1 of 1 bytes used at runtime; read by SavageBio_ActFrame4F
 	incrom	$0B7E47,$1
 	include "src/f/0B7E48.asm"
 Tbl_SavageBioAiScript_0B7E54:	; word $0000 (2 bytes), not a string: reached only via jt[966] used by SavageBio_ActScript2052 -> AiScript_Set (e.g. an empty list/script count)
@@ -2720,7 +2715,6 @@ Tbl_SavageBioAiScript_0B7E54:	; word $0000 (2 bytes), not a string: reached only
 Tbl_SavageBioStateExtend10:	; table read by SavageBio_StateExtend10; 1 of 1 bytes used at runtime; read by SavageBio_StateExtend10
 	incrom	$0B7E55,$1
 	include "src/f/0B7E56.asm"
-	incrom	$0B7E82,$F4
 Tbl_SavageBioDraw:	; table read by SavageBigBio_Draw; 50 of 70 bytes used at runtime; read by SavageBigBio_Draw; jt[967] used by SavageBio_ActExtendShort
 	incrom	$0B7F76,$70
 Tbl_SavageBioActExtendTentacle:	; format not established; never read in the corpus; jt[968] used by SavageBio_ActExtendTentacle
@@ -2956,7 +2950,16 @@ Str_Empty_0BEECE:	; C string "" (used by SporeMine_InitPool)
 	include "src/f/0BF346.asm"
 	include "src/f/0BF390.asm"
 	include "src/f/0BF3DA.asm"
-	incrom	$0BF54E,$32
+Tbl_SporeMineUpdatePool:	; table read by SporeMine_UpdatePool; 6 of A bytes used at runtime; read by SporeMine_UpdatePool, SporeMine_RecIdle; jt[1069] used by SporeMine_RecIdle
+	incrom	$0BF54E,$A
+Tbl_SporeMineUpdatePool2:	; table read by SporeMine_UpdatePool; 6 of A bytes used at runtime; read by SporeMine_UpdatePool, SporeMine_RecArm1; jt[1070] used by SporeMine_RecArm1
+	incrom	$0BF558,$A
+Tbl_SporeMineUpdatePool3:	; table read by SporeMine_UpdatePool; 6 of A bytes used at runtime; read by SporeMine_UpdatePool, SporeMine_RecArm2; jt[1071] used by SporeMine_RecArm2
+	incrom	$0BF562,$A
+Tbl_SporeMineUpdatePool4:	; table read by SporeMine_UpdatePool; 6 of A bytes used at runtime; read by SporeMine_UpdatePool, SporeMine_RecArm3; jt[1072] used by SporeMine_RecArm3
+	incrom	$0BF56C,$A
+Tbl_SporeMineUpdatePool5:	; table read by SporeMine_UpdatePool; 6 of A bytes used at runtime; read by SporeMine_UpdatePool, SporeMine_RecArm4; jt[1073] used by SporeMine_RecArm4
+	incrom	$0BF576,$A
 Tbl_SporeMine_vtable:	; class descriptor of SPOREMINE: word name offset $6E, parent ACTOR, 26 method slots from +6, then the name (tools/classes.py)
 	incrom	$0BF580,$78
 	include "src/f/0BF5F8.asm"
@@ -3004,7 +3007,16 @@ Pad_SwampBubbles:	; $00 fill; never read in the corpus; between SwampBubbles_Dea
 	include "src/f/0BFF8C.asm"
 Tbl_SwampPlatform_vtable:	; class descriptor of SWAMPPLATFORM: word name offset $6E, parent ACTOR, 26 method slots from +6, then the name (tools/classes.py)
 	incrom	$0C005A,$7C
-	incrom	$0C00D6,$882
+Tbl_SwampFlyStateFly:	; table read by SwampFly_StateFly; 114 of 23C bytes used at runtime; read by SwampFly_StateFly; jt[1101] used by SwampFly_StatePickPath_Default
+	incrom	$0C00D6,$23C
+Tbl_SwampFlyStateFly2:	; table read by SwampFly_StateFly; 24 of 1FA bytes used at runtime; read by SwampFly_StateFly; jt[1102] used by SwampFly_StatePickPath_Case1
+	incrom	$0C0312,$1FA
+Tbl_SwampFlyStateFly3:	; table read by SwampFly_StateFly; 6 of 13E bytes used at runtime; read by SwampFly_StateFly, SwampFly_StatePickPath_Start; jt[1103] used by SwampFly_StatePickPath_Case1
+	incrom	$0C050C,$13E
+Tbl_SwampFlyStateFly4:	; table read by SwampFly_StateFly; 2A of 13E bytes used at runtime; read by SwampFly_StateFly; jt[1104] used by SwampFly_StatePickPath_Case1
+	incrom	$0C064A,$13E
+Tbl_SwampFlyStateFly5:	; table read by SwampFly_StateFly; 22 of 1D0 bytes used at runtime; read by SwampFly_StateFly; jt[1105] used by SwampFly_StatePickPath_Case1
+	incrom	$0C0788,$1D0
 Tbl_SwampPlatform:	; format not established; never read in the corpus; jt[1106] used by SwampFly_StatePickPath_Case5
 	incrom	$0C0958,$2
 	include "src/f/0C095A.asm"
@@ -3973,7 +3985,6 @@ Tbl_BabyBioMove2:	; table read by BabyBio_Move; 122 of 124 bytes used at runtime
 Tbl_BabySentinelAAiScript:	; data handed to AiScript_Set (format not established); never read in the corpus; jt[1528] used by BabySentinelA_Init -> AiScript_Set
 	incrom	$11B4E4,$2
 	include "src/f/11B4E6.asm"
-	incrom	$11B4EA,$1C
 Tbl_BabySentinelBActWaitPlayerNear192:	; table read by BabyBio_ActWaitPlayerNear192; 2 of 2 bytes used at runtime; read by BabyBio_ActWaitPlayerNear192; jt[1529] used by BabySentinelB_Init
 	incrom	$11B506,$2
 	include "src/f/11B508.asm"
@@ -3989,7 +4000,6 @@ Tbl_BabySentinelCAiScript_11B55E:	; word $0000 (2 bytes), not a string: reached 
 Tbl_BabySentinelBWaitCrawlLimit:	; table read by BabyBio_WaitCrawlLimit; 1 of 1 bytes used at runtime; read by BabyBio_WaitCrawlLimit
 	incrom	$11B55F,$1
 	include "src/f/11B560.asm"
-	incrom	$11B574,$1C
 Tbl_BabySentinelCAiScript:	; data handed to AiScript_Set (format not established); never read in the corpus; jt[1532] used by BabySentinelC_Init -> AiScript_Set
 	incrom	$11B590,$2E
 Tbl_BabyMoleManActPlayAnimC:	; table read by BabyBio_ActPlayAnimC; 2 of 2 bytes used at runtime; read by BabyBio_ActPlayAnimC; jt[1533] used by BabyMoleMan_Init_Default
@@ -4007,7 +4017,6 @@ Tbl_BabyMoleManAiScript3:	; data handed to AiScript_Set (format not established)
 Tbl_FloatBioActNext:	; table read by BabyBio_ActNext; 2 of 2 bytes used at runtime; read by BabyBio_ActNext; jt[1538] used by FloatBio_Init_Case0
 	incrom	$11B630,$2
 	include "src/f/11B632.asm"
-	incrom	$11B656,$4
 Tbl_FloatBioActFacePlayer:	; table read by BabyBio_ActFacePlayer; 2 of 2 bytes used at runtime; read by BabyBio_ActFacePlayer; jt[1539] used by FloatBio_Init_Case1
 	incrom	$11B65A,$2
 	include "src/f/11B65C.asm"
@@ -4022,7 +4031,6 @@ Tbl_FloatBioAiScript_11B686:	; word $0000 (2 bytes), not a string: reached only 
 Tbl_FloatBioActPlayAnimC2:	; table read by BabyBio_ActPlayAnimC; 1 of 1 bytes used at runtime; read by BabyBio_ActPlayAnimC
 	incrom	$11B687,$1
 	include "src/f/11B688.asm"
-	incrom	$11B698,$8
 Tbl_WallCrawlBioActStopFrame11:	; table read by WallCrawlBio_ActStopFrame11; 2 of 2 bytes used at runtime; read by WallCrawlBio_ActStopFrame11; jt[1542] used by WallCrawlBio_Init
 	incrom	$11B6A0,$2
 	include "src/f/11B6A2.asm"
@@ -4243,7 +4251,6 @@ Tbl_BigBioDraw:	; table read by BigBio_Draw; 80 of 80 bytes used at runtime; rea
 Tbl_Draw_120826:	; table read by BigBio_Draw; 2 of 2 bytes used at runtime; read by BigBio_Draw, BigBio_StateWaitPlayers, BigBio_TakeDamage; jt[1681] used by BigBio_StartScript
 	incrom	$120826,$2
 	include "src/f/120828.asm"
-	incrom	$120830,$38
 	include "src/f/120868.asm"
 	include "src/f/120876.asm"
 	include "src/f/120936.asm"
@@ -4405,20 +4412,24 @@ Tbl_AiScript_1343A8:	; data handed to AiScript_Set (format not established); nev
 	incrom	$1343A8,$54
 Tbl_1343FC:	; format not established; never read in the corpus; jt[1752] used by FlyBrood_StateSwoopPatrol
 	incrom	$1343FC,$5C
+Tbl_FlyBroodMovePath:	; table read by FlyBrood_MovePath; 7E of 80 bytes used at runtime; read by FlyBrood_MovePath; jt[1753] used by FlyBrood_ActHover90, FlyBrood_ActHoverForever, FlyBrood_ActHoverUntilNear
 	incrom	$134458,$80
 Tbl_AiScript_1344D8:	; data handed to AiScript_Set (format not established); never read in the corpus; jt[1754] used by FlyBrood_Init_Case0 -> AiScript_Set
 	incrom	$1344D8,$2
 	include "src/f/1344DA.asm"
 Tbl_FlyBroodAiScript_1344DE:	; word $0000 (2 bytes), not a string: reached only via jt[1755] used by FlyBrood_Init_Case1 -> AiScript_Set (e.g. an empty list/script count)
 	incrom	$1344DE,$1
+Tbl_FlyBroodStateWaitPlayerInRange:	; table read by FlyBrood_StateWaitPlayerInRange; 1 of 1 bytes used at runtime; read by FlyBrood_StateWaitPlayerInRange
 	incrom	$1344DF,$1
 	include "src/f/1344E0.asm"
 Tbl_FlyBroodAiScript_1344E8:	; word $0000 (2 bytes), not a string: reached only via jt[1756] used by FlyBrood_Init_Case1 -> AiScript_Set (e.g. an empty list/script count)
 	incrom	$1344E8,$1
+Tbl_FlyBroodStateWaitPlayerInRange2:	; table read by FlyBrood_StateWaitPlayerInRange; 1 of 1 bytes used at runtime; read by FlyBrood_StateWaitPlayerInRange
 	incrom	$1344E9,$1
 	include "src/f/1344EA.asm"
 Tbl_FlyBroodAiScript_1344F2:	; word $0000 (2 bytes), not a string: reached only via jt[1757] used by FlyBrood_Init_Case1 -> AiScript_Set (e.g. an empty list/script count)
 	incrom	$1344F2,$1
+Tbl_FlyBroodStateWaitPlayerInRange3:	; table read by FlyBrood_StateWaitPlayerInRange; 1 of 1 bytes used at runtime; read by FlyBrood_StateWaitPlayerInRange
 	incrom	$1344F3,$1
 	include "src/f/1344F4.asm"
 Tbl_FlyBroodAiScript:	; data handed to AiScript_Set (format not established); never read in the corpus; jt[1758] used by FlyBrood_Init_Case4 -> AiScript_Set
@@ -5962,7 +5973,10 @@ Tbl_A5WorldInfo:	; 20 bytes: longs $3CE6 (size of the A5 globals area below $200
 	include "src/f/1F48AA.asm"
 	incrom	$1F48F6,$A
 	include "src/f/1F4900.asm"
-	incrom	$1F4956,$C4
+	incrom	$1F4956,$A
+Tbl_AvalonA3New:	; table read by Cam_New; 30 of 46 bytes used at runtime; read by Cam_New, Cam_Init, SiberiaB1_InitWind; jt[2483] used by AvalonA3_InitCamera, AvalonA4_InitCamera, AvalonB1_InitCamera
+	incrom	$1F4960,$46
+	incrom	$1F49A6,$74
 	include "src/f/1F4A1A.asm"
 	include "src/f/1F4A40.asm"
 	include "src/f/1F4BA2.asm"

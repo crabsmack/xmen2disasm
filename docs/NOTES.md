@@ -380,6 +380,217 @@ the emulator reader logs (`emu/coverage/*.readers.txt.gz`) show each span read o
 
 _(remaining unlabelled, never-read spans: `$XXXXXX-$YYYYYY` - what was tried)_
 
+<!-- unknowns.py: generated below, do not edit by hand -->
+
+None of these was read or DMA'd anywhere in the 75-run corpus, and no jump-table entry or numeric code operand points into them (checked by tools/dataitems.py / autolabel.py). Most are a few bytes between functions: alignment padding or the tails of tables whose start is labelled. Regenerate with `uv run tools/unknowns.py`.
+
+- `$0119FF-$011A00` (1 B) after BigAcolyte_IntroScript, before BigAcolyte_FightScript: `14`
+- `$011A50-$011A52` (2 B) after BigAcolyte_FightScript, before CapedAcolyte_GetSize: `00 12`
+- `$011A56-$011A76` (32 B) after BigAcolyte_FightScript, before CapedAcolyte_GetSize: `06 c6 00 00 02 20 06 02`
+- `$0228E2-$022958` (118 B) after AvalonA2_DisabledFrameEffect, before AvalonA2_DisabledFrameEffect_exit: `3b 7c 06 64 c6 98 3b 7c`; decodes as code (`move.w #$664, -$3968(a5)` ...) but nothing references it: dead code?
+- `$02CE92-$02CE94` (2 B) after Exodus_NextPattern, before Exodus_NextPattern_part1: `60 62`
+- `$035AFF-$035B00` (1 B) after AvalonA4_RunScene, before MagnetoBoss_GetSize: `0c`
+- `$03653A-$03653E` (4 B) after MagnetoBoss_Move, before loc_03653E: `60 00 01 aa`; decodes as code (`bra.w $366e6` ...) but nothing references it: dead code?
+- `$03A582-$03A584` (2 B) after BanimazaDoor_Draw, before loc_03A584: `60 30`
+- `$04B2CC-$04B2CE` (2 B) after loc_04B1C2, before Apocalypse_GetSize: `ff ff` all $FF
+- `$04B2DC-$04B2DE` (2 B) after loc_04B1C2, before Apocalypse_GetSize: `ff ff` all $FF
+- `$04B2F0-$04B2F2` (2 B) after loc_04B1C2, before Apocalypse_GetSize: `ff ff` all $FF
+- `$04B304-$04B306` (2 B) after loc_04B1C2, before Apocalypse_GetSize: `ff ff` all $FF
+- `$04B318-$04B31A` (2 B) after loc_04B1C2, before Apocalypse_GetSize: `ff ff` all $FF
+- `$04B334-$04B336` (2 B) after loc_04B1C2, before Apocalypse_GetSize: `ff ff` all $FF
+- `$063BFF-$063C06` (7 B) after loc_05E038, before Cerebro_BigSpriteDecode: `01 04 02 02 08 20 ff`
+- `$063C11-$063C22` (17 B) after loc_05E038, before Cerebro_BigSpriteDecode: `04 01 01 08 08 10 ff 01`
+- `$081BB9-$081BBA` (1 B) after sub_077CBC, before CloneA2_EmptyStub1: `64`
+- `$088B96-$088B9A` (4 B) after BroodBoss_ScrStepScream, before EvilMaker_GetSize: `00 00 00 00` all $00
+- `$096D30-$096D36` (6 B) after XClone_StateChildHome, before XClone_StateChildHome_Step: `02 6b fb ff 00 98`
+- `$0AB3A2-$0AB3A4` (2 B) after BubbleManager_SetWaveParams, before BubbleManager_SetWaveParams_Case1: `60 72`
+- `$0EAEFD-$0EAEFE` (1 B) after Hologram_VBlankFlicker, before Hologram_ScriptIntro: `01`
+- `$0EB00A-$0EB00E` (4 B) after Hologram_ScriptAttack, before CoreShields_EmptyStub: `00 00 00 00` all $00
+- `$0EC0A8-$0EC0AC` (4 B) after CoreZap_Update, before CoreElevator_EmptyStub: `00 00 00 00` all $00
+- `$112182-$112186` (4 B) after Deathbird_Move, before Deathbird_Move_Polar: `60 00 01 ac`; decodes as code (`bra.w $112330` ...) but nothing references it: dead code?
+- `$11E7A2-$11E7A6` (4 B) after BioBalls_ScriptIdle, before BioBalls_GetSize: `00 00 00 00` all $00
+- `$1342BC-$1342C0` (4 B) after FireWall_EmptyStub, before FlyBrood_ScriptA: `00 00 00 00` all $00
+- `$1342FC-$134300` (4 B) after FireWall_EmptyStub, before FlyBrood_ScriptA: `00 00 00 00` all $00
+- `$13435C-$134360` (4 B) after FireWall_EmptyStub, before FlyBrood_ScriptA: `00 00 00 00` all $00
+- `$1364AA-$1364AC` (2 B) after FlyBrood_StateHit, before Hornet_GetSize: `00 7f`
+- `$13AF92-$13AFA1` (15 B) after sub_13ADA6, before Ninja_GetSize: `00 00 00 00 00 01 00 02`
+- `$13AFA4-$13AFB3` (15 B) after sub_13ADA6, before Ninja_GetSize: `00 00 00 00 00 01 00 02`
+- `$13AFB6-$13AFC5` (15 B) after sub_13ADA6, before Ninja_GetSize: `00 00 00 00 00 01 00 02`
+- `$13AFC8-$13AFD6` (14 B) after sub_13ADA6, before Ninja_GetSize: `00 00 00 00 00 01 00 02`
+- `$13D8BE-$13D8C2` (4 B) after sub_13D7F6, before loc_13D8C2: `4e ed 3a 62`; decodes as code (`jmp $3a62(a5)` ...) but nothing references it: dead code?
+- `$13F300-$13F304` (4 B) after sub_13F282, before sub_13F474: `00 ff 00 00`
+- `$13F308-$13F30C` (4 B) after sub_13F282, before sub_13F474: `00 ff 00 00`
+- `$13F310-$13F314` (4 B) after sub_13F282, before sub_13F474: `00 ff 00 00`
+- `$13F318-$13F31C` (4 B) after sub_13F282, before sub_13F474: `00 ff 00 00`
+- `$13F320-$13F324` (4 B) after sub_13F282, before sub_13F474: `00 ff 00 00`
+- `$13F326-$13F32C` (6 B) after sub_13F282, before sub_13F474: `0f ff 0f ff 0f ff`
+- `$13F330-$13F334` (4 B) after sub_13F282, before sub_13F474: `00 ff 00 00`
+- `$13F338-$13F33C` (4 B) after sub_13F282, before sub_13F474: `00 ff 00 00`
+- `$13F340-$13F344` (4 B) after sub_13F282, before sub_13F474: `00 ff 00 00`
+- `$13F348-$13F34C` (4 B) after sub_13F282, before sub_13F474: `00 ff 00 00`
+- `$13F350-$13F354` (4 B) after sub_13F282, before sub_13F474: `00 ff 00 00`
+- `$13F358-$13F35C` (4 B) after sub_13F282, before sub_13F474: `00 ff 00 00`
+- `$13F360-$13F364` (4 B) after sub_13F282, before sub_13F474: `00 ff 00 00`
+- `$13F366-$13F368` (2 B) after sub_13F282, before sub_13F474: `0f ff`
+- `$13F46C-$13F470` (4 B) after sub_13F282, before sub_13F474: `00 00 00 00` all $00
+- `$1420DE-$1420E0` (2 B) after sub_14205E, before loc_14221E: `00 82`
+- `$1420E4-$1420F0` (12 B) after sub_14205E, before loc_14221E: `00 14 16 c0 00 15 d9 3a`
+- `$1420F4-$142124` (48 B) after sub_14205E, before loc_14221E: `00 15 e3 d4 00 15 e5 5a`
+- `$142128-$142166` (62 B) after sub_14205E, before loc_14221E: `00 15 e7 fa 00 14 18 fa`
+- `$144FEE-$144FF2` (4 B) after sub_144D88, before sub_157BA6: `00 00 00 00` all $00
+- `$159AB4-$159AB6` (2 B) after sub_159A46, before sub_159ECC: `00 6e`
+- `$159ABA-$159AC2` (8 B) after sub_159A46, before sub_159ECC: `00 15 7b a6 00 15 d9 3a`
+- `$159ACA-$159ACE` (4 B) after sub_159A46, before sub_159ECC: `00 15 e3 d4`
+- `$159AD2-$159AD6` (4 B) after sub_159A46, before sub_159ECC: `00 15 e4 52`
+- `$159ADA-$159AF2` (24 B) after sub_159A46, before sub_159ECC: `00 15 e6 80 00 15 db 26`
+- `$159B0E-$159B2E` (32 B) after sub_159A46, before sub_159ECC: `00 15 d9 70 00 15 d9 78`
+- `$159B32-$159B3A` (8 B) after sub_159A46, before sub_159ECC: `00 15 7b b4 00 15 d9 3a`
+- `$159B42-$159B46` (4 B) after sub_159A46, before sub_159ECC: `00 15 e3 d4`
+- `$159B4A-$159B6A` (32 B) after sub_159A46, before sub_159ECC: `00 15 e4 52 00 15 e6 30`
+- `$159B86-$159BA8` (34 B) after sub_159A46, before sub_159ECC: `00 15 d9 70 00 15 d9 78`
+- `$159C85-$159C86` (1 B) after sub_159A46, before sub_159ECC: `ff` all $FF
+- `$159CFB-$159CFC` (1 B) after sub_159A46, before sub_159ECC: `ff` all $FF
+- `$159D83-$159D84` (1 B) after sub_159A46, before sub_159ECC: `ff` all $FF
+- `$159EA5-$159ECC` (39 B) after sub_159A46, before sub_159ECC: `ff 0a 06 05 16 0b 06 08`
+- `$15C23E-$15C246` (8 B) after Math_LDivS_68000, before Math_LModS: `22 2f 00 04 20 2f 00 08`
+- `$15C254-$15C25C` (8 B) after Math_LModS_68000, before Math_DivModS: `4c 41 08 01 c3 40 4e 75`; decodes as code (`dc.w $4c41` ...) but nothing references it: dead code?
+- `$15C28E-$15C2AC` (30 B) after Math_DivModS, before Math_DivModU: `22 2f 00 04 20 2f 00 08`; decodes as code (`move.l $4(a7), d1` ...) but nothing references it: dead code?
+- `$15F720-$15F740` (32 B) after Eni_ReadInline, before Anim_Advance: `00 01 00 03 00 07 00 0f`
+- `$182A17-$182A19` (2 B) after Cam_DefaultUpdate, before sub_182AE6: `04 04`
+- `$182A1C-$182A1D` (1 B) after Cam_DefaultUpdate, before sub_182AE6: `08`
+- `$182A20-$182A22` (2 B) after Cam_DefaultUpdate, before sub_182AE6: `00 00` all $00
+- `$182A2C-$182A2E` (2 B) after Cam_DefaultUpdate, before sub_182AE6: `00 00` all $00
+- `$182A3B-$182A3C` (1 B) after Cam_DefaultUpdate, before sub_182AE6: `00` all $00
+- `$182A3F-$182A42` (3 B) after Cam_DefaultUpdate, before sub_182AE6: `0d 83 06`
+- `$182A45-$182A46` (1 B) after Cam_DefaultUpdate, before sub_182AE6: `00` all $00
+- `$182A4A-$182A4C` (2 B) after Cam_DefaultUpdate, before sub_182AE6: `ff 86`
+- `$182A56-$182A58` (2 B) after Cam_DefaultUpdate, before sub_182AE6: `ff 0a`
+- `$182A60-$182A74` (20 B) after Cam_DefaultUpdate, before sub_182AE6: `ff 36 00 00 00 00 00 00`
+- `$1964F6-$1964F7` (1 B) after Beast_SelectFrame, before sub_196552: `02`
+- `$1964FA-$1964FB` (1 B) after Beast_SelectFrame, before sub_196552: `02`
+- `$1964FE-$196500` (2 B) after Beast_SelectFrame, before sub_196552: `00 00` all $00
+- `$196519-$19651A` (1 B) after Beast_SelectFrame, before sub_196552: `00` all $00
+- `$19651F-$196520` (1 B) after Beast_SelectFrame, before sub_196552: `06`
+- `$196523-$196524` (1 B) after Beast_SelectFrame, before sub_196552: `00` all $00
+- `$196528-$19652A` (2 B) after Beast_SelectFrame, before sub_196552: `ff a2`
+- `$196534-$196536` (2 B) after Beast_SelectFrame, before sub_196552: `fe 9c`
+- `$19653E-$196540` (2 B) after Beast_SelectFrame, before sub_196552: `fe c8`
+- `$19654D-$196552` (5 B) after Beast_SelectFrame, before sub_196552: `00 ff ee ff f6`
+- `$1A6182-$1A6183` (1 B) after sub_1A60B6, before sub_1A61DE: `01`
+- `$1A6186-$1A6187` (1 B) after sub_1A60B6, before sub_1A61DE: `01`
+- `$1A618A-$1A618C` (2 B) after sub_1A60B6, before sub_1A61DE: `00 00` all $00
+- `$1A61A5-$1A61A6` (1 B) after sub_1A60B6, before sub_1A61DE: `00` all $00
+- `$1A61AB-$1A61AC` (1 B) after sub_1A60B6, before sub_1A61DE: `06`
+- `$1A61AF-$1A61B0` (1 B) after sub_1A60B6, before sub_1A61DE: `00` all $00
+- `$1A61B4-$1A61B6` (2 B) after sub_1A60B6, before sub_1A61DE: `fe e0`
+- `$1A61C0-$1A61C2` (2 B) after sub_1A60B6, before sub_1A61DE: `fd a2`
+- `$1A61D9-$1A61DA` (1 B) after sub_1A60B6, before sub_1A61DE: `00` all $00
+- `$1A6A40-$1A6A52` (18 B) after sub_1A65EC, before loc_1A6A52: `42 6c 00 6c 41 fa fb a6`
+- `$1B9004-$1B9005` (1 B) after Nightcrawler_SelectFrame, before sub_1B9060: `00` all $00
+- `$1B9008-$1B9009` (1 B) after Nightcrawler_SelectFrame, before sub_1B9060: `00` all $00
+- `$1B900C-$1B900E` (2 B) after Nightcrawler_SelectFrame, before sub_1B9060: `00 00` all $00
+- `$1B9018-$1B901A` (2 B) after Nightcrawler_SelectFrame, before sub_1B9060: `01 00`
+- `$1B9027-$1B9028` (1 B) after Nightcrawler_SelectFrame, before sub_1B9060: `00` all $00
+- `$1B902B-$1B902E` (3 B) after Nightcrawler_SelectFrame, before sub_1B9060: `13 09 00`
+- `$1B9031-$1B9032` (1 B) after Nightcrawler_SelectFrame, before sub_1B9060: `00` all $00
+- `$1B9034-$1B9036` (2 B) after Nightcrawler_SelectFrame, before sub_1B9060: `ff 7e`
+- `$1B9042-$1B9044` (2 B) after Nightcrawler_SelectFrame, before sub_1B9060: `fe 66`
+- `$1B904C-$1B9050` (4 B) after Nightcrawler_SelectFrame, before sub_1B9060: `fe 9e fe b4`
+- `$1B9054-$1B9060` (12 B) after Nightcrawler_SelectFrame, before sub_1B9060: `04 52 02 42 00 80 c1 00`
+- `$1CD99E-$1CD99F` (1 B) after Psylocke_SelectFrame, before sub_1CDA3A: `02`
+- `$1CD9A2-$1CD9A3` (1 B) after Psylocke_SelectFrame, before sub_1CDA3A: `02`
+- `$1CD9A6-$1CD9A8` (2 B) after Psylocke_SelectFrame, before sub_1CDA3A: `00 00` all $00
+- `$1CD9BE-$1CD9BF` (1 B) after Psylocke_SelectFrame, before sub_1CDA3A: `0f`
+- `$1CD9C1-$1CD9C2` (1 B) after Psylocke_SelectFrame, before sub_1CDA3A: `00` all $00
+- `$1CD9C7-$1CD9C9` (2 B) after Psylocke_SelectFrame, before sub_1CDA3A: `00 7f`
+- `$1CD9CB-$1CD9DA` (15 B) after Psylocke_SelectFrame, before sub_1CDA3A: `00 00 00 00 00 00 00 00` all $00
+- `$1CD9DC-$1CD9DE` (2 B) after Psylocke_SelectFrame, before sub_1CDA3A: `fd 34`
+- `$1CD9E4-$1CD9FA` (22 B) after Psylocke_SelectFrame, before sub_1CDA3A: `fe c2 fd 7e 00 00 00 00`
+- `$1CEE66-$1CEE68` (2 B) after sub_1CEC42, before sub_1CEF6E: `02 02`
+- `$1CEE6A-$1CEE6C` (2 B) after sub_1CEC42, before sub_1CEF6E: `02 02`
+- `$1CEE6E-$1CEE70` (2 B) after sub_1CEC42, before sub_1CEF6E: `00 00` all $00
+- `$1CEE7A-$1CEE7C` (2 B) after sub_1CEC42, before sub_1CEF6E: `00 00` all $00
+- `$1CEE89-$1CEE90` (7 B) after sub_1CEC42, before sub_1CEF6E: `00 1b 58 16 1d 17 06`
+- `$1CEE93-$1CEE94` (1 B) after sub_1CEC42, before sub_1CEF6E: `00` all $00
+- `$1CEE98-$1CEE9A` (2 B) after sub_1CEC42, before sub_1CEF6E: `fe b6`
+- `$1CEEA4-$1CEEA6` (2 B) after sub_1CEC42, before sub_1CEF6E: `fd e6`
+- `$1CEEA8-$1CEEAA` (2 B) after sub_1CEC42, before sub_1CEF6E: `fe 0a`
+- `$1CEEAC-$1CEEE2` (54 B) after sub_1CEC42, before sub_1CEF6E: `fe 0a fe 26 00 00 00 00`
+- `$1CEEEE-$1CEF02` (20 B) after sub_1CEC42, before sub_1CEF6E: `00 00 00 00 00 01 00 03`
+- `$1CEF0E-$1CEF32` (36 B) after sub_1CEC42, before sub_1CEF6E: `00 00 00 00 00 00 00 01`
+- `$1CEF3E-$1CEF6E` (48 B) after sub_1CEC42, before sub_1CEF6E: `00 00 00 00 00 01 00 03`
+- `$1E16CC-$1E16D4` (8 B) after loc_1E16BC, before loc_1E16D4: `70 00 72 14 74 14 60 0e`; decodes as code (`moveq #$0, d0` ...) but nothing references it: dead code?
+- `$1E1768-$1E176E` (6 B) after loc_1E16D4, before loc_1E176E: `3c 04 7e ff 60 04`; decodes as code (`move.w d4, d6` ...) but nothing references it: dead code?
+- `$1E1906-$1E1908` (2 B) after loc_1E177A, before loc_1E1916: `fd ca`
+- `$1E190E-$1E1912` (4 B) after loc_1E177A, before loc_1E1916: `fe 5c fe 5c`
+- `$1E1CFA-$1E1D04` (10 B) after sub_1E1928, before sub_1E2AB0: `00 02 00 01 00 00 00 3c`
+- `$1E1D08-$1E1D0A` (2 B) after sub_1E1928, before sub_1E2AB0: `00 00` all $00
+- `$1E1D10-$1E1D12` (2 B) after sub_1E1928, before sub_1E2AB0: `00 00` all $00
+- `$1E1D16-$1E1D1E` (8 B) after sub_1E1928, before sub_1E2AB0: `02 01 00 06 00 00 00 24`
+- `$1E1D3E-$1E1D46` (8 B) after sub_1E1928, before sub_1E2AB0: `ff ff ff ff ff ff ff ff` all $FF
+- `$1E1D66-$1E1D6E` (8 B) after sub_1E1928, before sub_1E2AB0: `ff ff ff ff ff ff ff ff` all $FF
+- `$1E1D9E-$1E1DA6` (8 B) after sub_1E1928, before sub_1E2AB0: `ff ff ff ff ff ff ff ff` all $FF
+- `$1E1DDE-$1E1EA6` (200 B) after sub_1E1928, before sub_1E2AB0: `ff ff ff ff ff ff ff ff`
+- `$1E1EEE-$1E20B6` (456 B) after sub_1E1928, before sub_1E2AB0: `ff ff ff ff ff ff ff ff`
+- `$1E212E-$1E21E6` (184 B) after sub_1E1928, before sub_1E2AB0: `00 62 ff 8f 05 8a 00 11`
+- `$1E221E-$1E22EE` (208 B) after sub_1E1928, before sub_1E2AB0: `00 51 00 4f 13 35 00 08`
+- `$1E236E-$1E237E` (16 B) after sub_1E1928, before sub_1E2AB0: `ff ff ff ff ff ff ff ff` all $FF
+- `$1E2386-$1E238A` (4 B) after sub_1E1928, before sub_1E2AB0: `29 09 f8 00`
+- `$1E238C-$1E2398` (12 B) after sub_1E1928, before sub_1E2AB0: `00 00 ff fd 00 d7 00 03`
+- `$1E23A0-$1E23A4` (4 B) after sub_1E1928, before sub_1E2AB0: `29 09 f8 00`
+- `$1E23A6-$1E23D4` (46 B) after sub_1E1928, before sub_1E2AB0: `00 00 ff f8 00 dc 00 08`
+- `$1E23D8-$1E23F4` (28 B) after sub_1E1928, before sub_1E2AB0: `ff de 09 ad fa 94 fa c4`
+- `$1E23FC-$1E2400` (4 B) after sub_1E1928, before sub_1E2AB0: `2c 0c 00 08`
+- `$1E2402-$1E2432` (48 B) after sub_1E1928, before sub_1E2AB0: `ff f8 ff 7e 00 08 00 00`
+- `$1E2434-$1E2498` (100 B) after sub_1E1928, before sub_1E2AB0: `ff de 13 b1 fc 18 fc 78`
+- `$1E24A0-$1E24A4` (4 B) after sub_1E1928, before sub_1E2AB0: `2f 09 f8 08`
+- `$1E24A6-$1E255E` (184 B) after sub_1E1928, before sub_1E2AB0: `fe 00 fe 00 00 00 00 00`
+- `$1E2560-$1E2562` (2 B) after sub_1E1928, before sub_1E2AB0: `ff 9e`
+- `$1E256A-$1E256E` (4 B) after sub_1E1928, before sub_1E2AB0: `32 09 f8 f8`
+- `$1E2570-$1E25E6` (118 B) after sub_1E1928, before sub_1E2AB0: `fe 00 fe 00 00 00 00 00`
+- `$1E25EE-$1E25F2` (4 B) after sub_1E1928, before sub_1E2AB0: `32 09 f8 f8`
+- `$1E25F4-$1E2628` (52 B) after sub_1E1928, before sub_1E2AB0: `fe 00 fe 00 00 00 00 00`
+- `$1E262A-$1E262C` (2 B) after sub_1E1928, before sub_1E2AB0: `ff 7c`
+- `$1E262E-$1E2684` (86 B) after sub_1E1928, before sub_1E2AB0: `09 ca f9 30 f9 60 05 00`
+- `$1E26E0-$1E26E6` (6 B) after sub_1E1928, before sub_1E2AB0: `ff aa ff c4 ff de`
+- `$1E26EE-$1E26F2` (4 B) after sub_1E1928, before sub_1E2AB0: `38 09 f8 00`
+- `$1E26F4-$1E2734` (64 B) after sub_1E1928, before sub_1E2AB0: `00 00 ff fd 00 d2 00 03`
+- `$1E2736-$1E2788` (82 B) after sub_1E1928, before sub_1E2AB0: `ff cc ff e6 06 a8 f7 34`
+- `$1E2A54-$1E2A56` (2 B) after sub_1E1928, before sub_1E2AB0: `02 02`
+- `$1E2A58-$1E2A59` (1 B) after sub_1E1928, before sub_1E2AB0: `02`
+- `$1E2A5C-$1E2A5E` (2 B) after sub_1E1928, before sub_1E2AB0: `00 00` all $00
+- `$1E2A68-$1E2A6A` (2 B) after sub_1E1928, before sub_1E2AB0: `00 00` all $00
+- `$1E2A77-$1E2A7E` (7 B) after sub_1E1928, before sub_1E2AB0: `00 03 e8 0e 10 1f 08`
+- `$1E2A81-$1E2A82` (1 B) after sub_1E1928, before sub_1E2AB0: `00` all $00
+- `$1E2A86-$1E2A88` (2 B) after sub_1E1928, before sub_1E2AB0: `f2 c4`
+- `$1E2A92-$1E2A94` (2 B) after sub_1E1928, before sub_1E2AB0: `ef 66`
+- `$1E2A96-$1E2A98` (2 B) after sub_1E1928, before sub_1E2AB0: `f1 e2`
+- `$1E2A9C-$1E2AAC` (16 B) after sub_1E1928, before sub_1E2AB0: `f1 da 00 00 00 00 00 00`
+- `$1E2AAE-$1E2AB0` (2 B) after sub_1E1928, before sub_1E2AB0: `ff f4`
+- `$1F4880-$1F4890` (16 B) after Irq_HBlankVector, before unk_Sys_1F4890: `48 e7 e0 c0 20 78 02 18`
+- `$1F48F6-$1F4900` (10 B) after Mem_Copy, before Mem_Set: `86 6d 65 6d 63 70 79 00`
+- `$1F4956-$1F4960` (10 B) after Mem_Set, before sub_1F4A1A: `86 6d 65 6d 73 65 74 00`
+- `$1F49A6-$1F49B0` (10 B) after Mem_Set, before sub_1F4A1A: `00 6e 00 00 00 00 00 15`
+- `$1F49BC-$1F49C0` (4 B) after Mem_Set, before sub_1F4A1A: `00 15 e3 d4`
+- `$1F49C4-$1F49C8` (4 B) after Mem_Set, before sub_1F4A1A: `00 15 e4 52`
+- `$1F49D0-$1F49D8` (8 B) after Mem_Set, before sub_1F4A1A: `00 15 db 26 00 15 db 8e`
+- `$1F49FC-$1F4A1A` (30 B) after Mem_Set, before sub_1F4A1A: `00 15 e4 10 00 15 d9 70`
+- `$1F6E40-$1F6E42` (2 B) after sub_1F6D76, before loc_1F6E42: `60 78`
+- `$1F70A0-$1F70A4` (4 B) after Seg_ComputeObjPos, before loc_1F70A4: `60 00 01 46`; decodes as code (`bra.w $1f71e8` ...) but nothing references it: dead code?
+- `$1F729E-$1F72A0` (2 B) after sub_1F71F2, before loc_1F72A0: `60 56`
+- `$1F7682-$1F7686` (4 B) after sub_1F7628, before loc_1F7686: `60 00 02 b2`; decodes as code (`bra.w $1f7936` ...) but nothing references it: dead code?
+- `$1F7844-$1F7848` (4 B) after loc_1F76D6, before loc_1F7848: `60 00 00 84`; decodes as code (`bra.w $1f78ca` ...) but nothing references it: dead code?
+- `$1F895C-$1F89A4` (72 B) after loc_1F883A, before loc_1F89A4: `0c 2c 00 02 00 15 6c 00`; decodes as code (`cmpi.b #$2, $15(a4)` ...) but nothing references it: dead code?
+- `$1F8AF8-$1F8AFA` (2 B) after loc_1F8AEE, before sub_1F8B42: `fd 3e`
+- `$1F8B02-$1F8B1C` (26 B) after loc_1F8AEE, before sub_1F8B42: `ff d2 ff d2 ff d2 ff d2`
+- `$1F8B24-$1F8B26` (2 B) after loc_1F8AEE, before sub_1F8B42: `fe 52`
+- `$1F8B28-$1F8B2A` (2 B) after loc_1F8AEE, before sub_1F8B42: `fe 52`
+- `$1F8B32-$1F8B3A` (8 B) after loc_1F8AEE, before sub_1F8B42: `fe 64 ff d2 fd b4 fd 42`
+- `$1FE5B2-$1FE5B4` (2 B) after Snd_Stop, before unk_Snd_1FE5B4: `4e 71`
+- `$1FE5C4-$1FE5C6` (2 B) after unk_Snd_1FE5B4, before Snd_Pause: `4e 71`
+- `$1FE608-$1FE618` (16 B) after Snd_StopAll, before Snd_SendCmd2: `4e 71 4e ba fe aa 4a 2d`
+- `$1FE642-$1FE644` (2 B) after Snd_SetParam, before Snd_ReadDriverByte: `4e 71`
+
 ## Open questions
 
 - Exact compiler/version (matters for an optional C decomp phase).

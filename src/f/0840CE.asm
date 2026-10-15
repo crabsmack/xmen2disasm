@@ -5,3 +5,4 @@
 ; ---------------------------------------------------------------------------
 SmallBrood_ScrStepKamikaze:
 	jmp	$12C2(a5)	; -> SmallBrood_ActKamikaze
+	jmp	$12AA(a5)	; -> SmallBrood_ActShoot
