@@ -443,7 +443,7 @@ Tbl_YoyoAcolyteStats:	; XNPC stats record (8 bytes, object +$8C; layout at Tbl_C
 	incrom	$01CAA0,$8
 Art_YoyoAcolyteSpr:	; sprite definition (type $18, raw 4bpp tiles): $24-byte header, $14-byte frame records, pieces, tiles; 2180 of 2774 bytes used at runtime; read by VDP_FlushDmaQueue; DMA to VRAM $BA60-C760; jt[148] used by YoyoAcolyte_Init
 	incrom	$01CAA8,$2774
-Lvl_YoyoAcolyteSegs:	; floor-segment list (Seg_LoadList: 12/10-byte records until a 0 byte); 381 of 382 bytes used at runtime; read by Seg_LoadList, Nem_DecodeLoop, VDP_FlushDmaQueue; jt[149] used by YoyoAcolyte_ClassInit
+Art_YoyoAcolyteSpr2:	; floor-segment list (Seg_LoadList: 12/10-byte records until a 0 byte); 381 of 382 bytes used at runtime; read by Seg_LoadList, Nem_DecodeLoop, VDP_FlushDmaQueue; jt[149] used by YoyoAcolyte_ClassInit
 	incrom	$01F21C,$382
 Lvl_AvalonB2Segs:	; floor-segment list (Seg_LoadList: 12/10-byte records until a 0 byte); 29F of 2A0 bytes used at runtime; read by Seg_LoadList, Nem_DecodeLoop; jt[150] used by AvalonB2_RunScene
 	incrom	$01F59E,$2A0
@@ -531,7 +531,7 @@ Tbl_ZapperAnim:	; animation script (byte flags, byte steps, ..., 2-byte steps fr
 	incrom	$02746A,$A
 Tbl_ZapperAnim2:	; animation script (byte flags, byte steps, ..., 2-byte steps from +6); 8 of A bytes used at runtime; read by Anim_ApplyStep, Anim_AdvanceByDistance, Anim_Advance; jt[181] used by Zapper_StateLoopAnim1
 	incrom	$027474,$A
-Lvl_ZapperSegs:	; floor-segment list (Seg_LoadList: 12/10-byte records until a 0 byte); 8 of A bytes used at runtime; read by Seg_LoadList, Anim_ApplyStep, Anim_AdvanceByDistance; jt[182] used by Zapper_StateLoopAnim2
+Tbl_ZapperAnim3:	; floor-segment list (Seg_LoadList: 12/10-byte records until a 0 byte); 8 of A bytes used at runtime; read by Seg_LoadList, Anim_ApplyStep, Anim_AdvanceByDistance; jt[182] used by Zapper_StateLoopAnim2
 	incrom	$02747E,$A
 Lvl_AvalonA3Segs2:	; floor-segment list (Seg_LoadList: 12/10-byte records until a 0 byte); 9B of 9C bytes used at runtime; read by Seg_LoadList; jt[183] used by AvalonA3_LoadLevel
 	incrom	$027488,$9C
