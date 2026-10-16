@@ -255,10 +255,89 @@ MPW C 3.3 matching, what reproduces the ROM (also COMPILER.md):
 - A function that differs only by an A5 reference cc.py reports as `A5 -0x... -> jt None` uses
   a global the disassembly hasn't named: report the offset and what it holds; the
   orchestrator names it (`rename.py --global`) and it will match.
+- A loop that waits for a flag only an interrupt handler sets (`tst.b g_FrameTick(a5) / beq.s *`,
+  Level_FrameLoop and PlayerSelect_Run) is `while (!g_FrameTick) IRQ_WAIT();`: MPW compiles
+  nothing for `IRQ_WAIT()`, and on PC the frame-synchronous runner takes the V-int there
+  instead of spinning for ever.
 - **PC traps**: a discarded hardware read must be assigned (`r = IO_DATA(1);`): `(void)VDP_CTRL;`
   reads nothing on PC. A null pointer the 68000 dereferences (reading ROM at low addresses)
   crashes the host: add an `#ifndef XMEN2_MPW` branch reading what the 68000 read (e.g.
   `(SprDef *)Vectors` for a missing sprite definition).
+
+### Learned in round 8 (module groups 1-9: about 800 functions, all but ~20 matched)
+
+- **Bit tests**: `if (x & 1)` on a word, as the whole condition, = `move.w / btst #0`; inside
+  `&&`, or as `!(x & 1)`, it is `moveq #1 / and.w`: nest the ifs to get `btst`.
+  `(x & 0x9CC0) != 0` = zero-extend + `tst.l`. `(unsigned short)Rand_Next() & 1` =
+  `moveq / move.w / tst.l / btst`.
+- **Masks, constants**: `x & ~0x1FF` (a signed constant) = `and.w`; `x & 0xFE00` widens to
+  long. `0xFF & (a)` = `and.l #imm,d0` in place; `(a) & 0xFF` = `move.l #imm,d1 / and.l d0,d1`.
+  `mem | c` = `move.w #c,dN / or.w mem,dN`; `c | mem` = load, `ori.w`. Folding follows the
+  source's grouping: `c - 0x20 + K` is one `sub.w`, `c + K - 0x20` two. Zero offsets written
+  out (`tile + 0`, `sx - 0`) still copy through d0: the sign of a macro with per-piece offsets.
+- **?: and initializers**: a `?:` of constants that fit u8/u16 (`0x8000 : 0`) is zero-extended
+  as an assignment (`moveq #0 / move.b`; `tst.l` when used as a value), long work as an
+  initializer (`move.l #K`); a nested block of initializers lets statements come first.
+  `x = c ? 2 : 1` adds an `ext.w` the if/else form doesn't. `x == 0 ? 99 : x` = `tst.l / seq`.
+- **Operand order** (beyond round 3): `*p++ + g` = `*p++` in d0, g in d1, `add.w d0,d1`;
+  `g + *p++` adds g from memory. `mem + (expr)`: the complex operand first, memory added.
+  `g + idx` loads g before idx's `ext.l`. `sine * r` vs `r * sine` decides d0/d1. `ext.l d7`
+  then `cmp.l d7,d0` (d0 an expression) = `regvar > expr`; a sum in d0, a field in d1,
+  `cmp.l d1,d0` = `field <= sum`. `focusX = x2 = x1 = v` stores x1 first.
+- **Prologue, registers**: a parameter not declared `register` that still gets a register is
+  loaded before the `register` ones: for data-then-address order declare all of them
+  `register`. Several register parameters can load in reverse order. Dropping `register` from
+  `self` lets a register local take a4/d7 first; making only the loop counter (and pointers)
+  `register` gives it d7 while plain temporaries share the rest by use count. Declare pointer
+  locals in the narrowest block (a long-lived one blocks a3/a4, the block's own spills).
+  `long shift, x, y;` then assignments in the ROM's order fixes rotations initialisers get
+  wrong. A block-local pointer shares a dead register parameter's register only if it is not
+  `register`. `if (0) param = 0;` at the end keeps a register parameter from merging into a
+  local copied from it.
+- **Keeping things alive**: a register variable assigned and never read vanishes with its
+  stores: `if (0) (void)v;` keeps them; `if (0) (void)&local;` keeps a stack slot (`link`
+  size); `if (0) t = t;` keeps a stack local's store. `u1 = sx; u2 = sy; sx = u2; sy = u1;` in
+  an `if (0)` reserves two registers (overlapping lifetimes; `u1 = u2 = 0` reserves none).
+  Dead code at the end (`if (0) t = timer + x + y + x;`) keeps parameters live and shifts the
+  ranking. `clr.w dN` then `move.b` into it = a dead `register short i = 0;` sharing with a char.
+  `lea (a0),a3 / lea 2(a0),a3` = a dead first assignment `p = &s->f0; p = s->arr;`.
+- **Pops and loops**: `for (;;) { ...; if (x == c) break; }` pops between test and branch;
+  `do { } while (x != c)` pops before the test. The counter tested before the pop (`subq /
+  tst / addq #8,a7 / bgt`) = a goto loop (`again: ...; n--; if (n > 0) goto again;`).
+  `if (1) { call(); }` flushes right after the call, no head flush; `do { } while (0)` flushes
+  at the head too (a call pair before `return 0` keeps its pop before the `moveq` only inside
+  one). Top-tested: `for (;; i++, p++) { if (!c) break; ... }` (`continue` goes to the
+  increment; move the increments into the body if the ROM pops after them). `short n = 16;
+  while (n)` keeps the initial `bra` to the test, a `for` from a constant drops it;
+  `i -= 1` with `i >= 0` avoids `dbra`, `i--`/`--i` give it. Goto loops also stop register
+  sharing. `do { } while (0)` around part of a block removes a CSE temporary (also
+  `t = x; t -= l;` instead of `t = x - l`).
+- **Pointers, indexing**: `p < &arr[16]` = `lea $100(a0)`, `arr + 16` = `add.l`;
+  `&self->arr[4]` one `lea`, `self->arr + 4` two. `p += 1` = `adda.w #n`, `p++` = `lea`;
+  `*p = 0; p++;` = `clr.w (a4) / addq.w #2,a4`, `*p++ = 0` = `clr.w (a4)+`. `&p->f` = `pea`;
+  `(T *)p + 1` = `move.l / addq.l`; data after a 14-byte header (`lea $E(aY)`) = `(T *)(hdr + 1)`.
+  `p = &map[0]` = `lea (a3),a4`, `p = map` = `movea.l`. A known-size global array is indexed
+  `.w`; `((s16 *)g_Arr)[(i << 1) + 1]` folds the +1 into the A5 displacement. `(s16)f->pieces`
+  (a u16 used signed) = `adda.w`. `*((s16 *)p)++` (a cast lvalue, MPW only) = `move.w (a4)+`:
+  PC needs a macro.
+- **Widths, signedness**: an s8 compare = `moveq #c / cmp.b`, a u8 one = `moveq #0 / move.b /
+  cmpi.w` (one field was read both ways). A u8 field vs an `unsigned char` parameter =
+  `cmp.b`; a plain `char` parameter extends both. `u8 < 0` = `tst.l / bcc` (a lone dead
+  `tst.l` mid-expression: `(void)(u8 < 0), expr`). A widened u16 stays unsigned:
+  `(h << 3) - 0x1A << 8 > s32` compares unsigned (`bls`): write `(unsigned long)` so PC agrees.
+  `move.b #$FFFF` (an AS `dc.w`) = -1 into a signed char. `s8 n++ & 3` = `moveq #3 / and.b mem
+  / addq.b`. A long global narrowed to short reads `g+2(a5)`, `(u8)g_Short` reads `g+1` (cc.py
+  accepts both). `(*(s32 *)&g_Ptr)++` = `addq.l #1,g(a5)`. A `move.l` zero over byte/byte/word
+  fields = the original stored a long: `*(s32 *)&field = 0`. Three `clr.w` to adjacent words =
+  three globals (an array merges into `clr.l`): report it.
+- **Misc**: `'\n'` is $0D in MPW, `'\r'` $0A. String literals under `-b` follow the function in
+  reverse order of use, unmerged. `t = f(); t += c;` = `addi.w`, `t = f() + c` = `add.w`. A
+  switch after a leading `return;` loses its dispatch, keeps its case bodies
+  (`link / bra exit / dead bytes / unlk`). `default:` before `case 0:` falling into it = a
+  compare chain ending in `clr.w`. `return a && b && (char)f();` saves d3 around the call.
+  `(void)o->cls->method[n];` = a lone `movea.l (a3),a0`. `register Timer *t; t =
+  Timer_Create(...); Timer_Start(t);` = a RunScene's saved, unused a4. An extra argument the
+  callee never reads compiles the same. An unused local struct vanishes from the frame.
 
 ## asm functions (tag `asm`: hand-written 68000, no MPW frame)
 
