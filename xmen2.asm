@@ -1392,7 +1392,7 @@ Tbl_CheatCodeStageSkip:	; pause cheat code (format at Tbl_CheatCodeHealthAlt): p
 	incrom	$063C10,$8
 Tbl_CheatCodeInvincible:	; pause cheat code (format at Tbl_CheatCodeHealthAlt): invincibility (chord B+Up): Up, Right, Down, Up, Right, Down, Down, Up, B; 1 of A bytes used at runtime; read by Pause_HandleInput; jt[456] used by Pause_HandleInput_EndCode
 	incrom	$063C18,$A
-Art_FailureNem:	; Nemesis-style compressed 4bpp tiles (Nem_Decode; code table built from pairs by the caller); 38 of 38 bytes used at runtime; read by Nem_DecodeLoop, Nem_BuildCodeTable; jt[457] used by Failure_RunScene
+Map_GameOver:	; the GAME OVER tilemap: 14x2 raw tile words (Failure_RunScene copies it with Mem_Copy, adds the tile base and writes it at VRAM $059A); 38 of 38 bytes used at runtime; jt[457] used by Failure_RunScene
 	incrom	$063C22,$38
 Art_GameOver:	; Nemesis-style compressed 4bpp tiles (Nem_Decode; code table built from pairs by the caller); 122 of 122 bytes used at runtime; read by Nem_DecodeLoop, Nem_BuildCodeTable; jt[458] used by Failure_RunScene
 	incrom	$063C5A,$122

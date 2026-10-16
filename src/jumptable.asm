@@ -462,7 +462,7 @@ JumpTable:
 	jtentry	Tbl_CheatCodeFriendlyFire	; [454] jsr $E52(a5)
 	jtentry	Tbl_CheatCodeStageSkip	; [455] jsr $E5A(a5)
 	jtentry	Tbl_CheatCodeInvincible	; [456] jsr $E62(a5)
-	jtentry	Art_FailureNem	; [457] jsr $E6A(a5)
+	jtentry	Map_GameOver	; [457] jsr $E6A(a5)
 	jtentry	Art_GameOver	; [458] jsr $E72(a5)
 	jtentry	Art_CerebroFont	; [459] jsr $E7A(a5)
 	jtentry	Art_CerebroNem5	; [460] jsr $E82(a5)
