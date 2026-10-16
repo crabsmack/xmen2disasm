@@ -54,7 +54,7 @@ loc_066B48:
 	lea.l	Cerebro_FrameHook(pc),a0
 	move.l	a0,g_SceneFrameHook(a5)
 	clr.b	g_TwoPlayerStep(a5)
-	jsr	Cerebro_SetupPalCycles(pc)
+	jsr	Cerebro_LoadFonts(pc)
 	move.w	#$2,g_SceneVar3B34(a5)
 	clr.w	g_SceneVar3B3C(a5)
 	move.w	#$1,g_SceneVar3B44(a5)
@@ -157,7 +157,7 @@ loc_066D16:
 	addq.l	#$1,d7
 	cmp.l	d7,d3
 	bgt.s	loc_066D16
-	jsr	Cerebro_SetupPalCycles(pc)
+	jsr	Cerebro_LoadFonts(pc)
 loc_066D24:
 	tst.l	g_SceneVar3B14(a5)
 	beq.s	loc_066D90

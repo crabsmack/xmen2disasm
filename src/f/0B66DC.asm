@@ -1,11 +1,11 @@
 ; ---------------------------------------------------------------------------
-; SavageA4_InitBossStages - SavageA4: fill the boss stage table (2, 0, 2, 5, 10, $F, $1E, $FF) and set the boss value g_SceneVar3B02/g_SceneVar3B04 to 50
+; SavageA4_InitStats - SavageA4: fill the stats record its enemies share (attack 2, hurt sound 0, health 2, knockback 5/10/15/30, no hurt frame $FF) and set the boss health g_SceneVar3B02/g_SceneVar3B04 to 50
 ; In:  none
 ; Out: none
-; Evidence: table at g_SceneVar3B14 (stack buffer of SavageA4_RunScene); g_SceneVar3B06 := 0; jt 917; TAS 33301
+; Evidence: NpcStats record at g_SceneVar3B14 (stack buffer of SavageA4_RunScene); g_SceneVar3B06 := 0; jt 917; TAS 33301
 ; Found: jt 917
 ; ---------------------------------------------------------------------------
-SavageA4_InitBossStages:
+SavageA4_InitStats:
 	link.w	a6,#$0
 	movea.l	g_SceneVar3B14(a5),a0
 	move.b	#$2,(a0)

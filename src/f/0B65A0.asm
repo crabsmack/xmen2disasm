@@ -1,5 +1,5 @@
 ; ---------------------------------------------------------------------------
-; SavageA4_CamSetHooks - SavageA4 camera creation hook: dead zones $A0/$A0, update SavageA4_CamUpdate
+; SavageA4_CamSetHooks - SavageA4 camera post-update hook (Cam_New, +$1C): dead zones $A0/$A0, tracking function (+8) SavageA4_CamUpdate
 ; In:  8(a6) = camera
 ; Out: none
 ; Found: link-after-rts

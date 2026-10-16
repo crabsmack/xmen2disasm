@@ -1,7 +1,7 @@
 ; ---------------------------------------------------------------------------
 ; SavageA2_TileHookCrack - SavageA2 tile hook [2]: crack a breakable tile one step ($83 -> $88 -> $89 -> $27 broken; broken removes its block)
 ; In:  8(a6) = column, $A(a6) = row
-; Out: none
+; Out: d0 = SavageA2_SetBlockTiles' result, left over (no return statement)
 ; Evidence: SavageA2_SetBlockTiles(col, row, next | attrs, next == $27, $AD); installed in $FFC710
 ; Found: link-after-rts
 ; ---------------------------------------------------------------------------

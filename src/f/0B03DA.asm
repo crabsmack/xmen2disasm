@@ -1,5 +1,5 @@
 ; ---------------------------------------------------------------------------
-; SavageA3_CamSetHooks - SavageA3 camera creation hook: the SavageA2 flood camera hooks, bounds +$40 = 100, +$42 = $A0
+; SavageA3_CamSetHooks - SavageA3 camera post-update hook (Cam_New, +$1C): the SavageA2 flood camera hooks, bounds +$40 = 100, +$42 = $A0
 ; In:  8(a6) = camera
 ; Out: none
 ; Evidence: camera +4 = SavageA2_CamUpdateFlood, +$C = SavageA2_CamApply

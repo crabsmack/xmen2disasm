@@ -1,11 +1,11 @@
 ; ---------------------------------------------------------------------------
-; EvilBeast_StateThrow - EVILBEAST state: release both thrown objects (+$BE bits 0 and 1) with the follow-through animation, next step
+; EvilBeast_StateStompRelease - EVILBEAST state: after the stomp's impact animation, release both shockwaves (+$BE bits 0 and 1) with the follow-through animation, next step
 ; In:  8(a6) = this
 ; Out: none
 ; Evidence: animation $1829F0; next step after the animation
 ; Found: link-after-rts
 ; ---------------------------------------------------------------------------
-EvilBeast_StateThrow:
+EvilBeast_StateStompRelease:
 	link.w	a6,#$0
 	move.l	a4,-(a7)
 	movea.l	$8(a6),a4

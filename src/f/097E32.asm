@@ -1,11 +1,11 @@
 ; ---------------------------------------------------------------------------
-; EvilBeast_UpdateThrows - EVILBEAST slot +$82 (per frame): advance its two thrown objects (+$BA, +$BC) until each reports done
+; EvilBeast_UpdateShockwaves - EVILBEAST slot +$82 (per frame): move its two stomp shockwaves (+$BA, +$BC) on until each ends
 ; In:  8(a6) = this
 ; Out: none
-; Evidence: Beast_ShockwaveStep(slot, &y, resource record g_EvilBeastThrowSprDef*$14 + $FFC97A, side 0/1, 1, 0); clears +$BE bits 0/1; TAS 53043-53370
+; Evidence: Beast_ShockwaveStep(slot, &y, resource record g_EvilBeastShockwaveSprDef*$14 + $FFC97A, side 0/1, 1, 0); clears +$BE bits 0/1; TAS 53043-53370
 ; Found: jt 766
 ; ---------------------------------------------------------------------------
-EvilBeast_UpdateThrows:
+EvilBeast_UpdateShockwaves:
 	link.w	a6,#$FFFE
 	movem.l	d3/a4,-(a7)
 	movea.l	$8(a6),a4
@@ -22,7 +22,7 @@ EvilBeast_UpdateThrows:
 	moveq	#$1,d1
 	move.l	d1,-(a7)
 	move.l	d0,-(a7)
-	move.w	g_EvilBeastThrowSprDef(a5),d2
+	move.w	g_EvilBeastShockwaveSprDef(a5),d2
 	ext.l	d2
 	lsl.l	#$2,d2
 	move.l	d2,d3
@@ -48,7 +48,7 @@ loc_097E90:
 	moveq	#$1,d1
 	move.l	d1,-(a7)
 	move.l	d1,-(a7)
-	move.w	g_EvilBeastThrowSprDef(a5),d2
+	move.w	g_EvilBeastShockwaveSprDef(a5),d2
 	ext.l	d2
 	lsl.l	#$2,d2
 	move.l	d2,d3

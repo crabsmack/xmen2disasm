@@ -1,5 +1,5 @@
 ; ---------------------------------------------------------------------------
-; EvilNightcrawler_StateTeleportIn - EVILNIGHTCRAWLER state: reappear at the teleport target (+$BA/+$BC) with the arrival animation jt[$46B2]
+; EvilNightcrawler_StateTeleportIn - EVILNIGHTCRAWLER state: reappear at the teleport target (+$BA/+$BC) with the arrival animation Tbl_EvilNightcrawlerAnim2 (jt entry $46B2)
 ; In:  8(a6) = this
 ; Out: d0
 ; Evidence: next EvilNightcrawler_StateAppear

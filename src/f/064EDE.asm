@@ -1,10 +1,10 @@
 ; ---------------------------------------------------------------------------
-; Cerebro_SetupPalCycles - register the Cerebro screen's five palette ranges with Art_LoadToVramRecolor
+; Cerebro_LoadFonts - load the Cerebro font (Art_CerebroFont) to VRAM five times, recoloured to five palette pairs (the text styles)
 ; In:  none
 ; Out: none
 ; Evidence: five Art_LoadToVramRecolor(jt $63D7C, $6C0..$5C0, 0, first, last) calls; called by Cerebro_Run
 ; ---------------------------------------------------------------------------
-Cerebro_SetupPalCycles:
+Cerebro_LoadFonts:
 	link.w	a6,#$0
 	moveq	#$F,d0
 	move.l	d0,-(a7)

@@ -1,5 +1,5 @@
 ; ---------------------------------------------------------------------------
-; EvilNightcrawler_ActTeleport - EVILNIGHTCRAWLER script action: teleport - target the other player (or the only one), vanish with animation jt[$46A2]
+; EvilNightcrawler_ActTeleport - EVILNIGHTCRAWLER script action: teleport - target the other player (or the only one), vanish with animation Tbl_EvilNightcrawlerAnim (jt entry $46A2)
 ; In:  8(a6) = this
 ; Out: d0
 ; Evidence: target position into +$BA/+$BC; next EvilNightcrawler_StateTeleportOut; jt 783

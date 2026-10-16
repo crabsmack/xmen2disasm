@@ -11,4 +11,4 @@ loc_09A340:
 	jmp	$17D2(a5)	; -> XClone_ActAttack
 	jmp	$17BA(a5)	; -> XClone_ActFacePlayer
 	jmp	$17E2(a5)	; -> XClone_ActKeepDistance
-	jmp	$181A(a5)	; -> EvilBeast_ActThrow
+	jmp	$181A(a5)	; -> EvilBeast_ActStomp
