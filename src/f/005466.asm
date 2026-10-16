@@ -19,7 +19,7 @@ loc_005486:
 	ext.l	d7
 	move.l	d7,-(a7)
 	jsr	$5132(a5)	; -> Pad_ConfigButtonMask
-	lea.l	-$3A40(a5),a0
+	lea.l	g_ActionButtonMasks(a5),a0
 	move.b	d0,(a0,d7.w)
 	addq.w	#$4,a7
 	move.w	d7,d0

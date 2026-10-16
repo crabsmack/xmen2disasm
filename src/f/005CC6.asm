@@ -8,12 +8,12 @@ Game_SceneLoop:
 	link.w	a6,#$0
 	movem.l	d3/d5-d7/a3-a4,-(a7)
 	moveq	#$0,d0
-	move.l	d0,-$38B0(a5)
+	move.l	d0,g_Unk38B0(a5)
 	clr.b	g_DemoActive(a5)
 	clr.b	g_StartEndsScene(a5)
 	clr.b	g_SegFlag38C4(a5)
-	move.w	#$3,-$38AC(a5)
-	clr.w	-$3B00(a5)
+	move.w	#$3,g_Unk38AC(a5)
+	clr.w	g_Unk3B00(a5)
 	jsr	Scene_RegisterAll(pc)
 	move.w	#$FFFF,g_ResumeSceneIndex(a5)
 	jsr	Game_ResetPlayers(pc)

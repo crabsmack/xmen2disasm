@@ -162,7 +162,7 @@ Sw_0062E4:	; switch table of sub at $0062E4: 6 word offsets from Sw_0062E4-2
 	include "src/f/006B2C.asm"
 	include "src/f/006B64.asm"
 	include "src/f/006BD0.asm"
-Art_AvalonB1Nem:	; Nemesis-style compressed 4bpp tiles (Nem_Decode; code table built from pairs by the caller); 3082 of 308C bytes used at runtime; read by Nem_DecodeLoop; jt[14] used by AvalonB1_InitIntroPalette, AvalonB1_RunScene, AvalonB2_RunScene
+Map_AvalonB1Bg:	; Nemesis-style compressed 4bpp tiles (Nem_Decode; code table built from pairs by the caller); 3082 of 308C bytes used at runtime; read by Nem_DecodeLoop; jt[14] used by AvalonB1_InitIntroPalette, AvalonB1_RunScene, AvalonB2_RunScene
 	incrom	$006D22,$308C
 Art_AvalonB1Nem2:	; Nemesis-style compressed 4bpp tiles (Nem_Decode; code table built from pairs by the caller); 259 of 25A bytes used at runtime; read by Nem_DecodeLoop; jt[15] used by AvalonB1_RunScene
 	incrom	$009DAE,$25A
@@ -3817,7 +3817,7 @@ Tbl_MaintRobotStats:	; XNPC stats record (8 bytes, object +$8C; layout at Tbl_Ca
 	incrom	$114E78,$8
 Tbl_XCloneStats:	; XNPC stats record (8 bytes, object +$8C; layout at Tbl_CapedAcolyteStats): damage 1, health 4 (XClone_Init then sets 32), knockback 5/10/15/30, no hurt frame; 5 of 8 bytes used at runtime; read by XNpc_TakeDamage_Hurt, VDP_WriteWords, XClone_Init; jt[1419] used by XClone_Init
 	incrom	$114E80,$8
-Tbl_BioNpcVdp:	; words copied to the VDP data port by VDP_WriteWords; EE8 of EE8 bytes used at runtime; read by VDP_WriteWords; jt[1420] used by Scene_AllocCommonVram
+Art_CommonSpr:	; words copied to the VDP data port by VDP_WriteWords; EE8 of EE8 bytes used at runtime; read by VDP_WriteWords; jt[1420] used by Scene_AllocCommonVram
 	incrom	$114E88,$EE8
 Art_PowerUpSpr:	; sprite definition (type $18, raw 4bpp tiles): $24-byte header, $14-byte frame records, pieces, tiles; CC0 of 1764 bytes used at runtime; read by VDP_FlushDmaQueue, Spr_EmitStreamClip, Spr_UploadFrame; DMA to VRAM $B3A0-DF00; jt[1421] used by PowerUp_Init
 	incrom	$115D70,$1764
@@ -4933,7 +4933,7 @@ Art_Spr_144FF6:	; sprite definition (type $18, raw 4bpp tiles): $24-byte header,
 	incrom	$144FF6,$86C
 Art_EvilMagnetoSpr:	; sprite definition (type $18, raw 4bpp tiles): $24-byte header, $14-byte frame records, pieces, tiles; 57A0 of 82B4 bytes used at runtime; read by VDP_FlushDmaQueue; DMA to VRAM $7BA0-ABA0; jt[1965] used by EvilMagneto_Init, MagnetoBoss_Init, Magneto_SelectSpriteDef
 	incrom	$145862,$82B4
-Art_Spr_14DB16:	; sprite definition (type $18, raw 4bpp tiles): $24-byte header, $14-byte frame records, pieces, tiles; 1500 of 1E88 bytes used at runtime; read by VDP_FlushDmaQueue, Spr_EmitStreamClip, Spr_UploadFrame; DMA to VRAM $81C0-F7E0; jt[1966] used by Scene_AllocCommonVram, MagneticGlob_Init
+Art_FluxBombSpr:	; sprite definition (type $18, raw 4bpp tiles): $24-byte header, $14-byte frame records, pieces, tiles; 1500 of 1E88 bytes used at runtime; read by VDP_FlushDmaQueue, Spr_EmitStreamClip, Spr_UploadFrame; DMA to VRAM $81C0-F7E0; jt[1966] used by Scene_AllocCommonVram, MagneticGlob_Init
 	incrom	$14DB16,$1E88
 Art_MagnetoBossSpr2:	; sprite definition (type $18, raw 4bpp tiles): $24-byte header, $14-byte frame records, pieces, tiles; 29A0 of 334C bytes used at runtime; read by VDP_FlushDmaQueue; DMA to VRAM $7BA0-8AC0; jt[1967] used by MagnetoBoss_Init, Player_CalcMaxTiles, Magneto_FrameBank
 	incrom	$14F99E,$334C
@@ -5300,7 +5300,7 @@ Snd_1641BE:	; sound data; never read in the corpus; jt[2113] used by Game_Init -
 	incrom	$1641BE,$176EC
 Snd_17B8AA:	; sound data; never read in the corpus; jt[2114] used by Game_Init -> Snd_Init
 	incrom	$17B8AA,$6DE6
-Art_Spr_182690:	; sprite definition (type $18, raw 4bpp tiles): $24-byte header, $14-byte frame records, pieces, tiles; 180 of 2A2 bytes used at runtime; read by VDP_FlushDmaQueue; DMA to VRAM $6940-9600; jt[2115] used by Scene_AllocCommonVram
+Art_HitSparkSpr:	; sprite definition (type $18, raw 4bpp tiles): $24-byte header, $14-byte frame records, pieces, tiles; 180 of 2A2 bytes used at runtime; read by VDP_FlushDmaQueue; DMA to VRAM $6940-9600; jt[2115] used by Scene_AllocCommonVram
 	incrom	$182690,$2A2
 Tbl_Anim_182932:	; animation script (byte flags, byte steps, ..., 2-byte steps from +6); 1E of 22 bytes used at runtime; read by Anim_ApplyStep, Anim_AdvanceByDistance; jt[2116] used by PlayerSelect_PlayIdleAnim_part1
 	incrom	$182932,$22
