@@ -125,7 +125,7 @@ loc_1F99B6:
 	moveq	#$0,d0
 	move.l	d0,g_CamShake(a5)
 	move.w	g_MapTilesEnd(a5),g_VramTileCursor(a5)
-	move.w	#$2,-$388A(a5)
+	move.w	#$2,g_LevelLoadWord388A(a5)
 	moveq	#$0,d7
 	moveq	#$25,d3
 	lea.l	$28(a7),a7
@@ -243,9 +243,9 @@ loc_1F9B0E:
 	clr.b	g_BgLockToObj(a5)
 	move.b	#$1,g_CamActive(a5)
 	move.b	#$1,g_SpawnEnabled(a5)
-	clr.w	-$3896(a5)
+	clr.w	g_LevelLoadWord3896(a5)
 	moveq	#$0,d0
-	move.l	d0,-$38A0(a5)
+	move.l	d0,g_LevelLoadLong38A0(a5)
 	clr.b	g_TileHooksOn(a5)
 	clr.w	d7
 	moveq	#$8,d3
@@ -273,7 +273,7 @@ loc_1F9B58:
 	move.w	#$FFFF,g_PalCycleDelay(a5)
 	move.l	d0,g_FrameCounter(a5)
 	move.b	#$1,g_TwoPlayerStep(a5)
-	clr.b	-$38B8(a5)
+	clr.b	g_LevelLoadByte38B8(a5)
 	lea.l	$4EFA(a5),a0
 	move.l	a0,g_SegResolveHook(a5)
 	lea.l	$4FAA(a5),a0
@@ -304,7 +304,7 @@ loc_1F9B58:
 	lea.l	$3FB2(a5),a0
 	move.l	a0,g_PauseHandler(a5)
 	clr.b	g_PauseExit(a5)
-	move.b	#$1,-$1660(a5)
+	move.b	#$1,g_LevelLoadByte1660(a5)
 	jsr	Timer_InitAll(pc)
 	jsr	$405A(a5)	; -> HitList_Init
 	movea.l	g_ScenePostLoadHook(a5),a0

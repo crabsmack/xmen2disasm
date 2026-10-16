@@ -15,9 +15,9 @@ Irq_VBlank:
 	movea.l	g_VBlankHook(a5),a0
 	jsr	(a0)
 loc_1FDCE8:
-	tst.b	-$38C0(a5)
+	tst.b	g_GameHookOff(a5)
 	bne.s	loc_1FDD00
-	tst.b	-$359E(a5)
+	tst.b	g_GameHookOff2(a5)
 	bne.s	loc_1FDD00
 	tst.l	g_VBlankGameHook(a5)
 	beq.s	loc_1FDD00

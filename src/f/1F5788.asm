@@ -97,7 +97,7 @@ loc_1F5884:
 	move.w	g_CamMinY(a5),g_CameraY(a5)
 loc_1F5894:
 	lea.l	Cam_SetPosScaled(pc),a0
-	cmpa.l	-$38F8(a5),a0
+	cmpa.l	g_CamSetPosHook(a5),a0
 	bne.s	loc_1F58C2
 	move.w	g_FgScrollFactorX(a5),d0
 	muls.w	g_CameraX(a5),d0
@@ -141,7 +141,7 @@ loc_1F5902:
 	jsr	Math_MulFix8(pc)
 	move.w	d0,g_BgScrollX(a5)
 	lea.l	Cam_SetPosScaled(pc),a0
-	cmpa.l	-$38F8(a5),a0
+	cmpa.l	g_CamSetPosHook(a5),a0
 	addq.w	#$8,a7
 	bne.s	loc_1F593A
 	move.w	g_BgScrollFactorY(a5),d0
@@ -213,7 +213,7 @@ loc_1F59D8:
 	move.l	a0,g_MapRowHook(a5)
 	lea.l	$40FA(a5),a0
 	move.l	a0,g_MapColHook(a5)
-	move.l	a4,-$3A80(a5)
+	move.l	a4,g_LoadedFgMap(a5)
 	move.w	$2(a4),d0
 	asr.w	#$2,d0
 	move.w	d0,g_FgMapW(a5)
@@ -271,7 +271,7 @@ loc_1F5A5C:
 	tst.l	$10(a6)
 	lea.l	$14(a7),a7
 	beq.w	loc_1F5B22
-	move.w	#$80,-$3A66(a5)
+	move.w	#$80,g_MapFirstTile(a5)
 	move.b	#$1,g_BgMapPresent(a5)
 	movea.l	$10(a6),a0
 	move.w	$2(a0),d0
@@ -312,7 +312,7 @@ loc_1F5AE0:
 	lea.l	$14(a7),a7
 	bra.s	loc_1F5B2C
 loc_1F5B22:
-	move.w	#$80,-$3A66(a5)
+	move.w	#$80,g_MapFirstTile(a5)
 	clr.b	g_BgMapPresent(a5)
 loc_1F5B2C:
 	moveq	#$20,d0
@@ -353,7 +353,7 @@ loc_1F5B7E:
 	move.l	d1,-(a7)
 	move.l	g_FgBlockDefs(a5),-(a7)
 	move.l	g_FgBlockMap(a5),-(a7)
-	move.w	-$3A66(a5),d0
+	move.w	g_MapFirstTile(a5),d0
 	ext.l	d0
 	move.l	d0,-(a7)
 	move.l	a3,-(a7)
@@ -361,7 +361,7 @@ loc_1F5B7E:
 	jsr	Level_LoadUsedTiles(pc)
 	move.w	d0,d5
 	move.w	g_UsedBlockCount(a5),g_FgBlockCount(a5)
-	move.w	-$3A66(a5),d0
+	move.w	g_MapFirstTile(a5),d0
 	add.w	d5,d0
 	move.w	d0,g_FgTilesEnd(a5)
 	ext.l	d5
@@ -384,7 +384,7 @@ loc_1F5B7E:
 	move.l	g_FgBlockDefs(a5),g_BgBlockDefs(a5)
 	move.w	d5,d6
 	move.w	d6,d4
-	move.w	-$3A66(a5),d0
+	move.w	g_MapFirstTile(a5),d0
 	add.w	d6,d0
 	move.w	d0,g_BgTilesEnd(a5)
 	lea.l	Str_AbTilesSharing(pc),a0
@@ -420,7 +420,7 @@ loc_1F5C06:
 	move.l	g_BgBlockDefs(a5),-(a7)
 	move.l	g_BgBlockMap(a5),-(a7)
 	ext.l	d5
-	move.w	-$3A66(a5),d1
+	move.w	g_MapFirstTile(a5),d1
 	ext.l	d1
 	add.l	d5,d1
 	move.l	d1,-(a7)
@@ -433,7 +433,7 @@ loc_1F5C06:
 	ext.l	d4
 	move.l	d5,d0
 	add.l	d4,d0
-	move.w	-$3A66(a5),d1
+	move.w	g_MapFirstTile(a5),d1
 	add.w	d0,d1
 	move.w	d1,g_BgTilesEnd(a5)
 	lea.l	$2C(a7),a7
@@ -493,12 +493,12 @@ loc_1F5D24:
 	blt.s	loc_1F5D0E
 	bra.s	loc_1F5D32
 loc_1F5D2C:
-	move.w	#$80,-$3A66(a5)
+	move.w	#$80,g_MapFirstTile(a5)
 loc_1F5D32:
 	tst.l	$10(a6)
 	bne.s	loc_1F5D52
 	clr.b	g_BgMapPresent(a5)
-	move.w	-$3A66(a5),d0
+	move.w	g_MapFirstTile(a5),d0
 	add.w	d5,d0
 	move.w	d0,g_MapTilesEnd(a5)
 	clr.w	g_BgScrollX(a5)
@@ -520,16 +520,16 @@ loc_1F5D5E:
 	move.w	d0,g_BgMapH(a5)
 	tst.b	-$1(a6)
 	beq.s	loc_1F5D9E
-	move.w	-$3A66(a5),-$8(a6)
-	move.w	-$8(a6),-$3A68(a5)
+	move.w	g_MapFirstTile(a5),-$8(a6)
+	move.w	-$8(a6),g_BgFirstTile(a5)
 	move.w	-$8(a6),d0
 	add.w	d4,d0
 	move.w	d0,g_MapTilesEnd(a5)
 	bra.s	loc_1F5DAE
 loc_1F5D9E:
-	move.w	-$3A66(a5),d0
+	move.w	g_MapFirstTile(a5),d0
 	add.w	d5,d0
-	move.w	d0,-$3A68(a5)
+	move.w	d0,g_BgFirstTile(a5)
 	add.w	d4,d0
 	move.w	d0,g_MapTilesEnd(a5)
 loc_1F5DAE:
@@ -565,17 +565,17 @@ loc_1F5DF8:
 	cmp.w	g_BgMapH(a5),d7
 	blt.s	loc_1F5DE2
 loc_1F5DFE:
-	move.w	-$3A66(a5),g_FgTileAttr(a5)
+	move.w	g_MapFirstTile(a5),g_FgTileAttr(a5)
 	tst.b	g_FgMapPresent(a5)
 	beq.s	loc_1F5E1C
 	tst.b	-$1(a6)
 	bne.s	loc_1F5E1C
-	move.w	-$3A66(a5),d0
+	move.w	g_MapFirstTile(a5),d0
 	add.w	d5,d0
 	move.w	d0,g_BgTileAttr(a5)
 	bra.s	loc_1F5E22
 loc_1F5E1C:
-	move.w	-$3A66(a5),g_BgTileAttr(a5)
+	move.w	g_MapFirstTile(a5),g_BgTileAttr(a5)
 loc_1F5E22:
 	tst.b	$23(a6)
 	beq.s	loc_1F5E2E
@@ -627,7 +627,7 @@ loc_1F5ED2:
 	move.b	$2F(a6),d5
 	move.b	d5,g_BgWrapX(a5)
 	move.b	d5,g_BgWrapY(a5)
-	move.l	g_HeapTop(a5),-$3AA2(a5)
+	move.l	g_HeapTop(a5),g_MapsHeapEnd(a5)
 	movem.l	-$20(a6),d4-d7/a3-a4
 	unlk	a6
 	rts
