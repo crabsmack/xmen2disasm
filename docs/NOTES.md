@@ -479,6 +479,12 @@ _(module → functions, globals, data; add as you learn them)_
   the Enigma block definitions (4x4 tile words per block), +$E offset of the tiles: raw words
   when uncompressed, else `{word rows; Nem code pairs ... $FF; Nemesis data}` decoded with a
   used-tile mask (`Level_LoadUsedTiles`). Readers: `Eni_Decode`, `Nem_*`, `Level_*`.
+  Labels (phase 4, from all 24 Level_Load calls in C): a blob passed as both map and tileset
+  is that level's plane, `Lvl_<L>Fg`/`Lvl_<L>Bg`; levels reuse other levels' tile parts (the
+  Avalon stages share Lvl_AvalonB1Fg's tiles, SavageB1/SpaceB1 Lvl_SavageC1Bg's), so a map with
+  a foreign tileset is `Lvl_<L>FgMap`/`BgMap`; segment lists `Lvl_<L>FgSegs`/`BgSegs`, class
+  lists `Tbl_<L>ClassList`. The old names were guessed from the bytes: `Art_*Nem` labels were
+  floor segments and class lists as often as planes, `Map_*Eni2` were class lists.
 - **Floor-segment lists (w140)** (`Seg_LoadList`): records until a 0 byte, `{byte type (bits
   0-5; $40 = no neighbour links), byte extra, word x1, y1, x2, y2, word ?, [byte prev, byte
   next]}` = 12 bytes, 10 when $40 is set.
