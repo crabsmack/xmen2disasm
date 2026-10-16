@@ -1,10 +1,10 @@
 ; ---------------------------------------------------------------------------
-; Platform1_LevelStart - parent (SYNCHRONIZEDACTOR) LevelStart, then reset g_Platform1SprDef to 0 (static, class slot 23, +$62)
+; Platform1_LevelEnd - parent (SYNCHRONIZEDACTOR) LevelEnd, then reset g_Platform1SprDef to 0 (static, class slot 23, +$62)
 ; In:  8(a6) = 0  $C(a6) = class index in the level class list
 ; Out: none
 ; Evidence: method 23 of class descriptor $1072E8 (name string "PLATFORM1", parent SYNCHRONIZEDACTOR)
 ; ---------------------------------------------------------------------------
-Platform1_LevelStart:
+Platform1_LevelEnd:
 	link.w	a6,#$0
 	moveq	#$0,d0
 	move.l	d0,-(a7)

@@ -270,8 +270,8 @@ _(module → functions, globals, data; add as you learn them)_
 - **Class slots, additions (w0E0)** to the `tools/classes.py` names above (`$0E0000-$140000` follows
   them; descriptors there are labelled `Tbl_<Class>_vtable`, 60 of them): +$1E `DrawIfActive` (ACTOR
   `$15E452`: Draw unless flag $4000) · +$5A `LevelLoad` (static, run by the scene loader `Level_Load` ->
-  `ClassList_CallSlot5A` for each class in `-$3900(a5)`) · +$62 `LevelStart` (static, `ClassList_CallSlot62`, after the first
-  spawn pass of `Level_FrameLoop`, the level main loop) · +$6A `Reset` when non-empty (DEATHBIRD Init calls
+  `ClassList_CallSlot5A` for each class in `-$3900(a5)`) · +$62 `LevelEnd` (static, `ClassList_CallSlot62`, after the level's frame
+  loop returns: `Level_Run`, and `PlayerSelect_Run` at its scene's end) · +$6A `Reset` when non-empty (DEATHBIRD Init calls
   it on `this`; HOLOGRAM/POP/FIREWALL ClassInit share its body), else `Nop6A`. XNPC slots: +$6E
   `OnHurt(this, dmg, type)` and +$72 `OnDeath` (both from `XNpc_TakeDamage`), +$76 `EndHurt` (restore
   the state saved in +$60), +$7A ~~`Query7A`~~ `GetMoveLimit(this, dir, *kind)` (limit coordinate toward dir 0 left/1 right/2-3 vertical; kind 0 wall, 1 open edge, 2 none = XNPC base; see `BabyBio_GetMoveLimit`; used to stop knockback), +$7E `Explode`
