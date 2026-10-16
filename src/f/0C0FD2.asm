@@ -35,8 +35,8 @@ loc_0C1008:
 loc_0C101C:
 	move.l	g_Player1+$8(a5),d0
 	asr.l	#$8,d0
-	move.w	d0,-$3C00(a5)
-	move.w	g_WaterSplashY(a5),-$3C02(a5)
+	move.w	d0,g_P1SplashX(a5)
+	move.w	g_WaterSplashY(a5),g_P1SplashY(a5)
 	move.w	#$24,g_P1SplashTimer(a5)
 loc_0C1032:
 	tst.w	g_P2SplashTimer(a5)
@@ -67,17 +67,17 @@ loc_0C1064:
 loc_0C1078:
 	move.l	g_Player2+$8(a5),d0
 	asr.l	#$8,d0
-	move.w	d0,-$3C04(a5)
-	move.w	g_WaterSplashY(a5),-$3C06(a5)
+	move.w	d0,g_P2SplashX(a5)
+	move.w	g_WaterSplashY(a5),g_P2SplashY(a5)
 	move.w	#$24,g_P2SplashTimer(a5)
 loc_0C108E:
 	tst.w	g_P1SplashTimer(a5)
 	beq.s	loc_0C10BC
 	subq.w	#$1,g_P1SplashTimer(a5)
-	move.w	-$3C02(a5),d0
+	move.w	g_P1SplashY(a5),d0
 	ext.l	d0
 	move.l	d0,-(a7)
-	move.w	-$3C00(a5),d0
+	move.w	g_P1SplashX(a5),d0
 	ext.l	d0
 	move.l	d0,-(a7)
 	move.w	g_P1SplashTimer(a5),d0
@@ -90,10 +90,10 @@ loc_0C10BC:
 	tst.w	g_P2SplashTimer(a5)
 	beq.s	loc_0C10EA
 	subq.w	#$1,g_P2SplashTimer(a5)
-	move.w	-$3C06(a5),d0
+	move.w	g_P2SplashY(a5),d0
 	ext.l	d0
 	move.l	d0,-(a7)
-	move.w	-$3C04(a5),d0
+	move.w	g_P2SplashX(a5),d0
 	ext.l	d0
 	move.l	d0,-(a7)
 	move.w	g_P2SplashTimer(a5),d0

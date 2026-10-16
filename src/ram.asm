@@ -521,3 +521,7 @@ g_Unk3B00 = -$3B00	; word: set to 0 at the start of Game_SceneLoop; no other use
 g_AvalonA3SprAnim = -$3CCA	; 4 records of {word step 0-2, word delay}: AvalonA3's effect sprites 4..1 (the delays are g_AvalonA3SprDelays; AvalonA3_FrameHook steps them)
 g_BmA1ColourSeqs = -$3CA8	; 4 ptrs: BaniMazaA1_InitTablePtrs points them at Tbl_BaniMazaA1ColourSeq4, 3, 2, 1; nothing reads them
 g_RollingDiscs = -$3C78	; ptr: the ROLLINGDISCS object (RollingDiscs_Init stores self)
+g_P1SplashX = -$3C00	; word: player 1 water splash x (player x>>8 when they cross the surface; Water_DrawHook -> Water_DrawSplash)
+g_P1SplashY = -$3C02	; word: player 1 water splash y (g_WaterSplashY at the crossing; Water_DrawHook -> Water_DrawSplash)
+g_P2SplashX = -$3C04	; word: player 2 water splash x (Water_DrawHook -> Water_DrawSplash)
+g_P2SplashY = -$3C06	; word: player 2 water splash y (Water_DrawHook -> Water_DrawSplash)
