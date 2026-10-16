@@ -305,15 +305,24 @@ def match_recomp(root: Path, cid: str, flags: str, only: list[str] | None = None
         else:
             todo.append((p, key))
 
+    # the emulated Mac's tools, run 8 at a time, sometimes can't open the compiler ("Unable to open
+    # the resource fork", OS error -39): not a verdict on the C. Retried; never cached.
+    TOOL_ERROR = re.compile(r"Unable to open the resource fork|end-of-file reached during read operation")
+
     def run(item):
         p, key = item
-        ok, msg = match(p, cid, flags, verbose=False, include=inc, names=names)
+        for _attempt in range(3):
+            ok, msg = match(p, cid, flags, verbose=False, include=inc, names=names)
+            if ok or not TOOL_ERROR.search(msg):
+                break
         lines = msg.splitlines()
-        return p.stem.upper(), {"key": key, "ok": ok, "detail": " | ".join(lines[:3])}
+        return p.stem.upper(), {"key": key, "ok": ok, "detail": " | ".join(lines[:3]),
+                                "tool_error": not ok and bool(TOOL_ERROR.search(msg))}
     with concurrent.futures.ThreadPoolExecutor(max_workers=jobs) as ex:
         for a, r in ex.map(run, todo):
             res[a] = r
-            cache[a] = r
+            if not r.pop("tool_error"):
+                cache[a] = r
     if todo:
         cache_path.parent.mkdir(parents=True, exist_ok=True)
         cache_path.write_text(json.dumps(cache, indent=0), encoding="utf-8")
