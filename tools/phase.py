@@ -26,7 +26,9 @@ import re
 import shutil
 import subprocess
 import sys
+import threading
 import tomllib
+from concurrent.futures import ThreadPoolExecutor
 from datetime import date
 from pathlib import Path
 
@@ -150,6 +152,16 @@ def export_input(run: str, out_dir: Path) -> tuple[Path | None, str]:
     return inp, ""
 
 
+# The corpus runs are independent traces (own output and runner directories): this many at once.
+JOBS = int(os.environ.get("PHASE_JOBS", "12"))
+
+
+def pmap(fn, items: list) -> list:
+    """fn over items on JOBS threads (each runs a subprocess); results in the items' order."""
+    with ThreadPoolExecutor(max_workers=max(1, JOBS)) as ex:
+        return list(ex.map(fn, items))
+
+
 class Traces:
     """Runs contract traces for (run, mode, frames), compares with the reference, caches.
 
@@ -176,10 +188,12 @@ class Traces:
                                        r"game/runtime/(handc_rt|asm_conv|verify)\.cpp)", l) for l in porcelain)
         self.rev_timed = None if dirty_timed or not timed else f"{timed}:{engine}"
         self.out_dir = ROOT / "build" / "phase_traces"
+        self.lock = threading.RLock()   # traces run on pmap's threads; the cache is shared
 
     def save(self) -> None:
-        self.cache_path.parent.mkdir(parents=True, exist_ok=True)
-        self.cache_path.write_text(json.dumps(self.cache, indent=1), encoding="utf-8")
+        with self.lock:
+            self.cache_path.parent.mkdir(parents=True, exist_ok=True)
+            self.cache_path.write_text(json.dumps(self.cache, indent=1), encoding="utf-8")
 
     def run(self, run: str, mode: str, frames: int | None = None, extra: tuple[str, ...] = (),
             use_cache: bool = True, ref_sync: Path | None = None, timed_key: bool = False) -> dict:
@@ -188,13 +202,15 @@ class Traces:
             return {"ok": False, "detail": f"no reference {ref}" + ("" if ref_sync else " (run emu/corpus.py)")}
         key = f"{run}|{mode}|{frames}|{' '.join(extra)}|{ref.stat().st_mtime_ns}"
         rev = self.rev_timed if timed_key else self.rev
-        hit = self.cache.get(key)
+        with self.lock:
+            hit = self.cache.get(key)
         if use_cache and hit and rev and hit.get("rev") == rev:
             return hit
         res = self._run(run, mode, frames, extra, ref, ref_sync is not None)
         if rev:
-            self.cache[key] = {**res, "rev": rev}
-            self.save()
+            with self.lock:
+                self.cache[key] = {**res, "rev": rev}
+                self.save()
         return res
 
     def _run(self, run, mode, frames, extra, ref_csv, sync: bool) -> dict:
@@ -247,7 +263,8 @@ class Traces:
         compared with anything. Cached per revision like run()."""
         key = f"{run}|{mode}|plain|{' '.join(extra)}"
         rev = self.rev_timed if timed_key else self.rev
-        hit = self.cache.get(key)
+        with self.lock:
+            hit = self.cache.get(key)
         if hit and rev and hit.get("rev") == rev and Path(hit.get("csv", "")).exists():
             return hit
         inp, err = export_input(run, self.out_dir)
@@ -262,8 +279,9 @@ class Traces:
         res = {"ok": ok, "detail": err or f"{(stats or {}).get('sync_points')} sync points", "stats": stats,
                "csv": str(csv_path)}
         if rev and ok:
-            self.cache[key] = {**res, "rev": rev}
-            self.save()
+            with self.lock:
+                self.cache[key] = {**res, "rev": rev}
+                self.save()
         return res
 
     @staticmethod
@@ -300,8 +318,8 @@ def trace_criteria(cid_one: str, cid_all: str, cid_clean: str | None, mode: str,
         ok = tas["ok"] and all(v == 0 for v in counts.values())
         crit(cid_clean, ok, ", ".join(f"{k} {v}" for k, v in counts.items()) if s else "no tas trace stats")
     bad = []
-    for run in corpus_runs():
-        r = tr.run(run, mode, None, extra)
+    runs = corpus_runs()
+    for run, r in zip(runs, pmap(lambda run: tr.run(run, mode, None, extra), runs)):
         s = r.get("stats") or {}
         if not r["ok"] or s.get("dispatch_misses") or s.get("interp_instructions") or s.get("stub_hits"):
             bad.append(f"{run} ({r['detail'][:80]})")
@@ -520,23 +538,21 @@ def sync_traces(tr: "Traces", mode: str, refs: dict[str, Path]) -> list[str]:
     """Stepped/handc traces of every corpus run against the same frame-synchronous runner with
     all generated code (`stepped-gen`; P4-decomp.md decision 5) -> failures. REFDIR (the run's D1
     trace) gives each sync point's reference frame for the input."""
-    bad = []
-    for run in corpus_runs():
+    def one(run: str) -> str | None:
         if run not in refs:
-            bad.append(f"{run} (no D1 sync reference)")
-            continue
+            return f"{run} (no D1 sync reference)"
         extra = ("--replay", str(refs[run].parent))
         g = tr.plain(run, "stepped-gen", extra, timed_key=True)
         gs = g.get("stats") or {}
         if not g["ok"] or any(gs.get(k) != 0 for k in COUNTERS):
-            bad.append(f"{run} (stepped-gen: {g['detail'][:120]}; "
-                       + ", ".join(f"{k} {gs.get(k)}" for k in COUNTERS) + ")")
-            continue
+            return (f"{run} (stepped-gen: {g['detail'][:120]}; "
+                    + ", ".join(f"{k} {gs.get(k)}" for k in COUNTERS) + ")")
         r = tr.run(run, mode, None, extra, ref_sync=Path(g["csv"]))
         s = r.get("stats") or {}
         if not r["ok"] or any(s.get(k) != 0 for k in COUNTERS):
-            bad.append(f"{run} ({r['detail'][:160]}; " + ", ".join(f"{k} {s.get(k)}" for k in COUNTERS) + ")")
-    return bad
+            return f"{run} ({r['detail'][:160]}; " + ", ".join(f"{k} {s.get(k)}" for k in COUNTERS) + ")"
+        return None
+    return [b for b in pmap(one, corpus_runs()) if b]
 
 
 def phase4(crit, fresh: bool, draft: bool = False) -> None:
@@ -551,12 +567,15 @@ def phase4(crit, fresh: bool, draft: bool = False) -> None:
     # D1: the timed runner still equals gpgx, and writes the sync reference + replay log
     refs: dict[str, Path] = {}
     bad, stack_low = [], None
-    for run in runs:
+
+    def d1(run: str):
         r = tr.run(run, "recomp", None, ("--sync",), timed_key=True)
         sync = Path(r["csv"]).parent / "sync.csv" if r.get("csv") else None
         if r["ok"] and not (sync and sync.exists() and (sync.parent / "replay.bin").exists()):
             r = tr.run(run, "recomp", None, ("--sync",), use_cache=False, timed_key=True)  # outputs gone
             sync = Path(r["csv"]).parent / "sync.csv" if r.get("csv") else None
+        return r, sync
+    for run, (r, sync) in zip(runs, pmap(d1, runs)):
         s = r.get("stats") or {}
         rows = len(read_frames(sync, "sync")[1]) if sync and sync.exists() else 0
         if run == "tas":
