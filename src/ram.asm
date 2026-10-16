@@ -197,7 +197,7 @@ g_ScaleSrcBitmap = -$C9A	; ptr: source picture for the scaler: the big acolyte p
 g_ScaleTileBuf = -$C9E	; ptr: heap tile buffer the scaler decodes into, then DMAed to VRAM (BigAcolyte_RenderScaled, Cerebro_BigSpriteDecode/Draw, PlayerSelect_AllocCharBuffers_Measure)
 g_ScaleParamsPtr = -$CA2	; ptr: result of Scaler_InitParams = &g_ScalerParams (0 on failure), passed back as the scale record by BigAcolyte_ActGrow/StateBurstWall, PlayerSelect_Run, Cerebro_PlayIntro
 g_ScalerWork = -$CA6	; ptr: $DC0-byte scaler work area allocated on the first Scaler_Start call (Mem_StackAlloc tag Str_ScalerData); Level_Load clears it
-g_ScalerLine0 = -$BF0	; ptr: g_ScalerWork + 0, first of six $280-byte scaler line/step tables (Scaler_Start sets; Scaler_BeginPass)
+g_ScalerLine0 = -$BF0	; ptr: g_ScalerWork + 0, first of five $280-byte scaler line/step tables g_ScalerLine0-4 (the work area's last $140 bytes are g_ScalerLine5; Scaler_Start sets; Scaler_BeginPass)
 g_ScalerLine1 = -$BEC	; ptr: g_ScalerWork + $280 (Scaler_Start); Scaler_BeginPass starts the column step pointer g_ScalerColStep here
 g_ScalerLine2 = -$BE8	; ptr: g_ScalerWork + $500 (Scaler_Start); read by Scaler_BuildStepTables/Scaler_ClearRows/Scaler_BeginPass
 g_ScalerLine3 = -$BE4	; ptr: g_ScalerWork + $780 (Scaler_Start); read by Scaler_BuildStepTables/Scaler_ClearRows/Scaler_BeginPass
