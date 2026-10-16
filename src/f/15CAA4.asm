@@ -38,7 +38,7 @@ loc_15CAE2:
 	bra.s	loc_15CB30
 loc_15CAFE:
 	clr.b	g_PauseExit(a5)
-	move.b	#$1,-$1668(a5)
+	move.b	#$1,g_Paused(a5)
 	move.w	#$FF7F,d0
 	and.w	g_Pad1Latch(a5),d0
 	move.w	d0,g_Pad1Latch(a5)

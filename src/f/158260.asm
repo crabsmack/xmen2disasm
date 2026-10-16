@@ -7,7 +7,7 @@
 FluxBomb_New:
 	link.w	a6,#$0
 	move.l	a4,-(a7)
-	lea.l	-$1A54(a5),a4
+	lea.l	g_FluxBombObj(a5),a4
 	move.w	$4(a4),d0
 	ext.l	d0
 	move.w	#$8000,d1

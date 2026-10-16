@@ -3732,7 +3732,7 @@ Sw_11214E:	; switch table of sub at $11214E: 5 word offsets from Sw_11214E-2
 	include "src/f/112EA4.asm"
 	include "src/f/112F58.asm"
 	include "src/f/112F8E.asm"
-Tbl_PauseVdp:	; words copied to the VDP data port by VDP_WriteWords; 18B of 1C8 bytes used at runtime; read by VDP_WriteWords; jt[1388] used by Pause_LoadSprite
+Art_PauseSpr:	; the PAUSE text's sprite definition (Spr_Init in Pause_LoadSprite); 18B of 1C8 bytes used at runtime; read by VDP_WriteWords; jt[1388] used by Pause_LoadSprite
 	incrom	$112FD8,$1C8
 Tbl_XPlayer_vtable:	; class descriptor "XPLAYER": word $F2 = name offset, long parent (ACTOR), 59 method pointers, then the class name string
 	incrom	$1131A0,$FA
@@ -4813,11 +4813,11 @@ Art_TankSpr:	; sprite definition (type $19, Nemesis-compressed tiles): $24-byte 
 	include "src/f/14205E.asm"
 Tbl_Tank_vtable:	; class descriptor of TANK: word name offset $82, parent XNPC, 31 method slots from +6, then the name (tools/classes.py); C of 88 bytes used at runtime; read by Tank_Init, TankLeft_Init, TankLeft_Deactivate; jt[1925] used by Tank_Deactivate, Tank_Init
 	incrom	$1420DE,$88
-Lvl_Data_142166:	; level data read by Level_FrameLoop; 68 of 8C bytes used at runtime; read by Level_FrameLoop, Actor_Update, Actor_New; jt[1926] used by TankLeft_Init, TankLeft_Deactivate
+Tbl_TankLeft_vtable:	; TANKLEFT class descriptor (vtable; Actor_New, TankLeft_Init/Deactivate); 68 of 8C bytes used at runtime; read by Level_FrameLoop, Actor_Update, Actor_New; jt[1926] used by TankLeft_Init, TankLeft_Deactivate
 	incrom	$142166,$8C
 Tbl_TankAnim:	; animation script (byte flags, byte steps, ..., 2-byte steps from +6); 6 of 8 bytes used at runtime; read by Anim_ApplyStep, Anim_AdvanceByDistance, Anim_Advance; jt[1927] used by Tank_Init
 	incrom	$1421F2,$8
-Tbl_Anim_1421FA:	; animation script (byte flags, byte steps, ..., 2-byte steps from +6); E of 10 bytes used at runtime; read by Anim_ApplyStep, Anim_AdvanceByDistance, Anim_Advance; jt[1928] used by TankLeft_StateWaitDrive, TankLeft_StateDriveIn, TankLeft_ActDriveIn
+Tbl_TankLeftDriveAnim:	; animation script (byte flags, byte steps, ..., 2-byte steps from +6); E of 10 bytes used at runtime; read by Anim_ApplyStep, Anim_AdvanceByDistance, Anim_Advance; jt[1928] used by TankLeft_StateWaitDrive, TankLeft_StateDriveIn, TankLeft_ActDriveIn
 	incrom	$1421FA,$10
 Tbl_TankWreckAnim:	; animation script (byte flags, byte steps, ..., 2-byte steps from +6); 10 of 12 bytes used at runtime; read by Anim_ApplyStep, Tank_ActPause; jt[1929] used by Tank_StateWreck
 	incrom	$14220A,$12
@@ -4919,7 +4919,7 @@ Art_Spr_1445D2:	; sprite definition (type $19, Nemesis-compressed tiles): $24-by
 	include "src/f/144CF0.asm"
 	include "src/f/144D50.asm"
 	include "src/f/144D88.asm"
-Lvl_Data_144D90:	; level data read by Level_FrameLoop; 48 of 78 bytes used at runtime; read by Level_FrameLoop, ToxicCan_Update, Actor_New; jt[1959] used by ToxicCan_Init, ToxicCan_Activate, ToxicCan_Deactivate
+Tbl_ToxicCan_vtable:	; TOXICCAN class descriptor (vtable; Actor_New, ToxicCan_Init/Activate); 48 of 78 bytes used at runtime; read by Level_FrameLoop, ToxicCan_Update, Actor_New; jt[1959] used by ToxicCan_Init, ToxicCan_Activate, ToxicCan_Deactivate
 	incrom	$144D90,$78
 Tbl_ToxicCanDamaged_vtable:	; class descriptor of TOXICCANDAMAGED: word name offset $6E, parent TOXICCAN, 26 method slots from +6, then the name (tools/classes.py); never read in the corpus; jt[1960] used by ToxicCan_Despawn, ToxicCanDamaged_Init
 	incrom	$144E08,$7E
@@ -4929,7 +4929,7 @@ Tbl_ToxicCanLeakPuffs2:	; TOXICCAN leak puff animation (format at Tbl_ToxicCanLe
 	incrom	$144EF2,$3C
 Tbl_ScatterExplodeChain:	; explosion chain path (format at Tbl_BroodBossDeathChain): 24 scattered explosions, shared by POP, TANK death and TOXICCAN; C4 of C8 bytes used at runtime; read by ExplodeFx_ChainStep; jt[1963] used by Pop_FxChainPath, Tank_OnDeath, ToxicCan_Update
 	incrom	$144F2E,$C8
-Art_Spr_144FF6:	; sprite definition (type $18, raw 4bpp tiles): $24-byte header, $14-byte frame records, pieces, tiles; 400 of 86C bytes used at runtime; read by VDP_FlushDmaQueue; DMA to VRAM $D6A0-DAA0; jt[1964] used by ToxicCan_Init
+Art_ToxicCanSpr:	; sprite definition (type $18, raw 4bpp tiles): $24-byte header, $14-byte frame records, pieces, tiles; 400 of 86C bytes used at runtime; read by VDP_FlushDmaQueue; DMA to VRAM $D6A0-DAA0; jt[1964] used by ToxicCan_Init
 	incrom	$144FF6,$86C
 Art_EvilMagnetoSpr:	; sprite definition (type $18, raw 4bpp tiles): $24-byte header, $14-byte frame records, pieces, tiles; 57A0 of 82B4 bytes used at runtime; read by VDP_FlushDmaQueue; DMA to VRAM $7BA0-ABA0; jt[1965] used by EvilMagneto_Init, MagnetoBoss_Init, Magneto_SelectSpriteDef
 	incrom	$145862,$82B4

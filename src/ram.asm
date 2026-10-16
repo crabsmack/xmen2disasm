@@ -532,3 +532,6 @@ g_P2SplashX = -$3C04	; word: player 2 water splash x (Water_DrawHook -> Water_Dr
 g_P2SplashY = -$3C06	; word: player 2 water splash y (Water_DrawHook -> Water_DrawSplash)
 g_SpaceB1Cycle4Step = -$3BD2	; word: step of a fourth SpaceB1 palette cycle (SpaceB1_ResetPalCycles clears it; nothing reads it)
 g_SpaceB1Cycle4Delay = -$3BD0	; word: delay of a fourth SpaceB1 palette cycle (SpaceB1_ResetPalCycles sets 2; nothing reads it)
+g_FluxBombObj = -$1A54	; FLUXBOMB object ($102 bytes): Magneto's only flux bomb, reused by every FluxBomb_New (MagnetoShots_Reset frees it)
+g_MagneticGlobObj = -$1952	; MAGNETICGLOB object ($A6 bytes): Magneto's only magnetic globe shot, reused by every MagneticGlob_New (MagnetoShots_Reset frees it)
+g_Paused = -$1668	; byte: Pause_Check sets 1 when the game pauses; nothing reads or clears it
