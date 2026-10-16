@@ -3166,7 +3166,7 @@ Tbl_Blast_vtable:	; class descriptor of BLAST: word name offset $76, parent ACTO
 	incrom	$0DD0E8,$7C
 Art_BarrierSpr:	; sprite definition (type $19, Nemesis-compressed tiles): $24-byte header, $14-byte frame records, pieces, tiles; 44F of 450 bytes used at runtime; read by Spr_PreloadTiles, Nem_DecodeLoop; jt[1174] used by Barrier_ClassInit, Blast_ClassInit
 	incrom	$0DD164,$450
-Art_ControlBoxNem:	; Nemesis-style compressed 4bpp tiles (Nem_Decode; code table built from pairs by the caller); 42 of 42 bytes used at runtime; read by Nem_DecodeLoop, ControlBox_Draw, Nem_Decode; jt[1175] used by ControlBox_StartPattern
+Tbl_ControlBoxPattern:	; CONTROLBOX's firing pattern: word size in bytes, then 4-byte steps {s8 dx, s8 dy, u8 light frame, s8 frames} (PanelPattern); 42 of 42 bytes used at runtime; read by Nem_DecodeLoop, ControlBox_Draw, Nem_Decode; jt[1175] used by ControlBox_StartPattern
 	incrom	$0DD5B4,$42
 	include "src/f/0DD5F6.asm"
 	include "src/f/0DD604.asm"
@@ -3186,7 +3186,7 @@ Pad_ControlPanel:	; $00 fill; never read in the corpus; between ControlBox_State
 	incrom	$0DDA83,$1
 Art_SentinelsD1Spr:	; sprite definition (type $19, Nemesis-compressed tiles): $24-byte header, $14-byte frame records, pieces, tiles; 3B1 of 3B2 bytes used at runtime; read by Nem_DecodeLoop, Spr_PreloadTiles, Nem_BuildCodeTable; jt[1185] used by SentinelsD1_LoadResources
 	incrom	$0DDA84,$3B2
-Art_ControlPanelNem:	; Nemesis-style compressed 4bpp tiles (Nem_Decode; code table built from pairs by the caller); 82 of 82 bytes used at runtime; read by Nem_DecodeLoop, ControlPanel_Draw; jt[1186] used by ControlPanel_StartPattern
+Tbl_ControlPanelPattern:	; CONTROLPANEL's firing pattern: word size in bytes, then 4-byte steps {s8 dx, s8 dy, u8 light frame, s8 frames} (PanelPattern); 82 of 82 bytes used at runtime; read by Nem_DecodeLoop, ControlPanel_Draw; jt[1186] used by ControlPanel_StartPattern
 	incrom	$0DDE36,$82
 	include "src/f/0DDEB8.asm"
 	include "src/f/0DDEC6.asm"
@@ -3259,7 +3259,7 @@ Art_SentinelsA1Nem2:	; Nemesis-style compressed 4bpp tiles (Nem_Decode; code tab
 	incrom	$0E2D4E,$4E
 Art_SentinelsA1Nem3:	; Nemesis-style compressed 4bpp tiles (Nem_Decode; code table built from pairs by the caller); 33EA of 33F4 bytes used at runtime; read by Nem_DecodeLoop, Eni_ReadInline, Eni_Decode; jt[1215] used by SentinelsA1_LoadLevel
 	incrom	$0E2D9C,$33F4
-Art_SentinelsA1Spr:	; sprite definition (type $18, raw 4bpp tiles): $24-byte header, $14-byte frame records, pieces, tiles; 1000 of 1126 bytes used at runtime; read by VDP_FlushDmaQueue, VDP_WriteWords; DMA to VRAM $3F40-4140; jt[1216] used by SentinelsA1_InitZapLights
+Art_ZapLightSpr:	; sprite definition (type $18, raw 4bpp tiles): $24-byte header, $14-byte frame records, pieces, tiles; 1000 of 1126 bytes used at runtime; read by VDP_FlushDmaQueue, VDP_WriteWords; DMA to VRAM $3F40-4140; jt[1216] used by SentinelsA1_InitZapLights
 	incrom	$0E6190,$1126
 	include "src/f/0E72B6.asm"
 	include "src/f/0E7306.asm"
@@ -3320,7 +3320,7 @@ Pal_SentinelsA1Cycle21:	; palette data read by Pal_CycleStep; 14 of 14 bytes use
 	incrom	$0E7CAE,$14
 Pal_SentinelsA1Cycle22:	; palette data read by Pal_CycleStep; 14 of 14 bytes used at runtime; read by Pal_CycleStep, Spr_PreloadTiles; jt[1241] used by SentinelsA1_CyclePalettes
 	incrom	$0E7CC2,$14
-Art_SentinelsA1Spr24:	; sprite definition (type $19, Nemesis-compressed tiles): $24-byte header, $14-byte frame records, pieces, tiles; 3B3 of 3B4 bytes used at runtime; read by Nem_DecodeLoop, Pal_CycleStep, Spr_PreloadTiles; jt[1242] used by SentinelsA1_LoadResources
+Art_HoloBoltSpr:	; sprite definition (type $19, Nemesis-compressed tiles): $24-byte header, $14-byte frame records, pieces, tiles; 3B3 of 3B4 bytes used at runtime; read by Nem_DecodeLoop, Pal_CycleStep, Spr_PreloadTiles; jt[1242] used by SentinelsA1_LoadResources
 	incrom	$0E7CD6,$3B4
 	include "src/f/0E808A.asm"
 	include "src/f/0E8098.asm"
@@ -3338,7 +3338,7 @@ Tbl_HoloBoltAnimActive:	; animation script {flags 2 (once), 3 steps, delay 4, fr
 	incrom	$0E8434,$C
 Tbl_HoloBoltAnimEnd:	; animation script {flags 2 (once), 4 steps, delay 4, frames 6-9} (was labelled a sprite definition): HOLOBOLT end (HoloBolt_StateEnd); jt[1250]
 	incrom	$0E8440,$E
-Art_SentinelsA1Spr25:	; sprite definition (type $19, Nemesis-compressed tiles): $24-byte header, $14-byte frame records, pieces, tiles; 1587 of 1588 bytes used at runtime; read by Nem_DecodeLoop, Spr_PreloadTiles; jt[1251] used by SentinelsA1_LoadResources
+Art_HologramSpr:	; sprite definition (type $19, Nemesis-compressed tiles): $24-byte header, $14-byte frame records, pieces, tiles; 1587 of 1588 bytes used at runtime; read by Nem_DecodeLoop, Spr_PreloadTiles; jt[1251] used by SentinelsA1_LoadResources
 	incrom	$0E844E,$1588
 	include "src/f/0E99D6.asm"
 	include "src/f/0E99E4.asm"
@@ -3410,7 +3410,7 @@ Tbl_Hologram_ScriptAttackLen:	; word $1A: step count of the AI script Hologram_S
 	include "src/f/0EAF12.asm"
 Tbl_HologramDeathChain:	; explosion chain path (format at Tbl_BroodBossDeathChain): HOLOGRAM death; 94 of 98 bytes used at runtime; read by ExplodeFx_ChainStep; jt[1279] used by Hologram_Explode
 	incrom	$0EAF7A,$98
-Art_SentinelsA1Spr26:	; sprite definition (type $19, Nemesis-compressed tiles): $24-byte header, $14-byte frame records, pieces, tiles; 647 of 648 bytes used at runtime; read by Nem_DecodeLoop, Spr_PreloadTiles; jt[1280] used by SentinelsA1_LoadResources
+Art_CoreShieldsSpr:	; sprite definition (type $19, Nemesis-compressed tiles): $24-byte header, $14-byte frame records, pieces, tiles; 647 of 648 bytes used at runtime; read by Nem_DecodeLoop, Spr_PreloadTiles; jt[1280] used by SentinelsA1_LoadResources
 	incrom	$0EB012,$648
 	include "src/f/0EB65A.asm"
 	include "src/f/0EB662.asm"
@@ -3440,7 +3440,7 @@ Tbl_CoreShieldsLayout2:	; CORESHIELDS panel layout (format at Tbl_CoreShieldsLay
 	incrom	$0EBF98,$40
 Tbl_CoreShieldsDeathChain:	; explosion chain path (format at Tbl_BroodBossDeathChain): all CORESHIELDS down; D4 of D8 bytes used at runtime; read by ExplodeFx_ChainStep, CoreShields_Draw; jt[1297] used by CoreShields_StateAllDown
 	incrom	$0EBFD8,$D8
-Art_SentinelsA1Spr27:	; sprite definition (type $19, Nemesis-compressed tiles): $24-byte header, $14-byte frame records, pieces, tiles; 46D of 46E bytes used at runtime; read by Spr_PreloadTiles, Nem_DecodeLoop, Nem_BuildCodeTable; jt[1298] used by SentinelsA1_LoadResources
+Art_CoreElevatorSpr:	; sprite definition (type $19, Nemesis-compressed tiles): $24-byte header, $14-byte frame records, pieces, tiles; 46D of 46E bytes used at runtime; read by Spr_PreloadTiles, Nem_DecodeLoop, Nem_BuildCodeTable; jt[1298] used by SentinelsA1_LoadResources
 	incrom	$0EC0B0,$46E
 	include "src/f/0EC51E.asm"
 	include "src/f/0EC526.asm"

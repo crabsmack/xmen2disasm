@@ -18,11 +18,11 @@ SentinelsA1_ResetPalCycles:
 	clr.w	g_SceneVar3B38(a5)
 	clr.w	g_SceneVar3B48(a5)
 	clr.w	g_SceneVar3B40(a5)
-	clr.w	g_SentinelsA1PalCycles+$A(a5)
-	clr.w	g_SentinelsA1PalCycles+$8(a5)
-	clr.w	g_SentinelsA1PalCycles+$6(a5)
-	clr.w	g_SentinelsA1PalCycles+$4(a5)
-	clr.w	g_SentinelsA1PalCycles+$2(a5)
-	clr.w	g_SentinelsA1PalCycles(a5)
+	clr.w	g_SentinelsA1PalTimer(a5)
+	clr.w	g_SentinelsA1PalColour(a5)
+	clr.w	g_SentinelsA1PalSeq(a5)
+	clr.w	g_SentinelsA1ExitPalTimer(a5)
+	clr.w	g_SentinelsA1ExitPalColour(a5)
+	clr.w	g_SentinelsA1ExitPalSeq(a5)
 	unlk	a6
 	rts
