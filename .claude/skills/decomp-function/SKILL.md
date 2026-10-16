@@ -392,6 +392,25 @@ MPW C 3.3 matching, what reproduces the ROM (also COMPILER.md):
   `flags = c ? 0x8000 : 0;` = `moveq #0 / move.w`; the ROM's `move.l #$8000` = a block-local
   initializer. Callers passing more arguments than the callee reads: declare them as unused
   parameters. `return (char)(*method)(...)` adds no code.
+- (groups 15-16, the last unmatched) **Register allocation colours coarse live ranges**: a
+  variable's range runs from its first to its last mention in source order, function-level or
+  block-local alike; disjoint ranges share a register. A block-local in the wrong register: look
+  for a function-level variable whose span covers it. Function-level vs block-local also changes
+  priority. The lowest-weighted register variable gets d4, the highest d7; a dead
+  `if (0) { v = v + v + ...; }` inside a variable's range raises its rank without ending sharing
+  (dead code at the very end extends lifetimes instead). Out of registers, MPW moves plain long
+  locals to the stack by itself (Player_Nearest's `dx`/`dy`).
+- Written-out no-ops still show: `v += v << 0` keeps the `ext.l` that `v += v` drops;
+  `x = y = (e) + 0` computes e in d0 and copies it (else e goes straight into the first
+  variable's register); `((T *)((long)p + 0))->f` copies an address register through a data
+  register. `(short)(x - 7) + 0x80` is two ops, `x - 7 + 0x80` one.
+- Arrays/objects defined in the compile unit keep their address in an address register for a
+  loop (`lea g(a5),aN`); externs are re-addressed at each use: an `#ifdef XMEN2_MPW` definition
+  in the C file reproduces it (g_PalSave, g_Timers, g_HitNodes). A `(short)` cast on a long
+  passed to a short parameter adds word work. `else { if ... }` vs `else if` moves a nested
+  block's stack temporaries. Repeated expressions MPW keeps in stack temporaries: write the
+  expressions, don't declare variables. `if (0)` flushes pending pops like a label.
+  `g_Hook == Func` (the stored pointer on the left) compiles on PC too.
 
 ## asm functions (tag `asm`: hand-written 68000, no MPW frame)
 
