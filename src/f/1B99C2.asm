@@ -2,7 +2,7 @@
 ; Psylocke_StateCling - clinging to a wall: B slashes, jump leaps off
 ; In:  8(a6) = player
 ; Out: d0
-; Evidence: C -> frame $11, vy -$834, normal gravity, control; B -> sound $92, attack strength char +4, type 9/10, wall-slash animation (jt $8FD6 thunk); else cling animation (jt $47BA data)
+; Evidence: C -> frame $11, vy -$834, normal gravity, control; B -> sound $92, attack strength char +4, type 9/10, wall-slash animation (jt $8FD6 thunk); else cling animation (Tbl_PsylockeAnim11_2, jt $45BA)
 ; ---------------------------------------------------------------------------
 Psylocke_StateCling:
 	link.w	a6,#$0

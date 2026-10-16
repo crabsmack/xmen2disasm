@@ -2,7 +2,7 @@
 ; Nightcrawler_CeilingToWall - go round the end of a ceiling onto a wall, upside down
 ; In:  8(a6) = player
 ; Out: d0 = +4 flag 8
-; Evidence: +6 |= $2000, +$2E bit 3 (upside down), wall animation (jt $4662 data), x aligned to the wall +$BC by side (+$C0 2/3); Up held -> Nightcrawler_StateWaitUpRelease else Nightcrawler_StateWallCling
+; Evidence: +6 |= $2000, +$2E bit 3 (upside down), wall animation (Tbl_Anim_1A5FD0, jt $4462), x aligned to the wall +$BC by side (+$C0 2/3); Up held -> Nightcrawler_StateWaitUpRelease else Nightcrawler_StateWallCling
 ; ---------------------------------------------------------------------------
 Nightcrawler_CeilingToWall:
 	link.w	a6,#$0

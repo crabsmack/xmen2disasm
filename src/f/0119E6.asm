@@ -2,7 +2,7 @@
 ; BigAcolyte_IntroScript - BIGACOLYTE intro AI script: 6 jmp thunks (WaitPlayers, Appear, MoveToWall, Grow, Wait60, StartFight)
 ; In:  a4 = this (entered through +$5C)
 ; Out: none
-; Evidence: preceded by Tbl_BigAcolyteIntroScriptLen (6); jt[57] points at the script
+; Evidence: preceded by Tbl_BigAcolyteIntroScript (6); jt[57] points at the script
 ; ---------------------------------------------------------------------------
 BigAcolyte_IntroScript:
 	jmp	$15A(a5)	; -> BigAcolyte_ActWaitPlayers

@@ -2,7 +2,7 @@
 ; Beast_StateCling - clinging to a wall: B swipes, jump leaps off
 ; In:  8(a6) = player
 ; Out: d0 = +4 flag 8
-; Evidence: C pressed -> SetFrame 9, vy -$834, max speed char +$12, gravity, climb state cleared, control; B latched -> attack strength char +4, sound char +$2C, wall-attack animation (jt $446A data)
+; Evidence: C pressed -> SetFrame 9, vy -$834, max speed char +$12, gravity, climb state cleared, control; B latched -> attack strength char +4, sound char +$2C, wall-attack animation (Tbl_Anim_1829BE, jt $426A)
 ; ---------------------------------------------------------------------------
 Beast_StateCling:
 	link.w	a6,#$0

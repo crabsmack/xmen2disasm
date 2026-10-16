@@ -1,5 +1,5 @@
 ; ---------------------------------------------------------------------------
-; BrainChild_ActShoot - BRAINCHILD script action: shooting animation jt[$1F9A], then fire
+; BrainChild_ActShoot - BRAINCHILD script action: shooting animation Tbl_BrainChildAnim2 (jt $1D9A), then fire
 ; In:  8(a6) = this
 ; Out: d0
 ; Evidence: +$6C = $FF; next BrainChild_StateFire

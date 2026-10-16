@@ -1,5 +1,5 @@
 ; ---------------------------------------------------------------------------
-; SavageB1_LoadLevel - SavageB1: load the Jungle_2 level (Level_Load with the class list jt[$1CA2]) and parallax factors
+; SavageB1_LoadLevel - SavageB1: load the Jungle_2 level (Level_Load with the class list Tbl_SavageB1ClassList (jt $1AA2)) and parallax factors
 ; In:  none
 ; Out: none
 ; Evidence: TAS 29531

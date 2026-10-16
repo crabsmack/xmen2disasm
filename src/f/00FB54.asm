@@ -2,7 +2,7 @@
 ; AvalonB1_InitCamera - create the AvalonB1 camera with the intro hook chain, start at y = $430 with black palettes
 ; In:  none
 ; Out: none
-; Evidence: saves line 0 colours, g_Camera = CAMERA(+$0A New) (jt $4FBA), g_Camera+4 = AvalonB1_CamHookWait2, g_CameraY = $430, clears g_PalBase lines 0 and 2
+; Evidence: saves line 0 colours, g_Camera = CAMERA(+$0A New) (Tbl_Camera_vtable, jt $4DBA), g_Camera+4 = AvalonB1_CamHookWait2, g_CameraY = $430, clears g_PalBase lines 0 and 2
 ; ---------------------------------------------------------------------------
 AvalonB1_InitCamera:
 	link.w	a6,#$0

@@ -2,7 +2,7 @@
 ; FloatBio_Script1 - FLOATBIO AI script for spawn case 1, vertical float (table $11B66C, 6 entries), entries 1-4
 ; In:  jmp thunks
 ; Out: -
-; Evidence: jt $3042; count word mislabelled Tbl_FloatBio_Script1Len
+; Evidence: jt $3042; count word mislabelled Tbl_FloatBio_Script1
 ; ---------------------------------------------------------------------------
 FloatBio_Script1:
 	jmp	$3182(a5)	; -> BabyBio_ActPlayAnimC

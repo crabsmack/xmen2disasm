@@ -2,7 +2,7 @@
 ; WallCrawlBio_ActCrawlHorizontal - WALLCRAWLBIO script action: crawl left/right at speed $80 (animation by placement type)
 ; In:  8(a6) = this
 ; Out: d0 = flags & 8
-; Evidence: Obj_SetAnim jt $318A/$3192/$319A
+; Evidence: Obj_SetAnim Tbl_WallCrawlBioCrawlHAnim (jt $2F8A)/$3192/$319A
 ; ---------------------------------------------------------------------------
 WallCrawlBio_ActCrawlHorizontal:
 	link.w	a6,#$0

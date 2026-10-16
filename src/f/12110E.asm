@@ -2,7 +2,7 @@
 ; BioSentinel_StateWalking - BIOSENTINEL walking: swipe at a player within 70x40 px, stop at the segment end, keep walking while the animation runs
 ; In:  8(a6) = this
 ; Out: d0 = flags & 8
-; Evidence: Seg_WouldLeaveEnd; swipe animation jt $362A; TAS 36160-48903
+; Evidence: Seg_WouldLeaveEnd; swipe animation Tbl_Anim_12065E (jt $342A); TAS 36160-48903
 ; ---------------------------------------------------------------------------
 BioSentinel_StateWalking:
 	link.w	a6,#$0

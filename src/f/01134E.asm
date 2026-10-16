@@ -1,5 +1,5 @@
 ; ---------------------------------------------------------------------------
-; BigAcolyte_ActStartFight - BIGACOLYTE intro last step: stop sound $34, switch to the fight script (Tbl_BigAcolyteFightScriptLen) and start it
+; BigAcolyte_ActStartFight - BIGACOLYTE intro last step: stop sound $34, switch to the fight script (Tbl_BigAcolyteFightScript) and start it
 ; In:  8(a6) = this
 ; Out: none
 ; Evidence: AiScript_Set(+$96, jt $3F2) installs the new script; index 0

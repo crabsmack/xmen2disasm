@@ -2,7 +2,7 @@
 ; Rocket_SetAngleB - rocket set-up wrapper with two extra (unused) words (Rocket_SetAngleOwner)
 ; In:  8(a6) = rocket  $C(a6) = owner  $12(a6) = word angle  $16/$1A(a6) = words
 ; Out: none
-; Evidence: caller $0B78B8; TAS 212-1089
+; Evidence: caller Tank_ActFireRocket ($1419E0, margins $C0/$5A that nothing reads); TAS 212-1089
 ; ---------------------------------------------------------------------------
 Rocket_SetAngleB:
 	link.w	a6,#$0

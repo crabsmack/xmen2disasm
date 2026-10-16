@@ -1,5 +1,5 @@
 ; ---------------------------------------------------------------------------
-; EvilDrop_ActOpen - EVILDROP script action: play the opening animation (+$AC, default jt[$183A]) and hand over to the BIOBALLS state BioBalls_WaitPathDone
+; EvilDrop_ActOpen - EVILDROP script action: play the opening animation (+$AC, default Tbl_EvilDropDefaultBallPath (jt $163A)) and hand over to the BIOBALLS state BioBalls_WaitPathDone
 ; In:  8(a6) = this
 ; Out: none
 ; Evidence: BioBalls_SetPathCollapsed(this, anim); +$5C = BioBalls_WaitPathDone; jt 704

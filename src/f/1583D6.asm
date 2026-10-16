@@ -2,7 +2,7 @@
 ; FluxBomb_StepBurst - explosion phase 3: release one more particle each step and move the released ones outward
 ; In:  8(a6) = bomb
 ; Out: none
-; Evidence: timer +$6E < 1 -> phase +$100 = 4; +$101 += 100 caps the live count at 16; particle += direction pair (jt $49AA / $49B2 strong)
+; Evidence: timer +$6E < 1 -> phase +$100 = 4; +$101 += 100 caps the live count at 16; particle += direction pair (Tbl_FluxBombBurstDirs (jt $47AA) / $49B2 strong)
 ; ---------------------------------------------------------------------------
 FluxBomb_StepBurst:
 	link.w	a6,#$0

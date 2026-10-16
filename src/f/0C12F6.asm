@@ -1,5 +1,5 @@
 ; ---------------------------------------------------------------------------
-; SavageB1_SetParallax - SavageB1: install its parallax descriptor jt[$24FA] (Scroll_SetParallax)
+; SavageB1_SetParallax - SavageB1: install its parallax descriptor Tbl_SavageB1Parallax (jt $22FA) (Scroll_SetParallax)
 ; In:  none
 ; Out: none
 ; Found: link-after-rts

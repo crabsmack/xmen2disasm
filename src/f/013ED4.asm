@@ -2,7 +2,7 @@
 ; CapedAcolyte_MainScript - CAPEDACOLYTE main AI script: jmp thunks AnimLow, Hover, FacePlayer, ShootBurst (+ FacePlayer at CapedAcolyte_MainScriptEnd)
 ; In:  a4 = this
 ; Out: none
-; Evidence: preceded by Tbl_CapedAcolyteMainScriptLen (5); installed by CapedAcolyte_ActStartMainScript
+; Evidence: preceded by Tbl_CapedAcolyteMainScript (5); installed by CapedAcolyte_ActStartMainScript
 ; ---------------------------------------------------------------------------
 CapedAcolyte_MainScript:
 	jmp	$27A(a5)	; -> CapedAcolyte_ActAnimLow

@@ -2,7 +2,7 @@
 ; SiberiaB1_LoadResources - SiberiaB1: load three graphics resources (one is the debris sprite set kept in $FFC6F2)
 ; In:  none
 ; Out: none
-; Evidence: SprDef_Add with $133E98, $0FBDD2, jt $3BFA
+; Evidence: SprDef_Add with $133E98, $0FBDD2, Art_NinjaSpr2 (jt $39FA)
 ; ---------------------------------------------------------------------------
 SiberiaB1_LoadResources:
 	link.w	a6,#$0

@@ -1,5 +1,5 @@
 ; ---------------------------------------------------------------------------
-; ChildShip_StateCrash1 - CHILDSHIP crash: on reaching y $140 shake the screen (jt[$1FBA]) and bounce (vy -$458, gravity $60)
+; ChildShip_StateCrash1 - CHILDSHIP crash: on reaching y $140 shake the screen (Tbl_ChildShipQuake, jt $1DBA) and bounce (vy -$458, gravity $60)
 ; In:  8(a6) = this
 ; Out: d0
 ; Evidence: next ChildShip_StateCrash2; TAS 33438-33450

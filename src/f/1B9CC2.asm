@@ -2,7 +2,7 @@
 ; Psylocke_GroundSpecialDown - PSYLOCKE slot +$E2: Down+A: crouching psychic blade
 ; In:  8(a6) = player
 ; Out: none
-; Evidence: like Psylocke_GroundSpecial with animations jt $479A/$47A2; next XPlayer_CrouchAttackRecover
+; Evidence: like Psylocke_GroundSpecial with animations Tbl_PsylockeAnim7_2 (jt $459A)/$47A2; next XPlayer_CrouchAttackRecover
 ; ---------------------------------------------------------------------------
 Psylocke_GroundSpecialDown:
 	link.w	a6,#$0

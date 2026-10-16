@@ -1,5 +1,5 @@
 ; ---------------------------------------------------------------------------
-; BigBio_StateStartMorph - BIGBIO: set shape jt $3692, jump to the arena side and morph
+; BigBio_StateStartMorph - BIGBIO: set shape Tbl_BigBioOrbShape (jt $3492), jump to the arena side and morph
 ; In:  8(a6) = this
 ; Out: d0 = flags & 8
 ; Evidence: +$B0 arena left; next StateMorphToShape

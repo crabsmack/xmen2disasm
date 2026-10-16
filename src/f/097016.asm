@@ -1,8 +1,8 @@
 ; ---------------------------------------------------------------------------
-; XClone_Impact - XCLONE: ground impact at (x, y) - screen shake jt[$1C22] and an impact effect actor
+; XClone_Impact - XCLONE: ground impact at (x, y) - screen shake Tbl_XCloneImpactQuake (jt $1A22) and an impact effect actor
 ; In:  8(a6) = word x, $C(a6) = word y
 ; Out: d0
-; Evidence: g_CamShake := jt[$1C22]; plain ACTOR New at (x, y) with ExplodeFx_ChainRepeat(effect, jt[$1C1A], 1, -$10, -$20, 0); caller XClone_StateChildLeap
+; Evidence: g_CamShake := Tbl_XCloneImpactQuake (jt $1A22); plain ACTOR New at (x, y) with ExplodeFx_ChainRepeat(effect, Tbl_XCloneImpactChain (jt $1A1A), 1, -$10, -$20, 0); caller XClone_StateChildLeap
 ; Found: link-after-rts
 ; ---------------------------------------------------------------------------
 XClone_Impact:

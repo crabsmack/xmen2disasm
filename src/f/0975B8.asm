@@ -1,8 +1,8 @@
 ; ---------------------------------------------------------------------------
-; XClone_ActBallsCollapse - XCLONE script action: collapse the BIOBALLS child onto the floor (animation jt[$1C12]), then wait for it
+; XClone_ActBallsCollapse - XCLONE script action: collapse the BIOBALLS child onto the floor (animation Tbl_XCloneBallsCollapsePath (jt $1A12)), then wait for it
 ; In:  8(a6) = this
 ; Out: d0
-; Evidence: BioBalls_FillFromFirst, BioBalls_StartPath(child, jt[$1C12], 0, 0, 0), child y = floor, state BioBalls_ActClearAnim; next XClone_StateWaitChild; jt 753
+; Evidence: BioBalls_FillFromFirst, BioBalls_StartPath(child, Tbl_XCloneBallsCollapsePath (jt $1A12), 0, 0, 0), child y = floor, state BioBalls_ActClearAnim; next XClone_StateWaitChild; jt 753
 ; Found: jt 753
 ; ---------------------------------------------------------------------------
 XClone_ActBallsCollapse:

@@ -1,8 +1,8 @@
 ; ---------------------------------------------------------------------------
-; SavageBioBalls_ActLeap - BIOBALLS companion action: leap $E0 px towards the other surface (animation jt[$2092], sound $EF)
+; SavageBioBalls_ActLeap - BIOBALLS companion action: leap $E0 px towards the other surface (animation Tbl_SavageBioBallsFormation (jt $1E92), sound $EF)
 ; In:  8(a6) = the BIOBALLS object
 ; Out: d0
-; Evidence: BioBalls_StartPath(this, jt[$2092], flip flags, 0, +-$E0); state BioBalls_WaitPathDone
+; Evidence: BioBalls_StartPath(this, Tbl_SavageBioBallsFormation (jt $1E92), flip flags, 0, +-$E0); state BioBalls_WaitPathDone
 ; Found: jt 1017
 ; ---------------------------------------------------------------------------
 SavageBioBalls_ActLeap:

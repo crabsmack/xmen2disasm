@@ -2,7 +2,7 @@
 ; AvalonA4_InitCamera - create the AvalonA4 camera with AvalonA4_CamHook unless one exists
 ; In:  none
 ; Out: none
-; Evidence: g_Camera == 0 -> CAMERA +$0A New(jt $4FBA, AvalonA4_CamHook)
+; Evidence: g_Camera == 0 -> CAMERA +$0A New(Tbl_Camera_vtable (jt $4DBA), AvalonA4_CamHook)
 ; ---------------------------------------------------------------------------
 AvalonA4_InitCamera:
 	link.w	a6,#$0

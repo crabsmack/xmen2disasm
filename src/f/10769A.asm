@@ -2,7 +2,7 @@
 ; SpaceB1_InstallHooks - SpaceB1: frame hook, resources, switch tiles, palette cycles, place players, segment handler 27, create the camera
 ; In:  none
 ; Out: none
-; Evidence: g_SceneFrameHook = SpaceB1_FrameHook; $FFCE02 = SegHook_HurtPlayerStop; CAMERA New (jt $4FBA) with SpaceB1_InitCamera
+; Evidence: g_SceneFrameHook = SpaceB1_FrameHook; $FFCE02 = SegHook_HurtPlayerStop; CAMERA New (Tbl_Camera_vtable, jt $4DBA) with SpaceB1_InitCamera
 ; ---------------------------------------------------------------------------
 SpaceB1_InstallHooks:
 	link.w	a6,#$0

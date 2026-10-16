@@ -1,5 +1,5 @@
 ; ---------------------------------------------------------------------------
-; ChildShip_StateCrash - CHILDSHIP state: shot down - wreck trail jt[$1FC2], fall (vy $100, gravity $100)
+; ChildShip_StateCrash - CHILDSHIP state: shot down - wreck trail Tbl_ChildShipWreckTrail (jt $1DC2), fall (vy $100, gravity $100)
 ; In:  8(a6) = this
 ; Out: d0
 ; Evidence: next ChildShip_StateCrash1; TAS 33437

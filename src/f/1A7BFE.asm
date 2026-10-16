@@ -2,7 +2,7 @@
 ; Nightcrawler_SetFrame - NIGHTCRAWLER slot +$56: set a frame from one of three sprite banks (0-$7F, $80-$C7, 200+)
 ; In:  8(a6) = player, $C(a6) = frame
 ; Out: none
-; Evidence: defs jt $474A data, $1B0A56 and $1B494A thunks; bank change invalidates +$38; then like Actor_SetFrame
+; Evidence: defs Art_EvilNightcrawlerSpr (jt $454A), $1B0A56 and $1B494A thunks; bank change invalidates +$38; then like Actor_SetFrame
 ; ---------------------------------------------------------------------------
 Nightcrawler_SetFrame:
 	link.w	a6,#$FFFC

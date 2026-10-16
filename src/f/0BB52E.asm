@@ -1,5 +1,5 @@
 ; ---------------------------------------------------------------------------
-; SavageBio_ActExtendTentacle - SAVAGE bio script action: extend the tentacle along path jt[$2062] (frame $42, sound $F0)
+; SavageBio_ActExtendTentacle - SAVAGE bio script action: extend the tentacle along path Tbl_SavageBioTentaclePath (jt $1E62) (frame $42, sound $F0)
 ; In:  8(a6) = this
 ; Out: d0
 ; Evidence: +$B0 = path, +$AE >= 1; next SavageBio_StateExtend

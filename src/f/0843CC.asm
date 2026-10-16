@@ -1,6 +1,6 @@
 ; ---------------------------------------------------------------------------
-; SmallBrood_Init_Case1 - SmallBrood_Init switch case 1: kamikaze script jt[$142A], wait for a player first (SmallBrood_StateWaitForPlayer)
-; Evidence: sets +$5C/+$64 = SmallBrood_StateWaitForPlayer, AiScript_Set(this+$96, jt[$142A]); +$B2 bit 0 = run left when +$E > 0
+; SmallBrood_Init_Case1 - SmallBrood_Init switch case 1: kamikaze script Tbl_SmallBrood_ScrStepKamikazeLen (jt $122A), wait for a player first (SmallBrood_StateWaitForPlayer)
+; Evidence: sets +$5C/+$64 = SmallBrood_StateWaitForPlayer, AiScript_Set(this+$96, Tbl_SmallBrood_ScrStepKamikazeLen (jt $122A)); +$B2 bit 0 = run left when +$E > 0
 ; Found: runtime: executed in 1 run(s) (tas)
 ; ---------------------------------------------------------------------------
 SmallBrood_Init_Case1:

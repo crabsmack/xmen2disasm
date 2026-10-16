@@ -2,7 +2,7 @@
 ; EvilMaker_ActDropWolverine - EVILMAKER script action: drop a capsule holding clone type 7 (EVILWOLVERINE)
 ; In:  8(a6) = this
 ; Out: none
-; Evidence: record type 7, jt[$1C02]; jt 695
+; Evidence: record type 7, Tbl_EvilWolverineBallPath (jt $1A02); jt 695
 ; Found: jt 695
 ; ---------------------------------------------------------------------------
 EvilMaker_ActDropWolverine:

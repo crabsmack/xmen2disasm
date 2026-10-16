@@ -2,7 +2,7 @@
 ; Barbarian_StateStart - BARBARIAN first state: stand on the floor below, play its pose, go idle
 ; In:  8(a6) = this
 ; Out: d0
-; Evidence: Seg_FindBelow floor, Barbarian_StandOn, animation jt[$2292]; next Barbarian_StateIdle; TAS 27993-32927
+; Evidence: Seg_FindBelow floor, Barbarian_StandOn, animation Tbl_BarbarianAnim4 (jt $2092); next Barbarian_StateIdle; TAS 27993-32927
 ; Found: link-after-rts
 ; ---------------------------------------------------------------------------
 Barbarian_StateStart:

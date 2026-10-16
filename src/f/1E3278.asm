@@ -2,7 +2,7 @@
 ; Cyclops_StateHardLanding - hard-landing state: releasing A fires a crouched level beam, else the normal hard-landing recovery
 ; In:  8(a6) = player
 ; Out: d0
-; Evidence: A released -> Cyclops_StartBeam(jt $4C72, 0), animation jt $4C1A, +$5C = Cyclops_StateCrouchBeam; else XPlayer_StateHardLanding
+; Evidence: A released -> Cyclops_StartBeam(Tbl_CyclopsBeamCrouch (jt $4A72), 0), animation Tbl_Anim_1E1CC8 (jt $4A1A), +$5C = Cyclops_StateCrouchBeam; else XPlayer_StateHardLanding
 ; ---------------------------------------------------------------------------
 Cyclops_StateHardLanding:
 	link.w	a6,#$0

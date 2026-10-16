@@ -1,5 +1,5 @@
 ; ---------------------------------------------------------------------------
-; EvilPsylocke_ActBallsPath - EVILPSYLOCKE script action: send the BIOBALLS child along path jt[$1BF2] (motion BioBalls_MotionPath)
+; EvilPsylocke_ActBallsPath - EVILPSYLOCKE script action: send the BIOBALLS child along path Tbl_EvilPsylockeBallsMotionPath (jt $19F2) (motion BioBalls_MotionPath)
 ; In:  8(a6) = this
 ; Out: d0
 ; Evidence: same as EvilGambit_ActBallsPath with another path; jt 787

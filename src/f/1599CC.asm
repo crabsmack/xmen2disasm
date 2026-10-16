@@ -2,7 +2,7 @@
 ; Magneto_FrameBank - Magneto sprite definition for a frame number (three banks: 0-$3F, $40-$5F, $60+)
 ; In:  8(a6) = word frame
 ; Out: d0 = sprite definition
-; Evidence: < $40 -> jt $3FA2 data, < $60 -> $14F99E, else $145862 (thunks)
+; Evidence: < $40 -> Art_MagnetoBossSpr3 (jt $3DA2), < $60 -> $14F99E, else $145862 (thunks)
 ; ---------------------------------------------------------------------------
 Magneto_FrameBank:
 	link.w	a6,#$0

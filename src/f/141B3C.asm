@@ -2,7 +2,7 @@
 ; Tank_StateWreck - destroyed tank: show the wreck animation forever
 ; In:  8(a6) = this
 ; Out: d0 = +4 flag 8
-; Evidence: Obj_SetAnim(jt $3E6A data), delay $FF, state itself
+; Evidence: Obj_SetAnim(Tbl_TankWreckAnim, jt $3C6A), delay $FF, state itself
 ; ---------------------------------------------------------------------------
 Tank_StateWreck:
 	link.w	a6,#$0

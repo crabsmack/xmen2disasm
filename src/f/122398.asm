@@ -1,5 +1,5 @@
 ; ---------------------------------------------------------------------------
-; BigBio_ActSpit3 - BIGBIO script action: spit animation (jt $368A), 3 shots
+; BigBio_ActSpit3 - BIGBIO script action: spit animation (Tbl_Anim_1206F4, jt $348A), 3 shots
 ; In:  8(a6) = this
 ; Out: d0 = flags & 8
 ; Evidence: first entry of BigBio_Script; next StateSpitStart

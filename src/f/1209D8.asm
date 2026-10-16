@@ -1,5 +1,5 @@
 ; ---------------------------------------------------------------------------
-; BioSentinel_Init - BIOSENTINEL constructor: parent Init, stats jt $365A but health 4, no motion, position from the placement entry, states BioSentinel_StateStart / hurt BioSentinel_StateHurt, flags |= $80, sprite Art_BasicBioSentinelSpr2, sprite priority (+$2E bit 2) from the live player; variant +$96 = entry byte 9, +$9E = p$A (default 90), +$A0 = p$C (default 2), +$A4 by p$E (0: $120, 1: $80, 2: $200), vulnerable flag +$A6 = 0 (class slot 3, +$12)
+; BioSentinel_Init - BIOSENTINEL constructor: parent Init, stats Tbl_BioSentinelStats (jt $345A) but health 4, no motion, position from the placement entry, states BioSentinel_StateStart / hurt BioSentinel_StateHurt, flags |= $80, sprite Art_BasicBioSentinelSpr2, sprite priority (+$2E bit 2) from the live player; variant +$96 = entry byte 9, +$9E = p$A (default 90), +$A0 = p$C (default 2), +$A4 by p$E (0: $120, 1: $80, 2: $200), vulnerable flag +$A6 = 0 (class slot 3, +$12)
 ; In:  8(a6) = this  $C/$10(a6) = x, y (16.16)  $14(a6) = placement entry (not null-checked)
 ; Out: d0 = garbage
 ; Evidence: method 3 of class descriptor $1235F6 (name string "BIOSENTINEL", parent BASICBIOSENTINEL)

@@ -1,5 +1,5 @@
 ; ---------------------------------------------------------------------------
-; BigBio_ActRoarThenLaunch - BIGBIO script action: roar (jt $366A, sound $F9), then leap
+; BigBio_ActRoarThenLaunch - BIGBIO script action: roar (Tbl_BigBioAnim (jt $346A), sound $F9), then leap
 ; In:  8(a6) = this
 ; Out: d0 = flags & 8
 ; Evidence: next StateLaunch

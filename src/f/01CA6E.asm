@@ -2,7 +2,7 @@
 ; YoyoAcolyte_ScriptMixA - YOYOACOLYTE AI script (jt[145]): Level, Idle, High, Idle, Low, Idle
 ; In:  a4 = this
 ; Out: none
-; Evidence: preceded by Tbl_YoyoAcolyteScriptMixALen; the last thunk at $01CA82 is still raw (never ran)
+; Evidence: preceded by Tbl_YoyoAcolyteScriptMixA; the last thunk at $01CA82 is still raw (never ran)
 ; ---------------------------------------------------------------------------
 YoyoAcolyte_ScriptMixA:
 	jmp	$462(a5)	; -> YoyoAcolyte_ActThrowLevel

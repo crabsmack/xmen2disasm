@@ -2,7 +2,7 @@
 ; Wolverine_AirAttackDown - WOLVERINE slot +$BE: Down+B in the air: claw dive straight down (once per jump)
 ; In:  8(a6) = player
 ; Out: d0 = +4 flag 8
-; Evidence: +$90 bit 2 clear: dive animation (jt $45BA data), sound $88, vy 0, gravity $B4, max fall $860, +$6E = 6, +$90 |= 2, state Wolverine_StateDiveHold
+; Evidence: +$90 bit 2 clear: dive animation (Tbl_WolverineAnim9, jt $43BA), sound $88, vy 0, gravity $B4, max fall $860, +$6E = 6, +$90 |= 2, state Wolverine_StateDiveHold
 ; ---------------------------------------------------------------------------
 Wolverine_AirAttackDown:
 	link.w	a6,#$0

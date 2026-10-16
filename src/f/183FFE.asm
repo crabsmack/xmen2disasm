@@ -2,7 +2,7 @@
 ; Beast_Init - BEAST slot +$12: XCLIMBER Init plus Beast's character record, states and sprite slots
 ; In:  8(a6) = player, $C/$10/$14(a6) = Init args
 ; Out: none
-; Evidence: parent +$12; +$8C = char record (jt $449A data); +$5C/+$64 = vtable +$A6, +$60 = XPlayer_StateHurt (jt $4D22); +$C0 |= $100; Spr_Init body at +$2E (VRAM base $FFC64E for P1 / $FFC64C for P2) and shockwave sprite at +$C2
+; Evidence: parent +$12; +$8C = char record (Tbl_BeastCharRecord, jt $429A); +$5C/+$64 = vtable +$A6, +$60 = XPlayer_StateHurt (jt $4D22); +$C0 |= $100; Spr_Init body at +$2E (VRAM base $FFC64E for P1 / $FFC64C for P2) and shockwave sprite at +$C2
 ; ---------------------------------------------------------------------------
 Beast_Init:
 	link.w	a6,#$0

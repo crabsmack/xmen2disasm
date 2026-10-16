@@ -2,7 +2,7 @@
 ; Wolverine_SetFrame - WOLVERINE slot +$56: set a frame; frames $80+ come from the second sprite bank
 ; In:  8(a6) = player, $C(a6) = frame
 ; Out: none
-; Evidence: < $80 -> def jt $4642 data, else frame - $80 from the def at jt $3654 thunk; bank change invalidates +$38; then like Actor_SetFrame
+; Evidence: < $80 -> def Art_EvilWolverineSpr (jt $4442), else frame - $80 from the def at jt $3654 thunk; bank change invalidates +$38; then like Actor_SetFrame
 ; ---------------------------------------------------------------------------
 Wolverine_SetFrame:
 	link.w	a6,#$FFFC

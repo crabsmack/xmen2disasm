@@ -1,6 +1,6 @@
 ; ---------------------------------------------------------------------------
 ; Explosion_HurtActor - explosion hit callback: deal 4 damage (hit type 4) to the actor
-; In:  8(a6) = actor  $A/$E(a6) = word x, y
+; In:  8(a6) = actor  $E/$12(a6) = words x, y
 ; Out: none
 ; Evidence: actor vtable +$26 TakeDamage(0, 4, 4, x, y); passed to ObjList_ForEachInBox
 ; ---------------------------------------------------------------------------

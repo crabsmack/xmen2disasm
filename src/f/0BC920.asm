@@ -1,5 +1,5 @@
 ; ---------------------------------------------------------------------------
-; SavageBio_ActToCentre - SAVAGE bio script action: animation jt[$2002], then walk to the middle of the view
+; SavageBio_ActToCentre - SAVAGE bio script action: animation Tbl_SavageBioAnim (jt $1E02), then walk to the middle of the view
 ; In:  8(a6) = this
 ; Out: d0
 ; Evidence: next SavageBio_StateToCentre; TAS 33904

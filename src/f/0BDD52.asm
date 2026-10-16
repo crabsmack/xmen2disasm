@@ -1,5 +1,5 @@
 ; ---------------------------------------------------------------------------
-; Barbarian_StateWalkStart - BARBARIAN state: start walking (animation jt[$228A], speed +$98) in the facing direction
+; Barbarian_StateWalkStart - BARBARIAN state: start walking (animation Tbl_BarbarianAnim3 (jt $208A), speed +$98) in the facing direction
 ; In:  8(a6) = this
 ; Out: d0
 ; Evidence: next Barbarian_StateWalkRight / Barbarian_StateWalkLeft; TAS 31876-33058

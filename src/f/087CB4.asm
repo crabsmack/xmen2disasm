@@ -1,5 +1,5 @@
 ; ---------------------------------------------------------------------------
-; BroodBoss_StateDeathAnim - BROODBOSS death: play the death animation jt[$16AA] for $3C frames
+; BroodBoss_StateDeathAnim - BROODBOSS death: play the death animation Tbl_BroodBossAnim8 (jt $14AA) for $3C frames
 ; In:  8(a6) = this
 ; Out: d0
 ; Evidence: next BroodBoss_StateDeathFx; TAS 50631

@@ -1,5 +1,5 @@
 ; ---------------------------------------------------------------------------
-; BigBio_StateDeathOrbs - BIGBIO death: orb shape jt $3692, 120-frame timer, then the orbs fall
+; BigBio_StateDeathOrbs - BIGBIO death: orb shape Tbl_BigBioOrbShape (jt $3492), 120-frame timer, then the orbs fall
 ; In:  8(a6) = this
 ; Out: d0 = flags & 8
 ; Evidence: next StateDying

@@ -2,7 +2,7 @@
 ; EvilMaker_ActDropMagneto - EVILMAKER script action: drop a capsule holding clone type 4 (EVILMAGNETO)
 ; In:  8(a6) = this
 ; Out: none
-; Evidence: record type 4, jt[$1BCA]; jt 692
+; Evidence: record type 4, Tbl_EvilMagnetoBallPath (jt $19CA); jt 692
 ; Found: jt 692
 ; ---------------------------------------------------------------------------
 EvilMaker_ActDropMagneto:

@@ -2,7 +2,7 @@
 ; Brood_StateFire - BROOD: fire a shot from (10, -48) with the recoil animation
 ; In:  8(a6) = this
 ; Out: d0 = +4 & 8
-; Evidence: slot $82 (SmallBrood_Shoot) (this, 10, -48, 0); animation jt $1202; next Brood_StateFireEnd
+; Evidence: slot $82 (SmallBrood_Shoot) (this, 10, -48, 0); animation Tbl_Anim_06D10E (jt $1002); next Brood_StateFireEnd
 ; ---------------------------------------------------------------------------
 Brood_StateFire:
 	link.w	a6,#$0

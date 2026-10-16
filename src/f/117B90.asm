@@ -1,5 +1,5 @@
 ; ---------------------------------------------------------------------------
-; MysteryPowerUp_Init - POWERUP Init, then animation +$44 = jt $2EAA (mystery animation) and its first frame (class slot 3, +$12)
+; MysteryPowerUp_Init - POWERUP Init, then animation +$44 = Tbl_MysteryPowerUpAnim (jt $2CAA) (mystery animation) and its first frame (class slot 3, +$12)
 ; In:  8(a6) = this  $C/$10(a6) = x, y (16.16)  $14(a6) = placement entry or 0
 ; Out: none
 ; Evidence: method 3 of class descriptor $117FC0 (name string "MYSTERYPOWERUP", parent POWERUP)

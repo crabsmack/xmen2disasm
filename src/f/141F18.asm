@@ -1,8 +1,8 @@
 ; ---------------------------------------------------------------------------
-; TankLeft_StateDriveIn - drive in until the tank reaches mid-screen, then switch to its leaving script (jt $3E82)
+; TankLeft_StateDriveIn - drive in until the tank reaches mid-screen, then switch to its leaving script (Tbl_Tank_ScriptDrive, jt $3C82)
 ; In:  8(a6) = this
 ; Out: d0
-; Evidence: after +$6E: x < g_CameraX + $A0 -> drive animation, vx = +/-$9E, AiScript_Set(+$94, jt $3E82); else next thunk
+; Evidence: after +$6E: x < g_CameraX + $A0 -> drive animation, vx = +/-$9E, AiScript_Set(+$94, Tbl_Tank_ScriptDrive (jt $3C82)); else next thunk
 ; ---------------------------------------------------------------------------
 TankLeft_StateDriveIn:
 	link.w	a6,#$0

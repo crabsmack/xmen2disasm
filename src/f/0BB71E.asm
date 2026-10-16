@@ -1,5 +1,5 @@
 ; ---------------------------------------------------------------------------
-; SavageBio_ActExtendShort - SAVAGE bio script action: extend a short tentacle (path jt[$205A], 10 segments; frame $42, sound $F0)
+; SavageBio_ActExtendShort - SAVAGE bio script action: extend a short tentacle (path Tbl_SavageBioShortTentaclePath (jt $1E5A), 10 segments; frame $42, sound $F0)
 ; In:  8(a6) = this
 ; Out: d0
 ; Evidence: next SavageBio_StateExtend10; TAS 33676-33889

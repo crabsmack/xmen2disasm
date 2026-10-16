@@ -1,5 +1,5 @@
 ; ---------------------------------------------------------------------------
-; SporeMine_RecArm2 - spore handler: arming step 2 (animation jt[$239A], sound $B9, $14 frames)
+; SporeMine_RecArm2 - spore handler: arming step 2 (animation Tbl_SporeMineArmAnim2 (jt $219A), sound $B9, $14 frames)
 ; In:  8(a6) = spore record
 ; Out: none
 ; Found: link-after-rts

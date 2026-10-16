@@ -2,7 +2,7 @@
 ; Wolverine_StartCeilingCrawl - start crawling along a ceiling: hang under it and move along it
 ; In:  8(a6) = player
 ; Out: d0 = +4 flag 8
-; Evidence: turns around (+$2E ^= $10), alternating crawl animations (jt $458A/$4592 data) by claw phase, y aligned under the ceiling segment +$BC (+$E), vx +/-$208, state Wolverine_StateCeilingCrawl
+; Evidence: turns around (+$2E ^= $10), alternating crawl animations (Tbl_WolverineAnim14 (jt $438A)/$4592 data) by claw phase, y aligned under the ceiling segment +$BC (+$E), vx +/-$208, state Wolverine_StateCeilingCrawl
 ; ---------------------------------------------------------------------------
 Wolverine_StartCeilingCrawl:
 	link.w	a6,#$0

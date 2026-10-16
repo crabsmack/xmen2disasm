@@ -2,7 +2,7 @@
 ; Gambit_SetAirFrame - GAMBIT slot +$7E: pick the airborne frame or animation from the vertical speed (unless a one-shot animation is playing)
 ; In:  8(a6) = player
 ; Out: d0 = result of the frame/animation call
-; Evidence: skipped while the animation script +$44 has flag bit 1; vy < -$200 frame $1C, < $200 frame $1D, < $300 animation Tbl_Anim_1CEC96 (jt $4A72 with A held), else jt $4A6A ($4A7A with A held)
+; Evidence: skipped while the animation script +$44 has flag bit 1; vy < -$200 frame $1C, < $200 frame $1D, < $300 animation Tbl_Anim_1CEC96 (Tbl_Anim_1CECAA (jt $4872) with A held), else Tbl_Anim_1CECA0 (jt $486A) ($4A7A with A held)
 ; ---------------------------------------------------------------------------
 Gambit_SetAirFrame:
 	link.w	a6,#$0

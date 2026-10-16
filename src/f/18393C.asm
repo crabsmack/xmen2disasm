@@ -2,7 +2,7 @@
 ; Beast_StateRoll - rolling leap: keep rolling forward at $1E0 until the time ends or a landing
 ; In:  8(a6) = player
 ; Out: d0
-; Evidence: roll animation (jt $4492 data), vx +/-$1E0 by facing; grounded during the roll -> Beast_RollLand; frame $97 once falling (vy > $96)
+; Evidence: roll animation (Tbl_Anim_1829F8, jt $4292), vx +/-$1E0 by facing; grounded during the roll -> Beast_RollLand; frame $97 once falling (vy > $96)
 ; ---------------------------------------------------------------------------
 Beast_StateRoll:
 	link.w	a6,#$0

@@ -2,7 +2,7 @@
 ; Deathbird_StateChooseAttack - Deathbird: pick the next attack from its pattern list (swoop, low dive or fly-by); if the elevator is moving, sometimes go for the switch
 ; In:  8(a6) = this
 ; Out: d0 = flags & 8
-; Evidence: pattern pointer $FFC6EC (jt $2D0A, $FF ends); Deathbird_SetMoveMode 5/7/4/9
+; Evidence: pattern pointer $FFC6EC (Tbl_DeathbirdAttackOrder (jt $2B0A), $FF ends); Deathbird_SetMoveMode 5/7/4/9
 ; ---------------------------------------------------------------------------
 Deathbird_StateChooseAttack:
 	link.w	a6,#$0

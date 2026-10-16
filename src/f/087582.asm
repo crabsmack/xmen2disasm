@@ -2,7 +2,7 @@
 ; BroodBoss_StateChargeWall - BROODBOSS state: charge until the boss offset reaches $1C4, then stop and shake the screen
 ; In:  8(a6) = this
 ; Out: d0
-; Evidence: claw/legs stopped, g_CamShake := jt[$16CA]; next BroodBoss_StateHitWall; TAS 50474-50480
+; Evidence: claw/legs stopped, g_CamShake := Tbl_BroodBossQuake (jt $14CA); next BroodBoss_StateHitWall; TAS 50474-50480
 ; Found: link-after-rts
 ; ---------------------------------------------------------------------------
 BroodBoss_StateChargeWall:

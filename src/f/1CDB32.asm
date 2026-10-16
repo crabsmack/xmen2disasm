@@ -2,7 +2,7 @@
 ; Magneto_AirSteer - MAGNETO slot +$8A: air control; A toggles levitation (hover animation and damping) instead of falling
 ; In:  8(a6) = player
 ; Out: none
-; Evidence: A latched -> hover animation (jt $487A data); while hovering Magneto_HoverDamp(1,1); else gravity: Down 70, C held or rising char +$E, falling char +$C; Left/Right steering after +$6E; vtable +$7E
+; Evidence: A latched -> hover animation (Tbl_MagnetoAnim, jt $467A); while hovering Magneto_HoverDamp(1,1); else gravity: Down 70, C held or rising char +$E, falling char +$C; Left/Right steering after +$6E; vtable +$7E
 ; ---------------------------------------------------------------------------
 Magneto_AirSteer:
 	link.w	a6,#$0

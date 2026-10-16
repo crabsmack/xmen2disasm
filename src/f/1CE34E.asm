@@ -2,7 +2,7 @@
 ; Magneto_StateAim - ground aiming: while B is held the pad picks one of 8 directions (aim pose); releasing B shoots
 ; In:  8(a6) = player
 ; Out: d0
-; Evidence: airborne -> control; C -> Jump; Up/Down/none x Left/Right choose +$BC (Up 4/5 or 3/6, Down 1/8, level 2/7) and the aim pose (jt $492A/$4932/$493A/$4942 data); B released -> Magneto_StartShot
+; Evidence: airborne -> control; C -> Jump; Up/Down/none x Left/Right choose +$BC (Up 4/5 or 3/6, Down 1/8, level 2/7) and the aim pose (Tbl_MagnetoAnim15 (jt $472A)/$4932/$493A/$4942 data); B released -> Magneto_StartShot
 ; ---------------------------------------------------------------------------
 Magneto_StateAim:
 	link.w	a6,#$0

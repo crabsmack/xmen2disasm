@@ -1,5 +1,5 @@
 ; ---------------------------------------------------------------------------
-; BroodBoss_ActStomp - BROODBOSS script action: stomp - animation jt[$168A] with rumble $91
+; BroodBoss_ActStomp - BROODBOSS script action: stomp - animation Tbl_BroodBossAnim4 (jt $148A) with rumble $91
 ; In:  8(a6) = this
 ; Out: d0
 ; Evidence: +$6C = $FF (wait for the animation), next BroodBoss_StateStompLand; jt 636; TAS 49664-50094

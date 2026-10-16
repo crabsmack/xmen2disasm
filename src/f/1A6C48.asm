@@ -2,7 +2,7 @@
 ; Nightcrawler_StateCeilingHang - hanging from a ceiling: Left/Right crawl (stopping at the ends), jump drops, reaching a wall goes round onto it
 ; In:  8(a6) = player
 ; Out: d0 = +4 flag 8
-; Evidence: y kept under +$BC; C -> frame 200, normal gravity, control; +4 $100 with a segment classified != 0 -> frame $8D, Nightcrawler_CeilingToWall; Left/Right vx -/+$208 unless Player_FrontPastSeg -> crawl animation (jt $467A data), Nightcrawler_StateCeilingCrawl
+; Evidence: y kept under +$BC; C -> frame 200, normal gravity, control; +4 $100 with a segment classified != 0 -> frame $8D, Nightcrawler_CeilingToWall; Left/Right vx -/+$208 unless Player_FrontPastSeg -> crawl animation (Tbl_Anim_1A5FFE, jt $447A), Nightcrawler_StateCeilingCrawl
 ; ---------------------------------------------------------------------------
 Nightcrawler_StateCeilingHang:
 	link.w	a6,#$0

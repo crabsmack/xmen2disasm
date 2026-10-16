@@ -2,7 +2,7 @@
 ; Magneto_StartShot - ground shot wind-up in the aim direction
 ; In:  8(a6) = player
 ; Out: d0 = +4 flag 8
-; Evidence: stop, clear B latch, Obj_SetAnim(Magneto_ShotAnim(+$BC)) or crouch wind-up (jt $48CA data), delay $FF, next Magneto_FireShot
+; Evidence: stop, clear B latch, Obj_SetAnim(Magneto_ShotAnim(+$BC)) or crouch wind-up (Tbl_MagnetoAnim7, jt $46CA), delay $FF, next Magneto_FireShot
 ; ---------------------------------------------------------------------------
 Magneto_StartShot:
 	link.w	a6,#$0

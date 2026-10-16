@@ -2,7 +2,7 @@
 ; XClone_StatePodOpen - XCLONE entrance: open the pod at the clone's position (sound $EF, the clone record's opening animation)
 ; In:  8(a6) = this
 ; Out: d0
-; Evidence: pod script jt[$1B62], BioBalls_SetPathCollapsed(pod, record + word 6), pod state BioBalls_WaitPathDone; next XClone_StatePodWaitOpen
+; Evidence: pod script Tbl_XClone_PodScriptLen (jt $1962), BioBalls_SetPathCollapsed(pod, record + word 6), pod state BioBalls_WaitPathDone; next XClone_StatePodWaitOpen
 ; Found: link-after-rts
 ; ---------------------------------------------------------------------------
 XClone_StatePodOpen:

@@ -2,7 +2,7 @@
 ; CoreShields_Draw - draw the rotating ring of 8 shield panels: the 5 (or 4) panels of the current rotation step (+$90 index, +$91 phase picks one of three layout tables), front panels then the back ones (tile +$38, low priority), skipping broken panels (+$92+i set); blinks while the hit cooldown +$6A runs (class slot 5, +$1A; does not call the parent)
 ; In:  8(a6) = this
 ; Out: d0 = garbage
-; Evidence: layout tables jt $2A92/$2A9A/$2AA2 of {dx, dy, size, tile} records; palette bits $6000 on g_FrameCounter bit 2 while +$6A > 0; writes g_SpriteTable directly; method 5 of class descriptor $0EBE7E (name string "CORESHIELDS", parent ACTOR)
+; Evidence: layout tables Tbl_CoreShieldsLayout0 (jt $2892)/$2A9A/$2AA2 of {dx, dy, size, tile} records; palette bits $6000 on g_FrameCounter bit 2 while +$6A > 0; writes g_SpriteTable directly; method 5 of class descriptor $0EBE7E (name string "CORESHIELDS", parent ACTOR)
 ; ---------------------------------------------------------------------------
 CoreShields_Draw:
 	link.w	a6,#$FFF2

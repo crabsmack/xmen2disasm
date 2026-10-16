@@ -2,7 +2,7 @@
 ; Gambit_StateCrouchAim - crouched card aim: turn with Left/Right while A is held; on release throw low (kind 4)
 ; In:  8(a6) = player
 ; Out: d0
-; Evidence: airborne -> StateControl; A latch clear -> animation jt $4AAA, +$C2 = 4, +$5C = Gambit_StateThrow
+; Evidence: airborne -> StateControl; A latch clear -> animation Tbl_Anim_1CEDAA (jt $48AA), +$C2 = 4, +$5C = Gambit_StateThrow
 ; ---------------------------------------------------------------------------
 Gambit_StateCrouchAim:
 	link.w	a6,#$0

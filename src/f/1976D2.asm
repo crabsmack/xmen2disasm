@@ -2,7 +2,7 @@
 ; Wolverine_GroundSpecial - WOLVERINE slot +$DE: ground special: leaping forward slash
 ; In:  8(a6) = player
 ; Out: d0 = +4 flag 8
-; Evidence: Obj_Detach, vy -$300, gravity $3F, vx +/-$396; health <= $700 -> sound $88 + animation jt $45A2 data, else $8A + $45AA; delay 20, next Wolverine_LeapSlashEnd
+; Evidence: Obj_Detach, vy -$300, gravity $3F, vx +/-$396; health <= $700 -> sound $88 + animation Tbl_WolverineAnim (jt $43A2), else $8A + $45AA; delay 20, next Wolverine_LeapSlashEnd
 ; ---------------------------------------------------------------------------
 Wolverine_GroundSpecial:
 	link.w	a6,#$0

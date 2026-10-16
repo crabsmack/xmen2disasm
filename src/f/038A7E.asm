@@ -2,7 +2,7 @@
 ; BaniMazaA1_InitCamera - create the BaniMazaA1 camera with BaniMazaA1_CamHook
 ; In:  none
 ; Out: none
-; Evidence: g_Camera = CAMERA +$0A New(jt $4FBA, BaniMazaA1_CamHook)
+; Evidence: g_Camera = CAMERA +$0A New(Tbl_Camera_vtable (jt $4DBA), BaniMazaA1_CamHook)
 ; ---------------------------------------------------------------------------
 BaniMazaA1_InitCamera:
 	link.w	a6,#$0

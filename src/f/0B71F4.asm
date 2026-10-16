@@ -1,6 +1,6 @@
 ; ---------------------------------------------------------------------------
 ; ChildShip_Update - vtable +$4A: parent update, then emit the smoke/explosion trail (+$94 list of offsets, one every 3 frames)
-; Evidence: Explosion_Spawn at x/y + offset; list end (>= 1000) -> jt[$1FC2]; TAS 33389-33550
+; Evidence: Explosion_Spawn at x/y + offset; list end (>= 1000) -> Tbl_ChildShipWreckTrail (jt $1DC2); TAS 33389-33550
 ; ---------------------------------------------------------------------------
 ChildShip_Update:
 	link.w	a6,#$0

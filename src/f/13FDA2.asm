@@ -1,5 +1,5 @@
 ; ---------------------------------------------------------------------------
-; Spark_Move - free spark (rail id +$8B = 0): drift the origin +$92/+$96 by the velocity and add the wobble offset table jt $3DC2 (next entry every other frame); on a rail: Obj_RideRail (SPARK override of slot 18, +$4E; does not call the parent)
+; Spark_Move - free spark (rail id +$8B = 0): drift the origin +$92/+$96 by the velocity and add the wobble offset table Tbl_SparkWobble (jt $3BC2) (next entry every other frame); on a rail: Obj_RideRail (SPARK override of slot 18, +$4E; does not call the parent)
 ; In:  8(a6) = this  $C(a6) = word frame step (1, or 2 when the game runs at half rate)
 ; Out: d0 = garbage
 ; Evidence: method 18 of class descriptor $1400DE (name string "SPARK", parent ACTOR)

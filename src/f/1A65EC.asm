@@ -2,7 +2,7 @@
 ; Nightcrawler_StateWallCling - on a wall: Up/Down climb (flipping upright/upside down), B slashes, jump leaps off, touching a ceiling moves onto it
 ; In:  8(a6) = player
 ; Out: d0 = +4 flag 8
-; Evidence: C -> frame $21, vy -$834, control; Up -> vy -$2BC, Down -> vy 700 with flip animation (jt $466A data) -> Nightcrawler_StateWallClimb; B -> slash (jt $4682 data) -> Nightcrawler_WallAttackEnd; +4 $80 with a segment classified 1 -> frame $8C, Nightcrawler_WallToCeiling
+; Evidence: C -> frame $21, vy -$834, control; Up -> vy -$2BC, Down -> vy 700 with flip animation (Tbl_Anim_1A5FE2, jt $446A) -> Nightcrawler_StateWallClimb; B -> slash (Tbl_Anim_1A6008, jt $4482) -> Nightcrawler_WallAttackEnd; +4 $80 with a segment classified 1 -> frame $8C, Nightcrawler_WallToCeiling
 ; ---------------------------------------------------------------------------
 Nightcrawler_StateWallCling:
 	link.w	a6,#$0

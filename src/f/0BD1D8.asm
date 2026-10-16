@@ -1,5 +1,5 @@
 ; ---------------------------------------------------------------------------
-; SavageBioBalls_ActOpen - BIOBALLS companion action: opening animation jt[$2092], state BioBalls_WaitPathDone
+; SavageBioBalls_ActOpen - BIOBALLS companion action: opening animation Tbl_SavageBioBallsFormation (jt $1E92), state BioBalls_WaitPathDone
 ; In:  8(a6) = the BIOBALLS object
 ; Out: d0
 ; Evidence: TAS 33613

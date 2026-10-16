@@ -2,7 +2,7 @@
 ; ToxicCan_Update - TOXICCAN slot +$4A: window check, damage frame and toxin leak, chain explosion when destroyed, carried children
 ; In:  8(a6) = this
 ; Out: none
-; Evidence: health < 1 -> ExplodeFx_Chain(this, path jt $3F7A, +$70); < 3 -> frame 1 + ToxicCan_DrawLeak, else frame 0; children moved with Obj_CarryChild and updated; delay +$6C and hit cooldown +$6A count down
+; Evidence: health < 1 -> ExplodeFx_Chain(this, path Tbl_ScatterExplodeChain (jt $3D7A), +$70); < 3 -> frame 1 + ToxicCan_DrawLeak, else frame 0; children moved with Obj_CarryChild and updated; delay +$6C and hit cooldown +$6A count down
 ; ---------------------------------------------------------------------------
 ToxicCan_Update:
 	link.w	a6,#$0

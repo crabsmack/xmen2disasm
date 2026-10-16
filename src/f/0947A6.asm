@@ -2,7 +2,7 @@
 ; EvilMaker_ActDropBeast - EVILMAKER script action: drop a capsule holding clone type 1 (EVILBEAST)
 ; In:  8(a6) = this
 ; Out: none
-; Evidence: builds a 16-byte spawn record {x, y, word +6 = 1} at its position, EvilDrop_Spawn(rec, jt[$1B92]); next step; jt 688; type 1 = Tbl_EvilBeast_vtable in XClone_SpawnByType
+; Evidence: builds a 16-byte spawn record {x, y, word +6 = 1} at its position, EvilDrop_Spawn(rec, Tbl_EvilBeastBallPath (jt $1992)); next step; jt 688; type 1 = Tbl_EvilBeast_vtable in XClone_SpawnByType
 ; Found: jt 688
 ; ---------------------------------------------------------------------------
 EvilMaker_ActDropBeast:

@@ -1,5 +1,5 @@
 ; ---------------------------------------------------------------------------
-; Barbarian_StateAttackEnd - BARBARIAN state: attack over - pose jt[$2292], idle
+; Barbarian_StateAttackEnd - BARBARIAN state: attack over - pose Tbl_BarbarianAnim4 (jt $2092), idle
 ; In:  8(a6) = this
 ; Out: d0
 ; Evidence: TAS 28483-33097

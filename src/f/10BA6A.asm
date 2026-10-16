@@ -2,7 +2,7 @@
 ; SpaceA1_InstallHooks - SpaceA1: install the frame hook and switch-tile hook, prepare players, Init the elevator, create the camera with SpaceA1_InitCamera
 ; In:  none
 ; Out: none
-; Evidence: sets $FFC972 = SpaceA1_FrameHook; Elevator_Init via vtable +$A; CAMERA class New (jt $4FBA)
+; Evidence: sets $FFC972 = SpaceA1_FrameHook; Elevator_Init via vtable +$A; CAMERA class New (Tbl_Camera_vtable, jt $4DBA)
 ; ---------------------------------------------------------------------------
 SpaceA1_InstallHooks:
 	link.w	a6,#$0

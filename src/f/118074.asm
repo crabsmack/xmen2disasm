@@ -1,6 +1,6 @@
 ; ---------------------------------------------------------------------------
 ; Explosion_SpawnEx - start an explosion at (x, y): free slot, 5 animation steps of 4 frames, optional damage, sound $38
-; In:  8(a6) = x  $C(a6) = y (16.16)  $13(a6) = byte h-flip  $16(a6) = word damage flag
+; In:  8(a6) = x  $C(a6) = y (16.16)  $13(a6) = byte: sprite priority (attr $8000)  $16(a6) = word damage flag
 ; Out: d0 = slot or 0
 ; Evidence: slots $FFE4C0; Timer_Create(Explosion_Update, 1, slot, 1); tile base $FFC648
 ; ---------------------------------------------------------------------------

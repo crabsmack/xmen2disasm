@@ -1,5 +1,5 @@
 ; ---------------------------------------------------------------------------
-; SwampFly_StatePickPath_Case5 - SwampFly_StatePickPath case 5: path jt[$24B2]
+; SwampFly_StatePickPath_Case5 - SwampFly_StatePickPath case 5: path Tbl_SwampFlyPath5 (jt $22B2)
 ; Evidence: switch target
 ; Found: static: switch-table case target (tools/switches.py: table after `move.w T(pc,dN.w),dN / jmp T-2(pc,dN.w)`, size from the cmpi bound)
 ; ---------------------------------------------------------------------------

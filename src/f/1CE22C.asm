@@ -2,7 +2,7 @@
 ; Magneto_FireShot - ground shot: fire the bolt and play the follow-through (standing or crouched)
 ; In:  8(a6) = player
 ; Out: none
-; Evidence: Magneto_SpawnShot(x, y, +$BC, player, crouch +$10, priority, ground, VRAM base); anim Magneto_ShotEndAnim(dir) -> XPlayer_AttackRecover, or crouch anim (jt $48D2 data) -> XPlayer_CrouchAttackRecover
+; Evidence: Magneto_SpawnShot(x, y, +$BC, player, crouch +$10, priority, ground, VRAM base); anim Magneto_ShotEndAnim(dir) -> XPlayer_AttackRecover, or crouch anim (Tbl_MagnetoAnim8, jt $46D2) -> XPlayer_CrouchAttackRecover
 ; ---------------------------------------------------------------------------
 Magneto_FireShot:
 	link.w	a6,#$0

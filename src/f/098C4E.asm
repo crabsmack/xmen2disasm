@@ -2,7 +2,7 @@
 ; EvilWolverine_ActLeap - EVILWOLVERINE script action: leap (vy -$300, gravity $3F, vx +-$396, sound $88)
 ; In:  8(a6) = this
 ; Out: d0
-; Evidence: Obj_Detach, animation jt[$45A2]; next EvilWolverine_StateLeap; jt 790
+; Evidence: Obj_Detach, animation Tbl_WolverineAnim (jt $43A2); next EvilWolverine_StateLeap; jt 790
 ; Found: jt 790
 ; ---------------------------------------------------------------------------
 EvilWolverine_ActLeap:

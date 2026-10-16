@@ -2,7 +2,7 @@
 ; EvilMaker_ActDropNightcrawler - EVILMAKER script action: drop a capsule holding clone type 5 (EVILNIGHTCRAWLER)
 ; In:  8(a6) = this
 ; Out: none
-; Evidence: record type 5, jt[$1BDA]; jt 693
+; Evidence: record type 5, Tbl_EvilNightcrawlerBallPath (jt $19DA); jt 693
 ; Found: jt 693
 ; ---------------------------------------------------------------------------
 EvilMaker_ActDropNightcrawler:

@@ -1,6 +1,6 @@
 ; ---------------------------------------------------------------------------
 ; ChildShip_Init - vtable +$12 constructor: CHILDSHIP flies in at the top of the view (y $F0) inside the box x $60-$220 / y $60-$140; palette line 3, sound $42; camera focus g_SceneVar3B20
-; Evidence: stats g_SceneVar3B14 (health 8), script jt[$1FAA], state ChildShip_StateEnter, bob table $11B3C0 (+$AA); TAS 33388
+; Evidence: stats g_SceneVar3B14 (health 8), script Tbl_ChildShip_ScriptLen (jt $1DAA), state ChildShip_StateEnter, bob table $11B3C0 (+$AA); TAS 33388
 ; ---------------------------------------------------------------------------
 ChildShip_Init:
 	link.w	a6,#$FFFC

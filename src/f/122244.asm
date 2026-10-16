@@ -1,5 +1,5 @@
 ; ---------------------------------------------------------------------------
-; BigBio_ActRoarThenMorph - BIGBIO script action: face the arena side, roar animation (jt $366A, sound $F9), then morph
+; BigBio_ActRoarThenMorph - BIGBIO script action: face the arena side, roar animation (Tbl_BigBioAnim (jt $346A), sound $F9), then morph
 ; In:  8(a6) = this
 ; Out: d0 = flags & 8
 ; Evidence: next StateStartMorph

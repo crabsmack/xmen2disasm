@@ -1,5 +1,5 @@
 ; ---------------------------------------------------------------------------
-; SavageBio_StateDying - SAVAGE bio state: dying - switch to the death script jt[$2042]
+; SavageBio_StateDying - SAVAGE bio state: dying - switch to the death script Tbl_SavageBio_Script1Len (jt $1E42)
 ; In:  8(a6) = this
 ; Out: none
 ; Evidence: set by SavageBigBio_TakeDamage at 0 health; TAS 33891

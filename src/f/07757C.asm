@@ -1,5 +1,5 @@
 ; ---------------------------------------------------------------------------
-; CloneA1_LoadResources - add two CloneA1 sprite definitions (jt $3B82 count 1, jt $133E98 count 3), storing their ids in $FFE782/$FFE778
+; CloneA1_LoadResources - add two CloneA1 sprite definitions (Art_MaintRobotSpr (jt $3982) count 1, jt $133E98 count 3), storing their ids in $FFE782/$FFE778
 ; In:  none
 ; Out: none
 ; Evidence: two SprDef_Add calls (jt $4E52)

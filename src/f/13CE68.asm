@@ -1,6 +1,6 @@
 ; ---------------------------------------------------------------------------
 ; Ninja_FindSegInBox - find the first live collision segment in a point's grid cell whose bounding box overlaps a given box
-; In:  8(a6) = word x  $A(a6) = word y  $C(a6) = word max level  $E(a6) = (unused)  $12(a6)..$18(a6) = words left, top, right, bottom
+; In:  $A(a6) = word x  $E(a6) = word y  $12(a6) = word max level  $14(a6) = (unused)  $1A/$1E/$22/$26(a6) = words left, top, right, bottom
 ; Out: d0 = segment record (g_Segs + i*$14) or 0
 ; Evidence: Seg_GridCell(x, y) -> $FF-terminated index list in the pool at $FFCD88; tests flag $80, byte +2 <= level, min/max of the end points (+8..+E) against the box; caller Ninja_ClipToSegs
 ; ---------------------------------------------------------------------------

@@ -2,7 +2,7 @@
 ; Gambit_StateHardLanding - hard-landing state: releasing A throws a low card (kind 4), else the normal hard-landing recovery
 ; In:  8(a6) = player
 ; Out: d0
-; Evidence: A released -> animation jt $4AAA, +$C2 = 4, +$6C = 0, +$5C = Gambit_StateThrow; else XPlayer_StateHardLanding
+; Evidence: A released -> animation Tbl_Anim_1CEDAA (jt $48AA), +$C2 = 4, +$6C = 0, +$5C = Gambit_StateThrow; else XPlayer_StateHardLanding
 ; ---------------------------------------------------------------------------
 Gambit_StateHardLanding:
 	link.w	a6,#$0

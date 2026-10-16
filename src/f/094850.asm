@@ -2,7 +2,7 @@
 ; EvilMaker_ActDropCyclops - EVILMAKER script action: drop a capsule holding clone type 2 (EVILCYCLOPS)
 ; In:  8(a6) = this
 ; Out: none
-; Evidence: record type 2, EvilDrop_Spawn(rec, jt[$1BA2]); jt 690
+; Evidence: record type 2, EvilDrop_Spawn(rec, Tbl_EvilCyclopsBallPath (jt $19A2)); jt 690
 ; Found: jt 690
 ; ---------------------------------------------------------------------------
 EvilMaker_ActDropCyclops:

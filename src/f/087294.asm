@@ -2,7 +2,7 @@
 ; BroodBoss_StateWallStop - BROODBOSS state: stop the wall and the claw, roar (sound $91)
 ; In:  8(a6) = this
 ; Out: d0
-; Evidence: animation jt[$1682]; wall +$14 = 0; claw stopped; +$6C = $FF; next BroodBoss_StateChargeStart
+; Evidence: animation Tbl_BroodBossAnim3 (jt $1482); wall +$14 = 0; claw stopped; +$6C = $FF; next BroodBoss_StateChargeStart
 ; Found: link-after-rts
 ; ---------------------------------------------------------------------------
 BroodBoss_StateWallStop:

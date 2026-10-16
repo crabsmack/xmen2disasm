@@ -2,7 +2,7 @@
 ; TechWallGun_BurstCeilLeft - ceiling gun: fire a burst down-left (direction 7)
 ; In:  8(a6) = this
 ; Out: d0 = +4 flag 8
-; Evidence: TechWallGun_SetupBurst(anim jt $3EE2, TechWallGun_StateCeilAimLeft, 7)
+; Evidence: TechWallGun_SetupBurst(anim Tbl_Anim_1432D0 (jt $3CE2), TechWallGun_StateCeilAimLeft, 7)
 ; ---------------------------------------------------------------------------
 TechWallGun_BurstCeilLeft:
 	link.w	a6,#$0

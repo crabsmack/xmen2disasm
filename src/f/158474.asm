@@ -2,7 +2,7 @@
 ; FluxBomb_StepImplode - implosion phase 1: move the 16 particles toward the centre; phase 2 when all have arrived
 ; In:  8(a6) = bomb
 ; Out: d0
-; Evidence: particle += step (jt $499A / $49A2 strong); within 8 px -> particle off; none left -> +$100 = 2
+; Evidence: particle += step (Tbl_FluxBombImplodeParticles (jt $479A) / $49A2 strong); within 8 px -> particle off; none left -> +$100 = 2
 ; ---------------------------------------------------------------------------
 FluxBomb_StepImplode:
 	link.w	a6,#$0

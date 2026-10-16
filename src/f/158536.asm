@@ -2,7 +2,7 @@
 ; FluxBomb_StartImplode - start the implosion: place 16 particles around the bomb and upload their tiles
 ; In:  8(a6) = bomb
 ; Out: d0
-; Evidence: +$100 = 1; VDP_QueueDma of two particle tiles (jt $49C2/$49CA data) to the bomb's VRAM; particle start = -(dx, dy) << shift from the table
+; Evidence: +$100 = 1; VDP_QueueDma of two particle tiles (Art_FluxBombTiles (jt $47C2)/$49CA data) to the bomb's VRAM; particle start = -(dx, dy) << shift from the table
 ; ---------------------------------------------------------------------------
 FluxBomb_StartImplode:
 	link.w	a6,#$0

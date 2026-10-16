@@ -2,7 +2,7 @@
 ; Beast_GroundSpecial - BEAST slot +$DE: ground special: stomp (start)
 ; In:  8(a6) = player
 ; Out: d0 = +4 flag 8
-; Evidence: attack sound char +$2C, stop, stomp animation (jt $4472 data), delay $FF, next Beast_StateStomp
+; Evidence: attack sound char +$2C, stop, stomp animation (Tbl_Anim_1829D0, jt $4272), delay $FF, next Beast_StateStomp
 ; ---------------------------------------------------------------------------
 Beast_GroundSpecial:
 	link.w	a6,#$0

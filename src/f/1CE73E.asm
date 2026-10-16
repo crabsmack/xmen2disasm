@@ -2,7 +2,7 @@
 ; Magneto_GroundAttackDown - MAGNETO slot +$DA: Down+B: crouch and aim low
 ; In:  8(a6) = player
 ; Out: none
-; Evidence: stop, crouch-aim animation (jt $48C2 data), state Magneto_StateCrouchAim
+; Evidence: stop, crouch-aim animation (Tbl_MagnetoAnim26, jt $46C2), state Magneto_StateCrouchAim
 ; ---------------------------------------------------------------------------
 Magneto_GroundAttackDown:
 	link.w	a6,#$0

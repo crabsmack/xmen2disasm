@@ -1,8 +1,8 @@
 ; ---------------------------------------------------------------------------
-; XClone_Explode - XCLONE slot +$7E Explode: leave the hit list, clear the hurt flags and run the death script jt[$1B8A]
+; XClone_Explode - XCLONE slot +$7E Explode: leave the hit list, clear the hurt flags and run the death script Tbl_XClone_Script2Len (jt $198A)
 ; In:  8(a6) = this
 ; Out: none
-; Evidence: XNPC slot +$7E (death effect); List_Unlink(+$84, $FFEBAE) when hittable; AiScript_Set(+$96, jt[$1B8A]); TAS 53285-56667
+; Evidence: XNPC slot +$7E (death effect); List_Unlink(+$84, $FFEBAE) when hittable; AiScript_Set(+$96, Tbl_XClone_Script2Len (jt $198A)); TAS 53285-56667
 ; Found: jt 719
 ; ---------------------------------------------------------------------------
 XClone_Explode:

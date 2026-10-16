@@ -2,7 +2,7 @@
 ; Cyclops_StateCrouchAim - crouched beam aim: turn with Left/Right while A is held; on release fire a low level beam
 ; In:  8(a6) = player
 ; Out: d0
-; Evidence: airborne -> StateControl; A latch clear -> Cyclops_StartBeam(jt $4C72, 0), animation jt $4C1A, +$5C = Cyclops_StateCrouchBeam
+; Evidence: airborne -> StateControl; A latch clear -> Cyclops_StartBeam(Tbl_CyclopsBeamCrouch (jt $4A72), 0), animation Tbl_Anim_1E1CC8 (jt $4A1A), +$5C = Cyclops_StateCrouchBeam
 ; ---------------------------------------------------------------------------
 Cyclops_StateCrouchAim:
 	link.w	a6,#$0

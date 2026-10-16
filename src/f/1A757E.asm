@@ -2,7 +2,7 @@
 ; Nightcrawler_StartTeleport - special: teleport: vanish and travel in the held direction for a distance set by the charge meter (Down on a thin floor = through it)
 ; In:  8(a6) = player
 ; Out: d0 = +4 flag 8
-; Evidence: once (+$90 $800000): +$10 = 1, +$6A = 60, Obj_Detach, sound $85, vanish animation (jt $46A2 data), +$C4 = max(meter +$9E, $E) (Down-through costs 8), +$C2 = held U/D/L/R; no direction -> Nightcrawler_TeleportAppear; Down through floor -> Nightcrawler_TeleportDown else Nightcrawler_TeleportVanish
+; Evidence: once (+$90 $800000): +$10 = 1, +$6A = 60, Obj_Detach, sound $85, vanish animation (Tbl_EvilNightcrawlerAnim, jt $44A2), +$C4 = max(meter +$9E, $E) (Down-through costs 8), +$C2 = held U/D/L/R; no direction -> Nightcrawler_TeleportAppear; Down through floor -> Nightcrawler_TeleportDown else Nightcrawler_TeleportVanish
 ; ---------------------------------------------------------------------------
 Nightcrawler_StartTeleport:
 	link.w	a6,#$FFFC

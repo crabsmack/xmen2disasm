@@ -2,7 +2,7 @@
 ; Psylocke_AirSpecial - PSYLOCKE slot +$C6: mid-air special: psychic dash toward the held direction
 ; In:  8(a6) = player
 ; Out: d0 = +4 flag 8
-; Evidence: gravity char +$E; Left/Right -> vx and max +/-$708; health <= $700 -> type +$71 = $D + animation jt $47AA, else $F + $47B2; state Psylocke_StateAirDash
+; Evidence: gravity char +$E; Left/Right -> vx and max +/-$708; health <= $700 -> type +$71 = $D + animation Tbl_PsylockeAnim9_2 (jt $45AA), else $F + $47B2; state Psylocke_StateAirDash
 ; ---------------------------------------------------------------------------
 Psylocke_AirSpecial:
 	link.w	a6,#$0

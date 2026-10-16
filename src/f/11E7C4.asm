@@ -1,5 +1,5 @@
 ; ---------------------------------------------------------------------------
-; BioBalls_Init - BIOBALLS constructor: parent Init, no motion, AI script jt $34FA at +$8C, state BioBalls_ActCollapse, flags |= $1083, sprite Art_BioBallsSpr, sprite priority (+$2E bit 2) from the live player, ball list +$92 = the shared buffer at $FFE768, motion function +$A2 and counters cleared, box = the spawn point (class slot 3, +$12)
+; BioBalls_Init - BIOBALLS constructor: parent Init, no motion, AI script Tbl_BioBalls_ScriptIdleLen (jt $32FA) at +$8C, state BioBalls_ActCollapse, flags |= $1083, sprite Art_BioBallsSpr, sprite priority (+$2E bit 2) from the live player, ball list +$92 = the shared buffer at $FFE768, motion function +$A2 and counters cleared, box = the spawn point (class slot 3, +$12)
 ; In:  8(a6) = this  $C/$10(a6) = x, y (16.16)  $14(a6) = placement entry or 0
 ; Out: none
 ; Evidence: method 3 of class descriptor $1203AC (name string "BIOBALLS", parent ACTOR)

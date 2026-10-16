@@ -2,7 +2,7 @@
 ; Psylocke_CrouchCombo2 - second hit of Psylocke's crouching attack combo
 ; In:  8(a6) = player
 ; Out: none
-; Evidence: sound $92, +$6E = 0, face the held direction, clear B latch, animation (jt $4782 data), delay $FF, next XPlayer_CrouchAttackRecover
+; Evidence: sound $92, +$6E = 0, face the held direction, clear B latch, animation (Tbl_PsylockeAnim4_2, jt $4582), delay $FF, next XPlayer_CrouchAttackRecover
 ; ---------------------------------------------------------------------------
 Psylocke_CrouchCombo2:
 	link.w	a6,#$0

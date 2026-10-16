@@ -1,8 +1,8 @@
 ; ---------------------------------------------------------------------------
-; TankLeft_StateWaitDrive - after the pause: if the tank is off screen continue the script, else start driving (script jt $3E7A)
+; TankLeft_StateWaitDrive - after the pause: if the tank is off screen continue the script, else start driving (script Tbl_Tank_ScriptDriveIn (jt $3C7A))
 ; In:  8(a6) = this
 ; Out: d0
-; Evidence: +$6E delay; box beyond g_CameraX+$180 or before g_CameraX-$40 -> next thunk; else drive animation (jt $21FA thunk), vx = +/-$9E, AiScript_Set(+$94, jt $3E7A)
+; Evidence: +$6E delay; box beyond g_CameraX+$180 or before g_CameraX-$40 -> next thunk; else drive animation (jt $21FA thunk), vx = +/-$9E, AiScript_Set(+$94, Tbl_Tank_ScriptDriveIn (jt $3C7A))
 ; ---------------------------------------------------------------------------
 TankLeft_StateWaitDrive:
 	link.w	a6,#$0

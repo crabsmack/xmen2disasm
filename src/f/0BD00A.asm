@@ -1,5 +1,5 @@
 ; ---------------------------------------------------------------------------
-; SavageMediumBio_ActShoot - SAVAGEMEDIUMBIO script action: stop and play the shooting animation jt[$3612]
+; SavageMediumBio_ActShoot - SAVAGEMEDIUMBIO script action: stop and play the shooting animation Tbl_Anim_120640 (jt $3412)
 ; In:  8(a6) = this
 ; Out: d0
 ; Evidence: next SavageMediumBio_StateFire

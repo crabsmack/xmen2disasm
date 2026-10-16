@@ -1,5 +1,5 @@
 ; ---------------------------------------------------------------------------
-; SavageBio_StateCrossSurface - SAVAGE bio state: hide and send the BIOBALLS companion across (same flips, animation jt[$2092], script $0B815C)
+; SavageBio_StateCrossSurface - SAVAGE bio state: hide and send the BIOBALLS companion across (same flips, animation Tbl_SavageBioBallsFormation (jt $1E92), script $0B815C)
 ; In:  8(a6) = this
 ; Out: d0
 ; Evidence: next SavageBio_StateWaitCrossing

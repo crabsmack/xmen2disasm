@@ -1,8 +1,8 @@
 ; ---------------------------------------------------------------------------
-; XClone_ActUnhittableScript - XCLONE script action: become unhittable (+6 bits 2 and $1000) and switch to script jt[$1B6A]
+; XClone_ActUnhittableScript - XCLONE script action: become unhittable (+6 bits 2 and $1000) and switch to script Tbl_XClone_Script1Len (jt $196A)
 ; In:  8(a6) = this
 ; Out: none
-; Evidence: List_Unlink(+$84, $FFEBAE); AiScript_Set(+$96, jt[$1B6A]), step 0; jt 722; TAS 52266-52535
+; Evidence: List_Unlink(+$84, $FFEBAE); AiScript_Set(+$96, Tbl_XClone_Script1Len (jt $196A)), step 0; jt 722; TAS 52266-52535
 ; Found: jt 722
 ; ---------------------------------------------------------------------------
 XClone_ActUnhittableScript:

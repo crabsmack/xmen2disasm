@@ -1,5 +1,5 @@
 ; ---------------------------------------------------------------------------
-; SavageBigBio_Init - vtable +$12 constructor: narrower arena, stats g_SceneVar3B14 (health from byte -$3B01), script jt[$204A], sprite set $12FCA6, g_SceneVar3B24 := $580, and a BIOBALLS companion (+$B4)
+; SavageBigBio_Init - vtable +$12 constructor: narrower arena, stats g_SceneVar3B14 (health from byte -$3B01), script Tbl_SavageBio_Script2Len (jt $1E4A), sprite set $12FCA6, g_SceneVar3B24 := $580, and a BIOBALLS companion (+$B4)
 ; Evidence: clears g_SceneVar3B06/g_SceneVar3B18/g_SceneVar3B1C; TAS 33663
 ; ---------------------------------------------------------------------------
 SavageBigBio_Init:

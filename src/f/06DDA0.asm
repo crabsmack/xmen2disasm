@@ -1,5 +1,5 @@
 ; ---------------------------------------------------------------------------
-; Brood_StateCornered - BROOD cornered: rage animation (jt $11EA), start flashing, 20 frames
+; Brood_StateCornered - BROOD cornered: rage animation (Tbl_Anim_06D0E2, jt $FEA), start flashing, 20 frames
 ; In:  8(a6) = this
 ; Out: d0 = +4 & 8
 ; Evidence: +$B4 flash timer 4; next Brood_StateCorneredFlash

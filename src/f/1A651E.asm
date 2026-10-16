@@ -2,7 +2,7 @@
 ; Nightcrawler_WallToCeiling - finish climbing from a wall onto a ceiling: hang pose under it
 ; In:  8(a6) = player
 ; Out: d0 = +4 flag 8
-; Evidence: Obj_SetAnim(ceiling pose jt $4672 data), y aligned under +$BC (+$E); a direction still held toward the wall -> wait-release state, else Nightcrawler_StateCeilingHang
+; Evidence: Obj_SetAnim(ceiling pose Tbl_Anim_1A5FEC (jt $4472)), y aligned under +$BC (+$E); a direction still held toward the wall -> wait-release state, else Nightcrawler_StateCeilingHang
 ; ---------------------------------------------------------------------------
 Nightcrawler_WallToCeiling:
 	link.w	a6,#$0

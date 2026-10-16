@@ -2,7 +2,7 @@
 ; AvalonA3_InitCamera - create the AvalonA3 camera with AvalonA3_CamHook
 ; In:  none
 ; Out: none
-; Evidence: g_Camera = CAMERA +$0A New(jt $4FBA, AvalonA3_CamHook)
+; Evidence: g_Camera = CAMERA +$0A New(Tbl_Camera_vtable (jt $4DBA), AvalonA3_CamHook)
 ; ---------------------------------------------------------------------------
 AvalonA3_InitCamera:
 	link.w	a6,#$0

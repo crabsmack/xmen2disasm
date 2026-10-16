@@ -2,7 +2,7 @@
 ; BigBio_StateDefeated - BIGBIO defeated: open the arena wall, end the scene in 200 frames, death explosion, death animation and sound
 ; In:  8(a6) = this
 ; Out: d0 = flags & 8
-; Evidence: Seg_Free(+$B8), g_SceneExitTimer = 200, ExplodeFx_Chain effect jt $3D42; TAS frame 36976
+; Evidence: Seg_Free(+$B8), g_SceneExitTimer = 200, ExplodeFx_Chain effect Tbl_ExplodeFxSpiralPath (jt $3B42); TAS frame 36976
 ; ---------------------------------------------------------------------------
 BigBio_StateDefeated:
 	link.w	a6,#$0

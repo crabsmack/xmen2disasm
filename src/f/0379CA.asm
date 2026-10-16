@@ -1,5 +1,5 @@
 ; ---------------------------------------------------------------------------
-; MagnetoBoss_StateOutro - MAGNETOBOSS outro: play animation jt $494A, then loop jt $4952
+; MagnetoBoss_StateOutro - MAGNETOBOSS outro: play animation Tbl_MagnetoBossAnim16 (jt $474A), then loop jt $4952
 ; In:  8(a6) = this
 ; Out: d0 = +4 & 8
 ; Evidence: next MagnetoBoss_StateOutroLoop

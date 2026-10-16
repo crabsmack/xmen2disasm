@@ -1,5 +1,5 @@
 ; ---------------------------------------------------------------------------
-; FloatBio_Init - BABYBIO Init, then stats jt $3272 (health = byte 2), +$B4 = $100, mode +$BE = variant & 3 with its AI script (0 jt $3232; 1 jt $3242 with vertical limits +$B2/+$B0 = y -/+ |p6|/|p8| (default 48); 2 jt $324A; 3 jt $323A with period +$BC = p6, default 60), start at the script's first step (class slot 3, +$12)
+; FloatBio_Init - BABYBIO Init, then stats Tbl_FloatBioStats (jt $3072) (health = byte 2), +$B4 = $100, mode +$BE = variant & 3 with its AI script (0 jt $3232; 1 jt $3242 with vertical limits +$B2/+$B0 = y -/+ |p6|/|p8| (default 48); 2 jt $324A; 3 jt $323A with period +$BC = p6, default 60), start at the script's first step (class slot 3, +$12)
 ; In:  8(a6) = this  $C/$10(a6) = x, y (16.16)  $14(a6) = placement entry
 ; Out: none
 ; Evidence: method 3 of class descriptor $11BA14 (name string "FLOATBIO", parent BABYBIO)

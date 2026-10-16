@@ -2,7 +2,7 @@
 ; BigAcolyte_DieEndScene - BIGACOLYTE death: end the scene after 200 frames and spawn its death effect
 ; In:  8(a6) = this
 ; Out: none
-; Evidence: g_SceneExitTimer = 200; ExplodeFx_Chain(this, jt $3D42, 0, 0, height); called from BigAcolyte_TakeDamage and BigAcolyte_OutsideActiveWindow (same body as BigAcolyte_OnDeath)
+; Evidence: g_SceneExitTimer = 200; ExplodeFx_Chain(this, Tbl_ExplodeFxSpiralPath (jt $3B42), 0, 0, height); called from BigAcolyte_TakeDamage and BigAcolyte_OutsideActiveWindow (same body as BigAcolyte_OnDeath)
 ; ---------------------------------------------------------------------------
 BigAcolyte_DieEndScene:
 	link.w	a6,#$0

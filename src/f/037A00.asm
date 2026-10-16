@@ -1,5 +1,5 @@
 ; ---------------------------------------------------------------------------
-; MagnetoBoss_StateOutroLoop - MAGNETOBOSS outro: keep setting animation jt $4952
+; MagnetoBoss_StateOutroLoop - MAGNETOBOSS outro: keep setting animation Tbl_MagnetoBossAnim17 (jt $4752)
 ; In:  8(a6) = this
 ; Out: none
 ; Evidence: single Obj_ChangeAnim call

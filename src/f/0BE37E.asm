@@ -1,5 +1,5 @@
 ; ---------------------------------------------------------------------------
-; Barbarian_StateAttack0 - BARBARIAN attack 0: animation jt[$22A2] to its end
+; Barbarian_StateAttack0 - BARBARIAN attack 0: animation Tbl_BarbarianAnim6 (jt $20A2) to its end
 ; In:  8(a6) = this
 ; Out: d0
 ; Evidence: next Barbarian_StateAttackEnd

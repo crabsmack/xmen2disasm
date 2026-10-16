@@ -1,5 +1,5 @@
 ; ---------------------------------------------------------------------------
-; SavageMediumBio_StateAppear - SAVAGEMEDIUMBIO first state: appear (sound $F2, animation jt[$2032])
+; SavageMediumBio_StateAppear - SAVAGEMEDIUMBIO first state: appear (sound $F2, animation Tbl_SavageMediumBioAnim (jt $1E32))
 ; In:  8(a6) = this
 ; Out: d0
 ; Evidence: next SavageMediumBio_StateReady; TAS 33560

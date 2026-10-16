@@ -1,5 +1,5 @@
 ; ---------------------------------------------------------------------------
-; SavageA4_LoadLevel - SavageA4: load the Chamber level (Level_Load with the class list jt[$1E8A]) and set the parallax factors
+; SavageA4_LoadLevel - SavageA4: load the Chamber level (Level_Load with the class list Tbl_SavageA4ClassList (jt $1C8A)) and set the parallax factors
 ; In:  none
 ; Out: none
 ; Evidence: TAS 33301

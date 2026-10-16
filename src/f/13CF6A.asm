@@ -1,6 +1,6 @@
 ; ---------------------------------------------------------------------------
 ; Ninja_ClipToSegs - keep an airborne NINJA out of segments: push its box out of the overlapping segment and stop the blocked velocity (landing clears vy and gravity)
-; In:  8(a6) = this  $C(a6) = word previous x px  $E(a6) = word previous y px
+; In:  8(a6) = this  $E(a6) = word previous x px  $12(a6) = word previous y px
 ; Out: d0 = misc
 ; Evidence: Obj_UpdateBoxes, Ninja_FindSegInBox(box centre, ...); side hits zero +$16/+$1E, floor hit zeroes +$18/+$20 (Ninja_StateWaitLanding waits for +$20 = 0); caller Ninja_Move while the animation is Tbl_NinjaAnimAirborne
 ; ---------------------------------------------------------------------------

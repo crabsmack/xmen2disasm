@@ -2,7 +2,7 @@
 ; Gambit_CrouchAim - stop, play the crouch-aim animation and enter Gambit_StateCrouchAim
 ; In:  8(a6) = player
 ; Out: none
-; Evidence: ax = vx = 0, animation jt $4AFA, +$5C = Gambit_StateCrouchAim
+; Evidence: ax = vx = 0, animation Tbl_Anim_1CEE42 (jt $48FA), +$5C = Gambit_StateCrouchAim
 ; ---------------------------------------------------------------------------
 Gambit_CrouchAim:
 	link.w	a6,#$0

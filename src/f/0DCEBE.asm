@@ -1,5 +1,5 @@
 ; ---------------------------------------------------------------------------
-; Blast_StateLaunch - BLAST state: launch (animation jt[$4152], sound $D4, speed +$98)
+; Blast_StateLaunch - BLAST state: launch (animation Tbl_BlastFlightAnim (jt $3F52), sound $D4, speed +$98)
 ; In:  8(a6) = this
 ; Out: d0
 ; Evidence: next Blast_StateFly; TAS 2799-7191

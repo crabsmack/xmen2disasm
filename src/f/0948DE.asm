@@ -2,7 +2,7 @@
 ; EvilMaker_ActDropGambit - EVILMAKER script action: drop a capsule holding clone type 3 (EVILGAMBIT)
 ; In:  8(a6) = this
 ; Out: none
-; Evidence: record type 3, jt[$1BB2]; jt 691
+; Evidence: record type 3, Tbl_EvilGambitBallPath (jt $19B2); jt 691
 ; Found: jt 691
 ; ---------------------------------------------------------------------------
 EvilMaker_ActDropGambit:

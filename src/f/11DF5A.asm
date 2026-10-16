@@ -1,5 +1,5 @@
 ; ---------------------------------------------------------------------------
-; WallCrawlBio_Init - BABYBIO Init, then stats Tbl_BabyMoleManStats, flags |= 2, crawl mode +$BC = variant & 3: 0/1 crawl on a wall (y limits +$AC/+$AE = y -/+ 48 or the placement params; 1 = h-flipped), 2 crawl on a ceiling (x limits, v-flip), each with its AI script (jt $3252 / $325A); +$BE = param +$C (default 30); start at the script's first step (class slot 3, +$12)
+; WallCrawlBio_Init - BABYBIO Init, then stats Tbl_BabyMoleManStats, flags |= 2, crawl mode +$BC = variant & 3: 0/1 crawl on a wall (y limits +$AC/+$AE = y -/+ 48 or the placement params; 1 = h-flipped), 2 crawl on a ceiling (x limits, v-flip), each with its AI script (Tbl_WallCrawlBio_Script1Len (jt $3052) / $325A); +$BE = param +$C (default 30); start at the script's first step (class slot 3, +$12)
 ; In:  8(a6) = this  $C/$10(a6) = x, y (16.16)  $14(a6) = placement entry or 0
 ; Out: d0 = garbage
 ; Evidence: method 3 of class descriptor $11BAA0 (name string "WALLCRAWLBIO", parent BABYBIO)

@@ -1,5 +1,5 @@
 ; ---------------------------------------------------------------------------
-; SavageMediumBio_StateBurst - SAVAGEMEDIUMBIO state: burst into a BIOBALLS (animation $0B8210, script jt[$207A], sound $F2) and remove itself
+; SavageMediumBio_StateBurst - SAVAGEMEDIUMBIO state: burst into a BIOBALLS (animation $0B8210, script Tbl_SavageMediumBio_Script4Len (jt $1E7A), sound $F2) and remove itself
 ; In:  8(a6) = this
 ; Out: none
 ; Evidence: TAS 33580

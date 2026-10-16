@@ -2,7 +2,7 @@
 ; Magneto_StartAirShot - start an air shot in the chosen direction (remember whether he was hovering)
 ; In:  8(a6) = player
 ; Out: none
-; Evidence: +$12 = hovering (anim == jt $487A); not hovering -> gravity char +$E; clear B latch; Obj_SetAnim(Magneto_AirShotAnim(+$BC)); state Magneto_StateAirShot
+; Evidence: +$12 = hovering (anim == Tbl_MagnetoAnim (jt $467A)); not hovering -> gravity char +$E; clear B latch; Obj_SetAnim(Magneto_AirShotAnim(+$BC)); state Magneto_StateAirShot
 ; ---------------------------------------------------------------------------
 Magneto_StartAirShot:
 	link.w	a6,#$0

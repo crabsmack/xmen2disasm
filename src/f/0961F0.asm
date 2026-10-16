@@ -2,7 +2,7 @@
 ; XClone_StatePodWaitOpen - XCLONE entrance: when the pod has opened, play its closing animation (sound $F2)
 ; In:  8(a6) = this
 ; Out: d0
-; Evidence: BioBalls_IsDone(pod) -> Obj_SetAnim(pod, jt[$34F2]), pod state BioBalls_ActClearAnim; next XClone_StateEmerge
+; Evidence: BioBalls_IsDone(pod) -> Obj_SetAnim(pod, Tbl_BioBallsAnim (jt $32F2)), pod state BioBalls_ActClearAnim; next XClone_StateEmerge
 ; Found: link-after-rts
 ; ---------------------------------------------------------------------------
 XClone_StatePodWaitOpen:

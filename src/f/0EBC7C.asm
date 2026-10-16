@@ -2,7 +2,7 @@
 ; CoreShields_FireZap - spawn a COREZAP 16 px left of and above the shields with the given x speed, sound $CD, start the zap lights
 ; In:  8(a6) = this  $E(a6) = word vx
 ; Out: d0 = zap or 0
-; Evidence: class New via jt $2B12, +$16 = vx, Snd_Play($CD), $FFC6FE = 0 (SentinelsA1_StepZapLights)
+; Evidence: class New via Tbl_CoreZap_vtable (jt $2912), +$16 = vx, Snd_Play($CD), $FFC6FE = 0 (SentinelsA1_StepZapLights)
 ; ---------------------------------------------------------------------------
 CoreShields_FireZap:
 	link.w	a6,#$0

@@ -1,6 +1,6 @@
 ; ---------------------------------------------------------------------------
 ; LineSegKiller_RemoveSegsInBox - delete every live collision segment of a type (or any type for $3E9) that lies inside a box, unlinking its neighbours
-; In:  8(a6) = word type ($3E9 = all)  $A(a6) = word left  $C(a6) = word top  $E(a6) = word right  $10(a6) = word bottom (5 px slack)
+; In:  $A(a6) = word type ($3E9 = all)  $E(a6) = word left  $12(a6) = word top  $16(a6) = word right  $1A(a6) = word bottom (5 px slack)
 ; Out: none
 ; Evidence: walks g_Segs ($14-byte records up to g_SegHighWater): flag $80 and type +1 match and box +8..+E inside -> +0 = 0, +$13 = $FF, neighbour links +$10/+$11 cleared both ways; only caller LineSegKiller_Kill, TAS 52126
 ; ---------------------------------------------------------------------------

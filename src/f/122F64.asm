@@ -2,7 +2,7 @@
 ; BigBio_StateWaitPlayers - BIGBIO: when all players are inside the arena, wall it in (two segments), lock the camera, load the boss palette and walk in
 ; In:  8(a6) = this
 ; Out: d0 = flags & 8
-; Evidence: Seg_Alloc/Seg_Setup, g_Camera +$36, 16 colours from jt $36A2 into $FFC8E0
+; Evidence: Seg_Alloc/Seg_Setup, g_Camera +$36, 16 colours from Pal_BigBioBody (jt $34A2) into $FFC8E0
 ; ---------------------------------------------------------------------------
 BigBio_StateWaitPlayers:
 	link.w	a6,#$FFFC

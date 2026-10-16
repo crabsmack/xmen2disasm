@@ -1,5 +1,5 @@
 ; ---------------------------------------------------------------------------
-; BioSentinel_StateAimLevel - BIOSENTINEL: straight aiming animation (jt $3612), then fire
+; BioSentinel_StateAimLevel - BIOSENTINEL: straight aiming animation (Tbl_Anim_120640, jt $3412), then fire
 ; In:  8(a6) = this
 ; Out: d0 = flags & 8
 ; Evidence: Obj_SetAnim; next StateFireLevel

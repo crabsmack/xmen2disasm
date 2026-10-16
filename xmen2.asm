@@ -253,10 +253,10 @@ Tbl_BigAcolyteAnim2:	; animation script (byte flags, byte steps, ..., 2-byte ste
 	incrom	$0119D0,$A
 Tbl_BigAcBulletAnim:	; animation script (byte flags, byte steps, ..., 2-byte steps from +6); 8 of A bytes used at runtime; read by Anim_ApplyStep, Anim_AdvanceByDistance, Anim_Advance; jt[56] used by BigAcBullet_StateLaunch
 	incrom	$0119DA,$A
-Tbl_BigAcolyteIntroScriptLen:	; word 6: entry count of the BIGACOLYTE intro AI script (6 jmp thunks follow at BigAcolyte_IntroScript)
+Tbl_BigAcolyteIntroScript:	; word 6: entry count of the BIGACOLYTE intro AI script (6 jmp thunks follow at BigAcolyte_IntroScript)
 	incrom	$0119E4,$2
 	include "src/f/0119E6.asm"
-Tbl_BigAcolyteFightScriptLen:	; word $14: entry count of the BIGACOLYTE fight AI script (jt[58]); 20 jmp thunks follow at BigAcolyte_FightScript
+Tbl_BigAcolyteFightScript:	; word $14: entry count of the BIGACOLYTE fight AI script (jt[58]); 20 jmp thunks follow at BigAcolyte_FightScript
 	incrom	$0119FE,$1
 	incrom	$0119FF,$1
 	include "src/f/011A00.asm"
@@ -300,10 +300,10 @@ Tbl_CapedAcolyteAnim2:	; animation script (byte flags, byte steps, ..., 2-byte s
 	incrom	$013EA8,$E
 Tbl_CapedAcolyteAnim3:	; animation script (byte flags, byte steps, ..., 2-byte steps from +6); C of E bytes used at runtime; read by Anim_ApplyStep, Anim_AdvanceByDistance, CapedAcolyte_ActAnimHigh; jt[79] used by CapedAcolyte_ActAnimLow, CapedAcolyte_StateShoot
 	incrom	$013EB6,$E
-Tbl_CapedAcolyteIntroScriptLen:	; word 3: entry count of the CAPEDACOLYTE intro AI script (3 jmp thunks follow at CapedAcolyte_IntroScript)
+Tbl_CapedAcolyteIntroScript:	; word 3: entry count of the CAPEDACOLYTE intro AI script (3 jmp thunks follow at CapedAcolyte_IntroScript)
 	incrom	$013EC4,$2
 	include "src/f/013EC6.asm"
-Tbl_CapedAcolyteMainScriptLen:	; word 5: entry count of the CAPEDACOLYTE main AI script (jt[81]); 5 jmp thunks follow at CapedAcolyte_MainScript; low byte read by CapedAcolyte_ActAnimLow (next-step wrap test)
+Tbl_CapedAcolyteMainScript:	; word 5: entry count of the CAPEDACOLYTE main AI script (jt[81]); 5 jmp thunks follow at CapedAcolyte_MainScript; low byte read by CapedAcolyte_ActAnimLow (next-step wrap test)
 	incrom	$013ED2,$2
 	include "src/f/013ED4.asm"
 	include "src/f/013EE4.asm"
@@ -368,7 +368,7 @@ Tbl_ShootAcolyteAnim2:	; animation script (byte flags, byte steps, ..., 2-byte s
 	incrom	$0186E6,$A
 Tbl_ShootAcolyteAnim3:	; animation script (byte flags, byte steps, ..., 2-byte steps from +6); 6 of 8 bytes used at runtime; read by Anim_ApplyStep, Anim_AdvanceByDistance, Anim_Advance; jt[114] used by ShootAcolyte_StateFire
 	incrom	$0186F0,$8
-Tbl_ShootAcolyteScriptLen:	; word 4: entry count of the SHOOTACOLYTE AI script (jmp thunks follow at ShootAcolyte_Script)
+Tbl_ShootAcolyteScript:	; word 4: entry count of the SHOOTACOLYTE AI script (jmp thunks follow at ShootAcolyte_Script)
 	incrom	$0186F8,$2
 	include "src/f/0186FA.asm"
 	include "src/f/018706.asm"
@@ -424,19 +424,19 @@ Tbl_YoyoAcolyteAnim:	; animation script (byte flags, byte steps, ..., 2-byte ste
 	incrom	$01CA34,$12
 Tbl_YoyoAcolyteAnim2:	; animation script (byte flags, byte steps, ..., 2-byte steps from +6); 6 of 8 bytes used at runtime; read by Anim_ApplyStep, Anim_AdvanceByDistance, Anim_Advance; jt[141] used by YoyoAcolyte_ActThrowHigh, YoyoAcolyte_ActThrowLevel, YoyoAcolyte_ActThrowLow
 	incrom	$01CA46,$8
-Tbl_YoyoAcolyte_ScriptLevelLen:	; word 2: step count of the AI script YoyoAcolyte_ScriptLevel that follows (2 thunks disassembled); jt[142]
+Tbl_YoyoAcolyte_ScriptLevel:	; word 2: step count of the AI script YoyoAcolyte_ScriptLevel that follows (2 thunks disassembled); jt[142]
 	incrom	$01CA4E,$2
 	include "src/f/01CA50.asm"
-Tbl_YoyoAcolyteScriptHighLen:	; word 2: entry count of a YOYOACOLYTE AI script (jt[143]): ThrowHigh, Idle (YoyoAcolyte_ScriptHigh); low byte read by YoyoAcolyte_StateYoyoOut (next-step wrap test)
+Tbl_YoyoAcolyteScriptHigh:	; word 2: entry count of a YOYOACOLYTE AI script (jt[143]): ThrowHigh, Idle (YoyoAcolyte_ScriptHigh); low byte read by YoyoAcolyte_StateYoyoOut (next-step wrap test)
 	incrom	$01CA58,$2
 	include "src/f/01CA5A.asm"
-Tbl_YoyoAcolyteScriptLowLen:	; word 2: entry count of a YOYOACOLYTE AI script (jt[144]): ThrowLow, Idle (YoyoAcolyte_ScriptLow); low byte read by YoyoAcolyte_StateYoyoOut (next-step wrap test)
+Tbl_YoyoAcolyteScriptLow:	; word 2: entry count of a YOYOACOLYTE AI script (jt[144]): ThrowLow, Idle (YoyoAcolyte_ScriptLow); low byte read by YoyoAcolyte_StateYoyoOut (next-step wrap test)
 	incrom	$01CA62,$2
 	include "src/f/01CA64.asm"
-Tbl_YoyoAcolyteScriptMixALen:	; word 6: entry count of a YOYOACOLYTE AI script (jt[145]): Level, Idle, High, Idle, Low, Idle (YoyoAcolyte_ScriptMixA); low byte read by YoyoAcolyte_StateYoyoOut (next-step wrap test)
+Tbl_YoyoAcolyteScriptMixA:	; word 6: entry count of a YOYOACOLYTE AI script (jt[145]): Level, Idle, High, Idle, Low, Idle (YoyoAcolyte_ScriptMixA); low byte read by YoyoAcolyte_StateYoyoOut (next-step wrap test)
 	incrom	$01CA6C,$2
 	include "src/f/01CA6E.asm"
-Tbl_YoyoAcolyte_ScriptMixBLen:	; word 6: step count of the AI script YoyoAcolyte_ScriptMixB that follows (6 thunks disassembled); jt[146] used by YoyoAcolyte_Init_Script1to4
+Tbl_YoyoAcolyte_ScriptMixB:	; word 6: step count of the AI script YoyoAcolyte_ScriptMixB that follows (6 thunks disassembled); jt[146] used by YoyoAcolyte_Init_Script1to4
 	incrom	$01CA86,$2
 	include "src/f/01CA88.asm"
 Tbl_YoyoAcolyteStats:	; XNPC stats record (8 bytes, object +$8C; layout at Tbl_CapedAcolyteStats): damage 1, health 1, knockback $12/$14/$19/$28, hurt frame 0; 5 of 8 bytes used at runtime; read by YoyoAcolyte_Init, XNpc_TakeDamage_Hurt; jt[147] used by YoyoAcolyte_Init
@@ -994,13 +994,13 @@ Tbl_ApocalypseAnim4:	; animation script (NOTES: Animation scripts); never read i
 	incrom	$04B13A,$A
 Tbl_ApocalypseWave:	; wave table: the same 32-word Q15 sine period as Tbl_MagnetoBossOrbitWave; set in +$B2 by Apocalypse_Init, wave offsets added by Apocalypse_Move when +$8C bit 6 is set; never read in the corpus; jt[313] used by Apocalypse_Init
 	incrom	$04B144,$40
-Tbl_Apocalypse_ScriptALen:	; word 6: step count of the AI script Apocalypse_ScriptA that follows; set by Apocalypse_Init (AiScript_Set(+$A2)); read by Apocalypse_StateWaitEntrance (next-step wrap test); 2 of 2 bytes used at runtime; read by Apocalypse_StateWaitEntrance; jt[314] used by Apocalypse_Init
+Tbl_Apocalypse_ScriptA:	; word 6: step count of the AI script Apocalypse_ScriptA that follows; set by Apocalypse_Init (AiScript_Set(+$A2)); read by Apocalypse_StateWaitEntrance (next-step wrap test); 2 of 2 bytes used at runtime; read by Apocalypse_StateWaitEntrance; jt[314] used by Apocalypse_Init
 	incrom	$04B184,$2
 	include "src/f/04B186.asm"
-Tbl_Apocalypse_ScriptBombLen:	; word $1: step count of the AI script Apocalypse_ScriptBomb that follows; jt[315] used by Apocalypse_ActStartMainScript -> AiScript_Set; low byte read by Apocalypse_StateBombsDone (next-step wrap test)
+Tbl_Apocalypse_ScriptBomb:	; word $1: step count of the AI script Apocalypse_ScriptBomb that follows; jt[315] used by Apocalypse_ActStartMainScript -> AiScript_Set; low byte read by Apocalypse_StateBombsDone (next-step wrap test)
 	incrom	$04B19E,$2
 	include "src/f/04B1A0.asm"
-Tbl_Apocalypse_ScriptBLen:	; word $A: step count of the AI script Apocalypse_ScriptB that follows; jt[316] used by Apocalypse_StateBombsDone -> AiScript_Set; low byte read by Apocalypse_StateWaitEntrance (next-step wrap test)
+Tbl_Apocalypse_ScriptB:	; word $A: step count of the AI script Apocalypse_ScriptB that follows; jt[316] used by Apocalypse_StateBombsDone -> AiScript_Set; low byte read by Apocalypse_StateWaitEntrance (next-step wrap test)
 	incrom	$04B1A4,$2
 	include "src/f/04B1A6.asm"
 	include "src/f/04B1C2.asm"
@@ -1644,7 +1644,7 @@ Tbl_Anim_06D10E:	; animation script (byte flags, byte steps, ..., 2-byte steps f
 	incrom	$06D10E,$8
 Tbl_BroodAiScript:	; AI script (AiScript_Set): word count 3, then jmp thunks Brood_ActApproach, Brood_ActShoot, Brood_ActIdle; never read in the corpus; jt[509] used by Brood_Init -> AiScript_Set
 	incrom	$06D116,$E
-Tbl_Brood_ScriptLen:	; word 2: step count of the AI script Brood_Script that follows; set by Brood_Init (AiScript_Set(+$96)); read by Brood_StateLand (next-step wrap test); 2 of 2 bytes used at runtime; read by Brood_StateLand; jt[510] used by Brood_Init
+Tbl_Brood_Script:	; word 2: step count of the AI script Brood_Script that follows; set by Brood_Init (AiScript_Set(+$96)); read by Brood_StateLand (next-step wrap test); 2 of 2 bytes used at runtime; read by Brood_StateLand; jt[510] used by Brood_Init
 	incrom	$06D124,$2
 	include "src/f/06D126.asm"
 Tbl_BroodStats:	; XNPC stats record (8 bytes, object +$8C; layout at Tbl_CapedAcolyteStats): damage 4, health 8, knockback 1/2/4/8, hurt frame $B; 4 of 8 bytes used at runtime; read by XNpc_TakeDamage_Hurt, Brood_Init, XNpc_KnockbackDist; jt[511] used by Brood_Init
@@ -2000,7 +2000,7 @@ Tbl_BroodBossAnim8:	; animation script (byte flags, byte steps, ..., 2-byte step
 	incrom	$088A38,$A
 Tbl_BroodBossAnim9:	; animation script (byte flags, byte steps, ..., 2-byte steps from +6); 10 of 12 bytes used at runtime; read by Anim_ApplyStep, Anim_AdvanceByDistance, BroodBoss_ActClaw; jt[658] used by BroodBoss_ActScream
 	incrom	$088A42,$12
-Tbl_BroodBossScriptLen:	; word $2C = 44: step count of the BROODBOSS AI script that follows (BroodBoss_ScrStepClaw...); handed to AiScript_Set via jt[659] by BroodBoss_Init (review 002)
+Tbl_BroodBossScript:	; word $2C = 44: step count of the BROODBOSS AI script that follows (BroodBoss_ScrStepClaw...); handed to AiScript_Set via jt[659] by BroodBoss_Init (review 002)
 	incrom	$088A54,$2
 	include "src/f/088A56.asm"
 	include "src/f/088A9A.asm"
@@ -2277,10 +2277,10 @@ Pal_XCloneBg2:	; 16-colour background palette 2 for line 2 (XClone_SetBgPalette(
 	incrom	$09A168,$20
 Pal_XCloneBg3:	; 16-colour background palette 3 for line 2 (XClone_SetBgPalette(3)); 20 of 20 bytes used at runtime; read by Mem_Copy; jt[807] used by XClone_SetBgPalette
 	incrom	$09A188,$20
-Tbl_XClone_PodScriptLen:	; word 1: step count of the AI script XClone_PodScript that follows (1 thunks disassembled); jt[808] used by XClone_ActBecomeBalls, XClone_ActOpenBioBalls, XClone_StatePodOpen
+Tbl_XClone_PodScript:	; word 1: step count of the AI script XClone_PodScript that follows (1 thunks disassembled); jt[808] used by XClone_ActBecomeBalls, XClone_ActOpenBioBalls, XClone_StatePodOpen
 	incrom	$09A1A8,$2
 	include "src/f/09A1AA.asm"
-Tbl_XClone_Script1Len:	; word $C: step count of the AI script XClone_Script1 that follows; jt[809] used by XClone_ActUnhittableScript -> AiScript_Set; low byte read by XClone_StateWaitChild (next-step wrap test)
+Tbl_XClone_Script1:	; word $C: step count of the AI script XClone_Script1 that follows; jt[809] used by XClone_ActUnhittableScript -> AiScript_Set; low byte read by XClone_StateWaitChild (next-step wrap test)
 	incrom	$09A1AE,$2
 	include "src/f/09A1B0.asm"
 Tbl_XCloneAiScript:	; XCLONE default AI scripts, referenced by Tbl_XCloneDefaultRecord: main script (record +8) word count 1, jmp XClone_ActFacePlayer; at +6 the hurt script (+$A) count 5; at +$1C the low-health script (+$C) count 3; at +$2A an idle animation script (+4); at +$32 an empty ball path ($0400) (+6); never read in the corpus; jt[810] used by XClone_Init -> AiScript_Set
@@ -2289,13 +2289,13 @@ Tbl_XCloneDefaultRecord:	; clone record (object +$A8; XClone_Init and the XCLONE
 	incrom	$09A216,$E
 Tbl_XCloneWallBlastChain:	; explosion chain path (format at Tbl_BroodBossDeathChain): the wall blasted open by XClone_TileHookReward; never read in the corpus; jt[812] used by XClone_TileHookReward -> ExplodeFx_ChainRepeat
 	incrom	$09A224,$F0
-Tbl_XClone_Script2Len:	; word 9: step count of the AI script XClone_Script2 that follows (9 thunks disassembled); jt[813] used by XClone_Explode
+Tbl_XClone_Script2:	; word 9: step count of the AI script XClone_Script2 that follows (9 thunks disassembled); jt[813] used by XClone_Explode
 	incrom	$09A314,$2
 	include "src/f/09A316.asm"
-Tbl_XClone_Script3Len:	; word 7: step count of the AI script XClone_Script3 that follows (2 thunks disassembled)
+Tbl_XClone_Script3:	; word 7: step count of the AI script XClone_Script3 that follows (2 thunks disassembled)
 	incrom	$09A33A,$2
 	include "src/f/09A33C.asm"
-Tbl_XClone_Script4Len:	; word 4: step count of the AI script XClone_Script4 that follows (4 thunks disassembled)
+Tbl_XClone_Script4:	; word 4: step count of the AI script XClone_Script4 that follows (4 thunks disassembled)
 	incrom	$09A358,$2
 	include "src/f/09A35A.asm"
 Tbl_XCloneAnim:	; animation script (byte flags, byte steps, ..., 2-byte steps from +6); 8 of 54 bytes used at runtime; read by Anim_ApplyStep, Anim_AdvanceByDistance, Anim_Advance
@@ -2325,7 +2325,7 @@ Tbl_EvilMagnetoBallPath:	; BIOBALLS ball list (format at Tbl_EvilBeastBallPath):
 Tbl_EvilMagnetoCloneRecord:	; clone record of EVILMAGNETO (format at Tbl_XCloneDefaultRecord; set by EvilMagneto_Init); the count word (7) of an AI script follows at +$E, its thunks in the next file; 2 of 10 bytes used at runtime; read by XClone_ActCheckLowHealth; jt[822] used by EvilMagneto_Init
 	incrom	$09A7F4,$10
 	include "src/f/09A804.asm"
-Tbl_XClone_Script8Len:	; word 5: step count of the AI script XClone_Script8 that follows (5 thunks disassembled)
+Tbl_XClone_Script8:	; word 5: step count of the AI script XClone_Script8 that follows (5 thunks disassembled)
 	incrom	$09A820,$2
 	include "src/f/09A822.asm"
 Tbl_XCloneAnim4:	; animation script (byte flags, byte steps, ..., 2-byte steps from +6); 8 of 34 bytes used at runtime; read by Anim_ApplyStep, Anim_AdvanceByDistance, Anim_Advance
@@ -2336,10 +2336,10 @@ Tbl_EvilNightcrawlerCloneRecord:	; clone record of EVILNIGHTCRAWLER (format at T
 	incrom	$09A8B6,$10
 	include "src/f/09A8C6.asm"
 	include "src/f/09A8D2.asm"
-Tbl_XClone_Script11Len:	; word 4: step count of the AI script XClone_Script11 that follows (4 thunks disassembled)
+Tbl_XClone_Script11:	; word 4: step count of the AI script XClone_Script11 that follows (4 thunks disassembled)
 	incrom	$09A8F6,$2
 	include "src/f/09A8F8.asm"
-Tbl_XClone_Script12Len:	; word 12: step count of the AI script XClone_Script12 that follows (12 thunks disassembled)
+Tbl_XClone_Script12:	; word 12: step count of the AI script XClone_Script12 that follows (12 thunks disassembled)
 	incrom	$09A908,$2
 	include "src/f/09A90A.asm"
 Tbl_XCloneAnim5:	; animation script (byte flags, byte steps, ..., 2-byte steps from +6); 12 of 16 bytes used at runtime; read by Anim_ApplyStep, Anim_AdvanceByDistance, Anim_Advance
@@ -2671,10 +2671,10 @@ Tbl_BrainChildAnim:	; animation script (byte flags, byte steps, ..., 2-byte step
 	incrom	$0B7CC6,$8
 Tbl_BrainChildAnim2:	; animation script (NOTES: Animation scripts); never read in the corpus; jt[943] used by BrainChild_ActShoot -> Obj_SetAnim
 	incrom	$0B7CCE,$A
-Tbl_BrainBabyBio_ScriptLen:	; word 5: step count of the AI script BrainBabyBio_Script that follows (5 thunks disassembled); jt[944] used by BrainBabyBio_Init
+Tbl_BrainBabyBio_Script:	; word 5: step count of the AI script BrainBabyBio_Script that follows (5 thunks disassembled); jt[944] used by BrainBabyBio_Init
 	incrom	$0B7CD8,$2
 	include "src/f/0B7CDA.asm"
-Tbl_ChildShip_ScriptLen:	; word 6: step count of the AI script ChildShip_Script that follows (6 thunks disassembled); jt[945] used by ChildShip_Init
+Tbl_ChildShip_Script:	; word 6: step count of the AI script ChildShip_Script that follows (6 thunks disassembled); jt[945] used by ChildShip_Init
 	incrom	$0B7CEE,$2
 	include "src/f/0B7CF0.asm"
 Tbl_BrainChildAiScript:	; AI script (AiScript_Set(+$9E)): word count 3, then jmp thunks BrainChild_ActFacePlayer, BrainChild_ActShoot, BrainChild_ActIdle30; set by BrainChild_Init; 2 of E bytes used at runtime; read by BrainChild_StateLand; jt[946] used by BrainChild_Init
@@ -2713,13 +2713,13 @@ Tbl_SavageMediumBioAnim:	; animation script (byte flags, byte steps, ..., 2-byte
 	incrom	$0B7E0A,$8
 Tbl_SavageMediumBioAiScript:	; AI script (AiScript_Set): word count 6, then jmp thunks SavageMediumBio_ActFacePlayer, ActShoot x3, ActFacePlayer, ActWalk; never read in the corpus; jt[963] used by SavageMediumBio_Init -> AiScript_Set
 	incrom	$0B7E12,$1A
-Tbl_SavageBio_Script1Len:	; word 6: step count of the AI script SavageBio_Script1 that follows (6 thunks disassembled); jt[964] used by SavageBio_StateDying
+Tbl_SavageBio_Script1:	; word 6: step count of the AI script SavageBio_Script1 that follows (6 thunks disassembled); jt[964] used by SavageBio_StateDying
 	incrom	$0B7E2C,$2
 	include "src/f/0B7E2E.asm"
-Tbl_SavageBio_Script2Len:	; word $3: step count of the AI script SavageBio_Script2 that follows; jt[965] used by SavageBigBio_Init -> AiScript_Set; low byte read by SavageBio_ActFrame4F (next-step wrap test)
+Tbl_SavageBio_Script2:	; word $3: step count of the AI script SavageBio_Script2 that follows; jt[965] used by SavageBigBio_Init -> AiScript_Set; low byte read by SavageBio_ActFrame4F (next-step wrap test)
 	incrom	$0B7E46,$2
 	include "src/f/0B7E48.asm"
-Tbl_SavageBio_Script3Len:	; word $48: step count of the AI script SavageBio_Script3 that follows; jt[966] used by SavageBio_ActScript2052 -> AiScript_Set; low byte read by SavageBio_StateExtend10 (next-step wrap test)
+Tbl_SavageBio_Script3:	; word $48: step count of the AI script SavageBio_Script3 that follows; jt[966] used by SavageBio_ActScript2052 -> AiScript_Set; low byte read by SavageBio_StateExtend10 (next-step wrap test)
 	incrom	$0B7E54,$2
 	include "src/f/0B7E56.asm"
 Tbl_SavageBioShortTentaclePath:	; tentacle segment path (format at Tbl_EvilBeastBallPath: 8-byte {x, y, word, word} points; +$B0 of the SAVAGE bio, drawn by SavageBigBio_Draw): short tentacle, 10 segments (SavageBio_ActExtendShort); 50 of 70 bytes used at runtime; read by SavageBigBio_Draw; jt[967] used by SavageBio_ActExtendShort
@@ -2730,12 +2730,12 @@ Tbl_SavageBioStraightTentaclePath:	; tentacle segment path (format at Tbl_Savage
 	incrom	$0B8066,$60
 Tbl_SavageBigBioTentacleWave:	; tentacle wave: signed (dx, dy) word pairs added to the segments (SavageBigBio_Draw; tip position in SavageBio_StateFireTip), ended by $0400,$0400; 82 of 84 bytes used at runtime; read by SavageBigBio_Draw; jt[970] used by SavageBigBio_Draw, SavageBio_StateFireTip
 	incrom	$0B80C6,$84
-Tbl_SavageMediumBio_Script4Len:	; word 4: step count of the AI script SavageBio_Script4 that follows (4 thunks disassembled); jt[971] used by SavageMediumBio_StateBurst
+Tbl_SavageMediumBio_Script4:	; word 4: step count of the AI script SavageBio_Script4 that follows (4 thunks disassembled); jt[971] used by SavageMediumBio_StateBurst
 	incrom	$0B814A,$2
 	include "src/f/0B814C.asm"
 Tbl_SavageBioAiScript:	; AI script (AiScript_Set): word count 6, then jmp thunks BioBalls_ActClearDone, BioBalls_StateAnimA, SavageBioBalls_ActLeap, BioBalls_StateAnimB, BioBalls_ActSetDone, BioBalls_StateIdle; never read in the corpus; jt[972] used by SavageBio_StateCrossSurface -> AiScript_Set
 	incrom	$0B815C,$1A
-Tbl_SavageBio_Script5Len:	; word 5: step count of the AI script SavageBio_Script5 that follows (5 thunks disassembled); jt[973] used by SavageBio_ActDie
+Tbl_SavageBio_Script5:	; word 5: step count of the AI script SavageBio_Script5 that follows (5 thunks disassembled); jt[973] used by SavageBio_ActDie
 	incrom	$0B8176,$2
 	include "src/f/0B8178.asm"
 Tbl_SavageBioBallsFormation:	; BIOBALLS formation (format at Tbl_EvilBeastBallPath; BioBalls_SetFormation, BioBalls_Move): SAVAGE bio balls (cross surface, leap, death); 40 of 84 bytes used at runtime; read by BioBalls_Move, BioBalls_SetFormation; jt[974] used by SavageBio_StateCrossSurface, SavageBioBalls_ActLeap, SavageBio_ActDie
@@ -3402,10 +3402,10 @@ Tbl_HologramAiScript_0EAEFC:	; word $0000 (2 bytes), not a string: reached only 
 	incrom	$0EAEFC,$1
 	incrom	$0EAEFD,$1
 	include "src/f/0EAEFE.asm"
-Tbl_Hologram_ScriptDyingLen:	; word $3: step count of the AI script Hologram_ScriptDying that follows; jt[1277] used by Hologram_StartDyingScript -> AiScript_Set; low byte read by Hologram_SeqA_Pose0 (next-step wrap test)
+Tbl_Hologram_ScriptDying:	; word $3: step count of the AI script Hologram_ScriptDying that follows; jt[1277] used by Hologram_StartDyingScript -> AiScript_Set; low byte read by Hologram_SeqA_Pose0 (next-step wrap test)
 	incrom	$0EAF02,$2
 	include "src/f/0EAF04.asm"
-Tbl_Hologram_ScriptAttackLen:	; word $1A: step count of the AI script Hologram_ScriptAttack that follows; jt[1278] used by Hologram_StartAttackScript -> AiScript_Set; low byte read by Hologram_ActPose0 (next-step wrap test)
+Tbl_Hologram_ScriptAttack:	; word $1A: step count of the AI script Hologram_ScriptAttack that follows; jt[1278] used by Hologram_StartAttackScript -> AiScript_Set; low byte read by Hologram_ActPose0 (next-step wrap test)
 	incrom	$0EAF10,$2
 	include "src/f/0EAF12.asm"
 Tbl_HologramDeathChain:	; explosion chain path (format at Tbl_BroodBossDeathChain): HOLOGRAM death; 94 of 98 bytes used at runtime; read by ExplodeFx_ChainStep; jt[1279] used by Hologram_Explode
@@ -3990,51 +3990,51 @@ Tbl_BabyBioAnim4:	; animation script {flags 0 (loop), 2 steps, delay 6, frames 8
 	incrom	$11B3B6,$A
 Tbl_BabyBioBobOffsets:	; bob offsets (+$A4; BabyBio_Move on bob frames, also CHILDSHIP): (x, y) word pairs in 8.8 fixed point, ended by $6400 (restart); 122 of 124 bytes used at runtime; read by BabyBio_Move; jt[1527] used by BabyBio_Init, BabyBio_Move, ChildShip_Init
 	incrom	$11B3C0,$124
-Tbl_BabySentinelA_ScriptLen:	; word 8: step count of the AI script BabySentinelA_Script that follows (8 thunks disassembled); jt[1528] used by BabySentinelA_Init -> AiScript_Set
+Tbl_BabySentinelA_Script:	; word 8: step count of the AI script BabySentinelA_Script that follows (8 thunks disassembled); jt[1528] used by BabySentinelA_Init -> AiScript_Set
 	incrom	$11B4E4,$2
 	include "src/f/11B4E6.asm"
-Tbl_BabySentinelB_Script2Len:	; word 13: step count of the AI script BabySentinelB_Script2 that follows (7 thunks disassembled); jt[1529] used by BabySentinelB_Init
+Tbl_BabySentinelB_Script2:	; word 13: step count of the AI script BabySentinelB_Script2 that follows (7 thunks disassembled); jt[1529] used by BabySentinelB_Init
 	incrom	$11B506,$2
 	include "src/f/11B508.asm"
 	include "src/f/11B524.asm"
-Tbl_BabySentinelB_Script1Len:	; word $8: step count of the AI script BabySentinelB_Script1 that follows; jt[1530] used by BabySentinelB_Init -> AiScript_Set; low byte read by BabyBio_ActPlayAnimD (next-step wrap test)
+Tbl_BabySentinelB_Script1:	; word $8: step count of the AI script BabySentinelB_Script1 that follows; jt[1530] used by BabySentinelB_Init -> AiScript_Set; low byte read by BabyBio_ActPlayAnimD (next-step wrap test)
 	incrom	$11B53C,$2
 	include "src/f/11B53E.asm"
 	include "src/f/11B552.asm"
-Tbl_BabySentinelC_Script2Len:	; word $C: step count of the AI script BabySentinelC_Script2 that follows; jt[1531] used by BabySentinelC_Init -> AiScript_Set; low byte read by BabyBio_WaitCrawlLimit (next-step wrap test)
+Tbl_BabySentinelC_Script2:	; word $C: step count of the AI script BabySentinelC_Script2 that follows; jt[1531] used by BabySentinelC_Init -> AiScript_Set; low byte read by BabyBio_WaitCrawlLimit (next-step wrap test)
 	incrom	$11B55E,$2
 	include "src/f/11B560.asm"
 Tbl_BabySentinelCAiScript:	; AI script (AiScript_Set): word count 11, then jmp thunks BabyBio_ActPlayAnimD, ActWalkForward, WaitStopOrLimit, ActFacePlayer, ActStopWait30, ActWalkForward, ActAttachFlame, ActWaitParam, ActDropFlame, WaitStopOrLimit, ActStopWait30; never read in the corpus; jt[1532] used by BabySentinelC_Init -> AiScript_Set
 	incrom	$11B590,$2E
-Tbl_BabyMoleMan_ScriptDefaultLen:	; word 4: step count of the AI script BabyMoleMan_ScriptDefault that follows (4 thunks disassembled); jt[1533] used by BabyMoleMan_Init_Default
+Tbl_BabyMoleMan_ScriptDefault:	; word 4: step count of the AI script BabyMoleMan_ScriptDefault that follows (4 thunks disassembled); jt[1533] used by BabyMoleMan_Init_Default
 	incrom	$11B5BE,$2
 	include "src/f/11B5C0.asm"
 Tbl_BabyMoleManAiScript:	; AI script (AiScript_Set): word count 10, then jmp thunks BabyBio_ActFacePlayer, ActPlayAnimA, ActPlayAnimC, ActStopWait60, ActStartFiring, ActStopWait30, ActPlayAnimA, ActPlayAnimB, ActStopWait60 x2 (placement type 0); never read in the corpus; jt[1534] used by BabyMoleMan_Init_Case0 -> AiScript_Set
 	incrom	$11B5D0,$2A
-Tbl_BabyMoleMan_Script1Len:	; word 4: step count of the AI script BabyMoleMan_Script1 that follows (4 thunks disassembled); jt[1535] used by BabyMoleMan_Init_Case1
+Tbl_BabyMoleMan_Script1:	; word 4: step count of the AI script BabyMoleMan_Script1 that follows (4 thunks disassembled); jt[1535] used by BabyMoleMan_Init_Case1
 	incrom	$11B5FA,$2
 	include "src/f/11B5FC.asm"
 Tbl_BabyMoleManAiScript2:	; AI script (AiScript_Set): word count 4, then jmp thunks BabyBio_ActPlayAnimC, ActStartWalk, ActStartFiring, ActStopWait30 (placement type 2); never read in the corpus; jt[1536] used by BabyMoleMan_Init_Case2 -> AiScript_Set
 	incrom	$11B60C,$12
 Tbl_BabyMoleManAiScript3:	; AI script (AiScript_Set): word count 4, same thunks as Tbl_BabyMoleManAiScript2 (placement type 2, other variant); never read in the corpus; jt[1537] used by BabyMoleMan_Init_Case2 -> AiScript_Set
 	incrom	$11B61E,$12
-Tbl_FloatBio_Script0Len:	; word 10: step count of the AI script FloatBio_Script0 that follows (10 thunks disassembled); jt[1538] used by FloatBio_Init_Case0
+Tbl_FloatBio_Script0:	; word 10: step count of the AI script FloatBio_Script0 that follows (10 thunks disassembled); jt[1538] used by FloatBio_Init_Case0
 	incrom	$11B630,$2
 	include "src/f/11B632.asm"
-Tbl_FloatBio_Script3Len:	; word 4: step count of the AI script FloatBio_Script3 that follows (4 thunks disassembled); jt[1539] used by FloatBio_Init_Case1
+Tbl_FloatBio_Script3:	; word 4: step count of the AI script FloatBio_Script3 that follows (4 thunks disassembled); jt[1539] used by FloatBio_Init_Case1
 	incrom	$11B65A,$2
 	include "src/f/11B65C.asm"
-Tbl_FloatBio_Script1Len:	; word $6: step count of the AI script FloatBio_Script1 that follows; jt[1540] used by FloatBio_Init_Case1 -> AiScript_Set; low byte read by BabyBio_ActPlayAnimC (next-step wrap test)
+Tbl_FloatBio_Script1:	; word $6: step count of the AI script FloatBio_Script1 that follows; jt[1540] used by FloatBio_Init_Case1 -> AiScript_Set; low byte read by BabyBio_ActPlayAnimC (next-step wrap test)
 	incrom	$11B66C,$2
 	include "src/f/11B66E.asm"
 	include "src/f/11B67E.asm"
-Tbl_FloatBio_Script2Len:	; word $6: step count of the AI script FloatBio_Script2 that follows; jt[1541] used by FloatBio_Init_Case1 -> AiScript_Set; low byte read by BabyBio_ActPlayAnimC (next-step wrap test)
+Tbl_FloatBio_Script2:	; word $6: step count of the AI script FloatBio_Script2 that follows; jt[1541] used by FloatBio_Init_Case1 -> AiScript_Set; low byte read by BabyBio_ActPlayAnimC (next-step wrap test)
 	incrom	$11B686,$2
 	include "src/f/11B688.asm"
-Tbl_WallCrawlBio_Script1Len:	; word 2: step count of the AI script WallCrawlBio_Script1 that follows (2 thunks disassembled); jt[1542] used by WallCrawlBio_Init
+Tbl_WallCrawlBio_Script1:	; word 2: step count of the AI script WallCrawlBio_Script1 that follows (2 thunks disassembled); jt[1542] used by WallCrawlBio_Init
 	incrom	$11B6A0,$2
 	include "src/f/11B6A2.asm"
-Tbl_WallCrawlBio_Script2Len:	; word $2: step count of the AI script WallCrawlBio_Script2 that follows; jt[1543] used by WallCrawlBio_Init -> AiScript_Set; low byte read by WallCrawlBio_ActStopFrame0 (next-step wrap test)
+Tbl_WallCrawlBio_Script2:	; word $2: step count of the AI script WallCrawlBio_Script2 that follows; jt[1543] used by WallCrawlBio_Init -> AiScript_Set; low byte read by WallCrawlBio_ActStopFrame0 (next-step wrap test)
 	incrom	$11B6AA,$2
 	include "src/f/11B6AC.asm"
 Tbl_BabyMoleManStats:	; XNPC stats record (8 bytes, object +$8C; layout at Tbl_CapedAcolyteStats), shared by BABYMOLEMAN, BABYSENTINELA and WALLCRAWLBIO: damage 1, health 4, knockback $12/$14/$19/$28, hurt frame 7; 6 of 8 bytes used at runtime; read by XNpc_TakeDamage_Hurt, XNpc_KnockbackDist, BabyMoleMan_Init; jt[1544] used by BabyMoleMan_Init, BabySentinelA_Init, WallCrawlBio_Init
@@ -4163,7 +4163,7 @@ Tbl_XCloneAnim7:	; animation script (byte flags, byte steps, ..., 2-byte steps f
 	incrom	$11E764,$C
 Tbl_BioBallsAnim:	; animation script (byte flags, byte steps, ..., 2-byte steps from +6); A of C bytes used at runtime; read by Anim_ApplyStep, Anim_AdvanceByDistance, Anim_Advance; jt[1626] used by BioBalls_StateAnimB, XClone_StatePodWaitOpen
 	incrom	$11E770,$C
-Tbl_BioBalls_ScriptIdleLen:	; word 1: step count of the AI script BioBalls_ScriptIdle that follows (1 thunks disassembled); jt[1627] used by BioBalls_Init -> AiScript_Set
+Tbl_BioBalls_ScriptIdle:	; word 1: step count of the AI script BioBalls_ScriptIdle that follows (1 thunks disassembled); jt[1627] used by BioBalls_Init -> AiScript_Set
 	incrom	$11E77C,$2
 	include "src/f/11E77E.asm"
 Tbl_BioBallsPuffChain:	; explosion chain path (format at Tbl_BroodBossDeathChain): BIOBALLS puff, 4 explosions; 24 of 28 bytes used at runtime; read by ExplodeFx_ChainStep; jt[1628] used by BioBalls_SpawnPuff
@@ -4247,7 +4247,7 @@ Tbl_BigBioOrbFallSpeeds:	; 16 words, one y step per BIGBIO orb (g_BigBioOrbs, 6-
 	incrom	$120786,$20
 Pal_BigBioBody:	; 4 x 16-colour palettes for line 3 (g_PalBase+$60): row 0 loaded at the fight start (BigBio_StateWaitPlayers; same colours as Pal_SceneDefaultLine1), rows 1-3 by health (BigBio_TakeDamage) and for the low-health flash (BigBio_Draw); 80 of 80 bytes used at runtime; read by BigBio_Draw, BigBio_StateWaitPlayers, BigBio_TakeDamage; jt[1680] used by BigBio_Draw, BigBio_TakeDamage, BigBio_StateWaitPlayers
 	incrom	$1207A6,$80
-Tbl_BigBio_ScriptLen:	; word 16: step count of the AI script BigBio_Script that follows (16 thunks disassembled); jt[1681] used by BigBio_StartScript
+Tbl_BigBio_Script:	; word 16: step count of the AI script BigBio_Script that follows (16 thunks disassembled); jt[1681] used by BigBio_StartScript
 	incrom	$120826,$2
 	include "src/f/120828.asm"
 	include "src/f/120868.asm"
@@ -4416,7 +4416,7 @@ Tbl_FlyBroodSwoopPath:	; FLYBROOD swoop path: signed (dx, dy) word pairs (a dive
 	incrom	$1343FC,$5C
 Tbl_FlyBroodHoverPath:	; FLYBROOD hover path: (x, y) word offsets from the anchor, shifted right by +$A8, (127, 127) = loop (FlyBrood_MovePath, the hover actions); 7E of 80 bytes used at runtime; read by FlyBrood_MovePath; jt[1753] used by FlyBrood_ActHover90, FlyBrood_ActHoverForever, FlyBrood_ActHoverUntilNear
 	incrom	$134458,$80
-Tbl_FlyBrood_ScriptALen:	; word 1: step count of the AI script FlyBrood_ScriptA that follows (1 thunks disassembled); jt[1754] used by FlyBrood_Init_Case0 -> AiScript_Set
+Tbl_FlyBrood_ScriptA:	; word 1: step count of the AI script FlyBrood_ScriptA that follows (1 thunks disassembled); jt[1754] used by FlyBrood_Init_Case0 -> AiScript_Set
 	incrom	$1344D8,$2
 	include "src/f/1344DA.asm"
 Tbl_FlyBrood_ScrStepsWaitPassedLen:	; word $2: step count of the AI script FlyBrood_ScrStepsWaitPassed that follows; jt[1755] used by FlyBrood_Init_Case1 -> AiScript_Set; low byte read by FlyBrood_StateWaitPlayerInRange (next-step wrap test)
@@ -4786,11 +4786,11 @@ Art_SpaceB1Spr2:	; sprite definition (type $19, Nemesis-compressed tiles): $24-b
 	include "src/f/1400D6.asm"
 Tbl_Spark_vtable:	; class descriptor "SPARK" (parent ACTOR, tools/classes.py): word name offset, long parent, method pointers, then the class name string; read by the ClassList_* walkers
 	incrom	$1400DE,$74
-Tbl_Anim_140152:	; animation script (NOTES: Animation scripts); never read in the corpus; jt[1907] used by Spark_StateStart -> Obj_SetAnim
+Tbl_SparkAnim:	; animation script (NOTES: Animation scripts); never read in the corpus; jt[1907] used by Spark_StateStart -> Obj_SetAnim
 	incrom	$140152,$C
 Tbl_SparkWobble:	; SPARK wobble (Spark_Move, free sparks): signed (dx, dy) word offsets added to the drifting origin, next entry every other frame, $0100 = restart; never read in the corpus; jt[1908] used by Spark_Move
 	incrom	$14015E,$30
-Art_Spr_14018E:	; sprite definition (type $19, Nemesis-compressed tiles): $24-byte header, $14-byte frame records, pieces, tiles; 1531 of 1532 bytes used at runtime; read by Nem_DecodeLoop, Spr_PreloadTiles; jt[1909] used by Tank_ClassInit
+Art_TankSpr:	; sprite definition (type $19, Nemesis-compressed tiles): $24-byte header, $14-byte frame records, pieces, tiles; 1531 of 1532 bytes used at runtime; read by Nem_DecodeLoop, Spr_PreloadTiles; jt[1909] used by Tank_ClassInit
 	incrom	$14018E,$1532
 	include "src/f/1416C0.asm"
 	include "src/f/1416CE.asm"
@@ -4815,19 +4815,19 @@ Tbl_Tank_vtable:	; class descriptor of TANK: word name offset $82, parent XNPC, 
 	incrom	$1420DE,$88
 Lvl_Data_142166:	; level data read by Level_FrameLoop; 68 of 8C bytes used at runtime; read by Level_FrameLoop, Actor_Update, Actor_New; jt[1926] used by TankLeft_Init, TankLeft_Deactivate
 	incrom	$142166,$8C
-Tbl_Anim_1421F2:	; animation script (byte flags, byte steps, ..., 2-byte steps from +6); 6 of 8 bytes used at runtime; read by Anim_ApplyStep, Anim_AdvanceByDistance, Anim_Advance; jt[1927] used by Tank_Init
+Tbl_TankAnim:	; animation script (byte flags, byte steps, ..., 2-byte steps from +6); 6 of 8 bytes used at runtime; read by Anim_ApplyStep, Anim_AdvanceByDistance, Anim_Advance; jt[1927] used by Tank_Init
 	incrom	$1421F2,$8
 Tbl_Anim_1421FA:	; animation script (byte flags, byte steps, ..., 2-byte steps from +6); E of 10 bytes used at runtime; read by Anim_ApplyStep, Anim_AdvanceByDistance, Anim_Advance; jt[1928] used by TankLeft_StateWaitDrive, TankLeft_StateDriveIn, TankLeft_ActDriveIn
 	incrom	$1421FA,$10
-Tbl_Anim_14220A:	; animation script (byte flags, byte steps, ..., 2-byte steps from +6); 10 of 12 bytes used at runtime; read by Anim_ApplyStep, Tank_ActPause; jt[1929] used by Tank_StateWreck
+Tbl_TankWreckAnim:	; animation script (byte flags, byte steps, ..., 2-byte steps from +6); 10 of 12 bytes used at runtime; read by Anim_ApplyStep, Tank_ActPause; jt[1929] used by Tank_StateWreck
 	incrom	$14220A,$12
-Tbl_Tank_ScriptWaitDriveLen:	; word 3: step count of the AI script Tank_ScriptWaitDrive that follows; set by Tank_Init and TankLeft_Init (AiScript_Set(+$94)); read by Tank_ActPause (next-step wrap test); 2 of 2 bytes used at runtime; read by Tank_ActPause; jt[1930] used by TankLeft_Init, Tank_Init
+Tbl_Tank_ScriptWaitDrive:	; word 3: step count of the AI script Tank_ScriptWaitDrive that follows; set by Tank_Init and TankLeft_Init (AiScript_Set(+$94)); read by Tank_ActPause (next-step wrap test); 2 of 2 bytes used at runtime; read by Tank_ActPause; jt[1930] used by TankLeft_Init, Tank_Init
 	incrom	$14221C,$2
 	include "src/f/14221E.asm"
-Tbl_Tank_ScriptDriveInLen:	; word $3: step count of the AI script Tank_ScriptDriveIn that follows; jt[1931] used by TankLeft_StateWaitDrive -> AiScript_Set; low byte read by Tank_ActPause (next-step wrap test)
+Tbl_Tank_ScriptDriveIn:	; word $3: step count of the AI script Tank_ScriptDriveIn that follows; jt[1931] used by TankLeft_StateWaitDrive -> AiScript_Set; low byte read by Tank_ActPause (next-step wrap test)
 	incrom	$14222A,$2
 	include "src/f/14222C.asm"
-Tbl_Tank_ScriptDriveLen:	; word $3: step count of the AI script Tank_ScriptDrive that follows; jt[1932] used by TankLeft_Deactivate -> Actor_DeactivateFree, TankLeft_StateDriveIn -> AiScript_Set; low byte read by Tank_ActPause (next-step wrap test)
+Tbl_Tank_ScriptDrive:	; word $3: step count of the AI script Tank_ScriptDrive that follows; jt[1932] used by TankLeft_Deactivate -> Actor_DeactivateFree, TankLeft_StateDriveIn -> AiScript_Set; low byte read by Tank_ActPause (next-step wrap test)
 	incrom	$142238,$2
 	include "src/f/14223A.asm"
 Tbl_TankStats:	; XNPC stats record (8 bytes, object +$8C; layout at Tbl_CapedAcolyteStats): damage 1, health 4, knockback 1/2/4/6, no hurt frame; 5 of 8 bytes used at runtime; read by XNpc_TakeDamage_Hurt, Tank_Init, XNpc_KnockbackDist; jt[1933] used by Tank_Init

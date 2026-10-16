@@ -1,7 +1,7 @@
 ; ---------------------------------------------------------------------------
 ; Rocket_SetAngleOwner - rocket set-up: priority bit from the owner (or high without one), flight angle +$8C, nudge x by 6 toward the angle
 ; In:  8(a6) = rocket  $C(a6) = owner or 0  $12(a6) = word angle (0/45/90/135/180/270)
-; Out: d0
+; Out: none (the two words after the angle are unused margins)
 ; Evidence: callers Rocket_SetAngleA/B; angles used by BrainRocket_StateSetDirection
 ; ---------------------------------------------------------------------------
 Rocket_SetAngleOwner:

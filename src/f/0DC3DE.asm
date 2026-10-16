@@ -1,8 +1,8 @@
 ; ---------------------------------------------------------------------------
-; SentinelsD1_LoadLevel - SentinelsD1: load the Exterior_1 level (Level_Load with its class list jt[$25B2]) and palette line 2
+; SentinelsD1_LoadLevel - SentinelsD1: load the Exterior_1 level (Level_Load with its class list Tbl_SentinelsD1ClassList (jt $23B2)) and palette line 2
 ; In:  none
 ; Out: d0
-; Evidence: 16 words jt[$261A] -> g_PalBase+$40; parallax factors $C0/$80; TAS 2381
+; Evidence: 16 words Pal_SentinelsLine2 (jt $241A) -> g_PalBase+$40; parallax factors $C0/$80; TAS 2381
 ; Found: link-after-rts
 ; ---------------------------------------------------------------------------
 SentinelsD1_LoadLevel:

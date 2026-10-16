@@ -1,5 +1,5 @@
 ; ---------------------------------------------------------------------------
-; SavageBio_ActReloadArt10 - SAVAGE bio script action: drop the tentacle and play animation jt[$202A], then reload the sprite tiles (frame $10)
+; SavageBio_ActReloadArt10 - SAVAGE bio script action: drop the tentacle and play animation Tbl_SavageBioAnim15 (jt $1E2A), then reload the sprite tiles (frame $10)
 ; In:  8(a6) = this
 ; Out: d0
 ; Evidence: next SavageBio_StateReloadArt10

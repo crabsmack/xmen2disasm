@@ -1,5 +1,5 @@
 ; ---------------------------------------------------------------------------
-; Ninja_Move - position += velocity, velocity += acceleration (twice at half rate, no speed limits); during the jump animation (jt $3C92) clip to the floor segments with Ninja_ClipToSegs (NINJA override of slot 18, +$4E; does not call the parent)
+; Ninja_Move - position += velocity, velocity += acceleration (twice at half rate, no speed limits); during the jump animation (Tbl_NinjaAnimAirborne, jt $3A92) clip to the floor segments with Ninja_ClipToSegs (NINJA override of slot 18, +$4E; does not call the parent)
 ; In:  8(a6) = this  $C(a6) = word frame step (1, or 2 when the game runs at half rate)
 ; Out: none
 ; Evidence: method 18 of class descriptor $13D7FE (name string "NINJA", parent BIONPC)

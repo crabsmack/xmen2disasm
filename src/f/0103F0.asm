@@ -2,7 +2,7 @@
 ; BigAcolyte_OnDeath - BIGACOLYTE slot +$72 (XNPC OnDeath): end the scene after 200 frames and spawn its death effect
 ; In:  8(a6) = this
 ; Out: none
-; Evidence: tools/classes.py BIGACOLYTE +$72; g_SceneExitTimer = 200; ExplodeFx_Chain(this, jt $3D42, 0, 0, height); same body as BigAcolyte_DieEndScene
+; Evidence: tools/classes.py BIGACOLYTE +$72; g_SceneExitTimer = 200; ExplodeFx_Chain(this, Tbl_ExplodeFxSpiralPath (jt $3B42), 0, 0, height); same body as BigAcolyte_DieEndScene
 ; ---------------------------------------------------------------------------
 BigAcolyte_OnDeath:
 	link.w	a6,#$0

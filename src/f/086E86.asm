@@ -2,7 +2,7 @@
 ; BroodBoss_ActDropBomb - BROODBOSS script action: start the bomb-drop animation with rumble sound $91
 ; In:  8(a6) = this
 ; Out: d0
-; Evidence: Obj_SetAnim(this, jt[$1692]), Snd $91, +$6C = $FF, next BroodBoss_StateDropBomb; jt 634
+; Evidence: Obj_SetAnim(this, Tbl_BroodBossAnim5 (jt $1492)), Snd $91, +$6C = $FF, next BroodBoss_StateDropBomb; jt 634
 ; ---------------------------------------------------------------------------
 BroodBoss_ActDropBomb:
 	link.w	a6,#$0

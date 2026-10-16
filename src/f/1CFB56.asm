@@ -2,7 +2,7 @@
 ; Gambit_StateGroundAim - standing card aim: turn and aim with the d-pad while A is held (jump cancels); releasing A throws
 ; In:  8(a6) = player
 ; Out: d0
-; Evidence: airborne -> StateControl; C press -> +$82 Jump; aim animations jt $4AEA/$4AF2/Tbl_Anim_1CEE1A/$4AE2; on A release: throw kind +$C2 = 2 level, 3 Down, 0 Up, 1 Up+Left/Right with its throw animation, +$5C = Gambit_StateThrow
+; Evidence: airborne -> StateControl; C press -> +$82 Jump; aim animations Tbl_Anim_1CEE2E (jt $48EA)/$4AF2/Tbl_Anim_1CEE1A/$4AE2; on A release: throw kind +$C2 = 2 level, 3 Down, 0 Up, 1 Up+Left/Right with its throw animation, +$5C = Gambit_StateThrow
 ; ---------------------------------------------------------------------------
 Gambit_StateGroundAim:
 	link.w	a6,#$0

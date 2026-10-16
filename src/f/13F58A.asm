@@ -1,6 +1,6 @@
 ; ---------------------------------------------------------------------------
 ; Debris_Spawn - throw n debris pieces from a point with random velocities
-; In:  8(a6) = word x px  $A(a6) = word y px  $C(a6) = pool  $12(a6) = word n
+; In:  $A(a6) = word x px  $E(a6) = word y px  $10(a6) = pool  $16(a6) = word n
 ; Out: none
 ; Evidence: per piece (until the pool is full): x/y <<8 +/- random $3FF, vx random +/-$7FF, vy random +/-$3FF, +$C = 2 with the sign of vx (not read by Debris_Update), gravity +$E = $20, random frame/bounce/flip bytes (RNG Rand_Next); 7 callers incl. BroodBoss_SpawnDebris, XClone_TileHookOpenWall (jt 1897); TAS 13394-57449
 ; ---------------------------------------------------------------------------

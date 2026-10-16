@@ -1,5 +1,5 @@
 ; ---------------------------------------------------------------------------
-; SavageBio_ActAnimB - SAVAGE bio script action: animation jt[$2002], next step
+; SavageBio_ActAnimB - SAVAGE bio script action: animation Tbl_SavageBioAnim (jt $1E02), next step
 ; In:  8(a6) = this
 ; Out: none
 ; Evidence: TAS 33753

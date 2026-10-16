@@ -1,5 +1,5 @@
 ; ---------------------------------------------------------------------------
-; SavageBio_ActAnimC - SAVAGE bio script action: animation jt[$200A], next step
+; SavageBio_ActAnimC - SAVAGE bio script action: animation Tbl_SavageBioAnim12 (jt $1E0A), next step
 ; In:  8(a6) = this
 ; Out: none
 ; Found: jt 1003
