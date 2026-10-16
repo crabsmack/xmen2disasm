@@ -1157,7 +1157,7 @@ Art_BoulderSpr3:	; sprite definition (type $19, Nemesis-compressed tiles): $24-b
 	incrom	$04F6CA,$36E
 Art_TuskSpr:	; sprite definition (type $18, raw 4bpp tiles): $24-byte header, $14-byte frame records, pieces, tiles; 2520 of 2B96 bytes used at runtime; read by VDP_FlushDmaQueue; DMA to VRAM $BA20-C380; jt[385] used by Tusk_Init
 	incrom	$04FA38,$2B96
-Art_BaniMazaA1Nem3:	; Nemesis-style compressed 4bpp tiles (Nem_Decode; code table built from pairs by the caller); 7D7 of 7D8 bytes used at runtime; read by Nem_DecodeLoop, Seg_LoadList, VDP_FlushDmaQueue; jt[386] used by BaniMazaA1_InitPalette, BaniMazaB2_InitPalette, Tuskette_ClassInit
+Art_TusketteSpr:	; Nemesis-style compressed 4bpp tiles (Nem_Decode; code table built from pairs by the caller); 7D7 of 7D8 bytes used at runtime; read by Nem_DecodeLoop, Seg_LoadList, VDP_FlushDmaQueue; jt[386] used by BaniMazaA1_InitPalette, BaniMazaB2_InitPalette, Tuskette_ClassInit
 	incrom	$0525CE,$7D8
 Art_BaniMazaB2Nem:	; Nemesis-style compressed 4bpp tiles (Nem_Decode; code table built from pairs by the caller); 37B of 37C bytes used at runtime; read by Nem_DecodeLoop, Seg_LoadList; jt[387] used by BaniMazaB2_LoadLevel
 	incrom	$052DA6,$37C
@@ -1394,9 +1394,9 @@ Tbl_CheatCodeInvincible:	; pause cheat code (format at Tbl_CheatCodeHealthAlt): 
 	incrom	$063C18,$A
 Art_FailureNem:	; Nemesis-style compressed 4bpp tiles (Nem_Decode; code table built from pairs by the caller); 38 of 38 bytes used at runtime; read by Nem_DecodeLoop, Nem_BuildCodeTable; jt[457] used by Failure_RunScene
 	incrom	$063C22,$38
-Art_FailureNem2:	; Nemesis-style compressed 4bpp tiles (Nem_Decode; code table built from pairs by the caller); 122 of 122 bytes used at runtime; read by Nem_DecodeLoop, Nem_BuildCodeTable; jt[458] used by Failure_RunScene
+Art_GameOver:	; Nemesis-style compressed 4bpp tiles (Nem_Decode; code table built from pairs by the caller); 122 of 122 bytes used at runtime; read by Nem_DecodeLoop, Nem_BuildCodeTable; jt[458] used by Failure_RunScene
 	incrom	$063C5A,$122
-Art_CerebroNem4:	; Nemesis-style compressed 4bpp tiles (Nem_Decode; code table built from pairs by the caller); 2FA of 2FA bytes used at runtime; read by Nem_DecodeLoop; jt[459] used by Cerebro_SetupPalCycles
+Art_CerebroFont:	; Nemesis-style compressed 4bpp tiles (Nem_Decode; code table built from pairs by the caller); 2FA of 2FA bytes used at runtime; read by Nem_DecodeLoop; jt[459] used by Cerebro_SetupPalCycles
 	incrom	$063D7C,$2FA
 Art_CerebroNem5:	; Nemesis-style compressed 4bpp tiles (Nem_Decode; code table built from pairs by the caller); 60 of 60 bytes used at runtime; read by Nem_DecodeLoop; jt[460] used by Cerebro_PlayIntro
 	incrom	$064076,$60
@@ -1622,7 +1622,7 @@ Str_XMenAndAllRelated:	; C string "@@@@X-MEN, AND ALL RELATED@@@@" (used by jt[4
 	incrom	$069866,$20
 Str_Text_069886:	; Cerebro briefing text (Cerebro_PrintText); 9B of A0 bytes used at runtime; read by Cerebro_PrintText
 	incrom	$069886,$A0
-Snd_Credits:	; sound data; never read in the corpus; jt[500] used by Credits_RunScene -> Snd_Stop
+Tbl_CreditsScript:	; sound data; never read in the corpus; jt[500] used by Credits_RunScene -> Snd_Stop
 	incrom	$069926,$736
 Tbl_ScalingActor_vtable:	; class descriptor of SCALINGACTOR: word name offset $6E, parent ACTOR, 26 method slots from +6, then the name (tools/classes.py)
 	incrom	$06A05C,$7B
@@ -1678,7 +1678,7 @@ Lvl_CloneA1Segs:	; floor-segment list (Seg_LoadList: 12/10-byte records until a 
 	incrom	$06DF42,$3B2
 Art_CloneA1Nem:	; Nemesis-style compressed 4bpp tiles (Nem_Decode; code table built from pairs by the caller); 6504 of 66A0 bytes used at runtime; read by Nem_DecodeLoop, Eni_ReadInline, Eni_Decode; jt[524] used by CloneA1_LoadLevel
 	incrom	$06E2F4,$66A0
-Art_CloneA1Nem2:	; Nemesis-style compressed 4bpp tiles (Nem_Decode; code table built from pairs by the caller); 42 of 5A bytes used at runtime; read by Nem_DecodeLoop, Eni_ReadInline, Eni_Decode; jt[525] used by CloneA1_LoadLevel
+Tbl_CloneA1ClassList:	; Nemesis-style compressed 4bpp tiles (Nem_Decode; code table built from pairs by the caller); 42 of 5A bytes used at runtime; read by Nem_DecodeLoop, Eni_ReadInline, Eni_Decode; jt[525] used by CloneA1_LoadLevel
 	incrom	$074994,$5A
 Art_CloneA1Nem3:	; Nemesis-style compressed 4bpp tiles (Nem_Decode; code table built from pairs by the caller); 16A2 of 16AC bytes used at runtime; read by Nem_DecodeLoop, VDP_WriteWords, Eni_Decode; jt[526] used by CloneA1_LoadLevel
 	incrom	$0749EE,$16AC
@@ -2032,11 +2032,11 @@ Lvl_CloneA5Segs:	; floor-segment list (Seg_LoadList: 12/10-byte records until a 
 	incrom	$088DE6,$2A
 Art_CloneA5Nem:	; Nemesis-style compressed 4bpp tiles (Nem_Decode; code table built from pairs by the caller); 1C66 of 1C70 bytes used at runtime; read by Nem_DecodeLoop, Seg_LoadList; jt[671] used by CloneA5_RunScene
 	incrom	$088E10,$1C70
-Art_CloneA5Nem2:	; Nemesis-style compressed 4bpp tiles (Nem_Decode; code table built from pairs by the caller); 56F of 570 bytes used at runtime; read by Nem_DecodeLoop, Seg_LoadList; jt[672] used by CloneA5_RunScene
+Lvl_CloneA5BgSegs:	; Nemesis-style compressed 4bpp tiles (Nem_Decode; code table built from pairs by the caller); 56F of 570 bytes used at runtime; read by Nem_DecodeLoop, Seg_LoadList; jt[672] used by CloneA5_RunScene
 	incrom	$08AA80,$570
 Map_CloneA5Eni:	; Enigma-compressed tilemap (Eni_Decode); 1BE7 of 1D38 bytes used at runtime; read by Eni_ReadInline, Eni_Decode; jt[673] used by CloneA5_RunScene
 	incrom	$08AFF0,$1D38
-Map_CloneA5Eni2:	; Enigma-compressed tilemap (Eni_Decode); 62 of 80 bytes used at runtime; read by Eni_ReadInline, Eni_Decode; jt[674] used by CloneA5_RunScene
+Tbl_CloneA5ClassList:	; Enigma-compressed tilemap (Eni_Decode); 62 of 80 bytes used at runtime; read by Eni_ReadInline, Eni_Decode; jt[674] used by CloneA5_RunScene
 	incrom	$08CD28,$80
 Art_BroodBossSpr:	; sprite definition (type $18, raw 4bpp tiles): $24-byte header, $14-byte frame records, pieces, tiles; 3DC0 of 4806 bytes used at runtime; read by VDP_FlushDmaQueue; DMA to VRAM $C8C0-CFC0; jt[675] used by BroodBoss_Init, BroodBoss_StateSetup
 	incrom	$08CDA8,$4806
@@ -2048,7 +2048,7 @@ Art_BroodClawSpr:	; sprite definition (type $19, Nemesis-compressed tiles): $24-
 	incrom	$092A92,$378
 Art_CloneA5Spr2:	; sprite definition (type $19, Nemesis-compressed tiles): $24-byte header, $14-byte frame records, pieces, tiles; 83D of 83E bytes used at runtime; read by Nem_DecodeLoop, Spr_PreloadTiles; jt[679] used by CloneA5_LoadResources
 	incrom	$092E0A,$83E
-Art_CloneA5Nem3:	; Nemesis-style compressed 4bpp tiles (Nem_Decode; code table built from pairs by the caller); 2AF of 2B0 bytes used at runtime; read by Nem_DecodeLoop; jt[680] used by CloneA5_LoadResources
+Art_BroodBossWallSpr:	; Nemesis-style compressed 4bpp tiles (Nem_Decode; code table built from pairs by the caller); 2AF of 2B0 bytes used at runtime; read by Nem_DecodeLoop; jt[680] used by CloneA5_LoadResources
 	incrom	$093648,$2B0
 Art_CloneA5Spr3:	; sprite definition (type $18, raw 4bpp tiles): $24-byte header, $14-byte frame records, pieces, tiles; 600 of 678 bytes used at runtime; read by VDP_FlushDmaQueue, VDP_WriteWords; DMA to VRAM $8180-8580; jt[681] used by CloneA5_InitShockSprites
 	incrom	$0938F8,$678

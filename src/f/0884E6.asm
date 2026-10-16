@@ -33,9 +33,9 @@ loc_088526:
 	moveq	#$1,d0
 	move.l	d0,-(a7)
 	move.l	g_SceneVar3B18(a5),-(a7)
-	pea.l	g_CloneA5PalCycles(a5)
-	pea.l	g_CloneA5PalCycles+$2(a5)
-	pea.l	g_CloneA5PalCycles+$4(a5)
+	pea.l	g_CloneA5PalSeq(a5)
+	pea.l	g_CloneA5PalColour(a5)
+	pea.l	g_CloneA5PalTimer(a5)
 	jsr	$3EB2(a5)	; -> Pal_CycleStep
 	lea.l	$14(a7),a7
 loc_08854E:
@@ -51,9 +51,9 @@ loc_08854E:
 	moveq	#$1,d0
 	move.l	d0,-(a7)
 	move.l	g_SceneVar3B18(a5),-(a7)
-	pea.l	g_CloneA5PalCycles(a5)
-	pea.l	g_CloneA5PalCycles+$2(a5)
-	pea.l	g_CloneA5PalCycles+$4(a5)
+	pea.l	g_CloneA5PalSeq(a5)
+	pea.l	g_CloneA5PalColour(a5)
+	pea.l	g_CloneA5PalTimer(a5)
 	jsr	$3EB2(a5)	; -> Pal_CycleStep
 loc_088584:
 	unlk	a6
