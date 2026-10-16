@@ -13,7 +13,7 @@ Obj_CollideSegs:
 	jsr	Seg_GatherNearObj(pc)
 	addq.w	#$8,a7
 	clr.w	-$F8(a6)
-	clr.b	-$1360(a5)
+	clr.b	g_CollideReset(a5)
 loc_1F8B62:
 	moveq	#$0,d0
 	move.w	d0,-$F6(a6)
@@ -161,12 +161,12 @@ loc_1F8CBA:
 	bge.s	loc_1F8D10
 	cmpi.b	#$2,$15(a4)
 	bge.s	loc_1F8D0E
-	tst.b	-$1360(a5)
+	tst.b	g_CollideReset(a5)
 	bne.s	loc_1F8CF8
-	st.b	-$1360(a5)
+	st.b	g_CollideReset(a5)
 	move.w	#$19,-$F8(a6)
-	move.l	-$1364(a5),$8(a4)
-	move.l	-$1368(a5),$C(a4)
+	move.l	g_CollideSafeX(a5),$8(a4)
+	move.l	g_CollideSafeY(a5),$C(a4)
 	clr.l	$16(a4)
 	move.l	a4,-(a7)
 	jsr	$4DDA(a5)	; -> Obj_UpdateBox
@@ -343,8 +343,8 @@ loc_1F8EAE:
 loc_1F8EB2:
 	cmpi.b	#$2,$15(a4)
 	bge.s	loc_1F8EC6
-	move.l	$8(a4),-$1364(a5)
-	move.l	$C(a4),-$1368(a5)
+	move.l	$8(a4),g_CollideSafeX(a5)
+	move.l	$C(a4),g_CollideSafeY(a5)
 loc_1F8EC6:
 	move.w	#$1000,d0
 	and.w	$4(a4),d0
