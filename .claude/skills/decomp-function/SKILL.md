@@ -366,6 +366,32 @@ MPW C 3.3 matching, what reproduces the ROM (also COMPILER.md):
   the case order (unsorted lists are fine).
 - Never write a .c file with a UTF-8 BOM (PowerShell `Set-Content -Encoding utf8`): MPW aborts
   with Fatal Error 423 ("not of type TEXT").
+- (groups 12-14) **Prologue order**: parameters not declared `register` that still get one load
+  first, in reverse order, then the `register` ones (data before address). A data parameter
+  loaded before the pointer: both `register`. A register local before the parameters: copy the
+  parameters into register locals declared after it. Declaration order among `register`
+  variables can beat use count (Ninja_ClipToSegs). A plain local can take the register of a
+  `register` variable whose lifetime ended; two `register` pointer locals with disjoint
+  lifetimes take a3 and a4 (pushing `self` to the stack), plain ones share a3. A goto to a
+  later label keeps disjoint short locals apart where `register` alone doesn't.
+- `(void)field;` drops the read; `switch (field) { }` keeps it. A long result into a short
+  register variable goes through a scratch register and `move.w`: a direct `move.l`/`asr.l`
+  into the variable's register means it is long. `sy + (step >> 1) + 0x80` into an s16 field is
+  `.l`; `(short)(sy + (step >> 1)) + 0x80` gives `.w`.
+- `(T *)&hdr[1]` = one `lea $C(aN),aM` (sometimes `(T *)(hdr + 1)`: try both). `&arr[i]` =
+  `movea.l base / scale / adda.l`; `arr + i` = `scale / add.l base`. `lea (a3),a4` =
+  `&slots[0]`. No strength reduction: `g_X[i]` is a real `muls`.
+- Bit tests: `if (g & 1)` on a long global = `move.l / btst #0`; `(g & 1) != 0` = `moveq #1 /
+  and.l`. `!(b & 0x10) ? a : c` = `and.b / seq`. `if (f & 4 ? 1 : 0)` = the ROM's
+  `moveq #1 / moveq #0` test. A u8 field compared with `moveq #1 / cmp.b` was read signed:
+  `(char)f == 1`.
+- `x -= g_CameraX - 0;` = `move.w g,d0 / sub.w d0,dN` (plain `x -= g` subtracts from memory);
+  `y -= g_CameraY - -0xC` = `sub.w #$FFF4`. `owner->x + (offX << 8)` = `add.l 8(a0),d0`.
+  `self->state = self->defaultState = F;` = one `lea`, +$64 stored first.
+  `if ((t = self->target = f()))` = `move.l d0,field / movea.l d0,a3 / move.l a3,d0 / beq`.
+  `flags = c ? 0x8000 : 0;` = `moveq #0 / move.w`; the ROM's `move.l #$8000` = a block-local
+  initializer. Callers passing more arguments than the callee reads: declare them as unused
+  parameters. `return (char)(*method)(...)` adds no code.
 
 ## asm functions (tag `asm`: hand-written 68000, no MPW frame)
 
