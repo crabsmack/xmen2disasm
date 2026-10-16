@@ -516,3 +516,6 @@ g_HudPlayersAlive = -$38E2	; byte: the g_PlayersAlive value the HUD was last dra
 g_Unk38B0 = -$38B0	; long: set to 0 at the start of Game_SceneLoop; no other A5-relative use (purpose unknown)
 g_Unk38AC = -$38AC	; word: set to 3 at the start of Game_SceneLoop, next to the lives words; no other A5-relative use (purpose unknown)
 g_Unk3B00 = -$3B00	; word: set to 0 at the start of Game_SceneLoop; no other use (purpose unknown)
+g_AvalonA3SprAnim = -$3CCA	; 4 records of {word step 0-2, word delay}: AvalonA3's effect sprites 4..1 (the delays are g_AvalonA3SprDelays; AvalonA3_FrameHook steps them)
+g_BmA1ColourSeqs = -$3CA8	; 4 ptrs: BaniMazaA1_InitTablePtrs points them at Tbl_BaniMazaA1ColourSeq4, 3, 2, 1; nothing reads them
+g_RollingDiscs = -$3C78	; ptr: the ROLLINGDISCS object (RollingDiscs_Init stores self)

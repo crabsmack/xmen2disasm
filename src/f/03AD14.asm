@@ -18,7 +18,7 @@ RollingDiscs_Init:
 	movea.l	$2(a0),a0
 	movea.l	$12(a0),a1
 	jsr	(a1)
-	move.l	a4,-$3C78(a5)
+	move.l	a4,g_RollingDiscs(a5)
 	ori.w	#$1082,$6(a4)
 	clr.w	$18(a4)
 	clr.w	$20(a4)

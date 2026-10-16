@@ -13,6 +13,6 @@ BaniMazaA1_InitTablePtrs:
 	lea.l	$842(a5),a0
 	move.l	$2(a0),-$3CA4(a5)
 	lea.l	$84A(a5),a0
-	move.l	$2(a0),-$3CA8(a5)
+	move.l	$2(a0),g_BmA1ColourSeqs(a5)
 	unlk	a6
 	rts

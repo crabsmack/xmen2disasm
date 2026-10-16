@@ -83,12 +83,12 @@ loc_02CA96:
 	tst.w	g_AvalonA3SprDelays(a5)
 	bne.s	loc_02CAD8
 	move.w	#$5,g_AvalonA3SprDelays(a5)
-	tst.w	-$3CCA(a5)
+	tst.w	g_AvalonA3SprAnim(a5)
 	bne.s	loc_02CAB2
-	move.w	#$3,-$3CCA(a5)
+	move.w	#$3,g_AvalonA3SprAnim(a5)
 loc_02CAB2:
-	subq.w	#$1,-$3CCA(a5)
-	move.w	-$3CCA(a5),d0
+	subq.w	#$1,g_AvalonA3SprAnim(a5)
+	move.w	g_AvalonA3SprAnim(a5),d0
 	ext.l	d0
 	addq.l	#$6,d0
 	move.l	d0,-(a7)
