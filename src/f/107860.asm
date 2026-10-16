@@ -126,7 +126,7 @@ loc_10796C:
 	jsr	$3FDA(a5)	; -> Map_SetBlockFG
 	lea.l	$18(a7),a7
 loc_1079B2:
-	move.w	-$35A0(a5),$C(a3)
+	move.w	g_FrameCounter+2(a5),$C(a3)
 	lea.l	Switch_DebounceWait(pc),a0
 	movea.l	g_TimerCurrent(a5),a1
 	move.l	a0,$C(a1)

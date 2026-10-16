@@ -1,5 +1,5 @@
 ; ---------------------------------------------------------------------------
-; CoreElevator_WaitAtBottom - CoreElevator: wait at the bottom; when the trip counter +$92 reaches 0 start back up
+; CoreElevator_WaitAtBottom - CoreElevator: at the bottom, trips +$92 = 1 (sent down by WaitAtTop) starts back up, 0 (SendDown) stays, re-checking every 255 frames
 ; In:  8(a6) = this
 ; Out: d0 = flags & 8
 ; Evidence: next StartUp

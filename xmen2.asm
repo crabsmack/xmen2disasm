@@ -162,13 +162,13 @@ Sw_0062E4:	; switch table of sub at $0062E4: 6 word offsets from Sw_0062E4-2
 	include "src/f/006B2C.asm"
 	include "src/f/006B64.asm"
 	include "src/f/006BD0.asm"
-Map_AvalonB1Bg:	; Nemesis-style compressed 4bpp tiles (Nem_Decode; code table built from pairs by the caller); 3082 of 308C bytes used at runtime; read by Nem_DecodeLoop; jt[14] used by AvalonB1_InitIntroPalette, AvalonB1_RunScene, AvalonB2_RunScene
+Lvl_AvalonB1Bg:	; AvalonB1 BG plane for Level_Load (map and tileset in one: header, Enigma layout, block definitions, tiles); also AvalonB2 bgMap, AvalonB2 bgTiles; 3082 of 308C bytes used at runtime; read by Nem_DecodeLoop; jt[14] used by AvalonB1_InitIntroPalette, AvalonB1_RunScene, AvalonB2_RunScene
 	incrom	$006D22,$308C
-Art_AvalonB1Nem2:	; Nemesis-style compressed 4bpp tiles (Nem_Decode; code table built from pairs by the caller); 259 of 25A bytes used at runtime; read by Nem_DecodeLoop; jt[15] used by AvalonB1_RunScene
+Lvl_AvalonB1FgSegs:	; AvalonB1 FG floor segments (Level_Load -> Seg_LoadList: 12/10-byte records until a 0 byte); 259 of 25A bytes used at runtime; read by Nem_DecodeLoop; jt[15] used by AvalonB1_RunScene
 	incrom	$009DAE,$25A
-Art_AvalonA2Nem:	; Nemesis-style compressed 4bpp tiles (Nem_Decode; code table built from pairs by the caller); 5344 of 5540 bytes used at runtime; read by Nem_DecodeLoop, Eni_ReadInline, Eni_Decode; jt[16] used by AvalonA2_LoadLevel, AvalonB1_RunScene, AvalonB2_RunScene
+Lvl_AvalonB1Fg:	; AvalonB1 FG plane for Level_Load (map and tileset in one: header, Enigma layout, block definitions, tiles); also AvalonA2 fgTiles, AvalonB2 fgTiles; 5344 of 5540 bytes used at runtime; read by Nem_DecodeLoop, Eni_ReadInline, Eni_Decode; jt[16] used by AvalonA2_LoadLevel, AvalonB1_RunScene, AvalonB2_RunScene
 	incrom	$00A008,$5540
-Art_AvalonB1Nem3:	; Nemesis-style compressed 4bpp tiles (Nem_Decode; code table built from pairs by the caller); 3A of 52 bytes used at runtime; read by Nem_DecodeLoop, Eni_ReadInline, Eni_Decode; jt[17] used by AvalonB1_RunScene
+Tbl_AvalonB1ClassList:	; AvalonB1 class list (Level_Load's last argument: the classes the level's spawn records use); 3A of 52 bytes used at runtime; read by Nem_DecodeLoop, Eni_ReadInline, Eni_Decode; jt[17] used by AvalonB1_RunScene
 	incrom	$00F548,$52
 	include "src/f/00F59A.asm"
 	include "src/f/00F60E.asm"
@@ -445,11 +445,11 @@ Art_YoyoAcolyteSpr:	; sprite definition (type $18, raw 4bpp tiles): $24-byte hea
 	incrom	$01CAA8,$2774
 Art_YoyoAcolyteSpr2:	; floor-segment list (Seg_LoadList: 12/10-byte records until a 0 byte); 381 of 382 bytes used at runtime; read by Seg_LoadList, Nem_DecodeLoop, VDP_FlushDmaQueue; jt[149] used by YoyoAcolyte_ClassInit
 	incrom	$01F21C,$382
-Lvl_AvalonB2Segs:	; floor-segment list (Seg_LoadList: 12/10-byte records until a 0 byte); 29F of 2A0 bytes used at runtime; read by Seg_LoadList, Nem_DecodeLoop; jt[150] used by AvalonB2_RunScene
+Lvl_AvalonB2FgSegs:	; AvalonB2 FG floor segments (Level_Load -> Seg_LoadList: 12/10-byte records until a 0 byte); 29F of 2A0 bytes used at runtime; read by Seg_LoadList, Nem_DecodeLoop; jt[150] used by AvalonB2_RunScene
 	incrom	$01F59E,$2A0
-Map_AvalonB2Eni:	; Enigma-compressed tilemap (Eni_Decode); 2002 of 224E bytes used at runtime; read by Eni_ReadInline, Eni_Decode, Eni_Ops; jt[151] used by AvalonB2_RunScene
+Lvl_AvalonB2FgMap:	; AvalonB2 FG map for Level_Load (plane blob; its tiles come from another blob); 2002 of 224E bytes used at runtime; read by Eni_ReadInline, Eni_Decode, Eni_Ops; jt[151] used by AvalonB2_RunScene
 	incrom	$01F83E,$224E
-Map_AvalonB2Eni2:	; Enigma-compressed tilemap (Eni_Decode); 3E of 56 bytes used at runtime; read by Eni_ReadInline, Eni_Decode, Eni_Ops; jt[152] used by AvalonB2_RunScene
+Tbl_AvalonB2ClassList:	; AvalonB2 class list (Level_Load's last argument: the classes the level's spawn records use); 3E of 56 bytes used at runtime; read by Eni_ReadInline, Eni_Decode, Eni_Ops; jt[152] used by AvalonB2_RunScene
 	incrom	$021A8C,$56
 Art_AvalonB2Spr:	; sprite definition (type $18, raw 4bpp tiles): $24-byte header, $14-byte frame records, pieces, tiles; 40F of 45C bytes used at runtime; read by VDP_WriteWords, Spr_PreloadTiles; jt[153] used by AvalonB2_InitSprite
 	incrom	$021AE2,$45C
@@ -486,13 +486,13 @@ Pal_AvalonA2Line2:	; 16-colour palette copied to line 2 (g_PalBase+$40) at level
 	incrom	$022BCA,$20
 Tbl_AvalonA2Parallax:	; parallax descriptor (format at Tbl_AvalonB1Parallax): type '2' column v-scroll, 7 bands; 25 of 3A bytes used at runtime; read by Scroll_ComputeParallax, Scroll_SetParallax, AvalonA2_LoadLevel; jt[158] used by AvalonA2_InstallHooks
 	incrom	$022BEA,$3A
-Art_AvalonA2Nem2:	; Nemesis-style compressed 4bpp tiles (Nem_Decode; code table built from pairs by the caller); 2664 of 266E bytes used at runtime; read by Nem_DecodeLoop; jt[159] used by AvalonA2_LoadLevel, AvalonA3_LoadLevel
+Lvl_AvalonA2Bg:	; AvalonA2 BG plane for Level_Load (map and tileset in one: header, Enigma layout, block definitions, tiles); 2664 of 266E bytes used at runtime; read by Nem_DecodeLoop; jt[159] used by AvalonA2_LoadLevel, AvalonA3_LoadLevel
 	incrom	$022C24,$266E
-Art_AvalonA2Nem3:	; Nemesis-style compressed 4bpp tiles (Nem_Decode; code table built from pairs by the caller); D3 of D4 bytes used at runtime; read by Nem_DecodeLoop; jt[160] used by AvalonA2_LoadLevel
+Lvl_AvalonA2FgSegs:	; AvalonA2 FG floor segments (Level_Load -> Seg_LoadList: 12/10-byte records until a 0 byte); D3 of D4 bytes used at runtime; read by Nem_DecodeLoop; jt[160] used by AvalonA2_LoadLevel
 	incrom	$025292,$D4
-Map_AvalonA2Eni:	; Enigma-compressed tilemap (Eni_Decode); 104A of 143A bytes used at runtime; read by Eni_Decode, Eni_ReadInline, Eni_Ops; jt[161] used by AvalonA2_LoadLevel
+Lvl_AvalonA2FgMap:	; AvalonA2 FG map for Level_Load (plane blob; its tiles come from another blob); 104A of 143A bytes used at runtime; read by Eni_Decode, Eni_ReadInline, Eni_Ops; jt[161] used by AvalonA2_LoadLevel
 	incrom	$025366,$143A
-Map_AvalonA2Eni2:	; Enigma-compressed tilemap (Eni_Decode); 36 of 4E bytes used at runtime; read by Eni_Decode, Eni_ReadInline, Eni_Ops; jt[162] used by AvalonA2_LoadLevel
+Tbl_AvalonA2ClassList:	; AvalonA2 class list (Level_Load's last argument: the classes the level's spawn records use); 36 of 4E bytes used at runtime; read by Eni_Decode, Eni_ReadInline, Eni_Ops; jt[162] used by AvalonA2_LoadLevel
 	incrom	$0267A0,$4E
 Art_RetractFloorSpr:	; sprite definition (type $19, Nemesis-compressed tiles): $24-byte header, $14-byte frame records, pieces, tiles; 10F of 110 bytes used at runtime; read by Nem_DecodeLoop, Spr_PreloadTiles, Nem_BuildCodeTable; jt[163] used by RetractFloor_ClassInit
 	incrom	$0267EE,$110
@@ -533,11 +533,11 @@ Tbl_ZapperAnim2:	; animation script (byte flags, byte steps, ..., 2-byte steps f
 	incrom	$027474,$A
 Tbl_ZapperAnim3:	; floor-segment list (Seg_LoadList: 12/10-byte records until a 0 byte); 8 of A bytes used at runtime; read by Seg_LoadList, Anim_ApplyStep, Anim_AdvanceByDistance; jt[182] used by Zapper_StateLoopAnim2
 	incrom	$02747E,$A
-Lvl_AvalonA3Segs2:	; floor-segment list (Seg_LoadList: 12/10-byte records until a 0 byte); 9B of 9C bytes used at runtime; read by Seg_LoadList; jt[183] used by AvalonA3_LoadLevel
+Lvl_AvalonA3FgSegs:	; AvalonA3 FG floor segments (Level_Load -> Seg_LoadList: 12/10-byte records until a 0 byte); 9B of 9C bytes used at runtime; read by Seg_LoadList; jt[183] used by AvalonA3_LoadLevel
 	incrom	$027488,$9C
-Lvl_AvalonA3Map:	; level map blob, Enigma-compressed layout (NOTES: Level map / tileset blobs); 1E8 of 1FC bytes used at runtime; read by Eni_ReadInline, Eni_Decode, Level_Load; jt[184] used by AvalonA3_LoadLevel
+Lvl_AvalonA3FgMap:	; AvalonA3 FG map for Level_Load (plane blob; its tiles come from another blob); 1E8 of 1FC bytes used at runtime; read by Eni_ReadInline, Eni_Decode, Level_Load; jt[184] used by AvalonA3_LoadLevel
 	incrom	$027524,$1FC
-Lvl_AvalonA3Map2:	; level map blob, Enigma-compressed layout (NOTES: Level map / tileset blobs); E of 26 bytes used at runtime; read by Eni_ReadInline, Eni_Decode, Eni_Ops; jt[185] used by AvalonA3_LoadLevel
+Tbl_AvalonA3ClassList:	; AvalonA3 class list (Level_Load's last argument: the classes the level's spawn records use); E of 26 bytes used at runtime; read by Eni_ReadInline, Eni_Decode, Eni_Ops; jt[185] used by AvalonA3_LoadLevel
 	incrom	$027720,$26
 Art_ExodusSpr:	; sprite definition (type $19, Nemesis-compressed tiles): $24-byte header, $14-byte frame records, pieces, tiles; 3291 of 3292 bytes used at runtime; read by Spr_PreloadTiles, Nem_DecodeLoop; jt[186] used by Exodus_ClassInit
 	incrom	$027746,$3292
@@ -669,13 +669,13 @@ Tbl_ExodusBlast_vtable:	; class descriptor of EXODUSBLAST: word name offset $82,
 	incrom	$02E566,$8E
 Tbl_ExodusBlastAnim_2:	; animation script (byte flags, byte steps, ..., 2-byte steps from +6); C of E bytes used at runtime; read by Anim_ApplyStep, Anim_AdvanceByDistance, Anim_Advance; jt[218] used by ExodusBlast_StateLaunch
 	incrom	$02E5F4,$E
-Art_AvalonA4Nem:	; Nemesis-style compressed 4bpp tiles (Nem_Decode; code table built from pairs by the caller); 14E0 of 14EA bytes used at runtime; read by Nem_DecodeLoop, Eni_ReadInline, Eni_Decode; jt[219] used by AvalonA4_LoadLevel
+Lvl_AvalonA4Bg:	; AvalonA4 BG plane for Level_Load (map and tileset in one: header, Enigma layout, block definitions, tiles); 14E0 of 14EA bytes used at runtime; read by Nem_DecodeLoop, Eni_ReadInline, Eni_Decode; jt[219] used by AvalonA4_LoadLevel
 	incrom	$02E602,$14EA
-Art_AvalonA4Nem2:	; Nemesis-style compressed 4bpp tiles (Nem_Decode; code table built from pairs by the caller); FB of FC bytes used at runtime; read by Nem_DecodeLoop, Eni_ReadInline, Eni_Decode; jt[220] used by AvalonA4_LoadLevel
+Lvl_AvalonA4FgSegs:	; AvalonA4 FG floor segments (Level_Load -> Seg_LoadList: 12/10-byte records until a 0 byte); FB of FC bytes used at runtime; read by Nem_DecodeLoop, Eni_ReadInline, Eni_Decode; jt[220] used by AvalonA4_LoadLevel
 	incrom	$02FAEC,$FC
-Art_AvalonA4Nem_2:	; Nemesis-style compressed 4bpp tiles (Nem_Decode; code table built from pairs by the caller); 50C4 of 5128 bytes used at runtime; read by Nem_DecodeLoop, Eni_Decode, Eni_ReadInline; jt[221] used by AvalonA3_LoadLevel, AvalonA4_LoadLevel
+Lvl_AvalonA4Fg:	; AvalonA4 FG plane for Level_Load (map and tileset in one: header, Enigma layout, block definitions, tiles); also AvalonA3 fgTiles; 50C4 of 5128 bytes used at runtime; read by Nem_DecodeLoop, Eni_Decode, Eni_ReadInline; jt[221] used by AvalonA3_LoadLevel, AvalonA4_LoadLevel
 	incrom	$02FBE8,$5128
-Art_AvalonA4Nem3:	; Nemesis-style compressed 4bpp tiles (Nem_Decode; code table built from pairs by the caller); 1A of 32 bytes used at runtime; read by Nem_DecodeLoop, Eni_ReadInline, Eni_Decode; jt[222] used by AvalonA4_LoadLevel
+Tbl_AvalonA4ClassList:	; AvalonA4 class list (Level_Load's last argument: the classes the level's spawn records use); 1A of 32 bytes used at runtime; read by Nem_DecodeLoop, Eni_ReadInline, Eni_Decode; jt[222] used by AvalonA4_LoadLevel
 	incrom	$034D10,$32
 Tbl_AvalonA4PalPulse:	; byte step count (11), then one byte per 5-frame tick: nonzero = advance the 6-step colour sequence, 0 = hold (AvalonA4_AnimatePalettes, index g_AvalonA4PalStep); C of C bytes used at runtime; read by AvalonA4_AnimatePalettes; jt[223] used by AvalonA4_AnimatePalettes
 	incrom	$034D42,$C
@@ -921,21 +921,21 @@ Art_BanimazaDoorSpr:	; sprite definition (type $19, Nemesis-compressed tiles): $
 	incrom	$03AEAE,$83A
 Tbl_BaniMazaA1Vdp:	; words copied to the VDP data port by VDP_WriteWords; 211 of 11C4 bytes used at runtime; read by VDP_WriteWords; jt[286] used by BaniMazaA1_InitSprites
 	incrom	$03B6E8,$11C4
-Lvl_BaniMazaA1Segs:	; floor-segment list (Seg_LoadList: 12/10-byte records until a 0 byte); 3AD of 3AE bytes used at runtime; read by Seg_LoadList; jt[287] used by BaniMazaA1_LoadLevel
+Lvl_BaniMazaA1FgSegs:	; BaniMazaA1 FG floor segments (Level_Load -> Seg_LoadList: 12/10-byte records until a 0 byte); 3AD of 3AE bytes used at runtime; read by Seg_LoadList; jt[287] used by BaniMazaA1_LoadLevel
 	incrom	$03C8AC,$3AE
-Art_BaniMazaA1Nem:	; Nemesis-style compressed 4bpp tiles (Nem_Decode; code table built from pairs by the caller); 6970 of 6BE0 bytes used at runtime; read by Nem_DecodeLoop, Eni_ReadInline, Eni_Decode; jt[288] used by BaniMazaA1_LoadLevel
+Lvl_BaniMazaA1Fg:	; BaniMazaA1 FG plane for Level_Load (map and tileset in one: header, Enigma layout, block definitions, tiles); 6970 of 6BE0 bytes used at runtime; read by Nem_DecodeLoop, Eni_ReadInline, Eni_Decode; jt[288] used by BaniMazaA1_LoadLevel
 	incrom	$03CC5A,$6BE0
-Art_BaniMazaA1Nem2:	; Nemesis-style compressed 4bpp tiles (Nem_Decode; code table built from pairs by the caller); 2A of 44 bytes used at runtime; read by Nem_DecodeLoop, Eni_ReadInline, Eni_Decode; jt[289] used by BaniMazaA1_LoadLevel
+Tbl_BaniMazaA1ClassList:	; BaniMazaA1 class list (Level_Load's last argument: the classes the level's spawn records use); 2A of 44 bytes used at runtime; read by Nem_DecodeLoop, Eni_ReadInline, Eni_Decode; jt[289] used by BaniMazaA1_LoadLevel
 	incrom	$04383A,$44
-Lvl_BaniMazaA1Data:	; level data read by Level_AssignBlockSlots; 3D1 of 3FA bytes used at runtime; read by Level_AssignBlockSlots, Eni_Decode, RollingDiscs_ClassInit; jt[290] used by BaniMazaA1_LoadLevel
+Lvl_BaniMazaA1Bg:	; BaniMazaA1 BG plane for Level_Load (map and tileset in one: header, Enigma layout, block definitions, tiles); 3D1 of 3FA bytes used at runtime; read by Level_AssignBlockSlots, Eni_Decode, RollingDiscs_ClassInit; jt[290] used by BaniMazaA1_LoadLevel
 	incrom	$04387E,$3FA
-Lvl_BaniMazaA2Data:	; level data read by Level_AssignBlockSlots; 5B of 5C bytes used at runtime; read by Level_AssignBlockSlots, Eni_Decode, Seg_LoadList; jt[291] used by BaniMazaA2_LoadLevel
+Lvl_BaniMazaA2FgSegs:	; BaniMazaA2 FG floor segments (Level_Load -> Seg_LoadList: 12/10-byte records until a 0 byte); 5B of 5C bytes used at runtime; read by Level_AssignBlockSlots, Eni_Decode, Seg_LoadList; jt[291] used by BaniMazaA2_LoadLevel
 	incrom	$043C78,$5C
-Art_BaniMazaA2Nem:	; Nemesis-style compressed 4bpp tiles (Nem_Decode; code table built from pairs by the caller); D8E of DA4 bytes used at runtime; read by Nem_DecodeLoop; jt[292] used by BaniMazaA2_LoadLevel
+Lvl_BaniMazaA2Fg:	; BaniMazaA2 FG plane for Level_Load (map and tileset in one: header, Enigma layout, block definitions, tiles); D8E of DA4 bytes used at runtime; read by Nem_DecodeLoop; jt[292] used by BaniMazaA2_LoadLevel
 	incrom	$043CD4,$DA4
-Art_BaniMazaA2Nem2:	; Nemesis-style compressed 4bpp tiles (Nem_Decode; code table built from pairs by the caller); 12 of 2C bytes used at runtime; read by Nem_DecodeLoop; jt[293] used by BaniMazaA2_LoadLevel
+Tbl_BaniMazaA2ClassList:	; BaniMazaA2 class list (Level_Load's last argument: the classes the level's spawn records use); 12 of 2C bytes used at runtime; read by Nem_DecodeLoop; jt[293] used by BaniMazaA2_LoadLevel
 	incrom	$044A78,$2C
-Art_BaniMazaA2Nem3:	; Nemesis-style compressed 4bpp tiles (Nem_Decode; code table built from pairs by the caller); 221C of 2226 bytes used at runtime; read by Nem_DecodeLoop; jt[294] used by BaniMazaA2_LoadLevel
+Lvl_BaniMazaA2Bg:	; BaniMazaA2 BG plane for Level_Load (map and tileset in one: header, Enigma layout, block definitions, tiles); 221C of 2226 bytes used at runtime; read by Nem_DecodeLoop; jt[294] used by BaniMazaA2_LoadLevel
 	incrom	$044AA4,$2226
 Tbl_BaniMazaA2Vdp:	; words copied to the VDP data port by VDP_WriteWords; 40F of 45C bytes used at runtime; read by VDP_WriteWords; jt[295] used by BaniMazaA2_InitSprite
 	incrom	$046CCA,$45C
@@ -1159,13 +1159,13 @@ Art_TuskSpr:	; sprite definition (type $18, raw 4bpp tiles): $24-byte header, $1
 	incrom	$04FA38,$2B96
 Art_TusketteSpr:	; Nemesis-style compressed 4bpp tiles (Nem_Decode; code table built from pairs by the caller); 7D7 of 7D8 bytes used at runtime; read by Nem_DecodeLoop, Seg_LoadList, VDP_FlushDmaQueue; jt[386] used by BaniMazaA1_InitPalette, BaniMazaB2_InitPalette, Tuskette_ClassInit
 	incrom	$0525CE,$7D8
-Art_BaniMazaB2Nem:	; Nemesis-style compressed 4bpp tiles (Nem_Decode; code table built from pairs by the caller); 37B of 37C bytes used at runtime; read by Nem_DecodeLoop, Seg_LoadList; jt[387] used by BaniMazaB2_LoadLevel
+Lvl_BaniMazaB2FgSegs:	; BaniMazaB2 FG floor segments (Level_Load -> Seg_LoadList: 12/10-byte records until a 0 byte); 37B of 37C bytes used at runtime; read by Nem_DecodeLoop, Seg_LoadList; jt[387] used by BaniMazaB2_LoadLevel
 	incrom	$052DA6,$37C
-Art_BaniMazaB2Nem2:	; Nemesis-style compressed 4bpp tiles (Nem_Decode; code table built from pairs by the caller); 6366 of 646C bytes used at runtime; read by Nem_DecodeLoop, Eni_ReadInline, Eni_Decode; jt[388] used by BaniMazaB2_LoadLevel
+Lvl_BaniMazaB2Fg:	; BaniMazaB2 FG plane for Level_Load (map and tileset in one: header, Enigma layout, block definitions, tiles); 6366 of 646C bytes used at runtime; read by Nem_DecodeLoop, Eni_ReadInline, Eni_Decode; jt[388] used by BaniMazaB2_LoadLevel
 	incrom	$053122,$646C
-Art_BaniMazaB2Nem3:	; Nemesis-style compressed 4bpp tiles (Nem_Decode; code table built from pairs by the caller); 16 of 2E bytes used at runtime; read by Nem_DecodeLoop, Eni_ReadInline, Eni_Decode; jt[389] used by BaniMazaB2_LoadLevel
+Tbl_BaniMazaB2ClassList:	; BaniMazaB2 class list (Level_Load's last argument: the classes the level's spawn records use); 16 of 2E bytes used at runtime; read by Nem_DecodeLoop, Eni_ReadInline, Eni_Decode; jt[389] used by BaniMazaB2_LoadLevel
 	incrom	$05958E,$2E
-Art_BaniMazaB2Nem4:	; Nemesis-style compressed 4bpp tiles (Nem_Decode; code table built from pairs by the caller); 1248 of 1252 bytes used at runtime; read by Nem_DecodeLoop, Eni_Decode; jt[390] used by BaniMazaB2_LoadLevel
+Lvl_BaniMazaB2Bg:	; BaniMazaB2 BG plane for Level_Load (map and tileset in one: header, Enigma layout, block definitions, tiles); 1248 of 1252 bytes used at runtime; read by Nem_DecodeLoop, Eni_Decode; jt[390] used by BaniMazaB2_LoadLevel
 	incrom	$0595BC,$1252
 Tbl_TusketteAnim:	; animation script (byte flags, byte steps, ..., 2-byte steps from +6); A of C bytes used at runtime; read by Anim_ApplyStep, Nem_DecodeLoop, Anim_AdvanceByDistance; jt[391] used by Tuskette_Init_part5, Tuskette_StatePatrolStart, Tuskette_StateWalk
 	incrom	$05A80E,$C
@@ -1350,11 +1350,11 @@ Tbl_Tuskette_vtable:	; class descriptor of TUSKETTE: word name offset $82, paren
 	incrom	$05E04E,$8B
 Pad_Cerebro:	; $00 fill; never read in the corpus; between Tuskette_Init_part6 and Cerebro_BigSpriteDecode
 	incrom	$05E0D9,$1
-Art_CerebroNem:	; Nemesis-style compressed 4bpp tiles (Nem_Decode; code table built from pairs by the caller); 1410 of 141A bytes used at runtime; read by Nem_DecodeLoop; jt[436] used by Cerebro_Run
+Lvl_CerebroBg:	; Cerebro BG plane for Level_Load (map and tileset in one: header, Enigma layout, block definitions, tiles); 1410 of 141A bytes used at runtime; read by Nem_DecodeLoop; jt[436] used by Cerebro_Run
 	incrom	$05E0DA,$141A
-Art_CerebroNem2:	; Nemesis-style compressed 4bpp tiles (Nem_Decode; code table built from pairs by the caller); 13D0 of 13D4 bytes used at runtime; read by Nem_DecodeLoop; jt[437] used by Cerebro_Run
+Lvl_CerebroFg:	; Cerebro FG plane for Level_Load (map and tileset in one: header, Enigma layout, block definitions, tiles); 13D0 of 13D4 bytes used at runtime; read by Nem_DecodeLoop; jt[437] used by Cerebro_Run
 	incrom	$05F4F4,$13D4
-Art_CerebroNem3:	; Nemesis-style compressed 4bpp tiles (Nem_Decode; code table built from pairs by the caller); 2 of 1A bytes used at runtime; read by Nem_DecodeLoop, Nem_BuildCodeTable, Eni_Decode; jt[438] used by Cerebro_Run
+Tbl_CerebroClassList:	; Cerebro class list (Level_Load's last argument: the classes the level's spawn records use); 2 of 1A bytes used at runtime; read by Nem_DecodeLoop, Nem_BuildCodeTable, Eni_Decode; jt[438] used by Cerebro_Run
 	incrom	$0608C8,$1A
 Tbl_CerebroVdp:	; words copied to the VDP data port by VDP_WriteWords; FFC of FFC bytes used at runtime; read by VDP_WriteWords; jt[439] used by Cerebro_LoadSpriteTiles
 	incrom	$0608E2,$FFC
@@ -1674,13 +1674,13 @@ Tbl_Brood_vtable:	; class descriptor of BROOD: word name offset $86, parent SMAL
 	include "src/f/06DDE0.asm"
 	include "src/f/06DE3A.asm"
 	include "src/f/06DE90.asm"
-Lvl_CloneA1Segs:	; floor-segment list (Seg_LoadList: 12/10-byte records until a 0 byte); 3B1 of 3B2 bytes used at runtime; read by Seg_LoadList; jt[523] used by CloneA1_LoadLevel
+Lvl_CloneA1FgSegs:	; CloneA1 FG floor segments (Level_Load -> Seg_LoadList: 12/10-byte records until a 0 byte); 3B1 of 3B2 bytes used at runtime; read by Seg_LoadList; jt[523] used by CloneA1_LoadLevel
 	incrom	$06DF42,$3B2
-Art_CloneA1Nem:	; Nemesis-style compressed 4bpp tiles (Nem_Decode; code table built from pairs by the caller); 6504 of 66A0 bytes used at runtime; read by Nem_DecodeLoop, Eni_ReadInline, Eni_Decode; jt[524] used by CloneA1_LoadLevel
+Lvl_CloneA1Fg:	; CloneA1 FG plane for Level_Load (map and tileset in one: header, Enigma layout, block definitions, tiles); 6504 of 66A0 bytes used at runtime; read by Nem_DecodeLoop, Eni_ReadInline, Eni_Decode; jt[524] used by CloneA1_LoadLevel
 	incrom	$06E2F4,$66A0
-Tbl_CloneA1ClassList:	; Nemesis-style compressed 4bpp tiles (Nem_Decode; code table built from pairs by the caller); 42 of 5A bytes used at runtime; read by Nem_DecodeLoop, Eni_ReadInline, Eni_Decode; jt[525] used by CloneA1_LoadLevel
+Tbl_CloneA1ClassList:	; CloneA1 class list (Level_Load's last argument: the classes the level's spawn records use); 42 of 5A bytes used at runtime; read by Nem_DecodeLoop, Eni_ReadInline, Eni_Decode; jt[525] used by CloneA1_LoadLevel
 	incrom	$074994,$5A
-Art_CloneA1Nem3:	; Nemesis-style compressed 4bpp tiles (Nem_Decode; code table built from pairs by the caller); 16A2 of 16AC bytes used at runtime; read by Nem_DecodeLoop, VDP_WriteWords, Eni_Decode; jt[526] used by CloneA1_LoadLevel
+Lvl_CloneA1Bg:	; CloneA1 BG plane for Level_Load (map and tileset in one: header, Enigma layout, block definitions, tiles); 16A2 of 16AC bytes used at runtime; read by Nem_DecodeLoop, VDP_WriteWords, Eni_Decode; jt[526] used by CloneA1_LoadLevel
 	incrom	$0749EE,$16AC
 Art_CloneA1Nem_2:	; Nemesis-style compressed 4bpp tiles (Nem_Decode; code table built from pairs by the caller); 4F0 of 4F0 bytes used at runtime; read by Nem_DecodeLoop, VDP_WriteWords, Eni_Decode; DMA to VRAM $B140-B5A0; jt[527] used by LightBeam_ClassInit, CloneA1_AnimTilesTimer
 	incrom	$07609A,$4F0
@@ -1713,11 +1713,11 @@ Tbl_LightBeam_vtable:	; class descriptor of LIGHTBEAM: word name offset $6E, par
 	include "src/f/077848.asm"
 	include "src/f/077988.asm"
 	include "src/f/077CBC.asm"
-Lvl_CloneA2Segs:	; floor-segment list (Seg_LoadList: 12/10-byte records until a 0 byte); 919 of 91A bytes used at runtime; read by Seg_LoadList; jt[541] used by CloneA2_LoadLevel
+Lvl_CloneA2FgSegs:	; CloneA2 FG floor segments (Level_Load -> Seg_LoadList: 12/10-byte records until a 0 byte); 919 of 91A bytes used at runtime; read by Seg_LoadList; jt[541] used by CloneA2_LoadLevel
 	incrom	$077CE0,$91A
-Art_CloneA2Nem:	; Nemesis-style compressed 4bpp tiles (Nem_Decode; code table built from pairs by the caller); 8A66 of 922C bytes used at runtime; read by Nem_DecodeLoop, Eni_Decode, Eni_ReadInline; jt[542] used by CloneA2_LoadLevel, CloneA5_RunScene
+Lvl_CloneA2Fg:	; CloneA2 FG plane for Level_Load (map and tileset in one: header, Enigma layout, block definitions, tiles); also CloneA5 fgTiles; 8A66 of 922C bytes used at runtime; read by Nem_DecodeLoop, Eni_Decode, Eni_ReadInline; jt[542] used by CloneA2_LoadLevel, CloneA5_RunScene
 	incrom	$0785FA,$922C
-Tbl_CloneA2ClassList:	; {word $52 bytes; 20 actor class descriptor ptrs} then Pascal name "CloneA2NGClassList"; passed to Level_Load by CloneA2_LoadLevel (classes.py)
+Tbl_CloneA2ClassList:	; CloneA2 class list (Level_Load's last argument: the classes the level's spawn records use); 20 actor class descriptor ptrs} then Pascal name "CloneA2NGClassList"; passed to Level_Load by CloneA2_LoadLevel (classes.py)
 	incrom	$081826,$6A
 Pal_CloneA2Line0:	; 16 CRAM words: initial palette line 0 (CloneA2_LoadLevel -> g_PalBase)
 	incrom	$081890,$20
@@ -2028,15 +2028,15 @@ Tbl_BroodBossDamage_vtable:	; class descriptor of BROODBOSSDAMAGE: word name off
 	incrom	$088CF0,$7E
 Tbl_BroodBoss_vtable:	; class descriptor of BROODBOSS: word name offset $6E, parent BROODBOSSPARTS, 26 method slots from +6, then the name (tools/classes.py)
 	incrom	$088D6E,$78
-Lvl_CloneA5Segs:	; floor-segment list (Seg_LoadList: 12/10-byte records until a 0 byte); 29 of 2A bytes used at runtime; read by Seg_LoadList; jt[670] used by CloneA5_RunScene
+Lvl_CloneA5FgSegs:	; CloneA5 FG floor segments (Level_Load -> Seg_LoadList: 12/10-byte records until a 0 byte); 29 of 2A bytes used at runtime; read by Seg_LoadList; jt[670] used by CloneA5_RunScene
 	incrom	$088DE6,$2A
-Art_CloneA5Nem:	; Nemesis-style compressed 4bpp tiles (Nem_Decode; code table built from pairs by the caller); 1C66 of 1C70 bytes used at runtime; read by Nem_DecodeLoop, Seg_LoadList; jt[671] used by CloneA5_RunScene
+Lvl_CloneA5Bg:	; CloneA5 BG plane for Level_Load (map and tileset in one: header, Enigma layout, block definitions, tiles); 1C66 of 1C70 bytes used at runtime; read by Nem_DecodeLoop, Seg_LoadList; jt[671] used by CloneA5_RunScene
 	incrom	$088E10,$1C70
-Lvl_CloneA5BgSegs:	; Nemesis-style compressed 4bpp tiles (Nem_Decode; code table built from pairs by the caller); 56F of 570 bytes used at runtime; read by Nem_DecodeLoop, Seg_LoadList; jt[672] used by CloneA5_RunScene
+Lvl_CloneA5BgSegs:	; CloneA5 BG floor segments (Level_Load -> Seg_LoadList: 12/10-byte records until a 0 byte); 56F of 570 bytes used at runtime; read by Nem_DecodeLoop, Seg_LoadList; jt[672] used by CloneA5_RunScene
 	incrom	$08AA80,$570
-Map_CloneA5Eni:	; Enigma-compressed tilemap (Eni_Decode); 1BE7 of 1D38 bytes used at runtime; read by Eni_ReadInline, Eni_Decode; jt[673] used by CloneA5_RunScene
+Lvl_CloneA5FgMap:	; CloneA5 FG map for Level_Load (plane blob; its tiles come from another blob); 1BE7 of 1D38 bytes used at runtime; read by Eni_ReadInline, Eni_Decode; jt[673] used by CloneA5_RunScene
 	incrom	$08AFF0,$1D38
-Tbl_CloneA5ClassList:	; Enigma-compressed tilemap (Eni_Decode); 62 of 80 bytes used at runtime; read by Eni_ReadInline, Eni_Decode; jt[674] used by CloneA5_RunScene
+Tbl_CloneA5ClassList:	; CloneA5 class list (Level_Load's last argument: the classes the level's spawn records use); 62 of 80 bytes used at runtime; read by Eni_ReadInline, Eni_Decode; jt[674] used by CloneA5_RunScene
 	incrom	$08CD28,$80
 Art_BroodBossSpr:	; sprite definition (type $18, raw 4bpp tiles): $24-byte header, $14-byte frame records, pieces, tiles; 3DC0 of 4806 bytes used at runtime; read by VDP_FlushDmaQueue; DMA to VRAM $C8C0-CFC0; jt[675] used by BroodBoss_Init, BroodBoss_StateSetup
 	incrom	$08CDA8,$4806
@@ -2385,21 +2385,21 @@ Tbl_BroodClaw_vtable:	; class descriptor of BROODCLAW: word name offset $6E, par
 	incrom	$09B98C,$78
 Tbl_XCloneOpenFormation:	; BIOBALLS formation (format at Tbl_EvilBeastBallPath; BioBalls_SetFormation): XClone_ActOpenBioBalls; 2A of 54 bytes used at runtime; read by BioBalls_SetFormation; jt[844] used by XClone_ActOpenBioBalls
 	incrom	$09BA04,$54
-Lvl_SavageA2Data:	; level data read by Level_AssignBlockSlots; 28C0 of 28CA bytes used at runtime; read by Level_AssignBlockSlots, Seg_LoadList; jt[845] used by SavageA2_LoadLevel, SavageA3_LoadLevel
+Lvl_SavageA2Bg:	; SavageA2 BG plane for Level_Load (map and tileset in one: header, Enigma layout, block definitions, tiles); also SavageA3 bgMap, SavageA3 bgTiles; 28C0 of 28CA bytes used at runtime; read by Level_AssignBlockSlots, Seg_LoadList; jt[845] used by SavageA2_LoadLevel, SavageA3_LoadLevel
 	incrom	$09BA58,$28CA
-Lvl_SavageB1Data:	; level data read by Level_AssignBlockSlots; 89F of 8A0 bytes used at runtime; read by Level_AssignBlockSlots, Seg_LoadList; jt[846] used by SavageB1_LoadLevel
+Lvl_SavageB1FgSegs:	; SavageB1 FG floor segments (Level_Load -> Seg_LoadList: 12/10-byte records until a 0 byte); 89F of 8A0 bytes used at runtime; read by Level_AssignBlockSlots, Seg_LoadList; jt[846] used by SavageB1_LoadLevel
 	incrom	$09E322,$8A0
-Map_SavageB1Eni:	; Enigma-compressed tilemap (Eni_Decode); 1AA9 of 1E4A bytes used at runtime; read by Eni_ReadInline, Eni_Decode, Eni_Ops; jt[847] used by SavageB1_LoadLevel
+Lvl_SavageB1FgMap:	; SavageB1 FG map for Level_Load (plane blob; its tiles come from another blob); 1AA9 of 1E4A bytes used at runtime; read by Eni_ReadInline, Eni_Decode, Eni_Ops; jt[847] used by SavageB1_LoadLevel
 	incrom	$09EBC2,$1E4A
-Map_SavageB1Eni2:	; Enigma-compressed tilemap (Eni_Decode); 32 of 4A bytes used at runtime; read by Eni_ReadInline, Eni_Decode, Eni_Ops; jt[848] used by SavageB1_LoadLevel
+Tbl_SavageB1ClassList:	; SavageB1 class list (Level_Load's last argument: the classes the level's spawn records use); 32 of 4A bytes used at runtime; read by Eni_ReadInline, Eni_Decode, Eni_Ops; jt[848] used by SavageB1_LoadLevel
 	incrom	$0A0A0C,$4A
-Lvl_SavageB1Segs:	; floor-segment list (Seg_LoadList: 12/10-byte records until a 0 byte); 18A of 1A6 bytes used at runtime; read by Seg_LoadList, Eni_ReadInline, Level_Load; jt[849] used by SavageB1_LoadLevel
+Lvl_SavageB1BgMap:	; SavageB1 BG map for Level_Load (plane blob; its tiles come from another blob); 18A of 1A6 bytes used at runtime; read by Seg_LoadList, Eni_ReadInline, Level_Load; jt[849] used by SavageB1_LoadLevel
 	incrom	$0A0A56,$1A6
-Lvl_SavageA2Segs:	; floor-segment list (Seg_LoadList: 12/10-byte records until a 0 byte); 4B3 of 4B4 bytes used at runtime; read by Seg_LoadList, Eni_ReadInline, Eni_Decode; jt[850] used by SavageA2_LoadLevel
+Lvl_SavageA2FgSegs:	; SavageA2 FG floor segments (Level_Load -> Seg_LoadList: 12/10-byte records until a 0 byte); 4B3 of 4B4 bytes used at runtime; read by Seg_LoadList, Eni_ReadInline, Eni_Decode; jt[850] used by SavageA2_LoadLevel
 	incrom	$0A0BFC,$4B4
-Art_SavageA2Nem:	; Nemesis-style compressed 4bpp tiles (Nem_Decode; code table built from pairs by the caller); 633B of 65B4 bytes used at runtime; read by Nem_DecodeLoop, Eni_ReadInline, Eni_Decode; jt[851] used by SavageA2_LoadLevel, SavageA3_LoadLevel
+Lvl_SavageA2Fg:	; SavageA2 FG plane for Level_Load (map and tileset in one: header, Enigma layout, block definitions, tiles); also SavageA3 fgTiles; 633B of 65B4 bytes used at runtime; read by Nem_DecodeLoop, Eni_ReadInline, Eni_Decode; jt[851] used by SavageA2_LoadLevel, SavageA3_LoadLevel
 	incrom	$0A10B0,$65B4
-Art_SavageA2Nem2:	; Nemesis-style compressed 4bpp tiles (Nem_Decode; code table built from pairs by the caller); 52 of 6C bytes used at runtime; read by Nem_DecodeLoop, Eni_ReadInline, Eni_Decode; jt[852] used by SavageA2_LoadLevel
+Tbl_SavageA2ClassList:	; SavageA2 class list (Level_Load's last argument: the classes the level's spawn records use); 52 of 6C bytes used at runtime; read by Nem_DecodeLoop, Eni_ReadInline, Eni_Decode; jt[852] used by SavageA2_LoadLevel
 	incrom	$0A7664,$6C
 Art_FloatBubbleSpr:	; sprite definition (type $18, raw 4bpp tiles): $24-byte header, $14-byte frame records, pieces, tiles; BD0 of BD0 bytes used at runtime; read by VDP_WriteWords, Spr_PreloadTiles; jt[853] used by FloatBubble_ClassInit
 	incrom	$0A76D0,$BD0
@@ -2557,11 +2557,11 @@ Pad_SavageA23:	; $00 fill; never read in the corpus; between SavageA2_RunScene a
 	include "src/f/0ADE06.asm"
 	include "src/f/0ADE40.asm"
 	include "src/f/0ADE7A.asm"
-Lvl_SavageA3Segs:	; floor-segment list (Seg_LoadList: 12/10-byte records until a 0 byte); 557 of 558 bytes used at runtime; read by Seg_LoadList; jt[903] used by SavageA3_LoadLevel
+Lvl_SavageA3FgSegs:	; SavageA3 FG floor segments (Level_Load -> Seg_LoadList: 12/10-byte records until a 0 byte); 557 of 558 bytes used at runtime; read by Seg_LoadList; jt[903] used by SavageA3_LoadLevel
 	incrom	$0ADEBA,$558
-Map_SavageA3Eni:	; Enigma-compressed tilemap (Eni_Decode); 1B7E of 1E6E bytes used at runtime; read by Eni_ReadInline, Eni_Decode, Actor_InitSpawnRec; jt[904] used by SavageA3_LoadLevel
+Lvl_SavageA3FgMap:	; SavageA3 FG map for Level_Load (plane blob; its tiles come from another blob); 1B7E of 1E6E bytes used at runtime; read by Eni_ReadInline, Eni_Decode, Actor_InitSpawnRec; jt[904] used by SavageA3_LoadLevel
 	incrom	$0AE412,$1E6E
-Map_SavageA3Eni2:	; Enigma-compressed tilemap (Eni_Decode); 52 of 6C bytes used at runtime; read by Eni_ReadInline, Eni_Decode, Eni_Ops; jt[905] used by SavageA3_LoadLevel
+Tbl_SavageA3ClassList:	; SavageA3 class list (Level_Load's last argument: the classes the level's spawn records use); 52 of 6C bytes used at runtime; read by Eni_ReadInline, Eni_Decode, Eni_Ops; jt[905] used by SavageA3_LoadLevel
 	incrom	$0B0280,$6C
 	include "src/f/0B02EC.asm"
 	include "src/f/0B02F4.asm"
@@ -2576,13 +2576,13 @@ Map_SavageA3Eni2:	; Enigma-compressed tilemap (Eni_Decode); 52 of 6C bytes used 
 	include "src/f/0B0520.asm"
 	include "src/f/0B0528.asm"
 	include "src/f/0B0538.asm"
-Lvl_SavageA4Segs:	; floor-segment list (Seg_LoadList: 12/10-byte records until a 0 byte); 3B of 3C bytes used at runtime; read by Seg_LoadList; jt[907] used by SavageA4_LoadLevel
+Lvl_SavageA4FgSegs:	; SavageA4 FG floor segments (Level_Load -> Seg_LoadList: 12/10-byte records until a 0 byte); 3B of 3C bytes used at runtime; read by Seg_LoadList; jt[907] used by SavageA4_LoadLevel
 	incrom	$0B0574,$3C
-Art_SavageA4Nem:	; Nemesis-style compressed 4bpp tiles (Nem_Decode; code table built from pairs by the caller); 356A of 3578 bytes used at runtime; read by Nem_DecodeLoop; jt[908] used by SavageA4_LoadLevel
+Lvl_SavageA4Fg:	; SavageA4 FG plane for Level_Load (map and tileset in one: header, Enigma layout, block definitions, tiles); 356A of 3578 bytes used at runtime; read by Nem_DecodeLoop; jt[908] used by SavageA4_LoadLevel
 	incrom	$0B05B0,$3578
-Art_SavageA4Nem2:	; Nemesis-style compressed 4bpp tiles (Nem_Decode; code table built from pairs by the caller); 4A of 68 bytes used at runtime; read by Nem_DecodeLoop; jt[909] used by SavageA4_LoadLevel
+Tbl_SavageA4ClassList:	; SavageA4 class list (Level_Load's last argument: the classes the level's spawn records use); 4A of 68 bytes used at runtime; read by Nem_DecodeLoop; jt[909] used by SavageA4_LoadLevel
 	incrom	$0B3B28,$68
-Art_SavageA4Nem3:	; Nemesis-style compressed 4bpp tiles (Nem_Decode; code table built from pairs by the caller); 17A4 of 17AE bytes used at runtime; read by Nem_DecodeLoop, Eni_Decode, Eni_ReadInline; jt[910] used by SavageA4_LoadLevel
+Lvl_SavageA4Bg:	; SavageA4 BG plane for Level_Load (map and tileset in one: header, Enigma layout, block definitions, tiles); 17A4 of 17AE bytes used at runtime; read by Nem_DecodeLoop, Eni_Decode, Eni_ReadInline; jt[910] used by SavageA4_LoadLevel
 	incrom	$0B3B90,$17AE
 Art_SavageA4Spr:	; sprite definition (type $18, raw 4bpp tiles): $24-byte header, $14-byte frame records, pieces, tiles; C00 of CCC bytes used at runtime; read by VDP_FlushDmaQueue, VDP_WriteWords; DMA to VRAM $5100-5300; jt[911] used by SavageA4_InitEffectSprite
 	incrom	$0B533E,$CCC
@@ -3070,13 +3070,13 @@ Tbl_SavageB1Parallax:	; parallax descriptor (format at Tbl_AvalonB1Parallax): li
 	include "src/f/0C1412.asm"
 	include "src/f/0C1478.asm"
 	include "src/f/0C14B4.asm"
-Lvl_Segs_0C14E4:	; floor-segment list (Seg_LoadList: 12/10-byte records until a 0 byte); 8F7 of 8F8 bytes used at runtime; read by Seg_LoadList; jt[1123] used by SavageC1_LoadLevel
+Lvl_SavageC1FgSegs:	; SavageC1 FG floor segments (Level_Load -> Seg_LoadList: 12/10-byte records until a 0 byte); 8F7 of 8F8 bytes used at runtime; read by Seg_LoadList; jt[1123] used by SavageC1_LoadLevel
 	incrom	$0C14E4,$8F8
-Art_Nem_0C1DDC:	; Nemesis-style compressed 4bpp tiles (Nem_Decode; code table built from pairs by the caller); 860D of 897A bytes used at runtime; read by Nem_DecodeLoop, Eni_Decode, Eni_ReadInline; jt[1124] used by SavageC1_LoadLevel, SavageB1_LoadLevel
+Lvl_SavageC1Fg:	; SavageC1 FG plane for Level_Load (map and tileset in one: header, Enigma layout, block definitions, tiles); also SavageB1 fgTiles; 860D of 897A bytes used at runtime; read by Nem_DecodeLoop, Eni_Decode, Eni_ReadInline; jt[1124] used by SavageC1_LoadLevel, SavageB1_LoadLevel
 	incrom	$0C1DDC,$897A
-Art_Nem_0CA756:	; Nemesis-style compressed 4bpp tiles (Nem_Decode; code table built from pairs by the caller); 2E of 46 bytes used at runtime; read by Nem_DecodeLoop, Eni_Decode, Eni_ReadInline; jt[1125] used by SavageC1_LoadLevel
+Tbl_SavageC1ClassList:	; SavageC1 class list (Level_Load's last argument: the classes the level's spawn records use); 2E of 46 bytes used at runtime; read by Nem_DecodeLoop, Eni_Decode, Eni_ReadInline; jt[1125] used by SavageC1_LoadLevel
 	incrom	$0CA756,$46
-Art_SpaceB1Nem:	; Nemesis-style compressed 4bpp tiles (Nem_Decode; code table built from pairs by the caller); 20C8 of 20E2 bytes used at runtime; read by Nem_DecodeLoop, Eni_Decode, Eni_ReadInline; jt[1126] used by SpaceB1_LoadLevel, SavageC1_LoadLevel, SavageB1_LoadLevel
+Lvl_SavageC1Bg:	; SavageC1 BG plane for Level_Load (map and tileset in one: header, Enigma layout, block definitions, tiles); also SavageB1 bgTiles, SpaceB1 bgTiles; 20C8 of 20E2 bytes used at runtime; read by Nem_DecodeLoop, Eni_Decode, Eni_ReadInline; jt[1126] used by SpaceB1_LoadLevel, SavageC1_LoadLevel, SavageB1_LoadLevel
 	incrom	$0CA79C,$20E2
 Art_BarbarianSpr:	; sprite definition (type $18, raw 4bpp tiles): $24-byte header, $14-byte frame records, pieces, tiles; 3580 of 40B8 bytes used at runtime; read by VDP_FlushDmaQueue, Spr_EmitStreamClip; DMA to VRAM $92A0-B500; jt[1127] used by Barbarian_Init
 	incrom	$0CC87E,$40B8
@@ -3096,17 +3096,17 @@ Art_SwampPlatformSpr:	; sprite definition (type $19, Nemesis-compressed tiles): 
 	incrom	$0D2CE6,$314
 Art_SwampFlySpr:	; SWAMPFLY's sprite definition (its spr.def, SwampFly_Init); 240 of 2C8 bytes used at runtime; read by Seg_LoadList, VDP_FlushDmaQueue; DMA to VRAM $AB60-AD20; jt[1135] used by SwampFly_Init
 	incrom	$0D2FFA,$2C8
-Lvl_Segs_0D32C2:	; floor-segment list (Seg_LoadList: 12/10-byte records until a 0 byte); 6AF of 6B0 bytes used at runtime; read by Seg_LoadList, VDP_FlushDmaQueue; jt[1136] used by SentinelsD1_LoadLevel
+Lvl_SentinelsD1FgSegs:	; SentinelsD1 FG floor segments (Level_Load -> Seg_LoadList: 12/10-byte records until a 0 byte); 6AF of 6B0 bytes used at runtime; read by Seg_LoadList, VDP_FlushDmaQueue; jt[1136] used by SentinelsD1_LoadLevel
 	incrom	$0D32C2,$6B0
-Art_Nem_0D3972:	; Nemesis-style compressed 4bpp tiles (Nem_Decode; code table built from pairs by the caller); 6B90 of 6C36 bytes used at runtime; read by Nem_DecodeLoop, Eni_ReadInline, Eni_Decode; jt[1137] used by SentinelsD1_LoadLevel
+Lvl_SentinelsD1Fg:	; SentinelsD1 FG plane for Level_Load (map and tileset in one: header, Enigma layout, block definitions, tiles); 6B90 of 6C36 bytes used at runtime; read by Nem_DecodeLoop, Eni_ReadInline, Eni_Decode; jt[1137] used by SentinelsD1_LoadLevel
 	incrom	$0D3972,$6C36
-Art_Nem_0DA5A8:	; Nemesis-style compressed 4bpp tiles (Nem_Decode; code table built from pairs by the caller); 4A of 66 bytes used at runtime; read by Nem_DecodeLoop, Eni_ReadInline, Eni_Decode; jt[1138] used by SentinelsD1_LoadLevel
+Tbl_SentinelsD1ClassList:	; SentinelsD1 class list (Level_Load's last argument: the classes the level's spawn records use); 4A of 66 bytes used at runtime; read by Nem_DecodeLoop, Eni_ReadInline, Eni_Decode; jt[1138] used by SentinelsD1_LoadLevel
 	incrom	$0DA5A8,$66
-Lvl_SentinelsB2Segs:	; floor-segment list (Seg_LoadList: 12/10-byte records until a 0 byte); 697 of 698 bytes used at runtime; read by Seg_LoadList; jt[1139] used by SentinelsB2_LoadLevel
+Lvl_SentinelsB2FgSegs:	; SentinelsB2 FG floor segments (Level_Load -> Seg_LoadList: 12/10-byte records until a 0 byte); 697 of 698 bytes used at runtime; read by Seg_LoadList; jt[1139] used by SentinelsB2_LoadLevel
 	incrom	$0DA60E,$698
-Art_SentinelsB1Nem:	; Nemesis-style compressed 4bpp tiles (Nem_Decode; code table built from pairs by the caller); 890 of A5C bytes used at runtime; read by Nem_DecodeLoop, Eni_Decode, Eni_ReadInline; jt[1140] used by SentinelsB1_LoadLevel, SentinelsB2_LoadLevel, SentinelsD1_LoadLevel
+Lvl_SentinelsB1Bg:	; SentinelsB1 BG plane for Level_Load (map and tileset in one: header, Enigma layout, block definitions, tiles); also SentinelsB2 bgMap, SentinelsB2 bgTiles, SentinelsD1 bgMap, SentinelsD1 bgTiles; 890 of A5C bytes used at runtime; read by Nem_DecodeLoop, Eni_Decode, Eni_ReadInline; jt[1140] used by SentinelsB1_LoadLevel, SentinelsB2_LoadLevel, SentinelsD1_LoadLevel
 	incrom	$0DACA6,$A5C
-Art_SentinelsB2Nem:	; Nemesis-style compressed 4bpp tiles (Nem_Decode; code table built from pairs by the caller); 12 of 2A bytes used at runtime; read by Nem_DecodeLoop, Eni_Decode, Eni_ReadInline; jt[1141] used by SentinelsB2_LoadLevel
+Tbl_SentinelsB2ClassList:	; SentinelsB2 class list (Level_Load's last argument: the classes the level's spawn records use); 12 of 2A bytes used at runtime; read by Nem_DecodeLoop, Eni_Decode, Eni_ReadInline; jt[1141] used by SentinelsB2_LoadLevel
 	incrom	$0DB702,$2A
 Art_WarningLightSpr:	; sprite definition (type $18, raw 4bpp tiles): $24-byte header, $14-byte frame records, pieces, tiles; 800 of 894 bytes used at runtime; read by VDP_FlushDmaQueue, VDP_WriteWords, Spr_PreloadTiles; DMA to VRAM $7F40-88C0; jt[1142] used by SentinelsD1_InitLight
 	incrom	$0DB72C,$894
@@ -3251,13 +3251,13 @@ Pad_SentinelsA1:	; $00 fill; never read in the corpus; between SentinelElevator_
 	incrom	$0DF5D5,$1
 Art_SentinelElevatorSpr:	; sprite definition (type $18, raw 4bpp tiles): $24-byte header, $14-byte frame records, pieces, tiles; 400 of 46C bytes used at runtime; read by VDP_FlushDmaQueue, Seg_LoadList; DMA to VRAM $D3A0-D9E0; jt[1211] used by SentinelElevator_Init
 	incrom	$0DF5D6,$46C
-Art_SentinelsA1Tiles:	; uncompressed 4bpp tiles DMA'd to VRAM; C9 of CA bytes used at runtime; read by VDP_FlushDmaQueue, Seg_LoadList; jt[1212] used by SentinelsA1_LoadLevel
+Lvl_SentinelsA1FgSegs:	; SentinelsA1 FG floor segments (Level_Load -> Seg_LoadList: 12/10-byte records until a 0 byte); C9 of CA bytes used at runtime; read by VDP_FlushDmaQueue, Seg_LoadList; jt[1212] used by SentinelsA1_LoadLevel
 	incrom	$0DFA42,$CA
-Art_SentinelsA1Nem:	; Nemesis-style compressed 4bpp tiles (Nem_Decode; code table built from pairs by the caller); 320A of 3242 bytes used at runtime; read by Nem_DecodeLoop, Eni_Decode, Eni_ReadInline; jt[1213] used by SentinelsA1_LoadLevel
+Lvl_SentinelsA1Fg:	; SentinelsA1 FG plane for Level_Load (map and tileset in one: header, Enigma layout, block definitions, tiles); 320A of 3242 bytes used at runtime; read by Nem_DecodeLoop, Eni_Decode, Eni_ReadInline; jt[1213] used by SentinelsA1_LoadLevel
 	incrom	$0DFB0C,$3242
-Art_SentinelsA1Nem2:	; Nemesis-style compressed 4bpp tiles (Nem_Decode; code table built from pairs by the caller); 2E of 4E bytes used at runtime; read by Nem_DecodeLoop, Eni_Decode, Eni_ReadInline; jt[1214] used by SentinelsA1_LoadLevel
+Tbl_SentinelsA1ClassList:	; SentinelsA1 class list (Level_Load's last argument: the classes the level's spawn records use); 2E of 4E bytes used at runtime; read by Nem_DecodeLoop, Eni_Decode, Eni_ReadInline; jt[1214] used by SentinelsA1_LoadLevel
 	incrom	$0E2D4E,$4E
-Art_SentinelsA1Nem3:	; Nemesis-style compressed 4bpp tiles (Nem_Decode; code table built from pairs by the caller); 33EA of 33F4 bytes used at runtime; read by Nem_DecodeLoop, Eni_ReadInline, Eni_Decode; jt[1215] used by SentinelsA1_LoadLevel
+Lvl_SentinelsA1Bg:	; SentinelsA1 BG plane for Level_Load (map and tileset in one: header, Enigma layout, block definitions, tiles); 33EA of 33F4 bytes used at runtime; read by Nem_DecodeLoop, Eni_ReadInline, Eni_Decode; jt[1215] used by SentinelsA1_LoadLevel
 	incrom	$0E2D9C,$33F4
 Art_ZapLightSpr:	; sprite definition (type $18, raw 4bpp tiles): $24-byte header, $14-byte frame records, pieces, tiles; 1000 of 1126 bytes used at runtime; read by VDP_FlushDmaQueue, VDP_WriteWords; DMA to VRAM $3F40-4140; jt[1216] used by SentinelsA1_InitZapLights
 	incrom	$0E6190,$1126
@@ -3466,11 +3466,11 @@ Tbl_CoreElevatorAnim:	; animation script (byte flags, byte steps, ..., 2-byte st
 	incrom	$0ECA0A,$8
 Tbl_CoreZap_vtable:	; class descriptor "COREZAP": word $6E = name offset, long parent (ACTOR), 26 method pointers, then the class name string
 	incrom	$0ECA12,$76
-Lvl_SentinelsB1Segs:	; floor-segment list (Seg_LoadList: 12/10-byte records until a 0 byte); 697 of 698 bytes used at runtime; read by Seg_LoadList; jt[1311] used by SentinelsB1_LoadLevel
+Lvl_SentinelsB1FgSegs:	; SentinelsB1 FG floor segments (Level_Load -> Seg_LoadList: 12/10-byte records until a 0 byte); 697 of 698 bytes used at runtime; read by Seg_LoadList; jt[1311] used by SentinelsB1_LoadLevel
 	incrom	$0ECA88,$698
-Art_SentinelsB1Nem2:	; Nemesis-style compressed 4bpp tiles (Nem_Decode; code table built from pairs by the caller); 70E2 of 717A bytes used at runtime; read by Nem_DecodeLoop, Eni_ReadInline, Eni_Decode; jt[1312] used by SentinelsB1_LoadLevel, SentinelsB2_LoadLevel
+Lvl_SentinelsB1Fg:	; SentinelsB1 FG plane for Level_Load (map and tileset in one: header, Enigma layout, block definitions, tiles); also SentinelsB2 fgMap, SentinelsB2 fgTiles; 70E2 of 717A bytes used at runtime; read by Nem_DecodeLoop, Eni_ReadInline, Eni_Decode; jt[1312] used by SentinelsB1_LoadLevel, SentinelsB2_LoadLevel
 	incrom	$0ED120,$717A
-Art_SentinelsB1Nem3:	; Nemesis-style compressed 4bpp tiles (Nem_Decode; code table built from pairs by the caller); 4A of 62 bytes used at runtime; read by Nem_DecodeLoop, Eni_ReadInline, Eni_Decode; jt[1313] used by SentinelsB1_LoadLevel
+Tbl_SentinelsB1ClassList:	; SentinelsB1 class list (Level_Load's last argument: the classes the level's spawn records use); 4A of 62 bytes used at runtime; read by Nem_DecodeLoop, Eni_ReadInline, Eni_Decode; jt[1313] used by SentinelsB1_LoadLevel
 	incrom	$0F429A,$62
 	include "src/f/0F42FC.asm"
 	include "src/f/0F4314.asm"
@@ -3493,13 +3493,13 @@ Art_SentinelsB1Nem3:	; Nemesis-style compressed 4bpp tiles (Nem_Decode; code tab
 	include "src/f/0F4CD8.asm"
 Art_SentinelsB2Spr:	; sprite definition (type $19, Nemesis-compressed tiles): $24-byte header, $14-byte frame records, pieces, tiles; 1FF of 200 bytes used at runtime; read by Spr_PreloadTiles, Nem_DecodeLoop; jt[1318] used by SentinelsB2_LoadDigits
 	incrom	$0F4D00,$200
-Lvl_SiberiaB1Segs:	; floor-segment list (Seg_LoadList: 12/10-byte records until a 0 byte); 292 of 29A bytes used at runtime; read by Seg_LoadList, Nem_DecodeLoop, Eni_Decode; jt[1319] used by SiberiaB1_LoadLevel
+Lvl_SiberiaB1Fg:	; SiberiaB1 FG plane for Level_Load (map and tileset in one: header, Enigma layout, block definitions, tiles); 292 of 29A bytes used at runtime; read by Seg_LoadList, Nem_DecodeLoop, Eni_Decode; jt[1319] used by SiberiaB1_LoadLevel
 	incrom	$0F4F00,$29A
-Lvl_SiberiaB1Segs2:	; floor-segment list (Seg_LoadList: 12/10-byte records until a 0 byte); 49F of 4A0 bytes used at runtime; read by Seg_LoadList, Nem_DecodeLoop, Eni_Decode; jt[1320] used by SiberiaB1_LoadLevel
+Lvl_SiberiaB1BgSegs:	; SiberiaB1 BG floor segments (Level_Load -> Seg_LoadList: 12/10-byte records until a 0 byte); 49F of 4A0 bytes used at runtime; read by Seg_LoadList, Nem_DecodeLoop, Eni_Decode; jt[1320] used by SiberiaB1_LoadLevel
 	incrom	$0F519A,$4A0
-Art_SiberiaB1Nem:	; Nemesis-style compressed 4bpp tiles (Nem_Decode; code table built from pairs by the caller); 5B58 of 5C9C bytes used at runtime; read by Nem_DecodeLoop, Eni_Decode, Eni_ReadInline; jt[1321] used by SiberiaB1_InitWind, SiberiaB1_LoadLevel
+Lvl_SiberiaB1Bg:	; SiberiaB1 BG plane for Level_Load (map and tileset in one: header, Enigma layout, block definitions, tiles); 5B58 of 5C9C bytes used at runtime; read by Nem_DecodeLoop, Eni_Decode, Eni_ReadInline; jt[1321] used by SiberiaB1_InitWind, SiberiaB1_LoadLevel
 	incrom	$0F563A,$5C9C
-Art_SiberiaB1Nem2:	; Nemesis-style compressed 4bpp tiles (Nem_Decode; code table built from pairs by the caller); 32 of 4C bytes used at runtime; read by Nem_DecodeLoop, Eni_Decode, Eni_ReadInline; jt[1322] used by SiberiaB1_LoadLevel
+Tbl_SiberiaB1ClassList:	; SiberiaB1 class list (Level_Load's last argument: the classes the level's spawn records use); 32 of 4C bytes used at runtime; read by Nem_DecodeLoop, Eni_Decode, Eni_ReadInline; jt[1322] used by SiberiaB1_LoadLevel
 	incrom	$0FB2D6,$4C
 Art_SiberiaB1Spr:	; sprite definition (type $18, raw 4bpp tiles): $24-byte header, $14-byte frame records, pieces, tiles; 800 of AB0 bytes used at runtime; read by VDP_FlushDmaQueue, VDP_WriteWords; DMA to VRAM $1380-1580; jt[1323] used by SiberiaB1_InitWindSprite
 	incrom	$0FB322,$AB0
@@ -3539,13 +3539,13 @@ Tbl_SiberiaB1PalCycle2:	; palette cycle for palette index $2D, same format (Sibe
 	incrom	$0FD796,$1A
 Tbl_SiberiaB1PalCycle3:	; palette cycle for palette index $2E, same format (SiberiaB1_CyclePalettes)
 	incrom	$0FD7B0,$1A
-Lvl_SpaceB1Segs:	; floor-segment list (Seg_LoadList: 12/10-byte records until a 0 byte); 6D1 of 6D2 bytes used at runtime; read by Seg_LoadList; jt[1330] used by SpaceB1_LoadLevel
+Lvl_SpaceB1FgSegs:	; SpaceB1 FG floor segments (Level_Load -> Seg_LoadList: 12/10-byte records until a 0 byte); 6D1 of 6D2 bytes used at runtime; read by Seg_LoadList; jt[1330] used by SpaceB1_LoadLevel
 	incrom	$0FD7CA,$6D2
-Map_SpaceB1Eni:	; Enigma-compressed tilemap (Eni_Decode); 8119 of 835E bytes used at runtime; read by Eni_ReadInline, Nem_DecodeLoop, Eni_Decode; jt[1331] used by SpaceB1_LoadLevel
+Lvl_SpaceB1Fg:	; SpaceB1 FG plane for Level_Load (map and tileset in one: header, Enigma layout, block definitions, tiles); 8119 of 835E bytes used at runtime; read by Eni_ReadInline, Nem_DecodeLoop, Eni_Decode; jt[1331] used by SpaceB1_LoadLevel
 	incrom	$0FDE9C,$835E
-Map_SpaceB1Eni2:	; Enigma-compressed tilemap (Eni_Decode); 3A of 52 bytes used at runtime; read by Eni_ReadInline, Nem_DecodeLoop, Eni_Decode; jt[1332] used by SpaceB1_LoadLevel
+Tbl_SpaceB1ClassList:	; SpaceB1 class list (Level_Load's last argument: the classes the level's spawn records use); 3A of 52 bytes used at runtime; read by Eni_ReadInline, Nem_DecodeLoop, Eni_Decode; jt[1332] used by SpaceB1_LoadLevel
 	incrom	$1061FA,$52
-Map_SpaceB1Eni3:	; Enigma-compressed tilemap (Eni_Decode); 55A of 56C bytes used at runtime; read by Eni_ReadInline, VDP_WriteWords, Eni_Decode; jt[1333] used by SpaceB1_LoadLevel
+Lvl_SpaceB1BgMap:	; SpaceB1 BG map for Level_Load (plane blob; its tiles come from another blob); 55A of 56C bytes used at runtime; read by Eni_ReadInline, VDP_WriteWords, Eni_Decode; jt[1333] used by SpaceB1_LoadLevel
 	incrom	$10624C,$56C
 Art_Platform1Spr:	; sprite definition (type $18, raw 4bpp tiles): $24-byte header, $14-byte frame records, pieces, tiles; 3A8 of 3A8 bytes used at runtime; read by Eni_ReadInline, VDP_WriteWords, Eni_Decode; jt[1334] used by Platform1_ClassInit, Platform1_Init
 	incrom	$1067B8,$3A8
@@ -3608,15 +3608,15 @@ Str_Empty_1077FE:	; C string "" (used by Switch_ClassInit)
 	include "src/f/1079D8.asm"
 Tbl_Switch_vtable:	; class descriptor "SWITCH": word $6E = name offset, long parent (ACTOR), 26 method pointers, then the class name string
 	incrom	$107A3E,$76
-Lvl_SpaceA1Segs:	; floor-segment list (Seg_LoadList: 12/10-byte records until a 0 byte); 3D of 3E bytes used at runtime; read by Seg_LoadList; jt[1350] used by SpaceA1_LoadLevel
+Lvl_SpaceA1FgSegs:	; SpaceA1 FG floor segments (Level_Load -> Seg_LoadList: 12/10-byte records until a 0 byte); 3D of 3E bytes used at runtime; read by Seg_LoadList; jt[1350] used by SpaceA1_LoadLevel
 	incrom	$107AB4,$3E
-Art_SpaceA1Nem:	; Nemesis-style compressed 4bpp tiles (Nem_Decode; code table built from pairs by the caller); 2522 of 2538 bytes used at runtime; read by Nem_DecodeLoop; jt[1351] used by SpaceA1_LoadLevel
+Lvl_SpaceA1Fg:	; SpaceA1 FG plane for Level_Load (map and tileset in one: header, Enigma layout, block definitions, tiles); 2522 of 2538 bytes used at runtime; read by Nem_DecodeLoop; jt[1351] used by SpaceA1_LoadLevel
 	incrom	$107AF2,$2538
-Art_SpaceA1Nem2:	; Nemesis-style compressed 4bpp tiles (Nem_Decode; code table built from pairs by the caller); 12 of 2A bytes used at runtime; read by Nem_DecodeLoop; jt[1352] used by SpaceA1_LoadLevel
+Tbl_SpaceA1ClassList:	; SpaceA1 class list (Level_Load's last argument: the classes the level's spawn records use); 12 of 2A bytes used at runtime; read by Nem_DecodeLoop; jt[1352] used by SpaceA1_LoadLevel
 	incrom	$10A02A,$2A
-Art_SpaceA1Nem3:	; Nemesis-style compressed 4bpp tiles (Nem_Decode; code table built from pairs by the caller); 14C6 of 14D0 bytes used at runtime; read by Nem_DecodeLoop; jt[1353] used by SpaceA1_LoadLevel
+Lvl_SpaceA1Bg:	; SpaceA1 BG plane for Level_Load (map and tileset in one: header, Enigma layout, block definitions, tiles); 14C6 of 14D0 bytes used at runtime; read by Nem_DecodeLoop; jt[1353] used by SpaceA1_LoadLevel
 	incrom	$10A054,$14D0
-Art_ElevatorNem:	; Nemesis-style compressed 4bpp tiles (Nem_Decode; code table built from pairs by the caller); 1 of E bytes used at runtime; read by Nem_DecodeLoop, Eni_ReadInline, Eni_Decode; jt[1354] used by Elevator_Update
+Tbl_ElevatorShake:	; camera shake script (format at Tbl_MagnetoBossQuake1): ELEVATOR_Update stores it in g_CamShake; 1 of E bytes used at runtime; read by Nem_DecodeLoop, Eni_ReadInline, Eni_Decode; jt[1354] used by Elevator_Update
 	incrom	$10B524,$E
 Tbl_Elevator_vtable:	; class descriptor "ELEVATOR": word $16 = name offset, long parent (none), 4 method pointers, then the class name string
 	incrom	$10B532,$20

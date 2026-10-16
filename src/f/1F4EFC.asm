@@ -2,7 +2,7 @@
 ; VDP_UpdateScroll - write pending plane scroll values to the H-scroll table (VRAM $F400) and VSRAM, and ease camera values toward their targets
 ; In:  none
 ; Out: none
-; Evidence: flag bytes g_FgScrollDirty/g_BgScrollDirty/g_ColumnVsReq/g_VsramReq ($FFC7AA/A8/A6/A4) select which of VRAM $F400/$F402 (commands $74000003/$74020003) and VSRAM 0/2 to write; g_ColumnVsReq also writes 40 column words from -$9C6(a5); then steps four words $FFC764-$FFC772 by 1 toward limits
+; Evidence: flag bytes g_FgScrollDirty/g_BgScrollDirty/g_ColumnVsReq/g_VsramReq ($FFC7AA/A8/A6/A4) select which of VRAM $F400/$F402 (commands $74000003/$74020003) and VSRAM 0/2 to write; g_ColumnVsReq also writes 40 column words from g_HScrollBuf; then steps four words $FFC764-$FFC772 by 1 toward limits
 ; ---------------------------------------------------------------------------
 VDP_UpdateScroll:
 	link.w	a6,#$0

@@ -12,7 +12,7 @@ FlyBrood_Init_Case4:
 	pea.l	$8C(a4)
 	jsr	$3ED2(a5)	; -> AiScript_Set
 	ext.l	d7
-	move.w	-$348E(a5),d0
+	move.w	g_CameraX(a5),d0
 	ext.l	d0
 	add.l	#$A0,d0
 	cmp.l	d7,d0

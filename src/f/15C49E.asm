@@ -22,8 +22,8 @@ loc_15C4BA:
 	move.l	d0,-(a7)
 	jsr	$521A(a5)	; -> Snd_Play
 	ori.w	#$20,g_ProgressFlags(a5)
-	move.w	#$63,-$38A8(a5)
-	move.w	#$63,-$38AA(a5)
+	move.w	#$63,g_P1Lives(a5)
+	move.w	#$63,g_P2Lives(a5)
 	addq.w	#$8,a7
 	bra.w	Pause_HandleInput_EndCode
 loc_15C4E2:
@@ -109,7 +109,7 @@ loc_15C5B2:
 	moveq	#$4F,d0
 	move.l	d0,-(a7)
 	jsr	$521A(a5)	; -> Snd_Play
-	move.w	#$63,-$38A8(a5)
-	move.w	#$63,-$38AA(a5)
+	move.w	#$63,g_P1Lives(a5)
+	move.w	#$63,g_P2Lives(a5)
 	ori.w	#$27F0,g_ProgressFlags(a5)
 	addq.w	#$8,a7

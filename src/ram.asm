@@ -530,3 +530,5 @@ g_P1SplashX = -$3C00	; word: player 1 water splash x (player x>>8 when they cros
 g_P1SplashY = -$3C02	; word: player 1 water splash y (g_WaterSplashY at the crossing; Water_DrawHook -> Water_DrawSplash)
 g_P2SplashX = -$3C04	; word: player 2 water splash x (Water_DrawHook -> Water_DrawSplash)
 g_P2SplashY = -$3C06	; word: player 2 water splash y (Water_DrawHook -> Water_DrawSplash)
+g_SpaceB1Cycle4Step = -$3BD2	; word: step of a fourth SpaceB1 palette cycle (SpaceB1_ResetPalCycles clears it; nothing reads it)
+g_SpaceB1Cycle4Delay = -$3BD0	; word: delay of a fourth SpaceB1 palette cycle (SpaceB1_ResetPalCycles sets 2; nothing reads it)
