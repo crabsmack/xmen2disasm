@@ -339,6 +339,34 @@ MPW C 3.3 matching, what reproduces the ROM (also COMPILER.md):
   Timer_Create(...); Timer_Start(t);` = a RunScene's saved, unused a4. An extra argument the
   callee never reads compiles the same. An unused local struct vanishes from the frame.
 
+### Learned in round 9 (module groups 10-16)
+
+- **A new variable takes the register freed most recently.** When the ROM gives it another
+  dead variable's register, the original kept the later-freed ones live: dead uses at the end
+  (`if (0) { (void)col; (void)crack; }`) gave SiberiaB1_IceTileHit's object counter r's d7.
+- `self` loaded last in the prologue, into a3 while a register parameter has a4 = a plain local
+  copy: `F(ControlPanel *obj, ...) { ControlPanel *self = obj;`.
+- `for (i = 0; i < 8; ...)` from a constant drops the first test and keeps the bound in d3
+  (`moveq #8,d3 ... cmp.w d7,d3`); a comma start (`p = x, i = 0`) adds the initial `bra`;
+  while/do-while keep no bound register. `for (n = 10; n; --n)` = `subq / tst / bne`.
+- A `link` bigger than the locals = dead locals whose address an `if (0)` takes, declared after
+  the used stack locals (`long unused1; ... if (0) (void)&unused1;`). A local array used twice
+  gets its address cached in a3/a4; a local struct is re-`lea`'d at each use.
+- Narrow reads: `short x0 = self->x;` (an s32 field) = `move.w x+2`; `u8f = pl->param[3]` reads
+  the byte. `s8f & 0xF` = `moveq #$F / and.b mem`; a u8 field is zero-extended first. A u16
+  `& 0x3FFF` tested `> 0` = `tst.l / bls` (unsigned).
+- `(a + b) & 0x1FF` (long) loads the mask first (`move.l #$1FF,d0 / and.l d1,d0`); `0x1FF & (a +
+  b)` = `and.l #$1FF,d1`. `&g_ptr[i]` = pointer in aN + `adda` of the scaled index; `g_ptr + i`
+  = `add.l g_ptr,d0`.
+- `if ((char)f(x)) return 1; return 0;` (short) saves d0 around the call (`move.l d0,-(a7) ...
+  move.l (a7)+,d0 / tst.b d1 / sne`). An `end: ;` after the last call also flushes the pops
+  before an earlier `if (!pl)` branch. Dead loads (`old = g_CameraX; old = g_CameraY;`) need a
+  read (`if (0) g_CameraX = old;`) to stay.
+- `case 3: default:` puts 3 in the jump table with the default body; the ROM's body order gives
+  the case order (unsorted lists are fine).
+- Never write a .c file with a UTF-8 BOM (PowerShell `Set-Content -Encoding utf8`): MPW aborts
+  with Fatal Error 423 ("not of type TEXT").
+
 ## asm functions (tag `asm`: hand-written 68000, no MPW frame)
 
 They can't match; their C is verified by shadow tests, so it must reproduce every RAM write,
