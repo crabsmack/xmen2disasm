@@ -2,7 +2,7 @@
 ; XClimber_CheckGrab - XCLIMBER slot +$96: in the air, decide whether to grab the wall or ceiling segment just touched
 ; In:  8(a6) = player
 ; Out: d0 = 1 grab (state +$AA follows), 0 no
-; Evidence: B press blocks grabbing for 20 frames (+$A8); last touched segment g_Segs[+$7B] via +$F2 ClassifySeg; ceiling needs Up held; walls refused past the top/bottom (Player_TopAboveSeg/BottomBelowSeg) or when falling fast (|vy| >= $1050); stores the segment in +$BC and the kind in +$C0 bits 0-1
+; Evidence: B press opens a 20-frame grab window (+$A8 actionTimer; a grab needs it running); last touched segment g_Segs[+$7B] via +$F2 ClassifySeg; ceiling needs Up held; walls refused past the top/bottom (Player_TopAboveSeg/BottomBelowSeg) or when falling fast (|vy| >= $1050); stores the segment in +$BC and the kind in +$C0 bits 0-1
 ; ---------------------------------------------------------------------------
 XClimber_CheckGrab:
 	link.w	a6,#$0
