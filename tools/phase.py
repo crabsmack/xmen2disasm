@@ -495,6 +495,25 @@ def reviews(root: Path, total: int, need: float) -> tuple[bool, str]:
 COUNTERS = ("dispatch_misses", "interp_instructions", "stub_hits")
 
 
+def unreachable_insns() -> dict[str, set[str]]:
+    """P4-decomp.md "Unreachable instructions" (decision 10): function address -> the addresses of
+    its instructions no state can execute (rows `| Name `$FUNC` | `$INSN` ... | why |`)."""
+    t = (ROOT / "docs" / "phases" / DOCS[4]).read_text(encoding="utf-8")
+    sec = t.split("### Unreachable instructions", 1)
+    out: dict[str, set[str]] = {}
+    if len(sec) < 2:
+        return out
+    for line in sec[1].splitlines()[1:]:
+        if line.startswith("#"):
+            break
+        cells = [c for c in line.split("|")]
+        if len(cells) < 4 or not re.search(r"\$[0-9A-F]{6}", cells[1]):
+            continue
+        fn = re.search(r"\$([0-9A-F]{6})", cells[1]).group(1)
+        out[fn] = set(re.findall(r"\$([0-9A-F]{6})", cells[2]))
+    return out
+
+
 def function_coverage(funcs: list[dict]) -> dict[str, str]:
     """full / partial / never per function, from the committed corpus coverage (emu/coverage)."""
     import bisect
@@ -591,8 +610,15 @@ def phase4(crit, fresh: bool, draft: bool = False) -> None:
 
     # D2: the frame-synchronous stepped runner with hand C equals it with all generated code
     bad = sync_traces(tr, "stepped", refs)
+    d2_ok = not bad
     crit("D2", not bad, f"{len(runs) - len(bad)}/{len(runs)} corpus runs equal at every sync point"
                         + (f"; first: {bad[0]}" if bad else ""))
+    # D6 (reported in its place below) is computed here: decision 12 makes D4 depend on it
+    b6, err6 = contract("build", "--handc")
+    gen6 = (b6 or {}).get("generated_game_functions")
+    built6 = b6 is not None and b6.get("ok") is True and gen6 == 0
+    bad6 = sync_traces(tr, "handc", refs) if built6 else []
+    d6_ok = built6 and not bad6
 
     # D3: types declared
     sys.path.insert(0, str(ROOT / "tools"))
@@ -620,6 +646,10 @@ def phase4(crit, fresh: bool, draft: bool = False) -> None:
     # decisions 7, 8: fragments are done with the C that contains them; never-executed asm may verify
     frags = {str(k).upper().zfill(6): v for k, v in (h or {}).get("fragments", {}).items()}
     asm = {str(a).upper().zfill(6) for a in (h or {}).get("asm", [])}
+    # decision 12: EntryPoint and the interrupt vectors are verified by D2 + D6
+    whole_game = {str(a).upper().zfill(6) for a in (h or {}).get("whole_game", [])}
+    # decision 10: instructions the phase doc lists as unreachable count as covered
+    unreachable = unreachable_insns()
     lint, err = contract("lint")
     errs += [err] if lint is None else []
     lint_files = (lint or {}).get("files", {})
@@ -661,9 +691,17 @@ def phase4(crit, fresh: bool, draft: bool = False) -> None:
         lv = lint_files.get(f"game/c/{a}.c")
         lint_ok = in_c and lv is not None and all(v == 0 for v in lv.values())
         v = vres.get(a) or {}
+        uncovered = v.get("uncovered")
+        if a in unreachable and uncovered:
+            unc = set(v.get("uncovered_pcs") or [])
+            ran = sorted(unreachable[a] - unc)
+            if ran or not unc:
+                errs.append(f"${a}: listed unreachable but executed (or too many uncovered): {ran[:4]}")
+            else:
+                uncovered -= len(unreachable[a])
         shadow = ((cov[a] != "never" or a in asm) and v.get("calls_checked", 0) >= 1 and v.get("mismatches") == 0
-                  and v.get("uncovered") == 0)
-        verified = in_c and (a in matched or shadow)
+                  and uncovered == 0)
+        verified = in_c and (a in matched or shadow or (a in whole_game and d2_ok and d6_ok))
         done = in_c and doc and lint_ok and verified
         missing = [k for k, ok in (("c", in_c), ("doc", doc), ("lint", lint_ok), ("verified", verified)) if not ok]
         ledger[a] = {"name": by_addr[a], "coverage": cov[a], "in_c": in_c, "doc": doc, "lint_clean": lint_ok,
@@ -693,15 +731,11 @@ def phase4(crit, fresh: bool, draft: bool = False) -> None:
         ok = not badr and fields > 0 and unk <= 0.05 * fields
         crit("D5", ok, ("lint clean" if not badr else f"violations {badr}") + f"; unk fields {unk}/{fields} (max 5%)")
 
-    # D6: hand C only
-    b, err = contract("build", "--handc")
-    gen = (b or {}).get("generated_game_functions")
-    built = b is not None and b.get("ok") is True and gen == 0
-    bad = sync_traces(tr, "handc", refs) if built else []
-    crit("D6", built and not bad,
-         err or (f"generated game functions linked {gen}" + (f" (first {b.get('first')})" if gen else "")
-                 + (f"; {len(runs) - len(bad)}/{len(runs)} corpus runs equal" if built else "; build not ok")
-                 + (f"; first: {bad[0]}" if bad else "")))
+    # D6: hand C only (computed after D2)
+    crit("D6", d6_ok,
+         err6 or (f"generated game functions linked {gen6}" + (f" (first {b6.get('first')})" if gen6 else "")
+                  + (f"; {len(runs) - len(bad6)}/{len(runs)} corpus runs equal" if built6 else "; build not ok")
+                  + (f"; first: {bad6[0]}" if bad6 else "")))
 
     ok, detail = reviews(root, len(funcs), 0.05)
     crit("D7", ok, detail)

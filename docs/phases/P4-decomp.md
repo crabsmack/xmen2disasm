@@ -35,6 +35,28 @@ sync points 1243 and 2042 with all code generated. So:
 8. **The 7 never-executed asm functions** (no MPW frame; MPW C can't produce them) may be
    verified by `verify` with synthetic cases (0 uncovered instructions) instead of a match.
 
+**Changes approved by the user 2026-10-16, at the end of D4** (the cases `verify` can't decide
+as defined; evidence: `XMen2Recomp/docs/NOTES.md` "Open questions"):
+9. **A tested function's own argument slots are dead stack** for `verify`'s RAM comparison: the
+   4 bytes per parameter above its return address, which the caller pops unread. MPW keeps a
+   by-value parameter there, and the original writes it when the parameter changes (Spr_EmitPre,
+   Spr_EmitPreClip, Spr_EmitPreLinked, VDP_QueueDma, Tile_RunHooksAtPoints), where the C changes
+   a host variable.
+10. **Statically unreachable instructions count as covered**: those listed in "Unreachable
+    instructions" below, each with the reason no state can execute it.
+11. **A synthetic case for a state the game never creates counts** like any other (Actor_Move's
+    paths for g_HalfSpeed / g_SegFlag38C4, which the ROM only clears): both versions still run
+    side by side on it.
+12. **EntryPoint, Irq_VBlankVector and Irq_HBlankVector** (hand-written 68000 that never returns
+    or ends in `rte`: tags `noreturn` / `vector` in `xmen2_funcs.h`; no match, no shadow test)
+    are verified by the whole-game comparisons: done when D2 and D6 pass.
+
+### Unreachable instructions (decision 10)
+
+| Function | Instructions | Why no state runs them |
+|---|---|---|
+| Scroll_ComputeParallax `$15FD0E` | `$16008E` (`beq.s`) | the `bne.w` before it is always taken: its flags come from a `cmpi` whose `bls` was just not taken |
+
 Goal: every one of the 3,620 functions exists as **hand-written, readable C** in
 `XMen2Recomp`, the game runs with **no generated code** for game functions, and the result is
 provably the same game as the emulator. C here still uses the 68000 memory layout (emulated
@@ -85,7 +107,7 @@ work: `uv run tools/decomp_queue.py`. Per-function procedure: skill `/decomp-fun
 | D1 | Sync reference | `xmen2check.py trace --mode recomp --sync` (the timed runner, all generated code) still equals the gpgx reference on every frame of the TAS and every corpus run (P2's K6/K8, 0 misses, 0 interpreter instructions), and every run also wrote `sync.csv` (≥1 row) and the replay log |
 | D2 | Stepped runner equals it | `xmen2check.py trace --mode stepped --replay REFDIR` (the frame-synchronous untimed runner with hand C wherever it exists and generated code, emitted without exact timing, elsewhere) equals `trace --mode stepped-gen --replay REFDIR` (the same runner with all generated code) at every sync point of the TAS and every corpus run, with 0 misses and 0 interpreter instructions on both. REFDIR is the run's D1 output (sync-point frames for the input). Passes with zero hand C (it proves the harness is deterministic) and stays green as C lands (regression gate). (Changed 2026-10-15, decision 5.) |
 | D3 | Types declared | `xmen2check.py types --json`: a struct for every class `tools/classes.py` finds (142), and every global in `build/recomp/ram_globals.csv` declared under its disassembly name |
-| D4 | Every function done | per function (ledger `build/phase4_functions.json`): `game/c/<ADDR>.c` defines it under its disassembly name with a doc comment (`xmen2check.py handc`), the file is lint-clean (`lint`), and it is **verified**: it byte-matches the ROM (`tools/cc.py --match-recomp`), **or** it is executed by the corpus and `xmen2check.py verify` reports 0 mismatches over ≥1 checked call and 0 uncovered instructions. Never-executed functions (705) must match (policy `matching-for-unexecuted`), except the 7 never-executed asm functions, which may use `verify` with synthetic cases (decision 8). A **fragment** (`handc` reports `fragments`: address -> parent) is done when its parent is done and the parent's file names it (decision 7) |
+| D4 | Every function done | per function (ledger `build/phase4_functions.json`): `game/c/<ADDR>.c` defines it under its disassembly name with a doc comment (`xmen2check.py handc`), the file is lint-clean (`lint`), and it is **verified**: it byte-matches the ROM (`tools/cc.py --match-recomp`), **or** it is executed by the corpus and `xmen2check.py verify` reports 0 mismatches over ≥1 checked call and 0 uncovered instructions (its own argument slots are dead stack, decision 9; the instructions listed under "Unreachable instructions" count as covered, decision 10), **or** it is EntryPoint or an interrupt vector and D2 and D6 pass (decision 12). Never-executed functions (705) must match (policy `matching-for-unexecuted`), except the 7 never-executed asm functions, which may use `verify` with synthetic cases (decision 8). A **fragment** (`handc` reports `fragments`: address -> parent) is done when its parent is done and the parent's file names it (decision 7) |
 | D5 | Readable | `xmen2check.py lint --json` over `game/c/` and `game/include/`: 0 `registers` (no `g_cpu`, no `XI`), 0 `raw_addresses` (work RAM, ROM or hardware outside the memory/hardware layer), 0 `raw_offsets` (fields by name), 0 `cross_function_goto`; and ≤5% of struct fields named `unk_*` (`types`) |
 | D6 | Whole game, hand C only | `xmen2check.py build --handc --json` links 0 generated game functions; `trace --mode handc --replay REFDIR` equals `trace --mode stepped-gen --replay REFDIR` at every sync point of the TAS and every corpus run, with 0 misses and 0 interpreter instructions (changed 2026-10-15, decision 5) |
 | D7 | Independently reviewed | `XMen2Recomp/docs/reviews/*.md` cover ≥5% of functions (random sample) with `reviewed:`, `agree:`, `open disputes:` lines; agreement ≥90% (correct and readable); `open disputes: 0`; reviewers never review their own functions |
