@@ -91,10 +91,12 @@ Z80 its V-int (sound). Phase 5 work proceeds meanwhile.
   mid-frame H-int, the main program's VDP writes show a frame late. **Default:** accept; it is
   what D8 plays. (D8 noted chugging in the Sentinel escape on a slower Linux PC, not investigated.
   Measuring frame time per scene before P8 is a work item, not a criterion.)
-- **R7 Release platforms.** **Default:** P8 needs a Windows package and a Linux one (D8 was
-  played on Linux). The Linux build is made and checked in this machine's WSL Ubuntu, which needs
-  `sudo apt install libsdl2-dev pkg-config` once, done by the loop when it reaches P8.
-  Alternative: Windows only, as the draft had it; the code stays portable either way.
+- **R7 Release platforms. Ruled by the user 2026-10-17:** "Windows only is acceptable for a
+  first pass... we'd want to eventually do Linux also but that can come at the end." So P8 is
+  the Windows release, and Linux is the last criterion (P9). The Linux build is made and checked
+  in this machine's WSL Ubuntu, which needs `sudo apt install libsdl2-dev pkg-config` once; the
+  loop does that when it reaches P9. Until then nothing gates on Linux. The LP64 rules already in
+  `xmen2_mem.h` stay, so the code doesn't drift far.
 - **R6 P0 exit gates and per-worker verification** (raised 2026-10-17 in QUESTIONS.md): clean
   build < 5 min, full corpus check < 15 min, workers verify in their own build dir; retire
   XMen2Recomp's "One runner at a time (#24)" rule. That rule is the engine's interactive one (relaunching on
@@ -113,7 +115,8 @@ Z80 its V-int (sound). Phase 5 work proceeds meanwhile.
 | P5 | Native state | `build --native`: 0 `emu_ram` symbols in the game objects, and on every corpus run of P1 the exporter takes 0 bytes from emulated RAM (`copied_bytes` 0): all state is in native storage under R1's layout |
 | P6 | No 68000 left | `build --native`: the native executable's link map defines no 68000 CPU state or core, interpreter, recomp runtime (dispatch, entry hooks, slot machinery), generated code or emulated work RAM (`link.forbidden` empty). The platform's video model, the Z80 with the YM2612/PSG and the ROM image may stay |
 | P7 | Renderer | `trace --mode native --fb` and `trace --mode stepped-gen --fb` of the TAS give the same `fb_crc32` at every sync point (the frame drawn at the sync point after the V-int, as `fsync_render` does: the platform renderer against the engine's VDP renderer) |
-| P8 | Release | `xmen2check.py package --json` builds a package for each R7 platform (default Windows and Linux) that runs on the user's ROM (SHA-1 checked at start) and contains no ROM-derived data (no 256-byte window of any packaged file, other than runs of one byte value, occurs in the ROM); and `docs/USER_VERIFIED.md` has `port-verified: YYYY-MM-DD`, written only on the user's word after they played a package |
+| P8 | Release (Windows) | `xmen2check.py package --json` builds a Windows package that runs on the user's ROM (SHA-1 checked at start) and contains no ROM-derived data (no 256-byte window of any packaged file, other than runs of one byte value, occurs in the ROM); and `docs/USER_VERIFIED.md` has `port-verified: YYYY-MM-DD`, written only on the user's word after they played it |
+| P9 | Linux (R7) | `xmen2check.py package --platform linux --json` builds the Linux package in WSL with the same ROM-free check, and its native runner's TAS trace there has the same sync rows as the stepped-gen reference (P1's comparison, on Linux) |
 
 ### Definitions (changing any of them needs the user's approval, recorded here)
 
@@ -172,8 +175,9 @@ xmen2check.py build --native --json
 xmen2check.py trace --mode native [--fb] --replay REFDIR --run R --input F --out D --json
     # as --mode handc, the native target; JSON adds "exported": {"native_bytes", "copied_bytes"};
     # --fb (also for stepped-gen) adds fb_crc32 to sync.csv
-xmen2check.py package --json   # P8: {"ok", "packages": [{"platform": "windows"|"linux", "ok", "zip",
-                               #       "files": [...], "rom_windows": N}]}; linux built in WSL
+xmen2check.py package [--platform windows|linux] --json
+    # P8/P9: {"ok", "platform", "zip", "files": [...], "rom_windows": N}; linux: built in WSL,
+    # plus "tas_sync": the sync.csv of the Linux native runner's TAS trace (P9)
 ```
 
 `phase.py 5` computes in cost order and reports in table order, logging each stage as it
@@ -220,9 +224,9 @@ commit and push.
 
    After each step the exporter serializes the moved state, and `copied_bytes` falls to 0.
 6. **P6** drops the engine's 68000 machinery from the native target (core, scheduler positions,
-   glue, slot bridge, generated sources). **P7** adds `--fb`. **P8** packages the build for each R7 platform
-   (Linux in WSL), and queues the playtest in QUESTIONS.md the moment a package plays, without
-   waiting for anything else.
+   glue, slot bridge, generated sources). **P7** adds `--fb`. **P8** packages the Windows build and queues
+   the playtest in QUESTIONS.md the moment the package plays, without waiting for anything else.
+   **P9** last: the Linux package in WSL and its TAS trace.
 
 Same rules as earlier phases:
 - never edit generated C;

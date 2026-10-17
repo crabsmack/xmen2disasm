@@ -38,8 +38,8 @@ recorded result of every phase (from `docs/progress/`).
 
 Phases 4 and 5 are **drafts**: each starts with a kickoff criterion (`D0`/`P0`) where the
 agent revises the criteria with what phases 2-3 taught and the user approves them. Phase 4's
-revision was approved 2026-10-15. Phase 5's was revised 2026-10-17 (P0-P8, rulings R1-R7 queued
-in QUESTIONS.md) and waits for approval; `phase.py 5 --draft` measures it meanwhile.
+revision was approved 2026-10-15. Phase 5's was revised 2026-10-17 (P0-P9, rulings R1-R6 queued
+in QUESTIONS.md; R7 ruled) and waits for approval; `phase.py 5 --draft` measures it meanwhile.
 
 ## Working a phase autonomously
 
@@ -86,3 +86,4 @@ phase doc with the date.
   (untimed stepped runner with replay), one C source serves both MPW matching and the PC,
   partially executed functions may be verified by `verify` plus synthetic cases, and the user
   plays the hand-C build (D8). Details: P4-decomp.md.
+- 2026-10-17 (user): phase 5 releases for Windows first; Linux comes at the end (P5-port.md R7, P9).

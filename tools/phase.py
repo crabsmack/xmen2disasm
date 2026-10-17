@@ -801,9 +801,8 @@ def phase4(crit, fresh: bool, draft: bool = False) -> None:
 # ($A0xxxx-$A1xxxx, TMSS $A14000 included), the VDP and PSG ($C000xx)
 HW_ADDR = re.compile(r"\b0x0*(A[01][0-9A-F]{4}|C000[0-1][0-9A-F])(?![0-9A-F])", re.I)
 GAME_SRC = ("game/c", "game/include")   # the game's code: the object scan's and P4's scope
-P5_IDS = [f"P{i}" for i in range(9)]
+P5_IDS = [f"P{i}" for i in range(10)]
 BENCH_GATES = (("clean_build_s", 300.0, "clean build"), ("corpus_check_total_s", 900.0, "full corpus check"))
-RELEASE_PLATFORMS = ("windows", "linux")   # P5-port.md R7 (default: both)
 
 
 class Stages:
@@ -1041,20 +1040,37 @@ def phase5(crit, fresh: bool, draft: bool = False) -> None:
     else:
         put("P7", False, "no D1 reference for the TAS")
 
-    # P8: a ROM-free package per R7 platform and the user's word
-    say("P8: package")
-    pk, err = contract("package", timeout=3600)
+    def package(platform: str) -> tuple[bool, str, dict | None]:
+        pk, err = contract("package", "--platform", platform, timeout=3600)
+        if pk is None:
+            return False, err, None
+        ok = (pk.get("ok") is True and pk.get("platform") == platform and pk.get("rom_windows") == 0
+              and Path(pk.get("zip", "")).is_file())
+        return ok, (f"{platform} package {pk.get('zip')}: {len(pk.get('files') or [])} files, "
+                    f"ROM windows {pk.get('rom_windows')}"), pk
+
+    # P8: the ROM-free Windows package and the user's word
+    say("P8: Windows package")
+    ok8, d8, _pk = package("windows")
     uv_doc = root / "docs" / "USER_VERIFIED.md"
     word = uv_doc.exists() and re.search(rf"^port-verified: {DATE}", uv_doc.read_text(encoding="utf-8"), re.M)
-    got = {p.get("platform"): p for p in (pk or {}).get("packages") or []}
-    probs = [f"{plat}: " + ("no package" if plat not in got else
-                            f"ok {got[plat].get('ok')}, ROM windows {got[plat].get('rom_windows')}")
-             for plat in RELEASE_PLATFORMS
-             if plat not in got or not (got[plat].get("ok") is True and got[plat].get("rom_windows") == 0
-                                        and Path(got[plat].get("zip", "")).is_file())]
-    put("P8", pk is not None and not probs and bool(word),
-        (err or ("; ".join(probs) if probs else f"packages {', '.join(RELEASE_PLATFORMS)} ROM-free"))
-        + ("; port-verified line present" if word else f"; no `port-verified: DATE` in {uv_doc} (ask the user)"))
+    put("P8", ok8 and bool(word),
+        d8 + ("; port-verified line present" if word else f"; no `port-verified: DATE` in {uv_doc} (ask the user)"))
+
+    # P9 (R7: Linux at the end): the Linux package, and its native TAS trace equal to the reference
+    say("P9: Linux package (WSL)")
+    ok9, d9, pk9 = package("linux")
+    if ok9:
+        lin = Path((pk9 or {}).get("tas_sync") or "")
+        g = (tr.plain("tas", "stepped-gen", ("--replay", str(refs["tas"].parent)),
+                      rev=content_rev("XMen2SteppedGen", refs["tas"])) if "tas" in refs
+             else {"ok": False, "detail": "no D1 reference for the TAS"})
+        if not g["ok"] or not lin.is_file():
+            ok9, d9 = False, d9 + f"; {'no Linux TAS sync.csv' if not lin.is_file() else g['detail']}"
+        else:
+            cmp = Traces._compare_sync(read_frames(Path(g["csv"]), "sync")[1], lin, {})
+            ok9, d9 = cmp["ok"], d9 + f"; Linux TAS: {cmp['detail']}"
+    put("P9", ok9, d9)
 
     # P2, the slowest: phase 4's ledger on these sources (verify cached by its runner and inputs)
     say("P2: the D4 ledger (verify, cc.py --match-recomp)")

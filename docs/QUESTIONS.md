@@ -25,8 +25,8 @@ Entry format:
 ## Open
 
 ### 2026-10-17: phase 5 criteria and rulings (P5 P0)
-- Question: approve the revised [phases/P5-port.md](phases/P5-port.md) (criteria P0-P8,
-  "Definitions") and rule on its seven points ("Rulings" there has the detail). Each line below is
+- Question: approve the revised [phases/P5-port.md](phases/P5-port.md) (criteria P0-P9,
+  "Definitions") and rule on its points ("Rulings" there has the detail). Each line below is
   the default; a word per line is enough ("ok", or the other option):
   - R1 memory layout: (b) original layout in host byte order, stored pointers as 32-bit
     references (exact export, no masks), with (a) native pointers/allocator possible later.
@@ -39,10 +39,10 @@ Entry format:
   - R6 P0 gates: clean build < 5 min, full corpus check < 15 min, workers verify in their own
     build dir. #24 ("one runner at a time") stays for interactive runs only. Headless traces on
     private copies already ran 24 at once in phase 4.
-  - R7 release platforms: P8 needs a Windows and a Linux package (you played D8 on Linux); the
-    Linux one is built and checked in this machine's WSL Ubuntu, after a one-time
-    `sudo apt install libsdl2-dev pkg-config` the loop runs when it reaches P8.
-- Default taken meanwhile: all seven defaults. Every one keeps the most work valid: (b) is a
+  - R7 release platforms: **answered** in the session (the user, 2026-10-17): "Windows only is
+    acceptable for a first pass... we'd want to eventually do Linux also but that can come at the
+    end". P8 is the Windows release; Linux is the last criterion, P9 (WSL Ubuntu).
+- Default taken meanwhile: the defaults of R1-R6. Every one keeps the most work valid: (b) is a
   prefix of (a), and retiring R4's gates later loses nothing done. Harness work (native target,
   exporter, object scan, worker gate, bench) is done under any answer. With R1 (a), P5's export
   needs masks, ruled on then.
