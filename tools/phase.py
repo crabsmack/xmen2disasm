@@ -152,14 +152,26 @@ def export_input(run: str, out_dir: Path) -> tuple[Path | None, str]:
     return inp, ""
 
 
-# The corpus runs are independent traces (own output and runner directories): this many at once.
-JOBS = int(os.environ.get("PHASE_JOBS", "12"))
+# The corpus runs are independent traces (own output and runner directories): this many at once
+# (a runner takes ~80 MB and a fraction of a core).
+JOBS = int(os.environ.get("PHASE_JOBS", "24"))
+
+
+def run_frames(run: str) -> int:
+    """Frames a corpus run's exported input covers (the sum of its WAITs; 0 before the export)."""
+    p = ROOT / "build" / "phase_traces" / f"{run}.input"
+    if not p.exists():
+        return 0
+    return sum(int(m.group(1), 0) for m in re.finditer(r"^WAIT\s+(\S+)", p.read_text(), re.M))
 
 
 def pmap(fn, items: list) -> list:
-    """fn over items on JOBS threads (each runs a subprocess); results in the items' order."""
+    """fn over items on JOBS threads (each runs a subprocess); results in the items' order. Corpus
+    runs (names) start longest first, so the last to finish are short ones."""
+    cost = {i: run_frames(i) if isinstance(i, str) else 0 for i in items}
     with ThreadPoolExecutor(max_workers=max(1, JOBS)) as ex:
-        return list(ex.map(fn, items))
+        futs = {i: ex.submit(fn, i) for i in sorted(items, key=lambda i: -cost[i])}
+        return [futs[i].result() for i in items]
 
 
 class Traces:

@@ -84,6 +84,14 @@ Rules that reproduce the ROM, useful for any phase-4 matching:
   slot below the parent's. Tile_RunHooksAtPoints is the one function in the ROM where one stack
   temp holds copies of two variables (px in the h-flip arms, py in the v-flip arm); no variant
   reproduced it (best: 4 bytes, an extra block in the v-flip arm, slot -$1E for -$1C).
+- **Index copies** (AvalonB1_InitCamera, 2026-10-17): a bare short register index `a[i]` is copied
+  with `move.l d7,d0` (11 ROM functions); `a[i + k]` with a constant k, even `a[0 * 16 + i]`, with
+  `move.w`. The one `move.w` instance in the ROM indexes palette line 0 as `line * 16 + i`.
+- **Adjacent clears merge** (AvalonB1_RunScene): consecutive `x[n] = 0; x[n + 1] = 0;` of short
+  array elements become one `clr.l`, through volatile, separate blocks, comma expressions, chained
+  assignments and casts. Only a basic-block boundary that emits no code stops it: `if (1) x = 0;`
+  (the file's CLEAR_COUNTER macro), a `goto` to the next label, `for (;;) { ...; break; }`. The
+  original probably cleared six separate globals; the ROM's ram_globals names only the array.
 
 ### The object system is the game's own, not a compiler's
 
