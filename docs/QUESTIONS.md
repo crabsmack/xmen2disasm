@@ -32,14 +32,6 @@ Entry format:
 - Blocks only: P4 D8, so `phase.py 4` exiting 0.
 - Answer:
 
-### 2026-10-17: keep AvalonB1_RunScene's CLEAR_COUNTER macro? (P4)
-- Question: the function byte-matches only through `#define CLEAR_COUNTER(x) if (1) (x) = 0`
-  (XMen2Recomp `game/c/00FDAA.c`). Keep the macro, or drop it and the match? Details in
-  XMen2Recomp `docs/NOTES.md` "Open questions".
-- Default taken meanwhile: keep the macro (it is what passes today).
-- Blocks only: nothing.
-- Answer:
-
 ### 2026-10-17: phase 5 P0 kickoff rulings (P5 P0)
 - Question: approve the P0 exit criteria proposed from LESSONS.md (clean build < 5 min, full
   corpus check < 15 min, workers verify in their own build dir), and retire XMen2Recomp's
@@ -51,4 +43,10 @@ Entry format:
 
 ## Answered
 
-(none yet)
+### 2026-10-17: keep AvalonB1_RunScene's CLEAR_COUNTER macro? (P4)
+- Question: the function byte-matches only through `#define CLEAR_COUNTER(x) if (1) (x) = 0`
+  (XMen2Recomp `game/c/00FDAA.c`). Keep the macro, or drop it and the match? Details in
+  XMen2Recomp `docs/NOTES.md` "Open questions".
+- Default taken meanwhile: keep the macro (it is what passes today).
+- Blocks only: nothing.
+- Answer: keep the macro (the user, asked in the phase-4 session, 2026-10-17). Nothing to change.
