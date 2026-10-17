@@ -3,7 +3,7 @@
     uv run tools/phase.py 2            # phase 2 (recomp); also 3, 4, 5
     uv run tools/phase.py 2 --fresh    # ignore cached trace results
     uv run tools/phase.py 2 --json
-    uv run tools/phase.py 4 --draft    # measure past an unapproved kickoff (D0/P0); never exits 0
+    uv run tools/phase.py 5 --draft    # measure past an unapproved kickoff (D0/P0); never exits 0
     uv run tools/phase.py 1            # = tools/progress.py
     uv run tools/phase.py status       # last recorded result of every phase
 
@@ -27,6 +27,7 @@ import shutil
 import subprocess
 import sys
 import threading
+import time
 import tomllib
 from concurrent.futures import ThreadPoolExecutor
 from datetime import date
@@ -208,12 +209,14 @@ class Traces:
             self.cache_path.write_text(json.dumps(self.cache, indent=1), encoding="utf-8")
 
     def run(self, run: str, mode: str, frames: int | None = None, extra: tuple[str, ...] = (),
-            use_cache: bool = True, ref_sync: Path | None = None, timed_key: bool = False) -> dict:
+            use_cache: bool = True, ref_sync: Path | None = None, timed_key: bool = False,
+            rev: str | None = None) -> dict:
+        """rev: the cache revision to use instead of the game repo's (phase 5: the runner's hash)."""
         ref = ref_sync or runs_dir() / run / "frames.csv"
         if not ref.exists():
             return {"ok": False, "detail": f"no reference {ref}" + ("" if ref_sync else " (run emu/corpus.py)")}
         key = f"{run}|{mode}|{frames}|{' '.join(extra)}|{ref.stat().st_mtime_ns}"
-        rev = self.rev_timed if timed_key else self.rev
+        rev = rev or (self.rev_timed if timed_key else self.rev)
         with self.lock:
             hit = self.cache.get(key)
         if use_cache and hit and rev and hit.get("rev") == rev:
@@ -238,7 +241,9 @@ class Traces:
         inp, err = export_input(run, self.out_dir)
         if inp is None:
             return {"ok": False, "detail": err}
-        out = self.out_dir / "-".join([run, mode, *(Path(x).name.strip("-") for x in extra)])
+        # a cut run (--frames) gets its own directory: it never replaces the whole run's outputs
+        out = self.out_dir / "-".join([run, mode, *(Path(x).name.strip("-") for x in extra),
+                                       *([f"f{frames}"] if frames else [])])
         if out.exists():
             shutil.rmtree(out)
         args = ["trace", "--run", run, "--input", str(inp), "--out", str(out), "--mode", mode, *extra]
@@ -248,7 +253,7 @@ class Traces:
         if stats is None:
             return {"ok": False, "detail": err}
         if sync:
-            return self._compare_sync(ref, out / "sync.csv", stats)
+            return self._compare_sync(ref, out / "sync.csv", stats, limit=frames)
         if not (out / "frames.csv").exists():
             return {"ok": False, "detail": f"trace wrote no {out / 'frames.csv'}"}
         got_cols, got = read_frames(out / "frames.csv")
@@ -270,11 +275,12 @@ class Traces:
         return {"ok": first is None, "detail": detail, "stats": stats, "frames": len(want),
                 "csv": str(out / "frames.csv")}
 
-    def plain(self, run: str, mode: str, extra: tuple[str, ...] = (), timed_key: bool = False) -> dict:
+    def plain(self, run: str, mode: str, extra: tuple[str, ...] = (), timed_key: bool = False,
+              rev: str | None = None) -> dict:
         """A contract trace whose sync.csv is itself a reference (phase 4: stepped-gen), not
         compared with anything. Cached per revision like run()."""
         key = f"{run}|{mode}|plain|{' '.join(extra)}"
-        rev = self.rev_timed if timed_key else self.rev
+        rev = rev or (self.rev_timed if timed_key else self.rev)
         with self.lock:
             hit = self.cache.get(key)
         if hit and rev and hit.get("rev") == rev and Path(hit.get("csv", "")).exists():
@@ -282,7 +288,10 @@ class Traces:
         inp, err = export_input(run, self.out_dir)
         if inp is None:
             return {"ok": False, "detail": err}
-        out = self.out_dir / f"{run}-{mode}"
+        # flags other than --replay get their own directory (phase 5: --fb), so a variant never
+        # deletes the plain reference another criterion compares with
+        out = self.out_dir / "-".join([f"{run}-{mode}", *(x.strip("-") for x in extra
+                                                          if x.startswith("--") and x != "--replay")])
         if out.exists():
             shutil.rmtree(out)
         stats, err = contract("trace", "--run", run, "--input", str(inp), "--out", str(out), "--mode", mode, *extra)
@@ -297,11 +306,17 @@ class Traces:
         return res
 
     @staticmethod
-    def _compare_sync(ref: dict[int, dict[str, str]], got_csv: Path, stats: dict) -> dict:
-        """Phase 4: every sync point of the reference, same index, same compared CRCs; no extras."""
+    def _compare_sync(ref: dict[int, dict[str, str]], got_csv: Path, stats: dict, limit: int | None = None) -> dict:
+        """Phase 4: every sync point of the reference, same index, same compared CRCs; no extras.
+        limit (a run cut to its first N sync points, phase 5's smoke test): the reference's first N."""
         if not got_csv.exists():
             return {"ok": False, "detail": f"trace wrote no {got_csv}", "stats": stats}
         got = read_frames(got_csv, "sync")[1]
+        if limit:   # the runner's first `limit` frames hold about that many sync points: compare those
+            if not got or max(got) < limit - 1:
+                return {"ok": False, "detail": f"cut run wrote {len(got)} sync points (asked {limit})", "stats": stats}
+            ref = {s: r for s, r in ref.items() if s <= max(got)}
+            got = {s: g for s, g in got.items() if s in ref}
         first = None
         for s in sorted(ref):
             g = got.get(s)
@@ -482,7 +497,7 @@ def phase3(crit, fresh: bool) -> None:
          f"decomp_policy {pol}" + ("" if pol in doc else " (not explained in docs/COMPILER.md)"))
 
 
-# --- phases 4 and 5 (drafts) -------------------------------------------------------------
+# --- phase 4: decomp ---------------------------------------------------------------------
 
 def kickoff(cid: str, phase: int, crit) -> bool:
     t = (ROOT / "docs" / "phases" / DOCS[phase]).read_text(encoding="utf-8")
@@ -553,14 +568,17 @@ def function_coverage(funcs: list[dict]) -> dict[str, str]:
     return out
 
 
-def cached_contract(tr: "Traces", key: str, *args: str, timeout: int = 7200) -> tuple[dict | None, str]:
-    """A contract call cached per game-repo revision, like traces (for the slow `verify`)."""
+def cached_contract(tr: "Traces", key: str, *args: str, timeout: int = 7200,
+                    rev: str | None = None) -> tuple[dict | None, str]:
+    """A contract call cached per game-repo revision, like traces (for the slow `verify`), or per
+    `rev` (phase 5: the hashes of what the call reads)."""
+    rev = rev or tr.rev
     hit = tr.cache.get(key)
-    if tr.rev and hit and hit.get("rev") == tr.rev:
+    if rev and hit and hit.get("rev") == rev:
         return hit["data"], ""
     data, err = contract(*args, timeout=timeout)
-    if data is not None and tr.rev:
-        tr.cache[key] = {"data": data, "rev": tr.rev}
+    if data is not None and rev:
+        tr.cache[key] = {"data": data, "rev": rev}
         tr.save()
     return data, err
 
@@ -586,24 +604,18 @@ def sync_traces(tr: "Traces", mode: str, refs: dict[str, Path]) -> list[str]:
     return [b for b in pmap(one, corpus_runs()) if b]
 
 
-def phase4(crit, fresh: bool, draft: bool = False) -> None:
-    if not kickoff("D0", 4, crit) and not draft:
-        return
-    root = recomp_root()
-    funcs = functions()
-    by_addr = {f["addr"]: f["name"] for f in funcs}
-    tr = Traces(fresh)
-    runs = corpus_runs()
-
-    # D1: the timed runner still equals gpgx, and writes the sync reference + replay log
+def d1_refs(tr: "Traces", runs: list[str], rev: str | None = None) -> tuple[list[str], dict[str, Path], int | None]:
+    """D1 (P4-decomp.md): the timed runner still equals gpgx on every run and writes the sync
+    reference + replay log -> (failures, run -> its sync.csv, the TAS's stack_low). rev: cache
+    revision (phase 5: the timed runner's hash); default the timed key of phase 4."""
     refs: dict[str, Path] = {}
     bad, stack_low = [], None
 
     def d1(run: str):
-        r = tr.run(run, "recomp", None, ("--sync",), timed_key=True)
+        r = tr.run(run, "recomp", None, ("--sync",), timed_key=True, rev=rev)
         sync = Path(r["csv"]).parent / "sync.csv" if r.get("csv") else None
         if r["ok"] and not (sync and sync.exists() and (sync.parent / "replay.bin").exists()):
-            r = tr.run(run, "recomp", None, ("--sync",), use_cache=False, timed_key=True)  # outputs gone
+            r = tr.run(run, "recomp", None, ("--sync",), use_cache=False, timed_key=True, rev=rev)  # outputs gone
             sync = Path(r["csv"]).parent / "sync.csv" if r.get("csv") else None
         return r, sync
     for run, (r, sync) in zip(runs, pmap(d1, runs)):
@@ -617,6 +629,113 @@ def phase4(crit, fresh: bool, draft: bool = False) -> None:
             bad.append(f"{run} (no sync rows, replay.bin or stack_low)")
         else:
             refs[run] = sync
+    return bad, refs, stack_low
+
+
+def d4_ledger(tr: "Traces", funcs: list[dict], runs: list[str], whole_game_ok: bool,
+              ledger: str = "phase4_functions.json", verify_key: str = "verify|all",
+              verify_rev: str | None = None) -> tuple[bool, str, dict | None]:
+    """D4 (P4-decomp.md "Every function done"), the per-function ledger -> (ok, detail, lint).
+    whole_game_ok: the whole-game comparisons that verify EntryPoint and the vectors (decision 12;
+    phase 4: D2 and D6, phase 5: P1). Writes build/<ledger>."""
+    root = recomp_root()
+    by_addr = {f["addr"]: f["name"] for f in funcs}
+    cov = function_coverage(funcs)
+    errs = []
+    h, err = contract("handc")
+    errs += [err] if h is None else []
+    handc = {str(k).upper().zfill(6): v for k, v in (h or {}).get("functions", {}).items()}
+    # decisions 7, 8: fragments are done with the C that contains them; never-executed asm may verify
+    frags = {str(k).upper().zfill(6): v for k, v in (h or {}).get("fragments", {}).items()}
+    asm = {str(a).upper().zfill(6) for a in (h or {}).get("asm", [])}
+    # decision 12: EntryPoint and the interrupt vectors are verified by the whole-game comparisons
+    whole_game = {str(a).upper().zfill(6) for a in (h or {}).get("whole_game", [])}
+    # decision 10: instructions the phase doc lists as unreachable count as covered
+    unreachable = unreachable_insns()
+    lint, err = contract("lint")
+    errs += [err] if lint is None else []
+    lint_files = (lint or {}).get("files", {})
+    vres: dict[str, dict] = {}
+    matched: set[str] = set()
+    if handc:
+        inputs = tr.out_dir / "inputs"
+        for run in runs:
+            if not (inputs / f"{run}.input").exists():
+                _p, e = export_input(run, inputs)
+                errs += [e] if e else []
+        verify, err = cached_contract(tr, verify_key, "verify", "--inputs", str(inputs), timeout=6 * 3600,
+                                      rev=verify_rev)
+        errs += [err] if verify is None else []
+        vres = {str(k).upper().zfill(6): v for k, v in (verify or {}).get("functions", {}).items()}
+        r = uv_run(ROOT, "tools/cc.py", "--match-recomp", str(root), "--json", timeout=6 * 3600)
+        mj = parse_json(r.stdout)
+        if mj is None:
+            errs.append(f"cc.py --match-recomp failed ({r.returncode}): {(r.stdout + r.stderr)[-160:]}")
+        matched = {str(a).upper().zfill(6) for a in (mj or {}).get("matched", [])}
+    led, counts = {}, dict.fromkeys(("in_c", "doc", "lint", "matched", "verified", "done"), 0)
+    never_matched = 0
+    for f in sorted(funcs, key=lambda f: f["addr"] in frags):   # fragments after their parents
+        a = f["addr"]
+        if a in frags:
+            fr = frags[a]
+            p = led.get(str(fr.get("parent") or "").upper().zfill(6)) or {}
+            done = bool(fr.get("named")) and bool(p.get("done"))
+            led[a] = {"name": by_addr[a], "coverage": cov[a], "fragment_of": fr.get("parent"),
+                      "named_in_parent": bool(fr.get("named")), "in_c": done, "doc": done, "lint_clean": done,
+                      "matched": False, "verify": None, "done": done,
+                      "missing": [] if done else ["parent done" if fr.get("named") else "named in its parent's C"],
+                      "needs": "parent"}
+            for k in ("in_c", "doc", "lint", "verified", "done"):
+                counts[k] += done
+            continue
+        e = handc.get(a) or {}
+        in_c = bool(e) and e.get("name") == by_addr[a]
+        doc = in_c and bool(e.get("doc"))
+        lv = lint_files.get(f"game/c/{a}.c")
+        lint_ok = in_c and lv is not None and all(v == 0 for v in lv.values())
+        v = vres.get(a) or {}
+        uncovered = v.get("uncovered")
+        if a in unreachable and uncovered:
+            unc = set(v.get("uncovered_pcs") or [])
+            ran = sorted(unreachable[a] - unc)
+            if ran or not unc:
+                errs.append(f"${a}: listed unreachable but executed (or too many uncovered): {ran[:4]}")
+            else:
+                uncovered -= len(unreachable[a])
+        shadow = ((cov[a] != "never" or a in asm) and v.get("calls_checked", 0) >= 1 and v.get("mismatches") == 0
+                  and uncovered == 0)
+        verified = in_c and (a in matched or shadow or (a in whole_game and whole_game_ok))
+        done = in_c and doc and lint_ok and verified
+        missing = [k for k, ok in (("c", in_c), ("doc", doc), ("lint", lint_ok), ("verified", verified)) if not ok]
+        led[a] = {"name": by_addr[a], "coverage": cov[a], "in_c": in_c, "doc": doc, "lint_clean": lint_ok,
+                  "matched": a in matched, "verify": v or None, "done": done, "missing": missing,
+                  "needs": "match" if cov[a] == "never" else "match or verify"}
+        for k, ok in (("in_c", in_c), ("doc", doc), ("lint", lint_ok), ("matched", a in matched),
+                      ("verified", verified), ("done", done)):
+            counts[k] += ok
+        never_matched += cov[a] == "never" and a in matched
+    (ROOT / "build").mkdir(exist_ok=True)
+    (ROOT / "build" / ledger).write_text(json.dumps(led, indent=0), encoding="utf-8")
+    n_never = sum(c == "never" for c in cov.values())
+    mism = sum(1 for v in vres.values() if v.get("mismatches"))
+    ok = counts["done"] == len(funcs) and not errs
+    detail = (f"{counts['done']}/{len(funcs)} done; in C {counts['in_c']}, documented {counts['doc']}, "
+              f"lint-clean {counts['lint']}, verified {counts['verified']} (matched {counts['matched']}, "
+              f"never-executed matched {never_matched}/{n_never}), functions with mismatches {mism}"
+              + (f"; {errs[0][:160]}" if errs else ""))
+    return ok, detail, lint
+
+
+def phase4(crit, fresh: bool, draft: bool = False) -> None:
+    if not kickoff("D0", 4, crit) and not draft:
+        return
+    root = recomp_root()
+    funcs = functions()
+    tr = Traces(fresh)
+    runs = corpus_runs()
+
+    # D1: the timed runner still equals gpgx, and writes the sync reference + replay log
+    bad, refs, stack_low = d1_refs(tr, runs)
     crit("D1", not bad, f"{len(runs) - len(bad)}/{len(runs)} runs equal gpgx with sync.csv + replay.bin"
                         f" (tas stack_low {stack_low})" + (f"; first: {bad[0]}" if bad else ""))
 
@@ -650,88 +769,8 @@ def phase4(crit, fresh: bool, draft: bool = False) -> None:
                                       + (f" (first {(ms + mg)[0]})" if ms or mg else ""))
 
     # D4: every function done (the ledger)
-    cov = function_coverage(funcs)
-    errs = []
-    h, err = contract("handc")
-    errs += [err] if h is None else []
-    handc = {str(k).upper().zfill(6): v for k, v in (h or {}).get("functions", {}).items()}
-    # decisions 7, 8: fragments are done with the C that contains them; never-executed asm may verify
-    frags = {str(k).upper().zfill(6): v for k, v in (h or {}).get("fragments", {}).items()}
-    asm = {str(a).upper().zfill(6) for a in (h or {}).get("asm", [])}
-    # decision 12: EntryPoint and the interrupt vectors are verified by D2 + D6
-    whole_game = {str(a).upper().zfill(6) for a in (h or {}).get("whole_game", [])}
-    # decision 10: instructions the phase doc lists as unreachable count as covered
-    unreachable = unreachable_insns()
-    lint, err = contract("lint")
-    errs += [err] if lint is None else []
-    lint_files = (lint or {}).get("files", {})
-    vres: dict[str, dict] = {}
-    matched: set[str] = set()
-    if handc:
-        inputs = tr.out_dir / "inputs"
-        for run in runs:
-            if not (inputs / f"{run}.input").exists():
-                _p, e = export_input(run, inputs)
-                errs += [e] if e else []
-        verify, err = cached_contract(tr, "verify|all", "verify", "--inputs", str(inputs), timeout=6 * 3600)
-        errs += [err] if verify is None else []
-        vres = {str(k).upper().zfill(6): v for k, v in (verify or {}).get("functions", {}).items()}
-        r = uv_run(ROOT, "tools/cc.py", "--match-recomp", str(root), "--json", timeout=6 * 3600)
-        mj = parse_json(r.stdout)
-        if mj is None:
-            errs.append(f"cc.py --match-recomp failed ({r.returncode}): {(r.stdout + r.stderr)[-160:]}")
-        matched = {str(a).upper().zfill(6) for a in (mj or {}).get("matched", [])}
-    ledger, counts = {}, dict.fromkeys(("in_c", "doc", "lint", "matched", "verified", "done"), 0)
-    never_matched = 0
-    for f in sorted(funcs, key=lambda f: f["addr"] in frags):   # fragments after their parents
-        a = f["addr"]
-        if a in frags:
-            fr = frags[a]
-            p = ledger.get(str(fr.get("parent") or "").upper().zfill(6)) or {}
-            done = bool(fr.get("named")) and bool(p.get("done"))
-            ledger[a] = {"name": by_addr[a], "coverage": cov[a], "fragment_of": fr.get("parent"),
-                         "named_in_parent": bool(fr.get("named")), "in_c": done, "doc": done, "lint_clean": done,
-                         "matched": False, "verify": None, "done": done,
-                         "missing": [] if done else ["parent done" if fr.get("named") else "named in its parent's C"],
-                         "needs": "parent"}
-            for k in ("in_c", "doc", "lint", "verified", "done"):
-                counts[k] += done
-            continue
-        e = handc.get(a) or {}
-        in_c = bool(e) and e.get("name") == by_addr[a]
-        doc = in_c and bool(e.get("doc"))
-        lv = lint_files.get(f"game/c/{a}.c")
-        lint_ok = in_c and lv is not None and all(v == 0 for v in lv.values())
-        v = vres.get(a) or {}
-        uncovered = v.get("uncovered")
-        if a in unreachable and uncovered:
-            unc = set(v.get("uncovered_pcs") or [])
-            ran = sorted(unreachable[a] - unc)
-            if ran or not unc:
-                errs.append(f"${a}: listed unreachable but executed (or too many uncovered): {ran[:4]}")
-            else:
-                uncovered -= len(unreachable[a])
-        shadow = ((cov[a] != "never" or a in asm) and v.get("calls_checked", 0) >= 1 and v.get("mismatches") == 0
-                  and uncovered == 0)
-        verified = in_c and (a in matched or shadow or (a in whole_game and d2_ok and d6_ok))
-        done = in_c and doc and lint_ok and verified
-        missing = [k for k, ok in (("c", in_c), ("doc", doc), ("lint", lint_ok), ("verified", verified)) if not ok]
-        ledger[a] = {"name": by_addr[a], "coverage": cov[a], "in_c": in_c, "doc": doc, "lint_clean": lint_ok,
-                     "matched": a in matched, "verify": v or None, "done": done, "missing": missing,
-                     "needs": "match" if cov[a] == "never" else "match or verify"}
-        for k, ok in (("in_c", in_c), ("doc", doc), ("lint", lint_ok), ("matched", a in matched),
-                      ("verified", verified), ("done", done)):
-            counts[k] += ok
-        never_matched += cov[a] == "never" and a in matched
-    (ROOT / "build").mkdir(exist_ok=True)
-    (ROOT / "build" / "phase4_functions.json").write_text(json.dumps(ledger, indent=0), encoding="utf-8")
-    n_never = sum(c == "never" for c in cov.values())
-    mism = sum(1 for v in vres.values() if v.get("mismatches"))
-    crit("D4", counts["done"] == len(funcs) and not errs,
-         f"{counts['done']}/{len(funcs)} done; in C {counts['in_c']}, documented {counts['doc']}, "
-         f"lint-clean {counts['lint']}, verified {counts['verified']} (matched {counts['matched']}, "
-         f"never-executed matched {never_matched}/{n_never}), functions with mismatches {mism}"
-         + (f"; {errs[0][:160]}" if errs else ""))
+    ok4, detail4, lint = d4_ledger(tr, funcs, runs, d2_ok and d6_ok)
+    crit("D4", ok4, detail4)
 
     # D5: readable
     if lint is None or types is None:
@@ -756,57 +795,274 @@ def phase4(crit, fresh: bool, draft: bool = False) -> None:
     crit("D8", bool(ok), "handc-verified line present" if ok else f"no `handc-verified: DATE` in {uv_doc} (ask the user)")
 
 
-def _merge(crit):
-    """Collapse several results reported under one id into one (all must pass)."""
-    seen: dict[str, list[tuple[bool, str]]] = {}
+# --- phase 5: port -----------------------------------------------------------------------
 
-    def inner(cid: str, ok: bool, detail: str) -> None:
-        seen.setdefault(cid, []).append((ok, detail))
-        if len(seen[cid]) == 2:
-            parts = seen[cid]
-            crit(cid, all(o for o, _ in parts), "; ".join(d for _, d in parts))
-    return inner
+# Hardware addresses in the game's own sources (P5-port.md P4): the Z80 area and I/O
+# ($A0xxxx-$A1xxxx, TMSS $A14000 included), the VDP and PSG ($C000xx)
+HW_ADDR = re.compile(r"\b0x0*(A[01][0-9A-F]{4}|C000[0-1][0-9A-F])(?![0-9A-F])", re.I)
+GAME_SRC = ("game/c", "game/include")   # the game's code: the object scan's and P4's scope
+P5_IDS = [f"P{i}" for i in range(9)]
+BENCH_GATES = (("clean_build_s", 300.0, "clean build"), ("corpus_check_total_s", 900.0, "full corpus check"))
 
 
-HW_ADDR = re.compile(r"0x0*(C000[0-1][0-9A-F]|A1[0-9A-F]{4}|A14000)\b", re.I)
+class Stages:
+    """phase.py 5 talks as it goes: each stage as it finishes, to stderr and build/phase5.log
+    (LESSONS.md: a silent 3-hour run hid a 1-minute failure)."""
+
+    def __init__(self) -> None:
+        self.t0 = time.monotonic()
+        self.path = ROOT / "build" / "phase5.log"
+        self.path.parent.mkdir(parents=True, exist_ok=True)
+        self.path.write_text(f"phase.py 5, {date.today().isoformat()}, game repo {recomp_root()}\n", encoding="utf-8")
+
+    def __call__(self, msg: str) -> None:
+        line = f"[{time.monotonic() - self.t0:7.1f}s] {msg}"
+        print(line, file=sys.stderr, flush=True)
+        with open(self.path, "a", encoding="utf-8") as f:
+            f.write(line + "\n")
 
 
-def phase5(crit, fresh: bool) -> None:
-    if not kickoff("P0", 5, crit):
-        return
-    root = recomp_root()
-    lint, err = contract("lint", "--native")
-    n = (lint or {}).get("violations", {}).get("emulated_ram")
-    crit("P1", lint is not None and n == 0, err or f"emulated-RAM accesses in game/: {n}")
-    tr = Traces(fresh)
-    trace_criteria("P2", "P2", None, "native", tr, _merge(crit))
-    b, err = contract("build", "--native")
-    forbidden = (b or {}).get("forbidden_symbols", ["?"])
-    crit("P3", b is not None and b.get("ok") is True and not forbidden,
-         err or f"forbidden symbols in native link: {len(forbidden)}" + (f" (first {forbidden[0]})" if forbidden else ""))
+_SHA: dict[tuple[str, int, int], str] = {}
+
+
+def file_sha(p: Path) -> str | None:
+    """SHA-1 of a file, memoised by path, size and mtime (runner executables are tens of MB)."""
+    try:
+        st = p.stat()
+    except OSError:
+        return None
+    k = (str(p), st.st_size, st.st_mtime_ns)
+    if k not in _SHA:
+        import hashlib
+        h = hashlib.sha1()
+        with open(p, "rb") as f:
+            for chunk in iter(lambda: f.read(1 << 20), b""):
+                h.update(chunk)
+        _SHA[k] = h.hexdigest()
+    return _SHA[k]
+
+
+def runner_exe(name: str) -> Path:
+    """A runner of the game repo's build tree ($XMEN2_BUILD, as its tools/common.py)."""
+    b = Path(os.environ.get("XMEN2_BUILD") or recomp_root() / "build")
+    return b / "Release" / f"{name}.exe" if sys.platform == "win32" else b / name
+
+
+def content_rev(name: str, *reads: Path) -> str | None:
+    """Phase 5's cache revision for a trace or verify: the hash of the runner executable that
+    produced it and of the files it reads (the builds are deterministic), so a commit that changes
+    no code reruns nothing (LESSONS.md item 4). None (no caching) when the runner is missing."""
+    h = file_sha(runner_exe(name))
+    if h is None:
+        return None
+    parts = [f"{name}:{h}"]
+    for p in reads:
+        files = sorted(q for q in p.rglob("*") if q.is_file()) if p.is_dir() else [p]
+        parts += [f"{q.name}:{file_sha(q)}" for q in files]
+    import hashlib
+    return "exe:" + hashlib.sha1("|".join(parts).encode()).hexdigest()
+
+
+def approved(phase: int) -> bool:
+    t = (ROOT / "docs" / "phases" / DOCS[phase]).read_text(encoding="utf-8")
+    return bool(re.search(rf"^approved: {DATE}", t, re.M)) and "DRAFT" not in t
+
+
+def bench_gate(root: Path) -> tuple[bool, str]:
+    """P0's harness gates, as XMen2Recomp tools/bench.py measured them (docs/bench.json)."""
+    p = root / "docs" / "bench.json"
+    if not p.exists():
+        return False, "no docs/bench.json in the game repo (uv run tools/bench.py there)"
+    try:
+        d = json.loads(p.read_text(encoding="utf-8"))
+    except ValueError as e:
+        return False, f"docs/bench.json unreadable: {e}"
+    cc = d.get("corpus_check_s") or {}
+    vals = {"clean_build_s": d.get("clean_build_s"), "corpus_check_total_s": cc.get("total_s")}
+    mode = d.get("corpus_check_mode") or cc.get("mode")
+    probs = [f"{what} {vals[k]} s (need < {lim:.0f})" for k, lim, what in BENCH_GATES
+             if not isinstance(vals[k], (int, float)) or vals[k] >= lim]
+    if d.get("parallel_build_dirs_ok") is not True:
+        probs.append("two build dirs at once not shown")
+    if mode != "native":
+        probs.append(f"corpus check measured with --mode {mode} (P1 traces --mode native)")
+    detail = (f"bench {d.get('date')}: clean build {vals['clean_build_s']} s, corpus check "
+              f"{vals['corpus_check_total_s']} s ({mode}), parallel build dirs {d.get('parallel_build_dirs_ok')}")
+    return not probs, detail + (f"; {'; '.join(probs)}" if probs else "")
+
+
+def hardware_addresses(root: Path) -> list[str]:
+    """file:line of every hardware address in the game's sources, comments not counted."""
     hits = []
-    for p in (root / "game").rglob("*") if (root / "game").exists() else []:
-        if p.suffix.lower() in (".c", ".h", ".cpp", ".hpp"):
-            for i, line in enumerate(p.read_text(encoding="utf-8", errors="replace").splitlines(), 1):
-                if HW_ADDR.search(line):
-                    hits.append(f"{p.relative_to(root)}:{i}")
-    crit("P4", (root / "game").exists() and not hits,
-         f"hardware addresses in game/: {len(hits)}" + (f" (first {hits[0]})" if hits else ""))
-    # renderer: same run through the engine's VDP and the platform renderer; `--fb` adds an
-    # fb_crc32 column. Not cached: the comparison needs both CSVs on disk.
-    a = tr.run("tas", "native", None, ("--renderer", "vdp", "--fb"), use_cache=False)
-    c = tr.run("tas", "native", None, ("--renderer", "native", "--fb"), use_cache=False)
-    if not (a["ok"] and c["ok"]):
-        crit("P5", False, f"traces: vdp {a['detail'][:60]} / native {c['detail'][:60]}")
+    for top in GAME_SRC:
+        for p in sorted((root / top).rglob("*")) if (root / top).exists() else []:
+            if p.suffix.lower() not in (".c", ".h", ".cpp", ".hpp"):
+                continue
+            t = p.read_text(encoding="utf-8", errors="replace")
+            t = re.sub(r"/\*.*?\*/", lambda m: re.sub(r"[^\n]", " ", m.group(0)), t, flags=re.S)
+            for i, line in enumerate(t.splitlines(), 1):
+                if HW_ADDR.search(line.split("//", 1)[0]):
+                    hits.append(f"{p.relative_to(root).as_posix()}:{i}")
+    return hits
+
+
+def first_object(objects: dict, cat: str) -> str:
+    """The first game object (by path) still needing `cat`, with one of its symbols."""
+    for path in sorted(objects):
+        o = objects[path]
+        if path.startswith(GAME_SRC) and o.get(cat):
+            syms = (o.get("symbols") or {}).get(cat) or ["?"]
+            return f" (first {path}: {syms[0]})"
+    return ""
+
+
+def phase5(crit, fresh: bool, draft: bool = False) -> None:
+    """P5-port.md. Computed cheapest first, failing fast; reported in table order."""
+    say = Stages()
+    res: dict[str, tuple[bool, str]] = {}
+
+    def put(cid: str, ok: bool, detail: str) -> None:
+        res[cid] = (bool(ok), detail)
+        say(f"{'PASS' if ok else 'FAIL'}  {cid} {' '.join(detail.split())[:240]}")
+
+    def report() -> None:
+        for cid in P5_IDS:
+            ok, detail = res.get(cid, (False, "not measured: an earlier stage failed (see build/phase5.log)"))
+            crit(cid, ok, detail)
+
+    root = recomp_root()
+    ok_a = approved(5)
+    ok_b, bench = bench_gate(root)
+    put("P0", ok_a and ok_b, ("criteria approved" if ok_a else
+                              f"docs/phases/{DOCS[5]} is a draft: revise it, then ask the user") + f"; {bench}")
+    if not ok_a and not draft:
+        crit("P0", *res["P0"])
+        return
+
+    # the object scan: P3, P4, P6 and half of P5, in minutes
+    say("build --native (all runners, then the object scan)")
+    b, err = contract("build", "--native", timeout=4 * 3600)
+    if b is None or b.get("ok") is not True:
+        why = err or f"build not ok (log {b.get('log')})"
+        for cid in P5_IDS[1:8]:
+            put(cid, False, f"native build failed: {why}")
+        report()
+        return
+    objs, tot = b.get("objects") or {}, b.get("totals") or {}
+    nfiles = tot.get("files") or {}
+
+    def scan(cat: str) -> tuple[bool, str]:
+        n = tot.get(cat)
+        return n == 0, f"{cat} symbols in game objects: {n} ({nfiles.get(cat, '?')} files){first_object(objs, cat)}"
+    put("P3", *scan("cpu68"))
+    hw = hardware_addresses(root)
+    ok_bus, d_bus = scan("bus")
+    put("P4", ok_bus and not hw, f"{d_bus}; hardware addresses in {'/'.join(GAME_SRC)}: {len(hw)}"
+                                 + (f" (first {hw[0]})" if hw else ""))
+    ok_ram, d_ram = scan("emu_ram")
+    link = b.get("link") or {}
+    forbidden = link.get("forbidden")
+    cats = link.get("categories") or {}
+    put("P6", forbidden == [], f"68000 machine symbols the native executable defines: "
+                               f"{len(forbidden) if forbidden is not None else '?'}"
+                               + (f" {json.dumps(cats)}" if cats else "")
+                               + (f" (first {forbidden[0].get('symbol')} in {forbidden[0].get('object')})"
+                                  if forbidden else ""))
+
+    # P1: the corpus through the exporter, after a cut TAS run (a broken target fails in a minute)
+    tr = Traces(fresh)
+    runs = corpus_runs()
+    say(f"D1 references: {len(runs)} timed runs (cached by the timed runner's hash)")
+    bad1, refs, _low = d1_refs(tr, runs, rev=content_rev("XMen2Recomp"))
+    if bad1:
+        say(f"D1: {len(bad1)} runs without a valid reference, first {bad1[0][:200]}")
+
+    def pair(run: str, frames: int | None = None, extra: tuple[str, ...] = ()) -> tuple[dict, dict]:
+        """stepped-gen (the reference rows) and native for one run."""
+        rx = ("--replay", str(refs[run].parent), *extra)
+        sync = refs[run]
+        g = tr.plain(run, "stepped-gen", rx, rev=content_rev("XMen2SteppedGen", sync))
+        if not g["ok"]:
+            return g, {"ok": False, "detail": f"stepped-gen: {g['detail']}"}
+        if extra:   # P7: both sides' rows, compared by the caller
+            return g, tr.plain(run, "native", rx, rev=content_rev("XMen2Native", sync))
+        n = tr.run(run, "native", frames, rx, ref_sync=Path(g["csv"]), rev=content_rev("XMen2Native", sync))
+        return g, n
+
+    def counters_bad(s: dict) -> str:
+        return ", ".join(f"{k} {s.get(k)}" for k in COUNTERS if s.get(k) != 0)
+
+    p1_ok, copied = False, {}
+    if "tas" not in refs:
+        put("P1", False, f"no D1 reference for the TAS: {bad1[0][:200] if bad1 else '?'}")
     else:
-        fa, fc = read_frames(Path(a["csv"]))[1], read_frames(Path(c["csv"]))[1]
-        first = next((f for f in sorted(fa) if "fb_crc32" not in fa[f]
-                      or fa[f]["fb_crc32"] != fc.get(f, {}).get("fb_crc32")), None)
-        crit("P5", first is None and bool(fa),
-             f"{len(fa)} frames equal" if first is None else f"framebuffers differ from frame {first}")
+        say("P1 smoke: native TAS, first 600 sync points")
+        _g, smoke = pair("tas", 600)
+        if not smoke["ok"] or counters_bad(smoke.get("stats") or {}):
+            put("P1", False, f"smoke (TAS, 600 sync points): {smoke['detail'][:200]} "
+                             f"{counters_bad(smoke.get('stats') or {})}")
+        else:
+            say(f"P1: native vs stepped-gen, {len(runs)} runs ({JOBS} at a time, longest first)")
+
+            def one(run: str) -> tuple[str | None, dict]:
+                if run not in refs:
+                    return f"{run} (no D1 reference)", {}
+                g, n = pair(run)
+                s = n.get("stats") or {}
+                gs = g.get("stats") or {}
+                if not n["ok"] or counters_bad(s) or counters_bad(gs):
+                    return f"{run} ({n['detail'][:160]}; {counters_bad(s) or counters_bad(gs)})", s
+                return None, s
+            out = pmap(one, runs)
+            bad = [m for m, _s in out if m]
+            copied = {run: (s.get("exported") or {}).get("copied_bytes") for run, (_m, s) in zip(runs, out)}
+            p1_ok = not bad
+            put("P1", p1_ok, f"{len(runs) - len(bad)}/{len(runs)} corpus runs equal at every sync point"
+                             + (f"; first: {bad[0]}" if bad else ""))
+    left = {r: c for r, c in copied.items() if c != 0}
+    put("P5", ok_ram and bool(copied) and not left,
+        f"{d_ram}; exporter copied bytes from emulated RAM on {len(left) if copied else '?'} runs"
+        + (f" (tas {copied.get('tas')})" if copied else " (P1 not run)"))
+
+    # P7: the frame rendered at every TAS sync point, platform renderer vs the engine's VDP
+    if "tas" in refs:
+        say("P7: framebuffers at every TAS sync point (--fb)")
+        g, n = pair("tas", extra=("--fb",))
+        if not (g["ok"] and n["ok"]):
+            put("P7", False, f"traces: stepped-gen {g['detail'][:80]} / native {n['detail'][:80]}")
+        else:
+            fg, fn = read_frames(Path(g["csv"]), "sync")[1], read_frames(Path(n["csv"]), "sync")[1]
+            first = next((s for s in sorted(fg) if not fg[s].get("fb_crc32")
+                          or fg[s]["fb_crc32"] != (fn.get(s) or {}).get("fb_crc32")), None)
+            put("P7", first is None and bool(fg) and len(fn) == len(fg),
+                f"{len(fg)} sync points with equal framebuffers" if first is None and len(fn) == len(fg) else
+                f"framebuffers differ from sync point {first} ({len(fg)} / {len(fn)} rows)")
+    else:
+        put("P7", False, "no D1 reference for the TAS")
+
+    # P8: the package (ROM-free) and the user's word
+    say("P8: package")
+    pk, err = contract("package", timeout=3600)
     uv_doc = root / "docs" / "USER_VERIFIED.md"
-    ok = uv_doc.exists() and re.search(rf"^port-verified: {DATE}", uv_doc.read_text(encoding="utf-8"), re.M)
-    crit("P6", bool(ok), "port-verified line present" if ok else f"no `port-verified: DATE` in {uv_doc} (ask the user)")
+    word = uv_doc.exists() and re.search(rf"^port-verified: {DATE}", uv_doc.read_text(encoding="utf-8"), re.M)
+    pk_ok = pk is not None and pk.get("ok") is True and pk.get("rom_windows") == 0 and Path(pk.get("zip", "")).is_file()
+    put("P8", pk_ok and bool(word),
+        (err or f"package {pk.get('zip')}: {len(pk.get('files') or [])} files, ROM windows {pk.get('rom_windows')}")
+        + ("; port-verified line present" if word else f"; no `port-verified: DATE` in {uv_doc} (ask the user)"))
+
+    # P2, the slowest: phase 4's ledger on these sources (verify cached by its runner and inputs)
+    say("P2: the D4 ledger (verify, cc.py --match-recomp)")
+    inputs = tr.out_dir / "inputs"
+    for run in runs:   # before hashing them for verify's cache revision
+        if not (inputs / f"{run}.input").exists():
+            export_input(run, inputs)
+    game = root / "game"
+    ok2, d2, _lint = d4_ledger(tr, functions(), runs, p1_ok, ledger="phase5_functions.json",
+                               verify_key="verify|all|p5",
+                               verify_rev=content_rev("XMen2Verify", inputs, game / "verify",
+                                                      game / "xmen2.code_addrs.txt", game / "xmen2.functions.csv"))
+    put("P2", ok2, d2)
+    report()
 
 
 # --- driver ------------------------------------------------------------------------------
@@ -830,7 +1086,7 @@ def main() -> int:
     ap.add_argument("--fresh", action="store_true", help="ignore cached trace results")
     ap.add_argument("--json", action="store_true")
     ap.add_argument("--draft", action="store_true",
-                    help="phase 4: measure every criterion even before D0 is approved (D0 still fails)")
+                    help="phases 4, 5: measure every criterion even before D0/P0 is approved (it still fails)")
     args = ap.parse_args()
     if args.phase == "status":
         return status()
@@ -852,10 +1108,10 @@ def main() -> int:
         return 1
     if not (ROOT / "build" / "recomp" / "functions.csv").exists():
         subprocess.run([sys.executable, str(ROOT / "tools" / "handoff.py")], cwd=ROOT, capture_output=True)
-    if phase == 4:
-        phase4(crit, args.fresh, args.draft)
+    if phase in (4, 5):
+        (phase4 if phase == 4 else phase5)(crit, args.fresh, args.draft)
     else:
-        {2: phase2, 3: phase3, 5: phase5}[phase](crit, args.fresh)
+        {2: phase2, 3: phase3}[phase](crit, args.fresh)
 
     passed = sum(ok for _c, ok, _d in res)
     if args.json:
@@ -864,7 +1120,7 @@ def main() -> int:
         for c, ok, d in res:
             print(f"{'PASS' if ok else 'FAIL'}  {c:3} {d}")
         print(f"\n{passed}/{len(res)} criteria pass" + (" -- PHASE COMPLETE" if passed == len(res) else ""))
-    draft = " --draft" if args.draft and phase == 4 else ""
+    draft = " --draft" if args.draft and phase in (4, 5) else ""
     md = [f"# Phase {phase} ({PHASE_NAMES[phase]}) progress ({date.today().isoformat()})", "",
           f"Generated by `uv run tools/phase.py {phase}{draft}`; criteria in [{DOCS[phase]}](../phases/{DOCS[phase]})."
           + (" Measured past an unapproved kickoff." if draft else ""), "",

@@ -277,10 +277,75 @@ def match(src: Path, cid: str, flags: str, verbose: bool = True, include: Path |
     return ok, "\n".join(lines)
 
 
+# The game repo's mode switch (xmen2_mem.h): MPW C predefines `applec`, and xmen2_mem.h defines
+# XMEN2_MPW under it, first thing (every game/c file includes xmen2.h first, which includes
+# xmen2_mem.h first). These are the only conditions mpw_view decides.
+_MPW_COND = {
+    re.compile(r"#\s*ifdef\s+(XMEN2_MPW|applec)\b"): True,
+    re.compile(r"#\s*ifndef\s+(XMEN2_MPW|applec)\b"): False,
+    re.compile(r"#\s*if\s+defined\s*\(\s*applec\s*\)\s*\|\|\s*defined\s*\(\s*XMEN2_MPW\s*\)"): True,
+}
+
+
+def mpw_view(text: str, c_file: bool) -> str:
+    """The text MPW C compiles: the branches of `#ifdef XMEN2_MPW` / `#ifndef XMEN2_MPW` /
+    `#if defined(applec) || defined(XMEN2_MPW)` it doesn't take are dropped, every other line
+    and conditional kept as written. A cache key over this view doesn't change when only the PC
+    or native branches change (phase 5 edits them all the time), and changes whenever anything
+    MPW reads changes. Anything it can't decide exactly (a condition before a C file's include
+    of xmen2.h, an #elif in a decided block, unbalanced conditionals) returns the text as it is."""
+    out: list[str] = []
+    stack: list[tuple[str, bool, bool]] = []   # (kind 'mpw'|'keep', branch taken, parent active)
+    active = True
+    known = not c_file                          # XMEN2_MPW is defined from here on
+    for line in text.splitlines():
+        s = line.strip()
+        if c_file and not known and re.match(r'#\s*include\s+"xmen2\.h"', s):
+            known = True
+        if s.startswith("#"):
+            d = re.match(r"#\s*(\w+)", s)
+            word = d.group(1) if d else ""
+            if word in ("if", "ifdef", "ifndef"):
+                val = next((v for pat, v in _MPW_COND.items() if pat.match(s)), None)
+                if val is not None and "applec" not in s and not known:
+                    return text                 # XMEN2_MPW not yet defined here: can't decide
+                if val is None:
+                    stack.append(("keep", True, active))
+                    if active:
+                        out.append(line)
+                else:
+                    stack.append(("mpw", val, active))
+                    active = active and val
+                continue
+            if word in ("else", "elif", "endif"):
+                if not stack:
+                    return text
+                kind, val, parent = stack[-1]
+                if kind == "keep":
+                    if word == "endif":
+                        stack.pop()
+                    if parent:
+                        out.append(line)
+                    continue
+                if word == "elif":
+                    return text
+                if word == "else":
+                    stack[-1] = (kind, not val, parent)
+                    active = parent and not val
+                else:
+                    stack.pop()
+                    active = parent
+                continue
+        if active:
+            out.append(line)
+    return text if stack else "\n".join(out) + "\n"
+
+
 def match_recomp(root: Path, cid: str, flags: str, only: list[str] | None = None, jobs: int = 8) -> dict:
     """Phase 4 (P4-decomp.md "Matched"): every game/c/<ADDR>.c of the game repo at `root`,
     compiled with its game/include headers in their MPW mode, matched like --match. Results
-    are cached by the hash of the file, the headers, the candidate and the flags."""
+    are cached by the hash of what MPW compiles of the file and the headers (mpw_view), the
+    candidate and the flags."""
     import concurrent.futures
     import hashlib
     import json
@@ -289,16 +354,17 @@ def match_recomp(root: Path, cid: str, flags: str, only: list[str] | None = None
     if only:
         want = {a.upper().zfill(6) for a in only}
         files = [p for p in files if p.stem.upper() in want]
-    h = hashlib.sha1(f"{cid}|{flags}".encode())
+    h = hashlib.sha1(f"mpw_view 1|{cid}|{flags}".encode())
     for p in sorted(inc.glob("*.h")):
-        h.update(p.name.encode() + b"\0" + p.read_bytes())
+        h.update(p.name.encode() + b"\0" + mpw_view(p.read_text(encoding="utf-8", errors="replace"), False).encode())
     base = h.hexdigest()
     cache_path = ROOT / "build" / "match_recomp_cache.json"
     cache = json.loads(cache_path.read_text(encoding="utf-8")) if cache_path.exists() else {}
     names = Names()
     todo, res = [], {}
     for p in files:
-        key = hashlib.sha1((base + "|").encode() + p.read_bytes()).hexdigest()
+        view = mpw_view(p.read_text(encoding="utf-8", errors="replace"), True)
+        key = hashlib.sha1(f"{base}|{file_flags(p, flags)}|".encode() + view.encode()).hexdigest()
         hit = cache.get(p.stem.upper())
         if hit and hit.get("key") == key:
             res[p.stem.upper()] = hit

@@ -15,7 +15,9 @@ the recomp in `..\XMen2Recomp` equals the reference on every TAS and corpus fram
 user verified the Release build (2026-10-15). Phase 4 (2026-10-17): 8/9, every one of the 3,621
 functions is hand-written C and verified (D4), the game links no generated code and equals it
 on the whole corpus (D6); only D8 is left, the user playing the hand-C build
-([docs/phases/P4-decomp.md](docs/phases/P4-decomp.md), decisions 1-13). 5 is a draft.
+([docs/phases/P4-decomp.md](docs/phases/P4-decomp.md), decisions 1-13). Phase 5's criteria were
+revised 2026-10-17 (P0-P8, [docs/phases/P5-port.md](docs/phases/P5-port.md)); rulings R1-R6 and
+the approval wait in `docs/QUESTIONS.md`, and `uv run tools/phase.py 5 --draft` measures meanwhile.
 `uv run tools/phase.py status` shows every phase.
 
 **Start of every session:** `uv run tools/setup.py` (idempotent: ROM, emulator,
@@ -80,6 +82,7 @@ labelled data.
 | `candidates.py` | Unverified jump-table entries that trace cleanly as code |
 | `handoff.py` | Export build/recomp/ for phase 2 |
 | `decomp_queue.py [-n N] [--module M] [--stats]` | Phase 4: next functions to write as C (leaves first), how each must be verified, progress per module |
+| `port_queue.py [-n N] [--criterion P3\|P4\|P5] [--stats]` | Phase 5: what still ties the C to the 68000 (the native object scan), widest symbols first, then files |
 | `cc.py FILE.c` / `cc.py --match config/compiler/match/ADDR.c` | Compile C with MPW C 3.3 (headless, under mps) / prove it byte-identical to the ROM function |
 | `cc_libmatch.py [--scan ID]` / `mpwobj.py FILE.o` | Library fingerprint per candidate toolchain / dump an MPW object file |
 | `explore.py` / `split.py --force` | Initial discovery/split. **Never re-split** a tree with hand edits (hook-blocked) |
@@ -144,7 +147,8 @@ in table order, batches of ~5 items, notes + `phase.py N` + commit + push (every
 touched) after each green batch. The phase's doc under `docs/phases/` says where its work
 and notes live and what to do first; skill `/first-divergence` for trace mismatches
 (K5/K6/K8, D1/D2/D6, P2); phase 4's per-function loop is `/decomp-function` with
-`uv run tools/decomp_queue.py` as the queue. Criteria that need the user (K10, C4's `user_ack`, D0/P0 approvals,
+`uv run tools/decomp_queue.py` as the queue; phase 5's per-batch loop is `/port-batch` with
+`uv run tools/port_queue.py`, gated by XMen2Recomp's `tools/gate.py`. Criteria that need the user (K10, C4's `user_ack`, D0/P0 approvals,
 P6, D8): never write those lines yourself, and **never stop to ask either**. The user starts
 these runs and leaves, so queue the question in [docs/QUESTIONS.md](docs/QUESTIONS.md) with the
 default you are taking, and keep working (ROADMAP.md step 4). Read QUESTIONS.md at session start. Never weaken a check in

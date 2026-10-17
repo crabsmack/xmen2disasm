@@ -32,13 +32,26 @@ Entry format:
 - Blocks only: P4 D8, so `phase.py 4` exiting 0.
 - Answer:
 
-### 2026-10-17: phase 5 P0 kickoff rulings (P5 P0)
-- Question: approve the P0 exit criteria proposed from LESSONS.md (clean build < 5 min, full
-  corpus check < 15 min, workers verify in their own build dir), and retire XMen2Recomp's
-  "One runner at a time (#24)" rule once workers have their own build dir and runner copy?
-- Default taken meanwhile: harness speed work (savestates, parallel pccheck/corpus, fail-fast
-  phase.py) proceeds, since it's needed under any criteria; the one-runner rule stays until answered.
-- Blocks only: P5 P0 counting as passed, and per-worker verify.
+### 2026-10-17: phase 5 criteria and rulings (P5 P0)
+- Question: approve the revised [phases/P5-port.md](phases/P5-port.md) (criteria P0-P8,
+  "Definitions") and rule on its six points ("Rulings" there has the detail). Each line below is
+  the default; a word per line is enough ("ok", or the other option):
+  - R1 memory layout: (b) original layout in host byte order, stored pointers as 32-bit
+    references (exact export, no masks), with (a) native pointers/allocator possible later.
+  - R2 ROM data: the user's ROM loaded at start, read as a big-endian image; nothing ROM-derived
+    shipped.
+  - R3 video: the VDP model moves behind the platform layer as the renderer (like sound).
+  - R4 MPW matching and `verify` stay regression gates through phase 5 (P2).
+  - R5 the port's timing is the frame-synchronous machine D8 plays: no lag frames, H/V counter 0.
+  - R6 P0 gates: clean build < 5 min, full corpus check < 15 min, workers verify in their own
+    build dir. #24 ("one runner at a time") stays for interactive runs only. Headless traces on
+    private copies already ran 24 at once in phase 4.
+- Default taken meanwhile: all six defaults. Every one keeps the most work valid: (b) is a
+  prefix of (a), and retiring R4's gates later loses nothing done. Harness work (native target,
+  exporter, object scan, worker gate, bench) is done under any answer. With R1 (a), P5's export
+  needs masks, ruled on then.
+- Blocks only: P0 passing (it also needs `approved: DATE` in P5-port.md, your word only); every
+  later criterion is measured meanwhile with `phase.py 5 --draft`.
 - Answer:
 
 ## Answered
