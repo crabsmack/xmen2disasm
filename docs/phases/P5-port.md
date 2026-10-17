@@ -1,7 +1,10 @@
 # Phase 5: PC port (definition of done, DRAFT)
 
 **Status: draft.** P0 makes the agent revise these criteria with what phase 4 learned and
-get the user's approval before any other criterion counts.
+get the user's approval before any other criterion counts. P0 starts with
+[docs/LESSONS.md](../LESSONS.md) "Kickoff checklist". Propose its measurable harness gates
+(clean build < 5 min, full corpus check < 15 min, workers verify in their own build dir) as P0
+exit criteria, and its "can't be verified as defined" cases as rulings to get now, not at the end.
 
 Goal: the game's C runs on **native memory and a platform layer**: game state in native
 structs and pointers, no 68000 CPU, registers, generated code or emulated work RAM, and

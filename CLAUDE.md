@@ -21,7 +21,9 @@ on the whole corpus (D6); only D8 is left, the user playing the hand-C build
 **Start of every session:** `uv run tools/setup.py` (idempotent: ROM, emulator,
 build, runs, Ghidra), then read `docs/ROADMAP.md`, the current phase's criteria doc and
 progress (`docs/PROGRESS.md` / `docs/progress/PN.md`), and the relevant parts of
-`docs/NOTES.md`.
+`docs/NOTES.md`. **At a phase kickoff (P0) or before a parallel round, also read
+[docs/LESSONS.md](docs/LESSONS.md)**: the measured retrospective of phases 0-4 and the
+kickoff checklist (harness speed gates, day-one debug features, criteria and worker setup).
 
 ## The one rule
 
