@@ -802,6 +802,7 @@ def phase4(crit, fresh: bool, draft: bool = False) -> None:
 HW_ADDR = re.compile(r"\b0x0*(A[01][0-9A-F]{4}|C000[0-1][0-9A-F])(?![0-9A-F])", re.I)
 GAME_SRC = ("game/c", "game/include")   # the game's code: the object scan's and P4's scope
 P5_IDS = [f"P{i}" for i in range(10)]
+FB_COL = "fb_fnv1a64"   # trace --fb: the runner's own frame hash (FNV-1a 64) of fsync_render's frame
 BENCH_GATES = (("clean_build_s", 300.0, "clean build"), ("corpus_check_total_s", 900.0, "full corpus check"))
 
 
@@ -1032,8 +1033,8 @@ def phase5(crit, fresh: bool, draft: bool = False) -> None:
             put("P7", False, f"traces: stepped-gen {g['detail'][:80]} / native {n['detail'][:80]}")
         else:
             fg, fn = read_frames(Path(g["csv"]), "sync")[1], read_frames(Path(n["csv"]), "sync")[1]
-            first = next((s for s in sorted(fg) if not fg[s].get("fb_crc32")
-                          or fg[s]["fb_crc32"] != (fn.get(s) or {}).get("fb_crc32")), None)
+            first = next((s for s in sorted(fg) if not fg[s].get(FB_COL)
+                          or fg[s][FB_COL] != (fn.get(s) or {}).get(FB_COL)), None)
             put("P7", first is None and bool(fg) and len(fn) == len(fg),
                 f"{len(fg)} sync points with equal framebuffers" if first is None and len(fn) == len(fg) else
                 f"framebuffers differ from sync point {first} ({len(fg)} / {len(fn)} rows)")
