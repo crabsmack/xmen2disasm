@@ -75,6 +75,15 @@ Rules that reproduce the ROM, useful for any phase-4 matching:
   is a `do { ... } while (0)` macro (see below).
 - **Function returns**: many state functions end with `return self->flags & 8;` (`moveq #8,d0 /
   and.w $4(a4),d0`), often on one path only (MPW C accepts the missing return).
+- **Copies of stack variables** (probes on Tile_RunHooksAtPoints, 2026-10-16): a stack variable
+  read in two consecutive statements gets a compiler temp (none for two reads in one comma
+  expression). A variable keeps its temp for the rest of the function, and the temp has one
+  place: a register, or the stack if any use is under register pressure. An if's then-arm hands
+  its temps to the else-arm (even for another variable), but not to later statements. A temp in
+  an extra `{ }` block goes to the stack when the enclosing block has a stack temp, in a new
+  slot below the parent's. Tile_RunHooksAtPoints is the one function in the ROM where one stack
+  temp holds copies of two variables (px in the h-flip arms, py in the v-flip arm); no variant
+  reproduced it (best: 4 bytes, an extra block in the v-flip arm, slot -$1E for -$1C).
 
 ### The object system is the game's own, not a compiler's
 
