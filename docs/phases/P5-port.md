@@ -5,6 +5,8 @@ get the user's approval before any other criterion counts. P0 starts with
 [docs/LESSONS.md](../LESSONS.md) "Kickoff checklist". Propose its measurable harness gates
 (clean build < 5 min, full corpus check < 15 min, workers verify in their own build dir) as P0
 exit criteria, and its "can't be verified as defined" cases as rulings to get now, not at the end.
+Waiting for that approval is not a stop: put the proposal in [docs/QUESTIONS.md](../QUESTIONS.md)
+and build the harness speed-ups meanwhile, which any version of the criteria needs.
 
 Goal: the game's C runs on **native memory and a platform layer**: game state in native
 structs and pointers, no 68000 CPU, registers, generated code or emulated work RAM, and

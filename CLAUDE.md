@@ -144,7 +144,9 @@ touched) after each green batch. The phase's doc under `docs/phases/` says where
 and notes live and what to do first; skill `/first-divergence` for trace mismatches
 (K5/K6/K8, D1/D2/D6, P2); phase 4's per-function loop is `/decomp-function` with
 `uv run tools/decomp_queue.py` as the queue. Criteria that need the user (K10, C4's `user_ack`, D0/P0 approvals,
-P6) mean stop and ask: never write those lines yourself. Never weaken a check in
+P6, D8): never write those lines yourself, and **never stop to ask either**. The user starts
+these runs and leaves, so queue the question in [docs/QUESTIONS.md](docs/QUESTIONS.md) with the
+default you are taking, and keep working (ROADMAP.md step 4). Read QUESTIONS.md at session start. Never weaken a check in
 `tools/phase.py` or a contract tool it calls; changing a criterion needs the user's
 approval, recorded in the phase doc.
 

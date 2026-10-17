@@ -39,6 +39,21 @@ Phase 4 wall time:
 Do these before the first work item. Propose the measurable ones to the user as **P0 exit
 criteria**, so the harness is fast before any real work depends on it.
 
+**Never block on the user (applies to everything below).** The user starts these runs and leaves for
+hours. Anything that waits for him stalls the run until he happens to look:
+- phase 2 waited 6.3 h on its playtest
+- phase 4 waited ~1.3 h on the user, and its two session-limit stalls (2.5 h) only resumed on a manual "continue"
+- five rulings (decisions 9-13) were held and asked at the very end
+
+The protocol (ROADMAP.md "Working a phase autonomously", step 4):
+- Ask nothing interactively. Queue the question in [QUESTIONS.md](QUESTIONS.md) with the
+  default being taken, notify if the tool exists, and continue on the default in separate commits.
+- Prepare user-only gates (playtest, approvals) there as soon as they're possible, then keep
+  working on whatever else is open.
+- Ask the known rulings in one batch at a session's start, while the user is still there.
+- Schedule a resume at the quota reset.
+- So "get rulings at P0" below means *raise* them at P0. Work never waits on the answer.
+
 **Harness speed (gates: clean build < 5 min, full corpus check < 15 min, measured):**
 1. **Time a clean full build and watch the `cl.exe` count.** `/MP` was in the vcxproj all through phase 4 and did nothing.
    - Cause: per-file `COMPILE_DEFINITIONS` stop MSBuild from batching files into one `cl` call.
@@ -87,8 +102,8 @@ On null reads: phase 4 found six null dereferences one verify cycle at a time (a
   - R4 asked for scenarios the game doesn't have
   - S3's regex over-counted
   - the P2 doc assumed `on_frame_post` was called, and nothing called it
-- **List the "can't be verified as defined" cases at P0 and get rulings then.** Phase 4 needed five at the very end (decisions 9-13: callee arg slots, listed unreachable instructions, dead features and interrupt-only paths, synthetic cases for never-created states, noreturn and vectors). Some had been recorded a day earlier and held back to ask in one batch. A 42-min matching worker became moot after decision 9. Ask each one when it is found, while work continues.
-- **Offer the playtest as soon as the build is playable.** D8's build was playable from 10-17 01:11, but the playtest was only offered after D4. In phase 2 the session waited 6.3 h for it.
+- **List the "can't be verified as defined" cases at P0 and get rulings then.** Phase 4 needed five at the very end (decisions 9-13: callee arg slots, listed unreachable instructions, dead features and interrupt-only paths, synthetic cases for never-created states, noreturn and vectors). Some had been recorded a day earlier and held back to ask in one batch. A 42-min matching worker became moot after decision 9. Queue each one in QUESTIONS.md when it is found, with the default being taken, while work continues.
+- **Queue the playtest as soon as the build is playable**, and keep working. D8's build was playable from 10-17 01:11, but the playtest was only offered after D4. In phase 2 the session waited 6.3 h for it.
 - Phase 5 specific:
   - Build the native-state → 68000-RAM projection first and prove it on the phase-4 C, before any struct is ported.
   - Generate the export from the one header source (`gen_headers.py`), so `diffstate` keeps naming bytes.

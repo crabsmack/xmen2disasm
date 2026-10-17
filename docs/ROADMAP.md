@@ -53,8 +53,21 @@ revision was approved 2026-10-15; phase 5 is still a draft.
    - stuck after a real attempt: record what was tried under "Open questions" in the
      phase's notes, move to the next item, return later.
 3. When everything passes, report the phase complete. Criteria that need the user
-   (`user-verified`, kickoff approvals) are the agent's cue to stop and ask, never to fill
-   in itself.
+   (`user-verified`, kickoff approvals) are never filled in by the agent.
+4. **Never block on the user.** The user starts these runs and leaves; a question that waits for an
+   answer stalls the run until he next looks (phase 2 sat 6.3 h on its playtest). So:
+   - Ask nothing interactively (no AskUserQuestion, no turn that ends on a question). Add the
+     question to [QUESTIONS.md](QUESTIONS.md) with the default being taken, push a notification
+     if the tool exists, and continue on that default. Keep the default's work in its own
+     commits so a different answer reverts cleanly. Choose the default that keeps the most work
+     valid either way: the stricter reading, the reversible option.
+   - Prepare a user-only gate (playtest build and command, an approval's exact wording) in
+     QUESTIONS.md the moment it becomes possible, then go on to the next failing criterion, the
+     next phase's harness prep, or the open speed-ups in [LESSONS.md](LESSONS.md). Stop only when
+     nothing doable remains without an answer, and say so.
+   - When the user is present at a session's start, ask every known ruling then, in one batch.
+   - Read QUESTIONS.md at session start and apply any answers.
+   - At a session limit, schedule a resume at the reset rather than waiting for "continue".
 
 Same rules as phase 1: never weaken a check in `tools/phase.py` (or the contract tools it
 calls) to make it pass; changing a criterion needs the user's approval, recorded in the
