@@ -12,8 +12,10 @@ phases 2-5 `uv run tools/phase.py N` ([docs/phases/](docs/phases/)).
 compiler is Apple MPW C 3.3, `-mbg off -b` ([docs/COMPILER.md](docs/COMPILER.md);
 `uv run tools/cc.py --match FILE.c` checks C against the ROM).** Phase 2 complete (10/10):
 the recomp in `..\XMen2Recomp` equals the reference on every TAS and corpus frame and the
-user verified the Release build (2026-10-15). Phase 4's criteria are approved (D0, 2026-10-15;
-[docs/phases/P4-decomp.md](docs/phases/P4-decomp.md)): next is D1, the sync reference. 5 is a draft.
+user verified the Release build (2026-10-15). Phase 4 (2026-10-17): 8/9, every one of the 3,621
+functions is hand-written C and verified (D4), the game links no generated code and equals it
+on the whole corpus (D6); only D8 is left, the user playing the hand-C build
+([docs/phases/P4-decomp.md](docs/phases/P4-decomp.md), decisions 1-13). 5 is a draft.
 `uv run tools/phase.py status` shows every phase.
 
 **Start of every session:** `uv run tools/setup.py` (idempotent: ROM, emulator,
