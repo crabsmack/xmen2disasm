@@ -38,7 +38,7 @@ recorded result of every phase (from `docs/progress/`).
 
 Phases 4 and 5 are **drafts**: each starts with a kickoff criterion (`D0`/`P0`) where the
 agent revises the criteria with what phases 2-3 taught and the user approves them. Phase 4's
-revision was approved 2026-10-15. Phase 5's was revised 2026-10-17 (P0-P8, rulings R1-R6 queued
+revision was approved 2026-10-15. Phase 5's was revised 2026-10-17 (P0-P8, rulings R1-R7 queued
 in QUESTIONS.md) and waits for approval; `phase.py 5 --draft` measures it meanwhile.
 
 ## Working a phase autonomously

@@ -803,6 +803,7 @@ HW_ADDR = re.compile(r"\b0x0*(A[01][0-9A-F]{4}|C000[0-1][0-9A-F])(?![0-9A-F])", 
 GAME_SRC = ("game/c", "game/include")   # the game's code: the object scan's and P4's scope
 P5_IDS = [f"P{i}" for i in range(9)]
 BENCH_GATES = (("clean_build_s", 300.0, "clean build"), ("corpus_check_total_s", 900.0, "full corpus check"))
+RELEASE_PLATFORMS = ("windows", "linux")   # P5-port.md R7 (default: both)
 
 
 class Stages:
@@ -1040,14 +1041,19 @@ def phase5(crit, fresh: bool, draft: bool = False) -> None:
     else:
         put("P7", False, "no D1 reference for the TAS")
 
-    # P8: the package (ROM-free) and the user's word
+    # P8: a ROM-free package per R7 platform and the user's word
     say("P8: package")
     pk, err = contract("package", timeout=3600)
     uv_doc = root / "docs" / "USER_VERIFIED.md"
     word = uv_doc.exists() and re.search(rf"^port-verified: {DATE}", uv_doc.read_text(encoding="utf-8"), re.M)
-    pk_ok = pk is not None and pk.get("ok") is True and pk.get("rom_windows") == 0 and Path(pk.get("zip", "")).is_file()
-    put("P8", pk_ok and bool(word),
-        (err or f"package {pk.get('zip')}: {len(pk.get('files') or [])} files, ROM windows {pk.get('rom_windows')}")
+    got = {p.get("platform"): p for p in (pk or {}).get("packages") or []}
+    probs = [f"{plat}: " + ("no package" if plat not in got else
+                            f"ok {got[plat].get('ok')}, ROM windows {got[plat].get('rom_windows')}")
+             for plat in RELEASE_PLATFORMS
+             if plat not in got or not (got[plat].get("ok") is True and got[plat].get("rom_windows") == 0
+                                        and Path(got[plat].get("zip", "")).is_file())]
+    put("P8", pk is not None and not probs and bool(word),
+        (err or ("; ".join(probs) if probs else f"packages {', '.join(RELEASE_PLATFORMS)} ROM-free"))
         + ("; port-verified line present" if word else f"; no `port-verified: DATE` in {uv_doc} (ask the user)"))
 
     # P2, the slowest: phase 4's ledger on these sources (verify cached by its runner and inputs)

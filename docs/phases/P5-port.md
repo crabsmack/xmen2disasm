@@ -11,8 +11,10 @@ Goal: the game's C runs on **native memory and a platform layer**: no 68000 CPU,
 input, sound) behind a small C API. Behaviour stays provably equal to the original by
 **exporting** native state to the 68000 RAM/VRAM/CRAM/VSRAM image the phase-4 references compare.
 
-Checked by `uv run tools/phase.py 5` (writes `docs/progress/P5.md`). Requires phase 4 complete
-(at this revision only D8, the user's playtest, is open; phase 5 work proceeds meanwhile).
+Checked by `uv run tools/phase.py 5` (writes `docs/progress/P5.md`). Requires phase 4 complete.
+D8 was recorded 2026-10-17 (the user played the hand-C build on Linux, to Avalon). D2/D6 still
+need their re-run on engine 22ed7f6, whose frame-synchronous mode now renders a frame and gives the
+Z80 its V-int (sound). Phase 5 work proceeds meanwhile.
 
 ## What phase 4 changed in this plan
 
@@ -45,7 +47,14 @@ Checked by `uv run tools/phase.py 5` (writes `docs/progress/P5.md`). Requires ph
      TMSS/PSG. All go through `m68k_read*/write*` onto the engine's bus.
    - The frame-synchronous runner takes no H-int and reads the H/V counter as 0. The game's only
      H-int handler (`Irq_HBlank`) counts and switches H-ints off; no raster effect was found.
+     Since engine 22ed7f6 it renders the whole frame right after the V-int at each sync point
+     (`fsync_render`), so the main program's VDP writes show a frame late. Its Z80 takes the
+     V-int that paces the sound driver; the old model left the driver silent, and the D2/D6
+     references made with it are stale.
    - The game has no save feature (no SRAM, no password code), so the platform layer has no saves.
+   - The C already builds and plays on Linux (GCC 13 for D8; `long` is mapped to 32 bits on LP64
+     in `xmen2_mem.h`, `be(T)` is explicit). This machine's WSL Ubuntu has GCC 15 and cmake
+     4.2, and lacks SDL2 (`libsdl2-dev`, `pkg-config`).
 4. **An export of native layout to the exact RAM image is not decidable as the draft defined it.**
    Byte-equal RAM needs each object's original address, the alias form of every stored pointer,
    and the stale bytes the original leaves in reused heap and unwritten fields. A native layout
@@ -79,7 +88,13 @@ Checked by `uv run tools/phase.py 5` (writes `docs/progress/P5.md`). Requires ph
   the layout goes native. That frees the sources, but then only P1 checks behaviour.
 - **R5 The port's timing is the frame-synchronous machine** (decision 5): no lag frames where
   the original lagged, the two-player half-rate wait takes a frame, the H/V counter reads 0, no
-  mid-frame H-int. **Default:** accept; it is what D8 plays.
+  mid-frame H-int, the main program's VDP writes show a frame late. **Default:** accept; it is
+  what D8 plays. (D8 noted chugging in the Sentinel escape on a slower Linux PC, not investigated.
+  Measuring frame time per scene before P8 is a work item, not a criterion.)
+- **R7 Release platforms.** **Default:** P8 needs a Windows package and a Linux one (D8 was
+  played on Linux). The Linux build is made and checked in this machine's WSL Ubuntu, which needs
+  `sudo apt install libsdl2-dev pkg-config` once, done by the loop when it reaches P8.
+  Alternative: Windows only, as the draft had it; the code stays portable either way.
 - **R6 P0 exit gates and per-worker verification** (raised 2026-10-17 in QUESTIONS.md): clean
   build < 5 min, full corpus check < 15 min, workers verify in their own build dir; retire
   XMen2Recomp's "One runner at a time (#24)" rule. That rule is the engine's interactive one (relaunching on
@@ -97,8 +112,8 @@ Checked by `uv run tools/phase.py 5` (writes `docs/progress/P5.md`). Requires ph
 | P4 | Platform layer | `build --native`: 0 `bus` symbols in the game objects, and 0 hardware addresses (`0x` literals of `$A0xxxx`/`$A1xxxx` Z80, I/O and TMSS, `$C000xx` VDP/PSG; comments not counted) in `game/c` and `game/include`; the hardware names and the API live in `platform/` |
 | P5 | Native state | `build --native`: 0 `emu_ram` symbols in the game objects, and on every corpus run of P1 the exporter takes 0 bytes from emulated RAM (`copied_bytes` 0): all state is in native storage under R1's layout |
 | P6 | No 68000 left | `build --native`: the native executable's link map defines no 68000 CPU state or core, interpreter, recomp runtime (dispatch, entry hooks, slot machinery), generated code or emulated work RAM (`link.forbidden` empty). The platform's video model, the Z80 with the YM2612/PSG and the ROM image may stay |
-| P7 | Renderer | `trace --mode native --fb` and `trace --mode stepped-gen --fb` of the TAS give the same `fb_crc32` at every sync point (the frame rendered from the video state at the sync point; the platform renderer against the engine's VDP renderer) |
-| P8 | Release | `xmen2check.py package --json` builds a Windows package that runs on the user's ROM (SHA-1 checked at start) and contains no ROM-derived data (no 256-byte window of any packaged file, other than runs of one byte value, occurs in the ROM); and `docs/USER_VERIFIED.md` has `port-verified: YYYY-MM-DD`, written only on the user's word after they played the package |
+| P7 | Renderer | `trace --mode native --fb` and `trace --mode stepped-gen --fb` of the TAS give the same `fb_crc32` at every sync point (the frame drawn at the sync point after the V-int, as `fsync_render` does: the platform renderer against the engine's VDP renderer) |
+| P8 | Release | `xmen2check.py package --json` builds a package for each R7 platform (default Windows and Linux) that runs on the user's ROM (SHA-1 checked at start) and contains no ROM-derived data (no 256-byte window of any packaged file, other than runs of one byte value, occurs in the ROM); and `docs/USER_VERIFIED.md` has `port-verified: YYYY-MM-DD`, written only on the user's word after they played a package |
 
 ### Definitions (changing any of them needs the user's approval, recorded here)
 
@@ -157,7 +172,8 @@ xmen2check.py build --native --json
 xmen2check.py trace --mode native [--fb] --replay REFDIR --run R --input F --out D --json
     # as --mode handc, the native target; JSON adds "exported": {"native_bytes", "copied_bytes"};
     # --fb (also for stepped-gen) adds fb_crc32 to sync.csv
-xmen2check.py package --json   # P8: {"ok", "zip", "files": [...], "rom_windows": N}
+xmen2check.py package --json   # P8: {"ok", "packages": [{"platform": "windows"|"linux", "ok", "zip",
+                               #       "files": [...], "rom_windows": N}]}; linux built in WSL
 ```
 
 `phase.py 5` computes in cost order and reports in table order, logging each stage as it
@@ -204,8 +220,9 @@ commit and push.
 
    After each step the exporter serializes the moved state, and `copied_bytes` falls to 0.
 6. **P6** drops the engine's 68000 machinery from the native target (core, scheduler positions,
-   glue, slot bridge, generated sources). **P7** adds `--fb`. **P8** packages the build and queues
-   the playtest in QUESTIONS.md the moment the package plays, without waiting for anything else.
+   glue, slot bridge, generated sources). **P7** adds `--fb`. **P8** packages the build for each R7 platform
+   (Linux in WSL), and queues the playtest in QUESTIONS.md the moment a package plays, without
+   waiting for anything else.
 
 Same rules as earlier phases:
 - never edit generated C;
