@@ -84,6 +84,16 @@ Rules that reproduce the ROM, useful for any phase-4 matching:
   slot below the parent's. Tile_RunHooksAtPoints is the one function in the ROM where one stack
   temp holds copies of two variables (px in the h-flip arms, py in the v-flip arm); no variant
   reproduced it (best: 4 bytes, an extra block in the v-flip arm, slot -$1E for -$1C).
+- **Register allocation, measured** (Cerebro_PlayIntro, 2026-10-17; 7 probe files, a model that
+  predicted the final compile): a local's priority is its reference count, a reference inside a
+  loop counting 8 (assigning a constant doesn't count; a `for` counter gets a small extra, ~3-14).
+  Every `register` local is placed before any plain local, whatever its count; plain locals still
+  get a register when one is free. Ties go to the later declaration. Two variables share a
+  register when their first-to-last-use spans don't overlap, and the register chosen is the free
+  one whose previous occupant ended most recently and whose next starts soonest (not simply the
+  first free). d3 holds no variable there: it is for `?:` conditions and loop bounds hoisted out
+  of a loop, which MPW does only for `for` loops whose body makes no call (the ROM compares with
+  the constant inside: write those as `while` / `do`).
 - **Index copies** (AvalonB1_InitCamera, 2026-10-17): a bare short register index `a[i]` is copied
   with `move.l d7,d0` (11 ROM functions); `a[i + k]` with a constant k, even `a[0 * 16 + i]`, with
   `move.w`. The one `move.w` instance in the ROM indexes palette line 0 as `line * 16 + i`.
