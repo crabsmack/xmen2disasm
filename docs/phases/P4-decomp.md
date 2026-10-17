@@ -51,11 +51,21 @@ as defined; evidence: `XMen2Recomp/docs/NOTES.md` "Open questions"):
     or ends in `rte`: tags `noreturn` / `vector` in `xmen2_funcs.h`; no match, no shadow test)
     are verified by the whole-game comparisons: done when D2 and D6 pass.
 
-### Unreachable instructions (decision 10)
+**Change approved by the user 2026-10-17:**
+13. **Decision 10 also covers instructions no code in the ROM reaches** (dead features: a value
+    nothing in the ROM produces) **and instructions that run only with an interrupt in the middle
+    of the call** (synthetic runs take none, and no corpus run executes them), each listed below
+    with its reason. Paths the game can reach still need a match or a shadow test (synthetic
+    cases included).
+
+### Unreachable instructions (decisions 10, 13)
 
 | Function | Instructions | Why no state runs them |
 |---|---|---|
 | Scroll_ComputeParallax `$15FD0E` | `$16008E` (`beq.s`) | the `bne.w` before it is always taken: its flags come from a `cmpi` whose `bls` was just not taken |
+| Obj_CollideSegs `$1F8B42` | `$1F8C5A` `$1F8C5E` `$1F8C60` `$1F8C62` `$1F8C64` `$1F8C68` `$1F8C6A` `$1F8C6C` `$1F8C6E` | a contact with flags bit 4 (its second push, push2X/Y): the contact list is this function's local, filled by Seg_GatherNearObj (flags 0, 4 or the end mark 1) and changed only by Seg_CollideObj (bits 3, 15), the segment-type hooks it calls and this function (bits 1, 2, 6); none sets bit 4 (BanimazaDoor_PushCallback, a type hook, writes push2X/Y but not the bit; decision 13: no code in the ROM) |
+| Obj_CollideSegs `$1F8B42` | `$1F8D5A` `$1F8D5C` `$1F8D60` `$1F8D64` `$1F8D68` | a segment-type hook answering 1 to message 0 after answering 0 to message 3 (Seg_CollideObj's test): no hook installed by any scene does (decision 13: no code in the ROM) |
+| PlayerSelect_Run `$0656B0` | `$065BD2` `$065BD6` `$065BD8` `$065BDC` `$065BF8` `$065BFA` | two-player stepping on the player select: each frame waits for g_FrameTick, which only the V-int sets, and then counts the exit timer down by 2; no corpus run plays the player select with stepping, and synthetic runs take no interrupts (decision 13: an interrupt mid-call) |
 
 Goal: every one of the 3,620 functions exists as **hand-written, readable C** in
 `XMen2Recomp`, the game runs with **no generated code** for game functions, and the result is

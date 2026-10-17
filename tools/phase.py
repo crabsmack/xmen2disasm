@@ -522,7 +522,7 @@ def unreachable_insns() -> dict[str, set[str]]:
         if len(cells) < 4 or not re.search(r"\$[0-9A-F]{6}", cells[1]):
             continue
         fn = re.search(r"\$([0-9A-F]{6})", cells[1]).group(1)
-        out[fn] = set(re.findall(r"\$([0-9A-F]{6})", cells[2]))
+        out.setdefault(fn, set()).update(re.findall(r"\$([0-9A-F]{6})", cells[2]))   # a function may have several rows
     return out
 
 
