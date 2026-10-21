@@ -1094,12 +1094,12 @@ def phase5(crit, fresh: bool, draft: bool = False) -> None:
 
 def draft_phase(phase: int, crit) -> None:
     """P6-enhance.md / P7-multiplayer.md: the kickoff, then every other criterion of the doc's
-    table failing until its measurement is written (after the user approves the criteria)."""
+    table failing until its measurement is written here (with the phase's work)."""
     t = (ROOT / "docs" / "phases" / DOCS[phase]).read_text(encoding="utf-8")
     ids = re.findall(r"^\| ([A-Z]\d) \|", t, re.M)
     ok = kickoff(ids[0], phase, crit)
     for cid in ids[1:]:
-        crit(cid, False, "not measured yet: its measurement is written once the criteria are approved"
+        crit(cid, False, "not measured yet: its measurement is written with the phase's first work on it"
              if ok else f"not measured until {ids[0]} is approved (the criteria may change at the kickoff)")
 
 

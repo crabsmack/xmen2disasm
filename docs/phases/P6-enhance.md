@@ -1,11 +1,14 @@
-# Phase 6: enhancements (DRAFT definition of done)
+# Phase 6: enhancements (definition of done)
 
-**Status: DRAFT, 2026-10-21.** Phase 6 is the user's three enhancements, as decided on
-2026-10-21 (ROADMAP.md "Decisions on record"): **full frame rate in two-player**, **high frame
-rate** and **true widescreen**. Phase 7 ([P7-multiplayer.md](P7-multiplayer.md)) is online play
-and four players. This draft becomes the criteria when the user approves it (E0): until then,
-`uv run tools/phase.py 6` reports E0 failing and measures nothing else. Rulings R1-R7 below are
-proposals, each with the default a session takes until the user rules (docs/QUESTIONS.md).
+approved: 2026-10-21
+
+**Status: criteria approved by the user 2026-10-21, with rulings R1-R7** (asked one by one in
+the session; R4 and R5 with the user's conditions, recorded below). Phase 6 is the user's three
+enhancements, as decided on 2026-10-21 (ROADMAP.md "Decisions on record"): **full frame rate in
+two-player**, **high frame rate** and **true widescreen**. Phase 7
+([P7-multiplayer.md](P7-multiplayer.md)) is online play and four players. Work starts once
+phase 5 is complete (its P8 playtest). Changing a criterion or a definition below needs the
+user's approval, recorded here.
 
 Goal: XMen2Native gains the three enhancements as **options**. With every option off it is still
 the proven port of phase 5, checked by the same measurements. With an option on, it is checked
@@ -42,39 +45,48 @@ Checked by `uv run tools/phase.py 6` (writes `docs/progress/P6.md`). Requires ph
 6. **Speed.** 1.7 ms per frame median, 2.0 ms p99 (TAS, this machine; the render is about two
    thirds of it). The slower Linux PC where the D8 playtest chugged in the Sentinels escape is not measured.
 
-## Rulings (to ask at E0; the default stands until the user rules)
+## Rulings (ruled by the user 2026-10-21, one by one in the session)
 
-- **R1 Options.** Each enhancement is a runtime option of the one release runner (command line,
-  a settings file next to it, and keys for the two presentation options), off by default. Every
-  check that compares against the original runs with all options off. Alternative: separate
-  builds.
-- **R2 Sources.** Phase 5's R4 continues: every source keeps compiling in all three modes, the
-  files that byte-match keep matching, and `verify` keeps proving the rest. Option code goes in
-  native-only branches (`#if defined(XMEN2_NATIVE)`), and the worker gate catches a branch that
-  changes an MPW match. Alternative: let the enhanced sources diverge from the matched ones (phase
-  7 R4 asks this again for four players, which touches far more files).
-- **R3 Two-player full rate.** With the option on, `g_TwoPlayerStep` stays 0 and the extra waits
-  go with it, so two players run at 60 Hz on the one-player stepping. Nothing in the original can
-  check this mode, because the original never ran it; E3 measures what can be measured.
-- **R4 High frame rate.** The logic stays at 60 Hz. The display shows frames interpolated between
-  the last two logic frames, at the monitor's rate, which costs one logic frame (16.7 ms) of
-  latency. Interpolated: the camera, per-line scroll and sprites matched to their object and
-  piece. Not interpolated: the HUD, anything unmatched, a jump over a set distance (it snaps), and
-  palettes. Presentation only: the game's state never sees an interpolated frame.
-- **R5 Widescreen size.** 16:9 first (the hardware sprite x range covers it). Wider ratios need
-  the host sprite path, and come later if wanted. Title, menus, Cerebro, player select and
-  cutscenes stay 4:3 with bars. Levels go wide.
-- **R6 Widescreen gameplay.** Objects activate, spawn and despawn across the wide view, not the
-  original 320 px ("true widescreen": enemies appear earlier, as in the engine's Sonic 2). It is
-  a separate margin from the view's, so the alternative, a presentation-only widescreen with the
-  original activation (objects pop in and out at the margins), is the same code with that margin
-  0. Camera locks (boss arenas) and level edges get bars where the wider view would show what the
+- **R1 Options. Ruled: as proposed.** Each enhancement is a runtime option of the one release
+  runner (command line, a settings file next to it, and keys for the two presentation options),
+  off by default. Every check that compares against the original runs with all options off.
+  (Not chosen: separate builds.)
+- **R2 Sources. Ruled: keep the byte matches.** Phase 5's R4 continues: every source keeps
+  compiling in all three modes, the files that byte-match keep matching, and `verify` keeps
+  proving the rest. Option code goes in native-only branches (`#if defined(XMEN2_NATIVE)`), and
+  the worker gate catches a branch that changes an MPW match. (Not chosen: letting the enhanced
+  sources diverge from the matched ones. Phase 7 R4 asks again for four players, which touch far
+  more files.)
+- **R3 Two-player full rate. Ruled: as proposed.** With the option on, `g_TwoPlayerStep` stays 0
+  and the extra waits go with it, so two players run at 60 Hz on the one-player stepping. Nothing
+  in the original can check this mode, because the original never ran it; E3 measures what can
+  be measured.
+- **R4 High frame rate. Ruled: interpolation, latency only if unavoidable** (the user: "sure, if
+  unavoidable"). The logic stays at 60 Hz, and the display shows frames interpolated toward the
+  newest logic frame at the monitor's rate. The latency is avoided by timing, not accepted: each
+  logic frame runs as soon as its input is read, at the point where the original reads it, and
+  the interpolated frames lead up to it. So every whole logic frame appears when the 60 Hz build
+  shows it, and the frames in between only add. E4 measures that this holds. Interpolated: the
+  camera, per-line scroll, and sprites matched to their object and piece. Not interpolated: the
+  HUD, anything unmatched, a jump over a set distance (it snaps), and palettes. Presentation only:
+  the game's state never sees an interpolated frame.
+- **R5 Widescreen size. Ruled: 16:9 first; non-gameplay screens stay 4:3 unless they have a
+  sensible wide presentation** (the user: "if there's no sensible way they'd display in
+  widescreen then yes"). Wider ratios need the host sprite path, and come later if wanted.
+  Levels go wide. Title, menus, Cerebro, player select and cutscenes are decided screen by
+  screen: wide where the screen extends naturally, for example a background that already
+  continues past 320 px, otherwise 4:3 with bars. The list and the reason for each go in NOTES.
+- **R6 Widescreen gameplay. Ruled: yes, objects activate across the wide view.** Objects activate,
+  spawn and despawn across the wide view, not the original 320 px ("true widescreen": enemies
+  appear earlier, as in the engine's Sonic 2). It is a separate margin from the view's. With that
+  margin 0, the same code is a presentation-only widescreen that E5 compares against the original.
+  Camera locks (boss arenas) and level edges get bars where the wider view would show what the
   level never meant to show.
-- **R7 Widescreen planes.** Default: widen the game's own streaming (`Map_StreamColumns` /
-  `Map_StreamRows`, native branch) to keep the wide view drawn, with the engine's VDP margins as
-  the renderer. Fallback, if the streamer can't (narrow BG planes, `g_BgNarrow`: 44 tiles = 352
-  px): a scene renderer that draws plane A or B straight from the block map, as Sonic 1's does,
-  checked against the name table wherever both exist.
+- **R7 Widescreen planes. Ruled: widen the streaming first.** Widen the game's own streaming
+  (`Map_StreamColumns` / `Map_StreamRows`, native branch) to keep the wide view drawn, with the
+  engine's VDP margins as the renderer. Fallback, only where the streamer can't (narrow BG planes,
+  `g_BgNarrow`: 44 tiles = 352 px): a scene renderer that draws plane A or B straight from the
+  block map, as Sonic 1's does, checked against the name table wherever both exist.
 
 ## Criteria
 
@@ -84,8 +96,8 @@ Checked by `uv run tools/phase.py 6` (writes `docs/progress/P6.md`). Requires ph
 | E1 | The original is kept | the release runner with every option off passes phase 5's measured criteria: `phase.py 5`'s P1-P7 and P9, on the phase-6 sources and runner (the corpus traces equal the reference at every sync point, P2's ledger, the object scan and link map, the TAS framebuffers, the Linux TAS) |
 | E2 | Options | `XMen2.exe --options --json` lists `full_rate_2p`, `high_fps`, `widescreen` (with their settings), each off by default, read from the command line and the settings file. A run with each option given explicitly off has the same sync rows and framebuffers on the TAS as a run without options |
 | E3 | Two-player full rate | with `full_rate_2p` on: every corpus run that never has two players alive has the same sync rows and framebuffers as with it off (the option touches only two-player play); on the TAS from the frame player 2 joins and on `scenario-two-player`, every logic frame is one displayed frame (no frame-tick wait), `g_TwoPlayerStep` stays 0, and every corpus input runs to its end with no fatal from the memory layer and no hang |
-| E4 | High frame rate | with `high_fps` at 120 and 144 Hz (a headless present clock): the sync rows of the whole corpus equal the reference (presentation only), and the frame shown at each logic instant has P7's hash. On the TAS's gameplay frames, at least 95% of the sprites outside the HUD are matched to an object and interpolated, and the 144 Hz render time is p99 < 6.9 ms on this machine |
-| E5 | Widescreen | with `widescreen` 16:9: on every gameplay frame of the TAS input and each corpus input, the wide columns of planes A and B hold what the level's block map says (0 terrain-check errors), no sprite is lost to the 9-bit x range, the HUD is pinned to the screen edges, and non-gameplay screens are 4:3 centred with bars; every corpus input runs to its end with no fatal and no hang. With R6's activation margin 0, the sync rows of the whole corpus equal the reference |
+| E4 | High frame rate | with `high_fps` at 120 and 144 Hz (a headless present clock): the sync rows of the whole corpus equal the reference (presentation only), and the frame shown at each logic instant has P7's hash. On the TAS's gameplay frames, at least 95% of the sprites outside the HUD are matched to an object and interpolated, and the 144 Hz render time is p99 < 6.9 ms on this machine. Latency (R4): on a scripted input change in each of 10 TAS scenes, the first displayed frame that shows its effect comes no later on the present clock than with `high_fps` off, and the whole logic frame is on screen at the same time as with it off |
+| E5 | Widescreen | with `widescreen` 16:9: on every gameplay frame of the TAS input and each corpus input, the wide columns of planes A and B hold what the level's block map says (0 terrain-check errors), no sprite is lost to the 9-bit x range, the HUD is pinned to the screen edges, and each non-gameplay screen is as NOTES lists it (R5: wide with its wide columns drawn, or 4:3 centred with bars); every corpus input runs to its end with no fatal and no hang. With R6's activation margin 0, the sync rows of the whole corpus equal the reference |
 | E6 | Release and playtest | `xmen2check.py package` (Windows and Linux) builds packages with the options and the same ROM-free check as P8/P9; and `docs/USER_VERIFIED.md` (XMen2Recomp) has `enhancements-verified: YYYY-MM-DD`, written only on the user's word after playing all three |
 
 ### Definitions (changing any of them needs the user's approval, recorded here)
@@ -116,16 +128,17 @@ Checked by `uv run tools/phase.py 6` (writes `docs/progress/P6.md`). Requires ph
 The loop (ROADMAP.md "Working a phase autonomously"), the worker gate (`tools/gate.py`) after
 every batch, notes, `phase.py 6`, commit and push. Suggested order, smallest first:
 
-1. **E0** rulings queued (QUESTIONS.md). **E1** passes from the start (phase 5's result) and
+1. **E0** approved 2026-10-21. **E1** passes from the start (phase 5's result) and
    stays the regression gate. **E2**: the option plumbing first, before any enhancement.
 2. **E3** two-player full rate: one branch in `Level_FrameLoop` and the five scene setters, then
    the waits in `PlayerSelect_Run` and `Cerebro_PlayIntro`. Check the two-player corpus run for
    sprite flicker (consider the VDP model's unlimited sprites as part of the option).
 3. **E5** widescreen: the widths as a native variable (each `0x140` read and classified, in
-   NOTES), the camera limits, the streamer (R7), the HUD, the activation margin (R6), the 4:3
-   screens; the terrain check before anything else, so every later step is measured.
+   NOTES), the camera limits, the streamer (R7), the HUD, the activation margin (R6), each non-gameplay
+   screen wide or 4:3 (R5, listed in NOTES); the terrain check before anything else, so every later step is measured.
 4. **E4** high frame rate: sprite tagging in the draw paths (object and piece), the present
-   clock, interpolation of the camera, scroll and sprites, the snap rules.
+   clock, each logic frame run as soon as its input is read (R4: no added latency), interpolation
+   of the camera, scroll and sprites, the snap rules.
 5. **E6** package, then queue the playtest the moment it plays.
 
 Same rules as earlier phases: never weaken a check; engine changes go in the forks; kill runners

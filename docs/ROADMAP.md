@@ -12,14 +12,15 @@ user 2026-10-21):
 | 3 | Identify the original compiler (or prove we can't) | this repo | [phases/P3-compiler.md](phases/P3-compiler.md) | `uv run tools/phase.py 3` |
 | 4 | Decompilation: hand-written C replaces every generated function | `XMen2Recomp` | [phases/P4-decomp.md](phases/P4-decomp.md) | `uv run tools/phase.py 4` |
 | 5 | Port: native memory and platform layer, no 68000 left | `XMen2Recomp` | [phases/P5-port.md](phases/P5-port.md) | `uv run tools/phase.py 5` |
-| 6 | Enhancements: full frame rate in two-player, high frame rate, true widescreen | `XMen2Recomp` | [phases/P6-enhance.md](phases/P6-enhance.md) (draft) | `uv run tools/phase.py 6` |
+| 6 | Enhancements: full frame rate in two-player, high frame rate, true widescreen | `XMen2Recomp` | [phases/P6-enhance.md](phases/P6-enhance.md) | `uv run tools/phase.py 6` |
 | 7 | Online play and four players | `XMen2Recomp` | [phases/P7-multiplayer.md](phases/P7-multiplayer.md) (draft) | `uv run tools/phase.py 7` |
 
 Status: phase 1 complete (2026-10-14); phase 3 complete (2026-10-15: MPW C 3.3, policy
 `matching-for-unexecuted`, [COMPILER.md](COMPILER.md)); phases 2 and 4 complete (2026-10-15,
 2026-10-20); phase 5 at 9/10 (2026-10-21: every measured criterion passes; P8's user playtest is
-queued in [QUESTIONS.md](QUESTIONS.md)); phases 6 and 7 drafted (2026-10-21), their kickoffs
-(E0, M0) waiting for the user. `uv run tools/phase.py status` prints the last
+queued in [QUESTIONS.md](QUESTIONS.md)); phase 6's criteria approved (2026-10-21), its work
+starting once phase 5 is complete; phase 7 drafted (2026-10-21), its kickoff (M0) waiting for the
+user. `uv run tools/phase.py status` prints the last
 recorded result of every phase (from `docs/progress/`).
 
 ## Why this order
@@ -45,8 +46,9 @@ recorded result of every phase (from `docs/progress/`).
 Phases 4 and 5 are **drafts**: each starts with a kickoff criterion (`D0`/`P0`) where the
 agent revises the criteria with what phases 2-3 taught and the user approves them. Phase 4's
 revision was approved 2026-10-15. Phase 5's was revised 2026-10-17 (P0-P9) and approved 2026-10-20 with rulings R1-R7.
-Phases 6 and 7 were drafted 2026-10-21 (E0-E6, M0-M6). Until each is approved, `phase.py 6` / `7`
-check only the kickoff. A phase's other measurements are written after its approval.
+Phases 6 and 7 were drafted 2026-10-21 (E0-E6, M0-M6), and phase 6 was approved the same day
+with rulings R1-R7. Until a phase is approved, `phase.py 6` / `7` check only its kickoff. Its
+other measurements are written as its work starts.
 
 Every enhancement is an **option** that is off by default. With every option off, the port is
 still the proven one: phase 6's E1 and phase 7's M1 rerun phase 5's measurements. So the original
@@ -107,3 +109,9 @@ phase doc with the date.
   high frame rate and true widescreen ([phases/P6-enhance.md](phases/P6-enhance.md)). Phase 7 is
   online play and four players ([phases/P7-multiplayer.md](phases/P7-multiplayer.md)). Both are
   drafts until the user approves them.
+- 2026-10-21 (user): phase 6 criteria approved (E0-E6). R1 runtime options, off by default; R2
+  every byte match kept, with option code in native-only branches; R3 two players at the
+  one-player stepping; R4 interpolated high frame rate with latency only if unavoidable (avoided
+  by timing, measured by E4); R5 16:9 first, with non-gameplay screens 4:3 unless they have a
+  sensible wide presentation; R6 objects activate across the wide view; R7 widen the game's
+  streaming first.

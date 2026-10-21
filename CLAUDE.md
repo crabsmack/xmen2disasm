@@ -20,8 +20,8 @@ criteria (P0-P9, [docs/phases/P5-port.md](docs/phases/P5-port.md)) were approved
 rulings R1-R7. **Phase 5 (2026-10-21): 9/10**: the native port has no 68000 left, keeps game memory
 in host byte order, equals the reference on the whole corpus and every TAS framebuffer, and ships as
 ROM-free Windows and Linux packages; P8 waits only for the user's playtest (`port-verified`, queued
-in docs/QUESTIONS.md). **Phases 6 and 7 (drafted 2026-10-21, kickoffs E0/M0 waiting for the
-user):** enhancements on the port, each an option off by default ([docs/phases/P6-enhance.md](docs/phases/P6-enhance.md):
+in docs/QUESTIONS.md). **Phases 6 and 7 (2026-10-21; phase 6 approved with rulings R1-R7 and
+starting once phase 5 is complete, phase 7 a draft waiting for M0):** enhancements on the port, each an option off by default ([docs/phases/P6-enhance.md](docs/phases/P6-enhance.md):
 two-player full rate, high frame rate, widescreen; [docs/phases/P7-multiplayer.md](docs/phases/P7-multiplayer.md):
 online play, four players).
 `uv run tools/phase.py status` shows every phase.
