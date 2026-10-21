@@ -193,6 +193,36 @@ What cost time (about an hour of the three):
   `git submodule deinit --all` there unsets the submodules in the config every worktree shares, so
   the main checkout shows them uninitialised: run `git submodule init` in the main checkout after.
 
+## Phase 6 (2026-10-21, one session: E2-E5 built, E6 waiting for the playtest)
+
+What worked: the contract written before the work (`phase.py 6` measured every piece the moment it
+existed), counters read from the game's state through the 68000 view (independent of the C they
+check), macros that are the original bound token for token under MPW (3,034 byte matches kept
+through ~60 edited files), and a `phase.py` run against a snapshot worktree while development
+went on (`XMEN2_RECOMP` = a second checkout; its submodules are directory junctions to the
+main checkout's, `submodule.*.ignore all` in its worktree config; a full run takes ~50 min).
+
+What the session learned:
+- **The corpus covers less in the native machine than it looks.** The frame-synchronous machine
+  (P5 R5) has no lag frames, so the TAS's input stops fitting in the first stage: the native TAS
+  never leaves Siberia and keeps pausing; of 76 runs only two reach anything else (the attract
+  demos). P1/P7 compare native with stepped-gen, the same machine, so they never showed it. Check
+  what a run *reaches* (`ws.screens`), and test every stage with a start-scene switch and a
+  walker input (`XMEN2_DEBUG_SCENE`, `tools/ws_warp.py --all`): that found three stages whose
+  planes aren't their maps, which the corpus never showed.
+- **A measurement that needs a visible reaction needs inputs that get one**: E4's latency probe
+  flips C at evenly spread TAS points, mostly pause screens in the native TAS (queued for the user).
+- **`cc.py` substitutes global names in the source text before MPW compiles**: a header macro
+  must not expand to a global (MPW: "identifier not declared"); pass the globals as arguments.
+- **`cmake --build --target XMen2Native` doesn't refresh the hand-C snapshot**: a game/c change
+  needs `xmen2check.py build` (a warp test ran the old code once).
+- **Shell slips cost time again**: `python -` hung three times despite the memory note (write a
+  .py file, always); GNU sed turns `\n` in a replacement into a newline (broke C strings twice: use
+  the Edit tool for anything with string literals); a stale `.git/index.lock` once more.
+- **Contract wording vs `phase.py`**: E2's check reads `options[name]` while the contract nests the
+  runner's report (adapted the tool, recorded); the screen id (a scene name) can't tell the player
+  select after a death from its stage (queued for the user).
+
 ## For the next game (shared kit)
 
 **Transfers directly:**

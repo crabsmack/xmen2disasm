@@ -18,9 +18,10 @@ user 2026-10-21):
 Status: phase 1 complete (2026-10-14); phase 3 complete (2026-10-15: MPW C 3.3, policy
 `matching-for-unexecuted`, [COMPILER.md](COMPILER.md)); phases 2 and 4 complete (2026-10-15,
 2026-10-20); phase 5 at 9/10 (2026-10-21: every measured criterion passes; P8's user playtest is
-queued in [QUESTIONS.md](QUESTIONS.md)); phase 6's criteria approved (2026-10-21), its work
-starting once phase 5 is complete; phase 7 drafted (2026-10-21), its kickoff (M0) waiting for the
-user. `uv run tools/phase.py status` prints the last
+queued in [QUESTIONS.md](QUESTIONS.md)); phase 6 at 5/7 (2026-10-21, started on the user's word
+before phase 5's playtest: the three options built; E4 waits for a ruling on its latency probe and
+E6 for the user's playtest, both queued in QUESTIONS.md); phase 7 drafted (2026-10-21), its kickoff
+(M0) waiting for the user. `uv run tools/phase.py status` prints the last
 recorded result of every phase (from `docs/progress/`).
 
 ## Why this order

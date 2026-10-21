@@ -20,10 +20,14 @@ criteria (P0-P9, [docs/phases/P5-port.md](docs/phases/P5-port.md)) were approved
 rulings R1-R7. **Phase 5 (2026-10-21): 9/10**: the native port has no 68000 left, keeps game memory
 in host byte order, equals the reference on the whole corpus and every TAS framebuffer, and ships as
 ROM-free Windows and Linux packages; P8 waits only for the user's playtest (`port-verified`, queued
-in docs/QUESTIONS.md). **Phases 6 and 7 (2026-10-21; phase 6 approved with rulings R1-R7 and
-starting once phase 5 is complete, phase 7 a draft waiting for M0):** enhancements on the port, each an option off by default ([docs/phases/P6-enhance.md](docs/phases/P6-enhance.md):
+in docs/QUESTIONS.md). **Phases 6 and 7 (2026-10-21; phase 6 approved with rulings R1-R7, phase 7
+a draft waiting for M0):** enhancements on the port, each an option off by default ([docs/phases/P6-enhance.md](docs/phases/P6-enhance.md):
 two-player full rate, high frame rate, widescreen; [docs/phases/P7-multiplayer.md](docs/phases/P7-multiplayer.md):
-online play, four players).
+online play, four players). **Phase 6 at 5/7 (2026-10-21, XMen2Recomp 3b8503a):** the three options
+are built (`--options`, `xmen2.ini`, F9/F10); E4 waits for a ruling on its latency probe (the native
+TAS desyncs and mostly pauses) and E6 for the user's playtest, both in docs/QUESTIONS.md. Run
+`phase.py 6` against a snapshot worktree (`XMEN2_RECOMP`, LESSONS.md "Phase 6"); the corpus reaches
+only Siberia and the attract demos in the native machine, `tools/ws_warp.py --all` every stage.
 `uv run tools/phase.py status` shows every phase.
 
 **Start of every session:** `uv run tools/setup.py` (idempotent: ROM, emulator,
