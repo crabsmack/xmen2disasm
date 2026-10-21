@@ -49,6 +49,18 @@ def main() -> int:
     if subprocess.run([sys.executable, str(ROOT / "tools" / "build.py"), "--quiet"], cwd=ROOT).returncode:
         return 1
 
+    # the handoff tables (build/recomp) the game repo and cc.py resolve names with: refreshed when
+    # any source of the disassembly is newer (a stale one made cc.py report 129 matching files as
+    # NO MATCH, 2026-10-21)
+    step("handoff")
+    marker = ROOT / "build" / "recomp" / "ram_globals.csv"
+    sources = [ROOT / "xmen2.asm", *(ROOT / "src").rglob("*.asm"), ROOT / "config" / "seeds.txt"]
+    newest = max((p.stat().st_mtime for p in sources if p.exists()), default=0)
+    if not marker.exists() or marker.stat().st_mtime < newest:
+        if subprocess.run([sys.executable, str(ROOT / "tools" / "handoff.py")], cwd=ROOT).returncode:
+            return 1
+    print(f"handoff: {marker.parent}")
+
     step("emulator runs")
     if not (build.runs_dir() / "tas" / "func_frames.json").exists():
         subprocess.run([sys.executable, str(ROOT / "emu" / "xmen2emu.py"), "movie", "--name", "tas",

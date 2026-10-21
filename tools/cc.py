@@ -374,6 +374,11 @@ def match_recomp(root: Path, cid: str, flags: str, only: list[str] | None = None
         want = {a.upper().zfill(6) for a in only}
         files = [p for p in files if p.stem.upper() in want]
     h = hashlib.sha1(f"mpw_view 1|{cid}|{flags}".encode())
+    # the names a verdict resolves references with (Names: the handoff tables, the symbols); a stale
+    # build/recomp once turned 129 matches into NO MATCH (2026-10-21), and the cache kept them
+    for p in (RECOMP / "ram_globals.csv", RECOMP / "jumptable.csv", RECOMP / "functions.csv",
+              ROOT / "build" / "symbols.txt"):
+        h.update(p.name.encode() + b"\0" + (p.read_bytes() if p.exists() else b""))
     for p in sorted((h_ for d in inc for h_ in d.glob("*.h")), key=lambda q: q.name):
         h.update(p.name.encode() + b"\0" + mpw_view(p.read_text(encoding="utf-8", errors="replace"), False).encode())
     base = h.hexdigest()
