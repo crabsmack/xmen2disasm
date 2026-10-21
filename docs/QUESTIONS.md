@@ -24,6 +24,44 @@ Entry format:
 
 ## Open
 
+### 2026-10-21: play the enhancements (P6 E6)
+- Question: play the native port with the three options (XMen2Recomp 3b8503a or later; this can be
+  the same session as P5's `port-verified` playtest below). Windows: `uv run tools/xmen2check.py
+  package` makes `build\package\xmen2-native-windows.zip`; Linux: pull, `uv run tools/xmen2check.py
+  native-build`. Then, each on its own or together:
+  - `--options widescreen=16:9`: a 400-px view in the stages (Cerebro screens stay 4:3, bars where a
+    room is narrower than the view); the HUD at the screen's edges; enemies appear earlier (R6).
+  - `--options high_fps=144` (or 120/165/240 for your display): frames in between the game's own.
+    F9 turns it off and on while playing; F10 turns the 16:9 view on/off from the next screen.
+  - `--options full_rate_2p=1` with a second pad: two players at 60 Hz. (Also new, with the option
+    off: two players now play at the original's 30 Hz in the played port; before they ran at
+    twice the speed, the frame-synchronous machine showing one frame per logic frame.)
+  - Or an `xmen2.ini` beside the program: `[options]` then `widescreen=16:9` etc.
+  If they play well, add `enhancements-verified: DATE` to XMen2Recomp `docs/USER_VERIFIED.md` (or
+  say so here). Anything off (seams in the wide view, objects popping, judder at 144 Hz, flicker),
+  a line here is enough; most useful with the stage and roughly where.
+- Default taken meanwhile: none needed; the other criteria are worked meanwhile.
+- Blocks only: E6 (its `enhancements-verified` line), so `phase.py 6` exiting 0.
+- Answer:
+
+### 2026-10-21: E4's latency probes can't see the C button on the native TAS (P6 E4)
+- Question: E4 flips player 1's C at 10 evenly spread gameplay sync points of the TAS and needs
+  the flip to change the picture. In the native machine the TAS doesn't play the recorded game:
+  the frame-synchronous machine (P5 R5, no lag frames) desyncs it in the first stage (its rows
+  differ from the D1 recomp's from sync 1; P1 compares native with stepped-gen, the same machine).
+  It stays in Siberia, and its inputs keep pausing the game: 4 of 6 probe points looked at are the
+  pause screen (a gameplay frame by the definition: `g_InLevelLoop` set, no fade), where C does
+  nothing. 7 of the 10 probes change nothing on screen, so E4 fails there whatever the feature
+  does. In the 3 that do, 144 Hz shows the change one 144 Hz tick before 60 Hz (e.g. 555,556 us
+  vs 567,423 us), as R4 intends. Proposed: each of the 10 points becomes the first sync point at
+  or after it where the flip changes the 60 Hz picture within 40 frames (still 10 TAS scenes,
+  spread evenly). Or: probe A or B too; or leave pause frames out of the probe points.
+- Default taken meanwhile: none possible (it is `phase.py`'s probe selection). Everything else of
+  E4 is built and passes on the TAS (whole frames = P7's, on time, 96.2% of sprites interpolated,
+  render p99 1.8 ms at 144 Hz); E4 stays failing on the probes until you choose.
+- Blocks only: E4 passing.
+- Answer:
+
 ### 2026-10-21: the screen id of the player select after a death (P6 E5)
 - Question: P6-enhance.md "The contract" defines a screen id as the running scene's name. The
   player select after a death runs under the *stage's* scene index (`PlayerSelect_RunScene`
