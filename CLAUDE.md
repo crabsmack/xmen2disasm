@@ -3,10 +3,10 @@
 Byte-matching disassembly of **X-Men 2: Clone Wars** (Sega Genesis, USA/Europe,
 SHA-1 `61409e6cf6065ab67d8952b891d8edcf47777193`), built with The Macro Assembler
 AS (Sonic Retro's toolchain). This repo is the hub of a five-phase project toward a PC
-port: [docs/ROADMAP.md](docs/ROADMAP.md) has the phases, their order, where each one's
+port, with two enhancement phases after it (6, 7): [docs/ROADMAP.md](docs/ROADMAP.md) has the phases, their order, where each one's
 work lives, and the decisions on record. Every phase has a measured definition of done
 and a checker: phase 1 `uv run tools/progress.py` ([docs/DONE.md](docs/DONE.md)),
-phases 2-5 `uv run tools/phase.py N` ([docs/phases/](docs/phases/)).
+phases 2-7 `uv run tools/phase.py N` ([docs/phases/](docs/phases/)).
 
 **Status (2026-10-15): phase 1 complete, 16/16 criteria pass. Phase 3 complete (5/5): the
 compiler is Apple MPW C 3.3, `-mbg off -b` ([docs/COMPILER.md](docs/COMPILER.md);
@@ -20,7 +20,10 @@ criteria (P0-P9, [docs/phases/P5-port.md](docs/phases/P5-port.md)) were approved
 rulings R1-R7. **Phase 5 (2026-10-21): 9/10**: the native port has no 68000 left, keeps game memory
 in host byte order, equals the reference on the whole corpus and every TAS framebuffer, and ships as
 ROM-free Windows and Linux packages; P8 waits only for the user's playtest (`port-verified`, queued
-in docs/QUESTIONS.md).
+in docs/QUESTIONS.md). **Phases 6 and 7 (drafted 2026-10-21, kickoffs E0/M0 waiting for the
+user):** enhancements on the port, each an option off by default ([docs/phases/P6-enhance.md](docs/phases/P6-enhance.md):
+two-player full rate, high frame rate, widescreen; [docs/phases/P7-multiplayer.md](docs/phases/P7-multiplayer.md):
+online play, four players).
 `uv run tools/phase.py status` shows every phase.
 
 **Start of every session:** `uv run tools/setup.py` (idempotent: ROM, emulator,
@@ -144,15 +147,15 @@ I/O `$A10000-$A1001F`, TMSS `$A14000`, work RAM `$FF0000-$FFFFFF`.
 
 ## Autonomous mode ("work through phase N until it's done")
 
-**Phases 2-5**: loop until `uv run tools/phase.py N` exits 0, as in
+**Phases 2-7**: loop until `uv run tools/phase.py N` exits 0, as in
 [docs/ROADMAP.md](docs/ROADMAP.md) "Working a phase autonomously": first failing criterion
 in table order, batches of ~5 items, notes + `phase.py N` + commit + push (every repo
 touched) after each green batch. The phase's doc under `docs/phases/` says where its work
 and notes live and what to do first; skill `/first-divergence` for trace mismatches
 (K5/K6/K8, D1/D2/D6, P2); phase 4's per-function loop is `/decomp-function` with
 `uv run tools/decomp_queue.py` as the queue; phase 5's per-batch loop is `/port-batch` with
-`uv run tools/port_queue.py`, gated by XMen2Recomp's `tools/gate.py`. Criteria that need the user (K10, C4's `user_ack`, D0/P0 approvals,
-P6, D8): never write those lines yourself, and **never stop to ask either**. The user starts
+`uv run tools/port_queue.py`, gated by XMen2Recomp's `tools/gate.py`. Criteria that need the user (K10, C4's `user_ack`, D0/P0/E0/M0 approvals,
+P6, D8, P8, E6, M6): never write those lines yourself, and **never stop to ask either**. The user starts
 these runs and leaves, so queue the question in [docs/QUESTIONS.md](docs/QUESTIONS.md) with the
 default you are taking, and keep working (ROADMAP.md step 4). Read QUESTIONS.md at session start. Never weaken a check in
 `tools/phase.py` or a contract tool it calls; changing a criterion needs the user's

@@ -1,6 +1,6 @@
 """Measure a phase's definition of done (docs/ROADMAP.md); write docs/progress/PN.md.
 
-    uv run tools/phase.py 2            # phase 2 (recomp); also 3, 4, 5
+    uv run tools/phase.py 2            # phase 2 (recomp); also 3, 4, 5, and 6, 7 (drafts: kickoff only)
     uv run tools/phase.py 2 --fresh    # ignore cached trace results
     uv run tools/phase.py 2 --json
     uv run tools/phase.py 5 --draft    # measure past an unapproved kickoff (D0/P0); never exits 0
@@ -47,8 +47,10 @@ POLICIES = ["matching-for-unexecuted", "matching-all", "functional"]
 LINT_RULES = ["registers", "raw_addresses", "raw_offsets", "cross_function_goto"]
 ROM_EXT = re.compile(r"\.(bin|gen|smd)$", re.I)
 DATE = r"\d{4}-\d{2}-\d{2}"
-DOCS = {2: "P2-recomp.md", 3: "P3-compiler.md", 4: "P4-decomp.md", 5: "P5-port.md"}
-PHASE_NAMES = {1: "disassembly", 2: "recomp", 3: "compiler", 4: "decomp", 5: "port"}
+DOCS = {2: "P2-recomp.md", 3: "P3-compiler.md", 4: "P4-decomp.md", 5: "P5-port.md",
+        6: "P6-enhance.md", 7: "P7-multiplayer.md"}
+PHASE_NAMES = {1: "disassembly", 2: "recomp", 3: "compiler", 4: "decomp", 5: "port",
+               6: "enhancements", 7: "multiplayer"}
 
 Result = tuple[str, bool, str]
 
@@ -1088,12 +1090,25 @@ def phase5(crit, fresh: bool, draft: bool = False) -> None:
     report()
 
 
+# --- phases 6 and 7: drafts ----------------------------------------------------------------
+
+def draft_phase(phase: int, crit) -> None:
+    """P6-enhance.md / P7-multiplayer.md: the kickoff, then every other criterion of the doc's
+    table failing until its measurement is written (after the user approves the criteria)."""
+    t = (ROOT / "docs" / "phases" / DOCS[phase]).read_text(encoding="utf-8")
+    ids = re.findall(r"^\| ([A-Z]\d) \|", t, re.M)
+    ok = kickoff(ids[0], phase, crit)
+    for cid in ids[1:]:
+        crit(cid, False, "not measured yet: its measurement is written once the criteria are approved"
+             if ok else f"not measured until {ids[0]} is approved (the criteria may change at the kickoff)")
+
+
 # --- driver ------------------------------------------------------------------------------
 
 def status() -> int:
     p1 = ROOT / "docs" / "PROGRESS.md"
     lines = []
-    for n in range(1, 6):
+    for n in range(1, 8):
         p = p1 if n == 1 else ROOT / "docs" / "progress" / f"P{n}.md"
         m = re.search(r"\*\*(\d+)/(\d+) pass\.\*\*", p.read_text(encoding="utf-8")) if p.exists() else None
         when = re.search(r"\((\d{4}-\d{2}-\d{2})\)", p.read_text(encoding="utf-8")) if p.exists() else None
@@ -1105,7 +1120,7 @@ def status() -> int:
 
 def main() -> int:
     ap = argparse.ArgumentParser()
-    ap.add_argument("phase", help="1-5 or 'status'")
+    ap.add_argument("phase", help="1-7 or 'status'")
     ap.add_argument("--fresh", action="store_true", help="ignore cached trace results")
     ap.add_argument("--json", action="store_true")
     ap.add_argument("--draft", action="store_true",
@@ -1118,7 +1133,7 @@ def main() -> int:
         return subprocess.run([sys.executable, str(ROOT / "tools" / "progress.py"),
                                *(["--json"] if args.json else [])], cwd=ROOT).returncode
     if phase not in DOCS:
-        ap.error("phase must be 1-5 or status")
+        ap.error("phase must be 1-7 or status")
     res: list[Result] = []
 
     def crit(cid: str, ok: bool, detail: str) -> None:
@@ -1133,6 +1148,8 @@ def main() -> int:
         subprocess.run([sys.executable, str(ROOT / "tools" / "handoff.py")], cwd=ROOT, capture_output=True)
     if phase in (4, 5):
         (phase4 if phase == 4 else phase5)(crit, args.fresh, args.draft)
+    elif phase in (6, 7):
+        draft_phase(phase, crit)
     else:
         {2: phase2, 3: phase3}[phase](crit, args.fresh)
 

@@ -40,6 +40,47 @@ Entry format:
 - Blocks only: P8 (its `port-verified` line), so `phase.py 5` exiting 0.
 - Answer:
 
+### 2026-10-21: phase 6 criteria and rulings (P6 E0)
+- Question: approve [phases/P6-enhance.md](phases/P6-enhance.md) (criteria E0-E6, "Definitions")
+  and rule on its points ("Rulings" there has the detail). Each line is the default. A word per
+  line is enough ("ok", or the other option):
+  - R1 options: each enhancement is a runtime option of the one release runner, off by default;
+    every check against the original runs with all options off.
+  - R2 sources: every byte match is kept; option code goes in native-only branches.
+  - R3 two-player full rate: the step stays 1 and the extra waits go (60 Hz with two players).
+  - R4 high frame rate: interpolate between the last two logic frames (one logic frame, 16.7 ms,
+    of added latency); the HUD and palettes are not interpolated, and big jumps snap.
+  - R5 widescreen: 16:9 first; title, menus, Cerebro, player select and cutscenes stay 4:3 with
+    bars.
+  - R6 widescreen gameplay: objects activate across the wide view (enemies appear earlier), with
+    bars where a locked camera would show past a boss arena. Or keep the original activation
+    (objects pop in at the margins, but it stays comparable to the original).
+  - R7 widescreen planes: widen the game's own tile streaming; a renderer that draws the level from
+    its map only if that can't work.
+- Default taken meanwhile: none, nothing of phase 6 starts before phase 5 is complete and this
+  is approved. If you want a head start, say "start phase 6" and a session works on these
+  defaults, in commits that revert cleanly.
+- Blocks only: E0, so all of phase 6.
+- Answer:
+
+### 2026-10-21: phase 7 criteria and rulings (P7 M0)
+- Question: the same for [phases/P7-multiplayer.md](phases/P7-multiplayer.md) (M0-M6, rulings
+  R1-R8). It is a draft to be revised at its kickoff with what phase 6 teaches, so this can wait
+  until phase 6 is done. The defaults:
+  - R1 the engine's rollback netplay (`recomp-net`, `rbengine`); R2 full in-process savestates
+    with the game back on a fiber (quick save and rewind not in the release); R3 two players
+    online first, then four on one machine, then four online.
+  - R4 four-player sources: native-only branches on the first 20 files, with the cost measured
+    and recorded, then this is asked again (the alternative is letting the four-player sources
+    diverge from the byte-matched ones).
+  - R5 players 3 and 4 in a native memory region outside the 68000's 64 KB; R6 extra palettes and
+    tile memory as host-side renderer extensions; R7 the two-player rules extended (no difficulty
+    scaling, the camera follows the group); R8 LAN and direct IP first, then relay and ICE, no
+    lobby server until you say who hosts one.
+- Default taken meanwhile: none (phase 7 follows phase 6).
+- Blocks only: M0, so all of phase 7.
+- Answer:
+
 ## Answered
 
 ### 2026-10-17: phase 5 criteria and rulings (P5 P0)

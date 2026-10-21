@@ -2,7 +2,8 @@
 
 End goal: X-Men 2: Clone Wars as **readable, modifiable C that runs natively on PC**. Five
 phases, each with a measured definition of done and a checker that exits 0 only when every
-criterion passes:
+criterion passes, then two phases of enhancements on the finished port (6 and 7, decided by the
+user 2026-10-21):
 
 | Phase | Goal | Where the work lives | Criteria | Check |
 |---|---|---|---|---|
@@ -10,12 +11,15 @@ criterion passes:
 | 2 | Static recompilation: native PC game, frame-identical to the emulator | new repo `XMen2Recomp` | [phases/P2-recomp.md](phases/P2-recomp.md) | `uv run tools/phase.py 2` |
 | 3 | Identify the original compiler (or prove we can't) | this repo | [phases/P3-compiler.md](phases/P3-compiler.md) | `uv run tools/phase.py 3` |
 | 4 | Decompilation: hand-written C replaces every generated function | `XMen2Recomp` | [phases/P4-decomp.md](phases/P4-decomp.md) | `uv run tools/phase.py 4` |
-| 5 | Port: native memory and platform layer, no 68000 left | `XMen2Recomp` | [phases/P5-port.md](phases/P5-port.md) (draft) | `uv run tools/phase.py 5` |
+| 5 | Port: native memory and platform layer, no 68000 left | `XMen2Recomp` | [phases/P5-port.md](phases/P5-port.md) | `uv run tools/phase.py 5` |
+| 6 | Enhancements: full frame rate in two-player, high frame rate, true widescreen | `XMen2Recomp` | [phases/P6-enhance.md](phases/P6-enhance.md) (draft) | `uv run tools/phase.py 6` |
+| 7 | Online play and four players | `XMen2Recomp` | [phases/P7-multiplayer.md](phases/P7-multiplayer.md) (draft) | `uv run tools/phase.py 7` |
 
 Status: phase 1 complete (2026-10-14); phase 3 complete (2026-10-15: MPW C 3.3, policy
 `matching-for-unexecuted`, [COMPILER.md](COMPILER.md)); phases 2 and 4 complete (2026-10-15,
 2026-10-20); phase 5 at 9/10 (2026-10-21: every measured criterion passes; P8's user playtest is
-queued in [QUESTIONS.md](QUESTIONS.md)). `uv run tools/phase.py status` prints the last
+queued in [QUESTIONS.md](QUESTIONS.md)); phases 6 and 7 drafted (2026-10-21), their kickoffs
+(E0, M0) waiting for the user. `uv run tools/phase.py status` prints the last
 recorded result of every phase (from `docs/progress/`).
 
 ## Why this order
@@ -41,6 +45,12 @@ recorded result of every phase (from `docs/progress/`).
 Phases 4 and 5 are **drafts**: each starts with a kickoff criterion (`D0`/`P0`) where the
 agent revises the criteria with what phases 2-3 taught and the user approves them. Phase 4's
 revision was approved 2026-10-15. Phase 5's was revised 2026-10-17 (P0-P9) and approved 2026-10-20 with rulings R1-R7.
+Phases 6 and 7 were drafted 2026-10-21 (E0-E6, M0-M6). Until each is approved, `phase.py 6` / `7`
+check only the kickoff. A phase's other measurements are written after its approval.
+
+Every enhancement is an **option** that is off by default. With every option off, the port is
+still the proven one: phase 6's E1 and phase 7's M1 rerun phase 5's measurements. So the original
+stays the regression gate, and each option is checked by its own measurements.
 
 ## Working a phase autonomously
 
@@ -93,3 +103,7 @@ phase doc with the date.
   user's ROM read at run time; R3 the VDP model as the renderer behind the platform layer; R4 MPW
   matching and `verify` stay regression gates; R5 the frame-synchronous timing; R6 the P0 speed
   gates, #24 for interactive runs only.
+- 2026-10-21 (user): two more phases after the port. Phase 6 is full frame rate in two-player,
+  high frame rate and true widescreen ([phases/P6-enhance.md](phases/P6-enhance.md)). Phase 7 is
+  online play and four players ([phases/P7-multiplayer.md](phases/P7-multiplayer.md)). Both are
+  drafts until the user approves them.
