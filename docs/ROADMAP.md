@@ -39,8 +39,7 @@ recorded result of every phase (from `docs/progress/`).
 
 Phases 4 and 5 are **drafts**: each starts with a kickoff criterion (`D0`/`P0`) where the
 agent revises the criteria with what phases 2-3 taught and the user approves them. Phase 4's
-revision was approved 2026-10-15. Phase 5's was revised 2026-10-17 (P0-P9, rulings R1-R6 queued
-in QUESTIONS.md; R7 ruled) and waits for approval; `phase.py 5 --draft` measures it meanwhile.
+revision was approved 2026-10-15. Phase 5's was revised 2026-10-17 (P0-P9) and approved 2026-10-20 with rulings R1-R7.
 
 ## Working a phase autonomously
 
@@ -88,3 +87,8 @@ phase doc with the date.
   partially executed functions may be verified by `verify` plus synthetic cases, and the user
   plays the hand-C build (D8). Details: P4-decomp.md.
 - 2026-10-17 (user): phase 5 releases for Windows first; Linux comes at the end (P5-port.md R7, P9).
+- 2026-10-20 (user): phase 5 criteria approved (P0-P9). R1 memory layout: the original layout in
+  host byte order with 32-bit references (exact export), native pointers possibly later; R2 the
+  user's ROM read at run time; R3 the VDP model as the renderer behind the platform layer; R4 MPW
+  matching and `verify` stay regression gates; R5 the frame-synchronous timing; R6 the P0 speed
+  gates, #24 for interactive runs only.

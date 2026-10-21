@@ -24,6 +24,10 @@ Entry format:
 
 ## Open
 
+(none)
+
+## Answered
+
 ### 2026-10-17: phase 5 criteria and rulings (P5 P0)
 - Question: approve the revised [phases/P5-port.md](phases/P5-port.md) (criteria P0-P9,
   "Definitions") and rule on its points ("Rulings" there has the detail). Each line below is
@@ -48,9 +52,10 @@ Entry format:
   needs masks, ruled on then.
 - Blocks only: P0 passing (it also needs `approved: DATE` in P5-port.md, your word only); every
   later criterion is measured meanwhile with `phase.py 5 --draft`.
-- Answer:
-
-## Answered
+- Answer: approved, every ruling as proposed (the user, in the session, 2026-10-20, one by one): R1 (b)
+  now, (a) possibly later; R2 read the user's ROM; R3 VDP model behind the platform; R4 keep both
+  proofs; R5 accept; R6 approve as written. Recorded in P5-port.md (`approved: 2026-10-20`) and
+  ROADMAP.md "Decisions on record".
 
 ### 2026-10-17: play the hand-C build (P4 D8)
 - Question: play `build\Release\XMen2Stepped.exe game\xmen2.bin` in ..\XMen2Recomp (all hand C,

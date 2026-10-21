@@ -1,10 +1,11 @@
-# Phase 5: PC port (definition of done, DRAFT)
+# Phase 5: PC port (definition of done)
 
-**Status: draft, revised 2026-10-17 at P0 for the user's approval** (with what phase 4 taught and
-[LESSONS.md](../LESSONS.md) "Kickoff checklist"). Nothing below counts until the user approves it
-(P0). The rulings it needs are under "Rulings", each with the default the loop takes meanwhile;
-they are queued in [QUESTIONS.md](../QUESTIONS.md). `uv run tools/phase.py 5 --draft` measures
-every criterion past the unapproved P0 (it never exits 0).
+approved: 2026-10-20
+
+**Status: criteria approved by the user 2026-10-20** (revised 2026-10-17 at P0 with what phase 4
+taught and [LESSONS.md](../LESSONS.md) "Kickoff checklist"). The user ruled R1-R6 the same day,
+each as proposed (R1: (b) now, (a) possibly later), and R7 on 2026-10-17. Changing a criterion or
+a definition below needs the user's approval, recorded here.
 
 Goal: the game's C runs on **native memory and a platform layer**: no 68000 CPU, registers,
 68000 stack, generated code or emulated work RAM; game state in native storage; hardware (video,
@@ -63,7 +64,7 @@ frame and gives the Z80 its V-int; the user played it on Linux for D8).
    (LESSONS.md). P0 therefore includes measured speed gates, and the per-batch worker gate is a tool
    (`tools/gate.py`), not advice.
 
-## Rulings (asked at P0; the loop works on the defaults meanwhile, in separate commits)
+## Rulings (asked at P0, ruled by the user)
 
 - **R1 Memory layout of the port.** (a) *Native layout*: host pointers, host-size structs, C
   globals, the game's allocator over a host arena; the export then needs each object's original
@@ -71,23 +72,23 @@ frame and gives the Z80 its V-int; the user played it on Linux for D8).
   rulings. (b) *Original layout in host byte order*: RAM state lives in a native arena laid out as
   the 68000's (same sizes and offsets), with fields in host byte order and stored pointers as 32-bit
   references holding the original value. The export is a generated per-field byte swap: exact, no
-  masks. **Default (b).** Everything (b) needs is also needed by (a): host-order access, the ROM/RAM
+  masks. **Ruled 2026-10-20: (b) now, (a) possibly later.** Everything (b) needs is also needed by (a): host-order access, the ROM/RAM
   type split, layout-dependent sites, native calls and the platform layer. So (a) stays possible as
   a later step, with its masks ruled on then.
-- **R2 ROM data.** **Default:** the user's ROM is loaded at start (SHA-1 checked) and stays a
+- **R2 ROM data.** **Ruled 2026-10-20, as proposed:** the user's ROM is loaded at start (SHA-1 checked) and stays a
   big-endian image that the C reads through accessor types. No ROM-derived data is shipped (P8
   scans the package). Alternative: extract the assets into native formats at install time.
-- **R3 Video.** **Default:** the VDP model (VRAM/CRAM/VSRAM, registers, DMA, the line renderer)
+- **R3 Video.** **Ruled 2026-10-20, as proposed:** the VDP model (VRAM/CRAM/VSRAM, registers, DMA, the line renderer)
   moves behind the platform layer as the renderer, the way the sound driver stays emulated. The C
   keeps issuing VDP commands through the platform API. Alternative: a new high-level renderer (much
   more work; P7 would still compare framebuffers).
-- **R4 Phase 4's proofs stay regression gates.** **Default:** every source keeps compiling in all
+- **R4 Phase 4's proofs stay regression gates.** **Ruled 2026-10-20, as proposed:** every source keeps compiling in all
   three modes (MPW, emulated PC, native). Every file that byte-matched at the end of phase 4 still
   matches, and `verify` still proves the rest (P2). Alternative: retire MPW matching and `verify` once
   the layout goes native. That frees the sources, but then only P1 checks behaviour.
 - **R5 The port's timing is the frame-synchronous machine** (decision 5): no lag frames where
   the original lagged, the two-player half-rate wait takes a frame, the H/V counter reads 0, no
-  mid-frame H-int, the main program's VDP writes show a frame late. **Default:** accept; it is
+  mid-frame H-int, the main program's VDP writes show a frame late. **Ruled 2026-10-20: accepted**; it is
   what D8 plays. (D8 noted chugging in the Sentinel escape on a slower Linux PC, not investigated.
   Measuring frame time per scene before P8 is a work item, not a criterion.)
 - **R7 Release platforms. Ruled by the user 2026-10-17:** "Windows only is acceptable for a
@@ -100,7 +101,7 @@ frame and gives the Z80 its V-int; the user played it on Linux for D8).
   build < 5 min, full corpus check < 15 min, workers verify in their own build dir; retire
   XMen2Recomp's "One runner at a time (#24)" rule. That rule is the engine's interactive one (relaunching on
   the debug port). Headless traces on private runner copies already ran 24 at a time in phase 4.
-  **Default:** the gates as written; #24 stays for interactive runs only.
+  **Ruled 2026-10-20: the gates as written;** #24 stays for interactive runs only.
 
 ## Criteria
 
