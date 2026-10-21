@@ -164,6 +164,32 @@ On null reads: phase 4 found six null dereferences one verify cycle at a time (a
 - **MPW "Unable to open the resource fork"** happened only in the orchestrator's parallel `--match-recomp` runs, never in workers. A tool error must never be cached as NO MATCH: 4 Tuskette functions were (fixed in 511c8f3). Per-job temp dirs are still open.
 - Commit and push per batch. On 10-16 about 6 h of work (34 files) sat unpushed while sessions showed "idle".
 
+## Phase 5 (2026-10-21, one session, ~3 h from P0-approved to 9/10)
+
+What made it fast: the P0 harness (gate.py ~2-4 min a batch, a 76-run corpus in 3-7 min, cached
+references) and phase 4's discipline (the C reaches memory only through header types). P3 and P4
+were header changes plus 22 files; the native machine was ~700 lines adapted from the engine's
+fsync mode; the host-byte-order arena (R1 (b)) changed no source: a per-byte store tag lets every
+access stay exact while values sit in host order. Every step was proved on the whole corpus.
+
+What cost time (about an hour of the three):
+- **A gate that kills its other steps on a failure killed `mps` mid-compile** and the shared MPW
+  compiler lost its resource fork; every later compile failed with a tool error. Restored from the
+  MacBinary original; `cc.py` now runs a private copy of the compiler per job. Never let a harness
+  kill a tool that writes into a shared toolchain.
+- **Stale derived data in the main checkout.** Phase 4 ran in a worktree that was later removed;
+  the main checkout's `build/recomp` handoff tables were from phase 1-2, so 129 matching files read
+  NO MATCH, and the match cache kept those verdicts (it didn't key on the tables). Also the D1
+  references (`*-recomp-sync`) and `inputs/` were gone. setup.py now refreshes the handoff; the
+  cache keys on it. When a phase's worktree is removed, its build products go with it: rebuild
+  them in the main checkout first.
+- **`python -` starts Python 3.14's REPL** here and hangs to the timeout (twice). Scripts only.
+- **CRLF worktrees** (core.autocrlf=true) change the MPW cache keys: set `core.autocrlf false`
+  per worktree (`git config --worktree`) and re-check out before the first gate.
+- **A stale `.git/index.lock`** in the main checkout (no git process alive) blocked pulls twice.
+- **MSVC links a C and a C++ global of one name as two variables** (`g_snd_frame`); GCC refused.
+  Build the port with the second compiler early.
+
 ## For the next game (shared kit)
 
 **Transfers directly:**

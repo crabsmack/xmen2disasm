@@ -7,6 +7,13 @@ taught and [LESSONS.md](../LESSONS.md) "Kickoff checklist"). The user ruled R1-R
 each as proposed (R1: (b) now, (a) possibly later), and R7 on 2026-10-17. Changing a criterion or
 a definition below needs the user's approval, recorded here.
 
+**Progress 2026-10-21: 9/10** ([progress/P5.md](../progress/P5.md), XMen2Recomp 78cb548). XMen2Native
+is its own program with no 68000 (P3-P6), equal on all 76 corpus runs and every TAS framebuffer
+(P1, P7), with phase 4's proofs intact (P2); the Windows and Linux packages are ROM-free and the
+Linux build's TAS is equal (P8's package half, P9). P8 needs the user's `port-verified` line after
+a playtest (QUESTIONS.md). Under R1 (b) the arena holds values in host byte order with a per-byte
+store tag, so the export is exact with nothing masked (XMen2Recomp NOTES.md "Phase 5").
+
 Goal: the game's C runs on **native memory and a platform layer**: no 68000 CPU, registers,
 68000 stack, generated code or emulated work RAM; game state in native storage; hardware (video,
 input, sound) behind a small C API. Behaviour stays provably equal to the original by

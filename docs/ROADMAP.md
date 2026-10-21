@@ -14,7 +14,8 @@ criterion passes:
 
 Status: phase 1 complete (2026-10-14); phase 3 complete (2026-10-15: MPW C 3.3, policy
 `matching-for-unexecuted`, [COMPILER.md](COMPILER.md)); phases 2 and 4 complete (2026-10-15,
-2026-10-20). `uv run tools/phase.py status` prints the last
+2026-10-20); phase 5 at 9/10 (2026-10-21: every measured criterion passes; P8's user playtest is
+queued in [QUESTIONS.md](QUESTIONS.md)). `uv run tools/phase.py status` prints the last
 recorded result of every phase (from `docs/progress/`).
 
 ## Why this order

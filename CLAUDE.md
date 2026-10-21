@@ -17,7 +17,10 @@ functions is hand-written C and verified (D4), the game links no generated code 
 on the whole corpus (D6), and the user played the hand-C build (D8, on Linux): **phase 4 complete, 9/9 (2026-10-20,
 engine 22ed7f6)** ([docs/phases/P4-decomp.md](docs/phases/P4-decomp.md), decisions 1-13). Phase 5's
 criteria (P0-P9, [docs/phases/P5-port.md](docs/phases/P5-port.md)) were approved 2026-10-20 with
-rulings R1-R7; the loop starts at P3.
+rulings R1-R7. **Phase 5 (2026-10-21): 9/10**: the native port has no 68000 left, keeps game memory
+in host byte order, equals the reference on the whole corpus and every TAS framebuffer, and ships as
+ROM-free Windows and Linux packages; P8 waits only for the user's playtest (`port-verified`, queued
+in docs/QUESTIONS.md).
 `uv run tools/phase.py status` shows every phase.
 
 **Start of every session:** `uv run tools/setup.py` (idempotent: ROM, emulator,
