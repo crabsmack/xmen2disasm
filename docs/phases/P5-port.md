@@ -12,9 +12,8 @@ input, sound) behind a small C API. Behaviour stays provably equal to the origin
 **exporting** native state to the 68000 RAM/VRAM/CRAM/VSRAM image the phase-4 references compare.
 
 Checked by `uv run tools/phase.py 5` (writes `docs/progress/P5.md`). Requires phase 4 complete.
-D8 was recorded 2026-10-17 (the user played the hand-C build on Linux, to Avalon). D2/D6 still
-need their re-run on engine 22ed7f6, whose frame-synchronous mode now renders a frame and gives the
-Z80 its V-int (sound). Phase 5 work proceeds meanwhile.
+Phase 4 is complete (9/9, 2026-10-20, on engine 22ed7f6, whose frame-synchronous mode renders a
+frame and gives the Z80 its V-int; the user played it on Linux for D8).
 
 ## What phase 4 changed in this plan
 
@@ -195,9 +194,14 @@ batches of ~5 items from `uv run tools/port_queue.py`. After each batch, run the
 `verify` of the changed functions, a 6,000-sync-point native TAS trace), then notes, `phase.py 5`,
 commit and push.
 
-1. **P0 (this revision).** Rulings queued, harness measured (`tools/bench.py`), native target,
-   exporter, object scan and worker gate built. Open speed-ups: savestates for the corpus check's
-   long pole (LESSONS item 2), if the corpus gate fails.
+1. **P0 (this revision).** Rulings queued; native target, exporter, object scan and worker gate
+   built. Harness measured 2026-10-17 (`XMen2Recomp/docs/bench.json`, engine 22ed7f6): clean
+   build 213 s, native corpus check 860 s, two build dirs with identical runner hashes. All three
+   gates pass, but the corpus check has only 40 s to spare. It is CPU-bound with no long pole:
+   `verify` is 54% of the work, mostly the fuzz runs replaying the TAS up to their branch point,
+   and the frame-synchronous render is ~2/3 of each trace. If it goes over, the next speed-ups
+   are savestates every 1,800 TAS frames on both sides (LESSONS item 2, ~4x on verify) and an
+   engine switch to skip the render in traces that compare no picture (P1; only P7 needs it).
 2. **P1, P2** pass at the start and stay green. A batch that turns either red is fixed before the
    next one.
 3. **P3 calls.** In the native branch, a stored function pointer calls the C function at its

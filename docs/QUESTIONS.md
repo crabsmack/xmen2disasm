@@ -59,8 +59,8 @@ Entry format:
 - Default taken meanwhile: none needed; phase 5 P0 prep (LESSONS.md checklist) can start.
 - Blocks only: P4 D8, so `phase.py 4` exiting 0.
 - Answer: played on Linux to Avalon, plays fine (the user, 2026-10-17): `handc-verified: 2026-10-17`
-  in XMen2Recomp `docs/USER_VERIFIED.md` (cc2bfdf, build 731f5f6, engine 22ed7f6). D2/D6 still
-  need a re-run on that engine before `phase.py 4` can exit 0.
+  in XMen2Recomp `docs/USER_VERIFIED.md` (cc2bfdf, build 731f5f6, engine 22ed7f6). D2/D6 re-ran
+  on that engine 2026-10-20: `phase.py 4` 9/9, phase 4 complete.
 
 ### 2026-10-17: keep AvalonB1_RunScene's CLEAR_COUNTER macro? (P4)
 - Question: the function byte-matches only through `#define CLEAR_COUNTER(x) if (1) (x) = 0`

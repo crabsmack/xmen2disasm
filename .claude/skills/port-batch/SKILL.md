@@ -47,12 +47,16 @@ Batch ~5 items (one header-level symbol, or 30-40 files of one module).
 ## 3. Prove (in the XMen2Recomp worktree)
 
 ```
-uv run tools/gate.py                         # build, pccheck, MPW match of changed matched files,
-                                             # verify of changed functions, 6,000-sync TAS trace
+export XMEN2_REFS=<the build/phase_traces of the xmen2disasm worktree phase.py ran in>   # D1 inputs
+uv run tools/gate.py                 # build, pccheck, MPW match (docs/p4_mpw_matched.txt), verify of
+                                     # the changed functions, 6,000-sync native TAS trace; ~1 min
 uv run tools/xmen2check.py build --native --json   # the object scan: did the counts fall?
+uv run tools/synccorpus.py --refs $XMEN2_REFS --mode native --jobs 32 --out D   # whole corpus (P1)
 ```
+The gate is fail-fast and exits 1 on the first failing step; fix that before anything else.
 A P1 divergence: `/first-divergence` at the first differing sync point (diff the export image
-with the stepped-gen RAM at that sync).
+with the stepped-gen RAM at that sync). `XMEN2_EXPORT_SELFTEST=<global>` corrupts one global in
+the export: use it to prove a new export path is really compared.
 
 ## 4. Record
 

@@ -13,7 +13,8 @@ criterion passes:
 | 5 | Port: native memory and platform layer, no 68000 left | `XMen2Recomp` | [phases/P5-port.md](phases/P5-port.md) (draft) | `uv run tools/phase.py 5` |
 
 Status: phase 1 complete (2026-10-14); phase 3 complete (2026-10-15: MPW C 3.3, policy
-`matching-for-unexecuted`, [COMPILER.md](COMPILER.md)). `uv run tools/phase.py status` prints the last
+`matching-for-unexecuted`, [COMPILER.md](COMPILER.md)); phases 2 and 4 complete (2026-10-15,
+2026-10-20). `uv run tools/phase.py status` prints the last
 recorded result of every phase (from `docs/progress/`).
 
 ## Why this order
