@@ -24,6 +24,20 @@ Entry format:
 
 ## Open
 
+### 2026-10-21: the screen id of the player select after a death (P6 E5)
+- Question: P6-enhance.md "The contract" defines a screen id as the running scene's name. The
+  player select after a death runs under the *stage's* scene index (`PlayerSelect_RunScene`
+  restores `g_SceneIndex` before `Cerebro_Run`), so by that definition it is the stage, and would
+  have to be drawn wide like it. It looks meant only in 4:3 (drawn wide, the Cerebro frame ends in
+  a black strip at the right). OK to treat any frame inside `Cerebro_Run` as the Cerebro screen it
+  is (`CerebroScreen PlayerSelect`, 4:3)?
+- Default taken meanwhile: yes. `Cerebro_Run` tells the platform (`plat_ws_cerebro`, a native
+  branch), the runner draws it 4:3 and reports it as `CerebroScreen PlayerSelect`; the doc is
+  unchanged (XMen2Recomp commit "P6 E5: 16:9 ..."; reverting is that branch and two lines in
+  `platform/native/widescreen.cpp`).
+- Blocks only: nothing (E5 is measured either way; with "no", the death select is drawn wide).
+- Answer:
+
 ### 2026-10-21: play the native port (P5 P8)
 - Question: play the port that has no 68000 left (XMen2Recomp 78cb548 or later). It is the
   frame-synchronous machine D8 played (R5), now with its own memory, machine and player. Any of:
