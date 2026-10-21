@@ -101,9 +101,15 @@ def header_subset(name: str, text: str, used: set[str]) -> str:
     return "\n".join(out) + "\n"
 
 
-def compile_c(src: Path, cand: dict, flags: str, include: Path | None = None) -> tuple[bytes | None, str]:
+def game_headers(root: Path) -> list[Path]:
+    """A game repo's header directories: game/include, and platform/ (phase 5: the hardware names,
+    whose MPW definitions are the addresses) when it exists."""
+    return [d for d in (root / "game" / "include", root / "platform") if d.is_dir()]
+
+
+def compile_c(src: Path, cand: dict, flags: str, include: "Path | list[Path] | None" = None) -> tuple[bytes | None, str]:
     """Compile src with the candidate -> (object file bytes, compiler output). `include`: a
-    directory whose headers are put next to the source (`#include "x.h"` finds them)."""
+    directory (or several) whose headers are put next to the source (`#include "x.h"` finds them)."""
     tc = toolchains()
     mps = tc / "bin" / ("mps.exe" if os.name == "nt" else "mps")
     tool = tc / cand["root"] / cand["compiler"]
@@ -111,11 +117,24 @@ def compile_c(src: Path, cand: dict, flags: str, include: Path | None = None) ->
         return None, f"missing {mps if not mps.exists() else tool} (see docs/COMPILER.md: toolchain setup)"
     env = dict(os.environ, MPW=str(tc / "mpw-gm" / "MPW"))
     with tempfile.TemporaryDirectory(prefix="xmen2cc_") as wd:
+        # The compiler runs from a private copy (mps's File Exchange layout: the data fork, then
+        # FINDER.DAT/ and RESOURCE.FRK/ beside it). A job killed mid-compile once left the shared
+        # tool with no resource fork (2026-10-21: every later compile failed "Unable to open the
+        # resource fork"), and parallel jobs sharing one tool were what LESSONS.md lists as the
+        # source of that error.
+        own = Path(wd) / "tool"
+        for sub in ("", "FINDER.DAT", "RESOURCE.FRK"):
+            p = tool.parent / sub / tool.name
+            if p.exists():
+                (own / sub).mkdir(parents=True, exist_ok=True)
+                shutil.copyfile(p, own / sub / tool.name)
+        tool = own / tool.name
         name = "f.c"
         shutil.copy(src, Path(wd) / name)
-        if include:
+        dirs = list(include) if isinstance(include, (list, tuple)) else [include] if include else []
+        if dirs:
             used = set(IDENT.findall(re.sub(r"/\*.*?\*/", " ", src.read_text(encoding="utf-8", errors="replace"), flags=re.S)))
-            for h in sorted(include.glob("*.h")):
+            for h in sorted(h for d in dirs for h in d.glob("*.h")):
                 text = h.read_text(encoding="utf-8", errors="replace")
                 (Path(wd) / h.name).write_text(header_subset(h.name, text, used), encoding="mac_roman", errors="replace")
         cmd = [str(mps), "%%", str(tool), *flags.split(), "-o", "f.o", name]
@@ -230,7 +249,7 @@ def disasm(code: bytes, addr: int) -> list[tuple[int, int, str]]:
     return out
 
 
-def match(src: Path, cid: str, flags: str, verbose: bool = True, include: Path | None = None,
+def match(src: Path, cid: str, flags: str, verbose: bool = True, include: "Path | list[Path] | None" = None,
           names: "Names | None" = None) -> tuple[bool, str]:
     addr = int(src.stem, 16)
     names = names or Names()
@@ -343,19 +362,19 @@ def mpw_view(text: str, c_file: bool) -> str:
 
 def match_recomp(root: Path, cid: str, flags: str, only: list[str] | None = None, jobs: int = 8) -> dict:
     """Phase 4 (P4-decomp.md "Matched"): every game/c/<ADDR>.c of the game repo at `root`,
-    compiled with its game/include headers in their MPW mode, matched like --match. Results
-    are cached by the hash of what MPW compiles of the file and the headers (mpw_view), the
-    candidate and the flags."""
+    compiled with its headers (game/include, and platform/ in phase 5: game_headers) in their MPW
+    mode, matched like --match. Results are cached by the hash of what MPW compiles of the file
+    and the headers (mpw_view), the candidate and the flags."""
     import concurrent.futures
     import hashlib
     import json
-    inc = root / "game" / "include"
+    inc = game_headers(root)
     files = sorted(p for p in (root / "game" / "c").glob("*.c") if re.fullmatch(r"[0-9A-Fa-f]{6}", p.stem))
     if only:
         want = {a.upper().zfill(6) for a in only}
         files = [p for p in files if p.stem.upper() in want]
     h = hashlib.sha1(f"mpw_view 1|{cid}|{flags}".encode())
-    for p in sorted(inc.glob("*.h")):
+    for p in sorted((h_ for d in inc for h_ in d.glob("*.h")), key=lambda q: q.name):
         h.update(p.name.encode() + b"\0" + mpw_view(p.read_text(encoding="utf-8", errors="replace"), False).encode())
     base = h.hexdigest()
     cache_path = ROOT / "build" / "match_recomp_cache.json"
@@ -454,7 +473,7 @@ def main() -> int:
     if a.match:
         include = a.include
         if include is None and a.match.parent.name == "c" and (a.match.parent.parent / "include").is_dir():
-            include = a.match.parent.parent / "include"   # a game repo's game/c/<ADDR>.c
+            include = game_headers(a.match.parent.parent.parent)   # a game repo's game/c/<ADDR>.c
         ok, msg = match(a.match, cid, flags, verbose=not a.quiet, include=include)
         print(msg)
         return 0 if ok else 1
@@ -470,7 +489,7 @@ def main() -> int:
     if a.file:
         include = a.include
         if include is None and a.file.parent.name == "c" and (a.file.parent.parent / "include").is_dir():
-            include = a.file.parent.parent / "include"
+            include = game_headers(a.file.parent.parent.parent)
         obj, out = compile_c(a.file, candidate(cid), file_flags(a.file, flags), include)
         if out:
             print(out)
