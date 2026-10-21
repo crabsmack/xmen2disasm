@@ -1,6 +1,6 @@
 """Measure a phase's definition of done (docs/ROADMAP.md); write docs/progress/PN.md.
 
-    uv run tools/phase.py 2            # phase 2 (recomp); also 3, 4, 5, and 6, 7 (drafts: kickoff only)
+    uv run tools/phase.py 2            # phase 2 (recomp); also 3, 4, 5, 6, and 7 (a draft: kickoff only)
     uv run tools/phase.py 2 --fresh    # ignore cached trace results
     uv run tools/phase.py 2 --json
     uv run tools/phase.py 5 --draft    # measure past an unapproved kickoff (D0/P0); never exits 0
@@ -12,7 +12,7 @@ autonomous loop's next job. Criteria live in docs/phases/PN-*.md; this file is t
 measurement. Never weaken a check here to make it pass: changing a criterion needs the
 user's approval, recorded in the phase doc.
 
-Phases 2, 4 and 5 run contract commands in the game repo ($XMEN2_RECOMP, default
+Phases 2, 4, 5 and 6 run contract commands in the game repo ($XMEN2_RECOMP, default
 ../XMen2Recomp next to the main checkout; contract in docs/phases/P2-recomp.md) and
 compare their traces against this repo's reference runs (emu/runs/<run>/frames.csv).
 """
@@ -177,6 +177,13 @@ def pmap(fn, items: list) -> list:
         return [futs[i].result() for i in items]
 
 
+def dir_tag(x: str) -> str:
+    """One trace argument as part of an output directory name: a path's last part, flags without
+    their dashes, values (phase 6: full_rate_2p=1, widescreen=16:9) with only name-safe characters."""
+    x = Path(x).name if ("/" in x or "\\" in x) else x
+    return re.sub(r"[^A-Za-z0-9_.=,-]", "_", x.strip("-"))
+
+
 class Traces:
     """Runs contract traces for (run, mode, frames), compares with the reference, caches.
 
@@ -244,7 +251,7 @@ class Traces:
         if inp is None:
             return {"ok": False, "detail": err}
         # a cut run (--frames) gets its own directory: it never replaces the whole run's outputs
-        out = self.out_dir / "-".join([run, mode, *(Path(x).name.strip("-") for x in extra),
+        out = self.out_dir / "-".join([run, mode, *(dir_tag(x) for x in extra),
                                        *([f"f{frames}"] if frames else [])])
         if out.exists():
             shutil.rmtree(out)
@@ -292,8 +299,9 @@ class Traces:
             return {"ok": False, "detail": err}
         # flags other than --replay get their own directory (phase 5: --fb), so a variant never
         # deletes the plain reference another criterion compares with
-        out = self.out_dir / "-".join([f"{run}-{mode}", *(x.strip("-") for x in extra
-                                                          if x.startswith("--") and x != "--replay")])
+        # (phase 6: and the values of the other flags, --options K=V...)
+        out = self.out_dir / "-".join([f"{run}-{mode}", *(dir_tag(x) for i, x in enumerate(extra)
+                                                          if x != "--replay" and (i == 0 or extra[i - 1] != "--replay"))])
         if out.exists():
             shutil.rmtree(out)
         stats, err = contract("trace", "--run", run, "--input", str(inp), "--out", str(out), "--mode", mode, *extra)
@@ -804,19 +812,20 @@ def phase4(crit, fresh: bool, draft: bool = False) -> None:
 HW_ADDR = re.compile(r"\b0x0*(A[01][0-9A-F]{4}|C000[0-1][0-9A-F])(?![0-9A-F])", re.I)
 GAME_SRC = ("game/c", "game/include")   # the game's code: the object scan's and P4's scope
 P5_IDS = [f"P{i}" for i in range(10)]
+PACKAGES: dict[str, tuple[dict | None, str]] = {}   # phase5's package results, by platform
 FB_COL = "fb_fnv1a64"   # trace --fb: the runner's own frame hash (FNV-1a 64) of fsync_render's frame
 BENCH_GATES = (("clean_build_s", 300.0, "clean build"), ("corpus_check_total_s", 900.0, "full corpus check"))
 
 
 class Stages:
-    """phase.py 5 talks as it goes: each stage as it finishes, to stderr and build/phase5.log
-    (LESSONS.md: a silent 3-hour run hid a 1-minute failure)."""
+    """phase.py 5 (and 6) talks as it goes: each stage as it finishes, to stderr and
+    build/phaseN.log (LESSONS.md: a silent 3-hour run hid a 1-minute failure)."""
 
-    def __init__(self) -> None:
+    def __init__(self, phase: int = 5) -> None:
         self.t0 = time.monotonic()
-        self.path = ROOT / "build" / "phase5.log"
+        self.path = ROOT / "build" / f"phase{phase}.log"
         self.path.parent.mkdir(parents=True, exist_ok=True)
-        self.path.write_text(f"phase.py 5, {date.today().isoformat()}, game repo {recomp_root()}\n", encoding="utf-8")
+        self.path.write_text(f"phase.py {phase}, {date.today().isoformat()}, game repo {recomp_root()}\n", encoding="utf-8")
 
     def __call__(self, msg: str) -> None:
         line = f"[{time.monotonic() - self.t0:7.1f}s] {msg}"
@@ -1045,6 +1054,7 @@ def phase5(crit, fresh: bool, draft: bool = False) -> None:
 
     def package(platform: str) -> tuple[bool, str, dict | None]:
         pk, err = contract("package", "--platform", platform, timeout=3600)
+        PACKAGES[platform] = (pk, err)   # phase 6's E6 reads the same packages
         if pk is None:
             return False, err, None
         ok = (pk.get("ok") is True and pk.get("platform") == platform and pk.get("rom_windows") == 0
@@ -1090,11 +1100,259 @@ def phase5(crit, fresh: bool, draft: bool = False) -> None:
     report()
 
 
-# --- phases 6 and 7: drafts ----------------------------------------------------------------
+# --- phase 6: enhancements ---------------------------------------------------------------
+
+P6_IDS = [f"E{i}" for i in range(7)]
+P6_OPTIONS = ("full_rate_2p", "high_fps", "widescreen")
+P6_ALL_OFF = "full_rate_2p=0,high_fps=0,widescreen=0"
+E4_RATES = (120, 144)
+E4_PROBES = 10                 # latency probes over the TAS's gameplay frames
+E4_RENDER_P99_US = 6900        # one 144 Hz frame
+E4_MATCHED = 0.95              # interpolated share of the non-HUD sprites
+
+
+def read_rows(p: Path) -> list[dict[str, str]]:
+    with open(p, newline="", encoding="utf-8") as f:
+        return list(csv.DictReader(f))
+
+
+def same_sync(a: Path, b: Path, cols: list[str]) -> str | None:
+    """None when two sync.csv files have the same sync points with equal, non-empty `cols`;
+    else where they first differ."""
+    if not (a.is_file() and b.is_file()):
+        return f"no {b if a.is_file() else a}"
+    ra, rb = read_frames(a, "sync")[1], read_frames(b, "sync")[1]
+    for s in sorted(ra):
+        g = rb.get(s)
+        if g is None:
+            return f"sync point {s} missing"
+        bad = [c for c in cols if not ra[s].get(c) or ra[s][c].lower() != (g.get(c) or "").lower()]
+        if bad:
+            return f"sync point {s} differs ({', '.join(bad)})"
+    return None if len(ra) == len(rb) else f"{len(rb)} sync points, {len(ra)} expected"
+
+
+def first_change(base: list[dict[str, str]], probe: list[dict[str, str]]) -> float | None:
+    """The display time of the first frame a probe run (--flip) shows differently from the
+    unflipped run on the same present clock (None: no difference in the probe's frames)."""
+    for x, y in zip(base, probe):
+        if x.get(FB_COL) != y.get(FB_COL):
+            return float(y["t_us"])
+    return None
+
+
+def phase6(crit, fresh: bool) -> None:
+    """P6-enhance.md, measured as its "The contract" says. E1 is phase 5's whole measurement, so
+    it runs first; then the option traces, each criterion on its own (one failing doesn't stop the
+    others), in table order."""
+    say = Stages(6)
+    res: dict[str, tuple[bool, str]] = {}
+
+    def put(cid: str, ok: bool, detail: str) -> None:
+        res[cid] = (bool(ok), detail)
+        say(f"{'PASS' if ok else 'FAIL'}  {cid} {' '.join(detail.split())[:240]}")
+
+    def report() -> None:
+        for cid in P6_IDS:
+            ok, detail = res.get(cid, (False, "not measured: an earlier stage failed (see build/phase6.log)"))
+            crit(cid, ok, detail)
+
+    ok0 = approved(6)
+    put("E0", ok0, "criteria approved" if ok0 else f"docs/phases/{DOCS[6]} is not approved")
+    if not ok0:
+        return report()
+
+    # E1: phase 5's measurement on these sources (its own log: build/phase5.log)
+    say("E1: phase 5's measurement (phase5(), log build/phase5.log)")
+    p5: dict[str, tuple[bool, str]] = {}
+    phase5(lambda c, ok, d: p5.__setitem__(c, (bool(ok), d)), fresh)
+    need = [c for c in P5_IDS if c not in ("P0", "P8")]
+    failing = [c for c in need if not p5.get(c, (False, ""))[0]]
+    put("E1", not failing, f"phase 5's {'/'.join(need)}: " + (
+        "all pass" if not failing else
+        f"{len(failing)} failing, first {failing[0]}: {p5.get(failing[0], (False, 'not measured'))[1][:200]}"))
+
+    tr = Traces(fresh)
+    runs = corpus_runs()
+    bad1, refs, _low = d1_refs(tr, runs, rev=content_rev("XMen2Recomp"))
+    if "tas" not in refs:
+        for cid in P6_IDS[2:6]:
+            put(cid, False, f"no D1 reference for the TAS: {bad1[0][:200] if bad1 else '?'}")
+        return report()
+    no_ref = [r for r in runs if r not in refs]
+
+    def rx(run: str) -> tuple[str, ...]:
+        return ("--replay", str(refs[run].parent))
+
+    def native(run: str, *extra: str) -> dict:
+        """A native trace, not compared (its rows are compared by the caller)."""
+        return tr.plain(run, "native", (*rx(run), *extra), rev=content_rev("XMen2Native", refs[run]))
+
+    def vs_ref(run: str, *extra: str) -> dict:
+        """A native trace compared with the reference rows (stepped-gen), as P1."""
+        g = tr.plain(run, "stepped-gen", rx(run), rev=content_rev("XMen2SteppedGen", refs[run]))
+        if not g["ok"]:
+            return {"ok": False, "detail": f"stepped-gen: {g['detail']}"}
+        return tr.run(run, "native", None, (*rx(run), *extra), ref_sync=Path(g["csv"]),
+                      rev=content_rev("XMen2Native", refs[run]))
+
+    def enh(t: dict) -> dict:
+        return (t.get("stats") or {}).get("enhance") or {}
+
+    def present(t: dict) -> list[dict[str, str]]:
+        p = Path(t.get("csv") or "").parent / "present.csv"
+        return read_rows(p) if t.get("ok") and p.is_file() else []
+
+    def first_bad(out: list[str | None]) -> str:
+        bad = [m for m in out if m]
+        return (f"{len(runs) - len(bad) - len(no_ref)}/{len(runs)} corpus runs pass"
+                + (f"; {len(no_ref)} without a D1 reference" if no_ref else "")
+                + (f"; first: {bad[0]}" if bad else ""))
+
+    # E2: the options, their defaults and the settings file; all off explicitly = no options
+    say("E2: options --json, and the TAS with every option given off")
+    o, err = contract("options")
+    opts = (o or {}).get("options") or {}
+    if o is None:
+        put("E2", False, f"options contract: {err}")
+    else:
+        wrong = [k for k in P6_OPTIONS if (opts.get(k) or {}).get("default") != "0"]
+        set_to = {k: next((v for v in (opts.get(k) or {}).get("values") or [] if v != "0"), None) for k in P6_OPTIONS}
+        read = o.get("from_settings") or {}
+        unread = [k for k in P6_OPTIONS if set_to[k] is None or str(read.get(k)) != str(set_to[k])]
+        a, b = native("tas", "--fb"), native("tas", "--fb", "--options", P6_ALL_OFF)
+        diff = ((not a["ok"] and f"TAS without options: {a['detail'][:120]}")
+                or (not b["ok"] and f"TAS with options off: {b['detail'][:120]}")
+                or same_sync(Path(a["csv"]), Path(b["csv"]), COMPARED + [FB_COL]))
+        put("E2", not wrong and not unread and not diff,
+            (f"options missing or not off by default: {', '.join(wrong)}; " if wrong else "the three options, off by default; ")
+            + (f"not read from the settings file: {', '.join(unread)}; " if unread else "read from the settings file; ")
+            + (f"TAS with every option off: {diff}" if diff else "TAS with every option off: same rows and frames"))
+    if o is None or any(k not in opts for k in P6_OPTIONS):
+        for cid in ("E3", "E4", "E5"):
+            put(cid, False, "the runner has no options yet (E2 first)")
+    else:
+        # E3: one-player runs unchanged; two-player runs at full rate
+        say(f"E3: full_rate_2p off and on, {len(runs)} runs with --fb")
+
+        def e3(run: str) -> str | None:
+            if run not in refs:
+                return None
+            off, on = native(run, "--fb"), native(run, "--fb", "--options", "full_rate_2p=1")
+            if not (off["ok"] and on["ok"]):
+                return f"{run} ({'off' if not off['ok'] else 'on'}: {(off if not off['ok'] else on)['detail'][:140]})"
+            e_off, e_on = enh(off), enh(on)
+            if "two_player_frames" not in e_off:
+                return f"{run} (no enhance counters)"
+            if e_off["two_player_frames"] == 0:
+                d = same_sync(Path(off["csv"]), Path(on["csv"]), COMPARED + [FB_COL])
+                return f"{run} (one-player run changed: {d})" if d else None
+            left = {k: e_on.get(k) for k in ("two_player_step_frames", "frame_tick_waits") if e_on.get(k) != 0}
+            return f"{run} (two-player, option on: {left})" if left else None
+        out = pmap(e3, runs)
+        put("E3", not any(out) and not no_ref, first_bad(out))
+
+        # E4: presentation only, whole frames on time, interpolation coverage, speed, latency
+        say(f"E4: high_fps {'/'.join(map(str, E4_RATES))} on {len(runs)} runs; the TAS frames; latency probes")
+
+        def e4(run: str) -> str | None:
+            if run not in refs:
+                return None
+            for hz in E4_RATES:
+                t = vs_ref(run, "--options", f"high_fps={hz}", "--present-log")
+                if not t["ok"]:
+                    return f"{run} at {hz} Hz ({t['detail'][:160]})"
+            return None
+        out = pmap(e4, runs)
+        notes, ok4 = [first_bad(out)], not any(out) and not no_ref
+        fb = native("tas", "--fb")
+        off_p = native("tas", "--present-log")
+        on = native("tas", "--options", "high_fps=144", "--present-log")
+        p_off, p_on = present(off_p), present(on)
+        if not (fb["ok"] and p_off and p_on):
+            ok4 = False
+            notes.append("TAS: " + ("no --fb trace" if not fb["ok"] else "no present.csv (--present-log) "
+                                    + ("off" if not p_off else "at 144 Hz")))
+        else:
+            fbrows = read_frames(Path(fb["csv"]), "sync")[1]
+            t_off = {int(r["sync"]): float(r["t_us"]) for r in p_off if r.get("whole") == "1"}
+            wrong_fb = next((r["sync"] for r in p_on if r.get("whole") == "1"
+                             and r.get(FB_COL, "").lower() != (fbrows.get(int(r["sync"])) or {}).get(FB_COL, "").lower()), None)
+            late = next((r["sync"] for r in p_on if r.get("whole") == "1"
+                         and abs(t_off.get(int(r["sync"]), -1e18) - float(r["t_us"])) > 1.0), None)
+            pr = enh(on).get("present") or {}
+            share = pr.get("sprites_matched", 0) / pr["sprites"] if pr.get("sprites") else 0.0
+            p99 = pr.get("render_us_p99")
+            ok4 &= wrong_fb is None and late is None and share >= E4_MATCHED and p99 is not None and p99 < E4_RENDER_P99_US
+            notes.append(("TAS whole frames equal P7's" if wrong_fb is None else f"TAS whole frame of sync {wrong_fb} differs from --fb")
+                         + ("; on time" if late is None else f"; whole frame of sync {late} not at the 60 Hz time")
+                         + f"; {share:.1%} of sprites interpolated (need {E4_MATCHED:.0%}); render p99 {p99} us (< {E4_RENDER_P99_US})")
+            # latency: the C button flipped at 10 gameplay sync points, off and at 144 Hz
+            play = sorted({int(r["sync"]) for r in p_off if r.get("gameplay") == "1"})
+            probes = [play[i * len(play) // E4_PROBES] for i in range(E4_PROBES)] if len(play) >= E4_PROBES else []
+
+            def probe(n: int) -> str | None:
+                cut = ("--frames", str(n + 40), "--flip", str(n))
+                a = native("tas", "--present-log", *cut)
+                b = native("tas", "--options", "high_fps=144", "--present-log", *cut)
+                ta, tb = first_change(p_off, present(a)), first_change(p_on, present(b))
+                if ta is None or tb is None:
+                    return f"sync {n}: the flip changed nothing on screen ({'off' if ta is None else '144 Hz'})"
+                return None if tb <= ta else f"sync {n}: first change at {tb:.0f} us at 144 Hz, {ta:.0f} us off"
+            late_probes = [m for m in pmap(probe, probes) if m] if probes else ["fewer than 10 gameplay sync points"]
+            ok4 &= not late_probes
+            notes.append(f"latency: {len(probes) - len(late_probes) if probes else 0}/{E4_PROBES} probes no later"
+                         + (f"; first: {late_probes[0]}" if late_probes else ""))
+        put("E4", ok4, "; ".join(notes))
+
+        # E5: widescreen on every run: the wide columns, sprites, HUD, the screens list
+        say(f"E5: widescreen=16:9 on {len(runs)} runs")
+        screens_toml = load_toml(recomp_root() / "game" / "widescreen_screens.toml")
+        listed = {k: v for k, v in (screens_toml or {}).items() if isinstance(v, dict)}
+
+        def e5(run: str) -> str | None:
+            if run not in refs:
+                return None
+            t = native(run, "--options", "widescreen=16:9")
+            if not t["ok"]:
+                return f"{run} ({t['detail'][:160]})"
+            ws = enh(t).get("ws")
+            if not ws:
+                return f"{run} (no ws counters)"
+            bad = {k: ws.get(k) for k in ("terrain_errors", "sprites_lost", "hud_misplaced") if ws.get(k) != 0}
+            if ws.get("gameplay_frames") and not ws.get("terrain_checks"):
+                bad["terrain_checks"] = 0
+            for sid, mode in (ws.get("screens") or {}).items():
+                entry = listed.get(sid)
+                if not entry or entry.get("mode") != mode or not str(entry.get("why", "")).strip():
+                    bad[f"screen {sid}"] = f"{mode}, listed {entry.get('mode') if entry else 'nowhere'}"
+                    break
+            return f"{run} ({bad})" if bad else None
+        out = pmap(e5, runs) if screens_toml is not None else ["no game/widescreen_screens.toml"]
+        put("E5", not any(out) and not no_ref, first_bad(out) if screens_toml is not None else out[0])
+
+    # E6: the packages phase 5 built, with the options, and the user's word
+    notes, ok6 = [], True
+    for platform in ("windows", "linux"):
+        pk, err = PACKAGES.get(platform, (None, "not built (phase 5 stopped before its packages)"))
+        ok = (pk is not None and pk.get("ok") is True and pk.get("rom_windows") == 0
+              and all(k in ((pk.get("options") or {}).get("options") or {}) for k in P6_OPTIONS))
+        ok6 &= ok
+        notes.append(f"{platform}: " + (err[:120] if pk is None else
+                                        f"ROM windows {pk.get('rom_windows')}, options "
+                                        f"{'listed' if ok else 'missing'}"))
+    uv_doc = recomp_root() / "docs" / "USER_VERIFIED.md"
+    word = uv_doc.exists() and re.search(rf"^enhancements-verified: {DATE}", uv_doc.read_text(encoding="utf-8"), re.M)
+    put("E6", ok6 and bool(word), "; ".join(notes) + ("; enhancements-verified line present" if word else
+                                                       f"; no `enhancements-verified: DATE` in {uv_doc} (ask the user)"))
+    report()
+
+
+# --- phase 7: draft ------------------------------------------------------------------------
 
 def draft_phase(phase: int, crit) -> None:
-    """P6-enhance.md / P7-multiplayer.md: the kickoff, then every other criterion of the doc's
-    table failing until its measurement is written here (with the phase's work)."""
+    """P7-multiplayer.md (a draft): the kickoff, then every other criterion of the doc's table
+    failing until its measurement is written here, as phase 6's was before its work."""
     t = (ROOT / "docs" / "phases" / DOCS[phase]).read_text(encoding="utf-8")
     ids = re.findall(r"^\| ([A-Z]\d) \|", t, re.M)
     ok = kickoff(ids[0], phase, crit)
@@ -1148,7 +1406,9 @@ def main() -> int:
         subprocess.run([sys.executable, str(ROOT / "tools" / "handoff.py")], cwd=ROOT, capture_output=True)
     if phase in (4, 5):
         (phase4 if phase == 4 else phase5)(crit, args.fresh, args.draft)
-    elif phase in (6, 7):
+    elif phase == 6:
+        phase6(crit, args.fresh)
+    elif phase == 7:
         draft_phase(phase, crit)
     else:
         {2: phase2, 3: phase3}[phase](crit, args.fresh)

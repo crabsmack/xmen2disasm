@@ -154,7 +154,9 @@ touched) after each green batch. The phase's doc under `docs/phases/` says where
 and notes live and what to do first; skill `/first-divergence` for trace mismatches
 (K5/K6/K8, D1/D2/D6, P2); phase 4's per-function loop is `/decomp-function` with
 `uv run tools/decomp_queue.py` as the queue; phase 5's per-batch loop is `/port-batch` with
-`uv run tools/port_queue.py`, gated by XMen2Recomp's `tools/gate.py`. Criteria that need the user (K10, C4's `user_ack`, D0/P0/E0/M0 approvals,
+`uv run tools/port_queue.py`, gated by XMen2Recomp's `tools/gate.py`; phase 6's is `/enhance-batch`,
+with `phase.py 6`'s first failing criterion as the queue and the doc's "The contract" built before
+each feature. Criteria that need the user (K10, C4's `user_ack`, D0/P0/E0/M0 approvals,
 P6, D8, P8, E6, M6): never write those lines yourself, and **never stop to ask either**. The user starts
 these runs and leaves, so queue the question in [docs/QUESTIONS.md](docs/QUESTIONS.md) with the
 default you are taking, and keep working (ROADMAP.md step 4). Read QUESTIONS.md at session start. Never weaken a check in

@@ -114,4 +114,6 @@ phase doc with the date.
   one-player stepping; R4 interpolated high frame rate with latency only if unavoidable (avoided
   by timing, measured by E4); R5 16:9 first, with non-gameplay screens 4:3 unless they have a
   sensible wide presentation; R6 objects activate across the wide view; R7 widen the game's
-  streaming first.
+  streaming first. The same day E5 dropped its "activation margin 0 equals the reference"
+  clause, which R7's streaming makes impossible (the user's choice). "The contract" then fixed
+  how `phase.py 6` measures each criterion, before any work.
