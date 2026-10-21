@@ -189,6 +189,9 @@ What cost time (about an hour of the three):
 - **A stale `.git/index.lock`** in the main checkout (no git process alive) blocked pulls twice.
 - **MSVC links a C and a C++ global of one name as two variables** (`g_snd_frame`); GCC refused.
   Build the port with the second compiler early.
+- **Removing an XMen2Recomp worktree**: `git worktree remove` refuses a tree with submodules, and
+  `git submodule deinit --all` there unsets the submodules in the config every worktree shares, so
+  the main checkout shows them uninitialised: run `git submodule init` in the main checkout after.
 
 ## For the next game (shared kit)
 
