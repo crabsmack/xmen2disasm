@@ -17,6 +17,15 @@ original even when no object acts differently. E1 proves the original with wides
 same day, before any work, "The contract" section was added: how each criterion is measured
 (the `phase.py 6` checks), with the criteria unchanged.
 
+**Changed 2026-10-21 (user, in the session, two rulings asked from QUESTIONS.md):**
+- **E4's latency probes** are the first gameplay sync point at or after each of the 10 evenly
+  spread points (before the next one) where the flip changes the 60 Hz picture within 40 frames.
+  The native TAS (the frame-synchronous machine) doesn't play its recorded game and keeps
+  pausing, where C changes nothing, so 7 of the 10 spread points showed no change whatever the
+  feature did. A stretch with no such point fails its probe.
+- **The screen id inside `Cerebro_Run`** is the Cerebro screen's (`CerebroScreen PlayerSelect`
+  for the select after a death, 4:3), not the stage's scene whose index it runs under.
+
 Goal: XMen2Native gains the three enhancements as **options**. With every option off it is still
 the proven port of phase 5, checked by the same measurements. With an option on, it is checked
 by its own measurements, which say what may change and what may not. The user plays it.
@@ -104,7 +113,7 @@ Checked by `uv run tools/phase.py 6` (writes `docs/progress/P6.md`). Requires ph
 | E1 | The original is kept | the release runner with every option off passes phase 5's measured criteria: `phase.py 5`'s P1-P7 and P9, on the phase-6 sources and runner (the corpus traces equal the reference at every sync point, P2's ledger, the object scan and link map, the TAS framebuffers, the Linux TAS) |
 | E2 | Options | `XMen2.exe --options --json` lists `full_rate_2p`, `high_fps`, `widescreen` (with their settings), each off by default, read from the command line and the settings file. A run with each option given explicitly off has the same sync rows and framebuffers on the TAS as a run without options |
 | E3 | Two-player full rate | with `full_rate_2p` on: every corpus run that never has two players alive has the same sync rows and framebuffers as with it off (the option touches only two-player play); on the TAS from the frame player 2 joins and on `scenario-two-player`, every logic frame is one displayed frame (no frame-tick wait), `g_TwoPlayerStep` stays 0, and every corpus input runs to its end with no fatal from the memory layer and no hang |
-| E4 | High frame rate | with `high_fps` at 120 and 144 Hz (a headless present clock): the sync rows of the whole corpus equal the reference (presentation only), and the frame shown at each logic instant has P7's hash. On the TAS's gameplay frames, at least 95% of the sprites outside the HUD are matched to an object and interpolated, and the 144 Hz render time is p99 < 6.9 ms on this machine. Latency (R4): on a scripted input change in each of 10 TAS scenes, the first displayed frame that shows its effect comes no later on the present clock than with `high_fps` off, and the whole logic frame is on screen at the same time as with it off |
+| E4 | High frame rate | with `high_fps` at 120 and 144 Hz (a headless present clock): the sync rows of the whole corpus equal the reference (presentation only), and the frame shown at each logic instant has P7's hash. On the TAS's gameplay frames, at least 95% of the sprites outside the HUD are matched to an object and interpolated, and the 144 Hz render time is p99 < 6.9 ms on this machine. Latency (R4): on a scripted input change that shows on screen in each of 10 TAS scenes, the first displayed frame that shows its effect comes no later on the present clock than with `high_fps` off, and the whole logic frame is on screen at the same time as with it off |
 | E5 | Widescreen | with `widescreen` 16:9: on every gameplay frame of the TAS input and each corpus input, the wide columns of planes A and B hold what the level's block map says (0 terrain-check errors), no sprite is lost to the 9-bit x range, the HUD is pinned to the screen edges, and each non-gameplay screen is as `game/widescreen_screens.toml` lists it (R5: wide with its wide columns drawn, or 4:3 centred with bars; each with its reason); every corpus input runs to its end with no fatal and no hang |
 | E6 | Release and playtest | `xmen2check.py package` (Windows and Linux) builds packages with the options and the same ROM-free check as P8/P9; and `docs/USER_VERIFIED.md` (XMen2Recomp) has `enhancements-verified: YYYY-MM-DD`, written only on the user's word after playing all three |
 
@@ -179,7 +188,8 @@ xmen2check.py package [--platform P] --json
   `$A7xx`) is not at its 4:3 x minus the left margin (player 1's) or plus the right margin
   (player 2's).
 - **Screen id**: the name string of the running scene's `g_SceneTable` entry
-  (`g_SceneIndex`), or `boot` before the first scene. `game/widescreen_screens.toml` lists
+  (`g_SceneIndex`), or `boot` before the first scene; inside `Cerebro_Run`, the Cerebro
+  screen's (the select after a death runs under its stage's index: `CerebroScreen PlayerSelect`). `game/widescreen_screens.toml` lists
   each id the corpus reaches: `"<id>" = { mode = "wide" | "4:3", why = "..." }`.
 
 How `phase.py 6` measures each criterion (corpus runs under P5's D1 replay inputs; traces cached
@@ -198,9 +208,11 @@ by the runner's hash as in phase 5):
   - On the TAS at 144: each whole frame's hash equals the `--fb` row it leads to, and each whole
     frame is at the same `t_us` as in the TAS's `--present-log` run with the option off;
     `sprites_matched / sprites` ≥ 0.95; `render_us_p99` < 6900.
-  - Latency: 10 sync points spread evenly over the TAS's gameplay frames. At each, `--flip N`
-    with the option off and at 144. The first displayed frame that differs from the unflipped
-    run comes no later at 144 than with the option off.
+  - Latency: 10 points spread evenly over the TAS's gameplay sync points; each probe is the
+    first gameplay sync point N at or after one (before the next) where `--flip N` with the
+    option off changes the picture within 40 frames (none: that probe fails). At each, `--flip N`
+    at 144: the first displayed frame that differs from the unflipped run comes no later at 144
+    than with the option off.
 - **E5**: every corpus run with `widescreen=16:9`. Each ends normally with `terrain_errors`,
   `sprites_lost` and `hud_misplaced` 0, and `terrain_checks` > 0 when it has gameplay frames.
   Every reported screen is in `widescreen_screens.toml` with the same mode and a reason.

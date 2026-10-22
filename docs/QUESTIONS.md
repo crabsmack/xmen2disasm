@@ -50,38 +50,6 @@ Entry format:
 - Blocks only: E6 (its `enhancements-verified` line), so `phase.py 6` exiting 0.
 - Answer:
 
-### 2026-10-21: E4's latency probes can't see the C button on the native TAS (P6 E4)
-- Question: E4 flips player 1's C at 10 evenly spread gameplay sync points of the TAS and needs
-  the flip to change the picture. In the native machine the TAS doesn't play the recorded game:
-  the frame-synchronous machine (P5 R5, no lag frames) desyncs it in the first stage (its rows
-  differ from the D1 recomp's from sync 1; P1 compares native with stepped-gen, the same machine).
-  It stays in Siberia, and its inputs keep pausing the game: 4 of 6 probe points looked at are the
-  pause screen (a gameplay frame by the definition: `g_InLevelLoop` set, no fade), where C does
-  nothing. 7 of the 10 probes change nothing on screen, so E4 fails there whatever the feature
-  does. In the 3 that do, 144 Hz shows the change one 144 Hz tick before 60 Hz (e.g. 555,556 us
-  vs 567,423 us), as R4 intends. Proposed: each of the 10 points becomes the first sync point at
-  or after it where the flip changes the 60 Hz picture within 40 frames (still 10 TAS scenes,
-  spread evenly). Or: probe A or B too; or leave pause frames out of the probe points.
-- Default taken meanwhile: none possible (it is `phase.py`'s probe selection). Everything else of
-  E4 is built and passes on the TAS (whole frames = P7's, on time, 96.2% of sprites interpolated,
-  render p99 1.8 ms at 144 Hz); E4 stays failing on the probes until you choose.
-- Blocks only: E4 passing.
-- Answer:
-
-### 2026-10-21: the screen id of the player select after a death (P6 E5)
-- Question: P6-enhance.md "The contract" defines a screen id as the running scene's name. The
-  player select after a death runs under the *stage's* scene index (`PlayerSelect_RunScene`
-  restores `g_SceneIndex` before `Cerebro_Run`), so by that definition it is the stage, and would
-  have to be drawn wide like it. It looks meant only in 4:3 (drawn wide, the Cerebro frame ends in
-  a black strip at the right). OK to treat any frame inside `Cerebro_Run` as the Cerebro screen it
-  is (`CerebroScreen PlayerSelect`, 4:3)?
-- Default taken meanwhile: yes. `Cerebro_Run` tells the platform (`plat_ws_cerebro`, a native
-  branch), the runner draws it 4:3 and reports it as `CerebroScreen PlayerSelect`; the doc is
-  unchanged (XMen2Recomp commit "P6 E5: 16:9 ..."; reverting is that branch and two lines in
-  `platform/native/widescreen.cpp`).
-- Blocks only: nothing (E5 is measured either way; with "no", the death select is drawn wide).
-- Answer:
-
 ### 2026-10-21: phase 7 criteria and rulings (P7 M0)
 - Question: the same for [phases/P7-multiplayer.md](phases/P7-multiplayer.md) (M0-M6, rulings
   R1-R9). It is a draft to be revised at its kickoff with what phase 6 teaches, so this can wait
@@ -105,6 +73,42 @@ Entry format:
 - Answer:
 
 ## Answered
+
+### 2026-10-21: E4's latency probes can't see the C button on the native TAS (P6 E4)
+- Question: E4 flips player 1's C at 10 evenly spread gameplay sync points of the TAS and needs
+  the flip to change the picture. In the native machine the TAS doesn't play the recorded game:
+  the frame-synchronous machine (P5 R5, no lag frames) desyncs it in the first stage (its rows
+  differ from the D1 recomp's from sync 1; P1 compares native with stepped-gen, the same machine).
+  It stays in Siberia, and its inputs keep pausing the game: 4 of 6 probe points looked at are the
+  pause screen (a gameplay frame by the definition: `g_InLevelLoop` set, no fade), where C does
+  nothing. 7 of the 10 probes change nothing on screen, so E4 fails there whatever the feature
+  does. In the 3 that do, 144 Hz shows the change one 144 Hz tick before 60 Hz (e.g. 555,556 us
+  vs 567,423 us), as R4 intends. Proposed: each of the 10 points becomes the first sync point at
+  or after it where the flip changes the 60 Hz picture within 40 frames (still 10 TAS scenes,
+  spread evenly). Or: probe A or B too; or leave pause frames out of the probe points.
+- Default taken meanwhile: none possible (it is `phase.py`'s probe selection). Everything else of
+  E4 is built and passes on the TAS (whole frames = P7's, on time, 96.2% of sprites interpolated,
+  render p99 1.8 ms at 144 Hz); E4 stays failing on the probes until you choose.
+- Blocks only: E4 passing.
+- Answer (the user, in the session, 2026-10-21): the proposal: each probe is the first gameplay sync
+  point at or after its evenly spread point (before the next) where the flip changes the 60 Hz
+  picture within 40 frames. Recorded in P6-enhance.md ("Changed 2026-10-21", the contract's E4);
+  `phase.py 6` selects the probes so.
+
+### 2026-10-21: the screen id of the player select after a death (P6 E5)
+- Question: P6-enhance.md "The contract" defines a screen id as the running scene's name. The
+  player select after a death runs under the *stage's* scene index (`PlayerSelect_RunScene`
+  restores `g_SceneIndex` before `Cerebro_Run`), so by that definition it is the stage, and would
+  have to be drawn wide like it. It looks meant only in 4:3 (drawn wide, the Cerebro frame ends in
+  a black strip at the right). OK to treat any frame inside `Cerebro_Run` as the Cerebro screen it
+  is (`CerebroScreen PlayerSelect`, 4:3)?
+- Default taken meanwhile: yes. `Cerebro_Run` tells the platform (`plat_ws_cerebro`, a native
+  branch), the runner draws it 4:3 and reports it as `CerebroScreen PlayerSelect`; the doc is
+  unchanged (XMen2Recomp commit "P6 E5: 16:9 ..."; reverting is that branch and two lines in
+  `platform/native/widescreen.cpp`).
+- Blocks only: nothing (E5 is measured either way; with "no", the death select is drawn wide).
+- Answer (the user, in the session, 2026-10-21): yes, the Cerebro screen, 4:3 (the default stays).
+  The contract's screen id now says so (P6-enhance.md "Changed 2026-10-21").
 
 ### 2026-10-21: play the native port (P5 P8)
 - Question: play the port that has no 68000 left (XMen2Recomp 78cb548 or later). It is the

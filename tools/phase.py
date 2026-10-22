@@ -1107,6 +1107,7 @@ P6_OPTIONS = ("full_rate_2p", "high_fps", "widescreen")
 P6_ALL_OFF = "full_rate_2p=0,high_fps=0,widescreen=0"
 E4_RATES = (120, 144)
 E4_PROBES = 10                 # latency probes over the TAS's gameplay frames
+E4_PROBE_FRAMES = 40           # a probe's flip must change the 60 Hz picture within these frames
 E4_RENDER_P99_US = 6900        # one 144 Hz frame
 E4_MATCHED = 0.95              # interpolated share of the non-HUD sprites
 
@@ -1287,21 +1288,40 @@ def phase6(crit, fresh: bool) -> None:
             notes.append(("TAS whole frames equal P7's" if wrong_fb is None else f"TAS whole frame of sync {wrong_fb} differs from --fb")
                          + ("; on time" if late is None else f"; whole frame of sync {late} not at the 60 Hz time")
                          + f"; {share:.1%} of sprites interpolated (need {E4_MATCHED:.0%}); render p99 {p99} us (< {E4_RENDER_P99_US})")
-            # latency: the C button flipped at 10 gameplay sync points, off and at 144 Hz
+            # latency: the C button flipped at 10 gameplay sync points, off and at 144 Hz. Each
+            # probe is the first gameplay sync point at or after its evenly spread base point
+            # (before the next one) where the flip changes the 60 Hz picture within 40 frames (the
+            # user, 2026-10-21: the native TAS keeps pausing, where C shows nothing)
             play = sorted({int(r["sync"]) for r in p_off if r.get("gameplay") == "1"})
-            probes = [play[i * len(play) // E4_PROBES] for i in range(E4_PROBES)] if len(play) >= E4_PROBES else []
+            bases = [i * len(play) // E4_PROBES for i in range(E4_PROBES)] if len(play) >= E4_PROBES else []
+
+            def cut(n: int) -> tuple[str, ...]:
+                return ("--frames", str(n + E4_PROBE_FRAMES), "--flip", str(n))
+
+            def seen_off(n: int) -> float | None:
+                return first_change(p_off, present(native("tas", "--present-log", *cut(n))))
+
+            probes, unseen = [], []
+            for i, lo in enumerate(bases):
+                cands = play[lo:bases[i + 1] if i + 1 < len(bases) else len(play)]
+                found = None
+                for k in range(0, len(cands), max(1, JOBS)):
+                    chunk = cands[k:k + max(1, JOBS)]
+                    found = next((n for n, t in zip(chunk, pmap(seen_off, chunk)) if t is not None), None)
+                    if found is not None:
+                        break
+                (probes.append(found) if found is not None else
+                 unseen.append(f"syncs {cands[0]}-{cands[-1]}: no flip there changes the 60 Hz picture"))
 
             def probe(n: int) -> str | None:
-                cut = ("--frames", str(n + 40), "--flip", str(n))
-                a = native("tas", "--present-log", *cut)
-                b = native("tas", "--options", "high_fps=144", "--present-log", *cut)
-                ta, tb = first_change(p_off, present(a)), first_change(p_on, present(b))
-                if ta is None or tb is None:
-                    return f"sync {n}: the flip changed nothing on screen ({'off' if ta is None else '144 Hz'})"
+                b = native("tas", "--options", "high_fps=144", "--present-log", *cut(n))
+                ta, tb = seen_off(n), first_change(p_on, present(b))
+                if tb is None:
+                    return f"sync {n}: the flip changed nothing on screen at 144 Hz"
                 return None if tb <= ta else f"sync {n}: first change at {tb:.0f} us at 144 Hz, {ta:.0f} us off"
-            late_probes = [m for m in pmap(probe, probes) if m] if probes else ["fewer than 10 gameplay sync points"]
+            late_probes = (unseen + [m for m in pmap(probe, probes) if m]) if bases else ["fewer than 10 gameplay sync points"]
             ok4 &= not late_probes
-            notes.append(f"latency: {len(probes) - len(late_probes) if probes else 0}/{E4_PROBES} probes no later"
+            notes.append(f"latency: {E4_PROBES - len(late_probes) if bases else 0}/{E4_PROBES} probes no later"
                          + (f"; first: {late_probes[0]}" if late_probes else ""))
         put("E4", ok4, "; ".join(notes))
 
