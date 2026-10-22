@@ -48,7 +48,8 @@ Entry format:
   a line here is enough; most useful with the stage and roughly where.
 - Default taken meanwhile: none needed; the other criteria are worked meanwhile.
 - Blocks only: E6 (its `enhancements-verified` line), so `phase.py 6` exiting 0.
-- Answer:
+- Answer (the user, in the session, 2026-10-22): played since 9300fd8, all good. The
+  `enhancements-verified: 2026-10-22` line went into USER_VERIFIED.md at his word.
 
 ### 2026-10-22: play four players and online (P7 M6)
 - Question: play the multiplayer build (XMen2Recomp 0ac6b1d or later; the package as before:
@@ -99,7 +100,13 @@ Entry format:
   meet them on the other 20 (on stages whose enemies kill players early, the input plays 900-2,000
   frames instead of 3,000: NOTES.md "M4"). The rest of phase 7 (M5, M6's packages) goes on.
 - Blocks only: M4 passing (so `phase.py 7`).
-- Answer:
+- Answer (the user, in the session, 2026-10-22), recorded in P7-multiplayer.md (M4, "Rulings after M0"):
+  - off view relative to the original: each player's `off_view` share at most the larger of players
+    1-2's shares with `players` 2 on the same input, plus 1%;
+  - HUD relative to the original, join frames skipped: a missing panel counts only where the
+    `players` 2 run of the same input draws it, and not on the first frame of a stretch in play;
+  - enemies aim at all four: the ones that pick players 1-2 by name choose among every player in
+    play (R7, the two-player rules extended).
 
 ## Answered
 

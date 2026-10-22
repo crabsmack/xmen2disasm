@@ -140,6 +140,15 @@ the music), in full with their evidence in [P7-kickoff.md](P7-kickoff.md).
   each player keeps their own `high_fps`. In-game toggles that change the game (F10) are refused
   online; F9 (`high_fps`) stays local. A later presentation-only 16:9 would be a local setting (the
   user, 2026-10-21).
+- **R11 M4 against the original (ruled by the user 2026-10-22, in the session; QUESTIONS.md "M4's
+  bounds").** Three stage inputs couldn't meet M4's bounds for reasons that are the original's
+  (AvalonB1's opening pan, SiberiaB1's snow drifts and its own missing panel, Brood aiming at
+  players 1-2 by name). Ruled: (a) **off view** relative to the original: each player's `off_view`
+  share at most the larger of players 1-2's shares in the `players` 2 run of the same input, plus
+  1%; (b) **HUD** relative to the original, join frames skipped: a missing panel counts only where
+  the `players` 2 run of the same input draws that player's panel at that frame, and not on the
+  first frame of a stretch in play; (c) **enemies aim at all four** (R7 extended): enemies that
+  pick players 1-2 by name choose among every player in play.
 
 ## Criteria
 
