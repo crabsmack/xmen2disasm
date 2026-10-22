@@ -1597,6 +1597,10 @@ def phase7(crit, fresh: bool) -> None:
             return {"err": f"host rows: {d}"}
         return {"seats": st, "data": data}
 
+    def run_plan(plan: list[tuple[str, tuple, dict]]) -> list[tuple[str, dict]]:
+        """The sessions of a plan in parallel (by index: pmap's items must be hashable)."""
+        return pmap(lambda i: (plan[i][0], session(*plan[i][1], **plan[i][2])), list(range(len(plan))))
+
     def sessions_result(results: list[tuple[str, dict]]) -> tuple[list[str], int]:
         bad = [f"{n} ({r['err']})" for n, r in results if "err" in r]
         return bad, len(results) - len(bad)
@@ -1620,7 +1624,7 @@ def phase7(crit, fresh: bool) -> None:
         plan3.append(("om-sealed", ("om-sealed", 2, om_in, "mid"),
                       {"host_opts": M3_SEALED, "extra": ("--seat-options", f"1:{M3_SEAT_OWN}")}))
         plan3.append(("om-linux", ("om-linux", 2, om_in, "mid"), {"extra": ("--linux-seats", "1"), "cache": False}))
-        out3 = pmap(lambda p: (p[0], session(*p[1], **p[2])), plan3)
+        out3 = run_plan(plan3)
         bad3, good3 = sessions_result(out3)
         notes3 = [f"{good3}/{len(plan3)} sessions with 0 desyncs and the offline rows"]
         if missing3:
@@ -1740,7 +1744,7 @@ def phase7(crit, fresh: bool) -> None:
         plan5.append(("ice-om", ("ice-om", 2, om_in, "clean"), {"transport": "ice"}))
     else:
         missing5.append(f"{TWO_PLAYER_RUN} input")
-    out5 = pmap(lambda p: (p[0], session(*p[1], **p[2])), plan5)
+    out5 = run_plan(plan5)
     bad5, good5 = sessions_result(out5)
     put("M5", not bad5 and not missing5 and bool(plan5),
         f"{good5}/{len(plan5)} sessions with 0 desyncs and the offline rows"
