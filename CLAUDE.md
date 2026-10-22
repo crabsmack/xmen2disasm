@@ -24,10 +24,11 @@ ROM-free Windows and Linux packages; the user played the Windows package (P8, `p
 R1-R10):** enhancements on the port, each an option off by default ([docs/phases/P6-enhance.md](docs/phases/P6-enhance.md):
 two-player full rate, high frame rate, widescreen; [docs/phases/P7-multiplayer.md](docs/phases/P7-multiplayer.md):
 savestates, rollback netplay, four players, a second sound machine for players 3-4's music parts;
-kickoff measurements in docs/phases/P7-kickoff.md). **Phase 6 at 5/7 (2026-10-21, XMen2Recomp 3b8503a):** the three options
-are built (`--options`, `xmen2.ini`, F9/F10); E4's probe selection was ruled (re-measure) and E6
-waits for the user's playtest (docs/QUESTIONS.md). **Phase 7 ready to run (2026-10-21):** M0
-approved, `phase.py 7` measures M1-M6 against the doc's contract, none of which exists yet. Run
+kickoff measurements in docs/phases/P7-kickoff.md). **Phase 6 at 6/7 (2026-10-22):** the three options
+are built (`--options`, `xmen2.ini`, F9/F10), E4's probes by `--flip-scan`; E6
+waits for the user's playtest (docs/QUESTIONS.md). **Phase 7 at 5/7 (2026-10-22, XMen2Recomp bf21b0b):**
+savestates, rollback netplay (LAN, hub, ICE), four players and the second sound machine are built;
+M4 waits on the user's ruling on three stage inputs and M6 on the playtest (docs/QUESTIONS.md). Run
 `phase.py 6`/`7` against a snapshot worktree (`XMEN2_RECOMP`, LESSONS.md "Phase 6"); the corpus reaches
 only Siberia and the attract demos in the native machine, `tools/ws_warp.py --all` every stage.
 `uv run tools/phase.py status` shows every phase.
