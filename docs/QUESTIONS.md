@@ -37,6 +37,12 @@ Entry format:
     off: two players now play at the original's 30 Hz in the played port; before they ran at
     twice the speed, the frame-synchronous machine showing one frame per logic frame.)
   - Or an `xmen2.ini` beside the program: `[options]` then `widescreen=16:9` etc.
+  - Cheats (asked for during the playtest, not criteria): `lives=inf` or `lives=N` (1-99),
+    `magneto=1` (selectable from the start). `--handover` with `--input-script F` plays a script
+    and then hands over the pads (with `XMEN2_DEBUG_SCENE=1`: straight into Sentinels as Cyclops).
+  - Progress (2026-10-21): the first session found ghost limbs beside an idling Cyclops and part
+    of him missing in his charged blast at 144 Hz; fixed in XMen2Recomp 9300fd8 (sprites move by
+    their object's anchor).
   If they play well, add `enhancements-verified: DATE` to XMen2Recomp `docs/USER_VERIFIED.md` (or
   say so here). Anything off (seams in the wide view, objects popping, judder at 144 Hz, flicker),
   a line here is enough; most useful with the stage and roughly where.
