@@ -50,6 +50,8 @@ Entry format:
 - Blocks only: E6 (its `enhancements-verified` line), so `phase.py 6` exiting 0.
 - Answer:
 
+## Answered
+
 ### 2026-10-21: phase 7 criteria and rulings (P7 M0)
 - Question: the same for [phases/P7-multiplayer.md](phases/P7-multiplayer.md) (M0-M6, rulings
   R1-R9). It is a draft to be revised at its kickoff with what phase 6 teaches, so this can wait
@@ -70,9 +72,16 @@ Entry format:
     edited four-slot song bank.
 - Default taken meanwhile: none (phase 7 follows phase 6).
 - Blocks only: M0, so all of phase 7.
-- Answer:
-
-## Answered
+- Answer: approved, with the rulings asked one by one in the session after the kickoff's three
+  measurements (the user, 2026-10-21): R1 the engine's libraries with our own glue; R2 savestates
+  internal only (no quick save/rewind); R3 online two-player first; R4 keep the byte matches
+  (checkpoint after 20 files); R5 a native region; R6 extend with no sprite limits (palettes need
+  nothing: every hero is on line 1); HUD panels 3-4 built from the ROM's tiles; R7 the two-player
+  rules extended; R8 LAN/IP then relay+ICE, no lobby; R9 the second sound machine; new R10 the
+  host's game-changing options apply to everyone ("we already have 16:9 so check it (I believe
+  it affects gameplay). I may add an option later for 16:9 with no gameplay changes (just
+  presentation), and if so that could be a local setting"). The revised criteria and thresholds
+  approved as shown. Recorded in P7-multiplayer.md (`approved: 2026-10-21`) and ROADMAP.md.
 
 ### 2026-10-21: E4's latency probes can't see the C button on the native TAS (P6 E4)
 - Question: E4 flips player 1's C at 10 evenly spread gameplay sync points of the TAS and needs

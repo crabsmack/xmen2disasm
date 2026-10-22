@@ -13,15 +13,16 @@ user 2026-10-21):
 | 4 | Decompilation: hand-written C replaces every generated function | `XMen2Recomp` | [phases/P4-decomp.md](phases/P4-decomp.md) | `uv run tools/phase.py 4` |
 | 5 | Port: native memory and platform layer, no 68000 left | `XMen2Recomp` | [phases/P5-port.md](phases/P5-port.md) | `uv run tools/phase.py 5` |
 | 6 | Enhancements: full frame rate in two-player, high frame rate, true widescreen | `XMen2Recomp` | [phases/P6-enhance.md](phases/P6-enhance.md) | `uv run tools/phase.py 6` |
-| 7 | Online play and four players | `XMen2Recomp` | [phases/P7-multiplayer.md](phases/P7-multiplayer.md) (draft) | `uv run tools/phase.py 7` |
+| 7 | Online play and four players | `XMen2Recomp` | [phases/P7-multiplayer.md](phases/P7-multiplayer.md) | `uv run tools/phase.py 7` |
 
 Status: phase 1 complete (2026-10-14); phase 3 complete (2026-10-15: MPW C 3.3, policy
 `matching-for-unexecuted`, [COMPILER.md](COMPILER.md)); phases 2 and 4 complete (2026-10-15,
 2026-10-20); phase 5 complete, 10/10 (2026-10-21: every measured criterion passes; P8 the user played the
 Windows package, "looks good"); phase 6 at 5/7 (2026-10-21, started on the user's word
-before phase 5's playtest: the three options built; E4 waits for a ruling on its latency probe and
-E6 for the user's playtest, both queued in QUESTIONS.md); phase 7 drafted (2026-10-21), its kickoff
-(M0) waiting for the user. `uv run tools/phase.py status` prints the last
+before phase 5's playtest: the three options built; E4's latency probe ruled, to re-measure; E6
+waits for the user's playtest in QUESTIONS.md); phase 7 approved (2026-10-21, M0 with rulings
+R1-R10 after the kickoff's measurements, [phases/P7-kickoff.md](phases/P7-kickoff.md)), 1/7, ready
+to run autonomously (`/multiplayer-batch`). `uv run tools/phase.py status` prints the last
 recorded result of every phase (from `docs/progress/`).
 
 ## Why this order
@@ -48,8 +49,9 @@ Phases 4 and 5 are **drafts**: each starts with a kickoff criterion (`D0`/`P0`) 
 agent revises the criteria with what phases 2-3 taught and the user approves them. Phase 4's
 revision was approved 2026-10-15. Phase 5's was revised 2026-10-17 (P0-P9) and approved 2026-10-20 with rulings R1-R7.
 Phases 6 and 7 were drafted 2026-10-21 (E0-E6, M0-M6), and phase 6 was approved the same day
-with rulings R1-R7. Until a phase is approved, `phase.py 6` / `7` check only its kickoff. Its
-other measurements are written as its work starts.
+with rulings R1-R7; phase 7 on the same day after its kickoff measurements, with rulings R1-R10.
+Each approved phase's measurements are written into `phase.py` before its work starts (its doc's
+"The contract").
 
 Every enhancement is an **option** that is off by default. With every option off, the port is
 still the proven one: phase 6's E1 and phase 7's M1 rerun phase 5's measurements. So the original
@@ -118,3 +120,17 @@ phase doc with the date.
   streaming first. The same day E5 dropped its "activation margin 0 equals the reference"
   clause, which R7's streaming makes impossible (the user's choice). "The contract" then fixed
   how `phase.py 6` measures each criterion, before any work.
+- 2026-10-21 (user): phase 6's E4 latency probes move to the first point after each spread point
+  where the flip shows at 60 Hz; the select after a death is the Cerebro screen (4:3) for E5.
+- 2026-10-21 (user): phase 7 criteria approved (M0-M6), after the kickoff measured netplay
+  readiness, the characters' video and the music ([phases/P7-kickoff.md](phases/P7-kickoff.md)).
+  R1 the engine's `recomp-net`/`rbengine` with XMen2Native's own glue; R2 in-process savestates
+  (the game on a fiber), not offered to players; R3 savestates, two online, four local, four
+  online; R4 byte matches kept (cost measured after 20 files); R5 players 3-4 in a native region;
+  R6 with three or more players extra VRAM and sprites with no per-line limits, palettes unchanged;
+  R6a HUD panels 3-4 built from the ROM's tiles at run time; R7 the two-player rules extended; R8
+  LAN/IP, then relay and ICE, no lobby server; R9 a second sound machine for players 3-4's music
+  parts; R10 online the host's game options (widescreen included) and seed apply to everyone,
+  `high_fps` stays each player's (a later presentation-only 16:9 would be local). Online play runs
+  the "session machine" and peers compare a canonical digest (MSVC and GCC lay structs out
+  differently).

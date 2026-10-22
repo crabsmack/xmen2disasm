@@ -1,6 +1,6 @@
 """Measure a phase's definition of done (docs/ROADMAP.md); write docs/progress/PN.md.
 
-    uv run tools/phase.py 2            # phase 2 (recomp); also 3, 4, 5, 6, and 7 (a draft: kickoff only)
+    uv run tools/phase.py 2            # phase 2 (recomp); also 3, 4, 5, 6 and 7
     uv run tools/phase.py 2 --fresh    # ignore cached trace results
     uv run tools/phase.py 2 --json
     uv run tools/phase.py 5 --draft    # measure past an unapproved kickoff (D0/P0); never exits 0
@@ -12,7 +12,7 @@ autonomous loop's next job. Criteria live in docs/phases/PN-*.md; this file is t
 measurement. Never weaken a check here to make it pass: changing a criterion needs the
 user's approval, recorded in the phase doc.
 
-Phases 2, 4, 5 and 6 run contract commands in the game repo ($XMEN2_RECOMP, default
+Phases 2 and 4-7 run contract commands in the game repo ($XMEN2_RECOMP, default
 ../XMen2Recomp next to the main checkout; contract in docs/phases/P2-recomp.md) and
 compare their traces against this repo's reference runs (emu/runs/<run>/frames.csv).
 """
@@ -285,16 +285,17 @@ class Traces:
                 "csv": str(out / "frames.csv")}
 
     def plain(self, run: str, mode: str, extra: tuple[str, ...] = (), timed_key: bool = False,
-              rev: str | None = None) -> dict:
+              rev: str | None = None, input_path: Path | None = None) -> dict:
         """A contract trace whose sync.csv is itself a reference (phase 4: stepped-gen), not
-        compared with anything. Cached per revision like run()."""
-        key = f"{run}|{mode}|plain|{' '.join(extra)}"
+        compared with anything. Cached per revision like run(). input_path: an input file that is
+        not a corpus run's export (phase 7's stage inputs; `run` then only names the trace)."""
+        key = f"{run}|{mode}|plain|{' '.join(extra)}" + (f"|{input_path}" if input_path else "")
         rev = rev or (self.rev_timed if timed_key else self.rev)
         with self.lock:
             hit = self.cache.get(key)
         if hit and rev and hit.get("rev") == rev and Path(hit.get("csv", "")).exists():
             return hit
-        inp, err = export_input(run, self.out_dir)
+        inp, err = (input_path, "") if input_path else export_input(run, self.out_dir)
         if inp is None:
             return {"ok": False, "detail": err}
         # flags other than --replay get their own directory (phase 5: --fb), so a variant never
@@ -818,7 +819,7 @@ BENCH_GATES = (("clean_build_s", 300.0, "clean build"), ("corpus_check_total_s",
 
 
 class Stages:
-    """phase.py 5 (and 6) talks as it goes: each stage as it finishes, to stderr and
+    """phase.py 5 (and 6, 7) talks as it goes: each stage as it finishes, to stderr and
     build/phaseN.log (LESSONS.md: a silent 3-hour run hid a 1-minute failure)."""
 
     def __init__(self, phase: int = 5) -> None:
@@ -1368,17 +1369,410 @@ def phase6(crit, fresh: bool) -> None:
     report()
 
 
-# --- phase 7: draft ------------------------------------------------------------------------
+# --- phase 7: online play and four players ----------------------------------------------
 
-def draft_phase(phase: int, crit) -> None:
-    """P7-multiplayer.md (a draft): the kickoff, then every other criterion of the doc's table
-    failing until its measurement is written here, as phase 6's was before its work."""
-    t = (ROOT / "docs" / "phases" / DOCS[phase]).read_text(encoding="utf-8")
-    ids = re.findall(r"^\| ([A-Z]\d) \|", t, re.M)
-    ok = kickoff(ids[0], phase, crit)
-    for cid in ids[1:]:
-        crit(cid, False, "not measured yet: its measurement is written with the phase's first work on it"
-             if ok else f"not measured until {ids[0]} is approved (the criteria may change at the kickoff)")
+P7_IDS = [f"M{i}" for i in range(7)]
+M2_EVERY, M2_SPAN = 300, 60
+SESSION = ("--session", "1")
+LINKS = {"clean": "latency=0,jitter=0,loss=0,seed=7",
+         "mid": "latency=50,jitter=10,loss=2,seed=7",
+         "bad": "latency=120,jitter=40,loss=10,seed=7"}
+M3_SEALED = "full_rate_2p=1,widescreen=16:9,lives=inf"   # the host's game options (R10)
+M3_SEAT_OWN = "high_fps=144,widescreen=0"                 # seat 1's own command line
+M3_LATE = 0.01            # late frames under `mid`, of a seat's frames
+M4_IN_PLAY = 0.50         # each player's in-play share of the gameplay frames
+M4_DRAWN = 0.50           # drawn share of a player's in-play frames
+M4_OFF_VIEW = 0.01        # outside the view, share of its in-play frames
+MUSIC_SONGS = ((0x27,), (0x25,), (0x48, 0x47), (0x64, 0x6C))   # base songs with player parts
+TWO_PLAYER_RUN = "scenario-options-menu"   # the corpus's only run with two players alive
+
+
+def warp_scenes() -> tuple[dict[str, int], dict[str, int]] | None:
+    """The stage starts of the game repo's tools/ws_warp.py --all: (WORLDS, LATER)."""
+    import ast
+    p = recomp_root() / "tools" / "ws_warp.py"
+    if not p.is_file():
+        return None
+    found = {}
+    for node in ast.parse(p.read_text(encoding="utf-8")).body:
+        if isinstance(node, ast.Assign) and isinstance(node.targets[0], ast.Name) and node.targets[0].id in ("WORLDS", "LATER"):
+            found[node.targets[0].id] = ast.literal_eval(node.value)
+    return (found["WORLDS"], found["LATER"]) if len(found) == 2 else None
+
+
+def read_digests(p: Path) -> dict[int, str]:
+    return {int(r["sync"]): r["digest"].lower() for r in read_rows(p)} if p.is_file() else {}
+
+
+def same_digests(want: Path, got: Path) -> str | None:
+    """None when two digest.csv files have the same sync points and digests; else the first desync."""
+    a, b = read_digests(want), read_digests(got)
+    if not a:
+        return f"no digests in {want}"
+    for s in sorted(a):
+        if b.get(s) != a[s]:
+            return f"desync at sync point {s}" if s in b else f"sync point {s} missing"
+    return None if len(a) == len(b) else f"{len(b)} sync points, {len(a)} expected"
+
+
+def pads_kept(inp: Path, keep: int, out: Path) -> Path:
+    """The input with every pad column after the first `keep` emptied (M4's silent check)."""
+    lines = []
+    for line in inp.read_text(encoding="utf-8").splitlines():
+        parts = line.split()
+        if parts and parts[0].upper() == "PADS":
+            parts = parts[:1] + [p if i < keep else "0" for i, p in enumerate(parts[1:])]
+            line = " ".join(parts)
+        lines.append(line)
+    out.parent.mkdir(parents=True, exist_ok=True)
+    out.write_text("\n".join(lines) + "\n", encoding="utf-8", newline="\n")
+    return out
+
+
+def phase7(crit, fresh: bool) -> None:
+    """P7-multiplayer.md, measured as its "The contract" says. The new work's criteria first (M2-M5,
+    each on its own), then M1 (phase 6's whole measurement, the long one that passes), then M6
+    (which reads the packages phase 5 builds inside M1). Reported in table order."""
+    say = Stages(7)
+    res: dict[str, tuple[bool, str]] = {}
+
+    def put(cid: str, ok: bool, detail: str) -> None:
+        res[cid] = (bool(ok), detail)
+        say(f"{'PASS' if ok else 'FAIL'}  {cid} {' '.join(detail.split())[:240]}")
+
+    def report() -> None:
+        for cid in P7_IDS:
+            ok, detail = res.get(cid, (False, "not measured: an earlier stage failed (see build/phase7.log)"))
+            crit(cid, ok, detail)
+
+    ok0 = approved(7)
+    put("M0", ok0, "criteria approved" if ok0 else f"docs/phases/{DOCS[7]} is not approved")
+    if not ok0:
+        return report()
+
+    tr = Traces(fresh)
+    root = recomp_root()
+    runs = corpus_runs()
+    bad1, refs, _low = d1_refs(tr, runs, rev=content_rev("XMen2Recomp"))
+    no_ref = [r for r in runs if r not in refs]
+    scenes = warp_scenes()
+    mp_dir = root / "game" / "mp_inputs"
+
+    def native(run: str, *extra: str) -> dict:
+        """A corpus run's native trace under its D1 replay input (the traced machine)."""
+        return tr.plain(run, "native", ("--replay", str(refs[run].parent), *extra),
+                        rev=content_rev("XMen2Native", refs[run]))
+
+    def played(name: str, inp: Path, *extra: str) -> dict:
+        """A native trace of an input file by runner frame (no --replay), as a seat plays it."""
+        return tr.plain(name, "native", extra, rev=content_rev("XMen2Native", inp), input_path=inp)
+
+    def mp(t: dict) -> dict:
+        return (t.get("stats") or {}).get("mp") or {}
+
+    def probe_check(t: dict) -> str | None:
+        """--state-probe's own outputs: pass 1 = pass 2 at every save point, the snapshot saved after a
+        restore = the one restored, and a save point every M2_EVERY sync points."""
+        out = Path(t.get("csv") or "").parent
+        rows, snaps = out / "probe.csv", out / "probe_snap.csv"
+        if not (rows.is_file() and snaps.is_file()):
+            return f"no {rows.name} / {snaps.name}"
+        by: dict[tuple[str, str], dict[str, dict[str, str]]] = {}
+        for r in read_rows(rows):
+            by.setdefault((r["at"], r["pass"]), {})[r["sync"]] = r
+        ats = sorted({a for a, _p in by}, key=int)
+        for a in ats:
+            p1, p2 = by.get((a, "1"), {}), by.get((a, "2"), {})
+            if not p1 or set(p1) != set(p2):
+                return f"save point {a}: passes have {len(p1)} / {len(p2)} sync points"
+            for s in sorted(p1, key=int):
+                bad = [c for c in COMPARED + [FB_COL] if (p1[s].get(c) or "").lower() != (p2[s].get(c) or "").lower()
+                       or not p1[s].get(c)]
+                if bad:
+                    return f"save point {a}: sync {s} differs after the restore ({', '.join(bad)})"
+        n = (t.get("stats") or {}).get("sync_points") or 0
+        need = len([k for k in range(M2_EVERY, n, M2_EVERY) if k + M2_SPAN <= n])
+        if len(ats) < need:
+            return f"{len(ats)} save points, {need} expected"
+        sn = read_rows(snaps)
+        wrong = next((r["at"] for r in sn if not r.get("saved_sha1") or r["saved_sha1"] != r.get("resaved_sha1")), None)
+        if not sn or wrong is not None:
+            return "no snapshot hashes" if not sn else f"save point {wrong}: the snapshot saved after the restore differs"
+        return None
+
+    # M2: savestates on every corpus run; the negative control per section
+    say(f"M2: --state-probe {M2_EVERY}:{M2_SPAN} on {len(runs)} runs; the negative control")
+    state_sections: dict[str, list[str]] = {}
+
+    def m2(run: str) -> str | None:
+        if run not in refs:
+            return None
+        a, b = native(run, "--fb"), native(run, "--fb", "--state-probe", f"{M2_EVERY}:{M2_SPAN}")
+        if not (a["ok"] and b["ok"]):
+            return f"{run} ({(a if not a['ok'] else b)['detail'][:160]})"
+        state_sections[run] = ((b.get("stats") or {}).get("state") or {}).get("sections") or []
+        if not state_sections[run]:
+            return f"{run} (the trace reports no state sections)"
+        d = same_sync(Path(a["csv"]), Path(b["csv"]), COMPARED + [FB_COL]) or probe_check(b)
+        return f"{run} ({d})" if d else None
+    out2 = pmap(m2, runs)
+    bad2 = [m for m in out2 if m]
+    notes2 = [f"{len(runs) - len(bad2) - len(no_ref)}/{len(runs)} corpus runs restore exactly"
+              + (f"; {len(no_ref)} without a D1 reference" if no_ref else "") + (f"; first: {bad2[0]}" if bad2 else "")]
+    ok2 = not bad2 and not no_ref and bool(refs)
+    tas_in, err_in = export_input("tas", tr.out_dir)
+    sections = state_sections.get("tas") or []
+    if tas_in is None or not sections:
+        ok2 = False
+        notes2.append("negative control: " + (err_in[:120] if tas_in is None else "no sections from the TAS's probe"))
+    else:
+        ctl = [("tas-session", tas_in, ("--options", "widescreen=16:9"))]
+        s1 = mp_dir / "scene1.input"
+        o, _e = contract("options")
+        if "players" in ((o or {}).get("options") or {}) and s1.is_file():
+            ctl.append(("mp-scene1", s1, ("--scene", "1", "--options", "players=4")))
+        probe = ("--state-probe", f"{M2_EVERY}:{M2_SPAN}", "--fb")
+        base = [played(n, i, *SESSION, *x, *probe) for n, i, x in ctl]
+        base_bad = [f"{n}: {b['detail'][:100] if not b['ok'] else probe_check(b)}" for (n, _i, _x), b in zip(ctl, base)
+                    if not b["ok"] or probe_check(b)]
+        if base_bad:
+            ok2 = False
+            notes2.append(f"negative control: its baseline fails ({base_bad[0]})")
+        else:
+            def caught(sec: str) -> str | None:
+                for n, i, x in ctl:
+                    t = played(n, i, *SESSION, *x, *probe, "--state-skip", sec)
+                    if not t["ok"] or probe_check(t):
+                        return None
+                return sec
+            missed = [s for s in pmap(caught, sections) if s]
+            ok2 &= not missed
+            notes2.append(f"negative control: {len(sections) - len(missed)}/{len(sections)} sections caught when left out"
+                          + (f"; not caught: {', '.join(missed)}" if missed else ""))
+    put("M2", ok2, "; ".join(notes2))
+
+    # sessions (M3, M5): N seats over loopback against the offline session-machine trace
+    off_locks: dict[str, threading.Lock] = {}
+
+    def session(name: str, seats: int, inp: Path, link: str, host_opts: str = "", scene: tuple[str, ...] = (),
+                extra: tuple[str, ...] = (), transport: str = "lan", cache: bool = True) -> dict:
+        """-> {"err"} or {"seats", "offline", "data"}: every seat checked against the offline run."""
+        opts = ("--options", host_opts) if host_opts else ()
+        off_name = f"np-offline-{inp.stem}" + (f"-{dir_tag(host_opts)}" if host_opts else "")
+        with tr.lock:
+            lk = off_locks.setdefault(off_name, threading.Lock())
+        with lk:   # shared by the sessions of one input, which run in parallel: one trace, then cache hits
+            off = played(off_name, inp, *SESSION, "--digest", *scene, *opts)
+        if not off["ok"]:
+            return {"err": f"offline trace: {off['detail'][:140]}"}
+        out = tr.out_dir / f"np-{name}"
+        args = ("netplay", "--seats", str(seats), "--input", str(inp), *SESSION, *scene, *opts, *extra,
+                "--link", LINKS[link], "--transport", transport, "--out", str(out))
+        rev = content_rev("XMen2Native", inp) if cache else None
+        with tr.lock:
+            hit = tr.cache.get("|".join(args))
+        if rev and hit and hit.get("rev") == rev:
+            data, err = hit["data"], ""
+        else:
+            data, err = contract(*args, timeout=3600)
+            if data is not None and rev:
+                with tr.lock:
+                    tr.cache["|".join(args)] = {"data": data, "rev": rev}
+                    tr.save()
+        if data is None:
+            return {"err": err}
+        st = data.get("seats") or []
+        if len(st) != seats:
+            return {"err": f"{len(st)} seats reported, {seats} asked"}
+        offd = Path(off["csv"]).parent / "digest.csv"
+        for s in st:
+            if s.get("exit") != 0:
+                return {"err": f"seat {s.get('seat')} exited {s.get('exit')}"}
+            d = same_digests(offd, Path(s.get("digest_csv") or ""))
+            if d:
+                return {"err": f"seat {s.get('seat')} ({s.get('os')}): {d}"}
+        host = next((s for s in st if s.get("seat") == 0), st[0])
+        d = same_sync(Path(off["csv"]), Path(host.get("sync_csv") or ""), COMPARED)
+        if d:
+            return {"err": f"host rows: {d}"}
+        return {"seats": st, "data": data}
+
+    def sessions_result(results: list[tuple[str, dict]]) -> tuple[list[str], int]:
+        bad = [f"{n} ({r['err']})" for n, r in results if "err" in r]
+        return bad, len(results) - len(bad)
+
+    om_in, err_om = export_input(TWO_PLAYER_RUN, tr.out_dir)
+    worlds = (scenes or ({}, {}))[0]
+
+    # M3: two players online
+    say("M3: two-seat sessions (link profiles, world stage inputs, sealed options, Windows against Linux)")
+    if om_in is None:
+        put("M3", False, f"no {TWO_PLAYER_RUN} input: {err_om[:160]}")
+    else:
+        plan3: list[tuple[str, tuple, dict]] = [(f"om-{lk}", (f"om-{lk}", 2, om_in, lk), {}) for lk in ("clean", "mid", "bad")]
+        missing3 = [] if scenes else ["no tools/ws_warp.py WORLDS/LATER in the game repo"]
+        for w, n in worlds.items():
+            f = mp_dir / f"scene{n}.input"
+            if not f.is_file():
+                missing3.append(f.name)
+                continue
+            plan3.append((f"w-{w}", (f"w-{w}", 2, f, "mid"), {"scene": ("--scene", str(n))}))
+        plan3.append(("om-sealed", ("om-sealed", 2, om_in, "mid"),
+                      {"host_opts": M3_SEALED, "extra": ("--seat-options", f"1:{M3_SEAT_OWN}")}))
+        plan3.append(("om-linux", ("om-linux", 2, om_in, "mid"), {"extra": ("--linux-seats", "1"), "cache": False}))
+        out3 = pmap(lambda p: (p[0], session(*p[1], **p[2])), plan3)
+        bad3, good3 = sessions_result(out3)
+        notes3 = [f"{good3}/{len(plan3)} sessions with 0 desyncs and the offline rows"]
+        if missing3:
+            notes3.append(f"stage inputs missing: {', '.join(missing3[:4])}")
+        # every session but om-clean has latency; every one but om-clean and om-bad is under `mid`
+        rolled = sum(s.get("rollbacks") or 0 for n, r in out3 if "seats" in r and n != "om-clean" for s in r["seats"])
+        late = [f"{n} seat {s.get('seat')}: {s.get('late_frames')}/{s.get('frames')}"
+                for n, r in out3 if "seats" in r and n not in ("om-clean", "om-bad") for s in r["seats"]
+                if not s.get("frames") or (s.get("late_frames") or 0) > M3_LATE * s["frames"]]
+        sealed = dict(out3).get("om-sealed") or {}
+        seal_bad = []
+        if "seats" in sealed:
+            want = dict(kv.split("=", 1) for kv in M3_SEALED.split(","))
+            for s in sealed["seats"]:
+                eff = s.get("options") or {}
+                seal_bad += [f"seat {s.get('seat')} {k}={eff.get(k)}" for k, v in want.items() if str(eff.get(k)) != v]
+                own = "144" if s.get("seat") == 1 else "0"
+                if str(eff.get("high_fps")) != own:
+                    seal_bad.append(f"seat {s.get('seat')} high_fps={eff.get('high_fps')} (its own is {own})")
+        notes3.append(f"rollbacks under latency {rolled}" + (f"; late frames over {M3_LATE:.0%}: {late[0]}" if late else ""))
+        if seal_bad:
+            notes3.append(f"options not sealed: {', '.join(seal_bad[:3])}")
+        if bad3:
+            notes3.append(f"first: {bad3[0]}")
+        put("M3", not bad3 and not missing3 and rolled > 0 and not late and not seal_bad, "; ".join(notes3))
+
+    # M4: four players on one machine
+    say("M4: the stage inputs with players 4 and 3; music; players 2 = the original")
+    o, err_o = contract("options")
+    if o is None or "players" not in ((o or {}).get("options") or {}):
+        put("M4", False, f"options contract: {err_o[:160]}" if o is None else "the runner has no `players` option yet")
+    elif not scenes:
+        put("M4", False, "no tools/ws_warp.py WORLDS/LATER in the game repo (the stage starts)")
+    else:
+        files = [("boot", mp_dir / "boot.input", ())] + [
+            (f"scene{n}", mp_dir / f"scene{n}.input", ("--scene", str(n))) for n in sorted({**scenes[0], **scenes[1]}.values())]
+        missing4 = [f.name for _n, f, _s in files if not f.is_file()]
+
+        def m4(item: tuple[str, Path, tuple[str, ...], int]) -> tuple[str | None, dict]:
+            name, f, sc, players = item
+            t = played(f"mp-{name}-p{players}", f, *SESSION, *sc, "--options", f"players={players}")
+            if not t["ok"]:
+                return f"{name} players {players} ({t['detail'][:140]})", {}
+            c = mp(t)
+            if "in_play" not in c:
+                return f"{name} (no mp counters)", {}
+            gp = c.get("gameplay_frames") or 0
+            probs = []
+            for i in range(players):
+                ip = (c.get("in_play") or [0] * 4)[i]
+                if gp == 0 or ip < M4_IN_PLAY * gp:
+                    probs.append(f"player {i + 1} in play {ip}/{gp}")
+                    continue
+                if (c.get("drawn") or [0] * 4)[i] < M4_DRAWN * ip:
+                    probs.append(f"player {i + 1} drawn {(c.get('drawn') or [0] * 4)[i]}/{ip}")
+                if (c.get("off_view") or [0] * 4)[i] > M4_OFF_VIEW * ip:
+                    probs.append(f"player {i + 1} off view {(c.get('off_view') or [0] * 4)[i]}/{ip}")
+            probs += [f"{k} {c.get(k)}" for k in ("hud_missing", "sprites_dropped") if c.get(k) != 0]
+            return (f"{name} players {players} ({'; '.join(probs[:3])})" if probs else None), c
+        items = [(n, f, s, p) for n, f, s in files if f.is_file() for p in (4, 3)]
+        out4 = pmap(m4, items)
+        bad4 = [m for m, _c in out4 if m]
+        # music: the second machine on the songs with parts (players 4 runs), silent without players 3 and 4
+        reached: set[int] = set()
+        music_bad, silent_todo = [], []
+        for (n, f, s, p), (_m, c) in zip(items, out4):
+            if p != 4 or not c:
+                continue
+            songs = {int(str(k).lstrip("$"), 16): v for k, v in ((c.get("snd2") or {}).get("songs") or {}).items()}
+            for sid, v in songs.items():
+                if (v or {}).get("base_keyons") != 0:
+                    music_bad.append(f"{n}: song ${sid:02X} base key-ons {(v or {}).get('base_keyons')}")
+            hit = [sid for group in MUSIC_SONGS for sid in group if sid in songs]
+            for sid in hit:
+                if not (songs[sid] or {}).get("part_keyons"):
+                    music_bad.append(f"{n}: song ${sid:02X} no part key-ons")
+            reached |= set(hit)
+            if hit:
+                silent_todo.append((n, f, s))
+        unreached = [f"${g[0]:02X}" for g in MUSIC_SONGS if not reached & set(g)]
+
+        def silent(item: tuple[str, Path, tuple[str, ...]]) -> str | None:
+            n, f, s = item
+            t = played(f"mp-{n}-2pads", pads_kept(f, 2, tr.out_dir / "mp_inputs" / f"{n}-2pads.input"),
+                       *SESSION, *s, "--options", "players=4")
+            if not t["ok"]:
+                return f"{n} with pads 3-4 empty ({t['detail'][:100]})"
+            fr = (mp(t).get("snd2") or {}).get("frames")
+            return None if fr == 0 else f"{n} with pads 3-4 empty: second machine ran {fr} frames"
+        music_bad += [m for m in pmap(silent, silent_todo) if m]
+        # players 2 explicit = no options, on the TAS
+        two = "no D1 reference for the TAS"
+        if "tas" in refs:
+            a, b = native("tas", "--fb"), native("tas", "--fb", "--options", "players=2")
+            two = ((not a["ok"] and f"TAS: {a['detail'][:100]}") or (not b["ok"] and f"TAS players=2: {b['detail'][:100]}")
+                   or same_sync(Path(a["csv"]), Path(b["csv"]), COMPARED + [FB_COL])
+                   or ((mp(b).get("snd2") or {}).get("frames") != 0 and "players=2 ran the second machine") or None)
+        put("M4", not bad4 and not missing4 and not music_bad and not unreached and two is None,
+            f"{len(items) - len(bad4)}/{len(items)} stage runs (players 4 and 3) pass"
+            + (f"; stage inputs missing: {', '.join(missing4[:4])}" + (" ..." if len(missing4) > 4 else "") if missing4 else "")
+            + (f"; first: {bad4[0]}" if bad4 else "")
+            + (f"; songs with parts not reached: {', '.join(unreached)}" if unreached else "; every song with parts reached")
+            + (f"; music: {music_bad[0]}" if music_bad else "")
+            + (f"; players=2: {two}" if two else "; players=2 equals the original on the TAS"))
+
+    # M5: four players online, and ICE
+    say("M5: four-seat hub sessions on the stage inputs; a two-seat ICE session")
+    plan5 = []
+    missing5 = [] if scenes else ["no tools/ws_warp.py WORLDS/LATER"]
+    for name, f, sc in [("boot", mp_dir / "boot.input", ())] + [
+            (w, mp_dir / f"scene{n}.input", ("--scene", str(n))) for w, n in worlds.items()]:
+        if not f.is_file():
+            missing5.append(f.name)
+            continue
+        plan5.append((f"m5-{name}", (f"m5-{name}", 4, f, "mid"), {"host_opts": "players=4", "scene": sc, "transport": "hub"}))
+    if om_in is not None:
+        plan5.append(("ice-om", ("ice-om", 2, om_in, "clean"), {"transport": "ice"}))
+    else:
+        missing5.append(f"{TWO_PLAYER_RUN} input")
+    out5 = pmap(lambda p: (p[0], session(*p[1], **p[2])), plan5)
+    bad5, good5 = sessions_result(out5)
+    put("M5", not bad5 and not missing5 and bool(plan5),
+        f"{good5}/{len(plan5)} sessions with 0 desyncs and the offline rows"
+        + (f"; missing: {', '.join(missing5[:4])}" if missing5 else "") + (f"; first: {bad5[0]}" if bad5 else ""))
+
+    # M1: phase 6's measurement (it runs phase 5's, which builds the packages M6 reads)
+    say("M1: phase 6's measurement (phase6(), log build/phase6.log)")
+    p6: dict[str, tuple[bool, str]] = {}
+    phase6(lambda c, ok, d: p6.__setitem__(c, (bool(ok), d)), fresh)
+    need = [f"E{i}" for i in range(1, 6)]
+    failing = [c for c in need if not p6.get(c, (False, ""))[0]]
+    put("M1", not failing, f"phase 6's {'/'.join(need)}: " + (
+        "all pass" if not failing else
+        f"{len(failing)} failing, first {failing[0]}: {p6.get(failing[0], (False, 'not measured'))[1][:200]}"))
+
+    # M6: the packages, with players and netplay, and the user's word
+    notes, ok6 = [], True
+    for platform in ("windows", "linux"):
+        pk, err = PACKAGES.get(platform, (None, "not built (phase 5 stopped before its packages)"))
+        has_players = "players" in ((pk or {}).get("options") or {}).get("options", {})
+        transports = set(((pk or {}).get("netplay") or {}).get("transports") or [])
+        ok = (pk is not None and pk.get("ok") is True and pk.get("rom_windows") == 0 and has_players
+              and {"lan", "hub", "ice"} <= transports)
+        ok6 &= ok
+        notes.append(f"{platform}: " + (err[:120] if pk is None else
+                                        f"ROM windows {pk.get('rom_windows')}, players {'listed' if has_players else 'missing'}, "
+                                        f"netplay {'/'.join(sorted(transports)) or 'missing'}"))
+    uv_doc = root / "docs" / "USER_VERIFIED.md"
+    word = uv_doc.exists() and re.search(rf"^multiplayer-verified: {DATE}", uv_doc.read_text(encoding="utf-8"), re.M)
+    put("M6", ok6 and bool(word), "; ".join(notes) + ("; multiplayer-verified line present" if word else
+                                                       f"; no `multiplayer-verified: DATE` in {uv_doc} (ask the user)"))
+    report()
 
 
 # --- driver ------------------------------------------------------------------------------
@@ -1429,7 +1823,7 @@ def main() -> int:
     elif phase == 6:
         phase6(crit, args.fresh)
     elif phase == 7:
-        draft_phase(phase, crit)
+        phase7(crit, args.fresh)
     else:
         {2: phase2, 3: phase3}[phase](crit, args.fresh)
 

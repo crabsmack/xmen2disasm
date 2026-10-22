@@ -20,13 +20,15 @@ criteria (P0-P9, [docs/phases/P5-port.md](docs/phases/P5-port.md)) were approved
 rulings R1-R7. **Phase 5 complete, 10/10 (2026-10-21)**: the native port has no 68000 left, keeps game memory
 in host byte order, equals the reference on the whole corpus and every TAS framebuffer, and ships as
 ROM-free Windows and Linux packages; the user played the Windows package (P8, `port-verified`,
-2026-10-21). **Phases 6 and 7 (2026-10-21; phase 6 approved with rulings R1-R7, phase 7
-a draft waiting for M0):** enhancements on the port, each an option off by default ([docs/phases/P6-enhance.md](docs/phases/P6-enhance.md):
+2026-10-21). **Phases 6 and 7 (2026-10-21; phase 6 approved with rulings R1-R7, phase 7 with
+R1-R10):** enhancements on the port, each an option off by default ([docs/phases/P6-enhance.md](docs/phases/P6-enhance.md):
 two-player full rate, high frame rate, widescreen; [docs/phases/P7-multiplayer.md](docs/phases/P7-multiplayer.md):
-online play, four players). **Phase 6 at 5/7 (2026-10-21, XMen2Recomp 3b8503a):** the three options
-are built (`--options`, `xmen2.ini`, F9/F10); E4 waits for a ruling on its latency probe (the native
-TAS desyncs and mostly pauses) and E6 for the user's playtest, both in docs/QUESTIONS.md. Run
-`phase.py 6` against a snapshot worktree (`XMEN2_RECOMP`, LESSONS.md "Phase 6"); the corpus reaches
+savestates, rollback netplay, four players, a second sound machine for players 3-4's music parts;
+kickoff measurements in docs/phases/P7-kickoff.md). **Phase 6 at 5/7 (2026-10-21, XMen2Recomp 3b8503a):** the three options
+are built (`--options`, `xmen2.ini`, F9/F10); E4's probe selection was ruled (re-measure) and E6
+waits for the user's playtest (docs/QUESTIONS.md). **Phase 7 ready to run (2026-10-21):** M0
+approved, `phase.py 7` measures M1-M6 against the doc's contract, none of which exists yet. Run
+`phase.py 6`/`7` against a snapshot worktree (`XMEN2_RECOMP`, LESSONS.md "Phase 6"); the corpus reaches
 only Siberia and the attract demos in the native machine, `tools/ws_warp.py --all` every stage.
 `uv run tools/phase.py status` shows every phase.
 
@@ -160,7 +162,7 @@ and notes live and what to do first; skill `/first-divergence` for trace mismatc
 `uv run tools/decomp_queue.py` as the queue; phase 5's per-batch loop is `/port-batch` with
 `uv run tools/port_queue.py`, gated by XMen2Recomp's `tools/gate.py`; phase 6's is `/enhance-batch`,
 with `phase.py 6`'s first failing criterion as the queue and the doc's "The contract" built before
-each feature. Criteria that need the user (K10, C4's `user_ack`, D0/P0/E0/M0 approvals,
+each feature; phase 7's is `/multiplayer-batch`, the same way with `phase.py 7`. Criteria that need the user (K10, C4's `user_ack`, D0/P0/E0/M0 approvals,
 P6, D8, P8, E6, M6): never write those lines yourself, and **never stop to ask either**. The user starts
 these runs and leaves, so queue the question in [docs/QUESTIONS.md](docs/QUESTIONS.md) with the
 default you are taking, and keep working (ROADMAP.md step 4). Read QUESTIONS.md at session start. Never weaken a check in

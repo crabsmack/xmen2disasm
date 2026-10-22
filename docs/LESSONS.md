@@ -223,6 +223,24 @@ What the session learned:
   runner's report (adapted the tool, recorded); the screen id (a scene name) can't tell the player
   select after a death from its stage (queued for the user).
 
+## Phase 7 kickoff (2026-10-21, one session with the user present)
+
+What worked: three read-only measurement agents in parallel (netplay readiness, the characters'
+video, the music), while the rulings that didn't depend on them (order, sources, rules,
+transports, a new one on options online) were asked one by one; the rest were asked as each report
+came back, with its numbers. Every measurement changed a ruling or a criterion: palettes need no
+extension (all heroes on line 1), the sprite table is the binding limit; the music's parts are
+separate GEMS songs that a second driver can play, but only by running the base song muted (the
+tempo is global); M3 was unmeasurable as drafted (played runs read the wall clock; MSVC and GCC
+lay the machine struct out differently).
+
+- **Entering a worktree mid-session (EnterWorktree) cut off the running agents' shells**: every
+  Bash/PowerShell call of the background agents was refused as outside the worktree, and one
+  agent finished with its VRAM dumps unanalysed. Enter the worktree before spawning agents, or
+  after they finish, or edit the worktree's files by path without entering it.
+- A draft's "measure X at the kickoff" items are worth doing before asking: the user approves the
+  numbers, not the guesses.
+
 ## For the next game (shared kit)
 
 **Transfers directly:**
