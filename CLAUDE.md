@@ -17,10 +17,10 @@ functions is hand-written C and verified (D4), the game links no generated code 
 on the whole corpus (D6), and the user played the hand-C build (D8, on Linux): **phase 4 complete, 9/9 (2026-10-20,
 engine 22ed7f6)** ([docs/phases/P4-decomp.md](docs/phases/P4-decomp.md), decisions 1-13). Phase 5's
 criteria (P0-P9, [docs/phases/P5-port.md](docs/phases/P5-port.md)) were approved 2026-10-20 with
-rulings R1-R7. **Phase 5 (2026-10-21): 9/10**: the native port has no 68000 left, keeps game memory
+rulings R1-R7. **Phase 5 complete, 10/10 (2026-10-21)**: the native port has no 68000 left, keeps game memory
 in host byte order, equals the reference on the whole corpus and every TAS framebuffer, and ships as
-ROM-free Windows and Linux packages; P8 waits only for the user's playtest (`port-verified`, queued
-in docs/QUESTIONS.md). **Phases 6 and 7 (2026-10-21; phase 6 approved with rulings R1-R7, phase 7
+ROM-free Windows and Linux packages; the user played the Windows package (P8, `port-verified`,
+2026-10-21). **Phases 6 and 7 (2026-10-21; phase 6 approved with rulings R1-R7, phase 7
 a draft waiting for M0):** enhancements on the port, each an option off by default ([docs/phases/P6-enhance.md](docs/phases/P6-enhance.md):
 two-player full rate, high frame rate, widescreen; [docs/phases/P7-multiplayer.md](docs/phases/P7-multiplayer.md):
 online play, four players). **Phase 6 at 5/7 (2026-10-21, XMen2Recomp 3b8503a):** the three options

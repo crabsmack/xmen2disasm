@@ -76,22 +76,6 @@ Entry format:
 - Blocks only: nothing (E5 is measured either way; with "no", the death select is drawn wide).
 - Answer:
 
-### 2026-10-21: play the native port (P5 P8)
-- Question: play the port that has no 68000 left (XMen2Recomp 78cb548 or later). It is the
-  frame-synchronous machine D8 played (R5), now with its own memory, machine and player. Any of:
-  - Windows: unzip `..\XMen2Recomp\build\package\xmen2-native-windows.zip` (made by
-    `phase.py 5` / `uv run tools/xmen2check.py package`), run `XMen2.exe path\to\xmen2.bin`.
-  - Linux: pull XMen2Recomp, `sudo apt install libsdl2-dev pkg-config ninja-build`
-    once, then `uv run tools/xmen2check.py native-build` and `build/XMen2Native path/to/xmen2.bin`
-    (or the zip `build\package\xmen2-native-linux.zip` from this machine: `./xmen2 path/to/xmen2.bin`).
-  - Keys: arrows; Z/X/C = A/B/C, Enter = Start, A/S/D = X/Y/Z, Q = Mode; controllers work; F11
-    fullscreen; Esc quits (README.txt in the zips).
-  If it plays like the original, add `port-verified: DATE` to XMen2Recomp `docs/USER_VERIFIED.md`
-  (or say so here). Anything off (picture, sound, input, speed), a line here is enough.
-- Default taken meanwhile: none needed; every other criterion is worked meanwhile.
-- Blocks only: P8 (its `port-verified` line), so `phase.py 5` exiting 0.
-- Answer:
-
 ### 2026-10-21: phase 7 criteria and rulings (P7 M0)
 - Question: the same for [phases/P7-multiplayer.md](phases/P7-multiplayer.md) (M0-M6, rulings
   R1-R8). It is a draft to be revised at its kickoff with what phase 6 teaches, so this can wait
@@ -111,6 +95,22 @@ Entry format:
 - Answer:
 
 ## Answered
+
+### 2026-10-21: play the native port (P5 P8)
+- Question: play the port that has no 68000 left (XMen2Recomp 78cb548 or later). It is the
+  frame-synchronous machine D8 played (R5), now with its own memory, machine and player. Any of:
+  - Windows: unzip `..\XMen2Recomp\build\package\xmen2-native-windows.zip` (made by
+    `phase.py 5` / `uv run tools/xmen2check.py package`), run `XMen2.exe path\to\xmen2.bin`.
+  - Linux: pull XMen2Recomp, `sudo apt install libsdl2-dev pkg-config ninja-build`
+    once, then `uv run tools/xmen2check.py native-build` and `build/XMen2Native path/to/xmen2.bin`
+    (or the zip `build\package\xmen2-native-linux.zip` from this machine: `./xmen2 path/to/xmen2.bin`).
+  - Keys: arrows; Z/X/C = A/B/C, Enter = Start, A/S/D = X/Y/Z, Q = Mode; controllers work; F11
+    fullscreen; Esc quits (README.txt in the zips).
+  If it plays like the original, add `port-verified: DATE` to XMen2Recomp `docs/USER_VERIFIED.md`
+  (or say so here). Anything off (picture, sound, input, speed), a line here is enough.
+- Default taken meanwhile: none needed; every other criterion is worked meanwhile.
+- Blocks only: P8 (its `port-verified` line), so `phase.py 5` exiting 0.
+- Answer (the user, 2026-10-21): a quick test of the Windows package: "looks good". `port-verified: 2026-10-21` written to XMen2Recomp `docs/USER_VERIFIED.md`.
 
 ### 2026-10-21: phase 6 criteria and rulings (P6 E0)
 - Question: approve [phases/P6-enhance.md](phases/P6-enhance.md) (criteria E0-E6, "Definitions")
