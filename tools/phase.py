@@ -1118,8 +1118,9 @@ def phase5(crit, fresh: bool, draft: bool = False) -> None:
 # --- phase 6: enhancements ---------------------------------------------------------------
 
 P6_IDS = [f"E{i}" for i in range(7)]
-P6_OPTIONS = ("full_rate_2p", "high_fps", "widescreen")
-P6_ALL_OFF = "full_rate_2p=0,high_fps=0,widescreen=0"
+P6_OPTIONS = ("full_rate_2p", "high_fps", "widescreen", "widescreen_gameplay")   # the last: R8 (2026-10-22)
+P6_ALL_OFF = "full_rate_2p=0,high_fps=0,widescreen=0,widescreen_gameplay=0"
+E5_MODES = (("presentation", "widescreen=16:9"), ("gameplay", "widescreen=16:9,widescreen_gameplay=1"))   # R8
 E4_RATES = (120, 144)
 E4_PROBES = 10                 # latency probes over the TAS's gameplay frames
 E4_PROBE_FRAMES = 40           # a probe's flip must change the 60 Hz picture within these frames
@@ -1242,7 +1243,7 @@ def phase6(crit, fresh: bool) -> None:
                 or (not b["ok"] and f"TAS with options off: {b['detail'][:120]}")
                 or same_sync(Path(a["csv"]), Path(b["csv"]), COMPARED + [FB_COL]))
         put("E2", not wrong and not unread and not diff,
-            (f"options missing or not off by default: {', '.join(wrong)}; " if wrong else "the three options, off by default; ")
+            (f"options missing or not off by default: {', '.join(wrong)}; " if wrong else f"the {len(P6_OPTIONS)} options, off by default; ")
             + (f"not read from the settings file: {', '.join(unread)}; " if unread else "read from the settings file; ")
             + (f"TAS with every option off: {diff}" if diff else "TAS with every option off: same rows and frames"))
     if o is None or any(k not in opts for k in P6_OPTIONS):
@@ -1368,29 +1369,47 @@ def phase6(crit, fresh: bool) -> None:
                          + (f"; first: {late_probes[0]}" if late_probes else ""))
         put("E4", ok4, "; ".join(notes))
 
-        # E5: widescreen on every run: the wide columns, sprites, HUD, the screens list
-        say(f"E5: widescreen=16:9 on {len(runs)} runs")
+        # E5: widescreen on every run, in both of R8's modes: the wide columns, sprites, HUD, the
+        # screens list; presentation only, the game's state as with widescreen off, and no bar
+        # the render camera should have avoided
+        say(f"E5: widescreen=16:9, presentation only and with widescreen_gameplay=1, on {len(runs)} runs")
         screens_toml = load_toml(recomp_root() / "game" / "widescreen_screens.toml")
         listed = {k: v for k, v in (screens_toml or {}).items() if isinstance(v, dict)}
+
+        def game_rows(t: dict) -> list[str] | None:
+            p = Path(t.get("csv") or "").parent / "game.csv"
+            return [r.get("game_crc32", "") for r in read_rows(p)] if t.get("ok") and p.is_file() else None
 
         def e5(run: str) -> str | None:
             if run not in refs:
                 return None
-            t = native(run, "--options", "widescreen=16:9")
-            if not t["ok"]:
-                return f"{run} ({t['detail'][:160]})"
-            ws = enh(t).get("ws")
-            if not ws:
-                return f"{run} (no ws counters)"
-            bad = {k: ws.get(k) for k in ("terrain_errors", "sprites_lost", "hud_misplaced") if ws.get(k) != 0}
-            if ws.get("gameplay_frames") and not ws.get("terrain_checks"):
-                bad["terrain_checks"] = 0
-            for sid, mode in (ws.get("screens") or {}).items():
-                entry = listed.get(sid)
-                if not entry or entry.get("mode") != mode or not str(entry.get("why", "")).strip():
-                    bad[f"screen {sid}"] = f"{mode}, listed {entry.get('mode') if entry else 'nowhere'}"
-                    break
-            return f"{run} ({bad})" if bad else None
+            for name, opts in E5_MODES:
+                t = native(run, "--options", opts, *(("--game-rows",) if name == "presentation" else ()))
+                if not t["ok"]:
+                    return f"{run} {name} ({t['detail'][:160]})"
+                ws = enh(t).get("ws")
+                if not ws:
+                    return f"{run} {name} (no ws counters)"
+                keys = ("terrain_errors", "sprites_lost", "hud_misplaced") + (("bars_unneeded",) if name == "presentation" else ())
+                bad = {k: ws.get(k) for k in keys if ws.get(k) != 0}
+                if ws.get("gameplay_frames") and not ws.get("terrain_checks"):
+                    bad["terrain_checks"] = 0
+                for sid, mode in (ws.get("screens") or {}).items():
+                    entry = listed.get(sid)
+                    if not entry or entry.get("mode") != mode or not str(entry.get("why", "")).strip():
+                        bad[f"screen {sid}"] = f"{mode}, listed {entry.get('mode') if entry else 'nowhere'}"
+                        break
+                if name == "presentation" and not bad:
+                    off = native(run, "--options", "widescreen=0", "--game-rows")
+                    a, b = game_rows(off), game_rows(t)
+                    if a is None or b is None:
+                        bad["game state"] = "no game.csv" + ("" if off["ok"] else f" (off: {off['detail'][:100]})")
+                    elif a != b:
+                        k = next((i for i, (x, y) in enumerate(zip(a, b)) if x != y), min(len(a), len(b)))
+                        bad["game state"] = f"differs from widescreen off at row {k + 1} of {len(a)}"
+                if bad:
+                    return f"{run} {name} ({bad})"
+            return None
         out = pmap(e5, runs) if screens_toml is not None else ["no game/widescreen_screens.toml"]
         put("E5", not any(out) and not no_ref, first_bad(out) if screens_toml is not None else out[0])
 

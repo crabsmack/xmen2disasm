@@ -3,7 +3,8 @@
 approved: 2026-10-21
 
 **Status: criteria approved by the user 2026-10-21, with rulings R1-R7** (asked one by one in
-the session; R4 and R5 with the user's conditions, recorded below). Phase 6 is the user's three
+the session; R4 and R5 with the user's conditions, recorded below), **and R8 on 2026-10-22**
+(two widescreen modes). Phase 6 is the user's three
 enhancements, as decided on 2026-10-21 (ROADMAP.md "Decisions on record"): **full frame rate in
 two-player**, **high frame rate** and **true widescreen**. Phase 7
 ([P7-multiplayer.md](P7-multiplayer.md)) is online play and four players. Work starts once
@@ -25,6 +26,13 @@ same day, before any work, "The contract" section was added: how each criterion 
   feature did. A stretch with no such point fails its probe.
 - **The screen id inside `Cerebro_Run`** is the Cerebro screen's (`CerebroScreen PlayerSelect`
   for the select after a death, 4:3), not the stage's scene whose index it runs under.
+
+**Changed 2026-10-22 (user, in the session): R8, two widescreen modes.** The user asked for a
+16:9 view that only changes the picture, as the default when widescreen is on, beside R6's
+gameplay-affecting one, and approved the design discussed in the session (a render camera rather
+than bars at the level edges). Ruled as R8 below. E2 lists the new setting, E5 is measured in both
+modes and checks in the presentation mode that the game's state is the 4:3 run's; the contract
+gains `--game-rows` and the `bars_unneeded` counter.
 
 Goal: XMen2Native gains the three enhancements as **options**. With every option off it is still
 the proven port of phase 5, checked by the same measurements. With an option on, it is checked
@@ -104,6 +112,30 @@ Checked by `uv run tools/phase.py 6` (writes `docs/progress/P6.md`). Requires ph
   engine's VDP margins as the renderer. Fallback, only where the streamer can't (narrow BG planes,
   `g_BgNarrow`: 44 tiles = 352 px): a scene renderer that draws plane A or B straight from the
   block map, as Sonic 1's does, checked against the name table wherever both exist.
+- **R8 Widescreen modes (ruled by the user 2026-10-22, in the session). Ruled: presentation only
+  by default, R6's gameplay mode as a second setting** (the user: "make this r8 ... the default
+  widescreen mode should be presentation-only, not the gameplay-affecting one").
+  - `widescreen=16:9` alone is **presentation only**: the game plays as in 4:3. Objects activate,
+    spawn and despawn at the original 320 px (`ACT_L`/`ACT_R` give the original windows), the
+    camera keeps its original limits (`CAM_LO`/`CAM_HI` the original), and every 320-px test that
+    decides what the game does stays 320. Only what is drawn widens: the sprite culls that choose
+    what is drawn, the streamer (R7), the HUD.
+  - A **render camera**, which exists only in the renderer, keeps the 400-px window inside the
+    level: it starts at `clamp(camera - 40, L, R - 400)`, `[L, R)` the x the level shows (the
+    camera's range widened by the 320-px view, within the FG map). In mid-level that is
+    `camera - 40`, the same picture as R6's; at a level's edge the 80 extra pixels go to the open
+    side instead of a bar. A level narrower than 400 px is centred, with bars past its ends. (Not
+    chosen: bars wherever the view passes the camera's 4:3 limits, which would put a bar at the
+    start of every level.)
+  - The cost the user accepted: objects still appear and vanish at the original 320-px edges, now
+    inside the margins.
+  - `widescreen_gameplay=1` (with `widescreen=16:9`) is R6 as built: objects activate across the
+    wide view and the camera keeps the wide view inside the level. Off by default.
+  - Online (phase 7 R10): `widescreen_gameplay` changes the game and is the host's. The 16:9 view
+    stays the host's too for now: presentation only, it still changes the sprite table and the
+    planes that the canonical digest compares, so a seat with another view would read as a desync.
+    Making the view a local setting (R10's note) needs the digest to leave that state out
+    (`--game-rows`' masks); phase 7's to decide.
 
 ## Criteria
 
@@ -111,10 +143,10 @@ Checked by `uv run tools/phase.py 6` (writes `docs/progress/P6.md`). Requires ph
 |---|---|---|
 | E0 | Criteria approved | this file has a line `approved: YYYY-MM-DD` (user's word only) and the capitalised draft marker is gone from the title |
 | E1 | The original is kept | the release runner with every option off passes phase 5's measured criteria: `phase.py 5`'s P1-P7 and P9, on the phase-6 sources and runner (the corpus traces equal the reference at every sync point, P2's ledger, the object scan and link map, the TAS framebuffers, the Linux TAS) |
-| E2 | Options | `XMen2.exe --options --json` lists `full_rate_2p`, `high_fps`, `widescreen` (with their settings), each off by default, read from the command line and the settings file. A run with each option given explicitly off has the same sync rows and framebuffers on the TAS as a run without options |
+| E2 | Options | `XMen2.exe --options --json` lists `full_rate_2p`, `high_fps`, `widescreen`, `widescreen_gameplay` (R8) (with their settings), each off by default, read from the command line and the settings file. A run with each option given explicitly off has the same sync rows and framebuffers on the TAS as a run without options |
 | E3 | Two-player full rate | with `full_rate_2p` on: every corpus run that never has two players alive has the same sync rows and framebuffers as with it off (the option touches only two-player play); on the TAS from the frame player 2 joins and on `scenario-two-player`, every logic frame is one displayed frame (no frame-tick wait), `g_TwoPlayerStep` stays 0, and every corpus input runs to its end with no fatal from the memory layer and no hang |
 | E4 | High frame rate | with `high_fps` at 120 and 144 Hz (a headless present clock): the sync rows of the whole corpus equal the reference (presentation only), and the frame shown at each logic instant has P7's hash. On the TAS's gameplay frames, at least 95% of the sprites outside the HUD are matched to an object and interpolated, and the 144 Hz render time is p99 < 6.9 ms on this machine. Latency (R4): on a scripted input change that shows on screen in each of 10 TAS scenes, the first displayed frame that shows its effect comes no later on the present clock than with `high_fps` off, and the whole logic frame is on screen at the same time as with it off |
-| E5 | Widescreen | with `widescreen` 16:9: on every gameplay frame of the TAS input and each corpus input, the wide columns of planes A and B hold what the level's block map says (0 terrain-check errors), no sprite is lost to the 9-bit x range, the HUD is pinned to the screen edges, and each non-gameplay screen is as `game/widescreen_screens.toml` lists it (R5: wide with its wide columns drawn, or 4:3 centred with bars; each with its reason); every corpus input runs to its end with no fatal and no hang |
+| E5 | Widescreen | in both of R8's modes (`widescreen=16:9`, presentation only, and with `widescreen_gameplay=1`): on every gameplay frame of the TAS input and each corpus input, the wide columns of planes A and B hold what the level's block map says (0 terrain-check errors), no sprite is lost to the 9-bit x range, the HUD is pinned to the screen edges, and each non-gameplay screen is as `game/widescreen_screens.toml` lists it (R5: wide with its wide columns drawn, or 4:3 centred with bars; each with its reason); every corpus input runs to its end with no fatal and no hang. Presentation only (R8): at every sync point of every corpus input the game's state equals the run with widescreen off (`--game-rows`), and no gameplay frame has a bar where the level shows 400 px or more (the render camera) |
 | E6 | Release and playtest | `xmen2check.py package` (Windows and Linux) builds packages with the options and the same ROM-free check as P8/P9; and `docs/USER_VERIFIED.md` (XMen2Recomp) has `enhancements-verified: YYYY-MM-DD`, written only on the user's word after playing all three |
 
 ### Definitions (changing any of them needs the user's approval, recorded here)
@@ -127,6 +159,13 @@ Checked by `uv run tools/phase.py 6` (writes `docs/progress/P6.md`). Requires ph
   gives for that position (`g_FgBlockMap` / `g_BgBlockMap` and the block definitions), with the
   levels' known exceptions (tiles the game rewrites at run time, `Map_RedrawBlock`) listed in
   NOTES with their reason.
+- **The game's state** (R8, `--game-rows`): work RAM with the stack area masked as the sync rows,
+  less the RAM the view changes that nothing deciding the game reads (each range listed in the
+  runner, `main.cpp` `k_view_ram`, and in NOTES with its readers: the sprite table and its fill
+  state, the streamer's drawn x, the sprite-slot splices of Cyclops's beam and the hologram
+  flickers); CRAM; VSRAM; VRAM less the plane A and B name tables and the
+  sprite table. A masked range that fed the game would show in the rest, so the comparison checks
+  the masks too.
 - **No fatal, no hang**: the native runner exits 0 at the end of the input; `xm::fatal` (an
   address outside work RAM and the ROM, a store tag out of range, the stack region overrun) and the
   hardware-poll limit both count as failures.
@@ -150,6 +189,7 @@ XMen2Native --options --json        # (the release runner, XMen2.exe in the pack
     # {"options": {"full_rate_2p": {"default": "0", "values": [...]},
     #              "high_fps":     {"default": "0", "values": [...]},     # 0 = off, else a rate in Hz
     #              "widescreen":   {"default": "0", "values": [...]},     # 0 = off, "16:9"
+    #              "widescreen_gameplay": {"default": "0", "values": ["0", "1"]},   # R8: 1 = R6's mode
     #              ...}}                                                    # more settings may follow
     # --options K=V,K=V on a played or traced run sets them; a settings file beside the runner
     # (`xmen2.ini`, [options] K=V) sets them too, the command line winning
@@ -157,7 +197,7 @@ xmen2check.py options --json
     # {"ok", "exe", "options": <the runner's --options --json>,
     #  "from_settings": {K: V}}   # the effective values of a run whose xmen2.ini sets every option
     #                             # to its first non-default value (the runner's own report)
-xmen2check.py trace --mode native ... [--options K=V,...] [--present-log] [--flip N]
+xmen2check.py trace --mode native ... [--options K=V,...] [--present-log] [--flip N] [--game-rows]
     # as phase 5; the runner gets --options. The JSON adds "options" (the effective values) and
     # "enhance" (counters below). --present-log writes OUT/present.csv: one row per displayed
     # frame on a headless present clock (high_fps's rate, 59.92 Hz when off), columns
@@ -167,7 +207,8 @@ xmen2check.py trace --mode native ... [--options K=V,...] [--present-log] [--fli
     #   gameplay  1 on a gameplay frame
     #   fb_fnv1a64  the frame's hash (as --fb)
     # --flip N: the C button's state inverted in runner frames N to N+7 of the input script
-    # (the latency probe). --frames cuts the run as before.
+    # (the latency probe). --frames cuts the run as before. --game-rows (R8) writes OUT/game.csv:
+    # `sync,game_crc32`, the CRC-32 of the game's state ("Definitions") at each sync point.
 xmen2check.py package [--platform P] --json
     # as phase 5, plus "options": the packaged runner's --options --json
 ```
@@ -180,13 +221,16 @@ xmen2check.py package [--platform P] --json
 | `two_player_step_frames` | logic frames with `g_TwoPlayerStep` set |
 | `frame_tick_waits` | V-ints taken by a wait for the frame tick outside a sync point (`plat_wait_vint`) |
 | `present` (with `high_fps` or `--present-log`) | `{"hz", "frames", "whole", "sprites", "sprites_matched", "render_us_p99"}`: sprites counted on gameplay frames, outside the HUD; matched = drawn interpolated from their object's previous position; render time per displayed frame |
-| `ws` (with `widescreen`) | `{"gameplay_frames", "terrain_checks", "terrain_errors", "sprites_lost", "hud_misplaced", "screens": {screen id: "wide" or "4:3"}}` |
+| `ws` (with `widescreen`) | `{"gameplay_frames", "terrain_checks", "terrain_errors", "sprites_lost", "hud_misplaced", "bars_unneeded", "screens": {screen id: "wide" or "4:3"}}` |
 
 - `sprites_lost`: sprite table entries reached by the links whose 16-bit x word lies in the wide
-  view but outside the 9 bits the VDP reads.
+  view but outside the 9 bits the VDP reads (R8: the word as the render camera shifts it for the
+  VDP, the HUD's unshifted).
 - `hud_misplaced`: gameplay frames where a HUD sprite `Level_FrameLoop` writes (tile attribute
   `$A7xx`) is not at its 4:3 x minus the left margin (player 1's) or plus the right margin
-  (player 2's).
+  (player 2's): the view's margin, 40 px (R8's render camera leaves the HUD where it is).
+- `bars_unneeded` (R8): gameplay frames on a wide screen, presentation only, with a bar where the
+  level's showable `[L, R)` is 400 px or wider.
 - **Screen id**: the name string of the running scene's `g_SceneTable` entry
   (`g_SceneIndex`), or `boot` before the first scene; inside `Cerebro_Run`, the Cerebro
   screen's (the select after a death runs under its stage's index: `CerebroScreen PlayerSelect`). `game/widescreen_screens.toml` lists
@@ -196,8 +240,9 @@ How `phase.py 6` measures each criterion (corpus runs under P5's D1 replay input
 by the runner's hash as in phase 5):
 
 - **E1**: phase 5's measurement (`phase5()`), passing when P1-P7 and P9 pass.
-- **E2**: `options --json` lists the three options with default `0`, `from_settings` equals what
-  the settings file set, and the TAS with `--options full_rate_2p=0,high_fps=0,widescreen=0 --fb`
+- **E2**: `options --json` lists the four settings with default `0`, `from_settings` equals what
+  the settings file set, and the TAS with
+  `--options full_rate_2p=0,high_fps=0,widescreen=0,widescreen_gameplay=0 --fb`
   has the same rows and frame hashes as without options.
 - **E3**: every corpus run with `--fb`, with the option off and on. A run whose off trace has
   `two_player_frames` 0 must have the same rows and frame hashes both ways. Any other run must
@@ -213,10 +258,13 @@ by the runner's hash as in phase 5):
     option off changes the picture within 40 frames (none: that probe fails). At each, `--flip N`
     at 144: the first displayed frame that differs from the unflipped run comes no later at 144
     than with the option off.
-- **E5**: every corpus run with `widescreen=16:9`. Each ends normally with `terrain_errors`,
-  `sprites_lost` and `hud_misplaced` 0, and `terrain_checks` > 0 when it has gameplay frames.
-  Every reported screen is in `widescreen_screens.toml` with the same mode and a reason.
-- **E6**: both packages as P8/P9 (ROM-free, built), each runner listing the three options, and
+- **E5**: every corpus run with `widescreen=16:9` and with `widescreen=16:9,widescreen_gameplay=1`.
+  Each ends normally with `terrain_errors`, `sprites_lost` and `hud_misplaced` 0, and
+  `terrain_checks` > 0 when it has gameplay frames. Every reported screen is in
+  `widescreen_screens.toml` with the same mode and a reason. Presentation only (R8): with
+  `--game-rows`, its `game.csv` equals that of the run with `widescreen=0` (every row), and
+  `bars_unneeded` is 0.
+- **E6**: both packages as P8/P9 (ROM-free, built), each runner listing the options of E2, and
   `enhancements-verified: DATE` in XMen2Recomp `docs/USER_VERIFIED.md`.
 
 ## How to work it

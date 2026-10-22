@@ -24,6 +24,22 @@ Entry format:
 
 ## Open
 
+### 2026-10-22: try R8's two widescreen modes (P6, after E6)
+- Question: R8 is built (XMen2Recomp `ws-presentation` merged to main; see P6-enhance.md R8).
+  `--options widescreen=16:9` (or `widescreen=16:9` in `xmen2.ini`) is now presentation only: the
+  game plays exactly as in 4:3 (checked: the game's state equals the 4:3 run's at every sync
+  point of the corpus and of every stage's walker run), enemies still appear at the old 320-px
+  edge, and at a stage's edge the picture slides instead of showing a bar. Add
+  `widescreen_gameplay=1` for the mode you played before (enemies across the wide view). Also
+  fixed in both modes: Siberia's right 40 px were barred on every frame (its foreground is a
+  repeating 512-px strip, which the bar test misread as the stage's end). A look at a stage's
+  start and end in each mode is enough; anything odd (a bar, a seam, a jump of the picture at
+  an edge, the HUD moving), a line here.
+- Default taken meanwhile: none needed. E6's `enhancements-verified: 2026-10-22` predates R8 and
+  stays; this is a check of the new mode, not a criterion.
+- Blocks only: nothing.
+- Answer:
+
 ### 2026-10-22: play four players and online (P7 M6)
 - Question: play the multiplayer build (XMen2Recomp 0ac6b1d or later; the package as before:
   `uv run tools/xmen2check.py package`, or on Linux `native-build`; the README in it has all of this):

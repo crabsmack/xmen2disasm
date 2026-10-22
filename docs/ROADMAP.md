@@ -134,3 +134,9 @@ phase doc with the date.
   `high_fps` stays each player's (a later presentation-only 16:9 would be local). Online play runs
   the "session machine" and peers compare a canonical digest (MSVC and GCC lay structs out
   differently).
+- 2026-10-22 (user): phase 6 R8, two widescreen modes. `widescreen=16:9` alone is presentation
+  only and the default: the game plays as in 4:3 (original activation, camera limits and logic),
+  with a render camera keeping the 400-px window inside the level instead of bars at its edges;
+  `widescreen_gameplay=1` is R6's mode. E2 lists the setting; E5 runs both modes and, presentation
+  only, compares the game's state with the 4:3 run (`--game-rows`). Online both stay the host's
+  until phase 7 makes the view local (the digest would have to leave the view's state out).
