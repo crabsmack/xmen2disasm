@@ -84,7 +84,7 @@ Entry format:
 
 ### 2026-10-21: phase 7 criteria and rulings (P7 M0)
 - Question: the same for [phases/P7-multiplayer.md](phases/P7-multiplayer.md) (M0-M6, rulings
-  R1-R8). It is a draft to be revised at its kickoff with what phase 6 teaches, so this can wait
+  R1-R9). It is a draft to be revised at its kickoff with what phase 6 teaches, so this can wait
   until phase 6 is done. The defaults:
   - R1 the engine's rollback netplay (`recomp-net`, `rbengine`); R2 full in-process savestates
     with the game back on a fiber (quick save and rewind not in the release); R3 two players
@@ -96,6 +96,10 @@ Entry format:
     tile memory as host-side renderer extensions; R7 the two-player rules extended (no difficulty
     scaling, the camera follows the group); R8 LAN and direct IP first, then relay and ICE, no
     lobby server until you say who hosts one.
+  - R9 (added 2026-10-21 from your note that players 3 and 4 should add their characters' music
+    parts as players 1 and 2 do): a second, audio-only sound machine running the same driver
+    with `$B`/`$C` = players 3 and 4, mixing in only its part channels; the alternative is an
+    edited four-slot song bank.
 - Default taken meanwhile: none (phase 7 follows phase 6).
 - Blocks only: M0, so all of phase 7.
 - Answer:
