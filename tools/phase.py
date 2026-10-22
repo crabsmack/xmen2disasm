@@ -1123,6 +1123,7 @@ P6_ALL_OFF = "full_rate_2p=0,high_fps=0,widescreen=0"
 E4_RATES = (120, 144)
 E4_PROBES = 10                 # latency probes over the TAS's gameplay frames
 E4_PROBE_FRAMES = 40           # a probe's flip must change the 60 Hz picture within these frames
+E4_SCAN = 512                  # frames of a window one --flip-scan run searches for its probe
 E4_RENDER_P99_US = 6900        # one 144 Hz frame
 E4_MATCHED = 0.95              # interpolated share of the non-HUD sprites
 
@@ -1316,21 +1317,48 @@ def phase6(crit, fresh: bool) -> None:
             def seen_off(n: int) -> float | None:
                 return first_change(p_off, present(native("tas", "--present-log", *cut(n))))
 
+            # The search runs E4_SCAN frames of a window per run (--flip-scan: each frame's flip from a
+            # savestate, its rows those `--flip N --frames N+40` logs from there; 2026-10-22: one TAS
+            # replay per candidate took hours where the TAS pauses). The probes found are measured
+            # by their own --flip runs below, off and at 144 Hz, as before.
+            off_fb = {int(r["sync"]): r.get(FB_COL) for r in p_off}
+
+            def scan(span: list[int]) -> tuple[int | None, str | None]:
+                """The first frame of span whose flip changes the 60 Hz picture within the probe's
+                frames, or why the scan run failed."""
+                t = native("tas", "--present-log", "--frames", str(span[-1] + 1 + E4_PROBE_FRAMES),
+                           "--flip-scan", f"{span[0]}:{span[-1] + 1}:{E4_PROBE_FRAMES}")
+                f = Path(t.get("csv") or "").parent / "flip_scan.csv"
+                if not (t.get("ok") and f.is_file()):
+                    return None, f"the flip scan of {span[0]}-{span[-1]} failed ({(t.get('detail') or 'no flip_scan.csv')[:120]})"
+                changed = {int(r["flip"]) for r in read_rows(f)
+                           if int(r["sync"]) in off_fb and r.get(FB_COL) != off_fb[int(r["sync"])]}
+                return next((n for n in span if n in changed), None), None
+
+            windows = [play[lo:bases[i + 1] if i + 1 < len(bases) else len(play)] for i, lo in enumerate(bases)]
+            found: dict[int, int | None] = {}
+            why: dict[int, str] = {}
+            at = [0] * len(windows)
+            while pending := [i for i in range(len(windows)) if i not in found and at[i] < len(windows[i])]:
+                spans = []
+                for i in pending:
+                    w = windows[i]
+                    spans.append([n for n in w[at[i]:at[i] + E4_SCAN] if n < w[at[i]] + E4_SCAN])
+                for i, span, (n, err) in zip(pending, spans, pmap(lambda k: scan(spans[k]), list(range(len(spans))))):
+                    at[i] += len(span)
+                    if err or n is not None:
+                        found[i] = n
+                        why[i] = err or ""
             probes, unseen = [], []
-            for i, lo in enumerate(bases):
-                cands = play[lo:bases[i + 1] if i + 1 < len(bases) else len(play)]
-                found = None
-                for k in range(0, len(cands), max(1, JOBS)):
-                    chunk = cands[k:k + max(1, JOBS)]
-                    found = next((n for n, t in zip(chunk, pmap(seen_off, chunk)) if t is not None), None)
-                    if found is not None:
-                        break
-                (probes.append(found) if found is not None else
-                 unseen.append(f"syncs {cands[0]}-{cands[-1]}: no flip there changes the 60 Hz picture"))
+            for i, w in enumerate(windows):
+                (probes.append(found[i]) if found.get(i) is not None else
+                 unseen.append(f"syncs {w[0]}-{w[-1]}: " + (why.get(i) or "no flip there changes the 60 Hz picture")))
 
             def probe(n: int) -> str | None:
                 b = native("tas", "--options", "high_fps=144", "--present-log", *cut(n))
                 ta, tb = seen_off(n), first_change(p_on, present(b))
+                if ta is None:
+                    return f"sync {n}: the flip scan saw a change its own run (--flip {n}) doesn't show"
                 if tb is None:
                     return f"sync {n}: the flip changed nothing on screen at 144 Hz"
                 return None if tb <= ta else f"sync {n}: first change at {tb:.0f} us at 144 Hz, {ta:.0f} us off"
@@ -1462,6 +1490,16 @@ def phase7(crit, fresh: bool) -> None:
     ok0 = approved(7)
     put("M0", ok0, "criteria approved" if ok0 else f"docs/phases/{DOCS[7]} is not approved")
     if not ok0:
+        return report()
+
+    # build first: M2-M5 run the snapshot's runners before M1's phase 5 builds them (2026-10-22: they
+    # measured the previous build's runner, which had no `players` option)
+    say("build --native (the runners M2-M5 trace)")
+    b, err = contract("build", "--native", timeout=4 * 3600)
+    if b is None or b.get("ok") is not True:
+        why = err or f"build not ok (log {b.get('log')})"
+        for cid in P7_IDS[1:]:
+            put(cid, False, f"native build failed: {why}")
         return report()
 
     tr = Traces(fresh)

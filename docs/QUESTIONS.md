@@ -50,6 +50,28 @@ Entry format:
 - Blocks only: E6 (its `enhancements-verified` line), so `phase.py 6` exiting 0.
 - Answer:
 
+### 2026-10-22: play four players and online (P7 M6)
+- Question: play the multiplayer build (XMen2Recomp 0ac6b1d or later; the package as before:
+  `uv run tools/xmen2check.py package`, or on Linux `native-build`; the README in it has all of this):
+  - **Four on one machine**: `--options players=4` (or 3) with four controllers plugged in (players 1-4
+    in plugging order; the keyboard is player 1). Players 3-4 press Start at the player select to
+    join and pick a character as player 2 does (no two the same); in Siberia's opening they join with
+    Start. Things to look at: their panels ("3"/"4" beside 1 and 2), the camera keeping everyone in
+    view, their sprites and shots, the teleporters in CloneA2, the music: on Siberia (Blizzard),
+    BaniMaza's exterior, Savage's Jungle 2 and the Clone stages players 3-4's characters add their
+    own parts to the stage music, as players 1-2's do.
+  - **Online**: two machines (or two windows on one): host `XMen2 xmen2.bin --netplay lan --seat 0
+    --seats 2 --bind 0.0.0.0:7000`, the other `--netplay lan --seat 1 --seats 2 --bind 0.0.0.0:7001
+    --peer HOSTIP:7000` (UDP 7000 open on the host). For four: `--netplay hub --seats 4` on every
+    seat (seats 1-3 each with their own `--seat N`, port and `--peer HOSTIP:7000`) and
+    `--options players=4` on the host. Each seat plays with its own keyboard / first controller.
+  If they play well, add `multiplayer-verified: DATE` to XMen2Recomp `docs/USER_VERIFIED.md` (or say
+  so here). Anything off (a desync message, lag, a player 3-4 missing from the picture or the
+  music, the camera losing someone), a line here is enough, with the stage.
+- Default taken meanwhile: none needed.
+- Blocks only: M6 (its `multiplayer-verified` line), so `phase.py 7` exiting 0.
+- Answer:
+
 ### 2026-10-22: M4's bounds where the original has players off view or dead (P7 M4)
 - Question: M4 wants every player in play ≥ 50% of a stage input's gameplay frames and outside the
   view ≤ 1% of its in-play frames. 20 of the 23 stage inputs meet every bound with `players` 4; the
