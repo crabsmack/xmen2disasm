@@ -74,14 +74,19 @@ Entry format:
 
 ### 2026-10-22: M4's bounds where the original has players off view or dead (P7 M4)
 - Question: M4 wants every player in play ≥ 50% of a stage input's gameplay frames and outside the
-  view ≤ 1% of its in-play frames. 20 of the 23 stage inputs meet every bound with `players` 4; the
-  other three can't, for reasons that are the original game's:
+  view ≤ 1% of its in-play frames. 20 of the 23 stage inputs meet every bound with `players` 4 and
+  with 3 (M4 runs both); the other three can't, with either, for reasons that are the original game's:
   - **avalon** (scene 8, AvalonB1): the stage opens with the camera panning up to the players, 191
     frames with players 1-2 outside the view, the same 191 with `players` 2 (the original). Under 1%
     would need about 19,100 frames in play after it.
   - **boot** (SiberiaB1): in the snow drifts the players' feet (their position) go below the view's
     bottom edge, 3-4% of frames per player (the TAS's one player, by the same measure, is outside the
-    view on 23% of its gameplay frames). Player 1 also dies early there (44% in play).
+    view on 23% of its gameplay frames). Player 1 also dies early there (44% in play). And M4's
+    `hud_missing` 0: boot has 106 such frames with `players` 4 (105 with 3). 102 are the original's own:
+    player 1's panel is absent for frames 300-401 of the opening, the same 102 with `players` 2. The
+    other 4 are join frames: Level_FrameLoop draws the HUD before it reads the pads, so a player who
+    joins with Start gets a panel the next frame (with `players` 2, player 2's join frame is covered
+    by the blinking "press Start" prompt, whose sprite has the panel's tile).
   - **cloneA5** (scene 42, Brood): its attacks aim at players 1-2 by name and kill them within 500
     frames (35% in play) while players 3-4 live on (87%).
   Proposed, for off view: a player counts as off view only while the camera is following the players

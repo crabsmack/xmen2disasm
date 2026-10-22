@@ -182,11 +182,11 @@ def run_frames(run: str) -> int:
     return sum(int(m.group(1), 0) for m in re.finditer(r"^WAIT\s+(\S+)", p.read_text(), re.M))
 
 
-def pmap(fn, items: list) -> list:
-    """fn over items on JOBS threads (each runs a subprocess); results in the items' order. Corpus
-    runs (names) start longest first, so the last to finish are short ones."""
+def pmap(fn, items: list, jobs: int | None = None) -> list:
+    """fn over items on JOBS threads (or `jobs`; each runs a subprocess); results in the items' order.
+    Corpus runs (names) start longest first, so the last to finish are short ones."""
     cost = {i: run_frames(i) if isinstance(i, str) else 0 for i in items}
-    with ThreadPoolExecutor(max_workers=max(1, JOBS)) as ex:
+    with ThreadPoolExecutor(max_workers=max(1, min(JOBS, jobs or JOBS))) as ex:
         futs = {i: ex.submit(fn, i) for i in sorted(items, key=lambda i: -cost[i])}
         return [futs[i].result() for i in items]
 
@@ -1422,6 +1422,9 @@ LINKS = {"clean": "latency=0,jitter=0,loss=0,seed=7",
 M3_SEALED = "full_rate_2p=1,widescreen=16:9,lives=inf"   # the host's game options (R10)
 M3_SEAT_OWN = "high_fps=144,widescreen=0"                 # seat 1's own command line
 M3_LATE = 0.01            # late frames under `mid`, of a seat's frames
+# sessions at a time: each seat runs in real time, and 11 sessions at once (22 seats and a WSL one) made
+# seats late that are on time alone (2026-10-22, w-clone: 38/3510 in the plan, 1-24/3512 alone)
+SESSION_JOBS = 4
 M4_IN_PLAY = 0.50         # each player's in-play share of the gameplay frames
 M4_DRAWN = 0.50           # drawn share of a player's in-play frames
 M4_OFF_VIEW = 0.01        # outside the view, share of its in-play frames
@@ -1606,15 +1609,20 @@ def phase7(crit, fresh: bool) -> None:
     # sessions (M3, M5): N seats over loopback against the offline session-machine trace
     off_locks: dict[str, threading.Lock] = {}
 
-    def session(name: str, seats: int, inp: Path, link: str, host_opts: str = "", scene: tuple[str, ...] = (),
-                extra: tuple[str, ...] = (), transport: str = "lan", cache: bool = True) -> dict:
-        """-> {"err"} or {"seats", "offline", "data"}: every seat checked against the offline run."""
+    def offline(inp: Path, host_opts: str = "", scene: tuple[str, ...] = ()) -> dict:
+        """A session's offline reference: the session-machine trace of its input and game options."""
         opts = ("--options", host_opts) if host_opts else ()
         off_name = f"np-offline-{inp.stem}" + (f"-{dir_tag(host_opts)}" if host_opts else "")
         with tr.lock:
             lk = off_locks.setdefault(off_name, threading.Lock())
         with lk:   # shared by the sessions of one input, which run in parallel: one trace, then cache hits
-            off = played(off_name, inp, *SESSION, "--digest", *scene, *opts)
+            return played(off_name, inp, *SESSION, "--digest", *scene, *opts)
+
+    def session(name: str, seats: int, inp: Path, link: str, host_opts: str = "", scene: tuple[str, ...] = (),
+                extra: tuple[str, ...] = (), transport: str = "lan", cache: bool = True) -> dict:
+        """-> {"err"} or {"seats", "offline", "data"}: every seat checked against the offline run."""
+        opts = ("--options", host_opts) if host_opts else ()
+        off = offline(inp, host_opts, scene)
         if not off["ok"]:
             return {"err": f"offline trace: {off['detail'][:140]}"}
         out = tr.out_dir / f"np-{name}"
@@ -1650,8 +1658,14 @@ def phase7(crit, fresh: bool) -> None:
         return {"seats": st, "data": data}
 
     def run_plan(plan: list[tuple[str, tuple, dict]]) -> list[tuple[str, dict]]:
-        """The sessions of a plan in parallel (by index: pmap's items must be hashable)."""
-        return pmap(lambda i: (plan[i][0], session(*plan[i][1], **plan[i][2])), list(range(len(plan))))
+        """The sessions of a plan in parallel (by index: pmap's items must be hashable), after all of
+        their offline references: an offline trace runs unpaced, and one running beside a session's
+        real-time seats made them late (2026-10-22: om-sealed seat 1 88/8349 late in the plan, 1/8346
+        alone)."""
+        pmap(lambda i: offline(plan[i][1][2], plan[i][2].get("host_opts", ""), plan[i][2].get("scene", ())),
+             list(range(len(plan))))
+        return pmap(lambda i: (plan[i][0], session(*plan[i][1], **plan[i][2])), list(range(len(plan))),
+                    jobs=SESSION_JOBS)
 
     def sessions_result(results: list[tuple[str, dict]]) -> tuple[list[str], int]:
         bad = [f"{n} ({r['err']})" for n, r in results if "err" in r]
