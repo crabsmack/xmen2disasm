@@ -146,12 +146,26 @@ def read_frames(path: Path, key: str = "frame") -> tuple[list[str], dict[int, di
         return list(rd.fieldnames or []), rows
 
 
+_EXPORTED: dict[str, Path] = {}
+_EXPORT_LOCK = threading.Lock()
+
+
 def export_input(run: str, out_dir: Path) -> tuple[Path | None, str]:
+    """A corpus run's input, exported once per phase.py process (under a lock, written beside and
+    moved into place): the traces run on pmap's threads, and a re-export while another trace reads
+    the file gave that trace a torn input (2026-10-22: E4's probe traces played all-zero pads, so
+    their "flip" changed the picture at once and the probes chosen were wrong)."""
     out_dir.mkdir(parents=True, exist_ok=True)
     inp = out_dir / f"{run}.input"
-    e = uv_run(ROOT, "emu/export_input.py", run, "--out", str(inp), timeout=600)
-    if e.returncode != 0 or not inp.exists():
-        return None, f"export_input.py {run} failed: {(e.stdout + e.stderr)[-200:]}"
+    with _EXPORT_LOCK:
+        if str(inp) in _EXPORTED and inp.exists():
+            return inp, ""
+        tmp = out_dir / f"{run}.input.tmp"
+        e = uv_run(ROOT, "emu/export_input.py", run, "--out", str(tmp), timeout=600)
+        if e.returncode != 0 or not tmp.exists():
+            return None, f"export_input.py {run} failed: {(e.stdout + e.stderr)[-200:]}"
+        os.replace(tmp, inp)
+        _EXPORTED[str(inp)] = inp
     return inp, ""
 
 
