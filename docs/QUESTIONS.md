@@ -38,8 +38,8 @@ Entry format:
     twice the speed, the frame-synchronous machine showing one frame per logic frame.)
   - Or an `xmen2.ini` beside the program: `[options]` then `widescreen=16:9` etc.
   - Cheats (asked for during the playtest, not criteria): `lives=inf` or `lives=N` (1-99),
-    `magneto=1` (selectable from the start). `--handover` with `--input-script F` plays a script
-    and then hands over the pads (with `XMEN2_DEBUG_SCENE=1`: straight into Sentinels as Cyclops).
+    `magneto=1` (selectable from the start), `start_char=beast..magneto` (Siberia's character at
+    power-on, otherwise at random: played runs now read a real V counter, so it varies again).
   - Progress (2026-10-21): the first session found ghost limbs beside an idling Cyclops and part
     of him missing in his charged blast at 144 Hz; fixed in XMen2Recomp 9300fd8 (sprites move by
     their object's anchor).
