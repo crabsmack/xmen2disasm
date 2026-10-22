@@ -101,6 +101,26 @@ def header_subset(name: str, text: str, used: set[str]) -> str:
     return "\n".join(out) + "\n"
 
 
+DEFINE = re.compile(r"^\s*#\s*define\s+([A-Za-z_]\w*)(.*)$", re.M)
+
+
+def macro_closure(used: set[str], texts) -> set[str]:
+    """`used` plus every name the headers' macros it uses expand to, transitively (a macro's body
+    can name a declaration the file itself never spells: phase 7's GROUP_P names g_Player1). Every
+    #define counts, whichever branch it is in: a few more declarations kept compile to nothing."""
+    bodies: dict[str, set[str]] = {}
+    for t in texts:
+        for m in DEFINE.finditer(re.sub(r"/\*.*?\*/", " ", re.sub(r"\\\n", " ", t), flags=re.S)):
+            bodies.setdefault(m.group(1), set()).update(IDENT.findall(m.group(2)))
+    out, todo = set(used), [n for n in used if n in bodies]
+    while todo:
+        for n in bodies.get(todo.pop(), ()):
+            if n not in out:
+                out.add(n)
+                todo.append(n)
+    return out
+
+
 def game_headers(root: Path) -> list[Path]:
     """A game repo's header directories: game/include, and platform/ (phase 5: the hardware names,
     whose MPW definitions are the addresses) when it exists."""
@@ -134,9 +154,11 @@ def compile_c(src: Path, cand: dict, flags: str, include: "Path | list[Path] | N
         dirs = list(include) if isinstance(include, (list, tuple)) else [include] if include else []
         if dirs:
             used = set(IDENT.findall(re.sub(r"/\*.*?\*/", " ", src.read_text(encoding="utf-8", errors="replace"), flags=re.S)))
-            for h in sorted(h for d in dirs for h in d.glob("*.h")):
-                text = h.read_text(encoding="utf-8", errors="replace")
-                (Path(wd) / h.name).write_text(header_subset(h.name, text, used), encoding="mac_roman", errors="replace")
+            headers = sorted(h for d in dirs for h in d.glob("*.h"))
+            texts = {h: h.read_text(encoding="utf-8", errors="replace") for h in headers}
+            used = macro_closure(used, texts.values())
+            for h in headers:
+                (Path(wd) / h.name).write_text(header_subset(h.name, texts[h], used), encoding="mac_roman", errors="replace")
         cmd = [str(mps), "%%", str(tool), *flags.split(), "-o", "f.o", name]
         r = subprocess.run(cmd, cwd=wd, capture_output=True, text=True, env=env, timeout=600,
                            encoding="mac_roman", errors="replace")

@@ -50,6 +50,30 @@ Entry format:
 - Blocks only: E6 (its `enhancements-verified` line), so `phase.py 6` exiting 0.
 - Answer:
 
+### 2026-10-22: M4's bounds where the original has players off view or dead (P7 M4)
+- Question: M4 wants every player in play ≥ 50% of a stage input's gameplay frames and outside the
+  view ≤ 1% of its in-play frames. 20 of the 23 stage inputs meet every bound with `players` 4; the
+  other three can't, for reasons that are the original game's:
+  - **avalon** (scene 8, AvalonB1): the stage opens with the camera panning up to the players, 191
+    frames with players 1-2 outside the view, the same 191 with `players` 2 (the original). Under 1%
+    would need about 19,100 frames in play after it.
+  - **boot** (SiberiaB1): in the snow drifts the players' feet (their position) go below the view's
+    bottom edge, 3-4% of frames per player (the TAS's one player, by the same measure, is outside the
+    view on 23% of its gameplay frames). Player 1 also dies early there (44% in play).
+  - **cloneA5** (scene 42, Brood): its attacks aim at players 1-2 by name and kill them within 500
+    frames (35% in play) while players 3-4 live on (87%).
+  Proposed, for off view: a player counts as off view only while the camera is following the players
+  (not during a scripted pan, `g_Camera` locked or panning) and with the HUD row (the bottom 32 px)
+  counted as in view; or: each player's off-view share no more than players 1-2's with `players` 2 on
+  the same input, plus 1%. For cloneA5: Brood (and the other enemies that still pick players 1-2 by
+  name, about 80 files) taking aim at all four (R7: the two-player rules extended), or the input's play
+  cut to under 500 frames.
+- Default taken meanwhile: the bounds as written. M4 stays failing on those three inputs; the inputs
+  meet them on the other 20 (on stages whose enemies kill players early, the input plays 900-2,000
+  frames instead of 3,000: NOTES.md "M4"). The rest of phase 7 (M5, M6's packages) goes on.
+- Blocks only: M4 passing (so `phase.py 7`).
+- Answer:
+
 ## Answered
 
 ### 2026-10-21: phase 7 criteria and rulings (P7 M0)
