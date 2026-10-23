@@ -37,7 +37,9 @@ picture's state out). M4 waits on building R11 (judged against the original) and
 only Siberia and the attract demos in the native machine, `tools/ws_warp.py --all` every stage.
 `uv run tools/phase.py status` shows every phase. **Public release (2026-10-23):** the user's
 rulings (keep history, MIT, rename XMen2Recomp to xmen2-pc, the video) and the checklist are in
-[docs/RELEASE.md](docs/RELEASE.md).
+[docs/RELEASE.md](docs/RELEASE.md). **Nothing personally identifying
+goes into these repos:** no names (write "the user"), no `Claude-Session:` commit trailers, author
+`crabsmack`.
 
 **Start of every session:** `uv run tools/setup.py` (idempotent: ROM, emulator,
 build, runs, Ghidra), then read `docs/QUESTIONS.md` (apply any answers the user wrote there),
