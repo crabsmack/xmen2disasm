@@ -1440,6 +1440,8 @@ LINKS = {"clean": "latency=0,jitter=0,loss=0,seed=7",
          "bad": "latency=120,jitter=40,loss=10,seed=7"}
 M3_SEALED = "full_rate_2p=1,widescreen=16:9,lives=inf"   # the host's game options (R10)
 M3_SEAT_OWN = "high_fps=144,widescreen=0"                 # seat 1's own command line
+M3_GAMEPLAY = ",widescreen_gameplay=1"                    # R12: with it the host's 16:9 view is sealed too
+M3_F10 = "1:600"                                          # R12: seat 1 presses F10 (its own view, from the next screen)
 M3_LATE = 0.01            # late frames under `mid`, of a seat's frames
 # sessions at a time: each seat runs in real time, and 11 sessions at once (22 seats and a WSL one) made
 # seats late that are on time alone (2026-10-22, w-clone: 38/3510 in the plan, 1-24/3512 alone)
@@ -1708,27 +1710,42 @@ def phase7(crit, fresh: bool) -> None:
             plan3.append((f"w-{w}", (f"w-{w}", 2, f, "mid"), {"scene": ("--scene", str(n))}))
         plan3.append(("om-sealed", ("om-sealed", 2, om_in, "mid"),
                       {"host_opts": M3_SEALED, "extra": ("--seat-options", f"1:{M3_SEAT_OWN}")}))
+        plan3.append(("om-sealed-gp", ("om-sealed-gp", 2, om_in, "mid"),
+                      {"host_opts": M3_SEALED + M3_GAMEPLAY, "extra": ("--seat-options", f"1:{M3_SEAT_OWN}")}))
+        plan3.append(("om-f10", ("om-f10", 2, om_in, "bad"),
+                      {"host_opts": "widescreen=16:9", "extra": ("--seat-f10", M3_F10)}))
         plan3.append(("om-linux", ("om-linux", 2, om_in, "mid"), {"extra": ("--linux-seats", "1"), "cache": False}))
         out3 = run_plan(plan3)
         bad3, good3 = sessions_result(out3)
         notes3 = [f"{good3}/{len(plan3)} sessions with 0 desyncs and the offline rows"]
         if missing3:
             notes3.append(f"stage inputs missing: {', '.join(missing3[:4])}")
-        # every session but om-clean has latency; every one but om-clean and om-bad is under `mid`
+        # every session but om-clean has latency; every one but om-clean, om-bad and om-f10 is under `mid`
         rolled = sum(s.get("rollbacks") or 0 for n, r in out3 if "seats" in r and n != "om-clean" for s in r["seats"])
         late = [f"{n} seat {s.get('seat')}: {s.get('late_frames')}/{s.get('frames')}"
-                for n, r in out3 if "seats" in r and n not in ("om-clean", "om-bad") for s in r["seats"]
+                for n, r in out3 if "seats" in r and n not in ("om-clean", "om-bad", "om-f10") for s in r["seats"]
                 if not s.get("frames") or (s.get("late_frames") or 0) > M3_LATE * s["frames"]]
-        sealed = dict(out3).get("om-sealed") or {}
         seal_bad = []
-        if "seats" in sealed:
-            want = dict(kv.split("=", 1) for kv in M3_SEALED.split(","))
+        # R10, R12: the host's game options on every seat; high_fps each seat's own, and the 16:9 view
+        # too unless widescreen_gameplay=1: om-sealed's seat 1 keeps its 4:3, om-f10's seat 1 starts in
+        # its own 4:3 (the default) and its F10 turns 16:9 on (om-sealed shows the host's isn't taken)
+        for name, host, ws_own in (("om-sealed", M3_SEALED, ("16:9", "0")),
+                                   ("om-sealed-gp", M3_SEALED + M3_GAMEPLAY, ("16:9", "16:9")),
+                                   ("om-f10", "widescreen=16:9", ("16:9", "16:9"))):
+            sealed = dict(out3).get(name) or {}
+            if "seats" not in sealed:
+                continue
+            want = {k: v for k, v in (kv.split("=", 1) for kv in host.split(",")) if k != "widescreen"}
             for s in sealed["seats"]:
                 eff = s.get("options") or {}
-                seal_bad += [f"seat {s.get('seat')} {k}={eff.get(k)}" for k, v in want.items() if str(eff.get(k)) != v]
-                own = "144" if s.get("seat") == 1 else "0"
+                seat = s.get("seat")
+                seal_bad += [f"{name} seat {seat} {k}={eff.get(k)}" for k, v in want.items() if str(eff.get(k)) != v]
+                own = "144" if seat == 1 and name != "om-f10" else "0"
                 if str(eff.get("high_fps")) != own:
-                    seal_bad.append(f"seat {s.get('seat')} high_fps={eff.get('high_fps')} (its own is {own})")
+                    seal_bad.append(f"{name} seat {seat} high_fps={eff.get('high_fps')} (its own is {own})")
+                ws = ws_own[1 if seat == 1 else 0]
+                if str(eff.get("widescreen")) != ws:
+                    seal_bad.append(f"{name} seat {seat} widescreen={eff.get('widescreen')} (want {ws})")
         notes3.append(f"rollbacks under latency {rolled}" + (f"; late frames over {M3_LATE:.0%}: {late[0]}" if late else ""))
         if seal_bad:
             notes3.append(f"options not sealed: {', '.join(seal_bad[:3])}")

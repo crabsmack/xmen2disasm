@@ -4,7 +4,8 @@ approved: 2026-10-21
 
 **Status: criteria approved by the user 2026-10-21, with rulings R1-R10** (asked one by one in the
 session, after the kickoff's measurements; the draft of the same day revised with them and with
-what phase 6 taught). Phase 7 is the user's two stretch goals, as decided on 2026-10-21 (ROADMAP.md "Decisions on
+what phase 6 taught). R11 (2026-10-22) and R12 (2026-10-23) came later; R12 changed the canonical
+digest's definition and M3's measurement, with the user's approval. Phase 7 is the user's two stretch goals, as decided on 2026-10-21 (ROADMAP.md "Decisions on
 record"): **online play** and **four-player multiplayer**, then the two together. It follows
 phase 6 ([P6-enhance.md](P6-enhance.md)). Changing a criterion or a definition below needs the
 user's approval, recorded here.
@@ -149,6 +150,14 @@ the music), in full with their evidence in [P7-kickoff.md](P7-kickoff.md).
   the `players` 2 run of the same input draws that player's panel at that frame, and not on the
   first frame of a stretch in play; (c) **enemies aim at all four** (R7 extended): enemies that
   pick players 1-2 by name choose among every player in play.
+- **R12 The presentation-only 16:9 view is each seat's own (the user, 2026-10-23, in the session:
+  "yes, do it. per player if we can").** After phase 6's R8 (`widescreen=16:9` presentation only by
+  default), R10's "a later presentation-only 16:9 would be a local setting" applies: online,
+  `widescreen` is each seat's own, like `high_fps`, and F10 works, changing that seat's view from
+  the next screen (a rollback keeps the seat's request). With the host's `widescreen_gameplay=1`
+  the view changes the game and stays the host's, sealed, and F10 is refused. For seats with
+  different views to agree, the canonical digest leaves out the picture's state, the same state
+  R8's `--game-rows` leaves out (Definitions); the netplay version became 2.
 
 ## Criteria
 
@@ -171,7 +180,11 @@ the music), in full with their evidence in [P7-kickoff.md](P7-kickoff.md).
   CRAM, VSRAM, Z80 RAM, a fixed list of machine fields (VDP registers and latches, Z80 registers,
   YM2612 and PSG registers and timers, I/O) in a fixed byte layout, and with three or more players
   the four-player region and the second sound machine's the same way. The same on every compiler
-  (the rows P9 proved equal are part of it). `digest.csv`: `sync,digest`.
+  (the rows P9 proved equal are part of it). Not in it (R12, the user 2026-10-23): the picture's
+  state, which a seat's own 16:9 view changes and nothing deciding the game reads: the sprite
+  table and its fill state, the streamer's drawn x, the hologram and beam flicker splices in work
+  RAM, VRAM's planes A and B and sprite table, and the view and its F10 request (phase 6's
+  `--game-rows`, P6-enhance.md "The game's state"). `digest.csv`: `sync,digest`.
 - **Desync**: a sync point where a seat's canonical digest differs from the offline session-machine
   run's of the same inputs and sealed options.
 - **Stage inputs**: XMen2Recomp `game/mp_inputs/`: `boot.input` (from power-on) and
@@ -215,10 +228,11 @@ xmen2check.py trace --mode native ... # as phase 6, plus:
     # the JSON adds "state": {"sections": [names], "bytes": n} when the runner has savestates,
     # and "mp" (counters below) in every native trace
 xmen2check.py netplay --seats N --input F [--scene N] [--session SEED] [--options K=V,...]
-        [--seat-options I:K=V,...] [--link latency=L,jitter=J,loss=P,seed=S]
+        [--seat-options I:K=V,...] [--seat-f10 I:TICK,...] [--link latency=L,jitter=J,loss=P,seed=S]
         [--transport lan|hub|ice] [--linux-seats I,...] --out DIR --json
     # N processes of the release runner on loopback, seat i playing pad column i+1 of F (seat 0
-    # hosts; options from --options are the host's, --seat-options a seat's own command line).
+    # hosts; options from --options are the host's, --seat-options a seat's own command line;
+    # --seat-f10: seat I presses F10 before live tick TICK, R12).
     # Prints {"ok", "seats": [{"seat", "os", "exit", "sync_csv", "digest_csv", "options",
     #   "rollbacks", "max_rollback", "late_frames", "frames"}], "link", "transport"}
     # Each seat writes its sync rows and digest.csv as a traced run does; "options" is the
@@ -261,13 +275,18 @@ the session seed is 1):
   - each world's stage input (`players` 2) under `mid`;
   - `scenario-options-menu` under `mid` with the host's `--options
     full_rate_2p=1,widescreen=16:9,lives=inf` and seat 1's own `high_fps=144,widescreen=0`;
+  - the same with the host's `widescreen_gameplay=1` added (R12);
+  - `scenario-options-menu` under `bad` with the host's `widescreen=16:9` and seat 1 pressing F10
+    before tick 600 (`netplay --seat-f10 1:600`, R12);
   - `scenario-options-menu` under `mid` with seat 1 on Linux.
 
   Each against the offline `trace --session 1 --digest` of the same input and the host's options.
   Every seat exits 0 and its `digest.csv` equals the offline one at every sync point; the host's
   `sync.csv` equals the offline rows; every seat's effective game options are the host's (R10)
-  and its `high_fps` its own; the `mid` and `bad` sessions together have rollbacks > 0; under
-  `mid`, `late_frames` ≤ 1% of `frames` on every seat.
+  and its `high_fps` its own; its `widescreen` its own (the sealed-options session's seat 1: `0`,
+  its command line; the F10 session's seat 1: `16:9`, its F10 from its own default 4:3), but the
+  host's with `widescreen_gameplay=1` (R12); the `mid` and `bad` sessions together
+  have rollbacks > 0; under `mid`, `late_frames` ≤ 1% of `frames` on every seat.
 - **M4**: every stage input with `--options players=4` (and `players=3`), `--session 1`,
   `--scene N` for `scene<N>.input`. Each ends normally. With `players` 4: `in_play` of every player
   ≥ 50% of the run's gameplay frames (the input does what it claims); `drawn` ≥ 50% of `in_play`

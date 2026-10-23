@@ -140,3 +140,6 @@ phase doc with the date.
   `widescreen_gameplay=1` is R6's mode. E2 lists the setting; E5 runs both modes and, presentation
   only, compares the game's state with the 4:3 run (`--game-rows`). Online both stay the host's
   until phase 7 makes the view local (the digest would have to leave the view's state out).
+- 2026-10-23 (user): phase 7 R12, the presentation-only 16:9 view is each seat's own online (F10
+  works); with the host's `widescreen_gameplay=1` it stays sealed. The canonical digest's
+  definition leaves the picture's state out; M3 adds a sealed-gameplay session and an F10 session.
