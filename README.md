@@ -23,7 +23,7 @@ milestone before it counted.
 | 2 | Static recompilation | The game recompiled to C on [segagenesisrecomp](https://github.com/mstan/segagenesisrecomp), frame-identical to the reference emulator on every TAS and corpus frame |
 | 3 | The compiler | Identified as Apple MPW C 3.3 (`-mbg off -b`), so C can be proven byte-identical to the ROM ([docs/COMPILER.md](docs/COMPILER.md)) |
 | 4 | Decompilation | Hand-written, readable C for all 3,621 functions, each one verified (MPW byte match or differential test); the game links no generated code and equals the reference on the whole corpus |
-| 5 | PC port | No 68000 left: native memory layout, host byte order, still equal to the reference on every TAS framebuffer. ROM-free Windows and Linux packages |
+| 5 | PC port | No 68000 left: native memory layout, host byte order, still equal to the recompiled game on every sync point and framebuffer of the test runs. It runs one game frame per displayed frame, so it never lags where the cartridge did. ROM-free Windows and Linux packages |
 | 6 | Enhancements | Two players at the full 60 fps (the original halves it), interpolated high frame rates, 16:9 widescreen, each an option off by default |
 | 7 | Multiplayer | Savestates, rollback netplay (LAN, relay, NAT traversal), three and four players with a second sound machine for their music parts (being finished) |
 
