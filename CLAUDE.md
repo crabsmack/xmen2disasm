@@ -40,7 +40,8 @@ rulings (history rewritten without personal details, MIT, rename XMen2Recomp to 
 the video; pre-rewrite hashes in [docs/COMMIT_MAP.md](docs/COMMIT_MAP.md)) and the checklist are in
 [docs/RELEASE.md](docs/RELEASE.md). **Nothing personally identifying
 goes into these repos:** no names (write "the user"), no `Claude-Session:` commit trailers, author
-`crabsmack`.
+`crabsmack`, commit times in UTC (`.claude/settings.json` sets `TZ=UTC`; outside Claude, prefix
+`TZ=UTC git commit`).
 
 **Start of every session:** `uv run tools/setup.py` (idempotent: ROM, emulator,
 build, runs, Ghidra), then read `docs/QUESTIONS.md` (apply any answers the user wrote there),
