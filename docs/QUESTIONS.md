@@ -41,7 +41,7 @@ Entry format:
 - Answer:
 
 ### 2026-10-22: play four players and online (P7 M6)
-- Question: play the multiplayer build (XMen2Recomp 0ac6b1d or later; the package as before:
+- Question: play the multiplayer build (XMen2Recomp 9538d30 or later; the package as before:
   `uv run tools/xmen2check.py package`, or on Linux `native-build`; the README in it has all of this):
   - **Four on one machine**: `--options players=4` (or 3) with four controllers plugged in (players 1-4
     in plugging order; the keyboard is player 1). Players 3-4 press Start at the player select to
@@ -65,7 +65,7 @@ Entry format:
 ## Answered
 
 ### 2026-10-21: play the enhancements (P6 E6)
-- Question: play the native port with the three options (XMen2Recomp 3b8503a or later; this can be
+- Question: play the native port with the three options (XMen2Recomp 64c0ef9 or later; this can be
   the same session as P5's `port-verified` playtest below). Windows: `uv run tools/xmen2check.py
   package` makes `build\package\xmen2-native-windows.zip`; Linux: pull, `uv run tools/xmen2check.py
   native-build`. Then, each on its own or together:
@@ -81,14 +81,14 @@ Entry format:
     `magneto=1` (selectable from the start), `start_char=beast..magneto` (Siberia's character at
     power-on, otherwise at random: played runs now read a real V counter, so it varies again).
   - Progress (2026-10-21): the first session found ghost limbs beside an idling Cyclops and part
-    of him missing in his charged blast at 144 Hz; fixed in XMen2Recomp 9300fd8 (sprites move by
+    of him missing in his charged blast at 144 Hz; fixed in XMen2Recomp 8adad13 (sprites move by
     their object's anchor).
   If they play well, add `enhancements-verified: DATE` to XMen2Recomp `docs/USER_VERIFIED.md` (or
   say so here). Anything off (seams in the wide view, objects popping, judder at 144 Hz, flicker),
   a line here is enough; most useful with the stage and roughly where.
 - Default taken meanwhile: none needed; the other criteria are worked meanwhile.
 - Blocks only: E6 (its `enhancements-verified` line), so `phase.py 6` exiting 0.
-- Answer (the user, in the session, 2026-10-22): played since 9300fd8, all good. The
+- Answer (the user, in the session, 2026-10-22): played since 8adad13, all good. The
   `enhancements-verified: 2026-10-22` line went into USER_VERIFIED.md at his word.
 
 ### 2026-10-22: M4's bounds where the original has players off view or dead (P7 M4)
@@ -194,7 +194,7 @@ Entry format:
   The contract's screen id now says so (P6-enhance.md "Changed 2026-10-21").
 
 ### 2026-10-21: play the native port (P5 P8)
-- Question: play the port that has no 68000 left (XMen2Recomp 78cb548 or later). It is the
+- Question: play the port that has no 68000 left (XMen2Recomp 1106d9d or later). It is the
   frame-synchronous machine D8 played (R5), now with its own memory, machine and player. Any of:
   - Windows: unzip `..\XMen2Recomp\build\package\xmen2-native-windows.zip` (made by
     `phase.py 5` / `uv run tools/xmen2check.py package`), run `XMen2.exe path\to\xmen2.bin`.
@@ -274,7 +274,7 @@ Entry format:
 - Default taken meanwhile: none needed; phase 5 P0 prep (LESSONS.md checklist) can start.
 - Blocks only: P4 D8, so `phase.py 4` exiting 0.
 - Answer: played on Linux to Avalon, plays fine (the user, 2026-10-17): `handc-verified: 2026-10-17`
-  in XMen2Recomp `docs/USER_VERIFIED.md` (cc2bfdf, build 731f5f6, engine 22ed7f6). D2/D6 re-ran
+  in XMen2Recomp `docs/USER_VERIFIED.md` (e162e5a, build 020dc0b, engine 22ed7f6). D2/D6 re-ran
   on that engine 2026-10-20: `phase.py 4` 9/9, phase 4 complete.
 
 ### 2026-10-17: keep AvalonB1_RunScene's CLEAR_COUNTER macro? (P4)

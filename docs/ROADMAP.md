@@ -19,7 +19,7 @@ Status: phase 1 complete (2026-10-14); phase 3 complete (2026-10-15: MPW C 3.3, 
 `matching-for-unexecuted`, [COMPILER.md](COMPILER.md)); phases 2 and 4 complete (2026-10-15,
 2026-10-20); phase 5 complete, 10/10 (2026-10-21: every measured criterion passes; P8 the user played the
 Windows package, "looks good"); phase 6 complete, 7/7 (2026-10-22; R8 two widescreen modes,
-re-measured 2026-10-23); phase 7 at 5/7 (2026-10-23, XMen2Recomp b7e8a45, rulings R1-R12: M4 waits
+re-measured 2026-10-23); phase 7 at 5/7 (2026-10-23, XMen2Recomp 9a5eb9c, rulings R1-R12: M4 waits
 on building R11, M6 on the user's playtest). `uv run tools/phase.py status` prints the last
 recorded result of every phase (from `docs/progress/`).
 
