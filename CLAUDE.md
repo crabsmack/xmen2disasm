@@ -28,9 +28,11 @@ kickoff measurements in docs/phases/P7-kickoff.md). **Phase 6 (2026-10-22):** th
 are built (`--options`, `xmen2.ini`, F9/F10), E4's probes by `--flip-scan`; E1-E5 pass and the user
 gave E6's `enhancements-verified` line 2026-10-22. R8 (2026-10-22): `widescreen=16:9` is
 presentation only by default (a render camera; the game's state checked equal to 4:3 with
-`--game-rows`), `widescreen_gameplay=1` is R6's mode; E2/E5 measure both. **Phase 7 at 5/7 (2026-10-22, XMen2Recomp bf21b0b):**
+`--game-rows`), `widescreen_gameplay=1` is R6's mode; E2/E5 measure both. **Phase 7 at 5/7 (2026-10-23, XMen2Recomp b7e8a45):**
 savestates, rollback netplay (LAN, hub, ICE), four players and the second sound machine are built;
-M4 waits on the user's ruling on three stage inputs and M6 on the playtest (docs/QUESTIONS.md). Run
+R12 (2026-10-23): online, the presentation-only 16:9 view is each seat's own (the digest leaves the
+picture's state out). M4 waits on building R11 (judged against the original) and M6 on the playtest
+(every seat on the same build). Run
 `phase.py 6`/`7` against a snapshot worktree (`XMEN2_RECOMP`, LESSONS.md "Phase 6"); the corpus reaches
 only Siberia and the attract demos in the native machine, `tools/ws_warp.py --all` every stage.
 `uv run tools/phase.py status` shows every phase.

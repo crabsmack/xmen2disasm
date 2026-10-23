@@ -18,11 +18,9 @@ user 2026-10-21):
 Status: phase 1 complete (2026-10-14); phase 3 complete (2026-10-15: MPW C 3.3, policy
 `matching-for-unexecuted`, [COMPILER.md](COMPILER.md)); phases 2 and 4 complete (2026-10-15,
 2026-10-20); phase 5 complete, 10/10 (2026-10-21: every measured criterion passes; P8 the user played the
-Windows package, "looks good"); phase 6 at 5/7 (2026-10-21, started on the user's word
-before phase 5's playtest: the three options built; E4's latency probe ruled, to re-measure; E6
-waits for the user's playtest in QUESTIONS.md); phase 7 approved (2026-10-21, M0 with rulings
-R1-R10 after the kickoff's measurements, [phases/P7-kickoff.md](phases/P7-kickoff.md)), 1/7, ready
-to run autonomously (`/multiplayer-batch`). `uv run tools/phase.py status` prints the last
+Windows package, "looks good"); phase 6 complete, 7/7 (2026-10-22; R8 two widescreen modes,
+re-measured 2026-10-23); phase 7 at 5/7 (2026-10-23, XMen2Recomp b7e8a45, rulings R1-R12: M4 waits
+on building R11, M6 on the user's playtest). `uv run tools/phase.py status` prints the last
 recorded result of every phase (from `docs/progress/`).
 
 ## Why this order
