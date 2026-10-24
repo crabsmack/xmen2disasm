@@ -2,7 +2,7 @@
 
 A byte-matching disassembly of **X-Men 2: Clone Wars** (Sega Genesis / Mega Drive, 1995,
 USA/Europe), and the hub of a project that took it from a ROM to a native PC port with
-widescreen, high frame rates and rollback netplay for up to four players:
+widescreen, high frame rates and up to four players, on one PC or online with rollback netplay:
 **[xmen2-pc](https://github.com/crabsmack/xmen2-pc)**.
 
 Almost all of it was written by AI coding agents (Claude Code), in nine days
