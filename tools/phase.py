@@ -177,9 +177,67 @@ def export_input(run: str, out_dir: Path) -> tuple[Path | None, str]:
     return inp, ""
 
 
-# The corpus runs are independent traces (own output and runner directories): this many at once
-# (a runner takes ~80 MB and a fraction of a core).
-JOBS = int(os.environ.get("PHASE_JOBS", "24"))
+# The corpus runs are independent traces (own output and runner directories): this many at once,
+# $PHASE_JOBS or the cores less two (the machine stays usable). Memory is gated per job
+# instead (2026-10-24: 24 stepped-gen runners take 1.6 GB, 24 native 0.7 GB; the ~1 GB verify
+# processes that once ran a machine out were an engine leak, and a fixed low PHASE_JOBS slowed every
+# stage 2.4x for it): a job starts only while $PHASE_MIN_FREE_GB (default 3) of RAM is free, or
+# when none of this run's jobs is running.
+JOBS = int(os.environ.get("PHASE_JOBS") or max(1, (os.cpu_count() or 2) - 2))
+MIN_FREE_GB = float(os.environ.get("PHASE_MIN_FREE_GB", "3"))
+MEM_WAIT_MAX_S = 120.0
+_MEM = threading.Condition()
+_MEM_RUNNING = [0]
+_MEM_WAITS = [0]
+
+
+def free_memory_gb() -> float | None:
+    """Available physical memory (Windows: GlobalMemoryStatusEx; Linux: MemAvailable), or None."""
+    try:
+        if sys.platform == "win32":
+            import ctypes
+
+            class MS(ctypes.Structure):
+                _fields_ = [("dwLength", ctypes.c_ulong), ("dwMemoryLoad", ctypes.c_ulong),
+                            ("ullTotalPhys", ctypes.c_ulonglong), ("ullAvailPhys", ctypes.c_ulonglong),
+                            ("ullTotalPageFile", ctypes.c_ulonglong), ("ullAvailPageFile", ctypes.c_ulonglong),
+                            ("ullTotalVirtual", ctypes.c_ulonglong), ("ullAvailVirtual", ctypes.c_ulonglong),
+                            ("ullAvailExtendedVirtual", ctypes.c_ulonglong)]
+            ms = MS()
+            ms.dwLength = ctypes.sizeof(MS)
+            return ms.ullAvailPhys / 2**30 if ctypes.windll.kernel32.GlobalMemoryStatusEx(ctypes.byref(ms)) else None
+        with open("/proc/meminfo") as f:
+            return next((int(line.split()[1]) / 2**20 for line in f if line.startswith("MemAvailable:")), None)
+    except (OSError, AttributeError, ValueError):
+        return None
+
+
+def mem_gated(fn):
+    """fn, started only while MIN_FREE_GB is free or nothing else of ours runs (no deadlock when
+    other programs hold the memory), and after 2 minutes of waiting regardless (a pmap inside a
+    pmap job holds a slot); a wait is printed once per stretch."""
+    def run(item):
+        with _MEM:
+            waited, t0 = False, time.time()
+            while (_MEM_RUNNING[0] > 0 and time.time() - t0 < MEM_WAIT_MAX_S
+                   and (free_memory_gb() or MIN_FREE_GB) < MIN_FREE_GB):
+                if not waited:
+                    if _MEM_WAITS[0] == 0:
+                        print(f"  (memory: {free_memory_gb() or 0:.1f} GB free < {MIN_FREE_GB:g}; "
+                              f"holding new jobs, {_MEM_RUNNING[0]} running)", flush=True)
+                    _MEM_WAITS[0] += 1
+                    waited = True
+                _MEM.wait(timeout=2.0)
+            if waited:
+                _MEM_WAITS[0] -= 1
+            _MEM_RUNNING[0] += 1
+        try:
+            return fn(item)
+        finally:
+            with _MEM:
+                _MEM_RUNNING[0] -= 1
+                _MEM.notify_all()
+    return run
 
 
 def run_frames(run: str) -> int:
@@ -194,8 +252,9 @@ def pmap(fn, items: list, jobs: int | None = None) -> list:
     """fn over items on JOBS threads (or `jobs`; each runs a subprocess); results in the items' order.
     Corpus runs (names) start longest first, so the last to finish are short ones."""
     cost = {i: run_frames(i) if isinstance(i, str) else 0 for i in items}
+    gated = mem_gated(fn)
     with ThreadPoolExecutor(max_workers=max(1, min(JOBS, jobs or JOBS))) as ex:
-        futs = {i: ex.submit(fn, i) for i in sorted(items, key=lambda i: -cost[i])}
+        futs = {i: ex.submit(gated, i) for i in sorted(items, key=lambda i: -cost[i])}
         return [futs[i].result() for i in items]
 
 
@@ -1918,6 +1977,10 @@ def main() -> int:
                                *(["--json"] if args.json else [])], cwd=ROOT).returncode
     if phase not in DOCS:
         ap.error("phase must be 1-7 or status")
+    free = free_memory_gb()
+    print(f"jobs: {JOBS} ({'PHASE_JOBS' if os.environ.get('PHASE_JOBS') else 'cores less two'}); a job starts "
+          f"while {MIN_FREE_GB:g} GB is free (PHASE_MIN_FREE_GB; now {free if free is not None else 0:.1f} GB)",
+          flush=True)
     res: list[Result] = []
 
     def crit(cid: str, ok: bool, detail: str) -> None:

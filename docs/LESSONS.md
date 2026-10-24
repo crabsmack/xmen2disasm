@@ -68,7 +68,7 @@ The protocol (ROADMAP.md "Working a phase autonomously", step 4):
    - Open: whether hand-C/native mode can snapshot the game fiber's C stack. If not, take the states at frame boundaries in a mode that can.
    - Expected: full verify ~15 → ~3-4 min. The long pole is the TAS (~57k frames at ~290 fps per job).
 3. **Parallel everything, longest job first, sized to the 32 threads.**
-   - Already applied: `verify --jobs 24` (7284629), `PHASE_JOBS` 24 (7fc76b9).
+   - Already applied: `verify --jobs 24` (7284629), `PHASE_JOBS` 24 (7fc76b9); since 2026-10-24 the cores less two, with a per-job memory gate (`PHASE_MIN_FREE_GB`, default 3) instead of a low fixed count. Measured: 24 stepped-gen runners take 1.6 GB, 24 native 0.7 GB, a branched verify process ~0.2 GB. The ~1 GB verify processes that ran memory out on 2026-10-24 ran an engine build that also crashed them (the fork's 9bcb006, never pinned; ab07262 stays at ~0.2 GB), the earlier phase-7 OOM is unexplained, and `PHASE_JOBS=10` (set against it) slowed every corpus stage of phase 7 about 2.4x.
    - **Still serial: `tools/pccheck.py`** (XMen2Recomp). It writes one `.bat` with 3,161 `cl` calls in sequence: 27 runs for 138 min of main-session blocking, growing from 2 to 9.5 min per run. A 32-thread pool should bring it under 30 s.
    - `emu/corpus.py` is also serial.
 4. **Trace and result caches keyed on content hashes** (exe, input, reference CSV), shared through the git common dir rather than per-worktree `build/`. Wrong keys cost ~3.5 h:
