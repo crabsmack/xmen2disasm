@@ -82,8 +82,10 @@ Rules that reproduce the ROM, useful for any phase-4 matching:
   its temps to the else-arm (even for another variable), but not to later statements. A temp in
   an extra `{ }` block goes to the stack when the enclosing block has a stack temp, in a new
   slot below the parent's. Tile_RunHooksAtPoints is the one function in the ROM where one stack
-  temp holds copies of two variables (px in the h-flip arms, py in the v-flip arm); no variant
-  reproduced it (best: 4 bytes, an extra block in the v-flip arm, slot -$1E for -$1C).
+  temp holds copies of two variables (px in the h-flip arms, py in the v-flip arm). It matched
+  on 2026-10-24: a dead `if (0) (void)(x1 + y1 + y2);` at the end of the v-flip arm keeps x1's
+  register busy there, so that arm's copy of py has no free register and takes the existing
+  stack temp; the other arm still gets d7.
 - **Register allocation, measured** (Cerebro_PlayIntro, 2026-10-17; 7 probe files, a model that
   predicted the final compile): a local's priority is its reference count, a reference inside a
   loop counting 8 (assigning a constant doesn't count; a `for` counter gets a small extra, ~3-14).
@@ -102,6 +104,35 @@ Rules that reproduce the ROM, useful for any phase-4 matching:
   assignments and casts. Only a basic-block boundary that emits no code stops it: `if (1) x = 0;`
   (the file's CLEAR_COUNTER macro), a `goto` to the next label, `for (;;) { ...; break; }`. The
   original probably cleared six separate globals; the ROM's ram_globals names only the array.
+- **The last 13 C functions** (2026-10-24, XMen2Recomp: every function the original wrote in C
+  now matches, 3,047 of 3,164 game/c files; the other 117 are hand-written 68000):
+  - Tests and masks: `while ((x & 8) != 0)` / `== 0` on a word gives `moveq #0,d1 / move.w
+    d0,d1 / tst.l d1`, a bare `while (x & 8)` doesn't (VDP_WaitVBlank). `const & expr` loads the
+    expression first and emits `and.<sz> #imm,d0` (the `C03C` encodings); `expr & const` on a
+    memory operand gives `moveq #c,d0 / and mem,d0` (Spr_SetFromDef). `(signed char)b & k` on a
+    u8 field gives `moveq #k / and.b mem` (SiberiaB1_DebrisUpdate). Both `?:` constants need
+    `(short)` for `move.w #imm`.
+  - Returns: a char function ending `if (c) return 0; return 1;` gives `sCC d3 / neg / seq d0 /
+    neg`; `return !c` adds `move.b d3,d0` (BigAcolyte_OutsideActiveWindow).
+  - Globals: an array defined in the compile unit (an `#ifdef XMEN2_MPW` definition, as
+    g_Timers) is kept in an address register and indexed `.w`; through a pointer local it is
+    `.l` (Scene_Register). `*(T *)byte_array_global` keeps the loaded pointer in a3/a4 across
+    stores to locals; a scalar global read as `*(T *)&long_global` is reloaded into a0 after
+    each store, as the ROM does (SavageA4_CamUpdate; g_SceneVar3B20 is now `long`).
+  - Comma expressions: `t = v, a = y - t, y = t;` stops copy propagation and the extra copy temp
+    (Cam_ClampLookToPlayers); several reads of a global pointer in one comma expression keep it
+    in a0, as separate statements it is promoted to a4 (SiberiaB1_StepWind).
+  - Registers: drop `register` from competing variables and register parameters and let use
+    counts decide (SavageA2_SetBlockTiles, ApocBomb_Draw). Register reuse follows the plain
+    variables' timeline too, so a variable that must reuse a plain variable's register is plain
+    and declared so it is placed after it. One branch keeping its temporaries in registers
+    where the other keeps them on the stack points to the original reusing variables or
+    declaring block locals in that branch (Cam_SpringAxis).
+  - Dead uses: `if (0) (void)v;` (the ROM has 101 compiled-out blocks) adds v's reference weight,
+    8 per reference inside a loop, and stretches its live span: it reorders registers
+    (PlayerSelect_Run) or keeps one busy through an arm (Tile_RunHooksAtPoints, above).
+  - Labels: an empty `do { } while (0);` after a `register` or `long` assignment gives `tst.l dN`
+    plus the deferred argument pop, with no branch (SiberiaB1_StepWind).
 
 ### The object system is the game's own, not a compiler's
 
