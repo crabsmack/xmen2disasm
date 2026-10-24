@@ -1,5 +1,7 @@
 # CLAUDE.md — xmen2disasm
 
+Publication tier: public-bound (going public: nothing personal in files, messages or history).
+
 Byte-matching disassembly of **X-Men 2: Clone Wars** (Sega Genesis, USA/Europe,
 SHA-1 `61409e6cf6065ab67d8952b891d8edcf47777193`), built with The Macro Assembler
 AS (Sonic Retro's toolchain). This repo is the hub of a five-phase project toward a PC
