@@ -53,7 +53,11 @@ Each approved phase's measurements are written into `phase.py` before its work s
 
 Every enhancement is an **option** that is off by default. With every option off, the port is
 still the proven one: phase 6's E1 and phase 7's M1 rerun phase 5's measurements. So the original
-stays the regression gate, and each option is checked by its own measurements.
+stays the regression gate, and each option is checked by its own measurements. One exception,
+the user's (2026-10-24, "as an option (default on)"): `music_voices`, on by default, gives the
+music sound chips of its own (xmen2-pc NOTES "music_voices"). It changes only the sound: the
+game state, the canonical digest and every traced run are the original's with it on or off, so
+the gates above still hold as they are.
 
 ## Working a phase autonomously
 

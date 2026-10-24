@@ -74,7 +74,11 @@ Checked by `uv run tools/phase.py 6` (writes `docs/progress/P6.md`). Requires ph
 - **R1 Options. Ruled: as proposed.** Each enhancement is a runtime option of the one release
   runner (command line, a settings file next to it, and keys for the two presentation options),
   off by default. Every check that compares against the original runs with all options off.
-  (Not chosen: separate builds.)
+  (Not chosen: separate builds.) *Later (the user, 2026-10-24, outside phase 6's criteria):
+  `music_voices`, the music on sound machines of its own, is the first option on by default. It
+  is sound only (the session machine's audio; no game state, not in the canonical digest, no
+  traced run starts it), so the checks against the original are unchanged with it on; E2 lists
+  only the phase-6 options.*
 - **R2 Sources. Ruled: keep the byte matches.** Phase 5's R4 continues: every source keeps
   compiling in all three modes, the files that byte-match keep matching, and `verify` keeps
   proving the rest. Option code goes in native-only branches (`#if defined(XMEN2_NATIVE)`), and

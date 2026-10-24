@@ -158,6 +158,16 @@ the music), in full with their evidence in [P7-kickoff.md](P7-kickoff.md).
   the view changes the game and stays the host's, sealed, and F10 is refused. For seats with
   different views to agree, the canonical digest leaves out the picture's state, the same state
   R8's `--game-rows` leaves out (Definitions); the netplay version became 2.
+- *Note (2026-10-24; the user asked for the voice contention fixed "as an option (default on)",
+  and for its digest/seal treatment decided by R12's precedent).* `music_voices` (on by default)
+  adds two audio-only machines like R9's (a music machine and a parts machine for players 1-2's
+  parts) and drops the first machine's music voices on their way to its synthesis. Decided as
+  presentation-only state, like R12's view: they are **not in the canonical digest** (the
+  Definitions list what is in it; the first machine, R9's second machine and their fields are
+  unchanged), and `music_voices` is **not sealed**: each seat's own, like `high_fps`. They are in
+  the snapshot (`snd_music`, `snd_parts`), so M2's negative control covers them. The netplay
+  version is unchanged (the digest is the same). Measured (xmen2-pc NOTES "music_voices"): digests
+  equal with it on and off; two seats with different settings, 0 desyncs under `mid` and `bad`.
 
 ## Criteria
 
