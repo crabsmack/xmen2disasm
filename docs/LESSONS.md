@@ -79,6 +79,7 @@ The protocol (ROADMAP.md "Working a phase autonomously", step 4):
    - a half-written worker file broke a 23-min build
    - one 3 h run returned D2 0/76 from a bug a 1-minute stepped TAS replay would have shown
    - of 8 phase-4 runs, ~6 h were killed, hung or unusable
+   - Since 2026-10-24 phase.py 5 and 7 start with a smoke stage (`smoke()`: a branched verify process, the native TAS's first 3,000 frames plain, at 144 Hz, with the state probe and at 16:9; ~2.5 min cold, seconds cached) and stop on its failure, and phase 5 runs verify before the packages. That day an engine pin that crashed verify surfaced only after 16 minutes of phase 5. A broken export (`XMEN2_EXPORT_SELFTEST=g_FrameCounter`) now fails it in 31 s; the documented `XMEN2_EXPORT_SELFTEST=1` (g_TextWinTop) changes nothing in a short run, that byte being 0 there.
 6. **Verify exits non-zero when a run's testing stops early or coverage drops.** Two full verifies (~1.5 h) kept going after a fatal stopped testing: one checked only 498 functions, another 416.
 7. **Turn off MSVC identical-code folding (`/OPT:NOICF`) from day one.** Folding merged functions, which broke function-address identity (`fn_value` stops).
 8. **Superset trace schema, versioned.** In phases 1-2 the per-run record grew three times (reader map, DMA destinations, VDP/Z80 CRCs), and each time the whole corpus was regenerated (~82 min plus core rebuilds). `corpus.py` should rerun only runs whose schema is stale.

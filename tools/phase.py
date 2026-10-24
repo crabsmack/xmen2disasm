@@ -1073,6 +1073,75 @@ def first_object(objects: dict, cat: str) -> str:
     return ""
 
 
+SMOKE_FRAMES = 3000                                        # TAS runner frames the smoke traces play
+SMOKE_RUNS = ("tas", "fuzz-01800-s1", "fuzz-01800-s2")     # its verify: a TAS process with two branches
+
+
+def smoke(tr: "Traces") -> str | None:
+    """The gates' first stage (LESSONS.md harness item 5, fail fast): minutes of what a broken runner,
+    engine or harness fails first, so phase.py 5-7 (25-90 min) stop at once with the reason: a
+    branched verify process; the native TAS against stepped-gen, plain, at 144 Hz (the present
+    path) and with the state probe; the 16:9 view's game rows against the 4:3 view's. Its traces are
+    cached like the others. None when it passes, else the first failure."""
+    bad, refs, _low = d1_refs(tr, ["tas"], rev=content_rev("XMen2Recomp"))
+    if "tas" not in refs:
+        return f"no D1 reference for the TAS: {bad[0][:200] if bad else '?'}"
+    rx = ("--replay", str(refs["tas"].parent))
+    g = tr.plain("tas", "stepped-gen", rx, rev=content_rev("XMen2SteppedGen", refs["tas"]))
+    if not g["ok"]:
+        return f"stepped-gen TAS: {g['detail'][:200]}"
+    rev = content_rev("XMen2Native", refs["tas"])
+    inputs = tr.out_dir / "inputs"
+    for run in SMOKE_RUNS:
+        if not (inputs / f"{run}.input").exists():
+            export_input(run, inputs)
+    game = recomp_root() / "game"
+
+    def check(name: str) -> str | None:
+        if name == "verify":
+            v, err = cached_contract(tr, "verify|smoke", "verify", "--inputs", str(inputs), "--runs", ",".join(SMOKE_RUNS),
+                                     "--frames", str(SMOKE_FRAMES), "--out", str(tr.out_dir / "verify-smoke"),
+                                     rev=content_rev("XMen2Verify", *(inputs / f"{r}.input" for r in SMOKE_RUNS),
+                                                     game / "verify"))
+            if v is None:
+                return f"verify ({', '.join(SMOKE_RUNS)}, {SMOKE_FRAMES} frames): {err[:200]}"
+            mism = sorted(a for a, f in (v.get("functions") or {}).items() if f.get("mismatches"))
+            return f"verify: functions with mismatches {len(mism)}, first {mism[0]}" if mism else None
+        if name == "16:9":   # E5's check, cut: game rows (the state less the picture's) as with 4:3
+            inp, err = export_input("tas", tr.out_dir)
+            if inp is None:
+                return err
+            rows = []
+            for opts in ("widescreen=0", "widescreen=16:9"):
+                out = tr.out_dir / f"smoke-tas-native-{dir_tag(opts)}"
+                s, err = tr.trace(out, "--run", "tas", "--input", str(inp), "--mode", "native", *rx,
+                                  "--frames", str(SMOKE_FRAMES), "--options", opts, "--game-rows")
+                if s is None:
+                    return f"native TAS {opts}: {err[:200]}"
+                rows.append([r.get("game_crc32") for r in read_rows(out / "game.csv")])
+            return None if rows[0] == rows[1] and rows[0] else "native TAS at 16:9: the game rows differ from 4:3"
+        extra = {"native": (), "144 Hz": ("--options", "high_fps=144", "--present-log"),
+                 "state probe": ("--state-probe", f"{M2_EVERY}:{M2_SPAN}")}[name]
+        t = tr.run("tas", "native", SMOKE_FRAMES, (*rx, *extra), ref_sync=Path(g["csv"]), rev=rev)
+        if not t["ok"]:
+            return f"native TAS {name}: {t['detail'][:200]}"
+        s = t.get("stats") or {}
+        if any(s.get(k) != 0 for k in COUNTERS):
+            return f"native TAS {name}: " + ", ".join(f"{k} {s.get(k)}" for k in COUNTERS)
+        if name == "state probe":
+            by: dict[tuple[str, str], dict[str, tuple]] = {}
+            for r in read_rows(Path(t["csv"]).parent / "probe.csv"):
+                by.setdefault((r["at"], r["pass"]), {})[r["sync"]] = tuple(r[c] for c in COMPARED + [FB_COL])
+            ats = {a for a, _p in by}
+            wrong = next((a for a in sorted(ats, key=int) if not by.get((a, "1")) or by.get((a, "1")) != by.get((a, "2"))), None)
+            if not ats or wrong is not None:
+                return "native TAS state probe: " + ("no save points" if not ats else f"save point {wrong} differs after the restore")
+        return None
+
+    out = pmap(check, ["verify", "native", "144 Hz", "state probe", "16:9"])
+    return next((m for m in out if m), None)
+
+
 def phase5(crit, fresh: bool, draft: bool = False) -> None:
     """P5-port.md. Computed cheapest first, failing fast; reported in table order."""
     say = Stages()
@@ -1126,8 +1195,19 @@ def phase5(crit, fresh: bool, draft: bool = False) -> None:
                                + (f" (first {forbidden[0].get('symbol')} in {forbidden[0].get('object')})"
                                   if forbidden else ""))
 
-    # P1: the corpus through the exporter, after a cut TAS run (a broken target fails in a minute)
+    # the smoke stage: minutes of what a broken runner fails first, before the long stages
     tr = Traces(fresh)
+    say(f"smoke: verify ({', '.join(SMOKE_RUNS)}, {SMOKE_FRAMES} frames), the native TAS's first {SMOKE_FRAMES} "
+        "frames plain, at 144 Hz, with the state probe and at 16:9")
+    why = smoke(tr)
+    if why:
+        for cid in ("P1", "P5", "P7", "P2", "P8", "P9"):
+            put(cid, False, f"not measured: the smoke stage failed: {why}")
+        report()
+        return
+    say("smoke: pass")
+
+    # P1: the corpus through the exporter, after a cut TAS run (a broken target fails in a minute)
     runs = corpus_runs()
     say(f"D1 references: {len(runs)} timed runs (cached by the timed runner's hash)")
     bad1, refs, _low = d1_refs(tr, runs, rev=content_rev("XMen2Recomp"))
@@ -1204,6 +1284,20 @@ def phase5(crit, fresh: bool, draft: bool = False) -> None:
     else:
         put("P7", False, "no D1 reference for the TAS")
 
+    # P2, the slowest: phase 4's ledger on these sources (verify cached by its runner and inputs);
+    # before the packages, which a code change rarely breaks (newest risk first)
+    say("P2: the D4 ledger (verify, cc.py --match-recomp)")
+    inputs = tr.out_dir / "inputs"
+    for run in runs:   # before hashing them for verify's cache revision
+        if not (inputs / f"{run}.input").exists():
+            export_input(run, inputs)
+    game = root / "game"
+    ok2, d2, _lint = d4_ledger(tr, functions(), runs, p1_ok, ledger="phase5_functions.json",
+                               verify_key="verify|all|p5",
+                               verify_rev=content_rev("XMen2Verify", inputs, game / "verify",
+                                                      game / "xmen2.code_addrs.txt", game / "xmen2.functions.csv"))
+    put("P2", ok2, d2)
+
     def package(platform: str) -> tuple[bool, str, dict | None]:
         pk, err = contract("package", "--platform", platform, timeout=3600)
         PACKAGES[platform] = (pk, err)   # phase 6's E6 reads the same packages
@@ -1236,19 +1330,6 @@ def phase5(crit, fresh: bool, draft: bool = False) -> None:
             cmp = Traces._compare_sync(read_frames(Path(g["csv"]), "sync")[1], lin, {})
             ok9, d9 = cmp["ok"], d9 + f"; Linux TAS: {cmp['detail']}"
     put("P9", ok9, d9)
-
-    # P2, the slowest: phase 4's ledger on these sources (verify cached by its runner and inputs)
-    say("P2: the D4 ledger (verify, cc.py --match-recomp)")
-    inputs = tr.out_dir / "inputs"
-    for run in runs:   # before hashing them for verify's cache revision
-        if not (inputs / f"{run}.input").exists():
-            export_input(run, inputs)
-    game = root / "game"
-    ok2, d2, _lint = d4_ledger(tr, functions(), runs, p1_ok, ledger="phase5_functions.json",
-                               verify_key="verify|all|p5",
-                               verify_rev=content_rev("XMen2Verify", inputs, game / "verify",
-                                                      game / "xmen2.code_addrs.txt", game / "xmen2.functions.csv"))
-    put("P2", ok2, d2)
     report()
 
 
@@ -1684,6 +1765,13 @@ def phase7(crit, fresh: bool) -> None:
         return report()
 
     tr = Traces(fresh)
+    say(f"smoke: as phase 5's (the native TAS's first {SMOKE_FRAMES} frames four ways, a branched verify)")
+    why = smoke(tr)   # phase 5's, inside M1, then finds its traces cached
+    if why:
+        for cid in P7_IDS[1:]:
+            put(cid, False, f"not measured: the smoke stage failed: {why}")
+        return report()
+    say("smoke: pass")
     root = recomp_root()
     runs = corpus_runs()
     bad1, refs, _low = d1_refs(tr, runs, rev=content_rev("XMen2Recomp"))
