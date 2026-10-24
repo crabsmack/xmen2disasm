@@ -153,7 +153,7 @@ jump-table entries by target), so a match can't come from masking.
 
 ## Toolchain setup (outside the repo)
 
-Everything lives in `$XMEN2_TOOLCHAINS` (default `..\xmen2-toolchains`; its `SOURCES.md`
+Everything lives in `$XMEN2_TOOLCHAINS` (default `xmen2-toolchains` next to the main checkout; its `SOURCES.md`
 says where each folder came from). Never commit any of it. To rebuild it on a new machine:
 
 1. `bin/mps.exe`: `go build` of https://github.com/elliotnunn/mps, Elliot Nunn's MPW emulator.

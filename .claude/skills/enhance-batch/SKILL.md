@@ -7,7 +7,7 @@ description: Build one batch of X-Men 2's phase-6 enhancements (two-player full 
 
 Criteria, rulings and the measurement contract: `docs/phases/P6-enhance.md` (approved 2026-10-21,
 R1-R7; read "The contract" before writing anything). Notes: `XMen2Recomp/docs/NOTES.md` "Phase 6".
-The work lives in `../XMen2Recomp`, in your own worktree and build dir (`XMEN2_BUILD`).
+The work lives in the game repo (`$XMEN2_RECOMP`, XMen2Recomp), in your own worktree and build dir (`XMEN2_BUILD`).
 Phase 6 starts once phase 5 is complete (the user, 2026-10-21); an explicit instruction from the
 user to work phase 6 overrides that.
 

@@ -94,8 +94,8 @@ phase doc with the date.
 
 ## Decisions on record
 
-- 2026-10-15 (user): phase 2 repo is a private GitHub repo `crabsmack/XMen2Recomp` at
-  `..\XMen2Recomp`; the engine is pinned as a **fork** `crabsmack/segagenesisrecomp`
+- 2026-10-15 (user): phase 2 repo is a private GitHub repo `crabsmack/XMen2Recomp` (public as
+  `crabsmack/xmen2-pc` from the release); the engine is pinned as a **fork** `crabsmack/segagenesisrecomp`
   (engine changes land there; upstream PRs only when the user chooses).
 - 2026-10-15 (user): phase 3 may download archived copies of discontinued toolchains
   (THINK C, Symantec C++, CodeWarrior) as well as Apple's free MPW. Toolchains are never

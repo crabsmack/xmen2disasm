@@ -12,7 +12,7 @@ Inputs from phase 1: `build/recomp/` and [RECOMP_HANDOFF.md](../RECOMP_HANDOFF.m
 
 | What | Where |
 |---|---|
-| Game repo | `..\XMen2Recomp` (override: `$XMEN2_RECOMP`), remote private `github.com/crabsmack/XMen2Recomp` |
+| Game repo | `XMen2Recomp` next to this checkout (override: `$XMEN2_RECOMP`), remote `github.com/crabsmack/xmen2-pc` (named XMen2Recomp and private until the release) |
 | Engine | submodule `segagenesisrecomp/` = fork `github.com/crabsmack/segagenesisrecomp` (user decision 2026-10-15) |
 | Disassembly | submodule `xmen2disasm/` = `github.com/crabsmack/xmen2disasm` (this repo), pinned |
 | Reference | this repo's `emu/` (BizHawk 2.4 gpgx) and `emu/runs/<run>/frames.csv` (main checkout; worktrees reuse it via `tools/setup.py`) |
@@ -22,7 +22,7 @@ Inputs from phase 1: `build/recomp/` and [RECOMP_HANDOFF.md](../RECOMP_HANDOFF.m
 
 | ID | Criterion | Check |
 |---|---|---|
-| K1 | Game repo set up | `$XMEN2_RECOMP` is a git repo; `origin` is the private `crabsmack/XMen2Recomp`; `.gitmodules` pins the engine fork and this repo; no ROM was ever committed (`git log --all` has no `.bin/.gen/.smd` path); Actions disabled on the engine fork |
+| K1 | Game repo set up | `$XMEN2_RECOMP` is a git repo; `origin` is `crabsmack/xmen2-pc` (XMen2Recomp until the release); `.gitmodules` pins the engine fork and this repo; no ROM was ever committed (`git log --all` has no `.bin/.gen/.smd` path); Actions disabled on the engine fork |
 | K2 | Reference is comparable | every corpus run's `frames.csv` has `ram_crc32,vram_crc32,cram_crc32,vsram_crc32` (and `z80_crc32`, reported only); `uv run emu/export_input.py <run>` writes the run's full input stream as a runner `.input` script |
 | K3 | Generated C is complete | `xmen2check.py gen`: 0 unsupported instructions, 0 validator errors, every function in `build/recomp/functions.csv` generated |
 | K4 | Release runner builds | `xmen2check.py build`: Release exe exists, newer than the generated C |

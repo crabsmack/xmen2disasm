@@ -196,7 +196,7 @@ Entry format:
 ### 2026-10-21: play the native port (P5 P8)
 - Question: play the port that has no 68000 left (XMen2Recomp 1106d9d or later). It is the
   frame-synchronous machine D8 played (R5), now with its own memory, machine and player. Any of:
-  - Windows: unzip `..\XMen2Recomp\build\package\xmen2-native-windows.zip` (made by
+  - Windows: unzip XMen2Recomp's `build\package\xmen2-native-windows.zip` (made by
     `phase.py 5` / `uv run tools/xmen2check.py package`), run `XMen2.exe path\to\xmen2.bin`.
   - Linux: pull XMen2Recomp, `sudo apt install libsdl2-dev pkg-config ninja-build`
     once, then `uv run tools/xmen2check.py native-build` and `build/XMen2Native path/to/xmen2.bin`
@@ -268,7 +268,7 @@ Entry format:
   ROADMAP.md "Decisions on record".
 
 ### 2026-10-17: play the hand-C build (P4 D8)
-- Question: play `build\Release\XMen2Stepped.exe game\xmen2.bin` in ..\XMen2Recomp (all hand C,
+- Question: play `build\Release\XMen2Stepped.exe game\xmen2.bin` in XMen2Recomp (all hand C,
   live input; details in its CLAUDE.md "Phase 4"). If it plays like the original, add
   `handc-verified: DATE` to XMen2Recomp `docs/USER_VERIFIED.md` (or say so here).
 - Default taken meanwhile: none needed; phase 5 P0 prep (LESSONS.md checklist) can start.

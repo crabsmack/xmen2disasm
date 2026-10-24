@@ -11,7 +11,7 @@ phases 2-7 `uv run tools/phase.py N` ([docs/phases/](docs/phases/)).
 **Status (2026-10-15): phase 1 complete, 16/16 criteria pass. Phase 3 complete (5/5): the
 compiler is Apple MPW C 3.3, `-mbg off -b` ([docs/COMPILER.md](docs/COMPILER.md);
 `uv run tools/cc.py --match FILE.c` checks C against the ROM).** Phase 2 complete (10/10):
-the recomp in `..\XMen2Recomp` equals the reference on every TAS and corpus frame and the
+the recomp in the game repo (XMen2Recomp, published as xmen2-pc) equals the reference on every TAS and corpus frame and the
 user verified the Release build (2026-10-15). Phase 4 (2026-10-17): every one of the 3,621
 functions is hand-written C and verified (D4), the game links no generated code and equals it
 on the whole corpus (D6), and the user played the hand-C build (D8, on Linux): **phase 4 complete, 9/9 (2026-10-20,
@@ -35,13 +35,13 @@ picture's state out). M4 waits on building R11 (judged against the original) and
 (every seat on the same build). Run
 `phase.py 6`/`7` against a snapshot worktree (`XMEN2_RECOMP`, LESSONS.md "Phase 6"); the corpus reaches
 only Siberia and the attract demos in the native machine, `tools/ws_warp.py --all` every stage.
-`uv run tools/phase.py status` shows every phase. **Public release (2026-10-23):** the user's
-rulings (history rewritten without personal details, MIT, rename XMen2Recomp to xmen2-pc,
-the video; pre-rewrite hashes in [docs/COMMIT_MAP.md](docs/COMMIT_MAP.md)) and the checklist are in
-[docs/RELEASE.md](docs/RELEASE.md). **Nothing personally identifying
-goes into these repos:** no names (write "the user"), no `Claude-Session:` commit trailers, author
-`crabsmack`, commit times in UTC (`.claude/settings.json` sets `TZ=UTC`; outside Claude, prefix
-`TZ=UTC git commit`).
+`uv run tools/phase.py status` shows every phase. **Public release:** MIT, with XMen2Recomp
+published as xmen2-pc. **Nothing personally identifying goes into these repos, history
+included:** no names (write "the user"), no local paths, machine details or the user's other
+projects, no `Claude-Session:` commit trailers, author `crabsmack`, commit times in UTC
+(`.claude/settings.json` sets `TZ=UTC`; outside Claude, prefix `TZ=UTC git commit`). Notes about
+this machine (where the toolchains, kits and checkouts live) belong in an untracked
+`CLAUDE.local.md`.
 
 **Start of every session:** `uv run tools/setup.py` (idempotent: ROM, emulator,
 build, runs, Ghidra), then read `docs/QUESTIONS.md` (apply any answers the user wrote there),

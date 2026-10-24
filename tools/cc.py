@@ -56,7 +56,13 @@ DEFAULT_FLAGS = "-mbg off -b"
 
 
 def toolchains() -> Path:
-    return Path(os.environ.get("XMEN2_TOOLCHAINS") or r"..\xmen2-toolchains")
+    """$XMEN2_TOOLCHAINS, else xmen2-toolchains next to the main checkout (worktrees share it)."""
+    if os.environ.get("XMEN2_TOOLCHAINS"):
+        return Path(os.environ["XMEN2_TOOLCHAINS"])
+    r = subprocess.run(["git", "rev-parse", "--path-format=absolute", "--git-common-dir"],
+                       cwd=ROOT, capture_output=True, text=True)
+    main = Path(r.stdout.strip()).parent if r.returncode == 0 else ROOT
+    return main.parent / "xmen2-toolchains"
 
 
 def verdict() -> dict:

@@ -5,7 +5,7 @@ description: Write one X-Men 2 function as hand-written, readable C in XMen2Reco
 
 # Decompile a function (the phase-4 loop)
 
-Goal per function: `../XMen2Recomp/game/c/<ADDR>.c` that a newcomer can read and that
+Goal per function: `$XMEN2_RECOMP/game/c/<ADDR>.c` (the game repo, XMen2Recomp) that a newcomer can read and that
 is **verified** equal to the original. Criteria: `docs/phases/P4-decomp.md`. Design and
 conventions: `XMen2Recomp/docs/NOTES.md` "Phase 4". Never edit generated C.
 
@@ -66,8 +66,8 @@ short Name(Actor *self, short n)
 ## 4. Verify
 
 ```
-uv run tools/cc.py --match ../XMen2Recomp/game/c/<ADDR>.c     # byte match (this repo)
-cd ../XMen2Recomp && uv run tools/pccheck.py game/c/<ADDR>.c  # compiles as C++ (PC)
+uv run tools/cc.py --match $XMEN2_RECOMP/game/c/<ADDR>.c     # byte match (this repo)
+cd $XMEN2_RECOMP && uv run tools/pccheck.py game/c/<ADDR>.c  # compiles as C++ (PC)
 ```
 Both are safe to run beside other work. **Do not** run `xmen2check.py build/trace/verify` when
 other agents are working (one runner at a time; the orchestrator runs them per batch).

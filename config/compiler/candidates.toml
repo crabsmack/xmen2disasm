@@ -1,5 +1,5 @@
 # Phase 3 compiler candidates (criterion C1; docs/phases/P3-compiler.md, docs/COMPILER.md).
-# Toolchains live outside the repo under $XMEN2_TOOLCHAINS (default ..\xmen2-toolchains),
+# Toolchains live outside the repo under $XMEN2_TOOLCHAINS (default xmen2-toolchains next to the main checkout),
 # one folder per candidate `root`; $XMEN2_TOOLCHAINS/SOURCES.md records where each came from.
 # Never commit them.
 #

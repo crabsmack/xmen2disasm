@@ -21,7 +21,6 @@ from __future__ import annotations
 import argparse
 import csv
 import json
-import os
 import sys
 import tomllib
 from pathlib import Path
@@ -29,6 +28,7 @@ from pathlib import Path
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 import mpwobj  # noqa: E402
 from build import ROOT  # noqa: E402
+from cc import toolchains  # noqa: E402
 from m68k import load_rom  # noqa: E402
 
 # disassembly name -> names the routine has in Mac toolchain libraries
@@ -42,10 +42,6 @@ ALIASES = {
     "Math_DivModU": ["_ULMODT", "ULMODT", "__uldivmod__", "__uldiv__", "_ULDIV", "_ULMOD"],
 }
 LIB_ROUTINES = list(ALIASES)
-
-
-def toolchains() -> Path:
-    return Path(os.environ.get("XMEN2_TOOLCHAINS") or r"..\xmen2-toolchains")
 
 
 def candidates() -> list[dict]:

@@ -27,3 +27,6 @@ emu/bizcore/_build/
 !emu/bizcore/*.h
 emu/runs/
 *.log
+
+# Notes about this machine (local paths, toolchains, kits): never published
+CLAUDE.local.md

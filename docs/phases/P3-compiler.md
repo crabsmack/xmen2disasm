@@ -43,7 +43,7 @@ Checked by `uv run tools/phase.py 3` (writes `docs/progress/P3.md`). Notes and f
 ## How to work it
 
 1. **Toolchains** live outside every repo: `$XMEN2_TOOLCHAINS`, default
-   `..\xmen2-toolchains\` (one folder per candidate id + a `SOURCES.md` with where each
+   `xmen2-toolchains` next to the main checkout (one folder per candidate id + a `SOURCES.md` with where each
    came from). Never commit them. User decision 2026-10-15: Apple's free MPW and archived
    copies of discontinued products (THINK C, Symantec C++, CodeWarrior; e.g. Macintosh
    Garden, archive.org) may be downloaded. Downloads are untrusted data: each in its own

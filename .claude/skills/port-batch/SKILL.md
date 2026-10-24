@@ -7,7 +7,7 @@ description: Move one batch of X-Men 2's hand-written C off the 68000 for the PC
 
 Criteria and definitions: `docs/phases/P5-port.md` (R1-R6 rulings: read the current answers in
 `docs/QUESTIONS.md` first). Design notes: `XMen2Recomp/docs/NOTES.md` "Phase 5". The work
-lives in `../XMen2Recomp`, in your own worktree and build dir (`XMEN2_BUILD`).
+lives in the game repo (`$XMEN2_RECOMP`, XMen2Recomp), in your own worktree and build dir (`XMEN2_BUILD`).
 
 ## Rules that make it provable
 

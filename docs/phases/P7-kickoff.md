@@ -12,7 +12,7 @@ findings go to XMen2Recomp `docs/NOTES.md` "Phase 7".
 
 ## 1. Netplay and savestates
 
-Engine fork at 22ed7f6; recomp-net 2103d5e; rbengine 2a03e73. Paths are relative to ..\XMen2Recomp unless they say otherwise.
+Engine fork at 22ed7f6; recomp-net 2103d5e; rbengine 2a03e73. Paths are relative to the game repo (XMen2Recomp) unless they say otherwise.
 
 ### 1. The engine's netplay
 
@@ -133,7 +133,7 @@ recomp-net and rbengine have no dependencies beyond ws2_32/iphlpapi/bcrypt/shell
 ## 2. Player art, palettes and sprites
 
 ### Data used
-- Hand C: ..\XMen2Recomp\game\c (files named by ROM address).
+- Hand C: XMen2Recomp game/c (files named by ROM address).
 - TAS RAM snapshots emu/runs/tas/ram (every 60 frames). Two-player TAS window: frames 49320-50580,
   scene 43 (the Brood boss), Wolverine (P1) and Beast (P2).
 - New emulator runs (art_emu.py), one stats row per frame from the VDP's sprite table at $F000:

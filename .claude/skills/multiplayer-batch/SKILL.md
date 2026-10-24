@@ -7,7 +7,7 @@ description: Build one batch of X-Men 2's phase-7 multiplayer (savestates, rollb
 
 Criteria, rulings (R1-R10) and the measurement contract: `docs/phases/P7-multiplayer.md`
 (approved 2026-10-21; read "What the earlier phases leave" and "The contract" before writing
-anything). Notes: `XMen2Recomp/docs/NOTES.md` "Phase 7". The work lives in `../XMen2Recomp`
+anything). Notes: `XMen2Recomp/docs/NOTES.md` "Phase 7". The work lives in the game repo (`$XMEN2_RECOMP`)
 (and the engine fork's `external/recomp-net`, `external/rbengine` for library changes), in your own
 worktree and build dir (`XMEN2_BUILD`).
 
