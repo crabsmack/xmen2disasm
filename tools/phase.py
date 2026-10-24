@@ -292,6 +292,81 @@ class Traces:
         self.rev_timed = None if dirty_timed or not timed else f"{timed}:{engine}"
         self.out_dir = ROOT / "build" / "phase_traces"
         self.lock = threading.RLock()   # traces run on pmap's threads; the cache is shared
+        self.pre: dict[str, tuple[dict | None, str]] = {}   # prefetch()'s results by output directory
+
+    def plain_out(self, run: str, mode: str, extra: tuple[str, ...]) -> Path:
+        """plain()'s directory: flags other than --replay get their own (phase 5: --fb), so a variant
+        never deletes the plain reference another criterion compares with (phase 6: and the values
+        of the other flags, --options K=V...)"""
+        return self.out_dir / "-".join([f"{run}-{mode}", *(dir_tag(x) for i, x in enumerate(extra)
+                                                            if x != "--replay" and (i == 0 or extra[i - 1] != "--replay"))])
+
+    def run_out(self, run: str, mode: str, extra: tuple[str, ...], frames: int | None) -> Path:
+        """_run()'s directory: a cut run (--frames) gets its own, it never replaces the whole run's outputs"""
+        return self.out_dir / "-".join([run, mode, *(dir_tag(x) for x in extra), *([f"f{frames}"] if frames else [])])
+
+    def trace(self, out: Path, *args: str) -> tuple[dict | None, str]:
+        """`trace ... --out OUT` (OUT cleared first), or prefetch()'s result for OUT."""
+        with self.lock:
+            pre = self.pre.pop(str(out), None)
+        if pre is not None:
+            return pre
+        if out.exists():
+            shutil.rmtree(out)
+        return contract("trace", *args, "--out", str(out))
+
+    def prefetch(self, runs: list[str], flags: tuple[str, ...], replay_of, rev_of, ref_of=None) -> None:
+        """Native traces of many corpus runs as one `trace-group` (XMen2Recomp: runs whose pads start
+        with the TAS's are played as branches of TAS runs, not from power-on; same files and JSON as a
+        `trace` each): each lands in the directory plain() (or, with ref_of(run): the reference rows,
+        run()) would trace it into, and that call takes it from self.pre instead of starting a trace.
+        Runs whose call will hit the cache are left out; a run the group could not trace is traced
+        alone by its own call."""
+        todo = []
+        for run in runs:
+            extra = ("--replay", str(replay_of(run)), *flags)
+            rev = rev_of(run)
+            with self.lock:
+                if ref_of is None:
+                    hit = self.cache.get(f"{run}|native|plain|{' '.join(extra)}")
+                    if hit and rev and hit.get("rev") == rev and Path(hit.get("csv", "")).exists():
+                        continue
+                    out = self.plain_out(run, "native", extra)
+                else:
+                    ref = ref_of(run)
+                    if ref is None or not ref.exists():
+                        continue
+                    hit = self.cache.get(f"{run}|native|None|{' '.join(extra)}|{ref.stat().st_mtime_ns}")
+                    if hit and rev and hit.get("rev") == rev:
+                        continue
+                    out = self.run_out(run, "native", extra, None)
+            inp, _err = export_input(run, self.out_dir)
+            if inp is not None:
+                todo.append({"run": run, "input": str(inp), "replay": str(replay_of(run)), "out": str(out)})
+        if len(todo) < 2:
+            return
+        for e in todo:
+            if Path(e["out"]).exists():
+                shutil.rmtree(e["out"])
+        spec = self.out_dir / f"group-{os.getpid()}-{threading.get_ident()}.json"
+        spec.write_text(json.dumps(todo), encoding="utf-8")
+        tas = []
+        if "tas" not in {e["run"] for e in todo}:
+            inp, _err = export_input("tas", self.out_dir)
+            try:
+                tas = ["--tas-input", str(inp), "--tas-replay", str(replay_of("tas"))] if inp else []
+            except KeyError:   # no TAS reference: every run plays alone
+                tas = []
+        r = uv_run(recomp_root(), "tools/xmen2check.py", "trace-group", "--runs", str(spec), "--jobs", str(JOBS),
+                   *tas, *flags, "--json", timeout=6 * 3600)
+        spec.unlink(missing_ok=True)
+        data = parse_json(r.stdout) or {}
+        with self.lock:
+            for e in todo:
+                res = (data.get("per_run") or {}).get(e["run"])
+                if res is not None:
+                    self.pre[e["out"]] = ((None, f"xmen2check.py trace-group, {e['run']}: {res['error']}")
+                                          if "error" in res else (res, ""))
 
     def save(self) -> None:
         with self.lock:
@@ -331,15 +406,11 @@ class Traces:
         inp, err = export_input(run, self.out_dir)
         if inp is None:
             return {"ok": False, "detail": err}
-        # a cut run (--frames) gets its own directory: it never replaces the whole run's outputs
-        out = self.out_dir / "-".join([run, mode, *(dir_tag(x) for x in extra),
-                                       *([f"f{frames}"] if frames else [])])
-        if out.exists():
-            shutil.rmtree(out)
-        args = ["trace", "--run", run, "--input", str(inp), "--out", str(out), "--mode", mode, *extra]
+        out = self.run_out(run, mode, extra, frames)
+        args = ["--run", run, "--input", str(inp), "--mode", mode, *extra]
         if frames:
             args += ["--frames", str(frames)]
-        stats, err = contract(*args)
+        stats, err = self.trace(out, *args)
         if stats is None:
             return {"ok": False, "detail": err}
         if sync:
@@ -379,14 +450,8 @@ class Traces:
         inp, err = (input_path, "") if input_path else export_input(run, self.out_dir)
         if inp is None:
             return {"ok": False, "detail": err}
-        # flags other than --replay get their own directory (phase 5: --fb), so a variant never
-        # deletes the plain reference another criterion compares with
-        # (phase 6: and the values of the other flags, --options K=V...)
-        out = self.out_dir / "-".join([f"{run}-{mode}", *(dir_tag(x) for i, x in enumerate(extra)
-                                                          if x != "--replay" and (i == 0 or extra[i - 1] != "--replay"))])
-        if out.exists():
-            shutil.rmtree(out)
-        stats, err = contract("trace", "--run", run, "--input", str(inp), "--out", str(out), "--mode", mode, *extra)
+        out = self.plain_out(run, mode, extra)
+        stats, err = self.trace(out, "--run", run, "--input", str(inp), "--mode", mode, *extra)
         csv_path = out / "sync.csv"
         ok = stats is not None and csv_path.exists()
         res = {"ok": ok, "detail": err or f"{(stats or {}).get('sync_points')} sync points", "stats": stats,
@@ -1105,6 +1170,13 @@ def phase5(crit, fresh: bool, draft: bool = False) -> None:
                 if not n["ok"] or counters_bad(s) or counters_bad(gs):
                     return f"{run} ({n['detail'][:160]}; {counters_bad(s) or counters_bad(gs)})", s
                 return None, s
+            # the native traces in one trace-group (fuzz runs branch from TAS runs), after the
+            # stepped-gen references they are compared with
+            have = [r for r in runs if r in refs]
+            gs = dict(zip(have, pmap(lambda r: tr.plain(r, "stepped-gen", ("--replay", str(refs[r].parent)),
+                                                        rev=content_rev("XMen2SteppedGen", refs[r])), have)))
+            tr.prefetch(have, (), lambda r: refs[r].parent, lambda r: content_rev("XMen2Native", refs[r]),
+                        ref_of=lambda r: Path(gs[r]["csv"]) if gs[r].get("ok") else None)
             out = pmap(one, runs)
             bad = [m for m, _s in out if m]
             copied = {run: (s.get("exported") or {}).get("copied_bytes") for run, (_m, s) in zip(runs, out)}
@@ -1278,6 +1350,15 @@ def phase6(crit, fresh: bool) -> None:
         return tr.run(run, "native", None, (*rx(run), *extra), ref_sync=Path(g["csv"]),
                       rev=content_rev("XMen2Native", refs[run]))
 
+    def prefetch(*flags: str, compared: bool = False) -> None:
+        """A stage's native traces of every run as one trace-group (fuzz runs branch from TAS runs);
+        compared: vs_ref()'s (after the stepped-gen references, cached by their runner's hash)."""
+        have = [r for r in runs if r in refs]
+        gs = dict(zip(have, pmap(lambda r: tr.plain(r, "stepped-gen", rx(r), rev=content_rev("XMen2SteppedGen", refs[r])),
+                                 have))) if compared else {}
+        tr.prefetch(have, flags, lambda r: refs[r].parent, lambda r: content_rev("XMen2Native", refs[r]),
+                    ref_of=(lambda r: Path(gs[r]["csv"]) if gs[r].get("ok") else None) if compared else None)
+
     def enh(t: dict) -> dict:
         return (t.get("stats") or {}).get("enhance") or {}
 
@@ -1331,6 +1412,8 @@ def phase6(crit, fresh: bool) -> None:
                 return f"{run} (one-player run changed: {d})" if d else None
             left = {k: e_on.get(k) for k in ("two_player_step_frames", "frame_tick_waits") if e_on.get(k) != 0}
             return f"{run} (two-player, option on: {left})" if left else None
+        prefetch("--fb")
+        prefetch("--fb", "--options", "full_rate_2p=1")
         out = pmap(e3, runs)
         put("E3", not any(out) and not no_ref, first_bad(out))
 
@@ -1345,6 +1428,8 @@ def phase6(crit, fresh: bool) -> None:
                 if not t["ok"]:
                     return f"{run} at {hz} Hz ({t['detail'][:160]})"
             return None
+        for hz in E4_RATES:
+            prefetch("--options", f"high_fps={hz}", "--present-log", compared=True)
         out = pmap(e4, runs)
         notes, ok4 = [first_bad(out)], not any(out) and not no_ref
         fb = native("tas", "--fb")
@@ -1478,6 +1563,10 @@ def phase6(crit, fresh: bool) -> None:
                 if bad:
                     return f"{run} {name} ({bad})"
             return None
+        if screens_toml is not None:
+            for name, opts in E5_MODES:
+                prefetch("--options", opts, *(("--game-rows",) if name == "presentation" else ()))
+            prefetch("--options", "widescreen=0", "--game-rows")
         out = pmap(e5, runs) if screens_toml is not None else ["no game/widescreen_screens.toml"]
         put("E5", not any(out) and not no_ref, first_bad(out) if screens_toml is not None else out[0])
 
@@ -1659,6 +1748,9 @@ def phase7(crit, fresh: bool) -> None:
             return f"{run} (the trace reports no state sections)"
         d = same_sync(Path(a["csv"]), Path(b["csv"]), COMPARED + [FB_COL]) or probe_check(b)
         return f"{run} ({d})" if d else None
+    have = [r for r in runs if r in refs]
+    for flags in (("--fb",), ("--fb", "--state-probe", f"{M2_EVERY}:{M2_SPAN}")):   # one trace-group each
+        tr.prefetch(have, flags, lambda r: refs[r].parent, lambda r: content_rev("XMen2Native", refs[r]))
     out2 = pmap(m2, runs)
     bad2 = [m for m in out2 if m]
     notes2 = [f"{len(runs) - len(bad2) - len(no_ref)}/{len(runs)} corpus runs restore exactly"
