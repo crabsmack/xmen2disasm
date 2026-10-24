@@ -20,6 +20,7 @@ from __future__ import annotations
 
 import argparse
 import csv
+import itertools
 import json
 import os
 import re
@@ -135,9 +136,19 @@ def contract(*args: str, timeout: int = 7200) -> tuple[dict | None, str]:
     data = parse_json(r.stdout)
     if r.returncode != 0 or data is None:
         shown = " ".join(a for a in args if "/" not in a and "\\" not in a)  # paths only add noise
-        tail = " ".join((r.stdout + r.stderr)[-300:].split())
-        return None, f"xmen2check.py {shown} failed ({r.returncode}): {tail[-200:]}"
+        # the whole output in a file, and the command's own last word (its sys.exit message:
+        # 2026-10-24's cut one hid a crashed verify process) in the detail
+        log = ROOT / "build" / "contract-failures" / f"{args[0]}-{os.getpid()}-{next(_FAILS)}.log"
+        log.parent.mkdir(parents=True, exist_ok=True)
+        log.write_text(f"xmen2check.py {' '.join(args)}\nexit {r.returncode}\n--- stdout\n{r.stdout}\n--- stderr\n{r.stderr}",
+                       encoding="utf-8")
+        last = next((l.strip() for l in reversed(r.stderr.splitlines()) if l.strip()), "")
+        tail = last or " ".join((r.stdout + r.stderr)[-300:].split())
+        return None, f"xmen2check.py {shown} failed ({r.returncode}): {tail[:1500]} (output: {log})"
     return data, ""
+
+
+_FAILS = itertools.count(1)
 
 
 def gh_json(path: str, jq: str) -> str:
@@ -2144,6 +2155,32 @@ def status() -> int:
     return 0
 
 
+def phase_lock():
+    """One phase.py run at a time in this checkout: they share build/ (phase_traces, the logs, the
+    disassembly build). Waits for a running one (2026-10-24: a second checkout's run, or another
+    build, once made phase 6 refuse "does not build byte-identical" while build.py passed seconds
+    later). The file stays open (and locked) until the process ends."""
+    p = ROOT / "build" / "phase.lock"
+    p.parent.mkdir(parents=True, exist_ok=True)
+    f = open(p, "a+")
+    said = False
+    while True:
+        try:
+            f.seek(0)
+            if sys.platform == "win32":
+                import msvcrt
+                msvcrt.locking(f.fileno(), msvcrt.LK_NBLCK, 1)
+            else:
+                import fcntl
+                fcntl.flock(f, fcntl.LOCK_EX | fcntl.LOCK_NB)
+            return f
+        except OSError:
+            if not said:
+                print(f"waiting for another phase.py run in this checkout ({p})", file=sys.stderr, flush=True)
+                said = True
+            time.sleep(5)
+
+
 def main() -> int:
     ap = argparse.ArgumentParser()
     ap.add_argument("phase", help="1-7 or 'status'")
@@ -2169,10 +2206,12 @@ def main() -> int:
     def crit(cid: str, ok: bool, detail: str) -> None:
         res.append((cid, bool(ok), detail))
 
+    _lock = phase_lock()   # noqa: F841  (held until the process ends)
     b = subprocess.run([sys.executable, str(ROOT / "tools" / "build.py"), "--quiet"], cwd=ROOT,
                        capture_output=True, text=True)
     if b.returncode != 0:
-        print("FAIL  disassembly does not build byte-identical (phase 1 rule); fix that first")
+        tail = " ".join((b.stdout + b.stderr).split())[-800:]
+        print(f"FAIL  disassembly does not build byte-identical (phase 1 rule); fix that first. build.py: {tail}")
         return 1
     if not (ROOT / "build" / "recomp" / "functions.csv").exists():
         subprocess.run([sys.executable, str(ROOT / "tools" / "handoff.py")], cwd=ROOT, capture_output=True)
@@ -2186,6 +2225,10 @@ def main() -> int:
         {2: phase2, 3: phase3}[phase](crit, args.fresh)
 
     passed = sum(ok for _c, ok, _d in res)
+    # every criterion's whole detail (the log and progress page shorten them)
+    (ROOT / "build" / f"phase{phase}.json").write_text(
+        json.dumps({"phase": phase, "date": date.today().isoformat(), "game_repo": str(recomp_root()),
+                    "criteria": [{"id": c, "pass": ok, "detail": d} for c, ok, d in res]}, indent=1), encoding="utf-8")
     if args.json:
         print(json.dumps([{"id": c, "pass": ok, "detail": d} for c, ok, d in res], indent=1))
     else:
