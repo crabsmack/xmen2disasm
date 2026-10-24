@@ -1189,7 +1189,6 @@ E5_MODES = (("presentation", "widescreen=16:9"), ("gameplay", "widescreen=16:9,w
 E4_RATES = (120, 144)
 E4_PROBES = 10                 # latency probes over the TAS's gameplay frames
 E4_PROBE_FRAMES = 40           # a probe's flip must change the 60 Hz picture within these frames
-E4_SCAN = 512                  # frames of a window one --flip-scan run searches for its probe
 E4_RENDER_P99_US = 6900        # one 144 Hz frame
 E4_MATCHED = 0.95              # interpolated share of the non-HUD sprites
 
@@ -1383,35 +1382,39 @@ def phase6(crit, fresh: bool) -> None:
             def seen_off(n: int) -> float | None:
                 return first_change(p_off, present(native("tas", "--present-log", *cut(n))))
 
-            # The search runs E4_SCAN frames of a window per run (--flip-scan: each frame's flip from a
-            # savestate, its rows those `--flip N --frames N+40` logs from there; 2026-10-22: one TAS
-            # replay per candidate took hours where the TAS pauses). The probes found are measured
-            # by their own --flip runs below, off and at 144 Hz, as before.
+            # The search: one run per window, all at once (--flip-scan: each frame's flip from a
+            # savestate, its rows those `--flip N --frames N+40` logs from there; --flip-scan-first:
+            # the runner stops flipping at the first gameplay frame whose flip shows against its own
+            # unflipped rows). The point is still chosen here, against the unflipped present log; a
+            # run that stopped on a change this doesn't confirm is resumed after its last flip.
+            # (2026-10-22: one TAS replay per candidate took hours where the TAS pauses; 2026-10-24:
+            # 512-frame scans took ~13 min, one window's in series; this takes ~5, same points.)
+            # The probes found are measured by their own --flip runs below, off and at 144 Hz.
             off_fb = {int(r["sync"]): r.get(FB_COL) for r in p_off}
 
-            def scan(span: list[int]) -> tuple[int | None, str | None]:
+            def scan(span: list[int]) -> tuple[int | None, str | None, int]:
                 """The first frame of span whose flip changes the 60 Hz picture within the probe's
-                frames, or why the scan run failed."""
+                frames, or why the scan run failed; and the last frame the run flipped."""
                 t = native("tas", "--present-log", "--frames", str(span[-1] + 1 + E4_PROBE_FRAMES),
-                           "--flip-scan", f"{span[0]}:{span[-1] + 1}:{E4_PROBE_FRAMES}")
+                           "--flip-scan", f"{span[0]}:{span[-1] + 1}:{E4_PROBE_FRAMES}", "--flip-scan-first")
                 f = Path(t.get("csv") or "").parent / "flip_scan.csv"
                 if not (t.get("ok") and f.is_file()):
-                    return None, f"the flip scan of {span[0]}-{span[-1]} failed ({(t.get('detail') or 'no flip_scan.csv')[:120]})"
-                changed = {int(r["flip"]) for r in read_rows(f)
+                    return (None, f"the flip scan of {span[0]}-{span[-1]} failed "
+                                  f"({(t.get('detail') or 'no flip_scan.csv')[:120]})", span[-1])
+                sr = read_rows(f)
+                changed = {int(r["flip"]) for r in sr
                            if int(r["sync"]) in off_fb and r.get(FB_COL) != off_fb[int(r["sync"])]}
-                return next((n for n in span if n in changed), None), None
+                return (next((n for n in span if n in changed), None), None,
+                        max((int(r["flip"]) for r in sr), default=span[-1]))
 
             windows = [play[lo:bases[i + 1] if i + 1 < len(bases) else len(play)] for i, lo in enumerate(bases)]
             found: dict[int, int | None] = {}
             why: dict[int, str] = {}
             at = [0] * len(windows)
             while pending := [i for i in range(len(windows)) if i not in found and at[i] < len(windows[i])]:
-                spans = []
-                for i in pending:
-                    w = windows[i]
-                    spans.append([n for n in w[at[i]:at[i] + E4_SCAN] if n < w[at[i]] + E4_SCAN])
-                for i, span, (n, err) in zip(pending, spans, pmap(lambda k: scan(spans[k]), list(range(len(spans))))):
-                    at[i] += len(span)
+                spans = [windows[i][at[i]:] for i in pending]
+                for i, span, (n, err, last) in zip(pending, spans, pmap(lambda k: scan(spans[k]), list(range(len(spans))))):
+                    at[i] += sum(1 for m in span if m <= last)
                     if err or n is not None:
                         found[i] = n
                         why[i] = err or ""
