@@ -58,7 +58,7 @@ The protocol (ROADMAP.md "Working a phase autonomously", step 4):
 1. **Time a clean full build and watch the `cl.exe` count.** `/MP` was in the vcxproj all through phase 4 and did nothing.
    - Cause: per-file `COMPILE_DEFINITIONS` stop MSBuild from batching files into one `cl` call.
    - It cost 9-10 h: eight builds of 59-95 min, at ~76 files/min.
-   - The fix (XMen2Recomp 1cd71ab): one generated wrapper per file, all with one command line. A full rebuild now takes ~1.5 min (33 `cl.exe`, 100% CPU).
+   - The fix (XMen2Recomp 1cd72aa): one generated wrapper per file, all with one command line. A full rebuild now takes ~1.5 min (33 `cl.exe`, 100% CPU).
    - Never use per-source flags in a big MSBuild target; Ninja avoids the problem entirely.
 2. **Savestates at fuzz branch points, on both sides.**
    - Neither the BizHawk 2.4 core (`emu/xmen2emu.py:6,242`: "biz core has no savestates") nor the recomp runner can start from a savestate.
@@ -68,7 +68,7 @@ The protocol (ROADMAP.md "Working a phase autonomously", step 4):
    - Open: whether hand-C/native mode can snapshot the game fiber's C stack. If not, take the states at frame boundaries in a mode that can.
    - Expected: full verify ~15 → ~3-4 min. The long pole is the TAS (~57k frames at ~290 fps per job).
 3. **Parallel everything, longest job first, sized to the 32 threads.**
-   - Already applied: `verify --jobs 24` (b48259c), `PHASE_JOBS` 24 (98357c9).
+   - Already applied: `verify --jobs 24` (7284629), `PHASE_JOBS` 24 (7fc76b9).
    - **Still serial: `tools/pccheck.py`** (XMen2Recomp). It writes one `.bat` with 3,161 `cl` calls in sequence: 27 runs for 138 min of main-session blocking, growing from 2 to 9.5 min per run. A 32-thread pool should bring it under 30 s.
    - `emu/corpus.py` is also serial.
 4. **Trace and result caches keyed on content hashes** (exe, input, reference CSV), shared through the git common dir rather than per-worktree `build/`. Wrong keys cost ~3.5 h:
@@ -160,8 +160,8 @@ On null reads: phase 4 found six null dereferences one verify cycle at a time (a
   - Heredoc escaping broke code three times in phase 2.
   - Use Bash for POSIX-style commands and `.py` files for any real Python.
 - **96 "not read yet" Edit failures after compactions** (22 main, 74 workers). Re-read before editing after any context reset.
-- **Artifacts outside the repos.** `emu/runs` exists only in the main checkout, so H2 fails in worktrees, and every `progress.py` run rewrites PROGRESS.md (`a19d675` reverted exactly that). Keep runs, coverage, traces and caches in one directory set by an env var, and write progress files only with `--record`.
-- **MPW "Unable to open the resource fork"** happened only in the orchestrator's parallel `--match-recomp` runs, never in workers. A tool error must never be cached as NO MATCH: 4 Tuskette functions were (fixed in bb39232). Per-job temp dirs are still open.
+- **Artifacts outside the repos.** `emu/runs` exists only in the main checkout, so H2 fails in worktrees, and every `progress.py` run rewrites PROGRESS.md (`afa0d7b` reverted exactly that). Keep runs, coverage, traces and caches in one directory set by an env var, and write progress files only with `--record`.
+- **MPW "Unable to open the resource fork"** happened only in the orchestrator's parallel `--match-recomp` runs, never in workers. A tool error must never be cached as NO MATCH: 4 Tuskette functions were (fixed in e0c1a03). Per-job temp dirs are still open.
 - Commit and push per batch. On 10-16 about 6 h of work (34 files) sat unpushed while sessions showed "idle".
 
 ## Phase 5 (2026-10-21, one session, ~3 h from P0-approved to 9/10)
