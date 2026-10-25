@@ -109,6 +109,8 @@ labelled data.
 | `decomp_queue.py [-n N] [--module M] [--stats]` | Phase 4: next functions to write as C (leaves first), how each must be verified, progress per module |
 | `port_queue.py [-n N] [--criterion P3\|P4\|P5] [--stats]` | Phase 5: what still ties the C to the 68000 (the native object scan), widest symbols first, then files |
 | `cc.py FILE.c` / `cc.py --match config/compiler/match/ADDR.c` | Compile C with MPW C 3.3 (headless, under mps) / prove it byte-identical to the ROM function |
+| `build.py --from-c [--recomp ROOT] [--corrupt ADDR[:OFF]]` | The ROM linked from the game repo's 3,047 matched C functions (opt-in; the asm build stays the gate). ~20 s with `build/cc_objs` warm, ~8 min cold; `--corrupt` is the negative test |
+| `fromc.py --check` / `fromc.py --infer-segments` | Every C module equal to the ROM / re-derive `config/link/segments.txt` (the code segments the linker's jt reroutes imply) |
 | `cc_libmatch.py [--scan ID]` / `mpwobj.py FILE.o` | Library fingerprint per candidate toolchain / dump an MPW object file |
 | `explore.py` / `split.py --force` | Initial discovery/split. **Never re-split** a tree with hand edits (hook-blocked) |
 
@@ -160,6 +162,9 @@ I/O `$A10000-$A1001F`, TMSS `$A14000`, work RAM `$FF0000-$FFFFFF`.
 
 - Functions `Module_Verb` (`Title_Init`, `VDP_SetReg`); globals `g_Name`; data
   `Str_`/`Tbl_`/`Art_`/`Pal_`/`Map_`/`Snd_`/`Lvl_` prefixes; vtables `Tbl_<Class>_vtable`.
+- Two jump-table entries at one address need two names (`cc.py` takes entry names from
+  `src/jumptable.asm`; e.g. `Nem_DecodeMasked`, `Tbl_FluxBomb*Strong`), and the C must use the
+  name of the entry it calls through.
 - Header for every function: `; Name - one-line purpose`, then In/Out/Evidence lines.
 - Unsure after real effort: `unk_<Module>_XXXXXX` plus a header saying what is
   known (≤5% allowed). Never a confident-sounding guess: wrong names spread.
