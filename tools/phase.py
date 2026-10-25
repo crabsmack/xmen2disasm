@@ -1697,7 +1697,7 @@ M3_LATE = 0.01            # late frames under `mid`, of a seat's frames
 SESSION_JOBS = 4
 M4_IN_PLAY = 0.50         # each player's in-play share of the gameplay frames
 M4_DRAWN = 0.50           # drawn share of a player's in-play frames
-M4_OFF_VIEW = 0.01        # outside the view, share of its in-play frames
+M4_OFF_VIEW = 0.01        # outside the view, share of its in-play frames, over the original's (R11 (a))
 MUSIC_SONGS = ((0x27,), (0x25,), (0x48, 0x47), (0x64, 0x6C))   # base songs with player parts
 TWO_PLAYER_RUN = "scenario-options-menu"   # the corpus's only run with two players alive
 
@@ -2024,29 +2024,57 @@ def phase7(crit, fresh: bool) -> None:
             (f"scene{n}", mp_dir / f"scene{n}.input", ("--scene", str(n))) for n in sorted({**scenes[0], **scenes[1]}.values())]
         missing4 = [f.name for _n, f, _s in files if not f.is_file()]
 
-        def m4(item: tuple[str, Path, tuple[str, ...], int]) -> tuple[str | None, dict]:
+        def stage_run(item: tuple[str, Path, tuple[str, ...], int]) -> tuple[str | None, dict]:
             name, f, sc, players = item
             t = played(f"mp-{name}-p{players}", f, *SESSION, *sc, "--options", f"players={players}")
             if not t["ok"]:
                 return f"{name} players {players} ({t['detail'][:140]})", {}
             c = mp(t)
-            if "in_play" not in c:
-                return f"{name} (no mp counters)", {}
+            if "in_play" not in c or "hud_panels" not in c:
+                return f"{name} players {players} (no mp counters, or no hud_missing_at / hud_panels)", {}
+            return None, c
+
+        def m4(name: str, players: int, c: dict, c2: dict) -> str | None:
+            """M4's bounds for a players 3-4 run `c`, with R11's (a) and (b) against the players 2 run
+            `c2` of the same input."""
             gp = c.get("gameplay_frames") or 0
+            l4 = lambda d, k: d.get(k) or [0] * 4  # noqa: E731
+            # R11 (a): the larger of players 1-2's off-view shares in the players 2 run, plus 1%
+            allow = max((l4(c2, "off_view")[i] / l4(c2, "in_play")[i]) if l4(c2, "in_play")[i] else 0.0
+                        for i in range(2)) + M4_OFF_VIEW
             probs = []
             for i in range(players):
-                ip = (c.get("in_play") or [0] * 4)[i]
+                ip = l4(c, "in_play")[i]
                 if gp == 0 or ip < M4_IN_PLAY * gp:
                     probs.append(f"player {i + 1} in play {ip}/{gp}")
                     continue
-                if (c.get("drawn") or [0] * 4)[i] < M4_DRAWN * ip:
-                    probs.append(f"player {i + 1} drawn {(c.get('drawn') or [0] * 4)[i]}/{ip}")
-                if (c.get("off_view") or [0] * 4)[i] > M4_OFF_VIEW * ip:
-                    probs.append(f"player {i + 1} off view {(c.get('off_view') or [0] * 4)[i]}/{ip}")
-            probs += [f"{k} {c.get(k)}" for k in ("hud_missing", "sprites_dropped") if c.get(k) != 0]
-            return (f"{name} players {players} ({'; '.join(probs[:3])})" if probs else None), c
+                if l4(c, "drawn")[i] < M4_DRAWN * ip:
+                    probs.append(f"player {i + 1} drawn {l4(c, 'drawn')[i]}/{ip}")
+                if l4(c, "off_view")[i] > allow * ip:
+                    probs.append(f"player {i + 1} off view {l4(c, 'off_view')[i]}/{ip} (allowed {allow:.1%})")
+            # R11 (b): a missing panel counts only where the players 2 run draws that player's panel at
+            # that frame, and not on the first frame of a stretch in play; players 3-4 have no panel in
+            # the original, so theirs count wherever they miss (join frames aside)
+            drawn: dict[int, list[tuple[int, int]]] = {}
+            for p, a, b in c2.get("hud_panels") or []:
+                drawn.setdefault(p, []).append((a, b))
+            hud = [(fr, p) for fr, p, join in c.get("hud_missing_at") or []
+                   if not join and (p > 2 or any(a <= fr <= b for a, b in drawn.get(p, ())))]
+            if c.get("hud_lists_full") or c2.get("hud_lists_full"):
+                probs.append("hud_missing_at / hud_panels full (the runner's list cap)")
+            if hud:
+                probs.append(f"hud missing {len(hud)} (first: frame {hud[0][0]}, player {hud[0][1]})")
+            if c.get("sprites_dropped") != 0:
+                probs.append(f"sprites_dropped {c.get('sprites_dropped')}")
+            return f"{name} players {players} ({'; '.join(probs[:3])})" if probs else None
         items = [(n, f, s, p) for n, f, s in files if f.is_file() for p in (4, 3)]
-        out4 = pmap(m4, items)
+        refs2 = [(n, f, s, 2) for n, f, s in files if f.is_file()]   # R11's references
+        ran = pmap(stage_run, items + refs2)
+        by2 = dict(zip((n for n, _f, _s, _p in refs2), ran[len(items):]))
+        out4 = []
+        for (n, _f, _s, p), (err, c) in zip(items, ran[:len(items)]):
+            err2, c2 = by2[n]
+            out4.append((err or (err2 and f"{err2} (R11's reference)") or m4(n, p, c, c2), c))
         bad4 = [m for m, _c in out4 if m]
         # music: the second machine on the songs with parts (players 4 runs), silent without players 3 and 4
         reached: set[int] = set()

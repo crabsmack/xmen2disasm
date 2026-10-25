@@ -266,6 +266,9 @@ right after restoring it). The trace's `sync.csv` is the live run.
 | `drawn` | per player: of those, frames with at least one sprite owned by its object (phase 6's owner tags) |
 | `off_view` | per player: of those, frames with its position outside the camera's view |
 | `hud_missing` | gameplay frames where a player in play has no HUD panel drawn |
+| `hud_missing_at` | `[frame, player, join]` for each player in play with no panel drawn on such a frame (runner frames; the first 256): `join` 1 on the first game frame (`g_LevelFrame`) of the player's stretch in play (R11 (b)), which at 30 Hz is shown on two sync points |
+| `hud_panels` | `[player, first, last]`: the stretches of runner frames where a player in play has its panel drawn (gameplay frames with the HUD on; the first 256) |
+| `hud_lists_full` | 1 when `hud_missing_at` or `hud_panels` reached its cap (the check then fails) |
 | `sprites_dropped` | sprite entries the game's stop dropped (the original's 80, or R6's raised stop) |
 | `snd2` | `{"frames": frames the second machine ran, "songs": {song id: {"part_keyons", "base_keyons"}}}`: key-ons on its YM2612 and PSG, by whether the playing track's song is the base song (muted) or a part; song ids as two hex digits (`"27"`) |
 
@@ -299,9 +302,13 @@ the session seed is 1):
   have rollbacks > 0; under `mid`, `late_frames` ≤ 1% of `frames` on every seat.
 - **M4**: every stage input with `--options players=4` (and `players=3`), `--session 1`,
   `--scene N` for `scene<N>.input`. Each ends normally. With `players` 4: `in_play` of every player
-  ≥ 50% of the run's gameplay frames (the input does what it claims); `drawn` ≥ 50% of `in_play`
-  and `off_view` ≤ 1% of it, per player; `hud_missing` 0; `sprites_dropped` 0. With `players` 3
-  the same for players 1-3. Music: the `players` 4 runs together reach each base song with parts
+  ≥ 50% of the run's gameplay frames (the input does what it claims); `drawn` ≥ 50% of `in_play`,
+  per player; `sprites_dropped` 0. With `players` 3 the same for players 1-3. Against the original
+  (R11 (a), (b)), each input also runs with `players=2` (the same `--scene` and `--session`): a
+  player's `off_view` ≤ its `in_play` × (the larger of players 1-2's `off_view`/`in_play` in that
+  run + 1%); no counted missing panel: an entry of `hud_missing_at` with `join` 0 counts, for
+  players 1-2 only where that player's panel is drawn at that frame in the `players=2` run
+  (`hud_panels`), for players 3-4 (no panel in the original) wherever it is. Music: the `players` 4 runs together reach each base song with parts
   (`$27`, `$25`, `$48` or `$47`, `$64` or `$6C`), and on each `snd2.songs` has `part_keyons` > 0
   and `base_keyons` 0; the same inputs with pads 3 and 4 emptied have `snd2.frames` 0. With
   `--options players=2 --fb` the TAS has the same rows and frames as without options, and
