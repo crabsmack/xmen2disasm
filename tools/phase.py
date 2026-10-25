@@ -448,7 +448,7 @@ class Traces:
                 "csv": str(out / "frames.csv")}
 
     def plain(self, run: str, mode: str, extra: tuple[str, ...] = (), timed_key: bool = False,
-              rev: str | None = None, input_path: Path | None = None) -> dict:
+              rev: str | None = None, input_path: Path | None = None, use_cache: bool = True) -> dict:
         """A contract trace whose sync.csv is itself a reference (phase 4: stepped-gen), not
         compared with anything. Cached per revision like run(). input_path: an input file that is
         not a corpus run's export (phase 7's stage inputs; `run` then only names the trace)."""
@@ -456,7 +456,7 @@ class Traces:
         rev = rev or (self.rev_timed if timed_key else self.rev)
         with self.lock:
             hit = self.cache.get(key)
-        if hit and rev and hit.get("rev") == rev and Path(hit.get("csv", "")).exists():
+        if use_cache and hit and rev and hit.get("rev") == rev and Path(hit.get("csv", "")).exists():
             return hit
         inp, err = (input_path, "") if input_path else export_input(run, self.out_dir)
         if inp is None:
@@ -1355,6 +1355,9 @@ E4_PROBES = 10                 # latency probes over the TAS's gameplay frames
 E4_PROBE_FRAMES = 40           # a probe's flip must change the 60 Hz picture within these frames
 E4_RENDER_P99_US = 6900        # one 144 Hz frame
 E4_MATCHED = 0.95              # interpolated share of the non-HUD sprites
+# the latency search's runs start from TAS state files this far apart (xmen2check.py trace
+# --save-states / --load-states); PHASE_E4_STATES=0: every one from power-on (the control)
+E4_STATE_EVERY = 600 if os.environ.get("PHASE_E4_STATES", "1") != "0" else 0
 
 
 def read_rows(p: Path) -> list[dict[str, str]]:
@@ -1430,9 +1433,9 @@ def phase6(crit, fresh: bool) -> None:
     def rx(run: str) -> tuple[str, ...]:
         return ("--replay", str(refs[run].parent))
 
-    def native(run: str, *extra: str) -> dict:
+    def native(run: str, *extra: str, use_cache: bool = True) -> dict:
         """A native trace, not compared (its rows are compared by the caller)."""
-        return tr.plain(run, "native", (*rx(run), *extra), rev=content_rev("XMen2Native", refs[run]))
+        return tr.plain(run, "native", (*rx(run), *extra), rev=content_rev("XMen2Native", refs[run]), use_cache=use_cache)
 
     def vs_ref(run: str, *extra: str) -> dict:
         """A native trace compared with the reference rows (stepped-gen), as P1."""
@@ -1524,9 +1527,23 @@ def phase6(crit, fresh: bool) -> None:
             prefetch("--options", f"high_fps={hz}", "--present-log", compared=True)
         out = pmap(e4, runs)
         notes, ok4 = [first_bad(out)], not any(out) and not no_ref
-        fb = native("tas", "--fb")
-        off_p = native("tas", "--present-log")
-        on = native("tas", "--options", "high_fps=144", "--present-log")
+        keep = ("--save-states", str(E4_STATE_EVERY)) if E4_STATE_EVERY else ()
+
+        def producer(*flags: str) -> dict:
+            """a TAS trace the latency runs start from: its state files (with E4_STATE_EVERY)"""
+            t = native("tas", *flags, *keep)
+            if keep and t.get("ok") and not (Path(t["csv"]).parent / "states" / "states.json").is_file():
+                t = native("tas", *flags, *keep, use_cache=False)   # cached, but its states are gone
+            return t
+
+        def loads(t: dict) -> tuple[str, ...]:
+            return ("--load-states", str(Path(t["csv"]).parent / "states")) if keep and t.get("ok") else ()
+        t0 = time.monotonic()
+        fb, off_p, on = pmap(lambda k: (native("tas", "--fb") if k == 0 else producer("--present-log") if k == 1
+                                        else producer("--options", "high_fps=144", "--present-log")), [0, 1, 2])
+        say(f"E4: the TAS traces (--fb, the present log off and at 144 Hz{', with states' if keep else ''}) "
+            f"{time.monotonic() - t0:.0f} s")
+        load_off, load_on = loads(off_p), loads(on)
         p_off, p_on = present(off_p), present(on)
         if not (fb["ok"] and p_off and p_on):
             ok4 = False
@@ -1557,7 +1574,7 @@ def phase6(crit, fresh: bool) -> None:
                 return ("--frames", str(n + E4_PROBE_FRAMES), "--flip", str(n))
 
             def seen_off(n: int) -> float | None:
-                return first_change(p_off, present(native("tas", "--present-log", *cut(n))))
+                return first_change(p_off, present(native("tas", "--present-log", *cut(n), *load_off)))
 
             # The search: one run per window, all at once (--flip-scan: each frame's flip from a
             # savestate, its rows those `--flip N --frames N+40` logs from there; --flip-scan-first:
@@ -1567,13 +1584,15 @@ def phase6(crit, fresh: bool) -> None:
             # (2026-10-22: one TAS replay per candidate took hours where the TAS pauses; 2026-10-24:
             # 512-frame scans took ~13 min, one window's in series; this takes ~5, same points.)
             # The probes found are measured by their own --flip runs below, off and at 144 Hz.
+            # Each of these runs starts from the state its TAS trace (off / at 144 Hz) saved last
+            # before its first flipped frame (load_off / load_on; 2026-10-25), not from power-on.
             off_fb = {int(r["sync"]): r.get(FB_COL) for r in p_off}
 
             def scan(span: list[int]) -> tuple[int | None, str | None, int]:
                 """The first frame of span whose flip changes the 60 Hz picture within the probe's
                 frames, or why the scan run failed; and the last frame the run flipped."""
                 t = native("tas", "--present-log", "--frames", str(span[-1] + 1 + E4_PROBE_FRAMES),
-                           "--flip-scan", f"{span[0]}:{span[-1] + 1}:{E4_PROBE_FRAMES}", "--flip-scan-first")
+                           "--flip-scan", f"{span[0]}:{span[-1] + 1}:{E4_PROBE_FRAMES}", "--flip-scan-first", *load_off)
                 f = Path(t.get("csv") or "").parent / "flip_scan.csv"
                 if not (t.get("ok") and f.is_file()):
                     return (None, f"the flip scan of {span[0]}-{span[-1]} failed "
@@ -1588,27 +1607,33 @@ def phase6(crit, fresh: bool) -> None:
             found: dict[int, int | None] = {}
             why: dict[int, str] = {}
             at = [0] * len(windows)
+            t0, rounds = time.monotonic(), 0
             while pending := [i for i in range(len(windows)) if i not in found and at[i] < len(windows[i])]:
+                rounds += 1
                 spans = [windows[i][at[i]:] for i in pending]
                 for i, span, (n, err, last) in zip(pending, spans, pmap(lambda k: scan(spans[k]), list(range(len(spans))))):
                     at[i] += sum(1 for m in span if m <= last)
                     if err or n is not None:
                         found[i] = n
                         why[i] = err or ""
+            say(f"E4: the flip scans ({rounds} round{'s' if rounds != 1 else ''}{', from states' if keep else ''}) "
+                f"{time.monotonic() - t0:.0f} s")
             probes, unseen = [], []
             for i, w in enumerate(windows):
                 (probes.append(found[i]) if found.get(i) is not None else
                  unseen.append(f"syncs {w[0]}-{w[-1]}: " + (why.get(i) or "no flip there changes the 60 Hz picture")))
 
             def probe(n: int) -> str | None:
-                b = native("tas", "--options", "high_fps=144", "--present-log", *cut(n))
+                b = native("tas", "--options", "high_fps=144", "--present-log", *cut(n), *load_on)
                 ta, tb = seen_off(n), first_change(p_on, present(b))
                 if ta is None:
                     return f"sync {n}: the flip scan saw a change its own run (--flip {n}) doesn't show"
                 if tb is None:
                     return f"sync {n}: the flip changed nothing on screen at 144 Hz"
                 return None if tb <= ta else f"sync {n}: first change at {tb:.0f} us at 144 Hz, {ta:.0f} us off"
+            t0 = time.monotonic()
             late_probes = (unseen + [m for m in pmap(probe, probes) if m]) if bases else ["fewer than 10 gameplay sync points"]
+            say(f"E4: the probes ({len(probes)}, off and at 144 Hz{', from states' if keep else ''}) {time.monotonic() - t0:.0f} s")
             ok4 &= not late_probes
             notes.append(f"latency: {E4_PROBES - len(late_probes) if bases else 0}/{E4_PROBES} probes no later"
                          + (f"; first: {late_probes[0]}" if late_probes else ""))
