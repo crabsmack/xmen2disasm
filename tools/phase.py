@@ -1245,10 +1245,10 @@ def phase5(crit, fresh: bool, draft: bool = False) -> None:
         put("P1", False, f"no D1 reference for the TAS: {bad1[0][:200] if bad1 else '?'}")
     else:
         say("P1 smoke: native TAS, first 600 sync points")
-        _g, smoke = pair("tas", 600)
-        if not smoke["ok"] or counters_bad(smoke.get("stats") or {}):
-            put("P1", False, f"smoke (TAS, 600 sync points): {smoke['detail'][:200]} "
-                             f"{counters_bad(smoke.get('stats') or {})}")
+        _g, cut = pair("tas", 600)   # (not `smoke`: that is the smoke stage, called above)
+        if not cut["ok"] or counters_bad(cut.get("stats") or {}):
+            put("P1", False, f"smoke (TAS, 600 sync points): {cut['detail'][:200]} "
+                             f"{counters_bad(cut.get('stats') or {})}")
         else:
             say(f"P1: native vs stepped-gen, {len(runs)} runs ({JOBS} at a time, longest first)")
 
