@@ -5,6 +5,7 @@
 ; Evidence: selects the row writer in a3 (Nem_PutRowRam / Nem_PutRowVdp / Nem_PutRowMasked), sets the VDP write address for modes 1-2, then Nem_DecodeLoop; callers Spr_UploadFrame, Spr_PreloadTiles, Level_LoadUsedTiles, Art_LoadToVramRecolor, Art_LoadNemToVram
 ; ---------------------------------------------------------------------------
 Nem_Decode:
+Nem_DecodeMasked:	; the same code, the original's second name (jt[2077]): mode 2's six-argument call, Level_LoadUsedTiles
 	link.w	a6,#$0
 	movem.l	d3-d7/a2-a4,-(a7)
 	lea.l	Nem_PutRowRam(pc),a3

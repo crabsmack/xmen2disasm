@@ -170,7 +170,57 @@ self-contained function with the disassembly's names, into a file named after th
 start address, and `uv run tools/cc.py --match FILE` (run in this repo; candidate and flags come
 from `verdict.toml`) must exit 0. `--match` checks every byte and resolves every relocation to
 the same name in the ROM (globals by A5 offset, calls and function addresses by target,
-jump-table entries by target), so a match can't come from masking.
+jump-table entries by the name `src/jumptable.asm` gives them), so a match can't come from masking.
+
+## The ROM built from the C (level 1, 2026-10-25)
+
+`uv run tools/build.py --from-c` builds the ROM with the hand-written C in place of the
+assembly, and gets the cartridge's SHA-1. After the normal build (still the gate), `tools/fromc.py`
+compiles every game/c file of the game repo (`$XMEN2_RECOMP`, default `../XMen2Recomp`) that its
+`docs/p4_mpw_matched.txt` lists, the 3,047 functions the original wrote in C, with MPW C 3.3
+(objects cached in `build/cc_objs` by what MPW compiles, shared with `cc.py --match-recomp`), lays
+each code module at its function's address, and writes every relocation from the names alone,
+as MPW Link did, without reading the ROM:
+
+- A5-relative: the global's A5 offset, or the displacement of the jump-table entry with that name
+  (+2 for a code name the C declared as data)
+- PC-relative: the distance to the name when it is in the same CODE segment; otherwise the
+  linker's rewrite to a jump-table access ((d16,PC) becomes (d16,A5), the displacement that of
+  the name's entry). The segments are [config/link/segments.txt](../config/link/segments.txt): 162
+  starts, the fewest that explain which references the ROM rewrote (`fromc.py
+  --infer-segments`). Neither a jump-table entry nor the distance predicts a rewrite (204 kept
+  references have an entry; 1,572 rewritten ones are within 32 KB of their target), so the map is
+  an input of the link, as the original's segment list was.
+- 32-bit absolute and computed references: the C has none.
+
+The pieces replace what they cover in a generated main file (`build/xmen2_c.asm`): 3,398
+`src/f` files (a C file holds the switch cases and blocks the disassembly split off) and 1,614
+bytes of `incrom` (string literals in the code, `-b`). Labels stay where they were, since
+assembly and data refer to them, and each piece's start and end are asserted (`if * <> $ADDR`).
+What stays assembly: the header and jump table, the 117 functions the original wrote in 68000
+assembly or took from the MPW library (223 `src/f` files with their split-off blocks and the 74
+AI-script `jmp` thunk tables), and every other `incrom` data span (from the user's ROM).
+Totals: 421,560 bytes of code from the C; references 9,855 A5 globals, 2,805 PC-relative,
+5,153 rewritten by the linker to the jump table, 3 jump-table entries named directly.
+
+The link found the original's second names. Three addresses have two jump-table entries, and
+the ROM uses each for different code: the FLUXBOMB burst and implode tables (one entry for
+strong bombs, one for weak) and `Nem_Decode` (the five-argument mode-1 calls, and
+Level_LoadUsedTiles' six-argument mode-2 call). One name cannot link to two entries, so the
+original had two: `Tbl_FluxBombBurstDirsStrong`, `Tbl_FluxBombImplodeParticlesStrong` and
+`Nem_DecodeMasked` are labels at the same addresses, their entries in `src/jumptable.asm` say
+so, and the C uses them (`cc.py` now reads entry names from `src/jumptable.asm`, not
+`jumptable.csv`'s first label at the target). Likewise entry 2612 is `Jt_NullTarget` (address
+0), which Sys_InitHardware's dead store now names.
+
+Negative test: `--corrupt ADDR[:OFF]` changes one byte of one C function after the link; the
+build fails and names it (`--corrupt 005466`: "differs in Game_Main (005466.c, $005466): 1 bytes
+from $005496"). Time: 19 s with the objects cached (assemble + link 1 s + splice and the second
+assembly 14 s); compiling all 3,047 objects first takes ~8 min at 8 jobs.
+
+Level 1 is code at fixed addresses. Not done: a build where code can move (level 2: the
+labels' addresses and the jump table computed, not taken from the gate build's listing) and
+data as source (level 3).
 
 ## Tools
 
@@ -181,6 +231,9 @@ jump-table entries by target), so a match can't come from masking.
   `--candidate ID --flags "..."` to try others. A match file may add per-file flags with
   `/* cc-flags: ... */` (none needs any). MPW library names (`memset`, `LDIVT`, ...) resolve to
   the disassembly's (`Mem_Set`, `Math_LDivS`, ...).
+- `tools/fromc.py --check [--only A,B]`: every C module linked from names and compared with the
+  ROM, per function; `--infer-segments` rewrites `config/link/segments.txt`. The build itself is
+  `tools/build.py --from-c [--recomp ROOT] [--corrupt ADDR[:OFF]]`.
 
 ## Toolchain setup (outside the repo)
 

@@ -2,8 +2,10 @@
 
     uv run tools/build.py            # build + verify + progress
     uv run tools/build.py --quiet    # one-line result (for hooks / agents)
+    uv run tools/build.py --from-c   # + the ROM built from the game repo's hand-written C (tools/fromc.py)
 
-Exit code 0 only when the rebuilt ROM is byte-identical (SHA-1 match).
+Exit code 0 only when the rebuilt ROM is byte-identical (SHA-1 match); with --from-c, the C
+build's too (build/xmen2_c.bin). The normal build stays the gate.
 Also writes build/xmen2.code_addrs.txt (instruction-start oracle in the format
 segagenesisrecomp's `code_addrs_file` expects) and build/symbols.txt.
 """
@@ -151,6 +153,11 @@ def progress() -> str:
 def main() -> int:
     ap = argparse.ArgumentParser()
     ap.add_argument("--quiet", action="store_true")
+    ap.add_argument("--from-c", action="store_true",
+                    help="then the C build: the hand-written C's code in place of its assembly (tools/fromc.py)")
+    ap.add_argument("--recomp", type=Path, help="--from-c: the game repo (default $XMEN2_RECOMP or ../XMen2Recomp)")
+    ap.add_argument("--corrupt", default="", metavar="ADDR[:OFF]",
+                    help="--from-c negative test: change one byte of the C function at ADDR (must fail, naming it)")
     args = ap.parse_args()
     ensure_rom()
     if not ROM.exists():
@@ -187,6 +194,9 @@ def main() -> int:
         print(f"OK: byte-identical, SHA-1 {ROM_SHA1}")
         print(f"   code_addrs: {n} instruction starts -> build/xmen2.code_addrs.txt")
         print("   " + progress())
+    if args.from_c:
+        import fromc
+        return fromc.build(args.recomp or fromc.recomp_root(), args.corrupt, quiet=args.quiet)
     return 0
 
 

@@ -22,7 +22,7 @@ milestone before it counted.
 | 1 | Disassembly | Every function (3,621) found, named and documented. Rebuilds byte-identical, cross-checked against an instrumented emulator replaying a TAS and a test corpus |
 | 2 | Static recompilation | The game recompiled to C on [segagenesisrecomp](https://github.com/mstan/segagenesisrecomp), frame-identical to the reference emulator on every TAS and corpus frame |
 | 3 | The compiler | Identified as Apple MPW C 3.3 (`-mbg off -b`) and run headless under an MPW emulator, so C is checked byte for byte against the ROM ([docs/COMPILER.md](docs/COMPILER.md)) |
-| 4 | Decompilation | Hand-written, readable C for all 3,621 functions (3,164 files; switch cases and blocks the disassembly split off are in their parent's). Every function the original wrote in C, 3,047, compiles with MPW C 3.3 to the ROM's exact bytes; the 117 written in 68000 assembly are verified by differential tests with every instruction covered. The game links no generated code and equals the reference on the whole corpus |
+| 4 | Decompilation | Hand-written, readable C for all 3,621 functions (3,164 files; switch cases and blocks the disassembly split off are in their parent's). Every function the original wrote in C, 3,047, compiles with MPW C 3.3 to the ROM's exact bytes, and the ROM builds from that C (`tools/build.py --from-c`: its code linked in place of the assembly, same SHA-1); the 117 written in 68000 assembly are verified by differential tests with every instruction covered. The game links no generated code and equals the reference on the whole corpus |
 | 5 | PC port | No 68000 left: native memory layout, host byte order, still equal to the recompiled game on every sync point and framebuffer of the test runs. It runs one game frame per displayed frame, so it never lags where the cartridge did. ROM-free Windows and Linux packages |
 | 6 | Enhancements | Two players at the full 60 fps (the original halves it), interpolated high frame rates, 16:9 widescreen, each an option off by default |
 | 7 | Multiplayer | Savestates, rollback netplay (LAN, relay, NAT traversal), three and four players with a second sound machine for their music parts (being finished) |
@@ -55,6 +55,7 @@ the decompiler view, Ghidra 12 + JDK 21 (`GHIDRA_INSTALL_DIR`).
 ```
 uv run tools/setup.py      # ROM check, emulator cores, build, TAS replay, Ghidra project
 uv run tools/build.py      # rebuild and verify the SHA-1
+uv run tools/build.py --from-c   # + the ROM from the C (needs xmen2-pc next to this checkout and MPW C)
 uv run tools/progress.py   # phase 1's criteria (docs/DONE.md)
 ```
 
@@ -77,6 +78,11 @@ uv run tools/progress.py   # phase 1's criteria (docs/DONE.md)
   functions and labels, A5 = `$200` so globals resolve to RAM.
 - **Compiler match** (`tools/cc.py`): compiles C with MPW C 3.3 under an MPW emulator and
   compares it with the ROM function, byte for byte.
+- **The ROM from the C** (`tools/fromc.py`, `build.py --from-c`): the 3,047 C functions
+  compiled and linked as MPW Link did (A5 globals, jump-table entries, PC-relative calls and
+  the linker's rewrites of calls to another segment), spliced in place of their assembly; the
+  result has the cartridge's SHA-1. Code at fixed addresses; data stays from your ROM
+  ([docs/COMPILER.md](docs/COMPILER.md#the-rom-built-from-the-c-level-1-2026-10-25)).
 
 The C, the recompilation and the PC port live in
 [xmen2-pc](https://github.com/crabsmack/xmen2-pc), which has this repo as a submodule.

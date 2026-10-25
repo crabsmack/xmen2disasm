@@ -20,7 +20,7 @@ must hold a code module named like the disassembly's function (or a single code 
 bytes are laid at ADDR and compared with the ROM. Bytes a relocation patches are not masked
 blindly: each reference must resolve, in the ROM, to the same name the C used:
   - A5-relative (globals, jump-table entries): the ROM's displacement is g_<name>'s A5 offset
-    (build/recomp/ram_globals.csv) or a jump-table entry whose target is <name>
+    (build/recomp/ram_globals.csv) or the jump-table entry named <name> (src/jumptable.asm)
   - PC-relative 16-bit (calls/lea/pea within a segment): the ROM's displacement lands on <name>
   - the MPW linker turns PC-relative calls to another segment into jump-table calls
     (`jsr x(pc)` -> `jsr d(a5)`, also pea/lea): accepted when that entry targets <name>
@@ -51,6 +51,7 @@ from m68k import load_rom  # noqa: E402
 
 CDIR = ROOT / "config" / "compiler"
 RECOMP = ROOT / "build" / "recomp"
+JUMPTABLE = ROOT / "src" / "jumptable.asm"
 DEFAULT_CANDIDATE = "mpw-c-3.3.3"
 DEFAULT_FLAGS = "-mbg off -b"
 
@@ -180,6 +181,39 @@ def file_flags(src: Path, base: str) -> str:
     return base + (" " + m.group(1).strip() if m else "")
 
 
+OBJ_CACHE = ROOT / "build" / "cc_objs"
+
+
+def headers_key(inc: list[Path]) -> str:
+    """Hash of what MPW compiles of a game repo's headers (mpw_view), for compile_cached."""
+    import hashlib
+    h = hashlib.sha1(b"headers 1")
+    for p in sorted((h_ for d in inc for h_ in d.glob("*.h")), key=lambda q: q.name):
+        h.update(p.name.encode() + b"\0" + mpw_view(p.read_text(encoding="utf-8", errors="replace"), False).encode())
+    return h.hexdigest()
+
+
+def compile_cached(src: Path, cid: str, flags: str, include: "list[Path]", hkey: str) -> tuple[bytes | None, str]:
+    """compile_c of a game/c file, the object kept in build/cc_objs by the hash of what MPW
+    compiles (the file's and the headers' mpw_view, the candidate, the flags). Failures aren't kept."""
+    import hashlib
+    fl = file_flags(src, flags)
+    view = mpw_view(src.read_text(encoding="utf-8", errors="replace"), True)
+    key = hashlib.sha1(f"obj 1|{cid}|{fl}|{hkey}|".encode() + view.encode()).hexdigest()
+    path = OBJ_CACHE / f"{src.stem.upper()}-{key[:16]}.o"
+    if path.exists():
+        return path.read_bytes(), ""
+    obj, out = compile_c(src, candidate(cid), fl, include)
+    if obj is not None:
+        OBJ_CACHE.mkdir(parents=True, exist_ok=True)
+        for old in OBJ_CACHE.glob(f"{src.stem.upper()}-*.o"):
+            old.unlink(missing_ok=True)
+        tmp = path.with_suffix(".tmp")
+        tmp.write_bytes(obj)
+        tmp.replace(path)
+    return obj, out
+
+
 # --- ROM-side names ------------------------------------------------------------------------
 
 class Names:
@@ -201,10 +235,15 @@ class Names:
         with open(RECOMP / "ram_globals.csv", newline="") as f:
             for r in csv.DictReader(f):
                 self.globals[r["name"]] = _signed_hex(r["a5_offset"])
-        self.jt: dict[int, str] = {}       # a5 displacement of the jmp -> target name
-        with open(RECOMP / "jumptable.csv", newline="") as f:
-            for r in csv.DictReader(f):
-                self.jt[int(r["a5_disp"].lstrip("$"), 16)] = r["target_name"]
+        # a5 displacement of the jmp -> the entry's name as src/jumptable.asm writes it: two entries
+        # can name one address (Nem_Decode and Nem_DecodeMasked: the original's two names), which
+        # jumptable.csv's target_name (the first label there) doesn't tell apart
+        self.jt: dict[int, str] = {}
+        jtsrc = JUMPTABLE.read_text(encoding="utf-8")
+        for i, n in enumerate(re.findall(r"^\s*jtentry\s+(\S+)", jtsrc, re.M)):
+            self.jt[0x22 + 8 * i] = n
+        for n, v in re.findall(r"^(\w+)\s*=\s*\$([0-9A-Fa-f]+)", jtsrc, re.M):   # Jt_NullTarget = $000000
+            self.addr.setdefault(n, int(v, 16))
 
     def at(self, a: int) -> str:
         return self.funcs.get(a) or next((n for n, v in self.addr.items() if v == a), f"${a:06X}")
@@ -278,14 +317,16 @@ def disasm(code: bytes, addr: int) -> list[tuple[int, int, str]]:
 
 
 def match(src: Path, cid: str, flags: str, verbose: bool = True, include: "Path | list[Path] | None" = None,
-          names: "Names | None" = None) -> tuple[bool, str]:
+          names: "Names | None" = None, hkey: str = "") -> tuple[bool, str]:
     addr = int(src.stem, 16)
     names = names or Names()
     fname = names.funcs.get(addr)
     if fname is None:
         return False, f"{src.name}: ${addr:06X} is not a function start"
-    cand = candidate(cid)
-    obj, out = compile_c(src, cand, file_flags(src, flags), include)
+    if hkey:    # a game/c file (match_recomp): the object goes to the cache the C build reads
+        obj, out = compile_cached(src, cid, flags, include, hkey)
+    else:
+        obj, out = compile_c(src, candidate(cid), file_flags(src, flags), include)
     if obj is None:
         return False, f"{src.name}: compile failed:\n{out}"
     mods = [m for m in mpwobj.parse(obj) if not m.data_module]
@@ -408,7 +449,7 @@ def match_recomp(root: Path, cid: str, flags: str, only: list[str] | None = None
     # the names a verdict resolves references with (Names: the handoff tables, the symbols); a stale
     # build/recomp once turned 129 matches into NO MATCH (2026-10-21), and the cache kept them
     for p in (RECOMP / "ram_globals.csv", RECOMP / "jumptable.csv", RECOMP / "functions.csv",
-              ROOT / "build" / "symbols.txt"):
+              ROOT / "build" / "symbols.txt", JUMPTABLE):
         h.update(p.name.encode() + b"\0" + (p.read_bytes() if p.exists() else b""))
     for p in sorted((h_ for d in inc for h_ in d.glob("*.h")), key=lambda q: q.name):
         h.update(p.name.encode() + b"\0" + mpw_view(p.read_text(encoding="utf-8", errors="replace"), False).encode())
@@ -416,6 +457,7 @@ def match_recomp(root: Path, cid: str, flags: str, only: list[str] | None = None
     cache_path = ROOT / "build" / "match_recomp_cache.json"
     cache = json.loads(cache_path.read_text(encoding="utf-8")) if cache_path.exists() else {}
     names = Names()
+    hkey = headers_key(inc)
     todo, res = [], {}
     for p in files:
         view = mpw_view(p.read_text(encoding="utf-8", errors="replace"), True)
@@ -433,7 +475,7 @@ def match_recomp(root: Path, cid: str, flags: str, only: list[str] | None = None
     def run(item):
         p, key = item
         for _attempt in range(3):
-            ok, msg = match(p, cid, flags, verbose=False, include=inc, names=names)
+            ok, msg = match(p, cid, flags, verbose=False, include=inc, names=names, hkey=hkey)
             if ok or not TOOL_ERROR.search(msg):
                 break
         lines = msg.splitlines()

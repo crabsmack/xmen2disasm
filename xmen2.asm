@@ -5647,8 +5647,10 @@ Tbl_FluxBombAnim22:	; animation script (byte flags, byte steps, ..., 2-byte step
 Tbl_FluxBombAnim23:	; animation script (byte flags, byte steps, ..., 2-byte steps from +6); 34 of 36 bytes used at runtime; read by Anim_ApplyStep, FluxBomb_StartImplode, FluxBomb_StartBurst; jt[2286] used by FluxBomb_Detonate
 	incrom	$1CD8F2,$36
 Tbl_FluxBombImplodeParticles:	; FLUXBOMB implode particles (FluxBomb_StartImplode/StepImplode, both strengths): 16 x 4 bytes {signed byte dx, signed byte dy step toward the centre, word start shift: start = -(dx, dy) << shift}; the last entries run into Tbl_FluxBombBurstDirs; 2E of 2E bytes used at runtime; read by Anim_ApplyStep, FluxBomb_StartImplode, FluxBomb_StartBurst; jt[2287,2288] used by FluxBomb_StepImplode, FluxBomb_StartImplode
+Tbl_FluxBombImplodeParticlesStrong:	; the same table, the original's second name (jt[2288], FluxBomb_StepImplode/StartImplode, strong; jt[2287] Tbl_FluxBombImplodeParticles the weak one)
 	incrom	$1CD928,$2E
 Tbl_FluxBombBurstDirs:	; FLUXBOMB burst directions (FluxBomb_StepBurst/StartBurst/DrawBurst, both strengths): 12 signed (dx, dy) byte pairs then (0, 0), but 16 pairs are read; followed at $1CD970 by animation scripts (14 frames $26-$2C and back, then frame $25); 1A of 46 bytes used at runtime; read by Anim_ApplyStep, FluxBomb_StartImplode, FluxBomb_StartBurst; jt[2289,2290] used by FluxBomb_StepBurst, FluxBomb_StartBurst, FluxBomb_DrawBurst
+Tbl_FluxBombBurstDirsStrong:	; the same table, the original's second name (jt[2290], FluxBomb_StepBurst/StartBurst/DrawBurst, strong; jt[2289] Tbl_FluxBombBurstDirs the weak one)
 	incrom	$1CD956,$46
 Tbl_MagnetoCharRecord:	; Magneto's character record (player +$8C; layout in NOTES 'XPLAYER slots': attack strengths, sounds, gravities, speeds, animation offsets), shared with EVILMAGNETO; 2F of 5E bytes used at runtime; read by Magneto_AirSteer, XPlayer_Land, XPlayer_StateControl; jt[2291] used by EvilMagneto_Init, Magneto_Init
 	incrom	$1CD99C,$5E
