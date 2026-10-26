@@ -282,7 +282,9 @@ the session seed is 1):
   `saved_sha1` equals its `resaved_sha1`. Negative control: for each section in `state.sections`,
   `--state-skip NAME` with the probe on the TAS in the session machine with `widescreen=16:9`, and
   once `players` exists also on `scene1.input` (Sentinels) with `players` 4: at least one of those
-  runs reports a mismatch (rows, frames or snapshot bytes).
+  runs reports a mismatch (rows, frames or snapshot bytes). Those runs play their first 3,000 runner
+  frames first, and their whole input only for a section none of the cut runs catches (a cut run is
+  the whole one's prefix, so the verdict is the same).
 - **M3**: sessions of two seats:
   - `scenario-options-menu`'s input under `clean`, `mid` and `bad`;
   - each world's stage input (`players` 2) under `mid`;

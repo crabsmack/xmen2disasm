@@ -259,10 +259,11 @@ def run_frames(run: str) -> int:
     return sum(int(m.group(1), 0) for m in re.finditer(r"^WAIT\s+(\S+)", p.read_text(), re.M))
 
 
-def pmap(fn, items: list, jobs: int | None = None) -> list:
+def pmap(fn, items: list, jobs: int | None = None, cost_of=None) -> list:
     """fn over items on JOBS threads (or `jobs`; each runs a subprocess); results in the items' order.
-    Corpus runs (names) start longest first, so the last to finish are short ones."""
-    cost = {i: run_frames(i) if isinstance(i, str) else 0 for i in items}
+    Corpus runs (names) start longest first, so the last to finish are short ones; cost_of(item)
+    orders other items the same way."""
+    cost = {i: cost_of(i) if cost_of else run_frames(i) if isinstance(i, str) else 0 for i in items}
     gated = mem_gated(fn)
     with ThreadPoolExecutor(max_workers=max(1, min(JOBS, jobs or JOBS))) as ex:
         futs = {i: ex.submit(gated, i) for i in sorted(items, key=lambda i: -cost[i])}
@@ -1708,7 +1709,11 @@ def phase6(crit, fresh: bool) -> None:
 
 P7_IDS = [f"M{i}" for i in range(7)]
 M2_EVERY, M2_SPAN = 300, 60
-SESSION = ("--session", "1")
+# the negative control's runs play this many runner frames first, and the whole input only for a section
+# they don't catch: a cut run is the whole one's prefix, so the verdict is the same (2026-10-26: every
+# section caught by sync point 2,100, the TAS's runs 245 s each whole)
+M2_CUT = 3000
+SESSION =("--session", "1")
 LINKS = {"clean": "latency=0,jitter=0,loss=0,seed=7",
          "mid": "latency=50,jitter=10,loss=2,seed=7",
          "bad": "latency=120,jitter=40,loss=10,seed=7"}
@@ -1718,8 +1723,11 @@ M3_GAMEPLAY = ",widescreen_gameplay=1"                    # R12: with it the hos
 M3_F10 = "1:600"                                          # R12: seat 1 presses F10 (its own view, from the next screen)
 M3_LATE = 0.01            # late frames under `mid`, of a seat's frames
 # sessions at a time: each seat runs in real time, and 11 sessions at once (22 seats and a WSL one) made
-# seats late that are on time alone (2026-10-22, w-clone: 38/3510 in the plan, 1-24/3512 alone)
-SESSION_JOBS = 4
+# seats late that are on time alone (2026-10-22, w-clone: 38/3510 in the plan, 1-24/3512 alone). With
+# the WSL build made before the sessions (2026-10-26), 8 at once (M5: 33 seats) left every `mid` seat
+# as late as 4 at once did (at most 0.41% and 0.34%, of 1%): M3 430 -> 206 s, M5 187 -> 141 s
+SESSION_JOBS = int(os.environ.get("PHASE_SESSION_JOBS") or 8)
+LINK_COST = {"clean": 1.0, "mid": 1.03, "bad": 1.45}   # a session's wall time per frame, by link (2026-10-26)
 M4_IN_PLAY = 0.50         # each player's in-play share of the gameplay frames
 M4_DRAWN = 0.50           # drawn share of a player's in-play frames
 M4_OFF_VIEW = 0.01        # outside the view, share of its in-play frames, over the original's (R11 (a))
@@ -1801,16 +1809,27 @@ def phase7(crit, fresh: bool) -> None:
         return report()
 
     tr = Traces(fresh)
+    runs = corpus_runs()
+    # beside the smoke stage: the other runs' D1 references (when the timed runner changed, ~4 min
+    # after the smoke's TAS one), and the WSL build om-linux and M1's P9 use, so that no session
+    # waits on it or plays beside it (2026-10-26: om-linux built it for 113 s beside three sessions)
+    d1_rev = content_rev("XMen2Recomp")
+    early_out: dict[str, tuple] = {}
+    early = {"d1": threading.Thread(target=d1_refs, args=(tr, [r for r in runs if r != "tas"], d1_rev)),
+             "wsl": threading.Thread(target=lambda: early_out.update(wsl=contract("native-build", "--wsl", timeout=3600)))}
+    for t in early.values():
+        t.start()
     say(f"smoke: as phase 5's (the native TAS's first {SMOKE_FRAMES} frames four ways, a branched verify)")
     why = smoke(tr)   # phase 5's, inside M1, then finds its traces cached
+    early["d1"].join()
     if why:
+        early["wsl"].join()
         for cid in P7_IDS[1:]:
             put(cid, False, f"not measured: the smoke stage failed: {why}")
         return report()
     say("smoke: pass")
     root = recomp_root()
-    runs = corpus_runs()
-    bad1, refs, _low = d1_refs(tr, runs, rev=content_rev("XMen2Recomp"))
+    bad1, refs, _low = d1_refs(tr, runs, rev=d1_rev)
     no_ref = [r for r in runs if r not in refs]
     scenes = warp_scenes()
     mp_dir = root / "game" / "mp_inputs"
@@ -1892,22 +1911,37 @@ def phase7(crit, fresh: bool) -> None:
         if "players" in ((o or {}).get("options") or {}) and s1.is_file():
             ctl.append(("mp-scene1", s1, ("--scene", "1", "--options", "players=4")))
         probe = ("--state-probe", f"{M2_EVERY}:{M2_SPAN}", "--fb")
-        base = [played(n, i, *SESSION, *x, *probe) for n, i, x in ctl]
-        base_bad = [f"{n}: {b['detail'][:100] if not b['ok'] else probe_check(b)}" for (n, _i, _x), b in zip(ctl, base)
-                    if not b["ok"] or probe_check(b)]
-        if base_bad:
-            ok2 = False
-            notes2.append(f"negative control: its baseline fails ({base_bad[0]})")
-        else:
+        ctl.reverse()   # the short input first: a section it catches never plays the TAS
+
+        def bad_run(t: dict) -> str | None:
+            return t["detail"][:100] if not t["ok"] else probe_check(t)
+
+        def control(secs: list[str], cut: tuple[str, ...]) -> tuple[str | None, list[str]]:
+            """-> (the baseline's failure, the sections not caught): every control run cut to `cut`'s
+            frames (or whole), after the same runs without --state-skip pass."""
+            base = pmap(lambda k: bad_run(played(ctl[k][0], ctl[k][1], *SESSION, *ctl[k][2], *probe, *cut)),
+                        list(range(len(ctl))))
+            base_bad = next((f"{ctl[k][0]}: {b}" for k, b in enumerate(base) if b), None)
+            if base_bad:
+                return base_bad, secs
+
             def caught(sec: str) -> str | None:
                 for n, i, x in ctl:
-                    t = played(n, i, *SESSION, *x, *probe, "--state-skip", sec)
-                    if not t["ok"] or probe_check(t):
+                    if bad_run(played(n, i, *SESSION, *x, *probe, "--state-skip", sec, *cut)):
                         return None
                 return sec
-            missed = [s for s in pmap(caught, sections) if s]
+            return None, [s for s in pmap(caught, secs) if s]
+        base_bad, left = control(sections, ("--frames", str(M2_CUT)))
+        missed = left
+        if not base_bad and left:
+            base_bad, missed = control(left, ())
+        if base_bad:
+            ok2 = False
+            notes2.append(f"negative control: its baseline fails ({base_bad})")
+        else:
             ok2 &= not missed
             notes2.append(f"negative control: {len(sections) - len(missed)}/{len(sections)} sections caught when left out"
+                          + (f" ({len(left)} on the whole input)" if left else "")
                           + (f"; not caught: {', '.join(missed)}" if missed else ""))
     put("M2", ok2, "; ".join(notes2))
 
@@ -1966,11 +2000,14 @@ def phase7(crit, fresh: bool) -> None:
         """The sessions of a plan in parallel (by index: pmap's items must be hashable), after all of
         their offline references: an offline trace runs unpaced, and one running beside a session's
         real-time seats made them late (2026-10-22: om-sealed seat 1 88/8349 late in the plan, 1/8346
-        alone)."""
-        pmap(lambda i: offline(plan[i][1][2], plan[i][2].get("host_opts", ""), plan[i][2].get("scene", ())),
-             list(range(len(plan))))
+        alone). Longest first (its offline run's sync points, by the link's pace), so the plan isn't
+        left waiting on one long session started last (2026-10-26: M3's 254 s om-linux started 254 s in)."""
+        offs = pmap(lambda i: offline(plan[i][1][2], plan[i][2].get("host_opts", ""), plan[i][2].get("scene", ())),
+                    list(range(len(plan))))
+        cost = [((o.get("stats") or {}).get("sync_points") or 0) * LINK_COST.get(plan[i][1][3], 1.0)
+                for i, o in enumerate(offs)]
         return pmap(lambda i: (plan[i][0], session(*plan[i][1], **plan[i][2])), list(range(len(plan))),
-                    jobs=SESSION_JOBS)
+                    jobs=SESSION_JOBS, cost_of=lambda i: cost[i])
 
     def sessions_result(results: list[tuple[str, dict]]) -> tuple[list[str], int]:
         bad = [f"{n} ({r['err']})" for n, r in results if "err" in r]
@@ -1978,6 +2015,11 @@ def phase7(crit, fresh: bool) -> None:
 
     om_in, err_om = export_input(TWO_PLAYER_RUN, tr.out_dir)
     worlds = (scenes or ({}, {}))[0]
+
+    early["wsl"].join()
+    wsl, wsl_err = early_out.get("wsl") or (None, "not run")
+    if wsl is None or wsl.get("ok") is not True:   # om-linux's own build then tries again and reports it
+        say(f"the WSL build (started beside the smoke stage) failed: {(wsl_err or str(wsl))[:200]}")
 
     # M3: two players online
     say("M3: two-seat sessions (link profiles, world stage inputs, sealed options, Windows against Linux)")
