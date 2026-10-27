@@ -120,6 +120,13 @@ the music), in full with their evidence in [P7-kickoff.md](P7-kickoff.md).
 - **R6a HUD for players 3 and 4. Ruled: built from the ROM's tiles.** At run time, panels for
   players 3 and 4 are made from the user's ROM: the player 1/2 panel art with its digit replaced
   by a "3"/"4" from the game's own font. Nothing ROM-derived is shipped.
+  *Amended by the user 2026-10-27, in the session:* with three or more players **every** player's
+  panel (players 1-2's too) is its character's select-screen portrait, made at run time from the
+  user's ROM (Tbl_CerebroVdp's portrait frames) with a 1 px black outline and no digit, and the HUD
+  is in the players' order, 1-2-3-4 from the left. Players 1-2's portraits replace their panels at
+  render time only, so VRAM and the canonical digest keep the game's own tiles. Players 3-4's HUD is
+  drawn in front of the main table's sprites, as the game's own HUD is. With one or two players
+  everything is the original. (XMen2Recomp f06ba34; its NOTES.md "R6a".)
 - **R7 Four-player rules. Ruled: the two-player rules extended.** No two players share a
   character; no difficulty scaling; the camera keeps the group in view; players are held at the
   screen edges as in two-player; lives per player; players 3 and 4 join with Start as player 2
