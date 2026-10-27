@@ -275,7 +275,9 @@ right after restoring it). The trace's `sync.csv` is the live run.
 | `hud_missing` | gameplay frames where a player in play has no HUD panel drawn |
 | `hud_missing_at` | `[frame, player, join]` for each player in play with no panel drawn on such a frame (runner frames; the first 256): `join` 1 on the first game frame (`g_LevelFrame`) of the player's stretch in play (R11 (b)), which at 30 Hz is shown on two sync points |
 | `hud_panels` | `[player, first, last]`: the stretches of runner frames where a player in play has its panel drawn (gameplay frames with the HUD on; the first 256) |
-| `hud_lists_full` | 1 when `hud_missing_at` or `hud_panels` reached its cap (the check then fails) |
+| `hud_tiles_wrong` | of the frames with a player 1-2's panel drawn, those where VRAM's panel tiles aren't that player's panel art (`hud_panels` reads only the sprite table) |
+| `hud_tiles_wrong_at` | `[frame, player, join]` for each such frame (the first 256), `join` as `hud_missing_at`'s |
+| `hud_lists_full` | 1 when `hud_missing_at`, `hud_panels` or `hud_tiles_wrong_at` reached its cap (the check then fails) |
 | `sprites_dropped` | sprite entries the game's stop dropped (the original's 80, or R6's raised stop) |
 | `snd2` | `{"frames": frames the second machine ran, "songs": {song id: {"part_keyons", "base_keyons"}}}`: key-ons on its YM2612 and PSG, by whether the playing track's song is the base song (muted) or a part; song ids as two hex digits (`"27"`) |
 
@@ -317,7 +319,8 @@ the session seed is 1):
   player's `off_view` ≤ its `in_play` × (the larger of players 1-2's `off_view`/`in_play` in that
   run + 1%); no counted missing panel: an entry of `hud_missing_at` with `join` 0 counts, for
   players 1-2 only where that player's panel is drawn at that frame in the `players=2` run
-  (`hud_panels`), for players 3-4 (no panel in the original) wherever it is. Music: the `players` 4 runs together reach each base song with parts
+  (`hud_panels`), for players 3-4 (no panel in the original) wherever it is; no entry of
+  `hud_tiles_wrong_at` with `join` 0, in these runs and the `players=2` ones. Music: the `players` 4 runs together reach each base song with parts
   (`$27`, `$25`, `$48` or `$47`, `$64` or `$6C`), and on each `snd2.songs` has `part_keyons` > 0
   and `base_keyons` 0; the same inputs with pads 3 and 4 emptied have `snd2.frames` 0. With
   `--options players=2 --fb` the TAS has the same rows and frames as without options, and

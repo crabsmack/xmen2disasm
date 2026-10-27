@@ -2097,8 +2097,8 @@ def phase7(crit, fresh: bool) -> None:
             if not t["ok"]:
                 return f"{name} players {players} ({t['detail'][:140]})", {}
             c = mp(t)
-            if "in_play" not in c or "hud_panels" not in c:
-                return f"{name} players {players} (no mp counters, or no hud_missing_at / hud_panels)", {}
+            if "in_play" not in c or "hud_panels" not in c or "hud_tiles_wrong_at" not in c:
+                return f"{name} players {players} (no mp counters, or no hud_missing_at / hud_panels / hud_tiles_wrong_at)", {}
             return None, c
 
         def m4(name: str, players: int, c: dict, c2: dict) -> str | None:
@@ -2128,9 +2128,15 @@ def phase7(crit, fresh: bool) -> None:
             hud = [(fr, p) for fr, p, join in c.get("hud_missing_at") or []
                    if not join and (p > 2 or any(a <= fr <= b for a, b in drawn.get(p, ())))]
             if c.get("hud_lists_full") or c2.get("hud_lists_full"):
-                probs.append("hud_missing_at / hud_panels full (the runner's list cap)")
+                probs.append("hud_missing_at / hud_panels / hud_tiles_wrong_at full (the runner's list cap)")
             if hud:
                 probs.append(f"hud missing {len(hud)} (first: frame {hud[0][0]}, player {hud[0][1]})")
+            # a player 1-2's panel drawn from tiles that aren't its panel (2026-10-27: player 2 joining
+            # after a player 3-4 kept the "press start" tiles), a join's frames aside, in both runs
+            tiles = [(fr, p, n) for n, d in ((players, c), (2, c2))
+                     for fr, p, join in d.get("hud_tiles_wrong_at") or [] if not join]
+            if tiles:
+                probs.append(f"hud tiles wrong {len(tiles)} (first: frame {tiles[0][0]}, player {tiles[0][1]}, players {tiles[0][2]})")
             if c.get("sprites_dropped") != 0:
                 probs.append(f"sprites_dropped {c.get('sprites_dropped')}")
             return f"{name} players {players} ({'; '.join(probs[:3])})" if probs else None
