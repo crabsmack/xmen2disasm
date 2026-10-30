@@ -78,7 +78,11 @@ Checked by `uv run tools/phase.py 6` (writes `docs/progress/P6.md`). Requires ph
   `music_voices`, the music on sound machines of its own, is the first option on by default. It
   is sound only (the session machine's audio; no game state, not in the canonical digest, no
   traced run starts it), so the checks against the original are unchanged with it on; E2 lists
-  only the phase-6 options.*
+  only the phase-6 options.* *Later (the user, 2026-10-30: "let's use auto for refresh rate and
+  aspect ratio"): `high_fps` and `widescreen` default to `auto`, the display the window opens on
+  (its rate when over 60 Hz; 16:9 when wider than 3:2), else off. Presentation only, and with no
+  window (every traced run) `auto` is off, so the checks against the original are unchanged; E2
+  takes `auto` as their default (xmen2-pc b9d1fc6).*
 - **R2 Sources. Ruled: keep the byte matches.** Phase 5's R4 continues: every source keeps
   compiling in all three modes, the files that byte-match keep matching, and `verify` keeps
   proving the rest. Option code goes in native-only branches (`#if defined(XMEN2_NATIVE)`), and
@@ -147,7 +151,7 @@ Checked by `uv run tools/phase.py 6` (writes `docs/progress/P6.md`). Requires ph
 |---|---|---|
 | E0 | Criteria approved | this file has a line `approved: YYYY-MM-DD` (user's word only) and the capitalised draft marker is gone from the title |
 | E1 | The original is kept | the release runner with every option off passes phase 5's measured criteria: `phase.py 5`'s P1-P7 and P9, on the phase-6 sources and runner (the corpus traces equal the reference at every sync point, P2's ledger, the object scan and link map, the TAS framebuffers, the Linux TAS) |
-| E2 | Options | `XMen2.exe --options --json` lists `full_rate_2p`, `high_fps`, `widescreen`, `widescreen_gameplay` (R8) (with their settings), each off by default, read from the command line and the settings file. A run with each option given explicitly off has the same sync rows and framebuffers on the TAS as a run without options |
+| E2 | Options | `XMen2.exe --options --json` lists `full_rate_2p`, `high_fps`, `widescreen`, `widescreen_gameplay` (R8) (with their settings), each off by default (`high_fps` and `widescreen`: `auto`, off without a display; R1's 2026-10-30 note), read from the command line and the settings file. A run with each option given explicitly off has the same sync rows and framebuffers on the TAS as a run without options |
 | E3 | Two-player full rate | with `full_rate_2p` on: every corpus run that never has two players alive has the same sync rows and framebuffers as with it off (the option touches only two-player play); on the TAS from the frame player 2 joins and on `scenario-two-player`, every logic frame is one displayed frame (no frame-tick wait), `g_TwoPlayerStep` stays 0, and every corpus input runs to its end with no fatal from the memory layer and no hang |
 | E4 | High frame rate | with `high_fps` at 120 and 144 Hz (a headless present clock): the sync rows of the whole corpus equal the reference (presentation only), and the frame shown at each logic instant has P7's hash. On the TAS's gameplay frames, at least 95% of the sprites outside the HUD are matched to an object and interpolated, and the 144 Hz render time is p99 < 6.9 ms on this machine. Latency (R4): on a scripted input change that shows on screen in each of 10 TAS scenes, the first displayed frame that shows its effect comes no later on the present clock than with `high_fps` off, and the whole logic frame is on screen at the same time as with it off |
 | E5 | Widescreen | in both of R8's modes (`widescreen=16:9`, presentation only, and with `widescreen_gameplay=1`): on every gameplay frame of the TAS input and each corpus input, the wide columns of planes A and B hold what the level's block map says (0 terrain-check errors), no sprite is lost to the 9-bit x range, the HUD is pinned to the screen edges, and each non-gameplay screen is as `game/widescreen_screens.toml` lists it (R5: wide with its wide columns drawn, or 4:3 centred with bars; each with its reason); every corpus input runs to its end with no fatal and no hang. Presentation only (R8): at every sync point of every corpus input the game's state equals the run with widescreen off (`--game-rows`), and no gameplay frame has a bar where the level shows 400 px or more (the render camera) |
@@ -244,8 +248,9 @@ How `phase.py 6` measures each criterion (corpus runs under P5's D1 replay input
 by the runner's hash as in phase 5):
 
 - **E1**: phase 5's measurement (`phase5()`), passing when P1-P7 and P9 pass.
-- **E2**: `options --json` lists the four settings with default `0`, `from_settings` equals what
-  the settings file set, and the TAS with
+- **E2**: `options --json` lists the four settings with default `0` (`high_fps` and `widescreen`:
+  `0` or `auto`), `from_settings` equals what the settings file set (each option's first value
+  other than its default), and the TAS with
   `--options full_rate_2p=0,high_fps=0,widescreen=0,widescreen_gameplay=0 --fb`
   has the same rows and frame hashes as without options.
 - **E3**: every corpus run with `--fb`, with the option off and on. A run whose off trace has

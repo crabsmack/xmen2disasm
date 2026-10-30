@@ -1350,6 +1350,7 @@ def phase5(crit, fresh: bool, draft: bool = False) -> None:
 P6_IDS = [f"E{i}" for i in range(7)]
 P6_OPTIONS = ("full_rate_2p", "high_fps", "widescreen", "widescreen_gameplay")   # the last: R8 (2026-10-22)
 P6_ALL_OFF = "full_rate_2p=0,high_fps=0,widescreen=0,widescreen_gameplay=0"
+P6_AUTO = ("high_fps", "widescreen")   # default auto (the user, 2026-10-30): the display's; no window: off
 E5_MODES = (("presentation", "widescreen=16:9"), ("gameplay", "widescreen=16:9,widescreen_gameplay=1"))   # R8
 E4_RATES = (120, 144)
 E4_PROBES = 10                 # latency probes over the TAS's gameplay frames
@@ -1475,8 +1476,12 @@ def phase6(crit, fresh: bool) -> None:
     if o is None:
         put("E2", False, f"options contract: {err}")
     else:
-        wrong = [k for k in P6_OPTIONS if (opts.get(k) or {}).get("default") != "0"]
-        set_to = {k: next((v for v in (opts.get(k) or {}).get("values") or [] if v != "0"), None) for k in P6_OPTIONS}
+        # off by default; high_fps and widescreen may be auto (the user, 2026-10-30): the display's,
+        # off with no window, which the TAS comparison below shows (no options = all given off)
+        wrong = [k for k in P6_OPTIONS
+                 if (opts.get(k) or {}).get("default") not in (("0", "auto") if k in P6_AUTO else ("0",))]
+        set_to = {k: next((v for v in (opts.get(k) or {}).get("values") or []
+                           if v != (opts.get(k) or {}).get("default")), None) for k in P6_OPTIONS}
         read = o.get("from_settings") or {}
         unread = [k for k in P6_OPTIONS if set_to[k] is None or str(read.get(k)) != str(set_to[k])]
         a, b = native("tas", "--fb"), native("tas", "--fb", "--options", P6_ALL_OFF)
