@@ -34,6 +34,14 @@ than bars at the level edges). Ruled as R8 below. E2 lists the new setting, E5 i
 modes and checks in the presentation mode that the game's state is the 4:3 run's; the contract
 gains `--game-rows` and the `bars_unneeded` counter.
 
+**Changed 2026-10-30 (user, in the session: "do add that check"): E4's even frames.** A player
+reported stutter at `high_fps=120`. The frames in between were an absolute 120 Hz clock's ticks
+with each whole frame on top: 180 a second, bunched where the clock ran near a whole frame, which
+a 120 Hz screen drops unevenly (xmen2-pc NOTES "Even frames"). E4 measured each whole frame's time
+but not the spacing. It now also asks, of every present log it reads, that the frames between two
+whole frames split the span evenly. The negative control: the 23 present logs left by the earlier
+runner fail it, and the fixed runner's pass.
+
 Goal: XMen2Native gains the three enhancements as **options**. With every option off it is still
 the proven port of phase 5, checked by the same measurements. With an option on, it is checked
 by its own measurements, which say what may change and what may not. The user plays it.
@@ -259,6 +267,9 @@ by the runner's hash as in phase 5):
   normally.
 - **E4**: every corpus run with `high_fps=120` and with `144`, each with `--present-log`.
   - Its rows equal the reference.
+  - Even frames (2026-10-30): between two consecutive whole frames at `t0` and `t1`, its present
+    log has no frame, or n - 1 frames at `t0 + i (t1 - t0) / n` (within 1 us), n = the rate x
+    (`t1 - t0`) rounded. The same for the TAS at 144 below.
   - On the TAS at 144: each whole frame's hash equals the `--fb` row it leads to, and each whole
     frame is at the same `t_us` as in the TAS's `--present-log` run with the option off;
     `sprites_matched / sprites` ≥ 0.95; `render_us_p99` < 6900.

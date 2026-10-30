@@ -1463,6 +1463,25 @@ def phase6(crit, fresh: bool) -> None:
         p = Path(t.get("csv") or "").parent / "present.csv"
         return read_rows(p) if t.get("ok") and p.is_file() else []
 
+    def uneven(rows: list[dict[str, str]], hz: int) -> str | None:
+        """E4's even frames (the user, 2026-10-30): between consecutive whole frames t0, t1, none
+        in between, or n - 1 at t0 + i (t1 - t0) / n (+-1 us), n = round(hz (t1 - t0)). Before, the
+        frames in between were an absolute hz clock's ticks: 120 presented 180 a second, bunched."""
+        t0, between = None, []
+        for r in rows:
+            t = float(r["t_us"])
+            if r.get("whole") != "1":
+                between.append(t)
+                continue
+            if t0 is not None and between:
+                n = max(1, round(hz * (t - t0) / 1e6))
+                want = [t0 + i * (t - t0) / n for i in range(1, n)]
+                if len(between) != len(want) or any(abs(a - b) > 1.0 for a, b in zip(between, want)):
+                    return (f"sync {r['sync']}: {len(between)} frames between at "
+                            f"{[round(x - t0) for x in between]} us, want {[round(x - t0) for x in want]}")
+            t0, between = t, []
+        return None
+
     def first_bad(out: list[str | None]) -> str:
         bad = [m for m in out if m]
         return (f"{len(runs) - len(bad) - len(no_ref)}/{len(runs)} corpus runs pass"
@@ -1528,6 +1547,10 @@ def phase6(crit, fresh: bool) -> None:
                 t = vs_ref(run, "--options", f"high_fps={hz}", "--present-log")
                 if not t["ok"]:
                     return f"{run} at {hz} Hz ({t['detail'][:160]})"
+                rows = present(t)
+                bad = "no present.csv" if not rows else uneven(rows, hz)
+                if bad:
+                    return f"{run} at {hz} Hz, frames not even ({bad})"
             return None
         for hz in E4_RATES:
             prefetch("--options", f"high_fps={hz}", "--present-log", compared=True)
@@ -1565,9 +1588,12 @@ def phase6(crit, fresh: bool) -> None:
             pr = enh(on).get("present") or {}
             share = pr.get("sprites_matched", 0) / pr["sprites"] if pr.get("sprites") else 0.0
             p99 = pr.get("render_us_p99")
-            ok4 &= wrong_fb is None and late is None and share >= E4_MATCHED and p99 is not None and p99 < E4_RENDER_P99_US
+            odd = uneven(p_on, 144)
+            ok4 &= (wrong_fb is None and late is None and odd is None and share >= E4_MATCHED and p99 is not None
+                    and p99 < E4_RENDER_P99_US)
             notes.append(("TAS whole frames equal P7's" if wrong_fb is None else f"TAS whole frame of sync {wrong_fb} differs from --fb")
                          + ("; on time" if late is None else f"; whole frame of sync {late} not at the 60 Hz time")
+                         + ("; frames even" if odd is None else f"; TAS at 144 Hz, frames not even ({odd})")
                          + f"; {share:.1%} of sprites interpolated (need {E4_MATCHED:.0%}); render p99 {p99} us (< {E4_RENDER_P99_US})")
             # latency: the C button flipped at 10 gameplay sync points, off and at 144 Hz. Each
             # probe is the first gameplay sync point at or after its evenly spread base point
