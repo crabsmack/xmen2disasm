@@ -242,6 +242,27 @@ lay the machine struct out differently).
 - A draft's "measure X at the kickoff" items are worth doing before asking: the user approves the
   numbers, not the guesses.
 
+## Checks of intent (2026-11-19: four weeks of frames in between with no vertical motion)
+
+A player's question about 1000 Hz led to the find: from 2026-10-24 high_fps's frames in between
+moved no sprite vertically, and the 16:9 view hid no wrapped sprite. An engine pin bump (the VDP's
+sprite attribute cache, for exact mode) moved where the renderer reads a sprite's y; the port kept
+writing VRAM. Every gate passed, every release shipped it, two playtests at 120-144 Hz missed it.
+
+- **A check of what the code meant to do is not a check of what it did.** E4's "99.9% of sprites
+  interpolated" counted planned moves; "on time" and "frames even" read the planned times in a
+  headless present log (nothing is presented); E5's counters came from the game's tables. The one
+  pixel check, `--fb`, compares whole frames with the recomp runners, so everything only the port
+  draws (frames in between, the 16:9 margins, players 3-4) had no reference at all, and a pin bump
+  that changed those pictures changed nothing the gate compared.
+- **What fixed it**: an invariant at the boundary that broke (the port's `sat_check`: the sprite
+  table the renderer reads equals VRAM's, at every render, with a count of renders checked so a run
+  that rendered nothing can't pass), and a change detector for the pictures with no oracle
+  (`docs/presentation_ref.json` in the game repo, `phase.py accept-presentation`), each with a
+  negative control in the gate (`--sat-selftest` replays the bug). For the next game: give every
+  output with no independent reference a reference of its own from day one, and make an engine bump
+  show any change to it.
+
 ## For the next game (shared kit)
 
 **Transfers directly:**

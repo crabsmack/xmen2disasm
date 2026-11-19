@@ -1357,6 +1357,7 @@ E4_PROBES = 10                 # latency probes over the TAS's gameplay frames
 E4_PROBE_FRAMES = 40           # a probe's flip must change the 60 Hz picture within these frames
 E4_RENDER_P99_US = 6900        # one 144 Hz frame
 E4_MATCHED = 0.95              # interpolated share of the non-HUD sprites
+E4_CTL_FRAMES = 6000           # the --sat-selftest negative control's TAS frames (pres_check, sat_bad)
 # the latency search's runs start from TAS state files this far apart (xmen2check.py trace
 # --save-states / --load-states); PHASE_E4_STATES=0: every one from power-on (the control)
 E4_STATE_EVERY = 600 if os.environ.get("PHASE_E4_STATES", "1") != "0" else 0
@@ -1365,6 +1366,136 @@ E4_STATE_EVERY = 600 if os.environ.get("PHASE_E4_STATES", "1") != "0" else 0
 def read_rows(p: Path) -> list[dict[str, str]]:
     with open(p, newline="", encoding="utf-8") as f:
         return list(csv.DictReader(f))
+
+
+# --- pictures only the port makes: the renderer's sprite table, the presentation reference -------
+# (the user, 2026-11-19: "do both"). From 2026-10-24 the frames in between moved no sprite
+# vertically and the 16:9 view hid no wrapped sprite (the port wrote the sprite table in VRAM, the
+# renderer reads y, size and link from the VDP's internal copy), and every check passed: each
+# checked intent (planned moves, planned times, counters from RAM), and the only pixel check (--fb)
+# compares whole frames with the recomp runners, which have no frames in between, no 16:9 view and
+# no players 3-4. Two checks since:
+# - sat_bad: a run's renders all saw VRAM's sprite table (machine.cpp sat_check), and some were checked.
+# - pres_check: the pictures of three runs (the TAS's frames in between at 144 Hz, the TAS in 16:9,
+#   four players in scene 1) equal the game repo's docs/presentation_ref.json, digests per chunk of
+#   PRES_CHUNK rows. A change fails until accepted (`phase.py accept-presentation --reason ...`
+#   writes the last measured digests into the reference, to commit with the change); an unexpected
+#   one (an engine bump, a refactor meant to keep the pixels) is a bug until a frame dump shows
+#   otherwise. Windows only (the gate's machine): Linux's compiler could round an interpolation apart.
+PRES_REF = "docs/presentation_ref.json"                       # in the game repo
+PRES_CAND = ROOT / "build" / "presentation_candidate.json"   # the last measured digests
+PRES_CHUNK = 1000
+_pres_lock = threading.Lock()
+
+
+def sat_bad(t: dict) -> str | None:
+    """None when a trace's renders all saw VRAM's sprite table and there were some."""
+    en = (t.get("stats") or {}).get("enhance") or {}
+    n, m = en.get("sat_checks"), en.get("sat_cache_mismatch")
+    if not n:
+        return "no render checked by sat_check (enhance.sat_checks)"
+    return None if m == 0 else f"sat_cache_mismatch {m} of {n} renders"
+
+
+def pres_lines(t: dict, kind: str) -> list[str] | None:
+    """A trace's picture rows: kind 'present' = present.csv as written (every displayed frame, its
+    time and hash), 'fb' = sync.csv's sync and fb_fnv1a64 (the whole frames)."""
+    if not t.get("ok"):
+        return None
+    d = Path(t.get("csv") or "").parent
+    if kind == "present":
+        p = d / "present.csv"
+        return p.read_text(encoding="utf-8").splitlines()[1:] if p.is_file() else None
+    p = d / "sync.csv"
+    rows = read_rows(p) if p.is_file() else []
+    return [f"{r['sync']},{(r.get(FB_COL) or '').lower()}" for r in rows] or None
+
+
+def pres_digest(lines: list[str]) -> dict:
+    import hashlib
+    chunks = [lines[i:i + PRES_CHUNK] for i in range(0, len(lines), PRES_CHUNK)]
+    return {"rows": len(lines), "digest": hashlib.sha1("\n".join(lines).encode()).hexdigest(),
+            "chunks": [hashlib.sha1("\n".join(c).encode()).hexdigest()[:16] for c in chunks],
+            "chunk_first": [c[0].split(",")[0] for c in chunks]}
+
+
+def pres_ref() -> dict:
+    p = recomp_root() / PRES_REF
+    try:
+        return json.loads(p.read_text(encoding="utf-8")).get("entries") or {}
+    except (OSError, ValueError):
+        return {}
+
+
+def pres_check(name: str, lines: list[str] | None) -> str | None:
+    """None when `name`'s picture rows equal the reference's; the digests go to PRES_CAND either way."""
+    if not lines:
+        return f"{name}: no picture rows"
+    d = pres_digest(lines)
+    with _pres_lock:
+        try:
+            cand = json.loads(PRES_CAND.read_text(encoding="utf-8")) if PRES_CAND.is_file() else {}
+        except ValueError:
+            cand = {}
+        cand[name] = {**d, "head": git(recomp_root(), "rev-parse", "HEAD"), "measured": date.today().isoformat()}
+        PRES_CAND.write_text(json.dumps(cand, indent=1), encoding="utf-8")
+    ref = pres_ref().get(name)
+    how = "uv run tools/phase.py accept-presentation --reason '...' if meant (docs/presentation_ref.json)"
+    if not ref:
+        return f"{name}: not in the game repo's {PRES_REF} ({how})"
+    if ref.get("digest") == d["digest"]:
+        return None
+    i = next((k for k, (a, b) in enumerate(itertools.zip_longest(ref.get("chunks") or [], d["chunks"])) if a != b), 0)
+    first = d["chunk_first"][i] if i < len(d["chunk_first"]) else None
+    return (f"{name}: pictures differ from the reference from row {i * PRES_CHUNK + 1}"
+            + (f" (sync {first})" if first else "") + f", {d['rows']} rows vs {ref.get('rows')}; {how}")
+
+
+def pres_prefix_differs(name: str, lines: list[str] | None) -> bool:
+    """A shorter run (the negative control) differs from the reference's first rows."""
+    ref = pres_ref().get(name) or {}
+    if not lines or not ref.get("chunks"):
+        return False
+    full = len(lines) // PRES_CHUNK
+    d = pres_digest(lines[:full * PRES_CHUNK])
+    return any(a != b for a, b in zip(ref["chunks"][:full], d["chunks"]))
+
+
+def accept_presentation(reason: str) -> int:
+    """The last measured digests (PRES_CAND) into the game repo's reference, each with the reason."""
+    if not reason.strip():
+        print("accept-presentation needs --reason (why the pictures changed, what was looked at)")
+        return 2
+    try:
+        cand = json.loads(PRES_CAND.read_text(encoding="utf-8"))
+    except (OSError, ValueError):
+        print(f"no {PRES_CAND}: run the phase (6 or 7) first")
+        return 2
+    head = git(recomp_root(), "rev-parse", "HEAD")
+    stale = [n for n, c in cand.items() if c.get("head") != head]
+    if stale:
+        print(f"measured on another game repo commit than {head[:10]}: {', '.join(stale)}; run the phase again")
+        return 2
+    p = recomp_root() / PRES_REF
+    try:
+        doc = json.loads(p.read_text(encoding="utf-8")) if p.is_file() else {}
+    except ValueError:
+        doc = {}
+    entries = doc.setdefault("entries", {})
+    doc["about"] = ("The pictures only the port makes (xmen2disasm tools/phase.py pres_check): phase 6 E4/E5 "
+                    "and phase 7 M4 fail when they change. Written by `phase.py accept-presentation`; commit "
+                    "it with the change.")
+    for n, c in sorted(cand.items()):
+        was = entries.get(n, {}).get("digest")
+        print(f"{n}: {'unchanged (its record kept)' if was == c['digest'] else 'new' if was is None else 'changed'}"
+              f" ({c['rows']} rows)")
+        if was != c["digest"]:
+            entries[n] = {k: c[k] for k in ("rows", "digest", "chunks", "chunk_first")} | {
+                "accepted": date.today().isoformat(), "head": head, "reason": reason.strip()}
+    p.parent.mkdir(parents=True, exist_ok=True)
+    p.write_text(json.dumps(doc, indent=1) + "\n", encoding="utf-8")
+    print(f"wrote {p}")
+    return 0
 
 
 def same_sync(a: Path, b: Path, cols: list[str]) -> str | None:
@@ -1551,6 +1682,9 @@ def phase6(crit, fresh: bool) -> None:
                 bad = "no present.csv" if not rows else uneven(rows, hz)
                 if bad:
                     return f"{run} at {hz} Hz, frames not even ({bad})"
+                bad = sat_bad(t)
+                if bad:
+                    return f"{run} at {hz} Hz ({bad})"
             return None
         for hz in E4_RATES:
             prefetch("--options", f"high_fps={hz}", "--present-log", compared=True)
@@ -1568,8 +1702,10 @@ def phase6(crit, fresh: bool) -> None:
         def loads(t: dict) -> tuple[str, ...]:
             return ("--load-states", str(Path(t["csv"]).parent / "states")) if keep and t.get("ok") else ()
         t0 = time.monotonic()
-        fb, off_p, on = pmap(lambda k: (native("tas", "--fb") if k == 0 else producer("--present-log") if k == 1
-                                        else producer("--options", "high_fps=144", "--present-log")), [0, 1, 2])
+        fb, off_p, on, ctl = pmap(lambda k: (native("tas", "--fb") if k == 0 else producer("--present-log") if k == 1
+                                             else producer("--options", "high_fps=144", "--present-log") if k == 2
+                                             else native("tas", "--options", "high_fps=144", "--present-log", "--frames",
+                                                         str(E4_CTL_FRAMES), "--sat-selftest")), [0, 1, 2, 3])
         say(f"E4: the TAS traces (--fb, the present log off and at 144 Hz{', with states' if keep else ''}) "
             f"{time.monotonic() - t0:.0f} s")
         load_off, load_on = loads(off_p), loads(on)
@@ -1595,6 +1731,21 @@ def phase6(crit, fresh: bool) -> None:
                          + ("; on time" if late is None else f"; whole frame of sync {late} not at the 60 Hz time")
                          + ("; frames even" if odd is None else f"; TAS at 144 Hz, frames not even ({odd})")
                          + f"; {share:.1%} of sprites interpolated (need {E4_MATCHED:.0%}); render p99 {p99} us (< {E4_RENDER_P99_US})")
+            # what the share above can't see (it counts planned moves): the renderer's sprite table at
+            # every render, the frames in between against the presentation reference, and the negative
+            # control, the bug of 2026-10-24 (--sat-selftest), which both must catch
+            sat_on = sat_bad(on)
+            ref_on = pres_check("tas-144hz", pres_lines(on, "present"))
+            ctl_en = (ctl.get("stats") or {}).get("enhance") or {}
+            ctl_bad = (f"its run failed ({(ctl.get('detail') or '')[:100]})" if not ctl.get("ok")
+                       else "sat_check saw no mismatch" if not ctl_en.get("sat_cache_mismatch")
+                       else None if not pres_ref().get("tas-144hz")   # no reference: ref_on fails already
+                       else "its pictures equal the reference's" if not pres_prefix_differs("tas-144hz", pres_lines(ctl, "present"))
+                       else None)
+            ok4 &= sat_on is None and ref_on is None and ctl_bad is None
+            notes.append(("sprite table seen at every render" if sat_on is None else f"TAS at 144 Hz: {sat_on}")
+                         + ("; frames in between equal the presentation reference" if ref_on is None else f"; {ref_on}")
+                         + ("; negative control caught" if ctl_bad is None else f"; negative control (--sat-selftest): {ctl_bad}"))
             # latency: the C button flipped at 10 gameplay sync points, off and at 144 Hz. Each
             # probe is the first gameplay sync point at or after its evenly spread base point
             # (before the next one) where the flip changes the 60 Hz picture within 40 frames (the
@@ -1709,6 +1860,9 @@ def phase6(crit, fresh: bool) -> None:
                     elif a != b:
                         k = next((i for i, (x, y) in enumerate(zip(a, b)) if x != y), min(len(a), len(b)))
                         bad["game state"] = f"differs from widescreen off at row {k + 1} of {len(a)}"
+                s = sat_bad(t)
+                if s:
+                    bad["sprite table"] = s
                 if bad:
                     return f"{run} {name} ({bad})"
             return None
@@ -1717,7 +1871,14 @@ def phase6(crit, fresh: bool) -> None:
                 prefetch("--options", opts, *(("--game-rows",) if name == "presentation" else ()))
             prefetch("--options", "widescreen=0", "--game-rows")
         out = pmap(e5, runs) if screens_toml is not None else ["no game/widescreen_screens.toml"]
-        put("E5", not any(out) and not no_ref, first_bad(out) if screens_toml is not None else out[0])
+        # the 16:9 picture itself (the counters above come from the game's tables): the TAS's whole
+        # frames in the presentation mode against the presentation reference (pres_check)
+        ws_t = native("tas", "--options", E5_MODES[0][1], "--fb")
+        ref_ws = sat_bad(ws_t) if ws_t.get("ok") else f"the TAS in 16:9 ({(ws_t.get('detail') or '')[:120]})"
+        ref_ws = ref_ws or pres_check("tas-16x9", pres_lines(ws_t, "fb"))
+        put("E5", not any(out) and not no_ref and ref_ws is None,
+            (first_bad(out) if screens_toml is not None else out[0])
+            + ("; the TAS's 16:9 pictures equal the presentation reference" if ref_ws is None else f"; {ref_ws}"))
 
     # E6: the packages phase 5 built, with the options, and the user's word
     notes, ok6 = [], True
@@ -2130,6 +2291,9 @@ def phase7(crit, fresh: bool) -> None:
             c = mp(t)
             if "in_play" not in c or "hud_panels" not in c or "hud_tiles_wrong_at" not in c:
                 return f"{name} players {players} (no mp counters, or no hud_missing_at / hud_panels / hud_tiles_wrong_at)", {}
+            s = sat_bad(t)   # players.cpp ends the hardware's chain at slot 80 in the sprite table
+            if s:
+                return f"{name} players {players} ({s})", {}
             return None, c
 
         def m4(name: str, players: int, c: dict, c2: dict) -> str | None:
@@ -2215,13 +2379,20 @@ def phase7(crit, fresh: bool) -> None:
             two = ((not a["ok"] and f"TAS: {a['detail'][:100]}") or (not b["ok"] and f"TAS players=2: {b['detail'][:100]}")
                    or same_sync(Path(a["csv"]), Path(b["csv"]), COMPARED + [FB_COL])
                    or ((mp(b).get("snd2") or {}).get("frames") != 0 and "players=2 ran the second machine") or None)
-        put("M4", not bad4 and not missing4 and not music_bad and not unreached and two is None,
+        # players 3-4's sprites and HUD (drawn by the port, no reference anywhere else): scene 1 with
+        # four players, its whole frames against the presentation reference (pres_check)
+        s1 = mp_dir / "scene1.input"
+        p4 = played("mp-scene1-p4-fb", s1, *SESSION, "--scene", "1", "--options", "players=4", "--fb")
+        ref_p4 = (f"four players in scene 1 ({(p4.get('detail') or '')[:120]})" if not p4.get("ok") else sat_bad(p4)) \
+            or pres_check("scene1-4p", pres_lines(p4, "fb"))
+        put("M4", not bad4 and not missing4 and not music_bad and not unreached and two is None and ref_p4 is None,
             f"{len(items) - len(bad4)}/{len(items)} stage runs (players 4 and 3) pass"
             + (f"; stage inputs missing: {', '.join(missing4[:4])}" + (" ..." if len(missing4) > 4 else "") if missing4 else "")
             + (f"; first: {bad4[0]}" if bad4 else "")
             + (f"; songs with parts not reached: {', '.join(unreached)}" if unreached else "; every song with parts reached")
             + (f"; music: {music_bad[0]}" if music_bad else "")
-            + (f"; players=2: {two}" if two else "; players=2 equals the original on the TAS"))
+            + (f"; players=2: {two}" if two else "; players=2 equals the original on the TAS")
+            + ("; four players' pictures equal the presentation reference" if ref_p4 is None else f"; {ref_p4}"))
 
     # M5: four players online, and ICE
     say("M5: four-seat hub sessions on the stage inputs; a two-seat ICE session")
@@ -2315,14 +2486,18 @@ def phase_lock():
 
 def main() -> int:
     ap = argparse.ArgumentParser()
-    ap.add_argument("phase", help="1-7 or 'status'")
+    ap.add_argument("phase", help="1-7, 'status', or 'accept-presentation' (the last measured port-only "
+                                  "pictures become the game repo's reference: pres_check)")
     ap.add_argument("--fresh", action="store_true", help="ignore cached trace results")
     ap.add_argument("--json", action="store_true")
     ap.add_argument("--draft", action="store_true",
                     help="phases 4, 5: measure every criterion even before D0/P0 is approved (it still fails)")
+    ap.add_argument("--reason", default="", help="accept-presentation: why the pictures changed, what was looked at")
     args = ap.parse_args()
     if args.phase == "status":
         return status()
+    if args.phase == "accept-presentation":
+        return accept_presentation(args.reason)
     phase = int(args.phase)
     if phase == 1:
         return subprocess.run([sys.executable, str(ROOT / "tools" / "progress.py"),

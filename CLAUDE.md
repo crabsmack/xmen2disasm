@@ -185,7 +185,11 @@ P6, D8, P8, E6, M6): never write those lines yourself, and **never stop to ask e
 these runs and leaves, so queue the question in [docs/QUESTIONS.md](docs/QUESTIONS.md) with the
 default you are taking, and keep working (ROADMAP.md step 4). Read QUESTIONS.md at session start. Never weaken a check in
 `tools/phase.py` or a contract tool it calls; changing a criterion needs the user's
-approval, recorded in the phase doc.
+approval, recorded in the phase doc. E4/E5/M4's presentation reference (the game repo's
+`docs/presentation_ref.json`, phase.py "pictures only the port makes") is accepted with
+`uv run tools/phase.py accept-presentation --reason "..."` only for a change the work meant to
+make, after looking at frame dumps of the first differing sync it names; a change nobody meant (an
+engine bump, a refactor meant to keep the pixels) is a bug to find, never a reference to accept.
 
 **Phase 1** (complete; for reference). Loop until `uv run tools/progress.py` exits 0:
 1. `uv run tools/progress.py` and take the **first failing criterion**, in table

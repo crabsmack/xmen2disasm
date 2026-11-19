@@ -5,7 +5,9 @@ approved: 2026-10-21
 **Status: criteria approved by the user 2026-10-21, with rulings R1-R10** (asked one by one in the
 session, after the kickoff's measurements; the draft of the same day revised with them and with
 what phase 6 taught). R11 (2026-10-22) and R12 (2026-10-23) came later; R12 changed the canonical
-digest's definition and M3's measurement, with the user's approval. Phase 7 is the user's two stretch goals, as decided on 2026-10-21 (ROADMAP.md "Decisions on
+digest's definition and M3's measurement, with the user's approval. **M4 amended 2026-11-19 with the
+user's approval** ("do both"): the renderer's sprite table and the presentation reference, as
+phase 6's E4 and E5. Phase 7 is the user's two stretch goals, as decided on 2026-10-21 (ROADMAP.md "Decisions on
 record"): **online play** and **four-player multiplayer**, then the two together. It follows
 phase 6 ([P6-enhance.md](P6-enhance.md)). Changing a criterion or a definition below needs the
 user's approval, recorded here.
@@ -184,7 +186,7 @@ the music), in full with their evidence in [P7-kickoff.md](P7-kickoff.md).
 | M1 | The original is kept | with netplay off and `players` 2: phase 6's E1-E5 pass on the phase-7 sources and runner |
 | M2 | Savestates | on every corpus run: at every 300th sync point save, run 60 sync points, restore, run them again on the same inputs: the sync rows and framebuffers are identical both times and equal the run without the probe, and the snapshot saved right after a restore has the same bytes as the one restored. Negative control: leaving any one section out of the restore makes the check fail on a run where that section changes |
 | M3 | Two players online, one machine | two processes over loopback through the link simulator, each seat playing its pad of a two-player input (`scenario-options-menu` and the stage inputs of each world): every seat's canonical digest equals the offline session-machine run's at every sync point (0 desyncs), and the host's sync rows equal it; rollbacks happen under latency; the host's options are sealed (R10); a Windows seat against a Linux (WSL) seat passes the same |
-| M4 | Four players on one machine | with `players` 4 (and 3): every stage input runs to its end with no fatal and no hang, with all players in play most of the time; each player in play is drawn, has its HUD panel, and is in the view; no sprite is dropped; the second sound machine plays players 3's and 4's parts on every song that has parts, never its base tracks, and is silent with players 3 and 4 out of play; with `players` 2 explicit the TAS equals the run without options |
+| M4 | Four players on one machine | with `players` 4 (and 3): every stage input runs to its end with no fatal and no hang, with all players in play most of the time; each player in play is drawn, has its HUD panel, and is in the view; no sprite is dropped; the second sound machine plays players 3's and 4's parts on every song that has parts, never its base tracks, and is silent with players 3 and 4 out of play; with `players` 2 explicit the TAS equals the run without options. Every stage run's renders saw VRAM's sprite table, and scene 1 with four players (`--fb`) equals `docs/presentation_ref.json` in the game repo (2026-11-19) |
 | M5 | Four players online | four processes over loopback (the LAN hub, the host relay's in-match path), stage inputs with `players` 4: 0 desyncs against the offline session-machine run, and its rows; plus one two-seat session over ICE on loopback |
 | M6 | Release and playtest | packages (Windows and Linux) with netplay and `players`, ROM-free as P8/P9; and `docs/USER_VERIFIED.md` (XMen2Recomp) has `multiplayer-verified: YYYY-MM-DD`, written only on the user's word after a two-machine online game and a four-player game |
 
